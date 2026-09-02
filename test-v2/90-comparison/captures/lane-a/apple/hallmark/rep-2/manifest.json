@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "apple",
+  "arm": "hallmark",
+  "rep": 2,
+  "source": "test-v2/03-runs/lane-a/apple/hallmark/rep-2/render.html",
+  "sourceSha": "sha256:c6dca1fa38491f6492da6a30ee33d6eaa3b5ee24d597dda3d392cedca367775b",
+  "capturedAt": "2026-09-02T00:38:08.463Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:7b4636aaa31c44af92100ae9f69472f079a4c8ac21ed76ecabafd3a115019a3d",
+      "bytes": 357757,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:2499d79254c3b872695a688b4f587481ee86dc58e095191ef14c2d703bca1de8",
+      "bytes": 121877,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

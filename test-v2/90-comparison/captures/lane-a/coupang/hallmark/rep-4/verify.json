@@ -1,0 +1,42 @@
+{
+  "brand": "coupang",
+  "surface": "desktop-1440",
+  "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/03-runs/lane-a/coupang/hallmark/rep-4/image.jpg",
+  "evidenceCapturedAt": "2026-08-22T19:48:17.298Z",
+  "paletteSource": "capture/desktop-1440-imagery-01.png",
+  "fields": [
+    {
+      "field": "aspect",
+      "eligible": true,
+      "error": 2.2804,
+      "score": 0
+    },
+    {
+      "field": "meanLuma",
+      "eligible": true,
+      "error": 0.571,
+      "score": 0
+    },
+    {
+      "field": "dynamicRange",
+      "eligible": true,
+      "error": 0.684,
+      "score": 0
+    },
+    {
+      "field": "subjectCentre",
+      "eligible": false,
+      "reason": "source placement omitted — fewer than the resolved-sample floor"
+    },
+    {
+      "field": "palette",
+      "eligible": true,
+      "error": 17.3582,
+      "score": 30.57
+    }
+  ],
+  "eligibleCount": 4,
+  "usable": true,
+  "numericScore": 7.64,
+  "note": "fields are same-day snapshot adherence, not brand invariants"
+}

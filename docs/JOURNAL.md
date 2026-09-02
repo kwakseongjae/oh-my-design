@@ -1,3 +1,11 @@
+## 2026-09-02 — Fable 5.1 세션: 진단·계획 정본, 웨이브 러너, T3 Phase 4·5 도구
+
+**한 일.** `docs/OMD_PLAN_2026-09-02.md`(진단·잔여·효율·결정 대기). 웨이브 45 실측으로 4h25m의 원인 규명(층 직렬 + 손 조립) → `scripts/wave-run.mjs` 브랜드 단위 러너 + 프롬프트 정본화(worker-addendum 전문 누락 드리프트 발견). 웨이브 46 러너 실전(3-wide) · T3 체인 A/B 57칸 · 전사 3기 재가동. T3 Phase 4 도구(capture-cells·verify-cells·build-packets·validate-responses·run-scoring-session)와 Phase 5 집계기(aggregate-lane-a) 사전 작성. grok 헤드리스 이미지 입력 PASS. 전사 검증기 결함 2건(결정 ID·하이픈 arm명 탐지 누락, 펜스 안 선언 삭제 불허) 수정·재봉인(SHA `ae588ca3…`), 파일럿 전사 3건 차단→재전사. 계획 §3 완성(인벤토리·리서치 반영).
+
+**열린 것.** 검증기 재봉인 grok 판정·핀 커밋. 하네스 고도화 §3(인벤토리·외부 리서치 에이전트 결과 대기). 결정 1(채택 경로 우선 vs 전량 이관) · 푸시 승인 · effort A/B 허가. 웨이브 46 마감·판정문(metrics 기반). 청크 1 채점 개시 조건 = coupang 전사 + baemin/omd/rep-2.
+
+**다음.** §3 채움 → 사용자 보고. 웨이브 46 마감 → 47~50. 전사 완료 순으로 build-packets --check → grok 세션(run-scoring-session.sh) + sonnet5 세션(Agent) → validate → aggregate.
+
 ## 2026-09-02 — 웨이브 27형 의미 검토 megabox (재검토)
 
 **한 일.** 독립 검토(A·C·D만, 추가형 7–11). FAIL 2 개정본 SHA `e941b0e1…2509` = `PASS`. sibling `0px 10px`·예약 링크 4px 융합 dest 0. 산출 미수정.

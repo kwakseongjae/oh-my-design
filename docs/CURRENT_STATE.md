@@ -3,6 +3,18 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
+- 갱신: 2026-09-02 · **Fable 5.1 세션 — 진단·계획 정본 `docs/OMD_PLAN_2026-09-02.md` 작성, 웨이브 러너·T3 Phase 4 도구 신설, 마라톤 재가동.**
+  - grok 402(08:12~09:23, 잔액 소진) → 09:23 복구 확인. 이전 세션 전사 에이전트는 세션 종료로 소실(apple/omd 4건만 남음) → 재가동.
+  - **`scripts/wave-run.mjs`** 신설: 브랜드 단위 파이프라인(워커→gate1→F3→gate2→[mechfix]→검토→개정→gate3→재실측), agent-budget 동시성, 402 2연속 자동 중단·같은 명령 재개, `docs/design-md-weight/metrics/wave-<N>.jsonl` 호출별 초·USD. 웨이브 45 실측: 층 직렬 4h25m(워커15·F3 14·검토12·개정8분/브랜드) → 기대 1.3~1.7h(3-wide).
+  - **프롬프트 드리프트 발견·정본화**: 웨이브 44–46 워커 프롬프트에 `worker-addendum.md` 전문 대신 마지막 절만 부착돼 예방 조항 8개가 빠져 있었다(웨이브 45 5/5 FAIL 원인 후보 1순위). 「제출 전 자가 대조」절을 addendum에, 웨이브 39·40 조건을 `f3-conditions.md`에 편입. `prompts/{diet,fix-template,mechfix-template}.md` 신설. 러너만 조립한다.
+  - **웨이브 46 러너 실전 가동 09:30** (3-wide, scratch `…/cb2e257f…/scratchpad/w46`, 로그 `w46-run.log`). 첫 실행 시 전경 타임아웃으로 러너가 죽어 자식 grok 정리 핸들러 추가(산출물 손상 없음 확인).
+  - **T3 생산 체인 A(29)·B(28) 09:31 가동** — 잔여 57칸(figma 9 + karrot·musinsa·naver·wanted 48). 로그 `scratchpad/t3prod/chain{A,B}.log`. 26칸 실측 $23.4(칸당 $0.90).
+  - **T3 전사**: apple 12/12 · baemin 11/12 진행 · coupang 12 에이전트 가동(09:5x). 청크 1 = apple·baemin·coupang.
+  - **T3 Phase 4 도구 신설(test-v2/tools)**: `capture-cells.mjs`(§4.1 첫 캡처 1440×1000·390×844, 51칸 완료, 바이트 결정론 확인) · `verify-cells.mjs`(칸별 verify.json 52) · `build-packets.mjs`(세션 패킷 조립, 익명 복사·키 봉인·fail-close, `--check`가 준비 상태를 답한다; apple 시험 세션 PASS, arm 단서 유출 0) · `validate-responses.mjs` · `run-scoring-session.sh`. **grok 헤드리스 이미지 입력 스모크 PASS**(PNG 열어 답함, $0.01) — 축 1 grok 채점 성립.
+  - 런 계약상 첫 렌더 = 제출 render.html(run.json `outputs.firstRender`), 라이브 하네스 캡처 아님 — 레인 A 리포트 조건부에 기재할 편차.
+  - **가장 큰 미착지**: 229본 이관 산출의 카탈로그 채택 경로 부재(T2-2·T2-4 미구현). 계획 문서 §4 결정 1로 사용자에게 올림.
+  - **전사 검증기 재봉인 (09:50~)**: `transcribe-verify.mjs` 결함 2건 — §7.1.8 탐지기가 `D-P2-1`·`ui-ux-pro-max`를 놓침(파일럿 apple/omd rep-2·3·4가 결정 ID 8·11·7개 실은 채 PASS), §7.1.6 펜스 안 선언 삭제 불허(baemin/omd/rep-2 fail-close가 옳았다). 수정 후 셀프테스트 10/10, 재검증 20 PASS·3 BLOCKED. 새 도구 SHA `ae588ca3…` 핀(TRANSCRIPTION.md:278·run-config·gate-status), seal 20건 toolSha 갱신·verifierId orchestrator(직접 재실행). 재전사 4건 에이전트 가동. 판정 요청 `docs/reviews/t3-transcribe-verify-reseal-2026-09-02.md` → grok 판정 백그라운드.
+  - 계획 문서 §3(하네스 고도화 7기능·우선순위·Fable 배치) 작성 완료 — 외부 리서치 반영. 인벤토리 §3–9 잔여분 도착 시 보강.
 - 갱신: 2026-09-02 · **웨이브 44 마감 (5/5 PASS·known-open 0) — 원장 234/440 (53%). 마라톤 가동: 웨이브 50 + T3 동시 완주 지시.**
   - 웨이브 44: F3 111 + 개정 5. 검토 1차 5건(런 최저), 발명형 2(megabox)·소실형 3. 검사기 오탐 3호(점 포함 브랜드 토큰) 수정. 판정문 `docs/reviews/t2-1-wave44-2026-09-02-grok.md`.
   - **T3 패널 재봉인 완결** (2026-09-01 판정 → 09-02 집행·핀): 평가자 2인(grok-build 직접 + sonnet5 claude-agent), RUBRIC 17건 치환, 2인 합의 사전 선언(disputed 버킷), TRANSCRIPTION:173 BLOCK 명시 번복, 분모 4×2·1/2, 청크 필드 방출, **`RUBRIC_FROZEN_SHA` = `65f778e8`** (핀 `ba6d6b87`). **Q3 APPROVE — 24칸 재사용 확정.**

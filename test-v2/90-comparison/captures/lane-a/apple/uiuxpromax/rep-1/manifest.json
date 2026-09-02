@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "apple",
+  "arm": "uiuxpromax",
+  "rep": 1,
+  "source": "test-v2/03-runs/lane-a/apple/uiuxpromax/rep-1/render.html",
+  "sourceSha": "sha256:d7640ff7209374553f9a1a71e954c413334eddacc745222005c6281c8aaa43c5",
+  "capturedAt": "2026-09-02T00:38:13.858Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:892171fbbc81fcebfaf47c77639fc8c7ce86fbaa1a683b2838afe4b025df84a9",
+      "bytes": 252941,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:5d88b0057c20d2ced3e2774f9c61d58622e0ae6583540da4fc2410387f792bad",
+      "bytes": 74795,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

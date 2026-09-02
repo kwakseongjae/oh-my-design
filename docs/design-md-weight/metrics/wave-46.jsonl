@@ -1,0 +1,4 @@
+{"ts":"2026-09-02T00:42:50.172Z","wave":"46","brand":"microsoft","stage":"f3","sec":741,"cost":0.34209576,"turns":18,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T00:46:23.319Z","wave":"46","brand":"mikan","stage":"f3","sec":955,"cost":0.3873739,"turns":22,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T00:47:23.602Z","wave":"46","brand":"mildang","stage":"worker","sec":1015,"cost":1.03031424,"turns":35,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T00:57:31.997Z","wave":"46","brand":"mikan","stage":"review","sec":669,"cost":0.2254098,"turns":15,"ok":true,"http":null,"code":0}

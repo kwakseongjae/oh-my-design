@@ -1,0 +1,42 @@
+{
+  "brand": "apple",
+  "surface": "desktop-1440",
+  "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/03-runs/lane-a/apple/uiuxpromax/rep-4/image.jpg",
+  "evidenceCapturedAt": "2026-08-22T19:46:47.156Z",
+  "paletteSource": "capture/desktop-1440-imagery-01.png",
+  "fields": [
+    {
+      "field": "aspect",
+      "eligible": true,
+      "error": 0.1829,
+      "score": 0
+    },
+    {
+      "field": "meanLuma",
+      "eligible": true,
+      "error": 0.05,
+      "score": 75
+    },
+    {
+      "field": "dynamicRange",
+      "eligible": true,
+      "error": 0.298,
+      "score": 0
+    },
+    {
+      "field": "subjectCentre",
+      "eligible": false,
+      "reason": "source placement omitted — fewer than the resolved-sample floor"
+    },
+    {
+      "field": "palette",
+      "eligible": true,
+      "error": 6.6571,
+      "score": 73.37
+    }
+  ],
+  "eligibleCount": 4,
+  "usable": true,
+  "numericScore": 37.09,
+  "note": "fields are same-day snapshot adherence, not brand invariants"
+}

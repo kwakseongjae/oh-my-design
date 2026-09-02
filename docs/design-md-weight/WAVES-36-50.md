@@ -42,13 +42,35 @@ cat $P/f3-conditions.md                                                  >> /tmp
 
 이관 → `--gate-only` → F3 → 의미 검토 → (FAIL이면) 개정 → 재검증 → `wave-close` → 커밋.
 
-- 모델: `cursor-agent -p [-f] --model cursor-grok-4.6-high-fast`
-- **검토만 `-f` 없이** — 판정하고 고치지 않는 층이다
+- 모델: grok build CLI `grok --prompt-file … -m grok-4.6 [--always-approve] --output-format json` (2026-08-29 cursor-agent 대체)
+- **검토만 `--always-approve` 없이** — 판정하고 고치지 않는 층이다
 - **스테이지당 5기**로 유지한다(웨이브 27에서 중복 실행 사고가 났다)
 - `nohup … &` 금지. 하네스의 `run_in_background`를 쓴다 — 로그가 0바이트여도 프로세스는
   살아 있을 수 있고, 그 오판이 웨이브 27의 중복 실행을 만들었다
 - 프로세스 조회·종료는 이 프로젝트 경로(`web/references/` · `migrated/`)로 좁힌다.
   같은 머신에서 다른 프로젝트가 자체 `cursor-agent`를 돌린다
+
+## 러너 (2026-09-02, 웨이브 46+)
+
+위 층 순서를 **브랜드 단위 파이프라인**으로 자동 실행하는 러너가 있다. 층을 손으로 이어
+붙이지 않는다 — 웨이브 45가 층 직렬로 4시간 25분 걸렸고, 손 조립이 프롬프트 드리프트(예방
+조항 누락)와 동일 브랜드 동시 투입 사고를 냈다.
+
+```bash
+node scripts/wave-run.mjs --wave 47 --brands mintlify,miricanvas,miro,mistral.ai,mixi \
+  --scratch <세션 scratchpad>/w47 --concurrency auto      # run_in_background로
+node scripts/wave-run.mjs --wave 47 --brands … --dry-run   # 재개 지점만 본다
+node scripts/wave-run.mjs --wave 47 --print miro:worker     # 조립된 프롬프트 확인
+```
+
+- 브랜드마다 워커 → gate1 → F3 → gate2(게이트·1:1·use·적합성; 불일치면 자동 정정 1회) →
+  검토 → FAIL이면 개정 → gate3 → 재실측표(`remeasure-<brand>.md`).
+- 종료 상태 `done` / `human:scoped`(FAIL ≤2 개정 후 오케스트레이터 판정) / `human:fix-cap`(개정
+  2회 상한) / `blocked:grok`(402 등 — 같은 명령으로 재개).
+- 호출별 초·USD·턴은 `docs/design-md-weight/metrics/wave-<N>.jsonl`에 쌓인다. 마감 판정문의
+  소요·비용 수치는 여기서 뽑는다.
+- 프롬프트 조립은 러너 한 곳(`prompts/{worker-addendum,f3-conditions,review-header,fix-template,mechfix-template,diet}.md`)이다.
+  조항을 더할 때는 파일만 고친다.
 
 ## 오케스트레이터가 매 브랜드 확인하는 것
 

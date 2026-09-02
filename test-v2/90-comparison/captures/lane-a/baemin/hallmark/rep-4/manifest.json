@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "baemin",
+  "arm": "hallmark",
+  "rep": 4,
+  "source": "test-v2/03-runs/lane-a/baemin/hallmark/rep-4/render.html",
+  "sourceSha": "sha256:d61a692fe4507f0c54e9e8cc49aae70f38fda5834d49319343e73e6fdc991c60",
+  "capturedAt": "2026-09-02T00:36:42.908Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:97a05bea2139b2e235ad73d97e5cb7c58a4e14ec2a34edcaee90a4934876d9d7",
+      "bytes": 1523324,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:4ac34e95821061e7cd47262c142f99d8c360d720821426ce279d7eb2acf14708",
+      "bytes": 416167,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

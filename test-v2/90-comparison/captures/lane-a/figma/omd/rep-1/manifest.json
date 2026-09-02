@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "figma",
+  "arm": "omd",
+  "rep": 1,
+  "source": "test-v2/03-runs/lane-a/figma/omd/rep-1/render.html",
+  "sourceSha": "sha256:7609cf6eba933c95ef397099d377327707c1704f8dc3936da750c8e2e84f1f0a",
+  "capturedAt": "2026-09-02T00:37:14.519Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:b4bfc37ef5b05015420ee3ba9c7f8d297d77fd3c61acf2235c3df6b6d485853f",
+      "bytes": 405952,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:50997fdbe26b49ba39ef7c43bac1b87f9a53e34191d2cf322e3bfd850e90bdf2",
+      "bytes": 140435,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

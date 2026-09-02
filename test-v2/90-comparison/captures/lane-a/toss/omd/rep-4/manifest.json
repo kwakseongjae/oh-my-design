@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "toss",
+  "arm": "omd",
+  "rep": 4,
+  "source": "test-v2/03-runs/lane-a/toss/omd/rep-4/render.html",
+  "sourceSha": "sha256:163149c2437b54a04caddc6892dabe7f8cc64d0369f8c30e08aa0aa10e35ffe4",
+  "capturedAt": "2026-09-02T00:37:25.585Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:12655fdf641f8497d0126291b16edcc115f252edc00da297db902ecd70d404ed",
+      "bytes": 959923,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:7e899c51fcf7e01415c0c795b4221bf223bfa26fa83252d005cddbf1ebd530b6",
+      "bytes": 299076,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

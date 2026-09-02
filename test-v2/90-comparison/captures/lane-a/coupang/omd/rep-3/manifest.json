@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "coupang",
+  "arm": "omd",
+  "rep": 3,
+  "source": "test-v2/03-runs/lane-a/coupang/omd/rep-3/render.html",
+  "sourceSha": "sha256:78a1c9a3f678d016bd165b873851cddc68e42b978fec8ac0525ccfa9dc4ef88a",
+  "capturedAt": "2026-09-02T00:36:56.244Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:5363ec171759de03003199e21736d21adc234de45743d8c32fe7d8c38d87143a",
+      "bytes": 877473,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:048576abd0f8a51a9318c5c28da014d1fede7916ebdce8df733b1b3b7a2c66ca",
+      "bytes": 210794,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

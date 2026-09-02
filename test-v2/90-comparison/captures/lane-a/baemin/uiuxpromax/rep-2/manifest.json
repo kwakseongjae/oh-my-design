@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "baemin",
+  "arm": "uiuxpromax",
+  "rep": 2,
+  "source": "test-v2/03-runs/lane-a/baemin/uiuxpromax/rep-2/render.html",
+  "sourceSha": "sha256:f83fdf54e907a4bbb9ebd64752b5b232442c094ff34bb91000a18d621c13eaf2",
+  "capturedAt": "2026-09-02T00:36:46.846Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:4a59ce9d16fc88897bc109d338c4e248b9588eaaa6d79c7c75dfe6f28cc3bf94",
+      "bytes": 1686862,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:61b650bcdc6433224e419c423f8d78e176a2bed9321b90a175ee44bd3cd46988",
+      "bytes": 404597,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

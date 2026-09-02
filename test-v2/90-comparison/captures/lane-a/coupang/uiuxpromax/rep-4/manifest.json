@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "coupang",
+  "arm": "uiuxpromax",
+  "rep": 4,
+  "source": "test-v2/03-runs/lane-a/coupang/uiuxpromax/rep-4/render.html",
+  "sourceSha": "sha256:b855d4a03ffe58004c4f29b7dce11efbc2c5a66297150bf3df6fd67cffbd652b",
+  "capturedAt": "2026-09-02T00:37:12.727Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:64ec9afb594b30b641211275d585bb9996144401fb2ad3e4c7a806d92b809afe",
+      "bytes": 868995,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:6ce57e2c4016f5033c0390a0de0a6817b9a95ca2e1ef36faf44924d6508ab3b1",
+      "bytes": 243315,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

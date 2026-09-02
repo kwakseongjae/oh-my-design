@@ -8,6 +8,9 @@
 |---|---|---|
 | `worker-addendum.md` | 이관 워커 프롬프트 뒤 | **예방** — A계열 §11 보존, 과잉 방어 부정문, Scope/Avoid 도메인 발명, 페르소나 삭제 3종, §11 문단 결론, `Primitive type` 출처 |
 | `f3-conditions.md` | 감사(auditor) 프롬프트 뒤 | **검출** — 계수 규칙, E1/E2 목적지, B1 인접, A5a, D2a, E2d, B2a 예문 전제, A1 키 경로 대조 |
+| `fix-template.md` | 개정 프롬프트 전체 (판정문 삽입) | **개정** — 소실 복원·발명 강등·융합 복귀, 회귀 금지(dest 재실측) |
+| `mechfix-template.md` | 기계검사 불일치 정정 | **정정** — 원장 형식·1:1·use 착지·적합성 |
+| `diet.md` | 모든 프롬프트 꼬리 | 세션 프로토콜 생략(오케스트레이터가 일괄 기록) |
 | `review-header.md` | 의미 검토 프롬프트 머리 | **값 계열** — A1 손실, 고유 사실, § 제약 미착지, 표면 귀속, 정책 불일치, F2 낡음 + 웨이브 27이 낸 3형 |
 
 ## 쓰는 법
@@ -27,8 +30,11 @@ printf '\n대상: %s\nsibling(dotfile, 경로 직접): web/references/%s/.verifi
 } > /tmp/rv-$B.txt
 ```
 
-세 층 모두 `cursor-agent -p [-f] --model cursor-grok-4.6-high-fast "$(cat …)"`로 돌린다.
-**검토는 `-f` 없이** 돌린다 — 판정만 하고 고치지 않는 층이다.
+세 층은 `scripts/wave-run.mjs`가 이 레시피 그대로 조립해 grok build CLI로 돌린다 (2026-09-02).
+손 조립은 하지 않는다 — 웨이브 44–46에서 손 조립이 `worker-addendum.md` 전문 대신 마지막 절만
+붙여 예방 조항 여덟 개가 빠진 채 돌았다. **검토는 `--always-approve` 없이** 돌린다 — 판정만 하고
+고치지 않는 층이다. 추가 파일: `diet.md`(세션 프로토콜 생략), `fix-template.md`(개정),
+`mechfix-template.md`(기계검사 불일치 정정). `--print <brand>:<stage>`로 조립 결과를 본다.
 
 ## 왜 층을 나누나
 

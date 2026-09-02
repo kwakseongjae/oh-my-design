@@ -1,0 +1,42 @@
+{
+  "brand": "baemin",
+  "surface": "desktop-1440",
+  "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/03-runs/lane-a/baemin/omd/rep-4/image.jpg",
+  "evidenceCapturedAt": "2026-08-22T19:47:32.522Z",
+  "paletteSource": "capture/desktop-1440-imagery-01.png",
+  "fields": [
+    {
+      "field": "aspect",
+      "eligible": true,
+      "error": 1.5731,
+      "score": 0
+    },
+    {
+      "field": "meanLuma",
+      "eligible": true,
+      "error": 0.13,
+      "score": 35
+    },
+    {
+      "field": "dynamicRange",
+      "eligible": true,
+      "error": 0.741,
+      "score": 0
+    },
+    {
+      "field": "subjectCentre",
+      "eligible": false,
+      "reason": "source placement omitted — fewer than the resolved-sample floor"
+    },
+    {
+      "field": "palette",
+      "eligible": true,
+      "error": 25.2509,
+      "score": 0
+    }
+  ],
+  "eligibleCount": 4,
+  "usable": true,
+  "numericScore": 8.75,
+  "note": "fields are same-day snapshot adherence, not brand invariants"
+}

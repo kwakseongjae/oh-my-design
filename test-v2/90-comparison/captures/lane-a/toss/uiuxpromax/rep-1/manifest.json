@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "toss",
+  "arm": "uiuxpromax",
+  "rep": 1,
+  "source": "test-v2/03-runs/lane-a/toss/uiuxpromax/rep-1/render.html",
+  "sourceSha": "sha256:2460cbbf2e829be2b444ce5365cf08ad5d4df40d6babe6e34fcf50c5ddd6fb5b",
+  "capturedAt": "2026-09-02T00:37:35.121Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:16e9aa72e7551f12b38c71f7e9adacf59dee346ecd61e6cc0cb3fa25faf9f655",
+      "bytes": 933043,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:c6370c9002aab04eb80c466564f54e356ed9714be4a83099facd2637e16945e6",
+      "bytes": 298306,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}
