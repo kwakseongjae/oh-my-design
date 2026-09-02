@@ -3,6 +3,7 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
+- 갱신: 2026-09-02 · **grok-4.6 청크 3 채점 완료(22:51)** — SCORING_DONE rows=12 · VALIDATE_OK · $0.94 · 19분. 청크 3 패킷 봉인 `c1878ab6`. 남은 채점: **sonnet5 청크 3(사용자 /usage 80% 게이트 대기)** → 단일 플래그 재채점 세션 → 집계 → Fable Phase 6 검토.
 - 갱신: 2026-09-02 · **전사 108/108 완결(22:31)** — toss 12/12 PASS(`9c9dc431`, rep-2만 재검증 1회: `D-id` 필드명 통째 KEEP). 청크 3 패킷 `--check` READY(grok·sonnet5 각 12행×3슬롯) → 런처가 `build-packets --chunk 3` + `run-scoring-session.sh 3`(grok) 자동 실행(로그 scratchpad/t3/chunk3-grok-launch.log). **sonnet5 청크 3 세션은 사용자 `/usage` 주간 80% 게이트 확인 대기** — 확인되면 Agent(model: sonnet)로 sessions/lane-a/sonnet5/chunk-3/packet.md 개봉.
 - 갱신: 2026-09-02 · **wanted 전사 12/12 PASS(22:07)** — 전부 attempts=1, 오케스트레이터 재검증 12/12. 전사 누적 **96/108** — 청크 3 결손은 **toss 12칸**(전사 미착수였음) → toss 전사 에이전트(opus5) 22:10 가동, 완료 시 자동 재검증+`build-packets --chunk 3 --check`. 청크 3 채점은 그 뒤.
 - 갱신: 2026-09-02 · **T3 생산 108/108 완주(21:45)** — 체인 D/E 완료(wanted 6칸, $0.58–1.56/칸), capture 12·verify 12(unusable 0), 108칸 SHA 매니페스트 재봉인 `e64ed8f0`. 텍스트 대비 스윕 108칸 완료(omd 271·hallmark 305·uiuxpromax 217건, Phase 6 문서 절 추가). **wanted 전사 에이전트(opus5) 가동 중** — 12/12 PASS 후 청크 3 패킷 빌드 → grok·sonnet5 채점 세션. 2.0.1: tarball 재검증 완료, PR #88 푸시(`6ccdc807`), **사용자 `npm publish` 대기**.
