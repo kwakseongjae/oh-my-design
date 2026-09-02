@@ -281,3 +281,13 @@ onestore
 opencode.ai
 palantir
 panasonic
+patreon
+patternfly
+payco
+payhere
+paypal
+paypay
+pchome
+pega
+peoplefund
+pepabo
