@@ -1,3 +1,11 @@
+## 2026-09-02 — landing/toss 개정 라운드 3 (CTA 포커스·ghost 라벨)
+
+**한 일.** `render.html` 히어로 CTA 두 개만. canvas 3px halo + foreground 링, ghost 라벨 `#191f28`. text-contrast PASS fail 0, integrity PASS / FAIL 0, 12.05 vh.
+
+**열린 것.** 오케스트레이터 재실측. WARN·FYI 미수정.
+
+**다음.** 라운드 3 검수.
+
 ## 2026-09-02 — landing/stripe 개정 라운드 3 (nav CTA 포커스)
 
 **한 일.** `render.html` `.nav-bar` 우상단 canvas-alpha 스크림만. 글리프 감사 focus 1440 "Start now" `<3:0%` (min 3.83). integrity PASS / FAIL 0, 12.05 vh.
@@ -20,7 +28,9 @@
 
 **열린 것 (15:50 갱신).** effort A/B 끝(차이 없음 → 예방 조항 효과). 랜딩 두 브리프 AC 4 충족(toss r2 BLOCK 0, stripe 오케스트레이터 실측 BLOCK 0), 최종 영상 `content-runs/landing/*/showcase/`, 사용자에게 전달. `text-contrast.mjs` 신설(#86). 2.0.1 릴리즈 준비 에이전트 가동(퍼블리시·커밋 없음). 남은 것: 청크 2·3 채점(musinsa 생산 마무리 중), 웨이브 50+, 사용자 승인(릴리즈·X/Threads).
 
-**다음.** 마라톤 재가동 → 청크 2·3 채점 → rescore 세션 → 집계·Fable 검수 → 릴리즈 2.0.1 → 콘텐츠 게시.
+**17:10 갱신.** 웨이브 36~50 전부 마감(264/440), 51부터 10-wide. `text-contrast.mjs`(#86)로 6런 실측 → toss landing 마이크로 개정 r3 → 두 landing arm 모두 4종 검사 전부 통과, 최종 비교 페이지·영상 사용자 전달. 2.0.1 준비 커밋(f3bfd490)·PR #88 — 단, 설치본에서 도구 실행 경로가 없어 `omd check/showcase/setup detect` CLI 연결 에이전트 가동, 그 커밋 전 publish 보류.
+
+**다음.** tools-CLI 커밋 → PR 머지 → 사용자 `npm publish` → 청크 2·3 채점 → rescore → 집계·Fable 검수 → 콘텐츠 게시.
 
 ## 2026-09-02 — landing/toss 개정 라운드 2 (BLOCK 6)
 
