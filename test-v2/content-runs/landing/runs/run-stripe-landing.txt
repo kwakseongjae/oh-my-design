@@ -32,9 +32,10 @@
 
 ## 자평 루프 (최대 3회 — SKILL.md 5단계)
 매 회차: `node test-v2/tools/render-integrity.mjs test-v2/content-runs/landing/stripe/landing/render.html` 와
-`node test-v2/tools/landing-integrity.mjs test-v2/content-runs/landing/stripe/landing/render.html` 를 실행하고,
+`node test-v2/tools/landing-integrity.mjs test-v2/content-runs/landing/stripe/landing/render.html` 와
+`node test-v2/tools/text-contrast.mjs test-v2/content-runs/landing/stripe/landing/render.html` 를 실행하고,
 FAIL 항목만 지목해 고친다(전면 재생성 금지). 회차별 (render 결함 수, LI FAIL 수, 고친 항목)을 loop-trace.json에 적어라.
-목표: render-integrity PASS + landing-integrity FAIL 0. LI-1(페이지 10~16 vh)·LI-3(폴드 미디어 ≥60% 또는 핀 스테이지)는 반드시 통과 — 기존 3 arm이 전부 여기서 떨어졌다.
+목표: render-integrity PASS + landing-integrity FAIL 0 + text-contrast PASS(사진 위 텍스트는 토큰색 알파 스크림, 포커스 링 halo, noscript 필수). LI-1(페이지 10~16 vh)·LI-3(폴드 미디어 ≥60% 또는 핀 스테이지)는 반드시 통과 — 기존 3 arm이 전부 여기서 떨어졌다.
 1440·390 두 폭에서 섹션 경계마다 스크린샷을 찍어 storyboard와 대조해라.
 
 끝나면 마지막 줄에 `CONTENT_RUN_DONE brand=stripe arm=landing outputs=<n> li_fail=<n>`을 출력해라.

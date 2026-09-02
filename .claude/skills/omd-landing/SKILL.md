@@ -76,10 +76,11 @@ lead·CTA·포커스 링은 배경 픽셀 대비 WCAG 4.5:1(일반)·3:1(큰 텍
 ```
 ① node test-v2/tools/render-integrity.mjs <run>/render.html          # 결정론
 ② node test-v2/tools/landing-integrity.mjs <run>/render.html         # 코덱스 기계 규칙
+②′ node test-v2/tools/text-contrast.mjs <run>/render.html           # 사진·그라디언트 위 텍스트·포커스 링·no-JS (첫 두 런의 BLOCK 계열)
 ③ 스크린샷: 1440·390 × 섹션 경계마다 → 구도·여백·겹침을 눈으로 대조 (storyboard와)
 ④ omd-designer-review (BLOCK만 집계)
 ```
-FAIL 항목만 지목해 고친다(전면 재생성 금지). 회차별 (①결함·②위반·④BLOCK) 수를 `loop-trace.json`에.
+FAIL 항목만 지목해 고친다(전면 재생성 금지). 회차별 (①결함·②위반·②′대비 FAIL·④BLOCK) 수를 `loop-trace.json`에.
 같은 rule ID가 2회 연속 FAIL이면 멈추고 `omd:issue`로 접수한다.
 
 ### 6. 시연
@@ -98,7 +99,7 @@ FAIL 항목만 지목해 고친다(전면 재생성 금지). 회차별 (①결�
 | 타이포 | LC-21~25 | display:body 3.0~4.6×(세리프면 7×); 본문 14~17px; UI 스케일 1.05~1.20, 최상단 한 번의 점프 1.33~1.75; 웨이트 대비는 작게(300/300도 있음); 라틴 display만 −0.02em |
 | 색·전환 | LC-26~28 | 그라운드 하나를 유지(252 또는 12); 반전은 단 한 섹션(강조 장치); 틴트는 240,240,252 정도 |
 | 모션 | LC-13, LC-29~32 | 지배 지속시간 하나(100/300/320/400ms, 33~70%); 2~3단계, 두 번째는 1.3~1.6×; opacity(+transform)만, clip-path·filter 0; reduced-motion 필수 |
-| 자평 | LI-1~23 | `landing-integrity.mjs`가 기계 판정(페이지 vh·섹션 비율·폴드 커버리지·타입 비·거터·지속시간·easing·snap·비디오 속성·스톡 호스트·균일 카드 그리드·h1) |
+| 자평 | LI-1~23 · #86 | `landing-integrity.mjs`가 기계 판정(페이지 vh·섹션 비율·폴드 커버리지·타입 비·거터·지속시간·easing·snap·비디오 속성·스톡 호스트·균일 카드 그리드·h1) · `text-contrast.mjs`가 사진 위 텍스트 대비·포커스 링·no-JS |
 
 ## 하드 룰
 
