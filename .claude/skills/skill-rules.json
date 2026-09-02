@@ -1,28 +1,178 @@
 {
-  "$schema": "./skill-rules.schema.json",
-  "version": "0.2.0",
-  "description": "omd v0.2 agent layer — skill registry. Lists skills available for orchestrated multi-agent workflows. Consumed by omd-orchestrator routing.",
+  "version": "0.3.0",
+  "description": "omd agent layer — skill registry. Every skill installed under .claude/skills/, with the frontmatter each channel actually loads. Nothing reads this file at runtime: the forced-eval matcher it once fed was removed in 2026-05 (see .claude/hooks/skill-activation.cjs) in favour of description-based triggering. It survives as documentation of the registry — the one place the full skill list, its npm-published subset, and the orchestrator routing graph are visible together.",
+  "generated_from": ".claude/skills/*/SKILL.md YAML frontmatter (name, description, user-invocable, argument-hint, x-omd-channels)",
+  "fields": {
+    "id": "directory name under .claude/skills/",
+    "name": "frontmatter name — the invocation form this channel accepts (omd:apply, not omd-apply)",
+    "published": "path to the npm source under skills/, or false for repo-local skills (write gates, tooling)",
+    "agent": "matching subagent definition under .claude/agents/, when one exists",
+    "role": "hand-authored — orchestrator routing role; only the omd-orchestrator graph carries these"
+  },
   "skills": [
     {
-      "id": "omd-orchestrator",
-      "path": ".claude/skills/omd-orchestrator/SKILL.md",
-      "agent": ".claude/agents/omd-orchestrator.md",
-      "role": "supervisor",
-      "user_invocable": true,
-      "depends_on": [
-        "omd-kr-writer",
-        "omd-locale-adapter",
-        "omd-designer-review",
-        "omd-final-qa",
-        "omd-codex-image"
+      "id": "claude-design",
+      "name": "claude-design",
+      "path": ".claude/skills/claude-design/SKILL.md",
+      "description": "현재 코드베이스(또는 폴더)를 분석해 \"디자인 컨텍스트 브리프\"(스택/디자인 토큰/컴포넌트/\n라우트/실제 UI 카피/큐레이션된 에셋/레포 링크)를 합성하고, 그걸 Claude Design\n(claude.ai/design)에 자동으로 전달해 디자인을 생성한 뒤 결과 링크를 터미널에 클릭 가능한\n형태로 돌려주는 스킬. 터미널 한 번의 호출로 코드베이스 → Claude Design 컨텍스트 이관을\n수행한다. claude.ai/design 은 사용자의 로그인된 Chrome(claude-in-chrome)으로 구동하되,\n상호작용 레이어가 막히면(알려진 chrome-extension 충돌 버그) 깔끔하게 수동 핸드오프로\n전환한다. 렌더링 스크린샷 캡처는 하지 않는다.\n트리거: \"/claude-design\", \"이 코드베이스를 클로드 디자인으로 옮겨줘\",\n\"코드베이스 분석해서 claude design에 전달\", \"랜딩 디자인 뽑아줘\", \"claude.ai/design에 보내줘\",\n\"클로드 디자인에 디자인 요청해줘\", \"이 레퍼런스로 디자인 만들어줘\", \"Claude Design에 시안 요청\".",
+      "published": "skills/claude-design/SKILL.md",
+      "channels": [
+        "claude-code",
+        "codex",
+        "opencode"
       ]
     },
     {
+      "id": "google-analytics",
+      "name": "google-analytics",
+      "path": ".claude/skills/google-analytics/SKILL.md",
+      "description": "Analyze Google Analytics data, review website performance metrics, identify traffic patterns, and suggest data-driven improvements. Use when the user asks about analytics, website metrics, traffic analysis, conversion rates, user behavior, or performance optimization.",
+      "published": false
+    },
+    {
+      "id": "omd",
+      "name": "omd",
+      "path": ".claude/skills/omd/SKILL.md",
+      "description": "Compatibility router for older `omd` invocations. Route existing UI work to omd:apply, autonomous greenfield work to omd:autopilot, and DESIGN.md-only setup or migration to omd:init. Use it only when the legacy skill name is invoked; it reads Core v2 or legacy context without writing DESIGN.md itself.",
+      "published": false
+    },
+    {
+      "id": "omd-add-reference",
+      "name": "omd:add-reference",
+      "path": ".claude/skills/omd-add-reference/SKILL.md",
+      "description": "Reference catalog authoring compatibility gate. Core v2 cutover가 끝나기 전에는 신규 legacy DESIGN.md 쓰기를 차단하고 안전한 재개 조건을 설명한다.",
+      "published": false,
+      "user_invocable": true,
+      "argument_hint": "<url|id>"
+    },
+    {
+      "id": "omd-apply",
+      "name": "omd:apply",
+      "path": ".claude/skills/omd-apply/SKILL.md",
+      "description": "프로젝트 DESIGN.md를 UI/시각 작업의 brand context로 적용. 컴포넌트·색상·폰트·레이아웃 수정 같은 구체적 요청과 톤·분위기 표현 — KR '좀 더 따뜻하게', EN 'make it warmer/cooler', 日本語「もう少し暖かく」, 繁體中文「更溫暖一點」 — 모두에 트리거. DESIGN.md 부재 시 omd:init 우선. 화면 전체 신규 디자인은 omd:harness, 교정 기록은 omd:remember.",
+      "published": "skills/omd-apply/SKILL.md"
+    },
+    {
+      "id": "omd-asset-fetch",
+      "name": "omd:asset-fetch",
+      "path": ".claude/skills/omd-asset-fetch/SKILL.md",
+      "description": "사용자 product UI 생성 시 placeholder 자리를 generic SVG가 아닌 **실제 free-license CDN 자산**으로 채운다. 로고·일러스트·아이콘·사진·폰트·패턴 카탈로그를 verified URL만으로 운영. '에셋 가져와줘', '플레이스홀더 진짜 이미지로', '로고 자리 채워줘', 'unsplash에서 사진 가져와' 류 요청에 트리거. omd:apply / omd:harness 안에서 자동 호출됨.",
+      "published": "skills/omd-asset-fetch/SKILL.md"
+    },
+    {
+      "id": "omd-autopilot",
+      "name": "omd:autopilot",
+      "path": ".claude/skills/omd-autopilot/SKILL.md",
+      "description": "One-prompt autonomous product design and implementation. Use automatically for broad greenfield UI requests such as 'from scratch', '새 제품/화면을 알아서 만들어줘', or requests that delegate DESIGN.md creation. It decides whether to reuse, establish, refresh, or skip a project design system; asks at most one consequential question batch; then builds and verifies the real surface. Use omd:harness instead only when the user explicitly asks for guided checkpoints.",
+      "published": "skills/omd-autopilot/SKILL.md"
+    },
+    {
+      "id": "omd-batch-launch",
+      "name": "omd:batch-launch",
+      "path": ".claude/skills/omd-batch-launch/SKILL.md",
+      "description": "Reference batch writer compatibility gate during the DESIGN.md Core v2 catalog cutover.",
+      "published": false,
+      "user_invocable": true,
+      "argument_hint": "[category|theme]"
+    },
+    {
+      "id": "omd-codex-image",
+      "name": "omd:codex-image",
+      "path": ".claude/skills/omd-codex-image/SKILL.md",
+      "description": "이미지 placeholder를 동적으로 materialize. Codex 채널에서는 내장 image-generation primitive 호출, Claude Code 채널에서는 omd-asset-curator로 fall back, OpenCode에서는 spec dump. HTML/MD의 `<!-- omd:gen-image -->` 블록을 단일 source of truth로 사용. '이미지 생성해줘', '플레이스홀더 채워줘', '코덱스로 이미지 만들어' 류 트리거.",
+      "published": "skills/omd-codex-image/SKILL.md",
+      "user_invocable": true,
+      "agent": ".claude/agents/omd-codex-image.md",
+      "role": "image-materializer",
+      "channels": [
+        "codex",
+        "claude-code",
+        "opencode"
+      ]
+    },
+    {
+      "id": "omd-component-harvest",
+      "name": "omd-component-harvest",
+      "path": ".claude/skills/omd-component-harvest/SKILL.md",
+      "description": "Legacy catalog component writer safety gate. Use when component harvesting is requested, but stop before editing until the Core v2 graph-backed catalog writer and readers are available.",
+      "published": false
+    },
+    {
+      "id": "omd-designer-review",
+      "name": "omd:designer-review",
+      "path": ".claude/skills/omd-designer-review/SKILL.md",
+      "description": "시각 + 브랜드 일관성 리뷰. HTML/MD/JSX artifact를 받아 brand DESIGN.md 대비 typo hierarchy, 색 budget, radius scale, 컴포넌트 state, 모바일 반응형 검수. severity BLOCK/WARN/FYI + line ref 출력. 'UI 리뷰', '디자인 검토', 'DESIGN.md 대비 검수' 류 트리거.",
+      "published": "skills/omd-designer-review/SKILL.md",
+      "user_invocable": true,
+      "agent": ".claude/agents/omd-designer-review.md",
+      "role": "visual-critic",
+      "read_only": true,
+      "revision_cap": 2
+    },
+    {
+      "id": "omd-experiment-gallery",
+      "name": "omd:experiment-gallery",
+      "path": ".claude/skills/omd-experiment-gallery/SKILL.md",
+      "description": "N개 brand experiment를 한 화면에서 비교하는 gallery index.html을 생성. 각 카드는 brand name, wow rating, multi-turn refinement deltas, iframe scaled preview, standalone link 포함. '결과물 한 번에 보여줘', '갤러리 만들어', '5개 비교 뷰', 'experiment 결과 정리' 류 트리거. omd:harness가 N개 brand batch 작업 끝낸 직후 자동 호출되거나 사용자가 명시적으로 호출.",
+      "published": "skills/omd-experiment-gallery/SKILL.md"
+    },
+    {
+      "id": "omd-feel",
+      "name": "omd:feel",
+      "path": ".claude/skills/omd-feel/SKILL.md",
+      "description": "디자인·프론트 업계가 '감'으로 쓰던 인터페이스 디테일을 수치화한 규칙으로 적용(APPLY)하거나 감사(AUDIT)한다. Jakub Krehel의 make-interfaces-feel-better 철학을 계승 + HIG/Material/WCAG/DS 토큰/실무자 리서치로 확장한 17축·113규칙(provenance 등급별). 모션 타이밍·이징·동심원 radius·tabular-nums·44px 타깃·focus ring·prefers-reduced-motion 등. 'feel 좋게 다듬어줘', '인터페이스 디테일 적용', 'feel 점검', '마이크로 인터랙션 손봐줘', 'make this feel better', 'polish the interactions', 「インターフェースの細部を詰めて」, 「介面細節打磨」 류에 트리거. 브랜드 토큰은 DESIGN.md(omd:apply)가 우선.",
+      "published": "skills/omd-feel/SKILL.md",
+      "user_invocable": true
+    },
+    {
+      "id": "omd-final-qa",
+      "name": "omd:final-qa",
+      "path": ".claude/skills/omd-final-qa/SKILL.md",
+      "description": "출간 ready 직전 read-only critic. 8-item rubric 강제. 'looks good' rubber-stamp 금지. 라인 ref 필수. 2-round revision hard cap. '최종 QA', '출간 검수', 'rubric으로 평가' 류 트리거.",
+      "published": "skills/omd-final-qa/SKILL.md",
+      "user_invocable": true,
+      "agent": ".claude/agents/omd-final-qa.md",
+      "role": "final-critic",
+      "read_only": true,
+      "revision_cap": 2
+    },
+    {
+      "id": "omd-harness",
+      "name": "omd:harness",
+      "path": ".claude/skills/omd-harness/SKILL.md",
+      "description": "사용자와 단계별로 검토하는 guided design harness. Discovery→Wireframe→Components→Microcopy→Validation을 omd-master가 실행하고 journey/system/validation의 필수 체크포인트에서 멈춘다. '/omd-harness', '체크포인트마다 검토', '나와 단계별로 디자인', 'guided design' 요청에 사용. 질문 없이 원샷으로 새 제품을 자율 구축하는 요청은 omd:autopilot, 단일 컴포넌트 수정은 omd:apply.",
+      "published": "skills/omd-harness/SKILL.md"
+    },
+    {
+      "id": "omd-humanize",
+      "name": "omd:humanize",
+      "path": ".claude/skills/omd-humanize/SKILL.md",
+      "description": "제품 문서·UX 카피·랜딩 카피를 KO/EN/JA/ZH-CN/ZH-TW 각 언어의 자연스러운 문장으로 다듬되 사실·수치·명령어·링크·브랜드 voice를 보존한다. 'AI 티 없애줘', '번역투 고쳐줘', '문장이 기계적이야', '현지 사용자처럼 다듬어줘', 'humanize this copy' 요청에 사용한다. AI 작성 여부를 판정하거나 탐지 회피를 약속하지 않는다.",
+      "published": "skills/omd-humanize/SKILL.md"
+    },
+    {
+      "id": "omd-init",
+      "name": "omd:init",
+      "path": ".claude/skills/omd-init/SKILL.md",
+      "description": "프로젝트 루트에 DESIGN.md를 부트스트랩 — 실제 기업 레퍼런스 중 컨텍스트 매칭으로 추천하고 선택된 레퍼런스의 톤&매너를 보존한 variation을 생성. DESIGN.md 부재 상태에서의 UI 작업 또는 '디자인 시스템 세팅', 'set up our design system', 「デザインシステムを作って」, 「建立設計系統」류의 요청에 트리거. CLAUDE.md / AGENTS.md / Cursor rule shim도 함께 설치.",
+      "published": "skills/omd-init/SKILL.md"
+    },
+    {
+      "id": "omd-issue",
+      "name": "omd:issue",
+      "path": ".claude/skills/omd-issue/SKILL.md",
+      "description": "oh-my-design 사용 중 불만·결함·아쉬운 점을 구조화된 GitHub 이슈로 접수하고, 쌓인 이슈를 배치로 처리한다. 사용자 모드('이슈 등록해줘', '이거 불편한데 신고할래', '버그 리포트', 'file an issue', '기능 요청')와 내부 도그푸딩 모드(스킬을 돌리다 미흡한 부분을 발견한 오케스트레이터·서브에이전트가 직접 접수) 둘 다 지원. '이슈 처리해줘', 'process feedback', '쌓인 피드백 정리'는 배치 처리 verb로 트리거.",
+      "published": "skills/omd-issue/SKILL.md"
+    },
+    {
       "id": "omd-kr-writer",
+      "name": "omd:kr-writer",
       "path": ".claude/skills/omd-kr-writer/SKILL.md",
+      "description": "한국어 글쓰기 멀티-preset 스킬. 12개 preset 지원 — toss-tech-design (default) / karrot-neighborly / brunch-maker-popular / naver-d2-engineering / biz-formal-report / academic-paper / journalism-broadsheet / kakao-warm-product / line-global-saas / academic-lecture-essay / emotional-brand / legal-disclosure. '한글 글 작성', 'KR rewrite', '토스 톤으로', '당근 톤으로', '브런치 톤으로', '보고서로 써줘', '학술 톤', '신문기사체' 류 트리거.",
+      "published": "skills/omd-kr-writer/SKILL.md",
+      "user_invocable": true,
       "agent": ".claude/agents/omd-kr-writer.md",
       "role": "writer",
-      "user_invocable": true,
       "args": {
         "preset_id": {
           "type": "enum",
@@ -40,39 +190,124 @@
       }
     },
     {
+      "id": "omd-lab-01-designmd-impact",
+      "name": "omd-lab-01-designmd-impact",
+      "path": ".claude/skills/omd-lab-01-designmd-impact/SKILL.md",
+      "description": "Archived DESIGN.md impact experiment compatibility gate. Use when an old Lab #01 run is requested, but do not generate new legacy 9/12-section documents; direct new experiments to the Core v2 benchmark track.",
+      "published": false,
+      "user_invocable": true
+    },
+    {
+      "id": "omd-lab-02-design-harness",
+      "name": "omd-lab-02-design-harness",
+      "path": ".claude/skills/omd-lab-02-design-harness/SKILL.md",
+      "description": "OmD Lab #02 — 디자인 하네스 정교화 실험. 동일 task를 v1, v2, v3... 버전별 하네스 설정으로 돌려서 산출물 품질·토큰 비용·iteration 수·persona ABANDON 율을 비교. 트리거 — '/omd-lab-02', '하네스 lab 시작', '디자인 하네스 v2 돌려서 비교', 'lab #02 자동 비교'.",
+      "published": "skills/omd-lab-02-design-harness/SKILL.md"
+    },
+    {
+      "id": "omd-learn",
+      "name": "omd:learn",
+      "path": ".claude/skills/omd-learn/SKILL.md",
+      "description": ".omd/preferences.md의 status:pending 항목을 Core v2 System Graph에 합쳐 DESIGN.md를 재생성하고 status를 applied로 플립. '프리퍼런스 정리해줘', 'fold preferences', 'apply all corrections', 「好みをDESIGN.mdに反映」, 「套用偏好」류의 요청에 트리거. 단발성 교정 기록은 omd:remember.",
+      "published": "skills/omd-learn/SKILL.md"
+    },
+    {
       "id": "omd-locale-adapter",
+      "name": "omd:locale-adapter",
       "path": ".claude/skills/omd-locale-adapter/SKILL.md",
+      "description": "한국어 canonical 문서·UX copy를 EN/JA/ZH-CN/ZH-TW로 번역이 아니라 locale adaptation한다. thesis·사실·명령어는 보존하되 문장 순서, 주어, register, 제품 용어와 호흡은 각 언어에서 다시 쓴다. '다국어 적용', '영문/일문/간체/대만어 버전', 'locale 문서 만들어줘' 요청에 사용한다.",
+      "published": "skills/omd-locale-adapter/SKILL.md",
       "agent": ".claude/agents/omd-locale-adapter.md",
       "role": "localizer",
-      "user_invocable": true,
-      "supports_locales": ["en", "ja", "zh-tw"],
+      "supports_locales": [
+        "en",
+        "ja",
+        "zh-tw"
+      ],
       "source_locale": "ko"
     },
     {
-      "id": "omd-designer-review",
-      "path": ".claude/skills/omd-designer-review/SKILL.md",
-      "agent": ".claude/agents/omd-designer-review.md",
-      "role": "visual-critic",
+      "id": "omd-migrate",
+      "name": "omd:migrate",
+      "path": ".claude/skills/omd-migrate/SKILL.md",
+      "description": "Legacy deep-reference writer safety gate. Use for old brand migration requests only to prevent retired section/frontmatter writes until the Core v2 catalog migration pipeline is authoritative.",
+      "published": false,
       "user_invocable": true,
-      "read_only": true,
-      "revision_cap": 2
+      "argument_hint": "<brand-id>"
     },
     {
-      "id": "omd-final-qa",
-      "path": ".claude/skills/omd-final-qa/SKILL.md",
-      "agent": ".claude/agents/omd-final-qa.md",
-      "role": "final-critic",
-      "user_invocable": true,
-      "read_only": true,
-      "revision_cap": 2
+      "id": "omd-orchestrator",
+      "name": "omd:orchestrator",
+      "path": ".claude/skills/omd-orchestrator/SKILL.md",
+      "description": "멀티 에이전트 디자인 워크플로우 supervisor. writer, locale adaptation, humanize, UI slop audit, designer review, final QA, image materialization을 routing한다. 2-round revision cap을 유지하며 다국어 문서·UI 개선·출간 준비처럼 여러 역할이 필요한 요청에 사용한다.",
+      "published": "skills/omd-orchestrator/SKILL.md",
+      "agent": ".claude/agents/omd-orchestrator.md",
+      "role": "supervisor",
+      "depends_on": [
+        "omd-kr-writer",
+        "omd-locale-adapter",
+        "omd-designer-review",
+        "omd-final-qa",
+        "omd-codex-image"
+      ]
     },
     {
-      "id": "omd-codex-image",
-      "path": ".claude/skills/omd-codex-image/SKILL.md",
-      "agent": ".claude/agents/omd-codex-image.md",
-      "role": "image-materializer",
-      "user_invocable": true,
-      "channels": ["codex", "claude-code", "opencode"]
+      "id": "omd-reference-capture",
+      "name": "omd:reference-capture",
+      "path": ".claude/skills/omd-reference-capture/SKILL.md",
+      "description": "선택된 reference brand의 라이브 사이트에서 디자인 컨텍스트(토큰·구조·visual reference)를 캡쳐. brand homepage 패칭, 컴퓨티드 스타일 inspect, 로고/스크린샷을 assets/_reference/<id>/ 로 가져와 attribution.md + LICENSE-NOTE.md와 함께 저장. '뱅크샐러드 에셋 가져와줘', 'X 사이트 패칭', 'X reference 캡쳐', 'X 라이브 스타일 추출', '브랜드 자료 받아와' 류 요청에 트리거. omd:init 직후 또는 omd:harness 중간에 호출 가능. DESIGN.md는 이 스킬이 만들지 않음 (omd:init 책임).",
+      "published": "skills/omd-reference-capture/SKILL.md"
+    },
+    {
+      "id": "omd-release-hygiene",
+      "name": "omd:release-hygiene",
+      "path": ".claude/skills/omd-release-hygiene/SKILL.md",
+      "description": "오픈소스 릴리스 위생 루틴. 새 기능/스킬/에이전트를 추가했을 때 (1) 부산물(v1/v2 .bak, _source, 로그, scratch dir)이 changeset에 없는지, (2) 문서(README/docs/home)가 동기화됐는지, (3) npm 배포 대상인지(skills/ + files vs .claude local-preview) 판단했는지 체크리스트로 강제. '릴리스 준비', '커밋 전 점검', 'push 전에 정리', '배포 위생', 'release hygiene' 류 트리거. husky pre-commit이 부산물 게이트를 자동 실행.",
+      "published": false,
+      "user_invocable": true
+    },
+    {
+      "id": "omd-remember",
+      "name": "omd:remember",
+      "path": ".claude/skills/omd-remember/SKILL.md",
+      "description": "사용자의 디자인 선호·교정을 .omd/preferences.md에 기록. '이거 기억해줘', '앞으로는 이렇게', 'remember this', 'going forward never X', 「覚えておいて」, 「記住這個」류의 발화 또는 omd:apply가 교정을 감지했을 때 트리거. 기록된 내용은 omd:learn으로 DESIGN.md에 정식 반영.",
+      "published": "skills/omd-remember/SKILL.md"
+    },
+    {
+      "id": "omd-slop-audit",
+      "name": "omd:slop-audit",
+      "path": ".claude/skills/omd-slop-audit/SKILL.md",
+      "description": "실제 제품 route의 UI·UX copy를 검사해 제품 맥락 없이 반복된 생성형 기본 패턴, 브랜드 근거 없는 장식, 카드·그라데이션·아이콘 타일 남용, 번역투와 추상 카피를 rule ID와 line ref로 진단한다. 'AI slop 잡아줘', '템플릿 같아', '왜 AI가 만든 화면 같지?', 'anti-slop audit' 요청에 사용한다. 접근성 오류와 취향 차이를 별도 등급으로 구분한다.",
+      "published": "skills/omd-slop-audit/SKILL.md"
+    },
+    {
+      "id": "omd-sync",
+      "name": "omd:sync",
+      "path": ".claude/skills/omd-sync/SKILL.md",
+      "description": "DESIGN.md 변경분을 CLAUDE.md / AGENTS.md / .cursor/rules/omd-design.mdc shim 3종에 전파. 'shim 갱신', 'drift 확인', 'ship', 'publish', 「shimを更新」, 「同步 CLAUDE.md」류의 요청에 트리거. DESIGN.md가 수정됐는데 shim이 오래됐을 때 자동 감지해 제안하기도 함.",
+      "published": "skills/omd-sync/SKILL.md"
+    },
+    {
+      "id": "omd-taste",
+      "name": "omd:taste",
+      "path": ".claude/skills/omd-taste/SKILL.md",
+      "description": "시스템이 학습한 사용자의 디자인 취향을 한 뷰로 렌더. .omd/preferences.md + foldin-proposal.json + DESIGN.md를 읽어 반영됨/대기 중/보류됨/모르는 것 4그룹으로 보여준다. '/omd-taste', '내 취향 보여줘', '취향 현황', 'what are my preferences', 'show my taste', 「私の好みを見せて」, 「顯示我的偏好」류의 발화에 트리거. 기록은 omd:remember, DESIGN.md 반영은 omd:learn.",
+      "published": "skills/omd-taste/SKILL.md",
+      "user_invocable": true
+    },
+    {
+      "id": "omd-token-backfill",
+      "name": "omd-token-backfill",
+      "path": ".claude/skills/omd-token-backfill/SKILL.md",
+      "description": "Legacy reference token writer compatibility gate during the DESIGN.md Core v2 catalog cutover.",
+      "published": false
+    },
+    {
+      "id": "omd-update",
+      "name": "omd:update",
+      "path": ".claude/skills/omd-update/SKILL.md",
+      "description": "Safely update an existing oh-my-design installation in place and verify it afterward. Use when the user asks to update, upgrade, refresh, reinstall, or check whether their OmD skills, agents, hooks, or reference catalog are current.",
+      "published": "skills/omd-update/SKILL.md"
     }
   ],
   "orchestration": {
