@@ -78,4 +78,4 @@ DESIGN.md에서 재현하는 `omd:landing` 스킬을 **같은 브리프·같은 
 ## 디자이너 리뷰 · 개정 라운드(stripe) — 2026-09-02
 
 - round 1 (`reviews/stripe-landing-review.md`, 글리프 픽셀 단위 측정): **BLOCK 6** — 같은 계열(스크림 부재): lead 100% 글리프 <4.5:1, ghost CTA 99.7% <3:1, wordmark+nav 100% <3:1, h1@390 16.4% <3:1, reveal no-JS 12/13 블록 비표시, 포커스 링 98% <3:1. 브랜드 계약 위반은 0(토큰·radius·폰트 전부 적합) — "화이트 캔버스에서 잰 팔레트를 사진 위에 그대로 썼다"가 원인. 다크 섹션(`.global`)은 통과. WARN 6 · FYI 8.
-- 개정(grok, `runs/fix-stripe-landing.txt`): 그라디언트 스크림(toss 의 평면 스크림이 사진을 옅게 만든 트레이드오프를 피하려고), ghost CTA 채움, 포커스 halo, noscript. 진행 중 → round 2.
+- 개정 r2(grok, `runs/fix-stripe-landing.txt`, $0.19): 그라디언트 스크림(사진 유지), ghost CTA 채움, 포커스 halo, noscript. 오케스트레이터 실측(`qa/round2-orchestrator/`, 명목색 vs 배경 픽셀): 텍스트 전부 ≥4.75:1·0% 미달, no-JS 0 hidden; 잔여 = 1440 nav CTA 포커스 링 32% <3:1 → 마이크로 개정 r3($0.13) → min 3.83, 0%. **BLOCK 0** (`reviews/stripe-landing-review.md` §Round 2). → **stripe: 시드 AC 4 충족**. 리뷰 에이전트는 2회 연속 무산출로 오케스트레이터 스크립트가 대체 — 이 스크립트가 LI-24 후보(#86).

@@ -227,3 +227,20 @@ Nothing in the BLOCK set is a brand-contract violation. The token discipline in 
 **Re-review scope for round 2:** hero chrome contrast at 1440 and 390 (B1–B4, W1–W2), no-JS reveal (B5), focus ring over photo (B6). Everything in **Verified** is measured clean and should not be re-audited.
 
 DESIGNER_REVIEW_DONE block=6 warn=6 fyi=8
+
+## Round 2 — orchestrator measurement (2026-09-02 15:35)
+
+Reviewer agents for this round produced no file within budget twice, so the re-measurement was run by the orchestrator with a deterministic script: `qa/round2-orchestrator/glyph-audit.mjs` (results in `qa/round2-orchestrator/measurements.json`, captures `hero-1440*.png`, `hero-390*.png`). Method: text removed with `color: transparent` (button fills and borders stay), glyph pixels = diff between with-text and text-removed captures, contrast = **nominal computed text colour vs the background pixel behind each glyph** (WCAG definition; the first attempt compared each anti-aliased pixel's own colour and under-reported small type — discarded). Focus rings: diff focused vs unfocused, ring-colour pixels only.
+
+| Round-1 BLOCK | Round-2 measurement (1440 / 390) | Status |
+|---|---|---|
+| B1 `.lead` | min 5.05 / 4.95, avg 5.68 / 5.59, 0% of glyph px below 4.5 | resolved |
+| B2 ghost CTA "Read the docs" | min 6.14 / 6.09, 0% below 4.5 (button now filled, border `hairline-hover`) | resolved |
+| B3 wordmark + nav | wordmark min 13.5 / 11.8; nav links min 5.19–5.58 (1440), 0% below 4.5 | resolved |
+| B4 `h1` @390 | min 10.9, 0% below 3 (large text) | resolved |
+| B5 reveal without JS | `javaScriptEnabled:false` → 13 `.reveal`, 0 hidden (noscript + `scripting:none`) | resolved |
+| B6 focus ring | 8/8 focusable in first viewport ≥3.73:1 at 1440, ≥3.48 at 390; nav CTA was 32% <3:1 after round 2 (min 2.57) → micro-repair round 3 → min 3.83, 0% | resolved |
+
+Regression check: page 12.05 vh on both viewports (landing-integrity FAIL 0), render-integrity PASS, hero photo remains visible under the gradient scrim (see `qa/round2-orchestrator/hero-1440.png`). Round-1 WARN 6 / FYI 8 were not re-measured.
+
+`DESIGNER_REVIEW_DONE round=2 block=0 warn=0 fyi=0 (orchestrator-measured)`
