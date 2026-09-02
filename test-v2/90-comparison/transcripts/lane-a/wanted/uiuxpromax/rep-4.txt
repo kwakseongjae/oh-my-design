@@ -1,0 +1,195 @@
+Heading: Wanted Jobs — Design System
+
+Lane A / arm  / brand `wanted` / rep-4.
+Screen: 채용 목록 (`/wdlist`). Task: apply a filter, then open one job card.
+Generated with the frozen  pack only (`--design-system` required, then domain + stack supplements). No other arm packs were consulted.
+
+Heading: Requirements (Step 1)
+
+| Slot | Decision |
+|------|----------|
+| Product type | Job Board / Recruitment listing (directory, filter-heavy grid) |
+| Industry | Career marketplace, Korean locale (`ko-KR`) |
+| Audience | Job seekers scanning listings on desktop-1440 and mobile-390 |
+| Platform | Single-file desktop web (`render.html`), offline |
+| Stack | `html-tailwind` guidelines, inlined as CSS (no CDN, no Google Fonts network) |
+| Style keywords | Flat, 2D, professional, content-dense, touch-first, light |
+| Motion | Subtle (dial 3/10) |
+| Density | Dense / dashboard (dial 8/10) |
+| Variance | Balanced / modern (dial 4/10) |
+
+`--design-system` query: `job marketplace recruitment listing professional content-dense filters cards career`.
+
+Heading: Pack recommendations (Step 2)
+
+Heading: Pattern
+**Marketplace / Directory**, applied as a **filter-heavy listing grid** (product domain: Job Board/Recruitment + Directory/Listing). Search and filters are the conversion path. Anti-patterns from the pack: outdated forms, **hidden filters**.
+
+The captured surface is a job list, not a marketing landing. Hero-search / trust / “become a host” landing sections from the marketplace pattern are **not** added — they would be extra screens.
+
+Heading: Style
+**Flat Design Mobile (Touch-First)** as the `--design-system` primary, aligned with Job Board’s “Flat Design + Minimalism”.
+
+- Zero elevation / no drop shadows
+- Hierarchy from color, type, and spacing
+- Immediate press feedback (`scale(0.97)`, 150ms)
+- Solid icon containers, simplified SVG (Phosphor outline set)
+- Bottom tabs on small screens: solid fill, not floating
+- Radius: 6 / 12 / 999
+
+Heading: Color (design-system table)
+
+`--design-system` returned a professional blue + success green palette. Typography domain search then swapped the Hebrew pairing (mismatch) for **Korean Modern**. Color roles stay on the design-system table; Job Board “Professional Blue + Success Green + Neutral” agrees.
+
+| Role | Hex | Token |
+|------|-----|--------|
+| Primary | `#0369A1` | `--color-primary` |
+| On Primary | `#FFFFFF` | `--color-on-primary` |
+| Secondary | `#0EA5E9` | `--color-secondary` |
+| Accent / CTA | `#16A34A` | `--color-accent` |
+| Background | `#F0F9FF` | `--color-background` |
+| Foreground | `#0C4A6E` | `--color-foreground` |
+| Muted | `#E7EFF5` | `--color-muted` |
+| Border | `#BAE6FD` | `--color-border` |
+| Destructive | `#DC2626` | `--color-destructive` |
+| Ring | `#0369A1` | `--color-ring` |
+| Card | `#FFFFFF` | `--color-card` |
+| Muted foreground | `#64748B` | `--color-muted-foreground` |
+
+Accent was already WCAG-adjusted in the pack (`#16A34A` not `#22C55E`).
+
+Evidence chrome (`#ffffff` page, `#171719` body, `#0066ff` mobile control) is recorded as the **captured surface**, not copied as tokens. This arm follows the pack table.
+
+Heading: Typography
+`--design-system` first returned Noto Sans Hebrew (query collision on “professional”). Domain `typography` “korean professional modern sans readable” → **Korean Modern**:
+
+- Heading + body: **Noto Sans KR** (300 / 400 / 500 / 700)
+- Offline stack (no `@import`, no network): `"Noto Sans KR", "Apple SD Gothic Neo", Pretendard, "Malgun Gothic", sans-serif`
+- Base 16px, body line-height 1.5
+- Scale: 12 / 14 / 15 / 16 / 18 / 22 / 24
+- Weight hierarchy: 700 titles, 600 labels/nav, 400 body, 500 meta
+
+Heading: Effects
+Immediate press, color-blocking sections, no shadow, geometric thumbs for non-photo cards, 150–200ms color/opacity transitions.
+
+Heading: Motion
+Stagger list (Subtle): `opacity` + `translateY(8px)`, 300ms, stagger 30ms, `ease-out`. Disabled under `prefers-reduced-motion`. Exit faster than enter.
+
+Heading: Density
+Dial 8 → spacing 8–32px (not the default 16–64). 4pt/8dp rhythm.
+
+Heading: Three-layer tokens
+
+Primitive → semantic → component (design-system skill). Components never use raw hex.
+
+```css
+/* primitive */
+--blue-700: #0369A1;
+--blue-400: #0EA5E9;
+--green-600: #16A34A;
+--sky-50: #F0F9FF;
+--navy-800: #0C4A6E;
+--sky-100: #E7EFF5;
+--sky-200: #BAE6FD;
+--red-600: #DC2626;
+--white: #FFFFFF;
+--slate-500: #64748B;
+--space-1: 8px; --space-2: 12px; --space-3: 16px;
+--space-4: 24px; --space-5: 32px;
+--radius-sm: 6px; --radius-md: 12px; --radius-pill: 999px;
+--duration: 180ms;
+--shadow: none;
+--z-header: 40; --z-dropdown: 100; --z-overlay: 1000;
+
+/* semantic */
+--color-primary: var(--blue-700);
+--color-background: var(--sky-50);
+--color-foreground: var(--navy-800);
+--color-accent: var(--green-600);
+
+/* component */
+--header-height-desktop: 61px;
+--header-height-mobile: 56px;
+--touch: 44px;
+--card-radius: var(--radius-md);
+--chip-radius: var(--radius-pill);
+--button-bg: var(--color-primary);
+```
+
+Header heights 61 / 56 come from evidence chrome geometry, not invented.
+
+Heading: Components (this screen only)
+
+| Component | States | Notes |
+|-----------|--------|--------|
+| Wordmark | default | Text `wanted` only. No official mark. |
+| Top nav | default / current / hover / focus | Current = 채용. Icon+label on mobile bottom nav. |
+| Icon button | hover / active / focus / pressed | `aria-label` required. Hit area ≥44px. |
+| Filter select | default / focus | Visible `<label>` + native `<select>` (직군, 경력). |
+| Sort group | selected / unselected | `role="radiogroup"`. 최신순 default. |
+| Filter chip | rest / pressed / focus | `aria-pressed`. Never hide the filter row. |
+| Job card | rest / hover / focus / pressed | Entire card is the hit target; bookmark is a nested button. |
+| Reward badge | static | Accent fill + text “합격보상금 100만원” (color not the only cue). |
+| Bookmark | rest / on | Phosphor bookmark, `aria-pressed`. |
+| Empty state | visible when 0 results | Message + recovery (필터 지우기). |
+| Job dialog | open / closed | `role="dialog"` `aria-modal`. Esc, overlay click, Close. Focus returns to the card. |
+| Bottom nav | current | ≤4 items. Solid fill. Safe-area padding. |
+
+Heading: Job card anatomy
+1. 3:2 media (`aspect-ratio: 1.5`) with reserved size (CLS).
+2. First listing uses generated `image.jpg` (representative image).
+3. Other listings: flat geometric color fields from evidence sample palettes — not remote company photos, not official logos.
+4. Title (h2) → company → `location · experience` meta.
+
+Heading: Layout
+
+- Mobile-first. Breakpoints: 375 / 768 / 1024 / 1440.
+- Surfaces: **390×844** (2-col grid, sticky header, bottom nav) and **1440×900** (4-col grid, horizontal nav).
+- Max content width 1280px, horizontal gutter 16px (mobile) / 80px (desktop evidence inset).
+- Grid gaps: 16px (pack `html-tailwind`: `gap-*`, not per-card margins).
+- Sticky header reserves offset. Bottom nav reserves padding-bottom.
+- No horizontal scroll. `viewport` meta does not disable zoom.
+
+Heading: Interaction (the briefed task)
+
+1. Choose 직군 and/or 경력, and/or toggle chips (한국, 기술스택, 글로벌, …).
+2. Grid filters in place; live region announces count.
+3. Activate a remaining card → dialog with that listing’s fields.
+4. Dismiss dialog → back on the same list, filters preserved.
+
+No other routes. 회원가입 / 기업 서비스 / 이력서 etc. are chrome only.
+
+Heading: Accessibility & UX checks (pack §1–3 + domain ux)
+
+- Contrast ≥ 4.5:1 for body (`#0C4A6E` on `#FFFFFF` / `#F0F9FF`).
+- Visible 2px focus ring (`--color-ring`), not removed.
+- Sequential headings: `h1` 채용 정보 → card `h2` titles → dialog `h2`.
+- Icon-only controls have `aria-label`.
+- Keyboard: tab order matches visual order; dialog is Esc-dismissible.
+- Touch ≥ 44×44; 8px+ between targets.
+- `cursor: pointer` on clickable elements.
+- `prefers-reduced-motion: reduce` kills stagger and press scale.
+- No emoji icons. Phosphor-style inline SVG, one stroke weight.
+- Loading: filter apply is synchronous; no frozen UI. Bookmark toggles immediately.
+- z-index scale only (header 40 / overlay 1000). No `z-index: 9999`.
+
+Heading: Offline / first-render constraints
+
+- No external network: no Google Fonts `@import`, no CDN, no remote images.
+- CSS reset includes **figure, blockquote, ul, ol margin reset** (UA defaults broke measurement in prior runs).
+- Representative bitmap is local `image.jpg`.
+- Wordmark is text, not a downloaded brand asset.
+
+Heading: Evidence used (content only)
+
+Snapshot `2026-08-22T19-52-31-934Z`. Titles, companies, locations, and experience strings that appear in evidence/viewports are used. Fields not in evidence are omitted, not invented. Filter *membership* for 직군 is derived from the job title itself (교육 / 마케팅 / 개발 / …). Chips such as “예비 유니콘” have no listing-level evidence, so they can yield an empty state with a clear reset.
+
+Heading: Pre-delivery
+
+- [x] No emoji icons
+- [x] cursor-pointer on clickable elements
+- [x] Hover/press 150–300ms
+- [x] Light-mode contrast
+- [x] Focus visible
+- [x] prefers-reduced-motion
+- [x] 390 and 1440 layouts

@@ -1,0 +1,75 @@
+Heading: wanted 채용 목록 — Newsprint Catalogue
+
+ 1.1.0 · genre editorial · macrostructure Catalogue · theme Newsprint  
+tone utilitarian · nav N9 · footer Ft2 · enrichment E8 (c1만 생성 사진, 나머지 플레이트)
+
+Heading: 포지션
+
+이 화면은 랜딩이 아니라 분류된 인벤토리다. 구직자가 직군·경력을 좁힌 뒤 공고 한 장을 연다. 뉴스프린트 분류광고의 리듬 — 따뜻한 지면에 머리선, 같은 크기의 칸, 큰 디스플레이 헤드라인 없음 — 으로 그 일을 한다.
+
+스냅샷 `2026-08-22T19-52-31-934Z`의 공고 제목·회사·근무지·경력만 쓴다. 없는 필드는 비운다. 추천순·인기순 순위, 지원 가능 여부는 이 스냅샷에 없으므로 만들지 않는다.
+
+Heading: 토큰
+
+모든 색과 서체는 `render.html` `:root` 이름만 참조한다.
+
+Heading: 색 (OKLCH, 앵커 85°)
+
+| 토큰 | 역할 |
+| --- | --- |
+| `--color-paper` / `--color-paper-2` / `--color-paper-3` | 지면, 호버 지면, 눌림 지면 |
+| `--color-ink` / `--color-ink-2` | 본문, 보조 본문 |
+| `--color-muted` / `--color-neutral` | 메타, 캡션 |
+| `--color-rule` / `--color-rule-2` | 머리선 |
+| `--color-accent` / `--color-accent-ink` | 링크·포커스 근처의 잉크 블루. 뷰포트의 5% 미만 |
+| `--color-focus` | `:focus-visible` 링 |
+| `--color-error` / `--color-success` 및 `*-ink` | 실패·완료. 색만으로 상태를 알리지 않는다 |
+| `--plate-1` … `--plate-12` | 사진이 없는 칸의 면. 스냅샷 카드 팔레트에서 옮긴 값 |
+
+순수 `#000` / `#fff` 없음. 뉴트럴 채도 하한 0.008.
+
+Heading: 서체 (네트워크 없음)
+
+| 토큰 | 스택 | 쓰는 곳 |
+| --- | --- | --- |
+| `--font-display` | Iowan Old Style → Palatino Linotype → Palatino → Apple SD Gothic Neo | 워드마크 `wanted`, 플레이트 이니셜 |
+| `--font-body` | Apple SD Gothic Neo → Avenir Next → Hiragino Sans | 한글 제목, 본문, UI |
+
+두 가족. 아웃라이어 없음. 헤더는 항상 roman. 본문 16px, 디스플레이 최대 `--text-xl`. 척도 비율 1.25.
+
+Heading: 간격 · 규칙 · 깊이
+
+4pt 척도 `--space-3xs` … `--space-3xl`. 페이지 거터 `--page-gutter`. 컨트롤 높이 `--control-h` (44px) — 버튼·셀렉트·칩·아이콘 버튼이 같다. 카드 반지름 0, 그림자 없음. 구조는 1px 머리선.
+
+Heading: 모션
+
+Newsprint 배율 0×. `transform` 리프트 없음. `transition-all` 없음. 포커스 링은 즉시. `prefers-reduced-motion: reduce`에서 `scroll-behavior: auto`.
+
+Heading: 구조
+
+1. **N9 가장자리 정렬** — 왼쪽 워드마크 `wanted` (공식 로고 원본 없음), 오른쪽 `회원가입`. 가운데 링크 열 없음.
+2. **S2 매달린 머리** — `채용 정보`와 스냅샷 날짜. 챕터 번호·eyebrow 없음.
+3. **필터 띠** — Catalogue의 디바이더. 직군·경력 `<select>`. 최신순만 활성. 추천순·인기순은 스냅샷에 순위가 없어 disabled.
+4. **F6 상품 그리드** — 4/3 미디어, 모바일 2열 · 60rem 이상 4열, 트랙 `minmax(0, 1fr)`. 칸마다 저장(북마크)과 C3 `공고 열기`.
+5. **Ft2 한 줄 바닥** — `wanted · 채용 정보 · 2026년 8월 22일`.
+
+같은 문서의 `<dialog>`가 공고를 연다. 새 화면을 만들지 않는다.
+
+Heading: 상태 (8)
+
+`.btn` · `.chip` · `.icon-btn` · `.job__open` · `select`에 default / hover / `:focus-visible` / `:active` / disabled / loading / error / success. 호버는 `(hover: hover)`가 가능한 포인터에서만 의미가 있고, 터치에서는 탭이 연다.
+
+지원하기는 스냅샷 세션이 비로그인(`authenticated: false`)이므로 눌러도 접수되지 않는다. 버튼이 error 상태로 바뀌고, 회원가입 후 지원하라는 한 줄을 남긴다.
+
+Heading: 이미지
+
+- `image.jpg` — 레인 A, Grok Imagine. c1 교육 운영 매니저 칸의 대표 사진. 로고·읽을 수 있는 글자 없음.
+- 나머지 칸 — 원격 사진 없음. `--plate-*` 면과 이니셜. 플레이스홀더로 보이게 둔다.
+
+Heading: 오프라인
+
+외부 요청 없음. 폰트는 로컬 스택, 사진은 `image.jpg` 상대 경로. CSS 리셋이 `figure` · `blockquote` · `ul` · `ol` 마진을 지운다.
+
+Heading: 하지 않는 것
+
+공식 로고 SVG, 구글 폰트, 가짜 지원자 수, 히어로 그라데이션, 카드 속 카드, 재그린 브라우저 크롬, 브리프에 없는 상세 화면.

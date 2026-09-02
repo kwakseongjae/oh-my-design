@@ -1,0 +1,41 @@
+{
+  "runId": "lane-a-wanted-rep-1",
+  "arm": "hallmark",
+  "lane": "lane-a",
+  "brand": "wanted",
+  "repeat": 1,
+  "sourceFiles": [
+    {
+      "relativeId": "03-runs/lane-a/wanted/<arm>/rep-1/system.md",
+      "sha256": "a9366316b8648e1b25759d1d527f996cacfad4694855ac7df75201cfd4381edc"
+    }
+  ],
+  "sourceSha256": "a9366316b8648e1b25759d1d527f996cacfad4694855ac7df75201cfd4381edc",
+  "transcriptSha256": "c7b57faf5482cef4339a56e71968b2d885cc56992f35552ca1638f1a74d6b8cb",
+  "procedureFile": "TRANSCRIPTION.md",
+  "procedureSha256": "becf08f97cfd0a28052a6779171096649e7a6fef2ab581379382333f792a3c34",
+  "transcriberId": "opus5",
+  "verifierId": "orchestrator",
+  "transcriptionStartedAt": "2026-09-02T13:01:42Z",
+  "transcriptionEndedAt": "2026-09-02T13:01:42Z",
+  "verificationStartedAt": "2026-09-02T13:01:42Z",
+  "verificationEndedAt": "2026-09-02T13:01:42Z",
+  "encoding": "UTF-8",
+  "lineEnding": "LF",
+  "mapFile": "90-comparison/transcript-seals/lane-a/wanted/hallmark/rep-1.map.csv",
+  "mapSha256": "fede6463ab5b43da925539f7d508c24daad0e8d5992f019da09a93129f2865d3",
+  "verificationResult": {
+    "tool": "test-v2/tools/transcribe-verify.mjs",
+    "toolSha256": "ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3",
+    "checks": "TRANSCRIPTION.md §7.1.1–§7.1.9",
+    "unitsChecked": 73,
+    "problems": [],
+    "attempts": 1,
+    "verifiedAt": "2026-09-02T13:01:42Z",
+    "verifiedBy": "orchestrator",
+    "declaredSpans": 3
+  },
+  "verdict": "PASS",
+  "transcriptFile": "90-comparison/transcripts/lane-a/wanted/hallmark/rep-1.txt",
+  "submittedToScoring": true
+}

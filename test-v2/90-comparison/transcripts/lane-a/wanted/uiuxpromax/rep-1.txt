@@ -1,0 +1,135 @@
+Heading: wanted 채용 목록 — system
+
+Lane A / arm  / snapshot `2026-08-22T19-52-31-934Z`.  
+화면은 채용 목록 하나. 과업은 필터를 적용한 뒤 채용 카드 하나를 여는 것.
+
+Heading: Pack workflow
+
+Pack:   
+Skill:  → `--design-system` first, then domain/stack searches.  
+Stack for this artifact: standalone HTML (html-tailwind rules, no CDN).
+
+Heading: Step 1 — requirements
+
+- Product: recruitment marketplace listing (directory / classifieds pattern).
+- Audience: job seekers, ko-KR, light surface.
+- Surfaces: desktop-1440 (1440×900), mobile-390 (390×844).
+- Task verbs: apply filters, open one job card.
+- Constraint: no network; no official brand mark (text wordmark only).
+
+Heading: Step 2 — `--design-system`
+
+```
+python3  "job listing recruitment marketplace career filter cards professional" --design-system -p "Wanted" -f markdown
+```
+
+Returned:
+
+| Slot | Pack result |
+|------|-------------|
+| Pattern | Marketplace / Directory — search as CTA, visible filters |
+| Style | Minimalism & Swiss Style (light+dark capable; this surface is light) |
+| Primary | `#0369A1` |
+| Secondary | `#0EA5E9` |
+| Accent | `#16A34A` |
+| Background | `#F0F9FF` |
+| Foreground | `#0C4A6E` |
+| Type | Poppins / Open Sans |
+| Motion | 200–250ms hover, no decorative motion |
+| Anti-patterns | outdated forms, **hidden filters** |
+
+`--domain product "marketplace directory listing"`: Filter-Heavy Grid, neutral bg, category chips.  
+`--domain style "minimalism swiss grid listing"`: white/black, single accent, grid, radius 0 as style default.  
+`--domain typography "professional clean sans korean"`: Korean Modern → Noto Sans KR.  
+`--domain ux`: no-results with a next action; alt text; contrast 4.5:1; visible focus; empty state; active nav; hash/query for state.  
+`--domain icons`: Phosphor outline — magnifying-glass, bookmark, funnel, list.  
+`--stack html-tailwind`: card grid + gap utilities, aspect-ratio on media, focus rings.
+
+Heading: Product override (`color-palette-from-product`)
+
+Evidence chrome, not pack sky-blue defaults:
+
+| Token | Evidence | Why |
+|-------|----------|-----|
+| `--color-background` | `#ffffff` | `pageBackgroundComputed` / rendered modal colour, both surfaces |
+| `--color-foreground` | `#171719` | `bodyColor` |
+| `--color-primary` | `#0066ff` | mobile typeScale button color |
+| Type family | Pretendard Variable | desktop/mobile typeScale.family |
+| Header height | 60 / 56 | geometry |
+| Card media | 3:2 desktop, 4:3 mobile | imagery `aspect` 1.5 / 1.333 |
+
+Pack sky `#F0F9FF` / `#0369A1` / Poppins are recorded here and not painted. Google Fonts URLs are not loaded (offline first render). System stack: `"Pretendard Variable", "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif`.
+
+Heading: Tokens
+
+Heading: Primitive
+
+```
+--blue-600: #0066ff
+--green-600: #16a34a
+--red-600: #dc2626
+--ink: #171719
+--ink-2: #333333
+--ink-3: #666666
+--line: #e1e2e4
+--wash: #f2f4f6
+--white: #ffffff
+--space: 4 / 8 / 12 / 16 / 24 / 32
+--radius: 8 / 12 / 999
+--duration: 200ms
+--ease: cubic-bezier(0.2, 0, 0, 1)
+```
+
+Heading: Semantic
+
+```
+--color-background / --color-foreground / --color-primary / --color-on-primary
+--color-muted / --color-muted-foreground / --color-border / --color-card
+--color-ring / --color-destructive / --color-overlay
+```
+
+Heading: Component
+
+| Component | Default | Hover | Active / pressed | Focus | Disabled |
+|-----------|---------|-------|------------------|-------|----------|
+| Header | white, 60/56px, 1px border | — | — | skip-link | — |
+| Nav item | 14/500 ink | — | current = 700 | 2px ring | — |
+| Filter trigger | 22/700 | chevron wash | aria-expanded | ring | — |
+| Chip | pill, 13/600, line | wash | ink fill, white type | ring | opacity 0.5 if unused |
+| Sort pill | muted track | — | white selected | ring | — |
+| Job card | 0 shadow, 12px media radius | media scale 1.015 | — | ring on control | — |
+| Bookmark | outline white | — | filled primary | ring | — |
+| Dialog | 16px radius, 45% scrim | — | — | native dialog | — |
+| Primary button | primary fill, 48px | brightness 0.95 | — | ring | — |
+| Bottom nav | 4 items, icon+label | — | primary current | ring | — |
+
+Heading: Listing grammar
+
+Desktop 1440: page gutter 80px, 4 columns, card width ~308, media 3:2.  
+Mobile 390: gutter 18px, 2 columns, media 4:3, bottom nav 4 destinations.
+
+Copy on cards is from the snapshot (titles, companies, districts, career bands that were visible). Empty company/location fields stay empty.
+
+Wordmark is the word `wanted`. No official mark.
+
+`image.jpg` is the cover of the first card (office lounge). Other covers are CSS swatches from evidence palettes so the file stays offline.
+
+Heading: Interaction (the briefed task)
+
+1. 직군 / 경력 listboxes filter the grid.  
+2. Chips (한국, 기술스택, 글로벌, …) further restrict.  
+3. Clicking a card opens a native `<dialog>` (same listing, not a second screen). Hash `#job-{id}`.  
+4. Empty grid: message + 필터 초기화 (pack: do not leave a blank dead end).  
+5. Query string keeps role/exp. Escape / 닫기 / 공고 열기 dismiss the dialog.
+
+Heading: Motion / a11y (pack §1–§3)
+
+- 200ms transform/opacity only; `prefers-reduced-motion: reduce` disables it.  
+- Focus-visible 2px ring. Icon-only controls have `aria-label`. Touch ≥ 44px on mobile.  
+- `figure` / `blockquote` / `ul` / `ol` margins reset (UA defaults).  
+- Contrast: ink `#171719` on white; meta `#666666` on white ≥ 4.5:1.  
+- One primary action in the dialog (`공고 열기`).
+
+Heading: Offline
+
+No `@import`, no CDN, no webfonts, no remote images. The only bitmap is local `image.jpg`.
