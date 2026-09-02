@@ -61,6 +61,7 @@ function loadSession(ev, file, keyFile, into) {
   if (!existsSync(file) || !existsSync(keyFile)) { partial.push(`missing ${file}`); return; }
   const key = JSON.parse(read(keyFile));
   for (const line of read(file).split("\n").filter((l) => l.trim())) {
+    if (/^SCORING_DONE\b/.test(line.trim())) continue; // 종료 표지(validate-responses.mjs 와 동일 취급) — 데이터가 아니다
     let j; try { j = JSON.parse(line); } catch { partial.push(`unparsable line in ${file}`); continue; }
     // 천장 자극 답(§4.3)은 브랜드 단위라 rep 이 없다 — 행 조회보다 먼저 받는다. (2026-09-03: 행 조회를 먼저 해서 전부
     // 버려지고 모든 브랜드가 CEILING_UNAVAILABLE 로 집계되던 결함을 고쳤다. 규칙 변경 아님 — 적재 순서만.)
