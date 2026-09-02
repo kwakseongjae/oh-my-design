@@ -6,6 +6,10 @@
 
 **다음.** 라운드 3 검수.
 
+## 2026-09-02 (밤) — 도그푸딩 17건 반영·T3 생산 완주·대비 스윕
+- 한 일: 2.0.1 도그푸딩 17건 전부 레포 반영(`51123149`·`6483025c`), tarball 재검증, PR #88 푸시. 웨이브 52 마감(9 done·openpoint deferred)·53 진행. T3 wanted 6칸 완료 → 108/108, 매니페스트 재봉인, 텍스트 대비 108칸 스윕(세 arm 모두 미달 상수).
+- 열린 것: 사용자 `npm publish`; wanted 전사(opus5) → 청크 3 채점; X/스레드 소재 승인; 03-runs 봉인 칸 git 편입 여부.
+- 다음: 전사 12/12 PASS → build-packets --chunk 3 → grok·sonnet5 세션 → 단일 플래그 재채점 → 집계 → Fable Phase 6 검토 → omd:issue.
 ## 2026-09-02 — landing/stripe 개정 라운드 3 (nav CTA 포커스)
 
 **한 일.** `render.html` `.nav-bar` 우상단 canvas-alpha 스크림만. 글리프 감사 focus 1440 "Start now" `<3:0%` (min 3.83). integrity PASS / FAIL 0, 12.05 vh.
