@@ -3,6 +3,7 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
+- 갱신: 2026-09-02 · **웨이브 48 마감(마라톤)** — done 5/5 · $7.22 · LLM 223분 · 판정문 `docs/reviews/t2-1-wave48-2026-09-02-grok.md`(자동 생성, 검수 전).
 - 갱신: 2026-09-02 · **웨이브 47 마감(13:21, 마라톤 2번째 자동 마감)**: 5/5 done, 벽시계 59분, $8.57, 검토 FAIL 1/5(mintlify 3 → 개정 → PASS). 원장 249/440. **effort A/B**: 46·47(F3·검토 high) 검토 FAIL 1/5·1/5 vs 44·45(xhigh) 3/5·5/5 — 예방 조항 복원 효과와 분리하려고 **웨이브 48부터 검토만 기본 effort**로 재가동(`--effort-f3 high`만, 8-wide). 48 마감 후 FAIL율 비교해 검토 effort 확정.
 - 갱신: 2026-09-02 · **웨이브 47 마감(마라톤)** — done 5/5 · $8.57 · LLM 224분 · 판정문 `docs/reviews/t2-1-wave47-2026-09-02-grok.md`(자동 생성, 검수 전).
 - 갱신: 2026-09-02 · **랜딩 테스트 셋업 완결(13:10)**: stripe·toss × {hallmark, autopilot, landing} 6런 전부 완료(총 ≈$5.5). landing arm 둘 다 12.05 vh·폴드 100%·LI FAIL 0; 기준선은 6~8 vh. 비교 페이지 `content-runs/landing/{stripe,toss}/compare.html` + 3-arm 시연 영상 2편(scratchpad showcase/). toss 디자이너 리뷰 r1 BLOCK 6(사진 위 크롬 대비·muted 본문·noscript) → 지목 개정(grok $0.36) → r2 리뷰 진행; stripe 리뷰 r1 진행. 학습을 스킬 예방 조항(b0ded515)과 이슈 #86·#87로 환류. 시드 AC 4는 "designer-review BLOCK 0" 확인만 남음.
