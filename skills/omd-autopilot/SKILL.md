@@ -52,6 +52,14 @@ folders and must never edit `DESIGN.md` or product files.
    create, infer, or edit `council-intake.answers.json` on the user's behalf;
    that file may contain only an actual user response relayed verbatim after
    the controller has entered `CONSEQUENTIAL_INTERVIEW`.
+   **Unattended mode** (`--unattended` in the prompt, or `.omd/config.json`
+   `"unattended": true`): there is no user to answer, so each question takes
+   its first (recommended) option and the choice is recorded in
+   `loop-trace.json` → `autoSelected[]` as `{question, chosen, alternatives}`
+   so the decision is auditable afterwards. Options that delete or overwrite
+   files that existed before the mission are never auto-selected — the mission
+   fails that requirement honestly instead. `council-intake.answers.json` is
+   still never written: auto-selection is a trace entry, not a user answer.
 5. `DESIGN_SYSTEM_DISPOSITION` — resolve exactly one of `reuse`, `establish`,
    `refresh`, or `surface-local-only`. A missing exact brand source is blocked.
    After the council handoff reaches `PROPOSE_PLAN`, run the installed
@@ -208,6 +216,17 @@ folders and must never edit `DESIGN.md` or product files.
    from those results; prose confidence or a self-authored summary is not proof.
    “Browser unavailable”, skipped checks, or missing screenshots must be a
    failed check, never a passing substitute.
+   **Render integrity is an atomic check.** Run the deterministic checker on
+   every rendered page the mission produced — `node test-v2/tools/render-integrity.mjs <page.html…>`
+   in this repo, `omd verify --render <page.html…>` when installed — and bind
+   its verdict per page into `proof.json` with the tool output as evidence
+   (overflow-x, viewport escape, text clip, unreset UA margins, missing font,
+   broken image, encoding). A FAIL is a failed check; a page the tool could not
+   load is a failed check. Append one entry per verification round to
+   `loop-trace.json` → `rounds[]`: `{round, renderIntegrity: {defects, items},
+   critique: {blocks}, fixed: [...]}` so the mission can show its defect count
+   going down, not just its last verdict. The same file carries `autoSelected[]`
+   from `CONSEQUENTIAL_INTERVIEW`.
    When `.benchmark/controller-verification-policy.json` is present, the
    installed mission controller is the objective-verification authority. Every
    local proof, passing or failing, must stop at `EXTERNAL_VERIFY` before any
@@ -512,6 +531,9 @@ Store permanent artifacts under `.omd/runs/<run-id>/`:
 - `implementation.json`
 - `acceptance-plan.json`
 - `proof.json`, `repairs/round-<n>.json`, and screenshots
+- `loop-trace.json` — per-round `renderIntegrity`/`critique` counts and
+  `autoSelected[]` (the audit trail of unattended choices); an empty
+  `rounds[]` means verification never ran and the proof cannot pass
 - `delivery.json`
 
 Receipts bind the original task, repository evidence, DESIGN.md, product output,
