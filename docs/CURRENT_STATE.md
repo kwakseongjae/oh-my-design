@@ -3,6 +3,7 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
+- 갱신: 2026-09-02 · **도그푸딩 17건 전부 레포 반영(21:25)** — 1–8 `51123149`, 9–17 `6483025c`(render-integrity 스크롤러 오탐 → T3 108칸 재측정 hallmark 6→3·uiuxpromax 2→1·omd 0, Phase 6 문서 갱신; showcase --help 옵션·wall= 라벨; 랜딩 ④ 리뷰 스폰 규격·DESIGN.md 우선 규칙; 아트디렉터 Motion 로컬 확장·치수는 호출자; omd:issue user-invocable·--dry-run·needs-repo-env). 미러 동기·drift OK·lint·check 테스트 11/11. 다음: tarball 재포장→임시 프로젝트 재검증→PR #88 푸시→사용자 `npm publish`. 마라톤은 웨이브 53 진행 중, T3 wanted 잔여 2칸(uiuxpromax rep-2·rep-4) 체인 D/E 진행 중.
 - 갱신: 2026-09-02 · **웨이브 52 마감(마라톤)** — done 9/10 · deferred openpoint · $15.66 · LLM 671분 · 판정문 `docs/reviews/t2-1-wave52-2026-09-02-grok.md`(자동 생성, 검수 전).
 - 갱신: 2026-09-02 · **naver 근거 축 재봉인 완결(21:00)**: grok 판정 q1=a(N/A-evidence)·q2=out(B_k 제외)·q3=independent(평가자 프롬프트 불변, 집계 규칙만·청크 3 점수 보기 전 봉인)·q4 문안 확정 → RUBRIC §4.5 개정(제목·삽입 문단·분모 문장), 집계기 `evidenceFor` na 분기, **RUBRIC_FROZEN_SHA = `b6b3ee59`**(핀 `3734583d`, run-config `rubricFrozenSha`). 청크 3 채점 개시 가능 조건 = naver·wanted 전사 + wanted 6칸 생산.
 - 갱신: 2026-09-02 · **재개(20:40, 세션 한도 후)**: 마라톤은 웨이브 52 마감 직전(7 done·3 review)에서 계속 살아 있었음 → STOP 제거(53으로 자동 진행). T3 잔여 6칸(wanted rep-2/rep-4 × 3 arm) 체인 D/E(40분 상한) 가동. naver 전사 에이전트(opus) 가동. **naver 근거 축 결손 판정 요청** `docs/reviews/t3-naver-evidence-axis-2026-09-02.md` → grok 판정 백그라운드. **도그푸딩 시작(opus5)**: `/tmp/omd-dogfood`에 2.0.1 tarball 설치 → setup→media→landing(아트디렉터 스폰)→issue process 4경로, 보고서 `docs/reviews/dogfood-2.0.1-2026-09-02.md`(수정은 오케스트레이터가 레포에 적용).

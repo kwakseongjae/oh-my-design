@@ -1,5 +1,7 @@
 # 도그푸딩 — oh-my-design-cli 2.0.1 (설치본, Claude Code 경로)
 
+> **반영 상태(21:35)**: 17건 전부 레포 적용 — 1–8 `51123149`, 9–17 `6483025c`. 재포장 tarball을 새 임시 프로젝트에 설치해 재검증: `omd showcase --help` 옵션 11개 노출, `omd check render` 가로 스크롤러 픽스처 → info(`scroller`), `omd setup detect` 정상, 설치된 스킬/에이전트에 #11·#14·#15·#17·#12 문구 존재.
+
 - 일시: 2026-09-02 20:40 KST 시작
 - 계획: `docs/OMD_DOGFOOD_2026-09-02.md`
 - 프로젝트: `/tmp/omd-dogfood` (레포 밖, throwaway)
