@@ -63,6 +63,7 @@ DESIGN.md에서 재현하는 `omd:landing` 스킬을 **같은 브리프·같은 
 | stripe | hallmark | 7.9 | 8 | (핀 스테이지) | PASS | FAIL 0 | $1.80 | 기준선 — 랜딩 브리프에서는 코덱스 기계 규칙을 통과, 폴드 규모·컨셉 밀도는 비교 페이지에서 |
 | stripe | **landing** | **12.05** | 8 | **100%, 4변 블리드** | PASS | **FAIL 0** (2회차 수렴, LI-9 1건 자가 수정) | $0.51 | 컨셉 "money layer cutaway", 에셋 5장(히어로+4), 반전 1섹션, reduced-motion OK |
 | toss | autopilot | 7.84 | 7 | (핀 스테이지) | PASS | FAIL 0 | $0.51 | 기준선 |
+| toss | hallmark | 8.22 | 4 | (핀 스테이지) | PASS | FAIL 0 | 체인 로그 | 기준선 |
 | toss | **landing** | **12.05** | 8 | 100% | PASS | **FAIL 0** (WARN 1) | 체인 로그 | 컨셉 "일상 책상", 라이트 그라운드 유지, 한국어 카피, 반전 없음 |
 
 독립 재검증(오케스트레이터): render PASS · LI FAIL 0 · 스크롤 여정 후 숨은 요소 0 · reduced-motion에서 스크롤 없이 전부 표시.
@@ -72,3 +73,4 @@ DESIGN.md에서 재현하는 `omd:landing` 스킬을 **같은 브리프·같은 
 - round 1 (`toss/landing/review.md`): **BLOCK 6** — 히어로 사진 위 크롬 대비(nav 1.05~1.30:1, wordmark 1.07:1, lead 3.05:1, 포커스 링 1.38:1; 원인 = 스크림 부재), `muted` 본문 사용 3.0:1, `.reveal{opacity:0}`에 noscript 없음. WARN 13 · FYI 11. 기계 검사 두 종은 이 결함들을 못 본다 → 이슈 #86(LI-24~26)·#87(루프에 리뷰 자동 호출).
 - 개정(grok, `runs/fix-toss-landing.txt`, $0.36): BLOCK 6만 지목 수정 — 스크림·halo·muted→body·noscript+scripting:none. render PASS · LI FAIL 0 · 12.05 vh 유지. 스크림이 강해 사진이 옅어졌다(트레이드오프, 비교 페이지에서 판단).
 - round 2 리뷰 진행 중.
+- 비교 페이지 `toss/compare.html`(3열) · 3-arm 시연 영상(14초) 생성 — 두 브랜드 모두 3 arm 완비.
