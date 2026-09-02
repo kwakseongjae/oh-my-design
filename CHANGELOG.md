@@ -6,6 +6,34 @@ After any release: run `npx oh-my-design-cli@latest`, keep the detected channels
 
 ---
 
+## 2.0.1 — 2026-09-02
+
+**Landing craft as a shipped workflow: five new skills, an art-director role, and the machine checks that keep a one-page landing honest. Patch release — no change to the DESIGN.md Core v2 contract or the installer's file ownership rules.**
+
+New skills (the bundle is now 27 product skills for Claude Code, Codex, and OpenCode, and 26 compatible Agent Skills for Cursor):
+
+- **`omd:landing`** — scroll-native one-page landing derived from `DESIGN.md` plus the measured landing-craft codex (`LC-n` rules): concept, per-section storyboard, asset plan, standalone `render.html`, and a capped self-review loop. Triggers on "랜딩 페이지", "원페이지", "landing page", "one-pager", "hero to footer".
+- **`omd:setup`** — finds the image/video generation channels, browser, and encoders this machine already has, explains the trade-offs and cost of each, and records the choice in `.omd/config.json` for later design tasks. It never tells you to go get an API key. Triggers on "omd setup", "도구 셋업", "configure media", "what can you generate".
+- **`omd:media`** — brand-consistent asset sets (hero, section illustrations, icon sets, OG image) through whichever channel `omd:setup` recorded, with a provenance and cost ledger. No channel available means a prompt pack and a manual queue, never stock imagery. Triggers on "이미지 세트 만들어", "generate assets", "hero image", "OG 이미지".
+- **`omd:showcase`** — turns a rendered page, or several side by side, into a deterministic scroll demo video (frame capture → ffmpeg H.264/GIF, one label per arm). Triggers on "시연 영상", "스크롤 영상 만들어", "showcase", "demo video", "비교 영상".
+- **`omd:issue`** (added 2026-09-01) — files usage complaints and dogfood defects as structured GitHub issues, and drains the queue with a batch `process` verb. Triggers on "이슈 등록해줘", "버그 리포트", "file an issue", "이슈 처리해줘".
+
+Also in this release:
+
+- **`omd-art-director` sub-agent** (20 specialist roles, up from 19) — turns `DESIGN.md` brand facts plus a brief into one visual concept, mood, asset direction, and a per-section composition storyboard grounded in the `LC-n` rules. It writes `concept.md` and `storyboard.md` only: never tokens, never HTML.
+- **Landing craft codex + machine checks now ship with the package.** `docs/design-excellence/landing-craft-codex.md` (the `LC-n` rule table), `test-v2/tools/landing-integrity.mjs` (`LI-n` machine verdicts on page height, section ratios, fold coverage, type ratio, gutter, motion duration and easing, scroll snap, video attributes, stock hosts, uniform card grids, `h1`), `test-v2/tools/render-integrity.mjs`, `test-v2/tools/showcase.mjs`, and `scripts/omd-setup-detect.mjs` are in the npm `files` allowlist so the new skills resolve their tools in an installed project instead of pointing at repo-only paths.
+- **Contrast is part of "overwhelming".** `omd:landing` now requires a token-colored scrim behind text over imagery and forbids `muted` tokens for body copy, after a first run shipped a hero with nav at 1.05:1. Scroll reveals must stay visible under `<noscript>` and `@media (scripting: none)`.
+- **`/design.md` public convention** — this project's own root `DESIGN.md` is served at `oh-my-design.kr/design.md`, following the `vercel.com/design.md` convention, and `scripts/check-mirror-drift.mjs` now guards that pair alongside the reference trees.
+- **Feedback loop** — issues #75–#87 filed through `omd:issue` from real runs of the new skills, covering unattended mode, self-feedback wiring, UA-default reset, per-project brand CSS, and a pixel-sampled contrast check for `landing-integrity`.
+
+Repo tooling (not shipped to npm):
+
+- `scripts/wave-run.mjs` — per-brand migration pipeline runner with a shared concurrency budget, so worker, gate, measurement, review, and revision for one brand can never overlap and prompts are assembled only from `prompts/` files.
+- `scripts/wave-marathon.mjs` — unattended multi-wave driver on top of the runner: queue, resume-after-block, deferral ledger, close-out, and journal line per wave, with a `STOP` file honored at wave boundaries.
+- `test-v2/tools/transcribe-verify.mjs` — two conformance defects fixed. The `§7.1.8` blinding detectors missed the real decision-ID shape (`D-P2-1`) and the hyphenated arm name, and `§7.1.6` byte-compared fenced blocks in a way that made the deletions `§4.1` mandates impossible to declare. Three self-tests added (10/10); the 23 existing transcripts were re-verified (20 pass, 3 blocked and re-transcribed).
+
+---
+
 ## 2.0.0 — 2026-08-20
 
 **Design-excellence harness: a design system the model derives from a declared philosophy, floored by a validated preset catalog — measured against rendered screens, not source code. The 2.0 promise: visibly better product than prompt-only or component-kit assembly, portable via DESIGN.md.**

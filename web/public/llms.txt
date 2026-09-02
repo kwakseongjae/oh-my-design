@@ -1,6 +1,6 @@
 # oh-my-design
 
-> Skill-driven design harness for AI coding agents. Claude Code, Codex, and OpenCode receive the full 21-skill + 18-sub-agent bundle; Cursor receives 22 compatible Agent Skills, a project rule, and the local catalog. The quality-graded catalog contains 440 DESIGN.md references: 141 verified_v2, 159 partial, and 140 legacy. Use verified_v2 references for public demos.
+> Skill-driven design harness for AI coding agents. Claude Code, Codex, and OpenCode receive the full 27-skill + 20-sub-agent bundle; Cursor receives 26 compatible Agent Skills, a project rule, and the local catalog. The quality-graded catalog contains 440 DESIGN.md references: 141 verified_v2, 159 partial, and 140 legacy. Use verified_v2 references for public demos.
 
 ## What
 
@@ -51,9 +51,11 @@ When `omd:harness` activates, it runs three new steps **before** any reference q
 
 The `omd-master` sub-agent reads `prefilled_slots` on INTAKE and skips its slot-gate entirely, jumping straight to PROPOSE_PLAN. Net effect: the conversation feels like a senior designer who already read your repo, not an interrogation.
 
-## The 23 skills (Claude Code, Codex, OpenCode)
+## The 27 skills (Claude Code, Codex, OpenCode)
 
-Core flow (7):
+Core flow (10):
+- **omd:autopilot** — One-prompt autonomous product design: decides whether to reuse, establish, or refresh the design system, then builds and verifies the real surface.
+- **omd:issue** — Files usage complaints and dogfood defects as structured GitHub issues, and drains the queue with a batch `process` verb.
 - **omd:apply** — Authoritative DESIGN.md context for every UI task. Routes complex requests to specialist sub-agents.
 - **omd:update** — Refreshes the existing installation without changing its scope, channels, or user-owned files, then verifies it with doctor.
 - **omd:init** — Bootstrap DESIGN.md from a reference with hybrid variation that preserves the reference voice while shifting only user-named axes.
@@ -67,6 +69,12 @@ Live capture + assets (3):
 - **omd:reference-capture** — Live brand-site CDP/Playwright inspect → tokens + structure + fonts + screenshots + proof.
 - **omd:asset-fetch** — Free-license asset catalog (DiceBear CC0 / Lucide ISC / Picsum CC0 / SIL OFL display fonts). Handcrafted character SVG forbidden.
 - **omd:experiment-gallery** — N-brand experiments → single comparison index.html with iframe previews, ratings, per-brand IP audit.
+
+Landing + media (4):
+- **omd:setup** — Detects the image/video generation channels, browser, and encoders this machine already has, explains cost and trade-offs, and records the choice in `.omd/config.json`.
+- **omd:landing** — Scroll-native one-page landing built from DESIGN.md plus the measured landing-craft codex (LC-n rules): concept, storyboard, assets, self-review loop.
+- **omd:media** — Brand-consistent asset sets (hero, section illustrations, icon sets, OG image) through whichever channel `omd:setup` recorded, with a provenance and cost ledger.
+- **omd:showcase** — Deterministic scroll demo video from a rendered page (single or side-by-side comparison), H.264 / GIF via ffmpeg.
 
 Localization + review layer (7):
 - **omd:orchestrator** — Coordinates multi-agent writing/review workflows with a revision cap and handoff log.
@@ -84,7 +92,7 @@ Interface quality (2):
 Standalone (1):
 - **claude-design** — Analyzes the current codebase into a design-context brief and drives claude.ai/design (via logged-in Chrome) to generate a design, returning a result link.
 
-## The 19 sub-agents (Claude Code, Codex, OpenCode)
+## The 20 sub-agents (Claude Code, Codex, OpenCode)
 
 Specialists pair as advisor ↔ generator:
 
@@ -106,6 +114,8 @@ Specialists pair as advisor ↔ generator:
 - **omd-designer-review** — Visual + brand consistency reviewer (BLOCK / WARN / FYI with line refs).
 - **omd-final-qa** — Final-gate rubric critic.
 - **omd-codex-image** — Image materializer across Codex / asset-fallback / user-queue channels.
+- **omd-design-system-architect** — Read-only architect that derives a project-specific semantic system, provenance, and coverage without editing DESIGN.md.
+- **omd-art-director** — One-page landing art director. Turns DESIGN.md brand facts plus a brief into a single visual concept and a per-section composition storyboard.
 
 ## The 10-phase design pipeline (when omd:harness fires)
 

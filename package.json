@@ -1,6 +1,6 @@
 {
   "name": "oh-my-design-cli",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Give your AI coding agent a project-owned DESIGN.md workflow with a guided installer, doctor, and 440+ quality-graded references.",
   "type": "module",
   "bin": {
@@ -32,6 +32,10 @@
     "skills/omd-codex-image",
     "skills/claude-design",
     "skills/omd-issue",
+    "skills/omd-landing",
+    "skills/omd-media",
+    "skills/omd-setup",
+    "skills/omd-showcase",
     "agents",
     "data/opt-out-corpus.json",
     "data/synonyms.json",
@@ -64,6 +68,7 @@
     "spec/fixtures/design-md-core-v2/**",
     ".github/assets/logo-bg.png",
     "scripts/postinstall.cjs",
+    "scripts/omd-setup-detect.mjs",
     "scripts/context.cjs",
     "scripts/ctx-prime.cjs",
     "scripts/design-council-prime.cjs",
@@ -83,7 +88,11 @@
     "scripts/autopilot-mission.cjs",
     "scripts/autopilot-council-plan.cjs",
     "scripts/autopilot-council-reconcile.cjs",
-    "scripts/design-harness-context-plan.cjs"
+    "scripts/design-harness-context-plan.cjs",
+    "docs/design-excellence/landing-craft-codex.md",
+    "test-v2/tools/landing-integrity.mjs",
+    "test-v2/tools/render-integrity.mjs",
+    "test-v2/tools/showcase.mjs"
   ],
   "scripts": {
     "build": "tsup",
