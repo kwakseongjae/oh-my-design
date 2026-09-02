@@ -1,3 +1,35 @@
+## 2026-09-02 (오후) — 방향 전환: 마라톤 무인화 · 랜딩 스킬 실전 · T3 청크 1 채점
+
+**한 일.** 안전 중단 → 사용자 결정(이관 완주 우선·opus 허용·SuperGrok Heavy·푸시 승인·T3 병행·2.0.1+임팩트 콘텐츠 목표) → 러너 내구성(재시도·gatefix·폴백)+마라톤 드라이버 가동(웨이브 46 자동 마감 $6.83). 우로보로스 1MB 원인(CURRENT_STATE 1.8MB) 수정 후 인터뷰 5라운드 → 시드. PR #85 → main, /design.md 라이브. 랜딩 크래프트 코덱스(5사이트 실측)·landing-integrity(LI-1~23)·omd:landing/art-director·setup/media/showcase 스킬·부채 ④·F6 최소형. 랜딩 6런 완료(landing arm 12 vh·폴드 100%), 리뷰 BLOCK 6 → 개정. T3: 검증기 재봉인, 전사 48/108, 청크 1 양 평가자 채점(α 낮음 → 재채점 대상 34).
+
+**열린 것.** 웨이브 47 마감 후 STOP → 검토 effort 기본값으로 재가동(A/B). 리뷰 r1(stripe)·r2(toss) 결과. 청크 2 입력(karrot·musinsa 생산). 2.0.1 릴리즈·카운트 싱크·npm(사용자 인증). X/Threads 소재 승인.
+
+**다음.** 마라톤 재가동 → 청크 2·3 채점 → rescore 세션 → 집계·Fable 검수 → 릴리즈 2.0.1 → 콘텐츠 게시.
+
+## 2026-09-02 — landing/toss 개정 라운드 2 (BLOCK 6)
+
+**한 일.** `test-v2/content-runs/landing/toss/landing/render.html` BLOCK 6건만 수정(스크림·포커스 halo·muted→body·noscript). integrity PASS / FAIL 0, 12.05 vh 유지.
+
+**열린 것.** WARN 13·FYI 11은 미수정. 재리뷰는 오케스트레이터.
+
+**다음.** 디자이너 재리뷰 또는 다른 arm.
+
+## 2026-09-02 — content-run landing stripe/hallmark
+
+**한 일.** 팩 `hallmark`로 Stripe 스크롤 원페이지. 산출 `test-v2/content-runs/landing/stripe/hallmark/{render.html,assets,system.md,trace.md}`. Switchboard 컨셉, 이미지 5장, integrity PASS.
+
+**열린 것.** 비교 페이지·시연 영상은 오케스트레이터. 이 세션은 arm 실행만.
+
+**다음.** 다른 브랜드/arm 또는 비교 조립.
+
+## 2026-09-02 — content-run landing stripe/autopilot
+
+**한 일.** 팩 `omd-autopilot-v2`로 Stripe 스크롤 원페이지. 산출 `test-v2/content-runs/landing/stripe/autopilot/{render.html,assets,system.md,trace.md}`. 광학 벤치 컨셉, 이미지 5장, integrity PASS.
+
+**열린 것.** 비교 페이지·시연 영상은 오케스트레이터. 이 세션은 arm 실행만.
+
+**다음.** 다른 브랜드/arm 또는 비교 조립.
+
 ## 2026-09-02 — Fable 5.1 세션: 진단·계획 정본, 웨이브 러너, T3 Phase 4·5 도구
 
 **한 일.** `docs/OMD_PLAN_2026-09-02.md`(진단·잔여·효율·결정 대기). 웨이브 45 실측으로 4h25m의 원인 규명(층 직렬 + 손 조립) → `scripts/wave-run.mjs` 브랜드 단위 러너 + 프롬프트 정본화(worker-addendum 전문 누락 드리프트 발견). 웨이브 46 러너 실전(3-wide) · T3 체인 A/B 57칸 · 전사 3기 재가동. T3 Phase 4 도구(capture-cells·verify-cells·build-packets·validate-responses·run-scoring-session)와 Phase 5 집계기(aggregate-lane-a) 사전 작성. grok 헤드리스 이미지 입력 PASS. 전사 검증기 결함 2건(결정 ID·하이픈 arm명 탐지 누락, 펜스 안 선언 삭제 불허) 수정·재봉인(SHA `ae588ca3…`), 파일럿 전사 3건 차단→재전사. 계획 §3 완성(인벤토리·리서치 반영).
