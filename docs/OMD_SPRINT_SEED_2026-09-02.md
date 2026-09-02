@@ -35,6 +35,8 @@ F3 슬롭 게이트 v2, omd:landing, F1 omd:setup+media, F2 omd:showcase)을 Cla
 5. **F1 omd:setup + media** — 보유 채널(grok CLI image_gen / Codex $imagegen / Gemini / xAI·Recraft 키)을 명령이 아니라 문답으로
    확정해 `.omd/config`에 저장; 레퍼런스 3개 자산 세트, 세트당 $1 미만, 출처·비용 원장.
 6. **F2 omd:showcase** — 명령 1회로 60초 내 mp4/gif; stripe 3-arm 영상이 캠페인 촬영에 그대로 쓰임.
+7. **릴리즈 2.0.1** (사용자 확정 09-02 11:50) — 신규 스킬(omd:landing·omd:setup·omd:media·omd:showcase·omd:issue)과 러너·검증기 개정을 담아 `omd-release-hygiene` 통과 후 npm 배포(배포 자체는 사용자 인증 필요) + 프로덕션 싱크(main 머지·푸시·/design.md 라이브 확인).
+8. **임팩트 콘텐츠** — X + Threads에 "와 다르다" 급 소재 2종: stripe 3-arm 스크롤 비교 영상(미국 브랜드 편) + omd:landing 결과물 쇼케이스. 그록봇 하드 룰(수치 무조작·레퍼런스 태그 금지·unofficial 고지·봉인 수치 미공개) 유지, 사람 승인 게이트.
 
 ## Exit conditions
 
@@ -59,4 +61,5 @@ parallel_efficiency 0.10 · harness_integrity 0.10.
 | D3–4 | F6 루프 정식화 + unattended | loop-trace.json |
 | D5–6 | F3 슬롭 게이트 v2 | 검출률 보고 |
 | D7 | F1 setup + media | `.omd/config`, 자산 세트 3 |
+| D8–9 | 2.0.1 릴리즈(release-hygiene·카운트 싱크·npm) + X/Threads 소재 최종 승인·게시 | 태그 v2.0.1, 포스트 |
 | 병행 | 마라톤 24웨이브(grok) — 완주 예상 D1 오후~D2 | 웨이브 커밋 24 |
