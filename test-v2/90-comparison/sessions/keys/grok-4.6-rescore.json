@@ -1,0 +1,104 @@
+{
+ "evaluator": "grok-4.6",
+ "lane": "A",
+ "chunk": "rescore",
+ "axes": [
+  "defects"
+ ],
+ "postHoc": false,
+ "rows": [
+  {
+   "brand": "apple",
+   "rep": 2,
+   "slots": {
+    "A": "hallmark"
+   }
+  },
+  {
+   "brand": "apple",
+   "rep": 3,
+   "slots": {
+    "A": "hallmark"
+   }
+  },
+  {
+   "brand": "apple",
+   "rep": 4,
+   "slots": {
+    "A": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "baemin",
+   "rep": 1,
+   "slots": {
+    "A": "uiuxpromax",
+    "B": "hallmark",
+    "C": "omd"
+   }
+  },
+  {
+   "brand": "baemin",
+   "rep": 2,
+   "slots": {
+    "A": "hallmark"
+   }
+  },
+  {
+   "brand": "baemin",
+   "rep": 3,
+   "slots": {
+    "A": "hallmark"
+   }
+  },
+  {
+   "brand": "coupang",
+   "rep": 1,
+   "slots": {
+    "A": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "coupang",
+   "rep": 2,
+   "slots": {
+    "A": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "coupang",
+   "rep": 4,
+   "slots": {
+    "C": "hallmark"
+   }
+  },
+  {
+   "brand": "musinsa",
+   "rep": 3,
+   "slots": {
+    "A": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "naver",
+   "rep": 4,
+   "slots": {
+    "A": "hallmark"
+   }
+  },
+  {
+   "brand": "toss",
+   "rep": 2,
+   "slots": {
+    "A": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "toss",
+   "rep": 3,
+   "slots": {
+    "C": "hallmark"
+   }
+  }
+ ]
+}
