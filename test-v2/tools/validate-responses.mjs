@@ -85,11 +85,13 @@ const coverage = [];
 for (const r of key.rows) for (const slot of ["A", "B", "C"]) {
   const k = `${r.brand}|${r.rep}|${slot}`;
   const have = seen[k] || new Set();
-  const expected = ["defects", "evidence", "document", ...(key.ceilingBrands?.includes(r.brand) ? ["identification"] : [])];
+  // 재채점 키(build-rescore.mjs)는 axes 를 명시하고 postHoc 을 끈다 — 청크 키는 기본값.
+  if (!(r.slots || {})[slot]) continue; // 키에 없는 슬롯(재채점은 필요한 슬롯만)은 기대하지 않는다
+  const expected = key.axes ? [...key.axes] : ["defects", "evidence", "document", ...(key.ceilingBrands?.includes(r.brand) ? ["identification"] : [])];
   const missing = expected.filter((a) => !have.has(a));
   coverage.push({ brand: r.brand, rep: r.rep, slot, missing });
 }
-const missingPosthoc = key.rows.filter((r) => !posthoc.has(`${r.brand}|${r.rep}`)).map((r) => `${r.brand}/${r.rep}`);
+const missingPosthoc = key.postHoc === false ? [] : key.rows.filter((r) => !posthoc.has(`${r.brand}|${r.rep}`)).map((r) => `${r.brand}/${r.rep}`);
 const ceilingShort = (key.ceilingBrands || []).filter((b) => (ceilingSeen[b]?.size || 0) < 4).map((b) => `${b}:${ceilingSeen[b]?.size || 0}/4`);
 const out = { lines: lines.length, parsed, problems, coverage: coverage.filter((c) => c.missing.length), missingPosthoc, ceilingShort, ok: problems.length === 0 && coverage.every((c) => !c.missing.length) && ceilingShort.length === 0 };
 if (asJson) console.log(JSON.stringify(out, null, 1));
