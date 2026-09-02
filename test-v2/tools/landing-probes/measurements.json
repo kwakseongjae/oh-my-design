@@ -1,0 +1,8253 @@
+{
+  "generatedAt": "2026-09-02T02:45:48.722Z",
+  "tool": "measure-landing.mjs",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "sites": [
+    {
+      "site": "affinity",
+      "url": "https://www.affinity.studio/",
+      "why": "user reference — studio one-pager cited as the 'overwhelming' target",
+      "capturedAt": "2026-09-02T02:40:08.001Z",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "errors": [],
+      "httpStatus": 200,
+      "atLoad": {
+        "docHeightPx": 13206,
+        "fold": {
+          "biggestText": {
+            "fontPx": 112,
+            "weight": "700",
+            "family": "Affinity Serif Variable",
+            "lineHeight": "107.52px",
+            "letterSpacing": "normal",
+            "text": "The one app for all your creative work",
+            "rect": {
+              "x": 24,
+              "y": 357,
+              "w": 1392,
+              "h": 215
+            },
+            "centerXpct": 50,
+            "centerYpct": 51.6,
+            "textAlign": "center"
+          },
+          "biggestMedia": {
+            "tag": "canvas",
+            "areaPx": 1180800,
+            "coveragePct": 91.1,
+            "rect": {
+              "x": 0,
+              "y": 80,
+              "w": 1440,
+              "h": 820
+            }
+          }
+        },
+        "videos": [
+          {
+            "autoplay": true,
+            "muted": true,
+            "loop": true,
+            "paused": false,
+            "playsInline": true,
+            "duration": 7.3,
+            "w": 1159,
+            "h": 652,
+            "absTop": 369,
+            "poster": false,
+            "srcKind": "mp4"
+          },
+          {
+            "autoplay": true,
+            "muted": true,
+            "loop": true,
+            "paused": true,
+            "playsInline": true,
+            "duration": null,
+            "w": 0,
+            "h": 0,
+            "absTop": 0,
+            "poster": false,
+            "srcKind": null
+          },
+          {
+            "autoplay": true,
+            "muted": true,
+            "loop": true,
+            "paused": true,
+            "playsInline": true,
+            "duration": null,
+            "w": 0,
+            "h": 0,
+            "absTop": 0,
+            "poster": false,
+            "srcKind": null
+          },
+          {
+            "autoplay": true,
+            "muted": true,
+            "loop": true,
+            "paused": true,
+            "playsInline": true,
+            "duration": null,
+            "w": 630,
+            "h": 328,
+            "absTop": 4982,
+            "poster": false,
+            "srcKind": null
+          }
+        ]
+      },
+      "taggedElements": 2440,
+      "scrollSteps": [
+        {
+          "step": 0,
+          "requestedY": 0,
+          "actualY": 0,
+          "docHeightAtStep": 13206
+        },
+        {
+          "step": 1,
+          "requestedY": 900,
+          "actualY": 900,
+          "docHeightAtStep": 13206
+        },
+        {
+          "step": 2,
+          "requestedY": 1800,
+          "actualY": 1800,
+          "docHeightAtStep": 13206
+        },
+        {
+          "step": 3,
+          "requestedY": 2700,
+          "actualY": 2700,
+          "docHeightAtStep": 13206
+        },
+        {
+          "step": 4,
+          "requestedY": 3600,
+          "actualY": 3600,
+          "docHeightAtStep": 13206
+        },
+        {
+          "step": 5,
+          "requestedY": 4500,
+          "actualY": 4500,
+          "docHeightAtStep": 13206
+        },
+        {
+          "step": 6,
+          "requestedY": 5400,
+          "actualY": 5400,
+          "docHeightAtStep": 13206
+        },
+        {
+          "step": 7,
+          "requestedY": 6300,
+          "actualY": 6300,
+          "docHeightAtStep": 13206
+        },
+        {
+          "step": 8,
+          "requestedY": 7200,
+          "actualY": 7200,
+          "docHeightAtStep": 13206
+        },
+        {
+          "step": 9,
+          "requestedY": 8100,
+          "actualY": 8100,
+          "docHeightAtStep": 13206
+        },
+        {
+          "step": 10,
+          "requestedY": 9000,
+          "actualY": 9000,
+          "docHeightAtStep": 13206
+        },
+        {
+          "step": 11,
+          "requestedY": 9900,
+          "actualY": 9900,
+          "docHeightAtStep": 13210
+        },
+        {
+          "step": 12,
+          "requestedY": 10800,
+          "actualY": 10800,
+          "docHeightAtStep": 13210
+        },
+        {
+          "step": 13,
+          "requestedY": 11700,
+          "actualY": 11700,
+          "docHeightAtStep": 13196
+        },
+        {
+          "step": 14,
+          "requestedY": 12600,
+          "actualY": 12296,
+          "docHeightAtStep": 13196
+        }
+      ],
+      "scrollStepCount": 15,
+      "reveals": {
+        "trackedElements": 1342,
+        "revealedElements": 80,
+        "opacityReveals": 80,
+        "transformReveals": 0,
+        "clipPathReveals": 0,
+        "elementsEverBelowFullOpacity": 201,
+        "revealsPerViewport": 5.3,
+        "sample": [
+          {
+            "id": "89",
+            "opacities": [
+              1,
+              0,
+              0,
+              0
+            ],
+            "transforms": [
+              "none"
+            ]
+          },
+          {
+            "id": "91",
+            "opacities": [
+              0,
+              1,
+              1,
+              1
+            ],
+            "transforms": [
+              "none"
+            ]
+          },
+          {
+            "id": "97",
+            "opacities": [
+              1,
+              1,
+              1,
+              0,
+              0
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, -190.516)",
+              "matrix(1, 0, 0, 1, 0, -115.357)",
+              "matrix(1, 0, 0, 1, 0, -38.1176)"
+            ]
+          },
+          {
+            "id": "127",
+            "opacities": [
+              0,
+              0,
+              0,
+              0.22,
+              1,
+              1
+            ],
+            "transforms": [
+              "matrix(0.9, 0, 0, 0.9, 0, 0)",
+              "matrix(0.9216, 0, 0, 0.9216, 0, 0)",
+              "matrix(1, 0, 0, 1, 0, 0)"
+            ]
+          },
+          {
+            "id": "332",
+            "opacities": [
+              0,
+              0,
+              1,
+              1,
+              1
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, 20)",
+              "matrix(1, 0, 0, 1, 0, 0)"
+            ]
+          },
+          {
+            "id": "374",
+            "opacities": [
+              0,
+              0,
+              1,
+              1,
+              1
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, 20)",
+              "matrix(1, 0, 0, 1, 0, 0)"
+            ]
+          },
+          {
+            "id": "400",
+            "opacities": [
+              0,
+              1,
+              1,
+              1,
+              1
+            ],
+            "transforms": [
+              "none"
+            ]
+          },
+          {
+            "id": "401",
+            "opacities": [
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            "transforms": [
+              "none"
+            ]
+          },
+          {
+            "id": "416",
+            "opacities": [
+              0,
+              0,
+              1,
+              1,
+              1
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, 20)",
+              "matrix(1, 0, 0, 1, 0, 0)"
+            ]
+          },
+          {
+            "id": "442",
+            "opacities": [
+              0,
+              1,
+              1,
+              1,
+              1
+            ],
+            "transforms": [
+              "none"
+            ]
+          },
+          {
+            "id": "443",
+            "opacities": [
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            "transforms": [
+              "none"
+            ]
+          },
+          {
+            "id": "458",
+            "opacities": [
+              0,
+              0,
+              1,
+              1,
+              1
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, 20)",
+              "matrix(1, 0, 0, 1, 0, 0)"
+            ]
+          }
+        ]
+      },
+      "docHeightPx": 13196,
+      "viewportHeights": 14.66,
+      "domSectionTags": 14,
+      "derivedSectionCount": 9,
+      "containerPath": "body>div#root>div>main",
+      "sections": [
+        {
+          "index": 0,
+          "tag": "section",
+          "id": null,
+          "cls": "x1ghz6dp x1717udv xng3xce xc342km xe8uvvx x9dqhi0 x9f619 x1a2a7pz x1n2onr6 theme dark xo86",
+          "top": 80,
+          "height": 4104,
+          "width": 1440,
+          "viewportHeights": 4.56,
+          "textAreaPx": 348332,
+          "assetAreaPx": 2697158,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 5909760,
+          "textRatio": 0.0589,
+          "assetRatio": 0.4564,
+          "imgCount": 2,
+          "videoCount": 1,
+          "canvasCount": 1,
+          "svgBig": 0,
+          "maxFontPx": 112,
+          "maxFontWeight": "700",
+          "maxFontFamily": "Affinity Serif Variable",
+          "maxFontText": "The one app for",
+          "medianBodyWidthPx": 869,
+          "maxBodyWidthPx": 869,
+          "distinctLeftEdges": [
+            0
+          ],
+          "commonBlockWidth": 1440,
+          "stickyChild": {
+            "pos": "fixed",
+            "h": 820,
+            "w": 1440,
+            "top": "80.001px"
+          },
+          "horizontalScroller": false,
+          "cssBg": "rgb(0, 0, 0)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              16,
+              8
+            ],
+            [
+              14,
+              3
+            ],
+            [
+              112,
+              3
+            ],
+            [
+              24,
+              1
+            ],
+            [
+              80,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(0, 0, 0)",
+          "dominantSharePct": 61.5,
+          "relativeLuminance": 0,
+          "tone": "dark",
+          "top3": [
+            {
+              "rgb": "rgb(0, 0, 0)",
+              "pct": 61.5
+            },
+            {
+              "rgb": "rgb(24, 24, 24)",
+              "pct": 1.6
+            },
+            {
+              "rgb": "rgb(156, 156, 156)",
+              "pct": 1.4
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "tag": "section",
+          "id": null,
+          "cls": "x1ghz6dp x1717udv xng3xce xc342km xe8uvvx x9dqhi0 x9f619 x1a2a7pz",
+          "top": 4184,
+          "height": 1250,
+          "width": 1440,
+          "viewportHeights": 1.39,
+          "textAreaPx": 689417,
+          "assetAreaPx": 721176,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 1800563,
+          "textRatio": 0.3829,
+          "assetRatio": 0.4005,
+          "imgCount": 17,
+          "videoCount": 1,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 80,
+          "maxFontWeight": "700",
+          "maxFontFamily": "Affinity Serif Variable",
+          "maxFontText": "Meet the new standard",
+          "medianBodyWidthPx": 218,
+          "maxBodyWidthPx": 540,
+          "distinctLeftEdges": [
+            0
+          ],
+          "commonBlockWidth": 1440,
+          "stickyChild": null,
+          "horizontalScroller": true,
+          "cssBg": "rgb(0, 0, 0)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              16,
+              24
+            ],
+            [
+              14,
+              17
+            ],
+            [
+              56,
+              6
+            ],
+            [
+              10,
+              2
+            ],
+            [
+              24,
+              1
+            ],
+            [
+              80,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(36, 24, 24)",
+          "dominantSharePct": 30.9,
+          "relativeLuminance": 0.011,
+          "tone": "dark",
+          "top3": [
+            {
+              "rgb": "rgb(36, 24, 24)",
+              "pct": 30.9
+            },
+            {
+              "rgb": "rgb(156, 96, 192)",
+              "pct": 12.3
+            },
+            {
+              "rgb": "rgb(132, 216, 228)",
+              "pct": 11.3
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "tag": "section",
+          "id": null,
+          "cls": "x1ghz6dp x1717udv xng3xce xc342km xe8uvvx x9dqhi0 x9f619 x1a2a7pz VPALpg theme dark xo86na",
+          "top": 5434,
+          "height": 886,
+          "width": 1440,
+          "viewportHeights": 0.98,
+          "textAreaPx": 162569,
+          "assetAreaPx": 927690,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 1275840,
+          "textRatio": 0.1274,
+          "assetRatio": 0.7271,
+          "imgCount": 14,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 80,
+          "maxFontWeight": "700",
+          "maxFontFamily": "Affinity Serif Variable",
+          "maxFontText": "Your PSDs are welcome here",
+          "medianBodyWidthPx": 621,
+          "maxBodyWidthPx": 621,
+          "distinctLeftEdges": [
+            0
+          ],
+          "commonBlockWidth": 1440,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(0, 0, 0)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              16,
+              1
+            ],
+            [
+              24,
+              1
+            ],
+            [
+              80,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(0, 0, 0)",
+          "dominantSharePct": 60,
+          "relativeLuminance": 0,
+          "tone": "dark",
+          "top3": [
+            {
+              "rgb": "rgb(0, 0, 0)",
+              "pct": 60
+            },
+            {
+              "rgb": "rgb(12, 12, 12)",
+              "pct": 2.1
+            },
+            {
+              "rgb": "rgb(48, 48, 48)",
+              "pct": 2
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "tag": "section",
+          "id": null,
+          "cls": "x1ghz6dp x1717udv xng3xce xc342km xe8uvvx x9dqhi0 x9f619 x1a2a7pz",
+          "top": 6420,
+          "height": 919,
+          "width": 1440,
+          "viewportHeights": 1.02,
+          "textAreaPx": 312563,
+          "assetAreaPx": 480368,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 1323023,
+          "textRatio": 0.2362,
+          "assetRatio": 0.3631,
+          "imgCount": 16,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 80,
+          "maxFontWeight": "700",
+          "maxFontFamily": "Affinity Serif Variable",
+          "maxFontText": "Made in Affinity",
+          "medianBodyWidthPx": null,
+          "maxBodyWidthPx": null,
+          "distinctLeftEdges": [
+            0
+          ],
+          "commonBlockWidth": 1440,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(0, 0, 0)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              14,
+              1
+            ],
+            [
+              16,
+              1
+            ],
+            [
+              48,
+              1
+            ],
+            [
+              80,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(252, 252, 252)",
+          "dominantSharePct": 25,
+          "relativeLuminance": 0.973,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 25
+            },
+            {
+              "rgb": "rgb(240, 240, 240)",
+              "pct": 10.2
+            },
+            {
+              "rgb": "rgb(168, 168, 168)",
+              "pct": 3.2
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "tag": "section",
+          "id": null,
+          "cls": "x1ghz6dp x1717udv xng3xce xc342km xe8uvvx x9dqhi0 x9f619 x1a2a7pz x30g6up theme dark xo86n",
+          "top": 7339,
+          "height": 1183,
+          "width": 1440,
+          "viewportHeights": 1.31,
+          "textAreaPx": 217970,
+          "assetAreaPx": 404752,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 1703183,
+          "textRatio": 0.128,
+          "assetRatio": 0.2376,
+          "imgCount": 3,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 80,
+          "maxFontWeight": "700",
+          "maxFontFamily": "Affinity Serif Variable",
+          "maxFontText": "Zero bucks given",
+          "medianBodyWidthPx": 315,
+          "maxBodyWidthPx": 1065,
+          "distinctLeftEdges": [
+            76,
+            188
+          ],
+          "commonBlockWidth": 1288,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(33, 29, 29)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              14,
+              3
+            ],
+            [
+              16,
+              3
+            ],
+            [
+              32,
+              3
+            ],
+            [
+              24,
+              1
+            ],
+            [
+              80,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(36, 24, 24)",
+          "dominantSharePct": 65.4,
+          "relativeLuminance": 0.011,
+          "tone": "dark",
+          "top3": [
+            {
+              "rgb": "rgb(36, 24, 24)",
+              "pct": 65.4
+            },
+            {
+              "rgb": "rgb(36, 36, 36)",
+              "pct": 13.2
+            },
+            {
+              "rgb": "rgb(24, 24, 24)",
+              "pct": 3.4
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "tag": "section",
+          "id": null,
+          "cls": "x1ghz6dp x1717udv xng3xce xc342km xe8uvvx x9dqhi0 x9f619 x1a2a7pz VPALpg theme light x6brq",
+          "top": 8522,
+          "height": 860,
+          "width": 1440,
+          "viewportHeights": 0.96,
+          "textAreaPx": 161104,
+          "assetAreaPx": 330335,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 1237770,
+          "textRatio": 0.1302,
+          "assetRatio": 0.2669,
+          "imgCount": 1,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 80,
+          "maxFontWeight": "700",
+          "maxFontFamily": "Affinity Serif Variable",
+          "maxFontText": "AI that respects your craft.",
+          "medianBodyWidthPx": 584,
+          "maxBodyWidthPx": 584,
+          "distinctLeftEdges": [
+            0
+          ],
+          "commonBlockWidth": 1440,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(246, 246, 246)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              24,
+              3
+            ],
+            [
+              16,
+              2
+            ],
+            [
+              14,
+              1
+            ],
+            [
+              80,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(252, 252, 252)",
+          "dominantSharePct": 39.8,
+          "relativeLuminance": 0.973,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 39.8
+            },
+            {
+              "rgb": "rgb(240, 240, 240)",
+              "pct": 15.9
+            },
+            {
+              "rgb": "rgb(48, 48, 48)",
+              "pct": 3.1
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "tag": "section",
+          "id": null,
+          "cls": "x1ghz6dp x1717udv xng3xce xc342km xe8uvvx x9dqhi0 x9f619 x1a2a7pz VPALpg theme dark xo86na",
+          "top": 9381,
+          "height": 1246,
+          "width": 1440,
+          "viewportHeights": 1.38,
+          "textAreaPx": 427926,
+          "assetAreaPx": 522973,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 1794735,
+          "textRatio": 0.2384,
+          "assetRatio": 0.2914,
+          "imgCount": 6,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 80,
+          "maxFontWeight": "700",
+          "maxFontFamily": "Affinity Serif Variable",
+          "maxFontText": "Affinity’s for people",
+          "medianBodyWidthPx": null,
+          "maxBodyWidthPx": null,
+          "distinctLeftEdges": [
+            0
+          ],
+          "commonBlockWidth": 1440,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(33, 29, 29)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              80,
+              4
+            ],
+            [
+              16,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(36, 24, 24)",
+          "dominantSharePct": 42.9,
+          "relativeLuminance": 0.011,
+          "tone": "dark",
+          "top3": [
+            {
+              "rgb": "rgb(36, 24, 24)",
+              "pct": 42.9
+            },
+            {
+              "rgb": "rgb(24, 24, 24)",
+              "pct": 7.2
+            },
+            {
+              "rgb": "rgb(36, 36, 36)",
+              "pct": 6
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "tag": "section",
+          "id": null,
+          "cls": "x1ghz6dp x1717udv xng3xce xc342km xe8uvvx x9dqhi0 x9f619 x1a2a7pz x1jmej26 x1ia43yy x1mybc",
+          "top": 10628,
+          "height": 871,
+          "width": 1440,
+          "viewportHeights": 0.97,
+          "textAreaPx": 178241,
+          "assetAreaPx": 404494,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 1254038,
+          "textRatio": 0.1421,
+          "assetRatio": 0.3226,
+          "imgCount": 3,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 80,
+          "maxFontWeight": "700",
+          "maxFontFamily": "Affinity Serif Variable",
+          "maxFontText": "Inspi",
+          "medianBodyWidthPx": null,
+          "maxBodyWidthPx": null,
+          "distinctLeftEdges": [
+            0
+          ],
+          "commonBlockWidth": 1440,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(255, 255, 255)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              14,
+              12
+            ],
+            [
+              80,
+              5
+            ],
+            [
+              32,
+              3
+            ]
+          ],
+          "dominantRgb": "rgb(252, 252, 252)",
+          "dominantSharePct": 42.3,
+          "relativeLuminance": 0.973,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 42.3
+            },
+            {
+              "rgb": "rgb(228, 228, 228)",
+              "pct": 3.4
+            },
+            {
+              "rgb": "rgb(240, 240, 240)",
+              "pct": 3
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "tag": "section",
+          "id": null,
+          "cls": "x1ghz6dp x1717udv xng3xce xc342km xe8uvvx x9dqhi0 x9f619 x1a2a7pz",
+          "top": 11499,
+          "height": 717,
+          "width": 1440,
+          "viewportHeights": 0.8,
+          "textAreaPx": 110972,
+          "assetAreaPx": 1032741,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 1032165,
+          "textRatio": 0.1075,
+          "assetRatio": 1.0006,
+          "imgCount": 1,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 80,
+          "maxFontWeight": "700",
+          "maxFontFamily": "Affinity Serif Variable",
+          "maxFontText": "Stop renting software.  Move in here.",
+          "medianBodyWidthPx": null,
+          "maxBodyWidthPx": null,
+          "distinctLeftEdges": [
+            0
+          ],
+          "commonBlockWidth": 1440,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(0, 0, 0)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              16,
+              1
+            ],
+            [
+              80,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(84, 120, 144)",
+          "dominantSharePct": 7.4,
+          "relativeLuminance": 0.173,
+          "tone": "dark",
+          "top3": [
+            {
+              "rgb": "rgb(84, 120, 144)",
+              "pct": 7.4
+            },
+            {
+              "rgb": "rgb(84, 120, 132)",
+              "pct": 5.7
+            },
+            {
+              "rgb": "rgb(96, 132, 144)",
+              "pct": 5.5
+            }
+          ]
+        }
+      ],
+      "sticky": [
+        {
+          "tag": "header",
+          "cls": "x1ghz6dp x1717udv xng3xce xc342km xe8uvvx x9dqhi0 x9f619 x1a",
+          "h": 80,
+          "top": "0px"
+        }
+      ],
+      "stickyCount": 1,
+      "fixed": [
+        {
+          "tag": "div",
+          "cls": "Yxy5xg",
+          "h": 820,
+          "w": 1440
+        }
+      ],
+      "fixedCount": 1,
+      "scrollSnap": {
+        "root": "none",
+        "body": "none",
+        "firstDescendant": {
+          "on": "div",
+          "value": "x"
+        }
+      },
+      "motion": {
+        "elementsWithTransition": 389,
+        "topDurationsMs": [
+          [
+            100,
+            283
+          ],
+          [
+            150,
+            252
+          ],
+          [
+            300,
+            20
+          ],
+          [
+            70,
+            14
+          ],
+          [
+            250,
+            11
+          ],
+          [
+            200,
+            9
+          ],
+          [
+            400,
+            5
+          ],
+          [
+            500,
+            3
+          ],
+          [
+            600,
+            2
+          ],
+          [
+            700,
+            2
+          ]
+        ],
+        "topEasings": [
+          [
+            "linear",
+            286
+          ],
+          [
+            "ease-in-out",
+            274
+          ],
+          [
+            "ease",
+            36
+          ],
+          [
+            "ease-out",
+            3
+          ],
+          [
+            "ease-in",
+            2
+          ]
+        ],
+        "topProperties": [
+          [
+            "opacity",
+            264
+          ],
+          [
+            "background-color",
+            98
+          ],
+          [
+            "color",
+            94
+          ],
+          [
+            "border-color",
+            80
+          ],
+          [
+            "transform",
+            31
+          ],
+          [
+            "all",
+            18
+          ],
+          [
+            "box-shadow",
+            16
+          ]
+        ],
+        "topAnimationDurationsMs": [
+          [
+            1400,
+            98
+          ],
+          [
+            400,
+            2
+          ],
+          [
+            800,
+            1
+          ],
+          [
+            2600,
+            1
+          ],
+          [
+            8000,
+            1
+          ]
+        ],
+        "topAnimationNames": [
+          [
+            "x8ht0xs-B",
+            98
+          ],
+          [
+            "onetrust-fade-in",
+            2
+          ],
+          [
+            "H6WRRg",
+            1
+          ],
+          [
+            "jbUoZA",
+            1
+          ],
+          [
+            "otFloatingBtnIntro",
+            1
+          ]
+        ],
+        "nonTransformTransitionDecls": 288
+      },
+      "fold": {
+        "biggestText": {
+          "fontPx": 112,
+          "weight": "700",
+          "family": "Affinity Serif Variable",
+          "lineHeight": "107.52px",
+          "letterSpacing": "normal",
+          "text": "The one app for all your creative work",
+          "rect": {
+            "x": 24,
+            "y": 357,
+            "w": 1392,
+            "h": 215
+          },
+          "centerXpct": 50,
+          "centerYpct": 51.6,
+          "textAlign": "center"
+        },
+        "biggestMedia": {
+          "tag": "canvas",
+          "areaPx": 1180800,
+          "coveragePct": 91.1,
+          "rect": {
+            "x": 0,
+            "y": 80,
+            "w": 1440,
+            "h": 820
+          }
+        }
+      },
+      "videos": [
+        {
+          "autoplay": true,
+          "muted": true,
+          "loop": true,
+          "paused": false,
+          "playsInline": true,
+          "duration": 7.3,
+          "w": 1159,
+          "h": 652,
+          "absTop": 369,
+          "poster": false,
+          "srcKind": "mp4"
+        },
+        {
+          "autoplay": true,
+          "muted": true,
+          "loop": true,
+          "paused": true,
+          "playsInline": true,
+          "duration": null,
+          "w": 0,
+          "h": 0,
+          "absTop": 0,
+          "poster": false,
+          "srcKind": null
+        },
+        {
+          "autoplay": true,
+          "muted": true,
+          "loop": true,
+          "paused": true,
+          "playsInline": true,
+          "duration": 12.47,
+          "w": 0,
+          "h": 0,
+          "absTop": 0,
+          "poster": false,
+          "srcKind": "mp4"
+        },
+        {
+          "autoplay": true,
+          "muted": true,
+          "loop": true,
+          "paused": true,
+          "playsInline": true,
+          "duration": 12.47,
+          "w": 630,
+          "h": 328,
+          "absTop": 4962,
+          "poster": false,
+          "srcKind": "mp4"
+        }
+      ],
+      "typeScale": [
+        [
+          "16/401",
+          78
+        ],
+        [
+          "14/401",
+          26
+        ],
+        [
+          "16/600",
+          24
+        ],
+        [
+          "14/500",
+          12
+        ],
+        [
+          "16/500",
+          12
+        ],
+        [
+          "80/700",
+          12
+        ],
+        [
+          "56/700",
+          12
+        ],
+        [
+          "13/400",
+          11
+        ],
+        [
+          "38/500",
+          10
+        ],
+        [
+          "32/400",
+          6
+        ],
+        [
+          "14/600",
+          5
+        ],
+        [
+          "24/401",
+          5
+        ],
+        [
+          "14/700",
+          5
+        ],
+        [
+          "112/700",
+          4
+        ],
+        [
+          "14/400",
+          4
+        ],
+        [
+          "10/400",
+          3
+        ]
+      ],
+      "prefersReducedMotionRule": true,
+      "docBg": "rgba(0, 0, 0, 0)",
+      "videoStateAfterJourney": [
+        {
+          "paused": true,
+          "currentTime": 6.85,
+          "autoplay": true,
+          "muted": true,
+          "loop": true
+        },
+        {
+          "paused": true,
+          "currentTime": 0,
+          "autoplay": true,
+          "muted": true,
+          "loop": true
+        },
+        {
+          "paused": true,
+          "currentTime": 0,
+          "autoplay": true,
+          "muted": true,
+          "loop": true
+        },
+        {
+          "paused": true,
+          "currentTime": 1.92,
+          "autoplay": true,
+          "muted": true,
+          "loop": true
+        }
+      ],
+      "fullPageCapture": "ok",
+      "revealsOnEnter": {
+        "probedAt": "2026-09-02T02:46:15.750Z",
+        "perStep": [
+          {
+            "step": 1,
+            "y": 900,
+            "revealedOnEnter": 1,
+            "opacity": 1,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 138
+          },
+          {
+            "step": 2,
+            "y": 1800,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 138
+          },
+          {
+            "step": 3,
+            "y": 2700,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 138
+          },
+          {
+            "step": 4,
+            "y": 3600,
+            "revealedOnEnter": 4,
+            "opacity": 4,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 258
+          },
+          {
+            "step": 5,
+            "y": 4500,
+            "revealedOnEnter": 12,
+            "opacity": 12,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 458
+          },
+          {
+            "step": 6,
+            "y": 5400,
+            "revealedOnEnter": 8,
+            "opacity": 8,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 394
+          },
+          {
+            "step": 7,
+            "y": 6300,
+            "revealedOnEnter": 1,
+            "opacity": 1,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 245
+          },
+          {
+            "step": 8,
+            "y": 7200,
+            "revealedOnEnter": 5,
+            "opacity": 5,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 231
+          },
+          {
+            "step": 9,
+            "y": 8100,
+            "revealedOnEnter": 2,
+            "opacity": 2,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 237
+          },
+          {
+            "step": 10,
+            "y": 9000,
+            "revealedOnEnter": 6,
+            "opacity": 6,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 174
+          },
+          {
+            "step": 11,
+            "y": 9900,
+            "revealedOnEnter": 5,
+            "opacity": 5,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 146
+          },
+          {
+            "step": 12,
+            "y": 10800,
+            "revealedOnEnter": 4,
+            "opacity": 4,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 165
+          },
+          {
+            "step": 13,
+            "y": 11700,
+            "revealedOnEnter": 2,
+            "opacity": 2,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 248
+          },
+          {
+            "step": 14,
+            "y": 12600,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 297
+          }
+        ],
+        "error": null,
+        "totals": {
+          "revealedOnEnter": 50,
+          "opacity": 50,
+          "transform": 0,
+          "clipPath": 0,
+          "filter": 0,
+          "stepsProbed": 14,
+          "revealsPerViewport": 3.6,
+          "stepsWithAnyReveal": 11
+        }
+      },
+      "motionTokens": {
+        "topEasings": [
+          [
+            "linear",
+            283
+          ],
+          [
+            "ease-in-out",
+            274
+          ],
+          [
+            "ease",
+            36
+          ],
+          [
+            "ease-out",
+            3
+          ],
+          [
+            "ease-in",
+            2
+          ]
+        ],
+        "topTransitionPairs": [
+          [
+            "100ms / linear",
+            282
+          ],
+          [
+            "150ms / ease-in-out",
+            252
+          ],
+          [
+            "300ms / ease-in-out",
+            19
+          ],
+          [
+            "70ms / ease",
+            14
+          ],
+          [
+            "250ms / ease",
+            8
+          ],
+          [
+            "200ms / ease",
+            3
+          ],
+          [
+            "500ms / ease",
+            3
+          ],
+          [
+            "200ms / ease-in-out",
+            3
+          ],
+          [
+            "250ms / ease-out",
+            3
+          ],
+          [
+            "400ms / ease",
+            2
+          ]
+        ],
+        "topAnimationPairs": [
+          [
+            "1400ms / ease",
+            98
+          ],
+          [
+            "400ms / ease-in-out",
+            2
+          ],
+          [
+            "8000ms / linear",
+            1
+          ],
+          [
+            "2600ms / cubic-bezier(0, 0.55, 0.45, 1)",
+            1
+          ],
+          [
+            "800ms / ease",
+            1
+          ]
+        ],
+        "topStaggerDelaysMs": [
+          [
+            "-250",
+            2
+          ],
+          [
+            "10",
+            1
+          ]
+        ]
+      },
+      "reflexes": {
+        "cardGridGroups": 0,
+        "cardGridMax": 0,
+        "iconTiles": 0,
+        "nestedCards": 0,
+        "gradientFills": 2,
+        "bigGradientFills": 0,
+        "glows": 6,
+        "coloredGlows": 1,
+        "h1": {
+          "fontPx": 112,
+          "weight": "700",
+          "align": "center",
+          "text": "The one app for all your creative work"
+        },
+        "imageHosts": [
+          [
+            "www.affinity.studio",
+            109
+          ],
+          [
+            "cdn-au.onetrust.com",
+            2
+          ]
+        ],
+        "bodyLineWidth": {
+          "p50": 217,
+          "p90": 612,
+          "max": 1065,
+          "samples": 84
+        }
+      }
+    },
+    {
+      "site": "linear",
+      "url": "https://linear.app/",
+      "why": "product landing widely held as craft benchmark; dark-first, heavy reveal choreography",
+      "capturedAt": "2026-09-02T02:40:54.694Z",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "errors": [],
+      "httpStatus": 200,
+      "atLoad": {
+        "docHeightPx": 9960,
+        "fold": {
+          "biggestText": {
+            "fontPx": 64,
+            "weight": "510",
+            "family": "Inter Variable",
+            "lineHeight": "64px",
+            "letterSpacing": "-1.408px",
+            "text": "The product development",
+            "rect": {
+              "x": 78,
+              "y": 272,
+              "w": 703,
+              "h": 64
+            },
+            "centerXpct": 29.8,
+            "centerYpct": 33.8,
+            "textAlign": "start"
+          },
+          "biggestMedia": {
+            "tag": "img",
+            "areaPx": 1157490,
+            "coveragePct": 89.3,
+            "rect": {
+              "x": 0,
+              "y": 491,
+              "w": 1440,
+              "h": 804
+            }
+          }
+        },
+        "videos": []
+      },
+      "taggedElements": 4667,
+      "scrollSteps": [
+        {
+          "step": 0,
+          "requestedY": 0,
+          "actualY": 0,
+          "docHeightAtStep": 9960
+        },
+        {
+          "step": 1,
+          "requestedY": 900,
+          "actualY": 900,
+          "docHeightAtStep": 9960
+        },
+        {
+          "step": 2,
+          "requestedY": 1800,
+          "actualY": 1800,
+          "docHeightAtStep": 9960
+        },
+        {
+          "step": 3,
+          "requestedY": 2700,
+          "actualY": 2700,
+          "docHeightAtStep": 9960
+        },
+        {
+          "step": 4,
+          "requestedY": 3600,
+          "actualY": 3600,
+          "docHeightAtStep": 9960
+        },
+        {
+          "step": 5,
+          "requestedY": 4500,
+          "actualY": 4500,
+          "docHeightAtStep": 9960
+        },
+        {
+          "step": 6,
+          "requestedY": 5400,
+          "actualY": 5400,
+          "docHeightAtStep": 9960
+        },
+        {
+          "step": 7,
+          "requestedY": 6300,
+          "actualY": 6300,
+          "docHeightAtStep": 9960
+        },
+        {
+          "step": 8,
+          "requestedY": 7200,
+          "actualY": 7200,
+          "docHeightAtStep": 9960
+        },
+        {
+          "step": 9,
+          "requestedY": 8100,
+          "actualY": 8100,
+          "docHeightAtStep": 9960
+        },
+        {
+          "step": 10,
+          "requestedY": 9000,
+          "actualY": 9000,
+          "docHeightAtStep": 9960
+        },
+        {
+          "step": 11,
+          "requestedY": 9900,
+          "actualY": 9060,
+          "docHeightAtStep": 9960
+        }
+      ],
+      "scrollStepCount": 12,
+      "reveals": {
+        "trackedElements": 2100,
+        "revealedElements": 1,
+        "opacityReveals": 1,
+        "transformReveals": 0,
+        "clipPathReveals": 0,
+        "elementsEverBelowFullOpacity": 61,
+        "revealsPerViewport": 0.1,
+        "sample": [
+          {
+            "id": "1590",
+            "opacities": [
+              0.2,
+              1,
+              1,
+              1
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, 0)"
+            ]
+          }
+        ]
+      },
+      "docHeightPx": 9960,
+      "viewportHeights": 11.07,
+      "domSectionTags": 8,
+      "derivedSectionCount": 10,
+      "containerPath": "body>div>div>main>div",
+      "sections": [
+        {
+          "index": 0,
+          "tag": "div",
+          "id": null,
+          "cls": null,
+          "top": 271,
+          "height": 1024,
+          "width": 1344,
+          "viewportHeights": 1.14,
+          "textAreaPx": 353791,
+          "assetAreaPx": 1091747,
+          "bgImageAreaPx": 946324,
+          "sectionAreaPx": 1376256,
+          "textRatio": 0.2571,
+          "assetRatio": 1.4809,
+          "imgCount": 8,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 64,
+          "maxFontWeight": "510",
+          "maxFontFamily": "Inter Variable",
+          "maxFontText": "The product development",
+          "medianBodyWidthPx": 340,
+          "maxBodyWidthPx": 506,
+          "distinctLeftEdges": [
+            0,
+            48,
+            80
+          ],
+          "commonBlockWidth": 1440,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(8, 9, 10)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              12,
+              70
+            ],
+            [
+              13,
+              20
+            ],
+            [
+              15,
+              4
+            ],
+            [
+              10,
+              3
+            ],
+            [
+              14,
+              3
+            ],
+            [
+              64,
+              3
+            ]
+          ],
+          "dominantRgb": "rgb(24, 24, 24)",
+          "dominantSharePct": 43.8,
+          "relativeLuminance": 0.009,
+          "tone": "dark",
+          "top3": [
+            {
+              "rgb": "rgb(24, 24, 24)",
+              "pct": 43.8
+            },
+            {
+              "rgb": "rgb(12, 12, 12)",
+              "pct": 26
+            },
+            {
+              "rgb": "rgb(36, 36, 36)",
+              "pct": 6.6
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "tag": "h2",
+          "id": null,
+          "cls": "sc-KOGVz jaIwvI Fzcv4W_inset Fzcv4W_insetLarge",
+          "top": 1596,
+          "height": 144,
+          "width": 1250,
+          "viewportHeights": 0.16,
+          "textAreaPx": 182196,
+          "assetAreaPx": 0,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 180000,
+          "textRatio": 1.0122,
+          "assetRatio": 0,
+          "imgCount": 0,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 48,
+          "maxFontWeight": "510",
+          "maxFontFamily": "Inter Variable",
+          "maxFontText": "A new species of product tool.",
+          "medianBodyWidthPx": null,
+          "maxBodyWidthPx": null,
+          "distinctLeftEdges": [
+            80
+          ],
+          "commonBlockWidth": 608,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(8, 9, 10)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              48,
+              2
+            ]
+          ],
+          "dominantRgb": "rgb(12, 12, 12)",
+          "dominantSharePct": 80.8,
+          "relativeLuminance": 0.004,
+          "tone": "dark",
+          "top3": [
+            {
+              "rgb": "rgb(12, 12, 12)",
+              "pct": 80.8
+            },
+            {
+              "rgb": "rgb(0, 0, 0)",
+              "pct": 2.6
+            },
+            {
+              "rgb": "rgb(60, 60, 60)",
+              "pct": 1.8
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "tag": "div",
+          "id": null,
+          "cls": "GJ9TEa_benefits hide-laptop _9PBFba_root",
+          "top": 1876,
+          "height": 468,
+          "width": 1344,
+          "viewportHeights": 0.52,
+          "textAreaPx": 42542,
+          "assetAreaPx": 227998,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 628992,
+          "textRatio": 0.0676,
+          "assetRatio": 0.3625,
+          "imgCount": 0,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 3,
+          "maxFontPx": 15,
+          "maxFontWeight": "510",
+          "maxFontFamily": "Inter Variable",
+          "maxFontText": "Purpose-built",
+          "medianBodyWidthPx": 310,
+          "maxBodyWidthPx": 325,
+          "distinctLeftEdges": [
+            80,
+            508,
+            540,
+            932,
+            964
+          ],
+          "commonBlockWidth": 392,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(8, 9, 10)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              15,
+              6
+            ],
+            [
+              12,
+              3
+            ]
+          ],
+          "dominantRgb": "rgb(12, 12, 12)",
+          "dominantSharePct": 92.2,
+          "relativeLuminance": 0.004,
+          "tone": "dark",
+          "top3": [
+            {
+              "rgb": "rgb(12, 12, 12)",
+              "pct": 92.2
+            },
+            {
+              "rgb": "rgb(24, 24, 24)",
+              "pct": 1.2
+            },
+            {
+              "rgb": "rgb(12, 12, 24)",
+              "pct": 1.2
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "tag": "section",
+          "id": null,
+          "cls": "b-30Va_root b-30Va_rootHomepage",
+          "top": 2546,
+          "height": 1226,
+          "width": 1344,
+          "viewportHeights": 1.36,
+          "textAreaPx": 207908,
+          "assetAreaPx": 16504,
+          "bgImageAreaPx": 1084128,
+          "sectionAreaPx": 1647639,
+          "textRatio": 0.1262,
+          "assetRatio": 0.668,
+          "imgCount": 10,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 48,
+          "maxFontWeight": "510",
+          "maxFontFamily": "Inter Variable",
+          "maxFontText": "Intake",
+          "medianBodyWidthPx": 310,
+          "maxBodyWidthPx": 512,
+          "distinctLeftEdges": [
+            48,
+            56,
+            720
+          ],
+          "commonBlockWidth": 672,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(8, 9, 10)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              12,
+              43
+            ],
+            [
+              15,
+              17
+            ],
+            [
+              10,
+              16
+            ],
+            [
+              18,
+              4
+            ],
+            [
+              48,
+              2
+            ],
+            [
+              13,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(12, 12, 12)",
+          "dominantSharePct": 61.2,
+          "relativeLuminance": 0.004,
+          "tone": "dark",
+          "top3": [
+            {
+              "rgb": "rgb(12, 12, 12)",
+              "pct": 61.2
+            },
+            {
+              "rgb": "rgb(24, 24, 24)",
+              "pct": 12.9
+            },
+            {
+              "rgb": "rgb(12, 24, 24)",
+              "pct": 7.1
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "tag": "section",
+          "id": null,
+          "cls": "b-30Va_root b-30Va_rootHomepage",
+          "top": 3782,
+          "height": 1229,
+          "width": 1344,
+          "viewportHeights": 1.37,
+          "textAreaPx": 102343,
+          "assetAreaPx": 286945,
+          "bgImageAreaPx": 1229760,
+          "sectionAreaPx": 1651671,
+          "textRatio": 0.062,
+          "assetRatio": 0.9183,
+          "imgCount": 0,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 1,
+          "maxFontPx": 48,
+          "maxFontWeight": "510",
+          "maxFontFamily": "Inter Variable",
+          "maxFontText": "Planning",
+          "medianBodyWidthPx": 562,
+          "maxBodyWidthPx": 562,
+          "distinctLeftEdges": [
+            0,
+            48,
+            720
+          ],
+          "commonBlockWidth": 672,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(8, 9, 10)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              12,
+              40
+            ],
+            [
+              15,
+              9
+            ],
+            [
+              10,
+              7
+            ],
+            [
+              18,
+              6
+            ],
+            [
+              13,
+              4
+            ],
+            [
+              48,
+              2
+            ]
+          ],
+          "dominantRgb": "rgb(12, 12, 12)",
+          "dominantSharePct": 71.5,
+          "relativeLuminance": 0.004,
+          "tone": "dark",
+          "top3": [
+            {
+              "rgb": "rgb(12, 12, 12)",
+              "pct": 71.5
+            },
+            {
+              "rgb": "rgb(24, 24, 24)",
+              "pct": 13.1
+            },
+            {
+              "rgb": "rgb(12, 24, 24)",
+              "pct": 2.9
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "tag": "section",
+          "id": null,
+          "cls": "b-30Va_root b-30Va_rootHomepage",
+          "top": 5021,
+          "height": 1232,
+          "width": 1344,
+          "viewportHeights": 1.37,
+          "textAreaPx": 189639,
+          "assetAreaPx": 5384,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 1655703,
+          "textRatio": 0.1145,
+          "assetRatio": 0.0033,
+          "imgCount": 3,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 48,
+          "maxFontWeight": "510",
+          "maxFontFamily": "Inter Variable",
+          "maxFontText": "AI and",
+          "medianBodyWidthPx": 313,
+          "maxBodyWidthPx": 538,
+          "distinctLeftEdges": [
+            48,
+            720
+          ],
+          "commonBlockWidth": 672,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(8, 9, 10)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              13,
+              25
+            ],
+            [
+              12,
+              22
+            ],
+            [
+              15,
+              7
+            ],
+            [
+              18,
+              4
+            ],
+            [
+              10,
+              3
+            ],
+            [
+              11,
+              2
+            ]
+          ],
+          "dominantRgb": "rgb(12, 12, 12)",
+          "dominantSharePct": 75.3,
+          "relativeLuminance": 0.004,
+          "tone": "dark",
+          "top3": [
+            {
+              "rgb": "rgb(12, 12, 12)",
+              "pct": 75.3
+            },
+            {
+              "rgb": "rgb(24, 24, 24)",
+              "pct": 8.1
+            },
+            {
+              "rgb": "rgb(12, 12, 24)",
+              "pct": 2.3
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "tag": "section",
+          "id": null,
+          "cls": "b-30Va_root b-30Va_rootHomepage",
+          "top": 6263,
+          "height": 1220,
+          "width": 1344,
+          "viewportHeights": 1.36,
+          "textAreaPx": 274655,
+          "assetAreaPx": 11292,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 1639575,
+          "textRatio": 0.1675,
+          "assetRatio": 0.0069,
+          "imgCount": 14,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 48,
+          "maxFontWeight": "510",
+          "maxFontFamily": "Inter Variable",
+          "maxFontText": "Build, review,",
+          "medianBodyWidthPx": 340,
+          "maxBodyWidthPx": 546,
+          "distinctLeftEdges": [
+            48,
+            720
+          ],
+          "commonBlockWidth": 672,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(8, 9, 10)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              14,
+              172
+            ],
+            [
+              12,
+              31
+            ],
+            [
+              13,
+              29
+            ],
+            [
+              15,
+              9
+            ],
+            [
+              18,
+              6
+            ],
+            [
+              48,
+              2
+            ]
+          ],
+          "dominantRgb": "rgb(12, 12, 12)",
+          "dominantSharePct": 67.3,
+          "relativeLuminance": 0.004,
+          "tone": "dark",
+          "top3": [
+            {
+              "rgb": "rgb(12, 12, 12)",
+              "pct": 67.3
+            },
+            {
+              "rgb": "rgb(24, 24, 24)",
+              "pct": 8.7
+            },
+            {
+              "rgb": "rgb(12, 12, 24)",
+              "pct": 2.4
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "tag": "div",
+          "id": null,
+          "cls": "hide-mobile",
+          "top": 7644,
+          "height": 422,
+          "width": 1344,
+          "viewportHeights": 0.47,
+          "textAreaPx": 131719,
+          "assetAreaPx": 0,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 566895,
+          "textRatio": 0.2324,
+          "assetRatio": 0,
+          "imgCount": 0,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 48,
+          "maxFontWeight": "510",
+          "maxFontFamily": "Inter Variable",
+          "maxFontText": "Changelog",
+          "medianBodyWidthPx": 262,
+          "maxBodyWidthPx": 268,
+          "distinctLeftEdges": [
+            48,
+            80,
+            416,
+            752,
+            1088
+          ],
+          "commonBlockWidth": 272,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(8, 9, 10)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              15,
+              10
+            ],
+            [
+              12,
+              4
+            ],
+            [
+              48,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(12, 12, 12)",
+          "dominantSharePct": 89.4,
+          "relativeLuminance": 0.004,
+          "tone": "dark",
+          "top3": [
+            {
+              "rgb": "rgb(12, 12, 12)",
+              "pct": 89.4
+            },
+            {
+              "rgb": "rgb(0, 0, 0)",
+              "pct": 1.5
+            },
+            {
+              "rgb": "rgb(0, 12, 12)",
+              "pct": 1.3
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "tag": "section",
+          "id": "customers",
+          "cls": "Dc5tqa_container hide-laptop",
+          "top": 8226,
+          "height": 564,
+          "width": 1344,
+          "viewportHeights": 0.63,
+          "textAreaPx": 103112,
+          "assetAreaPx": 628592,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 758016,
+          "textRatio": 0.136,
+          "assetRatio": 0.8293,
+          "imgCount": 0,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 1,
+          "maxFontPx": 32,
+          "maxFontWeight": "400",
+          "maxFontFamily": "Inter Variable",
+          "maxFontText": "You’ll probably build a better product, just because of the ",
+          "medianBodyWidthPx": 421,
+          "maxBodyWidthPx": 421,
+          "distinctLeftEdges": [
+            48,
+            60,
+            948
+          ],
+          "commonBlockWidth": 432,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(8, 9, 10)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              15,
+              5
+            ],
+            [
+              14,
+              4
+            ],
+            [
+              32,
+              2
+            ]
+          ],
+          "dominantRgb": "rgb(12, 12, 12)",
+          "dominantSharePct": 20.5,
+          "relativeLuminance": 0.004,
+          "tone": "dark",
+          "top3": [
+            {
+              "rgb": "rgb(12, 12, 12)",
+              "pct": 20.5
+            },
+            {
+              "rgb": "rgb(228, 228, 252)",
+              "pct": 17.7
+            },
+            {
+              "rgb": "rgb(228, 240, 36)",
+              "pct": 14.4
+            }
+          ]
+        },
+        {
+          "index": 9,
+          "tag": "section",
+          "id": null,
+          "cls": "dYXc1G_homepagePrefooter",
+          "top": 9014,
+          "height": 228,
+          "width": 1344,
+          "viewportHeights": 0.25,
+          "textAreaPx": 93262,
+          "assetAreaPx": 0,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 306432,
+          "textRatio": 0.3043,
+          "assetRatio": 0,
+          "imgCount": 0,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 72,
+          "maxFontWeight": "510",
+          "maxFontFamily": "Inter Variable",
+          "maxFontText": "Built for the future. Available today.",
+          "medianBodyWidthPx": null,
+          "maxBodyWidthPx": null,
+          "distinctLeftEdges": [
+            360,
+            580,
+            720
+          ],
+          "commonBlockWidth": 128,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(8, 9, 10)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              16,
+              2
+            ],
+            [
+              72,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(12, 12, 12)",
+          "dominantSharePct": 90.3,
+          "relativeLuminance": 0.004,
+          "tone": "dark",
+          "top3": [
+            {
+              "rgb": "rgb(12, 12, 12)",
+              "pct": 90.3
+            },
+            {
+              "rgb": "rgb(0, 0, 0)",
+              "pct": 1.4
+            },
+            {
+              "rgb": "rgb(24, 24, 24)",
+              "pct": 0.8
+            }
+          ]
+        }
+      ],
+      "sticky": [],
+      "stickyCount": 0,
+      "fixed": [
+        {
+          "tag": "header",
+          "cls": "TZTsQG_header TZTsQG_header",
+          "h": 73,
+          "w": 1440
+        }
+      ],
+      "fixedCount": 1,
+      "scrollSnap": {
+        "root": "none",
+        "body": "none",
+        "firstDescendant": {
+          "on": "div",
+          "value": "x mandatory"
+        }
+      },
+      "motion": {
+        "elementsWithTransition": 404,
+        "topDurationsMs": [
+          [
+            100,
+            283
+          ],
+          [
+            160,
+            103
+          ],
+          [
+            700,
+            30
+          ],
+          [
+            400,
+            25
+          ],
+          [
+            200,
+            1
+          ]
+        ],
+        "topEasings": [
+          [
+            "cubic-bezier(0.25",
+            307
+          ],
+          [
+            "ease",
+            42
+          ],
+          [
+            0.46,
+            38
+          ],
+          [
+            "cubic-bezier(0.32",
+            30
+          ],
+          [
+            "ease-out",
+            25
+          ]
+        ],
+        "topProperties": [
+          [
+            "color",
+            286
+          ],
+          [
+            "transform",
+            48
+          ],
+          [
+            "filter",
+            40
+          ],
+          [
+            "background",
+            32
+          ],
+          [
+            "stroke",
+            10
+          ],
+          [
+            "background-color",
+            8
+          ],
+          [
+            "border-left-color",
+            8
+          ],
+          [
+            "border",
+            7
+          ],
+          [
+            "all",
+            2
+          ],
+          [
+            "border-color",
+            1
+          ]
+        ],
+        "topAnimationDurationsMs": [
+          [
+            420,
+            438
+          ],
+          [
+            3200,
+            75
+          ],
+          [
+            1600,
+            50
+          ],
+          [
+            2800,
+            50
+          ],
+          [
+            2000,
+            3
+          ],
+          [
+            30000,
+            2
+          ],
+          [
+            1250,
+            1
+          ]
+        ],
+        "topAnimationNames": [
+          [
+            "fFDhtq_dotIn",
+            438
+          ],
+          [
+            "grid-dot-0-0-agent",
+            3
+          ],
+          [
+            "grid-dot-0-1-agent",
+            3
+          ],
+          [
+            "grid-dot-0-2-agent",
+            3
+          ],
+          [
+            "grid-dot-0-3-agent",
+            3
+          ],
+          [
+            "grid-dot-0-4-agent",
+            3
+          ],
+          [
+            "grid-dot-1-0-agent",
+            3
+          ],
+          [
+            "grid-dot-1-1-agent",
+            3
+          ]
+        ],
+        "nonTransformTransitionDecls": 392
+      },
+      "fold": {
+        "biggestText": {
+          "fontPx": 64,
+          "weight": "510",
+          "family": "Inter Variable",
+          "lineHeight": "64px",
+          "letterSpacing": "-1.408px",
+          "text": "The product development",
+          "rect": {
+            "x": 78,
+            "y": 272,
+            "w": 703,
+            "h": 64
+          },
+          "centerXpct": 29.8,
+          "centerYpct": 33.8,
+          "textAlign": "start"
+        },
+        "biggestMedia": {
+          "tag": "img",
+          "areaPx": 1157490,
+          "coveragePct": 89.3,
+          "rect": {
+            "x": 0,
+            "y": 491,
+            "w": 1440,
+            "h": 804
+          }
+        }
+      },
+      "videos": [],
+      "typeScale": [
+        [
+          "14/400",
+          121
+        ],
+        [
+          "12/400",
+          105
+        ],
+        [
+          "13/400",
+          85
+        ],
+        [
+          "12/510",
+          74
+        ],
+        [
+          "15/400",
+          46
+        ],
+        [
+          "13/510",
+          38
+        ],
+        [
+          "10/400",
+          27
+        ],
+        [
+          "15/510",
+          13
+        ],
+        [
+          "13/500",
+          9
+        ],
+        [
+          "48/510",
+          7
+        ],
+        [
+          "24/400",
+          7
+        ],
+        [
+          "12/500",
+          6
+        ],
+        [
+          "14/510",
+          6
+        ],
+        [
+          "15/590",
+          4
+        ],
+        [
+          "15/300",
+          4
+        ],
+        [
+          "64/510",
+          3
+        ]
+      ],
+      "prefersReducedMotionRule": true,
+      "docBg": "rgb(8, 9, 10)",
+      "videoStateAfterJourney": [],
+      "fullPageCapture": "ok",
+      "revealsOnEnter": {
+        "probedAt": "2026-09-02T02:47:01.914Z",
+        "perStep": [
+          {
+            "step": 1,
+            "y": 900,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 423
+          },
+          {
+            "step": 2,
+            "y": 1800,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 264
+          },
+          {
+            "step": 3,
+            "y": 2700,
+            "revealedOnEnter": 1,
+            "opacity": 1,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 447
+          },
+          {
+            "step": 4,
+            "y": 3600,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 394
+          },
+          {
+            "step": 5,
+            "y": 4500,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 400
+          },
+          {
+            "step": 6,
+            "y": 5400,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 286
+          },
+          {
+            "step": 7,
+            "y": 6300,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 616
+          },
+          {
+            "step": 8,
+            "y": 7200,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 393
+          },
+          {
+            "step": 9,
+            "y": 8100,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 103
+          },
+          {
+            "step": 10,
+            "y": 9000,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 154
+          },
+          {
+            "step": 11,
+            "y": 9900,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 146
+          }
+        ],
+        "error": null,
+        "totals": {
+          "revealedOnEnter": 1,
+          "opacity": 1,
+          "transform": 0,
+          "clipPath": 0,
+          "filter": 0,
+          "stepsProbed": 11,
+          "revealsPerViewport": 0.1,
+          "stepsWithAnyReveal": 1
+        }
+      },
+      "motionTokens": {
+        "topEasings": [
+          [
+            "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+            345
+          ],
+          [
+            "ease",
+            42
+          ],
+          [
+            "cubic-bezier(0.32, 0.72, 0, 1)",
+            30
+          ],
+          [
+            "ease-out",
+            25
+          ]
+        ],
+        "topTransitionPairs": [
+          [
+            "100ms / cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+            241
+          ],
+          [
+            "160ms / cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+            103
+          ],
+          [
+            "100ms / ease",
+            42
+          ],
+          [
+            "700ms / cubic-bezier(0.32, 0.72, 0, 1)",
+            30
+          ],
+          [
+            "400ms / ease-out",
+            25
+          ],
+          [
+            "200ms / cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+            1
+          ]
+        ],
+        "topAnimationPairs": [
+          [
+            "420ms / cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+            438
+          ],
+          [
+            "3200ms / steps(1)",
+            75
+          ],
+          [
+            "2800ms / steps(1)",
+            50
+          ],
+          [
+            "1600ms / steps(1)",
+            50
+          ],
+          [
+            "2000ms / linear",
+            3
+          ],
+          [
+            "30000ms / linear",
+            2
+          ]
+        ],
+        "topStaggerDelaysMs": [
+          [
+            "160",
+            5
+          ],
+          [
+            "162",
+            5
+          ],
+          [
+            "164",
+            5
+          ],
+          [
+            "166",
+            5
+          ],
+          [
+            "168",
+            5
+          ],
+          [
+            "170",
+            5
+          ],
+          [
+            "172",
+            5
+          ],
+          [
+            "174",
+            5
+          ],
+          [
+            "176",
+            5
+          ],
+          [
+            "120",
+            4
+          ]
+        ]
+      },
+      "reflexes": {
+        "cardGridGroups": 2,
+        "cardGridMax": 5,
+        "iconTiles": 5,
+        "nestedCards": 9,
+        "gradientFills": 61,
+        "bigGradientFills": 11,
+        "glows": 5,
+        "coloredGlows": 0,
+        "h1": {
+          "fontPx": 64,
+          "weight": "510",
+          "align": "start",
+          "text": "The product development system for teams and agentsThe product develop"
+        },
+        "imageHosts": [
+          [
+            "linear.app",
+            36
+          ],
+          [
+            "webassets.linear.app",
+            3
+          ]
+        ],
+        "bodyLineWidth": {
+          "p50": 278,
+          "p90": 512,
+          "max": 562,
+          "samples": 70
+        }
+      }
+    },
+    {
+      "site": "stripe",
+      "url": "https://stripe.com/",
+      "why": "long-running best-in-class product landing; gradient-mesh hero + dense editorial sectioning",
+      "capturedAt": "2026-09-02T02:41:40.787Z",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "errors": [],
+      "httpStatus": 200,
+      "atLoad": {
+        "docHeightPx": 14668,
+        "fold": {
+          "biggestText": {
+            "fontPx": 48,
+            "weight": "300",
+            "family": "sohne-var",
+            "lineHeight": "55.2px",
+            "letterSpacing": "-0.96px",
+            "text": "Financial infrastructure to grow your revenue.",
+            "rect": {
+              "x": 208,
+              "y": -660,
+              "w": 916,
+              "h": 61
+            },
+            "centerXpct": 46.3,
+            "centerYpct": -69.9,
+            "textAlign": "start"
+          },
+          "biggestMedia": {
+            "tag": "img",
+            "areaPx": 1357200,
+            "coveragePct": 104.7,
+            "rect": {
+              "x": 337,
+              "y": -1022,
+              "w": 1392,
+              "h": 975
+            }
+          }
+        },
+        "videos": []
+      },
+      "taggedElements": 3121,
+      "scrollSteps": [
+        {
+          "step": 0,
+          "requestedY": 0,
+          "actualY": 0,
+          "docHeightAtStep": 14668
+        },
+        {
+          "step": 1,
+          "requestedY": 900,
+          "actualY": 900,
+          "docHeightAtStep": 14668
+        },
+        {
+          "step": 2,
+          "requestedY": 1800,
+          "actualY": 1800,
+          "docHeightAtStep": 14668
+        },
+        {
+          "step": 3,
+          "requestedY": 2700,
+          "actualY": 2700,
+          "docHeightAtStep": 14668
+        },
+        {
+          "step": 4,
+          "requestedY": 3600,
+          "actualY": 3600,
+          "docHeightAtStep": 14668
+        },
+        {
+          "step": 5,
+          "requestedY": 4500,
+          "actualY": 4500,
+          "docHeightAtStep": 14668
+        },
+        {
+          "step": 6,
+          "requestedY": 5400,
+          "actualY": 5400,
+          "docHeightAtStep": 14668
+        },
+        {
+          "step": 7,
+          "requestedY": 6300,
+          "actualY": 6300,
+          "docHeightAtStep": 14668
+        },
+        {
+          "step": 8,
+          "requestedY": 7200,
+          "actualY": 7200,
+          "docHeightAtStep": 14668
+        },
+        {
+          "step": 9,
+          "requestedY": 8100,
+          "actualY": 8100,
+          "docHeightAtStep": 14668
+        },
+        {
+          "step": 10,
+          "requestedY": 9000,
+          "actualY": 9000,
+          "docHeightAtStep": 14668
+        },
+        {
+          "step": 11,
+          "requestedY": 9900,
+          "actualY": 9900,
+          "docHeightAtStep": 14668
+        },
+        {
+          "step": 12,
+          "requestedY": 10800,
+          "actualY": 10800,
+          "docHeightAtStep": 14668
+        },
+        {
+          "step": 13,
+          "requestedY": 11700,
+          "actualY": 11700,
+          "docHeightAtStep": 14668
+        },
+        {
+          "step": 14,
+          "requestedY": 12600,
+          "actualY": 12600,
+          "docHeightAtStep": 14668
+        },
+        {
+          "step": 15,
+          "requestedY": 13500,
+          "actualY": 13500,
+          "docHeightAtStep": 14668
+        },
+        {
+          "step": 16,
+          "requestedY": 14400,
+          "actualY": 13768,
+          "docHeightAtStep": 14668
+        }
+      ],
+      "scrollStepCount": 17,
+      "reveals": {
+        "trackedElements": 2090,
+        "revealedElements": 34,
+        "opacityReveals": 26,
+        "transformReveals": 9,
+        "clipPathReveals": 0,
+        "elementsEverBelowFullOpacity": 78,
+        "revealsPerViewport": 2,
+        "sample": [
+          {
+            "id": "875",
+            "opacities": [
+              1,
+              1,
+              1
+            ],
+            "transforms": [
+              "none",
+              "matrix(1, 0, 0, 1, 3.5503, -6)"
+            ]
+          },
+          {
+            "id": "881",
+            "opacities": [
+              1,
+              1,
+              1
+            ],
+            "transforms": [
+              "none",
+              "matrix(1, 0, 0, 1, -3.5503, -6)"
+            ]
+          },
+          {
+            "id": "883",
+            "opacities": [
+              0,
+              1,
+              0,
+              0
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, -276, -276)"
+            ]
+          },
+          {
+            "id": "975",
+            "opacities": [
+              0,
+              0,
+              1,
+              1,
+              1
+            ],
+            "transforms": [
+              "none"
+            ]
+          },
+          {
+            "id": "980",
+            "opacities": [
+              1,
+              1,
+              1,
+              1
+            ],
+            "transforms": [
+              "none",
+              "matrix(1, 0, 0, 1, 0, 0)"
+            ]
+          },
+          {
+            "id": "981",
+            "opacities": [
+              1,
+              1,
+              0.9,
+              1
+            ],
+            "transforms": [
+              "none",
+              "matrix(1, 0, 0, 1, 0, 1.95011)",
+              "matrix(1, 0, 0, 1, 0, 0)"
+            ]
+          },
+          {
+            "id": "982",
+            "opacities": [
+              1,
+              1,
+              0,
+              1
+            ],
+            "transforms": [
+              "none"
+            ]
+          },
+          {
+            "id": "983",
+            "opacities": [
+              1,
+              1,
+              0,
+              1
+            ],
+            "transforms": [
+              "none"
+            ]
+          },
+          {
+            "id": "984",
+            "opacities": [
+              1,
+              1,
+              0,
+              1
+            ],
+            "transforms": [
+              "none"
+            ]
+          },
+          {
+            "id": "985",
+            "opacities": [
+              1,
+              1,
+              0,
+              1
+            ],
+            "transforms": [
+              "none"
+            ]
+          },
+          {
+            "id": "986",
+            "opacities": [
+              1,
+              1,
+              0,
+              1
+            ],
+            "transforms": [
+              "none"
+            ]
+          },
+          {
+            "id": "987",
+            "opacities": [
+              1,
+              1,
+              0,
+              1
+            ],
+            "transforms": [
+              "none"
+            ]
+          }
+        ]
+      },
+      "docHeightPx": 14668,
+      "viewportHeights": 16.3,
+      "domSectionTags": 15,
+      "derivedSectionCount": 8,
+      "containerPath": "body>div#__next>div>main#main-content",
+      "sections": [
+        {
+          "index": 0,
+          "tag": "section",
+          "id": null,
+          "cls": "hds-color-mode hero-section-container section section--white hds-mode--light",
+          "top": 76,
+          "height": 685,
+          "width": 1440,
+          "viewportHeights": 0.76,
+          "textAreaPx": 433650,
+          "assetAreaPx": 1549885,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 986400,
+          "textRatio": 0.4396,
+          "assetRatio": 1.5713,
+          "imgCount": 1,
+          "videoCount": 0,
+          "canvasCount": 1,
+          "svgBig": 0,
+          "maxFontPx": 48,
+          "maxFontWeight": "300",
+          "maxFontFamily": "sohne-var",
+          "maxFontText": "Financial infrastructure to grow your revenue.",
+          "medianBodyWidthPx": null,
+          "maxBodyWidthPx": null,
+          "distinctLeftEdges": [
+            0,
+            88,
+            104
+          ],
+          "commonBlockWidth": 1264,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(255, 255, 255)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              14,
+              23
+            ],
+            [
+              48,
+              4
+            ],
+            [
+              16,
+              2
+            ]
+          ],
+          "dominantRgb": "rgb(252, 252, 252)",
+          "dominantSharePct": 55.4,
+          "relativeLuminance": 0.973,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 55.4
+            },
+            {
+              "rgb": "rgb(192, 204, 216)",
+              "pct": 1.6
+            },
+            {
+              "rgb": "rgb(180, 192, 204)",
+              "pct": 1.1
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "tag": "section",
+          "id": null,
+          "cls": "hds-color-mode section section--white hds-mode--light",
+          "top": 761,
+          "height": 2196,
+          "width": 1440,
+          "viewportHeights": 2.44,
+          "textAreaPx": 378294,
+          "assetAreaPx": 2361756,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 3161610,
+          "textRatio": 0.1197,
+          "assetRatio": 0.747,
+          "imgCount": 9,
+          "videoCount": 0,
+          "canvasCount": 3,
+          "svgBig": 0,
+          "maxFontPx": 32,
+          "maxFontWeight": "300",
+          "maxFontFamily": "sohne-var",
+          "maxFontText": "Flexible solutions for every business model.",
+          "medianBodyWidthPx": 178,
+          "maxBodyWidthPx": 227,
+          "distinctLeftEdges": [
+            0,
+            88,
+            104
+          ],
+          "commonBlockWidth": 856,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(255, 255, 255)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              10,
+              137
+            ],
+            [
+              11,
+              91
+            ],
+            [
+              9,
+              36
+            ],
+            [
+              8,
+              12
+            ],
+            [
+              26,
+              10
+            ],
+            [
+              12,
+              9
+            ]
+          ],
+          "dominantRgb": "rgb(252, 252, 252)",
+          "dominantSharePct": 74.1,
+          "relativeLuminance": 0.973,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 74.1
+            },
+            {
+              "rgb": "rgb(240, 240, 240)",
+              "pct": 2.5
+            },
+            {
+              "rgb": "rgb(228, 228, 228)",
+              "pct": 1.7
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "tag": "section",
+          "id": null,
+          "cls": "hds-color-mode section section--white hds-mode--light",
+          "top": 2957,
+          "height": 560,
+          "width": 1440,
+          "viewportHeights": 0.62,
+          "textAreaPx": 53645,
+          "assetAreaPx": 497347,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 806400,
+          "textRatio": 0.0665,
+          "assetRatio": 0.6167,
+          "imgCount": 1,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 48,
+          "maxFontWeight": "300",
+          "maxFontFamily": "sohne-var",
+          "maxFontText": "Building the economic infrastructure for AI",
+          "medianBodyWidthPx": null,
+          "maxBodyWidthPx": null,
+          "distinctLeftEdges": [
+            88,
+            104
+          ],
+          "commonBlockWidth": 1232,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(255, 255, 255)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              16,
+              1
+            ],
+            [
+              48,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(252, 252, 252)",
+          "dominantSharePct": 42.5,
+          "relativeLuminance": 0.973,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 42.5
+            },
+            {
+              "rgb": "rgb(0, 0, 0)",
+              "pct": 3.8
+            },
+            {
+              "rgb": "rgb(24, 0, 0)",
+              "pct": 1.7
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "tag": "section",
+          "id": null,
+          "cls": "hds-color-mode stats-section stats-section--time-daytime section section--white hds-mode--",
+          "top": 3517,
+          "height": 977,
+          "width": 1440,
+          "viewportHeights": 1.09,
+          "textAreaPx": 114564,
+          "assetAreaPx": 641289,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 1407578,
+          "textRatio": 0.0814,
+          "assetRatio": 0.4556,
+          "imgCount": 0,
+          "videoCount": 0,
+          "canvasCount": 1,
+          "svgBig": 0,
+          "maxFontPx": 56,
+          "maxFontWeight": "300",
+          "maxFontFamily": "sohne-var",
+          "maxFontText": "The backbone of global commerce",
+          "medianBodyWidthPx": 183,
+          "maxBodyWidthPx": 183,
+          "distinctLeftEdges": [
+            0,
+            88,
+            104
+          ],
+          "commonBlockWidth": 1232,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(255, 255, 255)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              16,
+              5
+            ],
+            [
+              48,
+              4
+            ],
+            [
+              56,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(252, 252, 252)",
+          "dominantSharePct": 54.6,
+          "relativeLuminance": 0.973,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 54.6
+            },
+            {
+              "rgb": "rgb(228, 240, 252)",
+              "pct": 9.1
+            },
+            {
+              "rgb": "rgb(240, 252, 252)",
+              "pct": 6.8
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "tag": "section",
+          "id": null,
+          "cls": "hds-color-mode business-sizes-section section section--white hds-mode--light",
+          "top": 4494,
+          "height": 4610,
+          "width": 1440,
+          "viewportHeights": 5.12,
+          "textAreaPx": 999601,
+          "assetAreaPx": 2244886,
+          "bgImageAreaPx": 325124,
+          "sectionAreaPx": 6638490,
+          "textRatio": 0.1506,
+          "assetRatio": 0.3871,
+          "imgCount": 15,
+          "videoCount": 0,
+          "canvasCount": 2,
+          "svgBig": 1,
+          "maxFontPx": 32,
+          "maxFontWeight": "300",
+          "maxFontFamily": "sohne-var",
+          "maxFontText": "Powering businesses of all sizes.",
+          "medianBodyWidthPx": 326,
+          "maxBodyWidthPx": 677,
+          "distinctLeftEdges": [
+            88,
+            104
+          ],
+          "commonBlockWidth": 856,
+          "stickyChild": null,
+          "horizontalScroller": true,
+          "cssBg": "rgb(255, 255, 255)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              16,
+              57
+            ],
+            [
+              10,
+              55
+            ],
+            [
+              9,
+              29
+            ],
+            [
+              18,
+              12
+            ],
+            [
+              8,
+              11
+            ],
+            [
+              12,
+              10
+            ]
+          ],
+          "dominantRgb": "rgb(252, 252, 252)",
+          "dominantSharePct": 63.8,
+          "relativeLuminance": 0.973,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 63.8
+            },
+            {
+              "rgb": "rgb(96, 84, 84)",
+              "pct": 1.8
+            },
+            {
+              "rgb": "rgb(240, 240, 240)",
+              "pct": 1.7
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "tag": "section",
+          "id": null,
+          "cls": "hds-color-mode section hds-mode--dark",
+          "top": 9104,
+          "height": 2341,
+          "width": 1440,
+          "viewportHeights": 2.6,
+          "textAreaPx": 420446,
+          "assetAreaPx": 1164374,
+          "bgImageAreaPx": 656448,
+          "sectionAreaPx": 3371558,
+          "textRatio": 0.1247,
+          "assetRatio": 0.5401,
+          "imgCount": 1,
+          "videoCount": 0,
+          "canvasCount": 3,
+          "svgBig": 3,
+          "maxFontPx": 48,
+          "maxFontWeight": "300",
+          "maxFontFamily": "sohne-var",
+          "maxFontText": "500M+",
+          "medianBodyWidthPx": 330,
+          "maxBodyWidthPx": 1531,
+          "distinctLeftEdges": [
+            88,
+            104
+          ],
+          "commonBlockWidth": 1232,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(13, 23, 56)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              12,
+              23
+            ],
+            [
+              16,
+              15
+            ],
+            [
+              26,
+              6
+            ],
+            [
+              14,
+              5
+            ],
+            [
+              10,
+              3
+            ],
+            [
+              48,
+              3
+            ]
+          ],
+          "dominantRgb": "rgb(12, 24, 60)",
+          "dominantSharePct": 75.7,
+          "relativeLuminance": 0.011,
+          "tone": "dark",
+          "top3": [
+            {
+              "rgb": "rgb(12, 24, 60)",
+              "pct": 75.7
+            },
+            {
+              "rgb": "rgb(12, 24, 48)",
+              "pct": 3.3
+            },
+            {
+              "rgb": "rgb(24, 36, 84)",
+              "pct": 1.5
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "tag": "section",
+          "id": null,
+          "cls": "hds-color-mode section section--white hds-mode--light",
+          "top": 11445,
+          "height": 1741,
+          "width": 1440,
+          "viewportHeights": 1.93,
+          "textAreaPx": 615140,
+          "assetAreaPx": 736883,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 2506680,
+          "textRatio": 0.2454,
+          "assetRatio": 0.294,
+          "imgCount": 2,
+          "videoCount": 0,
+          "canvasCount": 2,
+          "svgBig": 0,
+          "maxFontPx": 32,
+          "maxFontWeight": "300",
+          "maxFontFamily": "sohne-var",
+          "maxFontText": "What’s happening",
+          "medianBodyWidthPx": 631,
+          "maxBodyWidthPx": 817,
+          "distinctLeftEdges": [
+            88,
+            104
+          ],
+          "commonBlockWidth": 1232,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(255, 255, 255)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              22,
+              16
+            ],
+            [
+              16,
+              12
+            ],
+            [
+              32,
+              4
+            ],
+            [
+              14,
+              2
+            ],
+            [
+              26,
+              2
+            ],
+            [
+              12,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(252, 252, 252)",
+          "dominantSharePct": 32.2,
+          "relativeLuminance": 0.973,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 32.2
+            },
+            {
+              "rgb": "rgb(132, 48, 240)",
+              "pct": 3.9
+            },
+            {
+              "rgb": "rgb(156, 108, 240)",
+              "pct": 2.8
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "tag": "section",
+          "id": null,
+          "cls": "hds-color-mode section hds-mode--light",
+          "top": 13186,
+          "height": 380,
+          "width": 1440,
+          "viewportHeights": 0.42,
+          "textAreaPx": 60747,
+          "assetAreaPx": 1272,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 547470,
+          "textRatio": 0.111,
+          "assetRatio": 0.0023,
+          "imgCount": 0,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 32,
+          "maxFontWeight": "300",
+          "maxFontFamily": "sohne-var",
+          "maxFontText": "Ready to get started?",
+          "medianBodyWidthPx": 252,
+          "maxBodyWidthPx": 455,
+          "distinctLeftEdges": [
+            88,
+            104,
+            728
+          ],
+          "commonBlockWidth": 608,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(248, 250, 253)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              16,
+              8
+            ],
+            [
+              20,
+              1
+            ],
+            [
+              32,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(252, 252, 252)",
+          "dominantSharePct": 87.2,
+          "relativeLuminance": 0.973,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 87.2
+            },
+            {
+              "rgb": "rgb(240, 252, 252)",
+              "pct": 1.1
+            },
+            {
+              "rgb": "rgb(228, 228, 240)",
+              "pct": 1.1
+            }
+          ]
+        }
+      ],
+      "sticky": [],
+      "stickyCount": 0,
+      "fixed": [
+        {
+          "tag": "div",
+          "cls": "Notifications_NotificationCenter__CDRbw",
+          "h": 143,
+          "w": 1440
+        }
+      ],
+      "fixedCount": 1,
+      "scrollSnap": {
+        "root": "none",
+        "body": "none",
+        "firstDescendant": {
+          "on": "ul",
+          "value": "x mandatory"
+        }
+      },
+      "motion": {
+        "elementsWithTransition": 779,
+        "topDurationsMs": [
+          [
+            300,
+            627
+          ],
+          [
+            800,
+            58
+          ],
+          [
+            150,
+            43
+          ],
+          [
+            500,
+            42
+          ],
+          [
+            240,
+            29
+          ],
+          [
+            250,
+            28
+          ],
+          [
+            1000,
+            26
+          ],
+          [
+            400,
+            20
+          ],
+          [
+            120,
+            16
+          ],
+          [
+            600,
+            13
+          ]
+        ],
+        "topEasings": [
+          [
+            "cubic-bezier(0.25",
+            498
+          ],
+          [
+            "cubic-bezier(0.165",
+            58
+          ],
+          [
+            "linear",
+            51
+          ],
+          [
+            1,
+            47
+          ],
+          [
+            0.5,
+            41
+          ],
+          [
+            "1)",
+            41
+          ],
+          [
+            "cubic-bezier(0.65",
+            30
+          ],
+          [
+            "cubic-bezier(0.4",
+            24
+          ]
+        ],
+        "topProperties": [
+          [
+            "color",
+            203
+          ],
+          [
+            "opacity",
+            169
+          ],
+          [
+            "transform",
+            152
+          ],
+          [
+            "fill",
+            131
+          ],
+          [
+            "stroke",
+            60
+          ],
+          [
+            "background-color",
+            57
+          ],
+          [
+            "outline-color",
+            45
+          ],
+          [
+            "border",
+            41
+          ],
+          [
+            "border-color",
+            29
+          ],
+          [
+            "stroke-dashoffset",
+            16
+          ]
+        ],
+        "topAnimationDurationsMs": [
+          [
+            500,
+            2
+          ]
+        ],
+        "topAnimationNames": [
+          [
+            "book-of-the-week-fade-in",
+            2
+          ],
+          [
+            "detect-scroll",
+            1
+          ]
+        ],
+        "nonTransformTransitionDecls": 617
+      },
+      "fold": {
+        "biggestText": {
+          "fontPx": 48,
+          "weight": "300",
+          "family": "sohne-var",
+          "lineHeight": "55.2px",
+          "letterSpacing": "-0.96px",
+          "text": "Financial infrastructure to grow your revenue.",
+          "rect": {
+            "x": 208,
+            "y": 255,
+            "w": 916,
+            "h": 61
+          },
+          "centerXpct": 46.3,
+          "centerYpct": 31.7,
+          "textAlign": "start"
+        },
+        "biggestMedia": {
+          "tag": "img",
+          "areaPx": 1357200,
+          "coveragePct": 104.7,
+          "rect": {
+            "x": 337,
+            "y": -107,
+            "w": 1392,
+            "h": 975
+          }
+        }
+      },
+      "videos": [],
+      "typeScale": [
+        [
+          "10/300",
+          156
+        ],
+        [
+          "16/300",
+          125
+        ],
+        [
+          "16/400",
+          87
+        ],
+        [
+          "10/400",
+          81
+        ],
+        [
+          "11/300",
+          68
+        ],
+        [
+          "26/300",
+          38
+        ],
+        [
+          "12/400",
+          27
+        ],
+        [
+          "9/500",
+          24
+        ],
+        [
+          "9/300",
+          21
+        ],
+        [
+          "8/400",
+          21
+        ],
+        [
+          "11/400",
+          21
+        ],
+        [
+          "14/400",
+          20
+        ],
+        [
+          "22/300",
+          20
+        ],
+        [
+          "48/300",
+          16
+        ],
+        [
+          "12/500",
+          16
+        ],
+        [
+          "32/300",
+          11
+        ]
+      ],
+      "prefersReducedMotionRule": false,
+      "docBg": "rgba(0, 0, 0, 0)",
+      "videoStateAfterJourney": [],
+      "fullPageCapture": "ok",
+      "revealsOnEnter": {
+        "probedAt": "2026-09-02T02:47:48.432Z",
+        "perStep": [
+          {
+            "step": 1,
+            "y": 900,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 1227
+          },
+          {
+            "step": 2,
+            "y": 1800,
+            "revealedOnEnter": 3,
+            "opacity": 3,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 1019
+          },
+          {
+            "step": 3,
+            "y": 2700,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 850
+          },
+          {
+            "step": 4,
+            "y": 3600,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 522
+          },
+          {
+            "step": 5,
+            "y": 4500,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 538
+          },
+          {
+            "step": 6,
+            "y": 5400,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 680
+          },
+          {
+            "step": 7,
+            "y": 6300,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 747
+          },
+          {
+            "step": 8,
+            "y": 7200,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 854
+          },
+          {
+            "step": 9,
+            "y": 8100,
+            "revealedOnEnter": 3,
+            "opacity": 0,
+            "transform": 3,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 775
+          },
+          {
+            "step": 10,
+            "y": 9000,
+            "revealedOnEnter": 4,
+            "opacity": 0,
+            "transform": 4,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 696
+          },
+          {
+            "step": 11,
+            "y": 9900,
+            "revealedOnEnter": 3,
+            "opacity": 3,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 643
+          },
+          {
+            "step": 12,
+            "y": 10800,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 675
+          },
+          {
+            "step": 13,
+            "y": 11700,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 553
+          },
+          {
+            "step": 14,
+            "y": 12600,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 573
+          },
+          {
+            "step": 15,
+            "y": 13500,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 620
+          },
+          {
+            "step": 16,
+            "y": 14400,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 586
+          }
+        ],
+        "error": null,
+        "totals": {
+          "revealedOnEnter": 13,
+          "opacity": 6,
+          "transform": 7,
+          "clipPath": 0,
+          "filter": 0,
+          "stepsProbed": 16,
+          "revealsPerViewport": 0.8,
+          "stepsWithAnyReveal": 4
+        }
+      },
+      "motionTokens": {
+        "topEasings": [
+          [
+            "cubic-bezier(0.25, 1, 0.5, 1)",
+            629
+          ],
+          [
+            "cubic-bezier(0.165, 0.84, 0.44, 1)",
+            58
+          ],
+          [
+            "linear",
+            51
+          ],
+          [
+            "cubic-bezier(0.65, 0, 0.35, 1)",
+            30
+          ],
+          [
+            "cubic-bezier(0.45, 0.05, 0.55, 0.95)",
+            29
+          ],
+          [
+            "ease",
+            22
+          ],
+          [
+            "cubic-bezier(0.16, 1, 0.3, 1)",
+            20
+          ],
+          [
+            "ease-in-out",
+            17
+          ]
+        ],
+        "topTransitionPairs": [
+          [
+            "300ms / cubic-bezier(0.25, 1, 0.5, 1)",
+            627
+          ],
+          [
+            "800ms / cubic-bezier(0.165, 0.84, 0.44, 1)",
+            58
+          ],
+          [
+            "150ms / linear",
+            36
+          ],
+          [
+            "240ms / cubic-bezier(0.45, 0.05, 0.55, 0.95)",
+            29
+          ],
+          [
+            "400ms / cubic-bezier(0.3, 0, 0.2, 1)",
+            16
+          ],
+          [
+            "120ms / ease",
+            16
+          ],
+          [
+            "1000ms / cubic-bezier(0.65, 0, 0.35, 1)",
+            14
+          ],
+          [
+            "600ms / cubic-bezier(0.16, 1, 0.3, 1)",
+            12
+          ],
+          [
+            "500ms / cubic-bezier(0.4, 0, 0.2, 1)",
+            12
+          ],
+          [
+            "500ms / cubic-bezier(0.33, 1, 0.68, 1)",
+            11
+          ]
+        ],
+        "topAnimationPairs": [
+          [
+            "500ms / cubic-bezier(0.33, 1, 0.68, 1)",
+            2
+          ]
+        ],
+        "topStaggerDelaysMs": [
+          [
+            "1250",
+            2
+          ],
+          [
+            "1750",
+            1
+          ],
+          [
+            "2250",
+            1
+          ],
+          [
+            "2500",
+            1
+          ]
+        ]
+      },
+      "reflexes": {
+        "cardGridGroups": 0,
+        "cardGridMax": 0,
+        "iconTiles": 14,
+        "nestedCards": 6,
+        "gradientFills": 24,
+        "bigGradientFills": 13,
+        "glows": 19,
+        "coloredGlows": 11,
+        "h1": {
+          "fontPx": 48,
+          "weight": "300",
+          "align": "start",
+          "text": "Financial infrastructure to grow your revenue. Accept payments, offer "
+        },
+        "imageHosts": [
+          [
+            "images.stripeassets.com",
+            44
+          ]
+        ],
+        "bodyLineWidth": {
+          "p50": 323,
+          "p90": 789,
+          "max": 1531,
+          "samples": 135
+        }
+      }
+    },
+    {
+      "site": "apple-iphone",
+      "url": "https://www.apple.com/kr/iphone/",
+      "why": "the reference implementation of pinned/scroll-driven product storytelling",
+      "capturedAt": "2026-09-02T02:42:27.527Z",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "errors": [],
+      "httpStatus": 200,
+      "atLoad": {
+        "docHeightPx": 8740,
+        "fold": {
+          "biggestText": {
+            "fontPx": 80,
+            "weight": "600",
+            "family": "SF Pro KR",
+            "lineHeight": "92px",
+            "letterSpacing": "normal",
+            "text": "iPhone",
+            "rect": {
+              "x": 90,
+              "y": 158,
+              "w": 1260,
+              "h": 92
+            },
+            "centerXpct": 50,
+            "centerYpct": 22.7,
+            "textAlign": "start"
+          },
+          "biggestMedia": {
+            "tag": "img",
+            "areaPx": 146940,
+            "coveragePct": 11.3,
+            "rect": {
+              "x": 90,
+              "y": 719,
+              "w": 372,
+              "h": 395
+            }
+          }
+        },
+        "videos": [
+          {
+            "autoplay": false,
+            "muted": false,
+            "loop": false,
+            "paused": true,
+            "playsInline": false,
+            "duration": null,
+            "w": 0,
+            "h": 0,
+            "absTop": 0,
+            "poster": false,
+            "srcKind": null
+          }
+        ]
+      },
+      "taggedElements": 4027,
+      "scrollSteps": [
+        {
+          "step": 0,
+          "requestedY": 0,
+          "actualY": 0,
+          "docHeightAtStep": 8740
+        },
+        {
+          "step": 1,
+          "requestedY": 900,
+          "actualY": 900,
+          "docHeightAtStep": 8740
+        },
+        {
+          "step": 2,
+          "requestedY": 1800,
+          "actualY": 1800,
+          "docHeightAtStep": 8893
+        },
+        {
+          "step": 3,
+          "requestedY": 2700,
+          "actualY": 2700,
+          "docHeightAtStep": 8893
+        },
+        {
+          "step": 4,
+          "requestedY": 3600,
+          "actualY": 3600,
+          "docHeightAtStep": 8894
+        },
+        {
+          "step": 5,
+          "requestedY": 4500,
+          "actualY": 4500,
+          "docHeightAtStep": 8894
+        },
+        {
+          "step": 6,
+          "requestedY": 5400,
+          "actualY": 5400,
+          "docHeightAtStep": 8894
+        },
+        {
+          "step": 7,
+          "requestedY": 6300,
+          "actualY": 6300,
+          "docHeightAtStep": 8894
+        },
+        {
+          "step": 8,
+          "requestedY": 7200,
+          "actualY": 7200,
+          "docHeightAtStep": 8894
+        },
+        {
+          "step": 9,
+          "requestedY": 8100,
+          "actualY": 7994,
+          "docHeightAtStep": 8894
+        }
+      ],
+      "scrollStepCount": 10,
+      "reveals": {
+        "trackedElements": 1564,
+        "revealedElements": 56,
+        "opacityReveals": 56,
+        "transformReveals": 29,
+        "clipPathReveals": 0,
+        "elementsEverBelowFullOpacity": 293,
+        "revealsPerViewport": 5.6,
+        "sample": [
+          {
+            "id": "1292",
+            "opacities": [
+              0,
+              1,
+              1,
+              1
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, 30)",
+              "none"
+            ]
+          },
+          {
+            "id": "1293",
+            "opacities": [
+              0,
+              1,
+              1,
+              1
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, 30)",
+              "none"
+            ]
+          },
+          {
+            "id": "1316",
+            "opacities": [
+              0,
+              1,
+              1
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, 30)",
+              "matrix(1, 0, 0, 1, 0, 0)",
+              "none"
+            ]
+          },
+          {
+            "id": "1321",
+            "opacities": [
+              0,
+              1,
+              1
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, 30)",
+              "matrix(1, 0, 0, 1, 0, 0)",
+              "none"
+            ]
+          },
+          {
+            "id": "1329",
+            "opacities": [
+              0,
+              0.99,
+              1,
+              1
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, 30)",
+              "matrix(1, 0, 0, 1, 0, 0)",
+              "none"
+            ]
+          },
+          {
+            "id": "1355",
+            "opacities": [
+              0,
+              0.89,
+              1,
+              1
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, 30)",
+              "matrix(1, 0, 0, 1, 0, 0.011051)",
+              "none"
+            ]
+          },
+          {
+            "id": "1383",
+            "opacities": [
+              0,
+              0.68,
+              1,
+              1
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, 30)",
+              "matrix(1, 0, 0, 1, 0, 3.11513)",
+              "none"
+            ]
+          },
+          {
+            "id": "1404",
+            "opacities": [
+              0,
+              0.38,
+              1,
+              1
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, 30)",
+              "matrix(1, 0, 0, 1, 0, 11.7294)",
+              "none"
+            ]
+          },
+          {
+            "id": "1425",
+            "opacities": [
+              0,
+              0.14,
+              1,
+              1
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, 30)",
+              "matrix(1, 0, 0, 1, 0, 22.9175)",
+              "none"
+            ]
+          },
+          {
+            "id": "1446",
+            "opacities": [
+              0,
+              0.02,
+              1,
+              1
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, 30)",
+              "matrix(1, 0, 0, 1, 0, 28.9971)",
+              "none"
+            ]
+          },
+          {
+            "id": "1467",
+            "opacities": [
+              0,
+              0,
+              1,
+              1
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, 30)",
+              "none"
+            ]
+          },
+          {
+            "id": "1663",
+            "opacities": [
+              0,
+              1,
+              1
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, 30)",
+              "matrix(1, 0, 0, 1, 0, 0)",
+              "none"
+            ]
+          }
+        ]
+      },
+      "docHeightPx": 8894,
+      "viewportHeights": 9.88,
+      "domSectionTags": 14,
+      "derivedSectionCount": 9,
+      "containerPath": "body>main#main",
+      "sections": [
+        {
+          "index": 0,
+          "tag": "section",
+          "id": null,
+          "cls": "section section-hero no-pad-bottom staggered-end",
+          "top": 98,
+          "height": 395,
+          "width": 1440,
+          "viewportHeights": 0.44,
+          "textAreaPx": 32908,
+          "assetAreaPx": 38202,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 568800,
+          "textRatio": 0.0579,
+          "assetRatio": 0.0672,
+          "imgCount": 9,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 80,
+          "maxFontWeight": "600",
+          "maxFontFamily": "SF Pro KR",
+          "maxFontText": "iPhone",
+          "medianBodyWidthPx": null,
+          "maxBodyWidthPx": null,
+          "distinctLeftEdges": [
+            0,
+            92
+          ],
+          "commonBlockWidth": 1264,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(255, 255, 255)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              14,
+              9
+            ],
+            [
+              12,
+              1
+            ],
+            [
+              80,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(252, 252, 252)",
+          "dominantSharePct": 51.6,
+          "relativeLuminance": 0.973,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 51.6
+            },
+            {
+              "rgb": "rgb(240, 240, 252)",
+              "pct": 29.3
+            },
+            {
+              "rgb": "rgb(240, 240, 240)",
+              "pct": 2
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "tag": "section",
+          "id": null,
+          "cls": "section section-select background-alt no-pad-bottom staggered-end",
+          "top": 493,
+          "height": 947,
+          "width": 1440,
+          "viewportHeights": 1.05,
+          "textAreaPx": 126256,
+          "assetAreaPx": 509550,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 1363680,
+          "textRatio": 0.0926,
+          "assetRatio": 0.3737,
+          "imgCount": 5,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 56,
+          "maxFontWeight": "600",
+          "maxFontFamily": "SF Pro KR",
+          "maxFontText": "라인업 살펴보기.",
+          "medianBodyWidthPx": null,
+          "maxBodyWidthPx": null,
+          "distinctLeftEdges": [
+            0,
+            92
+          ],
+          "commonBlockWidth": 1440,
+          "stickyChild": null,
+          "horizontalScroller": true,
+          "cssBg": "rgb(245, 245, 247)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              17,
+              46
+            ],
+            [
+              20,
+              5
+            ],
+            [
+              28,
+              5
+            ],
+            [
+              56,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(240, 240, 252)",
+          "dominantSharePct": 28.2,
+          "relativeLuminance": 0.879,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(240, 240, 252)",
+              "pct": 28.2
+            },
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 6.8
+            },
+            {
+              "rgb": "rgb(240, 240, 240)",
+              "pct": 4.1
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "tag": "section",
+          "id": null,
+          "cls": "section section-guided-tour background-alt no-pad-bottom staggered-end",
+          "top": 1430,
+          "height": 706,
+          "width": 1440,
+          "viewportHeights": 0.78,
+          "textAreaPx": 59893,
+          "assetAreaPx": 604800,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 1016640,
+          "textRatio": 0.0589,
+          "assetRatio": 0.5949,
+          "imgCount": 1,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 56,
+          "maxFontWeight": "600",
+          "maxFontFamily": "SF Pro KR",
+          "maxFontText": "보다 자세히 들여다보기.",
+          "medianBodyWidthPx": null,
+          "maxBodyWidthPx": null,
+          "distinctLeftEdges": [
+            92
+          ],
+          "commonBlockWidth": 1264,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(245, 245, 247)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              32,
+              4
+            ],
+            [
+              17,
+              1
+            ],
+            [
+              56,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(240, 240, 252)",
+          "dominantSharePct": 29.3,
+          "relativeLuminance": 0.879,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(240, 240, 252)",
+              "pct": 29.3
+            },
+            {
+              "rgb": "rgb(192, 192, 192)",
+              "pct": 11.5
+            },
+            {
+              "rgb": "rgb(192, 204, 204)",
+              "pct": 4.7
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "tag": "section",
+          "id": null,
+          "cls": "section section-incentive background-alt staggered-end",
+          "top": 2136,
+          "height": 954,
+          "width": 1440,
+          "viewportHeights": 1.06,
+          "textAreaPx": 218606,
+          "assetAreaPx": 372840,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 1374030,
+          "textRatio": 0.1591,
+          "assetRatio": 0.2713,
+          "imgCount": 6,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 56,
+          "maxFontWeight": "600",
+          "maxFontFamily": "SF Pro KR",
+          "maxFontText": "iPhone, Apple에서 사면",
+          "medianBodyWidthPx": 283,
+          "maxBodyWidthPx": 303,
+          "distinctLeftEdges": [
+            0,
+            92
+          ],
+          "commonBlockWidth": 1440,
+          "stickyChild": null,
+          "horizontalScroller": true,
+          "cssBg": "rgb(245, 245, 247)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              17,
+              16
+            ],
+            [
+              28,
+              7
+            ],
+            [
+              56,
+              2
+            ]
+          ],
+          "dominantRgb": "rgb(252, 252, 252)",
+          "dominantSharePct": 42.2,
+          "relativeLuminance": 0.973,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 42.2
+            },
+            {
+              "rgb": "rgb(240, 240, 252)",
+              "pct": 27.5
+            },
+            {
+              "rgb": "rgb(240, 240, 240)",
+              "pct": 5.3
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "tag": "section",
+          "id": null,
+          "cls": "section section-consider no-pad-bottom staggered-end",
+          "top": 3090,
+          "height": 936,
+          "width": 1440,
+          "viewportHeights": 1.04,
+          "textAreaPx": 116697,
+          "assetAreaPx": 951000,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 1347840,
+          "textRatio": 0.0866,
+          "assetRatio": 0.7056,
+          "imgCount": 7,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 56,
+          "maxFontWeight": "600",
+          "maxFontFamily": "SF Pro KR",
+          "maxFontText": "알면 알수록, iPhone.",
+          "medianBodyWidthPx": null,
+          "maxBodyWidthPx": null,
+          "distinctLeftEdges": [
+            0,
+            92
+          ],
+          "commonBlockWidth": 1440,
+          "stickyChild": null,
+          "horizontalScroller": true,
+          "cssBg": "rgb(255, 255, 255)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              28,
+              12
+            ],
+            [
+              17,
+              7
+            ],
+            [
+              56,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(252, 252, 252)",
+          "dominantSharePct": 23.2,
+          "relativeLuminance": 0.973,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 23.2
+            },
+            {
+              "rgb": "rgb(0, 0, 0)",
+              "pct": 18.1
+            },
+            {
+              "rgb": "rgb(48, 48, 48)",
+              "pct": 4
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "tag": "section",
+          "id": null,
+          "cls": "section section-privacy no-pad-bottom staggered-end",
+          "top": 3996,
+          "height": 706,
+          "width": 1440,
+          "viewportHeights": 0.78,
+          "textAreaPx": 61163,
+          "assetAreaPx": 604800,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 1016640,
+          "textRatio": 0.0602,
+          "assetRatio": 0.5949,
+          "imgCount": 1,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 56,
+          "maxFontWeight": "600",
+          "maxFontFamily": "SF Pro KR",
+          "maxFontText": "개인정보 보호. iPhone이니까.",
+          "medianBodyWidthPx": null,
+          "maxBodyWidthPx": null,
+          "distinctLeftEdges": [
+            92
+          ],
+          "commonBlockWidth": 1264,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(255, 255, 255)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              32,
+              2
+            ],
+            [
+              17,
+              1
+            ],
+            [
+              56,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(12, 12, 12)",
+          "dominantSharePct": 41,
+          "relativeLuminance": 0.004,
+          "tone": "dark",
+          "top3": [
+            {
+              "rgb": "rgb(12, 12, 12)",
+              "pct": 41
+            },
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 32.7
+            },
+            {
+              "rgb": "rgb(240, 240, 240)",
+              "pct": 2.7
+            }
+          ]
+        },
+        {
+          "index": 6,
+          "tag": "section",
+          "id": null,
+          "cls": "section section-essentials no-pad-bottom staggered-end",
+          "top": 4702,
+          "height": 869,
+          "width": 1440,
+          "viewportHeights": 0.97,
+          "textAreaPx": 74790,
+          "assetAreaPx": 469938,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 1251360,
+          "textRatio": 0.0598,
+          "assetRatio": 0.3755,
+          "imgCount": 2,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 56,
+          "maxFontWeight": "600",
+          "maxFontFamily": "SF Pro KR",
+          "maxFontText": "iPhone 필수품.",
+          "medianBodyWidthPx": 395,
+          "maxBodyWidthPx": 395,
+          "distinctLeftEdges": [
+            0,
+            92
+          ],
+          "commonBlockWidth": 1440,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(255, 255, 255)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              17,
+              6
+            ],
+            [
+              32,
+              2
+            ],
+            [
+              56,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(252, 252, 252)",
+          "dominantSharePct": 43.5,
+          "relativeLuminance": 0.973,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 43.5
+            },
+            {
+              "rgb": "rgb(240, 240, 252)",
+              "pct": 24.7
+            },
+            {
+              "rgb": "rgb(240, 240, 240)",
+              "pct": 7.3
+            }
+          ]
+        },
+        {
+          "index": 7,
+          "tag": "section",
+          "id": null,
+          "cls": "section section-image-accordion staggered-end",
+          "top": 5541,
+          "height": 1122,
+          "width": 1440,
+          "viewportHeights": 1.25,
+          "textAreaPx": 161267,
+          "assetAreaPx": 2513806,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 1615680,
+          "textRatio": 0.0998,
+          "assetRatio": 1.5559,
+          "imgCount": 6,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 56,
+          "maxFontWeight": "600",
+          "maxFontFamily": "SF Pro KR",
+          "maxFontText": "절친 목록.",
+          "medianBodyWidthPx": 289,
+          "maxBodyWidthPx": 289,
+          "distinctLeftEdges": [
+            92
+          ],
+          "commonBlockWidth": 1264,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(255, 255, 255)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              17,
+              5
+            ],
+            [
+              28,
+              3
+            ],
+            [
+              56,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(252, 252, 252)",
+          "dominantSharePct": 36.6,
+          "relativeLuminance": 0.973,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 36.6
+            },
+            {
+              "rgb": "rgb(240, 240, 252)",
+              "pct": 20
+            },
+            {
+              "rgb": "rgb(240, 240, 240)",
+              "pct": 3.6
+            }
+          ]
+        },
+        {
+          "index": 8,
+          "tag": "section",
+          "id": null,
+          "cls": "section section-index staggered-end",
+          "top": 6663,
+          "height": 788,
+          "width": 1440,
+          "viewportHeights": 0.88,
+          "textAreaPx": 89416,
+          "assetAreaPx": 0,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 1134720,
+          "textRatio": 0.0788,
+          "assetRatio": 0,
+          "imgCount": 0,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 56,
+          "maxFontWeight": "600",
+          "maxFontFamily": "SF Pro KR",
+          "maxFontText": "iPhone",
+          "medianBodyWidthPx": null,
+          "maxBodyWidthPx": null,
+          "distinctLeftEdges": [
+            92
+          ],
+          "commonBlockWidth": 1264,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgb(250, 250, 252)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              17,
+              21
+            ],
+            [
+              28,
+              6
+            ],
+            [
+              56,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(252, 252, 252)",
+          "dominantSharePct": 88.9,
+          "relativeLuminance": 0.973,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 88.9
+            },
+            {
+              "rgb": "rgb(240, 240, 240)",
+              "pct": 2.1
+            },
+            {
+              "rgb": "rgb(204, 204, 204)",
+              "pct": 1.3
+            }
+          ]
+        }
+      ],
+      "sticky": [],
+      "stickyCount": 0,
+      "fixed": [
+        {
+          "tag": "div",
+          "cls": "globalnav-curtain",
+          "h": 900,
+          "w": 1440
+        }
+      ],
+      "fixedCount": 1,
+      "scrollSnap": {
+        "root": "none",
+        "body": "none",
+        "firstDescendant": {
+          "on": "div",
+          "value": "x mandatory"
+        }
+      },
+      "motion": {
+        "elementsWithTransition": 639,
+        "topDurationsMs": [
+          [
+            320,
+            231
+          ],
+          [
+            240,
+            143
+          ],
+          [
+            100,
+            135
+          ],
+          [
+            300,
+            42
+          ],
+          [
+            20,
+            30
+          ],
+          [
+            190,
+            28
+          ],
+          [
+            200,
+            25
+          ],
+          [
+            400,
+            22
+          ],
+          [
+            220,
+            19
+          ],
+          [
+            160,
+            18
+          ]
+        ],
+        "topEasings": [
+          [
+            "cubic-bezier(0.4",
+            258
+          ],
+          [
+            "ease",
+            227
+          ],
+          [
+            "linear",
+            133
+          ],
+          [
+            "ease-out",
+            43
+          ],
+          [
+            "cubic-bezier(0",
+            36
+          ],
+          [
+            0,
+            35
+          ],
+          [
+            0.6,
+            19
+          ],
+          [
+            "ease-in-out",
+            12
+          ]
+        ],
+        "topProperties": [
+          [
+            "opacity",
+            299
+          ],
+          [
+            "color",
+            245
+          ],
+          [
+            "transform",
+            60
+          ],
+          [
+            "background-color",
+            43
+          ],
+          [
+            "background",
+            40
+          ],
+          [
+            "fill",
+            24
+          ],
+          [
+            "-webkit-transform",
+            22
+          ],
+          [
+            "visibility",
+            14
+          ],
+          [
+            "padding",
+            10
+          ],
+          [
+            "height",
+            6
+          ]
+        ],
+        "topAnimationDurationsMs": [
+          [
+            320,
+            33
+          ],
+          [
+            800,
+            1
+          ]
+        ],
+        "topAnimationNames": [
+          [
+            "link-in",
+            27
+          ],
+          [
+            "globalnav-search-fade-and-slide",
+            6
+          ],
+          [
+            "ribbon-drop",
+            1
+          ]
+        ],
+        "nonTransformTransitionDecls": 418
+      },
+      "fold": {
+        "biggestText": {
+          "fontPx": 80,
+          "weight": "600",
+          "family": "SF Pro KR",
+          "lineHeight": "92px",
+          "letterSpacing": "normal",
+          "text": "iPhone",
+          "rect": {
+            "x": 90,
+            "y": 158,
+            "w": 1260,
+            "h": 92
+          },
+          "centerXpct": 50,
+          "centerYpct": 22.7,
+          "textAlign": "start"
+        },
+        "biggestMedia": {
+          "tag": "img",
+          "areaPx": 146940,
+          "coveragePct": 11.3,
+          "rect": {
+            "x": 90,
+            "y": 719,
+            "w": 372,
+            "h": 395
+          }
+        }
+      },
+      "videos": [
+        {
+          "autoplay": false,
+          "muted": false,
+          "loop": false,
+          "paused": true,
+          "playsInline": false,
+          "duration": null,
+          "w": 0,
+          "h": 0,
+          "absTop": 0,
+          "poster": false,
+          "srcKind": null
+        }
+      ],
+      "typeScale": [
+        [
+          "17/400",
+          209
+        ],
+        [
+          "28/600",
+          156
+        ],
+        [
+          "12/400",
+          107
+        ],
+        [
+          "17/600",
+          50
+        ],
+        [
+          "56/600",
+          37
+        ],
+        [
+          "19/600",
+          26
+        ],
+        [
+          "12/600",
+          25
+        ],
+        [
+          "14/600",
+          9
+        ],
+        [
+          "14/400",
+          5
+        ],
+        [
+          "20/600",
+          5
+        ],
+        [
+          "32/600",
+          5
+        ],
+        [
+          "24/600",
+          3
+        ],
+        [
+          "80/600",
+          1
+        ]
+      ],
+      "prefersReducedMotionRule": true,
+      "docBg": "rgb(255, 255, 255)",
+      "videoStateAfterJourney": [
+        {
+          "paused": true,
+          "currentTime": 0,
+          "autoplay": false,
+          "muted": false,
+          "loop": false
+        }
+      ],
+      "fullPageCapture": "ok",
+      "revealsOnEnter": {
+        "probedAt": "2026-09-02T02:48:33.403Z",
+        "perStep": [
+          {
+            "step": 1,
+            "y": 900,
+            "revealedOnEnter": 2,
+            "opacity": 2,
+            "transform": 2,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 153
+          },
+          {
+            "step": 2,
+            "y": 1800,
+            "revealedOnEnter": 4,
+            "opacity": 4,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 138
+          },
+          {
+            "step": 3,
+            "y": 2700,
+            "revealedOnEnter": 11,
+            "opacity": 7,
+            "transform": 7,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 208
+          },
+          {
+            "step": 4,
+            "y": 3600,
+            "revealedOnEnter": 10,
+            "opacity": 5,
+            "transform": 10,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 142
+          },
+          {
+            "step": 5,
+            "y": 4500,
+            "revealedOnEnter": 4,
+            "opacity": 4,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 81
+          },
+          {
+            "step": 6,
+            "y": 5400,
+            "revealedOnEnter": 2,
+            "opacity": 2,
+            "transform": 2,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 104
+          },
+          {
+            "step": 7,
+            "y": 6300,
+            "revealedOnEnter": 28,
+            "opacity": 28,
+            "transform": 1,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 142
+          },
+          {
+            "step": 8,
+            "y": 7200,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 129
+          },
+          {
+            "step": 9,
+            "y": 8100,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 203
+          }
+        ],
+        "error": null,
+        "totals": {
+          "revealedOnEnter": 61,
+          "opacity": 52,
+          "transform": 22,
+          "clipPath": 0,
+          "filter": 0,
+          "stepsProbed": 9,
+          "revealsPerViewport": 6.8,
+          "stepsWithAnyReveal": 7
+        }
+      },
+      "motionTokens": {
+        "topEasings": [
+          [
+            "cubic-bezier(0.4, 0, 0.6, 1)",
+            309
+          ],
+          [
+            "ease",
+            227
+          ],
+          [
+            "linear",
+            133
+          ],
+          [
+            "ease-out",
+            42
+          ],
+          [
+            "cubic-bezier(0, 0, 0.5, 1)",
+            36
+          ],
+          [
+            "steps(1)",
+            13
+          ],
+          [
+            "ease-in-out",
+            12
+          ],
+          [
+            "cubic-bezier(0.25, 0.1, 0.3, 1)",
+            3
+          ]
+        ],
+        "topTransitionPairs": [
+          [
+            "320ms / cubic-bezier(0.4, 0, 0.6, 1)",
+            198
+          ],
+          [
+            "100ms / linear",
+            131
+          ],
+          [
+            "240ms / ease",
+            93
+          ],
+          [
+            "240ms / cubic-bezier(0.4, 0, 0.6, 1)",
+            38
+          ],
+          [
+            "300ms / cubic-bezier(0, 0, 0.5, 1)",
+            36
+          ],
+          [
+            "320ms / ease",
+            31
+          ],
+          [
+            "20ms / cubic-bezier(0.4, 0, 0.6, 1)",
+            30
+          ],
+          [
+            "190ms / ease-out",
+            28
+          ],
+          [
+            "220ms / ease",
+            19
+          ],
+          [
+            "180ms / ease",
+            18
+          ]
+        ],
+        "topAnimationPairs": [
+          [
+            "320ms / ease",
+            27
+          ],
+          [
+            "320ms / cubic-bezier(0.4, 0, 0.6, 1)",
+            6
+          ],
+          [
+            "800ms / ease-in-out",
+            1
+          ]
+        ],
+        "topStaggerDelaysMs": [
+          [
+            "80",
+            15
+          ],
+          [
+            "160",
+            11
+          ],
+          [
+            "200",
+            10
+          ],
+          [
+            "30",
+            8
+          ],
+          [
+            "38",
+            5
+          ],
+          [
+            "50",
+            3
+          ],
+          [
+            "60",
+            3
+          ],
+          [
+            "335",
+            3
+          ],
+          [
+            "360",
+            3
+          ],
+          [
+            "380",
+            3
+          ]
+        ]
+      },
+      "reflexes": {
+        "cardGridGroups": 0,
+        "cardGridMax": 0,
+        "iconTiles": 19,
+        "nestedCards": 0,
+        "gradientFills": 0,
+        "bigGradientFills": 0,
+        "glows": 0,
+        "coloredGlows": 0,
+        "h1": {
+          "fontPx": 80,
+          "weight": "600",
+          "align": "start",
+          "text": "iPhone"
+        },
+        "imageHosts": [
+          [
+            "www.apple.com",
+            38
+          ]
+        ],
+        "bodyLineWidth": {
+          "p50": 289,
+          "p90": 955,
+          "max": 975,
+          "samples": 74
+        }
+      }
+    },
+    {
+      "site": "toss",
+      "url": "https://toss.im/",
+      "why": "Korean exemplar; KR type stack, native-app-feeling scroll sequences",
+      "capturedAt": "2026-09-02T02:44:27.216Z",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "errors": [],
+      "httpStatus": 200,
+      "atLoad": {
+        "docHeightPx": 50964,
+        "fold": {
+          "biggestText": {
+            "fontPx": 80,
+            "weight": "700",
+            "family": "Toss Product Sans OTF",
+            "lineHeight": "96px",
+            "letterSpacing": "normal",
+            "text": "금융부터 일상까지",
+            "rect": {
+              "x": 72,
+              "y": 748,
+              "w": 570,
+              "h": 96
+            },
+            "centerXpct": 24.8,
+            "centerYpct": 88.4,
+            "textAlign": "center"
+          },
+          "biggestMedia": {
+            "tag": "video",
+            "areaPx": 1687921,
+            "coveragePct": 130.2,
+            "rect": {
+              "x": -151,
+              "y": -17,
+              "w": 1732,
+              "h": 974
+            }
+          }
+        },
+        "videos": [
+          {
+            "autoplay": true,
+            "muted": true,
+            "loop": true,
+            "paused": false,
+            "playsInline": true,
+            "duration": 4.05,
+            "w": 1732,
+            "h": 974,
+            "absTop": -17,
+            "poster": true,
+            "srcKind": "mp4"
+          }
+        ]
+      },
+      "taggedElements": 158,
+      "scrollSteps": [
+        {
+          "step": 0,
+          "requestedY": 0,
+          "actualY": 0,
+          "docHeightAtStep": 50964
+        },
+        {
+          "step": 1,
+          "requestedY": 900,
+          "actualY": 900,
+          "docHeightAtStep": 50964
+        },
+        {
+          "step": 2,
+          "requestedY": 1800,
+          "actualY": 1800,
+          "docHeightAtStep": 50964
+        },
+        {
+          "step": 3,
+          "requestedY": 2700,
+          "actualY": 2700,
+          "docHeightAtStep": 50964
+        },
+        {
+          "step": 4,
+          "requestedY": 3600,
+          "actualY": 3600,
+          "docHeightAtStep": 50964
+        },
+        {
+          "step": 5,
+          "requestedY": 4500,
+          "actualY": 4500,
+          "docHeightAtStep": 50964
+        },
+        {
+          "step": 6,
+          "requestedY": 5400,
+          "actualY": 5400,
+          "docHeightAtStep": 50964
+        },
+        {
+          "step": 7,
+          "requestedY": 6300,
+          "actualY": 6300,
+          "docHeightAtStep": 50964
+        },
+        {
+          "step": 8,
+          "requestedY": 7200,
+          "actualY": 7200,
+          "docHeightAtStep": 50964
+        },
+        {
+          "step": 9,
+          "requestedY": 8100,
+          "actualY": 8100,
+          "docHeightAtStep": 51086
+        },
+        {
+          "step": 10,
+          "requestedY": 9000,
+          "actualY": 9000,
+          "docHeightAtStep": 51086
+        },
+        {
+          "step": 11,
+          "requestedY": 9900,
+          "actualY": 9900,
+          "docHeightAtStep": 51086
+        },
+        {
+          "step": 12,
+          "requestedY": 10800,
+          "actualY": 10800,
+          "docHeightAtStep": 51086
+        },
+        {
+          "step": 13,
+          "requestedY": 11700,
+          "actualY": 11700,
+          "docHeightAtStep": 51086
+        },
+        {
+          "step": 14,
+          "requestedY": 12600,
+          "actualY": 12600,
+          "docHeightAtStep": 51086
+        },
+        {
+          "step": 15,
+          "requestedY": 13500,
+          "actualY": 13500,
+          "docHeightAtStep": 51086
+        },
+        {
+          "step": 16,
+          "requestedY": 14400,
+          "actualY": 14400,
+          "docHeightAtStep": 51086
+        },
+        {
+          "step": 17,
+          "requestedY": 15300,
+          "actualY": 15300,
+          "docHeightAtStep": 51086
+        },
+        {
+          "step": 18,
+          "requestedY": 16200,
+          "actualY": 16200,
+          "docHeightAtStep": 51086
+        },
+        {
+          "step": 19,
+          "requestedY": 17100,
+          "actualY": 17100,
+          "docHeightAtStep": 51086
+        },
+        {
+          "step": 20,
+          "requestedY": 18000,
+          "actualY": 18000,
+          "docHeightAtStep": 51086
+        },
+        {
+          "step": 21,
+          "requestedY": 18900,
+          "actualY": 18900,
+          "docHeightAtStep": 51086
+        },
+        {
+          "step": 22,
+          "requestedY": 19800,
+          "actualY": 19800,
+          "docHeightAtStep": 50506
+        },
+        {
+          "step": 23,
+          "requestedY": 20700,
+          "actualY": 20700,
+          "docHeightAtStep": 50506
+        },
+        {
+          "step": 24,
+          "requestedY": 21600,
+          "actualY": 21600,
+          "docHeightAtStep": 50506
+        },
+        {
+          "step": 25,
+          "requestedY": 22500,
+          "actualY": 22500,
+          "docHeightAtStep": 50506
+        },
+        {
+          "step": 26,
+          "requestedY": 23400,
+          "actualY": 23400,
+          "docHeightAtStep": 50506
+        },
+        {
+          "step": 27,
+          "requestedY": 24300,
+          "actualY": 24300,
+          "docHeightAtStep": 50506
+        },
+        {
+          "step": 28,
+          "requestedY": 25200,
+          "actualY": 25200,
+          "docHeightAtStep": 50502
+        },
+        {
+          "step": 29,
+          "requestedY": 26100,
+          "actualY": 26100,
+          "docHeightAtStep": 50502
+        },
+        {
+          "step": 30,
+          "requestedY": 27000,
+          "actualY": 27000,
+          "docHeightAtStep": 50502
+        },
+        {
+          "step": 31,
+          "requestedY": 27900,
+          "actualY": 27900,
+          "docHeightAtStep": 50502
+        },
+        {
+          "step": 32,
+          "requestedY": 28800,
+          "actualY": 28800,
+          "docHeightAtStep": 50502
+        },
+        {
+          "step": 33,
+          "requestedY": 29700,
+          "actualY": 29700,
+          "docHeightAtStep": 50502
+        },
+        {
+          "step": 34,
+          "requestedY": 30600,
+          "actualY": 30600,
+          "docHeightAtStep": 50502
+        },
+        {
+          "step": 35,
+          "requestedY": 31500,
+          "actualY": 31500,
+          "docHeightAtStep": 50502
+        },
+        {
+          "step": 36,
+          "requestedY": 32400,
+          "actualY": 32400,
+          "docHeightAtStep": 50502
+        },
+        {
+          "step": 37,
+          "requestedY": 33300,
+          "actualY": 33300,
+          "docHeightAtStep": 50502
+        },
+        {
+          "step": 38,
+          "requestedY": 34200,
+          "actualY": 34200,
+          "docHeightAtStep": 50502
+        },
+        {
+          "step": 39,
+          "requestedY": 35100,
+          "actualY": 35100,
+          "docHeightAtStep": 50502
+        },
+        {
+          "step": 40,
+          "requestedY": 36000,
+          "actualY": 36000,
+          "docHeightAtStep": 50502
+        },
+        {
+          "step": 41,
+          "requestedY": 36900,
+          "actualY": 36900,
+          "docHeightAtStep": 50502
+        },
+        {
+          "step": 42,
+          "requestedY": 37800,
+          "actualY": 37800,
+          "docHeightAtStep": 50502
+        },
+        {
+          "step": 43,
+          "requestedY": 38700,
+          "actualY": 38700,
+          "docHeightAtStep": 50502
+        },
+        {
+          "step": 44,
+          "requestedY": 39600,
+          "actualY": 39600,
+          "docHeightAtStep": 50502
+        },
+        {
+          "step": 45,
+          "requestedY": 40500,
+          "actualY": 40500,
+          "docHeightAtStep": 50718
+        },
+        {
+          "step": 46,
+          "requestedY": 41400,
+          "actualY": 41400,
+          "docHeightAtStep": 50718
+        },
+        {
+          "step": 47,
+          "requestedY": 42300,
+          "actualY": 42300,
+          "docHeightAtStep": 50718
+        },
+        {
+          "step": 48,
+          "requestedY": 43200,
+          "actualY": 43200,
+          "docHeightAtStep": 50718
+        },
+        {
+          "step": 49,
+          "requestedY": 44100,
+          "actualY": 44100,
+          "docHeightAtStep": 50718
+        },
+        {
+          "step": 50,
+          "requestedY": 45000,
+          "actualY": 45000,
+          "docHeightAtStep": 50718
+        },
+        {
+          "step": 51,
+          "requestedY": 45900,
+          "actualY": 45900,
+          "docHeightAtStep": 50718
+        },
+        {
+          "step": 52,
+          "requestedY": 46800,
+          "actualY": 46800,
+          "docHeightAtStep": 50718
+        },
+        {
+          "step": 53,
+          "requestedY": 47700,
+          "actualY": 47700,
+          "docHeightAtStep": 50718
+        },
+        {
+          "step": 54,
+          "requestedY": 48600,
+          "actualY": 48600,
+          "docHeightAtStep": 50718
+        },
+        {
+          "step": 55,
+          "requestedY": 49500,
+          "actualY": 49500,
+          "docHeightAtStep": 50718
+        },
+        {
+          "step": 56,
+          "requestedY": 50400,
+          "actualY": 49818,
+          "docHeightAtStep": 50718
+        }
+      ],
+      "scrollStepCount": 57,
+      "reveals": {
+        "trackedElements": 89,
+        "revealedElements": 8,
+        "opacityReveals": 7,
+        "transformReveals": 1,
+        "clipPathReveals": 0,
+        "elementsEverBelowFullOpacity": 14,
+        "revealsPerViewport": 0.1,
+        "sample": [
+          {
+            "id": "2",
+            "opacities": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "transforms": [
+              "none",
+              "matrix(1, 0, 0, 1, 0, -64)"
+            ]
+          },
+          {
+            "id": "97",
+            "opacities": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, 0)",
+              "matrix(1, 0, 0, 1, 0, -40)"
+            ]
+          },
+          {
+            "id": "99",
+            "opacities": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, 0)",
+              "matrix(1, 0, 0, 1, 0, -40)"
+            ]
+          },
+          {
+            "id": "100",
+            "opacities": [
+              1,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "transforms": [
+              "matrix(1, 0, 0, 1, 0, 0)",
+              "matrix(1, 0, 0, 1, 0, -40)"
+            ]
+          },
+          {
+            "id": "106",
+            "opacities": [
+              0,
+              0,
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "transforms": [
+              "none"
+            ]
+          },
+          {
+            "id": "109",
+            "opacities": [
+              0,
+              0,
+              0,
+              0,
+              1,
+              1,
+              1,
+              1
+            ],
+            "transforms": [
+              "none"
+            ]
+          },
+          {
+            "id": "110",
+            "opacities": [
+              0,
+              0,
+              0,
+              0,
+              1,
+              1,
+              1,
+              1
+            ],
+            "transforms": [
+              "none"
+            ]
+          },
+          {
+            "id": "111",
+            "opacities": [
+              0,
+              0,
+              0,
+              0,
+              1,
+              1,
+              1,
+              1
+            ],
+            "transforms": [
+              "none"
+            ]
+          }
+        ]
+      },
+      "docHeightPx": 50718,
+      "viewportHeights": 56.35,
+      "domSectionTags": 7,
+      "derivedSectionCount": 6,
+      "containerPath": "body>div",
+      "sections": [
+        {
+          "index": 0,
+          "tag": "div",
+          "id": null,
+          "cls": "xpfnii0",
+          "top": 0,
+          "height": 9765,
+          "width": 1440,
+          "viewportHeights": 10.85,
+          "textAreaPx": 212751,
+          "assetAreaPx": 2373309,
+          "bgImageAreaPx": 1036606,
+          "sectionAreaPx": 14061600,
+          "textRatio": 0.0151,
+          "assetRatio": 0.2425,
+          "imgCount": 5,
+          "videoCount": 1,
+          "canvasCount": 1,
+          "svgBig": 1,
+          "maxFontPx": 80,
+          "maxFontWeight": "700",
+          "maxFontFamily": "Toss Product Sans OTF",
+          "maxFontText": "금융부터 일상까지",
+          "medianBodyWidthPx": 326,
+          "maxBodyWidthPx": 345,
+          "distinctLeftEdges": [
+            0
+          ],
+          "commonBlockWidth": 1440,
+          "stickyChild": {
+            "pos": "sticky",
+            "h": 900,
+            "w": 1440,
+            "top": "0px"
+          },
+          "horizontalScroller": false,
+          "cssBg": "rgba(0, 0, 0, 0)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              16,
+              18
+            ],
+            [
+              48,
+              5
+            ],
+            [
+              20,
+              4
+            ],
+            [
+              80,
+              3
+            ]
+          ],
+          "dominantRgb": "rgb(240, 240, 252)",
+          "dominantSharePct": 11.8,
+          "relativeLuminance": 0.879,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(240, 240, 252)",
+              "pct": 11.8
+            },
+            {
+              "rgb": "rgb(228, 240, 240)",
+              "pct": 6.4
+            },
+            {
+              "rgb": "rgb(120, 132, 144)",
+              "pct": 4.2
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "tag": "div",
+          "id": null,
+          "cls": null,
+          "top": 9765,
+          "height": 2381,
+          "width": 1440,
+          "viewportHeights": 2.65,
+          "textAreaPx": 258525,
+          "assetAreaPx": 942308,
+          "bgImageAreaPx": 494378,
+          "sectionAreaPx": 3429090,
+          "textRatio": 0.0754,
+          "assetRatio": 0.419,
+          "imgCount": 15,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 1,
+          "maxFontPx": 48,
+          "maxFontWeight": "700",
+          "maxFontFamily": "Toss Product Sans OTF",
+          "maxFontText": "공부할",
+          "medianBodyWidthPx": 352,
+          "maxBodyWidthPx": 355,
+          "distinctLeftEdges": [
+            0,
+            48,
+            528
+          ],
+          "commonBlockWidth": 384,
+          "stickyChild": null,
+          "horizontalScroller": false,
+          "cssBg": "rgba(0, 0, 0, 0)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              16,
+              71
+            ],
+            [
+              20,
+              26
+            ],
+            [
+              30,
+              26
+            ],
+            [
+              19,
+              15
+            ],
+            [
+              13,
+              7
+            ],
+            [
+              24,
+              6
+            ]
+          ],
+          "dominantRgb": "rgb(252, 252, 252)",
+          "dominantSharePct": 69.7,
+          "relativeLuminance": 0.973,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 69.7
+            },
+            {
+              "rgb": "rgb(216, 228, 240)",
+              "pct": 2.7
+            },
+            {
+              "rgb": "rgb(192, 216, 252)",
+              "pct": 2.2
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "tag": "div",
+          "id": null,
+          "cls": null,
+          "top": 12146,
+          "height": 14717,
+          "width": 1440,
+          "viewportHeights": 16.35,
+          "textAreaPx": 560906,
+          "assetAreaPx": 1167421,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 21191985,
+          "textRatio": 0.0265,
+          "assetRatio": 0.0551,
+          "imgCount": 13,
+          "videoCount": 1,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 48,
+          "maxFontWeight": "700",
+          "maxFontFamily": "Toss Product Sans OTF",
+          "maxFontText": "상품 판매와 정산",
+          "medianBodyWidthPx": null,
+          "maxBodyWidthPx": null,
+          "distinctLeftEdges": [
+            0
+          ],
+          "commonBlockWidth": 1440,
+          "stickyChild": {
+            "pos": "sticky",
+            "h": 900,
+            "w": 1440,
+            "top": "0px"
+          },
+          "horizontalScroller": false,
+          "cssBg": "rgba(0, 0, 0, 0)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              22,
+              66
+            ],
+            [
+              12,
+              30
+            ],
+            [
+              16,
+              15
+            ],
+            [
+              10,
+              14
+            ],
+            [
+              18,
+              7
+            ],
+            [
+              13,
+              6
+            ]
+          ],
+          "dominantRgb": "rgb(252, 252, 252)",
+          "dominantSharePct": 97.7,
+          "relativeLuminance": 0.973,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 97.7
+            },
+            {
+              "rgb": "rgb(240, 240, 240)",
+              "pct": 0.4
+            },
+            {
+              "rgb": "rgb(216, 216, 216)",
+              "pct": 0.4
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "tag": "div",
+          "id": null,
+          "cls": "_1gz69il0",
+          "top": 26863,
+          "height": 4113,
+          "width": 1440,
+          "viewportHeights": 4.57,
+          "textAreaPx": 231920,
+          "assetAreaPx": 1286704,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 5922765,
+          "textRatio": 0.0392,
+          "assetRatio": 0.2172,
+          "imgCount": 0,
+          "videoCount": 0,
+          "canvasCount": 1,
+          "svgBig": 0,
+          "maxFontPx": 48,
+          "maxFontWeight": "700",
+          "maxFontFamily": "Toss Product Sans OTF",
+          "maxFontText": "토스의 3,000만 고객이",
+          "medianBodyWidthPx": 391,
+          "maxBodyWidthPx": 402,
+          "distinctLeftEdges": [
+            0
+          ],
+          "commonBlockWidth": 1440,
+          "stickyChild": {
+            "pos": "sticky",
+            "h": 900,
+            "w": 1440,
+            "top": "0px"
+          },
+          "horizontalScroller": false,
+          "cssBg": "rgba(0, 0, 0, 0)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              16,
+              21
+            ],
+            [
+              48,
+              8
+            ],
+            [
+              20,
+              5
+            ],
+            [
+              32,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(240, 240, 240)",
+          "dominantSharePct": 92.8,
+          "relativeLuminance": 0.871,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(240, 240, 240)",
+              "pct": 92.8
+            },
+            {
+              "rgb": "rgb(228, 228, 228)",
+              "pct": 1.2
+            },
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 1.1
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "tag": "div",
+          "id": null,
+          "cls": null,
+          "top": 30976,
+          "height": 11300,
+          "width": 1440,
+          "viewportHeights": 12.56,
+          "textAreaPx": 0,
+          "assetAreaPx": 0,
+          "bgImageAreaPx": 0,
+          "sectionAreaPx": 16272000,
+          "textRatio": 0,
+          "assetRatio": 0,
+          "imgCount": 0,
+          "videoCount": 0,
+          "canvasCount": 0,
+          "svgBig": 0,
+          "maxFontPx": 0,
+          "maxFontWeight": "",
+          "maxFontFamily": "",
+          "maxFontText": "",
+          "medianBodyWidthPx": null,
+          "maxBodyWidthPx": null,
+          "distinctLeftEdges": [
+            0
+          ],
+          "commonBlockWidth": 1440,
+          "stickyChild": {
+            "pos": "sticky",
+            "h": 900,
+            "w": 1440,
+            "top": "0px"
+          },
+          "horizontalScroller": false,
+          "cssBg": "rgba(0, 0, 0, 0)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [],
+          "dominantRgb": "rgb(252, 252, 252)",
+          "dominantSharePct": 97.7,
+          "relativeLuminance": 0.973,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 97.7
+            },
+            {
+              "rgb": "rgb(240, 240, 240)",
+              "pct": 0.3
+            },
+            {
+              "rgb": "rgb(168, 168, 180)",
+              "pct": 0.2
+            }
+          ]
+        },
+        {
+          "index": 5,
+          "tag": "div",
+          "id": null,
+          "cls": null,
+          "top": 42276,
+          "height": 8442,
+          "width": 1440,
+          "viewportHeights": 9.38,
+          "textAreaPx": 213142,
+          "assetAreaPx": 1767483,
+          "bgImageAreaPx": 2998485,
+          "sectionAreaPx": 12156885,
+          "textRatio": 0.0175,
+          "assetRatio": 0.392,
+          "imgCount": 6,
+          "videoCount": 4,
+          "canvasCount": 2,
+          "svgBig": 2,
+          "maxFontPx": 48,
+          "maxFontWeight": "700",
+          "maxFontFamily": "Toss Product Sans OTF",
+          "maxFontText": "토스가 바꿀 일상",
+          "medianBodyWidthPx": 495,
+          "maxBodyWidthPx": 537,
+          "distinctLeftEdges": [
+            0
+          ],
+          "commonBlockWidth": 1440,
+          "stickyChild": {
+            "pos": "sticky",
+            "h": 900,
+            "w": 1440,
+            "top": "0px"
+          },
+          "horizontalScroller": false,
+          "cssBg": "rgba(0, 0, 0, 0)",
+          "cssBgImage": null,
+          "textNodeFontSizes": [
+            [
+              14,
+              25
+            ],
+            [
+              16,
+              25
+            ],
+            [
+              32,
+              20
+            ],
+            [
+              28,
+              2
+            ],
+            [
+              48,
+              1
+            ]
+          ],
+          "dominantRgb": "rgb(252, 252, 252)",
+          "dominantSharePct": 59.1,
+          "relativeLuminance": 0.973,
+          "tone": "light",
+          "top3": [
+            {
+              "rgb": "rgb(252, 252, 252)",
+              "pct": 59.1
+            },
+            {
+              "rgb": "rgb(240, 240, 240)",
+              "pct": 1.7
+            },
+            {
+              "rgb": "rgb(228, 228, 228)",
+              "pct": 1
+            }
+          ]
+        }
+      ],
+      "sticky": [
+        {
+          "tag": "div",
+          "cls": "_1qfyx5k1",
+          "h": 900,
+          "top": "0px"
+        },
+        {
+          "tag": "div",
+          "cls": "_1bn828u1",
+          "h": 900,
+          "top": "0px"
+        },
+        {
+          "tag": "div",
+          "cls": "_1uqa1wc0",
+          "h": 900,
+          "top": "0px"
+        },
+        {
+          "tag": "div",
+          "cls": "xpfnii9",
+          "h": 900,
+          "top": "0px"
+        },
+        {
+          "tag": "div",
+          "cls": "_8n2srk1",
+          "h": 900,
+          "top": "0px"
+        },
+        {
+          "tag": "div",
+          "cls": "_1fdwyhx1",
+          "h": 900,
+          "top": "0px"
+        },
+        {
+          "tag": "div",
+          "cls": "_1w6z8z72",
+          "h": 900,
+          "top": "0px"
+        },
+        {
+          "tag": "div",
+          "cls": "_1wr7bfo2",
+          "h": 617,
+          "top": "141.609px"
+        },
+        {
+          "tag": "div",
+          "cls": "dlzx4p2",
+          "h": 900,
+          "top": "0px"
+        },
+        {
+          "tag": "div",
+          "cls": "_67wbg91",
+          "h": 900,
+          "top": "0px"
+        },
+        {
+          "tag": "div",
+          "cls": "_8w2pwz1",
+          "h": 900,
+          "top": "0px"
+        },
+        {
+          "tag": "div",
+          "cls": "_8w2pwz3",
+          "h": 720,
+          "top": "0px"
+        }
+      ],
+      "stickyCount": 14,
+      "fixed": [
+        {
+          "tag": "div",
+          "cls": "_1wyxn10 ",
+          "h": 64,
+          "w": 1440
+        },
+        {
+          "tag": "div",
+          "cls": "_1w6z8z74 _5jkbx01",
+          "h": 221,
+          "w": 600
+        },
+        {
+          "tag": "div",
+          "cls": "_126fsd90",
+          "h": 900,
+          "w": 1440
+        },
+        {
+          "tag": "div",
+          "cls": "b5857i3",
+          "h": 900,
+          "w": 1440
+        },
+        {
+          "tag": "div",
+          "cls": "_1vjs4vz0",
+          "h": 180,
+          "w": 1440
+        }
+      ],
+      "fixedCount": 5,
+      "scrollSnap": {
+        "root": "none",
+        "body": "none",
+        "firstDescendant": null
+      },
+      "motion": {
+        "elementsWithTransition": 385,
+        "topDurationsMs": [
+          [
+            400,
+            450
+          ],
+          [
+            300,
+            310
+          ],
+          [
+            150,
+            47
+          ],
+          [
+            450,
+            46
+          ],
+          [
+            200,
+            41
+          ],
+          [
+            250,
+            8
+          ],
+          [
+            800,
+            7
+          ],
+          [
+            500,
+            4
+          ],
+          [
+            180,
+            2
+          ],
+          [
+            330,
+            1
+          ]
+        ],
+        "topEasings": [
+          [
+            "cubic-bezier(0.175",
+            245
+          ],
+          [
+            0.885,
+            245
+          ],
+          [
+            0.32,
+            245
+          ],
+          [
+            "ease",
+            135
+          ],
+          [
+            "cubic-bezier(0.34",
+            20
+          ],
+          [
+            "cubic-bezier(0.4",
+            7
+          ],
+          [
+            1.56,
+            7
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "topProperties": [
+          [
+            "opacity",
+            284
+          ],
+          [
+            "background-color",
+            261
+          ],
+          [
+            "height",
+            245
+          ],
+          [
+            "color",
+            50
+          ],
+          [
+            "transform",
+            23
+          ],
+          [
+            "background",
+            21
+          ],
+          [
+            "bottom",
+            7
+          ],
+          [
+            "width",
+            7
+          ],
+          [
+            "font-weight",
+            7
+          ],
+          [
+            "padding-bottom",
+            4
+          ]
+        ],
+        "topAnimationDurationsMs": [
+          [
+            2000,
+            6
+          ]
+        ],
+        "topAnimationNames": [
+          [
+            "m2bvsb0",
+            6
+          ]
+        ],
+        "nonTransformTransitionDecls": 612
+      },
+      "fold": {
+        "biggestText": {
+          "fontPx": 80,
+          "weight": "700",
+          "family": "Toss Product Sans OTF",
+          "lineHeight": "96px",
+          "letterSpacing": "normal",
+          "text": "금융부터 일상까지",
+          "rect": {
+            "x": 72,
+            "y": 748,
+            "w": 570,
+            "h": 96
+          },
+          "centerXpct": 24.8,
+          "centerYpct": 88.4,
+          "textAlign": "center"
+        },
+        "biggestMedia": {
+          "tag": "video",
+          "areaPx": 1687921,
+          "coveragePct": 130.2,
+          "rect": {
+            "x": -151,
+            "y": -17,
+            "w": 1732,
+            "h": 974
+          }
+        }
+      },
+      "videos": [
+        {
+          "autoplay": true,
+          "muted": true,
+          "loop": true,
+          "paused": false,
+          "playsInline": true,
+          "duration": 4.05,
+          "w": 1732,
+          "h": 974,
+          "absTop": -17,
+          "poster": true,
+          "srcKind": "mp4"
+        },
+        {
+          "autoplay": false,
+          "muted": true,
+          "loop": true,
+          "paused": true,
+          "playsInline": true,
+          "duration": null,
+          "w": 432,
+          "h": 432,
+          "absTop": 23804,
+          "poster": false,
+          "srcKind": "mp4"
+        },
+        {
+          "autoplay": false,
+          "muted": true,
+          "loop": false,
+          "paused": true,
+          "playsInline": true,
+          "duration": 2,
+          "w": 1667,
+          "h": 959,
+          "absTop": 28983,
+          "poster": false,
+          "srcKind": "mp4"
+        },
+        {
+          "autoplay": false,
+          "muted": true,
+          "loop": true,
+          "paused": true,
+          "playsInline": true,
+          "duration": 8.25,
+          "w": 1000,
+          "h": 650,
+          "absTop": 28545,
+          "poster": false,
+          "srcKind": "mp4"
+        },
+        {
+          "autoplay": false,
+          "muted": true,
+          "loop": true,
+          "paused": true,
+          "playsInline": true,
+          "duration": 6,
+          "w": 1000,
+          "h": 650,
+          "absTop": 28545,
+          "poster": false,
+          "srcKind": "mp4"
+        },
+        {
+          "autoplay": false,
+          "muted": true,
+          "loop": true,
+          "paused": true,
+          "playsInline": true,
+          "duration": 5.04,
+          "w": 238,
+          "h": 325,
+          "absTop": 42766,
+          "poster": false,
+          "srcKind": "mp4"
+        },
+        {
+          "autoplay": false,
+          "muted": true,
+          "loop": true,
+          "paused": true,
+          "playsInline": true,
+          "duration": 10.04,
+          "w": 238,
+          "h": 325,
+          "absTop": 42733,
+          "poster": false,
+          "srcKind": "mp4"
+        },
+        {
+          "autoplay": false,
+          "muted": true,
+          "loop": true,
+          "paused": true,
+          "playsInline": true,
+          "duration": 10.04,
+          "w": 238,
+          "h": 325,
+          "absTop": 42700,
+          "poster": false,
+          "srcKind": "mp4"
+        },
+        {
+          "autoplay": false,
+          "muted": true,
+          "loop": true,
+          "paused": true,
+          "playsInline": true,
+          "duration": 10.04,
+          "w": 238,
+          "h": 325,
+          "absTop": 42667,
+          "poster": false,
+          "srcKind": "mp4"
+        }
+      ],
+      "typeScale": [
+        [
+          "14/500",
+          34
+        ],
+        [
+          "12/400",
+          30
+        ],
+        [
+          "16/400",
+          27
+        ],
+        [
+          "48/700",
+          26
+        ],
+        [
+          "32/700",
+          24
+        ],
+        [
+          "16/600",
+          24
+        ],
+        [
+          "19/600",
+          15
+        ],
+        [
+          "20/700",
+          12
+        ],
+        [
+          "16/500",
+          9
+        ],
+        [
+          "18/700",
+          9
+        ],
+        [
+          "10/400",
+          9
+        ],
+        [
+          "10/500",
+          8
+        ],
+        [
+          "13/500",
+          7
+        ],
+        [
+          "13/400",
+          6
+        ],
+        [
+          "20/400",
+          6
+        ],
+        [
+          "28/700",
+          4
+        ]
+      ],
+      "prefersReducedMotionRule": false,
+      "docBg": "rgba(0, 0, 0, 0)",
+      "videoStateAfterJourney": [
+        {
+          "paused": true,
+          "currentTime": 3.12,
+          "autoplay": true,
+          "muted": true,
+          "loop": true
+        },
+        {
+          "paused": true,
+          "currentTime": 0,
+          "autoplay": false,
+          "muted": true,
+          "loop": true
+        },
+        {
+          "paused": true,
+          "currentTime": 1.81,
+          "autoplay": false,
+          "muted": true,
+          "loop": false
+        },
+        {
+          "paused": true,
+          "currentTime": 1.8,
+          "autoplay": false,
+          "muted": true,
+          "loop": true
+        },
+        {
+          "paused": true,
+          "currentTime": 0.74,
+          "autoplay": false,
+          "muted": true,
+          "loop": true
+        },
+        {
+          "paused": true,
+          "currentTime": 4.8,
+          "autoplay": false,
+          "muted": true,
+          "loop": true
+        },
+        {
+          "paused": true,
+          "currentTime": 9.85,
+          "autoplay": false,
+          "muted": true,
+          "loop": true
+        },
+        {
+          "paused": true,
+          "currentTime": 9.85,
+          "autoplay": false,
+          "muted": true,
+          "loop": true
+        },
+        {
+          "paused": true,
+          "currentTime": 9.85,
+          "autoplay": false,
+          "muted": true,
+          "loop": true
+        }
+      ],
+      "fullPageCapture": "ok",
+      "revealsOnEnter": {
+        "probedAt": "2026-09-02T02:48:50.681Z",
+        "perStep": [
+          {
+            "step": 1,
+            "y": 900,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 78
+          },
+          {
+            "step": 2,
+            "y": 1800,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 80
+          },
+          {
+            "step": 3,
+            "y": 2700,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 80
+          },
+          {
+            "step": 4,
+            "y": 3600,
+            "revealedOnEnter": 1,
+            "opacity": 1,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 72
+          },
+          {
+            "step": 5,
+            "y": 4500,
+            "revealedOnEnter": 2,
+            "opacity": 2,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 193
+          },
+          {
+            "step": 6,
+            "y": 5400,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 201
+          },
+          {
+            "step": 7,
+            "y": 6300,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 201
+          },
+          {
+            "step": 8,
+            "y": 7200,
+            "revealedOnEnter": 7,
+            "opacity": 7,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 201
+          },
+          {
+            "step": 9,
+            "y": 8100,
+            "revealedOnEnter": 3,
+            "opacity": 2,
+            "transform": 1,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 190
+          },
+          {
+            "step": 10,
+            "y": 9000,
+            "revealedOnEnter": 3,
+            "opacity": 2,
+            "transform": 1,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 197
+          },
+          {
+            "step": 11,
+            "y": 9900,
+            "revealedOnEnter": 10,
+            "opacity": 10,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 268
+          },
+          {
+            "step": 12,
+            "y": 10800,
+            "revealedOnEnter": 6,
+            "opacity": 6,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 458
+          },
+          {
+            "step": 13,
+            "y": 11700,
+            "revealedOnEnter": 1,
+            "opacity": 1,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 359
+          },
+          {
+            "step": 14,
+            "y": 12600,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 79
+          },
+          {
+            "step": 15,
+            "y": 13500,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 76
+          },
+          {
+            "step": 16,
+            "y": 14400,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 76
+          },
+          {
+            "step": 17,
+            "y": 15300,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 163
+          },
+          {
+            "step": 18,
+            "y": 16200,
+            "revealedOnEnter": 3,
+            "opacity": 3,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 206
+          },
+          {
+            "step": 19,
+            "y": 17100,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 187
+          },
+          {
+            "step": 20,
+            "y": 18000,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 183
+          },
+          {
+            "step": 21,
+            "y": 18900,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 183
+          },
+          {
+            "step": 22,
+            "y": 19800,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 185
+          },
+          {
+            "step": 23,
+            "y": 20700,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 222
+          },
+          {
+            "step": 24,
+            "y": 21600,
+            "revealedOnEnter": 6,
+            "opacity": 6,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 216
+          },
+          {
+            "step": 25,
+            "y": 22500,
+            "revealedOnEnter": 4,
+            "opacity": 4,
+            "transform": 1,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 313
+          },
+          {
+            "step": 26,
+            "y": 23400,
+            "revealedOnEnter": 1,
+            "opacity": 1,
+            "transform": 1,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 199
+          },
+          {
+            "step": 27,
+            "y": 24300,
+            "revealedOnEnter": 9,
+            "opacity": 8,
+            "transform": 1,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 186
+          },
+          {
+            "step": 28,
+            "y": 25200,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 138
+          },
+          {
+            "step": 29,
+            "y": 26100,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 148
+          },
+          {
+            "step": 30,
+            "y": 27000,
+            "revealedOnEnter": 2,
+            "opacity": 2,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 152
+          },
+          {
+            "step": 31,
+            "y": 27900,
+            "revealedOnEnter": 12,
+            "opacity": 12,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 131
+          },
+          {
+            "step": 32,
+            "y": 28800,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 92
+          },
+          {
+            "step": 33,
+            "y": 29700,
+            "revealedOnEnter": 1,
+            "opacity": 1,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 112
+          },
+          {
+            "step": 34,
+            "y": 30600,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 114
+          },
+          {
+            "step": 35,
+            "y": 31500,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 78
+          },
+          {
+            "step": 36,
+            "y": 32400,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 206
+          },
+          {
+            "step": 37,
+            "y": 33300,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 225
+          },
+          {
+            "step": 38,
+            "y": 34200,
+            "revealedOnEnter": 4,
+            "opacity": 4,
+            "transform": 4,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 216
+          },
+          {
+            "step": 39,
+            "y": 35100,
+            "revealedOnEnter": 4,
+            "opacity": 4,
+            "transform": 4,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 214
+          },
+          {
+            "step": 40,
+            "y": 36000,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 214
+          },
+          {
+            "step": 41,
+            "y": 36900,
+            "revealedOnEnter": 4,
+            "opacity": 4,
+            "transform": 4,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 214
+          },
+          {
+            "step": 42,
+            "y": 37800,
+            "revealedOnEnter": 4,
+            "opacity": 4,
+            "transform": 4,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 214
+          },
+          {
+            "step": 43,
+            "y": 38700,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 214
+          },
+          {
+            "step": 44,
+            "y": 39600,
+            "revealedOnEnter": 4,
+            "opacity": 4,
+            "transform": 4,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 214
+          },
+          {
+            "step": 45,
+            "y": 40500,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 214
+          },
+          {
+            "step": 46,
+            "y": 41400,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 244
+          },
+          {
+            "step": 47,
+            "y": 42300,
+            "revealedOnEnter": 5,
+            "opacity": 5,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 129
+          },
+          {
+            "step": 48,
+            "y": 43200,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 121
+          },
+          {
+            "step": 49,
+            "y": 44100,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 120
+          },
+          {
+            "step": 50,
+            "y": 45000,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 121
+          },
+          {
+            "step": 51,
+            "y": 45900,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 132
+          },
+          {
+            "step": 52,
+            "y": 46800,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 132
+          },
+          {
+            "step": 53,
+            "y": 47700,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 133
+          },
+          {
+            "step": 54,
+            "y": 48600,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 130
+          },
+          {
+            "step": 55,
+            "y": 49500,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 205
+          },
+          {
+            "step": 56,
+            "y": 50400,
+            "revealedOnEnter": 0,
+            "opacity": 0,
+            "transform": 0,
+            "clipPath": 0,
+            "filter": 0,
+            "tracked": 202
+          }
+        ],
+        "error": null,
+        "totals": {
+          "revealedOnEnter": 96,
+          "opacity": 93,
+          "transform": 25,
+          "clipPath": 0,
+          "filter": 0,
+          "stepsProbed": 56,
+          "revealsPerViewport": 1.7,
+          "stepsWithAnyReveal": 22
+        }
+      },
+      "motionTokens": {
+        "topEasings": [
+          [
+            "ease",
+            586
+          ],
+          [
+            "cubic-bezier(0.175, 0.885, 0.32, 1.1)",
+            245
+          ],
+          [
+            "cubic-bezier(0.25, 1, 0.5, 1)",
+            37
+          ],
+          [
+            "cubic-bezier(0.34, 1.56, 0.64, 1)",
+            20
+          ],
+          [
+            "cubic-bezier(0.4, 0, 0.2, 1)",
+            10
+          ],
+          [
+            "cubic-bezier(0.45, 0.05, 0.55, 0.95)",
+            7
+          ],
+          [
+            "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+            4
+          ],
+          [
+            "cubic-bezier(0.22, 1.15, 0.36, 1)",
+            4
+          ]
+        ],
+        "topTransitionPairs": [
+          [
+            "300ms / ease",
+            292
+          ],
+          [
+            "400ms / ease",
+            251
+          ],
+          [
+            "400ms / cubic-bezier(0.175, 0.885, 0.32, 1.1)",
+            245
+          ],
+          [
+            "250ms / cubic-bezier(0.25, 1, 0.5, 1)",
+            35
+          ],
+          [
+            "200ms / ease",
+            26
+          ],
+          [
+            "150ms / ease",
+            14
+          ],
+          [
+            "300ms / cubic-bezier(0.34, 1.56, 0.64, 1)",
+            14
+          ],
+          [
+            "800ms / cubic-bezier(0.45, 0.05, 0.55, 0.95)",
+            7
+          ],
+          [
+            "250ms / cubic-bezier(0.4, 0, 0.2, 1)",
+            5
+          ],
+          [
+            "200ms / cubic-bezier(0.34, 1.56, 0.64, 1)",
+            5
+          ]
+        ],
+        "topAnimationPairs": [
+          [
+            "2000ms / ease-out",
+            6
+          ]
+        ],
+        "topStaggerDelaysMs": [
+          [
+            "43",
+            1
+          ],
+          [
+            "80",
+            1
+          ],
+          [
+            "86",
+            1
+          ],
+          [
+            "129",
+            1
+          ],
+          [
+            "160",
+            1
+          ],
+          [
+            "171",
+            1
+          ],
+          [
+            "214",
+            1
+          ],
+          [
+            "240",
+            1
+          ],
+          [
+            "257",
+            1
+          ],
+          [
+            "300",
+            1
+          ]
+        ]
+      },
+      "reflexes": {
+        "cardGridGroups": 1,
+        "cardGridMax": 7,
+        "iconTiles": 6,
+        "nestedCards": 2,
+        "gradientFills": 17,
+        "bigGradientFills": 15,
+        "glows": 10,
+        "coloredGlows": 8,
+        "h1": null,
+        "imageHosts": [
+          [
+            "static.toss.im",
+            45
+          ],
+          [
+            "framerusercontent.com",
+            3
+          ]
+        ],
+        "bodyLineWidth": {
+          "p50": 345,
+          "p90": 355,
+          "max": 355,
+          "samples": 8
+        }
+      }
+    }
+  ]
+}
