@@ -18,6 +18,7 @@ import {
   isCurrentManagedHook,
 } from './hook-contract.js';
 import { unsafeManagedPath } from './install-path.js';
+import { describeCheckBrowser, detectCheckBrowser, type CheckBrowserStatus } from './check.js';
 import { proofPolicyIssues } from './proof-policy.js';
 
 export interface DoctorOptions {
@@ -46,6 +47,8 @@ export interface DoctorReport {
   nextCommand: string;
   nextPrompt: string;
   manualAction: string;
+  /** Browser available to `omd check …` / `omd showcase`. Read-only detection. */
+  checkBrowser: CheckBrowserStatus;
 }
 
 function shellQuote(value: string): string {
@@ -1256,6 +1259,7 @@ export function collectDoctorReport(opts: DoctorOptions = {}): DoctorReport {
     state,
     designMd,
     channels,
+    checkBrowser: detectCheckBrowser(),
     nextCommand: state === 'not-installed'
       ? dirSuffix
         ? `npx oh-my-design-cli@latest install-skills --all${dirSuffix}`
@@ -1315,6 +1319,11 @@ export async function runDoctor(opts: DoctorOptions = {}): Promise<number> {
       for (const issue of channel.issues) p.log.message(`  ${pc.yellow('–')} ${issue}`);
     }
   }
+
+  const browserLine = describeCheckBrowser(report.checkBrowser);
+  if (report.checkBrowser.mode === 'none') p.log.warn(browserLine);
+  else if (report.checkBrowser.mode === 'unknown') p.log.message(pc.dim(browserLine));
+  else p.log.success(browserLine);
 
   if (report.state === 'incomplete') {
     const repairResetsHooks = report.nextCommand.includes('--repair-hooks');

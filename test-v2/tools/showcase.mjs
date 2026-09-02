@@ -15,14 +15,11 @@
  * 산출: mp4 (H.264, yuv420p, faststart). --gif 면 palette 기반 gif도 낸다. 하단 고지가 페이지에 있어야 한다
  * (콘텐츠 룰) — 이 도구는 고지를 만들지 않는다.
  */
-import { createRequire } from "node:module";
+import { chromiumRuntime } from "./lib/browser.mjs";
 import { spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { basename, dirname, join, resolve } from "node:path";
 import { tmpdir } from "node:os";
-
-const require = createRequire(import.meta.url);
-const { chromium } = require("playwright-core");
 
 const argv = process.argv.slice(2);
 const opt = (n, d) => { const i = argv.indexOf("--" + n); return i >= 0 ? argv[i + 1] : d; };
@@ -36,13 +33,14 @@ const OUT = resolve(opt("out", compare ? "compare.mp4" : join(dirname(resolve(in
 const LABELS = (opt("labels", "") || "").split("|").filter(Boolean);
 const LABEL = opt("label", "");
 const ff = spawnSync("ffmpeg", ["-version"], { encoding: "utf8" });
-if (ff.status !== 0) { console.error("ffmpeg가 없다 — brew install ffmpeg"); process.exit(3); }
+if (ff.status !== 0) { console.error("ffmpeg가 없다 — `brew install ffmpeg`(macOS) 또는 `apt install ffmpeg` 후 다시 실행한다 (현재 가용성은 `omd setup detect` 가 보여 준다)."); process.exit(3); }
 
 const easeInOut = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
 
 async function captureFrames(file, dir, label) {
   mkdirSync(dir, { recursive: true });
-  const browser = await chromium.launch({ headless: true });
+  const { chromium, launchOptions } = chromiumRuntime();
+  const browser = await chromium.launch({ headless: true, ...launchOptions });
   const context = await browser.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: DPR, colorScheme: "light" });
   const page = await context.newPage();
   await page.goto("file://" + resolve(file), { waitUntil: "load", timeout: 30000 });

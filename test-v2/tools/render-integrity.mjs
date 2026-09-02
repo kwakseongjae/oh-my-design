@@ -26,7 +26,7 @@
 //
 // usage: node render-integrity.mjs <render.html...> [--json]
 //        node render-integrity.mjs 'glob은 셸에 맡긴다'
-import { chromium } from "playwright-core";
+import { chromiumRuntime } from "./lib/browser.mjs";
 import { resolve } from "node:path";
 
 const args = process.argv.slice(2).filter((a) => a !== "--json");
@@ -36,7 +36,8 @@ if (!args.length) {
   process.exit(1);
 }
 
-const browser = await chromium.launch({ headless: true });
+const { chromium, launchOptions } = chromiumRuntime();
+const browser = await chromium.launch({ headless: true, ...launchOptions });
 const all = [];
 let failures = 0;
 

@@ -14,9 +14,14 @@ user-invocable: true
 
 ## 쓰는 법
 
+`test-v2/tools/`가 있는 레포에서는 위쪽 두 줄을, 없으면(설치된 패키지) 아래 두 줄을 쓴다 — 같은 엔진에 같은 플래그다.
+
 ```bash
 node test-v2/tools/showcase.mjs <run>/render.html --out demo.mp4 --seconds 12 --gif --label "omd"
 node test-v2/tools/showcase.mjs --compare a/render.html b/render.html c/render.html --labels "hallmark|ui-ux-pro-max|omd" --out compare.mp4
+
+omd showcase <run>/render.html --out demo.mp4 --seconds 12 --gif --label "omd"
+omd showcase --compare a/render.html b/render.html c/render.html --labels "hallmark|ui-ux-pro-max|omd" --out compare.mp4
 ```
 
 - 단일: mp4(+gif). 비교: arm마다 개별 캡처 후 `hstack` — 페이지 높이가 달라도 각자 0→끝으로 정규화돼 동기 스크롤이 된다.

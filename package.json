@@ -92,7 +92,9 @@
     "docs/design-excellence/landing-craft-codex.md",
     "test-v2/tools/landing-integrity.mjs",
     "test-v2/tools/render-integrity.mjs",
-    "test-v2/tools/showcase.mjs"
+    "test-v2/tools/showcase.mjs",
+    "test-v2/tools/text-contrast.mjs",
+    "test-v2/tools/lib/browser.mjs"
   ],
   "scripts": {
     "build": "tsup",
@@ -176,7 +178,6 @@
     "@neondatabase/serverless": "^1.1.0",
     "@types/node": "^22.13.10",
     "axe-core": "4.11.2",
-    "playwright-core": "^1.61.1",
     "tsup": "^8.4.0",
     "typescript": "^5.8.2",
     "vitest": "^3.1.1"
@@ -190,5 +191,8 @@
   "bugs": {
     "url": "https://github.com/kwakseongjae/oh-my-design/issues"
   },
-  "homepage": "https://oh-my-design.kr/docs/en"
+  "homepage": "https://oh-my-design.kr/docs/en",
+  "optionalDependencies": {
+    "playwright-core": "^1.61.1"
+  }
 }

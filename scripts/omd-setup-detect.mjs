@@ -12,6 +12,15 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { homedir } from "node:os";
 
+// 브라우저 가용성은 실제 체크 도구가 쓰는 해석기에게 묻는다 — 여기서 다시 추측하면 둘이 어긋난다.
+let browserProbe = { playwrightCore: null, mode: "unknown", detail: "probe not bundled" };
+try {
+  ({ detectBrowser: browserProbe } = await import("../test-v2/tools/lib/browser.mjs"));
+  browserProbe = browserProbe();
+} catch {
+  browserProbe = { playwrightCore: null, mode: "unknown", detail: "probe not bundled" };
+}
+
 const has = (cmd) => { const r = spawnSync("sh", ["-c", `command -v ${cmd}`], { encoding: "utf8" }); return r.status === 0 ? r.stdout.trim() : null; };
 const ver = (cmd, args) => { const r = spawnSync(cmd, args, { encoding: "utf8", timeout: 8000 }); return r.status === 0 ? (r.stdout || r.stderr).split("\n")[0].trim().slice(0, 80) : null; };
 const env = (k) => (process.env[k] ? "set" : "unset");
@@ -41,7 +50,13 @@ const channels = {
   "recraft-api": { kind: "image + **native SVG** + style_id", present: env("RECRAFT_API_KEY") === "set", auth: `RECRAFT_API_KEY ${env("RECRAFT_API_KEY")}`, pros: "유일한 네이티브 SVG · 브랜드 참조 1–10장으로 style_id(재사용) · 아이콘·일러스트 세트 일관성", cons: "유료 키 필요", cost: "SVG $0.088 · style 생성 $0.044 · 래스터 $0.035" },
   "openai-api": { kind: "image (gpt-image-2 REST)", present: env("OPENAI_API_KEY") === "set", auth: `OPENAI_API_KEY ${env("OPENAI_API_KEY")}`, pros: "Codex 없이도 같은 모델", cons: "토큰 과금", cost: "≈$0.03–0.08/장" },
   "video-veo": { kind: "video (Veo 3.1 via Gemini API)", present: env("GEMINI_API_KEY") === "set", auth: `GEMINI_API_KEY ${env("GEMINI_API_KEY")}`, pros: "Lite $0.05/s 720p", cons: "오디오 포함 표준은 $0.40/s", cost: "$0.05–0.60/s" },
-  "browser-playwright": { kind: "browser (deterministic capture)", present: existsSync(join(process.cwd(), "test-v2/tools/node_modules/playwright-core")), pros: "결정론 캡처·측정(render-integrity·landing-integrity·showcase)", cons: "로그인 세션 없음", cost: "$0" },
+  "browser-playwright": {
+    kind: "browser (deterministic capture)",
+    present: browserProbe.mode === "playwright-cache" || browserProbe.mode === "chrome",
+    path: browserProbe.playwrightCore, version: browserProbe.mode === "unknown" ? null : browserProbe.mode,
+    auth: browserProbe.detail,
+    pros: "결정론 캡처·측정(omd check render/landing/contrast · omd showcase)", cons: "로그인 세션 없음", cost: "$0",
+  },
   "browser-claude-in-chrome": { kind: "browser (user's Chrome via MCP)", present: null, note: "세션에서 mcp__claude-in-chrome__* 도구 노출 여부로 판단 — 이 스크립트는 알 수 없다", pros: "로그인된 실제 브라우저", cons: "결정론 아님", cost: "$0" },
   "ffmpeg": { kind: "video encode (showcase)", present: !!has("ffmpeg"), version: has("ffmpeg") ? ver("ffmpeg", ["-version"]) : null, pros: "showcase.mjs 필수", cons: "", cost: "$0" },
 };

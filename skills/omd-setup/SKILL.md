@@ -17,9 +17,10 @@ user-invocable: true
 ### 1. 감지 (기계)
 
 ```bash
-node scripts/omd-setup-detect.mjs --json
+node scripts/omd-setup-detect.mjs --json    # 레포
+omd setup detect --json                     # 설치본 (같은 스크립트를 패키지 루트에서 실행한다)
 ```
-(설치된 패키지에서는 `omd` CLI가 같은 스크립트를 실행한다.) 결과의 `channels[*].present`가 사실이다.
+`scripts/omd-setup-detect.mjs`가 있으면 위 줄을, 없으면 아래 줄을 쓴다. 결과의 `channels[*].present`가 사실이다.
 `present: null`(claude-in-chrome 등)은 세션의 도구 목록에서 직접 확인한다. 이미 `.omd/config.json`이 있고
 `--redo`가 아니면 현재 설정을 보여 주고 바꿀지만 묻는다.
 

@@ -41,8 +41,8 @@ user-invocable: true
 
 ## 4. 검증
 
-- 크기·비율이 프롬프트 팩과 맞는지(`sharp` 메타) · 팔레트 근접(상위 6빈 ΔE, `test-v2/tools/verify.mjs` 절차) — 어긋나면 1회 재생성.
-- 랜딩이면 `landing-integrity.mjs` LI-18~20(비디오 속성·스톡 호스트)이 통과해야 한다.
+- 크기·비율이 프롬프트 팩과 맞는지(`sharp` 메타) · 팔레트 근접(상위 6빈 ΔE, `test-v2/tools/verify.mjs` 절차 — 레포 전용) — 어긋나면 1회 재생성.
+- 랜딩이면 `node test-v2/tools/landing-integrity.mjs`(설치본: `omd check landing`) LI-18~20(비디오 속성·스톡 호스트)이 통과해야 한다.
 
 ## 하드 룰
 

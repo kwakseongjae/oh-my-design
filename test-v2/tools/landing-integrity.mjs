@@ -14,12 +14,9 @@
  * usage: node landing-integrity.mjs <render.html...> [--json] [--out <dir>]
  *   exit 0 = 전부 PASS, 1 = FAIL 있음. WARN은 exit에 영향 없음(코덱스가 범위만 준 항목).
  */
-import { createRequire } from "node:module";
+import { chromiumRuntime } from "./lib/browser.mjs";
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { basename, dirname, join, resolve } from "node:path";
-
-const require = createRequire(import.meta.url);
-const { chromium } = require("playwright-core");
 
 const VIEWPORT = { width: 1440, height: 900 };
 const argv = process.argv.slice(2);
@@ -150,7 +147,8 @@ function judge(m, reveals) {
 }
 
 // ---------------------------------------------------------------- 실행
-const browser = await chromium.launch({ headless: true });
+const { chromium, launchOptions } = chromiumRuntime();
+const browser = await chromium.launch({ headless: true, ...launchOptions });
 const results = [];
 let anyFail = false;
 for (const f of files) {

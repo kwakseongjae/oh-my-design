@@ -218,7 +218,7 @@ folders and must never edit `DESIGN.md` or product files.
    failed check, never a passing substitute.
    **Render integrity is an atomic check.** Run the deterministic checker on
    every rendered page the mission produced — `node test-v2/tools/render-integrity.mjs <page.html…>`
-   in this repo, `omd verify --render <page.html…>` when installed — and bind
+   in this repo, `omd check render <page.html…>` when installed — and bind
    its verdict per page into `proof.json` with the tool output as evidence
    (overflow-x, viewport escape, text clip, unreset UA margins, missing font,
    broken image, encoding). A FAIL is a failed check; a page the tool could not

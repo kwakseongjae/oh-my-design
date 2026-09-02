@@ -73,10 +73,12 @@ lead·CTA·포커스 링은 배경 픽셀 대비 WCAG 4.5:1(일반)·3:1(큰 텍
 
 ### 5. 자평 루프 (최대 3회 — ①②가 FAIL 0이면 그 회차에서 멈춘다; 결함이 줄지 않으면 중단하고 보고)
 
+`test-v2/tools/`가 있는 레포에서는 왼쪽 경로를, 없으면(설치된 패키지) 괄호 안의 `omd` 명령을 쓴다 — 같은 도구다.
+
 ```
-① node test-v2/tools/render-integrity.mjs <run>/render.html          # 결정론
-② node test-v2/tools/landing-integrity.mjs <run>/render.html         # 코덱스 기계 규칙
-②′ node test-v2/tools/text-contrast.mjs <run>/render.html           # 사진·그라디언트 위 텍스트·포커스 링·no-JS (첫 두 런의 BLOCK 계열)
+① node test-v2/tools/render-integrity.mjs <run>/render.html   (설치본: omd check render <run>/render.html)      # 결정론
+② node test-v2/tools/landing-integrity.mjs <run>/render.html  (설치본: omd check landing <run>/render.html)     # 코덱스 기계 규칙
+②′ node test-v2/tools/text-contrast.mjs <run>/render.html     (설치본: omd check contrast <run>/render.html)    # 사진·그라디언트 위 텍스트·포커스 링·no-JS (첫 두 런의 BLOCK 계열)
 ③ 스크린샷: 1440·390 × 섹션 경계마다 → 구도·여백·겹침을 눈으로 대조 (storyboard와)
 ④ omd-designer-review (BLOCK만 집계)
 ```

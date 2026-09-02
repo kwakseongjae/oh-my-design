@@ -17,11 +17,9 @@
  *
  * usage: node text-contrast.mjs <render.html...> [--viewport 1440x900,390x844] [--json] [--out <dir>]
  */
-import { createRequire } from "node:module";
+import { chromiumRuntime } from "./lib/browser.mjs";
 import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { basename, dirname, join, resolve } from "node:path";
-const require = createRequire(import.meta.url);
-const { chromium } = require("playwright-core");
 
 const argv = process.argv.slice(2);
 const opt = (n, d) => { const i = argv.indexOf("--" + n); return i >= 0 ? argv[i + 1] : d; };
@@ -55,7 +53,8 @@ const MEASURE = `async ({ a, bb, targets }) => {
   return o;
 }`;
 
-const browser = await chromium.launch({ headless: true });
+const { chromium, launchOptions } = chromiumRuntime();
+const browser = await chromium.launch({ headless: true, ...launchOptions });
 const results = [];
 let anyFail = false;
 for (const f of files) {
