@@ -28,6 +28,15 @@ user-invocable: true
 
 ## 2. 채널 실행 (config `media.image` 순서대로, 실패 시 다음)
 
+### 2.0 세트는 배치로 — `openai-batch` (OPENAI_API_KEY 가 있을 때 기본)
+
+12~40장 세트는 낱장 호출이 아니라 **OpenAI Batch API** 로 한 번에 넣는다(출력 토큰 50% 할인, 공식 확인).
+도구: `node test-v2/tools/image-batch.mjs run --spec <set.json> --out <dir>` — `plan` 은 오프라인이라 키 없이도
+JSONL 과 비용 구조를 미리 볼 수 있다. 스펙의 `styleSuffix` 는 **모든 프롬프트 끝에 토씨 그대로 붙는다**
+(우리 채널에는 시드가 없어 세트 일관성은 이것과 참조 이미지뿐이다). 참조 이미지가 있는 슬롯은 `/v1/images/edits`
+배치로 자동 분리된다(최대 16장). 결과는 `images/<id>.png` + `results.json`(sha256·usage) + `ledger.json`(비용).
+size 는 슬롯 실측 비율에서 고른다 — 허용 목록·제약은 도구가 검증한다.
+
 | 채널 | 호출 | 산출 |
 |---|---|---|
 | `grok-build` | `grok --prompt-file <p> -m grok-4.6 --always-approve --cwd <run>` — 프롬프트는 "image_gen으로 생성해 `<path>`로 cp" 지시 | jpg/png |
