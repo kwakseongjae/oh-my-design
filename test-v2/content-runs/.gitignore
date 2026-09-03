@@ -49,3 +49,6 @@ aphrodite/*/runs/*
 aphrodite/*/fonts/*
 !aphrodite/*/runs/*.html
 !aphrodite/*/runs/*.zsh
+!aphrodite/*/reviews/
+aphrodite/*/reviews/*
+!aphrodite/*/reviews/*.md
