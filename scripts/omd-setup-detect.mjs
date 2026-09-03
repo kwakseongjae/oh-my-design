@@ -23,7 +23,10 @@ try {
 
 const has = (cmd) => { const r = spawnSync("sh", ["-c", `command -v ${cmd}`], { encoding: "utf8" }); return r.status === 0 ? r.stdout.trim() : null; };
 const ver = (cmd, args) => { const r = spawnSync(cmd, args, { encoding: "utf8", timeout: 8000 }); return r.status === 0 ? (r.stdout || r.stderr).split("\n")[0].trim().slice(0, 80) : null; };
-const env = (k) => (process.env[k] ? "set" : "unset");
+// 레포 루트 .env.local 의 키도 감지한다 — 값은 절대 출력하지 않는다(존재 여부만). 셸 export 없이 파일에만 둔 키를 놓치지 않기 위해서.
+const localEnv = {};
+try { for (const line of readFileSync(join(process.cwd(), ".env.local"), "utf8").split("\n")) { const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.+)$/); if (m && m[2].trim()) localEnv[m[1]] = true; } } catch { /* 없음 */ }
+const env = (k) => (process.env[k] || localEnv[k] ? "set" : "unset");
 
 const grokBin = has("grok") || (existsSync(join(homedir(), ".grok/bin/grok")) ? join(homedir(), ".grok/bin/grok") : null);
 const channels = {
