@@ -58,6 +58,10 @@ const EFFORT = opt("effort", null);
 const EFFORT_BY = { worker: opt("effort-worker", null), f3: opt("effort-f3", null), review: opt("effort-review", null), fix: opt("effort-fix", null), mechfix: opt("effort-fix", null), gatefix: opt("effort-fix", null) };
 // 마라톤 내구성: 402/429/5xx·비정상 종료는 백오프 후 재시도, 소진되면 claude -p(opus) 폴백(옵션).
 const RETRIES = Number(opt("retries", 3));
+// 단계 벽시계 상한(분, 0=끔). --output-format json 은 끝에서야 출력해서 정상 호출도 수십 분 침묵한다 —
+// 무출력 idle 감지는 정상 단계를 죽인다. 실측 최장 정상 단계 56분(review.retry1) 위, 실제 행 132분
+// 아래로 벽시계 상한을 둔다(웨이브 53 pchome f3: 2시간 11분 무출력, 사람이 kill해야 재시도가 시작됐다).
+const STEP_TIMEOUT_MIN = Number(opt("step-timeout", 90));
 const BACKOFF = String(opt("backoff", "300,900,1800")).split(",").map((s) => Number(s.trim()) || 300);
 const FALLBACK = String(opt("fallback", "none")); // none | claude
 const FALLBACK_MODEL = String(opt("fallback-model", "opus"));
@@ -157,9 +161,14 @@ function mech(brand) {
 // 러너가 죽으면 자식 grok도 같이 죽인다 — 전경 타임아웃으로 러너만 죽고 grok이 고아로
 // 남아 산출물을 계속 고치는 상황을 막는다 (2026-09-02 첫 실행에서 실제로 겪었다).
 const children = new Set();
+// grok 은 자기 자식을 띄울 수 있고, 그 손자가 stdout 파이프를 붙들면 부모만 죽여서는 "close" 가 오지 않는다
+// (스텁 재현: zsh→sleep. 부모 kill 후에도 프로미스가 영원히 미해결). detached 로 띄워 **프로세스 그룹째** 죽인다.
+function killTree(child, sig) {
+  try { process.kill(-child.pid, sig); } catch { try { child.kill(sig); } catch { /* 이미 죽었다 */ } }
+}
 for (const sig of ["SIGINT", "SIGTERM", "SIGHUP"]) {
   process.on(sig, () => {
-    for (const c of children) { try { c.kill("SIGTERM"); } catch { /* 이미 죽었다 */ } }
+    for (const c of children) killTree(c, "SIGTERM");
     process.exit(130);
   });
 }
@@ -175,26 +184,39 @@ function grokCall(brand, label, text, { approve, effort }) {
   if (eff) args.push("--reasoning-effort", String(eff));
   const t0 = Date.now();
   return new Promise((res) => {
-    const child = spawn("grok", args, { cwd: ROOT, stdio: ["ignore", "pipe", "pipe"] });
+    const child = spawn("grok", args, { cwd: ROOT, stdio: ["ignore", "pipe", "pipe"], detached: true });
     children.add(child);
     child.on("exit", () => children.delete(child));
-    let out = "", err = "";
+    let out = "", err = "", timedOut = false;
+    let settle = null; // close 가 끝내 오지 않는 경우를 위한 강제 종결(아래 close 핸들러가 채운다)
+    const killTimer = STEP_TIMEOUT_MIN > 0 ? setTimeout(() => {
+      timedOut = true;
+      killTree(child, "SIGTERM");
+      setTimeout(() => killTree(child, "SIGKILL"), 10000).unref();
+      // 손자가 파이프를 붙들어 SIGKILL 뒤에도 close 가 안 오면 러너가 영원히 멈춘다 — 25초 뒤 강제 종결한다.
+      setTimeout(() => { if (settle) settle(null); }, 25000).unref();
+    }, STEP_TIMEOUT_MIN * 60000) : null;
     child.stdout.on("data", (d) => (out += d));
     child.stderr.on("data", (d) => (err += d));
     child.on("error", (e) => { err += String(e); });
-    child.on("close", (code) => {
-      writeFileSync(oj, out + (err ? "\n--- stderr ---\n" + err : ""));
+    let done = false;
+    settle = (code) => {
+      if (done) return; done = true;
+      if (killTimer) clearTimeout(killTimer);
+      writeFileSync(oj, out + (err ? "\n--- stderr ---\n" + err : "") + (timedOut ? `\n--- 단계 타임아웃 ${STEP_TIMEOUT_MIN}분 — 러너가 종료시켰다 ---\n` : ""));
       let j = null;
       try { j = JSON.parse(out); } catch { /* 402 등은 JSON이 아닐 수 있다 */ }
       const textOut = j?.text ?? out;
       writeFileSync(ot, textOut);
       const http = (out + err).match(/"http_status":\s*(\d{3})/);
       res({
-        code, sec: Math.round((Date.now() - t0) / 1000), text: textOut,
+        // 타임아웃 kill 은 code=null(시그널)로 닫힌다 — 재시도 판정(code!==0 && !http)에 걸리도록 124로 명시한다.
+        code: timedOut ? 124 : code, timedOut, sec: Math.round((Date.now() - t0) / 1000), text: textOut,
         cost: typeof j?.total_cost_usd === "number" ? j.total_cost_usd : null,
         turns: j?.num_turns ?? null, http: http ? Number(http[1]) : null, outFile: ot,
       });
-    });
+    };
+    child.on("close", settle);
   });
 }
 
@@ -208,22 +230,34 @@ function claudeCall(brand, label, text) {
   const args = ["-p", "--model", FALLBACK_MODEL, "--output-format", "json", "--dangerously-skip-permissions"];
   const t0 = Date.now();
   return new Promise((res) => {
-    const child = spawn(bin, args, { cwd: ROOT, stdio: ["pipe", "pipe", "pipe"] });
+    const child = spawn(bin, args, { cwd: ROOT, stdio: ["pipe", "pipe", "pipe"], detached: true });
     children.add(child);
     child.on("exit", () => children.delete(child));
-    let out = "", err = "";
+    let out = "", err = "", timedOut = false;
+    let settle = null; // close 가 끝내 오지 않는 경우를 위한 강제 종결(아래 close 핸들러가 채운다)
+    const killTimer = STEP_TIMEOUT_MIN > 0 ? setTimeout(() => {
+      timedOut = true;
+      killTree(child, "SIGTERM");
+      setTimeout(() => killTree(child, "SIGKILL"), 10000).unref();
+      // 손자가 파이프를 붙들어 SIGKILL 뒤에도 close 가 안 오면 러너가 영원히 멈춘다 — 25초 뒤 강제 종결한다.
+      setTimeout(() => { if (settle) settle(null); }, 25000).unref();
+    }, STEP_TIMEOUT_MIN * 60000) : null;
     child.stdout.on("data", (d) => (out += d));
     child.stderr.on("data", (d) => (err += d));
     child.on("error", (e) => { err += String(e); });
     child.stdin.end(text);
-    child.on("close", (code) => {
-      writeFileSync(oj, out + (err ? "\n--- stderr ---\n" + err : ""));
+    let done = false;
+    settle = (code) => {
+      if (done) return; done = true;
+      if (killTimer) clearTimeout(killTimer);
+      writeFileSync(oj, out + (err ? "\n--- stderr ---\n" + err : "") + (timedOut ? `\n--- 단계 타임아웃 ${STEP_TIMEOUT_MIN}분 — 러너가 종료시켰다 ---\n` : ""));
       let j = null;
       try { j = JSON.parse(out); } catch { /* 비정상 출력 */ }
       const textOut = j?.result ?? out;
       writeFileSync(ot, textOut);
-      res({ code, sec: Math.round((Date.now() - t0) / 1000), text: textOut, cost: typeof j?.total_cost_usd === "number" ? j.total_cost_usd : null, turns: j?.num_turns ?? null, http: null, outFile: ot, via: `claude:${FALLBACK_MODEL}` });
-    });
+      res({ code: timedOut ? 124 : code, timedOut, sec: Math.round((Date.now() - t0) / 1000), text: textOut, cost: typeof j?.total_cost_usd === "number" ? j.total_cost_usd : null, turns: j?.num_turns ?? null, http: null, outFile: ot, via: `claude:${FALLBACK_MODEL}` });
+    };
+    child.on("close", settle);
   });
 }
 
@@ -339,9 +373,9 @@ async function runBrand(brand) {
       const lab = attempt ? `${label}.retry${attempt}` : label;
       r = await withSlot(`${brand} ${lab}`, () => grokCall(brand, lab, text, { approve, effort: EFFORT_BY[stage] }));
       ok = isOk(r);
-      metric({ brand, stage: lab, via: "grok", sec: r.sec, cost: r.cost, turns: r.turns, ok, http: r.http, code: r.code });
+      metric({ brand, stage: lab, via: "grok", sec: r.sec, cost: r.cost, turns: r.turns, ok, http: r.http, code: r.code, timedOut: !!r.timedOut });
       rec(lab, r, ok ? "ok" : `fail code=${r.code} http=${r.http ?? "-"}`);
-      log(`${ok ? "✓" : "✗"} ${brand} ${lab} ${Math.round(r.sec / 60)}분${r.cost != null ? ` $${r.cost.toFixed(2)}` : ""}${r.http ? ` http=${r.http}` : ""}`);
+      log(`${ok ? "✓" : "✗"} ${brand} ${lab} ${Math.round(r.sec / 60)}분${r.timedOut ? ` ⏱단계 타임아웃 ${STEP_TIMEOUT_MIN}분` : ""}${r.cost != null ? ` ${r.cost.toFixed(2)}` : ""}${r.http ? ` http=${r.http}` : ""}`);
       if (ok) break;
       // 산출물이 이미 완성돼 있는데 종료 코드만 이상한 경우(millie: code=1, 33턴, 파일 3종 존재)는
       // 재시도로 $1을 태우지 말고 게이트가 판단하게 둔다 — 워커 단계만.
