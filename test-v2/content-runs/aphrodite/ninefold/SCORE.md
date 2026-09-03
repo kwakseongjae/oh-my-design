@@ -12,3 +12,5 @@
 "장면을 연출하는" 것의 차이, 스크롤에 따라 이미지가 **행동**하는지가 빠져 있었다. 다음 런의 목표는 그 층이다.
 
 보존: render.html · assets/33장 · batch-v1(원장) · reviews · showcase(있으면). 재현: runs/build-scaffold.mjs.
+
+영상(아카이브): showcase/ninefold-solo.mp4 · showcase/aphrodite-vs-previous.mp4
