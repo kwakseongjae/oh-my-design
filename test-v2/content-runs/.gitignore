@@ -30,3 +30,15 @@ gate/*
 gate/runs/*
 !gate/runs/*.txt
 !gate/runs/chain.sh
+
+# 아프로디테 런: 브리프·세트 스펙·프롬프트는 소스라 추적, 생성 이미지·렌더는 다른 런과 같은 커스터디로 무시 (2026-09-03).
+!aphrodite/
+aphrodite/*
+!aphrodite/*/
+aphrodite/*/*
+!aphrodite/*/BRIEF.md
+!aphrodite/*/set.json
+!aphrodite/*/DESIGN.md
+!aphrodite/*/runs/
+aphrodite/*/runs/*
+!aphrodite/*/runs/*.txt
