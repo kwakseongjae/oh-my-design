@@ -52,3 +52,5 @@ aphrodite/*/fonts/*
 !aphrodite/*/reviews/
 aphrodite/*/reviews/*
 !aphrodite/*/reviews/*.md
+!aphrodite/COSTS.md
+!aphrodite/*/SCORE.md
