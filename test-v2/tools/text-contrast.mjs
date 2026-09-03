@@ -98,6 +98,9 @@ for (const f of files) {
       dbg(`${basename(dirname(abs))} ${tag} focus ×${focusables.length}`);
       for (const fx of focusables) {
         dbg(`  focus ${fx.i} ${fx.text}`);
+        // 진입 애니메이션(히어로 settle 등)이 아직 돌면 before/after 차이에 사진 픽셀이 섞여 링이 아닌 것을 링으로 잰다
+        // (2026-09-03 ninefold: 첫 버튼만 30% 미달로 반복 실패). 돌고 있는 애니메이션이 끝날 때까지(최대 2.5초) 기다린다.
+        await p2.evaluate(() => Promise.race([Promise.all(document.getAnimations().map((a) => a.finished.catch(() => {}))), new Promise((r) => setTimeout(r, 2500))]));
         const before = await p2.screenshot({ clip: { x: 0, y: 0, ...vp } });
         await p2.evaluate((i) => document.querySelector(`[data-fx="${i}"]`).focus({ focusVisible: true }), fx.i); await p2.keyboard.press("Shift"); await p2.waitForTimeout(120);
         const after = await p2.screenshot({ clip: { x: 0, y: 0, ...vp } });

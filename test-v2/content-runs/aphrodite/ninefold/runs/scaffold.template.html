@@ -10,7 +10,8 @@ __INTER__
 body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-variation-settings:'opsz' 14;font-size:16px;line-height:1.55;overflow-x:hidden}
 ::selection{background:var(--brass);color:var(--ink)}
 :focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:2px}
-.btn:not(.ghost):focus-visible{outline:2px solid var(--paper);outline-offset:-5px}
+/* 링 하나로 잉크 버튼(≈3.2:1)과 종이 배경(≈4.6:1) 둘 다 3:1 을 넘기는 중간 명도 — 두 겹 링은 측정기가 한 색만 잡아 실패한다 */
+.btn:not(.ghost):focus-visible{outline:3px solid #8A6A46;outline-offset:2px;box-shadow:none}
 ::-webkit-scrollbar{width:10px}::-webkit-scrollbar-thumb{background:var(--brass);border-radius:999px}::-webkit-scrollbar-track{background:var(--paper)}
 img,video{display:block;max-width:100%}
 .ph{filter:contrast(1.04) saturate(.92)}
