@@ -1,0 +1,183 @@
+Heading: Coupang Home — design system
+
+Snapshot `2026-08-22T19-48-17-298Z`. Surface `desktop-1440` (1440×900). Task: type a query in the home search field and land on a product list.
+
+This document is the system the first render implements. It was produced by the  pack workflow (Step 2 `--design-system`, then domain searches for `ux` / `color` / `style` / `typography` / `icons` / `landing`, then `--stack html-tailwind`), then grounded on the captured chrome so the page stays a marketplace home rather than a generic purple template.
+
+Heading: Product and pattern
+
+Pack `--design-system` for “ecommerce marketplace retail search product listing korea consumer”:
+
+| Slot | Pack result | Applied |
+|---|---|---|
+| Pattern | Marketplace / Directory | Yes. Search is the primary CTA. |
+| Conversion | Reduce friction to search; popular-query suggestions | Header search, autocomplete, hash URL `#/search?q=` |
+| Sections | Hero (search-focused), categories, featured listings, trust, seller CTA | Home fold: promo strip, utility, search header, shortcut row, campaign hero + right rail, 오늘의 발견. Seller/trust chrome stays in the utility bar; it is not a second screen. |
+| Style (pack default) | Vibrant & Block-based, purple/green | **Not used for surfaces.** Evidence is a white, dense commerce home. Style search also returned Flat Design and Swiss Modernism 2.0; those match the snapshot better (2D, limited palette, one accent, mathematical header rhythm). |
+| Color (pack default) | Primary `#7C3AED`, background `#FAF5FF` | **Overridden.** Pack rule `color-palette-from-product` wins: tokens come from the captured viewport, not the generic marketplace row. |
+| Type (pack default) | Rubik + Nunito Sans via Google Fonts | **Not loaded.** The render must open with no network. Evidence type is Apple SD Gothic Neo 24/20/11. System stack below. |
+
+Anti-patterns from the pack that this file refuses: emoji-as-icon, hover-only primary actions, placeholder-only search label, blank zero-result page, arbitrary `z-index: 9999`, animating layout size, Google Fonts `@import`.
+
+Heading: Evidence chrome (what the snapshot actually is)
+
+From  +  / :
+
+- Page surface `#fefefe` / `#ffffff`, interstitial gray `#f0f0f0`.
+- Header band ~70px. Category control is a tall blue block, not a text link.
+- Search field is the widest object in the header; cart sits to its right with a numeric badge.
+- Shortcut row under the header (쿠팡플레이, 로켓배송, 로켓프레시, …).
+- Campaign hero ~450px tall, full bleed, product photograph as the field, Korean campaign title overlaid in HTML (not burned into the generated image).
+- Right recommendation rail over the hero.
+- Below the fold: 오늘의 발견 (two tiles). Additional campaign rows exist in later frames; they are not extra routes.
+
+Type scale captured on the live surface:
+
+| Role | Size | Weight | Color | Family |
+|---|---|---|---|---|
+| h2 | 24px | 700 | `#000000` | Apple SD Gothic Neo |
+| h3 | 20px | 400 | `#212b36` | Apple SD Gothic Neo |
+| p | 11px | 400 | `#7b7b7b` | Apple SD Gothic Neo |
+
+Sampled interactive blue from the viewport: `#4269f6`. Cart badge orange `#e76931`. Hero kicker red `#e84035`. Wordmark brown `#c45c1a` with teal `g` `#12a8a3` — **text wordmark only**. Official logo artwork is not used.
+
+Imagery sample `c1` is a 1440×450 field (aspect 3.2, area share 0.5). That is the representative image slot. `image.jpg` fills it.
+
+Heading: Three-layer tokens
+
+Pack `design-system` skill: primitive → semantic → component. Components never store raw hex.
+
+Heading: Primitive
+
+```css
+--color-white: #ffffff;
+--color-gray-50: #fefefe;
+--color-gray-100: #f0f0f0;
+--color-gray-200: #e5e5e5;
+--color-gray-400: #7b7b7b;
+--color-gray-700: #212b36;
+--color-gray-900: #000000;
+--color-blue-500: #4269f6;
+--color-blue-700: #2f54d8;
+--color-red-500: #e84035;
+--color-orange-500: #e76931;
+--color-brown-600: #c45c1a;
+--color-teal-500: #12a8a3;
+--space-1: 4px; /* 4pt rhythm through --space-8 */
+--font-ui: "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Hiragino Sans", sans-serif;
+--duration: 180ms; /* pack 150–300ms micro-interaction window */
+--z-base: 0; --z-rail: 10; --z-header: 20; --z-dropdown: 40; --z-skip: 100;
+```
+
+Heading: Semantic
+
+```css
+--color-background: var(--color-gray-50);
+--color-foreground: var(--color-gray-900);
+--color-muted: var(--color-gray-100);
+--color-muted-foreground: var(--color-gray-400);
+--color-primary: var(--color-blue-500);
+--color-on-primary: var(--color-white);
+--color-accent: var(--color-red-500);
+--color-border: var(--color-gray-200);
+--color-ring: var(--color-blue-500);
+```
+
+Pack marketplace purple/green remains a rejected alternate, not a theme toggle. Light mode only: the snapshot is light, and dark inversion would invent chrome the evidence does not show.
+
+Heading: Component
+
+```css
+--button-bg: var(--color-primary);
+--button-fg: var(--color-on-primary);
+--input-border: var(--color-primary);
+--input-h: 44px;          /* Apple HIG / pack touch-target floor */
+--card-bg: var(--color-white);
+--header-h: 70px;         /* evidence header heightPx */
+--cat-w: 112px;
+--wrap: 1020px;
+```
+
+Heading: Typography
+
+- **Render stack:** evidence family, system fallbacks. No `@import`, no CDN.
+- **Pack pairing (when network is allowed):** Rubik (heading) + Nunito Sans (body), `display=swap`. Not shipped in `render.html`.
+- Scale used: 11 / 12 / 13 / 14 / 16 / 20 / 24 / 32 / 48 (hero title only).
+- Body line-height 1.5. Product titles `-webkit-line-clamp: 2`. Prices `font-variant-numeric: tabular-nums`.
+- Hero title is display size; it is not a second h1. Page h1 exists on the results view; home uses the wordmark + hero h2.
+
+Heading: Layout
+
+Desktop 1440 (the captured surface):
+
+1. Two-up promo strip (로켓배송 안내 / 물티슈).
+2. Utility bar (즐겨찾기 · 입점 · 로그인 · 가입 · 고객센터 · 판매자).
+3. Header: category block, text wordmark, search, 마이쿠팡, 장바구니.
+4. Shortcut row.
+5. Campaign hero (generated photograph) + right rail.
+6. 오늘의 발견.
+
+Width: header/today/results content `1020px` centered; hero is full bleed. Breakpoints 768 / 1024 / 1440 (pack layout rule). Mobile stacks the rail under the photograph, collapses utility, and keeps search ≥44px.
+
+Reset includes `figure, blockquote, ul, ol { margin: 0 }` so UA list/figure margins cannot shift the measured header or hero.
+
+Z-index is the token scale above. Dropdowns (`suggest`, category panel) sit at `--z-dropdown`; they do not fight the rail.
+
+Heading: Components and states
+
+Icons are inline SVG in the Phosphor regular stroke language (pack default). No emoji glyphs as structure.
+
+| Component | Default | Hover | Active / open | Disabled | Notes |
+|---|---|---|---|---|---|
+| Category button | `--color-primary`, 112×112 | `--color-blue-700` | `aria-expanded=true`, same hover fill | — | Disclosure; not a new route |
+| Search field | 2px primary border, 44px | — | Focus-visible ring | Submit disabled while listing loads | Visible `<label class="sr-only">` |
+| Search submit | Icon button 40×40 | Tint `#eef3ff` | Press scale via :active on hero CTA only | Spinner + `disabled` | Loading >300ms rule |
+| Suggestion list | Hidden | Row `#f6f8ff` | — | — | Pack: do not require full type+enter |
+| Cart | Outline icon + badge `0` | Primary color | — | — | Chrome only; no cart screen |
+| Hero CTA | White pill on photo | Scale 1.02 / 180ms | Scale 0.98 | — | Runs the same search task |
+| Rail item | White row, 62px min | `#fafafa` | `.active` 2px primary outline | — | Current campaign outlined |
+| Product card | White, 1:1 swatch | — | — | — | Listing only; no product-detail route |
+| Filter chip | Border gray | — | `aria-pressed=true`, primary border | — | 전체 / 로켓배송 |
+| Empty state | Centered copy + chips | — | — | — | Pack: never a blank “0 results” |
+
+Motion: 150–300ms, ease-out on enter, `transform`/`opacity` only. `@media (prefers-reduced-motion: reduce)` collapses duration.
+
+Heading: Search task
+
+This is the only functional journey.
+
+1. Focus the labelled search field (or pick a suggestion / rail / promo / 오늘의 발견 tile).
+2. Submit. Hash becomes `#/search?q=…` (pack deep-link guideline).
+3. Home unmounts; listing view mounts. Submit is disabled and a status region (`aria-live="polite"`) announces progress for ~320ms.
+4. Matching products render in a 4-column grid (2-column under 768px). Rocket filter is a chip, not a second page.
+5. Zero hits: message that names the query + suggestion chips that re-run search.
+6. Wordmark returns `#/` (home). Back is the browser hash.
+
+No login, cart, PDP, or seller dashboard screens.
+
+Heading: Representative image
+
+`image.jpg` is the campaign photograph inside the home hero (`<figure class="hero-visual">`). Role on this snapshot: show the drinks/picnic campaign currently on the fold as a product still, not as UI chrome and not as a logo. Overlay copy (다채로운 맛의 라인업 / 시원청량 페스티벌) is HTML, because the image model is not used for exact lettering.
+
+Channel: Grok Imagine, lane A. Prompt and hash live in `trace.md`. Aspect 16:9, cropped with `object-fit: cover` to the 450px hero band (evidence intrinsic 1920×450). `width`/`height` on the `img` reserve space (CLS).
+
+Packaging in the photograph is unlabeled. Third-party marks from the live banner are not redrawn.
+
+Heading: Accessibility (pack §1–§3, html-tailwind stack)
+
+- Skip link to `#main`.
+- Search has a visible-to-AT label (`for="q"`).
+- Icon-only controls have `aria-label`.
+- Focus-visible 2px ring in `--color-ring`; focus outline is never removed without a replacement.
+- Touch targets ≥44px on search, category, account, hero CTA, rail rows, chips.
+- Color is not the only state signal (outline, weight, text).
+- Results status is a live region.
+- Contrast: body `#000` on `#fff`; muted `#7b7b7b` is 11px caption only; primary blue on white for borders/icons, white on primary for the category block.
+- `lang="ko"`. Keyboard submit on the form. Category panel closes on outside click; it is not a focus-trapped modal because it is not a route.
+
+Heading: What this system is not
+
+- Not a Core v2 `DESIGN.md`. Format is free.
+- Not an instruction to invent screens the brief did not name.
+- Not a license to paste official Coupang (or partner) logo files.
+- Not the pack’s purple marketplace kit. That kit is recorded above so the override is explicit.

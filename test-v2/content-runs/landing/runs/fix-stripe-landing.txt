@@ -1,0 +1,13 @@
+너는 랜딩 콘텐츠 런의 arm 실행자다. arm = **landing**, 브랜드 = **stripe**. 이번 과업은 **개정 라운드 2**다 — 새로 만들지 말고, 디자이너 리뷰가 BLOCK으로 지목한 것만 고친다.
+
+읽을 것: test-v2/content-runs/landing/stripe/landing/review.md (전문 — 글리프 픽셀 단위 대비 측정), 같은 디렉터리의 render.html · concept.md · storyboard.md, 브랜드 토큰 web/references/stripe/DESIGN.md. 봉인 벤치 test-v2/03-runs 와 다른 arm 디렉터리는 읽지 마라.
+
+고칠 것 (BLOCK 6건만 — WARN·FYI는 손대지 마라):
+1. 히어로 사진 위 크롬 대비(B1 lead · B2 ghost CTA · B3 wordmark+nav · B4 h1@390): `.hero` 에 **그라디언트 스크림**(`::before`, 상단 가장자리까지, canvas 토큰 색의 알파 — 사진의 파이프 조명은 살리고 텍스트 영역만 밝히는 형태)을 넣어 일반 텍스트 4.5:1·큰 텍스트/UI 3:1을 넘겨라. ghost CTA 는 배경을 canvas 알파로 채우고 border 를 `hairline-hover` 이상 진한 토큰으로. 색은 DESIGN.md 토큰만.
+2. B6 포커스 링(`#5469d4`)에 캔버스색 halo(box-shadow 2겹, 링 바깥 2px 흰 + 링)로 3:1 이상 — concept.md 「가정」에 "포커스 halo 는 DESIGN.md 그림자 절제의 예외(접근성)"로 한 줄 기록.
+3. B5 `.reveal{opacity:0}` — `<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>` 와 `@media (scripting: none)` 둘 다 추가(파일이 reduced-motion 경로 `:370`에서 이미 쓰는 방식과 같이).
+다른 줄은 바꾸지 마라(구도·에셋·카피·섹션 높이 불변 — landing-integrity 서명 12.05 vh 유지).
+
+검증(전부 실행·보고): `node test-v2/tools/render-integrity.mjs test-v2/content-runs/landing/stripe/landing/render.html` PASS · `node test-v2/tools/landing-integrity.mjs …` FAIL 0 · 리뷰의 스크립트 `stripe/landing/qa/audit.mjs`(글리프 픽셀 대비)를 그대로 다시 돌려 B1~B4·B6의 "4.5:1(또는 3:1) 미만 글리프 픽셀 %"를 표로 보고 — 전부 0%에 가까워야 한다. loop-trace.json 에 round 3 항목(designerReview.block 6 → 고친 항목)을 덧붙여라.
+
+끝나면 마지막 줄에 `FIX_DONE brand=stripe arm=landing blocks_fixed=<n>` 을 출력해라.

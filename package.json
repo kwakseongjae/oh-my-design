@@ -1,6 +1,6 @@
 {
   "name": "oh-my-design-cli",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Give your AI coding agent a project-owned DESIGN.md workflow with a guided installer, doctor, and 440+ quality-graded references.",
   "type": "module",
   "bin": {
@@ -32,6 +32,10 @@
     "skills/omd-codex-image",
     "skills/claude-design",
     "skills/omd-issue",
+    "skills/omd-landing",
+    "skills/omd-media",
+    "skills/omd-setup",
+    "skills/omd-showcase",
     "agents",
     "data/opt-out-corpus.json",
     "data/synonyms.json",
@@ -64,6 +68,7 @@
     "spec/fixtures/design-md-core-v2/**",
     ".github/assets/logo-bg.png",
     "scripts/postinstall.cjs",
+    "scripts/omd-setup-detect.mjs",
     "scripts/context.cjs",
     "scripts/ctx-prime.cjs",
     "scripts/design-council-prime.cjs",
@@ -83,7 +88,13 @@
     "scripts/autopilot-mission.cjs",
     "scripts/autopilot-council-plan.cjs",
     "scripts/autopilot-council-reconcile.cjs",
-    "scripts/design-harness-context-plan.cjs"
+    "scripts/design-harness-context-plan.cjs",
+    "docs/design-excellence/landing-craft-codex.md",
+    "test-v2/tools/landing-integrity.mjs",
+    "test-v2/tools/render-integrity.mjs",
+    "test-v2/tools/showcase.mjs",
+    "test-v2/tools/text-contrast.mjs",
+    "test-v2/tools/lib/browser.mjs"
   ],
   "scripts": {
     "build": "tsup",
@@ -95,7 +106,7 @@
     "lint": "tsc --noEmit",
     "check:public-core-schemas": "node scripts/check-public-core-schemas.cjs",
     "prepare": "npm run build",
-    "prepublishOnly": "npm run query:references:data:check && npm run gen:presets:check && npm run build && node scripts/sync-runtime-mirrors.cjs --check && node scripts/gen-llms-full.cjs --check-only && bash scripts/check-release-hygiene.sh pack",
+    "prepublishOnly": "npm run query:references:data:check && npm run gen:presets:check && npm run build && node scripts/sync-runtime-mirrors.cjs --check && node scripts/gen-llms-full.cjs --check-only && bash scripts/check-release-hygiene.sh pack && npm run gate:quality",
     "gen:llms-full": "node scripts/gen-llms-full.cjs",
     "gen:llms-full:check": "node scripts/gen-llms-full.cjs --check-only",
     "sync:runtime-mirrors": "node scripts/sync-runtime-mirrors.cjs --write",
@@ -135,7 +146,9 @@
     "design-md": "node scripts/migrate-design-md-core.cjs",
     "postinstall": "node scripts/postinstall.cjs",
     "gen:presets": "node scripts/build-presets-data.mjs",
-    "gen:presets:check": "node scripts/build-presets-data.mjs --check"
+    "gen:presets:check": "node scripts/build-presets-data.mjs --check",
+    "gate:quality": "node test-v2/tools/quality-gate.mjs",
+    "gate:quality:strict": "node test-v2/tools/quality-gate.mjs --strict"
   },
   "keywords": [
     "design-system",
@@ -167,7 +180,6 @@
     "@neondatabase/serverless": "^1.1.0",
     "@types/node": "^22.13.10",
     "axe-core": "4.11.2",
-    "playwright-core": "^1.61.1",
     "tsup": "^8.4.0",
     "typescript": "^5.8.2",
     "vitest": "^3.1.1"
@@ -181,5 +193,8 @@
   "bugs": {
     "url": "https://github.com/kwakseongjae/oh-my-design/issues"
   },
-  "homepage": "https://oh-my-design.kr/docs/en"
+  "homepage": "https://oh-my-design.kr/docs/en",
+  "optionalDependencies": {
+    "playwright-core": "^1.61.1"
+  }
 }

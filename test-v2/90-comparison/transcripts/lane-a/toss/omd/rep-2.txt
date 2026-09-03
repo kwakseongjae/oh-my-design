@@ -1,0 +1,193 @@
+Heading: Toss Home Design System
+
+Run-scoped contract for the specified home surface. Written in the pack derivation order (philosophy → decisions → tokens → component specs → layout grammar). This is not a compiler-bound  package: the pack compiler would publish outside the allowed run directory, so this document carries the same decisions the page consumes.
+
+Authority for product facts: locked brief +  snapshot `2026-08-22T19-51-46-001Z`. Pack methods (visual-quality-contract, derivation-chain, presets, component-craft, slop-gates) decide *how* those facts become tokens. They do not supply missing brand facts.
+
+Disposition: **establish** a surface-local system for this run. There is no adopted project  in scope, and the brief asked for a design-system document.
+
+
+Heading: Philosophy
+
+**Stance.** This home is a cover and a door: one media plate, one headline, and a top nav whose job is to let someone pick 서비스 and leave. Anything the snapshot does not show is omitted.
+
+**P1 — One cover, one task.** We keep the first viewport as a single rounded media plate with the overlay line from the capture. We sacrifice a marketing mosaic, extra product showcases, and any second primary CTA.
+
+**P2 — Evidence over kit.** Color, type metrics, header height, control radius, and labels come from measured chrome or the visible capture. We sacrifice a complete official typeface (Toss Product Sans OTF is named but not loadable offline) and any unused navy fill that the capture does not show on the download pill.
+
+**P3 — Navigate, don’t invent a catalog.** Selecting 서비스 must actually move the view. We sacrifice a mega-menu of products that never appears in this snapshot.
+
+
+Heading: Decision table
+
+| ID | Category | Decision | Sacrifice | Source |
+|---|---|---|---|---|
+|  | Layout grammar | Cover-plate: inset rounded media, overlay display type at the bottom, no second column | Magazine/bento/carousel grammars (those need 4+ distinct images; we have one still) | prompt-fact (home only) + imagery sample count |
+|  | Information density | Fold = header + plate. Destination views reuse the same chrome | Extra screens, below-fold product UI from other imagery files | prompt-fact |
+|  | Accent budget | Accent is the logo mark only (≲5%). Primary chrome control is a light pill | Accent-filled CTA | snapshot viewport + `primaryButton.color` `#333840` |
+|  | Surface genre | Hairline-free paper + one large media plate (large radius on media, 12px on controls). Not a shadowed-tile kit | Same radius on every box | `primaryButton.radiusPx` 12; plate radius from capture observation |
+|  | Color | Paper `#fdfdfe` / ink `#010204` / UI ink `#333840` / tints from the desktop imagery palette / logo accent sampled `#0078f8`. Measured navy `#07194c` is recorded but **not** painted on the visible download control (capture shows a light pill; navy-on-`#333840` would fail contrast) | Using the navy fill as the visible CTA | `pageBackgroundRendered.hex`, imagery palette, viewport sample |
+|  | Type | Display 80/700/96 desktop, 40/700/46 mobile, body 16/1.6. Hangul stack (Product Sans unavailable). Tracking floor −0.01em on Hangul, overriding evidence −0.32px (−0.02em) on 16px | Loading a remote face or faking Product Sans with Inter | typeScale + pack locale typography |
+|  | Elevation | Rest = flat paper. Hover = tinted surface, not drop shadow. Media plate has no shadow | Shadowed-tile genre | P2 surface genre |
+|  | Motion | 120 / 200 / 320 ms; enter `cubic-bezier(0.2, 0.8, 0.2, 1)`, exit `cubic-bezier(0.4, 0, 1, 1)`. Transform/opacity only. Reduced-motion kills motion | Video autoplay of the remote mp4 | `motion.duration` 4.05s used only as “slow” scale context; still image is the asset |
+|  | Interaction | Top nav items are same-document destinations. 서비스 is the graded verb. Keyboard: Tab to the link, Enter | Fabricated submenu rows | brief task + viewport labels |
+|  | Unknowns | Missing submenu, store URL, extra locales, Product Sans files → honest nodes, not placeholders | Fake 토스뱅크 목록, fake store badges | unresolved |
+|  | Copy voice | Snapshot labels verbatim. No implementation words on screen | “hash”, “view”, file names | pack UI copy register |
+
+Gate GS7: every token below cites an ID in this table.
+
+
+Heading: Tokens
+
+Values are CSS custom properties in `render.html` `:root`. Comments there repeat the D-ids.
+
+Heading: Color (OKLCH pairs — never a lone accent)
+
+| Token | OKLCH | Hex origin | Pair | D-id |
+|---|---|---|---|---|
+| `--color-paper` | `oklch(0.994 0.001 284.9)` | `#fdfdfe` desktop paper | with `--color-ink` |  |
+| `--color-ink` | `oklch(0.084 0.012 255.9)` | `#010204` imagery palette | with `--color-paper` |  |
+| `--color-ink-ui` | `oklch(0.339 0.016 259.8)` | `#333840` button/nav | with `--color-paper` / `--color-control` |  |
+| `--color-tint-1` | `oklch(0.970 0.007 268.5)` | `#f3f5fa` | hover wash |  |
+| `--color-tint-2` | `oklch(0.948 0.010 261.8)` | `#eaeef5` | control fill |  |
+| `--color-tint-3` | `oklch(0.938 0.012 252.1)` | `#e5ebf2` | rules |  |
+| `--color-mid` | `oklch(0.608 0.017 242.0)` | `#7a848c` | mute |  |
+| `--color-accent` | `oklch(0.593 0.211 257.1)` | `#0078f8` logo mark sample | with `--color-paper` |  |
+| `--color-accent-ink` | `oklch(0.239 0.097 264.7)` | `#07194c` measured fill, **unused on the visible pill** | recorded |  |
+| `--color-on-media` | `oklch(0.994 0.001 284.9)` | typeScale display `#ffffff` (not a page base) | with `--color-scrim` |  |
+| `--color-scrim` | `oklch(0.084 0.012 255.9 / 0.40)` | ink at 40% — C44 dark dim | under overlay type |  |
+| `--color-focus` | `oklch(0.593 0.211 257.1)` | same as accent | 3:1 on paper |  |
+| `--color-control` | `oklch(0.955 0.008 260)` | light pill, chroma added so it is not G22 gray | with `--color-ink-ui` |  |
+
+Mobile paper `#fefefe` is omitted as a second base; it is within rounding of desktop paper.
+
+Heading: Type
+
+| Role | Size / weight / line-height | Family | D-id |
+|---|---|---|---|
+| display | 80px / 700 / 96px (desktop); 40px / 700 / 46px (≤899px) | Hangul gothic stack |  |
+| body | 16px / 400 / 1.6 | same |  |
+| ui | 16px / 500 / 1.6 | same |  |
+| label | 12px / 500 / 1.4, muted, not all-caps (Hangul) | same |  |
+
+Stack: `"Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif`.
+
+`Toss Product Sans OTF` is a typeScale family name only. Offline load is unresolved → omitted as a live face. Do not render Inter as if it were that face.
+
+Hangul: `word-break: keep-all`. Tracking ≥ −0.01em.
+
+Heading: Space (4px scale + section air)
+
+`--space-1` 4, `--space-2` 8, `--space-3` 12, `--space-4` 16, `--space-5` 20, `--space-6` 24, `--space-8` 32, `--space-10` 40, `--space-section-sm` 2.5rem, `--space-section` 4rem, `--space-section-lg` 6rem, `--gutter: clamp(16px, 2.2vw, 32px)`. Header 64px / 56px.
+
+Heading: Shape and motion
+
+- `--radius-control: 12px` ()
+- `--radius-media: 32px` (agent-proposed-greenfield-decision from the capture’s large plate; not a measured field)
+- `--dur-fast: 120ms` `--dur-base: 200ms` `--dur-slow: 320ms`
+- `--ease-enter` / `--ease-exit` as in 
+
+
+Heading: Component specs
+
+Preset rule (GS8): pick from the catalog, then fill token slots.
+
+Heading: Header + nav — no-preset: site chrome
+
+Catalog has no corporate-home header. Anatomy is from the 1440 viewport: mark + wordmark left; five text items; locale trigger; light pill. Mobile: mark + menu control (primaryButton null).
+
+States (interactive): default, hover (tint-1 surface), focus-visible (accent outline, instant), active (scale 0.98), disabled (opacity + `disabled` + `cursor: not-allowed`). Disclosure: `aria-expanded` on the menu button; closed panel uses `hidden` so descendants are not focusable.
+
+Current page: `aria-current="page"` on the matching item (P-FN-02 sibling).
+
+Hit target ≥ 44×44 on touch.
+
+Heading: Nav destination links — no-preset: in-flow links
+
+Not a listbox. The snapshot shows plain text items, no combobox field. Keyboard path is native link activation (Tab, Enter). Programmatic proof: `aria-current`, `data-state="navigated"` on the opened view, `document.title`, focus on that view’s `h1` with visual ring suppressed (P-FN-02 / G19).
+
+Heading: Locale — P-FN-01 (anatomy kept, options = evidenced set)
+
+Trigger shows `KOR`. Options: only `KOR` (no second locale in the capture). Opening the listbox does not invent `EN`.
+
+Heading: Primary control — pack button (C1–C10)
+
+Label `앱 다운로드` (de-split from chrome). `data-cta="primary"`. Light pill, `--color-ink-ui` on `--color-control`, radius 12, 16/500. One visible primary on desktop. On mobile it lives inside the open menu because chrome.primaryButton is null.
+
+Store URL unresolved: activation sets `data-state="unavailable"` and an `role="alert"` node that names the missing category (store address). It does not navigate off-file.
+
+Heading: Cover plate — P-ED-03 cover only (not the repeating lookbook loop)
+
+One still, 16:9, `object-fit: cover`, explicit width/height 1280×720. Overlay display type is HTML, not pixels in the image. Bottom scrim for contrast. No fake phone chrome (G47). Alt describes the depicted scene; it does not invent a metric.
+
+Heading: Honesty node
+
+Visible `data-honesty` copy on destination views. Footer has one quiet sample line. No top banner.
+
+Heading: Skip link
+
+Targets `#main`, not the primary CTA.
+
+
+Heading: Layout grammar
+
+**Page: home cover plate ().**
+
+- Wide strategy: central max. Gutter + one plate. No extra column (one image cannot fill a diptych without invention).
+- Content back-calc: 1 still fills the plate. Carousel/bento/magazine forbidden (GS6).
+- Fold: header 64 + plate using remaining 1440×900 viewport. Hero bottom padding ≥ 1.3× top inset.
+- Overlay type sits on the plate, not in a stack under a cropped strip.
+- Destination views (서비스 and the other four labels) are **the same document**, not additional HTML files. They keep the same header. Body is a heading + honesty node + the same still at reduced height so the 1440 viewport is not 40% empty (GS5) without adding a new screen type.
+
+**Breakpoints.** 1440 grammar from desktop-1440; 390 grammar from mobile-390 (stacked headline, disclosure nav). 320 and 200% reflow: no horizontal overflow (`overflow-x: clip`), display type `overflow-wrap: anywhere; min-width: 0`.
+
+
+Heading: Experience (scope)
+
+- Surface: toss.im home, snapshot `2026-08-22T19-51-46-001Z`.
+- Primary task (brief, verbatim): 상단 내비에서 서비스 하나를 선택해 이동한다.
+- Supported locales: `ko` only (`method.locale` ko-KR; trigger label KOR).
+- Platforms: desktop 1440×900 and mobile 390×844 as verify bases; 320 and 200% as pack quality gates.
+
+
+Heading: Interaction, states, accessibility
+
+Journey verbs:
+
+| Verb | Keyboard | Programmatic proof |
+|---|---|---|
+| 서비스 선택 | Tab to `서비스`, Enter/Space | `aria-current="page"` on that link |
+| 이동 | same activation | `#view-service` unhidden, others `hidden`; `h1` text 서비스; `document.title` `서비스 — 토스`; focus to that `h1` (`tabindex=-1`, outline none); `role="status"` names 서비스 |
+
+Other nav labels also resolve (dead links would violate the pack). Their bodies do not invent content.
+
+Required quality states actually used: default (home), navigated (destination), unavailable (download without a store URL), focus-visible, hover, active, disabled (not used unless a control is inert). No developer state switcher.
+
+Landmarks: one `header` with one `nav`, one `main`, one `footer`. One `h1` in the visible view.
+
+
+Heading: Content & unknowns
+
+Voice: snapshot strings only. Headline, nav, download, KOR, toss wordmark.
+
+Unresolved (omitted, not replaced):
+
+1. Toss Product Sans files
+2. 서비스 submenu rows
+3. App store URL
+4. Locales other than KOR
+5. Any count, price, or testimonial
+6. Official logo geometry beyond a drop mark in sampled `#0078f8`
+
+Honesty nodes name those categories where a user would look for them.
+
+
+Heading: Governance
+
+- prompt-fact: brief task, required files, snapshot handle
+- repository-fact: evidence.json / manifest / capture pixels
+- verified-reference-inspiration: none (pack forbids reading other arms; no live fetch)
+- agent-proposed-greenfield-decision: media radius 32px; Hangul tracking floor; still instead of remote video; drop-mark SVG
+- unresolved: listed above
+
+Unknown means absent at the smallest field. This document does not claim Bound  authority.

@@ -1,0 +1,41 @@
+{
+  "runId": "lane-a-naver-rep-1",
+  "arm": "hallmark",
+  "lane": "lane-a",
+  "brand": "naver",
+  "repeat": 1,
+  "sourceFiles": [
+    {
+      "relativeId": "03-runs/lane-a/naver/<arm>/rep-1/system.md",
+      "sha256": "85936dfaeba22a260cee549b2b186fc2e47c9f17bfc58bbc547616e156700153"
+    }
+  ],
+  "sourceSha256": "85936dfaeba22a260cee549b2b186fc2e47c9f17bfc58bbc547616e156700153",
+  "transcriptSha256": "a35e0f73239a01555f209c311c2ef528fd6384068c18be81e89a6d01ea9d8b77",
+  "procedureFile": "TRANSCRIPTION.md",
+  "procedureSha256": "becf08f97cfd0a28052a6779171096649e7a6fef2ab581379382333f792a3c34",
+  "transcriberId": "opus5",
+  "verifierId": "orchestrator",
+  "transcriptionStartedAt": "2026-09-02T11:51:28Z",
+  "transcriptionEndedAt": "2026-09-02T11:51:28Z",
+  "verificationStartedAt": "2026-09-02T11:51:28Z",
+  "verificationEndedAt": "2026-09-02T11:51:28Z",
+  "encoding": "UTF-8",
+  "lineEnding": "LF",
+  "mapFile": "90-comparison/transcript-seals/lane-a/naver/hallmark/rep-1.map.csv",
+  "mapSha256": "211ac769e81bf9f5a83f76ebb6d91a117be2c05d81fcc020dc5ebe0db196f3f7",
+  "verificationResult": {
+    "tool": "test-v2/tools/transcribe-verify.mjs",
+    "toolSha256": "ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3",
+    "checks": "TRANSCRIPTION.md §7.1.1–§7.1.9",
+    "unitsChecked": 83,
+    "problems": [],
+    "attempts": 1,
+    "verifiedAt": "2026-09-02T11:51:28Z",
+    "verifiedBy": "orchestrator",
+    "declaredSpans": 3
+  },
+  "verdict": "PASS",
+  "transcriptFile": "90-comparison/transcripts/lane-a/naver/hallmark/rep-1.txt",
+  "submittedToScoring": true
+}

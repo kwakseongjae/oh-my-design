@@ -1,0 +1,83 @@
+Heading: 상의 카테고리 · 컬러 블랙
+
+genre editorial · macrostructure Catalogue · theme Carnival · drop Citrus Riot  
+tone utilitarian · nav N12 · footer Ft2 · enrichment E8 (생성 스틸 1장 + CSS 자리)
+
+Going with: audience = 상의를 고르는 쇼핑객 · use = 컬러 필터 하나로 그리드를 좁힌다 · tone = utilitarian.
+
+이 파일은 `render.html`에 잠가 둔 토큰·구조·상태를 설명합니다. 화면은 브리프의 상의 카테고리 하나뿐입니다.
+
+Heading: 왜 이 시스템인가
+
+카탈로그는 물건을 같은 칸에 올려 비교하게 한다. Carnival Citrus Riot는 스트리트 패션 목록이 마케팅 랜딩처럼 보이지 않게, 하드 오프셋과 한 줄 액센트로 목록을 고정한다. 첫 페인트는 이미 컬러 블랙이 켜진 상태다.
+
+Heading: 토큰
+
+모든 색과 글꼴은 `:root` 이름만 쓴다. 렌더 파일 안에서 인라인 OKLCH/hex/font-family를 쓰지 않는다.
+
+Heading: 색 (Citrus Riot)
+
+| 토큰 | 값 | 역할 |
+| --- | --- | --- |
+| `--color-paper` | `oklch(94% 0.040 85)` | 시트 |
+| `--color-paper-2` | `oklch(90% 0.048 82)` | 호버·미디어 바닥 |
+| `--color-paper-3` | `oklch(84% 0.055 80)` | 할프톤 자리 |
+| `--color-ink` | `oklch(20% 0.07 145)` | 본문·테두리 |
+| `--color-ink-2` | `oklch(32% 0.05 140)` | 가격 |
+| `--color-muted` | `oklch(38% 0.05 140)` | 보조 문장 |
+| `--color-rule` | `oklch(28% 0.28 350)` | 마젠타 룰 |
+| `--color-accent` | `oklch(82% 0.20 130)` | 라임. 상태 슬래브·필터 바 |
+| `--color-accent-2` | `oklch(28% 0.28 350)` | 배너·저장 on |
+| `--color-accent-ink` | `oklch(20% 0.07 145)` | 라임 위 글자 |
+| `--color-focus` | `oklch(28% 0.28 350)` | `:focus-visible` 링 |
+| `--color-error` / `--color-success` | 적·녹 | 색만으로 상태를 알리지 않음 |
+| `--color-swatch-*` | black / white / grey / ivory | 컬러 칩 점 |
+
+액센트는 배너 한 줄, 필터 왼쪽 바, 상태 슬래브, 눌러진 저장 버튼에만 쓴다. 섹션을 액센트로 가득 채우지 않는다.
+
+Heading: 글꼴 (네트워크 없음)
+
+오프라인 첫 렌더라 Google Fonts를 부르지 않는다. 이름만 토큰에 두고 `local()` 후보 + 시스템 폴백이 그린다.
+
+- `--font-display`: Big Shoulders Display 800 · 워드마크·페이지 제목·섹션 제목. 로만, 대문자.
+- `--font-body`: IBM Plex Sans · UI·상품명.
+- `--font-mono`: IBM Plex Mono · 가격만 (아웃라이어 1역할).
+
+세 가족을 넘지 않는다. 제목에 이탤릭을 쓰지 않는다.
+
+Heading: 공간 · 타입 · 움직임
+
+4pt 스케일 `--space-3xs` … `--space-4xl`. 본문 16px, 디스플레이 `clamp` 상한 `--text-display-s`(카탈로그는 큰 히어로를 두지 않음). 이징 `--ease-out` / `--ease-in` / `--ease-in-out`. 지속 `--dur-micro` 120ms · `--dur-short` 220ms · `--dur-long` 420ms. `html, body { overflow-x: clip }`. 카드 반지름 0, 그림자 `4px 4px 0 var(--color-ink)`.
+
+Heading: 구조
+
+1. **N12** 안내 배너(솔리드 마젠타, 닫기 있음) + 고정 바. 스크롤 내리면 배너가 접힌다. 워드마크는 텍스트 `MUSINSA`. 공식 로고 원본 없음.
+2. **Catalogue 머리** `상의` + 스냅샷에서 온 전체 개수 350,441. 필터 후 총수는 스냅샷에 없어서 적지 않는다.
+3. **종류 줄** 전체(현재) · 반소매 티셔츠 · 셔츠/블라우스 · 니트/스웨터. 같은 화면의 분류일 뿐 새 화면이 아니다.
+4. **컬러 필터** 첫 페인트는 블랙 `aria-pressed="true"`. 화이트·다크 그레이·아이보리는 같은 스냅샷 칩이다. 다른 칩을 누르면 이 런의 이름 목록에 그 글자가 없으면 빈 상태를 연다.
+5. **F6 상품 칸** 3/4, 데스크톱 3열, 가격은 이름 아래, 마이크로액션은 저장. 이미지 트랙은 `minmax(0, 1fr)`.
+6. **Ft2** 한 줄 크레딧. 4열 사이트맵 없음.
+
+Heading: 이미지
+
+- `image.jpg` — 블랙 민소매 자리의 LCP. Grok Imagine 생성 후 옆구리 상표형 마크를 지운 편집본. CSS 그레인.
+- 나머지 두 칸 — 할프톤 + CSS 실루엣. 자리임을 숨기지 않는다. `<!-- TODO: Replace with real product photo -->`.
+- 외부 URL, Picsum, 폰트 CDN 없음.
+
+상품명·브랜드·가격·할인·하트 수는 스냅샷에 보이는 것만 적는다. 롤업 레이어드 크롭 반팔티의 가격은 위 칸에 없어 `—`.
+
+Heading: 컴포넌트 상태
+
+칩·아이콘 버튼·로그인·저장은 default / hover(`@media (hover: hover)` 포함 클래스) / `:focus-visible` / `:active` / `:disabled` / `data-state=loading|error|success`를 갖는다. 포커스 링은 즉시, 두께를 상태로 바꾸지 않는다. 히트 영역 44px. 저장은 눌림 색이 피드백이며 성공 토스트는 없다.
+
+Heading: 카피 규칙
+
+동사 위주. 지어낸 전환율·신뢰 수치 없음. 배너 문장: `상의 · 컬러 블랙 적용`. 빈 목록: `이 스냅샷 목록에서 이름에 그 컬러가 적힌 상의는 없습니다.`
+
+Heading: 반응형
+
+320 / 375 / 414 / 768에서 가로 스크롤 없음. 클릭 라벨은 `nowrap`. 상품 그리드 1 → 2 → 3열. 내비 링크는 60rem 아래에서 시트로 접힌다. `prefers-reduced-motion: reduce`는 공간 이동을 150ms 이하로 접는다.
+
+Heading: 쓰지 않는 것
+
+Inter/Roboto/Poppins. 보라–시안 그라데이션. 3열 아이콘 타일. 가짜 브라우저 크롬. 섹션 번호 눈썹. 제목 이탤릭. 공식 워드마크 이미지. 브리프에 없는 화면.

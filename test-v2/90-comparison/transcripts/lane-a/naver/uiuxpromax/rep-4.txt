@@ -1,0 +1,126 @@
+Heading: NAVER Home — Design System
+
+Arm: . Surface: `https://www.naver.com/` home. Task: type a query and reach search results. Snapshot `2026-08-22T19-51-00-372Z`. Stack: single-file HTML (no network).
+
+Heading: Pack workflow
+
+`--design-system` is required. Query used:
+
+```
+news media portal search directory light korean
+--density 8 --variance 4 --motion 3 -p NAVER
+```
+
+First-pass `--design-system` (also tried `search portal homepage korean content-dense green`) returned **Marketplace / Directory** as the pattern (keep) but **Exaggerated Minimalism** / **Modern Dark** and a red “breaking news” palette. Those conflict with captured chrome (white page, green search ring). Pack Step 3 domain search overrides:
+
+| Domain | Query | Kept |
+|---|---|---|
+| product | search portal directory news | News/Media + Directory |
+| style | flat design / minimalism light content-dense | **Flat Design** + Swiss/Minimal (not oversized type) |
+| color | portal search green light | Government Portal (light + service green) as nearest pack row |
+| typography | korean professional readable | Korean Modern — Noto Sans KR |
+| ux | search accessibility loading form | labels, error-near-field, autocomplete, submit feedback |
+| ux | animation accessibility z-index loading | z-scale, skeletons/spinner >300ms, no decorative infinite motion |
+| icons | search navigation mail shopping / bell envelope | Phosphor regular, inline SVG |
+| stack | html-tailwind form search layout responsive | padding by breakpoint; one DOM, visibility by width |
+
+GSAP snippet from `--motion 3` was **not** shipped: first render must open with zero network and no third-party runtime. Equivalent: 150–200ms opacity/color, `prefers-reduced-motion`.
+
+Heading: Evidence binding
+
+Chrome from  (not invented):
+
+- Page background `#ffffff` / rendered `#fefefe`
+- Body `#2e2e2e`, `-apple-system`, ~14.7px, weight 500/700, tracking `-0.4px`
+- Mobile primary fill `#03c75a`, radius 28px (login on the live mobile surface)
+- Header ~216px
+- desktop-1440 imagery: no sample above size floor — hero photo taken from the viewport capture, not from the imagery funnel
+- mobile-390 imagery: 10 below-fold thumbnails, figure/ground unresolved — placement omitted; only the home hero uses `image.jpg`
+
+Official brand marks are **text wordmarks** (`N`, `NAVER`, `pay`), not original logo files.
+
+Heading: Tokens (primitive → semantic → component)
+
+Density dial 8 → 8–32px scale.
+
+```css
+/* primitive */
+--color-white: #ffffff;
+--color-gray-900: #2e2e2e;
+--color-green-500: #03c75a;   /* evidence ring / wordmark */
+--color-green-700: #00733a;   /* filled CTA, WCAG AA vs white */
+--space-2: 8px; --space-3: 12px; --space-4: 16px; --space-8: 32px;
+
+/* semantic */
+--color-background: var(--color-white);
+--color-foreground: var(--color-gray-900);
+--color-primary: var(--color-green-500);
+--color-primary-strong: var(--color-green-700);
+--color-ring: var(--color-green-500);
+
+/* component */
+--button-bg: var(--color-primary-strong);
+--input-border: var(--color-primary);
+--input-radius: 999px;
+--card-radius: 12px;
+--touch: 44px;
+--z-header: 20; --z-dropdown: 40; --z-banner: 50; --z-skip: 100;
+```
+
+`--color-green-500` on white is the search outline (3:1 UI glyph). White text on `#03c75a` is ~2.2:1, so filled login uses `--color-green-700` (~5.6:1). Pack §1 contrast wins over copying the captured fill hex onto small type.
+
+Type: Noto Sans KR named first, then Apple SD Gothic Neo / Malgun Gothic / `-apple-system`. **No Google Fonts `@import`.**
+
+Heading: Style
+
+Flat Design (pack): solid fills, no drop shadows, no decorative blur, 4–6 colors, 150–200ms hover. Portal density from Data-Dense Dashboard (8–12px gaps, 12–14px meta) without turning the home into a BI grid.
+
+Pattern: Marketplace / Directory — **search is the CTA**. Sections on this screen only: search, service shortcuts, featured hero, newsstand, login/trust, shopping strip. No extra routes.
+
+Heading: Components
+
+| Component | Spec |
+|---|---|
+| Search field | Visible `<label>` (sr-only) + `role="search"`. Height ≥48px. Green pill. Submit = wordmark `N` (`aria-label="검색"`) or Enter. |
+| Suggest | Local list, Arrow keys, `role="listbox"`. Pack: do not require full type+enter. |
+| Error | Empty submit stays on home, message under the field, focus the input. |
+| Loading | 220ms busy state, submit disabled. |
+| Login | Primary button, 48px, strong green, text wordmark. |
+| Shortcuts | Icon tile 44×44 + text label (not icon-only). Phosphor-style stroke 1.75. |
+| Cards | 1px border, radius 12, no shadow. |
+| Newsstand | Text names only (no publisher logo files). |
+| Hero image | Local `image.jpg`, width/height set, `object-fit: cover`. |
+
+Icon-only controls have `aria-label`. Cursor pointer on clickable elements. Focus ring 3px green.
+
+Heading: Layout
+
+- Desktop 1440: max 1280px, two columns (content 1.7fr / aside 0.9fr).
+- ≤1024: single column; press grid 3-up.
+- ≤720: 16px gutters, hide whale banner, shortcuts scroll horizontally.
+- Breakpoints from pack: 375 / 768 / 1024 / 1440.
+
+One HTML tree; do not fork a separate mobile page (html-tailwind: visibility, not duplicate content).
+
+Heading: Motion & a11y
+
+- Duration 150–300ms, transform/opacity only.
+- Press scale 0.97 on icon buttons.
+- `prefers-reduced-motion: reduce` zeroes animation.
+- Skip link → `#main`.
+- Heading order: `h1` NAVER (sr-only) → hero `h2` → newsstand/shop `h3`.
+- Search results announced with `aria-live="polite"`.
+- Viewport meta does not disable zoom.
+- Body/search input 16px on small screens (iOS zoom).
+
+Heading: Offline first render
+
+`render.html` requests nothing off-disk. CSS inlined. `image.jpg` is relative. Icons are inline SVG. No Chart.js, no Tailwind CDN, no font CSS.
+
+Heading: Screens in this run
+
+Brief names **home** only. Search results is the task destination in the same file (`?q=`), not a new product surface. Mail, cafe, login, shopping detail, AI chat are not implemented as pages.
+
+Heading: Anti-patterns avoided
+
+Clutter-as-decoration, emoji icons, placeholder-only labels, hover-only primary action, `z-index: 9999`, Google Fonts FOIT, official logo files, extra screens, blocking install modal over the search field.

@@ -1,0 +1,138 @@
+Heading: NAVER Home — Design System
+
+Pack:  (Step 2 `--design-system`, then domain/stack searches).  
+Surface: `https://www.naver.com/` home. Task: type a query and land on search results.  
+Offline first render: no webfont/CDN. Intended Korean pairing is Noto Sans KR; the HTML uses the measured system stack so the file opens with zero network.
+
+Heading: Requirements (Step 1)
+
+| Slot | Decision |
+|------|----------|
+| Product | Search portal / directory. Search bar is the CTA. |
+| Audience | Korean C-end, daily utility (news, mail, shopping). |
+| Density | Dial 8 — dashboard-dense (8–32px). |
+| Variance | Dial 3 — centered, not brutalist. |
+| Motion | Dial 3 — subtle, 150–300ms, `prefers-reduced-motion`. |
+| Stack | html + CSS tokens (html-tailwind rules, no Tailwind CDN). |
+| Platform | Desktop 1440×900 and mobile 390×844. |
+
+`--design-system` first pass matched **Marketplace / Directory** (search as conversion). Style/color CSV then drifted to red fashion / knowledge-blue wiki. Those palettes were discarded: they contradict measured chrome (`#03c75a`, `#ffffff`/`#fefefe`, `#2e2e2e`). Color search nearest civic/utility greens were used only as *role* confirmation (primary = high-contrast search/login; accent green = trust). Hex values come from evidence, not from the red/navy CSV rows.
+
+Style domains kept: **Flat Design** (solid fills, 150–200ms hover) + **Swiss grid** (one accent, mathematical 4px spacing) + **content-dense** (icon row + news grid). Exaggerated Minimalism (clamp 3–12rem headlines) is an anti-fit for this portal.
+
+Heading: Tokens (primitive → semantic → component)
+
+Heading: Primitive
+
+```css
+--color-white: #ffffff;
+--color-canvas: #fefefe;     /* desktop rendered modal */
+--color-ink: #2e2e2e;        /* body / h1 / button */
+--color-green: #03c75a;      /* mobile primary button fill */
+--color-green-hover: #02b350;
+--color-green-pressed: #019c46;
+--color-blue-link: #1a73e8;  /* campaign emphasis only */
+--color-blue-live: #e8344e;
+--color-whale: #3b82f6;
+--color-banner: #f7f3e8;
+--color-muted: #8a8a8a;
+--color-line: #e4e7ea;
+--color-chip: #f5f6f8;
+--space-1..8: 4 / 8 / 12 / 16 / 20 / 24 / 32 px;
+--font: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+        "Malgun Gothic", "Noto Sans KR", system-ui, sans-serif;
+--fs: 14.7px;
+--lh: 1.36;                  /* 17.85 / 14.7 */
+--track: -0.4px;
+--radius-pill: 999px;        /* 28px search / measured 28px pill */
+--dur: 180ms;
+--touch: 44px;
+```
+
+Heading: Semantic
+
+| Role | Token | Value |
+|------|-------|-------|
+| Background | `--color-background` | `--color-canvas` |
+| Foreground | `--color-foreground` | `--color-ink` |
+| Primary / CTA | `--color-primary` | `--color-green` |
+| On primary | `--color-on-primary` | `--color-white` |
+| Border | `--color-border` | `--color-line` |
+| Muted text | `--color-muted-fg` | `--color-muted` |
+| Focus ring | `--color-ring` | `--color-green` |
+
+Heading: Component
+
+| Component | Default | Hover | Active | Disabled | Focus |
+|-----------|---------|-------|--------|----------|-------|
+| Login button | bg primary, white, h 48, radius 6 | `#02b350` | `#019c46` + scale 0.99 | opacity 0.5, not-allowed | 3px ring |
+| Search field | h 52, border 2px primary, radius 28 | — | — | — | ring mix 22% |
+| Icon button | 44×44, ink | chip fill | scale 0.96 | opacity 0.5 | 3px ring |
+| Whale CTA | bg `#3b82f6`, pill, h 44 | `#2563eb` | — | — | 3px ring |
+| Card | white, 1px border, radius 16 | — | — | — | — |
+
+Type roles (Material-ish, mapped to measured 14.7 / 700 / 500):
+
+- Display/campaign title: 28px / 800 / -1px (22px on 390)
+- Title (news, shop): 14.7px / 700
+- Body / controls: 14.7px / 500
+- Caption (shortcuts, press names): 12px / 500–700
+- Search input: 16px (mobile zoom guard)
+
+Heading: Layout
+
+Desktop 1440: header 3-column (utils · search · utils), shortcuts centered, content grid `1fr 340px` (news/campaign | login/ad).  
+Mobile 390: search full width under utils; single column; press grid 3-up; shopping 2-up.
+
+Breakpoints used: 720 / 1024 (pack: 375 / 768 / 1024 / 1440 — 720 covers the 390 capture without a 768-only dead zone).
+
+`max-width: 1280px` on the inner wrap. Grid children `min-width: 0`. Images `max-width: 100%` + declared `width`/`height`.
+
+Heading: Components on this screen
+
+1. **Search (K1)** — visible `<label class="sr-only">` + placeholder. Submit is the primary action. Enter and the magnifying-glass button both submit. Loading disables the button ~160ms then hash-routes to `#search?q=`.
+2. **Service icons (K2)** — 11 labeled SVG shortcuts. Not official marks. Buttons, not extra screens.
+3. **Login card (K3)** — one primary CTA (`NAVER 로그인` wordmark + verb). Find-id / password / join are text buttons.
+4. **News + press grid (K4)** — ticker + 6×4 name cells (text, no publisher logos).
+5. **Campaign figure** — `image.jpg` (studio mattresses). Alt describes the photo, not a brand claim.
+6. **Whale dialog** — dismissible, Escape, does not cover the search field.
+
+Brand mark: text wordmark `NAVER` in primary green. No official N glyph, no Pay lockup, no Whale+N badge.
+
+Heading: Search results (task only)
+
+Same header/search. Home is hidden; a results list is shown. No other product surfaces (mail, cafe, login flow, shopping PDP). Back via wordmark, “홈으로”, or history.
+
+Empty query: native `required` + focus return. Zero-results copy is unused because local hits are always templated from the query.
+
+Heading: Motion, a11y, performance
+
+- Transitions 180ms ease-out; press scale 0.96–0.99; reduced-motion kills both.
+- Focus: `:focus-visible` 3px ring, never `outline: none` without replacement (html-tailwind stack).
+- Touch ≥ 44px; 8px+ gaps.
+- Skip link; heading order h1 → h2; `aria-label` on icon-only controls; `aria-live` on search status.
+- Contrast: ink `#2e2e2e` on `#fefefe` ≫ 4.5:1; white on `#03c75a` for the login label.
+- No Google Fonts import (font-loading guideline + offline rule).
+- UA reset includes `figure, blockquote, ul, ol` (default 40px side margin on `figure` overflows a 100% image).
+
+Heading: Anti-patterns avoided
+
+Cluttered conversion (pack): search remains the only primary CTA.  
+Emoji icons: inline SVG, one stroke.  
+Placeholder-only field: sr-only label.  
+Raw hex in new components: semantic aliases; primitives listed above.  
+Official logo files: forbidden; wordmark only.  
+External requests in `render.html`: none.
+
+Heading: Pack queries used
+
+```
+--design-system "search engine portal utility news clean green white content-dense"
+  -p "NAVER Home" --variance 3 --motion 3 --density 8 -f markdown
+--domain color  "search portal green white utility"
+--domain style  "minimal clean utility content-dense"
+--domain typography "clean modern sans korean readable"
+--domain ux     "search form accessibility focus loading"
+--domain icons  "search mail news map shopping"
+--stack html-tailwind "form search input focus responsive"
+```

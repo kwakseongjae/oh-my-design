@@ -1,0 +1,62 @@
+Heading: System — coupang home (studied DNA)
+
+ run against snapshot `2026-08-22T19-48-17-298Z` (`desktop-1440`, 1440×900). Genre is editorial by silent default. Macrostructure is **Ecosystem Index**: several discovery surfaces, search as the one job. Theme is **studied-DNA** from the capture, not a catalog theme.
+
+Heading: Position
+
+The page is a shop floor, not a landing. The single action is: type a query in the search field, submit, land on a product list. No extra routes.
+
+Heading: Surface
+
+Measured chrome from  and the viewport PNG, then lifted into OKLCH tokens with a minimum chroma of 0.005 ( gate 22). Paper is not `#fff`; ink is not `#000`.
+
+| Token | Value | Source |
+| --- | --- | --- |
+| `--color-paper` | `oklch(99.4% 0.005 267)` | rendered page `#fefefe` |
+| `--color-paper-2` | `oklch(95.5% 0.006 267)` | shortcut / header fill `#f0f0f0` |
+| `--color-ink` | `oklch(18.0% 0.012 267)` | body `#000000`, tinted |
+| `--color-ink-2` | `oklch(28.5% 0.025 251)` | `h3` `#212b36` |
+| `--color-muted` | `oklch(52.0% 0.012 267)` | `p` `#7b7b7b` |
+| `--color-accent` | `oklch(57.6% 0.215 267)` | header blue sample `rgb(66, 105, 246)` |
+| `--color-accent-ink` | paper | text on accent fill |
+| `--color-promo-cool` | `oklch(93.0% 0.049 216)` | top banner left |
+| `--color-promo-slate` | `oklch(78.0% 0.038 265)` | top banner right |
+| `--color-hero-warm` | `oklch(77.1% 0.143 69)` | hero picnic gold |
+| `--color-mark` | `oklch(62.0% 0.206 28)` | campaign red in hero |
+
+Accent footprint stays on chrome: category slab, search outline, cart count, rail current, links. It does not flood sections.
+
+Heading: Type
+
+Evidence family is **Apple SD Gothic Neo** (h2 24/700, h3 20/400, caption 11/400). No network fonts. Display and body are that grotesk at 700 vs 400. Outlier is `ui-monospace`, two slots only: product price and cart count. Headings are roman. Body floor is 16px; captions may go to 12px. Tabular numerals on prices. Display wrap: `overflow-wrap: anywhere`.
+
+Heading: Structure
+
+- **Nav N12** — announcement banner (two promo cells from the capture) stacked on the real bar. Banner retracts on scroll-down, returns on scroll-up, dismisses with ×. Bar holds category, text wordmark, search, 마이쿠팡, 장바구니.
+- **Search** — the CTA. Scope `전체`, field, submit. Empty submit is an error state; a non-empty submit hides home and shows the list. Voice search is present and disabled (not in the brief).
+- **Wordmark** — the letters `coupang` plus a square period in accent. No official mark file.
+- **Hero H6** — generated still `image.jpg` (16:9, cropped 16/5). Caption lower-left, overlaid, left-biased: “다채로운 맛의 라인업” / “시원청량 페스티벌”.
+- **Rail** — six campaign rows from the capture. A row fills the search field and runs the same list task.
+- **F6 product grid** — 4-up, 3/4 media, “보기”. Home shows four snapshot SKUs; the list view uses the same catalogue.
+- **Section head S2** — “오늘의 발견” stacked, no numbered eyebrow.
+- **Footer Ft2** — one hairline, wordmark · 고객센터 · 판매자 가입 · snapshot credit. No four-column sitemap.
+
+Heading: Space and motion
+
+4pt scale, named `--space-*`. Control height 44px shared by search and adjacent buttons. Border width stays 1px across input states; focus is an outline, not a thicker border. Motion is transform/opacity only, `--ease-out` / `--ease-in` / `--ease-in-out`, `--dur-micro|short|long`. Reduced-motion collapses to 150ms. Focus rings are instant. No `transition-all`, no hover-scale on cards.
+
+Heading: Copy
+
+Only strings visible in the snapshot, plus system chrome needed to run search (error, empty list, 홈으로). Prices are the ones printed on the capture; unknown prices are `—`. No invented conversion stats.
+
+Heading: Image
+
+One generated photograph, `image.jpg`. Role: the campaign hero — drinks and picnic food on a blanket in front of an outdoor stage, standing in for the captured 시원청량 페스티벌 plate. No Coupang logo in the frame.
+
+Heading: Offline
+
+`render.html` inlines CSS and script. The only extra file it reads is `image.jpg` beside it. No webfont, CDN, or remote image.
+
+Heading: States (search)
+
+default · hover · focus-visible · active · disabled (mic) · loading (submit) · error (empty query) · success (list shown).

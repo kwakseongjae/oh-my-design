@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "Outcome-first documentation for oh-my-design: deploy channel-compatible assets from 23 skills and 19 specialist definitions, choose a quality-graded reference, run doctor, and improve a real product route.",
+    "Outcome-first documentation for oh-my-design: deploy channel-compatible assets from 27 skills and 20 specialist definitions, choose a quality-graded reference, run doctor, and improve a real product route.",
   openGraph: {
     title: "oh-my-design — Docs",
     description:

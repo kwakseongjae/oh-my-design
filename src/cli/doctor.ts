@@ -18,6 +18,7 @@ import {
   isCurrentManagedHook,
 } from './hook-contract.js';
 import { unsafeManagedPath } from './install-path.js';
+import { describeCheckBrowser, detectCheckBrowser, type CheckBrowserStatus } from './check.js';
 import { proofPolicyIssues } from './proof-policy.js';
 
 export interface DoctorOptions {
@@ -46,6 +47,10 @@ export interface DoctorReport {
   nextCommand: string;
   nextPrompt: string;
   manualAction: string;
+  /** Browser available to `omd check …` / `omd showcase`. Read-only detection. */
+  checkBrowser: CheckBrowserStatus;
+  /** One-line summary of .omd/config.json (omd:setup) when present; null otherwise. */
+  omdConfigSummary: string | null;
 }
 
 function shellQuote(value: string): string {
@@ -65,12 +70,17 @@ export const REQUIRED_PRODUCT_SKILLS = [
   'omd-harness',
   'omd-humanize',
   'omd-init',
+  'omd-issue',
   'omd-kr-writer',
+  'omd-landing',
   'omd-learn',
   'omd-locale-adapter',
+  'omd-media',
   'omd-orchestrator',
   'omd-reference-capture',
   'omd-remember',
+  'omd-setup',
+  'omd-showcase',
   'omd-slop-audit',
   'omd-sync',
   'omd-taste',
@@ -78,6 +88,7 @@ export const REQUIRED_PRODUCT_SKILLS = [
 ] as const;
 export const REQUIRED_AGENT_IDS = [
   'omd-a11y-auditor',
+  'omd-art-director',
   'omd-asset-curator',
   'omd-codex-image',
   'omd-critic',
@@ -1044,6 +1055,16 @@ function cursorRuleIssues(root: string, installedSkills: number): string[] {
   return [];
 }
 
+function readOmdConfigSummary(projectRoot: string): string | null {
+  try {
+    const raw = JSON.parse(readFileSync(join(projectRoot, '.omd', 'config.json'), 'utf8')) as { media?: { image?: string[]; svg?: string; video?: string; budgetUsdPerSet?: number }; browser?: string };
+    const image = raw.media?.image?.join(' → ') || '—';
+    return `omd:setup — image ${image} · svg ${raw.media?.svg ?? '—'} · video ${raw.media?.video ?? '—'} · budget ${raw.media?.budgetUsdPerSet ?? '—'}/set · browser ${raw.browser ?? '—'}`;
+  } catch {
+    return null;
+  }
+}
+
 export function collectDoctorReport(opts: DoctorOptions = {}): DoctorReport {
   const projectRoot = opts.dir ?? process.cwd();
   const root = opts.global ? homedir() : projectRoot;
@@ -1250,6 +1271,8 @@ export function collectDoctorReport(opts: DoctorOptions = {}): DoctorReport {
     state,
     designMd,
     channels,
+    checkBrowser: detectCheckBrowser(),
+    omdConfigSummary: readOmdConfigSummary(projectRoot),
     nextCommand: state === 'not-installed'
       ? dirSuffix
         ? `npx oh-my-design-cli@latest install-skills --all${dirSuffix}`
@@ -1309,6 +1332,12 @@ export async function runDoctor(opts: DoctorOptions = {}): Promise<number> {
       for (const issue of channel.issues) p.log.message(`  ${pc.yellow('–')} ${issue}`);
     }
   }
+
+  if (report.omdConfigSummary) p.log.message(pc.dim(report.omdConfigSummary));
+  const browserLine = describeCheckBrowser(report.checkBrowser);
+  if (report.checkBrowser.mode === 'none') p.log.warn(browserLine);
+  else if (report.checkBrowser.mode === 'unknown') p.log.message(pc.dim(browserLine));
+  else p.log.success(browserLine);
 
   if (report.state === 'incomplete') {
     const repairResetsHooks = report.nextCommand.includes('--repair-hooks');

@@ -52,6 +52,35 @@ Vercel이 2026-09-01 자사 에이전트가 design.md 파일 하나로 온브랜
 > 나머지 절반(공개 URL 관례, 렌더 무결성 체크)은 오늘 채택했습니다.
 > oh-my-design.kr/design.md 도 오늘부터 열려 있습니다.
 
+## 영상 제작 도구 (2026-09-02 추가)
+
+`node test-v2/tools/showcase.mjs --compare test-v2/content-runs/stripe/hallmark/render.html test-v2/content-runs/stripe/uiuxpromax/render.html test-v2/content-runs/stripe/omd/render.html --labels "hallmark|ui-ux-pro-max|omd" --out stripe-compare.mp4 --seconds 10`
+→ 2880×600 30fps 동기 스크롤 3열 영상(검증: 8초 68초 생성). 단일 arm 세로 스크롤은 `--label`로. 마무리 카드는 별도 편집.
+
+**후속 소재 — 랜딩 원페이지 편**: `test-v2/content-runs/landing/`(stripe·toss × autopilot·hallmark·landing). `omd:landing` arm이
+render-integrity·landing-integrity PASS를 내면 같은 명령으로 3열 비교 영상을 만든다. 기존 3 arm은 페이지 3 vh·폴드 커버리지 13%
+(코덱스 기준 10~16 vh·89~130%)라 "와 다르다" 대비가 구조적으로 크다 — 수치는 캡션에 넣지 않고 화면으로만 보여 준다.
+
+## 소재 2 — 랜딩 원페이지 편 (2026-09-02 실측 완료, 승인 대기)
+
+- 런: `test-v2/content-runs/landing/stripe/{hallmark,autopilot,landing}` — 같은 브리프(스크롤 원페이지 6~8섹션)·같은 모델(grok-4.6)·같은 이미지 채널(grok image_gen). `landing`은 새 `omd:landing` 스킬(실측 코덱스 기반).
+- 촬영 화면: `test-v2/content-runs/landing/stripe/compare.html`(3열 풀페이지, 상단 조건, 하단 고지) · **최종 영상(2026-09-02 15:45, 리뷰 BLOCK 0 반영)**: `test-v2/content-runs/landing/stripe/showcase/compare-3arm.mp4`(14초 2880×600) · `landing-solo.mp4`/`.gif`(단독 세로 스크롤 12초, 2880×1800). git 무시 경로 — 로컬 보관.
+- 한국 편: `toss/{hallmark,autopilot,landing}` 완료 — `toss/compare.html` · `toss/showcase/compare-3arm.mp4` · `landing-solo.mp4`/`.gif`. 두 편 모두 landing arm 리뷰 BLOCK 0.
+
+**EN (메인, 영상 첨부):**
+> Same brief. Same model. Same image channel. Three harnesses.
+>
+> Only one of them treats a landing page as a stage instead of a card — a full-bleed hero, one visual concept carried through eight sections, motion that respects reduced-motion.
+>
+> The rules came from measuring five real sites, not from taste. Unofficial generated concepts — not affiliated with Stripe. github.com/kwakseongjae/oh-my-design
+
+**KR:**
+> 같은 브리프, 같은 모델, 같은 이미지 채널. 다른 건 하네스뿐입니다.
+> 랜딩 페이지를 "카드"가 아니라 "무대"로 다루는 건 하나였습니다 — 풀블리드 히어로, 여덟 섹션을 관통하는 컨셉 하나, reduced-motion을 지키는 모션.
+> 규칙은 취향이 아니라 실제 사이트 다섯 곳을 잰 수치에서 왔습니다. (비공식 생성 컨셉 — 해당 브랜드와 무관)
+
+하드 룰 적용: 벤치 수치·순위 없음, 브랜드 태그 없음, 고지 유지. "다섯 곳을 잰"은 코덱스(공개 문서)로 뒷받침되는 사실 진술.
+
 ## 이 캠페인의 추가 하드 룰
 
 1. **"only one ships a design system" 문구는 정성 관찰이다** — 실측(세 arm 산출물에서
@@ -66,5 +95,5 @@ Vercel이 2026-09-01 자사 에이전트가 design.md 파일 하나로 온브랜
 - [x] content-runs 인프라 + 3-arm 프롬프트 준비
 - [x] stripe 3-arm 실행 완료 (2026-09-01, 총 $2.50 (1.22/0.53/0.74))
 - [x] compare.html 생성 + render-integrity 3/3 PASS
-- [ ] /design.md 프로덕션 배포 (커밋됨, 푸시 승인 대기)
-- [ ] 사람 창구 승인 → 촬영 → 포스팅
+- [x] /design.md 프로덕션 배포 — **라이브 2026-09-02 (PR #85 → main, HTTP 200)** → 트윗 #2 발화 조건 충족
+- [ ] 사람 창구 승인 → 촬영 → 포스팅 (소재 1: stripe 홈 3-arm · 소재 2: stripe 랜딩 3-arm · 소재 3: toss 랜딩)

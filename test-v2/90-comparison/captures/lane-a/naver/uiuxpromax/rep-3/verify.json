@@ -1,0 +1,38 @@
+{
+  "brand": "naver",
+  "surface": "desktop-1440",
+  "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/03-runs/lane-a/naver/uiuxpromax/rep-3/image.jpg",
+  "evidenceCapturedAt": "2026-08-22T19:51:00.372Z",
+  "paletteSource": null,
+  "fields": [
+    {
+      "field": "aspect",
+      "eligible": false,
+      "reason": "source field unresolved"
+    },
+    {
+      "field": "meanLuma",
+      "eligible": false,
+      "reason": "source field unresolved"
+    },
+    {
+      "field": "dynamicRange",
+      "eligible": false,
+      "reason": "source field unresolved"
+    },
+    {
+      "field": "subjectCentre",
+      "eligible": false,
+      "reason": "source placement omitted — fewer than the resolved-sample floor"
+    },
+    {
+      "field": "palette",
+      "eligible": false,
+      "reason": "no source sample to compare against"
+    }
+  ],
+  "eligibleCount": 0,
+  "usable": false,
+  "numericScore": null,
+  "note": "fewer than two eligible numeric fields — replace this block before running"
+}

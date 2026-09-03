@@ -1,0 +1,63 @@
+Heading: MUSINSA 상의 — Sport / Catalogue
+
+Isolated run. No project , no cached pre-flight, first stamp in this directory.
+
+Going with: audience = Korean fashion shoppers on a category listing · use = apply one color filter and scan the remaining tops · tone = utilitarian.
+
+Heading: Picks
+
+- Genre: editorial (silent default; commerce listing, not SaaS / atmospheric / playful)
+- Macrostructure: Catalogue
+- Theme: Sport — light paper, condensed roman display, warm signal accent
+- Nav: N12 announcement banner + retracting bar (commerce default; editorial-acceptable). Knobs: fill=solid, dismiss=yes, bar=sticky
+- Footer: Ft2 single credit line. Knobs: wordmark · credit, middot, spaced
+- Feature: F6 product card grid. Knobs: 3/4 portrait, 5-up at 60rem, Save
+- Enrichment: no typographic hero. Photographic specimens from the 2026-08-22 evidence capture, plus one generated still (`image.jpg`) for the black rolled-sleeve tee
+- Motion: Sport 0.7×. Banner retract, chip press, save toggle. No scroll-fade grid
+
+Previous nav: none. This build: N12, because the brief is a shop floor with a time-bound 타임세일 strip already in the capture.
+
+Heading: Tokens
+
+All color and font in `render.html` `:root`. Rules consume `var(--*)` only.
+
+| Token | Value | Role |
+| --- | --- | --- |
+| `--color-paper` | `oklch(97.4% 0.008 72)` | page |
+| `--color-paper-2` | `oklch(94.2% 0.010 72)` | media well, hover |
+| `--color-ink` | `oklch(18% 0.018 40)` | text, selected chip |
+| `--color-muted` | `oklch(38% 0.016 40)` | brand, helper |
+| `--color-accent` | `oklch(54% 0.195 32)` | sale, save, banner |
+| `--color-accent-ink` | `oklch(98% 0.008 72)` | text on accent |
+| `--color-nav` | `oklch(17% 0.016 40)` | bar |
+| `--color-nav-ink` | `oklch(96.5% 0.008 72)` | text on bar |
+| `--color-focus` | `oklch(48% 0.18 32)` | `:focus-visible` |
+| `--font-display` | Avenir Next Condensed → Futura → Gill Sans → Apple SD Gothic Neo | Latin wordmark only |
+| `--font-body` | Apple SD Gothic Neo → Noto Sans KR | UI, Hangul titles, product names |
+
+No network fonts. Hangul rides the body stack. Two families. Spacing is the 4pt named scale. Radius 2–4px. Hairline rules, no card shadow.
+
+Heading: Screen
+
+One screen: 상의 category. Task state on first paint: **컬러 블랙** is pressed. The grid shows three black tops. White and charcoal SKUs stay in the DOM and appear only when those swatches are pressed. Ivory and grey have no matching SKUs; the empty line is honest.
+
+Counts are the visible card count, not the capture’s unfiltered 350,441. Prices, sale percents, like counts, and gender marks are copied from the capture where they exist. Missing fields are `—`.
+
+Wordmark is the Latin string `MUSINSA`. No official mark file.
+
+Heading: Components
+
+- N12 banner: “타임세일 · 상의”. Dismiss zeroes `--banner-h`. Scroll-down retracts the banner.
+- Colour chips: eight states (default, hover, focus-visible, active, disabled, loading, error, success/pressed).
+- F6 cards: image, brand, name, price, save. Uniform 3/4. Grid tracks `minmax(0, 1fr)`. 2-up <40rem, 3-up ≥40rem, 5-up ≥60rem.
+- Ft2: one line, nowrap from 40rem.
+
+Heading: States
+
+Interactive controls implement default · hover · `:focus-visible` · `:active` · disabled · loading · error · success. Focus rings are instant, 2px, `--color-focus`. Hit targets 44px. `prefers-reduced-motion: reduce` collapses spatial motion to 150ms.
+
+Save is optimistic and silent. No toast.
+
+Heading: Offline
+
+`render.html` loads only sibling files (`image.jpg`, `p-*.png`). CSS reset zeroes `figure`, `blockquote`, `ul`, `ol`. `html`/`body` use `overflow-x: clip`.

@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "naver",
+  "arm": "hallmark",
+  "rep": 3,
+  "source": "test-v2/03-runs/lane-a/naver/hallmark/rep-3/render.html",
+  "sourceSha": "sha256:6d0630383eb239b37d24d34a59d2b050f1462d0d868dee8ca19034dc99eb3ed9",
+  "capturedAt": "2026-09-02T10:35:26.923Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:6edc70cbb8a6aecb70a668a6fb9815160341e3691d9fbf4163c05b9678ed82ad",
+      "bytes": 201174,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:25d375c080e5af3f86d5035de92449404b407875010150fc36e544db5fa083d0",
+      "bytes": 107134,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

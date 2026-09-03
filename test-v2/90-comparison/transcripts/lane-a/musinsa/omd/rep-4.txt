@@ -1,0 +1,123 @@
+Heading: 상의 카테고리 — 표면 로컬 시스템
+
+Disposition: `surface-local-only`. 이 문서는 상의 카테고리 한 화면의 계약이다. 호스트 프로젝트  바꾸지 않는다.
+
+근거 분류: 스냅샷 chrome/imagery는 `repository-fact`. 토큰 값과 필터 상호작용은 `agent-proposed-greenfield-decision` (결정 표 ). 캡처에 없는 가격·건수·로고는 `unresolved` — 생략.
+
+프리셋: P-FN-04 필터 칩, P-FN-05 빈 결과, P-FN-06 결과 수 정의, P-CM-01 상품 카드, P-CM-06 세일가 위계. 레이아웃 문법: 고밀도 카탈로그 격자 (컬럼 추가).
+
+Heading: Philosophy
+
+한 문장: 상의 목록은 사진을 먼저 두고, 필터 하나로 그 집합을 줄인다.
+
+- P1 밀도 우선. 6열 격자와 작은 본문을 얻고, 히어로·섹션 에어·디스플레이 시네마를 버린다. 카탈로그는 읽는 지면이 아니다.
+- P2 필터가 과업이다. 칩 하나가 그리드를 바꾸고, 그 결과가 상태 줄에 남는다. 검색·정렬·다중 패싯은 이 표본에서 작동하지 않는다.
+- P3 잉크는 신호다. 거의 검은 헤더와 종이색 면, 빨강은 세일/좋아요에만 쓴다. 브랜드 워시·그라데이션·카드 그림자를 버린다.
+
+Heading: Derive
+
+| ID | 결정 | 근거 |
+|---|---|---|
+|  | 카드 반경 0, 그림자 없음, 이미지 맞댐 | 스냅샷 그리드는 타일이 아니라 컷의 연속이다 |
+|  | 와이드에서 6열, 390에서 3열, 320에서 2열. `minmax(0,1fr)` | C32 컬럼 추가. auto-fit 금지 |
+|  | 미디어 종횡비 5/6 (실측 typicalAspect 0.833) | evidence.json desktop/mobile aggregate |
+|  | 본문 14px, 제목 24–28px (≥2×), 웨이트로 디스플레이 | 한글 고딕 한 패밀리. Pretendard 스택 |
+|  | 하위 카테고리 칩만 인터랙티브 (P-FN-04). 단일 선택 | 브리프 동사: 필터를 하나 적용해 그리드를 좁힌다 |
+|  | 활성 칩 = 잉크 밑줄 2px (elevation-selected). 호버는 면 chip | 호버와 선택을 분리 |
+|  | 결과 줄은 사용자 언어 표본 개수 + 조건명 (P-FN-06) | 스냅샷의 350,441은 이 11개 표본의 값이 아님 |
+|  | 0건이면 문장 + 전체 보기 (P-FN-05). 개발자 상태 스위치 없음 | P0-1 |
+|  | paper `oklch(0.991 0.004 90)` ≈ 실측 #fefdfd. 순수 #fff/#000 베이스 금지 | G7, evidence pageBackgroundRendered |
+|  | header `oklch(0.16 0.012 255)` / header-ink 쌍. 수집기 header #f5f5f5는 오탐 | 뷰포트 캡처가 검다. README도 무신사 색은 검다고 적음 |
+|  | 컨트롤 반경 4px | 실측 primaryButton.radiusPx 4 |
+|  | 세일/좋아요만 sale/like 토큰. 악센트 면적 ≤5% | P-CM-06, 스냅샷 빨강 가격 |
+|  | 모션: opacity/transform, 120/200ms, reduced-motion 절단 | 스냅샷 위폴드 영상 없음 |
+
+Heading: Tokens
+
+주석은 역참조. 화면은 `var(--color-*)`만 읽는다.
+
+```css
+--color-paper: oklch(0.991 0.004 90);          
+--color-paper-ink: oklch(0.22 0.014 255);      
+--color-header: oklch(0.16 0.012 255);         
+--color-header-ink: oklch(0.98 0.004 90);
+--color-chip: oklch(0.965 0.006 90);
+--color-rule: oklch(0.90 0.008 90);
+--color-muted: oklch(0.42 0.014 255);
+--color-sale: oklch(0.48 0.185 25);            
+--color-like: oklch(0.50 0.18 25);
+--color-accent: oklch(0.22 0.014 255);
+--radius-control: 4px;                         
+--radius-card: 0;                              
+--control-h: 2.75rem;                          /* 44px, C2/C28 */
+--space-gutter: clamp(0.75rem, 2vw, 1.5rem);
+--space-6: 2.5rem;                             /* section air */
+--font-sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+```
+
+서체 역할: display = 같은 고딕 800 / 1.75rem. body = 400 / 14px / 1.65. label = 11px muted. 한글 letter-spacing 하한 −0.01em.
+
+Heading: Components
+
+Heading: 필터 칩 — P-FN-04 파생 ()
+
+해부: 칩 행. 역할은 필터만. 정적 배지(무뷰페 등)와 컴포넌트를 나누었다.
+
+상태: default / hover(면 chip) / focus-visible(즉시 링) / active(scale 0.98) / pressed(밑줄 2px, 웨이트 700). disabled 없음.
+
+기하: min-height 44px. 보더 폭은 상태 간 불변. 포커스는 outline.
+
+키보드: 탭으로 칩에 진입, Enter/Space로 적용. 하나 선택. `aria-pressed` + `role="status"` 요약.
+
+필터 해제는 기본에서 숨기고, 전체가 아닐 때만 노출.
+
+Heading: 상품 카드 — P-CM-01 파생 ()
+
+해부: 미디어 5/6 → 브랜드 eyebrow → 상품명 2줄 클램프 → 가격(카드 안 최대 웨이트) → 메타(좋아요·별) → 배지 → 성별.
+
+내부 갭: 4 / 8 / 12. 가격은 제목 다음. 카드 전체 클릭과 내부 CTA를 동시에 두지 않음(C25). 이 화면은 상세 경로가 브리프에 없어 카드는 목록 항목이다.
+
+세일: 할인율 + 세일가 (P-CM-06). 정가가 스냅샷에 없으면 만들지 않는다.
+
+Heading: 빈 결과 — P-FN-05
+
+문장 «이 조건의 상품이 없습니다.» + «전체 보기로». 일러스트 없음.
+
+Heading: 헤더 / 워드마크
+
+공식 로고 원본 없음. 텍스트 `MUSINSA`. 채널 이름은 스냅샷에 보인 그대로 두되, 이 표본에 없는 채널은 링크가 아니다.
+
+로그인 버튼이 유일한 `data-cta="primary"`. 누르면 표본에 로그인 없음을 알린다.
+
+Heading: Layout grammar
+
+페이지 문법: **고밀도 카탈로그 격자**. 콘텐츠 역산: 칩 10 + 상품 11. 6열을 채운다. 캐러셀/벤토/매거진 금지(GS6).
+
+초광폭 전략: 컬럼 추가 (6 → 4 → 3 → 2).
+
+폴드: 1280×800에서 워드마크, «상의», 필터 칩, 결과 줄, 첫 상품 열이 보인다.
+
+랜딩마크: skip → header nav → main#main → 하나의 h1 → footer.
+
+Heading: States (과업 동사)
+
+| 상태 | 도달 | 기계 증거 |
+|---|---|---|
+| default | 첫 로드, 전체 칩 | `aria-pressed="true"` on 전체, 카드 11, status «수록된 표본 11개 · 상의 전체» |
+| filtered | 하위 카테고리 칩 Enter/Space | 해당 칩 `aria-pressed`, 그리드 축소, `data-state="filtered"`, status 갱신 |
+| empty | 니트/후드/맨투맨/피케/기타 | 0장, empty 노출, status 0개 |
+| unavailable | 로그인·검색 클릭 | `#note`에 표본에 없음 |
+
+로딩 스피너는 로컬 정적 목록이라 없다. 개발자 상태 스위치 없음.
+
+Heading: Honesty
+
+- 가격·좋아요·별점은 스냅샷 위폴드에 보인 6장만. 나머지 5장은 가격 없음.
+- 상품 350,441 / 브랜드 4,731 / 스냅 70,735는 이 11장 표본의 값이 아니어서 쓰지 않음.
+- 대표 생성 이미지 `image.jpg`는 체크 셔츠 스튜디오 컷. 화면 안 일코르소 카드가 그 파일을 쓴다.
+- 공식 마크는 텍스트 워드마크로 대체.
+
+Heading: Self-walk
+
+1. 필터를 하나 적용해 상품 그리드를 좁힌다. Tab → «셔츠/블라우스» → Enter. `aria-pressed="true"`, 카드 3장, status «수록된 표본 3개 · 셔츠/블라우스».
+2. 니트/스웨터 Enter → 0장, «이 조건의 상품이 없습니다.» → «전체 보기로»로 복귀.

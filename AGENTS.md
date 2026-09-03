@@ -43,7 +43,7 @@ Examples:
 
 For Lab #02 versioned runs, append `--lab v1` (or v2, v3 …) inside the slash command.
 
-The skill internally bootstraps the run dir via a hidden `omd harness` helper (slug consistency, standardized subdirs, INDEX.md append). This helper is NOT a user surface — always use `/omd-harness`.
+The skill bootstraps the run dir inline, not through the CLI: the shell block at `skills/omd-harness/SKILL.md:97` derives the slug, creates `.omd/runs/<run-id>/` and its standard subdirs with `mkdir -p`, writes `task.md`, and appends to `.omd/runs/INDEX.md`. There is no `omd harness` command — the `omd` binary never had one. Always enter through `/omd-harness`.
 
 ### Codex-specific harness flow
 

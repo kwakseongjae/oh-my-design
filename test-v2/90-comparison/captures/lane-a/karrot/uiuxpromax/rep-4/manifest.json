@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "karrot",
+  "arm": "uiuxpromax",
+  "rep": 4,
+  "source": "test-v2/03-runs/lane-a/karrot/uiuxpromax/rep-4/render.html",
+  "sourceSha": "sha256:5e42141968c5f1025bbaaaebbaba8b696bf3317179cd61d3360866c7d6dfc7a8",
+  "capturedAt": "2026-09-02T05:02:00.943Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:26a21bfe8ab09a4f4cb0991506720f43b69f72324f887edc5e034f6c440a9767",
+      "bytes": 295204,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:c7bc3a1d12c6d3646026628f04f50627528d822f51e613d22a04953aa599e915",
+      "bytes": 118583,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

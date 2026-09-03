@@ -168,6 +168,72 @@ program
     if (code !== 0) process.exit(code);
   });
 
+const check = program
+  .command('check')
+  .description('Run a bundled deterministic page check against rendered HTML (render integrity, landing-craft rules, text contrast).');
+
+function bundledToolAction(id: 'check:render' | 'check:landing' | 'check:contrast' | 'showcase' | 'setup:detect', path: string[]) {
+  return async () => {
+    const { passthroughArgs, runBundledTool } = await import('../src/cli/check.js');
+    const code = runBundledTool(id, passthroughArgs(path));
+    if (code !== 0) process.exit(code);
+  };
+}
+
+check
+  .command('render')
+  .description('Deterministic render-integrity check: overflow, viewport escape, text clip, unreset UA margins, fallback font, broken images.')
+  .argument('<html...>', 'Rendered HTML files (tool flags such as --json are passed through)')
+  .allowUnknownOption()
+  .allowExcessArguments()
+  .action(bundledToolAction('check:render', ['check', 'render']));
+
+check
+  .command('landing')
+  .description('Landing-craft machine rules LI-1…LI-23 from the measured codex.')
+  .argument('<html...>', 'Rendered HTML files (tool flags such as --json / --out are passed through)')
+  .allowUnknownOption()
+  .allowExcessArguments()
+  .action(bundledToolAction('check:landing', ['check', 'landing']));
+
+check
+  .command('contrast')
+  .description('Measured text contrast over photos and gradients, focus rings, and the no-JS fallback.')
+  .argument('<html...>', 'Rendered HTML files (tool flags such as --viewport / --json / --out are passed through)')
+  .allowUnknownOption()
+  .allowExcessArguments()
+  .action(bundledToolAction('check:contrast', ['check', 'contrast']));
+
+program
+  .command('showcase')
+  .description('Turn a rendered page (or several side by side) into a deterministic scroll demo video.')
+  .argument('<html...>', 'Rendered HTML files (one, or several with --compare)')
+  .option('--compare', 'Capture every file and stack them side by side (hstack)')
+  .option('--labels <a|b|c>', 'Per-arm labels for --compare, separated by |')
+  .option('--out <file>', 'Output mp4 path (default: showcase.mp4 next to the first input)')
+  .option('--seconds <n>', 'Video length in seconds (default 12)')
+  .option('--fps <n>', 'Frames per second (default 30)')
+  .option('--dpr <n>', 'Device scale factor (default 2; use 1 for a light render)')
+  .option('--width <px>', 'Viewport width (default 1440)')
+  .option('--height <px>', 'Viewport height (default 900)')
+  .option('--hold <s>', 'Seconds to hold at top and bottom (default 1.2)')
+  .option('--gif', 'Also write a palette-based gif next to the mp4')
+  .option('--label <text>', 'Overlay label for a single-file render')
+  .allowUnknownOption()
+  .allowExcessArguments()
+  .action(bundledToolAction('showcase', ['showcase']));
+
+const setup = program
+  .command('setup')
+  .description('Inspect the generation, browser, and encoder channels this machine can already use.');
+
+setup
+  .command('detect')
+  .description('Detect available image/video channels, browsers, and encoders. Read-only; never prints key values.')
+  .allowUnknownOption()
+  .allowExcessArguments()
+  .action(bundledToolAction('setup:detect', ['setup', 'detect']));
+
 const designMd = program
   .command('design-md')
   .description('Inspect, validate, or stage a lossless migration to the vendor-neutral DESIGN.md Core v2 format.');

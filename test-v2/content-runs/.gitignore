@@ -3,3 +3,21 @@
 !.gitignore
 !README.md
 !build-compare.mjs
+
+# landing 콘텐츠 런: 디렉터리는 열되 산출(브랜드/arm 디렉터리·JSON·로그)은 무시,
+# README·briefs·runs/*.txt·chain.sh는 커밋. 최상위 '*'가 파일을 전부 무시하므로 파일 단위로 다시 연다.
+!landing/
+landing/*
+!landing/README.md
+!landing/briefs/
+!landing/briefs/*
+!landing/runs/
+!landing/runs/*.txt
+!landing/runs/chain.sh
+!landing/build-compare.mjs
+!landing/reviews/
+!landing/reviews/*
+
+# 게이트 설정·문서는 산출물이 아니라 소스다 (2026-09-03)
+!fixtures.json
+!QUALITY_GATE.md

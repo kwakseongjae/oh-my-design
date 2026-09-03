@@ -1,0 +1,94 @@
+studied: yes · DNA-source: image
+Heading: Design — 토스
+
+Locked design system. Future  runs read this file first; pages defer
+to it. Amend intentionally — the file is the rule.
+
+Heading: System
+- Genre · modern-minimal
+- Macrostructure · Marquee Hero
+- Theme · studied-DNA (source: image)
+- Axes · light / geometric-sans / cool
+- Hero · H1 Marquee over photographic underlay · knobs: size=xl · alignment=bottom-spread · underlay=photograph
+- Enrichment · E8 Hero Photography · tier-C generated still (lane A Grok Imagine)
+- Nav · N1b SaaS three-section · knobs: centre-links=5 · dropdowns=1 (KOR) · scroll=always-solid · CTA=outlined-chip
+- Footer · Ft2 Inline single line · knobs: order=wordmark/credit · separator=middot · density=spaced
+- Audience · toss.im visitors
+- Use · select 서비스 in the top nav and move
+- Tone · utilitarian
+
+Heading: Provenance
+- Source mode · image
+- Source · image (user-attached evidence capture)
+- Capture · 
+- Snapshot · `2026-08-22T19-51-46-001Z`
+- URL (context only, not fetched) · https://toss.im/
+- Date · 2026-08-29
+- Attestation · image mode; evidence pack supplied for this reconstruction
+- Confidence · Tokens are estimated from evidence.json chrome + imagery palettes, then converted to OKLCH. Fonts are role-based with the evidenced family name `Toss Product Sans OTF` from `chrome.typeScale.family`. Rhythm is from a vision pass on the desktop-1440 and mobile-390 viewports.
+
+Heading: Tokens (canonical ·  is the source of truth)
+```css
+:root {
+  --color-paper:      oklch(99.43% 0.0013 286.4); /* evidence pageBackgroundRendered.hex #fdfdfe */
+  --color-paper-2:    oklch(97.01% 0.0070 268.5); /* imagery palette #f3f5fa */
+  --color-paper-3:    oklch(93.75% 0.0115 252.1); /* imagery palette #e5ebf2 */
+  --color-rule:       oklch(94.81% 0.0103 261.8); /* imagery palette #eaeef5 */
+  --color-ink:        oklch(8.37% 0.0118 255.9);  /* imagery palette #010204 */
+  --color-ink-2:      oklch(33.91% 0.0156 259.8); /* chrome.primaryButton.color #333840 */
+  --color-muted:      oklch(60.77% 0.0169 241.9); /* imagery palette #7a848c */
+  --color-accent:     oklch(23.85% 0.0974 264.7); /* chrome.primaryButton.background #07194c */
+  --color-accent-ink: oklch(99.43% 0.0013 286.4);
+  --color-on-photo:   oklch(100% 0 0);            /* typeScale h2.color #ffffff */
+  --color-focus:      oklch(45% 0.12 264.7);      /* derived from accent hue for a visible ring */
+
+  --font-display: "Toss Product Sans OTF", "Toss Product Sans", ui-sans-serif, sans-serif;
+  --font-body:    "Toss Product Sans OTF", "Toss Product Sans", ui-sans-serif, sans-serif;
+
+  --text-base: 1rem;           /* typeScale p/button fontPx 16 */
+  --text-display: 5rem;        /* desktop typeScale h2 fontPx 80 */
+  --text-display-s: 2.5rem;    /* mobile typeScale h2 fontPx 40 */
+  --lh-display: 1.2;           /* 96px / 80px */
+  --lh-display-s: 1.15;        /* 46px / 40px */
+  --lh-body: 1.6;              /* 25.6px / 16px */
+  --track-body: -0.02em;       /* letterSpacing -0.32px at 16px */
+  --weight-body: 400;
+  --weight-ui: 500;
+  --weight-display: 700;
+
+  --nav-height: 4rem;          /* chrome.header.heightPx 64 */
+  --nav-height-compact: 3.5rem; /* mobile header heightPx 56 */
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 180ms;  --dur-base: 240ms;  --dur-slow: 320ms;
+
+  --radius-card: 12px;  --radius-pill: 12px;  --radius-input: 12px; /* primaryButton.radiusPx */
+}
+```
+
+Heading: CTA voice
+- Primary · outlined chip on paper · radius 12px · 16px / weight 500 · label `앱 다운로드` (viewport + chrome.primaryButton.label)
+- Secondary · none in the fold (Marquee Hero: no CTA in fold)
+
+Heading: Motion stance
+- Default-on for Marquee Hero, capped at two primitives: CTA hover colour shift · locale dropdown opacity/transform
+- Evidence video (`intro-main.mp4`) is autoplay / muted / loop / 4.05s with motionMagnitude 0.0025 — the first render uses a still (`image.jpg`) because the file must open with no network
+- Reduced-motion fallback · ≤150 ms opacity crossfade
+
+Heading: Copy that is in evidence
+- Document title · 토스 (`source.title`)
+- Wordmark · toss (desktop-1440-viewport / mobile-390-viewport)
+- Nav · 서비스 · 비즈니스 · 회사소개 · 뉴스룸 · 채용
+- Locale · KOR
+- CTA · 앱 다운로드
+- Hero statement · 금융부터 일상까지 / 마침내 / 토스 하나로
+- Values not in evidence are omitted (no invented service inventory, metrics, testimonials, or store URLs)
+
+Heading: Notes
+- Anti-patterns not carried over: purple-gradient hero, 3-column feature grid, invented metrics, re-drawn phone/browser chrome, italic headers, specimen fall-through, 4-column AI footer
+- Imagery subject was unresolved in evidence (`figureGroundResolved: 0/2` desktop; `subject.resolved: false` on the intro video sample). The generated still cites palette + lighting fields, not a claimed figure-ground
+- `Toss Product Sans OTF` is named because chrome.typeScale.family records it. The file does not fetch the font; the stack falls back so `render.html` opens offline
+- Diversification is suspended for this build (studied-DNA)
+
+Heading: Exports
+ (in this run directory) is the source of truth. `render.html` inlines the same `:root` block so the first render opens as a single file next to `image.jpg`.

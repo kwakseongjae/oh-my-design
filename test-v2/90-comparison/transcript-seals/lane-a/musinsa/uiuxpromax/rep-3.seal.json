@@ -1,0 +1,41 @@
+{
+  "runId": "lane-a-musinsa-rep-3",
+  "arm": "uiuxpromax",
+  "lane": "lane-a",
+  "brand": "musinsa",
+  "repeat": 3,
+  "sourceFiles": [
+    {
+      "relativeId": "03-runs/lane-a/musinsa/<arm>/rep-3/system.md",
+      "sha256": "b9baa8aca6a795c406d884252b0f659c3d4a54d774846c661cd09bb422e8997e"
+    }
+  ],
+  "sourceSha256": "b9baa8aca6a795c406d884252b0f659c3d4a54d774846c661cd09bb422e8997e",
+  "transcriptSha256": "ae3254f1268f9a1f022e78d71c0c2358a93c530429b5f7d3b43cccf343a4bdad",
+  "procedureFile": "TRANSCRIPTION.md",
+  "procedureSha256": "becf08f97cfd0a28052a6779171096649e7a6fef2ab581379382333f792a3c34",
+  "transcriberId": "opus5",
+  "verifierId": "orchestrator",
+  "transcriptionStartedAt": "2026-09-02T09:26:39Z",
+  "transcriptionEndedAt": "2026-09-02T09:26:39Z",
+  "verificationStartedAt": "2026-09-02T09:26:39Z",
+  "verificationEndedAt": "2026-09-02T09:26:39Z",
+  "encoding": "UTF-8",
+  "lineEnding": "LF",
+  "mapFile": "90-comparison/transcript-seals/lane-a/musinsa/uiuxpromax/rep-3.map.csv",
+  "mapSha256": "00fee620915ae0b778949e73c01999bd3f9f9f50d33fb4b0bc678da15ead04ba",
+  "verificationResult": {
+    "tool": "test-v2/tools/transcribe-verify.mjs",
+    "toolSha256": "ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3",
+    "checks": "TRANSCRIPTION.md §7.1.1–§7.1.9",
+    "unitsChecked": 148,
+    "problems": [],
+    "attempts": 1,
+    "verifiedAt": "2026-09-02T09:26:39Z",
+    "verifiedBy": "orchestrator",
+    "declaredSpans": 3
+  },
+  "verdict": "PASS",
+  "transcriptFile": "90-comparison/transcripts/lane-a/musinsa/uiuxpromax/rep-3.txt",
+  "submittedToScoring": true
+}

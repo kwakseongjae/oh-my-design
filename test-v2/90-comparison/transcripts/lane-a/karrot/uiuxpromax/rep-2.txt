@@ -1,0 +1,136 @@
+Heading: Karrot Search — Design System
+
+Snapshot `2026-08-22T19-49-29-044Z`. Screen: 중고거래 검색 결과 (`노트북`). Task: open one listing card to detail. Surfaces: desktop-1440 (1440×900), mobile-390 (390×844).
+
+Generated with  `--design-system` (query: `c2c marketplace classifieds local used goods search results content-first`, project `Karrot Search`), then product / ux / icons / `html-tailwind` stack searches.
+
+Heading: Product
+
+- Type: Classifieds / Buy-Sell (P2P marketplace listing)
+- Pattern: Marketplace / Directory — search is the CTA; friction stays on finding and opening a listing
+- Style: Vibrant & Block-based + Flat Design
+- Conversion: search bar + listing grid. No extra marketing sections (trust, seller CTA, map) — those belong to a landing pattern, not this results screen
+- Platform: standalone HTML (no network). Stack rules taken from `html-tailwind`
+
+Heading: Brand
+
+- Wordmark only: text **당근** in `--color-primary`. Official mark / carrot glyph is not used
+- Voice of the surface: neighborhood classifieds — short titles, price, location · time
+- Official logo files are out of scope for this run
+
+Heading: Tokens
+
+Three layers. Raw hex lives only in primitives. Components never store a one-off hex.
+
+Heading: Primitive
+
+| Token | Value | Source |
+|---|---|---|
+| `--color-orange-600` | `#EA580C` | pack primary |
+| `--color-orange-500` | `#F97316` | pack secondary |
+| `--color-blue-600` | `#2563EB` | pack accent (unused on this screen) |
+| `--color-cream-50` | `#FFF7ED` | pack background (not the page fill) |
+| `--color-cream-100` | `#FDF4F0` | pack muted |
+| `--color-cream-200` | `#FCEAE1` | pack border |
+| `--color-white` | `#FFFFFF` | captured page fill (`#ffffff`, both surfaces) |
+| `--color-ink` | `#1A1C20` | captured `bodyColor` |
+| `--color-slate-900` | `#0F172A` | pack foreground |
+| `--color-red-600` | `#DC2626` | pack destructive |
+| `--space-*` | 4 / 8 / 12 / 16 / 20 / 24 / 32 | 4pt scale |
+| `--radius-sm` | `8px` | captured button radius |
+| `--radius-md` | `12px` | listing photo corners |
+| `--radius-pill` | `999px` | search / chips |
+| `--duration` | `200ms` | pack 150–300ms band |
+
+Heading: Semantic
+
+| Token | Maps to |
+|---|---|
+| `--color-background` | `--color-white` |
+| `--color-foreground` | `--color-ink` |
+| `--color-primary` | `--color-orange-600` |
+| `--color-on-primary` | `--color-white` |
+| `--color-muted-foreground` | gray-500 |
+| `--color-ring` | `--color-orange-600` |
+| `--color-chip-border` | `#000000` (captured outline button) |
+
+Page fill is white, not pack cream: classifieds product rule is “neutral bg”, and both captured viewports compute `#ffffff`. Cream stays as muted/border primitives.
+
+Price stays `--color-foreground` (captured type), not a separate green. Product search suggested price-green; chrome type scale does not.
+
+Heading: Component
+
+| Token | Value |
+|---|---|
+| `--button-radius` | `var(--radius-sm)` |
+| `--button-font` | 700 / 14px / 19px |
+| `--card-radius` | `var(--radius-md)` |
+| `--input-radius` | `var(--radius-pill)` |
+| `--header-h` | 60px mobile / 72px desktop |
+| `--touch` | 44px |
+| `--z-nav` / `--z-dropdown` / `--z-skip` | 50 / 40 / 100 |
+
+Heading: Typography
+
+Pack pairing: Atkinson Hyperlegible 400/700 via Google Fonts. **Not loaded.** `render.html` must open with zero network, so the family is `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif` — the captured stack.
+
+| Role | Mobile | Desktop | Weight |
+|---|---|---|---|
+| Wordmark | 22px | 22px | 800 |
+| H1 results | 24 / 32 | 28 / 36.4 | 700 |
+| Card title / H3 | 16 / 22 | 16 / 22 | 400 title, 700 sidebar |
+| Price | 16 | 16 | 700, tabular-nums |
+| Button | 14 / 19 | 14 / 19 | 700 |
+| Meta | 12 | 12 | 400 |
+| Body | 16 / 1.5 | 16 / 1.5 | 400 |
+
+Heading: Layout
+
+Mobile-first. Breakpoints 768 / 1024. Desktop 1024+ uses filter sidebar (220px) + 4-column listing grid. Below 1024: 2-column grid, location + filter in the main column, hamburger for service chips.
+
+Sticky header with reserved height. No nested scroll regions. Listing photos `aspect-ratio: 1 / 1` with width/height on the generated image to hold CLS.
+
+Heading: Components
+
+**Button** — solid (`foreground` fill, used for 현 위치로 설정), outline (1px `#000`, 8px radius, 서울시 강동구 천호동), ghost pill (필터). Hover 200ms, press scale 0.98, min 44×44, `cursor: pointer`.
+
+**Search** — pill field, category prefix + query + magnifying-glass (Phosphor outline, inline SVG). Visible label via `sr-only`. Submit stays on this screen.
+
+**Listing card** — interactive card: square figure, title (2-line clamp), price, location · time. First card uses `image.jpg`. Other cards use inline SVG stand-ins (offline). Whole card is the hit target.
+
+**Filter** — desktop sidebar (위치, 상태 checkbox, 카테고리 radios). Mobile: location row + 필터 chip. Not a separate screen.
+
+**Detail** — same listing fields only (photo, title, price, meta) plus 검색 결과 back. `history.pushState` / `hashchange` so browser back is predictable. No invented seller chrome.
+
+**Menu** — mobile drawer (`role="dialog"`, Esc / scrim / close). Service list only.
+
+Heading: Icons
+
+Phosphor-style outline, 2px stroke, one family. Used: magnifying-glass, list, x, funnel, caret, compass-like location, list-rows for 중고거래. No emoji icons.
+
+Heading: Motion
+
+200ms ease-out on hover/press. Transform/opacity only. `prefers-reduced-motion` collapses duration. No decorative loops.
+
+Heading: Imagery
+
+`image.jpg` is the representative listing photo for card 1 and its detail. Square, local file, no remote CDN. Other listings do not fetch capture URLs.
+
+Heading: Accessibility
+
+- Skip link → `#main`
+- Heading order: page `h1` then card `h2` (detail `h1` when that view is shown)
+- Icon-only controls have `aria-label`
+- Focus ring 3px `--color-ring`
+- Contrast: ink on white; wordmark orange `#EA580C` on white is large/bold
+- Zoom not disabled
+- `aria-live` not used; view swap is a route change with focus moved to `main`
+
+Heading: Anti-patterns avoided
+
+- Flat page with no depth: cards keep radius + photo block
+- Text-heavy landing sections on a results screen
+- Google Fonts / Phosphor npm / Chart.js CDN (offline constraint)
+- Mixing filled and outline icons in the same layer
+- Hover-only primary action (cards are click/tap)
+- Official logo asset

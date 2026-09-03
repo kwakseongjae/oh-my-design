@@ -1,0 +1,99 @@
+Heading: System — coupang home (studied DNA)
+
+ · v1.1.0 · studied-DNA (source: image)  
+Snapshot `2026-08-22T19-48-17-298Z` · surface desktop-1440 (1440×900)
+
+Going with: audience = 검색으로 물건을 찾는 한국 쇼핑 사용자 · use = 검색창에 질의를 넣고 상품 목록으로 이동 · tone = utilitarian.
+
+- **Macrostructure** · Ecosystem Index
+- **Theme** · studied-DNA (paper oklch(99.2% 0.004 85) · accent oklch(52% 0.19 264) blue · brand oklch(52% 0.12 55) brown · Apple SD Gothic Neo + ui-monospace prices)
+- **Enrichment** · generated still, `image.jpg` (Grok Imagine, 16:9)
+- **Sections** · Promo · Util · Search header · Service rail · Photographic hero + rec rail · Today’s picks · Search results (same document) · Footer
+- **Motion** · banner retract · mega open/close (opacity) — two primitives
+- **Nav** · N12 announcement + retracting bar, category panel attached
+- **Footer** · Ft2 inline rule
+- **Slop test** · 58 / 58 (pre-emit P4 H5 E4 S5 R4 V5)
+
+This is the first  run in this output cell. Previous nav: none. This build: N12, because the captured chrome is a promo strip over a search bar, not a SaaS link row.
+
+Heading: Position
+
+The page is a discovery index whose one job is search. Everything else (campaign still, recommendation rail, today’s picks) is inventory the search can land in. No second HTML screen: submitting the form reveals the product list in the same document.
+
+Heading: Provenance
+
+Extracted from the desktop-1440 capture in . Image-mode study: paper is near-white, chrome is a brown wordmark plus a blue search/category accent, type is a single Korean grotesque (computed as Apple SD Gothic Neo), density is catalogue-tight, hero is a photographic campaign band with a right-hand rec list. Official mark artwork is not used; the wordmark is the Latin letters `coupang`.
+
+Tokens are estimated from the capture plus chrome measurements (`pageBackgroundRendered.hex` `#fefefe`, `h2` 24px/700/`#000000` tinted off pure black, `h3` `#212b36`, `p` `#7b7b7b`). Rhythm is from the vision pass. Offline first-render: no webfonts, no CDN.
+
+Heading: Tokens
+
+All colour and font values in `render.html` are named custom properties. Do not inline hex / OKLCH / `font-family` outside this block.
+
+| Token | Value | Role |
+| --- | --- | --- |
+| `--color-paper` | `oklch(99.2% 0.004 85)` | page surface |
+| `--color-paper-2` | `oklch(96.4% 0.006 85)` | util bar, promo ground |
+| `--color-ink` | `oklch(18% 0.012 55)` | primary text |
+| `--color-ink-2` | `oklch(28% 0.02 250)` | secondary text |
+| `--color-muted` | `oklch(46% 0.014 55)` | placeholder |
+| `--color-brand` | `oklch(52% 0.12 55)` | wordmark |
+| `--color-accent` | `oklch(52% 0.19 264)` | category slab, search border, cart badge |
+| `--color-accent-ink` | `oklch(99.2% 0.004 85)` | text on accent fills |
+| `--color-focus` | `oklch(42% 0.14 55)` | `:focus-visible` ring (contrasts both paper and accent) |
+| `--color-error` | `oklch(52% 0.18 28)` | empty-query border + help |
+| `--font-display` / `--font-body` | Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic | UI + headings, roman only |
+| `--font-outlier` | ui-monospace | prices only (one slot) |
+| `--space-*` | 4pt scale, 2–96px | gap and padding |
+| `--dur-micro/short/long` | 120 / 220 / 420 ms | motion buckets |
+| `--ease-out/in/in-out` | named cubics | no browser `ease` |
+
+Accent footprint stays on chrome (category tile, 1px search border, 16px cart badge). Campaign photography is the surface of the fold, not an accent fill.
+
+Heading: Type
+
+Single grotesque family is the captured chrome, not a pairing failure. Headings are weight 800 against body 400 (300+ contrast). No italic on any heading, wordmark, or rail label. Prices use `font-variant-numeric: tabular-nums`. Display heads wrap with `overflow-wrap: anywhere; min-width: 0`. Body measure on running copy stays inside 45–75ch; product names are short labels, not prose.
+
+Scale used on the page: xs 11px · sm 13px · base 16px · md 20px · lg 24px · xl 28px. Captured `h2` 24px / `h3` 20px / caption 11px sit on that scale.
+
+Heading: Chrome
+
+- **Promo (N12 banner).** Two cells. Dismiss zeroes `--banner-h`. Scroll-down retracts the banner; scroll-up restores it.
+- **Search bar (task).** Visible label is visually hidden; the field is the affordance. Scope select + query + submit. Height matches the submit control (`--input-h` 44px). Border width stays 1px in every state; focus uses outline, not extra border. Empty submit: `aria-invalid`, help text “검색어를 입력한 뒤 검색을 눌러 주세요.” Non-empty submit: same-document product list.
+- **Category.** Blue slab opens a three-column mega panel (click, Escape, scrim). Not a second page.
+- **Cart.** Native `<dialog>`. Empty state points back to search. Badge `0`.
+- **Wordmark.** Text `coupang` in `--color-brand`. No official logo file, no smile graphic.
+
+Heading: Imagery
+
+`image.jpg` is the H1 campaign still: high-key studio rack, cream jacket left, navy dress right. It sits in the photographic fold (`<figure>` + `<img fetchpriority="high">`). Overlay type names the weekly fashion push; the right rail lists other campaigns. Catalogue tiles below the fold that are not this still use tinted plates (`--color-swatch-*`) so the file does not pretend to ship extra photographs.
+
+Do not lazy-load the hero image.
+
+Heading: Components and states
+
+Interactive pieces implement default, hover (`(hover: hover)`), `:focus-visible`, `:active`, disabled, loading, error, success:
+
+| Control | Notes |
+| --- | --- |
+| Search field | hover tints paper-2; focus outline; error border-color; success border-color; disabled opacity + cursor + attribute |
+| Search submit | loading while the list is written; disabled cursor when `aria-disabled` |
+| Category | expanded ring; disabled recipe present |
+| Cart / account | 44px hit; active 1px press |
+| Rail items | selected = 2px accent outline, not a thick side stripe |
+
+No `transition-all`. No hover-scale. Motion is transform/opacity only. `prefers-reduced-motion: reduce` collapses durations to 150ms.
+
+Heading: Layout
+
+Asymmetric fold: still full-bleed, copy left, rec rail right. Not a centred 100vh hero. Grid tracks that carry images use `minmax(0, 1fr)`. Root `overflow-x: clip` on `html` and `body`. UA reset includes `figure, blockquote, ul, ol { margin: 0 }`. No `100vw`. Clickable labels are `white-space: nowrap`. Section heads stack vertically (no tag-left / heading-right).
+
+Breakpoints: 60rem (rail shrinks, 2-up grid), 40rem (promo one cell, category icon-only, rec rail stacks, 1-up grid). Hit targets stay ≥ 44px on coarse pointers.
+
+Heading: Copy rules
+
+No invented metrics, no testimonials, no “10×”. Promo and chrome verbs come from the capture’s visible labels (tomorrow arrival, category, cart). Product names in the list are generic goods, not third-party marks. Errors name the missing query and the next action.
+
+Heading: Out of scope
+
+No extra routes, no official brand SVG, no network requests, no Google Fonts, no second HTML file. Search results live under `#results` in `render.html`.

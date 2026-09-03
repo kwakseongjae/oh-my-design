@@ -1,0 +1,48 @@
+{"brand": "apple", "rep": 1, "slot": "B", "axis": "defects", "defects": []}
+{"brand": "apple", "rep": 2, "slot": "A", "axis": "defects", "defects": [{"code": "BRAND-MARK", "viewport": ["desktop-1440", "mobile-390"], "regionId": "H1", "severity": "P0", "symptom": "H1 제품 라인업 사진 속 기기들 후면에 애플 로고(사과 실루엣) 대신 두 개의 겹친 원형 기호가 표시된다 — 4대 전 기기 모두 동일 — desktop/mobile 모두 동일하게 나타남."}]}
+{"brand": "apple", "rep": 3, "slot": "B", "axis": "defects", "defects": []}
+{"brand": "apple", "rep": 3, "slot": "C", "axis": "defects", "defects": []}
+{"brand": "apple", "rep": 4, "slot": "A", "axis": "defects", "defects": []}
+{"brand": "baemin", "rep": 1, "slot": "A", "axis": "defects", "defects": [{"code": "HERO", "viewport": ["desktop-1440", "mobile-390"], "regionId": "H1", "severity": "P1", "symptom": "화면 전체를 채워야 할 풀블리드 식사 장면 사진이 보이지 않는다 — 두 뷰포트 모두 헤드라인 아래가 빈 크림색 배경이다."}, {"code": "CLIP", "viewport": ["desktop-1440", "mobile-390"], "regionId": "K3", "severity": "P0", "symptom": "앱 스토어 배지 2종 + QR가 첫 캡처 안 어디에도 보이지 않는다 — 지정 위치(헤드라인 하단)가 빈 여백이며 목록이 잘려 있다."}]}
+{"brand": "baemin", "rep": 1, "slot": "B", "axis": "defects", "defects": []}
+{"brand": "baemin", "rep": 1, "slot": "C", "axis": "defects", "defects": []}
+{"brand": "baemin", "rep": 4, "slot": "B", "axis": "defects", "defects": []}
+{"brand": "coupang", "rep": 1, "slot": "A", "axis": "defects", "defects": [{"code": "H-OVERFLOW", "viewport": "mobile-390", "regionId": "K1", "severity": "P1", "symptom": "모바일 뷰포트(390px)에서 데스크톱 고정폭 레이아웃이 그대로 렌더링되어 가로 스크롤이 발생한다 — coupang 로고 일부('COU'까지만)와 검색창(K1)·카테고리 내비(K2)·장바구니 아이콘이 화면 오른쪽 밖으로 밀려나 보이지 않는다."}]}
+{"brand": "coupang", "rep": 2, "slot": "C", "axis": "defects", "defects": [{"code": "OVERLAP", "viewport": "desktop-1440", "regionId": "K2", "severity": "P1", "symptom": "K1의 파란 '카테고리' 버튼이 아래로 늘어나 K2 카테고리 내비 첫 항목 라벨과 겹친다 — '쿠팡플레이' 글자가 '레이'만 보이도록 가려진다."}]}
+{"brand": "coupang", "rep": 3, "slot": "A", "axis": "defects", "defects": []}
+{"brand": "coupang", "rep": 3, "slot": "B", "axis": "defects", "defects": [{"code": "STATE", "viewport": "mobile-390", "regionId": "K1", "severity": "P1", "symptom": "검색창에 안내 placeholder 문구('찾고 싶은 상품을 검색해보세요!')와 '전체' 카테고리 드롭다운 라벨이 없다 — 빈 입력창만 보인다."}]}
+{"brand": "coupang", "rep": 3, "slot": "C", "axis": "defects", "defects": []}
+{"brand": "coupang", "rep": 4, "slot": "A", "axis": "defects", "defects": [{"code": "LOCAL", "viewport": "mobile-390", "regionId": "K1", "severity": "P2", "symptom": "검색창에 정상 placeholder 대신 깨진/불완전한 한글 글리프 한 글자만 표시된다."}]}
+{"brand": "coupang", "rep": 4, "slot": "B", "axis": "defects", "defects": [{"code": "H-OVERFLOW", "viewport": "mobile-390", "regionId": "K1", "severity": "P1", "symptom": "모바일 뷰포트(390px)에서 데스크톱 고정폭 레이아웃이 그대로 렌더링되어 가로 스크롤이 발생한다 — coupang 로고('coupa'까지만)가 잘리고 검색창(K1)·장바구니 아이콘이 화면 오른쪽 밖으로 밀려나 보이지 않는다."}]}
+{"brand": "figma", "rep": 1, "slot": "A", "axis": "defects", "defects": []}
+{"brand": "figma", "rep": 1, "slot": "B", "axis": "defects", "defects": []}
+{"brand": "figma", "rep": 1, "slot": "C", "axis": "defects", "defects": []}
+{"brand": "figma", "rep": 2, "slot": "B", "axis": "defects", "defects": []}
+{"brand": "figma", "rep": 3, "slot": "C", "axis": "defects", "defects": []}
+{"brand": "figma", "rep": 4, "slot": "A", "axis": "defects", "defects": []}
+{"brand": "figma", "rep": 4, "slot": "C", "axis": "defects", "defects": [{"code": "CLIP", "viewport": ["desktop-1440", "mobile-390"], "regionId": "K1", "severity": "P0", "symptom": "K1 내비게이션 바 위쪽에 검정색 알약형 요소(버튼/배지로 추정)가 캡처 상단 경계에 의해 위쪽이 잘려 하단 곡선만 보인다 — 두 뷰포트 모두 동일."}, {"code": "LOCAL", "viewport": ["desktop-1440", "mobile-390"], "regionId": "K2", "severity": "P2", "symptom": "K2 헤드라인이 단어 중간에서 줄바꿈된다 — desktop은 '창의성'이 '창의'+'성', '지능형'이 '지'+'능형'으로 쪼개지고, mobile은 '캔버스'가 '캔버'+'스'로 쪼개진다."}]}
+{"brand": "karrot", "rep": 2, "slot": "B", "axis": "defects", "defects": []}
+{"brand": "karrot", "rep": 4, "slot": "B", "axis": "defects", "defects": [{"code": "FOCUS", "viewport": ["desktop-1440", "mobile-390"], "regionId": "K3", "severity": "P1", "symptom": "결과 영역 전체(필터+상품 그리드)를 감싸는 굵은 주황색 테두리가 나타난다 — 특정 인터랙션 요소가 아니라 컨테이너 전체에 포커스 링처럼 보이는 테두리가 걸려 있다 — 두 뷰포트 모두 동일."}]}
+{"brand": "karrot", "rep": 4, "slot": "C", "axis": "defects", "defects": []}
+{"brand": "musinsa", "rep": 1, "slot": "A", "axis": "defects", "defects": []}
+{"brand": "musinsa", "rep": 1, "slot": "B", "axis": "defects", "defects": []}
+{"brand": "musinsa", "rep": 2, "slot": "A", "axis": "defects", "defects": []}
+{"brand": "musinsa", "rep": 2, "slot": "B", "axis": "defects", "defects": []}
+{"brand": "musinsa", "rep": 3, "slot": "C", "axis": "defects", "defects": [{"code": "OVERLAP", "viewport": "desktop-1440", "regionId": "K3", "severity": "P1", "symptom": "상품 그리드 첫 카드(나이키 민소매 티셔츠)의 원형 공유 아이콘 팝오버가 가격 '59,000원' 문자 위에 겹쳐 가격 숫자 일부와 하트 아이콘을 가린다."}]}
+{"brand": "musinsa", "rep": 4, "slot": "A", "axis": "defects", "defects": []}
+{"brand": "musinsa", "rep": 4, "slot": "C", "axis": "defects", "defects": []}
+{"brand": "naver", "rep": 1, "slot": "B", "axis": "defects", "defects": []}
+{"brand": "naver", "rep": 1, "slot": "C", "axis": "defects", "defects": []}
+{"brand": "naver", "rep": 2, "slot": "B", "axis": "defects", "defects": []}
+{"brand": "naver", "rep": 2, "slot": "C", "axis": "defects", "defects": []}
+{"brand": "naver", "rep": 3, "slot": "A", "axis": "defects", "defects": []}
+{"brand": "naver", "rep": 3, "slot": "B", "axis": "defects", "defects": []}
+{"brand": "naver", "rep": 3, "slot": "C", "axis": "defects", "defects": [{"code": "CONTRAST", "viewport": "desktop-1440", "regionId": "K3", "severity": "P1", "symptom": "K3 로그인 박스 하단 '아이디 찾기 | 비밀번호 찾기 | 회원가입' 텍스트 색상 RGB(212,215,220)이 배경 RGB(255,255,255) 위에서 대비 1.44:1 — WCAG 일반 텍스트 기준 4.5:1 미달."}]}
+{"brand": "naver", "rep": 4, "slot": "A", "axis": "defects", "defects": []}
+{"brand": "naver", "rep": 4, "slot": "B", "axis": "defects", "defects": []}
+{"brand": "naver", "rep": 4, "slot": "C", "axis": "defects", "defects": [{"code": "STATE", "viewport": ["desktop-1440", "mobile-390"], "regionId": "K2", "severity": "P1", "symptom": "K2 서비스 아이콘 그리드의 아이콘 10개가 전부 빈 사각형(테두리만 있는 정사각형)으로 표시되고 내부 아이콘 그래픽이 없다 — 라벨 텍스트만 보인다. 두 뷰포트 모두 동일."}]}
+{"brand": "toss", "rep": 2, "slot": "C", "axis": "defects", "defects": []}
+{"brand": "toss", "rep": 3, "slot": "C", "axis": "defects", "defects": [{"code": "CONTRAST", "viewport": ["desktop-1440", "mobile-390"], "regionId": "K2", "severity": "P1", "symptom": "히어로 사진 아래 헤드라인 '금융부터 일상까지 마침내 토스 하나로' 텍스트 색상이 RGB(253,253,254)로 배경 RGB(255,255,255)와 거의 동일 — 계산 대비 1.02:1, 텍스트가 사실상 보이지 않는다."}]}
+{"brand": "toss", "rep": 4, "slot": "C", "axis": "defects", "defects": []}
+{"brand": "wanted", "rep": 4, "slot": "A", "axis": "defects", "defects": []}
+{"brand": "wanted", "rep": 4, "slot": "C", "axis": "defects", "defects": []}

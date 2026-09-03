@@ -1,0 +1,109 @@
+Heading: Figma 홈 — 표면 로컬 디자인 시스템
+
+스냅샷 `2026-08-22T19-48-41-602Z` · 표면 desktop-1440 / mobile-390 · 로케일 ko-KR.
+권한: 벤치 브리프가 홈 한 화면과 가입 진입 과업만 위임하므로 disposition은 **surface-local-only**. 프로젝트 를 만들지 않는다.
+
+데이터 진실은 의 chrome·typeScale·카피·이미지 alt뿐이다. 코드북에만 있는 화면 지시·대표 이미지 역할은 추측하지 않는다.
+
+Heading: Philosophy
+
+흰 지면을 비우고, 캔버스 작업물이 접면의 그림이 되게 한다. 무료 시작 동사 하나를 남기기 위해 장식 악센트·추정 수치·공식 마크를 버린다.
+
+| 원칙 | 얻는 것 | 버리는 것 |
+|---|---|---|
+| P1 캔버스가 그림이다 | 접면에서 작업 표면이 바로 읽힌다 | 아이콘 타일, 그라데이션 헤드라인, 센터 스택 히어로 |
+| P2 무료 시작은 하나다 | 가입 진입 경로가 유일하다 | 헤더와 히어로에 같은 primary를 두 번 심는 것 |
+| P3 없는 것은 비운다 | 스냅샷에 없는 로고·가격·추천사·이용자 수를 만들지 않는다 | 그럴듯한 대체 마크, 추정 카피, 하위 라우트 |
+
+Heading: Derive
+
+| ID | 결정 | 근거 |
+|---|---|---|
+|  | 표면 장르 = hairline-rule bands. 크롬은 면 그림자 없이 헤어라인만 | 캡처 헤더 `#ffffff` + 하단 룰. 타일 그림자는 장르 혼용 |
+|  | 컨트롤 반경 8px | evidence `primaryButton.radiusPx: 8` |
+|  | 디스플레이 56/36, weight 400, 줄간격 1.0–1.15 | typeScale h1 56/36 weight 400. 한글은 팩 바닥(−0.01em, keep-all)을 우선 |
+|  | 초광폭 전략 = 좌측 max. 히어로 문법 = 카피/피겨 디프틱 | 캡처: 좌 헤드라인, 우 겹친 보드. P-MK-05의 집계 칩은 스냅샷에 수치 없음 → 피겨로 채움 (GS5) |
+|  | 악센트는 잉크 반전 CTA 하나. 색은 캔버스 이미지에만 | 크롬 후보 버튼은 흑/백. 팔레트 `#0030cb` `#33e0df` `#e28cf7`는 이미지 도메인 |
+|  | `data-cta="primary"`는 `지금 무료로 시작하기` 단 하나. 히어로 `시작하기`는 local | 브리프 동사 + C3 |
+|  | 워드마크는 텍스트 `Figma`. 공식 마크 원본 금지 | 브리프 금지 항 |
+|  | 수치·추천사·가격·엔터프라이즈 주장은 생략. 자리에는 정직 부재 문장 | G46, 팩 honesty |
+|  | 모션: 120/200/320ms, enter `ease-out`, 속성 transform·opacity만 | 캡처 `motion.present: false`. 장식 오토플레이 없음 (G17) |
+|  | 가입은 새 화면이 아니라 홈 위 `dialog` | 브리프 화면=홈, 추가 화면 금지 |
+|  | 한글 스택 Pretendard → Apple SD Gothic Neo → Noto Sans KR. figmaSans는 로드 불가 | 런타임 폰트 치환 금지, 네트워크 금지, G1 |
+
+프리셋: 히어로 골격 **P-MK-05** (우측을 비우지 않음) · 미디어는 디프틱이라 **P-FN-03** 해부를 우측에 적용 · 내비 개시는 disclosure (no-preset: mega-menu — 카탈로그에 캡처형 메가메뉴 없음) · 가입 필드는 C11–C16 · 라우트 포커스 **P-FN-02** (다이얼로그 제목).
+
+Heading: Tokens
+
+주석은 D-ID. 페이지는 `var(--*)`만 읽는다.
+
+```css
+--color-paper: oklch(0.995 0.004 95);          /* evid #ffffff 근사, 순수 1.0 금지 */
+--color-ink: oklch(0.18 0.012 95);             /* evid #000000 근사 */
+--color-ink-soft: oklch(0.38 0.01 95);
+--color-rule: oklch(0.91 0.008 95);
+--color-chip: oklch(0.965 0.008 95);
+--color-inverse: oklch(0.16 0.012 95);         /* 쿠키·primary 면 */
+--color-on-inverse: oklch(0.99 0.004 95);
+--color-focus: oklch(0.42 0.18 264);           /* evid #0030cb, 링 전용 신호 */
+--space-1: 4px; --space-2: 8px; --space-3: 12px;
+--space-4: 16px; --space-5: 24px; --space-6: 40px;
+--space-7: 64px; --space-8: 96px;              /* section air 2.5 / 4 / 6rem */
+--gutter: clamp(16px, 4vw, 48px);
+--radius-control: 8px;                         
+--font: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+--text-display: clamp(36px, 4vw, 56px);
+--text-body: 18px;                             /* evid p/button 18 / mobile 14 */
+--text-ui: 16px;
+--leading-display: 1.15;
+--leading-body: 1.7;
+--dur-fast: 120ms; --dur: 200ms; --dur-slow: 320ms;
+--ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+--control-h: 48px;                             /* ≥44, C2/C9 */
+```
+
+Heading: Components
+
+| 컴포넌트 | 프리셋 | 상태 | 기하 |
+|---|---|---|---|
+| Primary CTA | no-preset: captured ink fill | default/hover(면 밝기)/focus-visible/active(scale 0.98)/disabled | h 48, r 8, 한글 nowrap |
+| Outline / ghost | 동일 해부, 면만 chip/투명 | 동일 행렬 | 인풋 높이와 페어 |
+| Header nav disclosure | no-preset: mega-menu | collapsed/expanded, 항목 focus | 패널 r 8, 헤어라인 |
+| Cookie plate | inverse 면 | open/dismissed, 설정 확장 | r 8, 버튼 h 48 |
+| Signup dialog | native `dialog` | default/error/success | 필드 h 48, helper min 1lh |
+| Mobile nav | 캡처 블랙 시트 | closed/open | 항목 히트 ≥44 |
+| Wordmark | 텍스트 | — | display 역할, 18px/600 |
+
+인터랙티브 7상태: default · hover · focus-visible · active · disabled · loading(제출 중) · error/success(필드·status). 비인터랙티브 피겨는 상태 없음.
+
+Heading: Layout grammar
+
+페이지 하나, 문법 **카피/피겨 디프틱**. 콘텐츠 역산: 브리프가 준 대표 이미지 1장(`image.jpg`)이 우측을 채운다. 스냅샷 이미지 9장은 역할이 코드북 몫이라 그리드로 재배열하지 않는다.
+
+- 1440: 좌 헤드라인(max ~8em) · 우 피겨 · 그 옆 local `시작하기`
+- 390: 워드마크 + primary + 메뉴 → 헤드라인 → 피겨. local CTA 숨김(캡처와 동일)
+- 320 / 200% 리플로우: 단열, `overflow-x: clip`, 디스플레이 `min-width:0; overflow-wrap:anywhere`
+
+Heading: Journey
+
+브리프 동사: **무료 시작 CTA를 눌러 가입 흐름에 진입한다.**
+
+| 동사 | 키보드 | 프로그램 증거 |
+|---|---|---|
+| 지금 무료로 시작하기 | Tab → primary → Enter | `dialog#signup[open]`, `data-state="signup"`, 제목 포커스 |
+| 이메일 제출 | Tab → 이메일 → 계속 | 성공: `role="status"`가 이메일 포함. 실패: `aria-invalid` + `role="alert"` + 필드 포커스 |
+| 쿠키 허용/거부 | Tab → 해당 버튼 | 배너 `hidden`, `data-state="dismissed"` |
+
+로그인·영업팀 문의는 스냅샷 크롬에만 있고 화면은 없다. 클릭 시 정직 부재 문장을 `role="status"`로 읽힌다. 하위 내비 라벨은 홈에 머문다.
+
+Heading: Honesty
+
+| 범주 | 처리 |
+|---|---|
+| 공식 로고 | 텍스트 워드마크. 4색 마크 없음 |
+| 가격·플랜 숫자 | 생략. 가격 개시는 라벨만 |
+| 추천사·이용자 수·보안 주장 | 생략 |
+| figmaSans | 메타만. 로드 시도 없음 |
+| 샘플 수치 | 생성 이미지 안의 영문 UI 카피는 장식이며 제품 수치가 아님 |
+
+푸터 한 줄이 위 부재를 사용자 언어로 밝힌다.

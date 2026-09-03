@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "musinsa",
+  "arm": "omd",
+  "rep": 4,
+  "source": "test-v2/03-runs/lane-a/musinsa/omd/rep-4/render.html",
+  "sourceSha": "sha256:42362e20d588316fc00add963e9875ed721e46a1af55d11fd12fd346a06d777c",
+  "capturedAt": "2026-09-02T08:31:43.405Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:3c2f61d22a503e85427d784ae92b37747be8e83a7c20a1fa045e59e69e2eaeac",
+      "bytes": 675324,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:0a5609c465741990166b512cc94d4d537a8c37f988fb0c583d242de51699240d",
+      "bytes": 152686,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

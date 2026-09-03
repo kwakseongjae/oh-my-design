@@ -54,6 +54,14 @@ folders and must never edit `DESIGN.md` or product files.
    create, infer, or edit `council-intake.answers.json` on the user's behalf;
    that file may contain only an actual user response relayed verbatim after
    the controller has entered `CONSEQUENTIAL_INTERVIEW`.
+   **Unattended mode** (`--unattended` in the prompt, or `.omd/config.json`
+   `"unattended": true`): there is no user to answer, so each question takes
+   its first (recommended) option and the choice is recorded in
+   `loop-trace.json` → `autoSelected[]` as `{question, chosen, alternatives}`
+   so the decision is auditable afterwards. Options that delete or overwrite
+   files that existed before the mission are never auto-selected — the mission
+   fails that requirement honestly instead. `council-intake.answers.json` is
+   still never written: auto-selection is a trace entry, not a user answer.
 5. `DESIGN_SYSTEM_DISPOSITION` — resolve exactly one of `reuse`, `establish`,
    `refresh`, or `surface-local-only`. A missing exact brand source is blocked.
    After the council handoff reaches `PROPOSE_PLAN`, run the installed
@@ -210,6 +218,26 @@ folders and must never edit `DESIGN.md` or product files.
    from those results; prose confidence or a self-authored summary is not proof.
    “Browser unavailable”, skipped checks, or missing screenshots must be a
    failed check, never a passing substitute.
+   **Render integrity is an atomic check.** Run the deterministic checker on
+   every rendered page the mission produced — `node test-v2/tools/render-integrity.mjs <page.html…>`
+   in this repo, `omd check render <page.html…>` when installed — and bind
+   its verdict per page into `proof.json` with the tool output as evidence
+   (overflow-x, viewport escape, text clip, unreset UA margins, missing font,
+   broken image, encoding). A FAIL is a failed check; a page the tool could not
+   load is a failed check.
+   **Text contrast is a second atomic check.** Run `node test-v2/tools/text-contrast.mjs <page.html…>`
+   in this repo, `omd check contrast <page.html…>` when installed, on the same pages
+   and bind its verdict into `proof.json` the same way. It measures the nominal
+   computed color against the actual background pixel, so accent-on-accent text,
+   headlines over photos or gradients, and grey meta text are caught before the
+   critique round, not after delivery. Body text below 4.5:1 and large text, focus
+   rings, or essential UI boundaries below 3:1 are failed checks. Fix them by
+   changing tokens or adding a scrim in the build, never by lowering the threshold.
+   A page whose contrast the tool could not measure is a failed check, not a pass. Append one entry per verification round to
+   `loop-trace.json` → `rounds[]`: `{round, renderIntegrity: {defects, items},
+   critique: {blocks}, fixed: [...]}` so the mission can show its defect count
+   going down, not just its last verdict. The same file carries `autoSelected[]`
+   from `CONSEQUENTIAL_INTERVIEW`.
    When `.benchmark/controller-verification-policy.json` is present, the
    installed mission controller is the objective-verification authority. Every
    local proof, passing or failing, must stop at `EXTERNAL_VERIFY` before any
@@ -413,6 +441,17 @@ here because violating them wastes the whole run:
 - The system carries a display/body type pair with a ≥2× display step, a
   label role, section-air spacing steps (2.5–6rem), ONE surface genre, and
   accent as a small signal (≤~5% of any viewport).
+- The written system states its responsive behaviour and its component states
+  as VALUES, not adjectives: Layout & Platforms names each breakpoint with the
+  grid and type-scale change that happens there, and Components & States gives
+  every interactive component its applicable states with the token each state
+  actually uses. "Responsive" and "has hover/focus states" without the numbers
+  is an unwritten section — evaluators scored exactly this gap lowest.
+- NEVER let a first-paint overlay (cookie banner, sheet, modal, sticky promo)
+  cover the H1, the hero subject, or the primary action — at 390px as well as
+  1440px. A bottom bar or a scroll-triggered appearance is fine; a sheet over
+  the hero is not. Hero image crops must keep the subject the brief asks for
+  intact at mobile width.
 - After building, run the ONE-round self-critique from the contract (5 axes
   + gate sweep, System Fidelity replaces variety) and write `critique.md`
   into the run directory before the mission proof.
@@ -514,6 +553,9 @@ Store permanent artifacts under `.omd/runs/<run-id>/`:
 - `implementation.json`
 - `acceptance-plan.json`
 - `proof.json`, `repairs/round-<n>.json`, and screenshots
+- `loop-trace.json` — per-round `renderIntegrity`/`critique` counts and
+  `autoSelected[]` (the audit trail of unattended choices); an empty
+  `rounds[]` means verification never ran and the proof cannot pass
 - `delivery.json`
 
 Receipts bind the original task, repository evidence, DESIGN.md, product output,

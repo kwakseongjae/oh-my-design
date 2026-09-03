@@ -1,0 +1,104 @@
+Heading: 쿠팡 홈 — studied DNA ()
+
+스냅샷 `2026-08-22T19-48-17-298Z` · 서피스 desktop-1440 (1440×900) · 과업: 검색창에 질의를 입력해 상품 목록으로 이동.
+
+이 문서는 카탈로그 테마가 아니라 **증거 화면에서 뽑은 DNA**다. 공식 로고 원본은 쓰지 않고 텍스트 워드마크 `coupang`으로 대체한다. 외부 네트워크 요청은 없다.
+
+Heading: 한 줄
+
+밝은 종이 위에 갈색 워드마크와 파란 검색 테두리가 있고, 접힌 화면은 사진이 차지한다. 할 일은 검색이다.
+
+Heading: 맥락
+
+- 청중: 쇼핑하는 사람
+- 한 가지 일: 검색어를 넣어 상품 목록을 연다
+- 톤: 실용 (utilitarian)
+- 장르: playful(소비자) — 다만 테마 루트는 studied-DNA, 카탈로그 Hum이 아님
+
+Heading: 구조
+
+| 축 | 선택 | 손잡이 |
+| --- | --- | --- |
+| 매크로 | Photographic | 접힘마다 큰 사진, 글은 캡션 |
+| 히어로 | H6 Photographic fold | 영역 16/7, 캡션 왼쪽 아래, 글은 사진 위 |
+| 본문 | F6 Product card grid | 4/3, 4열, 가격은 이름 아래, 동작은 보기 |
+| 섹션 머리 | S2 Hanging | 오늘의 발견 |
+| 검색 | C2 Inline form as CTA | 범위 선택 + 입력 + 검색 |
+| 내비 | N12 Banner + retract | 위 안내 띠, 닫기 있음, 막대는 sticky |
+| 푸터 | Ft2 Inline-rule | 워드마크 · 링크 · 스냅샷 한 줄 |
+
+이전 내비 없음. 이번 빌드는 N12. 상단 쌍 배너와 검색이 스냅샷의 뼈대이기 때문이다.
+
+Heading: 표면
+
+앵커 휴는 파랑 264°. 종이는 거의 흰 냉색, 순백 `#fff`와 순흑 `#000`은 쓰지 않는다.
+
+- paper `oklch(99.2% 0.004 264)` — 실측 모달색 `#fefefe`에 가깝게, 휴만 살짝
+- ink `oklch(18% 0.022 264)`
+- muted `oklch(48% 0.022 264)` — 본문 보조. 실측 p 색 `#7b7b7b`
+- accent `oklch(58% 0.16 264)` — 검색 테두리, 장바구니 숫자, 포커스
+- accent-ink `oklch(99% 0.01 264)` — 액센트 면 위의 글
+- category `oklch(62% 0.17 264)` / category-ink — 왼쪽 카테고리 슬래브
+- wordmark `oklch(55% 0.13 58)` — 갈색 글자 마크
+- promo-a 차가운 시안 띠, promo-b 탁한 회청 띠
+- error / success는 검색 상태에만
+
+액센트 발자국은 검색 테두리·카테고리 슬래브·배지로 제한한다. 히어로를 액센트로 채우지 않는다.
+
+Heading: 글자
+
+네트워크 폰트를 불러오지 않는다. 실측 패밀리 Apple SD Gothic Neo를 표시/본문에 같이 쓰고, 가격만 모노 아웃라이어.
+
+- display / body: `"Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif`
+- outlier (가격, 한 자리): `ui-monospace, "SF Mono", Menlo, monospace`
+- 제목은 로만, 이탤릭 헤더 없음
+- 크기: 본문 16px, 제목은 굵기로 구분. 히어로 캠페인 제목은 `--text-display-s` (길이가 짧음)
+- 숫자: `tabular-nums`
+- 실측 타입: h2 24/700, h3 20/400, p 11/400. 11px는 유틸 바에만 쓰고 본문 바닥은 16px
+
+Heading: 간격 · 레이아웃
+
+4pt 스케일 `--space-3xs` … `--space-3xl`. 페이지 축은 왼쪽(카테고리 슬래브)에서 가운데(검색)로 기운다. 히어로는 전폭 사진, 오른쪽 기획 레일은 사진 위에 얹는다. 그리드 트랙은 `minmax(0, 1fr)`. `html`/`body`는 `overflow-x: clip`. `100vw` 없음.
+
+z: base 1 · raised 10 · dropdown 100 · sticky 200 · sticky-nav 300 · modal 400.
+
+Heading: 움직임
+
+Photographic는 기본 정지. 이 페이지의 움직임은 두 가지뿐이다.
+
+1. N12 배너가 아래로 스크롤되면 위로 접힌다 (`transform`)
+2. 검색 제출 중 버튼 스피너, 최소 320ms
+
+호버 확대 없음. `transition-all` 없음. 포커스 링은 즉시. `prefers-reduced-motion: reduce`면 공간 이동을 150ms 불투명으로 줄인다.
+
+Heading: 상태 (검색)
+
+입력과 검색 버튼은 한 높이 `--control-h` 2.75rem. 테두리 두께는 모든 상태에서 1px.
+
+| 상태 | 처리 |
+| --- | --- |
+| default | 액센트 1px 테두리, 종이 배경 |
+| hover | 종이-2 배경, 테두리 두께 유지 |
+| focus-visible | 2px 포커스 아웃라인, 오프셋 1px, 즉시 |
+| active | 버튼 1px 내려앉음 |
+| disabled | 투명 0.55 + not-allowed + disabled |
+| loading | 스피너, 제출 잠금, 칸은 수정 가능 |
+| error | 테두리 error, 도움말: 무엇을 입력해야 하는지 |
+| success | 테두리 success, 목록이 결과 |
+
+빈 제출: “검색어를 입력해 주세요. 빈 칸으로는 상품을 찾지 못합니다.”
+결과 없음: 다른 단어를 권한다. 꾸며낸 전환율·회원 수 없음.
+가격이 스냅샷에 있던 네 점만 숫자를 적고, 나머지는 `—`.
+
+Heading: 에셋
+
+- `image.jpg` — 레인 A Grok Imagine. 히어로 한 장. LCP, `fetchpriority="high"`, lazy 없음. 글자·로고 없음.
+- 상품 사진은 공식 캠페인 컷을 복제하지 않는다. 토큰 스와치 면으로 자리를 표시한다.
+
+Heading: 반응형
+
+320 / 375 / 414 / 768에서 가로 스크롤이 없어야 한다. 클릭 라벨은 nowrap. 좁으면 유틸·레일 숨김, 워드마크 숨김, 카테고리는 아이콘만, 그리드는 2열 다음 1열, 히어로 기획 레일은 아래로.
+
+Heading: 금지한 것
+
+3열 아이콘 피처, 보라 그라데이션, Inter, 이탤릭 헤더, 가짜 브라우저 크롬, 공식 로고 파일, 외부 URL, UA 기본 `figure`/`blockquote`/`ul`/`ol` 마진.

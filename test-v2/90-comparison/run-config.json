@@ -115,5 +115,7 @@
   "평가자 3종은 공개 웹을 공유한다. 높은 α를 사람 합의의 대체값으로 읽지 않는다 (RUBRIC.md §3.7).",
   "평가자 3종은 같은 서빙 플랫폼(cursor)을 지나고 그중 composer-2.5는 그 플랫폼 사업자 자신의 모델이다. 계열 3종은 여전히 다르고 arm 호스트가 xAI라 자기 산출물 채점도 아니지만, 「서로 다른 계열 3종」이 곧 「서로 독립인 3종」이 아니라는 경고가 한 겹 두꺼워진다 (RUBRIC.md §3.2a). 리포트 첫 절에 기재한다.",
   "천장 측정은 학습 기억을 섞는다. 5개 브랜드에서만 자극이 충분하다 (figma·karrot·musinsa·naver·toss)."
- ]
+ ],
+ "rubricFrozenSha": "b6b3ee59b2bc564113d616779caf3d32ae076664",
+ "rubricResealNote": "2026-09-02 §4.5 N/A-evidence (naver); prior 65f778e8 (two-evaluator panel)"
 }

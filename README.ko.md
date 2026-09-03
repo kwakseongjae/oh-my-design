@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>코딩 에이전트가 실제로 붙들 수 있는 디자인 시스템.</strong> <code>oh-my-design-cli</code>는 AI UI 작업에 늘 비어 있던 중간 단계를 설치합니다 — 직접 선언하는 철학, 거기서 유도된 토큰과 컴포넌트 계약, AI가 반복하는 실패에 번호를 붙인 게이트, 그리고 자기 시스템을 되읽는 <code>omd book</code>. 스킬 22개, 전문 역할 19개, 프리셋 계약 93개, 품질 등급 레퍼런스 440개 이상. 핵심 워크플로에 API 키도 MCP 서버도 필요 없습니다.
+  <strong>코딩 에이전트가 실제로 붙들 수 있는 디자인 시스템.</strong> <code>oh-my-design-cli</code>는 AI UI 작업에 늘 비어 있던 중간 단계를 설치합니다 — 직접 선언하는 철학, 거기서 유도된 토큰과 컴포넌트 계약, AI가 반복하는 실패에 번호를 붙인 게이트, 그리고 자기 시스템을 되읽는 <code>omd book</code>. 스킬 27개, 전문 역할 20개, 프리셋 계약 93개, 품질 등급 레퍼런스 440개 이상. 핵심 워크플로에 API 키도 MCP 서버도 필요 없습니다.
 </p>
 
 <p align="center">
@@ -169,25 +169,25 @@ Toss가 아니어도 됩니다 — `Stripe-style`, `Linear-clone B2B SaaS`, `Kar
 
 | 에이전트 | 채널 | 설치되는 것 |
 |---|---|---|
-| **Claude Code** | `--agent claude-code` (기본) | 풀 번들 — `.claude/` 아래 스킬, 19 서브에이전트, hooks, data |
+| **Claude Code** | `--agent claude-code` (기본) | 풀 번들 — `.claude/` 아래 스킬, 20 서브에이전트, hooks, data |
 | **Codex** | `--agent codex` | `.agents/skills/` 스킬, `.codex/agents/` 내장 서브에이전트 역할, `.codex/data/` 로컬 카탈로그 |
 | **OpenCode** | `--agent opencode` | 프로젝트: `.opencode/{skills,agents,data}/`의 스킬·네이티브 서브에이전트·카탈로그; 전역: `~/.config/opencode/{skills,agents,data}/`의 동일 번들 |
-| **Cursor** | `--agent cursor` | `.cursor/skills/`의 호환 Agent Skills 21개 + 작은 `.cursor/rules/omd-design.mdc` bootstrap + 공용 `.claude/data` 카탈로그; 별도 서브에이전트 정의·훅은 설치하지 않음 |
+| **Cursor** | `--agent cursor` | `.cursor/skills/`의 호환 Agent Skills 26개 + 작은 `.cursor/rules/omd-design.mdc` bootstrap + 공용 `.claude/data` 카탈로그; 별도 서브에이전트 정의·훅은 설치하지 않음 |
 
 기본 설치는 감지된 모든 에이전트를 대상으로 합니다. 단일 채널을 비대화형으로 설치하려면 `npx oh-my-design-cli@latest install-skills --agent <name> --all`을 실행하세요.
 
 ### Cursor의 정확한 사용 경로
 
-Cursor 2.4+는 `.cursor/skills/`에서 호환 OmD Agent Skills 21개를 읽습니다. 설치 후 Cursor를 재시작하고 `토스 스타일로 가족 식단 공유 앱 디자인 시스템을 잡아줘`라고 자연스럽게 요청하거나 `/omd-init`을 직접 호출하세요. 작은 상시 rule은 pending 사용자 교정, 채택된 Bound System/standalone DESIGN.md, 프레임워크 기본값 순서와 unknown은 absent라는 계약을 유지합니다.
+Cursor 2.4+는 `.cursor/skills/`에서 호환 OmD Agent Skills 26개를 읽습니다. 설치 후 Cursor를 재시작하고 `토스 스타일로 가족 식단 공유 앱 디자인 시스템을 잡아줘`라고 자연스럽게 요청하거나 `/omd-init`을 직접 호출하세요. 작은 상시 rule은 pending 사용자 교정, 채택된 Bound System/standalone DESIGN.md, 프레임워크 기본값 순서와 unknown은 absent라는 계약을 유지합니다.
 
 구형 Cursor에서는 `--cursor-rule-only`로 기존 rule + 카탈로그 호환 모드를 설치할 수 있습니다. OmD의 별도 전문 서브에이전트 정의와 hooks는 Cursor에 설치하지 않습니다.
 
 ## 패키지 구성
 
-**22 스킬 · 19 서브에이전트 · 440개 이상의 품질 등급형 레퍼런스 · 활성화 hooks**가 전체 번들입니다. Cursor에는 이식 가능한 스킬 21개가 설치되며 `claude-design`, 별도 서브에이전트 정의, 활성화 hooks는 채널별로 제한됩니다.
+**27 스킬 · 20 서브에이전트 · 440개 이상의 품질 등급형 레퍼런스 · 활성화 hooks**가 전체 번들입니다. Cursor에는 이식 가능한 스킬 26개가 설치되며 `claude-design`, 별도 서브에이전트 정의, 활성화 hooks는 채널별로 제한됩니다.
 
-- **스킬** — core flow (`omd:autopilot` / `omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:update` / `omd:remember` / `omd:learn` / `omd:taste` — "내 취향 보여줘" 한마디로 루프가 배운 것·대기 중·보류된 것을 한 뷰로), 라이브 캡처 + 에셋 (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), 글쓰기와 리뷰 (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:humanize` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), 인터페이스 품질 (`omd:feel` / `omd:slop-audit`), 그리고 터미널에서 claude.ai/design을 구동하는 단독 스킬 `claude-design`.
-- **서브에이전트** — `omd-master` + 18 스페셜리스트 (UX 리서치, UI 생성, 에셋 큐레이션, 문장 다듬기, slop 감사, a11y 감사, 페르소나 테스트, 비평, …).
+- **스킬** — core flow (`omd:autopilot` / `omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:update` / `omd:issue` — 불만을 GitHub 이슈로 바로 접수 / `omd:remember` / `omd:learn` / `omd:taste` — "내 취향 보여줘" 한마디로 루프가 배운 것·대기 중·보류된 것을 한 뷰로), 라이브 캡처 + 에셋 (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), 랜딩과 미디어 (`omd:setup` — 이 머신에 실제로 있는 이미지·영상 채널을 찾아 기록 / `omd:landing` — 스크롤 원페이지 랜딩 / `omd:media` — 브랜드 자산 세트 / `omd:showcase` — 스크롤 시연 영상), 글쓰기와 리뷰 (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:humanize` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), 인터페이스 품질 (`omd:feel` / `omd:slop-audit`), 그리고 터미널에서 claude.ai/design을 구동하는 단독 스킬 `claude-design`.
+- **서브에이전트** — `omd-master` + 19 스페셜리스트 (UX 리서치, UI 생성, 에셋 큐레이션, 문장 다듬기, slop 감사, a11y 감사, 페르소나 테스트, 비평, …).
 - **레퍼런스** — 기업 `DESIGN.md` 440개 이상에 근거와 품질 상태를 명시합니다. 모든 레퍼런스는 `oh-my-design.kr/<id>/design.md`에서 raw markdown으로도 제공되어 에이전트가 직접 가져올 수 있습니다.
 - **Hooks** — UserPromptSubmit / SessionStart / PostToolUse 활성화 — 슬래시 명령 없이 자연어만으로 스킬이 발동합니다.
 

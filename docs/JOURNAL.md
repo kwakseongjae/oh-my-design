@@ -1,3 +1,77 @@
+## 2026-09-02 — landing/toss 개정 라운드 3 (CTA 포커스·ghost 라벨)
+
+**한 일.** `render.html` 히어로 CTA 두 개만. canvas 3px halo + foreground 링, ghost 라벨 `#191f28`. text-contrast PASS fail 0, integrity PASS / FAIL 0, 12.05 vh.
+
+**열린 것.** 오케스트레이터 재실측. WARN·FYI 미수정.
+
+**다음.** 라운드 3 검수.
+
+## 2026-09-03 (오전 늦게) — 마라톤 정지·T3 개선 전건 완료
+- 한 일: 웨이브 54 마감 후 마라톤 자동 정지(22웨이브·53브랜드·$90.90). T3 접수 8건 전부 구현 — 마지막 #90은 계측으로 원인을 크롭이 아닌 생성 비율로 좁혀 규칙 위치를 바꿨다.
+- 결과: 원장 migrated 290/recorded 293/missing 0. 품질 게이트는 여전히 BLOCKED(autopilot 산출 contrast FAIL) — 픽스처 재생성이 해제 조건.
+- 다음(전부 사용자 결정): 픽스처 재생성 승인 · §3.7 재채점 여부 · 게시물 소재 승인 · npm publish.
+## 2026-09-03 (오전) — T3 개선 반영 1차 + 품질 게이트
+- 한 일: 접수 9건 중 6건 구현(러너 90분 타임아웃·designer-review 측정 대비/오버레이·autopilot 대비 원자검사/오버레이/값 서술·render-integrity 모바일 뷰포트·집계기 블라인드 절·품질 게이트). 스텁·전수 개수 점검으로 각각 검증.
+- 결과: 품질 게이트 첫 판정 BLOCKED — autopilot 산출 2칸이 contrast FAIL(29·13건). 개선이 겨냥한 결함을 우리 산출물에서 그대로 재현. 모바일 뷰포트가 사람 합의 결함 1건을 독립 재현.
+- 열린 것: #90(스냅샷 수치 추종), autopilot 픽스처 재생성(게이트 해제 조건), §3.7 전 축 재채점 여부(사용자), 웨이브 55 후 STOP.
+## 2026-09-03 (새벽) — T3 레인 A 봉인·Phase 6 검토
+- 한 일: 청크 3 양 평가자 채점, 단독 표기 결함 재채점(도구 신설), 최종 집계 봉인. 집계기 결함 2건 수정(천장 자극 적재 순서·SCORING_DONE 푸터). Phase 6 검토 문서(개선 12항).
+- 결과: INCONCLUSIVE(α 미달) 안에서 omd ≥ uiuxpromax > hallmark 동순위, 결정적 우승 없음. 세 arm 공통으로 스냅샷 수치 추종 약함(≈38). grok 블라인드 붕괴(98%).
+- 열린 것: §3.7 전 축 재채점 여부(사용자), omd:issue 접수, 마라톤 55 후 STOP, npm publish 보류.
+## 2026-09-02 (밤) — 도그푸딩 17건 반영·T3 생산 완주·대비 스윕
+- 한 일: 2.0.1 도그푸딩 17건 전부 레포 반영(`51123149`·`6483025c`), tarball 재검증, PR #88 푸시. 웨이브 52 마감(9 done·openpoint deferred)·53 진행. T3 wanted 6칸 완료 → 108/108, 매니페스트 재봉인, 텍스트 대비 108칸 스윕(세 arm 모두 미달 상수).
+- 열린 것: 사용자 `npm publish`; wanted 전사(opus5) → 청크 3 채점; X/스레드 소재 승인; 03-runs 봉인 칸 git 편입 여부.
+- 다음: 전사 12/12 PASS → build-packets --chunk 3 → grok·sonnet5 세션 → 단일 플래그 재채점 → 집계 → Fable Phase 6 검토 → omd:issue.
+## 2026-09-02 — landing/stripe 개정 라운드 3 (nav CTA 포커스)
+
+**한 일.** `render.html` `.nav-bar` 우상단 canvas-alpha 스크림만. 글리프 감사 focus 1440 "Start now" `<3:0%` (min 3.83). integrity PASS / FAIL 0, 12.05 vh.
+
+**열린 것.** 오케스트레이터 재실측. WARN·FYI 미수정.
+
+**다음.** 라운드 3 검수.
+
+## 2026-09-02 — landing/stripe 개정 라운드 2 (BLOCK 6)
+
+**한 일.** `test-v2/content-runs/landing/stripe/landing/render.html` BLOCK 6건만 수정(스크림·ghost fill·포커스 halo·noscript). concept.md 가정 10 한 줄. integrity PASS / FAIL 0, 12.05 vh 유지.
+
+**열린 것.** WARN 6·FYI 8은 미수정. 재리뷰는 오케스트레이터.
+
+**다음.** 디자이너 재리뷰.
+
+## 2026-09-02 (오후) — 방향 전환: 마라톤 무인화 · 랜딩 스킬 실전 · T3 청크 1 채점
+
+**한 일.** 안전 중단 → 사용자 결정(이관 완주 우선·opus 허용·SuperGrok Heavy·푸시 승인·T3 병행·2.0.1+임팩트 콘텐츠 목표) → 러너 내구성(재시도·gatefix·폴백)+마라톤 드라이버 가동(웨이브 46 자동 마감 $6.83). 우로보로스 1MB 원인(CURRENT_STATE 1.8MB) 수정 후 인터뷰 5라운드 → 시드. PR #85 → main, /design.md 라이브. 랜딩 크래프트 코덱스(5사이트 실측)·landing-integrity(LI-1~23)·omd:landing/art-director·setup/media/showcase 스킬·부채 ④·F6 최소형. 랜딩 6런 완료(landing arm 12 vh·폴드 100%), 리뷰 BLOCK 6 → 개정. T3: 검증기 재봉인, 전사 48/108, 청크 1 양 평가자 채점(α 낮음 → 재채점 대상 34).
+
+**열린 것 (15:50 갱신).** effort A/B 끝(차이 없음 → 예방 조항 효과). 랜딩 두 브리프 AC 4 충족(toss r2 BLOCK 0, stripe 오케스트레이터 실측 BLOCK 0), 최종 영상 `content-runs/landing/*/showcase/`, 사용자에게 전달. `text-contrast.mjs` 신설(#86). 2.0.1 릴리즈 준비 에이전트 가동(퍼블리시·커밋 없음). 남은 것: 청크 2·3 채점(musinsa 생산 마무리 중), 웨이브 50+, 사용자 승인(릴리즈·X/Threads).
+
+**17:10 갱신.** 웨이브 36~50 전부 마감(264/440), 51부터 10-wide. `text-contrast.mjs`(#86)로 6런 실측 → toss landing 마이크로 개정 r3 → 두 landing arm 모두 4종 검사 전부 통과, 최종 비교 페이지·영상 사용자 전달. 2.0.1 준비 커밋(f3bfd490)·PR #88 — 단, 설치본에서 도구 실행 경로가 없어 `omd check/showcase/setup detect` CLI 연결 에이전트 가동, 그 커밋 전 publish 보류.
+
+**다음.** tools-CLI 커밋 → PR 머지 → 사용자 `npm publish` → 청크 2·3 채점 → rescore → 집계·Fable 검수 → 콘텐츠 게시.
+
+## 2026-09-02 — landing/toss 개정 라운드 2 (BLOCK 6)
+
+**한 일.** `test-v2/content-runs/landing/toss/landing/render.html` BLOCK 6건만 수정(스크림·포커스 halo·muted→body·noscript). integrity PASS / FAIL 0, 12.05 vh 유지.
+
+**열린 것.** WARN 13·FYI 11은 미수정. 재리뷰는 오케스트레이터.
+
+**다음.** 디자이너 재리뷰 또는 다른 arm.
+
+## 2026-09-02 — content-run landing stripe/hallmark
+
+**한 일.** 팩 `hallmark`로 Stripe 스크롤 원페이지. 산출 `test-v2/content-runs/landing/stripe/hallmark/{render.html,assets,system.md,trace.md}`. Switchboard 컨셉, 이미지 5장, integrity PASS.
+
+**열린 것.** 비교 페이지·시연 영상은 오케스트레이터. 이 세션은 arm 실행만.
+
+**다음.** 다른 브랜드/arm 또는 비교 조립.
+
+## 2026-09-02 — content-run landing stripe/autopilot
+
+**한 일.** 팩 `omd-autopilot-v2`로 Stripe 스크롤 원페이지. 산출 `test-v2/content-runs/landing/stripe/autopilot/{render.html,assets,system.md,trace.md}`. 광학 벤치 컨셉, 이미지 5장, integrity PASS.
+
+**열린 것.** 비교 페이지·시연 영상은 오케스트레이터. 이 세션은 arm 실행만.
+
+**다음.** 다른 브랜드/arm 또는 비교 조립.
+
 ## 2026-09-02 — Fable 5.1 세션: 진단·계획 정본, 웨이브 러너, T3 Phase 4·5 도구
 
 **한 일.** `docs/OMD_PLAN_2026-09-02.md`(진단·잔여·효율·결정 대기). 웨이브 45 실측으로 4h25m의 원인 규명(층 직렬 + 손 조립) → `scripts/wave-run.mjs` 브랜드 단위 러너 + 프롬프트 정본화(worker-addendum 전문 누락 드리프트 발견). 웨이브 46 러너 실전(3-wide) · T3 체인 A/B 57칸 · 전사 3기 재가동. T3 Phase 4 도구(capture-cells·verify-cells·build-packets·validate-responses·run-scoring-session)와 Phase 5 집계기(aggregate-lane-a) 사전 작성. grok 헤드리스 이미지 입력 PASS. 전사 검증기 결함 2건(결정 ID·하이픈 arm명 탐지 누락, 펜스 안 선언 삭제 불허) 수정·재봉인(SHA `ae588ca3…`), 파일럿 전사 3건 차단→재전사. 계획 §3 완성(인벤토리·리서치 반영).

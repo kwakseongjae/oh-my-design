@@ -1,0 +1,70 @@
+Heading: System — MUSINSA 상의 카테고리 (Catalogue · Sport)
+
+Going with: audience = 상의 카테고리를 훑는 쇼핑객 · use = 컬러 필터 하나를 켜 상품 그리드를 좁힌다 · tone = utilitarian.
+
+Genre: editorial. Macrostructure: Catalogue. Theme: Sport. Nav: N12 (banner + retract). Footer: Ft1 (mast-headed). Feature: F6 product card grid (3/4, 5-up, Save). CTA: C1 outlined chip. Section head: S2 hanging. Enrichment: E8 photography inside the grid, no separate hero. Catalogue headings stay inventory-sized.
+
+Previous nav: none (first  run in this slot). This build: N12, because a commerce category has a genuine, time-bound state to announce — the applied color filter.
+
+Heading: Position
+
+The page is a visual index of tops, not a marketing landing. Every SKU is equal. The one job is: turn on a color, watch the grid shrink. First paint already has 컬러 블랙 on.
+
+Heading: Tokens
+
+Paper band: light, warm oat (hue 85). Display: condensed roman grotesk. Accent hue: warm red for sale prices and the disabled red swatch only.
+
+| Token | Value |
+| --- | --- |
+| `--color-paper` | `oklch(98.4% 0.008 85)` |
+| `--color-paper-2` | `oklch(95.6% 0.010 85)` |
+| `--color-paper-3` | `oklch(92.2% 0.012 80)` |
+| `--color-ink` | `oklch(18% 0.020 40)` |
+| `--color-ink-2` | `oklch(28% 0.018 40)` |
+| `--color-muted` | `oklch(40% 0.018 48)` |
+| `--color-accent` | `oklch(52% 0.195 28)` |
+| `--color-accent-ink` | `oklch(98.4% 0.008 85)` |
+| `--color-focus` | `oklch(46% 0.14 250)` |
+| `--color-nav` | `oklch(18% 0.020 40)` |
+| `--color-nav-ink` | `oklch(96.5% 0.010 85)` |
+| `--font-display` | Big Shoulders Display / Impact / Apple SD Gothic Neo |
+| `--font-body` | IBM Plex Sans / Pretendard Variable / Apple SD Gothic Neo |
+| `--space-*` | 4pt scale, 3xs–3xl |
+| `--size-tap` | 2.75rem (44px) |
+| `--dur-*` | Sport scale 0.7× of  micro/short/long |
+
+All colour and font declarations in `render.html` go through these names. No CDN fonts — the HTML must open with zero network. Hangul falls to the system Korean face.
+
+Heading: Type
+
+Display is condensed, roman, uppercase only on the wordmark and filter-row labels. Product names and the page title stay sentence case. Body 16px / 1.5. Tabular numerals on prices and counts. Measure capped at 65ch on lede and empty copy.
+
+Heading: Layout
+
+Sticky N12: tint+ink banner (`--color-paper-3`) over a dark bar. Banner retracts on scroll-down, returns on scroll-up, dismiss zeroes `--banner-h`. Wordmark is the text string `MUSINSA` — no official mark file.
+
+Hanging inventory head (`상의`) then three filter rows (종류 / 컬러 / 성별). Chips wrap; they never scroll the page sideways. Product grid: 2 / 2 / 4 / 5 columns at 0 / 40 / 60 / 90 rem, tracks `minmax(0, 1fr)`, cards 3:4, hairline not shadow, radius 0.
+
+Footer is one mast band: wordmark, one line, three links.
+
+Heading: Interaction
+
+Filter chips and icon buttons implement default, hover, focus-visible, active, disabled, loading, error, success. Focus ring is instant (`:focus-visible`, 2px `--color-focus`, no fade). Save is optimistic and silent. 레드 is disabled (zero items in this local set). 니트 with no matches shows an empty state plus “필터 지우기”.
+
+First render: 컬러 = 블랙. Visible count is the local remaining cards, not a fabricated catalogue total.
+
+Heading: Imagery
+
+`image.jpg` is the generated representative still: a black cotton crewneck, studio, no mark. It is the first card when 블랙 is on. Other cards use snapshot stills stored next to the HTML so the file opens offline.
+
+Heading: Copy rules used
+
+No invented conversion stats, no “350,441개” after a filter, no official logo, no extra screens (PDP/checkout). Product names, prices, likes, and ratings that appear are taken from the 2026-08-22T19-50-15-466Z evidence; missing prices are omitted.
+
+Heading: Motion
+
+Catalogue is motion-cut. Allowed: banner translateY, chip/button press, optional 1.02 image scale on fine hover. `prefers-reduced-motion: reduce` collapses durations to 150ms.
+
+Heading: Offline contract
+
+`render.html` requests only same-directory files (`image.jpg`, `goods-*.png`). CSS reset zeroes `figure`, `blockquote`, `ul`, `ol` margins. `html` and `body` use `overflow-x: clip`.

@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "naver",
+  "arm": "omd",
+  "rep": 3,
+  "source": "test-v2/03-runs/lane-a/naver/omd/rep-3/render.html",
+  "sourceSha": "sha256:84771247a4d6377637f887b5d526e51bdc38914c38e8adc6fbebf6c3813c9bf9",
+  "capturedAt": "2026-09-02T10:35:19.786Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:5217fd007dec43244c8650d8577e39112be3b9b88e6470bdf3041f1402700b97",
+      "bytes": 205530,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:990af2b2d4fe37bbb8dfe3cf624596b2c7e4ce46f5373f50f2ec71b28b05a991",
+      "bytes": 98033,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

@@ -1,0 +1,63 @@
+Heading: wanted 채용 목록 —  system
+
+Genre: editorial. Macrostructure: Catalogue. Theme: Newsprint.
+Tone: utilitarian. Audience: job seekers. Job: apply a filter, then open one listing.
+
+This is a single inventory surface. No second route, no marketing sections, no invented proof numbers.
+
+Heading: Axes
+
+- Paper band: light, warm sheet (`--color-paper: oklch(97.2% 0.014 85)`). Not `#fff`.
+- Display style: roman-serif. Headings stay `font-style: normal`.
+- Accent hue: warm brick (`--color-accent: oklch(46% 0.145 32)`), kept under a few percent of the viewport.
+
+Newsprint duration scale is 0×. Colour and structure change; nothing eases, lifts, or fades.
+
+Heading: Type
+
+Two families, no webfont request (the first render is offline).
+
+- Display: `--font-display` → Iowan Old Style / Palatino / Apple Myungjo / Nanum Myeongjo.
+- Body: `--font-body` → Avenir Next / Hiragino Sans / Apple SD Gothic Neo / Noto Sans KR.
+
+Wordmark is the display face, roman, lowercase `wanted`. No official mark, no SVG logo.
+
+Scale is a major-third from 16px. Display on this page is inventory-sized (`clamp(1.5rem, 2.4vw, 2rem)`), not a fold-filling hero. Catalogue forbids a big display statement above the grid.
+
+Heading: Colour
+
+All values live in `:root` and are referenced as `var(--token)`. Surfaces, ink, rules, accent, focus, error, success, and twelve card plates. Accent-ink is the text colour on an accent fill. Focus ring is a darker brick so it still reads on the accent and on paper.
+
+Greys are hue-tinted toward 55–85°, never zero-chroma.
+
+Heading: Layout
+
+4pt spacing scale (`--space-3xs` … `--space-3xl`). Page gutter `clamp(1rem, 4vw, 4.5rem)`. Root `overflow-x: clip` on `html` and `body`.
+
+Grid is the inventory: 2 columns at the phone, 3 from 60rem, 4 from 90rem. Image tracks use `minmax(0, 1fr)`. Cards are uniform (F6, landscape 4/3, 4-up, micro-action Save). One container signal: rounded media, no card shadow.
+
+Heading: Chrome
+
+- Nav N6: issue line, centred-then-left wordmark, double rule, six destinations from the captured listing. `채용` is current. Other labels stay on this page.
+- Footer Ft1: wordmark, “채용 정보”, two text links.
+- Phone-only tab bar: 채용 / 교육·이벤트 / 소셜 / MY 원티드. Same page.
+
+Heading: Components and states
+
+Primary `.btn` ships default, hover, focus-visible, active, disabled, loading, error, success. Focus ring is instant (3px `--color-focus`, 2px offset). Hit targets are 44px. Filter chips are rectangular hairline, not gradient pills.
+
+Native `<select>` for 직군 / 경력. Search filters title and company. Sort buttons change order without fabricating scores. Extra chips from the captured toolbar are present; only `한국` maps to a known field (`data-region=kr`). Other chips have no listing attribute, so they empty the grid rather than invent a match.
+
+Opening a card uses `<dialog>`. Contents are only fields present in the evidence: title, company, location/experience, 합격보상금 when that overlay was on the capture. Missing fields render as `—`. Bookmark is optimistic and silent.
+
+Heading: Imagery
+
+First card uses the generated still `image.jpg` (education-lounge interior, no type, no logo). Remaining covers are CSS plates tokenised from the capture palettes — placeholders, not stock photographs. Official brand artwork is not used.
+
+Heading: Copy
+
+Labels follow the capture: 직군 전체, 경력 전체, 최신순 / 추천순 / 인기순, 회원가입/로그인, 기업 서비스. Empty state names the gap and offers 필터 지우기. No “click here”, no invented headcount or conversion stats. Listing count is the number of cards on this page.
+
+Heading: Responsive floor
+
+Checked intent: 320 / 375 / 414 / 768. Nav links and buttons are `white-space: nowrap`; the row collapses to a sheet instead of wrapping labels. Display titles use `overflow-wrap: anywhere; min-width: 0`. Reduced-motion is a no-op here because Newsprint already ships without spatial motion.

@@ -17,6 +17,10 @@
  *
  *   node scripts/check-mirror-drift.mjs           # compare, exit 1 on drift
  *   node scripts/check-mirror-drift.mjs --fix     # copy canonical → mirror
+ *
+ * A second, unrelated duplication lives in the skill trees — see SKILL_TREES
+ * below. That one is never auto-fixed: a skill body is prose someone wrote,
+ * and copying over it silently is how an edit disappears.
  */
 
 import { createHash } from "node:crypto";
@@ -50,6 +54,156 @@ const FILE_PAIRS = [
   { canonical: join(ROOT, "DESIGN.md"), mirror: join(ROOT, "web", "public", "design.md"), label: "DESIGN.md ↔ web/public/design.md" },
 ];
 
+/* ────────────────────────────────────────────────────────────────────────────
+ * SKILL_TREES — the same duplication problem, one layer up.
+ *
+ * A skill exists three times: `skills/<name>/SKILL.md` is the npm source, and
+ * `omd install-skills` writes two mirrors — `.claude/skills/` (Claude Code) and
+ * `.agents/skills/` (Codex). The mirrors are checked in so the repo dogfoods
+ * its own skills, which means a hand edit to a mirror is invisible until the
+ * next install silently reverts it, and a hand edit to the source never
+ * reaches the session actually running.
+ *
+ * The installer makes exactly two legitimate changes (src/cli/install-skills.ts):
+ *   1. renderSkillForChannel() rewrites the frontmatter `name:` from the folder
+ *      name to its namespaced form — `omd-apply` → `omd:apply`. Folders without
+ *      the `omd-` prefix (claude-design) keep their name.
+ *   2. withManagedMarker() inserts MANAGED_HEADER after the frontmatter block.
+ * Both are normalised away here. Anything left is real drift.
+ *
+ * Report-only, including under --fix. Reference DESIGN.md files are generated
+ * artifacts; skill bodies are not.
+ * ──────────────────────────────────────────────────────────────────────────── */
+
+const SKILL_SOURCE = join(ROOT, "skills");
+const SKILL_MIRRORS = [
+  { label: ".claude/skills", dir: join(ROOT, ".claude", "skills") },
+  { label: ".agents/skills", dir: join(ROOT, ".agents", "skills") },
+];
+
+/** Skills that live in a mirror with no `skills/` source, on purpose.
+ *  Repo-local tooling and Core-v2 write gates: they are not shipped to npm and
+ *  must not be, so their absence from `skills/` is the correct state, not drift.
+ *  Anything appearing in a mirror that is NOT on this list is an orphan — either
+ *  a skill someone forgot to add to `skills/`, or a leftover from a rename. */
+const MIRROR_ONLY_SKILLS = new Set([
+  "google-analytics",          // repo-local GA4 analysis, not a product skill
+  "omd",                       // legacy `omd` invocation router
+  "omd-add-reference",         // Core v2 write gate
+  "omd-batch-launch",          // Core v2 write gate
+  "omd-component-harvest",     // Core v2 write gate
+  "omd-lab-01-designmd-impact",// archived Lab #01 gate
+  "omd-migrate",               // Core v2 write gate
+  "omd-release-hygiene",       // repo-local release checklist
+  "omd-token-backfill",        // Core v2 write gate
+]);
+
+const MANAGED_HEADER =
+  "<!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->";
+const FRONTMATTER = /^(---\r?\n[\s\S]*?\r?\n---\r?\n)([\s\S]*)$/;
+
+/** Mirror of renderSkillForChannel() + withManagedMarker() for the two folder
+ *  channels. Both keep the namespaced `omd:` name; only opencode/cursor use the
+ *  portable hyphen form, and neither is checked into this repo. */
+function expectedMirror(src, folderName) {
+  const installedName = folderName.replace(/^omd-/, "omd:");
+  const named = src.replace(/^name:\s*[^\r\n]+$/m, `name: ${installedName}`);
+  const fm = FRONTMATTER.exec(named);
+  return fm ? fm[1] + MANAGED_HEADER + "\n\n" + fm[2] : MANAGED_HEADER + "\n\n" + named;
+}
+
+/** Everything the installer does not touch: frontmatter and the managed marker
+ *  removed, leading blank lines collapsed. Two files with the same body differ
+ *  only in the header, which is the installer's business, not a person's. */
+function skillBody(text) {
+  const fm = FRONTMATTER.exec(text);
+  const rest = (fm ? fm[2] : text).replace(/^<!--\s*omd:installed-skill[\s\S]*?-->\r?\n/, "");
+  return rest.replace(/^\s+/, "");
+}
+
+/** Symlinks count: `.claude/skills/google-analytics` is a link into
+ *  `.agents/skills/`, and a tree that hides it would report a skill as absent
+ *  from a channel that in fact loads it. */
+function listSkillDirs(dir) {
+  if (!existsSync(dir)) return [];
+  return readdirSync(dir, { withFileTypes: true })
+    .filter((e) => (e.isDirectory() || e.isSymbolicLink()) && existsSync(join(dir, e.name, "SKILL.md")))
+    .map((e) => e.name)
+    .sort();
+}
+
+/**
+ * Two severities, deliberately separated.
+ *
+ * `problems` fail the run: a body that diverged, or a source skill that never
+ * reached a mirror. Both mean the skill someone runs is not the skill someone
+ * edited, and both have an unambiguous fix (reinstall, or port the edit).
+ *
+ * `notes` do not: a header the current installer would write differently, and a
+ * mirror-only skill absent from MIRROR_ONLY_SKILLS. Neither changes what a skill
+ * does, and the fix for each is a judgement call — is this skill meant to ship,
+ * or meant to stay local? A person decides that; a red pre-commit does not.
+ */
+function checkSkillTrees() {
+  const sources = listSkillDirs(SKILL_SOURCE);
+  const rows = {};
+  const problems = [];
+  const notes = [];
+
+  for (const skill of sources) {
+    const src = readFileSync(join(SKILL_SOURCE, skill, "SKILL.md"), "utf8");
+    const expected = expectedMirror(src, skill);
+    rows[skill] = {};
+    for (const { label, dir } of SKILL_MIRRORS) {
+      const path = join(dir, skill, "SKILL.md");
+      if (!existsSync(path)) {
+        rows[skill][label] = "missing-in-tree";
+        problems.push({ skill, tree: label, status: "missing-in-tree" });
+        continue;
+      }
+      const actual = readFileSync(path, "utf8");
+      if (actual === expected) {
+        rows[skill][label] = "identical";
+        continue;
+      }
+      const want = skillBody(expected).split("\n");
+      const got = skillBody(actual).split("\n");
+      if (want.join("\n") === got.join("\n")) {
+        // Body matches; only the installer-owned header differs. Worth naming
+        // (the mirror was not produced by the current installer) but not fatal.
+        rows[skill][label] = "header-only";
+        notes.push({ skill, tree: label, status: "header-only" });
+        continue;
+      }
+      let i = 0;
+      while (i < Math.max(want.length, got.length) && want[i] === got[i]) i++;
+      rows[skill][label] = `BODY DRIFT (line ${i + 1})`;
+      problems.push({
+        skill,
+        tree: label,
+        status: "BODY DRIFT",
+        line: i + 1,
+        source: (want[i] ?? "<end of file>").slice(0, 160),
+        mirror: (got[i] ?? "<end of file>").slice(0, 160),
+      });
+    }
+  }
+
+  const known = new Set(sources);
+  const orphans = [];
+  for (const { label, dir } of SKILL_MIRRORS) {
+    for (const skill of listSkillDirs(dir)) {
+      if (known.has(skill) || MIRROR_ONLY_SKILLS.has(skill)) continue;
+      orphans.push({ skill, tree: label });
+      notes.push({ skill, tree: label, status: "orphan-in-mirror" });
+    }
+  }
+
+  return { sources: sources.length, rows, problems, notes, orphans };
+}
+
+const skillTrees = checkSkillTrees();
+
 const canonFiles = new Set(walk(CANONICAL));
 const mirrorFiles = new Set(walk(MIRROR));
 
@@ -78,6 +232,10 @@ if (process.argv.includes("--fix")) {
     fixed: onlyCanonical.length + differing.length + pairDrift.length,
     onlyMirror: onlyMirror.length,
     note: onlyMirror.length ? "mirror-only files left in place — inspect them by hand" : "in sync",
+    skillTrees: skillTrees.problems.length
+      ? `${skillTrees.problems.length} skill-tree problem(s) NOT fixed — --fix never rewrites a skill body; rerun without --fix`
+      : "in sync",
+    skillTreeNotes: skillTrees.notes,
   }, null, 1));
   process.exit(0);
 }
@@ -90,5 +248,12 @@ console.log(JSON.stringify({
   onlyCanonical: onlyCanonical.slice(0, 10),
   onlyMirror: onlyMirror.slice(0, 10),
   filePairs: pairDrift.map((p) => p.label + " drifted"),
+  skillTrees: {
+    sources: `skills/ (${skillTrees.sources} skills) → .claude/skills + .agents/skills`,
+    problems: skillTrees.problems.length,
+    perSkill: skillTrees.rows,
+    detail: skillTrees.problems,
+    notes: skillTrees.notes,
+  },
 }, null, 1));
-process.exit(drifted ? 1 : 0);
+process.exit(drifted || skillTrees.problems.length ? 1 : 0);

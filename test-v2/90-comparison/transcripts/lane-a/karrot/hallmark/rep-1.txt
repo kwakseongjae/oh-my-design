@@ -1,0 +1,81 @@
+Heading: 당근 검색 결과 —  system
+
+ v1.1.0 · genre **playful** · theme **Hum** · macrostructure **Catalogue**.
+
+Going with: audience = 근처에서 중고 노트북을 고르는 사람 · use = 검색 결과에서 매물 카드 하나를 열어 상세로 이동 · tone = utilitarian.
+
+Nav **N13** (검색이 이 화면의 주 행동이라 슬랩 대신 검색 필). Footer **Ft5**. 공식 로고 원본은 쓰지 않고 텍스트 워드마크 `당근`만 둔다.
+
+이 문서는 `render.html`에 잠긴 토큰을 구현 언어로 옮기기 위한 설명이다. 값은 모두 `:root` 이름을 따른다. 런타임 네트워크 요청은 없다.
+
+Heading: Preview
+
+- **Macrostructure** · Catalogue
+- **Theme** · Hum (cream paper · multi pear / cyan / coral · rounded-sans)
+- **Enrichment** · first-card generated still (`image.jpg`) · remaining cards CSS shots
+- **Sections** · N13 search bar · related chips · filter rail + product grid · listing detail (`:target`) · Ft5
+- **Motion** · button press · character pulse · star-burst on open · reduced-motion collapse
+- **Slop test** · 58 / 58 (post-build)
+
+Heading: Tokens
+
+Paper is cream, not white. Ink is cool-tinted, not `#000`. Accent is split by surface: pear = primary press, cyan = links / focus, coral = the wordmark (the one high-energy moment).
+
+| Token | Role |
+| --- | --- |
+| `--color-paper` | page ground |
+| `--color-paper-2` / `--color-paper-3` | bands, hover fills |
+| `--color-ink` / `--color-ink-2` / `--color-muted` | text ladder |
+| `--color-rule` / `--color-rule-2` | hairlines |
+| `--color-accent` / `--color-accent-deep` / `--color-accent-ink` | pear CTA |
+| `--color-accent-2` / `--color-accent-2-ink` | cyan, focus, chips |
+| `--color-accent-3` / `--color-accent-3-ink` | coral wordmark |
+| `--color-mint` / `--color-lavender` | occasional card tints |
+| `--color-focus` / `--color-error` / `--color-success` | states |
+| `--font-display` / `--font-body` | Plus Jakarta Sans + CJK fallback (`Apple SD Gothic Neo`) |
+| `--font-label` | JetBrains Mono, uppercase labels only |
+| `--space-3xs` … `--space-3xl` | 4pt scale |
+| `--text-xs` … `--text-2xl` | 1.25 ratio from 16px |
+| `--radius-card` 20px · `--radius-pill` 999px · `--radius-input` 12px |
+| `--ease-out` / `--ease-in` / `--ease-in-out` / `--ease-press` | named easings |
+| `--dur-micro` 120ms · `--dur-short` 220ms · `--dur-long` 420ms |
+| `--z-base` … `--z-toast` | six-level stack |
+| `--page-max` / `--page-gutter` / `--banner-height` | shell |
+
+Every colour and `font-family` in the page references a named token. Hangul is not in Plus Jakarta Sans; the CJK fallback is local-only (`Apple SD Gothic Neo`, `Nanum Gothic`). Latin/number display is the embedded woff2.
+
+Heading: Type
+
+Display and body share Plus Jakarta Sans. Headings are roman, weight 700, tracking `-0.025em`. Prices use `tabular-nums`. Mono is reserved for the `연관` label. Inventory title is Catalogue-sized (`clamp(1.5rem, 2vw + 1rem, 2rem)`), not a marketing display. Display headers wrap with `overflow-wrap: anywhere; min-width: 0`.
+
+Heading: Layout
+
+Left-biased Catalogue: filter rail, then a uniform product grid. Desktop (`60rem+`) is `14rem + minmax(0, 1fr)` with **4** `minmax(0, 1fr)` image tracks. Below that, 2 tracks. No `1fr` without `minmax(0, …)`. No `100vw`. `html` and `body` use `overflow-x: clip`.
+
+Related chips are a horizontal scroller inside the shell — the one off-grid moment. Detail is a 1-col stack on small screens and a 2-col photo / copy split from `40rem`.
+
+Heading: Components
+
+**N13 search pill.** Wordmark + in-place search (query `노트북`) + ⌘K focus. Scope `중고거래` opens the same menu as the hamburger. This is not a second screen.
+
+**F6 product cards.** Image · name · price · neighborhood/time. Card-internal link is the only CTA. First card uses `image.jpg` (LCP, `fetchpriority="high"`). Other cards are CSS laptop shots, not invented stock photos.
+
+**Filters.** Location, available-only checkbox, category radios in normal flow (no absolute radios).
+
+**Detail.** Hash `#listing-n` reveals that article via `:target` and hides `#results-view`. Back is `#results-view`. No extra routes.
+
+**Ft5.** One closing line: `근처에서 먼저 고른다.` No sitemap columns.
+
+Heading: Interaction
+
+Buttons follow Hum’s press system (edge shadow, down on `:active`). Cards tint on hover; press is `translateY(1px)`. Every control has default / hover / `:focus-visible` / `:active` / disabled. Location `현 위치로 설정` also has loading then success. Search pill has error/success data-states. Focus rings are instant, 3px cyan, never animated in.
+
+Opening a card fires a one-shot coral star-burst at the pointer. `prefers-reduced-motion: reduce` kills pulse, burst, and spatial hover.
+
+Heading: Image
+
+`image.jpg` is the representative listing still for the first card and its detail: a used black gaming laptop on a pale desk, sunset-on-water wallpaper, cyan keyboard, handheld listing crop. Square 1024. Generated on lane A (Grok Imagine). See `trace.md`.
+
+Heading: Copy
+
+Listing titles, prices, and `천호동 · 끌올 …` strings are taken from the snapshot. No invented counts, testimonials, or seller essays.

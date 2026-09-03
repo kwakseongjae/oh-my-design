@@ -1,0 +1,193 @@
+Heading: Toss Home Design System
+
+이 문서는 스냅샷 `2026-08-22T19-51-46-001Z`의 홈(`https://toss.im/`)과 과업 「상단 내비에서 서비스 하나를 선택해 이동한다」만 다룬다. 스냅샷에 없는 값은 비운다.
+
+Heading: Philosophy
+
+한 화면에 메시지 하나, 상단에 이동 하나. 커버 사진이 접힌 면을 맡고 크롬은 얇게 둔다. 아래를 채우려고 스냅샷에 없는 상품 격자·수치·후기를 만들지 않는 대신, 접힌 면의 위계와 내비 도달을 지킨다.
+
+희생: 아래 접힘의 캠페인 섹션, 서비스 하위 목록, 스토어 URL. 얻는 것: 홈 첫 렌더와 내비 과업이 같은 토큰으로 닫힌다.
+
+원칙 세 가지.
+
+1. **커버가 면이고 악센트는 신호다.** 사진이 접힌 면의 거의 전부다. 로고 점 하나와 현재 내비 표시만 악센트로 쓴다. 카드 면색으로 악센트를 넓히지 않는다.
+2. **스냅샷에 없는 값은 비운다.** 하위 서비스 이름, 스토어 주소, 헤더 computed 배경, 커버 모서리 px처럼 측정되지 않은 칸은 비우거나 정직한 부재로 남긴다. 추정 수치로 채우지 않는다.
+3. **한글은 고딕 위계로만 키운다.** 관측 패밀리 Toss Product Sans OTF는 이 오프라인 렌더에 실리지 않는다. 디스플레이는 크기·무게로만 구분하고, 본문은 keep-all과 느슨한 행간을 쓴다.
+
+Heading: Derive
+
+| ID | 칸 | 결정 | 근거 |
+|---|---|---|---|
+|  | 레이아웃 문법 | 커버 히어로(단일 미디어 플레이트 + 하단 오버레이 헤드라인). 캐러셀·벤토·매거진 금지. | 데스크톱 뷰포트는 헤더+사진 한 장. 이미지 1장이라 GS6 캐러셀/벤토/매거진 최소 컷을 못 채움. 프리셋 P-ED-03의 반복 컷도 없음 → no-preset: cover-hero. |
+|  | 정보 밀도 | 홈 접힌 면에 내비 5항, 로케일 1값, 앱 다운로드 1, 헤드라인 1. 아래 접힘·KPI 없음. | 뷰포트에 보이는 크롬과 헤드라인만 증거. 수치·후기·가격 카테고리는 증거 없음 → 정직 부재. |
+|  | 모서리·표면 장르 | 한 장르: 근백색 종이 위 큰 라운드 미디어 플레이트. 카드 타일·헤어라인 밴드 없음. 컨트롤 라운드 12px. 미디어 라운드 측정 실패 → 숫자 비움, 시각만 큰 라운드. | `primaryButton.radiusPx` 12. 커버 코너 px는 하늘이 종이와 붙어 측정 실패. 17px류 발명 금지(G24). |
+|  | 그림자·엘리베이션 | 그림자 없음. 호버는 면색 전환, 선택은 2px 하단 룰. | 캡처 크롬에 box-shadow 없음. 드롭다운·모달 elevation 미관측. |
+|  | 색 밀도·악센트 | 종이 `#fdfdfe`, 잉크 `#010204` / UI 잉크 `#333840`, 틴트 `#e5ebf2` `#eaeef5` `#f3f5fa`, 칩 `#f2f3f6`, 마크 `#0076FF`. 악센트는 로고·포커스·현재 표시만. | 데스크톱 `pageBackgroundRendered.hex` `#fdfdfe`. 이미지 팔레트 `#e5ebf2` `#eaeef5` `#f3f5fa` `#010204`. 버튼 글자·내비 샘플 `#333840`. 칩 샘플 `#f2f3f6`. 로고 미디안 `(0,118,255)`. computed 버튼 배경 `#07194c`는 뷰포트 밝은 칩과 충돌·대비율 실패라 채움으로 쓰지 않음. |
+|  | 타이포 위계 | 디스플레이 80/700/96px(데스크톱) · 40/700/46px(모바일). 본문·컨트롤 16/400–500/25.6px. 헤드라인 자간 normal. 패밀리 실측명 기록, 렌더는 한글 고딕 스택. | `typeScale` h2/p/button. 모바일 h2 40/46. 네트워크 폰트 없음. |
+|  | 모션 | UI는 120 / 200 / 320ms, enter/exit 각 1곡선. transform·opacity만. 커버 영상 4.05s 루프는 이 정적 렌더에 넣지 않음. | 스냅샷 `motion.duration` 4.05, `cutCount` 0, `autoplay` true는 영상 도메인. 정적 첫 렌더는 사진 한 장. UI 이징은 증거 없음 → 시스템 기본 스케일. |
+|  | 카피 보이스 | 화면 문구는 캡처에 보이는 것만. 구현 어휘 금지. 부재는 푸터 한 줄 + 도착 면의 한 문장. | 헤드라인 「금융부터 일상까지 마침내 토스 하나로」, 내비 다섯, `KOR`, 「앱 다운로드」, 타이틀 「토스」. |
+
+Heading: Experience
+
+- **Scope.** 공식 홈 첫 화면과 상단 내비 이동. 스냅샷 handle `2026-08-22T19-51-46-001Z`. 표면 desktop-1440(1440×900) · mobile-390(390×844).
+- **Primary task.** 상단 내비에서 서비스 하나를 선택해 이동한다. 데스크톱은 인라인 「서비스」 활성화, 모바일은 메뉴 공개 후 같은 이름 활성화. 키보드: Tab으로 해당 컨트롤, Enter/Space로 연다.
+- **Audience.** 스냅샷에 페르소나 없음. 비움.
+- **Direction.** 커버 사진 + 얇은 크롬. 과업은 내비이지 앱 다운로드가 아니다. 앱 다운로드는 헤더의 유일한 채움 컨트롤로 두되 스토어 URL은 없다.
+- **Honesty.** 서비스 하위 항목, 스토어 주소, 가격·횟수·후기는 이 스냅샷에 없다. 도착 면에서 그 부재를 이름으로 말한다.
+
+Heading: Foundations
+
+Foreground/background는 쌍으로만 쓴다.
+
+| 토큰 | 값 | 쌍 | 출처 |
+|---|---|---|---|
+| `--color-paper` | `#fdfdfe` | `--color-ink` | desktop `pageBackgroundRendered.hex` |
+| `--color-paper-mobile` | `#fefefe` | `--color-ink` | mobile `pageBackgroundRendered.hex` |
+| `--color-ink` | `#010204` | `--color-paper` | desktop imagery palette, luma 0.008. 순수 `#000000`은 `bodyColor`로 관측됐으나 베이스로 쓰지 않음. |
+| `--color-ink-ui` | `#333840` | `--color-chip` / `--color-paper` | `primaryButton.color`, 내비 픽셀 |
+| `--color-on-hero` | `#ffffff` | 사진 위 | typeScale h2/p `color` |
+| `--color-chip` | `#f2f3f6` | `--color-ink-ui` | 뷰포트 「앱 다운로드」 채움 샘플 |
+| `--color-tint` | `#e5ebf2` | — | imagery palette coverage 0.0494 |
+| `--color-tint-2` | `#eaeef5` | — | imagery palette coverage 0.0414 |
+| `--color-tint-3` | `#f3f5fa` | — | imagery palette coverage 0.0372 |
+| `--color-mark` | `#0076FF` | `--color-paper` | 뷰포트 로고 포화 픽셀 미디안 (0,118,255) |
+
+`chrome.primaryButton.background` `#07194c`는 기록만 한다. 뷰포트는 밝은 칩이고 글자 `#333840`과 붙이면 대비가 성립하지 않아 채움으로 채택하지 않는다.
+
+간격(4pt, 역할명). 컨트롤 패딩을 넘어 섹션 공기도 둔다.
+
+| 토큰 | 값 | 역할 |
+|---|---|---|
+| `--space-1` | 4px | 미세 |
+| `--space-2` | 8px | 아이콘-글자 |
+| `--space-3` | 12px | 컨트롤 안 |
+| `--space-4` | 16px | 거터·베이스. 캡처 좌우 거터 ≈16 CSS px |
+| `--space-5` | 24px | 컨트롤 가로 |
+| `--space-6` | 32px | 섹션 작은 숨 |
+| `--space-section` | 2.5rem | 섹션 전환 |
+| `--space-section-lg` | 4rem | 도착 면 상단 |
+| `--space-section-xl` | 6rem | 도착 면 여백 |
+| `--space-gutter` | `clamp(16px, 4vw, 40px)` | 뷰포트 거터 |
+
+형태.
+
+| 토큰 | 값 | 역할 |
+|---|---|---|
+| `--radius-control` | 12px | 앱 다운로드, 로케일 트리거 (`radiusPx` 12) |
+| `--radius-media` | 32px | 커버 코너 px는 미측정. 4pt 스케일 `space-6`과 같은 32를 agent-proposed로 씀. 측정값이라고 부르지 않음. |
+| `--header-h` | 64px | desktop `header.heightPx` |
+| `--header-h-m` | 56px | mobile `header.heightPx` |
+
+엘리베이션: rest/hover/selected는 면색과 2px 룰. 그림자 토큰 없음.
+
+모션.
+
+| 토큰 | 값 |
+|---|---|
+| `--motion-fast` | 120ms |
+| `--motion-base` | 200ms |
+| `--motion-slow` | 320ms |
+| `--ease-enter` | cubic-bezier(0.2, 0, 0, 1) |
+| `--ease-exit` | cubic-bezier(0.4, 0, 1, 1) |
+
+`prefers-reduced-motion: reduce`에서 duration 0. 레이아웃 속성·`transition: all` 금지.
+
+Heading: Typography & Assets
+
+관측 패밀리: Toss Product Sans OTF (h2/p/button). 라이선스·파일 없음. 이 렌더에서 로드하지 않는다. 대타를 그 이름으로 부르지 않는다.
+
+렌더 스택(한글 커버, 패밀리 ≤3): `"Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif`.
+
+| 역할 | 크기 | 무게 | 행간 | 자간 | 색 | 출처 |
+|---|---:|---:|---|---|---|---|
+| Display | 80px | 700 | 96px | normal | `--color-on-hero` | desktop typeScale h2 |
+| Display mobile | 40px | 700 | 46px | normal | `--color-on-hero` | mobile typeScale h2 |
+| Body / 컨트롤 | 16px | 400 / 500 | 25.6px | p는 -0.32px 관측, 한글 본문은 -0.01em 바닥 | 히어로 위 `#ffffff`, 크롬 `#333840` | typeScale p/button |
+| Label | 12px | 500 | 1.6 | 0.08em | `--color-ink-ui` | 시스템 라벨 역할(증거 캡션 스케일 없음). 화면 라벨에는 올캡스 한글을 쓰지 않음. |
+
+`word-break: keep-all`. 디스플레이 `overflow-wrap: anywhere; min-width: 0`. 본문 행간 1.6–1.8.
+
+이미지: 이 런의 `image.jpg`(16:9, 1280×720). 프롬프트는 데스크톱 imagery 팔레트·meanLuma 0.652·dynamicRange 0.951·luminanceGradient brighter left·aspect 1.778을 인용했다. 글자·로고·워드마크를 넣지 않았다. 피사체는 스냅샷 인물이 아니다. `width`/`height` 명시. 히어로는 LCP라 lazy 없음.
+
+로고: 캡처의 물방울 마크를 인라인 SVG로 재현. 공식 SVG 파일을 쓰지 않음. 색은 `--color-mark`.
+
+아이콘: 메뉴·캐럿만 인라인 SVG, 한 스트로크. 이모지 없음.
+
+Heading: Components & States
+
+프리셋: 커버는 no-preset: cover-hero (P-ED-03은 반복 컷 필요). 로케일은 P-FN-01. 라우트 포커스는 P-FN-02. 도착 부재는 P-FN-05. 크래프트 바닥 C1–C10, C17–C23, C31–C32.
+
+Heading: Wordmark
+
+해부: 마크 22px + 워드마크 `toss`. 홈으로 이동. 장식 마크는 `aria-hidden`.
+
+Heading: Global nav
+
+해부: 데스크톱 인라인 5링크 — 서비스, 비즈니스, 회사소개, 뉴스룸, 채용. 모바일은 헤더 메뉴 버튼이 같은 5항을 공개(한 `nav`, disclosure collapse). 현재 페이지 `aria-current="page"` + 2px 하단 룰.
+
+| 상태 | 적용 | 이유 |
+|---|---|---|
+| default | applicable | 링크 |
+| hover | applicable | 틴트 면 |
+| focus-visible | applicable | 즉시 링 |
+| active | applicable | 눌림 면 |
+| disabled | not-applicable | 스냅샷에 비활성 내비 없음 |
+| loading | not-applicable | 로컬 해시 이동 |
+| error | not-applicable | 내비에 검증 없음 |
+
+히트 ≥44×44. 라벨 한 줄(G49). 호버는 면색, 현재는 룰(G8).
+
+Heading: Locale listbox (P-FN-01)
+
+관측 값 `KOR` 하나. 트리거 + `role="listbox"`. 옵션 추가 금지. Escape는 값 유지 취소, Enter/Space/Tab 커밋, `aria-activedescendant`.
+
+일곱 상태: default/hover/focus-visible/active/disabled(열림이 아닌 트리거 enabled)/loading NA/error NA.
+
+Heading: Primary control 「앱 다운로드」
+
+유일한 `data-cta="primary"`. 채움 `--color-chip`, 글자 `--color-ink-ui`, 라운드 12, 16/500. 스토어 URL 없음. 누르면 부재를 `role="status"`로 알린다. 모바일 접힌 면에는 없음(`primaryButton: null`, `buttonCandidatesAboveFold: 0`) — 메뉴 안에만 둔다.
+
+| 상태 | 적용 |
+|---|---|
+| default | applicable |
+| hover | applicable (칩보다 한 단계 틴트) |
+| focus-visible | applicable |
+| active | applicable (pressed scale 토큰) |
+| disabled | not-applicable (스냅샷 버튼은 활성) |
+| loading | not-applicable |
+| error | not-applicable |
+
+Heading: Cover hero
+
+해부: 거터 안 미디어 플레이트, `img` object-fit cover, 하단 오버레이 디스플레이 한 줄(데스크톱 세 덩이) / 세 줄(모바일). 센터 스택 금지.
+
+상태: 비인터랙티브. default만. focus-visible 없음(사진). 에러/성공 표시 없음.
+
+Heading: Destination region (P-FN-05)
+
+해부: 큰 제목(선택한 내비 이름) + 부재 문장 한 줄 + 상태 알림. 하위 서비스 목록을 만들지 않음.
+
+Heading: Layout & Platforms
+
+- **문법.** 홈: 커버 히어로. 도착: 중앙 max 웰(~40자 CJK). 초광폭에서 플레이트를 무한 스트레치하지 않고 거터를 유지(C32 중앙 max).
+- **우선.** 1440에서 인라인 내비 + 커버 한 장. 390에서 메뉴 공개 + 커버 세로 스택 헤드라인. 320·200% 리플로우에서 가로 문서 스크롤 없음(`overflow-x: clip`).
+- **터치.** 내비·메뉴·앱 다운로드·로케일 ≥44px.
+- **오버플로.** 헤드라인 `min-width: 0`. 이미지 그리드 없음.
+- **플랫폼.** 웹만. 네이티브 앱 화면은 이 스냅샷에 없음.
+
+Heading: Content & Locales
+
+- **Voice.** 짧은 한국어. 캡처 문구만. 소리 내어 읽히는 헤드라인.
+- **Terminology.** 서비스 / 비즈니스 / 회사소개 / 뉴스룸 / 채용 / 앱 다운로드 / KOR / 토스.
+- **Locale.** `ko-KR`. `<html lang="ko">`. 로케일 전환 대상 없음(관측 값 하나).
+- **Formatting.** 횟수·가격 없음. 있으면 천 단위 + 단위 뒤.
+- **Expansion.** 한글 줄바꿈 keep-all. 내비 라벨은 접지 않음.
+- **Forbidden on screen.** 파일명, 필드명, 프레임워크 말.
+
+Heading: Governance
+
+- **Authority.** prompt-fact(과업·화면·스냅샷) > repository-fact(evidence.json·뷰포트 픽셀) > agent-proposed(UI 모션 스케일, 한글 렌더 스택) > unresolved(비움).
+- **Unknown-absence.** 가장 작은 칸에서 생략. 헤더 computed 배경 null, 커버 코너 px, 서비스 하위, 스토어 URL, 페르소나.
+- **Exceptions.** computed `#07194c` 버튼 채움은 뷰포트와 충돌해 미적용. `bodyColor` `#000000`은 베이스가 아니라 관측값.
+- **Extension.** 이 문서는 홈 한 화면. 새 토큰은 Derive 표를 연장한 뒤에만.
+- **Unresolved.** Toss Product Sans 실사용, 서비스 하위 이름, 헤더 배경 computed, 커버 radius px, 앱 스토어 주소.

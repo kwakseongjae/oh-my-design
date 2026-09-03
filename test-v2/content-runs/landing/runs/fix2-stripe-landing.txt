@@ -1,0 +1,11 @@
+너는 랜딩 콘텐츠 런의 arm 실행자다. arm = **landing**, 브랜드 = **stripe**. 이번 과업은 **마이크로 개정(라운드 3)** — 한 가지만 고친다.
+
+대상: test-v2/content-runs/landing/stripe/landing/render.html. 봉인 벤치·다른 arm 디렉터리는 읽지 마라.
+
+잔여 결함(오케스트레이터 실측, qa/round2-orchestrator/measurements.json `focus-1440`): 헤더 우상단 `a.btn` "Start now"(nav CTA)의 포커스 링(#5469d4)이 1440 폭에서 히어로 사진의 파이프 조명 위에 놓여 링 픽셀의 32%가 배경 대비 3:1 미만(min 2.57). 나머지 7개 포커스 요소와 390 폭은 전부 3:1 이상.
+
+고칠 것(하나만): 그 nav CTA의 포커스 표시가 어떤 배경 위에서도 3:1을 넘게 — 예: `:focus-visible`에서 canvas색 halo를 3px로 넓히고 링을 2px `foreground-strong`(#1a2c44)으로, 또는 nav 바 뒤 스크림을 우상단까지 확장(토큰 색 알파). DESIGN.md 토큰만 쓴다. 다른 줄은 바꾸지 마라(12.05 vh·구도·에셋·카피 불변).
+
+검증(전부 실행·보고): `node test-v2/tools/render-integrity.mjs test-v2/content-runs/landing/stripe/landing/render.html` PASS · `node test-v2/tools/landing-integrity.mjs …` FAIL 0 · `cd test-v2/content-runs/landing/stripe/landing && node qa/round2-orchestrator/glyph-audit.mjs` 를 다시 돌려 `focus 1440`의 "Start now" 첫 항목이 `<3:0%` 인지 보고(출력은 그 디렉터리에 덮어써도 된다). loop-trace.json 에 round 4 항목(focus ring nav CTA → 고친 것)을 덧붙여라.
+
+끝나면 마지막 줄에 `FIX_DONE brand=stripe arm=landing blocks_fixed=1` 을 출력해라.

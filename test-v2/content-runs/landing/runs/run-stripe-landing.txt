@@ -1,0 +1,41 @@
+너는 하네스 비교 콘텐츠 런의 arm 실행자다. arm = **landing**, 브랜드 = **stripe**. 런 종류 = **랜딩 원페이지**(test-v2/content-runs/landing/README.md).
+
+이 런은 공개 콘텐츠(영상 시연)용이며 **봉인된 T3-3 실험이 아니다.** test-v2/03-runs를 읽거나 쓰지 마라.
+다른 arm(autopilot, hallmark)의 산출물·팩을 읽으면 무효다.
+
+## 네가 쓰는 팩 (이것만, 순서대로 전부 읽어라)
+1. `skills/omd-landing/SKILL.md` — 절차. 이 문서의 1~5단계를 그대로 밟는다.
+2. `.claude/agents/omd-art-director.md` — 1단계(컨셉)와 2단계(스토리보드)는 **네가 이 에이전트 역할을 직접 수행**해 concept.md·storyboard.md를 먼저 쓴다(에이전트 스폰 없음).
+3. `docs/design-excellence/landing-craft-codex.md` — 규칙 LC-1~36과 §6 섹션별 에셋 표. 스토리보드의 모든 구도·리듬 결정에 LC 번호를 붙인다.
+4. `web/references/stripe/DESIGN.md` — 브랜드가 정한 토큰·사실. 여기 없는 색·서체·간격은 쓰지 않는다.
+
+## 브리프 — Stripe · 스크롤 원페이지 (세 arm 공통, 바이트 동일)
+
+- 브랜드: Stripe (stripe.com). 결제 인프라. 대상: 처음 방문한 개발자·창업자.
+- 화면: **스크롤 원페이지 랜딩**, 데스크톱 1440 기준으로 만들고 모바일 390에서도 깨지지 않게.
+- 과업: 방문자가 첫 화면에서 브랜드가 무엇을 하는지 3초 안에 이해하고, 스크롤 끝에서 "시작하기" 또는
+  문서로 이동한다.
+- 구성(6~8섹션, 순서는 네가 정한다): 히어로 · 핵심 제품 3개(결제·빌링·커넥트 같은 축, 각 섹션에
+  전용 에셋) · 개발자 섹션(코드 블록 1개, 실제 동작 아닌 예시) · 신뢰 섹션(고객 로고 대신 텍스트
+  워드마크 열) · 글로벌/규모 섹션(가상 수치 금지 — 수치 없이 정성 카피) · CTA · 푸터.
+- 컨셉·구도·에셋: 사이트를 베끼지 말고 이 브랜드가 쓸 법한 **하나의 시각 컨셉**을 정해 페이지 전체가
+  그 컨셉으로 쌓이게 해라. 히어로 대표 이미지 1장 + 섹션 에셋 3~5장은 네 이미지 생성 도구로 만든다
+  (사진 인물 얼굴 금지). 아이콘은 인라인 SVG.
+- 모션: 스크롤 리빌, 고정(pinned) 섹션 최대 1개, 히어로 진입 모션. `prefers-reduced-motion`에서
+  전부 꺼져야 한다. 외부 라이브러리·네트워크 요청 금지(모두 인라인).
+- 카피: 영어. 실제 stripe.com 문장을 그대로 쓰지 않는다.
+- 금지: Stripe 로고 원본 사용, 가상 통계 수치, 브리프에 없는 페이지 추가.
+- 하단 작은 글씨: `Unofficial generated concept — not affiliated with Stripe`.
+
+## 출력 위치 (여기 밖에 쓰지 마라)
+`test-v2/content-runs/landing/stripe/landing/` — concept.md · storyboard.md · assets/(네 image_gen으로 생성, 히어로 16:9 1장 + 섹션 에셋 3~5장, 얼굴·로고 금지) · render.html(단독, 외부 요청 0, 1440·390) · system.md · loop-trace.json · trace.md(이미지 프롬프트 원문·sha256·재시도·비용).
+
+## 자평 루프 (최대 3회 — SKILL.md 5단계)
+매 회차: `node test-v2/tools/render-integrity.mjs test-v2/content-runs/landing/stripe/landing/render.html` 와
+`node test-v2/tools/landing-integrity.mjs test-v2/content-runs/landing/stripe/landing/render.html` 와
+`node test-v2/tools/text-contrast.mjs test-v2/content-runs/landing/stripe/landing/render.html` 를 실행하고,
+FAIL 항목만 지목해 고친다(전면 재생성 금지). 회차별 (render 결함 수, LI FAIL 수, 고친 항목)을 loop-trace.json에 적어라.
+목표: render-integrity PASS + landing-integrity FAIL 0 + text-contrast PASS(사진 위 텍스트는 토큰색 알파 스크림, 포커스 링 halo, noscript 필수). LI-1(페이지 10~16 vh)·LI-3(폴드 미디어 ≥60% 또는 핀 스테이지)는 반드시 통과 — 기존 3 arm이 전부 여기서 떨어졌다.
+1440·390 두 폭에서 섹션 경계마다 스크린샷을 찍어 storyboard와 대조해라.
+
+끝나면 마지막 줄에 `CONTENT_RUN_DONE brand=stripe arm=landing outputs=<n> li_fail=<n>`을 출력해라.

@@ -19,7 +19,7 @@
  *   - 단독 표기 결함: rescore 응답에서 표기하지 않았던 평가자가 같은 동일성으로 표기하면 확정,
  *     아니면 disputed(계수 제외·병기). rescore가 없으면 pending으로 남기고 총점은 계산하되 "partial" 표시.
  *   - 평가자 한쪽 결측 축: 있는 쪽만으로 평균하지 않는다 — 그 칸·축은 미채점(§7 결측)이고
- *     리포트에 열거한다. 총점은 그 축을 빼고 재정규화하지 않는다(재정규화는 N/A-ceiling 전용).
+ *     리포트에 열거한다. 총점은 그 축을 빼고 재정규화하지 않는다(재정규화는 N/A-ceiling·N/A-evidence 전용).
  *   - 식별력 정답: identification.brand가 대상 브랜드 id와 같으면 1, "모름"·다른 브랜드는 0.
  *   - α: Krippendorff (2 관측자). 존재 여부 = 두 평가자 결함 동일성 합집합을 단위로 한 nominal(1/0);
  *     severity = 확정 결함의 ordinal(P0<P1<P2 → 0<1<2); 0–4 평정 = ordinal; 9지선다 = nominal.
@@ -49,6 +49,7 @@ const DOC_W = [0.25, 0.25, 0.20, 0.15, 0.15];
 const Q = 1 / 9;
 const SEV = { P0: 0, P1: 1, P2: 2 };
 const read = (p) => readFileSync(p, "utf8");
+const ceilingManifest = JSON.parse(read(join(CMP, "ceiling/manifest.json")));
 const mean = (xs) => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : null);
 
 // ---------------------------------------------------------------- 응답 적재
@@ -56,16 +57,38 @@ const partial = [];
 const R = {}; // R[evaluator][brand|rep|arm][axis] = entry ; ceiling answers separate
 const CEIL = {}; // CEIL[evaluator][brand][stimulus] = brand answered
 const RESCORE = {};
+const POSTHOC = {}; // POSTHOC[evaluator] = { hit, total, perArm } — §3.6 사후 arm 추측(점수 아님)
 function loadSession(ev, file, keyFile, into) {
   if (!existsSync(file) || !existsSync(keyFile)) { partial.push(`missing ${file}`); return; }
   const key = JSON.parse(read(keyFile));
   for (const line of read(file).split("\n").filter((l) => l.trim())) {
+    if (/^SCORING_DONE\b/.test(line.trim())) continue; // 종료 표지(validate-responses.mjs 와 동일 취급) — 데이터가 아니다
     let j; try { j = JSON.parse(line); } catch { partial.push(`unparsable line in ${file}`); continue; }
+    // 천장 자극 답(§4.3)은 브랜드 단위라 rep 이 없다 — 행 조회보다 먼저 받는다. (2026-09-03: 행 조회를 먼저 해서 전부
+    // 버려지고 모든 브랜드가 CEILING_UNAVAILABLE 로 집계되던 결함을 고쳤다. 규칙 변경 아님 — 적재 순서만.)
+    if (j.axis === "identification" && j.identification?.stimulus) {
+      if (!(key.ceilingBrands || []).includes(j.brand)) continue;
+      ((CEIL[ev] ||= {})[j.brand] ||= {})[j.identification.stimulus] = j.identification.brand;
+      continue;
+    }
     const row = key.rows.find((r) => r.brand === j.brand && Number(r.rep) === Number(j.rep));
     if (!row) continue;
-    if (j.postHocGuess) continue;
-    if (j.axis === "identification" && j.identification?.stimulus) {
-      ((CEIL[ev] ||= {})[j.brand] ||= {})[j.identification.stimulus] = j.identification.brand;
+    if (j.postHocGuess) {
+      // §3.6 블라인드 무결성 — 예전에는 버렸다. 평가자가 arm 을 알아봤는지는 리포트 첫 절에 적어야 하는
+      // 항목이고(2026-09-03 검토에서 별도 스크립트로 계산해야 했다), 점수에는 넣지 않는다.
+      const g = j.postHocGuess.slots || j.postHocGuess;
+      for (const slot of ["A", "B", "C"]) {
+        const truth = row.slots[slot]; const raw = g?.[slot];
+        if (!truth || raw === undefined) continue;
+        const guess = String(typeof raw === "object" ? (raw.arm ?? raw.tool ?? JSON.stringify(raw)) : raw).toLowerCase();
+        // arm 이름 변형(ui-ux-pro-max / uiuxpromax / UIUX Pro Max)을 정규화해 맞춘다.
+        const norm = guess.replace(/[^a-z]/g, "");
+        const hit = truth === "uiuxpromax" ? /^ui?ux?pro?max$|uiuxpromax/.test(norm) || norm.includes("uiux") : norm.includes(truth);
+        (POSTHOC[ev] ||= { hit: 0, total: 0, perArm: {} });
+        POSTHOC[ev].total++; if (hit) POSTHOC[ev].hit++;
+        const pa = (POSTHOC[ev].perArm[truth] ||= { hit: 0, total: 0 });
+        pa.total++; if (hit) pa.hit++;
+      }
       continue;
     }
     const arm = row.slots[j.slot];
@@ -119,14 +142,21 @@ function evidenceFor(brand, arm, rep, cellKey) {
   const vp = join(CAPS, brand, arm, `rep-${rep}`, "verify.json");
   let numeric = 0, usable = false;
   if (existsSync(vp)) { const v = JSON.parse(read(vp)); usable = v.usable !== false; numeric = usable ? Number(v.numericScore) || 0 : 0; }
+  // §4.2: eligible 수치 필드 <2 인 스냅샷은 "비교 입력 불충분"이다. naver는 첫 캡처에 대표 이미지가 없어(C-NAVER-H1) verify가
+  // 0필드로 unusable — 이 축을 0점으로 세면 세 arm을 같이 깎는 것이 아니라 스냅샷 결손을 arm에 전가하는 것이다. 처리(재정규화 N/A
+  // vs 0점)는 재봉인 판정 사안이므로 판정 전까지 이 칸·축은 미채점(total null)으로 두고 리포트에 이유를 남긴다(2026-09-02).
+  // 판정 2026-09-02 (docs/reviews/t3-naver-evidence-axis-2026-09-02.md, q1=a): 근거 축 N/A-evidence — §4.5식 재정규화, B_k에서 제외.
+  if (existsSync(vp) && !usable) return { na: true, reason: "N/A-evidence (snapshot has <2 eligible numeric fields; C-NAVER-H1)" };
   const ratings = EVALS.map((ev) => R[ev]?.[cellKey]?.evidence?.evidenceSemantic?.rating);
   if (ratings.some((r) => !Number.isInteger(r))) return { missing: true, numeric };
   const semantic = mean(ratings.map((r) => r * 25));
   return { score: 0.7 * numeric + 0.3 * semantic, numeric, semantic, ratings };
 }
 function ceilingC(brand) {
+  // §4.3: C_b 분모는 manifest.usedForCb(4개)뿐. 평가자가 그 밖의 자극에 답했더라도 세지 않는다.
+  const used = new Set((Object.values(ceilingManifest.results).find((r) => r.brand === brand)?.usedForCb || []).flatMap((l) => [l, `${l}.png`]));
   const stimuli = new Set();
-  for (const ev of EVALS) for (const s of Object.keys(CEIL[ev]?.[brand] || {})) stimuli.add(s);
+  for (const ev of EVALS) for (const s of Object.keys(CEIL[ev]?.[brand] || {})) if (used.has(s)) stimuli.add(s);
   if (!stimuli.size) return null;
   let correct = 0, total = 0;
   for (const s of stimuli) for (const ev of EVALS) { const a = CEIL[ev]?.[brand]?.[s]; if (a === undefined) continue; total++; if (a === brand) correct++; }
@@ -162,7 +192,7 @@ for (const brand of BRANDS) for (const arm of ARMS) for (let rep = 1; rep <= 4; 
   cell.axes.document = documentFor(cellKey);
   const avail = Object.entries(W).filter(([k]) => !cell.axes[k].na);
   const missing = avail.filter(([k]) => cell.axes[k].missing);
-  cell.missingAxes = missing.map(([k]) => k);
+  cell.missingAxes = missing.map(([k]) => k + (cell.axes[k].reason ? ` (${cell.axes[k].reason.split(" — ")[0]})` : ""));
   if (missing.length) { cell.total = null; cells.push(cell); continue; }
   const num = avail.reduce((a, [k, w]) => a + w * cell.axes[k].score, 0);
   const den = avail.reduce((a, [, w]) => a + w, 0);
@@ -189,7 +219,9 @@ for (const arm of ARMS) {
   const Tb = BRANDS.map((b) => a.brands[b].Tbar);
   a.totalMean = Tb.every((t) => t !== null) ? mean(Tb) : null;
   for (const k of Object.keys(W)) {
-    const Bk = BRANDS.filter((b) => !cells.find((c) => c.arm === arm && c.brand === b)?.axes[k]?.na);
+    // B_k = 그 축이 성립하는 브랜드. 아직 채점되지 않은 칸(axes[k] 부재)은 "성립 안 함"도 "성립"도 아니므로 분모에서 뺀다 —
+    // 부분 집계에서 미채점 브랜드가 |B_k|로 잡히던 것을 고쳤다(2026-09-02).
+    const Bk = BRANDS.filter((b) => cells.some((c) => c.arm === arm && c.brand === b && !c.abandon && c.axes[k] && !c.axes[k].na));
     const vals = Bk.map((b) => a.brands[b][k]);
     a.macro[k] = { Bk: Bk.length, M: vals.length && vals.every((v) => v !== null) ? mean(vals) : null };
   }
@@ -274,6 +306,7 @@ const agreement = (() => {
 const pendingDefects = cells.flatMap((c) => (c.axes.defects?.pending || []).map((p) => ({ cell: `${c.brand}/${c.arm}/rep-${c.rep}`, by: p.by, d: p.d })));
 const disputedDefects = cells.flatMap((c) => (c.axes.defects?.disputed || []).map((p) => ({ cell: `${c.brand}/${c.arm}/rep-${c.rep}`, by: p.by, d: p.d })));
 const report = {
+  postHoc: POSTHOC,
   generatedAt: new Date().toISOString(), lane: "A", evaluators: EVALS, weights: W, seed: SEED, bootstrapN: NBOOT,
   partial: partial.length ? partial : null,
   conditions: [
@@ -296,6 +329,10 @@ const md = [
   ...ARMS.map((a) => { const x = byArm[a]; return `| ${a} | ${f(x.totalMean)} | ${f(x.macro.defects.M)} | ${f(x.macro.evidence.M)} | ${f(x.macro.identification.M)} (${x.macro.identification.Bk}) | ${f(x.macro.document.M)} | ${x.abandons} | ${x.P0runs} | ${Object.values(x.pass).every(Boolean) ? "PASS" : "FAIL"} ${JSON.stringify(x.pass)} |`; }), "",
   `## 동률·우승 (§7)`, "", "```", JSON.stringify(report.bootstrap), "```", "",
   "## 평가자 일치도 (§3.7)", "", ...Object.entries(agreement).map(([k, v]) => `- ${k}: α=${v.alpha === null ? "N/A" : v.alpha.toFixed(3)} (n=${v.units}, 임계 ${v.threshold}) → ${v.status}`), "",
+  `## 블라인드 무결성 — 사후 arm 추측 (§3.6, 점수 아님)`, "",
+  ...(Object.keys(POSTHOC).length
+    ? Object.entries(POSTHOC).map(([ev, v]) => `- ${ev}: ${v.hit}/${v.total} 슬롯 적중 (${v.total ? Math.round(100 * v.hit / v.total) : 0}%, 우연 33%)${100 * v.hit / v.total > 60 ? " → **비블라인드로 취급한다**" : ""} · arm별 ${Object.entries(v.perArm).map(([a, x]) => `${a} ${x.hit}/${x.total}`).join(" · ")}`)
+    : ["- 기록 없음"]), "",
   `## 결함 합의`, "", `- 확정 결함 ${cells.reduce((n, c) => n + (c.axes.defects?.counted?.length || 0), 0)} · 재채점 대기 ${pendingDefects.length} · disputed ${disputedDefects.length}`, "",
   `## 미채점 칸·축`, "", ...(report.cellsMissingAxes.length ? report.cellsMissingAxes.map((m) => `- ${m.cell}: ${m.missing.join(",")}`) : ["- 없음"]), "",
 ].join("\n");

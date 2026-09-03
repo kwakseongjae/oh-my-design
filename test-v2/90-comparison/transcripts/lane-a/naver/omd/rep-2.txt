@@ -1,0 +1,143 @@
+Heading: Portal home — local surface contract
+
+Isolated T3-3 cell. Disposition: **surface-local-only**. No project  was adopted. Tokens, components, and layout below are the only values `render.html` may read.
+
+Pack:  (tree SHA ). Method: philosophy → decision table → tokens with  → presets → layout grammar → build. Inputs: brief (home, search query → results), snapshot `2026-08-22T19-51-00-372Z`, evidence chrome (`#fefefe` paper, `#2e2e2e` ink, `#03c75a` fill, 14.7px / 500–700 / −0.4px tracking, header ~216px), desktop-1440 and mobile-390 first frames. Desktop imagery sample count is 0; mobile samples sit at `docY ≥ 1512` (below the 390×844 fold).
+
+Heading: Data inventory
+
+Provided: evidence JSON/chrome, two viewport frames, ten below-fold mobile stills. No search API, no publisher feed, no login session. Autonomous mode: do not invent endpoints or live counts. News names and shortcut labels are transcribed from the desktop frame. Result rows and the right-rail plate are **sample**. Prices, ratings, and live headlines beyond the visible ticker line are absent.
+
+Heading: Philosophy
+
+One job on the first screen: put a query in the search field and go to results. A Korean portal is a dense instrument, not a campaign landing.
+
+| ID | Principle | Gain | Sacrifice |
+|---|---|---|---|
+| P1 | Search is the only first-screen job | The field is the largest control, always in the first fold, keyboard-submittable | No 100vh story, no second primary CTA in chrome |
+| P2 | Portal density, not gallery | Shortcuts, login, newsstand share the 1440×900 fold the way the snapshot does | Display type is used only in the campaign line (~2× body), never as a page-title poster |
+| P3 | Reconstruct without trademark files | Green ring, letter N, word “NAVER”, shortcut row, login slab | Official logo assets are not used; N is a typed letter |
+
+Heading: Decision table
+
+| ID | Category | Decision | Why |
+|---|---|---|---|
+|  | Layout grammar | Centered 1280 well, two columns 1fr + 340px from 901px up; one column at 390/320 | Snapshot: search/shortcuts/news left-of-center, login on the right. Wide empty right is a GS5 fail. |
+|  | Primary action | Search submit `data-cta="submit"`; login is `data-cta="local"` | Brief verb is search→results. Two primaries would split the job (C3). |
+|  | Motion | 120 / 200 / 320ms, enter `cubic-bezier(.2,.7,.2,1)`, exit `cubic-bezier(.4,0,1,1)`; transform/opacity only | Pack motion tokens. No `transition: all` (G10). |
+|  | Surface genre | Hairline-rule bands + 12px outlined plates. Not shadowed tiles, not ink slabs | Snapshot modules are 1px gray rings, not elevation kits. One genre (VQ §2). |
+|  | Color | Paper `#fefefe`, ink `#2e2e2e`, tinted neutrals, one accent `#03c75a` | Evidence `pageBackgroundRendered` / `bodyColor` / mobile `primaryButton.background`. |
+|  | Accent budget | Green is a ring, a letter, a login fill, a LIVE chip — not section washes | Snapshot login slab is the large green object. Search ring stays 2px so accent area stays a signal except that one locked K3 fill. |
+|  | Type | One gothic stack for Hangul and Latin. Body 15px / 1.65 / −0.01em. Campaign display 30px / 800 / 1.2. Label 12px. | Pack Korean contract (keep-all, no −0.03em on Hangul). Snapshot chrome is ~14.7px; campaign line is the ≥2× display step. |
+|  | Radius | Pill 28px (search, evidence `radiusPx: 28`), plate 12px, control 8px | Search is the pill. Login and newsstand stay squarer so genre does not collapse to one radius. |
+|  | Space | 4pt scale with roles, including 2.5rem / 4rem section air | Shortcuts → campaign → newsstand are distinct bands, not one uniform gap. |
+|  | Brand mark | Text “NAVER” + typed “N” in accent. No SVG/PNG of the official mark | Brief forbids original logo files. |
+|  | Honesty | Sample rails and result rows say “샘플”. No invented prices or live counts | Pack evidence-honesty; G46. |
+|  | Image placement | `image.jpg` is the campaign figure on desktop; hidden at 390 first fold | Codebook: no H1 in either first capture. Desktop frame still shows a mattress plate beside campaign copy. Mobile first frame does not. |
+
+Heading: Tokens (`render.html` `:root`)
+
+```css
+--color-paper: #fefefe;          
+--color-paper-warm: #f7f4ea;     /* whale strip, snapshot cream */
+--color-ink: #2e2e2e;            
+--color-ink-soft: #5c5c5c;
+--color-muted: #6e6e6e;
+--color-rule: #e5e5e5;
+--color-chip: #f4f6f8;
+--color-accent: #03c75a;         
+--color-accent-deep: #027a3a;    /* text-on-green pair, 4.5:1 with --color-on-accent */
+--color-on-accent: #f7fff9;
+--color-live: #e53131;
+--color-on-live: #fff8f8;
+--color-link: #0b57d0;           /* campaign emphasis word, snapshot blue */
+--font-sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+--text-body: 15px;
+--text-display: 30px;
+--text-label: 12px;
+--leading-body: 1.65;
+--leading-display: 1.2;
+--space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+--space-5: 24px; --space-6: 40px; --space-section: 2.5rem;
+--radius-pill: 28px; --radius-plate: 12px; --radius-control: 8px;
+--control-height: 52px;
+--elev-rest: none;
+--elev-hover: 0 4px 12px oklch(0.32 0.008 80 / 0.08);
+--duration-fast: 120ms; --duration-base: 200ms; --duration-slow: 320ms;
+--ease-enter: cubic-bezier(.2,.7,.2,1); --ease-exit: cubic-bezier(.4,0,1,1);
+--focus-ring: 2px solid var(--color-accent-deep);
+```
+
+Every color in CSS is one of these. No inline hex in components (G48).
+
+Heading: Component specs (before code)
+
+Presets used: **P-FN-01** (언론사 listbox), **P-FN-02** (results heading focus, outline suppressed), **P-FN-04** (뉴스스탠드 탭), **P-FN-05** (empty query), **P-FN-06** (result count line). **P-FN-03** for the campaign copy/figure row. **no-preset: search-pill** — catalog has no portal search field; anatomy below. **no-preset: shortcut-rail** — snapshot K2 is a labeled icon row, not P-CM-01.
+
+Heading: Search pill (no-preset)
+
+- Anatomy: typed N (submit) · text field · AI local action. Height `--control-height`. Radius `--radius-pill`. Border 2px `--color-accent` in all states (width does not change, G39).
+- States: default / hover (chip fill) / focus-visible (offset ring, instant) / error (`aria-invalid` + `role="alert"`) / disabled (opacity + `cursor: not-allowed` + `disabled`).
+- Label `검색어` is visually present (clipped into the form, not placeholder-only — C12). Placeholder copies the snapshot: `검색어를 입력해 주세요.`
+- Submit accessible name is the brief verb: `검색 결과로 이동`. `data-cta="submit"`.
+- Empty submit: focus returns to `#q`, alert “검색어를 입력해 주세요.” (C16 three channels).
+
+Heading: Shortcut rail (no-preset)
+
+- 10 services transcribed from the desktop frame + overflow “더보기”. Icon family: one stroke 1.75 SVG. Labels under icons. Hit ≥44px (C2).
+- These are local jumps, `data-cta="local"`. They do not submit search.
+
+Heading: Login slab
+
+- Snapshot K3. Wordmark text “NAVER” + “로그인”. Fill `--color-accent-deep` so white-ish `--color-on-accent` meets 4.5:1. **Sacrifice:** snapshot fill is brighter `#03c75a` (fails 3:1 with white). Search ring keeps `#03c75a` so the brand green remains visible. `data-cta="local"`.
+- Auxiliary text links: 아이디 찾기 / 비밀번호 찾기 / 회원가입 — local, not a second primary.
+
+Heading: Newsstand
+
+- Tabs = P-FN-04 filter chips. Selected = persistent ink fill, not hover.
+- Publisher grid: 6×4 text cells (no publisher marks). Pagination 1/4 is a real control, not a decoration.
+- “전체언론사” = P-FN-01 listbox (no native `<select>`, G28).
+
+Heading: Results view
+
+- Same chrome. One `h1#page-title`. P-FN-02: `tabIndex=-1`, `.focus()`, outline none on that heading.
+- P-FN-06 line: “검색어 ‘…’ · 샘플 결과 n건”.
+- P-FN-05 if a filter combination is empty (not used on first render).
+- Rows are labeled 샘플. No live index.
+
+Heading: Layout grammar
+
+Page: **portal split** (left instrument, right account). Not magazine, not bento, not master-detail.
+
+Content back-calc: shortcuts ≥10 (snapshot has 10+more), newsstand 24 names (6×4), campaign 1 copy + 1 figure, results ≥4 rows after a query. Ultra-wide strategy: **center max 1280**.
+
+Fold at 1440×900: whale strip, search (K1), shortcuts (K2), login (K3), campaign + newsstand start (K4). Below fold allowed: more news rows, shopping rail, footer.
+
+390×844: single column, search full width **inside** the padding (the source mobile frame clips the field; we do not). Campaign figure hidden. Login after news. Shortcuts wrap, no horizontal document scroll.
+
+320px and 200% reflow: `overflow-x: clip`, `minmax(0,1fr)`, display headings `overflow-wrap: anywhere; min-width: 0`.
+
+Heading: Journey verbs (SELF-WALK)
+
+| Verb | Keyboard path | Programmatic evidence |
+|---|---|---|
+| 검색어를 입력해 | Tab to `#q`, type | `value` non-empty; `aria-invalid=false` |
+| 검색 결과로 이동한다 | Enter on `#q` or Space/Enter on submit | `data-view="results"` on `body`; `#page-title` focused; `document.title` contains the query; `role="status"` names the query |
+| empty reject | Enter with empty field | `aria-invalid=true`; `#q-error[role=alert]` visible; focus stays on `#q` |
+
+No developer state switcher (P0-1).
+
+Heading: Assumptions, inferences, limits
+
+- **Observed:** paper, ink, accent, 15-ish chrome type, search pill, shortcut labels, login copy, newsstand IA, campaign mattress plate, cream whale strip.
+- **Inferred (agent-proposed):** darker login fill for contrast; hiding campaign photo at 390 to keep the first mobile fold free of a hero the codebook says is absent; sample result corpus.
+- **Unresolved / omitted:** official marks, live search hits, weather, mail unread counts, Whale install modal (it overlapped K4 in the source frame and would have been OVERLAP/TASK).
+- **Not built:** extra product screens. Results is the brief destination, not a new surface family.
+
+Heading: Critique (one round)
+
+Philosophy 4 / Hierarchy 4 / Execution 4 / Specificity 4 / System Fidelity 4.
+
+Grep gates to run on `render.html`: `transition: all` (G10), `<select` (G28), `100vh` (G6), unscoped hex, `border-width` state change (G39). Hits to fix before handoff.
+
+Known tension kept on purpose: login fill is darker than the snapshot ( / contrast). Search ring stays snapshot green.

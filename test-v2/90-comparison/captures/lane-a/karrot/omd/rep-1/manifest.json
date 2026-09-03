@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "karrot",
+  "arm": "omd",
+  "rep": 1,
+  "source": "test-v2/03-runs/lane-a/karrot/omd/rep-1/render.html",
+  "sourceSha": "sha256:04b5fb1dd75445f7a888d7f937d8a7dad29e93689fe563211bedf3e601b598e3",
+  "capturedAt": "2026-09-02T05:01:41.266Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:caa36379fca48e7efe5643e4ac2133d77f5e88217b2cfec755e4feeca29009c2",
+      "bytes": 850867,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:94d15f228879be8d1d588da32786b4ca54bd6092cca94ec7d07d773105dcb9ab",
+      "bytes": 171879,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

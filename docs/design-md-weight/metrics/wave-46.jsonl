@@ -2,3 +2,16 @@
 {"ts":"2026-09-02T00:46:23.319Z","wave":"46","brand":"mikan","stage":"f3","sec":955,"cost":0.3873739,"turns":22,"ok":true,"http":null,"code":0}
 {"ts":"2026-09-02T00:47:23.602Z","wave":"46","brand":"mildang","stage":"worker","sec":1015,"cost":1.03031424,"turns":35,"ok":true,"http":null,"code":0}
 {"ts":"2026-09-02T00:57:31.997Z","wave":"46","brand":"mikan","stage":"review","sec":669,"cost":0.2254098,"turns":15,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T01:01:23.104Z","wave":"46","brand":"mildang","stage":"f3","sec":839,"cost":0.3637507,"turns":22,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T01:10:43.247Z","wave":"46","brand":"microsoft","stage":"review","sec":787,"cost":0.36740876,"turns":18,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T01:13:39.093Z","wave":"46","brand":"mildang","stage":"review","sec":736,"cost":0.2762347,"turns":16,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T02:01:20.242Z","wave":"46","brand":"millie","stage":"worker","sec":2853,"cost":0.83987038,"turns":33,"ok":false,"http":null,"code":1}
+{"ts":"2026-09-02T02:01:20.242Z","wave":"46","brand":"microsoft","stage":"fix","sec":3037,"cost":0.19077128,"turns":18,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T02:01:44.485Z","wave":"46","brand":"minimax","stage":"worker","sec":0,"cost":null,"turns":null,"ok":false,"http":402,"code":1}
+{"ts":"2026-09-02T02:50:26.032Z","wave":"46","brand":"millie","stage":"gatefix","via":"grok","sec":522,"cost":0.27337088,"turns":22,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T02:52:11.996Z","wave":"46","brand":"microsoft","stage":"review2","via":"grok","sec":628,"cost":0.2281604,"turns":15,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T02:59:05.029Z","wave":"46","brand":"minimax","stage":"worker","via":"grok","sec":1041,"cost":1.27598566,"turns":45,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T03:03:41.051Z","wave":"46","brand":"millie","stage":"f3","via":"grok","sec":795,"cost":0.31180448,"turns":18,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T03:13:30.995Z","wave":"46","brand":"minimax","stage":"f3","via":"grok","sec":866,"cost":0.29627532,"turns":16,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T03:13:32.579Z","wave":"46","brand":"millie","stage":"review","via":"grok","sec":591,"cost":0.19876808,"turns":13,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T03:22:24.935Z","wave":"46","brand":"minimax","stage":"review","via":"grok","sec":534,"cost":0.22265002,"turns":14,"ok":true,"http":null,"code":0}

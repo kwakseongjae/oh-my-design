@@ -1,0 +1,177 @@
+Heading: NAVER Home — Design System
+
+Lane A / arm  / brand `naver` / rep-1.
+Snapshot `2026-08-22T19-51-00-372Z`. Screen: home only. Task: type a query and move to search results.
+
+Pack:  (`--design-system` first, then domain/stack). This file is the persisted system the HTML implements.
+
+Heading: Requirements (Step 1)
+
+| Slot | Decision |
+|------|----------|
+| Product | Korean web portal. Search is the job. News, shopping, and service shortcuts sit around it. |
+| Audience | C-end, ko-KR, desktop-1440 and mobile-390 |
+| Style keywords | Flat, content-dense, search-first, light |
+| Stack | Standalone HTML + CSS + JS. No network. Maps to pack stack `html-tailwind` (tokens and a11y), inlined. |
+| Platform | Desktop web first, mobile-first CSS |
+
+Pack `--design-system` query: `search portal news aggregator content-dense korean web homepage` then `search engine portal green content-dense news --density 8`.
+
+Heading: Pack recommendation (kept)
+
+- **Pattern:** Marketplace / Directory. Search bar is the CTA. Reduce friction to search. Popular-search suggestions.
+- **Sections used on this screen:** (1) hero search, (2) category shortcuts, (3) featured listing = promo + newsstand + shopping, (4) trust = login.
+- **Style:** Flat Design (touch-first). Color blocking, solid icon tiles, press scale 0.97, no elevation shadows. Density dial 8 (8–32px rhythm).
+- **Product type (domain `product`):** News/Media Platform — brand color + high contrast + category color.
+- **Landing (domain `landing`):** Marketplace / Directory section order.
+- **Typography mood (domain `typography`):** news / readable / informative. Pack pairing was Newsreader + Roboto via Google Fonts.
+
+Heading: Bindings this run cannot take from the pack as-is
+
+Offline first-render forbids `@import` of Google Fonts and any CDN. Evidence chrome is `-apple-system`, 14.7px, weight 700/500, tracking `-0.4px`, body `#2e2e2e`, page `#ffffff` / `#fefefe`, primary fill `#03c75a`.
+
+| Pack default | This surface |
+|--------------|----------------|
+| Primary `#DC2626` (breaking red) | Primitive `--green-500: #03c75a` from evidence `primaryButton.background`. Closest pack palettes: Flat emerald `#10B981`, Pharmacy `#22C55E`. |
+| Background `#FEF2F2` | `--color-background: #ffffff` |
+| Newsreader / Roboto network import | `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif`. Roboto stays as a *local* fallback only. |
+| Official brand assets (pack icon rule) | Experiment forbids official NAVER marks. Text wordmarks `N` and `NAVER` replace the glyph. |
+| Dark mode pair | Evidence is light only. No invented dark theme. |
+
+Heading: Token architecture (primitive → semantic → component)
+
+Heading: Primitive
+
+```css
+--green-500: #03c75a;
+--green-600: #02b350;
+--gray-50: #fefefe;
+--gray-100: #f5f6f8;
+--gray-200: #e4e8eb;
+--gray-400: #8a8a8a;
+--gray-700: #2e2e2e;
+--gray-900: #1d1d1d;
+--blue-600: #2b6af0;
+--red-500: #ff2c3a;
+--cream-100: #f7f3e8;
+--space-1..8: 4 / 8 / 12 / 16 / 20 / 24 / 32px;
+--font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+--text-14: 14.7px; /* evidence chrome */
+--text-16: 16px;   /* search field — avoids iOS auto-zoom */
+--radius-sm: 6px;
+--radius-lg: 16px;
+--radius-pill: 999px;
+--duration: 180ms;
+--touch: 44px;
+```
+
+Heading: Semantic
+
+`--color-primary` → `--green-500`
+`--color-on-primary` → `#fff`
+`--color-background` / `--color-foreground` / `--color-muted` / `--color-border` / `--color-ring` / `--color-destructive` / `--color-accent`
+
+Heading: Component
+
+| Component | Tokens |
+|-----------|--------|
+| Search pill | height 52px, 2px primary border, pill radius, focus ring `primary/18%` |
+| Wordmark submit | `N`, primary, 28px/800 — this *is* the search submit |
+| Login button | primary fill, on-primary text, 48px height, 6px radius |
+| Card | 1px border, 16px radius, no drop shadow (flat) |
+| Icon tile | 48×48, 14px radius, gray-100 well |
+| Icon button | 44×44 hit target |
+
+Heading: Type scale
+
+| Role | Size | Weight | Tracking |
+|------|------|--------|----------|
+| Search input | 16px | 500 | -0.4px |
+| Body / chrome | 14.7px | 500 | -0.4px |
+| Promo title | clamp(20–28px) | 800 | -1px |
+| Result title | 18px | 700 | -0.4px |
+| Shortcut / meta | 12–13px | 600–700 | -0.4px |
+
+Line-height 1.5. Promo accent word uses `--color-accent` (not color-only: the sentence still reads without the blue).
+
+Heading: Components and states
+
+Search field (anatomy from pack Input spec, lg size):
+visible label (sr-only `검색어`) + placeholder + leading wordmark submit + trailing 입력기 / AI.
+States: default, hover (tools), focus-within (ring), error (destructive border + `role="alert"`), disabled/loading (submit disabled while `aria-busy`).
+
+Suggestions: listbox, debounce 150ms, ArrowUp/Down + Enter, Escape closes. Pack UX: do not require a full type-and-enter with no predictions.
+
+Login: primary button (pack Button default/lg). Links are tertiary.
+
+Newsstand: outline card + 6-col (3-col mobile) publisher grid, text names only.
+
+Promo figure: local `image.jpg`, width/height + `aspect-ratio: 16/9` (CLS). `object-fit: cover`.
+
+Icons: Phosphor-style outline set (pack default library), inline SVG sprite, explicit `width`/`height`. No emoji as structure. No official logos.
+
+Heading: Search interaction (the assigned task)
+
+1. Focus the pill. Label is not placeholder-only.
+2. Type → suggestions (pack Search / Autocomplete).
+3. Empty submit → stay on home, alert “검색어를 입력해 주세요.”, focus returns to the field.
+4. Non-empty submit (Enter, `N`, or AI chip) → `#search?q=…` (hash so file:// back-button works; pack Navigation / Back Button).
+5. ≥300ms loading line, then results. Submit is the only primary CTA on the home hero.
+6. Results keep the same field. `NAVER` wordmark returns to `#home`. Related chips re-enter search. Result rows are not extra product screens and do not fetch the network.
+
+Heading: Layout and breakpoints
+
+Mobile-first. Pack `html-tailwind`: `px-4` → desktop padding, `hidden md:flex` analogue for newsstand extra tools, `min-h-[44px]`, `focus-visible` ring, `motion-reduce`.
+
+| Width | Behavior |
+|-------|----------|
+| 390 | Search full-width under icon clusters; shortcuts scroll; promo stacks; press grid 3-col |
+| 768 | Promo row; product row 4-col |
+| 1024–1440 | Absolutely centered search; 1.72 / 0.86 main+side grid; press grid 6-col |
+
+Viewport meta does not disable zoom. `touch-action: manipulation`. `min-h-dvh`.
+
+Z-index scale: base 0 / dropdown 40 / header 50 / banner 60.
+
+Heading: Motion and feedback
+
+Pressable scale 0.97, 180ms. Hover 150–300ms color. Loading spinner; `prefers-reduced-motion` flattens animation and press scale. Pack: no decorative-only motion, no width/height animation.
+
+Heading: Accessibility (priority 1–2)
+
+- Contrast: primary `#03c75a` on white is for large fill (login) and the 28px wordmark, not small body text. Body is `#2e2e2e` on `#fff` ≫ 4.5:1. Result titles `#0f7c3d` on white for AA large/bold.
+- Skip link → search.
+- Heading order: promo `h2`, shopping/news via labelled sections, results `h3` under a results `h2` for related.
+- Icon-only controls have `aria-label`.
+- Keyboard tab order matches visual order. Combobox pattern on the field.
+- `aria-live` on errors and results. `aria-busy` while searching.
+- Image alt describes the mattress photograph, not a brand name.
+
+Heading: Offline / first-render constraints
+
+- No `http(s)` asset requests. No Google Fonts, Tailwind CDN, or live naver.com images.
+- CSS reset zeros `figure, blockquote, ul, ol` (UA default margins broke measurement in prior runs).
+- Representative image is `image.jpg` next to this HTML.
+- Publisher cells and the side “SUMMIT CLAVION” block are type, not marks.
+
+Heading: Anti-patterns avoided
+
+Pack: cluttered-without-hierarchy, slow loading, placeholder-only label, no search suggestions, missing focus ring, emoji-as-icon, hover-only primary action, layout-shifting press, extra screens not in the brief.
+
+Heading: Pack searches run
+
+```
+"search portal news aggregator content-dense korean web homepage" --design-system -p "NAVER" -f markdown
+"search engine portal green content-dense news" --design-system --density 8 -p "NAVER" -f markdown
+"search portal green trust" --domain color
+"flat content-dense portal" --domain style
+"modern readable system ui" --domain typography
+"search form accessibility loading" --domain ux
+"search portal news" --domain product
+"search mail news map" --domain icons
+"hero search categories" --domain landing
+"search-accessible navigation focus" --domain ux
+"form search layout responsive" --stack html-tailwind
+"form input button accessibility" --stack html-tailwind
+"envelope house newspaper chart" --domain icons
+```

@@ -1,0 +1,127 @@
+Heading: Figma 홈 — surface-local system
+
+스냅샷 `2026-08-22T19-48-41-602Z` (ko-KR, `https://www.figma.com/ko-kr/`). 화면은 홈 하나. 과업은 무료 시작 CTA로 가입 흐름에 진입하는 것이다. 공식 로고 원본은 쓰지 않는다.
+
+Disposition: **surface-local-only**. 프로젝트 루트  열거나 채택하지 않는다. 아래 값은 이 홈 렌더의 계약이다.
+
+데이터 인벤토리: 제공 레코드/API는 없다. 쓰는 카피는 스냅샷에 보이는 것(제목, 내비, CTA, 모바일 메뉴 항목)과 페이지 `<title>`뿐이다. 사용자 수·요금·후기는 없다.
+
+Heading: Philosophy
+
+**캔버스가 제품이다.** 크롬은 얇게 두고, 접히는 화면의 대부분을 작업 파일처럼 보이는 히어로에 쓴다. 무료 시작은 한 번만 크게 보인다.
+
+희생:
+
+- P1 장식 악센트·그라데이션 헤드라인 → 흰 지면 + 검정 잉크 대비.
+- P2 디스플레이 700+ 관례 → 스냅샷 typeScale 그대로 400. 크기로 위계를 만든다.
+- P3 추가 화면 → 가입은 같은 홈의 `dialog`다.
+
+Heading: Derive
+
+| ID | 결정 | 근거 |
+|---|---|---|
+|  | 디스플레이 400, 본문 고딕, Hangul `keep-all`, tracking ≥ −0.01em | 스냅샷 h1 56/36px weight 400. 팩 한국어 계약. |
+|  | 레이아웃 문법: 카피/피규어 디프틱. 데스크톱 3열(제목·캔버스·시작하기), 390은 제목→캔버스 | 1440 뷰포트: 좌 헤드라인, 중첩 캔버스, 우 시작하기. 390은 헤더 CTA만. |
+|  | 프리셋 P-ED-03 커버만. 매거진 4컷 문법은 쓰지 않음 | 대표 이미지 1장. GS6. |
+|  | 지면 `paper` / 잉크 `ink` 쌍. 순수 #000/#fff 금지 | 스냅샷 캔버스 백색·본문 흑색. OKLCH로 근사. |
+|  | 표면 장르: hairline-rule. 헤더 1px rule, 카드 키트 반복 없음 | 스냅샷 헤더 하단 라인, 플랫 크롬. |
+|  | 악센트는 포커스 링만 (벡터 블루, 뷰포트 5% 미만) | 스냅샷 CTA는 잉크 채움. 블루는 이미지 팔레트(#0030cb)에서만. |
+|  | CTA pill 999, 입력 8px, 다이얼로그 16px | JSON 8px는 쿠키 버튼. 뷰포트 CTA는 알약. 역할별 반지름. |
+|  | 히트 타깃 44px. 입력 높이 = 제출 버튼 | 팩 PRODUCT_BUILD. |
+|  | 모션: 120/200/320ms, enter/exit 두 곡선, transform·opacity만 | 팩 motion tokens. |
+|  | 기본 CTA 1개 `data-cta="primary"` = 지금 무료로 시작하기. 히어로 시작하기는 `local`. 제출은 `submit` | 팩 primary uniqueness. |
+|  | 가입/로그인은 홈 `dialog`. `data-state`는 그 요소에 | 브리프 화면=홈. 추가 화면 금지. |
+|  | 워드마크는 텍스트 “Figma” | 공식 로고 원본 금지. |
+|  | 쿠키 배너는 그리지 않음 | 과업 CTA를 가린다. 스냅샷 캡처 아티팩트. |
+|  | figmaSans는 로드하지 않음. 로컬 고딕 스택 | 외부 네트워크 금지. 대체 폰트를 그 페이스인 척하지 않음. |
+
+Heading: Tokens
+
+```css
+--color-paper / --color-ink          
+--color-ink-hover / --color-ink-soft / --color-muted
+--color-rule / --color-chip / --color-on-ink
+--color-accent / --color-focus       
+--color-menu / --color-on-menu       /* 390 메뉴 플레이트 반전 */
+--radius-control: 8px                /* 입력 */
+--radius-pill: 999px                 /* CTA */
+--radius-dialog: 16px
+--space-1..8, --space-section 4rem, --space-fold-top 5rem, --space-fold-bottom 6.5rem
+--gutter: clamp(16px, 4vw, 48px)
+--duration-fast 120ms / --duration-base 200ms / --duration-slow 320ms
+--ease-enter / --ease-exit
+--font-sans: Apple SD Gothic Neo, Pretendard, Noto Sans KR, Malgun Gothic, Segoe UI, sans-serif
+```
+
+컴포넌트는 `var(--color-*)`만 읽는다.
+
+Heading: Components
+
+Heading: Button — no-preset (마케팅 CTA, P-CM 비대상)
+
+- 해부: 라벨만. 아이콘 없음.
+- 상태: default / hover(면 전환) / focus-visible(outline) / active(scale 0.98) / disabled(opacity + cursor + native).
+- 기하: min-height 44px, border-width 상태 간 불변(아웃라인은 inset box-shadow 1px).
+- 프라이머리: ink 면 + on-ink 글. 아웃라인: paper 면 + ink 링.
+
+Heading: Text field — no-preset (가입 이메일)
+
+- appearance: none. 높이 44px = 제출 버튼.
+- hover는 링 색만. focus는 outline 슬롯.
+- 힌트·에러 슬롯 `min-height: 1lh`. 에러는 `role="alert"` + `aria-describedby` + 필드 포커스.
+
+Heading: Dialog — native `<dialog>` (팩: 다이얼로그는 별 표면)
+
+- 가입: h2 + 이메일 + 계속.
+- 메뉴: 스냅샷 390 오버레이 카피. 목적지 없는 항목은 닫기만 한다.
+- 닫기: 버튼, Escape, `dialog.close`.
+- `::backdrop` 토큰.
+
+Heading: Header / wordmark
+
+- 워드마크 텍스트. 데스크톱 인라인 내비는 `#main`. 390은 햄버거 → 메뉴 다이얼로그.
+- 로그인 = 같은 다이얼로그, 제목만 변경.
+
+Heading: Layout grammar
+
+홈 = **카피/피규어 디프틱** (visual-quality §4). 와이드 전략: 좌 헤드라인, 중 캔버스가 폭을 채움, 우 로컬 CTA.
+
+콘텐츠 역산: 대표 이미지 1 + 헤드라인 1 + CTA. 벤토/캐러셀/매거진 문법은 열지 않는다.
+
+390: 헤더(워드마크 · 지금 무료로 시작하기 · 메뉴) → h1 → figure. 히어로 시작하기는 숨긴다(프라이머리 중복 방지).
+
+320–1440: `overflow-x: clip`. 100vw 없음. figure/blockquote/ul/ol 마진 리셋.
+
+Heading: Honesty
+
+| 항목 | 처리 |
+|---|---|
+| 공식 로고 | 텍스트 워드마크. 푸터에 고지 |
+| 사용자 수·요금·후기 | 없음. 푸터에 카테고리 이름을 밝힘 |
+| 영업 문의 양식 | 스냅샷에 없음. `#colophon`으로 안내 |
+| 쿠키 배너 | 그리지 않음  |
+| figmaSans | 언로드. 고딕 스택 |
+| 히어로 이미지 | 생성 스틸. 글자·로고 없음 |
+
+Heading: Journey self-walk
+
+| 동사 | 키보드 | 프로그램 증거 |
+|---|---|---|
+| 무료 시작 CTA를 누른다 | Tab → `data-cta="primary"` → Enter | `#signup[open]`, `data-state="open"` |
+| 가입 흐름에 진입한다 | 이메일 입력 → 계속 | `data-state="entered"`, `#signup-status` “가입 흐름에 진입했습니다.” |
+
+에러: 빈값/형식 → 필드 포커스 + `aria-invalid` + `role="alert"`.
+
+Heading: Critique (1 round)
+
+| 축 | 점수 | 메모 |
+|---|---|---|
+| Philosophy | 4 | 캔버스가 접힘을 차지. 크롬은 얇다. |
+| Hierarchy | 4 | 2초 안에 제목 → 캔버스 → 검정 CTA. |
+| Execution | 4 | 토큰 쌍, 리셋, 44px, focus-visible. |
+| Specificity | 4 | 한글 대형 400, 알약 CTA, 보석 캔버스. |
+| System Fidelity | 4 | 3열 아이콘 카드·센터 스택·퍼플 그라데이션 없음. |
+
+grep: G10 `transition: all` 없음. G6 `min-height:100vh` 없음(접힘은 `100svh` 디프틱). G28 `<select` 없음. G2 `background-clip:text` 없음. G48 컴포넌트 인라인 hex 없음(`:root`만).
+
+고친 것: 데스크톱 내비를 풀스크린 메뉴에 묶지 않음. hover/에러/backdrop 색을 `:root`로 옮김.

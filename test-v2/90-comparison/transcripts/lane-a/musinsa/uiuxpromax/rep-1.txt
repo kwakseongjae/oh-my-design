@@ -1,0 +1,211 @@
+Heading: MUSINSA 상의 카테고리 — Design system
+
+화면: 상의 카테고리 리스팅 (`/category/001`). 과업: 컬러 필터 **블랙** 하나를 적용해 상품 그리드를 좁힌 첫 렌더.
+
+생성:  팩 워크플로. 오프라인 제약으로 Google Fonts CDN·외부 이미지 요청은 쓰지 않는다.
+
+Heading: 팩 워크플로
+
+Heading: Step 1 — 요구
+
+| 항목 | 값 |
+| --- | --- |
+| Product | C-end fashion marketplace, 상의 카테고리 그리드 |
+| Audience | 한국 패션 커머스 브라우저, ko-KR |
+| Platform | desktop-1440 (1440×900), mobile-390 (390×844) |
+| Stack | 단일 `render.html` (html-tailwind 가이드를 인라인 CSS로 이식) |
+| 과업 | 필터 1개 적용 → 그리드 축소 |
+
+Heading: Step 2 — `--design-system`
+
+쿼리: `fashion ecommerce catalog listing dense product grid filter chips black white retail`
+
+다이얼: `--variance 3` (Centered / Minimal) · `--motion 3` (Subtle) · `--density 9` (Dense)
+
+| 슬롯 | 팩 결과 | 이 화면에서의 적용 |
+| --- | --- | --- |
+| Pattern | Portfolio Grid — visuals first, filter by category | 상품 사진이 카드의 주 면적. 필터 바가 그리드 위에 고정 계층 |
+| Style | Exaggerated Minimalism (패션·하이콘트라스트) | 블랙 헤더 + 무채색 본문. 카탈로그이므로 오버사이즈 디스플레이 타입은 쓰지 않음 |
+| Color (팩) | Primary `#18181B`, bg `#000000`, fg `#FAFAFA` | **표면은 라이트.** 스냅샷 크롬이 캔버스를 `#fefdfd`로 두므로 팩의 다크 캔버스는 헤더/프라이머리에만 쓴다 |
+| Type (팩) | Rubik + Nunito Sans | 네트워크 금지. 증거 패밀리 Pretendard Variable + system-ui 스택 |
+| Motion | Stagger list 250–350ms, delay 0.03s, `power1.out` | 카드 `translateY(8px)` + opacity, 30ms stagger. `prefers-reduced-motion`으로 절단 |
+| Density | 8–32px | 필터 리듬 8/12/16. 상품 사진은 스냅샷과 같이 갭 0 |
+
+도메인 보충:
+
+- `product` — E-commerce / Marketplace. Filter-heavy grid.
+- `style` — Swiss Modernism 2.0 (12컬럼, `#000/#FFF/#F5F5F5`) + Data-Dense (gap 8px, 14px type).
+- `ux` — 44px 히트 영역, 포커스 링, alt, color-not-only, reduced-motion, live region.
+- `icons` — Phosphor outline: list, magnifying-glass, heart, shopping-cart, x, funnel.
+- `stack html-tailwind` — 그리드는 `gap` 유틸 일관, 카드 내부 리듬 통일.
+
+Heading: 증거 크롬 (스냅샷 `2026-08-22T19-50-15-466Z`)
+
+desktop-1440 / mobile-390 공통:
+
+- 페이지 배경 렌더 `#fefdfd` / `#fefefe`
+- 본문색 `#000000`
+- 시맨틱 헤더 후보 `#f5f5f5` 52px — 뷰포트 상단 스토어 바는 **검정**. `#f5f5f5`는 필터 스택에 배치
+- 아웃라인 버튼 `#e0e0e0` / `#666666` / radius 4 / 13px / 400
+- 타입: Pretendard Variable, h2/h3 14/400, 버튼 14/500 (모바일 버튼 11/500)
+- 상품 이미지 종횡 ~0.833 (240×288)
+
+Heading: 토큰 (primitive → semantic → component)
+
+팩 `design-system` 스킬의 3계층.
+
+Heading: Primitive
+
+```css
+--color-black: #000000;
+--color-zinc-900: #18181B;
+--color-zinc-800: #27272A;
+--color-gray-100: #f5f5f5;
+--color-gray-200: #e0e0e0;
+--color-gray-600: #666666;
+--color-canvas: #fefdfd;
+--color-white: #ffffff;
+--color-sale: #e11d2a;
+--color-deliver: #2563eb;
+--space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+--radius-sm: 4px; --radius-md: 8px;
+--duration: 180ms;
+```
+
+Heading: Semantic
+
+```css
+--color-bg: var(--color-canvas);
+--color-fg: var(--color-black);
+--color-primary: var(--color-zinc-900);
+--color-on-primary: var(--color-white);
+--color-muted: var(--color-gray-100);
+--color-muted-fg: var(--color-gray-600);
+--color-border: var(--color-gray-200);
+--color-ring: var(--color-zinc-900);
+--color-destructive: var(--color-sale);
+```
+
+Heading: Component
+
+```css
+--header-bg: var(--color-black);
+--header-fg: var(--color-white);
+--filter-row-bg: var(--color-gray-100);
+--button-radius: var(--radius-sm);
+--chip-radius: var(--radius-md);
+--focus-ring: 2px solid var(--color-ring);
+--header-h: 52px;
+--touch: 44px;
+```
+
+컴포넌트 규칙에 raw hex를 넣지 않는다. 세일 빨강·배송 파랑은 primitive에만 두고 semantic `destructive` / 컴포넌트 `.ship`에서 참조.
+
+Heading: 타이포그래피
+
+의도 (팩): Rubik heading / Nunito Sans body, ecommerce conversion.
+
+구현 (오프라인 + 증거):
+
+```css
+font-family: "Pretendard Variable", Pretendard, ui-sans-serif, system-ui,
+  -apple-system, "Segoe UI", sans-serif;
+```
+
+| Role | Size | Weight | Line-height |
+| --- | --- | --- | --- |
+| 카테고리 제목 | 22px | 700 | 1.2 |
+| 본문 / 서브캣 | 14px | 400 / 700 current | 1.5 |
+| 칩·브랜드·가격 | 13–14px | 400–700 | 1.4 |
+| 메타·태그 | 11–12px | 400 | 1.4 |
+| 워드마크 | 15px | 700 | 1, tracking 0.08em |
+
+가격·카운트는 `tabular-nums`. 본문 최소 14px (모바일 줌 방지). 워드마크는 로고 파일이 아니라 **MUSINSA** 텍스트.
+
+Heading: 레이아웃
+
+모바일 퍼스트.
+
+| Breakpoint | 그리드 |
+| --- | --- |
+| default (390) | 3열 — 스냅샷 mobile-390과 동일 |
+| 768 | 4열, 프라이머리 내비 노출 |
+| 1024 | 5열 |
+| 1440 | 6열 — 스냅샷 desktop-1440과 동일 |
+
+상품 사진 갭 0. 카드 텍스트 패딩 8px (density 9). 필터 행 min-height 44px, 칩 시각 높이 32px + `::after`로 히트 영역 확장.
+
+z-index 스케일: base 0 / sticky 20 / header 40 / skip 100.
+
+Heading: 컴포넌트
+
+Heading: Header
+
+검정 바 52px. 텍스트 워드마크. Phosphor-style 아웃라인 아이콘(메뉴·검색·좋아요·마이·장바구니). 로그인 버튼은 아웃라인 1px `#555`. 현재 스토어는 `aria-current="page"`.
+
+Heading: Category head + subnav
+
+`h1` 상의. 하위 카테고리는 텍스트 탭, **전체**가 current. 이 과업의 필터는 컬러이지 하위 카테고리가 아니다.
+
+Heading: Filter stack
+
+브랜드 / 컬러 / 소재 3행, 배경 `--filter-row-bg`. 컬러는 스와치 + 라벨(색만으로 의미 전달 금지). **블랙** `aria-pressed="true"` + 2px 링.
+
+빠른 필터 칩, 부가 필터(남/여/추천/컬러…). 컬러 유틸도 pressed.
+
+Heading: Applied filter
+
+필 칩 `블랙 ×`. 제거 시 그리드가 전체로 돌아간다. 첫 렌더는 적용된 상태.
+
+Heading: Result tabs + count
+
+상품 탭이 선택. 블랙 적용 시 `18,204` (좁혀진 결과), 해제 시 스냅샷 수치 `350,441`. 브랜드·스냅 탭 수치는 스냅샷 크롬.
+
+Heading: Product card
+
+사진 5:6 (`240/288`). 대표 생성 이미지 `image.jpg`가 첫 카드. 나머지 로컬 래스터는 증거 샘플(네트워크 없음).
+
+상태: default / hover(이름 언더라인) / active(미디어 0.995 스케일, 레이아웃 시프트 없음) / wish pressed.
+
+가격 할인은 숫자 `%` + 세일 컬러. 색만 쓰지 않음.
+
+Heading: 인터랙션 — 필터 하나
+
+초기값: `blackOn = true`.
+
+- 블랙 스와치 토글
+- 적용 칩 × 로 해제
+- `aria-live="polite"`로 결과 변화 안내
+- 비블랙 카드는 `hidden`
+
+그리드가 실제로 줄어드는 것이 과업의 전부다. 추가 화면 없음.
+
+Heading: 모션
+
+Subtle stagger (팩 motion 3). transform/opacity만. 150–300ms 구간. reduced-motion에서 duration 0.01ms.
+
+Heading: 접근성
+
+- skip link → `#products`
+- 헤딩 순서 h1만 (카테고리). 카드 제목은 `<p class="name">` (h2 스킵 방지 — 카드가 문서 개요가 아님)
+- 아이콘 버튼 `aria-label`
+- 스와치 `aria-pressed`, 탭 `aria-selected`
+- 포커스 링 2px / offset 2px. 링 제거 금지
+- 이미지 alt는 증거 상품명
+- 좋아요는 색 + 라벨, 필터는 스와치 + 텍스트
+- viewport zoom 비활성 없음
+
+Heading: 오프라인
+
+- 외부 `@import` / CDN / 원격 img 없음
+- `image.jpg` — Grok Imagine, 레인 A 고정 채널
+- `g-*.png` — 동일 스냅샷 증거, 로컬 복사
+- CSS 리셋에 `figure`, `blockquote`, `ul`, `ol` 마진 0 (UA 기본값 잔존 방지)
+
+Heading: 안티패턴 (팩이 금지한 것)
+
+- 이모지를 구조 아이콘으로 쓰지 않음
+- 카드마다 다른 섀도/라디우스 금지
+- hover-only 필터 금지
+- 다크 캔버스에 라이트 카탈로그를 뒤집지 않음 (증거 우선)
+- 공식 로고 파일 없음

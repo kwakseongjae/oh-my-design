@@ -20,6 +20,11 @@ import {
   targetsAvailableForScope,
   postInstallGuidance,
 } from '../../../src/cli/install-skills.js';
+// Cursor receives every shipped product skill except `claude-design`. Derive the
+// expectation from the doctor's shipped-skill list (itself asserted equal to
+// package.json `files` in doctor.test.ts) so adding a skill cannot leave a stale
+// literal behind — which is exactly how this expectation went stale at 22.
+import { REQUIRED_PRODUCT_SKILLS } from '../../../src/cli/doctor.js';
 
 const CORE_V2_SCHEMAS = [
   'design-md-core-manifest-v2.schema.json',
@@ -961,7 +966,7 @@ describe('install-skills', () => {
     const installedSkills = readdirSync(skillsRoot)
       .filter((skill) => existsSync(join(skillsRoot, skill, 'SKILL.md')))
       .sort();
-    expect(installedSkills).toHaveLength(21);
+    expect(installedSkills).toHaveLength(REQUIRED_PRODUCT_SKILLS.length - 1);
     expect(installedSkills).not.toContain('claude-design');
     expect(installedSkills).toContain('omd-apply');
     const applySkill = readFileSync(join(skillsRoot, 'omd-apply', 'SKILL.md'), 'utf8');

@@ -1,0 +1,81 @@
+Heading: NAVER home — design system
+
+run for the home search task. Offline first render. Snapshot `2026-08-22T19-51-00-372Z`. Chrome numbers come from . Copy on the home is only what that capture shows.
+
+Going with: audience = people who open the portal to look something up · use = type a query and land on results · tone = utilitarian.
+
+Heading: Position
+
+The page is a search portal, not a marketing landing. The fold’s job is the query field. Rails under it (shortcuts, newsstand, login) are discovery surfaces. That is why the macrostructure is **Ecosystem Index**, not a hero statement.
+
+Heading: stamp
+
+- Genre: editorial (silent default; the brief did not name SaaS / atmospheric / playful)
+- Macrostructure: Ecosystem Index
+- Theme: custom, tuned to measured chrome — not a catalog dress
+- Vibe: white paper, portal green, search-first
+- Axes: light paper / grotesk-sans / green accent
+- Nav: N12 announcement banner + retracting bar (dismiss ×, scroll-down hides the cream strip)
+- Footer: Ft2 single line
+- CTA: C2, the search form itself
+- Enrichment: E8, one generated still in the promo figure (`image.jpg`)
+- Motion: cut, except button press and the banner translate
+
+Pre-emit critique: P4 H5 E4 S4 R4 V4
+
+Heading: Tokens
+
+All colour and `font-family` declarations in `render.html` point at these names. No mid-render hex.
+
+Heading: Colour (OKLCH, hue 149.53 from `#03c75a`)
+
+| Token | Value | Source |
+| --- | --- | --- |
+| `--color-paper` | `oklch(99.40% 0.006 149.53)` | rendered canvas `#fefefe`, chroma lifted off zero |
+| `--color-ink` | `oklch(30.12% 0.008 149.53)` | body `#2e2e2e` |
+| `--color-accent` | `oklch(72.50% 0.2014 149.53)` | `#03c75a` (mobile primary / search ring) |
+| `--color-accent-deep` | `oklch(54.00% 0.168 149.53)` | filled controls so `--color-accent-ink` holds contrast |
+| `--color-accent-ink` | same as paper | text on green fill |
+| `--color-banner` | `oklch(97.25% 0.0189 93.66)` | cream install strip |
+| `--color-focus` | `oklch(42.00% 0.140 149.53)` | instant `:focus-visible` ring |
+| `--color-error` | `oklch(55.00% 0.190 25)` | empty-query and LIVE chip |
+
+Neutrals sit between paper and ink at chroma ≥ 0.006. No `#000` / `#fff`.
+
+Heading: Type
+
+Evidence family is `-apple-system` at 14.7 px / weight 500–700 / tracking `-0.4px`. The first render cannot fetch a webfont, so the stack is the platform gothic that that family already is:
+
+`--font-display` / `--font-body` = `"Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", ui-sans-serif, sans-serif`
+
+One family on purpose (austere portal chrome). Headings stay roman. Body floor is 16 px; compact chrome uses `--text-sm` (14 px), nearest to the measured 14.7 px. Tracking `-0.025em`.
+
+Heading: Space, radius, motion
+
+4 pt scale `--space-3xs` … `--space-3xl`. Control height 44 px (`--control-h`). Search field 52 px to sit on the same row as the green ring. Pill radius on the field; `--radius-sm` on modules. Easings `--ease-out` / `--ease-in` / `--ease-in-out`. Durations 120 / 220 / 420 ms. `prefers-reduced-motion: reduce` collapses spatial motion to 150 ms.
+
+Heading: Layout
+
+- Sticky N12: cream banner, then hamburger + pay + search + (desktop) alert/cart.
+- Desktop ≥ 60 rem: shortcut row; board `1.65fr / 0.9fr` (promo+newsstand | login+shopping chrome).
+- Promo: copy left, `image.jpg` right. Mobile stacks copy then image. Image tracks use `minmax(0, 1fr)`.
+- Newsstand: tab row from the capture; press grid 2 / 3 / 6 columns. Tabs that have no list in the snapshot open an honest empty line instead of invented articles.
+- Results replace the home `<main>` in the same file. No extra product screens.
+
+`html` and `body` use `overflow-x: clip`. Reset zeroes `figure`, `blockquote`, `ul`, `ol` margins (UA defaults broke measurement elsewhere).
+
+Heading: Components and eight states
+
+Search form, search submit, AI chip, icon buttons, login, press cells, shortcuts, and banner download each have default · hover · `:focus-visible` · `:active` · disabled · loading · error · success. Input border width does not change between states; focus uses `outline`. Empty submit writes “검색어가 비어 있습니다. 단어를 입력한 뒤 검색을 눌러 주세요.” Success is silent: the results main appears.
+
+Wordmark is the letter **N** and the word **NAVER**, not a logo file.
+
+Heading: Imagery
+
+Desktop chrome sampled 0 media above the size floor. The capture still shows a three-mattress product still in the promo. `image.jpg` is a new photograph in that composition (Grok Imagine, 16:9, no lettering). Shopping product tiles are omitted — that slot is not the representative image.
+
+Heading: What this file is not
+
+- Not a catalog Garden/Newsprint theme.
+- Not a second screen for mail, login, or shopping.
+- Not a live web index. Result rows echo the query and say they are local.

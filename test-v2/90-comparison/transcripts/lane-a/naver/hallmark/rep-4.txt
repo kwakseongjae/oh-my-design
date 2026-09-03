@@ -1,0 +1,95 @@
+Heading: system — NAVER home (studied DNA)
+
+genre editorial · tone utilitarian · macrostructure Ecosystem Index
+
+Going with: audience = Korean search-portal users · use = type a query and reach results · tone = utilitarian.
+
+This is the first run in this output directory. Previous nav: none. This build: N12, because the capture stacks a one-line browser promo above the real bar. Footer: Ft2, not Ft3.
+
+Heading: DNA (image study, desktop-1440 + mobile-390)
+
+The capture is an Ecosystem Index, not a marketing landing. The fold is a search pill, a shortcut rail, then discovery bands (promo, newsstand, login, ad, shopping). Paper is near-white with a green tint. Accent is the observed portal green, used as a thin search ring and a filled login. Type is a single Korean gothic family at UI size — that single-family choice *is* the design.
+
+Official marks are not used. The wordmark is the text `NAVER` in the outlier mono, in two slots only (search submit and login). Shortcut tiles are type in a rounded square, not service logos.
+
+```
+source_mode: image
+macrostructure: Ecosystem Index
+macrostructure_alt: Index-First
+hero: C2 inline form-as-CTA (search is the CTA)
+nav: N12 banner + retract
+footer: Ft2 inline single line
+display_role: heavy grotesque (Korean gothic)
+body_role: same family
+label_role: none
+pairing_logic: single family + mono outlier
+paper_band: light >85
+paper_value: oklch(99.2% 0.006 149.5)
+accent_value: oklch(72.5% 0.2014 149.5)  /* observed #03c75a */
+accent_footprint: small ≤5%
+density: dense
+asymmetry: left-weighted modules, search centred in the bar
+treatments: hairline panels, pill search
+reveal: none
+```
+
+Closest catalog cousin (not used): Studio. Theme route is studied-DNA; catalog rotation is off.
+
+Heading: Tokens
+
+All colour and font declarations in `render.html` go through these names. No mid-render hex.
+
+| Token | Value | Role |
+|---|---|---|
+| `--color-paper` | oklch(99.2% 0.006 149.5) | Page |
+| `--color-paper-2` | oklch(97.4% 0.008 149.5) | Hover / ticker |
+| `--color-banner` | oklch(96.2% 0.018 92) | N12 cream strip |
+| `--color-ink` | oklch(30.12% 0.012 149.5) | Body (observed #2e2e2e, hue-tinted) |
+| `--color-muted` | oklch(42% 0.018 149.5) | Placeholder / meta |
+| `--color-accent` | oklch(72.5% 0.2014 149.5) | Search ring |
+| `--color-accent-fill` | oklch(48% 0.160 149.5) | Filled login (darkened so `--color-accent-ink` clears 4.5:1) |
+| `--color-accent-ink` | oklch(99.2% 0.008 149.5) | Text on fill |
+| `--color-mark` | oklch(46% 0.18 255) | Promo emphasis word |
+| `--color-focus` | oklch(42% 0.14 149.5) | `:focus-visible` |
+| `--color-error` | oklch(52% 0.19 25) | Invalid search |
+| `--font-display` / `--font-body` | Apple SD Gothic Neo, … | Local gothic. No network fonts. |
+| `--font-outlier` | ui-monospace | Wordmark only |
+| `--space-*` | 4pt scale, 3xs–2xl | Gap and padding |
+| `--control-h` | 2.75rem | 44px hit floor |
+| `--ease-out` / `--ease-in` / `--ease-in-out` | named curves | Transform/opacity only |
+| `--z-sticky-nav` | 300 | Above in-page sticky |
+
+Offline constraint: Google Fonts / Fontshare are not loaded. The named gothic is the local stand-in for the capture’s `-apple-system` stack.
+
+Heading: Page shape
+
+1. **N12** — cream announcement, dismiss ×, retracts on scroll-down.
+2. **Bar** — menu, pay (text, not a logo), C2 search pill, notify, cart.
+3. **Shortcut rail** — ten destinations, type marks.
+4. **Promo** — capture headline + `image.jpg` (LCP, `fetchpriority="high"`).
+5. **F3 newsstand** — tab row (S4) + ticker + publisher name grid (text, not press logos).
+6. **Login** — filled accent button.
+7. **Ad slot** — dates from the capture, labelled 광고. No third-party mark.
+8. **Shopping chrome** — tab labels from the capture; no invented SKUs or prices.
+9. **Ft2** — wordmark · 홈 · snapshot date.
+10. **Results view** — same HTML file, same search. No extra product screens.
+
+Search is the only task path. Empty submit sets an error on the field (what / what to do). A non-empty submit writes `?q=` and swaps `data-view="results"`.
+
+Heading: States (search, login, icon buttons)
+
+Default · hover (`hover: hover`) · `:focus-visible` (instant ring, no fade) · `:active` (`translateY(1px)`) · `:disabled` (opacity + cursor + attribute) · loading (`is-loading` / `data-state`) · error (`is-error` + `aria-invalid` + helper) · success (`is-success` after a query lands).
+
+Input border-width stays 1px. Helper slot is `min-height: 1lh` and absolutely placed so it does not shove the shortcut rail.
+
+Heading: Motion
+
+Editorial default-off. Two primitives only: N12 banner translate, control press `translateY`. `prefers-reduced-motion: reduce` collapses durations to 150ms. No `transition-all`, no hover-scale, no scroll-fade.
+
+Heading: Copy
+
+Capture copy only: banner, placeholder, shortcuts, promo, newsstand names, ticker, login, ad dates, whale dialog, shopping tabs. No invented metrics. Results rows echo the user’s query; they do not fabricate article titles or hit counts.
+
+Heading: Image
+
+`image.jpg` is a generated still for the promo module (three quilted mattresses, no people, no marks). It is the LCP `<img>` in the promo `<figure>`. Prompt, session, and sha256 live in `trace.md`.

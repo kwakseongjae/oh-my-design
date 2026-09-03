@@ -1,0 +1,175 @@
+Heading: Musinsa Tops — design system ()
+
+Lane A / arm  / brand musinsa / rep-3.
+Surface: 상의 category listing (`/category/001`). Task: apply one filter and narrow the product grid.
+Stack: standalone HTML + CSS (pack stack `html-tailwind` rules, no build, no network).
+
+This file is the persisted design record for the run. `--persist` was not used, so nothing was written outside .
+
+Heading: Requirements (pack Step 1)
+
+| Slot | Decision |
+|------|----------|
+| Product type | Fashion e-commerce category listing (C-end, Korea) |
+| Audience | Shoppers browsing 상의 and narrowing by filter |
+| Surface | One screen only — desktop-1440 and mobile-390 of the same listing |
+| Style keywords | Content-first, dense catalog, high contrast, black/white chrome |
+| Stack | `html-tailwind` patterns in a single file (no Tailwind CDN) |
+| Constraint | Opens with zero external network. No official logo file — text wordmark `MUSINSA`. |
+
+Heading: `--design-system` (pack Step 2)
+
+Query: `fashion ecommerce apparel category listing streetwear dense catalog korea`
+Dials: `--variance 3 --motion 3 --density 8` `-p "Musinsa Tops"` `-f markdown`
+
+Returned:
+
+- Pattern: **Portfolio Grid** — visuals first, filter by category, fast loading
+- Style: **Exaggerated Minimalism** (fashion / editorial)
+- Color (default e-commerce row): green `#059669` on `#ECFDF5`
+- Type: **Luxury Serif** — Cormorant + Montserrat (Google Fonts URL)
+- Motion: Subtle scroll reveal 300–400ms `power1.out`
+- Anti-patterns: flat design without depth; text-heavy pages
+- Density 8 overrides spacing toward 8–32px
+
+The listing task is a filter-heavy catalog, not a fashion landing. Giant type (`clamp(3rem, 10vw, 12rem)`) and mint commerce green contradict both the captured chrome and the density dial. Step 3 searches override color, type, and style for this page. The Portfolio Grid pattern and density-8 spacing are kept.
+
+Heading: Domain searches (pack Step 3)
+
+Heading: Color — `fashion ecommerce black white catalog`
+
+Kept **Museum/Gallery**:
+
+| Role | Hex | Token |
+|------|-----|--------|
+| Primary | `#18181B` | `--color-zinc-900` |
+| Background | `#FAFAFA` → evidence `#FEFDFD` | `--color-bg` |
+| Foreground | `#09090B` | `--color-zinc-950` |
+| Card | `#FFFFFF` | `--color-surface` |
+| Border | `#E4E4E7` / evidence `#E0E0E0` | `--color-border` |
+| Muted | `#666666` (captured button color) | `--color-muted` |
+| Destructive / sale | `#E11D48` | `--color-sale` |
+
+E-commerce green (`#059669`) and wardrobe-planner rose were rejected: they are pack defaults for generic retail, not this chrome.
+
+Evidence chrome mapped onto the same tokens: header `#000000` 52px, filter band `#F5F5F5`, page `#FEFDFD`, outline chips `#E0E0E0` / radius 4px, body `#000000`, type 13–14px / weight 400–500.
+
+Heading: Style — `minimalism fashion catalog dense high contrast`
+
+For the listing surface: **Minimalism & Swiss Style** + **Data-Dense Dashboard** spacing, not oversized Exaggerated Minimalism.
+
+- Monochrome, grid, no decorative shadow
+- 8px rhythm, 12–14px catalog type
+- One accent (sale/like red, arrival blue) — matches “single accent only”
+- Hover 150–300ms; `prefers-reduced-motion` kills motion
+
+Heading: Typography — `fashion modern sans catalog`
+
+Pack luxury pairing is Cormorant + Montserrat (network `@import`). Offline rule forbids that.
+
+Render stack (local only):
+
+```
+"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+"Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif
+```
+
+Captured family is Pretendard Variable. If it is not installed, the OS Korean gothic is the fallback. No Google Fonts request.
+
+Closest pack pairing if a network font were allowed: **Minimal Swiss** (Inter/Inter) — one family, weight for hierarchy. That is what the local stack imitates.
+
+Heading: Product — `ecommerce fashion catalog listing`
+
+**Directory / Listing Site** → Filter-Heavy Grid. That is the IA: sticky store bar, category title, facet rows, tally, product grid. Not a hero landing.
+
+Heading: UX — `filter product grid ecommerce accessibility`
+
+Applied: alt text on shots, heading order `h1` only, `aria-label` on icon buttons, `aria-pressed` on filters, keyboard-visible focus ring 2px, contrast black-on-white, skip link, `aria-live` on the product count.
+
+Heading: Icons — Phosphor outline set, inlined SVG
+
+`list`, `magnifying-glass`, `heart`, `shopping-cart`, `funnel` analog (color dots + chips). No emoji as nav/system icons.
+
+Heading: Stack — `html-tailwind` `product grid filter responsive`
+
+- Grid + gap utilities (here: flush 6-col desktop / 3-col mobile, matching the capture)
+- `space-y` avoided on cards; padding lives on `.meta`
+- Images declare `width`/`height` or `aspect-ratio: 5/6` (CLS)
+
+Heading: Token architecture (pack design-system skill)
+
+Three layers. Components never take raw hex.
+
+```
+primitive  →  semantic  →  component
+```
+
+Heading: Primitive
+
+`#000000` `#18181B` `#09090B` `#FFFFFF` `#FEFDFD` `#F5F5F5` `#E0E0E0` `#E4E4E7` `#666666` `#999999` `#E11D48` `#1565C0`
+spacing 4 / 8 / 12 / 16 / 20 / 24
+radius 4px
+duration 180ms ease-out
+header 52px
+
+Heading: Semantic
+
+| Token | Value |
+|-------|--------|
+| `--color-bg` | page |
+| `--color-foreground` | `--color-zinc-950` |
+| `--color-primary` | black header / selected chip |
+| `--color-muted` | secondary copy |
+| `--color-border` | hairline |
+| `--color-sale` | discount |
+| `--color-arrive` | delivery promise (text + not color alone) |
+
+Heading: Component
+
+| Token | Rule |
+|-------|------|
+| Filter chip | 32px min height, 16px pill, 1px border; selected = inverted black |
+| Color swatch | 14px dot; selected = 2px white + 4px black ring (not color-only) |
+| Subcat | 44px min, 2px black underline when pressed |
+| Product card | 5:6 shot, 10–12px meta pad, 2-line clamp on title |
+| Icon button | 44×44px hit, 20px glyph |
+| Wordmark | 15px / 700 / 0.12em tracking — text, not a logo asset |
+
+Heading: Page grammar
+
+One screen. No extra routes.
+
+1. Store header (text wordmark)
+2. `h1` 상의
+3. Facets: subcat, brand, **color**, material, quick chips, secondary
+4. Applied-filter chip (`블랙 ×`)
+5. Tally: 상품 / 브랜드 / 스냅
+6. Sort + count
+7. Product grid
+
+**First paint applies one filter: 컬러 = 블랙.** Unfiltered capture count is `350,441`. Narrowed tally uses `48,217` as a catalog-scale stand-in for that color (not measured). Clearing the chip restores `350,441`. Subcat / gender filters further intersect the 12 sampled goods.
+
+`image.jpg` is the representative generated catalog still, used as the 시어서커 체크 셔츠 블랙 card. Other shots are local CSS garment tiles (offline). No `msscdn` URLs.
+
+Heading: Interaction
+
+- Click/tap is the primary control (no hover-only filter)
+- `aria-pressed` toggles; color and gender can be cleared by re-click
+- Wishlist hearts toggle `aria-pressed`
+- Focus ring 2–4px on interactive elements
+- Reduced motion: transitions off
+- Empty state copy if the intersection is zero
+
+Heading: Pre-delivery (pack checklist, web listing)
+
+- [x] No emoji as structural icons (SVG)
+- [x] `cursor: pointer` on buttons
+- [x] Hover/press 150–300ms; scale on press does not shift layout bounds of neighbors
+- [x] Text contrast ≥ 4.5:1 on white
+- [x] Visible `:focus-visible`
+- [x] `prefers-reduced-motion`
+- [x] 375 / 768 / 1024 / 1440
+- [x] Touch targets ≥ 44px on header and filter chips
+- [x] No official logo file
+- [x] figure / blockquote / ul / ol margin reset
+- [x] Zero network requests from `render.html`

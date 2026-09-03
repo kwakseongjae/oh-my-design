@@ -1,0 +1,227 @@
+{
+ "evaluator": "sonnet5",
+ "lane": "A",
+ "chunk": "rescore",
+ "axes": [
+  "defects"
+ ],
+ "postHoc": false,
+ "rows": [
+  {
+   "brand": "apple",
+   "rep": 1,
+   "slots": {
+    "B": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "apple",
+   "rep": 2,
+   "slots": {
+    "A": "hallmark"
+   }
+  },
+  {
+   "brand": "apple",
+   "rep": 3,
+   "slots": {
+    "B": "hallmark",
+    "C": "omd"
+   }
+  },
+  {
+   "brand": "apple",
+   "rep": 4,
+   "slots": {
+    "A": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "baemin",
+   "rep": 1,
+   "slots": {
+    "A": "hallmark",
+    "B": "omd",
+    "C": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "baemin",
+   "rep": 4,
+   "slots": {
+    "B": "hallmark"
+   }
+  },
+  {
+   "brand": "coupang",
+   "rep": 1,
+   "slots": {
+    "A": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "coupang",
+   "rep": 2,
+   "slots": {
+    "C": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "coupang",
+   "rep": 3,
+   "slots": {
+    "A": "uiuxpromax",
+    "B": "hallmark",
+    "C": "omd"
+   }
+  },
+  {
+   "brand": "coupang",
+   "rep": 4,
+   "slots": {
+    "A": "hallmark",
+    "B": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "figma",
+   "rep": 1,
+   "slots": {
+    "A": "uiuxpromax",
+    "B": "hallmark",
+    "C": "omd"
+   }
+  },
+  {
+   "brand": "figma",
+   "rep": 2,
+   "slots": {
+    "B": "hallmark"
+   }
+  },
+  {
+   "brand": "figma",
+   "rep": 3,
+   "slots": {
+    "C": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "figma",
+   "rep": 4,
+   "slots": {
+    "A": "omd",
+    "C": "hallmark"
+   }
+  },
+  {
+   "brand": "karrot",
+   "rep": 2,
+   "slots": {
+    "B": "omd"
+   }
+  },
+  {
+   "brand": "karrot",
+   "rep": 4,
+   "slots": {
+    "B": "uiuxpromax",
+    "C": "hallmark"
+   }
+  },
+  {
+   "brand": "musinsa",
+   "rep": 1,
+   "slots": {
+    "A": "uiuxpromax",
+    "B": "hallmark"
+   }
+  },
+  {
+   "brand": "musinsa",
+   "rep": 2,
+   "slots": {
+    "A": "uiuxpromax",
+    "B": "hallmark"
+   }
+  },
+  {
+   "brand": "musinsa",
+   "rep": 3,
+   "slots": {
+    "C": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "musinsa",
+   "rep": 4,
+   "slots": {
+    "A": "hallmark",
+    "C": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "naver",
+   "rep": 1,
+   "slots": {
+    "B": "omd",
+    "C": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "naver",
+   "rep": 2,
+   "slots": {
+    "B": "uiuxpromax",
+    "C": "hallmark"
+   }
+  },
+  {
+   "brand": "naver",
+   "rep": 3,
+   "slots": {
+    "A": "hallmark",
+    "B": "omd",
+    "C": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "naver",
+   "rep": 4,
+   "slots": {
+    "A": "omd",
+    "B": "uiuxpromax",
+    "C": "hallmark"
+   }
+  },
+  {
+   "brand": "toss",
+   "rep": 2,
+   "slots": {
+    "C": "omd"
+   }
+  },
+  {
+   "brand": "toss",
+   "rep": 3,
+   "slots": {
+    "C": "hallmark"
+   }
+  },
+  {
+   "brand": "toss",
+   "rep": 4,
+   "slots": {
+    "C": "uiuxpromax"
+   }
+  },
+  {
+   "brand": "wanted",
+   "rep": 4,
+   "slots": {
+    "A": "hallmark",
+    "C": "uiuxpromax"
+   }
+  }
+ ]
+}

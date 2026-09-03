@@ -1,0 +1,88 @@
+Heading: 채용 목록 표면 시스템
+
+벤치 산출물. 프로젝트  채택하지 않는다 (`surface-local-only`). 토큰·컴포넌트는 이 문서가 잠그고 `render.html`만 소비한다.
+
+근거 등급: 스냅샷·evidence.json은 `repository-fact`. 직군/경력 분류는 직무명에서 유도한 `agent-proposed-greenfield-decision`. 스냅샷에 안 보인 회사명·위치·연봉·공고 본문은 `unresolved` — 필드 단위로 생략.
+
+Heading: Philosophy
+
+한 문장: **많이 훑고, 조건을 걸고, 카드 하나를 연다.**
+
+- P1 스캔이 과업이다. 히어로 카피·일러스트를 버리고 3:2 미디어 그리드를 남긴다.
+- P2 색은 카드 사진이 쓴다. 크롬은 종이/잉크이고 악센트는 신호(현재 탭, 가입 글자, 포커스)만.
+- P3 한글 고딕 한 가족. 디스플레이도 같은 얼굴의 무게로 세운다. 라틴 세리프 폴백 없음.
+
+Heading: Derive
+
+| ID | 결정 | 근거 |
+|---|---|---|
+|  | 표면 장르 = 라운드 미디어 타일. 카드 박스 보더/섀도우 없음 | 스냅샷 카드는 이미지 라운드만 있다 |
+|  | 레이아웃 = 카탈로그 격자. 초광폭은 컬럼 추가. 거터 clamp(16px, 5.55vw, 80px) | desktop 카드 x=80, 4×308+3×16 |
+|  | 밀도 = 필터 컴팩트 + 미디어 여유. 그리드 행간 40px, 카드 내부 12/4/2 | 스냅샷 리듬, 프리셋 카드 해부 |
+|  | radius-media 12px, 칩/컨트롤 999px | 스냅샷 칩·이미지 |
+|  | elevation rest=없음, 팝오버만 그림자, 호버는 면/보더 | C24, 스냅샷에 카드 리프트 없음 |
+|  | accent = 실측 #0066ff의 OKLCH. 면 전체 칠 금지 | mobile chrome `color: #0066ff` |
+|  | paper/ink는 순수 #fff/#000이 아님 (G7). paper oklch(0.992 0.008 95), ink oklch(0.198 0.012 280) ≈ #171719 | desktop bodyColor #171719, canvas #ffffff |
+|  | motion: 120/200/320ms, ease-out/in, transform·opacity만 | 스냅샷 motion.present=false, 계약 바닥 |
+|  | 타입 스택 Pretendard Variable → Apple SD Gothic Neo → Noto Sans KR. 디스플레이 1.75–2.25rem / 본문 15px | 실측 15px/600, 한글 keep-all |
+|  | 정렬 컨트롤은 보이되 순서 데이터 없음 → 수록된 순서 유지 | P-FN-06 |
+
+Heading: Tokens
+
+`:root` 커스텀 프로퍼티. 페이지 로컬 hex 금지 (G48).
+
+- 색: `--color-paper/ink/ink-muted/ink-faint/chip/chip-track/rule/accent/accent-ink/on-media/scrim` + 플레이트 톤 10개
+- 공간: 4/8/12/16/24/40px, `--space-section: 2.5rem`, `--space-gutter`
+- 라운드: `--radius-media: 12px`, `--radius-pill: 999px`
+- 타입: `--font` 한글 고딕
+- 모션: `--dur-fast/base/slow`, `--ease-out/in`
+
+Heading: Components (프리셋 파생)
+
+| 컴포넌트 | 프리셋 | 토큰 | 상태 |
+|---|---|---|---|
+| 직군·경력·지역 리스트박스 | P-FN-01 | radius-control, rule, chip-track | default/hover/focus-visible/expanded/option-active/selected. Escape=취소, Enter/Space/Tab=커밋, aria-activedescendant |
+| 필터 칩 | P-FN-04 | pill, rule, ink 반전 활성 | default/hover/pressed. 태그 전체 기본 활성. 필터 해제는 활성 필터가 있을 때만 |
+| 빈 결과 | P-FN-05 | paper, ink-muted | 정직한 문장 + 필터 해제 1개 |
+| 결과 정의 줄 | P-FN-06 | 13px muted | 직군·경력·태그·검색·수록된 순서·건수 |
+| 채용 카드 | P-FN-03 미디어 블록 + 커머스 카드 해부 (미디어→제목→회사→메타). 마켓 행(P-MK-01)은 이 스냅샷의 3:2 타일에 안 맞음 | radius-media 12px, 내부 갭 12/4/2 | default/hover(밝기)/focus-visible/active(scale)/open(악센트 링). 북마크는 별 컨트롤 (C25) |
+| 상세 | native `<dialog>` | scrim, radius 16px | open/closed. 레코드 id 노출. 본문·연봉·지원은 정직한 부재 |
+| 라우트 포커스 | P-FN-02 | `#page-title:focus { outline: none }` | 최초 포커스 링 억제 |
+
+히트 타깃 ≥44px (C2, C28). 네이티브 select 없음 (G28).
+
+Heading: Layout grammar
+
+**카탈로그 격자.** 1440 = 4열, 860–1100 = 3열, 390 = 2열, 320 = 1열. 트랙 `minmax(0, 1fr)` (G50). 콘텐츠 12장 — 격자 최소를 채운다 (GS6).
+
+폴드: 워드마크 · 채용 현재 · 회원가입/로그인(primary) · 직군/경력 · 칩 · 첫 카드 행.
+
+한 화면만. 이력서·소셜 등은 과업 밖 — 누르면 상태줄에 부재를 알리고 화면을 추가하지 않는다.
+
+Heading: Data
+
+진실 소스:  캡처·evidence.json. 12개 직무명은 이미지 alt. 회사·위치·경력은 뷰포트에 글자로 보인 것만.
+
+필터 관측:
+
+- 직군/경력/검색/한국 → 부분 집합
+- 스냅샷에 보인 기업 태그(글로벌 TOP, 유니콘 등)는 카드별 값이 없음 → 적용 시 0건 (P-FN-05)
+- 정렬 3버튼은 눌리지만 시각·aria만 바꾸고 순서는 수록 순
+
+Heading: Journey (SELF-WALK)
+
+브리프 동사: **필터를 적용한다**, **채용 카드 하나를 연다**.
+
+| 동사 | 키보드 | 기계 증거 |
+|---|---|---|
+| 필터 | Tab → 직군 트리거 → Enter → 화살표 → Enter. 또는 칩에서 Space | `aria-expanded`, `aria-activedescendant`, `aria-selected` / 칩 `aria-pressed`, `#job-grid[data-state=filtered\|empty]`, `#result-status` 문구 |
+| 채용 카드 열기 | Tab → `.card-open` → Enter | `dialog[data-state=open]`, 카드 `data-state=open`, 대화상자 안 레코드 id, `document.title` 갱신, 닫으면 트리거로 포커스 복귀 |
+
+Primary CTA 1개: `회원가입/로그인` `data-cta="primary"`. 카드 열기는 `data-cta="local"`. main 1, h1 1.
+
+Heading: Honesty
+
+- 공식 로고 원본 없음. 워드마크는 텍스트 `wanted`.
+- 생성 이미지 1장(`image.jpg`)만 네트워크 없이 로드. 나머지 미디어는 실측 팔레트 플레이트.
+- 연봉·지원자 수·전체 공고 수·평점 없음 — 푸터와 대화상자가 카테고리를 이름으로 고지.
+- `합격보상금 100만원`은 스냅샷 모든 카드 오버레이를 재현한 UI 배지(정적, C27).

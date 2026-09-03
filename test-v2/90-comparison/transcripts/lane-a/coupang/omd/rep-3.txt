@@ -1,0 +1,177 @@
+Heading: 쿠팡 홈 재구성 — 디자인 시스템
+
+스냅샷 `2026-08-22T19-48-17-298Z` (`desktop-1440` 1440×900)과
+만 입력으로 쓴다.
+브리프 과업은 하나다: **검색창에 질의를 입력해 상품 목록으로 이동한다.**
+홈 이외의 화면은 이 과업의 도착점(검색 결과 목록)뿐이다.
+
+구현은 `render.html` 한 파일. 토큰 이름은 CSS `:root`와 이 문서가 같다.
+
+Heading: 철학
+
+**한 줄 입장.** 이 화면은 광고 히어로가 아니라 **검색으로 물건을 찾는 커머스 크롬**이다.
+
+원칙과 희생:
+
+1. **검색이 유일한 주 과업이다.** 카테고리 서랍·기획전 레일·오늘의 발견은
+   홈의 맥락이지 별도 제품 화면이 아니다. 희생: 장바구니·마이페이지·기획전
+   상세를 만들지 않는다.
+2. **크롬은 측정값, 사진은 역할.** 헤더 높이 70px, 페이지 면 `#fefefe`,
+   본문 색 `#212b36` / `#7b7b7b`, 서체 Apple SD Gothic Neo 스택은 evidence
+   `chrome`에서 온다. 히어로 사진은 잠긴 역할 — *지금 미는 카테고리와 혜택을
+   상품 실물로 보여 준다* — 를 생성 이미지로 채운다. 희생: 스냅샷에 있던
+   제조사 로고·공식 워드마크 원본은 복제하지 않는다.
+3. **밀도는 카탈로그, 악센트는 신호.** 면 장르는 각진 타일(보더 카드).
+   파란 카테고리 판과 검색 테두리만 악센트다. 희생: 라운드 히어로, 퍼플
+   그라데이션, 아이콘 타일 3열을 쓰지 않는다.
+
+Heading: 결정 표
+
+| ID | 결정 | 근거 |
+|---|---|---|
+|  | 지면 `--color-paper: #fefefe`, 유틸 `--color-util: #f0f0f0` | evidence `pageBackgroundRendered.hex`, 헤더 밴드 실측 |
+|  | 잉크 `#171717` / `#212b36` / muted `#5a5a5a` | evidence typeScale h3 `#212b36`, p `#7b7b7b`. muted는 11px에서 4.5:1을 맞추려고 `#7b7b7b`보다 한 단계 어둡게 |
+|  | 상단 프로모 면 `#c8f2fd`, `#b8c4d8` | viewport 상단 밴드 샘플 |
+|  | 검색 오류 잉크 `#9b1c1c` | 시스템 제안. 스냅샷에 오류 상태가 없어 `agent-proposed` |
+|  | 히어로 위 글자 `#f4f1ea`, 사진 뒤 `#2a1c18` | 스냅샷 히어로가 석양 사진 위에 흰 헤드라인을 올린다 |
+|  | 악센트 `#4269f6`, 검색 테두리 `#5c8bee` | 카테고리 버튼·검색 박스·장바구니 뱃지에서 샘플 |
+|  | 면 장르 = 각진 타일, `--radius-card: 0`, 컨트롤만 2px | 스냅샷 카드·레일이 직각. 위젯 키트처럼 모든 면에 같은 radius를 쓰지 않음 |
+|  | 워드마크 글자색 `#c64233`, 소문자 `coupang` | 로고 파일 금지. 스냅샷 워드마크에서 샘플한 적갈 |
+|  | 로켓 라벨 `#1b8f4e` | 스냅샷 배송 뱃지가 초록. 정확한 hex는 스냅샷 아래 접힘이라 근사 |
+|  | 캠페인 필 `#e24b6a`는 칩 한 개만 | 악센트 면적 ≤5%. 히어로 전체를 빨강으로 칠하지 않음 |
+|  | 한글 고딕 한 패밀리, 디스플레이는 크기·웨이트로만 | 로케일 타이포. 세리프 디스플레이 금지. evidence `Apple SD Gothic Neo` |
+|  | 디스플레이 `clamp` ≥2× 바디, 자간 −0.01em이 바닥 | 한글에 라틴 −0.03em을 옮기지 않음 |
+|  | 정보 밀도: 헤더 한 줄에 검색+카트, 히어로 450px | evidence header `heightPx: 70`, 히어로 imagery `h: 450` |
+|  | 레이아웃 문법 = 풀블리드 히어로 + 우측 레일 오버레이 + 아래 2열 기획 | 스냅샷 첫 화면. 벤토(5칸+)를 쓰지 않음 — 데이터 칸이 부족하면 문법을 축소 (GS6) |
+|  | 모션은 hover 배경만, 120ms, transform/opacity 외 금지 | 과업 화면. 자동 회전 캐러셀 없음 (evidence `motion.present: false`) |
+|  | 카피 보이스: 짧은 명사·동사, 구현 어휘 금지 | “data.json” 같은 말을 화면에 쓰지 않음. 샘플 고지는 푸터 한 줄 |
+
+출처 클래스:  = `repository-fact`(evidence/스냅샷).
+,  muted 보정,  근사 = `agent-proposed-greenfield-decision`.
+공식 로고 파일 = `unresolved` → 생략하고 텍스트 워드마크로 대체.
+
+Heading: 토큰
+
+```css
+--color-paper: #fefefe;       
+--color-surface: #f7f7f7;     
+--color-util: #f0f0f0;        
+--color-ink: #171717;         
+--color-ink-2: #212b36;       
+--color-ink-muted: #5a5a5a;   
+--color-accent: #4269f6;      
+--color-accent-ink: #f7f8ff;  /* 쌍 */
+--color-search-edge: #5c8bee; 
+--color-mark: #c64233;        
+--color-rocket: #1b8f4e;      
+--font-sans: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo",
+             "Noto Sans KR", "Malgun Gothic", sans-serif; 
+--control-h: 40px;            /* 검색 입력 = 제출 버튼 높이 */
+--space-6: 40px; --space-7: 64px; /* 섹션 공기, 4pt 스케일 */
+```
+
+순수 `#000`/`#fff`는 베이스로 쓰지 않는다. 포커스 링은 `--color-focus`와
+같은 악센트 쌍이다.
+
+Heading: 컴포넌트 명세
+
+프리셋부터 고른다 (GS8).
+
+Heading: 검색 바 — no-preset: 쿠팡 홈 검색 콤보 (범위 리스트박스 + 필드 + 제출)
+
+해부: 범위 트리거(P-FN-01) → 입력 → (비활성 음성) → 제출 아이콘.
+상태: default / hover / focus-within / error(`aria-invalid` + `#q-error` role=alert) /
+disabled(음성만). 입력과 제출 높이 40px, 테두리 두께는 상태에서 바꾸지 않는다.
+포커스는 outline. 플레이스홀더를 레이블로 쓰지 않는다 — `상품 검색`은
+시각적으로 숨긴 `<label for="q">`.
+
+범위 선택은 **P-FN-01** 커스텀 리스트박스. 네이티브 `<select>` 없음.
+키보드: Arrow/Home/End/Enter/Space/Tab 커밋, Escape는 값 유지 취소.
+DOM 포커스는 트리거, 옵션은 `aria-activedescendant`.
+
+제출은 `data-cta="submit"`. 페이지에 다른 primary CTA를 두지 않는다.
+
+Heading: 카테고리 판 — no-preset: 스냅샷 좌측 블루 플레이트
+
+88×116px, 악센트 면, 햄버거+「카테고리」. 열림은 홈을 떠나지 않는 서랍.
+좁은 폭에서는 44×44 아이콘만, `aria-label="카테고리"` 유지.
+
+Heading: 기획전 히어로 — P-MK-05에서 카피/데이터 블록만 차용, 미디어는 생성 사진
+
+해부: 풀블리드 `figure` + 좌측 카피(eyebrow → h1) + 우측 레일.
+H1 사진 역할: 음료 실물이 피크닉 담요 위에 있고 뒤에 페스티벌 무대가 있다.
+이미지 파일은 `image.jpg` 하나, `width`/`height` 명시, LCP이므로 lazy 없음.
+장식 레일 썸네일은 SVG, `aria-hidden`.
+
+Heading: 우측 레일 — no-preset: 스냅샷 오버레이 리스트
+
+6행, 현재 기획은 `aria-current="true"` + 악센트 링. 행 전체가 링크, 내부 CTA 없음 (C25).
+
+Heading: 상품 카드 — P-CM-01 파생, 토큰  /
+
+이미지(고정 1:1, `minmax(0,1fr)`) → eyebrow(샘플·카테고리) → 상품명 2줄 클램프 →
+가격(카드 안 최대 웨이트, P-CM-06 세일가) → 메타(로켓 토큰).
+전체 클릭 카드, 내부 버튼 없음.
+
+Heading: 빈 결과 — P-FN-05
+
+정직한 한 줄 + 검색 지우기 1개. 일러스트 없음.
+
+Heading: 결과 수 — P-FN-06
+
+「‘질의’ · 범위 · 샘플 N건 · 수록된 순서」. 경고 밴드로 만들지 않는다.
+
+Heading: 레이아웃 문법
+
+**홈:** 풀블리드 캠페인 히어로(높이 450px, evidence imagery `h: 450`) +
+우측 레일 오버레이 + 폴드 아래 2열 기획(오늘의 발견). 초광폭 전략은
+히어로 전폭, 크롬·그리드는 중앙 1020px 웰 (C32 중앙 max + 히어로만 풀블리드).
+
+콘텐츠 역산: 레일 6행은 스냅샷에 있고, 오늘의 발견은 2타일+사이드 2개다.
+벤토 5칸 문법은 쓰지 않는다 (GS6).
+
+**검색 결과:** 같은 헤더(검색+카트) + 정의 라인 + 4열 카드 그리드
+(900px 미만 2열, 520px 1열). 그리드 트랙 `minmax(0, 1fr)` (G50).
+
+Heading: 과업 상태 (SELF-WALK)
+
+브리프 동사: **검색창에 질의를 입력해 상품 목록으로 이동한다.**
+
+| 동사 | 키보드 경로 | 프로그램 증거 |
+|---|---|---|
+| 검색어 입력 | Tab으로 `#q` → 입력 | `input#q` value |
+| 제출 | Enter 또는 `data-cta="submit"`에서 Enter/Space | `submit` 핸들러, 빈 값이면 `aria-invalid` + `#q-error[role=alert]` 포커스 복귀 |
+| 목록 도착 | 같은 문서에서 `#results` 표시, `#home` `hidden` | `body[data-state=results]`, `h1#page-title-results`에 프로그램 포커스(시각 링 억제, P-FN-02), `document.title` 갱신, `role=status`가 「‘질의’ · 샘플 N건」 |
+| 홈 복귀 | 워드마크 Enter | `data-state=home`, 홈 h1 포커스 |
+
+개발자 상태 스위처 없음. `data-state`는 실제 컴포넌트/바디에만 있다.
+
+Heading: 반응형 · 접근성
+
+- 검증 폭: 1440 / 390 / 320. `html { overflow-x: clip }`. 문서 가로 스크롤 금지.
+- 터치 타깃 최소 44px (아이콘 검색·카트·카테고리).
+- 스킵 링크는 `#main` (주 CTA가 아님).
+- 뷰마다 `main` 1, `h1` 1.
+- `:focus-visible`만 링. 라우트 헤딩 포커스는 링 없음.
+- `prefers-reduced-motion: reduce`에서 전이 제거.
+- 한글 `word-break: keep-all`, 디스플레이 `overflow-wrap: anywhere; min-width: 0`.
+- 음성 검색은 스냅샷에 아이콘만 있고 동작 증거가 없어 **disabled** +
+  “사용할 수 없습니다”. 없는 기능을 있는 것처럼 만들지 않음.
+
+Heading: 이미지
+
+대표 이미지 `image.jpg`는 레인 A 고정 채널(Grok Imagine)로 생성했다.
+프롬프트에 브랜드명을 넣지 않았고, 글자·로고를 넣지 않았다.
+구도는 스냅샷 히어로와 같다: 전경 음료 실물, 배경 야외 무대.
+이 파일이 홈 히어로 `figure`의 `src`다.
+
+Heading: 정직 · 한계
+
+- 공식 로고 원본 없음 → 텍스트 `coupang`.
+- 상품·가격은 스냅샷을 재구성한 **샘플**. 푸터 한 줄.
+- 실시간 재고·회원 세션·실제 결제 없음. evidence `authenticated: unknown`.
+- 스냅샷 히어로에 있던 제조사 마크는 생성 사진에 넣지 않았다.
+- `#7b7b7b` 11px는 대비가 아슬해서 muted를 `#5a5a5a`로 올렸다. 이는 측정값
+  수정이지 브랜드 선언이 아니다.
+- 검색 결과가 0건이면 빈 상태를 보여 주고, 카테고리만 맞는 샘플이 있으면
+  그 목록을 수록된 순서로 보여 준다. 없는 SKU를 지어 채우지 않는다.

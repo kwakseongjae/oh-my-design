@@ -1,0 +1,41 @@
+{
+  "runId": "lane-a-karrot-rep-1",
+  "arm": "omd",
+  "lane": "lane-a",
+  "brand": "karrot",
+  "repeat": 1,
+  "sourceFiles": [
+    {
+      "relativeId": "03-runs/lane-a/karrot/<arm>/rep-1/system.md",
+      "sha256": "0bde7a3c1fbc141668072baeedeaec3c236bf8453cdd74ab35c847e527bc3c7e"
+    }
+  ],
+  "sourceSha256": "0bde7a3c1fbc141668072baeedeaec3c236bf8453cdd74ab35c847e527bc3c7e",
+  "transcriptSha256": "05cfdcfd01ebf308890ded360abe537ef77f2e6bd2058afd659ce4cea27a461d",
+  "procedureFile": "TRANSCRIPTION.md",
+  "procedureSha256": "becf08f97cfd0a28052a6779171096649e7a6fef2ab581379382333f792a3c34",
+  "transcriberId": "opus5",
+  "verifierId": "orchestrator",
+  "transcriptionStartedAt": "2026-09-02T06:14:11Z",
+  "transcriptionEndedAt": "2026-09-02T06:14:11Z",
+  "verificationStartedAt": "2026-09-02T06:14:11Z",
+  "verificationEndedAt": "2026-09-02T06:14:11Z",
+  "encoding": "UTF-8",
+  "lineEnding": "LF",
+  "mapFile": "90-comparison/transcript-seals/lane-a/karrot/omd/rep-1.map.csv",
+  "mapSha256": "58769cf05014dacd1d7326776a011afabf8764e021db6baae537cf4e274f39a6",
+  "verificationResult": {
+    "tool": "test-v2/tools/transcribe-verify.mjs",
+    "toolSha256": "ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3",
+    "checks": "TRANSCRIPTION.md §7.1.1–§7.1.9",
+    "unitsChecked": 88,
+    "problems": [],
+    "attempts": 1,
+    "verifiedAt": "2026-09-02T06:14:11Z",
+    "verifiedBy": "orchestrator",
+    "declaredSpans": 14
+  },
+  "verdict": "PASS",
+  "transcriptFile": "90-comparison/transcripts/lane-a/karrot/omd/rep-1.txt",
+  "submittedToScoring": true
+}

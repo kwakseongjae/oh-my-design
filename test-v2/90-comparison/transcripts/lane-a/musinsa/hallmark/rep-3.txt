@@ -1,0 +1,150 @@
+Heading: MUSINSA 상의 카탈로그 — design system
+
+genre **editorial** · macrostructure **Catalogue** · theme **Sport**
+
+This page is a visual index of tops. One job: pick a color, watch the grid shrink.
+
+Heading: Inferences (design-context gate)
+
+- Audience: shoppers browsing the 상의 category
+- Use: apply one color filter and read a narrower product grid
+- Tone: utilitarian
+- Theme route: catalog (no custom-theme signal)
+- First  run in this output directory — no prior stamp to rotate against
+
+Heading: Structural fingerprint
+
+| Slot | Pick | Knobs |
+| --- | --- | --- |
+| Macrostructure | Catalogue | inventory header, equal cards, hairline row rules, no display hero |
+| Nav | N12 banner + retract | fill=solid accent, dismiss=yes, bar=sticky |
+| Footer | Ft1 mast-headed | wordmark size=xl, tagline=roman body, links=inline |
+| Feature | F6 product card grid | ratio=3/4, density=5-up (2-up at 320), micro-action=Save, price=under-name |
+| Filter chips | C1 outlined chip | shape=rectangular, density=compact, adornment=none |
+| Section head | S2 hanging | title stacked above lede, no left-margin tag |
+| Enrichment | none on the hero | Catalogue has no marquee. Photography lives in F6: one generated still (`image.jpg`) plus CSS plates |
+
+Previous nav: none. This build: N12, because the cookbook routes commerce to banner + retract, and editorial allows N12 as an alternate to N6.
+
+Sport axes: paper **light** · display **condensed** · accent **warm**.
+
+Heading: Tokens
+
+All color and font declarations in `render.html` read these names. No mid-render hex / OKLCH / `font-family` literals.
+
+Heading: Color (OKLCH, hue ~45–55)
+
+| Token | Value | Role |
+| --- | --- | --- |
+| `--color-paper` | `oklch(97% 0.012 55)` | page |
+| `--color-paper-2` | `oklch(94% 0.014 55)` | hover, plate ground |
+| `--color-paper-3` | `oklch(90% 0.016 55)` | recessed |
+| `--color-rule` | `oklch(84% 0.012 55)` | hairlines |
+| `--color-rule-2` | `oklch(76% 0.014 50)` | chip / save border |
+| `--color-muted` | `oklch(46% 0.018 50)` | meta |
+| `--color-neutral` | `oklch(38% 0.016 48)` | unused spare |
+| `--color-ink` | `oklch(18% 0.020 45)` | text, nav bar, selected chip |
+| `--color-ink-2` | `oklch(30% 0.018 45)` | lede |
+| `--color-accent` | `oklch(52% 0.19 32)` | banner, sale, saved heart, selection |
+| `--color-accent-ink` | `oklch(97% 0.012 55)` | text on accent |
+| `--color-focus` | `oklch(48% 0.20 32)` | `:focus-visible` |
+| `--color-error` | `oklch(48% 0.18 25)` | error state |
+| `--color-success` | `oklch(42% 0.12 145)` | success state |
+| `--color-garment-*` | white / black / gray / ivory / olive / pink | CSS plates only |
+
+Accent is a highlighter (banner strip, sale figure, saved heart). It is not a section fill.
+
+Heading: Type
+
+| Token | Stack | Use |
+| --- | --- | --- |
+| `--font-display` | Big Shoulders Display → Arial Narrow → Apple SD Gothic Neo | wordmark, `h1` |
+| `--font-body` | IBM Plex Sans → Apple SD Gothic Neo → Noto Sans KR | UI, product names |
+
+Two families. No third. No Google Fonts request — the file opens offline; Hangul falls through to the system Korean face. Display is roman. Headings never italic.
+
+Scale is a major third from 16px: `--text-xs` … `--text-2xl`. Catalogue forbids a giant hero, so `h1` caps near `--text-2xl`.
+
+Prices use `font-variant-numeric: tabular-nums`.
+
+Heading: Space, motion, z
+
+4pt scale `--space-3xs` … `--space-3xl`. Page gutter `clamp(1rem, 4vw, 1.5rem)`.
+
+Sport duration scale 0.7×: `--dur-micro: 84ms`, `--dur-short: 154ms`, `--dur-long: 294ms`. Easings: `--ease-out`, `--ease-in`, `--ease-in-out`. Animate `transform` and `opacity` only.
+
+`--z-sticky-nav: 300` sits above `--z-sticky: 200`. Banner height `--banner-h` and bar `--bar-h` are the offset contract for any future in-page sticky.
+
+Heading: Components
+
+Heading: N12 nav
+
+Solid accent banner (“타임세일 · 상의”) over an ink bar. Scroll down past 48px retracts the banner (`translateY`). Dismiss zeroes `--banner-h` so the page does not keep a gap. Wordmark is the text **MUSINSA** — no official mark. Desktop shows store links; below 60rem they collapse into a `details` sheet. Primary chrome CTA is “로그인”, one line, 44px hit.
+
+Heading: Color filter
+
+One radio group in normal flow (no `position: absolute; top: 0`). Values: 전체, 블랙, 화이트, 다크 그레이, 아이보리, 카키. Checking a color hides `article.product` whose `data-color` does not match. The live count is the number of cards still in the grid, not a store-wide census.
+
+Chip states in CSS: default, hover (`@media (hover: hover)`), `:focus-visible` via `input:focus-visible + .chip`, `:active`, `:disabled`, `data-state=loading|error|success`, plus `:checked` as the selected surface.
+
+Heading: F6 grid
+
+Uniform 3:4 cells. Tracks are `minmax(0, 1fr)` — 2 / 3 / 4 / 5 columns at 0 / 40 / 60 / 90 rem. First card is the generated still (`image.jpg`, `fetchpriority="high"`, not lazy). Remaining cards are CSS plates with a TODO swap comment. Save is optimistic: `aria-pressed` flips immediately; filled heart is the success signal; no toast.
+
+Save states: default, hover, focus-visible, active, disabled, loading, error, success/pressed.
+
+Price copy is only what the snapshot showed. Missing prices render as `—`.
+
+Heading: Ft1 footer
+
+Display wordmark, one sentence, three same-page links. No four-column sitemap.
+
+Heading: States (interactive)
+
+Every button and chip implements:
+
+1. default
+2. hover (fine pointer only)
+3. `:focus-visible` — 2px `--color-focus`, offset 2px, instant (no fade)
+4. `:active` — `translateY(1px)`
+5. disabled — opacity 0.55 + `not-allowed`
+6. loading — `data-state="loading"`
+7. error — `data-state="error"`
+8. success — `data-state="success"` / `aria-pressed="true"`
+
+Dark surfaces (nav, selected chip, banner) set `color` in the same rule as `background`.
+
+Heading: Responsive
+
+- `overflow-x: clip` on `html` and `body`
+- Clickable labels `white-space: nowrap`
+- Display heads `overflow-wrap: anywhere; min-width: 0`
+- Section heads stay one column
+- Hit targets ≥ 44px
+- Safe-area padding on inline and block-end
+
+Heading: Motion
+
+Editorial Catalogue is motion-cut. Kept: banner retract, chip/button press, one 1.02× image hover on fine pointers. `prefers-reduced-motion: reduce` collapses durations to 150ms and kills the image scale and nav slide.
+
+Heading: Imagery
+
+Lane A generated still, Grok Imagine, 3:4, stored as `image.jpg`. No remote image hosts. CSS plates are placeholders, not product photography.
+
+Heading: Honest copy
+
+No invented conversion rates, review counts, or pre-sale list prices. Filter count tracks the eight cards on this page. Wordmark is type, not the brand’s logo file.
+
+Heading: Log (would append to )
+
+```json
+{
+  "date": "2026-09-02",
+  "macrostructure": "Catalogue",
+  "theme": "Sport",
+  "enrichment": "none",
+  "brief": "MUSINSA 상의 — color filter narrows the product grid"
+}
+```
+
+Written beside the run instead of the host-repo root so this experiment does not leak outside .

@@ -1,0 +1,49 @@
+Heading: wanted 채용 목록 — design system
+
+Going with: audience = 채용 공고를 훑는 구직자 · use = 필터를 걸어 카드 하나를 연다 · tone = utilitarian.
+
+Genre: editorial. Macrostructure: Catalogue. Theme: Grid (ultramarine signal). Nav: N9 Edge-aligned. Footer: Ft2. Enrichment: none — the index is type and inventory; one generated still sits on the first cell.
+
+Heading: Position
+
+This surface is a job index, not a marketing page. Every posting is equal. Filters change the inventory; opening a cell shows only fields the listing already carries. No second screen, no invented headcount, no salary theatre.
+
+Heading: Tokens
+
+Paper is cool near-white `oklch(99% 0.003 255)`, never `#fff`. Ink is `oklch(16% 0.010 255)`. One signal: ultramarine `oklch(45% 0.19 264)`, spent on the plate, the period-square, the active index underline, and focus. Accent-on-fill text is `--color-accent-ink`.
+
+Spacing is the 4pt scale (`--space-3xs` … `--space-3xl`). Control height is `--control-h` (44px) for buttons, selects, chips, and the search field. Radius is 0. Rules are 1px hairlines. Depth is the exposed 12-column rail and cell borders, not shadow.
+
+All colour and font declarations in the page consume these names. Swatches `--swatch-02` … `--swatch-12` are named inventory fills for cells without a photograph.
+
+Heading: Type
+
+One grotesk stack: Archivo 800 for display and wordmark, Archivo 400 for body, with `Avenir Next` then `Apple SD Gothic Neo` / `Noto Sans KR` for Hangul when Archivo is absent. No serif, no italic headers, no fourth family. Wordmark is lowercase `wanted` plus a 0.52em period-square — a text mark, not a brand lockup.
+
+Labels are 12px-class uppercase tracking. Job titles are 700, two-line clamp. Tabular nums on the result count.
+
+Heading: Layout
+
+N9: wordmark slammed left, 검색 + 회원가입 right, empty middle. Catalogue index (채용, 이력서, …) lives under the plate as a band, not inside the nav. The plate is a short ultramarine block holding `채용`, left of the 12-column grid so the signal stays under 5% of the viewport.
+
+Inventory is a 2-up / 4-up cell grid, `minmax(0, 1fr)` tracks, 3:2 media. Cells share hairlines; they are not floated cards. First cell uses `image.jpg`. Other cells use a swatch + quarter-disc from the Grid marks kit.
+
+Mobile: index band hides, 메뉴 sheet lists destinations, C4 dock pins 채용 / 교육 / 소셜 / MY. Hit targets stay 44px. `html, body { overflow-x: clip }`. Clickable labels are `nowrap`.
+
+Heading: Interaction
+
+Filters are live: 직군, 경력, 제목 검색, 한국, 기술스택. Tags without listing evidence (글로벌 TOP 기업, 예비 유니콘, …) correctly yield an empty inventory and a reset. Sort toggles 최신순 as the observed default; 추천순 / 인기순 do not invent a rank.
+
+Opening a cell uses a native `<dialog>`. The sheet repeats title, company, place, career — nothing else. Bookmark is optimistic `aria-pressed`; no toast.
+
+Eight states on controls: default, hover (`hover: hover` only), `:focus-visible` (instant 2px ring, never animated), `:active` (1px press on buttons), disabled (opacity + cursor + attribute), loading / error / success classes reserved on `.btn`. Input border-width stays 1px; focus uses outline.
+
+Motion is cut to colour and a 1px press. `transform` and `opacity` only. `prefers-reduced-motion: reduce` collapses durations to 150ms.
+
+Heading: Copy
+
+Korean listing language from the captured inventory. Verbs: 검색, 회원가입, 북마크, 닫기, 필터 지우기. Empty: “조건에 맞는 채용이 없습니다.” No “click here,” no metrics that were not on the listing.
+
+Heading: Imagery
+
+One generated still (`image.jpg`) for the first cell — a workplace interior, unsigned. Remaining cells are swatches, not stock photos and not live network images. The page opens with no external requests.

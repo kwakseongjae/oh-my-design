@@ -1,0 +1,138 @@
+Heading: Coupang Home — design system
+
+Arm: . Surface: desktop-1440 (1440×900). Screen: home only. Task: type a query in the search field and move to a product list.
+
+Heading: Pack workflow
+
+Followed  Step 1–4, then `design-system` three-layer tokens and `ui-styling` accessibility patterns. Offline first-render forbids Google Fonts CSS and any other network request.
+
+```
+python3  "ecommerce marketplace retail search shopping korea consumer" --design-system -p "Coupang Home" -f markdown
+python3  "ecommerce marketplace retail" --domain color
+python3  "search accessible loading" --domain ux
+python3  "hero search categories featured" --domain landing
+python3  "ecommerce marketplace" --domain product
+python3  "ecommerce clean shopping" --domain typography
+python3  "search cart user menu" --domain icons
+python3  "layout form search list" --stack html-tailwind
+```
+
+Heading: Step 1 — requirements
+
+| Slot | Value |
+|------|--------|
+| Product type | E-commerce marketplace |
+| Audience | Korean C-end shoppers, desktop web |
+| Primary CTA | Search field (pack: Marketplace / Directory — “search bar is the CTA”) |
+| Stack | Single-file HTML + CSS variables (html-tailwind rules, no CDN) |
+| Platform | Desktop-web 1440; mobile-only HIG rules skipped |
+
+Heading: Step 2 — pack `--design-system` recommendation
+
+Pattern **Marketplace / Directory**: Hero (search-focused) → categories → featured listings.
+
+Style **Vibrant & Block-based**. Pack color table (not used as chrome — see evidence bind):
+
+| Role | Pack hex | CSS variable |
+|------|----------|--------------|
+| Primary | `#059669` | `--color-primary` |
+| On primary | `#FFFFFF` | `--color-on-primary` |
+| Secondary | `#10B981` | `--color-secondary` |
+| Accent | `#D97706` | `--color-accent` |
+| Background | `#ECFDF5` | `--color-background` |
+| Foreground | `#0F172A` | `--color-foreground` |
+
+Typography pairing **E-commerce Clean**: Rubik / Nunito Sans. Cannot load `fonts.googleapis.com`. Mapped to local stack with evidence family first:
+
+`Apple SD Gothic Neo, Malgun Gothic, Noto Sans KR, Rubik, Nunito Sans, sans-serif`
+
+Anti-patterns from pack: no emoji as structural icons; no raw hex in components; visible focus; 44px targets; 150–300ms motion; `prefers-reduced-motion`.
+
+Heading: Evidence bind (desktop-1440 snapshot `2026-08-22T19-48-17-298Z`)
+
+Pack “color-palette-from-product” + captured chrome override the generic green marketplace palette. Sampled from  (file RGB):
+
+| Token | Hex | Source |
+|-------|-----|--------|
+| Page | `#fefefe` | evidence `pageBackgroundRendered.hex` |
+| Category tile / search ring | `#4269f6` | category button + search border |
+| Wordmark | `#481014` | logo letters |
+| Wordmark accent | `#c44030` | “ng” stroke |
+| Gold accent | `#dc9c40` | wordmark highlight |
+| Utility bar | `#f8f8f8` / `#f0f0f0` | top chrome |
+| Body / h2 | `#000000` 24px/700 | evidence typeScale h2 |
+| h3 | `#212b36` 20px/400 | evidence typeScale h3 |
+| Muted | `#7b7b7b` 11px/400 | evidence typeScale p |
+| Family | Apple SD Gothic Neo | evidence typeScale |
+
+Header geometry: ~70px header, category tile hangs ~115px into the hero. Hero band 1440×450. No official Coupang mark file — text wordmark `coupa` + `ng`.
+
+Imagery: capture notes chrome and imagery are separate domains; samples are a distribution, not one hero. The first-render hero uses the generated `image.jpg` (picnic/festival still, no type in the bitmap). Headlines sit in HTML on top of that still, per banner-design (photo-based hero, text overlaid in HTML).
+
+Heading: Three-layer tokens
+
+Heading: Primitive
+
+```css
+--color-blue-500: #4269f6;
+--color-brown-900: #481014;
+--color-brown-600: #c44030;
+--color-page: #fefefe;
+--color-gray-500: #7b7b7b;
+--space-1: 4px; /* 4pt grid */
+--fs-11: 11px; --fs-24: 24px;
+```
+
+Heading: Semantic
+
+```css
+--color-background: var(--color-page);
+--color-primary: var(--color-blue-500);
+--color-brand: var(--color-brown-900);
+--color-ring: var(--color-primary);
+```
+
+Heading: Component
+
+```css
+--button-category-bg: var(--color-primary);
+--search-border: var(--color-primary);
+--search-height: 40px;
+--touch: 44px;
+--hero-height: 450px;
+```
+
+Heading: Components (home)
+
+| Component | Spec |
+|-----------|------|
+| Category | 116×115, primary fill, outline hamburger SVG + label, hover darkens, 3px focus ring |
+| Search | Visible label (sr-only) + `role="search"`; scope select; 2px primary border; 40px field; 44px icon hit; autocomplete listbox; submit is the CTA |
+| Wordmark | Text only, brand brown, no official SVG/PNG |
+| Account / cart | Phosphor-style outline SVG, 11px caption, cart badge on primary |
+| Hero | `figure` + `image.jpg`; HTML kicker + title; right rail of six text rows |
+| Featured | “오늘의 발견” two cards + side tiles |
+| Results | Same header; product **list** (not a second branded site); skeleton 180ms then rows; empty query stays on home with live message |
+
+States: default / hover / focus-visible / loading (skeleton) / empty query. Disabled not used on the search submit.
+
+Heading: UX rules applied
+
+- Search autocomplete (do not require full type + enter only)
+- `aria-label` on icon-only controls (search, mic, cart count)
+- Keyboard: form submit, skip link, focus ring 2–4px
+- Loading >300ms pack rule → 180ms skeleton; 0ms if reduced-motion
+- No-results path: blank query does not navigate; live region asks for a query
+- `cursor: pointer` on clickable nodes
+- Tabular figures on prices
+- `ul`/`ol`/`figure`/`blockquote` margin reset (UA defaults broke measurement)
+
+Heading: Out of scope
+
+No extra screens (login, cart, category tree as pages). Utility links are in-page anchors on home. Product list is the task destination after search, not a separately briefed surface.
+
+Heading: Assets
+
+- Icons: inline SVG (pack: Phosphor/Heroicons, no emoji as icons)
+- Hero still: `image.jpg` via Grok Imagine, 16:9, no letters in the bitmap
+- No `url(http…)` in CSS, no font CDN, no third-party scripts

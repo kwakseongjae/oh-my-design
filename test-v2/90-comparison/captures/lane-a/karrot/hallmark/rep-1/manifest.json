@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "karrot",
+  "arm": "hallmark",
+  "rep": 1,
+  "source": "test-v2/03-runs/lane-a/karrot/hallmark/rep-1/render.html",
+  "sourceSha": "sha256:360d40976c5e64f3e329ae0d61b0a92ccfc316809a549e7270dd5eff9963f062",
+  "capturedAt": "2026-09-02T05:01:48.541Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:d92152f3c396425db3faff88cbd11433ce02f0bb766376fd4091c57869f52db2",
+      "bytes": 194385,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:032ae454bef10c48517e5575be62ca58e9e23e6809cf13afea31ee88d667be2d",
+      "bytes": 92775,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

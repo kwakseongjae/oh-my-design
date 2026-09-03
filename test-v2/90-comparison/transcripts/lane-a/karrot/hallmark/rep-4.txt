@@ -1,0 +1,64 @@
+Heading: 당근 검색 결과 — Hum Catalogue
+
+ v1.1.0 · genre: playful · theme: Hum · macrostructure: Catalogue
+
+이 문서는 `render.html`이 소비하는 시스템이다. 토큰은 페이지 `:root`에 있고, 컴포넌트는 그 이름만 참조한다.
+
+Heading: 위치
+
+이 화면은 동네 중고 검색 결과다. 한 가지 일만 한다. 결과 카드에서 매물 하나를 열어 상세로 간다. 스냅샷 handle `2026-08-22T19-49-29-044Z`, 질의는 `노트북`, 위치는 서울시 강동구 천호동.
+
+Heading: 장르와 구조
+
+- **Genre** playful. 소비자 동네 장터. 카탈로그 Hum만 이 장르를 탄다.
+- **Macrostructure** Catalogue. 같은 물건의 격자. 마케팅 히어로 없음. 표제는 재고 헤더.
+- **Nav** N13 인라인 검색 필. 검색이 이 면의 주 행동이다. 워드마크는 텍스트 `당근`. 공식 로고 원본 없음.
+- **Footer** Ft5 Statement. 닫는 문장 하나: 가까운 자리에서 고른다.
+- **Feature** F6 상품 카드. 비율 1/1, 밀도 4열, 가격은 이름 아래, 마이크로액션은 보기.
+- **Enrichment** E8. 첫 매물만 생성 사진 `image.jpg`. 나머지는 CSS로 그린 자리. 네트워크 플레이스홀더 없음.
+
+Heading: 토큰
+
+모든 색은 OKLCH. 종이색은 크림이지 순백이 아니다. 잉크는 순흑이 아니다.
+
+| 역할 | 토큰 | 값 |
+| --- | --- | --- |
+| 종이 | `--color-paper` | `oklch(97% 0.012 95)` |
+| 잉크 | `--color-ink` | `oklch(20% 0.012 250)` |
+| 배 (CTA) | `--color-accent` | `oklch(86% 0.18 95)` |
+| 링크/호버 | `--color-accent-2` | `oklch(55% 0.16 235)` |
+| 한 번의 강조 | `--color-accent-3` | `oklch(58% 0.22 18)` |
+| 포커스 | `--color-focus` | `oklch(48% 0.16 235)` |
+| 배 위 글자 | `--color-accent-ink` | 잉크. 노란 면 위 흰 글자 금지 |
+
+액센트는 면마다 주인이 다르다. 배는 밀기 버튼, 청록은 연관 검색 띠, 산호는 상세를 열 때 한 번의 별. 액센트끼리 그라데이션하지 않는다.
+
+간격은 4pt 이름 스케일 `--space-3xs` … `--space-3xl`. 모서리는 카드 20px, 필 999px, 입력 12px. 직각 없음.
+
+Heading: 글자
+
+표시와 본문은 같은 둥근 산세리프 토큰 `--font-display` / `--font-body`. 아웃라이어 `--font-mono`는 가격과 단축키 두 역할만. 헤더는 로만. 이탤릭 헤더 없음. 가격은 `tabular-nums`. 외부 폰트 URL 없음. 파일만으로 열린다.
+
+Heading: 상태
+
+인터랙티브는 여덟 상태를 클래스로도, 의사클래스로도 가진다.
+
+default · hover · `:focus-visible` · `:active` · disabled · loading · error · success
+
+포커스 링은 즉시 나타난다. 테두리 두께는 상태에서 바뀌지 않는다. 히트 영역 최소 44px. `prefers-reduced-motion: reduce`에서 공간 이동은 꺼지고 투명도만 남는다.
+
+Heading: 움직임
+
+페이지당 원시 동작 셋. 카드 들림, 버튼 누름, 워드마크 옆 점의 숨. 상세를 열면 산호 별이 한 번 터진다. `transition: all` 없음. 레이아웃 속성 애니메이트 없음.
+
+Heading: 반응형
+
+루트 `overflow-x: clip`. 이미지 그리드 트랙은 `minmax(0, 1fr)`. 320 / 375 / 414는 2열, 960 이상 4열과 왼쪽 필터. 클릭 라벨은 `nowrap`. 표시 제목은 `overflow-wrap: anywhere`.
+
+Heading: 카피
+
+스냅샷에 있는 매물 제목·가격·동·시간만 쓴다. 총 매물 수, 전환율, 후기를 만들지 않는다. 연관 검색어를 눌러도 이 화면은 노트북 스냅샷이다. 상세는 카드에 있던 사진·제목·가격·위치로만 이동한다.
+
+Heading: 금지한 것
+
+공식 당근 로고 원본. 가짜 브라우저 크롬. 순백/순흑 바닥. 세 칸 아이콘 피처 그리드. 이탤릭 헤드라인. 외부 네트워크 요청.

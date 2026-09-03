@@ -1,0 +1,153 @@
+Heading: Wanted 채용 목록 — Design system
+
+Arm: . Snapshot `2026-08-22T19-52-31-934Z`. Surface: 채용 목록 only.
+
+Heading: Requirements (pack Step 1)
+
+| Slot | Value |
+|------|--------|
+| Product type | Job Board / Recruitment (directory listing) |
+| Audience | Job seekers, ko-KR, desktop-1440 and mobile-390 |
+| Task | Apply filters, then open one job card |
+| Stack | Standalone HTML + CSS + JS. No network. |
+| Platform | Web. Bottom nav and 44px targets apply on 390. |
+
+Heading: Pack `--design-system` (Step 2)
+
+Query: `job listing recruitment career board professional minimal light korean`  
+Dials: `--variance 3 --motion 3 --density 8`
+
+| Dial | Setting | Effect |
+|------|---------|--------|
+| Variance | 3 | Centered / minimal. No brutalist / bento experiments. |
+| Motion | 3 | Subtle. 150–300ms color/opacity/scale. No GSAP (offline). |
+| Density | 8 | Dashboard density. 8–32px rhythm. Card grid, not a marketing hero. |
+
+Product-domain hit: **Job Board/Recruitment** → Flat Design + Minimalism. Directory hit: **Filter-Heavy Grid**. Anti-pattern from the pack: **hidden filters**. Filters stay on the listing.
+
+Second pass (`job board recruitment career marketplace listing professional clean content-first`) returned Marketplace / Directory + Flat Design Mobile (Touch-First). That pass also returned Noto Sans Hebrew; discarded after the Korean typography domain search.
+
+Heading: Domain supplements (Step 3)
+
+- **product** — Job Board/Recruitment; Directory / Listing Site (filter-heavy grid).
+- **style** — Flat Design Mobile (Touch-First): zero elevation, pill chips, press scale 0.97, 4pt spacing. Minimalism & Swiss as secondary (white field, sans, grid).
+- **color** — Professional blue + neutral white. Measured chrome from evidence overrides generic sky (`#F0F9FF` / `#0369A1`).
+- **typography** — Noto Sans KR (pack). Evidence family is Pretendard Variable. Offline stack, no Google Fonts CSS.
+- **ux** — alt text, 4.5:1 contrast, heading order, aria-label on icon buttons, keyboard, skip link, `prefers-reduced-motion`.
+- **icons** — Phosphor-style outline: magnifying-glass, bookmark, x, funnel/sort, list, caret.
+- **stack html-tailwind** — consistent cards, `focus-visible` rings, 44px targets, duration 150–300ms. Tailwind CDN is a network request, so tokens are inlined as CSS variables.
+
+Heading: Token architecture (pack design-system skill)
+
+Three layers. Components never take raw hex.
+
+Heading: Primitive
+
+```css
+--color-white: #ffffff;
+--color-ink: #171719;          /* evidence bodyColor */
+--color-blue-600: #0066ff;     /* evidence mobile button */
+--color-blue-700: #0055d6;
+--color-gray-50: #f8f8f8;
+--color-gray-100: #f2f4f7;
+--color-gray-200: #e1e2e4;
+--color-gray-400: #767676;     /* ≥4.5:1 on white */
+--color-gray-500: #666666;
+--space-1..8: 4 / 8 / 12 / 16 / 20 / 24 / 32px;
+--radius-md: 8px;
+--radius-pill: 999px;
+--duration: 180ms;
+```
+
+Evidence chrome used as primitives: page background `#ffffff`, body `#171719`, header 61px (desktop) / 56px (mobile), type 15px/600 desktop buttons.
+
+Pack marketplace sky (`#F0F9FF`, `#0369A1`, accent green `#16A34A`) is not applied to this listing. The captured surface is a white job board, not a search-hero marketplace.
+
+Heading: Semantic
+
+```css
+--color-background: var(--color-white);
+--color-foreground: var(--color-ink);
+--color-primary: var(--color-blue-600);
+--color-on-primary: var(--color-white);
+--color-muted-foreground: var(--color-gray-500);
+--color-border: var(--color-gray-200);
+--color-ring: var(--color-blue-600);
+```
+
+Heading: Component
+
+```css
+--button-radius: var(--radius-pill);
+--chip-h: 40px;                 /* ≥44px hit via padding on mobile */
+--card-thumb-radius: var(--radius-md);
+--header-h: 56px / 61px;
+--touch: 44px;
+```
+
+Heading: Typography
+
+| Role | Spec |
+|------|------|
+| Intended family | Noto Sans KR (pack) / Pretendard Variable (evidence) |
+| Delivered family | `"Pretendard Variable", Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif` |
+| Why | `render.html` must open with zero network. No `fonts.googleapis.com`. |
+| Scale | 12 / 13 / 14 / 15 / 16 / 18 / 22 |
+| Body | 16px, line-height 1.5 |
+| Card title | 15px (mobile) / 16px (desktop), weight 700 |
+| Filters | 17px / 22px, weight 700 |
+| Wordmark | 20px, weight 700, letter-spacing -0.04em, text only |
+
+Official mark is not used. Wordmark is the string `wanted`.
+
+Heading: Layout
+
+| Breakpoint | Grid | Gutter | Notes |
+|------------|------|--------|--------|
+| 390 | 2 col, thumb 4:3 | 18px | Matches capture card box 169×126.75 |
+| 768 | 3 col, thumb 3:2 | 40px | Bottom nav off |
+| 1024+ / 1440 | 4 col, thumb 3:2 | 80px | Capture card box 308×205.33 |
+
+Sticky header. Mobile bottom tabs: 채용 / 교육·이벤트 / 소셜 / MY 원티드. Other destinations stay on this listing (brief: no extra screens).
+
+Heading: Components and states
+
+| Component | Default | Hover | Active | Focus | Disabled |
+|-----------|---------|-------|--------|-------|----------|
+| Outline button | white, `#0066ff` text, pill | gray-50 | scale 0.97 | 2+2px ring | opacity 0.5 |
+| Chip | 1px border, pill | gray-50 | — | ring | — |
+| Chip pressed | ink border, weight 700 | — | — | ring | — |
+| Job card | flat, no shadow | title → primary | scale 0.99 | ring on control | — |
+| Bookmark | outline on thumb | — | fill | ring | — |
+| Dialog | centered, 50% scrim | — | — | close first | — |
+
+Dialog is the opened card on the same listing, not a second route.
+
+Heading: Motion
+
+Pack motion dial 3 + html-tailwind duration 150–300ms.
+
+- Press: scale 0.97–0.99, 180ms ease-out
+- Menus: display toggle (no height animation)
+- Drawer: 180ms translateX
+- `prefers-reduced-motion: reduce` kills transitions
+
+Heading: Imagery
+
+`image.jpg` is the representative generated cover (lane A / Grok Imagine). It sits on the first card (교육 운영 매니저). Other cards use local geometric SVG fills sampled from evidence palettes. No third-party marks, no official wanted logomark, no CDN.
+
+Heading: Accessibility checklist (pack §1–3)
+
+- Contrast: body ink 4.5:1+; secondary `#666666` / `#767676` on white
+- Skip link, sequential `h1` → card titles as text, dialog `h2`
+- Icon-only controls have `aria-label`
+- Keyboard: filter listboxes, card buttons, native `<dialog>`, Escape
+- Touch ≥44px
+- `aria-live` on result count
+- Empty state has a reset action
+- No emoji icons
+
+Heading: Out of scope
+
+No 이력서 / 로그인 / 기업 서비스 screens. Nav labels are chrome on this listing.
+No official logo file. No pack `--persist` write outside the run directory.

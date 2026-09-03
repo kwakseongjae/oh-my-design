@@ -1,0 +1,27 @@
+너는 T3-3 본 실험의 arm 실행자다. arm = **hallmark**, 레인 = **A**, 브랜드 = **naver**, 반복 = **rep-3**.
+
+## 네가 쓰는 팩 (이것만 쓴다)
+`benchmarks/ui-resolve-bench/fixtures/competitor-skills-2.0/hallmark/` (109파일, 고정 SHA).
+이 팩이 정한 워크플로를 그대로 따라라. 다른 두 arm(omd-autopilot-v2, ui-ux-pro-max)의 팩·산출물·다른 rep의 산출물을 읽으면 이 run은 무효다.
+
+## 브리프 (세 arm이 같은 것을 받는다)
+- 화면: 홈 (`https://www.naver.com/`)
+- 과업: 검색어를 입력해 검색 결과로 이동한다.
+- 스냅샷 handle: `2026-08-22T19-51-00-372Z`
+- 증거: `test-v2/00-evidence/naver/` (evidence.json · manifest.json · capture/) — 표면: desktop-1440 (1440×900) — verify 기반 아님 · mobile-390 (390×844)
+브리프는 과업·필수 산출물·스냅샷 handle만 준다. 화면별 핵심 콘텐츠와 대표 이미지 역할은 채점자 코드북에만 있다 — 추측해서 브리프에 없는 지시를 만들지 마라.
+
+## 필수 산출물 3종
+1. 실행 가능한 첫 렌더 `render.html` — 외부 네트워크 요청 없이 열린다. CSS 리셋에 figure·blockquote·ul·ol 마진 리셋을 포함해라(UA 기본값 잔존이 실측 파손을 냈다).
+2. 대표 생성 이미지 `image.jpg` — 레인 A는 생성 채널이 Grok Imagine 고정. 네 이미지 생성 도구로 만들어라.
+3. 형식 자유의 디자인 시스템 설명 `system.md`.
+
+## 출력 위치 (여기 밖에 쓰지 마라)
+`test-v2/03-runs/lane-a/naver/hallmark/rep-3/` — 위 3종 + `trace.md`(이미지 프롬프트 원문·세션 식별자·sha256·재시도 여부).
+그 디렉터리의 `run.json`에 채워라(다른 필드 유지): startedAt/endedAt(ISO8601), briefSha256=`sha256:3f17857688dd17185d923556acfa70f3f7e16608cba14e49830f159c1fc649fe`, packSha256=`365843c99c5fae9180e53c0f9442a47601a389f6fb34eb5efe7ba15f7bee4cbb`, model=`grok-4.6`, via=`grok-build-cli:grok-4.6`, snapshotId=`2026-08-22T19-51-00-372Z`, outputs 3필드.
+
+## 금지
+- 브리프에 없는 화면 추가 금지. docs/CURRENT_STATE.md·JOURNAL.md 갱신 금지.
+- 브랜드 공식 로고 원본 사용 금지(텍스트 워드마크 대체).
+
+끝나면 마지막 줄에 `RUN_DONE lane=A brand=naver arm=hallmark rep=3 outputs=3`을 출력해라.

@@ -1,0 +1,142 @@
+Heading: NAVER Home — Design System
+
+Lane A / arm  / brand `naver` / `rep-3`.
+Pack: .
+Snapshot: `2026-08-22T19-51-00-372Z`. Surface: desktop-1440 (1440×900), mobile-390 (390×844).
+
+This document is the persisted design system for the first render. It follows the pack workflow (Step 1 analyze → Step 2 `--design-system` → Step 3 domain search → Step 4 `html-tailwind` stack) and the pack `design-system` skill’s three-layer tokens. Values that the pack script proposed are recorded; **chrome that the evidence actually measured wins** when they disagree. No Google Fonts CSS is imported: the render must open with zero network requests.
+
+Heading: Product read (Step 1)
+
+| Slot | Decision |
+|------|----------|
+| Product | Korean consumer web portal. Primary job on this screen: type a query and move to search results. |
+| Pattern (pack) | Marketplace / Directory — search bar is the CTA; reduce friction to search; category icons; featured listings. |
+| Style (pack, `--variance 3 --density 8 --motion 3`) | Centered, dense, subtle motion. Script also emitted “Exaggerated Minimalism”; that oversized-type / massive-whitespace recipe is **not** applied, because the measured home is a dense two-column portal, not a fashion landing. Closest pack style actually used: **Minimal & Direct + Data-Dense** spacing (8–12px gaps, 12–15px type). |
+| Platform | Single-file HTML. No Tailwind CDN, no GSAP, no Phosphor npm. Inline CSS + inline SVG (Phosphor-equivalent outline set from `--domain icons`: list, magnifying-glass, bell, shopping-cart). |
+| Audience | ko-KR, C-end, commute/home. Light color scheme only (evidence `colorScheme: light`). |
+
+Heading: Pack `--design-system` output (kept as provenance)
+
+Second pass query: `korean web portal search news shopping homepage light green content-dense` with dials variance 3 / motion 3 / density 8.
+
+| Role | Pack hex | Used in render? |
+|------|----------|-----------------|
+| Primary | `#059669` | No — evidence primary button is `#03c75a` |
+| On Primary | `#FFFFFF` | Yes |
+| Accent (pack) | `#D97706` | No — measured chrome has no amber CTA |
+| Background | `#ECFDF5` | No — computed page background `#ffffff`, rendered modal `#fefefe` |
+| Foreground | `#0F172A` | No — body color `#2e2e2e` |
+| Typography | Newsreader + Roboto, or Noto Sans KR on the first pass | No remote fonts. Stack matches evidence `family: -apple-system` |
+| Motion | GSAP scroll-reveal 300–400ms | No GSAP (would be a network/runtime dependency). CSS 180ms `cubic-bezier(0.2, 0, 0, 1)` instead |
+
+Anti-patterns the pack flagged and this render obeys: no missing search; no cluttered extra screens; no emoji icons.
+
+Heading: Three-layer tokens
+
+Heading: Primitive
+
+```css
+--green-500: #03c75a;   /* evidence mobile primaryButton.background */
+--green-600: #02b350;
+--green-700: #019c46;
+--white: #ffffff;
+--gray-50: #fefefe;     /* evidence pageBackgroundRendered.hex */
+--gray-900: #2e2e2e;    /* evidence bodyColor / typeScale color */
+--blue-500: #2b5cff;    /* featured-title emphasis, not a measured token */
+--cream: #faf6ee;       /* top install bar, sampled from the viewport */
+--danger: #dc2626;      /* pack destructive */
+--space-1: 4px;         /* density 8 → 4/8 rhythm */
+--radius-pill: 28px;    /* evidence primaryButton.radiusPx */
+--font: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Helvetica Neue", Arial, sans-serif;
+--fs-body: 15px;        /* evidence ~14.7px, rounded up; search input 16px to avoid iOS zoom */
+--lh-body: 1.5;
+--duration: 180ms;
+```
+
+Heading: Semantic
+
+```css
+--color-bg: var(--gray-50);
+--color-surface: var(--white);
+--color-fg: var(--gray-900);
+--color-muted: #5c5f66;
+--color-border: #ebeef1;
+--color-primary: var(--green-500);
+--color-on-primary: var(--white);
+--color-accent: var(--blue-500);
+--color-ring: var(--green-500);
+```
+
+Heading: Component
+
+```css
+--search-h: 52px;
+--search-radius: var(--radius-pill);
+--search-border: 2px solid var(--color-primary);
+--btn-login-bg: var(--color-primary);
+--btn-login-radius: 6px; /* desktop login is a bar, not a 28px pill */
+--target: 44px;          /* pack UX / Apple HIG */
+```
+
+Heading: Type
+
+Evidence type scale is unusually flat (h1/p/button all ~14.7px / weight 700·500, letter-spacing `-0.4px`). The home still needs hierarchy for the featured story, so:
+
+| Role | Size | Weight | Notes |
+|------|------|--------|--------|
+| Body / controls | 15px | 500 | letter-spacing -0.4px |
+| Search input | 16px | 500 | pack: readable-font-size on mobile |
+| Featured title | 26px / 22px mobile | 800 | one loud line, not 12rem clamp |
+| Section titles | 15–18px | 700–800 | |
+| Shortcut / press names | 12–13px | 500–600 | dense grid |
+
+Heading order: visually hidden `h1` “NAVER” → featured `h2` → 뉴스스탠드 / 쇼핑 / 로그인 `h2`. No level skip.
+
+Heading: Layout
+
+- Desktop 1440: header (tools · search · tools) → shortcut row → two columns (content ~1fr, rail 420px).
+- Mobile 390: same regions stacked; shortcuts scroll horizontally; press grid 3 columns; shopping 2 columns.
+- Breakpoints: 640 / 1024 (pack 375 / 768 / 1024 / 1440, collapsed to the two evidence surfaces).
+- Header height in evidence is 216px (search + shortcuts). Do not pin a second page-level header.
+
+Heading: Components
+
+Heading: Search (the task)
+
+- Visible `<label class="sr-only" for="q">` — pack UX: never placeholder-only.
+- Pill field, green 2px stroke, leading text wordmark `N` (not the official mark).
+- Submit on Enter and via the magnifying-glass control. Empty submit → `role="alert"` next to the field.
+- Static suggestion list (pack: autocomplete). No network.
+- After submit: 180ms disabled/loading (pack: loading-buttons, submit-feedback) then the results view in the **same file**. No extra product screens (no login, mail, or shopping pages).
+- Results are generated from the query string; links stay on-page (`#result-n`). Opening `render.html` with no query is the home first paint.
+
+Heading: Other home chrome (from the snapshot, not invented screens)
+
+- Cream Whale install bar, dismissible, does not cover the search field (the live overlay would have blocked the task).
+- Shortcut row: 메일…치지직 + 더보기. SVG only.
+- Featured story: kicker 누잠매트리스, copy from the desktop viewport, figure = `image.jpg`.
+- 뉴스스탠드: tabs + ticker + 6×4 press **names as text** (no publisher marks).
+- Login rail: green `NAVER 로그인` wordmark button.
+- Ad rail: text-only “광고” block. No third-party marks.
+- Shopping strip: CSS swatches, no extra bitmaps.
+
+Heading: Interaction / a11y (pack checklist)
+
+- Contrast: `#2e2e2e` on `#fefefe` and white on `#03c75a` meet 4.5:1.
+- `:focus-visible` 3px ring (html-tailwind: `focus-visible`, not click focus).
+- Touch targets ≥ 44px; 8px gaps.
+- `prefers-reduced-motion: reduce` kills transitions.
+- Skip link to `#main`.
+- `aria-live` status on search. `aria-expanded` on the suggestion box.
+- No emoji as icons.
+- `cursor: pointer` on buttons.
+
+Heading: Image
+
+One generated asset: `image.jpg` (1280×720, JPEG). Role in this render: featured home figure (mattress product photograph matching the snapshot’s right-hand visual, without people or marks). Alt text is descriptive. Width/height reserved to limit CLS.
+
+Heading: Offline rule
+
+Allowed: this HTML, `image.jpg`, system fonts already on the machine.
+Forbidden in the first render: `@import` fonts, CDN CSS/JS, remote `<img>`, tracking pixels, official logo files.

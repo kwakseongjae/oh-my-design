@@ -1,0 +1,69 @@
+Heading: Catalogue · studied-DNA (karrot search)
+
+ v1.1.0. One screen: used-goods search results. Opening a card is the only extra state.
+
+Heading: Inferences
+
+- Audience: someone nearby looking for a used laptop
+- Use: scan results, open one listing
+- Tone: utilitarian
+- Genre: playful (consumer marketplace)
+- Macrostructure: Catalogue
+- Theme: studied-DNA from the capture, not a catalog Hum dress
+- Nav: N13 search pill (right of wordmark). Previous nav: none.
+- Footer: Ft2 single line
+- Enrichment: E8 photograph on the first card only (generated still). Other cards are swatch placeholders.
+- F6 knobs: 1/1 · 4-up · price under name · View
+
+Offline constraint wins over Hum’s Google Fonts link. Display is local Avenir Next; body is Apple SD Gothic Neo / Noto Sans KR.
+
+Heading: Tokens
+
+All colours are OKLCH custom properties. Paper is warm near-white, not `#fff`. Ink is cool near-black, not `#000`. Accent is the observed orange, used as the wordmark (~3% of the viewport).
+
+| Token | Value | Role |
+|---|---|---|
+| `--color-paper` | `oklch(99.2% 0.005 80)` | page |
+| `--color-paper-2` | `oklch(96.4% 0.006 80)` | hover / chip |
+| `--color-ink` | `oklch(22.6% 0.010 264)` | text, filled button |
+| `--color-muted` | `oklch(52% 0.010 264)` | neighborhood · time |
+| `--color-accent` | `oklch(70.8% 0.196 45.7)` | wordmark |
+| `--color-focus` | `oklch(52% 0.18 45)` | `:focus-visible` ring |
+| `--font-display` | Avenir Next, Hiragino Sans, Apple SD Gothic Neo | titles |
+| `--font-body` | Apple SD Gothic Neo, Noto Sans KR, Avenir Next | UI |
+| `--font-wordmark` | Avenir Next, Apple SD Gothic Neo | “당근” |
+| `--space-*` | 4pt scale, 2–64px | gaps |
+| `--radius-card` | 12px | thumbs |
+| `--radius-pill` | 999px | search, location, CTA |
+| `--ease-out` | `cubic-bezier(0.16, 1, 0.3, 1)` | enter / hover |
+| `--dur-short` | 220ms | hover |
+
+Filled CTA uses the Hum press: solid edge + ground shadow, lift on hover, press down on `:active`. Outline chip is the location control.
+
+Heading: Layout
+
+Desktop (≥ 60rem): sticky header (wordmark · search pill · service chips) → related terms → inventory title → filter rail + 4-up square cards.
+
+Mobile: wordmark · search · menu. Location / filter chips above a 2-up grid. Rail hides. Hit targets 44px. `minmax(0, 1fr)` on image tracks. `overflow-x: clip` on `html` and `body`. Display titles `overflow-wrap: anywhere`.
+
+Heading: Interaction
+
+Cards are hash links (`#item-n`). `:target` swaps results for that listing’s photo, title, price, and neighborhood/time. Back is `#results`. No extra product screens.
+
+Search pill opens a native `<dialog>` (also ⌘K). Choosing a related term stays on this page and rewrites the title. Menu is a disclosure of the same service list.
+
+Eight states are declared on `.btn`, `.searchpill`, `.product`, and `.input` (default, hover, focus-visible, active, disabled, loading, error, success). Focus rings are instant. `prefers-reduced-motion: reduce` collapses spatial motion to ≤150ms and kills the wordmark pulse and click burst.
+
+Heading: Copy
+
+Titles, prices, neighborhood, and bump times come from the capture. No invented counts, testimonials, or seller fields. Official mark is not used; the wordmark is the text “당근” plus a CSS disc.
+
+Heading: Image
+
+`image.jpg` is the first listing thumb and that listing’s detail photograph. Other thumbs are colour swatches sampled from the evidence palettes, not generated stock.
+
+Heading: Stamp
+
+pre-emit critique: P5 H5 E4 S5 R4 V5
+
+Slop test run after build: 58/58 no (Catalogue is not a centred 100vh hero; N13/Ft2 avoid the AI nav/footer; no webfonts; no invented metrics; tokens only).

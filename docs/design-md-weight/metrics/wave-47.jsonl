@@ -1,0 +1,17 @@
+{"ts":"2026-09-02T03:38:38.252Z","wave":"47","brand":"miro","stage":"worker","via":"grok","sec":970,"cost":0.7109859,"turns":33,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T03:38:40.379Z","wave":"47","brand":"mintlify","stage":"worker","via":"grok","sec":972,"cost":0.8022844,"turns":29,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T03:40:30.912Z","wave":"47","brand":"mistral.ai","stage":"worker","via":"grok","sec":1083,"cost":1.19437478,"turns":36,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T03:41:09.696Z","wave":"47","brand":"mixi","stage":"worker","via":"grok","sec":1122,"cost":1.49865268,"turns":50,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T03:41:26.756Z","wave":"47","brand":"miricanvas","stage":"worker","via":"grok","sec":1139,"cost":1.20838652,"turns":40,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T03:50:11.551Z","wave":"47","brand":"miro","stage":"f3","via":"grok","sec":693,"cost":0.23053054,"turns":16,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T03:52:20.273Z","wave":"47","brand":"mistral.ai","stage":"f3","via":"grok","sec":709,"cost":0.40232812,"turns":25,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T03:53:05.616Z","wave":"47","brand":"mintlify","stage":"f3","via":"grok","sec":865,"cost":0.3963278,"turns":18,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T03:54:17.798Z","wave":"47","brand":"mixi","stage":"f3","via":"grok","sec":788,"cost":0.30794378,"turns":20,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T03:57:19.825Z","wave":"47","brand":"miricanvas","stage":"f3","via":"grok","sec":953,"cost":0.39912702,"turns":20,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T04:00:30.324Z","wave":"47","brand":"miro","stage":"review","via":"grok","sec":619,"cost":0.20762474,"turns":14,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T04:01:13.502Z","wave":"47","brand":"mistral.ai","stage":"review","via":"grok","sec":533,"cost":0.26211858,"turns":16,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T04:02:17.224Z","wave":"47","brand":"mintlify","stage":"review","via":"grok","sec":551,"cost":0.19468604,"turns":12,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T04:04:16.906Z","wave":"47","brand":"mixi","stage":"review","via":"grok","sec":599,"cost":0.1537327,"turns":11,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T04:08:02.146Z","wave":"47","brand":"mintlify","stage":"fix","via":"grok","sec":345,"cost":0.15201298,"turns":15,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T04:08:11.024Z","wave":"47","brand":"miricanvas","stage":"review","via":"grok","sec":651,"cost":0.24078528,"turns":16,"ok":true,"http":null,"code":0}
+{"ts":"2026-09-02T04:21:40.641Z","wave":"47","brand":"mintlify","stage":"review2","via":"grok","sec":818,"cost":0.20586694,"turns":13,"ok":true,"http":null,"code":0}

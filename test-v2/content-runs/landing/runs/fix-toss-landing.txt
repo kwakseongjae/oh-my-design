@@ -1,0 +1,14 @@
+너는 랜딩 콘텐츠 런의 arm 실행자다. arm = **landing**, 브랜드 = **toss**. 이번 과업은 **개정 라운드 2**다 — 새로 만들지 말고, 디자이너 리뷰가 BLOCK으로 지목한 것만 고친다.
+
+읽을 것: test-v2/content-runs/landing/toss/landing/review.md (전문), 같은 디렉터리의 render.html · concept.md · storyboard.md, 브랜드 토큰 web/references/toss/DESIGN.md. 봉인 벤치 test-v2/03-runs 와 다른 arm 디렉터리는 읽지 마라.
+
+고칠 것 (review.md의 BLOCK 6건만 — WARN·FYI는 이번 라운드에 손대지 마라):
+1. 히어로 사진 위 크롬의 대비: `.hero` 에 스크림(`::before`, 사진 위 반투명 레이어 — pin-stage 가 이미 쓰는 방식과 같은 종류)을 넣어 nav 링크·wordmark·lead·CTA가 WCAG 기준(일반 텍스트 4.5:1, 큰 텍스트·UI 3:1)을 넘게 하라. 색은 DESIGN.md 토큰만 쓴다(스크림은 토큰 색의 알파).
+2. 포커스 링(`#3182f6`)이 사진 위에서 1.38:1 — 링 바깥에 캔버스색 halo(box-shadow 2겹)를 더해 3:1 이상.
+3. `muted`(#8b95a1)를 본문 텍스트 색으로 쓴 4개 셀렉터를 `body` 잉크로 바꿔라(눈썹·법적 고지 포함). muted는 장식·구분선 용도로만.
+4. `.reveal{opacity:0}` — JS 없이도 내용이 보이게: `<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>` 와 `@media (scripting: none)` 둘 다 추가.
+review.md 가 "6 BLOCK ≈ 4 edits"라고 한 그 범위다. 다른 줄은 바꾸지 마라(구도·에셋·카피·섹션 높이 불변 — landing-integrity 서명 12.05 vh 유지).
+
+검증(전부 실행·보고): `node test-v2/tools/render-integrity.mjs test-v2/content-runs/landing/toss/landing/render.html` PASS · `node test-v2/tools/landing-integrity.mjs …` FAIL 0 · 히어로 1440·390 스크린샷을 찍어 nav 4개·wordmark·lead 각각의 배경 대비를 픽셀 샘플로 계산해 표로 보고(리뷰가 쓴 방법과 같이). loop-trace.json 에 round 3 항목(designerReview.block 6 → 고친 항목 목록)을 덧붙여라.
+
+끝나면 마지막 줄에 `FIX_DONE brand=toss arm=landing blocks_fixed=<n>` 을 출력해라.

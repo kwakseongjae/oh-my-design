@@ -159,18 +159,26 @@ for (const session of order.sessions) {
       const evidDir = join(EVID, brand, "capture");
       const snapDir = join(dir, "rows", `_snapshot-${brand}`);
       mkdirSync(snapDir, { recursive: true });
-      for (const f of ["desktop-1440-viewport.png", "mobile-390-viewport.png"]) {
-        const src = join(evidDir, f);
-        if (!existsSync(src)) throw new Error(`스냅샷 없음: ${src}`);
-        copyFileSync(src, join(snapDir, f)); manifest.files[`rows/_snapshot-${brand}/${f}`] = sha(readFileSync(src));
+      // 증거 캡처의 파일명은 두 세대가 섞여 있고(`desktop-1440-viewport.png` / `viewport-1440.png`), 브랜드에 따라
+      // 한 서피스만 있을 수 있다(coupang: 모바일 없음). 있는 것만 넣고 패킷에 명시한다 — 없는 서피스를 발명하지 않는다.
+      const snaps = [];
+      for (const [surface, cands] of [["desktop-1440", ["desktop-1440-viewport.png", "viewport-1440.png"]], ["mobile-390", ["mobile-390-viewport.png", "viewport-390.png"]]]) {
+        const found = cands.map((f) => join(evidDir, f)).find((p) => existsSync(p));
+        if (!found) continue;
+        const name = `${surface}-viewport.png`;
+        copyFileSync(found, join(snapDir, name)); manifest.files[`rows/_snapshot-${brand}/${name}`] = sha(readFileSync(found)); snaps.push(name);
       }
+      if (!snaps.length) throw new Error(`스냅샷 없음: ${evidDir}`);
       lines.push(`## 브랜드 ${brand}`, "", "잠금표 (RUBRIC §4.1, 동결):", "", lockBlock(brand), "",
-        `스냅샷(축 2 대조 기준): \`rows/_snapshot-${brand}/desktop-1440-viewport.png\` · \`rows/_snapshot-${brand}/mobile-390-viewport.png\``, "");
+        `스냅샷(축 2 대조 기준): ${snaps.map((n) => `\`rows/_snapshot-${brand}/${n}\``).join(" · ")}${snaps.length < 2 ? " — 이 브랜드의 증거 캡처는 이 서피스뿐이다(없는 서피스는 대조하지 않는다)" : ""}`, "");
       if (ceil?.sufficient) {
         const cdir = join(dir, "rows", `_ceiling-${brand}`);
         mkdirSync(cdir, { recursive: true });
+        // RUBRIC §4.3: 적격 풀이 4를 넘으면 식별 결과를 보지 않은 채 build 순서 앞 4개(manifest.usedForCb)만 C_b에 쓴다.
+        // 나머지 자극을 패킷에 넣으면 평가자가 그것까지 채점하고 C_b 분모가 흔들린다 — 청크 2 첫 조립에서 잡았다(2026-09-02).
+        const useSet = new Set(ceil.usedForCb || []);
         const labels = [];
-        for (const b of ceil.built) {
+        for (const b of ceil.built.filter((x) => useSet.has(x.label))) {
           const src = join(CMP, b.output);
           const name = `${b.label}.png`;
           copyFileSync(src, join(cdir, name)); manifest.files[`rows/_ceiling-${brand}/${name}`] = sha(readFileSync(src)); labels.push(name);

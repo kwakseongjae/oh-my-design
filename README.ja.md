@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>AI コーディングエージェントが、プロジェクト専用の DESIGN.md を基準に作業できる環境を整えます。</strong> ガイド付きインストールと doctor、22 の再利用可能なスキル、19 の専門ロール、品質評価済みの企業リファレンス 440 件以上を提供します。ローカルワークフローに別の API キーや MCP サーバーは不要です。
+  <strong>AI コーディングエージェントが、プロジェクト専用の DESIGN.md を基準に作業できる環境を整えます。</strong> ガイド付きインストールと doctor、27 の再利用可能なスキル、20 の専門ロール、品質評価済みの企業リファレンス 440 件以上を提供します。ローカルワークフローに別の API キーや MCP サーバーは不要です。
 </p>
 
 <p align="center">
@@ -132,22 +132,22 @@ CLI の役割はバンドルの導入と診断までです。その後のデザ�
 
 | エージェント | チャネル | インストールされるもの |
 |---|---|---|
-| **Claude Code** | `--agent claude-code` (デフォルト) | フルバンドル — `.claude/` 配下のスキル、19 サブエージェント、hooks、data |
+| **Claude Code** | `--agent claude-code` (デフォルト) | フルバンドル — `.claude/` 配下のスキル、20 サブエージェント、hooks、data |
 | **Codex** | `--agent codex` | `.agents/skills/` のスキル、`.codex/agents/` の埋め込みサブエージェント定義、`.codex/data/` のローカルカタログ |
 | **OpenCode** | `--agent opencode` | Project: `.opencode/{skills,agents,data}/` のスキル・ネイティブのサブエージェント・カタログ。Global: `~/.config/opencode/{skills,agents,data}/` の同じバンドル |
-| **Cursor** | `--agent cursor` | `.cursor/skills/` の互換 Agent Skills 21 個、小さな `.cursor/rules/omd-design.mdc` bootstrap、共有 `.claude/data` カタログ。別個のサブエージェント定義と hooks は導入しない |
+| **Cursor** | `--agent cursor` | `.cursor/skills/` の互換 Agent Skills 26 個、小さな `.cursor/rules/omd-design.mdc` bootstrap、共有 `.claude/data` カタログ。別個のサブエージェント定義と hooks は導入しない |
 
 デフォルトでは検出されたすべてのエージェントにインストールします。単一チャネルを非対話で導入するには `npx oh-my-design-cli@latest install-skills --agent <name> --all` を実行します。
 
 ### Cursor の正しい利用経路
 
-Cursor 2.4+ は `.cursor/skills/` から互換 OmD Agent Skills 21 個を読み込みます。導入後に Cursor を再起動し、自然言語でデザインシステムの作成を依頼するか `/omd-init` を明示的に呼び出してください。常時 rule は、保留中のユーザー修正、採用済み Bound System／standalone DESIGN.md、フレームワーク既定値の順序と unknown-as-absence を維持します。
+Cursor 2.4+ は `.cursor/skills/` から互換 OmD Agent Skills 26 個を読み込みます。導入後に Cursor を再起動し、自然言語でデザインシステムの作成を依頼するか `/omd-init` を明示的に呼び出してください。常時 rule は、保留中のユーザー修正、採用済み Bound System／standalone DESIGN.md、フレームワーク既定値の順序と unknown-as-absence を維持します。
 
 旧 Cursor では `--cursor-rule-only` で従来の rule + カタログ互換モードを導入できます。OmD の別個の専門サブエージェント定義と hooks は Cursor には導入しません。
 
 ## パッケージの中身
 
-**22 スキル · 19 サブエージェント · 品質・根拠ステータス付きの 440 件以上のリファレンス · 起動 hooks** がフルバンドルです。Cursor には移植可能な 21 スキルを導入し、`claude-design`、別個のサブエージェント定義、起動 hooks はチャネル固有です。
+**27 スキル · 20 サブエージェント · 品質・根拠ステータス付きの 440 件以上のリファレンス · 起動 hooks** がフルバンドルです。Cursor には移植可能な 26 スキルを導入し、`claude-design`、別個のサブエージェント定義、起動 hooks はチャネル固有です。
 
 すべてのリファレンスは `oh-my-design.kr/<id>/design.md` から raw markdown としても取得でき、エージェントが直接 fetch できます。スキル・エージェントごとの詳細リファレンス: **[oh-my-design.kr/docs/ja](https://oh-my-design.kr/docs/ja)**。
 

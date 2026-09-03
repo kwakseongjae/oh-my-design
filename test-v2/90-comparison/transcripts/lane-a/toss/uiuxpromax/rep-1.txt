@@ -1,0 +1,228 @@
+Heading: Design System: Toss
+
+Source:  `--design-system` (markdown) + evidence
+ snapshot `2026-08-22T19-51-46-001Z`.
+Pack CLI colors and webfonts that conflict with evidence are recorded, then **not applied**.
+
+Heading: Design Dials
+
+From pack `--design-system --variance 2 --motion 2 --density 2`:
+
+- **Variance:** 2/10 — Centered / Minimal
+- **Motion:** 2/10 — Subtle
+- **Density:** 2/10 — Spacious
+
+Heading: Pattern
+
+- **Name:** Hero-Centric Design () on a Minimal Single Column frame
+- **Conversion Focus:** One primary CTA. Large type. Whitespace. Mobile-first, then 1440.
+- **CTA Placement:** Sticky nav CTA (캡처: `앱 다운로드`)
+- **Color Strategy:** Evidence chrome + viewport sampling. Not the pack fintech CSV.
+- **Sections (this screen only):** 1. Sticky header / top nav, 2. Full-bleed hero (headline + still), 3. In-page nav destinations (hash). No extra screens.
+
+Heading: Style
+
+- **Name:** Exaggerated Minimalism + Hero-Centric Design
+- **Mode Support:** Light only (evidence `colorScheme: light`)
+- **Keywords:** Oversized type, negative space, high-contrast hero type, single photographic still
+- **Performance:**  Excellent | **Accessibility:**  WCAG AA target
+- **Anti-patterns (pack):** Playful design; unclear fees; AI purple/pink gradients — unused
+
+Heading: Colors
+
+Pack `--domain color "fintech"` returned `#F59E0B` / `#8B5CF6` / `#0F172A`.
+**Not used.** Numeric tokens below are evidence-only. Missing evidence → empty.
+
+Heading: Primitive (evidence)
+
+| Token | Hex | Evidence field |
+|-------|-----|----------------|
+| `--color-page` | `#fdfdfe` | `surfaces.desktop-1440.chrome.pageBackgroundRendered.hex` (coverage 0.1625) |
+| `--color-page-mobile` | `#fefefe` | `surfaces.mobile-390.chrome.pageBackgroundRendered.hex` (coverage 0.207) |
+| `--color-body` | `#000000` | `chrome.bodyColor` |
+| `--color-hero-fg` | `#ffffff` | `typeScale` h2 / p `color` |
+| `--color-button-fg` | `#333840` | `primaryButton.color` (matches viewport nav sampling ≈ rgb(51,56,64)) |
+| `--color-button-bg-chrome` | `#07194c` | `primaryButton.background` (detector). **Conflicts with viewport.** |
+| `--color-button-bg` | `#f0f0f0` | Viewport 2× sampling of `앱 다운로드` fill (quantized). Applied in render. |
+| `--color-logo` | `#0f77fd` | Viewport 2× sampling of header mark (mean of saturated blues) |
+| `--color-hero-cool` | `#e5ebf2` | `desktop-1440.imagery.samples[0].palette[1]` |
+| `--color-hero-cool-2` | `#eaeef5` | `desktop-1440.imagery.samples[0].palette[2]` |
+| `--color-hero-paper` | `#f3f5fa` | `desktop-1440.imagery.samples[0].palette[3]` |
+| `--color-ink` | `#010204` | `desktop-1440.imagery.samples[0].palette[4]` |
+| `--color-metal` | `#7a848c` | `desktop-1440.imagery.samples[0].palette[5]` |
+
+`header.background`: evidence `null` — left empty (header reads as page white).
+`pageBackgroundComputed`: evidence `null` — left empty.
+
+Heading: Semantic
+
+```css
+--color-background: var(--color-page);
+--color-foreground: var(--color-button-fg);
+--color-primary: var(--color-logo);
+--color-on-primary: #ffffff;
+--color-accent: var(--color-button-fg);
+--color-muted: var(--color-hero-cool);
+--color-border: var(--color-hero-cool-2);
+--color-ring: var(--color-button-fg);
+```
+
+Pack `--color-accent: #8B5CF6` is not mapped.
+
+Heading: Component
+
+```css
+--header-height: 64px;          /* desktop chrome.header.heightPx */
+--header-height-mobile: 56px;   /* mobile chrome.header.heightPx */
+--button-bg: var(--color-button-bg);
+--button-fg: var(--color-button-fg);
+--button-radius: 12px;          /* primaryButton.radiusPx */
+--button-font-size: 16px;
+--button-weight: 500;
+--nav-fg: var(--color-button-fg);
+--hero-fg: var(--color-hero-fg);
+--z-skip: 100;
+--z-header: 50;                 /* html-tailwind: nav z-50 */
+--z-menu: 40;                   /* html-tailwind: dropdown z-40 */
+```
+
+Heading: Typography
+
+Evidence `family`: **Toss Product Sans OTF** (desktop h2 / p / button; mobile h2).
+Pack pairing **Noto Sans KR** (and the later Calistoga/Inter dial run) is recorded and **not loaded** — `render.html` must open with zero network.
+
+| Role | Size | Weight | Line-height | Tracking | Color | Surface |
+|------|------|--------|-------------|----------|-------|---------|
+| h2 | 80px | 700 | 96px | normal | `#ffffff` | desktop-1440 |
+| p | 16px | 400 | 25.6px | -0.32px | `#ffffff` | desktop-1440 |
+| button | 16px | 500 | 25.6px | -0.32px | `#333840` | desktop-1440 |
+| h2 | 40px | 700 | 46px | normal | `#ffffff` | mobile-390 |
+
+Nav label size is not in `typeScale`. Render uses the button row (16px / 500) rather than inventing a 14px.
+
+Render stack:
+
+```css
+font-family: "Toss Product Sans OTF", "Toss Product Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+```
+
+Heading: Key Effects
+
+Pack (dials 2): oversized type, massive whitespace, subtle motion.
+Evidence motion (`desktop-1440.motion`):
+
+| Field | Value |
+|-------|-------|
+| present | true |
+| autoplay | true |
+| loop | true |
+| muted | true |
+| poster | `intro-main-poster.webp` (not bundled; unused) |
+| duration | 4.05 |
+| aspect | 1.778 |
+| intrinsic | 1920 × 1080 |
+| motionMagnitude | 0.0025 |
+| cutCount | 0 |
+
+Still `image.jpg` stands in for the autoplay loop (offline). UI transitions 150–300ms (`--duration: 180ms`), `transform`/`opacity` only. `prefers-reduced-motion: reduce` disables them.
+
+Pack GSAP snippet (Scroll Reveal, y: 12, 350ms, `power1.out`) is **not** included — no external GSAP.
+
+Heading: Imagery
+
+`method.note`: chrome and imagery are separate domains; imagery is a distribution, never one hero.
+
+Desktop samples analysed: **2** (`attrition.suspect: true`, "only 2 samples analysed").
+`figureGroundResolved`: `0/2`. `subjectNote`: "fewer than 4 resolved samples — placement omitted".
+
+Applied still is generated from `surfaces.desktop-1440.imagery.samples[0]`:
+
+| Field | Value |
+|-------|-------|
+| src | `https://static.toss.im/assets/toss-im/asset/intro-main.mp4` |
+| kind | video |
+| tag | c1 |
+| alt | `""` (empty in evidence) |
+| aspect | 1.778 |
+| intrinsic | 1920 × 1080 |
+| file |  |
+| meanLuma | 0.652 |
+| luminanceGradient | brighter left |
+| subject.resolved | false |
+
+Render `img` `width`/`height` reserved (CLS). Alt in HTML is a scene description of the generated still, not an evidence subject box.
+
+Heading: Navigation (this screen's task)
+
+Captured header labels (desktop viewport): `서비스` · `비즈니스` · `회사소개` · `뉴스룸` · `채용` · `KOR` · `앱 다운로드`.
+Mobile: mark + menu control (`header.heightPx` 56). Child items under `서비스` are **not in evidence** — left empty.
+
+Behavior:
+
+- Skip link → `#main`
+- Desktop: top nav, `z-50`, padding-top = header height
+- `서비스` → `#서비스` (in-page move; `aria-current` after hash)
+- Other captured labels are the same hash pattern
+- Mobile: Phosphor `List` (inline SVG), `aria-expanded`, Esc closes
+- Focus-visible 2px ring; cursor-pointer; 44×44px targets
+- No hover-only primary action
+
+Heading: Components
+
+Heading: Header
+
+- Height 64 / 56. Background unresolved → page color.
+- Mark: sampled `#0f77fd` drop + wordmark `toss`.
+- Right: `KOR` (label only; language list not in evidence) + `앱 다운로드`.
+
+Heading: Button (`앱 다운로드`)
+
+- Pack spec: default / hover / focus / disabled.
+- Fill: viewport light gray, not chrome `#07194c`.
+- Radius 12px, 16px / 500, fg `#333840`.
+- Hover: 180ms background shift. Active: scale 0.98 (no layout jump).
+- Disabled unused on this screen.
+
+Heading: Hero
+
+- Hero-Centric: photograph + headline above the fold.
+- Headline from viewport still (not chrome): `금융부터 일상까지` · `마침내` · `토스 하나로`.
+- Desktop: one row, space-between. Mobile: three centered lines (40px / 46px).
+- Corner radius: **empty in chrome**. Render uses a large rounding read from the still, not a measured token.
+
+Heading: Icons
+
+Phosphor outline, 24px, stroke-consistent. Hamburger = `List`. No emoji icons.
+
+Heading: Stack
+
+Target: **html-tailwind** guidelines, implemented as one offline HTML file (no Tailwind CDN, no Google Fonts).
+
+Applied from `--stack html-tailwind`:
+
+- Fixed nav `z-50`; menu `z-40`
+- No bounce decoration
+- `width`/`height` on the hero still
+
+Breakpoints (pack + evidence surfaces): 375 / 390 / 768 / 1024 / 1440.
+
+Heading: Avoid
+
+- Pack fintech gold/purple and dark `#0F172A` canvas
+- Network `@import` fonts or CDN CSS
+- Invented `서비스` children
+- Extra screens beyond home
+- Emoji icons; hover-only nav; missing skip link; missing focus ring
+
+Heading: Pre-Delivery Checklist
+
+- [x] No emojis as icons (inline SVG)
+- [x] cursor-pointer on clickable elements
+- [x] Hover 150–300ms
+- [x] Hero type white on photograph; nav `#333840` on `#fdfdfe`
+- [x] Focus-visible rings
+- [x] prefers-reduced-motion
+- [x] Layout at 390×844 and 1440×900
+- [x] Touch ≥ 44px
+- [x] Sequential h1 → h2
+- [x] Skip link

@@ -1,0 +1,135 @@
+Heading: wanted 채용 목록 — system
+
+한 화면. 과업은 필터를 적용한 뒤 채용 카드 하나를 여는 것. 브리프에 없는 화면은 두지 않는다.
+
+팩:  2.0 (고정 SHA). 실행은 팩 워크플로 Step 1→2→3→4 순.
+
+Heading: 요구 분석 (Step 1)
+
+- Product type: Marketplace / Directory (채용 목록)
+- Audience: 구직자, ko-KR, desktop-1440 · mobile-390
+- Stack: 실행 가능한 단일 HTML (html-tailwind 가이드를 인라인 CSS로 이식). 외부 네트워크 없음.
+- Platform: desktop-web + 390 터치. 하단 탭은 mobile-390 증거에만 존재.
+- Style keywords: content-first, light, filter-visible, professional
+
+Heading: 팩 `--design-system` (Step 2)
+
+쿼리: `job board recruiting marketplace listing filter professional content-first light`  
+dials: variance 3 / motion 3 / density 7 · `-p wanted` · `-f markdown`
+
+| 축 | 팩 추천 |
+|---|---|
+| Pattern | Marketplace / Directory. 검색·필터가 CTA. **Hidden filters 금지.** |
+| Style | Exaggerated Minimalism (light). 실제 목록 밀도에는 과한 거대 타이포라 목록 표면에선 쓰지 않음. |
+| Color (Job Board/Recruitment) | Primary `#0369A1` · Accent `#16A34A` · Background `#F0F9FF` · Foreground `#0C4A6E` · Card `#FFFFFF` · Muted fg `#64748B` · Destructive `#DC2626` · Ring `#0369A1` |
+| Type (1차) | Noto Sans Hebrew — 한국어 표면에 부적합. Step 3에서 교체. |
+| Motion | Subtle scroll-reveal 300–400ms `power1.out`. 목록은 hover 150–180ms만. |
+| Density 7 | 카드 간격 16px, 섹션 24–32px. |
+
+Heading: 보충 검색 (Step 3)
+
+- **typography** `professional modern korean sans serif` → Korean Modern: **Noto Sans KR** 300–700.
+- **google-fonts** `Noto Sans KR korean` → family 확인. 오프라인 제약이므로 `@import` / Google CSS는 쓰지 않음.
+- **color** `job board saas professional light` → Job Board/Recruitment 팔레트 재확인.
+- **style** `minimalism content-first light` → Exaggerated Minimalism / Flat Design Mobile. 목록은 **flat, 그림자 없음, 4/8 간격**.
+- **ux** `filter listing accessibility animation loading` + pre-delivery `animation accessibility z-index loading filter` → 스켈레톤(>300ms), `prefers-reduced-motion`, z-index 스케일(10/20/40/100), 포커스 링, 히든 필터 금지.
+- **icons** `filter bookmark search menu` → Phosphor outline: MagnifyingGlass, BookmarkSimple, List, Funnel, MapPin, CaretDown, ArrowsDownUp. 이모지 아이콘 금지.
+
+Heading: 스택 (Step 4)
+
+`--stack html-tailwind` `list filter card responsive`
+
+- 카드 구조·간격 일관 (`space-y` 리듬, 이미지 radius 통일)
+- 클릭 가능한 카드는 hover 피드백 (그림자 대신 이미지 딤 + 포커스 링)
+- 브레이크포인트: 390 / 768 / 1024 / 1440. 모바일 2열 · 데스크톱 4열.
+
+Heading: 증거가 덮는 값
+
+스냅샷 `2026-08-22T19-52-31-934Z`. 팩 팔레트/히브리어 폰트보다 **측정된 크롬**을 목록 캔버스에 쓴다.
+
+| 토큰 | 값 | 출처 |
+|---|---|---|
+| canvas | `#ffffff` | desktop/mobile `pageBackgroundComputed` |
+| ink | `#171719` | `bodyColor` |
+| action | `#0066ff` | mobile typeScale button |
+| header | 61px / 56px | geometry |
+| type | Pretendard Variable 15/14 | typeScale |
+| card image | 3:2 desktop · ~4:3 mobile | imagery aspect 1.5 / 1.333 |
+| gutters | 80px desktop · 18px mobile | docBox x |
+| grid gap | 16px | docBox 간격 |
+
+워드마크는 공식 마크 원본 없이 텍스트 `wanted`. 대표 생성 이미지 `image.jpg`는 1번 카드 커버(사무실 라운지). 나머지 커버는 증거 팔레트 기반 CSS — 제3 브랜드 로고 재현 없음.
+
+Heading: 토큰 (primitive → semantic → component)
+
+```css
+/* primitive */
+--blue-600: #0066ff;
+--ink-900: #171719;
+--slate-500: #64748b;
+--red-600: #dc2626;
+--white: #ffffff;
+--line-200: #e5e5e8;
+--space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+--space-5: 20px; --space-6: 24px; --space-8: 32px;
+--radius-sm: 8px; --radius-md: 12px; --radius-pill: 999px;
+--duration: 180ms; --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+/* semantic */
+--color-background: var(--white);
+--color-foreground: var(--ink-900);
+--color-primary: var(--blue-600);
+--color-muted-foreground: var(--slate-500);
+--color-border: var(--line-200);
+--color-destructive: var(--red-600);
+--color-ring: var(--blue-600);
+
+/* component */
+--header-h: 61px;
+--header-h-mobile: 56px;
+--card-radius: var(--radius-sm);
+--chip-h: 40px;
+--touch: 44px;
+--z-header: 20; --z-dropdown: 40; --z-overlay: 100; --z-skip: 1000;
+```
+
+본문 16px 미만 금지(팩). 카드 제목 18/16, 메타 13–14. 본문 contrast ≥ 4.5:1 (`#171719` / `#64748B` on `#fff`).
+
+폰트 스택 (네트워크 없음):
+
+`Pretendard Variable, Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif`
+
+Heading: 화면 구조
+
+1. skip link → `#jobs`
+2. header: 텍스트 워드마크, 1차 내비(채용 현재), 검색, 회원가입/로그인, 기업 서비스. 모바일은 검색·메뉴.
+3. 직군/경력 트리거 + 정렬(최신순 기본)
+4. 필터 칩 — 항상 보임 (Hidden filters 금지)
+5. 카드 그리드. 커버 + 합격보상금 배지 + 북마크 + 직무/회사/지역·경력
+6. 카드 클릭 → 같은 문서의 `dialog` (신규 라우트 없음)
+7. mobile-390 하단 탭: 채용 / 교육·이벤트 / 소셜 / MY 원티드
+
+Heading: 상태
+
+| 대상 | default | hover/focus | pressed | disabled/empty |
+|---|---|---|---|---|
+| 칩 | 흰 면 + 보더 | 보더 진하게 | ink 면 + 흰 글 | — |
+| 카드 | 정적 | 커버 딤, 포커스 링 | scale 0.99 | 필터 불일치 시 제거 |
+| 북마크 | 아웃라인 | — | 채워짐 + `aria-pressed` | — |
+| 다이얼로그 | 닫힘 | — | 열림, 포커스 트랩, Esc/닫기 | — |
+| 필터 0건 | — | — | — | 안내 + 초기화 |
+
+라이브 리전으로 결과 수 알림. 터치 타깃 ≥ 44px, 간격 ≥ 8px. `prefers-reduced-motion` 시 duration 0.
+
+Heading: 카피 (증거에 보이는 것만)
+
+내비·필터 라벨·8장 카드의 직무/회사/지역·경력은 스냅샷과 `evidence.json` alt에서만 가져왔다. 잘린 메타(5–8번 지역)는 채우지 않는다.
+
+Heading: 안티패턴 / 프리딜리버리
+
+- 필터를 햄버거 안으로 숨기지 않음
+- 이모지 아이콘 없음
+- 포커스 링 제거 없음
+- Google Fonts / CDN / 원티드 원격 이미지 없음
+- `figure, blockquote, ul, ol` 마진 리셋 (UA 기본값 실측 파손 방지)
+- z-index 스케일 준수, 9999 금지

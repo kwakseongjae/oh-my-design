@@ -25,12 +25,26 @@ const lines = readFileSync(rp, "utf8").split("\n").filter((l) => l.trim());
 const problems = [];
 const seen = {}; // `${brand}|${rep}|${slot}` -> Set(axis)
 const posthoc = new Set();
+const ceilingSeen = {};
 let parsed = 0;
 
+let footer = null;
 lines.forEach((l, i) => {
+  // 평가자가 마지막 줄에 SCORING_DONE 을 파일에도 쓰는 경우가 있다(grok chunk-1). 데이터가 아니라 종료 표지이므로
+  // 오류로 세지 않고 기록만 한다. 그 밖의 비JSON 줄은 여전히 문제다.
+  if (/^SCORING_DONE\b/.test(l.trim())) { footer = l.trim(); return; }
   let j;
   try { j = JSON.parse(l); } catch { problems.push(`L${i + 1}: JSON 파싱 실패`); return; }
   parsed++;
+  // 천장 자극 답(§4.3)은 행(rep)이 아니라 브랜드 단위다 — ceiling stimulus 줄은 브랜드·자극명만 검사한다.
+  if (j.axis === "identification" && j.identification?.stimulus) {
+    if (!(key.ceilingBrands || []).includes(j.brand)) problems.push(`L${i + 1}: 천장 없는 브랜드의 자극 답 ${j.brand}`);
+    const c = j.identification.confidence;
+    if (!j.identification.brand) problems.push(`L${i + 1}: 천장 답 brand 없음`);
+    if (!(typeof c === "number" && c >= 0 && c <= 100)) problems.push(`L${i + 1}: 천장 답 confidence 0–100 아님`);
+    (ceilingSeen[j.brand] ||= new Set()).add(j.identification.stimulus);
+    return;
+  }
   const row = key.rows.find((r) => r.brand === j.brand && Number(r.rep) === Number(j.rep));
   if (!row) { problems.push(`L${i + 1}: 키에 없는 행 ${j.brand}/${j.rep}`); return; }
   if (j.postHocGuess) { posthoc.add(`${j.brand}|${j.rep}`); return; }
@@ -71,15 +85,18 @@ const coverage = [];
 for (const r of key.rows) for (const slot of ["A", "B", "C"]) {
   const k = `${r.brand}|${r.rep}|${slot}`;
   const have = seen[k] || new Set();
-  const expected = ["defects", "evidence", "document", ...(key.ceilingBrands?.includes(r.brand) ? ["identification"] : [])];
+  // 재채점 키(build-rescore.mjs)는 axes 를 명시하고 postHoc 을 끈다 — 청크 키는 기본값.
+  if (!(r.slots || {})[slot]) continue; // 키에 없는 슬롯(재채점은 필요한 슬롯만)은 기대하지 않는다
+  const expected = key.axes ? [...key.axes] : ["defects", "evidence", "document", ...(key.ceilingBrands?.includes(r.brand) ? ["identification"] : [])];
   const missing = expected.filter((a) => !have.has(a));
   coverage.push({ brand: r.brand, rep: r.rep, slot, missing });
 }
-const missingPosthoc = key.rows.filter((r) => !posthoc.has(`${r.brand}|${r.rep}`)).map((r) => `${r.brand}/${r.rep}`);
-const out = { lines: lines.length, parsed, problems, coverage: coverage.filter((c) => c.missing.length), missingPosthoc, ok: problems.length === 0 && coverage.every((c) => !c.missing.length) };
+const missingPosthoc = key.postHoc === false ? [] : key.rows.filter((r) => !posthoc.has(`${r.brand}|${r.rep}`)).map((r) => `${r.brand}/${r.rep}`);
+const ceilingShort = (key.ceilingBrands || []).filter((b) => (ceilingSeen[b]?.size || 0) < 4).map((b) => `${b}:${ceilingSeen[b]?.size || 0}/4`);
+const out = { lines: lines.length, parsed, problems, coverage: coverage.filter((c) => c.missing.length), missingPosthoc, ceilingShort, ok: problems.length === 0 && coverage.every((c) => !c.missing.length) && ceilingShort.length === 0 };
 if (asJson) console.log(JSON.stringify(out, null, 1));
 else {
-  console.log(`lines ${out.lines} · parsed ${parsed} · schema 문제 ${problems.length} · 결측 슬롯 ${out.coverage.length} · postHoc 결측 ${missingPosthoc.length}`);
+  console.log(`lines ${out.lines} · parsed ${parsed} · schema 문제 ${problems.length} · 결측 슬롯 ${out.coverage.length} · postHoc 결측 ${missingPosthoc.length} · 천장 부족 ${ceilingShort.join(",") || "0"}`);
   for (const p of problems.slice(0, 30)) console.log("  ✗ " + p);
   for (const c of out.coverage.slice(0, 30)) console.log(`  · ${c.brand}/rep${c.rep}/${c.slot} 결측: ${c.missing.join(",")}`);
   console.log(`VALIDATE_${out.ok ? "OK" : "FAIL"}`);

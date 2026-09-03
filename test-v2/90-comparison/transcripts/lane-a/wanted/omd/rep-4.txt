@@ -1,0 +1,98 @@
+Heading: 채용 목록 표면 계약
+
+스냅샷 `2026-08-22T19-52-31-934Z` · `https://www.wanted.co.kr/wdlist` · 과업: 필터를 적용해 채용 카드 하나를 연다.
+
+이 문서는 프로젝트  아니다. 벤치 산출 디렉터리 안에서만 유효한 표면 로컬 계약이다.
+
+Heading: Philosophy
+
+채용 목록은 고르는 도구다. 한 화면에서 조건을 좁히고, 카드 하나를 연다.
+
+- **P1 과업만.** 필터와 열기 이외의 화면을 만들지 않기 위해 회원 가입·기업 서비스·다른 IA 허브는 안내만 남긴다.
+- **P2 스냅샷 정직.** 뷰포트와 alt에 없는 회사명·근무지·총 공고 수·연봉·순위 점수를 만들지 않기 위해 카드 필드는 비워 둔다.
+- **P3 목록 밀도.** 히어로·마케팅 밴드를 쓰지 않고, 1440에서 4열·390에서 2열 카드 격자에 화면을 쓴다.
+
+Heading: Derive
+
+| ID | 결정 | 근거 |
+|---|---|---|
+|  | 표면 장르: 라운드 미디어 + 무그림자 타일 (commerce catalog) | 스냅샷 카드는 사진이 면이고 그림자가 거의 없다. 에디토리얼 룰 밴드가 아니다. |
+|  | 미디어 radius 12px, 칩·컨트롤은 필 | 스냅샷 칩/CTA가 필, 카드 미디어만 둥근 사각. |
+|  | 악센트 한 개: 스냅샷 버튼색 `#0066ff` → `oklch(0.55 0.22 264)` | 모바일 크롬 `button.color`가 그 값. 면이 아니라 아웃라인·현재 탭·포커스 링. |
+|  | paper `oklch(0.994 0.004 95)` / ink `oklch(0.221 0.014 285)` | 계산값 `#ffffff` / `#171719`. 순수 `#fff`/`#000` 베이스 금지(G7)라 미세 틴트. |
+|  | 악센트 면적 ≤5% | 회원가입 보더, 탭 현재, 선택 링만. 카드 전체를 칠하지 않음. |
+|  | 한글 고딕 한 패밀리, 디스플레이는 웨이트 | Pretendard Variable 스택. 세리프 폴백 금지. `word-break: keep-all`. |
+|  | 디스플레이 24px/700 (직군·경력 트리거), 본문 16/400, 버튼 15/600, 라벨 12/600 | 스냅샷 typeScale 15/600/22px + 헤딩 실측. |
+|  | 모션 120/200/320, ease-out 하나. hover-lift 없음 | 원본이 카드를 띄우지 않음(C24). 호버는 미디어 밝기만. |
+|  | 1440: 4열 308px+16 갭, 거터 80. 390: 2열 169+16, 거터 18 | evidence `docBox`. |
+|  | 초광폭 전략: 중앙 max 1440 | 카탈로그. 좌측 max/컬럼 무한 추가는 안 함. |
+|  | 카피: 직군 전체, 경력 전체, 합격보상금 100만원, 최신순 | 스냅샷에 있는 말만. |
+
+Heading: Tokens
+
+주석은 결정 ID. 구현은 `render.html` `:root`.
+
+```css
+--color-paper: oklch(0.994 0.004 95); 
+--color-ink: oklch(0.221 0.014 285); 
+--color-ink-muted: oklch(0.55 0.012 285);
+--color-line: oklch(0.91 0.008 285);
+--color-accent: oklch(0.55 0.22 264); 
+--color-accent-ink: oklch(0.99 0.01 264);
+--space-gutter: clamp(18px, 5.5vw, 80px); 
+--space-section: 2.5rem;
+--text-display: 1.5rem; 
+--radius-card: 12px; 
+--radius-chip: 999px;
+--move-fast: 120ms; --move-base: 200ms; --move-slow: 320ms; 
+--header-h: 61px; /* desktop chrome; 56px @390 */
+--tap: 44px;
+```
+
+플레이트 색은 표본 이미지 팔레트(c2–c12)에서 온 데이터 토큰이다. UI 베이스가 아니다.
+
+Heading: Component specs
+
+프리셋 먼저 (GS8).
+
+| 컴포넌트 | 프리셋 | 파생 |
+|---|---|---|
+| 직군·경력·기술스택 | P-FN-01 | 트리거가 디스플레이 웨이트. 네이티브 select 없음. |
+| 라우트/다이얼로그 포커스 | P-FN-02 | `#page-title`·`#dialog-title` 포커스 링 억제. |
+| 태그 칩 | P-FN-04 | 태그 전체가 기본. 필터 해제는 활성일 때만. |
+| 0건 | P-FN-05 | 문장 + 필터 해제 1개. |
+| 결과 줄 | P-FN-06 | "수록된 순서 · n건". |
+| 채용 카드 | P-CM-01 파생 | 가격 슬롯 → 합격보상금 오버레이. 브랜드 eyebrow 없음. 제목 → 회사 → 근무지·경력. |
+
+상태: 카드 default / hover(미디어 밝기) / focus-visible / active(미세 스케일, fine pointer) / open(악센트 링). 북마크 default / pressed. 리스트박스 default / expanded / option active / selected. 칩 default / pressed. 가입 버튼 default / hover / focus-visible.
+
+Heading: Layout grammar
+
+**카탈로그 격자.** 콘텐츠 역산: 표본 이미지 12장 → 카드 12. 4열×3행(1440), 2열(390).
+
+- 첫 카드 미디어 = 생성 `image.jpg` (근무 공간 사진 역할).
+- 나머지 11장은 네트워크 이미지를 쓰지 않고 팔레트 플레이트.
+- 카드 열기는 같은 화면의 `dialog`. 새 라우트 없음.
+
+Heading: Honesty
+
+| 항목 | 처리 |
+|---|---|
+| 공식 로고 | 글자 워드마크 `wanted` |
+| 회사명 c9–c12 | 생략. 다이얼로그가 빠진 칸을 말한다. |
+| 근무지·경력 c5–c8, c10–c12 | 뷰포트에 안 보임 → 생략 |
+| 기업 태그(유니콘 등) | 값이 없음. 켜면 0건 + 이유 |
+| 추천순·인기순 | 순위 데이터 없음. 선택만 되고 순서는 수록 순 |
+| 회원가입·기업 서비스 | 이 스냅샷에 그 화면 없음 |
+| 표본 | 푸터 한 줄 |
+
+Heading: Journey (SELF-WALK)
+
+| 동사 | 키보드 | 증거 |
+|---|---|---|
+| 필터를 적용하다 | Tab → 직군 트리거 → Enter → 화살표 → Enter | `aria-selected`, 트리거 문구, `#job-grid data-state="filtered"`, `#result-status` |
+| 채용 카드를 열다 | Tab → 카드 `data-cta="local"` → Enter | `dialog[data-state=open]`, 제목 포커스, 카드 `data-state=open`, 보이는 ID `채용 cN` |
+
+Heading: Disposition
+
+`surface-local-only`. 벤치가 프로젝트  채택을 허용하지 않는다.

@@ -1,0 +1,128 @@
+Heading: Coupang Home — Design system
+
+Snapshot `2026-08-22T19-48-17-298Z`. Surface: desktop-1440 (1440×900). Task: type a query in the home search field and land on a product list. Offline first render; no network fonts, CDNs, or remote images.
+
+Heading: Pack workflow
+
+Skill:  (competitor-skills-2.0 pack).
+
+1. Requirements — C-end Korean marketplace home; desktop-web; search is the primary conversion.
+2. `--design-system` (required)
+   - Query 1: `ecommerce marketplace retail shopping catalog korea dense content-first`
+   - Query 2 (pattern fit): `ecommerce marketplace search catalog dense retail`
+3. Domain searches: `color`, `style`, `ux`, `product`, `icons`, `typography`, `landing`
+4. Stack: `--stack html-tailwind` (tokens and interaction rules applied as vanilla CSS; Tailwind CDN is forbidden on an offline render)
+5. Pre-delivery UX pass: `--domain ux "animation accessibility z-index loading"`
+
+Heading: Pattern
+
+**Marketplace / Directory** (landing + design-system hit).
+
+- Search bar is the CTA. Reduce friction to search.
+- Placement: sticky header search (always reachable) + home hero still in view on first paint.
+- Sections used: header search, category entry, featured campaign, curated listings (`오늘의 발견`), then product list after submit.
+- Not used: seller-host CTA page, trust/safety landing, extra routes. Brief is home + search destination only.
+
+Style recommendation from the pack (product type E-commerce / Marketplace): **Vibrant & Block-based**. Applied as high-contrast category block, promo color blocks, and a full-bleed campaign hero. Density follows the captured catalog chrome (8px scale), not the 48px marketing gaps from the first design-system dump.
+
+Heading: Color
+
+Pack palettes for “marketplace” (purple `#7C3AED`) and “e-commerce” (mint `#ECFDF5` / green `#059669`) fight the captured chrome (`pageBackgroundRendered.hex = #fefefe`, category/search blue, brown wordmark, type `#000` / `#212b36` / `#7b7b7b`).
+
+Resolution: keep pack **roles**, bind primitives to captured chrome + the e-commerce **accent** `#EA580C`.
+
+| Role | Token | Value | Source |
+|------|-------|-------|--------|
+| Background | `--color-background` | `#fefefe` | evidence |
+| Foreground | `--color-foreground` | `#111111` | evidence body / h2 |
+| Muted text | `--color-muted-foreground` | `#7b7b7b` | evidence `p` |
+| Secondary text | `--color-gray-800` | `#212b36` | evidence `h3` |
+| Primary (search, category) | `--color-primary` | `#346aff` | header chrome |
+| On-primary | `--color-on-primary` | `#ffffff` | pack |
+| Accent / price urgency | `--color-accent` | `#ea580c` | pack e-commerce accent |
+| Wordmark | `--color-wordmark` | `#c4470e` | text mark, not the official logo asset |
+| Success (로켓배송) | `--color-success` | `#16a34a` | pack marketplace accent |
+| Destructive | `--color-destructive` | `#dc2626` | pack |
+| Ring | `--color-ring` | `#346aff` | = primary |
+| Card | `--card-bg` | `#ffffff` | pack card |
+
+Heading: Typography
+
+Pack pairing is Rubik + Nunito Sans via Google Fonts. **Not loaded** (offline rule + `font-loading` / FOIT). Evidence family is Apple SD Gothic Neo.
+
+```
+--font-sans: "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+```
+
+Scale from evidence + pack `font-scale`:
+
+| Role | Size / line / weight |
+|------|----------------------|
+| Body | 16px / 1.5 / 400 |
+| Utility, captions | 11px / 16.5px / 400 |
+| Product title | 14px / 1.45 / 400 |
+| Section h2 | 24px / 33px / 700 |
+| Section kicker | 20px / 33px / 400 |
+| Hero title | 48px / 1.15 / 800 |
+| Price | 18px / tabular-nums / 700 |
+
+Heading: Effects & motion
+
+Pack: 150–300ms, hover color shift, transform/opacity only. Stack: `duration-150`–`duration-300`, `z-0/10/20/40/50`, `focus:ring`, `min-h-[44px]`.
+
+- Duration `--duration: 180ms`, ease `cubic-bezier(0.2, 0, 0, 1)`
+- Press scale 0.96 on search icon
+- Skeleton pulse while search > 300ms
+- `prefers-reduced-motion: reduce` disables animation and transition
+- Hero image has `width`/`height` + `aspect` container (CLS)
+
+Heading: Layout
+
+- Content wrap 1020px (captured desktop column)
+- Sticky masthead `z-40`; category/suggest `z-50`; skip link `z-100`
+- Category control is a hanging 102×114 primary block overlapping the shortcut row (captured geometry, header height 70px)
+- Hero 450px (`imagery-01` docBox height)
+- Breakpoints 768 / 1024 / 1440
+
+Heading: Components
+
+Heading: Search (primary)
+
+- Visible (sr) label + placeholder matching the capture
+- Scope select `전체`
+- Icon-only mic and submit: Phosphor-style outline SVG, `aria-label`
+- Submit loading: button disabled + spinner
+- Empty submit: error **below the field**, `aria-invalid`, focus stays
+- Local autocomplete (debounced 150ms), no network
+- Enter, submit click, suggestion click, category item, and home tiles all call the same search path
+
+Heading: Product list (task destination)
+
+- Same header/search (state preserved)
+- Heading `‘{query}’ 상품 목록`
+- 360ms skeleton, then grid
+- Empty state with recovery queries (pack: no dead ends)
+- Wordmark returns home (predictable back)
+
+Heading: Campaign hero
+
+- Generated `image.jpg` is the only raster
+- Overlay copy in HTML (banner-design: no text in the bitmap)
+- Right rail is HTML, not part of the image
+
+Heading: Wordmark
+
+Official Coupang logo file is not used. Text `coupang` in `--color-wordmark`.
+
+Heading: Icons
+
+Pack default: Phosphor outline, 24px, consistent stroke. Implemented as inline SVG (no `@phosphor-icons/react` on a static file). No emoji as structural icons.
+
+Heading: Anti-patterns avoided
+
+- Google Fonts / CDN / remote product images
+- Placeholder-only error handling
+- Frozen UI on submit
+- Official logo asset
+- Extra screens not in the brief (no login, cart, or PDP routes)
+- Mixing a second icon family

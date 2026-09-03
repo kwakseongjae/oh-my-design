@@ -1,0 +1,80 @@
+Heading: wanted 채용 목록 —  Newsprint / Catalogue
+
+Pack:  (v1.1.0).  
+Snapshot: `2026-08-22T19-52-31-934Z`. Surface: desktop-1440 · mobile-390.
+
+This file is the portable system for `render.html`. Tokens live in the page `:root` (offline first render; no extra  outside the run directory).
+
+Heading: Inference (design-context gate, user opted out by giving a complete run brief)
+
+- Audience: people scanning Korean job posts, then opening one.
+- Use: apply a filter, then open a card.
+- Tone: utilitarian.
+- Genre: editorial (no SaaS / atmospheric / playful signal).
+- Theme route: catalog. Newsprint. Paper band light, display roman-serif, accent warm brick.
+
+Going with: audience = job seekers · use = filter then open one posting · tone = utilitarian.
+
+Heading: Structural fingerprint
+
+- Macrostructure: **Catalogue** — inventory of equal cards, no marketing hero.
+- Nav: **N6 Newspaper masthead** (first run; editorial default). Issue line above a text wordmark. Official logo mark is not used.
+- Footer: **Ft2** inline rule, single line.
+- Section head: **S2 hanging**.
+- Feature: **F6 product-card-grid** — 4/3 media, 4-up at 90rem, Save as micro-action.
+- Enrichment: none on the fold. Card 1 uses the required generated still `image.jpg`. Remaining cards are named colour plates (placeholders, not invented photography).
+- Motion: Newsprint duration scale 0×. Instant state changes. `prefers-reduced-motion` still declared.
+
+Previous nav: none. This build: N6.
+
+Heading: Tokens
+
+Paper and ink are warm-oat (hue ~85 / 55), never `#fff` / `#000`. One accent: brick `oklch(46% 0.155 32)`, footprint under 5%. `--color-accent-ink` is the only text on accent fills.
+
+| Role | Token | Notes |
+| --- | --- | --- |
+| Paper | `--color-paper` | Newsprint sheet |
+| Ink | `--color-ink` | Body and rules |
+| Accent | `--color-accent` | Active nav, pressed chips, focus |
+| Display | `--font-display` | Newsreader → Apple Myungjo |
+| Body | `--font-body` | IBM Plex Sans → Apple SD Gothic Neo |
+| Outlier | `--font-outlier` | Issue line only (≤ 2 slots) |
+| Space | `--space-3xs` … `--space-3xl` | 4pt scale |
+| Control | `--control-h` | 44px inputs and buttons |
+| Type | `--text-xs` … `--text-2xl` | Major third from 16px |
+
+All colours and `font-family` declarations in the page reference these names.
+
+Offline constraint: no network `@font-face`. The named faces stay first in the stack; Korean rendering falls to system 명조 / 고딕.
+
+Heading: Page
+
+One screen: 채용 목록. No extra routes.
+
+1. Masthead wordmark `wanted` (text only).
+2. Inventory line + filter row (직군, 경력, 지역, 기술스택, 검색).
+3. Uniform job cards from the snapshot titles.
+4. Native `<dialog>` is the open-card state.
+5. Ft2 colophon.
+
+Copy on cards is taken from the capture (titles, companies, 서울 구, 경력 bands, 합격보상금 100만원). Missing company or location is omitted, not filled.
+
+Heading: Interaction
+
+- Filters are exact matches on `data-*`. Empty result names the gap and offers reset.
+- Opening a card: click media or title → `<dialog showModal()>`. Close: 목록으로, backdrop, Escape.
+- Save is optimistic and silent. No toast.
+- Sort labels exist; ranking numbers were not in the brief, so order does not invent popularity.
+- Eight states for controls: default, hover (`@media (hover: hover)`), `:focus-visible` (instant ring), `:active`, `:disabled`, loading / error / success data-states.
+
+Heading: Imagery
+
+`image.jpg` is the representative still for the first card (교육 운영 공간). Other cards are swatch plates so the page does not pretend to ship twelve generated photographs.
+
+Heading: Mobile
+
+`html, body { overflow-x: clip }`. Image tracks `minmax(0, 1fr)`. Clickable labels `white-space: nowrap`. 2-up from 320px, 3-up at 60rem, 4-up at 90rem. Dock at < 40rem. Hit targets 44px.
+
+Heading: Pre-emit critique
+
+P4 H5 E4 S5 R5 V5 — Catalogue + Newsprint against a listing brief, not a Specimen landing.

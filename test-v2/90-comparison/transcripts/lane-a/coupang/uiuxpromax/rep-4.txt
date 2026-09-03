@@ -1,0 +1,184 @@
+Heading: Coupang Home — Design System
+
+Snapshot `2026-08-22T19-48-17-298Z` · surface desktop-1440 (1440×900) · task: search field → product list.
+
+Pack:  2.0. Workflow used as specified: requirements → `--design-system` → domain/stack searches → implement. Tokens below are the three-layer model from the pack `design-system` skill (primitive → semantic → component).
+
+Heading: Requirements (Step 1)
+
+- Product: C-end marketplace / e-commerce catalog (search is the conversion action)
+- Audience: Korean retail shoppers on desktop web
+- Platform: single-file HTML, no network
+- Screen in brief: home only. Listing appears as the search task result, not as an extra destination
+- Stack for this run: vanilla HTML + CSS (pack `--stack html-tailwind` rules applied as CSS equivalents; Tailwind CDN is a network request, so it is not loaded)
+
+Heading: Pack `--design-system` (Step 2)
+
+Query: `ecommerce marketplace search-first retail consumer dense catalog` · project `Coupang Home`.
+
+| Slot | Pack recommendation |
+|------|---------------------|
+| Pattern | Marketplace / Directory — search bar is the CTA; popular-search suggestions |
+| Style | Vibrant & Block-based |
+| Primary | `#7C3AED` |
+| Accent | `#16A34A` |
+| Background | `#FAF5FF` |
+| Type | Rubik / Nunito Sans (Google Fonts) |
+| Effects | 48px+ section gaps, 200–300ms hover, large type |
+| Avoid | Flat no-depth; text-heavy pages |
+
+`--domain product` ranked Marketplace (P2P) and E-commerce: search-first, category icons, trust blue/green.
+
+`--domain color "ecommerce retail shopping"` offered grocery/e-commerce greens (`#059669`) and urgency orange (`#EA580C`), plus a luxury stone+gold set.
+
+`--domain ux` for this task: visible labels (not placeholder-only), autocomplete, empty/no-result copy with a next action, submit feedback, 44px targets, icon-only `aria-label`, focus rings, reduced-motion.
+
+`--domain icons`: Phosphor outline — `MagnifyingGlass`, `Microphone`, `User`, `ShoppingCart`, `List`.
+
+`--stack html-tailwind`: `focus:ring`, `min-h-[44px]`, `duration-150`–`300`, `z-50` for chrome, `aspect-*` + `object-cover` on media, `sr-only` on icon buttons.
+
+Heading: Evidence override (this snapshot)
+
+The pack palette is a generic marketplace prior. Chrome on the captured home is not purple. Unknown stays absent; primitives that the capture actually shows replace the prior.
+
+From  chrome + sampled pixels on  / :
+
+| Token | Value | Source |
+|-------|--------|--------|
+| page background | `#FEFEFE` | `pageBackgroundRendered.hex` |
+| body ink | `#000000` | `bodyColor` |
+| h2 | 24px / 700 / 33px / `#000000` / Apple SD Gothic Neo | typeScale |
+| h3 | 20px / 400 / 33px / `#212B36` | typeScale |
+| caption | 11px / 400 / 16.5px / `#7B7B7B` | typeScale |
+| header height | 70px | `header.heightPx` |
+| category / search blue | `#3C60F0` | header scan (dominant non-white) |
+| search edge | `#4884E4` | header scan |
+| wordmark brown-red | `#C03C30` | header scan |
+| wordmark terminal | `#90B448` | header scan |
+| promo left | `#C4F0FC` | header-band |
+| promo right | `#B4C0D8` | header-band |
+| imagery | even, high luma, white-dominant; one cream/pink sample | imagery aggregate |
+| motion | none above the fold | `motion.present: false` |
+
+Google Fonts are not used (offline first render). Face: `"Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif`.
+
+Official mark artwork is not used. The name is a text wordmark; the last letter is the sampled green.
+
+Heading: Primitive tokens
+
+```css
+--color-white: #ffffff;
+--color-bg: #fefefe;
+--color-black: #000000;
+--color-ink-700: #212b36;
+--color-ink-400: #7b7b7b;
+--color-blue-600: #3c60f0;
+--color-blue-500: #4884e4;
+--color-red-700: #c03c30;
+--color-green-500: #90b448;
+--color-green-600: #059669;
+--color-orange-600: #ea580c;
+--color-promo-a: #c4f0fc;
+--color-promo-b: #b4c0d8;
+--color-gray-50: #f8f8f8;
+--color-gray-100: #f0f0f0;
+--color-gray-200: #e8e8e8;
+--color-gray-300: #d0d0d0;
+--space-1: 4px;
+--space-2: 8px;
+--space-3: 12px;
+--space-4: 16px;
+--space-5: 20px;
+--space-6: 24px;
+--space-8: 32px;
+--radius-1: 2px;
+--radius-2: 4px;
+--duration-fast: 150ms;
+--duration: 200ms;
+--ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+--z-base: 0;
+--z-rail: 10;
+--z-header: 40;
+--z-nav: 50;
+--z-overlay: 60;
+--font-ui: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", Pretendard, sans-serif;
+--shadow-rail: 0 2px 8px rgb(0 0 0 / 0.12);
+```
+
+Heading: Semantic tokens
+
+```css
+--color-background: var(--color-bg);
+--color-foreground: var(--color-black);
+--color-primary: var(--color-blue-600);
+--color-on-primary: var(--color-white);
+--color-accent: var(--color-green-600);
+--color-brand: var(--color-red-700);
+--color-brand-tail: var(--color-green-500);
+--color-muted: var(--color-gray-100);
+--color-muted-foreground: var(--color-ink-400);
+--color-border: var(--color-gray-200);
+--color-ring: var(--color-blue-600);
+--color-destructive: #dc2626;
+--surface: var(--color-white);
+--spacing-section: var(--space-8);
+```
+
+Pack purple (`--color-primary: #7C3AED`) is not mapped. Search contrast and category block use the sampled blue.
+
+Heading: Component tokens
+
+| Component | Token | Value |
+|-----------|--------|--------|
+| Category | `--cat-bg` | `var(--color-primary)` |
+| Category | size | 90×120px (hangs through shortcut row) |
+| Search | `--search-border` | 2px `var(--color-primary)` |
+| Search | height | 40px; inner type 14px; label is `sr-only` + placeholder |
+| Wordmark | type | 32px / 700 / tracking -0.04em |
+| Utility bar | height | 32px; 12px muted |
+| Promo strip | height | 70px |
+| Header | height | 70px |
+| Hero figure | 1440×450, `object-fit: cover` | `image.jpg` |
+| Rail | `--z-rail`; white surface; 1px border | active item 2px primary |
+| Product card | radius 0 (catalog, not marketing card) | price 700 tabular |
+| Icon | 24px stroke 2, one family | no emoji icons |
+
+States (pack component spec):
+
+| Control | Default | Hover | Active | Disabled | Focus |
+|---------|---------|-------|--------|----------|-------|
+| Search submit | primary | 4% darker | press scale 0.97 | opacity 0.5 | 2px ring |
+| Text link | ink-400 | black | — | — | ring |
+| Listing card | white | gray-50 | — | — | ring |
+| Cat button | primary | same | panel open | — | ring on inner |
+
+Heading: Layout (1440)
+
+- Page canvas 1440, inner 1020 centered
+- Order (pack marketplace + captured home): promo pair → utility → header (category, wordmark, **search**, my, cart) → shortcut rail → hero + right merchandising rail → 오늘의 발견
+- Search remains in the header on the listing view
+- Breakpoints if the window shrinks: 1024 / 768 / 375. First paint is desktop-1440
+- CSS reset zeros `figure`, `blockquote`, `ul`, `ol` margins (UA defaults broke measurement)
+
+Heading: Search task
+
+1. Visible label (`sr-only` “상품 검색”) + `role="search"`
+2. Category select “전체” is a filter on the same field, not a new screen
+3. Suggestions listbox while typing (pack autocomplete)
+4. Submit (Enter or magnifier, 44×40 hit target) → home merchandising hides, listing shows
+5. Non-empty query always yields a product list (catalog hits, then query-titled fillers)
+6. Empty submit → empty state with a next action (focus the field / pick a suggestion). No blank page
+7. Wordmark returns home
+8. No login, cart, or PDP screens
+
+Heading: Imagery
+
+`image.jpg` is the home hero (banner-design: photo-based website hero, type overlaid in HTML, no letters in the bitmap). 16:9 generation, cropped to 1440×450 with `object-position: center 72%` so the picnic row stays in frame. No official marks in the bitmap.
+
+Heading: Motion
+
+Capture had no above-fold video. UI only: 150–200ms color/opacity, press scale on the search button. `prefers-reduced-motion: reduce` disables it.
+
+Heading: Anti-patterns not used
+
+Emoji as chrome icons; placeholder-only field; Google Fonts / CDN; official logo file; pack purple wash on a white captured chrome; extra screens outside home + search list; hover-only primary action.

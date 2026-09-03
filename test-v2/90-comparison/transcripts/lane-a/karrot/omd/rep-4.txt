@@ -1,0 +1,173 @@
+Heading: 동네 중고 검색 — 표면 로컬 디자인 시스템
+
+화면: 검색 결과. 과업: 결과에서 매물 카드 하나를 열어 상세로 이동한다.
+스냅샷: `2026-08-22T19-49-29-044Z` (desktop-1440 · mobile-390).
+출처 클래스: 브리프 = `prompt-fact`, 스냅샷 실측 = `repository-fact`, 아래 토큰·문법 = `agent-proposed-greenfield-decision`.
+공식 로고 원본은 쓰지 않는다. 워드마크는 텍스트 「당근」만 쓴다.
+
+이 문서는 Autopilot 팩의 유도 사슬(철학 → 결정 표 → 토큰 → 프리셋 파생 명세 → 레이아웃 문법)을 이 한 화면에 묶은 것이다. 프로젝트 루트  승격하지 않는다.
+
+Heading: 철학
+
+한 문장: **한 동네에서 올라온 노트북을 빨리 훑고, 한 장을 열어 값을 확인한다.**
+
+- **P1 스캔이 먼저다.** 사진·제목·가격·동네가 한 시선에 들어와야 한다. 희생: 마케팅 히어로, 프로모 배너, 카드 안의 CTA.
+- **P2 악센트는 신호다.** 주황은 워드마크와 포커스·선택 고리에만 쓴다. 희생: 주황 면 버튼, 카드 선택 워시, 그라데이션.
+- **P3 모르는 칸은 비운다.** 스냅샷에 없는 본문·판매자·채팅·다른 검색어 결과는 만들지 않는다. 희생: “채워 넣은” 상세 풍부함.
+
+Heading: 결정 표
+
+| ID | 카테고리 | 결정 | 근거 |
+|---|---|---|---|
+|  | 표면 장르 | 둥근 미디어 타일 + 아래 텍스트. 카드 박스·그림자 타일 키트 금지. | P1. 스냅샷 검색 결과는 사진이 면이고 글은 사진 밑에 붙는다. |
+|  | 정보 밀도 | 와이드는 열을 늘린다(4열). 행을 가로로 늘리지 않는다. | P1, C32 컬럼 추가, 프리셋 P-MK-01 와이드 변형. |
+|  | 타이포 위계 | 한글 고딕 한 가족. 디스플레이는 크기·웨이트로만 올린다. h1 28/700, 본문 16/400, 가격 16/700, 라벨 13/500. | 스냅샷 typeScale. 한글에 라틴 디스플레이 폴백 금지. |
+|  | 모서리 | 컨트롤·미디어 8px. 필은 999px. | 스냅샷 primaryButton.radiusPx = 8. |
+|  | 색 밀도 | 종이·잉크·틴트 뉴트럴 + 주황 하나. 순수 `#fff`/`#000`은 베이스가 아니다. | P2, G7. 스냅샷 canvas `#ffffff`·ink `#1a1c20`를 OKLCH로 한 걸음 들인다. |
+|  | 악센트 예산 | 뷰포트 면적의 ~5% 이하. 채운 버튼은 잉크 면. | P2. 스냅샷 「현 위치로 설정」은 어두운 면이지 주황 면이 아니다. |
+|  | 엘리베이션 | rest = 없음. hover = 면 변화(칩·보더). selected = 2px 주황 고리. | P1+P2. 사진 타일에 hover-lift 금지(C24). |
+|  | 모션 | 120 / 200 / 320ms, enter·exit 곡선 둘. transform·opacity만. | 팩 모션 토큰. 스냅샷 motion.present = false라 입장은 한 번만, 약하게. |
+|  | 카피 | 화면은 사용자 말만. 구현 어휘 금지. 샘플 고지는 푸터 한 줄. | P3, 팩 5b. |
+|  | 데이터 | 매물 8건은 스냅샷에 보인 제목·가격·위치·시각만. 카테고리 필터는 비면 비었다고 말한다. | P3. 스냅샷 밖 레코드 발명 금지. |
+|  | 상세 | 마스터-디테일. compact는 한 패인. 상세에 채팅 입력·판매자 점수를 만들지 않는다. | P3, C35, P-MK-04의 정직한 부재. |
+
+Heading: 토큰
+
+주석은 결정 ID. 페이지는 `var(--*)`만 읽는다.
+
+```css
+--color-paper: oklch(0.992 0.004 95);          
+--color-ink: oklch(0.228 0.014 260);           /* , #1a1c20 */
+--color-muted: oklch(0.42 0.012 260);          /* , 본문 대비 ≥4.5 */
+--color-chip: oklch(0.965 0.006 95);           
+--color-rule: oklch(0.90 0.008 260);           
+--color-accent: oklch(0.705 0.185 52);         /* , 워드마크·고리 */
+--color-on-accent: oklch(0.99 0.012 95);       
+--color-fill: oklch(0.28 0.012 260);           /* , 주 버튼 면 */
+--color-on-fill: oklch(0.99 0.004 95);
+--color-focus: oklch(0.705 0.185 52);
+
+--space-1: 4px; --space-2: 8px; --space-3: 12px;
+--space-4: 16px; --space-5: 20px; --space-6: 24px;
+--space-8: 32px; --space-10: 40px;
+--space-section: 2.5rem;                       /* 섹션 공기 */
+--space-gutter: clamp(16px, 4vw, 40px);
+
+--radius-control: 8px;                         
+--radius-media: 8px;
+--radius-pill: 999px;
+
+--font-ui: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo",
+           "Noto Sans KR", "Malgun Gothic", sans-serif;
+--size-display: clamp(1.5rem, 1.2rem + 1vw, 1.75rem); /* 24–28, */
+--size-body: 1rem;
+--size-price: 1rem;
+--size-label: 0.8125rem;
+--leading-display: 1.25;
+--leading-body: 1.65;
+
+--elevation-hover: 0 0 0 1px var(--color-ink);
+--elevation-selected: 0 0 0 2px var(--color-accent);
+
+--duration-fast: 120ms;
+--duration-base: 200ms;
+--duration-slow: 320ms;
+--ease-enter: cubic-bezier(0.2, 0.7, 0.2, 1);
+--ease-exit: cubic-bezier(0.4, 0, 1, 1);
+```
+
+Heading: 컴포넌트 명세 (코드 전)
+
+프리셋 카탈로그에서 고른 것. 해부는 유지, 토큰 슬롯만 위 표로 채움.
+
+Heading: 검색 결과 카드 — P-MK-01 파생 + P-CM-01 미디어 순서
+
+스냅샷이 정사각 사진 그리드이므로 행(88px 썸네일) 대신 **정사각 미디어 타일**로 파생한다 (, ).
+
+해부: 미디어(1:1, `minmax(0,1fr)`) → 제목 2줄 클램프 → 가격(카드 안 최대 웨이트) → 메타(위치 · 시각). 전 요소 좌측 정렬. 행 전체가 링크, 내부 CTA 없음 (C25). hover는 사진 보더(면 변화), translate-only 금지. 상태: default / hover / focus-visible / active. disabled 없음.
+
+토큰: `--radius-media`, `--color-ink`, `--color-muted`, `--space-2/3`.
+
+Heading: 거래 상태 배지 — P-MK-02
+
+스냅샷 위 8장에 판매중/예약/완료 라벨이 없다. **컴포넌트를 그리지 않는다.** 없는 enum을 색으로 만들지 않음 ().
+
+Heading: 필터 칩 · 결과 수 · 빈 결과 — P-FN-04, P-FN-06, P-FN-05
+
+- 결과 수: 「천호동 · 노트북 검색 매물 N건」. 필터가 켜지면 그 조건을 같은 줄에 붙인다.
+- 카테고리 라디오: 역할은 필터 하나. 활성은 면 반전(잉크 면). 히트 ≥44px.
+- 빈 결과: 「이 조건의 매물이 없습니다」 + 필터 해제 1개. 일러스트 없음.
+- 필터 초기화는 기본에서 숨기고, 기본이 아닌 카테고리가 있을 때만 노출한다.
+
+Heading: 위치 리스트박스 — P-FN-01
+
+스냅샷에 값이 하나다: 「서울시 강동구 천호동」. 옵션을 발명하지 않는다. 트리거 + `role="listbox"` + `aria-activedescendant`. Escape는 값 유지 취소.
+
+Heading: 「현 위치로 설정」 — 주 버튼 (C1–C9)
+
+뷰당 primary 1개, `data-cta="primary"`. 면은 `--color-fill`(). 위치 권한이 스냅샷에 없으므로 누르면 `role="status"`로 「현재 위치는 이 화면에서 쓰지 않습니다」. 가짜 좌표를 넣지 않는다.
+
+Heading: 상세 — P-FN-02 + C35
+
+`role="region"`. 사진 + 제목 + 가격 + 메타. 본문·채팅·매너 온도는 「이 스냅샷에 없습니다」 한 줄. 라우트 전환 시 h1에 프로그램 포커스, 시각 링 억제 (`#detail-title:focus { outline: none }`). `document.title` 갱신, `scrollTo(0,0)`.
+
+Heading: 검색 필드
+
+네이티브 input을 토큰으로 재스타일 (`appearance: none`). 라벨은 보이거나 `aria-label`. 제출해도 스냅샷 밖 질의 결과는 없다 — status로 알린다.
+
+Heading: 레이아웃 문법
+
+페이지 문법: **필터 레일 + 고밀도 미디어 그리드** (검색 결과). 상세는 **마스터-디테일, compact 1패인**.
+
+콘텐츠 역산: 그리드 문법은 카드 4장 이상. 스냅샷에 제목·가격이 읽힌 매물이 8장이라 8장으로 채운다. 12장 이미지 표본 중 제목이 안 읽힌 칸은 비운다.
+
+초광폭 전략: **컬럼 추가** ().
+
+| 폭 | 그리드 | 필터 |
+|---|---|---|
+| 1440 | 4열 | 왼쪽 레일 240px |
+| 390 | 2열 | 상단 칩 + 필터 디스클로저 |
+| 320 | 1열 | 같은 상단 스택 |
+
+폴드(1280×800): 워드마크, 검색, h1, 첫 행 카드가 보인다. 히어로 없음.
+
+내비·푸터는 한 벌. 상세에서도 헤더·푸터 동일. 현재 화면은 `aria-current`.
+
+Heading: 상태 · 과업
+
+브리프 동사: **열어 상세로 이동한다.**
+
+| 상태 | 진입 | 기계 증거 |
+|---|---|---|
+| 검색 결과 (default) | 첫 페인트, 워드마크, 뒤로 | `#results` 보임, `data-state="results"`, h1 = 「“노트북” 검색 결과」 |
+| 상세 | 카드 Enter/클릭 (`data-cta="local"`) | `#detail` 보임, `data-state="detail"`, 제목에 매물명, `aria-current` 없음(검색 결과 링크가 아님) |
+| 빈 결과 | 스냅샷에 매물이 없는 카테고리 | `data-state="empty"`, 문장 + 해제 |
+| 위치 불가 | 「현 위치로 설정」 | `role="status"` |
+| 리스트박스 | 위치 트리거 | `aria-expanded`, `aria-activedescendant` |
+
+개발자용 상태 스위치는 없다.
+
+Heading: 정직 · 미해결
+
+- 매물 제목·가격·위치·시각: 스냅샷에 보인 값만.
+- 대표 생성 이미지: 첫 매물 칸과 그 상세. 나머지 칸은 스냅샷 크롭(로컬 파일).
+- 판매자, 본문, 채팅, 거래 상태 enum, 다른 동네, 다른 검색어 결과: 없음. 칸을 비우고 한 줄로 이름을 댄다.
+- 공식 로고: 없음. 텍스트 워드마크.
+- 폰트 파일: 네트워크로 싣지 않는다. 스택만 선언한다.
+
+Heading: 셀프 워크 (과업 동사)
+
+1. **매물 카드를 연다.** Tab으로 첫 카드 → Enter. `#detail`이 열리고 `#detail-title`에 포커스, `document.title`이 매물명으로 바뀐다.
+2. **검색 결과로 돌아간다.** 「검색 결과로」 또는 워드마크. `#results` 복귀, h1 포커스.
+
+Heading: 한 바퀴 비평 (축 / 게이트)
+
+출고 전 기준. 구현이 이 문서를 어기면 구현을 고친다.
+
+- Philosophy 4 — 훑고 연다, 히어로 없음.
+- Hierarchy 4 — 사진 > 가격 > 제목 > 메타.
+- Execution 4 — 주황은 신호, 포커스는 `:focus-visible`, 리셋에 figure/blockquote/ul/ol.
+- Specificity 4 — 천호동 노트북 검색이지 범용 커머스 홈이 아님.
+- System Fidelity 4 — 값마다 . 3열 아이콘 타일·퍼플 그라데이션·AI 4열 푸터 없음.
+
+기계 게이트 쓸 곳: `transition: all` 없음, 네이티브 `<select>` 없음, 토큰 밖 hex 없음, disabled를 opacity만으로 처리하지 않음, `100vh` 히어로 없음.

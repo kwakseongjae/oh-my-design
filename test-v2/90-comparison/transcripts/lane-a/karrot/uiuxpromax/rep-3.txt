@@ -1,0 +1,126 @@
+Heading: Karrot Search — system
+
+Lane A / arm  / brand `karrot` / rep-3.
+Source pack:  (SHA `edb3306cad05ab57516a69ad857193bd4c6d75001fce826c2af1b71794cf20f7`).
+Snapshot: `2026-08-22T19-49-29-044Z`. Surfaces: desktop-1440 (1440×900), mobile-390 (390×844).
+
+This file is the design-system write-up for the first render. Tokens live as CSS custom properties in `render.html`. No Google Fonts, no CDN, no remote images.
+
+Heading: Brief (what this system covers)
+
+- Screen: 중고거래 검색 결과 (`노트북`).
+- Task: a listing card opens its detail. Back returns to results.
+- No other screens.
+
+Heading: Pack workflow (executed)
+
+Python 3.11. Search script: .
+
+| Step | Command | Result used |
+|------|---------|-------------|
+| 2 `--design-system` | `"local C2C marketplace neighborhood classifieds search results listing cards warm orange"` then retry `"used goods classifieds marketplace listing grid neighborhood community orange"` · `--density 7 --motion 3 --variance 4` | Pattern **Marketplace / Directory**. Dials kept. Style **Aurora UI** rejected in Step 3 (see below). |
+| 3 `--domain product` | `"marketplace classifieds directory"` | **Classifieds / Buy-Sell** + **Directory / Listing Site**. Primary style: Flat Design + Vibrant & Block-based. Landing: Filter-Heavy Grid. Palette focus: Neutral bg + price emphasis + category chips. |
+| 3 `--domain style` | `"minimalism content-first marketplace"` | Flat Design Mobile (touch-first, no elevation) as the listing-grid match. Bento / exaggerated minimalism not used. |
+| 3 `--domain color` | `"marketplace orange classifieds"` | Classifieds row is pack-default blue (`#2563EB` / `#16A34A` / `#EFF6FF`). Not applied to chrome; see Color. |
+| 3 `--domain typography` | `"friendly modern sans system"` | **Material You MD3 (Roboto System)** — system stack, no webfont fetch. |
+| 3 `--domain ux` | `"search listing cards navigation accessibility"` | Heading order, keyboard, skip link, sticky-nav clearance, predictable **back**. |
+| 3 `--domain icons` | `"search filter location menu chevron"` | Phosphor outlines: magnifying-glass, funnel, list, chevron. Crosshair used for “현 위치로 설정” (matches captured control, not a new screen). |
+| 4 `--stack html-tailwind` | `"list card search responsive"` | Card hover/press, consistent gap, cursor on clickable cards. Implemented as plain CSS, not a Tailwind build. |
+
+Persist (`--persist`) was not used. Nothing was written outside this run directory.
+
+Heading: Decisions
+
+**Pattern.** Search is the primary control. Related queries sit under the bar. Filters are a left rail on desktop and a compact button row on mobile. Listings are a square-thumb grid. This is the pack Marketplace/Directory + Filter-Heavy Grid pattern applied to the captured search page — not a marketing landing, so pack sections “Trust/Safety” and “Become a seller” were not added.
+
+**Style override.** `--design-system` returned Aurora UI (mesh gradient, luminous hero). Product-domain Classifieds recommends Flat + Vibrant, and Aurora’s own “best for” list is SaaS/hero, not a used-goods grid. Applied: flat surfaces, one accent, no drop shadows on cards, press via `transform`/`filter` only.
+
+**Color.** Pack classifieds palette is listing-blue on `#EFF6FF`. Captured chrome is white page, ink text `#1a1c20`, orange wordmark, black outline location control (radius 8). Applied tokens follow the captured chrome. Pack accent green `#16A34A` is reserved as `--color-accent` and unused on this screen (prices stay ink, matching the snapshot). Wordmark is the text string `당근` — no official mark.
+
+**Type.** Pack pairing that requires a network import (Fredoka/Nunito, Cormorant/Crimson, Poppins) is blocked by the offline first-render rule. Body/UI use the system stack from the MD3/Roboto System row, which also matches captured `family: -apple-system`. Scale from captured type: desktop h1 28/700/36.4, mobile h1 24/700/32, card title/price 16/700, controls 14/700, meta 13.
+
+**Density / motion.** Dial density 7 → 4/8px rhythm, compact card grid (2-col @390, 4-col @1440). Dial motion 3 → 180ms ease, no load stagger (opacity-0 entrance would blank a first screenshot). `prefers-reduced-motion: reduce` disables transitions.
+
+**Image.** `image.jpg` is the representative listing photograph for card `c1` and its detail. Other cards use inline SVG stand-ins so the file opens with zero network.
+
+Heading: Tokens (primitive → semantic → component)
+
+Heading: Primitive
+
+| Token | Value |
+|-------|-------|
+| `--color-white` | `#ffffff` |
+| `--color-ink` | `#1a1c20` |
+| `--color-ink-muted` | `#6b6f76` |
+| `--color-orange-500` | `#ff6f0f` |
+| `--color-gray-50` | `#f2f3f6` |
+| `--color-gray-100` | `#eaebee` |
+| `--color-gray-200` | `#d1d3d8` |
+| `--color-green-600` | `#16a34a` |
+| `--space-1…10` | 4 / 8 / 12 / 16 / 20 / 24 / 32 / 40 px |
+| `--font` | `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif` |
+| `--radius-md` | 8px |
+| `--radius-pill` | 999px |
+| `--duration` | 180ms |
+
+Heading: Semantic
+
+| Token | Maps to |
+|-------|---------|
+| `--color-background` | `--color-white` |
+| `--color-foreground` | `--color-ink` |
+| `--color-primary` | `--color-orange-500` |
+| `--color-muted-foreground` | `--color-ink-muted` |
+| `--color-border` | `--color-gray-100` |
+| `--color-ring` | `--color-ink` |
+| `--color-accent` | `--color-green-600` (unused on this screen) |
+
+Heading: Component
+
+| Token | Maps to |
+|-------|---------|
+| `--button-radius` | `--radius-md` |
+| `--card-radius` / `--thumb-radius` | `--radius-md` |
+| `--search-radius` | `--radius-pill` |
+| `--header-h` | 60px mobile / 95px desktop |
+
+Contrast: ink on white ≫ 4.5:1. Muted meta `#6b6f76` on white ≥ 4.5:1.
+
+Heading: Components and states
+
+| Component | Default | Hover | Active/pressed | Focus | Disabled |
+|-----------|---------|-------|----------------|-------|----------|
+| Wordmark (text) | orange 800 weight | — | — | 2px ink ring | — |
+| Search field | pill, 1px gray-200 | — | — | ring on control | — |
+| Chip | outline pill | — | `aria-pressed=true` → muted fill | ring | — |
+| Button outline | white, `#000` border, 8px | — | — | ring | — |
+| Button solid | ink fill, white label | — | — | ring | — |
+| Listing card | square thumb, title, price, meta | thumb brightness 0.97 | thumb scale 0.985 | ring | — |
+| Filter checkbox/radio | native + 44px label | — | checked | ring | — |
+| Back | text + chevron | — | — | ring | — |
+
+Touch targets ≥ 44×44px. 8px minimum gap between targets. `cursor: pointer` on clickable controls. Icon-only controls have `aria-label`.
+
+Heading: Layout
+
+- Mobile-first. Breakpoint 1024px for sidebar + 4-column grid.
+- Sticky header in flow (no overlay of the title).
+- Grid thumbs `aspect-ratio: 1 / 1` with width/height on the generated image (CLS).
+- z-index: header 40, skip-link 100.
+- Horizontal scroll is limited to the related-query row on small widths.
+
+Heading: Navigation (task)
+
+1. First paint = search results (`#view-results`).
+2. A listing card is an `<a href="#listing-cN">`. Click/`Enter` `pushState`s and shows `#view-detail` with that card’s title, price, meta, and photo.
+3. Back control calls `history.back()` when the current state is detail (pack: do not `location.replace`).
+4. `popstate` restores results or the hashed listing.
+
+Heading: Anti-patterns avoided (pack)
+
+- No emoji icons.
+- No Aurora mesh background on a classifieds grid.
+- No webfont `@import`.
+- No official logo asset.
+- No extra screens (chat, write, login, map).
+- No load-time opacity stagger.

@@ -1,0 +1,111 @@
+Heading: wanted 채용 목록 — surface-local design system
+
+벤치 산출 경로 밖에는 쓰지 않는다. 프로젝트 루트  채택하지 않고, 이 문서가 이 화면의 시스템 계약이다. disposition: `surface-local-only`.
+
+근거 스냅샷: `2026-08-22T19-52-31-934Z` · 화면 `https://www.wanted.co.kr/wdlist` · 과업: 필터를 적용해 채용 카드 하나를 연다.
+
+Heading: Philosophy
+
+채용 목록은 직군·경력을 고른 뒤, 그 결과에서 카드 하나를 여는 화면이다.
+
+- P1 필터가 목록의 의미다. 히어로 카피·집계 KPI를 희생하고 필터와 카드 격자에 공간을 준다.
+- P2 스냅샷에 없는 값은 비운다. 공식 로고 원본, 총 공고 수, 지원자 수, 공고 본문, 채용조건·기술스택 필드를 만들지 않는다.
+- P3 과업은 한 화면에서 끝낸다. 카드 열람은 새 라우트가 아니라 같은 목록 위의 대화상자다.
+
+Heading: Derive
+
+| ID | 결정 | 근거 |
+| --- | --- | --- |
+|  | 표면 장르 = 흰 지 위의 라운드 미디어 타일. 카드 박스 보더를 두지 않는다. | 스냅샷 카드는 이미지만 둥글고 본문은 밑에 붙는다. |
+|  | 악센트는 신호만. 회원가입 아웃라인, 모바일 현재 탭, 포커스 링. 면적 ≤5%. | 스냅샷 본문 잉크는 `#171719`, 모바일 채용 탭만 `#0066ff`. |
+|  | 정보 밀도 = 카탈로그 4열(1440) / 2열(390) / 1열(320). 초광폭은 컬럼 추가. | 스냅샷 데스크톱 카드 폭 308, 거터 80, 갭 16. C32. |
+|  | 직군·경력 트리거는 디스플레이 스텝. 칩은 라벨 밀도. | 스냅샷에서 두 필터가 페이지 타이틀 역할을 한다. |
+|  | 모션은 표면·투명도만. fast 120 / base 200 / slow 320. | 스냅샷에 폴드 위 영상이 없다. 상태 전환만 처리. |
+|  | 지색은 순수 흰/검정이 아니라 약한 크로마 페이퍼·잉크. | G7. 스냅샷 computed `#ffffff` / `#171719`에 가깝게 유지. |
+|  | 로고는 텍스트 워드마크 `wanted`. | 브리프: 브랜드 공식 로고 원본 금지. |
+|  | 대표 이미지는 1장(`image.jpg`). 나머지 카드 미디어는 팔레트 플레이트. | 외부 네트워크 없이 연다. 회사 로고 원본을 임베드하지 않는다. |
+|  | 채용조건·기술스택·규모 칩은 disabled. | 스냅샷 칩은 보이지만 이 목록 레코드에 해당 필드가 없다. |
+|  | 정렬 3옵션은 보이되 순서는 수록된 순서. | 게시일·추천·인기 값이 없다. |
+|  | 상세는 `dialog`. 브리프에 없는 화면을 추가하지 않는다. | 과업 동사: 카드 하나를 연다. |
+|  | 필터는 커스텀 리스트박스. | P-FN-01, G28. |
+
+Heading: Tokens
+
+주석은 결정 ID. 페이지는 이 변수만 읽는다.
+
+```css
+--color-paper: oklch(0.995 0.004 95); 
+--color-ink: oklch(0.22 0.012 280); /* 스냅샷 #171719 */
+--color-ink-muted: oklch(0.55 0.012 280);
+--color-accent: oklch(0.55 0.22 260); /* 스냅샷 #0066ff */
+--radius-media: 12px; 
+--radius-control: 999px; /* 칩·정렬 필 */
+--control-h: 44px; /* C2, C28 */
+--gutter: clamp(1.125rem, 5.5vw, 5rem); /* 80px@1440, 18px@390 */
+--font: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+--duration-fast: 120ms;
+--duration-base: 200ms;
+--ease-enter: cubic-bezier(0.2, 0.8, 0.2, 1);
+```
+
+한글 계약: `word-break: keep-all`, 본문 line-height 1.7, 디스플레이 tracking 바닥 −0.01em. 네트워크 폰트 없음 — 로컬 고딕 스택.
+
+Heading: Presets used
+
+- P-FN-01 커스텀 리스트박스 → 직군·경력 필터. 토큰 .
+- P-FN-04 필터 칩 행 → 한국(활성) + 값 없는 칩은 disabled. 초기화는 필터가 있을 때만.
+- P-FN-05 빈 결과 → 조건 문장 + 필터 초기화.
+- P-FN-06 결과 수 정의 라인 → "이 목록의 공고 n건 · 수록된 순서".
+- P-FN-03은 카드가 12건이라 미사용. 카탈로그 그리드가 맞다.
+- P-MK-01 행 리스트는 스냅샷이 미디어 타일이라 미사용. no-preset 아님: 장르는 커머스/카탈로그 카드.
+
+Heading: Components
+
+Heading: Listbox (직군 필터, 경력 필터)
+해부: eyebrow 라벨 → 현재 값 + 캐럿 트리거 → `role="listbox"` 팝오버.
+상태: default / hover / focus-visible / expanded / option-active / option-selected.
+키보드: Arrow, Home/End, typeahead, Enter/Space/Tab 커밋, Escape 취소. 포커스는 트리거, 옵션은 `aria-activedescendant`.
+
+Heading: Filter chip
+역할은 필터만. 한국은 `aria-pressed`. 채용조건·기술스택 등은 native `disabled` + not-allowed + 낮은 잉크(G39). 히트 44px.
+
+Heading: Job card
+해부: 미디어(고정 종횡비) → 제목 → 회사 → 지역·경력. 내부 갭 4/12.
+상태: default / hover(미디어 그림자) / open(`data-state="open"`).
+열기 컨트롤 이름: "채용 카드 열기". 북마크는 `data-cta="local"` 토글.
+
+Heading: Dialog
+native `<dialog>` + 토큰 백드롭. 레코드 ID를 보이고, 없는 필드(회사·지역·경력)는 생략. 공고 본문은 정직 부재 문장.
+
+Heading: Header / tab bar
+워드마크 텍스트. 채용만 `aria-current`. 다른 목적지 버튼은 이 화면을 떠나지 않는다.
+
+Heading: Layout grammar
+
+카탈로그 격자. 콘텐츠 역산: 스냅샷 샘플 12장 → 4×3@1440, 2×6@390, 1열@320. 중앙 max 1280, 좌우 거터.
+
+첫 화면: 필터(직군·경력·정렬) + 칩 + 상태 줄 + 카드. 히어로 문장 없음 — 스냅샷에 없다.
+
+Heading: States (journey verbs)
+
+| 동사 | 키보드 | 프로그램 증거 |
+| --- | --- | --- |
+| 필터를 적용한다 | Tab → 직군 필터 → Enter/Arrow → Enter | `aria-selected`, `#result-status`, 카드 `hidden`, `main[data-state=filtered\|empty]` |
+| 채용 카드 하나를 연다 | Tab → 제목 또는 미디어 버튼 → Enter | `dialog[open]`, `data-state=open`, 레코드 ID, 닫기 포커스 |
+
+그 외: 기본 목록, 빈 결과, 북마크 pressed, disabled 칩, 상세 닫기. 개발자 상태 스위처 없음.
+
+Heading: Honesty
+
+- 샘플 고지는 푸터 한 줄.
+- 식별자 `WD-01`…`WD-12`는 이 목록의 안정 ID.
+- 회사·지역·경력이 스냅샷에 없으면 그 행을 만들지 않는다.
+- 디자인 직군은 빈 결과를 위한 옵션이다. 해당 레코드는 없다.
+
+Heading: Motion
+
+호버 그림자, 버튼 pressed scale, 리스트박스 열림. `transform`/`opacity`/`box-shadow`만. `prefers-reduced-motion: reduce`에서 전이 제거.
+
+Heading: Unknowns (omitted)
+
+원티드 공식 마크 벡터, Pretendard 파일 URL, 공고 본문, 연봉, 지원자 수, 전체 서비스 공고 수, 채용조건·기술스택·응답률 필드, 회원가입 플로우.

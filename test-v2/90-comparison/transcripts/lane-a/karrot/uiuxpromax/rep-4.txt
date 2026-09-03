@@ -1,0 +1,172 @@
+Heading: Karrot Search — Design System
+
+Lane A / arm  / brand `karrot` / rep-4.
+Surface: 당근 중고거래 **검색 결과** (`노트북`). Task: 매물 카드 → 상세.
+Pack:  2.0 (`--design-system` + domain/stack search). Offline first render: no webfont/CDN.
+
+Heading: Requirements (Step 1)
+
+| Slot | Value |
+|------|--------|
+| Product | Classifieds / buy-sell (C2C local marketplace) |
+| Audience | Korean C-end, nearby used-goods search |
+| Platform | Web, desktop-1440 and mobile-390 |
+| Stack | Standalone HTML + CSS tokens (html-tailwind rules, no Tailwind CDN) |
+| Style keywords | content-dense listing grid, flat, local, orange brand |
+| Motion | Evidence: none above the fold. Dial 2/10 (subtle) |
+
+Screens in this run: **검색 결과**, **매물 상세** (task destination). No extra screens.
+
+Heading: Pack `--design-system` (Step 2)
+
+Query: `C2C marketplace classifieds local used goods search results content-dense`
+Dials: `--variance 4 --motion 2 --density 8` · `-p "Karrot Search"`
+
+| Slot | Pack output |
+|------|-------------|
+| Pattern | Marketplace / Directory — search bar is the CTA |
+| Style | Data-Dense Dashboard (density 8). Product-domain override below. |
+| Primary | `#EA580C` `--color-primary` |
+| On primary | `#FFFFFF` |
+| Secondary | `#F97316` |
+| Accent | `#2563EB` |
+| Background | `#FFF7ED` (overridden for this surface) |
+| Foreground | `#0F172A` |
+| Muted / border | `#FDF4F0` / `#FCEAE1` |
+| Destructive / ring | `#DC2626` / `#EA580C` |
+| Heading / body fonts | Newsreader / Roboto (not loaded; see type) |
+| Effects | row/card hover, filter motion, loading |
+| Anti-patterns | Flat without depth; text-heavy pages |
+
+Heading: Domain supplements (Step 3)
+
+- **product** `marketplace listing cards search results` → Classifieds / Buy-Sell. Style: **Flat Design + Vibrant & Block-based**. Landing: Filter-Heavy Grid. Palette: neutral bg + price emphasis + category chips.
+- **style** `content-first marketplace minimal` → Flat Design Mobile (touch-first): zero elevation, 8px radius, press scale 0.97, 4/8 spacing, 48px targets.
+- **color** `marketplace orange local commerce` → Local Events orange (same hex table as `--design-system`).
+- **typography** `modern sans readable` → **Korean Modern**: Noto Sans KR / Noto Sans KR. Cannot fetch Google Fonts offline → system Korean stack.
+- **ux** search/listing: predictable **back** (`hash` + history, not `location.replace`); heading order; keyboard; skip link.
+- **icons** Phosphor outline: `magnifying-glass`, `funnel`, `map-pin`/`gps`, `sidebar`/menu. Inlined SVG (no `@phosphor-icons/react`).
+- **stack html-tailwind** `card grid search results list` → consistent card structure; `grid` + `gap` (not per-item margins).
+
+Product-domain **Flat listing grid** wins over the density-biased “dashboard” skin. Density 8 is kept as **4-column / 2-column card packing** and 8–32px spacing, not KPI widgets.
+
+Heading: Evidence-grounded semantic overrides
+
+Chrome from snapshot `2026-08-22T19-49-29-044Z` (desktop-1440, mobile-390). Pack tokens stay in the primitive layer; semantics follow captured chrome where they disagree.
+
+| Token | Pack | Applied | Why |
+|-------|------|---------|-----|
+| `--color-background` | `#FFF7ED` | `#FFFFFF` | Computed / modal page background |
+| `--color-foreground` | `#0F172A` | `#1A1C20` | `bodyColor` |
+| Type family | Newsreader + Roboto | `-apple-system, "Apple SD Gothic Neo", "Noto Sans KR", …` | Captured `family: -apple-system`; no network fonts |
+| h1 desktop | — | 28px / 700 / 36.4px | typeScale h1 |
+| h1 mobile | — | 24px / 700 / 32px | typeScale h1 |
+| Button | pack primary fill | 14px / 700, radius 8 | captured button; location = outline `#000`; “현 위치로 설정” = solid ink |
+| Header | — | ~60px mobile / ~72–95px desktop | captured header height |
+| Listing image | — | 1:1, radius 8 | sampled thumbs `aspect: 1` |
+| Wordmark | official mark | **text “당근”** in `--color-primary` | official logo forbidden |
+
+Brand orange on the wordmark uses pack `#EA580C` (not an inferred marketing hex).
+
+Heading: Three-layer tokens
+
+```
+primitive  →  semantic  →  component
+```
+
+Heading: Primitive
+
+| Name | Value |
+|------|--------|
+| `--orange-600` | `#EA580C` |
+| `--orange-500` | `#F97316` |
+| `--blue-600` | `#2563EB` |
+| `--ink-950` | `#1A1C20` |
+| `--white` | `#FFFFFF` |
+| `--space-*` | 4 / 8 / 12 / 16 / 20 / 24 / 32 |
+| `--radius-md` | 8px |
+| `--duration` | 160ms (pack 150–300ms) |
+
+Heading: Semantic
+
+| Name | Value |
+|------|--------|
+| `--color-primary` | `var(--orange-600)` |
+| `--color-background` | `var(--white)` |
+| `--color-foreground` | `var(--ink-950)` |
+| `--color-muted-fg` | `#64748B` |
+| `--color-ring` | `var(--orange-600)` |
+
+Heading: Component
+
+| Name | Value |
+|------|--------|
+| `--button-radius` | `var(--radius-md)` |
+| `--button-font` | 700 14px/19px |
+| `--card-radius` | 8px |
+| `--card-gap` | 16px |
+| `--touch` | 44px |
+| `--focus-ring` | 2px offset + 2px primary ring |
+
+No raw hex on components in CSS — only `var(--…)`.
+
+Heading: Components and states
+
+| Component | Variants | States | Notes |
+|-----------|----------|--------|-------|
+| Wordmark | text only | hover/focus | not the official carrot mark |
+| Search | pill, scope + query + submit | focus-within ring | 44px height; visible label via `sr-only` |
+| Chip | outline pill | hover bg, active scale 0.97 | header services |
+| Button | solid / outline / ghost | hover, active, focus-visible | solid = ink (chrome), not orange fill |
+| Filter checkbox / radio | default | native accent = ink | 44px row height |
+| Listing card | interactive, flat | hover dim thumb, active 0.97, focus ring | `<a href="#/item/n">` |
+| Drawer | mobile menu | open/close, Esc, scrim ~48% | not a new product screen |
+
+Card anatomy: square figure → title (h2) → price (tabular-nums) → location · time.
+
+Heading: Layout
+
+- Mobile-first: 2-column grid, stacked location/filter toolbar, hamburger.
+- `md` (768): 3-column grid, sticky left filters, header chips.
+- `lg` (1024): 4-column grid (desktop-1440 chrome).
+- Breakpoints: 768 / 1024 / 1440 (pack 375 / 768 / 1024 / 1440).
+- Grid gaps via `gap`, not per-card margins (html-tailwind).
+- Skip link → `#main`. Hash routes so **Back** is the browser back stack (`ux` Back Button).
+
+Heading: Imagery
+
+Evidence note: chrome and imagery are separate; listing thumbs are a **distribution**, not one hero.
+
+| Asset | Role |
+|-------|------|
+| `image.jpg` | Generated listing photograph for the first card and its detail. Grok Imagine, 1:1, 1024×1024. |
+| Cards 2–8 | Inline SVG stand-ins (offline). Palettes follow sampled listing thumbs (blue lock, city skyline, brushed lid, cave wallpaper, white deck, arcade hall, cliff). Not live CDN images. |
+
+No official brand logo in the image or the chrome.
+
+Heading: Motion
+
+Dial 2 + evidence `motion.present: false` → no GSAP, no scroll reveal. Only 160ms color/transform on press/hover/focus. `prefers-reduced-motion` zeroes transitions and press scale.
+
+Heading: Accessibility (pack §1–3)
+
+- Contrast: ink `#1A1C20` on white ≫ 4.5:1; muted `#64748B` on white ≥ 3:1 for secondary.
+- Focus visible 2+2px ring (`--color-ring`).
+- Icon-only controls have `aria-label`.
+- Heading order: results `h1` → `h2` 필터 / `h2` 매물 목록 → card `h2`; detail `h1` = listing title.
+- Skip link. Tab order follows visual order. Cards are real links.
+- Touch ≥ 44px. `touch-action: manipulation`.
+- `aria-live` announces result vs detail.
+- Viewport zoom not disabled.
+
+Heading: Pre-delivery
+
+- [x] SVG icons, no emoji icons
+- [x] `cursor: pointer` on clickable elements
+- [x] 150–300ms hover/press
+- [x] Light-mode contrast
+- [x] Focus states
+- [x] `prefers-reduced-motion`
+- [x] 390 and 1440 layouts
+- [x] figure / blockquote / ul / ol margin reset
+- [x] Offline: local `image.jpg` + system fonts + inline SVG

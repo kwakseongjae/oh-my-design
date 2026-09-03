@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "figma",
+  "arm": "uiuxpromax",
+  "rep": 2,
+  "source": "test-v2/03-runs/lane-a/figma/uiuxpromax/rep-2/render.html",
+  "sourceSha": "sha256:5837973fdc7ac650d25e7764970b7620bb78d1aa2a362104087bee2f356449c7",
+  "capturedAt": "2026-09-02T03:20:51.397Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:2a6a22dfe6179b8817064addb874b0380c2745f2ff3d0733c04ce8b549601eb3",
+      "bytes": 312265,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:548579950de243a677b41eba50ac440a33a2aad81485e19a67ec90532f01ae5d",
+      "bytes": 114679,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

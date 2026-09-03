@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "naver",
+  "arm": "uiuxpromax",
+  "rep": 2,
+  "source": "test-v2/03-runs/lane-a/naver/uiuxpromax/rep-2/render.html",
+  "sourceSha": "sha256:a578328e760cf857e0a3cced7019ce00887b1b016d51e5a6cdba19168165359d",
+  "capturedAt": "2026-09-02T10:35:32.249Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:514283c17bc5442e5fa2e29302322f0fbdcb15833376aafec10ea3834a9c1c38",
+      "bytes": 206443,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:7c49a3ea381963e93c9d293cdcc7a942c3fc0adeed5361e1d4c34e48efe4eb62",
+      "bytes": 96395,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

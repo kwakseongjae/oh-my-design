@@ -1,0 +1,123 @@
+Heading: Figma home — surface system
+
+Run: lane A · figma ·  · rep-2.
+Stack: vanilla HTML/CSS (`render.html`). Tokens live once in `:root`.
+Preset: **no-preset: home-canvas-diptych** — 마케팅 홈의 좌 카피 / 중첩 캔버스 / 로컬 시작은 에 없음. 라우트 포커스는 **P-FN-02**, 미디어·카피 분리는 **P-FN-03**만 차용.
+
+근거 분류: 스냅샷 chrome·카피·이미지는 `repository-fact`. 토큰 값은 그 사실에서 유도. 캡처에 없는 요금·후기·방문자 수·공식 로고는 `unresolved` → 생략.
+
+Heading: Philosophy
+
+한 문장: **캔버스가 제품을 증명하고, 무료 시작만 과업이다.**
+
+| ID | 원칙 | 얻는 것 | 희생하는 것 |
+|---|---|---|---|
+| P1 | Canvas-as-proof | 겹친 작업 화면이 히어로의 주장 | 기능 나열, 아이콘 타일, 긴 레데 |
+| P2 | Ink on paper | 흰 지면 + 검정 잉크 + 반전 CTA 하나 | 액센트 면, 그라데이션 헤드라인, 카드 키트 |
+| P3 | One verb | 무료 시작이 유일한 여정 동사 | 로그인·영업·쿠키를 과업으로 키우지 않음 |
+
+Heading: Derive
+
+| ID | 카테고리 | 결정 | 근거 |
+|---|---|---|---|
+|  | 레이아웃 문법 | 홈 = 카피 \| 캔버스 \| 로컬 시작 3존. 와이드 전략은 좌측 카피 고정 + 캔버스 채움 | 1440 뷰포트가 그 구도. GS5 빈 40%를 캔버스로 채움 |
+|  | 타이포 위계 | 디스플레이 56→36, weight 400, Hangul keep-all, tracking −0.01em | evidence `h1` 56/36px weight 400. 한글 바닥은 팩 locale 계약(−0.03em 금지) |
+|  | 정보 밀도 | 폴드에는 헤드라인 + 캔버스 + CTA만 | 브리프 화면은 홈. 아래 폴드 섹션을 추측해 만들지 않음 |
+|  | 색 | paper `oklch(1 0 0)` / ink `oklch(0 0 0)` / CTA 반전 한 쌍 | evidence pageBackground `#ffffff`, body `#000000`. 순수 흑백은 브랜드 사실 |
+|  | 모서리 | control 8px, CTA 24px, cookie 16px | evidence cookie `radiusPx: 8`. 헤더·히어로 CTA는 캡처상 필 |
+|  | 표면 장르 | hairline-rule bands (헤더 1px 룰, 흰 지면, 그림자 타일 없음) | 캡처 헤더 하단 헤어라인. 카드+보더 키트 금지 |
+|  | 악센트 예산 | 반전 CTA와 포커스 링만. 면적 ≲5% | P2. 히어로 이미지 안의 색은 콘텐츠이지 크롬 악센트가 아님 |
+|  | 모션 | fast 120 / base 200 / slow 320, enter·exit 두 커브. transform·opacity만 | 팩 motion 토큰. 캡처 motion.present=false 이므로 입장 페이드 없음 |
+|  | CTA | 헤더 `지금 무료로 시작하기`만 `data-cta="primary"`. 히어로 `시작하기`는 `local` | 브리프 동사. 팩 primary uniqueness |
+|  | 가입 진입 | 같은 문서에서 `data-state="signup"`. 새 사이트 없음 | 브리프 과업. 캡처에 가입 이후 단계 없음 → 이메일 한 칸에서 멈춤 |
+|  | 워드마크 | 텍스트 `Figma`. 공식 마크 원본 없음 | 실행 금지 사항 |
+|  | 정직 | 방문자 수·요금·후기 부재를 콜로폰 한 줄에 이름 붙임 | 팩 honesty. 상단 배너 금지 |
+
+Heading: Tokens
+
+```css
+--color-paper: oklch(1 0 0);          
+--color-ink: oklch(0 0 0);            
+--color-cta / --color-cta-ink;        /* 전경·배경 쌍 */
+--color-cookie / --color-cookie-ink;  /* 다크 표면 반전 */
+--color-line: oklch(0.91 0.005 260);  
+--radius-control: 8px;                
+--radius-cta: 1.5rem;                 
+--fs-display: clamp(2.25rem, 1.15rem + 3.2vw, 3.5rem); 
+--space-10/16/24: 2.5 / 4 / 6rem;     /* 섹션 에어 */
+--gutter: clamp(1.25rem, 4vw, 3rem);
+--font: Pretendard Variable, Pretendard, Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, sans-serif;
+--motion-fast/base/slow; --ease-enter/exit; 
+```
+
+한글 본문 line-height 1.7. 디스플레이 1.18. `word-break: keep-all`. 네트워크 폰트 없음.
+
+Heading: Components
+
+상태 매트릭스는 코드에 구현. 개발자 스위처 없음.
+
+**Wordmark** (non-interactive 이유: 홈에서는 현재 위치, 가입에서는 홈 복귀 링크)
+- 텍스트만. 공식 로고 원본 없음.
+
+**Nav** (desktop)
+- 라벨은 캡처 그대로: 제품 / 솔루션 / 커뮤니티 / 리소스 / 가격.
+- 하위 항목은 캡처에 닫혀 있어 만들지 않음.
+- hover: opacity. focus-visible: 2px 링.
+
+**Button**
+- default / hover (면 변화) / :focus-visible / :active(scale 0.98) / :disabled(opacity + cursor + native disabled).
+- 높이: 데스크톱 40px, 터치 뷰포트 44px. 히어로·제출 56px.
+- primary fill, outline hairline, ghost.
+
+**Primary CTA**
+- 이름: 브리프 동사 그대로 `지금 무료로 시작하기`.
+- 클릭·Enter → `data-state="signup"`, 제목·`document.title` 갱신, `#page-title` 포커스, 링 억제 (P-FN-02 / G19).
+
+**Hero local CTA**
+- 라벨 `시작하기`. 같은 여정. `data-cta="local"`. 390에서는 캡처에 없어 숨김.
+
+**Signup field**
+- 네이티브 `input type="email"` + 토큰 보더. appearance none.
+- 높이 = 히어로 버튼 56px (G39).
+- 에러: `aria-invalid` + `aria-describedby` + `role="alert"` + 필드 포커스.
+- 성공: `role="status"`에 진입 사실. 다음 단계는 스냅샷에 없다고 말함.
+
+**Cookie dialog**
+- 캡처 카피·버튼 라벨 유지. 과업이 아님. 닫으면 `data-cookie="closed"`.
+
+**Mobile menu**
+- 캡처된 열린 메뉴 라벨만. 검정 면 + 큰 흰 글자. 과업 화면을 추가하지 않음.
+
+Heading: Layout grammar
+
+홈: **3존 디프틱** .
+- 1280×800 폴드: 헤드라인, 캔버스, primary가 헤더에 보임.
+- 1440: 카피 22rem / 캔버스 1fr / 로컬 CTA auto.
+- 390: 1열. 로컬 CTA 숨김. 헤더 primary가 과업.
+- 320: 워드마크 축소, `overflow-x: clip`.
+- 초광폭: 좌측 카피 고정, 캔버스가 남는 폭을 먹음.
+
+가입: 같은 헤더, 단일 컬럼 28rem. 캔버스·로컬 CTA 숨김. h1 1개 유지.
+
+Heading: Journey (SELF-WALK)
+
+| 동사 | 키보드 경로 | 프로그램 증거 |
+|---|---|---|
+| 무료 시작 CTA를 누른다 | Tab → `data-cta="primary"` → Enter | `body[data-view=signup]`, `main[data-state=signup]`, h1 텍스트 교체 |
+| 가입 흐름에 진입한다 | 이메일 입력 → Tab → `data-cta="submit"` → Enter | 성공 시 `form[data-state=success]`, `role="status"` 문구. 실패 시 `aria-invalid` + `role="alert"` + 포커스 복귀 |
+
+Heading: Honesty ledger
+
+| 항목 | 처리 |
+|---|---|
+| 공식 로고 | 텍스트 워드마크 |
+| 방문자 수 / 요금 / 후기 | 콜로폰에서 카테고리 이름을 붙여 부재 선언 |
+| 가입 이후 단계 | 화면에 “이 스냅샷에는 가입 이후 단계가 없습니다” |
+| 내비 하위 메뉴 | 미캡처. 라벨만 두고 화면 추가 없음 |
+| 히어로 이미지 | 레인 A Grok Imagine 1장 (`image.jpg`). 네트워크 요청 없음 |
+
+Heading: Motion
+
+입장 페이드 없음 (캡처에 above-fold 모션 없음).
+쓰는 패턴 3개: 버튼 hover 면, :active scale, 포커스 링 즉시.
+`prefers-reduced-motion: reduce`에서 transition 제거.

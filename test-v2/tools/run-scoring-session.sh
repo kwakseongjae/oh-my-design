@@ -5,15 +5,16 @@
 # 쓴다. sonnet5 세션은 이 스크립트가 아니라 오케스트레이터가 Agent(model: sonnet)로 같은 packet.md를
 # 프롬프트로 주어 연다 — 호출 경로만 다르고 입력은 바이트 동일해야 한다(manifest.json의 SHA).
 #
-# usage: run-scoring-session.sh <chunk 1|2|3>        (run_in_background로)
+# usage: run-scoring-session.sh <chunk 1|2|3|rescore>        (run_in_background로)
+#        rescore = 예비 청크(단독 표기 결함 1회 재채점, build-rescore.mjs 산출) — 디렉터리·키 이름만 다르고 실행 조건은 같다.
 set -u
 CHUNK=${1:?chunk}
 ROOT=/Users/kwakseongjae/Desktop/projects/oh-my-design
-DIR=$ROOT/test-v2/90-comparison/sessions/lane-a/grok-4.6/chunk-$CHUNK
+if [[ $CHUNK == rescore ]]; then DIR=$ROOT/test-v2/90-comparison/sessions/lane-a/grok-4.6/rescore; KEY=grok-4.6-rescore.json; else DIR=$ROOT/test-v2/90-comparison/sessions/lane-a/grok-4.6/chunk-$CHUNK; KEY=grok-4.6-chunk-$CHUNK.json; fi
 [[ -f $DIR/packet.md ]] || { print -u2 "패킷 없음: $DIR/packet.md — build-packets.mjs 먼저"; exit 1 }
 [[ -f $DIR/responses.jsonl ]] && { print -u2 "responses.jsonl이 이미 있다 — 봉인 세션은 재실행하지 않는다"; exit 2 }
 grok --prompt-file $DIR/packet.md -m grok-4.6 --always-approve --cwd $DIR --output-format json > $DIR/session.out.json 2>&1
 cost=$(grep -oE '"total_cost_usd": [0-9.]+' $DIR/session.out.json | head -1 | grep -oE '[0-9.]+')
 done_line=$(grep -o 'SCORING_DONE[^"\\]*' $DIR/session.out.json | head -1)
 print -- "SESSION grok-4.6 chunk-$CHUNK: ${done_line:-NO_DONE} cost=${cost:-?}"
-node $ROOT/test-v2/tools/validate-responses.mjs --session $DIR --key $ROOT/test-v2/90-comparison/sessions/keys/grok-4.6-chunk-$CHUNK.json
+node $ROOT/test-v2/tools/validate-responses.mjs --session $DIR --key $ROOT/test-v2/90-comparison/sessions/keys/$KEY

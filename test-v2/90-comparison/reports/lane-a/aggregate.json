@@ -1,0 +1,8781 @@
+{
+ "postHoc": {
+  "grok-4.6": {
+   "hit": 106,
+   "total": 108,
+   "perArm": {
+    "omd": {
+     "hit": 35,
+     "total": 36
+    },
+    "uiuxpromax": {
+     "hit": 35,
+     "total": 36
+    },
+    "hallmark": {
+     "hit": 36,
+     "total": 36
+    }
+   }
+  },
+  "sonnet5": {
+   "hit": 22,
+   "total": 108,
+   "perArm": {
+    "omd": {
+     "hit": 12,
+     "total": 36
+    },
+    "uiuxpromax": {
+     "hit": 0,
+     "total": 36
+    },
+    "hallmark": {
+     "hit": 10,
+     "total": 36
+    }
+   }
+  }
+ },
+ "generatedAt": "2026-09-03T00:24:13.576Z",
+ "lane": "A",
+ "evaluators": [
+  "grok-4.6",
+  "sonnet5"
+ ],
+ "weights": {
+  "defects": 0.2,
+  "evidence": 0.4,
+  "identification": 0.25,
+  "document": 0.15
+ },
+ "seed": 20260823,
+ "bootstrapN": 10000,
+ "partial": null,
+ "conditions": [
+  "arm 호스트 grok-4.6 (grok build CLI) · 이미지 채널 Grok Imagine · 평가자 2계열(xai·anthropic)의 독립성 한계 §3.2a-2",
+  "첫 렌더 = 제출 render.html (run.json outputs.firstRender) — 라이브 하네스 캡처 아님",
+  "레인 B 부재 — 레인 A 단독 결론. 교차 레인·종합 총점 없음 (§1)",
+  "파일럿 기계 검증기(SHA 73d13200…)의 §7.1.8 탐지기는 절차가 이미 적은 D-*와 UIUX Pro Max 변형 가운데 D-P2-1과 ui-ux-pro-max를 놓쳤으므로 그 기간의 도구 PASS는 해당 표지의 부재를 보증하지 않으며, 개정기(SHA ae588ca3…)로 기존 23건을 재검증한 결과 20건은 잔존이 없었고 잔존이 확인된 apple/omd rep-2·3·4는 채점 제출 전에 재전사했다 (grok 판정 2026-09-02 Q3)",
+  "α 미달 축은 INCONCLUSIVE — 원점수 병기, 합의점수 대체 없음 (§3.7)"
+ ],
+ "ceilings": {
+  "apple": null,
+  "baemin": null,
+  "coupang": null,
+  "figma": {
+   "C": 0,
+   "stimuli": [
+    "d1.png",
+    "d5.png",
+    "d8.png",
+    "d9.png"
+   ],
+   "answered": 8,
+   "expected": 8
+  },
+  "karrot": {
+   "C": 0,
+   "stimuli": [
+    "d1.png",
+    "d2.png",
+    "d3.png",
+    "d4.png"
+   ],
+   "answered": 8,
+   "expected": 8
+  },
+  "musinsa": {
+   "C": 0,
+   "stimuli": [
+    "d1.png",
+    "d2.png",
+    "d3.png",
+    "d4.png"
+   ],
+   "answered": 8,
+   "expected": 8
+  },
+  "naver": {
+   "C": 0,
+   "stimuli": [
+    "m3.png",
+    "m4.png",
+    "m5.png",
+    "m7.png"
+   ],
+   "answered": 8,
+   "expected": 8
+  },
+  "toss": {
+   "C": 0.125,
+   "stimuli": [
+    "d2.png",
+    "m6.png",
+    "m8.png",
+    "m11.png"
+   ],
+   "answered": 8,
+   "expected": 8
+  },
+  "wanted": null
+ },
+ "cells": [
+  {
+   "brand": "apple",
+   "arm": "omd",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 67.289,
+     "numeric": 53.27,
+     "semantic": 100,
+     "ratings": [
+      4,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 100,
+     "perEvaluator": [
+      100,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 82.55413333333331
+  },
+  {
+   "brand": "apple",
+   "arm": "omd",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 56.706999999999994,
+     "numeric": 43.51,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 100,
+     "perEvaluator": [
+      100,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 76.9104
+  },
+  {
+   "brand": "apple",
+   "arm": "omd",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "desktop-1440",
+        "regionId": "K1",
+        "code": "CLIP",
+        "symptom": "스토어·Mac·iPad·iPhone·Watch 라벨이 뷰포트 상단 경계에 가로로 잘려 글리프 상단이 없다.",
+        "severity": "P0"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 55.046,
+     "numeric": 35.78,
+     "semantic": 100,
+     "ratings": [
+      4,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 92.5,
+     "perEvaluator": [
+      85.00000000000001,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       4,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 74.52453333333332
+  },
+  {
+   "brand": "apple",
+   "arm": "omd",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 90,
+     "n": {
+      "P0": 0,
+      "P1": 1,
+      "P2": 0
+     },
+     "counted": [
+      {
+       "viewport": "mobile-390",
+       "regionId": "H1",
+       "code": "HERO",
+       "symptom": "모바일 히어로에 딥블루·화이트 두 대만 크게 잘려 들어가 제품군 구성·색 선택지를 한 장으로 보여 주지 못한다.",
+       "severity": "P1",
+       "symptoms": [
+        "모바일 히어로에 딥블루·화이트 두 대만 크게 잘려 들어가 제품군 구성·색 선택지를 한 장으로 보여 주지 못한다.",
+        "모바일 히어로 이미지가 과도하게 확대되어 네이비 폰의 카메라 모듈만 크게 보이고 화이트 폰은 가장자리 일부만 걸치며, 핑크·실버 폰은 전혀 보이지 않아 4가지 색상 구성을 보여주는 히어로 역할을 하지 못함"
+       ]
+      }
+     ],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 41.192,
+     "numeric": 32.06,
+     "semantic": 62.5,
+     "ratings": [
+      2,
+      3
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 96.875,
+     "perEvaluator": [
+      93.75,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       4,
+       4,
+       4
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 65.34406666666665
+  },
+  {
+   "brand": "apple",
+   "arm": "hallmark",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 46.552,
+     "numeric": 34.36,
+     "semantic": 75,
+     "ratings": [
+      2,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 74.375,
+     "perEvaluator": [
+      66.24999999999999,
+      82.5
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       2,
+       2,
+       3
+      ],
+      [
+       4,
+       4,
+       2,
+       3,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 66.3694
+  },
+  {
+   "brand": "apple",
+   "arm": "hallmark",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K3",
+        "code": "OVERLAP",
+        "symptom": "더 알아보기·iPhone 쇼핑하기 필이 라인업 사진 상단에 겹쳐 기기 상단을 가린다.",
+        "severity": "P1"
+       }
+      },
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "H1",
+        "code": "CLIP",
+        "symptom": "맨 왼쪽 딥블루 폰이 캡처 왼쪽 가장자리에서 잘려 본체의 일부가 없다.",
+        "severity": "P2"
+       }
+      },
+      {
+       "by": "sonnet5",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "H1",
+        "code": "BRAND-MARK",
+        "symptom": "제품 라인업 사진에서 폰 후면에 실제 Apple 로고 대신 이중 고리(무한대형) 심볼이 표시됨 — 네이비·화이트·핑크 폰 3대 모두 동일 증상",
+        "severity": "P0"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 46.65,
+     "numeric": 34.5,
+     "semantic": 75,
+     "ratings": [
+      3,
+      3
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 74.375,
+     "perEvaluator": [
+      66.24999999999999,
+      82.5
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       2,
+       2,
+       3
+      ],
+      [
+       4,
+       4,
+       2,
+       3,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 66.42166666666665
+  },
+  {
+   "brand": "apple",
+   "arm": "hallmark",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "H1",
+        "code": "CLIP",
+        "symptom": "라인업이 캡처 하단 얇은 띠로만 남아 카메라 상단만 보이고 본체 대부분이 잘린다.",
+        "severity": "P2"
+       }
+      },
+      {
+       "by": "sonnet5",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "H1",
+        "code": "HERO",
+        "symptom": "모바일 뷰포트에서 CTA 아래로 넓은 빈 회색 여백(약 250px 이상)이 이어지고, 제품 라인업 히어로 사진은 캡처 하단 경계에 카메라 모듈 일부만 살짝 걸쳐 보여 사실상 첫 화면에서 보이지 않음",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 49.644,
+     "numeric": 33.42,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 74.375,
+     "perEvaluator": [
+      66.24999999999999,
+      82.5
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       2,
+       2,
+       3
+      ],
+      [
+       4,
+       4,
+       2,
+       3,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 68.01846666666667
+  },
+  {
+   "brand": "apple",
+   "arm": "hallmark",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 47.510999999999996,
+     "numeric": 35.73,
+     "semantic": 75,
+     "ratings": [
+      2,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 70,
+     "perEvaluator": [
+      66.24999999999999,
+      73.75
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       2,
+       2,
+       3
+      ],
+      [
+       4,
+       4,
+       1,
+       3,
+       2
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 66.00586666666666
+  },
+  {
+   "brand": "apple",
+   "arm": "uiuxpromax",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "H1",
+        "code": "CLIP",
+        "symptom": "라인업 네 대의 하단이 다음 플레이트(맥북 에어 밴드)와 이미지 박스 하단에 잘려 전신이 보이지 않는다.",
+        "severity": "P2"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 52.836,
+     "numeric": 37.98,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 97.5,
+     "perEvaluator": [
+      95,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       4,
+       3,
+       4,
+       4
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 74.34586666666665
+  },
+  {
+   "brand": "apple",
+   "arm": "uiuxpromax",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 47.719,
+     "numeric": 30.67,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 90,
+     "perEvaluator": [
+      85.00000000000001,
+      95
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       4,
+       3
+      ],
+      [
+       4,
+       4,
+       3,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 70.1168
+  },
+  {
+   "brand": "apple",
+   "arm": "uiuxpromax",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 56.719,
+     "numeric": 38.17,
+     "semantic": 100,
+     "ratings": [
+      4,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 100,
+     "perEvaluator": [
+      100,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 76.9168
+  },
+  {
+   "brand": "apple",
+   "arm": "uiuxpromax",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "H1",
+        "code": "CLIP",
+        "symptom": "라인업 네 대의 하단이 이미지 박스/캡처 하단에 잘려 전신이 없다.",
+        "severity": "P2"
+       }
+      },
+      {
+       "by": "sonnet5",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "H1",
+        "code": "HERO",
+        "symptom": "모바일 뷰포트에서 CTA 아래로 약 430px의 빈 여백이 이어지고, 히어로 제품 사진은 카메라 모듈 상단부만 보인 채 캡처 하단 경계에 잘려 4폰 라인업 전체가 첫 화면에서 보이지 않음",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 52.213,
+     "numeric": 37.09,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 97.5,
+     "perEvaluator": [
+      95,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       4,
+       3,
+       4,
+       4
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 74.01359999999998
+  },
+  {
+   "brand": "baemin",
+   "arm": "omd",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "desktop-1440",
+        "regionId": "K1",
+        "code": "CONTRAST",
+        "symptom": "흰 유틸 내비. (1248,46) fg rgb(255,255,255) / bg rgb(154,149,145), WCAG 2.97:1 < 4.5:1 (일반 텍스트).",
+        "severity": "P1"
+       }
+      },
+      {
+       "by": "sonnet5",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "K2",
+        "code": "CONTRAST",
+        "symptom": "헤드라인 '건강 관리 열정 식지 않도록'의 민트(#0cefd3) 텍스트가 사진 배경의 밝은 채소/옥수수 하이라이트와 겹치는 구간에서 대비 부족 — 데스크톱 좌표(470,178) 전경 rgb(12,239,211) vs 배경 rgb(95,163,95) 대비비 ≈2.08:1, 모바일 좌표(80,232) 전경 rgb(12,239,211) vs 배경 rgb(88,163,100) 대비비 ≈2.09:1 (큰 텍스트 기준 3:1 미만, 각 뷰포트 인접 배경 픽셀의 약 6~7%가 미달)",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 24.691,
+     "numeric": 3.13,
+     "semantic": 75,
+     "ratings": [
+      2,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 90.625,
+     "perEvaluator": [
+      93.75,
+      87.5
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       4,
+       4,
+       4
+      ],
+      [
+       4,
+       2,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 57.96019999999999
+  },
+  {
+   "brand": "baemin",
+   "arm": "omd",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 90,
+     "n": {
+      "P0": 0,
+      "P1": 1,
+      "P2": 0
+     },
+     "counted": [
+      {
+       "viewport": [
+        "desktop-1440",
+        "mobile-390"
+       ],
+       "regionId": "K2",
+       "code": "CONTRAST",
+       "symptom": "민트 헤드라인. desktop (305,348) fg rgb(37,203,181)/bg rgb(84,151,142) 1.66:1; mobile (159,311) fg rgb(12,239,211)/bg rgb(155,151,143) 1.98:1. 큰 텍스트 <3:1.",
+       "severity": "P1",
+       "symptoms": [
+        "민트 헤드라인. desktop (305,348) fg rgb(37,203,181)/bg rgb(84,151,142) 1.66:1; mobile (159,311) fg rgb(12,239,211)/bg rgb(155,151,143) 1.98:1. 큰 텍스트 <3:1.",
+        "헤드라인 '아침의 여유 식지 않도록'(민트 #0cefd3)이 사진이 아닌 옅은 민트 톤 타일 배경 위에 놓였음에도 대비가 부족함 — 데스크톱 좌표(265,338) 전경 rgb(12,239,211) vs 배경 rgb(146,159,156) 대비비 ≈1.87:1(인접 픽셀 21% 미달), 모바일 좌표(163,294) 대비비 ≈1.31:1(인접 픽셀 57% 미달) — 큰 텍스트 기준 3:1 미달"
+       ]
+      }
+     ],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 18.992,
+     "numeric": 11.06,
+     "semantic": 37.5,
+     "ratings": [
+      1,
+      2
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 89.375,
+     "perEvaluator": [
+      85.00000000000001,
+      93.75
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       4,
+       3
+      ],
+      [
+       4,
+       3,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 52.00406666666666
+  },
+  {
+   "brand": "baemin",
+   "arm": "omd",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 90,
+     "n": {
+      "P0": 0,
+      "P1": 1,
+      "P2": 0
+     },
+     "counted": [
+      {
+       "viewport": [
+        "desktop-1440",
+        "mobile-390"
+       ],
+       "regionId": "K2",
+       "code": "CONTRAST",
+       "symptom": "민트 헤드라인. desktop (345,382) fg rgb(45,241,203)/bg rgb(158,183,177) 1.48:1; mobile (157,339) fg rgb(72,230,199)/bg rgb(178,189,180) 1.24:1. 큰 텍스트 <3:1.",
+       "severity": "P1",
+       "symptoms": [
+        "민트 헤드라인. desktop (345,382) fg rgb(45,241,203)/bg rgb(158,183,177) 1.48:1; mobile (157,339) fg rgb(72,230,199)/bg rgb(178,189,180) 1.24:1. 큰 텍스트 <3:1.",
+        "헤드라인 '건강 관리 열정 식지 않도록'(민트 계열)이 샐러드 용기·연어 하이라이트 등 밝은 사진 영역과 겹치는 구간에서 대비가 극심하게 부족함 — 데스크톱 좌표(322,363) 전경 rgb(12,239,211) 기준 vs 배경 rgb(172,195,189) 대비비 ≈1.27:1(측정 인접 픽셀 100%가 3:1 미달), 모바일 좌표(195,342) 대비비 ≈1.15:1(인접 픽셀 44% 미달) — 큰 텍스트 기준 3:1에 크게 못 미침"
+       ]
+      }
+     ],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 33.341,
+     "numeric": 10.13,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 86.25,
+     "perEvaluator": [
+      85.00000000000001,
+      87.5
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       4,
+       3
+      ],
+      [
+       4,
+       2,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 59.03186666666665
+  },
+  {
+   "brand": "baemin",
+   "arm": "omd",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 90,
+     "n": {
+      "P0": 0,
+      "P1": 1,
+      "P2": 0
+     },
+     "counted": [
+      {
+       "viewport": [
+        "desktop-1440",
+        "mobile-390"
+       ],
+       "regionId": "K2",
+       "code": "CONTRAST",
+       "symptom": "민트 헤드라인. desktop (155,146) fg rgb(22,220,192)/bg rgb(145,143,136) 1.85:1; mobile (153,133) fg rgb(22,215,185)/bg rgb(147,136,120) 1.90:1. 큰 텍스트 <3:1.",
+       "severity": "P1",
+       "symptoms": [
+        "민트 헤드라인. desktop (155,146) fg rgb(22,220,192)/bg rgb(145,143,136) 1.85:1; mobile (153,133) fg rgb(22,215,185)/bg rgb(147,136,120) 1.90:1. 큰 텍스트 <3:1.",
+        "헤드라인 '건강 관리 열정 식지 않도록'(민트 계열)이 나무 테이블 밝은 결 영역과 겹치는 구간에서 대비가 극심하게 부족함 — 데스크톱 좌표(444,146) 전경 rgb(12,239,211) 기준 vs 배경 rgb(137,164,139) 대비비 ≈1.85:1(인접 픽셀 100% 미달), 모바일 좌표(185,328) 대비비 ≈1.45:1(인접 픽셀 39% 미달) — 큰 텍스트 기준 3:1 미달"
+       ]
+      }
+     ],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 32.375,
+     "numeric": 8.75,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 83.125,
+     "perEvaluator": [
+      85.00000000000001,
+      81.25
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       4,
+       3
+      ],
+      [
+       4,
+       1,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 57.89166666666666
+  },
+  {
+   "brand": "baemin",
+   "arm": "hallmark",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 90,
+     "n": {
+      "P0": 0,
+      "P1": 1,
+      "P2": 0
+     },
+     "counted": [
+      {
+       "viewport": [
+        "desktop-1440",
+        "mobile-390"
+       ],
+       "regionId": "H1",
+       "code": "HERO",
+       "symptom": "첫 화면이 크림/노란 면만 있고 풀블리드 식사 장면이 없어 H1 역할(일상 한 순간을 화면 전체로)을 충족하지 못한다.",
+       "severity": "P1",
+       "symptoms": [
+        "첫 화면이 크림/노란 면만 있고 풀블리드 식사 장면이 없어 H1 역할(일상 한 순간을 화면 전체로)을 충족하지 못한다.",
+        "풀블리드 식사 장면(H1)이 첫 화면 어디에도 보이지 않음 — 생성 이미지가 접힘면 아래 작은 figure로만 배치되어(문서 자체가 'Enrichment: E8 photography, 접힘면 아래 figure'라고 명시) 두 뷰포트 모두 크림색 배경만 보임"
+       ]
+      }
+     ],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "desktop-1440",
+        "regionId": "G[8,1]",
+        "code": "CLIP",
+        "symptom": "문서 높이=1화면인데 '샐러드, 지금 배민됩니다'가 캡처 하단 경계에 잘린다.",
+        "severity": "P2"
+       }
+      },
+      {
+       "by": "sonnet5",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "K3",
+        "code": "CLIP",
+        "symptom": "앱 스토어 배지 2종과 QR(K3)이 첫 화면 캡처 안에 전혀 나타나지 않음 — 데스크톱은 배지/QR이 폴드 아래('샐러드, 지금 배민됩니다' 섹션) 안에 있어 캡처 경계에 잘리고, 모바일은 store 배지·QR 자체가 어디에도 보이지 않고 일반 'Get the App' 텍스트 버튼만 있음. 이 브랜드는 잠금표상 '폴드 아래 허용: 없음(문서 높이 = 1화면)'이라 어느 뷰포트도 예외가 아님",
+        "severity": "P0"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 26.791,
+     "numeric": 6.13,
+     "semantic": 75,
+     "ratings": [
+      3,
+      3
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 57.5,
+     "perEvaluator": [
+      56.25,
+      58.74999999999999
+     ],
+     "ratings": [
+      [
+       3,
+       2,
+       2,
+       2,
+       2
+      ],
+      [
+       3,
+       1,
+       3,
+       3,
+       2
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 49.788533333333326
+  },
+  {
+   "brand": "baemin",
+   "arm": "hallmark",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 90,
+     "n": {
+      "P0": 0,
+      "P1": 1,
+      "P2": 0
+     },
+     "counted": [
+      {
+       "viewport": [
+        "desktop-1440",
+        "mobile-390"
+       ],
+       "regionId": "K2",
+       "code": "CONTRAST",
+       "symptom": "히어로 헤드라인·서브라인(민트 #0cefd3)이 흰 접시/그릇 등 밝은 사진 영역과 겹치는 구간에서 대비가 심각하게 부족함 — 데스크톱 헤드라인 좌표(172,365) 전경 rgb(12,239,211) vs 배경 rgb(151,160,163) 대비비 ≈1.82:1(인접 픽셀 33% 미달), 데스크톱 서브라인 최저 ≈1.64:1(45% 미달), 모바일 헤드라인 최저 ≈1.39:1(40% 미달), 모바일 서브라인 최저 ≈1.84:1(6% 미달) — 모두 큰 텍스트 기준 3:1 미달",
+       "severity": "P1",
+       "symptoms": [
+        "히어로 헤드라인·서브라인(민트 #0cefd3)이 흰 접시/그릇 등 밝은 사진 영역과 겹치는 구간에서 대비가 심각하게 부족함 — 데스크톱 헤드라인 좌표(172,365) 전경 rgb(12,239,211) vs 배경 rgb(151,160,163) 대비비 ≈1.82:1(인접 픽셀 33% 미달), 데스크톱 서브라인 최저 ≈1.64:1(45% 미달), 모바일 헤드라인 최저 ≈1.39:1(40% 미달), 모바일 서브라인 최저 ≈1.84:1(6% 미달) — 모두 큰 텍스트 기준 3:1 미달"
+       ],
+       "viaRescore": true
+      }
+     ],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 15.975,
+     "numeric": 6.75,
+     "semantic": 37.5,
+     "ratings": [
+      1,
+      2
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 69.375,
+     "perEvaluator": [
+      71.24999999999999,
+      67.5
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       2,
+       3
+      ],
+      [
+       3,
+       3,
+       3,
+       2,
+       2
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 46.394999999999996
+  },
+  {
+   "brand": "baemin",
+   "arm": "hallmark",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 90,
+     "n": {
+      "P0": 0,
+      "P1": 1,
+      "P2": 0
+     },
+     "counted": [
+      {
+       "viewport": [
+        "desktop-1440",
+        "mobile-390"
+       ],
+       "regionId": "K2",
+       "code": "CONTRAST",
+       "symptom": "헤드라인·서브라인(민트 계열)이 밝은 리넨 식탁보·그릇 배경과 겹치는 구간에서 대비가 심각하게 부족함 — 데스크톱 좌표(343,678) 전경 rgb(12,239,211) 기준 vs 배경 rgb(141,172,166) 대비비 ≈1.67:1(인접 픽셀 56% 미달), 모바일 좌표(190,520) 대비비 ≈1.07:1(인접 픽셀 10% 미달) — 큰 텍스트 기준 3:1 미달",
+       "severity": "P1",
+       "symptoms": [
+        "헤드라인·서브라인(민트 계열)이 밝은 리넨 식탁보·그릇 배경과 겹치는 구간에서 대비가 심각하게 부족함 — 데스크톱 좌표(343,678) 전경 rgb(12,239,211) 기준 vs 배경 rgb(141,172,166) 대비비 ≈1.67:1(인접 픽셀 56% 미달), 모바일 좌표(190,520) 대비비 ≈1.07:1(인접 픽셀 10% 미달) — 큰 텍스트 기준 3:1 미달"
+       ],
+       "viaRescore": true
+      }
+     ],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 23.316000000000003,
+     "numeric": 11.88,
+     "semantic": 50,
+     "ratings": [
+      2,
+      2
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 67.5,
+     "perEvaluator": [
+      66.24999999999999,
+      68.75
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       2,
+       2,
+       3
+      ],
+      [
+       3,
+       2,
+       3,
+       3,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 49.935199999999995
+  },
+  {
+   "brand": "baemin",
+   "arm": "hallmark",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 90,
+     "n": {
+      "P0": 0,
+      "P1": 1,
+      "P2": 0
+     },
+     "counted": [
+      {
+       "viewport": [
+        "desktop-1440",
+        "mobile-390"
+       ],
+       "regionId": "K2",
+       "code": "CONTRAST",
+       "symptom": "민트 헤드라인. desktop (389,126) fg rgb(61,231,202)/bg rgb(187,195,200) 1.15:1; mobile (97,165) fg rgb(22,242,203)/bg rgb(183,143,62) 2.08:1. 큰 텍스트 <3:1.",
+       "severity": "P1",
+       "symptoms": [
+        "민트 헤드라인. desktop (389,126) fg rgb(61,231,202)/bg rgb(187,195,200) 1.15:1; mobile (97,165) fg rgb(22,242,203)/bg rgb(183,143,62) 2.08:1. 큰 텍스트 <3:1.",
+        "헤드라인(민트 계열)이 배경 유리창/벽 및 당근·옥수수 하이라이트와 겹치는 구간에서 대비가 극심하게 부족함 — 데스크톱 좌표(417,106) 전경 rgb(12,239,211) 기준 vs 배경 rgb(193,199,205) 대비비 ≈1.16:1(인접 픽셀 100% 미달), 모바일 좌표(197,132) 대비비 ≈1.37:1(인접 픽셀 31% 미달) — 큰 텍스트 기준 3:1 미달"
+       ]
+      }
+     ],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "H1",
+        "code": "HERO",
+        "symptom": "식사 사진 아래 민트/회색 푸터 밴드가 남아 일상의 한 순간을 화면 전체로 제시하지 못한다.",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 32.2,
+     "numeric": 8.5,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 58.125,
+     "perEvaluator": [
+      60,
+      56.25
+     ],
+     "ratings": [
+      [
+       3,
+       2,
+       2,
+       2,
+       3
+      ],
+      [
+       3,
+       2,
+       2,
+       2,
+       2
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 52.79833333333333
+  },
+  {
+   "brand": "baemin",
+   "arm": "uiuxpromax",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "desktop-1440",
+        "regionId": "K1",
+        "code": "CONTRAST",
+        "symptom": "흰 유틸 내비 글자. (1189,45) fg rgb(245,245,244) / bg rgb(141,141,136), WCAG 3.06:1 < 4.5:1 (일반 텍스트).",
+        "severity": "P1"
+       }
+      },
+      {
+       "by": "sonnet5",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K2",
+        "code": "CONTRAST",
+        "symptom": "서브헤드라인 '샐러드, 지금 배민됩니다'(민트 #0cefd3)가 사진 배경의 밝은 하이라이트 영역과 겹치는 구간에서 대비 부족 — 좌표(165,294) 전경 rgb(12,239,211) vs 배경 rgb(131,136,137) 대비비 ≈2.45:1 (큰 텍스트 기준 3:1에도 미달, 인접 배경 픽셀의 약 11.5%가 3:1 미만)",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 31.85,
+     "numeric": 8,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 92.5,
+     "perEvaluator": [
+      85.00000000000001,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       4,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 62.15333333333333
+  },
+  {
+   "brand": "baemin",
+   "arm": "uiuxpromax",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 90,
+     "n": {
+      "P0": 0,
+      "P1": 1,
+      "P2": 0
+     },
+     "counted": [
+      {
+       "viewport": [
+        "desktop-1440",
+        "mobile-390"
+       ],
+       "regionId": "K2",
+       "code": "CONTRAST",
+       "symptom": "민트 헤드라인. desktop (243,402) fg rgb(28,207,192)/bg rgb(123,155,184) 1.49:1; mobile (147,291) fg rgb(67,215,193)/bg rgb(157,177,165) 1.27:1. 큰 텍스트 <3:1.",
+       "severity": "P1",
+       "symptoms": [
+        "민트 헤드라인. desktop (243,402) fg rgb(28,207,192)/bg rgb(123,155,184) 1.49:1; mobile (147,291) fg rgb(67,215,193)/bg rgb(157,177,165) 1.27:1. 큰 텍스트 <3:1.",
+        "히어로 헤드라인·서브라인(민트 #0cefd3)이 연한 민트 타일/흰 접시 배경 위에서 거의 읽을 수 없는 수준으로 대비가 부족함 — 데스크톱 헤드라인 최저 대비 ≈1.18:1(인접 픽셀 53% 미달), 모바일 헤드라인 최저 ≈1.33:1(인접 픽셀 100% 미달), 모바일 서브라인 최저 ≈1.36:1(99% 미달) — 모두 큰 텍스트 기준 3:1에 크게 못 미침"
+       ]
+      }
+     ],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 25.551,
+     "numeric": 20.43,
+     "semantic": 37.5,
+     "ratings": [
+      1,
+      2
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 80,
+     "perEvaluator": [
+      85.00000000000001,
+      75
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       4,
+       3
+      ],
+      [
+       4,
+       0,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 53.62719999999999
+  },
+  {
+   "brand": "baemin",
+   "arm": "uiuxpromax",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 90,
+     "n": {
+      "P0": 0,
+      "P1": 1,
+      "P2": 0
+     },
+     "counted": [
+      {
+       "viewport": [
+        "desktop-1440",
+        "mobile-390"
+       ],
+       "regionId": "K2",
+       "code": "CONTRAST",
+       "symptom": "민트 헤드라인. desktop (411,438) fg rgb(12,239,211)/bg rgb(183,165,155) 1.61:1; mobile (121,243) fg rgb(12,239,211)/bg rgb(193,178,93) 1.46:1. 큰 텍스트 <3:1.",
+       "severity": "P1",
+       "symptoms": [
+        "민트 헤드라인. desktop (411,438) fg rgb(12,239,211)/bg rgb(183,165,155) 1.61:1; mobile (121,243) fg rgb(12,239,211)/bg rgb(193,178,93) 1.46:1. 큰 텍스트 <3:1.",
+        "헤드라인·서브라인(민트 #0cefd3)이 샐러드 용기 내부의 밝은 토마토·옥수수 하이라이트와 겹치는 구간에서 대비가 심각하게 부족함 — 데스크톱 좌표(525,376) 전경 rgb(12,239,211) vs 배경 rgb(186,191,187) 대비비 ≈1.27:1(인접 픽셀 43% 미달), 모바일 좌표(202,239) 대비비 ≈1.01:1(인접 픽셀 55% 미달) — 큰 텍스트 기준 3:1 미달"
+       ]
+      }
+     ],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 26.25,
+     "numeric": 0,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 78.125,
+     "perEvaluator": [
+      81.25,
+      75
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       0,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 53.62499999999999
+  },
+  {
+   "brand": "baemin",
+   "arm": "uiuxpromax",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 90,
+     "n": {
+      "P0": 0,
+      "P1": 1,
+      "P2": 0
+     },
+     "counted": [
+      {
+       "viewport": "desktop-1440",
+       "regionId": "K2",
+       "code": "CONTRAST",
+       "symptom": "민트 헤드라인. (359,296) fg rgb(58,208,171) / bg rgb(159,129,80), WCAG 1.88:1 < 3:1 (큰 텍스트).",
+       "severity": "P1",
+       "symptoms": [
+        "민트 헤드라인. (359,296) fg rgb(58,208,171) / bg rgb(159,129,80), WCAG 1.88:1 < 3:1 (큰 텍스트).",
+        "헤드라인(민트 계열)이 나무 테이블의 밝은 결과 겹치는 구간에서 대비가 부족함 — 데스크톱 좌표(358,424) 전경 rgb(12,239,211) 기준 vs 배경 rgb(185,177,165) 대비비 ≈1.45:1(인접 픽셀 82% 미달), 모바일 좌표(217,350) 대비비 ≈1.35:1(인접 픽셀 14% 미달) — 큰 텍스트 기준 3:1 미달. 문서는 'Left/top scrim keeps mint type above 3:1 on the wood table'라고 명시했으나 실측과 정면으로 모순됨"
+       ]
+      }
+     ],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 28.7,
+     "numeric": 3.5,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 80,
+     "perEvaluator": [
+      85.00000000000001,
+      75
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       4,
+       3
+      ],
+      [
+       4,
+       0,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 55.306666666666665
+  },
+  {
+   "brand": "coupang",
+   "arm": "omd",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 26.25,
+     "numeric": 0,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 96.875,
+     "perEvaluator": [
+      93.75,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       4,
+       4,
+       4
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 60.04166666666666
+  },
+  {
+   "brand": "coupang",
+   "arm": "omd",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 39.214,
+     "numeric": 18.52,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 90.625,
+     "perEvaluator": [
+      81.25,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 65.7058
+  },
+  {
+   "brand": "coupang",
+   "arm": "omd",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K2",
+        "code": "CLIP",
+        "symptom": "카테고리 행 오른쪽 'biz 쿠'가 경계에서 잘린다.",
+        "severity": "P0"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 31.927,
+     "numeric": 8.11,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 94.375,
+     "perEvaluator": [
+      88.75,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       4,
+       4
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 62.569399999999995
+  },
+  {
+   "brand": "coupang",
+   "arm": "omd",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 26.25,
+     "numeric": 0,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 97.5,
+     "perEvaluator": [
+      95,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       4,
+       3,
+       4,
+       4
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 60.16666666666666
+  },
+  {
+   "brand": "coupang",
+   "arm": "hallmark",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 13.522,
+     "numeric": 13.96,
+     "semantic": 12.5,
+     "ratings": [
+      0,
+      1
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 78.125,
+     "perEvaluator": [
+      60,
+      96.25
+     ],
+     "ratings": [
+      [
+       3,
+       2,
+       2,
+       2,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       3,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 49.50339999999999
+  },
+  {
+   "brand": "coupang",
+   "arm": "hallmark",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 22.5,
+     "numeric": 0,
+     "semantic": 75,
+     "ratings": [
+      2,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 76.875,
+     "perEvaluator": [
+      66.24999999999999,
+      87.5
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       2,
+       2,
+       3
+      ],
+      [
+       4,
+       4,
+       3,
+       3,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 54.04166666666666
+  },
+  {
+   "brand": "coupang",
+   "arm": "hallmark",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K1",
+        "code": "CLIP",
+        "symptom": "검색창이 돋보기 아이콘만 있는 작은 상자로 줄어 입력 필드 픽셀이 잘려 없다.",
+        "severity": "P0"
+       }
+      },
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K1",
+        "code": "TASK",
+        "symptom": "질의 입력칸이 없어 검색으로 상품 목록에 갈 수 없다.",
+        "severity": "P0"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 31.647,
+     "numeric": 7.71,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 68.75,
+     "perEvaluator": [
+      56.25,
+      81.25
+     ],
+     "ratings": [
+      [
+       3,
+       2,
+       2,
+       2,
+       2
+      ],
+      [
+       4,
+       3,
+       3,
+       3,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 57.295066666666656
+  },
+  {
+   "brand": "coupang",
+   "arm": "hallmark",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K1",
+        "code": "CLIP",
+        "symptom": "검색 입력 자리에 플레이스홀더가 '초' 한 글자만 남아 질의 필드 텍스트가 잘린다.",
+        "severity": "P0"
+       }
+      },
+      {
+       "by": "sonnet5",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K1",
+        "code": "STATE",
+        "symptom": "검색 입력창이 기본(플레이스홀더) 상태 대신 의도치 않은 글자 '충' 하나만 채워진 상태로 렌더됨 — 플레이스홀더 '찾고 싶은 상품을 검색해보세요!' 대신 무의미한 단일 글자가 표시되는 잘못된 채움 상태",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 31.598,
+     "numeric": 7.64,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 75,
+     "perEvaluator": [
+      66.24999999999999,
+      83.75
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       2,
+       2,
+       3
+      ],
+      [
+       4,
+       2,
+       4,
+       3,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 58.51893333333333
+  },
+  {
+   "brand": "coupang",
+   "arm": "uiuxpromax",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 90,
+     "n": {
+      "P0": 0,
+      "P1": 1,
+      "P2": 0
+     },
+     "counted": [
+      {
+       "viewport": "mobile-390",
+       "regionId": "K1",
+       "code": "H-OVERFLOW",
+       "symptom": "모바일 뷰포트(390px)에서 데스크톱 고정폭 레이아웃이 전혀 축소되지 않아 문서 전체가 뷰포트보다 넓음 — 상단 배너, 워드마크('COU...'로 잘림), 카테고리 아이콘 행, '오늘의 발견' 제목까지 모든 행이 오른쪽 경계에서 잘려 보이고, 특히 검색 입력창과 장바구니(K1)는 뷰포트 안에 전혀 보이지 않음",
+       "severity": "P1",
+       "symptoms": [
+        "모바일 뷰포트(390px)에서 데스크톱 고정폭 레이아웃이 전혀 축소되지 않아 문서 전체가 뷰포트보다 넓음 — 상단 배너, 워드마크('COU...'로 잘림), 카테고리 아이콘 행, '오늘의 발견' 제목까지 모든 행이 오른쪽 경계에서 잘려 보이고, 특히 검색 입력창과 장바구니(K1)는 뷰포트 안에 전혀 보이지 않음"
+       ],
+       "viaRescore": true
+      }
+     ],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K1",
+        "code": "CLIP",
+        "symptom": "검색창·장바구니·쿠팡 워드마크가 캡처 왼쪽/오른쪽으로 잘려 검색 입력칸이 보이지 않는다.",
+        "severity": "P0"
+       }
+      },
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K1",
+        "code": "TASK",
+        "symptom": "첫 화면에 검색 입력이 없어 질의를 넣고 상품 목록으로 갈 수 없다.",
+        "severity": "P0"
+       }
+      },
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "G[0,0]",
+        "code": "H-OVERFLOW",
+        "symptom": "데스크톱 폭 크롬이 390 캡처 밖으로 이어져 좌우가 잘린 채 보인다.",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 30.597,
+     "numeric": 6.21,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 82.5,
+     "perEvaluator": [
+      81.25,
+      83.75
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       3,
+       2,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 56.81839999999999
+  },
+  {
+   "brand": "coupang",
+   "arm": "uiuxpromax",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "desktop-1440",
+        "regionId": "K2",
+        "code": "CLIP",
+        "symptom": "카테고리 첫 칩 '쿠팡플레이' 왼쪽이 파란 카테고리 버튼에 가려 글자가 잘린다.",
+        "severity": "P0"
+       }
+      },
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K2",
+        "code": "CLIP",
+        "symptom": "카테고리 행 끝 '다시 구'가 오른쪽 경계에서 잘린다.",
+        "severity": "P0"
+       }
+      },
+      {
+       "by": "sonnet5",
+       "d": {
+        "viewport": "desktop-1440",
+        "regionId": "K2",
+        "code": "OVERLAP",
+        "symptom": "카테고리 내비(K2)의 첫 항목이 좌측의 세로로 긴 '카테고리' 드롭다운 박스와 겹쳐 앞부분이 가려짐 — 원래 '쿠팡플레이'여야 할 라벨이 '___플레이'로만 보임",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 29.631,
+     "numeric": 4.83,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 87.5,
+     "perEvaluator": [
+      81.25,
+      93.75
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       3,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 59.96986666666666
+  },
+  {
+   "brand": "coupang",
+   "arm": "uiuxpromax",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "G[8,1]",
+        "code": "LOCAL",
+        "symptom": "'오늘의 발견'이 '오늘의 발'과 다음 줄 '견'으로 나뉘어 제목 단어가 깨진다.",
+        "severity": "P2"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 29.064,
+     "numeric": 4.02,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 88.75,
+     "perEvaluator": [
+      81.25,
+      96.25
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       3,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 59.917466666666655
+  },
+  {
+   "brand": "coupang",
+   "arm": "uiuxpromax",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K1",
+        "code": "CLIP",
+        "symptom": "검색창·장바구니가 없고 워드마크 'coupa'만 오른쪽에서 잘린다.",
+        "severity": "P0"
+       }
+      },
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K1",
+        "code": "TASK",
+        "symptom": "검색 입력이 없어 질의로 상품 목록에 갈 수 없다.",
+        "severity": "P0"
+       }
+      },
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "G[0,0]",
+        "code": "H-OVERFLOW",
+        "symptom": "데스크톱 헤더가 390 폭을 넘어 좌우가 잘린다.",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 33.348,
+     "numeric": 10.14,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 89.375,
+     "perEvaluator": [
+      85.00000000000001,
+      93.75
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       4,
+       3
+      ],
+      [
+       4,
+       3,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 62.32726666666665
+  },
+  {
+   "brand": "figma",
+   "arm": "omd",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "H1",
+        "code": "HERO",
+        "symptom": "히어로가 보석이 놓인 회색 트레이 실사여서 캔버스 위 협업 장면이 아니다.",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 18.066,
+     "numeric": 4.38,
+     "semantic": 50,
+     "ratings": [
+      1,
+      3
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 95,
+     "perEvaluator": [
+      89.99999999999999,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       4,
+       4,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 55.301866666666655
+  },
+  {
+   "brand": "figma",
+   "arm": "omd",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 22.5,
+     "numeric": 0,
+     "semantic": 75,
+     "ratings": [
+      3,
+      3
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 95,
+     "perEvaluator": [
+      89.99999999999999,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       4,
+       4,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 57.66666666666666
+  },
+  {
+   "brand": "figma",
+   "arm": "omd",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 90,
+     "n": {
+      "P0": 0,
+      "P1": 1,
+      "P2": 0
+     },
+     "counted": [
+      {
+       "viewport": "mobile-390",
+       "regionId": "H1",
+       "code": "OVERLAP",
+       "symptom": "쿠키 시트가 목업 카드 대부분을 덮어 SOFT ECHOES·체크인 장면이 한 줄만 남는다.",
+       "severity": "P1",
+       "symptoms": [
+        "쿠키 시트가 목업 카드 대부분을 덮어 SOFT ECHOES·체크인 장면이 한 줄만 남는다.",
+        "쿠키 배너가 히어로 이미지(H1) 하단 상당 부분을 가림"
+       ]
+      }
+     ],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 25.75,
+     "numeric": 10,
+     "semantic": 62.5,
+     "ratings": [
+      2,
+      3
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 95,
+     "perEvaluator": [
+      89.99999999999999,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       4,
+       4,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 56.73333333333332
+  },
+  {
+   "brand": "figma",
+   "arm": "omd",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "H1",
+        "code": "OVERLAP",
+        "symptom": "쿠키 시트가 보석 트레이 사진의 아랫 칸을 덮는다.",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 25.533,
+     "numeric": 9.69,
+     "semantic": 62.5,
+     "ratings": [
+      2,
+      3
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 95,
+     "perEvaluator": [
+      89.99999999999999,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       4,
+       4,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 59.28426666666666
+  },
+  {
+   "brand": "figma",
+   "arm": "hallmark",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "H1",
+        "code": "HERO",
+        "symptom": "히어로가 보석이 꽂힌 물리 트레이 스틸이라 캔버스 위 협업 UI가 보이지 않는다.",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 25.883,
+     "numeric": 10.19,
+     "semantic": 62.5,
+     "ratings": [
+      2,
+      3
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 83.125,
+     "perEvaluator": [
+      75,
+      91.25000000000001
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       3,
+       4,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 57.09593333333333
+  },
+  {
+   "brand": "figma",
+   "arm": "hallmark",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K3",
+        "code": "OVERLAP",
+        "symptom": "본문 `시작하기` 필 버튼이 쿠키 시트 상단에 걸쳐 라벨과 시트가 겹친다.",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 32.9,
+     "numeric": 9.5,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 87.5,
+     "perEvaluator": [
+      75,
+      100
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 61.71333333333332
+  },
+  {
+   "brand": "figma",
+   "arm": "hallmark",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 28.2,
+     "numeric": 13.5,
+     "semantic": 62.5,
+     "ratings": [
+      2,
+      3
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 83.125,
+     "perEvaluator": [
+      75,
+      91.25000000000001
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       3,
+       4,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 58.331666666666656
+  },
+  {
+   "brand": "figma",
+   "arm": "hallmark",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 97,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 1
+     },
+     "counted": [
+      {
+       "viewport": "mobile-390",
+       "regionId": "K1",
+       "code": "CLIP",
+       "symptom": "뷰포트 왼쪽 상단에 검정 필 조각이 잘려 워드마크 옆 경계에 붙어 있다.",
+       "severity": "P2",
+       "symptoms": [
+        "뷰포트 왼쪽 상단에 검정 필 조각이 잘려 워드마크 옆 경계에 붙어 있다."
+       ],
+       "viaRescore": true
+      }
+     ],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "H1",
+        "code": "OVERLAP",
+        "symptom": "쿠키 패널이 체크인 목업 오른쪽 아래(수박 면)를 덮는다.",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 60.052,
+     "numeric": 64.36,
+     "semantic": 50,
+     "ratings": [
+      2,
+      2
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 83.74999999999999,
+     "perEvaluator": [
+      71.24999999999999,
+      96.24999999999999
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       2,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 74.64439999999999
+  },
+  {
+   "brand": "figma",
+   "arm": "uiuxpromax",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "H1",
+        "code": "OVERLAP",
+        "symptom": "검정 쿠키 시트가 보석·수박 목업의 아랫절반을 덮어 캔버스 장면이 가려진다.",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 29.808,
+     "numeric": 10.44,
+     "semantic": 75,
+     "ratings": [
+      3,
+      3
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 85.625,
+     "perEvaluator": [
+      75,
+      96.24999999999999
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 59.68926666666666
+  },
+  {
+   "brand": "figma",
+   "arm": "uiuxpromax",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 22.621,
+     "numeric": 5.53,
+     "semantic": 62.5,
+     "ratings": [
+      3,
+      2
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 87.5,
+     "perEvaluator": [
+      75,
+      100
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 56.231199999999994
+  },
+  {
+   "brand": "figma",
+   "arm": "uiuxpromax",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 90,
+     "n": {
+      "P0": 0,
+      "P1": 1,
+      "P2": 0
+     },
+     "counted": [
+      {
+       "viewport": "mobile-390",
+       "regionId": "H1",
+       "code": "OVERLAP",
+       "symptom": "쿠키 시트가 기대 선 보드 사진의 아랫부분을 덮는다.",
+       "severity": "P1",
+       "symptoms": [
+        "쿠키 시트가 기대 선 보드 사진의 아랫부분을 덮는다.",
+        "쿠키 배너가 히어로 이미지(H1) 하단 부분을 가림"
+       ]
+      }
+     ],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "H1",
+        "code": "HERO",
+        "symptom": "히어로가 보라 원 보드와 격자 판이 기대 선 정물이라 캔버스 협업 UI가 없다.",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 26.491,
+     "numeric": 27.13,
+     "semantic": 25,
+     "ratings": [
+      1,
+      1
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 87.5,
+     "perEvaluator": [
+      75,
+      100
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 55.62853333333333
+  },
+  {
+   "brand": "figma",
+   "arm": "uiuxpromax",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 27.44,
+     "numeric": 1.7,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 87.5,
+     "perEvaluator": [
+      75,
+      100
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 58.801333333333325
+  },
+  {
+   "brand": "karrot",
+   "arm": "omd",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 82.71199999999999,
+     "numeric": 80.66,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 85.00000000000001,
+     "perEvaluator": [
+      85.00000000000001,
+      85.00000000000001
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       4,
+       3
+      ],
+      [
+       4,
+       3,
+       3,
+       4,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 87.77973333333333
+  },
+  {
+   "brand": "karrot",
+   "arm": "omd",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "K2",
+        "code": "LOCAL",
+        "symptom": "`현 위치로 설정` 버튼에 `-ȯ-` 깨진 글리프가 아이콘 자리에 보인다.",
+        "severity": "P2"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 82.03999999999999,
+     "numeric": 79.7,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 95,
+     "perEvaluator": [
+      89.99999999999999,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       4,
+       4,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 89.42133333333332
+  },
+  {
+   "brand": "karrot",
+   "arm": "omd",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 80.346,
+     "numeric": 77.28,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 95,
+     "perEvaluator": [
+      89.99999999999999,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       4,
+       4,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 88.51786666666666
+  },
+  {
+   "brand": "karrot",
+   "arm": "omd",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 73.369,
+     "numeric": 72.67,
+     "semantic": 75,
+     "ratings": [
+      3,
+      3
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 95,
+     "perEvaluator": [
+      89.99999999999999,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       4,
+       4,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 84.79679999999999
+  },
+  {
+   "brand": "karrot",
+   "arm": "hallmark",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 85.29299999999999,
+     "numeric": 78.99,
+     "semantic": 100,
+     "ratings": [
+      4,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 78.75,
+     "perEvaluator": [
+      71.24999999999999,
+      86.25
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       2,
+       3
+      ],
+      [
+       3,
+       4,
+       4,
+       3,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 87.90626666666665
+  },
+  {
+   "brand": "karrot",
+   "arm": "hallmark",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 86.079,
+     "numeric": 85.47,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 80.62499999999999,
+     "perEvaluator": [
+      71.24999999999999,
+      89.99999999999999
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       2,
+       3
+      ],
+      [
+       3,
+       4,
+       4,
+       4,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 88.70046666666664
+  },
+  {
+   "brand": "karrot",
+   "arm": "hallmark",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 83.70599999999999,
+     "numeric": 82.08,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 78.75,
+     "perEvaluator": [
+      71.24999999999999,
+      86.25
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       2,
+       3
+      ],
+      [
+       3,
+       4,
+       4,
+       3,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 87.05986666666665
+  },
+  {
+   "brand": "karrot",
+   "arm": "hallmark",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "K2",
+        "code": "LOCAL",
+        "symptom": "`현 위치로 설정` 라벨 앞에 `-ȯ-` 깨진 글리프가 보인다.",
+        "severity": "P2"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 80.262,
+     "numeric": 77.16,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 75.625,
+     "perEvaluator": [
+      64.99999999999999,
+      86.25
+     ],
+     "ratings": [
+      [
+       2,
+       3,
+       3,
+       2,
+       3
+      ],
+      [
+       3,
+       4,
+       4,
+       3,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 84.59806666666665
+  },
+  {
+   "brand": "karrot",
+   "arm": "uiuxpromax",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 84.441,
+     "numeric": 83.13,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 90,
+     "perEvaluator": [
+      80,
+      100
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       4,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 89.70186666666665
+  },
+  {
+   "brand": "karrot",
+   "arm": "uiuxpromax",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 83.328,
+     "numeric": 81.54,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 87.5,
+     "perEvaluator": [
+      75,
+      100
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 88.60826666666665
+  },
+  {
+   "brand": "karrot",
+   "arm": "uiuxpromax",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 81.613,
+     "numeric": 79.09,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 87.5,
+     "perEvaluator": [
+      75,
+      100
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 87.69359999999999
+  },
+  {
+   "brand": "karrot",
+   "arm": "uiuxpromax",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 90,
+     "n": {
+      "P0": 0,
+      "P1": 1,
+      "P2": 0
+     },
+     "counted": [
+      {
+       "viewport": [
+        "desktop-1440",
+        "mobile-390"
+       ],
+       "regionId": "K3",
+       "code": "FOCUS",
+       "symptom": "결과 그리드 전체를 감싼 주황 아웃라인이 첫 페인트에 상시 켜져 있다.",
+       "severity": "P1",
+       "symptoms": [
+        "결과 그리드 전체를 감싼 주황 아웃라인이 첫 페인트에 상시 켜져 있다."
+       ],
+       "viaRescore": true
+      }
+     ],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 81.75999999999999,
+     "numeric": 79.3,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 90,
+     "perEvaluator": [
+      80,
+      100
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       4,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 85.60533333333333
+  },
+  {
+   "brand": "musinsa",
+   "arm": "omd",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 52.283,
+     "numeric": 37.19,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 95,
+     "perEvaluator": [
+      89.99999999999999,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       4,
+       4,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 73.55093333333333
+  },
+  {
+   "brand": "musinsa",
+   "arm": "omd",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 46.842,
+     "numeric": 24.06,
+     "semantic": 100,
+     "ratings": [
+      4,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 95,
+     "perEvaluator": [
+      89.99999999999999,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       4,
+       4,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 70.64906666666666
+  },
+  {
+   "brand": "musinsa",
+   "arm": "omd",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 56.973,
+     "numeric": 43.89,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 91.875,
+     "perEvaluator": [
+      83.74999999999999,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       2,
+       4,
+       4,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 75.42726666666665
+  },
+  {
+   "brand": "musinsa",
+   "arm": "omd",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 40.578,
+     "numeric": 36.54,
+     "semantic": 50,
+     "ratings": [
+      2,
+      2
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 95,
+     "perEvaluator": [
+      89.99999999999999,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       4,
+       4,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 67.30826666666665
+  },
+  {
+   "brand": "musinsa",
+   "arm": "hallmark",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "K2",
+        "code": "STATE",
+        "symptom": "첫 페인트에 컬러 블랙이 선택된 채 그리드가 검은 상의 4개로 좁혀져 있다.",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 49.196999999999996,
+     "numeric": 54.21,
+     "semantic": 37.5,
+     "ratings": [
+      2,
+      1
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 80.62499999999999,
+     "perEvaluator": [
+      71.24999999999999,
+      89.99999999999999
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       2,
+       3
+      ],
+      [
+       3,
+       4,
+       4,
+       4,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 69.03006666666666
+  },
+  {
+   "brand": "musinsa",
+   "arm": "hallmark",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "K2",
+        "code": "STATE",
+        "symptom": "첫 페인트에 컬러 블랙이 선택된 채 그리드가 축소되어 있다.",
+        "severity": "P1"
+       }
+      },
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "H1",
+        "code": "HERO",
+        "symptom": "첫 카드가 마네킹 검정 탱크라 사람 착장 실루엣·스타일링 컷이 아니다.",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 44.927,
+     "numeric": 48.11,
+     "semantic": 37.5,
+     "ratings": [
+      1,
+      2
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 79.375,
+     "perEvaluator": [
+      64.99999999999999,
+      93.75
+     ],
+     "ratings": [
+      [
+       3,
+       2,
+       3,
+       2,
+       3
+      ],
+      [
+       3,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 66.50273333333332
+  },
+  {
+   "brand": "musinsa",
+   "arm": "hallmark",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 11.523,
+     "numeric": 0.39,
+     "semantic": 37.5,
+     "ratings": [
+      1,
+      2
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 84.375,
+     "perEvaluator": [
+      75,
+      93.75
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       3,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 49.68726666666666
+  },
+  {
+   "brand": "musinsa",
+   "arm": "hallmark",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "K2",
+        "code": "STATE",
+        "symptom": "첫 페인트에 컬러 블랙이 선택된 채 3개만 남겼다고 적혀 있고 블랙 칩이 눌려 있다.",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 46.564,
+     "numeric": 29.02,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 82.5,
+     "perEvaluator": [
+      75,
+      89.99999999999999
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       3,
+       4,
+       4,
+       4,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 68.0008
+  },
+  {
+   "brand": "musinsa",
+   "arm": "uiuxpromax",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "K2",
+        "code": "STATE",
+        "symptom": "첫 페인트에 컬러 블랙이 이미 적용되어 상품 수가 18,204로 줄어 있고 `블랙 ×` 칩이 켜져 있다.",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 60.13699999999999,
+     "numeric": 48.41,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 87.5,
+     "perEvaluator": [
+      75,
+      100
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 76.23973333333332
+  },
+  {
+   "brand": "musinsa",
+   "arm": "uiuxpromax",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "K2",
+        "code": "STATE",
+        "symptom": "첫 페인트에 블랙 필터와 `블랙 ×` 칩이 켜져 상품 5개만 보인다.",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 44.129,
+     "numeric": 46.97,
+     "semantic": 37.5,
+     "ratings": [
+      2,
+      1
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 87.5,
+     "perEvaluator": [
+      75,
+      100
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 67.70213333333332
+  },
+  {
+   "brand": "musinsa",
+   "arm": "uiuxpromax",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 90,
+     "n": {
+      "P0": 0,
+      "P1": 1,
+      "P2": 0
+     },
+     "counted": [
+      {
+       "viewport": [
+        "desktop-1440",
+        "mobile-390"
+       ],
+       "regionId": "K3",
+       "code": "OVERLAP",
+       "symptom": "첫 상품 카드의 가격/좋아요 텍스트 줄 위에 공유 아이콘(빨간 점 배지 포함)이 겹쳐 가격 숫자 일부가 가려짐",
+       "severity": "P1",
+       "symptoms": [
+        "첫 상품 카드의 가격/좋아요 텍스트 줄 위에 공유 아이콘(빨간 점 배지 포함)이 겹쳐 가격 숫자 일부가 가려짐"
+       ],
+       "viaRescore": true
+      }
+     ],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "K2",
+        "code": "STATE",
+        "symptom": "첫 페인트에 블랙 필터와 `블랙 ×`가 켜져 상품 48,217개 축약 그리드다.",
+        "severity": "P1"
+       }
+      },
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "H1",
+        "code": "HERO",
+        "symptom": "첫 카드가 사람 없는 검정 탱크 픽토그램이라 착장 컷이 아니다.",
+        "severity": "P1"
+       }
+      },
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "K3",
+        "code": "LOCAL",
+        "symptom": "첫 카드 가격이 `5₩ ~~0원`처럼 깨져 원 가격을 읽을 수 없다.",
+        "severity": "P2"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 42.729,
+     "numeric": 44.97,
+     "semantic": 37.5,
+     "ratings": [
+      2,
+      1
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 82.5,
+     "perEvaluator": [
+      68.75,
+      96.25
+     ],
+     "ratings": [
+      [
+       3,
+       2,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       3,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 63.28879999999999
+  },
+  {
+   "brand": "musinsa",
+   "arm": "uiuxpromax",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "K2",
+        "code": "STATE",
+        "symptom": "첫 페인트에 `컬러 블랙 ×`가 적용되어 상품 3개만 보인다.",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 55.447,
+     "numeric": 41.71,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 87.5,
+     "perEvaluator": [
+      75,
+      100
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 73.7384
+  },
+  {
+   "brand": "naver",
+   "arm": "omd",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K1",
+        "code": "CLIP",
+        "symptom": "검색 플레이스홀더가 「검색어를 입력해 주」에서 잘려 돋보기 버튼에 가린다.",
+        "severity": "P2"
+       }
+      },
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "desktop-1440",
+        "regionId": "K3",
+        "code": "CONTRAST",
+        "symptom": "로그인 라벨 전경 rgb(247,255,250) / 채움 rgb(34,195,115) @ (1081,328), 대비 2.26:1 (<4.5, 큰 텍스트·UI 3:1도 미달).",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "na": true,
+     "reason": "N/A-evidence (snapshot has <2 eligible numeric fields; C-NAVER-H1)"
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 92.5,
+     "perEvaluator": [
+      85.00000000000001,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       4,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 96.78571428571429
+  },
+  {
+   "brand": "naver",
+   "arm": "omd",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "na": true,
+     "reason": "N/A-evidence (snapshot has <2 eligible numeric fields; C-NAVER-H1)"
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 100,
+     "perEvaluator": [
+      100,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 100
+  },
+  {
+   "brand": "naver",
+   "arm": "omd",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "desktop-1440",
+        "regionId": "K3",
+        "code": "CONTRAST",
+        "symptom": "로그인 라벨 전경 rgb(251,253,251) / 채움 rgb(56,208,128) @ (1180,390), 대비 1.96:1 (<4.5, UI 3:1 미달).",
+        "severity": "P1"
+       }
+      },
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "G[2,1]",
+        "code": "LOCAL",
+        "symptom": "프로모 키커가 「늘잠매트리스」로 적혀 스냅샷의 「눕잠매트리스」와 다른 오자다.",
+        "severity": "P2"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "na": true,
+     "reason": "N/A-evidence (snapshot has <2 eligible numeric fields; C-NAVER-H1)"
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 89.375,
+     "perEvaluator": [
+      78.75000000000001,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       2,
+       3,
+       4,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 95.44642857142858
+  },
+  {
+   "brand": "naver",
+   "arm": "omd",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "desktop-1440",
+        "regionId": "K3",
+        "code": "CONTRAST",
+        "symptom": "로그인 라벨 전경 rgb(254,254,254) / 채움 rgb(3,199,90) @ (1100,740), 대비 2.23:1 (<4.5, UI 3:1 미달).",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "na": true,
+     "reason": "N/A-evidence (snapshot has <2 eligible numeric fields; C-NAVER-H1)"
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 93.75,
+     "perEvaluator": [
+      87.5,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       2,
+       4,
+       4,
+       4
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 97.32142857142858
+  },
+  {
+   "brand": "naver",
+   "arm": "hallmark",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "na": true,
+     "reason": "N/A-evidence (snapshot has <2 eligible numeric fields; C-NAVER-H1)"
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 73.125,
+     "perEvaluator": [
+      71.24999999999999,
+      75
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       2,
+       3
+      ],
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 88.48214285714286
+  },
+  {
+   "brand": "naver",
+   "arm": "hallmark",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "desktop-1440",
+        "regionId": "K4",
+        "code": "CLIP",
+        "symptom": "언론사 칸 「Korea Joong…」「The Korea Ti…」가 셀 오른쪽에서 말줄임으로 잘린다.",
+        "severity": "P2"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "na": true,
+     "reason": "N/A-evidence (snapshot has <2 eligible numeric fields; C-NAVER-H1)"
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 71.24999999999999,
+     "perEvaluator": [
+      71.24999999999999,
+      71.24999999999999
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       2,
+       3
+      ],
+      [
+       3,
+       3,
+       3,
+       2,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 87.67857142857143
+  },
+  {
+   "brand": "naver",
+   "arm": "hallmark",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K1",
+        "code": "CLIP",
+        "symptom": "검색 플레이스홀더가 「검색어를 입력해 주ㅅ」로 깨지며 검색 버튼에 잘린다.",
+        "severity": "P2"
+       }
+      },
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "desktop-1440",
+        "regionId": "K4",
+        "code": "CLIP",
+        "symptom": "언론사 칸 「Korea JoongAng Da」가 셀 오른쪽에서 잘린다.",
+        "severity": "P2"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "na": true,
+     "reason": "N/A-evidence (snapshot has <2 eligible numeric fields; C-NAVER-H1)"
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 75,
+     "perEvaluator": [
+      75,
+      75
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 89.28571428571429
+  },
+  {
+   "brand": "naver",
+   "arm": "hallmark",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "K2",
+        "code": "LOCAL",
+        "symptom": "바로가기가 글리프 없는 연두 사각형만 반복되어 서비스 식별이 라벨에만 의존한다.",
+        "severity": "P2"
+       }
+      },
+      {
+       "by": "sonnet5",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "K2",
+        "code": "STATE",
+        "symptom": "바로가기 아이콘 9개(메일·카페·블로그·쇼핑·뉴스·증권·부동산·지도·치지직)가 모두 동일한 빈 녹색 테두리 사각형으로 렌더되어 개별 서비스를 구분할 글리프가 없다. 플레이스홀더 상태에서 실제 아이콘 콘텐츠로 넘어가지 못한 것으로 보인다.",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "na": true,
+     "reason": "N/A-evidence (snapshot has <2 eligible numeric fields; C-NAVER-H1)"
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 68.74999999999999,
+     "perEvaluator": [
+      66.24999999999999,
+      71.24999999999999
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       2,
+       3,
+       2
+      ],
+      [
+       3,
+       3,
+       3,
+       2,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 86.60714285714286
+  },
+  {
+   "brand": "naver",
+   "arm": "uiuxpromax",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K2",
+        "code": "CLIP",
+        "symptom": "바로가기 맨 오른쪽 「증권」 아이콘·라벨이 뷰포트 오른 경계에 잘린다.",
+        "severity": "P2"
+       }
+      },
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "desktop-1440",
+        "regionId": "K3",
+        "code": "CONTRAST",
+        "symptom": "로그인 라벨 전경 rgb(255,255,255) / 채움 rgb(3,199,90) @ (1100,290), 대비 2.25:1 (<4.5, UI 3:1 미달).",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "na": true,
+     "reason": "N/A-evidence (snapshot has <2 eligible numeric fields; C-NAVER-H1)"
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 90,
+     "perEvaluator": [
+      80,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       2,
+       4,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 95.71428571428572
+  },
+  {
+   "brand": "naver",
+   "arm": "uiuxpromax",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "desktop-1440",
+        "regionId": "K3",
+        "code": "CONTRAST",
+        "symptom": "로그인 라벨 전경 rgb(255,255,255) / 채움 rgb(3,199,90) @ (1100,290), 대비 2.25:1 (<4.5, UI 3:1 미달).",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "na": true,
+     "reason": "N/A-evidence (snapshot has <2 eligible numeric fields; C-NAVER-H1)"
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 85.625,
+     "perEvaluator": [
+      75,
+      96.25
+     ],
+     "ratings": [
+      [
+       4,
+       2,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       3,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 93.83928571428572
+  },
+  {
+   "brand": "naver",
+   "arm": "uiuxpromax",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 90,
+     "n": {
+      "P0": 0,
+      "P1": 1,
+      "P2": 0
+     },
+     "counted": [
+      {
+       "viewport": "desktop-1440",
+       "regionId": "K3",
+       "code": "CONTRAST",
+       "symptom": "로그인 라벨 전경 rgb(255,255,255) / 채움 rgb(3,199,90) @ (1100,300), 대비 2.25:1 (<4.5, UI 3:1 미달).",
+       "severity": "P1",
+       "symptoms": [
+        "로그인 라벨 전경 rgb(255,255,255) / 채움 rgb(3,199,90) @ (1100,300), 대비 2.25:1 (<4.5, UI 3:1 미달)."
+       ],
+       "viaRescore": true
+      }
+     ],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K1",
+        "code": "CLIP",
+        "symptom": "검색 플레이스홀더가 「검색어를 입력하」에서 잘려 돋보기와 겹친다.",
+        "severity": "P2"
+       }
+      },
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K2",
+        "code": "CLIP",
+        "symptom": "바로가기 맨 오른쪽 「증권」 아이콘이 오른 경계에 잘린다.",
+        "severity": "P2"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "na": true,
+     "reason": "N/A-evidence (snapshot has <2 eligible numeric fields; C-NAVER-H1)"
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 87.5,
+     "perEvaluator": [
+      75,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       2,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 88.92857142857143
+  },
+  {
+   "brand": "naver",
+   "arm": "uiuxpromax",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K2",
+        "code": "LOCAL",
+        "symptom": "바로가기 라벨이 「더보가」로 적혀 「더보기」가 아니다.",
+        "severity": "P2"
+       }
+      },
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K4",
+        "code": "CLIP",
+        "symptom": "언론사 칸 「Korea JoongAng」이 셀 오른쪽에서 잘린다.",
+        "severity": "P2"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "na": true,
+     "reason": "N/A-evidence (snapshot has <2 eligible numeric fields; C-NAVER-H1)"
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0
+    },
+    "document": {
+     "score": 90.625,
+     "perEvaluator": [
+      81.25,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 95.98214285714286
+  },
+  {
+   "brand": "toss",
+   "arm": "omd",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 78.146,
+     "numeric": 68.78,
+     "semantic": 100,
+     "ratings": [
+      4,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0.125
+    },
+    "document": {
+     "score": 100,
+     "perEvaluator": [
+      100,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 88.34453333333332
+  },
+  {
+   "brand": "toss",
+   "arm": "omd",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "H1",
+        "code": "HERO",
+        "symptom": "히어로 카드 오른쪽에서 얼굴이 잘려 표정 없이 머리·손·폰만 남는다.",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 71.106,
+     "numeric": 64.08,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0.125
+    },
+    "document": {
+     "score": 100,
+     "perEvaluator": [
+      100,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 84.58986666666665
+  },
+  {
+   "brand": "toss",
+   "arm": "omd",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 79.541,
+     "numeric": 76.13,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0.125
+    },
+    "document": {
+     "score": 100,
+     "perEvaluator": [
+      100,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 89.08853333333332
+  },
+  {
+   "brand": "toss",
+   "arm": "omd",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 74.03,
+     "numeric": 62.9,
+     "semantic": 100,
+     "ratings": [
+      4,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0.125
+    },
+    "document": {
+     "score": 100,
+     "perEvaluator": [
+      100,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 86.14933333333332
+  },
+  {
+   "brand": "toss",
+   "arm": "hallmark",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 60.461,
+     "numeric": 54.23,
+     "semantic": 75,
+     "ratings": [
+      3,
+      3
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0.125
+    },
+    "document": {
+     "score": 70,
+     "perEvaluator": [
+      70,
+      70
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       2,
+       3,
+       3
+      ],
+      [
+       3,
+       3,
+       2,
+       3,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 72.91253333333331
+  },
+  {
+   "brand": "toss",
+   "arm": "hallmark",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 63.699999999999996,
+     "numeric": 53.5,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0.125
+    },
+    "document": {
+     "score": 81.25,
+     "perEvaluator": [
+      62.499999999999986,
+      100
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       2,
+       2,
+       2
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 76.89
+  },
+  {
+   "brand": "toss",
+   "arm": "hallmark",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 90,
+     "n": {
+      "P0": 0,
+      "P1": 1,
+      "P2": 0
+     },
+     "counted": [
+      {
+       "viewport": [
+        "desktop-1440",
+        "mobile-390"
+       ],
+       "regionId": "K2",
+       "code": "CONTRAST",
+       "symptom": "헤드라인 전경 rgb(255,255,255) / 배경 rgb(253,253,254), 데스크톱 (98,888)·모바일 (56,320), 대비 1.02:1 (<4.5, 큰 텍스트 3:1 미달).",
+       "severity": "P1",
+       "symptoms": [
+        "헤드라인 전경 rgb(255,255,255) / 배경 rgb(253,253,254), 데스크톱 (98,888)·모바일 (56,320), 대비 1.02:1 (<4.5, 큰 텍스트 3:1 미달).",
+        "헤드라인 '금융부터 일상까지 마침내 토스 하나로'가 사진이 끝난 흰 여백 위에 밝은 회백색(전경 추정 rgb(230,230,235))으로 놓여 배경 흰색(rgb(255,255,255))과 거의 구분되지 않는다(추정 대비비 약 1.2:1, 큰 텍스트 기준 3:1 미달). 다른 슬롯은 모두 사진 위 흰 글자로 대비가 확보된다."
+       ]
+      }
+     ],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "H1",
+        "code": "HERO",
+        "symptom": "히어로가 손·폰·니트만 보여 표정이 없고, 모바일은 같은 구도의 작은 스틸이다.",
+        "severity": "P1"
+       }
+      },
+      {
+       "by": "sonnet5",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "K2",
+        "code": "HERO",
+        "symptom": "H1(히어로) 사진이 인물의 얼굴·표정을 전혀 보여주지 않는다 — 팔·손·스웨터·좌석만 프레임에 잡히고 얼굴은 크롭돼 있다. 잠금표가 명시한 H1 역할('사람의 표정으로 신뢰와 일상성을 전달')과 정면으로 어긋난다.",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 44.53699999999999,
+     "numeric": 52.91,
+     "semantic": 25,
+     "ratings": [
+      2,
+      0
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0.125
+    },
+    "document": {
+     "score": 50,
+     "perEvaluator": [
+      56.25,
+      43.75
+     ],
+     "ratings": [
+      [
+       3,
+       2,
+       2,
+       2,
+       2
+      ],
+      [
+       2,
+       1,
+       2,
+       2,
+       2
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 57.753066666666655
+  },
+  {
+   "brand": "toss",
+   "arm": "hallmark",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 65.59899999999999,
+     "numeric": 61.57,
+     "semantic": 75,
+     "ratings": [
+      3,
+      3
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0.125
+    },
+    "document": {
+     "score": 61.249999999999986,
+     "perEvaluator": [
+      62.499999999999986,
+      59.999999999999986
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       2,
+       2,
+       2
+      ],
+      [
+       2,
+       3,
+       2,
+       3,
+       2
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 73.90279999999998
+  },
+  {
+   "brand": "toss",
+   "arm": "uiuxpromax",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 77.838,
+     "numeric": 68.34,
+     "semantic": 100,
+     "ratings": [
+      4,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0.125
+    },
+    "document": {
+     "score": 90.625,
+     "perEvaluator": [
+      81.25,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 86.30526666666665
+  },
+  {
+   "brand": "toss",
+   "arm": "uiuxpromax",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "sonnet5",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "K1",
+        "code": "CLIP",
+        "symptom": "헤더 좌측 상단, 워드마크 위쪽에 짙은 남색 둥근 사각형 조각(스킵링크 또는 드롭다운 잔재로 추정)이 뷰포트 상단 경계에 잘린 채 보인다. 실제 toss.im에는 없는 요소다.",
+        "severity": "P2"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 76.179,
+     "numeric": 65.97,
+     "semantic": 100,
+     "ratings": [
+      4,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0.125
+    },
+    "document": {
+     "score": 75.625,
+     "perEvaluator": [
+      81.25,
+      70
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       3,
+       3,
+       2,
+       3,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 82.42046666666666
+  },
+  {
+   "brand": "toss",
+   "arm": "uiuxpromax",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 73.07300000000001,
+     "numeric": 66.89,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0.125
+    },
+    "document": {
+     "score": 90.625,
+     "perEvaluator": [
+      81.25,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 83.76393333333333
+  },
+  {
+   "brand": "toss",
+   "arm": "uiuxpromax",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "H1",
+        "code": "HERO",
+        "symptom": "히어로가 창과 손·폰만 보여 표정이 프레임 밖에 있다.",
+        "severity": "P1"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 81.179,
+     "numeric": 78.47,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "N/A-ceiling (C_b <= q+0.10)",
+     "C": 0.125
+    },
+    "document": {
+     "score": 90.625,
+     "perEvaluator": [
+      81.25,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 88.08713333333331
+  },
+  {
+   "brand": "wanted",
+   "arm": "omd",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 59.486,
+     "numeric": 47.48,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 92.5,
+     "perEvaluator": [
+      85.00000000000001,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       4,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 76.89253333333332
+  },
+  {
+   "brand": "wanted",
+   "arm": "omd",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 68.824,
+     "numeric": 60.82,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 90.625,
+     "perEvaluator": [
+      81.25,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 81.49779999999998
+  },
+  {
+   "brand": "wanted",
+   "arm": "omd",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 67.477,
+     "numeric": 69.61,
+     "semantic": 62.5,
+     "ratings": [
+      3,
+      2
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 90.625,
+     "perEvaluator": [
+      81.25,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 80.7794
+  },
+  {
+   "brand": "wanted",
+   "arm": "omd",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 72.52699999999999,
+     "numeric": 66.11,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 92.5,
+     "perEvaluator": [
+      85.00000000000001,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       4,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 83.84773333333331
+  },
+  {
+   "brand": "wanted",
+   "arm": "hallmark",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 69.713,
+     "numeric": 62.09,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 73.125,
+     "perEvaluator": [
+      71.24999999999999,
+      75
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       2,
+       3
+      ],
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 78.47193333333333
+  },
+  {
+   "brand": "wanted",
+   "arm": "hallmark",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 65.00399999999999,
+     "numeric": 60.72,
+     "semantic": 75,
+     "ratings": [
+      3,
+      3
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 68.75,
+     "perEvaluator": [
+      62.499999999999986,
+      75
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       2,
+       2,
+       2
+      ],
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 75.08546666666665
+  },
+  {
+   "brand": "wanted",
+   "arm": "hallmark",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 64.44399999999999,
+     "numeric": 59.92,
+     "semantic": 75,
+     "ratings": [
+      2,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 73.125,
+     "perEvaluator": [
+      71.24999999999999,
+      75
+     ],
+     "ratings": [
+      [
+       3,
+       3,
+       3,
+       2,
+       3
+      ],
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 75.66179999999999
+  },
+  {
+   "brand": "wanted",
+   "arm": "hallmark",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": [
+         "desktop-1440",
+         "mobile-390"
+        ],
+        "regionId": "G[0,0]",
+        "code": "LOCAL",
+        "symptom": "페이지 전면에 세로 칼럼 가이드 선이 콘텐츠 위에 그려져 있다.",
+        "severity": "P2"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 75.15799999999999,
+     "numeric": 85.94,
+     "semantic": 50,
+     "ratings": [
+      2,
+      2
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 60,
+     "perEvaluator": [
+      45,
+      75
+     ],
+     "ratings": [
+      [
+       2,
+       2,
+       1,
+       2,
+       2
+      ],
+      [
+       3,
+       3,
+       3,
+       3,
+       3
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 78.75093333333332
+  },
+  {
+   "brand": "wanted",
+   "arm": "uiuxpromax",
+   "rep": 1,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 71.11099999999999,
+     "numeric": 58.73,
+     "semantic": 100,
+     "ratings": [
+      4,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 90.625,
+     "perEvaluator": [
+      81.25,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 82.71753333333332
+  },
+  {
+   "brand": "wanted",
+   "arm": "uiuxpromax",
+   "rep": 2,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 71.18299999999999,
+     "numeric": 64.19,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 90.625,
+     "perEvaluator": [
+      81.25,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 82.75593333333332
+  },
+  {
+   "brand": "wanted",
+   "arm": "uiuxpromax",
+   "rep": 3,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 66.866,
+     "numeric": 63.38,
+     "semantic": 75,
+     "ratings": [
+      3,
+      3
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 90.625,
+     "perEvaluator": [
+      81.25,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 80.45353333333333
+  },
+  {
+   "brand": "wanted",
+   "arm": "uiuxpromax",
+   "rep": 4,
+   "abandon": false,
+   "axes": {
+    "defects": {
+     "score": 100,
+     "n": {
+      "P0": 0,
+      "P1": 0,
+      "P2": 0
+     },
+     "counted": [],
+     "pending": [],
+     "disputed": [
+      {
+       "by": "grok-4.6",
+       "d": {
+        "viewport": "mobile-390",
+        "regionId": "K2",
+        "code": "LOCAL",
+        "symptom": "필터 칩 라벨이 「글로블」로 적혀 「글로벌」이 아니다.",
+        "severity": "P2"
+       }
+      }
+     ],
+     "severityDisagree": []
+    },
+    "evidence": {
+     "score": 79.989,
+     "numeric": 76.77,
+     "semantic": 87.5,
+     "ratings": [
+      3,
+      4
+     ]
+    },
+    "identification": {
+     "na": true,
+     "reason": "CEILING_UNAVAILABLE"
+    },
+    "document": {
+     "score": 90.625,
+     "perEvaluator": [
+      81.25,
+      100
+     ],
+     "ratings": [
+      [
+       4,
+       3,
+       3,
+       3,
+       3
+      ],
+      [
+       4,
+       4,
+       4,
+       4,
+       4
+      ]
+     ]
+    }
+   },
+   "missingAxes": [],
+   "total": 87.45246666666665
+  }
+ ],
+ "byArm": {
+  "omd": {
+   "arm": "omd",
+   "brands": {
+    "apple": {
+     "Tbar": 74.83328333333331,
+     "allAbandon": false,
+     "defects": 97.5,
+     "evidence": 55.0585,
+     "identification": null,
+     "document": 97.34375
+    },
+    "baemin": {
+     "Tbar": 56.721949999999985,
+     "allAbandon": false,
+     "defects": 92.5,
+     "evidence": 27.34975,
+     "identification": null,
+     "document": 87.34375
+    },
+    "coupang": {
+     "Tbar": 62.120883333333325,
+     "allAbandon": false,
+     "defects": 100,
+     "evidence": 30.910249999999998,
+     "identification": null,
+     "document": 94.84375
+    },
+    "figma": {
+     "Tbar": 57.246533333333325,
+     "allAbandon": false,
+     "defects": 97.5,
+     "evidence": 22.96225,
+     "identification": null,
+     "document": 95
+    },
+    "karrot": {
+     "Tbar": 87.62893333333332,
+     "allAbandon": false,
+     "defects": 100,
+     "evidence": 79.61675,
+     "identification": null,
+     "document": 92.5
+    },
+    "musinsa": {
+     "Tbar": 71.73388333333332,
+     "allAbandon": false,
+     "defects": 100,
+     "evidence": 49.169000000000004,
+     "identification": null,
+     "document": 94.21875
+    },
+    "naver": {
+     "Tbar": 97.38839285714286,
+     "allAbandon": false,
+     "defects": 100,
+     "evidence": null,
+     "identification": null,
+     "document": 93.90625
+    },
+    "toss": {
+     "Tbar": 87.04306666666665,
+     "allAbandon": false,
+     "defects": 100,
+     "evidence": 75.70575,
+     "identification": null,
+     "document": 100
+    },
+    "wanted": {
+     "Tbar": 80.75436666666664,
+     "allAbandon": false,
+     "defects": 100,
+     "evidence": 67.07849999999999,
+     "identification": null,
+     "document": 91.5625
+    }
+   },
+   "macro": {
+    "defects": {
+     "Bk": 9,
+     "M": 98.61111111111111
+    },
+    "evidence": {
+     "Bk": 8,
+     "M": 50.98134374999999
+    },
+    "identification": {
+     "Bk": 0,
+     "M": null
+    },
+    "document": {
+     "Bk": 9,
+     "M": 94.07986111111111
+    }
+   },
+   "abandons": 0,
+   "P0runs": 0,
+   "totalMean": 75.05236587301586,
+   "pass": {
+    "total75": true,
+    "axes60": false,
+    "abandon": true,
+    "p0": true
+   },
+   "incomplete": []
+  },
+  "hallmark": {
+   "arm": "hallmark",
+   "brands": {
+    "apple": {
+     "Tbar": 66.70384999999999,
+     "allAbandon": false,
+     "defects": 100,
+     "evidence": 47.58925,
+     "identification": null,
+     "document": 73.28125
+    },
+    "baemin": {
+     "Tbar": 49.72926666666666,
+     "allAbandon": false,
+     "defects": 90,
+     "evidence": 24.5705,
+     "identification": null,
+     "document": 63.125
+    },
+    "coupang": {
+     "Tbar": 54.83976666666666,
+     "allAbandon": false,
+     "defects": 100,
+     "evidence": 24.81675,
+     "identification": null,
+     "document": 74.6875
+    },
+    "figma": {
+     "Tbar": 62.94633333333332,
+     "allAbandon": false,
+     "defects": 99.25,
+     "evidence": 36.75875,
+     "identification": null,
+     "document": 84.375
+    },
+    "karrot": {
+     "Tbar": 87.06616666666665,
+     "allAbandon": false,
+     "defects": 100,
+     "evidence": 83.835,
+     "identification": null,
+     "document": 78.4375
+    },
+    "musinsa": {
+     "Tbar": 63.30521666666666,
+     "allAbandon": false,
+     "defects": 100,
+     "evidence": 38.052749999999996,
+     "identification": null,
+     "document": 81.71875
+    },
+    "naver": {
+     "Tbar": 88.01339285714286,
+     "allAbandon": false,
+     "defects": 100,
+     "evidence": null,
+     "identification": null,
+     "document": 72.03125
+    },
+    "toss": {
+     "Tbar": 70.3646,
+     "allAbandon": false,
+     "defects": 97.5,
+     "evidence": 58.57424999999999,
+     "identification": null,
+     "document": 65.625
+    },
+    "wanted": {
+     "Tbar": 76.99253333333331,
+     "allAbandon": false,
+     "defects": 100,
+     "evidence": 68.57974999999999,
+     "identification": null,
+     "document": 68.75
+    }
+   },
+   "macro": {
+    "defects": {
+     "Bk": 9,
+     "M": 98.52777777777777
+    },
+    "evidence": {
+     "Bk": 8,
+     "M": 47.847125
+    },
+    "identification": {
+     "Bk": 0,
+     "M": null
+    },
+    "document": {
+     "Bk": 9,
+     "M": 73.55902777777777
+    }
+   },
+   "abandons": 0,
+   "P0runs": 0,
+   "totalMean": 68.88456957671957,
+   "pass": {
+    "total75": false,
+    "axes60": false,
+    "abandon": true,
+    "p0": true
+   },
+   "incomplete": []
+  },
+  "uiuxpromax": {
+   "arm": "uiuxpromax",
+   "brands": {
+    "apple": {
+     "Tbar": 73.84826666666666,
+     "allAbandon": false,
+     "defects": 100,
+     "evidence": 52.37175,
+     "identification": null,
+     "document": 96.25
+    },
+    "baemin": {
+     "Tbar": 56.17805,
+     "allAbandon": false,
+     "defects": 92.5,
+     "evidence": 28.08775,
+     "identification": null,
+     "document": 82.65625
+    },
+    "coupang": {
+     "Tbar": 59.75824999999999,
+     "allAbandon": false,
+     "defects": 97.5,
+     "evidence": 30.66,
+     "identification": null,
+     "document": 87.03125
+    },
+    "figma": {
+     "Tbar": 57.58758333333333,
+     "allAbandon": false,
+     "defects": 97.5,
+     "evidence": 26.59,
+     "identification": null,
+     "document": 87.03125
+    },
+    "karrot": {
+     "Tbar": 87.90226666666666,
+     "allAbandon": false,
+     "defects": 97.5,
+     "evidence": 82.7855,
+     "identification": null,
+     "document": 88.75
+    },
+    "musinsa": {
+     "Tbar": 70.24226666666665,
+     "allAbandon": false,
+     "defects": 97.5,
+     "evidence": 50.6105,
+     "identification": null,
+     "document": 86.25
+    },
+    "naver": {
+     "Tbar": 93.61607142857144,
+     "allAbandon": false,
+     "defects": 97.5,
+     "evidence": null,
+     "identification": null,
+     "document": 88.4375
+    },
+    "toss": {
+     "Tbar": 85.1442,
+     "allAbandon": false,
+     "defects": 100,
+     "evidence": 77.06725,
+     "identification": null,
+     "document": 86.875
+    },
+    "wanted": {
+     "Tbar": 83.34486666666666,
+     "allAbandon": false,
+     "defects": 100,
+     "evidence": 72.28725,
+     "identification": null,
+     "document": 90.625
+    }
+   },
+   "macro": {
+    "defects": {
+     "Bk": 9,
+     "M": 97.77777777777777
+    },
+    "evidence": {
+     "Bk": 8,
+     "M": 52.557500000000005
+    },
+    "identification": {
+     "Bk": 0,
+     "M": null
+    },
+    "document": {
+     "Bk": 9,
+     "M": 88.21180555555556
+    }
+   },
+   "abandons": 0,
+   "P0runs": 0,
+   "totalMean": 74.18020238095238,
+   "pass": {
+    "total75": false,
+    "axes60": false,
+    "abandon": true,
+    "p0": true
+   },
+   "incomplete": []
+  }
+ },
+ "bootstrap": {
+  "top": "omd",
+  "second": "uiuxpromax",
+  "observed": 0.8721634920634784,
+  "ci95": [
+   -0.8161904761904992,
+   2.6027883597883203
+  ],
+  "soleWinner": false,
+  "verdict": "NO DECISIVE WINNER"
+ },
+ "agreement": {
+  "existence": {
+   "alpha": -0.7619047619047619,
+   "units": 93,
+   "threshold": 0.67,
+   "status": "INCONCLUSIVE"
+  },
+  "severityAndRatings": {
+   "alpha": 0.28228548953737287,
+   "units": 660,
+   "threshold": 0.8,
+   "status": "INCONCLUSIVE"
+  },
+  "brand9": {
+   "alpha": -0.11940298507462677,
+   "units": 80,
+   "threshold": 0.67,
+   "status": "INCONCLUSIVE"
+  }
+ },
+ "pendingDefects": [],
+ "disputedDefects": [
+  {
+   "cell": "apple/omd/rep-3",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "desktop-1440",
+    "regionId": "K1",
+    "code": "CLIP",
+    "symptom": "스토어·Mac·iPad·iPhone·Watch 라벨이 뷰포트 상단 경계에 가로로 잘려 글리프 상단이 없다.",
+    "severity": "P0"
+   }
+  },
+  {
+   "cell": "apple/hallmark/rep-2",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K3",
+    "code": "OVERLAP",
+    "symptom": "더 알아보기·iPhone 쇼핑하기 필이 라인업 사진 상단에 겹쳐 기기 상단을 가린다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "apple/hallmark/rep-2",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "H1",
+    "code": "CLIP",
+    "symptom": "맨 왼쪽 딥블루 폰이 캡처 왼쪽 가장자리에서 잘려 본체의 일부가 없다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "apple/hallmark/rep-2",
+   "by": "sonnet5",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "H1",
+    "code": "BRAND-MARK",
+    "symptom": "제품 라인업 사진에서 폰 후면에 실제 Apple 로고 대신 이중 고리(무한대형) 심볼이 표시됨 — 네이비·화이트·핑크 폰 3대 모두 동일 증상",
+    "severity": "P0"
+   }
+  },
+  {
+   "cell": "apple/hallmark/rep-3",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "H1",
+    "code": "CLIP",
+    "symptom": "라인업이 캡처 하단 얇은 띠로만 남아 카메라 상단만 보이고 본체 대부분이 잘린다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "apple/hallmark/rep-3",
+   "by": "sonnet5",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "H1",
+    "code": "HERO",
+    "symptom": "모바일 뷰포트에서 CTA 아래로 넓은 빈 회색 여백(약 250px 이상)이 이어지고, 제품 라인업 히어로 사진은 캡처 하단 경계에 카메라 모듈 일부만 살짝 걸쳐 보여 사실상 첫 화면에서 보이지 않음",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "apple/uiuxpromax/rep-1",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "H1",
+    "code": "CLIP",
+    "symptom": "라인업 네 대의 하단이 다음 플레이트(맥북 에어 밴드)와 이미지 박스 하단에 잘려 전신이 보이지 않는다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "apple/uiuxpromax/rep-4",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "H1",
+    "code": "CLIP",
+    "symptom": "라인업 네 대의 하단이 이미지 박스/캡처 하단에 잘려 전신이 없다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "apple/uiuxpromax/rep-4",
+   "by": "sonnet5",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "H1",
+    "code": "HERO",
+    "symptom": "모바일 뷰포트에서 CTA 아래로 약 430px의 빈 여백이 이어지고, 히어로 제품 사진은 카메라 모듈 상단부만 보인 채 캡처 하단 경계에 잘려 4폰 라인업 전체가 첫 화면에서 보이지 않음",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "baemin/omd/rep-1",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "desktop-1440",
+    "regionId": "K1",
+    "code": "CONTRAST",
+    "symptom": "흰 유틸 내비. (1248,46) fg rgb(255,255,255) / bg rgb(154,149,145), WCAG 2.97:1 < 4.5:1 (일반 텍스트).",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "baemin/omd/rep-1",
+   "by": "sonnet5",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "K2",
+    "code": "CONTRAST",
+    "symptom": "헤드라인 '건강 관리 열정 식지 않도록'의 민트(#0cefd3) 텍스트가 사진 배경의 밝은 채소/옥수수 하이라이트와 겹치는 구간에서 대비 부족 — 데스크톱 좌표(470,178) 전경 rgb(12,239,211) vs 배경 rgb(95,163,95) 대비비 ≈2.08:1, 모바일 좌표(80,232) 전경 rgb(12,239,211) vs 배경 rgb(88,163,100) 대비비 ≈2.09:1 (큰 텍스트 기준 3:1 미만, 각 뷰포트 인접 배경 픽셀의 약 6~7%가 미달)",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "baemin/hallmark/rep-1",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "desktop-1440",
+    "regionId": "G[8,1]",
+    "code": "CLIP",
+    "symptom": "문서 높이=1화면인데 '샐러드, 지금 배민됩니다'가 캡처 하단 경계에 잘린다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "baemin/hallmark/rep-1",
+   "by": "sonnet5",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "K3",
+    "code": "CLIP",
+    "symptom": "앱 스토어 배지 2종과 QR(K3)이 첫 화면 캡처 안에 전혀 나타나지 않음 — 데스크톱은 배지/QR이 폴드 아래('샐러드, 지금 배민됩니다' 섹션) 안에 있어 캡처 경계에 잘리고, 모바일은 store 배지·QR 자체가 어디에도 보이지 않고 일반 'Get the App' 텍스트 버튼만 있음. 이 브랜드는 잠금표상 '폴드 아래 허용: 없음(문서 높이 = 1화면)'이라 어느 뷰포트도 예외가 아님",
+    "severity": "P0"
+   }
+  },
+  {
+   "cell": "baemin/hallmark/rep-4",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "H1",
+    "code": "HERO",
+    "symptom": "식사 사진 아래 민트/회색 푸터 밴드가 남아 일상의 한 순간을 화면 전체로 제시하지 못한다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "baemin/uiuxpromax/rep-1",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "desktop-1440",
+    "regionId": "K1",
+    "code": "CONTRAST",
+    "symptom": "흰 유틸 내비 글자. (1189,45) fg rgb(245,245,244) / bg rgb(141,141,136), WCAG 3.06:1 < 4.5:1 (일반 텍스트).",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "baemin/uiuxpromax/rep-1",
+   "by": "sonnet5",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K2",
+    "code": "CONTRAST",
+    "symptom": "서브헤드라인 '샐러드, 지금 배민됩니다'(민트 #0cefd3)가 사진 배경의 밝은 하이라이트 영역과 겹치는 구간에서 대비 부족 — 좌표(165,294) 전경 rgb(12,239,211) vs 배경 rgb(131,136,137) 대비비 ≈2.45:1 (큰 텍스트 기준 3:1에도 미달, 인접 배경 픽셀의 약 11.5%가 3:1 미만)",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "coupang/omd/rep-3",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K2",
+    "code": "CLIP",
+    "symptom": "카테고리 행 오른쪽 'biz 쿠'가 경계에서 잘린다.",
+    "severity": "P0"
+   }
+  },
+  {
+   "cell": "coupang/hallmark/rep-3",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K1",
+    "code": "CLIP",
+    "symptom": "검색창이 돋보기 아이콘만 있는 작은 상자로 줄어 입력 필드 픽셀이 잘려 없다.",
+    "severity": "P0"
+   }
+  },
+  {
+   "cell": "coupang/hallmark/rep-3",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K1",
+    "code": "TASK",
+    "symptom": "질의 입력칸이 없어 검색으로 상품 목록에 갈 수 없다.",
+    "severity": "P0"
+   }
+  },
+  {
+   "cell": "coupang/hallmark/rep-4",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K1",
+    "code": "CLIP",
+    "symptom": "검색 입력 자리에 플레이스홀더가 '초' 한 글자만 남아 질의 필드 텍스트가 잘린다.",
+    "severity": "P0"
+   }
+  },
+  {
+   "cell": "coupang/hallmark/rep-4",
+   "by": "sonnet5",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K1",
+    "code": "STATE",
+    "symptom": "검색 입력창이 기본(플레이스홀더) 상태 대신 의도치 않은 글자 '충' 하나만 채워진 상태로 렌더됨 — 플레이스홀더 '찾고 싶은 상품을 검색해보세요!' 대신 무의미한 단일 글자가 표시되는 잘못된 채움 상태",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "coupang/uiuxpromax/rep-1",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K1",
+    "code": "CLIP",
+    "symptom": "검색창·장바구니·쿠팡 워드마크가 캡처 왼쪽/오른쪽으로 잘려 검색 입력칸이 보이지 않는다.",
+    "severity": "P0"
+   }
+  },
+  {
+   "cell": "coupang/uiuxpromax/rep-1",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K1",
+    "code": "TASK",
+    "symptom": "첫 화면에 검색 입력이 없어 질의를 넣고 상품 목록으로 갈 수 없다.",
+    "severity": "P0"
+   }
+  },
+  {
+   "cell": "coupang/uiuxpromax/rep-1",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "G[0,0]",
+    "code": "H-OVERFLOW",
+    "symptom": "데스크톱 폭 크롬이 390 캡처 밖으로 이어져 좌우가 잘린 채 보인다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "coupang/uiuxpromax/rep-2",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "desktop-1440",
+    "regionId": "K2",
+    "code": "CLIP",
+    "symptom": "카테고리 첫 칩 '쿠팡플레이' 왼쪽이 파란 카테고리 버튼에 가려 글자가 잘린다.",
+    "severity": "P0"
+   }
+  },
+  {
+   "cell": "coupang/uiuxpromax/rep-2",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K2",
+    "code": "CLIP",
+    "symptom": "카테고리 행 끝 '다시 구'가 오른쪽 경계에서 잘린다.",
+    "severity": "P0"
+   }
+  },
+  {
+   "cell": "coupang/uiuxpromax/rep-2",
+   "by": "sonnet5",
+   "d": {
+    "viewport": "desktop-1440",
+    "regionId": "K2",
+    "code": "OVERLAP",
+    "symptom": "카테고리 내비(K2)의 첫 항목이 좌측의 세로로 긴 '카테고리' 드롭다운 박스와 겹쳐 앞부분이 가려짐 — 원래 '쿠팡플레이'여야 할 라벨이 '___플레이'로만 보임",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "coupang/uiuxpromax/rep-3",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "G[8,1]",
+    "code": "LOCAL",
+    "symptom": "'오늘의 발견'이 '오늘의 발'과 다음 줄 '견'으로 나뉘어 제목 단어가 깨진다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "coupang/uiuxpromax/rep-4",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K1",
+    "code": "CLIP",
+    "symptom": "검색창·장바구니가 없고 워드마크 'coupa'만 오른쪽에서 잘린다.",
+    "severity": "P0"
+   }
+  },
+  {
+   "cell": "coupang/uiuxpromax/rep-4",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K1",
+    "code": "TASK",
+    "symptom": "검색 입력이 없어 질의로 상품 목록에 갈 수 없다.",
+    "severity": "P0"
+   }
+  },
+  {
+   "cell": "coupang/uiuxpromax/rep-4",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "G[0,0]",
+    "code": "H-OVERFLOW",
+    "symptom": "데스크톱 헤더가 390 폭을 넘어 좌우가 잘린다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "figma/omd/rep-1",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "H1",
+    "code": "HERO",
+    "symptom": "히어로가 보석이 놓인 회색 트레이 실사여서 캔버스 위 협업 장면이 아니다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "figma/omd/rep-4",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "H1",
+    "code": "OVERLAP",
+    "symptom": "쿠키 시트가 보석 트레이 사진의 아랫 칸을 덮는다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "figma/hallmark/rep-1",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "H1",
+    "code": "HERO",
+    "symptom": "히어로가 보석이 꽂힌 물리 트레이 스틸이라 캔버스 위 협업 UI가 보이지 않는다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "figma/hallmark/rep-2",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K3",
+    "code": "OVERLAP",
+    "symptom": "본문 `시작하기` 필 버튼이 쿠키 시트 상단에 걸쳐 라벨과 시트가 겹친다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "figma/hallmark/rep-4",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "H1",
+    "code": "OVERLAP",
+    "symptom": "쿠키 패널이 체크인 목업 오른쪽 아래(수박 면)를 덮는다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "figma/uiuxpromax/rep-1",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "H1",
+    "code": "OVERLAP",
+    "symptom": "검정 쿠키 시트가 보석·수박 목업의 아랫절반을 덮어 캔버스 장면이 가려진다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "figma/uiuxpromax/rep-3",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "H1",
+    "code": "HERO",
+    "symptom": "히어로가 보라 원 보드와 격자 판이 기대 선 정물이라 캔버스 협업 UI가 없다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "karrot/omd/rep-2",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "K2",
+    "code": "LOCAL",
+    "symptom": "`현 위치로 설정` 버튼에 `-ȯ-` 깨진 글리프가 아이콘 자리에 보인다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "karrot/hallmark/rep-4",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "K2",
+    "code": "LOCAL",
+    "symptom": "`현 위치로 설정` 라벨 앞에 `-ȯ-` 깨진 글리프가 보인다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "musinsa/hallmark/rep-1",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "K2",
+    "code": "STATE",
+    "symptom": "첫 페인트에 컬러 블랙이 선택된 채 그리드가 검은 상의 4개로 좁혀져 있다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "musinsa/hallmark/rep-2",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "K2",
+    "code": "STATE",
+    "symptom": "첫 페인트에 컬러 블랙이 선택된 채 그리드가 축소되어 있다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "musinsa/hallmark/rep-2",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "H1",
+    "code": "HERO",
+    "symptom": "첫 카드가 마네킹 검정 탱크라 사람 착장 실루엣·스타일링 컷이 아니다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "musinsa/hallmark/rep-4",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "K2",
+    "code": "STATE",
+    "symptom": "첫 페인트에 컬러 블랙이 선택된 채 3개만 남겼다고 적혀 있고 블랙 칩이 눌려 있다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "musinsa/uiuxpromax/rep-1",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "K2",
+    "code": "STATE",
+    "symptom": "첫 페인트에 컬러 블랙이 이미 적용되어 상품 수가 18,204로 줄어 있고 `블랙 ×` 칩이 켜져 있다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "musinsa/uiuxpromax/rep-2",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "K2",
+    "code": "STATE",
+    "symptom": "첫 페인트에 블랙 필터와 `블랙 ×` 칩이 켜져 상품 5개만 보인다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "musinsa/uiuxpromax/rep-3",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "K2",
+    "code": "STATE",
+    "symptom": "첫 페인트에 블랙 필터와 `블랙 ×`가 켜져 상품 48,217개 축약 그리드다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "musinsa/uiuxpromax/rep-3",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "H1",
+    "code": "HERO",
+    "symptom": "첫 카드가 사람 없는 검정 탱크 픽토그램이라 착장 컷이 아니다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "musinsa/uiuxpromax/rep-3",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "K3",
+    "code": "LOCAL",
+    "symptom": "첫 카드 가격이 `5₩ ~~0원`처럼 깨져 원 가격을 읽을 수 없다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "musinsa/uiuxpromax/rep-4",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "K2",
+    "code": "STATE",
+    "symptom": "첫 페인트에 `컬러 블랙 ×`가 적용되어 상품 3개만 보인다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "naver/omd/rep-1",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K1",
+    "code": "CLIP",
+    "symptom": "검색 플레이스홀더가 「검색어를 입력해 주」에서 잘려 돋보기 버튼에 가린다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "naver/omd/rep-1",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "desktop-1440",
+    "regionId": "K3",
+    "code": "CONTRAST",
+    "symptom": "로그인 라벨 전경 rgb(247,255,250) / 채움 rgb(34,195,115) @ (1081,328), 대비 2.26:1 (<4.5, 큰 텍스트·UI 3:1도 미달).",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "naver/omd/rep-3",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "desktop-1440",
+    "regionId": "K3",
+    "code": "CONTRAST",
+    "symptom": "로그인 라벨 전경 rgb(251,253,251) / 채움 rgb(56,208,128) @ (1180,390), 대비 1.96:1 (<4.5, UI 3:1 미달).",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "naver/omd/rep-3",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "G[2,1]",
+    "code": "LOCAL",
+    "symptom": "프로모 키커가 「늘잠매트리스」로 적혀 스냅샷의 「눕잠매트리스」와 다른 오자다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "naver/omd/rep-4",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "desktop-1440",
+    "regionId": "K3",
+    "code": "CONTRAST",
+    "symptom": "로그인 라벨 전경 rgb(254,254,254) / 채움 rgb(3,199,90) @ (1100,740), 대비 2.23:1 (<4.5, UI 3:1 미달).",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "naver/hallmark/rep-2",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "desktop-1440",
+    "regionId": "K4",
+    "code": "CLIP",
+    "symptom": "언론사 칸 「Korea Joong…」「The Korea Ti…」가 셀 오른쪽에서 말줄임으로 잘린다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "naver/hallmark/rep-3",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K1",
+    "code": "CLIP",
+    "symptom": "검색 플레이스홀더가 「검색어를 입력해 주ㅅ」로 깨지며 검색 버튼에 잘린다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "naver/hallmark/rep-3",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "desktop-1440",
+    "regionId": "K4",
+    "code": "CLIP",
+    "symptom": "언론사 칸 「Korea JoongAng Da」가 셀 오른쪽에서 잘린다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "naver/hallmark/rep-4",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "K2",
+    "code": "LOCAL",
+    "symptom": "바로가기가 글리프 없는 연두 사각형만 반복되어 서비스 식별이 라벨에만 의존한다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "naver/hallmark/rep-4",
+   "by": "sonnet5",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "K2",
+    "code": "STATE",
+    "symptom": "바로가기 아이콘 9개(메일·카페·블로그·쇼핑·뉴스·증권·부동산·지도·치지직)가 모두 동일한 빈 녹색 테두리 사각형으로 렌더되어 개별 서비스를 구분할 글리프가 없다. 플레이스홀더 상태에서 실제 아이콘 콘텐츠로 넘어가지 못한 것으로 보인다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "naver/uiuxpromax/rep-1",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K2",
+    "code": "CLIP",
+    "symptom": "바로가기 맨 오른쪽 「증권」 아이콘·라벨이 뷰포트 오른 경계에 잘린다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "naver/uiuxpromax/rep-1",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "desktop-1440",
+    "regionId": "K3",
+    "code": "CONTRAST",
+    "symptom": "로그인 라벨 전경 rgb(255,255,255) / 채움 rgb(3,199,90) @ (1100,290), 대비 2.25:1 (<4.5, UI 3:1 미달).",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "naver/uiuxpromax/rep-2",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "desktop-1440",
+    "regionId": "K3",
+    "code": "CONTRAST",
+    "symptom": "로그인 라벨 전경 rgb(255,255,255) / 채움 rgb(3,199,90) @ (1100,290), 대비 2.25:1 (<4.5, UI 3:1 미달).",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "naver/uiuxpromax/rep-3",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K1",
+    "code": "CLIP",
+    "symptom": "검색 플레이스홀더가 「검색어를 입력하」에서 잘려 돋보기와 겹친다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "naver/uiuxpromax/rep-3",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K2",
+    "code": "CLIP",
+    "symptom": "바로가기 맨 오른쪽 「증권」 아이콘이 오른 경계에 잘린다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "naver/uiuxpromax/rep-4",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K2",
+    "code": "LOCAL",
+    "symptom": "바로가기 라벨이 「더보가」로 적혀 「더보기」가 아니다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "naver/uiuxpromax/rep-4",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K4",
+    "code": "CLIP",
+    "symptom": "언론사 칸 「Korea JoongAng」이 셀 오른쪽에서 잘린다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "toss/omd/rep-2",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "H1",
+    "code": "HERO",
+    "symptom": "히어로 카드 오른쪽에서 얼굴이 잘려 표정 없이 머리·손·폰만 남는다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "toss/hallmark/rep-3",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "H1",
+    "code": "HERO",
+    "symptom": "히어로가 손·폰·니트만 보여 표정이 없고, 모바일은 같은 구도의 작은 스틸이다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "toss/hallmark/rep-3",
+   "by": "sonnet5",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "K2",
+    "code": "HERO",
+    "symptom": "H1(히어로) 사진이 인물의 얼굴·표정을 전혀 보여주지 않는다 — 팔·손·스웨터·좌석만 프레임에 잡히고 얼굴은 크롭돼 있다. 잠금표가 명시한 H1 역할('사람의 표정으로 신뢰와 일상성을 전달')과 정면으로 어긋난다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "toss/uiuxpromax/rep-2",
+   "by": "sonnet5",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "K1",
+    "code": "CLIP",
+    "symptom": "헤더 좌측 상단, 워드마크 위쪽에 짙은 남색 둥근 사각형 조각(스킵링크 또는 드롭다운 잔재로 추정)이 뷰포트 상단 경계에 잘린 채 보인다. 실제 toss.im에는 없는 요소다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "toss/uiuxpromax/rep-4",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "H1",
+    "code": "HERO",
+    "symptom": "히어로가 창과 손·폰만 보여 표정이 프레임 밖에 있다.",
+    "severity": "P1"
+   }
+  },
+  {
+   "cell": "wanted/hallmark/rep-4",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": [
+     "desktop-1440",
+     "mobile-390"
+    ],
+    "regionId": "G[0,0]",
+    "code": "LOCAL",
+    "symptom": "페이지 전면에 세로 칼럼 가이드 선이 콘텐츠 위에 그려져 있다.",
+    "severity": "P2"
+   }
+  },
+  {
+   "cell": "wanted/uiuxpromax/rep-4",
+   "by": "grok-4.6",
+   "d": {
+    "viewport": "mobile-390",
+    "regionId": "K2",
+    "code": "LOCAL",
+    "symptom": "필터 칩 라벨이 「글로블」로 적혀 「글로벌」이 아니다.",
+    "severity": "P2"
+   }
+  }
+ ],
+ "cellsMissingAxes": []
+}

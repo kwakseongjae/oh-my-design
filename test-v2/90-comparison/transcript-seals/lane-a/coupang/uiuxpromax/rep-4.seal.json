@@ -1,0 +1,41 @@
+{
+  "runId": "lane-a-coupang-rep-4",
+  "arm": "uiuxpromax",
+  "lane": "lane-a",
+  "brand": "coupang",
+  "repeat": 4,
+  "sourceFiles": [
+    {
+      "relativeId": "03-runs/lane-a/coupang/<arm>/rep-4/system.md",
+      "sha256": "13e31e553870e0b616875367f31d83ade3c9bd0d9d9dc1f94303537096f8ef37"
+    }
+  ],
+  "sourceSha256": "13e31e553870e0b616875367f31d83ade3c9bd0d9d9dc1f94303537096f8ef37",
+  "transcriptSha256": "23afab44d35382e10017720e5235e89249581254754fbfe463ccfea81f0ebd96",
+  "procedureFile": "TRANSCRIPTION.md",
+  "procedureSha256": "becf08f97cfd0a28052a6779171096649e7a6fef2ab581379382333f792a3c34",
+  "transcriberId": "opus5",
+  "verifierId": "orchestrator",
+  "transcriptionStartedAt": "2026-09-02T03:07:03Z",
+  "transcriptionEndedAt": "2026-09-02T03:07:03Z",
+  "verificationStartedAt": "2026-09-02T03:07:22Z",
+  "verificationEndedAt": "2026-09-02T03:07:22Z",
+  "encoding": "UTF-8",
+  "lineEnding": "LF",
+  "mapFile": "90-comparison/transcript-seals/lane-a/coupang/uiuxpromax/rep-4.map.csv",
+  "mapSha256": "6141c19d258eb4b2f5a17cde88d3252ffe436c5abf99f8c91fffd5991787376a",
+  "verificationResult": {
+    "tool": "test-v2/tools/transcribe-verify.mjs",
+    "toolSha256": "ae588ca3f30147ce6b7e670be281bd92afc720505047dffef0344d0812f7fdc3",
+    "checks": "TRANSCRIPTION.md §7.1.1–§7.1.9",
+    "unitsChecked": 165,
+    "problems": [],
+    "attempts": 1,
+    "verifiedAt": "2026-09-02T03:07:22Z",
+    "verifiedBy": "orchestrator",
+    "declaredSpans": 4
+  },
+  "verdict": "PASS",
+  "transcriptFile": "90-comparison/transcripts/lane-a/coupang/uiuxpromax/rep-4.txt",
+  "submittedToScoring": true
+}

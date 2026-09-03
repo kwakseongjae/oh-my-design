@@ -1,0 +1,153 @@
+Heading: wanted 채용 목록 Design System
+
+스냅샷 `2026-08-22T19-52-31-934Z`의 채용 목록(`wdlist`) 한 화면.
+과업 동사: **필터를 적용한다**, **채용 카드 하나를 연다**.
+이 문서는 철학 → 결정 표 → 토큰 → 컴포넌트 → 레이아웃 문법 순이다. `render.html`은 여기 적힌 값만 소비한다.
+
+Heading: Philosophy
+
+한 줄 입장: **스캔 가능한 채용 격자에서, 조건은 즉시 줄고, 카드 하나는 그 자리에서 열린다.**
+
+1. **조건이 결과를 밀어낸다.** 필터는 장식이 아니라 목록을 바꾸는 유일한 집단 조작이다. 그 대가로 히어로·프로모 밴드·별도 랜딩을 두지 않는다.
+2. **카드가 단위다.** 회사 사진이 이름보다 먼저 읽힌다. 그 대가로 행-밀도 테이블과 사이드 레일을 버린다.
+3. **없는 숫자는 비운다.** 스냅샷에 없는 연봉·지원자 수·공식 로고·전체 공고 총량은 자리를 비우고 이름을 밝힌다. 그 대가로 “있어 보이는” KPI를 만들지 않는다.
+
+Heading: Decision table
+
+| ID | 결정 | 근거 |
+|---|---|---|
+|  | 표면 장르 = media-tile catalog. 카드 보더/섀도우 박스 없음. 라운드는 미디어에만. | P1: 스냅샷 카드는 사진+매달린 텍스트. 위젯 키트(동일 radius+1px)를 전 컴포넌트에 반복하지 않는다. |
+|  | 레이아웃 문법 = 카탈로그 격자. 1440=4열, 390=2열, 320=1열. 초광폭 전략 = 컬럼 추가(C32). | 12장 샘플이 격자 최소를 채운다(GS5/GS6). 벤토/히어로는 브리프 밖. |
+|  | 필터는 즉시 적용. 별도 제출 CTA 없음. | 과업 동사 “필터를 적용”. 스냅샷의 직군/경력/칩도 즉시 반응형. |
+|  | 카드 상세는 같은 목록 위 `dialog`. 새 라우트 없음. | “브리프에 없는 화면 추가 금지”. 마스터-디테일의 compact 1패인(C35). |
+|  | 미디어 radius 16px, 컨트롤은 pill(999px). | 스냅샷 이미지 코너. 칩/정렬/헤더 버튼은 알약. 장르를 섞지 않음. |
+|  | 호버 엘리베이션은 박스섀도우 애니메이션이 아니라 미디어 위 의사요소 opacity. | G14/모션 계약: layout·shadow 직접 애니 금지. |
+|  | 종이 `oklch(0.992 0.004 95)`, 잉크 `oklch(0.22 0.012 280)`. 순수 #fff/#000 베이스 금지. | G7. 스냅샷 computed `#ffffff` / `#171719`에 가장 가까운 틴트 뉴트럴. |
+|  | 악센트 한 개: `oklch(0.55 0.22 260)` ≈ 스냅샷 모바일 버튼 `#0066ff`. 면적 ≤5%. | 회원가입 글자, 선택 칩 링, 정렬 선택, 포커스 링, 활성 북마크. 카드 전체 워시와 동시 사용 금지. |
+|  | 카드 미디어 톤 12개 = evidence palette. 생성 사진 1장만 `image.jpg`. | 네트워크 이미지 금지. 공식 로고 원본 금지. 1번 카드만 생성 컷. |
+|  | 한글 고딕 한 스택. 디스플레이는 크기·웨이트로만 계층. | G1, 로케일 타이포. 세리프 폴백 금지. 한글 트래킹 바닥 −0.01em. |
+|  | 라벨 롤: 11px, 넓은 트래킹, 뮤트. 본문 15/600, 카드 제목 18/600, 필터 표제 22/700. | 스냅샷 typeScale(button 15/600 Pretendard). 디스플레이 스텝은 필터 표제(본문의 ≥1.4×, 한글이므로 2× 라틴 규칙을 웨이트로 보완). |
+|  | 모션: 120 / 200 / 320ms. easing enter `cubic-bezier(.2,.7,.2,1)`, exit `cubic-bezier(.4,0,.7,.2)`. transform/opacity만. | 팩 모션 토큰. `transition: all` 금지(G10). |
+|  | 정보 밀도: 카탈로그. 카드 해부 = 미디어 3:2 → 보상 배지 → 제목 2줄 → 회사 → 지역·경력. 가격/평점 슬롯 없음. | P-CM-01 해부를 채용 도메인으로 파생. 스냅샷에 연봉·평점 없음. |
+|  | 직군·경력·한국·기술스택만 활성 필터. 스냅샷에 필드가 없는 칩은 disabled + 정직한 부재. | 데이터 발명 금지. |
+|  | 카피: 사용자 언어. 구현 어휘 금지. 샘플 고지는 푸터 1줄. | 5b. “data.json” 류 금지. |
+|  | 워드마크는 텍스트 `wanted`. 공식 마크 SVG/PNG 없음. | 브리프 금지 조항. |
+|  | 포커스는 `:focus-visible` 2px 악센트 아웃라인. 보더 폭은 상태 간 불변. | G19, G39. C14의 보더 증가는 이 시스템에서 기각. |
+|  | 프로그램 포커스 대상(`#page-title`)은 링 억제. | P-FN-02, G19 확장. |
+
+Heading: Tokens
+
+주석은 결정 표 역참조. 페이지는 `var(--*)`만 쓴다.
+
+```css
+--color-paper: oklch(0.992 0.004 95);          
+--color-ink: oklch(0.22 0.012 280);            
+--color-ink-soft: oklch(0.48 0.012 280);
+--color-line: oklch(0.91 0.008 280);
+--color-chip: oklch(0.975 0.006 280);
+--color-accent: oklch(0.55 0.22 260);          
+--color-accent-soft: oklch(0.55 0.22 260 / 0.12);
+--color-on-accent: oklch(0.99 0.004 95);
+--color-focus: var(--color-accent);            
+--color-scrim: oklch(0.18 0.02 280 / 0.48);    /* C44 */
+--color-reward: oklch(0.22 0.012 280 / 0.45);
+--color-disabled: oklch(0.78 0.01 280);
+
+--font: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo",
+        "Noto Sans KR", "Malgun Gothic", sans-serif; 
+--fs-label: 11px;
+--fs-meta: 13px;
+--fs-body: 15px;
+--fs-title: 18px;
+--fs-display: 22px;                            
+
+--space-4: 4px; --space-8: 8px; --space-12: 12px;
+--space-16: 16px; --space-20: 20px; --space-24: 24px;
+--space-40: 40px; --space-64: 64px; --space-96: 96px; /* 2.5 / 4 / 6rem */
+--gutter: clamp(16px, 5.5vw, 80px);
+--control-h: 44px;                             /* C2, C9 */
+--radius-media: 16px;                          
+--radius-pill: 999px;
+--elev-hover: 0 10px 24px oklch(0.22 0.012 280 / 0.12);
+
+--motion-fast: 120ms; --motion-base: 200ms; --motion-slow: 320ms; 
+--ease-enter: cubic-bezier(.2,.7,.2,1);
+--ease-exit: cubic-bezier(.4,0,.7,.2);
+```
+
+미디어 톤 `--tone-02` … `--tone-12`는 evidence.json desktop-1440 팔레트 1위 색.
+
+Heading: Components (before code)
+
+프리셋 선택 — GS8:
+
+| 컴포넌트 | 프리셋 | 파생 |
+|---|---|---|
+| 직군·경력·기술스택 | P-FN-01 커스텀 리스트박스 | 토큰  /  |
+| 한국 칩 행 | P-FN-04 필터 칩 | 활성 = 악센트 링(면 반전 아님, 악센트 예산 ) |
+| 빈 결과 | P-FN-05 | 문장 + 필터 해제 1개 |
+| 결과 수 줄 | P-FN-06 | “수록된 순서 · 샘플 n건” |
+| 채용 카드 | P-CM-01 상품 카드 해부 파생 | 가격 슬롯 삭제(데이터 없음). 미디어→제목→회사→메타. 전체 히트 = `data-cta="local"` “채용 카드 열기”(C25: 북마크는 형제 버튼) |
+| 카드 상세 | no-preset: dialog — 브리프가 같은 목록에서 카드 하나를 열 것을 요구, 별도 상품상세 프리셋 없음 | `role="dialog"` + 레코드 ID |
+| 라우트 포커스 | P-FN-02 | 목록 h1 링 억제 |
+| 고밀도 행 | P-MK-01 미사용 | 스냅샷이 격자 카드. no-preset 아님 — P-CM-01이 맞음 |
+
+상태 매트릭스(인터랙티브 7상태):
+
+- 리스트박스 트리거: default / hover / focus-visible / active / expanded / disabled(해당 없음) / error(해당 없음)
+- 칩: default / hover / focus-visible / active / pressed / disabled / (loading 없음)
+- 카드 히트: default / hover / focus-visible / active / disabled 없음
+- 북마크: default / hover / focus-visible / active / pressed
+- 다이얼로그 닫기: default / hover / focus-visible / active
+- 회원가입(primary): default / hover / focus-visible / active — 누르면 가입 화면이 없음을 status로 알림(성공이 아님)
+- 필터 초기화: 기본 상태에서는 숨김(P-FN-04). 활성 필터가 있을 때만 ghost
+
+비인터랙티브: 보상 배지, 푸터 고지, 미디어 톤 — focus 계약 없음.
+
+Heading: Layout grammar
+
+페이지 문법: **카탈로그 격자**. 콘텐츠 역산: 12장 ≥ 4열×2행. 와이드에서 40% 공백을 남기지 않기 위해 열을 늘린다.
+
+구조:
+
+1. 스킵 링크 → `#main`
+2. 헤더(워드마크 + 채용 current + primary `회원가입/로그인`)
+3. `main` 하나, `h1` 하나(“채용 정보”)
+4. 직군/경력 리스트박스 + 정렬 라디오
+5. 필터 칩 행
+6. 결과 정의 줄 `role="status"`
+7. 카드 격자 / 빈 상태
+8. 푸터 샘플 고지
+9. 모바일 하단 탭(채용만 current. 나머지 목적지는 이 스냅샷에 없음)
+
+Heading: Data honesty
+
+진실 소스:  + viewport 캡처에서 **읽히는** 필드만.
+
+- 제목 12개: imagery `alt`
+- 회사·지역·경력: viewport에서 보이는 카드 메타. 안 보이면 생략
+- 직군: 제목 명사에서만 분류(교육/마케팅/개발/재무/매니지먼트/영업/고객지원)
+- 기술스택: 제목에 있는 “유니티”만
+- 한국: 지역에 “서울”이 있는 카드
+- 생성 이미지 1장: 1번 카드 미디어
+- 없는 것(화면에 이름을 밝힘): 공식 로고, 전체 공고 수, 연봉, 지원자 수, 응답률, 투자액, 퇴사율, 기업 규모
+
+모든 레코드는 보이는 ID `WD-01`…`WD-12`와 푸터의 “샘플” 한 줄.
+
+Heading: SELF-WALK
+
+| 과업 동사 | 키보드 경로 | 프로그램 증거 |
+|---|---|---|
+| 필터를 적용한다 | Tab → 직군 필터 트리거 → Enter/Space로 열기 → Arrow → Enter로 커밋. 또는 Tab → “한국” 칩 → Space | 트리거 `aria-expanded`, 옵션 `aria-selected`, 칩 `aria-pressed="true"`, `#result-status` 문구 변경, `#job-grid[data-state="filtered"]`, 카드 `hidden` |
+| 채용 카드 하나를 연다 | 필터 후 Tab → 카드의 “채용 카드 열기” → Enter | `dialog[open]`, `data-state="open"`, `aria-modal="true"`, 레코드 ID 노출, 열었던 카드 `aria-current="true"`, 포커스는 닫기 버튼 |
+
+빈 결과: 직군 “고객지원” + 경력 “신입” 등 교집합 0. P-FN-05 문장 + 필터 해제.
+
+Heading: Journey states (graded)
+
+- `default` — 필터 없음, 12장
+- `filtered` — 조건 적용, status가 조건을 말함
+- `empty` — 0건
+- `open` — 카드 다이얼로그
+- `disabled` — 데이터 없는 칩, 필터 없을 때 초기화 숨김
+- loading/error 네트워크 상태 — 로컬 샘플이라 엔드포인트가 없음. 만들지 않음(발명 금지)

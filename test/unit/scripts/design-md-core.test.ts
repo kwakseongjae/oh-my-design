@@ -508,6 +508,10 @@ This document is the project design contract. User direction wins over repositor
     ['the contract stops', 'It does not treat either surface as a proxy for the individual service products behind them.'],
     ['the source records none', 'The source records no reduced-motion rule for any of the above.'],
     ['classification, not denial', 'This is a derived editorial reading, not a quoted rule.'],
+    // wave 51 note: a brand-behaviour negation on a UI element is a recorded fact, not self-denial
+    ['brand-behaviour negation', "But here's the crucial nuance: the brand deliberately does not flood its product chrome with the teal."],
+    // wave 45 mercury: the B2a limiter sits inside a long scope sentence
+    ['B2a limiter in a scope sentence', 'The readings above are a derived editorial implementation inference from the verified product surfaces; not Mercury-authored or a separately published UI specification.'],
   ])('keeps a scope claim that attributes the absence to the source (%s)', (_label, tail) => {
     const scopeBody = 'Atlas helps dispatchers resolve exceptions while preserving shipment identity and ownership.';
     const conformance = engine.inspectDesignMd(

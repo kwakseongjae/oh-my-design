@@ -1,0 +1,187 @@
+Heading: Design system — Karrot search results
+
+Screen: 검색 결과 (`노트북` query). Task: open one listing card and move to its detail. Snapshot `2026-08-22T19-49-29-044Z`. Surfaces: desktop-1440 (1440×900), mobile-390 (390×844).
+
+This document is the system used by `render.html`. It is produced with the  pack workflow (Step 1 analyze → Step 2 `--design-system` → Step 3 domain searches → Step 4 stack), then bound to chrome measured in  so the first render can run offline.
+
+Heading: Requirements (pack Step 1)
+
+| Slot | Value |
+|------|--------|
+| Product type | Classifieds / Buy-Sell (C2C neighborhood marketplace) |
+| Audience | C-end buyers scanning local used goods |
+| Platform | Desktop web + mobile web |
+| Stack | html-tailwind guidelines, emitted as a single HTML file (no CDN) |
+| Style keywords | content-first, listing grid, filter-heavy, flat |
+| Motion dial | 3/10 Subtle |
+| Density dial | 7/10 Standard |
+| Variance dial | 3/10 Centered / Minimal |
+
+Heading: Pack `--design-system` (Step 2)
+
+Query: `c2c marketplace classifieds used goods search results listing cards neighborhood commerce`  
+Project: Karrot Search  
+Dials: `--density 7 --motion 3 --variance 3`
+
+Returned:
+
+- **Pattern:** Marketplace / Directory — search is the CTA; reduce friction to scan results.
+- **Style name:** Exaggerated Minimalism (bold type, massive whitespace).
+- **Colors (classifieds table):** primary `#2563EB`, accent `#16A34A`, background `#EFF6FF`, foreground `#1E40AF`.
+- **Type pairing:** Inter / Inter.
+- **Motion:** Stagger list, 250–350ms, `power1.out`, 0.03s per item, `y: 8`.
+- **Avoid:** Flat design without depth; text-heavy pages.
+
+Product-domain search (`marketplace classifieds ecommerce listing`) independently recommended **Classifieds / Buy-Sell → Flat Design + Vibrant & Block-based**, landing pattern **Filter-Heavy Grid**, palette **neutral bg + price green + category chips**.
+
+Conflict: Exaggerated Minimalism wants `clamp(3rem, 10vw, 12rem)` headlines. This screen is a search-result grid, and evidence type scale is 28/20/16 px. **Applied the classifieds product recommendation (flat, filter-heavy grid) and the evidence type scale.** Pack style name is recorded, not the oversized type recipe.
+
+Heading: Evidence chrome (binding layer)
+
+Measured, not invented:
+
+| Token | Source | Value |
+|-------|--------|--------|
+| Page background | `pageBackgroundComputed` / rendered modal | `#ffffff` |
+| Body / ink | `bodyColor` | `#1a1c20` |
+| Wordmark orange | 2× viewport histogram, top-left mark | `#ff6f0f` (2213 px) |
+| Meta gray | listing meta pixels | `#868b94` |
+| Related-search gray | related-row pixels | `#656d7b` |
+| Location chip | `primaryButton` | outline, border `#000000`, radius 8, 14px/700, label `서울시 강동구 천호동` |
+| Fill button | sampled | `#1a1c20` on white |
+| H1 desktop | typeScale `h1` | 28px / 700 / 36.4px |
+| H1 mobile | typeScale `h1` | 24px / 700 / 32px |
+| H3 / card title | typeScale `h3` | 16px / 700 / 22px |
+| Button type | typeScale `button` | 14px / 700 / 19px |
+| Family | typeScale | `-apple-system` (Inter specified by pack, system stack at runtime — no network fonts) |
+| Header height | chrome | 95px desktop (bar + related), 60px mobile |
+| Listing thumb | imagery `docBox` | 1:1, 248.5px desktop / 171.5px mobile, 16px column gap |
+
+Pack classifieds blue `#2563EB` is kept as `--color-pack-classifieds-primary` for provenance and is **not painted** on this surface. Snapshot chrome wins over the generic classifieds table.
+
+Official brand logo artwork is not used. The header mark is the text wordmark **당근** in `--color-primary`.
+
+Heading: Three-layer tokens
+
+Heading: Primitive
+
+```css
+--color-orange-500: #ff6f0f;
+--color-ink-900: #1a1c20;
+--color-ink-600: #656d7b;
+--color-ink-500: #868b94;
+--color-white: #ffffff;
+--color-gray-50: #f2f3f6;
+--color-gray-100: #eaebee;
+--color-gray-200: #dcdde1;
+--color-black: #000000;
+--color-pack-classifieds-primary: #2563eb;
+--color-pack-accent: #16a34a;
+--space-1: 4px; /* 8px rhythm */
+--radius-sm: 8px; /* evidence button */
+--radius-pill: 999px;
+--font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+```
+
+Heading: Semantic
+
+```css
+--color-background: var(--color-white);
+--color-foreground: var(--color-ink-900);
+--color-primary: var(--color-orange-500);
+--color-muted: var(--color-gray-50);
+--color-muted-foreground: var(--color-ink-500);
+--color-subtle: var(--color-ink-600);
+--color-border: var(--color-gray-200);
+--color-ring: var(--color-orange-500);
+```
+
+Heading: Component
+
+```css
+--button-radius: var(--radius-sm);
+--button-font: 700 14px/19px var(--font);
+--card-radius: var(--radius-sm);
+--search-radius: var(--radius-pill);
+--z-header: 50;
+--z-drawer: 40;
+--z-dropdown: 20;
+--z-skip: 100;
+--duration: 180ms;
+```
+
+Components never take raw hex. Contrast: `#1a1c20` on `#ffffff` ≫ 4.5:1; `#868b94` on `#ffffff` meets AA for the 13px meta line.
+
+Heading: Layout
+
+Marketplace pattern: search in the header, related queries, then a filter-heavy listing grid.
+
+| Breakpoint | Layout |
+|------------|--------|
+| default / 390 | 2-column cards, location + filter chips in the body, hamburger drawer |
+| 768 | 3-column cards, still no sidebar |
+| 1024+ | 260px filter sidebar + 4-column grid (matches desktop `docBox` x=332 start) |
+| 1440 | same structure, 40px page gutters |
+
+Sticky header with content sitting below it (pack UX: do not let a fixed nav cover the first section). No nested horizontal swipe on the card grid; related queries may scroll sideways.
+
+Grid gaps use one `gap` token, not per-item margins (html-tailwind stack: Grid gaps).
+
+Heading: Components and states
+
+| Component | Default | Hover | Active | Focus | Disabled |
+|-----------|---------|-------|--------|-------|----------|
+| Card (interactive) | 1:1 media, title, tabular price, meta | translateY(-2px) | scale(0.98) | 2px primary ring | n/a |
+| Fill button | ink bg, white text, pill | — | scale(0.98) | ring | opacity 0.5 |
+| Outline button | 1px `#000`, radius 8 / pill, 14/700 | — | scale(0.98) | ring | opacity 0.5 |
+| Chip / nav | muted pill | brightness 0.97 | — | ring | — |
+| Search | 44px pill, 16px input | — | — | ring on field | — |
+| Checkbox / radio | 18px, `accent-color` primary | — | — | ring | — |
+| Drawer | closed | — | — | focus to close | — |
+
+State priority: disabled > loading > active > focus > hover > default.
+
+Touch: 44×44px minimum on icon buttons, chips, cards, back, menu. 8px+ gap. `cursor: pointer` on every clickable control. `touch-action: manipulation`.
+
+Icons: inline SVG, outline, 1.75 stroke — Phosphor-equivalent (magnifying-glass, list, map-pin/crosshair, funnel, caret, dots, close, back). No emoji icons.
+
+Heading: Navigation (the task)
+
+First paint is **search results** (`#results` or empty hash).
+
+A listing card is an `<a href="#item/{id}">`. Opening it is the required task: hashchange shows the same listing’s photo, title, price, and meta. Back is `<a href="#results">` (pack: Back Button severity High — do not `location.replace`). Focus moves to the detail heading and returns to the originating card.
+
+No additional product screens.
+
+Heading: Motion
+
+Pack stagger list is Subtle-tier (300ms, 30ms/item, `y: 8`). **Not applied on first paint:** `animation-fill-mode: both` from opacity 0 made the listing grid unscored/transparent in a measured snapshot. Cards render opaque. Hover/active still use 180ms transform-only motion. `prefers-reduced-motion: reduce` collapses duration to 0.01ms. No decorative infinite loops.
+
+Heading: Accessibility (pack §1–§3 + pre-delivery)
+
+- Skip link to `#main`
+- `h1` once per view; sidebar uses `h2`; cards use `h3`
+- `:focus-visible` 2px ring, 2px offset, primary color
+- `aria-current="page"` on 중고거래
+- `aria-live="polite"` on view change
+- Form labels (`sr-only` on the search field)
+- Meaningful `alt` = listing title
+- Color is not the only state (current chip also gets an inset stroke)
+- Images declare `width`/`height` and `aspect-ratio: 1/1` (CLS)
+- First four thumbs `loading="eager"`; the rest `lazy`
+- Drawer: Escape, scrim 50% black, `aria-expanded`
+
+Heading: Image
+
+`image.jpg` is the representative generated listing photograph (used black laptop, seller-style overhead, 1:1). It is the first card and the detail media for that card. Other thumbs are local data URIs so the file opens with no network.
+
+Heading: Anti-patterns avoided
+
+- Google Fonts / CDN / any `http(s)` request
+- Official logo file (text wordmark only)
+- Emoji as UI icons
+- Hover-only affordance
+- Raw hex in component rules
+- Arbitrary `z-index: 9999` (scale 20/40/50/100)
+- Extra screens not named in the brief
+- Invented listing copy beyond the snapshot grid
