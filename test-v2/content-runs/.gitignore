@@ -21,3 +21,12 @@ landing/*
 # 게이트 설정·문서는 산출물이 아니라 소스다 (2026-09-03)
 !fixtures.json
 !QUALITY_GATE.md
+
+# 게이트 픽스처: 산출물(render.html·assets)은 다른 런과 같은 커스터디로 무시하고,
+# 재현에 필요한 프롬프트·체인만 추적한다 (2026-09-03).
+!gate/
+gate/*
+!gate/runs/
+gate/runs/*
+!gate/runs/*.txt
+!gate/runs/chain.sh
