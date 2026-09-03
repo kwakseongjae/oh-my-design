@@ -1,4 +1,4 @@
-# 레인 A 집계 — 2026-09-02T16:37:07.994Z
+# 레인 A 집계 — 2026-09-03T00:24:13.576Z
 
 ## 조건부
 
@@ -27,6 +27,11 @@
 - existence: α=-0.762 (n=93, 임계 0.67) → INCONCLUSIVE
 - severityAndRatings: α=0.282 (n=660, 임계 0.8) → INCONCLUSIVE
 - brand9: α=-0.119 (n=80, 임계 0.67) → INCONCLUSIVE
+
+## 블라인드 무결성 — 사후 arm 추측 (§3.6, 점수 아님)
+
+- grok-4.6: 106/108 슬롯 적중 (98%, 우연 33%) → **비블라인드로 취급한다** · arm별 omd 35/36 · uiuxpromax 35/36 · hallmark 36/36
+- sonnet5: 22/108 슬롯 적중 (20%, 우연 33%) · arm별 omd 12/36 · uiuxpromax 0/36 · hallmark 10/36
 
 ## 결함 합의
 

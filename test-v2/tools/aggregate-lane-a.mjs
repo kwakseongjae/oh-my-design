@@ -57,6 +57,7 @@ const partial = [];
 const R = {}; // R[evaluator][brand|rep|arm][axis] = entry ; ceiling answers separate
 const CEIL = {}; // CEIL[evaluator][brand][stimulus] = brand answered
 const RESCORE = {};
+const POSTHOC = {}; // POSTHOC[evaluator] = { hit, total, perArm } — §3.6 사후 arm 추측(점수 아님)
 function loadSession(ev, file, keyFile, into) {
   if (!existsSync(file) || !existsSync(keyFile)) { partial.push(`missing ${file}`); return; }
   const key = JSON.parse(read(keyFile));
@@ -72,7 +73,24 @@ function loadSession(ev, file, keyFile, into) {
     }
     const row = key.rows.find((r) => r.brand === j.brand && Number(r.rep) === Number(j.rep));
     if (!row) continue;
-    if (j.postHocGuess) continue;
+    if (j.postHocGuess) {
+      // §3.6 블라인드 무결성 — 예전에는 버렸다. 평가자가 arm 을 알아봤는지는 리포트 첫 절에 적어야 하는
+      // 항목이고(2026-09-03 검토에서 별도 스크립트로 계산해야 했다), 점수에는 넣지 않는다.
+      const g = j.postHocGuess.slots || j.postHocGuess;
+      for (const slot of ["A", "B", "C"]) {
+        const truth = row.slots[slot]; const raw = g?.[slot];
+        if (!truth || raw === undefined) continue;
+        const guess = String(typeof raw === "object" ? (raw.arm ?? raw.tool ?? JSON.stringify(raw)) : raw).toLowerCase();
+        // arm 이름 변형(ui-ux-pro-max / uiuxpromax / UIUX Pro Max)을 정규화해 맞춘다.
+        const norm = guess.replace(/[^a-z]/g, "");
+        const hit = truth === "uiuxpromax" ? /^ui?ux?pro?max$|uiuxpromax/.test(norm) || norm.includes("uiux") : norm.includes(truth);
+        (POSTHOC[ev] ||= { hit: 0, total: 0, perArm: {} });
+        POSTHOC[ev].total++; if (hit) POSTHOC[ev].hit++;
+        const pa = (POSTHOC[ev].perArm[truth] ||= { hit: 0, total: 0 });
+        pa.total++; if (hit) pa.hit++;
+      }
+      continue;
+    }
     const arm = row.slots[j.slot];
     if (!arm) continue;
     ((into[ev] ||= {})[`${j.brand}|${j.rep}|${arm}`] ||= {})[j.axis] = j;
@@ -288,6 +306,7 @@ const agreement = (() => {
 const pendingDefects = cells.flatMap((c) => (c.axes.defects?.pending || []).map((p) => ({ cell: `${c.brand}/${c.arm}/rep-${c.rep}`, by: p.by, d: p.d })));
 const disputedDefects = cells.flatMap((c) => (c.axes.defects?.disputed || []).map((p) => ({ cell: `${c.brand}/${c.arm}/rep-${c.rep}`, by: p.by, d: p.d })));
 const report = {
+  postHoc: POSTHOC,
   generatedAt: new Date().toISOString(), lane: "A", evaluators: EVALS, weights: W, seed: SEED, bootstrapN: NBOOT,
   partial: partial.length ? partial : null,
   conditions: [
@@ -310,6 +329,10 @@ const md = [
   ...ARMS.map((a) => { const x = byArm[a]; return `| ${a} | ${f(x.totalMean)} | ${f(x.macro.defects.M)} | ${f(x.macro.evidence.M)} | ${f(x.macro.identification.M)} (${x.macro.identification.Bk}) | ${f(x.macro.document.M)} | ${x.abandons} | ${x.P0runs} | ${Object.values(x.pass).every(Boolean) ? "PASS" : "FAIL"} ${JSON.stringify(x.pass)} |`; }), "",
   `## 동률·우승 (§7)`, "", "```", JSON.stringify(report.bootstrap), "```", "",
   "## 평가자 일치도 (§3.7)", "", ...Object.entries(agreement).map(([k, v]) => `- ${k}: α=${v.alpha === null ? "N/A" : v.alpha.toFixed(3)} (n=${v.units}, 임계 ${v.threshold}) → ${v.status}`), "",
+  `## 블라인드 무결성 — 사후 arm 추측 (§3.6, 점수 아님)`, "",
+  ...(Object.keys(POSTHOC).length
+    ? Object.entries(POSTHOC).map(([ev, v]) => `- ${ev}: ${v.hit}/${v.total} 슬롯 적중 (${v.total ? Math.round(100 * v.hit / v.total) : 0}%, 우연 33%)${100 * v.hit / v.total > 60 ? " → **비블라인드로 취급한다**" : ""} · arm별 ${Object.entries(v.perArm).map(([a, x]) => `${a} ${x.hit}/${x.total}`).join(" · ")}`)
+    : ["- 기록 없음"]), "",
   `## 결함 합의`, "", `- 확정 결함 ${cells.reduce((n, c) => n + (c.axes.defects?.counted?.length || 0), 0)} · 재채점 대기 ${pendingDefects.length} · disputed ${disputedDefects.length}`, "",
   `## 미채점 칸·축`, "", ...(report.cellsMissingAxes.length ? report.cellsMissingAxes.map((m) => `- ${m.cell}: ${m.missing.join(",")}`) : ["- 없음"]), "",
 ].join("\n");

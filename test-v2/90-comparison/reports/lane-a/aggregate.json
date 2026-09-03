@@ -1,5 +1,43 @@
 {
- "generatedAt": "2026-09-02T16:37:07.994Z",
+ "postHoc": {
+  "grok-4.6": {
+   "hit": 106,
+   "total": 108,
+   "perArm": {
+    "omd": {
+     "hit": 35,
+     "total": 36
+    },
+    "uiuxpromax": {
+     "hit": 35,
+     "total": 36
+    },
+    "hallmark": {
+     "hit": 36,
+     "total": 36
+    }
+   }
+  },
+  "sonnet5": {
+   "hit": 22,
+   "total": 108,
+   "perArm": {
+    "omd": {
+     "hit": 12,
+     "total": 36
+    },
+    "uiuxpromax": {
+     "hit": 0,
+     "total": 36
+    },
+    "hallmark": {
+     "hit": 10,
+     "total": 36
+    }
+   }
+  }
+ },
+ "generatedAt": "2026-09-03T00:24:13.576Z",
  "lane": "A",
  "evaluators": [
   "grok-4.6",
