@@ -3,6 +3,15 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
+- 갱신: 2026-09-03 · **안전 중단 지점(09:55, 사용자 외출)** — 마라톤 STOP 파일 기록: **웨이브 54 마감 후 55를 시작하지 않는다**(원래 "55까지"였으나 사용자 지시로 앞당김). 진행 중이던 pixiv f3 재시도는 그대로 두면 러너가 마감·커밋까지 한다. 그 외 백그라운드 작업 없음 — T3는 봉인 완료, 전사·채점·집계 에이전트 전부 종료.
+  - **재개할 때 이어서 할 것(우선순위 순)**
+    1. **autopilot 픽스처 재생성** → `npm run gate:quality` 해제. 지금 BLOCKED 사유는 autopilot 산출 2칸의 contrast FAIL(29·13건)이며, 이는 #89 개선이 겨냥한 결함이다. 재생성해 통과하면 개선이 실제로 듣는다는 증거, 통과 못 하면 스킬이 아직 못 고친 것 — 어느 쪽이든 답이 나온다. (생성 비용 발생 — 사용자 승인 후)
+    2. **#90 스냅샷 수치 추종** — 남은 접수 1건. 근거 축 기계 수치가 세 arm 모두 40 이하였고, 여기서 앞서면 실제 차이가 난다.
+    3. **karrot 픽스처 2칸(MISSING)** — 세 번째 브랜드 커버리지.
+    4. **§3.7 전 축 재채점 여부** — 사용자 결정 대기. 오케스트레이터 권고: **하지 않는다**(α −0.76은 앵커 문안이 아니라 구조적 불일치이고, 벤치에 더 큰 설계 결함이 남아 있다). INCONCLUSIVE로 확정하고 넘어간다.
+    5. **게시물 발행(X·스레드)** — 소재 문서 `docs/handover/x-vercel-designmd-campaign.md` 사용자 승인 대기. **T3 수치는 α 미달로 공개 금지** — 게시물에 순위·점수를 쓰지 않는다.
+    6. **npm publish** — 사용자가 별도 요청하거나 위 1·2가 끝난 시점. 2.0.1 tarball은 준비 상태, PR #88 열려 있음.
+  - **재개 시 첫 행동**: `scripts/context_restore.sh` → 이 절 → 마라톤 재개하려면 `rm <scratch>/marathon/STOP` 후 `scripts/wave-marathon.mjs` 재실행(웨이브 55부터, 새 90분 단계 타임아웃 적용).
 - 갱신: 2026-09-02 · **웨이브 53 마감(마라톤)** — done 10/10 · $18.74 · LLM 680분 · 판정문 `docs/reviews/t2-1-wave53-2026-09-02-grok.md`(자동 생성, 검수 전).
 - 갱신: 2026-09-03 · **T3 개선 반영 1차(09:30, opus5 오케스트레이터)** — 접수 9건 중 6건 구현: `wave-run` 단계 타임아웃 90분(스텁 검증: kill·code=124·재시도·고아 0, `5168d415`) · designer-review §1.7 측정 대비 + §1.8 오버레이 가림 · autopilot 대비 원자 검사·오버레이 금지·breakpoint/state를 값으로 · **render-integrity 390x844 추가**(모바일 전용 결함 4칸 새로 발견, 그중 coupang/uiuxpromax/rep-1은 사람 합의 확정 결함과 동일 칸 — 기계가 독립 재현) · 집계기 블라인드 무결성 절(grok 106/108=98%, sonnet5 22/108) · **품질 게이트 `npm run gate:quality`**(prepublishOnly 체인). 게이트 첫 판정 **BLOCKED**: landing 2칸 통과, **autopilot 2칸 contrast FAIL(29·13건)**, karrot 2칸 MISSING. 남은 접수: #90(스냅샷 수치 추종). 커밋 `1ff611eb`·`fc12091c`·`5b766f98`·`ddd3e86f`.
 - 갱신: 2026-09-03 · **T3 레인 A 봉인 완료 + Phase 6 검토(01:45)** — sonnet5 재채점 48/48 `0ac5c59a`, 최종 집계 `reports/lane-a/aggregate.*` `6bb9b7bf`(108칸·partial 0). 결과: omd 75.1 · uiuxpromax 74.2 · hallmark 68.9, NO DECISIVE WINNER, 세 arm 모두 근거 축(≈50)에서 PASS 실패, α 3축 미달 → **INCONCLUSIVE(공개·순위 금지)**. 설계 발견: 식별 축 전 브랜드 N/A-ceiling(C_b 0.00–0.13), **grok 사후 arm 추측 98%**(전사 방법 어휘) vs sonnet5 20%. 검토 문서 `docs/reviews/t3-phase6-review-2026-09-03.md`(개선 12항, 릴리즈 반영 목록 §4). **사용자 결정 대기: §3.7 전 축 재채점(≈grok $3 + sonnet5 3세션) 실행 vs INCONCLUSIVE 확정.** omd:issue 접수 완료 #89–#96(+#83 코멘트). 다음: 스킬 고도화·테스트 집중(릴리즈 게이트 #94 먼저).
