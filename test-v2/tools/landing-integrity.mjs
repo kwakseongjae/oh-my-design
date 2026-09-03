@@ -104,6 +104,14 @@ const STRUCT = () => {
     const ownBg = cs.backgroundImage !== "none";
     if (isMedia || ownBg || leafText) paint(r.top + scrollY, r.bottom + scrollY, r.width * r.height);
   }
+  // sticky 트랙 보정: 핀 고정 스테이지는 스크롤 동안 트랙 전 구간에 보이므로, 스테이지 안 미디어·텍스트 면적을 트랙 높이에 걸쳐 칠한다.
+  for (const st of document.querySelectorAll("body *")) {
+    if (getComputedStyle(st).position !== "sticky") continue;
+    const track = st.parentElement; if (!track) continue;
+    const tr = track.getBoundingClientRect(); if (tr.height <= st.getBoundingClientRect().height + 8) continue;
+    let a = 0; for (const el of st.querySelectorAll("img, video, svg, canvas, h1, h2, h3, p, span")) { if (!vis(el)) continue; const r = el.getBoundingClientRect(); if (r.width >= 8 && r.height >= 8) a += r.width * r.height; }
+    paint(tr.top + scrollY, tr.bottom + scrollY, a * (tr.height / vh)); // 화면당 a 만큼
+  }
   const sliceInk = ink.map((a) => +Math.min(1, a / (vw * vh)).toFixed(3));
   // 마감(craft) 계측 — LC-37~47. 밀도를 채워도 낱개의 질이 그대로면 와우가 없다(2026-09-03 계측).
   const craft = { shadows: 0, backdrop: 0, filters: 0, masks: 0, blend: 0, threeD: 0, clip: 0, radialBg: 0, mediaFilters: 0, mediaTotal: 0, balance: 0, pretty: 0 };
