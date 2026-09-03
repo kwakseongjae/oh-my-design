@@ -42,3 +42,5 @@ aphrodite/*/*
 !aphrodite/*/runs/
 aphrodite/*/runs/*
 !aphrodite/*/runs/*.txt
+!aphrodite/*/concept.md
+!aphrodite/*/storyboard.md

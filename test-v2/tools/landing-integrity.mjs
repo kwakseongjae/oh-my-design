@@ -126,6 +126,10 @@ const STRUCT = () => {
   }
   craft.displayFont = displayFont; craft.displayPx = Math.round(displayPx);
   craft.embeddedFonts = [...document.fonts].length;
+  // IL-5: 내용 이미지의 alt 구체성 — 빈 alt / 한 단어 / 'image' 류는 generic 으로 센다(장식 레이어는 role=presentation 으로 제외)
+  const contentImgs = [...document.images].filter((i) => i.getAttribute("role") !== "presentation" && i.getBoundingClientRect().width >= 80);
+  craft.imgTotal = contentImgs.length;
+  craft.imgGenericAlt = contentImgs.filter((i) => { const a = (i.getAttribute("alt") || "").trim(); return !a || a.split(/\s+/).length < 3 || /^(image|photo|picture|img|hero|banner)\b/i.test(a); }).length;
   // ::selection / :focus-visible / 그레인 필터는 계산된 스타일에 안 나온다 — 스타일시트 규칙 텍스트를 훑는다.
   let cssText = "";
   for (const sh of document.styleSheets) { try { for (const r of sh.cssRules) cssText += r.cssText + "\n"; } catch { /* cross-origin */ } }
@@ -218,6 +222,8 @@ function judge(m, reveals) {
   push("LI-31", (c.mediaTotal || 0) >= 2 && (c.mediaFilters || 0) === 0 ? "FAIL" : "PASS",
     `미디어 색보정: ${c.mediaFilters || 0}/${c.mediaTotal || 0} 에 filter 적용 — LC-43`);
 
+  push("LI-32", (c.imgTotal || 0) && (c.imgGenericAlt || 0) > 0 ? "FAIL" : "PASS",
+    `alt 구체성: generic/빈 alt ${c.imgGenericAlt || 0}/${c.imgTotal || 0} — IL-5`);
   push("LI-26", (m.density?.perVh ?? 0) < 1 ? "FAIL" : "PASS",
     `미디어 ${m.density?.mediaCount ?? 0}개 / ${m.pageVh} vh = ${m.density?.perVh ?? 0}개/vh (최소 1.0), video ${m.density?.videos ?? 0}`);
   return R;

@@ -5,29 +5,203 @@
   "output_format": "png",
   "styleSuffix": "STYLE (repeat verbatim across the set): editorial still-life photograph in one paper-white studio; north-window softbox from camera-left, a low warm rim light from behind-right; palette locked to paper #F4F1EA, ink #1C1B19, clay #B8865B, smoke #6F6A63, brass #C9A24A; matte bisque ceramic, smoked glass, worn brass, raw linen, grey stone; 85mm lens, f/4, shallow but honest depth; subtle 35mm film grain, slightly lifted blacks, no vignette baked in; off-center framing with generous negative space; imperfect surfaces, fingerprints and dust allowed. Absolutely no text, no logos, no people, no faces, no hands, no plastic or waxy sheen, no perfect symmetry, no oversaturation, no fake bokeh.",
   "items": [
-    { "id": "hero-01", "role": "hero", "size": "2048x1152", "prompt": "Wide studio table in paper-white light. A single matte bisque ceramic incense vessel, tall and slightly tapered, stands off-center right with a thin thread of smoke rising and bending in still air; a worn brass lid rests beside it. Background falls to soft smoke-grey. Ample empty space on the left third for a headline." },
-    { "id": "strip-01", "role": "filmstrip", "size": "1536x1024", "prompt": "Close three-quarter view of the tall bisque vessel on grey stone, morning light raking across its surface showing throwing lines." },
-    { "id": "strip-02", "role": "filmstrip", "size": "1536x1024", "prompt": "A worn brass burner plate with a small cone of ash, seen from above at a slight angle, on raw linen." },
-    { "id": "strip-03", "role": "filmstrip", "size": "1536x1024", "prompt": "Smoked glass dome resting beside a low wide ceramic bowl, both catching one soft highlight." },
-    { "id": "strip-04", "role": "filmstrip", "size": "1536x1024", "prompt": "Thread of smoke crossing a shaft of window light, the vessel out of focus behind it." },
-    { "id": "strip-05", "role": "filmstrip", "size": "1536x1024", "prompt": "Three unglazed ceramic test tiles in cream, clay and smoke tones laid in a loose row on stone." },
-    { "id": "strip-06", "role": "filmstrip", "size": "1536x1024", "prompt": "Folded raw linen pouch with a brass toggle, one corner lifted, on the paper-white table edge." },
-    { "id": "macro-01", "role": "macro", "size": "1024x1024", "prompt": "Macro of matte bisque ceramic surface, fine grain and a single hairline throwing ridge, light grazing from the left." },
-    { "id": "macro-02", "role": "macro", "size": "1024x1024", "prompt": "Macro of worn brass, soft scratches and warm patina, one bright edge highlight." },
-    { "id": "macro-03", "role": "macro", "size": "1024x1024", "prompt": "Macro of raw linen weave with a loose thread, cream on cream." },
-    { "id": "product-01", "role": "product", "size": "1024x1536", "prompt": "Tall tapered bisque ceramic incense vessel, centered low in a vertical frame, on grey stone, plenty of air above." },
-    { "id": "product-02", "role": "product", "size": "1024x1536", "prompt": "Low wide ceramic bowl vessel with a smoked glass dome lid, vertical frame, on grey stone." },
-    { "id": "product-03", "role": "product", "size": "1024x1536", "prompt": "Small round ceramic vessel with a worn brass burner plate set into its top, vertical frame, on grey stone." },
-    { "id": "ritual-01", "role": "ritual", "size": "1536x1024", "prompt": "Step one of a quiet ritual: the brass lid lifted and set down beside the vessel, seen from table height." },
-    { "id": "ritual-02", "role": "ritual", "size": "1536x1024", "prompt": "Step two: a single cone of incense placed on the brass plate, close, no hands visible." },
-    { "id": "ritual-03", "role": "ritual", "size": "1536x1024", "prompt": "Step three: the first thin thread of smoke rising straight up in still air." },
-    { "id": "ritual-04", "role": "ritual", "size": "1536x1024", "prompt": "Step four: the smoked glass dome lowered over the vessel, smoke pooling and curling inside." },
-    { "id": "ritual-05", "role": "ritual", "size": "1536x1024", "prompt": "Step five: the dome lifted, a soft cloud drifting out across the table into window light." },
-    { "id": "wide-01", "role": "atmosphere", "size": "2048x1152", "prompt": "A quiet room corner: paper-white wall, one window's light, a low stone shelf with the three vessels spaced far apart, a faint haze of smoke in the air. Cinematic, empty, slow." },
-    { "id": "wide-02", "role": "atmosphere", "size": "2048x1152", "prompt": "Evening version of the same room corner: light warmer and lower, long soft shadows, one vessel lit, the others in dusk." },
-    { "id": "detail-01", "role": "detail", "size": "1024x1024", "prompt": "Kraft paper box, lid ajar, revealing raw linen wrapping around a ceramic vessel; unbranded, no printing." },
-    { "id": "detail-02", "role": "detail", "size": "1024x1024", "prompt": "Nine small incense cones arranged in a loose 3x3 on grey stone, one slightly out of line." },
-    { "id": "detail-03", "role": "detail", "size": "1024x1024", "prompt": "A brass toggle and linen cord close up, the cord knot imperfect, cream background." },
-    { "id": "og-01", "role": "og", "size": "2048x1072", "prompt": "The tall vessel and a thread of smoke, framed wide with the subject in the right third and empty paper-white space on the left." }
+    {
+      "id": "hero-01",
+      "role": "hero",
+      "size": "2048x1152",
+      "prompt": "Wide studio table in paper-white light. A single matte bisque ceramic incense vessel, tall and slightly tapered, stands off-center right with a thin thread of smoke rising and bending in still air; a worn brass lid rests beside it. Background falls to soft smoke-grey. Ample empty space on the left third for a headline."
+    },
+    {
+      "id": "strip-01",
+      "role": "filmstrip",
+      "size": "1536x1024",
+      "prompt": "Close three-quarter view of the tall bisque vessel on grey stone, morning light raking across its surface showing throwing lines."
+    },
+    {
+      "id": "strip-02",
+      "role": "filmstrip",
+      "size": "1536x1024",
+      "prompt": "A worn brass burner plate with a small cone of ash, seen from above at a slight angle, on raw linen."
+    },
+    {
+      "id": "strip-03",
+      "role": "filmstrip",
+      "size": "1536x1024",
+      "prompt": "Smoked glass dome resting beside a low wide ceramic bowl, both catching one soft highlight."
+    },
+    {
+      "id": "strip-04",
+      "role": "filmstrip",
+      "size": "1536x1024",
+      "prompt": "Thread of smoke crossing a shaft of window light, the vessel out of focus behind it."
+    },
+    {
+      "id": "strip-05",
+      "role": "filmstrip",
+      "size": "1536x1024",
+      "prompt": "Three unglazed ceramic test tiles in cream, clay and smoke tones laid in a loose row on stone."
+    },
+    {
+      "id": "strip-06",
+      "role": "filmstrip",
+      "size": "1536x1024",
+      "prompt": "Folded raw linen pouch with a brass toggle, one corner lifted, on the paper-white table edge."
+    },
+    {
+      "id": "macro-01",
+      "role": "macro",
+      "size": "1024x1024",
+      "prompt": "Macro of matte bisque ceramic surface, fine grain and a single hairline throwing ridge, light grazing from the left."
+    },
+    {
+      "id": "macro-02",
+      "role": "macro",
+      "size": "1024x1024",
+      "prompt": "Macro of worn brass, soft scratches and warm patina, one bright edge highlight."
+    },
+    {
+      "id": "macro-03",
+      "role": "macro",
+      "size": "1024x1024",
+      "prompt": "Macro of raw linen weave with a loose thread, cream on cream."
+    },
+    {
+      "id": "product-01",
+      "role": "product",
+      "size": "1024x1536",
+      "prompt": "Tall tapered bisque ceramic incense vessel, centered low in a vertical frame, on grey stone, plenty of air above."
+    },
+    {
+      "id": "product-02",
+      "role": "product",
+      "size": "1024x1536",
+      "prompt": "Low wide ceramic bowl vessel with a smoked glass dome lid, vertical frame, on grey stone."
+    },
+    {
+      "id": "product-03",
+      "role": "product",
+      "size": "1024x1536",
+      "prompt": "Small round ceramic vessel with a worn brass burner plate set into its top, vertical frame, on grey stone."
+    },
+    {
+      "id": "ritual-01",
+      "role": "ritual",
+      "size": "1536x1024",
+      "prompt": "Step one of a quiet ritual: the brass lid lifted and set down beside the vessel, seen from table height."
+    },
+    {
+      "id": "ritual-02",
+      "role": "ritual",
+      "size": "1536x1024",
+      "prompt": "Step two: a single cone of incense placed on the brass plate, close, no hands visible."
+    },
+    {
+      "id": "ritual-03",
+      "role": "ritual",
+      "size": "1536x1024",
+      "prompt": "Step three: the first thin thread of smoke rising straight up in still air."
+    },
+    {
+      "id": "ritual-04",
+      "role": "ritual",
+      "size": "1536x1024",
+      "prompt": "Step four: the smoked glass dome lowered over the vessel, smoke pooling and curling inside."
+    },
+    {
+      "id": "ritual-05",
+      "role": "ritual",
+      "size": "1536x1024",
+      "prompt": "Step five: the dome lifted, a soft cloud drifting out across the table into window light."
+    },
+    {
+      "id": "wide-01",
+      "role": "atmosphere",
+      "size": "2048x1152",
+      "prompt": "A quiet room corner: paper-white wall, one window's light, a low stone shelf with the three vessels spaced far apart, a faint haze of smoke in the air. Cinematic, empty, slow."
+    },
+    {
+      "id": "wide-02",
+      "role": "atmosphere",
+      "size": "2048x1152",
+      "prompt": "Evening version of the same room corner: light warmer and lower, long soft shadows, one vessel lit, the others in dusk."
+    },
+    {
+      "id": "detail-01",
+      "role": "detail",
+      "size": "1024x1024",
+      "prompt": "Kraft paper box, lid ajar, revealing raw linen wrapping around a ceramic vessel; unbranded, no printing."
+    },
+    {
+      "id": "detail-02",
+      "role": "detail",
+      "size": "1024x1024",
+      "prompt": "Nine small incense cones arranged in a loose 3x3 on grey stone, one slightly out of line."
+    },
+    {
+      "id": "detail-03",
+      "role": "detail",
+      "size": "1024x1024",
+      "prompt": "A brass toggle and linen cord close up, the cord knot imperfect, cream background."
+    },
+    {
+      "id": "og-01",
+      "role": "og",
+      "size": "2048x1072",
+      "prompt": "The tall vessel and a thread of smoke, framed wide with the subject in the right third and empty paper-white space on the left."
+    },
+    {
+      "id": "gallery-01",
+      "role": "gallery",
+      "size": "1024x1536",
+      "prompt": "Tall vessel alone on a stone shelf, vertical, seen slightly from below."
+    },
+    {
+      "id": "gallery-02",
+      "role": "gallery",
+      "size": "1536x1024",
+      "prompt": "Two vessels far apart on the long table, landscape, a lot of paper-white between them."
+    },
+    {
+      "id": "gallery-03",
+      "role": "gallery",
+      "size": "1024x1024",
+      "prompt": "Brass lid upside down holding a little ash, square, top-down."
+    },
+    {
+      "id": "gallery-04",
+      "role": "gallery",
+      "size": "1024x1536",
+      "prompt": "Smoke rising past the edge of a linen curtain, vertical."
+    },
+    {
+      "id": "gallery-05",
+      "role": "gallery",
+      "size": "1536x1024",
+      "prompt": "The low bowl vessel with its dome beside it, landscape, morning light."
+    },
+    {
+      "id": "gallery-06",
+      "role": "gallery",
+      "size": "1024x1024",
+      "prompt": "A single unlit cone on grey stone, square, hard shadow."
+    },
+    {
+      "id": "gallery-07",
+      "role": "gallery",
+      "size": "1536x1024",
+      "prompt": "Row of nine cones on linen, landscape, one missing."
+    },
+    {
+      "id": "gallery-08",
+      "role": "gallery",
+      "size": "1024x1536",
+      "prompt": "Vessel in the window's light at dusk, vertical, half in shadow."
+    },
+    {
+      "id": "gallery-09",
+      "role": "gallery",
+      "size": "1024x1024",
+      "prompt": "Fingerprint on a bisque surface, square, extreme close."
+    }
   ]
 }
