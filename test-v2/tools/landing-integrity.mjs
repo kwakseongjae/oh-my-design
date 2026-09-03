@@ -86,7 +86,27 @@ const STRUCT = () => {
   const hosts = {}; for (const img of document.querySelectorAll("img")) { const s = img.currentSrc || img.src || ""; if (!s || s.startsWith("data:")) continue; try { const u = new URL(s, location.href); hosts[u.protocol === "file:" ? "(local)" : u.hostname] = (hosts[u.hostname] || 0) + 1; } catch { /* 무시 */ } }
   let lineWidths = []; { const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); let n2; while ((n2 = w.nextNode())) { const t = n2.nodeValue && n2.nodeValue.trim(); if (!t || t.length < 60) continue; const p = n2.parentElement; if (!p || !vis(p)) continue; const fs = parseFloat(getComputedStyle(p).fontSize) || 0; if (fs > 26) continue; const rg = document.createRange(); rg.selectNodeContents(n2); for (const r of rg.getClientRects()) if (r.width > 40) lineWidths.push(Math.round(r.width)); } lineWidths.sort((a, b) => a - b); }
   const rootSnap = getComputedStyle(document.documentElement).scrollSnapType, bodySnap = getComputedStyle(document.body).scrollSnapType;
-  return { docHeightPx: docH, pageVh: +(docH / vh).toFixed(2), sections, fold: { biggestText, biggestMedia }, motion: { declarations: decl, topDurationsMs: top(durations), topEasings: top(easings, 8), propMax }, videos, prefersReducedMotionRule: prefersReduced, fontHistogram: top(allFonts, 12), reflexes: { cardGridGroups4, nestedCards, imageHosts: Object.entries(hosts), bodyLineP50: lineWidths[Math.floor(lineWidths.length / 2)] ?? null, h1Count: document.querySelectorAll("h1").length }, scrollSnap: { root: rootSnap, body: bodySnap } };
+  // 밀도 계측(2026-09-03): 비율 규칙(asset:text, empty ratio)은 **적게 담아도 만족된다** — 절대 바닥이 필요하다.
+  const mediaEls = [...document.querySelectorAll("img, video, svg, canvas, picture")].filter((e) => {
+    const r = e.getBoundingClientRect(); return vis(e) && r.width >= 24 && r.height >= 24;
+  });
+  const foldMedia = mediaEls.filter((e) => { const r = e.getBoundingClientRect(); return r.top + scrollY < vh && r.bottom + scrollY > 0; }).length;
+  // 화면(뷰포트 높이) 단위 잉크 비율 — 섹션 평균은 빈 화면을 감춘다. 스크롤하는 사람은 화면 단위로 겪는다.
+  const slices = Math.max(1, Math.ceil(docH / vh));
+  const ink = new Array(slices).fill(0);
+  const paint = (top, bottom, a) => { if (!(bottom > top) || !(a > 0)) return; for (let i = 0; i < slices; i++) { const s0 = i * vh, ov = Math.max(0, Math.min(bottom, s0 + vh) - Math.max(top, s0)); if (ov > 0) ink[i] += a * (ov / (bottom - top)); } };
+  for (const el of document.querySelectorAll("body *")) {
+    if (!vis(el)) continue;
+    const r = el.getBoundingClientRect(); if (r.width < 8 || r.height < 8) continue;
+    const isMedia = /^(IMG|VIDEO|SVG|CANVAS|PICTURE)$/.test(el.tagName);
+    const leafText = !el.children.length && el.textContent.trim().length > 0;
+    const cs = getComputedStyle(el);
+    const ownBg = cs.backgroundImage !== "none";
+    if (isMedia || ownBg || leafText) paint(r.top + scrollY, r.bottom + scrollY, r.width * r.height);
+  }
+  const sliceInk = ink.map((a) => +Math.min(1, a / (vw * vh)).toFixed(3));
+  const density = { mediaCount: mediaEls.length, foldMedia, perVh: +(mediaEls.length / Math.max(docH / vh, 1)).toFixed(2), videos: document.querySelectorAll("video").length, sliceInk };
+  return { docHeightPx: docH, pageVh: +(docH / vh).toFixed(2), sections, density, fold: { biggestText, biggestMedia }, motion: { declarations: decl, topDurationsMs: top(durations), topEasings: top(easings, 8), propMax }, videos, prefersReducedMotionRule: prefersReduced, fontHistogram: top(allFonts, 12), reflexes: { cardGridGroups4, nestedCards, imageHosts: Object.entries(hosts), bodyLineP50: lineWidths[Math.floor(lineWidths.length / 2)] ?? null, h1Count: document.querySelectorAll("h1").length }, scrollSnap: { root: rootSnap, body: bodySnap } };
 };
 
 // ---------------------------------------------------------------- 판정
@@ -143,6 +163,20 @@ function judge(m, reveals) {
   push("LI-21", m.reflexes.cardGridGroups4 >= 2 ? "FAIL" : "PASS", `uniform card groups(≥4) ${m.reflexes.cardGridGroups4}`);
   push("LI-22", m.reflexes.nestedCards > 9 ? "FAIL" : "PASS", `nested cards ${m.reflexes.nestedCards}`);
   push("LI-23", m.reflexes.h1Count !== 1 ? "FAIL" : "PASS", `h1 count ${m.reflexes.h1Count}`);
+
+  // ── 밀도 절대 바닥 (2026-09-03). 코덱스의 LC-4/LC-15/LC-33 은 비율·범위로 쓰여 있어 **비어 있어도 통과한다** —
+  // 실측: landing/stripe 가 LC-8(12.05vh)·LC-9(1.55vh)를 다 지키면서 13화면 중 6화면이 잉크 10% 미만이었다.
+  // 기준선은 코덱스 실측 사이트에서 가져온다: affinity 폴드 미디어 8개(LC-33), 스크롤러 하나에 에셋 14개(LC-15),
+  // 본문 섹션 공백 비율 중앙 0.46–0.74(LC-4) = 잉크 26–54%.
+  const si = m.density?.sliceInk ?? [];
+  const body = si.slice(1); // 폴드는 LI-3 가 따로 본다
+  const thin = body.map((v, i) => [i + 1, v]).filter(([, v]) => v < 0.12);
+  push("LI-24", thin.length ? "FAIL" : "PASS",
+    `잉크 12% 미만 화면 ${thin.length}/${body.length}${thin.length ? " — " + thin.slice(0, 5).map(([i, v]) => `#${i} ${(100 * v).toFixed(0)}%`).join(", ") : ""} (LC-4 실측대역 26–54%)`);
+  push("LI-25", (m.density?.foldMedia ?? 0) < 3 ? "FAIL" : "PASS",
+    `폴드 미디어 ${m.density?.foldMedia ?? 0}개 (LC-33 affinity 8개, 최소 3)`);
+  push("LI-26", (m.density?.perVh ?? 0) < 1 ? "FAIL" : "PASS",
+    `미디어 ${m.density?.mediaCount ?? 0}개 / ${m.pageVh} vh = ${m.density?.perVh ?? 0}개/vh (최소 1.0), video ${m.density?.videos ?? 0}`);
   return R;
 }
 
