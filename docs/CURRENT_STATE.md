@@ -3,6 +3,7 @@
 > 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
 > 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
 
+- 갱신: 2026-09-04 · **Higgsgen r1 채점 대기(00:55)** — p1 50장($4.22)+p2 11장($0.91) = 61장 전량 assets/. 검사: render PASS · text-contrast PASS(no-JS 0) · landing-integrity FAIL 0·WARN 0(14.58vh, 10섹션). 육안: 폴드(침수 지하도+Syne+라임+세계 띠), 마키 월(장르 혼합·톤 통일), 프리셋 틸트, 마스크 리빌(용접 비드), S3 핀 시퀀스(도자 공방 8프레임+모노 타이핑), S4 밝은 밴드 슬라이더 4쌍 — 확인. 관찰: S4 좌하단 여백 큼(r2 후보). designer-review(opus) 진행 중, 쇼케이스 solo/compare 렌더 중. **사용자 채점 r1 대기** → FEEDBACK.md. 누적 비용 $8.05 확정.
 - 갱신: 2026-09-03 · **일시 중단(19:50, 사용자 요청 — 재개 요청 시 진행)** — 진행 중이던 p1 배치(50장)는 이미 제출돼 취소하면 낭비라 **회수 프로세스만 유지**(`image-batch.mjs run`, 끝나면 `batch-p1/images/` 에 저장, 로그 `batch-p1.log`). **p2(참조 11장) 자동 제출 체인과 검사 체인은 중지** — 새 지출·새 작업 없음. 골격 `render.html`(빌더 산출, LI 32/32·대비 PASS)은 커밋됨(`13c25704`).
   - **재개 절차**: ① `grep FETCH_DONE $A/batch-p1.log` 확인 → `cp batch-p1/images/*.png assets/` ② `node test-v2/tools/image-batch.mjs run --spec $A/set.p2.json --out $A/batch-p2`(≈$0.9, seq 7 + before/after 4) → `cp batch-p2/images/*.png assets/` ③ `zsh $A/runs/after-assets.zsh` 대신 검사 3종 직접 실행 → 스크린샷 육안 확인 → designer-review → `omd showcase` → 사용자 채점(FEEDBACK.md r1). ($A = test-v2/content-runs/aphrodite/higgsgen)
   - 비용: Ninefold $2.92 확정 · higgsgen p1 ≈$4.2(회수 후 원장 확정) · p2 ≈$0.9(미제출).
