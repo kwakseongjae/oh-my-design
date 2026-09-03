@@ -102,7 +102,7 @@ main{display:block}
 .brand{font-family:'Syne',sans-serif;font-weight:800;font-size:19px;letter-spacing:-.02em}
 .brand b{color:var(--accent);font-weight:800}
 .nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;margin-left:auto}
-.nav a{font-size:13px;color:var(--mute);text-decoration:none;transition:color var(--now) var(--ui)}
+.nav a{font-size:13px;color:var(--mute);text-decoration:none;transition:color var(--now) var(--ui);display:inline-flex;align-items:center;min-height:44px;padding:0 10px;margin:0 -10px}
 .nav a:hover{color:var(--ink)}
 
 /* ── 버튼 ─────────────────────────────────────────────────── */
@@ -328,6 +328,8 @@ __CAP_KEYFRAMES__
 }
 @media (max-width:760px){
   :root{--gutter:20px}
+  .mq + .mq{display:none}
+  .hero-img img,.hero-img{object-position:68% 50%}
   .nav-in{gap:12px}
   .nav ul{gap:12px}
   .nav a{font-size:12px}
