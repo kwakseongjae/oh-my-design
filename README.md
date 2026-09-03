@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>A design system your coding agent can actually hold.</strong> <code>oh-my-design-cli</code> installs the middle that AI UI work keeps missing: a philosophy you declare, tokens and component contracts derived from it, numbered gates for the failures AI repeats, and <code>omd book</code> to read your own system back. 27 skills, 20 specialist roles, 93 preset contracts, 440+ quality-graded references. No API key or MCP server for the core workflows.
+  <strong>A design system your coding agent can actually hold.</strong> <code>oh-my-design-cli</code> installs the middle that AI UI work keeps missing: a philosophy you declare, tokens and component contracts derived from it, numbered gates for the failures AI repeats, and <code>omd book</code> to read your own system back. 28 skills, 20 specialist roles, 93 preset contracts, 440+ quality-graded references. No API key or MCP server for the core workflows.
 </p>
 
 <p align="center">
@@ -275,7 +275,7 @@ Don't want Toss? Any brand works — `Stripe-style`, `Linear-clone B2B SaaS`, `K
 | **Claude Code** | `--agent claude-code` (default) | Full bundle — skills, 20 sub-agents, hooks, data under `.claude/` |
 | **Codex** | `--agent codex` | Skills at `.agents/skills/`, embedded sub-agent roles under `.codex/agents/`, and the local catalog under `.codex/data/` |
 | **OpenCode** | `--agent opencode` | Project: skills, native sub-agents, and catalog under `.opencode/{skills,agents,data}/`; global: the same bundle under `~/.config/opencode/{skills,agents,data}/` |
-| **Cursor** | `--agent cursor` | 26 compatible Agent Skills under `.cursor/skills/`, a small `.cursor/rules/omd-design.mdc` bootstrap, and the shared `.claude/data` catalog; no OmD sub-agent definitions or hooks |
+| **Cursor** | `--agent cursor` | 27 compatible Agent Skills under `.cursor/skills/`, a small `.cursor/rules/omd-design.mdc` bootstrap, and the shared `.claude/data` catalog; no OmD sub-agent definitions or hooks |
 
 The default install targets every detected agent. For one non-interactive channel, run `npx oh-my-design-cli@latest install-skills --agent <name> --all`.
 
@@ -287,7 +287,7 @@ For older Cursor clients, `--cursor-rule-only` installs the historical rule + ca
 
 ## What's inside
 
-**27 skills · 20 sub-agents · 440+ quality-graded references · activation hooks** make up the full bundle. Cursor receives the 26 portable skills; `claude-design`, OmD sub-agent definitions, and activation hooks remain channel-specific.
+**28 skills · 20 sub-agents · 440+ quality-graded references · activation hooks** make up the full bundle. Cursor receives the 26 portable skills; `claude-design`, OmD sub-agent definitions, and activation hooks remain channel-specific.
 
 - **Skills** — core flow (`omd:autopilot` / `omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:update` / `omd:issue` — file feedback straight to GitHub / `omd:remember` / `omd:learn` / `omd:taste` — say "what are my preferences" to see everything the loop has learned, pending, or snoozed), live capture + assets (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), the landing and media track (`omd:setup` — record which image/video channels this machine actually has / `omd:landing` — scroll-native one-page landing / `omd:media` — brand-consistent asset sets / `omd:showcase` — scroll demo video), the writing and review layer (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:humanize` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), interface quality (`omd:feel` / `omd:slop-audit`), plus the standalone `claude-design` skill that drives claude.ai/design from your terminal.
 - **Sub-agents** — `omd-master` + 19 specialists (UX research, UI generation, asset curation, copy humanization, slop auditing, a11y audit, persona testing, critique, …).

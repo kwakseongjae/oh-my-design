@@ -1,0 +1,138 @@
+---
+name: omd:aphrodite
+description: "Maximum-craft one-page landing — the wow bar. omd:landing 의 구조 위에 마감(서체 조달·그레인·깊이·색보정·스크롤 타임라인)과 최고급 에셋을 얹고, 랜딩 검사 전 항목 통과를 합격선으로 삼는다. Trigger: '와우', '압도적인', '최고급', '쇼케이스용', 'aphrodite', '데모용 랜딩', '이거 자랑할 거야'."
+argument-hint: "<브랜드 또는 가상 브랜드 + 톤/업종 + 목적>"
+user-invocable: true
+---
+<!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->
+
+
+# omd:aphrodite — 와우 합격선
+
+**이 스킬은 `omd:landing` 의 대체가 아니라 그 위의 합격선이다.** 구조(섹션 리듬·에셋 배치·밀도)는
+`omd:landing` 과 같은 절차를 그대로 쓴다. 다른 것은 **통과 조건**과 **마감·에셋의 등급**이다.
+일상 랜딩은 `omd:landing`, 자랑할 한 장은 이 스킬이다.
+
+## 왜 있나
+
+밀도만 채운 페이지는 여전히 밋밋했다. 2026-09-03 계측에서 우리 최고 산출물은
+디스플레이 서체가 OS 기본이었고 그림자·글래스·마스크·블렌드·3D·클립패스·그레인이 **전부 0**이었다
+(`docs/reviews/landing-craft-gap-2026-09-03.md`). 코덱스 LC-1~36 은 **무엇을 어디에 놓는가**만 규정했고
+마감 층이 없었다. 그 층이 LC-37~47 이고, 이 스킬은 그것을 강제한다.
+
+## 합격선 (하나라도 미달이면 미완성 — 스스로 통과 선언 금지)
+
+| 검사 | 조건 |
+|---|---|
+| `omd check landing` | **LI-1~31 전 항목 ok**. 특히 LI-24 화면 잉크 · LI-25 폴드 미디어 · LI-26 미디어 밀도 · LI-27 디스플레이 서체 · LI-28 깊이 · LI-29 메시/그레인 · LI-30 브라우저 기본값 · LI-31 미디어 색보정 |
+| `omd check contrast` | FAIL 0 · no-JS 숨김 0 |
+| `omd check render` | 1440×900 · 390×844 양쪽 PASS |
+| `omd-designer-review` | BLOCK 0 |
+
+검사를 못 돌리는 상황(브라우저 없음 등)은 **통과가 아니라 실패**다. 그 사실을 `trace.md` 에 적는다.
+
+## 0. 채널 확인 (건너뛰지 않는다)
+
+`node scripts/omd-setup-detect.mjs` (설치본: `omd setup detect`) 로 지금 쓸 수 있는 이미지·영상 채널을 확인하고
+`trace.md` 첫 줄에 적는다. 채널이 바뀌면 결과의 등급이 바뀐다 — 나중에 왜 이 품질이 나왔는지 설명하려면 기록이 필요하다.
+
+- **영상 채널이 없으면 생성 영상을 포기하되 모션은 포기하지 않는다.** CSS/SVG 로 만든 움직임
+  (마스크 리빌, 스크롤 연동 변형, SVG 경로 애니메이션, 그레인 셰이더 흉내)이 대안이며,
+  수상작 상당수가 실제로 이 방식이다. 「영상 없음」을 `trace.md` 에 사유와 함께 남긴다.
+- 잔액 소진(402)·키 없음은 **조용히 건너뛰지 말고** 사용자에게 알린다.
+
+## 1. 서체 조달 (LC-47 — 이 단계를 빼면 합격선 못 넘는다)
+
+```
+node test-v2/tools/font-inline.mjs --list                        # 검증된 가변 폰트
+node test-v2/tools/font-inline.mjs --family fraunces --out /tmp/display.css
+```
+
+- 디스플레이 1종 + 본문 1종. 같은 종을 옵티컬 사이즈 축으로 나눠 써도 된다.
+- 산출된 `@font-face` 블록을 HTML `<style>` 안에 그대로 넣는다. **렌더 시 외부 요청 0건**이 되어야 한다.
+- 큰 글자에는 `font-variation-settings` 의 `opsz` 를 크게, 본문에는 작게 준다 — 이 축이 "제대로 짠 조판"의 신호다.
+- 라이선스(OFL 계열, 임베딩 허용)를 확인하고 `trace.md` 에 적는다.
+- **금지**: `-apple-system`·`system-ui`·`Helvetica`·`Arial` 로 디스플레이 헤딩을 쓰는 것.
+
+## 2. 컨셉과 스토리보드
+
+`omd:landing` §1~2 를 그대로 따르되, 스토리보드에 **개수와 마감을 숫자로** 적는다.
+
+- 밀도 예산(미디어 ≥ 페이지 vh × 1.0 · 폴드 ≥ 3 · 스크롤러 항목 ≥ 8 · 모션 ≥ 1 · 섹션 잉크 ≥ 26%)
+- 섹션마다 쓸 마감 기법을 LC 번호로 지정 — 어느 섹션에 그레인(LC-38), 어디에 글래스(LC-39),
+  어디에 비네트(LC-45), 스크롤 타임라인은 어느 리빌에(LC-40), 스프링 이징은 **한 순간에만**(LC-41).
+- **압도 지점 1개**와 그 직전의 호흡 섹션. 피크는 개수가 아니라 규모다(LC-33).
+
+## 3. 에셋 — 최고급 프롬프트 규격
+
+`omd:media` 를 쓰되 이 스킬에서는 아래를 **필수**로 지킨다.
+
+**프롬프트 순서**: 배경·장면 → 피사체 → 핵심 디테일 → 제약 → 용도.
+`8k`, `ultra detailed`, `masterpiece` 류는 쓰지 않는다 — 약한 컨셉을 보정하지 못하고,
+구도·조명이 비면 모델이 AI 기본값(과한 대칭·플라스틱 질감·가짜 보케)으로 채운다.
+
+**조명·렌즈를 말로 지정한다**: 소프트박스/림라이트/렘브란트/골든아워 백라이트 같은 세팅 이름과
+85mm·50mm·35mm·24mm 의 성격을 프롬프트에 넣는다. 이것이 "스튜디오에서 찍은 것 같다"와 "AI 그림"을 가른다.
+
+**일관성은 스타일 접미사로만 잡는다.** 우리 이미지 채널(grok `image_gen`, Codex `$imagegen`)에는
+**시드 파라미터가 없다**(조사로 확인). 그래서 한 세트의 모든 프롬프트 끝에 **토씨 하나 바꾸지 않은**
+공통 블록을 붙인다 — 브랜드 팔레트 hex + 조명 성격 + 재질 어휘 + 그레인/필름 표현.
+Recraft 키가 있으면 참조 1~10장으로 `style_id` 를 만들어 쓰는 쪽이 더 강하다.
+
+**회피 문구를 넣는다**: plastic/waxy texture, perfect symmetry, generic AI aesthetic, oversaturated,
+fake bokeh. 긍정 지시로 바꿔 적는 편이 더 잘 듣는다 — film grain, off-center framing, imperfect surface.
+
+**비율은 슬롯에서 가져온다**(`omd:media` §1). 기본값 16:9 로 뽑아 놓고 잘라 넣지 않는다.
+
+**영상(채널이 있을 때)**: 클립당 카메라 이동 **1개만**, 피사체 움직임은 최소.
+시작·끝 프레임이 거의 같아야 루프 이음새가 안 보인다. 6초 무음 `loop` `muted` `playsinline`,
+`prefers-reduced-motion` 에서는 같은 프레임의 정지 이미지로 대체하고 `poster` 를 채운다.
+
+## 4. 마감 구현 (LC-37~46 레시피)
+
+인라인만 쓴다. 외부 라이브러리·네트워크 요청 금지.
+
+- **그레인(LC-38)**: 인라인 SVG `feTurbulence`(fractalNoise) 를 data URI 배경으로,
+  `opacity: .05~.15` + `mix-blend-mode: overlay`. 넓은 단색·그래디언트 면마다 얹는다.
+- **메시(LC-46)**: 반투명 `radial-gradient` **3겹 이상** 레이어링. 2-스톱 단일 `linear-gradient` 배경 금지.
+- **글래스(LC-39)**: 베이스 블러 + 밝은 엣지 블러 2겹, 둥근 모서리는 SVG 마스크. 단일 `blur()`+`border-radius` 금지.
+- **비네트(LC-45)**: 풀블리드 미디어에 `radial-gradient(ellipse, transparent 50%, rgba(0,0,0,.7) 100%)` 수준.
+- **색보정(LC-43)**: 모든 `img`·`video` 에 **같은** `filter: contrast() saturate()` 프리셋을 공통 클래스로.
+- **조판(LC-37)**: 헤딩 `text-wrap: balance`, 본문 `text-wrap: pretty`. 끝줄 한 단어 금지.
+- **브라우저 기본값 제거(LC-42)**: `::selection`, `:focus-visible`, 스크롤바 썸을 브랜드 액센트로.
+- **스크롤 연동(LC-40)**: `animation-timeline`/`view-timeline` 우선, 미지원 시 opacity 리빌 폴백.
+- **이징(LC-41)**: 페이지 지배 duration 하나 유지. `linear()` 스프링은 히어로 정착이나 CTA 도착 한 곳만.
+- **커서(LC-44)**: 미디어 표면에만, `@media (hover: hover)` 로 터치 기기 비활성, 상태 최대 3개.
+
+## 5. 검증
+
+```
+node test-v2/tools/render-integrity.mjs <render.html>
+node test-v2/tools/text-contrast.mjs   <render.html>
+node test-v2/tools/landing-integrity.mjs <render.html>
+```
+
+전부 통과할 때까지 고친다(최대 3회). 미달 항목은 **기준을 낮추지 말고 산출을 고친다.**
+3회에도 못 넘으면 마지막 출력과 시도한 것을 `trace.md` 에 남기고 그 상태로 제출한다 — 통과한 척하지 않는다.
+그다음 `omd-designer-review` 서브에이전트를 스폰해 BLOCK 0 을 확인한다(입력: render.html 절대경로 + DESIGN.md 경로).
+
+## 6. 쇼케이스 영상 (만들 때만)
+
+`omd:showcase` 를 쓰되 홍보 영상 문법을 지킨다(2026-09-03 조사).
+
+- **정지 화면으로 시작하지 않는다.** 첫 프레임부터 이미 움직이고 있어야 한다.
+- 컷 전환보다 **카메라 이동으로 시간을 건너뛴다**(줌·패닝).
+- **중반에 전환점**을 둔다 — 문제/평범 → 전환 → 마무리의 3막.
+- 조회 대부분이 **무음**이다. 자막은 장식이 아니라 필수이고, 화면 변화와 동기화한다.
+- 나란히 비교(2열·3열)를 쓸 때는 **지금 볼 열을 하이라이트·디밍으로 강제**한다.
+  3열 비교의 실증 사례는 확인되지 않았다 — 쓰려면 이 조건을 반드시 건다.
+
+## 하드 룰
+
+- DESIGN.md 에 없는 브랜드 사실을 발명하지 않는다. **가상 브랜드**면 그 사실을 페이지 하단에
+  `Unofficial generated concept` 류로 명시하고, 실존 브랜드를 흉내 내지 않는다.
+- 실존 인물 얼굴 생성 금지, 실존 로고 원본 사용 금지(텍스트 워드마크로 대체).
+- 가상 통계 수치 금지. 수치가 필요하면 정성 카피로 바꾼다.
+- 스톡 사진·이모지 금지. 채널이 없으면 프롬프트 팩과 수동 큐를 남기고 자리에는 브랜드 팔레트의 추상 SVG.
+- 검사를 건너뛰거나 문턱을 낮춰 통과시키지 않는다.
+- 산출물은 지정된 런 디렉터리 밖에 쓰지 않는다.
