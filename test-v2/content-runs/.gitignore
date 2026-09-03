@@ -55,3 +55,4 @@ aphrodite/*/reviews/*
 !aphrodite/COSTS.md
 !aphrodite/*/SCORE.md
 !aphrodite/*/FEEDBACK.md
+!aphrodite/*/set.*.json

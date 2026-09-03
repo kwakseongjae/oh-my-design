@@ -1,0 +1,154 @@
+{
+  "set": "higgsgen-v1-p2",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "output_format": "png",
+  "styleSuffix": "CURATION (verbatim on every item): photographed, not rendered — the frame must read as a real capture. Off-center, asymmetric framing; one clear light direction with honest falloff; true blacks that are slightly lifted, never crushed; restrained saturation, colour held near the neutral axis except one accent; visible material truth — grain, dust, fingerprints, wear, chipped edges, uneven surfaces; fine 35mm film grain, heavier in the shadows, almost absent in the highlights; depth of field that comes from a real lens, not a pasted blur. Absolutely no text, no letters, no numerals, no signage, no watermarks, no logos or trademarks, no UI chrome, no faces, no plastic or waxy sheen, no perfect bilateral symmetry, no oversaturation, no HDR halo, no fake bokeh, no lens-flare stickers, no vignette baked in.",
+  "groupSuffix": {
+    "cine": "GENRE STYLE — CINEMATIC: anamorphic 40mm at f/2.8, single practical light source plus one soft bounce, atmosphere carrying the light (dust, haze, steam, rain), cool shadows against one warm source, wide frame with the subject small in it, deep field.",
+    "grid": "GENRE STYLE — RANGE TILE: one idea per frame, read clearly at 480px wide; strong figure-ground separation; the subject occupies the middle third; background simplified to two values.",
+    "seq": "GENRE STYLE — SEQUENCE FRAME: identical location, identical props, identical lens (35mm at f/4); only the stated camera position, hour and light change between frames; horizon and floor line held constant.",
+    "ba": "GENRE STYLE — PAIR: the two frames share subject, placement and framing exactly; only fidelity and finish differ.",
+    "mat": "GENRE STYLE — MACRO: 100mm macro at f/8, raking light across the surface from one side, the plane nearly filling the frame, focus falling off at the far edge, texture legible down to the fibre.",
+    "prod": "GENRE STYLE — PRODUCT: 90mm tilt-shift at f/5.6, large softbox from camera-left with a black flag on the right, one honest specular highlight, contact shadow grounded on the surface, seamless sweep with a visible seam.",
+    "arch": "GENRE STYLE — SPACE: 24mm shift lens, verticals held true, one directional daylight source and its cast geometry, human scale implied by furniture and door height, no people.",
+    "abs": "GENRE STYLE — ABSTRACT MATERIAL: studio light on a physical substance, not a digital effect; shot on a copy stand; the frame reads as a photograph of something real that happens to look abstract.",
+    "fig": "GENRE STYLE — FIGURE WITHOUT FACE: the person is turned away, cropped at the shoulders, or reduced to a silhouette; 85mm at f/2, natural window light, fabric and hair rendered strand by strand.",
+    "amb": "GENRE STYLE — AMBIENT: near-dark frame, one small warm source deep in the scene, most of the image in the low tones, wide and quiet, built to sit under text."
+  },
+  "note": "image-batch.mjs appends spec.styleSuffix only. Before planning, run the expand step in docs/research/higgsgen-imageset-2026-09-03.md §B.3 so each item's prompt becomes prompt + groupSuffix[group] + styleSuffix. Items with refs:true must be planned as a SEPARATE /v1/images/edits batch (one endpoint per batch).",
+  "items": [
+    {
+      "id": "seq-02",
+      "role": "sequence",
+      "group": "seq",
+      "size": "1536x1024",
+      "section": "S3 Control (sequence)",
+      "prompt": "A narrow ceramics workshop: a long birch bench along a white plastered wall, a single tall unglazed vessel standing at the bench's two-thirds mark, a wire cutter and a folded grey cloth beside it, a bare cord lamp above, a small square window on the left wall. The room, the props and their positions are fixed and identical in every frame. Same room. Camera moved 45 degrees left along the bench, same height, 09:00 light unchanged.",
+      "refs": [
+        "test-v2/content-runs/aphrodite/higgsgen/assets/seq-01.png"
+      ],
+      "note": "edits-batch: pass seq-01 as anchor reference"
+    },
+    {
+      "id": "seq-03",
+      "role": "sequence",
+      "group": "seq",
+      "size": "1536x1024",
+      "section": "S3 Control (sequence)",
+      "prompt": "A narrow ceramics workshop: a long birch bench along a white plastered wall, a single tall unglazed vessel standing at the bench's two-thirds mark, a wire cutter and a folded grey cloth beside it, a bare cord lamp above, a small square window on the left wall. The room, the props and their positions are fixed and identical in every frame. Same room. Camera moved 90 degrees, now looking down the bench end-on, 09:00 light unchanged.",
+      "refs": [
+        "test-v2/content-runs/aphrodite/higgsgen/assets/seq-01.png"
+      ],
+      "note": "edits-batch: pass seq-01 as anchor reference"
+    },
+    {
+      "id": "seq-04",
+      "role": "sequence",
+      "group": "seq",
+      "size": "1536x1024",
+      "section": "S3 Control (sequence)",
+      "prompt": "A narrow ceramics workshop: a long birch bench along a white plastered wall, a single tall unglazed vessel standing at the bench's two-thirds mark, a wire cutter and a folded grey cloth beside it, a bare cord lamp above, a small square window on the left wall. The room, the props and their positions are fixed and identical in every frame. Same room. Eye-level straight on as the anchor, but 13:00 — light is now high, short shadows, the window patch fallen to the floor.",
+      "refs": [
+        "test-v2/content-runs/aphrodite/higgsgen/assets/seq-01.png"
+      ],
+      "note": "edits-batch: pass seq-01 as anchor reference"
+    },
+    {
+      "id": "seq-05",
+      "role": "sequence",
+      "group": "seq",
+      "size": "1536x1024",
+      "section": "S3 Control (sequence)",
+      "prompt": "A narrow ceramics workshop: a long birch bench along a white plastered wall, a single tall unglazed vessel standing at the bench's two-thirds mark, a wire cutter and a folded grey cloth beside it, a bare cord lamp above, a small square window on the left wall. The room, the props and their positions are fixed and identical in every frame. Same room. Eye-level straight on, 17:00 — long warm light entering low, shadows stretched across the wall.",
+      "refs": [
+        "test-v2/content-runs/aphrodite/higgsgen/assets/seq-01.png"
+      ],
+      "note": "edits-batch: pass seq-01 as anchor reference"
+    },
+    {
+      "id": "seq-06",
+      "role": "sequence",
+      "group": "seq",
+      "size": "1536x1024",
+      "section": "S3 Control (sequence)",
+      "prompt": "A narrow ceramics workshop: a long birch bench along a white plastered wall, a single tall unglazed vessel standing at the bench's two-thirds mark, a wire cutter and a folded grey cloth beside it, a bare cord lamp above, a small square window on the left wall. The room, the props and their positions are fixed and identical in every frame. Same room. Eye-level straight on, after dark — only the cord lamp lit, the window black.",
+      "refs": [
+        "test-v2/content-runs/aphrodite/higgsgen/assets/seq-01.png"
+      ],
+      "note": "edits-batch: pass seq-01 as anchor reference"
+    },
+    {
+      "id": "seq-07",
+      "role": "sequence",
+      "group": "seq",
+      "size": "1536x1024",
+      "section": "S3 Control (sequence)",
+      "prompt": "A narrow ceramics workshop: a long birch bench along a white plastered wall, a single tall unglazed vessel standing at the bench's two-thirds mark, a wire cutter and a folded grey cloth beside it, a bare cord lamp above, a small square window on the left wall. The room, the props and their positions are fixed and identical in every frame. Same room, anchor angle, low camera at bench height so the vessel breaks the horizon line, 09:00 light.",
+      "refs": [
+        "test-v2/content-runs/aphrodite/higgsgen/assets/seq-01.png"
+      ],
+      "note": "edits-batch: pass seq-01 as anchor reference"
+    },
+    {
+      "id": "seq-08",
+      "role": "sequence",
+      "group": "seq",
+      "size": "1536x1024",
+      "section": "S3 Control (sequence)",
+      "prompt": "A narrow ceramics workshop: a long birch bench along a white plastered wall, a single tall unglazed vessel standing at the bench's two-thirds mark, a wire cutter and a folded grey cloth beside it, a bare cord lamp above, a small square window on the left wall. The room, the props and their positions are fixed and identical in every frame. Same room, anchor angle, camera raised to look down at 30 degrees onto the bench, 09:00 light.",
+      "refs": [
+        "test-v2/content-runs/aphrodite/higgsgen/assets/seq-01.png"
+      ],
+      "note": "edits-batch: pass seq-01 as anchor reference"
+    },
+    {
+      "id": "ba-01-b",
+      "role": "after",
+      "group": "ba",
+      "size": "1536x1024",
+      "section": "S4 Before/After",
+      "prompt": "A café interior corner with a marble counter, two stools and a plant shelf. a finished photograph of that exact interior at the same angle, morning light from the street, marble veining and stool wear legible.",
+      "refs": [
+        "test-v2/content-runs/aphrodite/higgsgen/assets/ba-01-a.png"
+      ],
+      "note": "edits-batch: pass the paired -a frame as reference to hold composition"
+    },
+    {
+      "id": "ba-02-b",
+      "role": "after",
+      "group": "ba",
+      "size": "1536x1024",
+      "section": "S4 Before/After",
+      "prompt": "A hiking boot, three-quarter view, laces loose. a finished product photograph of that exact boot at the same angle, scuffed leather, mud dried in the welt.",
+      "refs": [
+        "test-v2/content-runs/aphrodite/higgsgen/assets/ba-02-a.png"
+      ],
+      "note": "edits-batch: pass the paired -a frame as reference to hold composition"
+    },
+    {
+      "id": "ba-03-b",
+      "role": "after",
+      "group": "ba",
+      "size": "1536x1024",
+      "section": "S4 Before/After",
+      "prompt": "A brutalist stair core seen from the landing below. a finished architectural photograph of that exact stair at the same angle, raw concrete with formwork lines, one skylight above.",
+      "refs": [
+        "test-v2/content-runs/aphrodite/higgsgen/assets/ba-03-a.png"
+      ],
+      "note": "edits-batch: pass the paired -a frame as reference to hold composition"
+    },
+    {
+      "id": "ba-04-b",
+      "role": "after",
+      "group": "ba",
+      "size": "1536x1024",
+      "section": "S4 Before/After",
+      "prompt": "A bowl of steaming broth on a dark table. a finished food photograph of that exact bowl at the same angle, steam catching a low rim light, oil beading on the surface.",
+      "refs": [
+        "test-v2/content-runs/aphrodite/higgsgen/assets/ba-04-a.png"
+      ],
+      "note": "edits-batch: pass the paired -a frame as reference to hold composition"
+    }
+  ]
+}

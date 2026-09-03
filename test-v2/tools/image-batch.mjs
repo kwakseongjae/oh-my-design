@@ -82,13 +82,15 @@ function plan() {
     if (seen.has(it.id)) throw new Error(`custom_id 중복: ${it.id}`); seen.add(it.id);
     const size = it.size || spec.size || "1024x1024";
     if (!validSize(size)) throw new Error(`${it.id}: size ${size} 는 허용 범위 밖(16px 배수·최대변 3840·비율≤3:1·픽셀 655,360~8,294,400)`);
-    const body = { model, prompt: it.prompt.trim() + (suffix ? "\n\n" + suffix : ""), size, quality: it.quality || spec.quality || "high", output_format: it.output_format || spec.output_format || "png", n: 1 };
+    // 접미사 순서: 항목 프롬프트 → 장르군 접미사(spec.groupSuffix[it.group]) → 세트 공통 큐레이션 접미사. 둘 다 토씨 그대로 반복된다.
+    const gsuf = (spec.groupSuffix && it.group && spec.groupSuffix[it.group] ? String(spec.groupSuffix[it.group]).trim() : "");
+    const body = { model, prompt: it.prompt.trim() + (gsuf ? "\n\n" + gsuf : "") + (suffix ? "\n\n" + suffix : ""), size, quality: it.quality || spec.quality || "high", output_format: it.output_format || spec.output_format || "png", n: 1 };
     if (it.background || spec.background) body.background = it.background || spec.background;
     const useRefs = it.refs === true || (Array.isArray(it.refs) && it.refs.length);
     const line = { custom_id: it.id, method: "POST", url: useRefs ? "/v1/images/edits" : "/v1/images/generations", body };
-    if (useRefs) line.body.images = "__REFS__"; // submit 에서 file_id 로 치환
+    if (useRefs) line.body.images = "__REFS__"; // submit 에서 file_id 로 치환 (항목별 refs 배열이면 그 파일들, true 면 spec.refs)
     (useRefs ? edit : gen).push(line);
-    manifest.items.push({ id: it.id, size, refs: !!useRefs, role: it.role || null, slot: it.slot || null });
+    manifest.items.push({ id: it.id, size, refs: !!useRefs, refFiles: Array.isArray(it.refs) ? it.refs : (useRefs ? (spec.refs || []) : []), role: it.role || null, slot: it.slot || null, group: it.group || null, section: it.section || null });
   }
   if (gen.length) writeFileSync(join(OUT, "generations.jsonl"), gen.map((l) => JSON.stringify(l)).join("\n") + "\n");
   if (edit.length) writeFileSync(join(OUT, "edits.jsonl"), edit.map((l) => JSON.stringify(l)).join("\n") + "\n");
@@ -103,17 +105,23 @@ async function submit() {
   const manifest = readJson(join(OUT, "manifest.json"));
   const batches = [];
   // 참조 이미지 업로드(purpose=vision) — edits 배치가 있을 때만
-  let refIds = [];
+  // 참조 이미지: 항목마다 다른 참조를 허용한다(before/after 쌍은 쌍마다 참조가 다르다 — 2026-09-03 rx-imageset 블로커).
+  // 같은 파일은 한 번만 업로드하고 file_id 를 재사용한다.
+  const refIds = [];
   if (existsSync(join(OUT, "edits.jsonl"))) {
-    if (!manifest.refs.length) throw new Error("edits.jsonl 이 있는데 spec.refs 가 비었다");
-    if (manifest.refs.length > 16) throw new Error("참조 이미지는 최대 16장");
-    for (const rp of manifest.refs) {
-      const abs = resolve(rp); const buf = readFileSync(abs);
-      const form = new FormData(); form.append("purpose", "vision"); form.append("file", new Blob([buf]), basename(abs));
-      const j = JSON.parse(await api("/files", { method: "POST", form, key }));
-      refIds.push({ file_id: j.id }); console.log(`  참조 업로드 ${basename(abs)} → ${j.id}`);
+    const cache = {};
+    const upload = async (rp) => { const abs = resolve(rp); if (cache[abs]) return cache[abs]; if (!existsSync(abs)) throw new Error(`참조 이미지 없음: ${abs}`);
+      const form = new FormData(); form.append("purpose", "vision"); form.append("file", new Blob([readFileSync(abs)]), basename(abs));
+      const j = JSON.parse(await api("/files", { method: "POST", form, key })); cache[abs] = j.id; refIds.push({ file: rp, file_id: j.id }); console.log(`  참조 업로드 ${basename(abs)} → ${j.id}`); return j.id; };
+    const lines = [];
+    for (const l of readFileSync(join(OUT, "edits.jsonl"), "utf8").split("\n").filter(Boolean)) {
+      const o = JSON.parse(l); const item = manifest.items.find((x) => x.id === o.custom_id) || {};
+      const files = item.refFiles && item.refFiles.length ? item.refFiles : (manifest.refs || []);
+      if (!files.length) throw new Error(`${o.custom_id}: 참조 슬롯인데 참조 파일이 없다`);
+      if (files.length > 16) throw new Error(`${o.custom_id}: 참조 이미지는 최대 16장`);
+      const ids = []; for (const f of files) ids.push({ file_id: await upload(f) });
+      o.body.images = ids; lines.push(JSON.stringify(o));
     }
-    const lines = readFileSync(join(OUT, "edits.jsonl"), "utf8").split("\n").filter(Boolean).map((l) => { const o = JSON.parse(l); o.body.images = refIds; return JSON.stringify(o); });
     writeFileSync(join(OUT, "edits.jsonl"), lines.join("\n") + "\n");
   }
   for (const [file, endpoint] of [["generations.jsonl", "/v1/images/generations"], ["edits.jsonl", "/v1/images/edits"]]) {

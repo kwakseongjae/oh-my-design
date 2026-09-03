@@ -1,0 +1,423 @@
+{
+  "set": "higgsgen-v1-p1",
+  "model": "gpt-image-2",
+  "quality": "high",
+  "output_format": "png",
+  "styleSuffix": "CURATION (verbatim on every item): photographed, not rendered — the frame must read as a real capture. Off-center, asymmetric framing; one clear light direction with honest falloff; true blacks that are slightly lifted, never crushed; restrained saturation, colour held near the neutral axis except one accent; visible material truth — grain, dust, fingerprints, wear, chipped edges, uneven surfaces; fine 35mm film grain, heavier in the shadows, almost absent in the highlights; depth of field that comes from a real lens, not a pasted blur. Absolutely no text, no letters, no numerals, no signage, no watermarks, no logos or trademarks, no UI chrome, no faces, no plastic or waxy sheen, no perfect bilateral symmetry, no oversaturation, no HDR halo, no fake bokeh, no lens-flare stickers, no vignette baked in.",
+  "groupSuffix": {
+    "cine": "GENRE STYLE — CINEMATIC: anamorphic 40mm at f/2.8, single practical light source plus one soft bounce, atmosphere carrying the light (dust, haze, steam, rain), cool shadows against one warm source, wide frame with the subject small in it, deep field.",
+    "grid": "GENRE STYLE — RANGE TILE: one idea per frame, read clearly at 480px wide; strong figure-ground separation; the subject occupies the middle third; background simplified to two values.",
+    "seq": "GENRE STYLE — SEQUENCE FRAME: identical location, identical props, identical lens (35mm at f/4); only the stated camera position, hour and light change between frames; horizon and floor line held constant.",
+    "ba": "GENRE STYLE — PAIR: the two frames share subject, placement and framing exactly; only fidelity and finish differ.",
+    "mat": "GENRE STYLE — MACRO: 100mm macro at f/8, raking light across the surface from one side, the plane nearly filling the frame, focus falling off at the far edge, texture legible down to the fibre.",
+    "prod": "GENRE STYLE — PRODUCT: 90mm tilt-shift at f/5.6, large softbox from camera-left with a black flag on the right, one honest specular highlight, contact shadow grounded on the surface, seamless sweep with a visible seam.",
+    "arch": "GENRE STYLE — SPACE: 24mm shift lens, verticals held true, one directional daylight source and its cast geometry, human scale implied by furniture and door height, no people.",
+    "abs": "GENRE STYLE — ABSTRACT MATERIAL: studio light on a physical substance, not a digital effect; shot on a copy stand; the frame reads as a photograph of something real that happens to look abstract.",
+    "fig": "GENRE STYLE — FIGURE WITHOUT FACE: the person is turned away, cropped at the shoulders, or reduced to a silhouette; 85mm at f/2, natural window light, fabric and hair rendered strand by strand.",
+    "amb": "GENRE STYLE — AMBIENT: near-dark frame, one small warm source deep in the scene, most of the image in the low tones, wide and quiet, built to sit under text."
+  },
+  "note": "image-batch.mjs appends spec.styleSuffix only. Before planning, run the expand step in docs/research/higgsgen-imageset-2026-09-03.md §B.3 so each item's prompt becomes prompt + groupSuffix[group] + styleSuffix. Items with refs:true must be planned as a SEPARATE /v1/images/edits batch (one endpoint per batch).",
+  "items": [
+    {
+      "id": "hero-01",
+      "role": "hero",
+      "group": "cine",
+      "size": "2048x1152",
+      "section": "S1 Hero",
+      "prompt": "A flooded concrete underpass at dawn, ankle-deep still water holding the whole ceiling as a mirror. A single sodium lamp burns at the far end. Wet stains, rebar shadows, one drifting plastic bag. Wide, camera low and close to the water, the vanishing point pushed hard right so the left third stays empty for a headline."
+    },
+    {
+      "id": "hero-02",
+      "role": "hero",
+      "group": "cine",
+      "size": "2048x1152",
+      "section": "S1 Hero",
+      "prompt": "A high-altitude research shelter on volcanic gravel, orange corrugated steel scoured by wind, guy-wires humming, cloud shearing past below the ridge. Late afternoon sun raking from camera-right. The shelter sits small in the lower-right quadrant; sky and cloud own the rest."
+    },
+    {
+      "id": "hero-03",
+      "role": "hero",
+      "group": "cine",
+      "size": "2048x1152",
+      "section": "S1 Hero",
+      "prompt": "The interior of a disused indoor swimming hall, drained, tiles cracked, mid-morning light falling through a clerestory in hard rectangles across the empty basin. Dust suspended in the beams. Symmetry deliberately broken by a single displaced starting block."
+    },
+    {
+      "id": "hero-04",
+      "role": "hero",
+      "group": "cine",
+      "size": "2048x1152",
+      "section": "S1 Hero",
+      "prompt": "A greenhouse at night in winter, glass fogged from inside, grow-lamps pushing magenta through condensation, snow banked along the outside sill. Shot from outside looking in through the fog, foliage only readable as silhouette and colour."
+    },
+    {
+      "id": "hero-05",
+      "role": "hero",
+      "group": "cine",
+      "size": "2048x1152",
+      "section": "S1 Hero",
+      "prompt": "A salt flat at blue hour after rain, a hairline crack pattern under two centimetres of water, a distant storm cell lit from within on the right horizon. Nothing else in the frame. Ground and sky split at the lower third."
+    },
+    {
+      "id": "grid-01",
+      "role": "range-tile",
+      "group": "grid",
+      "size": "1536x1024",
+      "section": "S2 Range wall",
+      "prompt": "A cast-iron radiator painted over eleven times, paint chipped down through the strata, against a mint-green wall in flat afternoon light."
+    },
+    {
+      "id": "grid-02",
+      "role": "range-tile",
+      "group": "grid",
+      "size": "1024x1536",
+      "section": "S2 Range wall",
+      "prompt": "A stack of wet ceramic tiles on a workshop floor, seen from above at a slight angle, water pooling under the bottom edge."
+    },
+    {
+      "id": "grid-03",
+      "role": "range-tile",
+      "group": "grid",
+      "size": "1536x1024",
+      "section": "S2 Range wall",
+      "prompt": "A single-lane mountain road switchback in fog, guardrail beaded with condensation, the road disappearing after twenty metres."
+    },
+    {
+      "id": "grid-04",
+      "role": "range-tile",
+      "group": "grid",
+      "size": "1024x1536",
+      "section": "S2 Range wall",
+      "prompt": "A tangle of climbing rope on a bare plywood bench, one strand frayed, hard window light from the left."
+    },
+    {
+      "id": "grid-05",
+      "role": "range-tile",
+      "group": "grid",
+      "size": "1536x1024",
+      "section": "S2 Range wall",
+      "prompt": "A 1970s municipal library reading room, empty, warm oak and brown carpet, low winter sun crossing the tables."
+    },
+    {
+      "id": "grid-06",
+      "role": "range-tile",
+      "group": "grid",
+      "size": "1024x1536",
+      "section": "S2 Range wall",
+      "prompt": "Three cuts of raw ginger and a wet knife on a scarred wooden board, overhead, one bulb above."
+    },
+    {
+      "id": "grid-07",
+      "role": "range-tile",
+      "group": "grid",
+      "size": "1536x1024",
+      "section": "S2 Range wall",
+      "prompt": "A wind turbine nacelle seen from directly below at close range, blades cropped by the frame edges, overcast white sky."
+    },
+    {
+      "id": "grid-08",
+      "role": "range-tile",
+      "group": "grid",
+      "size": "1024x1536",
+      "section": "S2 Range wall",
+      "prompt": "A cracked leather jacket sleeve draped over a chair back, the creases holding the shape of an arm, side light."
+    },
+    {
+      "id": "grid-09",
+      "role": "range-tile",
+      "group": "grid",
+      "size": "1536x1024",
+      "section": "S2 Range wall",
+      "prompt": "A dry riverbed in late summer, pale rounded stones, one steel bridge pier planted in the middle distance, heat shimmer."
+    },
+    {
+      "id": "grid-10",
+      "role": "range-tile",
+      "group": "grid",
+      "size": "1024x1536",
+      "section": "S2 Range wall",
+      "prompt": "A sheet of dew on a car roof at sunrise, the droplets holding inverted images of a bare tree, macro-ish but showing the whole panel."
+    },
+    {
+      "id": "grid-11",
+      "role": "range-tile",
+      "group": "grid",
+      "size": "1536x1024",
+      "section": "S2 Range wall",
+      "prompt": "A theatre fly loft from the stage floor looking up, ropes and counterweights, one working light burning."
+    },
+    {
+      "id": "grid-12",
+      "role": "range-tile",
+      "group": "grid",
+      "size": "1024x1536",
+      "section": "S2 Range wall",
+      "prompt": "A pile of blue nylon fishing net on a wet concrete quay, coiled, rope ends fused by heat."
+    },
+    {
+      "id": "seq-01",
+      "role": "sequence",
+      "group": "seq",
+      "size": "1536x1024",
+      "section": "S3 Control (sequence)",
+      "prompt": "A narrow ceramics workshop: a long birch bench along a white plastered wall, a single tall unglazed vessel standing at the bench's two-thirds mark, a wire cutter and a folded grey cloth beside it, a bare cord lamp above, a small square window on the left wall. The room, the props and their positions are fixed and identical in every frame. Anchor frame. Eye-level, straight on to the bench, 35mm, 09:00 hard side light from the window.",
+      "note": "edits-batch: pass seq-01 as anchor reference"
+    },
+    {
+      "id": "ba-01-a",
+      "role": "before",
+      "group": "ba",
+      "size": "1536x1024",
+      "section": "S4 Before/After",
+      "prompt": "A café interior corner with a marble counter, two stools and a plant shelf, drawn as a loose grey ballpoint sketch on cheap paper, wobbling lines, no tone, proportions slightly wrong, the paper's fibre and a coffee ring visible. Photograph of the drawing lying on a desk, shot flat from above."
+    },
+    {
+      "id": "ba-02-a",
+      "role": "before",
+      "group": "ba",
+      "size": "1536x1024",
+      "section": "S4 Before/After",
+      "prompt": "A hiking boot, three-quarter view, laces loose, drawn as a smudged pencil study on grid paper with construction lines still showing and an eraser scar across the toe. Photograph of the drawing lying on a desk, shot flat from above."
+    },
+    {
+      "id": "ba-03-a",
+      "role": "before",
+      "group": "ba",
+      "size": "1536x1024",
+      "section": "S4 Before/After",
+      "prompt": "A brutalist stair core seen from the landing below, drawn as a rough marker thumbnail, four grey values only, edges overshooting, drawn fast. Photograph of the drawing lying on a desk, shot flat from above."
+    },
+    {
+      "id": "ba-04-a",
+      "role": "before",
+      "group": "ba",
+      "size": "1536x1024",
+      "section": "S4 Before/After",
+      "prompt": "A bowl of steaming broth on a dark table, drawn as a childlike crayon drawing on brown paper, waxy strokes, colours out of register. Photograph of the drawing lying on a desk, shot flat from above."
+    },
+    {
+      "id": "mat-01",
+      "role": "macro",
+      "group": "mat",
+      "size": "1024x1536",
+      "section": "S5 Material proof",
+      "prompt": "Unglazed porcelain at the point where a thumb pressed the wet clay, the fingerprint ridges fired in."
+    },
+    {
+      "id": "mat-02",
+      "role": "macro",
+      "group": "mat",
+      "size": "1024x1536",
+      "section": "S5 Material proof",
+      "prompt": "Brushed titanium with a hairline scratch pattern running one way and a single deeper gouge running across it."
+    },
+    {
+      "id": "mat-03",
+      "role": "macro",
+      "group": "mat",
+      "size": "1024x1536",
+      "section": "S5 Material proof",
+      "prompt": "Raw linen weave at the seam where two panels meet, one thread pulled proud of the surface."
+    },
+    {
+      "id": "mat-04",
+      "role": "macro",
+      "group": "mat",
+      "size": "1024x1536",
+      "section": "S5 Material proof",
+      "prompt": "Split oak end-grain, the rays and a resin bleed, saw-tooth marks still on the face."
+    },
+    {
+      "id": "mat-05",
+      "role": "macro",
+      "group": "mat",
+      "size": "1024x1536",
+      "section": "S5 Material proof",
+      "prompt": "Hand-blown glass at a bubble trapped mid-wall, the light bending around it, the surface faintly rippled."
+    },
+    {
+      "id": "mat-06",
+      "role": "macro",
+      "group": "mat",
+      "size": "1024x1536",
+      "section": "S5 Material proof",
+      "prompt": "Cold-rolled steel beginning to rust at a weld bead, orange bloom spreading into blue-grey."
+    },
+    {
+      "id": "prod-01",
+      "role": "product",
+      "group": "prod",
+      "size": "1536x1024",
+      "section": "S6 Product mode",
+      "prompt": "A matte black cylindrical desk speaker on a pale concrete sweep, three-quarter view, its fabric grille catching one raking highlight, contact shadow tight beneath it."
+    },
+    {
+      "id": "prod-02",
+      "role": "product",
+      "group": "prod",
+      "size": "1152x1536",
+      "section": "S6 Product mode",
+      "prompt": "A stainless vacuum flask standing on wet slate, condensation beading, one cool rim light describing the edge, background falling to near-black."
+    },
+    {
+      "id": "prod-03",
+      "role": "product",
+      "group": "prod",
+      "size": "1536x1024",
+      "section": "S6 Product mode",
+      "prompt": "An open leather notebook lying flat on linen, pages fanned by a breeze, a brass pen resting across the gutter, soft overhead light."
+    },
+    {
+      "id": "prod-04",
+      "role": "product",
+      "group": "prod",
+      "size": "1152x1536",
+      "section": "S6 Product mode",
+      "prompt": "A pair of wired studio headphones hung from a steel hook against a plaster wall, cable falling in one natural loop, hard side light."
+    },
+    {
+      "id": "prod-05",
+      "role": "product",
+      "group": "prod",
+      "size": "1536x1024",
+      "section": "S6 Product mode",
+      "prompt": "A ceramic pour-over cone on a glass carafe, a thin stream of water mid-fall, steam bending right, dark grey sweep behind."
+    },
+    {
+      "id": "arch-01",
+      "role": "space",
+      "group": "arch",
+      "size": "2048x1152",
+      "section": "S7 Space",
+      "prompt": "A long concrete corridor with a clerestory slot running its whole length, the light landing as one unbroken band on the opposite wall, doors set flush and unmarked."
+    },
+    {
+      "id": "arch-02",
+      "role": "space",
+      "group": "arch",
+      "size": "1536x1024",
+      "section": "S7 Space",
+      "prompt": "A timber-framed attic conversion, rafters exposed and stained dark, a low window at floor level throwing a trapezoid of light across bare boards."
+    },
+    {
+      "id": "arch-03",
+      "role": "space",
+      "group": "arch",
+      "size": "1536x1024",
+      "section": "S7 Space",
+      "prompt": "A public swimming pool changing hall in pale terrazzo, benches in a row, one skylight per bay, cool north light, wet footprints leading out of frame."
+    },
+    {
+      "id": "arch-04",
+      "role": "space",
+      "group": "arch",
+      "size": "1152x1536",
+      "section": "S7 Space",
+      "prompt": "A stairwell in a 1960s housing block seen straight up from the ground floor, the flights spiralling into a bright square at the top, paint peeling at the rail."
+    },
+    {
+      "id": "abs-01",
+      "role": "ground",
+      "group": "abs",
+      "size": "2048x1152",
+      "section": "S8 Abstract ground",
+      "prompt": "Black ink dropped into a tank of clear glycerine, photographed as the plume unfolds, backlit, most of the frame empty."
+    },
+    {
+      "id": "abs-02",
+      "role": "ground",
+      "group": "abs",
+      "size": "2048x1152",
+      "section": "S8 Abstract ground",
+      "prompt": "Iron filings pulled into field lines on a sheet of frosted glass, lit hard from one side so each filing casts a shadow."
+    },
+    {
+      "id": "abs-03",
+      "role": "ground",
+      "group": "abs",
+      "size": "1536x1024",
+      "section": "S8 Abstract ground",
+      "prompt": "Cigarette smoke crossing a single shaft of light in a dark room, the shaft entering from the upper left, the rest near-black."
+    },
+    {
+      "id": "abs-04",
+      "role": "ground",
+      "group": "abs",
+      "size": "1536x1024",
+      "section": "S8 Abstract ground",
+      "prompt": "Cracked dry mud lifted into curling plates, shot from directly above at grazing light, the cracks reading as a network."
+    },
+    {
+      "id": "abs-05",
+      "role": "ground",
+      "group": "abs",
+      "size": "2048x1152",
+      "section": "S8 Abstract ground",
+      "prompt": "A soap film stretched across a wire loop, interference colours banding as it thins, black background."
+    },
+    {
+      "id": "abs-06",
+      "role": "ground",
+      "group": "abs",
+      "size": "1536x1024",
+      "section": "S8 Abstract ground",
+      "prompt": "Long-exposure water over dark stone, the flow smoothed to a single grey ribbon, everything else sharp."
+    },
+    {
+      "id": "fig-01",
+      "role": "figure",
+      "group": "fig",
+      "size": "1152x1536",
+      "section": "S9 Human presence",
+      "prompt": "A person seen from directly behind at a workbench, head cropped above the frame line, shoulders in a worn cotton shirt, hands out of view, window light from the left."
+    },
+    {
+      "id": "fig-02",
+      "role": "figure",
+      "group": "fig",
+      "size": "1536x1024",
+      "section": "S9 Human presence",
+      "prompt": "A silhouette standing in a doorway against a bright exterior, the figure entirely black, the door frame and its wear fully lit."
+    },
+    {
+      "id": "fig-03",
+      "role": "figure",
+      "group": "fig",
+      "size": "1152x1536",
+      "section": "S9 Human presence",
+      "prompt": "A pair of hands cropped at the wrists resting on a stone table, skin texture and one old scar, low warm light."
+    },
+    {
+      "id": "fig-04",
+      "role": "figure",
+      "group": "fig",
+      "size": "1536x1024",
+      "section": "S9 Human presence",
+      "prompt": "A person walking away down a corridor, back turned, motion blur in the legs, the camera static and the walls sharp."
+    },
+    {
+      "id": "amb-01",
+      "role": "ambient",
+      "group": "amb",
+      "size": "2048x1152",
+      "section": "S10 Ambient / footer",
+      "prompt": "A darkened studio after hours, one desk lamp burning far back on the right, the rest of the room reading in three low values, the left two-thirds empty."
+    },
+    {
+      "id": "amb-02",
+      "role": "ambient",
+      "group": "amb",
+      "size": "2048x1152",
+      "section": "S10 Ambient / footer",
+      "prompt": "A night highway seen from a hillside, one string of tail lights curving away, the land black, the sky just holding blue."
+    },
+    {
+      "id": "amb-03",
+      "role": "ambient",
+      "group": "amb",
+      "size": "2048x1152",
+      "section": "S10 Ambient / footer",
+      "prompt": "A window at night from inside an unlit room, city glow only, condensation on the glass, the room reduced to edges."
+    }
+  ]
+}
