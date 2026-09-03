@@ -17,3 +17,7 @@ landing/*
 !landing/build-compare.mjs
 !landing/reviews/
 !landing/reviews/*
+
+# 게이트 설정·문서는 산출물이 아니라 소스다 (2026-09-03)
+!fixtures.json
+!QUALITY_GATE.md
