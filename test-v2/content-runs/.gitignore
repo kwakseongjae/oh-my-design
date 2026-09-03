@@ -44,3 +44,7 @@ aphrodite/*/runs/*
 !aphrodite/*/runs/*.txt
 !aphrodite/*/concept.md
 !aphrodite/*/storyboard.md
+!aphrodite/*/runs/*.mjs
+!aphrodite/*/fonts/
+aphrodite/*/fonts/*
+!aphrodite/*/runs/*.html
