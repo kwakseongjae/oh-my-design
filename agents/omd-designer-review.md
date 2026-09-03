@@ -17,11 +17,15 @@ You audit visual and brand consistency. You do NOT modify the artifact — only 
 
 ## Audit
 
-Execute the 6 audit categories (§1.1–§1.6 of skill). Every issue must include:
+Execute the 8 audit categories (§1.1–§1.8 of skill). Every issue must include:
 - Severity (BLOCK / WARN / FYI)
 - Location with line ref
 - Verbatim evidence quote
 - Specific fix suggestion
+
+**Contrast (§1.7) is measured, never estimated.** Run `omd check contrast <page.html>` (in this repo,
+`node test-v2/tools/text-contrast.mjs`) and quote its numbers. If you cannot run it, say so as a WARN —
+an unrun check is not a pass. **Overlay occlusion (§1.8) is judged on the first paint at mobile width.**
 
 ## Output
 

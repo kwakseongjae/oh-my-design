@@ -24,15 +24,29 @@
 //   font         body가 브라우저 기본 세리프로 떨어짐
 //   img          로드 실패 이미지, U+FFFD 대체문자
 //
-// usage: node render-integrity.mjs <render.html...> [--json]
+// 뷰포트: 기본 1440x900 + 390x844 둘 다 본다 (2026-09-03). T3-3 레인 A에서 두 평가자가 합의한 결함 중
+// 오버레이가 히어로를 덮는 건과 모바일 미반응형 가로 넘침은 **모바일에서만** 보였다 — 데스크톱만 보는
+// 검사는 그 부류를 구조적으로 놓친다. (docs/reviews/t3-phase6-machine-signals-2026-09-02.md 에 기록된
+// 108칸 수치는 데스크톱 단독 시절의 것이다 — 뷰포트가 늘었으니 그 표와 직접 비교하지 않는다.)
+//
+// usage: node render-integrity.mjs <render.html...> [--json] [--viewports 1440x900,390x844]
 //        node render-integrity.mjs 'glob은 셸에 맡긴다'
 import { chromiumRuntime } from "./lib/browser.mjs";
 import { resolve } from "node:path";
 
-const args = process.argv.slice(2).filter((a) => a !== "--json");
-const asJson = process.argv.includes("--json");
+const argv = process.argv.slice(2);
+const vpArgIdx = argv.indexOf("--viewports");
+const VIEWPORTS = (vpArgIdx >= 0 ? argv[vpArgIdx + 1] : "1440x900,390x844").split(",").map((v) => {
+  const [w, h] = v.trim().split("x").map(Number);
+  if (!w || !h) { console.error(`viewport 표기 이상: ${v}`); process.exit(1); }
+  return { label: `${w}x${h}`, width: w, height: h };
+});
+// vpArgIdx 가 -1 이면 "값 위치"는 없다 — -1+1=0 을 값으로 오해해 **첫 파일을 조용히 버리는** 버그가 있었다.
+const vpValueIdx = vpArgIdx >= 0 ? vpArgIdx + 1 : -1;
+const args = argv.filter((a, i) => a !== "--json" && i !== vpArgIdx && i !== vpValueIdx);
+const asJson = argv.includes("--json");
 if (!args.length) {
-  console.error("usage: render-integrity.mjs <render.html...> [--json]");
+  console.error("usage: render-integrity.mjs <render.html...> [--json] [--viewports 1440x900,390x844]");
   process.exit(1);
 }
 
@@ -42,14 +56,20 @@ const all = [];
 let failures = 0;
 
 for (const file of args) {
-  const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+  // 뷰포트마다 한 번씩 보고, 결과는 한 파일 단위로 합친다 — problems/info 는 예전처럼 평평한 배열이고
+  // 각 항목에 viewport 를 달아 어디서 난 것인지 남긴다(기존 소비자의 r.problems / r.verdict 접근 유지).
+  const merged = { file, problems: [], info: [], byViewport: {} };
+  let loadFailed = false;
+  for (const vp of VIEWPORTS) {
+  if (loadFailed) break;
+  const page = await browser.newPage({ viewport: { width: vp.width, height: vp.height } });
   const jsErrors = [];
   page.on("pageerror", (e) => jsErrors.push(String(e).slice(0, 140)));
   try {
     await page.goto("file://" + resolve(file), { waitUntil: "load", timeout: 20000 });
   } catch (e) {
-    all.push({ file, verdict: "FAIL", problems: [{ check: "load", detail: String(e).split("\n")[0] }] });
-    failures++;
+    merged.problems.push({ check: "load", viewport: vp.label, detail: String(e).split("\n")[0] });
+    loadFailed = true;
     await page.close();
     continue;
   }
@@ -133,10 +153,14 @@ for (const file of args) {
     return { problems, info };
   });
   if (jsErrors.length) r.problems.push({ check: "js", detail: jsErrors[0] });
-  const verdict = r.problems.length ? "FAIL" : "PASS";
-  if (verdict === "FAIL") failures++;
-  all.push({ file, verdict, ...r });
+  merged.byViewport[vp.label] = { problems: r.problems, info: r.info };
+  for (const x of r.problems) merged.problems.push({ ...x, viewport: vp.label });
+  for (const x of r.info) merged.info.push({ ...x, viewport: vp.label });
   await page.close();
+  }
+  const verdict = merged.problems.length ? "FAIL" : "PASS";
+  if (verdict === "FAIL") failures++;
+  all.push({ ...merged, verdict });
 }
 await browser.close();
 
@@ -144,7 +168,7 @@ if (asJson) console.log(JSON.stringify(all, null, 1));
 else
   for (const r of all) {
     console.log(`${r.verdict}  ${r.file}`);
-    for (const p of r.problems || []) console.log(`   ✗ ${p.check}: ${p.detail}`);
-    for (const i of r.info || []) console.log(`   · ${i.check}: ${i.detail}`);
+    for (const p of r.problems || []) console.log(`   ✗ [${p.viewport || "?"}] ${p.check}: ${p.detail}`);
+    for (const i of r.info || []) console.log(`   · [${i.viewport || "?"}] ${i.check}: ${i.detail}`);
   }
 process.exit(failures ? 1 : 0);
