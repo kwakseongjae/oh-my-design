@@ -212,3 +212,41 @@ LI-1…LI-19 come from `measure-landing.mjs`, `probe-reveals.mjs` and `probe-eas
 | Platform / CTA | device or platform imagery | 1–3 | cropped by card bottom | inset | 0.11–0.31 |
 
 The skill needs **first-party capture** (screenshot the product, never stock), one **16:9 bleed render** per hero, **unequal-height** comparative assets so the uniform-grid signature never forms, and a **4–8 s silent loop** only for a pinned hero. No icon tiles as filler; emit `prefers-reduced-motion` with the motion tokens.
+
+## 7. 마감 규칙 (LC-37~46) — 2026-09-03 추가
+
+LC-1~36은 **무엇을 어디에 놓는가**(기하·리듬·배치)를 규정한다. 그 규칙을 전부 지킨 페이지가
+여전히 밋밋할 수 있다는 것이 실측으로 드러났다 — 우리 최고 산출물은 OS 기본 폰트에
+그림자·블러·마스크·블렌드·3D·클립패스·그레인이 **전부 0**이었다
+(`docs/reviews/landing-craft-gap-2026-09-03.md`). 아래는 그 위에 얹는 **마감** 층이다.
+근거: `docs/research/wow-visual-craft-2026-09-03.md`(출처 URL 포함).
+
+- **LC-37 줄바꿈을 제어한다.** 디스플레이 헤딩엔 `text-wrap: balance`, 본문 문단엔 `text-wrap: pretty`.
+  끝줄에 한 단어만 남는 상태는 두 경우 모두 결함이다.
+- **LC-38 넓은 단색·그래디언트 면에는 그레인을 얹는다.** 인라인 SVG `feTurbulence` 오버레이
+  (opacity 0.05–0.15, `mix-blend-mode: overlay`). 밴딩이 보이면 결함. 그레인 없는 그래디언트는
+  "명백히 CSS스러운" 배경으로 읽힌다.
+- **LC-39 글래스 표면은 2겹이다.** 베이스 블러 + 밝은 엣지 블러, 둥근 모서리는 SVG 마스크로 자른다.
+  단일 `blur()` + `border-radius`는 미완성 신호이며 스크롤 시 플리커가 남는다.
+- **LC-40 스크롤 리빌은 네이티브 타임라인을 먼저 쓴다.** `animation-timeline` / `view-timeline`.
+  미지원 환경에는 opacity 리빌로 폴백한다. JS 스크롤 리스너의 프레임 지연이 곧 "저렴해 보임"이다.
+- **LC-41 이징의 다양성은 국소적이다.** 페이지를 지배하는 하나의 duration(LC-29)은 유지하고,
+  `linear()` 스프링·오버슈트 곡선은 히어로 정착이나 CTA 도착 같은 **한 순간에만** 쓴다.
+- **LC-42 브라우저 기본값을 남기지 않는다.** `::selection`, `:focus-visible`, 스크롤바 썸을 브랜드 액센트로
+  지정한다. 하나라도 기본값이면 아트디렉션이 닿지 않은 구석이 드러난다.
+- **LC-43 모든 미디어에 같은 색보정 프리셋을 건다.** 공통 클래스의 `filter: contrast()/saturate()`.
+  에셋마다 색온도가 다른 것이 가장 값싸 보이는 신호다.
+- **LC-44 커스텀 커서는 미디어 표면에만.** 본문 텍스트 위에서는 네이티브 커서로 되돌리고,
+  `@media (hover: hover)`로 터치 기기에서는 완전히 끈다. 상태는 최대 3개(기본·링크·드래그).
+- **LC-45 풀블리드 히어로에는 비네트를 얹는다.** `radial-gradient(ellipse, transparent 50%, rgba(0,0,0,.7) 100%)`
+  수준으로 코너만 은은히 죽인다. 눈에 띄는 링은 금지.
+- **LC-46 메시 그래디언트는 반투명 radial 3겹 이상이다.** 2-스톱 단일 `linear-gradient` 배경은
+  가장 흔한 AI-slop 신호로 취급해 금지한다.
+
+### LC-47 서체는 조달한다 (파이프라인 규칙)
+
+단독 HTML은 렌더 시 외부 요청이 금지지만, **생성 시점에 폰트를 받아 base64로 인라인하면 요청은 0건이다.**
+실측: `@fontsource-variable`의 latin woff2(65–75KB)를 data URI로 심으면 HTML 87KB, 옵티컬 사이즈 축과
+굵기 축이 모두 작동하고 외부 요청 0건이다. **OS 기본 폰트로 디스플레이 헤딩을 쓰지 않는다.**
+Google Fonts `css2` API는 UA에 따라 정적 인스턴스를 주므로, 가변 축이 필요하면 `@fontsource-variable`
+파일을 직접 받는다. 라이선스는 임베딩이 허용되는 OFL 계열만 쓴다.
