@@ -48,3 +48,4 @@ aphrodite/*/runs/*
 !aphrodite/*/fonts/
 aphrodite/*/fonts/*
 !aphrodite/*/runs/*.html
+!aphrodite/*/runs/*.zsh
