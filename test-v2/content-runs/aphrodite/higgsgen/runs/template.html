@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Higgsgen — direct the frame</title>
+<style>__FONT_SYNE__</style>
+<style>__FONT_GEIST__</style>
+<style>__FONT_MONO__</style>
+<style>
+/* ═══ Higgsgen · DESIGN.md Core v2 (fictional brand). 토큰 밖의 값은 쓰지 않는다. ═══ */
+@property --a{syntax:"<angle>";inherits:false;initial-value:0deg}
+@property --ba{syntax:"<angle>";inherits:false;initial-value:0deg}
+@property --r{syntax:"<percentage>";inherits:false;initial-value:0%}
+
+:root{
+  --bg:#0B0C0E; --bg-2:#121316; --ink:#F2F2F0; --mute:#9A9B9E;
+  --line:rgba(255,255,255,.10); --accent:#D1FE17;
+  --bg-light:#F3F3F1; --ink-dark:#0B0C0E; --line-dark:rgba(11,12,14,.14);
+  --focus:var(--ink);
+  --r-card:5px; --r-stage:10px;
+  --now:160ms; --state:240ms; --reveal:480ms; --stage:720ms;
+  --ui:cubic-bezier(.4,0,.2,1); --enter:cubic-bezier(.16,1,.3,1); --quint:cubic-bezier(.22,1,.36,1);
+  --gutter:88px; --max:1360px;
+  --lift:-20px 34px 64px rgba(0,0,0,.55);
+  --ground:0 40px 80px -40px rgba(0,0,0,.7);
+  --hair:inset 0 1px 0 rgba(255,255,255,.06);
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Geist',ui-sans-serif,system-ui,sans-serif;font-size:16px;line-height:1.5;
+  font-variant-numeric:tabular-nums;text-wrap:pretty;-webkit-font-smoothing:antialiased;
+}
+/* 전역 텍스처 · 그레인은 의사요소로만 둔다(요소로 두면 저투명 레이어가 "숨겨진 콘텐츠"로 집계된다) */
+body::before{content:"";position:fixed;inset:0;z-index:96;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.15) .6px,transparent 1.4px);background-size:6px 6px;opacity:.06}
+body::after{content:"";position:fixed;inset:0;z-index:97;pointer-events:none;
+  background-image:var(--grain);opacity:.08;mix-blend-mode:overlay}
+::selection{background:var(--accent);color:var(--ink-dark)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:5px}
+img{max-width:100%;display:block}
+figure{margin:0}
+h1,h2,h3{margin:0;font-family:'Syne',ui-sans-serif,sans-serif;font-weight:800;
+  letter-spacing:-.035em;line-height:.94;text-wrap:balance}
+h1{font-size:clamp(40px,5.55vw,80px)}
+h2{font-size:clamp(28px,3.35vw,48px)}
+h3{font-size:19px;letter-spacing:-.02em;line-height:1.15}
+p{margin:0}
+a{color:inherit}
+.mono{font-family:'GeistMono',ui-monospace,monospace}
+.tag{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.tag--dim{color:var(--mute);letter-spacing:.1em}
+.lede{max-width:38ch;font-size:18px;color:var(--ink)}
+.note{max-width:52ch;color:var(--mute)}
+
+/* ── 섹션 지면 ─────────────────────────────────────────────── */
+main{display:block}
+.s{position:relative;background-color:var(--bg);
+  background-image:
+    radial-gradient(88% 62% at 12% 0%,rgba(255,255,255,.05),transparent 62%),
+    radial-gradient(64% 48% at 92% 18%,rgba(209,254,23,.045),transparent 68%),
+    radial-gradient(120% 90% at 50% 120%,rgba(255,255,255,.035),transparent 70%);
+}
+.s--light{background-color:var(--bg-light);color:var(--ink-dark);--focus:var(--ink-dark);
+  background-image:
+    radial-gradient(80% 60% at 8% 0%,rgba(11,12,14,.06),transparent 60%),
+    radial-gradient(56% 44% at 88% 14%,rgba(209,254,23,.20),transparent 66%),
+    radial-gradient(120% 80% at 50% 116%,rgba(11,12,14,.05),transparent 68%);
+}
+.s--light .tag{color:#4A5A05}
+.s--light .note{color:#3D3F42}
+.wrap{max-width:calc(var(--max) + var(--gutter) * 2);margin:0 auto;padding:0 var(--gutter)}
+.head{padding:96px 0 32px;display:grid;gap:16px}
+.head p.note{margin-top:4px}
+.rule{height:1px;background:var(--line);border:0;margin:0}
+.s--light .rule{background:var(--line-dark)}
+
+/* ── 이미지 3층: 스크림 + 헤어라인 + 방향성 그림자. 이미지 자체에는 filter 를 걸지 않는다 ── */
+.frame{position:relative;overflow:hidden;border-radius:var(--r-card);
+  border:1px solid var(--line);background:var(--bg-2);box-shadow:var(--lift),var(--hair);isolation:isolate}
+.frame--sm{box-shadow:var(--ground),var(--hair)}
+.frame--flat{box-shadow:var(--ground)}
+.frame--lt{border-color:var(--line-dark);box-shadow:0 40px 80px -40px rgba(11,12,14,.35),inset 0 1px 0 rgba(255,255,255,.5)}
+.shot{width:100%;height:100%;object-fit:cover;position:relative;z-index:1;background:var(--bg-2)}
+.lc{position:absolute;inset:6%;z-index:0;width:88%;height:88%;object-fit:cover;
+  filter:blur(40px) saturate(1.6);opacity:.45;border-radius:24px}
+.scrim{position:absolute;inset:0;z-index:2;pointer-events:none}
+.scrim--b{background:linear-gradient(rgba(0,0,0,0) 44%,rgba(11,12,14,.72) 78%,rgba(11,12,14,.92) 100%)}
+.scrim--soft{background:linear-gradient(rgba(0,0,0,0) 52%,rgba(11,12,14,.55) 100%)}
+.scrim--hue{background:linear-gradient(to top,oklch(0 .045 var(--hue)) 0%,oklch(0 .045 var(--hue) / .78) 34%,transparent 78%)}
+
+/* ── 상단 바 ───────────────────────────────────────────────── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:90;
+  background:rgba(11,12,14,.74);backdrop-filter:blur(14px) saturate(1.4);
+  border-bottom:1px solid var(--line)}
+.nav-in{max-width:calc(var(--max) + var(--gutter) * 2);margin:0 auto;padding:14px var(--gutter);
+  display:flex;align-items:center;gap:32px}
+.brand{font-family:'Syne',sans-serif;font-weight:800;font-size:19px;letter-spacing:-.02em}
+.brand b{color:var(--accent);font-weight:800}
+.nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;margin-left:auto}
+.nav a{font-size:13px;color:var(--mute);text-decoration:none;transition:color var(--now) var(--ui)}
+.nav a:hover{color:var(--ink)}
+
+/* ── 버튼 ─────────────────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;
+  font-size:15px;font-weight:500;text-decoration:none;border:1px solid transparent;
+  transition:filter var(--now) var(--ui),background-color var(--now) var(--ui),color var(--now) var(--ui)}
+.btn--primary{background:var(--accent);color:var(--ink-dark)}
+.btn--primary:hover{filter:brightness(1.06)}
+.btn--primary:active{filter:brightness(.96)}
+.btn--ghost{border-color:var(--line);color:var(--ink);background:rgba(255,255,255,.04)}
+.btn--ghost:hover{background:rgba(255,255,255,.10)}
+.s--light .btn--ghost{border-color:var(--line-dark);color:var(--ink-dark);background:rgba(11,12,14,.04)}
+.s--light .btn--ghost:hover{background:rgba(11,12,14,.09)}
+/* R6 — 회전 광원 테두리. 평소 정지, 포인터가 오면 돈다 */
+.lit{position:relative}
+.lit::before{content:"";position:absolute;z-index:-1;inset:-2px;border-radius:999px;
+  background:conic-gradient(from var(--ba),rgba(209,254,23,0) 0deg,rgba(255,255,255,.9) 68deg,rgba(209,254,23,0) 148deg,rgba(255,255,255,.14) 250deg,rgba(209,254,23,0) 360deg);
+  animation:spin 6.4s linear infinite;animation-play-state:paused}
+.lit:hover::before,.lit:focus-visible::before{animation-play-state:running}
+@keyframes spin{to{--ba:360deg}}
+
+/* ── S1 히어로 ─────────────────────────────────────────────── */
+.s1{height:100svh;min-height:660px;overflow:hidden}
+.hero-media{position:absolute;inset:0}
+.hero-img{position:absolute;inset:0;width:100%;height:100%}
+.hero-read{position:absolute;inset:0;z-index:3;
+  background:linear-gradient(90deg,rgba(11,12,14,.92) 0%,rgba(11,12,14,.80) 34%,rgba(11,12,14,.34) 66%,rgba(11,12,14,.18) 100%)}
+.hero-vig{position:absolute;inset:0;z-index:4;
+  background:radial-gradient(64% 58% at 62% 44%,rgba(0,0,0,0) 12%,rgba(0,0,0,.28) 62%,rgba(0,0,0,.62) 100%)}
+.hero-base{position:absolute;inset:0;z-index:5;
+  background:linear-gradient(rgba(11,12,14,0) 46%,rgba(11,12,14,.62) 72%,rgba(11,12,14,.94) 100%)}
+/* T11 conic 조명 빔 8s · T12 광원 호흡 13s — 이미지는 정지하고 빛만 움직인다 */
+.beam{position:absolute;inset:-30%;z-index:2;mix-blend-mode:screen;
+  background:conic-gradient(from var(--a) at 66% -26%,transparent 39deg,rgba(255,255,255,.13) 72deg,transparent 110deg);
+  animation:beam 8s linear infinite}
+@keyframes beam{to{--a:360deg}}
+.sun{position:absolute;left:-10%;bottom:-18%;width:52vw;height:52vw;z-index:2;border-radius:50%;
+  mix-blend-mode:screen;
+  background:radial-gradient(circle,rgba(255,255,255,.14),rgba(255,255,255,.05) 44%,rgba(255,255,255,0) 72%);
+  animation:breathe 13s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.42;transform:scale(1)}50%{opacity:.62;transform:scale(1.12)}}
+.hero-copy{position:absolute;z-index:8;left:var(--gutter);top:24vh;max-width:min(52vw,720px);display:grid;gap:22px}
+.hero-copy .lede{color:var(--ink);max-width:40ch}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:2px}
+.worlds{position:absolute;z-index:8;right:var(--gutter);bottom:56px;left:auto;
+  display:flex;align-items:flex-end;gap:14px;list-style:none;margin:0;padding:0}
+.world{display:grid;gap:8px;width:var(--w);transform:translateY(calc(var(--lift) * -1))}
+.world .frame{aspect-ratio:16 / 9}
+.world .tag{font-size:11px;letter-spacing:.12em}
+.hero-foot{position:absolute;z-index:8;left:var(--gutter);bottom:28px;display:grid;gap:6px}
+
+/* ── S2 증거의 벽 ──────────────────────────────────────────── */
+.wall{display:flex;flex-wrap:wrap;gap:16px;padding-bottom:96px}
+.tile{flex:0 0 auto;width:calc((100% - 48px) * var(--w) / 1216);aspect-ratio:var(--ar);
+  position:relative;overflow:hidden;border-radius:var(--r-card);border:1px solid var(--line);
+  background:var(--bg-2);box-shadow:var(--ground),var(--hair);
+  transition:filter var(--now) var(--ui)}
+.tile:hover{filter:brightness(1.06)}
+.tile .shot{position:absolute;inset:0}
+
+/* ── 핀 스테이지 공통 ──────────────────────────────────────── */
+.track{view-timeline-name:--pin;view-timeline-axis:block}
+.pin{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;align-content:center;
+  gap:18px;padding:80px var(--gutter) 48px;max-width:calc(var(--max) + var(--gutter) * 2);margin:0 auto}
+.stage-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.stage-head h2{max-width:16ch}
+
+/* S3 — 8프레임 필름을 스크롤이 끌고 간다 */
+.film{position:relative;overflow:hidden;border-radius:var(--r-stage);border:1px solid var(--line);
+  background:var(--bg-2);box-shadow:var(--lift),var(--hair);aspect-ratio:5 / 2;width:100%}
+.strip{position:absolute;inset:0;display:flex;width:800%;
+  animation:strip linear both;animation-timeline:--pin;animation-range:entry 100% exit 0%;
+  will-change:transform}
+@keyframes strip{from{transform:translate3d(0,0,0)}to{transform:translate3d(-87.5%,0,0)}}
+.cell{position:relative;width:12.5%;height:100%;overflow:hidden}
+.cell .shot{position:absolute;inset:0}
+.cell .idx{position:absolute;z-index:3;left:20px;top:16px;font-size:13px;letter-spacing:.14em;color:var(--accent)}
+.readout{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.prompt{font-size:15px;color:var(--ink);white-space:nowrap;overflow:hidden;width:0;
+  border-right:2px solid var(--accent);padding-right:6px;
+  animation:type linear both;animation-timing-function:steps(__PROMPT_CH__,jump-none);
+  animation-timeline:--pin;animation-range:entry 100% exit 62%}
+@keyframes type{to{width:calc(__PROMPT_CH__ch + 6px)}}
+.caps{position:relative;display:grid;min-height:22px}
+.cap{grid-area:1/1;font-size:13px;color:var(--mute);letter-spacing:.04em;opacity:0;
+  animation-duration:auto;animation-timing-function:linear;animation-fill-mode:both;
+  animation-timeline:--pin;animation-range:entry 100% exit 0%}
+__CAP_KEYFRAMES__
+.ticks{display:flex;gap:6px;list-style:none;margin:0;padding:0}
+.tick{width:34px;height:2px;background:var(--line)}
+.tick[data-first]{background:var(--accent)}
+.progress{position:relative;height:2px;background:var(--line);overflow:hidden}
+.progress i{position:absolute;inset:0;background:var(--accent);transform-origin:left center;transform:scaleX(0);
+  animation:fill linear both;animation-timeline:--pin;animation-range:entry 100% exit 0%}
+@keyframes fill{to{transform:scaleX(1)}}
+
+/* ── S4 명암 뒤집기 + 비교 슬라이더 ───────────────────────── */
+.ba{display:grid;gap:12px}
+.ba .frame{position:relative;aspect-ratio:3 / 2}
+.ba .shot{position:absolute;inset:0}
+.ba-top{position:absolute;inset:0;z-index:2;clip-path:inset(0 calc(100% - var(--p)) 0 0)}
+.ba-bar{position:absolute;z-index:3;top:0;bottom:0;left:var(--p);width:2px;margin-left:-1px;
+  background:var(--accent);box-shadow:0 0 24px rgba(209,254,23,.55)}
+.ba input{position:absolute;z-index:4;inset:0;width:100%;height:100%;margin:0;
+  -webkit-appearance:none;appearance:none;background:transparent;cursor:ew-resize}
+.ba input::-webkit-slider-thumb{-webkit-appearance:none;width:44px;height:44px;opacity:0}
+.ba input::-moz-range-thumb{width:44px;height:44px;opacity:0;border:0}
+.ba-meta{display:flex;justify-content:space-between;gap:12px}
+.compare{display:grid;grid-template-columns:1.35fr 1fr;gap:24px;align-items:start;padding-bottom:96px}
+.ba-side{display:grid;gap:24px}
+
+/* ── S5 깊이 콜라주 · 얕은 다층 패럴랙스 ──────────────────── */
+.collage{position:relative;height:76vh;min-height:520px;margin:24px 0 96px}
+.co{position:absolute;overflow:hidden}
+.co--back{left:0;top:0;width:46%;aspect-ratio:16 / 9;z-index:1;
+  animation:par-a linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+.co--mid{left:31%;top:19%;width:44%;aspect-ratio:3 / 2;z-index:2;
+  animation:par-b linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+.co--front{right:0;top:38%;width:41%;aspect-ratio:3 / 2;z-index:3;box-shadow:var(--ground),var(--hair);
+  animation:par-c linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+@keyframes par-a{from{transform:translate3d(0,72px,0)}to{transform:translate3d(0,-72px,0)}}
+@keyframes par-b{from{transform:translate3d(0,34px,0)}to{transform:translate3d(0,-34px,0)}}
+@keyframes par-c{from{transform:translate3d(0,14px,0)}to{transform:translate3d(0,-14px,0)}}
+.co .shot{position:absolute;inset:0}
+.collage-copy{position:absolute;left:0;bottom:0;z-index:4;max-width:30ch;display:grid;gap:10px}
+
+/* ── S6 스펙트럼 마키 ─────────────────────────────────────── */
+.mq{overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 12%,#000 88%,transparent 100%)}
+.mq + .mq{margin-top:16px}
+.mq-track{display:flex;gap:16px;width:max-content;align-items:center;
+  animation:marq 40s linear infinite;will-change:transform}
+.mq--rev .mq-track{animation-duration:52s;animation-direction:reverse}
+.mq:hover .mq-track,.mq:focus-within .mq-track{animation-play-state:paused}
+@keyframes marq{to{transform:translate3d(-50%,0,0)}}
+.mq-item{position:relative;height:var(--h);flex:0 0 auto;overflow:hidden;border-radius:var(--r-card);
+  border:1px solid var(--line);background:var(--bg-2);box-shadow:var(--ground)}
+.mq-item .shot{position:absolute;inset:0}
+
+/* ── S7 3D 틸트 프리셋 ───────────────────────────────────── */
+.grid8{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;perspective:560px;padding-bottom:96px}
+.tilt{position:relative}
+.tilt-c{position:relative;display:grid;gap:14px;transform-style:preserve-3d;backface-visibility:hidden;
+  transform:rotateX(calc(var(--ty,0) * -6deg)) rotateY(calc(var(--tx,0) * 6deg));
+  transition:transform var(--reveal) var(--enter)}
+.tilt:hover .tilt-c{transition-duration:var(--now)}
+.tilt-c .frame{aspect-ratio:3 / 2;transform:translateZ(24px)}
+.preset-meta{display:grid;gap:4px}
+.spot{position:absolute;inset:-8px;z-index:4;pointer-events:none;border-radius:var(--r-stage);
+  background:radial-gradient(280px 280px at var(--mx,-999px) var(--my,-999px),rgba(255,255,255,.16),transparent 62%)}
+
+/* ── S8 핀 스테이지 2 · 마스크 리빌 ──────────────────────── */
+.detail{position:relative;height:min(54vh,600px);width:auto;margin:0 auto;aspect-ratio:3 / 2;overflow:hidden;
+  border-radius:var(--r-stage);border:1px solid var(--line);background:var(--bg-2);box-shadow:var(--lift),var(--hair)}
+.detail .shot{position:absolute;inset:0}
+.detail .base{z-index:1}
+.detail .fine{z-index:2;
+  -webkit-mask-image:radial-gradient(circle var(--r) at 50% 52%,#000 62%,transparent 100%);
+  mask-image:radial-gradient(circle var(--r) at 50% 52%,#000 62%,transparent 100%);
+  animation:open linear both;animation-timeline:--pin;animation-range:entry 100% exit 0%}
+@keyframes open{from{--r:0%}to{--r:142%}}
+.detail-veil{position:absolute;inset:0;z-index:3;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.16) .7px,transparent 1.5px);background-size:5px 5px;
+  animation:settle linear both;animation-timeline:--pin;animation-range:entry 100% exit 20%}
+@keyframes settle{from{opacity:.55}to{opacity:.10}}
+
+/* ── S9 밝은 밴드 · 이미지 없음 ──────────────────────────── */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding-bottom:96px}
+.plan{border:1px solid var(--line-dark);border-radius:var(--r-card);padding:28px 26px;
+  background-color:rgba(255,255,255,.62);
+  background-image:radial-gradient(120% 90% at 0% 0%,rgba(255,255,255,.9),transparent 62%);
+  box-shadow:0 40px 80px -40px rgba(11,12,14,.25);display:grid;gap:14px;align-content:start}
+.plan ul{margin:0;padding:0;list-style:none;display:grid;gap:9px;font-size:15px;color:#3D3F42}
+.plan li{padding-left:18px;position:relative}
+.plan li::before{content:"";position:absolute;left:0;top:9px;width:8px;height:1px;background:var(--ink-dark)}
+
+/* ── S10 푸터 ────────────────────────────────────────────── */
+.s10{position:relative;overflow:hidden;padding-top:120px}
+.foot-media{position:absolute;inset:0;z-index:0}
+.bleed{position:absolute;inset:0;width:100%;height:100%}
+.foot-fade{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(rgba(11,12,14,1) 0%,rgba(11,12,14,.82) 26%,rgba(11,12,14,.55) 52%,rgba(11,12,14,.88) 88%,rgba(11,12,14,1) 100%)}
+.foot-beam{position:absolute;inset:-20%;z-index:2;mix-blend-mode:screen;
+  background:conic-gradient(from var(--a) at 24% 120%,transparent 30deg,rgba(255,255,255,.10) 64deg,transparent 96deg);
+  animation:beam 19s linear infinite}
+.foot-in{position:relative;z-index:3;display:grid;gap:40px;padding-bottom:56px}
+.foot-top{display:grid;grid-template-columns:1.4fr auto;gap:40px;align-items:end}
+.foot-chip{width:212px}
+.foot-chip .frame{aspect-ratio:16 / 9}
+.foot-bar{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  border-top:1px solid var(--line);padding-top:22px;font-size:13px;color:var(--mute)}
+
+/* ── 스크롤 리빌: 네이티브 타임라인 우선(LC-40). fill 은 forwards — 스크립트 없이도 콘텐츠가 보인다 ── */
+.rise,.head,.plan,.tilt{animation:rise linear forwards;animation-timeline:view();animation-range:entry 6% entry 62%}
+.tile{animation:rise linear forwards;animation-timeline:view()}
+@keyframes rise{from{opacity:0;transform:translate3d(0,28px,0)}to{opacity:1;transform:none}}
+@supports not (animation-timeline:view()){
+  .rise,.tile{animation:none}
+  .strip,.prompt,.cap,.progress i,.detail .fine,.detail-veil,.co{animation:none}
+  .prompt{width:auto;border-right:0}
+  .cap{opacity:0}.cap:first-child{opacity:1}
+  .detail .fine{-webkit-mask-image:none;mask-image:none}
+  .detail-veil{opacity:.1}
+  .progress i{transform:scaleX(1)}
+  .track{height:auto}
+  .pin{position:static;height:auto}
+  .film{aspect-ratio:3 / 2}
+  .strip{position:relative;width:100%;flex-wrap:wrap}
+  .cell{width:25%}
+}
+
+/* ── 반응형 ─────────────────────────────────────────────── */
+@media (max-width:1100px){
+  :root{--gutter:40px}
+  .grid8{grid-template-columns:repeat(2,1fr)}
+  .compare{grid-template-columns:1fr}
+  .worlds{left:var(--gutter);right:var(--gutter);bottom:24px;gap:12px;justify-content:flex-start;overflow-x:auto;padding-bottom:6px}
+  .world{transform:none}
+  .hero-copy{top:auto;bottom:196px;right:var(--gutter);max-width:none}
+  .hero-copy .lede{max-width:44ch}
+  .hero-foot{display:none}
+}
+@media (max-width:760px){
+  :root{--gutter:20px}
+  .nav-in{gap:12px}
+  .nav ul{gap:12px}
+  .nav a{font-size:12px}
+  .brand{font-size:17px}
+  h1{font-size:clamp(34px,9vw,44px)}
+  .hero-copy{top:auto;bottom:210px;max-width:none;right:var(--gutter)}
+  .worlds{left:var(--gutter);right:var(--gutter);bottom:24px;overflow-x:auto;padding-bottom:6px}
+  .world{width:132px;transform:none}
+  .hero-foot{display:none}
+  .tile{width:calc(50% - 8px);aspect-ratio:3 / 2}
+  .plans{grid-template-columns:1fr}
+  .grid8{grid-template-columns:1fr}
+  .collage{height:auto;min-height:0;display:grid;gap:16px}
+  .co{position:relative;left:auto;right:auto;top:auto;width:100%;animation:none}
+  .collage-copy{position:relative}
+  .track{height:auto!important}
+  .pin{position:static;height:auto;padding:64px var(--gutter)}
+  .film{aspect-ratio:3 / 2}
+  .strip{position:relative;width:100%;flex-wrap:wrap;animation:none;transform:none}
+  .cell{width:50%;aspect-ratio:3 / 2;height:auto}
+  .prompt{width:auto;white-space:normal;animation:none;border-right:0}
+  .cap{position:relative;opacity:0}.cap:first-child{opacity:1}
+  .foot-top{grid-template-columns:1fr}
+}
+
+/* ── 모션 축소 ─────────────────────────────────────────── */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rise,.tile{opacity:1!important;transform:none!important}
+  .strip{transform:none}
+  .prompt{width:auto;border-right:0}
+  .cap{opacity:0}.cap:first-child{opacity:1}
+  .detail .fine{-webkit-mask-image:none;mask-image:none}
+  .detail-veil{opacity:.1}
+  .progress i{transform:scaleX(1)}
+  .sun{opacity:.42}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <span class="brand">HIGGS<b>GEN</b></span>
+    <ul>
+      <li><a href="#range">Range</a></li>
+      <li><a href="#control">Control</a></li>
+      <li><a href="#compare">Compare</a></li>
+      <li><a href="#presets">Presets</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+  <!-- ════ S1 · 히어로. 이미지는 정지하고 빔 8s · 광원 13s 만 움직인다 ════ -->
+  <section class="s s1" id="top">
+    <div class="hero-media">
+      __HERO__
+      <span class="hero-read"></span>
+      <span class="hero-vig"></span>
+      <span class="hero-base"></span>
+      <span class="beam"></span>
+      <span class="sun"></span>
+    </div>
+    <div class="hero-copy">
+      <p class="mono tag">Still image engine</p>
+      <h1>Write one line. Direct the frame.</h1>
+      <p class="lede">Higgsgen turns a sentence into a directed still — cinematic frames, controlled sequences, material-true product shots.</p>
+      <div class="cta-row">
+        <a class="btn btn--primary lit" href="#control">Start a frame</a>
+        <a class="btn btn--ghost" href="#range">See the range</a>
+      </div>
+    </div>
+    <p class="hero-foot mono tag--dim tag">Frame 01 · flooded underpass, dawn</p>
+    <ul class="worlds">__WORLDS__
+    </ul>
+  </section>
+
+  <!-- ════ S2 · 증거의 벽 ════ -->
+  <section class="s s2" id="range">
+    <div class="wrap">
+      <div class="head">
+        <p class="mono tag">Range</p>
+        <h2>Twelve subjects, one hand.</h2>
+        <p class="note">Different rooms, different materials, different light — held together by a single curation pass instead of a filter.</p>
+      </div>
+      <div class="wall">__WALL__
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ S3 · 핀 스테이지 1 — 프롬프트에서 여덟 프레임까지 ════ -->
+  <section class="s s3 track" id="control" style="height:300vh">
+    <div class="pin">
+      <div class="stage-head">
+        <div>
+          <p class="mono tag">Control</p>
+          <h2>Same room. Eight directed frames.</h2>
+        </div>
+        <p class="note" style="max-width:34ch">Angle, hour and camera height move one at a time. Stop scrolling and the sequence stops with you.</p>
+      </div>
+      <div class="film">
+        <div class="strip">__STRIP__
+        </div>
+      </div>
+      <div class="readout">
+        <p class="prompt mono">__PROMPT__</p>
+        <ul class="ticks">__TICKS__</ul>
+      </div>
+      <div class="caps">
+        __CAPS__
+      </div>
+      <div class="progress"><i></i></div>
+    </div>
+  </section>
+
+  <!-- ════ S4 · 명암 뒤집기 1 — 손이 이미지를 움직인다 ════ -->
+  <section class="s s--light s4" id="compare">
+    <div class="wrap">
+      <div class="head">
+        <p class="mono tag">Compare</p>
+        <h2>Drag the drawing into the photograph.</h2>
+        <p class="note">Four inputs on paper — ballpoint, pencil, marker, crayon — held to the same composition on the way out. Drag the handle, or use the arrow keys.</p>
+      </div>
+      <div class="compare">
+        __BA_MAIN__
+        <div class="ba-side">__BA_ROW__
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ S5 · 깊이 콜라주 ════ -->
+  <section class="s s5">
+    <div class="wrap">
+      <div class="head">
+        <p class="mono tag">Geometry</p>
+        <h2>Straight lines stay straight.</h2>
+      </div>
+      <div class="collage">
+        __COLLAGE__
+        <div class="collage-copy">
+          <p class="note">Architecture is where a generator usually gives itself away. Three plates, three speeds, one vanishing point each.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ S6 · 스펙트럼 마키 ════ -->
+  <section class="s s6">
+    <div class="wrap">
+      <div class="head">
+        <p class="mono tag">Surface</p>
+        <h2>Material, product, presence.</h2>
+      </div>
+    </div>
+    <div class="mq">
+      <div class="mq-track">__MARQ_A__
+      </div>
+    </div>
+    <div class="mq mq--rev">
+      <div class="mq-track">__MARQ_B__
+      </div>
+    </div>
+    <div class="wrap" style="padding-top:24px;padding-bottom:96px">
+      <p class="note mono tag--dim tag">Hover a row to hold it still</p>
+    </div>
+  </section>
+
+  <!-- ════ S7 · 3D 틸트 프리셋 ════ -->
+  <section class="s s7" id="presets">
+    <div class="wrap">
+      <div class="head">
+        <p class="mono tag">Presets</p>
+        <h2>Eight directions you can keep.</h2>
+        <p class="note">A preset carries light, distance and surface — not a colour filter. Move the pointer across the grid.</p>
+      </div>
+      <div class="grid8">__PRESETS__
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ S8 · 핀 스테이지 2 — 마스크가 열린다 ════ -->
+  <section class="s s8 track" style="height:260vh">
+    <div class="pin">
+      <div class="stage-head">
+        <div>
+          <p class="mono tag">Delivery</p>
+          <h2>The frame opens at full size.</h2>
+        </div>
+        <p class="note" style="max-width:34ch">Scroll opens the mask. Weld bead, rust bloom and rolling marks stay where the light put them.</p>
+      </div>
+      <figure class="detail">
+        __DETAIL__
+        <span class="detail-veil"></span>
+      </figure>
+      <p class="mono tag--dim tag">Cold-rolled steel · macro · full frame</p>
+    </div>
+  </section>
+
+  <!-- ════ S9 · 명암 뒤집기 2 — 이미지 없는 휴지 ════ -->
+  <section class="s s--light s9">
+    <div class="wrap">
+      <div class="head">
+        <p class="mono tag">Access</p>
+        <h2>Three ways to work.</h2>
+        <p class="note">Pick the one that matches how many frames you have to defend this week.</p>
+      </div>
+      <div class="plans">
+        <article class="plan">
+          <h3>Studio</h3>
+          <p class="note">One person, one board at a time.</p>
+          <ul><li>Single prompt line</li><li>Preset library</li><li>Frame history kept</li></ul>
+        </article>
+        <article class="plan">
+          <h3>Direction</h3>
+          <p class="note">Sequences that have to agree with each other.</p>
+          <ul><li>Anchored sequences</li><li>Reference-locked frames</li><li>Shared preset sets</li></ul>
+        </article>
+        <article class="plan">
+          <h3>Volume</h3>
+          <p class="note">A catalogue, shot once, in one hand.</p>
+          <ul><li>Batch submission</li><li>Curation pass on every frame</li><li>Delivery at full size</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ S10 · 푸터 · 마지막 풀블리드 ════ -->
+  <footer class="s s10">
+    <div class="foot-media">__FOOTER_MEDIA__</div>
+    <span class="foot-fade"></span>
+    <span class="foot-beam"></span>
+    <div class="wrap foot-in">
+      <div class="foot-top">
+        <div style="display:grid;gap:20px">
+          <p class="mono tag">One line, one frame</p>
+          <h2>Write the sentence. Keep the frame.</h2>
+          <div class="cta-row">
+            <a class="btn btn--primary lit" href="#top">Start a frame</a>
+            <a class="btn btn--ghost" href="#range">Back to the range</a>
+          </div>
+        </div>
+        <div class="foot-chip">__FOOTER_CHIP__</div>
+      </div>
+      <div class="foot-bar">
+        <span class="mono">Higgsgen</span>
+        <span class="mono">Fictional product — unofficial generated concept.</span>
+      </div>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+/* 인라인 소량: 틸트 · 스포트라이트 · 비교 슬라이더 · 뷰 밖 승격 해제. 없어도 콘텐츠는 전부 보인다. */
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.tilt').forEach(function(el){
+    var card = el.firstElementChild, spot = el.querySelector('.spot');
+    el.addEventListener('pointermove', function(e){
+      var r = el.getBoundingClientRect();
+      if (!reduce) {
+        el.style.setProperty('--tx', ((e.clientX - r.left) / r.width * 2 - 1).toFixed(3));
+        el.style.setProperty('--ty', ((e.clientY - r.top) / r.height * 2 - 1).toFixed(3));
+      }
+      if (spot) { spot.style.setProperty('--mx', (e.clientX - r.left) + 'px'); spot.style.setProperty('--my', (e.clientY - r.top) + 'px'); }
+    });
+    el.addEventListener('pointerleave', function(){
+      el.style.setProperty('--tx', 0); el.style.setProperty('--ty', 0);
+      if (spot) { spot.style.setProperty('--mx', '-999px'); spot.style.setProperty('--my', '-999px'); }
+    });
+    if (card) card.addEventListener('focusin', function(){ el.style.setProperty('--tx', 0); el.style.setProperty('--ty', 0); });
+  });
+  document.querySelectorAll('.ba').forEach(function(el){
+    var input = el.querySelector('input');
+    if (!input) return;
+    input.addEventListener('input', function(){ el.style.setProperty('--p', input.value + '%'); });
+  });
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ en.target.style.willChange = en.isIntersecting ? 'transform' : 'auto'; });
+    }, { rootMargin: '200px' });
+    document.querySelectorAll('.mq-track,.strip').forEach(function(t){ io.observe(t); });
+  }
+})();
+</script>
+</body>
+</html>
