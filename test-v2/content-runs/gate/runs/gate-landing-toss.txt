@@ -1,0 +1,57 @@
+너는 품질 게이트 픽스처 실행자다. 목적은 **배포되는 스킬이 지금 어떤 품질의 산출을 내는지**를 재현 가능하게 남기는 것이다.
+
+이 런은 공개 콘텐츠·내부 게이트용이며 **봉인된 T3-3 실험이 아니다.** `test-v2/03-runs`를 읽거나 쓰지 마라.
+동결 벤치 팩(`benchmarks/ui-resolve-bench/fixtures/competitor-skills-2.0/`)도 읽지 마라 — 그건 다른 실험의 것이다.
+
+## 네가 쓰는 팩 (이것만, 순서대로 전부 읽어라)
+1. `skills/omd-landing/SKILL.md` — **배포되는 스킬 본문. 1~5단계를 그대로 밟는다.**
+2. `.claude/agents/omd-art-director.md` — 1·2단계(컨셉·스토리보드)는 네가 이 역할을 직접 수행한다(에이전트 스폰 없음).
+3. `docs/design-excellence/landing-craft-codex.md` — LC-1~36. 모든 구도 결정에 LC 번호를 붙인다.
+4. 브랜드 참고: `web/references/toss/DESIGN.md`.
+
+### 무인 실행 규칙 (이 런에 한정)
+스킬의 질문 배치(CONSEQUENTIAL_INTERVIEW)는 사람에게 묻지 말고 **아래 브리프에서 답이 정해지는 대로 네가 고르고**,
+고른 항목과 근거를 `loop-trace.json`의 `autoSelected[]`에 남겨라. 브리프가 답하지 않는 항목만 스킬 기본값을 쓰고
+그 사실도 같은 배열에 적어라. 외부 컨트롤러 정책 파일(`.benchmark/controller-verification-policy.json`)은 이 런에 없다 —
+로컬 검증이 곧 검증이다.
+
+## 브리프 — Toss · 스크롤 원페이지
+- 브랜드: Toss (toss.im). 한국의 금융 슈퍼앱. 대상: 처음 방문한 일반 사용자.
+- 화면: **스크롤 원페이지 랜딩**, 데스크톱 1440 기준으로 만들고 모바일 390에서도 깨지지 않게.
+- 과업: 방문자가 첫 화면에서 브랜드가 무엇을 하는지 3초 안에 이해하고, 스크롤 끝에서 앱 설치로 이동한다.
+- 구성(6~8섹션, 순서는 네가 정한다): 히어로 · 핵심 기능 3개(송금·소비 관리·투자 같은 축, 각 섹션에 전용 에셋) ·
+  신뢰/보안 섹션 · 사용 흐름 섹션 · 규모 섹션(가상 수치 금지 — 수치 없이 정성 카피) · CTA · 푸터.
+- 카피: 한국어. 실제 toss.im 문장을 그대로 쓰지 않는다.
+- 구성(6~8섹션, 순서는 네가 정한다): 히어로 · 핵심 제품 3개(결제·빌링·커넥트 같은 축, 각 섹션에 전용 에셋) ·
+  개발자 섹션(코드 블록 1개, 실제 동작 아닌 예시) · 신뢰 섹션(고객 로고 대신 텍스트 워드마크 열) ·
+  글로벌/규모 섹션(가상 수치 금지 — 수치 없이 정성 카피) · CTA · 푸터.
+- 컨셉·구도·에셋: 사이트를 베끼지 말고 이 브랜드가 쓸 법한 **하나의 시각 컨셉**을 정해 페이지 전체가 그 컨셉으로 쌓이게 해라.
+  히어로 대표 이미지 1장 + 섹션 에셋 3~5장은 네 이미지 생성 도구로 만든다(사진 인물 얼굴 금지). 아이콘은 인라인 SVG.
+  이미지 **비율은 그 이미지가 들어갈 슬롯의 실제 종횡비에서 가져온다**(기본값에서 고르지 않는다).
+- 모션: 스크롤 리빌, 고정(pinned) 섹션 최대 1개, 히어로 진입 모션. `prefers-reduced-motion`에서 전부 꺼져야 한다.
+  외부 라이브러리·네트워크 요청 금지(모두 인라인).
+- **밀도 예산(스킬 §2 그대로 — 개수로 지킨다)**: 미디어 총량 ≥ 페이지 vh × 1.0(12vh면 12개 이상),
+  폴드 미디어 ≥ 3개, 가로 스크롤러를 쓰면 항목 ≥ 8개, **모션 에셋 ≥ 1개**(image_to_video 6초 루프,
+  자동재생·무음·loop·playsinline, `prefers-reduced-motion`에서 정지 이미지로 대체), 섹션 잉크 ≥ 26%.
+  세로 패딩을 모든 섹션에 같은 vh 값으로 주지 마라 — 첫 산출이 전 섹션 18vh/24vh로 같아 리듬이 없었다.
+- 금지: Toss 로고 원본 사용, 가상 통계 수치, 브리프에 없는 페이지 추가.
+- 하단 작은 글씨: `Unofficial generated concept — not affiliated with Toss`.
+
+## 출력 위치 (여기 밖에 쓰지 마라)
+`test-v2/content-runs/gate/landing-toss/` — `render.html` · `assets/`(생성 이미지) · `system.md` ·
+`loop-trace.json` · `trace.md`(이미지 프롬프트 원문, 산출물 sha256, 재시도 여부).
+`render.html`은 `assets/` 이미지를 상대 경로로 참조한다.
+
+## 자가 확인 (제출 전, 전부 통과할 때까지 고치고 다시 돌린다 — 최대 3회)
+1. `node test-v2/tools/render-integrity.mjs test-v2/content-runs/gate/landing-toss/render.html`
+   → PASS. 1440x900과 390x844를 함께 본다.
+2. `node test-v2/tools/text-contrast.mjs test-v2/content-runs/gate/landing-toss/render.html`
+   → **FAIL 0**. 본문 4.5:1, 대형 텍스트·포커스 링·필수 UI 경계 3:1 미만이 하나도 없어야 한다.
+   미달이면 **토큰을 바꾸거나 스크림을 넣어 고쳐라.** 문턱을 낮추거나 검사를 건너뛰는 것은 실패다.
+3. `node test-v2/tools/landing-integrity.mjs test-v2/content-runs/gate/landing-toss/render.html`
+   → **LI-24·LI-25·LI-26 이 전부 ok** 여야 한다(화면 잉크 12% 이상 · 폴드 미디어 3개 이상 · 미디어 1개/vh 이상).
+   미달이면 **에셋을 더 만들거나 패딩을 줄여서** 채워라. 검사를 건너뛰거나 기준을 낮추는 것은 실패다.
+4. 각 회차의 결과(도구 출력 그대로)를 `trace.md`에 붙여라. 세 번째에도 통과하지 못하면 마지막 출력과
+   무엇을 시도했는지를 `trace.md`에 남기고 그 상태로 제출해라 — 통과한 척하지 마라.
+
+마지막 줄에 `GATE_RUN_DONE brand=toss skill=omd-landing contrastFails=<n> render=<PASS|FAIL> li24=<ok|FAIL> li25=<ok|FAIL> li26=<ok|FAIL> media=<n> video=<n>` 를 출력해라.

@@ -2,15 +2,86 @@
   "why": "릴리즈 게이트가 검사할 스킬 산출물 목록. 목표 행렬을 전부 적고, 아직 생성되지 않은 칸은 MISSING 으로 드러낸다 — 있는 것만 적어 통과시키면 커버리지 부족이 숨는다(2026-09-02 도그푸딩: 4경로가 '돌아간다'까지만 확인됐다).",
   "rule": "픽스처는 **배포되는 스킬**(skills/…)로 만든 산출물이어야 한다. 동결 벤치 팩(benchmarks/…/competitor-skills-2.0/)으로 만든 산출물은 다른 실험의 것이며 게이트 픽스처가 아니다 — 2026-09-03에 autopilot 두 칸이 이 경우여서 교체했다. 각 칸의 provenance 에 어떤 프롬프트가 만들었는지 적는다.",
   "sourceSkills": {
-    "omd-landing": ["skills/omd-landing/SKILL.md", "agents/omd-art-director.md", "agents/omd-designer-review.md"],
-    "omd-autopilot": ["skills/omd-autopilot/SKILL.md", "skills/omd-autopilot/references/visual-quality-contract.md", "agents/omd-designer-review.md"]
+    "omd-landing": [
+      "skills/omd-landing/SKILL.md",
+      "agents/omd-art-director.md",
+      "agents/omd-designer-review.md"
+    ],
+    "omd-autopilot": [
+      "skills/omd-autopilot/SKILL.md",
+      "skills/omd-autopilot/references/visual-quality-contract.md",
+      "agents/omd-designer-review.md"
+    ]
   },
   "fixtures": [
-    { "id": "landing/stripe", "skill": "omd-landing", "brand": "stripe", "artifact": "test-v2/content-runs/landing/stripe/landing/render.html", "provenance": "test-v2/content-runs/landing/runs/run-stripe-landing.txt (배포 스킬)", "checks": ["render", "contrast", "landing"] },
-    { "id": "landing/toss", "skill": "omd-landing", "brand": "toss", "artifact": "test-v2/content-runs/landing/toss/landing/render.html", "provenance": "test-v2/content-runs/landing/runs/run-toss-landing.txt (배포 스킬)", "checks": ["render", "contrast", "landing"] },
-    { "id": "landing/karrot", "skill": "omd-landing", "brand": "karrot", "artifact": "test-v2/content-runs/gate/landing-karrot/render.html", "provenance": "미생성", "checks": ["render", "contrast", "landing"] },
-    { "id": "autopilot/stripe", "skill": "omd-autopilot", "brand": "stripe", "artifact": "test-v2/content-runs/gate/autopilot-stripe/render.html", "provenance": "test-v2/content-runs/gate/runs/gate-autopilot-stripe.txt (배포 스킬)", "checks": ["render", "contrast"] },
-    { "id": "autopilot/toss", "skill": "omd-autopilot", "brand": "toss", "artifact": "test-v2/content-runs/gate/autopilot-toss/render.html", "provenance": "test-v2/content-runs/gate/runs/gate-autopilot-toss.txt (배포 스킬)", "checks": ["render", "contrast"] },
-    { "id": "autopilot/karrot", "skill": "omd-autopilot", "brand": "karrot", "artifact": "test-v2/content-runs/gate/autopilot-karrot/render.html", "provenance": "미생성", "checks": ["render", "contrast"] }
+    {
+      "id": "landing/stripe",
+      "skill": "omd-landing",
+      "brand": "stripe",
+      "artifact": "test-v2/content-runs/gate/landing-stripe/render.html",
+      "provenance": "test-v2/content-runs/gate/runs/gate-landing-stripe.txt (배포 스킬 + 밀도 예산)",
+      "checks": [
+        "render",
+        "contrast",
+        "landing"
+      ]
+    },
+    {
+      "id": "landing/toss",
+      "skill": "omd-landing",
+      "brand": "toss",
+      "artifact": "test-v2/content-runs/landing/toss/landing/render.html",
+      "provenance": "test-v2/content-runs/landing/runs/run-toss-landing.txt (배포 스킬)",
+      "checks": [
+        "render",
+        "contrast",
+        "landing"
+      ]
+    },
+    {
+      "id": "landing/karrot",
+      "skill": "omd-landing",
+      "brand": "karrot",
+      "artifact": "test-v2/content-runs/gate/landing-karrot/render.html",
+      "provenance": "미생성",
+      "checks": [
+        "render",
+        "contrast",
+        "landing"
+      ]
+    },
+    {
+      "id": "autopilot/stripe",
+      "skill": "omd-autopilot",
+      "brand": "stripe",
+      "artifact": "test-v2/content-runs/gate/autopilot-stripe/render.html",
+      "provenance": "test-v2/content-runs/gate/runs/gate-autopilot-stripe.txt (배포 스킬)",
+      "checks": [
+        "render",
+        "contrast"
+      ]
+    },
+    {
+      "id": "autopilot/toss",
+      "skill": "omd-autopilot",
+      "brand": "toss",
+      "artifact": "test-v2/content-runs/gate/autopilot-toss/render.html",
+      "provenance": "test-v2/content-runs/gate/runs/gate-autopilot-toss.txt (배포 스킬)",
+      "checks": [
+        "render",
+        "contrast"
+      ]
+    },
+    {
+      "id": "autopilot/karrot",
+      "skill": "omd-autopilot",
+      "brand": "karrot",
+      "artifact": "test-v2/content-runs/gate/autopilot-karrot/render.html",
+      "provenance": "미생성",
+      "checks": [
+        "render",
+        "contrast"
+      ]
+    }
   ]
 }
