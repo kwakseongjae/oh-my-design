@@ -106,7 +106,7 @@
     "lint": "tsc --noEmit",
     "check:public-core-schemas": "node scripts/check-public-core-schemas.cjs",
     "prepare": "npm run build",
-    "prepublishOnly": "npm run query:references:data:check && npm run gen:presets:check && npm run build && node scripts/sync-runtime-mirrors.cjs --check && node scripts/gen-llms-full.cjs --check-only && bash scripts/check-release-hygiene.sh pack",
+    "prepublishOnly": "npm run query:references:data:check && npm run gen:presets:check && npm run build && node scripts/sync-runtime-mirrors.cjs --check && node scripts/gen-llms-full.cjs --check-only && bash scripts/check-release-hygiene.sh pack && npm run gate:quality",
     "gen:llms-full": "node scripts/gen-llms-full.cjs",
     "gen:llms-full:check": "node scripts/gen-llms-full.cjs --check-only",
     "sync:runtime-mirrors": "node scripts/sync-runtime-mirrors.cjs --write",
@@ -146,7 +146,9 @@
     "design-md": "node scripts/migrate-design-md-core.cjs",
     "postinstall": "node scripts/postinstall.cjs",
     "gen:presets": "node scripts/build-presets-data.mjs",
-    "gen:presets:check": "node scripts/build-presets-data.mjs --check"
+    "gen:presets:check": "node scripts/build-presets-data.mjs --check",
+    "gate:quality": "node test-v2/tools/quality-gate.mjs",
+    "gate:quality:strict": "node test-v2/tools/quality-gate.mjs --strict"
   },
   "keywords": [
     "design-system",
