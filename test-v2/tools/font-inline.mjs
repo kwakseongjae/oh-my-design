@@ -28,6 +28,11 @@ const KNOWN = {
   "bricolage-grotesque": { axis: "opsz", note: "그로테스크 · 옵티컬 사이즈 · 디스플레이/본문 겸용", weight: "200 800" },
   inter: { axis: "opsz", note: "중립 산세리프 · 본문", weight: "100 900" },
   "instrument-sans": { axis: "wdth", note: "산세리프 · 폭 축", weight: "400 700" },
+  // 다크 AI 제품 랜딩용 후보(2026-09-03 다운로드 확인, wght 축)
+  syne: { axis: "wght", note: "디스플레이 · 넓은 기하 그로테스크 · 굵기 400–800", weight: "400 800" },
+  unbounded: { axis: "wght", note: "디스플레이 · 확장형 · 굵기 200–900", weight: "200 900" },
+  "space-grotesk": { axis: "wght", note: "그로테스크 · 테크 결 · 굵기 300–700", weight: "300 700" },
+  geist: { axis: "wght", note: "중립 산세리프(Vercel) · 본문/UI · 굵기 100–900", weight: "100 900" },
 };
 
 if (argv.includes("--list")) {
