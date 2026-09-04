@@ -59,3 +59,4 @@ aphrodite/*/reviews/*
 !aphrodite/*/trace.md
 !aphrodite/*/storyboard-*.md
 !aphrodite/*/trace-*.md
+!aphrodite/*/r*-build-notes.md
