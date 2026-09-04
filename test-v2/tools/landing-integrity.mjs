@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * landing-integrity.mjs — 코덱스 §5의 기계 규칙 LI-1…LI-23을 렌더 파일에 적용한다.
+ * landing-integrity.mjs — 코덱스 §5의 기계 규칙 LI-1…LI-33을 렌더 파일에 적용한다.
  *
  * 근거: docs/design-excellence/landing-craft-codex.md (5사이트 실측, 2026-09-02). 임계값은 그 문서
  * §5 표를 그대로 옮겼고, 측정 코드는 리서치 리그(test-v2/tools/landing-probes/measure-landing.mjs ·
@@ -150,7 +150,7 @@ const STRUCT = () => {
 
 // ---------------------------------------------------------------- 판정
 const isEaseIn = (e) => { if (!e) return false; if (/^ease-in$/.test(e.trim())) return true; const m = e.match(/cubic-bezier\(\s*([\d.]+)\s*,\s*(-?[\d.]+)\s*,\s*([\d.]+)\s*,\s*(-?[\d.]+)/); if (!m) return false; const [x1, y1, x2, y2] = m.slice(1).map(Number); return y1 < x1 - 0.15 && y2 <= x2 + 0.05; };
-function judge(m, reveals) {
+function judge(m, reveals, scrub) {
   const R = [];
   const push = (id, status, detail) => R.push({ id, status, detail });
   const secs = m.sections; const nonHero = secs.slice(1);
@@ -234,8 +234,92 @@ function judge(m, reveals) {
     `alt 구체성: generic/빈 alt ${c.imgGenericAlt || 0}/${c.imgTotal || 0} — IL-5`);
   push("LI-26", (m.density?.perVh ?? 0) < 1 ? "FAIL" : "PASS",
     `미디어 ${m.density?.mediaCount ?? 0}개 / ${m.pageVh} vh = ${m.density?.perVh ?? 0}개/vh (최소 1.0), video ${m.density?.videos ?? 0}`);
+
+  // LI-33 정착 타이밍 — LC-48. JS 트리거는 FAIL 로, CSS view() 는 WARN 으로 판정한다:
+  // view() 의 range 는 각 subject 기준이라 "감상 구간"을 섹션 좌표로 환산할 수 없고,
+  // 종점이 cover/exit 100% 인 것이 시차(parallax)처럼 정착점이 **없는** 연출일 수도 있기 때문이다.
+  const sc = scrub || { entries: [], cssRanges: [], hasST: false };
+  if (sc.entries.length) {
+    // 창이 같은 트리거(같은 섹션에 붙은 여러 트윈)는 하나로 센다 — 갤러리 카드 12개가 12개 결함이 아니다.
+    const wins = new Map();
+    for (const e of sc.entries) { const k = `${e.trigger}|${e.start}|${e.end}`; if (!wins.has(k) || e.pinLeadVh < wins.get(k).pinLeadVh) wins.set(k, e); }
+    const W = [...wins.values()];
+    const bad = W.filter((e) => e.pinLeadVh < 0.6 || e.leadVh < 0.5);
+    const worst = W.reduce((a, b) => (a === null || b.pinLeadVh < a.pinLeadVh ? b : a), null);
+    // 퇴장(exit)·시차(parallax) 트윈은 정착점이 **없는** 것이 정상이므로 한둘은 결함이 아니다(측정:
+    // dennissnellenberg 4개 창 중 2개가 히어로 퇴장). 과반이 결함이면 페이지의 문법 자체가 틀린 것이다.
+    const ratio = W.length ? bad.length / W.length : 0;
+    push("LI-33", ratio > 0.5 ? "FAIL" : bad.length ? "WARN" : "PASS",
+      `스크럽/핀 창 ${W.length}개 중 정착 결함 ${bad.length}개(${Math.round(ratio * 100)}%, 과반이면 FAIL) · 최악 ${worst.trigger} settle ${worst.settlePct}% · 정착 후 홀드 ${worst.pinLeadVh}vh(최소 0.6) — LC-48`);
+  } else if (sc.cssRanges.length) {
+    const late = sc.cssRanges.filter((r) => /(cover|exit)\s+(1\d\d|100)%\s*$/.test(r.range) || /default/.test(r.range));
+    push("LI-33", late.length ? "WARN" : "PASS",
+      `CSS view() ${sc.cssRanges.length}개 · 종점이 cover/exit 100% 인 것 ${late.length}개 (시차면 정상, 조립/리빌이면 LC-48 위반) — LC-48`);
+  } else {
+    push("LI-33", "PASS", "스크럽/핀 타임라인 없음 — 해당 없음");
+  }
   return R;
 }
+
+// ---------------------------------------------------------------- LI-33 정착 타이밍 (LC-48)
+/* 스크럽/핀 애니메이션이 "결과 상태"에 도달하는 스크롤 위치와 그 무대가 화면을 떠나는 위치의 간격을 잰다.
+   근거·정의는 docs/research/scrub-timing-2026-09-04.md, 범용 계측기는 docs/research/scrub-timing-probe.mjs.
+   GSAP ScrollTrigger 가 있으면 정확히, 없으면 CSS animation-range 로 근사, 둘 다 없으면 해당 없음. */
+const SCRUB = () => {
+  const vh = innerHeight;
+  const nameOf = (el) => { if (!el || !el.tagName) return "(none)"; if (el.id) return "#" + el.id;
+    const c = (el.className && String(el.className).trim().split(/\s+/)[0]) || ""; return el.tagName.toLowerCase() + (c ? "." + c : ""); };
+  const cssRanges = [];
+  for (const sheet of document.styleSheets) {
+    let rules; try { rules = sheet.cssRules; } catch { continue; }
+    if (!rules) continue;
+    const walk = (list) => { for (const r of list) { if (r.cssRules) { walk(r.cssRules); continue; }
+      const tl = r.style && (r.style.getPropertyValue("animation-timeline") || r.style.getPropertyValue("view-timeline"));
+      if (!tl) continue;
+      cssRanges.push({ selector: (r.selectorText || "?").slice(0, 48), range: (r.style.getPropertyValue("animation-range") || "").trim() || "(default cover 0% cover 100%)" }); } };
+    walk(rules);
+  }
+  for (const el of document.querySelectorAll("[style*='animation-timeline']"))
+    cssRanges.push({ selector: nameOf(el) + "[inline]", range: (el.style.animationRange || "").trim() || "(default cover 0% cover 100%)" });
+  /* 폴백: 엔진이 animation-timeline 을 모르면 CSSOM 에서 선언이 사라진다 — <style> 원문을 읽는다. */
+  if (!cssRanges.length) {
+    let raw = ""; for (const st of document.querySelectorAll("style")) raw += st.textContent || "";
+    for (const el of document.querySelectorAll("[style]")) raw += ";" + el.getAttribute("style");
+    if (/animation-timeline\s*:/.test(raw)) {
+      const found = [...raw.matchAll(/animation-range\s*:\s*([^;}"']+)/g)].map((m) => ({ selector: "(raw css text)", range: m[1].trim() }));
+      cssRanges.push(...(found.length ? found : [{ selector: "(raw css text)", range: "(default cover 0% cover 100%)" }]));
+    }
+  }
+
+  const ST = window.ScrollTrigger;
+  const entries = [];
+  if (ST && typeof ST.getAll === "function") {
+    for (const t of ST.getAll()) {
+      const scrubbed = t.vars && t.vars.scrub !== undefined && t.vars.scrub !== false;
+      if (!scrubbed && !t.pin) continue;
+      const el = t.trigger || t.pinnedContainer;
+      let secTop = null, secH = null;
+      if (el && el.getBoundingClientRect) { const r = el.getBoundingClientRect(); secTop = Math.round(r.top + scrollY); secH = Math.round(r.height); }
+      const start = Math.round(t.start), end = Math.round(t.end);
+      let ratio = 1;                    /* 타임라인의 마지막 트윈이 끝나는 시각 / 전체 길이 */
+      try { const a = t.animation;
+        if (a && typeof a.duration === "function" && a.duration() > 0 && typeof a.getChildren === "function") {
+          let mx = 0; for (const k of a.getChildren(true, true, true)) {
+            const e = (typeof k.startTime === "function" ? k.startTime() : 0) + (typeof k.duration === "function" ? k.duration() : 0);
+            if (e > mx) mx = e; }
+          if (mx > 0) ratio = Math.min(1, mx / a.duration()); } } catch { /* 보수적으로 1 */ }
+      const settle = start + (end - start) * ratio;
+      let enter, exit, pinExit;
+      if (t.pin) { enter = Math.max(0, start - vh); exit = end + vh; pinExit = end; }
+      else { if (secTop === null || !secH) continue; enter = Math.max(0, secTop - vh); exit = secTop + secH; pinExit = secTop + secH - vh; }
+      const span = exit - enter;
+      entries.push({ trigger: nameOf(el), start, end, pin: !!t.pin, scrub: t.vars.scrub, ratio: +ratio.toFixed(2),
+        settlePct: span > 0 ? +(((settle - enter) / span) * 100).toFixed(1) : null,
+        leadVh: +((exit - settle) / vh).toFixed(2), pinLeadVh: +((pinExit - settle) / vh).toFixed(2) });
+    }
+  }
+  return { vh, hasST: !!(ST && typeof ST.getAll === "function"), entries, cssRanges };
+};
 
 // ---------------------------------------------------------------- 실행
 const { chromium, launchOptions } = chromiumRuntime();
@@ -267,11 +351,12 @@ for (const f of files) {
     await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
     await page.waitForTimeout(600);
     const m = await page.evaluate(STRUCT);
-    const checks = judge(m, reveals);
+    const scrub = await page.evaluate(SCRUB);
+    const checks = judge(m, reveals, scrub);
     const fails = checks.filter((c) => c.status === "FAIL").length;
     if (fails) anyFail = true;
-    results.push({ file: f, fails, warns: checks.filter((c) => c.status === "WARN").length, checks, measurements: m, reveals, errors: errors.slice(0, 3) });
-    if (OUT) { mkdirSync(OUT, { recursive: true }); writeFileSync(join(OUT, basename(dirname(abs)) + "-" + basename(abs, ".html") + ".landing.json"), JSON.stringify({ file: f, checks, measurements: m, reveals }, null, 1)); }
+    results.push({ file: f, fails, warns: checks.filter((c) => c.status === "WARN").length, checks, measurements: m, reveals, scrub, errors: errors.slice(0, 3) });
+    if (OUT) { mkdirSync(OUT, { recursive: true }); writeFileSync(join(OUT, basename(dirname(abs)) + "-" + basename(abs, ".html") + ".landing.json"), JSON.stringify({ file: f, checks, measurements: m, reveals, scrub }, null, 1)); }
   } catch (e) {
     results.push({ file: f, fatal: String(e).split("\n")[0] }); anyFail = true;
   } finally { await context.close(); }

@@ -193,6 +193,7 @@ Definitions (exact form in `probe-reflexes.mjs`): **card grid** = ≥3 siblings 
 | LI-21 | card grids | ≥2 groups of ≥4 identical sibling surfaces |
 | LI-22 | nested cards | >9 (worst exemplar: linear) |
 | LI-23 | semantics | no `<h1>`, or more than one |
+| LI-33 | settle timing | 스크럽/핀 창의 **과반**이 `pinLeadVh < 0.6` 또는 `leadVh < 0.5` (LC-48). ScrollTrigger 없으면 CSS `animation-range` 로 WARN 판정, 둘 다 없으면 해당 없음 |
 
 LI-1…LI-19 come from `measure-landing.mjs`, `probe-reveals.mjs` and `probe-easing.mjs`; LI-20…LI-23 from `probe-reflexes.mjs`.
 
@@ -251,6 +252,45 @@ LC-1~36은 **무엇을 어디에 놓는가**(기하·리듬·배치)를 규정�
 굵기 축이 모두 작동하고 외부 요청 0건이다. **OS 기본 폰트로 디스플레이 헤딩을 쓰지 않는다.**
 Google Fonts `css2` API는 UA에 따라 정적 인스턴스를 주므로, 가변 축이 필요하면 `@fontsource-variable`
 파일을 직접 받는다. 라이선스는 임베딩이 허용되는 OFL 계열만 쓴다.
+
+### LC-48 정착은 섹션 안에서 일어난다 (스크럽 타이밍 규칙) — 2026-09-04
+
+스크럽·핀 연출의 실패는 "무엇을 움직이느냐"가 아니라 **언제 멈추느냐**에서 온다. 힉스젠 r2(70점)
+피드백 — "다 펼쳐지는 시점이 스크롤이 해당 섹션을 아예 지나가는 시점이라 아쉽다" — 를 계측한 결과
+(`docs/research/scrub-timing-2026-09-04.md`), 스크럽 트리거 7개 창이 **전부** 정착점이 무대 퇴장과
+겹쳤다. 원인은 하나였다: 스티키 트랙에 `start: "top top", end: "bottom bottom"` 을 쓰면
+`end` 는 정의상 `secTop + secH − vh` = **스티키가 풀리는 바로 그 스크롤 위치**이므로,
+정착 후 정지 감상 구간이 수학적으로 정확히 0 이 된다.
+
+측정 정의 (`docs/research/scrub-timing-probe.mjs`, 어떤 페이지에서도 같은 좌표계):
+
+| 기호 | 정의 |
+|---|---|
+| `enter` / `exit` | `max(0, secTop − vh)` / `secTop + secH` (GSAP `pin` 이면 `start − vh` / `end + vh`) |
+| `settle` | `start + (end − start) × (타임라인 마지막 트윈 종료시각 / 전체 길이)` |
+| `settle%` | `(settle − enter) / (exit − enter) × 100` |
+| `pinLeadVh` | `(pinExit − settle) / vh` — 무대가 **정지한 채** 남아 있는 스크롤 구간 |
+
+규칙:
+
+- **정착 후 홀드 ≥ 0.6vh.** `pinLeadVh ≥ 0.6`. 무대가 아직 화면을 꽉 채운 채로 최소 0.6 뷰포트만큼
+  더 스크롤할 수 있어야 한다. 실측 기준선: 이 값이 0 인 연출은 예외 없이 "다 펼쳐지자마자 사라진다"로
+  읽혔고(r2 7/7), 양수인 연출만 감상 구간이 있었다(locomotive.ca `+0.5`, dennissnellenberg 푸터 `+0.2`).
+- **정착은 섹션 진행의 45~75%.** `settle%` 를 이 범위에 둔다. 90% 이상은 퇴장과 겹치고(cuberto 9/9 창이
+  75~99%, 전부 결함 판정), 40% 미만은 스크롤 길이를 낭비한다.
+- **핀은 길게, 트윈은 일찍 끝낸다.** 트리거 길이를 줄이지 말고 **타임라인이 트리거 범위의 60~70% 에서
+  끝나게** 한다(GSAP: 마지막 트윈의 종료 위치를 `duration × 0.65` 에 둔다, 또는
+  `end: () => "+=" + (trackTravel)` 를 유지한 채 `.to(..., { }, 0.65)` 로 배치). 실측:
+  gsap.com 홈의 스크럽 타임라인은 트리거 범위 3000px 중 **18.8%** 에서 트윈이 끝나고 나머지는 정지 감상이다.
+- **`end: "bottom bottom"` 을 스티키 트랙에 쓰지 않는다.** 정착 후 홀드가 0 이 되는 유일한 원인이었다.
+  대신 `end: "bottom bottom+=<hold px>"`(마커를 뷰포트 아래로 밀어 **더 일찍** 끝낸다) 또는
+  `end: () => "+=" + ((secH - vh) * 0.7)` 를 쓴다. 이때 트랙 자체가 짧으면 30% 가 0.6vh 에 못 미치므로
+  **스티키 트랙의 이동 거리는 최소 2.0vh** 여야 한다.
+- **퇴장·시차 연출은 이 규칙의 대상이 아니다.** 히어로가 위로 빠지는 트윈, `cover 0% cover 100%` 로 도는
+  시차 레이어는 "정착 상태"가 없다. 그래서 검사기는 **창의 과반이 결함일 때만** FAIL 한다
+  (dennissnellenberg 4개 창 중 2개가 정당한 히어로 퇴장이었다).
+- **유휴 층은 별개다.** 스크롤을 멈춘 사용자에게 보일 것이 있어야 한다는 요구(r2 피드백 2번)는 이 규칙이
+  아니라 유휴 스펙터클 규칙이 다룬다. LC-48 은 "정착 상태를 볼 시간"만 보장한다.
 
 ## 8. 이미지 주도 페이지 부록 (IL-1~7) — 2026-09-03, 낮은 신뢰도 표기
 
