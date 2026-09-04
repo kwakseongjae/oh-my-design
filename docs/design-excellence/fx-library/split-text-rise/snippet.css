@@ -1,0 +1,20 @@
+/* fx: split-text-rise — 단어/문자가 아래에서 밀려 올라온다. 구현: oh-my-design (MIT).
+   외부 라이브러리 0 (GSAP SplitText 도, Splitting.js 도 쓰지 않는다 — README 라이선스 항 참조). */
+.fx-split{display:inline-block}
+.fx-split__line{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.fx-split__unit{display:inline-block;transform:translate3d(0,110%,0);opacity:0;will-change:transform,opacity}
+.fx-split[data-fx-split="in"] .fx-split__unit{
+  animation:fx-split-rise var(--fx-split-dur,720ms) cubic-bezier(.16,.84,.24,1) both;
+  animation-delay:calc(var(--i,0) * var(--fx-split-stagger,42ms))}
+@supports (animation-timeline:view()){
+  .fx-split--scroll .fx-split__unit{animation:fx-split-rise linear both;animation-timeline:view();
+    animation-range:calc(entry 16% + var(--i,0) * 1.2%) calc(entry 52% + var(--i,0) * 1.2%)}
+}
+@keyframes fx-split-rise{to{transform:translate3d(0,0,0);opacity:1}}
+/* 블러 인 변형 — 초점이 맞는 느낌. 문자 단위보다 단어 단위에서 낫다 */
+.fx-split--blur .fx-split__unit{filter:blur(var(--fx-split-blur,10px))}
+.fx-split--blur[data-fx-split="in"] .fx-split__unit,
+.fx-split--blur.fx-split--scroll .fx-split__unit{animation-name:fx-split-rise-blur}
+@keyframes fx-split-rise-blur{to{transform:translate3d(0,0,0);opacity:1;filter:blur(0)}}
+@media (prefers-reduced-motion:reduce){
+  .fx-split__unit{animation:none!important;transform:none;opacity:1;filter:none}}

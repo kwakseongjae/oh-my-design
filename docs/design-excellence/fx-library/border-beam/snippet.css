@@ -1,0 +1,24 @@
+/* fx: border-beam — 테두리를 따라 도는 광원. mask-composite 로 테두리만 남긴다.
+   구현: oh-my-design (MIT). */
+@property --fx-beam-a{syntax:"<angle>";inherits:false;initial-value:0deg}
+.fx-beam{position:relative;border-radius:var(--fx-beam-r,16px);isolation:isolate}
+.fx-beam::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:2;
+  padding:var(--fx-beam-w,1.5px);
+  background:conic-gradient(from var(--fx-beam-a) at 50% 50%,
+    transparent 0deg,
+    var(--fx-beam-color,#fff) var(--fx-beam-arc,42deg),
+    transparent calc(var(--fx-beam-arc,42deg) * 2),
+    transparent 360deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude;
+  animation:fx-beam-spin var(--fx-beam-dur,5s) linear infinite;
+  animation-play-state:var(--fx-beam-state,running);
+  opacity:var(--fx-beam-opacity,1)}
+@keyframes fx-beam-spin{to{--fx-beam-a:360deg}}
+/* 호버에서만 돌리려면 부모에 .fx-beam--hover 를 함께 준다 */
+.fx-beam--hover{--fx-beam-state:paused;--fx-beam-opacity:0;transition:--fx-beam-opacity .3s}
+.fx-beam--hover:hover,.fx-beam--hover:focus-within{--fx-beam-state:running;--fx-beam-opacity:1}
+@media (prefers-reduced-motion:reduce){.fx-beam::after{animation:none;--fx-beam-a:120deg}}
+@supports not (background:conic-gradient(from 0deg,red,blue)){.fx-beam::after{display:none}}

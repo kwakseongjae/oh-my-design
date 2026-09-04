@@ -1,0 +1,41 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — text-scramble</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.big{font-size:clamp(24px,5vw,40px);letter-spacing:-.02em;margin:0 0 6px;font-weight:650}
+.stat{font-size:34px;font-weight:650;letter-spacing:-.02em}
+.row{display:flex;gap:34px;flex-wrap:wrap;margin:10px 0 0}
+.row div{color:var(--mut);font-size:12px}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:10px;padding:9px 16px;font:inherit;cursor:pointer;margin-top:18px}
+.tall{height:58vh;display:grid;place-items:center;color:var(--mut)}
+</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>text-scramble <code>텍스트</code></h1>
+<p class="sub">문자가 노이즈에서 순서대로 해독된다. 문자마다 시작·종료 프레임이 달라 물결처럼 정착한다.</p>
+<h2>헤드라인</h2>
+<div class="big mono fx-scramble fx-scramble--fixed">
+  <span class="fx-scramble__ghost">해독이 끝나면 멈춘다</span><span class="fx-scramble__body" id="s1">해독이 끝나면 멈춘다</span>
+</div>
+<h2>수치 — 폭 고정이 필수인 자리</h2>
+<div class="row">
+  <div><div class="stat mono fx-scramble"><span class="fx-scramble__body" id="s2">99.98%</span></div>가동률</div>
+  <div><div class="stat mono fx-scramble"><span class="fx-scramble__body" id="s3">412ms</span></div>응답</div>
+  <div><div class="stat mono fx-scramble"><span class="fx-scramble__body" id="s4">1,284</span></div>처리</div>
+</div>
+<button class="btn" id="go">다시 재생</button>
+<div class="tall">↓ 화면 진입 시 1회</div>
+<div class="big mono fx-scramble"><span class="fx-scramble__body" data-fx-scramble>진입할 때 한 번만 실행된다</span></div>
+<div class="tall">↑</div>
+</div>
+<script src="./snippet.js"></script>
+<script>
+var scramble=fxLib.scramble, scrambleOnView=fxLib.scrambleOnView;
+const ids=['s1','s2','s3','s4'];
+const play=()=>ids.forEach((id,k)=>{const e=document.getElementById(id);
+  if(!e.dataset.fxTo)e.dataset.fxTo=e.textContent;setTimeout(()=>scramble(e,e.dataset.fxTo),k*90);});
+play(); document.getElementById('go').addEventListener('click',play);
+scrambleOnView();
+</script>
+<script src="../_shell.js"></script></body></html>

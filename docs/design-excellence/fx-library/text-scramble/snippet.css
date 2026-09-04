@@ -1,0 +1,7 @@
+/* fx: text-scramble — 폭이 흔들리지 않게 잡아주는 것이 전부다. 구현: oh-my-design (MIT). */
+.fx-scramble{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+.fx-scramble__body{display:inline-block;white-space:pre}
+/* 글자 폭이 제각각인 서체에서 레이아웃이 튀는 것을 막는다 */
+.fx-scramble--fixed{display:inline-grid}
+.fx-scramble--fixed > *{grid-area:1/1}
+.fx-scramble--fixed .fx-scramble__ghost{visibility:hidden;pointer-events:none}

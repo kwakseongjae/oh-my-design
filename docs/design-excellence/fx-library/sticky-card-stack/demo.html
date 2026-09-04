@@ -1,0 +1,29 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — sticky-card-stack</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+.panel{border-radius:20px;padding:32px;min-height:56vh;display:grid;align-content:space-between;
+  border:1px solid var(--line);box-shadow:0 30px 60px -40px rgba(0,0,0,.7)}
+.panel h3{margin:0;font-size:clamp(20px,3.4vw,30px);letter-spacing:-.028em}
+.panel p{margin:8px 0 0;color:var(--mut);max-width:44ch}
+.panel b{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.p1{background:linear-gradient(150deg,#1c2a6b,#2a4bb0)}
+.p2{background:linear-gradient(150deg,#0e4a45,#159d86)}
+.p3{background:linear-gradient(150deg,#5a2b12,#c07321)}
+.p4{background:linear-gradient(150deg,#4a1338,#a3306e)}
+.panel h3,.panel b{color:#fff}.panel p{color:rgba(255,255,255,.7)}
+.tall{height:30vh}
+</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>sticky-card-stack <code>깊이</code></h1>
+<p class="sub">각 카드가 <code>top</code> 에 붙어 멈추고 다음 카드가 그 위로 올라온다. 지나간 카드는 살짝 축소·어두워져 뒤로 물러난다.</p>
+<div class="fx-stack">
+  <div class="fx-stack__item" style="--i:0"><div class="panel p1"><b>01</b><div><h3>카드는 사라지지 않는다</h3><p>스크롤해도 화면에 남아 다음 카드에 덮인다.</p></div></div></div>
+  <div class="fx-stack__item" style="--i:1"><div class="panel p2"><b>02</b><div><h3>14px 씩 어긋나 쌓인다</h3><p>--fx-stack-step 이 층의 두께를 만든다.</p></div></div></div>
+  <div class="fx-stack__item" style="--i:2"><div class="panel p3"><b>03</b><div><h3>뒤 카드는 물러난다</h3><p>scale .93 · brightness .82 · blur 1.5px.</p></div></div></div>
+  <div class="fx-stack__item" style="--i:3"><div class="panel p4"><b>04</b><div><h3>4장이 상한</h3><p>5장을 넘어가면 스크롤이 길어지기만 한다.</p></div></div></div>
+</div>
+<div class="tall"></div>
+</div>
+<script src="../_shell.js"></script></body></html>

@@ -1,0 +1,22 @@
+/* fx: aurora-mesh — 떠다니는 색 덩어리로 만드는 메시 그라디언트 배경
+   구현: oh-my-design (MIT). transform 만 애니메이트하므로 컴포지터에서만 돈다. */
+.fx-aurora{position:relative;isolation:isolate;overflow:hidden;background:var(--fx-aurora-base,transparent)}
+.fx-aurora__field{position:absolute;inset:-25%;z-index:0;pointer-events:none;
+  filter:blur(var(--fx-aurora-blur,72px)) saturate(var(--fx-aurora-sat,1.1));
+  opacity:var(--fx-aurora-opacity,.9)}
+.fx-aurora__blob{position:absolute;width:52%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 50% 50%,var(--c) 0%,color-mix(in oklab,var(--c) 55%,transparent) 42%,transparent 70%);
+  will-change:transform;
+  animation:fx-aurora-drift var(--d,26s) cubic-bezier(.45,0,.55,1) infinite alternate;
+  animation-delay:var(--delay,0s)}
+.fx-aurora__blob:nth-child(1){top:-8%;left:-4%;--c:var(--fx-aurora-1,#6f7bff);--d:24s}
+.fx-aurora__blob:nth-child(2){top:6%;right:-8%;left:auto;--c:var(--fx-aurora-2,#22d3b7);--d:31s;--delay:-7s}
+.fx-aurora__blob:nth-child(3){bottom:-14%;left:26%;top:auto;--c:var(--fx-aurora-3,#ff7ac2);--d:37s;--delay:-14s}
+@keyframes fx-aurora-drift{
+  from{transform:translate3d(0,0,0) scale(1)}
+  to{transform:translate3d(var(--tx,18%),var(--ty,14%),0) scale(var(--ts,1.18))}
+}
+.fx-aurora__blob:nth-child(2){--tx:-22%;--ty:20%;--ts:1.1}
+.fx-aurora__blob:nth-child(3){--tx:14%;--ty:-18%;--ts:1.26}
+.fx-aurora > :not(.fx-aurora__field){position:relative;z-index:1}
+@media (prefers-reduced-motion:reduce){.fx-aurora__blob{animation:none}}

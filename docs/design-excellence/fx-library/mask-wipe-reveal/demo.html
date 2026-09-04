@@ -1,0 +1,29 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — mask-wipe-reveal</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+.ph{aspect-ratio:16/9;border-radius:16px;
+  background:conic-gradient(from 210deg at 30% 30%,#3450d4,#12b39a 30%,#e0b23c 58%,#d0466f 78%,#3450d4)}
+.fx-wipe--blind{aspect-ratio:16/9;border-radius:16px;overflow:hidden}
+.fx-wipe--blind > i{background-image:conic-gradient(from 210deg at 30% 30%,#3450d4,#12b39a 30%,#e0b23c 58%,#d0466f 78%,#3450d4)}
+.tall{height:62vh;display:grid;place-items:center;color:var(--mut)}
+h2 span{color:var(--mut);font-weight:400;text-transform:none;letter-spacing:0}
+</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>mask-wipe-reveal <code>이미지 리빌</code></h1>
+<p class="sub">이미지를 페이드-업 시키는 대신 <b>닦아낸다</b>. 스크롤 진행률이 그대로 마스크의 진행률이 되므로, 사용자가 속도를 쥔다.</p>
+<div class="tall">↓ 스크롤</div>
+<h2>① sweep <span>— 대각선으로 닦기</span></h2>
+<div class="fx-wipe fx-wipe--sweep"><div class="ph"></div></div>
+<div class="tall">↓</div>
+<h2>② iris <span>— 한 점에서 열기</span></h2>
+<div class="fx-wipe fx-wipe--iris"><div class="ph"></div></div>
+<div class="tall">↓</div>
+<h2>③ blind <span>— 6칸이 시차를 두고</span></h2>
+<div class="fx-wipe fx-wipe--blind" style="--fx-wipe-n:6">
+  <i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i>
+</div>
+<div class="tall">↑ Firefox 에서는 세 개 모두 그냥 보인다 — 레이아웃은 동일하다</div>
+</div>
+<script src="../_shell.js"></script></body></html>

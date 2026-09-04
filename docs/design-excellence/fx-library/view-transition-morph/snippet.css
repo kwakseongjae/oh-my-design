@@ -1,0 +1,15 @@
+/* fx: view-transition-morph — 목록 → 상세로 요소가 "이어진다". 구현: oh-my-design (MIT). */
+@view-transition{navigation:auto} /* 문서 간 전환용 (같은 오리진) */
+::view-transition-group(*){animation-duration:var(--fx-vt-dur,420ms);
+  animation-timing-function:cubic-bezier(.22,.72,.24,1)}
+/* 이어질 요소에 이름을 준다. 한 시점에 같은 이름은 하나만 존재해야 한다. */
+.fx-vt-hero{view-transition-name:fx-hero;contain:layout}
+.fx-vt-title{view-transition-name:fx-title;contain:layout}
+/* 이어지지 않고 새로 들어오는 것들 — 클래스로 묶어 한꺼번에 스타일링한다 */
+.fx-vt-enter{view-transition-class:fx-enter}
+::view-transition-new(.fx-enter){animation:fx-vt-in var(--fx-vt-dur,420ms) cubic-bezier(.2,.8,.25,1) both}
+::view-transition-old(.fx-enter){animation:fx-vt-out calc(var(--fx-vt-dur,420ms) * .55) ease both}
+@keyframes fx-vt-in{from{opacity:0;transform:translate3d(0,14px,0)}}
+@keyframes fx-vt-out{to{opacity:0}}
+@media (prefers-reduced-motion:reduce){
+  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}

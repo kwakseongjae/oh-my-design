@@ -1,0 +1,18 @@
+/* fx: pixel-dissolve — 격자 칸이 무작위 순서로 사라지며 아래 층을 드러낸다.
+   구현: oh-my-design (MIT). 칸은 인라인 --i / --r 두 값만 받는다. */
+.fx-dissolve{position:relative;isolation:isolate;overflow:hidden;border-radius:inherit}
+.fx-dissolve__grid{position:absolute;inset:0;z-index:2;display:grid;pointer-events:none;
+  grid-template-columns:repeat(var(--fx-diss-cols,14),1fr);
+  grid-template-rows:repeat(var(--fx-diss-rows,8),1fr)}
+.fx-dissolve__grid > i{display:block;background:var(--fx-diss-color,#0b0c0e);
+  transform:scale(1);opacity:1;will-change:transform,opacity}
+.fx-dissolve[data-fx-diss="go"] .fx-dissolve__grid > i{
+  animation:fx-diss-out var(--fx-diss-cell,420ms) cubic-bezier(.4,0,.6,1) both;
+  animation-delay:calc(var(--r,0) * var(--fx-diss-stagger,26ms))}
+@supports (animation-timeline:view()){
+  .fx-dissolve--scroll .fx-dissolve__grid > i{animation:fx-diss-out linear both;
+    animation-timeline:view();
+    animation-range:calc(entry 20% + var(--r,0) * .7%) calc(entry 46% + var(--r,0) * .7%)}
+}
+@keyframes fx-diss-out{to{opacity:0;transform:scale(var(--fx-diss-scale,.35))}}
+@media (prefers-reduced-motion:reduce){.fx-dissolve__grid{display:none}}

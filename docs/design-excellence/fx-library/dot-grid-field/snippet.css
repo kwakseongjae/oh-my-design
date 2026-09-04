@@ -1,0 +1,27 @@
+/* fx: dot-grid-field — 좌표계처럼 깔리는 도트/라인 그리드 + 포인터 반경 노출.
+   구현: oh-my-design (MIT). 이미지 0, 요소 1개. */
+.fx-dots{position:relative;isolation:isolate}
+.fx-dots::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:radial-gradient(var(--fx-dots-color,rgba(255,255,255,.35)) var(--fx-dots-r,1px),transparent calc(var(--fx-dots-r,1px) + .6px));
+  background-size:var(--fx-dots-gap,26px) var(--fx-dots-gap,26px);
+  background-position:center;
+  opacity:var(--fx-dots-opacity,.25);
+  /* 기본 마스크: 가운데는 보이고 가장자리는 사라진다 — 그리드가 잘린 티가 안 난다 */
+  -webkit-mask-image:var(--fx-dots-mask,radial-gradient(72% 62% at 50% 40%,#000 20%,transparent 100%));
+  mask-image:var(--fx-dots-mask,radial-gradient(72% 62% at 50% 40%,#000 20%,transparent 100%))}
+/* 라인 그리드 변형 */
+.fx-dots--lines::before{
+  background-image:
+    linear-gradient(to right,var(--fx-dots-color,rgba(255,255,255,.35)) 1px,transparent 1px),
+    linear-gradient(to bottom,var(--fx-dots-color,rgba(255,255,255,.35)) 1px,transparent 1px)}
+/* 포인터 반경 안에서만 밝아지는 변형 — 좌표는 spotlight-pointer 와 같은 변수를 쓴다 */
+.fx-dots--reveal::before{
+  -webkit-mask-image:radial-gradient(var(--fx-dots-reveal,260px) circle at var(--fx-spot-x,-999px) var(--fx-spot-y,-999px),#000 10%,transparent 70%);
+  mask-image:radial-gradient(var(--fx-dots-reveal,260px) circle at var(--fx-spot-x,-999px) var(--fx-spot-y,-999px),#000 10%,transparent 70%);
+  opacity:var(--fx-dots-opacity,.55)}
+/* 아주 느린 표류 — 있는 줄도 모를 정도여야 한다 */
+.fx-dots--drift::before{animation:fx-dots-drift var(--fx-dots-dur,60s) linear infinite}
+@keyframes fx-dots-drift{to{background-position:var(--fx-dots-gap,26px) var(--fx-dots-gap,26px)}}
+@media (prefers-reduced-motion:reduce){.fx-dots--drift::before{animation:none}}
+.fx-dots > :not(.fx-dots__bg){position:relative;z-index:1}

@@ -1,0 +1,28 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — film-grain</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+.panel{min-height:200px;border-radius:16px;padding:26px;display:grid;align-content:end;
+  background:linear-gradient(145deg,#2b3ba8,#7a2ea8 55%,#c4456b)}
+.panel h3{margin:0 0 4px;color:#fff;font-size:17px}.panel p{margin:0;color:rgba(255,255,255,.72);font-size:13px}
+[data-theme=light] .fx-grain{--fx-grain-blend:multiply;--fx-grain-opacity:.045}
+.flat{background:var(--card);border:1px solid var(--line);min-height:150px;border-radius:16px;padding:24px}
+.flat h3{margin:0 0 4px;font-size:15px}.flat p{margin:0;color:var(--mut);font-size:13px}
+</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>film-grain <code>재질</code></h1>
+<p class="sub">그라디언트가 "디지털 뽀샤시"로 보이는 이유는 밴딩과 완벽한 매끄러움 때문이다. 그레인을 5% 얹으면 밴딩이 디더링되고 표면에 물성이 생긴다.</p>
+<h2>그라디언트 위 (본래 용도)</h2>
+<div class="grid2">
+  <div class="panel fx-grain"><h3>정지 그레인 .055</h3><p>기본값. 밴딩이 사라진다.</p></div>
+  <div class="panel fx-grain fx-grain--alive"><h3>살아있는 그레인</h3><p>steps(1) 로 8단계 점프 — 필름 영사기.</p></div>
+</div>
+<h2>평평한 면 위</h2>
+<div class="grid2" style="margin-top:16px">
+  <div class="flat"><h3>없음</h3><p>비교용.</p></div>
+  <div class="flat fx-grain" style="--fx-grain-opacity:.09"><h3>있음 .09</h3><p>종이 질감. 라이트 모드에서는 blend 를 multiply 로.</p></div>
+</div>
+<p class="note">타일 160px · 3 옥타브. baseFrequency 를 올리면 입자가 고와지고, 내리면 거칠어진다.</p>
+</div>
+<script src="../_shell.js"></script></body></html>

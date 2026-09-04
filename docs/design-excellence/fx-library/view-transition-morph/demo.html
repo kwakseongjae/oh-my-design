@@ -1,0 +1,63 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — view-transition-morph</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+.tiles{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.tile{border:0;padding:0;border-radius:16px;overflow:hidden;cursor:pointer;background:none;text-align:left}
+.thumb{aspect-ratio:4/3;border-radius:16px}
+.t1{background:linear-gradient(150deg,#2340b5,#38b0d8)}
+.t2{background:linear-gradient(150deg,#0f7a5e,#8bd14a)}
+.t3{background:linear-gradient(150deg,#8a3510,#e0a33c)}
+.t4{background:linear-gradient(150deg,#5c1440,#d3548c)}
+.tile b{display:block;margin-top:9px;font-size:13px;color:var(--fg)}
+.detail{display:none}
+.detail[data-open]{display:block}
+.detail .thumb{aspect-ratio:16/7}
+.detail h3{font-size:clamp(22px,4vw,34px);letter-spacing:-.03em;margin:16px 0 6px}
+.detail p{color:var(--mut);margin:0 0 18px;max-width:56ch}
+.back{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:10px;padding:9px 16px;font:inherit;cursor:pointer}
+.warn{margin-top:20px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;color:var(--mut);font-size:13px}
+</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>view-transition-morph <code>전환</code></h1>
+<p class="sub">같은 이름(<code>view-transition-name</code>)을 가진 요소는 두 상태 사이에서 <b>같은 것</b>으로 취급되어 자동으로 이어진다. 위치·크기 계산은 브라우저가 한다.</p>
+<div id="list">
+  <div class="tiles">
+    <button class="tile" data-k="1"><div class="thumb t1"></div><b>첫 번째</b></button>
+    <button class="tile" data-k="2"><div class="thumb t2"></div><b>두 번째</b></button>
+    <button class="tile" data-k="3"><div class="thumb t3"></div><b>세 번째</b></button>
+    <button class="tile" data-k="4"><div class="thumb t4"></div><b>네 번째</b></button>
+  </div>
+</div>
+<div class="detail" id="detail">
+  <div class="thumb fx-vt-hero" id="dthumb"></div>
+  <h3 class="fx-vt-title" id="dtitle">제목</h3>
+  <p class="fx-vt-enter">썸네일이 페이드된 게 아니라 <b>같은 요소가 이동·확대</b>된 것이다. 뒤로 가면 정확히 원래 자리로 돌아간다.</p>
+  <button class="back fx-vt-enter" id="back">← 목록</button>
+</div>
+<div class="warn" id="warn"></div>
+</div>
+<script>
+(function(){
+  var list=document.getElementById('list'),det=document.getElementById('detail'),
+      dt=document.getElementById('dthumb'),dti=document.getElementById('dtitle'),w=document.getElementById('warn');
+  var ok='startViewTransition' in document;
+  w.textContent = ok ? '이 브라우저는 View Transitions 를 지원합니다 — 전환이 이어집니다.'
+                     : '이 브라우저는 View Transitions 미지원 — 전환 없이 즉시 바뀝니다(레이아웃은 동일).';
+  function go(fn){ if(ok) document.startViewTransition(fn); else fn(); }
+  list.addEventListener('click',function(e){
+    var b=e.target.closest('.tile'); if(!b)return;
+    var k=b.dataset.k, th=b.querySelector('.thumb'), title=b.querySelector('b').textContent;
+    th.classList.add('fx-vt-hero'); b.querySelector('b').classList.add('fx-vt-title');
+    go(function(){
+      dt.className='thumb fx-vt-hero t'+k; dti.textContent=title;
+      list.style.display='none'; det.setAttribute('data-open','');
+    });
+  });
+  document.getElementById('back').addEventListener('click',function(){
+    go(function(){ det.removeAttribute('data-open'); list.style.display=''; });
+  });
+})();
+</script>
+<script src="../_shell.js"></script></body></html>

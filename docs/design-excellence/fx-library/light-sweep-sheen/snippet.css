@@ -1,0 +1,22 @@
+/* fx: light-sweep-sheen — 표면을 한 번 지나가는 정반사. 구현: oh-my-design (MIT).
+   "계속 도는 빔" 대신 사건(진입/호버)에 묶인 1회성 하이라이트. */
+.fx-sheen{position:relative;overflow:hidden;isolation:isolate}
+.fx-sheen::after{
+  content:"";position:absolute;top:0;bottom:0;left:0;width:100%;z-index:3;pointer-events:none;
+  background:linear-gradient(var(--fx-sheen-angle,105deg),
+    transparent 36%,
+    var(--fx-sheen-color,rgba(255,255,255,.5)) 47%,
+    var(--fx-sheen-color2,rgba(255,255,255,.16)) 52%,
+    transparent 62%);
+  transform:translate3d(-130%,0,0)}
+/* ① 호버 트리거 */
+.fx-sheen--hover:hover::after{animation:fx-sheen-run var(--fx-sheen-dur,900ms) cubic-bezier(.25,.6,.35,1) 1 both}
+/* ② 스크롤 진입 트리거 (Chrome/Safari) */
+@supports (animation-timeline:view()){
+  .fx-sheen--enter::after{animation:fx-sheen-run linear both;
+    animation-timeline:view();animation-range:entry 30% cover 55%}
+}
+/* ③ 수동 트리거 — JS 나 CSS 로 data 속성만 켜면 된다 */
+.fx-sheen[data-fx-sheen="run"]::after{animation:fx-sheen-run var(--fx-sheen-dur,900ms) cubic-bezier(.25,.6,.35,1) 1 both}
+@keyframes fx-sheen-run{to{transform:translate3d(130%,0,0)}}
+@media (prefers-reduced-motion:reduce){.fx-sheen::after{animation:none!important;transform:translate3d(-130%,0,0)}}

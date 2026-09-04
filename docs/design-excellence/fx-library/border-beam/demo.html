@@ -1,0 +1,27 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — border-beam</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;min-height:150px}
+.card h3{margin:0 0 6px;font-size:15px}.card p{margin:0;color:var(--mut);font-size:13px}
+[data-theme=dark] .card{--fx-beam-color:#fff}
+[data-theme=light] .card{--fx-beam-color:#3b5bfd;--fx-beam-w:2px}
+.pad{padding:22px}
+</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>border-beam <code>빛</code></h1>
+<p class="sub">회전하는 conic-gradient 를 <code>mask-composite:exclude</code> 로 테두리 폭만 남긴다. 오버레이 div 도, JS 도 필요 없다.</p>
+<h2>상시 회전</h2>
+<div class="pad grid2" style="padding-left:0;padding-right:0">
+  <div class="card fx-beam"><h3>기본</h3><p>5s / arc 42deg. 강조하고 싶은 카드 한 장에만.</p></div>
+  <div class="card fx-beam" style="--fx-beam-dur:9s;--fx-beam-arc:90deg;--fx-beam-w:1px"><h3>느리고 넓게</h3><p>9s / arc 90deg — 훨씬 덜 요란하다.</p></div>
+</div>
+<h2>호버에서만 (권장)</h2>
+<div class="pad grid2" style="padding-left:0;padding-right:0">
+  <div class="card fx-beam fx-beam--hover"><h3>커서를 올려보세요</h3><p>기본 상태에서는 존재하지 않는다.</p></div>
+  <div class="card fx-beam fx-beam--hover" style="--fx-beam-dur:3s"><h3>빠르게</h3><p>3s — 클릭 유도용.</p></div>
+</div>
+<p class="note">라이트 모드에서 흰색 빔은 보이지 않는다. 라이트에서는 빔 색을 브랜드 색으로 바꾸고 폭을 1px 늘린다.</p>
+</div>
+<script src="../_shell.js"></script></body></html>

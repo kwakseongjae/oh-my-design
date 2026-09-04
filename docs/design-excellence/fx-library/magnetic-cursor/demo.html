@@ -1,0 +1,25 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — magnetic-cursor</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+.row{display:flex;gap:26px;flex-wrap:wrap;align-items:center;padding:44px 0}
+.btn{border:0;border-radius:14px;padding:0 26px;height:50px;min-width:132px;font:600 14px/50px inherit;cursor:pointer;
+  background:var(--accent);color:#fff;text-align:center}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--fg)}
+.dot{width:52px;height:52px;border-radius:999px;background:var(--card);border:1px solid var(--line);display:grid;place-items:center}
+</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>magnetic-cursor <code>커서</code></h1>
+<p class="sub">반경 안에서만, 거리에 반비례해 끌린다. 라벨이 본체보다 45% 더 끌리는 <b>어긋남</b>이 자성처럼 읽히게 하는 핵심이다.</p>
+<div class="row">
+  <button class="btn fx-mag"><span class="fx-mag__label">시작하기</span></button>
+  <button class="btn ghost fx-mag" data-fx-mag-pull=".5" data-fx-mag-radius="130"><span class="fx-mag__label">강한 자성</span></button>
+  <button class="btn ghost fx-mag" data-fx-mag-pull=".16"><span class="fx-mag__label">약한 자성</span></button>
+  <div class="dot fx-mag" data-fx-mag-pull=".55" aria-hidden="true"><span class="fx-mag__label">↗</span></div>
+</div>
+<p class="note">클릭 타깃이 50px 이상이어야 한다. 작은 타깃에 자성을 걸면 오히려 못 누른다. 터치 기기·<code>reduced-motion</code> 에서는 마운트 안 함.</p>
+</div>
+<script src="./snippet.js"></script>
+<script>fxLib.mountMagnetic();</script>
+<script src="../_shell.js"></script></body></html>

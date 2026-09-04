@@ -1,0 +1,17 @@
+/* fx: sticky-card-stack — 카드가 쌓이며 지나간다. 구현: oh-my-design (MIT).
+   골격은 position:sticky 만으로 CSS-only. 스케일/블러 보정만 scroll-timeline 이 얹는다. */
+.fx-stack{display:grid;gap:var(--fx-stack-gap,10vh)}
+.fx-stack__item{position:sticky;
+  top:calc(var(--fx-stack-top,10vh) + var(--i,0) * var(--fx-stack-step,14px));
+  /* 뒤로 갈수록 살짝 작아진다 — 겹칠 때 아래 카드가 보이도록 */
+  transform-origin:50% 0}
+@supports (animation-timeline:view()){
+  .fx-stack__item > *{animation:fx-stack-recede linear both;
+    animation-timeline:view();animation-range:exit -10% exit 90%}
+}
+@keyframes fx-stack-recede{
+  to{transform:scale(var(--fx-stack-min,.93));
+     filter:brightness(var(--fx-stack-dim,.82)) blur(var(--fx-stack-blur,1.5px))}}
+@media (prefers-reduced-motion:reduce){
+  .fx-stack__item{position:static}
+  .fx-stack__item > *{animation:none}}

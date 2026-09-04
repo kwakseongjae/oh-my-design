@@ -1,0 +1,25 @@
+/* fx: holo-foil — 각도에 따라 색이 바뀌는 홀로그램 포일. 구현: oh-my-design (MIT).
+   기법 참고: 홀로 카드 CSS 계보(아래 README). 코드는 재작성 — 원본은 GPL-3.0 이라 복제하지 않았다. */
+.fx-foil{position:relative;isolation:isolate;overflow:hidden;
+  --fx-foil-x:50%;--fx-foil-y:50%;--fx-foil-on:0}
+.fx-foil::before{ /* 이리디센트 층 — 포인터 각도에 따라 색상환이 이동 */
+  content:"";position:absolute;inset:0;z-index:4;pointer-events:none;border-radius:inherit;
+  background:repeating-linear-gradient(
+    calc(var(--fx-foil-angle,112deg)) ,
+    hsl(  2 88% 62%/.55) 0%, hsl( 48 92% 62%/.55) 8%,
+    hsl(142 78% 58%/.55) 16%, hsl(196 92% 62%/.55) 24%,
+    hsl(268 88% 68%/.55) 32%, hsl(  2 88% 62%/.55) 40%);
+  background-size:210% 210%;
+  background-position:calc(var(--fx-foil-x) * 1.6 - 30%) calc(var(--fx-foil-y) * 1.6 - 30%);
+  mix-blend-mode:color-dodge;
+  opacity:calc(var(--fx-foil-on) * var(--fx-foil-strength,.42));
+  transition:opacity .3s ease}
+.fx-foil::after{ /* 정반사 광택 — 포인터를 따라오는 흰 점 */
+  content:"";position:absolute;inset:0;z-index:5;pointer-events:none;border-radius:inherit;
+  background:radial-gradient(farthest-corner circle at var(--fx-foil-x) var(--fx-foil-y),
+    rgba(255,255,255,.7) 4%, rgba(255,255,255,.12) 26%, rgba(0,0,0,.2) 62%, rgba(0,0,0,.5) 100%);
+  mix-blend-mode:overlay;
+  opacity:calc(var(--fx-foil-on) * var(--fx-foil-gloss,.6));
+  transition:opacity .3s ease}
+@media (hover:none){.fx-foil::before,.fx-foil::after{display:none}}
+@media (prefers-reduced-motion:reduce){.fx-foil::before,.fx-foil::after{transition:none}}

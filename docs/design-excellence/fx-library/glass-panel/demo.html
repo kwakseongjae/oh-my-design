@@ -1,0 +1,32 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — glass-panel</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+body{background:
+  radial-gradient(60% 40% at 12% 8%,#3b3ba8,transparent 62%),
+  radial-gradient(50% 40% at 88% 22%,#1d8f7e,transparent 62%),
+  radial-gradient(70% 50% at 50% 108%,#a8356b,transparent 60%),var(--bg);background-attachment:fixed}
+.bar{position:sticky;top:0;z-index:20;display:flex;gap:18px;align-items:center;padding:14px 20px;
+  margin:0 -20px 26px;border-radius:0}
+.bar b{font-size:14px}.bar a{color:var(--mut);text-decoration:none;font-size:13px}
+.card{padding:24px;min-height:170px}
+.card h3{margin:0 0 6px;font-size:15px}.card p{margin:0;color:var(--mut);font-size:13px}
+[data-theme=light] .fx-glass{--fx-glass-tint:rgba(255,255,255,.55);--fx-glass-edge-top:rgba(255,255,255,.9);
+  --fx-glass-edge-bot:rgba(16,17,26,.06);--fx-glass-solid:rgba(255,255,255,.94)}
+.tall{height:60vh;display:grid;place-items:center;color:var(--mut)}
+</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<div class="bar fx-glass fx-glass--fade"><b>glass-panel</b><a href="#a">스크롤하면 아래가 비쳐 지나간다</a></div>
+<h1>glass-panel <code>재질</code></h1>
+<p class="sub">유리로 보이게 하는 것은 블러가 아니라 <b>가장자리</b>다. 위 모서리에 밝은 정반사 1px, 아래 모서리에 어두운 1px — 그 두 줄이 두께를 만든다.</p>
+<div class="grid2">
+  <div class="card fx-glass"><h3>기본</h3><p>blur 16 / saturate 1.5. saturate 를 빼면 뒤가 회색으로 죽는다.</p></div>
+  <div class="card fx-glass" style="--fx-glass-blur:34px;--fx-glass-sat:1.9"><h3>두꺼운 유리</h3><p>blur 34 / saturate 1.9.</p></div>
+  <div class="card fx-glass" style="--fx-glass-blur:6px;--fx-glass-tint:rgba(255,255,255,.03)"><h3>얇은 유리</h3><p>blur 6 — 거의 필름.</p></div>
+  <div class="card fx-glass fx-glass--fade"><h3>가장자리 페이드</h3><p>블러가 아래로 갈수록 사라져 딱딱한 경계선이 생기지 않는다.</p></div>
+</div>
+<div class="tall" id="a">↓ 상단 바가 콘텐츠 위를 지나가는 것을 보세요</div>
+<div class="tall">↓</div>
+</div>
+<script src="../_shell.js"></script></body></html>

@@ -1,0 +1,13 @@
+/* fx: tilt-3d — 포인터를 따라 기우는 카드 + 시차 레이어. 구현: oh-my-design (MIT). */
+.fx-tilt{--fx-tilt-x:0deg;--fx-tilt-y:0deg;
+  transform:perspective(var(--fx-tilt-persp,760px))
+            rotateX(var(--fx-tilt-x)) rotateY(var(--fx-tilt-y))
+            scale(var(--fx-tilt-scale,1));
+  transform-style:preserve-3d;
+  transition:transform var(--fx-tilt-settle,420ms) cubic-bezier(.2,.8,.25,1);
+  will-change:transform}
+.fx-tilt[data-fx-tilt="on"]{transition-duration:var(--fx-tilt-track,90ms)}
+/* 자식에 --z 를 주면 시차가 생긴다 — 이게 없으면 그냥 기울어진 사각형이다 */
+.fx-tilt [style*="--z"]{transform:translate3d(0,0,calc(var(--z) * 1px))}
+@media (hover:none){.fx-tilt{transform:none;transition:none}}
+@media (prefers-reduced-motion:reduce){.fx-tilt{transform:none!important;transition:none}}
