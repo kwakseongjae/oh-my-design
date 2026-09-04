@@ -24,17 +24,22 @@ const set = JSON.parse(readFileSync(join(D, "set.json"), "utf8"));
 const byId = Object.fromEntries(set.items.map((i) => [i.id, i]));
 
 // ── alt: 프롬프트 첫 문장, 중복이면 다음 문장을 붙여 서로 다른 문장으로 만든다 (IL-5 / LI-32)
-const used = new Set();
+// 문장 단위로 사용 이력을 추적한다 — 첫 문장이 같은 시퀀스(seq-01~08)는 각자 아직 안 쓴 문장을 붙여 서로 다르게 만든다.
+// 마지막에 190자로 자른 뒤에도 같은 문자열이면 id 를 붙여 절대 동일하지 않게 한다(리뷰 r2 FYI5: 8개 alt 바이트 동일).
+const usedSent = new Set(), usedFinal = new Set();
 const ALT = {};
 for (const it of set.items) {
   const sentences = it.prompt.split(/(?<=\.)\s+/).map((s) => s.trim()).filter(Boolean);
   let pick = sentences[0];
-  if (used.has(pick.toLowerCase())) {
-    const extra = sentences.slice(1).find((s) => !used.has(s.toLowerCase())) || sentences[1] || "";
-    pick = (pick + " " + extra).trim();
+  if (usedSent.has(pick.toLowerCase())) {
+    const extra = sentences.slice(1).find((s) => !usedSent.has(s.toLowerCase()));
+    if (extra) { pick = extra; }
   }
-  used.add(pick.toLowerCase());
-  ALT[it.id] = pick.replace(/\.$/, "").replace(/"/g, "&quot;").slice(0, 190);
+  usedSent.add(pick.toLowerCase());
+  let fin = pick.replace(/\.$/, "").replace(/"/g, "&quot;").slice(0, 190);
+  if (usedFinal.has(fin)) fin = (fin.slice(0, 170) + " — " + it.id).trim();
+  usedFinal.add(fin);
+  ALT[it.id] = fin;
 }
 const alt = (id) => ALT[id] || id;
 const dim = (id) => byId[id].size.split("x");

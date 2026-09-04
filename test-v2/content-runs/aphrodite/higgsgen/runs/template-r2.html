@@ -217,12 +217,13 @@ body{
 .nav-in{width:100%;max-width:calc(var(--max) + var(--gutter) * 2);margin:0 auto;
   padding:14px var(--gutter);display:flex;align-items:center;gap:var(--s24)}
 .brand{font-family:"Syne","Syne Fallback",sans-serif;font-weight:800;font-size:20px;letter-spacing:-.03em;
-  color:var(--ink);text-decoration:none}
+  color:var(--ink);text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
 .brand span{color:var(--mute)}
 .nav-links{display:flex;gap:var(--s24);margin-left:auto}
 .nav-links a{color:var(--ink);text-decoration:none;transition:color 160ms var(--e-ui)}
 .nav-links a:hover{color:var(--mute)}
-.nav .btn{padding:9px 18px;font-size:16px}
+.nav .btn{padding:11px 18px;font-size:16px;min-height:44px}
+.btn:active{filter:brightness(.96)}.nav a:active,.foot-bar a:active{opacity:.7}
 
 /* ── S1 Hero — 줌스루 ────────────────────────────────────────────────── */
 .stage--hero{background:var(--bg)}
@@ -432,7 +433,7 @@ body{
   padding-top:var(--s24);box-shadow:inset 0 1px 0 0 var(--line)}
 .foot-mark{font-family:"Syne","Syne Fallback",sans-serif;font-weight:800;font-size:20px;letter-spacing:-.03em}
 .foot-bar nav{display:flex;gap:var(--s24);margin-left:auto}
-.foot-bar a{color:var(--mute);text-decoration:none;transition:color 160ms var(--e-ui)}
+.foot-bar a{color:var(--mute);text-decoration:none;transition:color 160ms var(--e-ui);min-height:44px;display:inline-flex;align-items:center}
 .foot-bar a:hover{color:var(--ink)}
 .legal{flex:0 0 100%;margin-top:var(--s24);color:var(--mute)}
 
@@ -891,7 +892,7 @@ body{
   /* ── S10 text breakout (recipe 07) — 글자 속 이미지가 글자를 뚫고 화면이 된다.
        R-A: 마스크에는 값이 넓고 밝은 프레임(mat-01/02)을 쓴다. near-dark 는 글자가 잠긴다. */
   gsap.timeline({ defaults: { ease: "none" }, scrollTrigger: st({
-      trigger: ".stage--out", start: "top bottom", end: "bottom top", scrub: 0.6 }) })
+      trigger: ".stage--out", start: "top bottom", end: "bottom bottom", scrub: 0.6 }) })
     .fromTo("#breakout", { scale: .86 }, { scale: 1 }, 0)
     .fromTo(["#bo1", "#bo2"], { backgroundSize: "300% auto" }, { backgroundSize: "126% auto" }, 0)
     .to("#breakout", { scale: 4.2, opacity: 0, ease: "power2.in" }, 0.6)
