@@ -22,7 +22,7 @@ user-invocable: true
 
 | 검사 | 조건 |
 |---|---|
-| `omd check landing` | **LI-1~31 전 항목 ok**. 특히 LI-24 화면 잉크 · LI-25 폴드 미디어 · LI-26 미디어 밀도 · LI-27 디스플레이 서체 · LI-28 깊이 · LI-29 메시/그레인 · LI-30 브라우저 기본값 · LI-31 미디어 색보정 |
+| `omd check landing` | **LI-1~32 전 항목 ok**. 특히 LI-24 화면 잉크 · LI-25 폴드 미디어 · LI-26 미디어 밀도 · LI-27 디스플레이 서체 · LI-28 깊이 · LI-29 메시/그레인 · LI-30 브라우저 기본값 · LI-31 미디어 색보정 · LI-32 alt 구체성 |
 | `omd check contrast` | FAIL 0 · no-JS 숨김 0 |
 | `omd check render` | 1440×900 · 390×844 양쪽 PASS |
 | `omd-designer-review` | BLOCK 0 |
@@ -106,7 +106,7 @@ fake bokeh. 긍정 지시로 바꿔 적는 편이 더 잘 듣는다 — film gra
 
 ## 4. 마감 구현 (LC-37~46 레시피)
 
-인라인만 쓴다. 외부 라이브러리·네트워크 요청 금지.
+인라인만 쓴다. 렌더 시 네트워크 요청 금지 — 라이브러리는 §1.5 정책대로 소스를 인라인한다(출처·라이선스를 trace 에).
 
 - **그레인(LC-38)**: 인라인 SVG `feTurbulence`(fractalNoise) 를 data URI 배경으로,
   `opacity: .05~.15` + `mix-blend-mode: overlay`. 넓은 단색·그래디언트 면마다 얹는다.
