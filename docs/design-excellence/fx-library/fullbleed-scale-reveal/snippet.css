@@ -1,0 +1,84 @@
+/* fx: fullbleed-scale-reveal — 한 장이 62% 에서 화면 끝까지 자라고, 거기서 멈춰 머문다.
+   구현: oh-my-design (MIT). 외부 의존 0. */
+
+.fx-fbs{
+  --fx-fbs-min: .62;          /* 시작 배율 — 시작부터 이미 크다 */
+  --fx-fbs-radius: 26px;      /* 시작 라운드. 풀블리드에서 0 으로 */
+  --fx-fbs-travel: 190vh;     /* 핀 구간 총 길이 (100vh = 핀 없음) */
+  --fx-fbs-h: 100svh;         /* 스테이지 높이 */
+  --e: 1;                     /* 0..1 진행. JS 없거나 reduce 면 1(=완성) */
+  position: relative;
+  height: var(--fx-fbs-travel);
+}
+
+.fx-fbs__pin{
+  position: sticky; top: 0;
+  height: var(--fx-fbs-h);
+  display: grid; place-items: center;
+  overflow: clip;                    /* 확대 중 가로 스크롤바 방지 */
+}
+
+.fx-fbs__frame{
+  position: relative;
+  width: 100%;
+  height: var(--fx-fbs-h);
+  border-radius: calc(var(--fx-fbs-radius) * (1 - var(--e)));
+  overflow: hidden;
+  transform: scale(calc(var(--fx-fbs-min) + (1 - var(--fx-fbs-min)) * var(--e)));
+  transform-origin: 50% 50%;
+  will-change: transform;
+  background: #111318;
+}
+
+.fx-fbs__frame > img,
+.fx-fbs__frame > video,
+.fx-fbs__ph{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 플레이스홀더 색면 — 실사용에서는 <img> 로 교체 */
+.fx-fbs__ph{
+  background:
+    radial-gradient(72% 108% at 22% 14%, hsl(var(--h,188) 82% 58% / .58), transparent 62%),
+    radial-gradient(64% 96% at 84% 82%, hsl(calc(var(--h,188) + 58) 78% 52% / .5), transparent 60%),
+    linear-gradient(148deg, #0d0f13, #1b1f27 58%, #0a0b0e);
+}
+
+/* 자막 — 이미지가 다 자란 뒤에 들어온다. 호버 없이 나타난다. */
+.fx-fbs__cap{
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: clamp(18px, 4vh, 44px) clamp(18px, 4vw, 56px);
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 20px;
+  color: #fff;
+  background: linear-gradient(to top, rgb(0 0 0 / .62), transparent 78%);
+  opacity: clamp(0, calc((var(--e) - .55) * 2.6), 1);
+  translate: 0 calc((1 - var(--e)) * 14px);
+}
+.fx-fbs__cap b{ font-size: clamp(18px, 2.6vw, 38px); font-weight: 600; letter-spacing: -.02em; line-height: 1.1 }
+.fx-fbs__cap span{ font-size: 13px; opacity: .74; white-space: nowrap }
+
+/* 진행 눈금 — 스크롤이 무엇을 하는지 보이게. 장식이 아니라 어포던스다. */
+.fx-fbs__rail{
+  position: absolute; left: 50%; translate: -50% 0; bottom: 14px;
+  width: min(180px, 34vw); height: 2px; border-radius: 2px;
+  background: rgb(255 255 255 / .2);
+  opacity: calc(1 - clamp(0, calc((var(--e) - .8) * 5), 1));
+}
+.fx-fbs__rail::after{
+  content: ""; position: absolute; inset: 0 auto 0 0;
+  width: calc(var(--e) * 100%); border-radius: 2px; background: #fff;
+}
+
+@media (prefers-reduced-motion: reduce){
+  /* ② 완성 상태로 스냅 — 정보(이미지)는 남기고 운동만 없앤다. 핀도 없앤다. */
+  .fx-fbs{ height: auto; --e: 1 }
+  .fx-fbs__pin{ position: static; height: auto }
+  .fx-fbs__frame{ transform: none; height: min(84svh, 720px) }
+}
+
+@media (max-width: 720px){
+  .fx-fbs{ --fx-fbs-min: .78; --fx-fbs-travel: 160vh; --fx-fbs-radius: 18px }
+}

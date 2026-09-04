@@ -60,3 +60,10 @@ aphrodite/*/reviews/*
 !aphrodite/*/storyboard-*.md
 !aphrodite/*/trace-*.md
 !aphrodite/*/r*-build-notes.md
+# 아프로디테 리서치(r4~): 규칙의 근거 문서라 소스로 추적. 캡처 이미지는 무시 (2026-09-04).
+!aphrodite/*/research/
+aphrodite/*/research/*
+!aphrodite/*/research/*/
+aphrodite/*/research/*/*
+!aphrodite/*/research/*/*.md
+!aphrodite/*/research/*/*.json

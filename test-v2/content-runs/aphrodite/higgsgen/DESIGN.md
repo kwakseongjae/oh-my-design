@@ -27,7 +27,7 @@ real work. Principles: *the image is the product* (every section proves range or
 - Motion system: **80ms multiples** — 160 (immediate) · 240 · 480 (reveal) · 720 (stage). Easings: UI `cubic-bezier(.4,0,.2,1)`, entrance `cubic-bezier(.16,1,.3,1)`, one **easeOutQuint `(.22,1,.36,1)`** for hero settle only. Stagger 80ms. **Hover never transforms** — brightness/background only. Marquee 40s / 52s reverse. `prefers-reduced-motion`: all animations off, sequences show frame 1.
 
 ## 3. Typography & Assets
-- Display: **Syne** variable (wght 700–800), tracking −0.04em, line-height 0.92. Sizes 128 / 80 / 48. `text-wrap: balance`.
+- Display: **Syne** variable (wght 700–800), tracking −0.04em, line-height 0.92. Sizes **148 / 99 / 66 / 44** (13px 라벨 앵커 ×1.5 등비 — 2026-09-04 r3 리뷰 개정: 구 128/80/48 은 세 라운드 연속 0회 사용, 13px 라벨과 LI-7 비율 충돌. h1/label 11.4×, 44 는 카드 제목). `text-wrap: balance`.
 - UI/body: **Geist** variable (wght 400–500), 16/18, line-height 1.5, `text-wrap: pretty`. Labels 13px mono uppercase tracking .14em.
 - Mono: **Geist Mono** for prompts, counters, spec readouts.
 - All three inlined base64 (fonts/*.css, OFL) — zero network at render.

@@ -5,6 +5,7 @@
 
 검증: **27/27** 데모(`demo.html` 단독 파일 기준. `scroll-gsap` 은 레시피 9종을 별도 검증)가 헤드리스 크로미움에서 **콘솔 에러 0 · 가로 오버플로 0**, 다크/라이트 양쪽 렌더 확인.
 신규 10종(유휴·호버 계열)은 **가로 오버플로 0 · 드래그/호버 상호작용 스모크 · reduced-motion 통과**까지 확인했다 (2026-09-04).
+**큰 이미지 3종**(`fullbleed-scale-reveal` · `wide-drum` · `persistent-expand`)은 위에 더해 **배율·이동량·열림 폭을 수치로 계측**하고 `preview.jpg` 를 남겼다 (2026-09-04, 1440×900).
 
 ## 층(layer) — 이게 목록보다 중요하다
 효과는 **시간 축이 누구 것인가**로 나뉜다. 세 축을 한 섹션에 다 쓰면 페이지가 무너진다.
@@ -22,6 +23,8 @@
 ### 유휴(idle) — 스크롤 0, 입력 0 에서도 움직인다
 | 효과 | 태그 | CSS-only | 크기 | 다크/라이트 | 라이선스 |
 |---|---|---|---|---|---|
+| [wide-drum](wide-drum/) | **전폭 포스터 띠**, 타일 56vh, 자동 흐름+드래그+관성, 통 명암 | 아니오 (JS 81줄) | ~3.1KB gz | 둘 다 (라이트는 명암 계수↓) | MIT (자작) |
+| [persistent-expand](persistent-expand/) | **큰 패널 62%·68vh**, 5.2s 자동 순환, 클릭 고정, 호버는 2% 리프트만 | 아니오 (JS 63줄) | ~3.1KB gz | 둘 다 (본문 그라디언트 교체) | MIT (자작) |
 | [poster-cylinder](poster-cylinder/) | 3D 원통 캐러셀, 자동 회전+드래그+관성, 면 명암 | 폴백만 (JS 62줄) | ~3.2KB | 둘 다 (라이트는 그림자↓) | MIT (자작) |
 | [coverflow-ring](coverflow-ring/) | 커버플로우, 소수 인덱스, 자동 전진, 반사 | JS 58줄 | ~3.0KB | 둘 다 (반사 알파↓) | MIT (자작) |
 | [ambient-fold](ambient-fold/) | 광원 드리프트 · 타이핑 · 상태 점멸 3계열 | ✅ | ~1.6KB | 둘 다 (광원·시머색 교체 필수) | MIT (자작) |
@@ -59,6 +62,7 @@
 ### 이미지 리빌 · 텍스트 · 스크롤
 | 효과 | 태그 | CSS-only | 크기 | 다크/라이트 | 라이선스 |
 |---|---|---|---|---|---|
+| [fullbleed-scale-reveal](fullbleed-scale-reveal/) | **62vw → 100vw 확대 후 정지(hold)**, 핀 스크롤, `--e` 1변수 | 아니오 (JS 38줄) | ~2.5KB gz | 둘 다 | MIT (자작) |
 | [mask-wipe-reveal](mask-wipe-reveal/) | 마스크, 스크롤 구동, sweep/iris/blind | ✅ | ~1.6KB | 둘 다 | MIT (자작) |
 | [pixel-dissolve](pixel-dissolve/) | 격자 디졸브, 생성 서사 | JS 10줄 | ~1.1KB | 둘 다 (덮개색 일치 필수) | MIT (자작) |
 | [split-text-rise](split-text-rise/) | 단어/문자 stagger, 블러 인 | JS 24줄 | ~1.5KB | 둘 다 | MIT (자작) |
@@ -68,17 +72,27 @@
 | [scroll-gsap](scroll-gsap/) | GSAP+ScrollTrigger 레시피 9종 | 아니오 | 114.7KB | 둘 다 | GSAP Standard(무료) |
 
 ## 계열별 색인
-- **유휴**: poster-cylinder · coverflow-ring · ambient-fold · drift-collage · aurora-mesh(배경)
+- **유휴**: **wide-drum** · **persistent-expand** · poster-cylinder · coverflow-ring · ambient-fold · drift-collage · aurora-mesh(배경)
 - **호버**: flip-expand-card · stack-fan-hover · hover-cross-open · cursor-image-trail · tilt-3d · spotlight-pointer · magnetic-cursor
-- **드래그/관성**: inertia-drag-gallery · poster-cylinder · coverflow-ring
+- **드래그/관성**: inertia-drag-gallery · **wide-drum** · poster-cylinder · coverflow-ring
 - **진입**: entry-curtain-count · split-text-rise
 - **빛**: aurora-mesh · border-beam · light-sweep-sheen · spotlight-pointer · gradient-text-shift · ambient-fold
 - **재질**: film-grain · glass-panel · holo-foil
-- **이미지 리빌**: mask-wipe-reveal · pixel-dissolve · hover-cross-open
+- **이미지 리빌**: **fullbleed-scale-reveal** · mask-wipe-reveal · pixel-dissolve · hover-cross-open
 - **텍스트**: split-text-rise · text-scramble · gradient-text-shift · ambient-fold(타이핑)
-- **깊이**: tilt-3d · sticky-card-stack · stack-fan-hover · poster-cylinder
-- **전환**: view-transition-morph · flip-expand-card
+- **깊이**: tilt-3d · sticky-card-stack · stack-fan-hover · poster-cylinder · **wide-drum**
+- **전환**: view-transition-morph · flip-expand-card · **persistent-expand**(클릭 지속)
 - **배경**: aurora-mesh · dot-grid-field · film-grain · drift-collage
+
+## 큰 이미지 축 (r4 신설) — "소극적인 사이즈" 를 구조적으로 막는 3종
+| 실패 모드 | 처방 | 효과 | 기본값이 강제하는 것 |
+|---|---|---|---|
+| 이미지가 작다 | 확대의 끝을 화면 끝으로 못 박는다 | [fullbleed-scale-reveal](fullbleed-scale-reveal/) | 시작 62vw → 끝 100vw, 여정 55% 지점에서 **정지 후 hold** |
+| 가만히 두면 죽어 있다 | 유휴 축을 이미지에 준다 | [wide-drum](wide-drum/) | 전폭 띠 · 타일 **56vh** · 62px/s 자동 흐름 |
+| 호버해야만 펼쳐진다 | 열림을 지속 상태로 만든다 | [persistent-expand](persistent-expand/) | 열린 패널 **62% × 68vh** · 5.2s 자동 순환 · **클릭 고정** |
+
+세 효과의 공통 규칙: **호버는 여는 장치가 아니다**(멈춤·2% 리프트까지), **닫힌 상태에서도 무엇인지 읽힌다**,
+**터치에서 잃는 것이 없다**, `prefers-reduced-motion` 에서 **이미지는 남고 운동만 사라진다**.
 
 ## 조합이 검증된 쌍
 - `tilt-3d` + `holo-foil` — JS 가 내보내는 `--fx-foil-tilt-x/y` 로 자동 연동
@@ -89,9 +103,11 @@
 - **`entry-curtain-count` → `ambient-fold`** — 커튼이 열리는 순간 광원이 이미 돌고 있다
 
 ## 배타 관계 (같이 쓰면 고장난다)
-- **3D 유휴 동사는 화면당 1개** — `poster-cylinder` ↔ `coverflow-ring`
+- **3D 유휴 동사는 화면당 1개** — `poster-cylinder` ↔ `coverflow-ring` ↔ `wide-drum`
+- **유휴 동사는 섹션당 1개** — `wide-drum` ↔ `persistent-expand` ↔ `drift-collage` ↔ `ambient-fold`
+- **핀 구간은 페이지당 4개까지** — `fullbleed-scale-reveal`(190vh/개) 를 3개 넘게 쓰면 문서가 끝없이 길어진다
 - **호버 동사는 섹션당 1개** — `flip-expand-card` ↔ `hover-cross-open` ↔ `stack-fan-hover` ↔ `tilt-3d`
-- **가로 축 배타** — `inertia-drag-gallery` ↔ 가로 핀 스크롤(scroll-gsap R2). 같은 축을 두 주체가 다투면 둘 다 고장난다
+- **가로 축 배타** — `inertia-drag-gallery` ↔ `wide-drum` ↔ 가로 핀 스크롤(scroll-gsap R2). 같은 축을 두 주체가 다투면 둘 다 고장난다
 - **배경 2겹** — `aurora-mesh` ↔ `ambient-fold`(광원) ↔ `drift-collage` ↔ `dot-grid-field` 중 최대 2
 - `cursor-image-trail` 은 페이지당 1구역, CTA·본문 위 금지
 

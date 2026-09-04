@@ -1,0 +1,96 @@
+/* fx: persistent-expand — 큰 패널 하나가 스스로 옮겨 다니고, 누른 자리에 멈춘다.
+   구현: oh-my-design (MIT). 외부 의존 0. */
+
+.fx-pex{
+  --fx-pex-h: 68vh;            /* 열린 패널 높이 */
+  --fx-pex-open: 5.4;          /* 열린 패널의 flex-grow (닫힘 = 1) → 4장 기준 약 62% 폭 */
+  --fx-pex-dur: 620ms;
+  --fx-pex-ease: cubic-bezier(.22,.68,.24,1);
+  --fx-pex-gap: 10px;
+  display: flex;
+  gap: var(--fx-pex-gap);
+  height: var(--fx-pex-h);
+  width: 100%;
+}
+
+.fx-pex__panel{
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  border: 0; padding: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #111318;
+  color: inherit;
+  cursor: pointer;
+  contain: layout paint;                       /* flex-grow 트랜지션의 재계산 범위를 가둔다 */
+  transition: flex-grow var(--fx-pex-dur) var(--fx-pex-ease),
+              translate 260ms var(--fx-pex-ease),
+              box-shadow 260ms var(--fx-pex-ease);
+  will-change: flex-grow;
+}
+.fx-pex__panel.is-open{ flex-grow: var(--fx-pex-open) }
+
+/* 호버는 관문이 아니다 — 2% 만 든다. 여는 것은 클릭·포커스뿐이다. */
+@media (hover: hover){
+  .fx-pex__panel:hover{ translate: 0 -2%; box-shadow: 0 22px 60px rgb(0 0 0 / .42) }
+}
+.fx-pex__panel:focus-visible{ outline: 2px solid currentColor; outline-offset: 3px }
+
+.fx-pex__panel > img,
+.fx-pex__panel > video,
+.fx-pex__ph{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block }
+
+.fx-pex__ph{
+  background:
+    radial-gradient(78% 66% at 24% 16%, hsl(var(--h,188) 84% 60% / .6), transparent 64%),
+    radial-gradient(70% 90% at 86% 88%, hsl(calc(var(--h,188) + 46) 76% 52% / .42), transparent 62%),
+    linear-gradient(158deg, #0d1015, #1b202a 58%, #090b0e);
+}
+
+/* 세로 라벨 — 닫힌 패널에서도 무엇인지 읽힌다. 정보를 호버 뒤에 숨기지 않는다. */
+.fx-pex__spine{
+  position: absolute; left: 14px; bottom: 16px;
+  writing-mode: vertical-rl; rotate: 180deg;
+  color: #fff; font-size: 13px; letter-spacing: .04em; font-weight: 600;
+  text-shadow: 0 1px 8px rgb(0 0 0 / .7);
+  transition: opacity 220ms linear;
+}
+.fx-pex__panel.is-open .fx-pex__spine{ opacity: 0 }
+
+/* 본문 — 열렸을 때만 읽히지만, 열림은 지속 상태이므로 사라지지 않는다. */
+.fx-pex__body{
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: clamp(16px, 3.4vh, 34px) clamp(18px, 2.6vw, 40px);
+  text-align: left; color: #fff;
+  background: linear-gradient(to top, rgb(0 0 0 / .66), transparent 84%);
+  opacity: 0; translate: 0 12px;
+  transition: opacity 300ms linear 120ms, translate 380ms var(--fx-pex-ease) 120ms;
+}
+.fx-pex__panel.is-open .fx-pex__body{ opacity: 1; translate: 0 0 }
+.fx-pex__body b{ display: block; font-size: clamp(17px, 2.1vw, 30px); font-weight: 600; letter-spacing: -.018em }
+.fx-pex__body span{ display: block; margin-top: 6px; font-size: 13px; opacity: .76; max-width: 46ch }
+
+/* 고정(pin) 배지 — 자동 순환이 멈췄다는 것을 말로 알린다 */
+.fx-pex__pin{
+  position: absolute; top: 12px; right: 12px;
+  padding: 5px 10px; border-radius: 999px;
+  font-size: 11px; letter-spacing: .04em; color: #05060a; background: #fff;
+  opacity: 0; transition: opacity 200ms linear;
+}
+.fx-pex.is-pinned .fx-pex__panel.is-open .fx-pex__pin{ opacity: 1 }
+
+@media (prefers-reduced-motion: reduce){
+  /* ② 완성 상태로 스냅 — 상태 전환은 남고 운동만 사라진다. 자동 순환은 JS 가 끈다. */
+  .fx-pex__panel,
+  .fx-pex__body,
+  .fx-pex__spine{ transition-duration: .001s }
+}
+
+@media (max-width: 760px){
+  /* 모바일: 가로 4칸은 죽는다. 세로 스택 + 열린 것만 크게. 자동 순환은 그대로 살아 있다. */
+  .fx-pex{ flex-direction: column; height: auto; --fx-pex-open: 4 }
+  .fx-pex__panel{ flex: 1 1 auto; height: 12vh; transition: height var(--fx-pex-dur) var(--fx-pex-ease) }
+  .fx-pex__panel.is-open{ height: 54vh }
+  .fx-pex__spine{ writing-mode: horizontal-tb; rotate: none; left: 16px; bottom: 12px }
+}

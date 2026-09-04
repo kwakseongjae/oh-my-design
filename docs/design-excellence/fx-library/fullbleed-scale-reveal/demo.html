@@ -1,0 +1,48 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — fullbleed-scale-reveal</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+  body{overflow-x:hidden}
+  .lede{max-width:960px;margin:0 auto;padding:34px 20px 26px}
+  .full{width:100%}
+  .after{max-width:960px;margin:0 auto;padding:34px 20px 120px}
+  .spacer{height:56vh;display:grid;place-items:center;color:var(--mut);font-size:13px}
+</style>
+</head><body>
+<button class="tgl"></button>
+<div class="lede">
+  <h1>fullbleed-scale-reveal <code>스크롤 · 이미지</code></h1>
+  <p class="sub">시작부터 뷰포트의 <b>62%</b>다. 스크롤하면 화면 끝까지 자라고, 여정의 <b>55%</b> 지점에서 다 자란 뒤 <b>남은 45%</b> 동안 그대로 머문다. 호버는 없다. 사건은 한 개다.</p>
+</div>
+
+<div class="spacer">↓ 스크롤</div>
+
+<section class="fx-fbs full" data-fx-settle="0.55">
+  <div class="fx-fbs__pin">
+    <div class="fx-fbs__frame">
+      <div class="fx-fbs__ph" style="--h:188"></div>
+      <div class="fx-fbs__cap"><b>한 장이 화면 전체가 된다</b><span>62% → 100%</span></div>
+      <div class="fx-fbs__rail"></div>
+    </div>
+  </div>
+</section>
+
+<div class="spacer">두 번째 — 짧은 여정(<code>--fx-fbs-travel:150vh</code>) · 더 큰 시작(<code>.74</code>)</div>
+
+<section class="fx-fbs full" style="--fx-fbs-travel:150vh;--fx-fbs-min:.74;--fx-fbs-radius:34px" data-fx-settle="0.5">
+  <div class="fx-fbs__pin">
+    <div class="fx-fbs__frame">
+      <div class="fx-fbs__ph" style="--h:78"></div>
+      <div class="fx-fbs__cap"><b>머무는 구간이 시원함을 만든다</b><span>hold 50%</span></div>
+      <div class="fx-fbs__rail"></div>
+    </div>
+  </div>
+</section>
+
+<div class="after">
+  <h2>확인할 것</h2>
+  <p class="note">① 스크롤을 멈춰도 이미지는 잘리지 않는다(핀이 살아 있다). ② 다 자란 뒤에도 한참 머문다 — 이 <b>hold</b> 가 없으면 "지나가는 애니메이션"이 되고 시원함이 사라진다. ③ <code>prefers-reduced-motion</code> 에서는 핀이 사라지고 이미지가 84svh 정적 블록으로 남는다(정보 보존).</p>
+</div>
+<script src="./snippet.js"></script>
+<script>fxLib.mountFullbleed();</script>
+<script src="../_shell.js"></script></body></html>

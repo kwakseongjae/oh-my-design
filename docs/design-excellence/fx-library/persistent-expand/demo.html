@@ -1,0 +1,38 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — persistent-expand</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>.wide{max-width:1280px;margin:0 auto;padding:0 20px 40px}</style>
+</head><body>
+<button class="tgl"></button>
+<div class="wrap" style="padding-bottom:12px">
+  <h1>persistent-expand <code>유휴 · 클릭 지속</code></h1>
+  <p class="sub">패널 하나가 항상 <b>62% 폭 · 68vh</b> 로 열려 있고, 5.2초마다 스스로 옆으로 옮겨 간다. 호버는 <b>2% 리프트</b>와 순환 정지뿐 — 여는 것은 <b>클릭</b>이다. 클릭하면 그 자리에 <b>고정</b>되고 다시 클릭하거나 <kbd>Esc</kbd> 를 누르면 순환이 재개된다.</p>
+</div>
+<div class="wide">
+  <div class="fx-pex" data-fx-auto="5200">
+    <div class="fx-pex__panel is-open">
+      <div class="fx-pex__ph" style="--h:186"></div>
+      <div class="fx-pex__spine">01 시네마틱</div><div class="fx-pex__pin">고정됨</div>
+      <div class="fx-pex__body"><b>한 장이 62% 를 가진다</b><span>닫힌 패널도 세로 라벨로 무엇인지 읽힌다. 호버 뒤에 정보를 숨기지 않는다.</span></div>
+    </div>
+    <div class="fx-pex__panel">
+      <div class="fx-pex__ph" style="--h:268"></div>
+      <div class="fx-pex__spine">02 프로덕트</div><div class="fx-pex__pin">고정됨</div>
+      <div class="fx-pex__body"><b>스스로 옮겨 다닌다</b><span>입력 0 에서도 5.2초마다 다음 패널이 열린다. 이것이 유휴 층이다.</span></div>
+    </div>
+    <div class="fx-pex__panel">
+      <div class="fx-pex__ph" style="--h:38"></div>
+      <div class="fx-pex__spine">03 인물</div><div class="fx-pex__pin">고정됨</div>
+      <div class="fx-pex__body"><b>누른 자리에 멈춘다</b><span>클릭은 지속 상태를 만든다. 마우스를 치웠다고 닫히지 않는다.</span></div>
+    </div>
+    <div class="fx-pex__panel">
+      <div class="fx-pex__ph" style="--h:104"></div>
+      <div class="fx-pex__spine">04 텍스처</div><div class="fx-pex__pin">고정됨</div>
+      <div class="fx-pex__body"><b>키보드만으로 완결된다</b><span>Tab · ← → · Enter · Esc. 포인터 없이도 같은 상태에 도달한다.</span></div>
+    </div>
+  </div>
+  <p class="note">확인할 것: ① 가만히 두면 알아서 넘어간다. ② 호버해도 열리지 않는다(멈추기만 한다). ③ 클릭하면 <code>고정됨</code> 배지가 뜨고 순환이 멈춘다. ④ 720px 이하에서는 세로 스택으로 바뀌고 자동 순환은 유지된다.</p>
+</div>
+<script src="./snippet.js"></script>
+<script>fxLib.mountExpand();</script>
+<script src="../_shell.js"></script></body></html>
