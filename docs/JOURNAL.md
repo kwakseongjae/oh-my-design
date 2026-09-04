@@ -1,3 +1,8 @@
+## 2026-09-04 (저녁) — r3 60점 → 리서치 4레인 → 규칙 LC-49~59/LI-34~40 → r4 빌드 (중단)
+- 한 일: r3 60 원인 진단(개수만 재는 검사기·호버 관문 요구한 C8·3층 허용) → 리서치 4레인(실측 프로브 16사이트·UX 문헌 21·타 스킬 10·OSS 16+효과 3종) → `scale-and-simplicity.md`, 게이트 v2(C8′·C9·C10·D·E·다이얼), 검사기 LI-34~40(폴드 히트테스트 커버리지·호버 관문·초점비·폴드 단위·모션 채널·홀드·여백), 타입 112/80/56/40 → r4 빌드(풀블리드 6·핀 3·GSAP 0·관문 0·LI-1~40 ok·1.13MB) → 페르소나 3인(관문 0·마찰 11·이탈 3/3 CTA 순환) · 리뷰 r4(eye 72·BLOCK 4) → 라운드 2 배치 진행 중 사용자 지시로 안전 중단.
+- 열린 것: 라운드 2 리뷰 항목 잔여 + 검사기 스윕 → solo 영상 재렌더 → 채점 요청. 도구 후속(text-contrast 전 섹션, scrub-probe `--e`). 재개 절차는 CURRENT_STATE 맨 위.
+- 다음: "작업 재개" 시 CURRENT_STATE ①~⑤ 순서대로.
+
 ## 2026-09-02 — landing/toss 개정 라운드 3 (CTA 포커스·ghost 라벨)
 
 **한 일.** `render.html` 히어로 CTA 두 개만. canvas 3px halo + foreground 링, ghost 라벨 `#191f28`. text-contrast PASS fail 0, integrity PASS / FAIL 0, 12.05 vh.

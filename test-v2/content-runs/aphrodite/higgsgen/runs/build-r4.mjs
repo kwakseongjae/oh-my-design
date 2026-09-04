@@ -24,9 +24,9 @@ const sharp = require_("sharp");
 /* ── 트랙(vh×100)과 정착 계수 K ─────────────────────────────────────────────
    travel = (track − 100)vh · end = travel × K · pinLead = travel − end (≥0.6vh)
    settle% = (100 + end) / (track + 100) — scrub-timing-probe 와 같은 좌표계 */
-const TRACK = { s1: 220, s3: 300, s6: 240 };
+const TRACK = { s1: 220, s3: 270, s6: 240 };
 const K = { s1: 0.50, s3: 0.55, s6: 0.55 };
-const MINH = { s2: 112, s4: 100, s5: 100, s7: 90, s8: 100, s9: 80, s10: 100 };
+const MINH = { s2: 90, s4: 100, s5: 96, s7: 88, s8: 100, s9: 80, s10: 100 };
 
 const set = JSON.parse(readFileSync(join(D, "set.json"), "utf8"));
 const byId = Object.fromEntries(set.items.map((i) => [i.id, i]));
@@ -75,7 +75,7 @@ async function img(id, { w, q, h = null, cls = "shot", eager = false, deco = fal
 }
 
 /* ── S1 · Hero: hero-01 → hero-02 (풀블리드 100vw×100vh) ─────────────────── */
-const S1_A = await img("hero-01", { w: 1600, q: 72, cls: "shot cut-a", eager: true });
+const S1_A = await img("hero-04", { w: 1600, q: 72, cls: "shot cut-a", eager: true });
 
 /* ── S2 · Range 띠 12장(2:3) ──────────────────────────────────────────────── */
 const DRUM_IDS = ["grid-02", "mat-01", "grid-06", "fig-01", "grid-10", "arch-04",
@@ -143,7 +143,7 @@ const PEX_HTML = (await Promise.all(PEX.map(async ([id, name, note], i) => `
         </button>`))).join("");
 
 /* ── S6 · Feature 한 장 ──────────────────────────────────────────────────── */
-const S6 = await img("hero-04", { w: 1600, q: 72 });
+const S6 = await img("hero-01", { w: 1600, q: 72 });
 
 /* ── S7 · Presets 프리뷰 3 + 광원 복사본(LC-43 색보정 · DESIGN §2 light-copy) ── */
 const PRESET = [
@@ -160,9 +160,13 @@ const S7_CHIPS = PRESET.map(([, name, note], i) => `
           <span class="cn">${name}</span><span class="cd">${note}</span>
         </button>`).join("");
 
+/* ── S9 · Plan 카드 썸(빈 밴드 면하기) ─────────────────────────────────── */
+const S9_A = await img("prod-02", { w: 320, h: 320, q: 60, cls: "plan-thumb" });
+const S9_B = await img("abs-03", { w: 320, h: 320, q: 60, cls: "plan-thumb" });
+
 /* ── S8 · Delivery / S10 · Footer ────────────────────────────────────────── */
-const S8 = await img("arch-02", { w: 1600, q: 56 });
-const S10 = await img("amb-01", { w: 1600, q: 76, cls: "shot s10-shot" });
+const S8 = await img("hero-05", { w: 1600, q: 60 });
+const S10 = await img("hero-02", { w: 1600, q: 72, cls: "shot s10-shot" });
 
 /* ── 조립 ────────────────────────────────────────────────────────────────── */
 let html = readFileSync(join(D, "runs", "template-r4.html"), "utf8");
@@ -175,6 +179,7 @@ const repl = {
   __FRAMES__: JSON.stringify(FRAMES),
   __S1_A__: S1_A, __DRUM__: DRUM, __SEQ__: SEQ, __TOKENS__: TOKENS,
   __BA_PAIRS__: BA_PAIRS, __BA_THUMBS__: BA_THUMBS, __PEX__: PEX_HTML, __S6__: S6,
+  __S9_A__: S9_A, __S9_B__: S9_B,
   __S7_VIEW__: S7_VIEW, __S7_GLOW__: S7_GLOW, __S7_CHIPS__: S7_CHIPS, __S8__: S8, __S10__: S10,
 };
 for (const [k, v] of Object.entries(repl)) {

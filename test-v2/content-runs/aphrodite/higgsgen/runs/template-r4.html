@@ -30,10 +30,10 @@ var sm=window.innerWidth<900;d.className+=(!rm&&!sm)?" anim":" static";if(rm)d.c
         gap → 8·12·16·24…, 호버 리프트(translate) → brightness(DESIGN §2 "Hover never transforms").
    GSAP 없음. animation-timeline 없음(Firefox 미구현).
    ───────────────────────────────────────────────────────────────────────────── */
-@property --p{syntax:"<percentage>";inherits:false;initial-value:50%}
 @property --wipe{syntax:"<percentage>";inherits:false;initial-value:118%}
 @property --beam{syntax:"<percentage>";inherits:false;initial-value:22%}
 @property --beam-a{syntax:"<number>";inherits:false;initial-value:.14}
+@property --s6r{syntax:"<percentage>";inherits:false;initial-value:150%}
 
 :root{
   --bg:#0B0C0E; --bg-2:#121316; --ink:#F2F2F0; --mute:#9A9B9E;
@@ -140,10 +140,12 @@ html:not(.js) .rv,html.rm .rv{opacity:1;transform:none;transition:none}
 html:not(.anim) .pin-track{height:auto}
 html:not(.anim) .pin{position:static;height:100svh}
 .stage{position:relative;width:100%;height:100%;overflow:clip}
+.stage:focus-visible{outline:2px solid var(--ink);outline-offset:-4px}
 
 /* ── S1 Hero ───────────────────────────────────────────────────────────────── */
 .s1-zoom{position:absolute;inset:0;transform:scale(calc(1 + .12*var(--e)));transform-origin:52% 54%;will-change:transform}
-.s1-ken{position:absolute;inset:0}
+.s1-ken{position:absolute;inset:0;animation:ken 24s ease-in-out infinite alternate}
+@keyframes ken{from{scale:1}to{scale:1.05}}
 .s1-ken img{position:absolute;inset:0}
 .beam{position:absolute;inset:0;pointer-events:none;
   background:radial-gradient(46% 62% at var(--beam) 18%,rgb(255 255 255 / var(--beam-a)),transparent 64%);
@@ -166,6 +168,8 @@ html:not(.anim) .pin{position:static;height:100svh}
   -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
           mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
 .fx-drum.is-drag{cursor:grabbing}
+.drum-flag{position:absolute;top:var(--s12);right:var(--gutter);z-index:2;
+  padding:var(--s4) var(--s12);border-radius:var(--r-pill);background:var(--dark-1);color:var(--ink)}
 .fx-drum__track{display:flex;gap:var(--drum-gap);transform-style:preserve-3d;will-change:transform}
 .fx-drum__tile{position:relative;flex:0 0 auto;
   width:calc(var(--drum-h) * var(--drum-ar));height:var(--drum-h);
@@ -199,7 +203,7 @@ html.js .s3-frames img:first-child{opacity:1}
 
 /* ── S4 Compare ────────────────────────────────────────────────────────────── */
 .s4{position:relative;width:100%}
-.ba{position:relative;width:100%;height:90svh;overflow:hidden;background:var(--bg-2);--p:44%}
+.ba{position:relative;width:100%;height:90svh;overflow:hidden;background:var(--bg-2);--p:62%}
 .ba .pair{position:absolute;inset:0;display:none;pointer-events:none}
 .ba .pair.is-on{display:block}
 .ba .pair img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -208,7 +212,7 @@ html.js .s3-frames img:first-child{opacity:1}
   background-image:var(--bgi);background-repeat:no-repeat;
   background-size:100vw calc(100vw / var(--ar));
   background-position:0 calc((90svh - 100vw / var(--ar)) / 2)}
-.ba.sweep .pair.is-on .top{animation:sweep var(--t4) var(--e-st) both}
+.ba.sweep .pair.is-on .top{animation:sweep 1440ms var(--e-st) both}
 @keyframes sweep{0%{width:0}62%{width:92%}100%{width:var(--p)}}
 .ba-bar{position:absolute;top:0;bottom:0;left:var(--p);width:2px;background:var(--ink);z-index:2;pointer-events:none}
 .ba-knob{position:absolute;top:50%;left:var(--p);width:48px;height:48px;margin:-24px 0 0 -24px;z-index:2;
@@ -220,7 +224,10 @@ html.js .s3-frames img:first-child{opacity:1}
 .ba input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:48px;height:48px;background:transparent}
 .ba input[type=range]::-moz-range-thumb{width:48px;height:48px;border:0;background:transparent}
 .ba-tags{position:absolute;left:var(--gutter);right:var(--gutter);top:var(--s32);z-index:2;
-  display:flex;justify-content:space-between}
+  display:flex;justify-content:space-between;gap:var(--s16)}
+/* 사진 위 라벨 — 뒤에 자기 스크림을 깐다(블러 없음). 명목색 ink 대 배경 픽셀 ≥4.5:1 */
+.chip-label{padding:var(--s4) var(--s16);border-radius:var(--r-pill);
+  background:var(--bg);color:var(--ink)}
 .s4-bar{display:flex;align-items:center;gap:var(--s16);padding:var(--s12) var(--gutter);
   height:10svh;background:var(--bg)}
 .thumb{position:relative;width:96px;height:64px;border-radius:var(--r-card);overflow:hidden;
@@ -250,7 +257,7 @@ html.js .fx-pex__panel.is-open .fx-pex__spine{opacity:0}
   transition:opacity var(--t2) linear}
 html.js .fx-pex__body{opacity:0}
 html.js .fx-pex__panel.is-open .fx-pex__body{opacity:1}
-.fx-pex__body{overflow:hidden}
+.fx-pex__body{overflow:hidden;background:linear-gradient(to top,var(--dark-1) 0%,var(--dark-1) 62%,var(--dark-2) 88%,var(--dark-t) 100%)}
 .fx-pex__body .card-t{display:block;color:var(--ink);overflow-wrap:anywhere}
 .fx-pex__body .note{display:block;color:var(--ink-2);margin-top:var(--s8);max-width:44ch;overflow-wrap:anywhere}
 
@@ -260,13 +267,16 @@ html.js .fx-pex__panel.is-open .fx-pex__body{opacity:1}
   border-radius:calc(var(--r-stage) * (1 - var(--e)));overflow:hidden;background:var(--bg-2);
   will-change:width,height}
 .s6-frame img{width:100%;height:100%;object-fit:cover}
+.s6-reveal{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 50% 52%,transparent var(--s6r),var(--dark-1) calc(var(--s6r) + 30%))}
+@keyframes s6in{from{--s6r:0%}to{--s6r:150%}}
 .s6-copy{position:absolute;left:var(--gutter);right:var(--gutter);bottom:var(--s64);z-index:3;
   opacity:calc((var(--e) - .5) * 3)}
 .s6-copy h2{max-width:15ch}
 .s6-copy .lede{max-width:44ch}
 
 /* ── S7 Presets (밝은 밴드) ────────────────────────────────────────────────── */
-.s7{padding-block:var(--s64);display:flex;flex-direction:column;gap:var(--s32)}
+.s7{padding-block:var(--s32);display:flex;flex-direction:column;gap:var(--s32)}
 .s7 .label{color:var(--ink-dark-3)}
 .s7-row{display:flex;align-items:flex-end;gap:var(--s48)}
 .s7-stage{position:relative;flex:0 0 auto;width:60vw}
@@ -303,28 +313,42 @@ html.js .s7-view img.shot.is-on{opacity:1}
 .s8-copy h2{max-width:15ch}
 
 /* ── S9 Plan (밝은 밴드 · 라임 면 1회) ─────────────────────────────────────── */
-.s9{padding-block:var(--s128) var(--s128);display:flex;flex-direction:column;gap:var(--s48)}
+.s9{padding-block:var(--s128) var(--s96);display:flex;flex-direction:column;gap:var(--s48)}
 .s9 .label{color:var(--ink-dark-3)}
 .s9-air{height:var(--s128)}
 .s9-row{display:flex;align-items:stretch;gap:var(--s24);flex-wrap:wrap}
-.plan{flex:1 1 320px;min-width:0;padding:var(--s32);border-radius:var(--r-stage);
+.plan{display:flex;flex-direction:column;align-items:flex-start;gap:var(--s16);
+  flex:1 1 320px;min-width:0;min-height:44px;text-decoration:none;color:inherit;
+  padding:var(--s32);border-radius:var(--r-stage);transition:filter var(--t1) var(--e-ui);
   border:1px solid var(--ink-dark-3);background-image:linear-gradient(160deg,rgba(11,12,14,.04),rgba(11,12,14,0))}
 .plan--accent{border-color:var(--accent);color:var(--ink-dark);
   background-image:linear-gradient(160deg,var(--accent),var(--accent))}
 .plan .note{color:var(--ink-dark-3)}
 .plan--accent .note{color:var(--ink-dark-2)}
-.plan .card-t{margin-bottom:var(--s16)}
+.plan-thumb{width:160px;height:160px;object-fit:cover;border-radius:var(--r-card)}
+.plan .card-t{display:block}
+.plan .note{display:block}
+@media (hover:hover){.plan:hover{filter:brightness(.96)}.plan--accent:hover{filter:brightness(1.06)}}
 
 /* ── S10 Footer breakout ──────────────────────────────────────────────────── */
 .s10-shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.s10-copy{position:absolute;left:var(--gutter);right:var(--gutter);top:24svh;z-index:3}
+.s10-copy{position:absolute;left:var(--gutter);right:var(--gutter);top:20svh;z-index:3}
+.render-form{display:flex;gap:var(--s12);align-items:center;flex-wrap:wrap;
+  margin-top:var(--s32);max-width:760px}
+.render-form:focus{outline:none}
+.render-form input{flex:1 1 340px;min-width:0;min-height:56px;
+  padding:var(--s12) var(--s24);border-radius:var(--r-pill);
+  border:1px solid var(--line);background:var(--dark-1);color:var(--ink);
+  font:400 16px/1.5 var(--f-ui)}
+.render-form input::placeholder{color:var(--mute)}
+.s10-status{margin-top:var(--s16);min-height:24px;font-size:16px;line-height:1.5;color:var(--ink-2)}
 .s10-copy h2{max-width:9ch}
 .s10-foot{position:absolute;left:var(--gutter);right:var(--gutter);bottom:var(--s32);z-index:3;
   display:flex;justify-content:space-between;gap:var(--s24);flex-wrap:wrap;align-items:flex-end}
 
 /* ── reduced motion ───────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion:reduce){
-  .beam,.fx-drum__track{animation:none!important}
+  .s1-ken,.beam,.fx-drum__track,.s6-reveal{animation:none!important}
   .rv{opacity:1!important;transform:none!important;transition:none!important}
   .ba.sweep .pair .top{animation:none}
   .fx-wipe.armed img{mask-image:none;-webkit-mask-image:none}
@@ -354,7 +378,7 @@ html.js .s7-view img.shot.is-on{opacity:1}
   .s1-copy .btn{margin-top:var(--s24)}
   .s2,.s5,.s7{padding-block:var(--s64) var(--s48);gap:var(--s24)}
   .s9{padding-block:var(--s96) var(--s64)}
-  .s9-air{height:var(--s96)}
+  .s9-air{height:var(--s128)}
   .fx-drum{--drum-h:44vh;--drum-gap:12px;--drum-bend:10deg}
   .s3-ui{bottom:var(--s32)}
   .prompt{font-size:13px;line-height:1.7}
@@ -365,14 +389,19 @@ html.js .s7-view img.shot.is-on{opacity:1}
   .s4-bar{height:auto;padding-block:var(--s16);flex-wrap:wrap}
   .s4-note{margin-left:0;text-align:left;width:100%}
   .thumb{width:84px;height:56px}
+  .s7-side{flex-direction:column;flex-wrap:nowrap}
+  .chip{width:100%}
   .fx-pex{flex-direction:column;height:auto;--open:4}
   .fx-pex__panel{flex:1 1 auto;height:14svh;transition:height var(--t1) var(--e-st)}
   .fx-pex__panel.is-open{height:52svh}
   .fx-pex__spine{writing-mode:horizontal-tb;rotate:none}
   .fx-pex__body{padding:var(--s24)}
   .s6-frame{width:100%;height:100%;border-radius:0}
+  #s6.s6-armed .s6-reveal{--s6r:0%}
+  #s6.s6-armed.is-in .s6-reveal{animation:s6in 640ms var(--e-en) both}
   .s6-copy,.s8-copy{bottom:var(--s32)}
-  .s10-copy{top:auto;bottom:32svh}
+  .s10-copy{top:auto;bottom:24svh}
+  .render-form input{flex:1 1 100%}
   .s10-foot{position:static;padding:var(--s24) var(--gutter) var(--s32)}
   .s10-stage{display:flex;flex-direction:column;justify-content:flex-end}
 }
@@ -392,11 +421,11 @@ html.js .s7-view img.shot.is-on{opacity:1}
         <span class="beam" aria-hidden="true"></span>
         <span class="scrim scrim--hero"></span>
         <header class="nav"><span class="wordmark"><svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9V3h6M15 3h6v6M21 15v6h-6M9 21H3v-6"/></svg>Higgsgen</span>
-          <a class="btn btn--accent btn--sm" href="#s10">Start a render</a></header>
+          <a class="btn btn--accent btn--sm" href="#render">Start a render</a></header>
         <div class="s1-copy">
           <h1>Higgsgen renders what you mean.</h1>
           <p class="lede" style="margin-top:var(--s24)">One line in. A directed still out — camera, light and material held where you put them.</p>
-          <a class="btn btn--accent" href="#s10">Start with one line
+          <a class="btn btn--accent" href="#render">Start with one line
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
         </div>
       </div>
@@ -409,8 +438,9 @@ html.js .s7-view img.shot.is-on{opacity:1}
       <span class="label">Range</span>
       <h2 class="h80" style="margin-top:var(--s16)">Twelve genres, one engine.</h2>
     </div>
-    <div class="fx-drum" data-speed="62" role="group" aria-label="Range band — twelve generated frames, drag to move">
+    <div class="fx-drum" data-speed="110" role="group" aria-label="Range band — twelve generated frames, drag to move">
       <div class="fx-drum__track">__DRUM__</div>
+      <span class="drum-flag label" id="drumFlag">auto</span>
     </div>
     <p class="note wrap rv">Interiors, landscape, industry, objects, material, figure — the band moves on its own. Drag it, or leave it alone.</p>
   </section>
@@ -418,7 +448,7 @@ html.js .s7-view img.shot.is-on{opacity:1}
   <!-- ════ S3 · Control 시퀀스 (핀 3.0vh · K .55 · 홀드 0.9vh = 최종 캡션 + 한 줄) ════ -->
   <section class="sec pin-track" id="s3" style="--track:__T_S3__vh" data-k="0.50" data-ease="linear" data-seq="8">
     <div class="pin">
-      <div class="stage">
+      <div class="stage" id="s3stage" role="group" aria-label="Control sequence — left and right arrows step through the eight frames">
         <div class="s3-frames">__SEQ__</div>
         <span class="scrim scrim--b"></span>
         <div class="s3-ui wrap">
@@ -443,16 +473,16 @@ html.js .s7-view img.shot.is-on{opacity:1}
       __BA_PAIRS__
       <span class="ba-bar" aria-hidden="true"></span>
       <span class="ba-knob" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></span>
-      <input type="range" min="0" max="100" step="1" value="44" id="baRange"
+      <input type="range" min="0" max="100" step="2" value="62" id="baRange"
         aria-label="Compare the drawing with the render — drag, or use the arrow keys">
       <div class="ba-tags">
-        <span class="label">Drawing</span>
-        <span class="label" id="baName">Ballpoint · café counter</span>
+        <span class="label chip-label">Ballpoint sketch</span>
+        <span class="label chip-label" id="baName">Ballpoint · café counter</span>
       </div>
     </div>
     <div class="s4-bar" role="group" aria-label="Choose a comparison pair — keys 1 to 4">
       __BA_THUMBS__
-      <p class="note s4-note">Same subject, same frame. Only fidelity changes.</p>
+      <p class="note s4-note">Drag the seam: the sketch that went in, the still that came out.</p>
     </div>
   </section>
 
@@ -471,10 +501,10 @@ html.js .s7-view img.shot.is-on{opacity:1}
   <section class="sec pin-track" id="s6" style="--track:__T_S6__vh" data-k="0.55" data-ease="cubic">
     <div class="pin">
       <div class="stage">
-        <div class="s6-frame">__S6__<span class="scrim scrim--v"></span><span class="scrim scrim--b"></span></div>
+        <div class="s6-frame">__S6__<span class="scrim scrim--v"></span><span class="scrim scrim--b"></span><span class="s6-reveal" aria-hidden="true"></span></div>
         <div class="s6-copy">
           <h2 class="h56">A frame that keeps growing until it is the room.</h2>
-          <p class="lede" style="margin-top:var(--s16)">Grain, condensation and lamp colour survive the enlargement.</p>
+          <p class="lede" style="margin-top:var(--s16)">Wet concrete, rebar shadow and one sodium lamp survive the enlargement.</p>
         </div>
       </div>
     </div>
@@ -515,14 +545,16 @@ html.js .s7-view img.shot.is-on{opacity:1}
       <h2 class="h80" style="margin-top:var(--s16);color:var(--ink-dark)">Two ways in.</h2>
     </div>
     <div class="wrap s9-row rv">
-      <div class="plan">
-        <p class="card-t">Studio</p>
-        <p class="note">Direct one still at a time. Camera, hour and lens stay where you put them.</p>
-      </div>
-      <div class="plan plan--accent">
-        <p class="card-t">Sequence</p>
-        <p class="note">Lock a location and let the frame list run — the floor line holds across every frame.</p>
-      </div>
+      <a class="plan" href="#render">
+        __S9_A__
+        <span class="card-t">Studio</span>
+        <span class="note">Direct one still at a time. Camera, hour and lens stay where you put them.</span>
+      </a>
+      <a class="plan plan--accent" href="#render">
+        __S9_B__
+        <span class="card-t">Sequence</span>
+        <span class="note">Lock a location and let the frame list run — the floor line holds across every frame.</span>
+      </a>
     </div>
   </section>
 
@@ -534,8 +566,14 @@ html.js .s7-view img.shot.is-on{opacity:1}
       <span class="scrim scrim--hero"></span>
       <div class="s10-copy rv">
         <h2 class="h112">Say it once.</h2>
-        <a class="btn btn--accent" href="#top" style="margin-top:var(--s32)">Start with one line
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+        <form class="render-form" id="render" tabindex="-1" novalidate>
+          <label class="h-only" for="promptInput">Describe the still you want</label>
+          <input id="promptInput" type="text" name="prompt" autocomplete="off" spellcheck="false"
+            placeholder="a narrow ceramics workshop, long birch bench, eye level, morning, 35mm">
+          <button type="submit" class="btn btn--accent">Send one line
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
+        </form>
+        <p class="s10-status" id="renderStatus" aria-live="polite"></p>
       </div>
       <footer class="s10-foot">
         <span class="label">Higgsgen</span>
@@ -660,7 +698,7 @@ html.js .s7-view img.shot.is-on{opacity:1}
       geo = tiles.map(function (n) { return { n: n, l: n.offsetLeft, w: n.offsetWidth, vis: true }; });
       setW = base.reduce(function (a, n) { return a + n.offsetWidth + gap; }, 0);
     }
-    var v0 = REDUCE ? 0 : (parseFloat(el.dataset.speed) || 62);
+    var v0 = REDUCE ? 0 : (parseFloat(el.dataset.speed) || 110);
     var x = 0, v = v0, t0 = 0, raf = 0, live = false, hold = false, drag = null;
     function paint() {
       var w = setW || 1, off = ((x % w) + w) % w;
@@ -683,8 +721,10 @@ html.js .s7-view img.shot.is-on{opacity:1}
     function run() { if (!raf && live && (!hold || drag)) { t0 = performance.now(); raf = requestAnimationFrame(frame); } }
     function stop() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
     /* 호버는 관문이 아니다 — 보려고 멈춘 사람 앞에서 넘어가지 않을 뿐이다. */
-    el.addEventListener("pointerenter", function (e) { if (e.pointerType === "mouse") { hold = true; v = 0; stop(); } });
-    el.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") { hold = false; run(); } });
+    var flag = document.getElementById("drumFlag");
+    var setFlag = function (t) { if (flag && flag.textContent !== t) flag.textContent = t; };
+    el.addEventListener("pointerenter", function (e) { if (e.pointerType === "mouse") { hold = true; v = 0; stop(); setFlag("paused"); } });
+    el.addEventListener("pointerleave", function (e) { if (e.pointerType === "mouse") { hold = false; run(); setFlag("auto"); } });
     el.addEventListener("pointerdown", function (e) { drag = { id: e.pointerId, last: e.clientX, t: performance.now() }; el.classList.add("is-drag"); el.setPointerCapture(e.pointerId); });
     el.addEventListener("pointermove", function (e) {
       if (!drag || e.pointerId !== drag.id) return;
@@ -722,7 +762,7 @@ html.js .s7-view img.shot.is-on{opacity:1}
     }
     thumbs.forEach(function (t, i) { t.addEventListener("click", function () { select(i); }); });
     addEventListener("keydown", function (e) {
-      if (e.target === range) return;
+      if (e.target === range && e.key.indexOf("Arrow") === 0) return;   /* 화살표만 range 의 것 */
       var n = "1234".indexOf(e.key);
       if (n >= 0 && n < pairs.length) { select(n); }
     });
@@ -732,7 +772,7 @@ html.js .s7-view img.shot.is-on{opacity:1}
       if (!en[0].isIntersecting) return;
       io.disconnect();
       ba.classList.add("sweep");
-    }, { rootMargin: "0px 0px 10% 0px", threshold: 0.01 });
+    }, { rootMargin: "0px", threshold: 0.5 });
     io.observe(ba);
   }
 
@@ -802,6 +842,64 @@ html.js .s7-view img.shot.is-on{opacity:1}
     io.observe(el);
   }
 
+  /* ── 7b. S10 렌더 폼 — 네트워크 없이 상태 한 줄로 답한다(F1) ─────────────── */
+  function mountForm() {
+    var f = document.getElementById("render"), st = document.getElementById("renderStatus");
+    if (!f || !st) return;
+    var inp = f.querySelector("input");
+    f.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var v = (inp.value || "").trim();
+      st.textContent = v
+        ? "Queued. Your first still lands in the gallery — you can keep typing lines while it renders."
+        : "Type one line first — camera, hour and lens are optional.";
+      if (!v) inp.focus();
+    });
+  }
+
+  /* ── 7c. 앵커는 목적지에 포커스를 남긴다(F4) — 폼이면 입력칸으로 ─────────── */
+  function mountAnchors() {
+    var as = [].slice.call(document.querySelectorAll('a[href^="#"]'));
+    as.forEach(function (a) {
+      a.addEventListener("click", function () {
+        var id = a.getAttribute("href").slice(1);
+        var t = id && document.getElementById(id);
+        if (!t) return;
+        var inp = t.querySelector && t.querySelector("input, textarea, button");
+        setTimeout(function () { (inp || t).focus({ preventScroll: true }); }, 0);
+      });
+    });
+  }
+
+  /* ── 7d. S3 키보드 스텝(F7) — ←/→ 가 프레임 한 장만큼 스크롤한다 ──────────── */
+  function mountSeqKeys() {
+    var stage = document.getElementById("s3stage"), track = document.getElementById("s3");
+    if (!stage || !track) return;
+    stage.tabIndex = 0;
+    stage.addEventListener("keydown", function (e) {
+      var d = e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : (e.key === "ArrowLeft" || e.key === "ArrowUp" ? -1 : 0);
+      if (!d) return;
+      e.preventDefault();
+      var travel = track.offsetHeight - innerHeight;
+      var k = parseFloat(track.dataset.k) || 0.5;
+      var step = travel > 0 ? (travel * k) / (s3imgs.length - 1) : innerHeight / 2;   /* 정확히 한 프레임 */
+      scrollBy({ top: d * step, behavior: "instant" });
+    });
+  }
+
+  /* ── 7e. 모바일 S6 진입 리빌(F9) — 비네트 안쪽에서 바깥으로 한 번 밝아진다 ── */
+  function mountS6Reveal() {
+    var sec = document.getElementById("s6");
+    if (!sec || REDUCE || innerWidth > 760) return;
+    sec.classList.add("s6-armed");
+    var io = new IntersectionObserver(function (en) {
+      if (!en[0].isIntersecting) return;
+      io.disconnect();
+      sec.classList.add("is-in");
+    }, { threshold: 0.15 });
+    io.observe(sec);
+  }
+
   /* ── 8. 진입 리빌 — opacity/transform 만, 1.2s 안에 끝난다 ─────────────── */
   function mountReveals() {
     var els = [].slice.call(document.querySelectorAll(".rv"));
@@ -813,7 +911,8 @@ html.js .s7-view img.shot.is-on{opacity:1}
   }
 
   if (ANIM) { mountPins(); } else { mountSeqAuto(); }
-  mountDrum(); mountCompare(); mountExpand(); mountPresets(); mountWipe(); mountReveals();
+  mountDrum(); mountCompare(); mountExpand(); mountPresets(); mountWipe();
+  mountForm(); mountAnchors(); mountSeqKeys(); mountS6Reveal(); mountReveals();
   addEventListener("load", function () { if (s3 && s3.__tick) s3.__tick(); moveUnderline(slots.height); });
 })();
 </script>
