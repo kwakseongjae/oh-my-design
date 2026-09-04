@@ -38,6 +38,7 @@ for (const it of set.items) {
   usedSent.add(pick.toLowerCase());
   let fin = pick.replace(/\.$/, "").replace(/"/g, "&quot;").slice(0, 190);
   if (usedFinal.has(fin)) fin = (fin.slice(0, 170) + " — " + it.id).trim();
+  if (fin.split(/\s+/).length < 3) fin = (sentences[0].replace(/\.$/, "").replace(/"/g, "&quot;").slice(0, 160) + " (" + it.id + ")"); // 3단어 미만 alt 금지(LI-32)
   usedFinal.add(fin);
   ALT[it.id] = fin;
 }
