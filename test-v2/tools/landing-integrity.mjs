@@ -19,6 +19,19 @@ import { existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { basename, dirname, join, resolve } from "node:path";
 
 const VIEWPORT = { width: 1440, height: 900 };
+/* LI-34~40 임계값 — docs/design-excellence/scale-and-simplicity.md §4 의 "잠정" 값이다.
+   레퍼런스 실측 프로브(레인 A, §5)가 도착하면 **이 객체만** 고친다. 판정 코드에 숫자를 박지 않는다. */
+const THRESHOLDS = {
+  li34: { medianMediaShare: 0.35, pageMaxShare: 0.90, foldMediaMinVw: 0.45, foldMediaMinVh: 0.40, svgMinPx: 200 },
+  /* li35: 콘텐츠 관문(감춰졌다 호버로 열림)은 0. 그 위에 LC-49 의 "호버 상한 = 리프트·밝기 2%" 를 수치로 —
+     리프트(≤12px)와 밝기는 허용하고, 그보다 큰 이동·확대·회전·투명도 변화는 호버가 스펙터클을 인질로 잡은 것이다. */
+  li35: { maxGates: 0, maxProbes: 10, probesPerSection: 2, hoverTranslatePx: 12, hoverScaleDelta: 0.04, hoverRotateDeg: 2, hoverOpacityDelta: 0.25 },
+  li36: { minFocusRatio: 2.0, maxViolatingSections: 1, largeTextMultiple: 2 },
+  li37: { maxFoldUnits: 5, minTextChars: 8, mediaMinPx: 64 },
+  li38: { maxChannelsPerSection: 2, idleSampleMs: 1200 },
+  li39: { minTextPx: 14, minWords: 3, minHoldPx: 40 },
+  li40: { minMaxEmptyRunVh: 0.25, maxDistinctGaps: 3, bandPx: 50, emptyBandInk: 0.005, gapRoundPx: 8 },
+};
 const argv = process.argv.slice(2);
 const asJson = argv.includes("--json");
 const outIdx = argv.indexOf("--out");
@@ -144,7 +157,9 @@ const STRUCT = () => {
   craft.hasSelection = /::selection/.test(cssText);
   craft.hasFocusVisible = /:focus-visible/.test(cssText);
   craft.hasGrain = /feTurbulence|fractalNoise/.test(document.documentElement.innerHTML) || /feTurbulence|fractalNoise/.test(cssText);
-  const density = { mediaCount: mediaEls.length, foldMedia, craft, perVh: +(mediaEls.length / Math.max(docH / vh, 1)).toFixed(2), videos: document.querySelectorAll("video").length, sliceInk };
+  const dialMeta = document.querySelector('meta[name="omd-density"]');
+  const dial = dialMeta && /^\d+$/.test(dialMeta.content.trim()) ? +dialMeta.content.trim() : null;
+  const density = { mediaCount: mediaEls.length, foldMedia, craft, perVh: +(mediaEls.length / Math.max(docH / vh, 1)).toFixed(2), videos: document.querySelectorAll("video").length, sliceInk, dial };
   return { docHeightPx: docH, pageVh: +(docH / vh).toFixed(2), sections, density, fold: { biggestText, biggestMedia }, motion: { declarations: decl, topDurationsMs: top(durations), topEasings: top(easings, 8), propMax }, videos, prefersReducedMotionRule: prefersReduced, fontHistogram: top(allFonts, 12), reflexes: { cardGridGroups4, nestedCards, imageHosts: Object.entries(hosts), bodyLineP50: lineWidths[Math.floor(lineWidths.length / 2)] ?? null, h1Count: document.querySelectorAll("h1").length }, scrollSnap: { root: rootSnap, body: bodySnap } };
 };
 
@@ -207,12 +222,16 @@ function judge(m, reveals, scrub) {
   // 실측: landing/stripe 가 LC-8(12.05vh)·LC-9(1.55vh)를 다 지키면서 13화면 중 6화면이 잉크 10% 미만이었다.
   // 기준선은 코덱스 실측 사이트에서 가져온다: affinity 폴드 미디어 8개(LC-33), 스크롤러 하나에 에셋 14개(LC-15),
   // 본문 섹션 공백 비율 중앙 0.46–0.74(LC-4) = 잉크 26–54%.
+  /* 밀도 다이얼(LC-59): 페이지가 <meta name="omd-density" content="n"> 으로 밀도 ≤5 를 선언하면
+     개수 바닥(LI-24~26)은 FAIL 이 아니라 WARN — 상한(LI-36~38)이 우선한다. 선언이 없으면 종전대로. */
+  const dial = m.density?.dial ?? null;
+  const floorFail = dial !== null && dial <= 5 ? "WARN" : "FAIL";
   const si = m.density?.sliceInk ?? [];
   const body = si.slice(1); // 폴드는 LI-3 가 따로 본다
   const thin = body.map((v, i) => [i + 1, v]).filter(([, v]) => v < 0.12);
-  push("LI-24", thin.length ? "FAIL" : "PASS",
+  push("LI-24", thin.length ? floorFail : "PASS",
     `잉크 12% 미만 화면 ${thin.length}/${body.length}${thin.length ? " — " + thin.slice(0, 5).map(([i, v]) => `#${i} ${(100 * v).toFixed(0)}%`).join(", ") : ""} (LC-4 실측대역 26–54%)`);
-  push("LI-25", (m.density?.foldMedia ?? 0) < 3 ? "FAIL" : "PASS",
+  push("LI-25", (m.density?.foldMedia ?? 0) < 3 ? floorFail : "PASS",
     `폴드 미디어 ${m.density?.foldMedia ?? 0}개 (LC-33 affinity 8개, 최소 3)`);
   // ── 마감 바닥 (LC-37~47). 근거: docs/research/wow-visual-craft-2026-09-03.md
   const c = m.density?.craft ?? {};
@@ -232,7 +251,7 @@ function judge(m, reveals, scrub) {
 
   push("LI-32", (c.imgTotal || 0) && (c.imgGenericAlt || 0) > 0 ? "FAIL" : "PASS",
     `alt 구체성: generic/빈 alt ${c.imgGenericAlt || 0}/${c.imgTotal || 0} — IL-5`);
-  push("LI-26", (m.density?.perVh ?? 0) < 1 ? "FAIL" : "PASS",
+  push("LI-26", (m.density?.perVh ?? 0) < 1 ? floorFail : "PASS",
     `미디어 ${m.density?.mediaCount ?? 0}개 / ${m.pageVh} vh = ${m.density?.perVh ?? 0}개/vh (최소 1.0), video ${m.density?.videos ?? 0}`);
 
   // LI-33 정착 타이밍 — LC-48. JS 트리거는 FAIL 로, CSS view() 는 WARN 으로 판정한다:
@@ -315,11 +334,452 @@ const SCRUB = () => {
       const span = exit - enter;
       entries.push({ trigger: nameOf(el), start, end, pin: !!t.pin, scrub: t.vars.scrub, ratio: +ratio.toFixed(2),
         settlePct: span > 0 ? +(((settle - enter) / span) * 100).toFixed(1) : null,
-        leadVh: +((exit - settle) / vh).toFixed(2), pinLeadVh: +((pinExit - settle) / vh).toFixed(2) });
+        leadVh: +((exit - settle) / vh).toFixed(2), pinLeadVh: +((pinExit - settle) / vh).toFixed(2),
+        settleY: Math.max(0, Math.round(settle)), holdEndY: Math.round(pinExit) });
     }
   }
   return { vh, hasST: !!(ST && typeof ST.getAll === "function"), entries, cssRanges };
 };
+
+// ---------------------------------------------------------------- LI-34~40 스케일·간결 계측 (scale-and-simplicity §4)
+/* 근거: docs/design-excellence/scale-and-simplicity.md §3(LC-49~59)·§4. 개수만 재던 LI-24~33 이
+   "작은 이미지 22장"을 통과시켰기 때문에 여기서는 **크기·초점·노동**을 잰다. */
+
+/** 섹션을 식별하고 data-omdsec 로 태깅한다. 최상위 <section>·[data-section] → main > * → body 큰 자식. */
+const SECTION_GEO = () => {
+  const vis = (el) => { const cs = getComputedStyle(el); return cs.display !== "none" && cs.visibility !== "hidden" && +cs.opacity > 0.02; };
+  const box = (el) => el.getBoundingClientRect();
+  let els = [...document.querySelectorAll("section, [data-section]")].filter(vis);
+  els = els.filter((el) => !els.some((o) => o !== el && o.contains(el)));
+  let source = "section";
+  if (els.length < 2) { const main = document.querySelector("main"); if (main) { els = [...main.children].filter(vis); source = "main>*"; } }
+  if (els.length < 2) { const vw = innerWidth; els = [...document.body.children].filter((el) => vis(el) && box(el).height >= 120 && box(el).width >= vw * 0.4); source = "body>*"; }
+  els.sort((a, b) => box(a).top - box(b).top);
+  return { source, list: els.map((el, i) => { el.setAttribute("data-omdsec", String(i)); const r = box(el);
+    const cn = typeof el.className === "string" && el.className.trim() ? "." + el.className.trim().split(/\s+/)[0] : "";
+    return { i, name: el.id ? "#" + el.id : el.tagName.toLowerCase() + cn, top: Math.round(r.top + scrollY), h: Math.round(r.height) }; }) };
+};
+
+/** 한 섹션을 "가장 잘 보이는" 스크롤 위치에서 잰다: 주 미디어 점유율(LI-34) · 초점비(LI-36) · 모션 채널(LI-38). */
+const SECTION_MEASURE = async (arg) => {
+  const sec = document.querySelector('[data-omdsec="' + arg.i + '"]');
+  if (!sec) return { i: arg.i, name: arg.name, unmeasured: "섹션 노드 소실" };
+  const vw = innerWidth, vh = innerHeight, vArea = vw * vh;
+  const vis = (el) => { const cs = getComputedStyle(el); return cs.display !== "none" && cs.visibility !== "hidden" && +cs.opacity > 0.02; };
+  const clipArea = (r) => Math.max(0, Math.min(r.right, vw) - Math.max(r.left, 0)) * Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
+  const nameOf = (el) => { if (el.id) return "#" + el.id; const c = typeof el.className === "string" && el.className.trim() ? "." + el.className.trim().split(/\s+/)[0] : ""; return el.tagName.toLowerCase() + c; };
+  const all = [sec, ...sec.querySelectorAll("*")];
+  const media = [], bigText = [];
+  const bodyPx = arg.bodyPx || 16;
+  for (const el of all) {
+    if (!vis(el)) continue;
+    const r = el.getBoundingClientRect();
+    if (r.width < 4 || r.height < 4) continue;
+    const a = clipArea(r); if (a <= 0) continue;
+    const tag = el.tagName.toUpperCase(), cs = getComputedStyle(el);
+    let kind = null;
+    if (/^(IMG|VIDEO|CANVAS|PICTURE)$/.test(tag)) kind = tag.toLowerCase();
+    else if (tag === "SVG" && Math.max(r.width, r.height) >= arg.svgMinPx) kind = "svg";
+    else if (cs.backgroundImage && cs.backgroundImage !== "none" && /url\(/.test(cs.backgroundImage)) kind = "bg";
+    if (kind) media.push({ n: nameOf(el), kind, area: a, share: +(a / vArea).toFixed(3), wVw: +(r.width / vw).toFixed(2), hVh: +(r.height / vh).toFixed(2), bb: [Math.max(r.left, 0), Math.max(r.top, 0), Math.min(r.right, vw), Math.min(r.bottom, vh)], par: el.parentElement });
+    const direct = [...el.childNodes].filter((c) => c.nodeType === 3).map((c) => c.nodeValue.trim()).join(" ").trim();
+    if (direct.length >= 4 && (parseFloat(cs.fontSize) || 0) >= bodyPx * arg.largeTextMultiple) bigText.push({ n: nameOf(el) + "@" + Math.round(parseFloat(cs.fontSize)) + "px", kind: "text", area: a, bb: [Math.max(r.left, 0), Math.max(r.top, 0), Math.min(r.right, vw), Math.min(r.bottom, vh)], par: el.parentElement });
+  }
+  media.sort((x, y) => y.area - x.area);
+  const visualsRaw = [...media, ...bigText].sort((x, y) => y.area - x.area);
+  /* 초점비(LI-36)는 "경쟁하는" 요소를 묻는다. 같은 박스에 겹쳐 쌓인 층(크로스페이드 프레임·전후 비교·이미지 위 비네트)과
+     같은 부모 안의 등크기 타일 띠(드럼·마키)는 경쟁이 아니라 하나의 초점이다 — 병합해서 센다(2026-09-04, r4 오판 수정). */
+  const inter = (A, B) => Math.max(0, Math.min(A[2], B[2]) - Math.max(A[0], B[0])) * Math.max(0, Math.min(A[3], B[3]) - Math.max(A[1], B[1]));
+  const bbArea = (A) => Math.max(0, A[2] - A[0]) * Math.max(0, A[3] - A[1]);
+  const clusters = [];
+  for (const v of visualsRaw) {
+    if (!v.bb) { clusters.push({ ...v, members: 1 }); continue; }
+    let hit = null;
+    for (const c of clusters) {
+      if (!c.bb) continue;
+      const ov = inter(c.bb, v.bb), small = Math.min(bbArea(c.bb), bbArea(v.bb));
+      const sameFamily = (c.kind === "text") === (v.kind === "text");      // 이미지 위 텍스트는 경쟁이다 — 미디어끼리·텍스트끼리만 병합
+      if (sameFamily && small > 0 && ov / small >= 0.8) { hit = c; break; }  // 겹침: 작은 쪽의 80% 이상이 큰 쪽 안
+    }
+    if (hit) { hit.members++; continue; }
+    // 등크기 형제 타일 띠: 같은 부모 안에 면적 비 ≤1.35 인 항목이 이미 2개 이상이면 부모 박스로 합친다
+    const sib = clusters.find((c) => c.par && c.par === v.par && c.kind === v.kind && c.tileArea && Math.max(c.tileArea, v.area) / Math.max(1, Math.min(c.tileArea, v.area)) <= 1.35);
+    if (sib) {
+      sib.members++;
+      if (sib.members >= 3 && v.par) { const pr = v.par.getBoundingClientRect(); const pb = [Math.max(pr.left, 0), Math.max(pr.top, 0), Math.min(pr.right, vw), Math.min(pr.bottom, vh)]; sib.bb = pb; sib.area = Math.max(sib.area, bbArea(pb)); sib.n = nameOf(v.par) + "(band×" + sib.members + ")"; }
+      continue;
+    }
+    clusters.push({ ...v, members: 1, tileArea: v.area });
+  }
+  const visuals = clusters.map(({ par, tileArea, ...rest }) => rest).sort((x, y) => y.area - x.area);
+  // 모션 채널 4종
+  let scrubCh = 0, idleCh = 0, hoverCh = 0, entCh = 0;
+  const ST = window.ScrollTrigger;
+  if (ST && typeof ST.getAll === "function") {
+    for (const t of ST.getAll()) { const sc = t.vars && t.vars.scrub !== undefined && t.vars.scrub !== false; if (!sc && !t.pin) continue;
+      const el = t.trigger || t.pinnedContainer; if (el && (el === sec || sec.contains(el) || el.contains(sec))) { scrubCh = 1; break; } }
+  }
+  if (!scrubCh) for (const el of all) { const at = (getComputedStyle(el).getPropertyValue("animation-timeline") || "").trim(); if (at && at !== "none" && at !== "auto") { scrubCh = 1; break; } }
+  const rev = new Set(arg.revealIds || []);
+  for (const el of sec.querySelectorAll("[data-omdid]")) if (rev.has(el.getAttribute("data-omdid"))) { entCh = 1; break; }
+  for (const sel of arg.hoverSel || []) { try { if (sec.matches(sel) || sec.querySelector(sel)) { hoverCh = 1; break; } } catch { /* 잘못된 셀렉터 */ } }
+  let infinite = 0;
+  try { for (const an of sec.getAnimations({ subtree: true })) { const tm = an.effect && an.effect.getTiming ? an.effect.getTiming() : null; if (tm && (tm.iterations === Infinity || tm.iterations > 100)) infinite++; } } catch { /* 미지원 */ }
+  const sig = () => { const o = []; for (const el of all) { const cs = getComputedStyle(el); o.push(cs.transform + "|" + cs.opacity + "|" + cs.backgroundPosition + "|" + cs.objectPosition); } return o; };
+  /* 유휴 루프 판정은 창 두 개를 연속으로 본다 — 스크럽 스무딩이나 일회성 트윈의 꼬리는 한 창에서만
+     움직이고 멎지만, 유휴 루프는 두 창에서 모두 움직인다(한 창만 보면 판정이 실행마다 흔들렸다). */
+  const half = Math.max(200, Math.round(arg.idleSampleMs / 2));
+  const s0 = sig();
+  await new Promise((r) => setTimeout(r, half));
+  const s1 = sig();
+  await new Promise((r) => setTimeout(r, half));
+  const s2 = sig();
+  const diff = (X, Y) => { let n = 0; for (let k = 0; k < Math.min(X.length, Y.length); k++) if (X[k] !== Y[k]) n++; return n; };
+  const d01 = diff(s0, s1), d12 = diff(s1, s2);
+  const drift = Math.min(d01, d12);
+  if (infinite > 0 || drift > 0) idleCh = 1;
+  const top2 = visuals.slice(0, 2);
+  return { i: arg.i, name: arg.name, mediaCount: media.length,
+    maxMediaShare: media.length ? +(media[0].area / vArea).toFixed(3) : 0,
+    topMedia: media.slice(0, 2).map((x) => x.n + " " + Math.round(100 * x.area / vArea) + "%"),
+    focusMembers: visuals.slice(0, 2).map((x) => x.members || 1),
+    visualCount: visuals.length,
+    focusRatio: top2.length >= 2 ? +(top2[0].area / Math.max(1, top2[1].area)).toFixed(2) : (visuals.length === 1 ? 99 : null), // 단일 초점 = 경쟁 없음
+    focusTop: top2.map((x) => x.n),
+    channels: scrubCh + idleCh + hoverCh + entCh,
+    channelDetail: { scrub: scrubCh, idle: idleCh, hover: hoverCh, entrance: entCh, infiniteAnims: infinite, driftEls: drift, driftWindows: [d01, d12] } };
+};
+
+/** 폴드(scrollY=0) 의미 단위와 폴드 주 미디어 — LI-37 / LI-34 의 폴드 항. */
+const FOLD_UNITS = (arg) => {
+  const vw = innerWidth, vh = innerHeight;
+  const vis = (el) => { const cs = getComputedStyle(el); return cs.display !== "none" && cs.visibility !== "hidden" && +cs.opacity > 0.02; };
+  const inFold = (el) => { const r = el.getBoundingClientRect(); return r.top < vh && r.bottom > 0 && r.width >= 8 && r.height >= 8; };
+  const nameOf = (el) => { if (el.id) return "#" + el.id; const c = typeof el.className === "string" && el.className.trim() ? "." + el.className.trim().split(/\s+/)[0] : ""; return el.tagName.toLowerCase() + c; };
+  const counted = new Set(); const units = [];
+  const add = (el, kind, label) => { if (counted.has(el)) return; units.push({ kind, n: nameOf(el), label: (label || "").replace(/\s+/g, " ").slice(0, 32) });
+    counted.add(el); for (const d of el.querySelectorAll("*")) counted.add(d); };
+  for (const el of document.querySelectorAll("nav, header, [role='navigation']")) { if (vis(el) && inFold(el)) add(el, "nav", el.textContent.trim()); }
+  for (const el of document.querySelectorAll("a, button, [role='button']")) { if (!vis(el) || !inFold(el)) continue; const t = el.textContent.trim(); if (t.length < 2) continue; add(el, "cta", t); }
+  for (const el of document.querySelectorAll("body *")) {
+    if (counted.has(el) || !vis(el) || !inFold(el)) continue;
+    const cs = getComputedStyle(el); if (/^(inline|contents|none)$/.test(cs.display)) continue;
+    const direct = [...el.childNodes].filter((c) => c.nodeType === 3).map((c) => c.nodeValue.trim()).join(" ").trim();
+    if (direct.length < arg.minTextChars) continue;
+    add(el, "text", direct);
+  }
+  for (const el of document.querySelectorAll("img, video, canvas, svg, picture")) {
+    if (counted.has(el) || !vis(el) || !inFold(el)) continue; const r = el.getBoundingClientRect();
+    if (r.width < arg.mediaMinPx || r.height < arg.mediaMinPx) continue; add(el, "media", el.tagName.toLowerCase());
+  }
+  const bgAdded = [];
+  for (const el of document.querySelectorAll("body *")) {
+    if (counted.has(el) || !vis(el) || !inFold(el)) continue;
+    const cs = getComputedStyle(el); if (!cs.backgroundImage || cs.backgroundImage === "none" || !/url\(/.test(cs.backgroundImage)) continue;
+    const r = el.getBoundingClientRect(); if (r.width < arg.mediaMinPx || r.height < arg.mediaMinPx) continue;
+    if (bgAdded.some((a) => a.contains(el))) continue; bgAdded.push(el);
+    units.push({ kind: "media-bg", n: nameOf(el), label: "" });
+  }
+  // 액센트 개체 — DESIGN 토큰이 없으면 세지 않는다(추측 금지)
+  let accent = null;
+  { const rc = getComputedStyle(document.documentElement);
+    const raw = (rc.getPropertyValue("--accent") || rc.getPropertyValue("--brand") || rc.getPropertyValue("--color-accent") || "").trim();
+    if (raw) { const p = document.createElement("span"); p.style.cssText = "position:absolute;opacity:0;pointer-events:none"; p.style.color = raw; document.body.appendChild(p);
+      const c = getComputedStyle(p).color; p.remove(); if (c && c !== "rgba(0, 0, 0, 0)") accent = c; } }
+  if (accent) { const seen = [];
+    for (const el of document.querySelectorAll("body *")) {
+      if (counted.has(el) || !vis(el) || !inFold(el)) continue; const cs = getComputedStyle(el);
+      const hit = cs.backgroundColor === accent || (parseFloat(cs.borderTopWidth) > 0 && cs.borderTopColor === accent);
+      if (!hit || seen.some((a) => a.contains(el))) continue; seen.push(el); units.push({ kind: "accent", n: nameOf(el), label: "" }); } }
+  let foldMedia = null;
+  for (const el of document.querySelectorAll("body *")) {
+    if (!vis(el) || !inFold(el)) continue;
+    const r = el.getBoundingClientRect(), cs = getComputedStyle(el), tag = el.tagName.toUpperCase();
+    let kind = null;
+    if (/^(IMG|VIDEO|CANVAS|PICTURE)$/.test(tag)) kind = tag.toLowerCase();
+    else if (tag === "SVG" && Math.max(r.width, r.height) >= arg.svgMinPx) kind = "svg";
+    else if (cs.backgroundImage && cs.backgroundImage !== "none" && /url\(/.test(cs.backgroundImage)) kind = "bg";
+    if (!kind) continue;
+    const a = Math.max(0, Math.min(r.right, vw) - Math.max(r.left, 0)) * Math.max(0, Math.min(r.bottom, vh) - Math.max(r.top, 0));
+    if (!foldMedia || a > foldMedia.area) foldMedia = { n: nameOf(el), kind, area: a, wVw: +(r.width / vw).toFixed(2), hVh: +(r.height / vh).toFixed(2), share: +(a / (vw * vh)).toFixed(3) };
+  }
+  return { units, count: units.length, accentToken: accent, foldMedia };
+};
+
+/** 호버 관문(LI-35) + 호버 모션 셀렉터(LI-38 채널 3). CSSOM 을 규칙 단위로 훑는다. */
+const HOVER_GATES = () => {
+  const PROPS = ["opacity", "visibility", "clip-path", "max-height", "display", "transform"];
+  const hoverRules = [], noneRules = [];
+  let sheets = 0, blocked = 0;
+  const collect = (list, cond) => {
+    for (const r of list) {
+      const c = r.conditionText || (r.media && r.media.mediaText) || "";
+      if (r.cssRules) { collect(r.cssRules, cond + " " + c); continue; }
+      if (!r.selectorText || !r.style || !/:hover/.test(r.selectorText)) continue;
+      const set = {}; let any = false;
+      for (const p of PROPS) { const v = r.style.getPropertyValue(p); if (v) { set[p] = v.trim(); any = true; } }
+      if (!any) continue;
+      const bases = r.selectorText.split(",").map((x) => x.trim()).filter((x) => /:hover/.test(x))
+        .map((x) => x.replace(/:hover/g, "").trim()).filter((x) => x && !/[>+~]$/.test(x));
+      if (!bases.length) continue;
+      const rec = { sel: r.selectorText.slice(0, 80), bases, set, cond: cond.trim() };
+      if (/hover\s*:\s*none/.test(cond) || /pointer\s*:\s*coarse/.test(cond)) noneRules.push(rec); else hoverRules.push(rec);
+    }
+  };
+  for (const sh of document.styleSheets) { sheets++; try { collect(sh.cssRules, ""); } catch { blocked++; } }
+  const revealing = (s) => {
+    if (s.opacity !== undefined && parseFloat(s.opacity) > 0.05) return true;
+    if (s.visibility === "visible") return true;
+    if (s.display !== undefined && s.display !== "none") return true;
+    if (s["max-height"] !== undefined && parseFloat(s["max-height"]) !== 0) return true;
+    const cp = s["clip-path"];
+    if (cp !== undefined && (cp === "none" || /inset\(\s*0/.test(cp) || /circle\(\s*(100%|[5-9]\d%)/.test(cp))) return true;
+    return false;
+  };
+  const baseHidden = (el) => { const cs = getComputedStyle(el);
+    if (cs.display === "none") return "display:none";
+    if (cs.visibility === "hidden") return "visibility:hidden";
+    if (+cs.opacity < 0.05) return "opacity:" + cs.opacity;
+    if (cs.maxHeight !== "none" && parseFloat(cs.maxHeight) === 0) return "max-height:0";
+    const cp = cs.clipPath;
+    if (cp && cp !== "none" && (/(inset|polygon|rect)\([^)]*100%/.test(cp) || /circle\(\s*0/.test(cp))) return "clip-path:" + cp.slice(0, 20);
+    return null; };
+  const hasContent = (el) => el.textContent.trim().length > 0 || !!el.querySelector("img,video,canvas,svg,picture");
+  const noneSel = [...new Set(noneRules.flatMap((r) => r.bases))];
+  const gates = [], motionSel = [], seenEl = new Set();
+  for (const r of hoverRules) {
+    if (r.set.transform !== undefined || r.set.opacity !== undefined) motionSel.push(...r.bases);
+    if (!revealing(r.set)) continue;
+    for (const b of r.bases) {
+      let els = []; try { els = [...document.querySelectorAll(b)]; } catch { continue; }
+      for (const el of els) {
+        if (seenEl.has(el)) continue;
+        const why = baseHidden(el); if (!why || !hasContent(el)) continue;
+        seenEl.add(el);
+        const fb = noneSel.some((s) => { try { return el.matches(s); } catch { return false; } });
+        gates.push({ sel: b.slice(0, 48), hoverSel: r.sel.slice(0, 48), base: why, text: el.textContent.trim().replace(/\s+/g, " ").slice(0, 28), fallback: fb });
+      }
+    }
+  }
+  return { gates, gated: gates.length, noFallback: gates.filter((g) => !g.fallback).length,
+    hoverMotionSelectors: [...new Set(motionSel)].slice(0, 150), hoverRules: hoverRules.length, hoverNoneRules: noneRules.length, sheets, blocked };
+};
+
+/** 여백 덩어리(LI-40) — LI-24 의 잉크 기계를 50px 밴드로 잘게 돌린다. scrollY=0 에서 절대 좌표로 잰다. */
+const INK_BANDS = (arg) => {
+  const vw = innerWidth, vh = innerHeight;
+  const docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+  const B = arg.bandPx, n = Math.max(1, Math.ceil(docH / B));
+  const ink = new Array(n).fill(0);
+  const vis = (el) => { const cs = getComputedStyle(el); return cs.display !== "none" && cs.visibility !== "hidden" && +cs.opacity > 0.02; };
+  const paint = (top, bottom, a) => { if (!(bottom > top) || !(a > 0)) return;
+    for (let i = 0; i < n; i++) { const s0 = i * B, ov = Math.max(0, Math.min(bottom, s0 + B) - Math.max(top, s0)); if (ov > 0) ink[i] += a * (ov / (bottom - top)); } };
+  for (const el of document.querySelectorAll("body *")) {
+    if (!vis(el)) continue;
+    const r = el.getBoundingClientRect(); if (r.width < 8 || r.height < 8) continue;
+    const isMedia = /^(IMG|VIDEO|SVG|CANVAS|PICTURE)$/.test(el.tagName.toUpperCase());
+    const leafText = !el.children.length && el.textContent.trim().length > 0;
+    const cs = getComputedStyle(el);
+    /* LI-24 는 그라디언트 배경도 잉크로 세지만 LC-55 는 "텍스트·미디어가 없는 구간"을 묻는다 —
+       페이지 전체를 덮는 메시 그라디언트가 여백을 0 으로 만들면 안 되므로 url() 배경만 잉크로 친다. */
+    const bgInk = cs.backgroundImage !== "none" && /url\(/.test(cs.backgroundImage);
+    if (isMedia || bgInk || leafText) paint(r.top + scrollY, r.bottom + scrollY, r.width * r.height);
+  }
+  for (const st of document.querySelectorAll("body *")) {
+    if (getComputedStyle(st).position !== "sticky") continue;
+    const track = st.parentElement; if (!track) continue;
+    const tr = track.getBoundingClientRect(); if (tr.height <= st.getBoundingClientRect().height + 8) continue;
+    let a = 0; for (const el of st.querySelectorAll("img, video, svg, canvas, h1, h2, h3, p, span")) { if (!vis(el)) continue; const r = el.getBoundingClientRect(); if (r.width >= 8 && r.height >= 8) a += r.width * r.height; }
+    paint(tr.top + scrollY, tr.bottom + scrollY, a * (tr.height / vh));
+  }
+  const cov = ink.map((a) => Math.min(1, a / (vw * B)));
+  const runs = []; let cur = 0, at = 0;
+  for (let i = 0; i < n; i++) { if (cov[i] < arg.emptyBandInk) { if (cur === 0) at = i; cur++; } else { if (cur) runs.push([at, cur]); cur = 0; } }
+  if (cur) runs.push([at, cur]);
+  const best = runs.reduce((a, b) => (a && a[1] >= b[1] ? a : b), null);
+  const secs = [...document.querySelectorAll("[data-omdsec]")].map((el) => { const r = el.getBoundingClientRect(); return { top: r.top + scrollY, bottom: r.bottom + scrollY }; }).sort((a, b) => a.top - b.top);
+  const gaps = []; let structural = 0;
+  for (let i = 1; i < secs.length; i++) {
+    const g = secs[i].top - secs[i - 1].bottom; if (g < -8) continue;
+    /* 두 섹션 사이에 섹션이 아닌 콘텐츠(밴드·푸터 등)가 있으면 그건 간격 토큰이 아니라 구조다.
+       밴드 하나가 통째로 들어가는 구간에서만 잉크를 확인할 수 있으므로 그 경우에만 배제한다. */
+    let occupied = false;
+    for (let k = Math.ceil(secs[i - 1].bottom / B); k < Math.floor(secs[i].top / B); k++) if (cov[k] >= arg.emptyBandInk) { occupied = true; break; }
+    if (occupied) { structural++; continue; }
+    gaps.push(Math.max(0, Math.round(g / arg.gapRoundPx) * arg.gapRoundPx));
+  }
+  return { bands: n, bandPx: B, emptyBands: cov.filter((c) => c < arg.emptyBandInk).length,
+    maxRunVh: best ? +((best[1] * B) / vh).toFixed(2) : 0, maxRunAtVh: best ? +((best[0] * B) / vh).toFixed(2) : null,
+    topRunsVh: runs.map((r) => +((r[1] * B) / vh).toFixed(2)).sort((a, b) => b - a).slice(0, 5),
+    gaps, structuralGaps: structural, distinctGaps: [...new Set(gaps)].sort((a, b) => a - b) };
+};
+
+/** 홀드 구간 한가운데에서 읽을 것이 있는지(LI-39). */
+const HOLD_CONTENT = (arg) => {
+  const vh = innerHeight;
+  const vis = (el) => { const cs = getComputedStyle(el); return cs.display !== "none" && cs.visibility !== "hidden" && +cs.opacity > 0.05; };
+  let texts = 0; const samples = [];
+  for (const el of document.querySelectorAll("body *")) {
+    if (!vis(el)) continue;
+    const r = el.getBoundingClientRect();
+    if (r.bottom <= 0 || r.top >= vh || r.width < 8 || r.height < 8) continue;
+    const direct = [...el.childNodes].filter((c) => c.nodeType === 3).map((c) => c.nodeValue.trim()).join(" ").trim();
+    if (!direct) continue;
+    if ((parseFloat(getComputedStyle(el).fontSize) || 0) < arg.minTextPx) continue;
+    if (direct.split(/\s+/).filter(Boolean).length < arg.minWords) continue;
+    texts++; if (samples.length < 2) samples.push(direct.slice(0, 32));
+  }
+  let result = 0;
+  for (const el of document.querySelectorAll("[data-result], .is-settled")) {
+    if (!vis(el)) continue; const r = el.getBoundingClientRect();
+    if (r.bottom > 0 && r.top < vh && r.width > 8 && r.height > 8) result++;
+  }
+  return { texts, result, samples };
+};
+
+/** JS 호버 관문 후보(LI-35 보완). CSS :hover 로만 재면 pointerenter 로 여닫는 층을 통째로 놓친다.
+    addEventListener 후킹(addInitScript)이 붙여 둔 data-omdhover 를 근거로, 그 안의 "기본 상태에서 감춰진
+    콘텐츠"를 표시해 두고 Node 쪽에서 실제로 마우스를 올려 열리는지 확인한다. */
+const HOVER_CANDIDATES = (arg) => {
+  const vw = innerWidth, vh = innerHeight;
+  const nameOf = (el) => { if (el.id) return "#" + el.id; const c = typeof el.className === "string" && el.className.trim() ? "." + el.className.trim().split(/\s+/)[0] : ""; return el.tagName.toLowerCase() + c; };
+  const hiddenState = (el) => { const cs = getComputedStyle(el);
+    if (cs.display === "none") return "display:none";
+    if (cs.visibility === "hidden") return "visibility:hidden";
+    if (+cs.opacity < 0.05) return "opacity:" + cs.opacity;
+    if (cs.maxHeight !== "none" && parseFloat(cs.maxHeight) === 0) return "max-height:0";
+    const cp = cs.clipPath; if (cp && cp !== "none" && (/(inset|polygon|rect)\([^)]*100%/.test(cp) || /circle\(\s*0/.test(cp))) return "clip-path";
+    return null; };
+  const hasContent = (el) => el.textContent.trim().length > 3 || !!el.querySelector("img,video,canvas,svg,picture");
+  const out = [];
+  let n = arg.seq || 0;
+  for (const host of document.querySelectorAll("[data-omdhover]")) {
+    const r = host.getBoundingClientRect();
+    if (r.width < 24 || r.height < 24) continue;
+    if (r.bottom <= 8 || r.top >= vh - 8 || r.right <= 8 || r.left >= vw - 8) continue;
+    const hidden = [];
+    for (const d of host.querySelectorAll("*")) {
+      if (hidden.length >= 6) break;
+      const w = hiddenState(d); if (!w || !hasContent(d)) continue;
+      const dr = d.getBoundingClientRect();
+      if (w !== "display:none" && (dr.width < 24 || dr.height < 16)) continue;
+      d.setAttribute("data-omdhid", String(n));
+      hidden.push({ hid: n++, n: nameOf(d), state: w });
+    }
+    host.setAttribute("data-omdhhost", String(arg.hostSeq + out.length));
+    out.push({ host: nameOf(host), types: host.getAttribute("data-omdhover"), hostId: arg.hostSeq + out.length,
+      cx: Math.round(Math.max(4, Math.min(vw - 4, r.left + r.width * 0.2))),
+      cy: Math.round(Math.max(4, Math.min(vh - 4, r.top + r.height * 0.25))),
+      cx2: Math.round(Math.max(4, Math.min(vw - 4, r.left + r.width * 0.8))),
+      cy2: Math.round(Math.max(4, Math.min(vh - 4, r.top + r.height * 0.75))),
+      hids: hidden.map((h) => h.hid), hidden });
+  }
+  return { seq: n, hosts: out };
+};
+/** 숙주 서브트리의 변형·투명도 지문 — 호버 전후를 비교해 LC-49 "리프트·밝기" 상한을 넘는지 본다. */
+const HOVER_SIG = (arg) => {
+  const host = document.querySelector('[data-omdhhost="' + arg.hostId + '"]'); if (!host) return [];
+  const dec = (t) => { if (!t || t === "none") return [0, 0, 1, 0];
+    const v = (t.match(/-?[\d.e+]+/g) || []).map(Number);
+    if (t.startsWith("matrix3d") && v.length >= 16) return [v[12], v[13], Math.hypot(v[0], v[1], v[2]), Math.atan2(v[1], v[0]) * 180 / Math.PI];
+    if (v.length >= 6) return [v[4], v[5], Math.hypot(v[0], v[1]), Math.atan2(v[1], v[0]) * 180 / Math.PI];
+    return [0, 0, 1, 0]; };
+  const out = [];
+  for (const el of [host, ...host.querySelectorAll("*")]) { if (out.length >= 60) break;
+    const cs = getComputedStyle(el); const d = dec(cs.transform); out.push([d[0], d[1], d[2], d[3], +cs.opacity]); }
+  return out;
+};
+const HOVER_PROBE = (arg) => {
+  let revealed = 0; const samples = [];
+  for (const h of arg.hids) {
+    const el = document.querySelector('[data-omdhid="' + h + '"]'); if (!el) continue;
+    const cs = getComputedStyle(el);
+    const open = cs.display !== "none" && cs.visibility !== "hidden" && +cs.opacity > 0.5 &&
+      !(cs.maxHeight !== "none" && parseFloat(cs.maxHeight) === 0);
+    if (open) { revealed++; if (samples.length < 2) samples.push((el.textContent.trim().slice(0, 24) || el.tagName.toLowerCase())); }
+  }
+  return { revealed, samples };
+};
+
+// ---------------------------------------------------------------- 판정 (LI-34~40)
+function judgeExtra(ext) {
+  const R = []; const T = THRESHOLDS;
+  const push = (id, status, detail) => R.push({ id, status, detail });
+  const median = (xs) => { const a = [...xs].sort((x, y) => x - y); return a.length ? a[Math.floor(a.length / 2)] : null; };
+  const S = (ext.sections || []).filter((s) => !s.unmeasured);
+  const fm = ext.fold && ext.fold.foldMedia;
+
+  // LI-34 주 미디어 점유율 — LC-51
+  if (!S.length) push("LI-34", "WARN", "섹션을 식별하지 못했다 — 주 미디어 점유율 측정 불가");
+  else {
+    const shares = S.map((s) => s.maxMediaShare);
+    const med = median(shares) ?? 0, mx = Math.max(...shares);
+    const foldOk = !!fm && (fm.wVw >= T.li34.foldMediaMinVw || fm.hVh >= T.li34.foldMediaMinVh);
+    const ok = med >= T.li34.medianMediaShare && mx >= T.li34.pageMaxShare && foldOk;
+    const worst = [...S].sort((a, b) => a.maxMediaShare - b.maxMediaShare).slice(0, 4);
+    push("LI-34", ok ? "PASS" : "FAIL",
+      `주 미디어/뷰포트 중앙 ${med.toFixed(2)}(≥${T.li34.medianMediaShare}) · 페이지 최대 ${mx.toFixed(2)}(≥${T.li34.pageMaxShare}) · 폴드 ${fm ? `${fm.n} ${fm.wVw}vw×${fm.hVh}vh` : "미디어 없음"}(≥${T.li34.foldMediaMinVw}vw 또는 ≥${T.li34.foldMediaMinVh}vh) · 최소 섹션 ${worst.map((s) => `${s.i}${s.name}:${s.maxMediaShare.toFixed(2)}`).join(", ")} — LC-51`);
+  }
+
+  // LI-35 호버 관문 — LC-49/58
+  const hv = ext.hover;
+  const js = ext.jsHover || { probed: 0, candidates: 0, gates: [] };
+  const total = (hv ? hv.gated : 0) + js.gates.length;
+  const jsMoved = js.gates.filter((g) => (g.movedEls || 0) > 0);
+  const jsTxt = `JS 포인터 층 후보 ${js.candidates}개 중 ${js.probed}개 프로브 → 호버로 열린 노드 ${js.gates.reduce((a, g) => a + (g.revealed || 0), 0)}개 · LC-49 상한(리프트 ${T.li35.hoverTranslatePx}px·확대 ${T.li35.hoverScaleDelta}·회전 ${T.li35.hoverRotateDeg}°) 초과 층 ${jsMoved.length}개${jsMoved.length ? "(" + jsMoved.slice(0, 3).map((g) => `${g.host} ${g.worst}`).join(", ") + ")" : ""}`;
+  if (!hv || (hv.sheets && hv.blocked === hv.sheets)) push("LI-35", "WARN", `스타일시트를 읽지 못했다(cross-origin) — CSS 호버 관문 측정 불가 · ${jsTxt}`);
+  else if (total > T.li35.maxGates) push("LI-35", "FAIL",
+    `호버로만 열리는 콘텐츠 노드 ${total}개(허용 ${T.li35.maxGates}) = CSS ${hv.gated} + JS ${js.gates.length} · CSS 관문 중 hover:none/pointer:coarse 대체 없음 ${hv.noFallback}개 · 호버 규칙 ${hv.hoverRules}개/터치 대체 규칙 ${hv.hoverNoneRules}개 · ${jsTxt}${hv.gated ? " — " + hv.gates.slice(0, 3).map((g) => `${g.sel}(${g.base}${g.fallback ? ", 대체 있음" : ""})`).join(", ") : ""} — LC-49/58`);
+  else if (js.candidates > js.probed) push("LI-35", "WARN",
+    `CSS 관문 0개이고 프로브한 ${js.probed}개는 열리지 않았지만 포인터 리스너를 단 층 ${js.candidates}개 중 ${js.candidates - js.probed}개는 예산(섹션당 2·최대 ${T.li35.maxProbes}) 밖이라 확인하지 못했다 — 측정 불완전`);
+  else push("LI-35", "PASS", `호버로만 열리는 콘텐츠 노드 0개 · CSS 호버 규칙 ${hv.hoverRules}개/터치 대체 ${hv.hoverNoneRules}개 · ${jsTxt} — LC-49/58`);
+
+  // LI-36 초점비 — LC-52
+  if (!S.length) push("LI-36", "WARN", "섹션 미식별 — 초점비 측정 불가");
+  else {
+    const measured = S.filter((s) => s.focusRatio !== null);
+    const bad = measured.filter((s) => s.focusRatio < T.li36.minFocusRatio);
+    push("LI-36", bad.length > T.li36.maxViolatingSections ? "FAIL" : "PASS",
+      `1등:2등 면적비 <${T.li36.minFocusRatio} 인 섹션 ${bad.length}개(허용 ${T.li36.maxViolatingSections}, 측정 ${measured.length}/${S.length})${bad.length ? " — " + bad.slice(0, 5).map((s) => `${s.i}${s.name}:${s.focusRatio}`).join(", ") : ""} — LC-52`);
+  }
+
+  // LI-37 폴드 의미 단위 — LC-54
+  if (!ext.fold) push("LI-37", "WARN", "폴드 계측 실패");
+  else {
+    const u = ext.fold.units, n = u.length;
+    const kinds = u.reduce((a, x) => { a[x.kind] = (a[x.kind] || 0) + 1; return a; }, {});
+    push("LI-37", n <= T.li37.maxFoldUnits ? "PASS" : "FAIL",
+      `폴드 의미 단위 ${n}개(≤${T.li37.maxFoldUnits}) [${Object.entries(kinds).map(([k, c]) => `${k}×${c}`).join(" ")}]${ext.fold.accentToken ? "" : " · --accent/--brand 토큰 없음(액센트 개체 미집계)"} — ${u.slice(0, 8).map((x) => x.kind + ":" + x.n).join(", ")} — LC-54`);
+  }
+
+  // LI-38 동시 모션 채널 — LC-52
+  if (!S.length) push("LI-38", "WARN", "섹션 미식별 — 모션 채널 측정 불가");
+  else {
+    const over = S.filter((s) => s.channels > T.li38.maxChannelsPerSection);
+    push("LI-38", over.length ? "FAIL" : "PASS",
+      `섹션당 동시 모션 채널 최대 ${Math.max(...S.map((s) => s.channels))}(≤${T.li38.maxChannelsPerSection}) · 초과 ${over.length}개 — ${S.map((s) => `${s.i}:${s.channels}${s.channels ? "(" + Object.entries(s.channelDetail).filter(([k, v]) => v && ["scrub", "idle", "hover", "entrance"].includes(k)).map(([k]) => k[0]).join("") + ")" : ""}`).join(" ")} — LC-52`);
+  }
+
+  // LI-39 홀드 콘텐츠 — LC-56
+  const H = ext.holds;
+  if (!H) push("LI-39", "PASS", "스크럽/핀 타임라인 없음 — 해당 없음");
+  else if (!H.measured.length) push("LI-39", H.note && /환산/.test(H.note) ? "WARN" : "PASS", H.note || "측정 대상 홀드 없음");
+  else {
+    const empty = H.measured.filter((h) => h.texts === 0 && h.result === 0);
+    push("LI-39", empty.length ? "FAIL" : "PASS",
+      `홀드 ${H.measured.length}개 중 읽을 것 없는 구간 ${empty.length}개(허용 0) — ${H.measured.map((h) => `${h.trigger}@${h.midY}px 텍스트 ${h.texts}·결과 ${h.result}`).join(" · ")} — LC-56`);
+  }
+
+  // LI-40 여백 덩어리 — LC-55
+  const ib = ext.ink;
+  if (!ib) push("LI-40", "WARN", "잉크 밴드 계측 실패");
+  else {
+    const ok = ib.maxRunVh >= T.li40.minMaxEmptyRunVh && ib.distinctGaps.length <= T.li40.maxDistinctGaps;
+    push("LI-40", ok ? "PASS" : "FAIL",
+      `최장 빈 세로 구간 ${ib.maxRunVh}vh(≥${T.li40.minMaxEmptyRunVh}, @${ib.maxRunAtVh}vh) · 섹션 간격 ${ib.distinctGaps.length}종(≤${T.li40.maxDistinctGaps}) [${ib.distinctGaps.join("/") || "-"}] · 빈 밴드 ${ib.emptyBands}/${ib.bands}(${ib.bandPx}px) · 섹션 사이 콘텐츠 낀 구간 ${ib.structuralGaps}개(간격 값에서 제외) — LC-55`);
+  }
+  return R;
+}
 
 // ---------------------------------------------------------------- 실행
 const { chromium, launchOptions } = chromiumRuntime();
@@ -334,6 +794,20 @@ for (const f of files) {
   const errors = [];
   page.on("pageerror", (e) => errors.push(String(e).slice(0, 120)));
   try {
+    /* LI-35: JS 로 여닫는 호버 층은 CSSOM 에 안 나온다 — 리스너 등록을 후킹해 숙주를 표시해 둔다. */
+    await page.addInitScript(() => {
+      const HOVER = /^(pointerenter|pointerover|pointermove|mouseenter|mouseover|mousemove)$/;
+      const orig = EventTarget.prototype.addEventListener;
+      EventTarget.prototype.addEventListener = function (type, ...rest) {
+        try {
+          if (HOVER.test(String(type)) && this instanceof Element) {
+            const prev = this.getAttribute("data-omdhover") || "";
+            if (!prev.split(",").includes(String(type))) this.setAttribute("data-omdhover", (prev ? prev + "," : "") + type);
+          }
+        } catch { /* 무시 */ }
+        return orig.call(this, type, ...rest);
+      };
+    });
     await page.goto("file://" + abs, { waitUntil: "load", timeout: 20000 });
     await page.waitForTimeout(800);
     await page.evaluate(TAG);
@@ -347,16 +821,90 @@ for (const f of files) {
     }
     const ids = new Set(); states.forEach((s) => Object.keys(s).forEach((k) => ids.add(k)));
     const reveals = { tracked: ids.size, steps, opacity: 0, transform: 0, clip: 0, filter: 0 };
-    for (const id of ids) { const seq = states.map((s) => s[id]).filter(Boolean); if (seq.length < 2) continue; const ops = seq.map((s) => s[0]); if (Math.min(...ops) < 0.6 && Math.max(...ops) > 0.9) reveals.opacity++; const tfs = new Set(seq.map((s) => s[1])); if (tfs.size > 1 && tfs.has("none")) reveals.transform++; if (new Set(seq.map((s) => s[2])).size > 1) reveals.clip++; if (new Set(seq.map((s) => s[3])).size > 1) reveals.filter++; }
+    const revealIds = [];
+    for (const id of ids) { const seq = states.map((s) => s[id]).filter(Boolean); if (seq.length < 2) continue; const ops = seq.map((s) => s[0]); let revealed = false; if (Math.min(...ops) < 0.6 && Math.max(...ops) > 0.9) { reveals.opacity++; revealed = true; } const tfs = new Set(seq.map((s) => s[1])); if (tfs.size > 1 && tfs.has("none")) { reveals.transform++; revealed = true; } if (revealed) revealIds.push(id); if (new Set(seq.map((s) => s[2])).size > 1) reveals.clip++; if (new Set(seq.map((s) => s[3])).size > 1) reveals.filter++; }
     await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
     await page.waitForTimeout(600);
     const m = await page.evaluate(STRUCT);
     const scrub = await page.evaluate(SCRUB);
-    const checks = judge(m, reveals, scrub);
+    // ── LI-34~40 (scale-and-simplicity §4): 섹션별로 "가장 잘 보이는" 위치까지 스크롤해 크기·초점·모션을 잰다.
+    const bodyPx = (() => { const cand = m.fontHistogram.filter(([px]) => +px >= 12 && +px <= 19); return cand.length ? +cand[0][0] : 16; })();
+    const geo = await page.evaluate(SECTION_GEO);
+    const fold = await page.evaluate(FOLD_UNITS, { minTextChars: THRESHOLDS.li37.minTextChars, mediaMinPx: THRESHOLDS.li37.mediaMinPx, svgMinPx: THRESHOLDS.li34.svgMinPx });
+    const hover = await page.evaluate(HOVER_GATES);
+    const ink = await page.evaluate(INK_BANDS, THRESHOLDS.li40);
+    const maxY = Math.max(0, m.docHeightPx - VIEWPORT.height);
+    const sectionsExt = [];
+    const hoverHosts = []; let hoverSeq = 0, hoverSeqHost = 0;
+    for (const g of geo.list) {
+      const target = Math.max(0, Math.min(Math.round(g.top + g.h / 2 - VIEWPORT.height / 2), maxY));
+      await page.evaluate((y) => window.scrollTo({ top: y, behavior: "instant" }), target);
+      await page.waitForTimeout(900); // 스크럽 스무딩이 멎은 뒤에 유휴 드리프트를 재야 한다
+      sectionsExt.push(await page.evaluate(SECTION_MEASURE, { i: g.i, name: g.name, bodyPx,
+        svgMinPx: THRESHOLDS.li34.svgMinPx, largeTextMultiple: THRESHOLDS.li36.largeTextMultiple,
+        idleSampleMs: THRESHOLDS.li38.idleSampleMs, hoverSel: hover.hoverMotionSelectors, revealIds }));
+      const cand = await page.evaluate(HOVER_CANDIDATES, { seq: hoverSeq, hostSeq: hoverSeqHost });
+      hoverSeq = cand.seq;
+      hoverSeqHost += cand.hosts.length;
+      for (const h of cand.hosts.slice(0, THRESHOLDS.li35.probesPerSection)) hoverHosts.push({ section: g.i, y: target, ...h });
+    }
+    let holds = null;
+    if (scrub.entries && scrub.entries.length) {
+      const wins = new Map();
+      for (const e of scrub.entries) { const k = `${e.trigger}|${e.start}|${e.end}`; if (!wins.has(k)) wins.set(k, e); }
+      const measured = [];
+      for (const e of wins.values()) {
+        if (e.settleY == null || e.holdEndY == null || e.holdEndY - e.settleY < THRESHOLDS.li39.minHoldPx) continue;
+        const mid = Math.max(0, Math.min(Math.round((e.settleY + e.holdEndY) / 2), maxY));
+        await page.evaluate((y) => window.scrollTo({ top: y, behavior: "instant" }), mid);
+        await page.waitForTimeout(700);
+        const hc = await page.evaluate(HOLD_CONTENT, THRESHOLDS.li39);
+        measured.push({ trigger: e.trigger, settleY: e.settleY, holdEndY: e.holdEndY, midY: mid, ...hc });
+      }
+      holds = { measured, note: measured.length ? null : `정착 후 홀드가 ${THRESHOLDS.li39.minHoldPx}px 미만 — 측정 대상 없음` };
+    } else if (scrub.cssRanges && scrub.cssRanges.length) {
+      holds = { measured: [], note: "CSS view() 타임라인만 있어 홀드 구간을 스크롤 좌표로 환산할 수 없다 — 측정 불가" };
+    }
+    /* JS 호버 프로브: 섹션 계측이 끝난 뒤에 돈다 — 마우스를 올린 채로 다음 섹션을 재면 유휴 드리프트가 오염된다. */
+    const jsGates = []; let probed = 0;
+    for (const h of hoverHosts) {
+      if (probed >= THRESHOLDS.li35.maxProbes) break;
+      await page.evaluate((y) => window.scrollTo({ top: y, behavior: "instant" }), h.y);
+      await page.waitForTimeout(400);
+      const sigA = await page.evaluate(HOVER_SIG, { hostId: h.hostId });
+      await page.mouse.move(h.cx, h.cy, { steps: 4 });
+      await page.waitForTimeout(450);
+      const pr = await page.evaluate(HOVER_PROBE, { hids: h.hids });
+      const sigB = await page.evaluate(HOVER_SIG, { hostId: h.hostId });
+      await page.mouse.move(h.cx2, h.cy2, { steps: 4 });
+      await page.waitForTimeout(450);
+      const pr2 = await page.evaluate(HOVER_PROBE, { hids: h.hids });
+      const sigC = await page.evaluate(HOVER_SIG, { hostId: h.hostId });
+      await page.mouse.move(1, 1); await page.waitForTimeout(200);
+      probed++;
+      const L = THRESHOLDS.li35;
+      const delta = (X, Y) => { let n = 0, w = null;
+        for (let k = 0; k < Math.min(X.length, Y.length); k++) {
+          const a0 = X[k], b0 = Y[k];
+          const dxy = Math.max(Math.abs(b0[0] - a0[0]), Math.abs(b0[1] - a0[1]));
+          const ds = Math.abs(b0[2] - a0[2]), dr = Math.abs(b0[3] - a0[3]), dop = Math.abs(b0[4] - a0[4]);
+          if (dxy > L.hoverTranslatePx || ds > L.hoverScaleDelta || dr > L.hoverRotateDeg || dop > L.hoverOpacityDelta) {
+            n++; if (!w) w = `이동 ${dxy.toFixed(0)}px·확대 ${ds.toFixed(2)}·회전 ${dr.toFixed(1)}°·투명도 ${dop.toFixed(2)}`; }
+        }
+        return { n, w }; };
+      const d1 = delta(sigA, sigB), d2 = delta(sigB, sigC), d3 = delta(sigA, sigC);
+      const best = [d1, d2, d3].reduce((x, y) => (x.n >= y.n ? x : y));
+      const moved = best.n, worst = best.w;
+      if (pr2.revealed > pr.revealed) { pr.revealed = pr2.revealed; pr.samples = pr2.samples; }
+      if (pr.revealed > 0 || moved > 0) jsGates.push({ section: h.section, host: h.host, types: h.types, revealed: pr.revealed, movedEls: moved, worst, states: h.hidden.map((x) => x.state), samples: pr.samples });
+    }
+    const ext = { jsHover: { candidates: hoverHosts.length, probed, gates: jsGates },
+      sectionSource: geo.source, sectionGeo: geo.list, sections: sectionsExt, fold, hover, ink, holds, bodyPx };
+    const checks = judge(m, reveals, scrub).concat(judgeExtra(ext));
     const fails = checks.filter((c) => c.status === "FAIL").length;
     if (fails) anyFail = true;
-    results.push({ file: f, fails, warns: checks.filter((c) => c.status === "WARN").length, checks, measurements: m, reveals, scrub, errors: errors.slice(0, 3) });
-    if (OUT) { mkdirSync(OUT, { recursive: true }); writeFileSync(join(OUT, basename(dirname(abs)) + "-" + basename(abs, ".html") + ".landing.json"), JSON.stringify({ file: f, checks, measurements: m, reveals, scrub }, null, 1)); }
+    results.push({ file: f, fails, warns: checks.filter((c) => c.status === "WARN").length, checks, measurements: m, reveals, scrub, scale: ext, errors: errors.slice(0, 3) });
+    if (OUT) { mkdirSync(OUT, { recursive: true }); writeFileSync(join(OUT, basename(dirname(abs)) + "-" + basename(abs, ".html") + ".landing.json"), JSON.stringify({ file: f, checks, measurements: m, reveals, scrub, scale: ext }, null, 1)); }
   } catch (e) {
     results.push({ file: f, fatal: String(e).split("\n")[0] }); anyFail = true;
   } finally { await context.close(); }
