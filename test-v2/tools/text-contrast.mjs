@@ -101,6 +101,9 @@ for (const f of files) {
         // 진입 애니메이션(히어로 settle 등)이 아직 돌면 before/after 차이에 사진 픽셀이 섞여 링이 아닌 것을 링으로 잰다
         // (2026-09-03 ninefold: 첫 버튼만 30% 미달로 반복 실패). 돌고 있는 애니메이션이 끝날 때까지(최대 2.5초) 기다린다.
         await p2.evaluate(() => Promise.race([Promise.all(document.getAnimations().map((a) => a.finished.catch(() => {}))), new Promise((r) => setTimeout(r, 2500))]));
+        /* 무한 애니(켄번즈·광원 드리프트)는 끝나지 않는다 — 포커스 링 diff 전에 전부 정지시킨다. 움직이는 이미지가
+           diff 를 오염시켜 빌더가 유휴 층을 빼는 일이 없도록(r4: 켄번즈 삭제 원인). 정지는 이 탭에서만이고 산출은 무수정. */
+        await p2.evaluate(() => { for (const a of document.getAnimations()) { try { a.pause(); } catch { /* 미지원 */ } } });
         const before = await p2.screenshot({ clip: { x: 0, y: 0, ...vp } });
         await p2.evaluate((i) => document.querySelector(`[data-fx="${i}"]`).focus({ focusVisible: true }), fx.i); await p2.keyboard.press("Shift"); await p2.waitForTimeout(120);
         const after = await p2.screenshot({ clip: { x: 0, y: 0, ...vp } });
