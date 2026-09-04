@@ -1,0 +1,22 @@
+<style>
+.r3{height:100vh}.r3-stage{height:100vh;display:grid;place-items:center;perspective:1200px;overflow:hidden}
+.r3-ring{position:relative;width:30vw;height:44vh;transform-style:preserve-3d}
+.r3-ring figure{position:absolute;inset:0;margin:0;border-radius:var(--r);overflow:hidden;backface-visibility:hidden;box-shadow:0 30px 80px #000a}
+</style>
+<section class="r3"><div class="r3-stage"><div class="r3-ring" id="r3ring"></div></div></section>
+<script>
+/* R3 3D CARD FAN — 그리드 대신 원통. 스크롤이 링을 돌린다(회전 = 목록 탐색). */
+const IDS = ["arch-01","arch-02","arch-03","arch-04","prod-01","prod-02","prod-03","prod-04"];
+const ring = document.getElementById("r3ring");
+const R = Math.round(innerWidth * 0.30), STEP = 360 / IDS.length;
+ring.innerHTML = IDS.map((id,i)=>`<figure style="transform:rotateY(${i*STEP}deg) translateZ(${R}px)"><img src="${IMG(id)}" alt=""></figure>`).join("");
+if (REDUCED) {                      // 폴백: 평평한 반응형 그리드
+  Object.assign(ring.style, { transformStyle: "flat", width: "80vw", height: "auto", display: "grid",
+    gridTemplateColumns: "repeat(4,1fr)", gap: "12px" });
+  ring.querySelectorAll("figure").forEach((f) => { f.style.position = "static"; f.style.transform = "none"; f.style.aspectRatio = "3/4"; });
+} else {
+  gsap.timeline({ scrollTrigger: { trigger: ".r3", start: "top top", end: "+=250%", scrub: 0.7, pin: ".r3-stage" } })
+    .fromTo(ring, { rotateY: 0, rotateX: 8 }, { rotateY: -360, rotateX: -4, ease: "none" }, 0)
+    .fromTo(ring, { scale: 0.8 }, { scale: 1.05, ease: "none" }, 0);
+}
+</script>

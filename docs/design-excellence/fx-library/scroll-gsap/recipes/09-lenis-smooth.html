@@ -1,0 +1,24 @@
+<style>
+.r9{padding:12vh 6vw;display:grid;grid-template-columns:1fr 1fr;gap:3vw}
+.r9 figure{margin:0;aspect-ratio:3/4;border-radius:var(--r);overflow:hidden;will-change:transform}
+.r9 figure:nth-child(even){margin-top:16vh}
+</style>
+<section class="r9" id="r9"></section>
+<script>
+/* R9 LENIS + GSAP — 관성 스무스 스크롤을 ScrollTrigger 와 한 클럭에 묶는다(둘이 서로 싸우지 않게 하는 정본 배선).
+   이게 "Framer/Awwwards 느낌"의 절반이다: 같은 안무라도 스크롤이 미끄러지면 다른 물건으로 읽힌다. */
+const IDS = ["fig-01","fig-02","fig-03","fig-04"];
+document.getElementById("r9").innerHTML = IDS.map((id)=>`<figure><img src="${IMG(id)}" alt=""></figure>`).join("");
+if (!REDUCED && typeof Lenis !== "undefined") {
+  const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+  lenis.on("scroll", ScrollTrigger.update);                 // Lenis 가 스크롤 소스
+  gsap.ticker.add((t) => lenis.raf(t * 1000));              // GSAP 가 유일한 rAF 루프
+  gsap.ticker.lagSmoothing(0);
+  window.__lenis = lenis;
+}
+gsap.utils.toArray("#r9 figure").forEach((f, i) => {         // 패럴랙스 깊이 층
+  if (REDUCED) return;
+  gsap.fromTo(f.querySelector("img"), { yPercent: -12 }, { yPercent: 12, ease: "none",
+    scrollTrigger: { trigger: f, start: "top bottom", end: "bottom top", scrub: true } });
+});
+</script>

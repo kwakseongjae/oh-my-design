@@ -1,0 +1,29 @@
+<style>
+.r7{height:100vh}.r7-stage{height:100vh;display:grid;place-items:center;position:relative;overflow:hidden}
+.r7-bleed{position:absolute;inset:0;opacity:0;clip-path:inset(0 0 0 0)}
+.r7-type{margin:0;font-size:clamp(48px,14vw,190px);line-height:.86;letter-spacing:-.05em;text-align:center;
+  background-image:var(--src);background-size:120% auto;background-position:50% 50%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;position:relative;z-index:2;
+  filter:brightness(1.25) contrast(1.1)}
+</style>
+<section class="r7"><div class="r7-stage">
+  <div class="r7-bleed"><img id="r7img" alt=""></div>
+  <h2 class="r7-type" id="r7type">MADE<br>OF LIGHT</h2>
+</div></section>
+<script>
+/* R7 TEXT BREAKOUT — 글자 안에 갇혀 있던 이미지가 스크롤과 함께 글자를 뚫고 화면 전체가 된다. */
+const ID = "mat-03", WORD = "MADE\nOF LIGHT";   /* 규칙: 텍스트 마스크에는 값이 넓고 밝은 프레임을 쓴다.
+   near-dark ambient 프레임을 넣으면 글자가 배경에 잠겨 읽히지 않는다(실측으로 확인, §4-R3). */
+const type = document.getElementById("r7type"), bleed = document.querySelector(".r7-bleed");
+document.getElementById("r7img").src = IMG(ID);
+type.style.setProperty("--src", `url("${IMG(ID)}")`);
+type.innerHTML = WORD.split("\n").join("<br>");
+if (REDUCED) {                      // 폴백: 텍스트-마스크 정지 상태(운동 없음, 개념은 유지)
+  type.style.backgroundSize = "140% auto";
+} else {
+  gsap.timeline({ scrollTrigger: { trigger: ".r7", start: "top top", end: "+=200%", scrub: 0.6, pin: ".r7-stage" } })
+    .fromTo(type, { backgroundSize: "300% auto", scale: 0.85 }, { backgroundSize: "120% auto", scale: 1, ease: "none" }, 0)
+    .to(type, { scale: 6, opacity: 0, ease: "power2.in" }, 0.55)
+    .fromTo(bleed, { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, ease: "none" }, 0.6);
+}
+</script>

@@ -1,0 +1,24 @@
+<style>
+.r4{height:100vh}.r4-stage{height:100vh;display:grid;place-items:center;overflow:hidden}
+.r4-deck{position:relative;width:26vw;height:52vh}
+.r4-deck figure{position:absolute;inset:0;margin:0;border-radius:var(--r);overflow:hidden;box-shadow:0 24px 60px #000c;transform-origin:50% 120%}
+</style>
+<section class="r4"><div class="r4-stage"><div class="r4-deck" id="r4deck"></div></div></section>
+<script>
+/* R4 STACK UNFOLD — 한 장으로 겹쳐 있던 더미가 부채처럼 펼쳐졌다 다시 접힌다(재료/증거 섹션용). */
+const IDS = ["mat-01","mat-02","mat-03","mat-04","mat-05","mat-06"];
+const deck = document.getElementById("r4deck");
+deck.innerHTML = IDS.map((id)=>`<figure><img src="${IMG(id)}" alt=""></figure>`).join("");
+const cards = gsap.utils.toArray(".r4-deck figure");
+const mid = (cards.length - 1) / 2;
+if (REDUCED) {                      // 폴백: 펼쳐진 상태로 고정
+  Object.assign(deck.style, { width: "80vw", height: "auto", display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "12px" });
+  cards.forEach((c) => { c.style.position = "static"; c.style.aspectRatio = "4/5"; });
+} else {
+  gsap.set(cards, { rotate: (i) => (i - mid) * 1.2, y: (i) => i * 3 });
+  gsap.timeline({ scrollTrigger: { trigger: ".r4", start: "top top", end: "+=220%", scrub: 0.6, pin: ".r4-stage" } })
+    .to(cards, { rotate: (i) => (i - mid) * 14, x: (i) => (i - mid) * innerWidth * 0.115,
+                 y: (i) => Math.abs(i - mid) * 26, ease: "none" }, 0)
+    .to(cards, { rotate: 0, x: (i) => (i - mid) * innerWidth * 0.115, y: 0, ease: "none" }, 0.65);
+}
+</script>
