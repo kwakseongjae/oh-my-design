@@ -22,7 +22,8 @@ const VIEWPORT = { width: 1440, height: 900 };
 /* LI-34~40 임계값 — docs/design-excellence/scale-and-simplicity.md §4 의 "잠정" 값이다.
    레퍼런스 실측 프로브(레인 A, §5)가 도착하면 **이 객체만** 고친다. 판정 코드에 숫자를 박지 않는다. */
 const THRESHOLDS = {
-  li34: { medianMediaShare: 0.35, pageMaxShare: 0.90, foldMediaMinVw: 0.45, foldMediaMinVh: 0.40, svgMinPx: 200 },
+  li34: { medianMediaShare: 0.35, pageMaxShare: 0.90, foldCoverageMin: 0.25, foldGrid: [48, 30], svgMinPx: 200 }, // 폴드는 박스가 아니라 히트테스트 커버리지(레인 A: 레퍼런스 중앙 33.6% · q1 20.6 · r3 6.9)
+  li7: { displayMinPx: 72 }, // 레퍼런스 q3 72 — wow 군(affinity 112·cosmos 74·tasteskill 72)
   /* li35: 콘텐츠 관문(감춰졌다 호버로 열림)은 0. 그 위에 LC-49 의 "호버 상한 = 리프트·밝기 2%" 를 수치로 —
      리프트(≤12px)와 밝기는 허용하고, 그보다 큰 이동·확대·회전·투명도 변화는 호버가 스펙터클을 인질로 잡은 것이다. */
   li35: { maxGates: 0, maxProbes: 10, probesPerSection: 2, hoverTranslatePx: 12, hoverScaleDelta: 0.04, hoverRotateDeg: 2, hoverOpacityDelta: 0.25 },
@@ -187,7 +188,7 @@ function judge(m, reveals, scrub) {
   const bodyPx = (() => { const cand = m.fontHistogram.filter(([px]) => +px >= 12 && +px <= 19); return cand.length ? +cand[0][0] : null; })();
   const display = m.fold.biggestText?.fontPx ?? null;
   const ratio = display && bodyPx ? display / bodyPx : null;
-  push("LI-7", ratio !== null && (ratio < 2.5 || ratio > 7.5) ? "FAIL" : ratio === null ? "WARN" : "PASS", `display:body ${display}/${bodyPx} = ${ratio ? ratio.toFixed(2) : "?"}`);
+  push("LI-7", ratio !== null && (ratio < 2.5 || ratio > 7.5 || display < THRESHOLDS.li7.displayMinPx) ? "FAIL" : ratio === null ? "WARN" : "PASS", `display:body ${display}/${bodyPx} = ${ratio ? ratio.toFixed(2) : "?"} (대역 2.5–7.5× · 폴드 h1 ≥${THRESHOLDS.li7.displayMinPx}px, 레퍼런스 q3)`);
   push("LI-8", bodyPx !== null && (bodyPx < 13 || bodyPx > 17) ? "FAIL" : bodyPx === null ? "WARN" : "PASS", `body ${bodyPx}px`);
   const edgeCount = {}; for (const s of secs) for (const e of s.leftEdges) edgeCount[e] = (edgeCount[e] || 0) + 1;
   const dominantEdges = Object.entries(edgeCount).filter(([, c]) => c >= Math.max(2, Math.floor(secs.length / 3))).map(([e]) => +e).sort((a, b) => a - b);
@@ -451,6 +452,30 @@ const SECTION_MEASURE = async (arg) => {
 };
 
 /** 폴드(scrollY=0) 의미 단위와 폴드 주 미디어 — LI-37 / LI-34 의 폴드 항. */
+/** 폴드 히트테스트 커버리지(LI-34) — 격자 각 점에서 실제로 먼저 칠해지는 요소가 미디어인 비율. 박스는 오버레이·clip·z-order 를 못 본다(scale-probe.mjs 1b 이식). */
+const FOLD_COVERAGE = (arg) => {
+  const vw = innerWidth, vh = innerHeight;
+  const isMediaEl = (el) => ["IMG", "VIDEO", "CANVAS"].includes(el.tagName) || el.tagName.toLowerCase() === "svg";
+  const paintsAs = (el) => {
+    const cs = getComputedStyle(el);
+    if (+cs.opacity < 0.1) return false;
+    if (isMediaEl(el)) return "media";
+    const bi = cs.backgroundImage;
+    if (bi && bi !== "none" && !/^(linear|radial|conic|repeating)-gradient/.test(bi.trim())) return "media";
+    const m = cs.backgroundColor.match(/rgba?\(([^)]+)\)/);
+    if (m) { const q = m[1].split(",").map(Number); const al = q.length > 3 ? q[3] : 1; if (al >= 0.85) return "solid"; }
+    return false;
+  };
+  let hits = 0, samples = 0;
+  const [COLS, ROWS] = arg.grid;
+  for (let i = 0; i < COLS; i++) for (let j = 0; j < ROWS; j++) {
+    const x = Math.round((i + 0.5) * vw / COLS), y = Math.round((j + 0.5) * vh / ROWS);
+    samples++;
+    for (const el of document.elementsFromPoint(x, y)) { const p = paintsAs(el); if (!p) continue; if (p === "media") hits++; break; }
+  }
+  return { coverage: +(hits / samples).toFixed(3), samples };
+};
+
 const FOLD_UNITS = (arg) => {
   const vw = innerWidth, vh = innerHeight;
   const vis = (el) => { const cs = getComputedStyle(el); return cs.display !== "none" && cs.visibility !== "hidden" && +cs.opacity > 0.02; };
@@ -714,11 +739,12 @@ function judgeExtra(ext) {
   else {
     const shares = S.map((s) => s.maxMediaShare);
     const med = median(shares) ?? 0, mx = Math.max(...shares);
-    const foldOk = !!fm && (fm.wVw >= T.li34.foldMediaMinVw || fm.hVh >= T.li34.foldMediaMinVh);
+    const cov = ext.foldCoverage?.coverage ?? null;
+    const foldOk = cov !== null && cov >= T.li34.foldCoverageMin;
     const ok = med >= T.li34.medianMediaShare && mx >= T.li34.pageMaxShare && foldOk;
     const worst = [...S].sort((a, b) => a.maxMediaShare - b.maxMediaShare).slice(0, 4);
     push("LI-34", ok ? "PASS" : "FAIL",
-      `주 미디어/뷰포트 중앙 ${med.toFixed(2)}(≥${T.li34.medianMediaShare}) · 페이지 최대 ${mx.toFixed(2)}(≥${T.li34.pageMaxShare}) · 폴드 ${fm ? `${fm.n} ${fm.wVw}vw×${fm.hVh}vh` : "미디어 없음"}(≥${T.li34.foldMediaMinVw}vw 또는 ≥${T.li34.foldMediaMinVh}vh) · 최소 섹션 ${worst.map((s) => `${s.i}${s.name}:${s.maxMediaShare.toFixed(2)}`).join(", ")} — LC-51`);
+      `주 미디어/뷰포트 중앙 ${med.toFixed(2)}(≥${T.li34.medianMediaShare}) · 페이지 최대 ${mx.toFixed(2)}(≥${T.li34.pageMaxShare}) · 폴드 커버리지 ${cov === null ? "?" : (100 * cov).toFixed(1) + "%"}(≥${100 * T.li34.foldCoverageMin}%, 히트테스트${fm ? `; 박스 ${fm.n} ${fm.wVw}vw×${fm.hVh}vh` : ""}) · 최소 섹션 ${worst.map((s) => `${s.i}${s.name}:${s.maxMediaShare.toFixed(2)}`).join(", ")} — LC-51`);
   }
 
   // LI-35 호버 관문 — LC-49/58
@@ -831,6 +857,7 @@ for (const f of files) {
     const bodyPx = (() => { const cand = m.fontHistogram.filter(([px]) => +px >= 12 && +px <= 19); return cand.length ? +cand[0][0] : 16; })();
     const geo = await page.evaluate(SECTION_GEO);
     const fold = await page.evaluate(FOLD_UNITS, { minTextChars: THRESHOLDS.li37.minTextChars, mediaMinPx: THRESHOLDS.li37.mediaMinPx, svgMinPx: THRESHOLDS.li34.svgMinPx });
+    const foldCov = await page.evaluate(FOLD_COVERAGE, { grid: THRESHOLDS.li34.foldGrid });
     const hover = await page.evaluate(HOVER_GATES);
     const ink = await page.evaluate(INK_BANDS, THRESHOLDS.li40);
     const maxY = Math.max(0, m.docHeightPx - VIEWPORT.height);
@@ -898,7 +925,7 @@ for (const f of files) {
       if (pr2.revealed > pr.revealed) { pr.revealed = pr2.revealed; pr.samples = pr2.samples; }
       if (pr.revealed > 0 || moved > 0) jsGates.push({ section: h.section, host: h.host, types: h.types, revealed: pr.revealed, movedEls: moved, worst, states: h.hidden.map((x) => x.state), samples: pr.samples });
     }
-    const ext = { jsHover: { candidates: hoverHosts.length, probed, gates: jsGates },
+    const ext = { foldCoverage: foldCov, jsHover: { candidates: hoverHosts.length, probed, gates: jsGates },
       sectionSource: geo.source, sectionGeo: geo.list, sections: sectionsExt, fold, hover, ink, holds, bodyPx };
     const checks = judge(m, reveals, scrub).concat(judgeExtra(ext));
     const fails = checks.filter((c) => c.status === "FAIL").length;
