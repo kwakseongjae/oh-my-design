@@ -57,3 +57,4 @@ aphrodite/*/reviews/*
 !aphrodite/*/FEEDBACK.md
 !aphrodite/*/set.*.json
 !aphrodite/*/trace.md
+!aphrodite/*/storyboard-*.md
