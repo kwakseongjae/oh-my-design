@@ -67,3 +67,23 @@ aphrodite/*/research/*
 aphrodite/*/research/*/*
 !aphrodite/*/research/*/*.md
 !aphrodite/*/research/*/*.json
+
+# 레퍼런스 코퍼스 · 레플리카 랩 (2026-09-05): 원본 캡처 본문(HTML/CSS/에셋/스크린샷)은 학습용 로컬 자산이라
+# 무시하고, 우리가 쓴 분석·근거 JSON·학습 노트만 추적한다. 남의 코드는 레포에 싣지 않는다.
+!aphrodite/reference-corpus/
+aphrodite/reference-corpus/*
+!aphrodite/reference-corpus/README.md
+!aphrodite/reference-corpus/INDEX.md
+!aphrodite/reference-corpus/*/
+aphrodite/reference-corpus/*/*
+!aphrodite/reference-corpus/*/meta.json
+!aphrodite/reference-corpus/*/scripts.json
+!aphrodite/reference-corpus/*/runtime.json
+!aphrodite/replicas/
+aphrodite/replicas/*
+!aphrodite/replicas/*/
+aphrodite/replicas/*/*
+!aphrodite/replicas/*/notes.md
+!aphrodite/replicas/*/fidelity.json
+!aphrodite/replicas/*/build.mjs
+!aphrodite/replicas/*/template.html
