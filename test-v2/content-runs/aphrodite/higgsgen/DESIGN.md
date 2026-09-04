@@ -31,7 +31,7 @@ real work. Principles: *the image is the product* (every section proves range or
 - UI/body: **Geist** variable (wght 400–500), 16/18, line-height 1.5, `text-wrap: pretty`. Labels 13px mono uppercase tracking .14em.
 - Mono: **Geist Mono** for prompts, counters, spec readouts.
 - All three inlined base64 (fonts/*.css, OFL) — zero network at render.
-- Imagery: 61 generated stills in 10 groups (hero worlds · range wall · control sequence · before/after · macro · product · space · abstract grounds · human-no-face · ambient). **No `filter` on images**; treat with three layers instead: scrim (oklch-tinted gradient) + hairline + directional shadow. Bleed heroes get a bottom fade into `bg`.
+- Imagery: 61 generated stills in 10 groups (hero worlds · range wall · control sequence · before/after · macro · product · space · abstract grounds · human-no-face · ambient). **One uniform colour grade only** (`filter: contrast(1.04) saturate(1.06)` on every content image via a shared class — LC-43; no per-image filters, no blur/sepia; 2026-09-04 r4 리뷰 B4 개정) and treat with three layers: scrim (oklch-tinted gradient) + hairline + directional shadow. Bleed heroes get a bottom fade into `bg`.
 - Icons: inline SVG 1.5px, `ink`. Cursor: custom only over media surfaces.
 
 ## 4. Components & States
