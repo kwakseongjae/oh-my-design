@@ -1,0 +1,904 @@
+<!doctype html>
+<html lang="en" id="top">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Higgsgen — direct the frame, not the prompt</title>
+<meta name="description" content="Higgsgen renders a still you can direct: camera, light and material stay where you put them, frame after frame.">
+<script>
+/* 게이트: JS 가 있고, 모션을 줄이지 않으며, 뷰포트가 넓을 때만 .anim 을 켠다.
+   .anim 밖에서는 어떤 요소도 숨겨지지 않는다 — no-JS / reduced-motion / 모바일은 전부 정지 레이아웃으로 성립한다. */
+(function(){var d=document.documentElement;d.className+=" js";
+var rm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+var sm=window.innerWidth<900;d.className+=(!rm&&!sm)?" anim":" static";})();
+</script>
+<style>__FONT_SYNE__</style>
+<style>__FONT_GEIST__</style>
+<style>__FONT_MONO__</style>
+<style>
+/* ─────────────────────────────────────────────────────────────────────────
+   Higgsgen r2 — 효과 집중 빌드.
+   토큰: DESIGN.md §2 그대로. 안무: storyboard-r2.md 섹션 표.
+   효과 스니펫은 docs/design-excellence/fx-library/<효과>/snippet.{css,js} 에서
+   그대로 가져왔다 (전부 oh-my-design 자작 · MIT). 각 블록 머리에 출처를 남긴다.
+   스크롤 엔진: GSAP 3.15 core + ScrollTrigger (GSAP Standard License) — 본문 하단에 인라인.
+   ───────────────────────────────────────────────────────────────────────── */
+@property --a{syntax:"<angle>";inherits:false;initial-value:0deg}
+@property --fan{syntax:"<number>";inherits:true;initial-value:1}
+@property --fx-beam-a{syntax:"<angle>";inherits:false;initial-value:0deg}
+@property --fx-wipe-p{syntax:"<percentage>";inherits:false;initial-value:0%}
+@property --fx-gt-p{syntax:"<percentage>";inherits:false;initial-value:0%}
+@property --pz{syntax:"<length>";inherits:false;initial-value:0px}
+
+:root{
+  --bg:#0B0C0E; --bg-2:#121316; --ink:#F2F2F0; --ink-2:#D8D9D6; --mute:#9A9B9E;
+  --line:rgba(255,255,255,.10); --accent:#D1FE17;
+  --bg-light:#F3F3F1; --ink-dark:#0B0C0E; --mute-dark:#5A5C5E; --line-dark:rgba(11,12,14,.14);
+  --r-card:5px; --r-stage:10px; --r-pill:999px;
+  --s4:4px; --s8:8px; --s12:12px; --s16:16px; --s24:24px; --s32:32px; --s48:48px; --s64:64px; --s96:96px; --s128:128px;
+  --gutter:88px; --max:1360px;
+  --e-ui:cubic-bezier(.4,0,.2,1); --e-in:cubic-bezier(.16,1,.3,1); --e-settle:cubic-bezier(.22,1,.36,1);
+  --lift:-20px 34px 64px rgba(0,0,0,.55);
+  --ground:0 40px 80px -40px rgba(0,0,0,.7);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body,div,section,figure,figcaption,ul,ol,li,h1,h2,h3,h4,p,blockquote,fieldset,button,input{margin:0;padding:0}
+ul,ol{list-style:none}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0}
+html{scroll-behavior:auto;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:"Geist","Geist Fallback",sans-serif;font-size:16px;line-height:1.5;font-weight:400;
+  text-wrap:pretty;overflow-x:hidden;
+  background-image:radial-gradient(1px 1px at 1px 1px,rgba(255,255,255,.06) 50%,transparent 51%);
+  background-size:6px 6px;
+}
+::selection{background:var(--accent);color:#0B0C0E}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.sec--light :focus-visible{outline-color:var(--ink-dark)}
+
+/* 타이포 — DESIGN §3. 12–19px 대역에는 16px 본문만 둔다(라벨은 11px 모노). */
+.h1{font-family:"Syne","Syne Fallback",sans-serif;font-weight:800;font-size:clamp(46px,7.9vw,124px);
+  line-height:.92;letter-spacing:-.04em;text-wrap:balance}
+.h2{font-family:"Syne","Syne Fallback",sans-serif;font-weight:700;font-size:clamp(30px,3.34vw,48px);
+  line-height:.96;letter-spacing:-.035em;text-wrap:balance}
+.h3{font-family:"Syne","Syne Fallback",sans-serif;font-weight:700;font-size:24px;line-height:1.05;letter-spacing:-.02em}
+.body{font-size:16px;line-height:1.5;max-width:46ch;color:var(--ink-2)}
+.lead{font-size:20px;line-height:1.45;max-width:42ch;color:var(--ink-2)}
+.mono{font-family:"Geist Mono","Geist Mono Fallback",ui-monospace,monospace;font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--mute);font-weight:500}
+.tag{display:inline-block}
+.cap{font-family:"Geist Mono","Geist Mono Fallback",ui-monospace,monospace;font-size:11px;
+  letter-spacing:.1em;color:var(--mute);text-transform:none}
+
+.wrap{width:100%;max-width:calc(var(--max) + var(--gutter) * 2);margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter)}
+.sec{position:relative;isolation:isolate;overflow:hidden}
+.track{position:relative}
+.stage{position:relative;min-height:100vh;overflow:hidden;isolation:isolate}
+.anim .track{min-height:var(--track,200vh)}
+.anim .stage{position:sticky;top:0;height:100vh;min-height:0}
+
+/* 빛 — DESIGN §2 Light. 라디얼 워시 + 코닉 빔 + 호흡하는 백색 광원. */
+.wash{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    radial-gradient(120% 70% at 8% 0%,rgba(255,255,255,.055),transparent 60%),
+    radial-gradient(90% 60% at 92% 14%,rgba(255,255,255,.035),transparent 62%),
+    radial-gradient(140% 90% at 50% 108%,rgba(0,0,0,.55),transparent 58%)}
+.wash--light{background-image:
+    radial-gradient(120% 70% at 10% -10%,rgba(11,12,14,.05),transparent 60%),
+    radial-gradient(80% 60% at 88% 10%,rgba(11,12,14,.035),transparent 62%),
+    radial-gradient(140% 90% at 50% 110%,rgba(11,12,14,.06),transparent 58%)}
+.beam{position:absolute;inset:-25%;z-index:0;pointer-events:none;opacity:.55;mix-blend-mode:screen;
+  background:conic-gradient(from var(--a) at var(--bx,52%) var(--by,38%),
+    transparent 0deg,rgba(255,255,255,.11) 16deg,transparent 44deg,transparent 360deg);
+  animation:beamspin var(--beam-dur,8s) linear infinite}
+@keyframes beamspin{to{--a:360deg}}
+.glow{position:absolute;z-index:0;pointer-events:none;width:52vw;height:52vw;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.14),transparent 62%);
+  mix-blend-mode:screen;animation:breathe 13s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.34;transform:scale(1)}50%{opacity:.66;transform:scale(1.09)}}
+
+/* fx: film-grain — feTurbulence 한 장. 구현: oh-my-design (MIT). 전역 재질. */
+.grain{position:fixed;inset:0;z-index:60;pointer-events:none;filter:opacity(.08);mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:160px 160px}
+
+/* 미디어 3층: 스크림 + 헤어라인 + 방향 그림자. 이미지 자체에는 filter 를 쓰지 않는다. */
+.frame{position:relative;overflow:hidden;border-radius:var(--r-card);
+  box-shadow:inset 0 0 0 1px var(--line),var(--lift)}
+.frame--stage{border-radius:var(--r-stage)}
+.shot{width:100%;height:100%;object-fit:cover}
+.scrim{position:absolute;inset:0;pointer-events:none;z-index:2}
+.scrim--b{background:linear-gradient(to top,rgba(11,12,14,.62),transparent 52%)}
+.scrim--soft{background:linear-gradient(200deg,rgba(11,12,14,.05),rgba(11,12,14,.34))}
+/* 광원 복제(DESIGN §2 light-copy): 프레임 뒤의 흐린 사본이 페이지를 물들인다. 장식 레이어. */
+.lc{position:absolute;left:-8%;top:-8%;width:116%;height:116%;object-fit:cover;
+  filter:blur(40px) saturate(1.6);opacity:.4;z-index:-1;pointer-events:none}
+
+/* 컴포넌트 — DESIGN §4 */
+.btn{display:inline-flex;align-items:center;gap:var(--s8);border-radius:var(--r-pill);
+  padding:12px 22px;font-size:16px;font-weight:500;text-decoration:none;cursor:pointer;
+  transition:background-color 160ms var(--e-ui),color 160ms var(--e-ui)}
+.btn--accent{background:var(--accent);color:#0B0C0E}
+.btn--accent:hover{background:#DDFF3D}
+.btn--ghost{box-shadow:inset 0 0 0 1px var(--line);color:var(--ink)}
+.btn--ghost:hover{background:rgba(255,255,255,.06)}
+.sec--light .btn--ghost{box-shadow:inset 0 0 0 1px var(--line-dark);color:var(--ink-dark)}
+.sec--light .btn--ghost:hover{background:rgba(11,12,14,.06)}
+
+/* fx: light-sweep-sheen — 표면을 한 번 지나가는 정반사. 구현: oh-my-design (MIT). */
+.fx-sheen{position:relative;overflow:hidden;isolation:isolate}
+.fx-sheen::after{content:"";position:absolute;top:0;bottom:0;left:0;width:100%;z-index:3;pointer-events:none;
+  background:linear-gradient(var(--fx-sheen-angle,105deg),transparent 36%,
+    var(--fx-sheen-color,rgba(255,255,255,.5)) 47%,var(--fx-sheen-color2,rgba(255,255,255,.16)) 52%,transparent 62%);
+  transform:translate3d(-130%,0,0)}
+.fx-sheen--hover:hover::after,.fx-sheen[data-fx-sheen="run"]::after{
+  animation:fx-sheen-run 480ms cubic-bezier(.25,.6,.35,1) 1 both}
+@keyframes fx-sheen-run{to{transform:translate3d(130%,0,0)}}
+@media (prefers-reduced-motion:reduce){.fx-sheen::after{animation:none!important;transform:translate3d(-130%,0,0)}}
+
+/* fx: glass-panel — 가장자리 정반사가 있는 유리판. 구현: oh-my-design (MIT). */
+.fx-glass{position:relative;isolation:isolate;background:var(--fx-glass-tint,rgba(11,12,14,.90));
+  box-shadow:0 1px 0 0 rgba(255,255,255,.16) inset,0 -1px 0 0 rgba(255,255,255,.05) inset,0 18px 40px -12px rgba(0,0,0,.45)}
+.fx-glass::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  -webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);
+  -webkit-mask-image:linear-gradient(#000 45%,rgba(0,0,0,0) 100%);mask-image:linear-gradient(#000 45%,rgba(0,0,0,0) 100%)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.fx-glass{background:rgba(11,12,14,.95)}}
+
+/* fx: border-beam — 테두리를 따라 도는 광원. 구현: oh-my-design (MIT). 선택 카드 1장에만. */
+.fx-beam{position:relative;isolation:isolate}
+.fx-beam::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:4;padding:1.5px;
+  background:conic-gradient(from var(--fx-beam-a) at 50% 50%,transparent 0deg,
+    var(--fx-beam-color,var(--accent)) 42deg,transparent 84deg,transparent 360deg);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;
+  animation:fx-beam-spin 5s linear infinite}
+@keyframes fx-beam-spin{to{--fx-beam-a:360deg}}
+@media (prefers-reduced-motion:reduce){.fx-beam::after{animation:none;--fx-beam-a:120deg}}
+
+/* fx: spotlight-pointer — 포인터를 따라오는 스포트라이트. 구현: oh-my-design (MIT). */
+.fx-spot{position:relative;isolation:isolate}
+.fx-spot::before{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;border-radius:inherit;
+  background:radial-gradient(300px circle at var(--fx-spot-x,-999px) var(--fx-spot-y,-999px),
+    rgba(255,255,255,.16),transparent 66%);
+  opacity:0;transition:opacity 240ms var(--e-ui)}
+.fx-spot[data-fx-spot="on"]::before{opacity:1}
+@media (hover:none){.fx-spot::before{display:none}}
+
+/* fx: tilt-3d — 포인터를 따라 기우는 카드. 구현: oh-my-design (MIT). 호버만으로는 움직이지 않는다. */
+.fx-tilt{--fx-tilt-x:0deg;--fx-tilt-y:0deg;
+  transform:perspective(760px) rotateX(var(--fx-tilt-x)) rotateY(var(--fx-tilt-y)) scale(var(--fx-tilt-scale,1));
+  transform-style:preserve-3d;transition:transform 240ms cubic-bezier(.2,.8,.25,1);will-change:transform}
+@media (hover:none){.fx-tilt{transform:none;transition:none}}
+@media (prefers-reduced-motion:reduce){.fx-tilt{transform:none!important;transition:none}}
+
+/* fx: split-text-rise — 단어가 아래에서 밀려 올라온다. 구현: oh-my-design (MIT). 헤드라인 1회. */
+.fx-split{display:inline-block}
+.fx-split__line{display:block}
+.fx-split__mask{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.12em;margin-bottom:-.12em}
+.fx-split__unit{display:inline-block;transform:translate3d(0,110%,0);opacity:0;will-change:transform,opacity}
+.fx-split[data-fx-split="in"] .fx-split__unit{
+  animation:fx-split-rise 480ms cubic-bezier(.16,.84,.24,1) both;animation-delay:calc(var(--i,0) * 80ms)}
+@keyframes fx-split-rise{to{transform:translate3d(0,0,0);opacity:1}}
+@media (prefers-reduced-motion:reduce){.fx-split__unit{animation:none!important;transform:none;opacity:1}}
+
+/* fx: text-scramble — 폭이 흔들리지 않게 잡는다. 구현: oh-my-design (MIT). */
+.fx-scramble{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+.fx-scramble__body{display:inline-block;white-space:pre}
+
+/* fx: mask-wipe-reveal — 스크롤에 맞춰 이미지가 닦이듯 나타난다. 구현: oh-my-design (MIT). */
+.fx-wipe{position:relative;overflow:hidden}
+.fx-wipe > img{display:block;width:100%;height:100%;object-fit:cover}
+@supports (animation-timeline:view()){
+  .anim .fx-wipe--sweep > img{
+    -webkit-mask-image:linear-gradient(100deg,#000 var(--fx-wipe-p),transparent calc(var(--fx-wipe-p) + 18%));
+    mask-image:linear-gradient(100deg,#000 var(--fx-wipe-p),transparent calc(var(--fx-wipe-p) + 18%));
+    animation:fx-wipe-open linear both;animation-timeline:view();animation-range:entry 12% cover 44%}
+}
+@keyframes fx-wipe-open{from{--fx-wipe-p:0%}to{--fx-wipe-p:130%}}
+@media (prefers-reduced-motion:reduce){.fx-wipe > img{animation:none!important;mask-image:none;-webkit-mask-image:none}}
+
+/* fx: gradient-text-shift — 문자 안을 흐르는 그라디언트. 구현: oh-my-design (MIT). 중성 색으로만. */
+.fx-gtext{background-image:linear-gradient(96deg,#6E7074 0%,#F2F2F0 42%,#6E7074 84%);
+  background-size:240% 100%;background-position:var(--fx-gt-p) 0;
+  -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+  animation:fx-gt-flow 9s linear infinite}
+@keyframes fx-gt-flow{from{--fx-gt-p:0%}to{--fx-gt-p:100%}}
+@supports not ((background-clip:text) or (-webkit-background-clip:text)){
+  .fx-gtext{color:var(--ink);-webkit-text-fill-color:currentColor;background-image:none}}
+@media (prefers-reduced-motion:reduce){.fx-gtext{animation:none!important;--fx-gt-p:38%}}
+
+/* ── 상단 바 ─────────────────────────────────────────────────────────── */
+.skip{position:absolute;left:8px;top:8px;z-index:99;width:1px;height:1px;overflow:hidden;
+  clip-path:inset(50%);white-space:nowrap;background:var(--accent);color:#0B0C0E}
+.skip:focus{width:auto;height:auto;overflow:visible;clip-path:inset(0% round 999px);padding:10px 16px}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50}
+.nav-in{width:100%;max-width:calc(var(--max) + var(--gutter) * 2);margin:0 auto;
+  padding:14px var(--gutter);display:flex;align-items:center;gap:var(--s24)}
+.brand{font-family:"Syne","Syne Fallback",sans-serif;font-weight:800;font-size:20px;letter-spacing:-.03em;
+  color:var(--ink);text-decoration:none}
+.brand span{color:var(--mute)}
+.nav-links{display:flex;gap:var(--s24);margin-left:auto}
+.nav-links a{color:var(--ink);text-decoration:none;transition:color 160ms var(--e-ui)}
+.nav-links a:hover{color:var(--mute)}
+.nav .btn{padding:9px 18px;font-size:16px}
+
+/* ── S1 Hero — 줌스루 ────────────────────────────────────────────────── */
+.stage--hero{background:var(--bg)}
+.zoom{position:absolute;inset:0;z-index:1;clip-path:inset(0% 0% round 0px);overflow:hidden}
+.anim .zoom{clip-path:inset(52% 7% 8% 54% round 10px)}
+.zoom .shot{position:absolute;inset:0;width:100%;height:100%}
+.zoom .cut-b{z-index:1}
+.zoom .cut-a{z-index:2}
+.hero-veil{position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(11,12,14,.95) 0%,rgba(11,12,14,.93) 44%,rgba(11,12,14,.42) 56%,rgba(11,12,14,0) 68%),
+    linear-gradient(to top,rgba(11,12,14,.70),transparent 34%)}
+.hero-copy{position:absolute;left:var(--gutter);top:14vh;z-index:4;max-width:980px}
+.hero-copy .tag{color:var(--ink);margin-bottom:var(--s24)}
+.hero-copy .lead{color:var(--ink-2);margin-top:var(--s24);max-width:36ch}
+.hero-meta{display:flex;flex-wrap:wrap;gap:var(--s24);margin-top:var(--s32)}
+.hero-meta li{color:var(--ink);font-family:"Geist Mono","Geist Mono Fallback",ui-monospace,monospace;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.hero-meta li::before{content:"";display:inline-block;width:14px;height:1px;background:var(--line);
+  vertical-align:middle;margin-right:8px}
+.hero-foot{position:absolute;left:var(--gutter);bottom:5vh;z-index:4;color:var(--ink)}
+
+/* ── S2 Range — 3D 카드 팬 ───────────────────────────────────────────── */
+.sec--fan{padding:var(--s128) 0 var(--s96)}
+.sec-head{position:relative;z-index:2;margin-bottom:var(--s48)}
+.sec-head .tag{margin-bottom:var(--s16)}
+.sec-head .body{margin-top:var(--s16)}
+.fan{position:relative;z-index:1}
+.fan-ring{display:flex;flex-wrap:wrap;gap:var(--s12);justify-content:center;padding:0 var(--gutter)}
+.anim .fan{height:56vh;perspective:1500px}
+.anim .fan-ring{position:absolute;inset:0;display:block;padding:0;transform-style:preserve-3d;--fan:.06}
+.fan-card{position:relative;width:var(--w);height:var(--h)}
+.anim .fan-card{position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%)
+    translateX(calc(var(--i) * var(--fan) * 6.1vw))
+    translateY(calc(var(--i) * var(--i) * var(--fan) * 0.62vh))
+    rotate(calc(var(--i) * var(--fan) * 3.6deg))
+    rotateY(calc(var(--i) * var(--fan) * -2.4deg))
+    translateZ(calc(var(--i) * var(--i) * -9px));
+  will-change:transform}
+.fan-card .frame{width:100%;height:100%}
+.fan-card .cap{position:absolute;left:10px;bottom:8px;z-index:3;color:var(--ink);
+  text-shadow:0 1px 8px rgba(11,12,14,.9)}
+
+
+/* ── S3 Control — 스크럽 시퀀스 ──────────────────────────────────────── */
+.stage--seq{display:grid;grid-template-columns:minmax(0,42%) minmax(0,58%);align-items:center}
+.seq-copy{position:relative;z-index:2;padding:0 var(--s48) 0 var(--gutter)}
+.seq-copy .tag{margin-bottom:var(--s16)}
+.seq-copy .body{margin-top:var(--s16)}
+.prompt{margin-top:var(--s32);display:flex;flex-wrap:wrap;gap:6px;max-width:44ch}
+.tok{font-family:"Geist Mono","Geist Mono Fallback",ui-monospace,monospace;font-size:11px;letter-spacing:.06em;
+  color:var(--mute);padding:5px 9px;border-radius:var(--r-card);background:rgba(255,255,255,.03);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);
+  transition:color 240ms var(--e-ui),background-color 240ms var(--e-ui)}
+.tok.on{color:var(--ink);background:rgba(255,255,255,.10)}
+.seq-cap{margin-top:var(--s24);color:var(--mute)}
+.seq-panel{position:relative;z-index:1;min-height:52vh;overflow:hidden}
+.anim .seq-panel{height:100vh;min-height:0}
+.seq-frames{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;
+  gap:var(--s4);align-content:center;padding:var(--s24)}
+.seq-frames figure{position:relative;overflow:hidden;border-radius:var(--r-card);min-height:120px}
+.anim .seq-frames{position:absolute;inset:0;display:block;padding:0}
+.anim .seq-frames figure{position:absolute;inset:0;opacity:0;border-radius:0;will-change:opacity,transform}
+.anim .seq-frames figure:first-child{opacity:1}
+.seq-frames .shot{position:absolute;inset:0}
+.rail{position:relative;z-index:3;display:flex;gap:6px;margin:var(--s24) var(--s24) 0}
+.anim .rail{position:absolute;left:var(--s48);right:var(--s48);bottom:6vh;margin:0}
+.rail li{height:2px;flex:1;background:rgba(255,255,255,.16);border-radius:var(--r-pill);
+  transition:background-color 240ms var(--e-ui)}
+.rail li.on{background:var(--accent)}
+
+
+/* ── S4 Compare — 밝은 밴드 ──────────────────────────────────────────── */
+.sec--light{background:var(--bg-light);color:var(--ink-dark)}
+.sec--light .body,.sec--light .lead{color:#3A3C3E}
+.sec--light .mono,.sec--light .cap{color:var(--mute-dark)}
+.sec--cmp{padding:var(--s128) 0}
+.cmp-grid{display:flex;flex-wrap:wrap;gap:var(--s24);margin-top:var(--s48);align-items:flex-start}
+.ba{position:relative}
+.ba--lg{flex:0 0 100%}
+.ba--sm{flex:1 1 260px}
+.ba .frame{box-shadow:inset 0 0 0 1px var(--line-dark),0 30px 60px -34px rgba(11,12,14,.5)}
+.ba-media{position:relative;width:100%;aspect-ratio:var(--ar,3/2)}
+.ba-media .shot{position:absolute;inset:0}
+.ba-top{position:absolute;inset:0;z-index:2;clip-path:inset(0 calc(100% - var(--p,52%)) 0 0)}
+.ba-bar{position:absolute;top:0;bottom:0;left:var(--p,52%);width:2px;z-index:3;
+  background:rgba(243,243,241,.9);box-shadow:0 0 0 1px rgba(11,12,14,.28);pointer-events:none}
+.ba-knob{position:absolute;top:50%;left:var(--p,52%);z-index:4;width:44px;height:44px;margin:-22px 0 0 -22px;
+  border-radius:50%;background:rgba(243,243,241,.94);box-shadow:0 6px 18px rgba(11,12,14,.32);pointer-events:none}
+.ba input[type=range]{position:absolute;inset:0;z-index:5;width:100%;height:100%;margin:0;cursor:ew-resize;
+  -webkit-appearance:none;appearance:none;background:transparent;color:transparent;border:0}
+.ba input[type=range]::-webkit-slider-runnable-track{background:transparent;height:100%}
+.ba input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:44px;height:44px;background:transparent;border:0}
+.ba input[type=range]::-moz-range-track{background:transparent;height:100%}
+.ba input[type=range]::-moz-range-thumb{width:44px;height:44px;background:transparent;border:0}
+.ba-labels{position:absolute;left:0;right:0;top:44%;z-index:3;display:flex;justify-content:space-between;
+  padding:0 var(--s16);pointer-events:none}
+.ba-labels span,.sec--light .ba-labels .cap{background:rgba(11,12,14,.72);color:#F3F3F1;padding:4px 8px;border-radius:var(--r-card)}
+.ba-meta{display:flex;gap:var(--s12);margin-top:var(--s12)}
+
+/* ── S5 Gallery — 가로 핀 ────────────────────────────────────────────── */
+.track--gal{background:#08090A}
+.stage--gal{display:flex;flex-direction:column;justify-content:center}
+.gal-head{position:relative;z-index:2;padding:0 var(--gutter);margin-bottom:var(--s24)}
+.gal-vp{position:relative;z-index:1;overflow-x:auto}
+.anim .gal-vp{overflow:hidden}
+.gal-track{display:flex;align-items:center;gap:var(--s24);padding:var(--s24) var(--gutter);
+  will-change:transform;perspective:1200px}
+.gal-card{position:relative;flex:0 0 var(--w);height:var(--h);
+  transform:translateZ(var(--pz,0px)) rotateY(var(--py,0deg));transform-style:preserve-3d}
+.gal-card .frame{width:100%;height:100%}
+.gal-card .cap{position:absolute;left:10px;bottom:9px;z-index:3;color:var(--ink);
+  text-shadow:0 1px 8px rgba(11,12,14,.9)}
+.rail--gal{position:relative;z-index:3;display:block;height:1px;background:rgba(255,255,255,.14);
+  margin:var(--s24) var(--gutter) 0}
+.anim .rail--gal{position:absolute;left:var(--gutter);right:var(--gutter);bottom:5vh;margin:0}
+.rail--gal i{display:block;height:1px;width:4%;background:var(--accent)}
+
+/* ── S6 Space — 매치컷 ───────────────────────────────────────────────── */
+.sec--cut{padding:var(--s96) 0}
+.anim .sec--cut{height:100vh;padding:0}
+.cut-stage{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:var(--s16);align-items:flex-end;
+  padding:0 var(--gutter);overflow:hidden}
+.anim .cut-stage{height:100vh;display:grid;place-items:center;padding:0}
+.cut{position:relative;width:44%;height:44vh;overflow:hidden;border-radius:var(--r-stage);
+  box-shadow:inset 0 0 0 1px var(--line),var(--lift)}
+.anim .cut{position:absolute;width:34vw;height:52vh}
+.cut .shot{position:absolute;inset:0}
+.anim .cut--b{opacity:0}
+.cut-copy{position:relative;z-index:4;flex:0 0 100%;max-width:none;margin-bottom:var(--s32)}
+.cut-copy{--fx-glass-tint:rgba(11,12,14,.86);border-radius:var(--r-stage);padding:var(--s24) var(--s32)}
+.anim .cut-copy{position:absolute;left:var(--gutter);top:16vh;flex:none;max-width:460px;margin:0}
+.cut-chips{position:relative;z-index:4;display:flex;gap:var(--s12);align-items:flex-end;margin-top:var(--s24)}
+.anim .cut-chips{position:absolute;right:var(--gutter);bottom:8vh;margin:0}
+.cut-chip{width:var(--w);height:var(--h);position:relative}
+.cut-chip .frame{width:100%;height:100%}
+.cut-chip .cap{position:absolute;left:8px;bottom:7px;z-index:3;color:var(--ink);text-shadow:0 1px 8px rgba(11,12,14,.9)}
+.cut-note{position:relative;z-index:4;color:var(--ink);flex:0 0 100%;margin-top:var(--s16)}
+.anim .cut-note{position:absolute;left:var(--gutter);bottom:8vh;flex:none;margin:0;
+  padding:6px 12px;border-radius:var(--r-pill);background:rgba(11,12,14,.72)}
+
+/* ── S7 Presets — 틸트 ───────────────────────────────────────────────── */
+.sec--presets{padding:var(--s96) 0 var(--s128)}
+.preset-grid{display:flex;flex-wrap:wrap;gap:var(--s16);margin-top:var(--s48);position:relative;z-index:2;
+  align-items:flex-end}
+.preset{flex:0 0 var(--w);text-align:left;cursor:pointer;border-radius:var(--r-card);background:transparent;
+  position:relative}
+.preset .frame{width:100%;height:var(--h)}
+.preset-meta{display:block;margin-top:var(--s12)}
+.pname{display:block;font-family:"Syne","Syne Fallback",sans-serif;font-weight:700;font-size:20px;
+  letter-spacing:-.02em;color:var(--ink)}
+.preset .cap{display:block;margin-top:4px}
+.preset[aria-pressed="true"] .pname{color:var(--accent)}
+.preset[aria-pressed="true"] .frame{box-shadow:inset 0 0 0 1px rgba(209,254,23,.55),var(--lift)}
+
+/* ── S8 Delivery — 스케일 + 클립 ─────────────────────────────────────── */
+.stage--deliver{display:grid;place-items:center}
+.clipframe{position:absolute;inset:0;z-index:1;overflow:hidden;clip-path:circle(150% at 50% 46%)}
+.anim .clipframe{clip-path:circle(17% at 50% 46%)}
+.clipframe .shot{position:absolute;inset:0;width:100%;height:100%}
+.deliver-copy{position:relative;z-index:3;text-align:center;max-width:900px;
+  padding:var(--s48) var(--s64);border-radius:var(--r-stage);
+  --fx-glass-tint:rgba(11,12,14,.86)}
+.deliver-copy .body{margin:var(--s24) auto 0}
+.specs{display:flex;flex-wrap:wrap;gap:var(--s24);justify-content:center;margin-top:var(--s32)}
+.specs li{color:var(--ink);font-family:"Geist Mono","Geist Mono Fallback",ui-monospace,monospace;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+
+/* ── S9 Plan — 밝은 밴드, 이미지 0, 라임 면 1회 ─────────────────────── */
+.sec--plan{padding:var(--s96) 0}
+.plan{position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:var(--s24);margin-top:var(--s48);
+  align-items:stretch}
+.plan-row{flex:1 1 240px;padding:var(--s24);border-radius:var(--r-stage);
+  box-shadow:inset 0 0 0 1px var(--line-dark)}
+.plan-row .body{margin-top:var(--s12);color:#3A3C3E}
+.plan-row .mono{display:block;margin-bottom:var(--s16)}
+.plan-cta{flex:1 1 300px;padding:var(--s24);border-radius:var(--r-stage);background:var(--accent);color:#0B0C0E;
+  display:flex;flex-direction:column;justify-content:space-between;gap:var(--s24)}
+.plan-cta .h3{color:#0B0C0E}
+.plan-cta p{font-size:16px;line-height:1.5;color:#1E2410;max-width:34ch;margin-top:var(--s12)}
+.plan-cta .btn{background:#0B0C0E;color:var(--ink);align-self:flex-start}
+.plan-cta .btn:hover{background:#1A1C1F}
+
+/* ── S10 Footer — 텍스트 브레이크아웃 ───────────────────────────────── */
+.track--out{background:#08090A}
+.stage--out{display:grid;place-items:center}
+.anim .stage--out{position:relative;height:auto;min-height:100vh}
+.bleed{position:absolute;inset:0;z-index:1;overflow:hidden;opacity:.5}
+.anim .bleed{opacity:0}
+.bleed .shot{position:absolute;inset:0;width:100%;height:100%}
+.breakout{position:relative;z-index:3;font-family:"Syne","Syne Fallback",sans-serif;font-weight:800;
+  font-size:clamp(52px,12.4vw,178px);line-height:.84;letter-spacing:-.05em;text-align:center;
+  color:transparent;-webkit-text-fill-color:transparent;
+  filter:brightness(1.28) contrast(1.12)}
+.breakout span{display:block;-webkit-background-clip:text;background-clip:text;color:transparent;
+  background-size:126% auto;background-position:50% 50%}
+@supports not ((background-clip:text) or (-webkit-background-clip:text)){
+  .breakout,.breakout span{color:var(--ink);-webkit-text-fill-color:var(--ink);filter:none}}
+.foot{position:relative;z-index:4;background:var(--bg);padding:var(--s64) 0 var(--s48)}
+.foot-chips{display:flex;flex-wrap:wrap;gap:var(--s12);align-items:flex-end;margin-bottom:var(--s48)}
+.foot-chip{position:relative;width:var(--w);height:var(--h)}
+.foot-chip .frame{width:100%;height:100%}
+.foot-chip .cap{position:absolute;left:8px;bottom:7px;z-index:3;color:var(--ink);
+  text-shadow:0 1px 8px rgba(11,12,14,.9)}
+.foot-bar{display:flex;flex-wrap:wrap;gap:var(--s24);align-items:baseline;
+  padding-top:var(--s24);box-shadow:inset 0 1px 0 0 var(--line)}
+.foot-mark{font-family:"Syne","Syne Fallback",sans-serif;font-weight:800;font-size:20px;letter-spacing:-.03em}
+.foot-bar nav{display:flex;gap:var(--s24);margin-left:auto}
+.foot-bar a{color:var(--mute);text-decoration:none;transition:color 160ms var(--e-ui)}
+.foot-bar a:hover{color:var(--ink)}
+.legal{flex:0 0 100%;margin-top:var(--s24);color:var(--mute)}
+
+/* ── 반응형 ──────────────────────────────────────────────────────────── */
+@media (max-width:1024px){
+  :root{--gutter:40px}
+  .stage--seq{grid-template-columns:1fr;align-content:center}
+  .seq-copy{padding:0 var(--gutter)}
+  .seq-panel{height:52vh}
+}
+@media (max-width:900px){
+  .stage{min-height:auto;padding:var(--s64) 0}
+  .zoom{position:relative;inset:auto;height:70vh;clip-path:inset(0% 0% round 0px)}
+  .hero-copy{position:relative;left:auto;top:auto;padding:var(--s32) var(--gutter) 0;max-width:none}
+  .hero-veil{display:none}
+  .hero-foot{display:none}
+  .fan-card{width:44%;height:30vh}
+  .seq-frames{grid-template-columns:repeat(2,1fr);padding:0 var(--gutter)}
+  .rail{margin:var(--s24) var(--gutter) 0}
+  .gal-card{flex:0 0 74vw;height:46vh}
+  .sec--cut{padding:var(--s64) 0}
+  .cut{width:100%;height:38vh}
+  .cut-stage,.cut-note{padding-left:0;padding-right:0}
+  .preset{flex:1 1 44%}
+  .clipframe{position:relative;inset:auto;height:52vh;clip-path:inset(0% 0% round 0px)}
+  .deliver-copy{mix-blend-mode:normal;margin-top:var(--s32)}
+  .bleed{position:relative;inset:auto;height:44vh;opacity:.7}
+  .breakout{margin-top:var(--s32)}
+  .nav-links{display:none}
+  .foot-chip{width:44%;height:18vh}
+}
+@media (max-width:520px){:root{--gutter:20px}.fan-card{width:46%;height:24vh}}
+</style>
+</head>
+<body>
+<a class="skip" href="#s1">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav fx-glass">
+  <div class="nav-in">
+    <a class="brand" href="#top">Higgs<span>gen</span></a>
+    <nav class="nav-links mono" aria-label="Sections">
+      <a href="#s2">Range</a><a href="#s3">Control</a><a href="#s5">Gallery</a><a href="#s9">Fit</a>
+    </nav>
+    <a class="btn btn--accent fx-sheen fx-sheen--hover" href="#s9" id="navCta">Start a render</a>
+  </div>
+</header>
+
+<main>
+  <!-- S1 · Hero — 줌스루 (핀 1/4) -->
+  <section id="s1" class="track" style="--track:215vh">
+    <div class="wash" aria-hidden="true"></div>
+    <div class="stage stage--hero">
+      <div class="beam" style="--beam-dur:8s;--bx:58%;--by:34%" aria-hidden="true"></div>
+      __HERO_LC__
+      <figure class="zoom" id="zoom">
+        __HERO_B__
+        __HERO_A__
+      </figure>
+      <div class="hero-veil" id="heroVeil" aria-hidden="true"></div>
+      <div class="hero-copy" id="heroCopy">
+        <p class="mono tag">Still render engine</p>
+        <h1 class="h1" id="heroH1" data-fx-split-by="word">Direct the frame, not the prompt.</h1>
+        <p class="lead">Camera height, light source and material stay where you put them — frame after frame.</p>
+        <ul class="hero-meta">
+          <li>Camera held</li><li>Light held</li><li>Material held</li>
+        </ul>
+      </div>
+      <p class="mono hero-foot">Scroll to open the frame</p>
+    </div>
+  </section>
+
+  <!-- S2 · Range — 3D 카드 팬 -->
+  <section id="s2" class="sec sec--fan">
+    <div class="wash" aria-hidden="true"></div>
+    <div class="wrap sec-head">
+      <p class="mono tag">Range</p>
+      <h2 class="h2">Twelve subjects, one grammar.</h2>
+      <p class="body">Same engine, no style preset switched on. The fan holds a radiator, a mountain switchback and a
+        theatre fly loft — read them as one hand, then spread it.</p>
+    </div>
+    <div class="fan" id="fan">
+      <ul class="fan-ring" id="fanRing">__FAN__</ul>
+    </div>
+  </section>
+
+  <!-- S3 · Control — 스크럽 시퀀스 (핀 2/4) -->
+  <section id="s3" class="track" style="--track:255vh">
+    <div class="wash" aria-hidden="true"></div>
+    <div class="stage stage--seq">
+      <div class="seq-copy">
+        <p class="mono tag">Control</p>
+        <h2 class="h2">One room. Eight decisions.</h2>
+        <p class="body">The bench, the vessel and the wall never move. Camera height, hour and lens do — and the
+          prompt reads back what changed.</p>
+        <p class="prompt" id="prompt">__TOKENS__</p>
+        <p class="cap seq-cap fx-scramble" id="seqCap" data-fx-scramble><span class="fx-scramble__body">frame 01 / 08 · eye level · morning · 35mm</span></p>
+      </div>
+      <div class="seq-panel">
+        <div class="seq-frames" id="seqFrames">__SEQ__</div>
+        <ol class="rail" id="seqRail" aria-hidden="true">__TICKS__</ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4 · Compare — 밝은 밴드 (명도 반전 1/3) -->
+  <section id="s4" class="sec sec--light sec--cmp">
+    <div class="wash wash--light" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="mono tag">Compare</p>
+        <h2 class="h2">Your scribble, held to.</h2>
+        <p class="body">Drag any pair. The drawing on the left is the only brief the render was given; nothing else
+          was described in words.</p>
+      </div>
+      <div class="cmp-grid">__BA_MAIN____BA_ROW__</div>
+    </div>
+  </section>
+
+  <!-- S5 · Gallery — 가로 핀 (핀 3/4, 명도 반전 2/3 · 암전) -->
+  <section id="s5" class="track track--gal" style="--track:230vh">
+    <div class="wash" aria-hidden="true"></div>
+    <div class="stage stage--gal">
+      <div class="gal-head">
+        <p class="mono tag">Gallery</p>
+        <h2 class="h2">Eleven frames, one pass.</h2>
+      </div>
+      <div class="gal-vp">
+        <ul class="gal-track" id="galTrack">__GAL__</ul>
+      </div>
+      <div class="rail--gal" aria-hidden="true"><i id="galBar"></i></div>
+    </div>
+  </section>
+
+  <!-- S6 · Space — 매치컷 -->
+  <section id="s6" class="sec sec--cut">
+    <div class="wash" aria-hidden="true"></div>
+    <div class="cut-stage" id="cutStage">
+      __CUT_A____CUT_B__
+      <div class="cut-copy fx-glass">
+        <p class="mono tag">Space</p>
+        <h2 class="h2">Cut, not swap.</h2>
+      </div>
+      <p class="cap cut-note" id="cutNote">corridor · clerestory slot</p>
+      <ul class="cut-chips">__CUT_CHIPS__</ul>
+    </div>
+  </section>
+
+  <!-- S7 · Presets — 틸트 + 스포트라이트 + 선택 상태 -->
+  <section id="s7" class="sec sec--presets">
+    <div class="wash" aria-hidden="true"></div>
+    <div class="wrap sec-head">
+      <p class="mono tag">Grounds</p>
+      <h2 class="h2">Pick the ground first.</h2>
+      <p class="body">A ground is a light and a material, not a filter. Select one and it stays selected for every
+        frame in the run.</p>
+    </div>
+    <div class="wrap preset-grid" id="presetGrid" role="group" aria-label="Grounds">__PRESETS__</div>
+  </section>
+
+  <!-- S8 · Delivery — 스케일 + 클립 리빌 (핀 4/4) -->
+  <section id="s8" class="track" style="--track:170vh">
+    <div class="wash" aria-hidden="true"></div>
+    <div class="stage stage--deliver">
+      __DELIVER_LC__
+      <figure class="clipframe" id="clipframe">__DELIVER__</figure>
+      <div class="deliver-copy fx-glass">
+        <h2 class="h2">Delivered at the size you shot it.</h2>
+        <p class="body">Every frame comes back at full render resolution with the seed, the camera line and the light
+          rig attached, so the next pass starts where this one stopped.</p>
+        <ul class="specs">
+          <li>Seed kept</li><li>Camera line kept</li><li>Light rig kept</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- S9 · Plan — 밝은 밴드, 이미지 0, 라임 면 1회 (명도 반전 3/3) -->
+  <section id="s9" class="sec sec--light sec--plan">
+    <div class="wash wash--light" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="mono tag">Fit</p>
+        <h2 class="h2">Three ways in.</h2>
+        <p class="body">Start with a single frame, keep a directed set, or hand the whole rig to a pipeline. The
+          controls are the same in all three.</p>
+      </div>
+      <div class="plan">
+        <div class="plan-row">
+          <span class="mono">Single</span>
+          <h3 class="h3">One frame</h3>
+          <p class="body">A line, a ground, a render. Nothing to configure before the first result.</p>
+        </div>
+        <div class="plan-row">
+          <span class="mono">Set</span>
+          <h3 class="h3">Directed set</h3>
+          <p class="body">Hold camera, light and material across a run so the frames read as one shoot.</p>
+        </div>
+        <div class="plan-row">
+          <span class="mono">Pipeline</span>
+          <h3 class="h3">Handed off</h3>
+          <p class="body">Export the rig — seed, camera line, light — and drive it from your own tooling.</p>
+        </div>
+        <div class="plan-cta">
+          <div>
+            <h3 class="h3">Start a render</h3>
+            <p>Bring one sentence. The first frame decides whether the rest is worth directing.</p>
+          </div>
+          <a class="btn fx-sheen fx-sheen--hover" href="#s1">Start a render</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S10 · Footer — 텍스트 브레이크아웃 (암전) -->
+  <section id="s10" class="sec track--out">
+    <div class="wash" aria-hidden="true"></div>
+    <div class="stage stage--out">
+      <div class="beam" style="--beam-dur:19s;--bx:38%;--by:62%" aria-hidden="true"></div>
+      <div class="glow" style="left:24%;top:18%" aria-hidden="true"></div>
+      <div class="bleed" id="bleed">__OUT_BLEED__</div>
+      <h2 class="breakout" id="breakout"><span id="bo1" style="background-image:url('assets/mat-01.png')">MADE</span><span id="bo2" style="background-image:url('assets/mat-02.png')">OF LIGHT</span></h2>
+    </div>
+    <footer class="foot">
+      <div class="wrap">
+        <ul class="foot-chips">__FOOT_CHIPS__</ul>
+        <div class="foot-bar">
+          <span class="foot-mark fx-gtext">Higgsgen</span>
+          <nav class="mono" aria-label="Footer">
+            <a href="#s2">Range</a><a href="#s3">Control</a><a href="#s5">Gallery</a><a href="#s9">Fit</a>
+          </nav>
+          <p class="cap legal">Fictional product — unofficial generated concept.</p>
+        </div>
+      </div>
+    </footer>
+  </section>
+</main>
+
+<!-- ── 인라인 라이브러리 ─────────────────────────────────────────────────
+     GSAP 3.15.0 core + ScrollTrigger — GSAP Standard License (gsap.com/standard-license):
+     상업 이용 포함 무료. 금지 사용은 "Webflow 비주얼 애니메이션 빌더와 경쟁하는 도구"뿐이며
+     FAQ 가 AI 생성 코드를 허용 사용으로 명시한다. 출처 파일:
+     docs/design-excellence/fx-library/scroll-gsap/lib/{gsap315.min.js,ScrollTrigger315.min.js}
+     (라이선스 원문: 같은 폴더 LICENSES.md). 외부 요청 0 — 파일에 그대로 인라인한다. -->
+<script>__GSAP__</script>
+<script>__SCROLLTRIGGER__</script>
+<script>
+/* fx-library 스니펫 — 전부 oh-my-design 자작(MIT), snippet.js 원본 그대로. */
+;(function (global) {
+  /* fx: split-text-rise */
+  function splitText(el, { by = 'word' } = {}) {
+    const text = (el.textContent || '').trim(); if (!text) return;
+    el.setAttribute('aria-label', text);
+    const frag = document.createDocumentFragment();
+    const line = document.createElement('span');
+    line.className = 'fx-split__line'; line.setAttribute('aria-hidden', 'true');
+    const parts = by === 'char' ? [...text] : text.split(/(\s+)/); let i = 0;
+    for (const p of parts) {
+      if (/^\s+$/.test(p)) { line.appendChild(document.createTextNode(p)); continue; }
+      const u = document.createElement('span');
+      u.className = 'fx-split__unit'; u.style.setProperty('--i', i++); u.textContent = p;
+      const mask = document.createElement('span'); mask.className = 'fx-split__mask'; mask.appendChild(u);
+      line.appendChild(mask); if (by === 'word') line.appendChild(document.createTextNode(' '));
+    }
+    frag.appendChild(line); el.textContent = ''; el.appendChild(frag); el.classList.add('fx-split');
+  }
+  /* fx: text-scramble */
+  const GLYPHS = '!<>-_\\/[]{}—=+*^?#01';
+  function scramble(el, next = el.textContent, opts = {}) {
+    const { speed = 1, glyphs = GLYPHS } = opts;
+    const prev = el.textContent || '', final = next;
+    el.setAttribute('aria-label', final);
+    const body = el.querySelector('.fx-scramble__body') || el;
+    body.setAttribute('aria-hidden', 'true');
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { body.textContent = final; return; }
+    const len = Math.max(prev.length, final.length), q = [];
+    for (let i = 0; i < len; i++) {
+      const start = Math.floor(Math.random() * 16 / speed);
+      q.push({ from: prev[i] || '', to: final[i] || '', start, end: start + Math.floor(Math.random() * 16 / speed) + 5 });
+    }
+    let frame = 0, raf = 0;
+    const tick = () => {
+      let out = '', done = 0;
+      for (const c of q) {
+        if (frame >= c.end) { done++; out += c.to; }
+        else if (frame >= c.start) { if (!c.ch || Math.random() < 0.3) c.ch = glyphs[Math.floor(Math.random() * glyphs.length)]; out += c.ch; }
+        else out += c.from;
+      }
+      body.textContent = out;
+      if (done === q.length) { cancelAnimationFrame(raf); return; }
+      frame++; raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+  }
+  /* fx: spotlight-pointer — 컨테이너 하나에만 리스너를 건다 */
+  function mountSpotlight(root) {
+    if (!matchMedia('(hover:hover)').matches) return;
+    const targets = [...root.querySelectorAll('.fx-spot')]; if (!targets.length) return;
+    let raf = 0, last = null;
+    const paint = () => { raf = 0; if (!last) return;
+      for (const el of targets) {
+        const r = el.getBoundingClientRect();
+        const x = last.x - r.left, y = last.y - r.top;
+        el.style.setProperty('--fx-spot-x', x + 'px'); el.style.setProperty('--fx-spot-y', y + 'px');
+        el.dataset.fxSpot = (x >= 0 && y >= 0 && x <= r.width && y <= r.height) ? 'on' : 'off';
+      } };
+    addEventListener('pointermove', (e) => { last = { x: e.clientX, y: e.clientY }; if (!raf) raf = requestAnimationFrame(paint); }, { passive: true });
+    addEventListener('pointerleave', () => { for (const el of targets) el.dataset.fxSpot = 'off'; }, { passive: true });
+  }
+  /* fx: tilt-3d — 포인터 위치를 각도로. 호버만으로는 움직이지 않는다. */
+  function mountTilt(root, { max = 8, scale = 1.012 } = {}) {
+    if (!matchMedia('(hover:hover)').matches) return;
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    for (const el of root.querySelectorAll('.fx-tilt')) {
+      let raf = 0, ev = null;
+      const paint = () => { raf = 0; if (!ev) return;
+        const r = el.getBoundingClientRect();
+        const px = (ev.clientX - r.left) / r.width - .5, py = (ev.clientY - r.top) / r.height - .5;
+        el.style.setProperty('--fx-tilt-y', (px * max * 2).toFixed(2) + 'deg');
+        el.style.setProperty('--fx-tilt-x', (py * -max * 2).toFixed(2) + 'deg'); };
+      el.addEventListener('pointermove', (e) => { ev = e; if (!raf) raf = requestAnimationFrame(paint); }, { passive: true });
+      el.addEventListener('pointerenter', () => el.style.setProperty('--fx-tilt-scale', scale), { passive: true });
+      el.addEventListener('pointerleave', () => { el.style.setProperty('--fx-tilt-x', '0deg');
+        el.style.setProperty('--fx-tilt-y', '0deg'); el.style.setProperty('--fx-tilt-scale', 1); }, { passive: true });
+    }
+  }
+  global.fxLib = { splitText, scramble, mountSpotlight, mountTilt };
+})(window);
+</script>
+<script>
+/* ── Higgsgen r2 스크롤 안무 ───────────────────────────────────────────
+   레시피 출처: docs/design-excellence/fx-library/scroll-gsap/recipes/
+     S1 01-zoom-through · S2 03-card-fan-3d · S3 05-scrub-sequence
+     S5 02-horizontal-pin · S6 08-match-cut · S8 06-scale-clip-reveal · S10 07-text-breakout
+   규칙: R-B(핀 길이 = 사건 수 × ~90%vh 를 예산 안에서 축약) · R-C(반대 방향 운동)
+        · R-D(스크럽 0.35~0.7) · R-E(액센트는 사건에만) · R-F(가로 핀은 invalidateOnRefresh).
+   핀 구현은 ScrollTrigger 의 pin 대신 CSS position:sticky 트랙 — 스크롤 길이가 마크업에
+   그대로 드러나고, 리듀스드 모션/모바일에서 CSS 한 줄로 해제된다. */
+(function () {
+  "use strict";
+  const HTML = document.documentElement;
+  const ANIM = HTML.classList.contains("anim");
+  const SEQ_CAPS = __SEQ_CAPS__;
+  const CUT_NOTES = __CUT_NOTES__;
+
+  /* 1. 헤드라인 split (모션 없이도 텍스트는 그대로 읽힌다 — aria-label 유지) */
+  const h1 = document.getElementById("heroH1");
+  if (ANIM && h1) { fxLib.splitText(h1, { by: "word" }); h1.dataset.fxSplit = "in"; }
+
+  /* 2. 프리셋 선택 상태 — 라임은 여기(선택)와 진행 레일, S9 면에만 쓴다 */
+  const grid = document.getElementById("presetGrid");
+  if (grid) {
+    fxLib.mountSpotlight(grid);
+    fxLib.mountTilt(grid);
+    const btns = [...grid.querySelectorAll(".preset")];
+    const select = (btn) => {
+      for (const b of btns) { b.setAttribute("aria-pressed", String(b === btn)); b.classList.toggle("fx-beam", b === btn); }
+    };
+    for (const b of btns) b.addEventListener("click", () => select(b));
+    if (btns[0]) select(btns[0]);
+  }
+
+  /* 3. before/after 슬라이더 — 진입 시 자동 스윕 1회 후 사용자 조작 */
+  const bas = [...document.querySelectorAll(".ba")];
+  for (const ba of bas) {
+    const input = ba.querySelector("input");
+    const set = (v) => ba.style.setProperty("--p", v + "%");
+    input.addEventListener("input", () => set(input.value));
+    set(input.value);
+  }
+
+  if (!ANIM) return;   /* 리듀스드 모션·모바일·no-JS: ScrollTrigger 를 하나도 만들지 않는다 */
+
+  gsap.registerPlugin(ScrollTrigger);
+  const st = (o) => Object.assign({ invalidateOnRefresh: true }, o);
+
+  /* ── S1 zoom-through (recipe 01) — 썸네일이 풀블리드로 열리고 hero-02 로 매치컷 */
+  gsap.timeline({ defaults: { ease: "none" }, scrollTrigger: st({
+      trigger: "#s1", start: "top top", end: "bottom bottom", scrub: 0.6 }) })
+    .fromTo("#zoom", { clipPath: "inset(30% 34% round 10px)" }, { clipPath: "inset(0% 0% round 0px)" }, 0)
+    .fromTo("#zoom .cut-a", { scale: 1.34 }, { scale: 1 }, 0)          /* R-C: 창이 열릴 때 안쪽은 줄어든다 */
+    .fromTo("#heroVeil", { opacity: 1 }, { opacity: .82 }, 0)
+    .to("#heroCopy", { yPercent: -14, opacity: 0, ease: "power2.in" }, 0.52)
+    .to("#zoom .cut-a", { opacity: 0, ease: "power1.inOut" }, 0.62)     /* 매치컷: 같은 프레임, 다른 세계 */
+    .fromTo("#zoom .cut-b", { scale: 1.14 }, { scale: 1 }, 0.5);
+
+  /* ── S2 card fan (recipe 03) — 스크롤이 부채 각도를 연다. 진입은 mask-wipe(순수 CSS). */
+  gsap.fromTo("#fanRing", { "--fan": 0.06 }, { "--fan": 1, ease: "none",
+    scrollTrigger: st({ trigger: "#s2", start: "top 92%", end: "bottom 42%", scrub: 0.7 }) });
+
+  /* ── S3 scrub sequence (recipe 05) — 8프레임 + 프롬프트 토큰 점등 + 라임 진행 레일 */
+  const frames = gsap.utils.toArray("#seqFrames figure");
+  const ticks = [...document.querySelectorAll("#seqRail li")];
+  const toks = [...document.querySelectorAll("#prompt .tok")];
+  const cap = document.getElementById("seqCap");
+  let lastIdx = -1;
+  const paint = (p) => {
+    const i = Math.min(frames.length - 1, Math.max(0, Math.floor(p * frames.length)));
+    if (i === lastIdx) return;
+    lastIdx = i;
+    ticks.forEach((t, n) => t.classList.toggle("on", n <= i));
+    toks.forEach((t, n) => t.classList.toggle("on", n <= i));
+    fxLib.scramble(cap, SEQ_CAPS[i]);
+  };
+  const seqTl = gsap.timeline({ defaults: { ease: "none" }, scrollTrigger: st({
+      trigger: "#s3", start: "top top", end: "bottom bottom", scrub: 0.35,
+      onUpdate: (s) => paint(s.progress) }) });
+  frames.forEach((f, i) => { if (!i) return;
+    seqTl.fromTo(f, { opacity: 0, scale: 1.05 }, { opacity: 1, scale: 1, duration: 1 }, i - 0.25);
+    seqTl.to(frames[i - 1], { opacity: 0, duration: 1 }, i - 0.25); });
+  paint(0);
+
+  /* ── S4 compare — 진입 시 자동 스윕 1회(사용자 조작 전에 무엇을 만지는지 보여준다) */
+  for (const ba of bas) {
+    const input = ba.querySelector("input");
+    const o = { p: +input.value };
+    ScrollTrigger.create({ trigger: ba, start: "top 78%", once: true, onEnter: () => {
+      gsap.timeline({ defaults: { duration: .48, ease: "power2.inOut" },
+        onUpdate: () => { ba.style.setProperty("--p", o.p.toFixed(1) + "%"); input.value = Math.round(o.p); } })
+        .to(o, { p: 88 }).to(o, { p: 14 }).to(o, { p: 52 });
+      const knob = ba.querySelector(".ba-knob");
+      if (knob) { knob.dataset.fxSheen = "run"; }
+    } });
+  }
+
+  /* ── S5 horizontal pin (recipe 02) — 세로 스크롤이 가로 트랙을 끈다. R-F: invalidateOnRefresh. */
+  const track = document.getElementById("galTrack");
+  const bar = document.getElementById("galBar");
+  const dist = () => Math.max(0, track.scrollWidth - innerWidth + innerWidth * 0.10);
+  gsap.to(track, { x: () => -dist(), ease: "none", scrollTrigger: st({
+      trigger: "#s5", start: "top top", end: "bottom bottom", scrub: 0.5,
+      onUpdate: (s) => { bar.style.width = (4 + s.progress * 96).toFixed(1) + "%"; } }) });
+  gsap.utils.toArray(".gal-card").forEach((c) => {          /* 지나갈 때의 원근 호흡 */
+    gsap.fromTo(c, { "--pz": "-90px" }, { "--pz": "40px", ease: "none",
+      scrollTrigger: st({ trigger: "#s5", start: "top top", end: "bottom bottom", scrub: 0.7 }) });
+  });
+
+  /* ── S6 match cut (recipe 08) — A 가 화면을 채우는 순간 B 가 같은 크기로 태어난다 */
+  const cutNote = document.getElementById("cutNote");
+  gsap.timeline({ defaults: { ease: "none" }, scrollTrigger: st({
+      trigger: "#s6", start: "top bottom", end: "bottom top", scrub: 0.5,
+      onUpdate: (s) => { const t = s.progress < 0.5 ? 0 : 1; if (cutNote.dataset.i !== String(t)) {
+        cutNote.dataset.i = String(t); cutNote.textContent = CUT_NOTES[t]; } } }) })
+    .to("#cutA", { width: "100vw", height: "100vh", borderRadius: 0 }, 0)
+    .to("#cutA img", { scale: 1.12 }, 0)
+    .set("#cutB", { width: "100vw", height: "100vh", borderRadius: 0, opacity: 1 }, 0.5)
+    .set("#cutA", { opacity: 0 }, 0.5)
+    .to("#cutB", { width: "34vw", height: "52vh", borderRadius: 10 }, 0.5);
+
+  /* ── S8 scale + clip reveal (recipe 06) — 원형 클립이 열리고 안쪽은 반대로 축소된다 */
+  gsap.timeline({ defaults: { ease: "none" }, scrollTrigger: st({
+      trigger: "#s8", start: "top top", end: "bottom bottom", scrub: 0.6 }) })
+    .fromTo("#clipframe", { clipPath: "circle(17% at 50% 46%)" }, { clipPath: "circle(150% at 50% 46%)" }, 0)
+    .fromTo("#clipframe img", { scale: 1.15 }, { scale: 1 }, 0);
+
+  /* ── S10 text breakout (recipe 07) — 글자 속 이미지가 글자를 뚫고 화면이 된다.
+       R-A: 마스크에는 값이 넓고 밝은 프레임(mat-01/02)을 쓴다. near-dark 는 글자가 잠긴다. */
+  gsap.timeline({ defaults: { ease: "none" }, scrollTrigger: st({
+      trigger: ".stage--out", start: "top bottom", end: "bottom top", scrub: 0.6 }) })
+    .fromTo("#breakout", { scale: .86 }, { scale: 1 }, 0)
+    .fromTo(["#bo1", "#bo2"], { backgroundSize: "300% auto" }, { backgroundSize: "126% auto" }, 0)
+    .to("#breakout", { scale: 4.2, opacity: 0, ease: "power2.in" }, 0.6)
+    .fromTo("#bleed", { opacity: 0, scale: 1.2 }, { opacity: .62, scale: 1 }, 0.58);
+
+  addEventListener("resize", () => ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>
