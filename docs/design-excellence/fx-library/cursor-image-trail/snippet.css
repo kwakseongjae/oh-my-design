@@ -1,0 +1,31 @@
+/* fx: cursor-image-trail — 커서가 지나간 자리에 이미지가 남았다 사라진다. 구현: oh-my-design (MIT). */
+.fx-trail{ position: relative; overflow: hidden; }
+.fx-trail__item{
+  position: absolute; top: 0; left: 0;
+  width: var(--fx-trail-w, 168px);
+  height: var(--fx-trail-h, 210px);
+  margin: calc(var(--fx-trail-h, 210px) / -2) 0 0 calc(var(--fx-trail-w, 168px) / -2);
+  border-radius: 10px;
+  overflow: hidden;
+  pointer-events: none;          /* 트레일이 커서를 가로채면 안 된다 */
+  opacity: 0;
+  will-change: transform, opacity;
+  box-shadow: 0 22px 44px -26px rgba(0,0,0,.8);
+  /* 위치는 JS 가 --tx/--ty/--tr 로 넘긴다. 소멸은 CSS 애니메이션이 한다 */
+  transform: translate3d(var(--tx,0px), var(--ty,0px), 0) rotate(var(--tr,0deg)) scale(var(--ts,1));
+}
+.fx-trail__item[data-live]{
+  animation: fx-trail-pop var(--fx-trail-life, 900ms) cubic-bezier(.16,.84,.32,1) forwards;
+}
+@keyframes fx-trail-pop{
+  0%   { opacity: 0; scale: .72; }
+  14%  { opacity: 1; scale: 1.04; }
+  62%  { opacity: 1; scale: 1; }
+  100% { opacity: 0; scale: .94; filter: blur(6px); }
+}
+.fx-trail__ph{ width:100%; height:100%;
+  background: linear-gradient(150deg, hsl(var(--h,220) 76% 62%), hsl(calc(var(--h,220) + 44) 78% 34%)); }
+.fx-trail__item > img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+@media (prefers-reduced-motion: reduce){ .fx-trail__item{ display: none; } }
+@media (hover: none){ .fx-trail__item{ display: none; } }

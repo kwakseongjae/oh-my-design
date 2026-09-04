@@ -1,0 +1,38 @@
+/* fx: drift-collage — 히어로가 스크롤 0 에서도 숨 쉰다. CSS-only. 구현: oh-my-design (MIT). */
+.fx-drift{ position: relative; overflow: hidden; }
+.fx-drift__tile{
+  position: absolute;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 26px 52px -30px rgba(0,0,0,.85);
+  /* 진폭·주기·위상을 타일마다 다르게 — 같으면 한 덩어리로 움직여 죽는다 */
+  animation:
+    fx-drift-x var(--dx-dur, 17s) ease-in-out var(--ph, 0s) infinite alternate,
+    fx-drift-y var(--dy-dur, 23s) ease-in-out var(--ph, 0s) infinite alternate;
+  will-change: transform;
+}
+@keyframes fx-drift-x{
+  from{ translate: calc(var(--ax, 14px) * -1) 0; }
+  to  { translate: var(--ax, 14px) 0; }
+}
+@keyframes fx-drift-y{
+  from{ rotate: calc(var(--ar, 1.4deg) * -1); }
+  to  { rotate: var(--ar, 1.4deg); }
+}
+/* translate/rotate 개별 속성이라 두 애니메이션이 서로를 덮지 않는다 — transform 하나면 불가능하다 */
+.fx-drift__tile--slow{ --dx-dur: 29s; --dy-dur: 37s; }
+
+.fx-drift__ph{ width:100%; height:100%;
+  background: linear-gradient(148deg, hsl(var(--h,220) 74% 60%), hsl(calc(var(--h,220) + 42) 78% 32%)); }
+.fx-drift__tile > img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+/* 가장자리를 녹여 콜라주가 잘린 사각형으로 안 보이게 */
+.fx-drift__veil{
+  position:absolute; inset:0; pointer-events:none;
+  background: radial-gradient(76% 62% at 50% 46%, transparent 34%, var(--fx-drift-veil, rgba(11,12,14,.86)) 88%);
+}
+.fx-drift__fore{ position: relative; z-index: 3; }
+
+@media (prefers-reduced-motion: reduce){
+  .fx-drift__tile{ animation: none; }   /* 정지한 콜라주도 구도다 — 숨기지 않는다 */
+}

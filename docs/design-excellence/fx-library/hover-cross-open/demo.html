@@ -1,0 +1,28 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — hover-cross-open</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>.pad{padding:20px}</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>hover-cross-open <code>호버 · 프리뷰</code></h1>
+<p class="sub">호버한 칸을 기준으로 왼쪽은 왼쪽으로, 오른쪽은 오른쪽으로 밀려나고 그 사이가 <code>clip-path</code> 로 찢어지며 프리뷰가 열린다. 이동하는 건 <b>clip-path 값 하나</b>다.</p>
+<div class="stage pad">
+  <div class="fx-cross">
+    <div class="fx-cross__grid">
+      <div class="fx-cross__cell" data-fx-label="01 표류"><div class="fx-cross__ph" style="--h:204"></div></div>
+      <div class="fx-cross__cell" data-fx-label="02 잔광"><div class="fx-cross__ph" style="--h:238"></div></div>
+      <div class="fx-cross__cell" data-fx-label="03 궤도"><div class="fx-cross__ph" style="--h:272"></div></div>
+      <div class="fx-cross__cell" data-fx-label="04 격자"><div class="fx-cross__ph" style="--h:306"></div></div>
+      <div class="fx-cross__cell" data-fx-label="05 파문"><div class="fx-cross__ph" style="--h:340"></div></div>
+      <div class="fx-cross__cell" data-fx-label="06 정지"><div class="fx-cross__ph" style="--h:18"></div></div>
+      <div class="fx-cross__cell" data-fx-label="07 잔상"><div class="fx-cross__ph" style="--h:56"></div></div>
+      <div class="fx-cross__cell" data-fx-label="08 반향"><div class="fx-cross__ph" style="--h:120"></div></div>
+    </div>
+    <div class="fx-cross__preview"><div class="fx-cross__previewInner"></div><div class="fx-cross__label"></div></div>
+  </div>
+</div>
+<p class="note">터치 기기에서는 프리뷰를 <b>제거</b>하고 평범한 그리드로 남는다 — 호버 뒤에 정보를 숨기지 않는다. 키보드 <code>Tab</code> 으로도 열린다.</p>
+</div>
+<script src="./snippet.js"></script>
+<script>fxLib.mountCrossOpen();</script>
+<script src="../_shell.js"></script></body></html>

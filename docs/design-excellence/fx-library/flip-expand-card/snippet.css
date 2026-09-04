@@ -1,0 +1,54 @@
+/* fx: flip-expand-card — 그리드 카드가 상세 패널로 팟 하고 펼쳐진다. 구현: oh-my-design (MIT). */
+.fx-flip{ position: relative; }
+.fx-flip__card{
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .34s cubic-bezier(.22,.68,.24,1), box-shadow .34s ease;
+  box-shadow: 0 14px 32px -22px rgba(0,0,0,.7);
+}
+/* 호버 예고 — 클릭하면 무슨 일이 일어나는지 미리 알려 준다 */
+@media (hover:hover){
+  .fx-flip__card:not(.is-open):hover{
+    transform: translateY(-6px) scale(1.018);
+    box-shadow: 0 30px 56px -26px rgba(0,0,0,.8);
+    z-index: 2;
+  }
+}
+.fx-flip__card.is-open{
+  position: fixed;
+  /* 그리드에서 aspect-ratio 를 쓰고 있었다면 반드시 풀어 준다.
+     안 풀면 폭 84vw × 3/4 = 뷰포트보다 큰 높이가 되어 카드가 화면 밖으로 나간다. */
+  aspect-ratio: auto;
+  inset: 7vh 8vw;
+  z-index: 60;
+  cursor: zoom-out;
+  transform: none;
+  box-shadow: 0 60px 120px -40px rgba(0,0,0,.9);
+}
+.fx-flip__inner{ position:absolute; inset:0; transform-origin: top left; }
+.fx-flip__ph{ position:absolute; inset:0;
+  background: linear-gradient(150deg, hsl(var(--h,220) 74% 58%), hsl(calc(var(--h,220) + 40) 76% 30%)); }
+.fx-flip__body{
+  position:absolute; left:0; right:0; bottom:0; padding: 22px 24px;
+  background: linear-gradient(transparent, rgba(0,0,0,.72));
+  color:#fff;
+}
+.fx-flip__body b{ display:block; font-size: 17px; }
+.fx-flip__body span{ font-size: 13px; opacity:.78 }
+.fx-flip__card.is-open .fx-flip__body{ padding: 34px 38px; }
+.fx-flip__card.is-open .fx-flip__body b{ font-size: 28px; letter-spacing:-.02em }
+
+/* 열린 동안 나머지를 죽인다 — 스펙터클은 대비에서 온다 */
+.fx-flip__scrim{
+  position: fixed; inset: 0; z-index: 50; background: rgba(6,7,9,.72);
+  backdrop-filter: blur(3px); opacity: 0; pointer-events: none;
+  transition: opacity .34s ease;
+}
+.fx-flip.has-open .fx-flip__scrim{ opacity: 1; pointer-events: auto; }
+
+@media (prefers-reduced-motion: reduce){
+  .fx-flip__card{ transition: none; }
+  .fx-flip__card:not(.is-open):hover{ transform: none; }
+}

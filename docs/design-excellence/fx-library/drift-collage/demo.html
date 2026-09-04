@@ -1,0 +1,29 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — drift-collage</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+.hero{height:460px;background:#0b0c0e}
+[data-theme=light] .hero{background:#eeeeec}
+[data-theme=light] .fx-drift__veil{--fx-drift-veil:rgba(247,247,245,.9)}
+.fore{position:absolute;inset:0;display:grid;place-items:center;text-align:center;z-index:3;pointer-events:none}
+.fore h3{font-size:clamp(30px,5vw,54px);margin:0;letter-spacing:-.035em;line-height:1.02}
+.fore p{color:var(--mut);margin:10px 0 0}
+</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>drift-collage <code>유휴 · 배경</code></h1>
+<p class="sub">스크롤 0, 입력 0, JS 0. 타일마다 진폭·주기·위상이 달라서 <b>한 덩어리로 움직이지 않는다</b>. 이것이 "살아 있음"과 "흔들림"을 가른다.</p>
+<div class="stage hero fx-drift">
+  <div class="fx-drift__tile" style="left:4%;top:12%;width:150px;height:196px;--ax:16px;--ar:1.6deg;--ph:-3s"><div class="fx-drift__ph" style="--h:208"></div></div>
+  <div class="fx-drift__tile fx-drift__tile--slow" style="left:17%;top:52%;width:128px;height:170px;--ax:11px;--ar:-1.1deg;--ph:-9s"><div class="fx-drift__ph" style="--h:246"></div></div>
+  <div class="fx-drift__tile" style="left:31%;top:6%;width:112px;height:150px;--ax:9px;--ar:2.1deg;--ph:-14s"><div class="fx-drift__ph" style="--h:286"></div></div>
+  <div class="fx-drift__tile fx-drift__tile--slow" style="left:44%;top:62%;width:160px;height:126px;--ax:18px;--ar:-1.7deg;--ph:-5s"><div class="fx-drift__ph" style="--h:322"></div></div>
+  <div class="fx-drift__tile" style="right:26%;top:14%;width:136px;height:180px;--ax:13px;--ar:-2.2deg;--ph:-19s"><div class="fx-drift__ph" style="--h:16"></div></div>
+  <div class="fx-drift__tile fx-drift__tile--slow" style="right:9%;top:48%;width:154px;height:200px;--ax:15px;--ar:1.3deg;--ph:-11s"><div class="fx-drift__ph" style="--h:52"></div></div>
+  <div class="fx-drift__tile" style="right:3%;top:8%;width:104px;height:138px;--ax:8px;--ar:1.9deg;--ph:-24s"><div class="fx-drift__ph" style="--h:132"></div></div>
+  <div class="fx-drift__veil"></div>
+  <div class="fore"><div><h3>여기 문장이 산다</h3><p>배경은 움직이고 전경은 정지해 있다</p></div></div>
+</div>
+<p class="note">개별 속성 <code>translate</code> 와 <code>rotate</code> 를 쓰기 때문에 두 애니메이션이 서로를 덮지 않는다. <code>transform</code> 하나로는 불가능한 조합이다.</p>
+</div>
+<script src="../_shell.js"></script></body></html>

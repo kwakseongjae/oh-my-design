@@ -1,0 +1,42 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — cursor-image-trail</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>.zone{height:420px;display:grid;place-items:center}
+.zone h3{font-size:34px;margin:0;letter-spacing:-.03em;pointer-events:none;opacity:.9}
+.zone p{color:var(--mut);margin:8px 0 0;pointer-events:none}
+.zone2{height:260px}</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>cursor-image-trail <code>호버 · 커서</code></h1>
+<p class="sub">움직인 <b>거리</b>가 임계값을 넘을 때만 한 장 떨어진다. 프레임마다가 아니다. 요소 12개를 돌려쓰므로 DOM 은 늘지 않는다.</p>
+<div class="stage zone fx-trail">
+  <div><h3>커서를 여기서 움직여 보라</h3><p>gap 96px — 빠를수록 자주, 느리면 안 나온다</p></div>
+  <div class="fx-trail__item" style="--h:206"><div class="fx-trail__ph"></div></div>
+  <div class="fx-trail__item" style="--h:232"><div class="fx-trail__ph"></div></div>
+  <div class="fx-trail__item" style="--h:258"><div class="fx-trail__ph"></div></div>
+  <div class="fx-trail__item" style="--h:284"><div class="fx-trail__ph"></div></div>
+  <div class="fx-trail__item" style="--h:310"><div class="fx-trail__ph"></div></div>
+  <div class="fx-trail__item" style="--h:336"><div class="fx-trail__ph"></div></div>
+  <div class="fx-trail__item" style="--h:2"><div class="fx-trail__ph"></div></div>
+  <div class="fx-trail__item" style="--h:28"><div class="fx-trail__ph"></div></div>
+  <div class="fx-trail__item" style="--h:54"><div class="fx-trail__ph"></div></div>
+  <div class="fx-trail__item" style="--h:88"><div class="fx-trail__ph"></div></div>
+  <div class="fx-trail__item" style="--h:124"><div class="fx-trail__ph"></div></div>
+  <div class="fx-trail__item" style="--h:164"><div class="fx-trail__ph"></div></div>
+</div>
+
+<h2>금기 예시 — 임계 24px / 수명 2.4s</h2>
+<div class="stage zone zone2 fx-trail" data-fx-trail-gap="24" style="--fx-trail-life:2400ms;--fx-trail-w:120px;--fx-trail-h:150px">
+  <div><p>화면이 이미지로 막힌다. 읽을 것이 있는 영역에 이렇게 두지 않는다.</p></div>
+  <div class="fx-trail__item" style="--h:0"><div class="fx-trail__ph"></div></div>
+  <div class="fx-trail__item" style="--h:30"><div class="fx-trail__ph"></div></div>
+  <div class="fx-trail__item" style="--h:60"><div class="fx-trail__ph"></div></div>
+  <div class="fx-trail__item" style="--h:90"><div class="fx-trail__ph"></div></div>
+  <div class="fx-trail__item" style="--h:120"><div class="fx-trail__ph"></div></div>
+  <div class="fx-trail__item" style="--h:150"><div class="fx-trail__ph"></div></div>
+</div>
+<p class="note">터치 기기와 <code>prefers-reduced-motion</code> 에서는 트레일 요소를 <code>display:none</code> 으로 완전히 제거한다.</p>
+</div>
+<script src="./snippet.js"></script>
+<script>fxLib.mountTrail();</script>
+<script src="../_shell.js"></script></body></html>

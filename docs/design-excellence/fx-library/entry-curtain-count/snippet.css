@@ -1,0 +1,47 @@
+/* fx: entry-curtain-count — 카운트업이 끝나면 커튼이 갈라진다. 구현: oh-my-design (MIT). */
+.fx-curtain{
+  position: fixed; inset: 0; z-index: 999;
+  display: grid; place-items: center;
+  background: var(--fx-curtain-bg, #0b0c0e);
+  --fx-curtain-dur: 620ms;
+  --fx-curtain-ease: cubic-bezier(.76,0,.24,1);
+}
+.fx-curtain__num{
+  font: 600 clamp(56px, 12vw, 148px)/1 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -.045em;
+  font-variant-numeric: tabular-nums;   /* 숫자가 바뀔 때 폭이 안 흔들린다 — 필수 */
+  color: var(--fx-curtain-fg, #f4f5f6);
+  transition: opacity .28s ease, transform .28s ease;
+}
+.fx-curtain__bar{
+  position: absolute; left: 0; bottom: 0; height: 2px;
+  width: var(--fx-curtain-p, 0%);
+  background: var(--fx-curtain-accent, #c8ff2f);
+}
+/* 커튼 두 짝 — 위아래로 갈라진다. clip-path 한 축만 움직인다 */
+.fx-curtain__leaf{
+  position: absolute; left: 0; right: 0; height: 50%;
+  background: inherit;
+  transition: transform var(--fx-curtain-dur) var(--fx-curtain-ease);
+}
+.fx-curtain__leaf--t{ top: 0; }
+.fx-curtain__leaf--b{ bottom: 0; }
+
+.fx-curtain[data-fx-curtain="out"]{ background: transparent; pointer-events: none; }
+.fx-curtain[data-fx-curtain="out"] .fx-curtain__num,
+.fx-curtain[data-fx-curtain="out"] .fx-curtain__bar{ opacity: 0; transform: translateY(-10px); }
+.fx-curtain[data-fx-curtain="out"] .fx-curtain__leaf--t{ transform: translateY(-100%); }
+.fx-curtain[data-fx-curtain="out"] .fx-curtain__leaf--b{ transform: translateY(100%); }
+.fx-curtain[data-fx-curtain="done"]{ display: none; }
+
+/* 커튼이 열리는 동안 본문이 따라 올라온다 — 두 사건이 하나로 읽힌다 */
+.fx-curtain-stage{ opacity: 0; transform: translateY(18px); }
+.fx-curtain-stage[data-fx-revealed]{
+  opacity: 1; transform: none;
+  transition: opacity .6s ease .12s, transform .7s cubic-bezier(.2,.8,.24,1) .12s;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .fx-curtain{ display: none; }              /* 진입 연출은 통째로 건너뛴다 */
+  .fx-curtain-stage{ opacity: 1; transform: none; }
+}

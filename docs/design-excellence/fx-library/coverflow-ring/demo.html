@@ -1,0 +1,29 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — coverflow-ring</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>.stage-cf{height:420px;background:radial-gradient(120% 90% at 50% 34%,rgba(255,255,255,.05),transparent 72%)}
+.cap{position:absolute;left:0;right:0;bottom:12px;text-align:center;color:var(--mut);font-size:12px}</style>
+</head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>coverflow-ring <code>유휴 · 3D</code></h1>
+<p class="sub">중앙만 정면이고 양옆은 안으로 접힌다. 3.2초마다 스스로 한 칸 전진하고, 호버하면 멈추고, 드래그·클릭·화살표키로 고를 수 있다. 배치 전체가 <b>소수 인덱스 하나</b>에서 나온다.</p>
+<div class="stage stage-cf">
+  <div class="fx-cf">
+    <div class="fx-cf__track">
+      <div class="fx-cf__item"><div class="fx-cf__card fx-cf__card--ph" style="--h:206"></div></div>
+      <div class="fx-cf__item"><div class="fx-cf__card fx-cf__card--ph" style="--h:246"></div></div>
+      <div class="fx-cf__item"><div class="fx-cf__card fx-cf__card--ph" style="--h:286"></div></div>
+      <div class="fx-cf__item"><div class="fx-cf__card fx-cf__card--ph" style="--h:326"></div></div>
+      <div class="fx-cf__item"><div class="fx-cf__card fx-cf__card--ph" style="--h:16"></div></div>
+      <div class="fx-cf__item"><div class="fx-cf__card fx-cf__card--ph" style="--h:52"></div></div>
+      <div class="fx-cf__item"><div class="fx-cf__card fx-cf__card--ph" style="--h:132"></div></div>
+    </div>
+    <div class="cap">클릭 · 드래그 · ← → 키 · 호버하면 자동 전진 정지</div>
+  </div>
+</div>
+<p class="note">반사(<code>-webkit-box-reflect</code>)는 점진적 향상이다. Firefox 에서는 반사가 없고 구도는 그대로 성립한다.</p>
+</div>
+<script src="./snippet.js"></script>
+<script>fxLib.mountCoverflow();</script>
+<script src="../_shell.js"></script></body></html>

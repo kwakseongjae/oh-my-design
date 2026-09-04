@@ -1,0 +1,57 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — poster-cylinder</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+.stage-cyl{height:400px;background:radial-gradient(120% 80% at 50% 30%,rgba(255,255,255,.06),transparent 70%)}
+.cap{position:absolute;left:0;right:0;bottom:14px;text-align:center;color:var(--mut);font-size:12px}
+.mini{height:290px}
+.mini .fx-cyl__face{border-radius:8px}
+</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>poster-cylinder <code>유휴 · 3D</code></h1>
+<p class="sub">스크롤 0에서도 살아 있다. 포스터가 원통 벽에 붙어 돌고, 잡아끌면 따라오고, 놓으면 관성으로 흐르다 기본 속도로 돌아온다. 호버하면 감속해서 읽게 해 준다.</p>
+
+<h2>기본 — 12장 / 자동 6deg/s</h2>
+<div class="stage stage-cyl">
+  <div class="fx-cyl" style="--fx-cyl-step:30deg;--fx-cyl-r:420px">
+    <div class="fx-cyl__stage">
+      <div class="fx-cyl__face fx-cyl__face--ph" style="--i:0;--h:212"></div>
+      <div class="fx-cyl__face fx-cyl__face--ph" style="--i:1;--h:238"></div>
+      <div class="fx-cyl__face fx-cyl__face--ph" style="--i:2;--h:266"></div>
+      <div class="fx-cyl__face fx-cyl__face--ph" style="--i:3;--h:292"></div>
+      <div class="fx-cyl__face fx-cyl__face--ph" style="--i:4;--h:318"></div>
+      <div class="fx-cyl__face fx-cyl__face--ph" style="--i:5;--h:344"></div>
+      <div class="fx-cyl__face fx-cyl__face--ph" style="--i:6;--h:14"></div>
+      <div class="fx-cyl__face fx-cyl__face--ph" style="--i:7;--h:40"></div>
+      <div class="fx-cyl__face fx-cyl__face--ph" style="--i:8;--h:78"></div>
+      <div class="fx-cyl__face fx-cyl__face--ph" style="--i:9;--h:118"></div>
+      <div class="fx-cyl__face fx-cyl__face--ph" style="--i:10;--h:158"></div>
+      <div class="fx-cyl__face fx-cyl__face--ph" style="--i:11;--h:186"></div>
+    </div>
+    <div class="cap">드래그해 보라 · 호버하면 감속</div>
+  </div>
+</div>
+
+<h2>좁은 반지름 = 과한 곡률 (금기 예시)</h2>
+<div class="stage stage-cyl mini">
+  <div class="fx-cyl" data-fx-cyl-auto="14" style="--fx-cyl-step:45deg;--fx-cyl-r:210px;--fx-cyl-w:150px;--fx-cyl-h:200px;--fx-cyl-tilt:-3deg">
+    <div class="fx-cyl__stage">
+      <div class="fx-cyl__face fx-cyl__face--ph" style="--i:0;--h:200"></div>
+      <div class="fx-cyl__face fx-cyl__face--ph" style="--i:1;--h:240"></div>
+      <div class="fx-cyl__face fx-cyl__face--ph" style="--i:2;--h:280"></div>
+      <div class="fx-cyl__face fx-cyl__face--ph" style="--i:3;--h:320"></div>
+      <div class="fx-cyl__face fx-cyl__face--ph" style="--i:4;--h:0"></div>
+      <div class="fx-cyl__face fx-cyl__face--ph" style="--i:5;--h:40"></div>
+      <div class="fx-cyl__face fx-cyl__face--ph" style="--i:6;--h:90"></div>
+      <div class="fx-cyl__face fx-cyl__face--ph" style="--i:7;--h:150"></div>
+    </div>
+    <div class="cap">r 210px / 14deg/s — 어지럽다. 반지름은 포스터 폭의 2배 이상.</div>
+  </div>
+</div>
+
+<p class="note">색면은 <b>이미지 슬롯 플레이스홀더</b>다. 실제 사용 시 <code>.fx-cyl__face</code> 안에 <code>&lt;img&gt;</code> 를 넣는다. <code>prefers-reduced-motion</code> 에서는 회전이 멈추고 정지한 원통 구도만 남는다.</p>
+</div>
+<script src="./snippet.js"></script>
+<script>fxLib.mountCylinder();</script>
+<script src="../_shell.js"></script></body></html>

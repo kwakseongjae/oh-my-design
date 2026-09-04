@@ -1,0 +1,29 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — ambient-fold</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+.fold{position:relative;height:400px;overflow:hidden;display:grid;place-items:center;text-align:center;background:#0b0c0e}
+[data-theme=light] .fold{background:#f0f0ee}
+.fold .in{position:relative;z-index:2;padding:0 24px}
+.fold h3{font-size:clamp(28px,5.4vw,54px);margin:0 0 12px;letter-spacing:-.038em;line-height:1.06;color:#f4f5f6}
+[data-theme=light] .fold h3{color:#16171a}
+.fold p{margin:0;color:var(--mut)}
+.live{margin-top:22px;display:inline-flex;align-items:center;gap:9px;padding:8px 16px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);font-size:13px;color:#dfe2e6}
+[data-theme=light] .live{border-color:rgba(0,0,0,.12);background:rgba(0,0,0,.04);color:#3b4046}
+</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>ambient-fold <code>유휴 · 최저가</code></h1>
+<p class="sub">경쟁사 실측(2026-09-04): <b>canvas 0개, GSAP 0개</b>, 폴드 안에서 도는 CSS 애니메이션 17개. 폴드의 "살아 있음"은 WebGL 이 아니라 <b>키프레임 1.3KB</b> 로 만들어져 있었다. 광원 드리프트 · 타이핑 · 상태 점멸 3계열.</p>
+<div class="stage fold">
+  <div class="fx-amb-beam"></div>
+  <div class="in">
+    <h3><span class="fx-amb-type" style="--fx-amb-ch:13">한 문장이 생성된다</span><span class="fx-amb-caret"></span></h3>
+    <p class="fx-amb-shimmer" style="--fx-amb-sh:#fff">빛이 7초마다 한 번 문장 위를 지나간다</p>
+    <div class="live"><span class="fx-amb-dot"></span> 지금 3,052개가 만들어지는 중</div>
+  </div>
+</div>
+<p class="note">무한 반복 애니메이션은 <b>폴드당 6개</b>가 실측 상한선이었다. 여기서는 광원 1 + 커서 1 + 시머 1 + 점멸 1 = 4개. <code>prefers-reduced-motion</code> 에서는 빛이 멈추고 문장은 완성 상태로 스냅한다 — 사라지지 않는다.</p>
+</div>
+<script src="../_shell.js"></script></body></html>
