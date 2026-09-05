@@ -1,0 +1,18 @@
+/* smooth-scrub-engine — 엔진이 주는 변수만 읽는다.
+   --p 진행률(0~1) · --e 정착 이징된 진행률 · --v 스테이지 가시 수명(0~1) */
+
+.sc-track { position: relative; }
+.sc-stage {
+  position: sticky; top: 0; height: 100vh; height: 100svh;
+  overflow: clip;
+}
+
+/* 예시 1 — 진행률로 확대(정착 뒤에는 --e 가 1 에서 멎어 홀드가 정지한다) */
+.sc-zoom { transform: scale(calc(1 + 0.14 * var(--e, 0))); will-change: transform; }
+
+/* 예시 2 — 가시 수명으로 미세 표류(홀드 구간에서도 화면이 죽지 않는다) */
+.sc-drift { transform: translate3d(calc(-2vw * var(--v, 0)), 0, 0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sc-zoom, .sc-drift { transform: none; }
+}

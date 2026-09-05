@@ -1,0 +1,44 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>smooth-scrub-engine 데모</title>
+<style>
+:root{--bg:#12100e;--ink:#f4f1ea;--mute:#a8a29a;--line:#2a2724}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.5 ui-sans-serif,system-ui,-apple-system,"Helvetica Neue",sans-serif}
+.intro,.outro{min-height:70vh;display:grid;place-content:center;gap:12px;padding:0 6vw;text-align:center}
+h1{font-size:clamp(32px,7vw,84px);line-height:.98;margin:0;letter-spacing:-.02em}
+p{color:var(--mute);max-width:52ch;margin:0 auto}
+.sc-track{height:300vh;position:relative}
+.sc-stage{position:sticky;top:0;height:100vh;height:100svh;overflow:clip;display:grid;place-items:center}
+.plate{position:absolute;inset:0;background:
+  radial-gradient(60% 50% at 30% 30%,#3a5a7a 0%,transparent 70%),
+  radial-gradient(50% 60% at 75% 65%,#7a4a3a 0%,transparent 70%),#1a1714;
+  transform:scale(calc(1 + .18 * var(--e,0)));will-change:transform}
+.veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,16,14,.9),transparent 55%)}
+.copy{position:relative;text-align:center;padding:0 6vw}
+.copy h2{font-size:clamp(28px,5.4vw,64px);margin:0 0 10px;line-height:1;letter-spacing:-.02em;
+  transform:translate3d(0,calc(-1.6vh * var(--v,0)),0)}
+.readout{position:fixed;left:12px;bottom:12px;font:12px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;
+  color:var(--mute);background:rgba(0,0,0,.5);padding:8px 10px;border:1px solid var(--line);border-radius:8px}
+.readout b{color:var(--ink);font-weight:500}
+@media (prefers-reduced-motion: reduce){.plate,.copy h2{transform:none}}
+</style></head><body>
+<section class="intro"><h1>스크롤에 상태를 준다</h1>
+<p>스크롤은 목표값만 쓰고, 상시 루프가 현재값을 프레임당 α 만큼 목표로 걸어간다. 아래로 굴려 보라 — 손을 떼도 잠깐 더 걸어간다.</p></section>
+
+<div class="sc-track" data-sc-k="0.55" data-sc-lerp="0.14">
+  <div class="sc-stage">
+    <div class="plate"></div><div class="veil"></div>
+    <div class="copy"><h2>진행률과 체류 시간은 다른 시계다</h2>
+      <p>확대는 진행률(--e)로, 표류는 가시 수명(--v)으로 움직인다. 정착 뒤에도 화면이 죽지 않는다.</p></div>
+  </div>
+</div>
+
+<section class="outro"><h1>끝</h1><p>α 를 <code>data-sc-lerp</code> 로 바꿔 감각을 비교해 보라. 0.5 는 딱딱하고 0.05 는 미끄럽다.</p></section>
+
+<div class="readout">α <b id="a">0.14</b> · --e <b id="e">0.0000</b> · --v <b id="v">0.0000</b></div>
+<script src="snippet.js"></script>
+<script>
+var t=document.querySelector('.sc-track'),E=document.getElementById('e'),V=document.getElementById('v');
+(function tick(){var s=getComputedStyle(t);E.textContent=(s.getPropertyValue('--e')||'0').trim()||'0';
+V.textContent=(s.getPropertyValue('--v')||'0').trim()||'0';requestAnimationFrame(tick)})();
+</script></body></html>

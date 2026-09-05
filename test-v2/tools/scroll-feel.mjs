@@ -94,11 +94,13 @@ const RECORDER = () => {
 };
 
 /** 지수 수렴 시정수 τ(ms) 를 프레임 표본에서 추정한다. */
-function tau(samples, key) {
+function tau(samples, key, minSpan = 2) {
   const v = samples.map((s) => s[key]).filter((x) => x !== null && x !== undefined);
   if (v.length < 6) return null;
   const start = v[0], end = v[v.length - 1], span = end - start;
-  if (Math.abs(span) < 2) return 0;
+  /* minSpan 은 단위에 맞춘다: 픽셀 값은 2px, 0~1 정규화 값(--e 류)은 0.02.
+     예전엔 둘 다 2 를 써서 스크럽 τ 가 언제나 0 으로 나왔다(2026-09-05 수정). */
+  if (Math.abs(span) < minSpan) return null;
   const t0 = samples[0].t;
   for (let i = 0; i < v.length; i++) {
     const done = (v[i] - start) / span;
@@ -108,11 +110,11 @@ function tau(samples, key) {
 }
 
 /** 목표의 99% 에 도달하기까지의 프레임 수 */
-function settleFrames(samples, key) {
+function settleFrames(samples, key, minSpan = 1) {
   const v = samples.map((s) => s[key]).filter((x) => x !== null);
   if (v.length < 4) return null;
   const start = v[0], end = v[v.length - 1], span = end - start;
-  if (Math.abs(span) < 1) return 0;
+  if (Math.abs(span) < minSpan) return null;
   for (let i = 0; i < v.length; i++) if (Math.abs((v[i] - end) / span) < 0.01) return i;
   return v.length;
 }
@@ -146,19 +148,20 @@ async function measure(target, browser) {
     scrollTau: tau(impulse, "y"),
     visualTau: tau(impulse, "vy"),
     visualSettleFrames: settleFrames(impulse, "vy"),
-    scrubTau: tau(impulse, "scrub"),
+    scrubTau: tau(impulse, "scrub", 0.02),
     /* 프레임당 보간 계수 α = 1 - e^(-16.7/τ) */
     alpha: null,
   };
   if (out.impulse.visualTau && out.impulse.visualTau > 0) out.impulse.alpha = +(1 - Math.exp(-16.7 / out.impulse.visualTau)).toFixed(3);
   else if (out.impulse.visualTau === 0) out.impulse.alpha = 1;
+  out.impulse.scrubAlpha = out.impulse.scrubTau > 0 ? +(1 - Math.exp(-16.7 / out.impulse.scrubTau)).toFixed(3) : (out.impulse.scrubTau === 0 ? 1 : null);
 
   /* ── 2) 큰 점프 → 스크럽 따라오기 ── */
   await page.evaluate(() => window.__sf.start());
   await page.mouse.wheel(0, 1800);
   await page.waitForTimeout(1800);
   const jump = await page.evaluate(() => window.__sf.stop());
-  out.jump = { frames: jump.length, catchUpFrames: settleFrames(jump, "vy"), scrubCatchUp: settleFrames(jump, "scrub") };
+  out.jump = { frames: jump.length, catchUpFrames: settleFrames(jump, "vy"), scrubCatchUp: settleFrames(jump, "scrub", 0.02) };
 
   /* ── 3) 속도 결합: 느리게 vs 빠르게 같은 거리 ── */
   const sampleAt = async (steps, delay) => {
@@ -233,7 +236,7 @@ for (const t of targets) {
   try { r = await measure(t, browser); } catch (e) { r = { id: t.id, url: t.url, errors: ["fatal: " + String(e).split("\n")[0]] }; }
   results.push(r);
   const i = r.impulse || {}, s = r.steady || {};
-  console.log(` τ시각 ${i.visualTau ?? "?"}ms · α ${i.alpha ?? "?"} · 정착 ${i.visualSettleFrames ?? "?"}f · 따라오기 ${r.jump?.catchUpFrames ?? "?"}f · 속도결합 ${r.velocityCoupled?.count ?? "?"} · 지터 ${s.jitter ?? "?"} · 멈춘프레임 ${s.zeroFrames ?? "?"} ${r.errors?.length ? "· ERR " + r.errors.length : ""}`);
+  console.log(` τ시각 ${i.visualTau ?? "?"}ms · α ${i.alpha ?? "?"} · 정착 ${i.visualSettleFrames ?? "?"}f · 따라오기 ${r.jump?.catchUpFrames ?? "?"}f · scrubα ${i.scrubAlpha ?? "-"} · 속도결합 ${r.velocityCoupled?.count ?? "?"} · 지터 ${s.jitter ?? "?"} · 멈춘프레임 ${s.zeroFrames ?? "?"} ${r.errors?.length ? "· ERR " + r.errors.length : ""}`);
 }
 await browser.close();
 const path = join(OUTDIR, "scroll-feel.json");
