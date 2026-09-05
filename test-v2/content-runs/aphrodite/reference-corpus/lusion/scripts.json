@@ -1,0 +1,42 @@
+{
+  "globals": [],
+  "versions": {},
+  "external": [
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-W2XC5XK9QJ",
+      "bytes": 174128,
+      "status": 200,
+      "library": "ogl"
+    },
+    {
+      "url": "https://lusion.co/_astro/hoisted.CUO_IjfL.js",
+      "bytes": 304971,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://f.vimeocdn.com/p/4.46.106/js/vendor.module.js",
+      "bytes": 95489,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://f.vimeocdn.com/p/4.46.106/js/player.module.js",
+      "bytes": 227563,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://f.vimeocdn.com/js_opt/modules/utils/vuid.min.js",
+      "bytes": 985,
+      "status": 200,
+      "library": null
+    }
+  ],
+  "inline": [
+    {
+      "bytes": 154,
+      "head": " window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-W2XC5XK9QJ'); "
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "keyframes": [
+    {
+      "name": "preloaderAppear",
+      "steps": 2
+    },
+    {
+      "name": "swiper-preloader-spin",
+      "steps": 2
+    },
+    {
+      "name": "spin",
+      "steps": 2
+    },
+    {
+      "name": "shake",
+      "steps": 4
+    },
+    {
+      "name": "fall",
+      "steps": 3
+    },
+    {
+      "name": "featuredProjectsAllFlash",
+      "steps": 4
+    },
+    {
+      "name": "lisaDisclaimerFlash",
+      "steps": 2
+    },
+    {
+      "name": "lisaDisclaimerProcedure",
+      "steps": 2
+    },
+    {
+      "name": "lisaLoader",
+      "steps": 2
+    },
+    {
+      "name": "lisaCursor",
+      "steps": 4
+    }
+  ],
+  "keyframeCount": 10,
+  "animations": [
+    {
+      "name": "featuredProjectsAllFlash",
+      "state": "running",
+      "dur": 2000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.c-featured-links_title"
+    },
+    {
+      "name": "featuredProjectsAllFlash",
+      "state": "running",
+      "dur": 2000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.c-featured-links_title"
+    }
+  ],
+  "animationCount": 2,
+  "runningAnimations": 2,
+  "infiniteAnimations": 2,
+  "transitions": [
+    [
+      "0.2s cubic-bezier(0.23, 1, 0.32, 1)",
+      5
+    ],
+    [
+      "0.3s, 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), cubic-bezier(0.215, 0.61, 0.355, 1)",
+      1
+    ],
+    [
+      "0.2s cubic-bezier(0.215, 0.61, 0.355, 1)",
+      1
+    ],
+    [
+      "0.15s, 0s cubic-bezier(0.23, 1, 0.32, 1), cubic-bezier(0.23, 1, 0.32, 1)",
+      1
+    ],
+    [
+      "0.25s cubic-bezier(0.215, 0.61, 0.355, 1)",
+      1
+    ]
+  ],
+  "canvases": [
+    {
+      "w": 440,
+      "h": 616,
+      "cssW": 440,
+      "cssH": 616
+    },
+    {
+      "w": 440,
+      "h": 586,
+      "cssW": 440,
+      "cssH": 587
+    }
+  ],
+  "canvasCount": 2,
+  "rafCallbacks": 302,
+  "rafCalls": 950,
+  "scrollListeners": {
+    "mousemove": 2,
+    "pointermove": 1,
+    "touchmove": 2,
+    "scroll": 1,
+    "wheel": 4
+  },
+  "intersectionObservers": 2,
+  "canvasDraws": 127898,
+  "scrollMode": "native",
+  "docHeightPx": 6598,
+  "videos": [
+    {
+      "src": "https://player.vimeo.com/progressive_redirect/playback/792718372/rendition/1080p/file.mp4?loc=external&log_user=0&signature=978abf9e4b33e3e143901fbcbf68e159d90d5eeb95ed25f8378d341514009cf8",
+      "loop": true,
+      "muted": true,
+      "autoplay": false,
+      "paused": true,
+      "readyState": 4,
+      "dur": 12.521667,
+      "w": 1920,
+      "h": 1080
+    }
+  ]
+}

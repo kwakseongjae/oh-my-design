@@ -1,0 +1,249 @@
+{
+  "id": "linear",
+  "url": "https://linear.app/",
+  "why": "정보형 대조군 — 지배도 11.0",
+  "capturedAt": "2026-09-05T03:47:26.140Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "errors": [
+    "pageerror: Error: Minified React error #419; visit https://react.dev/errors/419 for the full message or use the non-minified dev environment for full errors and additional",
+    "pageerror: Error: Minified React error #419; visit https://react.dev/errors/419 for the full message or use the non-minified dev environment for full errors and additional"
+  ],
+  "httpStatus": 200,
+  "cssSheets": 30,
+  "cssBytes": 311640,
+  "cssUnreadable": [
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Providers.qSrgnk7B.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Toast.pcGZUK31.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Grid.Cds8fjKR.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/StatusPage.BYDaMjMd.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Link.Tpxbzi3N.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/utils.CVEX6qwi.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Button.dcAi4KbO.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Header.52ZtgjCi.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Flex.BEZjGLsi.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/ThemeToggle._YM9yPbG.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/IconButton.3p32EmO1.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/KBD.ByHmXOx_.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Tooltip.mgHd0F-S.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Icon.Bl8l9ltc.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/color.C-dCEHFh.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Spacer.mYgpGelO.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/CommandMenu.SLUGp_-I.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Image.BUY_OmUN.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Zoom.krMPHN5w.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/SidePanel.B6ktxgTN.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Hero.D42gc8OB.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/HeroIllustration.Bvfe7oWz.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Timeline.DkraX15N.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/PreviewLinkIcon.Q6nTXUvX.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/IssueListView.BH55qTC9.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/scenarios.bL-CLJt9.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/IssueCard.0Mp9aHeV.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Logos.CS-uXWPW.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Benefits.CzMusJr_.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Carousel.DPK6Rgnp.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/SlackIssue.tG1BN7t9.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Pillar.BQqfJc4W.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/PageSection.CkcrxymE.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/page.CN02O61q.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/EdgeShine.BKCmF3VB.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Plan.Cd02uiDN.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/AIAutomations.DUWe2iWc.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/ReviewsFrame.Omq08Do4.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Select.Bb-JNkHr.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/DiffsIllustration.CYoFyd2X.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/code-diff.B1AV-EHC.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/CustomerQuotes.urGJ2SmA.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/index.DF8NERDv.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Changelog.C40xlRzV.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/HomepageLink.CN02O61q.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/HomepageSeparator.DAb6YYB9.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Bleed.CbcodEv9.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/GlobalSidePanel.CYoFyd2X.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Grain.D_EBlr94.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/CTA.CDNJI-Em.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Header.D8jOAph5.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Icon.B18TDZc7.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/LayoutContent.D8YYVbao.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://static.linear.app/web/_next/static/css/Layout.tvkMFESE.css",
+      "why": "CORS"
+    }
+  ],
+  "scrollMode": "native",
+  "docHeightPx": 9960,
+  "assetsByType": {
+    "image": {
+      "n": 25,
+      "bytes": 92071
+    },
+    "font": {
+      "n": 2,
+      "bytes": 513172
+    }
+  },
+  "libraries": [],
+  "scriptBytes": 0
+}

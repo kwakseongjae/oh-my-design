@@ -1,0 +1,22 @@
+{
+  "keyframes": [],
+  "keyframeCount": 0,
+  "animations": [],
+  "animationCount": 0,
+  "runningAnimations": 0,
+  "infiniteAnimations": 0,
+  "transitions": [],
+  "canvases": [],
+  "canvasCount": 0,
+  "rafCallbacks": 3,
+  "rafCalls": 167,
+  "scrollListeners": {
+    "pointermove": 1,
+    "wheel": 1
+  },
+  "intersectionObservers": 0,
+  "canvasDraws": 2902,
+  "scrollMode": "custom-wheel",
+  "docHeightPx": 900,
+  "videos": []
+}

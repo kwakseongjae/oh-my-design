@@ -1,0 +1,100 @@
+{
+  "keyframes": [
+    {
+      "name": "enter",
+      "steps": 1
+    },
+    {
+      "name": "exit",
+      "steps": 1
+    },
+    {
+      "name": "spin",
+      "steps": 1
+    },
+    {
+      "name": "hero-search-band",
+      "steps": 2
+    },
+    {
+      "name": "accordion-down",
+      "steps": 2
+    },
+    {
+      "name": "accordion-up",
+      "steps": 2
+    }
+  ],
+  "keyframeCount": 6,
+  "animations": [
+    {
+      "name": "?",
+      "state": "paused",
+      "dur": 38880,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "ul.items-[inherit]"
+    }
+  ],
+  "animationCount": 1,
+  "runningAnimations": 0,
+  "infiniteAnimations": 1,
+  "transitions": [
+    [
+      "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+      62
+    ],
+    [
+      "0.3s cubic-bezier(0, 0, 0.2, 1)",
+      13
+    ],
+    [
+      "0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+      2
+    ],
+    [
+      "0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+      1
+    ]
+  ],
+  "canvases": [],
+  "canvasCount": 0,
+  "rafCallbacks": 0,
+  "rafCalls": 0,
+  "scrollListeners": {
+    "mousemove": 11,
+    "pointermove": 6,
+    "scroll": 14,
+    "touchmove": 7,
+    "wheel": 6
+  },
+  "intersectionObservers": 4,
+  "canvasDraws": 3,
+  "scrollMode": "native",
+  "docHeightPx": 8886,
+  "videos": [
+    {
+      "src": "https://static.cdn-luma.com/files/sanity/7b077029-d756-49ad-9d9b-9ee0ad54ad02.mp4#t=0.001",
+      "loop": true,
+      "muted": true,
+      "autoplay": false,
+      "paused": false,
+      "readyState": 4,
+      "dur": 19.971267,
+      "w": 1920,
+      "h": 1080
+    },
+    {
+      "src": "https://static.cdn-luma.com/files/sanity/522455bf-ff1f-41c5-a048-a9f40b06763c.mp4#t=0.001",
+      "loop": true,
+      "muted": true,
+      "autoplay": false,
+      "paused": true,
+      "readyState": 4,
+      "dur": 2.041667,
+      "w": 1280,
+      "h": 720
+    }
+  ]
+}

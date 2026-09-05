@@ -1,0 +1,113 @@
+{
+  "keyframes": [
+    {
+      "name": "__framer-blink-input",
+      "steps": 2
+    },
+    {
+      "name": "shimmer-Rllmd8qtlal5dp",
+      "steps": 2
+    },
+    {
+      "name": "__framer-loading-spin",
+      "steps": 2
+    },
+    {
+      "name": "betterGrainWebpFramesV22",
+      "steps": 2
+    }
+  ],
+  "keyframeCount": 4,
+  "animations": [
+    {
+      "name": "betterGrainWebpFramesV22",
+      "state": "running",
+      "dur": 750,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div"
+    }
+  ],
+  "animationCount": 1,
+  "runningAnimations": 1,
+  "infiniteAnimations": 1,
+  "transitions": [
+    [
+      "0.3s ease-in-out",
+      1
+    ]
+  ],
+  "canvases": [],
+  "canvasCount": 0,
+  "rafCallbacks": 25,
+  "rafCalls": 7570,
+  "scrollListeners": {
+    "scroll": 10,
+    "touchmove": 5,
+    "mousemove": 4,
+    "pointermove": 12,
+    "wheel": 4
+  },
+  "intersectionObservers": 37,
+  "canvasDraws": 1,
+  "scrollMode": "native",
+  "docHeightPx": 10878,
+  "videos": [
+    {
+      "src": "https://framerusercontent.com/assets/2zyGmnAWVTTdkv4LY1mFKgEdhg.mp4",
+      "loop": true,
+      "muted": true,
+      "autoplay": true,
+      "paused": false,
+      "readyState": 4,
+      "dur": 21.033333,
+      "w": 2320,
+      "h": 1300
+    },
+    {
+      "src": "https://framerusercontent.com/assets/IxrpbsCJLku5W91FcYn0gQuQY.mp4",
+      "loop": true,
+      "muted": true,
+      "autoplay": false,
+      "paused": true,
+      "readyState": 0,
+      "dur": null,
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://framerusercontent.com/assets/d5okMiktMgbhCcGtgbr8gGqqHU.mp4",
+      "loop": true,
+      "muted": true,
+      "autoplay": false,
+      "paused": true,
+      "readyState": 0,
+      "dur": null,
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://framerusercontent.com/assets/CgG06QT8BUlSAEO3d4bWJgF0YgI.mp4",
+      "loop": true,
+      "muted": true,
+      "autoplay": false,
+      "paused": true,
+      "readyState": 0,
+      "dur": null,
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://framerusercontent.com/assets/EGqLxawrgBiyYfcyRAdEFPRAMWo.mp4",
+      "loop": true,
+      "muted": true,
+      "autoplay": false,
+      "paused": true,
+      "readyState": 0,
+      "dur": null,
+      "w": 0,
+      "h": 0
+    }
+  ]
+}

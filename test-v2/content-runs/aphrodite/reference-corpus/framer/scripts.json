@@ -1,0 +1,842 @@
+{
+  "globals": [],
+  "versions": {},
+  "external": [
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/rolldown-runtime.Dh6celcD.mjs",
+      "bytes": 629,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/react.LucpZiGF.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/LiveTokenCount.DL1O9jEs.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/NoTranslate.BthVHjFb.mjs",
+      "bytes": 510,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/ZnYQI0gYN.CkMDayKl.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/motion.DEqL3rbx.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": "motion"
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/uWazKwr4_.DxcJ7wo4.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/Ty4AVVMtk.CUyU1X5s.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/Time.ZGJdMuu7.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/Jbk47Kb7T.CNYMgCGj.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/OSbzEQyh8.CTV0OiY8.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/JDcRNvJlD.CqL9KXDL.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/mvD6g4TgD.Cf0fuGzx.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/CDJx3T4nQ.CM0im3qh.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/uexyNUZEC.BRDBAAQt.mjs",
+      "bytes": 620,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/shared.BM4dEwp7.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/FYtNM2koB.C33Sbv5K.mjs",
+      "bytes": 942,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/Navigation.Bbq2b7hs.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/q5l9lrIfW.EcJ-IULC.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/Debug.CZhpHOpJ.mjs",
+      "bytes": 445,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/i5eOVfIN4.C-kyCH_8.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/framer.xxZbzrPc.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/hU9PP9ocp.D3UTVWDN.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/p7rJCFjrH.CYmxVHek.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/XKwEMWdG8.DAjmDgPE.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/E_0f9mL03.b41vA_Gi.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/qQyVSfqMC.snXoz5hm.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/Fhlycn1G2.C6CGeNjc.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/opnE6P6z1.BUAQr1Hy.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/AaN8oZOpy.D23EALPn.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/P0K9uVDju.CHhCdJK3.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/q8_oY7uRM.BzGxjll7.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/bsl7RRJJl.CuSvTjdt.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/uIpCQFONn.DR0iO9Ge.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/LSJRyGpDd.D8lngaGd.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/rPRBE2iVS.BjDNL6B7.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/jiOIQtacr.C2qhU56A.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/VEYYSsBte.q5L76UCV.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/eDyRoJJnX.J17xVi52.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/QvtvnWhtz.BUikpY6-.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/xLCwjgk49.CqF-QDfG.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/KsxdqjKwX.9gC08pSd.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/ZN14weCOL.KzvGnB2l.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/Db1qJXtpu.BWTcDfdX.mjs",
+      "bytes": 751,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/OIjZRBmWDcIE2B6qgG1j.CqreLdXH.mjs",
+      "bytes": 570,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/ButtonDownloadOSOverride_2.a-wZfNl4.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/wR0giMTCd.nUzoCtE7.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/TJbrQa1j4.CcYGoqaB.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/M8z52uvts.BkOMugmv.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/Video.Bh5tVqVe.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/xPxBw2EQW.eOnic9cp.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/HoRfFp9QY.BcJMgMbs.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/Input_Loops.CjxmVo7d.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/GM_4jaOoY.C79XaVNJ.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/HoRfFp9QY.CWsuaVuU.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/hRq5PIcWh.BXy8ROjN.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/dwcmpE4JD.D3bRFaBl.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/D3zb3AjRu.BluWnIww.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/ajU2BZL9R.z4SWWhoR.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/GenBorder.CPJ3ibZP.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/cCVuCWlF_.B7xWD51P.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/IxjuC5c7L.BwthFzxk.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/PFs06gWMh.HagU3_p1.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/MFJabYpQp.BCkLF55i.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/gMALrY6wX.BICREi3j.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/Ihf91buQp.bCIam-ww.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/YouTube.D8qWcAPi.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/Ls0tBJryR.BygHM7z9.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/ProTypewriter.CNPIs_ad.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/YpBHtYzmG.C2bHr3k8.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/Clipboard.CFZjf8mS.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/cgTzI7Z3G._cGwyOJE.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/sGVDGHnNr.CtewoYuh.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/GrAfmmwVH.DThGItZW.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/qRN7MgZKk.CqItkZOg.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/Xq6an3bq6.BwuNP-RK.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/mAa5xIuUC.vAAlYgO9.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/locales.B3JC8vjn.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/RvxHRHJJkAyJDS7vI7IslP82Sl60CLKjoyL1P673SWY.D9A4ZnYS.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/siteMetadata.lfz2Om34.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/tqxdcwL1f.CQ6LfbUR.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/CMQSU3nD_.BPWQ9WUF.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/OI7mqGvF6.DopzMczs.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/s7Cfjgkps.DCbTBqFq.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/ieh7ppIaH.CNxcWhLp.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/AgentDotAnimation.B765otj0.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/uFTn4vOOC.Bv8_TPGx.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/Random_Count.CtRyfrWR.mjs",
+      "bytes": 847,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/fpJV3zp1q.C0jC2iWc.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/a3jlaIk3M.BWC1skiY.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/N43zor67g.BdmUtfVd.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/propUtils.byHu0IfR.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/UerhIinlb.xtXX4HEx.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/DHR3ttDkQ8O8y4wLslmme2akO1kObaruy6pg5gc6uzw.CwNdtprX.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/ImageWheel.CF9RW6GZ.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/axolVhh2o.H96sNavo.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/default-utils.js@_0.45.B2tJK_Kl.mjs",
+      "bytes": 200,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framerusercontent.com/sites/3BJ9zINIeWtEEVRMAcoTL8/script_main.BsS-Iz7y.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://events.framer.com/script?v=2",
+      "bytes": 7698,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framer.com/edit/alpha/init.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://cdn.debugbear.com/9uWCuyolIuHX.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://app.framerstatic.com/chunk-GDTMTXKD.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtm.js?id=GTM-KQFN6BX",
+      "bytes": 175573,
+      "status": 200,
+      "library": "ogl"
+    },
+    {
+      "url": "https://bzrcdn.openai.com/sdk/oaiq.min.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.dubcdn.com/analytics/script.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-QZ2MPXED80&cx=c&gtm=4e6930h2",
+      "bytes": 191039,
+      "status": 200,
+      "library": "ogl"
+    },
+    {
+      "url": "https://accounts.google.com/gsi/client",
+      "bytes": 0,
+      "status": 200,
+      "library": "ogl"
+    },
+    {
+      "url": "https://ingest.promptwatch.com/js/client.min.js",
+      "bytes": 4576,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://js-eu1.hs-scripts.com/144411337.js",
+      "bytes": 601,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://js-eu1.hs-banner.com/v2/144411337/banner.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://js-eu1.hs-analytics.net/analytics/1788579600000/144411337.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://app.framerstatic.com/chunk-WOEOGJ2W.mjs",
+      "bytes": 209,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://app.framerstatic.com/chunk-WLHSDIGQ.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://app.framerstatic.com/chunk-YRQ7G4QH.mjs",
+      "bytes": 772,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://app.framerstatic.com/chunk-6W2K2MOG.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://app.framerstatic.com/editorbar.6VXM6PHJ.mjs",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://framer.com/bootstrap.9a5d5ea93c1539044e1d9fbd387b4f44a4ba2663.js",
+      "bytes": 513,
+      "status": 200,
+      "library": null
+    }
+  ],
+  "inline": [
+    {
+      "bytes": 220,
+      "head": "try{if(localStorage.getItem(\"__framer_force_showing_editorbar_since\")){const n=document.createElement(\"link\");n.rel=\"modulepreload\";n.href=\"https://framer.com/edit/alpha/init.mjs\";document.head.append"
+    },
+    {
+      "bytes": 570,
+      "head": "\"use strict\";(()=>{const n=[\"keydown\",\"keyup\",\"pointerdown\",\"pointerup\",\"mousedown\",\"mouseup\",\"click\",\"mouseover\",\"mouseout\",\"mouseenter\",\"mouseleave\",\"pointerover\",\"pointerenter\",\"pointerleave\",\"poin"
+    },
+    {
+      "bytes": 2656,
+      "head": "(()=>{var e;const t=new Set,n=new Set;let i=!1;function o(){i=!1;const e=Array.from(n);n.clear();for(const t of e)t()}function d(e){n.add(e),i||(i=!0,requestAnimationFrame(o))}function c(){for(;t.size"
+    },
+    {
+      "bytes": 2166,
+      "head": " (function() { window.__FcCheckoutConfigs = window.__FcCheckoutConfigs || {}; const previousSettings = { checkout: { ...window.__FcCheckoutConfigs } }"
+    },
+    {
+      "bytes": 1228,
+      "head": "(()=>{function p(){function s(e){let t=new URL(e);return`${t.origin}${t.pathname}`.replace(/\\/$/u,\"\")}function c(e){return e.split(\"-\")[0]}function g(){let e=window.location.hostname,t=new Map;return "
+    },
+    {
+      "bytes": 154,
+      "head": "window.__framerLoginFetch = fetch(\"https://api.framer.com/site/users/me\",{credentials:\"include\"}).then(r=>{if(!r.ok)return;return r.json()}).catch(()=>{})"
+    },
+    {
+      "bytes": 1688,
+      "head": "(()=>{const e=[\"AI\",\"AT\",\"AW\",\"AX\",\"BE\",\"BG\",\"BL\",\"BM\",\"CW\",\"CY\",\"CZ\",\"DE\",\"DK\",\"EE\",\"EL\",\"ES\",\"FI\",\"FK\",\"FO\",\"FR\",\"GF\",\"GG\",\"GI\",\"GL\",\"GP\",\"HR\",\"HU\",\"IE\",\"IM\",\"IO\",\"IT\",\"JE\",\"KY\",\"LT\",\"LU\",\"LV\",\"MF\","
+    },
+    {
+      "bytes": 129614,
+      "head": " (function() { // Initialize shopXtools with version first window.shopXtools = window.shopXtools || {}; window.shopXtools.version = \"2.5\"; // ============================"
+    },
+    {
+      "bytes": 542,
+      "head": " { \"@context\": \"https://schema.org\", \"@type\": \"Organization\", \"image\": \"https://framerusercontent.com/images/b2hliN8q6RI1alDDMojdsEiXDU.png\", \"url\": \"https://www.framer.com\", \"sameAs\": [\"htt"
+    },
+    {
+      "bytes": 958,
+      "head": "(()=>{(()=>{let e=document.currentScript.previousElementSibling;function t(){globalThis.__f_auth=0,e.style.display=`flex`}function n(){globalThis.__f_auth=1,e.style.display=`none`,iu();let t=document."
+    },
+    {
+      "bytes": 1140,
+      "head": "(()=>{function u(){function n(t,e,i){let r=document.createElement(\"a\");r.href=t,r.target=i,r.rel=e,document.body.appendChild(r),r.click(),r.remove()}function o(t){if(this.dataset.hydrated){this.remove"
+    },
+    {
+      "bytes": 801,
+      "head": "!function(){var w=\"framer_variant\";function u(a,r){let e=r.indexOf(\"#\"),t=e===-1?r:r.substring(0,e),o=e===-1?\"\":r.substring(e),n=t.indexOf(\"?\"),h=n===-1?t:t.substring(0,n),d=n===-1?\"\":t.substring(n),s"
+    },
+    {
+      "bytes": 385,
+      "head": "(e=>{let n=new URLSearchParams(e),o=[\"utm_source\",\"utm_medium\",\"utm_campaign\",\"utm_term\",\"utm_content\",\"gclid\"],t=Array.from(n.entries()).filter(([r,a])=>o.includes(r));if(t.length!==0)try{let r=encod"
+    },
+    {
+      "bytes": 10888,
+      "head": "var animator=(()=>{var L=(e,r,t)=>t>r?r:t<e?e:t;var U=()=>{};function _(e){let r;return()=>(r===void 0&&(r=e()),r)}var Q=e=>e;var D=e=>e*1e3,O=e=>e/1e3;var J=e=>Array.isArray(e)&&typeof e[0]==\"number\""
+    },
+    {
+      "bytes": 1877,
+      "head": "{\"tgz4ad\":{\"default\":{\"initial\":{\"opacity\":0.001,\"rotate\":0,\"rotateX\":0,\"rotateY\":0,\"scale\":1,\"skewX\":0,\"skewY\":0,\"x\":0,\"y\":0},\"animate\":{\"opacity\":1,\"rotate\":0,\"rotateX\":0,\"rotateY\":0,\"scale\":1,\"skew"
+    },
+    {
+      "bytes": 375,
+      "head": "[{\"hash\":\"5f2zqe\",\"mediaQuery\":\"(min-width: 1200px)\"},{\"hash\":\"rjquzb\",\"mediaQuery\":\"(min-width: 810px) and (max-width: 1199.98px)\"},{\"hash\":\"apjvv1\",\"mediaQuery\":\"(max-width: 809.98px)\"},{\"hash\":\"zpr"
+    },
+    {
+      "bytes": 787,
+      "head": "(()=>{function c(i,o,s){if(window.__framer_disable_appear_effects_optimization__||typeof animator>\"u\")return;let e={detail:{bg:document.hidden}};requestAnimationFrame(()=>{let a=\"framer-appear-start\";"
+    },
+    {
+      "bytes": 4222,
+      "head": "(()=>{function d(e){let t=Date.prototype.toLocaleString,o=Date.prototype.toLocaleDateString;t&&(Date.prototype.toLocaleString=function(r,n){let i=s(this,r,n);return u(e.current.Date.toLocaleString,i,("
+    },
+    {
+      "bytes": 109,
+      "head": "typeof document<\"u\"&&(window.process={...window.process,env:{...window.process?.env,NODE_ENV:\"production\"}});"
+    },
+    {
+      "bytes": 945,
+      "head": "(()=>{ var ua = navigator.userAgent window.dbbRum = window.dbbRum||[] window.dbbRum.push([\"sampling\", /mobi/i.test(ua) ? 100 : 10]) // sample 100% of mobile try { var repeatedVisitor = JSON.parse(loca"
+    },
+    {
+      "bytes": 1294,
+      "head": "(()=>{console.log(\"Initializing Framer Analytics Anonymous\");const t=\"visitor_id\",e=\"cookie_consent\",n=\"https://api.framer.com/auth/signin\",o=\"https://events.framer.com/track\";function i(t){const e=do"
+    },
+    {
+      "bytes": 2179,
+      "head": "(async()=>{if(window.matchMedia(\"(any-hover:none)\").matches)return;let e;const t=new Promise(t=>{e=t});function o(e,t){const o=[t,\"font-size:11.42px;color:light-dark(#222,#fff);padding:20px 20px 20px "
+    },
+    {
+      "bytes": 3027,
+      "head": " (() => { const RESULT_PATH = \"/__stack-score/result\"; const STORAGE_KEY = \"framer.stackScore.prototype.v1\"; if (!window.location.pathname.startsWith(RESULT_PATH)) return; const LEVELS = [\"Ma"
+    },
+    {
+      "bytes": 325,
+      "head": "(function(){if(!window.__userIdFetchDone){window.__userIdFetchDone=!0;var a=new XMLHttpRequest;a.open(\"GET\",\"https://api.framer.com/auth/signin\",!0);a.withCredentials=!0;a.onload=function(){var b=\"\";t"
+    },
+    {
+      "bytes": 2379,
+      "head": "var VISITOR_COOKIE_NAME=\"visitor_id\";function setCookie(c,d,e){c=encodeURIComponent(c)+\"\\x3d\"+encodeURIComponent(d)+\";path\\x3d/\";e&&(d=new Date,d.setTime(d.getTime()+864E5*e),c+=\";expires\\x3d\"+d.toUTC"
+    },
+    {
+      "bytes": 1383,
+      "head": "(function(){(function(){var c,d,e,g=function(){var a=function(){return Math.floor((1+Math.random())*65536).toString(16).substring(1)};return\"\"+a()+a()+\"-\"+a()+\"-\"+a()+\"-\"+a()+\"-\"+a()+a()+a()},f=functi"
+    },
+    {
+      "bytes": 928,
+      "head": "(function(){function l(a){return(a=document.cookie.match(\"(^|;) ?\"+a+\"\\x3d([^;]*)(;|$)\"))?decodeURIComponent(a[2]):null}function g(a,b,h){a=encodeURIComponent(a)+\"\\x3d\"+encodeURIComponent(b)+\";path\\x3"
+    },
+    {
+      "bytes": 227,
+      "head": "var script=document.createElement(\"script\");script.src=\"https://www.dubcdn.com/analytics/script.js\";script.defer=!0;script.dataset.domains='{\"refer\": \"framer.link\"}';document.getElementsByTagName(\"hea"
+    },
+    {
+      "bytes": 213,
+      "head": "(function(){var a=document.createElement(\"script\");a.setAttribute(\"data-project-id\",\"d87d3097-a8ef-46ec-a85e-4ac44888c34f\");a.src=\"https://ingest.promptwatch.com/js/client.min.js\";document.head.append"
+    },
+    {
+      "bytes": 306,
+      "head": "!function(a,b,d,e){if(!a.oaiq){var c=function(){c.q.push(arguments)};c.q=[];a.oaiq=c;a=b.createElement(d);a.async=1;a.src=e;b=b.getElementsByTagName(d)[0];b.parentNode.insertBefore(a,b)}}(window,docum"
+    },
+    {
+      "bytes": 226,
+      "head": "function isLoaded(){document.dispatchEvent(new Event(\"__framer-gsi-loaded\"))}if(google.accounts)isLoaded();else{var gsiScript=document.querySelector(\"#google-gsi-client-script\");gsiScript.addEventList"
+    },
+    {
+      "bytes": 907,
+      "head": "function main(){function g(){var a={ms8Svg53R:\"QtgGyDfr6\",KLFcd_PgE:\"XwZcEsV_4\"};if(Object.keys(a).length===0||!(\"PerformanceServerTiming\"in window))return!1;var b=performance.getEntriesByType(\"naviga"
+    },
+    {
+      "bytes": 896,
+      "head": "(function(){(function(){var d=function(){var a=function(){return Math.floor((1+Math.random())*65536).toString(16).substring(1)};return\"\"+a()+a()+\"-\"+a()+\"-\"+a()+\"-\"+a()+\"-\"+a()+a()+a()},c=function(a){"
+    }
+  ]
+}

@@ -1,0 +1,455 @@
+{
+  "keyframes": [
+    {
+      "name": "fade-in",
+      "steps": 2
+    },
+    {
+      "name": "fade-in-out",
+      "steps": 2
+    },
+    {
+      "name": "fade-out-in",
+      "steps": 2
+    },
+    {
+      "name": "pulse",
+      "steps": 1
+    },
+    {
+      "name": "spin",
+      "steps": 1
+    },
+    {
+      "name": "actionable-blink",
+      "steps": 2
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "steps": 2
+    },
+    {
+      "name": "machine-reveal",
+      "steps": 2
+    },
+    {
+      "name": "marquee-translate",
+      "steps": 2
+    },
+    {
+      "name": "subtle-pulse",
+      "steps": 1
+    },
+    {
+      "name": "accordion-up",
+      "steps": 2
+    },
+    {
+      "name": "accordion-down",
+      "steps": 2
+    }
+  ],
+  "keyframeCount": 12,
+  "animations": [
+    {
+      "name": "pulse",
+      "state": "running",
+      "dur": 2000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "span.size-1.5"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    },
+    {
+      "name": "diagonalPatternAnimation",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.with-diagonal-lines"
+    }
+  ],
+  "animationCount": 38,
+  "runningAnimations": 38,
+  "infiniteAnimations": 38,
+  "transitions": [
+    [
+      "0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+      51
+    ],
+    [
+      "0.06s linear",
+      38
+    ],
+    [
+      "0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+      5
+    ],
+    [
+      "0.1s cubic-bezier(0.4, 0, 0.2, 1)",
+      4
+    ],
+    [
+      "0s, 0s ease, ease",
+      1
+    ],
+    [
+      "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+      1
+    ]
+  ],
+  "canvases": [
+    {
+      "w": 1440,
+      "h": 900,
+      "cssW": 1440,
+      "cssH": 900
+    },
+    {
+      "w": 1440,
+      "h": 900,
+      "cssW": 1440,
+      "cssH": 900
+    }
+  ],
+  "canvasCount": 2,
+  "rafCallbacks": 3,
+  "rafCalls": 374,
+  "scrollListeners": {
+    "mousemove": 6,
+    "pointermove": 46,
+    "scroll": 7,
+    "touchmove": 4,
+    "wheel": 7
+  },
+  "intersectionObservers": 1,
+  "canvasDraws": 19128,
+  "scrollMode": "native",
+  "docHeightPx": 6714,
+  "videos": []
+}

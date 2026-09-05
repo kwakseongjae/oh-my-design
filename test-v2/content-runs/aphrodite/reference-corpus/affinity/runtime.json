@@ -1,0 +1,857 @@
+{
+  "keyframes": [
+    {
+      "name": "_2Kspyw",
+      "steps": 2
+    },
+    {
+      "name": "jbUoZA",
+      "steps": 2
+    },
+    {
+      "name": "H6WRRg",
+      "steps": 2
+    },
+    {
+      "name": "q1imuQ",
+      "steps": 2
+    },
+    {
+      "name": "ACCvZQ",
+      "steps": 2
+    },
+    {
+      "name": "_2pSAlA",
+      "steps": 2
+    },
+    {
+      "name": "x1g0pm36-B",
+      "steps": 3
+    },
+    {
+      "name": "x1kd9uik-B",
+      "steps": 3
+    },
+    {
+      "name": "x1x35vq8-B",
+      "steps": 3
+    },
+    {
+      "name": "x17rx7e9-B",
+      "steps": 4
+    },
+    {
+      "name": "x8ht0xs-B",
+      "steps": 4
+    },
+    {
+      "name": "x1wc8ddo-B",
+      "steps": 2
+    },
+    {
+      "name": "xrimgva-B",
+      "steps": 5
+    },
+    {
+      "name": "onetrust-fade-in",
+      "steps": 2
+    },
+    {
+      "name": "slide-down-custom",
+      "steps": 2
+    },
+    {
+      "name": "slide-down-custom",
+      "steps": 2
+    },
+    {
+      "name": "otFloatingBtnIntro",
+      "steps": 2
+    },
+    {
+      "name": "otFloatingBtnImageIntro",
+      "steps": 2
+    }
+  ],
+  "keyframeCount": 18,
+  "animations": [
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "H6WRRg",
+      "state": "running",
+      "dur": 8000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.kdL94w"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "x8ht0xs-B",
+      "state": "running",
+      "dur": 1400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.x1kgbacm"
+    },
+    {
+      "name": "otFloatingBtnIntro",
+      "state": "finished",
+      "dur": 800,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.ot-floating-button"
+    }
+  ],
+  "animationCount": 73,
+  "runningAnimations": 72,
+  "infiniteAnimations": 72,
+  "transitions": [
+    [
+      "0.15s ease-in-out",
+      254
+    ],
+    [
+      "0.1s, 0.1s, 0.1s linear, linear, linear",
+      80
+    ],
+    [
+      "0.1s, 0.1s, 0.1s, 0.07s linear, linear, linear, ease",
+      14
+    ],
+    [
+      "0.25s ease",
+      8
+    ],
+    [
+      "0.3s, 0.3s ease-in-out, ease-in-out",
+      8
+    ],
+    [
+      "0.3s ease-in-out",
+      3
+    ],
+    [
+      "0.2s linear",
+      3
+    ],
+    [
+      "0.5s ease",
+      3
+    ],
+    [
+      "0.2s ease-in-out",
+      3
+    ],
+    [
+      "0s, 0.4s ease, linear",
+      3
+    ],
+    [
+      "0.25s ease-out",
+      3
+    ],
+    [
+      "0.4s, 0.2s ease, ease",
+      2
+    ]
+  ],
+  "canvases": [
+    {
+      "w": 1440,
+      "h": 820,
+      "cssW": 1440,
+      "cssH": 820
+    }
+  ],
+  "canvasCount": 1,
+  "rafCallbacks": 495,
+  "rafCalls": 1170,
+  "scrollListeners": {
+    "wheel": 9,
+    "scroll": 14,
+    "mousemove": 6,
+    "pointermove": 4,
+    "touchmove": 5
+  },
+  "intersectionObservers": 43,
+  "canvasDraws": 21,
+  "scrollMode": "native",
+  "docHeightPx": 13206,
+  "videos": [
+    {
+      "src": "https://content-management-files.canva.com/8364ede3-1a1b-466f-9a67-f331a05d98f7/AFFI25003_Affinity_LOLP_Vector_Desktop_H264.mp4",
+      "loop": true,
+      "muted": true,
+      "autoplay": true,
+      "paused": false,
+      "readyState": 4,
+      "dur": 7.3,
+      "w": 1920,
+      "h": 1080
+    },
+    {
+      "src": "",
+      "loop": true,
+      "muted": true,
+      "autoplay": true,
+      "paused": true,
+      "readyState": 0,
+      "dur": null,
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "",
+      "loop": true,
+      "muted": true,
+      "autoplay": true,
+      "paused": true,
+      "readyState": 0,
+      "dur": null,
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "",
+      "loop": true,
+      "muted": true,
+      "autoplay": true,
+      "paused": true,
+      "readyState": 0,
+      "dur": null,
+      "w": 0,
+      "h": 0
+    }
+  ]
+}

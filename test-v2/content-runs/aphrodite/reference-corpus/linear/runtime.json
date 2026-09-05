@@ -1,0 +1,1828 @@
+{
+  "keyframes": [
+    {
+      "name": "grid-dot-0-0-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-0-1-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-0-2-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-0-3-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-0-4-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-1-0-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-1-1-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-1-2-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-1-3-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-1-4-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-2-0-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-2-1-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-2-2-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-2-3-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-2-4-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-3-0-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-3-1-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-3-2-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-3-3-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-3-4-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-4-0-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-4-1-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-4-2-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-4-3-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-4-4-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-0-0-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-0-1-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-0-2-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-0-3-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-0-4-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-1-0-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-1-1-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-1-2-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-1-3-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-1-4-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-2-0-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-2-1-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-2-2-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-2-3-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-2-4-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-3-0-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-3-1-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-3-2-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-3-3-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-3-4-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-4-0-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-4-1-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-4-2-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-4-3-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-4-4-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-0-0-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-0-1-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-0-2-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-0-3-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-0-4-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-1-0-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-1-1-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-1-2-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-1-3-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-1-4-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-2-0-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-2-1-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-2-2-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-2-3-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-2-4-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-3-0-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-3-1-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-3-2-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-3-3-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-3-4-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-4-0-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-4-1-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-4-2-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-4-3-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-4-4-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-0-0-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-0-1-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-0-2-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-0-3-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-0-4-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-1-0-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-1-1-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-1-2-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-1-3-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-1-4-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-2-0-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-2-1-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-2-2-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-2-3-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-2-4-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-3-0-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-3-1-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-3-2-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-3-3-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-3-4-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-4-0-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-4-1-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-4-2-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-4-3-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-4-4-upDown",
+      "steps": 28
+    },
+    {
+      "name": "grid-dot-0-0-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-0-1-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-0-2-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-0-3-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-0-4-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-1-0-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-1-1-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-1-2-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-1-3-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-1-4-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-2-0-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-2-1-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-2-2-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-2-3-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-2-4-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-3-0-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-3-1-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-3-2-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-3-3-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-3-4-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-4-0-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-4-1-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-4-2-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-4-3-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-4-4-pong",
+      "steps": 16
+    },
+    {
+      "name": "grid-dot-0-0-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-0-1-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-0-2-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-0-3-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-0-4-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-1-0-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-1-1-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-1-2-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-1-3-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-1-4-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-2-0-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-2-1-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-2-2-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-2-3-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-2-4-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-3-0-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-3-1-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-3-2-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-3-3-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-3-4-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-4-0-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-4-1-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-4-2-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-4-3-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-4-4-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-0-0-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-0-1-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-0-2-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-0-3-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-0-4-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-1-0-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-1-1-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-1-2-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-1-3-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-1-4-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-2-0-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-2-1-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-2-2-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-2-3-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-2-4-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-3-0-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-3-1-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-3-2-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-3-3-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-3-4-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-4-0-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-4-1-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-4-2-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-4-3-agent",
+      "steps": 32
+    },
+    {
+      "name": "grid-dot-4-4-agent",
+      "steps": 32
+    },
+    {
+      "name": "swipe-out-left",
+      "steps": 2
+    },
+    {
+      "name": "swipe-out-right",
+      "steps": 2
+    },
+    {
+      "name": "swipe-out-up",
+      "steps": 2
+    },
+    {
+      "name": "swipe-out-down",
+      "steps": 2
+    },
+    {
+      "name": "sonner-fade-in",
+      "steps": 2
+    },
+    {
+      "name": "sonner-fade-out",
+      "steps": 2
+    },
+    {
+      "name": "sonner-spin",
+      "steps": 2
+    },
+    {
+      "name": "fadeIn",
+      "steps": 2
+    },
+    {
+      "name": "fadeOut",
+      "steps": 1
+    },
+    {
+      "name": "slideFromBottom",
+      "steps": 2
+    },
+    {
+      "name": "slideToBottom",
+      "steps": 1
+    },
+    {
+      "name": "slideFromTop",
+      "steps": 2
+    },
+    {
+      "name": "slideToTop",
+      "steps": 1
+    },
+    {
+      "name": "slideFromLeft",
+      "steps": 2
+    },
+    {
+      "name": "slideToLeft",
+      "steps": 1
+    },
+    {
+      "name": "slideFromRight",
+      "steps": 2
+    },
+    {
+      "name": "slideToRight",
+      "steps": 1
+    },
+    {
+      "name": "lAb7VG_highlight",
+      "steps": 1
+    },
+    {
+      "name": "PSAPAG_dialogOpen",
+      "steps": 2
+    },
+    {
+      "name": "PSAPAG_dialogClose",
+      "steps": 2
+    },
+    {
+      "name": "PSAPAG_fadeIn",
+      "steps": 2
+    },
+    {
+      "name": "PSAPAG_fadeOut",
+      "steps": 2
+    },
+    {
+      "name": "UVNdXW_open",
+      "steps": 2
+    },
+    {
+      "name": "UVNdXW_close",
+      "steps": 2
+    }
+  ],
+  "keyframeCount": 199,
+  "animations": [
+    {
+      "name": "sx-1vt4tmj-B",
+      "state": "running",
+      "dur": 2400,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "span.sx-ln7xf2"
+    },
+    {
+      "name": "grid-dot-0-0-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-0-1-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-0-2-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-0-3-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-0-4-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-1-0-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-1-1-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-1-2-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-1-3-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-1-4-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-2-0-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-2-1-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-2-2-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-2-3-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-2-4-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-3-0-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-3-1-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-3-2-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-3-3-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-3-4-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-4-0-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-4-1-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-4-2-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-4-3-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-4-4-upDown",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-0-0-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-0-1-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-0-2-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-0-3-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-0-4-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-1-0-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-1-1-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-1-2-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-1-3-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-1-4-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-2-0-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-2-1-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-2-2-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-2-3-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-2-4-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-3-0-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-3-1-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-3-2-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-3-3-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-3-4-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-4-0-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-4-1-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-4-2-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-4-3-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-4-4-pong",
+      "state": "running",
+      "dur": 1600,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-0-0-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-0-1-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-0-2-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-0-3-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-0-4-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-1-0-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-1-1-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-1-2-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-1-3-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-1-4-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-2-0-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-2-1-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-2-2-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-2-3-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-2-4-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-3-0-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-3-1-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-3-2-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-3-3-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-3-4-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-4-0-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-4-1-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-4-2-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-4-3-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-4-4-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "qM9FAa_cursorBlink",
+      "state": "running",
+      "dur": 1250,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.qM9FAa_cursor"
+    },
+    {
+      "name": "grid-dot-0-0-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-0-1-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-0-2-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-0-3-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-0-4-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-1-0-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-1-1-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-1-2-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-1-3-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-1-4-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-2-0-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-2-1-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-2-2-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-2-3-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-2-4-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-3-0-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-3-1-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-3-2-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-3-3-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-3-4-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-4-0-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-4-1-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-4-2-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-4-3-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "grid-dot-4-4-agent",
+      "state": "running",
+      "dur": 3200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "circle"
+    },
+    {
+      "name": "-VOcTG_agentBorderSweep",
+      "state": "running",
+      "dur": 2000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": -80,
+      "target": "span.-VOcTG_badge"
+    },
+    {
+      "name": "-VOcTG_agentLabelSweep",
+      "state": "running",
+      "dur": 2000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "span.sx-ln7xf2"
+    },
+    {
+      "name": "-VOcTG_agentBorderSweep",
+      "state": "running",
+      "dur": 2000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": -80,
+      "target": "span.-VOcTG_badge"
+    },
+    {
+      "name": "-VOcTG_agentLabelSweep",
+      "state": "running",
+      "dur": 2000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "span.sx-ln7xf2"
+    },
+    {
+      "name": "-VOcTG_agentBorderSweep",
+      "state": "running",
+      "dur": 2000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": -80,
+      "target": "span.-VOcTG_badge"
+    },
+    {
+      "name": "-VOcTG_agentLabelSweep",
+      "state": "running",
+      "dur": 2000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "span.sx-ln7xf2"
+    }
+  ],
+  "animationCount": 108,
+  "runningAnimations": 108,
+  "infiniteAnimations": 108,
+  "transitions": [
+    [
+      "0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+      225
+    ],
+    [
+      "0.16s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+      43
+    ],
+    [
+      "0.1s ease",
+      42
+    ],
+    [
+      "0.16s, 0.16s cubic-bezier(0.25, 0.46, 0.45, 0.94), cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+      30
+    ],
+    [
+      "0.7s cubic-bezier(0.32, 0.72, 0, 1)",
+      30
+    ],
+    [
+      "0.4s ease-out",
+      25
+    ],
+    [
+      "0.1s, 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94), cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+      8
+    ],
+    [
+      "0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+      1
+    ]
+  ],
+  "canvases": [],
+  "canvasCount": 0,
+  "rafCallbacks": 1,
+  "rafCalls": 394,
+  "scrollListeners": {
+    "mousemove": 4,
+    "pointermove": 4,
+    "scroll": 12,
+    "touchmove": 4,
+    "wheel": 4
+  },
+  "intersectionObservers": 3,
+  "canvasDraws": 0,
+  "scrollMode": "native",
+  "docHeightPx": 9960,
+  "videos": []
+}

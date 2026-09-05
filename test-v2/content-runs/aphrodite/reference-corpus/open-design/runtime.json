@@ -1,0 +1,713 @@
+{
+  "keyframes": [
+    {
+      "name": "locale-menu-in",
+      "steps": 2
+    },
+    {
+      "name": "pulse",
+      "steps": 2
+    },
+    {
+      "name": "nav-social-badge-pulse",
+      "steps": 2
+    },
+    {
+      "name": "blurTextIn",
+      "steps": 3
+    },
+    {
+      "name": "downloadAttentionPulse",
+      "steps": 2
+    },
+    {
+      "name": "marquee-x",
+      "steps": 2
+    },
+    {
+      "name": "contributor-orbit-spin",
+      "steps": 1
+    },
+    {
+      "name": "contributor-orbit-spin-rev",
+      "steps": 1
+    },
+    {
+      "name": "hm-dl-sheen",
+      "steps": 2
+    },
+    {
+      "name": "hm-dl-breathe",
+      "steps": 1
+    },
+    {
+      "name": "download-prompt-enter",
+      "steps": 2
+    }
+  ],
+  "keyframeCount": 11,
+  "animations": [
+    {
+      "name": "nav-social-badge-pulse",
+      "state": "running",
+      "dur": 2200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "span.nav-social-badge"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 35,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 70,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 105.00000000000001,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 140,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 175.00000000000003,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 210.00000000000003,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 70,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 105.00000000000001,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 140,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 175.00000000000003,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 210.00000000000003,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 245.00000000000003,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 280,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 315.00000000000006,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 350.00000000000006,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 385,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 420.00000000000006,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 455.00000000000006,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 490.00000000000006,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 525,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 560,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 595.0000000000001,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 630.0000000000001,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 665,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 700.0000000000001,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 735.0000000000001,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 770,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 805,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 840.0000000000001,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 875.0000000000001,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 910.0000000000001,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 945.0000000000001,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 980.0000000000001,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1015.0000000000001,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1050,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1085.0000000000002,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1120,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1155,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1190.0000000000002,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1225,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1260.0000000000002,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1295.0000000000002,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1330,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1365.0000000000002,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1400.0000000000002,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1435,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1470.0000000000002,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1505.0000000000002,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1540,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1575.0000000000002,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1610,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1645.0000000000002,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1680.0000000000002,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1715,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1750.0000000000002,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1785.0000000000002,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1820.0000000000002,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1855.0000000000002,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1890.0000000000002,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1925.0000000000002,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "blurTextIn",
+      "state": "finished",
+      "dur": 380,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 1960.0000000000002,
+      "target": "span.blur-word"
+    },
+    {
+      "name": "hm-dl-breathe",
+      "state": "running",
+      "dur": 2800,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "a.hm-dl"
+    },
+    {
+      "name": "hm-dl-sheen",
+      "state": "running",
+      "dur": 4200,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "u.hm-sheen"
+    }
+  ],
+  "animationCount": 64,
+  "runningAnimations": 3,
+  "infiniteAnimations": 3,
+  "transitions": [
+    [
+      "0.12s ease",
+      55
+    ],
+    [
+      "0.16s ease",
+      44
+    ],
+    [
+      "0.09s linear",
+      41
+    ],
+    [
+      "0.9s, 0.9s, 0.9s cubic-bezier(0.22, 1, 0.36, 1), cubic-bezier(0.22, 1, 0.36, 1), cubic-bezier(0.22, 1, 0.36, 1)",
+      35
+    ],
+    [
+      "0.14s, 0.14s ease, ease",
+      22
+    ],
+    [
+      "0.14s ease",
+      22
+    ],
+    [
+      "0.18s, 0.18s, 0.18s ease, ease, ease",
+      21
+    ],
+    [
+      "0.22s, 0.22s, 0.22s cubic-bezier(0.23, 1, 0.32, 1), cubic-bezier(0.23, 1, 0.32, 1), cubic-bezier(0.23, 1, 0.32, 1)",
+      15
+    ],
+    [
+      "0.18s, 0.18s ease, ease",
+      12
+    ],
+    [
+      "0.16s, 0.16s ease, ease",
+      7
+    ],
+    [
+      "0.14s, 0.16s, 0.16s, 0.16s ease-out, ease, ease, ease",
+      6
+    ],
+    [
+      "0.26s, 0.26s ease, ease",
+      6
+    ]
+  ],
+  "canvases": [
+    {
+      "w": 720,
+      "h": 720,
+      "cssW": 262,
+      "cssH": 262
+    }
+  ],
+  "canvasCount": 1,
+  "rafCallbacks": 0,
+  "rafCalls": 0,
+  "scrollListeners": {
+    "scroll": 6,
+    "pointermove": 1,
+    "mousemove": 1
+  },
+  "intersectionObservers": 9,
+  "canvasDraws": 0,
+  "scrollMode": "native",
+  "docHeightPx": 12903,
+  "videos": [
+    {
+      "src": "",
+      "loop": true,
+      "muted": true,
+      "autoplay": false,
+      "paused": true,
+      "readyState": 0,
+      "dur": null,
+      "w": 0,
+      "h": 0
+    }
+  ]
+}

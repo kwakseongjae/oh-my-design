@@ -1,0 +1,96 @@
+{
+  "globals": [],
+  "versions": {},
+  "external": [
+    {
+      "url": "https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://locomotive.ca/assets/scripts/vendors.js?v=1786648323372",
+      "bytes": 1936,
+      "status": 200,
+      "library": "locomotive-scroll"
+    },
+    {
+      "url": "https://www.google.com/recaptcha/api.js?render=explicit",
+      "bytes": 0,
+      "status": 200,
+      "library": "ogl"
+    },
+    {
+      "url": "https://matomo.locomotive.ca/matomo.js",
+      "bytes": 21185,
+      "status": 200,
+      "library": "locomotive-scroll"
+    },
+    {
+      "url": "https://locomotive.ca/assets/scripts/app.js?v=1786648323372",
+      "bytes": 709865,
+      "status": 200,
+      "library": "locomotive-scroll"
+    },
+    {
+      "url": "https://locomotive.ca/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+      "bytes": 0,
+      "status": 302,
+      "library": "locomotive-scroll"
+    },
+    {
+      "url": "https://locomotive.ca/cdn-cgi/challenge-platform/h/g/scripts/jsd/330e41bb475c/main.js?",
+      "bytes": 0,
+      "status": 200,
+      "library": "locomotive-scroll"
+    },
+    {
+      "url": "https://www.gstatic.com/recaptcha/releases/8x-4t2pegToiW8KmThtO4AQt/recaptcha__en.js",
+      "bytes": 352523,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "blob:https://locomotive.ca/a2634796-5d6f-41f5-ae66-1f0ebbef5e42",
+      "bytes": 60536,
+      "status": 200,
+      "library": "locomotive-scroll"
+    },
+    {
+      "url": "blob:https://locomotive.ca/a2634796-5d6f-41f5-ae66-1f0ebbef5e42",
+      "bytes": 60536,
+      "status": 200,
+      "library": "locomotive-scroll"
+    },
+    {
+      "url": "blob:https://locomotive.ca/a2634796-5d6f-41f5-ae66-1f0ebbef5e42",
+      "bytes": 60536,
+      "status": 200,
+      "library": "locomotive-scroll"
+    },
+    {
+      "url": "blob:https://locomotive.ca/a2634796-5d6f-41f5-ae66-1f0ebbef5e42",
+      "bytes": 60536,
+      "status": 200,
+      "library": "locomotive-scroll"
+    }
+  ],
+  "inline": [
+    {
+      "bytes": 589,
+      "head": " window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-WYYJ9Z"
+    },
+    {
+      "bytes": 607,
+      "head": " var _paq = window._paq = window._paq || []; /* tracker methods like \"setCustomDimension\" should be called before \"trackPageView\" */ _paq.push(['trackPageView']); "
+    },
+    {
+      "bytes": 350,
+      "head": " window.preloaderEnterPromise = new Promise(resolve => { setTimeout(resolve, 1200); }); console.log('preloaderEnterPromise created in preloader.twig'); window.preloaderPromis"
+    },
+    {
+      "bytes": 921,
+      "head": "(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a362413c9e8547f7',t:'MTc4ODU4"
+    }
+  ]
+}

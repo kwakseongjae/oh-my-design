@@ -1,0 +1,29 @@
+{
+  "id": "apple-iphone",
+  "url": "https://www.apple.com/kr/iphone/",
+  "why": "핀 스크롤 스토리텔링의 표준",
+  "capturedAt": "2026-09-05T03:48:08.214Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "errors": [],
+  "httpStatus": 200,
+  "cssSheets": 7,
+  "cssBytes": 1231760,
+  "cssUnreadable": [],
+  "scrollMode": "native",
+  "docHeightPx": 8740,
+  "assetsByType": {
+    "image": {
+      "n": 35,
+      "bytes": 740138
+    },
+    "font": {
+      "n": 6,
+      "bytes": 1685864
+    }
+  },
+  "libraries": [],
+  "scriptBytes": 329672
+}

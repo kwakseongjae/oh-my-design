@@ -1,0 +1,71 @@
+{
+  "keyframes": [
+    {
+      "name": "c2paProgress",
+      "steps": 2
+    },
+    {
+      "name": "pulse",
+      "steps": 1
+    },
+    {
+      "name": "spin",
+      "steps": 1
+    },
+    {
+      "name": "fadeIn",
+      "steps": 2
+    }
+  ],
+  "keyframeCount": 4,
+  "animations": [],
+  "animationCount": 0,
+  "runningAnimations": 0,
+  "infiniteAnimations": 0,
+  "transitions": [
+    [
+      "0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+      26
+    ],
+    [
+      "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+      18
+    ],
+    [
+      "0.4s ease",
+      9
+    ],
+    [
+      "0.2s linear",
+      9
+    ],
+    [
+      "0.5s ease",
+      6
+    ],
+    [
+      "0.3s ease",
+      6
+    ],
+    [
+      "0.25s ease",
+      5
+    ]
+  ],
+  "canvases": [],
+  "canvasCount": 0,
+  "rafCallbacks": 8,
+  "rafCalls": 2313,
+  "scrollListeners": {
+    "mousemove": 5,
+    "pointermove": 4,
+    "scroll": 12,
+    "touchmove": 4,
+    "wheel": 8
+  },
+  "intersectionObservers": 2,
+  "canvasDraws": 0,
+  "scrollMode": "native",
+  "docHeightPx": 5172,
+  "videos": []
+}

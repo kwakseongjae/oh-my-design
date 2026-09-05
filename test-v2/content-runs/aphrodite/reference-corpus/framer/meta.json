@@ -1,0 +1,38 @@
+{
+  "id": "framer",
+  "url": "https://www.framer.com/",
+  "why": "모션 툴 자신의 랜딩",
+  "capturedAt": "2026-09-05T03:47:12.105Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "errors": [],
+  "httpStatus": 200,
+  "cssSheets": 11,
+  "cssBytes": 541148,
+  "cssUnreadable": [
+    {
+      "href": "https://accounts.google.com/gsi/style",
+      "why": "CORS"
+    }
+  ],
+  "scrollMode": "native",
+  "docHeightPx": 10878,
+  "assetsByType": {
+    "image": {
+      "n": 58,
+      "bytes": 45
+    },
+    "font": {
+      "n": 11,
+      "bytes": 530364
+    },
+    "media": {
+      "n": 3,
+      "bytes": 7468192
+    }
+  },
+  "libraries": [],
+  "scriptBytes": 386495
+}

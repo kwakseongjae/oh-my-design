@@ -1,0 +1,444 @@
+{
+  "keyframes": [
+    {
+      "name": "Toastify__trackProgress",
+      "steps": 2
+    },
+    {
+      "name": "Toastify__bounceInRight",
+      "steps": 6
+    },
+    {
+      "name": "Toastify__bounceOutRight",
+      "steps": 2
+    },
+    {
+      "name": "Toastify__bounceInLeft",
+      "steps": 6
+    },
+    {
+      "name": "Toastify__bounceOutLeft",
+      "steps": 2
+    },
+    {
+      "name": "Toastify__bounceInUp",
+      "steps": 6
+    },
+    {
+      "name": "Toastify__bounceOutUp",
+      "steps": 3
+    },
+    {
+      "name": "Toastify__bounceInDown",
+      "steps": 6
+    },
+    {
+      "name": "Toastify__bounceOutDown",
+      "steps": 3
+    },
+    {
+      "name": "Toastify__zoomIn",
+      "steps": 2
+    },
+    {
+      "name": "Toastify__zoomOut",
+      "steps": 3
+    },
+    {
+      "name": "Toastify__flipIn",
+      "steps": 5
+    },
+    {
+      "name": "Toastify__flipOut",
+      "steps": 3
+    },
+    {
+      "name": "Toastify__slideInRight",
+      "steps": 2
+    },
+    {
+      "name": "Toastify__slideInLeft",
+      "steps": 2
+    },
+    {
+      "name": "Toastify__slideInUp",
+      "steps": 2
+    },
+    {
+      "name": "Toastify__slideInDown",
+      "steps": 2
+    },
+    {
+      "name": "Toastify__slideOutRight",
+      "steps": 2
+    },
+    {
+      "name": "Toastify__slideOutLeft",
+      "steps": 2
+    },
+    {
+      "name": "Toastify__slideOutDown",
+      "steps": 2
+    },
+    {
+      "name": "Toastify__slideOutUp",
+      "steps": 2
+    },
+    {
+      "name": "Toastify__spin",
+      "steps": 2
+    },
+    {
+      "name": "drift1",
+      "steps": 5
+    },
+    {
+      "name": "drift2",
+      "steps": 5
+    },
+    {
+      "name": "drift3",
+      "steps": 5
+    },
+    {
+      "name": "drift4",
+      "steps": 5
+    },
+    {
+      "name": "drift5",
+      "steps": 5
+    },
+    {
+      "name": "swipe-out-left",
+      "steps": 2
+    },
+    {
+      "name": "swipe-out-right",
+      "steps": 2
+    },
+    {
+      "name": "swipe-out-up",
+      "steps": 2
+    },
+    {
+      "name": "swipe-out-down",
+      "steps": 2
+    },
+    {
+      "name": "sonner-fade-in",
+      "steps": 2
+    },
+    {
+      "name": "sonner-fade-out",
+      "steps": 2
+    },
+    {
+      "name": "sonner-spin",
+      "steps": 2
+    },
+    {
+      "name": "festival-sun-glow",
+      "steps": 2
+    },
+    {
+      "name": "festival-flashlight-beam",
+      "steps": 2
+    },
+    {
+      "name": "festival-sun-haze",
+      "steps": 2
+    }
+  ],
+  "keyframeCount": 37,
+  "animations": [
+    {
+      "name": "header-promotion-reveal",
+      "state": "finished",
+      "dur": 300,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.z-[50]"
+    },
+    {
+      "name": "slide-in-up",
+      "state": "finished",
+      "dur": 200,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 0,
+      "target": "button.relative"
+    },
+    {
+      "name": "supercomputer-dot",
+      "state": "running",
+      "dur": 1450,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "span.absolute"
+    },
+    {
+      "name": "supercomputer-dot",
+      "state": "running",
+      "dur": 1450,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 160,
+      "target": "span.absolute"
+    },
+    {
+      "name": "supercomputer-dot",
+      "state": "running",
+      "dur": 1450,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 320,
+      "target": "span.absolute"
+    },
+    {
+      "name": "supercomputer-dot",
+      "state": "running",
+      "dur": 1450,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 480,
+      "target": "span.absolute"
+    },
+    {
+      "name": "pulse",
+      "state": "running",
+      "dur": 2000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "li.cursor-wait"
+    },
+    {
+      "name": "pulse",
+      "state": "running",
+      "dur": 2000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "li.cursor-wait"
+    },
+    {
+      "name": "pulse",
+      "state": "running",
+      "dur": 2000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "li.cursor-wait"
+    },
+    {
+      "name": "pulse",
+      "state": "running",
+      "dur": 2000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "li.cursor-wait"
+    },
+    {
+      "name": "pulse",
+      "state": "running",
+      "dur": 2000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "li.cursor-wait"
+    },
+    {
+      "name": "festival-flashlight-beam",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": -2000,
+      "target": "div.absolute"
+    },
+    {
+      "name": "festival-flashlight-beam",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": -2000,
+      "target": "div.absolute"
+    },
+    {
+      "name": "festival-sun-haze",
+      "state": "running",
+      "dur": 14000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.absolute"
+    },
+    {
+      "name": "festival-sun-glow",
+      "state": "running",
+      "dur": 7000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.absolute"
+    },
+    {
+      "name": "festival-sun-glow",
+      "state": "running",
+      "dur": 7000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.absolute"
+    },
+    {
+      "name": "festival-flashlight-beam",
+      "state": "running",
+      "dur": 6000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": -2000,
+      "target": "div.absolute"
+    }
+  ],
+  "animationCount": 17,
+  "runningAnimations": 15,
+  "infiniteAnimations": 15,
+  "transitions": [
+    [
+      "0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+      589
+    ],
+    [
+      "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+      57
+    ],
+    [
+      "0.3s cubic-bezier(0, 0, 0.2, 1)",
+      13
+    ],
+    [
+      "0.2s cubic-bezier(0, 0, 0.2, 1)",
+      13
+    ],
+    [
+      "0.15s cubic-bezier(0, 0, 0.2, 1)",
+      12
+    ],
+    [
+      "0.15s ease",
+      8
+    ],
+    [
+      "0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+      8
+    ],
+    [
+      "0.3s ease-in-out",
+      5
+    ],
+    [
+      "0.15s, 0.3s, 0.3s, 0.3s, 0.3s, 0.3s, 0.3s ease, ease-in-out, ease-in-out, ease-in-out, ease-in-out, ease-in-out, ease-in-out",
+      5
+    ],
+    [
+      "0.15s, 0.15s, 0.12s ease, ease, ease-out",
+      2
+    ],
+    [
+      "0.3s, 0.3s ease-in-out, ease-in-out",
+      2
+    ],
+    [
+      "0.5s ease-in-out",
+      2
+    ]
+  ],
+  "canvases": [],
+  "canvasCount": 0,
+  "rafCallbacks": 23,
+  "rafCalls": 1933,
+  "scrollListeners": {
+    "scroll": 13,
+    "mousemove": 10,
+    "touchmove": 7,
+    "pointermove": 6,
+    "wheel": 6
+  },
+  "intersectionObservers": 6,
+  "canvasDraws": 0,
+  "scrollMode": "transform-container",
+  "docHeightPx": 12225,
+  "videos": [
+    {
+      "src": "https://cdn.higgsfield.ai/card/0dcb4e6a-eaf0-466d-8dea-d0c3d15e82a0.mp4",
+      "loop": true,
+      "muted": true,
+      "autoplay": false,
+      "paused": true,
+      "readyState": 4,
+      "dur": 17.133333,
+      "w": 1080,
+      "h": 608
+    },
+    {
+      "src": "https://cdn.higgsfield.ai/card/16eebc9a-8310-4f68-8a02-1e2e6f109169.mp4",
+      "loop": true,
+      "muted": true,
+      "autoplay": false,
+      "paused": true,
+      "readyState": 4,
+      "dur": 19,
+      "w": 1080,
+      "h": 608
+    },
+    {
+      "src": "https://cdn.higgsfield.ai/card/fb4efcb0-2c46-4d6f-926f-9c5b6d89db27.mp4",
+      "loop": true,
+      "muted": true,
+      "autoplay": false,
+      "paused": true,
+      "readyState": 4,
+      "dur": 24.4,
+      "w": 601,
+      "h": 338
+    },
+    {
+      "src": "https://cdn.higgsfield.ai/card/1bf8a1f1-6839-40df-bc19-22fa260f3eef.mp4",
+      "loop": true,
+      "muted": true,
+      "autoplay": false,
+      "paused": true,
+      "readyState": 0,
+      "dur": null,
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://cdn.higgsfield.ai/card/9af60e45-591f-49cc-864c-2a6475c05a8d.mp4",
+      "loop": true,
+      "muted": true,
+      "autoplay": false,
+      "paused": true,
+      "readyState": 0,
+      "dur": null,
+      "w": 0,
+      "h": 0
+    },
+    {
+      "src": "https://static.higgsfield.ai/promotions/seedance_2_5_explore_image.mp4",
+      "loop": true,
+      "muted": true,
+      "autoplay": false,
+      "paused": true,
+      "readyState": 4,
+      "dur": 30.069841,
+      "w": 1470,
+      "h": 630
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "basement",
+  "url": "https://basement.studio/",
+  "why": "에이전시 — 스크롤 연출",
+  "capturedAt": "2026-09-05T03:47:34.673Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "errors": [],
+  "httpStatus": 200,
+  "cssSheets": 2,
+  "cssBytes": 124957,
+  "cssUnreadable": [],
+  "scrollMode": "native",
+  "docHeightPx": 6714,
+  "assetsByType": {
+    "font": {
+      "n": 3,
+      "bytes": 52396
+    },
+    "image": {
+      "n": 84,
+      "bytes": 2043568
+    },
+    "media": {
+      "n": 8,
+      "bytes": 1053374
+    }
+  },
+  "libraries": [],
+  "scriptBytes": 934264
+}

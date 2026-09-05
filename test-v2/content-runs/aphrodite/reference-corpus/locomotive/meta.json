@@ -1,0 +1,33 @@
+{
+  "id": "locomotive",
+  "url": "https://www.locomotive.ca/en",
+  "why": "locomotive-scroll 원작자",
+  "capturedAt": "2026-09-05T03:47:48.897Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "errors": [],
+  "httpStatus": 200,
+  "cssSheets": 2,
+  "cssBytes": 246526,
+  "cssUnreadable": [],
+  "scrollMode": "native",
+  "docHeightPx": 6598,
+  "assetsByType": {
+    "image": {
+      "n": 7,
+      "bytes": 736546
+    },
+    "font": {
+      "n": 2,
+      "bytes": 108948
+    },
+    "media": {
+      "n": 3,
+      "bytes": 16035740
+    }
+  },
+  "libraries": [],
+  "scriptBytes": 1327653
+}

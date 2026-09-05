@@ -1,0 +1,20 @@
+{
+  "id": "igloo",
+  "url": "https://igloo.inc/",
+  "why": "WebGL 스크롤 월드",
+  "capturedAt": "2026-09-05T03:46:14.104Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "errors": [],
+  "httpStatus": 200,
+  "cssSheets": 2,
+  "cssBytes": 1462,
+  "cssUnreadable": [],
+  "scrollMode": "custom-wheel",
+  "docHeightPx": 900,
+  "assetsByType": {},
+  "libraries": [],
+  "scriptBytes": 132977
+}

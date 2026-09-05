@@ -1,0 +1,29 @@
+{
+  "id": "runway",
+  "url": "https://runwayml.com/",
+  "why": "AI 영상 제품 랜딩",
+  "capturedAt": "2026-09-05T03:47:03.811Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "errors": [],
+  "httpStatus": 200,
+  "cssSheets": 14,
+  "cssBytes": 198066,
+  "cssUnreadable": [],
+  "scrollMode": "native",
+  "docHeightPx": 5172,
+  "assetsByType": {
+    "font": {
+      "n": 3,
+      "bytes": 189944
+    },
+    "image": {
+      "n": 74,
+      "bytes": 63582488
+    }
+  },
+  "libraries": [],
+  "scriptBytes": 1077057
+}

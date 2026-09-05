@@ -1,0 +1,178 @@
+{
+  "globals": [],
+  "versions": {},
+  "external": [
+    {
+      "url": "https://static.canva.com/web/8eebcb6ebc79a02b.sentry_browser.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.canva.com/web/2d3f1d08b380e42c.strings.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.canva.com/web/cfc1b60a0bbb7a08.runtime.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.canva.com/web/ed83b60a0bceeeb8.vendor.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.canva.com/web/edd59faf05369f25.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.canva.com/web/48256df9554c0d82.s4le6a.vendor.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.canva.com/web/ce43d81f2cd72cb8.vendor.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.canva.com/web/aae39da85f29e7fa.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.canva.com/web/444be286b1d6323d.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.canva.com/web/bcd035ae05f6fd23.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.canva.com/web/eb5ad6c0b5f07fa0.vendor.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.canva.com/web/7d0ff83e5b2ae555.vendor.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.canva.com/web/762109a387f581f4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.canva.com/web/f20f566f87447e88.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.canva.com/web/4a0ff1045be19762.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.canva.com/web/39a3f6303c746b5b.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.canva.com/web/a74db6a216315fdb.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.canva.com/web/4813cb80ed319186.vendor.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://chunk-composing.canva.com/chunk-batch/77fbcfe84ffabeb2.js+cfc83567614e1038.vendor.js+de98de10353a9422.js+b3b9229d1408ed30.js+8801da4f94932f73.js+1a2ef82d7782eadd.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://cdn-au.onetrust.com/scripttemplates/otSDKStub.js",
+      "bytes": 8777,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://chunk-composing.canva.com/chunk-batch/910ba9e978a7a977.js+c78b919b2664fe0c.js+c98a471a6b390238.vendor.js+df654b2ad663333d.js+4d7e1bf3243654ab.js+34e250c2c5bab539.js+04c4e2c9b2d7f115.js+c97bfaa78cb5a544.js+ffa51a79e843fc35.js+bf75bab0a97cb882.js+8044360e70be67c4.js+e396bc20e5e2c39a.js+c5985a2af6dd9e4a.js+ff88482f0bfbfe83.js+100ae50208a742a0.js+cb08f756cb3ee1dd.js+2ca36839437ea50d.js+54b9a00fd7549ddf.js+09f0d39169fd8bee.js+1c91a4126719d69b.js+4a840acaa224975a.js+597b261fd6a5a4b4.js+33f3e2301bdf77a5.js+6b00c8195ab11c19.js+62e747f701c38cb9.js+51ca9d021019e5c0.js+e5cc5aff50e46dbd.js+c5a85bef239c3e56.vendor.js+b2aeef02e0edc564.vendor.js+3629a53017e9e41d.js+1b72a266667e8e02.js+c1aee6b1b128d4fb.js+31e90154415cf027.js+ad980ceb330913cc.js+10a128b429584a9b.js+fafdd246039caa2c.js+77b4e6526876a76a.js+d68bfe003a878998.js+8f6e59d8b9e6a738.js+37870e1f898cd021.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://chunk-composing.canva.com/chunk-batch/015036e8401d8f48.vendor.js+95db0321dd379a08.vendor.js+16075e5146819afd.vendor.js+36a0adbf50b9890c.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://cdn-au.onetrust.com/scripttemplates/202606.2.0/otBannerSdk.js",
+      "bytes": 139583,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtm.js?id=GTM-N6N8H659&l=dataLayer",
+      "bytes": 130315,
+      "status": 200,
+      "library": "ogl"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-N003JBP353&cx=c&gtm=4e6921",
+      "bytes": 173707,
+      "status": 200,
+      "library": "ogl"
+    }
+  ],
+  "inline": [
+    {
+      "bytes": 1060,
+      "head": "(function pushPageBuildIdentityToNativeShell(identity) { if (typeof window === 'undefined') { return; } if (Object.values(identity).every(value => value == null)) { return; } const j"
+    },
+    {
+      "bytes": 593,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"Organization\",\"name\":\"Affinity\",\"alternateName\":[\"Serif Ltd\",\"Affinity by Canva\"],\"url\":\"https://affinity.studio\",\"logo\":\"https://content-management-files.can"
+    },
+    {
+      "bytes": 273,
+      "head": "window['__sentry_config__'] = {\"dsn\":\"https:\\u002F\\u002Fa3742432569106660d71dda46c9d5dcd@o13855.ingest.us.sentry.io\\u002F4509641600925696\",\"release\":\"20260903-23-8699313\",\"environment\":\"prod\",\"autoSes"
+    },
+    {
+      "bytes": 436,
+      "head": "(function () {var classList = document.documentElement.classList;if (classList.contains('adaptive') && window.matchMedia('(prefers-color-scheme: dark)').matches) {classList.remove.apply(classList, [\"x"
+    },
+    {
+      "bytes": 50034,
+      "head": "(function() {window['__canva_public_path__'] = 'https:\\/\\/static.canva.com\\/web\\/'; window['bootstrap'] = JSON.parse('{\"base\":{\"A?\":\"B\",\"L\":false,\"N\":false,\"E\":\"86993130225ab2e0f7bd4ab20171fed96ac6c7f"
+    }
+  ]
+}

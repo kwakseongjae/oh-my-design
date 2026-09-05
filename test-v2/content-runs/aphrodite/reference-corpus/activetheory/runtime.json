@@ -1,0 +1,24 @@
+{
+  "keyframes": [
+    {
+      "name": "fadeInOpacity",
+      "steps": 2
+    }
+  ],
+  "keyframeCount": 1,
+  "animations": [],
+  "animationCount": 0,
+  "runningAnimations": 0,
+  "infiniteAnimations": 0,
+  "transitions": [],
+  "canvases": [],
+  "canvasCount": 0,
+  "rafCallbacks": 0,
+  "rafCalls": 0,
+  "scrollListeners": {},
+  "intersectionObservers": 0,
+  "canvasDraws": 0,
+  "scrollMode": "native",
+  "docHeightPx": 900,
+  "videos": []
+}

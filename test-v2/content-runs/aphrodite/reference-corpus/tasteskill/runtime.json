@@ -1,0 +1,121 @@
+{
+  "keyframes": [
+    {
+      "name": "ping",
+      "steps": 1
+    },
+    {
+      "name": "hero-fade-up",
+      "steps": 2
+    },
+    {
+      "name": "hero-float",
+      "steps": 2
+    },
+    {
+      "name": "hero-float-soft",
+      "steps": 2
+    },
+    {
+      "name": "hero-float-soft-delayed",
+      "steps": 2
+    },
+    {
+      "name": "hero-mobile-flow",
+      "steps": 2
+    },
+    {
+      "name": "guide-shake",
+      "steps": 3
+    },
+    {
+      "name": "sheen-return",
+      "steps": 4
+    },
+    {
+      "name": "icon-nudge",
+      "steps": 3
+    }
+  ],
+  "keyframeCount": 9,
+  "animations": [
+    {
+      "name": "ping",
+      "state": "running",
+      "dur": 1500,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "span.absolute"
+    }
+  ],
+  "animationCount": 1,
+  "runningAnimations": 1,
+  "infiniteAnimations": 1,
+  "transitions": [
+    [
+      "0.5s cubic-bezier(0.22, 1, 0.36, 1)",
+      46
+    ],
+    [
+      "0.3s cubic-bezier(0, 0, 0.2, 1)",
+      43
+    ],
+    [
+      "0.6s cubic-bezier(0.22, 1, 0.36, 1)",
+      42
+    ],
+    [
+      "0.5s cubic-bezier(0.16, 1, 0.3, 1)",
+      35
+    ],
+    [
+      "0.5s cubic-bezier(0, 0, 0.2, 1)",
+      27
+    ],
+    [
+      "0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+      20
+    ],
+    [
+      "0.2s cubic-bezier(0, 0, 0.2, 1)",
+      16
+    ],
+    [
+      "0.7s cubic-bezier(0, 0, 0.2, 1)",
+      10
+    ],
+    [
+      "0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+      8
+    ],
+    [
+      "0.3s cubic-bezier(0.34, 1.56, 0.64, 1)",
+      6
+    ],
+    [
+      "0.5s cubic-bezier(0.34, 1.56, 0.64, 1)",
+      4
+    ],
+    [
+      "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+      2
+    ]
+  ],
+  "canvases": [],
+  "canvasCount": 0,
+  "rafCallbacks": 2,
+  "rafCalls": 943,
+  "scrollListeners": {
+    "mousemove": 4,
+    "pointermove": 4,
+    "scroll": 2,
+    "touchmove": 4,
+    "wheel": 4
+  },
+  "intersectionObservers": 2,
+  "canvasDraws": 0,
+  "scrollMode": "native",
+  "docHeightPx": 8957,
+  "videos": []
+}

@@ -1,0 +1,562 @@
+{
+  "globals": [],
+  "versions": {},
+  "external": [
+    {
+      "url": "https://analytics.ahrefs.com/analytics.js",
+      "bytes": 2692,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/3q30ff4jlz5fl.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/2kp_9ehcksfmg.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/1xu28_j9acy93.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/1tgeusr_19mx3.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/turbopack-1kmknapdgqls_.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/15kasuxgc7cs4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/1yd-upqhz66o4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/3dlpafk33mqbm.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/3t__x79_lmqqt.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/3cn798e50npsk.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/2q7qc57lz7cz-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/3g00hifpjf2xt.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/3np8o-6kvg2ti.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/05zgcvgyj_umm.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/2dabhrs_5-chv.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/1ygxecj_7ufll.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/17---an0msxk7.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/3s346x8iaidq-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/3riiwids7y49m.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/3ux-jpq9lvq5l.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/10v9n4tx0-ufh.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/3kx7b58sebyg-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/364af_d-nqc5b.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/0253lq6y62ku0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/244jbd386ogvi.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/23x267f0pf9bj.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/3be9na5l3eppi.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/3pft2ih_0_q54.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/0phv6_6w26n5_.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/3wdvpatuohapj.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_vercel/insights/script.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/41djindrqw2hr.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_vercel/speed-insights/script.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/2_6obpi6wp6lc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/202pnms4raxwy.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/2sqrl8nv06x_-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/0mtiwytocnc5-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/1njvi5b4x0-g-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/1mbbz_ge_uink.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/1a2ldxveklshc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/turbopack-worker-3xr8wf3in6jtp.js",
+      "bytes": 861,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/turbopack-worker-3xr8wf3in6jtp.js",
+      "bytes": 861,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/0iv63kshn_hud.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/0rmij_zkbt6jh.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/2kxnpm9e4o3t2.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/19xjyqoy9oech.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "blob:https://basement.studio/012c3919-ce58-4b90-b4b7-efec8c154b3a",
+      "bytes": 63397,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "blob:https://basement.studio/012c3919-ce58-4b90-b4b7-efec8c154b3a",
+      "bytes": 63397,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "blob:https://basement.studio/13a76e27-cd7a-4113-97ee-8de252d75542",
+      "bytes": 60933,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "blob:https://basement.studio/41d212e5-69d9-4623-a6d7-666de489ad8e",
+      "bytes": 60933,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "blob:https://basement.studio/41d212e5-69d9-4623-a6d7-666de489ad8e",
+      "bytes": 60933,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "blob:https://basement.studio/41d212e5-69d9-4623-a6d7-666de489ad8e",
+      "bytes": 60933,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "blob:https://basement.studio/41d212e5-69d9-4623-a6d7-666de489ad8e",
+      "bytes": 60933,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "blob:https://basement.studio/5f223b9d-d115-4f7d-8fe6-a6219b335e43",
+      "bytes": 60933,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "blob:https://basement.studio/5f223b9d-d115-4f7d-8fe6-a6219b335e43",
+      "bytes": 60933,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "blob:https://basement.studio/5f223b9d-d115-4f7d-8fe6-a6219b335e43",
+      "bytes": 60933,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "blob:https://basement.studio/5f223b9d-d115-4f7d-8fe6-a6219b335e43",
+      "bytes": 60933,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/1hdfx7qd3pzhe.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "blob:https://basement.studio/a47f1b63-e06a-4994-8860-87a8e5f4d730",
+      "bytes": 63397,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "blob:https://basement.studio/a47f1b63-e06a-4994-8860-87a8e5f4d730",
+      "bytes": 63397,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "blob:https://basement.studio/a47f1b63-e06a-4994-8860-87a8e5f4d730",
+      "bytes": 63397,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "blob:https://basement.studio/a47f1b63-e06a-4994-8860-87a8e5f4d730",
+      "bytes": 63397,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/3f0s09f4e6g7o.js",
+      "bytes": 486,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/17lescam_5za8.js",
+      "bytes": 585,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/2cdn93-k2gspf.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://basement.studio/_next/static/immutable/chunks/3m6hn3zya8lz5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    }
+  ],
+  "inline": [
+    {
+      "bytes": 4399,
+      "head": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Organization\",\"@id\":\"https://basement.studio/#organization\",\"name\":\"basement.studio\",\"alternateName\":[\"Basement Studio\",\"basement studio\",\"basement"
+    },
+    {
+      "bytes": 57,
+      "head": "requestAnimationFrame(function(){$RT=performance.now()});"
+    },
+    {
+      "bytes": 246,
+      "head": "$RX=function(b,c,d,e,f){var a=document.getElementById(b);a&&(b=a.previousSibling,b.data=\"$!\",a=a.dataset,null!=c&&(a.dgst=c),d&&(a.msg=d),e&&(a.stck=e),f&&(a.cstck=f),b._reactRetry&&b._reactRetry())};"
+    },
+    {
+      "bytes": 43,
+      "head": "(self.__next_f=self.__next_f||[]).push([0])"
+    },
+    {
+      "bytes": 3461,
+      "head": "self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[850421,[\\\"/_next/static/immutable/chunks/15kasuxgc7cs4.js\\\",\\\"/_next/static/immutable/chunks/1tgeusr_19mx3.js\\\",\\\"/_next/static/immutable/chunks/3q30"
+    },
+    {
+      "bytes": 6572,
+      "head": "self.__next_f.push([1,\"0:{\\\"P\\\":null,\\\"c\\\":[\\\"\\\",\\\"\\\"],\\\"q\\\":\\\"\\\",\\\"i\\\":false,\\\"f\\\":[[[\\\"\\\",{\\\"children\\\":[\\\"(site)\\\",{\\\"children\\\":[\\\"(canvas)\\\",{\\\"children\\\":[\\\"(content)\\\",{\\\"children\\\":[\\\"(home)\\\""
+    },
+    {
+      "bytes": 1455,
+      "head": "self.__next_f.push([1,\"1b:I[205162,[\\\"/_next/static/immutable/chunks/15kasuxgc7cs4.js\\\",\\\"/_next/static/immutable/chunks/1tgeusr_19mx3.js\\\",\\\"/_next/static/immutable/chunks/3q30ff4jlz5fl.js\\\",\\\"/_next"
+    },
+    {
+      "bytes": 42,
+      "head": "self.__next_f.push([1,\"18:300\\n5:null\\n\"])"
+    },
+    {
+      "bytes": 4293,
+      "head": "self.__next_f.push([1,\"1f:I[557581,[\\\"/_next/static/immutable/chunks/15kasuxgc7cs4.js\\\",\\\"/_next/static/immutable/chunks/1tgeusr_19mx3.js\\\",\\\"/_next/static/immutable/chunks/3q30ff4jlz5fl.js\\\",\\\"/_next"
+    },
+    {
+      "bytes": 338,
+      "head": "self.__next_f.push([1,\"ks/3pft2ih_0_q54.js\\\",\\\"/_next/static/immutable/chunks/3be9na5l3eppi.js\\\",\\\"/_next/static/immutable/chunks/10v9n4tx0-ufh.js\\\",\\\"/_next/static/immutable/chunks/17---an0msxk7.js\\\""
+    },
+    {
+      "bytes": 40484,
+      "head": "self.__next_f.push([1,\"6:[[\\\"$\\\",\\\"$L1f\\\",null,{}],[\\\"$\\\",\\\"$L20\\\",null,{}],[\\\"$\\\",\\\"$L21\\\",null,{\\\"src\\\":\\\"https://analytics.ahrefs.com/analytics.js\\\",\\\"data-key\\\":\\\"ulc2H83B54VgW4DK1z3uiw\\\",\\\"strate"
+    },
+    {
+      "bytes": 4291,
+      "head": "self.__next_f.push([1,\"26:I[126861,[\\\"/_next/static/immutable/chunks/15kasuxgc7cs4.js\\\",\\\"/_next/static/immutable/chunks/1tgeusr_19mx3.js\\\",\\\"/_next/static/immutable/chunks/3q30ff4jlz5fl.js\\\",\\\"/_next"
+    },
+    {
+      "bytes": 4297,
+      "head": "self.__next_f.push([1,\"\\\",\\\"/_next/static/immutable/chunks/3pft2ih_0_q54.js\\\",\\\"/_next/static/immutable/chunks/3be9na5l3eppi.js\\\",\\\"/_next/static/immutable/chunks/10v9n4tx0-ufh.js\\\",\\\"/_next/static/im"
+    },
+    {
+      "bytes": 1374,
+      "head": "self.__next_f.push([1,\"atic/immutable/chunks/3ux-jpq9lvq5l.js\\\",\\\"/_next/static/immutable/chunks/1ygxecj_7ufll.js\\\",\\\"/_next/static/immutable/chunks/1xu28_j9acy93.js\\\",\\\"/_next/static/immutable/chunks"
+    },
+    {
+      "bytes": 2979,
+      "head": "self.__next_f.push([1,\"30:I[926289,[\\\"/_next/static/immutable/chunks/15kasuxgc7cs4.js\\\",\\\"/_next/static/immutable/chunks/1tgeusr_19mx3.js\\\",\\\"/_next/static/immutable/chunks/3q30ff4jlz5fl.js\\\",\\\"/_next"
+    },
+    {
+      "bytes": 1483,
+      "head": "self.__next_f.push([1,\"M0.870091 1.37606H44.6059C58.9235 1.37606 62.5029 3.66911 62.5029 12.7295C62.5029 19.329 58.4201 22.3491 48.8005 22.7965V23.1321C59.4828 23.7473 64.0689 26.8793 64.0689 33.5347C"
+    },
+    {
+      "bytes": 2205,
+      "head": "self.__next_f.push([1,\"9:[\\\"$\\\",\\\"footer\\\",null,{\\\"className\\\":\\\"relative z-10 flex flex-col justify-between bg-brand-k pb-4 lg:h-[calc(100dvh-3.25rem)]\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"classNam"
+    },
+    {
+      "bytes": 11491,
+      "head": "self.__next_f.push([1,\"a:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"flex flex-col gap-18 lg:gap-32\\\",\\\"children\\\":[\\\"$L36\\\",[\\\"$\\\",\\\"section\\\",null,{\\\"className\\\":\\\"grid-layout\\\",\\\"children\\\":[\\\"$\\\",\\\"artic"
+    },
+    {
+      "bytes": 4293,
+      "head": "self.__next_f.push([1,\"3c:I[528233,[\\\"/_next/static/immutable/chunks/15kasuxgc7cs4.js\\\",\\\"/_next/static/immutable/chunks/1tgeusr_19mx3.js\\\",\\\"/_next/static/immutable/chunks/3q30ff4jlz5fl.js\\\",\\\"/_next"
+    },
+    {
+      "bytes": 4269,
+      "head": "self.__next_f.push([1,\"immutable/chunks/3riiwids7y49m.js\\\",\\\"/_next/static/immutable/chunks/3ux-jpq9lvq5l.js\\\",\\\"/_next/static/immutable/chunks/1ygxecj_7ufll.js\\\",\\\"/_next/static/immutable/chunks/1xu2"
+    },
+    {
+      "bytes": 94,
+      "head": "self.__next_f.push([1,\"2C139.49 36.2602 134.125 33.6702 112.665 33.6702H62.9V58.4602Z\\\"}]\\n\"])"
+    },
+    {
+      "bytes": 1585,
+      "head": "self.__next_f.push([1,\"35:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"grid-layout relative grid-rows-[auto_auto_28px] !gap-y-10 pb-2 pt-4 lg:grid-rows-[auto] lg:items-end lg:!gap-y-2 lg:py-0\\\",\\\"children\\\":["
+    },
+    {
+      "bytes": 1705,
+      "head": "self.__next_f.push([1,\"38:[\\\"$\\\",\\\"$L40\\\",null,{\\\"brandsMobile\\\":[[\\\"$a:props:children:2:0:props:brands:0\\\",\\\"$a:props:children:2:0:props:brands:1\\\",\\\"$a:props:children:2:0:props:brands:2\\\",\\\"$a:props"
+    },
+    {
+      "bytes": 4318,
+      "head": "self.__next_f.push([1,\"39:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"grid-layout !gap-y-0\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",\\\"UBKgfRYnPhl9LWSTliJZ9\\\",{\\\"className\\\":\\\"col-span-full top-[6.7rem] lg:sticky lg:to"
+    },
+    {
+      "bytes": 4445,
+      "head": "self.__next_f.push([1,\"3a:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"grid-layout\\\",\\\"children\\\":[[\\\"$\\\",\\\"h2\\\",null,{\\\"className\\\":\\\"col-span-full mb-2 text-f-h3-mobile text-brand-g1 lg:col-start-2 lg:text-"
+    },
+    {
+      "bytes": 1051,
+      "head": "self.__next_f.push([1,\"3b:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"grid-layout pb-16 pt-12 lg:pb-32 lg:pt-16\\\",\\\"children\\\":[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"relative col-span-full grid h-fit grid-cols"
+    },
+    {
+      "bytes": 748,
+      "head": "self.__next_f.push([1,\"43:[\\\"$\\\",\\\"span\\\",null,{\\\"className\\\":\\\"actionable group gap-x-2 [\\u0026:before]:delay-0 [\\u0026:before]:hover:delay-150\\\",\\\"children\\\":[[\\\"$\\\",\\\"span\\\",null,{\\\"className\\\":\\\"t"
+    },
+    {
+      "bytes": 4152,
+      "head": "self.__next_f.push([1,\"44:[\\\"$\\\",\\\"div\\\",\\\"0H7w-Dtp9oP3mBRZpAP4o\\\",{\\\"className\\\":\\\"col-span-full top-[6.7rem] lg:sticky lg:top-[9.2rem]\\\",\\\"style\\\":{\\\"zIndex\\\":2},\\\"children\\\":[false,[\\\"$\\\",\\\"div\\\",n"
+    },
+    {
+      "bytes": 4185,
+      "head": "self.__next_f.push([1,\"45:[\\\"$\\\",\\\"div\\\",\\\"0hdt-uuJDEeEjYruzEwtw\\\",{\\\"className\\\":\\\"col-span-full top-[6.7rem] lg:sticky lg:top-[9.2rem]\\\",\\\"style\\\":{\\\"zIndex\\\":3},\\\"children\\\":[false,[\\\"$\\\",\\\"div\\\",n"
+    },
+    {
+      "bytes": 4088,
+      "head": "self.__next_f.push([1,\"46:[\\\"$\\\",\\\"div\\\",\\\"m3Jxe_nXh9kTFPr0e3Qcv\\\",{\\\"className\\\":\\\"col-span-full lg:sticky top-[6.8rem] lg:top-[9.3rem]\\\",\\\"style\\\":{\\\"zIndex\\\":4},\\\"children\\\":[false,[\\\"$\\\",\\\"div\\\",n"
+    },
+    {
+      "bytes": 2281,
+      "head": "self.__next_f.push([1,\"47:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"flex flex-wrap gap-1\\\",\\\"children\\\":[[\\\"$\\\",\\\"p\\\",\\\"visual-identity\\\",{\\\"title\\\":\\\"Visual Identity\\\",\\\"className\\\":\\\"line-clamp-1 w-fit b"
+    },
+    {
+      "bytes": 4812,
+      "head": "self.__next_f.push([1,\"{\\\"@context\\\":\\\"https://schema.org\\\",\\\"@graph\\\":[{\\\"@type\\\":\\\"Organization\\\",\\\"@id\\\":\\\"https://basement.studio/#organization\\\",\\\"name\\\":\\\"basement.studio\\\",\\\"alternateName\\\":[\\\""
+    },
+    {
+      "bytes": 138,
+      "head": "self.__next_f.push([1,\"36:[\\\"$\\\",\\\"script\\\",null,{\\\"type\\\":\\\"application/ld+json\\\",\\\"dangerouslySetInnerHTML\\\":{\\\"__html\\\":\\\"$49\\\"}}]\\n\"])"
+    },
+    {
+      "bytes": 250,
+      "head": "self.__next_f.push([1,\"1c:[[\\\"$\\\",\\\"meta\\\",\\\"0\\\",{\\\"charSet\\\":\\\"utf-8\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"1\\\",{\\\"name\\\":\\\"viewport\\\",\\\"content\\\":\\\"width=device-width, initial-scale=1\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"2\\\",{\\\"na"
+    },
+    {
+      "bytes": 479,
+      "head": "self.__next_f.push([1,\"4a:I[869732,[\\\"/_next/static/immutable/chunks/15kasuxgc7cs4.js\\\",\\\"/_next/static/immutable/chunks/1tgeusr_19mx3.js\\\",\\\"/_next/static/immutable/chunks/3q30ff4jlz5fl.js\\\",\\\"/_next"
+    },
+    {
+      "bytes": 2164,
+      "head": "self.__next_f.push([1,\"1e:[[\\\"$\\\",\\\"title\\\",\\\"0\\\",{\\\"children\\\":\\\"basement.studio | We make cool shit that performs.\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"1\\\",{\\\"name\\\":\\\"description\\\",\\\"content\\\":\\\"basement.studio i"
+    },
+    {
+      "bytes": 72,
+      "head": "self.__next_f.push([1,\"18:C\\n16:C\\n17:C\\nd:C\\nf:C\\n10:C\\n11:C\\n12:C\\n\"])"
+    },
+    {
+      "bytes": 45,
+      "head": "self.__next_f.push([1,\"1a:false\\n19:null\\n\"])"
+    }
+  ]
+}

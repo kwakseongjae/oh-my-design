@@ -1,0 +1,798 @@
+{
+  "globals": [],
+  "versions": {},
+  "external": [
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/0azxi2nep09sl.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1tcwkx8am-dmf.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/0t0qkpy5lavof.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2_h3za1bowmqf.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/turbopack-2ugil6w6_2w68.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1hqs4hf7w2wne.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/3iehtdg8iejmr.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/3co4t5mzcq7ws.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/0dgys71lsvsuz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1-0aos0euqomg.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1god1e55vjnjq.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1bke0eiokuskl.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2ufjym5wrb1fo.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2bdfc9568e-7s.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/0ov6cfwip6bgc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2cl76pyb3cbc9.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1ya57cr-2d3xd.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/40z2m80y79ips.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/0_av_yjje7a8g.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/44igm4ko1-bi0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1_lfjjv873qii.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/3w2-nk3lj5co1.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2v3fl41zdu33x.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/32hdw9u-0brwp.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2wwnpq0u2hou2.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/28mu6kzon67tm.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2_6s8d43m104c.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/3r29efec3nqop.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/3xdltwf8quwpz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/304tt0n7kb88y.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1xdnj2lce29fl.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/34bxui5xgif0x.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/3dgceiyd5q7iy.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/40_6ek-_0h5hz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/3102cch2o1wvi.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/38olv0f5_k4-b.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/0rpu6psxkl0au.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1h0b6c64-9nbx.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/11b5xxa4v_fhn.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/0acnkzon1x4no.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/41e0u0771elxi.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1gxlhg1q56782.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/456yiqhgeml14.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/12zc9njtkhu4h.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/18ycun_vzjgbt.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/00s6y6sejt1ep.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1496ptt1020lk.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/16z2fcashfj6v.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/32z6kyogkgem7.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/13keo83fgxw0q.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/3hu_s80_dnrmw.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/0ntvqecpmq6j8.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/282dwg-bpjnzw.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/41ghc-zlpmj86.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/35_zugk6jr9sy.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/3ru3ufo9n_orw.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/17f_orckvgr2i.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2-q2ghlfbswgf.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "blob:https://www.cosmos.so/8a99e04c-c06b-4774-b0f4-7b97b0db8d0a",
+      "bytes": 10329,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/3gm30zw4urq-i.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/0-_--p237teyh.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/3hgkynrmy62hg.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/0wjlz0ztl-72n.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/3gm30zw4urq-i.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/3hgkynrmy62hg.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/0wjlz0ztl-72n.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/0-_--p237teyh.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/0498s-mggsr7o.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/0iw_gksnfmnav.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/0fbsr4a2czm6b.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/turbopack-worker-2gqdcwp7k90ea.js",
+      "bytes": 818,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/turbopack-worker-2gqdcwp7k90ea.js",
+      "bytes": 818,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/3t151ebmlhw8q.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2j4vl_g4my432.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/25kbf3dc5dc4s.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1fb_xs-dy9xjf.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/0wnp5m2wu2znb.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/25aev1gvqpwn7.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1lzfl-77wdtbm.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/3ybpr90m261zz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2lwlt7z5c0fwc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2kk-mhutpltqf.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/39zo_5zwy1hqa.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2i8jvfp16tv_b.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2r3mezvu3zlj1.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/03jo8qbet8n9j.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/0fcc8crx0rc9y.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2ujb_2g5f0_mn.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2l3ox9h39dz2r.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2dfn4_nu58bri.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/18-fgtc3a4x4v.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/01zgmg87nl452.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/10bfcd7o_zsid.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2pwhs3m0mxajv.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1ibohxkpcf_6z.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1bs_f6_vpj2m0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2dw_st-5sl_p3.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/317q-scwz_1m5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1wp005o37p-1d.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2mazg24yk4mv1.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/35qg3n5ogefpa.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/0wjyao2mkrcmg.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/30bzir6qs61_w.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/0s_ftsqjkaid8.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/34k6qauklszo4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/3ooib0n6jn129.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1cc4cwmfh7hon.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/3nb5qxl5t2vhf.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2shxe_uoot008.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/43f-s9dh7djy7.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2qy9z0sw3ds_3.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1n83yawpatoy0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/11h8u0s4rkltr.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/2b4je6mc3ozyr.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/3199p_eav-d2i.js",
+      "bytes": 540,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1l_9naqzs_-ad.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1oesro1jbftag.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/418dz8qbrljum.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1__npo3he5zox.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/111y8pumx8e_p.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/3iv3asxsxmjqd.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/07c2z7eocsneh.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/1ox42s39qjb-s.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/29utq116trode.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.cosmos.so/_next/static/chunks/0msxaqzwjyxwg.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    }
+  ],
+  "inline": [
+    {
+      "bytes": 458,
+      "head": " (function() { var link = document.createElement('link') link.rel = 'icon' var storedTheme = localStorage.getItem('csms_theme') var theme = storedTheme === 'dark' "
+    },
+    {
+      "bytes": 875,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"Organization\",\"@id\":\"https://www.cosmos.so/#organization\",\"name\":\"Cosmos\",\"legalName\":\"Cosmos Entity, INC.\",\"url\":\"https://www.cosmos.so\",\"logo\":{\"@type\":\"Ima"
+    },
+    {
+      "bytes": 584,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"@id\":\"https://www.cosmos.so/#website\",\"name\":\"Cosmos\",\"url\":\"https://www.cosmos.so\",\"description\":\"Cosmos is a visual inspiration platform for creat"
+    },
+    {
+      "bytes": 1338,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"SoftwareApplication\",\"name\":\"Cosmos\",\"url\":\"https://www.cosmos.so\",\"applicationCategory\":\"DesignApplication\",\"operatingSystem\":\"Web, iOS, Android\",\"descriptio"
+    },
+    {
+      "bytes": 57,
+      "head": "requestAnimationFrame(function(){$RT=performance.now()});"
+    },
+    {
+      "bytes": 43,
+      "head": "(self.__next_f=self.__next_f||[]).push([0])"
+    },
+    {
+      "bytes": 177260,
+      "head": "self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[934719,[\\\"/_next/static/chunks/2_h3za1bowmqf.js\\\",\\\"/_next/static/chunks/0dgys71lsvsuz.js\\\",\\\"/_next/static/chunks/1hqs4hf7w2wne.js\\\",\\\"/_next/static"
+    },
+    {
+      "bytes": 1393,
+      "head": "(window[Symbol.for(\"ApolloSSRDataTransport\")] ??= []).push({\"rehydrate\":{\"_R_lb_\":{\"data\":undefined,\"networkStatus\":7,\"dataState\":\"empty\"},\"_R_pfivallb_\":{\"data\":undefined,\"loading\":false,\"networkStat"
+    },
+    {
+      "bytes": 3124,
+      "head": "!function(){try{var c={\"a\":[\"data-theme\"],\"t\":[\"light\",\"dark\"],\"v\":null,\"d\":\"light\",\"f\":\"light\",\"i\":null,\"m\":\"hybrid\",\"k\":\"csms_theme\",\"n\":\"csms_theme\",\"s\":1,\"fs\":0,\"cs\":1,\"tc\":null,\"dt\":\"*,*::before,"
+    },
+    {
+      "bytes": 845,
+      "head": "$RB=[];$RV=function(a){$RT=performance.now();for(var b=0;b<a.length;b+=2){var c=a[b],e=a[b+1];null!==e.parentNode&&e.parentNode.removeChild(e);var f=c.parentNode;if(f){var g=c.previousSibling,h=0;do{i"
+    }
+  ]
+}

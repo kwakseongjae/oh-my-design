@@ -1,0 +1,78 @@
+{
+  "globals": [],
+  "versions": {},
+  "external": [
+    {
+      "url": "https://activetheory.net/assets/js/app.1780406240914.js",
+      "bytes": 348046,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://activetheory.net/assets/js/hydra/hydra-thread.js",
+      "bytes": 3726,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://activetheory.net/assets/js/hydra/hydra-thread.js",
+      "bytes": 3726,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://activetheory.net/assets/js/hydra/hydra-thread.js",
+      "bytes": 3726,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://activetheory.net/assets/js/hydra/hydra-thread.js",
+      "bytes": 3726,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://activetheory.net/assets/js/hydra/hydra-thread.js",
+      "bytes": 3726,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://activetheory.net/assets/js/hydra/hydra-thread.js",
+      "bytes": 3726,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://activetheory.net/assets/js/hydra/hydra-thread.js",
+      "bytes": 3726,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://activetheory.net/assets/js/hydra/hydra-thread.js",
+      "bytes": 3726,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-J7TMDT4F8N",
+      "bytes": 173707,
+      "status": 200,
+      "library": "ogl"
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-J7TMDT4F8N",
+      "bytes": 173707,
+      "status": 200,
+      "library": "ogl"
+    }
+  ],
+  "inline": [
+    {
+      "bytes": 170,
+      "head": " window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-J7TMDT4F8N'); "
+    }
+  ]
+}

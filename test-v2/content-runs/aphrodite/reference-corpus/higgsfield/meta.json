@@ -1,0 +1,62 @@
+{
+  "id": "higgsfield",
+  "url": "https://higgsfield.ai/",
+  "why": "AI 이미지·영상 제품, 유휴 스펙터클(CSS 키프레임 17개 실측)",
+  "capturedAt": "2026-09-05T03:45:44.069Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "errors": [],
+  "httpStatus": 200,
+  "cssSheets": 10,
+  "cssBytes": 49140,
+  "cssUnreadable": [
+    {
+      "href": "https://cdn-prod.securiti.ai/consent/styles/d5cd9017-5f8d-424c-bcf6-60e2f7c90d2f/4fbe0ff0-b1cb-41ad-be6b-389229e23efa.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://cdn-prod.securiti.ai/consent/cookie-consent-1.150.0.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-UiPESLIbMkIq5MVx.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-v2IlITZYB7Bne3xI.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-pIHZnolHY5TgUTxy.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-xAIEKhOKJaQHwYFE.css",
+      "why": "CORS"
+    },
+    {
+      "href": "https://accounts.google.com/gsi/style",
+      "why": "CORS"
+    }
+  ],
+  "scrollMode": "transform-container",
+  "docHeightPx": 12225,
+  "assetsByType": {
+    "image": {
+      "n": 143,
+      "bytes": 18009658
+    },
+    "font": {
+      "n": 5,
+      "bytes": 150968
+    },
+    "media": {
+      "n": 9,
+      "bytes": 114726408
+    }
+  },
+  "libraries": [],
+  "scriptBytes": 566801
+}

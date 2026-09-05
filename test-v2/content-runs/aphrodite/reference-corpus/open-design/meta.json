@@ -1,0 +1,29 @@
+{
+  "id": "open-design",
+  "url": "https://open-design.ai/ko/",
+  "why": "사용자 지정 레퍼런스 — 밀도형",
+  "capturedAt": "2026-09-05T03:45:30.414Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "errors": [],
+  "httpStatus": 200,
+  "cssSheets": 1,
+  "cssBytes": 148825,
+  "cssUnreadable": [],
+  "scrollMode": "native",
+  "docHeightPx": 12903,
+  "assetsByType": {
+    "image": {
+      "n": 37,
+      "bytes": 1934943
+    },
+    "font": {
+      "n": 3,
+      "bytes": 110964
+    }
+  },
+  "libraries": [],
+  "scriptBytes": 173977
+}

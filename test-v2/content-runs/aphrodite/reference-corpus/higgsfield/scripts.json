@@ -1,0 +1,4074 @@
+{
+  "globals": [],
+  "versions": {},
+  "external": [
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-vqsOn3zWkTE1j81J.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-CIlQrP9XHdILIVua.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-S3FesTUI6hbxtISy.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-5lEKXGa1BVKeQf3C.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-oAhrSlaWGJVRxJVm.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-SjWF9PeY5Z1_rrgs.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-FGuKfAIcl1lyQmXl.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Olqcnpb8hQmF5Bya.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://clerk.higgsfield.ai/npm/@clerk/ui@1.26.1/dist/ui.browser.js",
+      "bytes": 43556,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-c-htZkdA3f74GdAe.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-jwyH1Ag656eF8BiF.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://clerk.higgsfield.ai/npm/@clerk/clerk-js@6.25.10/dist/clerk.browser.js",
+      "bytes": 75447,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-dN1j5D-k_AbHJbJP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-cOB9XjtHMVq5fdsV.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://higgsfield.ai/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+      "bytes": 0,
+      "status": 302,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-TG-x5KouY3eoqAwk.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://higgsfield.ai/cdn-cgi/challenge-platform/h/g/scripts/jsd/330e41bb475c/main.js?",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0--w0cbMRr6KbkG29a.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-VyYsrf1ErIZAbTlr.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-THH13P18SS",
+      "bytes": 188080,
+      "status": 200,
+      "library": "ogl"
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-KaxCKX1Q-jBlLRW-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-PI3OV5LqSh-Lxl-D.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-dwQklqzCZvI3oTT9.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-JeQcroXce2LWv52k.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-G7puOHZcFaZVDszc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-EjHj2gsKK-Xd5mwA.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-PbWDEG5H18G55YGi.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-ZDfxCpEHkjbQBizB.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-pgGnNs2U37joQWXp.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-iWNIuFkXqcUgpLxY.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-wLJP5oNZqNUCy5J_.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Wy0dCJsxc6-_UyKN.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-rqJBqi1JBERtOFfK.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-2bJHGWEp1CW8GruC.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-9rJUkf4GJbo7Calg.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-i-isMZHr7xIuiL5j.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Ihwv6ZktLI_0viXB.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://higgsfield.ai/api/i/static/1.422.5/web-vitals-with-attribution.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://higgsfield.ai/api/i/static/1.422.5/exception-autocapture.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://higgsfield.ai/api/i/static/1.422.5/dead-clicks-autocapture.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://higgsfield.ai/api/i/array/phc_nAcCHDBUspNpjMXoEt7RUffSwfjsVsYAPVwEeHAfsWEd/config.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Fjwk5-ofszPkby65.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-NfLzvqZI0cpTUKbS.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-wMHI5LCDSq2a_-U_.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-BnzN6iptgfXQUaCd.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-_h77D6kYermbG9k5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-PnT1qGgOFNj_63WV.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-rr26T9Dt80ODmT8D.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-nshvkyx9BZA-wEwb.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-V-zRhFKHZGeJ67-1.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-AnqmqAu3ERpd3eHi.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-JPnmjKsSbrn4lvc8.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-cwRBxhgwEK4TsCB9.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0--W9Hbos3QfYT6V0t.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-tUORUuGSJY1sKd_f.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-SzjR9J_ojhbN1Tjn.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-VIywmDnJdIQhvrcc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "blob:https://higgsfield.ai/4493ded6-920c-4656-a371-2c12d4f0e3e5",
+      "bytes": 1071,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-WOeDbMacmDP3xsTT.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-cIZJZNaPuR0Lk7QJ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-bSQd8NzZ4dnlWscn.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-7oIGeRRI8YIQi0SG.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0--gX25F6QKyakrapi.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-C2qxsx1l4y8ba0Sx.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-VOIHzS_QORk3sTtd.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-ebu5yRUjJ50DvlZi.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Xh1Zd_Cmu7fp65Bv.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-beobgVzPeOgXHUGd.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-LP4MoJ_3RtpQ1Aau.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Aii1CZXr8wRkOXjh.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-7QI0SP4P-mF4kcrQ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-4a5gpcfe1tAbCMMM.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-vaNuIwgeypTqNY9r.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-1Fq25paNJLopNcm5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-RwBmenSEyfIiI9Hs.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-R6n_c5u1-_v1JjSf.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-V_FFgj0zGrtbT39J.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-IMopN6z_ASYafyYn.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-peCFEmPhPgOaVZLa.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-uxszVF1BAQT3SRrz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-15no_GDYlsyo0hAj.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-S3UyyINVLJM19kt6.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-BP0kcqBcTx1XKFqB.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-u7CXUW9mU7RBlA1B.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-VfVFyd1Pd3NaMxl1.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-qV5TaMoXZHPlmMLI.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-YpNmal1YtyFcUhA2.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-z1_wvbOmnZKGw9P-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-srZql2Ayv9Y7oan7.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-P6GgNxAOjaz9rG7w.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-I9lMlP7g6Y7ylH0i.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-XNzZ6tiriePnkN6f.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0--TYaXufSN9LjQLXw.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-jv8pE7rP7gWVS7NG.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-bZNlA_vHdxCu4R_k.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-KNQ8uT3PdtTEjm0d.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-TQHAJh9CCeKwnwv5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-87crg07ScsVg0hXH.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-DbajndubaU-ordlt.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-sRc2rS_ujRxxBRqn.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-bocP--ZKndO4LdWp.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-84EJR5gPriqX67yR.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-3I8kL8bovjZjDjGx.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-hki0jdNUd6lojLL-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-pw_ftxOul21C1Wc-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Z1dl74G1mlJzjMHA.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-5BrVG92F-MhJS5j4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Zxlm7QWrG7L1_tC0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-zceANPObDgdsbmNU.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-h9FQ6GL7mM61AEGo.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-MIlp6VgLUIzPcNO_.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-2eyOKzcoi6fl8fbi.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-3PqMWfFJjW3EYvRI.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-ZCoqLuG53SiLqjp_.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0--Xz5qCM28u7Y6EOG.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-nOKjS4mU6A1YFD_g.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-3T-YnwnFt8uwhn3T.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-u2BnpTXC9sOrbmXi.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-7osPTjIWLJQwKcb8.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-k9n5l3Se4eeLo4y8.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-erd5yU4ldXRtjYcU.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-uSfDdJiq5HgtYHZb.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-zaxgu9r0DoWZONcg.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-_HGIDvVwwJB02awz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-flniCaLz0C9XzRr9.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-7c_67tc5U0amLZSX.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-I3A7pvwROchcmPu2.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-qPCCQcvVhhf5gzKV.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-8QX6rYQWk9Lv3jU0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-ok8UvJjzOnQJVPGZ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-U0Fqr3jSLZ8qpr7x.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-RQ-udJMSWb2AvLub.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-97-ygKekEAuhLQ9Z.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-9VD9uI7cEQzkfVlK.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-oZ76MeO2X37gkZfG.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-AOoID15jBlIweiDh.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-uP2SdOZ_MGb5RcO2.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-4Y_1R8VirQbbfPJj.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-ZpLvqqo2Wc9kEFMU.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-ikUxJ2a5wnHjFK-9.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-lMs9cW3xo_RaWr-y.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-TOHyynpK8lDPTcxl.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-N8IZuAL9haNt1JD7.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-vMZnm_eJCELWXx2z.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-pDkO4khWtJTRHi2z.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-DsC8gVBCmbHoBgpV.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-dozvcJUl8jehetA5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Ax4iHH-Xri9OwmoH.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-IvPdPmYWnbqgb67m.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-nvzWsYMzRVOYzICC.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-y3rmIHzvIH0ORe3Z.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-mmn4KXWbFZ9v-6MT.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0--gsW460RGQIfTEB0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-lnowtDfyM5VB9GQP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Xlmw15pRcKYuZH5_.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-8XwbjDs1G3QJ-3i2.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Ai8I87aU2x8KKwY-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-NQ465YUF1jJFaHRb.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-0cQv9ggMkhxVGNMD.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-IGUFN8UvLS11cblB.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-hZB2LI949ePVtAYk.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-9uGgKW1XjW79-0L-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-cnPFhqHfNV0mZqF5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-eKbbGfih2nMULY1L.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-3O7LjMKrxJVwnETt.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-BvZGXt24m-RlSwyA.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-QsYZ4vWXaxVPxapF.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-nq-OKAbPeTot9GE-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-a8CArKx2a0xWqgq8.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-dmPsPT7K5jmarbZj.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-awg4bJZjl1goaLr4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-KjTeJAtbS2g6IyLP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-hIC7uLqtN75MbzgZ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-_BrPLU5O5AKQwfEU.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-kAziVA0sOCGX_rks.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-AAffCzGBGtVv6f-f.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-RwE0BDOCsMMK-Ktp.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Pi47039FbJfGYK8F.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-r7PGaO0NKWOOiY_m.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-eyWnAdXg8YYzlyw-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-EDPw2r8F8qJNqtFp.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-8IBKLd8AcJYt_-Zd.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-T9PBZFQIVqPlFA0m.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-rqDHVrASrp6YR6Fu.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-TH8dxbsuoCSYpt2V.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-DlH48fuY4JCEUePE.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-VIqtzjBeHfcfkqnw.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-07fgNCXmnBjxadum.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-vUWhDOk1Vc3vn0kD.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-fiGD7zltptIS5TkZ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-hjso-JdDf3_0xcGZ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-nUK-23Dh46YpMWxQ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-LxgAlNHqkwAEIlwG.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-TEhbHS-wIgzAOfkL.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-4hCovozrcs20rXoG.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-h1w5PFzcU7GDVLb_.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-V0FwDVkv57dxRj_R.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-nj7w5uE1RQTpCy3c.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-RzB6cGBfgmEenodq.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-jeZlTf7ycMIHQG5V.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-RcEtDgXDfDajsEhI.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-VcW9F3XzQ4UWjKC6.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-tx4osyxfAkR7paQl.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-zAON-12-xSXM78i6.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Qelp7ZM2VXmpz-HX.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-YJlO0dJtKePhmLvK.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-0q6sLKEa2tUVHQbF.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-JMNzdUlvAI661nMK.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-hHQFgBQXbpOZ3Uxk.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-A3zLAF8ILS1ITLFX.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-t6iB05Yy1Z84Gac4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-k2v4pCl48B7kbfD7.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-lWpULWK6EwQJmJPc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-gS3ETJAYpoySQQsB.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-3C9FkFBVeP4e7zmI.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-g-GTX_zS0ODbwaNg.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-RKQ9FWjG2tI13Gj1.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-iSef02crV8LlRmxD.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-390P4LtQxhDhKHtH.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-QCOaLxMAP08Ooibk.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-QFKQt1FlOwylgmrB.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-5fnoBwCjfTrlONGC.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-xdae1JyzbBMkjmCG.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-imwyHfp43jE8drq-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-k8y9tki5nlld_HhM.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-yEGHlTQBAJl5gHez.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-glwGJBi-BfMJd99K.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-w69kvZz-laYBA6Dz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-D049MJOHPTu8cQev.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-m58nAw7DK8ZK6u8S.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-GZ4a2AWZf5JJ6hpS.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Sijw6ByJQ51ntp6D.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-gesLTSt62ozHO9KW.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-YYKEgdvA2gBqW7g2.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-MS5UxEryveQk4R7e.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-JUDeHL8a6y0RTk4D.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-id98zW_UxFztmQ-O.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-6WyhAdhNdMW9xLVI.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-pFdA0WcjDVXocA6z.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-eYGOq-WRA40A3olU.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-N8EsW3TbYOk3LHhS.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-3D6UrCXtkApHQXwe.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Ka1v1OtrI7MQOimp.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-pwrODtMQEw30c9nI.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-ekuzgjOBFGRnhZUP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Ch8YcshjbsDb-oxz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-zZEwIHY3DULbmQyP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-OaypWAVQ7g0pVYSv.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-qtThpteM8GGKH53w.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-AeYWhBrx1lwzwDno.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-NyuDTXQPoqyyqlXG.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-YOM6jHGwMOZphgJ2.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-rQ5iQFnN2OQbMN6J.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-GdnjQlT6hE8ce0qc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-KHWseCciFwtmQD2l.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-SPazqq2-zIT-PdrQ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-HPl1Ndel7j2pW-Z4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-xy_dykuI7K1YCiMr.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-DiuDVLzrm666p5Vs.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-yM5whTBGdbs_cYIX.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-5a3672sQhBQKC3Dt.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-yN7XZmR7vgh01Fdj.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-UOVjFFvSOUYdnqzN.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-2rD-4vNaQHfrGvvw.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Hg3smSA7FgzDrP1z.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-SV456kCLJ-YEZLxH.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-AH1jFvvGDJEve24M.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-SiGOazumwjHwMFGa.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-omkhk87G363iFRwA.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-hxY52LqElZW6g6a9.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-EIhCH3UgwTvpYfTD.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-inUBbGVnqCgMo_32.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-jKxlJnVrOkSmo5Zz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-f9IQT2ORT7k03uZp.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-lRtjBEoyI1xLLdRP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-KPvrrDQo7BGYVjB-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-9bQAik-KNRmJlDA4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-rP0rTQB3IlqaL0Ji.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-OSUdQbQgj4pvy3v3.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-rD5tHu4U-S4aJiut.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-R4cFYlbka4BW5--x.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-x3ISXVk0j9-emE8g.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-hKvw--JVkvNDYqI6.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-GWuCDx2syP3PnEJT.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-w786oEFNQccSM0l6.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-af7uzEJDLnePamMZ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-CyM2GmGNObhI-8ov.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-NcoLiLeONhHxEF7h.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-j6Tz0Y8LxYOfz8wP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-JZ8oog2pl7bikjtN.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-fa5z9B2XAOAjJhQH.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-lL1P47ZZDA_aF5OF.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-0FXdykkDMO6PtB3v.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-kpaBZG8E2J497Vj8.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-p6iKOx99Q7ZWBOt9.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-MQf34FWWnacNz1BQ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-PuDo_euMBDhcjb0y.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-m6wYO3lQov7pU5vw.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-2oKVhEPYxmUQO7oW.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-9G0oW0vTkZ53S7TL.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Or2jsJgIwQJ-99gv.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-JwDNzu7J7VTFJ7BE.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-s0GxWBBZd_ownLI8.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Glrkt9AvtjKVbsCT.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-35RScW7k_rfB75Et.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-K1P_yu58NtG0AggU.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-vrRfzPSv_gDxw9XL.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-f-HfqFgsDxtkLXON.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-LuO8EseslRzVPemK.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-tbU2W_weWD-s0UVT.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-wh0u3aFSPde8XnII.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-dWcEc8jpdxtDqfHT.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-784P_CY0eGNseWA3.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-vzaQ1LL1TmaYvXEF.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-PW6mx-7wG5Kj2xAB.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-8I6n2JEma39tpvbs.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-XgP3APucQIdwQUEc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Npbh62K2bEhHJDVq.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-8wJSTbQMtnlmDLYN.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-ArN5rZWD119jKmv5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-JYACb96tXsECb4Oq.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-gRFOW4SC9SkvAcL2.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-tTH8sKbmqts6jssi.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-VYRoxauCl8QEYRPm.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-6Z8DfVM6JHQ-1cOD.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-XNePxekzqc5js_nB.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-5ZWtqLH-G6gABaZy.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-_V0ub7YQvwEVJ-O7.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-08_CTK_svdTioQ-5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0--mnlu-cRAec5TGrF.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-hIlW9mEQB6vboYEM.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-pnoHjV1_Rp_cCiTm.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-XMtzO3Sg9YkABdez.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-1KNXGbMsJXTechnj.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-cUGu1BwOXHOyPjP2.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-IRKEgmLb6snhjnGl.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-xhLducocxVskpHad.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-TTDNpmqAJ80Tdw8J.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-zO0LI-Sjx8ncxaDP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-7uKVZVhZ94c1-vXD.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-2SG8ZIAH7Je5ttH5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-HvcY7r4P2t_tKuhz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-jwS4loCxR-X2Po5v.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-p8p05N1uOwjjwwdS.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-T85h8R2T_p7bniKg.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-VLl8QIsiXyArmeOb.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-tBjJj5f5A89dV5jg.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-URyYeWPsDR5O-fjp.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-uvLfcvWrJN0h1yGx.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-jxja4rVTA6FRkhFj.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-BGn-eKNt1JTKkD9r.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-uxE-pTYABHcIoWIF.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-yzoFtW5G6jnh6Dmz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-A9nW6-3UH2HLTyBU.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-AsqdsM3Q4IXOD6CO.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-AUjTS6zyajAs3eul.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-TPGTkn_S3WbRmPtn.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-eOF-udEkmItJXH90.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-SxDpSOOEjJ3ebfiC.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-p24HWG3Kny6ii5fb.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Ec_PT2ovZiVfB5bF.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0--1C9HNaktgmko3gx.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-0MjQKhC0mQN3ibHP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Mir6RGS7LsuoXXGN.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-0IsTmVTLlo9p39wb.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-NMhh85dhK3UG_SIn.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-zr0MzJ2MaMytSbBX.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Q87t6TeagGU7wJqJ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-dN9ZfphHj3fms4za.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-uDCg_V1RVMEU2FT7.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-s2edvQXsi-CFJCl9.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-IOOjO7beeGDZBxrl.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-N9T3DKbL7fIih8T4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-qmWP3g9FQikL07au.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-oxItmKpSsEJ2Y6qJ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-qtA4CmpcT2hz4xXf.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-vaWM8XknY3Fc1Vzo.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Vnoy7ITBe_ongn3v.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-iECTv2WdnaT3kyAu.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-FgKVbJTzPxl8ztUG.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-gG3r7qHODeWfogVw.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-rHbOnjbzYaNDAbwI.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-4Dc25_N5I9ub4WN5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-f-e4RumcfP9y7mgi.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-IgXnBzVr9tNb0yOU.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Evu-s2gd7fB4ms-i.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-R9X8ACDDh-aOMoqy.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Yw508bAJmSGnI7Fd.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-a4X5XSMuJ08Yt-9h.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Am_smrLfPd-6_J5H.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-7X5wk3ekN9YygiLR.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-sVY8krKwJoXwo8cV.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-UFXAYDkGclXpRL2m.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-XO52iHkRjXbVsuAo.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-H-Grus97nibH5JjE.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-rDYkoy42NUswVU2N.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-MwMFGFqvV8jgkDql.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Yy-BKOTVHGinGkCx.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-JMvqXNTLhkPyeG4b.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-fUtjADHFIGvedP8e.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-vW1iVOhkEQVtK7TP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-9b5IZLeXI_gXweeM.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-rn4SMrynFExKOxyc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-k8vmnY_FphcpUxVe.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-117TYkp_Qe_fXx6g.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-mKDO-Tpz8Eot1L_w.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Hmjro47R_Ldk7Kkd.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-qh6Ea3dR5W-r7QP0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-NmNIitmRFYKeIhaH.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-50f5lvwaz3BKMlgz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-tNH_rltM0ckT78qz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-s1mz4Mdmz8BZ670x.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-eVd_Sj0lQ1fEjg9n.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-YIEFlUSfqnMnHpxU.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0--sETVhBoBck7N-Se.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-LD0GsX0hOynvMVtz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-8Ow-hL_phpNa-qZg.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-mRGf2EeyczXvyziD.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-JUxypl0XqCgZE6BS.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-MJnRwDcNxuqbDe5I.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-_I474etoh2-xrT0J.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-gb2hGPFNEVasoylS.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-QNeK5wDx_7gyFy7o.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-FW15JWIea2rJ2Hzz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-sL3ytGkCENoDrNZa.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-e8jmanMEWaX65GOz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0--OtpVCG7dw7_8Ini.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-hrb54LSYMXFYin0q.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-3DCPX5IimvRhgPkj.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-NZDka5nLTwhq4grW.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Rb5nGDT-kiBSj5zv.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-4w7xhyZ2-XXGovc_.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-xM2oD1Ozpnxn7qm2.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-4KWcYczMKE8FTCpZ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-iduCQd6a8hnmDusz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-RMMRRccBmUYI5a7K.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-DFPur8VNehYQIsSa.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-b4TPtVCSa-QzIhXC.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-qpy-qhlNP0YKV34C.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-HbACYdlOq6kRXTHI.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-86XBragX2A5V1Q9j.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-AA2x97-cq4RRjtBJ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-ebtcxEatF78orGaV.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-yeZjMQRppk2V2tJ_.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-aYDXi9q5AEy9k3c9.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0--NgadPJMq7TvuWB3.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-6Cye4x9NxD9uMpM7.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-7HmC7RUvgIFemZdU.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-9fXTEK9Gu-219A3M.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-mDwmphhRVZz3Ca92.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-BXBl29DQsQHyXj1Q.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-e6kNQ4lUoPdKhkjr.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-TlknfRf1vJzlun2-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-W-SetaZNX4tmB6F4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-nsfiYL5aomD3gOU5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-32uOKXS0a8djk1MQ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-OLvdFc5Dej1Jvs5P.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-xtiDUZ55yTlHyC7-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-z5Q9dj8lpMaBFJ9K.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-FchyfdkwEX95yt4D.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-wR35K00IXqo6lfYE.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-6S2JEThOo6cWE9wx.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-LTERThKiSCGc5pN2.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-2Y41P9pMG23FNyh3.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-HozO1VJoLImNK6lL.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-OtQNr4OtWwOiQPcd.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-RORxMKKdtKMBKwSn.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-n09opXb2VgfSJrlg.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-1keX_Pz9YauEeIqJ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-30oHkmvcDSHjNP0M.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-bwo38oavBCXm8FeQ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-mHwqc_cKdxXwYyby.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-VYrLiWB9Bidt6JqK.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-wQNsSivBGmDKCm_N.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-aLScLISOdG1685bV.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-6ZGbvY7brYEMRcH5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-G-ItRIbiaLZ4XZUp.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-zoGBvVwDN1A2q87e.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-P-o8n61A7DqpG54V.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-bKwdle_BZVgjpWtD.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-bxSUcMaP4Reuy532.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-eJtZY8oplMIGywaW.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-B7Rhhpakor5o8aRj.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-gS1tBdXS8nVTJ15h.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-oA0v6zpLzZP7tD5D.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-_fuf8G0yVPVQtcIO.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-5zQmdzGC5WFPpyCl.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-hUoOVp3NGiT2VFty.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Xh7a8iD-d8Q1W1nA.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-UiGf2pZq9cGfwTIf.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-lcDEqGuL3cIVTfnb.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-dtvfL8hyTXMWqZ99.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-0JTxDnZwTM398cfx.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-zfVBoQ7o2ZxTPi9Z.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-QCOFxQEA-oxDeuFs.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-SwtodTWRXEA2cFSX.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-kSMX92SfgtWwlH_M.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-0w0d0vJQe8Ialji9.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-WYKvv979kBJW0U3e.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-sJziEEjX4Iz9vngf.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Th0LR9X_heJpCbSJ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-cIVrhMbFUTfpdfjo.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-PT1TPlRnhZ01wnx4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-CvoZREiK71hM9I5I.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-O1O5gNGL8hYL_qII.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-YnOQe_pk65hfslK3.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Td6eMoL-yILbaSlx.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-bOYDTUA-8aQO2I77.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-13owZCCmutvY6_Fv.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-KyuE88pZYgQrMMyx.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-hOAUvwZoOqeHnz0R.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-HvziJLl93d9v2i9k.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-A_q9ucs6NkRqBlul.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Bw9OmBI5RRIT49ke.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-lHa4tJ4UsYzqLi7R.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-ofUgUpRQJqffVctQ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-LK8DvhoG-PJlLcE-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-TQ_DQwhzNHUiT2Xu.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-ZbjTp8cm1Vw5ABZ-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-6yE60CGUPad6nYnE.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0--VU7MagReYCZ1zyS.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0--J5E1P4fT0wiDfEw.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-0dENCryi6nRb78k2.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-b_lV1HYzRwf0z1vN.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-r6nzwXPgFsRg_nRV.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-kQN79MSHHt2mrUBv.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-kw0fGwR3wRZnrWVJ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-_RddxDZphoZEQbsa.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-oSgC9hndogF5m0iD.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-NpFMIZkfJtvF7SFO.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Ctt9U8mcT_tiZBe_.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-KNW6_O4W91SOljc-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-0zKm55_RqwQLJJkc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-lSYwGOexpx5m9L5V.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-TW0lbqjcQFwqYq5K.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-9l6rITJjludQjk6e.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-XxYKJK7h_WFo8VKg.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-8dwBAFVHSUPYBAyC.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-nVNQY5vnixr-Ltui.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-1kCy90JcXTk6OAb0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-DgsSjT4LrFfKLqQa.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-fgJR5nBzCB-jHXoV.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-tbGwjsfW431xUbed.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-rVBEHToAboIIGquq.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-drRzweXul5bAX-Oc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-OLx7ZZvWaaSIQIu2.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-fuXR3U6x8tyHt1gk.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-L_JOvQSRR_W1FcI3.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-RMwyH4QALCwuGMWb.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-dNdC08sh2Ma6_0o1.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-sApR0sTfkpk95VIh.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-9Ek6wm3SMFK4Kyei.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-QT97X3VLvp0drFFl.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-E4wyeN60WLo9RIIU.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-K4_ZEPFC27IDL-1t.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-c0Cto5cvXaaF-0FY.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-1AVwYJ6JiCK5EPpc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-S51NeZfe-H_yXp4K.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-uvKm_pV1YgGGuDmB.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-RSVhLAttXc_F1-Q5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-8aJ6hLhls1NlqANx.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-_L-vWWuA66nYYyFE.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-ujQo9q9hwrxBX9Zd.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-8oNPBxX67xP7LruB.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-yS1f4wHDqvmuCs4W.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-LATg6C50IZz1E08L.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-l-yk-SWHMukosoYG.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-9-UbkRXbBgttNVlQ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-P9gMQet1g4Nh5KKM.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-w6qfK_hc-H1i0Vjf.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-zHWaDrHfYuIRSlVR.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-wSuLHnQ1pEkKS4iz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-3R_hXIgSlYW9uia1.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-C0hcTQpprrgRg8HX.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-gO_lay7mYHUk_7qX.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-BcI_tTtz6_paaSAs.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-gI6ShOHP6JaFnhGV.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-qryLgw9KPaE0GKXr.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Ty2AQ0tY-0vySpjK.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-2NUhC90v5e3NIZhP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-CYyiwLEvLARu1HLa.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-jW7JuTK1h1KIDCP4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-FYSBHE_OJOWMp-8K.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0--OrX0ijHHo4v-XYW.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-BX6GA2JvA8GGXohu.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-4wajoKXwhikorw60.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-sSJvFB8fwvh_kEZW.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-gruShWS1puagaeOL.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-nETfwOhH12pCxby7.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-wH8DcuffiW5nUAOI.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-1h1oFp6ejag-76qG.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-bppZXqdbdG_UWwFt.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Zx8DP_MlDzUO0J24.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Yc1R49GJiLGqIRmy.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-MP4xctdHwzZi5lyL.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-RO6ptFd7OcDqUXz1.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-dM4kIBRh2v70kT95.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-SRiWecr-q8f-5bi4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-14qPaTneGub5gQdS.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-3K6Td3_M3v9rXyfw.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-UzI2435JnYdNy6uc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-5liyAKpLh5mH9ypp.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Wa0dTVOXuhWZQtqz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-KHaax4ARmMvDpZ1r.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-JUJznPXTDbgqNR_Z.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-XRrvRh2ePhTRw9yp.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-7w1c843FPBi1vqWE.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-q8PkGudO7H6NlO2x.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-IrvGfJHvw3SE2ZhM.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-IDGK_26_p2Tb2FIP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Uu9uHs9Mm2BsCl0n.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-VoCohb4KLD3gmGwg.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Dtcm9tLVr9Hp5QaC.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-9LBljYffF_B2IrHS.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Oze3GKIFDkF0EP2K.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-WwnFrYi4cpm9h1ns.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-MNrAH_TxS4eX0qYR.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-es3v_werxTb-ZDDG.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0--Yq9BSEu7C8ljQ30.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-H4HSFS9QDOsFSdNV.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-rcT8jwN9v2hELyzZ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-O7jaTJl63W4zMfly.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Q6q0Op-JanSwNwG3.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-2bMmAygech9FLnsi.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-ll6NJC8HB_jT_Ft5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-2TC9Y1aiJsgORzKu.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-P3_xaZ8RL_lYpVbI.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-sfFbHke3I3d27hBq.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-h8NDSDpFUtRz3K4h.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Fb48jawX5e2Qiz3k.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-2fErCzMPvRgP9zdD.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-R8XiEbB9kNXvku4A.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-mQ2Rn8b31zvQx20m.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-P7_dIx0wQ9K9HCC3.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-DYMTKS3KafVNUrUF.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-ZeB1uUqyKt9sLVSu.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-3Nk1QSCQ6x10FNnC.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-b-zqdt9QB9ilh2Cb.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-JHmLNwDG96yE_vIc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-0Vbx7CsY-28jlrLf.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-X67k1EcZkExvBGul.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-Xre7kmmqkMcbBGe-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-dKUS8xCbBP5WC_u_.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-6K8gqUTXjIr_sVkU.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-FE9gUA0hl907p15g.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-fhU8xis6VkEMsmjh.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-K8rxFi5o0aSkrX4q.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-vPPb_BLs_lmZhKYF.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-yYYa80K78VWcea3E.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-OibV0IDA_8dCWDVr.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-gvFcCNB2az6ZPs5p.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://assets.higgsfield.ai/tanstack/assets/dbd9a9c0-DdxcRhYMLJ9XnIaN.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "blob:https://higgsfield.ai/00fcd215-84a8-42d8-b9c7-7f4ed3d36d00",
+      "bytes": 555,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://cdn-prod.securiti.ai/consent/cookie-consent-sdk-loader.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "blob:https://higgsfield.ai/c3dd32fc-9095-444e-ac0a-13ad29b8b4b2",
+      "bytes": 555,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://clerk.higgsfield.ai/npm/@clerk/ui@1.26.1/dist/ui-common_ui_f9d72d_1.26.1.js",
+      "bytes": 125055,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://clerk.higgsfield.ai/npm/@clerk/ui@1.26.1/dist/framework_ui_f9d72d_1.26.1.js",
+      "bytes": 43275,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://clerk.higgsfield.ai/npm/@clerk/ui@1.26.1/dist/subscriptionDetails_ui_f9d72d_1.26.1.js",
+      "bytes": 4965,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://clerk.higgsfield.ai/npm/@clerk/ui@1.26.1/dist/vendors_ui_f9d72d_1.26.1.js",
+      "bytes": 65761,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://clerk.higgsfield.ai/npm/@clerk/ui@1.26.1/dist/4718_ui_f9d72d_1.26.1.js",
+      "bytes": 5493,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://clerk.higgsfield.ai/npm/@clerk/ui@1.26.1/dist/signup_ui_f9d72d_1.26.1.js",
+      "bytes": 11599,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://cdn-prod.securiti.ai/consent/cookie-consent-sdk-1.150.0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://clerk.higgsfield.ai/npm/@clerk/ui@1.26.1/dist/onetap_ui_f9d72d_1.26.1.js",
+      "bytes": 1389,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://accounts.google.com/gsi/client",
+      "bytes": 0,
+      "status": 200,
+      "library": "ogl"
+    }
+  ],
+  "inline": [
+    {
+      "bytes": 3161,
+      "head": "(function () { var currentScript = document.currentScript; var styleNonce = currentScript && currentScript.nonce ? currentScript.nonce : \"\"; // 1. Re-inject persisted runtime themes (defineThem"
+    },
+    {
+      "bytes": 90,
+      "head": "if(navigator.standalone===true)document.documentElement.setAttribute(\"data-standalone\",\"\")"
+    },
+    {
+      "bytes": 123,
+      "head": "window.__HF_BUILD__={\"id\":\"33941667880-1-production\",\"time\":1788578623998,\"git\":\"051eb72b2584ca2ea9ba5f0c3589b9a2f1d0bc4b\"}"
+    },
+    {
+      "bytes": 264,
+      "head": "window.__HF_I18N__={\"assets\":{\"de\":\"/_i18n/de.38586c4145.json\",\"en\":\"/_i18n/en.7a12a09daf.json\",\"es\":\"/_i18n/es.9494c7b447.json\",\"ja\":\"/_i18n/ja.4027143d1c.json\",\"ko\":\"/_i18n/ko.e2d7d2c2ad.json\"},\"sel"
+    },
+    {
+      "bytes": 1778,
+      "head": "(function(){if(typeof globalThis===\"undefined\"){window.globalThis=window}if(typeof crypto!==\"undefined\"&&typeof crypto.randomUUID!==\"function\"&&typeof crypto.getRandomValues===\"function\"){crypto.rando"
+    },
+    {
+      "bytes": 1772,
+      "head": "window.dataLayer=window.dataLayer||[];if(typeof window.gtag!=='function')window.gtag=function(){window.dataLayer.push(arguments)};var gtag=window.gtag;window.__hfGaInitialPageView=window.__hfGaInitial"
+    },
+    {
+      "bytes": 1339,
+      "head": "(function(){try{ var rawPath = window.location.pathname; var prefix = rawPath.match(new RegExp('^/([a-z]{2}(?:-[a-z0-9]{2,4})?)(?=/|$)', 'i')); var locale = prefix && prefix[1].split('-')[0].toL"
+    },
+    {
+      "bytes": 938,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"Organization\",\"name\":\"Higgsfield\",\"url\":\"https://higgsfield.ai/\",\"logo\":{\"@type\":\"ImageObject\",\"name\":\"Higgsfield logo\",\"url\":\"https://higgsfield.ai/icon.png\""
+    },
+    {
+      "bytes": 742,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"WebPage\",\"url\":\"https://higgsfield.ai/\",\"name\":\"Higgsfield | AI video and image generation platform\",\"description\":\"AI video and image generation platform wit"
+    },
+    {
+      "bytes": 564,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"@id\":\"https://higgsfield.ai/#website\",\"name\":\"Higgsfield\",\"url\":\"https://higgsfield.ai/\",\"description\":\"AI video and image generation platform with "
+    },
+    {
+      "bytes": 116,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"SiteNavigationElement\",\"name\":\"About\",\"url\":\"https://higgsfield.ai/about\"}"
+    },
+    {
+      "bytes": 120,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"SiteNavigationElement\",\"name\":\"Pricing\",\"url\":\"https://higgsfield.ai/pricing\"}"
+    },
+    {
+      "bytes": 114,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"SiteNavigationElement\",\"name\":\"Apps\",\"url\":\"https://higgsfield.ai/apps\"}"
+    },
+    {
+      "bytes": 144,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"SiteNavigationElement\",\"name\":\"Cinema Studio\",\"url\":\"https://higgsfield.ai/cinematic-video-generator\"}"
+    },
+    {
+      "bytes": 124,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"SiteNavigationElement\",\"name\":\"Community\",\"url\":\"https://higgsfield.ai/community\"}"
+    },
+    {
+      "bytes": 126,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"SiteNavigationElement\",\"name\":\"Enterprise\",\"url\":\"https://higgsfield.ai/enterprise\"}"
+    },
+    {
+      "bytes": 119,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"SiteNavigationElement\",\"name\":\"Team\",\"url\":\"https://higgsfield.ai/team-plan\"}"
+    },
+    {
+      "bytes": 4925,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"ItemList\",\"name\":\"Explore the inside of every project\",\"numberOfItems\":8,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"@type\":\"CreativeWork\",\"n"
+    },
+    {
+      "bytes": 921,
+      "head": "(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a3623e2b1ac73121',t:'MTc4ODU3"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "affinity",
+  "url": "https://www.affinity.studio/",
+  "why": "사용자 지정 레퍼런스 — 이미지 주도 원페이저",
+  "capturedAt": "2026-09-05T03:45:36.962Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "errors": [],
+  "httpStatus": 200,
+  "cssSheets": 3,
+  "cssBytes": 430154,
+  "cssUnreadable": [],
+  "scrollMode": "native",
+  "docHeightPx": 13206,
+  "assetsByType": {
+    "image": {
+      "n": 49,
+      "bytes": 6702473
+    },
+    "font": {
+      "n": 3,
+      "bytes": 114500
+    },
+    "media": {
+      "n": 3,
+      "bytes": 3822178
+    }
+  },
+  "libraries": [],
+  "scriptBytes": 452382
+}

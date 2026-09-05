@@ -1,0 +1,33 @@
+{
+  "id": "midjourney",
+  "url": "https://www.midjourney.com/",
+  "why": "생성 이미지 제품, 간결한 폴드",
+  "capturedAt": "2026-09-05T03:46:54.646Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "errors": [
+    "pageerror: Error: Minified React error #418; visit https://reactjs.org/docs/error-decoder.html?invariant=418 for the full message or use the non-minified dev environment f",
+    "pageerror: Error: Minified React error #418; visit https://reactjs.org/docs/error-decoder.html?invariant=418 for the full message or use the non-minified dev environment f",
+    "pageerror: Error: Minified React error #423; visit https://reactjs.org/docs/error-decoder.html?invariant=423 for the full message or use the non-minified dev environment f"
+  ],
+  "httpStatus": 200,
+  "cssSheets": 4,
+  "cssBytes": 394059,
+  "cssUnreadable": [],
+  "scrollMode": "native",
+  "docHeightPx": 2362,
+  "assetsByType": {
+    "font": {
+      "n": 3,
+      "bytes": 128528
+    },
+    "image": {
+      "n": 15,
+      "bytes": 13471247
+    }
+  },
+  "libraries": [],
+  "scriptBytes": 354944
+}

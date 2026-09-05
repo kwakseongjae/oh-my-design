@@ -1,0 +1,180 @@
+{
+  "globals": [],
+  "versions": {},
+  "external": [
+    {
+      "url": "https://www.tasteskill.dev/_next/static/chunks/04b03yf6q.jhq.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.tasteskill.dev/_next/static/chunks/0ang8ia4206gq.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.tasteskill.dev/_next/static/chunks/0ka051yepewro.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.tasteskill.dev/_next/static/chunks/0a0h5o6mq96e0.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.tasteskill.dev/_next/static/chunks/17fd-~pgllpyv.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.tasteskill.dev/_next/static/chunks/07n0~k1g7w10j.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.tasteskill.dev/_next/static/chunks/06yzkcsizbcwv.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.tasteskill.dev/_next/static/chunks/turbopack-13ccvn~iyay9e.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.tasteskill.dev/_next/static/chunks/0vg8had~vl2n4.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.tasteskill.dev/_next/static/chunks/0mu1qslb0zv9i.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.tasteskill.dev/_next/static/chunks/0.cy8z6yil26b.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.tasteskill.dev/_next/static/chunks/0d3shmwh5_nmn.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.tasteskill.dev/b4fd3029e43aee70/script.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.tasteskill.dev/_next/static/chunks/15ugdpqz5fkak.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.tasteskill.dev/_next/static/chunks/123r0-.9lx~u3.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://www.tasteskill.dev/_next/static/chunks/176quqkg_jfzz.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    }
+  ],
+  "inline": [
+    {
+      "bytes": 579,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"SoftwareApplication\",\"name\":\"Taste Skill\",\"url\":\"https://www.tasteskill.dev\",\"applicationCategory\":\"DeveloperApplication\",\"operatingSystem\":\"All\",\"description"
+    },
+    {
+      "bytes": 257,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"Taste Skill\",\"url\":\"https://www.tasteskill.dev\",\"description\":\"The anti-slop frontend framework for AI coding agents.\",\"publisher\":{\"@type\":\""
+    },
+    {
+      "bytes": 43,
+      "head": "(self.__next_f=self.__next_f||[]).push([0])"
+    },
+    {
+      "bytes": 1952,
+      "head": "self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[39756,[\\\"/_next/static/chunks/0ang8ia4206gq.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a\\\",\\\"/_next/static/chunks/0d3shmwh5_nmn.js?dpl=dpl_GZYA2WcGrg1RC1m"
+    },
+    {
+      "bytes": 5138,
+      "head": "self.__next_f.push([1,\"0:{\\\"P\\\":null,\\\"c\\\":[\\\"\\\",\\\"\\\"],\\\"q\\\":\\\"\\\",\\\"i\\\":false,\\\"f\\\":[[[\\\"\\\",{\\\"children\\\":[\\\"__PAGE__\\\",{}]},\\\"$undefined\\\",\\\"$undefined\\\",16],[[\\\"$\\\",\\\"$1\\\",\\\"c\\\",{\\\"children\\\":[[[\\\"$"
+    },
+    {
+      "bytes": 1675,
+      "head": "self.__next_f.push([1,\"b:I[2355,[\\\"/_next/static/chunks/0ang8ia4206gq.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a\\\",\\\"/_next/static/chunks/0d3shmwh5_nmn.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a\\\"],\\\"Analyt"
+    },
+    {
+      "bytes": 4607,
+      "head": "self.__next_f.push([1,\"7:[\\\"$\\\",\\\"$1\\\",\\\"c\\\",{\\\"children\\\":[[\\\"$\\\",\\\"main\\\",null,{\\\"className\\\":\\\"flex min-h-screen w-full max-w-full flex-col overflow-x-clip antialiased\\\",\\\"style\\\":{\\\"fontFamily\\\":\\"
+    },
+    {
+      "bytes": 570,
+      "head": "self.__next_f.push([1,\"8:[\\\"$\\\",\\\"$1\\\",\\\"h\\\",{\\\"children\\\":[null,[\\\"$\\\",\\\"$L1b\\\",null,{\\\"children\\\":\\\"$L1c\\\"}],[\\\"$\\\",\\\"div\\\",null,{\\\"hidden\\\":true,\\\"children\\\":[\\\"$\\\",\\\"$L1d\\\",null,{\\\"children\\\":[\\\"$"
+    },
+    {
+      "bytes": 4451,
+      "head": "self.__next_f.push([1,\"2f:I[56511,[\\\"/_next/static/chunks/0ang8ia4206gq.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a\\\",\\\"/_next/static/chunks/0d3shmwh5_nmn.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a\\\",\\\"/_nex"
+    },
+    {
+      "bytes": 2855,
+      "head": "self.__next_f.push([1,\"ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-neutral-300 hover:bg-white hover:shadow-[0_22px_44px_-26px_rgba(15,15,15,0.22)] sm:px-8 sm:py-8\\\",\\\"children"
+    },
+    {
+      "bytes": 4437,
+      "head": "self.__next_f.push([1,\"15:[\\\"$\\\",\\\"section\\\",null,{\\\"aria-labelledby\\\":\\\"sponsor-wall-heading\\\",\\\"className\\\":\\\"mt-10 border-t border-neutral-200/80 pt-10 sm:mt-12 sm:pt-12\\\",\\\"children\\\":[[\\\"$\\\",\\\"di"
+    },
+    {
+      "bytes": 533,
+      "head": "self.__next_f.push([1,\"16:[\\\"$\\\",\\\"$L2f\\\",null,{}]\\n17:[\\\"$\\\",\\\"$L30\\\",null,{}]\\n18:[\\\"$\\\",\\\"script\\\",\\\"script-0\\\",{\\\"src\\\":\\\"/_next/static/chunks/0a0h5o6mq96e0.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a"
+    },
+    {
+      "bytes": 4444,
+      "head": "self.__next_f.push([1,\"20:[\\\"$\\\",\\\"$Ld\\\",null,{\\\"src\\\":\\\"https://github.com/ajmalaksar25.png\\\",\\\"alt\\\":\\\"ajmalaksar25 on GitHub\\\",\\\"width\\\":56,\\\"height\\\":56,\\\"unoptimized\\\":true,\\\"className\\\":\\\"h-full"
+    },
+    {
+      "bytes": 4432,
+      "head": "self.__next_f.push([1,\"0 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/sponsor:ring-neutral-300\\\",\\\"children\\\":[\\\"$\\\",\\\"$Ld\\\",null,{\\\"src\\\":\\\"https://github.com/JKc6"
+    },
+    {
+      "bytes": 4446,
+      "head": "self.__next_f.push([1,\"r:border-neutral-300 hover:bg-white hover:shadow-[0_22px_44px_-26px_rgba(15,15,15,0.22)]\\\",\\\"title\\\":\\\"ghughes7 on GitHub\\\",\\\"children\\\":[[\\\"$\\\",\\\"span\\\",null,{\\\"className\\\":\\\"r"
+    },
+    {
+      "bytes": 2030,
+      "head": "self.__next_f.push([1,\"py-4 text-center backdrop-blur-sm transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:border-neutral-300 hover:bg-white hover:shadow-[0_22p"
+    },
+    {
+      "bytes": 178,
+      "head": "self.__next_f.push([1,\"1c:[[\\\"$\\\",\\\"meta\\\",\\\"0\\\",{\\\"charSet\\\":\\\"utf-8\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"1\\\",{\\\"name\\\":\\\"viewport\\\",\\\"content\\\":\\\"width=device-width, initial-scale=1\\\"}]]\\n\"])"
+    },
+    {
+      "bytes": 212,
+      "head": "self.__next_f.push([1,\"33:I[27201,[\\\"/_next/static/chunks/0ang8ia4206gq.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a\\\",\\\"/_next/static/chunks/0d3shmwh5_nmn.js?dpl=dpl_GZYA2WcGrg1RC1maswr1Xmvhz98a\\\"],\\\"Icon"
+    },
+    {
+      "bytes": 2977,
+      "head": "self.__next_f.push([1,\"1f:[[\\\"$\\\",\\\"title\\\",\\\"0\\\",{\\\"children\\\":\\\"Taste Skill | The Anti-Slop Frontend Framework for AI Agents\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"1\\\",{\\\"name\\\":\\\"description\\\",\\\"content\\\":\\\"Taste S"
+    }
+  ]
+}

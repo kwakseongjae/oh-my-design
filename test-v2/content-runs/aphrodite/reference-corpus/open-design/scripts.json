@@ -1,0 +1,96 @@
+{
+  "globals": [],
+  "versions": {},
+  "external": [
+    {
+      "url": "https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://us-assets.i.posthog.com/static/array.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://us-assets.i.posthog.com/array/phc_u5dHWkwdqN626opkbbjDKk7xNzxR2UsJbdQqx3DncbjU/config.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-2N1F3J61CX",
+      "bytes": 173977,
+      "status": 200,
+      "library": "ogl"
+    },
+    {
+      "url": "https://us-assets.i.posthog.com/static/1.427.2/surveys.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://us-assets.i.posthog.com/static/1.427.2/exception-autocapture.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    }
+  ],
+  "inline": [
+    {
+      "bytes": 11217,
+      "head": " (() => { const STORAGE_KEY = 'od.preferredLocale'; const ATTRIBUTION_HANDOFF_KEY = 'od.localeAttribution'; const DEFAULT_LOCALE = \"en\"; const LOCALES = [{\"code\":\"en\",\"htmlLang\":\"en\"},{\"code\":"
+    },
+    {
+      "bytes": 2086,
+      "head": " window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} var gtagScript = document.createElement('script'); gtagScript.async = true; gtagScript.src = 'https://"
+    },
+    {
+      "bytes": 18198,
+      "head": " !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(\".\");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.protot"
+    },
+    {
+      "bytes": 2311,
+      "head": " (function () { try { var COOKIE = 'od_attr'; // First-touch: if we already captured a source, keep it. if (document.cookie.indexOf(COOKIE + '=') !== -1) return; var qs = new URLSea"
+    },
+    {
+      "bytes": 2346,
+      "head": "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebSite\",\"@id\":\"https://open-design.ai/#website\",\"name\":\"OpenDesign\",\"alternateName\":[\"Open Design\",\"open-design\",\"opendesign\",\"Open Design AI\",\"Op"
+    },
+    {
+      "bytes": 10583,
+      "head": "(function(){const pageName = \"landing_home\"; const locale = \"ko\"; const SCROLL_DWELL_SECONDS = 20; const DISMISS_COOLDOWN_MS = 604800000; const DOWNLOAD_COOLDOWN_MS = 2592000000; const directAssets = "
+    },
+    {
+      "bytes": 3210,
+      "head": " (() => { const dismissKey = 'open-design:home-campaign-banner-dismissed:fable-5-1-v1'; const banner = document.querySelector('[data-home-campaign-banner]'); const campai"
+    },
+    {
+      "bytes": 4150,
+      "head": "(function(){const imgRootMargin = \"600px 0px\"; (() => { const IMG_SELECTOR = 'img[data-precise-src]'; const VIDEO_SELECTOR = 'video[data-precise-load]'; const BG_SELECTOR = '[data-preci"
+    },
+    {
+      "bytes": 2168,
+      "head": "(function(){const matterEnhancerUrl = \"/enhancers/matter.min.js?v=0.20.0\"; const cobeEnhancerUrl = \"/enhancers/cobe.js?v=2.0.1\"; window.__enhancerUrls = { matter: matterEnhancerUrl, cobe: cobeE"
+    },
+    {
+      "bytes": 62670,
+      "head": " (() => { const formatStars = (count) => { if (!Number.isFinite(count) || count <= 0) return '0'; if (count < 1000) return String(count); return `${(count /"
+    },
+    {
+      "bytes": 8772,
+      "head": " const initContributorGlobes = () => { const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches; const canvases = Array.from( document.querySe"
+    },
+    {
+      "bytes": 9553,
+      "head": " // FallingText (React Bits) ported to vanilla matter-js. The agent-name // chips in the Method section drop into a physics playground on trigger; // the words are server-rendered (."
+    },
+    {
+      "bytes": 1331,
+      "head": " // Hero video facade: swap the poster for the YouTube iframe on demand so // the first screen ships no third-party script until the visitor asks. (() => { const frame = docu"
+    }
+  ]
+}

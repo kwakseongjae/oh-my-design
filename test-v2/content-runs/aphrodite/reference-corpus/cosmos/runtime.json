@@ -1,0 +1,238 @@
+{
+  "keyframes": [
+    {
+      "name": "sequence-card-image-reveal",
+      "steps": 2
+    },
+    {
+      "name": "sequence-hero-strip-shape-swap",
+      "steps": 3
+    },
+    {
+      "name": "sequence-hero-strip-image-out",
+      "steps": 2
+    },
+    {
+      "name": "sequence-hero-strip-image-in",
+      "steps": 2
+    },
+    {
+      "name": "dot-wave-1",
+      "steps": 3
+    },
+    {
+      "name": "dot-wave-2",
+      "steps": 3
+    },
+    {
+      "name": "dot-wave-3",
+      "steps": 3
+    },
+    {
+      "name": "fade-in",
+      "steps": 2
+    },
+    {
+      "name": "hover-sentinel",
+      "steps": 2
+    },
+    {
+      "name": "enter",
+      "steps": 2
+    },
+    {
+      "name": "scale-in",
+      "steps": 2
+    },
+    {
+      "name": "scroll-left",
+      "steps": 2
+    },
+    {
+      "name": "snake-border",
+      "steps": 2
+    },
+    {
+      "name": "see-similar-button",
+      "steps": 2
+    },
+    {
+      "name": "similar-elements-enter",
+      "steps": 2
+    },
+    {
+      "name": "canvas-enter",
+      "steps": 2
+    },
+    {
+      "name": "ext-border-glow-spin",
+      "steps": 6
+    },
+    {
+      "name": "ext-border-glow-fade",
+      "steps": 2
+    },
+    {
+      "name": "slide-in",
+      "steps": 2
+    },
+    {
+      "name": "element-view",
+      "steps": 2
+    },
+    {
+      "name": "marquee-left",
+      "steps": 2
+    },
+    {
+      "name": "marquee-right",
+      "steps": 2
+    },
+    {
+      "name": "spin",
+      "steps": 1
+    },
+    {
+      "name": "pulse",
+      "steps": 1
+    },
+    {
+      "name": "loader-module___O9AMq__loader-shift",
+      "steps": 2
+    },
+    {
+      "name": "search-placeholder-module__2Y3b-a__text-shimmer",
+      "steps": 1
+    },
+    {
+      "name": "shimmer-text-module__Rh0y_W__shimmer-sweep",
+      "steps": 1
+    }
+  ],
+  "keyframeCount": 27,
+  "animations": [
+    {
+      "name": "search-placeholder-module__2Y3b-a__text-shimmer",
+      "state": "running",
+      "dur": 2000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "span.search-placeholder-module__2Y3b-a__searchPlaceholder"
+    },
+    {
+      "name": "marquee-left",
+      "state": "paused",
+      "dur": 40000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.flex"
+    },
+    {
+      "name": "marquee-left",
+      "state": "paused",
+      "dur": 40000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.flex"
+    },
+    {
+      "name": "marquee-right",
+      "state": "paused",
+      "dur": 40000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.flex"
+    },
+    {
+      "name": "marquee-right",
+      "state": "paused",
+      "dur": 40000,
+      "iter": "inf",
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.flex"
+    }
+  ],
+  "animationCount": 5,
+  "runningAnimations": 1,
+  "infiniteAnimations": 5,
+  "transitions": [
+    [
+      "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+      33
+    ],
+    [
+      "0.55s cubic-bezier(0.4, 0, 0.2, 1)",
+      4
+    ],
+    [
+      "0.5s cubic-bezier(0.215, 0.61, 0.355, 1)",
+      3
+    ],
+    [
+      "0.2s cubic-bezier(0, 0, 0.2, 1)",
+      2
+    ],
+    [
+      "1.5s ease-out",
+      2
+    ],
+    [
+      "0.5s cubic-bezier(0.22, 1, 0.36, 1)",
+      1
+    ],
+    [
+      "0.2s, 0.15s ease-out, ease",
+      1
+    ],
+    [
+      "2s ease-out",
+      1
+    ]
+  ],
+  "canvases": [
+    {
+      "w": 2000,
+      "h": 2000,
+      "cssW": 2000,
+      "cssH": 2000
+    },
+    {
+      "w": 1440,
+      "h": 1440,
+      "cssW": 1440,
+      "cssH": 1440
+    }
+  ],
+  "canvasCount": 2,
+  "rafCallbacks": 5,
+  "rafCalls": 288,
+  "scrollListeners": {
+    "mousemove": 21,
+    "pointermove": 20,
+    "scroll": 13,
+    "touchmove": 21,
+    "wheel": 20
+  },
+  "intersectionObservers": 16,
+  "canvasDraws": 0,
+  "scrollMode": "native",
+  "docHeightPx": 6196,
+  "videos": [
+    {
+      "src": "blob:https://www.cosmos.so/c8722bf8-a1f1-48f0-8a14-7be0eead85dc",
+      "loop": true,
+      "muted": true,
+      "autoplay": true,
+      "paused": true,
+      "readyState": 4,
+      "dur": 92.181333,
+      "w": 960,
+      "h": 720
+    }
+  ]
+}

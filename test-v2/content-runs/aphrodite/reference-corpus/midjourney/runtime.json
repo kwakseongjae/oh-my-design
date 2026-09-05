@@ -1,0 +1,126 @@
+{
+  "keyframes": [
+    {
+      "name": "waveformShift",
+      "steps": 2
+    },
+    {
+      "name": "shimmer",
+      "steps": 2
+    },
+    {
+      "name": "rotate",
+      "steps": 2
+    },
+    {
+      "name": "loading",
+      "steps": 2
+    },
+    {
+      "name": "loading",
+      "steps": 2
+    },
+    {
+      "name": "loading-back-and-forth",
+      "steps": 3
+    },
+    {
+      "name": "sprite-loop",
+      "steps": 2
+    },
+    {
+      "name": "toast-scale-pulse",
+      "steps": 3
+    },
+    {
+      "name": "spin",
+      "steps": 1
+    },
+    {
+      "name": "ping",
+      "steps": 1
+    },
+    {
+      "name": "pulse",
+      "steps": 1
+    },
+    {
+      "name": "shake",
+      "steps": 3
+    },
+    {
+      "name": "pulse-in",
+      "steps": 3
+    },
+    {
+      "name": "go2264125279",
+      "steps": 2
+    },
+    {
+      "name": "go3020080000",
+      "steps": 2
+    },
+    {
+      "name": "go463499852",
+      "steps": 2
+    },
+    {
+      "name": "go1268368563",
+      "steps": 2
+    },
+    {
+      "name": "go1310225428",
+      "steps": 2
+    },
+    {
+      "name": "go651618207",
+      "steps": 3
+    },
+    {
+      "name": "go901347462",
+      "steps": 2
+    }
+  ],
+  "keyframeCount": 20,
+  "animations": [],
+  "animationCount": 0,
+  "runningAnimations": 0,
+  "infiniteAnimations": 0,
+  "transitions": [
+    [
+      "0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+      16
+    ],
+    [
+      "0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+      8
+    ],
+    [
+      "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+      7
+    ]
+  ],
+  "canvases": [
+    {
+      "w": 1440,
+      "h": 700,
+      "cssW": 1440,
+      "cssH": 700
+    }
+  ],
+  "canvasCount": 1,
+  "rafCallbacks": 1,
+  "rafCalls": 566,
+  "scrollListeners": {
+    "scroll": 2,
+    "mousemove": 3,
+    "pointermove": 2,
+    "touchmove": 2,
+    "wheel": 2
+  },
+  "intersectionObservers": 0,
+  "canvasDraws": 1132,
+  "scrollMode": "native",
+  "docHeightPx": 2362,
+  "videos": []
+}

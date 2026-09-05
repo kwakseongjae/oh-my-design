@@ -1,0 +1,512 @@
+{
+  "globals": [],
+  "versions": {},
+  "external": [
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/main-app-301c3daadbef91ee.js",
+      "bytes": 473,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/1143-2e942c26988a68e0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/7431-351889fa530366f0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/4505-4d7c5367458d7dce.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/webpack-a819b22a32a475a0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/5573-27088ef242eb8540.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/7339-975d5ed7bfcd9be1.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/app/(marketing)/(homepage)/page-d3f090016d022a3e.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/5650-12256397d732b9b3.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/4602-9f0111b45b35f395.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/2754-7315a538faf0071f.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/9732-c74ddc06af24c581.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/273-85a1facb43649de4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/app/(ray)/layout-4487dfcca314389f.js",
+      "bytes": 665,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/2543-25c2e6e5b6a3390b.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/2840-080b3727576e938e.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/2674-60cc9966498edb11.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/4920-2440583598380a33.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/5372-54112d5cdb52420e.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/1771-a7ae64fcdab462a6.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/7455-5c287eec7d9e5885.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/7066-d1495a510fcf90b5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/4325-00bc1859938bbea7.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/425217fe-f97c9cb1a9c7b9f5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/e6ba784c-52f3167455f016d0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/3158-2e06b66ea2474925.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/6405-b21fd29353d8f386.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/978-1c05849b98706fdc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/6106-a3ef3c4528e96690.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/69-9c97f7fc58464747.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_next/static/chunks/7978-856894fa9c89c715.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://lumalabs.ai/_vercel/insights/script.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://connect.facebook.net/en_US/fbevents.js",
+      "bytes": 108637,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://connect.facebook.net/signals/config/1355270225937313?v=2.9.393&r=stable&domain=lumalabs.ai&hme=118644ce20ff837cfc6c6ee441987e9e11b8b9fb8ec6bc04b15a3c516441ba07&ex_m=115%2C226%2C166%2C26%2C80%2C81%2C158%2C76%2C75%2C11%2C176%2C100%2C20%2C150%2C138%2C45%2C83%2C88%2C146%2C171%2C178%2C31%2C17%2C30%2C18%2C32%2C33%2C34%2C36%2C54%2C159%2C85%2C123%2C22%2C24%2C50%2C46%2C48%2C47%2C93%2C102%2C106%2C121%2C157%2C160%2C52%2C122%2C28%2C25%2C130%2C77%2C42%2C162%2C161%2C163%2C154%2C152%2C29%2C41%2C65%2C120%2C173%2C78%2C21%2C125%2C91%2C74%2C23%2C95%2C96%2C127%2C94%2C148%2C147%2C151%2C107%2C172%2C175%2C40%2C55%2C124%2C53%2C8%2C4%2C5%2C7%2C6%2C3%2C101%2C112%2C179%2C193%2C240%2C82%2C254%2C253%2C252%2C14%2C27%2C39%2C61%2C114%2C67%2C10%2C71%2C108%2C109%2C110%2C116%2C141%2C37%2C35%2C143%2C144%2C145%2C140%2C139%2C167%2C84%2C170%2C168%2C169%2C56%2C66%2C134%2C19%2C174%2C51%2C303%2C304%2C305%2C302%2C318%2C340%2C233%2C222%2C68%2C223%2C221%2C343%2C334%2C58%2C234%2C118%2C142%2C90%2C132%2C60%2C131%2C137%2C136%2C64%2C72%2C70%2C164%2C86%2C87%2C126%2C43%2C38%2C59%2C62%2C111%2C177%2C1%2C135%2C16%2C133%2C12%2C2%2C63%2C103%2C15%2C73%2C69%2C129%2C99%2C98%2C181%2C182%2C104%2C105%2C9%2C113%2C180%2C57%2C155%2C97%2C89%2C79%2C128%2C117%2C49%2C156%2C0%2C92%2C149%2C153%2C165%2C44%2C119%2C13%2C183",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtm.js?id=GTM-NRN8VZGM",
+      "bytes": 176044,
+      "status": 200,
+      "library": "ogl"
+    },
+    {
+      "url": "https://us-assets.i.posthog.com/array/phc_rbz5RxZCdjq5oJ3pP2JRIvqwB59x7eySuKxHy5jChbR/config.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.redditstatic.com/ads/pixel.js",
+      "bytes": 20043,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=AW-16921813066&cx=c&gtm=4e6930h2",
+      "bytes": 192868,
+      "status": 200,
+      "library": "ogl"
+    },
+    {
+      "url": "https://pixel.thoughtmetric.io/settings.js",
+      "bytes": 41288,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://snap.licdn.com/li.lms-analytics/insight.min.js",
+      "bytes": 20593,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/js?id=G-67JX7C10DX&cx=c&gtm=4e6930h2",
+      "bytes": 192855,
+      "status": 200,
+      "library": "ogl"
+    },
+    {
+      "url": "https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache=lc6b7",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.ads-twitter.com/uwt.js",
+      "bytes": 14765,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.claydar.com/init.v1.js?id=cF2EMjPD46",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://snap.licdn.com/li.lms-analytics/insight.beta.min.js",
+      "bytes": 21292,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://js.hs-scripts.com/49143553.js",
+      "bytes": 0,
+      "status": 307,
+      "library": null
+    },
+    {
+      "url": "https://analytics.tiktok.com/i18n/pixel/events.js?sdkid=D4J029JC77UDQ79IT7H0&lib=ttq",
+      "bytes": 2401,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://js-na2.hs-scripts.com/49143553.js",
+      "bytes": 641,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://analytics.tiktok.com/i18n/pixel/static/main.MTQyN2U3Zjc5MQ.js",
+      "bytes": 117388,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://js-na2.hsadspixel.net/pixels.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://js-na2.hs-banner.com/v2/49143553/banner.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://js-na2.hs-analytics.net/analytics/1788576300000/49143553.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://cdn.claydar.com/releases/latest/radar.min.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtag/destination?id=AW-AW-16921813066&cx=c&gtm=4e6930h2",
+      "bytes": 148165,
+      "status": 200,
+      "library": "ogl"
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/16921813066/?random=1788580004047&cv=11&fst=1788580004047&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be6930h2v869826613z89208408257za20gzb9208408257zd9208408257xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938466~115938469~118897920~118897930~120213116~120385423~120469145~120469153&u_w=1440&u_h=900&url=https%3A%2F%2Flumalabs.ai%2F&rcb=2&frm=0&tiba=Luma%20%7C%20AI%20Agents%20for%20Creative%20Work&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=193183719.1788580004&uaa=x86&uab=64&uafvl=HeadlessChrome%3B149.0.7827.55%7CChromium%3B149.0.7827.55%7CNot)A%253BBrand%3B24.0.0.0&uamb=0&uam=&uap=macOS&uapv=10_15_7&uaw=0&data=event%3Dgtag.config&ept=9&rfmt=3&fmt=4",
+      "bytes": 2659,
+      "status": 200,
+      "library": "ogl"
+    },
+    {
+      "url": "https://analytics.tiktok.com/i18n/pixel/static/identify_2a73ddc0.js",
+      "bytes": 39911,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/AW-16921813066/?random=1788580004285&cv=11&fst=1788580004285&bg=ffffff&guid=ON&async=1&gtm=45be6930h2z89208408257za20gzb9208408257zd9208408257xea&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938466~115938469~118897920~118897930~119791748~120385423~120469145~120469153&u_w=1440&u_h=900&url=https%3A%2F%2Flumalabs.ai%2F&rcb=14&frm=0&tiba=Luma%20%7C%20AI%20Agents%20for%20Creative%20Work&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=193183719.1788580004&uaa=x86&uab=64&uafvl=HeadlessChrome%3B149.0.7827.55%7CChromium%3B149.0.7827.55%7CNot)A%253BBrand%3B24.0.0.0&uamb=0&uam=&uap=macOS&uapv=10_15_7&uaw=0&_tu=CA&ept=9&rfmt=3&fmt=4",
+      "bytes": 2648,
+      "status": 200,
+      "library": "ogl"
+    },
+    {
+      "url": "https://us-assets.i.posthog.com/static/dead-clicks-autocapture.js?v=1.314.0",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://us-assets.i.posthog.com/static/surveys.js?v=1.314.0",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://us-assets.i.posthog.com/static/posthog-recorder.js?v=1.314.0",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    }
+  ],
+  "inline": [
+    {
+      "bytes": 985,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"Organization\",\"name\":\"Luma\",\"url\":\"https://lumalabs.ai\",\"logo\":\"https://lumalabs.ai/images/brand/luma-ai/logo-black.svg\",\"description\":\"Luma builds AI agents "
+    },
+    {
+      "bytes": 93,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"Luma\",\"url\":\"https://lumalabs.ai\"}"
+    },
+    {
+      "bytes": 72,
+      "head": "(self.__next_f=self.__next_f||[]).push([0]);self.__next_f.push([2,null])"
+    },
+    {
+      "bytes": 598,
+      "head": "self.__next_f.push([1,\"1:HL[\\\"/_next/static/media/42a02035e7af4a22-s.p.otf\\\",\\\"font\\\",{\\\"crossOrigin\\\":\\\"\\\",\\\"type\\\":\\\"font/otf\\\"}]\\n2:HL[\\\"/_next/static/media/4cedf89b82b18894-s.p.woff2\\\",\\\"font\\\",{\\"
+    },
+    {
+      "bytes": 112,
+      "head": "self.__next_f.push([1,\"7:I[41084,[],\\\"\\\"]\\na:I[29107,[],\\\"\\\"]\\nb:I[38106,[],\\\"\\\"]\\ne:I[94260,[],\\\"\\\"]\\nf:[]\\n\"])"
+    },
+    {
+      "bytes": 2888,
+      "head": "self.__next_f.push([1,\"0:[null,[\\\"$\\\",\\\"$L7\\\",null,{\\\"buildId\\\":\\\"ljZbL1KnDYgidQyVJsBev\\\",\\\"assetPrefix\\\":\\\"\\\",\\\"initialCanonicalUrl\\\":\\\"/\\\",\\\"initialTree\\\":[\\\"\\\",{\\\"children\\\":[\\\"(marketing)\\\",{\\\"chi"
+    },
+    {
+      "bytes": 3215,
+      "head": "self.__next_f.push([1,\"d:[[\\\"$\\\",\\\"meta\\\",\\\"0\\\",{\\\"name\\\":\\\"viewport\\\",\\\"content\\\":\\\"width=device-width, initial-scale=1\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"1\\\",{\\\"charSet\\\":\\\"utf-8\\\"}],[\\\"$\\\",\\\"title\\\",\\\"2\\\",{\\\"ch"
+    },
+    {
+      "bytes": 2243,
+      "head": "self.__next_f.push([1,\"10:I[12624,[\\\"4746\\\",\\\"static/chunks/e6ba784c-52f3167455f016d0.js\\\",\\\"5650\\\",\\\"static/chunks/5650-12256397d732b9b3.js\\\",\\\"69\\\",\\\"static/chunks/69-9c97f7fc58464747.js\\\",\\\"4325\\\","
+    },
+    {
+      "bytes": 2243,
+      "head": "self.__next_f.push([1,\"75d5ed7bfcd9be1.js\\\",\\\"6757\\\",\\\"static/chunks/app/(ray)/layout-4487dfcca314389f.js\\\"],\\\"CookieConsentBanner\\\"]\\n17:I[93777,[\\\"4746\\\",\\\"static/chunks/e6ba784c-52f3167455f016d0.js"
+    },
+    {
+      "bytes": 2244,
+      "head": "self.__next_f.push([1,\"-00bc1859938bbea7.js\\\",\\\"2754\\\",\\\"static/chunks/2754-7315a538faf0071f.js\\\",\\\"4602\\\",\\\"static/chunks/4602-9f0111b45b35f395.js\\\",\\\"2840\\\",\\\"static/chunks/2840-080b3727576e938e.js\\"
+    },
+    {
+      "bytes": 2244,
+      "head": "self.__next_f.push([1,\"e64fcdab462a6.js\\\",\\\"4505\\\",\\\"static/chunks/4505-4d7c5367458d7dce.js\\\",\\\"273\\\",\\\"static/chunks/273-85a1facb43649de4.js\\\",\\\"5372\\\",\\\"static/chunks/5372-54112d5cdb52420e.js\\\",\\\"79"
+    },
+    {
+      "bytes": 2244,
+      "head": "self.__next_f.push([1,\"unks/6405-b21fd29353d8f386.js\\\",\\\"1771\\\",\\\"static/chunks/1771-a7ae64fcdab462a6.js\\\",\\\"4505\\\",\\\"static/chunks/4505-4d7c5367458d7dce.js\\\",\\\"273\\\",\\\"static/chunks/273-85a1facb43649"
+    },
+    {
+      "bytes": 2240,
+      "head": "self.__next_f.push([1,\"static/chunks/5573-27088ef242eb8540.js\\\",\\\"6405\\\",\\\"static/chunks/6405-b21fd29353d8f386.js\\\",\\\"1771\\\",\\\"static/chunks/1771-a7ae64fcdab462a6.js\\\",\\\"4505\\\",\\\"static/chunks/4505-4d"
+    },
+    {
+      "bytes": 2244,
+      "head": "self.__next_f.push([1,\"5.js\\\",\\\"2840\\\",\\\"static/chunks/2840-080b3727576e938e.js\\\",\\\"5573\\\",\\\"static/chunks/5573-27088ef242eb8540.js\\\",\\\"6405\\\",\\\"static/chunks/6405-b21fd29353d8f386.js\\\",\\\"1771\\\",\\\"sta"
+    },
+    {
+      "bytes": 2244,
+      "head": "self.__next_f.push([1,\"5a538faf0071f.js\\\",\\\"4602\\\",\\\"static/chunks/4602-9f0111b45b35f395.js\\\",\\\"2840\\\",\\\"static/chunks/2840-080b3727576e938e.js\\\",\\\"5573\\\",\\\"static/chunks/5573-27088ef242eb8540.js\\\",\\\""
+    },
+    {
+      "bytes": 2248,
+      "head": "self.__next_f.push([1,\"325-00bc1859938bbea7.js\\\",\\\"2754\\\",\\\"static/chunks/2754-7315a538faf0071f.js\\\",\\\"4602\\\",\\\"static/chunks/4602-9f0111b45b35f395.js\\\",\\\"2840\\\",\\\"static/chunks/2840-080b3727576e938e."
+    },
+    {
+      "bytes": 469,
+      "head": "self.__next_f.push([1,\"\\\",\\\"height\\\":\\\"100vh\\\",\\\"textAlign\\\":\\\"center\\\",\\\"display\\\":\\\"flex\\\",\\\"flexDirection\\\":\\\"column\\\",\\\"alignItems\\\":\\\"center\\\",\\\"justifyContent\\\":\\\"center\\\"}\\n13:{\\\"display\\\":\\\"in"
+    },
+    {
+      "bytes": 9936,
+      "head": "self.__next_f.push([1,\"c:[\\\"$\\\",\\\"html\\\",null,{\\\"lang\\\":\\\"en\\\",\\\"className\\\":\\\"__variable_7126cf __variable_a83cde\\\",\\\"children\\\":[\\\"$\\\",\\\"body\\\",null,{\\\"className\\\":\\\"tracking-tight\\\",\\\"children\\\":[["
+    },
+    {
+      "bytes": 26713,
+      "head": "self.__next_f.push([1,\"9:[\\\"$\\\",\\\"main\\\",null,{\\\"className\\\":\\\"light flex min-h-svh flex-col\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"dark pointer-events-none fixed right-0 left-0 -z-10 h-"
+    },
+    {
+      "bytes": 1176,
+      "head": "self.__next_f.push([1,\"2c:I[80978,[\\\"4746\\\",\\\"static/chunks/e6ba784c-52f3167455f016d0.js\\\",\\\"5650\\\",\\\"static/chunks/5650-12256397d732b9b3.js\\\",\\\"69\\\",\\\"static/chunks/69-9c97f7fc58464747.js\\\",\\\"4325\\\","
+    },
+    {
+      "bytes": 3728,
+      "head": "self.__next_f.push([1,\"M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32ZM10.0472 7.47896C10.6111 7.25739 11.2561 7.10665 12.2007 7.06209"
+    },
+    {
+      "bytes": 1710,
+      "head": "self.__next_f.push([1,\"2b:T68c,M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32ZM21.5645 11.4409C21.6728 11.5114 21.7845 11.5764 21.8992"
+    },
+    {
+      "bytes": 9582,
+      "head": "self.__next_f.push([1,\"29:[\\\"$\\\",\\\"footer\\\",null,{\\\"className\\\":\\\"container-lg flex flex-col gap-20 pb-20 md:pb-40\\\",\\\"children\\\":[[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"pointer-events-none\\\",\\\"children"
+    },
+    {
+      "bytes": 2410,
+      "head": "self.__next_f.push([1,\"18:[\\\"$\\\",\\\"$L2c\\\",null,{\\\"data\\\":{\\\"_createdAt\\\":\\\"2025-04-03T15:01:03Z\\\",\\\"_id\\\":\\\"topNavigation\\\",\\\"_rev\\\":\\\"Dyksds5pMdxjOJ11lHauJJ\\\",\\\"_system\\\":{\\\"base\\\":{\\\"id\\\":\\\"topNavig"
+    },
+    {
+      "bytes": 873,
+      "head": "self.__next_f.push([1,\"anchorLink\\\",\\\"blank\\\":false,\\\"label\\\":\\\"Enterprise\\\",\\\"url\\\":\\\"/enterprise\\\"},{\\\"_key\\\":\\\"51f3c2db6e71\\\",\\\"_type\\\":\\\"anchorLink\\\",\\\"blank\\\":false,\\\"label\\\":\\\"News\\\",\\\"url\\\":\\\"/"
+    },
+    {
+      "bytes": 569,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"SoftwareApplication\",\"name\":\"Luma\",\"url\":\"https://app.lumalabs.ai\",\"applicationCategory\":\"MultimediaApplication\",\"applicationSubCategory\":\"Video Generation\",\""
+    },
+    {
+      "bytes": 465,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"VideoObject\",\"name\":\"Luma is your creative partner\",\"thumbnailUrl\":\"https://static.cdn-luma.com/files/sanity/f808e747-ed3b-484b-8118-c10382621707.jpg\",\"conten"
+    },
+    {
+      "bytes": 874,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"ItemList\",\"name\":\"Recent News from Luma\",\"url\":\"https://lumalabs.ai/news\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"url\":\"https://lumalabs.ai/news/"
+    },
+    {
+      "bytes": 985,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"Organization\",\"name\":\"Luma\",\"url\":\"https://lumalabs.ai\",\"logo\":\"https://lumalabs.ai/images/brand/luma-ai/logo-black.svg\",\"description\":\"Luma builds AI agents "
+    },
+    {
+      "bytes": 93,
+      "head": "{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"name\":\"Luma\",\"url\":\"https://lumalabs.ai\"}"
+    },
+    {
+      "bytes": 155,
+      "head": " (function(w,l){ w[l]=w[l]||[]; w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'}); })(window,'dataLayer');"
+    },
+    {
+      "bytes": 831,
+      "head": " function initializeFacebookPixel(f, b, e, v, n, t, s) { if (f.fbq) return n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n"
+    },
+    {
+      "bytes": 3942,
+      "head": "!function(){let e=\"faved_affiliate\",t=\"faved_user_id\",r=new URLSearchParams(window.location.search);r.get(\"utm_source\"),r.get(\"utm_medium\");let a=r.get(\"utm_campaign\"),n=r.get(\"utm_content\"),o=r.get(\""
+    },
+    {
+      "bytes": 341,
+      "head": "function initApollo(){var b=Math.random().toString(36).substring(7),a=document.createElement(\"script\");a.src=\"https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache\\x3d\"+b;a.async=!0;a"
+    },
+    {
+      "bytes": 411,
+      "head": "!function(a,b,c){a.thoughtmetric||(a.thoughtmetricQueue=a.thoughtmetricQueue||[],a.thoughtmetric=a.thoughtmetric||function(){a.thoughtmetricQueue.push(arguments)},c=b.createElement(\"script\"),c.async=!"
+    },
+    {
+      "bytes": 1267,
+      "head": "(function(){console.log(\"[PostHog Sync] Script queued. Waiting 1.5s for async ad network cookies...\");setTimeout(function(){for(var b={_fbp:\"fbp\",_fbc:\"fbc\",_gcl_aw:\"gcl_aw\",_gcl_gb:\"gcl_gb\",_gcl_wb:\""
+    }
+  ]
+}

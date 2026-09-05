@@ -1,0 +1,33 @@
+{
+  "id": "lusion",
+  "url": "https://lusion.co/",
+  "why": "스크롤 질감의 기준점 — 커스텀 스크롤러",
+  "capturedAt": "2026-09-05T03:46:01.882Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "errors": [],
+  "httpStatus": 200,
+  "cssSheets": 1,
+  "cssBytes": 102896,
+  "cssUnreadable": [],
+  "scrollMode": "transform-container",
+  "docHeightPx": 900,
+  "assetsByType": {
+    "image": {
+      "n": 52,
+      "bytes": 6808066
+    },
+    "font": {
+      "n": 6,
+      "bytes": 188984
+    },
+    "media": {
+      "n": 4,
+      "bytes": 14286224
+    }
+  },
+  "libraries": [],
+  "scriptBytes": 803136
+}

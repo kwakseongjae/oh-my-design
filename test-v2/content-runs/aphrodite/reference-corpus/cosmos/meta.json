@@ -1,0 +1,29 @@
+{
+  "id": "cosmos",
+  "url": "https://www.cosmos.so/",
+  "why": "이미지 격자가 살아 있는 화면",
+  "capturedAt": "2026-09-05T03:46:31.489Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "errors": [],
+  "httpStatus": 200,
+  "cssSheets": 2,
+  "cssBytes": 328644,
+  "cssUnreadable": [],
+  "scrollMode": "native",
+  "docHeightPx": 6196,
+  "assetsByType": {
+    "font": {
+      "n": 7,
+      "bytes": 245232
+    },
+    "image": {
+      "n": 40,
+      "bytes": 326795
+    }
+  },
+  "libraries": [],
+  "scriptBytes": 12505
+}

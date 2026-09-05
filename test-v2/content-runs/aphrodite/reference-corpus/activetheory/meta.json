@@ -1,0 +1,29 @@
+{
+  "id": "activetheory",
+  "url": "https://activetheory.net/",
+  "why": "에이전시 — 인터랙티브 연출",
+  "capturedAt": "2026-09-05T03:48:02.469Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "errors": [],
+  "httpStatus": 200,
+  "cssSheets": 1,
+  "cssBytes": 1042,
+  "cssUnreadable": [],
+  "scrollMode": "native",
+  "docHeightPx": 900,
+  "assetsByType": {
+    "image": {
+      "n": 1,
+      "bytes": 191820
+    },
+    "font": {
+      "n": 1,
+      "bytes": 19426
+    }
+  },
+  "libraries": [],
+  "scriptBytes": 725268
+}

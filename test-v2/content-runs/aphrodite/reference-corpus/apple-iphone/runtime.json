@@ -1,0 +1,288 @@
+{
+  "keyframes": [
+    {
+      "name": "globalnav-chevron-slide-in-hover",
+      "steps": 2
+    },
+    {
+      "name": "globalnav-chevron-hover-off",
+      "steps": 2
+    },
+    {
+      "name": "globalnav-flyout-slide-forward-next",
+      "steps": 2
+    },
+    {
+      "name": "globalnav-flyout-slide-forward-previous",
+      "steps": 2
+    },
+    {
+      "name": "globalnav-flyout-slide-back-previous",
+      "steps": 2
+    },
+    {
+      "name": "globalnav-flyout-slide-back-next",
+      "steps": 2
+    },
+    {
+      "name": "globalnav-scrim-height-change",
+      "steps": 2
+    },
+    {
+      "name": "globalnav-fade-in",
+      "steps": 2
+    },
+    {
+      "name": "globalnav-search-fade",
+      "steps": 2
+    },
+    {
+      "name": "globalnav-search-fade-and-slide",
+      "steps": 2
+    },
+    {
+      "name": "globalnav-search-fade-and-slide-to-close",
+      "steps": 2
+    },
+    {
+      "name": "globalnav-search-slide-top-to-bottom",
+      "steps": 2
+    },
+    {
+      "name": "globalnav-search-slide-bottom-to-top",
+      "steps": 2
+    },
+    {
+      "name": "globalnav-search-input-intro",
+      "steps": 2
+    },
+    {
+      "name": "globalnav-search-input-outro",
+      "steps": 2
+    },
+    {
+      "name": "segment-out",
+      "steps": 2
+    },
+    {
+      "name": "progress-indicator-animating",
+      "steps": 8
+    },
+    {
+      "name": "link-in",
+      "steps": 2
+    },
+    {
+      "name": "inline-media-spin",
+      "steps": 2
+    },
+    {
+      "name": "fade-in",
+      "steps": 2
+    },
+    {
+      "name": "aap-animate-progress",
+      "steps": 2
+    },
+    {
+      "name": "ribbon-drop",
+      "steps": 2
+    },
+    {
+      "name": "ribbon-animate-background",
+      "steps": 2
+    },
+    {
+      "name": "ribbon-animate-text-color",
+      "steps": 2
+    },
+    {
+      "name": "ribbon-animate-link-color",
+      "steps": 2
+    },
+    {
+      "name": "captions-selector-pop-in",
+      "steps": 2
+    },
+    {
+      "name": "captions-selector-pop-in",
+      "steps": 2
+    },
+    {
+      "name": "captions-selector-item-pop-in",
+      "steps": 2
+    },
+    {
+      "name": "captions-selector-item-pop-in",
+      "steps": 2
+    },
+    {
+      "name": "captions-selector-pop-out",
+      "steps": 2
+    },
+    {
+      "name": "captions-selector-pop-out",
+      "steps": 2
+    },
+    {
+      "name": "captions-selector-item-pop-out",
+      "steps": 2
+    },
+    {
+      "name": "captions-selector-item-pop-out",
+      "steps": 2
+    },
+    {
+      "name": "loading-fade",
+      "steps": 8
+    },
+    {
+      "name": "loading-fade",
+      "steps": 8
+    }
+  ],
+  "keyframeCount": 35,
+  "animations": [
+    {
+      "name": "globalnav-search-fade-and-slide",
+      "state": "finished",
+      "dur": 320,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 200,
+      "target": "h2.globalnav-searchresults-header"
+    },
+    {
+      "name": "globalnav-search-fade-and-slide",
+      "state": "finished",
+      "dur": 320,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 220,
+      "target": "li.globalnav-searchresults-list-item"
+    },
+    {
+      "name": "globalnav-search-fade-and-slide",
+      "state": "finished",
+      "dur": 320,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 240.00000000000003,
+      "target": "li.globalnav-searchresults-list-item"
+    },
+    {
+      "name": "globalnav-search-fade-and-slide",
+      "state": "finished",
+      "dur": 320,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 260,
+      "target": "li.globalnav-searchresults-list-item"
+    },
+    {
+      "name": "globalnav-search-fade-and-slide",
+      "state": "finished",
+      "dur": 320,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 280,
+      "target": "li.globalnav-searchresults-list-item"
+    },
+    {
+      "name": "globalnav-search-fade-and-slide",
+      "state": "finished",
+      "dur": 320,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 300.00000000000006,
+      "target": "li.globalnav-searchresults-list-item"
+    },
+    {
+      "name": "ribbon-drop",
+      "state": "finished",
+      "dur": 800,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.ribbon-drop-wrapper"
+    }
+  ],
+  "animationCount": 7,
+  "runningAnimations": 0,
+  "infiniteAnimations": 0,
+  "transitions": [
+    [
+      "0.32s cubic-bezier(0.4, 0, 0.6, 1)",
+      193
+    ],
+    [
+      "0.24s ease",
+      93
+    ],
+    [
+      "0.1s linear",
+      41
+    ],
+    [
+      "0.3s cubic-bezier(0, 0, 0.5, 1)",
+      36
+    ],
+    [
+      "0.32s ease",
+      31
+    ],
+    [
+      "0.1s, 0.1s linear, linear",
+      26
+    ],
+    [
+      "0.24s cubic-bezier(0.4, 0, 0.6, 1)",
+      25
+    ],
+    [
+      "0.22s ease",
+      19
+    ],
+    [
+      "0.18s ease",
+      18
+    ],
+    [
+      "0.16s ease",
+      18
+    ],
+    [
+      "0.2s ease",
+      14
+    ],
+    [
+      "0.1s, 0.1s, 0.1s linear, linear, linear",
+      12
+    ]
+  ],
+  "canvases": [],
+  "canvasCount": 0,
+  "rafCallbacks": 303,
+  "rafCalls": 347,
+  "scrollListeners": {
+    "mousemove": 7,
+    "scroll": 81
+  },
+  "intersectionObservers": 0,
+  "canvasDraws": 2,
+  "scrollMode": "native",
+  "docHeightPx": 8740,
+  "videos": [
+    {
+      "src": "",
+      "loop": false,
+      "muted": false,
+      "autoplay": false,
+      "paused": true,
+      "readyState": 0,
+      "dur": null,
+      "w": 0,
+      "h": 0
+    }
+  ]
+}

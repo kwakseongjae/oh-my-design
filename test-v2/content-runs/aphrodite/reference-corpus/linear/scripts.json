@@ -1,0 +1,2720 @@
+{
+  "globals": [],
+  "versions": {},
+  "external": [
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/CrossCircleIcon-dweZH5x9.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/FileIcon-D0ohq450.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/InsightsIcon-Brqm4EnT.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/ListIcon-BoZ30HKW.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/MembersIcon-B5bu31ZU.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/SearchIcon-Clq7L8v6.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/CheckMarkIcon-Dn6LLH6g.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/SparklesIcon-BHwlgfT3.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/SubscribeIcon-BpQKxwRk.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/TeamsIcon-kOYlD5rN.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/TriageIcon-BwwUQmM0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/AsksIcon-CdvF0xoM.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/GitHubIcon-PfPKSTMl.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/XIcon-BkykrzM1.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/SlackIcon-B-DGhpBW.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/YouTubeIcon-B3qEYEm-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Image-BEi11vgI.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/resolveEditInfo-BPY9KK74.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/ArrowRightIcon-DUWNTBOr.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/stegaClean-wIF-ErM-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/client-CAua8f7S.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Zoom-ClsR1FDV.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/CreditCardIcon-DRdj2c2M.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/PlusIcon-CD8xvU9I.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/GridLoader-DKwFpHgi.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/PointerIcon-B8UR5lt0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/ProductIntelligenceIcon-BwuBQDXZ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/StatusTriageIcon-BQUQ-lom.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/FigmaIcon-C5tThAL0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Avatars-BlV4OL0O.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Grain-DNiLIG01.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/IssueCard-CpQT7iWK.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/LocalApplicationStore-Cv4J_amh.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/useAnimateOnce-BnwPHKwP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Bleed-GhxG5m6I.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Hidden-kEM_LLPF.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/motion-CuRhfxC5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "motion"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/VercelLogo-BTdg_56L.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Logos-Buf3Y5g4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/use-spring-BqfYT3Uf.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Benefits-CBD2PpCm.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Carousel-egrQ1rWr.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/use-motion-value-event-BkC0k-7W.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "motion"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/clamp-DcLcJ62N.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/sleep-BgHvdDtt.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/LayoutGroup-DZhj2a2t.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/StatusInProgressIcon-Ww_hLnAo.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/SlackIssue-BW5qdCeC.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/format-DBA681ej.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/use-in-view-6KOBhX9d.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Pillar-XnvCJrwL.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/slugify-BHyTlvNc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/PageSection-MP3qOM4p.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/page.module-B4PiQvxE.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/EdgeShine-Doy6n9Hh.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/useScrollMask-DgM-n_T9.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Plan-CEIOTLrp.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/AIAutomations-daGztOEY.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/ReviewsFrame-Dj21KMdN.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/DiffsIllustration.module-CdENuWRf.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/ExpandChevronIcon-DOddYSpT.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Select-Cmdgn7Oo.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/EditableCodeDiffClient-ygGDVw4K.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/link-DDcYjIHA.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/code-diff-Bpj4tbdf.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-nVmPk4TR.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/query-fVqzmzTI.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/character-entities-legacy-CuvUJQM4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/tsx-CYSqvuIj.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/CustomerQuotes-CgpxBenD.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/utils.module-CE8x4xGK.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Cookie-CSEhDuDe.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/ColorConverter-ZqgUgWB6.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/module-BJ0zBjOv.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/useRenderElement-B9m4WtSg.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/useButton-BWb2wT1T.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Button-D2D-Z_9b.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Providers-BUr_TaX1.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/urls-BAyeWQNb.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/useKeyPressEvent-D3TKa3_r.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/toPx-CAoiugfy.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/useViewportSize-CBi65eiC.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/emotion-memoize.esm-BdCWOKi-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/TooltipProviderContext-pm1dhRGb.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/TooltipProvider-DxQjx3rL.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/styled-components.browser.esm-DeMn9bNV.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/ThemeProvider-BRt8xoOl.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-Bce6MV6R.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/SpriteIcon.client-C8Bfo1VG.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/ThemeToggle-B4L9ReoF.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/withClassName-1JYv0A0u.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-17R07FB1.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-CogLMhUc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "ogl"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Grid-foXKKmkT.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/mergeRefs-CioRtV_e.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/mobx-pmhmssXW.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/floating-ui.utils.dom-DZ4SKuM5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/isObject-DLJMLSTV.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/browser-eN_ixzc0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/lib-We-byyNc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/toNumber-Bcllxszk.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/debounce-B8yIIDEx.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/isSymbol-BA-XUtr_.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/clsx-8utHdR87.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-B8wmX6jP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Toast-BIFZudwJ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-Bng7hjaL.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/floating-ui.react-dom-CYYMARyO.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Browser-CplXQ8eA.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-M_PmgLdP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/StyleXDevRuntime-Clmbwrr2.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/registry-C50sL3Lw.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/ScrollReset-ixdQGyL-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/layout-segment-context-u42Y45th.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/NotFound-z0YsjQmM.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Spacer-BhjC_lQP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/createAttribute-BuWYFNbf.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Header.client-D9PrfUOm.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/DecorativeIcon-BUSTncl5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/throttle-NX7w8q0E.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/resolve-elements-DYjfUOm5.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/normalizeInterval-Coukp3_X.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/use-isomorphic-effect-D7OdxG4c.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/normalizeDates-DoOw-B7a.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/en-US-DxsltLqL.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/time-BEJ3F6Bf.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/CommandMenu-BV7VL0j9.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/useRole-BNwAHats.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/useMediaQuery-Bhq3d-M3.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/SidePanelRenderer.lazy-TVdwIUiT.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/usePanelStore-BhDkJLvY.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/react-Da3WPxka.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Hero-BiBSjhSR.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/HeroIllustration-YdWEoFGr.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Avatar-CjOotOCO.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/getPseudoElementBounds-aiccdVeW.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Timeline-B4ep31iF.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-Cn7ih8RP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/startOfWeek-CVMr-qvv.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/animate-DRv-fJbK.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/use-scroll-Dl6EGaPM.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/use-motion-value-BInjaDlm.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "motion"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/use-transform-Cwafktcb.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/PreviewLinkIcon-BddE-u91.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Logger-Daaz1Yro.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/AddEmojiIcon-DOJh1ZQP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/AgentIcon-bQEvrjSE.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/ArrowUpIcon-6kCfaK-l.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/AttachmentIcon-CbK2Uzmn.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/ProjectInProgressIcon-Ck3TB8cx.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/CheckIcon-B_76SYS0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/ChevronDownIcon-7hlHB3cQ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/CloseIcon-BqzCcG97.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/CollapseArrowIcon-DtTBFfww.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/IssueListView-CWfnk99g.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/GitDraftIcon-BKKmwnVz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Priority4Icon-BpynZHiw.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Priority2Icon-_JOOBpzp.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/SidebarIcon-45X4v5oh.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/StatusIconDynamic-OnV8Fd-4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Agents-DKdn6qtw.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/CloudflareImage-CMCsJKiv.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/GitBranchIcon-CUXR-Jr1.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/InfoIcon-CK5u3Xz9.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/MenuIcon-DFMj1QzT.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/EmptyTemplateIcon-C6Z9s6xL.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/ExpandIcon-B24MKhmC.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/StatusDoneIcon-Q2RGXS2c.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/SkillIcon-LtqNBxt3.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/StatusBacklogIcon-Dp3Ycpot.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/_Uint8Array-CwD3-iL2.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/identity-CCxlknCn.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/uniqBy-Cul6KoUP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/global-error-C7ZNbM2M.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Combination-Bs5bSOCS.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/rolldown-runtime-C5USp2td.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/KeyboardHelper-BeRyhfv6.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/noop-DI2joUjO.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-bOjJi8Er.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/getDisabledMountTransitionStyles-CdeP9dv0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Icon-BqZCx7qq.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/toString-Ccn0sDCO.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-BFL9UZ_-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/hasIn-BP-FGIPK.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/useBaseUiId-CEBrLJ04.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-C_fAI8hr.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/StylexHelpers-CjAot2cF.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/emotion-is-prop-valid.esm-CmIgFxVw.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/vinext-Wa50irIm.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/CodeInlineIcon-CvLQWXb0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/tslib.es6-By--RmZB.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/AvatarSizing-EnGQfg2A.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/proxy-BjpiIyf3.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/framework-DvOl2wyO.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/MotionConfigContext-CywCCkqS.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/useSyncedFloatingRootContext-CF3iHDWW.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/index.esm-DV6El43N.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/shim-Dm3wCGn_.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/constants-BxTDPdNI.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/useHover-DgVIQQ1H.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-mJl-Vx5p.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/safePolygon-DIJj7qkn.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-p9G69ZeY.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/endOfMonth-CLuTZg-H.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-D-O38d_K.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/pluralize-CaGHz0xV.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Text-IasSvNx2.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/CloseCircleIcon-f4AjnaxP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Mailto-Cau3toso.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/CheckCircleIcon-DMq4yaXc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/error-AXVAJHP0.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/LinkIcon-CV-PAkVY.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Logger-DKejwW3W.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/UnreachableCaseError-Cs-D1pBZ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/schemas-BiZA2gL-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/VisuallyHidden-BFtGtvtJ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-DxW4jnYN.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/ChevronRightIcon-DuVseK5z.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/capitalize-BmCz1Bia.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-C9yCzujz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/_baseSlice-D9VvHqh_.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Image-D37cLv5H.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-DCksFxtZ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/config-BincClWI.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-C-Jss0RU.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/RootActionBoundary-B7JptUsI.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-BVfNoL8V.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Icon.client-CE9GZk3c.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/svg-CPLtLmqg.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/StatusPage-hdynUJlV.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/TooltipPopup-D83QQywP.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Tooltip-3wl8nGtN.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-DIGgDe90.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/KBD-4AQrsV90.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-C3uf0PP9.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Link-CpzmJFxG.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/LinearLogo-iKF7MpwL.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/DownloadIcon-CpfQ9Zqj.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/IconButton-ByxejbIb.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/DraftModeTools-Chq4XVv7.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/groups-Bt6XmO_Z.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-DCAz9qtb.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/useAsRef-D4bvaWy3.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/useOpenInteractionType-CNCb6wLy.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/SidePanel-CbrNJiKX.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/CaretIcon-cHkznTmk.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/MobileMenu-DIL4kAo2.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-mMV7cz3B.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Flex-DYpw5t1e.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-B3h7_srw.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Tooltip.module-DDyZR9rN.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/scenarios-JbEqU_Cc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/update-query-ri5JXtMX.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/AnimatePresence-CC14c1C7.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/GlobalSidePanel-BxZtR8RD.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/LinearStatus-I2RBqcFd.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/use-reduced-motion-DMT-0s8L.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "motion"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/useIsomorphicLayoutEffect-DRhFEvDK.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/SmoothScrollAfterLoad-CJFBk4U9.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Icon-D83IhA1L.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-BopUVxeJ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/es2015-CUMcH-3W.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/color.module-COz8SHnn.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-N7h8N_LU.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/useLinearStatus-BR-kIlds.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/StopIcon-Cf9aNtON.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-CEkWuK4w.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/index-GKpBX9i4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/hybrid-client-route-owner-dVdVVuqh.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/404-C73bDjUS.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://e.linear.app/array/phc_PaCjzqaetuAlYgXjb0uftDOw8QzOmXfWIbD7nkaYrjr/config.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/PauseIcon-flxG18eR.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/CopyButton.module-DfnjK5lt.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Collapsibles-4GED0fdc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/MotionConfig-DgCXTc2m.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/SidePanelRenderer-CFwbHX-4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/uniqueId-CtqZrMzY.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/useHiddenUntilFound-CwEcgSa7.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/quoted-tweet-container-Cx_8u44U.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/_flatRest-BEnICkBS.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-J8zmwP8-.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Tabs-Bz_aUXMX.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/DecryptionAnimation-Bx9aNKTr.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/ScrollAnimation-BvN_-GwS.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/CopyCodeButton-DoYOfsA4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Spinner-DUxeS2bM.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/tweet-media-video-D-unqsTa.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Stats-UD-PLOub.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/lib-CcEldv57.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/LinkAnchor-arQEejee.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/ChevronLeftIcon-h1zyrgii.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/YouTubeLiteEmbed-D2rDakyx.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/StyledFilesAddedChart-C1FurgCN.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/CopyIcon-DimHYPSX.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Collapsible-BG7XNwoK.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Dialog-CikbMGgl.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/charts.module-COsc1YtG.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/LinkHeading-CleriYy6.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/useReducedMotion-6Rt9OeSv.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/useModalLink--zosvGgx.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/CopyButton-OYpnGgQo.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/slugifyWithCounter-Bb1QjBO_.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Note-C8qfMsWf.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Badge-BZbCTgkr.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Separator-DOn9-gk6.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/dist-DQ-atZqn.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/VideoPlayer-tNR5-bNO.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/StylexAdoptionChart-BwpK3ZGj.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/tweet-info-created-at-DuUTTtds.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/MediaPlayer-B8kdvy-C.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/DefaultRenderer-BYoEhSPV.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://e.linear.app/static/surveys.js?v=1.257.1",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/SystemStatus-CYmUkzda.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/ContactLink-CugYw9OH.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/useCopyText-eyHtT9iF.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/SubscriptionType-CBbSjD68.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Select-CsQkj4Kb.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Comparison-C0ia3nmI.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/InfoCircleIcon-CCP2DrMD.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/PlanFeature-DJPIa2-_.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Plans-Ciny__vf.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/useWindowEvent-uOaWNq-Q.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Author-BRtlwlNc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/CopyShareUrl-Chb2VEVe.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Sidenote-ad9tbx_E.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/ChangelogButton-DAef38bA.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/page.module-b3e7R106.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/CustomerCard-BxL5V4-U.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/urls-BroWa2w9.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Header-CXmKV4xw.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/PageHeader-v3iKUGjW.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/Archive-BnY8dT0w.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/SearchButton-DYriW1NX.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://static.linear.app/web/_next/static/chunks/VideoThumbnail-DT-rs-nC.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    }
+  ],
+  "inline": [
+    {
+      "bytes": 362,
+      "head": "(()=>{let e=document.documentElement,t=window.navigator;(function(){try{let n=8;t!==void 0&&`hardwareConcurrency`in t&&(n=t.hardwareConcurrency),e.classList.toggle(`enhanced`,n>4)}catch{}})(),(functio"
+    },
+    {
+      "bytes": 602,
+      "head": "(()=>{try{let e=window.location.hash.slice(1);if(!e||document.readyState!==`loading`)return;let t=performance.getEntriesByType(`navigation`)[0];if(t instanceof PerformanceNavigationTiming&&t.type!==`n"
+    },
+    {
+      "bytes": 216,
+      "head": "Object.assign(((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}),{params:{},nav:{\"pathname\":\"/\",\"searchParams\":[]},searchParamsFr"
+    },
+    {
+      "bytes": 574,
+      "head": "((e,t,n,r,i,a,o,s)=>{let c=document.documentElement,l=[`light`,`dark`];function u(t){(Array.isArray(e)?e:[e]).forEach(e=>{let n=e===`class`,r=n&&a?i.map(e=>a[e]||e):i;n?(c.classList.remove(...r),c.cla"
+    },
+    {
+      "bytes": 544,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"0:{\\\"page:/\\\":\\\"$L1\\\",\\\"layout:/\\\":\\\"$L2\\\",\\\"route:/\\\":\\\"$L3\\\",\\\"__r"
+    },
+    {
+      "bytes": 178,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"4:I[\\\"78baebd6dc27\\\",[],\\\"ScrollReset\\\",1]\\n\")"
+    },
+    {
+      "bytes": 183,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"5:I[\\\"4e2707fa890b\\\",[],\\\"StyleXDevRuntime\\\",1]\\n\")"
+    },
+    {
+      "bytes": 174,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"6:I[\\\"b1da075ff147\\\",[],\\\"default\\\",1]\\n\")"
+    },
+    {
+      "bytes": 176,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"7:I[\\\"125820ecd802\\\",[],\\\"Providers\\\",1]\\n\")"
+    },
+    {
+      "bytes": 185,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"8:I[\\\"6bc3fd4d19b6\\\",[],\\\"RootActionBoundary\\\",1]\\n\")"
+    },
+    {
+      "bytes": 175,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"9:I[\\\"5d678ed8b3cc\\\",[],\\\"Children\\\",1]\\n\")"
+    },
+    {
+      "bytes": 181,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"a:I[\\\"4e3532626141\\\",[],\\\"DraftModeTools\\\",1]\\n\")"
+    },
+    {
+      "bytes": 186,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"b:I[\\\"eba756a9c447\\\",[],\\\"GlobalErrorBoundary\\\",1]\\n\")"
+    },
+    {
+      "bytes": 174,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"c:I[\\\"c5ce81482c85\\\",[],\\\"default\\\",1]\\n\")"
+    },
+    {
+      "bytes": 180,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"d:I[\\\"eba756a9c447\\\",[],\\\"ErrorBoundary\\\",1]\\n\")"
+    },
+    {
+      "bytes": 174,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"e:I[\\\"65c11b515bcb\\\",[],\\\"default\\\",1]\\n\")"
+    },
+    {
+      "bytes": 188,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"f:I[\\\"4fb07fa9946b\\\",[],\\\"LayoutSegmentProvider\\\",1]\\n\")"
+    },
+    {
+      "bytes": 172,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"10:I[\\\"5d678ed8b3cc\\\",[],\\\"Slot\\\",1]\\n\")"
+    },
+    {
+      "bytes": 175,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"11:I[\\\"782fd804d300\\\",[],\\\"default\\\",1]\\n\")"
+    },
+    {
+      "bytes": 184,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"12:I[\\\"eba756a9c447\\\",[],\\\"NotFoundBoundary\\\",1]\\n\")"
+    },
+    {
+      "bytes": 175,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"13:I[\\\"de83389fedbb\\\",[],\\\"default\\\",1]\\n\")"
+    },
+    {
+      "bytes": 189,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"14:I[\\\"a393d995ae1e\\\",[],\\\"AppRouterScrollTarget\\\",1]\\n\")"
+    },
+    {
+      "bytes": 184,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"15:I[\\\"eba756a9c447\\\",[],\\\"RedirectBoundary\\\",1]\\n\")"
+    },
+    {
+      "bytes": 225,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\":HL[\\\"https://static.linear.app/web/_next/static/css/index.DF8NERDv."
+    },
+    {
+      "bytes": 267,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\":HL[\\\"https://static.linear.app/fonts/InterVariable.woff2?v=4.1\\\",\\\""
+    },
+    {
+      "bytes": 2933,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"2:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/static"
+    },
+    {
+      "bytes": 3730,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"3:[[[\\\"$\\\",\\\"meta\\\",null,{\\\"charSet\\\":\\\"utf-8\\\"}],[[\\\"$\\\",\\\"title\\\","
+    },
+    {
+      "bytes": 229,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\":HL[\\\"https://static.linear.app/web/_next/static/css/Changelog.C40xl"
+    },
+    {
+      "bytes": 232,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\":HL[\\\"https://static.linear.app/web/_next/static/css/HomepageLink.CN"
+    },
+    {
+      "bytes": 226,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\":HL[\\\"https://static.linear.app/web/_next/static/css/Spacer.mYgpGelO"
+    },
+    {
+      "bytes": 225,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\":HL[\\\"https://static.linear.app/web/_next/static/css/utils.CVEX6qwi."
+    },
+    {
+      "bytes": 237,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\":HL[\\\"https://static.linear.app/web/_next/static/css/HomepageSeparat"
+    },
+    {
+      "bytes": 225,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\":HL[\\\"https://static.linear.app/web/_next/static/css/Bleed.CbcodEv9."
+    },
+    {
+      "bytes": 235,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\":HL[\\\"https://static.linear.app/web/_next/static/css/GlobalSidePanel"
+    },
+    {
+      "bytes": 225,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\":HL[\\\"https://static.linear.app/web/_next/static/css/Grain.D_EBlr94."
+    },
+    {
+      "bytes": 223,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\":HL[\\\"https://static.linear.app/web/_next/static/css/CTA.CDNJI-Em.cs"
+    },
+    {
+      "bytes": 226,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\":HL[\\\"https://static.linear.app/web/_next/static/css/Header.D8jOAph5"
+    },
+    {
+      "bytes": 224,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\":HL[\\\"https://static.linear.app/web/_next/static/css/Icon.B18TDZc7.c"
+    },
+    {
+      "bytes": 224,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\":HL[\\\"https://static.linear.app/web/_next/static/css/Grid.Cds8fjKR.c"
+    },
+    {
+      "bytes": 4284,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"1:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/static"
+    },
+    {
+      "bytes": 233,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\":HL[\\\"https://static.linear.app/web/_next/static/css/LayoutContent.D"
+    },
+    {
+      "bytes": 226,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\":HL[\\\"https://static.linear.app/web/_next/static/css/Layout.tvkMFESE"
+    },
+    {
+      "bytes": 496,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"16:[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/static/"
+    },
+    {
+      "bytes": 475,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"17:[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/static/"
+    },
+    {
+      "bytes": 183,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"19:I[\\\"73f220c39f8d\\\",[],\\\"GlobalSidePanel\\\",1]\\n\")"
+    },
+    {
+      "bytes": 99944,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"18:[[\\\"$\\\",\\\"$L19\\\",null,{\\\"sidePanelContent\\\":[{\\\"_id\\\":\\\"f5b807ce-"
+    },
+    {
+      "bytes": 4208,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"1a:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 172,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"1f:I[\\\"ae0492b1d45f\\\",[],\\\"Hero\\\",1]\\n\")"
+    },
+    {
+      "bytes": 173,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"20:I[\\\"f3748d39410e\\\",[],\\\"Logos\\\",1]\\n\")"
+    },
+    {
+      "bytes": 172,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"21:I[\\\"9c9aad0803bd\\\",[],\\\"Text\\\",1]\\n\")"
+    },
+    {
+      "bytes": 172,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"3b:I[\\\"f211aa81c3d9\\\",[],\\\"Link\\\",1]\\n\")"
+    },
+    {
+      "bytes": 180,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"4b:I[\\\"5d78e17489c5\\\",[],\\\"ClientHeader\\\",1]\\n\")"
+    },
+    {
+      "bytes": 172,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"4c:I[\\\"cd84e95f679a\\\",[],\\\"List\\\",1]\\n\")"
+    },
+    {
+      "bytes": 172,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"4d:I[\\\"cd84e95f679a\\\",[],\\\"Item\\\",1]\\n\")"
+    },
+    {
+      "bytes": 183,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"4e:I[\\\"5d78e17489c5\\\",[],\\\"LogoContextMenu\\\",1]\\n\")"
+    },
+    {
+      "bytes": 175,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"4f:I[\\\"5d78e17489c5\\\",[],\\\"NavLink\\\",1]\\n\")"
+    },
+    {
+      "bytes": 181,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"1c:[\\\"$\\\",\\\"div\\\",null,{\\\"id\\\":\\\"skip-nav\\\"}]\\n\")"
+    },
+    {
+      "bytes": 5108,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"1d:[\\\"$\\\",\\\"div\\\",null,{\\\"size\\\":\\\"homepage\\\",\\\"children\\\":[[\\\"$\\\",\\"
+    },
+    {
+      "bytes": 4404,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"1e:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 142,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"50:Tb47,\")"
+    },
+    {
+      "bytes": 3021,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"M12.927 16.371a1.47 1.47 0 0 0 .061 2.027l68.595 68.594c.555.555 1.4"
+    },
+    {
+      "bytes": 2468,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"1b:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 176,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"54:I[\\\"8f6ce91bc268\\\",[],\\\"Benefits\\\",1]\\n\")"
+    },
+    {
+      "bytes": 178,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"55:I[\\\"c5257fc80bf6\\\",[],\\\"SlackIssue\\\",1]\\n\")"
+    },
+    {
+      "bytes": 172,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"56:I[\\\"0c59a13cae4d\\\",[],\\\"Plan\\\",1]\\n\")"
+    },
+    {
+      "bytes": 181,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"57:I[\\\"28343de2f894\\\",[],\\\"AIAutomations\\\",1]\\n\")"
+    },
+    {
+      "bytes": 174,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"58:I[\\\"c2959664c15a\\\",[],\\\"Pillar\\\",1]\\n\")"
+    },
+    {
+      "bytes": 173,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"59:I[\\\"da73b37ebbe2\\\",[],\\\"Image\\\",1]\\n\")"
+    },
+    {
+      "bytes": 180,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"5a:I[\\\"e96c975ea366\\\",[],\\\"ReviewsFrame\\\",1]\\n\")"
+    },
+    {
+      "bytes": 172,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"61:I[\\\"0fef98fb2df8\\\",[],\\\"Flex\\\",1]\\n\")"
+    },
+    {
+      "bytes": 174,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"69:I[\\\"1e4ab1677282\\\",[],\\\"Button\\\",1]\\n\")"
+    },
+    {
+      "bytes": 180,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"84:I[\\\"9ea3150386ff\\\",[],\\\"LinearStatus\\\",1]\\n\")"
+    },
+    {
+      "bytes": 181,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"85:I[\\\"b8c555f5aa0e\\\",[],\\\"ThemeSwitcher\\\",1]\\n\")"
+    },
+    {
+      "bytes": 183,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"86:I[\\\"5d78e17489c5\\\",[],\\\"KeepOpenTrigger\\\",1]\\n\")"
+    },
+    {
+      "bytes": 175,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"87:I[\\\"cd84e95f679a\\\",[],\\\"Content\\\",1]\\n\")"
+    },
+    {
+      "bytes": 175,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"91:I[\\\"97a2f3bccbf7\\\",[],\\\"Trigger\\\",1]\\n\")"
+    },
+    {
+      "bytes": 175,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"92:I[\\\"97a2f3bccbf7\\\",[],\\\"Content\\\",1]\\n\")"
+    },
+    {
+      "bytes": 173,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"93:I[\\\"97a2f3bccbf7\\\",[],\\\"Title\\\",1]\\n\")"
+    },
+    {
+      "bytes": 623,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"22:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 634,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"23:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 621,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"24:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 163,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"25:[\\\"$\\\",\\\"$L54\\\",null,{}]\\n\")"
+    },
+    {
+      "bytes": 623,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"26:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 635,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"27:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 621,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"28:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 1467,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"29:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 609,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"2a:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 216,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"2b:[\\\"$\\\",\\\"$L55\\\",null,{\\\"sidePanelContent\\\":\\\"$18:0:props:sidePane"
+    },
+    {
+      "bytes": 1467,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"2c:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 608,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"2d:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 216,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"2e:[\\\"$\\\",\\\"$L56\\\",null,{\\\"sidePanelContent\\\":\\\"$18:0:props:sidePane"
+    },
+    {
+      "bytes": 1467,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"2f:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 608,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"30:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 216,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"31:[\\\"$\\\",\\\"$L57\\\",null,{\\\"sidePanelContent\\\":\\\"$18:0:props:sidePane"
+    },
+    {
+      "bytes": 1467,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"32:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 608,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"33:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 4630,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"34:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 1533,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"35:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"hide-mobile\\\",\\\"children\\\":["
+    },
+    {
+      "bytes": 4802,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"36:[[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stat"
+    },
+    {
+      "bytes": 622,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"37:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 621,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"38:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 3734,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"3a:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 475,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"3c:[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/static/"
+    },
+    {
+      "bytes": 472,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"3d:[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/static/"
+    },
+    {
+      "bytes": 349,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"3e:[\\\"$\\\",\\\"li\\\",null,{\\\"className\\\":\\\"Jmh1Wq_sectionItem\\\",\\\"childr"
+    },
+    {
+      "bytes": 1372,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"3f:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 1378,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"40:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 1382,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"41:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 1384,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"42:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 4528,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"43:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"Jmh1Wq_section\\\",\\\"children\\"
+    },
+    {
+      "bytes": 4510,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"44:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"Jmh1Wq_section\\\",\\\"children\\"
+    },
+    {
+      "bytes": 4660,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"45:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"Jmh1Wq_section\\\",\\\"children\\"
+    },
+    {
+      "bytes": 4532,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"46:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"Jmh1Wq_section\\\",\\\"children\\"
+    },
+    {
+      "bytes": 4481,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"47:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"Jmh1Wq_section show-laptop\\\""
+    },
+    {
+      "bytes": 714,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"48:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"Jmh1Wq_legal hide-laptop\\\",\\"
+    },
+    {
+      "bytes": 287,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"49:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"Jmh1Wq_section Jmh1Wq_status"
+    },
+    {
+      "bytes": 250,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"4a:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"Jmh1Wq_themeSwitcher hide-mo"
+    },
+    {
+      "bytes": 6325,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"51:[\\\"$\\\",\\\"li\\\",null,{\\\"className\\\":\\\"TZTsQG_rightSideWrapper\\\",\\\"c"
+    },
+    {
+      "bytes": 1674,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"52:[\\\"$\\\",\\\"$L4d\\\",null,{\\\"value\\\":\\\"mobile-menu\\\",\\\"className\\\":\\\"T"
+    },
+    {
+      "bytes": 4768,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"53:[\\\"$\\\",\\\"$L92\\\",null,{\\\"className\\\":\\\"TZTsQG_mobileMenuContent\\\","
+    },
+    {
+      "bytes": 181,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"94:I[\\\"bb946ad68418\\\",[],\\\"IssueListView\\\",1]\\n\")"
+    },
+    {
+      "bytes": 190,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"95:I[\\\"ae1e2bceaf9f\\\",[],\\\"EditableCodeDiffClient\\\",1]\\n\")"
+    },
+    {
+      "bytes": 177,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"96:I[\\\"5d78e17489c5\\\",[],\\\"PlainItem\\\",1]\\n\")"
+    },
+    {
+      "bytes": 175,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"97:I[\\\"d591d32be740\\\",[],\\\"Tooltip\\\",1]\\n\")"
+    },
+    {
+      "bytes": 171,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"98:I[\\\"a1d2361384f3\\\",[],\\\"KBD\\\",1]\\n\")"
+    },
+    {
+      "bytes": 196,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"99:I[\\\"5d78e17489c5\\\",[],\\\"LinkWithBrowserCompatibility\\\",1]\\n\")"
+    },
+    {
+      "bytes": 182,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"9a:I[\\\"91c1cdf6c450\\\",[],\\\"CustomerQuotes\\\",1]\\n\")"
+    },
+    {
+      "bytes": 475,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"5b:[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/static/"
+    },
+    {
+      "bytes": 235,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"5c:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"SPbJba_grain SPbJba_grainSub"
+    },
+    {
+      "bytes": 185,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"5d:[\\\"$\\\",\\\"$L94\\\",null,{\\\"variant\\\":\\\"inline\\\"}]\\n\")"
+    },
+    {
+      "bytes": 191,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"5e:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"MwJdiW_glow\\\"}]\\n\")"
+    },
+    {
+      "bytes": 925,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"5f:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 63063,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"60:[\\\"$\\\",\\\"$L95\\\",null,{\\\"snippets\\\":[{\\\"issueId\\\":\\\"ENG-2039\\\",\\\"f"
+    },
+    {
+      "bytes": 253,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"62:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"_5mGmSq_root\\\",\\\"style\\\":{\\\""
+    },
+    {
+      "bytes": 281,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"63:[\\\"$\\\",\\\"$L21\\\",null,{\\\"size\\\":\\\"micro\\\",\\\"color\\\":\\\"quaternary\\\""
+    },
+    {
+      "bytes": 2007,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"64:[\\\"$\\\",\\\"div\\\",\\\"2UeQVio2zgOqGTigFDSwrF\\\",{\\\"className\\\":\\\"fjOtda"
+    },
+    {
+      "bytes": 2156,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"65:[\\\"$\\\",\\\"div\\\",\\\"pMhnrbXwl8a3gSdYl7jsre\\\",{\\\"className\\\":\\\"fjOtda"
+    },
+    {
+      "bytes": 2029,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"66:[\\\"$\\\",\\\"div\\\",\\\"NTFGPZVVpZq3umRm173Yvd\\\",{\\\"className\\\":\\\"fjOtda"
+    },
+    {
+      "bytes": 609,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"67:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 1451,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"68:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"Fzcv4W_inset Fzcv4W_insetLar"
+    },
+    {
+      "bytes": 475,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"6a:[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/static/"
+    },
+    {
+      "bytes": 472,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"6b:[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/static/"
+    },
+    {
+      "bytes": 375,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"6c:[\\\"$\\\",\\\"li\\\",null,{\\\"className\\\":\\\"Jmh1Wq_sectionItem\\\",\\\"childr"
+    },
+    {
+      "bytes": 1384,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"6d:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 1380,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"6e:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 1392,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"6f:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 1386,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"70:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 475,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"71:[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/static/"
+    },
+    {
+      "bytes": 472,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"72:[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/static/"
+    },
+    {
+      "bytes": 347,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"73:[\\\"$\\\",\\\"li\\\",null,{\\\"className\\\":\\\"Jmh1Wq_sectionItem\\\",\\\"childr"
+    },
+    {
+      "bytes": 1380,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"74:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 1382,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"75:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 1378,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"76:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 475,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"77:[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/static/"
+    },
+    {
+      "bytes": 472,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"78:[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/static/"
+    },
+    {
+      "bytes": 361,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"79:[\\\"$\\\",\\\"li\\\",null,{\\\"className\\\":\\\"Jmh1Wq_sectionItem\\\",\\\"childr"
+    },
+    {
+      "bytes": 1396,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"7a:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 1388,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"7b:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 1384,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"7c:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 475,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"7d:[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/static/"
+    },
+    {
+      "bytes": 472,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"7e:[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/static/"
+    },
+    {
+      "bytes": 370,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"7f:[\\\"$\\\",\\\"li\\\",null,{\\\"className\\\":\\\"Jmh1Wq_sectionItem\\\",\\\"childr"
+    },
+    {
+      "bytes": 1404,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"80:[[[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/stati"
+    },
+    {
+      "bytes": 475,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"81:[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/static/"
+    },
+    {
+      "bytes": 472,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"82:[\\\"$\\\",\\\"link\\\",\\\"css:https://static.linear.app/web/_next/static/"
+    },
+    {
+      "bytes": 353,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"83:[\\\"$\\\",\\\"li\\\",null,{\\\"className\\\":\\\"Jmh1Wq_sectionItem\\\",\\\"childr"
+    },
+    {
+      "bytes": 5219,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"88:[\\\"$\\\",\\\"$L4d\\\",null,{\\\"value\\\":\\\"resources\\\",\\\"className\\\":\\\"hid"
+    },
+    {
+      "bytes": 336,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"89:[\\\"$\\\",\\\"$L96\\\",null,{\\\"value\\\":\\\"customers\\\",\\\"className\\\":\\\"hid"
+    },
+    {
+      "bytes": 330,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"8a:[\\\"$\\\",\\\"$L96\\\",null,{\\\"value\\\":\\\"pricing\\\",\\\"className\\\":\\\"hide-"
+    },
+    {
+      "bytes": 318,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"8b:[\\\"$\\\",\\\"$L96\\\",null,{\\\"value\\\":\\\"now\\\",\\\"className\\\":\\\"hide-lapt"
+    },
+    {
+      "bytes": 330,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"8c:[\\\"$\\\",\\\"$L96\\\",null,{\\\"value\\\":\\\"contact\\\",\\\"className\\\":\\\"hide-"
+    },
+    {
+      "bytes": 184,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"8d:[\\\"$\\\",\\\"div\\\",null,{\\\"style\\\":{\\\"flex\\\":1}}]\\n\")"
+    },
+    {
+      "bytes": 209,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"8e:[\\\"$\\\",\\\"div\\\",null,{\\\"className\\\":\\\"TZTsQG_navDivider hide-table"
+    },
+    {
+      "bytes": 184,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"8f:[\\\"$\\\",\\\"div\\\",null,{\\\"style\\\":{\\\"flex\\\":1}}]\\n\")"
+    },
+    {
+      "bytes": 1937,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"90:[\\\"$\\\",\\\"ul\\\",null,{\\\"className\\\":\\\"TZTsQG_buttons\\\",\\\"children\\\""
+    },
+    {
+      "bytes": 391,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"39:[\\\"$\\\",\\\"$L9a\\\",null,{\\\"footerText\\\":[\\\"Linear powers over\\\",\\\" \\"
+    },
+    {
+      "bytes": 131,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).done=true"
+    }
+  ]
+}

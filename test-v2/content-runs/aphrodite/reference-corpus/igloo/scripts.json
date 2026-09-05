@@ -1,0 +1,55 @@
+{
+  "globals": [],
+  "versions": {},
+  "external": [
+    {
+      "url": "https://www.igloo.inc/assets/index-2eb69c09.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.igloo.inc/assets/App3D-f554a111.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "blob:https://www.igloo.inc/79e11d89-9eec-421e-a59c-172020c53f0f",
+      "bytes": 61197,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.igloo.inc/assets/bitmapworker-046527f8.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.igloo.inc/assets/exrworker-41cbee65.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.igloo.inc/assets/msdfworker-ac346fa7.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "blob:https://www.igloo.inc/b61241b3-bb07-4099-ad7d-a756446d263b",
+      "bytes": 71780,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.igloo.inc/assets/audioworker-036a09db.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    }
+  ],
+  "inline": []
+}

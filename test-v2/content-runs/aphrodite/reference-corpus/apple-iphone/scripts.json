@@ -1,0 +1,90 @@
+{
+  "globals": [],
+  "versions": {},
+  "external": [
+    {
+      "url": "https://www.apple.com/metrics/ac-analytics/2.30.0/scripts/auto-init.js",
+      "bytes": 111,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.apple.com/v/iphone/home/cj/built/scripts/overview/head.built.js",
+      "bytes": 20659,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.apple.com/api-www/global-elements/global-header/v1/assets/globalheader.umd.js",
+      "bytes": 166301,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.apple.com/metrics/ac-analytics/2.30.0/scripts/ac-analytics.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.apple.com/ac/globalfooter/8/ko_KR/scripts/ac-globalfooter.built.js",
+      "bytes": 3102,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.apple.com/v/iphone/home/cj/built/scripts/overview/main.built.js",
+      "bytes": 127458,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.apple.com/kr/global/scripts/ac-kr-word-joiner-autorun.js",
+      "bytes": 1380,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.apple.com/ac/pricing/latest-1/scripts/autopricing.built.js",
+      "bytes": 10661,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.apple.com/ac/localeswitcher/4/ko_KR/scripts/localeswitcher.built.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.apple.com/ac/ac-films/7.5.1/scripts/autofilms.built.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://www.apple.com/ac/libs/hls.js/2.920.4/hls.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    }
+  ],
+  "inline": [
+    {
+      "bytes": 30597,
+      "head": "{\"props\":{\"globalNavData\":{\"locale\":\"ko_KR\",\"ariaLabel\":\"글로벌\",\"analyticsAttributes\":[{\"name\":\"data-analytics-activitymap-region-id\",\"value\":\"global nav\"},{\"name\":\"data-analytics-region\",\"value\":\"globa"
+    },
+    {
+      "bytes": 4384,
+      "head": " !function(){\"use strict\";var e,r,n,t,o,a,i,s,c,d,u,p,f,l,m,g,h,S,v,y,b,w,E,k,z,x,T,D,P,R,B,M,q,F,I,N,O,j,A,C,_,G;function H(){if(r)return e;r=1;var n=!1,t={};\"undefined\"!=typeof window&&(t=window||se"
+    },
+    {
+      "bytes": 1171,
+      "head": " { \"@context\": \"http://schema.org\", \"@id\": \"https://www.apple.com/#organization\", \"@type\": \"Organization\", \"name\": \"Apple\", \"url\": \"https://www.apple.com/\", \"logo\": \"https://www.apple.com"
+    },
+    {
+      "bytes": 457,
+      "head": " { \"@context\": \"http://schema.org\", \"@type\": \"Brand\", \"@id\": \"https://www.apple.com/kr/iphone/#brand\", \"name\": \"iPhone\", \"description\": \"Apple Intelligence를 위해 설계된 iPhone 17 Pro, iPho"
+    }
+  ]
+}
