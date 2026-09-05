@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Higgsgen — plates on paper</title>
+<meta name="description" content="Higgsgen turns one plain sentence into a directed still. A fictional product concept.">
+<meta name="omd-density" content="4">
+<meta name="omd-motion" content="6">
+<style>
+__FONT_DISPLAY__
+__FONT_BODY__
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Higgsgen r5 — "Plates on paper"
+   System: DESIGN-r5.md. Ground is light paper; images are heavy plates laid on it.
+   Engine: fx-library/smooth-scrub-engine (always-on rAF, alpha 0.14, two clocks).
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root{
+  /* two grounds, no third grey */
+  --paper:#E9E6DF; --petrol:#123330;
+  --ink:#171512; --ink-2:#5F5A52; --rule:#CFC9BE;
+  --brass:#A9812F;          /* CTA fill / selected state only */
+  --brass-line:#8A6A26;     /* brass drawn ON paper: 4.04:1 */
+  --focus:#8A6A26;
+  --accent:#A9812F;
+  /* fibonacci-ish spacing, distinct from r4's 4/8/16/24/32/48/64/96/128 */
+  --s1:4px; --s2:8px; --s3:12px; --s4:20px; --s5:32px; --s6:52px; --s7:84px; --s8:136px;
+  --rail:96px; --col:420px;
+  --ease:cubic-bezier(.22,.61,.36,1); --dur:280ms;
+  /* 호흡 루프는 UI 이징이 아니라 대칭 곡선으로 — ease-out 을 alternate 로 돌리면 한쪽 끝에 머물러 진폭이 죽는다 */
+  --breathe:cubic-bezier(.45,.05,.55,.95);
+  --plate-shadow:0 24px 48px -24px rgba(23,21,18,.45);
+  --grade:contrast(1.03) saturate(1.02);
+  --plate-back:#171512;   /* 판 뒤 레터박스 — 지면이 아니라 인화지 뒷면이다. petrol 섹션에서는 petrol 로 바뀐다 */
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html,body{margin:0;padding:0}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:'InstrumentSans',ui-sans-serif,sans-serif;
+  font-size:17px; line-height:1.55; font-weight:400;
+  text-wrap:pretty; overflow-x:hidden;
+}
+h1,h2,h3,p,figure,blockquote,ul,ol,dl,dd{margin:0;padding:0}
+ul,ol{list-style:none}
+img{display:block;max-width:100%;height:auto;border:0;filter:var(--grade)}
+button,input{font:inherit;color:inherit;margin:0}
+a{color:inherit;text-decoration:none}
+
+::selection{background:var(--brass);color:#FFF}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+html{scrollbar-color:var(--brass-line) var(--paper)}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:var(--paper)}
+::-webkit-scrollbar-thumb{background:var(--brass-line)}
+
+/* ── paper grain: pseudo-element so it is never a semantic fold unit ──────── */
+.sec::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:3;
+  background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)' opacity='0.42'/%3E%3C/svg%3E");
+  background-size:180px 180px; mix-blend-mode:multiply; opacity:.085;
+  animation:grain 6s steps(3,end) infinite;
+}
+.sec--petrol::before{mix-blend-mode:screen;opacity:.055}
+@keyframes grain{0%{background-position:0 0}33%{background-position:-24px 14px}66%{background-position:16px -20px}100%{background-position:0 0}}
+
+/* ── type ────────────────────────────────────────────────────────────────── */
+h1,h2,.dsp{
+  font-family:'BricolageGrotesque',ui-sans-serif,sans-serif;
+  font-weight:640; letter-spacing:-.015em; line-height:.96;
+  text-wrap:balance; font-variation-settings:"opsz" 42;
+}
+h1{font-size:clamp(42px,7.3vw,104px);font-weight:700;font-variation-settings:"opsz" 96;max-width:16ch}
+h2{font-size:clamp(31px,3.6vw,48px)}
+.lede{font-size:19px;line-height:1.5;color:var(--ink-2);max-width:34ch}
+p{max-width:40ch}
+.cap{font-size:15px;color:var(--ink-2);letter-spacing:0;max-width:38ch}
+.said{font-size:clamp(20px,2.2vw,32px);line-height:1.2;font-family:'BricolageGrotesque',ui-sans-serif,sans-serif;font-weight:520;letter-spacing:-.015em;max-width:22ch}
+
+/* ── layout ──────────────────────────────────────────────────────────────── */
+.sec{position:relative;background:var(--paper);isolation:isolate}
+.sec--petrol{
+  background:var(--petrol);
+  --ink:#EDEAE3; --ink-2:#9DB0AC; --rule:#27514C;
+  --brass-line:#D2A954; --focus:#D2A954; --plate-back:#123330;
+  color:var(--ink);
+}
+.wrap{position:relative;z-index:1;padding-left:var(--rail);padding-right:var(--rail)}
+.wrap--bleedR{padding-right:0}
+.split{display:grid;grid-template-columns:var(--col) 1fr;gap:var(--s5);align-items:start}
+.hold{display:flex;flex-direction:column;gap:var(--s4)}
+
+/* ── the plate ───────────────────────────────────────────────────────────── */
+.plate{position:relative;border-radius:0;box-shadow:var(--plate-shadow);background:var(--plate-back);overflow:hidden}
+.plate img{width:100%;height:100%;object-fit:cover}
+.rule{height:1px;background:var(--rule);border:0}
+
+/* ── controls ────────────────────────────────────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;min-height:48px;
+  padding:0 26px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  background:var(--brass);color:#171512;font-weight:560;letter-spacing:0;
+  transition:background-color var(--dur) var(--ease),filter 160ms var(--ease);
+}
+.btn:hover{filter:brightness(1.05)}
+.btn--quiet{background:transparent;color:var(--ink);border-color:var(--rule)}
+.chip{
+  display:block;width:100%;text-align:left;min-height:56px;padding:10px 18px;cursor:pointer;
+  background:transparent;color:var(--ink);border:1px solid var(--rule);border-radius:0;
+  transition:border-color var(--dur) var(--ease),background-color var(--dur) var(--ease),filter 160ms var(--ease);
+}
+.chip:hover{filter:brightness(1.05)}
+.chip[aria-checked="true"]{border-color:var(--brass);box-shadow:inset 3px 0 0 0 var(--brass)}
+.chip .cn{display:block;font-weight:560}
+.chip .cd{display:block;font-size:15px;color:var(--ink-2)}
+
+/* ── entrance reveal (opacity + transform only — LI-17) ──────────────────── */
+[data-rv]{opacity:0;transform:translate3d(0,10px,0);transition:opacity 560ms var(--ease),transform 560ms var(--ease)}
+[data-rv].in{opacity:1;transform:none}
+[data-rv="plate"]{transform:translate3d(0,-8px,0)}
+
+/* ═════ S1 — Hero ════════════════════════════════════════════════════════ */
+#s1{min-height:140vh;padding-bottom:var(--s7)}
+.topbar{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:var(--s5) var(--rail)}
+.mark{display:flex;align-items:center;gap:var(--s3);font-weight:560;letter-spacing:-.01em}
+.mark svg{width:28px;height:28px;display:block;filter:none}
+.s1head{padding-top:var(--s6)}
+.s1row{display:grid;grid-template-columns:var(--col) 1fr;gap:var(--s5);align-items:start;padding-top:var(--s6)}
+.s1copy{display:flex;flex-direction:column;gap:var(--s4);align-items:flex-start;padding-top:var(--s1)}
+.s1plate{position:relative;height:74vh;min-height:420px;display:flex;align-items:stretch;gap:4px}
+.s1sliver{width:26px;flex:0 0 26px; box-shadow:var(--plate-shadow);object-fit:cover;height:100%;align-self:stretch}
+.s1main{position:relative;flex:1 1 auto;overflow:hidden;box-shadow:var(--plate-shadow);background:var(--plate-back)}
+.s1main img{width:100%;height:100%;object-fit:cover;animation:breathe1 6s var(--breathe) infinite alternate;transform-origin:58% 46%}
+@keyframes breathe1{from{transform:scale(1)}to{transform:scale(1.026)}}
+.strip{display:grid;grid-template-columns:repeat(3,232px);gap:var(--s4);align-items:end;padding-top:var(--s5);justify-content:start}
+.strip img{width:100%;height:186px;object-fit:cover;box-shadow:var(--plate-shadow)}
+.stripnote{padding-top:var(--s4)}
+
+/* ═════ S2 — Control (pinned scrub) ═══════════════════════════════════════ */
+#s2{height:240vh}
+.pin{position:sticky;top:0;height:100vh;overflow:clip;display:flex;align-items:center}
+.s2grid{display:grid;grid-template-columns:332px 1fr;gap:var(--s5);align-items:center;width:100%}
+.s2copy{display:flex;flex-direction:column;gap:var(--s4)}
+.s2stage{position:relative;height:84vh;min-height:420px;overflow:hidden;box-shadow:var(--plate-shadow);background:var(--plate-back);
+  transform:translate3d(0,calc(-1.4vh * var(--v,0)),0)}
+.s2inner{position:absolute;inset:0;animation:breathe2 6.2s var(--breathe) infinite alternate}
+@keyframes breathe2{from{transform:scale(1)}to{transform:scale(1.026)}}
+.s2inner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+__S2_FRAME_CSS__
+.s2bar{height:calc(1px + 3px * var(--e,0));background:var(--brass);width:100%;transition:none}
+.s2track{position:relative;height:4px;background:var(--rule);display:flex;align-items:flex-end}
+.promptswap{position:relative;min-height:3.2em}
+.promptswap p{position:absolute;left:0;top:0;right:0;opacity:0;animation:swap 6s steps(1,end) infinite}
+.promptswap p:nth-child(1){animation-delay:0s}
+.promptswap p:nth-child(2){animation-delay:2s}
+.promptswap p:nth-child(3){animation-delay:4s}
+.promptswap b{font-weight:640;color:var(--ink)}
+@keyframes swap{0%,31%{opacity:1}33.4%,100%{opacity:0}}
+.s2settled{opacity:clamp(0,calc(var(--e,0) * 9 - 7.6),1)}
+
+/* ═════ S3 — Range (the band) ═════════════════════════════════════════════ */
+#s3{min-height:130vh;padding-top:var(--s7)}
+.band{
+  position:relative;overflow-x:auto;overflow-y:hidden;margin-top:var(--s6);
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  animation:bandbreathe 6.8s var(--breathe) infinite alternate;
+}
+.band::-webkit-scrollbar{display:none}
+.band:focus-visible{outline-offset:6px}
+@keyframes bandbreathe{from{transform:scaleY(1)}to{transform:scaleY(1.024)}}
+.bandtrack{display:flex;gap:var(--s4);width:max-content;animation:marquee 35s linear infinite;will-change:transform}
+@keyframes marquee{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+.band:hover .bandtrack{animation-play-state:paused}
+.bandtrack img{flex:0 0 auto;width:260px;height:58vh;min-height:320px;object-fit:cover;box-shadow:var(--plate-shadow)}
+.s3gap{height:34vh}
+
+/* ═════ S4 — Compare ══════════════════════════════════════════════════════ */
+#s4{min-height:110vh;padding-top:var(--s7);padding-bottom:var(--s7)}
+.cmp{position:relative;height:76vh;min-height:420px;overflow:hidden;box-shadow:var(--plate-shadow);background:var(--plate-back)}
+.cmp [data-pair]{position:absolute;inset:0}
+.cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cmp .after{clip-path:inset(0 0 0 calc(var(--seam) * 1%))}
+.cmp .seam{position:absolute;top:0;bottom:0;width:2px;background:var(--brass);left:calc(var(--seam) * 1%);z-index:2;
+  animation:seambreath 7.2s var(--breathe) infinite alternate}
+@keyframes seambreath{from{transform:translate3d(-1vw,0,0)}to{transform:translate3d(1vw,0,0)}}
+.cmp.sweep .after{transition:clip-path 1400ms var(--ease)}
+.rng{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:transparent;cursor:pointer}
+.rng::-webkit-slider-runnable-track{height:2px;background:var(--rule)}
+.rng::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:999px;background:var(--brass);margin-top:-10px;border:0}
+.rng::-moz-range-track{height:2px;background:var(--rule)}
+.rng::-moz-range-thumb{width:22px;height:22px;border:0;border-radius:999px;background:var(--brass)}
+.pairs{display:flex;gap:var(--s3);flex-wrap:wrap}
+.pairs .chip{width:auto;min-height:48px;padding:8px 16px}
+
+/* ═════ S5 — Worlds (pinned unfold) ═══════════════════════════════════════ */
+#s5{height:230vh}
+.stack{position:absolute;inset:0}
+.stack .sp{position:absolute;overflow:hidden;box-shadow:0 30px 70px -30px rgba(0,0,0,.75);background:var(--plate-back)}
+.stack .sp img{width:100%;height:100%;object-fit:cover}
+.sp1{left:calc(28% - 22% * var(--e,0));top:calc(20% - 20% * var(--e,0));
+     width:calc(44% + 56% * var(--e,0));height:calc(56% + 44% * var(--e,0));z-index:4}
+.sp1 img{animation:breathe5 6.5s var(--breathe) infinite alternate}
+@keyframes breathe5{from{transform:scale(1)}to{transform:scale(1.026)}}
+.sp2{left:calc(24% - 22% * var(--e,0));top:calc(24% + 46% * var(--e,0));width:38%;height:26%;z-index:3;
+     transform:translate3d(calc(-2.2% * var(--v,0)),0,0)}
+.sp3{left:calc(56% + 30% * var(--e,0));top:calc(16% - 8% * var(--e,0));width:34%;height:24%;z-index:2;
+     transform:translate3d(calc(2.2% * var(--v,0)),0,0)}
+.sp4{left:calc(52% + 34% * var(--e,0));top:calc(52% + 22% * var(--e,0));width:32%;height:26%;z-index:1;
+     transform:translate3d(0,calc(2.2% * var(--v,0)),0)}
+.s5copy{position:absolute;left:var(--rail);bottom:var(--s6);z-index:6;max-width:30ch}
+.s5copy .cap{color:#EDEAE3}
+.s5name{opacity:clamp(0,calc(var(--e,0) * 9 - 7.6),1)}
+.s5scrim{position:absolute;inset:0;z-index:5;pointer-events:none;
+  background:radial-gradient(120% 90% at 22% 92%,rgba(18,51,48,.92) 0%,rgba(18,51,48,.55) 34%,rgba(18,51,48,0) 62%),
+             radial-gradient(90% 70% at 88% 8%,rgba(18,51,48,.5) 0%,rgba(18,51,48,0) 60%),
+             radial-gradient(140% 120% at 50% 50%,rgba(0,0,0,0) 46%,rgba(0,0,0,.42) 100%)}
+
+/* ═════ S6 — Presets ══════════════════════════════════════════════════════ */
+#s6{min-height:100vh;padding-top:var(--s7);padding-bottom:var(--s7)}
+.s6grid{display:grid;grid-template-columns:var(--col) 1fr;gap:var(--s5);align-items:center}
+.s6view{position:relative;height:64vh;min-height:380px;overflow:hidden;box-shadow:var(--plate-shadow);background:var(--plate-back)}
+.s6view img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity var(--dur) var(--ease)}
+.s6view img.on{opacity:1}
+.s6list{display:flex;flex-direction:column;gap:var(--s3)}
+.s6view img{animation:float6 5s var(--breathe) infinite alternate}
+.s6view img:nth-of-type(2){animation-delay:-1.7s}
+.s6view img:nth-of-type(3){animation-delay:-3.4s}
+@keyframes float6{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,-2.8%,0)}}
+
+/* ═════ S7 — Material ═════════════════════════════════════════════════════ */
+#s7{min-height:90vh;padding-top:var(--s6);padding-bottom:var(--s6)}
+.mats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5);margin-top:var(--s5)}
+.mats img{width:100%;height:62vh;min-height:300px;object-fit:cover;box-shadow:var(--plate-shadow)}
+__S7_STAGGER_CSS__
+@keyframes breathe7{from{transform:scale(1)}to{transform:scale(1.026)}}
+
+/* ═════ S8 — Say it once ══════════════════════════════════════════════════ */
+#s8{min-height:110vh;overflow:hidden}
+.s8bleed{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
+  animation:breathe8 8s var(--breathe) infinite alternate;transform-origin:62% 44%}
+@keyframes breathe8{from{transform:scale(1)}to{transform:scale(1.026)}}
+.s8scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,#123330 0%,#123330 46%,rgba(18,51,48,.74) 64%,rgba(18,51,48,0) 88%)}
+.s8in{position:relative;z-index:2;min-height:110vh;display:flex;flex-direction:column;justify-content:center;gap:var(--s5)}
+.s8form{display:flex;gap:var(--s3);flex-wrap:wrap;max-width:620px;align-items:flex-end}
+.s8field{flex:1 1 260px}
+.s8label{display:block;font-size:15px;color:var(--ink-2);padding-bottom:var(--s2)}
+.s8input{
+  width:100%;min-height:48px;padding:0 18px;border-radius:999px;
+  background:rgba(237,234,227,.07);border:1px solid var(--rule);color:var(--ink);
+  transition:border-color var(--dur) var(--ease)
+}
+.s8input::placeholder{color:var(--ink-2)}
+.s8input:focus{border-color:var(--brass)}
+.s8status{min-height:26px;font-size:15px;color:var(--ink-2)}
+.foot{position:absolute;left:0;right:0;bottom:0;z-index:3;background:var(--petrol);
+  padding:var(--s4) var(--rail);display:flex;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;
+  border-top:1px solid var(--rule);font-size:15px;color:var(--ink-2)}
+
+/* ── reduced motion: no interpolation, no idle loops, arrive on entry ────── */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important;transition-duration:1ms !important;transition-delay:0ms !important}
+  [data-rv]{opacity:1;transform:none}
+  .cmp.sweep .after{transition:none}
+}
+
+/* ── touch: nothing is lost, hover layers render open (LC-58) ────────────── */
+@media (hover:none){
+  .btn:hover,.chip:hover{filter:none}
+}
+
+/* ── 1024 ────────────────────────────────────────────────────────────────── */
+@media (max-width:1120px){
+  :root{--rail:44px;--col:300px}
+  .s2grid{grid-template-columns:260px 1fr}
+}
+/* ── mobile ──────────────────────────────────────────────────────────────── */
+@media (max-width:760px){
+  :root{--rail:20px;--s7:52px;--s8:84px}
+  body{font-size:16px}
+  .s1row,.s2grid,.s6grid,.split{grid-template-columns:1fr;gap:var(--s4)}
+  #s1{min-height:auto;padding-bottom:var(--s6)}
+  .s1plate{height:58vh;min-height:300px}
+  .s1sliver{width:10px;flex:0 0 10px}
+  .strip{grid-template-columns:repeat(3,1fr);gap:var(--s3);padding-top:var(--s6)}
+  #s2{height:230vh}
+  .pin{align-items:flex-start;padding-top:var(--s5)}
+  .s2stage{height:56vh;min-height:280px}
+  .s2copy{gap:var(--s3)}
+  #s3{min-height:120vh;padding-top:var(--s6)}
+  .bandtrack img{width:180px;height:44vh;min-height:240px}
+  .s3gap{height:22vh}
+  #s4{min-height:110vh;padding-top:var(--s6);padding-bottom:var(--s6)}
+  .cmp{height:52vh;min-height:280px}
+  #s5{height:220vh}
+  .s5copy{left:var(--rail);right:var(--rail);bottom:var(--s5)}
+  #s6{min-height:104vh;padding-top:var(--s6);padding-bottom:var(--s6)}
+  .s6view{height:46vh;min-height:260px}
+  #s7{min-height:76vh}
+  .mats{gap:var(--s3)}
+  .mats img{height:38vh;min-height:196px}
+  #s4 .cmp,#s6 .s6view,#s2 .s2stage{order:-1}
+  #s8,.s8in{min-height:112vh}
+  .s8scrim{background:linear-gradient(180deg,rgba(18,51,48,.55) 0%,rgba(18,51,48,.9) 34%,#123330 62%)}
+  .foot{padding:var(--s4) var(--rail)}
+}
+</style>
+</head>
+<body>
+<noscript><style>/* 스크립트 없이도 감춰진 큰 층이 남지 않는다: 크로스페이드 스택은 첫 장을 위로 올려 전부 보이게 한다 */
+[data-rv]{opacity:1;transform:none}
+.s2inner img{opacity:1!important}.s2inner img:first-child{z-index:2}
+.s6view img{opacity:1!important}.s6view img:first-of-type{z-index:2}
+.s2settled,.s5name{opacity:1!important}.promptswap p{opacity:1!important;position:relative}.promptswap p:nth-child(n+2){display:none}</style></noscript>
+<main>
+
+<!-- ═══ S1: a plate is set down on paper ═══════════════════════════════ -->
+<section id="s1" class="sec sec--paper">
+  <header class="topbar">
+    <a class="mark" href="#s8">
+      <svg viewBox="0 0 28 28" aria-hidden="true" focusable="false"><g fill="none" stroke="#171512" stroke-width="1.6"><path d="M3 3h7M3 3v7M25 25h-7M25 25v-7"/><rect x="8.5" y="8.5" width="11" height="11" stroke="#A9812F"/></g></svg>
+      <span>Higgsgen</span>
+    </a>
+    <a class="btn btn--quiet" href="#s8">Write a line</a>
+  </header>
+
+  <div class="wrap s1head">
+    <h1 data-rv>One line becomes a photograph.</h1>
+  </div>
+
+  <div class="wrap wrap--bleedR s1row">
+    <div class="s1copy">
+      <p class="lede" data-rv>Higgsgen reads a plain sentence and hands back a directed still, with lens, hour, height and grain already decided. You do not open a panel.</p>
+      <a class="btn" href="#s8" data-rv>Write a line</a>
+    </div>
+    <div class="s1plate" data-rv="plate">
+      __S1_SLIVERS__
+      <div class="s1main">__S1_MAIN__</div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="strip" data-rv>__S1_STRIP__</div>
+    <p class="cap stripnote">Every plate on this page came out of one sentence. None of them was retouched afterwards.</p>
+  </div>
+</section>
+
+<!-- ═══ S2: one word moves the frame (pinned scrub) ════════════════════ -->
+<section id="s2" class="sec sec--paper sc-track" data-sc-k="0.55" data-sc-lerp="0.14">
+  <div class="pin">
+    <div class="wrap wrap--bleedR s2grid">
+      <div class="s2copy">
+        <h2 data-rv>Change one word and the frame moves.</h2>
+        <div class="promptswap">
+          <p class="cap">a lighthouse at <b>dusk</b>, seen from the water</p>
+          <p class="cap" aria-hidden="true">a lighthouse at <b>noon</b>, seen from the water</p>
+          <p class="cap" aria-hidden="true">a lighthouse at <b>dawn</b>, seen from the water</p>
+        </div>
+        <div class="s2track"><div class="s2bar"></div></div>
+        <p class="cap s2settled" data-result>Eight frames, one sentence. Only the words in bold changed between them.</p>
+      </div>
+      <div class="s2stage"><div class="s2inner">__S2_FRAMES__</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S3: the twelve worlds it already knows ═════════════════════════ -->
+<section id="s3" class="sec sec--paper">
+  <div class="wrap">
+    <h2 data-rv>The twelve worlds it already knows.</h2>
+    <p class="cap" data-rv style="margin-top:var(--s4)">The band moves on its own. Drag it, swipe it, or leave it alone.</p>
+  </div>
+  <div class="band" tabindex="0" role="group" aria-label="Twelve worlds, scrolling band of plates">
+    <div class="bandtrack">__S3_TILES__</div>
+  </div>
+  <div class="s3gap"></div>
+</section>
+
+<!-- ═══ S4: what went in, what came out ════════════════════════════════ -->
+<section id="s4" class="sec sec--paper">
+  <div class="wrap wrap--bleedR split">
+    <div class="s2copy">
+      <h2 data-rv>What went in, what came out.</h2>
+      <p class="cap" data-rv>Left of the brass line is the plate Higgsgen was given. Right of it is what it returned.</p>
+      <label class="s8label" for="seam">Seam position</label>
+      <input class="rng" id="seam" type="range" min="0" max="100" value="62" aria-label="Move the seam between source and result">
+      <div class="pairs" role="radiogroup" aria-label="Pick a comparison">__S4_CHIPS__</div>
+    </div>
+    <div class="cmp" id="cmp" style="--seam:62" data-rv="plate">
+      __S4_PAIRS__
+      <div class="seam" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S5: four plates, stacked (pinned unfold) ═══════════════════════ -->
+<section id="s5" class="sec sec--petrol sc-track" data-sc-k="0.53" data-sc-lerp="0.14">
+  <div class="pin">
+    <div class="stack">__S5_PLATES__</div>
+    <div class="s5scrim" aria-hidden="true"></div>
+    <div class="s5copy">
+      <h2 data-rv>Four plates, stacked.</h2>
+      <p class="cap s5name" data-result>Now on top: a drained swimming hall, mid-morning, clerestory light.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ S6: pick one and it stays picked ═══════════════════════════════ -->
+<section id="s6" class="sec sec--petrol">
+  <div class="wrap wrap--bleedR s6grid">
+    <div class="s2copy">
+      <h2 data-rv>Pick one and it stays picked.</h2>
+      <p class="cap" data-rv>A preset is a way of lighting, not a filter. It survives the next sentence you write.</p>
+      <div class="s6list" role="radiogroup" aria-label="Lighting presets">__S6_CHIPS__</div>
+    </div>
+    <div class="s6view" data-rv="plate">__S6_VIEWS__</div>
+  </div>
+</section>
+
+<!-- ═══ S7: closer, where the grain lives ═════════════════════════════ -->
+<section id="s7" class="sec sec--petrol">
+  <div class="wrap">
+    <h2 data-rv>Closer, where the grain lives.</h2>
+    <div class="mats" data-rv>__S7_PLATES__</div>
+  </div>
+</section>
+
+<!-- ═══ S8: say it once ═══════════════════════════════════════════════ -->
+<section id="s8" class="sec sec--petrol">
+  __S8_BLEED__
+  <div class="s8scrim" aria-hidden="true"></div>
+  <div class="wrap s8in">
+    <h2 class="said" data-rv>Say it once. Higgsgen does the rest of the deciding.</h2>
+    <form class="s8form" id="say" novalidate>
+      <div class="s8field">
+        <label class="s8label" for="line">Your line</label>
+        <input class="s8input" id="line" name="line" type="text" autocomplete="off" placeholder="a lighthouse at dusk, seen from the water">
+      </div>
+      <button class="btn" type="submit">Send the line</button>
+    </form>
+    <p class="s8status" id="saystatus" role="status" aria-live="polite"></p>
+  </div>
+  <div class="foot">
+    <span>Fictional product, unofficial generated concept.</span>
+    <span>Plates rendered for this page only.</span>
+  </div>
+</section>
+
+</main>
+<script>
+/* ═══════════════════════════════════════════════════════════════════════════
+   smooth-scrub-engine, from docs/design-excellence/fx-library/smooth-scrub-engine
+   MIT, self-authored, zero dependencies. Inlined verbatim.
+   Scroll writes a TARGET only; one always-on rAF loop walks the current value
+   toward it at a fixed fraction per frame (alpha 0.14; 1 under reduced motion).
+   Two clocks: --p/--e progress, --v stage visible lifetime.
+   NOTE: tracks here deliberately carry no .sc-stage child, so `stage` falls
+   back to the track itself and --v keeps advancing through the pinned hold
+   (a sticky stage has a frozen rect and would freeze --v at 0.5).
+   ═══════════════════════════════════════════════════════════════════════════ */
+(function () {
+  var RM = matchMedia("(prefers-reduced-motion: reduce)");
+  var DEAD = 0.0004;
+  var tracks = [];
+
+  function collect() {
+    tracks = [].slice.call(document.querySelectorAll(".sc-track")).map(function (el) {
+      var k = parseFloat(el.dataset.scK);
+      var a = parseFloat(el.dataset.scLerp);
+      return {
+        el: el,
+        stage: el.querySelector(".sc-stage") || el,
+        k: isFinite(k) ? Math.min(Math.max(k, 0.2), 0.95) : 0.55,
+        alpha: isFinite(a) ? Math.min(Math.max(a, 0.02), 1) : 0.14,
+        curP: 0, curV: 0, lastP: -1, lastV: -1,
+      };
+    });
+  }
+
+  function targets(t) {
+    var r = t.el.getBoundingClientRect();
+    var travel = t.el.offsetHeight - innerHeight;
+    var p = travel > 0 ? -r.top / travel : (r.top <= 0 ? 1 : 0);
+    p = Math.min(Math.max(p, 0), 1);
+    var s = t.stage.getBoundingClientRect();
+    var span = s.height + innerHeight;
+    var v = span > 0 ? (innerHeight - s.top) / span : 0;
+    return { p: p, v: Math.min(Math.max(v, 0), 1) };
+  }
+
+  function frame() {
+    var reduce = RM.matches;
+    for (var i = 0; i < tracks.length; i++) {
+      var t = tracks[i];
+      var r = t.el.getBoundingClientRect();
+      if (r.bottom < -innerHeight || r.top > innerHeight * 2) continue;
+      var tg = targets(t);
+      var a = reduce ? 1 : t.alpha;
+      t.curP += (tg.p - t.curP) * a;
+      t.curV += (tg.v - t.curV) * a;
+      if (Math.abs(tg.p - t.curP) < DEAD) t.curP = tg.p;
+      if (Math.abs(tg.v - t.curV) < DEAD) t.curV = tg.v;
+      if (Math.abs(t.curP - t.lastP) > DEAD) {
+        var e = Math.min(t.curP / t.k, 1);
+        t.el.style.setProperty("--p", t.curP.toFixed(4));
+        t.el.style.setProperty("--e", (1 - Math.pow(1 - e, 3)).toFixed(4));
+        t.lastP = t.curP;
+      }
+      if (Math.abs(t.curV - t.lastV) > DEAD) {
+        t.el.style.setProperty("--v", t.curV.toFixed(4));
+        t.lastV = t.curV;
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function boot() { collect(); requestAnimationFrame(frame); }
+  if (document.readyState === "loading") addEventListener("DOMContentLoaded", boot);
+  else boot();
+  addEventListener("resize", collect);
+})();
+
+/* ── entrance reveals (opacity + transform only) ───────────────────────── */
+(function () {
+  var els = [].slice.call(document.querySelectorAll("[data-rv]"));
+  if (!("IntersectionObserver" in window)) { els.forEach(function (e) { e.classList.add("in"); }); return; }
+  var io = new IntersectionObserver(function (rows) {
+    rows.forEach(function (r) { if (r.isIntersecting) { r.target.classList.add("in"); io.unobserve(r.target); } });
+  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+  els.forEach(function (e) { io.observe(e); });
+})();
+
+/* ── S3 band: clone the tiles once so the marquee loops seamlessly.
+      Clones carry no alt and no bytes (same data URI string, one decode). ── */
+(function () {
+  var track = document.querySelector(".bandtrack");
+  if (!track) return;
+  [].slice.call(track.children).forEach(function (n) {
+    var c = n.cloneNode(true);
+    c.setAttribute("alt", ""); c.setAttribute("role", "presentation"); c.setAttribute("aria-hidden", "true");
+    track.appendChild(c);
+  });
+})();
+
+/* ── S4 compare: one automatic sweep on entry, then the seam is yours ──── */
+(function () {
+  var cmp = document.getElementById("cmp"), rng = document.getElementById("seam");
+  if (!cmp || !rng) return;
+  var pairs = [].slice.call(cmp.querySelectorAll("[data-pair]"));
+  var chips = [].slice.call(document.querySelectorAll("[data-pairbtn]"));
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function seam(v) { cmp.style.setProperty("--seam", v); rng.value = v; }
+  rng.addEventListener("input", function () { cmp.classList.remove("sweep"); seam(+rng.value); });
+  function pick(i) {
+    pairs.forEach(function (p) { p.style.display = (+p.dataset.pair === i) ? "" : "none"; });
+    chips.forEach(function (c, j) { c.setAttribute("aria-checked", j === i ? "true" : "false"); c.tabIndex = j === i ? 0 : -1; });
+  }
+  chips.forEach(function (c, j) {
+    c.addEventListener("click", function () { pick(j); });
+    c.addEventListener("keydown", function (ev) {
+      var d = ev.key === "ArrowRight" || ev.key === "ArrowDown" ? 1 : (ev.key === "ArrowLeft" || ev.key === "ArrowUp" ? -1 : 0);
+      if (!d) return; ev.preventDefault();
+      var n = (j + d + chips.length) % chips.length; pick(n); chips[n].focus();
+    });
+  });
+  pick(0);
+  var done = false;
+  var io = new IntersectionObserver(function (rows) {
+    rows.forEach(function (r) {
+      if (!r.isIntersecting || done) return; done = true;
+      if (reduce) { seam(62); return; }
+      cmp.classList.add("sweep"); seam(6);
+      setTimeout(function () { seam(62); }, 60);
+      setTimeout(function () { cmp.classList.remove("sweep"); }, 1600);
+    });
+  }, { threshold: 0.3 });
+  io.observe(cmp);
+})();
+
+/* ── S6 presets: click or arrow keys, and the choice latches (LC-50) ───── */
+(function () {
+  var chips = [].slice.call(document.querySelectorAll("[data-preset]"));
+  var views = [].slice.call(document.querySelectorAll(".s6view img"));
+  if (!chips.length) return;
+  function pick(i) {
+    chips.forEach(function (c, j) {
+      c.setAttribute("aria-checked", j === i ? "true" : "false");
+      c.tabIndex = j === i ? 0 : -1;
+    });
+    views.forEach(function (v, j) { v.classList.toggle("on", j === i); });
+  }
+  chips.forEach(function (c, j) {
+    c.addEventListener("click", function () { pick(j); });
+    c.addEventListener("keydown", function (ev) {
+      var d = ev.key === "ArrowRight" || ev.key === "ArrowDown" ? 1 : (ev.key === "ArrowLeft" || ev.key === "ArrowUp" ? -1 : 0);
+      if (!d) return; ev.preventDefault();
+      var n = (j + d + chips.length) % chips.length; pick(n); chips[n].focus();
+    });
+  });
+  pick(0);
+})();
+
+/* ── S8 form: it never leaves the page; it answers honestly ────────────── */
+(function () {
+  var f = document.getElementById("say"), s = document.getElementById("saystatus"), i = document.getElementById("line");
+  if (!f) return;
+  f.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var v = (i.value || "").trim();
+    s.textContent = v
+      ? "Line held: " + (v.length > 64 ? v.slice(0, 64) + "…" : v) + ". Higgsgen is a fictional product, so nothing renders."
+      : "Write a line first, then send it.";
+  });
+})();
+</script>
+</body>
+</html>
