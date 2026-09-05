@@ -39,6 +39,7 @@ aphrodite/*/*
 !aphrodite/*/BRIEF.md
 !aphrodite/*/set.json
 !aphrodite/*/DESIGN.md
+!aphrodite/*/DESIGN-*.md
 !aphrodite/*/runs/
 aphrodite/*/runs/*
 !aphrodite/*/runs/*.txt
