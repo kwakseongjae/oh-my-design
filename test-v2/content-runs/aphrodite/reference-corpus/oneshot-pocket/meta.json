@@ -1,0 +1,25 @@
+{
+  "id": "oneshot-pocket",
+  "url": "https://pixel-pocket-alex.ipollux.chatgpt.site",
+  "why": "ad hoc",
+  "capturedAt": "2026-09-05T07:12:04.996Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "errors": [],
+  "httpStatus": 200,
+  "cssSheets": 2,
+  "cssBytes": 211819,
+  "cssUnreadable": [],
+  "scrollMode": "native",
+  "docHeightPx": 938,
+  "assetsByType": {
+    "font": {
+      "n": 4,
+      "bytes": 64292
+    }
+  },
+  "libraries": [],
+  "scriptBytes": 0
+}

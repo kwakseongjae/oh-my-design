@@ -1,0 +1,28 @@
+{
+  "globals": [],
+  "versions": {},
+  "external": [
+    {
+      "url": "https://apex-700-motorcycle.omarsourman.chatgpt.site/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+      "bytes": 0,
+      "status": 302,
+      "library": null
+    },
+    {
+      "url": "https://apex-700-motorcycle.omarsourman.chatgpt.site/cdn-cgi/challenge-platform/h/g/scripts/jsd/330e41bb475c/main.js?",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    }
+  ],
+  "inline": [
+    {
+      "bytes": 559697,
+      "head": " const META={\"design\":\"Apex 700 / original naked sport motorcycle\",\"assembly_revision\":\"048fa1942c178936eff2f3423077338703682ceea54970806ddead99d23dc5cf\",\"part_count\":3186,\"internal_part_count\":1615,\""
+    },
+    {
+      "bytes": 921,
+      "head": "(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a3636bf47d36ea2c',t:'MTc4ODU5"
+    }
+  ]
+}

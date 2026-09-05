@@ -1,0 +1,66 @@
+{
+  "globals": [],
+  "versions": {},
+  "external": [
+    {
+      "url": "https://astra-in-perspective.lexn8.chatgpt.site/assets/rolldown-runtime-S-ySWqyJ.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://astra-in-perspective.lexn8.chatgpt.site/assets/layout-segment-context-BnMqGb6l.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://astra-in-perspective.lexn8.chatgpt.site/assets/index-rTqVxKmz.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://astra-in-perspective.lexn8.chatgpt.site/assets/page-q5IpQYpR.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://astra-in-perspective.lexn8.chatgpt.site/assets/framework-CXnKph_e.js",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://astra-in-perspective.lexn8.chatgpt.site/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+      "bytes": 0,
+      "status": 302,
+      "library": null
+    },
+    {
+      "url": "https://astra-in-perspective.lexn8.chatgpt.site/cdn-cgi/challenge-platform/h/g/scripts/jsd/330e41bb475c/main.js?",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    }
+  ],
+  "inline": [
+    {
+      "bytes": 58,
+      "head": "self.__VINEXT_RSC_NAV__={\"pathname\":\"/\",\"searchParams\":[]}"
+    },
+    {
+      "bytes": 921,
+      "head": "(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a36362d73b79ea8e',t:'MTc4ODU5"
+    },
+    {
+      "bytes": 1934,
+      "head": "self.__VINEXT_RSC_CHUNKS__=self.__VINEXT_RSC_CHUNKS__||[];self.__VINEXT_RSC_CHUNKS__.push(\"2:I[\\\"8c0f216c4604\\\",[],\\\"Children\\\",1]\\n3:I[\\\"15c18cfaeeff\\\",[],\\\"LayoutSegmentProvider\\\",1]\\n4:I[\\\"8c0f216c"
+    },
+    {
+      "bytes": 215,
+      "head": "self.__VINEXT_RSC_CHUNKS__=self.__VINEXT_RSC_CHUNKS__||[];self.__VINEXT_RSC_CHUNKS__.push(\"6:I[\\\"6efdf509a785\\\",[],\\\"default\\\",1]\\n1:[\\\"$\\\",\\\"$L6\\\",null,{\\\"params\\\":\\\"$@7\\\",\\\"searchParams\\\":\\\"$@8\\\"}]\\"
+    }
+  ]
+}

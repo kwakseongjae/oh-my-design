@@ -1,0 +1,29 @@
+{
+  "id": "oneshot-leon",
+  "url": "https://astra-in-perspective.lexn8.chatgpt.site/",
+  "why": "ad hoc",
+  "capturedAt": "2026-09-05T07:05:31.812Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "errors": [],
+  "httpStatus": 200,
+  "cssSheets": 1,
+  "cssBytes": 184475,
+  "cssUnreadable": [],
+  "scrollMode": "native",
+  "docHeightPx": 9780,
+  "assetsByType": {
+    "image": {
+      "n": 3,
+      "bytes": 472070
+    },
+    "font": {
+      "n": 3,
+      "bytes": 196732
+    }
+  },
+  "libraries": [],
+  "scriptBytes": 0
+}

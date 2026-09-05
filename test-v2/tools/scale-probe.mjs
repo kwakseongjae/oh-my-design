@@ -30,6 +30,21 @@ const SETTLE = 1200;
 let MAX_STEPS = 12;
 
 const SITES = [
+  // ---- 원샷 벤치마크: X 에서 화제가 된 단일 모델 결과물 (2026-09-05, grok build 로 수집) ----
+  { id: "oneshot-leon", url: "https://astra-in-perspective.lexn8.chatgpt.site/", locale: "en-US", group: "oneshot",
+    why: "GPT-6 Astra 원샷 · @LexnLin · 거대 워드마크 + 아치 갤러리" },
+  { id: "oneshot-beyond", url: "https://beyond-astra.web-loewe.chatgpt.site/", locale: "en-US", group: "oneshot",
+    why: "Astra 원샷 · @LeoHenkeot1u · 다크 시네마틱 개기일식" },
+  { id: "oneshot-lecteurs", url: "https://petits-lecteurs.rachelvt42.chatgpt.site/", locale: "fr-FR", group: "oneshot",
+    why: "Astra 원샷 · @RachelVT42" },
+  { id: "oneshot-mosslight", url: "https://mosslight.tally-de.chatgpt.site/", locale: "en-US", group: "oneshot",
+    why: "Astra 원샷 · @Tally__DE" },
+  { id: "oneshot-apex", url: "https://apex-700-motorcycle.omarsourman.chatgpt.site/", locale: "en-US", group: "oneshot",
+    why: "Astra 원샷 · @OmarSourman · 80MB 3D 제품" },
+  { id: "oneshot-pocket", url: "https://pixel-pocket-alex.ipollux.chatgpt.site/", locale: "en-US", group: "oneshot",
+    why: "Astra 원샷 · @someonewhocan01 · 콘솔형 포트폴리오" },
+  { id: "r5", url: "file:///Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/content-runs/aphrodite/higgsgen/render-r5.html", locale: "en-US", group: "ours",
+    why: "우리 r5 (30점)" },
   // ---- user references -------------------------------------------------
   { id: "tasteskill", url: "https://www.tasteskill.dev/", locale: "en-US", group: "user-ref",
     why: "user-named reference for the r4 rework" },

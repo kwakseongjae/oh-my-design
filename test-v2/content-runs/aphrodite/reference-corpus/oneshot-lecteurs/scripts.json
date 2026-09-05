@@ -1,0 +1,24 @@
+{
+  "globals": [],
+  "versions": {},
+  "external": [
+    {
+      "url": "https://petits-lecteurs.rachelvt42.chatgpt.site/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+      "bytes": 0,
+      "status": 302,
+      "library": null
+    },
+    {
+      "url": "https://petits-lecteurs.rachelvt42.chatgpt.site/cdn-cgi/challenge-platform/h/g/scripts/jsd/330e41bb475c/main.js?",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    }
+  ],
+  "inline": [
+    {
+      "bytes": 921,
+      "head": "(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a3636b38397feaa9',t:'MTc4ODU5"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "globals": [],
+  "versions": {},
+  "external": [
+    {
+      "url": "https://mosslight.tally-de.chatgpt.site/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+      "bytes": 0,
+      "status": 302,
+      "library": null
+    },
+    {
+      "url": "https://mosslight.tally-de.chatgpt.site/cdn-cgi/challenge-platform/h/g/scripts/jsd/330e41bb475c/main.js?",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    }
+  ],
+  "inline": [
+    {
+      "bytes": 128608,
+      "head": " /* Mosslight — original, dependency-free Canvas 2D adventure. World geometry, artwork, music, mechanics and persistence live here. No requests, analytics, account, assets, or build step require"
+    },
+    {
+      "bytes": 921,
+      "head": "(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a3636bc1eef3723a',t:'MTc4ODU5"
+    }
+  ]
+}

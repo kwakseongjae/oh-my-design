@@ -1,0 +1,122 @@
+{
+  "globals": [],
+  "versions": {},
+  "external": [
+    {
+      "url": "https://pixel-pocket-alex.ipollux.chatgpt.site/_next/static/chunks/layout-segment-context-Q_H6VZAB.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://pixel-pocket-alex.ipollux.chatgpt.site/_next/static/chunks/index-DxatyRvb.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://pixel-pocket-alex.ipollux.chatgpt.site/_next/static/chunks/framework-D_rUT4EX.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://pixel-pocket-alex.ipollux.chatgpt.site/_next/static/chunks/page-DjhMxzq2.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://pixel-pocket-alex.ipollux.chatgpt.site/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+      "bytes": 0,
+      "status": 302,
+      "library": null
+    },
+    {
+      "url": "https://pixel-pocket-alex.ipollux.chatgpt.site/cdn-cgi/challenge-platform/h/g/scripts/jsd/330e41bb475c/main.js?",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    },
+    {
+      "url": "https://pixel-pocket-alex.ipollux.chatgpt.site/_next/static/chunks/rolldown-runtime-C60lm6uB.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    }
+  ],
+  "inline": [
+    {
+      "bytes": 187,
+      "head": "Object.assign(((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}),{params:{},nav:{\"pathname\":\"/\",\"searchParams\":[]}})"
+    },
+    {
+      "bytes": 175,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"2:I[\\\"8c0f216c4604\\\",[],\\\"Children\\\",1]\\n\")"
+    },
+    {
+      "bytes": 186,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"3:I[\\\"593f344dc510\\\",[],\\\"GlobalErrorBoundary\\\",1]\\n\")"
+    },
+    {
+      "bytes": 174,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"4:I[\\\"0b874ad30386\\\",[],\\\"default\\\",1]\\n\")"
+    },
+    {
+      "bytes": 180,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"5:I[\\\"593f344dc510\\\",[],\\\"ErrorBoundary\\\",1]\\n\")"
+    },
+    {
+      "bytes": 188,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"6:I[\\\"15c18cfaeeff\\\",[],\\\"LayoutSegmentProvider\\\",1]\\n\")"
+    },
+    {
+      "bytes": 171,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"7:I[\\\"8c0f216c4604\\\",[],\\\"Slot\\\",1]\\n\")"
+    },
+    {
+      "bytes": 183,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"8:I[\\\"593f344dc510\\\",[],\\\"NotFoundBoundary\\\",1]\\n\")"
+    },
+    {
+      "bytes": 188,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"9:I[\\\"9276801271d6\\\",[],\\\"AppRouterScrollTarget\\\",1]\\n\")"
+    },
+    {
+      "bytes": 183,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"a:I[\\\"593f344dc510\\\",[],\\\"RedirectBoundary\\\",1]\\n\")"
+    },
+    {
+      "bytes": 196,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\":HL[\\\"/_next/static/css/index.CkQNR93o.css\\\",\\\"style\\\" ]\\n\")"
+    },
+    {
+      "bytes": 3615,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"0:{\\\"page:/\\\":\\\"$L1\\\",\\\"layout:/\\\":[[[\\\"$\\\",\\\"link\\\",\\\"css:/_next/st"
+    },
+    {
+      "bytes": 174,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"b:I[\\\"6efdf509a785\\\",[],\\\"default\\\",1]\\n\")"
+    },
+    {
+      "bytes": 204,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"1:[\\\"$\\\",\\\"$Lb\\\",null,{\\\"params\\\":\\\"$@c\\\",\\\"searchParams\\\":\\\"$@d\\\"}]"
+    },
+    {
+      "bytes": 140,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"c:{}\\n\")"
+    },
+    {
+      "bytes": 140,
+      "head": "((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}).rsc.push(\"d:{}\\n\")"
+    },
+    {
+      "bytes": 327,
+      "head": "Object.assign(((self[Symbol.for(\"vinext.navigationRuntime\")]??={bootstrap:{routeManifest:null},functions:{}}).bootstrap.rsc??={rsc:[]}),{\"initialCacheKind\":\"dynamic\",\"dynamicStaleTimeSeconds\":0});((se"
+    },
+    {
+      "bytes": 921,
+      "head": "(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a3636c701ce0ea9d',t:'MTc4ODU5"
+    }
+  ]
+}

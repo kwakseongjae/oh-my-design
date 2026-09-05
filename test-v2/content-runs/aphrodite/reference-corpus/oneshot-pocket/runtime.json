@@ -1,0 +1,83 @@
+{
+  "keyframes": [
+    {
+      "name": "lcd-appear",
+      "steps": 2
+    },
+    {
+      "name": "boot-load",
+      "steps": 2
+    },
+    {
+      "name": "spin",
+      "steps": 1
+    },
+    {
+      "name": "pulse",
+      "steps": 1
+    },
+    {
+      "name": "enter",
+      "steps": 1
+    },
+    {
+      "name": "exit",
+      "steps": 1
+    },
+    {
+      "name": "accordion-down",
+      "steps": 2
+    },
+    {
+      "name": "accordion-up",
+      "steps": 2
+    },
+    {
+      "name": "caret-blink",
+      "steps": 2
+    },
+    {
+      "name": "scroll-fade-reveal-b",
+      "steps": 2
+    },
+    {
+      "name": "scroll-fade-reveal-s",
+      "steps": 2
+    },
+    {
+      "name": "scroll-fade-reveal-e",
+      "steps": 2
+    },
+    {
+      "name": "tw-shimmer",
+      "steps": 2
+    }
+  ],
+  "keyframeCount": 13,
+  "animations": [],
+  "animationCount": 0,
+  "runningAnimations": 0,
+  "infiniteAnimations": 0,
+  "transitions": [
+    [
+      "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+      2
+    ]
+  ],
+  "canvases": [],
+  "canvasCount": 0,
+  "rafCallbacks": 0,
+  "rafCalls": 0,
+  "scrollListeners": {
+    "mousemove": 2,
+    "pointermove": 2,
+    "scroll": 1,
+    "touchmove": 2,
+    "wheel": 2
+  },
+  "intersectionObservers": 0,
+  "canvasDraws": 0,
+  "scrollMode": "native",
+  "docHeightPx": 938,
+  "videos": []
+}

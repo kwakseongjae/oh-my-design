@@ -1,0 +1,29 @@
+{
+  "id": "oneshot-lecteurs",
+  "url": "https://petits-lecteurs.rachelvt42.chatgpt.site",
+  "why": "ad hoc",
+  "capturedAt": "2026-09-05T07:11:15.106Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "errors": [],
+  "httpStatus": 200,
+  "cssSheets": 1,
+  "cssBytes": 8131,
+  "cssUnreadable": [],
+  "scrollMode": "native",
+  "docHeightPx": 2892,
+  "assetsByType": {
+    "image": {
+      "n": 3,
+      "bytes": 130648
+    },
+    "font": {
+      "n": 2,
+      "bytes": 53104
+    }
+  },
+  "libraries": [],
+  "scriptBytes": 0
+}

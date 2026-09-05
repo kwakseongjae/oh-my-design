@@ -1,0 +1,20 @@
+{
+  "id": "oneshot-mosslight",
+  "url": "https://mosslight.tally-de.chatgpt.site/",
+  "why": "ad hoc",
+  "capturedAt": "2026-09-05T07:11:37.138Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "errors": [],
+  "httpStatus": 200,
+  "cssSheets": 1,
+  "cssBytes": 33449,
+  "cssUnreadable": [],
+  "scrollMode": "transform-container",
+  "docHeightPx": 900,
+  "assetsByType": {},
+  "libraries": [],
+  "scriptBytes": 0
+}

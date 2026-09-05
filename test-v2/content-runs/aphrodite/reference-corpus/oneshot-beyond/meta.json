@@ -1,0 +1,31 @@
+{
+  "id": "oneshot-beyond",
+  "url": "https://beyond-astra.web-loewe.chatgpt.site/",
+  "why": "ad hoc",
+  "capturedAt": "2026-09-05T07:10:53.346Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "errors": [],
+  "httpStatus": 200,
+  "cssSheets": 2,
+  "cssBytes": 29529,
+  "cssUnreadable": [],
+  "scrollMode": "native",
+  "docHeightPx": 40790,
+  "assetsByType": {
+    "image": {
+      "n": 6,
+      "bytes": 2049086
+    },
+    "font": {
+      "n": 2,
+      "bytes": 141020
+    }
+  },
+  "libraries": [
+    "Lenis"
+  ],
+  "scriptBytes": 0
+}

@@ -1,0 +1,82 @@
+{
+  "globals": [
+    "Lenis"
+  ],
+  "versions": {},
+  "external": [
+    {
+      "url": "https://beyond-astra.web-loewe.chatgpt.site/_next/static/chunks/41qfcvra0dvw4.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://beyond-astra.web-loewe.chatgpt.site/_next/static/chunks/1mh6a-0e61pyc.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://beyond-astra.web-loewe.chatgpt.site/_next/static/chunks/3j1epin3j4zdk.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://beyond-astra.web-loewe.chatgpt.site/_next/static/chunks/3fntmmi971322.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://beyond-astra.web-loewe.chatgpt.site/_next/static/chunks/3l04zcqx63h3y.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://beyond-astra.web-loewe.chatgpt.site/_next/static/chunks/turbopack-0_i3ve-33z88y.js",
+      "bytes": 0,
+      "status": 200,
+      "library": "next"
+    },
+    {
+      "url": "https://beyond-astra.web-loewe.chatgpt.site/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+      "bytes": 0,
+      "status": 302,
+      "library": null
+    },
+    {
+      "url": "https://beyond-astra.web-loewe.chatgpt.site/cdn-cgi/challenge-platform/h/g/scripts/jsd/330e41bb475c/main.js?",
+      "bytes": 0,
+      "status": 200,
+      "library": null
+    }
+  ],
+  "inline": [
+    {
+      "bytes": 43,
+      "head": "(self.__next_f=self.__next_f||[]).push([0])"
+    },
+    {
+      "bytes": 736,
+      "head": "self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[39756,[\\\"/_next/static/chunks/3fntmmi971322.js\\\"],\\\"default\\\"]\\n3:I[37457,[\\\"/_next/static/chunks/3fntmmi971322.js\\\"],\\\"default\\\"]\\n4:I[8128,[\\\"/_nex"
+    },
+    {
+      "bytes": 3374,
+      "head": "self.__next_f.push([1,\"0:{\\\"P\\\":null,\\\"c\\\":[\\\"\\\",\\\"\\\"],\\\"q\\\":\\\"\\\",\\\"i\\\":false,\\\"f\\\":[[[\\\"\\\",{\\\"children\\\":[\\\"__PAGE__\\\",{},\\\"$undefined\\\",\\\"$undefined\\\",4608]},\\\"$undefined\\\",\\\"$undefined\\\",4624],[[\\\""
+    },
+    {
+      "bytes": 177,
+      "head": "self.__next_f.push([1,\"9:[[\\\"$\\\",\\\"meta\\\",\\\"0\\\",{\\\"charSet\\\":\\\"utf-8\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"1\\\",{\\\"name\\\":\\\"viewport\\\",\\\"content\\\":\\\"width=device-width, initial-scale=1\\\"}]]\\n\"])"
+    },
+    {
+      "bytes": 347,
+      "head": "self.__next_f.push([1,\"7:null\\nb:[[\\\"$\\\",\\\"title\\\",\\\"0\\\",{\\\"children\\\":\\\"Beyond — Follow the Signal\\\"}],[\\\"$\\\",\\\"meta\\\",\\\"1\\\",{\\\"name\\\":\\\"description\\\",\\\"content\\\":\\\"A journey through intelligence. Th"
+    },
+    {
+      "bytes": 921,
+      "head": "(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML=\"window.__CF$cv$params={r:'a3636ab0ac680bbb',t:'MTc4ODU5"
+    }
+  ]
+}

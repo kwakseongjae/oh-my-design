@@ -1,0 +1,262 @@
+{
+  "keyframes": [
+    {
+      "name": "word-enter",
+      "steps": 2
+    },
+    {
+      "name": "strip-enter",
+      "steps": 2
+    },
+    {
+      "name": "fade-in",
+      "steps": 2
+    },
+    {
+      "name": "bar-enter",
+      "steps": 2
+    },
+    {
+      "name": "spin",
+      "steps": 1
+    },
+    {
+      "name": "pulse",
+      "steps": 1
+    },
+    {
+      "name": "enter",
+      "steps": 1
+    },
+    {
+      "name": "exit",
+      "steps": 1
+    },
+    {
+      "name": "accordion-down",
+      "steps": 2
+    },
+    {
+      "name": "accordion-up",
+      "steps": 2
+    },
+    {
+      "name": "caret-blink",
+      "steps": 2
+    },
+    {
+      "name": "scroll-fade-reveal-b",
+      "steps": 2
+    },
+    {
+      "name": "scroll-fade-reveal-s",
+      "steps": 2
+    },
+    {
+      "name": "scroll-fade-reveal-e",
+      "steps": 2
+    },
+    {
+      "name": "tw-shimmer",
+      "steps": 2
+    }
+  ],
+  "keyframeCount": 15,
+  "animations": [
+    {
+      "name": "word-enter",
+      "state": "finished",
+      "dur": 1700,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 0,
+      "target": "span"
+    },
+    {
+      "name": "word-enter",
+      "state": "finished",
+      "dur": 1700,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 90,
+      "target": "span"
+    },
+    {
+      "name": "word-enter",
+      "state": "finished",
+      "dur": 1700,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 180,
+      "target": "span"
+    },
+    {
+      "name": "word-enter",
+      "state": "finished",
+      "dur": 1700,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 270,
+      "target": "span"
+    },
+    {
+      "name": "word-enter",
+      "state": "finished",
+      "dur": 1700,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 360,
+      "target": "span"
+    },
+    {
+      "name": "strip-enter",
+      "state": "finished",
+      "dur": 1800,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 200,
+      "target": "div.frieze-strip"
+    },
+    {
+      "name": "strip-enter",
+      "state": "finished",
+      "dur": 1800,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 280,
+      "target": "div.frieze-strip"
+    },
+    {
+      "name": "strip-enter",
+      "state": "finished",
+      "dur": 1800,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 360,
+      "target": "div.frieze-strip"
+    },
+    {
+      "name": "strip-enter",
+      "state": "finished",
+      "dur": 1800,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 440,
+      "target": "div.frieze-strip"
+    },
+    {
+      "name": "strip-enter",
+      "state": "finished",
+      "dur": 1800,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 520,
+      "target": "div.frieze-strip"
+    },
+    {
+      "name": "strip-enter",
+      "state": "finished",
+      "dur": 1800,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 600.0000000000001,
+      "target": "div.frieze-strip"
+    },
+    {
+      "name": "strip-enter",
+      "state": "finished",
+      "dur": 1800,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 679.9999999999999,
+      "target": "div.frieze-strip"
+    },
+    {
+      "name": "bar-enter",
+      "state": "finished",
+      "dur": 1600,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.bar"
+    },
+    {
+      "name": "bar-enter",
+      "state": "finished",
+      "dur": 1600,
+      "iter": 1,
+      "ease": "linear",
+      "delay": 0,
+      "target": "div.bar"
+    }
+  ],
+  "animationCount": 14,
+  "runningAnimations": 0,
+  "infiniteAnimations": 0,
+  "transitions": [
+    [
+      "0.6s cubic-bezier(0.2, 0.7, 0.15, 1)",
+      20
+    ],
+    [
+      "1.3s, 1.5s cubic-bezier(0.2, 0.7, 0.15, 1), cubic-bezier(0.2, 0.7, 0.15, 1)",
+      15
+    ],
+    [
+      "0.2s linear",
+      11
+    ],
+    [
+      "1.2s, 1.2s cubic-bezier(0.2, 0.7, 0.15, 1), cubic-bezier(0.2, 0.7, 0.15, 1)",
+      7
+    ],
+    [
+      "1.8s cubic-bezier(0.2, 0.7, 0.15, 1)",
+      7
+    ],
+    [
+      "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+      6
+    ],
+    [
+      "0.4s, 0.5s ease, cubic-bezier(0.2, 0.7, 0.15, 1)",
+      4
+    ],
+    [
+      "0.6s, 0.6s, 0.6s cubic-bezier(0.2, 0.7, 0.15, 1), cubic-bezier(0.2, 0.7, 0.15, 1), cubic-bezier(0.2, 0.7, 0.15, 1)",
+      4
+    ],
+    [
+      "0.8s, 1.4s ease, cubic-bezier(0.2, 0.7, 0.15, 1)",
+      4
+    ],
+    [
+      "0.7s, 0.7s ease, cubic-bezier(0.2, 0.7, 0.15, 1)",
+      3
+    ],
+    [
+      "1.6s, 0.8s cubic-bezier(0.2, 0.7, 0.15, 1), ease",
+      3
+    ],
+    [
+      "0.8s cubic-bezier(0.2, 0.7, 0.15, 1)",
+      3
+    ]
+  ],
+  "canvases": [],
+  "canvasCount": 0,
+  "rafCallbacks": 4,
+  "rafCalls": 4,
+  "scrollListeners": {
+    "mousemove": 2,
+    "pointermove": 2,
+    "scroll": 2,
+    "touchmove": 2,
+    "wheel": 2
+  },
+  "intersectionObservers": 1,
+  "canvasDraws": 0,
+  "scrollMode": "native",
+  "docHeightPx": 9780,
+  "videos": []
+}

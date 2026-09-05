@@ -1,0 +1,20 @@
+{
+  "id": "oneshot-apex",
+  "url": "https://apex-700-motorcycle.omarsourman.chatgpt.site",
+  "why": "ad hoc",
+  "capturedAt": "2026-09-05T07:11:45.222Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "errors": [],
+  "httpStatus": 200,
+  "cssSheets": 1,
+  "cssBytes": 4833,
+  "cssUnreadable": [],
+  "scrollMode": "custom-wheel",
+  "docHeightPx": 900,
+  "assetsByType": {},
+  "libraries": [],
+  "scriptBytes": 0
+}

@@ -1,0 +1,24 @@
+{
+  "keyframes": [],
+  "keyframeCount": 0,
+  "animations": [],
+  "animationCount": 0,
+  "runningAnimations": 0,
+  "infiniteAnimations": 0,
+  "transitions": [
+    [
+      "0.15s ease",
+      3
+    ]
+  ],
+  "canvases": [],
+  "canvasCount": 0,
+  "rafCallbacks": 0,
+  "rafCalls": 0,
+  "scrollListeners": {},
+  "intersectionObservers": 0,
+  "canvasDraws": 0,
+  "scrollMode": "native",
+  "docHeightPx": 2892,
+  "videos": []
+}

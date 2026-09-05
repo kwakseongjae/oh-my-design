@@ -1,0 +1,47 @@
+{
+  "keyframes": [],
+  "keyframeCount": 0,
+  "animations": [],
+  "animationCount": 0,
+  "runningAnimations": 0,
+  "infiniteAnimations": 0,
+  "transitions": [
+    [
+      "0.2s ease",
+      5
+    ],
+    [
+      "0.2s, 0.2s ease, ease",
+      1
+    ]
+  ],
+  "canvases": [
+    {
+      "w": 1440,
+      "h": 900,
+      "cssW": 1440,
+      "cssH": 900
+    },
+    {
+      "w": 1440,
+      "h": 900,
+      "cssW": 1584,
+      "cssH": 990
+    }
+  ],
+  "canvasCount": 2,
+  "rafCallbacks": 4,
+  "rafCalls": 3408,
+  "scrollListeners": {
+    "mousemove": 4,
+    "pointermove": 4,
+    "scroll": 6,
+    "touchmove": 5,
+    "wheel": 8
+  },
+  "intersectionObservers": 1,
+  "canvasDraws": 211177,
+  "scrollMode": "native",
+  "docHeightPx": 40790,
+  "videos": []
+}
