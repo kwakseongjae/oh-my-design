@@ -1,0 +1,1164 @@
+[
+  {
+    "id": "r4",
+    "url": "file:///Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/content-runs/aphrodite/higgsgen/render-r4.html",
+    "note": "65점 — 자작 핀, 감쇠 없음",
+    "errors": [],
+    "docVh": 14.27,
+    "tracked": "main",
+    "impulse": {
+      "frames": 195,
+      "scrollTau": 22,
+      "visualTau": 22,
+      "visualSettleFrames": 3,
+      "scrubTau": 0,
+      "alpha": 0.532
+    },
+    "jump": {
+      "frames": 439,
+      "catchUpFrames": 7,
+      "scrubCatchUp": 0
+    },
+    "velocityCoupled": {
+      "count": 13,
+      "sample": [
+        {
+          "el": "div.fx-drum__track",
+          "slow": {
+            "tr": "matrix(1, 0, 0, 1, -176.593, 0)",
+            "f": "none",
+            "o": "1"
+          },
+          "fast": {
+            "tr": "matrix(1, 0, 0, 1, -181.608, 0)",
+            "f": "none",
+            "o": "1"
+          }
+        },
+        {
+          "el": "figure.fx-drum__tile",
+          "slow": {
+            "tr": "matrix3d(0.965176, 0, -0.2616, 0, 0, 1, ",
+            "f": "none",
+            "o": "1"
+          },
+          "fast": {
+            "tr": "matrix3d(0.964695, 0, -0.263368, 0, 0, 1",
+            "f": "none",
+            "o": "1"
+          }
+        },
+        {
+          "el": "figure.fx-drum__tile",
+          "slow": {
+            "tr": "matrix3d(0.990783, 0, -0.135456, 0, 0, 1",
+            "f": "none",
+            "o": "1"
+          },
+          "fast": {
+            "tr": "matrix3d(0.964695, 0, -0.263368, 0, 0, 1",
+            "f": "none",
+            "o": "1"
+          }
+        },
+        {
+          "el": "figure.fx-drum__tile",
+          "slow": {
+            "tr": "matrix3d(0.999971, 0, -0.00759211, 0, 0,",
+            "f": "none",
+            "o": "1"
+          },
+          "fast": {
+            "tr": "matrix3d(0.964695, 0, -0.263368, 0, 0, 1",
+            "f": "none",
+            "o": "1"
+          }
+        },
+        {
+          "el": "figure.fx-drum__tile",
+          "slow": {
+            "tr": "matrix3d(0.992663, 0, 0.120917, 0, 0, 1,",
+            "f": "none",
+            "o": "1"
+          },
+          "fast": {
+            "tr": "matrix3d(0.964695, 0, -0.263368, 0, 0, 1",
+            "f": "none",
+            "o": "1"
+          }
+        }
+      ]
+    },
+    "easing": {
+      "transitions": [
+        [
+          "0.16s, 0.16s cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1)",
+          11
+        ],
+        [
+          "0.24s linear",
+          11
+        ],
+        [
+          "0.48s, 0.48s cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.16, 1, 0.3, 1)",
+          7
+        ],
+        [
+          "0.16s, 0.16s cubic-bezier(0.22, 1, 0.36, 1), cubic-bezier(0.4, 0, 0.2, 1)",
+          4
+        ],
+        [
+          "0.16s cubic-bezier(0.4, 0, 0.2, 1)",
+          2
+        ]
+      ],
+      "animations": [
+        [
+          "19s, 13s cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1)",
+          2
+        ],
+        [
+          "24s ease-in-out",
+          1
+        ]
+      ],
+      "springs": 0
+    },
+    "steady": {
+      "frames": 148,
+      "meanDelta": 11.43,
+      "jitter": 3.08,
+      "zeroFrames": 133,
+      "droppedFrames": 0
+    }
+  },
+  {
+    "id": "r3",
+    "url": "file:///Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/content-runs/aphrodite/higgsgen/render-r3.html",
+    "note": "60점",
+    "errors": [],
+    "docVh": 14.38,
+    "tracked": "main.fx-curtain-stage",
+    "impulse": {
+      "frames": 176,
+      "scrollTau": 42,
+      "visualTau": 42,
+      "visualSettleFrames": 2,
+      "scrubTau": null,
+      "alpha": 0.328
+    },
+    "jump": {
+      "frames": 413,
+      "catchUpFrames": 5,
+      "scrubCatchUp": null
+    },
+    "velocityCoupled": {
+      "count": 7,
+      "sample": [
+        {
+          "el": "figure.",
+          "slow": {
+            "tr": "matrix(1.05, 0, 0, 1.05, 0, 0)",
+            "f": "none",
+            "o": "0"
+          },
+          "fast": {
+            "tr": "none",
+            "f": "none",
+            "o": "0"
+          }
+        },
+        {
+          "el": "figure.",
+          "slow": {
+            "tr": "matrix(1.05, 0, 0, 1.05, 0, 0)",
+            "f": "none",
+            "o": "0"
+          },
+          "fast": {
+            "tr": "none",
+            "f": "none",
+            "o": "0"
+          }
+        },
+        {
+          "el": "figure.",
+          "slow": {
+            "tr": "matrix(1.05, 0, 0, 1.05, 0, 0)",
+            "f": "none",
+            "o": "0"
+          },
+          "fast": {
+            "tr": "none",
+            "f": "none",
+            "o": "0"
+          }
+        },
+        {
+          "el": "figure.",
+          "slow": {
+            "tr": "matrix(1.05, 0, 0, 1.05, 0, 0)",
+            "f": "none",
+            "o": "0"
+          },
+          "fast": {
+            "tr": "none",
+            "f": "none",
+            "o": "0"
+          }
+        },
+        {
+          "el": "figure.",
+          "slow": {
+            "tr": "matrix(1.05, 0, 0, 1.05, 0, 0)",
+            "f": "none",
+            "o": "0"
+          },
+          "fast": {
+            "tr": "none",
+            "f": "none",
+            "o": "0"
+          }
+        }
+      ]
+    },
+    "easing": {
+      "transitions": [
+        [
+          "0.48s, 0.72s cubic-bezier(0.16, 1, 0.3, 1), cubic-bezier(0.16, 1, 0.3, 1)",
+          12
+        ],
+        [
+          "0.48s, 0.48s cubic-bezier(0.2, 1.28, 0.34, 1), ease",
+          12
+        ],
+        [
+          "0.24s cubic-bezier(0.4, 0, 0.2, 1)",
+          9
+        ],
+        [
+          "0.16s cubic-bezier(0.4, 0, 0.2, 1)",
+          8
+        ],
+        [
+          "0.24s, 0.24s cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1)",
+          7
+        ],
+        [
+          "0.24s cubic-bezier(0.2, 0.8, 0.25, 1)",
+          6
+        ]
+      ],
+      "animations": [
+        [
+          "0.48s cubic-bezier(0.16, 0.84, 0.24, 1)",
+          6
+        ],
+        [
+          "66s ease-in-out",
+          1
+        ],
+        [
+          "34s, 46s ease-in-out, ease-in-out",
+          1
+        ],
+        [
+          "58s ease-in-out",
+          1
+        ],
+        [
+          "3.4s cubic-bezier(0.4, 0, 0.6, 1)",
+          1
+        ]
+      ],
+      "springs": 0
+    },
+    "steady": {
+      "frames": 140,
+      "meanDelta": 12.09,
+      "jitter": 2.99,
+      "zeroFrames": 125,
+      "droppedFrames": 0
+    }
+  },
+  {
+    "id": "r2",
+    "url": "file:///Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/content-runs/aphrodite/higgsgen/render-r2.html",
+    "note": "70점 — GSAP scrub",
+    "errors": [],
+    "docVh": 15.65,
+    "tracked": "main",
+    "impulse": {
+      "frames": 193,
+      "scrollTau": 58,
+      "visualTau": 58,
+      "visualSettleFrames": 4,
+      "scrubTau": null,
+      "alpha": 0.25
+    },
+    "jump": {
+      "frames": 212,
+      "catchUpFrames": 3,
+      "scrubCatchUp": null
+    },
+    "velocityCoupled": {
+      "count": 2,
+      "sample": [
+        {
+          "el": "li.fan-card",
+          "slow": {
+            "tr": "matrix3d(0.955844, -0.243027, -0.165224,",
+            "f": "none",
+            "o": "1"
+          },
+          "fast": {
+            "tr": "matrix3d(0.973327, -0.190198, -0.128298,",
+            "f": "none",
+            "o": "1"
+          }
+        },
+        {
+          "el": "li.fan-card",
+          "slow": {
+            "tr": "matrix3d(0.955844, 0.243027, 0.165224, 0",
+            "f": "none",
+            "o": "1"
+          },
+          "fast": {
+            "tr": "matrix3d(0.973327, -0.190198, -0.128298,",
+            "f": "none",
+            "o": "1"
+          }
+        }
+      ]
+    },
+    "easing": {
+      "transitions": [
+        [
+          "0.16s cubic-bezier(0.4, 0, 0.2, 1)",
+          8
+        ],
+        [
+          "0.24s, 0.24s cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1)",
+          8
+        ],
+        [
+          "0.24s cubic-bezier(0.4, 0, 0.2, 1)",
+          8
+        ],
+        [
+          "0.24s cubic-bezier(0.2, 0.8, 0.25, 1)",
+          8
+        ],
+        [
+          "0.16s, 0.16s cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1)",
+          2
+        ]
+      ],
+      "animations": [
+        [
+          "auto linear",
+          12
+        ],
+        [
+          "0.48s cubic-bezier(0.16, 0.84, 0.24, 1)",
+          6
+        ],
+        [
+          "8s linear",
+          1
+        ],
+        [
+          "19s linear",
+          1
+        ],
+        [
+          "13s ease-in-out",
+          1
+        ],
+        [
+          "9s linear",
+          1
+        ]
+      ],
+      "springs": 0
+    },
+    "steady": {
+      "frames": 146,
+      "meanDelta": 11.59,
+      "jitter": 3.06,
+      "zeroFrames": 131,
+      "droppedFrames": 0
+    }
+  },
+  {
+    "id": "lusion",
+    "url": "https://lusion.co/",
+    "note": null,
+    "errors": [],
+    "docVh": 1,
+    "tracked": "div",
+    "impulse": {
+      "frames": 12,
+      "scrollTau": 0,
+      "visualTau": 0,
+      "visualSettleFrames": 0,
+      "scrubTau": null,
+      "alpha": 1
+    },
+    "jump": {
+      "frames": 15,
+      "catchUpFrames": 0,
+      "scrubCatchUp": null
+    },
+    "velocityCoupled": {
+      "count": 1,
+      "sample": [
+        {
+          "el": "div.",
+          "slow": {
+            "tr": "none",
+            "f": "none",
+            "o": "0"
+          },
+          "fast": {
+            "tr": "none",
+            "f": "none",
+            "o": "1"
+          }
+        }
+      ]
+    },
+    "easing": {
+      "transitions": [
+        [
+          "0.3s cubic-bezier(0.4, 0, 0.1, 1)",
+          8
+        ],
+        [
+          "0.4s, 0.4s ease, cubic-bezier(0.4, 0, 0.1, 1)",
+          8
+        ],
+        [
+          "0.4s cubic-bezier(0.35, 0, 0, 1)",
+          8
+        ],
+        [
+          "0.4s cubic-bezier(0.4, 0, 0.1, 1)",
+          4
+        ],
+        [
+          "0.5s, 0.5s cubic-bezier(0.4, 0, 0.1, 1), cubic-bezier(0.4, 0, 0.1, 1)",
+          4
+        ],
+        [
+          "0.3s, 0.4s ease, cubic-bezier(0.4, 0, 0.1, 1)",
+          4
+        ]
+      ],
+      "animations": [
+        [
+          "3s cubic-bezier(0.1, 0, 0.1, 1)",
+          6
+        ]
+      ],
+      "springs": 0
+    },
+    "steady": {
+      "frames": 63,
+      "meanDelta": 0,
+      "jitter": null,
+      "zeroFrames": 62,
+      "droppedFrames": 61
+    }
+  },
+  {
+    "id": "igloo",
+    "url": "https://igloo.inc/",
+    "note": null,
+    "errors": [],
+    "docVh": 1,
+    "tracked": "div",
+    "impulse": {
+      "frames": 16,
+      "scrollTau": 0,
+      "visualTau": 0,
+      "visualSettleFrames": 0,
+      "scrubTau": null,
+      "alpha": 1
+    },
+    "jump": {
+      "frames": 12,
+      "catchUpFrames": 0,
+      "scrubCatchUp": null
+    },
+    "velocityCoupled": {
+      "count": 0,
+      "sample": []
+    },
+    "easing": {
+      "transitions": [],
+      "animations": [],
+      "springs": 0
+    },
+    "steady": {
+      "frames": 50,
+      "meanDelta": 0,
+      "jitter": null,
+      "zeroFrames": 49,
+      "droppedFrames": 48
+    }
+  },
+  {
+    "id": "cosmos",
+    "url": "https://www.cosmos.so/",
+    "note": null,
+    "errors": [],
+    "docVh": 6.88,
+    "tracked": "div",
+    "impulse": {
+      "frames": 195,
+      "scrollTau": 23,
+      "visualTau": 23,
+      "visualSettleFrames": 3,
+      "scrubTau": null,
+      "alpha": 0.516
+    },
+    "jump": {
+      "frames": 219,
+      "catchUpFrames": 3,
+      "scrubCatchUp": null
+    },
+    "velocityCoupled": {
+      "count": 0,
+      "sample": []
+    },
+    "easing": {
+      "transitions": [
+        [
+          "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+          33
+        ],
+        [
+          "0.55s cubic-bezier(0.4, 0, 0.2, 1)",
+          4
+        ],
+        [
+          "0.5s cubic-bezier(0.215, 0.61, 0.355, 1)",
+          3
+        ],
+        [
+          "0.2s cubic-bezier(0, 0, 0.2, 1)",
+          2
+        ],
+        [
+          "1.5s ease-out",
+          2
+        ],
+        [
+          "0.5s cubic-bezier(0.22, 1, 0.36, 1)",
+          1
+        ]
+      ],
+      "animations": [
+        [
+          "25s linear",
+          6
+        ],
+        [
+          "40s linear",
+          4
+        ],
+        [
+          "2s linear",
+          1
+        ]
+      ],
+      "springs": 0
+    },
+    "steady": {
+      "frames": 165,
+      "meanDelta": 10.24,
+      "jitter": 3.27,
+      "zeroFrames": 150,
+      "droppedFrames": 0
+    }
+  },
+  {
+    "id": "tasteskill",
+    "url": "https://www.tasteskill.dev/",
+    "note": null,
+    "errors": [],
+    "docVh": 9.95,
+    "tracked": "main.flex",
+    "impulse": {
+      "frames": 193,
+      "scrollTau": 21,
+      "visualTau": 21,
+      "visualSettleFrames": 3,
+      "scrubTau": null,
+      "alpha": 0.549
+    },
+    "jump": {
+      "frames": 435,
+      "catchUpFrames": 5,
+      "scrubCatchUp": null
+    },
+    "velocityCoupled": {
+      "count": 0,
+      "sample": []
+    },
+    "easing": {
+      "transitions": [
+        [
+          "0.5s cubic-bezier(0.22, 1, 0.36, 1)",
+          46
+        ],
+        [
+          "0.3s cubic-bezier(0, 0, 0.2, 1)",
+          43
+        ],
+        [
+          "0.6s cubic-bezier(0.22, 1, 0.36, 1)",
+          42
+        ],
+        [
+          "0.5s cubic-bezier(0.16, 1, 0.3, 1)",
+          35
+        ],
+        [
+          "0.5s cubic-bezier(0, 0, 0.2, 1)",
+          27
+        ],
+        [
+          "0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+          20
+        ]
+      ],
+      "animations": [
+        [
+          "1.5s cubic-bezier(0, 0, 0.2, 1)",
+          1
+        ],
+        [
+          "32s linear",
+          1
+        ]
+      ],
+      "springs": 0
+    },
+    "steady": {
+      "frames": 136,
+      "meanDelta": 12.44,
+      "jitter": 2.94,
+      "zeroFrames": 121,
+      "droppedFrames": 8
+    }
+  },
+  {
+    "id": "affinity",
+    "url": "https://www.affinity.studio/",
+    "note": null,
+    "errors": [],
+    "docVh": 14.67,
+    "tracked": "div",
+    "impulse": {
+      "frames": 194,
+      "scrollTau": 16,
+      "visualTau": 16,
+      "visualSettleFrames": 2,
+      "scrubTau": null,
+      "alpha": 0.648
+    },
+    "jump": {
+      "frames": 435,
+      "catchUpFrames": 3,
+      "scrubCatchUp": null
+    },
+    "velocityCoupled": {
+      "count": 0,
+      "sample": []
+    },
+    "easing": {
+      "transitions": [
+        [
+          "0.15s ease-in-out",
+          254
+        ],
+        [
+          "0.1s, 0.1s, 0.1s linear, linear, linear",
+          80
+        ],
+        [
+          "0.1s, 0.1s, 0.1s, 0.07s linear, linear, linear, ease",
+          14
+        ],
+        [
+          "0.25s ease",
+          8
+        ],
+        [
+          "0.3s, 0.3s ease-in-out, ease-in-out",
+          8
+        ],
+        [
+          "0.3s ease-in-out",
+          3
+        ]
+      ],
+      "animations": [
+        [
+          "1.4s ease",
+          99
+        ],
+        [
+          "0.4s ease-in-out",
+          2
+        ],
+        [
+          "8s linear",
+          1
+        ],
+        [
+          "0.8s ease",
+          1
+        ]
+      ],
+      "springs": 0
+    },
+    "steady": {
+      "frames": 165,
+      "meanDelta": 10.24,
+      "jitter": 3.27,
+      "zeroFrames": 150,
+      "droppedFrames": 0
+    }
+  },
+  {
+    "id": "higgsfield",
+    "url": "https://higgsfield.ai/",
+    "note": null,
+    "errors": [],
+    "docVh": 13.58,
+    "tracked": "main.h-full",
+    "impulse": {
+      "frames": 85,
+      "scrollTau": 103,
+      "visualTau": 103,
+      "visualSettleFrames": 4,
+      "scrubTau": null,
+      "alpha": 0.15
+    },
+    "jump": {
+      "frames": 427,
+      "catchUpFrames": 5,
+      "scrubCatchUp": null
+    },
+    "velocityCoupled": {
+      "count": 0,
+      "sample": []
+    },
+    "easing": {
+      "transitions": [
+        [
+          "0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+          637
+        ],
+        [
+          "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+          57
+        ],
+        [
+          "0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+          20
+        ],
+        [
+          "0.5s ease-in-out",
+          14
+        ],
+        [
+          "0.3s cubic-bezier(0, 0, 0.2, 1)",
+          13
+        ],
+        [
+          "0.2s cubic-bezier(0, 0, 0.2, 1)",
+          13
+        ]
+      ],
+      "animations": [
+        [
+          "2s cubic-bezier(0.4, 0, 0.6, 1)",
+          5
+        ],
+        [
+          "1.45s ease-in-out",
+          4
+        ],
+        [
+          "6s ease-in-out",
+          3
+        ],
+        [
+          "7s ease-in-out",
+          2
+        ],
+        [
+          "1.5s ease-in-out",
+          1
+        ],
+        [
+          "0.3s ease-out",
+          1
+        ]
+      ],
+      "springs": 0
+    },
+    "steady": {
+      "frames": 153,
+      "meanDelta": 11.05,
+      "jitter": 3.14,
+      "zeroFrames": 138,
+      "droppedFrames": 0
+    }
+  },
+  {
+    "id": "luma",
+    "url": "https://lumalabs.ai/",
+    "note": null,
+    "errors": [],
+    "docVh": 9.87,
+    "tracked": "main.light",
+    "impulse": {
+      "frames": 194,
+      "scrollTau": 16,
+      "visualTau": 16,
+      "visualSettleFrames": 2,
+      "scrubTau": null,
+      "alpha": 0.648
+    },
+    "jump": {
+      "frames": 435,
+      "catchUpFrames": 3,
+      "scrubCatchUp": null
+    },
+    "velocityCoupled": {
+      "count": 0,
+      "sample": []
+    },
+    "easing": {
+      "transitions": [
+        [
+          "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+          62
+        ],
+        [
+          "0.3s cubic-bezier(0, 0, 0.2, 1)",
+          13
+        ],
+        [
+          "0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+          2
+        ],
+        [
+          "0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+          1
+        ]
+      ],
+      "animations": [],
+      "springs": 0
+    },
+    "steady": {
+      "frames": 158,
+      "meanDelta": 10.7,
+      "jitter": 3.2,
+      "zeroFrames": 143,
+      "droppedFrames": 0
+    }
+  },
+  {
+    "id": "basement",
+    "url": "https://basement.studio/",
+    "note": null,
+    "errors": [],
+    "docVh": 7.46,
+    "tracked": "div.layout-container",
+    "impulse": {
+      "frames": 194,
+      "scrollTau": 11,
+      "visualTau": 11,
+      "visualSettleFrames": 2,
+      "scrubTau": null,
+      "alpha": 0.781
+    },
+    "jump": {
+      "frames": 214,
+      "catchUpFrames": 2,
+      "scrubCatchUp": null
+    },
+    "velocityCoupled": {
+      "count": 1,
+      "sample": [
+        {
+          "el": "div.pointer-events-none",
+          "slow": {
+            "tr": "none",
+            "f": "none",
+            "o": "0"
+          },
+          "fast": {
+            "tr": "none",
+            "f": "none",
+            "o": "1"
+          }
+        }
+      ]
+    },
+    "easing": {
+      "transitions": [
+        [
+          "0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+          51
+        ],
+        [
+          "0.06s linear",
+          38
+        ],
+        [
+          "0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+          7
+        ],
+        [
+          "0.1s cubic-bezier(0.4, 0, 0.2, 1)",
+          4
+        ],
+        [
+          "0s, 0s ease, ease",
+          1
+        ],
+        [
+          "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+          1
+        ]
+      ],
+      "animations": [
+        [
+          "2s cubic-bezier(0.4, 0, 0.6, 1)",
+          1
+        ],
+        [
+          "1s ease-in-out",
+          1
+        ]
+      ],
+      "springs": 0
+    },
+    "steady": {
+      "frames": 160,
+      "meanDelta": 10.57,
+      "jitter": 3.22,
+      "zeroFrames": 145,
+      "droppedFrames": 0
+    }
+  },
+  {
+    "id": "locomotive",
+    "url": "https://www.locomotive.ca/en",
+    "note": null,
+    "errors": [],
+    "docVh": 7.33,
+    "tracked": "div",
+    "impulse": {
+      "frames": 15,
+      "scrollTau": 306,
+      "visualTau": 306,
+      "visualSettleFrames": 6,
+      "scrubTau": null,
+      "alpha": 0.053
+    },
+    "jump": {
+      "frames": 43,
+      "catchUpFrames": 5,
+      "scrubCatchUp": null
+    },
+    "velocityCoupled": {
+      "count": 0,
+      "sample": []
+    },
+    "easing": {
+      "transitions": [
+        [
+          "0.2s cubic-bezier(0.23, 1, 0.32, 1)",
+          4
+        ],
+        [
+          "0.45s ease",
+          3
+        ],
+        [
+          "0.3s, 0.2s cubic-bezier(0.215, 0.61, 0.355, 1), cubic-bezier(0.215, 0.61, 0.355, 1)",
+          1
+        ],
+        [
+          "0.2s cubic-bezier(0.215, 0.61, 0.355, 1)",
+          1
+        ],
+        [
+          "0.45s cubic-bezier(0.23, 1, 0.32, 1)",
+          1
+        ],
+        [
+          "0.15s, 0s cubic-bezier(0.23, 1, 0.32, 1), cubic-bezier(0.23, 1, 0.32, 1)",
+          1
+        ]
+      ],
+      "animations": [],
+      "springs": 0
+    },
+    "steady": {
+      "frames": 60,
+      "meanDelta": 35.58,
+      "jitter": 0.54,
+      "zeroFrames": 0,
+      "droppedFrames": 58
+    }
+  },
+  {
+    "id": "runway",
+    "url": "https://runwayml.com/",
+    "note": null,
+    "errors": [],
+    "docVh": 5.75,
+    "tracked": "div.flex-1",
+    "impulse": {
+      "frames": 85,
+      "scrollTau": 96,
+      "visualTau": 96,
+      "visualSettleFrames": 3,
+      "scrubTau": null,
+      "alpha": 0.16
+    },
+    "jump": {
+      "frames": 425,
+      "catchUpFrames": 5,
+      "scrubCatchUp": null
+    },
+    "velocityCoupled": {
+      "count": 0,
+      "sample": []
+    },
+    "easing": {
+      "transitions": [
+        [
+          "0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+          26
+        ],
+        [
+          "0.15s cubic-bezier(0.4, 0, 0.2, 1)",
+          22
+        ],
+        [
+          "0.2s linear",
+          9
+        ],
+        [
+          "0.25s ease",
+          5
+        ]
+      ],
+      "animations": [],
+      "springs": 0
+    },
+    "steady": {
+      "frames": 177,
+      "meanDelta": 9.55,
+      "jitter": 3.4,
+      "zeroFrames": 162,
+      "droppedFrames": 0
+    }
+  },
+  {
+    "id": "apple-iphone",
+    "url": "https://www.apple.com/kr/iphone/",
+    "note": null,
+    "errors": [],
+    "docVh": 9.71,
+    "tracked": "main.main",
+    "impulse": {
+      "frames": 196,
+      "scrollTau": 28,
+      "visualTau": 28,
+      "visualSettleFrames": 4,
+      "scrubTau": null,
+      "alpha": 0.449
+    },
+    "jump": {
+      "frames": 437,
+      "catchUpFrames": 5,
+      "scrubCatchUp": null
+    },
+    "velocityCoupled": {
+      "count": 1,
+      "sample": [
+        {
+          "el": "div.card",
+          "slow": {
+            "tr": "matrix(1.01613, 0, 0, 1.01613, 0, 0)",
+            "f": "none",
+            "o": "1"
+          },
+          "fast": {
+            "tr": "matrix(1, 0, 0, 1, 0, 0)",
+            "f": "none",
+            "o": "1"
+          }
+        }
+      ]
+    },
+    "easing": {
+      "transitions": [
+        [
+          "0.32s cubic-bezier(0.4, 0, 0.6, 1)",
+          193
+        ],
+        [
+          "0.24s ease",
+          93
+        ],
+        [
+          "0.1s linear",
+          41
+        ],
+        [
+          "0.3s cubic-bezier(0, 0, 0.5, 1)",
+          36
+        ],
+        [
+          "0.32s ease",
+          31
+        ],
+        [
+          "0.1s, 0.1s linear, linear",
+          26
+        ]
+      ],
+      "animations": [
+        [
+          "0.32s cubic-bezier(0.4, 0, 0.6, 1)",
+          6
+        ],
+        [
+          "0.8s ease-in-out",
+          1
+        ]
+      ],
+      "springs": 0
+    },
+    "steady": {
+      "frames": 155,
+      "meanDelta": 10.91,
+      "jitter": 3.16,
+      "zeroFrames": 140,
+      "droppedFrames": 0
+    }
+  }
+]
