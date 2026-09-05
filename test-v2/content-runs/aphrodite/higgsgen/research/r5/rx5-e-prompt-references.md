@@ -381,6 +381,10 @@ Film noir style scene … harsh single-source street lamp creating deep shadows 
 | `text content on the left and an image on the right` | P-02 | LC-3 | △ 정성적으로만 |
 | **명명된 페이지 형태**(Bento Grid / Long Document / Marquee Hero / Stat-Led / Workbench / Manifesto / Photographic / Quote-Led / Specimen / Split Studio / Feature Stack / Narrative Workflow / Catalogue / Letter / Index-First / Type Specimen / Portfolio Grid / Map-Diagram / Ecosystem Index / Component Playground) | Hallmark `macrostructures.md` | — | ❌ **없음 — 최대 결손** |
 | **nav 아키타입 N1a–N13 / footer 아키타입 Ft1–Ft8** | Hallmark `component-cookbook.md` | — | ❌ **없음** (우리 코덱스에 nav/footer 규칙 자체가 부재) |
+| **8종 페이지 문법**(filmic one-shot · chaptered editorial · live surface · continuous world · typographic poster · gallery · split stage · rhythmic cutlist) — 각각 **무엇을 금지하는지**로 정의 | scroll-craft `uniqueness.md` | — | ❌ **없음.** Hallmark 의 21 매크로구조보다 강함: "Each grammar names what it **forbids**. The forbids are the point." |
+| **핑거프린트 게이트** — 새 빌드는 기존 모든 빌드와 grammar·nav·hero·act shape·close·signature move **6축 중 4축 이상** 달라야 통과 | scroll-craft `uniqueness.md` | §2.5 E(자기 표절 시험) | ❌ **정량 기준 없음** |
+| **시그니처 무브 1개 필수** — `Every build invents one bespoke interaction that exists on that site alone. A recoloured spotlight does not count.` | scroll-craft | — | ❌ **없음** |
+| **엔진은 프로젝트마다 고치지 않는다** — 6색 토큰 + 2서체로 테마만, 커스텀은 `--sc-p` 로 구동 | scroll-craft README | — | ❌ **없음 — r3→r4 실패의 일반형** |
 | `strict grid` ↔ `single centered column` | P-06 | LC-6(두 레인) | △ |
 | 섹션 DOM 순서 한 줄 선언 `Sections · Hero · Logos · Stats · … · Footer` | Hallmark Step 5 프리뷰 | 스토리보드에 산문으로만 | △ **한 줄 규격 없음** |
 
@@ -394,6 +398,8 @@ Film noir style scene … harsh single-source street lamp creating deep shadows 
 | **구조 장치는 정보다**: `numbered markers (01/02/03) … only appropriate if the content actually is a sequence` | Anthropic | — | ❌ **없음** |
 | **`Accenting just a single word in a headline`** 금지 · **`all caps for labels`** 금지 · **불필요한 라벨 금지** | Anthropic | — | ❌ **없음** |
 | `no italic headers` (헤딩은 항상 roman) | Hallmark 규율 6 | — | ❌ **없음** |
+| **스퀸트 테스트** — `Blur the page until detail is gone. You should still be able to name the primary element, the secondary element, and the major groups, in that order.` | scroll-craft `taste.md` | LC-52(면적비 ≥2:1) | ✅ 동치의 **눈 검사 절차** — §5 리뷰어 격리에 넣을 값어치 |
+| **폴드 텍스트 요소 ≤4** + `Headline max two lines, subtext max 20 words, CTA visible without scrolling` + `A hero that overflows the viewport` 금지 | scroll-craft `taste.md` | LC-54(의미 단위 ≤5) | ✅ 우리와 근접 — 수치 근거 보강 |
 
 ### 3.3 크기
 
@@ -444,6 +450,9 @@ Film noir style scene … harsh single-source street lamp creating deep shadows 
 | A13 | **아이콘 규율** | 프로젝트당 **라이브러리 1종** · 크기는 `16 / 20 / 24 / 32` 만 · `stroke 2px` · `currentColor` 상속 · 브랜드색 아이콘은 단일 primary CTA에만 | 우리는 "이모지 금지"만 | Hallmark `assets.md`, P-15 |
 | A14 | **재드로잉 크롬 금지** | 가짜 브라우저바(URL pill + 신호등 점) · 가짜 폰 베젤/노치 · 가짜 코드창 타이틀바 · 가짜 IDE 크롬 전부 금지. 실제 스크린샷을 `<figure>`+헤어라인으로 | AI 생성 제품 랜딩에서 가장 흔한 유혹. 우리 코덱스에 없다 | Hallmark 규율 4 |
 | A15 | **가짜 수치 금지 → "숫자 모양의 구멍"** | `+47% conversion` / `trusted by 50,000+ teams` 는 슬롭. 대안: `—` + 라벨된 회색 블록("metric to confirm"), 사용자에게 묻기, 또는 **그 매크로구조를 버리기** | 우리 하드룰의 "가상 통계 금지"에 **대체 표현 3안**이 없다 | Hallmark 규율 2 |
+| A17 | **스크러빙용 인코딩 규격** | 클립은 *재생*이 아니라 *스크럽*되도록 인코딩해야 한다(전체 ffmpeg 빌드 필요, 스트립된 빌드는 `scale` 필터 부재로 오작동). 포스터는 **살아있는 프레임 홀더** — 실제 비디오 프레임이 그려질 때까지 유지(iOS 는 seek-but-never-played muted 비디오를 빈 화면으로 둔다) | https://github.com/nateherkai/scroll-craft/blob/main/plugins/nateherk-design/skills/scroll-craft/references/devices.md |
+| A18 | **`src` 대신 Blob 페치** | `data-sc-src` 로 클립을 Blob 으로 받아 HTTP range 지원 없이 seek. reduced-motion 에서는 페치 자체를 건너뜀 | 위 URL |
+| A19 | **스타일 프리앰블 방식 + 브랜드킷 우선** | 세트 일관성을 접미사가 아니라 *월드(art direction) 프리앰블*로 잡고, `Brand guidelines are inputs, not decoration … its hard rules win, including rules that forbid things the skill would otherwise reach for` | https://github.com/nateherkai/scroll-craft/blob/main/plugins/nateherk-design/skills/scroll-craft/references/worlds.md |
 | A16 | **레이어드 히어로 합성법** | 투명 PNG 추상 오브젝트를 헤드라인 **뒤에**, "bigger than you think it should be", off-centre, `mix-blend-mode` 사용 — "abstract gradient on top of headline — that's the AI default" | 에셋을 *배치*하는 문법. 우리 LC-19(bleed/inset) 2종뿐 → 3번째 배치(behind/layered)가 없다 | Hallmark `imagery-kit.md` |
 
 ---
@@ -469,6 +478,25 @@ Film noir style scene … harsh single-source street lamp creating deep shadows 
 | `Universal scroll-triggered fade-up … The page never settles.` → "One orchestrated entrance on first load. After that, content is just there." | LC-12(리빌 다이얼) | △ 우리는 개수만, **"한 번의 안무된 등장"이라는 형태 규정이 없다** |
 | Anthropic: `A single orchestrated moment — one page-load sequence or one reveal — lands better than scattered effects; fade-and-slide-up entrances on each section and hover transitions on every card are the generic default and read as AI-generated.` | LC-52 · LC-53 | ✅ 근거 보강 |
 | 절대 금지: **커서 팔로워**("Always slop") · 섹션별 fade-up-stagger · 배경 그래디언트 시프트 · 본문 텍스트 스크롤 리빌 · 일시정지 없는 자동 캐러셀 · `transition-all` · 범용 `hover:scale-105` · 바운스/일래스틱 이징 | LC-44는 커스텀 커서를 **허용**한다 | ⚠️ **충돌.** LC-44(미디어 표면 커서)는 재검토 필요 |
+
+### 5.4 ★ scroll-craft 가 주는 것 — 이 생태계에서 유일하게 우리 문제를 푸는 문서
+
+| 항목 | 원문 수치/규칙 | 우리 상태 |
+|---|---|---|
+| **플레이헤드 감쇠** | `Lerp 0.18 per frame`, 클램프 0.02~1, **0 금지**, reduced-motion 에서 1.0(무감쇠). 별도 rAF 루프가 타깃을 향해 걷는다 — 스크롤은 절대 `currentTime` 을 직접 쓰지 않는다 | ❌ r4 는 스크롤 이벤트에서 직접 값 계산(감쇠·rAF·속도 항 전무) |
+| **데드밴드** | 데스크탑 8ms · 모바일 20ms 미만 쓰기는 버림 | ❌ 없음(대신 0.0015 양자화가 있었다 — 반대 방향의 땜질) |
+| **seek 합치기** | 디코더가 이전 seek 해결 중이면 새 seek 대기열에 넣지 않음 | ❌ 없음 |
+| **클립 시간 ≠ 큐 시간** | 클립은 핀 이동 구간이 아니라 **스테이지의 가시 수명 전체**에 매핑(기본값). 큐만 `p` 사용 | ❌ **없음 — r4 홀드 구간 정지의 직접 원인 후보** |
+| **dwell 리매핑** | `data-sc-dwell` 0~0.6: 양끝은 빠르게, 중앙에서 정착 → 정착이 카피 피크와 겹친다 | △ LC-48(정착은 섹션 안에서)과 목적 동일, **구현 파라미터 없음** |
+| **핀 스팬 하한** | `Minimum useful span is about 1.2` (1 이하면 travel 이 1px → 진행도가 두 노치 사이에서 0→1 로 점프해 모든 큐가 스냅). 히어로는 2.2~3.0, 1.8 미만은 날아가고 3.5 초과는 고장처럼 보인다 | ❌ 수치 없음 |
+| **디바이스 다양성 법칙** | 비트 단위로 고르고, **4개 이상 패밀리**, 같은 것 연속 금지. `scrub` 은 페이지당 최대 2개 | △ 우리 "이미지마다 동사 1개"는 있으나 **패밀리 하한·연속 금지·상한이 없다** |
+| **큐 고원(plateau)** | 큐는 삼각형이면 안 된다 — 고원이 없으면 완전 불투명이 한 순간뿐이라 모든 헤딩이 살짝 흐리게 읽힌다. 히어로 큐는 **greet 형식**(`"0 0.78 0"`) 필수 | ❌ **없음. r4 "정착 상태를 볼 시간"(LC-48/56)의 미시 구현** |
+| **큐 겹침** | 15% 겹침. `A gap between cues reads as a loading failure` | ❌ 없음 |
+| **UI 모션 바닥** | `transform`/`opacity` 만(와이프는 `clip-path`), `transition: all` 금지, **UI 는 `ease-in` 절대 금지**, 커스텀 이징 `cubic-bezier(0.23, 1, 0.32, 1)`, UI 전환 <300ms(호버 120–180 · 버튼 100–160), 스태거 30–80ms, `scale(0)` 금지(0.95 에서 진입), 프레스 피드백 `scale(0.97)`/`translateY(1px)` | ✅ LC-41·57 과 대부분 겹침 · △ `ease-in` 금지·`scale(0)` 금지·스태거 30–80ms 는 없음 |
+| **reduced-motion 철학** | `Reduced motion means **fewer and gentler, not zero.** Keep the opacity that carries comprehension, drop every position change.` | △ 우리는 "정지"로 처리 — 재검토 |
+| **스크롤 디바이스는 duration 예외** | `Scroll devices are exempt: they are paced by the hand, not by a duration.` | ❌ 명문 없음(LC-29 지배 duration과 충돌 소지) |
+
+**r4 지적에 대한 최종 판정 (수정):** §5.3 에서 "이 생태계는 답을 주지 못한다"고 썼으나, **사용자가 준 게시물이 정확히 그 예외였다.** `/scroll-craft` 는 우리의 두 지적(① 딱딱한 스크롤 ② 무입력 모션)에 대해 ①은 **lerp·데드밴드·seek 합치기·클립 매핑·dwell** 이라는 완결된 처방을, ②는 **`drift`(바탕이 함께 움직임)·포인터 디바이스·greet 큐** 로 "입력 없이도 보이는 것"을 보장하는 계약을 갖고 있다.
 
 ### 5.3 결론
 r4의 "자율 모션 부재"에 대해 **이 생태계는 어휘를 주지 못하며, 오히려 자율 모션을 줄이라고 말한다.** 우리 문제는 모션 *개수*가 아니라 **이미지에 동사가 없다**(§2 "정지 60% 초과")는 것이고, 그 해법은 프롬프트 갤러리가 아니라 스크롤 안무 레시피 쪽(레인 A~D 소관)에 있다. 다만 **default-on/off 아키타입**과 **0ms 버킷 · exit=enter×0.6~0.75 · one-shot stagger** 세 가지는 그대로 가져올 값어치가 있다.
@@ -512,6 +540,14 @@ r4의 "자율 모션 부재"에 대해 **이 생태계는 어휘를 주지 못�
 - 금지어(P-17): `empower` `leverage` `seamless` `robust` `harness` `delve` `tapestry` `revolutionize` `in today's fast-paced`
 - 무게 없는 헤드라인("Build faster. Ship smarter.") ↔ 처방: "headlines say something only your product could say" (925studios)
 - Anthropic: "A CTA says exactly what happens when it is used: 'Save changes,' not 'Submit.'" · "An action keeps the same name through the whole flow"
+
+### 6.5b scroll-craft 의 refuse list — 우리 목록에 없는 항목만
+> 전제: `Category defaults, not bans on principle. The brief's own words can earn any of them; reaching for one when the axis is free means you were not deciding.`
+
+- **구조**: `The hero-metric template: big number, small label, supporting stats, accent` · `More than two consecutive image-left / text-right zigzag sections` · `The same layout family twice on one page` · `A split header: giant headline left, small explainer paragraph floating right`
+- **라벨**: eyebrow 는 **3섹션당 최대 1개** · `Scroll cues: "scroll", "↓ scroll", "scroll to explore", animated mouse icons. They are looking at the hero. They know.` · `Decoration text strips (BRAND. MOTION. SPATIAL.) across the hero bottom` · `Locale, time and weather strips` · `Pills and tags overlaid on photos`
+- **표면**: `Glass and blur as decoration rather than as a specific effect` · `Coloured border-left above 1px` · `Monospace as a costume for "technical"` · **`Custom cursors`(금지)** — ⚠️ 우리 LC-44 와 정면 충돌(Hallmark 도 커서 팔로워를 "always slop" 이라 함 → **LC-44 재검토 확정 사유 2건**)
+- **콘텐츠**: `Em dash anywhere visible` · `Div-built fake screenshots, fake dashboards, fake terminals` · **`Text baked into a generated image. Real markup, always.`** (우리 set.json 이 "no text/letters/numerals" 로 이미 지키는 것 — 근거 보강) · 필러 동사 `elevate, seamless, unleash, next-gen, revolutionize, supercharge`
 
 ### 6.5 ⚠️ 우리에게 직접 겨눠진 경고 — Anthropic의 "AI 생성 디자인 5대 군집"
 > 출처: https://github.com/anthropics/claude-code/blob/main/plugins/frontend-design (SKILL.md 원문)
@@ -566,6 +602,13 @@ r4의 "자율 모션 부재"에 대해 **이 생태계는 어휘를 주지 못�
 | **LC-66 재드로잉 크롬 금지** | 가짜 브라우저바·폰 베젤·코드창 타이틀바·IDE 크롬 금지. 실제 스크린샷 `<figure>`+헤어라인 | Hallmark 규율 4 |
 | **LC-67 자유축에 기본값을 쓰지 않는다** | 브리프가 지정하지 않은 축은 Anthropic 5군집(크림+세리프+테라코타 / 니어블랙+산성 액센트 / 브로드시트 / SaaS 카드킷 / 템플릿 크롬)으로 채우지 않는다 | Anthropic 위 URL |
 | **LC-68 빌드 직후 자기 슬롭 감사 3건** | 코드를 쓴 직후 "여전히 AI처럼 보일 수 있는 3가지"를 스스로 적고 2패스로 고친 뒤 제출 | https://www.sailop.com/blog/anti-slop-prompt-template-2026 |
+| **LC-69 플레이헤드/진행도는 감쇠된다** | 스크롤 이벤트가 값을 직접 쓰지 않는다. 상시 rAF 루프가 타깃을 향해 프레임당 고정 비율(**0.18** 기준)로 걷는다. 데드밴드 데스크탑 8ms·모바일 20ms, seek 합치기 필수. reduced-motion 에서는 비율 1.0 | scroll-craft `devices.md` |
+| **LC-70 클립 시간 ≠ 큐 시간** | 스크럽 미디어는 핀 이동 구간이 아니라 **스테이지 가시 수명 전체**에 매핑한다. 큐만 act 진행도를 쓴다. `dwell` 로 양끝은 빠르게·중앙 정착 | 같은 URL |
+| **LC-71 큐에는 고원이 있다** | 리빌 큐는 삼각형 금지 — in/plateau/out. 히어로 큐는 **greet**(시작 시 이미 완전 불투명). 마지막 act 만 hold, 중간 act 는 반드시 1에서 닫는다. 큐끼리 ~15% 겹친다 | 같은 URL |
+| **LC-72 핀 스팬 하한 1.2·히어로 2.2~3.0** | 스팬 ≤1 이면 travel 이 1px 라 모든 애니가 스냅한다. 그 비트는 핀이 아니라 flow 다 | 같은 URL |
+| **LC-73 문법을 고르고 시그니처 1개를 발명한다** | 8종 페이지 문법 중 1개(각 문법이 *금지하는 것*으로 정의) + 그 사이트에만 있는 상호작용 1개 + 기존 빌드 대비 6축 중 4축 이상 상이 | scroll-craft `uniqueness.md` |
+| **LC-74 감정 곡선을 act 보다 먼저 쓴다** | act 당 한 줄 `감정 → 원인`. 인접 두 act 의 감정이 같으면 하나는 필러다. 피크는 **하나**이고 에셋 예산·앞의 침묵·최대 스크롤 공간을 독점한다 | scroll-craft `feel.md` |
+| **LC-75 엔진은 런마다 고치지 않는다** | 메커니즘(스크롤 엔진)은 고정, 프로젝트는 색 토큰 6개 + 서체 2종 + 자체 시맨틱 HTML 로만 다르게 한다. 커스텀은 엔진이 발행하는 진행도 변수로 구동 | scroll-craft README |
 
 ### 7.4 검사기(LI) 후보
 - `LI-41` 3등분 균등 피처 그리드 검출(동일 폭 3열 + 각 열 아이콘+헤딩+본문) → FAIL
@@ -574,11 +617,16 @@ r4의 "자율 모션 부재"에 대해 **이 생태계는 어휘를 주지 못�
 - `LI-44` 아이콘 라이브러리 혼용 · 이모지 아이콘 검출 → FAIL
 - `LI-45` 가짜 크롬 검출(신호등 3원 + URL pill 패턴) → WARN
 - `LI-46` 섹션 패딩 값 종류 = 1 (완전 균일) → WARN (현행 LC-55의 "≤3종"과 함께 하한도 둔다)
+- **`LI-47` 죽은 스크롤(dead scroll)** — 스크롤이 화면을 전혀 바꾸지 않는 구간 검출 → FAIL. *r4 "딱딱함"을 기계로 잡는 유일한 항목* (scroll-craft `verify.md`)
+- **`LI-48` 완전 불투명에 도달하지 못하는 큐** — 독자가 영원히 흐릿하게만 볼 수 있는 카피 → FAIL
+- **`LI-49` 포스터에 멈춘 클립** — 디코드에 조용히 실패해 정지 사진처럼 보이는 비디오 → FAIL
+- **`LI-50` 합성 후 대비** — 그 줄 밑을 지나가는 **가장 밝은 프레임**에서, 줄 단위로, 방향(명/암)을 줄마다 골라 측정 (현행 `text-contrast.mjs` 는 정지 상태 1회 측정)
 
 ---
 
 ## 8. 한계 — 못 읽은 것과 이유
 
+0. **사용자 지정 게시물(@nateherk)은 본문을 실제로 읽었다** — `api.fxtwitter.com` JSON 미러. 다만 **답글 10개는 못 읽었고**(fxtwitter 단일 트윗 한정), X Article `article/2091265388067569835` 본문도 못 읽었다(제목만). 첨부 50.5초 영상은 재생·분석하지 않았다. §1.5 의 "답글 = 저장소 링크" 연결은 **동일 계정 8/22 스레드의 확인된 선례에 근거한 추론**이며 원문 대조는 미완이다.
 1. **X 직접 fetch는 전부 실패(HTTP 402).** `x.com/...` 을 WebFetch로 열면 402 Payment Required. **우회 성공**: `https://api.fxtwitter.com/<user>/status/<id>` 가 JSON으로 본문을 반환 → P-13은 **X 원문을 실제로 읽고 인용한 것**이다. nitter.net(오프라인) · nitter.poast.org(무응답) · **xcancel.com은 2026-08-24 X Corp. 서한으로 서비스 중단** — 나머지 미러는 모두 죽었다.
 2. **스레드 답글은 못 읽었다.** fxtwitter는 단일 트윗만 반환한다. P-14(히어로 웹디자인 프롬프트, `status/2054622754134020191`)의 본문은 답글에 있어 **2차 출처(mulerun 블로그)의 인용으로 대체**했다 — 원문 대조 미완.
 3. **403으로 막힌 소스**: bitcot.com(v0 케이스 스터디, 검색 스니펫만 확보) · medium.com "hero-video website in 20 minutes"(정확한 플로우+프롬프트 미확보).
