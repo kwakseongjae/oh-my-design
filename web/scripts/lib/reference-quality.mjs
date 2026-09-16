@@ -308,7 +308,20 @@ export function evaluateReferenceQuality({ id, markdown, frontmatter, verificati
   if (!tokens || typeof tokens !== "object" || Array.isArray(tokens)) blockPartial("tokens_missing");
   if (tokenSource === "prose-derived" || !tokenSource) blockPartial("token_source_unverified");
   if (!isDate(verifiedAt)) blockPartial("verified_date_invalid");
-  if (extractedAt && (!isDate(extractedAt) || (isDate(verifiedAt) && extractedAt > verifiedAt))) {
+  // `extracted` records two different acts and only one of them can be "too late".
+  // A `live-extract` reading the brand's surface after the verification stamp is a
+  // real problem: the stamp does not cover that reading. A `prose-derived` token is
+  // transcribed *from* the already-verified prose, so it necessarily comes after
+  // verification — that is the correct order, not a violation.
+  //
+  // Measured 2026-09-16: of 115 references flagged here, 111 were `prose-derived`
+  // and all 111 were already blocked by `token_source_unverified`. One phenomenon
+  // was being counted twice, and the second count named it wrongly. The remaining
+  // four (3 `design-system`, 1 `reconciled`) are genuine and still block.
+  const transcribedFromVerifiedProse = tokenSource === "prose-derived";
+  if (extractedAt && !isDate(extractedAt)) {
+    blockPartial("freshness_conflict");
+  } else if (extractedAt && !transcribedFromVerifiedProse && isDate(verifiedAt) && extractedAt > verifiedAt) {
     blockPartial("freshness_conflict");
   }
   if (!proof.present || proof.samples < 5 || !proof.hasUrl) blockPartial("proof_incomplete");

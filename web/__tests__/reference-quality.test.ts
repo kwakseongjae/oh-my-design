@@ -171,6 +171,36 @@ describe("generated reference quality manifest", () => {
   });
 });
 
+describe("freshness distinguishes transcription from observation", () => {
+  const evaluate = (source: string, extracted: string, verified: string) =>
+    evaluateReferenceQuality({
+      id: "fixture",
+      markdown: `---\nid: fixture\nverified: "${verified}"\n---\n\nbody`,
+      frontmatter: { verified, tokens: { source, extracted, colors: { primary: "#000000" } } } as never,
+      verificationMarkdown: "",
+      asOf: "2026-09-16",
+    });
+  const flagged = (source: string, extracted: string, verified: string) =>
+    evaluate(source, extracted, verified).reasonCodes.includes("freshness_conflict");
+
+  it("accepts prose-derived tokens transcribed after the verification stamp", () => {
+    // Transcription reads the already-verified prose, so it always comes after.
+    expect(flagged("prose-derived", "2026-06-08", "2026-05-15")).toBe(false);
+  });
+
+  it("still flags a live reading taken after the verification stamp", () => {
+    expect(flagged("live-extract", "2026-06-08", "2026-05-15")).toBe(true);
+  });
+
+  it("accepts a live reading taken before the stamp", () => {
+    expect(flagged("live-extract", "2026-05-01", "2026-05-15")).toBe(false);
+  });
+
+  it("flags an unparseable extraction date regardless of source", () => {
+    expect(flagged("prose-derived", "not-a-date", "2026-05-15")).toBe(true);
+  });
+});
+
 describe("derived-value advisories", () => {
   const evaluate = (prose: string, tokens: unknown) =>
     evaluateReferenceQuality({

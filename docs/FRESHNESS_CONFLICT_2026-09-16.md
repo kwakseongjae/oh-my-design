@@ -15,7 +15,40 @@ if (extractedAt && (!isDate(extractedAt) || (isDate(verifiedAt) && extractedAt >
 추출이 검증보다 나중이면 막는다. **규칙 자체는 옳다** — 검증 도장이 그 이후에 뽑은
 토큰을 보증할 수는 없다.
 
-## 그런데 115건은 한 번의 이관이다
+## 정정 (같은 날, 더 파본 뒤)
+
+처음에 "2026-06-09 포맷 이관이 원인"이라고 적었다. **틀렸다.** 이관 커밋
+`2cbf8ac1`은 이미 06-08로 찍혀 있던 `extracted`를 건드리지 않았다. 진짜 출처는
+그 하루 전 `d50cee08` *"token backfill"*이고, 커밋 본문이 무엇을 했는지 직접 밝힌다:
+
+> *"prose-derived tokens (colors/typography/rounded/spacing/shadow/components)
+> **lifted from each ref's rigorous §2-§6 prose**, new schema"*
+
+즉 **라이브 사이트를 새로 측정한 것이 아니라, 이미 검증된 산문에서 값을 옮겨 적은 것**이다.
+`tokens.source`가 `prose-derived`인 이유도 이것이다.
+
+그러므로 날짜의 의미는 이렇게 갈린다:
+
+- `verified` — 산문의 사실을 확인한 날 (5월)
+- `extracted` — 그 확인된 사실을 토큰 블록으로 **전사한** 날 (6월 8일)
+
+전사는 새 관측이 아니다. 그래서 `extracted > verified`가 뜨지만 증거가 노후한 것은 아니다.
+
+### 그리고 이것은 별개 사건이 아니다
+
+| 신호 | 건수 |
+|---|---:|
+| `freshness_conflict` | 115 |
+| `token_source_unverified` | 111 |
+| **둘 다** | **111** |
+
+`freshness_conflict` 115건의 `tokenSource`: `prose-derived` **111** · `design-system` 3 ·
+`reconciled` 1.
+
+**두 신호가 같은 한 가지를 두 번 세고 있다** — "산문에서 전사한 토큰". 하나는 출처가
+미검증이라 막고, 하나는 전사일이 검증일보다 늦다고 막는다. 같은 111개를 가리킨다.
+
+## 이관 커밋도 값을 바꾸지 않았다
 
 `tokensExtractedAt` 분포:
 
@@ -50,18 +83,38 @@ if (extractedAt && (!isDate(extractedAt) || (isDate(verifiedAt) && extractedAt >
 
 ## 그래서 어떻게 할 것인가
 
-두 가지 길이 있고, **둘 다 오너 판단이 필요해 실행하지 않았다.**
+진단이 바뀌었으므로 처음 적은 두 선택지(날짜 되돌리기 / 이관 표식)도 다시 쓴다.
+**문제는 포맷이 아니라 `extracted`가 두 가지 다른 일을 한 필드로 기록한다는 것이다.**
 
-**(A) 데이터를 고친다** — 값이 바뀌지 않은 114건의 `tokens.extracted`를 이관 이전
-날짜로 되돌린다. 근거는 위 대조다. 다만 440개 정본 중 114개의 날짜 필드를 바꾸는
-일이고, `fastcampus` 1건은 실제로 값이 늘었으므로 제외해야 한다.
+- 라이브 표면을 **관측**했다 (`live-extract`)
+- 이미 검증된 산문에서 **전사**했다 (`prose-derived`)
 
-**(B) 게이트를 고친다** — 포맷 이관과 재추출을 구분할 방법이 스키마에 없다는 것이
-근본 원인이다. `tokens.source`에 이관 표식이 있거나, `extracted`와 별개로
-`reformatted` 같은 필드가 있으면 게이트가 둘을 구분할 수 있다.
+앞의 것은 검증일보다 늦으면 진짜 문제다 — 검증이 그 관측을 보증하지 않는다.
+뒤의 것은 늦는 게 정상이다 — 전사는 언제나 검증 뒤에 온다. 지금 게이트는 둘을
+구분하지 않아서, 정상 순서를 위반으로 읽는다.
 
-**권고는 (B)다.** (A)는 이번 115건을 지우지만 다음 포맷 이관에서 같은 일이 반복된다.
-(B)는 원인을 없앤다. 다만 스키마 변경이므로 Core v2 버전 정책을 따라야 한다.
+**고칠 곳은 게이트다.** `tokens.source`에 이미 답이 들어 있다:
+
+```js
+// 전사(prose-derived)는 검증 뒤에 오는 것이 정상 순서다.
+// 관측(live-extract 등)만 검증일을 넘어서면 안 된다.
+if (extractedAt && tokenSource !== "prose-derived" && extractedAt > verifiedAt) {
+  blockPartial("freshness_conflict");
+}
+```
+
+`prose-derived`는 이미 `token_source_unverified`로 **따로 막히고 있다.** 같은 111개를
+두 번 세는 대신, 각 신호가 자기 몫만 말하게 한다.
+
+### 남는 4건은 진짜다
+
+`prose-derived`가 아닌 4건(`design-system` 3 · `reconciled` 1)은 실제로 관측이
+검증보다 늦다. 게이트를 고쳐도 계속 막히고, 그게 맞다.
+
+### 정본 데이터는 건드리지 않는다
+
+날짜를 되돌리는 안은 폐기한다. 전사일 06-08은 **사실이고**, 그날 실제로 일어난 일이다.
+기록이 틀린 게 아니라 게이트의 해석이 틀렸다.
 
 ## 하지 말 것
 
