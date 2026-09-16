@@ -319,9 +319,33 @@ function titleName(markdown, frontmatter) {
   return null;
 }
 
+/**
+ * Google `DESIGN.md` (google-labs-code/design.md, Apache-2.0) uses top-level token
+ * keys in frontmatter — `name`, `colors`, `typography`, `rounded`, `spacing`,
+ * `components` — with eight ordered sections beginning `## Overview` / `## Colors`.
+ * OmD 0.1 instead frontmatters catalog metadata (`id`, `country`, `verified`, and a
+ * nested `tokens:` block) with numbered sections.
+ *
+ * They have to be told apart: both carry frontmatter and `##` sections, and a Google
+ * document falling through to `legacy-unmarked` loses its section mapping entirely.
+ * The discriminator is the token keys sitting at the TOP level rather than under
+ * `tokens:`, plus the absence of OmD catalog identity fields.
+ */
+function looksGoogleCompatible(markdown, segments) {
+  const frontmatter = segments[0]?.kind === 'frontmatter' ? segments[0].body ?? '' : '';
+  if (!frontmatter) return false;
+  if (/^\s*(?:id|country|verified|omd|verification_v2)\s*:/m.test(frontmatter)) return false;
+  if (/^\s*tokens\s*:/m.test(frontmatter)) return false;
+  const topLevel = ['colors', 'typography', 'rounded', 'spacing', 'components'];
+  const present = topLevel.filter((key) => new RegExp(`^${key}\\s*:`, 'm').test(frontmatter));
+  if (present.length < 2) return false;
+  return /^##\s+(?:Overview|Brand & Style|Colors|Colours|Typography)\b/m.test(markdown);
+}
+
 function classifyFormat(markdown, segments) {
   const core = coreSections(markdown);
   if (core.length === 7 && core.map((item) => item.id).join('|') === SECTION_ORDER.join('|')) return 'core-v2';
+  if (looksGoogleCompatible(markdown, segments)) return 'google-compatible';
   const hasLegacyFrontmatter = segments[0]?.kind === 'frontmatter';
   const numbered = segments
     .filter((segment) => segment.kind === 'section')
@@ -502,29 +526,74 @@ function buildGraphFromLegacy(markdown, inspection, options) {
   return graph;
 }
 
+function coreClaim(sectionBody, id) {
+  const matches = claimBlocks(sectionBody).filter((claim) => claim.id === id);
+  return matches.length === 1 ? matches[0] : null;
+}
+
+function stripClaimHeading(body) {
+  return normalizeLf(String(body ?? ''))
+    .replace(/^###\s+[^\n]+\n+(?=\S)/, '')
+    .trim();
+}
+
+function unclaimedCoreContent(sectionBody) {
+  return normalizeLf(String(sectionBody ?? ''))
+    .replace(/^<!--\s*design-md:claim\s+[a-z][a-z0-9-]*[^>]*-->\s*$[\s\S]*?^<!--\s*design-md:claim-end\s*-->\s*$/gm, '')
+    .trim();
+}
+
+function exactPrimaryTasks(claim, inspection) {
+  if (!claim || inspection.conformance.reasons.some((reason) => reason.code === 'missing-primary-task')) return [];
+  return stripClaimHeading(claim.body)
+    .split('\n')
+    .filter((line) => /^(?:[-*+] |\d+\. )\S/.test(line))
+    .map((line) => line.replace(/^(?:[-*+] |\d+\. )/, '').trim())
+    .filter(Boolean);
+}
+
 function buildGraphFromCore(markdown, inspection, options) {
   const sections = Object.fromEntries(coreSections(markdown).map((section) => [section.id, section.body]));
   const authorityKind = markdown.match(/<!--\s*design-md:claim\s+authority\b[^>]*\bkind=(project-system|evidence-backed-reconstruction|portable-brief)\b[^>]*-->/i)?.[1];
+  const scopeClaim = coreClaim(sections.experience, 'scope');
+  const taskClaim = coreClaim(sections.experience, 'primary-tasks');
+  const foundationsClaim = coreClaim(sections.foundations, 'foundations');
+  const scopeBody = inspection.conformance.reasons.some((reason) => reason.code === 'missing-product-surface-scope')
+    ? '' : stripClaimHeading(scopeClaim?.body);
+  const experienceRemainder = unclaimedCoreContent(sections.experience);
+  const experienceSummary = scopeBody;
+  const foundationBody = inspection.conformance.reasons.some((reason) => reason.code === 'missing-actionable-foundations-or-known-constraints')
+    ? '' : stripClaimHeading(foundationsClaim?.body);
+  const foundationsRemainder = unclaimedCoreContent(sections.foundations);
+  const foundationRules = foundationBody ? [foundationBody] : [];
+  const primaryTasks = exactPrimaryTasks(taskClaim, inspection);
+  const governanceRemainder = unclaimedCoreContent(sections.governance);
   const graph = {
     $schema: GRAPH_SCHEMA,
     schema_version: FORMAT_VERSION,
     identity: {
       name: inspection.name,
       kind: options.identityKind ?? authorityKind ?? 'portable-brief',
-      scope: options.scope ?? `Portable design brief for ${inspection.name}`,
+      scope: options.scope ?? (scopeBody || `Portable design brief for ${inspection.name}`),
     },
     projection: {
       path: 'DESIGN.md',
       sha256: '0'.repeat(64),
       locale: options.projectionLocale ?? inspection.projectionLocale ?? DEFAULT_PROJECTION_LOCALE,
     },
-    experience: sections.experience ? { summary: sections.experience } : {},
-    foundations: sections.foundations ? { rules: [sections.foundations] } : {},
+    experience: {
+      ...(experienceSummary ? { summary: experienceSummary } : {}),
+      ...(primaryTasks.length ? { primary_tasks: primaryTasks } : {}),
+    },
+    foundations: foundationRules.length ? { rules: foundationRules } : {},
     typography_assets: sections['typography-assets'] ? { rules: [sections['typography-assets']] } : {},
     components_states: sections['components-states'] ? { rules: [sections['components-states']] } : {},
     layout_platforms: sections['layout-platforms'] ? { rules: [sections['layout-platforms']] } : {},
     content_locales: sections['content-locales'] ? { voice: [sections['content-locales']] } : {},
-    governance: sections.governance ? { change_policy: [sections.governance] } : {},
+    governance: {
+      ...(coreClaim(sections.governance, 'unknowns') ? { unknown_policy: 'absent-at-smallest-unresolved-boundary' } : {}),
+      ...(governanceRemainder ? { change_policy: [governanceRemainder] } : {}),
+    },
     extensions: {
       [MIGRATION_EXTENSION]: {
         source_sha256: inspection.sourceSha256,
@@ -536,7 +605,33 @@ function buildGraphFromCore(markdown, inspection, options) {
       },
     },
   };
-  graph.extensions[MIGRATION_EXTENSION].projection_observation_graph_sha256 = graphProjectionStateSha256(graph);
+  const migration = graph.extensions[MIGRATION_EXTENSION];
+  migration.claim_observations = {};
+  if (taskClaim && primaryTasks.length) {
+    migration.claim_observations.primary_tasks = {
+      value_sha256: sha256(JSON.stringify(stableJson(primaryTasks))),
+      body: taskClaim.body,
+    };
+  }
+  if (scopeClaim && experienceSummary) {
+    migration.claim_observations.scope = {
+      value_sha256: sha256(JSON.stringify(stableJson(experienceSummary))),
+      body: scopeClaim.body,
+    };
+  }
+  if (foundationsClaim && foundationRules.length) {
+    migration.claim_observations.foundations = {
+      value_sha256: sha256(JSON.stringify(stableJson(graph.foundations))),
+      body: foundationsClaim.body,
+    };
+  }
+  const sectionRemainders = {
+    ...(experienceRemainder ? { experience: experienceRemainder } : {}),
+    ...(foundationsRemainder ? { foundations: foundationsRemainder } : {}),
+  };
+  if (Object.keys(sectionRemainders).length) migration.section_remainders = sectionRemainders;
+  if (Object.keys(migration.claim_observations).length === 0) delete migration.claim_observations;
+  migration.projection_observation_graph_sha256 = graphProjectionStateSha256(graph);
   return graph;
 }
 
@@ -561,6 +656,14 @@ function exactObservedCoreProjection(graph) {
     || !Array.isArray(migration.original_segments)) return null;
   const source = migration.original_segments.map((segment) => segment?.content ?? '').join('');
   return source && inspectDesignMd(source).sourceValidation.valid ? source : null;
+}
+
+function exactObservedClaimBody(graph, id, value) {
+  const observation = graph?.extensions?.[MIGRATION_EXTENSION]?.claim_observations?.[id];
+  if (!observation || typeof observation.body !== 'string' || !observation.body.trim()) return '';
+  return observation.value_sha256 === sha256(JSON.stringify(stableJson(value)))
+    ? observation.body.trim()
+    : '';
 }
 
 function graphFromCoreProjection(markdown, options = {}) {
@@ -757,7 +860,7 @@ function renderCore(graph) {
     ? graph.identity.kind : 'portable-brief';
   const authority = GOVERNANCE_COPY[locale].authority[authorityKind] ?? '';
   const governance = { ...graph.governance, authority_kind: authorityKind };
-  const foundationsBody = [
+  const generatedFoundationsBody = [
     renderTokens(graph.foundations?.tokens),
     Array.isArray(graph.foundations?.contrast_pairs) && graph.foundations.contrast_pairs.length
       ? `### Contrast pairs\n\n${graph.foundations.contrast_pairs.map((pair) => `- ${pair.foreground} on ${pair.background}: minimum ${pair.minimum_ratio}:1`).join('\n')}` : '',
@@ -765,21 +868,32 @@ function renderCore(graph) {
       ? `### Reduced motion\n\n${graph.foundations.reduced_motion ? 'Required.' : 'Not required.'}` : '',
     renderLabelledList('Foundation rules', graph.foundations?.rules),
   ].filter(Boolean).join('\n\n');
+  const foundationsBody = exactObservedClaimBody(graph, 'foundations', graph.foundations)
+    || generatedFoundationsBody;
+  const generatedPrimaryTasks = renderLabelledList('Primary tasks', graph.experience?.primary_tasks);
+  const primaryTasksBody = exactObservedClaimBody(graph, 'primary_tasks', graph.experience?.primary_tasks ?? [])
+    || generatedPrimaryTasks;
+  const scopeBody = exactObservedClaimBody(graph, 'scope', graph.experience?.summary ?? '')
+    || (graph.experience?.summary ? `### Scope\n\n${graph.experience.summary}` : '');
+  const experienceRemainder = graph?.extensions?.[MIGRATION_EXTENSION]?.section_remainders?.experience;
+  const foundationsRemainder = graph?.extensions?.[MIGRATION_EXTENSION]?.section_remainders?.foundations;
   const bodies = {
     experience: [
-      renderClaim('scope', graph.experience?.summary ? `### Scope\n\n${graph.experience.summary}` : '', `kind=product-surface lang=${locale}`),
+      renderClaim('scope', scopeBody, `kind=product-surface lang=${locale}`),
       renderClaim(
         'primary-tasks',
-        renderLabelledList('Primary tasks', graph.experience?.primary_tasks),
+        primaryTasksBody,
         Array.isArray(graph.experience?.primary_tasks) && graph.experience.primary_tasks.length
           ? `kind=user-outcomes count=${graph.experience.primary_tasks.length} lang=${locale}` : '',
       ),
+      typeof experienceRemainder === 'string' ? experienceRemainder.trim() : '',
       renderLabelledList('Design direction', graph.experience?.design_direction),
       renderLabelledList('Principles', graph.experience?.principles),
       renderLabelledList('Avoid', graph.experience?.avoid),
     ].filter(Boolean).join('\n\n'),
     foundations: [
       renderClaim('foundations', foundationsBody, `kind=rules-or-constraints lang=${locale}`),
+      typeof foundationsRemainder === 'string' ? foundationsRemainder.trim() : '',
     ].filter(Boolean).join('\n\n'),
     'typography-assets': renderTypographyAssets(graph.typography_assets),
     'components-states': renderComponents(graph.components_states),

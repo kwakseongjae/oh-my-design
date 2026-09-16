@@ -108,6 +108,103 @@ describe('DESIGN.md Core v2 migration engine', () => {
     expect(second.report).toMatchObject({ status: 'pass', projection_roundtrip_equal: true, dropped_segments: 0 });
   });
 
+  it('imports localized Core headings through stable claim anchors without translating their meaning', () => {
+    const source = fixture('core-v2.md')
+      .replace('### Scope', '### 적용 범위')
+      .replace(
+        'Atlas helps dispatchers resolve exceptions while preserving shipment identity and ownership.',
+        '운영 화면은 담당자가 배송 예외를 검토하고 소유권을 보존하며 해결하도록 돕는다.',
+      )
+      .replace('### Primary tasks', '### 주요 과업')
+      .replace(
+        '- Resolve a shipment exception while preserving identity and ownership.',
+        '- 배송 식별자와 담당자를 보존하며 예외를 해결한다.',
+      );
+    const graph = engine.graphFromCoreProjection(source);
+
+    expect(graph.experience).toEqual({
+      summary: '운영 화면은 담당자가 배송 예외를 검토하고 소유권을 보존하며 해결하도록 돕는다.',
+      primary_tasks: ['배송 식별자와 담당자를 보존하며 예외를 해결한다.'],
+    });
+
+    delete graph.extensions[engine.MIGRATION_EXTENSION].projection_observation_graph_sha256;
+    const normalized = engine.renderCore(graph);
+    expect(normalized).toContain('배송 식별자와 담당자를 보존하며 예외를 해결한다.');
+    expect(engine.inspectDesignMd(normalized).conformance).toMatchObject({
+      level: 'portable-core',
+      portable_core: true,
+      reasons: [],
+    });
+  });
+
+  it('does not infer a primary task when the stable task claim is absent', () => {
+    const source = fixture('core-v2.md').replace(
+      /\n<!-- design-md:claim primary-tasks[^>]*-->[\s\S]*?<!-- design-md:claim-end -->\n/,
+      '\nThis paragraph describes shipment operations but declares no task.\n',
+    );
+    const graph = engine.graphFromCoreProjection(source);
+    expect(graph.experience).not.toHaveProperty('primary_tasks');
+
+    delete graph.extensions[engine.MIGRATION_EXTENSION].projection_observation_graph_sha256;
+    const normalized = engine.renderCore(graph);
+    expect(engine.inspectDesignMd(normalized).conformance.reasons)
+      .toContainEqual(expect.objectContaining({ code: 'missing-primary-task' }));
+  });
+
+  it('keeps native Core source bytes hash-bound and reconstructable while importing anchored claims', () => {
+    const source = fixture('core-v2.md').replace('### Primary tasks', '### 주요 과업');
+    const migrated = engine.migrateDesignMd(source);
+    const ledger = migrated.graph.extensions[engine.MIGRATION_EXTENSION];
+
+    expect(migrated.designMd).toBe(source);
+    expect(ledger.source_sha256).toBe(engine.sha256(source));
+    expect(ledger.original_segments.map((segment: { content: string }) => segment.content).join('')).toBe(source);
+    expect(migrated.report).toMatchObject({
+      dropped_segments: 0,
+      projection_roundtrip_equal: true,
+      source_reconstruction_equal: true,
+    });
+  });
+
+  it('keeps task qualifications and foundation semantic headings in the normalized projection', () => {
+    const source = fixture('core-v2.md')
+      .replace(
+        '### Primary tasks\n\n- Resolve',
+        '### Primary tasks\n\nSelecting this task is a source-bounded editorial inference, not an Atlas-authored product fact.\n\n- Resolve',
+      )
+      .replace(
+        '<!-- design-md:claim foundations kind=rules-or-constraints lang=en -->\nBlue',
+        '<!-- design-md:claim foundations kind=rules-or-constraints lang=en -->\n### Semantic color\n\nBlue',
+      );
+    const graph = engine.graphFromCoreProjection(source);
+    delete graph.extensions[engine.MIGRATION_EXTENSION].projection_observation_graph_sha256;
+
+    const normalized = engine.renderCore(graph);
+    expect(normalized).toContain('Selecting this task is a source-bounded editorial inference, not an Atlas-authored product fact.');
+    expect(normalized).toContain('<!-- design-md:claim foundations kind=rules-or-constraints lang=en -->\n### Semantic color');
+    expect(engine.inspectDesignMd(normalized).conformance.portable_core).toBe(true);
+
+    graph.experience.primary_tasks = ['A reviewer changed the declared task.'];
+    const changed = engine.renderCore(graph);
+    expect(changed).not.toContain('Selecting this task is a source-bounded editorial inference');
+    expect(changed).toContain('- A reviewer changed the declared task.');
+  });
+
+  it('keeps unclaimed experience limits outside the stable scope claim', () => {
+    const source = fixture('core-v2.md').replace(
+      '<!-- design-md:section foundations -->',
+      'The authenticated product application scope is unresolved and stays absent.\n\n<!-- design-md:section foundations -->',
+    );
+    const graph = engine.graphFromCoreProjection(source);
+    delete graph.extensions[engine.MIGRATION_EXTENSION].projection_observation_graph_sha256;
+    const normalized = engine.renderCore(graph);
+    const scope = normalized.match(/<!-- design-md:claim scope[^>]*-->([\s\S]*?)<!-- design-md:claim-end -->/)?.[1];
+
+    expect(scope).not.toContain('authenticated product application scope is unresolved');
+    expect(normalized).toContain('<!-- design-md:claim-end -->\n\nThe authenticated product application scope is unresolved');
+    expect(engine.inspectDesignMd(normalized).conformance.portable_core).toBe(true);
+  });
+
   it('separates structural Core recognition from standalone Portable Core usefulness', () => {
     const sparse = `# Sparse Design System\n\n${engine.SECTION_ORDER.map((id: string, index: number) => (
       `<!-- design-md:section ${id} -->\n## ${index + 1}. Section`
@@ -855,5 +952,118 @@ This document is the project design contract. User direction wins over repositor
         conformance_reason_codes: expect.any(Array),
       }),
     ]));
+  });
+});
+
+describe('optional omitted claim', () => {
+  const conformance = require('../../../scripts/design-md-core-conformance.cjs');
+  const base = readFileSync(
+    resolve(import.meta.dirname, '../../../spec/fixtures/design-md-core-v2/DESIGN.md'),
+    'utf8',
+  );
+
+  /** Insert an Omitted claim with `count` before the Changes claim. */
+  function withOmitted(count: number, reason = 'unresolved'): string {
+    const block = [
+      `<!-- design-md:claim omitted count=${count} lang=en -->`,
+      '### Omitted',
+      '',
+      '- `foundations.motion` — `verified-absent`: the published system defines no motion tokens (https://example.com/motion)',
+      `- \`components-states.avatar.hover\` — \`${reason}\`: not observable on the captured surfaces`,
+      '<!-- design-md:claim-end -->',
+      '',
+    ].join('\n');
+    return base.replace(/(<!--\s*design-md:claim changes[^>]*-->)/, `${block}$1`);
+  }
+
+  const wellFormed = (markdown: string) =>
+    conformance.evaluatePortableCoreClaims(markdown).checks.optional_omitted_well_formed;
+
+  it('treats an absent claim as valid — absence is not an assertion', () => {
+    const check = wellFormed(base);
+    expect(check.pass).toBe(true);
+    expect(check.evidence).toContain('claim:omitted:absent');
+  });
+
+  it('accepts a claim whose count matches its list and whose reasons are closed classes', () => {
+    const check = wellFormed(withOmitted(2));
+    expect(check.pass).toBe(true);
+    expect(check.evidence).toContain('claim:omitted:2');
+  });
+
+  it('rejects a count that disagrees with the list length', () => {
+    expect(wellFormed(withOmitted(5)).pass).toBe(false);
+  });
+
+  it('rejects a reason class outside the closed set', () => {
+    expect(wellFormed(withOmitted(2, 'maybe-later')).pass).toBe(false);
+  });
+
+  it('does not make the claim required for Portable Core', () => {
+    const before = conformance.evaluatePortableCoreClaims(base);
+    const after = conformance.evaluatePortableCoreClaims(withOmitted(2));
+    expect(after.level).toBe(before.level);
+  });
+});
+
+describe('Google-compatible format detection', () => {
+  const engineModule = require('../../../scripts/design-md-core.cjs');
+
+  /** A document in the Google DESIGN.md shape: top-level token keys, Google's
+   *  section order, and none of OmD 0.1's catalog identity fields. */
+  const googleDoc = [
+    '---',
+    'name: Acme',
+    'colors:',
+    '  primary: "#3959cc"',
+    'typography:',
+    '  body:',
+    '    fontFamily: Inter',
+    '---',
+    '',
+    '# Acme Design System',
+    '',
+    '## Overview',
+    '',
+    'Acme is a sample.',
+    '',
+    '## Colors',
+    '',
+    'Primary is blue.',
+    '',
+  ].join('\n');
+
+  function formatOf(markdown: string): string {
+    const root = mkdtempSync(join(tmpdir(), 'omd-format-'));
+    roots.push(root);
+    const input = join(root, 'DESIGN.md');
+    writeFileSync(input, markdown, 'utf8');
+    const run = spawnSync('node', [cli, '--input', input, '--check', '--json'], { encoding: 'utf8' });
+    return JSON.parse(run.stdout).input.format;
+  }
+
+  it('classifies a Google-shaped document rather than falling through to legacy-unmarked', () => {
+    expect(formatOf(googleDoc)).toBe('google-compatible');
+  });
+
+  it('still classifies an OmD 0.1 catalog document as legacy', () => {
+    // The discriminator is the nested `tokens:` block plus catalog identity fields.
+    const omdDoc = googleDoc
+      .replace('name: Acme', 'id: acme\nname: Acme\ncountry: KR\nverified: "2026-07-11"')
+      .replace('colors:\n  primary: "#3959cc"\ntypography:\n  body:\n    fontFamily: Inter',
+        'tokens:\n  colors:\n    primary: "#3959cc"')
+      .replace('## Overview', '## 1. Visual Theme & Atmosphere')
+      .replace('## Colors', '## 2. Color Palette & Roles');
+    expect(formatOf(omdDoc)).not.toBe('google-compatible');
+  });
+
+  it('does not claim Google shape from section headings alone', () => {
+    // Headings match but the frontmatter carries no top-level token keys.
+    const headingsOnly = ['---', 'name: Acme', '---', '', '# Acme', '', '## Colors', '', 'Blue.', ''].join('\n');
+    expect(formatOf(headingsOnly)).not.toBe('google-compatible');
+  });
+
+  it('exposes the engine module without throwing', () => {
+    expect(typeof engineModule).toBe('object');
   });
 });

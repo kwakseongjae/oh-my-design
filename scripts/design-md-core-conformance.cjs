@@ -14,7 +14,16 @@ const REQUIRED_CLAIMS = Object.freeze([
   'changes',
 ]);
 
+/**
+ * Optional claims. Absent by default; when present they must be well formed, but
+ * their absence is never an error. `omitted` enumerates and classifies what the
+ * document deliberately left out — see the spec's "The `omitted` claim".
+ */
+const OPTIONAL_CLAIMS = Object.freeze(['omitted']);
+const OMITTED_REASON_CLASSES = Object.freeze(['verified-absent', 'unresolved', 'out-of-scope']);
+
 const SECTION_FOR_CLAIM = Object.freeze({
+  omitted: 'governance',
   scope: 'experience',
   'primary-tasks': 'experience',
   foundations: 'foundations',
@@ -403,6 +412,22 @@ function evaluatePortableCoreClaims(markdown, options = {}) {
   const changesBody = changes ? normalizedLines(changes.body).join(' ') : '';
   const declaredTaskCount = Number(tasks?.attributes.count);
 
+  // Optional `omitted` claim. Absent is valid. Present must be well formed:
+  // `count` matches the list length, and every entry names a closed reason class.
+  const omitted = exactClaim('omitted');
+  const omittedEntries = omitted
+    ? normalizeLf(omitted.body).split('\n').filter((line) => /^\s*-\s+/.test(line))
+    : [];
+  const omittedDeclaredCount = omitted ? Number(omitted.attributes.count) : null;
+  const omittedBadReason = omittedEntries.filter((line) => {
+    const cls = line.match(/`?\b(verified-absent|unresolved|out-of-scope)\b`?\s*:/);
+    return !cls;
+  });
+  const omittedWellFormed = !omitted
+    || (Number.isSafeInteger(omittedDeclaredCount)
+      && omittedDeclaredCount === omittedEntries.length
+      && omittedBadReason.length === 0);
+
   const checks = {
     product_surface_scope: {
       pass: Boolean(scope
@@ -480,6 +505,10 @@ function evaluatePortableCoreClaims(markdown, options = {}) {
     },
     standalone_no_required_runtime: { pass: runtimeLines.length === 0, evidence: ['markdown:document'] },
     no_prescriptive_placeholders: { pass: placeholders.length === 0, evidence: ['markdown:document'] },
+    optional_omitted_well_formed: {
+      pass: omittedWellFormed,
+      evidence: omitted ? [`claim:omitted:${omittedEntries.length}`] : ['claim:omitted:absent'],
+    },
   };
   const reasonDefinitions = {
     product_surface_scope: ['missing-product-surface-scope', 'Experience needs one explicit scope claim.'],
@@ -489,6 +518,7 @@ function evaluatePortableCoreClaims(markdown, options = {}) {
     governance_application_priority: ['missing-governance-application-priority', 'Governance needs an ordered Application priority claim.'],
     governance_unknown_absence: ['missing-governance-unknown-absence', 'Governance needs the exact unknown-absence policy claim.'],
     governance_change_rule: ['missing-governance-change-rule', 'Governance needs an explicit Changes claim.'],
+    optional_omitted_well_formed: ['malformed-omitted-claim', 'The optional Omitted claim must declare count equal to its list length and give every entry a closed reason class.'],
     claim_locale_declared: ['missing-claim-locale', 'Every present required Core claim must declare a lang attribute.'],
     claim_locale_supported: ['unsupported-claim-locale', 'Every required Core claim lang must be one of en, ko, ja, zh-cn, or zh-tw.'],
     claim_locale_consistent: ['mixed-claim-locales', 'All required Core claim lang attributes must declare one document locale.'],

@@ -326,6 +326,101 @@ MUST include these invisible, vendor-neutral declarations in the stated section:
 <!-- design-md:claim changes policy=review-record-validate-before-adoption lang=en -->
 ```
 
+### The `omitted` claim (optional)
+
+`unknowns` states the *policy*: omit at the smallest unresolved boundary. It does not
+say **what was omitted**, so a consumer cannot distinguish three different situations
+that all look identical in the file:
+
+1. the brand genuinely publishes nothing for that role;
+2. the value exists but this document could not resolve it; and
+3. the author never looked.
+
+Only the first is a fact about the brand. A model that cannot tell them apart will
+treat absence as licence to invent, which is exactly what the policy exists to prevent.
+
+An optional `omitted` claim enumerates the omissions and classifies each:
+
+```markdown
+<!-- design-md:claim omitted count=2 lang=en -->
+### Omitted
+
+- `foundations.motion` — `verified-absent`: the published system defines no motion
+  tokens (https://example.com/design/motion)
+- `components-states.avatar.hover` — `unresolved`: not observable on the captured
+  surfaces; no first-party source states it
+<!-- design-md:claim-end -->
+```
+
+Each entry is a dotted path into the Core model, an em-dash, a reason class, a colon,
+and a short justification. The reason classes are closed:
+
+| Class | Meaning | Consumer behavior |
+|---|---|---|
+| `verified-absent` | A first-party source establishes that no such value exists | Safe to design without it; do not synthesize one |
+| `unresolved` | The value may exist; this document could not establish it | Do not synthesize; ask or leave the decision open |
+| `out-of-scope` | Deliberately outside this document's declared surface scope | Consult the system that owns that surface |
+
+`count` MUST equal the number of list items. An entry whose path is present and
+populated elsewhere in the document is a conformance error — a value cannot be both
+declared and omitted.
+
+The claim is **optional**: its absence means the document makes no statement about
+its own omissions, not that nothing was omitted. A writer SHOULD emit it whenever it
+resolved an absence deliberately.
+
+**Version status.** `omitted` is optional and additive: a reader that does not know it
+treats it as an unknown optional claim, keeps it intact under the preservation rule, and
+loses only the omission inventory. It therefore ships without a format-version change.
+Promoting it to a required claim, or to a typed graph field, is a **minor** bump to
+2.1.0 and MUST move the whole chain together — `FORMAT_VERSION` in the compiler, the
+`format_version` const in `design-md-core-manifest-v2.schema.json`, every
+`format_version === '2.0.0'` check, and the adoption receipts already issued against
+2.0.0. Do not bump the document header alone; that desynchronizes the spec from every
+manifest in existence.
+
+The field name is shared with the Google `DESIGN.md` specification's top-level
+`omitted:` key so the two remain mutually legible.
+
+### Consuming a preserved conflict
+
+Core v2 tells a *writer* what to do with disagreeing values — §10 requires that
+"conflicts are preserved as conflicts; a migrator MUST NOT choose the most plausible
+value." It has not told a *reader* what to do on encountering one, which leaves the
+ambiguity exactly where it does the most damage: at generation time, resolved
+silently and differently on every run.
+
+`application-priority` orders where a fact came *from*
+(`prompt-fact` → `repository-fact` → `system-contract` → `reference-inspiration`).
+That settles which source outranks which. It does not settle two values that share a
+rank, which is the common case — one brand measured on two of its own surfaces.
+
+A consumer facing a preserved conflict resolves in this order:
+
+1. **Surface match.** Apply the value observed on the surface class being built.
+   Product, marketing, documentation, and corporate surfaces are separate evidence
+   domains and a value from one is not evidence for another. `toss` records a
+   56px/16px-radius button in TDS Mobile and a 40–46px/7px button on `toss.im`
+   marketing; both are correct, and a contract that had to pick one would be wrong
+   about half of Toss.
+2. **Declared authority.** If the surfaces are the same class, prefer the value
+   carrying the higher `application-priority` source class.
+3. **Freshness.** If source classes also match, prefer the more recently captured
+   value, and only when both were captured by the same method.
+4. **Do not choose.** If the values remain tied, the consumer MUST NOT pick one.
+   It asks, or omits the value and proceeds — the same discipline as `unknowns`.
+   A silently-resolved tie is indistinguishable from an invented value.
+
+Rule 4 is the one that separates this ladder from a single-brand one. A vendor
+documenting its own product can always resolve, because it owns the answer. A
+reference catalog documents brands it does not own, and some of their conflicts are
+real properties of the brand rather than defects in the record.
+
+A document MAY narrow this order for its own scope in Governance; it MUST NOT remove
+rule 4. Core v2 carries it as a claim
+rather than a frontmatter key because Core v2 has no visible frontmatter, and adds
+the reason class, which the Google field does not carry.
+
 Each declaration body ends with `<!-- design-md:claim-end -->`. This explicit
 boundary prevents an adjacent explanatory subsection from silently becoming part
 of the machine-declared claim.
@@ -652,7 +747,11 @@ During the 2.x migration window, readers support:
 2. portable-only Core v2 with anchors;
 3. OmD 0.1 YAML frontmatter and 15-section documents;
 4. repository-era 13- or 16-section variants; and
-5. unmarked Google-compatible documents.
+5. unmarked Google-compatible documents — a top-level `name:`/`colors:`/`typography:`
+   frontmatter with `## Colors` / `## Typography` / `## Components` sections, per the
+   Google `DESIGN.md` specification's section order. A reader MUST classify these as
+   Google-compatible rather than falling through to `legacy-unmarked`; the two have
+   different section semantics and collapsing them loses the mapping.
 
 Writers emit only Core v2. They never re-emit legacy YAML frontmatter or legacy
 13/15/16-section layouts. This is the **dual-read, single-write** rule.
