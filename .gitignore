@@ -89,7 +89,15 @@ data/audit/
 scripts/analytics/.secrets/
 data/analytics/
 
-# Deterministic reverify queue/task packets (CI artifact, never source data)
+# Local-only working artifacts. Bulk stays out of the repo (owner decision,
+# 2026-09-16): reference-evidence/ is 145MB of internal capture bundles and
+# does not belong in git. It is NOT disposable, though -- 55 of the 140
+# verified references are repaired by reading these bundles with no browser
+# re-run, and a re-capture observes today's site, not July's. So the files
+# live outside git while the repo remembers what should be there:
+# artifacts/local-store.manifest.json holds per-file SHA-256s and
+# `node scripts/local-store.mjs --verify` checks custody. Same pattern as the
+# bench-store below. Convention and backup location: artifacts/README.md.
 artifacts/reverify/
 artifacts/reference-evidence/
 

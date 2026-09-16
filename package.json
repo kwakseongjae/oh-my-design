@@ -91,6 +91,9 @@
     "scripts/autopilot-council-reconcile.cjs",
     "scripts/design-harness-context-plan.cjs",
     "docs/design-excellence/landing-craft-codex.md",
+    "docs/design-excellence/storyboard-review.md",
+    "docs/design-excellence/fx-library",
+    "test-v2/tools/font-inline.mjs",
     "test-v2/tools/landing-integrity.mjs",
     "test-v2/tools/render-integrity.mjs",
     "test-v2/tools/showcase.mjs",
@@ -106,8 +109,9 @@
     "test:watch": "vitest",
     "lint": "tsc --noEmit",
     "check:public-core-schemas": "node scripts/check-public-core-schemas.cjs",
+    "check:web-core-verifier": "node scripts/build-web-core-verifier.cjs --check",
     "prepare": "npm run build",
-    "prepublishOnly": "npm run query:references:data:check && npm run gen:presets:check && npm run build && node scripts/sync-runtime-mirrors.cjs --check && node scripts/gen-llms-full.cjs --check-only && bash scripts/check-release-hygiene.sh pack && npm run gate:quality",
+    "prepublishOnly": "npm run query:references:data:check && npm run gen:presets:check && npm run build && node scripts/sync-runtime-mirrors.cjs --check && node scripts/gen-llms-full.cjs --check-only && bash scripts/check-release-hygiene.sh pack && npm run gate:quality:strict",
     "gen:llms-full": "node scripts/gen-llms-full.cjs",
     "gen:llms-full:check": "node scripts/gen-llms-full.cjs --check-only",
     "sync:runtime-mirrors": "node scripts/sync-runtime-mirrors.cjs --write",
@@ -149,7 +153,8 @@
     "gen:presets": "node scripts/build-presets-data.mjs",
     "gen:presets:check": "node scripts/build-presets-data.mjs --check",
     "gate:quality": "node test-v2/tools/quality-gate.mjs",
-    "gate:quality:strict": "node test-v2/tools/quality-gate.mjs --strict"
+    "gate:quality:strict": "node test-v2/tools/quality-gate.mjs --strict",
+    "local-store": "node scripts/local-store.mjs --verify"
   },
   "keywords": [
     "design-system",
@@ -175,7 +180,8 @@
   "dependencies": {
     "@clack/prompts": "^0.9.1",
     "commander": "^13.1.0",
-    "picocolors": "^1.1.1"
+    "picocolors": "^1.1.1",
+    "playwright-core": "1.61.1"
   },
   "devDependencies": {
     "@neondatabase/serverless": "^1.1.0",
@@ -195,7 +201,5 @@
     "url": "https://github.com/kwakseongjae/oh-my-design/issues"
   },
   "homepage": "https://oh-my-design.kr/docs/en",
-  "optionalDependencies": {
-    "playwright-core": "^1.61.1"
-  }
+  "optionalDependencies": {}
 }

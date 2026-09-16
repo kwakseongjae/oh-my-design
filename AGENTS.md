@@ -11,6 +11,7 @@ oh-my-design itself uses Claude Code skills + subagents for its design harness. 
 - `skills/omd-*` — Claude Code / Codex / OpenCode skill files (installed into target projects via `omd install-skills`).
 - `.claude/agents/` — Subagent definitions for the design harness (Claude Code).
 - `.codex/agents/` — Mirror TOML definitions for the design harness (Codex).
+- `artifacts/` — machine-generated working output. Mixed on purpose: `reference-create/` is committed run history, while `reference-evidence/` (145MB of capture bundles) and `reverify/` are **local-only and never committed** (owner decision, 2026-09-16). Not disposable — they are the input to repairing verified references without a browser re-run. `artifacts/local-store.manifest.json` records per-file SHA-256s and `node scripts/local-store.mjs --verify` checks custody. Rules and backup location: `artifacts/README.md`.
 - `spec/design-md-core-v2.md` — normative vendor-neutral DESIGN.md Core v2 contract.
 - `spec/omd-v0.1.md` — legacy 15-section import format; dual-read only.
 - `research/harness-design/` — Design harness research + integration design.
@@ -96,6 +97,15 @@ For ad-hoc UI work (component changes, microcopy edits, color tweaks) not runnin
 4. If the user corrects your design choice, run `omd remember "<one-sentence summary>" --context "<file>"` before ending the turn.
 
 This mirrors the `omd:apply` Claude Code skill behavior.
+
+## Browser execution for the restart tracks (2026-09-07 user preference)
+
+- In Codex, prefer the connected **Computer Use Chrome** surface for live page interaction, login-state checks, media-service operation, and rendered QA. The global browser-harness skill's "Always use" description does not require choosing it over this user preference.
+- Use browser-harness only when explicitly selected for a capability that Computer Use cannot provide and after checking that its connection works. Its CDP/remote-debugging setup is not a prerequisite for working Computer Use Chrome access.
+- Grok Build and Claude Code do not automatically inherit Codex's Computer Use tools. For the benchmark, one shared browser operator must execute cell-scoped requests without adding creative advice; four model workers may run concurrently, but shared Chrome operations remain serialized.
+- Keep each cell's prompts, tabs, results, and downloads separate. Do not expose the user's unrelated tabs/history or another arm's output to a worker. Browser capability access must be equal across all four conditions.
+- A connected browser or an authenticated page alone does not prove that image/video generation, download, or the whole benchmark broker works. Verify each claimed capability through its actual flow.
+- Computer Use currently rejects iTerm2 control. Do not route around that restriction through another UI/shell automation mechanism. Use the separately authorized CLI execution channel for model jobs.
 
 ## Product surface ownership (mandatory)
 
