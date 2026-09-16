@@ -355,6 +355,6 @@ Verified vs assumed:
 ---
 
 **Verified:** 2026-05-19 (omd:add-reference — JP batch)
-**Tier 1 sources:** about.smartnews.com/en (mission "Delivering the world's quality information to the people who need it"; 3,000+ partners / 400k+ daily articles; filter-bubble positioning; wordmark black/white per background). SmartNews brand red #EB0B22 (documented brand red — brand-manual PDF not text-extractable this pass).
+**Tier 1 sources:** https://about.smartnews.com/en (mission "Delivering the world's quality information to the people who need it"; 3,000+ partners / 400k+ daily articles; filter-bubble positioning; wordmark black/white per background). SmartNews brand red #EB0B22 (documented brand red — brand-manual PDF not text-extractable this pass).
 **Tier 2 sources:** SmartNews company history (restofworld / businessmodelcanvas / about.smartnews.com leadership — Gocro Inc. 2012-06-15, Ken Suzuki + Kaisei Hamamoto, ML discovery engine, SmartView, 50M+ readers / 150+ countries); getdesign.md / refero not separately fetched.
 **Conflicts unresolved:** Brand red #EB0B22 documented but not pixel-reverified (brand-manual PDF unparseable; live homepage fetch redirected to an unrelated page this session). §4 component values inferred from SmartNews's known channel-bar + headline-feed UI pattern, not a live computed-style inspect.

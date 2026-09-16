@@ -347,7 +347,7 @@ Easings: standard cubic-bezier; no bounce. **Live price updates** flash green/re
 ---
 
 **Verified:** 2026-06-08 (component harvest — TIER 1)
-**Tier 1 sources:** coinbase.com (live DOM via playwright across /, /explore, /about — round 56px icon buttons; nav chip 16px radius 4px·16px; input 56px·16px pad; pill 100000px; link `#0667d0`; surface `#eef0f3`). Coinbase Design System (CDS / "Cedar") — cds.coinbase.com + github.com/coinbase/cds: component inventory (100+ across Layout/Inputs/Cards/Data Display/Feedback/Overlay/Navigation/Charts) and per-component specs (Button variants/sizes/states, TextInput, Banner, Modal, Toast, ProgressCircle, Table, Switch).
+**Tier 1 sources:** https://coinbase.com (live DOM via playwright across /, /explore, /about — round 56px icon buttons; nav chip 16px radius 4px·16px; input 56px·16px pad; pill 100000px; link `#0667d0`; surface `#eef0f3`). Coinbase Design System (CDS / "Cedar") — https://cds.coinbase.com + https://github.com/coinbase/cds: component inventory (100+ across Layout/Inputs/Cards/Data Display/Feedback/Overlay/Navigation/Charts) and per-component specs (Button variants/sizes/states, TextInput, Banner, Modal, Toast, ProgressCircle, Table, Switch).
 **Tier 2 sources:** styles.refero.design — no record. getdesign.md/coinbase — cross-checked.
 **Tier 1 (Philosophy):** coinbase.com homepage; Brian Armstrong public talks; SEC public filings.
 **Style ref:** `stripe`. **Conflicts unresolved:** none.

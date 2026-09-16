@@ -435,7 +435,7 @@ Personas are fictional archetypes (disclaimer in §13).
 ---
 
 **Verified:** 2026-05-19
-**Tier 1 sources:** gogoro.com/media-center/logos/ (live computed style — Graphik + TC stack, `#323237` text, `#0074ff` blue, `#28c3ff` cyan, `#f6f6f6` surface, `#2b96ed` CTA 12px·14px/600, `#000000` chrome); gogoro.com home + /smartscooter (WebFetch — tagline, CTAs, stats).
+**Tier 1 sources:** https://gogoro.com/media-center/logos/ (live computed style — Graphik + TC stack, `#323237` text, `#0074ff` blue, `#28c3ff` cyan, `#f6f6f6` surface, `#2b96ed` CTA 12px·14px/600, `#000000` chrome); https://gogoro.com home + /smartscooter (WebFetch — tagline, CTAs, stats).
 **Tier 2 sources:** styles.refero.design / getdesign.md — not checked this pass (browser session unreliable).
 **Tier 2 (Philosophy/founders):** Wikipedia (Gogoro — Horace Luke / Matt Taylor / 2011 Taoyuan / GoStation / CES 2015 / Nasdaq 2022).
 **Style ref:** premium-industrial (TW). **Conflicts unresolved:** brief's "accent green" corrected to live-observed electric blue/cyan (no green present in the system).

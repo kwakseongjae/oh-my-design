@@ -313,7 +313,7 @@ Standard cubic-bezier; no bounce — fintech register. `prefers-reduced-motion: 
 ---
 
 **Verified:** 2026-05-08 (omd:migrate run 51 — Apple-tier)
-**Tier 1 sources:** revolut.com/en-US home + /en-US/business (live DOM via playwright — **all-pill 9999px** chrome with canvas-aware Charcoal/Light pair: **Charcoal `#191c1f`** Primary (consumer light canvas) + **Light Surface `#f4f4f4`** Inverse (Business dark canvas + feature cards) + Translucent `rgba(244,244,244,0.10)` on-dark hover, all 9999px / 42px / 10×24 / 16px·**500**).
+**Tier 1 sources:** https://revolut.com/en-US home + /en-US/business (live DOM via playwright — **all-pill 9999px** chrome with canvas-aware Charcoal/Light pair: **Charcoal `#191c1f`** Primary (consumer light canvas) + **Light Surface `#f4f4f4`** Inverse (Business dark canvas + feature cards) + Translucent `rgba(244,244,244,0.10)` on-dark hover, all 9999px / 42px / 10×24 / 16px·**500**).
 **Tier 2 sources:** styles.refero.design / getdesign.md — no record.
 **Tier 2 (Philosophy/founders/valuation/IPO):** Wikipedia (Revolut + Nik Storonsky), Huxley (Yatsenko Ukrainian billionaire bio), The Vertical (immigrant founders narrative), City AM ($75B Nov 2025), MoneyWeek, Bloomberg Billionaires, FinTech Magazine.
 **Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier addition:** Charcoal `#191c1f` Primary + Light Surface `#f4f4f4` Inverse + canvas-aware pair + translucent variant missed by prior pass (which captured 38px segment-nav only — canonical is 42px Primary).

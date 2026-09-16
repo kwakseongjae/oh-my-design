@@ -433,7 +433,7 @@ Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` disables auto
 ---
 
 **Verified:** 2026-05-08 (omd:migrate run 48 — Apple-tier)
-**Tier 1 sources:** renaultgroup.com/en home + /en/group (live DOM via playwright — Primary `#000` Black **100px full-pill** / 19×24 / **64px** / **14px·700 ALL CAPS** + Inverse `#fff` 100px (canvas-aware) + carousel 100% circular 40×40 + nav `#fff` 16px·700 ALL CAPS).
+**Tier 1 sources:** https://renaultgroup.com/en home + /en/group (live DOM via playwright — Primary `#000` Black **100px full-pill** / 19×24 / **64px** / **14px·700 ALL CAPS** + Inverse `#fff` 100px (canvas-aware) + carousel 100% circular 40×40 + nav `#fff` 16px·700 ALL CAPS).
 **Tier 2 sources:** styles.refero.design / getdesign.md — no record.
 **Tier 2 (Philosophy/founders/Alliance/logo):** Wikipedia (Renault + RNM Alliance), Renault Group magazine (Renaulution diamond), Design Week / Autocar / It's Nice That (2021 logo rebrand).
 **Style ref:** `apple` (luxury minimal). **Conflicts unresolved:** none. **Earlier mistake reverted (significant — every Primary geometry value was wrong):** Radius 0px→**100px**, padding 24→**19×24**, height 72→**64**, font 16px·400→**14px·700 ALL CAPS**. §4 material correction.

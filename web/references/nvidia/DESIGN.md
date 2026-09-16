@@ -543,7 +543,7 @@ excerpts; not independently re-verified for this Philosophy layer.
 ---
 
 **Verified:** 2026-05-08 (omd:migrate run 41 — Apple-tier)
-**Tier 1 sources:** nvidia.com/en-us home + /en-us/data-center/h100/ (live DOM via playwright — NVIDIA Lime Green **`#76b900`** 0px sharp + Black `#000` text three-tier height (42 utility / 46 newsletter / 49 hero) / 11-13×13-15 / 16-18px·**700** Bold strict — most consistent single-system chrome in the corpus).
+**Tier 1 sources:** https://nvidia.com/en-us home + /en-us/data-center/h100/ (live DOM via playwright — NVIDIA Lime Green **`#76b900`** 0px sharp + Black `#000` text three-tier height (42 utility / 46 newsletter / 49 hero) / 11-13×13-15 / 16-18px·**700** Bold strict — most consistent single-system chrome in the corpus).
 **Tier 2 sources:** styles.refero.design / getdesign.md — no record.
 **Tier 2 (Philosophy/founders/history):** Wikipedia (NVIDIA + Jensen Huang), NVIDIA blog (Denny's $T plaque), Quartr Insights, Sequoia Capital (Crucible Moments), TheStreet, NBC News (2025-07-09 $4T), CNBC (2025-10-30 $5T), Bloomberg.
 **Style ref:** retained. **Conflicts unresolved:** none.

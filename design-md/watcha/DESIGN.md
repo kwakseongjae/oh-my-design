@@ -241,7 +241,7 @@ Pretendard leads — the open-source Korean sans that has become the default for
 ---
 
 **Verified:** 2026-05-19
-**Tier 1 sources:** watcha.com/browse/all (live computed styles via Playwright — login CTA `#F82F62` / 4px / 13px·500 / 32px; close icon `#28292A` circle 50% / glyph `#999CA1`; body bg `#000000`; font `Pretendard, "Apple SD Gothic Neo", "Nanum Gothic", "Malgun Gothic"`; hover pink `#DE2A60`).
+**Tier 1 sources:** https://watcha.com/browse/all (live computed styles via Playwright — login CTA `#F82F62` / 4px / 13px·500 / 32px; close icon `#28292A` circle 50% / glyph `#999CA1`; body bg `#000000`; font `Pretendard, "Apple SD Gothic Neo", "Nanum Gothic", "Malgun Gothic"`; hover pink `#DE2A60`).
 **Tier 2 sources:** getdesign.md/watcha — not checked; styles.refero.design — not checked. Marketing brand pink `#FF0558` is brief-provided, not re-verified against a token doc.
 **Conflicts unresolved:** Marketing brand pink (`#FF0558`) vs. UI fill pink (`#F82F62`) — treated as distinct surfaces (logo/promo vs. UI), per Toss brand-vs-UI-blue precedent.
 

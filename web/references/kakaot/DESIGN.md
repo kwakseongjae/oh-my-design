@@ -284,7 +284,7 @@ Kakao Mobility publishes no public component spec; geometry below reflects the l
 ---
 
 **Verified:** 2026-05-27
-**Tier 1 sources:** kakaomobility.com (live WebFetch 2026-05-27 — black-dominant corporate surface, generous whitespace, minimal text-link CTAs `자세히 보기`, Korean hero `우리의 기술로 생활을 움직입니다`, yellow `#FEE500` notably reserved/sparing on the corporate page). Kakao yellow `#FEE500` is the widely-documented Kakao corporate brand color.
+**Tier 1 sources:** https://kakaomobility.com (live WebFetch 2026-05-27 — black-dominant corporate surface, generous whitespace, minimal text-link CTAs `자세히 보기`, Korean hero `우리의 기술로 생활을 움직입니다`, yellow `#FEE500` notably reserved/sparing on the corporate page). Kakao yellow `#FEE500` is the widely-documented Kakao corporate brand color.
 **Tier 2 sources:** getdesign.md/kakaot — not checked. styles.refero.design — not checked. Kakao house typeface (Kakao OTF / Sandoll) referenced from SandollCloud listing; product-UI Pretendard fallback is a convention, not a verified token.
 **Conflicts unresolved:** Brand yellow `#FEE500` (high-attention accent) vs. black-led product/corporate surface — resolved as a documented two-register palette (yellow = beacon CTA, black = body + dark actions), consistent with the live corporate page where yellow is sparing.
 

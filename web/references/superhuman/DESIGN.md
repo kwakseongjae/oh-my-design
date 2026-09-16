@@ -447,7 +447,7 @@ Superhuman was founded **2014** in San Francisco by **Rahul Vohra (CEO)**, **Con
 ---
 
 **Verified:** 2026-05-08 (omd:migrate run 57 — Apple-tier)
-**Tier 1 sources:** superhuman.com home (unified Suite post-Grammarly-merger) + superhuman.com/pricing (legacy Superhuman Mail) — live DOM via playwright. **Two-system split**: Suite **`#d4c7ff` Lavender** 8px / 36px / 14px·600 + Lavender Dark `#714cb6` outline-text + Cream `color(srgb 0.925 0.914 0.885)` sub-nav + Maroon `#421d24` 16px banner; legacy Mail **`#51b1e7` Sky Blue** 6px / 46-54px / 18px·500-600 ALL CAPS + Sky Lighter `#3dafed` + Deep `#186dbb` featured. **Weight 460** rare intermediate. `color(srgb …)` CSS Color L4.
+**Tier 1 sources:** https://superhuman.com home (unified Suite post-Grammarly-merger) + https://superhuman.com/pricing (legacy Superhuman Mail) — live DOM via playwright. **Two-system split**: Suite **`#d4c7ff` Lavender** 8px / 36px / 14px·600 + Lavender Dark `#714cb6` outline-text + Cream `color(srgb 0.925 0.914 0.885)` sub-nav + Maroon `#421d24` 16px banner; legacy Mail **`#51b1e7` Sky Blue** 6px / 46-54px / 18px·500-600 ALL CAPS + Sky Lighter `#3dafed` + Deep `#186dbb` featured. **Weight 460** rare intermediate. `color(srgb …)` CSS Color L4.
 **Tier 2 sources:** styles.refero.design / getdesign.md — no record.
 **Tier 2 (Philosophy/founders/Grammarly-acquisition):** Tracxn, Antler (Vohra interview), Crunchbase, Boldstart Ventures, The Spl.it (post-merger ARR), TechRadar.
 **Style ref:** `claude`. **Conflicts unresolved:** none. **Earlier addition:** dual-system Lavender Suite + Sky Blue Mail post-merger split + Grammarly+Coda+Superhuman rebrand narrative + weight 460 + `color(srgb)` syntax missed by prior pass.

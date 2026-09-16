@@ -265,7 +265,7 @@ Standard cubic-bezier; **hover scale 1.1 is signature**. `prefers-reduced-motion
 ---
 
 **Verified:** 2026-05-08 (omd:migrate run 29 — Apple-tier)
-**Tier 1 sources:** intercom.com home + fin.ai/ (dual-product live DOM via playwright — Hero Primary `#000` 6px / 42px / 12×16 / 16px·400 (intercom.com Cream `#faf9f6` canvas) and `#fff` 6px (fin.ai dark canvas); Compact Primary **`#111111`** Intercom Charcoal 4px / 40px / 0×14).
+**Tier 1 sources:** https://intercom.com home + https://fin.ai/ (dual-product live DOM via playwright — Hero Primary `#000` 6px / 42px / 12×16 / 16px·400 (https://intercom.com Cream `#faf9f6` canvas) and `#fff` 6px (https://fin.ai dark canvas); Compact Primary **`#111111`** Intercom Charcoal 4px / 40px / 0×14).
 **Tier 2 sources:** styles.refero.design / getdesign.md — no record.
 **Tier 2 (Philosophy/founders):** Wikipedia (Intercom Inc.), Crunchbase (McCabe), Irish Times (4-Irishmen origin + €87M AI investment), Silicon Republic ($250M debt), Tracxn, Paperflite.
 **Style ref:** `claude`. **Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer captured only nav + canvas; canonical Primary is Black 6px hero + Charcoal `#111111` 4px compact across dual-product (intercom.com + fin.ai) chrome.

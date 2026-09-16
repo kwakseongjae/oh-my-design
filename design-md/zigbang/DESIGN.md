@@ -228,7 +228,7 @@ Price chips on listing cards follow the chip pattern (10px radius, 22px Pretenda
 ---
 
 **Verified:** 2026-05-13
-**Tier 1 sources:** zigbang.com/ (home — live DOM, computed-style observation on header buttons, station chips, bookmark toggles, paginators, body); zigbang.com/home/apt/map (map surface — partial inspect; second-pass evaluate disrupted by parallel browser-session tab contention)
+**Tier 1 sources:** https://zigbang.com/ (home — live DOM, computed-style observation on header buttons, station chips, bookmark toggles, paginators, body); https://zigbang.com/home/apt/map (map surface — partial inspect; second-pass evaluate disrupted by parallel browser-session tab contention)
 **Tier 2 sources:** getdesign.md/zigbang (no entry — "No designs found for 'zigbang'"); styles.refero.design/?q=zigbang (no public style entry surfaced via search); designcompass.org Beyond Home rebrand commentary (token-light, design rationale only); company.zigbang.com/en/newsroom/view?idx=314 (rebrand announcement, CEO quote, color-direction "deeper, more premium orange" — no hex value published)
 **Conflicts unresolved:** Zigbang's exact brand orange hex is not published publicly. The 2022 rebrand commentary describes the orange as "deeper, more premium" than the original, but no canonical token is exposed in the company-published materials reviewed. The `#FF6600`-approx label in §2 is a conservative estimate aligned with the wordmark; treat as illustrative until token publication is confirmed. The map surface is JS-rendered with a long bootstrap; listing-card and price-chip values in §4 are inferred from the chrome inspected and the visual rendering — exact card-surface tokens (border color, shadow) should be re-verified on a stable inspect session.
 

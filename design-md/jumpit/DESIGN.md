@@ -215,7 +215,7 @@ The signature surface is the **role-filter chip row** on `/positions` — twenty
 ---
 
 **Verified:** 2026-05-15
-**Tier 1 sources:** CDP `:9222` live capture on `jumpit.saramin.co.kr/` (52 samples) + `/positions?sort=popular` (60 samples); `assets/_reference/.live-inspect-proof.json` (10 raw_samples retained)
+**Tier 1 sources:** CDP `:9222` live capture on `https://jumpit.saramin.co.kr/` (52 samples) + `/positions?sort=popular` (60 samples); `assets/_reference/.live-inspect-proof.json` (10 raw_samples retained)
 **Tier 2 sources:** `getdesign.md/jumpit` → "No designs found"; `styles.refero.design/?q=jumpit` → no result cards (both verified 2026-05-15)
 **Conflicts unresolved:** none. JobCard inner spacing + hover/pressed/focus/disabled states + semantic ladder flagged for UPDATE pass.
 

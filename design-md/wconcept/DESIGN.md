@@ -550,7 +550,7 @@ Interpretive claims (editorial, not documented W Concept statements):
 ---
 
 **Verified:** 2026-05-27 (omd:add-reference initial create — Tier 1 live inspect / Tier 2 press confirmed)
-**Tier 1 sources:** display.wconcept.co.kr/rn/women (live playwright inspect — Pretendard Variable, body `#000` on `#fff`, base 16px, dominant `#000000`, single accent `#ff4600`, surface `#f6f6f6`, hairline `#eeeeee`, 0px radius).
+**Tier 1 sources:** https://display.wconcept.co.kr/rn/women (live playwright inspect — Pretendard Variable, body `#000` on `#fff`, base 16px, dominant `#000000`, single accent `#ff4600`, surface `#f6f6f6`, hairline `#eeeeee`, 0px radius).
 **Tier 2 sources:** getdesign.md/wconcept — not checked. styles.refero.design — not checked. Krendly + us.wconcept.com + Korean Buddies + App Store (2008 founding, designer-curation positioning, SSG.COM acquisition, global app).
 **Style ref:** `musinsa` (KR monochrome commerce neighbor format retained for tone scaffolding).
 **Conflicts unresolved:** none. Assumed primary `#000000` confirmed by live inspect. Live accent verified as `#ff4600` (orange-red), documented as the single sale hue. Component-internal geometry reconciled from surface treatment; re-run Tier 2 (getdesign/refero) to lock token values.

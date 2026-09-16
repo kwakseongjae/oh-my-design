@@ -456,7 +456,7 @@ Personas (§13) are fictional archetypes.
 ---
 
 **Verified:** 2026-05-19 (omd:add-reference — CN batch)
-**Tier 1 sources:** xiaohongshu.com (live — red brand identity, two-column waterfall/masonry note-card feed, content-first white/neutral surfaces, 种草 social-commerce positioning; no public token layer).
+**Tier 1 sources:** https://xiaohongshu.com (live — red brand identity, two-column waterfall/masonry note-card feed, content-first white/neutral surfaces, 种草 social-commerce positioning; no public token layer).
 **Tier 2 sources:** Brandfetch / cdnlogo / brandlogos + Mobbin "Chinese Red" (Torch Red `#FF2442` RGB 255,36,66 verified); Wikipedia (founding 2013 Shanghai, Charlwin Mao 毛文超 & Miranda Qu 瞿芳, shopping-guide origin, RED/RedNote rebrand Jan 2025).
 **Style ref:** `pinkoi` (Asian lifestyle-commerce tone) + content-first social patterns.
 **Conflicts unresolved:** Only `#FF2442` is verified; all other §2/§4 hexes are flagged approximate (observed usage, no public token layer).

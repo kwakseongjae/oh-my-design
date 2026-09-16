@@ -419,7 +419,7 @@ Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover
 ---
 
 **Verified:** 2026-05-08 (omd:migrate run 43 — Apple-tier)
-**Tier 1 sources:** opencode.ai home + /docs (live DOM via playwright — Primary **`#201d1d` Coffee Charcoal** 4px / 40-42px / 8×16×8×10 asym (icon-spacing) / 16px·**500**; Inverse `#fdfcfc` Soft White 4px (Zen cross-promo); install-snippet text-only tabs color-state; doc sidebar `#f8f7f7` active. **Warm-cast color discipline** — no pure black/white anywhere).
+**Tier 1 sources:** https://opencode.ai home + /docs (live DOM via playwright — Primary **`#201d1d` Coffee Charcoal** 4px / 40-42px / 8×16×8×10 asym (icon-spacing) / 16px·**500**; Inverse `#fdfcfc` Soft White 4px (Zen cross-promo); install-snippet text-only tabs color-state; doc sidebar `#f8f7f7` active. **Warm-cast color discipline** — no pure black/white anywhere).
 **Tier 2 sources:** styles.refero.design / getdesign.md — no record.
 **Tier 2 (Philosophy/founders/SST):** opencode.ai/about, GitHub sst/opencode, Tech Funding News (OpenCode background), Baseten (Dax conversation), Codacy blog.
 **Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier addition:** Zen cross-promo Inverse Primary + install-snippet tab system + warm-cast discipline missed by prior pass.

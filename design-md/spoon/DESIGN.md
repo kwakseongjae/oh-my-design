@@ -261,7 +261,7 @@ Pretendard leads with JP and Traditional-Chinese (Noto Sans TC) fallbacks — Sp
 ---
 
 **Verified:** 2026-05-19
-**Tier 1 sources:** spooncast.net (live computed styles via Playwright — primary CTA `#FF5500` (rgb 255,85,0) / 999px pill / 12px / 28px tall / padding 4px 12px; hashtag chip `#F2F2F2` (rgb 242,242,242) bg + `#333333` (rgb 51,51,51) text / 12px radius / 24px tall; avatar placeholder `#D9D9D9` (rgb 217,217,217) / 50%; primary text `#1A1A1A` (rgb 26,26,26); white bg; font `Pretendard, "Pretendard JP", "Noto Sans TC", "Noto Sans", ..., system-ui`).
+**Tier 1 sources:** https://spooncast.net (live computed styles via Playwright — primary CTA `#FF5500` (rgb 255,85,0) / 999px pill / 12px / 28px tall / padding 4px 12px; hashtag chip `#F2F2F2` (rgb 242,242,242) bg + `#333333` (rgb 51,51,51) text / 12px radius / 24px tall; avatar placeholder `#D9D9D9` (rgb 217,217,217) / 50%; primary text `#1A1A1A` (rgb 26,26,26); white bg; font `Pretendard, "Pretendard JP", "Noto Sans TC", "Noto Sans", ..., system-ui`).
 **Tier 2 sources:** getdesign.md/spoon — not checked; styles.refero.design — not checked. WebSearch (namu.wiki / Wikipedia) confirms Spoon Radio identity + old/new logo history but no token doc.
 **Conflicts unresolved:** Brief-provided primary `#F23C5C` (coral-pink) vs live web brand orange `#FF5500`. The current spooncast.net web surface uses orange `#FF5500` on the primary CTA and brand accents; `#F23C5C` corresponds to Spoon's earlier coral/pink app branding. Resolved: `primary_color` set to the verified live orange `#FF5500`; coral retained in §2 as legacy/app brand. (Spoon rebranded; brief value was an unverified "(verify)" guess.)
 

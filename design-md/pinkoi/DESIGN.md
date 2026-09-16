@@ -631,7 +631,7 @@ tonal intent, not strings observed on the live Pinkoi surface.
 ---
 
 **Verified:** 2026-05-08 (omd:migrate run 44 — Apple-tier)
-**Tier 1 sources:** en.pinkoi.com home + /about/team (live DOM via playwright — Search button **`#10567b`** Pinkoi Teal **split-radius `0px 8px 8px 0px`** (search-box trailing geometry) / 8×20 / 40px; **Country pills 100px** active `#fff8f7` Coral Tint / inactive `#eeeeef` Cool Gray / 14px·500; Outline Secondary `#fff` 4px / 40-52px / 14-16px·400-500; Charcoal text `#39393e` warm-cast).
+**Tier 1 sources:** https://en.pinkoi.com home + /about/team (live DOM via playwright — Search button **`#10567b`** Pinkoi Teal **split-radius `0px 8px 8px 0px`** (search-box trailing geometry) / 8×20 / 40px; **Country pills 100px** active `#fff8f7` Coral Tint / inactive `#eeeeef` Cool Gray / 14px·500; Outline Secondary `#fff` 4px / 40-52px / 14-16px·400-500; Charcoal text `#39393e` warm-cast).
 **Tier 2 sources:** styles.refero.design / getdesign.md — no record.
 **Tier 2 (Philosophy/founders/funding):** Wikipedia (Pinkoi), Taiwan Panorama (Peter Yen Yahoo origin), LinkedIn (Peter Yen), TechCrunch (2015-09 $9M Sequoia India + GMO Venture Partners), Tracxn, en.pinkoi.com/about + /about/team, blog.google (Pinkoi case study).
 **Style ref:** `pinkoi` (self / TW Asian retained).

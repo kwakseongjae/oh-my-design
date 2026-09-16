@@ -460,7 +460,7 @@ is Meituan's mascot.
 ---
 
 **Verified:** 2026-05-19 (omd:add-reference — CN batch)
-**Tier 1 sources:** meituan.com (live — yellow brand color + 小黄蜂 delivery-robot reference, kangaroo mascot, mobile-first local-services aesthetic, slogan 吃得更好，生活更好; corporate surface, no public token layer).
+**Tier 1 sources:** https://meituan.com (live — yellow brand color + 小黄蜂 delivery-robot reference, kangaroo mascot, mobile-first local-services aesthetic, slogan 吃得更好，生活更好; corporate surface, no public token layer).
 **Tier 2 sources:** WebSearch + seekcolors.com/brand/meituan (Meituan yellow `#FFC300` RGB 255,195,0 primary, `#FFD100` close-variant); widely documented history (Wang Xing 王兴, Meituan 2010 团购 origin, 百团大战, Dianping 大众点评 merger 2015, 美团外卖).
 **Style ref:** `baemin`/`coupang` (delivery-app value+convenience tone) adapted to CN local-services register.
 **Conflicts unresolved:** Brand yellow has two widely-cited values (`#FFC300` primary vs `#FFD100` variant) — `#FFC300` used as primary per brief. All other §2/§4 hexes flagged approximate (observed usage, no public token layer).

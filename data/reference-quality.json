@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-08-19",
+  "generated_at": "2026-09-16",
   "generator": "scripts/build-reference-quality-data.mjs",
   "count": 440,
   "counts": {
@@ -224,7 +224,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -265,7 +264,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -575,7 +573,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -798,7 +795,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "verification_v2_missing"
       ]
     },
@@ -825,7 +821,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -843,7 +838,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -997,7 +991,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -1100,7 +1093,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -1638,7 +1630,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -1968,7 +1959,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -2087,7 +2077,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -2185,7 +2174,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -2260,7 +2248,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -2394,7 +2381,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -2437,7 +2423,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -2795,7 +2780,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -2928,7 +2912,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -3031,7 +3014,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -3319,7 +3301,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -3361,7 +3342,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -3463,7 +3443,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -3701,7 +3680,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -3797,7 +3775,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -3866,7 +3843,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -3884,7 +3860,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -3996,7 +3971,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -4075,7 +4049,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -4092,7 +4065,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -4148,7 +4120,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -4179,7 +4150,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -4239,7 +4209,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -4387,7 +4356,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -4530,7 +4498,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -4548,7 +4515,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -4699,7 +4665,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -4886,7 +4851,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -4943,7 +4907,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -5211,7 +5174,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -5417,7 +5379,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -5488,7 +5449,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -5506,7 +5466,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -5524,7 +5483,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -5542,7 +5500,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -5559,7 +5516,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -5665,7 +5621,6 @@
       "reason_codes": [
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -5683,7 +5638,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -5736,7 +5690,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -5802,7 +5755,6 @@
         "conflict_unresolved",
         "freshness_conflict",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]

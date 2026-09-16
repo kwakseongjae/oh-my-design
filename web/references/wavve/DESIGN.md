@@ -260,7 +260,7 @@ Wavve publishes no public component spec; geometry below follows the documented 
 ---
 
 **Verified:** 2026-05-27
-**Tier 1 sources:** wavve.com (WebFetch 2026-05-27 returned minimal markup — confirmed Wavve OTT dark-theme positioning; no token doc exposed). Documented rebrand direction (BAT / Brds.life case studies): "deep blue background to minimize optic fatigue, brand blue as point color, secondary colors from daytime to midnight, 3D genre icons." Brand blue `#1351F9` is brief-provided, consistent with the documented blue-led system. Operated by Wavve (SK Telecom + terrestrial broadcasters; oksusu + POOQ merger).
+**Tier 1 sources:** https://wavve.com (WebFetch 2026-05-27 returned minimal markup — confirmed Wavve OTT dark-theme positioning; no token doc exposed). Documented rebrand direction (BAT / Brds.life case studies): "deep blue background to minimize optic fatigue, brand blue as point color, secondary colors from daytime to midnight, 3D genre icons." Brand blue `#1351F9` is brief-provided, consistent with the documented blue-led system. Operated by Wavve (SK Telecom + terrestrial broadcasters; oksusu + POOQ merger).
 **Tier 2 sources:** getdesign.md/wavve — not checked. styles.refero.design — not checked.
 **Conflicts unresolved:** No live computed-style token inspection (wavve.com returned minimal markup, likely client-rendered behind auth). All §4 component values + the dark-blue surface scale are flagged conventional; brand blue `#1351F9` is the one verified anchor. A future UPDATE pass with browser inspection (logged-in browse surface) should re-confirm component geometry and the exact midnight-blue canvas hex.
 

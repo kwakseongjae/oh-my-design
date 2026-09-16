@@ -626,7 +626,7 @@ NCCU, §11 should be corrected.
 ---
 
 **Verified:** 2026-05-08 (omd:migrate run 21 — Apple-tier)
-**Tier 1 sources:** dcard.tw/f (live DOM — `#3397cf` Dcard Blue 8px / 14×1 / 32px / 14px·500 Download App + Sign in CTAs); about.dcard.tw/ (corporate nav — same `#3397cf` accent text, 200+ token `:root` system).
+**Tier 1 sources:** https://dcard.tw/f (live DOM — `#3397cf` Dcard Blue 8px / 14×1 / 32px / 14px·500 Download App + Sign in CTAs); https://about.dcard.tw/ (corporate nav — same `#3397cf` accent text, 200+ token `:root` system).
 **Tier 2 sources:** styles.refero.design / getdesign.md — no record.
 **Tier 2 (Philosophy/founders):** Wikipedia (Dcard — Kytu Lin / 林裕欽 / NTU 2011-12-16 founding / D=Destiny / 6M+ members Nov 2022); medium.com/dcardlab masthead.
 **Style ref:** `pinkoi` (TW Asian marketplace tone). **Conflicts unresolved:** none. NCCU/NTU founding origin remains a noted editorial-only research gap (NTU per Wikipedia is canonical here).

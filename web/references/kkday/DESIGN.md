@@ -464,7 +464,7 @@ hexes, font stack (inferred from OTA + TW conventions). Marked inline. Personas 
 ---
 
 **Verified:** 2026-05-19
-**Tier 1 sources:** kkday.com — live inspect NOT completed (403 + browser redirect); primary `#FF5C00` is brief-provided and matches KKday's orange-led identity (hexes other than primary are grounded approximations pending live re-inspection). kkday.com/en-us hero "EXPLORE. DREAM. DISCOVER" (WebSearch).
+**Tier 1 sources:** https://kkday.com — live inspect NOT completed (403 + browser redirect); primary `#FF5C00` is brief-provided and matches KKday's orange-led identity (hexes other than primary are grounded approximations pending live re-inspection). https://kkday.com/en-us hero "EXPLORE. DREAM. DISCOVER" (WebSearch).
 **Tier 2 sources:** brandcolorcode.com/kkday (heritage teal `#26BEC9`, noted as legacy/unofficial); lilingh.com KKday UX case study (WCAG contrast note).
 **Tier 2 (Philosophy/founders):** Wikipedia (KKday — Ming Chen / 2014 Taipei / 90+ countries / H.I.S. / $250M+).
 **Style ref:** `pinkoi` (TW commerce tone). **Conflicts unresolved:** exact production hexes beyond primary not live-verified this pass (browser session unreliable) — flagged for UPDATE.

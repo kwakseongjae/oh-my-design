@@ -271,7 +271,7 @@ Standard cubic-bezier; no bounce. **Live price flashes** green/red briefly on ti
 ---
 
 **Verified:** 2026-05-08 (omd:migrate run 31 — Apple-tier)
-**Tier 1 sources:** kraken.com home + /prices (live DOM via playwright — Primary `#7132f5` Kraken Purple 12px tiered (header 36 / page 48-52) 8-15×12-16 / 14-16px·500; Light Purple ghost `rgba(133,91,251,0.16)` 12px; Light Secondary `#f5f5f5` 12px; **3-tier radius scale 12/10/8** = Action/Filter/Selector hierarchy).
+**Tier 1 sources:** https://kraken.com home + /prices (live DOM via playwright — Primary `#7132f5` Kraken Purple 12px tiered (header 36 / page 48-52) 8-15×12-16 / 14-16px·500; Light Purple ghost `rgba(133,91,251,0.16)` 12px; Light Secondary `#f5f5f5` 12px; **3-tier radius scale 12/10/8** = Action/Filter/Selector hierarchy).
 **Tier 2 sources:** styles.refero.design / getdesign.md — no record.
 **Tier 2 (Philosophy/founders/IPO):** Wikipedia (Kraken), Contrary Research (3-founder origin), Tracxn ($867M @ $20B), Caproasia (Nov 2025 IPO filing), Forge Global, Kraken press (leadership succession), Fortune.
 **Style ref:** `stripe`. **Conflicts unresolved:** none.

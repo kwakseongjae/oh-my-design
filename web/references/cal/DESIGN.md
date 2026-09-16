@@ -475,7 +475,7 @@ Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes calen
 ---
 
 **Verified:** 2026-05-08 (B1 loop)
-**Tier 1 sources:** cal.com (live DOM via playwright — Black `#000000` Primary 12px / 8×16 / 39px / 13.92px·500; Cream `#f3f2ed` Secondary)
+**Tier 1 sources:** https://cal.com (live DOM via playwright — Black `#000000` Primary 12px / 8×16 / 39px / 13.92px·500; Cream `#f3f2ed` Secondary)
 **Tier 2 sources:** styles.refero.design / getdesign.md — no record.
 **Tier 1 (Philosophy):** cal.com homepage; founders Peer Richelsen, Bailey Pumfleet; GitHub roadmap.
 **Style ref:** `stripe`. **Conflicts unresolved:** none.

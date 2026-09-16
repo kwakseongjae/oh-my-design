@@ -447,6 +447,6 @@ Verified vs assumed:
 ---
 
 **Verified:** 2026-05-19 (omd:add-reference — JP batch)
-**Tier 1 sources:** smarthr.design (public SmartHR Design System — colors #00C4CC / #23221F / #FF9900 + 10 four-step families; typography rem scale + OS-font policy; radius s/m/l/full); smarthr.jp (homepage).
+**Tier 1 sources:** https://smarthr.design (public SmartHR Design System — colors #00C4CC / #23221F / #FF9900 + 10 four-step families; typography rem scale + OS-font policy; radius s/m/l/full); https://smarthr.jp (homepage).
 **Tier 2 sources:** getdesign.md / refero — not separately fetched (official public DS supersedes).
 **Conflicts unresolved:** none. Brief-supplied #00C4CC confirmed exactly against smarthr.design/basics/colors/.

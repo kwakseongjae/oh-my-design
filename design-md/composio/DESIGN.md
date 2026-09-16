@@ -434,7 +434,7 @@ Easings: terminal-precise. **Glow pulses** never animate on input fields (would 
 ---
 
 **Verified:** 2026-05-08 (B2 loop)
-**Tier 1 sources:** composio.dev (live DOM via playwright — UPPERCASE CTAs `#fff` / `#000` / 0px radius / 6×8 padding / 33px / 14px·400)
+**Tier 1 sources:** https://composio.dev (live DOM via playwright — UPPERCASE CTAs `#fff` / `#000` / 0px radius / 6×8 padding / 33px / 14px·400)
 **Tier 2 sources:** styles.refero.design / getdesign.md — no record.
 **Tier 1 (Philosophy):** composio.dev homepage; composio.dev/pricing.
 **Tier 2 (Founders/Funding):** Tracxn, Entrackr, Lightspeed Venture Partners blog.

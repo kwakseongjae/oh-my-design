@@ -459,7 +459,7 @@ fictional (§13).
 ---
 
 **Verified:** 2026-05-19
-**Tier 1 sources:** appier.com/en (WebFetch — blue-dominant identity, tagline "Empowering Businesses to Turn AI into ROI", vision "Making AI easy by making software intelligent", "Autonomous, Adaptive, and Agentic", three clouds, L'Oréal/BMW/Nexon social proof, case-study stats, Gartner/ISO credentials). Live DOM inspect NOT completed (browser redirect); primary `#1D2EFF` is brief-provided and matches Appier's electric-blue identity; other hexes are grounded approximations pending live re-inspection.
+**Tier 1 sources:** https://appier.com/en (WebFetch — blue-dominant identity, tagline "Empowering Businesses to Turn AI into ROI", vision "Making AI easy by making software intelligent", "Autonomous, Adaptive, and Agentic", three clouds, L'Oréal/BMW/Nexon social proof, case-study stats, Gartner/ISO credentials). Live DOM inspect NOT completed (browser redirect); primary `#1D2EFF` is brief-provided and matches Appier's electric-blue identity; other hexes are grounded approximations pending live re-inspection.
 **Tier 2 sources:** styles.refero.design / getdesign.md — not checked this pass (browser session unreliable); brandfetch/logokit aggregators returned 403.
 **Tier 2 (Philosophy/founders):** appier.com/en/about (founded 2012, "Making AI easy…", three clouds, TSE listing); PRNewswire/Sharecast (agentic-AI / ROI positioning).
 **Style ref:** `stripe` (engineering/enterprise tone). **Conflicts unresolved:** production hexes beyond primary not live-verified this pass (browser unreliable) — flagged for UPDATE.

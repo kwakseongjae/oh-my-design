@@ -572,7 +572,7 @@ Interpretive claims (editorial, not documented Tumblbug statements):
 ---
 
 **Verified:** 2026-05-27 (omd:add-reference initial create — Tier 1 live inspect / Tier 2 press confirmed)
-**Tier 1 sources:** tumblbug.com (live playwright inspect — Pretendard, body `#000` base 14px, signature coral `#fd5744` + `#f86453` + `#e53c41`, gray scale `#3d3d3d`/`#6d6d6d`/`#9e9e9e`, borders `#e4e4e4`/`#f0f0f0`, surface `#f6f6f6`, full-pill controls, outline-pill 창작자센터 30px/14px·700, scrim oklab 0.5).
+**Tier 1 sources:** https://tumblbug.com (live playwright inspect — Pretendard, body `#000` base 14px, signature coral `#fd5744` + `#f86453` + `#e53c41`, gray scale `#3d3d3d`/`#6d6d6d`/`#9e9e9e`, borders `#e4e4e4`/`#f0f0f0`, surface `#f6f6f6`, full-pill controls, outline-pill 창작자센터 30px/14px·700, scrim oklab 0.5).
 **Tier 2 sources:** getdesign.md/tumblbug — not checked. styles.refero.design — not checked. Namu Wiki + e27 + Google Play + tumblbug.com/start (Korean creative-crowdfunding positioning, "당신의 취향이 세상을 바꿉니다", creator-invitation copy).
 **Style ref:** `musinsa` (KR monochrome editorial neighbor format retained for tone scaffolding).
 **Conflicts unresolved:** Assumed coral `#FF5A5F` (from task brief) refined to live-verified `#fd5744` (rgb(253,87,68)). Component-internal geometry reconciled from surface treatment; re-run Tier 2 (getdesign/refero) to lock token values.

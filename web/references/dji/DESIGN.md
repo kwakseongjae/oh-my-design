@@ -448,7 +448,7 @@ Personas (§13) and voice samples (§10) are illustrative/fictional, flagged inl
 ---
 
 **Verified:** 2026-05-19 (omd:add-reference — CN batch)
-**Tier 1 sources:** dji.com (live — monochrome black/white/silver palette, full-bleed product photography hero language, premium-industrial minimalism, imperative CN store CTAs; no public token layer).
+**Tier 1 sources:** https://dji.com (live — monochrome black/white/silver palette, full-bleed product photography hero language, premium-industrial minimalism, imperative CN store CTAs; no public token layer).
 **Tier 2 sources:** Behance "DJI – Design Style Guide" + Scribd "DJI Toolbox BASICS" (500-page brand guide — named primary "Titan", white/black/silver secondary, sky-blue accent, custom DJI typeface, "X-Factor" lowercase-"i" grid). Brandfetch dji.com (logo assets).
 **Style ref:** `apple` (premium-monochrome hardware-store tone).
 **Conflicts unresolved:** Exact hex values for Titan and the sky-blue accent are not publicly published; §2/§4 specific non-black/white hexes are flagged approximate.

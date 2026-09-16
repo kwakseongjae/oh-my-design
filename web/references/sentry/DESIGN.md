@@ -390,7 +390,7 @@ Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover
 ---
 
 **Verified:** 2026-05-08 (omd:migrate run 54 — Apple-tier)
-**Tier 1 sources:** sentry.io/welcome home + sentry.io/pricing (live DOM via playwright — Primary **`#452650` Sentry Deep Purple** 8px / 40px / 12×16 / **14px·700 ALL CAPS**; Outline Eggplant `#1f1633` text; Cookie Mid-Purple `#362d59`; Lavender Mist `#f5f3fa` 0px tab; nav 14px·500 ALL CAPS).
+**Tier 1 sources:** https://sentry.io/welcome home + https://sentry.io/pricing (live DOM via playwright — Primary **`#452650` Sentry Deep Purple** 8px / 40px / 12×16 / **14px·700 ALL CAPS**; Outline Eggplant `#1f1633` text; Cookie Mid-Purple `#362d59`; Lavender Mist `#f5f3fa` 0px tab; nav 14px·500 ALL CAPS).
 **Tier 2 sources:** styles.refero.design / getdesign.md — no record.
 **Tier 2 (Philosophy/founders/funding):** First Round Review (Sentry PMF case study + Cramer podcast), CIO (Cramer bootstrapping), Crunchbase, Contrary Research, Tracxn, ShiftMag (Milin Desai CEO).
 **Style ref:** `stripe`.

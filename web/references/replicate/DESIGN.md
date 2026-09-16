@@ -381,7 +381,7 @@ Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover
 ---
 
 **Verified:** 2026-05-08 (omd:migrate run 49 — Apple-tier)
-**Tier 1 sources:** replicate.com home + /explore (live DOM via playwright — Primary `#000` Black 0px sharp three-tier height (hero 54 / page 42 / mini 34) / 12-16×8-16 / 14-18px·400; **Replicate Orange-Red `#dd4425`** featured-accent on **Replicate Cream `#fffcfc`** card; Mid-Gray `#646464` nav + secondary; Charcoal `#202020` active code-tab states).
+**Tier 1 sources:** https://replicate.com home + /explore (live DOM via playwright — Primary `#000` Black 0px sharp three-tier height (hero 54 / page 42 / mini 34) / 12-16×8-16 / 14-18px·400; **Replicate Orange-Red `#dd4425`** featured-accent on **Replicate Cream `#fffcfc`** card; Mid-Gray `#646464` nav + secondary; Charcoal `#202020` active code-tab states).
 **Tier 2 sources:** styles.refero.design / getdesign.md — no record.
 **Tier 2 (Philosophy/founders/Cloudflare-acquisition):** Y Combinator (W20), Sequoia Capital (Partnering with Replicate), Heavybit, MLQ Deep Dive, Latent Space podcast, LinkedIn (Firshman = Cloudflare Head of AI Platform — confirms Cloudflare acquisition), Tracxn.
 **Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier addition:** 3-height tier system + Orange-Red `#dd4425` accent + Cream `#fffcfc` featured-surface + Cloudflare acquisition narrative missed by prior pass.

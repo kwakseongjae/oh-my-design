@@ -386,7 +386,7 @@ Standard cubic-bezier; no bounce — research register. `prefers-reduced-motion:
 ---
 
 **Verified:** 2026-05-09 (Apple-tier full migration)
-**Tier 1 sources:** x.ai/, x.ai/api (live DOM via playwright)
+**Tier 1 sources:** https://x.ai/, https://x.ai/api (live DOM via playwright)
 - **Outline Primary** transparent / `#fff` / 9999px / 38px / 8×16 / 14px·400 (Try Grok / Read announcement / Sign up now / Explore more — canonical home variant)
 - **Inverse Primary** `#fff` / `rgb(10,10,10)` `#0a0a0a` near-black / 9999px / 38px / 8×16 / 14px·400 (Grok 4.3 API / View docs — /api hero variant)
 - **Compact ghost CTA** transparent / `#fff` / 9999px / 34px / 6×14 / 14px·400 (Use now / Build now / Read)

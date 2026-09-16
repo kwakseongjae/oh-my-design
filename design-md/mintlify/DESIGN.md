@@ -466,7 +466,7 @@ Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` removes hover
 ---
 
 **Verified:** 2026-05-08 (omd:migrate run 37 — Apple-tier)
-**Tier 1 sources:** mintlify.com home + /pricing (live DOM via playwright — Primary `lab(100 0 0)` White 9999px / 34-40px / 4.5-7×12-24 / 15-16px·500 + Mintlify Near-Black `lab(2.42579 -0.165291 -0.470081)` (`#0a0d10` w/ blue cast) inverse for featured tier; Translucent ghost `lab(100 0 0 / 0.05)`; 60px announcement banner sub-pill. **`lab()` color-space canonical** — joins Cursor + Lovable in modern AI-tooling DS pattern).
+**Tier 1 sources:** https://mintlify.com home + /pricing (live DOM via playwright — Primary `lab(100 0 0)` White 9999px / 34-40px / 4.5-7×12-24 / 15-16px·500 + Mintlify Near-Black `lab(2.42579 -0.165291 -0.470081)` (`#0a0d10` w/ blue cast) inverse for featured tier; Translucent ghost `lab(100 0 0 / 0.05)`; 60px announcement banner sub-pill. **`lab()` color-space canonical** — joins Cursor + Lovable in modern AI-tooling DS pattern).
 **Tier 2 sources:** styles.refero.design / getdesign.md — no record.
 **Tier 2 (Philosophy/founders/funding):** Y Combinator (Mintlify W22), LinkedIn (Han Wang, Hahnbee Lee Cornell), Mintlify blog (YC + Series A), TechCrunch (2024-09 a16z $18M), Tracxn ($67M total), AIbase.
 **Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier addition:** Mintlify Near-Black inverse + pricing-hero 40px/7×24 + lab() token convention + 60px banner sub-pill missed by prior pass.

@@ -557,7 +557,7 @@ Interpretive claims (editorial, not documented PUBLY statements):
 ---
 
 **Verified:** 2026-05-27 (omd:add-reference initial create — Tier 1 live inspect / Tier 2 press confirmed)
-**Tier 1 sources:** publy.co (live playwright inspect — system-UI font stack, body slate-ink `#0f172a` on `#fff`, sole interactive accent purple `#7a3bff` on primary CTA at 8px radius / 12px padding / 14px·600, purple-tint `#f1ebff`, dominant border slate-200 `#e2e8f0`, full slate neutral scale, section fill `#f5f5f5`).
+**Tier 1 sources:** https://publy.co (live playwright inspect — system-UI font stack, body slate-ink `#0f172a` on `#fff`, sole interactive accent purple `#7a3bff` on primary CTA at 8px radius / 12px padding / 14px·600, purple-tint `#f1ebff`, dominant border slate-200 `#e2e8f0`, full slate neutral scale, section fill `#f5f5f5`).
 **Tier 2 sources:** getdesign.md/publy — not checked. styles.refero.design — not checked. App Store ("커리어 멤버십 PUBLY", monthly career content, integrated career membership).
 **Style ref:** `notion` (neutral composed-reading tone scaffolding).
 **Conflicts unresolved:** Assumed primary `#2440FF` blue (from task brief) NOT confirmed — live inspect found the sole interactive accent is purple `#7a3bff`. Resolved in favor of Tier 1 live value `#7a3bff`. Component-internal geometry reconciled from surface treatment; re-run Tier 2 (getdesign/refero) to lock token values.

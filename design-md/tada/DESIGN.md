@@ -573,7 +573,7 @@ Interpretive claims (editorial, not documented TADA statements):
 ---
 
 **Verified:** 2026-05-27 (omd:add-reference initial create — Tier 1 marketing-site inspect / Tier 2 press confirmed)
-**Tier 1 sources:** www.tadatada.com (live playwright inspect — body `#000` on `#fff`, Pretendard/system sans; dominant marketing field navy `#19254d`; light-blue accent `#80caff`). Note: live marketing site is navy-led, not mint-led.
+**Tier 1 sources:** https://www.tadatada.com (live playwright inspect — body `#000` on `#fff`, Pretendard/system sans; dominant marketing field navy `#19254d`; light-blue accent `#80caff`). Note: live marketing site is navy-led, not mint-led.
 **Tier 2 sources:** getdesign.md/tada — not checked. styles.refero.design — not checked. Namu Wiki + Korean Wikipedia + THE VC + mydailybyte (2018 launch, VCNC/SOCAR, 타다 금지법 regulatory pivot, premium-mobility repositioning).
 **Style ref:** `toss` (KR calm product-tone scaffolding).
 **Conflicts unresolved:** Assumed primary mint `#1ec59f` is TADA's signature brand identity but the CURRENT marketing site is navy-led (`#19254d`). Documented mint as `primary_color` (brand identity) with navy retained as the dark marketing surface. The exact mint hex is the assumed brand value, NOT re-confirmed by live token grab on the current site. Native app not web-inspectable; §4 component geometry reconciled from brand posture + mobility-UX conventions. Re-verify against the live app or an official DS.

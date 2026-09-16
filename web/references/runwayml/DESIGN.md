@@ -425,7 +425,7 @@ Cinematic easing for hero reveals, standard for chrome. `prefers-reduced-motion:
 ---
 
 **Verified:** 2026-05-08 (omd:migrate run 52 — Apple-tier)
-**Tier 1 sources:** runwayml.com home + /research (live DOM via playwright — Primary `#262626` Charcoal 6px / 32px / 6×10 / 14px·**600**; Outline `#eef1f5` Cool Cream + `#1a1a1a` Near-Black text 6px; compact 4px / 28px sub-tier; **top nav 11px·450 ALL CAPS** with `#0c0c0c` Deep Black; **three-shade near-black palette** `#0c0c0c` / `#1a1a1a` / `#262626`).
+**Tier 1 sources:** https://runwayml.com home + /research (live DOM via playwright — Primary `#262626` Charcoal 6px / 32px / 6×10 / 14px·**600**; Outline `#eef1f5` Cool Cream + `#1a1a1a` Near-Black text 6px; compact 4px / 28px sub-tier; **top nav 11px·450 ALL CAPS** with `#0c0c0c` Deep Black; **three-shade near-black palette** `#0c0c0c` / `#1a1a1a` / `#262626`).
 **Tier 2 sources:** styles.refero.design / getdesign.md — no record.
 **Tier 2 (Philosophy/founders/funding):** Wikipedia (Runway), Acquired Podcast (Valenzuela complete history), LinkedIn (Cristóbal Valenzuela), Sacra ($5.3B valuation), Contrary Research, Tracxn, Skim AI, Upstarts Media.
 **Style ref:** `claude`. **Conflicts unresolved:** none. **Earlier addition:** ALL CAPS 11px·**450** nav signature + 3-shade near-black palette + 4px compact sub-tier missed; Outline cream is `#eef1f5` (Cool Cream w/ blue cast) not `#f7f7f7`.

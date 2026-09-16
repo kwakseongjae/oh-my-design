@@ -449,7 +449,7 @@ Personas fictional (§13).
 ---
 
 **Verified:** 2026-05-19
-**Tier 1 sources:** ichefpos.com + /about-ichef (WebFetch — taglines "科技用得更好，餐廳業績更好" / "We build the best restaurant POS in the world…", demo CTA "專人到店免費體驗", warm orange-red identity, TW+EN bilingual, award positioning). Live DOM inspect NOT completed (browser redirect); primary `#E8552D` is brief-provided and matches iCHEF's orange-red identity; other hexes are grounded approximations pending live re-inspection.
+**Tier 1 sources:** https://ichefpos.com + /about-ichef (WebFetch — taglines "科技用得更好，餐廳業績更好" / "We build the best restaurant POS in the world…", demo CTA "專人到店免費體驗", warm orange-red identity, TW+EN bilingual, award positioning). Live DOM inspect NOT completed (browser redirect); primary `#E8552D` is brief-provided and matches iCHEF's orange-red identity; other hexes are grounded approximations pending live re-inspection.
 **Tier 2 sources:** Meet Global (bnext) + Vulcan Post (founding story / Sean Hsu / Mazendo).
 **Tier 2 (Philosophy/founders):** ichefpos.com/about-ichef + /ichef-story (mission, 10k+ restaurants, iF Gold 2016 / German Design Award 2017 / Red Dot).
 **Style ref:** `pinkoi` (TW tone, adapted operational). **Conflicts unresolved:** production hexes beyond primary not live-verified this pass (browser unreliable) — flagged for UPDATE.

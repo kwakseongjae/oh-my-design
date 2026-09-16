@@ -474,7 +474,7 @@ Standard cubic-bezier. Hedgehog mascot moments are personality, not chrome. `pre
 ---
 
 **Verified:** 2026-05-08 (omd:migrate run 46 — Apple-tier)
-**Tier 1 sources:** posthog.com home + /pricing (live DOM via playwright — **Primary `#cd8407` PostHog Amber-Gold** 6-8px / 32-46px / 15-16px·400 with **Sage-Black `#23251d`** text; **Light Amber `#eb9d2a`** Secondary; nav 4px / 13px·500; **Region badge** Amber-tint 4px / 14px·**700**; warm three-color (Amber/Sage/Cool Gray) canvas).
+**Tier 1 sources:** https://posthog.com home + /pricing (live DOM via playwright — **Primary `#cd8407` PostHog Amber-Gold** 6-8px / 32-46px / 15-16px·400 with **Sage-Black `#23251d`** text; **Light Amber `#eb9d2a`** Secondary; nav 4px / 13px·500; **Region badge** Amber-tint 4px / 14px·**700**; warm three-color (Amber/Sage/Cool Gray) canvas).
 **Tier 2 sources:** styles.refero.design / getdesign.md — no record.
 **Tier 2 (Philosophy/founders/funding):** PostHog About + handbook + blog (YC 2-years-on), Y Combinator (PostHog W20 + Pivot Hell to $1.4B Library), Tracxn, GV.com.
 **Style ref:** `notion`. **Conflicts unresolved:** none. **Earlier mistake reverted (significant):** prior footer captured nav-only — canonical Primary is **`#cd8407` Amber-Gold** (the brand-defining color), missed entirely.

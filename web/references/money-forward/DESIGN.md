@@ -438,6 +438,6 @@ Verified vs assumed:
 ---
 
 **Verified:** 2026-05-19 (omd:add-reference — JP batch)
-**Tier 1 sources:** github.com/moneyforward/cloud-react-ui (open-source theme — royalBlue #3B7DE9 → cobalt #0054AC primary gradient, venetianRed #D0021B danger, nightRider #333333 text, linkWater #D4D8DD border, 4px radius, button sizes 28/32/42, Noto Sans JP font stack, 10–24px type scale); design.moneyforward.com (live — "User Focus" stance, corporate-orange #ED7100 brand layer).
+**Tier 1 sources:** https://github.com/moneyforward/cloud-react-ui (open-source theme — royalBlue #3B7DE9 → cobalt #0054AC primary gradient, venetianRed #D0021B danger, nightRider #333333 text, linkWater #D4D8DD border, 4px radius, button sizes 28/32/42, Noto Sans JP font stack, 10–24px type scale); https://design.moneyforward.com (live — "User Focus" stance, corporate-orange #ED7100 brand layer).
 **Tier 2 sources:** getdesign.md / refero — not separately fetched (official open-source DS supersedes).
 **Conflicts unresolved:** Brief-supplied #316AD6 not found as a literal token; using verified Cloud-product primary royalBlue #3B7DE9. Corporate brand layer (design.moneyforward.com) uses orange #ED7100 — documented in source note, product-blue treated as canonical for UI generation.

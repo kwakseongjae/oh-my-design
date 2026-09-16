@@ -289,7 +289,7 @@ Yogiyo publishes no public component spec; geometry below follows the live red-l
 ---
 
 **Verified:** 2026-05-27
-**Tier 1 sources:** yogiyo.co.kr (live WebFetch 2026-05-27 — confirmed red-led brand, category-organized browse `치킨/피자/한식/일식/1인분`, trust features `안심센터` `클린리뷰`, 24시간 연중무휴 messaging, Korean-first CTAs). Yogiyo red `#FA0050` is the brief-provided / widely-recognized brand color (dark-pink/red).
+**Tier 1 sources:** https://yogiyo.co.kr (live WebFetch 2026-05-27 — confirmed red-led brand, category-organized browse `치킨/피자/한식/일식/1인분`, trust features `안심센터` `클린리뷰`, 24시간 연중무휴 messaging, Korean-first CTAs). Yogiyo red `#FA0050` is the brief-provided / widely-recognized brand color (dark-pink/red).
 **Tier 2 sources:** getdesign.md/yogiyo — not checked. styles.refero.design — not checked. Brand-strategy context (SAM Seoul branding case; 2024 "AI app that knows you best" UI renewal) from brand search.
 **Conflicts unresolved:** No live computed-style token inspection (no public token doc surfaced); all §4 component values flagged conventional with the red `#FA0050` as the one verified anchor. A future UPDATE pass with browser inspection should re-confirm component geometry.
 

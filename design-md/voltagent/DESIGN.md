@@ -448,7 +448,7 @@ Standard cubic-bezier; no bounce. **Slow subtle motion is the register.** `prefe
 ---
 
 **Verified:** 2026-05-08 (omd:migrate run 61 — Apple-tier)
-**Tier 1 sources:** voltagent.dev home + /docs (live DOM via playwright — Hero Primary `transparent` ghost + `#eeeeee` Off-White text 6px / 54px / 12×16 / 18px·**700**; Header Compact ghost 6px / 34px / 14px·500; **Brand accent `#2fd6a1` Voltage Green** (active states); Search variant `#00d992` Voltage Green Lighter; **Active Tab `#101010` Charcoal + Voltage Green text 0px** (terminal/IDE aesthetic); GitHub Star badge 9999px).
+**Tier 1 sources:** https://voltagent.dev home + /docs (live DOM via playwright — Hero Primary `transparent` ghost + `#eeeeee` Off-White text 6px / 54px / 12×16 / 18px·**700**; Header Compact ghost 6px / 34px / 14px·500; **Brand accent `#2fd6a1` Voltage Green** (active states); Search variant `#00d992` Voltage Green Lighter; **Active Tab `#101010` Charcoal + Voltage Green text 0px** (terminal/IDE aesthetic); GitHub Star badge 9999px).
 **Tier 2 sources:** styles.refero.design / getdesign.md — directory-only (note: VoltAgent maintains the getdesign.md ecosystem).
 **Tier 2 (Philosophy):** voltagent.dev homepage, GitHub VoltAgent/voltagent (README/CONSOLE.md, MIT-license), Product Hunt, Medium (Gowtham), Qdrant integration, Hugging Face.
 **Style ref:** `stripe`. **Conflicts unresolved:** none. **Earlier addition:** Voltage Green `#2fd6a1` brand accent + sharp-tab `#101010` Charcoal active state + search-variant lighter green `#00d992` + Star badge full-pill missed by prior pass.

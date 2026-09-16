@@ -425,7 +425,7 @@ Standard cubic-bezier; calm easing. `prefers-reduced-motion: reduce` removes hov
 ---
 
 **Verified:** 2026-05-08 (omd:migrate run 62 — Apple-tier)
-**Tier 1 sources:** warp.dev home + /pricing (live DOM via playwright — Primary **`oklch(0.97 0.01 84.6)` Warp Cream + `oklch(0.14 0.004 84.6)` Warp Espresso** text 3px / 36px / 4×16 / 14px·500; Outline 4px sub-tier; **Billing toggle 9999px** + **`oklab()` translucent** discipline. **`oklch()` for solid + `oklab()` for translucent — most advanced color-space convention in corpus**, surpassing Sanity's `display-p3()`).
+**Tier 1 sources:** https://warp.dev home + /pricing (live DOM via playwright — Primary **`oklch(0.97 0.01 84.6)` Warp Cream + `oklch(0.14 0.004 84.6)` Warp Espresso** text 3px / 36px / 4×16 / 14px·500; Outline 4px sub-tier; **Billing toggle 9999px** + **`oklab()` translucent** discipline. **`oklch()` for solid + `oklab()` for translucent — most advanced color-space convention in corpus**, surpassing Sanity's `display-p3()`).
 **Tier 2 sources:** styles.refero.design / getdesign.md — no record.
 **Tier 2 (Philosophy/founders/funding):** Wikipedia (Warp terminal), Sequoia Capital, LinkedIn (Lloyd ex-Google/TIME), HN (Show HN: Warp 2022), FinSMEs (2023-06 $50M Series B), Sacra, StreetInsider (OSS ADE), byteiota (37K stars).
 **Style ref:** `claude` (warm magazine register). **Conflicts unresolved:** none. **Earlier addition:** `oklch()`/`oklab()` color-space convention + 3px sharp Primary canonical (prior footer values appear to be from a different surface state).

@@ -461,7 +461,7 @@ Standard cubic-bezier; minimal bounce. **Hover via opacity 0.6** is signature. `
 ---
 
 **Verified:** 2026-05-08 (omd:migrate run 47 — Apple-tier)
-**Tier 1 sources:** raycast.com home + /pro (live DOM via playwright — Primary **`#e6e6e6` Light Gray** + Charcoal `#2f3031` text 8px / 36px / 14px·**500**; banner-pill `#130d0e` Deep Black 1000px / 30px (top promo); newsletter inline 4px variant; dark-canvas Outline `rgba(255,255,255,0.05)` 12px on /pro).
+**Tier 1 sources:** https://raycast.com home + /pro (live DOM via playwright — Primary **`#e6e6e6` Light Gray** + Charcoal `#2f3031` text 8px / 36px / 14px·**500**; banner-pill `#130d0e` Deep Black 1000px / 30px (top promo); newsletter inline 4px variant; dark-canvas Outline `rgba(255,255,255,0.05)` 12px on /pro).
 **Tier 2 sources:** styles.refero.design / getdesign.md — no record.
 **Tier 2 (Philosophy/founders/funding):** TechCrunch (2021-11 $15M Accel+Coatue + 2024-09 $30M Series B), EU-Startups (€27M Series B), TechFundingNews, Ness Labs (Mann interview), Tracxn ($47.8M total / 20 investors).
 **Style ref:** `claude`. **Conflicts unresolved:** none. **Earlier mistake reverted:** prior footer captured nav-link mid-gray (`#9c9c9d`) — canonical Primary is **`#e6e6e6` Light Gray** 8px (the brand-defining download CTA, missed entirely).

@@ -308,7 +308,7 @@ Easings: `ease-enter cubic-bezier(0.2,0.6,0.25,1)`, `ease-exit cubic-bezier(0.4,
 ---
 
 **Verified:** 2026-05-08 (B1 loop)
-**Tier 1 sources:** airtable.com (live DOM via playwright — round 50% icon buttons; ghost 12px; Sign up CTA)
+**Tier 1 sources:** https://airtable.com (live DOM via playwright — round 50% icon buttons; ghost 12px; Sign up CTA)
 **Tier 2 sources:** styles.refero.design / getdesign.md — no record.
 **Tier 1 (Philosophy):** airtable.com homepage; Howie Liu (CEO) public talks.
 **Style ref:** `notion`. **Conflicts unresolved:** none.

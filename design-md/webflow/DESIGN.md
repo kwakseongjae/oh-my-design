@@ -324,7 +324,7 @@ Standard cubic-bezier. `prefers-reduced-motion: reduce` removes hover transition
 ---
 
 **Verified:** 2026-05-08 (omd:migrate run 63 — Apple-tier)
-**Tier 1 sources:** webflow.com home + /pricing (live DOM via playwright — Primary **`#146ef5` Webflow Blue** + `#fff` text 4px / 51px / 16×24 / 16px·500 + A11y skip-nav 8px / 36px + Top banner 0px Blue strip + **Made-in-Webflow credit pill 1440px** + body **`#080808` Webflow Ink** ultra-dark warm-cast near-black).
+**Tier 1 sources:** https://webflow.com home + /pricing (live DOM via playwright — Primary **`#146ef5` Webflow Blue** + `#fff` text 4px / 51px / 16×24 / 16px·500 + A11y skip-nav 8px / 36px + Top banner 0px Blue strip + **Made-in-Webflow credit pill 1440px** + body **`#080808` Webflow Ink** ultra-dark warm-cast near-black).
 **Tier 2 sources:** styles.refero.design / getdesign.md — no record.
 **Tier 2 (Philosophy/founders/YC):** Wikipedia (Webflow), Acquired Podcast (Vlad Magdalin), Webflow blog (How Webflow got into YC after Nov 2012 rejection), Strixus, Contrary Research, Tracxn, Frederick AI.
 **Style ref:** `notion`. **Conflicts unresolved:** none. **Earlier addition:** Webflow Blue `#146ef5` + Webflow Ink `#080808` body + 1440px credit-pill + 8px A11y sub-tier missed by prior 3px-nav-only pass.
