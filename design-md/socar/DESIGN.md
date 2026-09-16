@@ -84,6 +84,7 @@ verification_v2:
     "tokens.components.search-action.radius": *home_evidence
     "tokens.components.search-action.padding": *home_evidence
     "tokens.components.search-action.font": *home_evidence
+    "tokens.components.search-action.disabled": *home_evidence
     "tokens.components.search-action.states": *home_evidence
     "tokens.components.search-action.use": *home_evidence
     "tokens.components.region-list.type": *home_evidence
@@ -98,6 +99,7 @@ verification_v2:
     "tokens.components.floating-control.radius": *home_evidence
     "tokens.components.floating-control.padding": *home_evidence
     "tokens.components.floating-control.font": *home_evidence
+    "tokens.components.floating-control.pressed": { surface_id: home, source_id: home-live, method: live-css-inspect, captured: "2026-09-16" }
     "tokens.components.floating-control.states": *home_evidence
     "tokens.components.floating-control.use": *home_evidence
 tokens:
@@ -127,9 +129,9 @@ tokens:
   components_harvested: true
   components:
     primary-action: { type: button, bg: "#0078ff", fg: "#ffffff", radius: "14px", padding: "16px 22px", font: "16px / 600", states: "default captured; no safe active expansion", use: "Prominent guide/product action" }
-    search-action: { type: button, bg: "#f2f3f8", fg: "#b4bbcb", radius: "12px", padding: "12px 18px", font: "14px / 600", states: "disabled appearance captured", use: "Home search action before required values are complete" }
+    search-action: { type: button, bg: "#f2f3f8", fg: "#b4bbcb", radius: "12px", padding: "12px 18px", font: "14px / 600", disabled: "#f2f3f8", states: "disabled appearance captured", use: "Home search action before required values are complete" }
     region-list: { type: listItem, bg: "#f9f9fb", fg: "#354153", radius: "12px", padding: "24px 16px", use: "Home region or destination collection item" }
-    floating-control: { type: button, bg: "#ffffff", fg: "#354153", radius: "48px", padding: "11px", font: "14px / 600", states: "default and pressed snapshots observed", use: "Floating circular navigation/control button" }
+    floating-control: { type: button, bg: "#ffffff", fg: "#354153", radius: "48px", padding: "11px", font: "14px / 600", pressed: "rgba(20, 26, 36, 0.06)", states: "default and pressed snapshots observed", use: "Floating circular navigation/control button" }
 ---
 
 # Design System Inspiration of SOCAR

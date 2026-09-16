@@ -21,9 +21,8 @@ tokens:
   extracted: "2026-06-09"
   colors:
     primary: "#3959cc"
-    primary-hover: "#304cad"
+    primary-hover: "#283f91"
     accent: "#27cc91"
-    accent-hover: "#21ad7b"
     canvas: "#ffffff"
     text-main: "#32353a"
     text-sub: "#686a6d"
@@ -58,15 +57,15 @@ tokens:
     card: "0px 1px 4px rgba(22,25,31,0.08)"
     interactive: "0px 2px 8px rgba(22,25,31,0.10)"
   components:
-    button-primary: { type: button, bg: "#3959cc", fg: "#ffffff", radius: 8, padding: "12px 24px", font: "16px/700", use: "Single most important action; hover #304cad" }
-    button-accent: { type: button, bg: "#27cc91", fg: "#ffffff", radius: 8, padding: "12px 24px", use: "Health-forward emphasis; hover #21ad7b" }
-    button-secondary: { type: button, bg: "#ffffff", fg: "#3959cc", radius: 8, padding: "12px 24px", use: "Subordinate action; 1px #3959cc border; hover #f0f2fc" }
-    button-alert: { type: button, bg: "#e32e55", fg: "#ffffff", radius: 8, padding: "12px 24px", use: "Irreversible/risky actions" }
-    button-text: { type: button, bg: "transparent", fg: "#3959cc", radius: 8, padding: "8px 12px", font: "14px/700", use: "Low-emphasis inline action" }
-    textfield: { type: input, bg: "#ffffff", fg: "#32353a", radius: 8, padding: "12px 16px", font: "16px", use: "Standard input; 1px #c5c6c7 border, focus #3959cc" }
-    textfield-error: { type: input, bg: "#ffffff", fg: "#32353a", radius: 8, padding: "12px 16px", use: "Validation failure; 1px #e32e55 border, help #a1213c" }
+    button-primary: { type: button, bg: "#3959cc", fg: "#ffffff", radius: 8, padding: "12px 24px", font: "16px/700", hover: "#283f91", disabled: "#f6f6f6", focus: "#e1568a", use: "Single most important action" }
+    button-accent: { type: button, bg: "#27cc91", fg: "#ffffff", radius: 8, padding: "12px 24px", use: "Health-forward emphasis. Documented in the design docs; no accent variant was found in the shipped component CSS read 2026-09-16, so its states are unresolved." }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#3959cc", radius: 8, padding: "12px 24px", hover: "#f6f6f6", disabled: "#f6f6f6", focus: "#5d77d5", use: "Subordinate action; 1px #3959cc border" }
+    button-alert: { type: button, bg: "#e32e55", fg: "#ffffff", radius: 8, padding: "12px 24px", hover: "#a1213c", disabled: "#f6f6f6", focus: "#5d77d5", use: "Irreversible/risky actions" }
+    button-text: { type: button, bg: "transparent", fg: "#3959cc", radius: 8, padding: "8px 12px", font: "14px/700", hover: "#f0f2fc", focus: "#5d77d5", use: "Low-emphasis inline action" }
+    textfield: { type: input, bg: "#ffffff", fg: "#32353a", radius: 8, padding: "12px 16px", font: "16px", focus: "#5d77d5", disabled: "#f6f6f6", use: "Standard input; 1px #c5c6c7 border, focus #3959cc" }
+    textfield-error: { type: input, bg: "#ffffff", fg: "#32353a", radius: 8, padding: "12px 16px", error: "#e85474", use: "Validation failure; 1px #e32e55 border, help #a1213c" }
     card: { type: card, bg: "#ffffff", radius: 12, padding: "24px", use: "Symptom result / content panel; 1px #dcdddd border" }
-    card-interactive: { type: card, bg: "#ffffff", radius: 12, padding: "16px", use: "Tappable card; 1px #dcdddd border, hover #8296df" }
+    card-interactive: { type: card, bg: "#ffffff", radius: 12, padding: "16px", hover: "#f0f2fc", disabled: "#f6f6f6", use: "Tappable card; 1px #dcdddd border, hover #8296df" }
     card-tinted: { type: card, bg: "#f0f2fc", radius: 8, padding: "16px", use: "Inline informational callout" }
   components_harvested: true
 ---
@@ -181,7 +180,7 @@ Ubie `<Button>` is a **variant × size** component. Variants: `primary`, `accent
 - Radius: 8px (md)
 - Padding: 12px 24px (large)
 - Font: 16px / DB (Bold) / UD Shin Go
-- Hover: darken to `#304cad` (blue700)
+- Hover: `#283f91` — measured in the shipped component CSS, not a palette step
 - Use: The single most important action on a screen — one per view ("症状を確認する", "次へ")
 
 **Accent**
@@ -191,7 +190,7 @@ Ubie `<Button>` is a **variant × size** component. Variants: `primary`, `accent
 - Radius: 8px
 - Padding: 12px 24px
 - Font: 16px / DB / UD Shin Go
-- Hover: darken to `#21ad7b` (green700)
+- Hover: the shipped component CSS read 2026-09-16 contains no accent variant, so this reference claims no accent hover value. The earlier `#21ad7b` was produced by a palette-step rule, not an observation.
 - Use: Positive, health-forward emphasis between primary and secondary — "start", "begin a check"
 
 **Secondary**
@@ -201,7 +200,7 @@ Ubie `<Button>` is a **variant × size** component. Variants: `primary`, `accent
 - Radius: 8px
 - Padding: 12px 24px
 - Font: 16px / DB / UD Shin Go
-- Hover: bg `#f0f2fc` (blue100)
+- Hover: bg `#f6f6f6` — measured; the earlier `#f0f2fc` was a palette-step guess
 - Use: Subordinate action paired with a primary button
 
 **Alert**
@@ -211,7 +210,7 @@ Ubie `<Button>` is a **variant × size** component. Variants: `primary`, `accent
 - Radius: 8px
 - Padding: 12px 24px
 - Font: 16px / DB / UD Shin Go
-- Hover: darken to `#c12748` (red700)
+- Hover: `#a1213c` — measured in the shipped component CSS, not a palette step
 - Use: Irreversible / risky actions (delete, cancel account)
 
 **Text**
@@ -450,7 +449,7 @@ Radius is chosen by component short-side length, not by taste:
 
 ### Quick Color Reference
 - Primary CTA / link: Ubie Blue (`#3959cc`)
-- CTA Hover: Blue 700 (`#304cad`)
+- CTA Hover: `#283f91` (measured in the shipped component CSS)
 - Health / Success / Accent CTA: Ubie Green (`#27cc91`)
 - Background: White (`#ffffff`)
 - Background Subtle: Black 100 (`#fafafa`)
@@ -464,8 +463,8 @@ Radius is chosen by component short-side length, not by taste:
 
 ### Example Component Prompts
 - "Create a symptom-result card: white bg, 1px solid #dcdddd border, 12px radius, 24px padding, shadow 0px 1px 4px rgba(22,25,31,0.08). Title 20px UD Shin Go Bold #32353a, 150% line-height. Body 14px Regular #686a6d, 170% line-height. Positive result uses a green tag: #e9faf4 bg, #1c9167 text, 4px radius."
-- "Build a primary button: #3959cc bg, white text, 16px UD Shin Go Bold, 48px height, 12px 24px padding, 8px radius. Hover #304cad. Use loading spinner instead of disabled."
-- "Build an accent button for 'start a symptom check': #27cc91 bg, white text, 16px Bold, 8px radius, 12px 24px padding. Hover #21ad7b."
+- "Build a primary button: #3959cc bg, white text, 16px UD Shin Go Bold, 48px height, 12px 24px padding, 8px radius. Hover #283f91. Use loading spinner instead of disabled."
+- "Build an accent button for 'start a symptom check': #27cc91 bg, white text, 16px Bold, 8px radius, 12px 24px padding. Do not invent a hover colour — the accent variant's states are unresolved."
 - "Design a single-question screen: white bg, centered ~720px column, one heading (24px Bold #32353a) and a vertical stack of tappable answer cards (white, 1px #dcdddd border, 12px radius, 16px padding, hover border #8296df). 16px gap between cards."
 - "Create an info notice: #f0f2fc bg, 4px left border #3959cc, 8px radius, 16px padding, 14px text #32353a with a #3959cc info icon."
 

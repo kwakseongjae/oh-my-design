@@ -83,6 +83,7 @@ verification_v2:
     "tokens.rounded.download-card": *baemin_live
     "tokens.rounded.media-control": *woowa_live
     "tokens.rounded.circle": *woowa_live
+    "tokens.components.app-download-card.pressed": *baemin_live
     "tokens.components.app-download-card.type": *baemin_live
     "tokens.components.app-download-card.bg": *baemin_live
     "tokens.components.app-download-card.fg": *baemin_live
@@ -90,6 +91,7 @@ verification_v2:
     "tokens.components.app-download-card.height": *baemin_live
     "tokens.components.app-download-card.padding": *baemin_live
     "tokens.components.app-download-card.font": *baemin_live
+    "tokens.components.app-download-card.hover": { surface_id: baemin-home, source_id: baemin-live, method: live-css-inspect, captured: "2026-09-16" }
     "tokens.components.app-download-card.states": *baemin_live
     "tokens.components.app-download-card.use": *baemin_live
     "tokens.components.baemin-nav-link.type": *baemin_live
@@ -173,7 +175,7 @@ tokens:
   rounded: { corporate-control: 8, download-card: 12, media-control: 16, circle: 9999 }
   components_harvested: true
   components:
-    app-download-card: { type: button, bg: "#ffffff", fg: "#222222", radius: "12px", height: "54px", padding: "14px 19px", font: "13.3333px / 400", states: "default and hover captured across store/QR variants", use: "baemin.com app-store and QR download action" }
+    app-download-card: { type: button, bg: "#ffffff", fg: "#222222", radius: "12px", height: "54px", padding: "14px 19px", font: "13.3333px / 400", hover: "#f7f7f7", states: "default and hover captured across store/QR variants", use: "baemin.com app-store and QR download action" , pressed: "#f7f7f7"}
     baemin-nav-link: { type: button, bg: "transparent", fg: "#ffffff", height: "22px", font: "16px / 700", states: "default captured; hover not retained", use: "baemin.com top navigation action" }
     woowa-more-light: { type: button, bg: "#f3f4f5", fg: "#232324", radius: "8px", height: "52px", padding: "0 22px", font: "16px / 700", states: "default captured; hover not retained", use: "Woowa corporate light read-more action" }
     woowa-more-overlay: { type: button, bg: "rgba(0, 0, 0, 0.3)", fg: "#ffffff", border: "1px solid #ffffff", radius: "8px", height: "52px", padding: "0 22px", font: "16px / 700", states: "default on image overlay; hover not retained", use: "Woowa corporate overlay read-more action" }

@@ -62,6 +62,8 @@ verification_v2:
     "tokens.rounded.card": *product
     "tokens.rounded.billboard-control": *product
     "tokens.rounded.circular": *product
+    "tokens.components.global-search.pressed": *product
+    "tokens.components.global-search.focus": *product
     "tokens.components.global-search.type": *product
     "tokens.components.global-search.bg": *product
     "tokens.components.global-search.fg": *product
@@ -113,7 +115,7 @@ tokens:
   spacing: { xs: 4, sm: 8, md: 12, lg: 20 }
   rounded: { square: 0, card: 4, billboard-control: 50, circular: 9999 }
   components:
-    global-search: { type: input, bg: "transparent", fg: "#666666", radius: "0px", height: "44px", font: "18px / 400 Noto Sans KR", states: "focus and pressed samples change foreground to #111111; no flow transition inferred", use: "Product home and /main; selector home::[data-omd-capture=1]" }
+    global-search: { type: input, bg: "transparent", fg: "#666666", radius: "0px", height: "44px", font: "18px / 400 Noto Sans KR", states: "focus and pressed samples change foreground to #111111; no flow transition inferred", use: "Product home and /main; selector home::[data-omd-capture=1]" , pressed: "#111111", focus: "#111111"}
     billboard-control: { type: button, bg: "#ffffff", fg: "#999999", border: "1px solid #eeeeee", radius: "50px", height: "50px", font: "17px / 400 Noto Sans KR", states: "default only; no interaction transition captured", use: "Product home and /main billboard control; selector home::[data-omd-capture=109]" }
     deal-card: { type: card, bg: "#ffffff", fg: "#666666", radius: "4px", shadow: "rgba(0,0,0,0.06) 0px 2px 10px -2px, rgba(0,0,0,0.28) 0px 0px 1px", states: "default only; no hover contract captured", use: "Home deal card; selector home::div.c-card-item.c-card-item--deal.c-card-item--box" }
     header-inventory-dialog: { type: dialog, bg: "#ffffff", fg: "#666666", radius: "0px", states: "dialog-open observed after the menu trigger on home and /main", use: "Header inventory dialog; selector home::[data-omd-interaction-capture=dialog-0-0]" }

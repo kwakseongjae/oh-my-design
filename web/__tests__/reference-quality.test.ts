@@ -170,3 +170,53 @@ describe("generated reference quality manifest", () => {
     }
   });
 });
+
+describe("derived-value advisories", () => {
+  const evaluate = (prose: string, tokens: unknown) =>
+    evaluateReferenceQuality({
+      id: "fixture",
+      markdown: `---\nid: fixture\n---\n\n${prose}`,
+      frontmatter: { tokens } as never,
+      verificationMarkdown: "",
+      asOf: "2026-09-16",
+    });
+  const tokenCodes = (prose: string, tokens: unknown) =>
+    evaluate(prose, tokens).advisoryCodes.filter((code) => code.startsWith("token_value"));
+
+  // The case this check was built for: the prose is honest about the value being
+  // an estimate, but the token block carried it with no such qualifier.
+  const bunjangProse =
+    "- **Bunjang Red** (`#d80c18`) — the single brand accent. Pressed-state would darken toward `#c00b15` (interpolated; not directly observed in computed styles).";
+
+  it("flags a self-declared estimate that reached the token block", () => {
+    expect(tokenCodes(bunjangProse, { colors: { primary: "#d80c18", "primary-hover": "#c00b15" } }))
+      .toEqual(["token_value_self_declared_derived"]);
+  });
+
+  it("clears once the estimate is removed from the token block", () => {
+    expect(tokenCodes(bunjangProse, { colors: { primary: "#d80c18" } })).toEqual([]);
+  });
+
+  it("does not flag the observed base colour named in the same sentence", () => {
+    const codes = evaluate(bunjangProse, { colors: { primary: "#d80c18" } }).advisoryCodes;
+    expect(codes).not.toContain("token_value_self_declared_derived");
+  });
+
+  it("flags a palette-step derivation that reached a component token", () => {
+    expect(tokenCodes("- Hover: darken to `#304cad` (blue700)", {
+      components: { btn: { type: "button", hover: "#304cad" } },
+    })).toEqual(["token_value_possibly_derived"]);
+  });
+
+  it("does not let a qualifier reach an observed value in the next sentence", () => {
+    // `hana`: shadows were unobserved; the teal border was measured.
+    expect(tokenCodes(
+      "Shadows were not observed in the computed-style scan. Depth comes from the `2px solid #2dc396` teal border accent.",
+      { colors: { accent: "#2dc396" } },
+    )).toEqual([]);
+  });
+
+  it("ignores a derivation described in prose that never entered the tokens", () => {
+    expect(tokenCodes("- Hover: darken to `#304cad` (blue700)", { colors: { primary: "#3959cc" } })).toEqual([]);
+  });
+});

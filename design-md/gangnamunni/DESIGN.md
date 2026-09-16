@@ -56,6 +56,9 @@ verification_v2:
     "tokens.components.outline-cta.radius": *cta
     "tokens.components.outline-cta.padding": *cta
     "tokens.components.outline-cta.font": *cta
+    "tokens.components.outline-cta.pressed": &cell_css { surface_id: home, source_id: live-home, method: live-css-inspect, captured: "2026-09-16" }
+    "tokens.components.outline-cta.disabled": *cell_css
+    "tokens.components.outline-cta.focus": *cell_css
     "tokens.components.outline-cta.states": *cta
     "tokens.components.outline-cta.use": *cta
     "tokens.components.filter-chip.type": *chip
@@ -65,6 +68,10 @@ verification_v2:
     "tokens.components.filter-chip.height": *chip
     "tokens.components.filter-chip.padding": *chip
     "tokens.components.filter-chip.font": *chip
+    "tokens.components.filter-chip.active": *chip
+    "tokens.components.filter-chip.pressed": *cell_css
+    "tokens.components.filter-chip.disabled": *cell_css
+    "tokens.components.filter-chip.focus": *cell_css
     "tokens.components.filter-chip.states": *chip
     "tokens.components.filter-chip.use": *chip
   conflicts: []
@@ -82,8 +89,8 @@ tokens:
   rounded: { cta: 6, card: 20, full: 9999 }
   components_harvested: true
   components:
-    outline-cta: { type: button, fg: "#131517", border: "1px solid #b5bfc9", radius: "6px", padding: "8px 12px", font: "13px / 600", states: "pressed state captured; no changed pressed value retained", use: "Current small outline CTA on home and events" }
-    filter-chip: { type: button, bg: "#eff2f5", fg: "#131517", radius: "9999px", height: "32px", padding: "0px 10px", font: "14px / 500", states: "selected-false and selected-true DOM variants captured; no interaction expansion", use: "Current procedure filter chip on home" }
+    outline-cta: { type: button, fg: "#131517", border: "1px solid #b5bfc9", radius: "6px", padding: "8px 12px", font: "13px / 600", pressed: "rgba(33, 39, 45, 0.04)", disabled: "#d8dfe6", focus: "#000000", states: "pressed state captured; no changed pressed value retained", use: "Current small outline CTA on home and events" }
+    filter-chip: { type: button, bg: "#eff2f5", fg: "#131517", radius: "9999px", height: "32px", padding: "0px 10px", font: "14px / 500", active: "#131517", pressed: "rgba(33, 39, 45, 0.04)", disabled: "#f7f9fa", focus: "#000000", states: "selected-false and selected-true DOM variants captured; no interaction expansion", use: "Current procedure filter chip on home" }
 ---
 
 # Design System Inspiration of Gangnamunni (강남언니)

@@ -66,6 +66,10 @@ verification_v2:
     "tokens.components.product-search-submit.fg": *product
     "tokens.components.product-search-submit.radius": *product
     "tokens.components.product-search-submit.font": *product
+    "tokens.components.product-search-submit.hover": *product
+    "tokens.components.product-search-submit.pressed": &inflearn_css { surface_id: product-home, source_id: home-capture, method: live-css-inspect, captured: "2026-09-16" }
+    "tokens.components.product-search-submit.focus": *inflearn_css
+    "tokens.components.product-search-submit.disabled": *inflearn_css
     "tokens.components.product-search-submit.states": *product
     "tokens.components.product-search-submit.use": *product
     "tokens.components.product-nav-action.type": *product
@@ -74,6 +78,9 @@ verification_v2:
     "tokens.components.product-nav-action.radius": *product
     "tokens.components.product-nav-action.padding": *product
     "tokens.components.product-nav-action.font": *product
+    "tokens.components.product-nav-action.hover": *product
+    "tokens.components.product-nav-action.pressed": *inflearn_css
+    "tokens.components.product-nav-action.disabled": *inflearn_css
     "tokens.components.product-nav-action.states": *product
     "tokens.components.product-nav-action.use": *product
     "tokens.components.product-course-card.type": *product
@@ -121,8 +128,8 @@ tokens:
   shadow:
     flat: "none"
   components:
-    product-search-submit: { type: button, bg: "#00c471", fg: "#ffffff", radius: "999px", font: "16px / 400 Pretendard", states: "hover observed: #00a760", use: "Product GNB search submit; home::[data-omd-capture=8]" }
-    product-nav-action: { type: button, bg: "#f8f9fa", fg: "#495057", radius: "32px", padding: "0px 22px", font: "16px / 600 Pretendard", states: "hover observed: rgba(241,243,245,0.65)", use: "Product GNB navigation action; home::[data-omd-capture=12]" }
+    product-search-submit: { type: button, bg: "#00c471", fg: "#ffffff", radius: "999px", font: "16px / 400 Pretendard", hover: "#00a760", pressed: "#00a760", focus: "#212529", disabled: "#f1f3f5", states: "hover observed: #00a760", use: "Product GNB search submit; home::[data-omd-capture=8]" }
+    product-nav-action: { type: button, bg: "#f8f9fa", fg: "#495057", radius: "32px", padding: "0px 22px", font: "16px / 600 Pretendard", hover: "rgba(241, 243, 245, 0.65)", pressed: "rgba(241, 243, 245, 0.65)", disabled: "#f1f3f5", states: "hover observed: rgba(241,243,245,0.65)", use: "Product GNB navigation action; home::[data-omd-capture=12]" }
     product-course-card: { type: card, radius: "8px", font: "16px / 400 Pretendard", states: "default only; no card interaction state captured", use: "Product course article shell; home::article" }
     product-content-tab: { type: tab, bg: "#25262b", fg: "#ffffff", radius: "9999px", padding: "10px 16px", font: "14px / 700 system sans-serif", states: "selected observed", use: "Product-home selected content tab; home::[data-omd-capture=19]" }
     product-dialog-overlay: { type: dialog, bg: "rgba(0,0,0,0.6)", font: "16px / 400 Pretendard", states: "dialog-open observed", use: "Product dialog backdrop; home::[data-omd-interaction-capture=dialog-2-8]" }

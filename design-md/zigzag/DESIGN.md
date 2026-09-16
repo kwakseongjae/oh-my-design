@@ -72,6 +72,7 @@ verification_v2:
     "tokens.components.detail-tab.radius": *product_a
     "tokens.components.detail-tab.padding": *product_a
     "tokens.components.detail-tab.font": *product_a
+    "tokens.components.detail-tab.active": *product_a
     "tokens.components.detail-tab.states": *product_a
     "tokens.components.detail-tab.use": *product_a
     "tokens.components.quick-menu-arrow.type": *home
@@ -79,6 +80,7 @@ verification_v2:
     "tokens.components.quick-menu-arrow.fg": *home
     "tokens.components.quick-menu-arrow.border": *home
     "tokens.components.quick-menu-arrow.radius": *home
+    "tokens.components.quick-menu-arrow.disabled": *home
     "tokens.components.quick-menu-arrow.states": *home
     "tokens.components.quick-menu-arrow.use": *home
 tokens:
@@ -103,8 +105,8 @@ tokens:
   components:
     product-thumbnail: { type: card, bg: "#ecedee", radius: "0px", use: "Public product-card thumbnail placeholder on both captured product-detail pages" }
     product-card: { type: card, radius: "0px", padding: "0px 0px 8px", use: "Public product-card root on both captured product-detail pages" }
-    detail-tab: { type: tab, fg: "#121212", radius: "0px", padding: "0px 4px 17.5px", font: "14px / 600", states: "selected captured; default tab uses #878f91 at 14px / 500", use: "Product-detail tab list on both captured product-detail pages" }
-    quick-menu-arrow: { type: button, bg: "transparent", fg: "#000000", border: "1px solid #ecedee", radius: "50%", states: "default captured; previous arrow disabled with rgba(16,16,16,0.3)", use: "Home quick-menu carousel arrow" }
+    detail-tab: { type: tab, fg: "#121212", radius: "0px", padding: "0px 4px 17.5px", font: "14px / 600", active: "#121212", states: "selected captured; default tab uses #878f91 at 14px / 500", use: "Product-detail tab list on both captured product-detail pages" }
+    quick-menu-arrow: { type: button, bg: "transparent", fg: "#000000", border: "1px solid #ecedee", radius: "50%", disabled: "rgba(16,16,16,0.3)", states: "default captured; previous arrow disabled with rgba(16,16,16,0.3)", use: "Home quick-menu carousel arrow" }
 ---
 
 # Design System Inspiration of ZIGZAG (지그재그)

@@ -38,8 +38,8 @@ tokens:
   spacing: { xs: 4, sm: 8, md: 12, lg: 24, xl: 32 }
   rounded: { input: 3, control: 99999 }
   components:
-    button-brand: { type: button, fg: "#0b0b0b", radius: 99999, padding: "4px 12px", font: "13px/400 IBM Plex Mono-eea356736565d76d", hover: "near-black fill with P3-orange text", use: "P3 orange pill; home + pricing surfaces" }
-    button-inverse: { type: button, bg: "#0b0b0b", fg: "#ffffff", radius: 99999, padding: "4px 12px", font: "13px/400 IBM Plex Mono-eea356736565d76d", hover: "near-black fill with white text", use: "Compact inverse pill" }
+    button-brand: { type: button, fg: "#0b0b0b", radius: 99999, padding: "4px 12px", font: "13px/400 IBM Plex Mono-eea356736565d76d", hover: "near-black fill with P3-orange text", use: "P3 orange pill; home + pricing surfaces" , pressed: "#b9b9b9"}
+    button-inverse: { type: button, bg: "#0b0b0b", fg: "#ffffff", radius: 99999, padding: "4px 12px", font: "13px/400 IBM Plex Mono-eea356736565d76d", hover: "near-black fill with white text", use: "Compact inverse pill" , pressed: "#ededed"}
     button-light: { type: button, bg: "#ededed", fg: "#0b0b0b", radius: 99999, padding: "4px 12px", font: "13px/400 IBM Plex Mono-eea356736565d76d", hover: "light-gray fill with near-black text", pressed: "light-gray fill with near-black text", use: "Compact light pill" }
     input-text: { type: input, bg: "#0b0b0b", fg: "#b9b9b9", radius: 3, padding: "8px 12px", font: "15px/400 Waldenburg-75357948a2b6a39b", focus: "P3-orange border, #212121 fill, white text", use: "Home textarea" }
   components_harvested: true
@@ -92,6 +92,7 @@ verification_v2:
     "tokens.spacing.md": { surface_id: home, source_id: home, captured: "2026-07-13" }
     "tokens.spacing.lg": { surface_id: home, source_id: home, captured: "2026-07-13" }
     "tokens.spacing.xl": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-brand.pressed": { surface_id: home, source_id: home, captured: "2026-07-13" }
     "tokens.components.button-brand.type": { surface_id: home, source_id: home, captured: "2026-07-13" }
     "tokens.components.button-brand.fg": { surface_id: home, source_id: home, captured: "2026-07-13" }
     "tokens.components.button-brand.radius": { surface_id: home, source_id: home, captured: "2026-07-13" }
@@ -99,6 +100,7 @@ verification_v2:
     "tokens.components.button-brand.font": { surface_id: home, source_id: home, captured: "2026-07-13" }
     "tokens.components.button-brand.hover": { surface_id: home, source_id: home, captured: "2026-07-13" }
     "tokens.components.button-brand.use": { surface_id: home, source_id: home, captured: "2026-07-13" }
+    "tokens.components.button-inverse.pressed": { surface_id: home, source_id: home, captured: "2026-07-13" }
     "tokens.components.button-inverse.type": { surface_id: home, source_id: home, captured: "2026-07-13" }
     "tokens.components.button-inverse.bg": { surface_id: home, source_id: home, captured: "2026-07-13" }
     "tokens.components.button-inverse.fg": { surface_id: home, source_id: home, captured: "2026-07-13" }

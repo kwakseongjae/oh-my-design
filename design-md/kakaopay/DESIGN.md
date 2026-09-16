@@ -67,14 +67,18 @@ verification_v2:
     "tokens.rounded.action": *corporate
     "tokens.rounded.pill": *corporate
     "tokens.shadow.none": *corporate
+    "tokens.components.corporate-menu.pressed": *corporate
     "tokens.components.corporate-menu.type": *corporate
     "tokens.components.corporate-menu.bg": *corporate
     "tokens.components.corporate-menu.fg": *corporate
     "tokens.components.corporate-menu.radius": *corporate
     "tokens.components.corporate-menu.padding": *corporate
     "tokens.components.corporate-menu.font": *corporate
+    "tokens.components.corporate-menu.hover": *corporate
     "tokens.components.corporate-menu.states": *corporate
     "tokens.components.corporate-menu.use": *corporate
+    "tokens.components.corporate-search.hover": *corporate
+    "tokens.components.corporate-search.pressed": *corporate
     "tokens.components.corporate-search.type": *corporate
     "tokens.components.corporate-search.bg": *corporate
     "tokens.components.corporate-search.fg": *corporate
@@ -118,8 +122,8 @@ tokens:
   shadow: { none: "none" }
   components_harvested: true
   components:
-    corporate-menu: { type: button, bg: "#ffffff", fg: "#000000", radius: 999, padding: "4px 16px 6px", font: "17px/400 KakaoBig", states: "hover and pressed labels observed on .item_menu; the artifact contains no interaction snapshots.", use: "surface-3::[data-omd-capture=\"1\"] on the Kakao corporate service page, not a KakaoPay payment-app control." }
-    corporate-search: { type: button, bg: "#eeeeee", fg: "#333333", radius: 18, padding: "0px", font: "14px/400 KakaoSmall", states: "hover and pressed labels observed on .btn_search; the artifact contains no interaction snapshots.", use: "surface-3::[data-omd-capture=\"7\"] on the Kakao corporate service page." }
+    corporate-menu: { type: button, bg: "#ffffff", fg: "#000000", radius: 999, padding: "4px 16px 6px", font: "17px/400 KakaoBig", hover: "#f3f3f3", states: "hover and pressed labels observed on .item_menu; the artifact contains no interaction snapshots.", use: "surface-3::[data-omd-capture=\"1\"] on the Kakao corporate service page, not a KakaoPay payment-app control." , pressed: "#f3f3f3"}
+    corporate-search: { type: button, bg: "#eeeeee", fg: "#333333", radius: 18, padding: "0px", font: "14px/400 KakaoSmall", states: "hover and pressed labels observed on .btn_search; the artifact contains no interaction snapshots.", use: "surface-3::[data-omd-capture=\"7\"] on the Kakao corporate service page." , hover: "#eeeeee", pressed: "#eeeeee"}
     corporate-card: { type: card, bg: "#f3f3f3", fg: "#333333", radius: 16, padding: "0px", font: "14px/400 KakaoSmall", use: "surface-3::div.item_card_new.item_normal_card on the Kakao corporate service page." }
     corporate-tag: { type: badge, bg: "#eeeeee", fg: "#000000", radius: 34, padding: "0px 15px", font: "13px/400 KakaoBig", use: "surface-3::[data-omd-capture=\"26\"].link_tag on the Kakao corporate service page." }
 ---

@@ -22,6 +22,10 @@ function candidate(
     sourceCount: 2,
     conflictCount: 0,
     tier1SourceCount: 2,
+    componentCount: 4,
+    interactiveComponentCount: 2,
+    statedComponentCount: 2,
+    advisoryCodes: [],
     reasonCodes: [],
     ...overrides,
   };

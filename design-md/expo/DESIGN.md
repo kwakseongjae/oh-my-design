@@ -82,6 +82,7 @@ verification_v2:
     "tokens.rounded.action": *marketing
     "tokens.rounded.hero-action": *marketing
     "tokens.rounded.full": *marketing
+    "tokens.components.header-primary.pressed": *marketing
     "tokens.components.header-primary.type": *marketing
     "tokens.components.header-primary.bg": *marketing
     "tokens.components.header-primary.fg": *marketing
@@ -91,6 +92,8 @@ verification_v2:
     "tokens.components.header-primary.font": *marketing
     "tokens.components.header-primary.states": *marketing
     "tokens.components.header-primary.use": *marketing
+    "tokens.components.pricing-action.hover": *pricing
+    "tokens.components.pricing-action.pressed": *pricing
     "tokens.components.pricing-action.type": *pricing
     "tokens.components.pricing-action.bg": *pricing
     "tokens.components.pricing-action.fg": *pricing
@@ -133,8 +136,8 @@ tokens:
   rounded: { dialog: 8, action: 36, hero-action: 48, full: 9999 }
   components_harvested: true
   components:
-    header-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: "36px", padding: "0 16px", height: "36px", font: "14px / 500 / Inter", states: "hover and pressed observed; pressed background #010101", use: "Repeated header conversion action across the three marketing surfaces" }
-    pricing-action: { type: button, bg: "#000000", fg: "#ffffff", radius: "32px", padding: "0 12px", height: "32px", font: "12px / 500 / Inter", states: "hover background #010101 and pressed background #030304 observed", use: "Pricing-surface compact action that opens a dialog" }
+    header-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: "36px", padding: "0 16px", height: "36px", font: "14px / 500 / Inter", states: "hover and pressed observed; pressed background #010101", use: "Repeated header conversion action across the three marketing surfaces" , pressed: "#010101"}
+    pricing-action: { type: button, bg: "#000000", fg: "#ffffff", radius: "32px", padding: "0 12px", height: "32px", font: "12px / 500 / Inter", states: "hover background #010101 and pressed background #030304 observed", use: "Pricing-surface compact action that opens a dialog" , hover: "#010101", pressed: "#030304"}
     pricing-dialog: { type: dialog, radius: "8px", shadow: "rgba(0,0,0,0.1) 0px 10px 20px, rgba(0,0,0,0.05) 0px 3px 6px", font: "16px / 400 / Inter", states: "dialog-open observed", use: "Observed pricing dialog panel; fill was not promoted because the captured panel is transparent" }
 ---
 

@@ -46,6 +46,8 @@ verification_v2:
     "tokens.spacing.search-leading": { surface_id: home, source_id: home-live, method: supplied-selector-backed-computed-style, captured: "2026-07-13" }
     "tokens.rounded.square": { surface_id: expo-brand, source_id: expo-brand-live, method: supplied-selector-backed-computed-style, captured: "2026-07-13" }
     "tokens.rounded.search-left": { surface_id: home, source_id: home-live, method: supplied-selector-backed-computed-style, captured: "2026-07-13" }
+    "tokens.components.public-search-input.pressed": { surface_id: home, source_id: home-live, method: supplied-selector-provenance, captured: "2026-07-13" }
+    "tokens.components.public-search-input.focus": { surface_id: home, source_id: home-live, method: supplied-selector-provenance, captured: "2026-07-13" }
     "tokens.components.public-search-input.type": { surface_id: home, source_id: home-live, method: supplied-selector-provenance, captured: "2026-07-13" }
     "tokens.components.public-search-input.bg": { surface_id: home, source_id: home-live, method: supplied-selector-backed-computed-style, captured: "2026-07-13" }
     "tokens.components.public-search-input.fg": { surface_id: home, source_id: home-live, method: supplied-selector-backed-computed-style, captured: "2026-07-13" }
@@ -81,7 +83,7 @@ tokens:
   spacing: { search-y: 6, search-x: 12, search-leading: 16 }
   rounded: { square: 0, search-left: 8 }
   components:
-    public-search-input: { type: input, bg: "#ffffff", fg: "#999999", border: "1px 0px 1px 1px #cccccc", radius: "8px 0px 0px 8px", padding: "6px 12px 6px 16px", height: "40px", font: "16px / 400 / 24px / unresolved computed stack", states: "default geometry observed on home, brand directory, and expo brand pages; static focus and pressed samples are present, while interactionCount is 0", use: "Public search text input; selector home::[data-omd-capture=11]." }
+    public-search-input: { type: input, bg: "#ffffff", fg: "#999999", border: "1px 0px 1px 1px #cccccc", radius: "8px 0px 0px 8px", padding: "6px 12px 6px 16px", height: "40px", font: "16px / 400 / 24px / unresolved computed stack", states: "default geometry observed on home, brand directory, and expo brand pages; static focus and pressed samples are present, while interactionCount is 0", use: "Public search text input; selector home::[data-omd-capture=11]." , pressed: "#212224", focus: "#212224"}
     expo-product-card: { type: card, bg: "#ffffff", fg: "#212529", border: "0px rgba(0, 0, 0, 0.176)", radius: "0px", padding: "0px", height: "270px", font: "16px / 400 / 24px / unresolved computed stack", use: "Public expo-brand product-card shell; selector surface-3::[data-omd-capture=91]." }
   components_harvested: true
 ---

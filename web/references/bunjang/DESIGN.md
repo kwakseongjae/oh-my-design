@@ -17,7 +17,6 @@ tokens:
   note: "primary = --color-primary / --color-red-500 #d80c18 (matches primary_color); no box-shadow anywhere — depth is borders + tints"
   colors:
     primary: "#d80c18"
-    primary-hover: "#c00b15"
     brand: "#d80c18"
     canvas: "#ffffff"
     foreground: "#191919"
@@ -50,7 +49,7 @@ tokens:
     heart-inner: "10% black inner-fill under heart SVG so white stroke reads on any thumbnail"
   components_harvested: true
   components:
-    button-primary: { type: button, bg: "#d80c18", fg: "#ffffff", border: "none", radius: "6px", padding: "16px 20px", font: "16px / 400", hover: "bg #c00b15", use: "Single highest-intent CTA per surface — the only place red appears" }
+    button-primary: { type: button, bg: "#d80c18", fg: "#ffffff", border: "none", radius: "6px", padding: "16px 20px", font: "16px / 400", use: "Single highest-intent CTA per surface — the only place red appears" }
     button-secondary: { type: button, bg: "#ffffff", fg: "#4c4c4c", border: "1px solid #e5e5e5", radius: "6px", padding: "12px 20px", font: "16px / 400", use: "Secondary action" }
     input-search: { type: input, bg: "transparent", fg: "#191919", radius: "999px", font: "15px / 500", use: "Search input; rounded pill container carries chrome, placeholder 검색" }
     product-card: { type: card, bg: "#f6f6f6", radius: "6px", use: "81:100 portrait thumb placeholder; price 16/700 #191919, title 14/500 #666, meta 12/500 #999, heart top-right" }

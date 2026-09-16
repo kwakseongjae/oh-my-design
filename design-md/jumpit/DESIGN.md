@@ -36,7 +36,7 @@ tokens:
   shadow:
     none: "none"
   components:
-    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: "8px", padding: "0px 16px", font: "15px / 700", use: "회원가입/로그인 auth CTA — black, never green" }
+    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: "8px", padding: "0px 16px", font: "15px / 700", use: "회원가입/로그인 auth CTA — black, never green" , hover: "#333333", pressed: "#333333"}
     chip-role-active: { type: badge, bg: "#00dd6d", fg: "#ffffff", radius: "20px", padding: "7px 16px", font: "16px / 700", use: "Single-selected job-role filter chip" }
     chip-role-rest: { type: badge, bg: "#ffffff", fg: "#444444", radius: "20px", padding: "7px 16px", font: "16px / 400", use: "Unselected role chips in 22-chip filter row" }
     dropdown-filter: { type: tab, bg: "#ffffff", fg: "#000000", radius: "100px", padding: "8px 30px 8px 12px", font: "16px / 400", use: "Outlined multi-select filter dropdown trigger" }

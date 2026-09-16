@@ -68,6 +68,9 @@ verification_v2:
     "tokens.rounded.control": *home
     "tokens.rounded.container": *home
     "tokens.shadow.none": *home
+    "tokens.components.primary-action.hover": *home
+    "tokens.components.primary-action.pressed": *home
+    "tokens.components.primary-action.focus": *home
     "tokens.components.primary-action.type": *home
     "tokens.components.primary-action.bg": *home
     "tokens.components.primary-action.fg": *home
@@ -77,6 +80,9 @@ verification_v2:
     "tokens.components.primary-action.font": *home
     "tokens.components.primary-action.states": *home
     "tokens.components.primary-action.use": *home
+    "tokens.components.secondary-action.hover": *home
+    "tokens.components.secondary-action.pressed": *home
+    "tokens.components.secondary-action.focus": *home
     "tokens.components.secondary-action.type": *home
     "tokens.components.secondary-action.bg": *home
     "tokens.components.secondary-action.fg": *home
@@ -134,8 +140,8 @@ tokens:
     none: "none"
   components_harvested: true
   components:
-    primary-action: { type: button, bg: "#000000", fg: "#ffffff", radius: "4px", padding: "8px 16px", height: "40px", font: "16px / 500 PP Neue Montreal Mono", states: "hover, focus, and pressed captured for selector; no common state value promoted", use: "Public compact action at home::[data-omd-capture=20]" }
-    secondary-action: { type: button, bg: "rgba(0, 0, 0, 0.08)", fg: "#000000", radius: "4px", padding: "16px", font: "16px / 500 PP Neue Montreal Mono", states: "hover, focus, and pressed captured for selector", use: "Public light-surface action at home::[data-omd-capture=22]" }
+    primary-action: { type: button, bg: "#000000", fg: "#ffffff", radius: "4px", padding: "8px 16px", height: "40px", font: "16px / 500 PP Neue Montreal Mono", states: "hover, focus, and pressed captured for selector; no common state value promoted", use: "Public compact action at home::[data-omd-capture=20]" , hover: "rgba(0, 0, 0, 0.984)", pressed: "rgba(0, 0, 0, 0.97)", focus: "rgba(0, 0, 0, 0.992)"}
+    secondary-action: { type: button, bg: "rgba(0, 0, 0, 0.08)", fg: "#000000", radius: "4px", padding: "16px", font: "16px / 500 PP Neue Montreal Mono", states: "hover, focus, and pressed captured for selector", use: "Public light-surface action at home::[data-omd-capture=22]" , hover: "rgba(0, 0, 0, 0.082)", pressed: "rgba(0, 0, 0, 0.082)", focus: "rgba(0, 0, 0, 0.082)"}
     selected-tab-cyan: { type: tab, bg: "#c8f6f9", fg: "#000000", radius: "4px", padding: "4px 0px", height: "72px", font: "16px / 400 The Future", states: "selected and tab-selected observed", use: "Home tab at home::[data-omd-capture=29]" }
     tab-panel: { type: card, bg: "#ffffff", fg: "#000000", radius: "8px", padding: "16px 16px 16px 40px", use: "Home tab panel at home::#tabs-0-panel-0 (role tabpanel)" }
     research-card: { type: card, bg: "rgba(255, 255, 255, 0.08)", fg: "#ffffff", radius: "4px", padding: "20px 40px", use: "Home research card at home::div.research-card" }

@@ -86,6 +86,7 @@ verification_v2:
     "tokens.components.kakao-login.font": *login_doc
     "tokens.components.kakao-login.states": *login_doc
     "tokens.components.kakao-login.use": *login_doc
+    "tokens.components.corporate-nav.focus": *corp_live
     "tokens.components.corporate-nav.type": *corp_live
     "tokens.components.corporate-nav.bg": *corp_live
     "tokens.components.corporate-nav.fg": *corp_live
@@ -93,6 +94,7 @@ verification_v2:
     "tokens.components.corporate-nav.padding": *corp_live
     "tokens.components.corporate-nav.height": *corp_live
     "tokens.components.corporate-nav.font": *corp_live
+    "tokens.components.corporate-nav.hover": { surface_id: corp-home, source_id: corp-home-live, method: live-css-inspect, captured: "2026-09-16" }
     "tokens.components.corporate-nav.states": *corp_live
     "tokens.components.corporate-nav.use": *corp_live
     "tokens.components.search-control.type": *corp_live
@@ -103,6 +105,8 @@ verification_v2:
     "tokens.components.search-control.font": *corp_live
     "tokens.components.search-control.states": *corp_live
     "tokens.components.search-control.use": *corp_live
+    "tokens.components.dark-marketing-tag.hover": *corp_live
+    "tokens.components.dark-marketing-tag.pressed": *corp_live
     "tokens.components.dark-marketing-tag.type": *corp_live
     "tokens.components.dark-marketing-tag.bg": *corp_live
     "tokens.components.dark-marketing-tag.fg": *corp_live
@@ -113,6 +117,7 @@ verification_v2:
     "tokens.components.dark-marketing-tag.font": *corp_live
     "tokens.components.dark-marketing-tag.states": *corp_live
     "tokens.components.dark-marketing-tag.use": *corp_live
+    "tokens.components.milestone-filter.pressed": *milestones_live
     "tokens.components.milestone-filter.type": *milestones_live
     "tokens.components.milestone-filter.bg": *milestones_live
     "tokens.components.milestone-filter.fg": *milestones_live
@@ -163,10 +168,10 @@ tokens:
   components_harvested: true
   components:
     kakao-login: { type: button, bg: "#fee500", fg: "rgba(0, 0, 0, 0.85)", radius: "12px", font: "30Pt / OS system", states: "full label or shortened label; hover, pressed, and disabled visuals are not specified by this guide", use: "Kakao Login only; preserve black speech-bubble symbol and mandated colors" }
-    corporate-nav: { type: button, bg: "#ffffff", fg: "#000000", radius: "999px", padding: "4px 16px 6px", height: "37px", font: "17px / 400 / KakaoBig", states: "light and dark theme variants; focus and hover observed", use: "top-level corporate menu trigger" }
+    corporate-nav: { type: button, bg: "#ffffff", fg: "#000000", radius: "999px", padding: "4px 16px 6px", height: "37px", font: "17px / 400 / KakaoBig", hover: "#f3f3f3", states: "light and dark theme variants; focus and hover observed", use: "top-level corporate menu trigger" , focus: "#f3f3f3"}
     search-control: { type: button, bg: "transparent", fg: "#333333", radius: "18px", height: "36px", font: "14px / 400 / KakaoSmall", states: "default and hover observed", use: "corporate-site circular search control" }
-    dark-marketing-tag: { type: badge, bg: "#111111", fg: "#ffffff", border: "2px solid #ffffff", radius: "16px", padding: "7px 8px 8px", height: "32px", font: "13px / 700 / KakaoSmall", states: "default captured", use: "dark corporate marketing tag/CTA label" }
-    milestone-filter: { type: button, bg: "#eeeeee", fg: "#000000", radius: "30px", padding: "8px 20px 12px", height: "44px", font: "16px / 700 / KakaoBig", states: "selected filter captured", use: "milestone category filter" }
+    dark-marketing-tag: { type: badge, bg: "#111111", fg: "#ffffff", border: "2px solid #ffffff", radius: "16px", padding: "7px 8px 8px", height: "32px", font: "13px / 700 / KakaoSmall", states: "default captured", use: "dark corporate marketing tag/CTA label" , hover: "rgba(17, 17, 17, 0.75)", pressed: "rgba(17, 17, 17, 0.75)"}
+    milestone-filter: { type: button, bg: "#eeeeee", fg: "#000000", radius: "30px", padding: "8px 20px 12px", height: "44px", font: "16px / 700 / KakaoBig", states: "selected filter captured", use: "milestone category filter" , pressed: "#dfdfdf"}
     footer-pill: { type: button, bg: "#eeeeee", fg: "#000000", radius: "24px", padding: "10px 20px 12px", height: "40px", font: "12px / 400 / KakaoSmall", states: "default captured; hover not retained", use: "corporate footer related-site pill" }
 ---
 

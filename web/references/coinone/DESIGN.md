@@ -64,6 +64,7 @@ verification_v2:
     "tokens.components.sign-in-outline.padding": *home
     "tokens.components.sign-in-outline.height": *home
     "tokens.components.sign-in-outline.font": *home
+    "tokens.components.sign-in-outline.hover": &home_css { surface_id: exchange-home, source_id: home-capture, method: live-css-inspect, captured: "2026-09-16" }
     "tokens.components.sign-in-outline.states": *home
     "tokens.components.sign-in-outline.use": *home
     "tokens.components.home-compact-control.type": *home
@@ -74,6 +75,8 @@ verification_v2:
     "tokens.components.home-compact-control.padding": *home
     "tokens.components.home-compact-control.height": *home
     "tokens.components.home-compact-control.font": *home
+    "tokens.components.home-compact-control.hover": *home_css
+    "tokens.components.home-compact-control.pressed": *home_css
     "tokens.components.home-compact-control.states": *home
     "tokens.components.home-compact-control.use": *home
     "tokens.components.trading-chart-tab.type": *trading
@@ -111,8 +114,8 @@ tokens:
   rounded: { login: 3, control: 6, badge: 26 }
   components_harvested: true
   components:
-    sign-in-outline: { type: button, fg: "#79818F", border: "1px solid #AEB3BB", radius: "3px", padding: "0px 8px", height: "24px", font: "12px / 400 pretendardCoinone", states: "default only; static pseudo-state samples are not promoted", use: "Home sign-in control, selector home::[data-omd-capture=14]" }
-    home-compact-control: { type: button, bg: "#FFFFFF", fg: "#040505", border: "1px solid #DDE4EB", radius: "6px", padding: "6px 12px", height: "32px", font: "13px / 500 pretendardCoinone", states: "default only; no interaction record", use: "Home compact product control, selector home::[data-omd-capture=59]" }
+    sign-in-outline: { type: button, fg: "#79818F", border: "1px solid #AEB3BB", radius: "3px", padding: "0px 8px", height: "24px", font: "12px / 400 pretendardCoinone", hover: "rgba(121, 129, 143, 0.05)", states: "default only; static pseudo-state samples are not promoted", use: "Home sign-in control, selector home::[data-omd-capture=14]" }
+    home-compact-control: { type: button, bg: "#FFFFFF", fg: "#040505", border: "1px solid #DDE4EB", radius: "6px", padding: "6px 12px", height: "32px", font: "13px / 500 pretendardCoinone", hover: "rgba(61, 80, 137, 0.1)", pressed: "rgba(61, 80, 137, 0.1)", states: "default only; no interaction record", use: "Home compact product control, selector home::[data-omd-capture=59]" }
     trading-chart-tab: { type: tab, fg: "#18191C", padding: "0px 16px", height: "37px", font: "13px / 400 Spoqa Han Sans", states: "default only; no interaction record", use: "Trading chart tab, selector surface-2::[data-omd-capture=49]" }
     trading-side-tab: { type: tab, fg: "#9E9E9E", height: "40px", font: "14px / 400 Spoqa Han Sans", states: "default only; no interaction record", use: "Trading side tab, selector surface-2::[data-omd-capture=156]" }
 ---

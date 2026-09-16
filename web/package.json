@@ -30,7 +30,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "prepare": "husky",
-    "indexnow": "node scripts/indexnow-ping.mjs"
+    "indexnow": "node scripts/indexnow-ping.mjs",
+    "state-values": "node scripts/extract-state-values.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.98.0",

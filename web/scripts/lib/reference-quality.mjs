@@ -24,6 +24,19 @@ const TOKEN_NAMESPACES = [
 ];
 const INTERACTIVE_COMPONENT_TYPES = new Set(["button", "input", "tab", "toggle"]);
 const OBSERVED_STATE_KEYS = new Set(["hover", "pressed", "focus", "active", "disabled", "checked", "error", "states"]);
+/**
+ * Indexed state keys — a per-state value (`pressed: "#1b64da"`), not a prose
+ * summary. `states: "loading, disabled, pressed"` names states without giving a
+ * consumer anything to render, so it is deliberately NOT in this set.
+ *
+ * Kept separate from OBSERVED_STATE_KEYS on purpose: that set still governs the
+ * blocking `interactive_state_missing` check, while this one only *reports*
+ * (2026-09-16). Measured before splitting them: tightening the blocking check to
+ * this set would drop verified_v2 from 140 to 11, because 93 of 140 satisfy the
+ * gate with a prose `states` string alone. Enforcement waits for the recovery
+ * work; detection ships now so that work has a worklist.
+ */
+const INDEXED_STATE_KEYS = new Set(["hover", "pressed", "focus", "active", "disabled", "checked", "error"]);
 export const SOURCE_TTLS = {
   "product-surface": 90,
   "official-doc": 180,
@@ -102,6 +115,61 @@ function proofSignals(verificationMarkdown) {
   };
 }
 
+/**
+ * Values a document derived rather than observed, which then reached the token
+ * block as unqualified fact (2026-09-16).
+ *
+ * Two real cases motivated this. `ubie` §4 wrote "Hover: darken to `#304cad`
+ * (blue700)" — a palette-step rule, not a measurement; the shipped CSS says
+ * `#283f91`, and six of six checked values were wrong. `bunjang` was worse in a
+ * more instructive way: its prose is honest — "interpolated; not directly
+ * observed in computed styles" — but the token block carried
+ * `primary-hover: "#c00b15"` with no such qualifier. The caveat survives in prose
+ * and is lost on the way to the machine-readable layer, so a consuming agent
+ * reads an estimate as a fact.
+ *
+ * Reported, never blocking: a hit is a review request, not a verdict. A phrase
+ * like "darkens to" can equally describe a value that WAS measured — `spoqa`'s
+ * `#008c5e` is recorded in its Tier-1 sources line — so this cannot decide on its
+ * own. It only finds the candidates a human has to look at.
+ */
+const SELF_DECLARED_DERIVED = /\b(?:interpolated|not directly observed|not observed|estimated|approximated|inferred value|extrapolated)\b/i;
+const DERIVATION_VERB = /\b(?:darken(?:s|ed|ing)?\s+(?:to|toward|towards)|lighten(?:s|ed|ing)?\s+(?:to|toward|towards))\b/i;
+
+function derivedValueSignals(markdown, tokens) {
+  const body = markdown.slice(markdown.indexOf("\n---\n", 4) + 5);
+  const tokenBlob = JSON.stringify(tokens ?? {}).toLowerCase();
+  const declared = new Set();
+  const suspected = new Set();
+  // Scope to a sentence, then to the text after the qualifier inside it. Both
+  // narrowings are load-bearing and each came from a real false positive:
+  // `bunjang` names its observed `#d80c18` before the interpolated `#c00b15` in
+  // one sentence, and `hana` says "shadows were not observed" in one sentence
+  // and cites an observed `#2dc396` border in the next. A qualifier only speaks
+  // for values that follow it in its own sentence.
+  const sentences = body.split(/(?<=[.!?])\s+|\n/);
+  for (const sentence of sentences) {
+    const selfDeclaredAt = sentence.search(SELF_DECLARED_DERIVED);
+    const derivationAt = sentence.search(DERIVATION_VERB);
+    if (selfDeclaredAt < 0 && derivationAt < 0) continue;
+    const marker = derivationAt < 0 ? selfDeclaredAt
+      : selfDeclaredAt < 0 ? derivationAt
+      : Math.min(selfDeclaredAt, derivationAt);
+    const hexes = sentence.slice(marker).match(/#[0-9a-fA-F]{6}\b/g);
+    if (!hexes) continue;
+    const selfDeclared = selfDeclaredAt >= 0;
+    for (const hex of hexes) {
+      // Only a value that actually reached the token layer is a problem. A
+      // derivation described in prose alone asserts nothing to a consumer.
+      if (!tokenBlob.includes(hex.toLowerCase())) continue;
+      if (selfDeclared) declared.add(hex.toLowerCase());
+      else suspected.add(hex.toLowerCase());
+    }
+  }
+  for (const hex of declared) suspected.delete(hex);
+  return { declared: [...declared].sort(), suspected: [...suspected].sort() };
+}
+
 function hasExplicitUnresolvedConflict(markdown) {
   const value = markdown.match(/^\*\*Conflicts unresolved:\*\*\s*(.+)$/mi)?.[1]?.trim();
   if (!value) return false;
@@ -114,6 +182,54 @@ function addReason(target, code) {
 
 function normalizeList(value) {
   return Array.isArray(value) ? value : [];
+}
+
+/**
+ * Component coverage, reported and never blocking (2026-09-16).
+ *
+ * Exists because the blocking gate has two cheap exits that both reward thinner
+ * data: a reference with NO components produces no gaps and passes, and a
+ * component whose only state evidence is a prose `states` string passes the same
+ * check as one carrying per-state values. The July 2026 promotion batch took the
+ * first exit — verified references average 3.1 components against legacy's 9.6.
+ *
+ * These counts make both exits visible so a reference can be ranked by what it
+ * actually gives a consumer rather than by whether it cleared a gate.
+ */
+/**
+ * A state key counts only when its value is something a consumer could render.
+ *
+ * Checking key presence alone reproduces the very defect this function exists to
+ * expose: `hover: "observed"` would clear the check while telling a consumer
+ * nothing, exactly as `states: "hover, pressed, disabled"` does. The value has to
+ * carry a colour, a dimension, or a token reference.
+ */
+function isRenderableStateValue(value) {
+  if (typeof value !== "string") return false;
+  const trimmed = value.trim();
+  if (!trimmed) return false;
+  return /#[0-9a-fA-F]{3,8}\b/.test(trimmed)          // hex colour
+    || /\b(?:rgb|rgba|hsl|hsla|oklch|oklab|color)\(/i.test(trimmed) // functional colour
+    || /\b\d*\.?\d+(?:px|rem|em|%|ms|s)\b/.test(trimmed)    // dimension or duration
+    || /\{[^}]+\}/.test(trimmed)                      // token reference, e.g. {color.primary}
+    || /\bvar\(--/.test(trimmed);                     // CSS custom property
+}
+
+function componentCoverage(tokens) {
+  const components = tokens?.components;
+  const empty = { total: 0, interactive: 0, stated: 0, proseStateOnly: 0 };
+  if (!components || typeof components !== "object" || Array.isArray(components)) return empty;
+  let total = 0, interactive = 0, stated = 0, proseStateOnly = 0;
+  for (const component of Object.values(components)) {
+    if (!component || typeof component !== "object" || Array.isArray(component)) continue;
+    total += 1;
+    if (!INTERACTIVE_COMPONENT_TYPES.has(component.type)) continue;
+    interactive += 1;
+    const keys = Object.keys(component);
+    if (keys.some((key) => INDEXED_STATE_KEYS.has(key) && isRenderableStateValue(component[key]))) stated += 1;
+    else if (keys.includes("states") || keys.some((key) => INDEXED_STATE_KEYS.has(key))) proseStateOnly += 1;
+  }
+  return { total, interactive, stated, proseStateOnly };
 }
 
 function componentStateGaps(tokens) {
@@ -216,6 +332,20 @@ export function evaluateReferenceQuality({ id, markdown, frontmatter, verificati
     if (componentStateGaps(tokens).length > 0) blockVerified("interactive_state_missing");
   }
 
+  // Advisory, never blocking — these name the two cheap exits from the blocking
+  // gate so the recovery worklist can target them. Deliberately NOT in
+  // `reasonCodes`: that field means "why this reference is not a higher tier",
+  // and a Verified v2 entry is asserted to carry none.
+  const coverage = componentCoverage(tokens);
+  const advisories = [];
+  if (coverage.total === 0) advisories.push("component_absent");
+  else if (coverage.interactive === 0) advisories.push("component_noninteractive_only");
+  else if (coverage.stated === 0) advisories.push("component_state_prose_only");
+
+  const derived = derivedValueSignals(markdown, tokens);
+  if (derived.declared.length > 0) advisories.push("token_value_self_declared_derived");
+  else if (derived.suspected.length > 0) advisories.push("token_value_possibly_derived");
+
   let status = "verified_v2";
   if (partialBlockers.length > 0) status = "legacy_snapshot";
   else if (verifiedBlockers.length > 0) status = "partial";
@@ -244,6 +374,10 @@ export function evaluateReferenceQuality({ id, markdown, frontmatter, verificati
     sourceCount: normalizeList(v2?.sources).length,
     conflictCount: normalizeList(v2?.conflicts).length + (hasExplicitUnresolvedConflict(markdown) ? 1 : 0),
     tier1SourceCount: tier1Urls.length,
+    componentCount: coverage.total,
+    interactiveComponentCount: coverage.interactive,
+    statedComponentCount: coverage.stated,
     reasonCodes: reasons.sort(),
+    advisoryCodes: advisories.sort(),
   };
 }

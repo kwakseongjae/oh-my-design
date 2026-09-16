@@ -76,6 +76,9 @@ verification_v2:
     "tokens.components.docs-outline-button.radius": *docs
     "tokens.components.docs-outline-button.padding": *docs
     "tokens.components.docs-outline-button.font": *docs
+    "tokens.components.docs-outline-button.hover": &docs_state { surface_id: product-disclosure, source_id: disclosure-live, method: live-css-inspect, captured: "2026-09-16" }
+    "tokens.components.docs-outline-button.pressed": *docs_state
+    "tokens.components.docs-outline-button.focus": *docs_state
     "tokens.components.docs-outline-button.states": *docs
     "tokens.components.docs-outline-button.use": *docs
     "tokens.components.docs-tab.type": *docs
@@ -110,7 +113,7 @@ tokens:
   shadow: { none: "none" }
   components_harvested: true
   components:
-    docs-outline-button: { type: button, fg: "#4e5968", radius: 40, padding: "4px 10px", font: "11/600 Toss Product Sans", states: "Collector labels focus/hover/pressed on the documented control; interactionCount is 0, so no state value is specified.", use: "Observed default documentation-chrome button on the two customer-information routes only." }
+    docs-outline-button: { type: button, fg: "#4e5968", radius: 40, padding: "4px 10px", font: "11/600 Toss Product Sans", hover: "rgba(217, 217, 255, 0.11)", pressed: "rgba(217, 217, 255, 0.11)", focus: "rgba(217, 217, 255, 0.11)", states: "Collector labels focus/hover/pressed on the documented control; interactionCount is 0, so no state value is specified.", use: "Observed default documentation-chrome button on the two customer-information routes only." }
     docs-tab: { type: tab, fg: "#212529", padding: "9px 14px", font: "16/400 Toss Product Sans", states: "Selected only (aria-selected=true); no other tab state was captured.", use: "Observed selected documentation tab at product-disclosure only." }
 ---
 

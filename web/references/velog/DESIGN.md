@@ -38,8 +38,8 @@ tokens:
   shadow:
     none: "none"
   components:
-    button-login: { type: button, bg: "#212529", fg: "#ffffff", radius: 16, font: "16px/700", use: "Dark sign-in pill, top-right header, h32" }
-    button-write: { type: button, bg: "#12b886", fg: "#ffffff", use: "Brand teal primary-action — compose a post" }
+    button-login: { type: button, bg: "#212529", fg: "#ffffff", radius: 16, font: "16px/700", hover: "#343a40", focus: "#343a40", disabled: "#f8f9fa", use: "Dark sign-in pill, top-right header, h32" }
+    button-write: { type: button, bg: "#12b886", fg: "#ffffff", hover: "#20c997", focus: "#20c997", use: "Brand teal primary-action — compose a post" }
     header: { type: card, bg: "#ffffff", fg: "#212529", font: "16px", use: "Top navigation surface" }
     page: { type: card, bg: "#f8f9fa", fg: "#212529", font: "16px", use: "Soft-gray reading canvas framing white blocks" }
   components_harvested: true

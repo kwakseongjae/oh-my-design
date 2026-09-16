@@ -60,6 +60,10 @@ function syntheticQuality(
     sourceCount: 0,
     conflictCount: 0,
     tier1SourceCount: 0,
+    componentCount: 4,
+    interactiveComponentCount: 2,
+    statedComponentCount: 2,
+    advisoryCodes: [],
     reasonCodes: ["tokens_missing"],
     ...overrides,
   };

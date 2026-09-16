@@ -43,7 +43,7 @@ tokens:
     scrim: "rgba(0,0,0,0.5)"
   components_harvested: true
   components:
-    button-primary: { type: button, bg: "#FF5500", fg: "#FFFFFF", radius: "999px", height: "28px", padding: "4px 12px", font: "12px / 500", hover: "#E64D00", use: "Login/signup primary CTA — compact orange pill" }
+    button-primary: { type: button, bg: "#FF5500", fg: "#FFFFFF", radius: "999px", height: "28px", padding: "4px 12px", font: "12px / 500", hover: "#E64D00", use: "Login/signup primary CTA — compact orange pill" , pressed: "#e84d00"}
     button-golive: { type: button, bg: "#FF5500", fg: "#FFFFFF", radius: "999px", padding: "10px 20px", font: "15px / 600", use: "방송하기 / start-a-live — larger orange pill" }
     button-outline: { type: button, bg: "#FFFFFF", fg: "#FF5500", border: "1px solid #FF5500", radius: "999px", padding: "4px 12px", font: "12px / 500", use: "Follow, secondary action" }
     button-ghost: { type: button, bg: "transparent", fg: "#333333", font: "14px / 500", use: "Tertiary nav, 더보기" }

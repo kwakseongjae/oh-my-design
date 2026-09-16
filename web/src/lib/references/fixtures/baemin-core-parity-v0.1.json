@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1",
+  "reference_id": "baemin",
+  "original": {
+    "path": "web/references/baemin/DESIGN.md",
+    "sha256": "705d87eb84be6d86d7186039e96473d3baa81060b3b85502304fe68963d7021b",
+    "format": "legacy-15"
+  },
+  "staged": {
+    "path": "docs/design-md-weight/migrated/baemin/DESIGN.md",
+    "sha256": "f20ad19a993eb44428f5ed5ac2d21ddf1701a1cecbafb8a16434c86e975bb39a",
+    "format": "core-v2"
+  },
+  "active_detail": {
+    "primary": "",
+    "background": "#ffffff",
+    "foreground": "#222222",
+    "fontFamily": "BAEMINWORK",
+    "radius": ""
+  },
+  "absent_claims": [
+    "canonical-primary",
+    "canonical-radius",
+    "browser-loadable-work-font-file",
+    "native-app-type-scale"
+  ],
+  "narrative_sentinels": [
+    "official current Baemin app typeface",
+    "Corporate Foreground",
+    "No canonical shadow token is promoted"
+  ]
+}

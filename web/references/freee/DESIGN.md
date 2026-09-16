@@ -59,6 +59,8 @@ verification_v2:
     "tokens.spacing.action-x": *live
     "tokens.rounded.header-action": *live
     "tokens.rounded.action": *live
+    "tokens.components.header-primary.pressed": *live
+    "tokens.components.header-primary.focus": *live
     "tokens.components.header-primary.type": *live
     "tokens.components.header-primary.bg": *live
     "tokens.components.header-primary.fg": *live
@@ -100,7 +102,7 @@ tokens:
   spacing: { header-y: 4, header-x: 20, action-y: 10, action-x: 16 }
   rounded: { header-action: 5, action: 8 }
   components:
-    header-primary: { type: button, bg: "#2864f0", fg: "#ffffff", radius: "5px", padding: "4px 20px", font: "14px / 700 / Noto Sans JP", hover: "#2761e8", use: "Public header sign-up action only." }
+    header-primary: { type: button, bg: "#2864f0", fg: "#ffffff", radius: "5px", padding: "4px 20px", font: "14px / 700 / Noto Sans JP", hover: "#2761e8", use: "Public header sign-up action only." , pressed: "#2358d4", focus: "#2256ce"}
     primary-action: { type: button, bg: "#2864f0", fg: "#ffffff", radius: "8px", padding: "10px 16px", font: "16px / 700 / Noto Sans JP", hover: "#2863ee", use: "Public pricing-page primary action only." }
     segment-card: { type: card, bg: "#ebf3ff", radius: "8px", use: "Public home segment-selection card only." }
 ---

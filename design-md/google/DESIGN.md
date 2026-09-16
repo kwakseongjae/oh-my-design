@@ -84,6 +84,9 @@ verification_v2:
     "tokens.components.business-primary.font": *business_live
     "tokens.components.business-primary.states": *business_live
     "tokens.components.business-primary.use": *business_live
+    "tokens.components.business-secondary.hover": *business_live
+    "tokens.components.business-secondary.pressed": *business_live
+    "tokens.components.business-secondary.focus": *business_live
     "tokens.components.business-secondary.type": *business_live
     "tokens.components.business-secondary.bg": *business_live
     "tokens.components.business-secondary.fg": *business_live
@@ -110,6 +113,9 @@ verification_v2:
     "tokens.components.business-card.font": *business_live
     "tokens.components.business-card.states": *business_live
     "tokens.components.business-card.use": *business_live
+    "tokens.components.search-key.hover": *home_live
+    "tokens.components.search-key.pressed": *home_live
+    "tokens.components.search-key.focus": *home_live
     "tokens.components.search-key.type": *home_live
     "tokens.components.search-key.bg": *home_live
     "tokens.components.search-key.fg": *home_live
@@ -146,10 +152,10 @@ tokens:
   components_harvested: true
   components:
     business-primary: { type: button, bg: "#1a73e8", fg: "#ffffff", radius: "1000px", padding: "8px 16px", height: "42px", font: "16px / 500 / Google Sans", states: "default, hover, pressed, and focus observed on Business Profile high-emphasis action", use: "Business Profile high-emphasis action only." }
-    business-secondary: { type: button, bg: "#ffffff", fg: "#1a73e8", border: "1px solid #dadce0", radius: "1000px", padding: "8px 16px", height: "42px", font: "16px / 500 / Google Sans", states: "default, hover, pressed, and focus observed on Business Profile medium-emphasis action", use: "Business Profile medium-emphasis action only." }
+    business-secondary: { type: button, bg: "#ffffff", fg: "#1a73e8", border: "1px solid #dadce0", radius: "1000px", padding: "8px 16px", height: "42px", font: "16px / 500 / Google Sans", states: "default, hover, pressed, and focus observed on Business Profile medium-emphasis action", use: "Business Profile medium-emphasis action only." , hover: "#1a72e6", pressed: "#e8f1fd", focus: "#e4eefc"}
     business-nav: { type: button, fg: "#202124", radius: "4px", padding: "0px 10px", height: "48px", font: "14px / 500 / Google Sans", states: "default, hover, pressed, and focus observed on Business Profile menu item", use: "Business Profile global navigation menu item." }
     business-card: { type: card, bg: "#ffffff", fg: "#3c4043", radius: "24px", padding: "18px 18px 32px", font: "16px / 400 / Google Sans Text", states: "disabled observed on the captured inactive image card", use: "Business Profile scrolling image card only." }
-    search-key: { type: button, bg: "#303134", fg: "#e8eaed", border: "1px solid #303134", radius: "8px", padding: "0px 16px", height: "36px", font: "14px / 500 / Arial", states: "default, hover, pressed, and focus observed on dark Search submit controls", use: "Captured dark Search homepage submit key only." }
+    search-key: { type: button, bg: "#303134", fg: "#e8eaed", border: "1px solid #303134", radius: "8px", padding: "0px 16px", height: "36px", font: "14px / 500 / Arial", states: "default, hover, pressed, and focus observed on dark Search submit controls", use: "Captured dark Search homepage submit key only." , hover: "#5f6368", pressed: "#5f6368", focus: "#5f6368"}
 ---
 
 # Design System Inspiration of Google

@@ -97,6 +97,9 @@ verification_v2:
     "tokens.components.marketing-dark-action.font": *home
     "tokens.components.marketing-dark-action.states": *home
     "tokens.components.marketing-dark-action.use": *home
+    "tokens.components.header-sign-up.hover": *home
+    "tokens.components.header-sign-up.pressed": *home
+    "tokens.components.header-sign-up.focus": *home
     "tokens.components.header-sign-up.type": *home
     "tokens.components.header-sign-up.bg": *home
     "tokens.components.header-sign-up.fg": *home
@@ -151,7 +154,7 @@ tokens:
   components:
     marketing-primary-action: { type: button, bg: "#ff4f00", fg: "#fffefb", border: "1px solid #ff4f00", radius: "4px", padding: "12px 24px", height: "48px", font: "18px / 600 / Inter", states: "focus, hover, and pressed observed", use: "Public home and customer-support marketing action; representative home::[data-omd-capture=\"25\"]" }
     marketing-dark-action: { type: button, bg: "#201515", fg: "#fffefb", border: "1px solid #201515", radius: "4px", padding: "12px 24px", height: "48px", font: "18px / 600 / Inter", states: "focus, hover, pressed, selected, and tab-selected observed", use: "Public marketing action across all supplied surfaces; representative home::[data-omd-capture=\"22\"]" }
-    header-sign-up: { type: button, bg: "#ff4f00", fg: "#fffefb", border: "1px solid #ff4f00", radius: "18px", padding: "6px 12px", height: "36px", font: "14px / 600 / Inter", states: "focus, hover, and pressed observed", use: "Compact public header sign-up action across supplied surfaces; representative home::[data-omd-capture=\"10\"]" }
+    header-sign-up: { type: button, bg: "#ff4f00", fg: "#fffefb", border: "1px solid #ff4f00", radius: "18px", padding: "6px 12px", height: "36px", font: "14px / 600 / Inter", states: "focus, hover, and pressed observed", use: "Compact public header sign-up action across supplied surfaces; representative home::[data-omd-capture=\"10\"]" , hover: "#fe4f00", pressed: "#fd4e00", focus: "#fd4f00"}
     product-gallery-tab: { type: tab, bg: "transparent", fg: "#201515", border: "0px", radius: "0px", padding: "10px 16px", font: "14px / 600 / Inter", states: "selected and tab-selected observed", use: "Selected public home gallery tab; representative home::[data-omd-capture=\"26\"]" }
     pricing-menu-option: { type: tab, bg: "transparent", fg: "#36342e", radius: "4px", padding: "8px 12px", font: "16px / 400 / Inter", states: "expanded and menu-open observed", use: "Pricing menu option after the captured menu interaction; representative surface-2::[data-omd-interaction-capture=\"menu-0-1\"]" }
 ---

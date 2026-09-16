@@ -48,6 +48,7 @@ verification_v2:
     "tokens.components.neutral-badge.radius": *hotel
     "tokens.components.neutral-badge.type": *hotel
     "tokens.components.neutral-badge.use": *hotel
+    "tokens.components.utility-button.pressed": *live
     "tokens.components.utility-button.bg": *live
     "tokens.components.utility-button.fg": *live
     "tokens.components.utility-button.font": *live
@@ -118,7 +119,7 @@ tokens:
   shadow:
     utility: "0 0 8px rgba(0,0,0,0.1)"
   components:
-    utility-button: { type: button, bg: "#ffffff", fg: "#000000", radius: 16, padding: "0px", font: "14px/700 Pretendard", hover: "#f7f8fb", use: "48px product utility button; hover capture switches to #f7f8fb" }
+    utility-button: { type: button, bg: "#ffffff", fg: "#000000", radius: 16, padding: "0px", font: "14px/700 Pretendard", hover: "#f7f8fb", use: "48px product utility button; hover capture switches to #f7f8fb" , pressed: "#f7f8fb"}
     neutral-badge: { type: badge, bg: "#f7f8fb", fg: "#1b1c1f", radius: 9999, padding: "2px 8px 2px 6px", font: "12px/400 Pretendard", use: "26px product badge observed on hotel and leisure" }
   components_harvested: true
 ---

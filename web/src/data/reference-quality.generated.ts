@@ -21,7 +21,19 @@ export interface ReferenceQualityEntry {
   readonly sourceCount: number;
   readonly conflictCount: number;
   readonly tier1SourceCount: number;
+  /** Structured `tokens.components` entries. */
+  readonly componentCount: number;
+  /** Of those, button/input/tab/toggle. */
+  readonly interactiveComponentCount: number;
+  /** Of those interactive, how many carry per-state values rather than a prose
+   *  `states` summary. Reported only — see componentCoverage() for why. */
+  readonly statedComponentCount: number;
+  /** Why this reference is not a higher tier. Empty on a Verified v2 entry. */
   readonly reasonCodes: readonly string[];
+  /** Non-blocking review signals. These never change the tier; they exist so
+   *  thin-but-passing references, and values a document derived rather than
+   *  observed, can be found and repaired. */
+  readonly advisoryCodes: readonly string[];
 }
 
 export const REFERENCE_QUALITY_SCHEMA_VERSION = 2 as const;
@@ -40,7 +52,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 6,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "11st",
@@ -49,14 +67,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "reconciled",
-    "claimCount": 64,
-    "evidenceClaimCount": 64,
+    "claimCount": 66,
+    "evidenceClaimCount": 66,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 4,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 1,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "17live",
@@ -72,13 +94,17 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 12,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "29cm",
@@ -87,14 +113,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-11",
     "nextReverifyAt": "2026-10-09",
     "tokenSource": "reconciled",
-    "claimCount": 84,
-    "evidenceClaimCount": 84,
+    "claimCount": 85,
+    "evidenceClaimCount": 85,
     "evidenceCoverage": 1,
     "surfaceCount": 5,
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 5,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 1,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "3o3",
@@ -110,8 +140,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 6,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -128,9 +164,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 6,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "591",
@@ -146,9 +186,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 11,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "8percent",
@@ -164,9 +208,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 8,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "91app",
@@ -182,10 +230,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 4,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -202,9 +256,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 10,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 4,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "ably",
@@ -220,7 +278,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 4,
     "conflictCount": 0,
     "tier1SourceCount": 4,
-    "reasonCodes": []
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "accupass",
@@ -236,9 +300,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 9,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "acer",
@@ -254,7 +322,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 4,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "reasonCodes": []
+    "componentCount": 4,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "adobe",
@@ -270,9 +344,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 5,
+    "componentCount": 6,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "airbnb",
@@ -288,7 +366,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 4,
     "conflictCount": 0,
     "tier1SourceCount": 4,
-    "reasonCodes": []
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "airbridge",
@@ -304,9 +388,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "airtable",
@@ -322,12 +410,18 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 5,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -344,7 +438,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 8,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "amazingtalker",
@@ -360,8 +460,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 6,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "token_value_possibly_derived"
     ]
   },
   {
@@ -378,12 +484,18 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 6,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -400,7 +512,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 4,
     "conflictCount": 0,
     "tier1SourceCount": 4,
-    "reasonCodes": []
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "asana",
@@ -416,9 +534,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 4,
+    "componentCount": 12,
+    "interactiveComponentCount": 8,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -435,9 +559,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 6,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "asos",
@@ -453,9 +581,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "au",
@@ -471,7 +603,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 9,
-    "reasonCodes": []
+    "componentCount": 6,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "autopedia",
@@ -487,9 +625,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 7,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "aws-cloudscape",
@@ -505,7 +647,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "baemin",
@@ -514,14 +662,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-11",
     "nextReverifyAt": "2026-10-09",
     "tokenSource": "reconciled",
-    "claimCount": 111,
-    "evidenceClaimCount": 111,
+    "claimCount": 113,
+    "evidenceClaimCount": 113,
     "evidenceCoverage": 1,
     "surfaceCount": 5,
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 7,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 1,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "bahamut",
@@ -537,9 +689,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "banksalad",
@@ -555,7 +711,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 4,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "barogo",
@@ -571,9 +733,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 6,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "bbc",
@@ -589,9 +755,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "beusable",
@@ -607,8 +777,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -625,9 +801,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 10,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "bilibili",
@@ -643,7 +823,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 3,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "bithumb",
@@ -659,10 +845,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 5,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -679,9 +871,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 7,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "bmw",
@@ -697,7 +893,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "reasonCodes": []
+    "componentCount": 0,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_absent"
+    ]
   },
   {
     "id": "brandi",
@@ -713,7 +915,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "bunjang",
@@ -722,20 +930,24 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-06-08",
     "nextReverifyAt": null,
     "tokenSource": "prose-derived",
-    "claimCount": 115,
+    "claimCount": 113,
     "evidenceClaimCount": 0,
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "buzzvil",
@@ -751,9 +963,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 9,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "cafe24",
@@ -769,10 +985,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 4,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "cakeresume",
@@ -788,10 +1008,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 4,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -808,12 +1034,18 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -830,10 +1062,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 3,
+    "componentCount": 9,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "catchtable",
@@ -849,7 +1085,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 5,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "cathay",
@@ -865,9 +1107,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 7,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "cgv",
@@ -883,7 +1129,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 2,
-    "reasonCodes": []
+    "componentCount": 4,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "channeltalk",
@@ -899,7 +1151,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "china-airlines",
@@ -915,7 +1173,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 3,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "chunghwa",
@@ -931,8 +1195,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "token_value_possibly_derived"
     ]
   },
   {
@@ -949,10 +1219,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "class101",
@@ -968,7 +1242,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "classting",
@@ -984,10 +1264,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 6,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -1004,7 +1290,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "claude",
@@ -1020,7 +1312,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "reasonCodes": []
+    "componentCount": 3,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "clay",
@@ -1036,7 +1334,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 4,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "clickhouse",
@@ -1052,7 +1356,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "cloudflare",
@@ -1068,10 +1378,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 22,
+    "interactiveComponentCount": 12,
+    "statedComponentCount": 7,
     "reasonCodes": [
       "freshness_conflict",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "codeit",
@@ -1087,9 +1401,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 11,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "cohere",
@@ -1105,7 +1423,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "coinbase",
@@ -1121,11 +1445,17 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 25,
+    "interactiveComponentCount": 14,
+    "statedComponentCount": 3,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "token_value_possibly_derived"
     ]
   },
   {
@@ -1135,14 +1465,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "reconciled",
-    "claimCount": 57,
-    "evidenceClaimCount": 57,
+    "claimCount": 60,
+    "evidenceClaimCount": 60,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 4,
-    "reasonCodes": []
+    "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "composio",
@@ -1158,12 +1492,18 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 5,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -1180,6 +1520,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 9,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -1187,6 +1530,9 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -1203,9 +1549,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 7,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "coupang",
@@ -1221,7 +1571,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "cuboai",
@@ -1237,9 +1593,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "cursor",
@@ -1255,7 +1615,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 4,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "cybozu",
@@ -1271,10 +1637,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 4,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "dabang",
@@ -1283,14 +1653,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "reconciled",
-    "claimCount": 61,
-    "evidenceClaimCount": 61,
+    "claimCount": 67,
+    "evidenceClaimCount": 67,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "dable",
@@ -1306,9 +1680,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 7,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "danawa",
@@ -1324,9 +1702,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 10,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "databricks",
@@ -1342,10 +1724,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 4,
+    "componentCount": 8,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "datadog",
@@ -1361,9 +1747,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "datarize",
@@ -1379,7 +1769,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "dcard",
@@ -1395,13 +1791,17 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 11,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "dealicious",
@@ -1417,9 +1817,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 6,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "deliveroo",
@@ -1435,10 +1839,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 3,
+    "componentCount": 10,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "dell",
@@ -1454,11 +1862,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 16,
+    "interactiveComponentCount": 8,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "devsisters",
@@ -1474,10 +1886,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 6,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -1494,9 +1912,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "discord",
@@ -1512,11 +1934,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 14,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "dji",
@@ -1532,6 +1958,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 7,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -1539,6 +1968,9 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -1555,9 +1987,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 7,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "doordash",
@@ -1573,9 +2009,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 8,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "drdiary",
@@ -1591,10 +2031,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 2,
+    "componentCount": 5,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "drnow",
@@ -1610,12 +2054,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 5,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "dropbox",
@@ -1631,8 +2079,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 7,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -1649,10 +2103,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 3,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "freshness_conflict",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "easywallet",
@@ -1668,9 +2126,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 12,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "elastic",
@@ -1686,7 +2148,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 4,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "elevenlabs",
@@ -1702,7 +2170,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "elice",
@@ -1718,9 +2192,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 9,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "eslite",
@@ -1729,14 +2207,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "reconciled",
-    "claimCount": 37,
-    "evidenceClaimCount": 37,
+    "claimCount": 39,
+    "evidenceClaimCount": 39,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 1,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "esunbank",
@@ -1752,9 +2234,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 9,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "evaair",
@@ -1770,7 +2256,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "reasonCodes": []
+    "componentCount": 5,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "expo",
@@ -1779,14 +2271,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "reconciled",
-    "claimCount": 73,
-    "evidenceClaimCount": 73,
+    "claimCount": 76,
+    "evidenceClaimCount": 76,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 3,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "familymart-tw",
@@ -1802,7 +2298,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "farfetch",
@@ -1818,9 +2320,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 7,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "fastcampus",
@@ -1836,11 +2342,17 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 11,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -1857,7 +2369,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 9,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "figma",
@@ -1866,16 +2384,20 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-12",
     "nextReverifyAt": "2026-08-13",
     "tokenSource": "reconciled",
-    "claimCount": 81,
-    "evidenceClaimCount": 81,
+    "claimCount": 83,
+    "evidenceClaimCount": 83,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 3,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 5,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "source_expired"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "finda",
@@ -1891,9 +2413,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "firstory",
@@ -1909,9 +2435,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 5,
+    "componentCount": 10,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "fitpet",
@@ -1927,9 +2457,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "flex",
@@ -1945,7 +2479,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 2,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "flo",
@@ -1961,11 +2501,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 7,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "framer",
@@ -1981,7 +2525,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 9,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "freee",
@@ -1990,14 +2540,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-12",
     "nextReverifyAt": "2026-10-10",
     "tokenSource": "live-extract",
-    "claimCount": 47,
-    "evidenceClaimCount": 47,
+    "claimCount": 49,
+    "evidenceClaimCount": 49,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 3,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "friendliai",
@@ -2013,9 +2567,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "frip",
@@ -2031,9 +2589,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "fubon",
@@ -2049,10 +2611,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 2,
+    "componentCount": 10,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "fugle",
@@ -2068,11 +2634,17 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 5,
+    "componentCount": 6,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -2089,9 +2661,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 5,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "furiosaai",
@@ -2107,9 +2683,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 5,
+    "componentCount": 9,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "gangnamunni",
@@ -2118,14 +2698,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "reconciled",
-    "claimCount": 37,
-    "evidenceClaimCount": 37,
+    "claimCount": 44,
+    "evidenceClaimCount": 44,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 4,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "gaudiolab",
@@ -2141,10 +2725,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "gaudiy",
@@ -2160,10 +2748,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 2,
+    "componentCount": 7,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "genie",
@@ -2179,9 +2771,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 9,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "github",
@@ -2197,10 +2793,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 37,
+    "interactiveComponentCount": 15,
+    "statedComponentCount": 14,
     "reasonCodes": [
       "freshness_conflict",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "gitlab",
@@ -2216,8 +2816,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 5,
+    "componentCount": 11,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -2234,13 +2840,17 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 1,
+    "componentCount": 12,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
       "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "gogolook",
@@ -2249,18 +2859,22 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-06-09",
     "nextReverifyAt": null,
     "tokenSource": "prose-derived",
-    "claimCount": 53,
+    "claimCount": 55,
     "evidenceClaimCount": 0,
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 3,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "gogoro",
@@ -2276,12 +2890,18 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 6,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -2298,9 +2918,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "google",
@@ -2309,14 +2933,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "reconciled",
-    "claimCount": 85,
-    "evidenceClaimCount": 85,
+    "claimCount": 91,
+    "evidenceClaimCount": 91,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 9,
     "conflictCount": 0,
     "tier1SourceCount": 9,
-    "reasonCodes": []
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "goorm",
@@ -2332,9 +2960,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 11,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "govuk",
@@ -2350,10 +2982,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 7,
+    "componentCount": 9,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "greencar",
@@ -2369,9 +3005,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 7,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "greenvines",
@@ -2387,8 +3027,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 8,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -2405,9 +3051,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 9,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "grip",
@@ -2423,10 +3073,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 6,
+    "componentCount": 7,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -2443,9 +3099,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 12,
+    "interactiveComponentCount": 9,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "hahow",
@@ -2461,10 +3121,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 3,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -2481,9 +3147,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 10,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "hashicorp",
@@ -2499,7 +3169,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 10,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "headspace",
@@ -2515,9 +3191,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 10,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "heptabase",
@@ -2533,9 +3213,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 9,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "heydealer",
@@ -2551,9 +3235,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 7,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "hogangnono",
@@ -2569,11 +3257,17 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 4,
+    "componentCount": 7,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -2590,10 +3284,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 8,
+    "interactiveComponentCount": 8,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -2610,10 +3310,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 3,
+    "componentCount": 9,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "humanscape",
@@ -2629,9 +3333,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 9,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "hwahae",
@@ -2647,9 +3355,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "hyperconnect",
@@ -2665,9 +3377,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 10,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "hyundai",
@@ -2683,7 +3399,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "hyundaicard",
@@ -2699,7 +3421,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 4,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "ibm",
@@ -2708,14 +3436,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "live-extract",
-    "claimCount": 54,
-    "evidenceClaimCount": 54,
+    "claimCount": 58,
+    "evidenceClaimCount": 58,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "ichef",
@@ -2731,13 +3463,17 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 7,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 3,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "icook",
@@ -2753,9 +3489,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 10,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "idus",
@@ -2771,9 +3511,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "igaworks",
@@ -2789,9 +3533,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "iicombined",
@@ -2807,9 +3555,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "ikala",
@@ -2825,9 +3577,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 6,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "imweb",
@@ -2843,9 +3599,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 6,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "inflearn",
@@ -2854,14 +3614,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "reconciled",
-    "claimCount": 67,
-    "evidenceClaimCount": 67,
+    "claimCount": 74,
+    "evidenceClaimCount": 74,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 5,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "instacart",
@@ -2877,9 +3641,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 10,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "intercom",
@@ -2895,12 +3663,18 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -2917,7 +3691,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "ipassmoney",
@@ -2933,9 +3713,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "jandi",
@@ -2951,7 +3735,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 10,
     "conflictCount": 0,
     "tier1SourceCount": 9,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "jkopay",
@@ -2967,10 +3757,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 5,
+    "componentCount": 6,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -2987,11 +3783,17 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 5,
+    "componentCount": 7,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -3008,10 +3810,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 3,
+    "componentCount": 7,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "jumpit",
@@ -3020,13 +3826,16 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-06-09",
     "nextReverifyAt": null,
     "tokenSource": "prose-derived",
-    "claimCount": 104,
+    "claimCount": 106,
     "evidenceClaimCount": 0,
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 10,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -3034,7 +3843,8 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "kakao",
@@ -3043,14 +3853,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-11",
     "nextReverifyAt": "2026-10-09",
     "tokenSource": "reconciled",
-    "claimCount": 102,
-    "evidenceClaimCount": 102,
+    "claimCount": 107,
+    "evidenceClaimCount": 107,
     "evidenceCoverage": 1,
     "surfaceCount": 4,
     "sourceCount": 4,
     "conflictCount": 0,
     "tier1SourceCount": 4,
-    "reasonCodes": []
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "kakaobank",
@@ -3059,14 +3873,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-12",
     "nextReverifyAt": "2026-10-10",
     "tokenSource": "reconciled",
-    "claimCount": 90,
-    "evidenceClaimCount": 90,
+    "claimCount": 96,
+    "evidenceClaimCount": 96,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 4,
     "conflictCount": 0,
     "tier1SourceCount": 4,
-    "reasonCodes": []
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "kakaogames",
@@ -3082,7 +3900,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 4,
     "conflictCount": 0,
     "tier1SourceCount": 4,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "kakaopage",
@@ -3098,9 +3922,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 11,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "kakaopay",
@@ -3109,14 +3937,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "reconciled",
-    "claimCount": 63,
-    "evidenceClaimCount": 63,
+    "claimCount": 67,
+    "evidenceClaimCount": 67,
     "evidenceCoverage": 1,
     "surfaceCount": 6,
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 4,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "kakaot",
@@ -3132,6 +3964,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 13,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 3,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -3139,7 +3974,8 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "karrot",
@@ -3155,7 +3991,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "kb-kookmin",
@@ -3171,7 +4013,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 8,
-    "reasonCodes": []
+    "componentCount": 3,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "kbank",
@@ -3187,7 +4035,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 8,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "kbpay",
@@ -3203,9 +4057,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 9,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "kcd",
@@ -3221,9 +4079,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "kdan",
@@ -3239,11 +4101,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "kia",
@@ -3259,9 +4125,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 7,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "kintone",
@@ -3277,10 +4147,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 17,
+    "interactiveComponentCount": 9,
+    "statedComponentCount": 8,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "token_value_possibly_derived"
     ]
   },
   {
@@ -3297,10 +4173,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -3317,13 +4199,17 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 9,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 4,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "kmong",
@@ -3339,7 +4225,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "krafton",
@@ -3355,11 +4247,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 8,
+    "componentCount": 4,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "kraken",
@@ -3375,12 +4271,18 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 10,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -3397,7 +4299,11 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 10,
     "conflictCount": 0,
     "tier1SourceCount": 10,
-    "reasonCodes": []
+    "componentCount": 12,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "kream",
@@ -3413,7 +4319,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 0,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_absent"
+    ]
   },
   {
     "id": "kurly",
@@ -3422,14 +4334,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "live-extract",
-    "claimCount": 44,
-    "evidenceClaimCount": 44,
+    "claimCount": 46,
+    "evidenceClaimCount": 46,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 3,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 1,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "kyobobook",
@@ -3445,9 +4361,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "lablup",
@@ -3463,8 +4383,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 10,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -3481,11 +4407,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 7,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "lamborghini",
@@ -3501,7 +4431,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "reasonCodes": []
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "laundrygo",
@@ -3517,9 +4453,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 7,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "layerx",
@@ -3535,11 +4475,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 18,
+    "interactiveComponentCount": 9,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "lemonbase",
@@ -3555,9 +4499,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 7,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "lezhin",
@@ -3573,10 +4521,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 12,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -3593,7 +4547,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "likelion",
@@ -3602,14 +4562,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "live-extract",
-    "claimCount": 42,
-    "evidenceClaimCount": 42,
+    "claimCount": 44,
+    "evidenceClaimCount": 44,
     "evidenceCoverage": 1,
     "surfaceCount": 2,
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 4,
-    "reasonCodes": []
+    "componentCount": 3,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 1,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "line",
@@ -3625,7 +4589,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 14,
     "conflictCount": 0,
     "tier1SourceCount": 14,
-    "reasonCodes": []
+    "componentCount": 8,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "linear.app",
@@ -3641,7 +4611,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "liner",
@@ -3657,9 +4633,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 10,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "loom",
@@ -3675,9 +4655,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "lotteon",
@@ -3693,7 +4677,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 2,
-    "reasonCodes": []
+    "componentCount": 4,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "lovable",
@@ -3702,14 +4692,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-12",
     "nextReverifyAt": "2026-10-10",
     "tokenSource": "reconciled",
-    "claimCount": 90,
-    "evidenceClaimCount": 90,
+    "claimCount": 93,
+    "evidenceClaimCount": 93,
     "evidenceCoverage": 1,
     "surfaceCount": 5,
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "lunit",
@@ -3725,12 +4719,18 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 3,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -3747,9 +4747,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 12,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "mailchimp",
@@ -3765,10 +4769,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 2,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "makinarocks",
@@ -3784,7 +4792,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "mastercard",
@@ -3800,11 +4814,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 17,
+    "interactiveComponentCount": 9,
+    "statedComponentCount": 7,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "maum-ai",
@@ -3820,9 +4838,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 7,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "medibloc",
@@ -3838,9 +4860,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 6,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "megabox",
@@ -3856,7 +4882,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "meituan",
@@ -3872,6 +4904,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 6,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -3879,6 +4914,9 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -3895,10 +4933,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 3,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -3915,7 +4959,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 8,
-    "reasonCodes": []
+    "componentCount": 4,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "mercury",
@@ -3931,11 +4981,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 12,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "meta",
@@ -3951,10 +5005,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 13,
+    "interactiveComponentCount": 8,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "token_value_possibly_derived"
     ]
   },
   {
@@ -3971,7 +5031,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 8,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "mikan",
@@ -3987,10 +5053,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 2,
+    "componentCount": 9,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "mildang",
@@ -4006,9 +5076,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "millie",
@@ -4024,7 +5098,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 0,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_absent"
+    ]
   },
   {
     "id": "minimax",
@@ -4040,7 +5120,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 9,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 6,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "mintlify",
@@ -4056,12 +5142,18 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 7,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -4078,7 +5170,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 0,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_absent"
+    ]
   },
   {
     "id": "miro",
@@ -4094,7 +5192,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 8,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "mistral.ai",
@@ -4110,7 +5214,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "mixi",
@@ -4126,7 +5236,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "modusign",
@@ -4142,9 +5258,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 10,
+    "interactiveComponentCount": 8,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "moin",
@@ -4160,8 +5280,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -4178,10 +5304,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 5,
+    "componentCount": 10,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -4198,6 +5330,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -4205,7 +5340,8 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "mongodb",
@@ -4221,7 +5357,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "monzo",
@@ -4237,9 +5379,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 2,
+    "componentCount": 10,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -4256,9 +5404,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "moze",
@@ -4274,9 +5426,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 8,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "muji",
@@ -4292,10 +5448,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 18,
+    "interactiveComponentCount": 11,
+    "statedComponentCount": 5,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "token_value_possibly_derived"
     ]
   },
   {
@@ -4312,7 +5474,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 2,
     "conflictCount": 0,
     "tier1SourceCount": 2,
-    "reasonCodes": []
+    "componentCount": 4,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "mustit",
@@ -4328,12 +5496,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 4,
+    "componentCount": 9,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "mynavi",
@@ -4349,7 +5521,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "myrealtrip",
@@ -4365,7 +5543,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 4,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "naver",
@@ -4374,14 +5558,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-11",
     "nextReverifyAt": "2026-10-09",
     "tokenSource": "reconciled",
-    "claimCount": 101,
-    "evidenceClaimCount": 101,
+    "claimCount": 103,
+    "evidenceClaimCount": 103,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 4,
-    "reasonCodes": []
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "naverpay",
@@ -4397,10 +5585,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 3,
+    "componentCount": 11,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "naverwebtoon",
@@ -4416,7 +5608,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 3,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "ncsoft",
@@ -4432,10 +5630,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "neosapience",
@@ -4451,9 +5653,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "netflix",
@@ -4469,11 +5675,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 15,
+    "interactiveComponentCount": 8,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "nexon",
@@ -4489,9 +5699,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 9,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "nhn",
@@ -4507,7 +5721,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "nhncloud",
@@ -4516,14 +5736,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "live-extract",
-    "claimCount": 54,
-    "evidenceClaimCount": 54,
+    "claimCount": 56,
+    "evidenceClaimCount": 56,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 4,
-    "reasonCodes": []
+    "componentCount": 3,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 1,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "nike",
@@ -4539,12 +5763,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 1,
+    "componentCount": 13,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "nintendo",
@@ -4560,9 +5788,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 8,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "nota",
@@ -4578,9 +5810,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 7,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "note",
@@ -4596,6 +5832,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 6,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -4603,6 +5842,9 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -4619,7 +5861,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "nrise",
@@ -4635,10 +5883,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 4,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "nvidia",
@@ -4654,12 +5906,18 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 5,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -4676,9 +5934,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 11,
+    "interactiveComponentCount": 8,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "ohouse",
@@ -4694,7 +5956,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "oliveyoung",
@@ -4710,7 +5978,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "ollama",
@@ -4726,7 +6000,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 4,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 0,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_absent"
+    ]
   },
   {
     "id": "omnichat",
@@ -4742,9 +6022,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 8,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "onestore",
@@ -4760,7 +6044,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 11,
     "conflictCount": 0,
     "tier1SourceCount": 8,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "openai",
@@ -4776,10 +6066,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 18,
+    "interactiveComponentCount": 10,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "token_value_possibly_derived"
     ]
   },
   {
@@ -4796,13 +6092,17 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 4,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "openpoint",
@@ -4818,9 +6118,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 9,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "palantir",
@@ -4836,7 +6140,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "panasonic",
@@ -4852,7 +6162,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 4,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "patreon",
@@ -4868,9 +6184,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "patternfly",
@@ -4886,7 +6206,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "payco",
@@ -4902,11 +6228,17 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 2,
+    "componentCount": 6,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -4923,9 +6255,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 6,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "paypal",
@@ -4941,8 +6277,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 9,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -4959,11 +6301,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 20,
+    "interactiveComponentCount": 9,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "pchome",
@@ -4979,8 +6325,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 6,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -4997,7 +6349,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 4,
     "conflictCount": 0,
     "tier1SourceCount": 4,
-    "reasonCodes": []
+    "componentCount": 3,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "peoplefund",
@@ -5013,9 +6371,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 9,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "pepabo",
@@ -5031,9 +6393,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 5,
+    "componentCount": 11,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "perplexity",
@@ -5049,11 +6415,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 15,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "petfriends",
@@ -5069,8 +6439,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 7,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -5087,10 +6463,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 6,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -5100,14 +6482,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "reconciled",
-    "claimCount": 57,
-    "evidenceClaimCount": 57,
+    "claimCount": 60,
+    "evidenceClaimCount": 60,
     "evidenceCoverage": 1,
     "surfaceCount": 4,
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 4,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 1,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "pinkoi",
@@ -5123,6 +6509,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 10,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -5130,6 +6519,9 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -5146,7 +6538,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 6,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "pixiv",
@@ -5162,11 +6560,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 16,
+    "interactiveComponentCount": 9,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "pixnet",
@@ -5182,8 +6584,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 4,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -5200,9 +6608,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 10,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "portaly",
@@ -5218,9 +6630,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 9,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "portone",
@@ -5236,10 +6652,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 4,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "posthog",
@@ -5255,13 +6675,17 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 11,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 5,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "postype",
@@ -5277,9 +6701,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "poya",
@@ -5295,7 +6723,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 4,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "pozalabs",
@@ -5311,9 +6745,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 10,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "protopie",
@@ -5329,10 +6767,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "publy",
@@ -5348,6 +6790,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 12,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -5355,7 +6800,8 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "qanda",
@@ -5371,6 +6817,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 9,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -5378,6 +6827,9 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -5394,9 +6846,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 7,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "queenit",
@@ -5412,9 +6868,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 7,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "quotabook",
@@ -5430,9 +6890,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "ragic",
@@ -5448,9 +6912,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 5,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "rakuten",
@@ -5466,9 +6934,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "ramp",
@@ -5484,11 +6956,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 18,
+    "interactiveComponentCount": 10,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "rayark",
@@ -5504,10 +6980,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 3,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -5524,12 +7006,18 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -5546,9 +7034,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 11,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "rebellions",
@@ -5564,9 +7056,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 9,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "recruit",
@@ -5582,7 +7078,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "reddit",
@@ -5598,10 +7100,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 2,
+    "componentCount": 10,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 5,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "remember",
@@ -5617,7 +7123,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 4,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "renault",
@@ -5633,12 +7145,18 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 7,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -5655,12 +7173,18 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 7,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -5677,7 +7201,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 12,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "reasonCodes": []
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "retool",
@@ -5693,11 +7223,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 18,
+    "interactiveComponentCount": 10,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "returnzero",
@@ -5713,8 +7247,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 12,
+    "interactiveComponentCount": 9,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "token_value_possibly_derived"
     ]
   },
   {
@@ -5731,12 +7271,18 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -5753,8 +7299,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 9,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -5771,6 +7323,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 9,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -5778,7 +7333,8 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "riiid",
@@ -5794,11 +7350,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 5,
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "ringle",
@@ -5814,9 +7374,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 9,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "robinhood",
@@ -5832,11 +7396,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 18,
+    "interactiveComponentCount": 8,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "runwayml",
@@ -5852,12 +7420,18 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 7,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -5874,7 +7448,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "salesforce",
@@ -5890,9 +7470,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "samsung",
@@ -5908,7 +7492,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "sandoll",
@@ -5924,9 +7514,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 7,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "sanity",
@@ -5935,14 +7529,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "reconciled",
-    "claimCount": 69,
-    "evidenceClaimCount": 69,
+    "claimCount": 71,
+    "evidenceClaimCount": 71,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 3,
     "conflictCount": 0,
     "tier1SourceCount": 4,
-    "reasonCodes": []
+    "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "sansan",
@@ -5958,12 +7556,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 1,
+    "componentCount": 20,
+    "interactiveComponentCount": 9,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "saramin",
@@ -5979,9 +7581,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 10,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "scatterlab",
@@ -5997,8 +7603,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 6,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -6015,9 +7627,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "sendbird",
@@ -6033,12 +7649,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 3,
+    "componentCount": 11,
+    "interactiveComponentCount": 8,
+    "statedComponentCount": 4,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "sentry",
@@ -6054,6 +7674,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 4,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -6061,7 +7684,8 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "servicenow",
@@ -6077,7 +7701,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "reasonCodes": []
+    "componentCount": 3,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "shiftee",
@@ -6093,9 +7723,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 9,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "shiftup",
@@ -6111,9 +7745,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "shinhanbank",
@@ -6129,7 +7767,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 0,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_absent"
+    ]
   },
   {
     "id": "shinhancard",
@@ -6145,7 +7789,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 3,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "shopline",
@@ -6161,9 +7811,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 7,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "sionic",
@@ -6179,9 +7833,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 9,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "sktelecom",
@@ -6197,7 +7855,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 2,
-    "reasonCodes": []
+    "componentCount": 4,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "skyscanner",
@@ -6213,9 +7877,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 10,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 3,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "slack",
@@ -6231,12 +7899,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 1,
+    "componentCount": 16,
+    "interactiveComponentCount": 10,
+    "statedComponentCount": 7,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "smarthr",
@@ -6252,6 +7924,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 13,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -6259,7 +7934,8 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "smartnews",
@@ -6275,6 +7951,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 7,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -6282,7 +7961,8 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "snapchat",
@@ -6298,9 +7978,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 10,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "socar",
@@ -6309,14 +7993,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-12",
     "nextReverifyAt": "2026-10-10",
     "tokenSource": "reconciled",
-    "claimCount": 67,
-    "evidenceClaimCount": 67,
+    "claimCount": 69,
+    "evidenceClaimCount": 69,
     "evidenceCoverage": 1,
     "surfaceCount": 5,
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 4,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "softbank",
@@ -6332,7 +8020,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "solapi",
@@ -6348,9 +8042,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 9,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "sony",
@@ -6366,7 +8064,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 4,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "soomgo",
@@ -6382,9 +8086,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 9,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "soop",
@@ -6400,7 +8108,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "spacex",
@@ -6416,7 +8130,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "reasonCodes": []
+    "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "sparkful",
@@ -6432,8 +8152,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 9,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "token_value_possibly_derived"
     ]
   },
   {
@@ -6450,9 +8176,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 7,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "spindle",
@@ -6468,9 +8198,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 9,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 4,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "spoon",
@@ -6479,13 +8213,16 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-06-09",
     "nextReverifyAt": null,
     "tokenSource": "prose-derived",
-    "claimCount": 142,
+    "claimCount": 143,
     "evidenceClaimCount": 0,
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 13,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 3,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -6493,7 +8230,8 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "spoqa",
@@ -6509,8 +8247,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "token_value_possibly_derived"
     ]
   },
   {
@@ -6527,7 +8271,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "squarespace",
@@ -6543,10 +8293,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 2,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "squeezebits",
@@ -6562,10 +8316,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 3,
+    "componentCount": 7,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "ssg",
@@ -6581,9 +8339,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 10,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "starbucks",
@@ -6599,10 +8361,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 17,
+    "interactiveComponentCount": 8,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -6619,9 +8387,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 7,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "stayfolio",
@@ -6637,9 +8409,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 7,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "stibee",
@@ -6655,9 +8431,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "stores",
@@ -6673,8 +8453,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 5,
+    "componentCount": 6,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -6691,7 +8477,11 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 3,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "studio",
@@ -6707,12 +8497,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 1,
+    "componentCount": 17,
+    "interactiveComponentCount": 8,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "supabase",
@@ -6728,7 +8522,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 9,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 5,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "superhuman",
@@ -6744,12 +8544,18 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 9,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -6766,9 +8572,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 6,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "surveycake",
@@ -6784,9 +8594,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 6,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "tabling",
@@ -6802,8 +8616,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 7,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -6820,6 +8640,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 12,
+    "interactiveComponentCount": 8,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -6827,7 +8650,8 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "taishinbank",
@@ -6843,7 +8667,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "taiwanmobile",
@@ -6859,9 +8689,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 9,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "teamblind",
@@ -6877,9 +8711,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 10,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "teamlab",
@@ -6895,7 +8733,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "teamsparta",
@@ -6911,9 +8755,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 10,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "tellingme",
@@ -6929,8 +8777,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 5,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -6940,14 +8794,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "reconciled",
-    "claimCount": 63,
-    "evidenceClaimCount": 63,
+    "claimCount": 66,
+    "evidenceClaimCount": 66,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 8,
-    "reasonCodes": []
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "theverge",
@@ -6963,11 +8821,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 10,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "thsr",
@@ -6983,7 +8845,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "thumbtack",
@@ -6999,7 +8867,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "reasonCodes": []
+    "componentCount": 3,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "timee",
@@ -7015,9 +8889,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 4,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "tmap",
@@ -7033,9 +8911,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "together.ai",
@@ -7044,14 +8926,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "reconciled",
-    "claimCount": 80,
-    "evidenceClaimCount": 80,
+    "claimCount": 86,
+    "evidenceClaimCount": 86,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 6,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "toss",
@@ -7067,7 +8953,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "toss-securities",
@@ -7083,7 +8975,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 3,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "tossbank",
@@ -7092,14 +8990,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-12",
     "nextReverifyAt": "2026-10-10",
     "tokenSource": "reconciled",
-    "claimCount": 50,
-    "evidenceClaimCount": 50,
+    "claimCount": 53,
+    "evidenceClaimCount": 53,
     "evidenceCoverage": 1,
     "surfaceCount": 4,
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 1,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "toyota",
@@ -7115,7 +9017,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "trainline",
@@ -7131,9 +9039,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 9,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "trenbe",
@@ -7149,11 +9061,17 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 5,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -7170,6 +9088,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 12,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -7177,7 +9098,8 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "tumblbug",
@@ -7186,13 +9108,16 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-06-09",
     "nextReverifyAt": null,
     "tokenSource": "prose-derived",
-    "claimCount": 156,
+    "claimCount": 158,
     "evidenceClaimCount": 0,
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 13,
+    "interactiveComponentCount": 8,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -7200,7 +9125,8 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "tving",
@@ -7216,7 +9142,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "twilio",
@@ -7232,9 +9164,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 10,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "twitch",
@@ -7250,9 +9186,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "typed",
@@ -7268,9 +9208,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 6,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "uber",
@@ -7286,7 +9230,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 3,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "ubie",
@@ -7295,18 +9245,22 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-06-09",
     "nextReverifyAt": null,
     "tokenSource": "prose-derived",
-    "claimCount": 136,
+    "claimCount": 151,
     "evidenceClaimCount": 0,
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 10,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 6,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "udn",
@@ -7322,7 +9276,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "uniqlo",
@@ -7338,10 +9298,17 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only",
+      "token_value_possibly_derived"
     ]
   },
   {
@@ -7358,7 +9325,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "upstage",
@@ -7374,7 +9347,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_noninteractive_only"
+    ]
   },
   {
     "id": "uswds",
@@ -7390,7 +9369,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "velog",
@@ -7399,18 +9384,22 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-06-09",
     "nextReverifyAt": null,
     "tokenSource": "prose-derived",
-    "claimCount": 51,
+    "claimCount": 56,
     "evidenceClaimCount": 0,
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 4,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "vercel",
@@ -7426,7 +9415,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 3,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "reasonCodes": []
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "vocus",
@@ -7442,9 +9437,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "voicetube",
@@ -7460,10 +9459,16 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 6,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -7480,12 +9485,18 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -7502,9 +9513,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 7,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "wadiz",
@@ -7520,12 +9535,19 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 10,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only",
+      "token_value_possibly_derived"
     ]
   },
   {
@@ -7542,7 +9564,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 6,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "wantedly",
@@ -7558,9 +9586,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "warp",
@@ -7576,12 +9608,18 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 6,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -7598,6 +9636,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 10,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -7605,7 +9646,8 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "wavve",
@@ -7621,6 +9663,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 11,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -7628,7 +9673,8 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "wconcept",
@@ -7644,6 +9690,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 11,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -7651,6 +9700,9 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -7667,12 +9719,18 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 9,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -7689,9 +9747,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 7,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "wired",
@@ -7707,11 +9769,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 12,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "wise",
@@ -7727,7 +9793,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "wisetracker",
@@ -7743,9 +9815,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 8,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "wooribank",
@@ -7761,7 +9837,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "reasonCodes": []
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "workday",
@@ -7777,9 +9859,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 10,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "wrtn",
@@ -7795,8 +9881,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 9,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -7813,12 +9905,18 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 0,
+    "componentCount": 5,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "freshness_conflict",
       "proof_incomplete",
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -7835,6 +9933,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -7842,7 +9943,8 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "xrex",
@@ -7858,9 +9960,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 10,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "yanolja",
@@ -7869,14 +9975,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "reconciled",
-    "claimCount": 60,
-    "evidenceClaimCount": 60,
+    "claimCount": 61,
+    "evidenceClaimCount": 61,
     "evidenceCoverage": 1,
     "surfaceCount": 4,
     "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 7,
-    "reasonCodes": []
+    "componentCount": 2,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 1,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "yeogiotte",
@@ -7892,7 +10002,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 10,
     "conflictCount": 0,
     "tier1SourceCount": 8,
-    "reasonCodes": []
+    "componentCount": 5,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "yogiyo",
@@ -7908,6 +10024,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 11,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -7915,7 +10034,8 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "yourator",
@@ -7931,8 +10051,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 7,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only",
+      "token_value_possibly_derived"
     ]
   },
   {
@@ -7942,14 +10069,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "reconciled",
-    "claimCount": 90,
-    "evidenceClaimCount": 90,
+    "claimCount": 93,
+    "evidenceClaimCount": 93,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 9,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 5,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "zendesk",
@@ -7965,7 +10096,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 6,
-    "reasonCodes": []
+    "componentCount": 3,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_state_prose_only"
+    ]
   },
   {
     "id": "zepeto",
@@ -7981,9 +10118,13 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 3,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 1,
     "reasonCodes": [
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   },
   {
     "id": "zigbang",
@@ -7999,6 +10140,9 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 1,
     "tier1SourceCount": 0,
+    "componentCount": 8,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "conflict_unresolved",
       "freshness_conflict",
@@ -8006,6 +10150,9 @@ export const REFERENCE_QUALITY = [
       "tier1_source_missing",
       "token_source_unverified",
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -8015,14 +10162,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "reconciled",
-    "claimCount": 51,
-    "evidenceClaimCount": 51,
+    "claimCount": 53,
+    "evidenceClaimCount": 53,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 3,
-    "reasonCodes": []
+    "componentCount": 4,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": []
   },
   {
     "id": "zoom",
@@ -8038,8 +10189,14 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 2,
+    "componentCount": 10,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 0,
     "reasonCodes": [
       "verification_v2_missing"
+    ],
+    "advisoryCodes": [
+      "component_state_prose_only"
     ]
   },
   {
@@ -8056,11 +10213,15 @@ export const REFERENCE_QUALITY = [
     "sourceCount": 0,
     "conflictCount": 0,
     "tier1SourceCount": 1,
+    "componentCount": 15,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 2,
     "reasonCodes": [
       "freshness_conflict",
       "token_source_unverified",
       "verification_v2_missing"
-    ]
+    ],
+    "advisoryCodes": []
   }
 ] as const satisfies readonly ReferenceQualityEntry[];
 

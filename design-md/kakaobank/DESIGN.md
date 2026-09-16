@@ -74,6 +74,8 @@ verification_v2:
     "tokens.rounded.action": *home_evidence
     "tokens.rounded.section": *home_evidence
     "tokens.rounded.full": *home_evidence
+    "tokens.components.top-navigation.pressed": *home_evidence
+    "tokens.components.top-navigation.focus": *home_evidence
     "tokens.components.top-navigation.type": *home_evidence
     "tokens.components.top-navigation.bg": *home_evidence
     "tokens.components.top-navigation.fg": *home_evidence
@@ -81,6 +83,8 @@ verification_v2:
     "tokens.components.top-navigation.padding": *home_evidence
     "tokens.components.top-navigation.height": *home_evidence
     "tokens.components.top-navigation.font": *home_evidence
+    "tokens.components.top-navigation.hover": &kb_home_css { surface_id: home, source_id: home-live, method: live-css-inspect, captured: "2026-09-16" }
+    "tokens.components.top-navigation.active": *kb_home_css
     "tokens.components.top-navigation.states": *home_evidence
     "tokens.components.top-navigation.use": *home_evidence
     "tokens.components.service-tab.type": *service_evidence
@@ -100,6 +104,7 @@ verification_v2:
     "tokens.components.black-action.padding": *home_evidence
     "tokens.components.black-action.height": *home_evidence
     "tokens.components.black-action.font": *home_evidence
+    "tokens.components.black-action.hover": *kb_home_css
     "tokens.components.black-action.states": *home_evidence
     "tokens.components.black-action.use": *home_evidence
     "tokens.components.resource-download.type": *brand_evidence
@@ -109,6 +114,7 @@ verification_v2:
     "tokens.components.resource-download.padding": *brand_evidence
     "tokens.components.resource-download.height": *brand_evidence
     "tokens.components.resource-download.font": *brand_evidence
+    "tokens.components.resource-download.hover": { surface_id: brand, source_id: brand-live, method: live-css-inspect, captured: "2026-09-16" }
     "tokens.components.resource-download.states": *brand_evidence
     "tokens.components.resource-download.use": *brand_evidence
     "tokens.components.brand-spec-row.type": *brand_evidence
@@ -143,10 +149,10 @@ tokens:
   rounded: { action: 6, section: 16, full: 9999 }
   components_harvested: true
   components:
-    top-navigation: { type: button, bg: "transparent", fg: "#000000", radius: "0px", padding: "0 20px", height: "62px", font: "14px / 600", states: "focus, hover, and pressed captured", use: "Current corporate top navigation item" }
+    top-navigation: { type: button, bg: "transparent", fg: "#000000", radius: "0px", padding: "0 20px", height: "62px", font: "14px / 600", hover: "#444444", active: "#444444", states: "focus, hover, and pressed captured", use: "Current corporate top navigation item" , pressed: "#141414", focus: "#131313"}
     service-tab: { type: tab, bg: "transparent", fg: "#000000", border: "0 0 1px #e6e6e6", radius: "0px", padding: "16px 0", height: "62px", font: "16px / 400", states: "default captured; no reusable selected style promoted", use: "Current public service-category tab" }
-    black-action: { type: button, bg: "#000000", fg: "#ffffff", radius: "6px", padding: "9.5px 18px", height: "42px", font: "15px / 600", states: "default captured; no reusable hover or pressed value promoted", use: "Current corporate high-emphasis action" }
-    resource-download: { type: button, bg: "#000000", fg: "#ffffff", radius: "6px", padding: "10px 16px 10px 20px", height: "43px", font: "16px / 400", states: "default captured; no reusable hover or pressed value promoted", use: "Current official brand-resource download action" }
+    black-action: { type: button, bg: "#000000", fg: "#ffffff", radius: "6px", padding: "9.5px 18px", height: "42px", font: "15px / 600", hover: "#444444", states: "default captured; no reusable hover or pressed value promoted", use: "Current corporate high-emphasis action" }
+    resource-download: { type: button, bg: "#000000", fg: "#ffffff", radius: "6px", padding: "10px 16px 10px 20px", height: "43px", font: "16px / 400", hover: "#444444", states: "default captured; no reusable hover or pressed value promoted", use: "Current official brand-resource download action" }
     brand-spec-row: { type: listItem, bg: "transparent", fg: "#000000", border: "1px 0 0 #e6e6e6", radius: "0px", padding: "10px 0", font: "16px / 400 / 24px", use: "Current official brand specification row" }
 ---
 

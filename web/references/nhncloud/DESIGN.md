@@ -57,6 +57,8 @@ verification_v2:
     "tokens.rounded.control": *corporate
     "tokens.rounded.menu": *corporate
     "tokens.shadow.menu-overlay": *corporate
+    "tokens.components.corporate-header-cta.hover": *corporate
+    "tokens.components.corporate-header-cta.pressed": *corporate
     "tokens.components.corporate-header-cta.type": *corporate
     "tokens.components.corporate-header-cta.bg": *corporate
     "tokens.components.corporate-header-cta.fg": *corporate
@@ -106,7 +108,7 @@ tokens:
   rounded: { cta: 30, control: 6, menu: 8 }
   shadow: { menu-overlay: "0px 4px 8px rgba(0, 0, 0, 0.06)" }
   components:
-    corporate-header-cta: { type: button, bg: "#125de6", fg: "#ffffff", border: "1px solid #125de6", radius: "30px", padding: "8px 19px", height: "40px", font: "15px / 400 Pretendard Variable", states: "hover and pressed observed on the same selector; no state value is inferred", use: "Corporate-marketing header CTA, selector home::[data-omd-capture=13]" }
+    corporate-header-cta: { type: button, bg: "#125de6", fg: "#ffffff", border: "1px solid #125de6", radius: "30px", padding: "8px 19px", height: "40px", font: "15px / 400 Pretendard Variable", states: "hover and pressed observed on the same selector; no state value is inferred", use: "Corporate-marketing header CTA, selector home::[data-omd-capture=13]" , hover: "#1446c8", pressed: "#1446c8"}
     corporate-section-cta: { type: button, bg: "#125de6", fg: "#ffffff", border: "1px solid #125de6", radius: "30px", padding: "10px 27px", height: "48px", font: "17px / 500 Pretendard Variable", states: "hover and pressed observed on the same selector class; no state value is inferred", use: "Corporate-marketing section CTA, selector home::[data-omd-capture=29]" }
     resource-menu-trigger: { type: button, fg: "#727781", border: "1px solid #51565f", radius: "6px", padding: "10px 16px", height: "42px", font: "16px / 400 Pretendard Variable", states: "expanded and menu-open observed", use: "Corporate-marketing resource/menu trigger, selector home::[data-omd-capture=130]" }
 ---

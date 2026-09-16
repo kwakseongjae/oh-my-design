@@ -73,6 +73,9 @@ verification_v2:
     "tokens.rounded.option": *pricing
     "tokens.rounded.overlay": *pricing
     "tokens.rounded.full": *home
+    "tokens.components.header-nav-trigger.hover": *home
+    "tokens.components.header-nav-trigger.pressed": *home
+    "tokens.components.header-nav-trigger.focus": *home
     "tokens.components.header-nav-trigger.type": *home
     "tokens.components.header-nav-trigger.bg": *home
     "tokens.components.header-nav-trigger.fg": *home
@@ -139,7 +142,7 @@ tokens:
   rounded: { nav-trigger: 0, control: 8, option: 6, overlay: 12, full: 9999 }
   components_harvested: true
   components:
-    header-nav-trigger: { type: button, bg: "transparent", fg: "#030303", radius: "0px", padding: "4px 0px 4px 6px", height: "32px", font: "15px / 400 / 24px", states: "hover, pressed, and focus captured on home::[data-omd-capture=\"1\"]", use: "Top-level public navigation menu trigger" }
+    header-nav-trigger: { type: button, bg: "transparent", fg: "#030303", radius: "0px", padding: "4px 0px 4px 6px", height: "32px", font: "15px / 400 / 24px", states: "hover, pressed, and focus captured on home::[data-omd-capture=\"1\"]", use: "Top-level public navigation menu trigger" , hover: "oklab(0.0983389 0.00000446842 0.00000196737 / 0.998508)", pressed: "oklab(0.100978 0.00000458921 0.00000201977 / 0.993438)", focus: "oklab(0.0980805 0.00000445659 0.00000196224 / 0.999007)"}
     header-primary-action: { type: button, bg: "lab(0 0 0 / 0.88)", fg: "lab(98.2716 0 0)", radius: "8px", padding: "6px 10px", height: "32px", font: "14px / 400 / 21px", states: "default captured on all three public routes; no role-specific hover, pressed, or focus variant promoted", use: "Current header primary action" }
     pricing-cycle-tab: { type: tab, bg: "transparent", fg: "lab(42.0087 -0.102207 0.363302)", radius: "9999px", padding: "0px 12px", height: "32px", font: "14px / 400 / 21px", states: "hover, pressed, and selected captured on pricing::[data-omd-capture=\"9\"]", use: "Pricing-cycle tab on the public pricing route" }
     pricing-selector: { type: button, bg: "lab(100 0 0 / 0.8)", fg: "lab(0.903296 0 0)", border: "lab(0.903296 0 0)", radius: "8px", height: "32px", font: "14px / 400 / 21px", states: "pressed, focus, and menu-open captured on pricing::[data-omd-capture=\"12\"]", use: "Public pricing combobox trigger" }

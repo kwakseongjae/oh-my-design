@@ -68,6 +68,8 @@ verification_v2:
     "tokens.components.account-pill.font": *home
     "tokens.components.account-pill.states": *home
     "tokens.components.account-pill.use": *home
+    "tokens.components.course-search.pressed": *home
+    "tokens.components.course-search.focus": *home
     "tokens.components.course-search.type": *home
     "tokens.components.course-search.fg": *home
     "tokens.components.course-search.font": *home
@@ -95,7 +97,7 @@ tokens:
   components:
     promo-tile: { type: button, bg: "#fcf4ee", fg: "#222222", radius: "16px", padding: "40px", font: "16px / 400 / unresolved computed stack", states: "default observed only", use: "home::[data-omd-capture=\"13\"] clickable warm promotional tile; 310px rendered height." }
     account-pill: { type: button, fg: "#222222", border: "1px solid #d4d4d4", radius: "9999px", padding: "10px 16px", font: "16px / 400 / unresolved computed stack", states: "default observed only", use: "home::[data-omd-capture=\"6\"] 로그인/회원가입 control; 43px rendered height; low-confidence collector classification." }
-    course-search: { type: input, fg: "#ff6000", font: "20px / 600 / unresolved computed stack", states: "default plus focus and pressed pseudo-state samples only", use: "home::[data-omd-capture=\"7\"] course-search input; no complete interaction or result state was captured." }
+    course-search: { type: input, fg: "#ff6000", font: "20px / 600 / unresolved computed stack", states: "default plus focus and pressed pseudo-state samples only", use: "home::[data-omd-capture=\"7\"] course-search input; no complete interaction or result state was captured." , pressed: "#2563eb", focus: "#2563eb"}
 ---
 
 # Design System Inspiration of LikeLion

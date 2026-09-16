@@ -35,7 +35,7 @@ tokens:
   spacing: { xs: 8, sm: 16, base: 16, lg: 32, xl: 48, section: 64 }
   rounded: { sm: 40, md: 40, lg: 100, full: 9999 }
   components:
-    button-primary: { type: button, bg: "#05f067", fg: "#262626", radius: "100px", padding: "16px 32px", font: "16px / 500", use: "Primary download CTA pill, 56px height" }
+    button-primary: { type: button, bg: "#05f067", fg: "#262626", radius: "100px", padding: "16px 32px", font: "16px / 500", hover: "#09b953", pressed: "#078e40", use: "Primary download CTA pill, 56px height" }
     button-secondary: { type: button, bg: "rgba(255,255,255,0.8)", fg: "#262626", radius: "100px", padding: "16px 32px", font: "16px / 500", use: "Secondary demo pill, 56px height" }
     button-premium: { type: button, bg: "#e6faef", fg: "#262626", radius: "40px", padding: "16px 32px", font: "16px / 400", use: "Premium / upgrade action on light-green surface, 57px height" }
   components_harvested: true

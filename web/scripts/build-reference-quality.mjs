@@ -71,7 +71,19 @@ export interface ReferenceQualityEntry {
   readonly sourceCount: number;
   readonly conflictCount: number;
   readonly tier1SourceCount: number;
+  /** Structured \`tokens.components\` entries. */
+  readonly componentCount: number;
+  /** Of those, button/input/tab/toggle. */
+  readonly interactiveComponentCount: number;
+  /** Of those interactive, how many carry per-state values rather than a prose
+   *  \`states\` summary. Reported only — see componentCoverage() for why. */
+  readonly statedComponentCount: number;
+  /** Why this reference is not a higher tier. Empty on a Verified v2 entry. */
   readonly reasonCodes: readonly string[];
+  /** Non-blocking review signals. These never change the tier; they exist so
+   *  thin-but-passing references, and values a document derived rather than
+   *  observed, can be found and repaired. */
+  readonly advisoryCodes: readonly string[];
 }`;
 const out = `${header}\n\n${types}\n\n` +
   `export const REFERENCE_QUALITY_SCHEMA_VERSION = ${REFERENCE_QUALITY_SCHEMA_VERSION} as const;\n` +
@@ -96,5 +108,15 @@ for (const entry of entries) {
   for (const reason of entry.reasonCodes) reasonCounts.set(reason, (reasonCounts.get(reason) ?? 0) + 1);
 }
 const topReasons = [...reasonCounts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8);
+const advisoryCounts = new Map();
+for (const entry of entries) {
+  for (const code of entry.advisoryCodes) advisoryCounts.set(code, (advisoryCounts.get(code) ?? 0) + 1);
+}
 console.log(`[reference-quality] ${counts.total} total — ${counts.verified_v2} Verified v2 / ${counts.partial} Partial / ${counts.legacy_snapshot} Legacy`);
 for (const [reason, count] of topReasons) console.log(`  ${String(count).padStart(3)}  ${reason}`);
+if (advisoryCounts.size > 0) {
+  console.log("[reference-quality] advisory (non-blocking) component coverage:");
+  for (const [code, count] of [...advisoryCounts.entries()].sort((a, b) => b[1] - a[1])) {
+    console.log(`  ${String(count).padStart(3)}  ${code}`);
+  }
+}

@@ -66,6 +66,8 @@ verification_v2:
     "tokens.rounded.segment": *home_evidence
     "tokens.rounded.full": *home_evidence
     "tokens.shadow.panel": *design_evidence
+    "tokens.components.primary-action.hover": *home_evidence
+    "tokens.components.primary-action.pressed": *home_evidence
     "tokens.components.primary-action.type": *home_evidence
     "tokens.components.primary-action.bg": *home_evidence
     "tokens.components.primary-action.fg": *home_evidence
@@ -132,7 +134,7 @@ tokens:
     panel: "0 24px 70px rgba(0,0,0,0.1)"
   components_harvested: true
   components:
-    primary-action: { type: button, bg: "#000000", fg: "#ffffff", radius: "8px", padding: "12px 21px", height: "49px", font: "16px / 330", focus: "2px dashed #0d99ff", use: "Default public get-started action" }
+    primary-action: { type: button, bg: "#000000", fg: "#ffffff", radius: "8px", padding: "12px 21px", height: "49px", font: "16px / 330", focus: "2px dashed #0d99ff", use: "Default public get-started action" , hover: "oklab(0 0 0)", pressed: "oklab(0 0 0)"}
     indigo-action: { type: button, bg: "#4d49fc", fg: "#ffffff", radius: "8px", padding: "12px 20px", height: "49px", font: "18px / 480", states: "default captured; no hover token promoted", use: "Alternate prominent public hero action" }
     outline-action: { type: button, bg: "transparent", fg: "#000000", radius: "8px", padding: "12px 21px", height: "49px", font: "16px / 400", states: "default captured; no hover token promoted", use: "Current sales-contact and secondary action" }
     product-segment: { type: tab, bg: "rgba(0,0,0,0.08)", fg: "#000000", radius: "50px", padding: "8px 18px 10px", height: "43px", font: "18px / 480", states: "active and inactive variants captured", use: "Product-area segmented navigation" }

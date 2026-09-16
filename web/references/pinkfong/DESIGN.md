@@ -77,6 +77,9 @@ verification_v2:
     "tokens.components.family-site-pill.font": *home
     "tokens.components.family-site-pill.states": *home
     "tokens.components.family-site-pill.use": *home
+    "tokens.components.business-outline-action.hover": *company
+    "tokens.components.business-outline-action.pressed": *company
+    "tokens.components.business-outline-action.focus": *company
     "tokens.components.business-outline-action.type": *company
     "tokens.components.business-outline-action.bg": *company
     "tokens.components.business-outline-action.fg": *company
@@ -114,7 +117,7 @@ tokens:
   components:
     corporate-primary-action: { type: button, bg: "#ff66af", fg: "#ffffff", radius: 32, padding: "32px 15px", font: "24px / 400 / system stack", states: "Observed default only; interactionCount is 0.", use: "corporate-home `home::[data-omd-capture=\"26\"]`; one public corporate CTA, 64px rendered height." }
     family-site-pill: { type: button, bg: "#ffffff", fg: "#8c8c8c", radius: 32, padding: "4px 20px", font: "14px / 400 / system stack", states: "Observed default only; interactionCount is 0.", use: "`home::[data-omd-capture=\"31\"]`, repeated across the three corporate routes; 35px rendered height." }
-    business-outline-action: { type: button, bg: "#ffffff", fg: "#08c7ff", radius: 32, padding: "30px 15px", font: "18px / 400 / system stack", states: "Collector labels focus, hover, and pressed on `surface-2::[data-omd-capture=\"23\"]`; interactionCount is 0, so no state value is specified.", use: "corporate-company `surface-2::[data-omd-capture=\"23\"]`; one public business-page action, 60px rendered height." }
+    business-outline-action: { type: button, bg: "#ffffff", fg: "#08c7ff", radius: 32, padding: "30px 15px", font: "18px / 400 / system stack", states: "Collector labels focus, hover, and pressed on `surface-2::[data-omd-capture=\"23\"]`; interactionCount is 0, so no state value is specified.", use: "corporate-company `surface-2::[data-omd-capture=\"23\"]`; one public business-page action, 60px rendered height." , hover: "#fffffe", pressed: "#fffffc", focus: "#fffffc"}
     mobile-menu-dialog: { type: dialog, bg: "#ffffff", fg: "#000000", padding: "30px", font: "14px / 400 / system stack", use: "`home::div.DefaultMenu_mobile-menu-modal__SEaJA`; hidden mobile-menu dialog structure captured on all three corporate routes." }
 ---
 

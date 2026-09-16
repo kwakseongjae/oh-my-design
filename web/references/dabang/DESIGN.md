@@ -55,6 +55,8 @@ verification_v2:
     "tokens.rounded.map-tool": *map
     "tokens.rounded.search-entry": *home
     "tokens.rounded.map-search": *map
+    "tokens.components.header-account-control.hover": *home
+    "tokens.components.header-account-control.pressed": *home
     "tokens.components.header-account-control.type": *home
     "tokens.components.header-account-control.bg": *home
     "tokens.components.header-account-control.fg": *home
@@ -63,6 +65,8 @@ verification_v2:
     "tokens.components.header-account-control.font": *home
     "tokens.components.header-account-control.states": *home
     "tokens.components.header-account-control.use": *home
+    "tokens.components.header-outline-action.hover": *home
+    "tokens.components.header-outline-action.pressed": *home
     "tokens.components.header-outline-action.type": *home
     "tokens.components.header-outline-action.fg": *home
     "tokens.components.header-outline-action.border": *home
@@ -80,6 +84,8 @@ verification_v2:
     "tokens.components.map-location-search.font": *map
     "tokens.components.map-location-search.states": *map
     "tokens.components.map-location-search.use": *map
+    "tokens.components.map-dock-control.hover": *map
+    "tokens.components.map-dock-control.pressed": *map
     "tokens.components.map-dock-control.type": *map
     "tokens.components.map-dock-control.bg": *map
     "tokens.components.map-dock-control.fg": *map
@@ -108,10 +114,10 @@ tokens:
   spacing: { xs: 4, sm: 8, md: 16 }
   rounded: { compact: 2, standard: 8, map-tool: 6, search-entry: 32, map-search: 42 }
   components:
-    header-account-control: { type: button, bg: "#ffffff", fg: "#222222", radius: "8px", padding: "8px 16px", font: "16px / 400 Pretendard Variable", states: "default only; no interaction expansion captured", use: "Shared public header account control; home::[data-omd-capture=4]" }
-    header-outline-action: { type: button, fg: "#222222", border: "1px solid #dfdfdf", radius: "2px", padding: "0px 16px", font: "14px / 700 Pretendard Variable", states: "default only; no interaction expansion captured", use: "Shared public header outline action; home::[data-omd-capture=5]" }
+    header-account-control: { type: button, bg: "#ffffff", fg: "#222222", radius: "8px", padding: "8px 16px", font: "16px / 400 Pretendard Variable", states: "default only; no interaction expansion captured", use: "Shared public header account control; home::[data-omd-capture=4]" , hover: "#f5f5f5", pressed: "#f5f5f5"}
+    header-outline-action: { type: button, fg: "#222222", border: "1px solid #dfdfdf", radius: "2px", padding: "0px 16px", font: "14px / 700 Pretendard Variable", states: "default only; no interaction expansion captured", use: "Shared public header outline action; home::[data-omd-capture=5]" , hover: "#fcfcfc", pressed: "#fcfcfc"}
     map-location-search: { type: input, bg: "#ffffff", fg: "#222222", border: "1px solid #ededed", radius: "42px", padding: "7px 37px 7px 15px", font: "14px / 400 Pretendard Variable", states: "default only; no interaction expansion captured", use: "Map location-search field; surface-2::[data-omd-capture=1]" }
-    map-dock-control: { type: button, bg: "#ffffff", fg: "#000000", border: "1px solid #dfdfdf", radius: "2px", padding: "0px 7px 0px 11px", font: "14px / 400 Pretendard Variable", states: "default only; no interaction expansion captured", use: "Map dock control; surface-2::[data-omd-capture=14]" }
+    map-dock-control: { type: button, bg: "#ffffff", fg: "#000000", border: "1px solid #dfdfdf", radius: "2px", padding: "0px 7px 0px 11px", font: "14px / 400 Pretendard Variable", states: "default only; no interaction expansion captured", use: "Map dock control; surface-2::[data-omd-capture=14]" , hover: "#ededed", pressed: "#ededed"}
   components_harvested: true
 ---
 

@@ -67,6 +67,8 @@ verification_v2:
     "tokens.rounded.sharp": *product
     "tokens.rounded.control": *product
     "tokens.shadow.flat": *product
+    "tokens.components.primary-action.pressed": *product
+    "tokens.components.primary-action.focus": *product
     "tokens.components.primary-action.type": *product
     "tokens.components.primary-action.bg": *product
     "tokens.components.primary-action.fg": *product
@@ -76,6 +78,8 @@ verification_v2:
     "tokens.components.primary-action.font": *product
     "tokens.components.primary-action.states": *product
     "tokens.components.primary-action.use": *product
+    "tokens.components.product-tabs.hover": *confluent
+    "tokens.components.product-tabs.pressed": *confluent
     "tokens.components.product-tabs.type": *confluent
     "tokens.components.product-tabs.bg": *confluent
     "tokens.components.product-tabs.fg": *confluent
@@ -108,8 +112,8 @@ tokens:
   shadow:
     flat: "none"
   components:
-    primary-action: { type: button, bg: "#0f62fe", fg: "#ffffff", radius: 4, padding: "14px 63px 14px 15px", height: 48, font: "14px/400 IBM Plex Sans KR", states: "hover/pressed/focus captured on cloud-support and confluent", use: "Public product CTA" }
-    product-tabs: { type: tab, bg: "#f4f4f4", fg: "#161616", border: "1px solid #c6c6c6", radius: 4, padding: "0px 16px", height: 48, font: "16px/400 IBM Plex Sans KR", states: "hover/pressed/selected captured", use: "Confluent public-product tablist" }
+    primary-action: { type: button, bg: "#0f62fe", fg: "#ffffff", radius: 4, padding: "14px 63px 14px 15px", height: 48, font: "14px/400 IBM Plex Sans KR", states: "hover/pressed/focus captured on cloud-support and confluent", use: "Public product CTA" , pressed: "#0c56e7", focus: "#0a4fda"}
+    product-tabs: { type: tab, bg: "#f4f4f4", fg: "#161616", border: "1px solid #c6c6c6", radius: 4, padding: "0px 16px", height: 48, font: "16px/400 IBM Plex Sans KR", states: "hover/pressed/selected captured", use: "Confluent public-product tablist" , hover: "#e8e8e8", pressed: "#e8e8e8"}
   components_harvested: true
 ---
 

@@ -46,6 +46,7 @@ verification_v2:
     "tokens.rounded.tab": *model3
     "tokens.rounded.card": *model3
     "tokens.shadow.carousel-navigation": *model3
+    "tokens.components.primary-cta.pressed": *model3
     "tokens.components.primary-cta.type": *model3
     "tokens.components.primary-cta.bg": *model3
     "tokens.components.primary-cta.fg": *model3
@@ -54,6 +55,7 @@ verification_v2:
     "tokens.components.primary-cta.font": *model3
     "tokens.components.primary-cta.states": *model3
     "tokens.components.primary-cta.use": *model3
+    "tokens.components.high-contrast-cta.focus": *model3
     "tokens.components.high-contrast-cta.type": *model3
     "tokens.components.high-contrast-cta.bg": *model3
     "tokens.components.high-contrast-cta.fg": *model3
@@ -68,6 +70,7 @@ verification_v2:
     "tokens.components.info-card.radius": *model3
     "tokens.components.info-card.padding": *model3
     "tokens.components.info-card.use": *model3
+    "tokens.components.carousel-dot.focus": *model3
     "tokens.components.carousel-dot.type": *model3
     "tokens.components.carousel-dot.bg": *model3
     "tokens.components.carousel-dot.fg": *model3
@@ -108,10 +111,10 @@ tokens:
   shadow:
     carousel-navigation: "rgba(0, 0, 0, 0.25) 0px 4px 4px 0px"
   components:
-    primary-cta: { type: button, bg: "#3e6ae1", fg: "#ffffff", radius: "4px", padding: "4px", font: "14px / 500 / Universal Sans Text", states: "pressed and focus computed snapshots", use: "Model 3 marketing CTA" }
-    high-contrast-cta: { type: button, bg: "#ffffff", fg: "#393c41", radius: "4px", padding: "4px", font: "14px / 500 / Universal Sans Text", states: "focus computed snapshot", use: "Paired Model 3 marketing CTA" }
+    primary-cta: { type: button, bg: "#3e6ae1", fg: "#ffffff", radius: "4px", padding: "4px", font: "14px / 500 / Universal Sans Text", states: "pressed and focus computed snapshots", use: "Model 3 marketing CTA" , pressed: "#3e6ae0"}
+    high-contrast-cta: { type: button, bg: "#ffffff", fg: "#393c41", radius: "4px", padding: "4px", font: "14px / 500 / Universal Sans Text", states: "focus computed snapshot", use: "Paired Model 3 marketing CTA" , focus: "#fefefe"}
     info-card: { type: card, bg: "#f4f4f4", fg: "#393c41", radius: "8px", padding: "0px 24px", use: "Filled information card on Model 3 marketing page" }
-    carousel-dot: { type: tab, bg: "#ffffff", fg: "#d0d1d2", radius: "8px", padding: "4px", states: "default and focus computed snapshots", use: "Model 3 carousel dot" }
+    carousel-dot: { type: tab, bg: "#ffffff", fg: "#d0d1d2", radius: "8px", padding: "4px", states: "default and focus computed snapshots", use: "Model 3 carousel dot" , focus: "#d8d9d9"}
     mode-tab: { type: tab, fg: "#171a20", radius: "4px", padding: "4px 8px", states: "default, pressed, and focus computed snapshots", use: "Model 3 carousel mode tab" }
     carousel-navigation: { type: button, bg: "rgba(255, 255, 255, 0.75)", fg: "#393c41", radius: "4px", padding: "4px", shadow: "rgba(0, 0, 0, 0.25) 0px 4px 4px 0px", states: "default, pressed, and focus computed snapshots", use: "Inline Model 3 carousel arrow" }
 ---

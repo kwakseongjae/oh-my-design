@@ -47,6 +47,7 @@ verification_v2:
     "tokens.components.editorial-story-item.radius": *showcase_evidence
     "tokens.components.editorial-story-item.type": *showcase_evidence
     "tokens.components.editorial-story-item.use": *showcase_evidence
+    "tokens.components.ghost-outline.pressed": *home_evidence
     "tokens.components.ghost-outline.bg": *home_evidence
     "tokens.components.ghost-outline.border": *home_evidence
     "tokens.components.ghost-outline.fg": *home_evidence
@@ -139,7 +140,7 @@ tokens:
     flat: "none"
   components_harvested: true
   components:
-    ghost-outline: { type: button, bg: "#ffffff", fg: "#000000", border: "1px solid #dddddd", radius: "4px", padding: "16px 16px 16px 20px", height: "52px", font: "14px / 700", states: "default on home and magazine; pressed observed on product outline CTA", use: "Editorial more and brand-home action" }
+    ghost-outline: { type: button, bg: "#ffffff", fg: "#000000", border: "1px solid #dddddd", radius: "4px", padding: "16px 16px 16px 20px", height: "52px", font: "14px / 700", states: "default on home and magazine; pressed observed on product outline CTA", use: "Editorial more and brand-home action" , pressed: "#f4f4f4"}
     carousel-control: { type: button, bg: "rgba(0,0,0,0.5)", fg: "#ffffff", radius: "9999px", padding: "14px", height: "52px", font: "16px / 400", states: "disabled, focus, hover, pressed", use: "Product-image previous/next control" }
     product-grid-item: { type: listItem, bg: "transparent", radius: "4px", use: "BEST product result with image, brand, name, discount, price, and shipping caption" }
     editorial-story-item: { type: listItem, bg: "transparent", radius: "0px", use: "29Magazine and Showcase story/list entry" }

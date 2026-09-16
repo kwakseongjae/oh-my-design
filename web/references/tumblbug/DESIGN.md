@@ -48,7 +48,7 @@ tokens:
   components:
     button-primary: { type: button, bg: "#fd5744", fg: "#ffffff", radius: 9999, padding: "14px 24px", font: "16/700", use: "Primary CTA 후원하기" }
     button-secondary: { type: button, bg: "#000000", fg: "#ffffff", radius: 9999, padding: "14px 24px", font: "16/700", use: "Strong neutral action" }
-    button-outline: { type: button, bg: "#ffffff", fg: "#545454", radius: 9999, padding: "11.5px 16px", font: "14/700", use: "Secondary actions, 1px border #e4e4e4" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#545454", radius: 9999, padding: "11.5px 16px", font: "14/700", use: "Secondary actions, 1px border #e4e4e4" , hover: "#f0f0f0", pressed: "#f0f0f0"}
     button-ghost: { type: button, fg: "#000000", radius: 9999, padding: "8px 12px", font: "14/700", use: "Inline nav / utility action" }
     input-default: { type: input, bg: "#ffffff", fg: "#000000", radius: 8, padding: "12px 14px", font: "14/400", use: "Default text input, 1px border #e4e4e4" }
     input-search: { type: input, bg: "#f0f0f0", fg: "#000000", radius: 9999, padding: "12px 16px 12px 40px", font: "14/400", use: "Header pill search bar" }

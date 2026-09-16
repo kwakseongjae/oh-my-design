@@ -92,6 +92,8 @@ verification_v2:
     "tokens.components.serp-tab.radius": *serp_component
     "tokens.components.serp-tab.padding": *serp_component
     "tokens.components.serp-tab.font": *serp_component
+    "tokens.components.serp-tab.hover": *serp_component
+    "tokens.components.serp-tab.pressed": *serp_component
     "tokens.components.serp-tab.states": *serp_component
     "tokens.components.serp-tab.use": *serp_component
     "tokens.components.filter-chip.type": *serp_component
@@ -160,7 +162,7 @@ tokens:
   components:
     search-input: { type: input, bg: "transparent", fg: "#000000", radius: "0px", height: "58px", padding: "17px 0", font: "21px / 700 / System", states: "focus and autocomplete listbox expansion observed", use: "Portal-home search query input inside the branded search assembly" }
     search-submit: { type: button, bg: "transparent", fg: "#2e2e2e", radius: "0px", height: "58px", padding: "9px 9px 9px 10px", states: "default observed; hover and pressed not retained", use: "Portal AI/search submit control" }
-    serp-tab: { type: tab, bg: "transparent", fg: "#8c8c8c", radius: "0px", padding: "6px 12px 14px", font: "16px / 600 / System", states: "default #8c8c8c; hover and pressed #595959", use: "Search-result vertical navigation" }
+    serp-tab: { type: tab, bg: "transparent", fg: "#8c8c8c", radius: "0px", padding: "6px 12px 14px", font: "16px / 600 / System", hover: "#595959", pressed: "#595959", states: "default #8c8c8c; hover and pressed #595959", use: "Search-result vertical navigation" }
     filter-chip: { type: badge, bg: "#ffffff", fg: "#0c43b7", border: "1px solid #e5e5e5", radius: "18px", padding: "4px 12px 4px 4px", font: "13px / 400 / System", use: "Search-result image/filter chip" }
     result-card: { type: card, bg: "#ffffff", fg: "#1c1c1c", radius: "12px", use: "Search-result grouped content card" }
     paging-button: { type: button, bg: "#ffffff", fg: "#2e2e2e", border: "1px solid rgba(0,0,0,0.15)", radius: "9999px", height: "36px", shadow: "0 1px 2px rgba(0,0,0,0.06)", states: "default observed; hover and pressed not retained", use: "Portal carousel previous/next control" }

@@ -53,6 +53,8 @@ verification_v2:
     "tokens.rounded.sm": *collection_live
     "tokens.rounded.xs": *collection_live
     "tokens.shadow.none": *collection_live
+    "tokens.components.category-tab.hover": *home_live
+    "tokens.components.category-tab.pressed": *home_live
     "tokens.components.category-tab.type": *home_live
     "tokens.components.category-tab.fg": *home_live
     "tokens.components.category-tab.font": *home_live
@@ -93,7 +95,7 @@ tokens:
   shadow: { none: "none" }
   components_harvested: true
   components:
-    category-tab: { type: button, fg: "#b5b5b5", font: "18px / 400 / Pretendard", states: "Selected tab is #5f0080 at 18px / 500; the captured inactive tab changed to #5f0080 at both hover and pressed.", use: "Category control at home::[data-omd-capture=\"7\"] and surface-3::[data-omd-capture=\"7\"]." }
+    category-tab: { type: button, fg: "#b5b5b5", font: "18px / 400 / Pretendard", states: "Selected tab is #5f0080 at 18px / 500; the captured inactive tab changed to #5f0080 at both hover and pressed.", use: "Category control at home::[data-omd-capture=\"7\"] and surface-3::[data-omd-capture=\"7\"]." , hover: "#5f0080", pressed: "#5f0080"}
     form-input: { type: input, bg: "#ffffff", fg: "#333333", font: "16px / 400 / Pretendard", error: "Error state was captured at home::[data-omd-interaction-capture=\"form-error-0-0\"] and surface-3::[data-omd-interaction-capture=\"form-error-0-0\"]; sampled computed values matched the retained default sample.", use: "Captured form input only; no focus, disabled, or success variant is specified." }
     product-list-article: { type: card, fg: "#333333", radius: "0px", font: "14px / 400 / Pretendard", use: "Article wrapper in the new-products product list at surface-3::article; 249px sampled width, with no card surface or hover variant observed." }
 ---
