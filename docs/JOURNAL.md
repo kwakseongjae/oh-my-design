@@ -1,3 +1,242 @@
+## 2026-09-16 (13) — ubie 산문 파생값 제거, 파생 린트 13건 분류
+- ubie: 파생값이 산문·팔레트·에이전트 프롬프트 6곳에 퍼져 있었다. 검증값으로 교체(#304cad→#283f91, #f0f2fc→#f6f6f6, #c12748→#a1213c). accent 변형은 배포 CSS에 없어 값 교체 대신 부재를 사실로 서술하고 accent-hover 토큰 제거, 프롬프트도 "hover를 지어내지 말라"로.
+- 검출기가 내 문구를 막았다 — "unresolved —"는 placeholder 패턴이다. 부재를 사실로 서술하는 것과 미정 표시는 다르다는 지적이 맞아 다시 썼다. omitted 클레임이 같은 검출기와 충돌하지 않는 것도 확인(백틱 라벨이라 통과).
+- possibly_derived 13건 분류: Proof에 측정 기록 있는 4건(chunghwa/returnzero/sparkful/spoqa)과 팔레트 이름 4건(amazingtalker/openai/muji/wadiz)은 결함 아님.
+- 실제 검토 대상 5건(coinbase/kintone/meta/uniqlo/yourator)은 상태 전용 토큰인데 측정 기록이 없다. 다만 다섯 모두 verification_v2가 없어 파생인지 판별 불가 — 직접 증거 없이 파기하지 않고 재검증 대기열로 남긴다.
+- 등급 140/160/140 유지, web 937 PASS, typecheck·lint PASS. ubie가 린트에서 빠져 14→13.
+
+## 2026-09-16 (12) — 상태값 충전: 에이전트 대신 도구로, prose_only 164→147
+- 에이전트 배치 두 번(3×14, 6×7) 모두 70분/20분간 무산출로 중단. 판단을 위임하는 대신 판단 기준을 코드로 옮겼다.
+- 경로 1 셀렉터 선언: 레퍼런스가 use:에 측정 셀렉터를 이미 적어둔 경우(kurly category-tab 등) 15개. 경로 2 기하 대조: bg/fg·radius·height·padding·font 근거 4개 이상 + 색 일치 필수로 21개. 한 토큰이 여러 요소에 걸리면 임의 선택이라 4건 제외.
+- apple을 건너뛴 게 이 규칙의 근거 — 같은 #0071e3인데 radius 18px/12px로 전혀 다른 컨트롤이었다. 색만 봤으면 틀린 값이 들어갔다.
+- 내 스크립트 버그 2건을 검사가 잡았다: kurly의 category-tab이 typography에도 있어 엉뚱한 블록을 고친 것(claim_path_unknown), baemin parity 픽스처 SHA 고정. 둘 다 수정 후 440개 전수 오배치 0건 확인.
+- 도구 3종 신설(extract/match/apply-state-values). 등급 140/160/140 유지, web 937 PASS, typecheck·lint PASS. 남은 것: 판정불가 14, delta 없음 114.
+
+## 2026-09-16 (11) — 번들에 상태값이 있었다. 하네스는 멀쩡했고 집계가 접었다
+- 앞선 "번들에 상태값 없음" 결론이 틀렸다. captureStates()가 hover/pressed/focus 적용 상태로 computed style을 찍어 surfaces[].elements[]에 ::state-<name> 원소로 넣고 있었다. 86/177 번들에 4,748개(pressed 2,226·hover 1,565·focus 957).
+- interactions[]와 components[].states만 보고 판단한 게 원인. 그 둘은 이름만 담는 게 맞지만 전부가 아니었다.
+- 도구 추가: web/scripts/extract-state-values.mjs (npm run state-values). representative.selector로 base↔::state-* 조인, 스타일 diff를 제안으로 출력, 파일은 안 씀(토큰 이름 매칭은 사람 몫).
+- 커버리지: 67 ref / 560 상태. 상태값 필요 164건 중 41건이 조인으로 해결, 56건은 delta 없음, 67건은 번들 없음.
+- 결과적으로 캡쳐 하네스 수정은 선행 조건이 아니다. 실행계획 정정 2로 기록.
+
+## 2026-09-16 (10) — 파생값 린트 구현, 오탐 2건이 설계를 고쳤다
+- advisory 2종 신설: token_value_self_declared_derived(산문이 추정이라 밝혔는데 토큰에 있음) / token_value_possibly_derived(파생 동사 + 토큰에 존재). 값이 토큰 층에 도달했을 때만 잡는다.
+- 줄 단위 스캔이 오탐을 냈다 — bunjang은 관측 #d80c18과 보간 #c00b15를 한 문장에 쓰고, hana는 "shadows were not observed" 다음 문장에서 관측 #2dc396을 인용한다. 문장 단위 + 단서 뒤 hex로 범위를 좁혀 둘 다 해소.
+- 회귀 테스트 6개로 고정(원형 감지/수정후 해제/같은 문장 base 미검출/ubie 형태 감지/hana 오탐 미검출/토큰 밖 서술 미검출). web 937 PASS, typecheck·lint PASS, 등급 유지.
+- 결과: 고확신 0건(bunjang 수정 완료), 검토 대상 14건. 그중 spoqa·amazingtalker·openai는 수동 확인에서 이미 결함 아님으로 판명.
+- 다음: 남은 11건 검토, ubie §4 산문 6건 교체, yourator 출처 확인, 캡쳐 하네스 수정(막힌 146개의 유일한 길).
+
+## 2026-09-16 (9) — 채우기 1차 54키, 그리고 파생값이 토큰에서 사실이 되는 결함 확인
+- fill-kr: 13/16 ref에 상태키 54개(ubie 16·gangnamunni 7·inflearn 7·velog 5). 등급 유지, prose_only 177→164, 상태값 보유 ref 240/440. toss·banksalad·pinkfong은 근거 없어 못 채움(정직한 미달).
+- ubie 파생 결함 6/6 확인: §4의 "darken to #304cad (blue700)"는 규칙 적용이지 관측이 아니며 실제는 #283f91. 버전 드리프트 아님(CSS 2025-04-18 vs 검증 2026-06-06).
+- bunjang이 더 나쁜 형태: 산문은 "interpolated; not directly observed"라고 밝히는데 토큰엔 단서 없이 primary-hover/hover로 들어가 있었다 → 토큰 2곳 제거, 산문 보존.
+- 범위를 좁혔다: spoqa는 출처에 관측 기록 있어 결함 아님, amazingtalker/openai는 팔레트 이름, yourator는 근거 불분명이라 파기하지 않고 검증 대상으로 남김.
+- 구조적 원인은 토큰 층에 "파생/추정" 표시 자리가 없다는 것. §9의 omitted/unresolved가 그 자리. 열린 것: yourator 출처, ubie 산문 6건, kakaopay bg 승격 의혹, 파생 문구 린트화.
+
+## 2026-09-16 (8) — 게이트 좁힘·omitted 도입, 그리고 "번들에 상태값이 있다"는 전제가 틀렸음을 확인
+- 게이트 범위 축소(신규 생성 금지 유지, 기존 파일 증거 갱신 허용) 스킬 4개 반영. omitted 클레임 도입 — Google 필드명 차용하되 verified-absent/unresolved/out-of-scope 사유 분류를 추가, 검증기+테스트 5개.
+- 스펙 헤더 2.1.0 올렸다가 되돌림: 매니페스트 스키마가 format_version const "2.0.0"이라 헤더만 올리면 전 매니페스트와 불일치. 버전 승격은 체인 전체를 함께 움직여야 함을 스펙에 명시.
+- fill-bundles 에이전트가 작업을 거부하고 전제를 반박 — 직접 재확인 결과 맞다. 번들 interactions 237건 전부 색상값 0, components[].states 2,298건 전부 문자열, representative.style은 정지 상태 하나뿐. 하네스가 상태 "이름"만 찍고 "값"은 안 찍는다.
+- 따라서 실행계획의 "R형 55개 무료 재투영"은 성립 안 함 → 문서 정정. 기존 산문은 증거를 버린 게 아니라 미관측을 정직하게 기록한 것(22개는 "no state value is inferred" 명시). 선행작업 신설: capture-reference-evidence.ts가 상태 적용 중 computed style을 찍도록 수정.
+- 내 탐지 코드에도 같은 구멍(키 존재만 검사) 발견해 수정 — 렌더 가능한 값만 인정. 166→177로 11건 추가 노출. 등급 무변동, web 931 PASS.
+
+## 2026-09-16 (7) — 게이트 결함 2건: 탐지 착수, 강제는 복구 이후로 분리
+- 오너가 Q10(b 먼저)·Q11(7섹션 유지+omitted/priority order/Google 리더)·게이트 수정 승인.
+- 측정이 계획을 바꿨다: 두 결함을 바로 차단하면 verified 140→11. 93/140이 산문 states 한 줄로 통과 중이라, 조이면 만료를 3주 앞당겨 자초하는 셈.
+- 그래서 비차단 탐지만 구현 — INDEXED_STATE_KEYS, componentCoverage(), componentCount/interactive/stated 필드, 신규 advisoryCodes(prose_only 166·noninteractive 30·absent 6).
+- reasonCodes에 섞었다가 테스트가 설계 실수를 잡아냄(그 필드는 차단 사유 전용, verified는 비어야 함) → 별도 필드로 분리.
+- 등급 무변동(140/160/140), web 931 PASS, typecheck·lint·check:reference-pipeline PASS. 복구 worklist가 이제 데이터로 존재. 강제 전환 시점은 별도 결정. Q9(카탈로그 쓰기 게이트)는 여전히 140개 실제 수정을 막는다.
+
+## 2026-09-16 (6) — 포맷 방향 조사: 컴포넌트가 아니라 토큰 열거를 덜어내는 게 업계 방향
+- Google Labs가 DESIGN.md 규격 발행 중(★27,942, Apache-2.0, homepage=Stitch, alpha). 섹션 7=Components — 표준화했지 삭제 안 함. PHILOSOPHY는 "Prose, not Tokens"를 명시.
+- Vercel design.md 39,519B에 hex 0개 + "do not read the stylesheet into context". 덜어낸 건 토큰 값이지 컴포넌트가 아니다. M3는 컴포넌트 명세=토큰 테이블(md.comp.*)이라 "토큰 대 컴포넌트"는 범주 오류.
+- 오너 직관의 절반 적중: prose 강화는 맞고, 자를 대상을 반대로 지목. 제안=컴포넌트 유지+형태 교체(산문→상태 인덱스 토큰 맵).
+- 기회: m3.material.io/material.io/design.google 모두 llms.txt 404, Stitch만 200. M3 문서와 출하 SCSS 값 불일치 확인 — 검증·출처가 해자.
+- 신설 Q10(복구 시 컴포넌트 형태)·Q11(Google 8섹션 정렬 여부). 선행: 게이트의 컴포넌트 부재 보상 결함 수정.
+
+## 2026-09-16 (5) — 만료 복구가 카탈로그 쓰기 게이트에 막혀 있음을 확인
+- reverify 패킷 3단계가 /omd:add-reference --mode update를 부르는데 그 스킬이 CORE_V2_CATALOG_WRITE_BLOCKED다. 기존 복구 경로 자체가 막혀 있다.
+- 우회로 없음 확인: reference-quality.mjs:196-198이 소스 하나라도 TTL 초과면 막는다. 140개 전부 product-surface(90일) 보유, 긴 TTL이 구제 못 함. TTL 재분류도 파일 쓰기.
+- Q9 신설(A 좁은 개방 / B 만료 수용 / C 23일 내 Core v2 완주=불가). 권고 A이나 게이트 문구가 예외를 배제하므로 오너가 열어야 한다.
+- 착수 가능: 백업, krds 읽기전용 리허설, 아프로디테 B1/B2, GA4 D.5, A1/A3 도구, C1 JP 게이트, C6 어휘 재탐색 — 전부 게이트 밖.
+- 착수 불가: Week 1 실제 복구(140개). Q9 없이 시작할 수 없다.
+
+## 2026-09-16 (4) — Q7 해결: 증거 145MB는 git 미추적 확정, 보관 증명 구축
+- 오너 결정: 내부 캡쳐 산출물이라 저장소에 넣지 않는다. 제거도 하지 않는다. 로컬 전용 폴더 컨벤션으로 정리.
+- "커밋 안 함"과 "없어져도 됨"을 분리: 파일은 저장소 밖, 목록·SHA는 저장소 안(bench-store 선례와 동일).
+- 추가: scripts/local-store.mjs(--write/--verify), artifacts/local-store.manifest.json(510파일/145.4MB), artifacts/README.md, .gitignore 사유 명시, AGENTS.md 레포맵, npm run local-store.
+- diff 감지 실검증(임시 파일 추가 → AHEAD → 제거 → OK). lint PASS. 벌크는 여전히 무시됨.
+- 남은 것: 백업 위치 1곳 미설정(매니페스트는 손실을 알려줄 뿐 막지 못한다). Q1이 트랙 A를 계속 막는다.
+
+## 2026-09-16 (3) — CJK 리서치 4갈래 종료, 출처 신원 규칙 확립
+- JP 후보 100+예비21·레지스트리 113, CN Tier1 31 live(+30 cap), TW 신규0/깊이2:1, KR Tier1 4건 재발견(47 후보).
+- 정정 4건: evidenceCoverage 이진값 · proof gate는 yaml 아닌 catalog-integrity.test.ts:204 · 중국 유입은 "불가"가 아니라 미측정 · 상한 630~710도 잠정(C6 재탐색 전).
+- 출처 검증 규칙 확립: GitHub은 존재하는 모든 계정에 200을 준다(github.com/smarthr≠SmartHR=kufu, zozo-tech≠ZOZO=st-tech, advantech=바닥재). 상태코드 아닌 렌더 신원을 본다.
+- 기존 440 감사 직접 실행: 고유 org 64개 전량 신원 확인, 오염 0. bunjang 정본은 이미 "200 but no public repos"를 기록 중 — 규율이 집필 단계에 있다.
+- 열린 것: Q7 증거 145MB 백업(만료까지 23일), Q1 정본 정책, Q8 목표 재정의. packages/mcp 40개 드리프트는 아카이브라 작업 아님.
+
+## 2026-09-16 (2) — CJK 리서치 완료, 그리고 24일 뒤 verified 전량 만료 발견
+- verified_v2 140개가 2026-10-09~11 동시 만료(7월 단일 배치, product-surface TTL 90일). 10-12엔 0 verified.
+- 그 티어가 가장 안 쓸모있다: 7월 승격은 컴포넌트를 지워서 통과(3.1 vs legacy 9.6, 36%가 button 없음). 전환은 티어가 아니라 컴포넌트 수를 따라간다.
+- 고칠 증거는 artifacts/reference-evidence/ 177번들(145MB)에 이미 있으나 git 추적 0/177 — 한 디스크에만 존재.
+- 정정 2건: evidenceCoverage는 이진값이라 깊이 근거가 아니었다; proof gate는 regional-sources.yaml을 안 읽고 catalog-integrity.test.ts:204의 negative host filter다.
+- CJK 상한 615~690(1000 미달). getdesign.kr 등장으로 "아무도 CJK를 안 한다"는 종료. 열린 것: Q7 증거 백업, Q1 정본 정책, Q8 목표 재정의.
+
+## 2026-09-16 — 우선순위 재편: 440 리뉴얼 최우선, 랜딩 보류
+- 병목 확정: 신규 레퍼런스 작성 스킬 5종이 CORE_V2_CATALOG_WRITE_BLOCKED — 1000 확충은 440 리뉴얼의 하드 의존.
+- 440 실측: 기계 변환 440/440 3.03초·dropped 0이지만 전량 adopt 불가(missing-primary-task). 산출물은 무손실이 아니라 21% 투영이라 그대로 적용하면 /builder가 깨진다. 초안 294개는 투영이 아닌 재작성.
+- 아프로디테 연동이 이미 절반 지어져 있음(7앵커 방출·graph 리더·toss/karrot 바이트 동일). 간극은 DTCG 중첩↔평면과 클레임 마커 0개. 440을 기다리지 않는다.
+- 검사: root lint PASS, root 1475P/1F(bench 타임아웃 flake), web 931P, quality-gate BLOCKED(landing 3건, CI 미연결).
+- 열린 것: Q1 정본 본문 정책(트랙 A 전체를 막음), 블로그 발행일, CJK pool 리서치 마무리, 미커밋 3,152줄.
+
+## 2026-09-08 — Astra/Sol 90분 스프린트 중간 인수
+- 사용자 모델 대체 승인으로 ODDLY 실물·Core 이관·벤치 기반·콘텐츠를 최대4슬롯 병렬 구현.
+- ODDLY 영상/root5환경 PASS, 4canary 격리 rollback/Builder38항목 PASS, 로컬 벤치 제어 검증 완료.
+- 배민/Core ko/en4초안·실행 예제·발행 manifest 완성; 4채널 RC 실제 설치 PASS; 새 F4 랜딩은 실패까지 보존.
+- 열린 것: ODDLY 사용자 시각 판단, Governance 중복 수정, F4 독립 리뷰, 품질검사 진단 분류. 마감09:37:51 KST.
+
+## 2026-09-08 — ODDLY 제작 입력 준비·전송 심사 차단
+- ㄱㄱ로 콘셉트 채택; 3D 프로토타입 명세·격리 입력·SHA·30분 워커 준비.
+- 생성 cutout2개는 RGB/체커보드라 미채택, 원본 보존; 실제3D 캐릭터 안으로 명세 구체화.
+- 자동심사가 새 ODDLY 데이터의 Anthropic 전송동의 부족으로 dispatch 전 거절; provider0, 우회없음.
+- 다음: 프로젝트 단위 구현+수정 전송동의 해결 후 실제 UI/모션 제작.
+
+## 2026-09-08 — 새 ODDLY 마스코트·스크롤 월드 콘셉트
+- 사용자 방향 전환: Higgsgen 개선 중지·원본 보존, fluffy/scroll world 새 프로젝트.
+- CUA로 X 원문·공개 Pearl & Co. 농장→주방 확인; 게시 반응과 전환 성과 구분.
+- ODDLY hero/4장면 이미지2장 생성·보존, 제품 약속/안무/실행 단계 문서화.
+- 다음: 캐릭터·팔레트·종이 세계 시각 채택 후 실제 모션 프로토타입. 현재 구현·발행 없음.
+
+## 2026-09-08 — A2 수정 완료·실제 모션 시각 검토
+- 사용자 수정2회 승인 후 Opus 첫 수정6분18초 완료, 프로세스 종료. 입력10SHA 보존.
+- 실제 interaction46PASS·초기 desktop/mobile 대비 fail0, 최종 HTML과 QA 스냅샷 일치.
+- 16초 실제 브라우저 영상·1440/1024/390 캡처 확보. 중간 어두운 여백/모바일 CTA 분절 WARN.
+- 다음: 사용자 시각 방향 채택. 전체 페이지·발행 미진행, 수정 호출1/2 남음.
+
+## 2026-09-07 — A2 실제 구현 검증 및 후속 호출 차단
+- Opus 첫 구현의 1440×900 static fallback 발견; worker 중단·프로세스 종료·모든 결과 보존.
+- 정적 contrast fail0, interaction FAIL, 시각 리뷰 REVISION; 스크롤/80vh 명시 QA 추가.
+- 10분 수정 명세 준비했으나 자동심사가 추가 외부 호출 승인 부족으로 실행 전 거절; attempt2/provider0.
+- 다음: 수정 호출 권한 해결 후 QA·실제 모션 영상으로 사용자 시각 심사. 전체 페이지 미확장.
+
+## 2026-09-07 — A2 구현 승인·외부전송 심사 거절
+- ㄱㄱ로첫화면/전환구현승인, slice-v3 입력10개+기존source/build와작업명세 준비.
+- Opus5호출은구체payload Anthropic전송동의부족으로자동심사실행전거절; provider0/attempt없음.
+- 파일별크기/SHA·대상·25분1회범위 검토본 작성, 명시동의전재시도/우회금지.
+
+## 2026-09-07 22:35 — A2 데스크톱 스토리보드 결재본
+- 승인된 재기획1단위 완료: 사진영역확장→광원비교4장면, 완성문장·수동선택우선 제안.
+- HTML검토보드/4캡처/상세스토리보드, 장면선택·이미지·390폭 PASS. 입력5SHA 유지, 제품/정본/에셋 무변경.
+- 다음 실제slice구현1단위 및Stage행동변경 승인대기. 새외부호출·Sol대체·usage reset 없음.
+
+## 2026-09-07 — 사용자 단계별 결재로 운영 전환
+- 전체일괄실행 중지, 완료단위 보고 후 UI/분기 승인 대기. 다음 제안 A2 desktop스토리보드 재기획1단위.
+- Sol 완료receipt root검증 후 최종응답 usage limit 발생, 새dispatch/reset/모델대체 없음.
+- goal범위 유지, 자동재개도 사용자 관문 우회 금지.
+
+## 2026-09-07 21:55 — 최종 Builder 인수·제어기 통합
+- DTCG21tests/Next1471pages, root 실제10단계색상변경·4형식·모바일다운로드 PASS; Geist복구·오류/넘침0.
+- B controller24tests 통합/3SHA 검증. 최초QA cwd/consent미처리 실패도 보존, 임시서버/브라우저 모두종료.
+- 다음 B 로컬취소/복구; goal progress, A2/외부payload/정본채택 관문 유지.
+
+## 2026-09-07 21:48 — 제어기 v2 인수·최종 Builder 검증 준비
+- controller v2 root24tests PASS, 제한 인수 원본/해시 보존; temp Sol 종료, 주 Sol 직렬 통합 대기.
+- DTCG 변환과 alias 유효성 검토 진행; UI 글꼴 자기참조 발견, 기존 Geist 연결 복구 요청.
+- 실제 Customize10단계·4형식·모바일 다운로드 QA 준비. goal progress, A2/외부payload 승인대기 유지.
+
+## 2026-09-07 21:37 — 실제 Builder 경로와 추가 인수 반례
+- synthetic compiler fixture로 Home→Builder→preview→CSS/DTCG다운로드·evidence·Customize진입 root PASS; 서버/브라우저 종료. 정본채택 아님.
+- exporter3결함·override출처·unknownfont추정설명 수정, DTCG최종규격 불일치 발견→Sol20분 표준화 단위.
+- temp controller20tests root PASS이나 output변조/중첩workspace 반례 재현→10분 수정, 통합보류. goal progress; A2/외부payload 동의대기 유지.
+
+## 2026-09-07 21:14 — r2/후보 비교와 Core 소비자 검토
+- r2·현재 후보를 같은2viewport×2스크롤로8장 캡처/시각 검토. 후보 모바일 명료성 개선, desktop 빈 전환·미완성 캡션 관찰; A2 방향 재기획 권고, 오너 응답 대기.
+- Sol D1 Builder/override/alternate export/evidence 연결 구현 중. root rejected transaction prose 우회·token type·검증 라벨 의미 문제 회귀/수정 요청.
+- B0 rater packet·B1 검증된 중단시간/복구 계약 구체화. 다음: Sol D1 unit 테스트/인수, B controller 구현. 외부호출 두 건은 동의대기 유지.
+
+## 2026-09-07 21:02 — 중단 지점 회수·브라우저 큐 통합
+- broker4결함 main 통합/12tests PASS, root4SHA확인. 임시2Sol 예외 종료.
+- Core closure14파일·isolated smoke root PASS, 실제Next API200 확인. Sol Builder/override/export 및 긍정 typed 경로 후속 구현.
+- Blender host CLI 실제렌더 가능/MCP미연결 기록. A2 방향·B/E payload 동의대기 유지, 새외부호출/채택/발행 없음.
+
+## 2026-09-07 20:35 — Core contract 인수와 실제 배포 연결
+- root가 typed consumer8tests 재실행 PASS와 구현/test SHA 일치 확인. hash-consistent noncanonical/wrong-claim 음성검증 포함.
+- 4canary 정본/staged8개 SHA 원본 일치. Sol web-only verifier packaging·loader/API 연결 후속45분 단위 진행.
+- 외부 payload 승인/A2 방향 응답 대기 유지. 다음: 배포 closure 검증과 B1 broker4결함 수정; 전체D1/채택 미완료.
+
+## 2026-09-07 — 브라우저 큐 반례·공식 글꼴 근거 보강
+- B1 root 로컬 재현4개: 실패 종료불가, 이전다운로드 재귀속, timeout 오분류, invalid completion의 중복 성공 event. 원본 receipt 보존, Sol 수정 대기.
+- 공식 fonts/catalog/license CUA 본문 확보; history AX는 확장 UI로 다시 차단. E19-input v2 준비, 기존 거절묶음 보존, 외부호출0.
+- Sol D1 typed contract 구현 중이며 canonical verifier의 실제 web 배포 연결 범위 확정. 다음: D1 검토/패키징, B1 회귀 수정; 외부전송·A2 방향 응답 대기.
+
+## 2026-09-07 재개 — A1 최종 인수·D1 후속 구현
+- 중단 작업 회수: A1 overflow/contrast/noJS/interaction 통과, 12초 MP4와 해시 receipt 완성; A2 오너 방향 판단 대기.
+- D1 consumer foundation45tests PASS. Sol source-bound typed contract 후속 단위 재개; canonical/발행 변경 없음.
+- 앱 goal 부재 확인 후 승인된 전체5트랙 goal 복구. Grok/Opus payload 승인 대기 유지; 다음: D1 typed transport 검증, A2 방향 판단.
+
+## 2026-09-07 18:47 — A1 회귀 검증·Core 구현 진입
+- A1 v2 contrast/noJS 및7interaction PASS;4viewport light-copy overflow 발견, 원본보존 후 Sol 기계적 수정 요청.
+- B2 로컬 가짜CLI12tests root PASS. D1 실제Core loader throw/혼합AST 수정 착수. B0 사람평가·통계 계약 초안 작성.
+- E0/E1 Opus dispatch는 자동심사가 local payload 전송 동의 부족으로 실행 전 거절; 승인대기, 모델호출0. 다음: A1 demo/owner review, D1 canary, 승인 후 CLI 작업.
+
+## 2026-09-07 18:29 — 첫 HTML 실렌더와 admission 승인 차단
+- A1 첫 HTML 실제1440/390 렌더 PASS, desktop contrast FAIL; 원본 보존 후 Opus 보완 exec34401 실행.
+- B2 새 no-skill profile provider-zero 검사 완료; live 호출은 자동 승인 심사에서 실행 전 거절. 우회 없이 구체 payload 승인 대기, auth cleanup 검증 완료.
+- 배민 공식778 원문/홈 글꼴목록 확인, E 집필 handoff 준비. 다음: A1 보완·interactive QA, B 승인 후 새 profile probe.
+
+## 2026-09-07 — 미디어 실증 / D-0 선정 완료 / A-1 구현
+- Grok 스틸1+편집3 실제회수; 영상은 ZDR저장소필수로차단, 개인정보설정유지.
+- D0 baemin/3o3/bunjang/makinarocks 인수; Opus A1 slice exec69305 시작.
+- Sol FIFO8tests/root재확인PASS, 미디어프로필context격리와worker연결보완중; E0공식근거부분검증.
+- 다음: A1렌더인수·B2실제admission. goal active/progress, 나머지5트랙목표유지.
+
+## 2026-09-07 — A-0 인수 / A-1·D-0 진행
+- Opus v2 브리프 인수, 기존 seq의 카메라/창/벤치 불일치를 원본으로 확인하고 재사용 가정 철회.
+- Opus D-0 CLI exec83049 dispatch; Sol B-0/B-1 병렬 지속.
+- 다음: Grok P0 실제 생성/회수, broker 인수, Core 4개 선정 결과 검토. goal active/progress.
+
+## 2026-09-07 — 실행 기반 인수·goal 시작
+- 완료: F-0~3. 워커 13개 포함 targeted81개, tarball/실제Chrome render, production ci --omit=dev, build/lint/mirror PASS.
+- 처리: 종료/재개·결과/log SHA·설치 의존성·hash freshness 구현, lockfile prod/dev 불일치 수정. 기존 픽스처는 UNVERIFIED/누락 그대로 보존.
+- 시작: 5트랙 goal 활성. Opus A-0 초안 반환 후 근거/모순 수정1회 진행, Sol B-0 4과제/스킬 lock 초안 및 B-1 bridge 구현.
+- 다음: A-0 실제 산출 인수→D-0, B-1 provider-zero→실제 media/context calibration. 공개/미적 채택은 구체적 결과에서 판단.
+
+## 2026-09-07 — 실행 기반 착수
+- 한 일: 사용자 실행 승인 반영, dirty 57개 snapshot·SHA 보존, codex/track-foundation 생성, 트랙 출력/소유권 분리.
+- 확인: CUA Chrome의 Imagine 로그인·composer 연결 재확인; media/broker 완료로 간주하지 않음.
+- 진행: Sol에 F-1~3 워커 복구·설치본 closure·hash receipt 구현 위임. 첫 호출 capacity 오류 후 같은 모델 1회 재시도.
+- 다음: 기반 인수 테스트 통과 시 goal 생성, Opus A-0와 벤치 준비 등 독립 작업 진행.
+
+## 2026-09-07 — 워커 입출력·4-way 병렬 준비 판정
+- 한 일: 임시 폴더에서 Opus/Grok 입력→결과 파일→회수와 Grok4개 동시 실행 검증. 모두 PASS, 인증 사본 제거.
+- 판정: 5트랙/28작업 계획과 기본 워커 경로는 착수 가능. broker/media/장시간 복구는 기존 첫 실행 작업으로 남김.
+- 정리: F-1 기본 워커 확인과 B-1 벤치 전용 admission을 분리해 의미상 순환 대기 제거; 증거/준비 판정 저장.
+- 다음: 기존 로드맵으로 F 기반 구현과 독립 A/D 준비 착수. 사용자가 아직 본 실행을 지시하지 않아 goal 미생성.
+
+## 2026-09-07 — 브라우저·로그인 사전 점검과 처리
+- 한 일: 전역 browser-harness 강제 출처 확인, 프로젝트 CUA Chrome 우선 명시. Chrome/Imagine 로그인 확인; iTerm2 제어는 도구 정책 거절.
+- 검증: Claude sandbox auth false/host Max true, Opus5·Grok4.6 실제 marker 응답 성공. Codex 로그인/잔여79% 확인.
+- 처리: Grok 빈 tools 옵션 대신 임시 프로필+명시 allowlist로 skills0/tools1 확인; credential 사본 제거, 전역 설정 보존.
+- 다음: 본 작업/goal은 사용자 지시대로 미착수. 실제 broker·media·4세션 격리 검증부터 이어가기; 최신 runtime-access-preflight 참조.
+
+## 2026-09-07 — 자율 에셋·Grok 4조건 병렬 계약
+- 한 일: 공통 에셋 제공 철회, 동등한 도구에서 조건별 생성·에셋/페이지 별도 평가로 개정. Sol이 신규 계약·검증 구현.
+- 검증: 17/17 provider-zero PASS, draft PASS, calibration/main 미준비 차단. 실제 Grok 모델 호출/에셋 생성0.
+- 발견: temp cwd+GROK_HOME 분리에도 호환 경로122skills/14hooks/6MCP 탐색. 순정 격리 미확인; discovery receipt 저장.
+- 다음: F-1 호환 설정 격리→B-1 browser broker·adapter→4조건 병렬 calibration. 기존 동결 runner·전역 사용자 설정 보존.
+
+## 2026-09-07 — 5트랙·모델 실행 계획
+- 한 일: F/B/A/D/E 계획과 28개 의존 작업 보드 작성. Sol 통합, Opus 5 제작/집필, Grok 4.6 벤치/에셋 배치.
+- 결정: 벤치 calibration4+첫제출36+후속12, heavy compute 독점; 작품/전이/출하, 발행/14일 학습 완료를 분리.
+- 열린 것: 실제 model ID·인증·browser/media probe, 배포 dependency/receipt. 새 모델 작업·발행·벤치는 미착수.
+- 다음: F-0→F-1~3, 확인된 Opus로 A-0/D-0/E-0, Grok 에셋 probe 후 B-0~2. 최신 실행 계획/보드 우선.
+
+## 2026-09-07 — Codex 인수 감사 및 릴리즈 계약 수정
+- 한 일: 4축 현황/코드/실물/원격 이슈 대조, doctor·5개 언어 목록·strict 품질 gate·mirror 수정, 캠페인 오정보 정정.
+- 검증: CLI 1420 pass/180 skip, 웹 891 pass, build/typecheck·설치본 smoke·mirror PASS; 미생성 2칸 BLOCKED 확인.
+- 열린 것: Aphrodite 배포 dependency/fixture·SHA receipt, 순정 포함 새 실행, Core catalog 채택, 기업별 콘텐츠. live 브라우저 미검증.
+- 다음: 감사/벤치/아프로디테 재시작안 참조. 이전 CURRENT_STATE 원문은 archive에 보존; 기존 사용자 변경 유지.
+
 ## 2026-09-04 (저녁) — r3 60점 → 리서치 4레인 → 규칙 LC-49~59/LI-34~40 → r4 빌드 (중단)
 - 한 일: r3 60 원인 진단(개수만 재는 검사기·호버 관문 요구한 C8·3층 허용) → 리서치 4레인(실측 프로브 16사이트·UX 문헌 21·타 스킬 10·OSS 16+효과 3종) → `scale-and-simplicity.md`, 게이트 v2(C8′·C9·C10·D·E·다이얼), 검사기 LI-34~40(폴드 히트테스트 커버리지·호버 관문·초점비·폴드 단위·모션 채널·홀드·여백), 타입 112/80/56/40 → r4 빌드(풀블리드 6·핀 3·GSAP 0·관문 0·LI-1~40 ok·1.13MB) → 페르소나 3인(관문 0·마찰 11·이탈 3/3 CTA 순환) · 리뷰 r4(eye 72·BLOCK 4) → 라운드 2 배치 진행 중 사용자 지시로 안전 중단.
 - 열린 것: 라운드 2 리뷰 항목 잔여 + 검사기 스윕 → solo 영상 재렌더 → 채점 요청. 도구 후속(text-contrast 전 섹션, scrub-probe `--e`). 재개 절차는 CURRENT_STATE 맨 위.
