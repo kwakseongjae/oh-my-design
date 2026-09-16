@@ -136,9 +136,37 @@ function proofSignals(verificationMarkdown) {
 const SELF_DECLARED_DERIVED = /\b(?:interpolated|not directly observed|not observed|estimated|approximated|inferred value|extrapolated)\b/i;
 const DERIVATION_VERB = /\b(?:darken(?:s|ed|ing)?\s+(?:to|toward|towards)|lighten(?:s|ed|ing)?\s+(?:to|toward|towards))\b/i;
 
-function derivedValueSignals(markdown, tokens) {
+/**
+ * 팔레트에 이름이 붙은 값. `primary-deep`, `gray-400`, `foreground` 같은 항목은
+ * **상태 주장이 아니라 색 스케일의 한 단계**이고, 산문이 그 색을 "darkens to"로
+ * 서술했다는 이유로 파생이라 부를 수 없다.
+ *
+ * 2026-09-16에 13건을 분류해보니 8건이 이런 오탐이었다 — `amazingtalker`의
+ * `primary-deep`, `openai`의 `gray-400`, `muji`의 `#333333`(12개 컴포넌트가 쓰는
+ * 브랜드 본색), `wadiz`의 `tint-accent`. 상태 전용 이름(`*-hover`, `*-pressed`,
+ * `*-focus`, `*-active`, `*-disabled`)만 남긴다.
+ */
+const STATE_SCOPED_NAME = /(?:^|[-_])(?:hover|pressed|focus|active|disabled|checked|error)$/i;
+function nonStateePaletteHexes(tokens) {
+  const palette = tokens?.colors ?? tokens?.color ?? {};
+  const out = new Set();
+  if (palette && typeof palette === "object" && !Array.isArray(palette)) {
+    for (const [name, value] of Object.entries(palette)) {
+      if (STATE_SCOPED_NAME.test(name)) continue;
+      if (typeof value === "string") out.add(value.toLowerCase());
+    }
+  }
+  return out;
+}
+
+function derivedValueSignals(markdown, tokens, verificationMarkdown = "") {
   const body = markdown.slice(markdown.indexOf("\n---\n", 4) + 5);
   const tokenBlob = JSON.stringify(tokens ?? {}).toLowerCase();
+  const paletteNamed = nonStateePaletteHexes(tokens);
+  // 값이 Proof/.verification.md에 측정 기록으로 있으면 "darkens to"는 관측값에 대한
+  // 서술이지 파생의 증거가 아니다. 2026-09-16 분류에서 4건이 이 경우였다
+  // (chunghwa #0083ec, returnzero #666666, sparkful #000000, spoqa #008c5e).
+  const proofText = `${verificationMarkdown}\n${(body.match(/^## Proof[\s\S]*/m) ?? [""])[0]}`.toLowerCase();
   const declared = new Set();
   const suspected = new Set();
   // Scope to a sentence, then to the text after the qualifier inside it. Both
@@ -162,6 +190,9 @@ function derivedValueSignals(markdown, tokens) {
       // Only a value that actually reached the token layer is a problem. A
       // derivation described in prose alone asserts nothing to a consumer.
       if (!tokenBlob.includes(hex.toLowerCase())) continue;
+      // 상태 이름이 아닌 팔레트 항목이면 상태 주장이 아니다.
+      if (paletteNamed.has(hex.toLowerCase())) continue;
+      if (proofText.includes(hex.toLowerCase())) continue;
       if (selfDeclared) declared.add(hex.toLowerCase());
       else suspected.add(hex.toLowerCase());
     }
@@ -342,7 +373,7 @@ export function evaluateReferenceQuality({ id, markdown, frontmatter, verificati
   else if (coverage.interactive === 0) advisories.push("component_noninteractive_only");
   else if (coverage.stated === 0) advisories.push("component_state_prose_only");
 
-  const derived = derivedValueSignals(markdown, tokens);
+  const derived = derivedValueSignals(markdown, tokens, verificationMarkdown);
   if (derived.declared.length > 0) advisories.push("token_value_self_declared_derived");
   else if (derived.suspected.length > 0) advisories.push("token_value_possibly_derived");
 

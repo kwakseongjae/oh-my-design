@@ -216,6 +216,34 @@ describe("derived-value advisories", () => {
     )).toEqual([]);
   });
 
+  it("does not flag a palette step that prose merely describes as darker", () => {
+    // `openai`'s `#b4b4b4` is `gray-400`, a rung on the scale — not a state claim.
+    expect(tokenCodes("- Focus: subtle border darken to `#b4b4b4`", {
+      colors: { "gray-400": "#b4b4b4", primary: "#000000" },
+    })).toEqual([]);
+  });
+
+  it("still flags a state-scoped palette name with no measurement behind it", () => {
+    expect(tokenCodes("- Hover: darken to `#2668a0`", { colors: { "primary-hover": "#2668a0" } }))
+      .toEqual(["token_value_possibly_derived"]);
+  });
+
+  it("clears once the value is recorded as measured in the proof block", () => {
+    // `spoqa` records `#008c5e` in its Tier-1 sources; "darkens to" then describes
+    // an observation rather than asserting a derivation.
+    const prose = "- Active/hover green darkens to `#008c5e` for nav emphasis";
+    const tokens = { colors: { "primary-active": "#008c5e" } };
+    expect(tokenCodes(prose, tokens)).toEqual(["token_value_possibly_derived"]);
+    const withProof = evaluateReferenceQuality({
+      id: "fixture",
+      markdown: `---\nid: fixture\n---\n\n${prose}`,
+      frontmatter: { tokens } as never,
+      verificationMarkdown: "## Proof\n\nactive green #008c5e sampled on the homepage",
+      asOf: "2026-09-16",
+    });
+    expect(withProof.advisoryCodes.filter((c) => c.startsWith("token_value"))).toEqual([]);
+  });
+
   it("ignores a derivation described in prose that never entered the tokens", () => {
     expect(tokenCodes("- Hover: darken to `#304cad` (blue700)", { colors: { primary: "#3959cc" } })).toEqual([]);
   });

@@ -466,9 +466,7 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": [
-      "token_value_possibly_derived"
-    ]
+    "advisoryCodes": []
   },
   {
     "id": "appier",
@@ -1201,9 +1199,7 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": [
-      "token_value_possibly_derived"
-    ]
+    "advisoryCodes": []
   },
   {
     "id": "cjonstyle",
@@ -5456,9 +5452,7 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": [
-      "token_value_possibly_derived"
-    ]
+    "advisoryCodes": []
   },
   {
     "id": "musinsa",
@@ -6074,9 +6068,7 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": [
-      "token_value_possibly_derived"
-    ]
+    "advisoryCodes": []
   },
   {
     "id": "opencode.ai",
@@ -7253,9 +7245,7 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": [
-      "token_value_possibly_derived"
-    ]
+    "advisoryCodes": []
   },
   {
     "id": "revolut",
@@ -8158,9 +8148,7 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": [
-      "token_value_possibly_derived"
-    ]
+    "advisoryCodes": []
   },
   {
     "id": "speeda",
@@ -8253,9 +8241,7 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": [
-      "token_value_possibly_derived"
-    ]
+    "advisoryCodes": []
   },
   {
     "id": "spotify",
@@ -9546,8 +9532,7 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "token_value_possibly_derived"
+      "component_state_prose_only"
     ]
   },
   {
