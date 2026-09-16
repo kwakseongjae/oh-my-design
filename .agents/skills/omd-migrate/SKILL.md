@@ -7,6 +7,17 @@ user-invocable: true
 
 # omd:migrate — catalog write safety gate
 
+**Scope, narrowed by owner decision 2026-09-16.** This gate blocks writes that
+create a *new* legacy reference or a new Core catalog package. It does **not**
+block refreshing evidence on an **existing** reference — `verification_v2`,
+`.verification.md`, `tokens.components` state values, `## Proof` — because that
+produces no Core package and adds no migration debt; the file stays legacy and
+stays in the same queue. Creating a reference, adding a brand, restoring a legacy
+YAML marker, emitting retired section output, placeholder sentinels, or hand-editing
+generated counts and mirrors all remain refused. Full rationale and the two expiry
+conditions: `.claude/skills/omd-add-reference/SKILL.md`.
+
+
 `CORE_V2_CATALOG_WRITE_BLOCKED`
 
 Do not mutate `web/references/<id>/DESIGN.md`, its frontmatter, numbered
