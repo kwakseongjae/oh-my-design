@@ -298,7 +298,7 @@ Size scale: small 12px label / 32px height · default 14px / 44px · large 16px 
 
 ---
 **Verified:** 2026-06-10
-**Tier 1 sources:** https://abema.tv (live inspect 2026-06-10 — large-scale outage day, dark maintenance/sorry shell measured); https://abema.tv/assets/registry.1bbd6d267a32e228541e6.css (ABEMA's own shipped web-app CSS bundle: full `:root` token system + component classes, retrieved via web.archive.org snapshot 2025-12-31 because origin assets rotated during the outage); https://times.abema.tv (ABEMA TIMES, brand-owned media surface, live inspect 2026-06-10)
+**Tier 1 sources:** https://abema.tv (live inspect 2026-06-10 — large-scale outage day, dark maintenance/sorry shell measured); https://abema.tv/assets/registry.1bbd6d267a32e228541e6.css (ABEMA's own shipped web-app CSS bundle: full `:root` token system + component classes, retrieved via https://web.archive.org snapshot 2025-12-31 because origin assets rotated during the outage); https://times.abema.tv (ABEMA TIMES, brand-owned media surface, live inspect 2026-06-10)
 **Tier 2 sources:** none available (getdesign.md/abema and getdesign.md/abematv both NOT_FOUND; styles.refero.design ?q=abema returns no ABEMA listing)
 **Conflicts unresolved:** none
 

@@ -393,7 +393,7 @@ Cloudflare maintains a public, open-source component library — **kumo** (`gith
 ---
 
 
-**Tier 1 sources:** https://www.cloudflare.com (live production marketing site, verified via live DOM getComputedStyle); Cloudflare's public component library **kumo** (`github.com/cloudflare/kumo` — source TSX + `theme-kumo.css` design tokens), the legacy **cf-ui** styleguide (`cloudflare.github.io/cf-ui`), and the docs **Style Guide** (`developers.cloudflare.com/style-guide/components`). Component geometry (size scale, radius ladder, ring borders, dialog/toast/tooltip specs) is lifted from kumo source; the orange-led palette is grounded in the live marketing surface.
+**Tier 1 sources:** https://www.cloudflare.com (live production marketing site, verified via live DOM getComputedStyle); Cloudflare's public component library **kumo** (`https://github.com/cloudflare/kumo` — source TSX + `theme-kumo.css` design tokens), the legacy **cf-ui** styleguide (`https://cloudflare.github.io/cf-ui`), and the docs **Style Guide** (`https://developers.cloudflare.com/style-guide/components`). Component geometry (size scale, radius ladder, ring borders, dialog/toast/tooltip specs) is lifted from kumo source; the orange-led palette is grounded in the live marketing surface.
 
 ## 5. Layout Principles
 

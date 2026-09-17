@@ -387,7 +387,7 @@ Slack buttons are friendly rectangles with soft corners. The hero action is the 
 ---
 
 **Verified:** 2026-06-06
-**Tier 1 sources:** slack.com (live marketing site — aubergine chrome, green CTA, Larsseit headlines), Slack Brand Guidelines PDF (`a.slack-edge.com/.../Slack-Brand-Guidelines.pdf`) · https://slack.com (live production site)
+**Tier 1 sources:** https://slack.com (live marketing site — aubergine chrome, green CTA, Larsseit headlines), Slack Brand Guidelines PDF (`https://a.slack-edge.com/.../Slack-Brand-Guidelines.pdf`) · https://slack.com (live production site)
 **Tier 2 sources:** brandpalettes.com/slack-logo-color-codes, designyourway.net (Lato/Larsseit confirmation), onlinepalette.com/slack
 **Conflicts unresolved:** none. Product UI (Lato, aubergine sidebar) and marketing web (Larsseit, green CTA) documented as parallel surfaces.
 

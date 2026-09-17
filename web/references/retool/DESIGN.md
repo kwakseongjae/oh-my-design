@@ -397,7 +397,7 @@ The signature Retool surface. Tables are dense, mono-valued, and grid-lined.
 ---
 
 **Verified:** 2026-06-06
-**Tier 1 sources:** retool.com (live brand site — dark-first developer aesthetic, Burnt Sienna accent CTAs, app-builder layout language, "Start for free" / "Book a demo" copy), docs.retool.com/apps/guides/presentation-styling/themes (theme + typography controls), mobbin.com/colors/brand/retool (palette names: Green White `#E9EBDF`, Cod Gray, Smalt Blue, Burnt Sienna, Cornflower, White). · https://retool.com (live production site)
+**Tier 1 sources:** https://retool.com (live brand site — dark-first developer aesthetic, Burnt Sienna accent CTAs, app-builder layout language, "Start for free" / "Book a demo" copy), https://docs.retool.com/apps/guides/presentation-styling/themes (theme + typography controls), https://mobbin.com/colors/brand/retool (palette names: Green White `#E9EBDF`, Cod Gray, Smalt Blue, Burnt Sienna, Cornflower, White). · https://retool.com (live production site)
 **Note:** Retool ships no public token catalog; component geometry (radii, heights, spacing) is reconstructed from the live product/marketing UI and standard developer-tool conventions. Hex values for accent/semantic tiers are calibrated to the documented brand palette names.
 
 ## 5. Layout Principles

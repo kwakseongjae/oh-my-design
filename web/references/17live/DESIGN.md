@@ -461,7 +461,7 @@ Marked inline. Personas fictional (§13).
 ---
 
 **Verified:** 2026-05-19
-**Tier 1 sources:** 17.live — live inspect NOT completed (browser redirect); tagline "Live Streaming 直播互動娛樂平台" (WebFetch). primary `#FF4F6E` is brief-provided and matches 17LIVE's hot-pink identity; dark-surface palette and other hexes are grounded approximations pending live re-inspection.
+**Tier 1 sources:** https://17.live — live inspect NOT completed (browser redirect); tagline "Live Streaming 直播互動娛樂平台" (WebFetch). primary `#FF4F6E` is brief-provided and matches 17LIVE's hot-pink identity; dark-surface palette and other hexes are grounded approximations pending live re-inspection.
 **Tier 2 sources:** styles.refero.design / getdesign.md — not checked this pass (browser session unreliable).
 **Tier 2 (Philosophy/founders):** Wikipedia (17LIVE — Jeffrey Huang / June 2015 Taiwan / SGX VT1 / 60M users 154 countries / LIVER terminology / virtual-gift economy).
 **Style ref:** `pinkoi` (TW consumer tone, adapted dark). **Conflicts unresolved:** production hexes beyond primary not live-verified this pass (browser unreliable) — flagged for UPDATE.

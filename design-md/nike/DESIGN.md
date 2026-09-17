@@ -340,7 +340,7 @@ Nike's primary interactive shape is the **pill** (fully rounded). Buttons are bo
 ---
 
 **Verified:** 2026-06-06 (token-level from Nike brand corpus + nike.com observation)
-**Tier 1 sources:** nike.com homepage/PLP/PDP visual language; Nike wordmark (Futura ND Nike 365). Live fetch returned HTTP 403 (bot-blocked); tokens grounded in Nike's documented black/white + Volt system and condensed-display typography. · https://www.nike.com (live production site)
+**Tier 1 sources:** https://nike.com homepage/PLP/PDP visual language; Nike wordmark (Futura ND Nike 365). Live fetch returned HTTP 403 (bot-blocked); tokens grounded in Nike's documented black/white + Volt system and condensed-display typography. · https://www.nike.com (live production site)
 **Tier 2 sources:** Nike typography history (Futura Bold Condensed since mid-1970s; Trade Gothic / Helvetica Now for digital UI) — designyourway.net, fontsinuse.com.
 **Conflicts unresolved:** none. Volt exact hex varies by surface (`#d8ff00` product / `#cdfb40` UI accent); both retained.
 

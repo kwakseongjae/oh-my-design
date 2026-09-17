@@ -182,7 +182,7 @@ Restraint is the defining discipline. The live DOM shows green used sparingly an
 ---
 
 **Verified:** 2026-06-08 (omd-add-reference — Tier 1 live inspect)
-**Tier 1 sources:** https://www.cathaybk.com.tw, https://www.cathay-cube.com.tw (live DOM via playwright getComputedStyle; redirects to cathay-cube.com.tw/cathaybk — homepage of 國泰世華銀行; primary CTA `#00512a`, accent `#26a862`, canvas `#fafafa`, hero 36px/700 all measured live)
+**Tier 1 sources:** https://www.cathaybk.com.tw, https://www.cathay-cube.com.tw (live DOM via playwright getComputedStyle; redirects to https://cathay-cube.com.tw/cathaybk — homepage of 國泰世華銀行; primary CTA `#00512a`, accent `#26a862`, canvas `#fafafa`, hero 36px/700 all measured live)
 **Country sources:** cathaybk.com.tw (brand-owned .tw), cathayholdings.com (國泰金控 group .tw), Apple App Store TW (CUBE App listing)
 **`.verification.md`:** `web/references/cathay/.verification.md`
 

@@ -318,7 +318,7 @@ Small, square-ish, high-contrast overlays on product imagery.
 ---
 
 **Verified:** 2026-06-06
-**Tier 1 sources:** zozo.jp (homepage — black header + white grid editorial system, JP Gothic stack, red price/SALE accent), corp.zozo.com (ZOZO, Inc. service positioning — 7,000+ brand marketplace). · https://zozo.jp (live production site)
+**Tier 1 sources:** https://zozo.jp (homepage — black header + white grid editorial system, JP Gothic stack, red price/SALE accent), https://corp.zozo.com (ZOZO, Inc. service positioning — 7,000+ brand marketplace). · https://zozo.jp (live production site)
 **Tier 2 sources:** cdnlogo.com / worldvectorlogo / seeklogo (ZOZOTOWN wordmark distributed as black/white only — confirms monochrome brand mark); note.com/zoooom (ZOZO corporate-logo rationale — `be unique, be equal.`, ○△▢ equal-area mark).
 **Color grounding:** Primary `#000000` grounded in the black wordmark + black site chrome. Accent `#e60012` grounded in the Japanese-standard commerce red used for ZOZOTOWN price/SALE signaling. Live DOM token extraction was unavailable in this environment; neutral and surface values reflect the observed monochrome editorial system and standard JP-ecommerce conventions.
 

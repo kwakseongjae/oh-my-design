@@ -370,7 +370,7 @@ Primer calls these **Box**. They are border-first, shadow-rarely.
 ---
 
 **Verified:** 2026-06-06
-**Tier 1 sources:** primer.style (Primer Design System — base scales, functional tokens, Button/TextInput/Label specs), github.com (live product UI — light/dark theming, green-primary buttons, blue links). · https://github.com (live production site)
+**Tier 1 sources:** https://primer.style (Primer Design System — base scales, functional tokens, Button/TextInput/Label specs), https://github.com (live product UI — light/dark theming, green-primary buttons, blue links). · https://github.com (live production site)
 **Surface split:** §4 documents the **Primer product UI** (github.com app). Marketing pages (homepage, Enterprise) use a parallel system with **Mona Sans / Hubot Sans** display type and larger hero scales — noted in §3 but not the primary spec target.
 
 ## 5. Layout Principles

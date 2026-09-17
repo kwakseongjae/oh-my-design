@@ -368,7 +368,7 @@ Meta/Facebook buttons favor large radii (often full pill on marketing surfaces, 
 ---
 
 **Verified:** 2026-06-06
-**Tier 1 sources:** about.meta.com / meta.com (live brand surface — blue gradient, Optimistic type, infinity mark); design.facebook.com/stories/designing-our-new-company-brand-meta (official rebrand story — gradient, infinity, Optimistic typeface) · https://about.meta.com (live production site)
+**Tier 1 sources:** https://about.meta.com / https://meta.com (live brand surface — blue gradient, Optimistic type, infinity mark); https://design.facebook.com/stories/designing-our-new-company-brand-meta (official rebrand story — gradient, infinity, Optimistic typeface) · https://about.meta.com (live production site)
 **Tier 2 sources:** brandpalettes.com/meta-color-codes, brandcolorcode.com/meta-platforms (corroborate `#0082FB`, `#0064E0`, `#1C2B33`). Product-surface neutrals (`#F0F2F5`, `#65676B`, `#E4E6EB`, `#42B72A`) are documented Facebook system tokens.
 **Surface split:** §4 documents both the **Meta marketing brand** (gradient CTAs, pill radii, Optimistic Display) and the **Facebook/Instagram product** lineage (solid `#0064E0`, 8px radii, `#F0F2F5` canvas). Both retained as parallel systems.
 

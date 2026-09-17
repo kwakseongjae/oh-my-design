@@ -203,7 +203,7 @@ Where Stripe whispers and Apple subtracts, AmazingTalker reassures. The secondar
 ---
 
 **Verified:** 2026-06-08 (Tier 1 live inspect — playwright getComputedStyle on en. and tw. surfaces)
-**Tier 1 sources:** https://www.amazingtalker.com (redirects to en.amazingtalker.com — body/CTA/h1/h2/nav getComputedStyle, live DOM); https://tw.amazingtalker.com (Traditional-Chinese home — teal CTA `#02cab9` 3px radius confirmed, second surface)
+**Tier 1 sources:** https://www.amazingtalker.com (redirects to https://en.amazingtalker.com — body/CTA/h1/h2/nav getComputedStyle, live DOM); https://tw.amazingtalker.com (Traditional-Chinese home — teal CTA `#02cab9` 3px radius confirmed, second surface)
 **Method:** Live computed-style extraction; rgb()→hex conversion. >=6 real samples captured (teal CTA, coral accent, body `#484848`, h1 50px/600, h2 30px/500, nav teal active).
 **`.verification.md`:** `web/references/amazingtalker/.verification.md`
 

@@ -256,7 +256,7 @@ Triple is mobile-app-first; the web mirrors the app by using the platform native
 ---
 
 **Verified:** 2026-05-19
-**Tier 1 sources:** triple.guide/intro (live computed styles via Playwright — primary CTA `#368FFF` (rgb 54,143,255) / 36px pill radius / 18px·700 / 56px tall, the most-frequent saturated color (39×); info card `#F1F7FF` (rgb 241,247,255) / 20px radius; selected wash `rgba(54,143,255,0.07)` (17×); sky accent `#1AADF6` (rgb 26,173,246); highlight teal `#0ECEDB` (rgb 14,206,219); white bg; font `-apple-system, "system-ui", "Segoe UI", Helvetica, Arial, ...`).
+**Tier 1 sources:** https://triple.guide/intro (live computed styles via Playwright — primary CTA `#368FFF` (rgb 54,143,255) / 36px pill radius / 18px·700 / 56px tall, the most-frequent saturated color (39×); info card `#F1F7FF` (rgb 241,247,255) / 20px radius; selected wash `rgba(54,143,255,0.07)` (17×); sky accent `#1AADF6` (rgb 26,173,246); highlight teal `#0ECEDB` (rgb 14,206,219); white bg; font `-apple-system, "system-ui", "Segoe UI", Helvetica, Arial, ...`).
 **Tier 2 sources:** getdesign.md/triple — not checked; styles.refero.design — not checked.
 **Conflicts unresolved:** Brief-provided `#2EA6FF` vs live observed `#368FFF` — live adopted as canonical primary (39 occurrences on CTAs/active). No internal conflicts.
 

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-16",
+  "generated_at": "2026-09-17",
   "generator": "scripts/build-reference-quality-data.mjs",
   "count": 440,
   "counts": {
@@ -43,7 +43,6 @@
       "conflict_count": 0,
       "reason_codes": [
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -5063,7 +5062,6 @@
       "reason_codes": [
         "conflict_unresolved",
         "proof_incomplete",
-        "tier1_source_missing",
         "token_source_unverified",
         "verification_v2_missing"
       ]

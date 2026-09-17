@@ -216,7 +216,7 @@ The geometry reinforces the friendliness. Primary buttons are full 100px pills, 
 ---
 
 **Verified:** 2026-06-08 (omd-add-reference -- Tier 1 live CSS extract)
-**Tier 1 sources:** https://www.richart.tw, https://www.taishinbank.com.tw (canonical homepage; bot-blocks 403 FORBIDDEN on direct fetch) reconciled with apex richart.tw live HTML + `/TSDIB_RichartWeb/static/revamp/css/v3/index.css` + `headerfooter.css` served live -- tokens `#17b6c9`, `Noto Sans TC`, 100px pill buttons, neumorphic shadows extracted directly from production CSS.
+**Tier 1 sources:** https://www.richart.tw, https://www.taishinbank.com.tw (canonical homepage; bot-blocks 403 FORBIDDEN on direct fetch) reconciled with apex https://richart.tw live HTML + `/TSDIB_RichartWeb/static/revamp/css/v3/index.css` + `headerfooter.css` served live -- tokens `#17b6c9`, `Noto Sans TC`, 100px pill buttons, neumorphic shadows extracted directly from production CSS.
 **Method note:** `www.richart.tw` returns 403 to automation; the apex `richart.tw` (same Taishin/Richart property, identical brand chrome) serves the full HTML and v3 stylesheets, from which all token values were measured verbatim.
 **`.verification.md`:** `web/references/richart/.verification.md`
 

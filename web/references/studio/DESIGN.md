@@ -360,7 +360,7 @@ What defines Studio visually is *absence as a feature*. Borders are hairlines (`
 ---
 
 **Verified:** 2026-06-06
-**Tier 1 sources:** studio.design live site CSS (`/_nuxt/entry.*.css`, Nuxt build) — confirmed `#007cff` link color, `#4b9cfb` accent pill, `#f84f65` error message, off-white `#f7f7f7`, neutral ramp `#fafafa`→`#111`, `border-radius:6px/4px/40px`, Inter typeface, `--rebranding-loading-bg:#e5e5e5` / `--rebranding-loading-bar:#222`, Material Symbols icon fonts. JS bundle (`/_nuxt/*.js`) — Inter referenced 200+ times; grandam display face. · https://studio.design (live production site)
+**Tier 1 sources:** https://studio.design live site CSS (`/_nuxt/entry.*.css`, Nuxt build) — confirmed `#007cff` link color, `#4b9cfb` accent pill, `#f84f65` error message, off-white `#f7f7f7`, neutral ramp `#fafafa`→`#111`, `border-radius:6px/4px/40px`, Inter typeface, `--rebranding-loading-bg:#e5e5e5` / `--rebranding-loading-bar:#222`, Material Symbols icon fonts. JS bundle (`/_nuxt/*.js`) — Inter referenced 200+ times; grandam display face. · https://studio.design (live production site)
 **Conflicts unresolved:** none.
 
 ## 5. Layout Principles

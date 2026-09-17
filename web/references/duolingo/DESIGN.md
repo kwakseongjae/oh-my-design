@@ -323,7 +323,7 @@ Duolingo uses inputs sparingly (it is a tap-first product), but text fields foll
 ---
 
 **Verified:** 2026-06-06
-**Tier 1 sources:** design.duolingo.com (official brand identity/color portal), www.duolingo.com (live product) · https://www.duolingo.com (live production site)
+**Tier 1 sources:** https://design.duolingo.com (official brand identity/color portal), https://www.duolingo.com (live product) · https://www.duolingo.com (live production site)
 **Tier 2 sources:** widely-documented Duolingo brand tokens (Feather Green `#58CC02`, Macaw `#1CB0F6`, Cardinal `#FF4B4B`, Bee `#FFC800`, Fox `#FF9600`, Eel `#4B4B4B`, Wolf `#777777`, Swan `#E5E5E5`, Polar `#F7F7F7`) corroborated across multiple brand-color references.
 **Note:** The animal color names and the 3D "lip" button mechanic are signature, well-documented Duolingo system traits. Exact internal token values may vary slightly by platform/release.
 

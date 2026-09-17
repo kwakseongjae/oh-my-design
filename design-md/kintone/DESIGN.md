@@ -363,7 +363,7 @@ Typographically, kintone is pragmatic and Japanese-first. The product UI ships w
 ---
 
 **Verified:** 2026-06-06 (OmD v0.1)
-**Tier 1 sources:** kintone.cybozu.co.jp (live marketing site — white canvas, KIN Red CTAs, みんな、つくれる tagline); Kintone Brand Guidelines PDF (kintone.com/en-us/files/Brand-Guidelines.pdf — KIN Red `#ef3f24` Pantone 485, secondary palette Shamrock `#3fa862` / Cerulean `#00afec` / Aloe `#00afaa` / Sunshine `#ffba00`) · https://kintone.cybozu.co.jp (live production site)
+**Tier 1 sources:** https://kintone.cybozu.co.jp (live marketing site — white canvas, KIN Red CTAs, みんな、つくれる tagline); Kintone Brand Guidelines PDF (https://kintone.com/en-us/files/Brand-Guidelines.pdf — KIN Red `#ef3f24` Pantone 485, secondary palette Shamrock `#3fa862` / Cerulean `#00afec` / Aloe `#00afaa` / Sunshine `#ffba00`) · https://kintone.cybozu.co.jp (live production site)
 **Tier 2 sources:** kintone Help (theme/header color docs — default red header theme, admin re-theming); community font references (Meiryo default UI font, Hiragino/Noto Sans JP fallbacks)
 **Notes:** Neutral gray scale and component geometry (radii, padding, shadows) are derived from the live kintone product UI and marketing site; named brand hues and primary red are sourced directly from the official Brand Guidelines.
 

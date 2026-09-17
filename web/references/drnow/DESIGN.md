@@ -213,7 +213,7 @@ Dr.Now uses **Pretendard Variable** exclusively — defined in both the main CSS
 
 ---
 **Verified:** 2026-06-03
-**Tier 1 sources:** https://doctornow.co.kr (HTML + styled-components), https://userweb-static.doctornow.co.kr/20260602-2002-38d1546d91/_next/static/css/72c28a0cfb28f079.css (Tailwind + SC bundle), https://file.doctornow.co.kr/official/css/style.css (official brand CSS with --P/--G token :root), https://file.doctornow.co.kr/official/css/default.css (Pretendard font import + reset), https://company.doctornow.co.kr/company (brand CSS served from file.doctornow.co.kr)
+**Tier 1 sources:** https://doctornow.co.kr (HTML + styled-components), https://userweb-static.doctornow.co.kr/20260602-2002-38d1546d91/_next/static/css/72c28a0cfb28f079.css (Tailwind + SC bundle), https://file.doctornow.co.kr/official/css/style.css (official brand CSS with --P/--G token :root), https://file.doctornow.co.kr/official/css/default.css (Pretendard font import + reset), https://company.doctornow.co.kr/company (brand CSS served from https://file.doctornow.co.kr)
 **Tier 2 sources:** getdesign.md/drnow — NOT LISTED (no data). refero ?q=닥터나우 — no result found for this brand.
 **Conflicts unresolved:** The hero banner gradient uses `#FF7501` (slightly warmer than token --P500 `#FF8D00`); the official :root token system treats `#FF8D00` as P500 canonical. Both are genuine observed values. The `.btn-now` CTA uses a deep `#D9480F → #F3463B` gradient while the web app uses `#FD7E14` solid for most buttons — two surface contexts maintained separately.
 

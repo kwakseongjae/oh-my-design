@@ -220,7 +220,7 @@ The hero instance of the pair renders at 20px 32px padding (52px total height) w
 
 ---
 **Verified:** 2026-06-11
-**Tier 1 sources:** https://www.salesforce.com/ (live DOM, geo-served /kr/ surface); https://www.salesforce.com/pricing/ (live DOM, EN); https://www.salesforce.com/company/ (live, values/mission); https://www.lightningdesignsystem.com/ (SLDS 2 docs, live); @salesforce-ux/sds-styling-hooks 1.1.0-alpha.4 hooks.raw.json via unpkg.com (official SLDS 2 token source)
+**Tier 1 sources:** https://www.salesforce.com/ (live DOM, geo-served /kr/ surface); https://www.salesforce.com/pricing/ (live DOM, EN); https://www.salesforce.com/company/ (live, values/mission); https://www.lightningdesignsystem.com/ (SLDS 2 docs, live); @salesforce-ux/sds-styling-hooks 1.1.0-alpha.4 hooks.raw.json via https://unpkg.com (official SLDS 2 token source)
 **Tier 2 sources:** none available (getdesign.md/salesforce — "No designs found"; styles.refero.design ?q=salesforce search — no Salesforce style page listed)
 **Conflicts unresolved:** none
 

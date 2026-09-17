@@ -314,7 +314,7 @@ The product tile is the atomic unit of the entire site -- the design system exis
 ---
 
 **Verified:** 2026-06-06
-**Tier 1 sources:** uniqlo.com (live catalog — grid geometry, white canvas, red CTA, hard-cornered tiles); Kashiwa Sato 2006 logo system (red square + katakana wordmark). Web build typeface TT Commons Pro confirmed via Fonts In Use / TypeType records; Japanese rendered in Hiragino Kaku Gothic. · https://www.uniqlo.com (live production site)
+**Tier 1 sources:** https://uniqlo.com (live catalog — grid geometry, white canvas, red CTA, hard-cornered tiles); Kashiwa Sato 2006 logo system (red square + katakana wordmark). Web build typeface TT Commons Pro confirmed via Fonts In Use / TypeType records; Japanese rendered in Hiragino Kaku Gothic. · https://www.uniqlo.com (live production site)
 **Tier 2 sources:** brandpalettes.com/uniqlo-colors (Uniqlo Red `#ed1d24`, Pantone 485 C, RGB 237/29/36 — unchanged since 2006); color-name.com (`#ED1D24`); brandyhq.com (`#ed1d24`, `#ffffff` palette).
 **Conflicts resolved:** Hint suggested `#FF0000`-ish + Helvetica; corrected to verified `#ed1d24` (Pantone 485 C) and TT Commons Pro / Hiragino (Helvetica Neue retained only as historical fallback). Brand-red and UI-red are intentionally the same value.
 

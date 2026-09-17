@@ -384,7 +384,7 @@ Button display modes — `inline` (auto-width), `block` (full-width on mobile / 
 ---
 
 **Verified:** 2026-06-06 (OmD v0.1)
-**Tier 1 sources:** sansan.com (live page inspect — white canvas, red CTA system, Hiragino/Noto stack), corp-sansan.com 2017 logo-refresh release (red "thread" mark, `#E60012` vermilion brand red). · https://www.sansan.com (live production site)
+**Tier 1 sources:** https://sansan.com (live page inspect — white canvas, red CTA system, Hiragino/Noto stack), https://corp-sansan.com 2017 logo-refresh release (red "thread" mark, `#E60012` vermilion brand red). · https://www.sansan.com (live production site)
 **Tier 2 sources:** brandfetch.com/corp-sansan.com (logo assets; color page 403 at fetch time). Wikimedia Commons `Sansan logo.svg` (mark geometry).
 **Conflicts unresolved:** none. Sansan ships no proprietary typeface; the Hiragino/Noto/Helvetica stack is the documented system default for JP enterprise web.
 

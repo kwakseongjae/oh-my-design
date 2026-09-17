@@ -208,7 +208,7 @@ A hero-size primary also appears at 71px height with 24px uniform padding; on gr
 
 ---
 **Verified:** 2026-06-11
-**Tier 1 sources:** https://brand.dropbox.com (official brand site — color, typography, framework, voice-and-tone, motion; dropbox.design 301-redirects here), https://www.dropbox.com (live computed-style inspect), https://www.dropbox.com/plans (live computed-style inspect, pricing surface)
+**Tier 1 sources:** https://brand.dropbox.com (official brand site — color, typography, framework, voice-and-tone, motion; https://dropbox.design 301-redirects here), https://www.dropbox.com (live computed-style inspect), https://www.dropbox.com/plans (live computed-style inspect, pricing surface)
 **Tier 2 sources:** styles.refero.design/style/2b41e7c4-1e8c-4ea2-a87f-51e24c57886e (Dropbox.com — confirms #0061fe / #f7f5f2 / #1e1919 / #eee9e2 / #cd2f7b, 16px button radius, flat shadowless system); getdesign.md/dropbox — not listed ("No designs found", also tried dropbox.com variant)
 **Conflicts unresolved:** none
 

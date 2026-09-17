@@ -351,7 +351,7 @@ MUJI product cards are nearly invisible frames — the photograph is the card.
 ---
 
 **Verified:** 2026-06-06 (full-depth)
-**Tier 1 sources:** muji.com (live brand chrome — Helvetica Neue type stack, near-white surfaces, square-corner buttons, maroon logo plate). brandcolorcode.com/muji and encycolorpedia.com (MUJI Red `#7f0019` / RGB 127,0,25 confirmed across sources). · https://www.muji.com (live production site)
+**Tier 1 sources:** https://muji.com (live brand chrome — Helvetica Neue type stack, near-white surfaces, square-corner buttons, maroon logo plate). https://brandcolorcode.com/muji and https://encycolorpedia.com (MUJI Red `#7f0019` / RGB 127,0,25 confirmed across sources). · https://www.muji.com (live production site)
 **Tier 2 sources:** fontalternatives.com (Helvetica Neue confirmed as MUJI's Latin typeface under Kenya Hara). dezeen.com / bworldonline.com (Kenya Hara "emptiness" 空/無 design philosophy, art director since 2001).
 **Conflicts:** none. `#7f0019` is consistently reported as the singular MUJI brand color; the brand intentionally avoids a broader chromatic palette.
 **Note:** MUJI publishes no public token-level design system; chrome values are read from the live site and brand-color registries, then conformed to the brand's documented minimalist doctrine.

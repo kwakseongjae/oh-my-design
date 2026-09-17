@@ -161,7 +161,7 @@ Grip presents a dark-first, energy-charged visual world tuned for live video com
 
 ---
 **Verified:** 2026-06-03
-**Tier 1 sources:** https://www.grip.show (homepage HTML + CSS bundles via webapp-resource.grip.show/202606020502/_next/static/css/), https://webapp-resource.grip.show/202606020502/_next/static/css/2caceb3098ae7b02.css (main Tailwind utility CSS, 86 KB), https://webapp-resource.grip.show/202606020502/_next/static/css/1f9e9658ee2b291a.css (cart page CSS with button tokens), https://webapp-resource.grip.show/202606020502/_next/static/css/c2bfe78c6e53a384.css (coupon drawer CSS with full-width confirm button), https://gripcorp.co (brand/corp homepage with gradient slogan and propose-button), https://webapp-resource.grip.show/202606020502/_next/static/css/4299887bf9e53336.css (avatar + live ring CSS)
+**Tier 1 sources:** https://www.grip.show (homepage HTML + CSS bundles via https://webapp-resource.grip.show/202606020502/_next/static/css/), https://webapp-resource.grip.show/202606020502/_next/static/css/2caceb3098ae7b02.css (main Tailwind utility CSS, 86 KB), https://webapp-resource.grip.show/202606020502/_next/static/css/1f9e9658ee2b291a.css (cart page CSS with button tokens), https://webapp-resource.grip.show/202606020502/_next/static/css/c2bfe78c6e53a384.css (coupon drawer CSS with full-width confirm button), https://gripcorp.co (brand/corp homepage with gradient slogan and propose-button), https://webapp-resource.grip.show/202606020502/_next/static/css/4299887bf9e53336.css (avatar + live ring CSS)
 **Tier 2 sources:** getdesign.md/grip — 0 DESIGN.md files (NOT LISTED). refero — no result found for Grip KR.
 **Conflicts unresolved:** none
 
