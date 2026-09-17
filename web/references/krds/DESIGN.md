@@ -324,6 +324,14 @@ KRDS는 대한민국 행정·공공기관 웹·앱이 공유하는 정부 표준
 
 **디지털 포용·접근성 강령 (Accessibility Mandate).** KRDS는 시각적 선호가 아니라 **법적·정책적 의무**에서 출발합니다. 대한민국 「장애인차별금지 및 권리구제 등에 관한 법률」(장차법)과 「웹 접근성 국가표준 KWCAG 2.1 (KS X OT 0003)」이 공공기관 웹·앱에 WCAG 2.1 AA 동등 이상의 접근성을 요구하며, KRDS는 이를 토큰·컴포넌트 단계부터 강제하는 기술 표준 역할을 합니다. 행정안전부는 KRDS를 "**누구나 쉽게 사용할 수 있는 공공 웹·앱**"의 구현 수단으로 정의했고 ([행정안전부 보도자료](https://www.mois.go.kr/frt/bbs/type010/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000008&nttId=115144)), 라이브 사이트 푸터에는 **웹 접근성 인증 마크**가 상시 표시됩니다 ([기본 패턴 summary](https://www.krds.go.kr/html/site/global/global_summary.html) 페이지 푸터 확인). 따라서 색대비 4.5:1 (매직넘버 50), 4px focus halo, 사용자 줌 90~150%, 선명한 화면 모드는 "권고"가 아니라 KRDS의 **기본 동작**입니다.
 
+## Primary tasks
+
+- Find and understand a government service, then move to where it is delivered
+- Search for a service or notice and work through the results to the right one
+- Sign in with the method the service requires, and sign out or time out safely
+- Apply through a multi-step form with attachments, then track how it was handled
+- Read a policy in detail and follow it to the reports, manuals or law behind it
+
 ## 2. Color Palette & Roles
 
 ### Brand
