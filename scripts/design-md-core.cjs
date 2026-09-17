@@ -378,9 +378,45 @@ function mapLegacyHeading(heading) {
   if (/layout|grid|responsive|platform|reflow|spacing & layout/.test(title)) return 'layout-platforms';
   if (/voice|microcopy|content|locale|international|language/.test(title)) return 'content-locales';
   if (/color|spacing|radius|shape|elevation|depth|motion|token reference|dark mode/.test(title)) return 'foundations';
+  // `Primary tasks`는 experience로 가되, `persona`보다 **먼저** 잡아야 한다 — 두 제목이
+  // 한 문서에 함께 있을 때 분류는 같지만, 아래 primaryTaskList()가 이 제목을 따로 찾는다.
+  if (/primary tasks?\b|user outcomes?\b/.test(title)) return 'experience';
   if (/visual theme|atmosphere|brand narrative|principle|persona|personality|philosophy|when to/.test(title)) return 'experience';
   if (/do('|’)s|don't|dont|anti-pattern|agent prompt|guideline|governance|implementation|verification|source|evidence|accessibility|refuse|boundary/.test(title)) return 'governance';
   return null;
+}
+
+/**
+ * `## Primary tasks` 섹션의 목록 항목을 `experience.primary_tasks`로 꺼낸다.
+ *
+ * 왜 전용 섹션인가 (2026-09-17). Portable Core는 `primary-tasks` 클레임을
+ * `kind=user-outcomes`로 요구하는데, 440개 카탈로그 전체가 `missing-primary-task`로
+ * 막혀 있다 — 유일하게 균일한 차단 사유다.
+ *
+ * 기존 섹션에서 기계적으로 유도하려다 그만뒀다. `Personas`가 유일한 후보였는데
+ * 435개 중 볼드 불릿이 244개뿐이고(레퍼런스당 0.6), 실제 내용이 제각각이다:
+ * `krds`는 가상 인물의 서사, `baemin`은 이해관계자 집단("Customers", "Riders"),
+ * `kakaobank`만 실제 task context다. 휴리스틱을 쓰면 "Jobseekers."가 primary task가
+ * 된다 — 페르소나는 *누구*고 task는 *무엇을 하는가*라 범주가 다르다.
+ *
+ * 그래서 유도하지 않고 **전용 섹션을 읽는다.** 섹션이 없으면 아무것도 넣지 않는다 —
+ * unknown means absent. 있으면 목록 항목만 취하고 산문은 무시한다(클레임이 세는 것이
+ * 목록 개수이기 때문).
+ */
+function primaryTaskList(segments) {
+  // `heading`은 `## ` 접두사 없이 저장된다 — "13. Personas", "Primary tasks".
+  // 처음에 마크다운 접두사를 기대하는 정규식을 썼다가 0건을 얻었다.
+  const section = segments.find((segment) =>
+    /^\s*\d*\.?\s*(?:primary tasks?|user outcomes?)\b/i.test(String(segment.heading ?? '')));
+  if (!section) return [];
+  const items = [];
+  for (const line of normalizeLf(String(section.body ?? '')).split('\n')) {
+    const bullet = /^\s*[-*]\s+(.+)$/.exec(line);
+    if (!bullet) continue;
+    const text = bullet[1].replace(/\*\*/g, '').replace(/\s+/g, ' ').trim();
+    if (text) items.push(text);
+  }
+  return items;
 }
 
 const INTERNAL_LINE = /(?:oh-my-design|\bomd(?::|\b)|data-omd-|omd:add-reference|omd:migrate|quality[_ -]?tier|migration report)/i;
@@ -482,6 +518,7 @@ function buildGraphFromLegacy(markdown, inspection, options) {
   }
 
   const experienceText = mapped.experience.join('\n\n');
+  const primaryTasks = primaryTaskList(inspection.segments);
   const governanceText = mapped.governance.join('\n\n');
   const graph = {
     $schema: GRAPH_SCHEMA,
@@ -498,6 +535,7 @@ function buildGraphFromLegacy(markdown, inspection, options) {
     },
     experience: {
       ...(experienceText ? { summary: experienceText } : {}),
+      ...(primaryTasks.length ? { primary_tasks: primaryTasks } : {}),
     },
     foundations: {
       ...((frontmatter && Object.keys(extractColorTokens(frontmatter)).length) ? { tokens: extractColorTokens(frontmatter) } : {}),
