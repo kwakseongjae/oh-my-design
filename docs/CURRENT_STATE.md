@@ -155,6 +155,40 @@ TTL 재분류조차 파일 쓰기라 게이트 대상이다.
 **남은 것**: 판정 불가 ~14 · 번들에 delta 없음 ~114(공개 DS 조사 또는 재캡쳐).
 SEED(karrot) 같은 런타임 변수 간접참조 DS는 리터럴이 없어 조사 수율이 낮다.
 
+## 2026-09-17 작업 — 차단 사유 대청소
+
+하루 동안 차단 사유가 이렇게 움직였다. **정본 데이터는 거의 고치지 않았고, 대부분
+검사기가 이미 있는 증거를 못 알아본 것이었다.**
+
+| 사유 | 전 | 후 | 원인 |
+|---|---:|---:|---|
+| `tier1_source_missing` | 53 | **3** | 1차 출처를 맨 도메인으로 적어 URL 추출기가 못 봄 |
+| `freshness_conflict` | 115 | **4** | 전사(prose-derived)와 관측을 구분 안 해 정상 순서를 위반으로 읽음 |
+| `conflict_unresolved` | 62 | **26** | `none — 이유` 형태를 정확 일치로 검사 |
+| `proof_incomplete` | 55 | **32** | 옛 프루프 제목(`### Raw observations`) 미인식 |
+| `component_state_prose_only` | 164 | **146** | 실측 상태값을 번들에서 토큰으로 이관 |
+| `token_value_possibly_derived` | 14 | **5** | 팔레트 이름·Proof 기록분을 오탐으로 잡고 있었음 |
+
+**등급: 140 verified / 184 partial / 116 legacy** — legacy에서 24개가 올라왔다.
+verified는 불변(이 검사들이 그 티어로 가는 길목이 아니었다).
+
+**JP proof gate 활성화** — KR·TW에 이어 일본도 brand-owned 출처 2개를 요구한다.
+13건이 걸렸고 6건은 스킴 정규화로 해결, 5건은 1차 출처를 실제로 열어 확인 후 추가,
+`layerx`는 플랫폼 계정 규칙을 새로 만들어 해결(맨 호스트는 불가, 계정 경로만 인정).
+
+**신규 도구**: `extract-state-values` · `match-state-candidates` · `apply-state-values`
+(상태값 3종) · `propose-verification-v2` · `local-store`.
+
+## 남은 진짜 작업
+
+| 사유 | 건수 | 성격 |
+|---|---:|---|
+| `verification_v2_missing` | 299 | **진짜 작업.** 자동 유도 두 번 시도·기각(`docs/VERIFICATION_V2_BACKLOG_2026-09-17.md`). 사실 추출은 267/269 되지만 클레임 매핑은 14.7%만 자동. 건당 60~80 판단 |
+| `token_source_unverified` | 111 | prose-derived 토큰. 라이브 재검증 필요 |
+| `proof_incomplete` | 32 | 검증 파일 자체가 없음 |
+| `conflict_unresolved` | 26 | 실제 충돌 서술 |
+| 상태값 | 146 | 판정 불가 20 + 번들 delta 없음 126 |
+
 ## 검사 상태 (2026-09-16 실측)
 
 | 검사 | 결과 |
