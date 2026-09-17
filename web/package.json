@@ -31,7 +31,8 @@
     "test:watch": "vitest",
     "prepare": "husky",
     "indexnow": "node scripts/indexnow-ping.mjs",
-    "state-values": "node scripts/extract-state-values.mjs"
+    "state-values": "node scripts/extract-state-values.mjs",
+    "propose-verification": "node scripts/propose-verification-v2.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.98.0",

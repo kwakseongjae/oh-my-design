@@ -96,3 +96,54 @@ method 분포는 `computed-style-and-official-doc` 47 · `computed-style` 26 ·
 대조했다**는 것이고, 그것을 파일 존재 여부로 대신하면 블록이 의미를 잃는다.
 
 7월 배치가 컴포넌트를 지워 게이트를 통과한 것과 같은 종류의 유혹이다.
+
+## 측정: 자동 유도가 어디까지 가는가 (같은 날, 도구를 만들어본 뒤)
+
+위에서 기각한 것은 *"클레임을 자동 생성한다"*였다. 그렇다면 **사실만 뽑고 판단은 넘기는**
+도구는 어디까지 갈 수 있는지 재봤다. `web/scripts/propose-verification-v2.mjs`
+(`npm run propose-verification -- <id>` / `--survey`).
+
+기계가 읽는 것은 검증 파일에 **명시된 사실**뿐이다:
+
+```
+**Inspected:** 2026-06-22
+**Method:**    playwright getComputedStyle (live DOM) — …
+**Sources:**   https://asana.com/ — homepage, hero CTA, nav …
+### Raw samples
+- hero CTA "Get started": background-color: rgb(253,63,253) = #fd3ffd; border-radius: 100px …
+```
+
+그리고 각 토큰 leaf의 값이 어느 raw sample 줄에 등장하는지만 대조한다.
+후보가 하나면 `matched`, 여럿이면 `ambiguous`, 없으면 `unmatched`로 **고르지 않고** 낸다.
+
+### 결과 — 269개 전체
+
+| | 경로 수 | 비율 |
+|---|---:|---:|
+| 정본 클레임 경로 합계 | 32,067 | |
+| 특정 관측 1건에 추적됨 (`matched`) | **4,705** | **14.7%** |
+| 여러 관측에 걸림 (`ambiguous`) | 7,118 | 22.2% |
+| 어느 관측에도 없음 (`unmatched`) | 20,244 | 63.1% |
+
+날짜와 출처가 깨끗하게 파싱되는 레퍼런스는 **267 / 269**다. 사실 추출은 거의 완벽하고,
+**막히는 곳은 클레임 매핑이다.**
+
+최고 커버리지가 `kkbox` 47%이고 상위 12개가 30~47% 구간이다. **100%는 하나도 없다.**
+
+### 왜 63%가 안 걸리는가
+
+`asana`의 unmatched를 열어보면 `#ffeaec`(coral-blush) · `#690031`(deep-coral) ·
+`#466451`(sage) 같은 팔레트 항목이다. Method 문장은 *"full-DOM color frequency scan"*과
+*"CSS hex extraction"*을 했다고 적지만, raw samples에는 **개별 항목으로 열거되지 않았다.**
+관측은 실제로 있었을 것이나 기록이 집계 수준이다.
+
+이것이 사람의 판단이 필요한 지점이고, 스크립트가 넘겨야 하는 이유다.
+
+### 그래서 188건의 실제 비용
+
+`matched` 14.7%는 **공짜로 얻는 부분**이다. 나머지는 leaf마다 "이 값이 저 관측에
+포함되는가"를 사람이 답해야 한다. 레퍼런스당 정본 경로 중앙값이 100개 안팎이므로,
+건당 60~80개의 판단이 남는다.
+
+**도구가 할 일은 여기까지다.** 사실을 추출해 초안을 만들고, 판단이 필요한 목록을
+따로 내놓는다. 그 목록을 채우는 것이 남은 작업이다.
