@@ -389,6 +389,6 @@ Verified vs assumed:
 ---
 
 **Verified:** 2026-05-19 (omd:add-reference — JP batch)
-**Tier 1 sources:** https://cookpad.com/jp (live computed styles — primary orange #FF9933 [rgb 255,153,51], cream page bg #F8F6F2, text #0F0F0F, chrome #4A4A4A, 8px radius, primary button 16px/600 8px·24px, ~64px category tiles, Noto Sans system stack).
+**Tier 1 sources:** https://cookpad.com/jp (live computed styles — primary orange #FF9933 [rgb 255,153,51], cream page bg #F8F6F2, text #0F0F0F, chrome #4A4A4A, 8px radius, primary button 16px/600 8px·24px, ~64px category tiles, Noto Sans system stack); https://info.cookpad.com (Cookpad corporate site, first-party).
 **Tier 2 sources:** medium.com/cookpadteam + Crunchbase (founding 1997 / Akimitsu Sano / mission "make everyday cooking fun"); getdesign.md / refero not separately fetched.
 **Conflicts unresolved:** Brief-supplied #FF7F33 corrected to live-verified #FF9933.

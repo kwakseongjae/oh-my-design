@@ -405,7 +405,7 @@ PIN entry uses a 4-digit dot field with a randomized on-screen keypad for securi
 - This is PayPay's most recognizable moment — the celebration, not a quiet receipt
 
 
-**Tier 1 sources:** https://paypay.ne.jp (live production site, verified via live DOM getComputedStyle).
+**Tier 1 sources:** https://paypay.ne.jp (live production site, verified via live DOM getComputedStyle); https://about.paypay.ne.jp (PayPay株式会社 corporate site, first-party).
 
 ## 5. Layout Principles
 

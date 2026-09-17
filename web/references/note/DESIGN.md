@@ -341,6 +341,6 @@ Verified vs assumed:
 ---
 
 **Verified:** 2026-05-19 (omd:add-reference — JP batch)
-**Tier 1 sources:** https://note.com (live — "つくる、つながる、とどける" thesis, off-white reading surface); note brand/help resources + note_dsn designer article (logo teal #41C9B4 / theme #2CB696 / dark #228D74 / bg #F7F9F9 / text #222222; PRIMARY action color shifted to BLACK for content-focus).
+**Tier 1 sources:** https://note.com (live — "つくる、つながる、とどける" thesis, off-white reading surface); note brand/help resources + note_dsn designer article (logo teal #41C9B4 / theme #2CB696 / dark #228D74 / bg #F7F9F9 / text #222222; PRIMARY action color shifted to BLACK for content-focus); https://note.jp (note株式会社 corporate site, first-party).
 **Tier 2 sources:** anoiro.com / brandcolor.info (teal color confirmation); getdesign.md / refero not separately fetched.
 **Conflicts unresolved:** none. Brief-supplied #41C9B4 confirmed as the logo color; documented the important nuance that note's *product primary action* color is black (teal = brand accent).

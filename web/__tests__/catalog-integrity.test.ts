@@ -34,6 +34,25 @@ const RENDER_TYPES = ["button", "input", "card", "badge", "tab", "toggle", "toas
 const PROOF_GATE_CUTOFF = "2026-06-01";
 // Western Tier-2 catalogs + the favicon proxy never count as brand-owned regional.
 const NON_REGIONAL_HOSTS = /getdesign\.md|refero\.design|google\.com\/s2/i;
+/** Markets where Tier 2 cannot carry a reference, so Tier 1 must supply >= 2 sources. */
+const REGIONAL_PROOF_COUNTRIES = new Set(["KR", "TW", "JP"]);
+/**
+ * Publishing platforms a brand may operate an account on. The bare host is never
+ * brand-owned — `note.com` is a platform, and a post there about a company is not
+ * the company. A company's *own* account is, so an account path is required.
+ *
+ * This matters most in Japan, where several firms (SODA, en-japan, Studist,
+ * Legalscape and others) keep no technical surface on a brand domain at all and
+ * publish only to Zenn or note.
+ */
+const PLATFORM_HOSTS = /^https?:\/\/(?:[a-z0-9-]+\.)?(?:note\.com|zenn\.dev|medium\.com|qiita\.com|speakerdeck\.com|brunch\.co\.kr|velog\.io)(?:\/|$)/i;
+/** A platform URL counts only when it names an account, not the bare host or a feed. */
+function isBrandOperatedAccount(url: string): boolean {
+  if (!PLATFORM_HOSTS.test(url)) return true;
+  const path = url.replace(/^https?:\/\/[^/]+/i, "").replace(/[?#].*$/, "");
+  const segments = path.split("/").filter(Boolean);
+  return segments.length >= 1 && !["", "search", "tag", "tags", "explore"].includes(segments[0]);
+}
 
 const fingerprintsRaw = readFileSync(FINGERPRINTS_ROOT, "utf-8");
 const fingerprints = JSON.parse(fingerprintsRaw) as {
@@ -201,11 +220,17 @@ describe("catalog-integrity / per-reference", () => {
         tier1Urls.length,
         `${id}: §4 footer "Tier 1 sources" lists no URL`
       ).toBeGreaterThanOrEqual(1);
-      if (entry.country === "KR" || entry.country === "TW") {
-        const regional = tier1Urls.filter(u => !NON_REGIONAL_HOSTS.test(u));
+      // JP joins KR/TW (2026-09-17). The rule exists because the Tier-2 cross-check
+      // catalogs under-cover Asian brands, so Tier 1 has to carry the proof alone —
+      // and that is even more true of Japan than of Korea. Every JP reference's
+      // Tier-2 footer in this repo records a miss: getdesign.md returns nothing for
+      // abema, rakuten, nintendo, dmm, mercari, recruit, sony or toyota. There is no
+      // second opinion to fall back on.
+      if (REGIONAL_PROOF_COUNTRIES.has(entry.country)) {
+        const regional = tier1Urls.filter(u => !NON_REGIONAL_HOSTS.test(u) && isBrandOperatedAccount(u));
         expect(
           regional.length,
-          `${id}: KR/TW gated ref needs >= 2 brand-owned regional Tier-1 sources (getdesign/refero don't count), got ${regional.length}: ${regional.join(", ")}`
+          `${id}: ${entry.country} gated ref needs >= 2 brand-owned regional Tier-1 sources (getdesign/refero don't count), got ${regional.length}: ${regional.join(", ")}`
         ).toBeGreaterThanOrEqual(2);
       }
     }

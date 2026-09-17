@@ -379,7 +379,7 @@ Size scale (height · font · padding · radius): `sm` 36px · 14px · 0 16px ·
 **Verified:** 2026-06-06 (OmD v0.1). Primary `#534DFF` grounded via WebSearch (brand-color aggregators) and `layerx.co.jp` WebFetch (mission/tone, white-canvas corporate layout). Secondary `#8DBBFF` and ink `#152632` confirmed in the same brand-color record. Component geometry (radii 8/12/16, 44px buttons, focus-ring tokens) is a documented modern-SaaS interpretation consistent with the live site's refined corporate styling; exact product-UI tokens for the Bakuraku app were not independently dumped from a public spec and are reasoned, brand-faithful values.
 
 
-**Tier 1 sources:** https://layerx.co.jp (live production site, verified via live DOM getComputedStyle).
+**Tier 1 sources:** https://layerx.co.jp (live production site, verified via live DOM getComputedStyle); https://note.com/layerx_design (株式会社LayerX design team's official note — first-party design writing, e.g. "バクラクらしさの設計図"; brand-operated account on a third-party platform).
 
 ## 5. Layout Principles
 

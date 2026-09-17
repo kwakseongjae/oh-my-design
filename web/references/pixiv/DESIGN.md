@@ -361,7 +361,7 @@ Size scale (height · font · radius): `small` 32px · 13px / 600 · 4px; `mediu
 - Use: Settings (R-18 display, notifications, dark mode).
 
 
-**Tier 1 sources:** https://www.pixiv.net (live production site, verified via live DOM getComputedStyle).
+**Tier 1 sources:** https://www.pixiv.net (live production site, verified via live DOM getComputedStyle); https://github.com/pixiv/charcoal (Charcoal — pixiv's own design-system library, Apache-2.0 on the official pixiv GitHub org; foundation package defines color, typography, spacing and border-radius token modules).
 
 ## 5. Layout Principles
 
