@@ -166,6 +166,15 @@ The verified common language is Toss Product Sans, a bright blue interaction acc
 - Four documented TDS button sizes with explicit loading and disabled behavior
 - Surface-specific component geometry rather than one blended “Toss style”
 
+## Primary tasks
+
+- Check on financial products that normally live in separate institutions
+- Compare options as concrete, comparable choices before deciding
+- See what a product is worth before consenting, uploading, or paying
+- Agree to terms, including nested sub-agreements, before a product starts
+- Pay, and read back the outcome and the next action in plain language
+- Pick up an interrupted insurance, payment, or account flow where it broke
+
 ## 2. Color Palette & Roles
 
 ### Product and shared roles
