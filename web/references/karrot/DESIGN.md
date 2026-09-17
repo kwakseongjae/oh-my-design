@@ -17,7 +17,7 @@ ds:
   description: Karrot (Daangn)'s open-source design system for marketplace apps.
 verification_v2:
   schema: 2
-  checked: "2026-07-11"
+  checked: "2026-09-17"
   surfaces:
     - { id: marketing-home, kind: marketing, url: "https://www.karrotmarket.com/", inspected: "2026-07-11" }
     - { id: marketing-about, kind: marketing, url: "https://www.karrotmarket.com/about/", inspected: "2026-07-11" }
@@ -27,6 +27,7 @@ verification_v2:
     - { id: seed-source, kind: official-doc, url: "https://github.com/daangn/seed-design/blob/fb4459e90f84e049112395964319b163f980b821/packages/stylesheet/global.css", captured: "2026-07-11" }
     - { id: seed-typography, kind: official-doc, url: "https://v2.seed-design.io/foundation/typography/", captured: "2026-07-11" }
     - { id: seed-box-button, kind: official-doc, url: "https://v2.seed-design.io/component/box-button/usage/", captured: "2026-07-11" }
+    - { id: seed-box-button-tokens, kind: official-doc, url: "https://v2.seed-design.io/component/box-button/usage/", captured: "2026-09-17" }
     - { id: seed-text-field, kind: official-doc, url: "https://v2.seed-design.io/component/text-field/usage/", captured: "2026-07-11" }
     - { id: seed-tabs, kind: official-doc, url: "https://v2.seed-design.io/component/tabs/usage/", captured: "2026-07-11" }
     - { id: seed-snackbar, kind: official-doc, url: "https://v2.seed-design.io/component/snackbar/usage/", captured: "2026-07-11" }
@@ -83,6 +84,11 @@ verification_v2:
     "tokens.components.marketing-primary.states": *karrot_live
     "tokens.components.marketing-primary.use": *karrot_live
     "tokens.components.box-button.type": &seed_box { surface_id: seed-system, source_id: seed-box-button, method: official-doc, captured: "2026-07-11" }
+    "tokens.components.box-button.bg": &seed_box_tokens { surface_id: seed-system, source_id: seed-box-button-tokens, method: css-custom-property, captured: "2026-09-17" }
+    "tokens.components.box-button.fg": *seed_box_tokens
+    "tokens.components.box-button.hover": *seed_box_tokens
+    "tokens.components.box-button.pressed": *seed_box_tokens
+    "tokens.components.box-button.disabled": *seed_box_tokens
     "tokens.components.box-button.states": *seed_box
     "tokens.components.box-button.use": *seed_box
     "tokens.components.text-field.type": &seed_field { surface_id: seed-system, source_id: seed-text-field, method: official-doc, captured: "2026-07-11" }
@@ -127,7 +133,7 @@ tokens:
   components_harvested: true
   components:
     marketing-primary: { type: button, bg: "#ff6600", fg: "#ffffff", radius: "9999px", height: "36px", padding: "4px 12px", font: "14px / 500", states: "default on two public surfaces; hover not captured", use: "Karrot marketing-site CTA" }
-    box-button: { type: button, states: "primary, primary-low, secondary, danger, disabled, hover, keyboard", use: "SEED action with five documented sizes" }
+    box-button: { type: button, bg: "#ff6f0f", fg: "#ffffff", hover: "#ff9e66", pressed: "#ff9e66", disabled: "bg #dcdee3 fg #adb1ba", states: "primary, primary-low, secondary, danger, disabled, hover, keyboard. Pressed and hover share one background by design — SEED declares both as #ff9e66. Size and type scale are not promoted: the official preview renders one size and the reference documents five", use: "SEED action with five documented sizes" }
     text-field: { type: input, states: "outlined, underlined, focused, disabled, readonly, required, invalid", use: "SEED single-line form field" }
     tabs: { type: tab, states: "selected, disabled, focus", use: "SEED category switching with indicator" }
     snackbar: { type: toast, states: "default, success, warning, action focus", use: "SEED transient action feedback" }

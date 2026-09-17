@@ -13,10 +13,13 @@ interface ReferenceDetailResponse extends ReferenceDetail {
 }
 
 const ORIGINAL_FLAG = process.env.REFERENCE_AST_V2;
+const ORIGINAL_SOURCE = process.env.OMD_REFS_SOURCE;
 
 afterEach(() => {
   if (ORIGINAL_FLAG === undefined) delete process.env.REFERENCE_AST_V2;
   else process.env.REFERENCE_AST_V2 = ORIGINAL_FLAG;
+  if (ORIGINAL_SOURCE === undefined) delete process.env.OMD_REFS_SOURCE;
+  else process.env.OMD_REFS_SOURCE = ORIGINAL_SOURCE;
 });
 
 async function requestReference(id: string, flag?: string) {
@@ -58,10 +61,12 @@ describe.sequential("GET /api/references/[id] AST contract", () => {
     expect(contract?.compatibilityFallbacks).toEqual([]);
     expect(contract?.evidence).toMatchObject({
       schemaVersion: 2,
-      checkedAt: "2026-07-11",
+      checkedAt: "2026-09-17",
       conflictCount: 0,
     });
-    expect(contract?.evidence?.sources).toHaveLength(5);
+    // 6 since 2026-09-17: the button-state re-verification is recorded as its own source
+    // rather than folded into the July capture, so the two inspections stay separable.
+    expect(contract?.evidence?.sources).toHaveLength(6);
     expect(contract?.evidence?.claims.find((claim) => claim.claimPath === "tokens.colors.primary")).toMatchObject({
       surfaceId: "tds-button",
       sourceId: "tds-button-live",
@@ -97,6 +102,26 @@ describe.sequential("GET /api/references/[id] AST contract", () => {
     expect(body.referenceAst?.tokens.typography.families.ui?.value).toBe("BAEMINWORK");
     expect(Object.keys(body.referenceAst?.tokens.typography.tiers ?? {})).toHaveLength(8);
     expect(Object.keys(body.referenceAst?.tokens.components ?? {})).toHaveLength(7);
+  });
+
+  it("serves Baemin's active Core preview bytes without legacy-AST mixing", async () => {
+    process.env.OMD_REFS_SOURCE = "v2";
+    const loaded = loadReference("baemin");
+    if (!loaded) throw new Error("baemin fixture is missing");
+    const { response, body } = await requestReference("baemin", "1");
+
+    expect(response.headers.get("x-omd-reference-model")).toBe("core-v2");
+    expect(response.headers.get("x-omd-reference-source")).toBe("migrated-preview");
+    expect(response.headers.get("x-omd-reference-parity")).toBe("core-v2-active");
+    expect(body.designMd).toBe(loaded.markdown);
+    expect(body.referenceAst).toBeUndefined();
+    expect(body).toMatchObject({
+      primary: "",
+      background: "#ffffff",
+      foreground: "#222222",
+      fontFamily: "BAEMINWORK",
+      radius: "",
+    });
   });
 
   it("does not promote Dcard's low-confidence radius into the detail projection", async () => {

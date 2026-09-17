@@ -4099,19 +4099,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-11",
     "nextReverifyAt": "2027-01-07",
     "tokenSource": "reconciled",
-    "claimCount": 63,
-    "evidenceClaimCount": 63,
+    "claimCount": 68,
+    "evidenceClaimCount": 68,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
-    "sourceCount": 7,
+    "sourceCount": 8,
     "conflictCount": 0,
     "tier1SourceCount": 5,
     "componentCount": 5,
     "interactiveComponentCount": 4,
-    "statedComponentCount": 0,
+    "statedComponentCount": 1,
     "reasonCodes": [],
     "advisoryCodes": [
-      "component_state_prose_only",
       "motion_value_unsourced"
     ]
   },
@@ -9169,20 +9168,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-11",
     "nextReverifyAt": "2027-01-07",
     "tokenSource": "reconciled",
-    "claimCount": 79,
-    "evidenceClaimCount": 79,
+    "claimCount": 81,
+    "evidenceClaimCount": 81,
     "evidenceCoverage": 1,
-    "surfaceCount": 5,
-    "sourceCount": 5,
+    "surfaceCount": 6,
+    "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 5,
     "componentCount": 6,
     "interactiveComponentCount": 5,
-    "statedComponentCount": 0,
+    "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": [
-      "component_state_prose_only"
-    ]
+    "advisoryCodes": []
   },
   {
     "id": "toss-securities",

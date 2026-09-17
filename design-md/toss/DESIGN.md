@@ -17,16 +17,18 @@ ds:
   description: Toss's public mobile design-system documentation.
 verification_v2:
   schema: 2
-  checked: "2026-07-11"
+  checked: "2026-09-17"
   surfaces:
     - { id: marketing-home, kind: marketing, url: "https://toss.im/", inspected: "2026-07-11" }
     - { id: marketing-story, kind: marketing, url: "https://toss.im/docs/10290", inspected: "2026-07-11" }
     - { id: tds-button, kind: design-system, url: "https://tossmini-docs.toss.im/tds-mobile/components/button/", inspected: "2026-07-11" }
+    - { id: tds-button-states, kind: design-system, url: "https://tossmini-docs.toss.im/tds-mobile/components/button/", inspected: "2026-09-17" }
     - { id: tds-agreement-v3, kind: design-system, url: "https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v3/", inspected: "2026-07-11" }
     - { id: tds-agreement-v4, kind: design-system, url: "https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/", inspected: "2026-07-11" }
   sources:
     - { id: toss-live, kind: product-surface, url: "https://toss.im/", captured: "2026-07-11" }
     - { id: tds-button-live, kind: official-doc, url: "https://tossmini-docs.toss.im/tds-mobile/components/button/", captured: "2026-07-11" }
+    - { id: tds-button-states, kind: official-doc, url: "https://tossmini-docs.toss.im/tds-mobile/components/button/", captured: "2026-09-17" }
     - { id: tds-text-field, kind: official-doc, url: "https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/", captured: "2026-07-11" }
     - { id: tds-badge, kind: official-doc, url: "https://tossmini-docs.toss.im/tds-mobile/components/badge/", captured: "2026-07-11" }
     - { id: tds-agreement, kind: official-doc, url: "https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/", captured: "2026-07-11" }
@@ -75,6 +77,8 @@ verification_v2:
     "tokens.rounded.button-large": *tds_button
     "tokens.rounded.button-xlarge": *tds_button
     "tokens.components.tds-button.type": *tds_button
+    "tokens.components.tds-button.pressed": &tds_button_states { surface_id: tds-button-states, source_id: tds-button-states, method: computed-style, captured: "2026-09-17" }
+    "tokens.components.tds-button.focus": *tds_button_states
     "tokens.components.tds-button.bg": *tds_button
     "tokens.components.tds-button.fg": *tds_button
     "tokens.components.tds-button.radius": *tds_button
@@ -140,7 +144,7 @@ tokens:
   rounded: { sm: 4, md: 6, button-small: 8, button-medium: 10, button-large: 14, button-xlarge: 16 }
   components_harvested: true
   components:
-    tds-button: { type: button, bg: "#3182f6", fg: "#ffffff", radius: "16px", height: "56px", padding: "0 20px", font: "17px / 600", states: "fill or weak; primary, danger, light, or dark; loading, disabled, pressed, and keyboard focus", use: "TDS Mobile xlarge primary action" }
+    tds-button: { type: button, bg: "#3182f6", fg: "#ffffff", radius: "16px", height: "56px", padding: "0 20px", font: "17px / 600", pressed: "scale(0.96); 56px renders 54px, fill unchanged", focus: "0 0 0 1px #8ac0ff, 0 0 0 3px #b8d9ff ring on :focus-visible", states: "fill or weak; primary, danger, light, or dark; loading, disabled, pressed, and keyboard focus. Hover produces no observable change on the official component page — the press feedback is geometric, not tonal", use: "TDS Mobile xlarge primary action" }
     text-field: { type: input, states: "box, line, big, hero; focus, error, disabled, read-only", use: "TDS Mobile text entry with help or error text" }
     badge: { type: badge, states: "fill or weak; xsmall, small, medium, large; semantic color variants", use: "TDS Mobile status or category label; not an action" }
     agreement: { type: toggle, states: "checked, unchecked, disabled, and nested agreement hierarchy", use: "TDS Mobile terms selection in v3 and v4 surfaces" }
