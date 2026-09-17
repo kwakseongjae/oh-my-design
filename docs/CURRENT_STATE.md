@@ -117,14 +117,16 @@ design-data 저장소에서 애니메이션을 정성적으로만 기술하고, 
 (`hubspot` `money-forward` `sendbird` `ubie`)는 확인 못 했지만 결론은 같다 — 입증 책임은
 주장에 있다.
 
-**A1 처리 완료: 130개, 19 KB 제거.** `npm run retire-motion`. 값 표만 걷어내고 관측 산문은
-전부 보존. 사실 보존 검사 130개 전수 통과(hex·px·url·font 손실 0). advisory 286 → **164**,
+**A1 처리: 30개.** (1차에 130개라고 했다가 **100개를 되돌렸다** — 외부 검토에서 orphan
+가드의 정규식이 `` `motion-standard / ease-enter` `` 형태를 놓쳐 막아야 할 것을 통과시킨
+게 드러났다. `adobe`는 표를 지우자 *"…curves above are illustrative defaults"* 만 남아
+매달렸는데, 내가 작업 중에 보고도 오탐으로 판단하고 넘어갔다.) advisory 286 → **261**,
 티어 불변.
 
-**164개는 일부러 남겼다.** 표를 지우면 산문의 토큰 이름이 정의를 잃는다
-(`17live`: *"enters with `ease-spring` over `motion-reaction`"*). 잘라내기가 아니라 다시
-쓰기가 필요하고, 도구가 기본값으로 거부한다(`would-orphan-token-names`). 다음 작업이다.
-전말: `docs/MOTION_TEMPLATE_2026-09-17.md`.
+**고친 가드로는 0개가 기계 처리 가능하다** — 235개가 고아, 1개가 매달림. 즉 **이건
+기계적으로 되는 일이 아니다.** 거의 모든 모션 섹션이 산문에서 그 토큰 이름을 인용하고
+있어 표를 자르려면 문장을 다시 써야 한다. 사실 보존 검사는 값 손실은 보지만 **의미 손실은
+못 본다.** 전말: `docs/MOTION_TEMPLATE_2026-09-17.md`.
 
 ### 위조 경로 차단 완료 (2026-09-17)
 

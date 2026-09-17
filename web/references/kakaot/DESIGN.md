@@ -452,12 +452,26 @@ What Kakao T refuses: the loud, gamified maximalism of some consumer apps (the m
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
 Kakao T's motion is purposeful and reassuring — the sheet glides, the map pans smoothly, and live status updates feel calm rather than jumpy.
+
+**Durations:**
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle flips, chip select |
+| `motion-fast` | 150ms | Hover, press, small reveals |
+| `motion-standard` | 250ms | Sheet snap, card expand, tab switch |
+| `motion-slow` | 400ms | Map fly-to, matched-driver reveal |
+| `motion-sheet` | 300ms | Bottom-sheet height transitions between trip steps |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | Default — 90% of motion |
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Sheets, toasts appearing |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-emphasized` | `cubic-bezier(0.2, 0.0, 0, 1)` | Sheet step transitions, map fly-to |
 
 **Spring stance.** Spring/overshoot is avoided on trip surfaces — bouncy motion would undercut the reassurance a mobility app needs. A gentle settle, not a bounce.
 

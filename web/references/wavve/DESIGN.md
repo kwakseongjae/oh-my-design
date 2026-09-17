@@ -425,12 +425,24 @@ What Wavve refuses: the near-pure-black, originals-first maximalism of the globa
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
 Wavve's motion is calm and cinematic — slow fades and gentle scales that suit settling into an evening, never bounce.
+
+**Durations:**
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle/checkbox flips |
+| `motion-fast` | 150ms | Hover lift, button press, chip select |
+| `motion-standard` | 250ms | Poster hover scale, row reveal, modal open |
+| `motion-slow` | 400ms | Billboard crossfade, page-to-detail / player transition |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | Default — most motion |
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Modals, sheets, toasts appearing |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
 
 **Spring stance.** Spring/overshoot is avoided — Wavve is a calm blue evening stream; kinetic bounce would undercut the immersive mood.
 

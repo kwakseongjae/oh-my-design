@@ -334,10 +334,21 @@ What TellingMe refuses, visible in its design: the clinical coldness of mental-h
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Pill press, hover, focus |
+| `motion-standard` | 220ms | Card / stanza reveal, sheet, dropdown |
+| `motion-slow` | 340ms | Page-level transitions, daily-question reveal |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, stanzas, question reveal |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
 
 **Motion rules**: Motion is soft and unhurried, matching the calm, reflective product. Pill CTAs respond to press with a gentle scale/opacity shift; section stanzas and the daily question fade in from below at `motion-standard / ease-enter`. There is no bounce, spring, or playful overshoot beyond the friendly emotion stickers themselves — a journaling product signals steadiness and safety, not stimulation. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
 

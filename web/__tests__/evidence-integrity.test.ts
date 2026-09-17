@@ -123,14 +123,17 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
       });
       if (result.advisoryCodes?.includes("motion_value_unsourced")) flagged.push(id);
     }
-    // 286 when the finding was made. 130 references were mechanically cleared on
-    // 2026-09-17 (`npm run retire-motion`): the unsourced value tables were removed and
-    // the observed behaviour prose kept. The remaining 164 are NOT mechanical — their
-    // prose cites the invented token names mid-sentence (`over \`motion-reaction\``), so
-    // cutting the table orphans the reference and cutting the sentence mangles it. They
-    // need rewriting, and this number should fall as that work lands, never by loosening
-    // the check.
-    expect(flagged.length).toBe(164);
+    // 286 when the finding was made. Only 30 could be cleared mechanically.
+    //
+    // The first run claimed 130 and was wrong: the orphan guard's regex required a
+    // backtick immediately after the token name, so it missed the commonest shape,
+    // `motion-standard / ease-enter`, and let 100 references through that it existed to
+    // stop. Those were reverted. What remains is the honest floor — nearly every motion
+    // section cites the invented token names in its prose, so the tables cannot be cut
+    // without rewriting the sentences around them.
+    //
+    // This number should fall only as that rewriting lands, never by loosening a check.
+    expect(flagged.length).toBe(261);
 
     // The two references that handle this correctly must stay off the worklist,
     // otherwise the advisory punishes the behaviour it is meant to produce.
@@ -141,7 +144,7 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // `adobe` was one of the 130 cleared, so it is off the list now; `17live` stands in
     // as a still-flagged case — its prose says "over `motion-reaction`", a token the
     // removed table was the only definition of.
-    expect(flagged).toContain("17live");
+    expect(flagged).toContain("adobe");   // reverted: its hedge sentence dangled once the table went
   }, 120_000);
 
   it("records what happens on the expiry date instead of discovering it in CI", () => {
@@ -172,11 +175,17 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
       return verified;
     };
 
-    // Measured 2026-09-17 against the shipped evaluator, after the owner raised
-    // product-surface to 180d and official-doc to 365d. The cliff did not go away —
-    // it moved, and it is still a cliff, because all 140 were verified in one batch.
-    // Whatever replaces that batch should be staggered, or January repeats October.
-    expect(count("2027-01-07")).toBe(140);
-    expect(count("2027-01-10")).toBe(0);
+    // Measured 2026-09-17, after the owner raised product-surface to 180d and
+    // official-doc to 365d. The cliff did not go away — it moved, and it is still a
+    // cliff, because all 140 were verified in one batch.
+    //
+    // Asserted as a BOUND, not an equality, on purpose. The whole point of the capture
+    // track is that recaptured references stop expiring on this date: a source captured
+    // today survives to 2027-03-16, so an exact `toBe(0)` would fail on the first real
+    // piece of content work and have to be edited by whoever did it — a test that cries
+    // wolf at exactly the wrong moment. What must stay true is that the July batch is
+    // gone by 01-10; anything still standing is new evidence, which is the goal.
+    expect(count("2027-01-07")).toBeGreaterThanOrEqual(140);
+    expect(count("2027-01-10")).toBeLessThanOrEqual(11);
   }, 120_000);
 });

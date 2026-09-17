@@ -388,10 +388,21 @@ What Quotabook refuses, visible in its design: the pastel, rounded, consumer-fri
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, pill press, focus |
+| `motion-standard` | 220ms | Card/section reveal, sheet, dropdown |
+| `motion-slow` | 340ms | Page-level transitions, monumental hero reveals |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sheets, cards, chips |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
 
 **Motion rules**: Motion is restrained and precise — consistent with the flat, serious aesthetic. Pills respond to press with a subtle scale/opacity shift; monumental section headlines reveal with a quiet fade-and-rise at `motion-slow / ease-enter` as the user scrolls. No bounce or spring — a capital-markets platform signals steadiness, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
 

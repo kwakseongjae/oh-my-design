@@ -387,10 +387,21 @@ What Kyobo's design refuses, visible in its system: the loud, urgency-driven chr
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, button press, focus ring |
+| `motion-standard` | 200ms | Tab switch, dropdown, card/section reveal |
+| `motion-slow` | 320ms | Page-level transitions, rail scroll |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — dropdowns, panels, cards |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions, tab indicator |
 
 **Motion rules**: Motion is functional and quiet, matching the flat, content-first aesthetic. The active tab's `#5055b1` underline slides between tabs at `motion-standard / ease-standard`; buttons respond to press with a subtle opacity/scale shift; catalog results fade in from below at `motion-standard / ease-enter`. No bounce or spring — a 40-year reading-room institution signals steadiness, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant while the storefront stays fully functional.
 

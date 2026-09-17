@@ -363,10 +363,22 @@ What Starling refuses, visible in its design and copy: the legacy banking aesthe
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | State commits, selection ticks, focus rings |
+| `motion-fast` | 100ms | Hover, button press, input focus |
+| `motion-standard` | 200ms | Card reveals, nav dropdown, sheet entrance |
+| `motion-slow` | 300ms | Page transitions, hero elements, carousels |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sheets, menus, cards |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals, close actions |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
 
 **Motion rules**: Starling's motion is functional and warm — consistent with the accessible, consumer-first aesthetic. The homepage carousel (account type cards) slides at `motion-standard / ease-enter`. The mint CTA carries no hover animation on desktop — it relies on the color's inherent authority rather than movement. Nav dropdowns fade-enter from a 4px upward offset. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional and no information is conveyed through motion alone.
 

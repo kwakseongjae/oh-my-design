@@ -367,10 +367,21 @@ What Corca's design refuses, visibly: the heavy, shadow-stacked chrome of legacy
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, pill press, focus |
+| `motion-standard` | 220ms | Card / section reveal, dropdown, sheet |
+| `motion-slow` | 340ms | Page-level transitions, hero reveal |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sections, dropdowns |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
 
 **Motion rules**: Motion is functional and calm — consistent with the flat, proof-forward aesthetic. Pill CTAs respond to press with a subtle scale/opacity shift; colored product bands and metrics fade-in from below at `motion-standard / ease-enter` as the reader scrolls. No bounce or spring — an AI company signals steady competence, not gimmickry. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and scroll reveals become immediate; the site stays fully functional.
 

@@ -410,10 +410,22 @@ What Monzo refuses, visible in its design system: the institutional gravity of d
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | State commits, notification ticks, focus rings |
+| `motion-fast` | 100ms | Hover, chip press, pill ripple |
+| `motion-standard` | 200ms | Card expand, dropdown, sheet |
+| `motion-slow` | 300ms | Page-level transitions, hero section reveals |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving elements — sheets, cards, notifications |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
 
 **Motion rules**: Motion is functional and app-native — consistent with Monzo's mobile-first DNA. Pill chips respond to press with subtle scale/opacity; transaction rows reveal at `motion-standard / ease-enter`. No bounce or spring — a current-account product signals steady reliability. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional and the coral accent never animates.
 

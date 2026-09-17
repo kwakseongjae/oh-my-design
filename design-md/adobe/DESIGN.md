@@ -405,10 +405,21 @@ The design system carries the philosophy explicitly. Spectrum's stated principle
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, focus ring, pill press |
+| `motion-standard` | 200ms | Tab switch, card reveal, dropdown |
+| `motion-slow` | 320ms | Hero media crossfade, section transitions |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving panels, cards |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
 
 **Motion rules**: Motion at Adobe is carried by content, not chrome — heroes autoplay video (with an explicit "Pause" control in the live DOM, an accessibility commitment), while UI transitions stay quick and unobtrusive. Carousels page with simple horizontal slides; tabs swap panels with a fade, never a bounce. The Spectrum 2 site ships a first-class "Reduce motion" toggle (observed live), and `prefers-reduced-motion: reduce` collapses transitions to instant and halts autoplaying media. No spring or overshoot anywhere: tools for professionals signal steadiness. (Token names and curves above are illustrative defaults consistent with observed behavior; Spectrum's internal motion token values are not publicly documented on the inspected pages.)
 

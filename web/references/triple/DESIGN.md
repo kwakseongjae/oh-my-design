@@ -423,12 +423,25 @@ What Triple refuses: the banner-heavy, discount-shouting density of booking OTAs
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
 Triple's motion is light and friendly — gentle slides, soft pops, map-pin reveals. Playful at small moments, calm overall.
+
+**Durations:**
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Toggle/checkbox, chip select |
+| `motion-fast` | 150ms | Hover, press, add-to-itinerary check |
+| `motion-standard` | 250ms | Card lift, sheet open, tab switch, map pin drop |
+| `motion-slow` | 350ms | Page-to-detail, itinerary reorder settle |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | Default — most motion |
+| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Sheets, modals, toasts, map pins appearing |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-spring` | `cubic-bezier(0.34, 1.56, 0.64, 1)` | Add-to-itinerary pop, map-pin drop |
 
 **Spring stance.** Spring is licensed for the small delight moments that make planning fun — the add-to-itinerary pop and the map-pin drop. Navigation and sheets use standard easing. The companion should feel playful when you add a place, calm when you move around.
 

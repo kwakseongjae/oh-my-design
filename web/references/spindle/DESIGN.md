@@ -410,10 +410,21 @@ The four principles below are Spindle's officially stated design principles (敬
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, button press, focus ring |
+| `motion-standard` | 200ms | Card/section reveal, sheet, dropdown |
+| `motion-slow` | 320ms | Page-level transitions |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sheets, cards, dropdowns |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
 
 **Motion rules**: Motion is functional and quiet — consistent with the flat, fast, accessibility-first system (軽快 / Lightness). Buttons respond to press with a subtle background-color shift (green deepening to `#0f5c1f`) rather than scale gymnastics; content reveals fade in from below at `motion-standard / ease-enter`. No bounce or spring — a 20-year media platform signals steadiness and welcome, not novelty. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional, in keeping with the Respect (敬意) principle.
 

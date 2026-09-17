@@ -383,10 +383,21 @@ The design organization carries this through an internal design system called **
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, chip press, focus rings |
+| `motion-standard` | 200ms | Dropdown mega-menu, card reveal, accordion |
+| `motion-slow` | 320ms | Page-level transitions, hero media reveal |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — menus, sheets, cards |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
 
 **Motion rules**: Motion is functional and modest, matching the flat printed aesthetic. Pills respond to hover with subtle background deepening (no lift — there are no shadows to grow); the mega-menu opens with a quick fade-slide at `motion-standard / ease-enter`; section content fades in from a few pixels below on scroll. No spring, bounce, or parallax — a platform that runs shop registers signals steadiness above delight. Under `prefers-reduced-motion: reduce`, transitions collapse to instant and scroll reveals render immediately; nothing functional depends on animation.
 

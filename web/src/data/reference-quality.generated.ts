@@ -173,7 +173,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "591",
@@ -217,7 +219,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "91app",
@@ -264,7 +268,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "ably",
@@ -354,7 +360,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "airbnb",
@@ -398,7 +406,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "airtable",
@@ -566,7 +576,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "asos",
@@ -746,7 +758,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "bbc",
@@ -793,7 +807,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -816,7 +831,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "bilibili",
@@ -978,7 +995,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "cafe24",
@@ -1074,7 +1093,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "catchtable",
@@ -1208,7 +1229,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "cjonstyle",
@@ -1413,7 +1436,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "cohere",
@@ -1555,7 +1580,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "coupang",
@@ -1599,7 +1626,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "cursor",
@@ -1643,7 +1672,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "dabang",
@@ -1685,7 +1716,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "danawa",
@@ -1755,7 +1788,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "datarize",
@@ -1824,7 +1859,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "deliveroo",
@@ -1975,7 +2012,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -2214,7 +2252,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "eslite",
@@ -2437,7 +2477,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "firstory",
@@ -2459,7 +2501,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "fitpet",
@@ -2481,7 +2525,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "flex",
@@ -2592,7 +2638,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "frip",
@@ -2711,7 +2759,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "gangnamunni",
@@ -2996,7 +3046,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "govuk",
@@ -3042,7 +3094,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "greenvines",
@@ -3089,7 +3143,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "grip",
@@ -3137,7 +3193,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "hahow",
@@ -3230,7 +3288,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "heptabase",
@@ -3252,7 +3312,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "heydealer",
@@ -3274,7 +3336,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "hogangnono",
@@ -3373,7 +3437,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "hwahae",
@@ -3395,7 +3461,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "hyperconnect",
@@ -3555,7 +3623,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "igaworks",
@@ -3599,7 +3669,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "ikala",
@@ -3645,7 +3717,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "inflearn",
@@ -4014,7 +4088,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "karrot",
@@ -4127,7 +4203,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "kdan",
@@ -4405,7 +4483,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "lablup",
@@ -4428,7 +4508,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -4498,7 +4579,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "layerx",
@@ -4545,7 +4628,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "lezhin",
@@ -4679,7 +4764,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "loom",
@@ -4794,7 +4881,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "mailchimp",
@@ -4816,7 +4905,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "makinarocks",
@@ -4885,7 +4976,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "medibloc",
@@ -5101,7 +5194,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "mildang",
@@ -5123,7 +5218,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "millie",
@@ -5427,7 +5524,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -5681,7 +5779,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "neosapience",
@@ -5703,7 +5803,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "netflix",
@@ -5841,7 +5943,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "nota",
@@ -5863,7 +5967,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "note",
@@ -5932,7 +6038,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "nvidia",
@@ -6068,7 +6176,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "onestore",
@@ -6160,7 +6270,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "palantir",
@@ -6298,7 +6410,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "paypal",
@@ -6417,7 +6531,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "pepabo",
@@ -6439,7 +6555,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "perplexity",
@@ -6487,7 +6605,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -6654,7 +6773,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "portaly",
@@ -6700,7 +6821,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "posthog",
@@ -6745,7 +6868,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "poya",
@@ -6789,7 +6914,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "protopie",
@@ -6914,7 +7041,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "quotabook",
@@ -6936,7 +7065,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "ragic",
@@ -7081,7 +7212,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "rebellions",
@@ -7292,7 +7425,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "revolut",
@@ -7416,7 +7551,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "robinhood",
@@ -7556,7 +7693,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "sanity",
@@ -7648,7 +7787,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -7671,7 +7811,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "sendbird",
@@ -7764,7 +7906,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "shiftup",
@@ -7878,7 +8022,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "sktelecom",
@@ -8092,7 +8238,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "sony",
@@ -8228,7 +8376,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "spindle",
@@ -8250,7 +8400,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "spoon",
@@ -8299,7 +8451,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "spotify",
@@ -8441,7 +8595,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "stayfolio",
@@ -8463,7 +8619,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "stibee",
@@ -8485,7 +8643,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "stores",
@@ -8508,7 +8668,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -8623,7 +8784,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "surveycake",
@@ -8670,7 +8833,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -8812,7 +8976,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "tellingme",
@@ -8835,7 +9001,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -8971,7 +9138,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "together.ai",
@@ -9503,7 +9672,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "voicetube",
@@ -9727,7 +9898,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "wconcept",
@@ -9801,7 +9974,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "wired",
@@ -9870,7 +10045,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "wooribank",
@@ -9914,7 +10091,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "wrtn",
@@ -9937,7 +10116,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -10012,7 +10192,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "yanolja",
@@ -10170,7 +10352,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "zigbang",

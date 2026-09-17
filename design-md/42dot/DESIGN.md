@@ -338,10 +338,21 @@ What the design refuses, visible in the system: the decorative, consumer-cute ch
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, tag press, focus |
+| `motion-standard` | 240ms | Dropdown open, card/section reveal, carousel slide |
+| `motion-slow` | 400ms | Hero footage fades, page-level transitions |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — dropdown panels, cards |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions, carousel |
 
 **Motion rules**: Motion is functional and composed — matching the engineered, near-flat aesthetic. The nav mega-dropdown (`#32353f`) expands with `motion-standard / ease-enter`; carousels slide horizontally; hero footage cross-fades slowly as ambient atmosphere, not interactive delight. No bounce or spring — an autonomy company signals steadiness and control. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and hero footage holds a still frame; the site stays fully functional.
 

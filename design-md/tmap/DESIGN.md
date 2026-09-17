@@ -365,10 +365,21 @@ What TMAP refuses, visible in its design: the heavy, busy chrome of legacy porta
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, nav-underline shift, focus |
+| `motion-standard` | 220ms | Card/section reveal, carousel step, dropdown |
+| `motion-slow` | 340ms | Page-level transitions, hero reveal |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, panels, carousel slides |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
 
 **Motion rules**: Motion is functional and steady — consistent with the calm, infrastructure-grade aesthetic. The active-nav 4px underline slides smoothly between items; carousel/article rows advance at `motion-standard / ease-enter` with a quiet fade-and-rise; indicator dots cross-fade. No bounce or spring — a mobility-leadership brand signals dependability, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
 

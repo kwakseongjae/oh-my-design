@@ -366,10 +366,21 @@ What IICOMBINED refuses, visible in its design: the saturated, badge-heavy urgen
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 150ms | Hover, pill press, focus |
+| `motion-standard` | 280ms | Image cross-fade, tile reveal, overlay open |
+| `motion-slow` | 500ms | Full-bleed campaign transitions, hero reveals |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — overlays, tiles, campaign reveals |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions, cross-fades |
 
 **Motion rules**: Motion is cinematic but disciplined — consistent with the gallery aesthetic. Campaign imagery and video cross-fade slowly (`motion-slow / ease-enter`) so transitions feel like scene changes in an exhibition; product tiles fade in flat from neutral placeholders; hairline pills respond to press with a subtle opacity shift, never a bounce. No spring, no overshoot — the house signals art-direction and steadiness, not consumer-app playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and ambient campaign motion freezes; the storefront remains fully functional.
 

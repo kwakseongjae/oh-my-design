@@ -37,6 +37,20 @@ const MOTION_HEADING = /^##\s*\d*\.?\s*Motion/i;
 const VALUE = /\b\d{2,4}\s?ms\b|cubic-bezier\([^)]*\)/g;
 const QUARANTINED = /synthetic|not verified product facts|superseded/i;
 
+/**
+ * 표를 지운 뒤에도 산문이 토큰 **이름**을 인용하면 그 이름은 정의를 잃는다.
+ *
+ * 처음 쓴 정규식은 /`(?:motion|ease|duration)-[a-z0-9-]+`/ 였고 **틀렸다.** 백틱 하나에
+ * 이름 둘이 슬래시로 묶인 가장 흔한 형태 — `motion-standard / ease-enter` — 를 놓친다.
+ * 이름 뒤에 바로 백틱이 와야 매칭되기 때문이다. 그 결과 2026-09-17 1차 실행에서 130개 중
+ * **100개가 막혀야 했는데 통과했고** 되돌렸다. 백틱 구간 전체를 보고 그 안에 토큰 이름이
+ * 있는지 묻는다.
+ */
+const ORPHAN_TOKEN_NAME = /`[^`]*\b(?:motion|ease|duration)-[a-z0-9-]+[^`]*`/gi;
+
+/** 지워진 표를 위치로 가리키는 문장. 토큰/곡선/시간 이야기일 때만 센다. */
+const POSITIONAL_REFERENCE = /[^.!?\n]*\b(?:above|in the table|listed here|preceding)\b[^.!?\n]*\b(?:token|curve|duration|easing|timing|scale)\b[^.!?\n]*[.!?]|[^.!?\n]*\b(?:token|curve|duration|easing|timing|scale)\b[^.!?\n]*\b(?:above|in the table|listed here|preceding)\b[^.!?\n]*[.!?]/gi;
+
 const ABSENCE = `**No motion duration or easing token is promoted.** The capture bundle for this
 reference records no transition or animation property, and no official source consulted
 publishes a motion scale. The behaviour described below was observed; treat any exact
@@ -111,9 +125,19 @@ export function retire(id) {
    * 잘라내기가 아니라 다시 쓰기가 필요하다 — 7월 배치가 "정리하다가" 실패한 자리가
    * 정확히 여기다. `--force`로 강행할 수 있게는 두되 기본값은 보류다.
    */
-  const orphans = [...new Set(kept.match(/`(?:motion|ease|duration)-[a-z0-9-]+`/gi) ?? [])];
+  const orphans = [...new Set(kept.match(ORPHAN_TOKEN_NAME) ?? [])];
   if (orphans.length > 0 && !process.argv.includes("--force")) {
     return { id, ok: false, reason: "would-orphan-token-names", orphans };
+  }
+
+  /**
+   * 표를 가리키는 **위치 참조**도 매달린다. `adobe`가 그랬다 — 표를 지우고 나니
+   * "(Token names and curves above are illustrative defaults …)"만 남아 위가 없는 문장이
+   * 됐다. 토큰 이름이 백틱에 없어서 위 검사에 안 걸린다.
+   */
+  const dangling = [...new Set(kept.match(POSITIONAL_REFERENCE) ?? [])];
+  if (dangling.length > 0 && !process.argv.includes("--force")) {
+    return { id, ok: false, reason: "would-dangle-positional-reference", dangling };
   }
 
   const body = kept.trim();

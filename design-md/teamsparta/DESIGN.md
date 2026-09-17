@@ -420,10 +420,21 @@ What Team Sparta refuses, visible in its design and copy: the dry, intimidating 
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, chip press, focus |
+| `motion-standard` | 220ms | Card / section reveal, sheet, dropdown |
+| `motion-slow` | 340ms | Page-level transitions, hero band reveal |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, chips, sections |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
 
 **Motion rules**: Motion is energetic but controlled — consistent with the bold, flat aesthetic. Course cards and color bands fade-in from below at `motion-standard / ease-enter` as the visitor scrolls; the red CTA responds to press with a subtle scale/opacity shift. Numbered step sections may reveal sequentially to reinforce the "1 → 2 → 3" progression. No excessive bounce or spring — the energy comes from color and copy, not novelty motion. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and scroll reveals become immediate; the site stays fully functional.
 

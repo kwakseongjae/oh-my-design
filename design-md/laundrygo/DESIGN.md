@@ -379,10 +379,21 @@ The 2022 rebrand (LaundryGo's third anniversary) made the brand's posture explic
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, button press, focus |
+| `motion-standard` | 200ms | Card/section reveal, sheet, dropdown |
+| `motion-slow` | 320ms | Page-level band transitions, hero reveal |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sections, cards, CTAs |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
 
 **Motion rules**: Motion is functional and steady — consistent with the calm, infrastructure-grade aesthetic. Section content fades in from below at `motion-standard / ease-enter` as photographic bands enter the viewport; CTAs respond to press with a subtle scale/opacity shift. The brand's one signature playful motion is the logo's G-arrow rotating like a washing drum in-app, but on marketing surfaces motion stays restrained — no bounce or spring, signaling reliability over delight. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
 

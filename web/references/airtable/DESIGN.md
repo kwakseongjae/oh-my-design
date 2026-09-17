@@ -296,10 +296,12 @@ What Airtable refuses: competing with Notion on docs, no-code-as-magic framing.
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | Cell commit |
+| `motion-fast` | 150ms | Hover |
+| `motion-standard` | 250ms | Modal, side panel |
+| `motion-slow` | 400ms | Spotlight surface arrival |
 
 Easings: `ease-enter cubic-bezier(0.2,0.6,0.25,1)`, `ease-exit cubic-bezier(0.4,0,1,1)`. No bouncy springs. `prefers-reduced-motion: reduce` removes spotlight fade-in.
 

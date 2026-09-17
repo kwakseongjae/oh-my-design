@@ -362,10 +362,21 @@ The visual identity reflects this transit-first heritage: green communicates pub
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 100ms | Tap feedback, button press, nav toggle |
+| `motion-standard` | 200ms | Card reveal, tab switch, modal open |
+| `motion-slow` | 350ms | Page transition, hero reveal, section scroll animation |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.25, 0.46, 0.45, 0.94)` | Elements arriving (cards, sheets, QR code) |
+| `ease-exit` | `cubic-bezier(0.55, 0.085, 0.68, 0.53)` | Elements dismissing |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1.0)` | Standard two-way transitions |
 
 **Motion rules**: As a transit and payment app used in public environments (MRT gates, checkout queues), motion must be fast and purposeful. QR code generation should appear near-instant (100ms feedback, then populate). Pill button taps respond with immediate opacity/scale feedback. Section scroll reveals use `motion-slow / ease-enter` for marketing pages, never for functional transaction screens where latency reads as error. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; payment-critical flows must remain fully functional without motion dependency.
 

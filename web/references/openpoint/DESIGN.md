@@ -382,10 +382,22 @@ The product targets Taiwan's mobile-first consumer who shops at 7-ELEVEN multipl
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 150ms | Hover states (event-btn arrow, dropdown reveal) |
+| `motion-standard` | 250ms | Card hover shadow transition (`transition: box-shadow 0.25s`) |
+| `motion-image` | 300ms | Event card image scale on hover (`transition: 0.3s ease-out`) |
+| `motion-cookie` | 2000ms | Cookie banner slide (2s cubic-bezier reveal) |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-image` | `ease-out` | Event card image zoom on hover (`0.3s ease-out`) |
+| `ease-cookie` | `cubic-bezier(0.23, 1, 0.32, 1)` | Cookie consent slide — quick exit, smooth deceleration |
+| `ease-loading-fade` | implicit transition | Loading overlay fade-out with opacity + z-index collapse |
 
 **Motion rules**: Motion is conservative and functional. The event card hover uses a scale(1.2) image zoom (`0.3s ease-out`) paired with an elevated shadow — a standard e-commerce pattern that communicates interactivity without distraction. The cookie banner entrance uses a heavy ease-in/out curve, reflecting the legal-compliance character of that surface. Under `prefers-reduced-motion`, image scale transforms should collapse; shadow transitions are safe to retain at reduced magnitude.
 

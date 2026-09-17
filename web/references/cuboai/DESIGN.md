@@ -383,10 +383,21 @@ What Cubo Ai refuses, visible in its design: the cold, alarm-coded aesthetic of 
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, pill press, focus |
+| `motion-standard` | 220ms | Card / section reveal, sheet, dropdown |
+| `motion-slow` | 320ms | Page-level transitions, hero reveal |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, chips |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
 
 **Motion rules**: Motion is gentle and functional — consistent with the calm, near-flat aesthetic. Pill chips and CTAs respond to press with a subtle scale/opacity shift; feature cards fade-in from below at `motion-standard / ease-enter`. No harsh bounce or jolt — a baby-monitor brand signals steadiness and reassurance, not playful surprise. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
 

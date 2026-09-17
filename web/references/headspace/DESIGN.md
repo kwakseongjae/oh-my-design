@@ -443,10 +443,21 @@ What Headspace refuses, visible in its design: the clinical aesthetic of legacy 
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 140ms | Hover, button press, focus |
+| `motion-standard` | 240ms | Card / band reveal, sheet, dropdown |
+| `motion-slow` | 360ms | Page-level transitions, hero illustration reveal |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, illustrations |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-gentle` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Soft two-way transitions, breathing animations |
 
 **Motion rules**: Motion is the brand's living layer — the smiley illustration and animation system is retained specifically to "simplify complex concepts" and convey emotion. Animations are warm and gentle, never snappy or jarring: a breathing-guide bubble expands and contracts on a slow, calm cycle; content cards fade-in from below at `motion-standard / ease-enter`. The orange smiley's expression transitions are soft eases, never bounces with overshoot — the feeling is reassurance, not delight-for-its-own-sake. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and ambient animation freezes; the product stays fully functional and calm.
 

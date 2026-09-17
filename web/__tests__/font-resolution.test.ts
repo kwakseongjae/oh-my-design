@@ -41,7 +41,7 @@ describe("font resolution — no silent Inter fallback", () => {
     const loaded = loadReference("baemin");
     expect(loaded).not.toBeNull();
     const legacy = extractLegacyReferenceDetail("baemin", loaded!.markdown);
-    const projection = projectAstReferenceDetail(loaded!.ast, legacy);
+    const projection = projectAstReferenceDetail(loaded!.ast!, legacy);
 
     expect(projection.detail.fontFamily).toBe("BAEMINWORK");
     expect(projection.detail.mono).toBeUndefined();
@@ -57,7 +57,7 @@ describe("font resolution — no silent Inter fallback", () => {
     const loaded = loadReference("baemin");
     expect(loaded).not.toBeNull();
     const legacy = extractLegacyReferenceDetail("baemin", loaded!.markdown);
-    const projection = projectAstReferenceDetail(loaded!.ast, legacy);
+    const projection = projectAstReferenceDetail(loaded!.ast!, legacy);
     const tokens = extractTokens({
       ...projection.detail,
       referenceAst: projection.contract,

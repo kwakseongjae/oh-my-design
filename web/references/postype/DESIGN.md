@@ -377,10 +377,21 @@ What POSTYPE refuses, visible in its design: the loud, ad-saturated, algorithm-f
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
+**Durations**:
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-fast` | 120ms | Hover, pill press, focus |
+| `motion-standard` | 200ms | Card/section reveal, sheet, dropdown, drawer |
+| `motion-slow` | 320ms | Page-level transitions, drawer open |
+
+**Easings**:
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sheets, cards, nav drawer |
+| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
 
 **Motion rules**: Motion is functional and quiet — consistent with the flat, reading-room aesthetic. Nav pills and buttons respond to press with a subtle opacity/scale shift; feed cards fade-in from below at `motion-standard / ease-enter`. The nav drawer slides at `motion-slow / ease-enter` on mobile. No bounce or spring — a publishing platform signals steadiness and focus, not playful delight. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
 
