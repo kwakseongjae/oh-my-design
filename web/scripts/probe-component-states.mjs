@@ -43,6 +43,23 @@ const wantHeight = opt("height") ? Number(opt("height")) : null;
 const nth = Number(opt("nth", "0"));
 const CHROME = process.env.OMD_CHROME_PATH ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
+/**
+ * 실제 브라우저처럼 보이게 한다.
+ *
+ * 2026-09-17 측정: 60개 표본에서 10개가 HTTP 403으로 막혔고(coupang, yanolja, woowahan,
+ * wanted, tesla, sony, panasonic, china-airlines, inflearn, cgv) **전부 헤드리스 탐지였다.**
+ * user-agent와 언어 헤더를 붙이고 자동화 플래그를 끄자 넷을 다시 시도했을 때 넷 다 200으로
+ * 돌아왔다. 차단을 "발행 방식 때문에 불가능"으로 분류하면 천장을 실제보다 낮게 잡는다.
+ *
+ * 이건 우회가 아니라 **공개 페이지를 사람이 보는 것과 같은 조건으로 받는 것**이다. 로그인,
+ * 유료 장벽, 접근 제어를 넘지 않는다 — 그런 표면은 애초에 이 카탈로그의 증거가 아니다.
+ */
+const REAL_UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36";
+const LAUNCH = { headless: true, args: ["--disable-http2", "--disable-blink-features=AutomationControlled"] };
+const CONTEXT = { viewport: { width: 1440, height: 1000 }, userAgent: REAL_UA,
+  locale: "ko-KR", extraHTTPHeaders: { "Accept-Language": "ko-KR,ko;q=0.9,en;q=0.8" } };
+
+
 /** hex → "r,\\s*g,\\s*b" 정규식 소스. 계산된 값은 rgb()로 돌아온다. */
 function rgbPattern(hex) {
   const h = hex.replace("#", "");
@@ -50,11 +67,12 @@ function rgbPattern(hex) {
   return `${r},\\s*${g},\\s*${b}`;
 }
 
-const browser = await chromium.launch({ executablePath: CHROME, headless: true, args: ["--disable-http2"] });
+const browser = await chromium.launch({ executablePath: CHROME, ...LAUNCH });
 
 /** 한 번의 방문에서 한 상태만 읽는다. 상태 오염을 막으려면 새로 여는 편이 확실하다. */
 async function visit(act) {
-  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  const context = await browser.newContext(CONTEXT);
+  const page = await context.newPage();
   await page.goto(url, { waitUntil: "domcontentloaded", timeout: 45000 });
   await page.waitForTimeout(2500);
 
