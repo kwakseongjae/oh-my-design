@@ -47,7 +47,7 @@ export default async function ReferenceEvolutionPage({ params }: { params: Promi
   const loaded = loadReference(id);
   if (!editorial || !loaded || loaded.quality.status !== "verified_v2") notFound();
 
-  const checked = loaded.ast.evidence?.checkedAt ?? loaded.quality.verifiedAt;
+  const checked = loaded.ast?.evidence?.checkedAt ?? loaded.quality.verifiedAt;
   const builderPath = canonicalBuilderPreviewPath(id);
   const pageUrl = `${SITE_URL}/design-systems/${id}/evolution`;
   const jsonLd = {
@@ -58,7 +58,7 @@ export default async function ReferenceEvolutionPage({ params }: { params: Promi
     inLanguage: "en",
     mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
     dateModified: checked ?? undefined,
-    citation: loaded.ast.evidence?.sources.map((source) => source.url) ?? [],
+    citation: loaded.ast?.evidence?.sources.map((source) => source.url) ?? [],
     author: { "@type": "Organization", name: "oh-my-design", url: SITE_URL },
   };
 

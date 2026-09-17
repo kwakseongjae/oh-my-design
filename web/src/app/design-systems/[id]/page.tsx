@@ -18,10 +18,7 @@ import { extractTokens } from "@/lib/extract-tokens";
 import { getRelatedReferences } from "@/lib/design-systems";
 import { REGISTRY, REGISTRY_BY_ID } from "@/data/registry.generated";
 import { loadReference } from "@/lib/references/repository.server";
-import {
-  extractLegacyReferenceDetail,
-  projectAstReferenceDetail,
-} from "@/lib/references/detail-projection";
+import { projectActiveReference } from "@/lib/references/consumer-adapter";
 import { getReferenceEnglishEditorial } from "@/lib/references/editorial";
 
 const SITE_URL = "https://oh-my-design.kr";
@@ -66,11 +63,11 @@ function buildSummary(
 function loadDetail(id: string) {
   const loaded = loadReference(id);
   if (!loaded) return null;
-  const legacy = extractLegacyReferenceDetail(id, loaded.markdown);
-  const projection = projectAstReferenceDetail(loaded.ast, legacy);
+  const projection = projectActiveReference(loaded);
   return {
     ...projection.detail,
-    referenceAst: projection.contract,
+    ...(projection.referenceAst ? { referenceAst: projection.referenceAst } : {}),
+    referenceQuality: loaded.quality,
     entry: loaded.entry,
   };
 }
@@ -154,11 +151,11 @@ export default async function DesignSystemDetailPage({
       description: summary,
       mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
       about: { "@type": "Brand", name },
-      ...(detail.referenceAst.quality.tokensExtractedAt || detail.referenceAst.quality.verifiedAt
+      ...(detail.referenceQuality.tokensExtractedAt || detail.referenceQuality.verifiedAt
         ? {
             dateModified:
-              detail.referenceAst.quality.tokensExtractedAt
-              ?? detail.referenceAst.quality.verifiedAt
+              detail.referenceQuality.tokensExtractedAt
+              ?? detail.referenceQuality.verifiedAt
               ?? undefined,
           }
         : {}),
@@ -166,10 +163,10 @@ export default async function DesignSystemDetailPage({
         {
           "@type": "PropertyValue",
           name: "referenceQualityStatus",
-          value: detail.referenceAst.quality.status,
+          value: detail.referenceQuality.status,
         },
       ],
-      ...(detail.referenceAst.evidence?.sources.length
+      ...(detail.referenceAst?.evidence?.sources.length
         ? { citation: detail.referenceAst.evidence.sources.map((source) => source.url) }
         : {}),
       author: { "@type": "Organization", name: "oh-my-design", url: SITE_URL },

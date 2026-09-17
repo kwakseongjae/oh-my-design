@@ -45,6 +45,7 @@ import { getDesignSystem } from "@/lib/design-systems";
 import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
 import type { ParsedTokens } from "@/lib/extract-tokens";
 import type { ReferenceDetailAstContract } from "@/lib/references/detail-projection";
+import type { ReferenceQualityEntry } from "@/data/reference-quality.generated";
 import { ReferenceShareButton } from "@/components/reference-share-button";
 
 interface Detail {
@@ -60,11 +61,39 @@ interface Detail {
   mood: string;
   accent?: string;
   border?: string;
-  referenceAst: ReferenceDetailAstContract;
+  referenceAst?: ReferenceDetailAstContract;
+  referenceQuality: ReferenceQualityEntry;
 }
 
 type MobileView = "preview" | "markdown";
 const subscribeToHydration = () => () => {};
+
+/**
+ * Advisory codes, said in words a reader can act on.
+ *
+ * These are computed per reference and were never rendered — the evidence panel showed
+ * `reasonCodes` (why a reference is not a higher tier) but not `advisoryCodes` (which of
+ * its values nothing backs). That gap mattered more than it sounds: 261 references carry
+ * motion values the capture harness never recorded, because it collects no transition or
+ * animation property at all, and one non-standard easing curve appears in 167 unrelated
+ * brands. Rewriting those documents is authoring work; saying so here is one block.
+ *
+ * Deliberately phrased as what is missing, not as a warning badge. AGENTS.md forbids
+ * putting `Partial`/warning chrome in place of content — the content stays exactly as it
+ * is, and this sits beside it in the panel that already reports evidence.
+ */
+const ADVISORY_LABEL: Record<string, string> = {
+  motion_value_unsourced: "Motion values here were not observed in any capture",
+  component_state_prose_only: "Component states are described in prose, not given per-state values",
+  component_noninteractive_only: "No interactive component is documented",
+  component_absent: "No components are documented",
+  token_value_self_declared_derived: "Some token values say they were derived rather than measured",
+  token_value_possibly_derived: "Some token values read as derived rather than measured",
+};
+
+function advisoryText(code: string): string {
+  return ADVISORY_LABEL[code] ?? code.replaceAll("_", " ");
+}
 
 export function DetailView({
   detail,
@@ -95,9 +124,11 @@ export function DetailView({
   const ds = getDesignSystem(detail.id);
   const displayName =
     ds?.name ?? detail.id.replace(/\.(app|ai)$/, "").replace(/^./, (c) => c.toUpperCase());
-  const quality = detail.referenceAst.quality;
-  const fontEvidence = detail.referenceAst.foundations.uiFont;
-  const componentCount = Object.keys(detail.referenceAst.tokens.components).length;
+  const quality = detail.referenceAst?.quality ?? detail.referenceQuality;
+  const fontEvidence = detail.referenceAst?.foundations.uiFont;
+  const componentCount = detail.referenceAst
+    ? Object.keys(detail.referenceAst.tokens.components).length
+    : null;
   const evidencePercent = Math.round(quality.evidenceCoverage * 100);
 
   function copyMd() {
@@ -319,17 +350,33 @@ export function DetailView({
                     : "unresolved"}
                 </dd>
               </div>
-              <div>
-                <dt className="text-muted-foreground">Components</dt>
-                <dd className="mt-0.5 font-medium text-foreground">
-                  {componentCount} documented · {detail.referenceAst.tokens.componentsHarvested ? "harvested" : "baseline"}
-                </dd>
-              </div>
+              {detail.referenceAst && componentCount !== null && (
+                <div>
+                  <dt className="text-muted-foreground">Components</dt>
+                  <dd className="mt-0.5 font-medium text-foreground">
+                    {componentCount} documented · {detail.referenceAst.tokens.componentsHarvested ? "harvested" : "documented"}
+                  </dd>
+                </div>
+              )}
             </dl>
             {quality.reasonCodes.length > 0 && (
               <p className="mt-2 border-t border-border/50 pt-2 font-mono text-[10px] leading-relaxed text-muted-foreground">
                 Needs work: {quality.reasonCodes.join(" · ").replaceAll("_", " ")}
               </p>
+            )}
+            {quality.advisoryCodes.length > 0 && (
+              <div className="mt-2 border-t border-border/50 pt-2">
+                <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                  Not backed by evidence
+                </p>
+                <ul className="mt-1 space-y-0.5">
+                  {quality.advisoryCodes.map((code) => (
+                    <li key={code} className="text-[11px] leading-relaxed text-muted-foreground">
+                      {advisoryText(code)}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
           </div>
         </section>

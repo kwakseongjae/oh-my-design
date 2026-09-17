@@ -1,8 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync, existsSync, readdirSync } from "node:fs";
 import { join } from "node:path";
-import yaml from "js-yaml";
-import { SOURCE_TTLS, evaluateReferenceQuality } from "../scripts/lib/reference-quality.mjs";
+// The evaluator ships its own frontmatter parser; using it here avoids a second YAML
+// dependency in the test tree (js-yaml has no bundled types, so importing it directly
+// was the only tsc error in this project).
+import { SOURCE_TTLS, evaluateReferenceQuality, parseReferenceFrontmatter } from "../scripts/lib/reference-quality.mjs";
 
 /**
  * Guards against making the catalog look verified without making it truer.
@@ -74,10 +76,8 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
       const design = join(refsDir, id, "DESIGN.md");
       if (!existsSync(design)) continue;
       const markdown = readFileSync(design, "utf8");
-      const match = markdown.match(/^---\n([\s\S]*?)\n---/);
-      if (!match) continue;
       let front: any;
-      try { front = yaml.load(match[1], { schema: yaml.JSON_SCHEMA }); } catch { continue; }
+      try { front = parseReferenceFrontmatter(markdown, design); } catch { continue; }
       const v2 = front?.verification_v2;
       if (!v2?.checked || !Array.isArray(v2.sources)) continue;
       for (const source of v2.sources) {
@@ -109,10 +109,8 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
       const design = join(refsDir, id, "DESIGN.md");
       if (!existsSync(design)) continue;
       const markdown = readFileSync(design, "utf8");
-      const match = markdown.match(/^---\n([\s\S]*?)\n---/);
-      if (!match) continue;
       let front: any;
-      try { front = yaml.load(match[1], { schema: yaml.JSON_SCHEMA }); } catch { continue; }
+      try { front = parseReferenceFrontmatter(markdown, design); } catch { continue; }
       const verification = join(refsDir, id, ".verification.md");
       const result = evaluateReferenceQuality({
         id,
@@ -158,10 +156,8 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
         const design = join(refsDir, id, "DESIGN.md");
         if (!existsSync(design)) continue;
         const markdown = readFileSync(design, "utf8");
-        const match = markdown.match(/^---\n([\s\S]*?)\n---/);
-        if (!match) continue;
         let front: any;
-        try { front = yaml.load(match[1], { schema: yaml.JSON_SCHEMA }); } catch { continue; }
+        try { front = parseReferenceFrontmatter(markdown, design); } catch { continue; }
         const verification = join(refsDir, id, ".verification.md");
         const result = evaluateReferenceQuality({
           id,
