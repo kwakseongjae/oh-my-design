@@ -110,8 +110,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "palette_grounding_low"
+      "palette_grounding_low",
+      "motion_value_unsourced"
     ],
     "paletteGrounding": 0.167
   },
@@ -159,8 +159,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -454,8 +454,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.8
   },
@@ -530,9 +530,9 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
+      "palette_grounding_low",
       "motion_value_unsourced",
-      "palette_grounding_low"
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.118
   },
@@ -578,8 +578,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -844,8 +844,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -1355,8 +1355,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.625
   },
@@ -1623,8 +1623,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.75
   },
@@ -1992,8 +1992,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "palette_grounding_low"
+      "palette_grounding_low",
+      "motion_value_unsourced"
     ],
     "paletteGrounding": 0.15
   },
@@ -2019,8 +2019,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.875
   },
@@ -2071,8 +2071,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "palette_grounding_low"
+      "palette_grounding_low",
+      "motion_value_unsourced"
     ],
     "paletteGrounding": 0.105
   },
@@ -2100,9 +2100,9 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
+      "palette_contradicted",
       "motion_value_unsourced",
-      "palette_contradicted"
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.182
   },
@@ -2229,8 +2229,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -2517,8 +2517,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.5
   },
@@ -2832,8 +2832,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.533
   },
@@ -3028,8 +3028,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -3108,8 +3108,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.75
   },
@@ -3255,8 +3255,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -3307,8 +3307,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.438
   },
@@ -3509,8 +3509,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.5
   },
@@ -3536,9 +3536,9 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
+      "palette_grounding_low",
       "motion_value_unsourced",
-      "palette_grounding_low"
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.222
   },
@@ -3732,8 +3732,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "palette_grounding_low"
+      "palette_grounding_low",
+      "motion_value_unsourced"
     ],
     "paletteGrounding": 0.188
   },
@@ -4050,8 +4050,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.636
   },
@@ -4078,8 +4078,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.6
   },
@@ -4268,8 +4268,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "palette_contradicted"
+      "palette_contradicted",
+      "motion_value_unsourced"
     ],
     "paletteGrounding": 0.176
   },
@@ -4463,8 +4463,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "token_value_possibly_derived"
+      "token_value_possibly_derived",
+      "motion_value_unsourced"
     ],
     "paletteGrounding": 0.263
   },
@@ -4705,8 +4705,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -4806,8 +4806,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "palette_grounding_low"
+      "palette_grounding_low",
+      "motion_value_unsourced"
     ],
     "paletteGrounding": 0.238
   },
@@ -4858,8 +4858,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.846
   },
@@ -5168,8 +5168,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "palette_grounding_low"
+      "palette_grounding_low",
+      "motion_value_unsourced"
     ],
     "paletteGrounding": 0.222
   },
@@ -5270,9 +5270,9 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
+      "palette_contradicted",
       "motion_value_unsourced",
-      "palette_contradicted"
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.111
   },
@@ -5373,9 +5373,9 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
       "palette_grounding_low",
-      "token_value_possibly_derived"
+      "token_value_possibly_derived",
+      "motion_value_unsourced"
     ],
     "paletteGrounding": 0.211
   },
@@ -5520,8 +5520,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "palette_grounding_low"
+      "palette_grounding_low",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.143
   },
@@ -5663,8 +5663,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -5690,8 +5690,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.571
   },
@@ -5719,8 +5719,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "palette_contradicted"
+      "palette_contradicted",
+      "motion_value_unsourced"
     ],
     "paletteGrounding": 0.286
   },
@@ -5768,8 +5768,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -6258,8 +6258,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.375
   },
@@ -6331,8 +6331,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.318
   },
@@ -6498,8 +6498,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "palette_grounding_low"
+      "palette_grounding_low",
+      "motion_value_unsourced"
     ],
     "paletteGrounding": 0.083
   },
@@ -6719,8 +6719,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -6771,8 +6771,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -6871,8 +6871,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "palette_grounding_low"
+      "palette_grounding_low",
+      "motion_value_unsourced"
     ],
     "paletteGrounding": 0.136
   },
@@ -6897,8 +6897,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -6924,8 +6924,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.556
   },
@@ -6972,8 +6972,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.652
   },
@@ -7047,8 +7047,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -7301,8 +7301,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.632
   },
@@ -7453,8 +7453,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "palette_grounding_low"
+      "palette_grounding_low",
+      "motion_value_unsourced"
     ],
     "paletteGrounding": 0.158
   },
@@ -7653,8 +7653,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "palette_grounding_low"
+      "palette_grounding_low",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.231
   },
@@ -7729,8 +7729,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "palette_grounding_low"
+      "palette_grounding_low",
+      "motion_value_unsourced"
     ],
     "paletteGrounding": 0.095
   },
@@ -7781,8 +7781,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "palette_grounding_low"
+      "palette_grounding_low",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.2
   },
@@ -7807,8 +7807,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -7836,8 +7836,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "palette_contradicted"
+      "palette_contradicted",
+      "motion_value_unsourced"
     ],
     "paletteGrounding": 0.125
   },
@@ -7914,8 +7914,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "palette_grounding_low"
+      "palette_grounding_low",
+      "motion_value_unsourced"
     ],
     "paletteGrounding": 0.056
   },
@@ -8084,8 +8084,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "palette_grounding_low"
+      "palette_grounding_low",
+      "motion_value_unsourced"
     ],
     "paletteGrounding": 0.05
   },
@@ -8135,8 +8135,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -8952,9 +8952,9 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
+      "palette_grounding_low",
       "motion_value_unsourced",
-      "palette_grounding_low"
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.105
   },
@@ -9054,8 +9054,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -9226,8 +9226,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -9255,8 +9255,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "palette_contradicted"
+      "palette_contradicted",
+      "motion_value_unsourced"
     ],
     "paletteGrounding": 0.176
   },
@@ -9402,8 +9402,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -9707,9 +9707,9 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
+      "palette_grounding_low",
       "motion_value_unsourced",
-      "palette_grounding_low"
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.214
   },
@@ -9910,8 +9910,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "palette_grounding_low"
+      "palette_grounding_low",
+      "motion_value_unsourced"
     ],
     "paletteGrounding": 0.158
   },
@@ -9960,9 +9960,9 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
+      "token_value_possibly_derived",
       "motion_value_unsourced",
-      "token_value_possibly_derived"
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -10129,8 +10129,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.467
   },
@@ -10283,8 +10283,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "palette_grounding_low"
+      "palette_grounding_low",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0
   },
@@ -10339,8 +10339,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "palette_contradicted"
+      "palette_contradicted",
+      "motion_value_unsourced"
     ],
     "paletteGrounding": 0.083
   },
@@ -10367,8 +10367,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.909
   },
@@ -10566,8 +10566,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -10742,9 +10742,9 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
+      "token_value_possibly_derived",
       "motion_value_unsourced",
-      "token_value_possibly_derived"
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -10841,8 +10841,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": 0.333
   },
@@ -10888,8 +10888,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only",
-      "motion_value_unsourced"
+      "motion_value_unsourced",
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },

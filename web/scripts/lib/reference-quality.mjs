@@ -480,6 +480,33 @@ export function evaluateReferenceQuality({ id, markdown, frontmatter, verificati
   // gate so the recovery worklist can target them. Deliberately NOT in
   // `reasonCodes`: that field means "why this reference is not a higher tier",
   // and a Verified v2 entry is asserted to carry none.
+/**
+ * Advisory 정렬 — 알파벳순이 아니라 **증거의 세기순**.
+ *
+ * 390/440(89%)에 advisory가 뜬다. 거의 전부에 뜨면 목록이 상투어가 되고, 알파벳순은
+ * 하필 가장 흔하고 가장 약한 신호(`component_state_prose_only` 141건)를 앞에 놓는다.
+ * 읽는 사람이 첫 줄만 본다고 가정하고, 그 첫 줄이 가장 말이 되는 것이 되게 한다.
+ *
+ * 세기 기준은 "이 값이 틀렸다고 말할 근거가 얼마나 되는가"다. 두 관측이 일치하는
+ * `palette_contradicted`가 가장 세고, 문서 스스로 파생이라 밝힌 것이 그 다음이며,
+ * "산문으로만 서술됨"은 틀렸다는 뜻이 전혀 아니라 가장 약하다.
+ */
+const ADVISORY_SEVERITY = [
+  "palette_contradicted",
+  "token_value_self_declared_derived",
+  "palette_grounding_low",
+  "token_value_possibly_derived",
+  "motion_value_unsourced",
+  "component_absent",
+  "component_noninteractive_only",
+  "component_state_prose_only",
+];
+function bySeverity(a, b) {
+  const ia = ADVISORY_SEVERITY.indexOf(a), ib = ADVISORY_SEVERITY.indexOf(b);
+  return (ia < 0 ? ADVISORY_SEVERITY.length : ia) - (ib < 0 ? ADVISORY_SEVERITY.length : ib)
+    || a.localeCompare(b);
+}
+
   const coverage = componentCoverage(tokens);
   const advisories = [];
   if (coverage.total === 0) advisories.push("component_absent");
@@ -543,7 +570,7 @@ export function evaluateReferenceQuality({ id, markdown, frontmatter, verificati
     interactiveComponentCount: coverage.interactive,
     statedComponentCount: coverage.stated,
     reasonCodes: reasons.sort(),
-    advisoryCodes: advisories.sort(),
+    advisoryCodes: advisories.sort(bySeverity),
     /** 선언된 색 중 라이브 표면에서 확인된 비율. 스냅샷이 없으면 null. */
     paletteGrounding: colourGrounding && colourGrounding.declared > 0 && typeof colourGrounding.found === "number"
       ? Math.round(1000 * colourGrounding.found / colourGrounding.declared) / 1000
