@@ -167,29 +167,42 @@ for (const file of readFileSync(join(WEB, "src/data/reference-quality.generated.
     }
     // 한 측정 요소에 후보가 둘 이상이면 판정 불가 — 건너뛴다.
     const declared = candidates.filter((c) => c.why === "selector-declared");
+    // 셀렉터 선언이 하나면 그것, 여럿이면 판정 불가. 없으면 기하 후보를 모두 넘겨
+    // 아래 점수 비교에서 가린다.
     const pick = declared.length === 1 ? declared
       : declared.length > 1 ? []
-      : candidates.length === 1 ? candidates
-      : [];
+      : candidates;
     for (const candidate of pick) {
-      plan.push({ id, component: candidate.name, selector: measured.selector, states: candidate.states, why: candidate.why });
+      plan.push({ id, component: candidate.name, selector: measured.selector, states: candidate.states, why: candidate.why, hits: candidate.hits });
     }
   }
 }
 
-// 한 토큰이 여러 측정 요소에 매칭되면 어느 측정이 그 토큰인지 알 수 없다.
-// 첫 번째를 고르는 것은 임의 선택이므로 통째로 제외한다 (freee/primary-action이 4개,
-// google/business-primary가 2개 요소에 걸렸다).
-const claimCount = new Map();
+// 한 토큰이 여러 측정 요소에 매칭되면 어느 측정이 그 토큰인지 정해야 한다.
+// 처음에는 전부 제외했는데 그것은 너무 뭉툭했다 — `notion/marketing-primary-action`은
+// 한 요소와 6근거(bg,fg,radius,height,padding,font)로 맞고 나머지와는 1~3근거로 맞는다.
+// 그건 모호한 것이 아니라 명백한 승자가 있는 것이다.
+//
+// 그래서 점수 차로 가른다: 1위가 2위를 2근거 이상 앞서면 1위를 택하고, 그보다 가까우면
+// 여전히 제외한다 (`uber/header-light-menu-control` 5 대 4처럼).
+const byToken = new Map();
 for (const entry of plan) {
   const key = `${entry.id}::${entry.component}`;
-  claimCount.set(key, (claimCount.get(key) ?? 0) + 1);
+  if (!byToken.has(key)) byToken.set(key, []);
+  byToken.get(key).push(entry);
 }
-const ambiguous = [...claimCount.entries()].filter(([, n]) => n > 1).map(([key]) => key);
-if (ambiguous.length) {
-  console.log(`[apply-state-values] 중복 매칭으로 제외: ${ambiguous.join(" ")}`);
+const dropped = [];
+const filtered = [];
+for (const [key, entries] of byToken) {
+  if (entries.length === 1) { filtered.push(entries[0]); continue; }
+  const ranked = [...entries].sort((a, b) => (b.hits?.length ?? 0) - (a.hits?.length ?? 0));
+  const lead = (ranked[0].hits?.length ?? 0) - (ranked[1].hits?.length ?? 0);
+  if (lead >= 2) filtered.push(ranked[0]);
+  else dropped.push(`${key}(${ranked.map((e) => e.hits?.length ?? 0).join("v")})`);
 }
-const filtered = plan.filter((entry) => claimCount.get(`${entry.id}::${entry.component}`) === 1);
+if (dropped.length) {
+  console.log(`[apply-state-values] 점수가 갈리지 않아 제외: ${dropped.join(" ")}`);
+}
 plan.length = 0;
 plan.push(...filtered);
 

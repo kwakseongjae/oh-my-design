@@ -66,6 +66,9 @@ verification_v2:
     "tokens.rounded.docs-input": *docs
     "tokens.rounded.pill": *marketing
     "tokens.shadow.floating-action": *marketing
+    "tokens.components.marketing-primary-action.hover": *marketing
+    "tokens.components.marketing-primary-action.pressed": *marketing
+    "tokens.components.marketing-primary-action.focus": *marketing
     "tokens.components.marketing-primary-action.type": *marketing
     "tokens.components.marketing-primary-action.bg": *marketing
     "tokens.components.marketing-primary-action.fg": *marketing
@@ -106,7 +109,7 @@ tokens:
   shadow:
     floating-action: "rgba(0,0,0,0.01) 0px 0.175px 1.041px, rgba(0,0,0,0.02) 0px 0.8px 2.925px, rgba(0,0,0,0.027) 0px 2.025px 7.847px, rgba(0,0,0,0.04) 0px 4px 18px"
   components:
-    marketing-primary-action: { type: button, bg: "#0075de", fg: "#ffffff", radius: 8, padding: "4px 14px", height: 36, font: "16px/500 NotionInter", states: "hover/pressed/focus captured on marketing; values remain selector-specific", use: "Global marketing CTA" }
+    marketing-primary-action: { type: button, bg: "#0075de", fg: "#ffffff", radius: 8, padding: "4px 14px", height: 36, font: "16px/500 NotionInter", states: "hover/pressed/focus captured on marketing; values remain selector-specific", use: "Global marketing CTA" , hover: "#005bab", pressed: "#005bab", focus: "#005bab"}
     help-search: { type: input, fg: "#000000", border: "1px solid rgba(0,0,0,0.08)", radius: 5, padding: "7px 10px 7px 30px", height: 36, font: "16px/400 NotionInter", states: "dialog-open focus style captured", use: "Help language-picker search field" }
   components_harvested: true
 ---

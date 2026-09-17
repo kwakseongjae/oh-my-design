@@ -75,6 +75,9 @@ verification_v2:
     "tokens.rounded.full": *business_live
     "tokens.shadow.flat": *business_live
     "tokens.shadow.search-key-hover": *home_live
+    "tokens.components.business-primary.hover": *business_live
+    "tokens.components.business-primary.pressed": *business_live
+    "tokens.components.business-primary.focus": *business_live
     "tokens.components.business-primary.type": *business_live
     "tokens.components.business-primary.bg": *business_live
     "tokens.components.business-primary.fg": *business_live
@@ -151,7 +154,7 @@ tokens:
     search-key-hover: "rgba(23,23,23,0.24) 0px 1px 3px 0px"
   components_harvested: true
   components:
-    business-primary: { type: button, bg: "#1a73e8", fg: "#ffffff", radius: "1000px", padding: "8px 16px", height: "42px", font: "16px / 500 / Google Sans", states: "default, hover, pressed, and focus observed on Business Profile high-emphasis action", use: "Business Profile high-emphasis action only." }
+    business-primary: { type: button, bg: "#1a73e8", fg: "#ffffff", radius: "1000px", padding: "8px 16px", height: "42px", font: "16px / 500 / Google Sans", states: "default, hover, pressed, and focus observed on Business Profile high-emphasis action", use: "Business Profile high-emphasis action only." , hover: "#1a72e7", pressed: "#185abc", focus: "#185abc"}
     business-secondary: { type: button, bg: "#ffffff", fg: "#1a73e8", border: "1px solid #dadce0", radius: "1000px", padding: "8px 16px", height: "42px", font: "16px / 500 / Google Sans", states: "default, hover, pressed, and focus observed on Business Profile medium-emphasis action", use: "Business Profile medium-emphasis action only." , hover: "#1a72e6", pressed: "#e8f1fd", focus: "#e4eefc"}
     business-nav: { type: button, fg: "#202124", radius: "4px", padding: "0px 10px", height: "48px", font: "14px / 500 / Google Sans", states: "default, hover, pressed, and focus observed on Business Profile menu item", use: "Business Profile global navigation menu item." }
     business-card: { type: card, bg: "#ffffff", fg: "#3c4043", radius: "24px", padding: "18px 18px 32px", font: "16px / 400 / Google Sans Text", states: "disabled observed on the captured inactive image card", use: "Business Profile scrolling image card only." }

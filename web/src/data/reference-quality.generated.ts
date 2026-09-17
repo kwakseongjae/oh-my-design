@@ -2881,8 +2881,8 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "reconciled",
-    "claimCount": 91,
-    "evidenceClaimCount": 91,
+    "claimCount": 94,
+    "evidenceClaimCount": 94,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 9,
@@ -2890,7 +2890,7 @@ export const REFERENCE_QUALITY = [
     "tier1SourceCount": 9,
     "componentCount": 5,
     "interactiveComponentCount": 4,
-    "statedComponentCount": 2,
+    "statedComponentCount": 3,
     "reasonCodes": [],
     "advisoryCodes": []
   },
@@ -5743,8 +5743,8 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2026-10-11",
     "tokenSource": "live-extract",
-    "claimCount": 57,
-    "evidenceClaimCount": 57,
+    "claimCount": 60,
+    "evidenceClaimCount": 60,
     "evidenceCoverage": 1,
     "surfaceCount": 3,
     "sourceCount": 7,
@@ -5752,11 +5752,9 @@ export const REFERENCE_QUALITY = [
     "tier1SourceCount": 3,
     "componentCount": 2,
     "interactiveComponentCount": 2,
-    "statedComponentCount": 0,
+    "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": [
-      "component_state_prose_only"
-    ]
+    "advisoryCodes": []
   },
   {
     "id": "nrise",
