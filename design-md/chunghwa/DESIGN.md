@@ -373,21 +373,10 @@ What the brand refuses, visible in its design choices: excessive decoration, tre
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 100ms | Hover states on nav links, badge pulse |
-| `motion-standard` | 200ms | Panel transitions, card reveal, carousel slide |
-| `motion-slow` | 300ms | Page-level transitions, sheet or dropdown open |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Panels arriving — cards, dropdowns |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals, closing panels |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions, carousel |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: CHT is a utilitarian portal; motion is functional and imperceptible rather than expressive. Hero carousels auto-advance at a slow, non-disorienting rate. Sub-nav panels slide in at `motion-standard / ease-enter`. No bounce, spring, or playful physics — the system's credibility depends on calm, predictable behavior. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; all functionality remains intact.
 

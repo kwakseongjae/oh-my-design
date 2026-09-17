@@ -389,21 +389,10 @@ What Sandoll's design refuses, and what it embraces, is legible in the site itse
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, chip press, focus |
-| `motion-standard` | 200ms | Card/section reveal, dropdown, carousel step |
-| `motion-slow` | 320ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — dropdowns, cards, carousel |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion is functional and restrained — consistent with the flat, editorial aesthetic and the foundry's focus on letterforms over spectacle. The Sandoll Cloud carousel advances at `motion-standard / ease-standard`; dropdown panels and cards fade/settle at `motion-standard / ease-enter`; chips respond to press with a subtle scale/opacity shift. No bounce or spring — a type foundry signals precision, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the carousel stops auto-advancing; the product remains fully functional.
 

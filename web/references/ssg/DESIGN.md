@@ -394,21 +394,10 @@ SSG.COM's design stance reflects this dual heritage: the clean, editorial restra
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 100ms | Tab switch, badge state, carousel control press |
-| `motion-standard` | 200ms | Category pill transition, drawer open, dropdown reveal |
-| `motion-slow` | 300ms | Page-level section reveal, banner carousel slide |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Content arriving — drawers, product cards |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals — modals, overlays |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Tab transitions, two-way |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: SSG.COM motion is functional and low-key — consistent with the flat, dense commerce aesthetic. The category pill tab switches states with a quick 100ms fill; banner carousels slide at 300ms/ease-enter. There are no bounce or spring effects — the department-store heritage demands an authoritative, steady feel, not playful motion. Discount badge animations (none observed in live inspect) are intentionally static — the red color itself is the signal, not motion. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant, preserving full functionality.
 

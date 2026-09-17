@@ -398,21 +398,10 @@ What idus refuses, visible in its design: the glossy, shadow-stacked chrome of a
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, follow toggle |
-| `motion-standard` | 200ms | Card/grid reveal, sheet, dropdown |
-| `motion-slow` | 320ms | Page-level transitions, banner carousel |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, pills |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion is functional and quiet — consistent with the flat, dense commerce aesthetic. Product cards fade-in from below as grids load at `motion-standard / ease-enter`; the carrot CTA and follow toggle respond to press with a subtle opacity/scale shift; curation banners cross-fade on a slow carousel. No bounce or spring — a marketplace signals steadiness and trust, not gimmickry. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the banner carousel freezes; the catalog remains fully functional.
 

@@ -39,6 +39,13 @@ const TRACKED = [
     critical: true,
   },
   {
+    id: "reference-evidence-2026-07",
+    dir: "artifacts/reference-evidence-2026-07",
+    why: "2026-07-11~14 배치가 검증에 쓴 번들 그대로. 10월 재캡쳐가 reference-evidence/를 "
+      + "덮어쓰면 현재 140개 verified 클레임의 근거가 사라진다. 읽기 전용 동결본.",
+    critical: true,
+  },
+  {
     id: "reverify",
     dir: "artifacts/reverify",
     why: "재검증 큐/태스크 패킷. 재생성 가능하지만 실행 이력이 남아 있다.",

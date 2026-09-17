@@ -357,21 +357,10 @@ What is directly verifiable today is the ending and the pivot. Typed.do now serv
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, link / pill press, focus |
-| `motion-standard` | 300ms | Section fade-in on the corporate scroll, card reveal |
-| `motion-slow` | 600ms | Full-viewport cinematic scroll transitions |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sections, pills |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: On the corporate surface, motion is cinematic-but-controlled — full-height sections fade and settle as the user scrolls (the "Scroll to page 1–6" narrative), and the electric-lime glow (`#cedc00`) can pulse subtly to draw the eye to a pill link. On the calm product surface, motion is minimal: a gentle fade for the notice, no bounce, no spring. Under `prefers-reduced-motion: reduce`, scroll fades and the lime glow pulse collapse to instant; the content remains fully functional and readable.
 

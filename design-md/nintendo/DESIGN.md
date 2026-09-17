@@ -396,21 +396,10 @@ What Nintendo refuses, visible in its design: the cold, high-contrast aesthetic 
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, focus |
-| `motion-standard` | 220ms | Card/section reveal, carousel slide, dropdown |
-| `motion-slow` | 360ms | Page-level transitions, hero/banner reveals |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, carousel slides |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion is friendly but composed — consistent with the calm, image-forward aesthetic. Carousels slide at `motion-standard / ease-enter`; cards lift subtly on hover with the soft shadow deepening slightly. A gentle, tasteful bounce is acceptable on playful interactive moments (it's a games brand), but core navigation and commerce flows stay steady and predictable. Under `prefers-reduced-motion: reduce`, carousels and reveals collapse to instant; the experience remains fully functional.
 

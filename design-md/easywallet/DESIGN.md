@@ -402,22 +402,10 @@ The "BEEP!" brand device is more than playfulness: it's the sound recognition th
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-beep` | 100ms | Tap-to-pay NFC feedback — near-instant, mimics physical card beep |
-| `motion-fast` | 150ms | Button press feedback, badge state change |
-| `motion-standard` | 500ms | Scene-to-scene scrolljack transition |
-| `motion-slow` | 750ms | Feature circle animation, page-level reveals |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.39, 0.575, 0.565, 1)` | Arriving elements (EasyCard CSS native easing) |
-| `ease-exit` | `cubic-bezier(0.39, 0.575, 0.565, 1)` | Departing elements (same easing on leave) |
-| `ease-standard` | `0.5s ease` (CSS default) | Scene scrolljack transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: EasyWallet motion is split between two registers — the near-instant NFC payment feedback (100ms, should feel like a physical tap), and the graceful full-viewport scene animations on the marketing site (500–750ms). The loading screen teal overlay fades in and out with a slow opacity transition, establishing calm. Under `prefers-reduced-motion: reduce`, scene transitions collapse to instant; NFC tap feedback uses a brief static color flash rather than animation.
 

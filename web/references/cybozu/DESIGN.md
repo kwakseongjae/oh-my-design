@@ -400,21 +400,10 @@ What Cybozu's design refuses, visible on the surface: the heavy, intimidating ch
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, link/button press, focus |
-| `motion-standard` | 200ms | Card/section reveal, dropdown, sheet |
-| `motion-slow` | 320ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, dropdowns, sheets |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion is functional and quiet — consistent with the calm, flat aesthetic. Corporate teal links and kintone buttons respond to press with a subtle color/opacity shift; cards fade-in from below at `motion-standard / ease-enter`. No bounce or spring — Japanese B2B teamwork software signals steadiness and trust, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
 

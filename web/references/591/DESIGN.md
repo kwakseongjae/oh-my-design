@@ -409,21 +409,10 @@ The design system reflects this positioning: no-frills, high-density, data-first
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 100ms | Hover state changes on links, tab highlight transition |
-| `motion-standard` | 200ms | Dropdown menus, filter panel expand/collapse |
-| `motion-slow` | 300ms | Carousel transitions, modal open/close |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Panels arriving, dropdowns opening |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals, closing panels |
-| `ease-linear` | `linear` | Carousel slide transitions (consistent speed) |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: 591's motion vocabulary is minimal and functional — consistent with a 25-year-old marketplace that prioritizes reliability over delight. Carousel image transitions use linear easing for predictable pacing; dropdown filters open and close cleanly. There are no spring animations, no bounce effects — this is a product for efficiency-oriented property seekers, not an experiential app. Under `prefers-reduced-motion: reduce`, all transitions should collapse to instant; the product remains fully operational without any animation.
 

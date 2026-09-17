@@ -388,21 +388,10 @@ What Octopus refuses: greenwashing without substance, the incumbent utility's "c
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 100ms | Hover states, button press, focus ring |
-| `motion-standard` | 200ms | Card transitions, nav dropdown, input focus |
-| `motion-slow` | 300ms | Page-level reveals, hero illustration entrance |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, nav panels |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals, nav close |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion supports the brand's energy and warmth without becoming frivolous. The Constantine mascot illustration may entrance with a gentle float-in on hero load. Button hover shows a subtle brightness shift on the magenta (`#f050f8` → slightly lighter); outlined buttons fill on hover. No spring or bounce — the brand is playful but its energy infrastructure must feel dependable. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; Constantine does not animate on load.
 

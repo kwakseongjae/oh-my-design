@@ -43,7 +43,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-14",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 79,
     "evidenceClaimCount": 79,
@@ -65,7 +65,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 66,
     "evidenceClaimCount": 66,
@@ -102,14 +102,16 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "29cm",
     "status": "verified_v2",
     "verifiedAt": "2026-07-11",
     "tokensExtractedAt": "2026-07-11",
-    "nextReverifyAt": "2026-10-09",
+    "nextReverifyAt": "2027-01-07",
     "tokenSource": "reconciled",
     "claimCount": 85,
     "evidenceClaimCount": 85,
@@ -122,7 +124,9 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 3,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "3o3",
@@ -145,7 +149,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -266,7 +271,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-12",
     "tokensExtractedAt": "2026-07-12",
-    "nextReverifyAt": "2026-10-10",
+    "nextReverifyAt": "2027-01-08",
     "tokenSource": "reconciled",
     "claimCount": 110,
     "evidenceClaimCount": 110,
@@ -303,14 +308,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "acer",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 61,
     "evidenceClaimCount": 61,
@@ -354,7 +361,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-12",
     "tokensExtractedAt": "2026-07-12",
-    "nextReverifyAt": "2026-10-10",
+    "nextReverifyAt": "2027-01-08",
     "tokenSource": "reconciled",
     "claimCount": 86,
     "evidenceClaimCount": 86,
@@ -415,7 +422,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -423,7 +431,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 29,
     "evidenceClaimCount": 29,
@@ -460,7 +468,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "appier",
@@ -485,7 +495,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -493,7 +504,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-11",
     "tokensExtractedAt": "2026-07-11",
-    "nextReverifyAt": "2026-10-09",
+    "nextReverifyAt": "2027-01-07",
     "tokenSource": "reconciled",
     "claimCount": 83,
     "evidenceClaimCount": 83,
@@ -531,7 +542,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -576,14 +588,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "au",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 80,
     "evidenceClaimCount": 80,
@@ -620,14 +634,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "aws-cloudscape",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 35,
     "evidenceClaimCount": 35,
@@ -649,7 +665,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-12",
     "tokensExtractedAt": "2026-07-11",
-    "nextReverifyAt": "2026-10-09",
+    "nextReverifyAt": "2027-01-07",
     "tokenSource": "reconciled",
     "claimCount": 113,
     "evidenceClaimCount": 113,
@@ -684,14 +700,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "banksalad",
     "status": "verified_v2",
     "verifiedAt": "2026-07-12",
     "tokensExtractedAt": "2026-07-12",
-    "nextReverifyAt": "2026-10-10",
+    "nextReverifyAt": "2027-01-08",
     "tokenSource": "reconciled",
     "claimCount": 66,
     "evidenceClaimCount": 66,
@@ -750,7 +768,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "beusable",
@@ -803,7 +823,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 39,
     "evidenceClaimCount": 39,
@@ -865,14 +885,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "bmw",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 28,
     "evidenceClaimCount": 28,
@@ -894,7 +916,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 40,
     "evidenceClaimCount": 40,
@@ -978,7 +1000,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "cakeresume",
@@ -1057,7 +1081,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 73,
     "evidenceClaimCount": 73,
@@ -1094,14 +1118,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "cgv",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 65,
     "evidenceClaimCount": 65,
@@ -1123,7 +1149,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-12",
     "tokensExtractedAt": "2026-07-12",
-    "nextReverifyAt": "2026-10-10",
+    "nextReverifyAt": "2027-01-08",
     "tokenSource": "reconciled",
     "claimCount": 78,
     "evidenceClaimCount": 78,
@@ -1145,7 +1171,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 57,
     "evidenceClaimCount": 57,
@@ -1211,7 +1237,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-10",
+    "nextReverifyAt": "2027-01-08",
     "tokenSource": "live-extract",
     "claimCount": 42,
     "evidenceClaimCount": 42,
@@ -1250,7 +1276,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -1258,7 +1285,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 68,
     "evidenceClaimCount": 68,
@@ -1280,7 +1307,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 58,
     "evidenceClaimCount": 58,
@@ -1302,7 +1329,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 22,
     "evidenceClaimCount": 22,
@@ -1324,7 +1351,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 51,
     "evidenceClaimCount": 51,
@@ -1362,7 +1389,9 @@ export const REFERENCE_QUALITY = [
       "freshness_conflict",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "codeit",
@@ -1391,7 +1420,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 51,
     "evidenceClaimCount": 51,
@@ -1438,7 +1467,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 60,
     "evidenceClaimCount": 60,
@@ -1502,7 +1531,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -1532,7 +1562,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-12",
-    "nextReverifyAt": "2026-10-10",
+    "nextReverifyAt": "2027-01-08",
     "tokenSource": "live-extract",
     "claimCount": 42,
     "evidenceClaimCount": 42,
@@ -1576,7 +1606,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 35,
     "evidenceClaimCount": 35,
@@ -1620,7 +1650,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 67,
     "evidenceClaimCount": 67,
@@ -1677,7 +1707,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "databricks",
@@ -1699,7 +1731,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "datadog",
@@ -1728,7 +1762,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 50,
     "evidenceClaimCount": 50,
@@ -1766,7 +1800,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "dealicious",
@@ -1811,7 +1847,9 @@ export const REFERENCE_QUALITY = [
       "conflict_unresolved",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "dell",
@@ -1834,7 +1872,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "devsisters",
@@ -1858,7 +1898,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -1881,7 +1922,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "discord",
@@ -1904,7 +1947,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "dji",
@@ -1953,7 +1998,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "doordash",
@@ -1975,7 +2022,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "drdiary",
@@ -1997,7 +2046,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "drnow",
@@ -2021,7 +2072,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "dropbox",
@@ -2044,7 +2097,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -2068,7 +2122,9 @@ export const REFERENCE_QUALITY = [
       "freshness_conflict",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "easywallet",
@@ -2090,14 +2146,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "elastic",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 34,
     "evidenceClaimCount": 34,
@@ -2119,7 +2177,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-10",
+    "nextReverifyAt": "2027-01-08",
     "tokenSource": "reconciled",
     "claimCount": 37,
     "evidenceClaimCount": 37,
@@ -2163,7 +2221,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 39,
     "evidenceClaimCount": 39,
@@ -2198,14 +2256,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "evaair",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 67,
     "evidenceClaimCount": 67,
@@ -2227,7 +2287,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 76,
     "evidenceClaimCount": 76,
@@ -2247,7 +2307,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 32,
     "evidenceClaimCount": 32,
@@ -2284,7 +2344,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "fastcampus",
@@ -2309,7 +2371,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -2317,7 +2380,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 31,
     "evidenceClaimCount": 31,
@@ -2336,10 +2399,10 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "figma",
-    "status": "partial",
+    "status": "verified_v2",
     "verifiedAt": "2026-07-12",
     "tokensExtractedAt": "2026-07-12",
-    "nextReverifyAt": "2026-08-13",
+    "nextReverifyAt": "2026-11-11",
     "tokenSource": "reconciled",
     "claimCount": 83,
     "evidenceClaimCount": 83,
@@ -2351,9 +2414,7 @@ export const REFERENCE_QUALITY = [
     "componentCount": 5,
     "interactiveComponentCount": 5,
     "statedComponentCount": 1,
-    "reasonCodes": [
-      "source_expired"
-    ],
+    "reasonCodes": [],
     "advisoryCodes": []
   },
   {
@@ -2427,7 +2488,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 35,
     "evidenceClaimCount": 35,
@@ -2465,14 +2526,16 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "framer",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 31,
     "evidenceClaimCount": 31,
@@ -2494,7 +2557,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-12",
-    "nextReverifyAt": "2026-10-10",
+    "nextReverifyAt": "2027-01-08",
     "tokenSource": "live-extract",
     "claimCount": 49,
     "evidenceClaimCount": 49,
@@ -2551,7 +2614,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "fubon",
@@ -2573,7 +2638,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "fugle",
@@ -2598,7 +2665,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -2650,7 +2718,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 44,
     "evidenceClaimCount": 44,
@@ -2685,7 +2753,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "gaudiy",
@@ -2707,7 +2777,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "genie",
@@ -2729,7 +2801,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "github",
@@ -2752,7 +2826,9 @@ export const REFERENCE_QUALITY = [
       "freshness_conflict",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "gitlab",
@@ -2775,7 +2851,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -2801,7 +2878,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "gogolook",
@@ -2849,7 +2928,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -2872,14 +2952,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "google",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 94,
     "evidenceClaimCount": 94,
@@ -2936,7 +3018,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "greencar",
@@ -2981,7 +3065,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -3028,7 +3113,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -3098,14 +3184,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "hashicorp",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 57,
     "evidenceClaimCount": 57,
@@ -3211,7 +3299,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -3236,7 +3325,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -3259,7 +3349,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "humanscape",
@@ -3325,14 +3417,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "hyundai",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 32,
     "evidenceClaimCount": 32,
@@ -3354,7 +3448,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 31,
     "evidenceClaimCount": 31,
@@ -3376,7 +3470,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 58,
     "evidenceClaimCount": 58,
@@ -3413,7 +3507,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "icook",
@@ -3435,7 +3531,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "idus",
@@ -3523,7 +3621,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "imweb",
@@ -3552,7 +3652,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 74,
     "evidenceClaimCount": 74,
@@ -3587,7 +3687,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "intercom",
@@ -3619,7 +3721,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 33,
     "evidenceClaimCount": 33,
@@ -3656,14 +3758,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "jandi",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 37,
     "evidenceClaimCount": 37,
@@ -3702,7 +3806,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -3728,7 +3833,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -3751,7 +3857,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "jumpit",
@@ -3775,14 +3883,16 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "kakao",
     "status": "verified_v2",
     "verifiedAt": "2026-07-11",
     "tokensExtractedAt": "2026-07-11",
-    "nextReverifyAt": "2026-10-09",
+    "nextReverifyAt": "2027-01-07",
     "tokenSource": "reconciled",
     "claimCount": 107,
     "evidenceClaimCount": 107,
@@ -3802,7 +3912,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-12",
     "tokensExtractedAt": "2026-07-12",
-    "nextReverifyAt": "2026-10-10",
+    "nextReverifyAt": "2027-01-08",
     "tokenSource": "reconciled",
     "claimCount": 96,
     "evidenceClaimCount": 96,
@@ -3822,7 +3932,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 34,
     "evidenceClaimCount": 34,
@@ -3866,7 +3976,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 67,
     "evidenceClaimCount": 67,
@@ -3911,7 +4021,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-11",
     "tokensExtractedAt": "2026-07-11",
-    "nextReverifyAt": "2026-10-09",
+    "nextReverifyAt": "2027-01-07",
     "tokenSource": "reconciled",
     "claimCount": 63,
     "evidenceClaimCount": 63,
@@ -3925,7 +4035,8 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 0,
     "reasonCodes": [],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -3933,7 +4044,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 49,
     "evidenceClaimCount": 49,
@@ -3955,7 +4066,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 25,
     "evidenceClaimCount": 25,
@@ -3992,7 +4103,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "kcd",
@@ -4059,7 +4172,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "kintone",
@@ -4083,6 +4198,7 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
+      "motion_value_unsourced",
       "token_value_possibly_derived"
     ]
   },
@@ -4133,14 +4249,16 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "kmong",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 101,
     "evidenceClaimCount": 101,
@@ -4210,7 +4328,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-11",
     "tokensExtractedAt": "2026-07-11",
-    "nextReverifyAt": "2026-10-09",
+    "nextReverifyAt": "2027-01-07",
     "tokenSource": "reconciled",
     "claimCount": 193,
     "evidenceClaimCount": 193,
@@ -4230,7 +4348,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 33,
     "evidenceClaimCount": 33,
@@ -4252,7 +4370,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 46,
     "evidenceClaimCount": 46,
@@ -4334,14 +4452,16 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "lamborghini",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 50,
     "evidenceClaimCount": 50,
@@ -4401,7 +4521,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "lemonbase",
@@ -4447,7 +4569,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -4455,7 +4578,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 42,
     "evidenceClaimCount": 42,
@@ -4477,7 +4600,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 44,
     "evidenceClaimCount": 44,
@@ -4497,7 +4620,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-11",
     "tokensExtractedAt": "2026-07-11",
-    "nextReverifyAt": "2026-10-09",
+    "nextReverifyAt": "2027-01-07",
     "tokenSource": "reconciled",
     "claimCount": 100,
     "evidenceClaimCount": 100,
@@ -4519,7 +4642,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-12",
     "tokensExtractedAt": "2026-07-12",
-    "nextReverifyAt": "2026-10-10",
+    "nextReverifyAt": "2027-01-08",
     "tokenSource": "reconciled",
     "claimCount": 86,
     "evidenceClaimCount": 86,
@@ -4578,14 +4701,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "lotteon",
     "status": "verified_v2",
     "verifiedAt": "2026-07-14",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 66,
     "evidenceClaimCount": 66,
@@ -4607,7 +4732,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-12",
-    "nextReverifyAt": "2026-10-10",
+    "nextReverifyAt": "2027-01-08",
     "tokenSource": "reconciled",
     "claimCount": 93,
     "evidenceClaimCount": 93,
@@ -4698,7 +4823,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 27,
     "evidenceClaimCount": 27,
@@ -4736,7 +4861,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "maum-ai",
@@ -4780,14 +4907,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "megabox",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 30,
     "evidenceClaimCount": 30,
@@ -4828,7 +4957,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -4861,7 +4991,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-12",
-    "nextReverifyAt": "2026-10-10",
+    "nextReverifyAt": "2027-01-08",
     "tokenSource": "reconciled",
     "claimCount": 55,
     "evidenceClaimCount": 55,
@@ -4899,7 +5029,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "meta",
@@ -4923,6 +5055,7 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
+      "motion_value_unsourced",
       "token_value_possibly_derived"
     ]
   },
@@ -4931,7 +5064,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 62,
     "evidenceClaimCount": 62,
@@ -4997,7 +5130,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-10",
+    "nextReverifyAt": "2027-01-08",
     "tokenSource": "live-extract",
     "claimCount": 24,
     "evidenceClaimCount": 24,
@@ -5019,7 +5152,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 81,
     "evidenceClaimCount": 81,
@@ -5066,7 +5199,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 40,
     "evidenceClaimCount": 40,
@@ -5088,7 +5221,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 43,
     "evidenceClaimCount": 43,
@@ -5110,7 +5243,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 49,
     "evidenceClaimCount": 49,
@@ -5132,7 +5265,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 37,
     "evidenceClaimCount": 37,
@@ -5169,7 +5302,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "moin",
@@ -5192,7 +5327,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -5217,7 +5353,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -5243,14 +5380,16 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "mongodb",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 42,
     "evidenceClaimCount": 42,
@@ -5311,7 +5450,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "moze",
@@ -5333,7 +5474,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "muji",
@@ -5356,14 +5499,16 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "musinsa",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-12",
-    "nextReverifyAt": "2026-10-10",
+    "nextReverifyAt": "2027-01-08",
     "tokenSource": "reconciled",
     "claimCount": 55,
     "evidenceClaimCount": 55,
@@ -5402,14 +5547,16 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "mynavi",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 27,
     "evidenceClaimCount": 27,
@@ -5431,7 +5578,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 39,
     "evidenceClaimCount": 39,
@@ -5453,7 +5600,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-11",
     "tokensExtractedAt": "2026-07-11",
-    "nextReverifyAt": "2026-10-09",
+    "nextReverifyAt": "2027-01-07",
     "tokenSource": "reconciled",
     "claimCount": 103,
     "evidenceClaimCount": 103,
@@ -5488,14 +5635,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "naverwebtoon",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 41,
     "evidenceClaimCount": 41,
@@ -5577,7 +5726,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "nexon",
@@ -5599,14 +5750,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "nhn",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 43,
     "evidenceClaimCount": 43,
@@ -5628,7 +5781,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 56,
     "evidenceClaimCount": 56,
@@ -5664,7 +5817,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "nintendo",
@@ -5733,7 +5888,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -5741,7 +5897,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 60,
     "evidenceClaimCount": 60,
@@ -5800,7 +5956,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -5830,7 +5987,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 47,
     "evidenceClaimCount": 47,
@@ -5852,7 +6009,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 31,
     "evidenceClaimCount": 31,
@@ -5874,7 +6031,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 33,
     "evidenceClaimCount": 33,
@@ -5918,7 +6075,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 37,
     "evidenceClaimCount": 37,
@@ -5956,7 +6113,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "opencode.ai",
@@ -6008,7 +6167,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-14",
     "tokensExtractedAt": "2026-07-14",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 37,
     "evidenceClaimCount": 37,
@@ -6030,7 +6189,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 37,
     "evidenceClaimCount": 37,
@@ -6067,14 +6226,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "patternfly",
     "status": "verified_v2",
     "verifiedAt": "2026-07-14",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 35,
     "evidenceClaimCount": 35,
@@ -6160,7 +6321,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -6184,7 +6346,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "pchome",
@@ -6207,7 +6371,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -6215,7 +6380,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 45,
     "evidenceClaimCount": 45,
@@ -6297,7 +6462,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "petfriends",
@@ -6345,7 +6512,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -6353,7 +6521,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 60,
     "evidenceClaimCount": 60,
@@ -6390,7 +6558,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -6398,7 +6567,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 81,
     "evidenceClaimCount": 81,
@@ -6436,7 +6605,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "pixnet",
@@ -6459,7 +6630,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -6504,7 +6676,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "portone",
@@ -6578,7 +6752,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 48,
     "evidenceClaimCount": 48,
@@ -6637,7 +6811,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "publy",
@@ -6662,7 +6838,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "qanda",
@@ -6688,7 +6866,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -6711,7 +6890,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "queenit",
@@ -6777,7 +6958,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "rakuten",
@@ -6799,7 +6982,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "ramp",
@@ -6822,7 +7007,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "rayark",
@@ -6916,14 +7103,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "recruit",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 35,
     "evidenceClaimCount": 35,
@@ -6960,14 +7149,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "remember",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 42,
     "evidenceClaimCount": 42,
@@ -7039,7 +7230,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 75,
     "evidenceClaimCount": 75,
@@ -7077,7 +7268,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "returnzero",
@@ -7147,7 +7340,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -7173,7 +7367,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "riiid",
@@ -7196,7 +7392,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "ringle",
@@ -7241,7 +7439,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "runwayml",
@@ -7273,7 +7473,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 45,
     "evidenceClaimCount": 45,
@@ -7310,14 +7510,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "samsung",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 36,
     "evidenceClaimCount": 36,
@@ -7361,7 +7563,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 71,
     "evidenceClaimCount": 71,
@@ -7397,7 +7599,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "saramin",
@@ -7419,7 +7623,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "scatterlab",
@@ -7488,7 +7694,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "sentry",
@@ -7519,7 +7727,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 54,
     "evidenceClaimCount": 54,
@@ -7578,14 +7786,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "shinhanbank",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 29,
     "evidenceClaimCount": 29,
@@ -7607,7 +7817,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 56,
     "evidenceClaimCount": 56,
@@ -7644,7 +7854,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "sionic",
@@ -7673,7 +7885,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 60,
     "evidenceClaimCount": 60,
@@ -7710,7 +7922,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "slack",
@@ -7733,7 +7947,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "smarthr",
@@ -7757,7 +7973,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "smartnews",
@@ -7782,7 +8000,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "snapchat",
@@ -7804,14 +8024,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "socar",
     "status": "verified_v2",
     "verifiedAt": "2026-07-12",
     "tokensExtractedAt": "2026-07-12",
-    "nextReverifyAt": "2026-10-10",
+    "nextReverifyAt": "2027-01-08",
     "tokenSource": "reconciled",
     "claimCount": 69,
     "evidenceClaimCount": 69,
@@ -7824,14 +8046,16 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 3,
     "statedComponentCount": 2,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "softbank",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 27,
     "evidenceClaimCount": 27,
@@ -7875,7 +8099,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 23,
     "evidenceClaimCount": 23,
@@ -7912,14 +8136,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "soop",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 29,
     "evidenceClaimCount": 29,
@@ -7941,7 +8167,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 44,
     "evidenceClaimCount": 44,
@@ -7978,7 +8204,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "speeda",
@@ -8047,7 +8275,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "spoqa",
@@ -8076,7 +8306,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 50,
     "evidenceClaimCount": 50,
@@ -8113,7 +8343,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "squeezebits",
@@ -8135,7 +8367,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "ssg",
@@ -8157,7 +8391,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "starbucks",
@@ -8181,7 +8417,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -8279,7 +8516,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 58,
     "evidenceClaimCount": 58,
@@ -8315,14 +8552,16 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "supabase",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 68,
     "evidenceClaimCount": 68,
@@ -8406,7 +8645,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "tabling",
@@ -8455,14 +8696,16 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "taishinbank",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 18,
     "evidenceClaimCount": 18,
@@ -8499,7 +8742,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "teamblind",
@@ -8521,14 +8766,16 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "teamlab",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 23,
     "evidenceClaimCount": 23,
@@ -8596,7 +8843,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 66,
     "evidenceClaimCount": 66,
@@ -8632,14 +8879,16 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "thsr",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 31,
     "evidenceClaimCount": 31,
@@ -8661,7 +8910,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 55,
     "evidenceClaimCount": 55,
@@ -8698,7 +8947,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "tmap",
@@ -8727,7 +8978,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 86,
     "evidenceClaimCount": 86,
@@ -8747,7 +8998,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-11",
     "tokensExtractedAt": "2026-07-11",
-    "nextReverifyAt": "2026-10-09",
+    "nextReverifyAt": "2027-01-07",
     "tokenSource": "reconciled",
     "claimCount": 79,
     "evidenceClaimCount": 79,
@@ -8769,7 +9020,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 57,
     "evidenceClaimCount": 57,
@@ -8791,7 +9042,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-12",
-    "nextReverifyAt": "2026-10-10",
+    "nextReverifyAt": "2027-01-08",
     "tokenSource": "reconciled",
     "claimCount": 53,
     "evidenceClaimCount": 53,
@@ -8811,7 +9062,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 34,
     "evidenceClaimCount": 34,
@@ -8848,7 +9099,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "trenbe",
@@ -8873,7 +9126,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -8899,7 +9153,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "tumblbug",
@@ -8924,14 +9180,16 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "tving",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 43,
     "evidenceClaimCount": 43,
@@ -8968,7 +9226,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "twitch",
@@ -8990,7 +9250,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "typed",
@@ -9019,7 +9281,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 79,
     "evidenceClaimCount": 79,
@@ -9057,14 +9319,16 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "udn",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 46,
     "evidenceClaimCount": 46,
@@ -9104,6 +9368,7 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only",
+      "motion_value_unsourced",
       "token_value_possibly_derived"
     ]
   },
@@ -9112,7 +9377,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 32,
     "evidenceClaimCount": 32,
@@ -9134,7 +9399,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 36,
     "evidenceClaimCount": 36,
@@ -9156,7 +9421,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "live-extract",
     "claimCount": 44,
     "evidenceClaimCount": 44,
@@ -9201,7 +9466,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-12",
     "tokensExtractedAt": "2026-07-12",
-    "nextReverifyAt": "2026-10-10",
+    "nextReverifyAt": "2027-01-08",
     "tokenSource": "reconciled",
     "claimCount": 101,
     "evidenceClaimCount": 101,
@@ -9262,7 +9527,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -9310,7 +9576,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "wadiz",
@@ -9344,7 +9612,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-12",
     "tokensExtractedAt": "2026-07-12",
-    "nextReverifyAt": "2026-10-10",
+    "nextReverifyAt": "2027-01-08",
     "tokenSource": "reconciled",
     "claimCount": 84,
     "evidenceClaimCount": 84,
@@ -9381,7 +9649,9 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "warp",
@@ -9431,7 +9701,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "wavve",
@@ -9480,7 +9752,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -9551,14 +9824,16 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "wise",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 48,
     "evidenceClaimCount": 48,
@@ -9602,7 +9877,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-14",
     "tokensExtractedAt": "2026-07-14",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 31,
     "evidenceClaimCount": 31,
@@ -9713,7 +9988,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "xrex",
@@ -9742,7 +10019,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 61,
     "evidenceClaimCount": 61,
@@ -9762,7 +10039,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-11",
     "tokensExtractedAt": "2026-07-11",
-    "nextReverifyAt": "2026-10-09",
+    "nextReverifyAt": "2027-01-07",
     "tokenSource": "reconciled",
     "claimCount": 75,
     "evidenceClaimCount": 75,
@@ -9801,7 +10078,9 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   },
   {
     "id": "yourator",
@@ -9825,6 +10104,7 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only",
+      "motion_value_unsourced",
       "token_value_possibly_derived"
     ]
   },
@@ -9833,7 +10113,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 93,
     "evidenceClaimCount": 93,
@@ -9853,7 +10133,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 45,
     "evidenceClaimCount": 45,
@@ -9916,7 +10196,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -9924,7 +10205,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2026-10-11",
+    "nextReverifyAt": "2027-01-09",
     "tokenSource": "reconciled",
     "claimCount": 53,
     "evidenceClaimCount": 53,
@@ -9960,7 +10241,8 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
+      "component_state_prose_only",
+      "motion_value_unsourced"
     ]
   },
   {
@@ -9984,13 +10266,15 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [
+      "motion_value_unsourced"
+    ]
   }
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 140,
-  "partial": 184,
+  "verified_v2": 141,
+  "partial": 183,
   "legacy_snapshot": 116,
   "total": 440
 } as const;

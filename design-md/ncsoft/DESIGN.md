@@ -427,21 +427,10 @@ What NC's design refuses, visible across both surfaces: the heavy, gimmicky chro
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, card lift-hint, focus |
-| `motion-standard` | 240ms | Carousel slide, card/section reveal, dropdown |
-| `motion-slow` | 360ms | Hero crossfade, dark/light band transitions |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, carousel slides in |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion is cinematic-but-restrained — the hero carousel crossfades game key-art at `motion-slow / ease-standard`, and portal cards reveal from below at `motion-standard / ease-enter`. The NC PLAY editorial surface transitions between dark and light bands as a slow ambient crossfade rather than a slide. No bounce or spring on UI chrome — a premium games brand signals craft and steadiness, not toy-like playfulness. Under `prefers-reduced-motion: reduce`, carousels stop auto-advancing and all transitions collapse to instant; both surfaces remain fully functional.
 

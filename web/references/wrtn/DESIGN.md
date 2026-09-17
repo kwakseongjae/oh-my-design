@@ -401,21 +401,10 @@ The brand's design philosophy is the **"Inspiration Economy"**, expressed throug
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, chip press, focus |
-| `motion-standard` | 240ms | Card/section reveal, composer expand, menu transition |
-| `motion-slow` | 360ms | Page-level transitions, hero / circle-motif reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, chips, sheets |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion is the one place the brand allows itself to be expressive — "The Open Space" concept lives in motion. The circle motif moves and changes form through three-dimensional space on hero sections and across pages, and on interaction the Inspire Red and the circle are emphasized to feel like a guide sparking inspiration. UI motion otherwise stays functional and quiet: pill chips respond to press with a subtle scale/opacity shift; cards fade-in from below at `motion-standard / ease-enter`. No harsh bounce on functional UI. Under `prefers-reduced-motion: reduce`, the circle motif freezes and all transitions collapse to instant; the product remains fully functional.
 

@@ -433,21 +433,10 @@ What Inhouse refuses, visible in its design: a single imposed brand identity (th
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, focus, button press |
-| `motion-standard` | 200ms | Menu, popover, card/section reveal |
-| `motion-slow` | 320ms | Page-level transitions |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — menus, sheets, cards |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion is functional and restrained, matching the shallow-elevation, neutral aesthetic — a system meant to disappear behind each brand's identity should not impose a strong motion personality. Elevation changes (level 1 → 2) pair with a brief `motion-standard / ease-enter` lift; interactive controls respond to press with a subtle opacity/scale shift. No bounce or spring in the foundation — any expressive motion is a brand Flavor's choice. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the UI stays fully functional (environmental honesty).
 

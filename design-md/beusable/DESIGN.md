@@ -411,21 +411,10 @@ What Beusable rejects, visible in its design: the cold, table-heavy chrome of tr
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, focus |
-| `motion-standard` | 220ms | Card/section reveal, dropdown, sheet |
-| `motion-slow` | 340ms | Page-level transitions, hero reveal, heatmap paint-in |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, dropdowns, floating back control |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion is functional and data-forward. Heatmap and journey visualizations paint in progressively at `motion-slow / ease-enter` so the reveal reads as data arriving, not decoration. Pill CTAs respond to press with a subtle scale/opacity shift and hover shifts rose `#ec0047` → `#ff1553`. The floating back control eases in with its soft shadow. No bounce or spring — an analytics product signals steadiness and precision. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and visualizations render in their final state immediately; the product stays fully functional.
 

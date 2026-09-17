@@ -12,7 +12,7 @@ verified: "2026-07-13"
 omd: "0.1"
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-07-14"
   surfaces:
     - { id: home, kind: public-product-web, url: "https://www.kbstar.com/", inspected: "2026-07-13" }
     - { id: online-banking, kind: public-product-web, url: "https://obank.kbstar.com/quics?page=C018702", inspected: "2026-07-13" }

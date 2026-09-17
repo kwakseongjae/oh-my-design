@@ -389,22 +389,10 @@ The 2021 merger between Kakao M and Kakao Page to form Kakao Entertainment conso
 
 ## 15. Motion & Easing
 
-**Durations:**
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Skeleton → content swap (abrupt is intentional — no fade-in on cover art) |
-| `motion-fast` | 100ms | Tab active-pill slide, badge appear |
-| `motion-standard` | 200ms | Navigation scroll offset adjust |
-| `motion-page` | 250ms | Route transition (slide or fade) |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Content entering viewport (decelerate into place) |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Overlays / drawers leaving |
-| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Default UI state changes |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: The platform's primary motion vocabulary is **minimal and structural** — transitions mark navigation changes, not content moments. Cover art never animates into view (the skeleton-to-image swap is instant, not faded); adding a fade would create visual noise across dozens of simultaneously loading thumbnails. The active tab pill snaps or slides, not bounces — a reading-focused audience expects the UI to get out of the way. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the reading flow is unaffected.
 

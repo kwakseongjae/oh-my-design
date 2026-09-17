@@ -313,11 +313,10 @@ Webflow was founded **2013** in San Francisco by **Vlad Magdalin (CEO)** + young
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Selection |
-| `motion-fast` | 150ms | Hover |
-| `motion-standard` | 250ms | Modal, panel |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 Standard cubic-bezier. `prefers-reduced-motion: reduce` removes hover transitions.
 

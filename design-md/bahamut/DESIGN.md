@@ -370,19 +370,10 @@ What Bahamut refuses: the minimalist, whitespace-heavy redesign that would alien
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Tab selection commits, focus rings |
-| `motion-fast` | 100ms | Hover color transitions on links and tabs |
-| `motion-standard` | 200ms | Dropdown menus, modal open/close |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | All transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Bahamut is a portal with decades of community habit. Motion is functional and subtle — hover states change color in ~100ms; tab switches are near-instant. No page transition animations, no hero reveals. The community uses the site at high frequency and motion that adds latency perception is unwelcome. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the site remains fully functional.
 

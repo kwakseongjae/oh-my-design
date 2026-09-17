@@ -437,21 +437,10 @@ What Firstory refuses, visible in the design: enterprise-audio coldness, dashboa
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, toggle press, nav item highlight |
-| `motion-standard` | 200ms | Accordion expand, card reveal, dropdown |
-| `motion-slow` | 300ms | Section transitions, hero entrance |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — accordions, cards |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions (billing toggle) |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion stays quiet and functional, matching the flat aesthetic — the billing toggle slides its pink pill between segments at `motion-standard / ease-standard`; FAQ accordions expand without bounce; cards fade up subtly on scroll. No spring or overshoot — the product's promise is steadiness for creators' businesses. Under `prefers-reduced-motion: reduce`, transitions collapse to instant and scroll reveals render immediately. *(Motion tokens are illustrative, derived from the observed Tailwind/shadcn stack defaults and the system's flat character.)*
 

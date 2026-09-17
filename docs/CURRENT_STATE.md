@@ -22,14 +22,34 @@
 근거 보고서 4종: `docs/research/2026-09-16-briefing/`.
 이전 로드맵(`OMD_NEXT_ROADMAP_2026-09-08.md`)의 5트랙은 폐기가 아니라 재우선순위다.
 
-## 🔴 최우선 — verified 티어가 2026-10-09~11에 전량 만료된다 (24일)
+## 🟡 만료 벽은 2027-01-10으로 이동했다 (오너 결정 2026-09-17)
 
-140개 `verified_v2`가 전부 2026-07-11~14 한 배치로, TTL 90일인 `product-surface` 근거 위에서
-검증됐다(`web/scripts/lib/reference-quality.mjs:27-32`). 실측 `nextReverifyAt`:
-10-09(10) · 10-10(18) · 10-11(112). **2026-10-12에 카탈로그는 0 verified / 300 partial / 140 legacy로 읽힌다.**
+**TTL 상향: `product-surface` 90 → 180, `official-doc` 180 → 365.** 10-10 벽은 사라졌고
+새 벽은 **2027-01-10**이다(01-07까지 140, 01-09에 112, 01-10에 0). 부수 효과 2건:
+`figma`가 만료 근거 1건 때문에 partial이었다가 verified로 올라 **141/183/116**이 됐고,
+`verified_v2`가 아니면 `notFound()`하던 영문 SEO 5개(`evolution/page.tsx:48`)의
+404 위험도 2027-01로 밀렸다.
 
-그 티어는 카탈로그에서 가장 쓸모없는 티어다 — 7월 승격은 증거를 더해서가 아니라 **컴포넌트를 지워서**
-통과했다(verified 평균 컴포넌트 3.1 vs legacy 9.6, verified의 36%가 button 미정의).
+이건 위조 1번과 **글자 그대로 같은 편집**이다. 가르는 것은 편집 내용이 아니라 누가 무슨
+근거로 정했고 어디 적혀 있나다 — 근거는 `web/scripts/lib/reference-quality.mjs`의 상수
+주석에, 계측은 `web/__tests__/evidence-integrity.test.ts`에 있다. 가드는 이 편집을 막지
+않았고, **막으라고 만든 것도 아니다.** 마감 직전에 조용히 일어날 일을 결정으로 만들었다.
+
+**산 것은 시간이지 품질이 아니다.** verified 141개의 컴포넌트 평균은 여전히 2.9(legacy 9.9)다.
+연장만 하고 캡쳐를 안 하면 1월에 같은 문제 + 6개월치 드리프트로 다시 만난다.
+그리고 **배치 문제는 그대로다** — 여전히 한날 전량 만료다. 복구분은 날짜를 흩어야 한다.
+
+180일이 맞는 숫자인지는 **아직 측정이 아니라 판단이다.** 이제 잴 수 있다 —
+7월 번들이 `artifacts/reference-evidence-2026-07/`에 동결돼 있으니 몇 개 재캡쳐해
+diff하면 라이브 표면이 90일에 실제로 얼마나 변하는지 나온다.
+
+### 원래 진단 (배경)
+
+140개가 전부 2026-07-11~14 한 배치로, 당시 TTL 90일인 `product-surface` 근거 위에서
+검증됐다. 그 티어는 카탈로그에서 가장 쓸모없는 티어다 — 7월 승격은 증거를 더해서가 아니라 **컴포넌트를 지워서**
+통과했다 — **실측 2026-09-17**: verified 평균 컴포넌트 **2.9**(<5개가 140 중 106개, 0개가 6개) vs
+legacy **9.9**, partial **8.3**. 문서 크기는 verified가 20.6kB로 제일 작지만, 산문을 표로 바꿔서가
+아니라 컴포넌트를 잃어서 작다.
 그리고 전환을 따라가는 건 티어 뱃지가 아니라 컴포넌트 수다(상위 140개: ≥5 → 0.499, <5 → 0.386;
 순위 61~140에선 legacy가 verified보다 높다).
 
@@ -46,6 +66,69 @@ vs 출하 2.9개(94% 폐기). **Q7 해결(2026-09-16): git에 올리지 않는 �
 **가장 먼저 만료되는 10개가 가장 중요한 10개다** — 10-09 코호트는
 `29cm apple baemin kakao karrot krds line naver toss yeogiotte`이고
 toss·karrot·baemin·kakao가 수요 1/3/4/5위, 전체 select의 ~35%. 내역 R 6 / C 4.
+
+### 🔴 새 발견 — 모션 값 254건이 템플릿이다 (2026-09-17)
+
+캡쳐 하네스는 모션 속성을 **하나도** 수집하지 않는데, 254개 레퍼런스가
+`motion-instant/fast/standard/slow/page` 스케일을 **사실로** 싣고 있다. `motion-fast 120ms`가
+147개 브랜드에 동일하게 나온다 — 관측이 아니라 생성이다. 격리 표기된 것은 2개뿐이고,
+`banksalad`가 올바른 처리의 본보기다(관측 1건만 남기고 나머지는 synthetic으로 격리).
+
+게이트가 못 잡은 이유: 평가기는 `tokens.*` leaf만 본다. 모션 값은 **토큰 블록 밖 산문**에만
+있어 클레임 경로가 없다. 증거 없는 수치가 토큰 층 밖에 있으면 현재 어떤 검사도 통과한다.
+
+**탐지기 완료.** `npm run prose-values`(말뭉치 차원 template 판정, elevation 포함) +
+평가기 advisory `motion_value_unsourced`(**286건**, 비차단). 표준 이징 곡선은 공유돼도
+증거가 아니므로 제외했고(그래도 비표준 `cubic-bezier(0.2, 0.6, 0.25, 1)`이 167개 브랜드에
+동일), `banksalad`처럼 스스로 격리한 것도 제외했다.
+
+**분류**: template **273**(805 KB) · 부재 명시 61 · 값 없음 87 · grounded 8 · 자체 격리 3.
+elevation은 건강하다(grounded 163 / unsourced 33) — 모션이 예외다.
+
+template 273건의 두 축: **공식 DS URL 있음 18 / 없음 255**(후자는 대조할 1차 출처 자체가
+없다), **단서 달았음 187 / 단서 없이 사실로 제시 86**. `adobe`는 표 아래에
+*"illustrative defaults … not publicly documented"*라고 적어 두고 표는 검증 토큰과 같은
+형식으로 싣는다.
+
+**A2 Tier-1 대조 완료.** 공식 DS URL 18개 중 6개는 상표·폰트 페이지(모션 있을 수 없음).
+남은 12개에서 **5단 스케일을 발행하는 곳을 하나도 찾지 못했다** — Spectrum은 공식
+design-data 저장소에서 애니메이션을 정성적으로만 기술하고, GOV.UK·DADS·socar도 값이 없다.
+실제 값은 `smarthr` `Switch`의 `duration-150 ease-out`처럼 컴포넌트 일회성이다. 4개
+(`hubspot` `money-forward` `sendbird` `ubie`)는 확인 못 했지만 결론은 같다 — 입증 책임은
+주장에 있다.
+
+**A1 처리 완료: 130개, 19 KB 제거.** `npm run retire-motion`. 값 표만 걷어내고 관측 산문은
+전부 보존. 사실 보존 검사 130개 전수 통과(hex·px·url·font 손실 0). advisory 286 → **164**,
+티어 불변.
+
+**164개는 일부러 남겼다.** 표를 지우면 산문의 토큰 이름이 정의를 잃는다
+(`17live`: *"enters with `ease-spring` over `motion-reaction`"*). 잘라내기가 아니라 다시
+쓰기가 필요하고, 도구가 기본값으로 거부한다(`would-orphan-token-names`). 다음 작업이다.
+전말: `docs/MOTION_TEMPLATE_2026-09-17.md`.
+
+### 위조 경로 차단 완료 (2026-09-17)
+
+10-10에 CI가 빨개지는 순간, 초록으로 되돌리는 가장 싼 방법 네 가지는 전부 텍스트 편집이고
+픽셀 하나 다시 보지 않는다. 캡쳐 작업보다 **먼저** 막았다 — 가드 없이 캡쳐하면 15일치
+작업이 30초짜리 편집과 같은 값을 산다.
+
+| 위조 | 수확 | 차단 |
+|---|---:|---|
+| `SOURCE_TTLS["product-surface"]` 90 → 180 | 141 | `web/__tests__/evidence-integrity.test.ts` 상수 고정 |
+| `kind: product-surface` → `official-doc` | 141 | `data/evidence-ledger.json` diff |
+| 만료 source 삭제 후 claim 재연결 | 134 생존 | 같은 원장 |
+| `captured:` 날짜 고쳐쓰기 | 140 | 같은 원장 + `captured > checked` 검사 |
+
+원장(`web/scripts/build-evidence-ledger.mjs`, 141 refs / 887 sources)은 **막는 게 아니라
+보이게 하는** 장치다. 실패 시 무엇이 어떻게 바뀌었는지 이름을 대고 출력한다
+(`toss/toss-live kind product-surface → official-doc`). 네 위조를 실제로 적용해 전부
+잡히는 것을 확인했다. 게이트: CI `check:reference-pipeline`, husky 데이터 평면 훅.
+
+부수 정정 2건. (1) `eslite familymart-tw kb-kookmin lguplus taishinbank` 5개는 07-14에
+2차 증거 패스가 있었는데 `checked`가 07-13에 멈춰 있었다 → 07-14로 정정(TTL은 `captured`
+기준이라 **티어 변동 0**, 140/184/116 그대로). (2) 백로그 문서의 "188건은 새 측정 없이
+가능"은 취소 — 188건 중 증거 번들 보유 **0건**, 산문 기록 최신 관측일 2026-05-08~07-02,
+오늘 기준 80/188이 이미 90일 초과.
 
 **완료 기준은 뱃지 복구가 아니다**: (a) verified_v2 + (b) 컴포넌트 ≥5 + (c) button/input에 상태 키.
 셋 다여야 한다. 뱃지만 되찾으면 7월의 실수를 반복한다.

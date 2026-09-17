@@ -37,9 +37,34 @@ const OBSERVED_STATE_KEYS = new Set(["hover", "pressed", "focus", "active", "dis
  * work; detection ships now so that work has a worklist.
  */
 const INDEXED_STATE_KEYS = new Set(["hover", "pressed", "focus", "active", "disabled", "checked", "error"]);
+/**
+ * How long an observation stays citable, by the kind of thing observed.
+ *
+ * Owner decision 2026-09-17: product-surface 90 -> 180, official-doc 180 -> 365.
+ *
+ * Read this before changing a number. On 2026-10-10 all 140 verified references
+ * expired at once, because they were verified in one batch on 2026-07-11..14. The
+ * four cheapest ways out of that were all text edits that re-observe nothing, and
+ * widening this exact constant was the cheapest — one line, 141 references back.
+ * The owner chose it knowingly and on the record; that is what separates a policy
+ * from a forgery, and `__tests__/evidence-integrity.test.ts` exists to force the
+ * choice into the open rather than let it happen quietly at the deadline.
+ *
+ * What it buys: time. The wall moves to 2027-01-07. It makes no claim truer — the
+ * verified tier still averages 2.9 components against legacy's 9.9. Extending
+ * without doing the capture work just meets the same problem in January with six
+ * more months of drift on live surfaces.
+ *
+ * What is still asserted: a live product surface expires sooner than a document the
+ * brand publishes and versions. That ordering is the actual invariant; the numbers
+ * are a calibration of it, and that calibration is currently a judgement, not a
+ * measurement. Measuring it is possible now that the July bundles are frozen at
+ * `artifacts/reference-evidence-2026-07/` — recapture a few references and diff
+ * against them to learn how much a live surface really drifts in 90 days.
+ */
 export const SOURCE_TTLS = {
-  "product-surface": 90,
-  "official-doc": 180,
+  "product-surface": 180,
+  "official-doc": 365,
   "brand-asset": 365,
   license: 365,
 };
@@ -272,6 +297,50 @@ function isRenderableStateValue(value) {
     || /\bvar\(--/.test(trimmed);                     // CSS custom property
 }
 
+/**
+ * 토큰 블록 밖 산문에 적힌 모션 수치 중 근거가 없는 것.
+ *
+ * 왜 여기 있나 (2026-09-17). 이 평가기는 `tokens.*`의 leaf만 검사한다. 클레임 경로가
+ * 토큰 경로 형태라서 **본문 산문에만 있는 값은 애초에 검사 대상이 아니었다.** 그 구멍으로
+ * 무엇이 들어왔는지 실측: 캡쳐 하네스는 모션 속성을 하나도 수집하지 않는데
+ * (번들 `elements[].style`에 transition/animation 키가 없다) 273개 레퍼런스가
+ * `motion-fast 120ms` 류의 스케일을 싣고 있고, 표준 이징 곡선을 제외하고도
+ * `cubic-bezier(0.2, 0.6, 0.25, 1)` 하나가 167개 브랜드에 동일하게 나온다.
+ *
+ * 이 검사는 레퍼런스 **한 건**만 보므로 "다른 레퍼런스와 겹치는가"는 판정하지 못한다.
+ * 말뭉치 차원의 템플릿 판정은 `web/scripts/detect-unsourced-prose-values.mjs`에 있다.
+ * 여기서는 훨씬 약한 것만 묻는다 — *이 문서 안에* 근거가 있는가.
+ *
+ * advisory인 이유: 브랜드 공식 문서가 모션 토큰을 실제로 발행한 경우가 있고(273개 중 18개가
+ * 공식 디자인시스템 URL을 갖는다), 대조 없이 차단하면 정당한 값까지 막는다.
+ * 전말: `docs/MOTION_TEMPLATE_2026-09-17.md`.
+ */
+const MOTION_HEADING = /^##\s*\d*\.?\s*Motion/i;
+const MOTION_VALUE = /\b\d{2,4}\s?ms\b|cubic-bezier\([^)]*\)/g;
+function motionSection(markdown) {
+  // 제목 단위로 쪼개서 찾는다. 하나의 정규식으로 "다음 ## 또는 문서 끝"까지 잡으려다
+  // 놓쳤던 적이 있다 — JS에는 `\Z`가 없어서 Motion이 마지막 섹션이면 매칭이 통째로
+  // 실패했고, 273건 중 37건만 걸렸다.
+  const parts = markdown.split(/^(##\s.+)$/m);
+  for (let i = 1; i < parts.length; i += 2) if (MOTION_HEADING.test(parts[i])) return parts[i + 1];
+  return null;
+}
+/**
+ * 생성물임을 스스로 표시한 섹션은 제외한다. `banksalad`가 본보기다 — 관측된 350ms 하나만
+ * 본문에 두고 나머지 표는 <details> 안에 "Superseded synthetic motion proposals — not
+ * verified product facts"로 격리했다. 그게 우리가 원하는 처리인데 여기서 걸어버리면
+ * 정답 행동에 벌을 주게 되고, advisory가 작업 목록으로서 쓸모를 잃는다.
+ */
+const MOTION_QUARANTINED = /synthetic|not verified product facts|superseded/i;
+function unsourcedMotionValues(markdown, tokens, verificationMarkdown) {
+  const section = motionSection(markdown);
+  if (!section || MOTION_QUARANTINED.test(section)) return [];
+  const values = [...new Set(section.match(MOTION_VALUE) ?? [])];
+  if (values.length === 0) return [];
+  const tokenText = JSON.stringify(tokens ?? {});
+  return values.filter((value) => !tokenText.includes(value) && !verificationMarkdown.includes(value));
+}
+
 function componentCoverage(tokens) {
   const components = tokens?.components;
   const empty = { total: 0, interactive: 0, stated: 0, proseStateOnly: 0 };
@@ -411,6 +480,9 @@ export function evaluateReferenceQuality({ id, markdown, frontmatter, verificati
   if (coverage.total === 0) advisories.push("component_absent");
   else if (coverage.interactive === 0) advisories.push("component_noninteractive_only");
   else if (coverage.stated === 0) advisories.push("component_state_prose_only");
+
+  const unsourcedMotion = unsourcedMotionValues(markdown, tokens, verificationMarkdown);
+  if (unsourcedMotion.length > 0) advisories.push("motion_value_unsourced");
 
   const derived = derivedValueSignals(markdown, tokens, verificationMarkdown);
   if (derived.declared.length > 0) advisories.push("token_value_self_declared_derived");

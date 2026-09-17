@@ -12,7 +12,7 @@ verified: "2026-07-13"
 omd: "0.1"
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-07-14"
   surfaces:
     - { id: home, kind: public-service-home, url: "https://www.lguplus.com/", inspected: "2026-07-13" }
     - { id: subscription-product, kind: public-subscription-product, url: "https://www.lguplus.com/pogg/product/%EC%9C%A0%ED%8A%9C%EB%B8%8C-%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84-%EC%9C%A0%EB%8F%85pick-2?utm_campaign=o25o25udok04pfm&utm_source=uplusapp&utm_medium=main_eventbanner_empty_empty&utm_content=notsetpick2_6&utm_term=notsetnone", inspected: "2026-07-13" }

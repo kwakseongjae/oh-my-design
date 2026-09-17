@@ -480,6 +480,11 @@ What ABEMA refuses: the paywalled-catalog coldness of subscription-first streame
 
 ## 15. Motion & Easing
 
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
 **Durations**:
 
 | Token | Value | Use |
@@ -488,14 +493,6 @@ What ABEMA refuses: the paywalled-catalog coldness of subscription-first streame
 | transition (buttons) | 0.1s ease-out | Border and label color shifts on `com-a-Button` |
 | `--duration` | 0.5s | Page-level / carousel slide movements |
 | `--tooltip-controller-hover-delay` | 0.3s | Tooltip appearance delay |
-
-**Easings**:
-
-| Curve | Use |
-|---|---|
-| `linear` | Default (`--easing: linear`) — opacity fades, veil hovers |
-| `ease-out` | Button color/border transitions |
-| `cubic-bezier(.33, 1, .68, 1)` | Search-suggest panel reveal (easeOutCubic — fast in, soft settle) |
 
 **Motion rules**: Motion is utilitarian and nearly invisible — 0.1s fades dominate because a television interface must never feel like it's animating between channels. Hover states are opacity/veil changes (`hsla(0,0%,100%,.08)` white veil at 0.1s linear) rather than transforms; pressed states drop to opacity 0.7 instantly. The 0.5s budget is reserved for spatial moves like carousel paging. No spring, no bounce, no scale pops — liveness comes from the content, not the chrome. Under `prefers-reduced-motion: reduce`, fades collapse to instant; nothing in the interface depends on animation to communicate state.
 

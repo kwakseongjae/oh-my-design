@@ -417,21 +417,10 @@ Liner's positioning is squarely anti-hallucination: the word "accurate" appears 
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 100ms | Hover state transitions, tab indicator movement |
-| `motion-standard` | 200ms | Card reveals, dropdown open/close, billing toggle |
-| `motion-slow` | 300ms | Page section entrance, research result streaming onset |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving elements — cards, dropdowns, research reports |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Toggles, tab switches, two-way transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion is minimal and purposeful — this is a professional research tool, not an entertainment experience. Product tabs switch at `motion-fast / ease-standard`; research results stream into view at `motion-slow / ease-enter` to signal that valuable content is arriving. No bounce, no spring, no celebration animations. Under `prefers-reduced-motion: reduce`, all transitions are instant. The product remains fully functional without animation — motion is an enhancement, not a dependency.
 

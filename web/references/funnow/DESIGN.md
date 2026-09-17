@@ -382,21 +382,10 @@ What FunNow refuses: the plan-ahead solemnity of traditional OTAs, phone-call re
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 100ms | Ripple feedback, tab switches, tag appearance |
-| `motion-standard` | 200ms | Card hover, sheet/picker open, carousel snap |
-| `motion-slow` | 300ms | Page-level transitions, dialog entry |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-standard` | `cubic-bezier(0.4, 0.0, 0.2, 1)` | Material standard — most transitions |
-| `ease-decelerate` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Entering elements (sheets, dialogs) |
-| `ease-accelerate` | `cubic-bezier(0.4, 0.0, 1, 1)` | Exits and dismissals |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: FunNow inherits Material motion and keeps it functional — ripple on every tap, fast tab transitions, carousels that snap. Urgency elements may pulse subtly (flash-sale countdowns), but listing tiles never animate on scroll: catalog scanning speed outranks delight. No spring or bounce — the energy lives in the copy and color, not in physics. Under `prefers-reduced-motion: reduce`, ripples and pulses collapse to instant state changes; the booking flow remains fully functional.
 

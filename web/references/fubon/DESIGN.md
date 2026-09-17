@@ -385,21 +385,10 @@ What distinguishes the Fubon design approach from peers is this civic-profession
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 150ms | Button press, tab switch, focus ring |
-| `motion-standard` | 250ms | Dropdown open/close, card reveal, accordion |
-| `motion-slow` | 400ms | Page-level section fade, banner transition |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving panels, sheets, expanding menus |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals, collapsing accordions |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Toggles, two-directional transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion is functional and conservative — matching the institution's temperament. Navigation dropdowns ease in smoothly; page banner transitions use a clean fade rather than parallax or spring. Mobile touch targets respond immediately on press (sub-100ms feedback). Under `prefers-reduced-motion: reduce`, all animated transitions collapse to instant cut; the site remains fully usable.
 

@@ -12,7 +12,7 @@ verified: "2026-07-13"
 omd: "0.1"
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-07-14"
   surfaces:
     - { id: home, kind: public-product-web, url: "https://www.eslite.com/", inspected: "2026-07-13" }
     - { id: brand-directory, kind: public-product-catalog, url: "https://www.eslite.com/brand", inspected: "2026-07-13" }

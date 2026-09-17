@@ -435,12 +435,10 @@ Superhuman was founded **2014** in San Francisco by **Rahul Vohra (CEO)**, **Con
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Keyboard shortcut commit |
-| `motion-fast` | 100ms | Hover (faster than typical for keyboard-first feel) |
-| `motion-standard` | 250ms | Modal, panel |
-| `motion-glow-pulse` | 800ms | Lavender Glow accent moment |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Lavender Glow pulse** is the signature accent moment. `prefers-reduced-motion: reduce` removes glow pulse.
 

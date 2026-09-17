@@ -375,21 +375,10 @@ What Dable's design refuses, visible in the site: the cluttered, banner-heavy ch
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, pill press, focus |
-| `motion-standard` | 240ms | Band/section reveal, dropdown, sheet |
-| `motion-slow` | 360ms | Full-screen hero slide transitions |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sections, sheets, pills |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion is presentation-driven and quiet — the site scrolls like a deck, with full-screen hero bands revealing one idea at a time at `motion-slow / ease-standard`. Pills respond to press with a subtle scale/opacity shift; section content fades in from below at `motion-standard / ease-enter`. No bounce or spring — an adtech platform signals steadiness and precision, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the hero bands snap into place; the product stays fully functional.
 

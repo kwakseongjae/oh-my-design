@@ -259,12 +259,10 @@ Kraken (legally **Payward, Inc.**) was founded **2011** in San Francisco by **Je
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle |
-| `motion-fast` | 150ms | Hover |
-| `motion-standard` | 250ms | Modal, panel |
-| `motion-pulse` | continuous | Live price update micro-flash |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 Standard cubic-bezier; no bounce. **Live price flashes** green/red briefly on tick. `prefers-reduced-motion: reduce` disables price flash.
 

@@ -12,7 +12,7 @@ verified: "2026-07-13"
 omd: "0.1"
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-07-14"
   surfaces:
     - { id: home, kind: marketing, url: "https://www.family.com.tw/Marketing/ko", inspected: "2026-07-13" }
     - { id: convenience, kind: product-information, url: "https://www.family.com.tw/Marketing/zh/Convenience", inspected: "2026-07-13" }

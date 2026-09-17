@@ -369,21 +369,10 @@ What Stayfolio refuses, visible in its design, is the dense, promotion-cluttered
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, pill press, focus |
-| `motion-standard` | 240ms | Card / image fade-in, sheet, dropdown |
-| `motion-slow` | 400ms | Full-bleed hero / gallery transitions |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, images, sheets |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion is soft and photographic — consistent with the editorial, gallery-like aesthetic. Stay images fade in gently from `#f2f2f2` placeholders at `motion-standard / ease-enter` rather than sliding; pill controls respond to press with a subtle opacity/scale shift. There is no bounce or spring — a curation product signals calm and taste, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and images appear without fade; the product remains fully functional.
 

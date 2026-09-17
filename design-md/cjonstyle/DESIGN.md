@@ -403,21 +403,10 @@ What the design refuses: the heavy, decorative card-stacking of legacy portals (
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, tap feedback, focus |
-| `motion-standard` | 200ms | Tile/section reveal, dropdown, tab switch |
-| `motion-slow` | 400ms | Hero banner carousel auto-advance transition |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — dropdowns, sheets, tiles |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions, carousel slide |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion is functional and quiet — consistent with the flat, high-throughput grid. The hero banner carousel auto-advances on a slow cadence with a horizontal slide; tap feedback on buttons and tiles is a subtle opacity/scale shift. Nothing bounces or springs — a commerce grid signals reliability and speed, not playfulness. Under `prefers-reduced-motion: reduce`, the carousel stops auto-advancing and all transitions collapse to instant; the storefront remains fully functional.
 

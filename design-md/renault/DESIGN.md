@@ -422,11 +422,10 @@ Renault was founded **1899** in **Boulogne-Billancourt, France** by three brothe
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Selection |
-| `motion-fast` | 150ms | Hover |
-| `motion-standard` | 300ms | Modal, panel |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 Standard cubic-bezier; no bounce. `prefers-reduced-motion: reduce` disables auto-play.
 

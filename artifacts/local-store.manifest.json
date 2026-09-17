@@ -1,6 +1,6 @@
 {
   "why": "git에 올리지 않는 로컬 전용 산출물의 보관 증명. 파일은 저장소 밖, 목록과 해시는 저장소 안.",
-  "recordedAt": "2026-09-16",
+  "recordedAt": "2026-09-17",
   "note": "복구는 자동화하지 않는다. 검사가 누락을 알려주면 사람이 백업에서 되돌리거나 재캡쳐한다.",
   "trees": {
     "reference-evidence": {
@@ -720,12 +720,729 @@
         }
       }
     },
+    "reference-evidence-2026-07": {
+      "dir": "artifacts/reference-evidence-2026-07",
+      "why": "2026-07-11~14 배치가 검증에 쓴 번들 그대로. 10월 재캡쳐가 reference-evidence/를 덮어쓰면 현재 140개 verified 클레임의 근거가 사라진다. 읽기 전용 동결본.",
+      "critical": true,
+      "fileCount": 177,
+      "bytes": 151843526,
+      "files": {
+        "104.json": {
+          "sha256": "006a9edc3a9ee4c87f1189cc315b1b22c0ab769c4a014b50d435a04670c715ae",
+          "bytes": 693898
+        },
+        "11st.json": {
+          "sha256": "480a53290c24751df967a458d29d149a9dcda300c8386c9b013d2cdeac12fc6d",
+          "bytes": 1014646
+        },
+        "29cm.json": {
+          "sha256": "086facd01163aaf917dffa0e9705c97da7be14a066c9bd14e6bec64e322563e8",
+          "bytes": 1957718
+        },
+        "ably.json": {
+          "sha256": "752a569bafa0a5d5e7cd95d7e07b2819ca63ac455ba4aa1cf5e5d926d5d5e797",
+          "bytes": 462142
+        },
+        "acer.json": {
+          "sha256": "9d1a850e34907e1cf2c7c55930925c8748e600e7d162461053fa4cc657fe59fa",
+          "bytes": 511982
+        },
+        "airbnb.json": {
+          "sha256": "fa3b9aeb270320fe432fb381d89f5bb073d2b22b686eb013b227a6715b82aa2e",
+          "bytes": 1355009
+        },
+        "alipay.json": {
+          "sha256": "ec309ed0b4f6e7ab75de49d88305374828c3bc932e86cbd664378324bda5a50a",
+          "bytes": 343608
+        },
+        "apple-hig.json": {
+          "sha256": "e9b8635716ba680f6c8213748e8d014bf6fc921cf5427527a7aa8384420a6b4b",
+          "bytes": 920989
+        },
+        "apple.json": {
+          "sha256": "93c29215ea9ad248fa96db339cd7e9765b4ea90ef62626d5f91cfda3fc457794",
+          "bytes": 1867880
+        },
+        "au.json": {
+          "sha256": "f63f2a0f9ec4f7c65fcf0b2f91ced5ff43bd403b5531cccddbd9614ca7dceb09",
+          "bytes": 1717631
+        },
+        "aws-cloudscape.json": {
+          "sha256": "b8546ed4c89e4a8bd1f4a4cc540f486dedc3e60c0f0f6fe299d5838906cbfb1f",
+          "bytes": 1301617
+        },
+        "baemin.json": {
+          "sha256": "a0e6b13fa0f476446141f45053cbcd3e88b1e31d78fad9b21e64238068c2a11e",
+          "bytes": 737311
+        },
+        "banksalad.json": {
+          "sha256": "82e3fc69a23d65968f81f29a8372e5c43a71115c8d5850e62fa7f86afdcbc4ca",
+          "bytes": 838695
+        },
+        "bilibili.json": {
+          "sha256": "dce5de03603f8a87db8103d31498889ee44962d6660917b9707bb8a9f2ca2c60",
+          "bytes": 1410289
+        },
+        "bmw.json": {
+          "sha256": "0f331c4eb5a5ce0e75afd23bd6be4a0a8b735542bd50eda33ce497c486bd25d0",
+          "bytes": 359382
+        },
+        "brandi.json": {
+          "sha256": "d9e2fc9da4955ff6910671560460bb7d2a7ef3a591ca9cd786912ddcc6dfdc7e",
+          "bytes": 480717
+        },
+        "catchtable.json": {
+          "sha256": "b08dec18ecc882b5dda8e395f1b7669dc741f5d2b886e12a15d41ed90dc97fd7",
+          "bytes": 349526
+        },
+        "cgv.json": {
+          "sha256": "c37d04d545083925f6b82e037d35295c9574c0f51180bc55cf9e9204578e6d58",
+          "bytes": 1958885
+        },
+        "channeltalk.json": {
+          "sha256": "12e112c4345a78572e9e68d7f713981c24dc6996a10c0cf15627f1d38a429ca3",
+          "bytes": 1397008
+        },
+        "china-airlines.json": {
+          "sha256": "a8fff244970e6f53e7945f1277639c87a2aac5d461490e42ce1e7c2ac7ea4756",
+          "bytes": 1529641
+        },
+        "class101.json": {
+          "sha256": "9b61ffc27e4ad76a243c717492cbb09209238ea9424682425541385cb4ae593a",
+          "bytes": 952867
+        },
+        "classum.json": {
+          "sha256": "ffc53eddf97b6607a51ac05150cc9d0e77599946e4c68f9ab3560ea36d0ee6e0",
+          "bytes": 427730
+        },
+        "claude.json": {
+          "sha256": "8208590e1d602637cdc43da01745252b55eb76f4da20e2ce433577cde1f26552",
+          "bytes": 1864607
+        },
+        "clay.json": {
+          "sha256": "53a59478d9ec13234359e0d8db715e71508b98e8810f6178473fe8d626e22361",
+          "bytes": 1827150
+        },
+        "clickhouse.json": {
+          "sha256": "a64f1a4c46b91b20a741c46ddb12cbe197d6ca0f2b860aa2f81caa7df1f3f86e",
+          "bytes": 1744565
+        },
+        "cohere.json": {
+          "sha256": "abb5061d4e718a61eb70c39de87d5b35dc473167332a3fb4b9036cedc24f13b0",
+          "bytes": 1639690
+        },
+        "coinone.json": {
+          "sha256": "c9c335cfb4c2a350295942b593f87441efd40811152cf8d06ca220ef879c73d8",
+          "bytes": 1154317
+        },
+        "cookpad.json": {
+          "sha256": "8fcf3c96b3dfb1aa6e13a37c9805768ee9c6503fff89d4c3b347bc370f60603f",
+          "bytes": 170669
+        },
+        "coupang.json": {
+          "sha256": "5102f0355ab1746e02fe16af725dc38298673bbf7e0b1f282e58de497fb70fa5",
+          "bytes": 220074
+        },
+        "ctbc.json": {
+          "sha256": "9e207e06fcd732978f364476bdc899d2360962b5d43f38bde34f817a001f5b40",
+          "bytes": 9306
+        },
+        "cursor.json": {
+          "sha256": "f2e7637445eb9ef3dc7b3dbba8444a23fbdc37c10447e4da92633ab989217d9c",
+          "bytes": 1115121
+        },
+        "dabang.json": {
+          "sha256": "9f8bac65f22ab8232ac9acdc1cfef55c29c21b5889b15c44af6f27bb30aed2e6",
+          "bytes": 501657
+        },
+        "datarize.json": {
+          "sha256": "cb50c6b0cd86beb44598236f1e83053fe2951f9cbb7c15e59d3e91c90f2afaf2",
+          "bytes": 639592
+        },
+        "dena.json": {
+          "sha256": "aafb38c4122407ab622b5dbd7adafdf7156803b7336bdf454e9b04032286678d",
+          "bytes": 295390
+        },
+        "dji.json": {
+          "sha256": "1660dd6b25d51a8df5b21e5a0c9b157f81a657aa7e2ce2f3f4ee5cafb578cf8e",
+          "bytes": 766741
+        },
+        "elastic.json": {
+          "sha256": "02ee6db1a0e2e73d2ddf7ab6d057bd1e579a7fc423ab5cf978d8bd11b9950b95",
+          "bytes": 1040872
+        },
+        "elevenlabs.json": {
+          "sha256": "f529f45672e087db6738780dcfb8885d8b2d600b959ff5a26f578f778149b9a8",
+          "bytes": 1085803
+        },
+        "eslite.json": {
+          "sha256": "87a8b015738e11c1802bfcef9556a18b7601fc5d8e1d12a535a71252447809b2",
+          "bytes": 1185543
+        },
+        "evaair.json": {
+          "sha256": "a252d379c8297d6c07b5791394ade9a1c9ede54d47fe48e663b6a892eba3532b",
+          "bytes": 1611784
+        },
+        "expo.json": {
+          "sha256": "9e30eb0190d71ec9a47a613ea31e4796333ef09d4bdc4ae2063a6498ee28012a",
+          "bytes": 1187717
+        },
+        "familymart-tw.json": {
+          "sha256": "f078223bdd3d39dc88893aa8bce38638adb5dfacf40b9258f7df77b8ea90cdf9",
+          "bytes": 763170
+        },
+        "ferrari.json": {
+          "sha256": "a1bfe089f44d6782fa40685085870f9fab1975d9ad9ac57c2bc3ee50c8daadad",
+          "bytes": 866393
+        },
+        "figma.json": {
+          "sha256": "1a6591c5776e2de96d5cd017ac4bb27906afa3797f7ab5098e5b89dfa121ec36",
+          "bytes": 1925753
+        },
+        "fixture-report.json": {
+          "sha256": "07e5d6334c797ef31e557b8cf3f665f1a564c3a8bf2238c69dd0a2d6c5858311",
+          "bytes": 1023
+        },
+        "fixture.json": {
+          "sha256": "c9d8a3daffbbc51a5f9593ecad724391ae141c22117d47100860b3f44a0d0150",
+          "bytes": 66887
+        },
+        "flex.json": {
+          "sha256": "acfbdbdbfe5f2a8d84b37d4feda4c763b4839d55a34808e17e02be821cb68b2b",
+          "bytes": 503278
+        },
+        "framer.json": {
+          "sha256": "e8226324395d1d9da7b2d216e06a9c0ab1323720895b961bb5ac1a6e16e62e37",
+          "bytes": 1446601
+        },
+        "freee.json": {
+          "sha256": "4de3b6ae20b21d71cdf56ee71400aa08d254032686f068a1921c442cb8943243",
+          "bytes": 1614322
+        },
+        "gangnamunni.json": {
+          "sha256": "6c0df5db5e2bbd2d8dedacd612a9e44d96c52e1cacb8b5dfb002752083fc9969",
+          "bytes": 823872
+        },
+        "google.json": {
+          "sha256": "ad5807fc2f0431f208ad2b2e1beb56151723a24b560b955cbd5876ef1ad9e946",
+          "bytes": 518868
+        },
+        "hashicorp.json": {
+          "sha256": "ba6841f77b8e05abbcc0a9a7ff10ba54e52871e6e74bed0d46d659247adad0e6",
+          "bytes": 947036
+        },
+        "hyundai.json": {
+          "sha256": "2d8b7b262eb819cd45bceb8df9dc56d2cff4df7078fed6e977b5a5debfe7dd11",
+          "bytes": 595615
+        },
+        "hyundaicard.json": {
+          "sha256": "516ea14659bbd5e57f348e327a355385e79cf5565313c1e116806c6458d34d32",
+          "bytes": 565118
+        },
+        "ibm.json": {
+          "sha256": "3656f60693e72120aa8800faa8bc6ec0c0760c27ac5b2856de6886560fcf61d4",
+          "bytes": 711230
+        },
+        "inflearn.json": {
+          "sha256": "bc4370a095915d4060c4e76f1d49282dbc18845485c94b15b31052a7c1446585",
+          "bytes": 1967168
+        },
+        "inline.json": {
+          "sha256": "0b3899330eb339c79573341f8a41aceffbcc291a2023614bbc0ce240d1ee8a7a",
+          "bytes": 6779
+        },
+        "intuit.json": {
+          "sha256": "a78a27cbbb82c0f406d45355a634736de89ea02ebfdfad6ec58f5ec89e4aa921",
+          "bytes": 271064
+        },
+        "jandi.json": {
+          "sha256": "b55ecdc06b737dc741d5347592226b0af4e8f9f332ccec5faae649e8193fb40b",
+          "bytes": 751557
+        },
+        "jumpit.json": {
+          "sha256": "209f271617e12cbe9b976cd2699b457d8a2d56fc861de97f4a2764a4baa6d7a9",
+          "bytes": 154019
+        },
+        "kakao-login.json": {
+          "sha256": "8e24fccc9b3646a21dd4a179090a65fe356fb58fb3edb5e7489c2296e5eff5ba",
+          "bytes": 1493785
+        },
+        "kakao.json": {
+          "sha256": "c9945cfca8e8337d2be5e4fbac13cfdb80fc37756b982ba1a18c87c629a1decc",
+          "bytes": 859818
+        },
+        "kakaobank.json": {
+          "sha256": "5f7d42dc176557e735f475da2fff5e963624acc6e39e4acb92a7095ea72c0061",
+          "bytes": 770843
+        },
+        "kakaogames.json": {
+          "sha256": "96c2edeb2123ac5756c0d8666823d8f289a28694dcbaea04a084552aff2126d8",
+          "bytes": 291379
+        },
+        "kakaopay.json": {
+          "sha256": "b5e8c4b66b48300c57c224182a5a455809b373d30228981155c6eb6f7ddb5f51",
+          "bytes": 280774
+        },
+        "kakaot.json": {
+          "sha256": "58cc0c676f295033f22aed566ee2712d68e4cd8854e12f9d40b912a5631cac38",
+          "bytes": 171036
+        },
+        "karrot.json": {
+          "sha256": "c475085e03088df16f763e32975457e8bcdddbcad4775c35c965072b544703cd",
+          "bytes": 624863
+        },
+        "kb-kookmin.json": {
+          "sha256": "9d5dd59a3bede3d524860a456454a578d45511bd343dc8126839e4dd6e864ce9",
+          "bytes": 523908
+        },
+        "kbank.json": {
+          "sha256": "a9c2efe6f5d569788a8ece78b8bd89befec183694cf531c64f12a0d5d86b6a99",
+          "bytes": 297686
+        },
+        "kktix.json": {
+          "sha256": "ae8a50e120f360a483871246dfe9fd22a74373782258c8f7bef7b99a3156609b",
+          "bytes": 74439
+        },
+        "kmong.json": {
+          "sha256": "1313348e7a59d3a292d5a3a2b589e102c2b3a7932ac805ee3c0a0abee45717d0",
+          "bytes": 1599405
+        },
+        "krds.json": {
+          "sha256": "c5554f1714e59cd07deb639fa157d70ee5555b42603f96bd1acc2bf6d881161c",
+          "bytes": 2189457
+        },
+        "kream.json": {
+          "sha256": "4a994173908ca7788bd72dbd31baf5b517e027697d58e485874a3e9109d7139d",
+          "bytes": 1432208
+        },
+        "kurly.json": {
+          "sha256": "aab1ff06ca8d8cbf1bda04499948c4f84cdc21978f39140aba2503b43d29e062",
+          "bytes": 1051307
+        },
+        "lamborghini.json": {
+          "sha256": "ed0fd0fdafc0e2adc726666b4418916e9cccac9134c31319d66cef9d3a571f4e",
+          "bytes": 995031
+        },
+        "lguplus.json": {
+          "sha256": "50142808895f4fbff89312512172942b3035ae51ceffa0466578a3c1c7a8c313",
+          "bytes": 650555
+        },
+        "likelion.json": {
+          "sha256": "e00cd70b23e0822e95894afd901f586817ff7da7135ab7b66571d67f2f8b3032",
+          "bytes": 352024
+        },
+        "line.json": {
+          "sha256": "971f7d73273f18af55bad59da9c9dd8a487447533f24a27436bdf63556dbdd47",
+          "bytes": 1005852
+        },
+        "linear.app.json": {
+          "sha256": "b0af270398e6740ba472d888d10f396c93490d7cccc3c82408798a76a2d48a85",
+          "bytes": 2223318
+        },
+        "lotteon.json": {
+          "sha256": "a7f89b6cdc907ec37b224fff68bc9b994329af85d831583503519cd472c41962",
+          "bytes": 887330
+        },
+        "lovable.json": {
+          "sha256": "aff466067d06c5b6be20c8327ffadd8d9a2bf1c772e8f8b4d3b0b95ed56f3d5b",
+          "bytes": 934227
+        },
+        "makinarocks.json": {
+          "sha256": "fea1aa72ee9518a239d97f85e73341431d29c80784f0e54f9d9e2c1512a4a501",
+          "bytes": 568250
+        },
+        "megabox.json": {
+          "sha256": "6957be91c9f9cd99a0ef09326fe30e86fe274795c3ccfdefdbb1721d49623c9a",
+          "bytes": 542761
+        },
+        "meituan.json": {
+          "sha256": "48d87f7d668d32fb5c1e38521d0851e6a0500927e1124ff86450a46ca0dc5590",
+          "bytes": 118498
+        },
+        "mercari.json": {
+          "sha256": "b8e38404a93fa8ee42aae570363719c975a0938a1493067a622a18d1ed816380",
+          "bytes": 1059850
+        },
+        "microsoft.json": {
+          "sha256": "f619194605dc2a0631499d57fb44525e2dfc7e2d73dc2049c390ab4e570ccd6a",
+          "bytes": 1727756
+        },
+        "millie.json": {
+          "sha256": "12eb710594be6575a6048e4b5c0e68f3ba3ea81596c329b413e277161a129103",
+          "bytes": 252801
+        },
+        "minimax.json": {
+          "sha256": "390856fb763deee787af3c5eb491adad3bb0d21ccb952267a4f5459c5fe03918",
+          "bytes": 583076
+        },
+        "miricanvas.json": {
+          "sha256": "2fb323247d1c4e4fb2ccd6d210ad4250e3fe919f589ae01808d519583e7be664",
+          "bytes": 502398
+        },
+        "miro.json": {
+          "sha256": "0ca50427bd9c89544e1a65cf63269bc18e4b1f562edf340e2417a7c1c7b0bc8c",
+          "bytes": 1722359
+        },
+        "mistral.ai.json": {
+          "sha256": "df1d08dcaeeb86e41a6c76ac6cacdbfae0d6d8d2dc6580b7c10dd50147faa56d",
+          "bytes": 1396811
+        },
+        "mixi.json": {
+          "sha256": "2bb464f5729558689e6a0742e764da595e05050e6fc046afd939d37cc5bae7f9",
+          "bytes": 428738
+        },
+        "money-forward.json": {
+          "sha256": "aa337e9f58e3e66357f7c0d5dae388bf9a434f87a7ebe7a5600000af45a3880c",
+          "bytes": 184198
+        },
+        "mongodb.json": {
+          "sha256": "1d1aad44fd0c792b32d31d54231010e001842b2cfbdfdbee36f8f1ec128cfb7a",
+          "bytes": 555779
+        },
+        "mozilla.json": {
+          "sha256": "a84a4c6792af0cb0fac08f50d92e21d54010cb11b9124a94baf9def522064a19",
+          "bytes": 481684
+        },
+        "musinsa.json": {
+          "sha256": "eef5ba242bfabed4f1bced51adb7e8e9b101ecc01dffa194084dba54979e2450",
+          "bytes": 794198
+        },
+        "mynavi.json": {
+          "sha256": "fcaffd71ce659383f16d57ee9b409b2594f9f1cb08d6ba55063475ec94f0cce0",
+          "bytes": 1033871
+        },
+        "myrealtrip.json": {
+          "sha256": "ff00be217980e8641751198f169c26e95671148bcdbdeed08aa25d7c45b4760e",
+          "bytes": 228068
+        },
+        "naver.json": {
+          "sha256": "9fdbfa04bd7a80e6fb7b922669a2e62c102a1dec50c7639bf56a69d624968213",
+          "bytes": 1860933
+        },
+        "naverwebtoon.json": {
+          "sha256": "c6bcf7d158bee84225634c5dea8fe157649627981f8ba32cecd7dc36969545de",
+          "bytes": 1688767
+        },
+        "nhn.json": {
+          "sha256": "7d8fb473084a8024565552724f559fe11c06a39fd279d973fe45f5d6a96f7634",
+          "bytes": 488386
+        },
+        "nhncloud.json": {
+          "sha256": "25a6597c3337628252dc57e969f06a0978aec852892a77380745ef212f739302",
+          "bytes": 963530
+        },
+        "note.json": {
+          "sha256": "ef20df437ef3b3b6728bd4da929277e7f13f43b26cda62a632f430f0904db179",
+          "bytes": 1232269
+        },
+        "notion.json": {
+          "sha256": "c0a63c0662aeb894dffc0d5deb46623dbde87543d7ad63ebeffbd47475f3ea0c",
+          "bytes": 1276440
+        },
+        "ohouse.json": {
+          "sha256": "94e7b7146e64ecc2b2aeed4d5d96a9f3ab0918406923a6ca29d984bf5e70bdf8",
+          "bytes": 374266
+        },
+        "oliveyoung.json": {
+          "sha256": "4672d5aea113c9ac55ecb42d5a0bd426eebc79fe1baabe988191026441ce6710",
+          "bytes": 882805
+        },
+        "ollama.json": {
+          "sha256": "869c31b6ea62d9abd6698a35f89fd2ad15ed2d964bfdb28d442f552a5e296f6a",
+          "bytes": 359809
+        },
+        "onestore.json": {
+          "sha256": "8360d091b0c823c56acd0bf3f1ca6a9473b28854138edea16aca592cd8b535f5",
+          "bytes": 334100
+        },
+        "palantir.json": {
+          "sha256": "ea74f4d638479e518e3e1e318a052747b18f20753fec1609f4cc6468adae28a4",
+          "bytes": 162593
+        },
+        "panasonic.json": {
+          "sha256": "4e590dad6794a92c0c438419ea6269865df597ab3f288ee1bcb47ff3a738c62c",
+          "bytes": 609639
+        },
+        "patternfly.json": {
+          "sha256": "9f0a7c50a81022e1f1928d9b3a604ebf0833b511c361da9dbb0e3a19f0996d84",
+          "bytes": 499627
+        },
+        "pega.json": {
+          "sha256": "c3d85b21c3e93b5900876ad59669d898f3d97845157e29588a7a9b9b811d41a7",
+          "bytes": 466757
+        },
+        "pinkfong.json": {
+          "sha256": "1779c796f3b57e6fdf81b41a9657dc67039cebcf6e1d6c6abd8b8981a1bbd26f",
+          "bytes": 371173
+        },
+        "pinkoi.json": {
+          "sha256": "361667cefaa5fa97ac854230f6111bb384b535ca20a1ece52ed3f895285def23",
+          "bytes": 725930
+        },
+        "pinterest.json": {
+          "sha256": "ffbbf4e6b9921f83e78a2d58c9513f132eb3c19a260b701d599d7ac683cdb75f",
+          "bytes": 440487
+        },
+        "poya.json": {
+          "sha256": "55886f5e5e39aedd68aa8abd3055802e941fbd3cb6055ec7cfb9ba2bb572fdfe",
+          "bytes": 935999
+        },
+        "publy.json": {
+          "sha256": "2e38e099a5de82931b7dff5308e6b87402bdf8f708854ae31e425e14ebbede9c",
+          "bytes": 366755
+        },
+        "qanda.json": {
+          "sha256": "b8dee9d3fb23f73d0bbbff0611cdc111f08a4eb07e57dfea3dc35c2ff434507e",
+          "bytes": 246496
+        },
+        "recruit.json": {
+          "sha256": "7dc408aebf801e0db0d8208501d191a917bc959d862a07fc681d964af09f5261",
+          "bytes": 598587
+        },
+        "redhat.json": {
+          "sha256": "6732f4a3d44574b7f2a27f428d6783d5e1b07438aabcd3eb0e26bd5bb9a75d59",
+          "bytes": 241251
+        },
+        "remember.json": {
+          "sha256": "c5fc0d17df65d4a3656f4cc2b756968af971adf87db23399cb8351c70f8a1f86",
+          "bytes": 1366543
+        },
+        "resend.json": {
+          "sha256": "8ae0bd2beadebc76619856c580c56a80c949c3bc0b42882177c6524ea0c6712b",
+          "bytes": 909023
+        },
+        "ridi.json": {
+          "sha256": "2a3ae2b3c51304b04661cc3d65c6b3b37008524681daf30d3dc882ffda75d9c1",
+          "bytes": 330712
+        },
+        "sakura-internet.json": {
+          "sha256": "841edc0670aa1972c5e01330e9072409281ef312e99bc704dd2a06a966f3e5fd",
+          "bytes": 262020
+        },
+        "samsung.json": {
+          "sha256": "3c30df46401a26cbd6f3fb567938f2de85b6b8e8b5cc6774e51b7085f07a4146",
+          "bytes": 1617647
+        },
+        "sanity.json": {
+          "sha256": "f8f4383a2955d1f879eb9913b34b6bd8c245d97691427f49af44b3641be75b21",
+          "bytes": 1807301
+        },
+        "segment-evergreen.json": {
+          "sha256": "fdbcc6257c068a22c59cb166f1efd357e805e0db07ec052b45635e3fbad082f8",
+          "bytes": 222092
+        },
+        "sentry.json": {
+          "sha256": "d4bf8f7f1386624f93ac3729224c90dbc21bc4aaa2bd82c7ba3dcc5f07b7c87a",
+          "bytes": 1166874
+        },
+        "servicenow.json": {
+          "sha256": "001e42130c15dde4f14bcdde418cb927a66ff3410f3aa00216492f366e7b9e6c",
+          "bytes": 913349
+        },
+        "shinhanbank.json": {
+          "sha256": "50e1966a13918cc9ea7169ab5b09732974f14f9b5c7c852e5da6d760fa91a802",
+          "bytes": 539930
+        },
+        "shinhancard.json": {
+          "sha256": "3cde68ae8a1f6ca855a26486620390baf10d2280f7ee4c44123db1d822e9608a",
+          "bytes": 955197
+        },
+        "sktelecom.json": {
+          "sha256": "487cdc4a2527f1e23081cc05238e335dca95b264e4479cf4f212c80e8f45e8ca",
+          "bytes": 402517
+        },
+        "smarthr.json": {
+          "sha256": "3aafe8427880223ed6668de5433ffa0f0598beda8a5f49485ac5c5f3a9a96712",
+          "bytes": 1901341
+        },
+        "smartnews.json": {
+          "sha256": "604263aa0433d654bc781e45e5f034070ce8900baa03f273c40f374c52e6145b",
+          "bytes": 607599
+        },
+        "socar.json": {
+          "sha256": "a2fb8e2b0bb2543d46e106174d37e3697f3a906d81bb58e51c1caf727126b41e",
+          "bytes": 659138
+        },
+        "softbank.json": {
+          "sha256": "47597d190d46ba7cecbbb21ccb0359421f5e6bb499a435dab36d47e0adb463e1",
+          "bytes": 1055703
+        },
+        "sony.json": {
+          "sha256": "c490e6d04f044da993be7c98961a95883aeefc71bcced7762fcfbff6d4dd7c6c",
+          "bytes": 1050240
+        },
+        "soop.json": {
+          "sha256": "d27c848fd9d09b9bfa2d472aa7f3cbeafbd6ae8220bc3c6795fee0447985f132",
+          "bytes": 1758656
+        },
+        "spacex.json": {
+          "sha256": "8798194a2903e0aed5f567facc03fda0b4a57df0a890f77347c7a75ae5cc6b46",
+          "bytes": 410958
+        },
+        "spoon.json": {
+          "sha256": "96bee589f1657cbf27ce92534c1c795ac1d1c6b4e5e904859cdcff98e3fef249",
+          "bytes": 616949
+        },
+        "spotify.json": {
+          "sha256": "95b594738753f1b76d244d0d6ad6419067ace200dac9efbe26b4180d544857b0",
+          "bytes": 1147610
+        },
+        "stripe.json": {
+          "sha256": "f683e866e583bba35144e947015fcae4528331effaf4d50c6562992eaa3aad96",
+          "bytes": 557633
+        },
+        "supabase.json": {
+          "sha256": "82423e7be829983e5c0a93e98087b518609f480792908198876300cedb697aab",
+          "bytes": 1766892
+        },
+        "tada.json": {
+          "sha256": "e70602ca92823cc94df3eae232f0e5d8a32942fc71c9c96746fd5362e64b0f2d",
+          "bytes": 132829
+        },
+        "taishinbank.json": {
+          "sha256": "eb93b6e4fbf3872d7de24e130679fce4fcbc1a311d72ef4c82cc34414f3d01e4",
+          "bytes": 727371
+        },
+        "teamlab.json": {
+          "sha256": "23602b8a06150417f20e9e1cdf1328d974d972465d3bebc3c2bd03bd8fbb760f",
+          "bytes": 921481
+        },
+        "tesla.json": {
+          "sha256": "1bcb767965251a91469bd968ca3093a8fc1c6cdcbc85d02bbea30645d6614f77",
+          "bytes": 492727
+        },
+        "thsr.json": {
+          "sha256": "8b515506cd368b29f8a571be5358ecd59a1c61136dffb6a32563f5850cdb003b",
+          "bytes": 446340
+        },
+        "thumbtack.json": {
+          "sha256": "7bc025ae587b8d3b362d4329fd173de83e5e7b41fbb21eacbd0bad24cefde917",
+          "bytes": 450805
+        },
+        "together.ai.json": {
+          "sha256": "8b67df0cc155e166d45e68dd6fda441f0a8113305b9ec6d5fda047dfc3d81433",
+          "bytes": 1214827
+        },
+        "toss-securities.json": {
+          "sha256": "ba5e1505644e999b6cd1a3ddcd48a86e6d97fa9f2debc1108f8a42982ae036de",
+          "bytes": 630916
+        },
+        "toss-tds.json": {
+          "sha256": "4aca05fefe58e4e9fb20d95540e59c71d402455aa0de42724a0293170a6bc911",
+          "bytes": 1202905
+        },
+        "toss.json": {
+          "sha256": "4bccbe991dd5c959c319c5ca545b6869884e3479e619b0f3cf85f189ac1e015d",
+          "bytes": 1708762
+        },
+        "tossbank.json": {
+          "sha256": "709d818c249e9acbc3c77a581194d4064391d42ca3f05d4f2cd18f0a0b17d315",
+          "bytes": 964224
+        },
+        "toyota.json": {
+          "sha256": "f29bcd48101fadb0d656bf8a01a16602d921c132621d5e7c9cc834e8b29a2abc",
+          "bytes": 422833
+        },
+        "triple.json": {
+          "sha256": "58c07f0b87f53ac41d01726ca8bcdaa02cf07ead831d597c267bd0167ba95a41",
+          "bytes": 73537
+        },
+        "tumblbug.json": {
+          "sha256": "e78914deffac38fd67e8067def805b993aa1c62f4b62074d8ec3d4b6cd9fd71d",
+          "bytes": 570971
+        },
+        "tving.json": {
+          "sha256": "e6730d3c622d38c5f7af834315442bdfc57a4afb699ad43a3d109a8905463652",
+          "bytes": 457368
+        },
+        "uber.json": {
+          "sha256": "906d520c024c47f1a09a60cac0c3c19c0ec000b9b129d5ed3bdaeec553f6d486",
+          "bytes": 672686
+        },
+        "udn.json": {
+          "sha256": "6961863e04c4a544889c1000f9eabc17637b21dc9682e8f71ceff8e727f63dbb",
+          "bytes": 1581148
+        },
+        "upbit.json": {
+          "sha256": "e76eb11ba800c871716c5906d96214a0150676e9def69c6e4aa081b1e99f1d03",
+          "bytes": 888456
+        },
+        "upstage.json": {
+          "sha256": "6cf5c98a599ac19a1f0347fc6bf8daa1d485a5d2323ee6c4e7da11add02debf0",
+          "bytes": 783245
+        },
+        "uswds.json": {
+          "sha256": "a8669f1cb73833498207f1c334b2d3a501a6c4c46b1ee55c26d2ddef9fc45f7f",
+          "bytes": 1275724
+        },
+        "vercel.json": {
+          "sha256": "d0658e7d4e25f61f0d6a39eaeba2fe8eda6b91c0cac5caef83b269d0d6078a3d",
+          "bytes": 705693
+        },
+        "wanted.json": {
+          "sha256": "a74b3080834ebf394a9b308eb4bbf201106f296b47472135c9f4c72137f25fcd",
+          "bytes": 2221323
+        },
+        "watcha.json": {
+          "sha256": "0504fc75133c2575ac5f93d56070d00f4b662b114dc7258a1c108bf2675a6581",
+          "bytes": 164074
+        },
+        "wavve.json": {
+          "sha256": "e7a07be4868bc976d078f81b9782bc8b899b2a1a7018c7bc26fbd8686fb1e701",
+          "bytes": 62271
+        },
+        "wconcept.json": {
+          "sha256": "bb4c9fbfc22bb3cd4e7b41bb42071543fb9c4770ccb6f001ff69e3f20643e32e",
+          "bytes": 673263
+        },
+        "wise.json": {
+          "sha256": "5c095ccf511252377980d7aea59b205a4eec7c9958244d170de1216f5753b479",
+          "bytes": 1869002
+        },
+        "wooribank.json": {
+          "sha256": "f875f311743ae4c509ce35b16e4ee3a1f645b4c878894143dbb80927eadda03a",
+          "bytes": 588715
+        },
+        "woowahan-fonts.json": {
+          "sha256": "44b63410147e82565fc1614c9435f467539e7ebf7c07211201dedf4209aa1785",
+          "bytes": 182954
+        },
+        "woowahan-license.json": {
+          "sha256": "e1c79d9b2af66737f88ad2b59a37125640f0e11d14e8657eb9f5caafe79f27ed",
+          "bytes": 86098
+        },
+        "woowahan.json": {
+          "sha256": "b1cf0d11adbe86ab39b1b609b4f0745bf59c4ca5e62c328c51d17c13896517e5",
+          "bytes": 436574
+        },
+        "yanolja.json": {
+          "sha256": "979d7bcf23377561c41bb7eefce705096217c0a06234ecf5b5b300192de815d4",
+          "bytes": 624002
+        },
+        "yeogiotte.json": {
+          "sha256": "373ac18e1f32bbae7899886fcad5701ef858ad6128884790a80e8aebe319d622",
+          "bytes": 1631799
+        },
+        "zapier.json": {
+          "sha256": "76a032bd551a2fab5af563d9c8526de3f0215c406e64d8e151de20f19cc3ec69",
+          "bytes": 1622920
+        },
+        "zendesk.json": {
+          "sha256": "a80a464dcb003f2631a5bb265d3355342a00080bd382ecddaa32b1caed6a7a97",
+          "bytes": 962454
+        },
+        "zigzag.json": {
+          "sha256": "d97ce774e240b9bb6dca3431711a89f780c65d826c34d263a6e9525c8ad6b7b3",
+          "bytes": 1200843
+        }
+      }
+    },
     "reverify": {
       "dir": "artifacts/reverify",
       "why": "재검증 큐/태스크 패킷. 재생성 가능하지만 실행 이력이 남아 있다.",
       "critical": false,
       "fileCount": 333,
-      "bytes": 586688,
+      "bytes": 1404845,
       "files": {
         "batch-state-01-04.json": {
           "sha256": "bb0a8445eb61778bfca9e45349a6886879a8bb4a7dcdc65101025b76e7011f42",
@@ -1352,12 +2069,12 @@
           "bytes": 1833
         },
         "queue.json": {
-          "sha256": "d1c0b31bee6223dd818b1477a596da21e037c56d816ec4010950bac7f1f4dcd9",
-          "bytes": 1971
+          "sha256": "1ba5ad9790dcfa036f30edc4cf7691624c6ef6aca2091cb56750b9b2e804c361",
+          "bytes": 790218
         },
         "queue.md": {
-          "sha256": "adbe1653f10779f55ea19a57ada0a1fad8baf4611ee8028b4952e1f0f486b983",
-          "bytes": 211
+          "sha256": "990c3bbad2e40429c988ce84dc8f63edc5d230e17e16240bd7e1e912407e8e73",
+          "bytes": 30121
         },
         "runs/2026-07-11-29cm/packet.md": {
           "sha256": "4c9509a783d9b9140e59208bcfc216b28810a72fcc0b55527bc15576f5bb876a",

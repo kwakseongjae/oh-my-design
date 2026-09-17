@@ -376,21 +376,10 @@ What Queenit refuses, visible in its design: the cramped 14px type and youth-cod
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Chip press, icon-button tap, focus |
-| `motion-standard` | 220ms | Card/section reveal, banner crossfade, sheet |
-| `motion-slow` | 320ms | Page transitions, hero reveals |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sheets, cards, chips |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion is functional and quick — consistent with a deal-heavy, scroll-fast storefront. Chips and floating icons respond to press with a subtle scale/opacity shift; product grids and banners fade in from below at `motion-standard / ease-enter`; banner carousels auto-advance with a gentle crossfade. No bounce or spring — a value-focused commerce app signals reliability over playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and carousels stop auto-advancing; the storefront stays fully functional.
 

@@ -407,21 +407,10 @@ What Imweb refuses, visible in its design: the intimidating density of enterpris
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, tab switch, accordion icon |
-| `motion-standard` | 200ms | FAQ expand, card reveal, dropdown |
-| `motion-slow` | 400ms | Hero keyword rotation, carousel glide |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, panels, expanded rows |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals, collapse |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion is continuous but never showy. The two signature movements are ambient: the hero keyword rotation (one ambition word swapping at a relaxed cadence) and the template carousel's steady horizontal drift — both communicate "things are being built on Imweb right now." Interactive motion stays functional: FAQ rows expand at `motion-standard / ease-enter`, tabs switch instantly with a color change. No bounce or spring — approachable should not mean childish. Under `prefers-reduced-motion: reduce`, the keyword rotation and carousel pause and all transitions collapse to instant.
 

@@ -27,10 +27,12 @@ if echo "$changed" | grep -qE '^(web/references/|data/reference-(fingerprints|qu
   npm run query:references:data:check
 fi
 
-if echo "$changed" | grep -qE '^(web/references/|references/|data/reference-fingerprints\.json|\.claude/data/reference-fingerprints\.json|\.codex/data/reference-fingerprints\.json|web/src/data/(registry|reference-quality)\.generated\.(ts|json)|web/scripts/(build-registry|build-reference-quality|build-reference-ast)\.(mjs|ts)|web/scripts/lib/reference-quality\.mjs|web/scripts/migrate-frontmatters\.mjs|web/__tests__/(catalog-integrity|reference-quality|reference-ast-fleet)\.test\.ts|web/src/lib/references/|spec/(reference-v2|regional-sources)\.(md|yaml)|design-md/)'; then
+if echo "$changed" | grep -qE '^(web/references/|references/|data/reference-fingerprints\.json|\.claude/data/reference-fingerprints\.json|\.codex/data/reference-fingerprints\.json|web/src/data/(registry|reference-quality)\.generated\.(ts|json)|web/scripts/(build-registry|build-reference-quality|build-reference-ast)\.(mjs|ts)|web/scripts/lib/reference-quality\.mjs|web/scripts/migrate-frontmatters\.mjs|web/__tests__/(catalog-integrity|reference-quality|reference-ast-fleet|evidence-integrity)\.test\.ts|web/src/lib/references/|spec/(reference-v2|regional-sources)\.(md|yaml)|design-md/)'; then
   echo "[husky] catalog-integrity gate: running vitest…"
   npm run check:catalog
-  (cd web && npm test -- --run __tests__/catalog-integrity.test.ts __tests__/reference-quality.test.ts)
+  echo "[husky] evidence-ledger gate…"
+  (cd web && npm run evidence:ledger:check)
+  (cd web && npm test -- --run __tests__/catalog-integrity.test.ts __tests__/reference-quality.test.ts __tests__/evidence-integrity.test.ts)
 else
   echo "[husky] catalog-integrity gate: no data-plane changes, skipping."
 fi

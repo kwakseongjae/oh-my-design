@@ -335,12 +335,10 @@ What Coinbase refuses: token shilling, unregistered securities listings (regulat
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle |
-| `motion-fast` | 150ms | Hover |
-| `motion-standard` | 250ms | Modal, panel |
-| `motion-pulse` | continuous | Live price-update micro-flash on cells |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 Easings: standard cubic-bezier; no bounce. **Live price updates** flash green/red cell background briefly on tick. `prefers-reduced-motion: reduce` disables price flash.
 

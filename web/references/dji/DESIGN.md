@@ -389,24 +389,12 @@ What DJI refuses: the gradient-and-mascot playfulness of consumer apps, the warm
 
 ## 15. Motion & Easing
 
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
 DJI's motion is **slow, precise, and gravity-free** — the motion equivalent of a stabilized aerial shot. Nothing snaps, nothing bounces; transitions glide.
-
-**Durations:**
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Toggle/select commits |
-| `motion-fast` | 200ms | Hover, link, button feedback |
-| `motion-standard` | 350ms | Dropdown/mega-menu, cart drawer, fade-reveals |
-| `motion-slow` | 600ms | Hero media fade-in, scroll-triggered fold reveals, 360° product spins |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-standard` | `cubic-bezier(0.4, 0, 0.2, 1)` | Default two-way transitions |
-| `ease-enter` | `cubic-bezier(0.0, 0.0, 0.2, 1)` | Drawers, menus, reveals arriving |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
 
 **Spring stance.** Spring/overshoot is **forbidden** on DJI surfaces. The brand's emotional register is precision and control — a stabilized gimbal does not overshoot, and neither does the UI. The only kinetic flourish allowed is the slow parallax/360° reveal of a product, which mimics the smooth, mechanical motion of the hardware itself.
 

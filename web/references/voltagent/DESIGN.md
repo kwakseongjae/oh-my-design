@@ -436,12 +436,10 @@ VoltAgent is the **open-source TypeScript AI agent framework** — a 2024-launch
 
 ## 15. Motion & Easing
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | Selection |
-| `motion-fast` | 150ms | Hover |
-| `motion-marquee` | 25-80s | Background marquee |
-| `motion-glow` | 3000ms | Gentle glow pulse |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 Standard cubic-bezier; no bounce. **Slow subtle motion is the register.** `prefers-reduced-motion: reduce` removes marquee + glow.
 

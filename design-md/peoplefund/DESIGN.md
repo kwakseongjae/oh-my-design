@@ -391,21 +391,10 @@ What PeopleFund refuses, visible in its design: the glossy over-promise of neo-b
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 100ms | Hover, button press |
-| `motion-standard` | 200ms | Card reveal, dropdown, tooltip |
-| `motion-slow` | 300ms | Page-level section transition |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, dropdowns, panels |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion is functional and minimal — appropriate for a P2P investment platform where the user is making financial decisions, not consuming entertainment. Product cards fade into view at `motion-standard / ease-enter` as the list loads. The amber status badge does not animate — static signals are trusted signals; a pulsing badge would feel like manipulation on a financial platform. No spring or bounce anywhere. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the platform remains fully usable and data-accessible.
 

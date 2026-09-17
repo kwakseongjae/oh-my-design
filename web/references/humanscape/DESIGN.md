@@ -384,21 +384,10 @@ What the design refuses, and what it embraces, tracks this narrative. It refuses
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, nav/link, focus |
-| `motion-standard` | 240ms | Card / section reveal, toggle, dropdown |
-| `motion-slow` | 400ms | Full-height hero reveal, page-level transitions |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sections, cards, data reveals |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion is quiet, editorial, and evidence-paced — consistent with the flat, science-forward aesthetic. Oversized hero headlines and data metrics fade/rise in from below at `motion-standard / ease-enter`; azure data dots may animate in as the underlying number resolves, reinforcing "the signal arriving in the data." No bounce, spring, or overshoot — a healthcare-data company signals steadiness and credibility, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the page remains fully functional.
 

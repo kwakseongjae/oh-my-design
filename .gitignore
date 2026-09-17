@@ -100,6 +100,7 @@ data/analytics/
 # bench-store below. Convention and backup location: artifacts/README.md.
 artifacts/reverify/
 artifacts/reference-evidence/
+artifacts/reference-evidence-2026-07/
 
 # Benchmark outputs and third-party packs live in the immutable store
 # (~/.omd/bench-store) with SHA manifests committed under

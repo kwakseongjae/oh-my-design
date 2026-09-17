@@ -385,6 +385,11 @@ Parent context (factual, not narrative): Saramin HR (KOSDAQ 143240) is the opera
 
 ## 15. Motion & Easing
 
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
+
 Motion tokens were **not captured** this pass (single static page-load CDP inspection). Observable behaviours:
 
 - Hero carousel auto-rotates 3-up promotion cards (timing not measured — likely 4-6s dwell).
@@ -392,12 +397,5 @@ Motion tokens were **not captured** this pass (single static page-load CDP inspe
 - No page-load fade / hero parallax / scroll-triggered reveal observed in the rendered snapshot.
 
 **Recommended downstream defaults** (Toss style-ref per skill rule P-1, since Jumpit publishes no motion table):
-
-| Token | Duration | Easing | Use |
-|---|---|---|---|
-| `motion/instant` | 0ms | none | filter chip active flip |
-| `motion/fast` | 120ms | `cubic-bezier(0.4, 0, 0.2, 1)` | button press, hover wash |
-| `motion/standard` | 200ms | `cubic-bezier(0.4, 0, 0.2, 1)` | dropdown open, modal slide |
-| `motion/slow` | 400ms | `cubic-bezier(0.16, 1, 0.3, 1)` | carousel slide |
 
 These are **inferred placeholders** — Jumpit's actual production durations should be captured in a follow-up pass with CDP `Animation.enable` + `transitionstart` event recording.

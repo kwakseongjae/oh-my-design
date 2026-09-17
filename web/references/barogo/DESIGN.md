@@ -363,21 +363,10 @@ What Barogo's design refuses is the decorative softness of consumer-lifestyle br
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, focus |
-| `motion-standard` | 220ms | Card/section reveal, dropdown, slide (hero carousel step) |
-| `motion-slow` | 320ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, carousel slides |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion is functional and steady — matching the fast, flat aesthetic of a logistics operator. The homepage hero carousel advances with a `motion-standard / ease-enter` slide (the "Previous slide" / "Next slide" controls); buttons respond to press with a subtle opacity/scale shift. No bounce or spring — a delivery-infrastructure product signals reliability, not playfulness. Under `prefers-reduced-motion: reduce`, carousel auto-advance pauses and all transitions collapse to instant; the site remains fully functional.
 

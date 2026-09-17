@@ -391,21 +391,10 @@ What Datadog refuses, visible in its design: the interchangeable enterprise-blue
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 150ms | Hover, button background, focus (live: `0.15s ease-in-out` on the primary CTA) |
-| `motion-standard` | 200ms | Card/section reveal, dropdown, sheet |
-| `motion-slow` | 320ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-in-out` | `cubic-bezier(0.42, 0, 0.58, 1)` | Hover/background transitions (live default on CTAs) |
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, dropdowns |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion is functional and restrained — consistent with the flat, dense aesthetic. Live inspection found the primary CTA carrying `transition: background-color 0.15s ease-in-out`, so hover color shifts are quick and quiet. No bounce or spring — an infrastructure-monitoring product signals steadiness, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
 

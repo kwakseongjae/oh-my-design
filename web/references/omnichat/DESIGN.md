@@ -447,22 +447,10 @@ What Omnichat refuses: faceless automation. The company's stated belief — "Omn
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 150ms | Hover, pill toggle, focus |
-| `motion-standard` | 250ms | Card reveal, dropdown sheets, tab panels |
-| `motion-slow` | 400ms | Band transitions, hero entrance |
-| `motion-ambient` | 6–10s | Aurora gradient sweep on hero text and CTA |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — dropdowns, panels, cards |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-ambient` | `linear` | The looping aurora gradient |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: The aurora gradient is the brand's only continuous motion — a slow linear 270° sweep across the hero headline and gradient CTA, ambient like the AI it represents. Everything else is quick and functional: dropdown mega-menus slide down with `motion-standard / ease-enter`, the pricing pill slides its active state, chat-bubble mockups may type in once on scroll-into-view. No bounce, no spring — the product sells reliability to retailers. Under `prefers-reduced-motion: reduce`, the aurora freezes to a static gradient and all transitions collapse to instant; nothing functional is lost.
 

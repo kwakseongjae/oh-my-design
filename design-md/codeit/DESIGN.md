@@ -415,21 +415,10 @@ What Codeit refuses, visible in its design: the dry, text-heavy chrome of legacy
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, chip press, focus |
-| `motion-standard` | 220ms | Card / section reveal, sheet, dropdown |
-| `motion-slow` | 320ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, chips |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
+**No motion duration or easing token is promoted.** The capture bundle for this
+reference records no transition or animation property, and no official source consulted
+publishes a motion scale. The behaviour described below was observed; treat any exact
+duration or curve as a local extension until a component-level official source verifies it.
 
 **Motion rules**: Motion is friendly but restrained — consistent with the flat, rounded aesthetic. Purple CTAs and pill chips respond to press with a subtle scale / opacity shift; course and plan cards fade-in from below at `motion-standard / ease-enter`. The gamified surfaces (level-up, challenges) may use a single celebratory pop on milestone completion, but routine navigation stays calm. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
 
