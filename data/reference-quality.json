@@ -2370,8 +2370,8 @@
       "verified_at": "2026-07-11",
       "next_reverify_at": "2027-01-07",
       "evidence_coverage": 1,
-      "surface_count": 10,
-      "source_count": 10,
+      "surface_count": 11,
+      "source_count": 11,
       "conflict_count": 0,
       "reason_codes": []
     },

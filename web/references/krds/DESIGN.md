@@ -18,7 +18,7 @@ ds:
   og_image: "https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png"
 verification_v2:
   schema: 2
-  checked: "2026-07-11"
+  checked: "2026-09-17"
   surfaces:
     - { id: home, kind: design-system, url: "https://www.krds.go.kr/html/site/index.html", inspected: "2026-07-11" }
     - { id: typography, kind: design-system, url: "https://www.krds.go.kr/html/site/style/style_03.html", inspected: "2026-07-11" }
@@ -28,6 +28,7 @@ verification_v2:
     - { id: select, kind: design-system, url: "https://www.krds.go.kr/html/site/component/component_06_03.html", inspected: "2026-07-11" }
     - { id: modal, kind: design-system, url: "https://www.krds.go.kr/html/site/component/component_04_05.html", inspected: "2026-07-11" }
     - { id: badges, kind: design-system, url: "https://www.krds.go.kr/html/site/component/component_04_06.html", inspected: "2026-07-11" }
+    - { id: buttons-states, kind: design-system, url: "https://www.krds.go.kr/html/site/component/component_05_02.html", inspected: "2026-09-17" }
     - { id: layout, kind: design-system, url: "https://www.krds.go.kr/html/site/style/style_05.html", inspected: "2026-05-08" }
     - { id: tag, kind: design-system, url: "https://www.krds.go.kr/html/site/component/component_06_04.html", inspected: "2026-05-08" }
   sources:
@@ -39,6 +40,7 @@ verification_v2:
     - { id: select-doc, kind: official-doc, url: "https://www.krds.go.kr/html/site/component/component_06_03.html", captured: "2026-07-11" }
     - { id: modal-doc, kind: official-doc, url: "https://www.krds.go.kr/html/site/component/component_04_05.html", captured: "2026-07-11" }
     - { id: badge-doc, kind: official-doc, url: "https://www.krds.go.kr/html/site/component/component_04_06.html", captured: "2026-07-11" }
+    - { id: button-css, kind: official-doc, url: "https://www.krds.go.kr/html/site/component/component_05_02.html", captured: "2026-09-17" }
     - { id: layout-doc, kind: official-doc, url: "https://www.krds.go.kr/html/site/style/style_05.html", captured: "2026-05-08" }
     - { id: tag-doc, kind: official-doc, url: "https://www.krds.go.kr/html/site/component/component_06_04.html", captured: "2026-05-08" }
   claims:
@@ -119,6 +121,12 @@ verification_v2:
     "tokens.components.button-primary.font": *button_doc
     "tokens.components.button-primary.height": *button_doc
     "tokens.components.button-primary.hover": *button_doc
+    "tokens.components.button-primary.focus": &button_css { surface_id: buttons-states, source_id: button-css, method: computed-style-and-css-custom-property, captured: "2026-09-17" }
+    "tokens.components.button-secondary.hover": *button_css
+    "tokens.components.button-secondary.pressed": *button_css
+    "tokens.components.button-secondary.focus": *button_css
+    "tokens.components.button-tertiary.pressed": *button_css
+    "tokens.components.button-tertiary.focus": *button_css
     "tokens.components.button-primary.padding": *button_doc
     "tokens.components.button-primary.radius": *button_doc
     "tokens.components.button-primary.type": *button_doc
@@ -280,9 +288,9 @@ tokens:
     modal: "0 0.2rem 0 0 rgba(0,0,0,0.1), 0 0.4rem 0.8rem 0 rgba(0,0,0,0.1)"
   components_harvested: true
   components:
-    button-primary: { type: button, bg: "#256ef4", fg: "#ffffff", border: "1px solid #256ef4", radius: "6px", padding: "0 16px", height: "48px", font: "17px / 400", hover: "#0b50d0", active: "#083891", disabled: "bg #cdd1d5 fg #6d7882", use: "Core action 신청하기/확인 (1 per screen)" }
-    button-secondary: { type: button, bg: "#ecf2fe", fg: "#0b50d0", border: "1px solid #256ef4", radius: "6px", padding: "0 16px", height: "48px", font: "17px / 400", states: "default; shared 4px focus halo and aria-disabled behavior", use: "Secondary action 자세히 보기/이전 단계" }
-    button-tertiary: { type: button, bg: "transparent", fg: "#1e2124", border: "1px solid #58616a", radius: "6px", padding: "0 16px", height: "48px", font: "17px / 400", hover: "#f4f5f6", use: "Cancel/reset 취소/초기화/닫기" }
+    button-primary: { type: button, bg: "#256ef4", fg: "#ffffff", border: "1px solid #256ef4", radius: "6px", padding: "0 16px", height: "48px", font: "17px / 400", hover: "#0b50d0", active: "#083891", focus: "#083891", disabled: "bg #cdd1d5 fg #6d7882", use: "Core action 신청하기/확인 (1 per screen)" }
+    button-secondary: { type: button, bg: "#ecf2fe", fg: "#0b50d0", border: "1px solid #256ef4", radius: "6px", padding: "0 16px", height: "48px", font: "17px / 400", hover: "#d8e5fd", pressed: "#b1cefb", focus: "#b1cefb", states: "default; shared 4px focus halo and aria-disabled behavior", use: "Secondary action 자세히 보기/이전 단계" }
+    button-tertiary: { type: button, bg: "transparent", fg: "#1e2124", border: "1px solid #58616a", radius: "6px", padding: "0 16px", height: "48px", font: "17px / 400", hover: "#f4f5f6", pressed: "#e6e8ea", focus: "#e6e8ea", use: "Cancel/reset 취소/초기화/닫기" }
     input-text: { type: input, bg: "#ffffff", fg: "#464c53", border: "1px solid #58616a", radius: "8px", padding: "0 16px", height: "56px", font: "19px / 400", focus: "0 0 0 4px #256ef4 halo", disabled: "bg #cdd1d5 fg #6d7882 border #b1b8be", states: "error border 2px solid #de3412", use: "Standard text input (large default)" }
     select: { type: input, bg: "#ffffff", fg: "#1e2124", border: "1px solid #58616a", radius: "6px", padding: "0 48px 0 16px", height: "56px", font: "19px / 400", disabled: "bg #cdd1d5 border #b1b8be", states: "error border 2px solid #ab2b36", use: "Native select with chevron" }
     dialog: { type: dialog, bg: "#ffffff", fg: "#1e2124", radius: "12px", padding: "40px", shadow: "0 0.2rem 0 0 rgba(0,0,0,0.1), 0 0.4rem 0.8rem 0 rgba(0,0,0,0.1)", use: "Modal dialog, backdrop fade 0->0.5 black, min-height 264px" }
