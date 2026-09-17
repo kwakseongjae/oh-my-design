@@ -207,9 +207,29 @@ const states = {};
 
 await browser.close();
 
-const hex = (v) => { const m = String(v).match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)$/);
-  if (!m) return v; if (m[4] !== undefined && Number(m[4]) < 1) return v;
-  return "#" + [m[1], m[2], m[3]].map((n) => Number(n).toString(16).padStart(2, "0")).join(""); };
+/**
+ * 계산된 색을 hex로. 두 형태를 받는다.
+ *
+ * `color(srgb 0.0094 0.2604 0.5333)` — 최신 CSS 색 문법. Mitsubishi의 serendie.design이
+ * hover/pressed를 이 형태로 돌려줬고, rgb()만 처리하던 때는 원문이 그대로 출력돼 읽을 수
+ * 없었다. srgb는 0~1 비율이라 255를 곱하면 된다. 다른 색공간(display-p3 등)은 변환이
+ * 손실이라 원문을 남긴다 — 틀린 hex보다 읽기 어려운 원문이 낫다.
+ */
+const hex = (v) => {
+  const s = String(v);
+  const rgb = s.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)$/);
+  if (rgb) {
+    if (rgb[4] !== undefined && Number(rgb[4]) < 1) return s;
+    return "#" + [rgb[1], rgb[2], rgb[3]].map((n) => Number(n).toString(16).padStart(2, "0")).join("");
+  }
+  const srgb = s.match(/^color\(srgb\s+([\d.]+)\s+([\d.]+)\s+([\d.]+)(?:\s*\/\s*([\d.]+))?\s*\)$/);
+  if (srgb) {
+    if (srgb[4] !== undefined && Number(srgb[4]) < 1) return s;
+    return "#" + [srgb[1], srgb[2], srgb[3]]
+      .map((n) => Math.round(Number(n) * 255).toString(16).padStart(2, "0")).join("");
+  }
+  return s;
+};
 
 console.log(`\n${url}`);
 console.log(`geometry: h=${states.rest.height} radius=${states.rest.radius} padding=${states.rest.padding} font=${states.rest.font}\n`);
