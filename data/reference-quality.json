@@ -5,8 +5,8 @@
   "count": 440,
   "counts": {
     "verified_v2": 140,
-    "partial": 160,
-    "legacy_snapshot": 140,
+    "partial": 184,
+    "legacy_snapshot": 116,
     "total": 440
   },
   "items": [
@@ -219,7 +219,6 @@
       "source_count": 0,
       "conflict_count": 0,
       "reason_codes": [
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -276,15 +275,14 @@
     },
     {
       "id": "asana",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-06-22",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -527,15 +525,14 @@
     },
     {
       "id": "cafe24",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-06-26",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -563,22 +560,20 @@
       "source_count": 0,
       "conflict_count": 0,
       "reason_codes": [
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
     },
     {
       "id": "cashapp",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-06-17",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -654,15 +649,14 @@
     },
     {
       "id": "cjonstyle",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-07-02",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -784,7 +778,6 @@
       "conflict_count": 0,
       "reason_codes": [
         "freshness_conflict",
-        "proof_incomplete",
         "verification_v2_missing"
       ]
     },
@@ -809,7 +802,6 @@
       "source_count": 0,
       "conflict_count": 0,
       "reason_codes": [
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -880,15 +872,14 @@
     },
     {
       "id": "cybozu",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-06-17",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -931,15 +922,14 @@
     },
     {
       "id": "databricks",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-06-22",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -977,7 +967,6 @@
       "source_count": 0,
       "conflict_count": 0,
       "reason_codes": [
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -1108,15 +1097,14 @@
     },
     {
       "id": "drdiary",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-07-02",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -1433,15 +1421,14 @@
     },
     {
       "id": "fubon",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-06-22",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -1499,29 +1486,27 @@
     },
     {
       "id": "gaudiolab",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-07-02",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
     {
       "id": "gaudiy",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-06-17",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -1649,15 +1634,14 @@
     },
     {
       "id": "govuk",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-06-22",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -1835,15 +1819,14 @@
     },
     {
       "id": "hubspot",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-06-22",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -2046,7 +2029,6 @@
       "source_count": 0,
       "conflict_count": 0,
       "reason_codes": [
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -2117,15 +2099,14 @@
     },
     {
       "id": "jobplanet",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-07-02",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -2137,9 +2118,8 @@
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
@@ -2382,7 +2362,6 @@
       "source_count": 0,
       "conflict_count": 0,
       "reason_codes": [
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -2648,15 +2627,14 @@
     },
     {
       "id": "mailchimp",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-06-17",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -2804,15 +2782,14 @@
     },
     {
       "id": "mikan",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-06-17",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -2861,7 +2838,6 @@
       "source_count": 0,
       "conflict_count": 0,
       "reason_codes": [
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -2979,15 +2955,14 @@
     },
     {
       "id": "monzo",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-06-22",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -3092,15 +3067,14 @@
     },
     {
       "id": "naverpay",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-06-22",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -3117,15 +3091,14 @@
     },
     {
       "id": "ncsoft",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-06-17",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -3199,9 +3172,8 @@
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -3240,9 +3212,8 @@
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
@@ -3261,15 +3232,14 @@
     },
     {
       "id": "nrise",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-07-02",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -3283,7 +3253,6 @@
       "source_count": 0,
       "conflict_count": 0,
       "reason_codes": [
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -3382,7 +3351,6 @@
       "source_count": 0,
       "conflict_count": 0,
       "reason_codes": [
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -3611,10 +3579,8 @@
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -3685,15 +3651,14 @@
     },
     {
       "id": "portone",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-06-26",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -3707,7 +3672,6 @@
       "source_count": 0,
       "conflict_count": 0,
       "reason_codes": [
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -3751,15 +3715,14 @@
     },
     {
       "id": "protopie",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-07-02",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -3898,7 +3861,6 @@
       "source_count": 0,
       "conflict_count": 0,
       "reason_codes": [
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -3942,15 +3904,14 @@
     },
     {
       "id": "reddit",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-06-22",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -3975,7 +3936,6 @@
       "source_count": 0,
       "conflict_count": 0,
       "reason_codes": [
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -3990,7 +3950,6 @@
       "source_count": 0,
       "conflict_count": 0,
       "reason_codes": [
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -4043,7 +4002,6 @@
       "source_count": 0,
       "conflict_count": 0,
       "reason_codes": [
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -4128,7 +4086,6 @@
       "source_count": 0,
       "conflict_count": 0,
       "reason_codes": [
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -4200,9 +4157,8 @@
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -4254,9 +4210,8 @@
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -4272,7 +4227,6 @@
       "conflict_count": 1,
       "reason_codes": [
         "conflict_unresolved",
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -4394,9 +4348,8 @@
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -4409,9 +4362,8 @@
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
@@ -4608,29 +4560,27 @@
     },
     {
       "id": "squarespace",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-06-22",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
     {
       "id": "squeezebits",
-      "status": "legacy_snapshot",
+      "status": "partial",
       "verified_at": "2026-07-02",
       "next_reverify_at": null,
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "verification_v2_missing"
       ]
     },
@@ -4732,9 +4682,8 @@
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -4760,7 +4709,6 @@
       "source_count": 0,
       "conflict_count": 0,
       "reason_codes": [
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -5277,7 +5225,6 @@
       "source_count": 0,
       "conflict_count": 0,
       "reason_codes": [
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -5345,7 +5292,6 @@
       "source_count": 0,
       "conflict_count": 0,
       "reason_codes": [
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -5374,9 +5320,8 @@
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
@@ -5390,9 +5335,8 @@
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
@@ -5408,7 +5352,6 @@
       "source_count": 0,
       "conflict_count": 0,
       "reason_codes": [
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -5511,7 +5454,6 @@
       "source_count": 0,
       "conflict_count": 0,
       "reason_codes": [
-        "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"
       ]
@@ -5575,9 +5517,8 @@
       "evidence_coverage": 0,
       "surface_count": 0,
       "source_count": 0,
-      "conflict_count": 1,
+      "conflict_count": 0,
       "reason_codes": [
-        "conflict_unresolved",
         "proof_incomplete",
         "token_source_unverified",
         "verification_v2_missing"

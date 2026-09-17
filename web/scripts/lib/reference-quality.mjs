@@ -106,10 +106,23 @@ function extractTier1Urls(markdown) {
   return line.match(/https?:\/\/[^\s,)]+/g) ?? [];
 }
 
+/**
+ * A proof block is a section of raw computed-style observations with its source.
+ * Two heading conventions exist in the catalog and both carry the same content:
+ * the current `## Proof`, and the earlier `## Tier 1 — live DOM (playwright
+ * getComputedStyle)` with a `### Raw observations` subsection under it.
+ *
+ * Measured 2026-09-17: of 55 references failing this check, 25 had the older
+ * heading and every one of them already met the sample and URL requirements. They
+ * were failed for the shape of a title, not for missing evidence. The other 30
+ * have no verification file at all and still fail, correctly.
+ */
+const PROOF_HEADING = /^##\s+Proof|^###?\s+Raw observations/m;
+
 function proofSignals(verificationMarkdown) {
   if (!verificationMarkdown) return { present: false, samples: 0, hasUrl: false };
   return {
-    present: /^##\s+Proof/m.test(verificationMarkdown),
+    present: PROOF_HEADING.test(verificationMarkdown),
     samples: (verificationMarkdown.match(/rgb\(|#[0-9a-fA-F]{6}\b|\b\d+px\b/g) ?? []).length,
     hasUrl: /https?:\/\//.test(verificationMarkdown),
   };
@@ -201,10 +214,23 @@ function derivedValueSignals(markdown, tokens, verificationMarkdown = "") {
   return { declared: [...declared].sort(), suspected: [...suspected].sort() };
 }
 
+/**
+ * "No unresolved conflict" is often written with its reasoning attached —
+ * `none — live computed green rgb(0,224,19) exactly matches the brand kit`, or
+ * `none (Tier 2 supplied no data to conflict)`. An exact-match test read all of
+ * those as unresolved conflicts: 34 of the 62 references flagged on 2026-09-17
+ * began with an explicit "none" and were failed for explaining themselves.
+ *
+ * So the check reads the verdict, which is the first token, and lets the
+ * justification follow. A verdict must still be one of the recognised words — a
+ * line that starts by describing a conflict is a conflict.
+ */
+const NO_CONFLICT_VERDICT = /^(?:none|없음|n\/a|no|nil)(?:\b|$)/i;
+
 function hasExplicitUnresolvedConflict(markdown) {
   const value = markdown.match(/^\*\*Conflicts unresolved:\*\*\s*(.+)$/mi)?.[1]?.trim();
   if (!value) return false;
-  return !/^(none|없음|n\/a|no)$/i.test(value);
+  return !NO_CONFLICT_VERDICT.test(value);
 }
 
 function addReason(target, code) {

@@ -411,7 +411,6 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 3,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -513,7 +512,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "asana",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-06-22",
     "tokensExtractedAt": "2026-06-22",
     "nextReverifyAt": null,
@@ -523,13 +522,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 4,
     "componentCount": 12,
     "interactiveComponentCount": 8,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": [
@@ -962,7 +960,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "cafe24",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-06-26",
     "tokensExtractedAt": "2026-06-26",
     "nextReverifyAt": null,
@@ -972,13 +970,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 4,
     "componentCount": 8,
     "interactiveComponentCount": 5,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
@@ -1026,7 +1023,6 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 5,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -1036,7 +1032,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "cashapp",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-06-17",
     "tokensExtractedAt": "2026-06-17",
     "nextReverifyAt": null,
@@ -1046,13 +1042,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 3,
     "componentCount": 9,
     "interactiveComponentCount": 5,
     "statedComponentCount": 2,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
@@ -1191,7 +1186,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "cjonstyle",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-07-02",
     "tokensExtractedAt": "2026-07-02",
     "nextReverifyAt": null,
@@ -1201,13 +1196,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 3,
     "componentCount": 8,
     "interactiveComponentCount": 6,
     "statedComponentCount": 2,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
@@ -1433,7 +1427,6 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 3,
     "reasonCodes": [
       "freshness_conflict",
-      "proof_incomplete",
       "verification_v2_missing"
     ],
     "advisoryCodes": [
@@ -1478,7 +1471,6 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 3,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -1603,7 +1595,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "cybozu",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-06-17",
     "tokensExtractedAt": "2026-06-17",
     "nextReverifyAt": null,
@@ -1613,13 +1605,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 4,
     "componentCount": 8,
     "interactiveComponentCount": 5,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
@@ -1690,7 +1681,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "databricks",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-06-22",
     "tokensExtractedAt": "2026-06-22",
     "nextReverifyAt": null,
@@ -1700,13 +1691,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 4,
     "componentCount": 8,
     "interactiveComponentCount": 6,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
@@ -1773,7 +1763,6 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 6,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -1990,7 +1979,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "drdiary",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-07-02",
     "tokensExtractedAt": "2026-07-02",
     "nextReverifyAt": null,
@@ -2000,13 +1989,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 2,
     "componentCount": 5,
     "interactiveComponentCount": 2,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
@@ -2567,7 +2555,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "fubon",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-06-22",
     "tokensExtractedAt": "2026-06-22",
     "nextReverifyAt": null,
@@ -2577,13 +2565,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 2,
     "componentCount": 10,
     "interactiveComponentCount": 5,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
@@ -2680,7 +2667,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "gaudiolab",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-07-02",
     "tokensExtractedAt": "2026-07-02",
     "nextReverifyAt": null,
@@ -2690,20 +2677,19 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 3,
     "componentCount": 8,
     "interactiveComponentCount": 6,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
   },
   {
     "id": "gaudiy",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-06-17",
     "tokensExtractedAt": "2026-06-17",
     "nextReverifyAt": null,
@@ -2713,13 +2699,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 2,
     "componentCount": 7,
     "interactiveComponentCount": 4,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
@@ -2933,7 +2918,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "govuk",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-06-22",
     "tokensExtractedAt": "2026-06-22",
     "nextReverifyAt": null,
@@ -2943,13 +2928,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 7,
     "componentCount": 9,
     "interactiveComponentCount": 5,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
@@ -3257,7 +3241,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "hubspot",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-06-22",
     "tokensExtractedAt": "2026-06-22",
     "nextReverifyAt": null,
@@ -3267,13 +3251,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 3,
     "componentCount": 9,
     "interactiveComponentCount": 6,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
@@ -3624,7 +3607,6 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 4,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -3751,7 +3733,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "jobplanet",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-07-02",
     "tokensExtractedAt": "2026-07-02",
     "nextReverifyAt": null,
@@ -3761,13 +3743,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 3,
     "componentCount": 7,
     "interactiveComponentCount": 5,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
@@ -3784,13 +3765,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 1,
     "componentCount": 10,
     "interactiveComponentCount": 2,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
@@ -4218,7 +4198,6 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 5,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -4694,7 +4673,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "mailchimp",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-06-17",
     "tokensExtractedAt": "2026-06-17",
     "nextReverifyAt": null,
@@ -4704,13 +4683,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 2,
     "componentCount": 8,
     "interactiveComponentCount": 5,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
@@ -4972,7 +4950,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "mikan",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-06-17",
     "tokensExtractedAt": "2026-06-17",
     "nextReverifyAt": null,
@@ -4982,13 +4960,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 2,
     "componentCount": 9,
     "interactiveComponentCount": 5,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
@@ -5077,7 +5054,6 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 5,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -5293,7 +5269,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "monzo",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-06-22",
     "tokensExtractedAt": "2026-06-22",
     "nextReverifyAt": null,
@@ -5303,13 +5279,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 2,
     "componentCount": 10,
     "interactiveComponentCount": 6,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": [
@@ -5495,7 +5470,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "naverpay",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-06-22",
     "tokensExtractedAt": "2026-06-22",
     "nextReverifyAt": null,
@@ -5505,13 +5480,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 3,
     "componentCount": 11,
     "interactiveComponentCount": 6,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
@@ -5540,7 +5514,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "ncsoft",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-06-17",
     "tokensExtractedAt": "2026-06-17",
     "nextReverifyAt": null,
@@ -5550,13 +5524,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 3,
     "componentCount": 8,
     "interactiveComponentCount": 3,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
@@ -5682,13 +5655,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 2,
     "componentCount": 13,
     "interactiveComponentCount": 7,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -5750,13 +5722,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 2,
     "componentCount": 6,
     "interactiveComponentCount": 4,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "conflict_unresolved",
       "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
@@ -5789,7 +5760,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "nrise",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-07-02",
     "tokensExtractedAt": "2026-07-02",
     "nextReverifyAt": null,
@@ -5799,13 +5770,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 4,
     "componentCount": 8,
     "interactiveComponentCount": 5,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
@@ -5828,7 +5798,6 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 3,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -6009,7 +5978,6 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 3,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -6414,14 +6382,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 1,
     "componentCount": 10,
     "interactiveComponentCount": 6,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "conflict_unresolved",
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -6544,7 +6510,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "portone",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-06-26",
     "tokensExtractedAt": "2026-06-26",
     "nextReverifyAt": null,
@@ -6554,13 +6520,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 4,
     "componentCount": 8,
     "interactiveComponentCount": 4,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
@@ -6583,7 +6548,6 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 6,
     "statedComponentCount": 5,
     "reasonCodes": [
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -6657,7 +6621,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "protopie",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-07-02",
     "tokensExtractedAt": "2026-07-02",
     "nextReverifyAt": null,
@@ -6667,13 +6631,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 3,
     "componentCount": 8,
     "interactiveComponentCount": 4,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
@@ -6906,7 +6869,6 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 5,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -6982,7 +6944,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "reddit",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-06-22",
     "tokensExtractedAt": "2026-06-22",
     "nextReverifyAt": null,
@@ -6992,13 +6954,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 2,
     "componentCount": 10,
     "interactiveComponentCount": 7,
     "statedComponentCount": 5,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
@@ -7043,7 +7004,6 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 5,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -7069,7 +7029,6 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 4,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -7162,7 +7121,6 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 5,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -7305,7 +7263,6 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 3,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -7433,13 +7390,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 3,
     "componentCount": 20,
     "interactiveComponentCount": 9,
     "statedComponentCount": 2,
     "reasonCodes": [
-      "conflict_unresolved",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -7525,13 +7481,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 3,
     "componentCount": 11,
     "interactiveComponentCount": 8,
     "statedComponentCount": 4,
     "reasonCodes": [
-      "conflict_unresolved",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -7556,7 +7511,6 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 4,
     "reasonCodes": [
       "conflict_unresolved",
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -7772,13 +7726,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 3,
     "componentCount": 16,
     "interactiveComponentCount": 10,
     "statedComponentCount": 7,
     "reasonCodes": [
-      "conflict_unresolved",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -7796,13 +7749,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 2,
     "componentCount": 13,
     "interactiveComponentCount": 7,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
@@ -8145,7 +8097,7 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "squarespace",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-06-22",
     "tokensExtractedAt": "2026-06-22",
     "nextReverifyAt": null,
@@ -8155,20 +8107,19 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 2,
     "componentCount": 8,
     "interactiveComponentCount": 5,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
   },
   {
     "id": "squeezebits",
-    "status": "legacy_snapshot",
+    "status": "partial",
     "verifiedAt": "2026-07-02",
     "tokensExtractedAt": "2026-07-02",
     "nextReverifyAt": null,
@@ -8178,13 +8129,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 3,
     "componentCount": 7,
     "interactiveComponentCount": 4,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "verification_v2_missing"
     ],
     "advisoryCodes": []
@@ -8358,13 +8308,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 2,
     "componentCount": 17,
     "interactiveComponentCount": 8,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -8410,7 +8359,6 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 5,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -9337,7 +9285,6 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 5,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -9456,7 +9403,6 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 3,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -9501,13 +9447,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 1,
     "componentCount": 11,
     "interactiveComponentCount": 5,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "conflict_unresolved",
       "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
@@ -9526,13 +9471,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 1,
     "componentCount": 11,
     "interactiveComponentCount": 5,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "conflict_unresolved",
       "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
@@ -9559,7 +9503,6 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 4,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -9742,7 +9685,6 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 3,
     "statedComponentCount": 0,
     "reasonCodes": [
-      "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
     ],
@@ -9851,13 +9793,12 @@ export const REFERENCE_QUALITY = [
     "evidenceCoverage": 0,
     "surfaceCount": 0,
     "sourceCount": 0,
-    "conflictCount": 1,
+    "conflictCount": 0,
     "tier1SourceCount": 1,
     "componentCount": 11,
     "interactiveComponentCount": 6,
     "statedComponentCount": 2,
     "reasonCodes": [
-      "conflict_unresolved",
       "proof_incomplete",
       "token_source_unverified",
       "verification_v2_missing"
@@ -10051,8 +9992,8 @@ export const REFERENCE_QUALITY = [
 
 export const REFERENCE_QUALITY_COUNTS = {
   "verified_v2": 140,
-  "partial": 160,
-  "legacy_snapshot": 140,
+  "partial": 184,
+  "legacy_snapshot": 116,
   "total": 440
 } as const;
 
