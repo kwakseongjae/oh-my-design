@@ -23,6 +23,7 @@ const candidate: ReverifyCandidate = {
   statedComponentCount: 2,
   advisoryCodes: [],
   reasonCodes: ["claim_evidence_missing"],
+  paletteGrounding: null,
 };
 
 describe("reverify runner adapter", () => {

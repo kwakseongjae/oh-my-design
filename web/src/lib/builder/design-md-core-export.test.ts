@@ -285,6 +285,88 @@ No task list was established by the source.
     }
   });
 
+  it("preserves existing governance claims once and emits only a missing controlled claim", () => {
+    const source = `# Existing Governed Design System
+
+<!-- design-md:section experience -->
+## 1. Experience
+
+<!-- design-md:claim scope kind=product-surface lang=en -->
+### Scope
+
+The operations console serves incident responders.
+<!-- design-md:claim-end -->
+
+<!-- design-md:claim primary-tasks kind=user-outcomes count=1 lang=en -->
+### Primary tasks
+
+- Resolve an incident with an auditable disposition.
+<!-- design-md:claim-end -->
+
+<!-- design-md:section foundations -->
+## 2. Foundations
+
+<!-- design-md:claim foundations kind=rules-or-constraints lang=en -->
+Named gaps remain absent while verified sibling facts remain visible.
+<!-- design-md:claim-end -->
+
+<!-- design-md:section typography-assets -->
+## 3. Typography & Assets
+
+<!-- design-md:section components-states -->
+## 4. Components & States
+
+<!-- design-md:section layout-platforms -->
+## 5. Layout & Platforms
+
+<!-- design-md:section content-locales -->
+## 6. Content & Locales
+
+<!-- design-md:section governance -->
+## 7. Governance
+
+Catalog-specific governance introduction.
+
+<!-- design-md:claim authority kind=evidence-backed-reconstruction lang=en -->
+### Authority
+
+This document is an evidence-backed reconstruction, not authority for an unrelated target project.
+<!-- design-md:claim-end -->
+
+<!-- design-md:claim application-priority order=prompt-fact,repository-fact,system-contract,reference-inspiration lang=en -->
+### Application priority
+
+1. Direct user instructions for the requested scope.
+2. Repository facts.
+3. This system contract.
+4. Reference inspiration.
+<!-- design-md:claim-end -->
+
+<!-- design-md:claim unknowns policy=absent-at-smallest-unresolved-boundary lang=en -->
+### Unknowns
+
+Omit only the smallest unresolved value or group. Do not replace it with a plausible default.
+<!-- design-md:claim-end -->
+`;
+    const result = projectBuilderDesignMdCore({
+      source,
+      referenceName: "Existing Governed",
+      original,
+      overrides: emptyOverrides,
+    });
+
+    expect(result.markdown.match(/### Authority/g)).toHaveLength(1);
+    expect(result.markdown.match(/### Application priority/g)).toHaveLength(1);
+    expect(result.markdown.match(/### Unknowns/g)).toHaveLength(1);
+    expect(result.markdown.match(/### Changes/g)).toHaveLength(1);
+    expect(result.markdown.match(/Catalog-specific governance introduction\./g)).toHaveLength(1);
+    expect(result.markdown.match(/Named gaps remain absent while verified sibling facts remain visible\./g)).toHaveLength(1);
+    expect(result.markdown.match(/<!-- design-md:claim authority\b/g)).toHaveLength(1);
+    expect(result.markdown.match(/<!-- design-md:claim changes\b/g)).toHaveLength(1);
+    expect(result.conformance.portable_core).toBe(true);
+    expect(result.conformance).toEqual(coreEngine.inspectDesignMd(result.markdown).conformance);
+  });
+
   it("preserves unmatched substantive legacy sections without promoting them to typed facts", () => {
     const source = `# Catchtable Design System
 

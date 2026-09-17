@@ -89,6 +89,9 @@ const ADVISORY_LABEL: Record<string, string> = {
   component_absent: "No components are documented",
   token_value_self_declared_derived: "Some token values say they were derived rather than measured",
   token_value_possibly_derived: "Some token values read as derived rather than measured",
+  palette_grounding_low: "Most declared colours were not found on the brand's live surface",
+  palette_contradicted:
+    "The declared palette is contradicted — a 2026-07 capture and a 2026-09 page report the same low figure, two months apart",
 };
 
 function advisoryText(code: string): string {
@@ -373,6 +376,14 @@ export function DetailView({
                   {quality.advisoryCodes.map((code) => (
                     <li key={code} className="text-[11px] leading-relaxed text-muted-foreground">
                       {advisoryText(code)}
+                      {/* The measured share, where we have it — a bare "most were not
+                          found" invites the reader to guess, and the number is the
+                          whole point. */}
+                      {code.startsWith("palette_") && quality.paletteGrounding !== null && (
+                        <span className="ml-1 font-mono text-[10px]">
+                          ({Math.round(quality.paletteGrounding * 100)}% found)
+                        </span>
+                      )}
                     </li>
                   ))}
                 </ul>

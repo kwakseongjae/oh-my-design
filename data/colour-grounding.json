@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "measured_at": "2026-09-17",
+  "generator": "web/scripts/survey-colour-grounding.mjs",
+  "scope": "references whose tokens.source is prose-derived and which declare hex colours",
+  "method": "Each declared colour was looked for in the computed styles of the brand's own homepage (color, backgroundColor, borderTopColor, borderBottomColor, fill), fetched under an ordinary browser identity. Where a July capture bundle still exists, the same colours were looked for there too and recorded as foundInJulyBundle.",
+  "caveat": "A homepage is one surface and a palette covers several — inner pages, dark mode, error states. A figure below 100% is expected and is NOT evidence of fabrication. What carries weight is agreement between two independent observations: where the July bundle and the September page report the same low number, two months apart, a redesign cannot explain it.",
+  "totals": {
+    "references": 111,
+    "measured": 106,
+    "declaredColours": 1574,
+    "foundColours": 677
+  },
+  "references": {
+    "17live": {
+      "declared": 12,
+      "found": 2
+    },
+    "91app": {
+      "declared": 10,
+      "found": null,
+      "note": "HTTP 403"
+    },
+    "airtable": {
+      "declared": 10,
+      "found": 8
+    },
+    "appier": {
+      "declared": 17,
+      "found": 2
+    },
+    "bithumb": {
+      "declared": 13,
+      "found": 13
+    },
+    "bunjang": {
+      "declared": 15,
+      "found": 6
+    },
+    "cakeresume": {
+      "declared": 10,
+      "found": 10
+    },
+    "cal": {
+      "declared": 13,
+      "found": 12
+    },
+    "classting": {
+      "declared": 16,
+      "found": 10
+    },
+    "composio": {
+      "declared": 12,
+      "found": 8
+    },
+    "cookpad": {
+      "declared": 12,
+      "found": 9,
+      "foundInJulyBundle": 8
+    },
+    "dcard": {
+      "declared": 22,
+      "found": 11
+    },
+    "dell": {
+      "declared": 20,
+      "found": 3
+    },
+    "devsisters": {
+      "declared": 8,
+      "found": 7
+    },
+    "discord": {
+      "declared": 19,
+      "found": 2
+    },
+    "dji": {
+      "declared": 11,
+      "found": 2,
+      "foundInJulyBundle": 2
+    },
+    "drnow": {
+      "declared": 21,
+      "found": 16
+    },
+    "fastcampus": {
+      "declared": 22,
+      "found": 11
+    },
+    "flo": {
+      "declared": 15,
+      "found": 5
+    },
+    "fugle": {
+      "declared": 15,
+      "found": 8
+    },
+    "gmarket": {
+      "declared": 18,
+      "found": 10
+    },
+    "gogolook": {
+      "declared": 8,
+      "found": 7
+    },
+    "gogoro": {
+      "declared": 12,
+      "found": 9
+    },
+    "grip": {
+      "declared": 16,
+      "found": 7
+    },
+    "hahow": {
+      "declared": 10,
+      "found": 3
+    },
+    "hogangnono": {
+      "declared": 16,
+      "found": 8
+    },
+    "hp": {
+      "declared": 18,
+      "found": 4
+    },
+    "ichef": {
+      "declared": 16,
+      "found": 3
+    },
+    "intercom": {
+      "declared": 15,
+      "found": 6
+    },
+    "jkopay": {
+      "declared": 11,
+      "found": 7
+    },
+    "jobkorea": {
+      "declared": 15,
+      "found": 9
+    },
+    "jumpit": {
+      "declared": 8,
+      "found": 8,
+      "foundInJulyBundle": 8
+    },
+    "kakaot": {
+      "declared": 17,
+      "found": 3,
+      "foundInJulyBundle": 2
+    },
+    "kdan": {
+      "declared": 12,
+      "found": 9
+    },
+    "kintone": {
+      "declared": 19,
+      "found": 5
+    },
+    "kkbox": {
+      "declared": 6,
+      "found": 6
+    },
+    "kkday": {
+      "declared": 16,
+      "found": null,
+      "note": "page.goto: Timeout 22000ms"
+    },
+    "krafton": {
+      "declared": 14,
+      "found": 9
+    },
+    "kraken": {
+      "declared": 13,
+      "found": 10
+    },
+    "laftel": {
+      "declared": 11,
+      "found": 8
+    },
+    "layerx": {
+      "declared": 21,
+      "found": 5
+    },
+    "lezhin": {
+      "declared": 13,
+      "found": 11
+    },
+    "lunit": {
+      "declared": 8,
+      "found": 7
+    },
+    "mastercard": {
+      "declared": 18,
+      "found": 4
+    },
+    "meituan": {
+      "declared": 18,
+      "found": 2,
+      "foundInJulyBundle": 2
+    },
+    "melon": {
+      "declared": 8,
+      "found": 6
+    },
+    "mercury": {
+      "declared": 16,
+      "found": 10
+    },
+    "meta": {
+      "declared": 19,
+      "found": 4
+    },
+    "mintlify": {
+      "declared": 14,
+      "found": 2
+    },
+    "momoshop": {
+      "declared": 14,
+      "found": 8
+    },
+    "money-forward": {
+      "declared": 14,
+      "found": 4,
+      "foundInJulyBundle": 4
+    },
+    "muji": {
+      "declared": 13,
+      "found": 4
+    },
+    "mustit": {
+      "declared": 13,
+      "found": null,
+      "note": "page.goto: Timeout 22000ms"
+    },
+    "netflix": {
+      "declared": 13,
+      "found": 4
+    },
+    "nike": {
+      "declared": 17,
+      "found": 6
+    },
+    "note": {
+      "declared": 8,
+      "found": 3,
+      "foundInJulyBundle": 2
+    },
+    "nvidia": {
+      "declared": 22,
+      "found": 7
+    },
+    "openai": {
+      "declared": 24,
+      "found": 2
+    },
+    "opencode.ai": {
+      "declared": 15,
+      "found": 7
+    },
+    "payco": {
+      "declared": 14,
+      "found": 6
+    },
+    "paypay": {
+      "declared": 19,
+      "found": 6
+    },
+    "perplexity": {
+      "declared": 22,
+      "found": 3
+    },
+    "piccollage": {
+      "declared": 18,
+      "found": 10
+    },
+    "pinkoi": {
+      "declared": 23,
+      "found": 15,
+      "foundInJulyBundle": 11
+    },
+    "pixiv": {
+      "declared": 24,
+      "found": 8
+    },
+    "posthog": {
+      "declared": 16,
+      "found": 11
+    },
+    "publy": {
+      "declared": 17,
+      "found": 14,
+      "foundInJulyBundle": 13
+    },
+    "qanda": {
+      "declared": 19,
+      "found": 12,
+      "foundInJulyBundle": 11
+    },
+    "ramp": {
+      "declared": 19,
+      "found": 3
+    },
+    "rayark": {
+      "declared": 4,
+      "found": 4
+    },
+    "raycast": {
+      "declared": 15,
+      "found": 8
+    },
+    "renault": {
+      "declared": 13,
+      "found": 3
+    },
+    "replicate": {
+      "declared": 12,
+      "found": 9
+    },
+    "retool": {
+      "declared": 21,
+      "found": 2
+    },
+    "revolut": {
+      "declared": 20,
+      "found": 4
+    },
+    "ridi": {
+      "declared": 16,
+      "found": 2,
+      "foundInJulyBundle": 2
+    },
+    "riiid": {
+      "declared": 9,
+      "found": 3
+    },
+    "robinhood": {
+      "declared": 18,
+      "found": 1
+    },
+    "runwayml": {
+      "declared": 17,
+      "found": 7
+    },
+    "sansan": {
+      "declared": 20,
+      "found": 1
+    },
+    "sendbird": {
+      "declared": 16,
+      "found": 8
+    },
+    "sentry": {
+      "declared": 15,
+      "found": 11,
+      "foundInJulyBundle": 11
+    },
+    "slack": {
+      "declared": 21,
+      "found": 6
+    },
+    "smarthr": {
+      "declared": 15,
+      "found": 6,
+      "foundInJulyBundle": 6
+    },
+    "smartnews": {
+      "declared": 7,
+      "found": 3,
+      "foundInJulyBundle": 3
+    },
+    "spoon": {
+      "declared": 14,
+      "found": 7,
+      "foundInJulyBundle": 7
+    },
+    "starbucks": {
+      "declared": 19,
+      "found": 2
+    },
+    "studio": {
+      "declared": 20,
+      "found": 9
+    },
+    "superhuman": {
+      "declared": 7,
+      "found": 3
+    },
+    "tada": {
+      "declared": 17,
+      "found": 3,
+      "foundInJulyBundle": 3
+    },
+    "theverge": {
+      "declared": 11,
+      "found": 7
+    },
+    "trenbe": {
+      "declared": 14,
+      "found": 3
+    },
+    "triple": {
+      "declared": 16,
+      "found": 5,
+      "foundInJulyBundle": 5
+    },
+    "tumblbug": {
+      "declared": 14,
+      "found": 12,
+      "foundInJulyBundle": 8
+    },
+    "ubie": {
+      "declared": 19,
+      "found": 3
+    },
+    "uniqlo": {
+      "declared": 16,
+      "found": null,
+      "note": "HTTP 403"
+    },
+    "velog": {
+      "declared": 10,
+      "found": 6
+    },
+    "voicetube": {
+      "declared": 15,
+      "found": 7
+    },
+    "voltagent": {
+      "declared": 16,
+      "found": 10
+    },
+    "wadiz": {
+      "declared": 20,
+      "found": 18
+    },
+    "warp": {
+      "declared": 7,
+      "found": 0
+    },
+    "watcha": {
+      "declared": 12,
+      "found": 7,
+      "foundInJulyBundle": 5
+    },
+    "wavve": {
+      "declared": 12,
+      "found": 1,
+      "foundInJulyBundle": 1
+    },
+    "wconcept": {
+      "declared": 11,
+      "found": 10,
+      "foundInJulyBundle": 4
+    },
+    "webflow": {
+      "declared": 17,
+      "found": 5
+    },
+    "wired": {
+      "declared": 17,
+      "found": 5
+    },
+    "x.ai": {
+      "declared": 8,
+      "found": 3
+    },
+    "xiaohongshu": {
+      "declared": 12,
+      "found": 4
+    },
+    "yogiyo": {
+      "declared": 17,
+      "found": 7
+    },
+    "zigbang": {
+      "declared": 6,
+      "found": 2
+    },
+    "zozotown": {
+      "declared": 14,
+      "found": null,
+      "note": "HTTP 403"
+    }
+  }
+}

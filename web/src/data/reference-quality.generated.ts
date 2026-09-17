@@ -34,6 +34,11 @@ export interface ReferenceQualityEntry {
    *  thin-but-passing references, and values a document derived rather than
    *  observed, can be found and repaired. */
   readonly advisoryCodes: readonly string[];
+  /** Share of this reference's declared colours found on the brand's live surface,
+   *  from data/colour-grounding.json. null when unmeasured. A homepage is one surface
+   *  and a palette covers several, so a figure below 1 is expected — see that file's
+   *  caveat before reading it as fabrication. */
+  readonly paletteGrounding: number | null;
 }
 
 export const REFERENCE_QUALITY_SCHEMA_VERSION = 2 as const;
@@ -58,7 +63,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "11st",
@@ -78,7 +84,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 2,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "17live",
@@ -103,8 +110,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0.167
   },
   {
     "id": "29cm",
@@ -126,7 +135,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "3o3",
@@ -151,7 +161,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "42dot",
@@ -175,7 +186,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "591",
@@ -197,7 +209,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "8percent",
@@ -221,7 +234,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "91app",
@@ -246,7 +260,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "abema",
@@ -270,7 +285,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "ably",
@@ -292,7 +308,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "accupass",
@@ -316,7 +333,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "acer",
@@ -338,7 +356,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "adobe",
@@ -362,7 +381,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "airbnb",
@@ -384,7 +404,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "airbridge",
@@ -408,7 +429,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "airtable",
@@ -434,7 +456,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.8
   },
   {
     "id": "alipay",
@@ -456,7 +479,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "amazingtalker",
@@ -480,7 +504,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "appier",
@@ -506,8 +531,10 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only",
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0.118
   },
   {
     "id": "apple",
@@ -527,7 +554,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 4,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "asana",
@@ -552,7 +580,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "asleep",
@@ -576,7 +605,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "asos",
@@ -600,7 +630,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "au",
@@ -622,7 +653,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "autopedia",
@@ -646,7 +678,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "aws-cloudscape",
@@ -668,7 +701,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "baemin",
@@ -688,7 +722,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 7,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "bahamut",
@@ -712,7 +747,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "banksalad",
@@ -734,7 +770,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "barogo",
@@ -758,7 +795,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "bbc",
@@ -782,7 +820,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "beusable",
@@ -807,7 +846,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "bigin",
@@ -831,7 +871,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "bilibili",
@@ -853,7 +894,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "bithumb",
@@ -878,7 +920,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": 1
   },
   {
     "id": "bito",
@@ -902,7 +945,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "bmw",
@@ -924,7 +968,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_absent"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "brandi",
@@ -946,7 +991,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "bunjang",
@@ -971,7 +1017,8 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": 0.4
   },
   {
     "id": "buzzvil",
@@ -995,7 +1042,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "cafe24",
@@ -1019,7 +1067,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "cakeresume",
@@ -1044,7 +1093,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": 1
   },
   {
     "id": "cal",
@@ -1069,7 +1119,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": 0.923
   },
   {
     "id": "cashapp",
@@ -1093,7 +1144,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "catchtable",
@@ -1115,7 +1167,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "cathay",
@@ -1139,7 +1192,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "cgv",
@@ -1161,7 +1215,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "channeltalk",
@@ -1181,7 +1236,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 4,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "china-airlines",
@@ -1203,7 +1259,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "chunghwa",
@@ -1227,7 +1284,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "cjonstyle",
@@ -1249,7 +1307,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "class101",
@@ -1271,7 +1330,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "classting",
@@ -1297,7 +1357,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.625
   },
   {
     "id": "classum",
@@ -1319,7 +1380,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "claude",
@@ -1341,7 +1403,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "clay",
@@ -1363,7 +1426,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "clickhouse",
@@ -1385,7 +1449,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "cloudflare",
@@ -1410,7 +1475,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "codeit",
@@ -1434,7 +1500,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "cohere",
@@ -1456,7 +1523,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "coinbase",
@@ -1481,7 +1549,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "token_value_possibly_derived"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "coinone",
@@ -1501,7 +1570,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 4,
     "statedComponentCount": 2,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "composio",
@@ -1526,7 +1596,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": 0.667
   },
   {
     "id": "cookpad",
@@ -1554,7 +1625,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.75
   },
   {
     "id": "corca",
@@ -1578,7 +1650,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "coupang",
@@ -1600,7 +1673,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "cuboai",
@@ -1624,7 +1698,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "cursor",
@@ -1646,7 +1721,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "cybozu",
@@ -1670,7 +1746,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "dabang",
@@ -1690,7 +1767,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 4,
     "statedComponentCount": 3,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "dable",
@@ -1714,7 +1792,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "danawa",
@@ -1738,7 +1817,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "databricks",
@@ -1762,7 +1842,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "datadog",
@@ -1786,7 +1867,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "datarize",
@@ -1808,7 +1890,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "dcard",
@@ -1833,7 +1916,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.5
   },
   {
     "id": "dealicious",
@@ -1857,7 +1941,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "deliveroo",
@@ -1882,7 +1967,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "dell",
@@ -1906,8 +1992,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0.15
   },
   {
     "id": "devsisters",
@@ -1933,7 +2021,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.875
   },
   {
     "id": "digital-agency-jp",
@@ -1957,7 +2046,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "discord",
@@ -1981,8 +2071,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0.105
   },
   {
     "id": "dji",
@@ -2009,8 +2101,10 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only",
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_contradicted"
+    ],
+    "paletteGrounding": 0.182
   },
   {
     "id": "dmm",
@@ -2034,7 +2128,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "doordash",
@@ -2058,7 +2153,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "drdiary",
@@ -2082,7 +2178,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "drnow",
@@ -2108,7 +2205,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.762
   },
   {
     "id": "dropbox",
@@ -2133,7 +2231,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "duolingo",
@@ -2158,7 +2257,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "easywallet",
@@ -2182,7 +2282,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "elastic",
@@ -2204,7 +2305,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "elevenlabs",
@@ -2226,7 +2328,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "elice",
@@ -2250,7 +2353,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "eslite",
@@ -2270,7 +2374,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 1,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "esunbank",
@@ -2294,7 +2399,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "evaair",
@@ -2316,7 +2422,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "expo",
@@ -2336,7 +2443,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 2,
     "statedComponentCount": 2,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "familymart-tw",
@@ -2358,7 +2466,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "farfetch",
@@ -2382,7 +2491,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "fastcampus",
@@ -2409,7 +2519,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.5
   },
   {
     "id": "ferrari",
@@ -2431,7 +2542,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "figma",
@@ -2451,7 +2563,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 5,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "finda",
@@ -2475,7 +2588,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "firstory",
@@ -2499,7 +2613,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "fitpet",
@@ -2523,7 +2638,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "flex",
@@ -2545,7 +2661,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "flo",
@@ -2570,7 +2687,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.333
   },
   {
     "id": "framer",
@@ -2592,7 +2710,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "freee",
@@ -2612,7 +2731,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 2,
     "statedComponentCount": 2,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "friendliai",
@@ -2636,7 +2756,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "frip",
@@ -2660,7 +2781,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "fubon",
@@ -2684,7 +2806,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "fugle",
@@ -2711,7 +2834,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.533
   },
   {
     "id": "funnow",
@@ -2733,7 +2857,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "furiosaai",
@@ -2757,7 +2882,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "gangnamunni",
@@ -2777,7 +2903,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 2,
     "statedComponentCount": 2,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "gaudiolab",
@@ -2801,7 +2928,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "gaudiy",
@@ -2825,7 +2953,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "genie",
@@ -2849,7 +2978,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "github",
@@ -2874,7 +3004,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "gitlab",
@@ -2899,7 +3030,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "gmarket",
@@ -2926,7 +3058,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.556
   },
   {
     "id": "gogolook",
@@ -2949,7 +3082,8 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": 0.875
   },
   {
     "id": "gogoro",
@@ -2976,7 +3110,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.75
   },
   {
     "id": "goodpatch",
@@ -3000,7 +3135,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "google",
@@ -3020,7 +3156,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 4,
     "statedComponentCount": 3,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "goorm",
@@ -3044,7 +3181,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "govuk",
@@ -3068,7 +3206,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "greencar",
@@ -3092,7 +3231,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "greenvines",
@@ -3117,7 +3257,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "greeting",
@@ -3141,7 +3282,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "grip",
@@ -3167,7 +3309,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.438
   },
   {
     "id": "hackle",
@@ -3191,7 +3334,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "hahow",
@@ -3216,7 +3360,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": 0.3
   },
   {
     "id": "hana",
@@ -3240,7 +3385,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "hashicorp",
@@ -3262,7 +3408,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "headspace",
@@ -3286,7 +3433,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "heptabase",
@@ -3310,7 +3458,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "heydealer",
@@ -3334,7 +3483,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "hogangnono",
@@ -3361,7 +3511,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.5
   },
   {
     "id": "hp",
@@ -3386,8 +3537,10 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only",
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0.222
   },
   {
     "id": "hubspot",
@@ -3411,7 +3564,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "humanscape",
@@ -3435,7 +3589,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "hwahae",
@@ -3459,7 +3614,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "hyperconnect",
@@ -3483,7 +3639,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "hyundai",
@@ -3505,7 +3662,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "hyundaicard",
@@ -3527,7 +3685,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "ibm",
@@ -3547,7 +3706,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 2,
     "statedComponentCount": 2,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "ichef",
@@ -3572,8 +3732,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0.188
   },
   {
     "id": "icook",
@@ -3597,7 +3759,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "idus",
@@ -3621,7 +3784,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "igaworks",
@@ -3643,7 +3807,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "iicombined",
@@ -3667,7 +3832,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "ikala",
@@ -3691,7 +3857,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "imweb",
@@ -3715,7 +3882,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "inflearn",
@@ -3735,7 +3903,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 3,
     "statedComponentCount": 2,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "instacart",
@@ -3759,7 +3928,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "intercom",
@@ -3784,7 +3954,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": 0.4
   },
   {
     "id": "intuit",
@@ -3806,7 +3977,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "ipassmoney",
@@ -3830,7 +4002,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "jandi",
@@ -3852,7 +4025,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "jkopay",
@@ -3878,7 +4052,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.636
   },
   {
     "id": "jobkorea",
@@ -3905,7 +4080,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.6
   },
   {
     "id": "jobplanet",
@@ -3929,7 +4105,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "jumpit",
@@ -3955,7 +4132,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 1
   },
   {
     "id": "kakao",
@@ -3975,7 +4153,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 5,
     "statedComponentCount": 2,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "kakaobank",
@@ -3995,7 +4174,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 4,
     "statedComponentCount": 3,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "kakaogames",
@@ -4017,7 +4197,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "kakaopage",
@@ -4039,7 +4220,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "kakaopay",
@@ -4059,7 +4241,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 2,
     "statedComponentCount": 2,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "kakaot",
@@ -4085,8 +4268,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_contradicted"
+    ],
+    "paletteGrounding": 0.176
   },
   {
     "id": "karrot",
@@ -4108,7 +4293,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "kb-kookmin",
@@ -4130,7 +4316,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "kbank",
@@ -4152,7 +4339,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "kbpay",
@@ -4176,7 +4364,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "kcd",
@@ -4200,7 +4389,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "kdan",
@@ -4223,7 +4413,8 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": 0.75
   },
   {
     "id": "kia",
@@ -4247,7 +4438,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "kintone",
@@ -4273,7 +4465,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "motion_value_unsourced",
       "token_value_possibly_derived"
-    ]
+    ],
+    "paletteGrounding": 0.263
   },
   {
     "id": "kkbox",
@@ -4298,7 +4491,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": 1
   },
   {
     "id": "kkday",
@@ -4324,7 +4518,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "kmong",
@@ -4346,7 +4541,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "krafton",
@@ -4369,7 +4565,8 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": 0.643
   },
   {
     "id": "kraken",
@@ -4394,7 +4591,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": 0.769
   },
   {
     "id": "krds",
@@ -4414,7 +4612,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 5,
     "statedComponentCount": 5,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "kream",
@@ -4436,7 +4635,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_absent"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "kurly",
@@ -4456,7 +4656,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 2,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "kyobobook",
@@ -4480,7 +4681,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "lablup",
@@ -4505,7 +4707,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "laftel",
@@ -4530,7 +4733,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.727
   },
   {
     "id": "lamborghini",
@@ -4552,7 +4756,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "laundrygo",
@@ -4576,7 +4781,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "layerx",
@@ -4600,8 +4806,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0.238
   },
   {
     "id": "lemonbase",
@@ -4625,7 +4833,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "lezhin",
@@ -4651,7 +4860,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.846
   },
   {
     "id": "lguplus",
@@ -4673,7 +4883,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "likelion",
@@ -4693,7 +4904,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 3,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "line",
@@ -4715,7 +4927,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "linear.app",
@@ -4735,7 +4948,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 4,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "liner",
@@ -4759,7 +4973,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "loom",
@@ -4783,7 +4998,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "lotteon",
@@ -4805,7 +5021,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "lovable",
@@ -4825,7 +5042,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 4,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "lunit",
@@ -4852,7 +5070,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": 0.875
   },
   {
     "id": "maicoin",
@@ -4876,7 +5095,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "mailchimp",
@@ -4900,7 +5120,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "makinarocks",
@@ -4922,7 +5143,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "mastercard",
@@ -4946,8 +5168,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0.222
   },
   {
     "id": "maum-ai",
@@ -4971,7 +5195,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "medibloc",
@@ -4995,7 +5220,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "megabox",
@@ -5017,7 +5243,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "meituan",
@@ -5044,8 +5271,10 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only",
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_contradicted"
+    ],
+    "paletteGrounding": 0.111
   },
   {
     "id": "melon",
@@ -5070,7 +5299,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": 0.75
   },
   {
     "id": "mercari",
@@ -5092,7 +5322,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "mercury",
@@ -5117,7 +5348,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.625
   },
   {
     "id": "meta",
@@ -5142,8 +5374,10 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced",
+      "palette_grounding_low",
       "token_value_possibly_derived"
-    ]
+    ],
+    "paletteGrounding": 0.211
   },
   {
     "id": "microsoft",
@@ -5165,7 +5399,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "mikan",
@@ -5189,7 +5424,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "mildang",
@@ -5213,7 +5449,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "millie",
@@ -5235,7 +5472,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_absent"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "minimax",
@@ -5257,7 +5495,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "mintlify",
@@ -5281,8 +5520,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
-    ]
+      "component_state_prose_only",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0.143
   },
   {
     "id": "miricanvas",
@@ -5304,7 +5545,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_absent"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "miro",
@@ -5326,7 +5568,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "mistral.ai",
@@ -5348,7 +5591,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "mixi",
@@ -5370,7 +5614,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "modusign",
@@ -5394,7 +5639,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "moin",
@@ -5419,7 +5665,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "momoshop",
@@ -5445,7 +5692,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.571
   },
   {
     "id": "money-forward",
@@ -5471,8 +5719,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_contradicted"
+    ],
+    "paletteGrounding": 0.286
   },
   {
     "id": "mongodb",
@@ -5494,7 +5744,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "monzo",
@@ -5519,7 +5770,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "moreh",
@@ -5543,7 +5795,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "moze",
@@ -5567,7 +5820,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "muji",
@@ -5592,7 +5846,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.308
   },
   {
     "id": "musinsa",
@@ -5614,7 +5869,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "mustit",
@@ -5640,7 +5896,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "mynavi",
@@ -5662,7 +5919,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "myrealtrip",
@@ -5684,7 +5942,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "naver",
@@ -5704,7 +5963,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 5,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "naverpay",
@@ -5728,7 +5988,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "naverwebtoon",
@@ -5750,7 +6011,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "ncsoft",
@@ -5774,7 +6036,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "neosapience",
@@ -5798,7 +6061,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "netflix",
@@ -5823,7 +6087,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.308
   },
   {
     "id": "nexon",
@@ -5847,7 +6112,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "nhn",
@@ -5869,7 +6135,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "nhncloud",
@@ -5889,7 +6156,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 3,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "nike",
@@ -5914,7 +6182,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.353
   },
   {
     "id": "nintendo",
@@ -5938,7 +6207,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "nota",
@@ -5962,7 +6232,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "note",
@@ -5989,7 +6260,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.375
   },
   {
     "id": "notion",
@@ -6009,7 +6281,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 2,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "nrise",
@@ -6033,7 +6306,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "nvidia",
@@ -6059,7 +6333,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.318
   },
   {
     "id": "octopusenergy",
@@ -6081,7 +6356,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "ohouse",
@@ -6103,7 +6379,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "oliveyoung",
@@ -6125,7 +6402,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "ollama",
@@ -6147,7 +6425,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_absent"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "omnichat",
@@ -6171,7 +6450,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "onestore",
@@ -6193,7 +6473,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "openai",
@@ -6217,8 +6498,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0.083
   },
   {
     "id": "opencode.ai",
@@ -6241,7 +6524,8 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": 0.467
   },
   {
     "id": "openpoint",
@@ -6265,7 +6549,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "palantir",
@@ -6287,7 +6572,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "panasonic",
@@ -6309,7 +6595,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "patreon",
@@ -6333,7 +6620,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "patternfly",
@@ -6355,7 +6643,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "payco",
@@ -6381,7 +6670,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": 0.429
   },
   {
     "id": "payhere",
@@ -6405,7 +6695,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "paypal",
@@ -6430,7 +6721,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "paypay",
@@ -6455,7 +6747,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.316
   },
   {
     "id": "pchome",
@@ -6480,7 +6773,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "pega",
@@ -6502,7 +6796,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "peoplefund",
@@ -6526,7 +6821,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "pepabo",
@@ -6550,7 +6846,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "perplexity",
@@ -6574,8 +6871,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0.136
   },
   {
     "id": "petfriends",
@@ -6600,7 +6899,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "piccollage",
@@ -6626,7 +6926,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.556
   },
   {
     "id": "pinkfong",
@@ -6646,7 +6947,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 3,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "pinkoi",
@@ -6672,7 +6974,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.652
   },
   {
     "id": "pinterest",
@@ -6694,7 +6997,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "pixiv",
@@ -6719,7 +7023,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.333
   },
   {
     "id": "pixnet",
@@ -6744,7 +7049,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "plaid",
@@ -6768,7 +7074,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "portaly",
@@ -6792,7 +7099,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "portone",
@@ -6816,7 +7124,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "posthog",
@@ -6839,7 +7148,8 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": 0.688
   },
   {
     "id": "postype",
@@ -6863,7 +7173,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "poya",
@@ -6885,7 +7196,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "pozalabs",
@@ -6909,7 +7221,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "protopie",
@@ -6933,7 +7246,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "publy",
@@ -6960,7 +7274,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.824
   },
   {
     "id": "qanda",
@@ -6988,7 +7303,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.632
   },
   {
     "id": "qraft",
@@ -7012,7 +7328,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "queenit",
@@ -7036,7 +7353,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "quotabook",
@@ -7060,7 +7378,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "ragic",
@@ -7084,7 +7403,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "rakuten",
@@ -7108,7 +7428,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "ramp",
@@ -7132,8 +7453,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0.158
   },
   {
     "id": "rayark",
@@ -7158,7 +7481,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": 1
   },
   {
     "id": "raycast",
@@ -7183,7 +7507,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": 0.533
   },
   {
     "id": "readmoo",
@@ -7207,7 +7532,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "rebellions",
@@ -7231,7 +7557,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "recruit",
@@ -7253,7 +7580,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "reddit",
@@ -7277,7 +7605,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "remember",
@@ -7299,7 +7628,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "renault",
@@ -7323,8 +7653,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
-    ]
+      "component_state_prose_only",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0.231
   },
   {
     "id": "replicate",
@@ -7349,7 +7681,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": 0.75
   },
   {
     "id": "resend",
@@ -7371,7 +7704,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "retool",
@@ -7395,8 +7729,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0.095
   },
   {
     "id": "returnzero",
@@ -7420,7 +7756,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "revolut",
@@ -7444,8 +7781,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
-    ]
+      "component_state_prose_only",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0.2
   },
   {
     "id": "richart",
@@ -7470,7 +7809,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "ridi",
@@ -7496,8 +7836,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_contradicted"
+    ],
+    "paletteGrounding": 0.125
   },
   {
     "id": "riiid",
@@ -7522,7 +7864,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.333
   },
   {
     "id": "ringle",
@@ -7546,7 +7889,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "robinhood",
@@ -7570,8 +7914,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0.056
   },
   {
     "id": "runwayml",
@@ -7596,7 +7942,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": 0.412
   },
   {
     "id": "sakura-internet",
@@ -7618,7 +7965,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "salesforce",
@@ -7642,7 +7990,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "samsung",
@@ -7664,7 +8013,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "sandoll",
@@ -7688,7 +8038,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "sanity",
@@ -7708,7 +8059,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 4,
     "statedComponentCount": 3,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "sansan",
@@ -7732,8 +8084,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0.05
   },
   {
     "id": "saramin",
@@ -7757,7 +8111,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "scatterlab",
@@ -7782,7 +8137,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "selectstar",
@@ -7806,7 +8162,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "sendbird",
@@ -7831,7 +8188,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.5
   },
   {
     "id": "sentry",
@@ -7855,7 +8213,8 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": 0.733
   },
   {
     "id": "servicenow",
@@ -7877,7 +8236,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "shiftee",
@@ -7901,7 +8261,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "shiftup",
@@ -7925,7 +8286,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "shinhanbank",
@@ -7947,7 +8309,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_absent"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "shinhancard",
@@ -7969,7 +8332,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "shopline",
@@ -7993,7 +8357,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "sionic",
@@ -8017,7 +8382,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "sktelecom",
@@ -8039,7 +8405,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "skyscanner",
@@ -8063,7 +8430,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "slack",
@@ -8088,7 +8456,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.286
   },
   {
     "id": "smarthr",
@@ -8114,7 +8483,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.4
   },
   {
     "id": "smartnews",
@@ -8141,7 +8511,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.429
   },
   {
     "id": "snapchat",
@@ -8165,7 +8536,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "socar",
@@ -8187,7 +8559,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "softbank",
@@ -8209,7 +8582,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "solapi",
@@ -8233,7 +8607,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "sony",
@@ -8255,7 +8630,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "soomgo",
@@ -8279,7 +8655,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "soop",
@@ -8301,7 +8678,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "spacex",
@@ -8323,7 +8701,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "sparkful",
@@ -8347,7 +8726,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "speeda",
@@ -8371,7 +8751,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "spindle",
@@ -8395,7 +8776,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "spoon",
@@ -8422,7 +8804,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.5
   },
   {
     "id": "spoqa",
@@ -8446,7 +8829,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "spotify",
@@ -8468,7 +8852,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "squarespace",
@@ -8492,7 +8877,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "squeezebits",
@@ -8516,7 +8902,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "ssg",
@@ -8540,7 +8927,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "starbucks",
@@ -8565,8 +8953,10 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only",
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0.105
   },
   {
     "id": "starling",
@@ -8590,7 +8980,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "stayfolio",
@@ -8614,7 +9005,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "stibee",
@@ -8638,7 +9030,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "stores",
@@ -8663,7 +9056,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "stripe",
@@ -8683,7 +9077,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 3,
     "statedComponentCount": 2,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "studio",
@@ -8708,7 +9103,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.45
   },
   {
     "id": "supabase",
@@ -8730,7 +9126,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "superhuman",
@@ -8755,7 +9152,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": 0.429
   },
   {
     "id": "supertone",
@@ -8779,7 +9177,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "surveycake",
@@ -8803,7 +9202,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "tabling",
@@ -8828,7 +9228,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "tada",
@@ -8854,8 +9255,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_contradicted"
+    ],
+    "paletteGrounding": 0.176
   },
   {
     "id": "taishinbank",
@@ -8877,7 +9280,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "taiwanmobile",
@@ -8901,7 +9305,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "teamblind",
@@ -8925,7 +9330,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "teamlab",
@@ -8947,7 +9353,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "teamsparta",
@@ -8971,7 +9378,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "tellingme",
@@ -8996,7 +9404,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "tesla",
@@ -9016,7 +9425,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 5,
     "statedComponentCount": 3,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "theverge",
@@ -9041,7 +9451,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.636
   },
   {
     "id": "thsr",
@@ -9063,7 +9474,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "thumbtack",
@@ -9085,7 +9497,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "timee",
@@ -9109,7 +9522,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "tmap",
@@ -9133,7 +9547,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "together.ai",
@@ -9153,7 +9568,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 4,
     "statedComponentCount": 2,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "toss",
@@ -9173,7 +9589,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 5,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "toss-securities",
@@ -9195,7 +9612,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "tossbank",
@@ -9215,7 +9633,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 2,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "toyota",
@@ -9237,7 +9656,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "trainline",
@@ -9261,7 +9681,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "trenbe",
@@ -9287,8 +9708,10 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only",
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0.214
   },
   {
     "id": "triple",
@@ -9315,7 +9738,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.313
   },
   {
     "id": "tumblbug",
@@ -9342,7 +9766,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.857
   },
   {
     "id": "tving",
@@ -9364,7 +9789,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "twilio",
@@ -9388,7 +9814,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "twitch",
@@ -9412,7 +9839,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "typed",
@@ -9434,7 +9862,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "uber",
@@ -9456,7 +9885,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "ubie",
@@ -9480,8 +9910,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0.158
   },
   {
     "id": "udn",
@@ -9503,7 +9935,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "uniqlo",
@@ -9530,7 +9963,8 @@ export const REFERENCE_QUALITY = [
       "component_state_prose_only",
       "motion_value_unsourced",
       "token_value_possibly_derived"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "upbit",
@@ -9552,7 +9986,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "upstage",
@@ -9574,7 +10009,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_noninteractive_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "uswds",
@@ -9596,7 +10032,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "velog",
@@ -9619,7 +10056,8 @@ export const REFERENCE_QUALITY = [
       "token_source_unverified",
       "verification_v2_missing"
     ],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": 0.6
   },
   {
     "id": "vercel",
@@ -9641,7 +10079,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "vocus",
@@ -9665,7 +10104,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "voicetube",
@@ -9691,7 +10131,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.467
   },
   {
     "id": "voltagent",
@@ -9716,7 +10157,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": 0.625
   },
   {
     "id": "vuno",
@@ -9740,7 +10182,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "wadiz",
@@ -9767,7 +10210,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": 0.9
   },
   {
     "id": "wanted",
@@ -9789,7 +10233,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "wantedly",
@@ -9813,7 +10258,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "warp",
@@ -9837,8 +10283,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "component_state_prose_only"
-    ]
+      "component_state_prose_only",
+      "palette_grounding_low"
+    ],
+    "paletteGrounding": 0
   },
   {
     "id": "watcha",
@@ -9865,7 +10313,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.583
   },
   {
     "id": "wavve",
@@ -9890,8 +10339,10 @@ export const REFERENCE_QUALITY = [
       "verification_v2_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced"
-    ]
+      "motion_value_unsourced",
+      "palette_contradicted"
+    ],
+    "paletteGrounding": 0.083
   },
   {
     "id": "wconcept",
@@ -9918,7 +10369,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.909
   },
   {
     "id": "webflow",
@@ -9943,7 +10395,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": 0.294
   },
   {
     "id": "weverse",
@@ -9967,7 +10420,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "wired",
@@ -9992,7 +10446,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.294
   },
   {
     "id": "wise",
@@ -10014,7 +10469,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "wisetracker",
@@ -10038,7 +10494,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "wooribank",
@@ -10060,7 +10517,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "workday",
@@ -10084,7 +10542,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "wrtn",
@@ -10109,7 +10568,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "x.ai",
@@ -10134,7 +10594,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": 0.375
   },
   {
     "id": "xiaohongshu",
@@ -10161,7 +10622,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.333
   },
   {
     "id": "xrex",
@@ -10185,7 +10647,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "yanolja",
@@ -10205,7 +10668,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 1,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "yeogiotte",
@@ -10227,7 +10691,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "yogiyo",
@@ -10253,7 +10718,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.412
   },
   {
     "id": "yourator",
@@ -10279,7 +10745,8 @@ export const REFERENCE_QUALITY = [
       "component_state_prose_only",
       "motion_value_unsourced",
       "token_value_possibly_derived"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "zapier",
@@ -10299,7 +10766,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 5,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "zendesk",
@@ -10321,7 +10789,8 @@ export const REFERENCE_QUALITY = [
     "reasonCodes": [],
     "advisoryCodes": [
       "component_state_prose_only"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "zepeto",
@@ -10345,7 +10814,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "zigbang",
@@ -10373,7 +10843,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": 0.333
   },
   {
     "id": "zigzag",
@@ -10393,7 +10864,8 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 2,
     "statedComponentCount": 2,
     "reasonCodes": [],
-    "advisoryCodes": []
+    "advisoryCodes": [],
+    "paletteGrounding": null
   },
   {
     "id": "zoom",
@@ -10418,7 +10890,8 @@ export const REFERENCE_QUALITY = [
     "advisoryCodes": [
       "component_state_prose_only",
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "zozotown",
@@ -10443,7 +10916,8 @@ export const REFERENCE_QUALITY = [
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
-    ]
+    ],
+    "paletteGrounding": null
   }
 ] as const satisfies readonly ReferenceQualityEntry[];
 

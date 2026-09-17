@@ -1,5 +1,5 @@
 import { existsSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
 import { REGISTRY, type RefEntry } from "@/data/registry.generated";
 import {
   REFERENCE_QUALITY_BY_ID,
@@ -8,6 +8,12 @@ import {
 import { normalizeReference } from "./normalize";
 import type { ReferenceAst } from "./schema";
 import { REFERENCE_VERIFICATION_BY_ID } from "@/data/reference-verification.generated";
+import { isCoreV2Document } from "./detail-projection";
+import {
+  loadCoreConsumerContract,
+  type CoreConsumerContractAdmission,
+} from "./core-consumer-contract";
+import { verifyCanonicalCorePackage } from "./core-canonical-verifier.server";
 
 const REGISTRY_BY_ID: ReadonlyMap<string, RefEntry> = new Map(
   REGISTRY.map((entry) => [entry.id, entry]),
@@ -17,7 +23,10 @@ export interface LoadedReference {
   readonly entry: RefEntry;
   readonly quality: ReferenceQualityEntry;
   readonly markdown: string;
-  readonly ast: ReferenceAst;
+  /** Legacy/frontmatter AST. Null once the active canonical bytes are Core v2. */
+  readonly ast: ReferenceAst | null;
+  readonly format: "legacy" | "core-v2";
+  readonly coreTransport: CoreConsumerContractAdmission | null;
   /** Which tree served the markdown — "canonical" unless the v2 preview flag found a migrated copy. */
   readonly source: "canonical" | "migrated-preview";
 }
@@ -62,24 +71,32 @@ export function loadReference(id: string, projectRoot = process.cwd()): LoadedRe
   const canonicalPath = join(projectRoot, "references", entry.id, "DESIGN.md");
   if (!existsSync(canonicalPath)) return null;
   const canonicalMarkdown = readFileSync(canonicalPath, "utf8");
+  const canonicalIsCore = isCoreV2Document(canonicalMarkdown);
 
-  // The preview swaps only the served body. The AST keeps normalising the
-  // canonical document: a Core v2 body has no frontmatter, the normaliser
-  // rightly refuses documents without one, and every AST consumer is reading
-  // identity that still lives on the canonical side until adoption.
+  // The preview swaps only the served body. A legacy canonical is normalised
+  // for legacy consumers, but the active-document adapter never attaches that
+  // AST to a served Core body. A Core canonical has no legacy AST at all.
   const migratedPath = migratedMarkdownPath(entry.id, projectRoot);
   const markdown = migratedPath ? readFileSync(migratedPath, "utf8") : canonicalMarkdown;
+  const format = isCoreV2Document(markdown) ? "core-v2" : "legacy";
+  const activePath = migratedPath ?? canonicalPath;
 
   return {
     entry,
     quality,
     markdown,
+    format,
+    coreTransport: format === "core-v2"
+      ? loadCoreConsumerContract(dirname(activePath), markdown, verifyCanonicalCorePackage)
+      : null,
     source: migratedPath ? "migrated-preview" : "canonical",
-    ast: normalizeReference({
-      entry,
-      quality,
-      markdown: canonicalMarkdown,
-      verificationV2: REFERENCE_VERIFICATION_BY_ID[id],
-    }),
+    ast: canonicalIsCore
+      ? null
+      : normalizeReference({
+          entry,
+          quality,
+          markdown: canonicalMarkdown,
+          verificationV2: REFERENCE_VERIFICATION_BY_ID[id],
+        }),
   };
 }

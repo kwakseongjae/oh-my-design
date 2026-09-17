@@ -32,6 +32,29 @@ const RENDER_TYPES = ["button", "input", "card", "badge", "tab", "toggle", "toas
 // URL) and a Tier-1-sources footer; KR/TW additionally need >= 2 brand-owned
 // regional sources. Older refs are grandfathered — the gate is not retroactive.
 const PROOF_GATE_CUTOFF = "2026-06-01";
+/**
+ * Forward-only: a reference verified on or after this date may not ship
+ * `tokens.source: prose-derived`. Its values must come from a measurement.
+ *
+ * Why (2026-09-17). 111 references carry prose-derived tokens, and only 43% of the
+ * colours they declare exist on the brand's live surface. Five are conclusive rather
+ * than uncertain — for `wavve`, `meituan`, `ridi`, `tada` and `dji` the July capture and
+ * today's page independently agree on the same low figure, two months apart, which a
+ * redesign cannot produce. `note` declares a teal `#41c9b4` that appears in neither a
+ * 957-element capture nor today's page, whose actual teal is `#1e7b65`.
+ *
+ * Those are not fixable by tooling: every declared colour is reused in a component or
+ * the prose (100% of the 19 worst, no exceptions), so correcting one means rewriting the
+ * document around it. The cheap move is therefore to stop the inflow, not to chase the
+ * backlog — expanding the catalog toward 1,000 references without this gate would add
+ * hundreds more of the same.
+ *
+ * The cutoff sits past the catalog's newest `verified` date (2026-07-14), so nothing
+ * existing is broken and nothing is grandfathered in by accident. Re-verifying an old
+ * prose-derived reference bumps its date into the gate, which is the intent: a
+ * re-verification that measures nothing is not a re-verification.
+ */
+const MEASURED_TOKENS_CUTOFF = "2026-08-01";
 // Western Tier-2 catalogs + the favicon proxy never count as brand-owned regional.
 const NON_REGIONAL_HOSTS = /getdesign\.md|refero\.design|google\.com\/s2/i;
 /** Markets where Tier 2 cannot carry a reference, so Tier 1 must supply >= 2 sources. */
@@ -196,6 +219,14 @@ describe("catalog-integrity / per-reference", () => {
       placeholderOffenders,
       `${id}: §4 has placeholder field values (omit the field instead of writing a placeholder — the preview renders it verbatim):\n${placeholderOffenders.join("\n")}`
     ).toEqual([]);
+
+    // Measured-tokens gate — forward-only. See MEASURED_TOKENS_CUTOFF.
+    if (entry.verified >= MEASURED_TOKENS_CUTOFF) {
+      expect(
+        entry.tokens?.source,
+        `${id}: verified ${entry.verified} is inside the measured-tokens gate, so tokens.source may not be "prose-derived" — transcribing values from documentation is not a measurement. Capture the surface (web/scripts/probe-component-states.mjs) or leave the reference at its previous verified date.`
+      ).not.toBe("prose-derived");
+    }
 
     // Proof gate — forward-only (refs verified >= PROOF_GATE_CUTOFF). Older refs
     // are grandfathered: the early batches lack a structured Proof block and we do

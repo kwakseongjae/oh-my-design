@@ -64,6 +64,7 @@ function syntheticQuality(
     interactiveComponentCount: 2,
     statedComponentCount: 2,
     advisoryCodes: [],
+    paletteGrounding: null,
     reasonCodes: ["tokens_missing"],
     ...overrides,
   };

@@ -10,6 +10,20 @@ import {
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const WEB_ROOT = resolve(__dirname, "..");
+const REPO_ROOT = resolve(WEB_ROOT, "..");
+
+/**
+ * 색 근거율 스냅샷. 라이브 브라우저가 필요한 측정이라 CI에서 계산할 수 없고, 잰 결과를
+ * 커밋해 두고 읽는다. 없으면 그냥 건너뛴다 — 이 파일이 없다고 파이프라인이 멈추면
+ * 측정을 강제로 최신화하게 되고, 그건 브라우저를 CI에 넣는 일이다.
+ * 갱신: `node scripts/survey-colour-grounding.mjs --json > ...` 후 수동 편집.
+ */
+const groundingPath = join(REPO_ROOT, "data", "colour-grounding.json");
+let COLOUR_GROUNDING = {};
+if (existsSync(groundingPath)) {
+  try { COLOUR_GROUNDING = JSON.parse(readFileSync(groundingPath, "utf8")).references ?? {}; }
+  catch { COLOUR_GROUNDING = {}; }
+}
 const REFS_DIR = join(WEB_ROOT, "references");
 const OUT_FILE = join(WEB_ROOT, "src", "data", "reference-quality.generated.ts");
 const CHECK = process.argv.includes("--check");
@@ -30,7 +44,7 @@ for (const id of ids) {
     const frontmatter = parseReferenceFrontmatter(markdown, designPath);
     const verificationPath = join(REFS_DIR, id, ".verification.md");
     const verificationMarkdown = existsSync(verificationPath) ? readFileSync(verificationPath, "utf8") : "";
-    entries.push(evaluateReferenceQuality({ id, markdown, frontmatter, verificationMarkdown, asOf: AS_OF }));
+    entries.push(evaluateReferenceQuality({ id, markdown, frontmatter, verificationMarkdown, asOf: AS_OF, colourGrounding: COLOUR_GROUNDING[id] }));
   } catch (error) {
     parseErrors.push(`${id}: ${error.message}`);
   }
@@ -84,6 +98,11 @@ export interface ReferenceQualityEntry {
    *  thin-but-passing references, and values a document derived rather than
    *  observed, can be found and repaired. */
   readonly advisoryCodes: readonly string[];
+  /** Share of this reference's declared colours found on the brand's live surface,
+   *  from data/colour-grounding.json. null when unmeasured. A homepage is one surface
+   *  and a palette covers several, so a figure below 1 is expected — see that file's
+   *  caveat before reading it as fabrication. */
+  readonly paletteGrounding: number | null;
 }`;
 const out = `${header}\n\n${types}\n\n` +
   `export const REFERENCE_QUALITY_SCHEMA_VERSION = ${REFERENCE_QUALITY_SCHEMA_VERSION} as const;\n` +

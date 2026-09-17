@@ -26,6 +26,7 @@ function candidate(
     interactiveComponentCount: 2,
     statedComponentCount: 2,
     advisoryCodes: [],
+    paletteGrounding: null,
     reasonCodes: [],
     ...overrides,
   };

@@ -186,30 +186,47 @@ function roleBullets(sectionText: string): Array<{ role: string; hexes: string[]
   return out;
 }
 
+function exactHeadingWeight(sectionText: string): string {
+  const lines = sectionText.split("\n");
+  for (let headerIndex = 0; headerIndex < lines.length - 2; headerIndex += 1) {
+    if (!/^\s*\|.*\|\s*$/.test(lines[headerIndex])) continue;
+    const cells = lines[headerIndex].trim().slice(1, -1).split("|").map((cell) => cell.trim().toLowerCase());
+    const roleIndex = cells.indexOf("role");
+    const weightIndex = cells.indexOf("weight");
+    if (roleIndex < 0 || weightIndex < 0 || !/^\s*\|(?:\s*:?-{3,}:?\s*\|)+\s*$/.test(lines[headerIndex + 1])) continue;
+    for (const row of lines.slice(headerIndex + 2)) {
+      if (!/^\s*\|.*\|\s*$/.test(row)) break;
+      const values = row.trim().slice(1, -1).split("|").map((cell) => cell.replace(/[*_`]/g, "").trim());
+      if (!/^(?:heading|display)$/i.test(values[roleIndex] ?? "")) continue;
+      const weight = values[weightIndex] ?? "";
+      if (/^(?:[1-9]\d{1,3}|thin|light|normal|regular|medium|semi-bold|bold|extra-bold|black)$/i.test(weight)) {
+        return weight;
+      }
+    }
+  }
+  return "";
+}
+
 export function extractCoreV2ReferenceDetail(
   id: string,
   designMd: string,
-  registryPrimary?: string,
 ): ReferenceDetail {
   const foundations = coreV2Section(designMd, "foundations");
   const typography = coreV2Section(designMd, "typography-assets");
   const experience = coreV2Section(designMd, "experience");
 
   const bullets = roleBullets(foundations);
-  const byRole = (re: RegExp) => bullets.find((b) => re.test(b.role));
-  const byDescription = (re: RegExp) => bullets.find((b) => re.test(b.description));
+  const byExactRole = (role: string) => bullets.find(
+    (bullet) => bullet.role.trim().toLowerCase() === role,
+  ) ?? null;
 
-  const primary =
-    byRole(/\bprimary\b/i) ??
-    byDescription(/primary_color|YAML `primary`|primary action/i) ??
-    null;
-  const canvas =
-    byRole(/\bcanvas\b|\bbackground\b|\bbase\b|\bpage surface\b/i) ??
-    byDescription(/YAML `canvas`|\bcanvas\b|page (?:and control )?surfaces?|default page/i) ??
-    null;
-  const foreground =
-    byRole(/\bforeground\b|\bink\b/i) ?? byDescription(/YAML `foreground`/i) ?? null;
-  const border = byRole(/\bborder\b|\bline\b|hairline/i) ?? null;
+  // Only exact global role labels enter the compatibility detail. Qualifiers
+  // such as Corporate, Card, Marketing, or Surface-local identify a narrower
+  // evidence domain and cannot fill the catalog-wide field.
+  const primary = byExactRole("primary");
+  const canvas = byExactRole("canvas");
+  const foreground = byExactRole("foreground");
+  const border = byExactRole("border");
 
   // Typography: the Family contract's canonical bullet carries the face in a
   // code span — "**Canonical visible UI family:** \`Toss Product Sans\`".
@@ -217,19 +234,41 @@ export function extractCoreV2ReferenceDetail(
   // is a real answer too, but it is not a named face, so it stays empty here —
   // rendering \`-apple-system\` as though it were a brand font is exactly the
   // substitution the documents forbid.
+  // A corporate, marketing, display, or mono observation is not the global
+  // UI family. Match the declaration label, not any phrase containing "family".
   const familyBullet =
-    /\*\*[^*]*(?:UI family|visible[^*]*family)[^*]*:\*\*\s*([^\n]+)/i.exec(typography)?.[1] ?? "";
+    /^- \*\*(?:(?:Primary\s*\/\s*)?(?:(?:Current|Canonical)\s+)?(?:(?:visible|named)\s+)?UI family|(?:Current\s+)?official app family):\*\*\s*([^\n]+)/im.exec(typography)?.[1] ?? "";
   // The code span may hold a full CSS stack — the named face is its first
   // entry, quoted or bare ("Netflix Sans", Helvetica, ... / Pretendard, ...).
-  const stack = /`([^`]{1,120})`/.exec(familyBullet)?.[1] ?? "";
+  const namedSpan = /`([^`]{1,120})`/.exec(familyBullet);
+  const beforeName = namedSpan ? familyBullet.slice(0, namedSpan.index) : familyBullet;
+  const afterName = namedSpan ? familyBullet.slice(namedSpan.index + namedSpan[0].length) : "";
+  // A candidate is not a confirmed family. A separate limitation on loading
+  // the font binary is deliberately not a negation of known family metadata.
+  const unresolvedFamily = /\b(?:unresolved|unknown|unconfirmed|candidate)\b/i.test(beforeName)
+    || /^[\s).:;—–-]*(?:(?:is|remains)\s+)?(?:not\s+(?:confirmed|verified)|unconfirmed|unverified|unresolved|unknown)\b/i.test(afterName);
+  const stack = unresolvedFamily ? "" : namedSpan?.[1] ?? "";
   const firstEntry = stack.split(",")[0]?.trim().replace(/^["']|["']$/g, "") ?? "";
-  const fontFamily = /^-|^system|sans-serif|serif$|^monospace/i.test(firstEntry) ? "" : firstEntry;
+  const fontFamily = isSystemFontStack(stack)
+    || /^(?:System|serif|sans-serif|monospace|ui-serif|ui-sans-serif|ui-monospace|ui-rounded)$/i.test(firstEntry)
+    ? "" : firstEntry;
+  const headingWeight = exactHeadingWeight(typography);
 
-  // Shape: the first px value a radius sentence commits to.
-  const radius =
-    /(?:radius|corner)[^\n]{0,60}?(\d+(?:\.\d+)?px)/i.exec(foundations)?.[1] ??
-    /(\d+(?:\.\d+)?px)[^\n]{0,40}?(?:radius|corner)/i.exec(foundations)?.[1] ??
-    "";
+  // Shape is admitted only from a structured bullet whose label itself names
+  // a catalog-wide role. Radius-like prose and component-local observations
+  // remain narrative. A negation anywhere on the declaration line invalidates
+  // it, including labels such as "Default radius" followed by "not canonical".
+  const radiusLine = foundations.split("\n").find((line) => {
+    const declaration = /^- \*\*([^*]+)\*\*\s*(?:\(\s*`?(\d+(?:\.\d+)?px)`?\s*\)|[:—–-]?\s*`(\d+(?:\.\d+)?px)`)/i.exec(line);
+    if (!declaration) return false;
+    const label = declaration[1].trim();
+    return /(?:^|\s)(?:canonical|default|system-wide|universal)(?:\s|$)/i.test(label)
+      && /(?:radius|corner)/i.test(label)
+      && !/\b(?:not|isn't|is not|noncanonical|non-canonical|local|surface)\b/i.test(line);
+  }) ?? "";
+  const radius = /`(\d+(?:\.\d+)?px)`/.exec(radiusLine)?.[1]
+    ?? /\(\s*(\d+(?:\.\d+)?px)\s*\)/.exec(radiusLine)?.[1]
+    ?? "";
 
   // Mood: the scope claim's opening paragraph — the sentence the document
   // itself leads with.
@@ -239,11 +278,11 @@ export function extractCoreV2ReferenceDetail(
   return {
     id,
     designMd,
-    primary: primary?.hexes[0] ?? registryPrimary ?? "",
+    primary: primary?.hexes[0] ?? "",
     background: canvas?.hexes[0] ?? "",
     foreground: foreground?.hexes[0] ?? "",
     fontFamily,
-    headingWeight: "",
+    headingWeight,
     radius,
     mood,
     border: border?.hexes[0],

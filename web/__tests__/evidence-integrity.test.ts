@@ -145,6 +145,66 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     expect(flagged).toContain("adobe");   // reverted: its hedge sentence dangled once the table went
   }, 120_000);
 
+  it("keeps the palette-grounding snapshot readable as evidence, not as an accusation", () => {
+    // The snapshot says 43% of prose-derived references' declared colours were found on
+    // the brand's live surface. That number is easy to misread: a homepage is one surface
+    // and a palette covers several, so under 100% is expected. The caveat is part of the
+    // data for that reason — someone quoting the figure without it would be overstating
+    // what was measured, and the file is the only place that context travels.
+    const snapshot = JSON.parse(
+      readFileSync(join(import.meta.dirname, "..", "..", "data", "colour-grounding.json"), "utf8"),
+    );
+    expect(snapshot.measured_at).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(snapshot.method).toContain("homepage");
+    expect(snapshot.caveat).toContain("below 100% is expected");
+    expect(Object.keys(snapshot.references).length).toBeGreaterThanOrEqual(100);
+  });
+
+  it("separates a contradicted palette from a merely thin one", () => {
+    // Two advisories, not one, and the difference is what a second observation buys.
+    //
+    // `palette_grounding_low` means one look at the homepage found few of the declared
+    // colours. That can mean the palette is wrong, or that it lives on pages this pass
+    // never opened.
+    //
+    // `palette_contradicted` means the 2026-07 capture and the 2026-09 page BOTH report
+    // a low figure. Agreement across two months is not something a redesign produces.
+    // Calling both "uncertain" would waste the stronger evidence.
+    const refsDir = join(import.meta.dirname, "..", "references");
+    const snapshot = JSON.parse(
+      readFileSync(join(import.meta.dirname, "..", "..", "data", "colour-grounding.json"), "utf8"),
+    );
+    const contradicted: string[] = [];
+    const low: string[] = [];
+    for (const id of readdirSync(refsDir)) {
+      const design = join(refsDir, id, "DESIGN.md");
+      if (!existsSync(design)) continue;
+      const markdown = readFileSync(design, "utf8");
+      let front: any;
+      try { front = parseReferenceFrontmatter(markdown, design); } catch { continue; }
+      const verification = join(refsDir, id, ".verification.md");
+      const result = evaluateReferenceQuality({
+        id,
+        markdown,
+        frontmatter: front,
+        verificationMarkdown: existsSync(verification) ? readFileSync(verification, "utf8") : "",
+        asOf: "2026-09-17",
+        colourGrounding: snapshot.references[id],
+      });
+      if (result.advisoryCodes.includes("palette_contradicted")) contradicted.push(id);
+      else if (result.advisoryCodes.includes("palette_grounding_low")) low.push(id);
+    }
+
+    // Pinned so the numbers move only when someone re-measures and says why.
+    expect(contradicted.sort()).toEqual(
+      ["dji", "kakaot", "meituan", "money-forward", "ridi", "tada", "wavve"],
+    );
+    expect(low.length).toBe(22);
+
+    // A reference can never carry both — they are graded, not stacked.
+    expect(contradicted.filter((id) => low.includes(id))).toEqual([]);
+  }, 120_000);
+
   it("records what happens on the expiry date instead of discovering it in CI", () => {
     // Forgeries 1-3 all exist to avoid this number. Asserting it means the cliff is a
     // known, dated fact in the test suite rather than a Saturday-morning surprise —

@@ -504,7 +504,12 @@ function provenanceBlock(decisions: readonly BuilderDesignDecision[]): string {
   ].join("\n");
 }
 
-function governanceRules(authorityKind: NonNullable<ProjectionInput["authorityKind"]>): string {
+const CONTROLLED_GOVERNANCE_CLAIMS = ["authority", "application-priority", "unknowns", "changes"] as const;
+
+function governanceRules(
+  authorityKind: NonNullable<ProjectionInput["authorityKind"]>,
+  includedClaims: ReadonlySet<string> = new Set(CONTROLLED_GOVERNANCE_CLAIMS),
+): string {
   const isProposal = authorityKind === "user-authored-proposal" || authorityKind === "control-state-proposal";
   const authorityClaim = isProposal
     ? "portable-brief"
@@ -512,21 +517,25 @@ function governanceRules(authorityKind: NonNullable<ProjectionInput["authorityKi
   const authorityRule = isProposal
     ? "This document is a portable design brief for the declared scope."
     : "This document is an evidence-backed reconstruction, not authority for an unrelated target project.";
-  return [
-    ...(isProposal ? [
+  const blocks: string[] = [];
+  if (includedClaims.has("authority")) {
+    blocks.push(...(isProposal ? [
       "### Proposal boundary",
       "",
       "Values in this file are project proposals from the current control state. Unchanged defaults are generator proposals, not user-authored or observed production facts. Explicit selections remain proposals until project evidence or owner adoption binds them.",
       "",
       "Unknown values remain absent at the smallest unresolved field or group boundary.",
       "",
-    ] : []),
+    ] : []));
+    blocks.push(
     `<!-- design-md:claim authority kind=${authorityClaim} lang=en -->`,
     "### Authority",
     "",
     authorityRule,
     "<!-- design-md:claim-end -->",
-    "",
+    );
+  }
+  if (includedClaims.has("application-priority")) blocks.push(
     "<!-- design-md:claim application-priority order=prompt-fact,repository-fact,system-contract,reference-inspiration lang=en -->",
     "### Application priority",
     "",
@@ -535,19 +544,22 @@ function governanceRules(authorityKind: NonNullable<ProjectionInput["authorityKi
     "3. This system contract.",
     "4. Reference inspiration.",
     "<!-- design-md:claim-end -->",
-    "",
+  );
+  if (includedClaims.has("unknowns")) blocks.push(
     "<!-- design-md:claim unknowns policy=absent-at-smallest-unresolved-boundary lang=en -->",
     "### Unknowns",
     "",
     "Omit only the smallest unresolved value or group. Do not replace it with a plausible default.",
     "<!-- design-md:claim-end -->",
-    "",
+  );
+  if (includedClaims.has("changes")) blocks.push(
     "<!-- design-md:claim changes policy=review-record-validate-before-adoption lang=en -->",
     "### Changes",
     "",
     "Record, review, and validate changes before adoption.",
     "<!-- design-md:claim-end -->",
-  ].join("\n");
+  );
+  return blocks.join("\n\n");
 }
 
 function legacySectionBlock(section: ParsedSection): string {
@@ -583,6 +595,7 @@ export function projectBuilderDesignMdCore(input: ProjectionInput): BuilderDesig
       .map((match) => match[1]),
   );
   const buckets = new Map<DesignMdCoreSectionId, string[]>(DESIGN_MD_CORE_SECTIONS.map(({ id }) => [id, []]));
+  const governanceClaims = new Set<string>();
   const preservedUnclassifiedSections: string[] = [];
   const omittedMetadataSections: string[] = [];
   let substantiveSourceSections = 0;
@@ -605,10 +618,9 @@ export function projectBuilderDesignMdCore(input: ProjectionInput): BuilderDesig
     mappedSections += 1;
     let rendered = sourceIsCore ? section.body : legacySectionBlock(section);
     if (target === "governance") {
-      rendered = rendered.replace(
-        /<!--\s*design-md:claim\s+(?:authority|application-priority|unknowns|changes)\b[^>]*-->\s*/g,
-        "",
-      ).replace(/<!--\s*design-md:claim-end\s*-->\s*/g, "");
+      for (const match of rendered.matchAll(/<!--\s*design-md:claim\s+(authority|application-priority|unknowns|changes)\b[^>]*-->/g)) {
+        governanceClaims.add(match[1]);
+      }
     }
     buckets.get(target)?.push(addEvidenceClaimMarkers(section, target, rendered, evidenceClaims));
   }
@@ -623,7 +635,11 @@ export function projectBuilderDesignMdCore(input: ProjectionInput): BuilderDesig
       if (provenance) content.push(provenance);
       // The canonical controlled claims come last so preserved source prose
       // cannot become part of the exact `changes` declaration body.
-      content.push(governanceRules(authorityKind));
+      const missingGovernanceClaims = new Set(
+        CONTROLLED_GOVERNANCE_CLAIMS.filter((claim) => !governanceClaims.has(claim)),
+      );
+      const missingRules = governanceRules(authorityKind, missingGovernanceClaims);
+      if (missingRules) content.push(missingRules);
     }
     const body = content.filter(Boolean).join("\n\n");
     return `<!-- design-md:section ${id} -->\n## ${index + 1}. ${heading}${body ? `\n\n${body}` : ""}`;

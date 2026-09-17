@@ -375,7 +375,12 @@ function componentStateGaps(tokens) {
  * Verified v2 from prose or a date stamp alone: it needs the structured
  * verification_v2 evidence graph described in spec/reference-v2.md.
  */
-export function evaluateReferenceQuality({ id, markdown, frontmatter, verificationMarkdown = "", asOf }) {
+/**
+ * `colourGrounding` (optional) — `{ declared, found, foundInJulyBundle? }` from
+ * `data/colour-grounding.json`. The evaluator does no I/O; the caller loads the
+ * snapshot and passes the row for this reference, or nothing.
+ */
+export function evaluateReferenceQuality({ id, markdown, frontmatter, verificationMarkdown = "", asOf, colourGrounding = undefined }) {
   if (!isDate(asOf)) throw new Error(`invalid asOf date: ${asOf}`);
 
   const reasons = [];
@@ -481,6 +486,24 @@ export function evaluateReferenceQuality({ id, markdown, frontmatter, verificati
   else if (coverage.interactive === 0) advisories.push("component_noninteractive_only");
   else if (coverage.stated === 0) advisories.push("component_state_prose_only");
 
+  /**
+   * 선언된 색이 브랜드 표면에 실제로 있는가.
+   *
+   * 홈 한 장만 재므로 **100% 미만은 정상이다** — 팔레트에는 내부 페이지·다크모드·오류
+   * 상태 색이 들어가고 그건 홈에 안 나온다. 그래서 낮은 임계값에서만 말한다.
+   *
+   * 두 코드로 나누는 이유: 7월 번들과 오늘 라이브가 **둘 다 낮고 숫자가 거의 같으면**
+   * 사이트가 바뀐 게 아니라 값이 틀린 것이다(두 달 간격 독립 관측). 그건 "불확실"이
+   * 아니라 "모순"이고, 같은 말로 부르면 둘 다 의미를 잃는다.
+   */
+  if (colourGrounding && colourGrounding.declared > 0 && typeof colourGrounding.found === "number") {
+    const live = colourGrounding.found / colourGrounding.declared;
+    const bundle = typeof colourGrounding.foundInJulyBundle === "number"
+      ? colourGrounding.foundInJulyBundle / colourGrounding.declared : null;
+    if (live < 0.3 && bundle !== null && bundle < 0.3) advisories.push("palette_contradicted");
+    else if (live < 0.25) advisories.push("palette_grounding_low");
+  }
+
   const unsourcedMotion = unsourcedMotionValues(markdown, tokens, verificationMarkdown);
   if (unsourcedMotion.length > 0) advisories.push("motion_value_unsourced");
 
@@ -521,5 +544,9 @@ export function evaluateReferenceQuality({ id, markdown, frontmatter, verificati
     statedComponentCount: coverage.stated,
     reasonCodes: reasons.sort(),
     advisoryCodes: advisories.sort(),
+    /** 선언된 색 중 라이브 표면에서 확인된 비율. 스냅샷이 없으면 null. */
+    paletteGrounding: colourGrounding && colourGrounding.declared > 0 && typeof colourGrounding.found === "number"
+      ? Math.round(1000 * colourGrounding.found / colourGrounding.declared) / 1000
+      : null,
   };
 }

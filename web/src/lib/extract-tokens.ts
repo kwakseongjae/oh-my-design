@@ -8,6 +8,7 @@
 
 import { canonicalFontName } from "./font-registry";
 import type { ReferenceDetailAstContract } from "./references/detail-projection";
+import type { CoreConsumerContract } from "./references/core-consumer-contract";
 import type { ReferenceAstNode, ReferenceAstTokens } from "./references/schema";
 
 export interface FontMention {
@@ -15,6 +16,8 @@ export interface FontMention {
   raw: string;
   /** Inferred role: "primary" | "mono" | "display" | "serif" | "fallback" | "icon" */
   role: string;
+  /** Core transport keeps runtime availability separate from family metadata. */
+  runtimeStatus?: "unverified";
 }
 
 export interface TypographyTier {
@@ -135,6 +138,7 @@ export interface ParsedTokens {
     sizes: number[];             // sorted unique font-sizes (px) observed
     hierarchy: TypographyTier[]; // canonical 7-tier hierarchy derived from extracted sizes/weights
     fonts: FontMention[];        // ALL fonts mentioned in §3 with role inference
+    runtimeStatus?: "unverified";
   };
   /** Per-component-type radius derived from the brand's full radius value.
    *  Buttons/inputs keep full radius (pill OK). Cards/dialogs cap at 16px.
@@ -161,7 +165,7 @@ export interface ParsedTokens {
   /** Refero-style 5-row functional spacing summary (Density / Base unit /
    *  Section gap / Card padding / Element gap). Always populated — derived
    *  heuristically when DESIGN.md prose doesn't supply explicit labels. */
-  functionalSpacing: FunctionalSpacing;
+  functionalSpacing: FunctionalSpacing | null;
   /** Border tokens — line widths/colors/styles applied to surfaces, inputs,
    *  focus rings. Empty when DESIGN.md doesn't expose explicit border prose. */
   borders: BorderToken[];
@@ -173,6 +177,164 @@ export interface ParsedTokens {
   shadows: { name: string; value: string }[];
   /** Do / Don't guidelines parsed from `### Do` / `### Don't` headers. */
   guidelines: Guideline[];
+}
+
+function coreTokenString(contract: CoreConsumerContract, id: string, type: string): string {
+  const value = contract.tokens.find((token) => token.id === id && token.type === type)?.value;
+  return typeof value === "string" ? value : "";
+}
+
+function extractCoreConsumerTokens(detail: {
+  id: string;
+  designMd: string;
+  primary: string;
+  background: string;
+  foreground: string;
+  fontFamily: string;
+  headingWeight: string;
+  radius: string;
+  mood: string;
+  accent?: string;
+  border?: string;
+}, contract: CoreConsumerContract): ParsedTokens {
+  const colorTokens = contract.tokens.filter(
+    (token) => token.type === "color" && typeof token.value === "string" && /^#[0-9a-f]{6}$/i.test(token.value),
+  );
+  const spacingTokens = contract.tokens.flatMap((token) => (
+    /^(?:space|spacing)\./.test(token.id) && typeof token.value === "number"
+      ? [{ value: token.value, purpose: token.id }]
+      : []
+  ));
+  const radiusTokens = contract.tokens.flatMap((token) => (
+    /^radius\./.test(token.id) && typeof token.value === "string"
+      ? [{ element: token.id.slice("radius.".length), value: token.value, label: "Core token" }]
+      : []
+  ));
+  const shadowTokens = contract.tokens.flatMap((token) => (
+    /^shadow\./.test(token.id) && typeof token.value === "string"
+      ? [{ name: token.id.slice("shadow.".length), value: token.value }]
+      : []
+  ));
+  const fontRoles = contract.fontRoles.flatMap((role) => {
+    const family = role.metadata.family;
+    const id = role.metadata.id;
+    return typeof family === "string" && typeof id === "string"
+      ? [{ raw: family, role: id, runtimeStatus: "unverified" as const }]
+      : [];
+  });
+  const weights = [...new Set(contract.fontRoles.flatMap((role) => (
+    typeof role.metadata.weight === "number" ? [role.metadata.weight] : []
+  )))].sort((a, b) => a - b);
+  const primary = coreTokenString(contract, "color.primary", "color");
+  const background = coreTokenString(contract, "color.canvas", "color");
+  const foreground = coreTokenString(contract, "color.foreground", "color");
+  const radius = coreTokenString(contract, "radius.default", "dimension");
+  return {
+    identity: {
+      id: detail.id,
+      name: typeof contract.identity.name === "string" ? contract.identity.name : detail.id,
+      primary,
+      background,
+      foreground,
+      accent: coreTokenString(contract, "color.accent", "color") || undefined,
+      border: coreTokenString(contract, "color.border", "color") || undefined,
+      mood: detail.mood,
+    },
+    typography: {
+      family: detail.fontFamily,
+      headingWeight: detail.headingWeight,
+      weights,
+      sizes: [],
+      hierarchy: [],
+      fonts: fontRoles,
+      runtimeStatus: "unverified",
+    },
+    radii: { button: radius, input: radius, card: radius, dialog: radius, badge: radius },
+    radiusScale: radiusTokens,
+    palette: colorTokens.map((token) => String(token.value).toLowerCase()),
+    paletteRoles: colorTokens.map((token) => ({
+      hex: String(token.value).toLowerCase(),
+      name: token.id,
+      category: /(?:^|\.)primary$/.test(token.id)
+        ? "brand"
+        : /accent|secondary/.test(token.id)
+          ? "accent"
+          : /success|error|danger|warning|info/.test(token.id)
+            ? "semantic"
+            : "neutral",
+      description: token.description,
+    })),
+    spacing: spacingTokens.map((token) => token.value).sort((a, b) => a - b),
+    spacingScale: spacingTokens,
+    functionalSpacing: null,
+    borders: [],
+    // The transaction reports component definitions, but live rendering remains
+    // absent until a separately bound component-harvest status exists.
+    components: [],
+    shadows: shadowTokens,
+    guidelines: [],
+  };
+}
+
+function extractUnadmittedCoreTokens(detail: {
+  id: string;
+  primary: string;
+  background: string;
+  foreground: string;
+  fontFamily: string;
+  headingWeight: string;
+  radius: string;
+  mood: string;
+  accent?: string;
+  border?: string;
+}): ParsedTokens {
+  const palette = [detail.primary, detail.background, detail.foreground, detail.accent, detail.border]
+    .filter((value): value is string => typeof value === "string" && /^#[0-9a-f]{6}$/i.test(value))
+    .map((value) => value.toLowerCase());
+  return {
+    identity: {
+      id: detail.id,
+      name: detail.id,
+      primary: detail.primary,
+      background: detail.background,
+      foreground: detail.foreground,
+      accent: detail.accent,
+      border: detail.border,
+      mood: detail.mood,
+    },
+    typography: {
+      family: detail.fontFamily,
+      headingWeight: detail.headingWeight,
+      weights: [],
+      sizes: [],
+      hierarchy: [],
+      fonts: detail.fontFamily
+        ? [{ raw: detail.fontFamily, role: "declared", runtimeStatus: "unverified" }]
+        : [],
+      runtimeStatus: "unverified",
+    },
+    radii: {
+      button: detail.radius,
+      input: detail.radius,
+      card: detail.radius,
+      dialog: detail.radius,
+      badge: detail.radius,
+    },
+    radiusScale: detail.radius ? [{ element: "default", value: detail.radius }] : [],
+    palette,
+    paletteRoles: palette.map((hex) => ({
+      hex,
+      name: hex === detail.primary.toLowerCase() ? "primary" : "declared",
+      category: hex === detail.primary.toLowerCase() ? "brand" : "neutral",
+    })),
+    spacing: [],
+    spacingScale: [],
+    functionalSpacing: null,
+    borders: [],
+    components: [],
+    shadows: [],
+    guidelines: [],
+  };
 }
 
 const DEFAULT_SPACING = [4, 8, 12, 16, 24, 32, 48, 64];
@@ -309,9 +471,18 @@ export function applyOverrides(tokens: ParsedTokens, overrides?: PreviewOverride
   // old primary (it might shift from "brand" → "accent"). Other categories are
   // left untouched — heuristic re-rolling on every keystroke would be jarring.
   const paletteRoles: ColorRole[] = (() => {
-    if (!tokens.paletteRoles?.length) return tokens.paletteRoles;
+    if (!tokens.paletteRoles?.length) {
+      return o.primaryColor
+        ? [{
+            hex: newPrimary.toLowerCase(),
+            name: "builder override",
+            category: "brand",
+            description: "Explicit Builder color choice.",
+          } satisfies ColorRole]
+        : tokens.paletteRoles;
+    }
     if (newPrimary.toLowerCase() === tokens.identity.primary.toLowerCase()) return tokens.paletteRoles;
-    return tokens.paletteRoles.map((r) => {
+    const mapped: ColorRole[] = tokens.paletteRoles.map((r): ColorRole => {
       if (r.category === "brand") {
         const cat = categorizeColor(r.hex, false);
         return { ...r, category: cat };
@@ -321,6 +492,15 @@ export function applyOverrides(tokens: ParsedTokens, overrides?: PreviewOverride
       }
       return r;
     });
+    if (o.primaryColor && !mapped.some((role) => role.hex.toLowerCase() === newPrimary.toLowerCase())) {
+      mapped.unshift({
+        hex: newPrimary.toLowerCase(),
+        name: "builder override",
+        category: "brand",
+        description: "Explicit Builder color choice.",
+      });
+    }
+    return mapped;
   })();
 
   return {
@@ -335,6 +515,7 @@ export function applyOverrides(tokens: ParsedTokens, overrides?: PreviewOverride
       headingWeight,
       hierarchy,
       fonts,
+      runtimeStatus: o.fontFamily ? undefined : tokens.typography.runtimeStatus,
     },
     radii: {
       button: buttonRadius,
@@ -343,7 +524,9 @@ export function applyOverrides(tokens: ParsedTokens, overrides?: PreviewOverride
       dialog: capRadius(buttonRadius, 16),
       badge: capRadius(buttonRadius, 8),
     },
-    radiusScale: tokens.radiusScale.map((r) => {
+    radiusScale: (o.borderRadius && tokens.radiusScale.length === 0
+      ? [{ element: "default", value: buttonRadius, label: "Builder override" }]
+      : tokens.radiusScale.map((r) => {
       // Customizer override takes precedence ONLY when the user actively
       // dialled borderRadius. Otherwise we keep the per-element scale parsed
       // from DESIGN.md so e.g. "Buttons: 8px / Cards: 20px / Pill: 9999px"
@@ -355,14 +538,14 @@ export function applyOverrides(tokens: ParsedTokens, overrides?: PreviewOverride
       if (r.element === "badges") return { ...r, value: capRadius(buttonRadius, 8) };
       if (r.element === "inputs") return { ...r, value: inputRadius };
       if (r.element === "buttons") return { ...r, value: buttonRadius };
-      return r;
-    }),
+        return r;
+      })),
     functionalSpacing: (() => {
       // density preference (compact/comfortable/spacious) wins over the
       // heuristic bucket so the user's customizer choice is reflected in the
       // refero-style summary the same way it's already reflected in cardPad.
       const userDensity = (prefs.density as FunctionalSpacing["density"] | undefined);
-      if (!userDensity) return tokens.functionalSpacing;
+      if (!userDensity || !tokens.functionalSpacing) return tokens.functionalSpacing;
       const fs = tokens.functionalSpacing;
       const adjusted: FunctionalSpacing = (() => {
         if (userDensity === "compact")  return { ...fs, cardPadding: Math.min(fs.cardPadding, 12), elementGap: Math.min(fs.elementGap, 8) };
@@ -1337,7 +1520,12 @@ export function extractTokens(detail: {
   accent?: string;
   border?: string;
   referenceAst?: ReferenceDetailAstContract;
+  coreContract?: CoreConsumerContract;
+  referenceFormat?: "core-v2";
+  coreStatus?: "verified" | "unavailable" | "rejected";
 }): ParsedTokens {
+  if (detail.coreContract) return extractCoreConsumerTokens(detail, detail.coreContract);
+  if (detail.referenceFormat === "core-v2") return extractUnadmittedCoreTokens(detail);
   const md = detail.designMd;
   const astTokens = detail.referenceAst?.tokens;
   const hasCanonicalAst = Boolean(detail.referenceAst);
