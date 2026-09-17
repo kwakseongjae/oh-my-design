@@ -268,8 +268,8 @@
       "verified_at": "2026-07-11",
       "next_reverify_at": "2027-01-07",
       "evidence_coverage": 1,
-      "surface_count": 4,
-      "source_count": 4,
+      "surface_count": 5,
+      "source_count": 5,
       "conflict_count": 0,
       "reason_codes": []
     },

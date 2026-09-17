@@ -18,14 +18,16 @@ ds:
   og_image: "https://docs.developer.apple.com/tutorials/developer-og.jpg"
 verification_v2:
   schema: 2
-  checked: "2026-07-11"
+  checked: "2026-09-17"
   surfaces:
     - { id: apple-home, kind: marketing, url: "https://www.apple.com/", inspected: "2026-07-11" }
+    - { id: apple-home-states, kind: marketing, url: "https://www.apple.com/", inspected: "2026-09-17" }
     - { id: apple-store-product, kind: commerce, url: "https://www.apple.com/shop/product/mw5g3am/a/siri-remote", inspected: "2026-07-11" }
     - { id: hig-buttons, kind: design-system, url: "https://developer.apple.com/design/human-interface-guidelines/buttons", inspected: "2026-07-11" }
     - { id: hig-components, kind: design-system, url: "https://developer.apple.com/design/human-interface-guidelines/components", inspected: "2026-07-11" }
   sources:
     - { id: apple-live, kind: product-surface, url: "https://www.apple.com/", captured: "2026-07-11" }
+    - { id: apple-live-states, kind: product-surface, url: "https://www.apple.com/", captured: "2026-09-17" }
     - { id: apple-store-live, kind: product-surface, url: "https://www.apple.com/shop/product/mw5g3am/a/siri-remote", captured: "2026-07-11" }
     - { id: hig-buttons-live, kind: official-doc, url: "https://developer.apple.com/design/human-interface-guidelines/buttons", captured: "2026-07-11" }
     - { id: hig-components-live, kind: official-doc, url: "https://developer.apple.com/design/human-interface-guidelines/components", captured: "2026-07-11" }
@@ -75,6 +77,9 @@ verification_v2:
     "tokens.rounded.docs-card": *hig_live
     "tokens.rounded.marketing-pill": *apple_live
     "tokens.components.marketing-primary.type": *apple_live
+    "tokens.components.marketing-primary.hover": &apple_states { surface_id: apple-home-states, source_id: apple-live-states, method: computed-style, captured: "2026-09-17" }
+    "tokens.components.marketing-primary.pressed": *apple_states
+    "tokens.components.marketing-primary.focus": *apple_states
     "tokens.components.marketing-primary.bg": *apple_live
     "tokens.components.marketing-primary.fg": *apple_live
     "tokens.components.marketing-primary.radius": *apple_live
@@ -142,7 +147,7 @@ tokens:
   rounded: { control: 8, docs-card: 18, marketing-pill: 980 }
   components_harvested: true
   components:
-    marketing-primary: { type: button, bg: "#0071e3", fg: "#ffffff", radius: "980px", padding: "11px 21px", height: "44px", font: "17px / 400", states: "default captured; hover not retained", use: "large apple.com marketing CTA" }
+    marketing-primary: { type: button, bg: "#0071e3", fg: "#ffffff", radius: "980px", padding: "11px 21px", height: "44px", font: "17px / 400", hover: "#0076df", pressed: "#006edb", focus: "0 0 0 2px #0071e3 outline", states: "hover, pressed and keyboard focus re-measured live 2026-09-17; the focus ring is the brand blue, not a user-agent default", use: "large apple.com marketing CTA" }
     marketing-outline: { type: button, bg: "transparent", fg: "#0066cc", border: "1px solid #0066cc", radius: "980px", padding: "11px 21px", height: "44px", font: "17px / 400", states: "default captured; hover not retained", use: "secondary apple.com marketing CTA" }
     marketing-compact: { type: button, bg: "#0071e3", fg: "#ffffff", radius: "980px", padding: "8px 15px", height: "36px", font: "14px / 400", states: "default captured; hover not retained", use: "compact apple.com tile CTA" }
     product-gallery-tab: { type: tab, fg: "#1d1d1f", height: "53px", font: "17px / 400", states: "selected and unselected gallery thumbnails", use: "Apple Store product image selection" }

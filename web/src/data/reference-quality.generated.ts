@@ -516,20 +516,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-11",
     "nextReverifyAt": "2027-01-07",
     "tokenSource": "reconciled",
-    "claimCount": 83,
-    "evidenceClaimCount": 83,
+    "claimCount": 86,
+    "evidenceClaimCount": 86,
     "evidenceCoverage": 1,
-    "surfaceCount": 4,
-    "sourceCount": 4,
+    "surfaceCount": 5,
+    "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 4,
     "componentCount": 5,
     "interactiveComponentCount": 4,
-    "statedComponentCount": 0,
+    "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": [
-      "component_state_prose_only"
-    ]
+    "advisoryCodes": []
   },
   {
     "id": "asana",

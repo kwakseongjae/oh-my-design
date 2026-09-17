@@ -38,6 +38,8 @@ const match = opt("match");
 const selector = opt("selector");
 const varPrefix = opt("vars");
 const minHeight = Number(opt("min-height", "20"));
+/** 문서화된 높이로 후보를 좁힌다. 흰 배경처럼 흔한 색은 색만으로는 못 고른다. */
+const wantHeight = opt("height") ? Number(opt("height")) : null;
 const nth = Number(opt("nth", "0"));
 const CHROME = process.env.OMD_CHROME_PATH ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
@@ -84,15 +86,16 @@ async function visit(act) {
 
   // 메인 프레임과 하위 프레임(Storybook 등) 모두에서 찾는다
   for (const frame of page.frames()) {
-    const found = await frame.evaluate(({ match, selector, minHeight, nth, rgbSrc }) => {
+    const found = await frame.evaluate(({ match, selector, minHeight, nth, wantHeight, rgbSrc }) => {
       const visible = (el) => { const r = el.getBoundingClientRect(); return r.height >= minHeight && r.width >= 8; };
       let pool = selector ? [...document.querySelectorAll(selector)]
         : [...document.querySelectorAll("*")].filter((el) => new RegExp(rgbSrc).test(getComputedStyle(el).backgroundColor));
       pool = pool.filter(visible);
+      if (wantHeight != null) pool = pool.filter((el) => Math.abs(el.getBoundingClientRect().height - wantHeight) <= 2);
       if (!pool[nth]) return false;
       pool[nth].setAttribute("data-omd-probe", "1");
       return true;
-    }, { match, selector, minHeight, nth, rgbSrc: match ? rgbPattern(match) : "(?!)" }).catch(() => false);
+    }, { match, selector, minHeight, nth, wantHeight, rgbSrc: match ? rgbPattern(match) : "(?!)" }).catch(() => false);
     if (found) return { page, frame };
   }
   await page.close();
@@ -117,6 +120,29 @@ async function settle(frame, page) {
     return Math.max(0, ...durations);
   }).catch(() => 0);
   await page.waitForTimeout(Math.min(2500, Math.max(450, ms + 250)));
+}
+
+/**
+ * 대상 위에 떠서 포인터를 가로채는 오버레이를 치운다.
+ *
+ * 29cm는 개인정보 안내 모달 iframe이 전면에 떠 있어 `hover()`가 타임아웃한다. 쿠키 배너,
+ * 채팅 위젯, 앱 설치 유도도 같은 문제를 낸다. 전부 사이트 크롬이지 측정 대상이 아니다.
+ * 대상의 조상은 절대 건드리지 않는다 — 그러면 컴포넌트 자신을 숨기게 된다.
+ */
+async function clearOverlays(frame) {
+  await frame.evaluate(() => {
+    const target = document.querySelector('[data-omd-probe="1"]');
+    const ancestors = new Set();
+    for (let n = target; n; n = n.parentElement) ancestors.add(n);
+    for (const el of document.querySelectorAll("body *")) {
+      if (ancestors.has(el) || el.contains(target)) continue;
+      const s = getComputedStyle(el);
+      if (s.position !== "fixed" && s.position !== "sticky") continue;
+      const r = el.getBoundingClientRect();
+      if (r.width < 40 || r.height < 40) continue;
+      el.style.setProperty("display", "none", "important");
+    }
+  }).catch(() => {});
 }
 
 const read = (frame) => frame.evaluate((prefix) => {
@@ -148,14 +174,14 @@ const read = (frame) => frame.evaluate((prefix) => {
 const states = {};
 { const v = await visit(); if (!v) { console.error("대상 요소를 찾지 못했다"); await browser.close(); process.exit(1); }
   states.rest = await read(v.frame); await v.page.close(); }
-{ const v = await visit(); const loc = v.frame.locator('[data-omd-probe="1"]');
+{ const v = await visit(); await clearOverlays(v.frame); const loc = v.frame.locator('[data-omd-probe="1"]');
   await loc.scrollIntoViewIfNeeded(); await loc.hover(); await settle(v.frame, v.page);
   states.hover = await read(v.frame); await v.page.close(); }
-{ const v = await visit(); const loc = v.frame.locator('[data-omd-probe="1"]');
+{ const v = await visit(); await clearOverlays(v.frame); const loc = v.frame.locator('[data-omd-probe="1"]');
   await loc.scrollIntoViewIfNeeded(); await loc.hover(); await settle(v.frame, v.page);
   await v.page.mouse.down(); await settle(v.frame, v.page);
   states.pressed = await read(v.frame); await v.page.mouse.up(); await v.page.close(); }
-{ const v = await visit();
+{ const v = await visit(); await clearOverlays(v.frame);
   await v.page.keyboard.press("Tab");                       // 키보드 모달리티 — toss에서 이게 없으면 focus가 안 뜬다
   await v.frame.evaluate(() => document.querySelector('[data-omd-probe="1"]').focus());
   await settle(v.frame, v.page);
