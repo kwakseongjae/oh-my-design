@@ -54,13 +54,23 @@ const opt = (n, d) => { const i = argv.indexOf(`--${n}`); return i >= 0 ? argv[i
  * `images-only`로 나왔는데, 그건 고른 URL이 navercorp 브랜드 페이지였기 때문이고 실제로는
  * 검색결과에서 컨트롤을 측정했다. 하나가 막히면 다음을 본다.
  */
-function surfaces(front) {
+function surfaces(front) {   // front 전체가 필요하다 — ds/homepage 폴백 때문
   const sources = front?.verification_v2?.sources ?? [];
   const url = (s) => s?.url;
   const componenty = sources.filter((s) => /component|button|form|input|design/i.test(String(s?.url))).map(url);
   const docs = sources.filter((s) => s?.kind === "official-doc").map(url);
   const product = sources.filter((s) => s?.kind === "product-surface").map(url);
-  return [...new Set([...componenty, ...product, ...docs])].filter(Boolean).slice(0, 3);
+  const picked = [...new Set([...componenty, ...product, ...docs])].filter(Boolean);
+  if (picked.length) return picked.slice(0, 3);
+
+  /**
+   * `verification_v2`가 없으면 sources도 없다 — 그런데 **조사가 가장 필요한 299건이
+   * 정확히 그쪽이다.** 처음엔 이 함수가 sources만 읽어서 그 299건에 대해 "표본 0개"를
+   * 돌려줬다. 블록이 없을 때는 문서가 아는 URL로 되돌아간다.
+   */
+  const ds = front.ds;
+  const fallback = [typeof ds === "string" ? ds : ds?.url, front.homepage].filter(Boolean);
+  return [...new Set(fallback)].slice(0, 3);
 }
 
 const ids = argv.filter((a) => !a.startsWith("--") && !/^\d+$/.test(a));
