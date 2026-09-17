@@ -17,14 +17,16 @@ ds:
   description: Linear's official identity and asset-use guidance; public marketing/product-preview measurements remain a separate evidence domain.
 verification_v2:
   schema: 2
-  checked: "2026-07-12"
+  checked: "2026-09-17"
   surfaces:
     - { id: home, kind: marketing-product, url: "https://linear.app/", inspected: "2026-07-12" }
+    - { id: home-states, kind: marketing-product, url: "https://linear.app/", inspected: "2026-09-17" }
     - { id: method, kind: official-method, url: "https://linear.app/method", inspected: "2026-07-12" }
     - { id: customers, kind: marketing-customer, url: "https://linear.app/customers", inspected: "2026-07-12" }
     - { id: pricing, kind: product-pricing, url: "https://linear.app/pricing", inspected: "2026-07-12" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://linear.app/", captured: "2026-07-12" }
+    - { id: home-states, kind: product-surface, url: "https://linear.app/", captured: "2026-09-17" }
     - { id: method-live, kind: product-surface, url: "https://linear.app/method", captured: "2026-07-12" }
     - { id: customers-live, kind: product-surface, url: "https://linear.app/customers", captured: "2026-07-12" }
     - { id: pricing-live, kind: product-surface, url: "https://linear.app/pricing", captured: "2026-07-12" }
@@ -76,6 +78,8 @@ verification_v2:
     "tokens.rounded.full": *home_evidence
     "tokens.shadow.primary-action": *home_evidence
     "tokens.components.primary-action.type": *home_evidence
+    "tokens.components.primary-action.hover": &la_states { surface_id: home-states, source_id: home-states, method: computed-style, captured: "2026-09-17" }
+    "tokens.components.primary-action.pressed": *la_states
     "tokens.components.primary-action.bg": *home_evidence
     "tokens.components.primary-action.fg": *home_evidence
     "tokens.components.primary-action.border": *home_evidence
@@ -144,7 +148,7 @@ tokens:
     primary-action: "0 0 1px rgba(0,0,0,0.08), 0 1px 1px rgba(0,0,0,0.07), 0 3px 2px rgba(0,0,0,0.04)"
   components_harvested: true
   components:
-    primary-action: { type: button, bg: "#e5e5e6", fg: "#08090a", border: "1px solid #e5e5e6", radius: "9999px", padding: "0 20px", height: "44px", font: "16px / 510", states: "default captured; compact 32px variant remains local", use: "Highest-priority public get-started action" }
+    primary-action: { type: button, bg: "#e5e5e6", fg: "#08090a", border: "1px solid #e5e5e6", radius: "9999px", padding: "0 20px", height: "44px", font: "16px / 510", hover: "#ffffff", pressed: "#ffffff", states: "hover and pressed re-measured live 2026-09-17 and share one value — the pill brightens to white; keyboard focus produces no visible change. Compact 32px variant remains local", use: "Highest-priority public get-started action" }
     secondary-action: { type: button, bg: "rgba(255,255,255,0.05)", fg: "#f7f8f8", radius: "9999px", padding: "0 20px", height: "44px", font: "16px / 510", states: "default captured; no universal hover token promoted", use: "Paired public contact-sales action" }
     nav-trigger: { type: button, bg: "transparent", fg: "#8a8f98", radius: "9999px", padding: "0 12px", height: "32px", font: "13px / 400", states: "focus, hover, pressed, expanded, and menu-open observed across current routes", use: "Current public navigation trigger" }
     product-menu-item: { type: tab, bg: "transparent", fg: "#f7f8f8", radius: "8px", padding: "12px 16px 12px 12px", font: "16px / 400", states: "selected, expanded, and menu-open captured in the embedded product preview", use: "Current embedded product-preview menu row" }

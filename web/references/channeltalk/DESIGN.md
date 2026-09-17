@@ -18,15 +18,17 @@ ds:
   og_image: "https://opengraph.githubassets.com/d5fd6836ec938de2c8399cf28b2ceabc49104fbbf86e937f9e89983f1b50d638/channel-io/bezier-react"
 verification_v2:
   schema: 2
-  checked: "2026-07-12"
+  checked: "2026-09-17"
   surfaces:
     - { id: home, kind: marketing-product, url: "https://channel.io/kr", inspected: "2026-07-12" }
+    - { id: home-states, kind: marketing-product, url: "https://channel.io/kr", inspected: "2026-09-17" }
     - { id: us, kind: marketing-product, url: "https://channel.io/us", inspected: "2026-07-12" }
     - { id: updates, kind: product-doc, url: "https://docs.channel.io/updates/en/articles/Notice-Channel-Talk-Major-Updates--b3d45997", inspected: "2026-07-12" }
     - { id: help, kind: product-doc, url: "https://docs.channel.io/help/en/articles/94f34984", inspected: "2026-07-12" }
     - { id: rebrand, kind: official-history, url: "https://channel.io/kr/blog/articles/rebranding-channeltalk-3aff8113", inspected: "2026-07-12" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://channel.io/kr", captured: "2026-07-12" }
+    - { id: home-states, kind: product-surface, url: "https://channel.io/kr", captured: "2026-09-17" }
     - { id: us-live, kind: product-surface, url: "https://channel.io/us", captured: "2026-07-12" }
     - { id: updates-live, kind: official-doc, url: "https://docs.channel.io/updates/en/articles/Notice-Channel-Talk-Major-Updates--b3d45997", captured: "2026-07-12" }
     - { id: help-live, kind: official-doc, url: "https://docs.channel.io/help/en/articles/94f34984", captured: "2026-07-12" }
@@ -76,6 +78,8 @@ verification_v2:
     "tokens.rounded.full": *home_evidence
     "tokens.shadow.flat": *home_evidence
     "tokens.components.marketing-primary.type": *home_evidence
+    "tokens.components.marketing-primary.hover": &ct_states { surface_id: home-states, source_id: home-states, method: computed-style, captured: "2026-09-17" }
+    "tokens.components.marketing-primary.pressed": *ct_states
     "tokens.components.marketing-primary.bg": *home_evidence
     "tokens.components.marketing-primary.fg": *home_evidence
     "tokens.components.marketing-primary.radius": *home_evidence
@@ -137,7 +141,7 @@ tokens:
     flat: "none"
   components_harvested: true
   components:
-    marketing-primary: { type: button, bg: "#242428", fg: "#ffffff", radius: "9999px", padding: "10px 22px", font: "18px / 400", states: "default captured; no hover or focus token promoted", use: "Primary signup and conversion action on current KR/US marketing" }
+    marketing-primary: { type: button, bg: "#242428", fg: "#ffffff", radius: "9999px", padding: "10px 22px", font: "18px / 400", hover: "#3a3a3f", pressed: "#3a3a3f", states: "hover and pressed re-measured live 2026-09-17 and share one value; keyboard focus produces no visible change", use: "Primary signup and conversion action on current KR/US marketing" }
     marketing-outline: { type: button, bg: "transparent", fg: "#000000", border: "1px solid #242428", radius: "9999px", padding: "10px 22px", font: "18px / 400", states: "default captured; no hover or focus token promoted", use: "Secondary marketing conversion action" }
     marketing-card: { type: card, bg: "#f7f6f3", border: "1px solid #e4e4e5", radius: "35px", padding: "30px 35px", use: "Current KR/US marketing information card" }
     marketing-tab: { type: tab, bg: "transparent", fg: "#716f6d", radius: "9999px", padding: "6px 20px", font: "16px / 600", states: "selected and tab-selected observed in six safe expansions", use: "Interactive category switcher on current marketing" }

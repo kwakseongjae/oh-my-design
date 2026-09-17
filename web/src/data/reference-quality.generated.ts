@@ -1170,20 +1170,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-12",
     "nextReverifyAt": "2027-01-08",
     "tokenSource": "reconciled",
-    "claimCount": 78,
-    "evidenceClaimCount": 78,
+    "claimCount": 80,
+    "evidenceClaimCount": 80,
     "evidenceCoverage": 1,
-    "surfaceCount": 5,
-    "sourceCount": 6,
+    "surfaceCount": 6,
+    "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 6,
     "componentCount": 5,
     "interactiveComponentCount": 4,
-    "statedComponentCount": 0,
+    "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": [
-      "component_state_prose_only"
-    ]
+    "advisoryCodes": []
   },
   {
     "id": "china-airlines",
@@ -4726,20 +4724,18 @@ export const REFERENCE_QUALITY = [
     "tokensExtractedAt": "2026-07-12",
     "nextReverifyAt": "2027-01-08",
     "tokenSource": "reconciled",
-    "claimCount": 86,
-    "evidenceClaimCount": 86,
+    "claimCount": 88,
+    "evidenceClaimCount": 88,
     "evidenceCoverage": 1,
-    "surfaceCount": 4,
-    "sourceCount": 5,
+    "surfaceCount": 5,
+    "sourceCount": 6,
     "conflictCount": 0,
     "tier1SourceCount": 5,
     "componentCount": 5,
     "interactiveComponentCount": 4,
-    "statedComponentCount": 0,
+    "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": [
-      "component_state_prose_only"
-    ]
+    "advisoryCodes": []
   },
   {
     "id": "liner",
