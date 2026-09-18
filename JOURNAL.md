@@ -1,5 +1,12 @@
 # JOURNAL
 
+## 2026-09-19
+
+- **한 일**: 후보 A(인덱스 전수 프로브) 완료. **대상 모집단이 429가 아니라 50이었다** — 353개는 `homepage`만 있고 `ds:` 86개 중 37개가 `type: brand`(트레이드마크·폰트·보도자료)라 컴포넌트 로스터를 주장하지 않는다. `type`은 프론트매터에 있었고 안 읽고 계획했다. 50개 중 27개 로스터 확인, 7개 경로 모양 보류, 16개 SPA(에이전트 몫). **이름 단위 결론: 발행 1,111개 중 레퍼런스가 부르는 것 308개(27.7%, 상한).** pega 42/45·yeogiotte 4/6로 검증됨. 스크립트 2개(`probe-design-system-index.mjs`, `compare-component-names.mjs`) 커밋(`7cebaacf`, `c6731b95`).
+- **열린 것**: adobe(`/page/` 114개)·likelion(Storybook 쿼리스트링)은 진짜 로스터인데 자동 판정 보류 — 한 호스트씩이라 규칙 안 넓힘. 인덱스 없는 16개는 렌더된 내비 읽기 필요. 데이터 품질 2건: `zigzag`는 `type: system`인데 URL이 블로그 글, `banksalad`는 `type: brand`인데 GitHub 조직. B(`contains-prescriptive-placeholder` 39·`missing-product-surface-scope` 22)·C(krds 채택, B 뒤)·만료 벽(141건 전부 2027-01-10) 그대로.
+- **다음**: A의 실제 보수 작업 — 갭 큰 호스트부터 §4 로스터 기록(velog 7%·wise 9%·google 11%·alipay 15%). 오너 기준("갭 크면 A 우선")상 A가 B보다 위.
+
+
 ## 2026-09-17 (저녁)
 
 - **한 일**: 토스 TDS 인덱스 발견 — 올바른 호스트를 처음부터 인용했으나 목록을 안 읽어 11개 중 2개만 측정. 출처 4건·로스터·§15 "출처 있는 부재" 반영, 검토 패키지 r2 재생성. 라우트 실측 — 죽은 건 `/design-systems`가 아니라 `/reference`(61줄·noindex·canonical 양도)였고, AGENTS.md가 그 죽은 쪽을 "카탈로그 상세"로 지목해 반복 실수를 유발하던 것을 교정.
