@@ -3,6 +3,48 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## 🟢 2026-09-18 — **toss 채택 완료.** 카탈로그 최초로 Core 패키지에서 서비스된다
+
+커밋 `482fceca` (채택) · `e307ccbb` (기반). 트랜잭션 `479e241fceb4c384`.
+
+**게이트가 요구한 증명이 나왔다.** `CORE_V2_CATALOG_WRITE_BLOCKED`의 미충족 조건은
+*"every catalog reader accepts its package"* 하나였고, 그 거리가 얼마인지 아무도 몰랐다.
+이제 답이 있다 — 일어났기 때문이다:
+
+- `/design-systems/toss` · `/builder` · `/toss/design.md` · `/r/toss` **전부 200** (프로덕션 빌드)
+- builder 프리뷰가 팔레트 · **Toss Product Sans** · Primary tasks 6건 ·
+  `radius.button-medium 10px`를 **패키지에서** 렌더한다
+- **"✓ Portable Core"** 배지, Evidence **57 claims · 23 bindings**
+- 채택 커밋이 husky 전체 게이트 통과 (파이프라인 5단계 + 474 단언)
+
+**체인은 오너 게이트 4개를 지났고, 기록에 없던 다섯 번째 장애물을 만났다.**
+컴파일이 r2를 거부했다 — 마이그레이션 형태 provenance. 9-08 설계가 예고했으나 리허설이
+필드 하나만 묶고 멈춰 이론으로 남아 있었다. r3(바이트 동일)로 컴파일, r4는 미리보기가
+바뀌어 오너가 다시 봤다.
+
+**막판에 게이트가 두 번 더 잡았다.** `build-registry`·`build-reference-quality`·
+`build-reference-ast`·`build-reference-quality-data`가 전부 frontmatter를 읽는데 채택본엔
+없다 — Core v2는 디자인 시스템을 기술하지 카탈로그 항목을 기술하지 않으므로 country·
+category·logo가 들어갈 자리가 없다. 원장은 더 나빴다: **toss를 조용히 빠뜨려 897→887**.
+
+데이터는 안 잃었다. 마이그레이션이 세그먼트 전부를 보존하고 이어붙이면 채택 전 파일이
+**바이트 동일**로 복원된다(`source_reconstruction_equal`이 줄곧 단언하던 것). 리더가
+데이터를 못 찾은 게 아니라 **더 이상 없는 곳만 보고 있었다.**
+`web/scripts/lib/reference-source.mjs`가 양쪽 다 해결한다 — 해시 검증 포함.
+
+### 다음 레퍼런스를 채택하기 전에 알아야 할 것
+
+레지스트리·품질 데이터·원장을 먹이는 frontmatter가 이제 패키지 안에 있고, 읽는 건 전부
+`lib/reference-source.mjs`를 지난다. **`DESIGN.md`를 직접 여는 새 스크립트는 Core 문서를
+읽고 throw하거나 레퍼런스를 조용히 건너뛴다.** 조용한 쪽이 더 나쁘고, 이미 한 번 일어났다.
+
+채택 전 바이트는 `.omd/execution/2026-09-18/toss-pre-adoption-backup/`에 있다
+(완료된 트랜잭션은 자기 백업을 지운다).
+
+**상태: 440/440 마이그레이션 · portable_core 1/440 · verified 141 · 955/955 · 원장 141/897.**
+
+---
+
 ## 🟠 2026-09-18 — 오너 5건 승인. 채택 체인을 돌리다 **폰트 손실**에서 멈췄다
 
 정본: `docs/ADOPTION_CHAIN_2026-09-18.md`
