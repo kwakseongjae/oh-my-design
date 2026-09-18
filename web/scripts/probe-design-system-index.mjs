@@ -57,7 +57,7 @@
  *   node scripts/probe-design-system-index.mjs [--type system|brand|all]
  *                                              [--json <out>] [--concurrency N]
  */
-import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { readReferenceSource } from "./lib/reference-source.mjs";
@@ -82,6 +82,9 @@ const wantType = argv.indexOf("--type") >= 0 ? argv[argv.indexOf("--type") + 1] 
 const jsonAt = argv.indexOf("--json") >= 0 ? argv[argv.indexOf("--json") + 1] : null;
 const concurrency = argv.indexOf("--concurrency") >= 0
   ? Number(argv[argv.indexOf("--concurrency") + 1]) : 10;
+// The full path list per host, so the name-level comparison — last path segment
+// against what the reference documents — becomes a diff instead of 26 agents.
+const dumpDir = argv.indexOf("--dump-urls") >= 0 ? argv[argv.indexOf("--dump-urls") + 1] : null;
 
 /** A response body that is really HTML is a soft 404 however it was served. */
 const isHtml = (body) => /^\s*(?:<!doctype|<html)/i.test(body.slice(0, 200));
@@ -113,17 +116,27 @@ const llmsLinks = (text) =>
 
 function summarise(urls, pathPrefix) {
   const components = urls.filter((u) => COMPONENT_PATH.test(u));
-  // Only the `ds.url`'s own subtree is the design system. Without this, vercel's
-  // root sitemap credits every marketing page on vercel.com to Geist.
+  // Two independent measures, because the path heuristic misses real rosters.
+  // `vercel.com/geist` publishes 76 component pages as `/geist/table`,
+  // `/geist/toast` — no `/components/` segment anywhere, so COMPONENT_PATH
+  // scored Geist at zero out of 7,140 URLs. But the `ds.url` *declares* where
+  // the design system lives, so anything under that path belongs to it whatever
+  // the segment is named. The prefix is evidence; the segment list is a guess.
   const underDs = pathPrefix
-    ? components.filter((u) => { try { return new URL(u).pathname.startsWith(pathPrefix); } catch { return false; } })
+    ? urls.filter((u) => {
+        try {
+          const { pathname } = new URL(u);
+          return pathname.startsWith(pathPrefix) && pathname.length > pathPrefix.length;
+        } catch { return false; }
+      })
     : components;
   return {
     entries: urls.length,
     pages: components.length,
     pagesUnderDs: underDs.length,
     opaque: components.length > 0 && components.every((u) => OPAQUE_ID.test(u)),
-    sample: urls.slice(0, 5),
+    sample: (underDs.length ? underDs : urls).slice(0, 5),
+    urls: underDs.length ? underDs : components,
   };
 }
 
@@ -156,6 +169,7 @@ async function readGithubTree(owner, repo) {
     pagesUnderDs: children.length,
     opaque: false,
     sample: children.slice(0, 5),
+    urls: children,
     // `src/*` is a looser convention than `components/*` — baseweb's 91 include
     // `src/a11y` and `src/styles`, which are not components. The number is an
     // upper bound either way, and this says which shape produced it.
@@ -201,7 +215,7 @@ async function readIndex(origin, pathPrefix) {
     return { via: path, ...summarise(locs, pathPrefix), notes };
   }
 
-  return { via: null, entries: 0, pages: 0, pagesUnderDs: 0, opaque: false, sample: [], notes };
+  return { via: null, entries: 0, pages: 0, pagesUnderDs: 0, opaque: false, sample: [], urls: [], notes };
 }
 
 /**
@@ -253,8 +267,13 @@ function references() {
       out.push({
         id, type, url,
         origin: parsed.origin,
-        // A one-segment path is a section, not a subtree worth filtering on.
-        pathPrefix: parsed.pathname.replace(/[^/]*$/, ""),
+        // `vercel.com/geist` names the design system's root, so the prefix is
+        // `/geist/` — stripping the last segment unconditionally turned it into
+        // `/` and put Geist's 76 component pages back in the 7,140-URL haystack.
+        // Only a filename is stripped (`krds…/site/index.html` → `/html/site/`).
+        pathPrefix: /\/[^/]*\.[^/]*$/.test(parsed.pathname)
+          ? parsed.pathname.replace(/[^/]*$/, "")
+          : `${parsed.pathname.replace(/\/$/, "")}/`,
         ...documented(markdown),
       });
     } catch { /* a malformed url is not a host */ }
@@ -285,12 +304,15 @@ const rows = await pool(targets, concurrency, async (target) => {
   return { ...target, index };
 });
 
-const bucket = (r) => (r.index.pages > 0 ? "pages" : r.index.via ? "index-no-pages" : "no-index");
+// Either measure counts: a `/geist/` roster is a roster even though no path
+// segment says "component".
+const bucket = (r) => (r.index.pages > 0 || r.index.pagesUnderDs > 0
+  ? "pages" : r.index.via ? "index-no-pages" : "no-index");
 const head = "  id                 published  under-ds  tokens  §4·bullets  via";
 
 console.log("── index with component paths ──────────────────────────────────────");
 console.log(head);
-for (const r of rows.filter((x) => bucket(x) === "pages").sort((a, b) => b.index.pages - a.index.pages)) {
+for (const r of rows.filter((x) => bucket(x) === "pages").sort((a, b) => Math.max(b.index.pages, b.index.pagesUnderDs) - Math.max(a.index.pages, a.index.pagesUnderDs))) {
   console.log(
     `  ${r.id.padEnd(18)} ${String(r.index.pages).padStart(9)} ${String(r.index.pagesUnderDs).padStart(9)}`
     + ` ${String(r.tokenComponents).padStart(7)} ${String(r.section4Bullets).padStart(11)}`
@@ -314,7 +336,18 @@ for (const r of rows) counts[bucket(r)] = (counts[bucket(r)] ?? 0) + 1;
 console.log(`\n[probe] ${JSON.stringify(counts)}`);
 for (const line of rows.flatMap((r) => r.index.notes.map((n) => `${r.id}: ${n}`))) console.log(`  ! ${line}`);
 
+if (dumpDir) {
+  mkdirSync(dumpDir, { recursive: true });
+  let written = 0;
+  for (const row of rows) {
+    if (!row.index.urls?.length) continue;
+    writeFileSync(join(dumpDir, `${row.id}.txt`), `${row.index.urls.join("\n")}\n`);
+    written += 1;
+  }
+  console.log(`[probe] dumped url lists for ${written} host(s) → ${dumpDir}`);
+}
+
 if (jsonAt) {
-  writeFileSync(jsonAt, `${JSON.stringify(rows, null, 2)}\n`);
+  writeFileSync(jsonAt, `${JSON.stringify(rows.map((r) => ({ ...r, index: { ...r.index, urls: undefined } })), null, 2)}\n`);
   console.log(`[probe] wrote ${jsonAt}`);
 }
