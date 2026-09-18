@@ -1,0 +1,481 @@
+{
+  "decisions": [
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md (migrated segment for components_states.rules)"
+      ],
+      "path": "components_states.rules",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md (migrated segment for content_locales.voice)"
+      ],
+      "path": "content_locales.voice",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md §11 Brand Narrative",
+        "web/references/toss/DESIGN.md §13 Personas",
+        "web/references/toss/DESIGN.md §12 Principles",
+        "web/references/toss/DESIGN.md tokens.components.agreement"
+      ],
+      "path": "experience.primary_tasks",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md (migrated segment for experience.summary)"
+      ],
+      "path": "experience.summary",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md (migrated segment for foundations.rules)"
+      ],
+      "path": "foundations.rules",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.body.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.body.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.border.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.border.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.canvas.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.canvas.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.danger.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.danger.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.foreground.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.foreground.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.muted.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.muted.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.on-primary.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.on-primary.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.primary.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.primary.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.primary-hover.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.primary-hover.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.surface.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.surface.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.weak-background.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.weak-background.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.weak-foreground.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+      ],
+      "path": "foundations.tokens.color.weak-foreground.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md (migrated segment for governance.change_policy)"
+      ],
+      "path": "governance.change_policy",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md (migrated segment for governance.decisions)"
+      ],
+      "path": "governance.decisions",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md (migrated segment for governance.unknown_policy)"
+      ],
+      "path": "governance.unknown_policy",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md (migrated segment for identity.kind)"
+      ],
+      "path": "identity.kind",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md (migrated segment for identity.name)"
+      ],
+      "path": "identity.name",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md (migrated segment for identity.scope)"
+      ],
+      "path": "identity.scope",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md (migrated segment for layout_platforms.rules)"
+      ],
+      "path": "layout_platforms.rules",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md (migrated segment for typography_assets.rules)"
+      ],
+      "path": "typography_assets.rules",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md frontmatter tokens.typography (declared type scale and UI family)"
+      ],
+      "path": "typography_assets.roles",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
+      ],
+      "path": "foundations.tokens.color.body",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
+      ],
+      "path": "foundations.tokens.color.border",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
+      ],
+      "path": "foundations.tokens.color.canvas",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
+      ],
+      "path": "foundations.tokens.color.danger",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
+      ],
+      "path": "foundations.tokens.color.foreground",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
+      ],
+      "path": "foundations.tokens.color.muted",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
+      ],
+      "path": "foundations.tokens.color.on-primary",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
+      ],
+      "path": "foundations.tokens.color.primary",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
+      ],
+      "path": "foundations.tokens.color.primary-hover",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
+      ],
+      "path": "foundations.tokens.color.surface",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
+      ],
+      "path": "foundations.tokens.color.weak-background",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
+      ],
+      "path": "foundations.tokens.color.weak-foreground",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md frontmatter tokens.rounded (declared token)"
+      ],
+      "path": "foundations.tokens.radius.button-large",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md frontmatter tokens.rounded (declared token)"
+      ],
+      "path": "foundations.tokens.radius.button-medium",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md frontmatter tokens.rounded (declared token)"
+      ],
+      "path": "foundations.tokens.radius.button-small",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md frontmatter tokens.rounded (declared token)"
+      ],
+      "path": "foundations.tokens.radius.button-xlarge",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md frontmatter tokens.rounded (declared token)"
+      ],
+      "path": "foundations.tokens.radius.default",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md frontmatter tokens.rounded (declared token)"
+      ],
+      "path": "foundations.tokens.radius.md",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md frontmatter tokens.rounded (declared token)"
+      ],
+      "path": "foundations.tokens.radius.sm",
+      "source_class": "repository-fact"
+    }
+  ],
+  "design_md_sha256": "90b4d65034b466aa80ee751f6ca74dfa4a23cae61ee9bc8338468392dfaa896c",
+  "graph_sha256": "cd0eb8d6f3e461e282f675c304a7e53c2d71a81909622e65e8ee93e21758fc32",
+  "schema_version": "2.0.0"
+}

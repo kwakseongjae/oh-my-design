@@ -1,160 +1,12 @@
----
-id: toss
-name: Toss
-country: KR
-category: fintech
-homepage: "https://toss.im"
-primary_color: "#0064ff"
-logo:
-  type: favicon
-  slug: "https://static.toss.im/icons/png/4x/icon-toss-logo.png"
-verified: "2026-07-11"
-omd: "0.1"
-ds:
-  name: TDS Mobile
-  url: "https://tossmini-docs.toss.im/tds-mobile/"
-  type: system
-  description: Toss's public mobile design-system documentation.
-verification_v2:
-  schema: 2
-  checked: "2026-09-17"
-  surfaces:
-    - { id: marketing-home, kind: marketing, url: "https://toss.im/", inspected: "2026-07-11" }
-    - { id: marketing-story, kind: marketing, url: "https://toss.im/docs/10290", inspected: "2026-07-11" }
-    - { id: tds-button, kind: design-system, url: "https://tossmini-docs.toss.im/tds-mobile/components/button/", inspected: "2026-07-11" }
-    - { id: tds-button-states, kind: design-system, url: "https://tossmini-docs.toss.im/tds-mobile/components/button/", inspected: "2026-09-17" }
-    - { id: tds-agreement-v3, kind: design-system, url: "https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v3/", inspected: "2026-07-11" }
-    - { id: tds-agreement-v4, kind: design-system, url: "https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/", inspected: "2026-07-11" }
-  sources:
-    - { id: toss-live, kind: product-surface, url: "https://toss.im/", captured: "2026-07-11" }
-    - { id: tds-button-live, kind: official-doc, url: "https://tossmini-docs.toss.im/tds-mobile/components/button/", captured: "2026-07-11" }
-    - { id: tds-button-states, kind: official-doc, url: "https://tossmini-docs.toss.im/tds-mobile/components/button/", captured: "2026-09-17" }
-    - { id: tds-text-field, kind: official-doc, url: "https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/", captured: "2026-07-11" }
-    - { id: tds-badge, kind: official-doc, url: "https://tossmini-docs.toss.im/tds-mobile/components/badge/", captured: "2026-07-11" }
-    - { id: tds-agreement, kind: official-doc, url: "https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/", captured: "2026-07-11" }
-  claims:
-    "tokens.colors.primary": &tds_button { surface_id: tds-button, source_id: tds-button-live, method: computed-style-and-official-doc, captured: "2026-07-11" }
-    "tokens.colors.primary-hover": *tds_button
-    "tokens.colors.canvas": &toss_live { surface_id: marketing-home, source_id: toss-live, method: computed-style, captured: "2026-07-11" }
-    "tokens.colors.foreground": *toss_live
-    "tokens.colors.body": *toss_live
-    "tokens.colors.muted": *toss_live
-    "tokens.colors.surface": *toss_live
-    "tokens.colors.border": *toss_live
-    "tokens.colors.on-primary": *tds_button
-    "tokens.colors.weak-background": *toss_live
-    "tokens.colors.weak-foreground": *toss_live
-    "tokens.colors.danger": *tds_button
-    "tokens.typography.family.sans": *tds_button
-    "tokens.typography.h1.size": *tds_button
-    "tokens.typography.h1.weight": *tds_button
-    "tokens.typography.h1.lineHeight": *tds_button
-    "tokens.typography.h2.size": *tds_button
-    "tokens.typography.h2.weight": *tds_button
-    "tokens.typography.h2.lineHeight": *tds_button
-    "tokens.typography.h3.size": *tds_button
-    "tokens.typography.h3.weight": *tds_button
-    "tokens.typography.h3.lineHeight": *tds_button
-    "tokens.typography.h4.size": *tds_button
-    "tokens.typography.h4.weight": *tds_button
-    "tokens.typography.h4.lineHeight": *tds_button
-    "tokens.typography.body.size": *tds_button
-    "tokens.typography.body.weight": *tds_button
-    "tokens.typography.body.lineHeight": *tds_button
-    "tokens.typography.body-small.size": *tds_button
-    "tokens.typography.body-small.weight": *tds_button
-    "tokens.typography.body-small.lineHeight": *tds_button
-    "tokens.spacing.xs": *tds_button
-    "tokens.spacing.sm": *tds_button
-    "tokens.spacing.md": *tds_button
-    "tokens.spacing.lg": *tds_button
-    "tokens.spacing.xl": *tds_button
-    "tokens.spacing.xxl": *tds_button
-    "tokens.rounded.sm": *tds_button
-    "tokens.rounded.md": *tds_button
-    "tokens.rounded.button-small": *tds_button
-    "tokens.rounded.button-medium": *tds_button
-    "tokens.rounded.button-large": *tds_button
-    "tokens.rounded.button-xlarge": *tds_button
-    "tokens.components.tds-button.type": *tds_button
-    "tokens.components.tds-button.pressed": &tds_button_states { surface_id: tds-button-states, source_id: tds-button-states, method: computed-style, captured: "2026-09-17" }
-    "tokens.components.tds-button.focus": *tds_button_states
-    "tokens.components.tds-button.bg": *tds_button
-    "tokens.components.tds-button.fg": *tds_button
-    "tokens.components.tds-button.radius": *tds_button
-    "tokens.components.tds-button.height": *tds_button
-    "tokens.components.tds-button.padding": *tds_button
-    "tokens.components.tds-button.font": *tds_button
-    "tokens.components.tds-button.states": *tds_button
-    "tokens.components.tds-button.use": *tds_button
-    "tokens.components.text-field.type": &tds_field { surface_id: tds-button, source_id: tds-text-field, method: official-doc, captured: "2026-07-11" }
-    "tokens.components.text-field.states": *tds_field
-    "tokens.components.text-field.use": *tds_field
-    "tokens.components.badge.type": &tds_badge_claim { surface_id: tds-button, source_id: tds-badge, method: official-doc, captured: "2026-07-11" }
-    "tokens.components.badge.states": *tds_badge_claim
-    "tokens.components.badge.use": *tds_badge_claim
-    "tokens.components.agreement.type": &tds_agreement_claim { surface_id: tds-agreement-v4, source_id: tds-agreement, method: computed-style-and-official-doc, captured: "2026-07-11" }
-    "tokens.components.agreement.states": *tds_agreement_claim
-    "tokens.components.agreement.use": *tds_agreement_claim
-    "tokens.components.marketing-primary.type": *toss_live
-    "tokens.components.marketing-primary.bg": *toss_live
-    "tokens.components.marketing-primary.fg": *toss_live
-    "tokens.components.marketing-primary.radius": *toss_live
-    "tokens.components.marketing-primary.height": *toss_live
-    "tokens.components.marketing-primary.padding": *toss_live
-    "tokens.components.marketing-primary.font": *toss_live
-    "tokens.components.marketing-primary.states": *toss_live
-    "tokens.components.marketing-primary.use": *toss_live
-    "tokens.components.marketing-dark.type": *toss_live
-    "tokens.components.marketing-dark.bg": *toss_live
-    "tokens.components.marketing-dark.fg": *toss_live
-    "tokens.components.marketing-dark.radius": *toss_live
-    "tokens.components.marketing-dark.height": *toss_live
-    "tokens.components.marketing-dark.padding": *toss_live
-    "tokens.components.marketing-dark.font": *toss_live
-    "tokens.components.marketing-dark.states": *toss_live
-    "tokens.components.marketing-dark.use": *toss_live
-  conflicts: []
-tokens:
-  source: reconciled
-  extracted: "2026-07-11"
-  note: "TDS Mobile product tokens and toss.im marketing variants are intentionally separate."
-  colors:
-    primary: "#3182f6"
-    primary-hover: "#2272eb"
-    canvas: "#ffffff"
-    foreground: "#191f28"
-    body: "#4e5968"
-    muted: "#8b95a1"
-    surface: "#f2f4f6"
-    border: "#e5e8eb"
-    on-primary: "#ffffff"
-    weak-background: "#e8f3ff"
-    weak-foreground: "#1b64da"
-    danger: "#e42939"
-  typography:
-    family: { sans: "Toss Product Sans" }
-    h1: { size: 36, weight: 700, lineHeight: "54px" }
-    h2: { size: 30, weight: 600, lineHeight: "45px" }
-    h3: { size: 24, weight: 600, lineHeight: "36px" }
-    h4: { size: 22, weight: 600, lineHeight: "33px" }
-    body: { size: 16, weight: 400, lineHeight: "24px" }
-    body-small: { size: 14, weight: 400, lineHeight: "21px" }
-  spacing: { xs: 4, sm: 6, md: 8, lg: 16, xl: 24, xxl: 32 }
-  rounded: { sm: 4, md: 6, button-small: 8, button-medium: 10, button-large: 14, button-xlarge: 16 }
-  components_harvested: true
-  components:
-    tds-button: { type: button, bg: "#3182f6", fg: "#ffffff", radius: "16px", height: "56px", padding: "0 20px", font: "17px / 600", pressed: "scale(0.96); 56px renders 54px, fill unchanged", focus: "0 0 0 1px #8ac0ff, 0 0 0 3px #b8d9ff ring on :focus-visible", states: "fill or weak; primary, danger, light, or dark; loading, disabled, pressed, and keyboard focus. Hover produces no observable change on the official component page — the press feedback is geometric, not tonal", use: "TDS Mobile xlarge primary action" }
-    text-field: { type: input, states: "box, line, big, hero; focus, error, disabled, read-only", use: "TDS Mobile text entry with help or error text" }
-    badge: { type: badge, states: "fill or weak; xsmall, small, medium, large; semantic color variants", use: "TDS Mobile status or category label; not an action" }
-    agreement: { type: toggle, states: "checked, unchecked, disabled, and nested agreement hierarchy", use: "TDS Mobile terms selection in v3 and v4 surfaces" }
-    marketing-primary: { type: button, bg: "#e8f3ff", fg: "#1b64da", radius: "7px", height: "40px", padding: "11px 16px", font: "15px / 600", states: "default observed; hover not captured in the retained evidence bundle", use: "toss.im light-blue marketing CTA" }
-    marketing-dark: { type: button, bg: "rgba(0, 12, 30, 0.8)", fg: "#ffffff", radius: "7px", height: "46px", padding: "11px 16px", font: "17px / 600", states: "default observed; hover not captured in the retained evidence bundle", use: "toss.im app-store style CTA" }
----
+# Toss Design System
 
-# Design System Inspiration of Toss (토스)
+<!-- design-md:section experience -->
+## 1. Experience
 
-## 1. Visual Theme & Atmosphere
+<!-- design-md:claim scope kind=product-surface lang=en -->
+### Scope
+
+### Visual Theme & Atmosphere
 
 Toss is a unified financial platform that tries to make consequential money decisions feel answerable, immediate, and visually calm. Its public design spans two related but distinct systems: TDS Mobile documents product UI with large, touch-oriented controls and explicit state contracts, while `toss.im` uses a tighter marketing-web button system. Across both, a strong blue action color, plain language, generous hierarchy, and purpose-built typography reduce the institutional distance people often feel around finance. This reference keeps product and marketing surfaces separate instead of forcing their geometry into one false universal component.
 
@@ -166,16 +18,52 @@ The verified common language is Toss Product Sans, a bright blue interaction acc
 - Four documented TDS button sizes with explicit loading and disabled behavior
 - Surface-specific component geometry rather than one blended “Toss style”
 
-## Primary tasks
+### Brand Narrative
+
+Toss presents finance as a connected product experience rather than a collection of institutional silos. Its design system supports that ambition by making repeated actions—checking, comparing, agreeing, paying, and recovering—feel consistent even when the underlying financial products differ.
+<!-- design-md:claim-end -->
+
+<!-- design-md:claim primary-tasks kind=user-outcomes count=6 lang=en -->
+### Primary tasks
 
 - Check on financial products that normally live in separate institutions
-- Compare options as concrete, comparable choices before deciding
-- See what a product is worth before consenting, uploading, or paying
-- Agree to terms, including nested sub-agreements, before a product starts
-- Pay, and read back the outcome and the next action in plain language
-- Pick up an interrupted insurance, payment, or account flow where it broke
 
-## 2. Color Palette & Roles
+- Compare options as concrete, comparable choices before deciding
+
+- See what a product is worth before consenting, uploading, or paying
+
+- Agree to terms, including nested sub-agreements, before a product starts
+
+- Pay, and read back the outcome and the next action in plain language
+
+- Pick up an interrupted insurance, payment, or account flow where it broke
+<!-- design-md:claim-end -->
+
+<!-- design-md:section foundations -->
+## 2. Foundations
+
+<!-- design-md:claim foundations kind=rules-or-constraints lang=en -->
+### Semantic tokens
+
+- **color.body**: `#4e5968`
+- **color.border**: `#e5e8eb`
+- **color.canvas**: `#ffffff`
+- **color.danger**: `#e42939`
+- **color.foreground**: `#191f28`
+- **color.muted**: `#8b95a1`
+- **color.on-primary**: `#ffffff`
+- **color.primary**: `#3182f6`
+- **color.primary-hover**: `#2272eb`
+- **color.surface**: `#f2f4f6`
+- **color.weak-background**: `#e8f3ff`
+- **color.weak-foreground**: `#1b64da`
+- **radius.button-large**: `14px`
+- **radius.button-medium**: `10px`
+- **radius.button-small**: `8px`
+- **radius.button-xlarge**: `16px`
+- **radius.default**: `6px`
+- **radius.md**: `6px`
+- **radius.sm**: `4px`
 
 ### Product and shared roles
 - **Primary** (`#3182f6`): TDS interaction blue and primary action reference.
@@ -193,7 +81,28 @@ The verified common language is Toss Product Sans, a bright blue interaction acc
 - **Weak Background** (`#e8f3ff`) and **Weak Foreground** (`#1b64da`): current light-blue `toss.im` CTA pair.
 - The official logo/brand blue in frontmatter is catalog identity metadata; do not substitute it for the verified UI primary `#3182f6`.
 
-## 3. Typography Rules
+### Depth & Elevation
+
+No canonical shadow token is promoted in this revision. The inspected evidence contains documentation-site chrome as well as TDS examples, so treating every computed shadow as a Toss product token would overstate the source. Use flat color layering until a component-specific official source verifies elevation.
+
+### Motion & Easing
+
+No canonical motion duration or easing token is promoted, and the absence is now sourced rather than assumed. TDS publishes no numeric `duration`, `easing`, or `cubic-bezier` value in its documentation; Toss states that component motion is carried inside the Figma UI Kit library, so…
+<!-- design-md:claim-end -->
+
+<!-- design-md:section typography-assets -->
+## 3. Typography & Assets
+
+### Type roles
+
+| Role | Usage | Family | Size | Weight | Line height |
+|---|---|---|---|---|---|
+| h1 | declared type role: h1 |  | 36px | 700 | 54px |
+| h2 | declared type role: h2 |  | 30px | 600 | 45px |
+| h3 | declared type role: h3 |  | 24px | 600 | 36px |
+| h4 | declared type role: h4 |  | 22px | 600 | 33px |
+| body | declared type role: body | Toss Product Sans | 16px | 400 | 24px |
+| body-small | declared type role: body-small |  | 14px | 400 | 21px |
 
 ### Font Family
 - **Canonical visible UI family**: `Toss Product Sans`. The collector found 810 visible first-family uses backed by loaded FontFace resources.
@@ -213,15 +122,8 @@ The verified common language is Toss Product Sans, a bright blue interaction acc
 
 These are evidence-backed public-document roles, not a claim that every native Toss product screen uses this exact hierarchy.
 
-| Evidence class | Toss status |
-|---|---|
-| **Official product-use** | Toss Product Sans was designed for financial symbols and mobile, desktop, and offline product contexts |
-| **Live surface-use** | Toss Product Sans is loaded and visibly used throughout the inspected TDS documentation surfaces |
-| **Official distributed asset** | No general redistribution right is asserted by the current official sources |
-| **Declared-only** | Tossface is declared in captured FontFace resources but was not observed as the visible first family |
-| **Unresolved** | Public redistribution/license terms and exact native-screen type metrics beyond documented TDS roles |
-
-## 4. Component Stylings
+<!-- design-md:section components-states -->
+## 4. Components & States
 
 ### TDS Mobile Button
 - Background: `#3182f6` for the canonical primary reference
@@ -258,25 +160,15 @@ These are evidence-backed public-document roles, not a claim that every native T
 - States: default observed; hover not captured in the retained evidence bundle
 - Use: light-blue marketing CTA
 
-### toss.im Marketing Dark
-- Background: `rgba(0, 12, 30, 0.8)`
-- Text: `#ffffff`
-- Radius: 7px
-- Height: 46px
-- Padding: 11px 16px
-- Font: 17px / 600 / Toss Product Sans
-- States: default observed; hover not captured in the retained evidence bundle
-- Use: app-store style marketing CTA
+### States
 
----
+| Component | Verified state contract |
+|---|---|
+| TDS Button | fill/weak, semantic color, loading, disabled, pressed, keyboard focus |
+| TDS Text Field |…
 
-**Verified:** 2026-07-11 (verification v2, live computed-style capture + current official TDS docs)
-**Tier 1 sources:** https://toss.im/ https://toss.im/docs/10290 https://tossmini-docs.toss.im/tds-mobile/components/button/ https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/ https://tossmini-docs.toss.im/tds-mobile/components/badge/
-**Tier 2 sources:** https://getdesign.md/toss produced no importable Toss record; https://styles.refero.design/?q=Toss produced no importable result through the available fetch path.
-**Surface split:** TDS Mobile xlarge uses 56px height and 16px radius; `toss.im` marketing actions observed here use 40–46px height and 7px radius.
-**Conflicts unresolved:** none
-
-## 5. Layout Principles
+<!-- design-md:section layout-platforms -->
+## 5. Layout & Platforms
 
 ### Spacing System
 - Captured TDS documentation clusters: 4px, 6px, 8px, 16px, 24px, and 32px.
@@ -290,11 +182,50 @@ These are evidence-backed public-document roles, not a claim that every native T
 - Documentation chrome and components cluster around 4px and 6px for small surfaces.
 - Button sizes use 8px, 10px, 14px, and 16px radii from small through xlarge.
 
-## 6. Depth & Elevation
+### Responsive Behavior
 
-No canonical shadow token is promoted in this revision. The inspected evidence contains documentation-site chrome as well as TDS examples, so treating every computed shadow as a Toss product token would overstate the source. Use flat color layering until a component-specific official source verifies elevation.
+- TDS Mobile component sizes should remain touch-oriented; xlarge is the documented default button size.
+- On web, preserve the observed 40px or 46px marketing button height rather than substituting the 56px mobile control.
+- The public sources in this verification do not establish universal breakpoints, desktop maximum widths, or native safe-area values.
 
-## 7. Do's and Don'ts
+<!-- design-md:section content-locales -->
+## 6. Content & Locales
+
+### Voice & Tone
+
+Toss speaks as a capable guide that removes work rather than displaying financial expertise. Copy is short and direct, but the governing idea is not minimal word count by itself: a person should understand the value, answer the question, and recover from uncertainty without decoding industry language. Official product-design writing describes principles such as **Easy to answer** and **Value first, cost later**—make choices concrete, and show why an action is worthwhile before asking for effort, data, or commitment.
+
+In product flows, name the outcome and next action precisely. In education or product-branding surfaces, explain one unfamiliar idea in everyday language and let the interface carry the rest. Avoid vague reassurance, unexplained abbreviations, institutional phrasing, or playful copy that makes a financial consequence ambiguous.
+
+<!-- design-md:section governance -->
+## 7. Governance
+
+<!-- design-md:claim authority kind=evidence-backed-reconstruction lang=en -->
+### Authority
+
+This document is an evidence-backed reconstruction, not authority for an unrelated target project.
+<!-- design-md:claim-end -->
+
+<!-- design-md:claim application-priority order=prompt-fact,repository-fact,system-contract,reference-inspiration lang=en -->
+### Application priority
+
+1. Direct user instructions for the requested scope.
+2. Repository facts.
+3. This system contract.
+4. Reference inspiration.
+<!-- design-md:claim-end -->
+
+<!-- design-md:claim unknowns policy=absent-at-smallest-unresolved-boundary lang=en -->
+### Unknowns
+
+Omit only the smallest unresolved value or group. Do not replace it with a plausible default.
+<!-- design-md:claim-end -->
+
+<!-- design-md:claim changes policy=review-record-validate-before-adoption lang=en -->
+### Changes
+
+Record, review, and validate changes before adoption.
+<!-- design-md:claim-end -->
 
 ### Do
 - Keep TDS Mobile and `toss.im` marketing variants explicitly named by surface.
@@ -310,60 +241,7 @@ No canonical shadow token is promoted in this revision. The inspected evidence c
 - Don't merge the 16px TDS radius with the 7px marketing radius into an average value.
 - Don't invent cards, shadows, tabs, toasts, or dialogs from generic fintech conventions.
 
-## 8. Responsive Behavior
-
-- TDS Mobile component sizes should remain touch-oriented; xlarge is the documented default button size.
-- On web, preserve the observed 40px or 46px marketing button height rather than substituting the 56px mobile control.
-- The public sources in this verification do not establish universal breakpoints, desktop maximum widths, or native safe-area values.
-
-## 9. Agent Prompt Guide
+### Agent Prompt Guide
 
 - “Create a TDS Mobile xlarge primary button using `#3182f6`, white text, 56px height, 16px radius, 17px/600 Toss Product Sans, and explicit loading/disabled/focus behavior.”
-- “Create a `toss.im` weak marketing CTA using `#e8f3ff` background, `#1b64da` text, 40px height, and 7px radius.”
-- “Use Toss Product Sans for the verified UI family; do not promote Tossface without visible usage evidence.”
-- “If building a component not listed here, mark it as an extension rather than presenting it as verified TDS.”
-
-## 10. Voice & Tone
-
-Toss speaks as a capable guide that removes work rather than displaying financial expertise. Copy is short and direct, but the governing idea is not minimal word count by itself: a person should understand the value, answer the question, and recover from uncertainty without decoding industry language. Official product-design writing describes principles such as **Easy to answer** and **Value first, cost later**—make choices concrete, and show why an action is worthwhile before asking for effort, data, or commitment.
-
-In product flows, name the outcome and next action precisely. In education or product-branding surfaces, explain one unfamiliar idea in everyday language and let the interface carry the rest. Avoid vague reassurance, unexplained abbreviations, institutional phrasing, or playful copy that makes a financial consequence ambiguous.
-
-## 11. Brand Narrative
-
-Toss presents finance as a connected product experience rather than a collection of institutional silos. Its design system supports that ambition by making repeated actions—checking, comparing, agreeing, paying, and recovering—feel consistent even when the underlying financial products differ.
-
-The company’s first-party design writing shows how this consistency became a brand system inside the product. Product branding is treated as the experience people receive while using a feature, not merely a campaign wrapped around it. Toss Product Sans extends the same logic into typography: numbers, symbols, Korean text, and multiple digital and offline contexts were considered as one product problem.
-
-The practical design position is therefore clarity with momentum. **Easy to answer** reduces the cognitive cost of a decision; **Value first, cost later** makes benefit legible before asking for commitment. Blue, typography, motion, and microcopy are useful only when they help a person move through money with more confidence.
-
-## 12. Principles
-
-The following are implementation principles derived from the verified surfaces, not quoted corporate doctrine:
-
-1. Separate product-system evidence from marketing-surface evidence.
-2. Make interaction blue functional rather than decorative.
-3. Preserve component states, especially disabled, loading, pressed, and keyboard focus.
-4. Prefer exact, readable typography over ornamental depth.
-5. Treat financial outcomes as explicit states with clear next actions.
-
-## 13. Personas
-
-These are first-party product contexts, not invented demographic personas.
-
-- **A person answering a financial question:** needs options translated into concrete, comparable choices rather than a dense form or open-ended prompt.
-- **A person evaluating value before effort:** needs the likely benefit made visible before consent, document upload, consultation, or payment is requested.
-- **A person recovering from an interrupted flow:** needs the current state, consequence, and next safe action stated explicitly, especially in insurance, payment, or account contexts.
-
-## 14. States
-
-| Component | Verified state contract |
-|---|---|
-| TDS Button | fill/weak, semantic color, loading, disabled, pressed, keyboard focus |
-| TDS Text Field | box/line/big/hero, focus, error, disabled, read-only |
-| TDS Agreement | checked, unchecked, disabled, nested hierarchy |
-| Marketing CTAs | default geometry captured; hover remains unclaimed |
-
-## 15. Motion & Easing
-
-No canonical motion duration or easing token is promoted in this revision. Preserve state clarity and reduced-motion compatibility, but label any exact animation curve or duration as a local extension until it is verified from an official component source.
+- “Create a `toss.im` weak marketing CTA using `#e8f3ff` background, `#1b64da` text, 40px height, and 7px…

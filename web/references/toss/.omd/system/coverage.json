@@ -1,0 +1,102 @@
+{
+  "checks": {
+    "assets_fonts_licenses": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": false
+    },
+    "bound_system_authority": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": true
+    },
+    "component_state_coverage": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": false
+    },
+    "contrast": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": false
+    },
+    "implementation_contract_complete": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": false
+    },
+    "opaque_extension_preservation": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": true
+    },
+    "portable_core_structure": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": true
+    },
+    "reduced_motion": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": false
+    },
+    "responsive_320_200": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": false
+    },
+    "token_reference_closure": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": false
+    },
+    "unknown_absence": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": true
+    }
+  },
+  "design_md_sha256": "90b4d65034b466aa80ee751f6ca74dfa4a23cae61ee9bc8338468392dfaa896c",
+  "graph_sha256": "cd0eb8d6f3e461e282f675c304a7e53c2d71a81909622e65e8ee93e21758fc32",
+  "groups": {
+    "components-states": {
+      "evidence": [
+        "migrated from web/references/toss/DESIGN.md into core section 'components-states'",
+        "migration report: dropped_segments=0, roundtrip_equal=True"
+      ],
+      "status": "covered"
+    },
+    "content-locales": {
+      "evidence": [
+        "migrated from web/references/toss/DESIGN.md into core section 'content-locales'",
+        "migration report: dropped_segments=0, roundtrip_equal=True"
+      ],
+      "status": "covered"
+    },
+    "experience": {
+      "evidence": [
+        "migrated from web/references/toss/DESIGN.md into core section 'experience'",
+        "migration report: dropped_segments=0, roundtrip_equal=True"
+      ],
+      "status": "covered"
+    },
+    "foundations": {
+      "evidence": [
+        "migrated from web/references/toss/DESIGN.md into core section 'foundations'",
+        "migration report: dropped_segments=0, roundtrip_equal=True"
+      ],
+      "status": "covered"
+    },
+    "governance": {
+      "evidence": [
+        "migrated from web/references/toss/DESIGN.md into core section 'governance'",
+        "migration report: dropped_segments=0, roundtrip_equal=True"
+      ],
+      "status": "covered"
+    },
+    "layout-platforms": {
+      "evidence": [
+        "migrated from web/references/toss/DESIGN.md into core section 'layout-platforms'",
+        "migration report: dropped_segments=0, roundtrip_equal=True"
+      ],
+      "status": "covered"
+    },
+    "typography-assets": {
+      "evidence": [
+        "migrated from web/references/toss/DESIGN.md into core section 'typography-assets'",
+        "migration report: dropped_segments=0, roundtrip_equal=True"
+      ],
+      "status": "covered"
+    }
+  },
+  "schema_version": "2.0.0"
+}
