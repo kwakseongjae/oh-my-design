@@ -81,6 +81,14 @@ const subscribeToHydration = () => () => {};
  * Deliberately phrased as what is missing, not as a warning badge. AGENTS.md forbids
  * putting `Partial`/warning chrome in place of content — the content stays exactly as it
  * is, and this sits beside it in the panel that already reports evidence.
+ *
+ * `motion_value_unsourced` is not in this map, and that is the point. It fires on 261 of
+ * the 440 references, and listing it beside a reference's own gaps says "others have
+ * evidence for this and you do not". They do not. A first-party check of every reference
+ * with a published design system found none that publishes a motion scale, and Toss's own
+ * documentation-query endpoint answered directly: the duration and easing values are not
+ * in the docs at all, they live inside the Figma UI Kit. That is a fact about the industry,
+ * not a defect in a reference, so it is told once, below, as what it is.
  */
 const ADVISORY_LABEL: Record<string, string> = {
   motion_value_unsourced: "Motion values here were not observed in any capture",
@@ -97,6 +105,12 @@ const ADVISORY_LABEL: Record<string, string> = {
 function advisoryText(code: string): string {
   return ADVISORY_LABEL[code] ?? code.replaceAll("_", " ");
 }
+
+/**
+ * The one advisory that is a catalogue-wide finding rather than a per-reference gap.
+ * Reported separately so that suppressing it from the list never means hiding it.
+ */
+const CATALOGUE_WIDE_ADVISORY = "motion_value_unsourced";
 
 export function DetailView({
   detail,
@@ -367,13 +381,13 @@ export function DetailView({
                 Needs work: {quality.reasonCodes.join(" · ").replaceAll("_", " ")}
               </p>
             )}
-            {quality.advisoryCodes.length > 0 && (
+            {quality.advisoryCodes.filter((code) => code !== CATALOGUE_WIDE_ADVISORY).length > 0 && (
               <div className="mt-2 border-t border-border/50 pt-2">
                 <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
                   Not backed by evidence
                 </p>
                 <ul className="mt-1 space-y-0.5">
-                  {quality.advisoryCodes.map((code) => (
+                  {quality.advisoryCodes.filter((code) => code !== CATALOGUE_WIDE_ADVISORY).map((code) => (
                     <li key={code} className="text-[11px] leading-relaxed text-muted-foreground">
                       {advisoryText(code)}
                       {/* The measured share, where we have it — a bare "most were not
@@ -388,6 +402,14 @@ export function DetailView({
                   ))}
                 </ul>
               </div>
+            )}
+            {quality.advisoryCodes.includes(CATALOGUE_WIDE_ADVISORY) && (
+              <p className="mt-2 border-t border-border/50 pt-2 text-[11px] leading-relaxed text-muted-foreground">
+                The motion values in this reference were not observed in a capture — and neither
+                were anyone&rsquo;s. No design system we checked publishes a duration or easing
+                scale; Toss states outright that its component motion lives in the Figma UI Kit
+                rather than in its documentation. Treat any exact curve here as a local default.
+              </p>
             )}
           </div>
         </section>
