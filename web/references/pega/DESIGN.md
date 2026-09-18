@@ -211,13 +211,17 @@ measurements and they stay. But they are the chrome of `design.pega.com` itself 
 masthead search field, its navigation rows, and a link on its home page styled as a call to
 action. Pega's Button is `form-controls/button`, and this reference has never opened it.
 
-Their `use:` strings now say so outright. That is as far as this pass goes, and the reason is
-worth stating: these three are carried in frontmatter `tokens.components`, which is what
-`/builder` renders as *this brand's* button and input, so the labelling does not reach the
-builder. Moving them out of `tokens.components` would fix that — and would orphan the 24
-dated `tokens.components.*` evidence claims that bind them to their capture. Trading 24
-provenance records for a rendering correction is an owner decision, not a cleanup, and it is
-left open.
+Their `use:` strings now say so outright, and that reaches a reader: `/builder` renders the
+`use:` line under the measured values, so the pega preview shows `dark-link-action` with
+"design.pega.com documentation-site home action (link-as-button class) — not a Pega UX Design
+System component" printed beneath it. The type heading above still reads BUTTONS, because that
+is the grouping the preview uses, but the item under it is labelled for what it is.
+
+This was briefly left open as a decision about moving the three out of `tokens.components`
+altogether, on the assumption that a `use:` string could not reach the builder. That
+assumption was wrong — it was checked by looking at the rendered page rather than reasoning
+about it — so the decision does not exist. Removing them would have orphaned the 24 dated
+`tokens.components.*` evidence claims that bind them to their capture, and bought nothing.
 
 `design.pega.com/components/` is cited below as a Tier 1 source and returns 200 with a full
 component index. Whoever captured it recorded the page's own chrome and not the components the
