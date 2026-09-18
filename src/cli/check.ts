@@ -18,6 +18,7 @@ export type BundledToolId =
   | 'check:render'
   | 'check:landing'
   | 'check:contrast'
+  | 'font:inline'
   | 'showcase'
   | 'setup:detect';
 
@@ -26,6 +27,7 @@ export const BUNDLED_TOOLS: Readonly<Record<BundledToolId, string>> = Object.fre
   'check:render': 'test-v2/tools/render-integrity.mjs',
   'check:landing': 'test-v2/tools/landing-integrity.mjs',
   'check:contrast': 'test-v2/tools/text-contrast.mjs',
+  'font:inline': 'test-v2/tools/font-inline.mjs',
   showcase: 'test-v2/tools/showcase.mjs',
   'setup:detect': 'scripts/omd-setup-detect.mjs',
 });

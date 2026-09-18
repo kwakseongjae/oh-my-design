@@ -134,6 +134,7 @@ function HeroSection({ tokens, homepageUrl }: { tokens: ParsedTokens; homepageUr
   const fallbackLogoUrl = identity.id ? getLogoFallbackUrl(identity.id) : null;
   const [logoSrc, setLogoSrc] = useState<string | null>(logoUrl ?? fallbackLogoUrl);
   const previewFamily = typography.family
+    && typography.runtimeStatus !== "unverified"
     ? resolveRuntimeFont(typography.family).cssFamily
     : undefined;
 
@@ -281,7 +282,9 @@ function ColorPaletteSection({ tokens, provenance }: { tokens: ParsedTokens; pro
 function TypographySection({ tokens, provenance }: { tokens: ParsedTokens; provenance?: SectionProvenance | null }) {
   const { typography } = tokens;
   const fonts = typography.fonts;
-  const runtimeFamilies = [typography.family, ...fonts.map((font) => font.raw), ...typography.hierarchy.map((tier) => tier.fontFamily)];
+  const runtimeFamilies = typography.runtimeStatus === "unverified"
+    ? []
+    : [typography.family, ...fonts.map((font) => font.raw), ...typography.hierarchy.map((tier) => tier.fontFamily)];
   const renderableHierarchy = typography.hierarchy.filter(
     (tier) => {
       const family = tier.fontFamily ?? typography.family;
@@ -349,7 +352,8 @@ function TypographySection({ tokens, provenance }: { tokens: ParsedTokens; prove
                 key={`${mention.raw}-${i}`}
                 font={lookupFont(mention.raw)}
                 role={mention.role}
-                fontFamilyForRender={resolveRuntimeFont(mention.raw).cssFamily}
+                fontFamilyForRender={mention.runtimeStatus === "unverified" ? "inherit" : resolveRuntimeFont(mention.raw).cssFamily}
+                runtimeStatus={mention.runtimeStatus}
               />
             ))}
           </div>

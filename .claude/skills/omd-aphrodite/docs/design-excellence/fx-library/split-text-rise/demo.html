@@ -1,0 +1,32 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — split-text-rise</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+.big{font-size:clamp(28px,6vw,52px);line-height:1.08;letter-spacing:-.035em;margin:0 0 8px;font-weight:650}
+.lede{font-size:17px;color:var(--mut);margin:0 0 8px;max-width:52ch;line-height:1.5}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:10px;padding:9px 16px;font:inherit;cursor:pointer;margin:18px 0 0}
+.tall{height:60vh;display:grid;place-items:center;color:var(--mut)}
+</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>split-text-rise <code>텍스트</code></h1>
+<p class="sub">단어(또는 문자)를 <code>overflow:hidden</code> 줄 안에서 밀어 올린다. 라이브러리 없이 24줄.</p>
+<h2>단어 단위 — 헤드라인</h2>
+<h3 class="big" data-fx-split-by="word" id="h1">문장은 한 번에 도착하지 않는다</h3>
+<p class="lede" data-fx-split-by="word" id="p1">단어 단위 stagger 는 읽는 순서를 따라간다. 문자 단위보다 거의 항상 낫다.</p>
+<button class="btn" id="go">다시 재생</button>
+<h2>블러 인</h2>
+<p class="lede fx-split--blur" data-fx-split-by="word" id="p2">초점이 맞아 들어오는 느낌. 블러는 단어 단위에서만 쓴다.</p>
+<h2>문자 단위 — 짧은 것에만</h2>
+<h3 class="big" data-fx-split-by="char" id="h2">3초</h3>
+<div class="tall">↓ 스크롤 구동</div>
+<h3 class="big fx-split--scroll" data-fx-split-by="word" id="h3">스크롤이 문장을 밀어 올린다</h3>
+<div class="tall">↑</div>
+</div>
+<script src="./snippet.js"></script>
+<script>
+fxLib.splitAll();
+const play=()=>['h1','p1','p2','h2'].forEach(id=>{const e=document.getElementById(id);e.removeAttribute('data-fx-split');requestAnimationFrame(()=>e.dataset.fxSplit='in');});
+play(); document.getElementById('go').addEventListener('click',play);
+</script>
+<script src="../_shell.js"></script></body></html>

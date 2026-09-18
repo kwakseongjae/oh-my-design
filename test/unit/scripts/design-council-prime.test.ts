@@ -168,6 +168,92 @@ describe('design-council-prime', () => {
     expect(ledger.summary.interview_required).toBe(false);
   });
 
+  it('preserves explicit Korean audience and completion-scope fields without generalizing their values', () => {
+    const audience = '자신이 나눌 책의 약속을 직접 기록하는 개인 사용자';
+    const scope = '로컬 브라우저에서 동작하는 단일 작업 화면 전체와 입력·편집·완료·오류 상태';
+    const { ledger } = fixture([
+      `대상 사용자: ${audience}`,
+      `완료 범위: ${scope}`,
+      '동네 책 나눔 약속 관리 화면을 만든다. 핵심 행동은 약속 저장이다.',
+    ].join('\n'), {
+      surface_inventory: [], audience_hypothesis: [], wow_moment_candidates: [],
+    }, { designMd: '# Project DESIGN.md\n' });
+
+    expect(ledger.decisions.find((item: { id: string }) => item.id === 'primary-audience')).toMatchObject({
+      proposed_value: audience,
+      disposition: 'auto',
+      confidence_basis: 'user-explicit-labeled-field',
+      evidence: ['task.md#line-1'],
+    });
+    expect(ledger.decisions.find((item: { id: string }) => item.id === 'exit-scope')).toMatchObject({
+      proposed_value: scope,
+      disposition: 'auto',
+      confidence_basis: 'user-explicit-labeled-field',
+      evidence: ['task.md#line-2'],
+    });
+  });
+
+  it('recognizes equivalent English intake labels', () => {
+    const { ledger } = fixture([
+      'Target audience: people recording their own neighborhood book-sharing commitments',
+      'Completion scope: one local-browser work screen including input, edit, completion, and error states',
+      'The primary action is Save commitment.',
+    ].join('\n'), {
+      surface_inventory: [], audience_hypothesis: [], wow_moment_candidates: [],
+    }, { designMd: '# Project DESIGN.md\n' });
+
+    expect(ledger.decisions.find((item: { id: string }) => item.id === 'primary-audience')).toMatchObject({
+      proposed_value: 'people recording their own neighborhood book-sharing commitments',
+      disposition: 'auto',
+      evidence: ['task.md#line-1'],
+    });
+    expect(ledger.decisions.find((item: { id: string }) => item.id === 'exit-scope')).toMatchObject({
+      proposed_value: 'one local-browser work screen including input, edit, completion, and error states',
+      disposition: 'auto',
+      evidence: ['task.md#line-2'],
+    });
+  });
+
+  it('does not invent an audience for the archived R2 brief', () => {
+    const { ledger } = fixture(
+      '로컬 브라우저용 동네 책 나눔 약속 관리 화면을 만든다. 로그인이나 서버 없이 나눔 예정 목록을 보고, 책 제목·동네·약속시간을 입력해 새 약속을 저장하고, 시간을 수정하거나 나눔 완료로 표시한다. 핵심 행동은 약속 저장이다. 모바일에서도 목록→입력→저장→수정→완료를 수행한다. 빈 목록, 잘못된 입력, 브라우저 저장 실패를 처리한다. Karrot DESIGN.md의 확인된 스타일을 사용하되 이 화면은 OmD의 비공식 원본 창작이다.',
+      { surface_inventory: [], audience_hypothesis: [], wow_moment_candidates: [] },
+      { designMd: '# Project DESIGN.md\n' },
+    );
+
+    expect(ledger.decisions.find((item: { id: string }) => item.id === 'primary-audience')).toMatchObject({
+      proposed_value: null,
+      disposition: 'interview',
+      confidence_basis: 'no-evidence',
+    });
+    expect(ledger.decisions.find((item: { id: string }) => item.id === 'exit-scope')).toMatchObject({
+      proposed_value: '로컬 브라우저용 동네 책 나눔 약속 관리 화면',
+      disposition: 'auto',
+      confidence_basis: 'user-explicit-local-screen-boundary',
+      evidence: ['task.md'],
+    });
+  });
+
+  it('keeps unresolved or repeated explicit fields at the interview boundary', () => {
+    const { ledger } = fixture([
+      '대상 사용자: 미정',
+      '대상 사용자: 개인 사용자',
+      '완료 범위: TBD',
+      '핵심 행동: 저장',
+    ].join('\n'), {
+      surface_inventory: [], audience_hypothesis: [], wow_moment_candidates: [],
+    }, { designMd: '# Project DESIGN.md\n' });
+
+    expect(ledger.decisions.find((item: { id: string }) => item.id === 'primary-audience')).toMatchObject({
+      disposition: 'interview',
+      reason: 'The explicit audience field is empty, unresolved, or repeated; do not infer its value from nearby keywords.',
+    });
+    expect(ledger.decisions.find((item: { id: string }) => item.id === 'exit-scope')).toMatchObject({
+      disposition: 'interview',
+      reason: 'The explicit completion-scope field is empty, unresolved, or repeated; do not infer its value from nearby keywords.',
+    });
+  });
+
   it('keeps explicitly declined systems local to the requested surface', () => {
     const { ledger } = fixture(
       '새 온보딩 화면을 처음부터 만들되 디자인 시스템 없이 이번 화면만 완성해줘.',

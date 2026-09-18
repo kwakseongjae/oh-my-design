@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { ChevronDown, ExternalLink, ShieldCheck, ShieldAlert } from "lucide-react";
 import type { ReferenceDetailAstContract } from "@/lib/references/detail-projection";
+import type { CoreConsumerContract } from "@/lib/references/core-consumer-contract";
 import { trackEvidenceToggle } from "@/lib/builder/analytics";
 
 const STATUS_LABEL = {
@@ -30,9 +31,11 @@ function readableClaimPath(path: string): string {
 export function ReferenceEvidenceDrawer({
   reference,
   contract,
+  coreContract,
 }: {
   reference: string;
   contract?: ReferenceDetailAstContract;
+  coreContract?: CoreConsumerContract;
 }) {
   const [open, setOpen] = useState(false);
   const evidence = contract?.evidence ?? null;
@@ -41,6 +44,72 @@ export function ReferenceEvidenceDrawer({
     () => new Map(evidence?.sources.map((source) => [source.id, source]) ?? []),
     [evidence],
   );
+
+  if (coreContract) {
+    const evidenceCount = new Set(coreContract.claims.flatMap((claim) => claim.evidence)).size;
+    const unavailableFonts = coreContract.fontRoles.filter(
+      (role) => role.runtimeAvailability.status === "unverified",
+    ).length;
+    const toggle = () => {
+      const next = !open;
+      setOpen(next);
+      trackEvidenceToggle({ reference, open: next });
+    };
+    return (
+      <div className="shrink-0 border-b border-border/40 dark:border-border">
+        <button
+          type="button"
+          onClick={toggle}
+          aria-expanded={open}
+          className="flex min-h-9 w-full items-center gap-2 px-3 py-2 text-left text-xs transition-colors hover:bg-muted/40 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-ring/50"
+        >
+          <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
+          <span className="font-medium text-foreground">Evidence</span>
+          <span className="rounded-4xl bg-muted px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
+            Core transaction · {coreContract.quality.status === "covered" ? "covered" : "incomplete"}
+          </span>
+          <span className="ml-auto hidden truncate text-[10px] text-muted-foreground sm:block">
+            {coreContract.claims.length} claims · {evidenceCount} bindings
+          </span>
+          <ChevronDown className={`h-3.5 w-3.5 shrink-0 text-muted-foreground transition-transform ${open ? "rotate-180" : ""}`} />
+        </button>
+        {open ? (
+          <div className="max-h-[min(360px,45dvh)] overflow-auto bg-muted/20 px-3 py-3">
+            <dl className="grid grid-cols-2 gap-2 text-[11px] sm:grid-cols-4">
+              <div className="rounded-lg border border-border/40 bg-background px-2.5 py-2">
+                <dt className="text-muted-foreground">Claims</dt>
+                <dd className="mt-0.5 font-medium text-foreground">{coreContract.claims.length}</dd>
+              </div>
+              <div className="rounded-lg border border-border/40 bg-background px-2.5 py-2">
+                <dt className="text-muted-foreground">Bindings</dt>
+                <dd className="mt-0.5 font-medium text-foreground">{evidenceCount}</dd>
+              </div>
+              <div className="rounded-lg border border-border/40 bg-background px-2.5 py-2">
+                <dt className="text-muted-foreground">Explicit absences</dt>
+                <dd className="mt-0.5 font-medium text-foreground">{coreContract.explicitAbsences.length}</dd>
+              </div>
+              <div className="rounded-lg border border-border/40 bg-background px-2.5 py-2">
+                <dt className="text-muted-foreground">Live font checks pending</dt>
+                <dd className="mt-0.5 font-medium text-foreground">{unavailableFonts}</dd>
+              </div>
+            </dl>
+            {coreContract.claims.length > 0 ? (
+              <div className="mt-3 divide-y divide-border/40 overflow-hidden rounded-lg border border-border/40 bg-background">
+                {coreContract.claims.map((claim) => (
+                  <div key={claim.claimPath} className="px-2.5 py-2 text-[10px]">
+                    <div className="font-mono text-foreground">{readableClaimPath(claim.claimPath)}</div>
+                    <div className="mt-0.5 text-muted-foreground">
+                      {claim.sourceClass.replace(/-/g, " ")} · {claim.evidence.join(", ")}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        ) : null}
+      </div>
+    );
+  }
 
   if (!contract || !quality) return null;
 

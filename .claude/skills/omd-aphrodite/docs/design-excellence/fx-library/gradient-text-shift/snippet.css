@@ -1,0 +1,21 @@
+/* fx: gradient-text-shift — 문자 안을 흐르는 그라디언트. 구현: oh-my-design (MIT). */
+@property --fx-gt-p{syntax:"<percentage>";inherits:false;initial-value:0%}
+.fx-gtext{
+  background-image:linear-gradient(var(--fx-gt-angle,96deg),
+    var(--fx-gt-a,currentColor) 0%, var(--fx-gt-b,#7c9bff) 42%, var(--fx-gt-a,currentColor) 84%);
+  background-size:var(--fx-gt-size,240%) 100%;
+  background-position:var(--fx-gt-p) 0;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  /* 그라디언트가 실패해도 글자는 반드시 읽혀야 한다 */
+  -webkit-text-fill-color:transparent}
+@supports not ((background-clip:text) or (-webkit-background-clip:text)){
+  .fx-gtext{color:var(--fx-gt-a,currentColor);-webkit-text-fill-color:currentColor;background-image:none}}
+/* ① 상시 흐름 — 아주 느리게만 */
+.fx-gtext--flow{animation:fx-gt-flow var(--fx-gt-dur,9s) linear infinite}
+/* ② 지나가는 하이라이트 한 번 (권장) */
+.fx-gtext--pass:hover,.fx-gtext--pass[data-fx-gt="run"]{animation:fx-gt-flow var(--fx-gt-dur,1.1s) cubic-bezier(.3,.6,.3,1) 1}
+@keyframes fx-gt-flow{from{--fx-gt-p:0%}to{--fx-gt-p:100%}}
+/* ③ 스크롤이 그라디언트를 끌고 간다 */
+@supports (animation-timeline:view()){
+  .fx-gtext--scroll{animation:fx-gt-flow linear both;animation-timeline:view();animation-range:entry 10% cover 60%}}
+@media (prefers-reduced-motion:reduce){.fx-gtext{animation:none!important;--fx-gt-p:38%}}

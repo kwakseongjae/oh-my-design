@@ -20,6 +20,7 @@ import { Markdown } from "@/components/markdown";
 import { ReferenceEvidenceDrawer } from "@/components/reference-evidence-drawer";
 import {
   createReferenceFormatArtifacts,
+  createCoreReferenceFormatArtifacts,
   REFERENCE_FORMATS,
   type ReferenceFormat,
   type ReferenceFormatArtifact,
@@ -115,6 +116,14 @@ export function PreviewExportView({
   }, [detail.referenceAst, overrides.primaryColor, overrides.fontFamily, overrides.borderRadius, overrides.headingWeight]);
 
   const formatArtifacts = useMemo(() => {
+    if (detail.coreContract) {
+      return createCoreReferenceFormatArtifacts({
+        referenceId: detail.id,
+        designMd,
+        contract: detail.coreContract,
+        overrides,
+      });
+    }
     if (!detail.referenceAst) return null;
     return createReferenceFormatArtifacts({
       referenceId: detail.id,
@@ -122,7 +131,7 @@ export function PreviewExportView({
       tokens: detail.referenceAst.tokens,
       claimOverrides,
     });
-  }, [detail.id, detail.referenceAst, designMd, claimOverrides]);
+  }, [detail.id, detail.referenceAst, detail.coreContract, designMd, claimOverrides, overrides]);
 
   const designMdArtifact: ReferenceFormatArtifact = {
     id: "designmd",
@@ -132,7 +141,7 @@ export function PreviewExportView({
     mime: "text/markdown",
   };
   const activeArtifact = formatArtifacts?.[sourceFormat] ?? designMdArtifact;
-  const availableFormats = detail.referenceAst ? REFERENCE_FORMATS : (["designmd"] as const);
+  const availableFormats = detail.referenceAst || detail.coreContract ? REFERENCE_FORMATS : (["designmd"] as const);
 
   const refName = detail.id.charAt(0).toUpperCase() + detail.id.slice(1);
   const ds = getDesignSystem(detail.id);
@@ -384,7 +393,7 @@ export function PreviewExportView({
             </div>
           </div>}
 
-          <ReferenceEvidenceDrawer reference={detail.id} contract={detail.referenceAst} />
+          <ReferenceEvidenceDrawer reference={detail.id} contract={detail.referenceAst} coreContract={detail.coreContract} />
 
           <div
             className="shrink-0 overflow-x-auto border-b border-border/40 px-3 py-2 dark:border-border"
@@ -414,6 +423,12 @@ export function PreviewExportView({
               })}
             </div>
           </div>
+
+          {activeArtifact.notice && (
+            <p className="shrink-0 border-b border-border/40 px-3 py-2 text-[10px] leading-relaxed text-muted-foreground dark:border-border">
+              {activeArtifact.notice}
+            </p>
+          )}
 
           {/* DESIGN.md content. Both modes now read the same vendor-neutral
               Core v2 projection. Raw exposes the stable section anchors; the

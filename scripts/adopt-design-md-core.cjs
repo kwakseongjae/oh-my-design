@@ -11,6 +11,7 @@ const path = require('node:path');
 const { spawnSync } = require('node:child_process');
 const {
   FORMAT_VERSION,
+  MIGRATION_EXTENSION,
   evaluatePortableCore,
   inspectDesignMd,
   renderCore,
@@ -41,6 +42,7 @@ const TRANSACTION_KIND = 'design-md-core-project-adoption-transaction';
 const REPORT_KIND = 'design-md-core-project-adoption-report';
 const JOURNAL_NAME = 'core-adoption-transaction.json';
 const PROJECT_VALIDATOR = path.join(__dirname, 'validate-project-design-system.cjs');
+const ADOPTION_TARGETS = new Set(['project-system', 'reference-catalog']);
 
 function stableJson(value) {
   if (Array.isArray(value)) return value.map(stableJson);
@@ -269,18 +271,20 @@ function expectedPackageHashes(pkg) {
   );
 }
 
-function createCheckpointRequest(pkg) {
+function createCheckpointRequest(pkg, adoptionTarget = 'project-system') {
+  if (!ADOPTION_TARGETS.has(adoptionTarget)) throw new Error(`unsupported adoption target: ${adoptionTarget}`);
   return {
     schema_version: FORMAT_VERSION,
     kind: CHECKPOINT_REQUEST_KIND,
     status: 'approval-required',
+    adoption_target: adoptionTarget,
     source_package_tree_sha256: pkg.snapshot.sha256,
     source_package: expectedPackageHashes(pkg),
   };
 }
 
-function createCheckpointReceipt(pkg, reviewer) {
-  const request = createCheckpointRequest(pkg);
+function createCheckpointReceipt(pkg, reviewer, adoptionTarget = 'project-system') {
+  const request = createCheckpointRequest(pkg, adoptionTarget);
   return {
     schema_version: FORMAT_VERSION,
     kind: CHECKPOINT_KIND,
@@ -306,7 +310,7 @@ function assertPackageUnchanged(pkg) {
   }
 }
 
-function prepareCheckpoint(pkg, outputPath, reviewer) {
+function prepareCheckpoint(pkg, outputPath, reviewer, adoptionTarget = 'project-system') {
   if (typeof reviewer !== 'string' || !reviewer.trim()) {
     throw new Error('--reviewer <id> must identify the approving project owner');
   }
@@ -322,7 +326,7 @@ function prepareCheckpoint(pkg, outputPath, reviewer) {
     throw new Error('checkpoint output must live outside the immutable source package');
   }
 
-  const receipt = createCheckpointReceipt(pkg, reviewer.trim());
+  const receipt = createCheckpointReceipt(pkg, reviewer.trim(), adoptionTarget);
   const checkpointFindings = validateCoreProjectCheckpoint(receipt);
   if (checkpointFindings.length) {
     throw new Error(`refusing to prepare an invalid checkpoint receipt: ${findingText('project checkpoint schema', checkpointFindings)}`);
@@ -364,6 +368,7 @@ function prepareCheckpoint(pkg, outputPath, reviewer) {
     kind: 'design-md-core-project-adoption-checkpoint-preparation',
     status: 'prepared',
     approved: true,
+    adoption_target: adoptionTarget,
     authority: receipt.attestation.authority,
     checkpoint_receipt: output,
     checkpoint_receipt_sha256: receiptSha256,
@@ -449,7 +454,7 @@ function validatePackage(pkg) {
   return { conformance };
 }
 
-function validateCheckpoint(checkpoint, pkg) {
+function validateCheckpoint(checkpoint, pkg, adoptionTarget = 'project-system') {
   const receipt = checkpoint.value;
   const schemaFindings = validateCoreProjectCheckpoint(receipt);
   if (schemaFindings.length) {
@@ -464,7 +469,7 @@ function validateCheckpoint(checkpoint, pkg) {
     || !receipt.attestation.authority.identifier.trim()) {
     throw new Error('checkpoint attestation must explicitly approve with an identified project-owner authority');
   }
-  const expectedRequest = createCheckpointRequest(pkg);
+  const expectedRequest = createCheckpointRequest(pkg, adoptionTarget);
   if (JSON.stringify(stableJson(receipt.request)) !== JSON.stringify(stableJson(expectedRequest))) {
     throw new Error('checkpoint request is stale or was not reproduced from the exact compiler package');
   }
@@ -484,6 +489,51 @@ function validateCheckpoint(checkpoint, pkg) {
     throw new Error('checkpoint request source_package must contain exactly the six artifact hashes');
   }
   return receipt;
+}
+
+function assertReferenceMigrationLedger(pkg) {
+  const extension = pkg.graph.value?.extensions?.[MIGRATION_EXTENSION];
+  const receipt = pkg.adoptionReceipt.value;
+  if (!isPlainObject(extension) || !Array.isArray(extension.original_segments)
+    || !isSha(extension.source_sha256)) {
+    throw new Error('reference-catalog adoption requires a hash-bound lossless migration ledger');
+  }
+  if (Object.hasOwn(extension, 'projection_observation_graph_sha256')) {
+    throw new Error('reference-catalog adoption requires the migration observation fast path to be disabled');
+  }
+  const reconstructed = extension.original_segments.map((segment, index) => {
+    if (!isPlainObject(segment) || typeof segment.content !== 'string'
+      || !isSha(segment.sha256) || sha256(segment.content) !== segment.sha256) {
+      throw new Error(`reference-catalog migration segment ${index} is invalid or changed`);
+    }
+    return segment.content;
+  }).join('');
+  if (sha256(reconstructed) !== extension.source_sha256) {
+    throw new Error('reference-catalog migration ledger does not reconstruct the exact source bytes');
+  }
+  if (!isPlainObject(receipt.migration)
+    || receipt.migration.source_sha256 !== extension.source_sha256
+    || receipt.migration.preserved_extension_sha256 !== sha256(jsonBytes(extension))
+    || receipt.migration.observation_fast_path_disabled !== true
+    || receipt.migration.dropped_segments !== 0
+    || receipt.migration.source_reconstruction_equal !== true) {
+    throw new Error('reference-catalog compiler receipt does not bind the lossless migration ledger');
+  }
+  return { extension, sourceSha256: extension.source_sha256 };
+}
+
+function assertAdoptionTargetPackage(pkg, adoptionTarget) {
+  const identityKind = pkg.graph.value?.identity?.kind;
+  if (adoptionTarget === 'project-system') {
+    if (identityKind !== 'project-system') {
+      throw new Error(`project-system adoption refuses graph identity.kind=${String(identityKind)}`);
+    }
+    return null;
+  }
+  if (identityKind !== 'evidence-backed-reconstruction') {
+    throw new Error(`reference-catalog adoption requires graph identity.kind=evidence-backed-reconstruction; found ${String(identityKind)}`);
+  }
+  return assertReferenceMigrationLedger(pkg);
 }
 
 function assertProjectRoot(projectRoot) {
@@ -591,6 +641,39 @@ function runProjectProof(pkg, projectRoot, stageRoot, replacing) {
     throw new Error(`provider-free project proof failed: ${JSON.stringify(proof.value.findings ?? [])}`);
   }
   return proof;
+}
+
+function runReferenceCatalogProof(pkg, stageRoot) {
+  const migration = assertReferenceMigrationLedger(pkg);
+  const runDir = path.join(stageRoot, '.omd/reference-catalog-adoption-proof');
+  fs.mkdirSync(runDir, { recursive: true });
+  const proofValue = {
+    schema_version: FORMAT_VERSION,
+    kind: 'design-md-core-reference-catalog-adoption-proof',
+    pass: true,
+    authority_mode: 'core-v2-reference-catalog',
+    profile: 'portable-core',
+    conformance_level: 'bound-system',
+    design_md_sha256: pkg.files.design_md.sha256,
+    graph_sha256: pkg.files.graph.sha256,
+    provenance_sha256: pkg.files.provenance.sha256,
+    coverage_sha256: pkg.files.coverage.sha256,
+    manifest_sha256: pkg.files.manifest.sha256,
+    source_reconstruction: {
+      sha256: migration.sourceSha256,
+      equal: true,
+      dropped_segments: 0,
+    },
+  };
+  const proofPath = path.join(runDir, 'proof.json');
+  fs.writeFileSync(proofPath, jsonBytes(proofValue), { encoding: 'utf8', flag: 'wx' });
+  return readJsonFile(proofPath, 'reference-catalog adoption proof');
+}
+
+function runAdoptionProof(pkg, projectRoot, stageRoot, replacing, adoptionTarget) {
+  return adoptionTarget === 'reference-catalog'
+    ? runReferenceCatalogProof(pkg, stageRoot)
+    : runProjectProof(pkg, projectRoot, stageRoot, replacing);
 }
 
 function transactionPaths(projectRoot, transactionId) {
@@ -886,12 +969,14 @@ function assertSourceUnchanged(pkg, checkpoint) {
   }
 }
 
-function createReport(transactionId, pkg, checkpoint, proof, oldState, newState, recovery, reportPath) {
+function createReport(transactionId, pkg, checkpoint, proof, oldState, newState, recovery, reportPath, adoptionTarget) {
   return {
     schema_version: FORMAT_VERSION,
     kind: REPORT_KIND,
     status: 'adopted',
     approved: true,
+    adoption_target: adoptionTarget,
+    conformance_level: proof.value.conformance_level ?? 'proven-system',
     authority: checkpoint.value.attestation.authority,
     transaction_id: transactionId,
     recovery,
@@ -911,11 +996,13 @@ function createReport(transactionId, pkg, checkpoint, proof, oldState, newState,
       pass: true,
       authority_mode: proof.value.authority_mode,
       profile: proof.value.profile,
+      conformance_level: proof.value.conformance_level ?? 'proven-system',
     },
   };
 }
 
-function adoptPackage(packageRoot, projectRoot, checkpointPath) {
+function adoptPackage(packageRoot, projectRoot, checkpointPath, adoptionTarget = 'project-system') {
+  if (!ADOPTION_TARGETS.has(adoptionTarget)) throw new Error(`unsupported adoption target: ${adoptionTarget}`);
   const destination = assertProjectRoot(projectRoot);
   const recovered = recoverInterruptedTransaction(destination);
   // Re-run destination preflight after recovery because it may have restored
@@ -925,7 +1012,8 @@ function adoptPackage(packageRoot, projectRoot, checkpointPath) {
   const checkpoint = readJsonFile(checkpointPath, 'checkpoint receipt');
   assertNoAlias(pkg.root, destination, checkpoint.path);
   validatePackage(pkg);
-  validateCheckpoint(checkpoint, pkg);
+  validateCheckpoint(checkpoint, pkg, adoptionTarget);
+  assertAdoptionTargetPackage(pkg, adoptionTarget);
 
   const transactionId = crypto.randomBytes(8).toString('hex');
   const paths = transactionPaths(destination, transactionId);
@@ -944,7 +1032,7 @@ function adoptPackage(packageRoot, projectRoot, checkpointPath) {
     fs.mkdirSync(paths.stageRoot, { recursive: true });
     copyPackageToStage(pkg, paths.stageRoot);
     const replacing = oldState.design.exists || oldState.system.exists;
-    const proof = runProjectProof(pkg, destination, paths.stageRoot, replacing);
+    const proof = runAdoptionProof(pkg, destination, paths.stageRoot, replacing, adoptionTarget);
     const newState = {
       design: { exists: true, sha256: sha256(fs.readFileSync(paths.stageDesign)) },
       system: { exists: true, sha256: recursiveSnapshot(paths.stageSystem, { label: 'staged .omd/system' }).sha256 },
@@ -959,6 +1047,7 @@ function adoptPackage(packageRoot, projectRoot, checkpointPath) {
       newState,
       recovered,
       reportPath,
+      adoptionTarget,
     );
     const reportBytes = jsonBytes(report);
     fs.writeFileSync(paths.stagedReport, reportBytes, { encoding: 'utf8', flag: 'wx' });
@@ -1048,6 +1137,7 @@ function parseArgs(argv) {
     checkpointReceipt: null,
     prepareCheckpoint: null,
     reviewer: null,
+    adoptionTarget: 'project-system',
     authorityTransitionApproved: false,
     help: false,
   };
@@ -1064,6 +1154,12 @@ function parseArgs(argv) {
       index += 1;
     } else if (value === '--reviewer') {
       options.reviewer = requiredValue(argv, index, '--reviewer');
+      index += 1;
+    } else if (value === '--adoption-target') {
+      options.adoptionTarget = requiredValue(argv, index, '--adoption-target');
+      if (!ADOPTION_TARGETS.has(options.adoptionTarget)) {
+        throw new Error(`--adoption-target must be one of: ${[...ADOPTION_TARGETS].join(', ')}`);
+      }
       index += 1;
     } else if (value === '--authority-transition-approved') {
       options.authorityTransitionApproved = true;
@@ -1084,10 +1180,14 @@ function help() {
   return [
     'Usage: adopt-design-md-core <compiled-package-dir> --project-root <dir> --checkpoint-receipt <json>',
     '       adopt-design-md-core <compiled-package-dir> --prepare-checkpoint <fresh-json> --reviewer <id> --authority-transition-approved',
+    '       [--adoption-target project-system|reference-catalog]',
     '',
     'Installs one compiler-produced Portable Core package into a project only',
     'after an identified project-owner checkpoint receipt approves the exact six',
     'source artifact hashes. No provider, model, browser, or network is executed.',
+    'The adoption target is part of the hash-bound checkpoint request. The',
+    'reference-catalog target must be selected explicitly and requires an',
+    'evidence-backed reconstruction with an exact lossless migration ledger.',
     '',
     `Checkpoint kind: ${CHECKPOINT_KIND}`,
     'The checkpoint contains a deterministic approval-required request and an',
@@ -1132,7 +1232,7 @@ function run(argv = process.argv.slice(2)) {
       }
       const pkg = loadPackage(options.packageRoot);
       validatePackage(pkg);
-      const result = prepareCheckpoint(pkg, options.prepareCheckpoint, options.reviewer);
+      const result = prepareCheckpoint(pkg, options.prepareCheckpoint, options.reviewer, options.adoptionTarget);
       process.stdout.write(jsonBytes(result));
       return 0;
     }
@@ -1141,7 +1241,12 @@ function run(argv = process.argv.slice(2)) {
     }
     if (!options.projectRoot) throw new Error('--project-root <dir> is required');
     if (!options.checkpointReceipt) throw new Error('--checkpoint-receipt <json> is required');
-    const report = adoptPackage(options.packageRoot, options.projectRoot, options.checkpointReceipt);
+    const report = adoptPackage(
+      options.packageRoot,
+      options.projectRoot,
+      options.checkpointReceipt,
+      options.adoptionTarget,
+    );
     process.stdout.write(jsonBytes(report));
     return 0;
   } catch (error) {
@@ -1154,6 +1259,7 @@ if (require.main === module) process.exitCode = run();
 
 module.exports = {
   CHECKPOINT_KIND,
+  ADOPTION_TARGETS,
   PACKAGE_FILES,
   REPORT_KIND,
   adoptPackage,
@@ -1162,6 +1268,8 @@ module.exports = {
   expectedPackageHashes,
   loadPackage,
   prepareCheckpoint,
+  assertAdoptionTargetPackage,
+  assertReferenceMigrationLedger,
   recoverInterruptedTransaction,
   run,
   transactionPaths,

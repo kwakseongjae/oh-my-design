@@ -1,0 +1,237 @@
+{
+  "created_at": "2026-09-07T07:51:18.193026+00:00",
+  "head": "15ff013933b37d1800e05c75e7680ed17e56f94b",
+  "patch_sha256": "e9acd04c859afbb804db96f2e4e8aa53c1ef08cb25511a70f6b5e1806f3d2f41",
+  "archive_sha256": "46609b8728229507c48ee13a5b3a620f29000092aa34173ba21ed6f305ecf3bf",
+  "files": [
+    {
+      "path": ".claude/skills/omd-aphrodite/SKILL.md",
+      "sha256": "ea4ddd6187613c0c568bd079d8036ca41020326db1777e0ac7777c49e78597b1"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "b891e40c9c07051c572e6ec665ce6e55e8357082e75f7ac268d8d03306411791"
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/config/asset-generation-four-arm-v0.1.json",
+      "sha256": "0492329a10ba2e94e8cb65d414b3e8dac376d19d98baa3d3d9ad14522d2125ea"
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/scripts/test-asset-generation-contract.mjs",
+      "sha256": "633b24e49d465d4fcb5241a7f505f2ac56ad0a3ca5640f0b65fe1c8bfcaf9c49"
+    },
+    {
+      "path": "benchmarks/ui-resolve-bench/scripts/validate-asset-generation-contract.mjs",
+      "sha256": "6cf78708309a1196269ab93b89f91243c5c03b17a091812c691d859c021ee3e8"
+    },
+    {
+      "path": "docs/APHRODITE_HANDOVER.md",
+      "sha256": "dcdd2087784a778dc059636557a0bc2edc2ba7f417cf0c07911dd7a231792516"
+    },
+    {
+      "path": "docs/APHRODITE_REBOOT_2026-09-07.md",
+      "sha256": "33c84f72c51aaed8e1e64ac92c2bce53065d7f428602ec0a0ed47089850445ca"
+    },
+    {
+      "path": "docs/BENCHMARK_RESTART_2026-09-07.md",
+      "sha256": "f7bd917d57015db480b8975cc0a64ee606745640d029e19f6edd6d0613ee5ca7"
+    },
+    {
+      "path": "docs/CURRENT_STATE.md",
+      "sha256": "c5378a9ed2a50172fdff29189db2bca476d022e2fd618be4438e9fa3b6ebd300"
+    },
+    {
+      "path": "docs/JOURNAL.md",
+      "sha256": "cbab8804b38579448b3e3c579b2cc23dc3d181be85d27e63b32f8cd345f6a4b0"
+    },
+    {
+      "path": "docs/OMD_EXECUTION_BOARD_2026-09-07.json",
+      "sha256": "5da6919f4d9b7a23a7b1f4f0a81b45ca365dc8e7f96b427975216aba17cd3e98"
+    },
+    {
+      "path": "docs/OMD_EXECUTION_PLAN_2026-09-07.md",
+      "sha256": "71c2d520ba053e2bafaa1e588ff2f1c5cd948b6f3158a470ceab63e805552766"
+    },
+    {
+      "path": "docs/archive/CURRENT_STATE-2026-09-07-before-audit.md",
+      "sha256": "42340e338ca0705d875f9b5240fb1ca496a45cbed307de1aaf3ec22e88d752f7"
+    },
+    {
+      "path": "docs/handover/x-vercel-designmd-campaign.md",
+      "sha256": "0f0639d6a73158504e9fba83e0191a0a2b2f746e977130b155897332415c51b6"
+    },
+    {
+      "path": "docs/reviews/evidence/grok-parallel-preflight-2026-09-07/discovery-receipt.json",
+      "sha256": "b9c761890ab1b7c417da344993ebee3050e1c3b3944d348f2185a6b01ce0a627"
+    },
+    {
+      "path": "docs/reviews/evidence/runtime-access-preflight-2026-09-07.json",
+      "sha256": "af19068e7208b1d7a145274129cd13d261d9283ccaba240469b9ecfc5640b809"
+    },
+    {
+      "path": "docs/reviews/evidence/worker-readiness-2026-09-07.json",
+      "sha256": "817b2f23b59fbb65a6e752e7407ce9c2d4a11907c14e0a9c942f3e728836eef8"
+    },
+    {
+      "path": "docs/reviews/execution-readiness-2026-09-07.md",
+      "sha256": "eabfe2cf58754030bc7894a3304c6df54473ff5cfac229fe0e5649ecef3e9816"
+    },
+    {
+      "path": "docs/reviews/omd-restart-audit-2026-09-07.md",
+      "sha256": "e73f726e1029eb9224c7bf849caaac6a9e9bf58ead9874e27294350ac86a21ea"
+    },
+    {
+      "path": "docs/reviews/runtime-access-preflight-2026-09-07.md",
+      "sha256": "b64835a11a08dd2426682f43cbe93960cd4f413596535453c4ac51dd325129d5"
+    },
+    {
+      "path": "package.json",
+      "sha256": "a16200cd6b7a14e3f94a746bfe54a00381e6ca3d96f4aed5c7256de9fbb9dd72"
+    },
+    {
+      "path": "src/cli/doctor.ts",
+      "sha256": "50100c45a5448f7d3ca23501e305e33807def737239be46d93dab9a927239cab"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/hallmark/rep-1/manifest.json",
+      "sha256": "0ebe4be81088b2166bafdfe55ff7950314ab6096f527cb79b875fda372999870"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/hallmark/rep-1/verify.json",
+      "sha256": "d6dd1ec5d55e9545f50be56b88f33373439eb0787e990e26904c78a18c69a426"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/hallmark/rep-2/manifest.json",
+      "sha256": "9e7088d0d2725713fce485c034d17061d168f57494bae544dabafeb8b82b42da"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/hallmark/rep-2/verify.json",
+      "sha256": "97cf2e25a5e6e335e6e734fd13cf62a7eb866450f54d4183d5ed555c9ae763c9"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/hallmark/rep-3/manifest.json",
+      "sha256": "39a45ac39372f4411c2b3a8c7be355e2ba704ffa282cdc9bd9bf6897b43da6b6"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/hallmark/rep-3/verify.json",
+      "sha256": "b2d32db72392d0744f3336cb45ca44002c2297ab90b886808a0767c2708b4a06"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/hallmark/rep-4/manifest.json",
+      "sha256": "a73daf07a199cadf977bbecc9517067ef470f909d3734899970a069ed3398607"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/hallmark/rep-4/verify.json",
+      "sha256": "17058db75f1faef71d7c325f34230f0cdb7648fc265f2ccc207d610d3d9c90f2"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/omd/rep-1/manifest.json",
+      "sha256": "f87a4f41415ade132819b298c3c42e3b4af136b2b66ee715f905bd0cd35f68a7"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/omd/rep-1/verify.json",
+      "sha256": "7526a8a8c607f54c0572100d78f3c4248f02b41b351d439f520614cb250c609c"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/omd/rep-2/manifest.json",
+      "sha256": "bad943646e1369bbc299da75d98f55332a79f39e7b68483a90d8e6d689d28e13"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/omd/rep-2/verify.json",
+      "sha256": "05bfe5ff840914b3ef3526bd76ad027a8183e1d6eaef6f5eb7b596b4c1831ee2"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/omd/rep-3/manifest.json",
+      "sha256": "72953eb42d0c4c13ece2265134ab1a1f5a0accd4b8d2d79692bd2d327f3a173b"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/omd/rep-3/verify.json",
+      "sha256": "066c188c1be261210af203fb1db25e7c528ab61cd390b6eaf2f46eb1318cb452"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/omd/rep-4/manifest.json",
+      "sha256": "96d3823079a2abc3ae6de1dee34883bc328a13edd8aca4e3a3688cacfafbc737"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/omd/rep-4/verify.json",
+      "sha256": "72e228d0e388bf0f55fce751426f9919fd46cdf76a2462c28e4ee71116705beb"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/uiuxpromax/rep-1/manifest.json",
+      "sha256": "d8355de4b23d297f969a8824958ad539398fb25c00c0aeb0ffdfdc049d25f878"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/uiuxpromax/rep-1/verify.json",
+      "sha256": "8bf3ba111c4a7ed424c1a77f1ec502669c7d3fdae75d73dc040018218d1c9818"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/uiuxpromax/rep-2/manifest.json",
+      "sha256": "dfc95d395b718789263bde476926514e8e83024c18d0430c9a806844a69c38cd"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/uiuxpromax/rep-2/verify.json",
+      "sha256": "150dd9ffa2142a8401023743fe341efbe3ef0f9cd25de2ed5ddfc2c4602f9238"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/uiuxpromax/rep-3/manifest.json",
+      "sha256": "d702758062c3eea62ad1e8ce6a2c0296e469603d28bec3689e537b378df16d3b"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/uiuxpromax/rep-3/verify.json",
+      "sha256": "5daf462efe2cc7ad0f2e56000fa07cc18c3e7dc4d663411a189a0e327ed3ef03"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/uiuxpromax/rep-4/manifest.json",
+      "sha256": "39cb9dc5e7f1648337fe21f59e0f4fef9a55452f9eac9675bf5f441b1ac3528a"
+    },
+    {
+      "path": "test-v2/90-comparison/captures/lane-a/wanted/uiuxpromax/rep-4/verify.json",
+      "sha256": "f0238963e178a11969499b8329228602cc73bd51b04a6611ac76c02f43f5b98a"
+    },
+    {
+      "path": "test-v2/content-runs/aphrodite/higgsgen/research/r4/scale-oneshot.json",
+      "sha256": "a3afb71155aa1fd2db4a674d40cf72b57f969543e14f1e01c8ae444ea80cb62b"
+    },
+    {
+      "path": "test-v2/content-runs/aphrodite/higgsgen/research/r4/sp-g1.json",
+      "sha256": "64e218285ef395e4dd6d9a6d839b9bf618ada35843121abc3c5be6f049947847"
+    },
+    {
+      "path": "test-v2/content-runs/aphrodite/higgsgen/research/r4/sp-g2.json",
+      "sha256": "1a8b6f84db3f841e99f258c3e0bbdb125318b4c7b69664db66398c18df327119"
+    },
+    {
+      "path": "test-v2/content-runs/aphrodite/higgsgen/research/r4/sp-g3.json",
+      "sha256": "4adf31dd3212a7f89619fa2900737d4ce0e5e206bcc8146567ce2d167631a297"
+    },
+    {
+      "path": "test-v2/content-runs/aphrodite/higgsgen/research/r4/sp-g4.json",
+      "sha256": "98f004a8780abf04c1d064708cebf9e6320206519c0aea226b2245605a7cd916"
+    },
+    {
+      "path": "test-v2/content-runs/aphrodite/higgsgen/research/r4/sp-local.json",
+      "sha256": "7915aaa0d577aba9568397229cae222f32fd6c40bb9b3009e19133a68b728cec"
+    },
+    {
+      "path": "test-v2/content-runs/aphrodite/higgsgen/research/r5/scroll-feel.json",
+      "sha256": "6f5a929ce5518447962498b048feacea115299f9890da4a9243199f0c78d0f6d"
+    },
+    {
+      "path": "test-v2/tools/lib/quality-gate-policy.mjs",
+      "sha256": "ad712e2f9e694919581fd5311f03237ca1eb324c74461115a74add0b092ec33d"
+    },
+    {
+      "path": "test-v2/tools/quality-gate.mjs",
+      "sha256": "0dde1fbc9c4fae8965e9b9cc13764c2809923f2a29eefc5524e467d46f2f57b0"
+    },
+    {
+      "path": "test/unit/scripts/quality-gate-policy.test.mjs",
+      "sha256": "b12a26b3819176285d3d838ea35c768cfb200a6a5831b6a6cb37111c1cf661b0"
+    },
+    {
+      "path": "web/src/data/cli-docs.ts",
+      "sha256": "725e987d6b5a6f1f76a7659256cab616df6a11a5570de2e3c71d7c884329e0ae"
+    }
+  ],
+  "scope": "tracked HEAD plus captured dirty/untracked files; ignored run artifacts remain untouched"
+}

@@ -954,5 +954,5 @@ else for (const r of results) {
   console.log(`\n${r.file}${r.fatal ? `  FATAL ${r.fatal}` : `  FAIL ${r.fails} · WARN ${r.warns} · page ${r.measurements.pageVh} vh · sections ${r.measurements.sections.length}`}`);
   for (const c of r.checks || []) console.log(`  ${c.status === "PASS" ? "ok  " : c.status === "WARN" ? "warn" : "FAIL"} ${c.id.padEnd(6)} ${c.detail}`);
 }
-console.log(`\nLANDING_INTEGRITY_DONE files=${results.length} fail=${results.filter((r) => r.fatal || r.fails).length}`);
+(asJson ? console.error : console.log)(`\nLANDING_INTEGRITY_DONE files=${results.length} fail=${results.filter((r) => r.fatal || r.fails).length}`);
 process.exit(anyFail ? 1 : 0);

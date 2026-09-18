@@ -1,0 +1,34 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — stack-fan-hover</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>.pad{padding:56px 20px;display:grid;gap:60px;justify-items:center}
+.lbl{color:var(--mut);font-size:12px;margin-top:56px;text-align:center}</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>stack-fan-hover <code>호버 · CSS-only</code></h1>
+<p class="sub">겹쳐 있던 다섯 장이 호버에 부채로 <b>팟</b> 하고 펼쳐진다. JS 0줄. 회전축을 카드 아래 바깥(<code>118%</code>)에 두는 것과, 살짝 넘어갔다 붙는 이징이 전부다.</p>
+<div class="stage pad">
+  <div>
+    <div class="fx-fan" tabindex="0">
+      <div class="fx-fan__card" style="--i:-2"><div class="fx-fan__ph" style="--h:206"></div></div>
+      <div class="fx-fan__card" style="--i:-1"><div class="fx-fan__ph" style="--h:248"></div></div>
+      <div class="fx-fan__card" style="--i:0"><div class="fx-fan__ph" style="--h:290"></div></div>
+      <div class="fx-fan__card" style="--i:1"><div class="fx-fan__ph" style="--h:332"></div></div>
+      <div class="fx-fan__card" style="--i:2"><div class="fx-fan__ph" style="--h:24"></div></div>
+    </div>
+    <div class="lbl">기본 — spread 78 / rot 7deg</div>
+  </div>
+  <div>
+    <div class="fx-fan" tabindex="0" style="--fx-fan-spread:132px;--fx-fan-rot:16deg;--fx-fan-ease:linear;--fx-fan-dur:.9s">
+      <div class="fx-fan__card" style="--i:-2"><div class="fx-fan__ph" style="--h:0"></div></div>
+      <div class="fx-fan__card" style="--i:-1"><div class="fx-fan__ph" style="--h:20"></div></div>
+      <div class="fx-fan__card" style="--i:0"><div class="fx-fan__ph" style="--h:40"></div></div>
+      <div class="fx-fan__card" style="--i:1"><div class="fx-fan__ph" style="--h:60"></div></div>
+      <div class="fx-fan__card" style="--i:2"><div class="fx-fan__ph" style="--h:80"></div></div>
+    </div>
+    <div class="lbl">금기 예시 — spread 132 / 16deg / linear 0.9s. 펼쳐지지 않고 <b>흩어진다</b>.</div>
+  </div>
+</div>
+<p class="note">터치 기기에서는 호버가 없으므로 <b>58% 펼친 상태가 기본</b>이다. 숨겨진 콘텐츠를 호버 뒤에 두지 않는다.</p>
+</div>
+<script src="../_shell.js"></script></body></html>

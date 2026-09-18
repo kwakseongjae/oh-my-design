@@ -65,6 +65,44 @@ function matchedSignals(signals) {
   });
 }
 
+function explicitTaskField(labels) {
+  const escaped = labels.map((label) => label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+  const pattern = new RegExp(`^\\s*(?:[-*]\\s*)?(?:${escaped})\\s*[:：]\\s*(.*)\\s*$`, 'i');
+  const matches = task.split(/\r?\n/).flatMap((line, index) => {
+    const match = line.match(pattern);
+    return match ? [{ value: match[1].trim(), line: index + 1 }] : [];
+  });
+  const unresolved = /^(?:|unknown|undecided|not decided|tbd|n\/?a|미정|없음|알\s*수\s*없음|未定|不明|未知|待定)$/i;
+  return {
+    present: matches.length > 0,
+    matches,
+    resolved: matches.length === 1 && !unresolved.test(matches[0].value),
+    value: matches.length === 1 ? matches[0].value : null,
+    evidence: matches.length === 1 ? `task.md#line-${matches[0].line}` : null,
+  };
+}
+
+const explicitAudienceField = explicitTaskField(['대상 사용자', 'target audience', 'audience']);
+const explicitScopeField = explicitTaskField(['완료 범위', 'completion scope', 'scope']);
+
+function explicitLocalScreenScope() {
+  const patterns = [
+    /((?:로컬 브라우저용|로컬 브라우저에서 동작하는)[^.!?\n]{0,120}(?:화면|screen))/i,
+    /((?:local[- ]browser(?:-based)?)[^.!?\n]{0,120}(?:screen|surface))/i,
+    /((?:screen|surface|화면)[^.!?\n]{0,120}(?:in|for|에서|용)\s*(?:a\s+)?(?:local[- ]browser|로컬 브라우저))/i,
+  ];
+  const matches = patterns.flatMap((pattern) => {
+    const match = task.match(pattern);
+    if (!match || match.index === undefined) return [];
+    const before = task.slice(Math.max(0, match.index - 24), match.index);
+    const after = task.slice(match.index + match[0].length, match.index + match[0].length + 24);
+    const negated = /(not(?:\s+for)?|말고|아니고|제외)\s*$/i.test(before)
+      || /^\s*(?:말고|아니고|제외|not\b)/i.test(after);
+    return negated ? [] : [{ value: match[1].trim(), evidence: 'task.md', source: 'local-screen-boundary' }];
+  });
+  return matches.length === 1 ? matches[0] : null;
+}
+
 const audienceMatches = matchedSignals([
   { pattern: /(b2b|enterprise|admin|operator|운영자|관리자|기업 고객|管理者|運営者|管理员|管理員|运营者|營運者|企業客戶|企业客户)/i, value: 'B2B 운영자·관리자' },
   { pattern: /(developer|개발자|engineer|엔지니어|開発者|エンジニア|开发者|開發者|工程师|工程師)/i, value: '개발자·기술 사용자' },
@@ -73,7 +111,13 @@ const audienceMatches = matchedSignals([
   { pattern: /(?:\ba user\b|\busers\b|사용자|利用者|ユーザー|用户|使用者)/i, value: '일반 사용자' },
   { pattern: /(consumer|일반 사용자|고객|쇼핑객|一般ユーザー|消費者|消费者|一般使用者|一般用户)/i, value: '일반 소비자' },
 ]);
-const explicitAudience = audienceMatches.length === 1 && !audienceMatches[0].negated ? audienceMatches[0] : null;
+const explicitAudience = explicitAudienceField.present
+  ? explicitAudienceField.resolved
+    ? { value: explicitAudienceField.value, evidence: explicitAudienceField.evidence, source: 'labeled-field' }
+    : null
+  : audienceMatches.length === 1 && !audienceMatches[0].negated
+    ? { ...audienceMatches[0], evidence: 'task.md', source: 'signal' }
+    : null;
 
 const scopeMatches = matchedSignals([
   { pattern: /(multi[- ]?surface|다중 surface|여러 화면|전체 플로우|end[- ]?to[- ]?end|複数画面|複数サーフェス|多頁面|多页面|多个页面|多個畫面)/i, value: '다중 surface' },
@@ -81,7 +125,16 @@ const scopeMatches = matchedSignals([
   { pattern: /(single screen|단일 화면|한 화면|one screen|component only|컴포넌트만|単一画面|一画面|單一畫面|单一页面|單一頁面)/i, value: '단일 화면' },
   { pattern: /(?:create|build|make|implement|만들|구축|구현|作成|構築|建立|创建|創建).{0,64}(?:queue|checklist|dashboard|editor|search(?:\s+experience)?|form|onboarding|checkout|approval(?:\s+flow)?|console|목록|체크리스트|대시보드|에디터|검색|폼|온보딩|결제|승인|콘솔)/i, value: '단일 화면' },
 ]);
-const scopeSignal = scopeMatches.length === 1 && !scopeMatches[0].negated ? scopeMatches[0] : null;
+const localScreenScope = explicitLocalScreenScope();
+const scopeSignal = explicitScopeField.present
+  ? explicitScopeField.resolved
+    ? { value: explicitScopeField.value, evidence: explicitScopeField.evidence, source: 'labeled-field' }
+    : null
+  : localScreenScope && scopeMatches.length === 0
+    ? localScreenScope
+  : scopeMatches.length === 1 && !scopeMatches[0].negated
+    ? { ...scopeMatches[0], evidence: 'task.md', source: 'signal' }
+    : null;
 
 const explicitPrimaryAction = task.match(/(?:primary action|핵심 행동|주요 행동|主なアクション|主要操作|主要行動)\s*(?:is|은|는|:|：)?\s*([^.!?\n]+)/i);
 const explicitRequiredJourney = task.match(/(?:operators?|residents?|users?|사용자|운영자|주민|利用者|ユーザー|用户|使用者)\s+must\s+([^.!?\n]+)/i)
@@ -115,8 +168,8 @@ const decisions = [];
 decisions.push(explicitAudience
   ? decision({
       id: 'primary-audience', slot: 'audience', proposed_value: explicitAudience.value,
-      evidence: ['task.md'], confidence: 0.95, impact: 'high', reversibility: 'moderate',
-      confidence_basis: 'user-explicit',
+      evidence: [explicitAudience.evidence], confidence: 0.95, impact: 'high', reversibility: 'moderate',
+      confidence_basis: explicitAudience.source === 'labeled-field' ? 'user-explicit-labeled-field' : 'user-explicit',
       authority: 'user-stated', disposition: 'auto',
       reason: 'The task explicitly names the audience; no factual question is needed.',
     })
@@ -137,6 +190,8 @@ decisions.push(explicitAudience
       authority: 'product', disposition: 'interview',
       reason: audienceMatches.some((item) => item.negated)
         ? 'The task contains a negated audience signal; do not promote a keyword match.'
+        : explicitAudienceField.present
+        ? 'The explicit audience field is empty, unresolved, or repeated; do not infer its value from nearby keywords.'
         : audienceMatches.length > 1
         ? 'The task names multiple audience groups without choosing a primary audience.'
         : 'Audience changes hierarchy, copy, and success criteria; repository heuristics cannot own it.',
@@ -148,8 +203,12 @@ decisions.push(explicitAudience
 decisions.push(scopeSignal
   ? decision({
       id: 'exit-scope', slot: 'exit_scope', proposed_value: scopeSignal.value,
-      evidence: ['task.md'], confidence: 0.95, impact: 'high', reversibility: 'moderate',
-      confidence_basis: 'user-explicit',
+      evidence: [scopeSignal.evidence], confidence: 0.95, impact: 'high', reversibility: 'moderate',
+      confidence_basis: scopeSignal.source === 'labeled-field'
+        ? 'user-explicit-labeled-field'
+        : scopeSignal.source === 'local-screen-boundary'
+          ? 'user-explicit-local-screen-boundary'
+          : 'user-explicit',
       authority: 'user-stated', disposition: 'auto',
       reason: 'The requested delivery scope is explicit in the task.',
     })
@@ -169,6 +228,8 @@ decisions.push(scopeSignal
       disposition: 'interview',
       reason: scopeMatches.some((item) => item.negated)
         ? 'The task contains a negated scope signal; do not promote a keyword match.'
+        : explicitScopeField.present
+        ? 'The explicit completion-scope field is empty, unresolved, or repeated; do not infer its value from nearby keywords.'
         : scopeMatches.length > 1
         ? 'The task names conflicting delivery scopes without choosing one.'
         : 'Scope materially changes time and deliverables and is not explicit.',

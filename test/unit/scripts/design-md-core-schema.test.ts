@@ -157,6 +157,7 @@ describe('dependency-free Core v2 schema validator', () => {
         schema_version: '2.0.0',
         kind: 'design-md-core-project-adoption-checkpoint-request',
         status: 'approval-required',
+        adoption_target: 'project-system',
         source_package_tree_sha256: sha('f'),
         source_package: {
           design_md_sha256: sha('a'), graph_sha256: sha('b'), provenance_sha256: sha('c'),

@@ -3,6 +3,11 @@
 담당: 그록봇 (X 포스팅) · 소재 준비: 오케스트레이터 · 승인: 사람 창구
 기존 하드 룰(`grokbot-x-posting.md` §4) 전부 적용. 이 문서는 캠페인별 추가 지시.
 
+> 2026-09-07 재검토: 세 arm 모두 `system.md`를 제출했다. 기존 초안의
+> “only one ships a design system” 주장은 산출물과 모순되어 아래에서 정정했다.
+> 파일 분량은 품질 우위의 증거가 아니다. 이 문서는 게시 전 초안이며,
+> 외부 기사·조회수·라이브 배포 상태는 게시 시점에 다시 확인해야 한다.
+
 ## 배경
 
 Vercel이 2026-09-01 자사 에이전트가 design.md 파일 하나로 온브랜드 페이지를 만드는 루프를
@@ -36,7 +41,8 @@ Vercel이 2026-09-01 자사 에이전트가 design.md 파일 하나로 온브랜
 > Vercel showed how one design.md file makes their agents build on-brand pages.
 >
 > Same prompt. Same model. Only the harness changes.
-> Here's Stripe's homepage, three ways — and only one ships a design system with it.
+> Three unofficial Stripe homepage concepts, each with a system document.
+> Inspect the pages and the design decisions behind them.
 >
 > We curate 440 companies' DESIGN.md files, with provenance. github.com/kwakseongjae/oh-my-design
 
@@ -70,21 +76,21 @@ render-integrity·landing-integrity PASS를 내면 같은 명령으로 3열 비�
 **EN (메인, 영상 첨부):**
 > Same brief. Same model. Same image channel. Three harnesses.
 >
-> Only one of them treats a landing page as a stage instead of a card — a full-bleed hero, one visual concept carried through eight sections, motion that respects reduced-motion.
+> Compare the full pages, their visual concepts, and how each handles motion.
 >
 > The rules came from measuring five real sites, not from taste. Unofficial generated concepts — not affiliated with Stripe. github.com/kwakseongjae/oh-my-design
 
 **KR:**
 > 같은 브리프, 같은 모델, 같은 이미지 채널. 다른 건 하네스뿐입니다.
-> 랜딩 페이지를 "카드"가 아니라 "무대"로 다루는 건 하나였습니다 — 풀블리드 히어로, 여덟 섹션을 관통하는 컨셉 하나, reduced-motion을 지키는 모션.
+> 완성된 페이지와 각 페이지의 구도·컨셉·모션을 함께 비교했습니다.
 > 규칙은 취향이 아니라 실제 사이트 다섯 곳을 잰 수치에서 왔습니다. (비공식 생성 컨셉 — 해당 브랜드와 무관)
 
 하드 룰 적용: 벤치 수치·순위 없음, 브랜드 태그 없음, 고지 유지. "다섯 곳을 잰"은 코덱스(공개 문서)로 뒷받침되는 사실 진술.
 
 ## 이 캠페인의 추가 하드 룰
 
-1. **"only one ships a design system" 문구는 정성 관찰이다** — 실측(세 arm 산출물에서
-   system.md 유무·분량)으로 뒷받침되지만, 수치 순위·품질 우위 주장으로 확장하지 않는다.
+1. **세 arm 모두 system.md를 제출했다.** 문서 존재를 OMD만의 차별점으로 주장하지 않는다.
+   품질·재사용성 차이를 말하려면 동일한 후속 수정 과제와 실제 산출물로 검증한다.
 2. T3 봉인 수치(비용·실패율 등)를 이 캠페인에서 언급하지 않는다.
 3. Stripe를 태그·멘션하지 않는다. 영상·페이지의 unofficial 고지를 자르지 않는다.
 4. Vercel 아티클 링크는 인용 표기로만 — 제휴·협업 암시 문구 금지.

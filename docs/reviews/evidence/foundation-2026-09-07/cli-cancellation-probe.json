@@ -1,0 +1,42 @@
+{
+  "probe": "CLI runner receives SIGTERM while child ignores TERM",
+  "provider_calls": 0,
+  "directory": "/private/tmp/omd-cli-cancel-a56ts6x9",
+  "runner_exit_code": 1,
+  "state": "cancelled",
+  "worker_group_dead": true,
+  "pass": true,
+  "status": {
+    "schemaVersion": 1,
+    "attemptId": "attempt-0001",
+    "previousAttemptId": null,
+    "taskId": "F1-cli-signal-probe",
+    "state": "cancelled",
+    "terminalReason": "cancelled",
+    "pid": 9882,
+    "pgid": 9882,
+    "processStartIdentity": null,
+    "startedAt": "2026-09-07T08:15:17.370Z",
+    "finishedAt": "2026-09-07T08:15:17.932Z",
+    "exitCode": null,
+    "signal": "SIGKILL",
+    "spawnError": null,
+    "processGroupCleanup": "dead",
+    "outputErrors": [],
+    "outputs": [
+      {
+        "path": "/private/tmp/omd-cli-cancel-a56ts6x9/result.json",
+        "format": "json",
+        "required": true,
+        "exists": true,
+        "sha256": "b342fc286d0216cc212e0d7ba234894e2e7283ddf14f959adf0fe7fd5924308a",
+        "bytes": 14,
+        "changedSinceStart": true
+      }
+    ],
+    "logs": {
+      "stdout": "/private/tmp/omd-cli-cancel-a56ts6x9/attempts/attempt-0001/stdout.log",
+      "stderr": "/private/tmp/omd-cli-cancel-a56ts6x9/attempts/attempt-0001/stderr.log"
+    }
+  }
+}

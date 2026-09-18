@@ -1,0 +1,38 @@
+{
+  "command": [
+    "node",
+    "test-v2/tools/quality-gate.mjs",
+    "--only",
+    "landing/karrot,autopilot/karrot",
+    "--json"
+  ],
+  "exit_code": 1,
+  "expected_block_confirmed": true,
+  "result": {
+    "verdict": "BLOCKED",
+    "counts": {
+      "MISSING": 2
+    },
+    "strict": true,
+    "rows": [
+      {
+        "id": "landing/karrot",
+        "skill": "omd-landing",
+        "brand": "karrot",
+        "artifact": "test-v2/content-runs/gate/landing-karrot/render.html",
+        "checks": {},
+        "status": "MISSING",
+        "note": "산출물이 없다 — 이 칸은 한 번도 만들어지지 않았다"
+      },
+      {
+        "id": "autopilot/karrot",
+        "skill": "omd-autopilot",
+        "brand": "karrot",
+        "artifact": "test-v2/content-runs/gate/autopilot-karrot/render.html",
+        "checks": {},
+        "status": "MISSING",
+        "note": "산출물이 없다 — 이 칸은 한 번도 만들어지지 않았다"
+      }
+    ]
+  }
+}

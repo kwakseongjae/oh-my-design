@@ -1,0 +1,1062 @@
+{
+  "schema_version": 1,
+  "kind": "execution_tracking_not_scheduler",
+  "created_at": "2026-09-07",
+  "plan": "docs/OMD_EXECUTION_PLAN_2026-09-07.md",
+  "status": "GPT90_parallel_implementation_running",
+  "model_policy": {
+    "effective_from": "2026-09-07T23:07:51Z",
+    "user_override": "90-minute native GPT implementation sprint",
+    "execution": {
+      "Astra": {
+        "runtime": "Codex native root and worker",
+        "requested_model": "gpt-6-astra",
+        "scope": "planning, implementation, visual direction and QA"
+      },
+      "Sol": {
+        "runtime": "Codex native workers",
+        "requested_model": "gpt-5.6-sol",
+        "scope": "Core, benchmark, tests, release preparation"
+      }
+    },
+    "planning_only": [
+      "Fable 5.1"
+    ],
+    "external_workers": "No new Grok/Opus calls in this sprint. Existing receipts remain historical.",
+    "benchmark_integrity": "Do not label inherited repository-context agents as pure no-skill benchmark cells; choose and freeze actual isolated runtime at B2."
+  },
+  "scheduling": {
+    "normal_max_model_processes": 3,
+    "initial_model_processes": 2,
+    "per_model_max": 1,
+    "default_work_unit_wall_minutes": {
+      "implementation": 45,
+      "evidence_or_writing": 30
+    },
+    "first_artifact_minutes": 10,
+    "benchmark_caps": "Calibration freezes equal active budget proposal20min first/calibration and10min follow-up,30host turns; queue and total elapsed hard caps unresolved. Exclude only broker-verified fully blocked queue intervals, not concurrent useful work.",
+    "integration": "One Sol integrator; shared package/generated/mirrors/state and merges serialized",
+    "supporting_models": "General development respects per-model slots; benchmark override permits4 Grok host processes with shared browser capacity1. Supporting roles split into bounded subunits with distinct file ownership.",
+    "benchmark_override": {
+      "grok_max_processes": 4,
+      "group_by": "same task and repetition, one cell per arm",
+      "shared_browser_capacity": 1,
+      "browser_arbitration": "external FIFO broker with cell-scoped views, request/job/download attribution and verified cleanup before handoff",
+      "other_asset_generation": "parallel when tool supports independent jobs",
+      "latency_comparison": "descriptive-only",
+      "preflight": "verify quota/concurrency and broker isolation before live; do not silently change selected arms",
+      "group_barrier": "start next group only after all4 cells terminal",
+      "launch_order": "preregistered balanced rotation; record actual process starts and browser request order"
+    },
+    "timing_fields": [
+      "elapsed",
+      "broker_queue_wait_blocked",
+      "active",
+      "browser_use",
+      "media_service_wait",
+      "provider_cost"
+    ],
+    "timing_note": "Details may overlap; do not sum media wait/browser use as separate additive totals. No pure latency superiority claim from concurrent runs.",
+    "completed_native_sol_exceptions": [
+      {
+        "started_at": "2026-09-07T11:44:33.588042+00:00",
+        "max_sol_agents": 2,
+        "reason": "Independent four-bug broker repair in an isolated temporary copy while sole main-repo Sol integrates Core deployment. Grok/Opus idle pending consent.",
+        "task": "broker_regressions_sol",
+        "wall_minutes": 20,
+        "scope": "temp broker/test/schema/protocol only; main integration serialized through foundation_sol",
+        "end_condition": "broker repair handoff or20min boundary; default per-model cap remains1 afterwards",
+        "status": "completed",
+        "ended_at": "2026-09-07T12:02:08.991115+00:00",
+        "result": "isolated repair accepted and main integration12tests/hash verified; normal per-model1 restored"
+      },
+      {
+        "status": "completed",
+        "started_at": "2026-09-07T12:14:25.200946+00:00",
+        "max_sol_agents": 2,
+        "wall_minutes": 20,
+        "reason": "Independent provider-zero four-arm controller implementation in a new temp workspace while sole main integrator completes D1 Builder transport. Grok/Opus idle.",
+        "task": "broker_regressions_sol",
+        "scope": "new controller/tests/protocol temp only; main integration serialized through foundation_sol",
+        "end_condition": "handoff or20min boundary; restore default per-model1",
+        "ended_at": "2026-09-07T12:38:29.417744+00:00",
+        "result": "controller v1 handed off;20tests root pass but2negative reproductions block integration"
+      },
+      {
+        "status": "completed",
+        "started_at": "2026-09-07T12:33:30Z",
+        "max_sol_agents": 2,
+        "wall_minutes": 10,
+        "task": "broker_regressions_sol",
+        "scope": "same isolated temp controller review repairs only",
+        "reason": "Repair concrete controller output/workspace defects plus malformed-event/exception cleanup while main Sol handles Core standards",
+        "end_condition": "handoff or10min; default per-model1 afterwards",
+        "ended_at": "2026-09-07T12:44:32.159571+00:00",
+        "result": "24tests independently passed; bounded lifecycle accepted; main integration queued. Default per-model cap1 restored."
+      }
+    ],
+    "active_sprint_override": {
+      "start": "2026-09-07T23:07:51Z",
+      "deadline": "2026-09-08T00:37:51Z",
+      "total_slots": 4,
+      "workers": 3,
+      "per_model_max": "ownership-bound; Astra2/Sol2 including root",
+      "shared_browser_capacity": 1,
+      "integration": "Root serializes state, manifests, package/mirrors and acceptance; workers edit assigned paths."
+    }
+  },
+  "human_gates": {
+    "F1": "Basic provider authentication, worker input/output handoff, model attribution, workspace and browser connectivity. Benchmark-specific broker/context/media admission belongs to B-1/B-2; do not wait for B-1 to complete F-1.",
+    "A0": "Only if new DESIGN tokens needed: concrete change approval before implementation.",
+    "A2": "Owner adopts first-fold/transition direction.",
+    "A3": "Owner adopts final showcase piece.",
+    "A5": "Actual people record transfer preference and reasons.",
+    "B5": "Target five independent human reviewers; separate anonymized asset-only and page packets, freeze asset judgements first; missing review leaves aesthetic conclusion pending.",
+    "E3": "Review concrete publication packages before actual publication. No publication or scheduler creation in this plan."
+  },
+  "task_defaults": {
+    "status": "planned",
+    "evidence": [],
+    "owner_paths": "Track scope is planning scope; exact changed files must be assigned at dispatch.",
+    "existing_user_changes": "Preserve; never delete run directories.",
+    "completion": "Mark complete only with deliverables and acceptance evidence."
+  },
+  "tasks": [
+    {
+      "id": "F-0",
+      "track": "F",
+      "status": "completed",
+      "primary_model": "Sol",
+      "supporting_models": [],
+      "depends_on": [],
+      "title": "기준 스냅샷과 파일 소유권 확정",
+      "planned_owner_paths": [
+        "src/cli/",
+        "package.json",
+        "test-v2/tools/",
+        "installation/receipt helpers"
+      ],
+      "deliverables": "source commit·기존 patch SHA·사용자 변경 목록·트랙 checkout 계획",
+      "done_when": "원본 보존, 소유 파일과 출력 경로 지정",
+      "evidence": [
+        "docs/reviews/evidence/foundation-2026-09-07/baseline.json",
+        "docs/reviews/evidence/foundation-2026-09-07/workspace-ownership.json"
+      ],
+      "resource_lock": "respect_model_slots_and_file_ownership"
+    },
+    {
+      "id": "F-1",
+      "track": "F",
+      "status": "completed",
+      "primary_model": "Sol",
+      "supporting_models": [
+        "Grok 4.6",
+        "Opus 5"
+      ],
+      "depends_on": [
+        "F-0"
+      ],
+      "title": "기본 워커 입출력·모델 귀속·브라우저 연결·중단/재개 확인",
+      "planned_owner_paths": [
+        "src/cli/",
+        "package.json",
+        "test-v2/tools/",
+        "installation/receipt helpers"
+      ],
+      "deliverables": "runtime-preflight.json",
+      "done_when": "실제 모델/작업공간·입력→출력→회수 및 종료/재개 검증,기본 browser 연결; 벤치 전용 broker 검증은 B-1",
+      "evidence": [
+        "scripts/execution/worker-lifecycle.mjs",
+        "test/unit/scripts/worker-lifecycle.test.mjs",
+        "docs/reviews/evidence/foundation-2026-09-07/runtime-preflight.json",
+        "docs/reviews/evidence/foundation-2026-09-07/cli-cancellation-probe.json"
+      ],
+      "resource_lock": "respect_model_slots_and_file_ownership",
+      "preparation_status": "Opus/Grok file handoff verified; Grok4 concurrent file workers passed unique sessions; Chrome connected. Long-job recovery/workspace setup remains. Full benchmark broker/context/media admission belongs to B-1/B-2.",
+      "preparation_evidence": [
+        "docs/reviews/evidence/grok-parallel-preflight-2026-09-07/discovery-receipt.json",
+        "docs/reviews/evidence/runtime-access-preflight-2026-09-07.json",
+        "docs/reviews/runtime-access-preflight-2026-09-07.md",
+        "docs/reviews/evidence/worker-readiness-2026-09-07.json"
+      ],
+      "completion_note": "Sol reports 13/13 lifecycle tests PASS; independent CLI SIGTERM/hostile-worker cleanup PASS; prior live Opus/Grok file I/O and4Grok concurrency receipts retained. Full benchmark isolation/media belongs to B1/B2."
+    },
+    {
+      "id": "F-2",
+      "track": "F",
+      "status": "completed",
+      "primary_model": "Sol",
+      "supporting_models": [],
+      "depends_on": [
+        "F-1"
+      ],
+      "title": "배포 dependency와 설치 경로 해결",
+      "planned_owner_paths": [
+        "src/cli/",
+        "package.json",
+        "test-v2/tools/",
+        "installation/receipt helpers"
+      ],
+      "deliverables": "consumer smoke 증거·package patch",
+      "done_when": "font/reference/check가 repo 밖 설치본에서 실행",
+      "evidence": [
+        "docs/reviews/evidence/foundation-2026-09-07/foundation-acceptance.json",
+        "docs/reviews/evidence/foundation-2026-09-07/sol-foundation-report.md"
+      ],
+      "resource_lock": "respect_model_slots_and_file_ownership"
+    },
+    {
+      "id": "F-3",
+      "track": "F",
+      "status": "completed",
+      "primary_model": "Sol",
+      "supporting_models": [],
+      "depends_on": [
+        "F-2"
+      ],
+      "title": "해시 receipt와 품질 gate 계약",
+      "planned_owner_paths": [
+        "src/cli/",
+        "package.json",
+        "test-v2/tools/",
+        "installation/receipt helpers"
+      ],
+      "deliverables": "receipt schema·변조 검증·gate 분류",
+      "done_when": "source/brief/assets/output/checker SHA 연결, touch로 fresh 승격 불가",
+      "evidence": [
+        "docs/reviews/evidence/foundation-2026-09-07/foundation-acceptance.json",
+        "docs/reviews/evidence/foundation-2026-09-07/sol-foundation-report.md"
+      ],
+      "resource_lock": "respect_model_slots_and_file_ownership"
+    },
+    {
+      "id": "F-4",
+      "track": "F",
+      "status": "rc2_install_pass_6fixtures_fail3_unverified2_review_pending1",
+      "primary_model": "Sol",
+      "supporting_models": [
+        "Grok 4.6",
+        "Opus 5"
+      ],
+      "depends_on": [
+        "F-3"
+      ],
+      "title": "landing/autopilot 6칸 생성·검증",
+      "planned_owner_paths": [
+        "src/cli/",
+        "package.json",
+        "test-v2/tools/",
+        "installation/receipt helpers"
+      ],
+      "deliverables": "6개 fixture와 receipt",
+      "done_when": "현재 RC의 6/6 hard gate, 설치/build/test/mirror PASS",
+      "evidence": [
+        ".omd/execution/2026-09-08/sprint90/release/rc-manifest.json",
+        ".omd/execution/2026-09-08/sprint90/benchmark/f4-tarball-install-smoke.result.json"
+      ],
+      "resource_lock": "respect_model_slots_and_file_ownership",
+      "sprint90_owner": "Astra generation + Sol install/QA",
+      "preparation_status": "RC9d4e6cee archived;4channel actual npm install smokePASS; fresh landing/karrot art direction inprogress; matrix remains0/6 qualified"
+    },
+    {
+      "id": "B-0",
+      "track": "B",
+      "status": "autonomous_assets_contract_defined_live_admission_pending",
+      "primary_model": "Sol",
+      "supporting_models": [
+        "Opus 5"
+      ],
+      "depends_on": [
+        "F-0"
+      ],
+      "title": "자율 에셋·4조건 병렬 벤치 계약 확정",
+      "planned_owner_paths": [
+        "benchmarks/ui-resolve-bench/",
+        "new isolated benchmark epoch"
+      ],
+      "deliverables": "protocol·공통 tool inventory·3과제/calibration·asset provenance/evaluation·budget contract",
+      "done_when": "각 arm 자율 생성·동등한 도구 접근·브라우저 직렬화·에셋/페이지 평가·실패/시간 규칙 사전 정의",
+      "evidence": [
+        "docs/reviews/evidence/benchmark-foundation-2026-09-07/sol-benchmark-report.md",
+        ".omd/execution/2026-09-07/benchmark/B-0-evaluation-review-draft.md",
+        ".omd/execution/2026-09-07/benchmark/B-0-rater-packet-handoff.md"
+      ],
+      "resource_lock": "respect_model_slots_and_file_ownership",
+      "preparation_status": "task/source preregistration provider-zero PASS; runtime/equal-tool/budget/evaluator freeze remains",
+      "preparation_evidence": [
+        "benchmarks/ui-resolve-bench/config/asset-generation-four-arm-v0.1.json",
+        "benchmarks/ui-resolve-bench/scripts/validate-asset-generation-contract.mjs",
+        "benchmarks/ui-resolve-bench/scripts/test-asset-generation-contract.mjs"
+      ]
+    },
+    {
+      "id": "B-1",
+      "track": "B",
+      "status": "local_foundation_accepted_pure_context_admission_blocked",
+      "primary_model": "Sol",
+      "supporting_models": [],
+      "depends_on": [
+        "B-0",
+        "F-3"
+      ],
+      "title": "기존 adapter와 공유 browser broker 연결",
+      "planned_owner_paths": [
+        "benchmarks/ui-resolve-bench/",
+        "new isolated benchmark epoch"
+      ],
+      "deliverables": "adapter/broker patch·provider-zero 계약 테스트·격리/취소/귀속 증거",
+      "done_when": "4조건 병렬,브라우저1슬롯,host child model금지,셀별 tab/prompt/download 격리,실제 종료 확인 후 lease 반환,벤치 전체 context 격리",
+      "evidence": [
+        "docs/reviews/evidence/benchmark-foundation-2026-09-07/sol-benchmark-report.md",
+        ".omd/execution/2026-09-07/benchmark/B-1-controller-handoff-draft.md",
+        ".omd/execution/2026-09-07/benchmark/qa/broker-root-review-findings-v2.json",
+        ".omd/execution/2026-09-07/benchmark/qa/broker-fix-integration.json",
+        ".omd/execution/2026-09-07/benchmark/qa/broker-fix-accepted/root-review.json",
+        ".omd/execution/2026-09-07/benchmark/qa/controller-root-negative-probe.json",
+        ".omd/execution/2026-09-07/benchmark/qa/controller-v2-accepted/root-review.json",
+        ".omd/execution/2026-09-07/benchmark/qa/controller-v2-integration.json",
+        ".omd/execution/2026-09-08/sprint90/benchmark/root-acceptance.json"
+      ],
+      "resource_lock": "respect_model_slots_and_file_ownership",
+      "preparation_status": "Controller36/broker14/asset-contract17PASS;rootcontroller36recheck and code/hash acceptance;live model/browser admission remains",
+      "preparation_evidence": [
+        "benchmarks/ui-resolve-bench/config/asset-generation-four-arm-v0.1.json",
+        "benchmarks/ui-resolve-bench/scripts/validate-asset-generation-contract.mjs",
+        "benchmarks/ui-resolve-bench/scripts/test-asset-generation-contract.mjs"
+      ]
+    },
+    {
+      "id": "B-2",
+      "track": "B",
+      "status": "planned",
+      "primary_model": "Grok 4.6",
+      "supporting_models": [
+        "Sol"
+      ],
+      "depends_on": [
+        "B-1"
+      ],
+      "title": "4조건 병렬 에셋 calibration 후 동결",
+      "planned_owner_paths": [
+        "benchmarks/ui-resolve-bench/",
+        "new isolated benchmark epoch"
+      ],
+      "deliverables": "4개 asset-enabled calibration cell·tool/model/provenance·timing·frozen manifest",
+      "done_when": "모든 arm 도구 접근·browser 귀속/취소 검증, active/queue/elapsed cap 동결",
+      "evidence": [],
+      "resource_lock": "grok_four_arm_parallel_shared_browser_capacity_one"
+    },
+    {
+      "id": "B-3",
+      "track": "B",
+      "status": "planned",
+      "primary_model": "Grok 4.6",
+      "supporting_models": [
+        "Sol"
+      ],
+      "depends_on": [
+        "B-2"
+      ],
+      "title": "과제·반복별 4조건 병렬 첫 제출36개",
+      "planned_owner_paths": [
+        "benchmarks/ui-resolve-bench/",
+        "new isolated benchmark epoch"
+      ],
+      "deliverables": "36개 terminal cell·원본/선택/사용 assets·trace·broker timing",
+      "done_when": "3과제×4조건×3회 분모,생성 실패/timeout 포함,다른 arm의 결과와 격리",
+      "evidence": [],
+      "resource_lock": "grok_four_arm_parallel_shared_browser_capacity_one"
+    },
+    {
+      "id": "B-4",
+      "track": "B",
+      "status": "planned",
+      "primary_model": "Grok 4.6",
+      "supporting_models": [
+        "Sol"
+      ],
+      "depends_on": [
+        "B-3"
+      ],
+      "title": "기능 UI 후속12개를 4조건씩 병렬 실행",
+      "planned_owner_paths": [
+        "benchmarks/ui-resolve-bench/",
+        "new isolated benchmark epoch"
+      ],
+      "deliverables": "12개 paired lineage·에셋 변경 이력·terminal/timing",
+      "done_when": "같은 후속 조건·공유 browser만 직렬·최초 실패로 불가한 셀도 기록",
+      "evidence": [],
+      "resource_lock": "grok_four_arm_parallel_shared_browser_capacity_one"
+    },
+    {
+      "id": "B-5",
+      "track": "B",
+      "status": "planned",
+      "primary_model": "Sol",
+      "supporting_models": [
+        "Opus 5"
+      ],
+      "depends_on": [
+        "B-4"
+      ],
+      "title": "에셋·페이지 익명 평가와 개선 항목",
+      "planned_owner_paths": [
+        "benchmarks/ui-resolve-bench/",
+        "new isolated benchmark epoch"
+      ],
+      "deliverables": "asset/page packets·full gallery·통계/비용·이슈 초안최대5",
+      "done_when": "에셋 적합성/일관성/결함과 페이지 활용/기능을 구분; 병렬 latency는 기술통계만, 사람 상태 명시",
+      "evidence": [],
+      "resource_lock": "respect_model_slots_and_file_ownership"
+    },
+    {
+      "id": "B-6",
+      "track": "B",
+      "status": "planned",
+      "primary_model": "Sol",
+      "supporting_models": [
+        "Opus 5",
+        "Grok 4.6"
+      ],
+      "depends_on": [
+        "B-5"
+      ],
+      "title": "우선 결함 최대 3개 수정·회귀",
+      "planned_owner_paths": [
+        "benchmarks/ui-resolve-bench/",
+        "new isolated benchmark epoch"
+      ],
+      "deliverables": "수정 patch·새 epoch·결함별 검증 행렬",
+      "done_when": "실패 재현/수정/회귀/보지 않은 과제 검증; 결함 없으면 근거로 해당 없음",
+      "evidence": [],
+      "resource_lock": "respect_model_slots_and_file_ownership"
+    },
+    {
+      "id": "B-7",
+      "track": "B",
+      "status": "planned",
+      "primary_model": "Sol",
+      "supporting_models": [
+        "Opus 5"
+      ],
+      "depends_on": [
+        "B-5"
+      ],
+      "title": "원본 비교 영상·게시 패키지",
+      "planned_owner_paths": [
+        "benchmarks/ui-resolve-bench/",
+        "new isolated benchmark epoch"
+      ],
+      "deliverables": "각 조건 생성 에셋→최종 페이지 실제 비교 영상1+짧은 컷2·게시문",
+      "done_when": "동일 viewport/속도·실제 동작,도구/생성 이력/원본/전체gallery 연결",
+      "evidence": [],
+      "resource_lock": "respect_model_slots_and_file_ownership"
+    },
+    {
+      "id": "A-0",
+      "track": "A",
+      "status": "completed",
+      "primary_model": "Opus 5",
+      "supporting_models": [],
+      "depends_on": [
+        "F-1"
+      ],
+      "title": "한 장면과 제품 약속의 제작 브리프",
+      "planned_owner_paths": [
+        "new Aphrodite run directory",
+        "skills/omd-aphrodite/ after A-3"
+      ],
+      "deliverables": "1장 brief·방향/가설·DESIGN 변경 필요 여부",
+      "done_when": "행동·전환·제품 약속 명시, 토큰 확장 필요 시 구체적 변경안 검토",
+      "evidence": [
+        ".omd/execution/2026-09-07/aphrodite/brief-v2.md",
+        ".omd/execution/2026-09-07/aphrodite/handoff-v2.json",
+        ".omd/execution/2026-09-07/aphrodite/A-0-acceptance.md",
+        ".omd/execution/2026-09-07/aphrodite/attempts/attempt-0002/status.json"
+      ],
+      "resource_lock": "respect_model_slots_and_file_ownership",
+      "review_status": "accepted_for_A1_probe_only"
+    },
+    {
+      "id": "A-1",
+      "track": "A",
+      "status": "completed",
+      "primary_model": "Opus 5",
+      "supporting_models": [
+        "Grok 4.6"
+      ],
+      "depends_on": [
+        "A-0",
+        "F-3"
+      ],
+      "title": "에셋 probe→첫 화면+첫 전환 구현",
+      "planned_owner_paths": [
+        "new Aphrodite run directory",
+        "skills/omd-aphrodite/ after A-3"
+      ],
+      "deliverables": "anchor assets·움직이는 desktop/mobile 구간",
+      "done_when": "장면 연속성, 빈 슬롯 없이 실제 브라우저 재생",
+      "evidence": [
+        ".omd/execution/2026-09-07/aphrodite/media-probe/retrieval-receipt.json",
+        ".omd/execution/2026-09-07/aphrodite/media-edit-probe/retrieval-receipt.json",
+        ".omd/execution/2026-09-07/aphrodite/media-video-probe/capability-receipt.json",
+        ".omd/execution/2026-09-07/aphrodite/slice/worker-spec.json",
+        ".omd/execution/2026-09-07/aphrodite/slice/qa/root-review-v1.json",
+        ".omd/execution/2026-09-07/aphrodite/slice/qa/root-review-v2.json",
+        ".omd/execution/2026-09-07/aphrodite/slice/qa/v2-interaction/report.json",
+        ".omd/execution/2026-09-07/aphrodite/slice/qa/root-first-slice-acceptance.json",
+        ".omd/execution/2026-09-07/aphrodite/slice/qa/demo-receipt.json"
+      ],
+      "resource_lock": "respect_model_slots_and_file_ownership",
+      "completion_note": "Technical first slice produced and verified; owner wow/direction acceptance belongs to A-2, not implied."
+    },
+    {
+      "id": "A-2",
+      "track": "A",
+      "status": "awaiting_ODDLY_rendered_visual_review",
+      "primary_model": "Astra",
+      "supporting_models": [],
+      "depends_on": [
+        "A-1"
+      ],
+      "title": "오너의 방향 판단과 기능 검증",
+      "planned_owner_paths": [
+        "new Aphrodite run directory",
+        "skills/omd-aphrodite/ after A-3"
+      ],
+      "deliverables": "r2/후보 비교·판단 사유·기능 결과",
+      "done_when": "오너가 전체 페이지로 이어갈 방향 채택",
+      "evidence": [
+        ".omd/execution/2026-09-07/aphrodite/slice/qa/root-first-slice-acceptance.json",
+        ".omd/execution/2026-09-07/aphrodite/slice/qa/r2-matched/direction-review.json",
+        ".omd/execution/2026-09-07/aphrodite/direction-v3/manifest.json",
+        ".omd/execution/2026-09-08/aphrodite/oddly-prototype/qa/final-r6/capture.json",
+        ".omd/execution/2026-09-08/aphrodite/oddly-prototype/qa/motion-r5/video-artifacts.json"
+      ],
+      "resource_lock": "respect_model_slots_and_file_ownership",
+      "preparation_status": "Actual4scene 3D and21s desktop/mobile wheel videos ready;root5environment functionalQA PASS;latestvisualquestionpending",
+      "owner_question": "Async owner judgment of actual ODDLY character and paper-world entry, presented 2026-09-08; no assumption from silence",
+      "completion_note": "Higgsgen direction superseded. ODDLY concept approved, actual prototype awaiting rendered review."
+    },
+    {
+      "id": "A-3",
+      "track": "A",
+      "status": "planned",
+      "primary_model": "Opus 5",
+      "supporting_models": [
+        "Sol",
+        "Grok 4.6"
+      ],
+      "depends_on": [
+        "A-2"
+      ],
+      "title": "전체 작품·카피·CTA 완성",
+      "planned_owner_paths": [
+        "new Aphrodite run directory",
+        "skills/omd-aphrodite/ after A-3"
+      ],
+      "deliverables": "HTML/assets·trace·실제 page 검증",
+      "done_when": "hard defect 0, 의미 일치, mobile/keyboard/reduced-motion, 오너 작품 채택",
+      "evidence": [],
+      "resource_lock": "respect_model_slots_and_file_ownership"
+    },
+    {
+      "id": "A-4",
+      "track": "A",
+      "status": "planned",
+      "primary_model": "Sol",
+      "supporting_models": [
+        "Opus 5"
+      ],
+      "depends_on": [
+        "A-3"
+      ],
+      "title": "제작 기록에서 스킬 추출·패키징",
+      "planned_owner_paths": [
+        "new Aphrodite run directory",
+        "skills/omd-aphrodite/ after A-3"
+      ],
+      "deliverables": "짧은 조건부 skill·install patch",
+      "done_when": "색/에셋 수/효과 의무 대신 재현 절차와 편집 검토",
+      "evidence": [],
+      "resource_lock": "respect_model_slots_and_file_ownership"
+    },
+    {
+      "id": "A-5",
+      "track": "A",
+      "status": "planned",
+      "primary_model": "Opus 5",
+      "supporting_models": [
+        "Sol"
+      ],
+      "depends_on": [
+        "A-4"
+      ],
+      "title": "다른 업종 2개×2회 전이 검증",
+      "planned_owner_paths": [
+        "new Aphrodite run directory",
+        "skills/omd-aphrodite/ after A-3"
+      ],
+      "deliverables": "4개 새 세션 결과·QA·사람 선택/사유",
+      "done_when": "수동 보정 없는 배포 스킬 생성,4/4 핵심 기능,복제 여부와 선호 기록",
+      "evidence": [],
+      "resource_lock": "respect_model_slots_and_file_ownership"
+    },
+    {
+      "id": "A-6",
+      "track": "A",
+      "status": "planned",
+      "primary_model": "Sol",
+      "supporting_models": [],
+      "depends_on": [
+        "A-5"
+      ],
+      "title": "Aphrodite 설치본·fixture·영상 통합",
+      "planned_owner_paths": [
+        "new Aphrodite run directory",
+        "skills/omd-aphrodite/ after A-3"
+      ],
+      "deliverables": "consumer 재생산·receipt·doctor/docs·영상",
+      "done_when": "release checks PASS,영상/소스/에셋 추적 가능",
+      "evidence": [],
+      "resource_lock": "respect_model_slots_and_file_ownership"
+    },
+    {
+      "id": "D-0",
+      "track": "D",
+      "status": "completed",
+      "primary_model": "Opus 5",
+      "supporting_models": [],
+      "depends_on": [
+        "F-1"
+      ],
+      "title": "4종 canary와 기업 evidence 선정",
+      "planned_owner_paths": [
+        "web/src/lib/references/",
+        "Core adoption tooling",
+        "web/references/ only at adoption"
+      ],
+      "deliverables": "원본/staged/출처 대응표·4개 ID",
+      "done_when": "token-rich/narrative/missing/atypical 대표성 근거,첫 기업 dossier 재사용",
+      "evidence": [
+        ".omd/execution/2026-09-07/core/canary-review-v2.md",
+        ".omd/execution/2026-09-07/core/handoff-v2.json",
+        ".omd/execution/2026-09-07/core/D-0-review-v2.md",
+        ".omd/execution/2026-09-07/core/attempts/attempt-0002/status.json"
+      ],
+      "resource_lock": "respect_model_slots_and_file_ownership",
+      "selected_canaries": [
+        "baemin",
+        "3o3",
+        "bunjang",
+        "makinarocks"
+      ]
+    },
+    {
+      "id": "D-1",
+      "track": "D",
+      "status": "consumer_fixes_verified_canonical_cutover_pending",
+      "primary_model": "Sol",
+      "supporting_models": [],
+      "depends_on": [
+        "D-0",
+        "F-3"
+      ],
+      "title": "Core consumer parity와 채택 경로",
+      "planned_owner_paths": [
+        "web/src/lib/references/",
+        "Core adoption tooling",
+        "web/references/ only at adoption"
+      ],
+      "deliverables": "consumer/adoption patch·semantic parity 검증",
+      "done_when": "Builder/override/export/raw/CLI에 발명·의미 손실 0",
+      "evidence": [
+        ".omd/execution/2026-09-07/core/D-1-baemin-consumer-parity.json",
+        "docs/reviews/evidence/core-adoption-2026-09-07/sol-d1-baemin-report.md",
+        ".omd/execution/2026-09-07/core/D-1-root-contract-review.json",
+        ".omd/execution/2026-09-07/core/D-1-root-canary-preservation.json",
+        ".omd/execution/2026-09-07/core/D-1-core-consumer-transport.json",
+        ".omd/execution/2026-09-07/core/D-1-root-deployment-review.json",
+        ".omd/execution/2026-09-07/core/D-1-builder-transport.json",
+        ".omd/execution/2026-09-07/core/D-1-exporter-repair.json",
+        ".omd/execution/2026-09-07/core/D-1-exporter-provenance-repair.json",
+        ".omd/execution/2026-09-07/core/D-1-root-rendered-initial-review.json",
+        ".omd/execution/2026-09-07/core/D-1-dtcg-conformance-review.md",
+        ".omd/execution/2026-09-07/core/D-1-dtcg-2025-10.json",
+        ".omd/execution/2026-09-07/core/D-1-root-rendered-final-review.json"
+      ],
+      "resource_lock": "respect_model_slots_and_file_ownership",
+      "preparation_status": "21tests and final1471page build passed; actual synthetic Home→Builder→10step color override→4formats+mobile download rootPASS; broader consumer/canary adoption remains."
+    },
+    {
+      "id": "D-2",
+      "track": "D",
+      "status": "isolated_4canary_builder46_rollback_pass_owner_adoption_pending",
+      "primary_model": "Sol",
+      "supporting_models": [
+        "Astra"
+      ],
+      "depends_on": [
+        "D-1"
+      ],
+      "title": "4개 채택·실제 rollback·재채택",
+      "planned_owner_paths": [
+        "web/src/lib/references/",
+        "Core adoption tooling",
+        "web/references/ only at adoption"
+      ],
+      "deliverables": "4개 canary·journey 검증·rollback 기록",
+      "done_when": "Home→Builder→선택→override→preview→export 통과 및 의미 보존",
+      "evidence": [
+        ".omd/execution/2026-09-08/sprint90/core/root-v3-preservation-review.json",
+        ".omd/execution/2026-09-08/sprint90/core/four-canary-isolated-rehearsal-v3.json"
+      ],
+      "resource_lock": "respect_model_slots_and_file_ownership",
+      "preparation_status": "4 exact V3 canaries compile/adopt/externalrollback/readopt PASS, canonical untouched;actual Builder journey QA underway"
+    },
+    {
+      "id": "D-3",
+      "track": "D",
+      "status": "planned",
+      "primary_model": "Sol",
+      "supporting_models": [
+        "Opus 5"
+      ],
+      "depends_on": [
+        "D-2"
+      ],
+      "title": "후속 10개 검증 채택",
+      "planned_owner_paths": [
+        "web/src/lib/references/",
+        "Core adoption tooling",
+        "web/references/ only at adoption"
+      ],
+      "deliverables": "10개 adoption·전수 의미/소비자 검증",
+      "done_when": "총14개 채택,손실/오귀속 시 배치 중단·격리",
+      "evidence": [],
+      "resource_lock": "respect_model_slots_and_file_ownership"
+    },
+    {
+      "id": "E-0",
+      "track": "E",
+      "status": "completed_source_dossier",
+      "primary_model": "Astra",
+      "supporting_models": [],
+      "depends_on": [
+        "D-0"
+      ],
+      "title": "첫 국내 기업 근거와 독자 질문",
+      "planned_owner_paths": [
+        "new web/src/content/blog/ slugs",
+        "blog routing/metadata/analytics"
+      ],
+      "deliverables": "source dossier·주장/근거 표",
+      "done_when": "최신 공식 근거 재확인,공식/관찰/해석/창작 구별",
+      "evidence": [
+        ".omd/execution/2026-09-07/content/baemin-reverification.json",
+        ".omd/execution/2026-09-07/content/E-0-E-1-task-draft.md",
+        ".omd/execution/2026-09-07/content/baemin-font-catalog-addendum.json",
+        ".omd/execution/2026-09-07/content/baemin-article-v2/input-manifest.json",
+        ".omd/execution/2026-09-08/sprint90/content/baemin/source-dossier.md"
+      ],
+      "resource_lock": "respect_model_slots_and_file_ownership",
+      "preparation_status": "S1–S5 official Baemin scope/facts bound;dated WORK app announcementreverified"
+    },
+    {
+      "id": "E-1",
+      "track": "E",
+      "status": "drafts_reviewed_rendered_pending_owner",
+      "primary_model": "Astra",
+      "supporting_models": [
+        "Sol"
+      ],
+      "depends_on": [
+        "E-0"
+      ],
+      "title": "기업 해석 글 ko→en",
+      "planned_owner_paths": [
+        "new web/src/content/blog/ slugs",
+        "blog routing/metadata/analytics"
+      ],
+      "deliverables": "본문·이미지·적용 예·handoff·출처",
+      "done_when": "명령/사실 검증,아직 없는 기능을 배포 기능으로 표현하지 않음",
+      "evidence": [
+        ".omd/execution/2026-09-08/sprint90/content/draft-validation.json",
+        ".omd/execution/2026-09-08/sprint90/content/qa/report.json"
+      ],
+      "resource_lock": "respect_model_slots_and_file_ownership",
+      "preparation_status": "4ko/en drafts,2mobile-readableSVGs,localregistrationexample,downloadablelegacyinput;productionrenderer1440/390QA PASS;Sol independentreviewpending"
+    },
+    {
+      "id": "E-2",
+      "track": "E",
+      "status": "planned",
+      "primary_model": "Sol",
+      "supporting_models": [
+        "Opus 5"
+      ],
+      "depends_on": [
+        "E-1",
+        "F-1"
+      ],
+      "title": "실제 라우트·SEO·측정 발행 준비",
+      "planned_owner_paths": [
+        "new web/src/content/blog/ slugs",
+        "blog routing/metadata/analytics"
+      ],
+      "deliverables": "preview·locale/canonical/event 검증·발행 패키지",
+      "done_when": "모바일/링크/analytics와 rendered copy 검증",
+      "evidence": [],
+      "resource_lock": "respect_model_slots_and_file_ownership"
+    },
+    {
+      "id": "E-3",
+      "track": "E",
+      "status": "planned",
+      "primary_model": "Sol",
+      "supporting_models": [
+        "Opus 5"
+      ],
+      "depends_on": [
+        "E-2"
+      ],
+      "title": "2편 발행과 14일 성장 학습",
+      "planned_owner_paths": [
+        "new web/src/content/blog/ slugs",
+        "blog routing/metadata/analytics"
+      ],
+      "deliverables": "기업 글+Core 실용 글 각ko/en·측정 보고·수정1회",
+      "done_when": "각 글 실제 발행 전 검토,14 complete days 유입/handoff와 표본 한계 기록",
+      "evidence": [],
+      "resource_lock": "respect_model_slots_and_file_ownership"
+    }
+  ],
+  "milestones": [
+    {
+      "id": "M0",
+      "requires": [
+        "F-3"
+      ],
+      "label": "측정 기준선"
+    },
+    {
+      "id": "M1",
+      "requires_any": [
+        "A-3",
+        "E-2"
+      ],
+      "label": "첫 공개 가능 작품/발행 패키지"
+    },
+    {
+      "id": "M2",
+      "requires": [
+        "B-5",
+        "B-7"
+      ],
+      "label": "에셋/페이지 별도 평가와 비교 영상 공개 패키지"
+    },
+    {
+      "id": "M2b",
+      "requires": [
+        "B-6"
+      ],
+      "label": "벤치 개선 완료"
+    },
+    {
+      "id": "M3",
+      "requires": [
+        "F-4"
+      ],
+      "label": "기본 CLI 출하 후보"
+    },
+    {
+      "id": "M4",
+      "requires": [
+        "A-6",
+        "F-4"
+      ],
+      "additional_gate": "Revalidate F-4 on final release candidate; previous receipt cannot cover changed source.",
+      "label": "Aphrodite 출하 후보"
+    },
+    {
+      "id": "M5",
+      "requires": [
+        "D-3"
+      ],
+      "label": "Core 14개 채택"
+    },
+    {
+      "id": "M6",
+      "requires": [
+        "E-3"
+      ],
+      "label": "콘텐츠 학습 완료"
+    }
+  ],
+  "optional_experiments": [
+    {
+      "name": "Opus native harness",
+      "cells": 8,
+      "question": "Full harness lift on same Opus host with all descendants pinned",
+      "trigger": "Need full-harness claim after first report"
+    },
+    {
+      "name": "Opus portable transfer",
+      "cells": 8,
+      "question": "Single-agent skill lift across host models",
+      "trigger": "Need cross-model replication after first report"
+    }
+  ],
+  "first_dispatch_queue": {
+    "Sol": [
+      "F-0",
+      "F-1",
+      "F-2",
+      "F-3",
+      "B-0",
+      "B-1"
+    ],
+    "Opus 5": [
+      "A-0",
+      "D-0",
+      "E-0"
+    ],
+    "Grok 4.6": [
+      "F-1 bounded capability/concurrency probe",
+      "A-1 bounded asset probe",
+      "B-2 four-arm parallel calibration after dependencies"
+    ],
+    "note": "Queues obey dependencies; only F-0 is initially ready. B-2 is not mass-execution authorization."
+  },
+  "revision_note": "2026-09-07 user correction: free asset generation per arm, Grok four-arm parallel execution, shared browser serialized.",
+  "asset_policy": {
+    "starting_creative_pack": "none",
+    "common_inputs": "brief, factual evidence, authentic mandatory identity assets if task requires, neutral tool capability docs",
+    "tools": "same verified capability inventory and permissions; actual usage/model/media choices may differ",
+    "generation": "each arm plans, generates, selects, and integrates its own assets within same frozen opportunity budget",
+    "isolation": "no cross-arm prompts/assets/results; neutral task-local shared-browser views enforced outside model instructions",
+    "provenance": "retain every attempted/failed/rejected/selected/used asset with prompt/reference/backend/model/SHA/usage trace",
+    "evaluation": "separate blind asset-only and final-page packets; no bonus for count/video; legitimate asset-free UI not penalized, required missing assets fail"
+  },
+  "start_policy": "2026-09-07 foundation accepted; active goal created with user authorization. A0 Opus CLI and B0/B1 Sol implementation dispatched. Benchmark live admission remains closed.",
+  "browser_operator": {
+    "preferred": "Codex Computer Use Chrome",
+    "verified": "Chrome extension tab navigation and logged-in Grok Imagine composer",
+    "iterm2_computer_use": "blocked-by-tool-policy; do-not-bypass",
+    "cli_transport": "direct CLI execution with per-provider authentication/isolation profile",
+    "broker": "Four defects fixed and provider-zero12tests PASS; live CUA/controller/crash recovery not admitted",
+    "current_limitation": "Owned Chrome tab1269592521 catalog/license reads succeeded; subsequent history AX extension-UI blocked. Intermittent connection is not live broker admission."
+  },
+  "goal": {
+    "status": "active",
+    "thread_id": "01a07a65-fd93-7bc3-be50-e5f406cd9575",
+    "milestone": "D1 supported DTCG conversion and rendered override/download acceptance passed; B1 controller integrated; recovery pending; A2 and external payload gates remain",
+    "restored_at": "2026-09-07T11:17:31.139184+00:00",
+    "restoration_reason": "get_goal returned null after resume; full existing authorized objective re-registered"
+  },
+  "runtime_handles": {
+    "Sol": {
+      "agent": "foundation_sol",
+      "task": "idle: completed receipts recovered, final agent response hit usage limit; owner checkpoint pending",
+      "live_provider_calls": "none; B2 and E external CLI payload approvals pending",
+      "usage_limit_report": "Agent final response: retry Sep14 2026 12:43 PM, timezone unspecified; no reset authorized"
+    },
+    "Opus": {
+      "task": "ODDLY implementation dispatch rejected before execution; explicit new input transfer consent required",
+      "completed_exec_session_id": 96660,
+      "pending_spec": ".omd/execution/2026-09-07/content/baemin-article-v2/worker-spec.json",
+      "single_slot": true,
+      "a2_pending_spec": ".omd/execution/2026-09-07/aphrodite/slice-v3/fix-1-worker-spec.json",
+      "status_path": ".omd/execution/2026-09-07/aphrodite/slice-v3/attempts/attempt-0002/status.json",
+      "a2_rejection_receipt": ".omd/execution/2026-09-07/aphrodite/slice-v3/fix-1-dispatch-rejection.json",
+      "live_provider_calls": 0,
+      "corrective_calls_used": 1,
+      "corrective_calls_authorized": 2
+    },
+    "Grok": {
+      "task": "idle; live no-skill admission rejected before execution by automatic approval review",
+      "completed_exec_sessions": [
+        55365,
+        96455,
+        4829
+      ],
+      "media_status": "native still/edit confirmed; video unavailable under ZDR without user-hosted storage"
+    },
+    "local_preview_server": {
+      "exec_session_id": 34002,
+      "port": 43821,
+      "directory": "test-v2/content-runs/aphrodite/higgsgen"
+    },
+    "local_blender": {
+      "status": "host CLI default render verified; MCP addon unavailable",
+      "receipt": ".omd/execution/2026-09-07/tooling/blender-capability-receipt.json",
+      "benchmark_worker_admission": false
+    },
+    "Sol_broker_temp": {
+      "agent": "broker_regressions_sol",
+      "status": "completed",
+      "task": "v2 bounded lifecycle accepted; integration queued",
+      "workspace": "/private/tmp/omd-four-arm-controller-sol-j4bZtA",
+      "provider_calls": 0
+    }
+  },
+  "checkpoint_policy": {
+    "source": "latest user instruction: report and seek approval at branches, especially UI",
+    "current": "Concrete Anthropic payload explicitly approved; Opus5 executing slice-v3",
+    "next_proposal": "Present actual first-fold/transition visual review after technical QA",
+    "requires_owner_reply": false,
+    "approved_previous_unit": "desktop storyboard replan only; user said 작업 진행하자"
+  },
+  "a2_visual_checkpoint": {
+    "status": "superseded-by-owner-new-concept-request",
+    "receipt": ".omd/execution/2026-09-07/aphrodite/slice-v3/qa/root-review-02.json",
+    "video": ".omd/execution/2026-09-07/aphrodite/slice-v3/qa/motion-02/owner-review.mp4",
+    "scope": "firstfold and first transition only"
+  },
+  "aphrodite_new_direction": {
+    "project": "ODDLY",
+    "status": "concept-approved-external-transfer-rejected",
+    "path": ".omd/execution/2026-09-08/aphrodite/oddly-concept",
+    "generatedConceptImages": 2,
+    "workingLanding": false,
+    "next": "On visual adoption, bounded firstfold/unfold/world-entry prototype and actual browser recording",
+    "prototypePath": ".omd/execution/2026-09-08/aphrodite/oddly-prototype",
+    "externalWorkerCalls": 0
+  },
+  "model_policy_history": [
+    {
+      "effective_until": "2026-09-07T23:07:51Z",
+      "policy": {
+        "execution": {
+          "Sol": {
+            "runtime": "Codex CLI",
+            "requested_model": "gpt-5.6-sol",
+            "effort": "high",
+            "model_verified": true,
+            "verification": "explicit native worker selector; provider usage IDs not exposed"
+          },
+          "Opus 5": {
+            "runtime": "Claude Code CLI",
+            "requested_model": "claude-opus-5",
+            "effort": "high",
+            "model_verified": true
+          },
+          "Grok 4.6": {
+            "runtime": "Grok Build CLI",
+            "requested_model": "grok-4.6",
+            "effort": "high",
+            "model_verified": true
+          }
+        },
+        "planning_only": [
+          "Astra",
+          "Fable 5.1"
+        ],
+        "planning_review": "Choose at most one; optional initial review and one A direction reset after two rejected attempts; never benchmark generation.",
+        "fallback": "Explicit handoff only at work-unit boundary; forbidden within benchmark epoch"
+      }
+    }
+  ],
+  "next_roadmap": "docs/OMD_NEXT_ROADMAP_2026-09-08.md",
+  "updated_at": "2026-09-08T00:21:32.688515+00:00"
+}

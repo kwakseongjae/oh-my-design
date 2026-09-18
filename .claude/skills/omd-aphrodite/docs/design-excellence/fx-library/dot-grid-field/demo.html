@@ -1,0 +1,30 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — dot-grid-field</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+.stage{min-height:230px;padding:28px;display:grid;align-content:center}
+.stage h3{margin:0 0 6px;font-size:16px}.stage p{margin:0;color:var(--mut);font-size:13px}
+[data-theme=light] .fx-dots{--fx-dots-color:rgba(16,17,26,.42);--fx-dots-opacity:.22}
+</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>dot-grid-field <code>배경</code></h1>
+<p class="sub">두 줄짜리 그라디언트가 좌표계를 만든다. 핵심은 격자가 아니라 <b>마스크</b> — 가장자리에서 사라지지 않으면 "잘린 격자무늬 벽지"가 된다.</p>
+<div class="grid2">
+  <div class="stage fx-dots"><h3>도트 (기본)</h3><p>gap 26 · 방사 마스크</p></div>
+  <div class="stage fx-dots fx-dots--lines" style="--fx-dots-gap:34px"><h3>라인 그리드</h3><p>gap 34 · 설계도 느낌</p></div>
+  <div class="stage fx-dots fx-dots--drift" style="--fx-dots-gap:20px"><h3>표류</h3><p>60s 로 격자 한 칸 — 거의 눈치채지 못한다</p></div>
+  <div class="stage fx-dots" id="rv"><h3>포인터 반경 노출</h3><p>커서 주변에서만 격자가 드러난다</p></div>
+</div>
+<p class="note">라이트 모드에서는 도트를 어둡게(알파 .42) 바꾼다. 흰 도트는 흰 배경에서 존재하지 않는다.</p>
+</div>
+<script>
+(function(){var el=document.getElementById('rv');
+ if(!window.matchMedia('(hover:hover)').matches)return;
+ el.classList.add('fx-dots--reveal');var raf=0,p=null;
+ var paint=function(){raf=0;if(!p)return;var r=el.getBoundingClientRect();
+   el.style.setProperty('--fx-spot-x',(p.x-r.left)+'px');el.style.setProperty('--fx-spot-y',(p.y-r.top)+'px');};
+ el.addEventListener('pointermove',function(e){p={x:e.clientX,y:e.clientY};if(!raf)raf=requestAnimationFrame(paint);},{passive:true});
+ el.addEventListener('pointerleave',function(){p=null;el.style.setProperty('--fx-spot-x','-999px');},{passive:true});})();
+</script>
+<script src="../_shell.js"></script></body></html>

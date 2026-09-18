@@ -13,7 +13,7 @@ export async function GET(
     return new NextResponse("Evolution artifact not available", { status: 404 });
   }
 
-  const checked = loaded.ast.evidence?.checkedAt ?? loaded.quality.verifiedAt ?? "not recorded";
+  const checked = loaded.ast?.evidence?.checkedAt ?? loaded.quality.verifiedAt ?? "not recorded";
   const sections = editorial.evolution.map((change) => [
     `## ${change.claim}`,
     "",

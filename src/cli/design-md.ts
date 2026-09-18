@@ -33,6 +33,7 @@ export interface DesignMdToolOptions {
   projectRoot?: string;
   checkpointReceipt?: string;
   adopt?: boolean;
+  adoptionTarget?: 'project-system' | 'reference-catalog';
 }
 
 function packageRoot(from = dirname(fileURLToPath(import.meta.url))): string {
@@ -59,6 +60,10 @@ export function buildDesignMdToolArgs(
 ): string[] {
   const cwd = resolve(options.cwd ?? process.cwd());
   const args: string[] = [];
+  if (options.adoptionTarget !== undefined
+    && !['project-system', 'reference-catalog'].includes(options.adoptionTarget)) {
+    throw new Error('omd design-md: --adoption-target must be project-system or reference-catalog');
+  }
 
   if (mode === 'audit') {
     if (!options.catalog) throw new Error('omd design-md audit: a catalog directory is required');
@@ -138,6 +143,7 @@ export function buildDesignMdToolArgs(
       '--prepare-checkpoint', absoluteFrom(cwd, options.output),
       '--reviewer', options.reviewer,
       '--authority-transition-approved',
+      ...(options.adoptionTarget ? ['--adoption-target', options.adoptionTarget] : []),
     );
   } else if (mode === 'adopt') {
     if (!options.input) throw new Error('omd design-md adopt: a compiled package directory is required');
@@ -147,6 +153,7 @@ export function buildDesignMdToolArgs(
       absoluteFrom(cwd, options.input),
       '--project-root', absoluteFrom(cwd, options.projectRoot),
       '--checkpoint-receipt', absoluteFrom(cwd, options.checkpointReceipt),
+      ...(options.adoptionTarget ? ['--adoption-target', options.adoptionTarget] : []),
     );
   } else {
     const input = absoluteFrom(cwd, options.input ?? 'DESIGN.md');

@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1",
+  "lock_id": "four-arm-source-lock-2026-09-07-v0.1",
+  "status": "provider-zero-inventory-only",
+  "frozen_predecessor": "config/asset-generation-four-arm-v0.1.json",
+  "shared_source_lock": "config/omd-2.0-competitor-source-lock-v0.1.json",
+  "arms": [
+    {
+      "arm_id": "no-skill",
+      "bundle_path": null,
+      "bundle_tree_sha256": null,
+      "bundle_state": "intentionally-empty-control",
+      "activation_prefix": null,
+      "activation_state": "not-applicable",
+      "admission": "workspace skill roots must be absent and discovery must prove zero installed benchmark skill"
+    },
+    {
+      "arm_id": "uiux-pro-max",
+      "bundle_path": "fixtures/competitor-skills-2.0/ui-ux-pro-max",
+      "bundle_tree_sha256": "3f490c2311aa58b136ecc034aa292cd79c94dbd934a497b60bbfea9224023557",
+      "bundle_state": "copied-frozen-fixture-present",
+      "source_lock_entry": "ui-ux-pro-max-2.14.2-2.0",
+      "activation_prefix": "Use the installed $ui-ux-pro-max skill for this task.",
+      "activation_state": "not-verified-in-current-grok-4.6-runtime",
+      "admission": "materialized tree hash plus current-runtime positive discovery and exact-prefix receipt"
+    },
+    {
+      "arm_id": "hallmark",
+      "bundle_path": "fixtures/competitor-skills-2.0/hallmark",
+      "bundle_tree_sha256": "6565ff16491c30f39b6ca403a4df0509da81d9b938adb631dbc6d066e7e78160",
+      "bundle_state": "copied-frozen-fixture-present",
+      "source_lock_entry": null,
+      "source_provenance": "fixtures/competitor-skills-2.0/hallmark/PROVENANCE.md",
+      "activation_prefix": "Use the installed $hallmark skill for this task.",
+      "activation_state": "not-verified-in-current-grok-4.6-runtime",
+      "admission": "materialized tree hash, provenance review, current-runtime positive discovery, and exact-prefix receipt"
+    },
+    {
+      "arm_id": "omd",
+      "bundle_path": "fixtures/competitor-skills-2.0/omd-autopilot-v2",
+      "bundle_tree_sha256": "11a8719d6489b0d0fffd46baa0ab308d93e4071a23586aae780f8127345694ae",
+      "bundle_state": "copied-frozen-fixture-present",
+      "source_lock_entry": null,
+      "source_provenance": "fixtures/competitor-skills-2.0/omd-autopilot-v2/PROVENANCE.md",
+      "activation_prefix": "Use the installed $omd-autopilot skill for this task.",
+      "activation_state": "not-verified-in-current-grok-4.6-runtime",
+      "admission": "materialized tree hash, current-runtime positive discovery, exact-prefix receipt, and no hidden/global OmD source"
+    }
+  ],
+  "tool_rights": {
+    "inventory_state": "proposed-not-capability-verified",
+    "equal_for_all_arms": true,
+    "allowed": ["cell-local filesystem", "declared local build/test commands", "external shared browser request bridge"],
+    "forbidden": ["direct worker browser visibility", "cross-cell output access", "ambient global skill/config discovery", "network outside the broker"],
+    "browser_operator": "root Codex Computer Use Chrome; workers do not inherit CUA APIs",
+    "creative_prompt_policy": "The broker passes a cell-authored prompt byte-for-byte; the operator may perform mechanical service actions only."
+  },
+  "isolation_admission": {
+    "current_status": "unverified-for-new-epoch",
+    "insufficient_alone": ["separate cwd", "separate GROK_HOME"],
+    "required_existing_mechanisms": [
+      "scripts/prepare-sandbox.mjs independent task-source observation and frozen bundle materialization",
+      "scripts/run-grok.mjs isolated HOME allowlist, frozen auth/cache evidence, fixed flags, and prompt audit",
+      "test-run-grok-contract.mjs provider-zero integrity suite"
+    ],
+    "missing_live_proofs": [
+      "four current-runtime skill discovery receipts, including a negative no-skill receipt",
+      "ambient/global source non-discovery proof for every cell",
+      "actual shared-browser service and download attribution receipt",
+      "Grok-reported model identity and current CLI version receipt"
+    ],
+    "observed_media_profile_blocker": {
+      "evidence_path": ".omd/execution/2026-09-07/aphrodite/media-probe/attempts/attempt-0002/stdout.log",
+      "evidence_sha256": "5da85439bd1f9dd31bb7a9b1d8151c8633171dfd47a4340e8a1b88aecadcc0ab",
+      "observed": "With task-local GROK_HOME, compatibility flags disabled, plugins disabled, and an image_gen/write allowlist, init still exposed search_tool/use_tool, five ambient MCP servers, and sixteen bundled skills. The model then used write against the bundled imagine skill path.",
+      "tool_allowlist_warning_path": ".omd/execution/2026-09-07/aphrodite/media-probe/attempts/attempt-0001/stderr.log",
+      "tool_allowlist_warning_sha256": "b070c0464d78b88439c5035dc7e7d44871c12a1fcc158536a7523b212dbb3792",
+      "tool_allowlist_warning": "write_file is unmappable and causes Grok to retain the full toolset; the observed exact tool name is write.",
+      "implication": "A file-only isolation receipt cannot admit a media-enabled benchmark cell. Media-capable profiles require a new context-isolation mechanism and exact init-contract proof."
+    },
+    "live_admission": "blocked"
+  }
+}

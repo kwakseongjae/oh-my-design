@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-07",
+  "scope": "preflight_only_no_project_jobs_no_goal_started",
+  "browser": {
+    "preferred": "Codex Computer Use Chrome",
+    "connection": "extension",
+    "verified": [
+      "created task-owned tab",
+      "navigated to Grok Imagine",
+      "read logged-in account UI and image/video composer"
+    ],
+    "initial_navigation_timeout_recovered_by_reading_current_state": true,
+    "web_authentication": "logged-in",
+    "media_generation": "not-tested",
+    "download": "not-tested",
+    "shared_four_arm_broker": "not-implemented",
+    "iterm2": {
+      "app_id": "com.googlecode.iterm2",
+      "discovered_running": true,
+      "computer_use": "rejected-by-tool-safety-policy",
+      "new_window_opened": false,
+      "bypass_attempted": false
+    }
+  },
+  "global_routing": {
+    "browser_harness_instruction": "Always use browser-harness for any web interaction: automation, scraping, testing, or site/app work.",
+    "source": "/Users/kwakseongjae/.codex/skills/browser-harness/SKILL.md:3",
+    "resolved_source": "/Users/kwakseongjae/Developer/browser-harness/SKILL.md",
+    "duplicate_catalog_source": "/Users/kwakseongjae/.codex/skills/browser-harness/build/lib/browser_harness/SKILL.md",
+    "grok_preference": "chrome-devtools, fallback agent-browser",
+    "grok_source": "/Users/kwakseongjae/.grok/Agents.md:60",
+    "global_files_changed": false,
+    "project_override": "AGENTS.md Browser execution for the restart tracks"
+  },
+  "authentication": {
+    "claude_sandbox_status": {
+      "exit_code": 1,
+      "loggedIn": false,
+      "authMethod": "none"
+    },
+    "claude_host_status": {
+      "exit_code": 0,
+      "loggedIn": true,
+      "authMethod": "claude.ai",
+      "subscriptionType": "max"
+    },
+    "interpretation": "The sandbox-limited check cannot access existing keychain authentication; host-context status and actual model call succeed. No re-login performed.",
+    "codex": {
+      "cli_login_status": "Logged in using ChatGPT",
+      "usage_consumed_percent": 21,
+      "usage_remaining_percent": 79,
+      "spend_control_reached": false,
+      "sol_model_invocation_retested": false,
+      "prior_sol_error": "Selected model is at capacity; not classified as an authentication error"
+    }
+  },
+  "diagnostic_invocations": [
+    {
+      "provider": "claude-code",
+      "requested_model": "claude-opus-5",
+      "exit_code": 0,
+      "elapsed_seconds": 3.07,
+      "timed_out": false,
+      "type": "result",
+      "subtype": "success",
+      "is_error": false,
+      "num_turns": 1,
+      "total_cost_usd": 0.037927999999999996,
+      "reported_model_ids": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5"
+      ],
+      "marker_match": true,
+      "error_text": null
+    },
+    {
+      "provider": "grok-build-cli",
+      "requested_model": "grok-4.6",
+      "exit_code": 0,
+      "elapsed_seconds": 7.19,
+      "timed_out": false,
+      "advertised_tools": [
+        "run_terminal_command",
+        "read_file",
+        "search_replace",
+        "list_dir",
+        "grep",
+        "todo_write",
+        "scheduler_create",
+        "scheduler_delete",
+        "scheduler_list",
+        "monitor",
+        "update_goal",
+        "enter_plan_mode",
+        "exit_plan_mode",
+        "ask_user_question",
+        "image_gen",
+        "image_edit",
+        "image_to_video",
+        "reference_to_video",
+        "write"
+      ],
+      "advertised_skill_count": 126,
+      "init_model": "grok-4.6",
+      "reported_model_ids": [
+        "grok-4.6-build"
+      ],
+      "result_type": "success",
+      "is_error": false,
+      "marker_match": true,
+      "tool_use_events": 0,
+      "error_classes": [],
+      "error_classification_note": "Successful result; previous substring match was the word authentication in the diagnostic prompt, not an authentication error."
+    },
+    {
+      "provider": "grok-build-cli",
+      "requested_model": "grok-4.6",
+      "exit_code": 0,
+      "elapsed_seconds": 4.39,
+      "advertised_tools": [
+        "todo_write"
+      ],
+      "advertised_skill_count": 0,
+      "init_model": "grok-4.6",
+      "reported_model_ids": [
+        "grok-4.6-build"
+      ],
+      "result_type": "success",
+      "is_error": false,
+      "marker_match": true,
+      "tool_use_events": 0,
+      "error_classes": [],
+      "temporary_auth_copy_removed": true
+    }
+  ],
+  "isolation": {
+    "empty_grok_tools_list": "Do not use as a disable-all contract: live init advertised default tools.",
+    "positive_allowlist": "--tools todo_write advertised exactly todo_write; no tools invoked.",
+    "temporary_profile": "GROK_HOME plus documented skills.ignore/compat/plugin settings, cli.use_leader=false; live init advertised zero skills.",
+    "temporary_credential_handling": "Task-local private auth copy used for isolated diagnostic and removed afterwards; no credentials committed or printed.",
+    "limits": "This verifies advertised tool/skill surfaces and a harmless reply. It is not full benchmark no-leak proof, four-way concurrency proof, or a production asset tool inventory."
+  },
+  "goal": {
+    "active_goal": null,
+    "created": false,
+    "reason": "User explicitly requested assessment and handling before starting actual autonomous project work."
+  }
+}

@@ -1,0 +1,29 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — holo-foil</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+.tile{border-radius:18px;min-height:240px;padding:22px;display:grid;align-content:space-between;
+  background:linear-gradient(160deg,#1b1d29,#2c2140 60%,#123044);border:1px solid rgba(255,255,255,.10);
+  transform:perspective(760px) rotateX(var(--fx-foil-tilt-x,0deg)) rotateY(var(--fx-foil-tilt-y,0deg));
+  transition:transform .32s cubic-bezier(.2,.7,.3,1);will-change:transform}
+.tile:hover{transition-duration:.08s}
+.tile b{color:#fff;font-size:15px}.tile span{color:rgba(255,255,255,.6);font-size:12px}
+[data-theme=light] .tile{background:linear-gradient(160deg,#e9ecf5,#dfe0f2 60%,#d6e8f0);border-color:rgba(16,17,26,.10)}
+[data-theme=light] .tile b{color:#16171a}[data-theme=light] .tile span{color:#6b7076}
+[data-theme=light] .fx-foil{--fx-foil-strength:.6;--fx-foil-gloss:.32}
+</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>holo-foil <code>재질</code></h1>
+<p class="sub">반복 선형 그라디언트(색상환) × <code>color-dodge</code> + 포인터 추종 정반사 × <code>overlay</code>. 두 겹이 각도에 따라 어긋나면서 이리데선스가 생긴다.</p>
+<div class="grid2">
+  <div class="tile fx-foil"><b>기본 포일</b><span>커서를 카드 위에서 움직여 보세요</span></div>
+  <div class="tile fx-foil" style="--fx-foil-strength:.7;--fx-foil-angle:70deg"><b>강한 포일 / 다른 각</b><span>strength .7 · angle 70deg</span></div>
+  <div class="tile fx-foil" style="--fx-foil-strength:.2;--fx-foil-gloss:.75"><b>거의 광택만</b><span>대개 이 정도가 제품에 맞다</span></div>
+  <div class="tile"><b>없음</b><span>비교용</span></div>
+</div>
+<p class="note">터치 기기에서는 두 층 모두 <code>display:none</code>. 카드 내용은 효과 없이도 완전히 읽힌다.</p>
+</div>
+<script src="./snippet.js"></script>
+<script>fxLib.mountFoil();</script>
+<script src="../_shell.js"></script></body></html>

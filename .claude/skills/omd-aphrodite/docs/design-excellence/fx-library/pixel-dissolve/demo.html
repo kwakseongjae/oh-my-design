@@ -1,0 +1,39 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — pixel-dissolve</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+.ph{aspect-ratio:16/9;border-radius:16px;display:grid;place-items:center;color:#fff;font-size:15px;
+  background:conic-gradient(from 210deg at 30% 30%,#3450d4,#12b39a 30%,#e0b23c 58%,#d0466f 78%,#3450d4)}
+.fx-dissolve{border-radius:16px}
+[data-theme=light] .fx-dissolve{--fx-diss-color:#f7f7f5}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:10px;padding:9px 16px;font:inherit;cursor:pointer;margin-top:14px}
+.tall{height:60vh;display:grid;place-items:center;color:var(--mut)}
+</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>pixel-dissolve <code>이미지 리빌</code></h1>
+<p class="sub">덮개를 격자로 잘라 무작위 순서로 흩는다. 순서를 무작위로 만드는 값 하나(<code>--r</code>)만 인라인이고 나머지는 전부 CSS다.</p>
+<div class="fx-dissolve" id="d1"><div class="ph">아래 층</div><div class="fx-dissolve__grid" aria-hidden="true"></div></div>
+<button class="btn" id="go">다시 재생</button>
+<div class="tall">↓ 스크롤 구동 버전</div>
+<div class="fx-dissolve fx-dissolve--scroll" id="d2"><div class="ph">스크롤로 드러난다</div><div class="fx-dissolve__grid" aria-hidden="true"></div></div>
+<div class="tall">↑</div>
+</div>
+<script>
+(function(){
+  function fill(el){
+    var cs=getComputedStyle(el),c=+cs.getPropertyValue('--fx-diss-cols')||14,r=+cs.getPropertyValue('--fx-diss-rows')||8;
+    var g=el.querySelector('.fx-dissolve__grid'),n=c*r,ord=[];
+    for(var i=0;i<n;i++)ord.push(i);
+    for(var i=n-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=ord[i];ord[i]=ord[j];ord[j]=t;}
+    g.innerHTML='';
+    for(var i=0;i<n;i++){var cell=document.createElement('i');cell.style.setProperty('--i',i);cell.style.setProperty('--r',ord[i]);g.appendChild(cell);}
+  }
+  var d1=document.getElementById('d1'),d2=document.getElementById('d2');
+  fill(d1);fill(d2);
+  requestAnimationFrame(function(){d1.dataset.fxDiss='go';});
+  document.getElementById('go').addEventListener('click',function(){
+    d1.removeAttribute('data-fx-diss');fill(d1);requestAnimationFrame(function(){d1.dataset.fxDiss='go';});});
+})();
+</script>
+<script src="../_shell.js"></script></body></html>

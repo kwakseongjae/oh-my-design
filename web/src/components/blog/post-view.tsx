@@ -34,7 +34,7 @@ export function BlogPostView({
       <BlogHtmlLang locale={post.locale} />
       <BlogHeader locale={locale} switchTo={switchTo} />
 
-      <article className="mx-auto max-w-3xl px-4 pt-12 pb-24 sm:px-6" lang={post.locale}>
+      <article className="mx-auto w-full min-w-0 max-w-3xl px-4 pt-12 pb-24 [overflow-wrap:anywhere] sm:px-6" lang={post.locale}>
         <Link
           href={blogIndexHref(locale)}
           className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"

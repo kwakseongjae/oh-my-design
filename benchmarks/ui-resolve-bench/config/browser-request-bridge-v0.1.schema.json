@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oh-my-design.local/schemas/browser-request-bridge-v0.1.schema.json",
+  "title": "OmD external browser request bridge v0.1",
+  "$defs": {
+    "token": {"type": "string", "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]{0,127}$"},
+    "expectedDownload": {
+      "type": "object",
+      "description": "A filename reserved beneath the transaction-owned download directory created when the request is leased.",
+      "additionalProperties": false,
+      "required": ["id", "fileName"],
+      "properties": {
+        "id": {"$ref": "#/$defs/token"},
+        "fileName": {"type": "string", "minLength": 1, "pattern": "^[^/\\\\]+$"},
+        "required": {"type": "boolean", "default": true}
+      }
+    },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "transactionId", "cellId", "ownerId", "operation", "payload", "expectedDownloads"],
+      "properties": {
+        "schemaVersion": {"const": "0.1"},
+        "transactionId": {"$ref": "#/$defs/token"},
+        "cellId": {"$ref": "#/$defs/token"},
+        "ownerId": {"$ref": "#/$defs/token"},
+        "operation": {"enum": ["navigate", "inspect", "generate-image", "generate-video", "download"]},
+        "payload": {"type": "object"},
+        "promptSha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+        "expectedDownloads": {"type": "array", "items": {"$ref": "#/$defs/expectedDownload"}}
+      }
+    },
+    "downloadResult": {
+      "type": "object",
+      "description": "A declared basename resolved only within the active transaction's broker-owned download directory.",
+      "additionalProperties": false,
+      "required": ["id", "relativePath"],
+      "properties": {
+        "id": {"$ref": "#/$defs/token"},
+        "relativePath": {"type": "string", "minLength": 1, "pattern": "^[^/\\\\]+$"}
+      }
+    },
+    "lease": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "status", "transactionId", "cellId", "ownerId", "operatorId", "leaseToken", "downloadDirectory", "request", "operatorPath"],
+      "properties": {
+        "schemaVersion": {"const": "0.1"},
+        "status": {"const": "active"},
+        "transactionId": {"$ref": "#/$defs/token"},
+        "cellId": {"$ref": "#/$defs/token"},
+        "ownerId": {"$ref": "#/$defs/token"},
+        "operatorId": {"$ref": "#/$defs/token"},
+        "leaseToken": {"type": "string", "format": "uuid"},
+        "downloadDirectory": {"type": "string", "minLength": 1, "description": "Broker-created absolute destination owned by this transaction. Operators must not write to the cell-level parent."},
+        "request": {"$ref": "#/$defs/request"},
+        "operatorPath": {"type": "string", "minLength": 1}
+      }
+    },
+    "completion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["transactionId", "cellId", "ownerId", "operatorId", "leaseToken", "result"],
+      "properties": {
+        "transactionId": {"$ref": "#/$defs/token"},
+        "cellId": {"$ref": "#/$defs/token"},
+        "ownerId": {"$ref": "#/$defs/token"},
+        "operatorId": {"$ref": "#/$defs/token"},
+        "leaseToken": {"type": "string", "format": "uuid"},
+        "result": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "response", "downloads"],
+          "properties": {
+            "status": {"enum": ["completed", "failed"], "description": "completed requires every required expected download; failed may omit required downloads after the leased operator confirms terminal service failure."},
+            "response": {"type": "object", "description": "Service outcome metadata. It is validated before a terminal event or receipt is written."},
+            "downloads": {"type": "array", "description": "Every supplied item is validated and retained for either status, including partial output from a failed service operation.", "items": {"$ref": "#/$defs/downloadResult"}}
+          }
+        }
+      }
+    }
+  }
+}

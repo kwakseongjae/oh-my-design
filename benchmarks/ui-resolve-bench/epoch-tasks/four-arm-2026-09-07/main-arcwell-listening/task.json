@@ -1,0 +1,31 @@
+{
+  "schema_version": "0.1",
+  "task_id": "main-arcwell-listening",
+  "matrix_role": "main",
+  "surface": "fictional-creative-product-landing",
+  "locale": "en-US",
+  "brief": "Create a responsive product landing page for Arcwell Listening, a fictional desktop speaker made for focused listening in small rooms. Give it a distinct visual concept and a working product-interest path. The page must feel authored and complete rather than like a component gallery.",
+  "locked_facts": {
+    "name": "Arcwell Listening",
+    "product": "Arc One desktop speaker",
+    "description": "A compact powered stereo pair for desks and small rooms.",
+    "finishes": ["Chalk", "Oxide", "Night"],
+    "included": ["two speakers", "woven power cable", "USB-C cable"],
+    "inputs": ["USB-C", "3.5 mm"],
+    "price": "$680 per pair",
+    "shipping": "Ships in October",
+    "contact": "listen@arcwell.example"
+  },
+  "required_content": ["product hero", "listening concept", "finish selector", "included items and inputs", "product-interest call to action"],
+  "creative_freedom": "Choose composition, typography, palette, motion, and generated image or video opportunities. Do not add acoustic measurements, reviews, awards, sustainability claims, warranties, discounts, wireless features, or company history.",
+  "shared_creative_pack": null,
+  "source_provenance": [{"type": "benchmark-authored-fiction", "path": "task.json", "claim_scope": "all locked facts"}],
+  "deterministic_acceptance": [
+    "A runnable page loads without uncaught console errors.",
+    "Every product, price, shipping, and technical claim matches locked_facts or is omitted.",
+    "The finish selector is keyboard operable, visibly identifies Chalk, Oxide, and Night, and carries the selected finish into the interest state.",
+    "The product-interest call to action reveals or navigates to a form that validates email and finish and shows a local success state without a network dependency.",
+    "At 390x844 and 1440x900 the page has no horizontal document overflow and primary product content remains readable.",
+    "prefers-reduced-motion disables nonessential continuous or entrance motion."
+  ]
+}

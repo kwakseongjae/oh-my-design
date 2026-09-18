@@ -1,0 +1,291 @@
+{
+  "schema_version": "0.1",
+  "experiment_id": "grok46-four-arm-asset-generation-v0.1",
+  "status": "draft/preflight_pending",
+  "live_output_count": 0,
+  "execution_purpose": "Compare the contribution of no skill, UIUX Pro Max, Hallmark, and OMD to independent asset planning, generation, selection, and final UI creation.",
+  "runtime": {
+    "provider": "grok-build-cli",
+    "host_model_requested": "grok-4.6",
+    "host_model_reported": null,
+    "host_model_mapping_receipt_sha256": null,
+    "provider_version_exact": null,
+    "context_isolation_verified": false,
+    "context_isolation_receipt_sha256": null,
+    "reasoning_effort": "high",
+    "no_subagents": true,
+    "host_fallback_allowed": false,
+    "media_models_recorded_separately_from_host": true
+  },
+  "arms": [
+    {
+      "id": "no-skill",
+      "activation": "none",
+      "source_role": "neutral-baseline-input-and-activation-snapshot",
+      "source_sha256": null,
+      "prompt_template_sha256": null,
+      "workspace_namespace": "cell/{task_id}/{trial_id}/no-skill",
+      "session_namespace": "cell:{task_id}:{trial_id}:no-skill",
+      "prompt_namespace": "cell/{task_id}/{trial_id}/no-skill/prompt",
+      "asset_namespace": "cell/{task_id}/{trial_id}/no-skill/assets"
+    },
+    {
+      "id": "uiux-pro-max",
+      "activation": "portable-skill",
+      "source_role": "skill-bundle-snapshot",
+      "source_sha256": null,
+      "prompt_template_sha256": null,
+      "workspace_namespace": "cell/{task_id}/{trial_id}/uiux-pro-max",
+      "session_namespace": "cell:{task_id}:{trial_id}:uiux-pro-max",
+      "prompt_namespace": "cell/{task_id}/{trial_id}/uiux-pro-max/prompt",
+      "asset_namespace": "cell/{task_id}/{trial_id}/uiux-pro-max/assets"
+    },
+    {
+      "id": "hallmark",
+      "activation": "portable-skill",
+      "source_role": "skill-bundle-snapshot",
+      "source_sha256": null,
+      "prompt_template_sha256": null,
+      "workspace_namespace": "cell/{task_id}/{trial_id}/hallmark",
+      "session_namespace": "cell:{task_id}:{trial_id}:hallmark",
+      "prompt_namespace": "cell/{task_id}/{trial_id}/hallmark/prompt",
+      "asset_namespace": "cell/{task_id}/{trial_id}/hallmark/assets"
+    },
+    {
+      "id": "omd",
+      "activation": "portable-skill",
+      "source_role": "skill-bundle-snapshot",
+      "source_sha256": null,
+      "prompt_template_sha256": null,
+      "workspace_namespace": "cell/{task_id}/{trial_id}/omd",
+      "session_namespace": "cell:{task_id}:{trial_id}:omd",
+      "prompt_namespace": "cell/{task_id}/{trial_id}/omd/prompt",
+      "asset_namespace": "cell/{task_id}/{trial_id}/omd/assets"
+    }
+  ],
+  "common_input": {
+    "allowed": [
+      "task-brief",
+      "task-facts",
+      "mandatory-official-logo"
+    ],
+    "ready_made_creative_asset_pack": false,
+    "cross_arm_outputs_allowed": false,
+    "manual_arm_specific_prompt_or_asset_boost": false
+  },
+  "tool_parity": {
+    "meaning": "Equal capability and invocation rights; selected tools, media, prompts, and output counts may differ by arm.",
+    "inventory_status": "unresolved",
+    "inventory_sha256": null,
+    "capabilities": [
+      {
+        "id": "shared-browser",
+        "availability_status": "unresolved",
+        "provider_and_version_exact": null,
+        "media_model_ids": [],
+        "arm_rights": {
+          "no-skill": "invoke",
+          "uiux-pro-max": "invoke",
+          "hallmark": "invoke",
+          "omd": "invoke"
+        }
+      },
+      {
+        "id": "image-generation",
+        "availability_status": "unresolved",
+        "provider_and_version_exact": null,
+        "media_model_ids": [],
+        "arm_rights": {
+          "no-skill": "invoke",
+          "uiux-pro-max": "invoke",
+          "hallmark": "invoke",
+          "omd": "invoke"
+        }
+      },
+      {
+        "id": "video-generation",
+        "availability_status": "unresolved",
+        "provider_and_version_exact": null,
+        "media_model_ids": [],
+        "arm_rights": {
+          "no-skill": "invoke",
+          "uiux-pro-max": "invoke",
+          "hallmark": "invoke",
+          "omd": "invoke"
+        }
+      },
+      {
+        "id": "local-asset-production",
+        "availability_status": "unresolved",
+        "provider_and_version_exact": null,
+        "media_model_ids": [],
+        "arm_rights": {
+          "no-skill": "invoke",
+          "uiux-pro-max": "invoke",
+          "hallmark": "invoke",
+          "omd": "invoke"
+        }
+      }
+    ],
+    "equal_selected_tool_use_required": false,
+    "equal_asset_count_required": false,
+    "media_backend_selection": "free-from-frozen-common-verified-inventory"
+  },
+  "execution_control": {
+    "parallel_grouping": "task_x_trial",
+    "max_concurrency": 4,
+    "all_four_arms_start_as_one_parallel_group": true,
+    "latency_comparison": "descriptive-only",
+    "provider_rate_limit_changes_mid_epoch": false,
+    "browser_broker": {
+      "required_before_live": true,
+      "implementation_status": "not-implemented",
+      "verification_receipt_sha256": null,
+      "enforced_outside_model_instructions": true,
+      "capacity": 1,
+      "fairness": "fifo-by-monotonic-request-time",
+      "transactions_per_lease": 1,
+      "events": [
+        "request",
+        "acquire",
+        "release",
+        "cancel"
+      ],
+      "event_record_fields": [
+        "cell_id",
+        "transaction_id",
+        "owner_id",
+        "event",
+        "at_monotonic_ms"
+      ],
+      "event_clock": "monotonic",
+      "cell_scoped_request_routing": true,
+      "cell_scoped_download_routing": true,
+      "waiting_cell_browser_visibility": "none",
+      "transactions_per_turn": 1,
+      "async_render_release": {
+        "requires_verified_tool_support": true,
+        "allowed_only_with_stable_job_id": true,
+        "requires_verified_later_cell_scoped_capture": true,
+        "otherwise_hold_lease": true
+      },
+      "lease_timeout": {
+        "auto_reassign_live_owner": false,
+        "quarantine_until_browser_task_terminated_or_reconciled": true,
+        "stale_lock_time_expiry_is_sufficient": false
+      }
+    }
+  },
+  "matrix": {
+    "calibration_tasks": 1,
+    "calibration_trials": 1,
+    "main_tasks": 3,
+    "main_trials_per_task": 3,
+    "followup_tasks": 1,
+    "followup_trials_per_task": 3,
+    "followup_task_id": null,
+    "followup_task_selection_status": "unresolved",
+    "followup_lineage": "same-functional-task-arm-trial-session-and-workspace-as-first-submission",
+    "first_submission_terminal_failure_policy": "retain-lineage-and-record-followup-unavailable",
+    "arm_count": 4,
+    "calibration_cells": 4,
+    "first_submission_cells": 36,
+    "followup_cells": 12,
+    "total_cells": 52,
+    "calibration_in_score_denominator": false
+  },
+  "budgets": {
+    "freeze_policy": "freeze-common-values-after-four-arm-calibration",
+    "status": "provisional",
+    "active_minutes": {
+      "calibration": 20,
+      "first_submission": 20,
+      "followup": 10
+    },
+    "host_turn_limit": 30,
+    "broker_queue_wait_limit_minutes": null,
+    "hard_total_elapsed_limit_minutes": null,
+    "active_deadline_enforcement": "broker-measured-and-enforced",
+    "browser_queue_wait_exclusion": "exclude-only-intervals-actually-blocked-or-suspended-by-broker",
+    "overlapping_work_while_browser_queued_counts_active": true,
+    "media_service_wait_accounting": "overlapping-detail-not-additive-total",
+    "self_reported_wait_credit_allowed": false,
+    "total_deadline_includes_all_wait": true
+  },
+  "artifact_contract": {
+    "per_arm_isolated_workspace_session_prompt_and_assets": true,
+    "cross_arm_asset_reuse": false,
+    "retain_all_original_variants": true,
+    "asset_ledger_fields": [
+      "asset_id",
+      "status_attempted_selected_used_or_rejected",
+      "tool_provider_version",
+      "media_model_id",
+      "generation_prompt_sha256",
+      "reference_input_sha256",
+      "original_file_sha256",
+      "selection_reason",
+      "use_location_or_rejection_reason"
+    ]
+  },
+  "evaluation": {
+    "blind_asset_packet_separate_from_page_packet": true,
+    "asset_packet_fixed_before_page_evaluation": true,
+    "asset_axes": [
+      "brief-fit",
+      "set-coherence",
+      "visible-defects",
+      "meaningful-distinctiveness"
+    ],
+    "video_axis_when_applicable": "scene-and-temporal-continuity",
+    "page_axes": [
+      "asset-page-fit",
+      "copy-meaning-alignment",
+      "readability",
+      "function",
+      "loading-and-motion"
+    ],
+    "asset_quantity_bonus": false,
+    "video_presence_bonus": false,
+    "justified_no_asset_ui_penalty": false,
+    "missing_task_required_asset": "failure"
+  },
+  "readiness": {
+    "phase": "draft",
+    "live_execution_blocked": true,
+    "required_resolved_paths": [
+      "runtime.host_model_reported",
+      "runtime.provider_version_exact",
+      "runtime.context_isolation_verified",
+      "runtime.context_isolation_receipt_sha256",
+      "arms.*.source_sha256",
+      "arms.*.prompt_template_sha256",
+      "tool_parity.inventory_sha256",
+      "tool_parity.capabilities.*.availability_status",
+      "tool_parity.capabilities.*.provider_and_version_exact",
+      "tool_parity.capabilities.*.media_model_ids",
+      "execution_control.browser_broker.implementation_status",
+      "execution_control.browser_broker.verification_receipt_sha256",
+      "budgets.broker_queue_wait_limit_minutes",
+      "budgets.hard_total_elapsed_limit_minutes",
+      "matrix.followup_task_id"
+    ],
+    "unresolved": [
+      "runtime.host_model_reported",
+      "runtime.provider_version_exact",
+      "runtime.context_isolation_verified",
+      "runtime.context_isolation_receipt_sha256",
+      "arms.*.source_sha256",
+      "arms.*.prompt_template_sha256",
+      "tool_parity.inventory_sha256",
+      "tool_parity.capabilities.*.availability_status",
+      "tool_parity.capabilities.*.provider_and_version_exact",
+      "tool_parity.capabilities.*.media_model_ids",
+      "execution_control.browser_broker.implementation_status",
+      "execution_control.browser_broker.verification_receipt_sha256",
+      "budgets.broker_queue_wait_limit_minutes",
+      "budgets.hard_total_elapsed_limit_minutes",
+      "matrix.followup_task_id"
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "brand": "wanted",
+  "surface": "desktop-1440",
+  "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/03-runs/lane-a/wanted/omd/rep-2/image.jpg",
+  "evidenceCapturedAt": "2026-08-22T19:52:31.934Z",
+  "paletteSource": "capture/desktop-1440-imagery-01.png",
+  "fields": [
+    {
+      "field": "aspect",
+      "eligible": true,
+      "error": 0.0033,
+      "score": 96.67
+    },
+    {
+      "field": "meanLuma",
+      "eligible": true,
+      "error": 0.116,
+      "score": 42
+    },
+    {
+      "field": "dynamicRange",
+      "eligible": true,
+      "error": 0.079,
+      "score": 60.5
+    },
+    {
+      "field": "subjectCentre",
+      "eligible": false,
+      "reason": "source placement omitted — fewer than the resolved-sample floor"
+    },
+    {
+      "field": "palette",
+      "eligible": true,
+      "error": 13.9728,
+      "score": 44.11
+    }
+  ],
+  "eligibleCount": 4,
+  "usable": true,
+  "numericScore": 60.82,
+  "note": "fields are same-day snapshot adherence, not brand invariants"
+}

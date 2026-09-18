@@ -1,0 +1,23 @@
+/* fx: glass-panel — 가장자리에 정반사가 있는 유리판. 구현: oh-my-design (MIT).
+   흔한 glassmorphism 과의 차이: (1) 블러가 가장자리에서 페이드되고 (2) 위/아래 테두리가 서로 다르다. */
+.fx-glass{
+  position:relative;isolation:isolate;
+  background:var(--fx-glass-tint,rgba(255,255,255,.06));
+  border-radius:var(--fx-glass-r,18px);
+  box-shadow:0 1px 0 0 var(--fx-glass-edge-top,rgba(255,255,255,.22)) inset,
+             0 -1px 0 0 var(--fx-glass-edge-bot,rgba(255,255,255,.06)) inset,
+             0 var(--fx-glass-lift,18px) calc(var(--fx-glass-lift,18px) * 2.2) -12px rgba(0,0,0,.45)}
+.fx-glass::before{ /* 블러는 별도 층에 둬야 가장자리 페이드를 마스크로 줄 수 있다 */
+  content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;
+  -webkit-backdrop-filter:blur(var(--fx-glass-blur,16px)) saturate(var(--fx-glass-sat,1.5));
+  backdrop-filter:blur(var(--fx-glass-blur,16px)) saturate(var(--fx-glass-sat,1.5));
+  -webkit-mask-image:var(--fx-glass-mask,linear-gradient(#000,#000));
+  mask-image:var(--fx-glass-mask,linear-gradient(#000,#000))}
+/* 상단 고정 바 전용: 아래쪽으로 갈수록 블러가 사라져 경계선이 안 생긴다 */
+.fx-glass--fade{--fx-glass-mask:linear-gradient(#000 45%,rgba(0,0,0,0) 100%)}
+/* backdrop-filter 미지원/저사양 대비: 불투명 폴백 */
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .fx-glass{background:var(--fx-glass-solid,rgba(20,22,28,.92))}}
+@media (prefers-reduced-transparency:reduce){
+  .fx-glass::before{-webkit-backdrop-filter:none;backdrop-filter:none}
+  .fx-glass{background:var(--fx-glass-solid,rgba(20,22,28,.92))}}

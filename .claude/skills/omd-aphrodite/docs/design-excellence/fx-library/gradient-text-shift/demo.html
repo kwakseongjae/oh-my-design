@@ -1,0 +1,23 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — gradient-text-shift</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+.big{font-size:clamp(28px,6vw,52px);line-height:1.1;letter-spacing:-.035em;margin:0 0 20px;font-weight:660}
+[data-theme=light] .fx-gtext{--fx-gt-b:#3b5bfd}
+.tall{height:58vh;display:grid;place-items:center;color:var(--mut)}
+</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>gradient-text-shift <code>텍스트</code></h1>
+<p class="sub"><code>background-clip:text</code> + <code>@property</code> 로 등록한 위치값. 등록하지 않으면 위치가 보간되지 않고 튄다.</p>
+<h2>① 지나가는 하이라이트 (권장)</h2>
+<p class="big"><span class="fx-gtext fx-gtext--pass">커서를 올려보세요</span></p>
+<h2>② 상시 흐름 — 9초</h2>
+<p class="big"><span class="fx-gtext fx-gtext--flow">아주 느려야만 봐줄 만하다</span></p>
+<h2>③ 부분 강조 — 이게 대개 정답</h2>
+<p class="big">문장 전체가 아니라 <span class="fx-gtext fx-gtext--flow" style="--fx-gt-dur:11s">한 단어</span>만</p>
+<div class="tall">↓ 스크롤 구동</div>
+<p class="big"><span class="fx-gtext fx-gtext--scroll">스크롤이 그라디언트를 끌고 간다</span></p>
+<div class="tall">↑</div>
+</div>
+<script src="../_shell.js"></script></body></html>

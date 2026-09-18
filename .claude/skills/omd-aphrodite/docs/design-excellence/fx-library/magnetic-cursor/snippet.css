@@ -1,0 +1,12 @@
+/* fx: magnetic-cursor — 커서가 다가오면 끌려오는 타깃. 구현: oh-my-design (MIT). */
+.fx-mag{--fx-mag-x:0px;--fx-mag-y:0px;
+  transform:translate3d(var(--fx-mag-x),var(--fx-mag-y),0);
+  transition:transform var(--fx-mag-settle,520ms) cubic-bezier(.2,.9,.25,1);
+  will-change:transform}
+.fx-mag[data-fx-mag="on"]{transition-duration:var(--fx-mag-track,120ms)}
+/* 라벨은 본체보다 더 끌린다 — 이 어긋남이 "자성"을 만든다 */
+.fx-mag__label{display:inline-block;
+  transform:translate3d(calc(var(--fx-mag-x) * var(--fx-mag-lead,.45)),calc(var(--fx-mag-y) * var(--fx-mag-lead,.45)),0);
+  transition:inherit}
+@media (hover:none){.fx-mag,.fx-mag__label{transform:none;transition:none}}
+@media (prefers-reduced-motion:reduce){.fx-mag,.fx-mag__label{transform:none!important;transition:none}}

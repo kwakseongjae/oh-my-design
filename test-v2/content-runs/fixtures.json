@@ -42,13 +42,14 @@
       "id": "landing/karrot",
       "skill": "omd-landing",
       "brand": "karrot",
-      "artifact": "test-v2/content-runs/gate/landing-karrot/render.html",
-      "provenance": "미생성",
+      "artifact": ".omd/execution/2026-09-08/sprint90/f4/landing-karrot/render.html",
+      "provenance": ".omd/execution/2026-09-08/sprint90/f4/landing-karrot/trace.md (Astra generation from archived GPT90 RC 9d4e6cee; raw failures retained; independent BLOCK2/WARN5 retained)",
       "checks": [
         "render",
         "contrast",
         "landing"
-      ]
+      ],
+      "receipt": ".omd/execution/2026-09-08/sprint90/f4/landing-karrot/receipt.json"
     },
     {
       "id": "autopilot/stripe",
@@ -76,12 +77,13 @@
       "id": "autopilot/karrot",
       "skill": "omd-autopilot",
       "brand": "karrot",
-      "artifact": "test-v2/content-runs/gate/autopilot-karrot/render.html",
-      "provenance": "미생성",
+      "artifact": ".omd/execution/2026-09-08/sprint90/f4/autopilot-karrot/attempt-r3/project/index.html",
+      "provenance": ".omd/execution/2026-09-08/sprint90/f4/autopilot-karrot/attempt-r3/trace.md (Astra fresh generation from exact RC2 0dd7f094; independent BLOCK0/WARN3; owner adoption/source contract conflicts pending)",
       "checks": [
         "render",
         "contrast"
-      ]
+      ],
+      "receipt": ".omd/execution/2026-09-08/sprint90/f4/autopilot-karrot/attempt-r3/receipt.json"
     }
   ]
 }

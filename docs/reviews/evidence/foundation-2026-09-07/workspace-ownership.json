@@ -1,0 +1,33 @@
+{
+  "branch": "codex/track-foundation",
+  "shared_checkout_policy": "Sol is sole product-code writer; orchestration state updates by root are serialized separately",
+  "baseline": "baseline.json",
+  "tracks": {
+    "foundation": {
+      "output": ".omd/execution/2026-09-07/foundation",
+      "writer": "Sol",
+      "status": "active"
+    },
+    "benchmark": {
+      "output": ".omd/execution/2026-09-07/benchmark",
+      "writer": "Sol coordinator / Grok isolated cells",
+      "status": "reserved"
+    },
+    "aphrodite": {
+      "output": ".omd/execution/2026-09-07/aphrodite",
+      "writer": "Opus / Grok assets",
+      "status": "reserved"
+    },
+    "core": {
+      "output": ".omd/execution/2026-09-07/core",
+      "writer": "Sol / Opus review only",
+      "status": "reserved"
+    },
+    "content": {
+      "output": ".omd/execution/2026-09-07/content",
+      "writer": "Opus / Sol integration",
+      "status": "reserved"
+    }
+  },
+  "future_checkouts": "Create isolated checkout before each additional product-code worker; reserved output folders do not claim benchmark isolation."
+}

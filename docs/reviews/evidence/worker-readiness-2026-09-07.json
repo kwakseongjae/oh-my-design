@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-07",
+  "scope": "temporary_worker_acceptance_not_benchmark_or_product_work",
+  "pair": {
+    "scope": "preflight_only",
+    "goal_started": false,
+    "results": [
+      {
+        "provider": "claude",
+        "scope": "temporary-input-output-worker-smoke",
+        "expected_output": {
+          "worker_id": "claude-preflight",
+          "sum": 42,
+          "status": "completed"
+        },
+        "exit_code": 0,
+        "elapsed_seconds": 6.75,
+        "timed_out": false,
+        "reported_model_ids": [
+          "claude-haiku-4-5-20251001",
+          "claude-opus-5"
+        ],
+        "is_error": false,
+        "result_type": "success",
+        "permission_denial_count": 0,
+        "output": {
+          "worker_id": "claude-preflight",
+          "sum": 42,
+          "status": "completed"
+        },
+        "output_match": true,
+        "pass": true,
+        "temporary_auth_copy_removed": true
+      },
+      {
+        "provider": "grok",
+        "scope": "temporary-input-output-worker-smoke",
+        "expected_output": {
+          "worker_id": "grok-preflight",
+          "sum": 42,
+          "status": "completed"
+        },
+        "exit_code": 0,
+        "elapsed_seconds": 10.23,
+        "timed_out": false,
+        "reported_model_ids": [
+          "grok-4.6-build"
+        ],
+        "init_model": "grok-4.6",
+        "advertised_tools": [
+          "read_file",
+          "write"
+        ],
+        "advertised_skill_count": 0,
+        "is_error": false,
+        "result_type": "success",
+        "tool_use_names": [
+          "read_file",
+          "write"
+        ],
+        "output": {
+          "worker_id": "grok-preflight",
+          "sum": 42,
+          "status": "completed"
+        },
+        "output_match": true,
+        "pass": true,
+        "temporary_auth_copy_removed": true
+      }
+    ]
+  },
+  "four_grok": {
+    "scope": "four_worker_file_io_preflight_no_browser_no_assets",
+    "root": "/private/tmp/omd-grok-four-worker-l__epvzb",
+    "results": [
+      {
+        "worker_id": "grok-1",
+        "start_offset_seconds": 0.002,
+        "exit_code": 0,
+        "elapsed_seconds": 8.85,
+        "session_id": "01a07abd-aab3-79e1-bcb4-8d9094f67ec1",
+        "init_model": "grok-4.6",
+        "reported_model_ids": [
+          "grok-4.6-build"
+        ],
+        "advertised_tools": [
+          "read_file",
+          "write"
+        ],
+        "advertised_skill_count": 0,
+        "is_error": false,
+        "output": {
+          "worker_id": "grok-1",
+          "sum": 42,
+          "status": "completed"
+        },
+        "pass": true,
+        "temporary_auth_copy_removed": true
+      },
+      {
+        "worker_id": "grok-2",
+        "start_offset_seconds": 0.002,
+        "exit_code": 0,
+        "elapsed_seconds": 8.89,
+        "session_id": "01a07abd-aaeb-70b1-97d6-c734538cc045",
+        "init_model": "grok-4.6",
+        "reported_model_ids": [
+          "grok-4.6-build"
+        ],
+        "advertised_tools": [
+          "read_file",
+          "write"
+        ],
+        "advertised_skill_count": 0,
+        "is_error": false,
+        "output": {
+          "worker_id": "grok-2",
+          "sum": 42,
+          "status": "completed"
+        },
+        "pass": true,
+        "temporary_auth_copy_removed": true
+      },
+      {
+        "worker_id": "grok-3",
+        "start_offset_seconds": 0.006,
+        "exit_code": 0,
+        "elapsed_seconds": 10.77,
+        "session_id": "01a07abd-aaeb-78c2-bde4-41524e5f9bae",
+        "init_model": "grok-4.6",
+        "reported_model_ids": [
+          "grok-4.6-build"
+        ],
+        "advertised_tools": [
+          "read_file",
+          "write"
+        ],
+        "advertised_skill_count": 0,
+        "is_error": false,
+        "output": {
+          "worker_id": "grok-3",
+          "sum": 42,
+          "status": "completed"
+        },
+        "pass": true,
+        "temporary_auth_copy_removed": true
+      },
+      {
+        "worker_id": "grok-4",
+        "start_offset_seconds": 0.003,
+        "exit_code": 0,
+        "elapsed_seconds": 8.88,
+        "session_id": "01a07abd-aaeb-7ca0-8b2a-7d3e669e2b08",
+        "init_model": "grok-4.6",
+        "reported_model_ids": [
+          "grok-4.6-build"
+        ],
+        "advertised_tools": [
+          "read_file",
+          "write"
+        ],
+        "advertised_skill_count": 0,
+        "is_error": false,
+        "output": {
+          "worker_id": "grok-4",
+          "sum": 42,
+          "status": "completed"
+        },
+        "pass": true,
+        "temporary_auth_copy_removed": true
+      }
+    ],
+    "all_pass": true,
+    "unique_session_ids": true,
+    "group_elapsed_seconds": 10.78,
+    "goal_started": false
+  },
+  "sol_evidence": {
+    "status": "prior_real_implementation_completed",
+    "files": [
+      "benchmarks/ui-resolve-bench/config/asset-generation-four-arm-v0.1.json",
+      "benchmarks/ui-resolve-bench/scripts/validate-asset-generation-contract.mjs",
+      "benchmarks/ui-resolve-bench/scripts/test-asset-generation-contract.mjs"
+    ],
+    "prior_tests_passed": 17,
+    "known_availability_issue": "A separate Sol worker encountered capacity; no authentication failure established."
+  },
+  "verified": [
+    "Opus5 input read -> output JSON -> successful exit -> artifact retrieval",
+    "Grok4.6 input read -> output JSON -> successful exit -> artifact retrieval",
+    "Four Grok workers overlap with unique sessions and separate input/output paths",
+    "Explicit Grok read_file/write tool inventory and zero advertised skills in diagnostic profile"
+  ],
+  "not_verified": [
+    "Heavy media-generation concurrency/quota",
+    "Shared-browser request broker and cell-isolated media downloads",
+    "Long-task cancellation/resume/recovery lifecycle",
+    "Complete benchmark context/prompt/source/asset isolation and frozen task/skill/budget manifest"
+  ],
+  "goal_started": false
+}

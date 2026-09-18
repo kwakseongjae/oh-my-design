@@ -7,8 +7,10 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const repositoryRoot = path.resolve(__dirname, '..');
+const embeddedSchemaKey = Symbol.for('oh-my-design.core-v2.embedded-schemas');
 
 function resolveSchemaFile(name) {
+  if (globalThis[embeddedSchemaKey]?.[name]) return name;
   const candidates = [
     path.join(__dirname, 'schema', name),
     path.join(__dirname, '..', 'spec', 'schema', name),
@@ -174,6 +176,9 @@ function validateNode(schema, value, rootSchema, pointer = '') {
 }
 
 function loadSchema(file) {
+  const embedded = globalThis[embeddedSchemaKey];
+  const embeddedSchema = embedded && embedded[path.basename(file)];
+  if (embeddedSchema) return embeddedSchema;
   return JSON.parse(fs.readFileSync(file, 'utf8'));
 }
 

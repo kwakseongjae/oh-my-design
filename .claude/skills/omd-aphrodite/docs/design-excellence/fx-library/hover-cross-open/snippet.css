@@ -1,0 +1,58 @@
+/* fx: hover-cross-open — 호버한 자리에서 그리드가 갈라지고 프리뷰가 열린다. 구현: oh-my-design (MIT). */
+.fx-cross{ position: relative; }
+.fx-cross__grid{
+  display: grid; gap: 12px;
+  grid-template-columns: repeat(var(--fx-cross-cols, 4), 1fr);
+}
+.fx-cross__cell{
+  position: relative; aspect-ratio: 3/4; border-radius: 12px; overflow: hidden;
+  cursor: pointer;
+  /* 호버한 칸을 기준으로 좌우가 밀려난다 — 공간이 열리는 감각 */
+  transition: transform .52s cubic-bezier(.22,.68,.24,1), opacity .38s ease;
+  will-change: transform;
+}
+.fx-cross.is-open .fx-cross__cell{ opacity: .34; }
+.fx-cross.is-open .fx-cross__cell[data-side="l"]{ transform: translateX(calc(var(--fx-cross-push, 2.6vw) * -1)); }
+.fx-cross.is-open .fx-cross__cell[data-side="r"]{ transform: translateX(var(--fx-cross-push, 2.6vw)); }
+.fx-cross.is-open .fx-cross__cell[data-side="c"]{ opacity: 1; }
+
+.fx-cross__ph{ position:absolute; inset:0;
+  background: linear-gradient(150deg, hsl(var(--h,220) 74% 60%), hsl(calc(var(--h,220) + 40) 78% 32%)); }
+.fx-cross__cell > img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+/* 프리뷰 — 십자로 찢어지듯 열린다. clip-path 한 값만 애니메이트한다 */
+.fx-cross__preview{
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  pointer-events: none;
+  opacity: 0;
+  clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+  transition: clip-path .56s cubic-bezier(.66,0,.2,1), opacity .18s ease;
+  background: var(--fx-cross-bg, rgba(8,9,11,.9));
+  backdrop-filter: blur(6px);
+  border-radius: 14px;
+}
+.fx-cross.is-open .fx-cross__preview{
+  opacity: 1;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+.fx-cross__previewInner{
+  width: min(58%, 380px); aspect-ratio: 4/3; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 44px 88px -40px rgba(0,0,0,.95);
+  transform: scale(.94);
+  transition: transform .56s cubic-bezier(.2,.9,.28,1);
+}
+.fx-cross.is-open .fx-cross__previewInner{ transform: none; }
+.fx-cross__label{
+  position: absolute; bottom: 18px; left: 0; right: 0; text-align: center;
+  color: #f4f5f6; font-size: 13px; letter-spacing: .06em; text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .fx-cross__cell, .fx-cross__preview, .fx-cross__previewInner{ transition-duration: .001s; }
+}
+@media (hover: none){
+  /* 터치: 밀어내기·프리뷰 없이 평범한 그리드로. 숨겨진 것이 없어야 한다 */
+  .fx-cross__preview{ display: none; }
+  .fx-cross.is-open .fx-cross__cell{ opacity: 1; transform: none; }
+}

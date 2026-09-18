@@ -7,6 +7,9 @@ user-invocable: true
 
 # omd:aphrodite — 와우 합격선
 
+이 문서가 설치된 디렉터리를 `<omd-aphrodite-skill-root>` 로 둔다. 아래 도구와 reference는
+모두 그 디렉터리 안에 함께 설치되며, 현재 프로젝트나 oh-my-design 저장소의 경로로 바꾸지 않는다.
+
 **이 스킬은 `omd:landing` 의 대체가 아니라 그 위의 합격선이다.** 구조(섹션 리듬·에셋 배치·밀도)는
 `omd:landing` 과 같은 절차를 그대로 쓴다. 다른 것은 **통과 조건**과 **마감·에셋의 등급**이다.
 일상 랜딩은 `omd:landing`, 자랑할 한 장은 이 스킬이다.
@@ -43,8 +46,8 @@ user-invocable: true
 ## 1. 서체 조달 (LC-47 — 이 단계를 빼면 합격선 못 넘는다)
 
 ```
-node test-v2/tools/font-inline.mjs --list                        # 검증된 가변 폰트
-node test-v2/tools/font-inline.mjs --family fraunces --out /tmp/display.css
+omd font inline --list
+omd font inline --family fraunces --out /tmp/display.css
 ```
 
 - 디스플레이 1종 + 본문 1종. 같은 종을 옵티컬 사이즈 축으로 나눠 써도 된다.
@@ -56,7 +59,7 @@ node test-v2/tools/font-inline.mjs --family fraunces --out /tmp/display.css
 ## 1.5 라이브러리 정책 — 제로 베이스 금지
 
 "렌더 시 네트워크 요청 0" 은 **라이브러리 0 이 아니다.** 라이선스가 허용하는 오픈소스는 minified 소스를 `<script>`/`<style>` 로
-인라인한다. 검증된 조합은 `docs/design-excellence/fx-library/` 에 있다 — 스크롤 안무는 `scroll-gsap/`(GSAP 3.15 + ScrollTrigger,
+인라인한다. 검증된 조합은 `<omd-aphrodite-skill-root>/docs/design-excellence/fx-library/` 에 있다 — 스크롤 안무는 `scroll-gsap/`(GSAP 3.15 + ScrollTrigger,
 114.7KB, 라이선스 `lib/LICENSES.md` 인용 필수), CSS 효과는 INDEX.md 의 17종(전부 재배포 가능, 데모 콘솔 에러 0).
 예산: 인라인 라이브러리 **≤ 120KB**, 효과 종류 **≤ 7/페이지**. 라이브러리 밖의 효과를 새로 쓰면 같은 구조(README+demo+snippet)로
 fx-library 에 편입해 다음 런이 재사용하게 한다.
@@ -81,7 +84,7 @@ fx-library 에 편입해 다음 런이 재사용하게 한다.
 
 ### 2.5 스토리보드 리뷰 게이트 (빌드 전, 필수)
 
-`docs/design-excellence/storyboard-review.md` v2 의 A(색)·B(구도)·C(효과, C9 크기 락·C10 정직한 K 포함)·**D(사용자: 입력 없이 보이는 것·터치·키보드·첫 5초 문장·관문 0)**·E(자기 표절 시험) 표를 스토리보드에 채워 넣고 판정한다.
+`<omd-aphrodite-skill-root>/docs/design-excellence/storyboard-review.md` v2 의 A(색)·B(구도)·C(효과, C9 크기 락·C10 정직한 K 포함)·**D(사용자: 입력 없이 보이는 것·터치·키보드·첫 5초 문장·관문 0)**·E(자기 표절 시험) 표를 스토리보드에 채워 넣고 판정한다.
 **FAIL 이 하나라도 있으면 §3·§4 로 가지 않는다.** 빌드 뒤 리뷰는 늦다 — 색·구도·효과 예산은 여기서 잡는다.
 판정 결과는 런 디렉터리의 `storyboard-*.md` 끝에 남긴다. 업종 무관: 특정 색·톤이 아니라 역할·빈도·숫자로만 판정한다.
 
@@ -133,9 +136,9 @@ fake bokeh. 긍정 지시로 바꿔 적는 편이 더 잘 듣는다 — film gra
 ## 5. 검증
 
 ```
-node test-v2/tools/render-integrity.mjs <render.html>
-node test-v2/tools/text-contrast.mjs   <render.html>
-node test-v2/tools/landing-integrity.mjs <render.html>
+omd check render <render.html>
+omd check contrast <render.html>
+omd check landing <render.html>
 ```
 
 전부 통과할 때까지 고친다(최대 3회). 미달 항목은 **기준을 낮추지 말고 산출을 고친다.**

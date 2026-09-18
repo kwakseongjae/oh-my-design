@@ -1,0 +1,29 @@
+<style>
+.r2{height:100vh;overflow:hidden}
+.r2-track{display:flex;gap:2vw;height:100vh;align-items:center;padding:0 6vw;will-change:transform}
+.r2-card{flex:0 0 34vw;height:58vh;border-radius:var(--r);overflow:hidden;position:relative}
+.r2-card figcaption{position:absolute;left:12px;bottom:10px;font:12px ui-monospace,monospace;color:var(--accent)}
+.r2 .rail{position:absolute;left:6vw;right:6vw;bottom:6vh;height:1px;background:#ffffff22}
+.r2 .rail i{display:block;height:1px;background:var(--accent);width:0}
+</style>
+<section class="r2"><div class="r2-track" id="r2track"></div><div class="rail"><i id="r2bar"></i></div></section>
+<script>
+/* R2 HORIZONTAL PIN — 마키(무한 루프) 대체. 스크롤 = 가로 이동. 사용자가 속도를 쥔다. */
+const IDS = ["grid-01","grid-02","grid-03","grid-04","grid-05","grid-06","grid-07","grid-08"];
+const track = document.getElementById("r2track");
+track.innerHTML = IDS.map((id,i)=>`<figure class="r2-card"><img src="${IMG(id)}" alt=""><figcaption>${String(i+1).padStart(2,"0")}</figcaption></figure>`).join("");
+if (REDUCED) {                      // 폴백: 손가락으로 미는 가로 스크롤 컨테이너
+  Object.assign(document.querySelector(".r2").style, { overflowX: "auto", height: "auto" });
+} else {
+  const dist = () => track.scrollWidth - innerWidth + innerWidth * 0.12;
+  gsap.to(track, {
+    x: () => -dist(), ease: "none",
+    scrollTrigger: { trigger: ".r2", pin: true, scrub: 0.5, end: () => "+=" + dist(), invalidateOnRefresh: true,
+      onUpdate: (s) => { document.getElementById("r2bar").style.width = (s.progress * 100).toFixed(1) + "%"; } },
+  });
+  gsap.utils.toArray(".r2-card").forEach((c, i) => {   // 지나갈 때 살짝 커졌다 작아지는 호흡
+    gsap.fromTo(c, { scale: 0.92 }, { scale: 1, ease: "none",
+      scrollTrigger: { trigger: ".r2", start: () => "top top+=" + i, scrub: true, end: "+=40%" } });
+  });
+}
+</script>

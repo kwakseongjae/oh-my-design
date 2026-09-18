@@ -1,0 +1,22 @@
+<style>
+.r6{padding:10vh 6vw;display:grid;grid-template-columns:repeat(3,1fr);gap:2vw}
+.r6 figure{margin:0;aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;clip-path:inset(100% 0 0 0)}
+.r6 figure:nth-child(3n+2){margin-top:12vh}
+</style>
+<section class="r6" id="r6"></section>
+<script>
+/* R6 SCALE + CLIP REVEAL — 페이드인 금지. 아래에서 위로 창이 열리고 안쪽 이미지는 반대로 내려앉는다(마스크 대비 운동). */
+const IDS = ["abs-01","abs-02","abs-03","abs-04","abs-05","abs-06"];
+const host = document.getElementById("r6");
+host.innerHTML = IDS.map((id)=>`<figure><img src="${IMG(id)}" alt=""></figure>`).join("");
+const figs = gsap.utils.toArray("#r6 figure");
+if (REDUCED) {                      // 폴백: 마스크 해제, 정지 그리드
+  gsap.set(figs, { clipPath: "inset(0% 0 0 0)" });
+} else {
+  figs.forEach((f) => {
+    gsap.timeline({ scrollTrigger: { trigger: f, start: "top 88%", end: "top 45%", scrub: 0.5 } })
+      .fromTo(f, { clipPath: "inset(100% 0 0 0)" }, { clipPath: "inset(0% 0 0 0)", ease: "none" }, 0)
+      .fromTo(f.querySelector("img"), { yPercent: -14, scale: 1.18 }, { yPercent: 0, scale: 1, ease: "none" }, 0);
+  });
+}
+</script>

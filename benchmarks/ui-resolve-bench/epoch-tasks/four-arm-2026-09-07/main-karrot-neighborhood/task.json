@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1",
+  "task_id": "main-karrot-neighborhood",
+  "matrix_role": "main",
+  "surface": "korean-brand-factual-product-surface",
+  "locale": "ko-KR",
+  "brief": "Create a responsive Korean product page for Karrot that helps a resident understand and enter the neighborhood marketplace. Keep the product facts and interface tokens within the supplied reference evidence; make the information useful rather than turning the page into a brand audit.",
+  "locked_facts": {
+    "name": "Karrot",
+    "category": "hyperlocal community platform",
+    "homepage": "https://www.karrotmarket.com/",
+    "product_primary": "#ff6f0f",
+    "marketing_cta": "#ff6600",
+    "canvas": "#ffffff",
+    "background": "#f2f3f6",
+    "surface": "#f7f8fa",
+    "foreground": "#212124",
+    "muted": "#868b94",
+    "hairline": "#eaebee",
+    "cta_radius": "9999px",
+    "cta_height": "36px"
+  },
+  "required_content": ["neighborhood marketplace introduction", "local discovery categories", "trust and safety explanation", "primary marketplace call to action"],
+  "fact_boundaries": [
+    "Do not invent user counts, transaction counts, rankings, testimonials, fees, guarantees, safety outcomes, or availability by location.",
+    "Pretendard is reference narrative only; it is not authorized as the rendered UI family. Use a system font stack without labeling it Pretendard.",
+    "Do not merge the product semantic primary and marketing CTA colors into one claimed token."
+  ],
+  "shared_creative_pack": null,
+  "source_provenance": [{
+    "type": "repository-canonical-reference",
+    "path": "web/references/karrot/DESIGN.md",
+    "sha256": "09df85980a8ae2f45e3c936b62f2549fcaf4660904fffee91c9d59d4effca087",
+    "claim_scope": "locked facts and fact boundaries"
+  }],
+  "deterministic_acceptance": [
+    "A runnable Korean-language page loads without uncaught console errors.",
+    "Every numeric, color, company, and product claim is either in locked_facts or omitted.",
+    "The primary marketplace call to action is keyboard reachable and leads to a deterministic local destination or state.",
+    "Interactive category controls expose selected and focus states and do not conceal content when JavaScript initializes.",
+    "At 390x844 and 1440x900 the page has no horizontal document overflow.",
+    "Automated checks reject rendered claims that Pretendard is the active UI font."
+  ]
+}

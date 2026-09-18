@@ -1,0 +1,32 @@
+/* fx: mask-wipe-reveal — 스크롤에 맞춰 이미지가 닦이듯 나타난다. 구현: oh-my-design (MIT).
+   @property 로 등록한 <percentage> 를 mask 안에서 보간한다 — 등록하지 않으면 계단식으로 점프한다. */
+@property --fx-wipe-p{syntax:"<percentage>";inherits:false;initial-value:0%}
+.fx-wipe{position:relative;overflow:hidden}
+.fx-wipe > img,.fx-wipe > video,.fx-wipe > .fx-wipe__inner{display:block;width:100%;height:100%;object-fit:cover}
+/* ① 방향 와이프 — 부드러운 경계로 닦아낸다 */
+.fx-wipe--sweep>*{
+  -webkit-mask-image:linear-gradient(var(--fx-wipe-angle,100deg),#000 var(--fx-wipe-p),transparent calc(var(--fx-wipe-p) + var(--fx-wipe-soft,18%)));
+  mask-image:linear-gradient(var(--fx-wipe-angle,100deg),#000 var(--fx-wipe-p),transparent calc(var(--fx-wipe-p) + var(--fx-wipe-soft,18%)))}
+/* ② 원형 확장 — 한 점에서 열린다 */
+.fx-wipe--iris>*{
+  -webkit-mask-image:radial-gradient(circle var(--fx-wipe-p) at var(--fx-wipe-ox,50%) var(--fx-wipe-oy,52%),#000 62%,transparent 100%);
+  mask-image:radial-gradient(circle var(--fx-wipe-p) at var(--fx-wipe-ox,50%) var(--fx-wipe-oy,52%),#000 62%,transparent 100%)}
+/* ③ 블라인드 — 여러 칸이 시차를 두고 열린다 (칸마다 --i 인라인) */
+.fx-wipe--blind{display:grid;grid-template-columns:repeat(var(--fx-wipe-n,6),1fr);gap:0}
+.fx-wipe--blind > i{display:block;overflow:hidden;background-size:calc(var(--fx-wipe-n,6) * 100%) 100%;
+  background-position:calc(var(--i) * -100%) center;background-repeat:no-repeat;
+  transform:translate3d(0,var(--fx-wipe-off,102%),0)}
+@supports (animation-timeline:view()){
+  .fx-wipe--sweep>*,.fx-wipe--iris>*{animation:fx-wipe-open linear both;
+    animation-timeline:view();animation-range:var(--fx-wipe-range,entry 18% cover 46%)}
+  .fx-wipe--blind > i{animation:fx-wipe-blind linear both;animation-timeline:view();
+    animation-range:calc(entry 10% + var(--i) * 3%) cover 52%}
+}
+/* 스크롤 타임라인이 없어도 진입 시 한 번은 열려야 한다 */
+.fx-wipe[data-fx-wipe="open"] > *,.fx-wipe[data-fx-wipe="open"] > i{
+  animation:fx-wipe-open var(--fx-wipe-dur,900ms) cubic-bezier(.22,.7,.25,1) both}
+@keyframes fx-wipe-open{from{--fx-wipe-p:0%;transform:translate3d(0,var(--fx-wipe-off,102%),0)}
+                        to{--fx-wipe-p:118%;transform:translate3d(0,0,0)}}
+@keyframes fx-wipe-blind{from{transform:translate3d(0,var(--fx-wipe-off,102%),0)}to{transform:translate3d(0,0,0)}}
+@media (prefers-reduced-motion:reduce){
+  .fx-wipe>*,.fx-wipe>i{animation:none!important;--fx-wipe-p:118%;transform:none;mask-image:none;-webkit-mask-image:none}}

@@ -1160,5 +1160,163 @@
       "zeroFrames": 140,
       "droppedFrames": 0
     }
+  },
+  {
+    "id": "engine-a014",
+    "url": "file:///Users/kwakseongjae/Desktop/projects/oh-my-design/docs/design-excellence/fx-library/smooth-scrub-engine/demo.html",
+    "note": null,
+    "errors": [],
+    "docVh": 4.4,
+    "tracked": "div.sc-track",
+    "impulse": {
+      "frames": 195,
+      "scrollTau": 22,
+      "visualTau": 22,
+      "visualSettleFrames": 3,
+      "scrubTau": null,
+      "alpha": 0.532,
+      "scrubAlpha": null
+    },
+    "jump": {
+      "frames": 437,
+      "catchUpFrames": 5,
+      "scrubCatchUp": null
+    },
+    "velocityCoupled": {
+      "count": 0,
+      "sample": []
+    },
+    "easing": {
+      "transitions": [],
+      "animations": [],
+      "springs": 0
+    },
+    "steady": {
+      "frames": 162,
+      "meanDelta": 4.1,
+      "jitter": 5.19,
+      "zeroFrames": 155,
+      "droppedFrames": 0
+    }
+  },
+  {
+    "id": "r5",
+    "url": "file:///Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/content-runs/aphrodite/higgsgen/render-r5.html",
+    "note": null,
+    "errors": [],
+    "docVh": 11.71,
+    "tracked": "main",
+    "impulse": {
+      "frames": 189,
+      "scrollTau": 15,
+      "visualTau": 15,
+      "visualSettleFrames": 2,
+      "scrubTau": 33,
+      "alpha": 0.672,
+      "scrubAlpha": 0.397
+    },
+    "jump": {
+      "frames": 435,
+      "catchUpFrames": 3,
+      "scrubCatchUp": null
+    },
+    "velocityCoupled": {
+      "count": 3,
+      "sample": [
+        {
+          "el": "div.s2stage",
+          "slow": {
+            "tr": "matrix(1, 0, 0, 1, 0, -7.54992)",
+            "f": "none",
+            "o": "1"
+          },
+          "fast": {
+            "tr": "matrix(1, 0, 0, 1, 0, -6.42096)",
+            "f": "none",
+            "o": "1"
+          }
+        },
+        {
+          "el": "div.s2inner",
+          "slow": {
+            "tr": "matrix(1.00701, 0, 0, 1.00701, 0, 0)",
+            "f": "none",
+            "o": "1"
+          },
+          "fast": {
+            "tr": "matrix(1.002, 0, 0, 1.002, 0, 0)",
+            "f": "none",
+            "o": "1"
+          }
+        },
+        {
+          "el": "img.",
+          "slow": {
+            "tr": "none",
+            "f": "contrast(1.03) saturate(1.02)",
+            "o": "1"
+          },
+          "fast": {
+            "tr": "none",
+            "f": "contrast(1.03) saturate(1.02)",
+            "o": "0"
+          }
+        }
+      ]
+    },
+    "easing": {
+      "transitions": [
+        [
+          "0.56s, 0.56s cubic-bezier(0.22, 0.61, 0.36, 1), cubic-bezier(0.22, 0.61, 0.36, 1)",
+          18
+        ],
+        [
+          "0.28s, 0.28s, 0.16s cubic-bezier(0.22, 0.61, 0.36, 1), cubic-bezier(0.22, 0.61, 0.36, 1), cubic-bezier(0.22, 0.61, 0.36, 1)",
+          7
+        ],
+        [
+          "0.28s cubic-bezier(0.22, 0.61, 0.36, 1)",
+          4
+        ],
+        [
+          "0.28s, 0.16s cubic-bezier(0.22, 0.61, 0.36, 1), cubic-bezier(0.22, 0.61, 0.36, 1)",
+          2
+        ]
+      ],
+      "animations": [
+        [
+          "6s steps(1)",
+          3
+        ],
+        [
+          "5s cubic-bezier(0.45, 0.05, 0.55, 0.95)",
+          3
+        ],
+        [
+          "6s cubic-bezier(0.45, 0.05, 0.55, 0.95)",
+          1
+        ],
+        [
+          "6.2s cubic-bezier(0.45, 0.05, 0.55, 0.95)",
+          1
+        ],
+        [
+          "6.8s cubic-bezier(0.45, 0.05, 0.55, 0.95)",
+          1
+        ],
+        [
+          "35s linear",
+          1
+        ]
+      ],
+      "springs": 0
+    },
+    "steady": {
+      "frames": 164,
+      "meanDelta": 10.31,
+      "jitter": 3.26,
+      "zeroFrames": 149,
+      "droppedFrames": 0
+    }
   }
 ]

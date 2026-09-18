@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.1",
+  "task_id": "calibration-morrow-glass",
+  "matrix_role": "calibration",
+  "surface": "fictional-creative-landing",
+  "locale": "en-US",
+  "brief": "Create a responsive single-page site for Morrow Glass, a fictional studio making hand-blown architectural lighting. The page must feel like transmitted light: luminous, tactile, and precise. Build a complete runnable page rather than a moodboard.",
+  "locked_facts": {
+    "name": "Morrow Glass",
+    "description": "A fictional studio making hand-blown architectural lighting in small numbered runs.",
+    "location": "Portland, Oregon",
+    "lead_time": "6–8 weeks",
+    "materials": ["recycled soda-lime glass", "solid brass", "linen-wrapped cord"],
+    "collections": ["Halo Pendant", "Tide Sconce", "Vessel Table Light"],
+    "contact": "studio@morrowglass.example"
+  },
+  "required_content": ["hero", "three collections", "process", "material notes", "commission inquiry"],
+  "creative_freedom": "Choose composition, typography, palette, motion, and any generated imagery. Do not add awards, clients, prices, sustainability certifications, or production facts.",
+  "shared_creative_pack": null,
+  "source_provenance": [{"type": "benchmark-authored-fiction", "path": "task.json", "claim_scope": "all locked facts"}],
+  "deterministic_acceptance": [
+    "A runnable page loads without uncaught console errors.",
+    "Every locked fact appears accurately and no forbidden factual claim is added.",
+    "All navigation targets and the commission call to action work with keyboard input.",
+    "The inquiry form validates required email and project fields and exposes a visible success state without a network dependency.",
+    "At 390x844 and 1440x900 the page has no horizontal document overflow and primary content remains readable.",
+    "prefers-reduced-motion disables nonessential continuous or entrance motion."
+  ]
+}

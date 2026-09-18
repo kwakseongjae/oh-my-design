@@ -1,0 +1,46 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — wide-drum</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+  body{overflow-x:hidden}
+  .lede,.after{max-width:960px;margin:0 auto;padding:34px 20px 22px}
+  .after{padding-bottom:110px}
+</style>
+</head><body>
+<button class="tgl"></button>
+<div class="lede">
+  <h1>wide-drum <code>유휴 · 이미지</code></h1>
+  <p class="sub">뷰포트 <b>전폭</b>을 쓰는 포스터 띠. 타일 높이 <b>56vh</b>. 스크롤 0, 입력 0 에서도 초당 62px 로 계속 흐른다. 호버하면 멈추고, 잡아끌면 따라오고, 놓으면 기본 속도로 <b>수렴</b>한다. 트랙 transform 은 프레임당 <b>1개</b>다.</p>
+</div>
+
+<div class="fx-drum">
+  <div class="fx-drum__track">
+    <div class="fx-drum__tile"><div class="fx-drum__ph" style="--h:186"></div><div class="fx-drum__label">01 — 시네마틱</div></div>
+    <div class="fx-drum__tile"><div class="fx-drum__ph" style="--h:266"></div><div class="fx-drum__label">02 — 프로덕트</div></div>
+    <div class="fx-drum__tile"><div class="fx-drum__ph" style="--h:32"></div><div class="fx-drum__label">03 — 인물</div></div>
+    <div class="fx-drum__tile"><div class="fx-drum__ph" style="--h:96"></div><div class="fx-drum__label">04 — 건축</div></div>
+    <div class="fx-drum__tile"><div class="fx-drum__ph" style="--h:214"></div><div class="fx-drum__label">05 — 텍스처</div></div>
+    <div class="fx-drum__tile"><div class="fx-drum__ph" style="--h:334"></div><div class="fx-drum__label">06 — 추상</div></div>
+    <div class="fx-drum__tile"><div class="fx-drum__ph" style="--h:12"></div><div class="fx-drum__label">07 — 풍경</div></div>
+  </div>
+</div>
+
+<div class="after">
+  <h2>두 번째 — 평면 띠(<code>--fx-drum-bend:0</code>) · 더 낮은 타일</h2>
+</div>
+<div class="fx-drum" style="--fx-drum-h:34vh;--fx-drum-bend:0deg;--fx-drum-ar:1.5" data-fx-speed="34">
+  <div class="fx-drum__track">
+    <div class="fx-drum__tile"><div class="fx-drum__ph" style="--h:150"></div></div>
+    <div class="fx-drum__tile"><div class="fx-drum__ph" style="--h:210"></div></div>
+    <div class="fx-drum__tile"><div class="fx-drum__ph" style="--h:280"></div></div>
+    <div class="fx-drum__tile"><div class="fx-drum__ph" style="--h:20"></div></div>
+    <div class="fx-drum__tile"><div class="fx-drum__ph" style="--h:70"></div></div>
+  </div>
+</div>
+
+<div class="after">
+  <p class="note">확인할 것: ① 아무것도 하지 않아도 흐른다. ② 이음매가 없다(원본 묶음을 컨테이너 2배까지 복제하고 <code>setW</code> 로 모듈러). ③ 가로 스크롤바가 생기지 않는다(<code>overflow:clip</code>). ④ 모바일에서 세로 스크롤이 잠기지 않는다(<code>touch-action: pan-y</code>).</p>
+</div>
+<script src="./snippet.js"></script>
+<script>fxLib.mountDrum();</script>
+<script src="../_shell.js"></script></body></html>

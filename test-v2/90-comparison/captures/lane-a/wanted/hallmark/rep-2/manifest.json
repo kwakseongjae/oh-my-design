@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "wanted",
+  "arm": "hallmark",
+  "rep": 2,
+  "source": "test-v2/03-runs/lane-a/wanted/hallmark/rep-2/render.html",
+  "sourceSha": "sha256:71fd10ec2d0fe1fa4f35018d4a2776349eaba3e08e12ba93c4e01144c1b517e8",
+  "capturedAt": "2026-09-02T12:45:38.557Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:cc5178cd4711567607dc0481abd0d82185c7cc57fcc62019607950b1e45d73d6",
+      "bytes": 181295,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:b97f85c6e609be826bc2601c4ba6e35898a4ff35ed8bbbe785a1e80200c269ed",
+      "bytes": 84229,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

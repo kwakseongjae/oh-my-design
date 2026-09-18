@@ -172,7 +172,7 @@ const check = program
   .command('check')
   .description('Run a bundled deterministic page check against rendered HTML (render integrity, landing-craft rules, text contrast).');
 
-function bundledToolAction(id: 'check:render' | 'check:landing' | 'check:contrast' | 'showcase' | 'setup:detect', path: string[]) {
+function bundledToolAction(id: 'check:render' | 'check:landing' | 'check:contrast' | 'font:inline' | 'showcase' | 'setup:detect', path: string[]) {
   return async () => {
     const { passthroughArgs, runBundledTool } = await import('../src/cli/check.js');
     const code = runBundledTool(id, passthroughArgs(path));
@@ -203,6 +203,17 @@ check
   .allowUnknownOption()
   .allowExcessArguments()
   .action(bundledToolAction('check:contrast', ['check', 'contrast']));
+
+const font = program
+  .command('font')
+  .description('Prepare fonts for standalone generated pages.');
+
+font
+  .command('inline')
+  .description('Download a verified variable font and emit a base64 @font-face block.')
+  .allowUnknownOption()
+  .allowExcessArguments()
+  .action(bundledToolAction('font:inline', ['font', 'inline']));
 
 program
   .command('showcase')
@@ -368,15 +379,17 @@ designMd
 
 designMd
   .command('prepare-checkpoint')
-  .description('Bind a project-owner checkpoint to all six exact compiler artifacts before project installation.')
+  .description('Bind an owner checkpoint to all six exact compiler artifacts and an explicit adoption target.')
   .argument('<package>', 'Fresh compiler-produced adopted package directory')
   .requiredOption('--reviewer <id>', 'Identified project-owner reviewer')
   .requiredOption('--out <path>', 'Fresh project checkpoint receipt path')
   .requiredOption('--authority-transition-approved', 'Explicitly approve installing the exact package bytes')
+  .option('--adoption-target <target>', 'Adoption target: project-system or reference-catalog (defaults to project-system)')
   .action(async (packageDir: string, opts: {
     reviewer: string;
     out: string;
     authorityTransitionApproved: boolean;
+    adoptionTarget?: 'project-system' | 'reference-catalog';
   }) => {
     const { runDesignMdTool } = await import('../src/cli/design-md.js');
     const code = runDesignMdTool('prepare-checkpoint', {
@@ -384,22 +397,29 @@ designMd
       reviewer: opts.reviewer,
       output: opts.out,
       authorityTransitionApproved: opts.authorityTransitionApproved,
+      adoptionTarget: opts.adoptionTarget,
     });
     if (code !== 0) process.exit(code);
   });
 
 designMd
   .command('adopt')
-  .description('Install an exact reviewed Core package into a project with rollback-safe transaction recovery.')
+  .description('Install an exact reviewed Core package into its checkpoint-bound target with rollback-safe transaction recovery.')
   .argument('<package>', 'Fresh compiler-produced adopted package directory')
   .requiredOption('--project-root <path>', 'Destination project root')
   .requiredOption('--checkpoint-receipt <path>', 'Exact project-owner package checkpoint receipt')
-  .action(async (packageDir: string, opts: { projectRoot: string; checkpointReceipt: string }) => {
+  .option('--adoption-target <target>', 'Adoption target: project-system or reference-catalog (defaults to project-system)')
+  .action(async (packageDir: string, opts: {
+    projectRoot: string;
+    checkpointReceipt: string;
+    adoptionTarget?: 'project-system' | 'reference-catalog';
+  }) => {
     const { runDesignMdTool } = await import('../src/cli/design-md.js');
     const code = runDesignMdTool('adopt', {
       input: packageDir,
       projectRoot: opts.projectRoot,
       checkpointReceipt: opts.checkpointReceipt,
+      adoptionTarget: opts.adoptionTarget,
     });
     if (code !== 0) process.exit(code);
   });

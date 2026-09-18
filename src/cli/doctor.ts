@@ -59,6 +59,7 @@ function shellQuote(value: string): string {
 
 export const REQUIRED_PRODUCT_SKILLS = [
   'claude-design',
+  'omd-aphrodite',
   'omd-autopilot',
   'omd-apply',
   'omd-asset-fetch',

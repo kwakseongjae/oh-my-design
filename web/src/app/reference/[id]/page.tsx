@@ -14,10 +14,7 @@ import { ReferencePreview } from "@/components/reference-preview";
 import { extractTokens } from "@/lib/extract-tokens";
 import { REGISTRY } from "@/data/registry.generated";
 import { loadReference } from "@/lib/references/repository.server";
-import {
-  extractLegacyReferenceDetail,
-  projectAstReferenceDetail,
-} from "@/lib/references/detail-projection";
+import { projectActiveReference } from "@/lib/references/consumer-adapter";
 
 // Force dynamic rendering so edits to references/<id>/DESIGN.md show up
 // without a full server restart. SSG caching otherwise pins the parsed token
@@ -28,9 +25,8 @@ export const revalidate = 0;
 function loadDetail(id: string) {
   const loaded = loadReference(id);
   if (!loaded) return null;
-  const legacy = extractLegacyReferenceDetail(id, loaded.markdown);
-  const projection = projectAstReferenceDetail(loaded.ast, legacy);
-  return { ...projection.detail, referenceAst: projection.contract };
+  const projection = projectActiveReference(loaded);
+  return { ...projection.detail, ...(projection.referenceAst ? { referenceAst: projection.referenceAst } : {}) };
 }
 
 export async function generateStaticParams() {

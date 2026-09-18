@@ -1,0 +1,60 @@
+{
+  "date": "2026-09-07",
+  "scope": "foundation runtime attribution, not benchmark admission",
+  "source_evidence": "docs/reviews/evidence/worker-readiness-2026-09-07.json",
+  "source_evidence_sha256": "817b2f23b59fbb65a6e752e7407ce9c2d4a11907c14e0a9c942f3e728836eef8",
+  "runtimes": [
+    {
+      "provider": "Codex worker",
+      "cli_version": "0.146.1",
+      "model_requested": "gpt-5.6-sol",
+      "effort": "high",
+      "attribution": "spawn_agent explicit model selection; no provider usage response exposed",
+      "provider_reported_model_ids": null,
+      "current_worker": "foundation_sol",
+      "execution": "first call capacity failure; same-model retry reached shell tools and implementation",
+      "fallback_invoked": false
+    },
+    {
+      "provider": "Claude Code CLI",
+      "cli_version": "2.1.258",
+      "model_requested": "claude-opus-5",
+      "effort": "high",
+      "provider_reported_model_ids": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5"
+      ],
+      "file_io_pass": true,
+      "notes": "auxiliary Haiku in provider usage preserved; not a pure single-model benchmark"
+    },
+    {
+      "provider": "Grok Build CLI",
+      "cli_version": "1.0.13",
+      "build": "5e9a58528b76",
+      "model_requested": "grok-4.6",
+      "effort": "high",
+      "init_model": "grok-4.6",
+      "provider_reported_model_ids": [
+        "grok-4.6-build"
+      ],
+      "file_io_pass": true,
+      "advertised_tools": [
+        "read_file",
+        "write"
+      ],
+      "advertised_skill_count": 0,
+      "four_concurrent_file_workers": "4/4 pass in linked source evidence"
+    }
+  ],
+  "browser_receipt": "browser-connectivity.json",
+  "lifecycle_tests": {
+    "status": "pass",
+    "count": 13,
+    "source": "test/unit/scripts/worker-lifecycle.test.mjs",
+    "reported_by": "foundation_sol",
+    "independent_cli_probe": "cli-cancellation-probe.json"
+  },
+  "benchmark_admission": false,
+  "media_generation_verified": false,
+  "cli_cancellation_probe": "cli-cancellation-probe.json"
+}

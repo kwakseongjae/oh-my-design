@@ -36,6 +36,14 @@ export type SkillTarget = 'claude-code' | 'codex' | 'opencode' | 'cursor';
 const VALID_SKILL_TARGETS = ['claude-code', 'codex', 'opencode', 'cursor'] as const;
 const DEVELOPMENT_ONLY_SKILLS = new Set(['omd-lab-02-design-harness']);
 
+const SKILL_EXTERNAL_DEPENDENCIES: Record<string, readonly string[]> = {
+  'omd-aphrodite': [
+    'docs/design-excellence/landing-craft-codex.md',
+    'docs/design-excellence/storyboard-review.md',
+    'docs/design-excellence/fx-library',
+  ],
+};
+
 export function targetsAvailableForScope(
   targets: SkillTarget[],
   scope: 'project' | 'global',
@@ -725,6 +733,24 @@ function shippedSkillTreeMatches(sourceDir: string, destinationDir: string): boo
   return true;
 }
 
+function externalSkillDependenciesMatch(
+  packageRoot: string,
+  destinationDir: string,
+  dependencies: readonly string[],
+): boolean {
+  return dependencies.every((dependency) => {
+    const source = join(packageRoot, dependency);
+    const destination = join(destinationDir, dependency);
+    if (!existsSync(source) || !existsSync(destination)) return false;
+    const sourceStat = statSync(source);
+    const destinationStat = statSync(destination);
+    if (sourceStat.isDirectory()) {
+      return destinationStat.isDirectory() && shippedSkillTreeMatches(source, destination);
+    }
+    return destinationStat.isFile() && readFileSync(source).equals(readFileSync(destination));
+  });
+}
+
 /**
  * A skill may restrict itself to specific agent channels via a frontmatter line
  * `x-omd-channels: claude-code` (comma/space separated). Returns the allowed
@@ -794,7 +820,8 @@ function installOne(
   const extras = readdirSync(skillDir).filter(
     (n) => n !== 'SKILL.md' && !IGNORED_SKILL_ENTRIES.has(n)
   );
-  const isMultiFile = extras.length > 0;
+  const externalDependencies = SKILL_EXTERNAL_DEPENDENCIES[skill] ?? [];
+  const isMultiFile = extras.length > 0 || externalDependencies.length > 0;
 
   // Retained for compatibility with any future flat-layout channel. All current
   // skill channels use folder layout and therefore keep scripts/references.
@@ -823,10 +850,9 @@ function installOne(
   // compare every shipped sidecar, while ignoring destination-only user files.
   // This keeps a second install genuinely idempotent without hiding stale tools.
   if (exists && existing === managed) {
-    const extrasCurrent = !isMultiFile || shippedSkillTreeMatches(
-      skillDir,
-      join(plan.destDir, skill),
-    );
+    const destinationSkillDir = join(plan.destDir, skill);
+    const extrasCurrent = (extras.length === 0 || shippedSkillTreeMatches(skillDir, destinationSkillDir)) &&
+      externalSkillDependenciesMatch(packageRoot, destinationSkillDir, externalDependencies);
     if (extrasCurrent) {
       return { target: plan.target, skill, destPath, status: 'unchanged' };
     }
@@ -846,6 +872,15 @@ function installOne(
     const destSkillDir = join(plan.destDir, skill);
     for (const entry of extras) {
       cpSync(join(skillDir, entry), join(destSkillDir, entry), {
+        recursive: true,
+        filter: (s) => !/(\/__pycache__|\/\.runtime|\.pyc$|\.DS_Store$)/.test(s),
+      });
+    }
+    for (const dependency of externalDependencies) {
+      const source = join(packageRoot, dependency);
+      const destination = join(destSkillDir, dependency);
+      mkdirSync(dirname(destination), { recursive: true });
+      cpSync(source, destination, {
         recursive: true,
         filter: (s) => !/(\/__pycache__|\/\.runtime|\.pyc$|\.DS_Store$)/.test(s),
       });

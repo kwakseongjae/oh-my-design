@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "recorded_date": "2026-09-07",
+  "status": "configuration_discovery_verified_live_probe_not_started",
+  "purpose": "Read-only prerequisite for Grok4.6 four-arm parallel asset-generation benchmark",
+  "cli_version": "1.0.13",
+  "provider_model_calls": 0,
+  "benchmark_cells": 0,
+  "asset_generations": 0,
+  "browser_interactions": 0,
+  "local_documentation": {
+    "path": "/Users/kwakseongjae/.grok/README.md",
+    "findings": [
+      "GROK_HOME is a documented configuration directory override.",
+      "--tools applies in headless mode; inspect output cannot prove runtime tool removal.",
+      "Claude Code compatibility automatically discovers skills, hooks, plugins and MCP."
+    ]
+  },
+  "observations": [
+    {
+      "name": "neutral_workspace_default_config",
+      "cwd": "/private/tmp/omd-grok-parallel-preflight-wvj_nyk0",
+      "inspect_exit": 0,
+      "project_root": null,
+      "discovered": {
+        "project_instructions": 3,
+        "skills": 145,
+        "hooks": 15,
+        "agents": 24,
+        "plugins": 5,
+        "mcp_servers": 6
+      },
+      "interpretation": "Changing cwd alone does not isolate inherited configuration."
+    },
+    {
+      "name": "neutral_workspace_fresh_GROK_HOME",
+      "inspect_exit": 0,
+      "project_root": null,
+      "environment_overrides": {
+        "GROK_HOME": "task-local empty config directory",
+        "GROK_MEMORY": "0",
+        "GROK_SUBAGENTS": "0"
+      },
+      "home_environment_unchanged": true,
+      "discovered": {
+        "project_instructions": 0,
+        "skills": 122,
+        "hooks": 14,
+        "agents": 24,
+        "plugins": 5,
+        "mcp_servers": 6
+      },
+      "inherited_source_classes": [
+        "~/.agents/skills",
+        "~/.claude",
+        "~/.claude/plugins",
+        "~/.claude.json"
+      ],
+      "interpretation": "Native config isolation removes native instructions but external compatibility discovery remains."
+    }
+  ],
+  "verified": [
+    "CLI inspect works offline in neutral cwd",
+    "Documented GROK_HOME override changes discovery",
+    "Global cross-CLI skill/hook/MCP discovery remains"
+  ],
+  "unverified": [
+    "effective headless tool allowlist",
+    "negative proof of no-skill context isolation",
+    "provider authentication/model_reported",
+    "four simultaneous model calls",
+    "image/video generation",
+    "browser broker mutual exclusion and cell privacy"
+  ],
+  "next_required": "Use a supported and verified isolated discovery configuration/runtime for all arms; verify effective headless tool restrictions before neutral model/concurrency probes. Preserve equal tool access by injecting a frozen neutral inventory explicitly.",
+  "constraints": "Do not change global user configuration or existing frozen runner contracts. This is not a benchmark outcome or evidence that Grok concurrency is unavailable.",
+  "confidentiality": "Only counts, non-secret source classes and status are committed. No auth files or raw configuration contents copied into repository."
+}

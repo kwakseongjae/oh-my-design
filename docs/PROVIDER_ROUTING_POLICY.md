@@ -2,16 +2,32 @@
 
 This policy is fail-closed for benchmark execution. It does not start a model call; it only decides whether a runner may start one.
 
-## Fixed routes
+## Current execution-worker routes (owner decision 2026-09-07)
+
+| Requested model | Runtime | Current role |
+| --- | --- | --- |
+| `gpt-5.6-sol` | Codex | implementation, integration, tests |
+| `opus` (reported `claude-opus-5`) | Claude Code CLI | creative direction and review |
+| `grok-4.6` (reported `grok-4.6-build`) | Grok Build CLI | asset probes and isolated generation |
+
+These routes apply to new execution-worker attempts. Every attempt records requested and provider-reported
+model IDs separately; an alias or prompt self-identification is not attribution. Worker output does not enter a
+benchmark denominator. The machine-readable counterpart is `current_worker_routing` in
+`benchmarks/ui-resolve-bench/config/provider-routing-policy.json`.
+
+The owner’s 2026-09-07 instruction supersedes the earlier Sol retirement for current worker execution. It does
+not rewrite frozen result directories, old matrices, or their historical policy receipts.
+
+## Frozen benchmark-era routes
 
 | Model | Allowed runtime | Billing rule |
 | --- | --- | --- |
-| `gpt-5.6-luna` | **RETIRED 2026-08-14** (was: Codex) | no new calls |
-| `gpt-5.6-sol` | **RETIRED 2026-08-14** (was: Codex) | no new calls |
+| `gpt-5.6-luna` | **RETIRED 2026-08-14** (was: Codex) | no new benchmark calls |
+| `gpt-5.6-sol` | **RETIRED 2026-08-14** (was: Codex) | no new calls in that frozen benchmark epoch |
 | `cursor-grok-4.5-high` | Cursor | Included usage only |
 | `grok-4.6` | Grok Build CLI (`~/.grok/bin/grok`, headless) | SuperGrok subscription (shared weekly pool) |
 
-Owner decision 2026-08-14: Luna and Sol are retired for all roles. `grok-4.6`
+Historical decision 2026-08-14: Luna and Sol were retired for that execution plan. `grok-4.6`
 is now both the benchmark model-under-test (isolated run-grok lane, see
 `docs/OMD_2_0_GROK_RESTART_SEED.md`) and the implementation-worker model
 (grok-fleet contract). Claude Fable orchestrates, plans, and reviews. The Luna

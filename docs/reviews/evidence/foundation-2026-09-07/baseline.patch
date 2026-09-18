@@ -1,0 +1,903 @@
+diff --git a/.claude/skills/omd-aphrodite/SKILL.md b/.claude/skills/omd-aphrodite/SKILL.md
+index 0f516329..6879f482 100644
+--- a/.claude/skills/omd-aphrodite/SKILL.md
++++ b/.claude/skills/omd-aphrodite/SKILL.md
+@@ -24,10 +24,11 @@ user-invocable: true
+ 
+ | 검사 | 조건 |
+ |---|---|
+-| `omd check landing` | **LI-1~32 전 항목 ok**. 특히 LI-24 화면 잉크 · LI-25 폴드 미디어 · LI-26 미디어 밀도 · LI-27 디스플레이 서체 · LI-28 깊이 · LI-29 메시/그레인 · LI-30 브라우저 기본값 · LI-31 미디어 색보정 · LI-32 alt 구체성 |
++| `omd check landing` | **LI-1~40 전 항목 ok**. 특히 LI-24 화면 잉크 · LI-25 폴드 미디어 · LI-26 미디어 밀도 · LI-27 디스플레이 서체 · LI-28 깊이 · LI-29 메시/그레인 · LI-30 브라우저 기본값 · LI-31 미디어 색보정 · LI-32 alt 구체성 · LI-33 정착 타이밍 · **LI-34 주 미디어 점유율 · LI-35 호버 관문 0 · LI-36 초점비 · LI-37 폴드 ≤5 · LI-38 모션 채널 ≤2 · LI-39 홀드 콘텐츠 · LI-40 여백 덩어리** |
+ | `omd check contrast` | FAIL 0 · no-JS 숨김 0 |
+ | `omd check render` | 1440×900 · 390×844 양쪽 PASS |
+-| `omd-designer-review` | BLOCK 0 |
++| `omd-designer-review` | BLOCK 0 — 리뷰어는 **검사기 결과를 보기 전에** 렌더만 보고 먼저 판단한다(§5) |
++| 페르소나 워크스루 3인 | 마우스 데스크탑 · 한 손 엄지 모바일 · 키보드/호버 없음 — 각자 "입력 없이 본 것" 이 섹션마다 있고 관문에 막힌 곳 0 (§5) |
+ 
+ 검사를 못 돌리는 상황(브라우저 없음 등)은 **통과가 아니라 실패**다. 그 사실을 `trace.md` 에 적는다.
+ 
+@@ -64,9 +65,14 @@ fx-library 에 편입해 다음 런이 재사용하게 한다.
+ 
+ ## 2. 컨셉과 스토리보드
+ 
+-`omd:landing` §1~2 를 그대로 따르되, 스토리보드에 **개수와 마감을 숫자로** 적는다.
++`omd:landing` §1~2 를 그대로 따르되, 스토리보드에 **개수·크기·마감을 숫자로** 적는다.
+ 
+-- 밀도 예산(미디어 ≥ 페이지 vh × 1.0 · 폴드 ≥ 3 · 스크롤러 항목 ≥ 8 · 모션 ≥ 1 · 섹션 잉크 ≥ 26%)
++- **첫 줄 다이얼(LC-59)**: `밀도 n/10 · 모션 n/10`. 밀도 ≤5 면 아래 밀도 예산보다 **상한**(초점비·폴드 ≤5·채널 ≤2)이 우선한다 — 바닥 규칙을 "최대로 채운다"로 읽지 않는다.
++- **크기 락(LC-51)**: 섹션마다 주 미디어의 비율(16:9·3:2·2:3)과 **뷰포트 점유율(%)** 을 적는다. 섹션 중앙값 ≥35%, 풀블리드(≥90%) ≥1, 폴드 주 미디어 ≥45vw 또는 ≥40vh. 여러 장은 공간이 아니라 시간에 쌓는다(동시 미디어 ≤6). 시험: 히어로 이미지를 빼도 첫 화면이 멀쩡하면 이미지가 약한 것이다.
++- **한 화면 한 초점(LC-52)**: 1등:2등 면적비 ≥2:1, 섹션당 층(스크롤·유휴·호버·진입) ≤2, 동시 모션 채널 ≤2.
++- **무노동(LC-49·50·53)**: 호버로만 보이는 콘텐츠 0. 자동으로 움직이는 것은 장식 시험 T1~T4(정보 유일성·정적 대체 경로·사용자 제어·무노동) 통과분만. 펼침은 진입 시 자동 1회 + 고정, 열기는 클릭/탭이고 열린 상태는 지속.
++
++- 밀도 예산(미디어 ≥ 페이지 vh × 1.0 · 폴드 ≥ 3 · 스크롤러 항목 ≥ 8 · 모션 ≥ 1 · 섹션 잉크 ≥ 26%) — 다이얼 ≥6 에서 전량 적용. 폴드 의미 단위는 언제나 ≤5(LC-54), 진입 애니 ≤1.2s·H1/CTA 덮기 금지.
+ - 섹션마다 쓸 마감 기법을 LC 번호로 지정 — 어느 섹션에 그레인(LC-38), 어디에 글래스(LC-39),
+   어디에 비네트(LC-45), 스크롤 타임라인은 어느 리빌에(LC-40), 스프링 이징은 **한 순간에만**(LC-41).
+ - **압도 지점 1개**와 그 직전의 호흡 섹션. 피크는 개수가 아니라 규모다(LC-33).
+@@ -77,7 +83,7 @@ fx-library 에 편입해 다음 런이 재사용하게 한다.
+ 
+ ### 2.5 스토리보드 리뷰 게이트 (빌드 전, 필수)
+ 
+-`docs/design-excellence/storyboard-review.md` 의 A(색)·B(구도)·C(효과) 표를 스토리보드에 채워 넣고 판정한다.
++`docs/design-excellence/storyboard-review.md` v2 의 A(색)·B(구도)·C(효과, C9 크기 락·C10 정직한 K 포함)·**D(사용자: 입력 없이 보이는 것·터치·키보드·첫 5초 문장·관문 0)**·E(자기 표절 시험) 표를 스토리보드에 채워 넣고 판정한다.
+ **FAIL 이 하나라도 있으면 §3·§4 로 가지 않는다.** 빌드 뒤 리뷰는 늦다 — 색·구도·효과 예산은 여기서 잡는다.
+ 판정 결과는 런 디렉터리의 `storyboard-*.md` 끝에 남긴다. 업종 무관: 특정 색·톤이 아니라 역할·빈도·숫자로만 판정한다.
+ 
+@@ -121,6 +127,10 @@ fake bokeh. 긍정 지시로 바꿔 적는 편이 더 잘 듣는다 — film gra
+ - **스크롤 연동(LC-40)**: `animation-timeline`/`view-timeline` 우선, 미지원 시 opacity 리빌 폴백.
+ - **이징(LC-41)**: 페이지 지배 duration 하나 유지. `linear()` 스프링은 히어로 정착이나 CTA 도착 한 곳만.
+ - **커서(LC-44)**: 미디어 표면에만, `@media (hover: hover)` 로 터치 기기 비활성, 상태 최대 3개.
++- **호버 정책(LC-49·50·57·58)**: 호버는 리프트·밝기 2% 또는 정지/감속까지. in 120–160ms / out 250–450ms(delay ≥200ms). 열림은 클릭/탭으로 고정, Esc/재클릭으로 닫힘. `@media (hover: none)` 에서는 열린 상태가 기본형.
++- **유휴 장식(LC-53)**: 자동 모션은 T1~T4 통과분만 — 반복 샘플, 정적 대체 경로, 호버 정지, reduced-motion 정지.
++- **스니펫 토큰 치환**: `fx-library` 스니펫의 반경·간격·duration 기본값은 인라인 전에 DESIGN 토큰으로 바꾼다(r3: 반경 토큰 밖 43건이 스니펫 기본값에서 유입).
++- **빌드 중 자기 비평**: 섹션을 만들 때마다 1440·390 스크린샷을 찍어 보고, 고친 것과 버린 시도를 `trace.md` 에 한 줄씩 남긴다.
+ 
+ ## 5. 검증
+ 
+@@ -133,6 +143,9 @@ node test-v2/tools/landing-integrity.mjs <render.html>
+ 전부 통과할 때까지 고친다(최대 3회). 미달 항목은 **기준을 낮추지 말고 산출을 고친다.**
+ 3회에도 못 넘으면 마지막 출력과 시도한 것을 `trace.md` 에 남기고 그 상태로 제출한다 — 통과한 척하지 않는다.
+ 그다음 `omd-designer-review` 서브에이전트를 스폰해 BLOCK 0 을 확인한다(입력: render.html 절대경로 + DESIGN.md 경로).
++**눈 검사 격리**: 리뷰어에게 검사기 출력·trace 를 주지 않는다. 렌더만 보고 판정을 먼저 쓰게 하고, 기계 결과는 그 뒤에 붙여 종합한다 — 깨끗한 스캔은 위계·리듬·크기를 증명하지 못한다(r3: LI 전항목 ok·BLOCK 0 인데 60점).
++**페르소나 워크스루 3인**(`omd-persona-tester`, 지표는 task_success·friction_count 만): 마우스 데스크탑 / 한 손 엄지 모바일(390) / 키보드·호버 없음. 각 페르소나가 섹션마다 "입력 없이 본 것"을 한 줄로 적고, 호버·드래그 없이는 못 본 콘텐츠가 있으면 그 섹션은 미완성이다.
++데스크탑과 모바일은 **한 라운드에 묶어** 검사하고, 라운드 상한(3) 안에서 끝낸다.
+ 
+ ## 6. 쇼케이스 영상 (만들 때만)
+ 
+diff --git a/AGENTS.md b/AGENTS.md
+index 94361065..9fbc9b30 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -97,6 +97,15 @@ For ad-hoc UI work (component changes, microcopy edits, color tweaks) not runnin
+ 
+ This mirrors the `omd:apply` Claude Code skill behavior.
+ 
++## Browser execution for the restart tracks (2026-09-07 user preference)
++
++- In Codex, prefer the connected **Computer Use Chrome** surface for live page interaction, login-state checks, media-service operation, and rendered QA. The global browser-harness skill's "Always use" description does not require choosing it over this user preference.
++- Use browser-harness only when explicitly selected for a capability that Computer Use cannot provide and after checking that its connection works. Its CDP/remote-debugging setup is not a prerequisite for working Computer Use Chrome access.
++- Grok Build and Claude Code do not automatically inherit Codex's Computer Use tools. For the benchmark, one shared browser operator must execute cell-scoped requests without adding creative advice; four model workers may run concurrently, but shared Chrome operations remain serialized.
++- Keep each cell's prompts, tabs, results, and downloads separate. Do not expose the user's unrelated tabs/history or another arm's output to a worker. Browser capability access must be equal across all four conditions.
++- A connected browser or an authenticated page alone does not prove that image/video generation, download, or the whole benchmark broker works. Verify each claimed capability through its actual flow.
++- Computer Use currently rejects iTerm2 control. Do not route around that restriction through another UI/shell automation mechanism. Use the separately authorized CLI execution channel for model jobs.
++
+ ## Product surface ownership (mandatory)
+ 
+ - The user-facing creation funnel is Home `시작하기` → **`/builder`**.
+diff --git a/docs/APHRODITE_HANDOVER.md b/docs/APHRODITE_HANDOVER.md
+index e3a26f48..ebc7aac6 100644
+--- a/docs/APHRODITE_HANDOVER.md
++++ b/docs/APHRODITE_HANDOVER.md
+@@ -4,6 +4,13 @@
+ > 채점자는 프로젝트 오너 한 사람이고, 100점 만점으로 매 라운드 점수를 준다.
+ > 테스트 브랜드는 가상 AI 이미지 생성 제품 **Higgsgen**. 런 디렉터리 `test-v2/content-runs/aphrodite/higgsgen/`.
+ 
++> **2026-09-07 인수 감사 보정** — 아래 점수·산출물 이력은 보존한다. 다만 “밝은 지면이
++> 원인”, “이미지 세트가 천장”, “같은 언어의 실행만 통한다”는 인과적으로 확정된 사실이 아니다.
++> 여러 축이 함께 바뀌었고 단일 채점자이며 r7·r8은 미채점이다. 컨셉 유무가 다른 폴드의
++> 동점도 컨셉 가설을 기각하지 않는다. 이 문서의 해석보다
++> `docs/reviews/omd-restart-audit-2026-09-07.md`와 `docs/APHRODITE_REBOOT_2026-09-07.md`의
++> 사실/가설 구분을 우선한다. 다음 라운드 결과나 와우 품질은 아직 검증하지 않았다.
++
+ ---
+ 
+ ## 1. 한 문단 요약
+diff --git a/docs/CURRENT_STATE.md b/docs/CURRENT_STATE.md
+index ff608b0c..0cd9e6a3 100644
+--- a/docs/CURRENT_STATE.md
++++ b/docs/CURRENT_STATE.md
+@@ -1,146 +1,98 @@
+ # CURRENT STATE — 단일 복원 지점
+ 
+-> 새 세션·compact 후 **이 파일 하나만 읽으면 재개할 수 있어야 한다.**
+-> 갱신 시점: 작업 단위 완료 · 결정 확정 · 머지 직후 (보고보다 먼저).
++갱신: 2026-09-07 · 실제 워커 파일 인수·Grok4개 동시 실행 사전 검증 완료. main / 15ff0139.
++이번 요청: 다른 모델 워커와 본격 실행 준비가 충분한지 판단. 임시 작업 검증만 수행.
++Opus/Grok 파일 작업 PASS, Grok4개 동시 작업 PASS. 프로젝트 작업·벤치 셀·에셋 생성·goal은 미착수.
++기존 구현을 보존할 의무는 없지만 근거/실험 원본은 유지한다.
+ 
+-- 갱신: 2026-09-07 · **⏹ 아프로디테 인수인계 — 오너가 Astra 로 직접 진행**. r9(three.js 스크롤 월드) **10/100, 전 라운드 최악**. 최종 점수표: r0 30 · r1 60 · **r2 70(최고)** · r3 60 · r4 65 · r5 30 · r6 65 · r7·r8 미채점 · **r9 10**. 폴드 3안: r4 정제 70 · 컨택트 시트 70 · 문장 60. **확정된 교훈**: ① 밝은 지면 2회 = 30점 2회 ② **매체 교체(영상·3D)는 점수를 못 올렸다**(three.js 10점) ③ 검사기 40종 전부 통과한 산출물이 30·10점 — 검사기는 품질 모델이 아니다 ④ 규칙을 더할수록 수렴(LC 36→59, LI 23→40) ⑤ 실제 결함 2종(카피–이미지 불일치 "등대", 규칙 문장이 헤드라인)을 40종이 못 잡았다 ⑥ 이미지 61장 장르 샘플러가 아홉 라운드째 = 천장 의심. **인수인계 문서 `docs/APHRODITE_HANDOVER.md`** 작성(요약·라운드표·확실히 아는 것·도구/코퍼스/문서 인벤토리·산출물 위치·검증된 채널·하지 말 것 5·먼저 볼 것 3·남은 일 5·**Astra 용 인계 프롬프트**). 재사용 자산: 도구 8종, 레퍼런스 코퍼스 26곳(원샷 6·three.js 4 포함), fx-library 33종, 실측 α 대역과 draw 호출 대역. 다음 담당자 우선순위: ① 이미지 세트를 "한 세계 한 촬영" 12~20장으로 교체 ② 카피–이미지 일치 린트 ③ 자기지시 헤드라인 린트 ④ 검사 정리(FAIL 강등 14·조건부 6) ⑤ r2·fold-a 기준선에서 한 축씩.
+-- 갱신: 2026-09-06 14:10 · **r8 완성(비행 히어로 + 본문 6섹션) + three.js 리서치 완료 → r9 방향 제안**. **r8**: `render-r8.html` 6.85MB · 16.89vh · 섹션 7 · 콘솔 0 · **검사 3종 전부 통과**. r7 의 30초 스크럽 비행을 S1 으로 두고 그 아래 r6 본문(시퀀스 핀 · **컨택트 시트 피크(오너 70점 fold-c)** · 전후 비교 · 12장르 띠 · 재질 · 폼)을 이어 붙였다. 자가 수정 4건(병합 때 모바일 규칙 누락으로 390 h1 +172px 잘림 · 진행 레일 누락 스크립트 오류 · 폴드 단위 초과 · 그레인 요소화). **도구 조건부화**: LI-18 이 자동재생 루프를 전제해 30초 스크럽 테이크를 오탐 → `autoplay` 아니면 muted·playsInline 만 본다. **오브제 회전 클립 폐기**(두 번 생성 모두 프롬프트 미반영). **three.js 리서치**(`docs/reviews/threejs-scroll-worlds-2026-09-06.md`): 사용자가 준 @himanshubuildss 게시물은 **프롬프트가 없고 라이브·저장소도 없는 판매 글**이며 영상 5.8초에 스크롤 장면도 없다(마우스 패럴랙스만). 대신 **MengTo/kage**(1,558★, 트윗 4.9k·46만 뷰, 라이선스 **없음** — 코드 이식 금지)를 캡처·계측: 캔버스 4 · **draw 13,991** · 6.1vh · 에셋 2.23MB. 구조는 **모델링이 아니라 알파 컷아웃 webp 9장을 3D 깊이에 세운 빌보드** + 절차적 지형·안개·비·낙엽 + 스크롤이 카메라 경로 하나를 움직임. 같은 저자 주장: "영상 스크롤 사이트 20~100MB vs 이 사이트 922KB". **우리 r8 은 6.85MB, draw 0.** → **r9 제안**: 히어로만 three.js 월드로 교체(한 축), 컷아웃은 그록 CLI 로 생성+배경제거, 목표 ≤1.5MB, 기준선 draw>0(kage 13,991), 30초 비행은 증거 섹션으로 잔류. fx-library 60KB 예산은 히어로 엔진에 예외 명시 필요.
+-- 갱신: 2026-09-06 10:20 · **r7 = 매체 전환(스크롤 스크럽 영상) 완료, 채점 대기**. 사용자 지시로 권고 A+D 실행. **채널 둘 다 확보**: 이미지 `~/.grok/bin/grok` → `image_gen`(xAI Imagine, 시험 컷 품질 양호) · 영상 grok.com/imagine 컴퓨터 유즈(1080p 6s, 업로드→프롬프트→생성→다운로드). **추가 비용 0**(구독 내, scroll-world 가 상정한 클립당 $2~3 불필요). **30.2초 연속 비행**: 6초 × 5구간, 각 구간의 렌더된 마지막 프레임을 다음 구간 시작 이미지로 올려 **이음매 프레임 동일**(아키텍처 A). 여정 = 지하도 → 터널 출구 → 블루아워 소금사막 → 빛나는 문 → 도자기 작업실. 원본 `video/flight-raw.mp4` 60MB, 웹용 `flight-720.mp4` 3.9MB(키프레임 0.5s). **`render-r7.html` 5.36MB 단독**(영상 base64 인라인, 네트워크 0): 스크롤이 영상 시간을 스크럽하고 목표/현재 분리 + α 0.14 감쇠. 검증: 22/45/70/92% → 7.87/16.11/25.06/30.21초 · render PASS · contrast PASS(no-JS 0) · 콘솔 0 · 7.4vh. 빌드 중 자가 수정 5건(스티키 CSS 누락 · 밝은 구간 본문 2.37:1 → 블록 플레이트 · no-JS 숨김 · 인라인 지면이 만든 레이아웃 붕괴 · 그레인 opacity). **도구 수정**: `text-contrast.mjs` 가 투명한 조상 아래 글자를 재 허위 실패(1.05:1) → 조상 opacity 검사 추가. 다음: 사용자 채점 → 필요 시 구간 추가·모바일 세로 체인·이미지 세트 갱신(D).
+-- 갱신: 2026-09-06 04:30 · **r6 채점 65 → 매체 선택이 다음 결정**. r6 는 오케스트레이터가 직접 빌드(에이전트 10시간 무산출 → 인계). `render-r6.html` 1.68MB · **검사 3종 전부 통과**(render PASS · contrast PASS·no-JS 0 · **LI-1~40 FAIL 0**) · 11.48vh · 섹션 7 · 핀 2 · 주 미디어 중앙 0.53 · 폴드 커버리지 99.4% · 콘솔 0. 빌드 중 자가 수정 6건(스테이지 CSS 누락으로 핀 2개 검은 화면 · S2 리드가 이미지 덮음 · 프레임 미전환(엔진에 콜백 없음→rAF 폴링) · S4 시임 반전 · no-JS 숨김 7 · 폴드 단위 6→5). 카피는 `set.json` 프롬프트와 대조해 전부 참. **사용자 채점 65**: "무난한데 와우 급은 전혀 없다. threejs meshy 캐릭터가 빠져서인가? scroll world 는 보통 어떻게 하나?" + 링크. **조사 완료**(`docs/reviews/medium-ceiling-2026-09-06.md`): ① `oso95/scroll-world`(9,024★ MIT) 는 **three.js 가 아니라 사전 렌더 영상 스크럽** — N 스틸 → N 다이브 클립 → N−1 커넥터 → 스크럽 엔진, 이음매는 **렌더된 프레임끼리 물려야** 팝이 없다. 비용 Seedance 2.0 1080p N=6 ≈ **$27**(720p ≈ $11) ② three.js 필수 아님 — 코퍼스 실측 draw 호출: beyond 211k · locomotive 128k · mosslight 78k · basement 19k · lusion 4.4k **vs leon 0 · pocket 0 · 우리 r6 0**. 화제작 절반은 실시간 렌더, 절반은 순수 DOM. **우리는 양쪽 다 아니다.** ③ **진짜 병목**: 여섯 접근(안무·크기·무관문·팔레트·엔진·컨시트)이 전부 65~70 수렴, **매체는 한 번도 안 바꿨다**(정지 61장+CSS). **다음은 디자인이 아니라 매체 결정 — 사용자 판단 대기**: A 영상 스크럽($11~27, 영상 채널 재개 필요) · B three.js(생성비 0, 예산 60KB 개정 필요) · C 캔버스 2D · D 이미지 세트 갱신($2~4, 한 세계) · E 유지. 권고 A 또는 B, D 는 병행.
+-- 갱신: 2026-09-05 17:50 · **폴드 순위 확정(C ≈ A 70 · B 60) → r6 빌드 착수**. 읽는 법(FEEDBACK.md): ① **컨시트 이론은 확정도 기각도 아니다** — 컨시트 있는 C 와 통제군 A 가 동점 70. 다만 A 가 70 이므로 **r4 시스템 복귀 판단은 옳았다**(r5 30 → 70 회복) ② **전문가 예측 2건 모두 빗나감** — Fable 과 빌더 둘 다 B>C>A 를 예측했고 오너는 B 를 꼴찌로 놨다. **내부 취향 ≠ 채점자 취향** → 방향은 폴드 순위 같은 싼 실측으로만 정한다 ③ B 패배 가설: 문장이 화면 절반을 텍스트로 채워 **사진이 작아졌다**(r3 "이미지를 소극적으로 쓴다"와 같은 실패형) ④ **70 은 역대 최고(r2)와 동점** — 폴드만으로는 천장에 닿았고 90 은 폴드 다음(스크롤·마감·페이로프)에 있다. **r6 결정**: 폴드 = A(hero-01 · `Light, held where you put it.` · 라임 1) · 피크 = C(61 테이크 시트에서 한 컷이 풀블리드로 확대) · B 폐기하되 정직함은 규칙 승계 · 엔진 α 0.14 유지 · **자율 모션 화면당 1개**(r5 8/8 의무 폐기) · 카피 r2 레지스터 · 헤드라인 UI 동사 금지 · **규칙 추가 동결**. `storyboard-r6.md`(7섹션·핀 2·12.4vh — r4 14.27/3/10, r5 11.71/2/8 과 모두 다름). 빌더 build-higgsgen-r6(opus) 스폰. 선행 수정 3건은 하드 게이트: 카피 레지스터·이미지 옆 문장 참·폴드 CTA 1개.
+-- 갱신: 2026-09-05 17:30 · **첫 화면 3안 완성 → 오너 순위 대기**. `test-v2/content-runs/aphrodite/higgsgen/folds/{fold-a,fold-b,fold-c}.html` + `shots/`(1440·390 각 3장) + `README.md`(근거). 전부 r4 다크 시스템, 폴드 라임 정확히 1개, 금지어 0, 이미지 옆 문장은 `set.json` 프롬프트 원문 대조 완료. render-integrity 3/3 PASS · text-contrast 3/3 PASS(최저 4.04:1) · 콘솔 0. **A**(195KB, 통제군) hero-01 풀블리드 + `Light, held where you put it.` — r4 결함 3종 수정(CTA 2→1, 112px 3줄→80px 2줄, 헤드라인 r2 레지스터). **B**(184KB, "이 페이지는 문장 하나다") 프롬프트 문장이 화면 좌측 전체, 변수 단어 `five` 만 라임, 우측에 seq-05(17:00) 큰 프레임 + seq-01(09:00) 작은 프레임 — **문장이 이미지에 대해 참**이라 등대 버그가 구조적으로 불가능. **C**(478KB, "61 테이크, 1 키퍼") 컨택트 시트 + hero-05 확대. 빌더 읽기 B > C > A. **다음: 오너가 순위를 매기면 그 방향으로 r6 빌드. A 가 1등이면 컨시트 이론 기각(반증 조건).**
+-- 갱신: 2026-09-05 17:10 · **Fable 자문 수령 → r6 계획 수정**(`docs/reviews/fable-advisory-2026-09-05.md`). **내가 놓친 결함 2건, 실측 재확인**: ① r5 S2 캡션·S8 placeholder 가 "a lighthouse at dusk/noon/dawn" 인데 그 위 seq-01~08 은 전부 "narrow ceramics workshop" — **"한 줄이 사진이 된다"는 페이지가 문장과 사진의 불일치를 시연**했다(30점 직접 원인 후보; 검사 40개 중 이를 읽는 것 0) ② h2 가 규칙 문장이 됐다("Pick one and it stays picked" = LC-50 원문, "Four plates, stacked" = 내부 용어) — r2 "Direct the frame, not the prompt" 대비 목소리가 점수와 같이 퇴화. **컨시트 진단 반만 맞음**: 컨시트는 6라운드 전부에 없던 상수라 −35 를 설명 못 한다. 실제 상수는 **밝은 지면 2회 = 30점 2회**(r0·r5). 표본도 골라졌다(진짜 컨시트 2/6, leon 은 OpenAI 런칭 문법 재현, apex 폴드는 80MB 로딩 화면). 여섯의 공통점은 **정합성**(이미지 세계 하나·목소리 하나·페이지가 자기를 설명하지 않음). **채택**: 인화기 폐기 · r4 **시스템** 복귀(섹션 구성은 아님) — 기준선 **r2 목소리 + r4 크기·절제 + r5 엔진** · 자율 모션 8/8 의무 → **화면당 살아 있는 층 ≤1** · 빌드 전 실수 3건 선수정 · **컨시트는 정적 폴드 3장(r4 다듬기 / A "이 페이지는 문장 하나다" / B "콘택트 시트")을 오너가 순위 매겨 결정** — r4 다듬기 1등이면 컨시트 이론 기각. 검사 정리안(FAIL 강등 14·조건부 6·신설 2: 카피–이미지 일치, 자기지시 헤드라인 린트)과 **규칙 추가 동결 r6~r8** 은 기록만, 미적용.
+-- 갱신: 2026-09-05 16:40 · **r5 채점 30/100 (최악) → r6 = 컨시트 전환**. 사용자: "X에서 astra 같은 모델 나오면 사람들이 랜딩 하나 근사하게 뽑는데, 우리는 디자인 하네스 초특급 프로젝트인데 단일 모델 수준에 근접도 못 했다. X 레퍼런스·코드 레벨·구도·애니메이션 다시 리서치. X는 그록빌드로 접근." **자기 진단(FEEDBACK.md r5)**: r4 피드백은 "절제는 괜찮았다"였고 불만은 딱딱한 스크롤·자율 모션 둘뿐인데, 내가 AI 기본값 리서치를 근거로 팔레트·서체·크롬·구조를 **동시에** 갈아엎어 65점 기반을 날렸다. A/B 검증 약속도 안 지켜 원인 분리 불가. **grok build 로 X 실검색 성공**(워크플로 비활성화 후 직접 답변): 게시물 10건(URL·작성자·모델·프롬프트·시각 특징) + **살아 있는 원샷 배포본 6곳** 확보 → 우리 도구로 전부 캡처·계측(`reference-corpus/oneshot-*`, `research/r4/scale-oneshot.json`). **결정적 발견**(`docs/reviews/oneshot-gap-2026-09-05.md`): 우리 지표로는 **r5 가 이긴다**(폴드 미디어 38% vs leon 3.5%, 자율 애니 28 vs 1) — 그런데 사람이 보면 진다. **지표가 가구를 재고 있었다.** 그들의 공통점은 스타일이 아니라 **컨시트**("이 페이지는 곧 ___ 이다"): pocket=페이지가 곧 휴대용 게임기(D패드로 조작) · beyond=개기일식 여정 · mosslight=손으로 지은 아이소메트릭 섬 · leon=워드마크가 히어로+아치 갤러리 · apex=80MB 3D 모터사이클. **우리 r1~r5 에는 컨시트가 한 번도 없었다.** 또 pocket·beyond 는 내가 r5 에서 "AI 기본값"이라며 금지한 대문자 모노 라벨을 가득 쓰고도 화제다 — **자국이 아니라 그 아래 아이디어가 없는 것이 문제**였다(내 과잉 적용). 그리고 pocket·mosslight 의 오브제는 사진이 아니라 **코드·SVG 로 그린 것** — 우리는 "그릴 수 있다"는 선택지를 한 번도 안 썼다. **r6 방향**: ① 스토리보드 첫 줄 = 컨시트 한 문장 ② 만질 수 있는 오브제 1개(키보드·탭 조작) ③ 기반은 **r4(65점) 다크로 복귀**, r5 에서 살릴 것은 엔진(scrubτ 0→32ms)과 자율 모션뿐 ④ 한 번에 한 축만 ⑤ 규칙에 "컨시트가 타이포/오브제일 때 미디어 바닥 면제" 예외. 후보 컨시트: **뷰카메라·암실 인화기** — 한 줄 타이핑 → 노출 → 인화지에 61장 중 한 장이 떠오름(사진은 벽지가 아니라 결과물).
+-- 갱신: 2026-09-05 15:35 · **r5 빌드 완료 → 채점 직전**. `render-r5.html` 1.20MB · render PASS(1440·390) · text-contrast **FAIL 0**(본문 최저 5.31:1, 브라스 CTA 위 잉크 4.96:1) · **landing-integrity FAIL 0·WARN 0**(LI-1~40) · 콘솔 0 · **11.71vh**(r4 14.27, 수렴 대역 13.6~14.3 이탈) · 섹션 8 · 핀 2 · 주 미디어 점유율 중앙 0.471(모바일 0.511) · 풀블리드 2. **엔진 효과 실측**: scrubτ 0→**32ms**, 따라오기 7f→**3f**. **자율 모션 8/8 섹션**(진폭 1.92~2.95%, 주기 5~8s; S3 띠만 35s 루프이고 같은 섹션 6.8s 호흡이 조항을 맡음). 호버 관문 0 · 폴드 의미 단위 5 · 첫 뷰포트 액센트 1. **금지 목록 10항 화면 텍스트 기준 전부 0**(오케스트레이터 재확인: 남은 em dash 15·가운뎃점 4 는 전부 HTML/CSS 주석과 title). 정착 `--e` 직독 S2 47.5%/홀드 0.78vh · S5 47.6%/0.73vh, 스토리보드 C7 덮어씀. 빌더 미달 4건: ① 명도 반전 3회가 LI-11(≤9섹션 톤 변화 1회)과 충돌 → 피크에서 1회로 축소 ② S7 점유율 0.179(목표 0.20) ③ 문서 스무스 스크롤 미채택(의도) ④ 호버 아웃 250ms→160ms(LI-14 제약). **LI-11 은 규칙 충돌이므로 오케스트레이터 재검토 대상**(명도 반전 2~4회를 요구하는 A5 와 상충). 진행: review-higgsgen-r5(눈 격리)·persona-higgsgen-r5·쇼케이스 r5 solo/r4-vs-r5.
+-- 갱신: 2026-09-05 14:30 · **r5 착수 — 디자인 언어 개편 + 엔진 교체**. 레플리카 2종·레인 C/D 는 여전히 무산출(상태 문의함) → 기다리지 않고 진행. **엔진 자작·검증 완료**: `docs/design-excellence/fx-library/smooth-scrub-engine/`(상시 rAF · 목표/현재 분리 · α 0.14 · 두 시계 `--p`/`--e`/`--v` · 데드밴드 · 리듀스드모션 α=1, ~1.4KB gz). 실측: 1500px 즉시 점프 시 α 0.14 는 0.863→0.963→0.995→1.000(4프레임에 99%), α 0.53·1 은 1프레임 스냅. `scroll-feel.mjs` 의 스크럽 τ 단위 버그 수정(0~1 값에 2px 임계를 써서 항상 0 이었다). **r5 설계 완료**: `DESIGN-r5.md`(§0 금지 10항 · 매크로구조 "Plates on paper" · paper #E9E6DF / petrol #123330 / brass #A9812F · Bricolage+Instrument Sans, **모노 없음** · 간격 피보나치 · 판 반경 0) + `storyboard-r5.md`(게이트 F 신설: 매크로구조 지명·다른 축 7개·금지 5줄·길이 11.4vh/핀 2/섹션 8 로 r4 의 14.27/3/10 과 차등. 섹션별 크기 락·정착·자율 모션 주기≤8s·진폭≥1.5%·D 표·E 시험, 자체 판정 PASS). 빌더 build-higgsgen-r5(opus) 스폰. 대기: BUILD_DONE r5 → 검사 재확인 → 리뷰(눈 격리)+페르소나 → 채점.
+-- 갱신: 2026-09-05 13:20 · **r5 리서치 절반 완료 + 레플리카 랩 착수**. 리서치 4레인이 5시간 무산출 → 오케스트레이터가 직접 도구 3종 제작: `site-teardown.mjs`(16사이트 캡처: source/dom/all.css/scripts/assets/runtime) · `corpus-analyze.mjs`(DOM·CSS·번들 본문 지문 → INDEX.md) · `scroll-feel.mjs`(τ·α·정착·따라오기·지터·멈춘프레임). 코퍼스 `test-v2/content-runs/aphrodite/reference-corpus/` 16곳 22MB(13곳 완전). **라이브러리 실측**: runway=GSAP+ScrollTrigger+ScrollSmoother(유료) · locomotive=lenis+locomotive-scroll+gsap+three+split-text · igloo=gsap+three · lusion=three+split-text · affinity=gsap+ScrollTrigger · higgsfield/tasteskill/framer=framer-motion · basement/cosmos/linear/luma=next(미검출) · activetheory/midjourney/open-design 미검출(한계). **스크롤 실측(13곳)**: 진짜 스무스 스크롤은 locomotive 1곳(α .053·지터 .54·멈춘프레임 0), 감쇠 계열 2곳(higgsfield .15·runway .16), 나머지 8곳은 우리와 같은 네이티브. r4 α .53 · r2(70점) α .25 — **감쇠를 버린 것이 점수 하락과 같은 방향**. 처방: 상시 rAF + `cur += (target-cur)*α`, α .10~.16, 양자화 임계 삭제, 지터 ≤1.0, 자작 권장(GSAP 불필요). 문서 `research/r5/rx5-b-scroll-feel.md`. **레인 E(프롬프트) 완료**: `rx5-e-prompt-references.md` 460줄 — 프롬프트 원문 17개(v0·Lovable·X @AmirMushich·유출 시스템 프롬프트·안티슬롭), 구도 어휘 사전, **에셋 어휘 빠진 항목 16개**(네거티브 스페이스 위치 명시·f-stop·카메라 바디·필름 스톡·광학 현상·참조이미지 일관성·같은 세션 연속 생성·에셋 등급 사다리·이미지 필요 여부 게이트·가짜 크롬 금지·레이어드 히어로). 결론: 이 생태계는 구도·에셋·안티슬롭은 우리보다 낫고 **모션은 거의 다루지 못한다**. **레플리카 랩 규격** `docs/design-excellence/replica-lab.md`(가져올 것=수치·구조·구도, 안 가져올 것=코드·에셋·카피, 충실도는 프로브로 ±20~30%). **⚠ 최대 발견(레인 E, 실측 대조 `docs/reviews/ai-default-signature-2026-09-05.md`)**: 힉스젠 DESIGN 이 Anthropic frontend-design 이 지목한 "AI 생성 디자인 5대 군집" 중 **#2(니어블랙 #0B0C0E + 단일 애시드 라임 #D1FE17)** 와 **#5 템플릿 크롬 6/6**(ALL-CAPS 트래킹 eyebrow · 가운뎃점 53 · 스페이스 em dash 32 · 틴티드 니어블랙 · 소형 라벨 모노 · 버튼 화살표 10)에 정면 해당. r0 지적("브랜드가 밋밋하다") 이후 4라운드 동안 팔레트·크롬만 손대지 않았다 — **점수 정체(60~70)의 유력한 구조적 원인**. r5 처방: 브리프에 금지 목록(F 게이트) · 팔레트 개편(밝은 지면 실험) · 크롬 자국 6종 제거 · 구조 장치는 정보일 때만 · 매크로구조 지명(LC-60). **X 게시물의 정체(사용자 제공 링크)**: 프롬프트가 아니라 **스킬** — `github.com/nateherkai/scroll-craft`(MIT), `omd-aphrodite` 의 직접 경쟁 산출물. 오케스트레이터가 저장소 원본을 직접 받아 확인(`docs/design-excellence/scroll-engine-and-convergence.md`): 엔진은 **"스크롤은 목표만 쓰고 상시 rAF 루프가 프레임당 고정 비율로 따라간다, 기본 lerp 0.18, 리듀스드 모션 1.0, 데드밴드로 쓰기 억제"** — 우리 딱딱함 진단의 결손 3종과 정확히 대응. **감쇠 계수가 세 출처에서 수렴**(우리 실측 higgsfield .15·runway .16 · scroll-craft .18 · r2(70점) .25 · r4 .53 만 바깥) → 채택값 **α 0.14±0.04**. 또 "클립 시간 ≠ 큐 시간"(스크럽을 핀 이동이 아니라 스테이지 가시 수명에 매핑) → 우리 홀드가 죽는 원인. **결정적**: 그쪽 `uniqueness.md` 가 자기 스킬의 4개 산출물이 전부 13.6~13.8vh 로 수렴해 "템플릿 같다"는 지적을 받았다고 자백 — **우리 r4 는 14.27vh**. 즉 진짜 적은 효과 부족이 아니라 **수렴**이다. r5 = 엔진 자작 재구축 + 두 시계 분리 + 수렴 방지 게이트(F: 매크로구조 지명·직전 런과 다른 축·금지 5줄·길이/핀/액트 차등) + 팔레트·크롬 개편 + LC-44(커스텀 커서) 금지 전환 검토. 진행 중: replica-locomotive(스크롤 질감 α .053 재현) · replica-higgsfield(무입력 생동감+α .15) · rx5-c(무입력 모션 계측) · rx5-d(라이브러리·에셋 지도+시그니처 5개 재현 계획).
+-- 갱신: 2026-09-05 01:30 · **Higgsgen r4 채점 65/100 → r5 = 레퍼런스 해부·재현 학습(1차: 수집·분석)**. 사용자: 절제는 합격, ① **스크롤이 딱딱하다** ② **누르지 않으면 애니메이션이 없다** ③ 레퍼런스의 CSS/HTML 을 가져와 직접 재현하며 익히자, 1차로 수집·에셋 이관 방법·라이브러리·필요 에셋을 종합 분석. FEEDBACK.md r4 기록. **코드 수준 원인 확인**(`docs/reviews/scroll-stiffness-diagnosis-2026-09-05.md`): r4 `mountPins()` 는 스크롤 이벤트에서 위치→값을 계산만 한다 — 감쇠(lerp)·상시 rAF·속도 항·스무스 스크롤이 전부 없고 0.0015 양자화까지 있다. r3→r4 에서 자작 핀 엔진으로 바꾸며 GSAP `scrub:n` 의 감쇠를 함께 버린 것이 원인(모션 질감은 r2 보다 후퇴). 자율 모션은 3개뿐이고 켄번즈는 24s에 5%(인지 문턱 아래). **리서치 4레인(opus) 스폰**: rx5-a 코퍼스 수집(`test-v2/tools/site-teardown.mjs` → `test-v2/content-runs/aphrodite/reference-corpus/`, 16+사이트의 source/dom/all.css/scripts/assets/runtime) · rx5-b 스크롤 감각 계측(`scroll-feel.mjs`: τ·lerp α·catch-up·속도결합·지터, r4/r3/r2 vs 레퍼런스) · rx5-c 무입력 모션 계측(`ambient-motion.mjs`: 픽셀변화 에너지·그리드 분포·주기·진폭·소스) · rx5-d 라이브러리·에셋 지도 + **시그니처 효과 5개 재현 계획**. 원칙: **기법과 수치는 배우되 남의 코드·에셋은 산출물에 싣지 않는다**(자작 재구현만). 산출 `research/r5/`.
+-- 갱신: 2026-09-05 · **▶ 재개 → Higgsgen r4 채점 대기**. ③ 오케스트레이터 재검 완료: 폴드 CTA 2(nav pill + 본문) · h1 112 · 켄번즈 실동(scale 24s, 2.5s 픽셀 변화 4.6%) · 14.27vh · 콘솔 0 · 폼 1(#promptInput) · #top 순환 0 · 1,206,015B. ④ solo 쇼케이스 재렌더 백그라운드(비교 영상 r3-vs-r4 는 라운드 2 전). ⑤ 사용자에게 채점 요청 + 결정 2건(S4 a컷 재생성 · 63px). 점수 오면 FEEDBACK.md r4 항목 → r5 계획.
+-- (이전) 2026-09-04 19:20 · **⏸ 안전 중단 — Higgsgen r4 라운드 2 도중 (사용자 지시)**. **재개 절차**: ① `ListAgents` 에 `build-higgsgen-r4` 가 있으면 `SendMessage` 로 "trace-r4.md §9 중단 시점부터 재개: 남은 리뷰 항목 처리 → 검사기 4종 1회 스윕 → ROUND2_DONE" 지시. 없으면 새 opus 빌더를 스폰해 `storyboard-r4.md`·`r4-build-notes.md`·`trace-r4.md`(§8 라운드 2 완료, §9 중단 시점)·`reviews/designer-review-round-4.md`·`reviews/persona-walkthrough-r4.md` 를 읽고 남은 항목만 처리하게 한다(런 디렉터리 `test-v2/content-runs/aphrodite/higgsgen/`). ② 스윕: `node test-v2/tools/{render-integrity,text-contrast,landing-integrity,scrub-timing-probe}.mjs …/render-r4.html` — LI-1~40 FAIL 0 필요(LI-25 는 밀도 메타로 WARN 허용). scrub-probe 의 #s2·#s9(비스크럽 섹션) DEFECT 는 오탐. ③ 오케스트레이터 재검(폴드 스크린샷·CTA 2·유휴 변화 ≥1·1.2MB 이하) ④ 쇼케이스 solo 재렌더: `node test-v2/tools/showcase.mjs render-r4.html --out showcase/higgsgen-r4-solo.mp4 --seconds 22 --label "Higgsgen r4"`(약 9분; 비교 영상 r3-vs-r4 는 라운드 2 전 상태로 이미 있음) ⑤ 사용자 채점 요청: 링크 `file:///Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/content-runs/aphrodite/higgsgen/render-r4.html` + 검증표(eye 72·관문 0·점유율 중앙 1.00·폴드 5·핀 3·14.x vh) + 리뷰 눈 판정("간결 확실·화려함 미달: 톤 다양성·마무리")을 그대로 전달, 점수는 FEEDBACK.md r4 항목으로. **중단 시점 상태(정정 19:20)**: 빌더가 중단 지시 전에 **라운드 2 전부(페르소나 10 + 리뷰 8) + 검사기 스윕 완료 → ROUND2_DONE**. render-r4.html 1,206,015B · render PASS 양 뷰포트 · contrast PASS · **LI-1~40 FAIL 0/WARN 0** · **14.27vh** · 핀 `--e` 직독 S1 50%/0.60vh · S3 50%/0.85vh · S6 52.5%/0.62vh · 라벨 31개 전부 ≥4.5:1(최악 5.03) · 이미지 재선정 S1 hero-04(마젠타)·S6 hero-01(웜)·S8 hero-05(쿨)·S10 hero-02(고채도 웜)+프롬프트 폼 · S4 는 ba-*-a 가 동일 프레이밍이 아니라 카피를 "스케치 in → 스틸 out" 으로 정정(동일 프레이밍 -a 재생성은 이미지 예산 열릴 때). scrub-probe DEFECT 3(#s1·#s2·#s4)은 유휴·진입 층 오탐. **따라서 재개는 ①② 건너뛰고 ③ 오케스트레이터 재검부터.** 빌더 PAUSED 확인(19:20, done 7/7 · sweep yes · 재빌드 바이트 동일). 재개 때 결정 2건: (a) S4 `ba-*-a` 동일 프레이밍 재생성 여부(이미지 비용 발생, gpt-image-2 edits 참조 채널) (b) 길이 14.27→14.2vh 의 63px 을 S4 하단 바(10→8svh)에서 뺄지. 도구 후속(미착수): text-contrast 전 섹션 샘플링 · scrub-timing-probe `--e` 직접 판독 · C10 문구 · 게이트 자동화 · 범용 브리프 3종 테스트 · 2.1.0(퍼블리시는 사용자 요청 시). 커밋 최신 `cc3790f7`(+중단 커밋).
+-- 갱신: 2026-09-04 · **Higgsgen r3 채점 60/100(17:40, r2 70 에서 하락) → r4 리서치 선행** — 사용자 지적: ① 이미지 사이즈가 소극적 ② 매번 호버해야 펼쳐지고 돌아오는 인터랙션(UX 관점 부재) ③ 화려함 속의 간결함·시원시원함 미반영 ④ 레퍼런스 재조사·아티클·타 스킬·오픈소스 리서치를 고도화한 뒤 다음 힉스젠에 반영. FEEDBACK.md r3 항목 기록. 리서치 태스크포스 4레인(opus) 스폰: rx4-a 실측 스케일/호버 프로브(레퍼런스+추가 레퍼런스+r3 기준선, `test-v2/tools/scale-probe.mjs`) · rx4-b UX 아티클 원칙 · rx4-c 타 스킬 규칙 비교 · rx4-d 오픈소스 구현(+fx-library 최대 3종). 산출: `test-v2/content-runs/aphrodite/higgsgen/research/r4/`. 이후 오케스트레이터가 규칙(LC-49+/LI-34+)·r4 스토리보드로 합성 → 빌더 스폰. designer-review r3 완료(REVISION, BLOCK 0 · WARN 14 · r2 대비 9/17 닫힘): 최대 이미지 <10% 뷰포트 섹션 6/11 · 원통 포스터 6.1% · 신규 화려층 4/4 호버·클릭 관문 · drift-collage 0.65px/3s(사실상 정지) · S3 캡션 6/8 판독불가(스크램블>체류) · 반경 토큰밖 43 · 정책답: 길이예산 유지+"홀드에 읽을 것 1개", 타입스케일 44/66/99/148 개정. 진단 §4.1 에 반영. 리서치 3/4 도착(B·C·D): B = 장식/관문 4시험(T1~T4)·LC-49~59 후보·"시원시원함" 4지표 분해 · C = 타 스킬 10곳 비교, 빠진 규칙 10(refero Image test·hover-vs-tap·WCAG 1.4.13·초점 1·스켈레톤 테스트…)+프로세스 격차 5(자기표절 시험·페르소나 워크스루·미디어 락·눈검사 격리·밀도 다이얼) · D = fx-library +3(fullbleed-scale-reveal·wide-drum·persistent-expand, gz 8.9KB, 검증 완료)+r3 프로브(미디어 섹션 6/10 최대 이미지 <40vw). 합성 초안 `docs/design-excellence/scale-and-simplicity.md`(LC-49~59 · LI-34~40 · 게이트 v2 C1/C8′/C9/C10/D/E · 프로세스 5 · r4 방향 9섹션). DESIGN.md 타입 스케일 148/99/66/44 개정. gitignore 에 research/*.md·json 예외 추가. 편집 완료: 게이트 v2(`storyboard-review.md`: C1 2층·C8′ 장식시험·C9 크기락·C10 정직한 K·D 사용자표·E 자기표절·다이얼) · 코덱스 LC-49~59 + §5 LI-34~40 행 · 스킬 SKILL.md(합격선 LI-1~40·페르소나 3인·눈검사 격리·§2 다이얼/크기락/무노동·§4 호버정책/스니펫 토큰치환/자기비평). `storyboard-r4.md`(밀도 4·모션 7, 핀 3, GSAP 제거, 호버 관문 0, 풀블리드 6곳, 14.5vh, D/E 표, 게이트 PASS) + `r4-build-notes.md`. 검사기 LI-34~40 구현 에이전트(impl-li34-40, opus) 진행 중. 커밋 `403aacc7` 푸시. 빌더 build-higgsgen-r4(opus) 스폰 → 첫 렌더 render-r4.html(1.59MB, 14.77vh, 콘솔 에러 0) 뒤 세 에이전트 모두 세션 한도(17:40 리셋)로 중단 → 17:54 SendMessage 로 재개(빌더: 다운스케일·검증·trace·C7 덮어쓰기 · 검사기: r3/r2 실행 확인 · 프로브: agg→보고서). 오케스트레이터 폴드 실측: CTA 0개(nav 워드마크만) → 빌더에 필수 수정 전달. 방향은 맞음(풀블리드 히어로 h1 148·시퀀스 스테이지·대표작·프리셋 밝은 밴드). 검사기 LI-34~40 구현 완료(impl-li34-40): r3 FAIL 5(LI-34 중앙 0.10·35 관문 1·36 위반 6·37 폴드 19·38 채널 3), r2 LI-34 0.59, autopilot-stripe LI-1~33 회귀 0. 오케스트레이터 보정: LI-36 겹친 층(미디어끼리)·등크기 띠 병합, 단일 초점 = 통과 · 밀도 다이얼 `<meta name="omd-density">` ≤5 → LI-24~26 WARN. r4 재빌드본(409KB) 실측: LI-34 중앙 1.00·35 0·37 5·38 ≤2·40 ok, 남은 FAIL = LI-7(148/16)·25(다이얼 메타 대기)·31(색보정)·36(S1 1.88·S2 띠). 타입 스케일 재개정 **112/80/56/40**(레인 A 실측: 폴드 최대 서체 상한 affinity 112, 148 은 없음) → 빌더에 전달.  레인 A 보고 도착(`rx4-a-scale-probe.md`, 11곳 실측): 폴드 히트테스트 커버리지 레퍼런스 중앙 33.6% vs r3 6.9%(박스로는 100% — 박스 기준 기각) · 지배도 중앙 2.1 vs r3 1.1 · 호버 관문 전 사이트 0(절대 불변량) · 유휴 애니는 불변량 아님(중앙 2, r3 9) · 폴드 h1 q3 72(상한 affinity 112). 검사기 반영: LI-34 폴드 = 커버리지 ≥25%(48×30 히트테스트), LI-7 폴드 h1 ≥72px 바닥, 합성 §5·코덱스 LC-51/53/54 갱신. 재검: **r4 최신 빌드 LI-1~40 FAIL 0 · WARN 0**(h1 112, 14.71vh, 폴드 커버리지 99%), r3 FAIL 5(폴드 7.6%).  **빌더 BUILD_DONE r4(18:26)**: render-r4.html 395KB(webp 42장, GSAP 0), render PASS 양 뷰포트 · contrast PASS · LI-1~40 FAIL 0/WARN 0 · 핀 3 정착 50/50/52% 홀드 0.60/1.00/0.63vh · 14.51vh(모바일 10.35) · 미디어 점유율 중앙 1.00 · 호버 관문 0 · 폴드 단위 5 · 콘솔 0. 편차: hero-02 크로스페이드 삭제(LI-36), 켄번즈→광원 드리프트(text-contrast 포커스링 diff 오염), S3 K .55→.50. 못 한 것: 400KB 맞추느라 풀블리드 원본 900px → 흐림 → **선명도 우선으로 1.2MB 상한·1600px 재빌드 지시(REBUILD_DONE 대기)**. 1600px 재빌드 완료(18:34, **1.13MB**, 검사 4종 재통과, 드럼 타일 선명 확인). **페르소나 3인 완료(18:52)**: 관문 0 · 탭 타깃 <44 0 · 마찰 11 · 이탈 3/3(CTA 가 #s10↔#top 순환, 폼 0) · T2 폴드 이해 3/3 · S4 스윕이 뷰포트 밖에서 종료 · 드럼 1바퀴 68s · 폴드 유휴 변화 0. text-contrast.mjs 가 포커스링 diff 전에 무한 애니를 정지하도록 수정. **리뷰 r4 완료(18:54)**: eye_score 72(r3 60) · BLOCK 4(S4 라벨 대비 1.18·2.14 · S4 시임 기본값 · DESIGN "No filter" vs 그레이드 42/42) · WARN 17 · r3 대비 14/17 닫힘. 눈 판정: 간결함 확실, **화려함 미달 — 10프레임 중 7 갈색·검정, S9·S10 이 가장 빈 화면**. 빌더에 라운드 2 배치(페르소나 10 + 리뷰: S10 실제 프롬프트 폼 `#render`·스윕 threshold .5·드럼 110px/s·포커스 이동·숫자키·S3 화살표·plan 카드 링크+썸·켄번즈 복원·대비 스크림·시임 62%·톤 다양성 3계열·S10 두 번째 강한 프레임·길이 ≤14.2vh·390 칩 폭) 전달, 검사기 4종은 마지막 1회. DESIGN §3 필터 조항 "공통 그레이드 1종 허용"으로 개정, 스토리보드 호버 행을 구현(brightness 1.06)에 맞춤. 도구 후속: text-contrast 가 #s1 만 샘플(전 섹션 확장) · scrub-timing-probe ±0.33vh 격자 아티팩트(`--e` 직접 판독) · C10 문구. 쇼케이스 r4 solo·r3-vs-r4 백그라운드. 대기: ROUND2_DONE → 검사 재확인 → 채점 요청. 그 뒤 designer-review(눈검사 격리)+페르소나 3인+쇼케이스 → 채점 요청. 대기: 세 에이전트 완료 → 눈검사 격리 리뷰 + 페르소나 3인 → 채점 요청.
+-- 갱신: 2026-09-04 · **Higgsgen r3 채점 대기(17:10)** — 빌더 완료 + 오케스트레이터 재검증: render PASS · contrast PASS(no-JS 0) · **LI-1~33 전부 ok**(LI-33 결함 0: settle 47.6~52.8%, 홀드 0.65~0.7vh, "bottom bottom" 0개) · scrub-probe defects 0 · 스크롤 콘솔 에러 0 · 폴드 무한 애니 5 · 14.38vh · 390 h1 top 123px·11.9vh. 유휴 층: 앰비언트 폴드+드리프트 콜라주(폴드 실측 확인), 원통 갤러리 섹션 신설, 스택 팬·십자 열림·FLIP·진입 커튼. 빌더가 올린 정책 질문 2건: ① 홀드 0.65~0.7vh(바닥 0.6) vs 길이 예산 14.5vh — 예산 16~17vh 로 올리면 홀드 1.0+ ② h1 94px(DESIGN 128 은 13px 라벨과 LI-7 비율 충돌) → 스케일 개정 필요. 커밋 `f826a92d`. designer-review r3(opus)·쇼케이스 r3 solo/r2-vs-r3 진행 중. 비용 추가 0, 누적 $8.05. 스킬화 계획 `docs/OMD_APHRODITE_PLAN.md`.
+-- 갱신: 2026-09-04 · **r3 스토리보드 PASS → 빌드 착수(16:10)** — rx-idle: fx-library +10(원통·커버플로우·FLIP 확장·스택 팬·십자 열림·커서 트레일·드리프트 콜라주·관성 드래그·진입 커튼·앰비언트 폴드, 27/27 데모 에러 0), 핵심 실측 = higgsfield 유휴 스펙터클은 WebGL 아닌 CSS 키프레임 17개. r3 = 정착 대역(S1 52%·S3 65%·S5 70%·S8 60%, 홀드 ≥0.85vh) + 유휴 층(앰비언트 폴드·드리프트 콜라주·원통 갤러리 신규·스택 팬·십자 열림·FLIP·진입 커튼) + 390 경량 안무 + 회귀 수정(11px·hex·active). 핀 4 유지, S2/S6 은 호버 층으로 이관. 게이트 C2 예산 gzip 60KB 로 개정. 빌더(opus, render-r3.html) 스폰.
+-- 갱신: 2026-09-04 · **r2 리뷰 반영(15:30)** — designer-review r2: BLOCK 2(S10 트리거 종점이 문서 바닥 미도달 · 모바일 탭 타깃) → 둘 다 수정(`44958119`·`be43e656`: end "bottom bottom", CTA/푸터/브랜드 44px, :active, seq alt 고유화·3단어 바닥). 재검증: render PASS · contrast PASS · LI 32/32 · 최대 스크롤에서 마지막 트리거 progress 1 · 390 탭 타깃 44 미만 0. r1 대비 WARN 13 중 6 닫힘·4 악화(토큰 밖 hex 6종·11px 텍스트 93개@390·radius 50% 5·:active) — 11px 텍스트와 hex 는 r3 빌드 지침에 포함. 리서치 rx-idle·rx-timing 진행 중.
+-- 갱신: 2026-09-04 · **Higgsgen r2 = 70/100 → r3 리서치(15:10)** — 피드백: ① 스크럽 종점이 섹션 퇴장과 겹쳐 펼쳐지는 순간을 못 봄 ② 스크롤 없는 유휴 스펙터클(원통 포스터·호버 팟 펼침) 부재 ③ 에이전시·AI 영상 회사 랜딩 패턴·X 트렌드·라이브러리 분석 후 작업 계획+스킬화. 리서치 2건(opus): rx-idle(유휴/호버 카탈로그 + fx-library 8+ 신규 + 에이전시 패턴) · rx-timing(r2 트리거 정착 지점 실측 + 레퍼런스 6곳 + **LC-48 정착 타이밍 + LI-33 검사기**). designer-review r2 결과 확인 대기, 쇼케이스 r2 렌더 중. 이미지셋 유지(비용 0, 누적 $8.05).
+-- 갱신: 2026-09-04 · **Higgsgen r2 채점 대기(14:50)** — 빌더 완료 → 오케스트레이터 독립 재검증: render PASS · contrast PASS(no-JS 0) · landing FAIL 0·WARN 0(15.64vh, 10섹션) · 스크롤 전 구간 콘솔 에러 0 · GSAP+ScrollTrigger 트리거 18 · h1 114px · 첫 뷰포트 라임 1(CTA). 이미지 61/61 사용, 핀 4, 반전 3, filter 0. 육안: 히어로 줌스루(3줄 114px 헤드라인·중성 태그·라임 CTA 1), 3D 카드 팬, 밝은 비교 밴드→가로 핀 갤러리 원근, 프리셋 그리드(선택 1장 라임), 원형 클립 리빌 진입 — 확인. 커밋 `e41d2d3c`·`9a7bdb13`. designer-review r2(opus) 진행 중, 쇼케이스 r2 solo·r1-vs-r2 렌더 중. **사용자 채점 r2 대기.** 비용 추가 0, 누적 $8.05.
+-- 갱신: 2026-09-04 · **Higgsgen r2 빌드 착수(14:20, 세션 재시작 후 복원)** — 리서치 정리: 스크롤 안무 결정(GSAP+ScrollTrigger 114.7KB, 라이선스 확인, 레시피 9 검증) → `docs/design-excellence/scroll-choreography.md` + `fx-library/scroll-gsap/`; CSS 효과 17종 `fx-library/`(자작·MIT·데모 17/17 에러 0, `6b60138b`); 액센트 10곳 실측(첫 뷰포트 중앙값 0·9/10 ≤3·CTA 최다) → `storyboard-review.md` **v1**. r2 스토리보드 `higgsgen/storyboard-r2.md`(이미지 동사·핀 4·반전 3·절제형 액센트·효과 7종) **게이트 PASS** → 빌더(opus, `render-r2.html`) 진행 중. omd-aphrodite 에 라이브러리 정책·이미지 동사·액센트 선언·§2.5 게이트 반영. 비용 추가 0(이미지셋 재사용), 누적 $8.05.
+-- 갱신: 2026-09-04 · **Higgsgen r1 = 60/100 → r2 착수(01:45)** — 피드백 원문 FEEDBACK.md. r2 = 이미지셋 동일(비용 0), **효과 집중**: ① 스크롤 안무(줌스루·회전·가로 핀·스택; Framer/scroll-world 결) ② OSS 활용(렌더 시 네트워크 0 이지 라이브러리 0 아님 — 라이선스 확인 후 인라인) ③ 트렌드 CSS 효과 + 레포 축적 라이브러리 `docs/design-excellence/fx-library/` ④ 액센트 규율(사건화, 면 1회) + **스토리보드 단계 리뷰 게이트** ⑤ 범용성(업종 무관). 리서치: rx-scrollfx(라이브러리 결정·레시피 8) · rx-cssfx(효과 카탈로그·fx-library 12+) 진행 중, rx-color(액센트 실측·storyboard-review.md)는 tmux 페인 한도로 대기 — 페인이 비면 스폰.
+-- 갱신: 2026-09-04 · **Higgsgen r1 리뷰 반영(01:30)** — designer-review(opus, 측정 기반): BLOCK 1(390 nav 탭 타깃) → 수정, WARN 13(라임 카운트 7/첫 뷰포트로 CTA 약화 · 디스플레이 128px 0회(실측 80) · 토큰 밖 간격 18종 · 마키 2줄@390 → 1줄로 수정 · 히어로 object-position → 수정 · .tilt hover transform 이 DESIGN §2 와 충돌 · disabled 상태 0회). "90점까지" 제안 6: ④라임을 사건으로(전 섹션+S9 면 1회) → ①128px+피사체 앞뒤 마스크 레이어링(S1) → ②프롬프트 토큰 점등(S3) → ③증거의 벽 브레이크아웃 2×2(S2) → ⑤핀 퇴장 프레임 컷 연결(S3→S4, S8→S9) → ⑥프리셋 aria-pressed(S7). 검사 3종 재통과, 쇼케이스 solo(45MB)·vs-ninefold(17MB) 완료. **사용자 채점 대기.**
+-- 갱신: 2026-09-04 · **Higgsgen r1 채점 대기(00:55)** — p1 50장($4.22)+p2 11장($0.91) = 61장 전량 assets/. 검사: render PASS · text-contrast PASS(no-JS 0) · landing-integrity FAIL 0·WARN 0(14.58vh, 10섹션). 육안: 폴드(침수 지하도+Syne+라임+세계 띠), 마키 월(장르 혼합·톤 통일), 프리셋 틸트, 마스크 리빌(용접 비드), S3 핀 시퀀스(도자 공방 8프레임+모노 타이핑), S4 밝은 밴드 슬라이더 4쌍 — 확인. 관찰: S4 좌하단 여백 큼(r2 후보). designer-review(opus) 진행 중, 쇼케이스 solo/compare 렌더 중. **사용자 채점 r1 대기** → FEEDBACK.md. 누적 비용 $8.05 확정.
+-- 갱신: 2026-09-03 · **일시 중단(19:50, 사용자 요청 — 재개 요청 시 진행)** — 진행 중이던 p1 배치(50장)는 이미 제출돼 취소하면 낭비라 **회수 프로세스만 유지**(`image-batch.mjs run`, 끝나면 `batch-p1/images/` 에 저장, 로그 `batch-p1.log`). **p2(참조 11장) 자동 제출 체인과 검사 체인은 중지** — 새 지출·새 작업 없음. 골격 `render.html`(빌더 산출, LI 32/32·대비 PASS)은 커밋됨(`13c25704`).
+-  - **재개 절차**: ① `grep FETCH_DONE $A/batch-p1.log` 확인 → `cp batch-p1/images/*.png assets/` ② `node test-v2/tools/image-batch.mjs run --spec $A/set.p2.json --out $A/batch-p2`(≈$0.9, seq 7 + before/after 4) → `cp batch-p2/images/*.png assets/` ③ `zsh $A/runs/after-assets.zsh` 대신 검사 3종 직접 실행 → 스크린샷 육안 확인 → designer-review → `omd showcase` → 사용자 채점(FEEDBACK.md r1). ($A = test-v2/content-runs/aphrodite/higgsgen)
+-  - 비용: Ninefold $2.92 확정 · higgsgen p1 ≈$4.2(회수 후 원장 확정) · p2 ≈$0.9(미제출).
+-- 갱신: 2026-09-03 · **Higgsgen 리서치 완료 → 생산 착수(19:10)** — rx-hero: 11사이트 브라우저 실측, 불변식 15·기법 34·10섹션 안(§15) — 핵심: 폴드는 cover≥0.72 또는 카드월, 이미지에 filter 0곳(대신 스크림·헤어라인·그림자 3층), 와우는 스크롤이 아니라 **움직이는 빛**(conic 빔 6~14s), 명암 뒤집기 4~6회, 80ms 배수 타이밍, 호버 transform 0곳. rx-viral: 9기법군·인라인 레시피 R1–R12(광원 복제·스크럽 시퀀스·마키·타이핑 현상·틸트·회전 테두리·마스크 리빌·핀 스토리). rx-imageset: 61장 팩(10군, 군별 접미사+공통 큐레이션 접미사), 1024² 가 가장 비싸 배제, 61장 ≈$5.05. **p1 50장 배치 제출**(`batch-p1.log`), p2 11장(seq 앵커·before/after 참조)은 `runs/after-p1.zsh` 가 자동. DESIGN.md 확정(다크 #0B0C0E · 라임 #D1FE17 · Syne/Geist/Geist Mono 인라인 · 80ms 체계). 다음: opus5 빌더 스폰(플레이스홀더로 골격 → 이미지 도착 시 완성) → 검사 → 리뷰 → 사용자 채점.
+-- 갱신: 2026-09-03 · **아프로디테 2차 = Higgsgen 착수(18:30)** — 사용자 채점 Ninefold **30/100**(이미지 단순 사용·와우 부족·브랜드 밋밋). 새 컨셉: AI 이미지 생성 제품 랜딩(힉스필드·어피니티 결), 이미지 베이스, **90점까지 피드백 루프**. 오케스트레이터 Fable 디렉팅, 실행은 **opus5**. 리서치 3건 병렬(rx-hero 브라우저 계측 · rx-viral 모션 카탈로그+인라인 레시피 · rx-imageset 세트 설계+프롬프트 팩+비용). 브리프 `test-v2/content-runs/aphrodite/higgsgen/BRIEF.md`, 피드백 원문 `FEEDBACK.md`, 비용 원장 `aphrodite/COSTS.md`(누적 $2.92). Ninefold 는 SCORE.md 와 함께 보존.
+-- 갱신: 2026-09-03 · **Ninefold 아프로디테 1차 완성(17:50)** — 배치 33/33 성공(실패 0, 출력 토큰 194,961, 배치 단가 기준 ≈$2.92), 이미지 33장 → 페이지 채움 → **render PASS · text-contrast PASS(no-JS 숨김 0) · landing-integrity LI-1~32 전부 ok** · designer-review round 1 **PASS(BLOCK 0, WARN 2: 토큰 정합)**. 히어로·의식 이미지 육안 확인: 프롬프트대로, 세트 세계 유지(스타일 접미사 효과). 수정 이력: 히어로 카피 글래스 패널·h1 100px·라벨 14px #5F5A53·포커스 링 단색 #8A6A46·배경 전환 180ms·no-JS 리빌 가시·핀 스테이지 잉크 보정(LI-24)·text-contrast 진입 애니메이션 정착 대기. 서브에이전트 스폰이 OS fork 오류로 3회 실패 → 리뷰는 스크립트 감사+직독으로 수행. 쇼케이스 영상(solo·이전 최고 대비) 생성 중.
+-- 갱신: 2026-09-03 · **Ninefold 배치 제출(16:05)** — OPENAI_API_KEY 수령 → `image-batch.mjs run` 33장 배치 `batch_6a9928424a508190bc75d4271c354661`(generations, 45초 폴링, 로그 `test-v2/content-runs/aphrodite/ninefold/batch-v1.log`). 후속 체인 `runs/after-batch.zsh`: FETCH_DONE → assets/ 복사 → `build-scaffold.mjs` → render/contrast/landing 검사(로그 `after-batch.log`). 골격은 이미지 없이도 LI-27~32 마감 검사 전부 통과. 다음: 검사 결과 → designer-review 스폰(BLOCK 0) → 쇼케이스 영상 → 보고. 리서치 완료: 레퍼런스 8곳(IL-1~7 부록), gpt-image-2 배치 확정.
+-- 갱신: 2026-09-03 · **아프로디테 1차 방향 확정(15:10, 사용자)** — **힉스필드 보류**. 영상 없이 **이미지만으로 압도적 경험**이 1차 목표. 이미지는 **gpt-image-2 를 OpenAI API 배치 요청**으로 생성(키는 사용자가 `.env.local` 에 `OPENAI_API_KEY` 추가 예정). 참고 사이트(따라하기 아님, 예시): tasteskill.dev · open-design.ai/ko · affinity.studio — 더 좋은 레퍼런스도 탐색. 절차: 레퍼런스 리서치(rx-refs) + 배치 API 확정(rx-batch) → 가상 브랜드·페이지 목표 정의 → 이미지 세트 스펙(스타일 접미사) → 배치 생성 도구 → 아프로디테로 한 장 빌드·검사 → 스킬 고도화(omd-media 채널 `openai-batch`). 앞선 성과: 코덱스 LC-37~47·검사 LI-24~31·font-inline·omd-aphrodite 스킬(`d20494c7`)·밀도 재생성 검증(미디어 5→28, 빈 화면 7→0).
+-- 갱신: 2026-09-03 · **마라톤 정지 완료(11:17)** — 웨이브 54가 10/10로 마감(close 게이트 전부 OK, 커밋 `309222d3`)되고 STOP 파일을 만나 웨이브 경계에서 멈췄다. 최종: **22웨이브 · 53브랜드 · deferred 1(openpoint) · \$90.90 · 1315분**. 마이그레이션 원장 **migrated 290 / recorded 293 / missing 0**. 러너·워커 프로세스 전부 종료, 백그라운드 작업 없음. 재개하려면 `rm <scratch>/marathon/STOP` 후 마라톤 재실행 → 웨이브 55부터, 새 90분 단계 타임아웃 적용.
+-- 갱신: 2026-09-03 · **T3 개선 접수 8건 전부 구현 완료(11:20)** — #89·#90·#91·#92·#93·#94·#95·#96(+#83에 흡수 1건). 마지막 #90은 계측으로 원인을 좁혔다: 생성 이미지 비율이 브랜드 관행에서 10% 넘게 벗어난 칸 60%인 반면 페이지 내 크롭은 p90 0.37 — **배치가 아니라 생성 시점 비율**이 원인이라 '페이지 크롭 검사' 추가는 접고 `omd-media` 프롬프트 팩·검증 규칙으로 넣었다(`d5841597`). 남은 것은 전부 사용자 결정: ① autopilot 픽스처 재생성(품질 게이트 BLOCKED 해제 조건, 생성 비용) ② §3.7 전 축 재채점 여부(권고: 하지 않음) ③ X·스레드 소재 승인 ④ npm publish.
+-- 갱신: 2026-09-03 · **웨이브 54 마감(마라톤)** — done 10/10 · $15.11 · LLM 1048분 · 판정문 `docs/reviews/t2-1-wave54-2026-09-03-grok.md`(자동 생성, 검수 전).
+-- 갱신: 2026-09-03 · **안전 중단 지점(09:55, 사용자 외출)** — 마라톤 STOP 파일 기록: **웨이브 54 마감 후 55를 시작하지 않는다**(원래 "55까지"였으나 사용자 지시로 앞당김). 진행 중이던 pixiv f3 재시도는 그대로 두면 러너가 마감·커밋까지 한다. 그 외 백그라운드 작업 없음 — T3는 봉인 완료, 전사·채점·집계 에이전트 전부 종료.
+-  - **재개할 때 이어서 할 것(우선순위 순)**
+-    1. **autopilot 픽스처 재생성** → `npm run gate:quality` 해제. 지금 BLOCKED 사유는 autopilot 산출 2칸의 contrast FAIL(29·13건)이며, 이는 #89 개선이 겨냥한 결함이다. 재생성해 통과하면 개선이 실제로 듣는다는 증거, 통과 못 하면 스킬이 아직 못 고친 것 — 어느 쪽이든 답이 나온다. (생성 비용 발생 — 사용자 승인 후)
+-    2. **#90 스냅샷 수치 추종** — 남은 접수 1건. 근거 축 기계 수치가 세 arm 모두 40 이하였고, 여기서 앞서면 실제 차이가 난다.
+-    3. **karrot 픽스처 2칸(MISSING)** — 세 번째 브랜드 커버리지.
+-    4. **§3.7 전 축 재채점 여부** — 사용자 결정 대기. 오케스트레이터 권고: **하지 않는다**(α −0.76은 앵커 문안이 아니라 구조적 불일치이고, 벤치에 더 큰 설계 결함이 남아 있다). INCONCLUSIVE로 확정하고 넘어간다.
+-    5. **게시물 발행(X·스레드)** — 소재 문서 `docs/handover/x-vercel-designmd-campaign.md` 사용자 승인 대기. **T3 수치는 α 미달로 공개 금지** — 게시물에 순위·점수를 쓰지 않는다.
+-    6. **npm publish** — 사용자가 별도 요청하거나 위 1·2가 끝난 시점. 2.0.1 tarball은 준비 상태, PR #88 열려 있음.
+-  - **재개 시 첫 행동**: `scripts/context_restore.sh` → 이 절 → 마라톤 재개하려면 `rm <scratch>/marathon/STOP` 후 `scripts/wave-marathon.mjs` 재실행(웨이브 55부터, 새 90분 단계 타임아웃 적용).
+-- 갱신: 2026-09-02 · **웨이브 53 마감(마라톤)** — done 10/10 · $18.74 · LLM 680분 · 판정문 `docs/reviews/t2-1-wave53-2026-09-02-grok.md`(자동 생성, 검수 전).
+-- 갱신: 2026-09-03 · **T3 개선 반영 1차(09:30, opus5 오케스트레이터)** — 접수 9건 중 6건 구현: `wave-run` 단계 타임아웃 90분(스텁 검증: kill·code=124·재시도·고아 0, `5168d415`) · designer-review §1.7 측정 대비 + §1.8 오버레이 가림 · autopilot 대비 원자 검사·오버레이 금지·breakpoint/state를 값으로 · **render-integrity 390x844 추가**(모바일 전용 결함 4칸 새로 발견, 그중 coupang/uiuxpromax/rep-1은 사람 합의 확정 결함과 동일 칸 — 기계가 독립 재현) · 집계기 블라인드 무결성 절(grok 106/108=98%, sonnet5 22/108) · **품질 게이트 `npm run gate:quality`**(prepublishOnly 체인). 게이트 첫 판정 **BLOCKED**: landing 2칸 통과, **autopilot 2칸 contrast FAIL(29·13건)**, karrot 2칸 MISSING. 남은 접수: #90(스냅샷 수치 추종). 커밋 `1ff611eb`·`fc12091c`·`5b766f98`·`ddd3e86f`.
+-- 갱신: 2026-09-03 · **T3 레인 A 봉인 완료 + Phase 6 검토(01:45)** — sonnet5 재채점 48/48 `0ac5c59a`, 최종 집계 `reports/lane-a/aggregate.*` `6bb9b7bf`(108칸·partial 0). 결과: omd 75.1 · uiuxpromax 74.2 · hallmark 68.9, NO DECISIVE WINNER, 세 arm 모두 근거 축(≈50)에서 PASS 실패, α 3축 미달 → **INCONCLUSIVE(공개·순위 금지)**. 설계 발견: 식별 축 전 브랜드 N/A-ceiling(C_b 0.00–0.13), **grok 사후 arm 추측 98%**(전사 방법 어휘) vs sonnet5 20%. 검토 문서 `docs/reviews/t3-phase6-review-2026-09-03.md`(개선 12항, 릴리즈 반영 목록 §4). **사용자 결정 대기: §3.7 전 축 재채점(≈grok $3 + sonnet5 3세션) 실행 vs INCONCLUSIVE 확정.** omd:issue 접수 완료 #89–#96(+#83 코멘트). 다음: 스킬 고도화·테스트 집중(릴리즈 게이트 #94 먼저).
+-- 갱신: 2026-09-03 · **재채점 진행(00:50)** — grok 재채점 15칸 봉인 `deffda73`($0.39). sonnet5 재채점은 26/48칸에서 Claude 세션 한도(01:30 리셋)로 중단 → 한도 해제 후 같은 세션 재개(SendMessage). 완료 시 `after-rescore.zsh`가 최종 집계(agg-final). **집계기 결함 수정 `f41a2587`**: 천장 자극 답이 rep 없는 브랜드 줄이라 행 조회에서 전부 버려져 식별 축이 CEILING_UNAVAILABLE이었음 → 적재 순서만 고침. 고친 결과 **C_b = 0.00(figma·karrot·musinsa·naver)·0.13(toss)** — 두 평가자 모두 원본 자극에 「모름」 → §4.5 N/A-ceiling 전 브랜드 → 식별 축 전면 재정규화(설계 발견, 버그 아님). **α 전 축 미달**(existence −0.76, sev 0.28, brand9 −0.12) → §3.7 사전 선언 절차(앵커 1회 수정 + 해당 축 전 항목 새 익명 순서 재채점 ≈ grok 1세션 + sonnet5 3세션) 실행 여부 = **사용자 결정 대기**(토큰 비용).
+-- 갱신: 2026-09-03 · **sonnet5 청크 3 채점 완료(00:24)** — 12행 · VALIDATE_OK · `a21688ad`. 3청크 × 2평가자 전부 봉인. 체인(after-chunk3.zsh): 전체 집계 → `build-rescore.mjs`(단독 표기 결함 예비 청크, `e3deb015`) → grok 재채점 세션 자동. sonnet5 재채점 세션은 오케스트레이터가 Agent(sonnet)로 개봉. 그 뒤 최종 집계 → Fable Phase 6 검토 → omd:issue. 웨이브 53 마감(10/10, `c60bdd33`, 누적 $75.79) → 54 진행, 55 후 STOP.
+-- 갱신: 2026-09-02 · **사용자 결정(23:55)**: ① T3는 sonnet/opus 써서 마무리 — sonnet5 청크 3 세션 개봉(23:55). ② **마라톤은 웨이브 55까지만** 돌리고 안전 중단(추가 진행은 보류·검토). ③ `npm publish`는 사용자가 별도 요청하거나 상당한 개선(스킬 테스트 보강 + T3 기반 개선 포인트 반영) 시점에 — 2.0.1 tarball은 준비 상태로 둔다. ④ 다음 집중: 스킬 고도화·테스트, 게시물 발행. 사용자는 도그푸딩 실효성에 의문 — T3 Phase 6 개선 포인트를 릴리즈에 함께 담는다.
+-- 갱신: 2026-09-02 · **grok-4.6 청크 3 채점 완료(22:51)** — SCORING_DONE rows=12 · VALIDATE_OK · $0.94 · 19분. 청크 3 패킷 봉인 `c1878ab6`. 남은 채점: **sonnet5 청크 3(사용자 /usage 80% 게이트 대기)** → 단일 플래그 재채점 세션 → 집계 → Fable Phase 6 검토.
+-- 갱신: 2026-09-02 · **전사 108/108 완결(22:31)** — toss 12/12 PASS(`9c9dc431`, rep-2만 재검증 1회: `D-id` 필드명 통째 KEEP). 청크 3 패킷 `--check` READY(grok·sonnet5 각 12행×3슬롯) → 런처가 `build-packets --chunk 3` + `run-scoring-session.sh 3`(grok) 자동 실행(로그 scratchpad/t3/chunk3-grok-launch.log). **sonnet5 청크 3 세션은 사용자 `/usage` 주간 80% 게이트 확인 대기** — 확인되면 Agent(model: sonnet)로 sessions/lane-a/sonnet5/chunk-3/packet.md 개봉.
+-- 갱신: 2026-09-02 · **wanted 전사 12/12 PASS(22:07)** — 전부 attempts=1, 오케스트레이터 재검증 12/12. 전사 누적 **96/108** — 청크 3 결손은 **toss 12칸**(전사 미착수였음) → toss 전사 에이전트(opus5) 22:10 가동, 완료 시 자동 재검증+`build-packets --chunk 3 --check`. 청크 3 채점은 그 뒤.
+-- 갱신: 2026-09-02 · **T3 생산 108/108 완주(21:45)** — 체인 D/E 완료(wanted 6칸, $0.58–1.56/칸), capture 12·verify 12(unusable 0), 108칸 SHA 매니페스트 재봉인 `e64ed8f0`. 텍스트 대비 스윕 108칸 완료(omd 271·hallmark 305·uiuxpromax 217건, Phase 6 문서 절 추가). **wanted 전사 에이전트(opus5) 가동 중** — 12/12 PASS 후 청크 3 패킷 빌드 → grok·sonnet5 채점 세션. 2.0.1: tarball 재검증 완료, PR #88 푸시(`6ccdc807`), **사용자 `npm publish` 대기**.
+-- 갱신: 2026-09-02 · **도그푸딩 17건 전부 레포 반영(21:25)** — 1–8 `51123149`, 9–17 `6483025c`(render-integrity 스크롤러 오탐 → T3 108칸 재측정 hallmark 6→3·uiuxpromax 2→1·omd 0, Phase 6 문서 갱신; showcase --help 옵션·wall= 라벨; 랜딩 ④ 리뷰 스폰 규격·DESIGN.md 우선 규칙; 아트디렉터 Motion 로컬 확장·치수는 호출자; omd:issue user-invocable·--dry-run·needs-repo-env). 미러 동기·drift OK·lint·check 테스트 11/11. 다음: tarball 재포장→임시 프로젝트 재검증→PR #88 푸시→사용자 `npm publish`. 마라톤은 웨이브 53 진행 중, T3 wanted 잔여 2칸(uiuxpromax rep-2·rep-4) 체인 D/E 진행 중.
+-- 갱신: 2026-09-02 · **웨이브 52 마감(마라톤)** — done 9/10 · deferred openpoint · $15.66 · LLM 671분 · 판정문 `docs/reviews/t2-1-wave52-2026-09-02-grok.md`(자동 생성, 검수 전).
+-- 갱신: 2026-09-02 · **naver 근거 축 재봉인 완결(21:00)**: grok 판정 q1=a(N/A-evidence)·q2=out(B_k 제외)·q3=independent(평가자 프롬프트 불변, 집계 규칙만·청크 3 점수 보기 전 봉인)·q4 문안 확정 → RUBRIC §4.5 개정(제목·삽입 문단·분모 문장), 집계기 `evidenceFor` na 분기, **RUBRIC_FROZEN_SHA = `b6b3ee59`**(핀 `3734583d`, run-config `rubricFrozenSha`). 청크 3 채점 개시 가능 조건 = naver·wanted 전사 + wanted 6칸 생산.
+-- 갱신: 2026-09-02 · **재개(20:40, 세션 한도 후)**: 마라톤은 웨이브 52 마감 직전(7 done·3 review)에서 계속 살아 있었음 → STOP 제거(53으로 자동 진행). T3 잔여 6칸(wanted rep-2/rep-4 × 3 arm) 체인 D/E(40분 상한) 가동. naver 전사 에이전트(opus) 가동. **naver 근거 축 결손 판정 요청** `docs/reviews/t3-naver-evidence-axis-2026-09-02.md` → grok 판정 백그라운드. **도그푸딩 시작(opus5)**: `/tmp/omd-dogfood`에 2.0.1 tarball 설치 → setup→media→landing(아트디렉터 스폰)→issue process 4경로, 보고서 `docs/reviews/dogfood-2.0.1-2026-09-02.md`(수정은 오케스트레이터가 레포에 적용).
+-- 갱신: 2026-09-02 · **T3 현재 창 마감(19:45)**: 생산 **102/108**(naver 12/12 완주·캡처·verify, wanted 6/12), 체인 종료(stopped 부모가 자식을 못 거둬 좀비 — 강제 종료, 산출 무손상). 전사 72/108. 청크 1·2 양 평가자 완료. **재개 시 판정 필요 1건**: naver 스냅샷은 대표 이미지 부재(C-NAVER-H1)로 verify.json eligible 0 → §4.2 "비교 입력 불충분" — 근거 추종 축을 §4.5식 N/A 재정규화로 볼지 0점으로 볼지 **재봉인 판정(grok)** 후 청크 3 채점. 집계기는 판정 전까지 그 칸·축을 미채점(총점 null)으로 둔다(`aggregate-lane-a` 수정). 생산 기록·프롬프트 87·비용·셀 SHA 매니페스트 레포 편입(`a68df6df`), 봉인 칸 tarball `.omd/archive/`. Phase 6 기계 신호 문서 `docs/reviews/t3-phase6-machine-signals-2026-09-02.md`(render-integrity omd 0/uiuxpromax 2/hallmark 6).
+-- 갱신: 2026-09-02 · **일시 중단 준비(18:55, 사용자 지시 "웨이브 52·T3 현재 창까지 진행 후 중단")**: 마라톤 STOP 파일 배치(웨이브 52 마감 후 자동 정지) · T3 체인 2기는 진행 중 셀(wanted/uiuxpromax/rep-3·naver/uiuxpromax/rep-4) 완료 후 종료(`chain-stop.zsh`) · sonnet5 청크 2 채점은 완료까지 둔다. **도그푸딩 승인(opus5)** — 재개 시 첫 작업, 계획 `docs/OMD_DOGFOOD_2026-09-02.md`(설치본·Claude Code 경로로 setup→media→landing(아트디렉터 스폰)→issue process 4경로, 4/4 후 publish).
+-  - **재개 절차**: ① `scripts/context_restore.sh` ② 마라톤 재가동 `node scripts/wave-marathon.mjs --scratch <scratchpad>/marathon --start-wave 53 --size 10 --concurrency 8 --effort-f3 high --fallback none --max-wait 360`(run_in_background; STOP 파일은 마감 시 남아 있으면 지운다) ③ T3 잔여 6칸(wanted omd/hallmark/uiuxpromax × rep-2·rep-4) = `chain-timeout.sh`로 `<t3prod>/run-wanted-*-rep{2,4}.txt` ④ naver·wanted 완주 시 `capture-cells`·`verify-cells` → 전사(naver·wanted 24) → 청크 3 패킷 → 세션 2개 ⑤ 청크 1~3 끝나면 단독 표기 결함 rescore 세션 → `aggregate-lane-a` → Fable 검수 소견서 → omd:issue ⑥ 도그푸딩(위 문서) → publish → PR #88 머지 → X/Threads 소재 승인.
+-  - scratch 위치: 마라톤 `…/cb2e257f…/scratchpad/marathon`, T3 프롬프트 `…/21a82a53…/scratchpad/t3prod`(세션 tmp — 사라지면 `run-*.txt`는 T3 생산 프롬프트 템플릿에서 재생성).
+-- 갱신: 2026-09-02 · **웨이브 51 마감(18:30, 첫 10-wide)**: 러너 done 9 · deferred 1(note) → 오케스트레이터 판정으로 note DONE(검사기 오탐, 재실측 통과) → **10/10**. 벽시계 115분(10브랜드), $16.25. 원장 **263/440**(DEFERRED 0). 웨이브 52(octopusenergy…panasonic) 시작. 이후 웨이브당 ~2시간·$16 예상 → 잔여 18웨이브 ≈ 내일 오후.
+-- 갱신: 2026-09-02 · **웨이브 51 마감(마라톤)** — done 9/10 · deferred note · $16.25 · LLM 519분 · 판정문 `docs/reviews/t2-1-wave51-2026-09-02-grok.md`(자동 생성, 검수 전).
+-- 갱신: 2026-09-02 · **T3 청크 2 채점 개시(18:35)**: musinsa 전사 12/12(교체 에이전트, 재검증 PASS) → 전사 72/108. 청크 2 패킷(figma·karrot·musinsa, 12행×3슬롯) 조립 중 **§4.3 위반 발견·수정**: 천장 자극을 build 전량(11·16장)이 아니라 manifest `usedForCb` 4장만 넣어야 C_b 분모가 봉인대로다 — 패킷·집계기 둘 다 수정(`4b216744`·`72514bb6`), 청크 1은 천장 없는 브랜드라 영향 없음. grok 세션(`run-scoring-session.sh 2`) + sonnet5 세션 동시 가동. T3 생산 97/108(naver 9·wanted 4). 웨이브 51 nvidia 재검토 중.
+-- 갱신: 2026-09-02 · **재개(18:10)**: 웨이브 51(10-wide) 9/10 done, note = human:mech-after-fix — 원인은 산출이 아니라 **적합성 검사 오탐**: 개정이 복원한 §1 사실 "note deliberately does not flood its product chrome"가 scope 자기부정 정규식(`does not … product`)에 걸림. 같은 오탐으로 웨이브 45 mercury가 portable_core=false인 채 DONE에 들어가 있었음(당시 러너 적합성 검사 부재). `design-md-core-conformance.cjs` ATTRIBUTED에 브랜드 행동 부정·B2a 한정문 두 형태 추가 + 테스트 2건(52/52) → 251본 스윕에서 mercury·note만 false→true, 다른 변화 0(`dd285a79`). note 스코프드 재실측: 검토 지목 7문자열 전부 ORIG 1→DEST 1, 로그 착지, gate·1:1·use PASS → 웨이브 마감 후 DEFERRED에서 빼고 DONE 등재 예정. T3 94/108(naver 8·wanted 2), 전사 60/108(musinsa 에이전트 45분 무산출 — 확인 중). 2.0.1: npm 미발행(사용자 대기), PR #88 mergeable.
+-- 갱신: 2026-09-02 · **2.0.1 발행 준비 완료(17:20)**: 설치본 실행 경로 확보 — `omd check render|landing|contrast`, `omd showcase`, `omd setup detect` (패키지 루트 기준 도구 스폰, playwright-core optionalDependency, Chrome→playwright 캐시→안내 순 브라우저 해석, doctor 브라우저 줄, 테스트 11 추가, 1413 pass) — 임시 프로젝트 tarball 설치 검증 전부 EXIT=0. 스킬 5종은 레포 경로/설치본 명령 병기(autopilot의 존재하지 않던 `omd verify --render`도 정정). PR #88 hold 해제. **사용자 행동: `npm publish` → 알려주면 PR 머지(main 배포).**
+-- 갱신: 2026-09-02 · **17:00**: `text-contrast.mjs`(#86 검출 층) 6런 실측 — stripe/landing PASS, toss/landing은 잔여 2+1건 → 마이크로 개정 r3($0.22) → PASS; 기준선 4런은 FAIL 2~29 + no-JS 숨김 3~9(표: landing README). 두 landing arm 모두 render·landing-integrity·text-contrast·designer-review 전부 통과. 최종 toss 비교 페이지·영상 재생성 중. 웨이브 51(10-wide) 워커 8기 진행, T3 86/108.
+-- 갱신: 2026-09-02 · **landing/toss 개정 라운드 3 (마이크로, CTA 포커스+ghost 라벨)**: `render.html` `.hero-copy` CTA 두 개만. `:focus-visible` canvas 3px halo + `foreground` `#191f28` 2px 링. ghost 「먼저 둘러보기」 라벨 `foreground`. 12.05 vh·구도·에셋·카피 불변. `render-integrity` PASS · `landing-integrity` FAIL 0 · `text-contrast.mjs` **PASS fail=0** (ghost min 13.35). `FIX_DONE brand=toss arm=landing blocks_fixed=2`.
+-- 갱신: 2026-09-02 · **웨이브 36~50 표 전부 마감(16:35)** — 마라톤이 46~50을 무인으로 닫았다(각 59~67분, $7~9, 검토 FAIL 0~2/5 전부 개정 후 PASS, deferred 0). 원장 **264/440**. 웨이브 51부터 알파벳순 10브랜드(neosapience…nvidia) — 첫 10-wide 웨이브, 메모리 예산이 동시성을 정한다. T3: 81/108, musinsa/omd/rep-4 2h07m 행(hang) → 종료·40분 상한 러너(`chain-timeout.sh`)로 재실행 중. 2.0.1 PR #88 대기(사용자 npm publish).
+-- 갱신: 2026-09-02 · **웨이브 50 마감(마라톤)** — done 5/5 · $8.36 · LLM 243분 · 판정문 `docs/reviews/t2-1-wave50-2026-09-02-grok.md`(자동 생성, 검수 전).
+-- 갱신: 2026-09-02 · **2.0.1 릴리즈 준비 완료(16:00, 커밋 `f3bfd490`, 브랜치 푸시, PR 대기)**: 스킬 5종 번들 편입(27/26/20), 카운트 10표면 싱크, CHANGELOG, doctor 필수 목록, 설치 검증 4채널 전부 OK, build·lint·test(1402+891)·mirror-drift·release-hygiene 전부 green. 선행 차단 3건 수정(omd-issue 이후 red였던 테스트, web cli-docs, sync-runtime-mirrors 드리프트). **남은 것 = 사용자 `npm publish`(인증) → PR 머지(main 배포)**. `text-contrast.mjs` 신설(#86 검출 층).
+-- 갱신: 2026-09-02 · **시드 AC 4 충족(15:40)**: stripe·toss 두 브리프 모두 `omd:landing` arm이 render PASS · landing-integrity FAIL 0 · designer-review BLOCK 0(toss r2 에이전트 실측, stripe r2 오케스트레이터 실측+마이크로 개정 r3) · 비교 페이지 · 시연 영상. 총 비용 landing arm 2런+개정 3회 ≈ $1.2. 최종 비교 페이지·영상(3-arm + 단독 gif) 재생성 중. 웨이브 49 마감(5/5, 원장 259), 웨이브 50 진행.
+-- 갱신: 2026-09-02 · **웨이브 49 마감(마라톤)** — done 5/5 · $9.57 · LLM 249분 · 판정문 `docs/reviews/t2-1-wave49-2026-09-02-grok.md`(자동 생성, 검수 전).
+-- 갱신: 2026-09-02 · **15:30 체크포인트**: 전사 60/108(karrot 12/12 재검증 PASS, 커밋 `34e84df4`). 생산 78/108(musinsa 6/12 진행). 웨이브 49 4/5 done(muji 진행). 랜딩: toss AC 4 충족(r2 BLOCK 0); stripe 개정 후 **오케스트레이터 독립 실측**(`stripe/landing/qa/round2-orchestrator/glyph-audit.mjs`, 명목 글자색 vs 글리프 뒤 배경 픽셀 — 안티앨리어스 픽셀을 그대로 대비에 넣던 첫 시도는 소형 글자를 과소평가해 폐기) — 히어로 텍스트 전부 ≥4.75:1(4.5 미만 0%), no-JS hidden 0, 포커스 링 잔여 1건(1440 nav CTA 32% <3:1, min 2.57) → 마이크로 개정 라운드 3 실행 중. 디자이너 리뷰 에이전트는 무산출 25~90분이 반복돼 stripe r2는 오케스트레이터 실측으로 대체(에이전트 3기 중단).
+-- 갱신: 2026-09-02 · **landing/stripe 개정 라운드 3 (마이크로, 포커스 링)**: `render.html` `.nav-bar`에만 canvas 92%→0% 우상단 스크림. 12.05 vh·구도·에셋·카피 불변. `render-integrity` PASS · `landing-integrity` FAIL 0. glyph-audit `focus 1440` 첫 "Start now" core min 2.57→3.83, `<3:0%` (이전 32.2%). `FIX_DONE brand=stripe arm=landing blocks_fixed=1`.
+-- 갱신: 2026-09-02 · **landing/stripe 개정 라운드 2 (BLOCK 6)**: `render.html` + `concept.md` 가정 1줄. `.hero::before` 캔버스 알파 스크림 · ghost CTA canvas-alpha fill + hairline-hover border · 포커스 2겹 canvas halo · noscript + `scripting: none`. `render-integrity` PASS · `landing-integrity` FAIL 0 · page 12.05 vh. 글리프 픽셀 대비 B1–B4·B6 전부 0% below floor. WARN·FYI 미수정. `FIX_DONE brand=stripe arm=landing blocks_fixed=6`.
+-- 갱신: 2026-09-02 · **웨이브 48 마감(14:25) + effort A/B 결론**: 5/5 done, 63분, $7.22, 검토 FAIL 1/5(momoshop 1). 검토 effort 기본(48) vs high(46·47): FAIL율 1/5 = 1/5·1/5, 검토 소요 avg 11분 = 11·10분, 비용 $0.22 = $0.22 — **차이 없음**. 웨이브 44·45의 3/5·5/5 → 1/5 급감은 예방 조항(worker-addendum 전문) 복원 효과로 확정. 마라톤은 현 설정(F3 high·검토 기본·8-wide) 유지, 개입 없이 계속. 원장 254/440. 웨이브 벽시계 59~63분·$7~9로 안정.
+-- 갱신: 2026-09-02 · **웨이브 48 마감(마라톤)** — done 5/5 · $7.22 · LLM 223분 · 판정문 `docs/reviews/t2-1-wave48-2026-09-02-grok.md`(자동 생성, 검수 전).
+-- 갱신: 2026-09-02 · **웨이브 47 마감(13:21, 마라톤 2번째 자동 마감)**: 5/5 done, 벽시계 59분, $8.57, 검토 FAIL 1/5(mintlify 3 → 개정 → PASS). 원장 249/440. **effort A/B**: 46·47(F3·검토 high) 검토 FAIL 1/5·1/5 vs 44·45(xhigh) 3/5·5/5 — 예방 조항 복원 효과와 분리하려고 **웨이브 48부터 검토만 기본 effort**로 재가동(`--effort-f3 high`만, 8-wide). 48 마감 후 FAIL율 비교해 검토 effort 확정.
+-- 갱신: 2026-09-02 · **웨이브 47 마감(마라톤)** — done 5/5 · $8.57 · LLM 224분 · 판정문 `docs/reviews/t2-1-wave47-2026-09-02-grok.md`(자동 생성, 검수 전).
+-- 갱신: 2026-09-02 · **랜딩 테스트 셋업 완결(13:10)**: stripe·toss × {hallmark, autopilot, landing} 6런 전부 완료(총 ≈$5.5). landing arm 둘 다 12.05 vh·폴드 100%·LI FAIL 0; 기준선은 6~8 vh. 비교 페이지 `content-runs/landing/{stripe,toss}/compare.html` + 3-arm 시연 영상 2편(scratchpad showcase/). toss 디자이너 리뷰 r1 BLOCK 6(사진 위 크롬 대비·muted 본문·noscript) → 지목 개정(grok $0.36) → r2 리뷰 진행; stripe 리뷰 r1 진행. 학습을 스킬 예방 조항(b0ded515)과 이슈 #86·#87로 환류. 시드 AC 4는 "designer-review BLOCK 0" 확인만 남음.
+-- 갱신: 2026-09-02 · **landing/toss 개정 라운드 2 (BLOCK 6)**: `render.html`만. `.hero::before` 캔버스 알파 스크림 · 포커스 2겹 canvas halo · muted→body 4셀렉터(+ nav B1) · noscript + `scripting: none`. `render-integrity` PASS · `landing-integrity` FAIL 0 · page 12.05 vh. 히어로 1440/390 픽셀 대비 전부 ≥4.5:1. WARN·FYI 미수정. `FIX_DONE brand=toss arm=landing blocks_fixed=6`.
+-- 갱신: 2026-09-02 · **T3 청크 1 채점 완료(12:51)**: grok-4.6(120응답, $1.24, 결함 32건/23칸) + sonnet5(120응답) 둘 다 validate OK, 커밋(`aea488b6`·`44962488`). 부분 집계(`aggregate-lane-a.mjs`, PARTIAL) 사전 신호 — 결함 존재 α −0.64(n=43, 만장일치 9·단독 34), 평정 α 0.45: 2인 합의가 낮아 사전 선언대로 단독 표기 34건은 예비 청크 재채점 대상(청크 2·3 완료 후 평가자별 rescore 세션 1회로 묶는다), α 미달 시 INCONCLUSIVE 표기. 집계기 부분 실행 버그(|B_k|에 미채점 브랜드 포함) 수정 `a7743d9c`. 다음 채점 입력: 청크 2 = figma(전사 48/108 완료)·karrot(생산 3/12)·musinsa(0).
+-- 갱신: 2026-09-02 · **랜딩 트랙 D2 앞당김(12:40)**: `omd:landing` arm 첫 실전 — stripe(컨셉 "money layer cutaway", 12.05 vh·폴드 100%·4변 블리드, 자평 2회차 LI FAIL 0, $0.51) · toss("일상 책상", 12.05 vh, LI FAIL 0, 한국어) 둘 다 render PASS, 오케스트레이터 독립 재검증 일치, reduced-motion에서 전부 표시. 기준선: stripe autopilot 6.05 vh(LI FAIL 2) · hallmark 7.9 vh(LI FAIL 0, $1.80). 비교 페이지 `content-runs/landing/stripe/compare.html`(3열), 3-arm 시연 영상 `scratchpad/showcase/stripe-landing-compare.mp4`(14초 2880×600). 디자이너 리뷰 에이전트 2기(stripe·toss) 가동 — BLOCK 0이면 시드 AC 4 충족. toss 기준선 2런 진행 중. F6 최소형 autopilot 배선 커밋(`65916749`).
+-- 갱신: 2026-09-02 · **content-run landing stripe/hallmark 완료.** 산출 `test-v2/content-runs/landing/stripe/hallmark/` (render.html · assets/ 히어로+섹션 5장 · 로컬 OFL woff2 · system.md · trace.md). 팩 `hallmark`. 컨셉 Switchboard. T3-3 `03-runs` 미사용. 다른 arm 팩·산출 미열람. `render-integrity` PASS. 1440·390 오버플로 없음. `CONTENT_RUN_DONE brand=stripe arm=hallmark`.
+-- 갱신: 2026-09-02 · **웨이브 46 마감(마라톤)** — done 5/5 · $6.83 · LLM 277분 · 판정문 `docs/reviews/t2-1-wave46-2026-09-02-grok.md`(자동 생성, 검수 전).
+-- 갱신: 2026-09-02 · **content-run landing stripe/autopilot 완료.** 산출 `test-v2/content-runs/landing/stripe/autopilot/` (render.html · assets/ 히어로+섹션 5장 · system.md · trace.md). 팩 `omd-autopilot-v2`. 컨셉 Optical Settlement. T3-3 `03-runs` 미사용. 다른 arm 팩·산출 미열람. `render-integrity` PASS. `CONTENT_RUN_DONE brand=stripe arm=autopilot`.
+-- 갱신: 2026-09-02 · **내부 부채 ④ 완료(12:30)**: `check-mirror-drift.mjs`에 SKILL_TREES 검사(3트리 본문 대조, 설치기 재작성 정규화, BODY DRIFT·missing = fatal) — 현재 드리프트 0 · `skill-rules.json` v0.3.0 33종 재생성(소비자 없음 — 2026-05 skill-activation 훅에서 의도적으로 제거됨, 문서용) · AGENTS.md의 존재하지 않는 `omd harness` 헬퍼 문구 정정 · Core v2 쓰기 게이트 5종에 만료 조건 절 · omd-issue·omd-landing·omd-setup 3트리 미러. 남은 부채: ①②③(render-integrity 배선·비평가 호출·루프 상한 통일 = F6 최소형, D3–4) · `.agents/skills/omd-design` 고아 미러(orphan 노트) · MCP 410(F5와 묶음).
+-- 갱신: 2026-09-02 · **T3 Phase 4 개시(12:20)**: coupang 전사 12/12(교체 에이전트, 문서 단위 기록) → 오케스트레이터 재검증 PASS, 표지 잔존 0 → 전사 36/108. `build-packets --chunk 1` (apple·baemin·coupang, 12행×3슬롯, 186파일, coupang은 데스크톱 스냅샷만 — 증거 surfaceLimit) → **grok-4.6 세션**(`run-scoring-session.sh 1`, 백그라운드) + **sonnet5 세션**(Agent model sonnet, 같은 packet.md) 동시 가동. 다음: validate-responses → 청크 2·3은 생산·전사 완료 순.
+-- 갱신: 2026-09-02 · **랜딩 트랙 D0 완료분**: 랜딩 크래프트 코덱스(5사이트 실측, LC-1~36·LI-1~23) `docs/design-excellence/landing-craft-codex.md` + 리그 `test-v2/tools/landing-probes/` · 검사기 `landing-integrity.mjs`(기존 stripe 3 arm 전부 LI-1/LI-3 FAIL — 3 vh·폴드 13% = 출발점 실측) · `skills/omd-landing` v1 + `omd-art-director`(fable) · 테스트 셋업 `test-v2/content-runs/landing/`(브리프 stripe·toss, 3 arm) — 기준선 4런 + landing 2런 grok 가동 중 · **showcase 엔진** `test-v2/tools/showcase.mjs`(프레임 캡처→ffmpeg, 단일·비교 hstack, gif) 검증 완료. 프로덕션: PR #85 머지 → **/design.md 라이브(HTTP 200, 4분)**. 마라톤 웨이브 46 진행(8-wide·effort high), T3 체인 A2/B2 재가동.
+-- 갱신: 2026-09-02 · **푸시 승인 집행(11:55)**: 브랜치 푸시 → PR #85 → main 머지(`dc3839db`, Vercel 자동 배포 → /design.md 라이브 확인 대기). 사용자 답: SuperGrok Heavy(잔액 충분) · T3 생산 51칸 체인 A2/B2 재가동(마라톤과 병행) · 2주 세트 확정 · **최종 목표 = 2.0.1 릴리즈 + X/Threads 임팩트 콘텐츠**(시드 AC 7·8). coupang 전사 에이전트 교체(2시간 무산출 → 문서 단위 즉시 기록 지시). 부채 ④(스킬 트리 드리프트 검사·skill-rules 24종·AGENTS.md 헬퍼 문구·쓰기 게이트 만료) 에이전트 가동.
+-- 갱신: 2026-09-02 · **사용자 방향 전환(11:30) → 안전 중단 → 마라톤 가동(11:41) → 우로보로스 시드.** 안전 중단: 진행 중 grok 3건 완료 후 러너·체인 정지(산출 손상 0; T3 57/108). 사용자 결정: 잔여 211본 이관을 가능한 한 빨리 완주(무인 마라톤, opus 허용) → 추가 레퍼런스 기획·테스트 집중; affinity.studio급 스크롤 원페이지 스킬+테스트 셋업+결과물 별도 작업; 도구 온보딩은 문답형 setup; 슬롭 게이트 둘 다·Fable 배치·부채 선행 승인. 조치: 러너 재시도/백오프·gatefix·산출존재 시 재실행 생략·claude 폴백(기본 OFF), `scripts/wave-marathon.mjs`(24웨이브 연속·자동 마감·DEFERRED·자동 판정문·커밋, 커밋 `36809645`), 8-wide + F3·검토 effort high로 가동(scratch `…/cb2e257f…/scratchpad/marathon`, STOP 파일로 경계 정지). 정직한 ETA: 211본 ≈ 176 LLM시간·$400 → 8-wide 22h/12-wide 15h, 오늘 완주 불가·내일 오전~오후. 우로보로스: 훅 출력 1.4MB(CURRENT_STATE 1.8MB) 원인 규명·수정(`51cc0f7c`) 후 인터뷰 5라운드 완료, 시드 `docs/OMD_SPRINT_SEED_2026-09-02.md`. 랜딩 코덱스 리서치 에이전트 가동. 대기: grok 잔액·푸시 승인·T3 생산 재개 여부·2주 세트 확인.
+-- 갱신: 2026-09-02 · **Fable 5.1 세션 — 진단·계획 정본 `docs/OMD_PLAN_2026-09-02.md` 작성, 웨이브 러너·T3 Phase 4 도구 신설, 마라톤 재가동.**
+-  - grok 402(08:12~09:23, 잔액 소진) → 09:23 복구 확인. 이전 세션 전사 에이전트는 세션 종료로 소실(apple/omd 4건만 남음) → 재가동.
+-  - **`scripts/wave-run.mjs`** 신설: 브랜드 단위 파이프라인(워커→gate1→F3→gate2→[mechfix]→검토→개정→gate3→재실측), agent-budget 동시성, 402 2연속 자동 중단·같은 명령 재개, `docs/design-md-weight/metrics/wave-<N>.jsonl` 호출별 초·USD. 웨이브 45 실측: 층 직렬 4h25m(워커15·F3 14·검토12·개정8분/브랜드) → 기대 1.3~1.7h(3-wide).
+-  - **프롬프트 드리프트 발견·정본화**: 웨이브 44–46 워커 프롬프트에 `worker-addendum.md` 전문 대신 마지막 절만 부착돼 예방 조항 8개가 빠져 있었다(웨이브 45 5/5 FAIL 원인 후보 1순위). 「제출 전 자가 대조」절을 addendum에, 웨이브 39·40 조건을 `f3-conditions.md`에 편입. `prompts/{diet,fix-template,mechfix-template}.md` 신설. 러너만 조립한다.
+-  - **웨이브 46 러너 실전 가동 09:30** (3-wide, scratch `…/cb2e257f…/scratchpad/w46`, 로그 `w46-run.log`). 첫 실행 시 전경 타임아웃으로 러너가 죽어 자식 grok 정리 핸들러 추가(산출물 손상 없음 확인).
+-  - **T3 생산 체인 A(29)·B(28) 09:31 가동** — 잔여 57칸(figma 9 + karrot·musinsa·naver·wanted 48). 로그 `scratchpad/t3prod/chain{A,B}.log`. 26칸 실측 $23.4(칸당 $0.90).
+-  - **T3 전사**: apple 12/12 · baemin 11/12 진행 · coupang 12 에이전트 가동(09:5x). 청크 1 = apple·baemin·coupang.
+-  - **T3 Phase 4 도구 신설(test-v2/tools)**: `capture-cells.mjs`(§4.1 첫 캡처 1440×1000·390×844, 51칸 완료, 바이트 결정론 확인) · `verify-cells.mjs`(칸별 verify.json 52) · `build-packets.mjs`(세션 패킷 조립, 익명 복사·키 봉인·fail-close, `--check`가 준비 상태를 답한다; apple 시험 세션 PASS, arm 단서 유출 0) · `validate-responses.mjs` · `run-scoring-session.sh`. **grok 헤드리스 이미지 입력 스모크 PASS**(PNG 열어 답함, $0.01) — 축 1 grok 채점 성립.
+-  - 런 계약상 첫 렌더 = 제출 render.html(run.json `outputs.firstRender`), 라이브 하네스 캡처 아님 — 레인 A 리포트 조건부에 기재할 편차.
+-  - **가장 큰 미착지**: 229본 이관 산출의 카탈로그 채택 경로 부재(T2-2·T2-4 미구현). 계획 문서 §4 결정 1로 사용자에게 올림.
+-  - **전사 검증기 재봉인 (09:50~)**: `transcribe-verify.mjs` 결함 2건 — §7.1.8 탐지기가 `D-P2-1`·`ui-ux-pro-max`를 놓침(파일럿 apple/omd rep-2·3·4가 결정 ID 8·11·7개 실은 채 PASS), §7.1.6 펜스 안 선언 삭제 불허(baemin/omd/rep-2 fail-close가 옳았다). 수정 후 셀프테스트 10/10, 재검증 20 PASS·3 BLOCKED. 새 도구 SHA `ae588ca3…` 핀(TRANSCRIPTION.md:278·run-config·gate-status), seal 20건 toolSha 갱신·verifierId orchestrator(직접 재실행). 재전사 4/4 PASS(10:08) → 오케스트레이터 재검증 **24/24 PASS**, 표지 잔존 0. 청크 1 잔여 입력 = coupang 전사 12(진행 중). 판정 `docs/reviews/t3-transcribe-verify-reseal-2026-09-02.md` = **grok APPROVE ×4**(Q1 의미 불변·Q2 20건 유지·Q3 조건부 문장·Q4 핀) → 커밋 `bea61b4b`(도구·절차 주석·핀·판정문). Q3 문장은 `aggregate-lane-a.mjs` conditions에 수록. 러너·프롬프트 정본·계획 문서·Phase 4/5 도구 커밋 `3dbad954`. 전사본·seal은 재전사 완료 후 일괄 커밋.
+-  - 계획 문서 §3(하네스 고도화 7기능·우선순위·Fable 배치) 작성 완료 — 외부 리서치 반영. 인벤토리 §3–9 잔여분 도착 시 보강.
+-- 갱신: 2026-09-02 · **웨이브 44 마감 (5/5 PASS·known-open 0) — 원장 234/440 (53%). 마라톤 가동: 웨이브 50 + T3 동시 완주 지시.**
+-  - 웨이브 44: F3 111 + 개정 5. 검토 1차 5건(런 최저), 발명형 2(megabox)·소실형 3. 검사기 오탐 3호(점 포함 브랜드 토큰) 수정. 판정문 `docs/reviews/t2-1-wave44-2026-09-02-grok.md`.
+-  - **T3 패널 재봉인 완결** (2026-09-01 판정 → 09-02 집행·핀): 평가자 2인(grok-build 직접 + sonnet5 claude-agent), RUBRIC 17건 치환, 2인 합의 사전 선언(disputed 버킷), TRANSCRIPTION:173 BLOCK 명시 번복, 분모 4×2·1/2, 청크 필드 방출, **`RUBRIC_FROZEN_SHA` = `65f778e8`** (핀 `ba6d6b87`). **Q3 APPROVE — 24칸 재사용 확정.**
+-  - **T3 Phase 2 생산 진행**: baemin omd 4/4 + hallmark 3/4 완료(체인 1호 6/6, $6.33). 체인 2호(baemin 잔여+coupang 시작)·웨이브 45 워커 체인 가동 중. 생산 프롬프트 84개 전량 생성(`scratchpad/t3prod/`), 직렬 체인 러너 `chain.sh`.
+-  - **오버헤드 다이어트 가동**(웨이브 45+·T3 전 셀): 서브에이전트 CURRENT_STATE/JOURNAL 갱신 금지 — 이 항목처럼 오케스트레이터가 일괄 기록. 스코프드 재검토(개정 ≤2건은 지목 문자열 실측)도 45부터.
+-  - 진행 중 슬롯: A=웨이브45 워커 체인(meituan·melon·mercari·mercury·meta), B=T3 체인 2호.
+-- 갱신: 2026-09-02 · **웨이브 27형 의미 검토 `megabox` = PASS** (독립 재검토, A·C·D만; B2a·E2 미판정; 추가형 7–11 포함; FAIL 2 개정 이후 본문 SHA `e941b0e17e465170dfc6a38177ec08c36cee7af335e0b3a1f75feba7cc402509` · provenance SHA `0ac88f32c100f6b03a20d3f64d2761d682404fda896795782aa604119a3fddbc`). `find`로 산출 4 + 원본 + sibling `web/references/megabox/.verification.md` 경로 직접. 계수 `grep -oF -- | wc -l` 파일별(bash; 빈 출력 dest 0, zsh `no matches found` 아님). 직전 FAIL 2 착지: `0px 10px` SRC 0 / SIB 1 / DESIGN **0** / P 2 · `197px × 34px` DESIGN 0 · `search-input-inline: 10` DESIGN 2 · `10px` DESIGN 4(§6 영화검색·route-local만) · `Radius observed at 4px on this link` SRC 0 / SIB 0 / DESIGN **0** / P 0 · `reservation link’s 4px radius` DESIGN **0** · `compact-control geometry` DESIGN **0** · `36px-high purple reservation **link**` SRC 1 / DESIGN **2** · `36px-high` DESIGN **3** · `4px` DESIGN **8**(like-button Radius·compact-control·목록 제어만; 예약 링크 문장에 4px 0) · `74px × 36px`/`15px/400/36px`/`72px`/`106px`/`16px × 30px`/`rgb(34, 34, 34)` DESIGN dest 0. YAML 키 경로 dest≥1(`#503396` 9 · `#ffffff` 8 ≠ `#FFFFFF` 5 · `#444444` 4 · `#666666` 3 · `#EBEBEB` 4 · `#ebebeb` 2 · `22.5px` 3 · `30.7989px` 3 · `27.999` 3 · `like-button-inline: 5` 2 ≠ `0px 5px` 2 · `search-input-inline: 10` 2 · `compact-control: 4` 1 ≠ `theater-lookup: 30` 1 · `tokens.shadow.none` 1 · `type: button` 1 · `13.0005px / 400 / NanumBarunGothic` 2 · YAML body/h2/states use dest≥1 + §4 `Actual \`button\` element at` dest 1). 고유사실 `2000년 코엑스점`/`2011년 씨너스`/`Life Theater`/`439회`/`1440×900`/`230px × 450px`/`245px × 352px` dest≥1. C2 like-button L/E/S applicable 1=1=1(커밋 역할) · reservation/theater/carousel 맵 없음(C4) · `loading | not-applicable` dest 0 · `not-applicable` dest 1은 C1 금지문만. D2 이름 dest 0 · Audience=§13 그룹(`related benefits`/`membership, points, tickets`는 Audience만). D1 `native-client`/`storefront`/`mobile app` DESIGN dest 0. 융합형 `14px radius with 16px padding`/`measures 1440px` dest 0. YAML/§ use 긴 쪽 병기. F2 dest=파일 · SHA 로그=파일(`e941b0e1…`). 비결함: `shared header` SRC 0 / SIB 1 / DESIGN 1(`:25` Primary tasks 괄호) / P 1(Evidence class) — px/hex 미부착, 원본 §7 `header utility controls` dest 1, 예매 완료 부정은 원본 §2. `Purple fill` SRC 0 / DESIGN 1 — 원본 §3이 예약 링크에 `#503396`+텍스트 `#FFFFFF`를 이미 붙임. 산출 미수정.
+-- 갱신: 2026-09-01 · **megabox 산출물 개정 (의미 검토 FAIL 2).** A1 sibling 승격: Foundations spacing에서 `0px 10px` 제거(DESIGN dest 1→**0** / P dest 1→**2**). 원본 쌍은 unitless `search-input-inline: 10` dest **2** + `10px` dest **4**. `197px × 34px` DESIGN dest **0** 유지. A1·항목9 융합: `Radius observed at 4px on this link` dest 1→**0**; B2a `reservation link’s 4px radius` dest 1→**0**; `compact-control geometry` D 2→**0** / P 1→**0**. 원본 표기 `36px-high purple reservation **link**` dest 1→**2**; `36px-high` dest 2→**3**. `4px` dest 10→**8** (like-button·compact-control만). `74px × 36px`/`15px/400/36px` DESIGN dest **0** 유지. 한정 26=26 (186–211). dest `proof-record geometry` 1→**2** · `search-input padding` 1→**0**. `node scripts/check-limiter-ledger.mjs megabox` 본문 26=원장 26. `--gate-only` PASS. SHA `e941b0e17e465170dfc6a38177ec08c36cee7af335e0b3a1f75feba7cc402509`. 줄 수 DESIGN 291 불변. `wc -w` 4359→**4391**. 토큰·표·applicability·원본 무변경. `FIX_DONE megabox fixed=2 logdest=12`.
+-- 갱신: 2026-09-01 · **웨이브 27형 의미 검토 `megabox` = FAIL 2** (독립 검토, A·C·D만; B2a·E2 미판정; 추가형 7–11 포함; 본문 SHA `b869b52aab36c183e5f21ba7c8bce518573ce65b3d09e2c7e49aa2ba02aba4f9` · provenance SHA `4e3b2c88d0ac8ee249f67280ad36c6ded4c40da33f028d0b28b5857496236c89`). `find`로 산출 4 + 원본 + sibling `web/references/megabox/.verification.md` 경로 직접. 계수 `grep -oF -- | wc -l` 파일별(bash; 빈 출력 dest 0, zsh `no matches found` 아님). **결함 1 A1 sibling 승격** `0px 10px` SRC 0 / SIB 1 (`:37` search padding) / DESIGN 1 (`:94` search-input padding) / P 1 (sibling-only 표 `:66`) / LOG 0. 같은 행 `197px × 34px` DESIGN dest 0(보유). 원본은 YAML `search-input-inline: 10` (`:77`) + §6 `10px` (`:159`)만. **결함 2 A1·항목9 융합** `Radius observed at 4px on this link` SRC 0 / SIB 0 / DESIGN 1 (`:209`); B2a `:200` `reservation link’s 4px radius`. 원본 예약 링크는 `36px-high` (`:144`)만, 4px는 like-button·`Compact movie controls use 4px corners` (`:85`·`:137`·`:159`). sibling `:32`는 그 링크 `4px radius, 74px × 36px` — `74px × 36px`/`15px/400/36px` DESIGN dest 0(보유)인데 4px만 본문 관측으로 승격. 비결함: YAML 키 경로 dest≥1(`#503396` 9 · `#ffffff` 8 ≠ `#FFFFFF` 5 · `#444444` 4 · `#666666` 3 · `#EBEBEB` 4 · `#ebebeb` 2 · `22.5px` 3 · `30.7989px` 3 · `27.999` 3 · `like-button-inline: 5` 2 · `search-input-inline: 10` 2 · `compact-control: 4` 1 · `theater-lookup: 30` 1 · `tokens.shadow.none` 1 · `type: button` 1 · `0px 5px` 2 · `13.0005px / 400 / NanumBarunGothic` 2 · YAML body/h2/states use dest≥1). 고유사실 `2000년 코엑스점`/`2011년 씨너스`/`Life Theater`/`439회`/`1440×900`/`230px × 450px`/`245px × 352px` dest≥1. C2 like-button L/E/S applicable 1=1=1(커밋 역할) · reservation/theater 맵 없음(C4). D2 이름 dest 0 · Audience=§13 그룹. D1 `native-client`/`storefront`/`mobile app` DESIGN dest 0. 융합형 `14px radius with 16px padding`/`measures 1440px` dest 0. YAML/§ use 긴 쪽 병기. F2 dest=파일 · SHA 로그=파일. 산출 미수정.
+-- 갱신: 2026-09-01 · **웨이브 27형 의미 검토 `maum-ai` = PASS** (독립 검토, A·C·D만; B2a·E2 미판정; 추가형 7–11 포함; FAIL 2 개정 이후 본문 SHA `18bbe35c4389099cbb9a54d87cec472d68fc985a7446704296cc0d1da6e1ee76`). `find`로 산출 4 + 원본 + sibling `web/references/maum-ai/.verification.md` 경로 직접. 계수 `grep -oF -- | wc -l` 파일별(bash; 빈 출력 dest 0, zsh `no matches found` 아님). 직전 FAIL 2 착지: `"MAIED" oversized wordmark`/`Feature section titles`/`Charcoal round CTA labels`/`Top navigation items`/`Secondary actions —` SRC 각 1 / DESIGN 1 · YAML `16px / 700 Pretendard` SRC 3 / DESIGN 3 · `20px / 600 Pretendard` SRC 1 / DESIGN 1 · §4 `16px Pretendard weight 700` SRC 5 / DESIGN 3 (Primary `:248` · Badge `:342` · Nav `:353`) · `20px Pretendard weight 600` SRC 2 / DESIGN 1 (Charcoal `:274`) · 발명형 `16px / 700 / Pretendard`·`20px / 600 / Pretendard` SRC 0 / DESIGN 0. YAML colors 15 path dest≥1 (`#4262ff` 8 · `#3652d8` 4 · `#343434` 6 · `#111111` 13 · `#000000` 3 · `#5b636d` 4 · `#595959` 4 · `#8e8e8e` 5 · `#ff4d4d` 8 · `#2563eb` 3 · `#ffffff` 13 canvas≠on-primary≠card hairline≠nav bg · `#f2f3f8` 15 · `#f2f5f9` 6 · `#dee4eb` 9; DESIGN hex 집합=원본 15, 발명 hex 0). spacing `xs` 4px/`sm` 8px/`md` 16px/`base` 20px/`lg` 32px/`xl` 40px/`xxl` 64px dest 1 ≠ Shape `sm` 6px/`md` 8px/`lg` 20px/`full` 9999px dest 1. A1a `1.01` dest 1 · `1.25` 5 · `1.40` 1 · `1.19` 1 beside `1.25 (45px)`/`1.25 (20px)`/`7.20rem` dest 2. A1b `Type: button` 2=`type: button` 2 · `input` 1 · `card` 2 · `tab` 1 · `badge` 1. YAML typography use 7/7 dest≥1 · component use 7/7 dest≥1 + §4 긴 쪽 병기(Primary `the system's single primary action` dest 1 · Product `floating over media` dest 2 · Tinted `cool-grey surface` dest 1 · Contact `text fields and message textarea` dest 1 · `Contact form text fields and message textarea` dest 1). C2 dest Primary·Charcoal·Field L/E/S 개방 3=3=3 · nav `tab` L/E/S NA dest 1=1=1 쌍닫힘 · `loading | applicable` dest 3 · `loading | not-applicable` dest 1 · applicable 행 25 / NA 행 3 · Kind omitted 3. D2 페르소나 파생물 DESIGN dest 0(`정민석`/`Grace Lim`/`한도윤`/`판교`/`대전`/`Head of AI transformation`/`booking a call`/`factory floor`/`concrete capability claims` dest 0). Audience는 원본 §13 그룹 `enterprise AI buyers` dest 1. sibling `90px`/`115.2px`/`116.64px`/`48px`/`56px`/`Roboto`/`Log in`/`10px`/`16px / 500` DESIGN dest 0. 융합 `14px radius with 16px padding` dest 0 · `measures 1440px` dest 0. D1 `native-client`/`storefront`/`authenticated`/`mobile app` DESIGN dest 0. 표면: Semantic color `from the captured homepage` dest 1 · blog H1은 voice `maum.ai BRAIN Team` dest 2, `48px` DESIGN dest 0. 비결함: `Sub-heads, policy titles` SRC 1 / DESIGN 0 — YAML 긴 쪽 `Sub-heads / policy titles, Pretendard` dest 1(짧은 쪽 선택 아님). `Top horizontal nav` SRC 1 / DESIGN 0 — Role `top horizontal nav` dest 1 + Items `Physical AI`/`Defense`/`MAIED`/`Company` dest≥1. `ships real hardware and models`/`consumer app chasing delight`/`precise and trustworthy`/`softer SaaS peers`/`applied outward` SRC 1 / DESIGN 0 — founding `2014` dest 1 · `유태준` dest 1 · `KOSDAQ` dest 2 · refuses/embraces dest 1. `cubic-bezier(0.2, 0.6, 0.25, 1)` DESIGN dest 0 / P dest 1 — duration 120ms dest 3 / 240ms dest 1 / 360ms dest 1 · Use `Arriving — cards, sheets, carousel` dest 1. F2 `Pretendard` 33/12 · `Jamsil` 16/8 · `Orbitron` 16/5 · `시작하기` 11/3 · B2a 25=25 · DESIGN/P SHA 로그=파일. 산출 미수정.
+-- 갱신: 2026-09-01 · **웨이브 27형 의미 검토 `medibloc` = PASS** (독립 재검토, A·C·D만; B2a·E2 미판정; 추가형 7–11 포함; FAIL 1 개정 이후 본문 SHA `e71aaf65465fa620ca340b2ee4b762b85cc9770a814edb4e5e6a404b18f19ad0`). `find`로 산출 4 + 원본 + sibling `web/references/medibloc/.verification.md` 경로 직접. 계수 `grep -oF -- | wc -l` 파일별(bash; 빈 출력 dest 0, zsh `no matches found` 아님). 산출 미수정.
+-- 갱신: 2026-09-01 · **사용자 지시 일시 중단 — 웨이브 44 마감 직전 상태로 보존. 이 항목이 재개 지점이다.**
+-  - **웨이브 44** (makinarocks·mastercard·maum-ai·medibloc·megabox): 이관 5/5 · 게이트 5/5 PASS · F3 5/5(111건: 13/19/20/30/29) · use 5/5 100% · **1:1 5/5 OK**(megabox E1 26→26 개정 완료, maum-ai는 검사기 오탐 — 브랜드 토큰 점 포함 `not maum.ai-authored`를 정규식이 배제, 검사기 수정으로 해소·회귀 4종 무결). 검토 1차: makinarocks PASS · mastercard PASS · maum-ai FAIL 2 · medibloc FAIL 1 · megabox(동시 편집 오염으로 폐기 — 검토와 E1 개정을 같은 브랜드에 병렬 투입한 오케스트레이터 실수). 개정 3건 전부 **지목 문자열 실측 확인**(maum-ai 2·medibloc 1·megabox E1). **남은 것: megabox FAIL 2 개정 완료 → 재검토 → 판정문 → done-ledger → wave-close → 커밋.** maum-ai·medibloc 풀 재검토는 둘 다 PASS로 닫힘. megabox 첫 유효 검토 = FAIL 2 (`0px 10px` sibling 승격 · 예약 링크 4px 융합 관측).
+-  - **T3 재개 계획 시드 확정**: `docs/OMD_T3_RESTART_PLAN.md` — 재편 모델(작업 opus5 · 채점 grok-build+sonnet5(Claude) · 검수 Fable) 7페이즈: 재봉인(§3.2 2계열 재작성·2-rater α·scoring-order 재생성) → 24칸 재사용+84칸 생산(~$91) → 전사 → 청킹 채점(사전 선언) → verify → Fable 소견서→omd:issue 성장 루프 → 공개 게이트. **Claude OAuth 80% 도달 시 Claude 풀 중지** 하드 가드. 우로보로스는 SDK 초기화 1MB 버퍼 초과로 2회 실패(기지 이슈) — 수동 시드로 대체.
+-  - **판단 위계(#81) 실측 완료**: claim 본문은 GOVERNANCE_COPY(5로케일)와 **바이트 동일 강제** — 3회 삽입 실험 전부 실패로 규명. 소급 = 정본 문안 한 곳 개정 + 정확 문자열 치환(LLM 불필요, 2~3시간). 시도 흔적 `scripts/retrofit-value-precedence.mjs`(--strip 롤백 검증 완료, 215개 바이트 동일 복원). **웨이브 45 워커에 넣었던 append 지시는 회수됨** — 정본 개정 전에 재추가 금지.
+-  - **미커밋 15건**: 웨이브 44 산출물 5브랜드 + T3 계획 + retrofit 스크립트 + CURRENT_STATE/JOURNAL — 마감 미완이라 커밋 안 함(규율). 재개 후 마감 커밋에 포함.
+-  - **오늘 커밋됨** (`3b9bee7d`): omd:issue 스킬(+이슈 #75~81 7건 접수) · render-integrity · /design.md 공개 URL · stripe 3-arm 콘텐츠 런($2.50, compare.html 촬영 준비 완료) · 캠페인 문서 · T3 시각 감사(실파손 1 = figure UA 마진, 가드레일 완비).
+-  - **다음 세션 착수 순서**: ① 웨이브 44 잔여 3검토→마감 ② T3 Phase 0 재봉인 ③ 웨이브 45(스코프드 재검토·서브에이전트 CURRENT_STATE 제외 신규 적용) + T3 Phase 2 생산 교차 ④ 판단위계 정본 개정.
+-- 갱신: 2026-09-01 · **웨이브 27형 의미 검토 `maum-ai` = PASS** (독립 재검토, A·C·D만; B2a·E2 미판정; 추가형 7–11 포함; FAIL 2 개정 이후 본문 SHA `18bbe35c4389099cbb9a54d87cec472d68fc985a7446704296cc0d1da6e1ee76`). `find`로 산출 4 + 원본 + sibling `web/references/maum-ai/.verification.md` 경로 직접. 계수 `grep -oF -- | wc -l` 파일별(bash; 빈 출력 dest 0, zsh `no matches found` 아님). 직전 FAIL 2 착지: `"MAIED" oversized wordmark`/`Feature section titles`/`Charcoal round CTA labels`/`Top navigation items`/`Secondary actions —` SRC 각 1 / DESIGN 1 · YAML `16px / 700 Pretendard` SRC 3 / DESIGN 3 · `20px / 600 Pretendard` SRC 1 / DESIGN 1 · §4 `16px Pretendard weight 700` SRC 5 / DESIGN 3 · `20px Pretendard weight 600` SRC 2 / DESIGN 1 · 발명형 `16px / 700 / Pretendard`·`20px / 600 / Pretendard` SRC 0 / DESIGN 0. YAML colors 15 path dest≥1 (`#4262ff` 8 · `#3652d8` 4 · `#343434` 6 · `#111111` 13 · `#000000` 3 · `#5b636d` 4 · `#595959` 4 · `#8e8e8e` 5 · `#ff4d4d` 8 · `#2563eb` 3 · `#ffffff` 13 canvas≠on-primary≠card hairline≠nav bg · `#f2f3f8` 15 · `#f2f5f9` 6 · `#dee4eb` 9). spacing `xs` 4px/`sm` 8px/`md` 16px/`base` 20px/`lg` 32px/`xl` 40px/`xxl` 64px dest 1 ≠ Shape `sm` 6px/`md` 8px/`lg` 20px/`full` 9999px dest 1. A1a `1.01` dest 1 · `1.25` 5 · `1.40` 1 · `1.19` 1 beside `1.25 (45px)`/`1.25 (20px)`/`7.20rem` dest 2. A1b `Type: button` 2=`type: button` 2 · `input` 1 · `card` 2 · `tab` 1 · `badge` 1. YAML typography use 7/7 dest≥1 · component use 7/7 dest≥1 + §4 긴 쪽 병기(Primary `the system's single primary action` dest 1 · Product `floating over media` dest 2 · Tinted `cool-grey surface` dest 1 · Contact `text fields and message textarea` dest 1). C2 dest Primary·Charcoal·Field L/E/S 개방 3=3=3 · nav `tab` L/E/S NA dest 1=1=1 쌍닫힘 · `loading | applicable` dest 3 · `loading | not-applicable` dest 1 · Kind omitted 3. D2 페르소나 파생물 DESIGN dest 0(원본 §13 그룹만 Audience `enterprise AI buyers` dest 1). sibling `90px`/`115.2px`/`116.64px`/`48px`/`56px`/`Roboto`/`Log in` DESIGN dest 0. 융합 `14px radius with 16px padding` dest 0 · `measures 1440` dest 0. D1 `native-client`/`storefront`/`authenticated` DESIGN dest 0. 비결함: `Sub-heads, policy titles` SRC 1 / DESIGN 0 — YAML 긴 쪽 `Sub-heads / policy titles, Pretendard` dest 1(짧은 쪽 선택 아님). `ships real hardware and models`/`consumer app chasing delight`/`precise and trustworthy`/`softer SaaS peers`/`applied outward` SRC 1 / DESIGN 0 — founding 2014·유태준·KOSDAQ·refuses/embraces dest≥1. `cubic-bezier(0.2, 0.6, 0.25, 1)` DESIGN dest 0 / P dest 1 — duration 120/240/360ms dest≥1 · Use `Arriving — cards, sheets, carousel` dest 1. F2 `Pretendard` 33/12 · `Jamsil` 16/8 · `Orbitron` 16/5 · `시작하기` 11/3 · B2a 25=25 · DESIGN SHA 현행 일치. 산출 미수정.
+-- 갱신: 2026-09-01 · **웨이브 27형 의미 검토 `medibloc` = PASS** (독립 검토, A·C·D만; B2a·E2 미판정; 추가형 7–11 포함; FAIL 1 개정 이후 본문 SHA `e71aaf65465fa620ca340b2ee4b762b85cc9770a814edb4e5e6a404b18f19ad0`). `find`로 산출 4 + 원본 + sibling `web/references/medibloc/.verification.md` 경로 직접. 계수 `grep -oF -- | wc -l` 파일별(bash; 빈 출력 dest 0, zsh `no matches found` 아님). 직전 FAIL 1 착지: §3 Notes `Hero headline, white on dark`/`"Panacea", blue`/`Blog article title`/`"MediBloc Wallet", "MediBloc Explorer"`/`Blog section lead`/`Secondary body, outlined-button labels`/`Button / nav labels` SRC 1 / DESIGN 1 · `Standard reading text`/`Fine print, meta, timestamps` SRC 2 / DESIGN 3 · YAML use 15/15 dest≥1 · `60px Pretendard Bold white headline` DESIGN 1 / P 1. YAML colors 15 path dest≥1 (`#0066ff` 20 · `#007aff` 1 · `#0045ff` 1 · `#0b7aff` 1 · `#ebf1ff` 2 · `#cc3366` 4 · `#1c1e1f` 9 · `#333333` 8 · `#434343` 2 · `#767676` 3 · `#999999` 2 · `#9d9d9d` 3 · `#ffffff` 13 canvas≠outlined bg≠Visit/nav text · `#131313` 13 · `#000000` 6). spacing `tokens.spacing.xs: 4` dest 2 ≠ `tokens.rounded.md: 4` dest 1 · `sm: 7` 1 · `base: 12` 1 · `md: 14` 1 ≠ Visit `14px` · `lg: 24` 1 ≠ `12px 24px` · `xl: 25` 1 · `xxl: 50` 1 ≠ `0px 50px` · `tokens.rounded.lg: 8` dest 1 · `pill: 28` 1 ≠ height 48 · `full: 9999` 1. A1a `1.2` dest 2 · `1.3` 2 · `1.5` 6 · `1.6` 2 · `tight` 5 · `normal` 2. A1b `Primitive type: \`button\`` 3 · `card` 1 · `tab` 1 · `badge` 1. C2 Outlined L/E/S 개방 dest 1=1=1 · Visit·text-link·nav `tab` L/E/S NA dest 3=3=3 쌍닫힘 · card C4 · badge non-interactive. D2 페르소나 파생물 0(`김민재`/`박수현`/`이도현`/`서울`/`경기`/`대전`/`private-clinic director`/`aging on-premise`/`between rooms`/`re-explaining`/`MED-token holder` DESIGN·P·L dest 0). Audience는 §13 머리글 `Korean clinic operators, patients managing their own records, blockchain participants` dest 2. sibling `1440×900`/`36.6px`/`22.65px`/`28.8px`/`#892bf5`/`Poppins`/`공지사항`/`0px 10px 20px` DESIGN dest 0. 융합 `14px radius with 16px padding` dest 0 · `measures 1440px` dest 0. D1 `native application`/`mobile app`/`back-office`/`product application` DESIGN dest 0. 표면: Blog Link Blue `#0b7aff` blog · Body `#333333` corporate · Body Soft `#434343` blog · Ink `#1c1e1f` blog/content. F2 `#0066ff` 20/13 · `weavrlog.care` 4/7 · B2a 37=37 · SHA 현행 일치. 산출 미수정.
+-- 갱신: 2026-09-01 · **maum-ai 산출물 개정 (의미 검토 FAIL 2).** A1 항목 11: Type roles Notes에 §3 고유 표기 병기(`"MAIED" oversized wordmark` · `Feature section titles` · `Charcoal round CTA labels` · `Top navigation items` DESIGN dest 1). Charcoal Use에 §4 `Secondary actions —` dest 1. 항목 5: Primary·Charcoal·Nav·Badge Font를 YAML `16px / 700 Pretendard`(dest 3)·`20px / 600 Pretendard`(dest 1)와 §4 `16px Pretendard weight 700`(dest 3)·`20px Pretendard weight 600`(dest 1) 병기. 발명형 `16px / 700 / Pretendard`·`20px / 600 / Pretendard` DESIGN dest 0. 한정 25=25 (203–227). dest `Pretendard` 29→**33** · `Contact Us`/`Chatbot Inquiry` 9→**10** · `MAIED` 10→**11** · `Top navigation item` 1→**2**. `node scripts/check-limiter-ledger.mjs maum-ai` 본문 25=원장 25. `--gate-only` PASS. SHA `18bbe35c4389099cbb9a54d87cec472d68fc985a7446704296cc0d1da6e1ee76`. 토큰·표·applicability·원본 무변경. `FIX_DONE maum-ai fixed=2 logdest=16`.
+-- 갱신: 2026-09-01 · **medibloc 산출물 개정 (의미 검토 FAIL 1).** A1 항목 11 1건: Type roles에 원본 §3 Notes 열 병기(YAML `use` dest 2 유지). §9 `60px Pretendard Bold white headline` Type roles `:206` 착지. 사실 인용 + 기존 `:204` 한정에 keep-both 접음(37=37). dest Notes 7바늘 D1 · `Standard reading text`/`Fine print, meta, timestamps` 2→**3** · `60px Pretendard Bold white headline` D1/P1 · YAML `Hero headline, Pretendard Bold cut` P 0→**1**. 로그 YAML typography·§3·§9·uniqueness dest 갱신. `node scripts/check-limiter-ledger.mjs medibloc` 본문 37=원장 37 (168–204). `--gate-only` PASS. YAML use 15/15. SHA `e71aaf65465fa620ca340b2ee4b762b85cc9770a814edb4e5e6a404b18f19ad0`. 줄 수 DESIGN 515 불변. `wc -w` 6886→**6986**. 토큰·표·applicability·구조·원본 무변경. `FIX_DONE medibloc fixed=1 logdest=12`.
+-- 갱신: 2026-09-01 · **웨이브 27형 의미 검토 `megabox` = FAIL 1** (독립 검토, A·C·D만; B2a·E2 미판정; 추가형 7–11 포함; F3 이후 본문 SHA `b869b52aab36c183e5f21ba7c8bce518573ce65b3d09e2c7e49aa2ba02aba4f9`). `find`로 산출 4 + 원본 + sibling `web/references/megabox/.verification.md` 경로 직접. 계수 `grep -oF -- | wc -l` 파일별(bash; 빈 출력 dest 0, zsh `no matches found` 아님). **1 A1** 원본 YAML `search-input-inline: 10` + §6 `:159` `10px` on a movie-route search input — SRC `0px 10px` dest 0 / SIB dest 1 (`:37` capture 25) / DESIGN dest 1 (`:94` “search-input padding `0px 10px`”) / P dest 1 (sibling-only 표 `:66`, 허용) / L dest 0 / AUD dest 1 (B1 보고로 남김). 세로 `0px`는 원본에 없는 축. 비결함: YAML colors 5 path dest≥1 (`#503396` 9 · `#ffffff` 8 canvas≠on-primary≠token-set `bg` · `#FFFFFF` 5 컴포넌트 Background · `#444444` 4 · `#666666` 3). spacing `like-button-inline: 5` dest 2 ≠ `0px 5px` dest 2 · `search-input-inline: 10` dest 2 ≠ Shape `compact-control: 4` dest 1 ≠ `theater-lookup: 30` dest 1 · `tokens.shadow.none` dest 1. A1a lineHeight 이미 px (`22.5px` dest 3 · `30.7989px` dest 3) · `27.999` dest 3 · `13.0005px / 400 / NanumBarunGothic` dest 2. A1b `Primitive type: \`button\`` 1=`type: button` 1. YAML use 3/3 verbatim dest≥1 (`Observed on the supplied public home…` dest 2 · `Observed only on the supplied public movie-route h2.` dest 1 · `Movie route list action` dest 2) + §4 Use `Actual \`button\` element at` dest 1. C2 movie-list L/E/S 개방 dest 1=1=1 · reservation·theater·carousel C4 kind/map 생략 · `loading | not-applicable` dest 0 · `not-applicable` dest 1은 C1 금지문만. D2 페르소나 파생물 0(이름·나이·도시 원본 없음; Audience는 §13 Cinema visitor/Member/Employee dest 1). sibling `74px`/`72px`/`rgb(34, 34, 34)`/`197px × 34px`/`coverage score 80` DESIGN dest 0. 융합 `14px radius with 16px padding` dest 0 · `measures 1440px` dest 0. D1 `native-client`/`storefront` DESIGN dest 0. F2 `#503396` 9/6 · homepage 7/20 · `1440×900` 4 · B2a 26=26 · DESIGN SHA 현행 일치. 산출 미수정.
+-- 갱신: 2026-09-01 · **웨이브 27형 의미 검토 `maum-ai` = FAIL 2** (독립 검토, A·C·D만; B2a·E2 미판정; 추가형 7–11 포함; F3 이후 본문 SHA `5f71db74cb6bd9786805def8b8e7c6fe34a4c9e9df051a5464c8379fd1e40a49`). `find`로 산출 4 + 원본 + sibling `web/references/maum-ai/.verification.md` 경로 직접. 계수 `grep -oF -- | wc -l` 파일별(bash; 빈 출력 dest 0, zsh `no matches found` 아님). **1 A1 item 11** 원본 §3 Notes `:115` `"MAIED" oversized wordmark` · `:116` `Feature section titles` · `:118` `Charcoal round CTA labels` · `:120` `Top navigation items` · §4 Charcoal Use `:150` `Secondary actions —` SRC 각 1 / DESIGN·P·L·AUD·SIB 각 0. 산출 Type roles Notes는 YAML 긴 쪽 dest 1 (`Oversized MAIED techno wordmark, Orbitron` · `Section heads (MAUM.AI Foundation Model), Jamsil` · `Large charcoal round CTA label, Pretendard` · `Top nav item, Pretendard`). Charcoal Use는 YAML `Contact Us / Chatbot Inquiry round CTA` dest 2; Role `secondary Contact Us…` dest 1은 §4 Use 바이트가 아님. **2 항목 5** 같은 YAML↔§4 폰트 충돌을 자리마다 다르게 닫음. YAML `16px / 700 Pretendard` SRC 3 / DESIGN 0 / SIB 1 / AUD 1 · `20px / 600 Pretendard` SRC 1 / DESIGN 0. 산출 Primary `:248` `16px / 700 / Pretendard` SRC 0 / SIB 0 / DESIGN 1 / AUD 1 · Charcoal `:274` `20px / 600 / Pretendard` SRC 0 / SIB 0 / DESIGN 1. Nav `:353`·Badge `:342`는 §4 `16px Pretendard weight 700` DESIGN dest 2 (SRC 5). `20px Pretendard weight 600` SRC 2 / DESIGN 0. 비결함: YAML colors 15 path dest≥1 (`#4262ff` 8 · `#3652d8` 4 · `#343434` 6 · `#111111` 13 · `#000000` 3 · `#5b636d` 4 · `#595959` 4 · `#8e8e8e` 5 · `#ff4d4d` 8 · `#2563eb` 3 · `#ffffff` 13 canvas≠on-primary≠card hairline≠nav bg · `#f2f3f8` 15 · `#f2f5f9` 6 · `#dee4eb` 9). spacing `xs 4`/`sm 8`/`md 16`/`base 20`/`lg 32`/`xl 40`/`xxl 64` dest 1 ≠ Shape `sm 6`/`md 8`/`lg 20`/`full 9999` dest 1 (`tokens.spacing.sm: 8` ≠ `tokens.rounded.md: 8` · `tokens.spacing.base: 20` ≠ `tokens.rounded.lg: 20`). A1a `1.01` dest 1 · `1.25` 5 · `1.40` 1 · `1.19` 1 beside `1.25 (45px)`/`1.25 (20px)`/`7.20rem` dest 2. A1b `Type: button` 2=`type: button` 2 · `input` 1 · `card` 2 · `tab` 1 · `badge` 1. YAML use 7/7 dest≥1 + §4 긴 쪽 Role 병기(Primary `the system's single primary action` dest 1 · Product `translucent white hairline outline floating over media` dest 1 · Tinted `cool-grey surface` dest 1 · Contact `text fields and message textarea` dest 1). C2 dest Primary·Charcoal·Field L/E/S 개방 3=3=3 · nav `tab` L/E/S NA dest 1=1=1 쌍닫힘 · `loading | applicable` dest 3 · `loading | not-applicable` dest 1 · Kind omitted 3. D2 페르소나 파생물 0(`정민석`/`Grace Lim`/`한도윤`/`판교`/`대전`/`서울`/`Head of AI transformation`/`booking a call`/`factory floor` DESIGN·P·L·AUD dest 0). Audience는 원본 §13 그룹 `enterprise AI buyers` dest 1. sibling `90px`/`115.2px`/`116.64px`/`48px`/`56px`/`Roboto`/`Log in` DESIGN dest 0. 융합 `14px radius with 16px padding` dest 0 · `measures 1440` dest 0. D1 `native-client`/`storefront`/`authenticated` DESIGN dest 0. `cubic-bezier(0.2, 0.6, 0.25, 1)` DESIGN dest 0 / P dest 1 — duration 120/240/360ms dest≥1 · Use `Arriving — cards, sheets, carousel` dest 1. 고유 잔여 `ships real hardware and models`/`consumer app chasing delight`/`precise and trustworthy`/`softer SaaS peers`/`applied outward` SRC 1 / DESIGN 0 — founding 2014·유태준·KOSDAQ·refuses/embraces dest≥1(슬롯 있음). F2 `Pretendard` 29/12 · `Jamsil` 16/8 · `Orbitron` 16/5 · `시작하기` 11/3 · SHA 현행 일치. 산출 미수정.
++## 먼저 읽을 문서
+ 
+-- 갱신: 2026-09-01 · **E1 1:1만 `megabox`.** `check-limiter-ledger.mjs` 착수 본문 26 / 원장 27 (184–211). 표 머리 `Portable location`이 데이터로 잡힘 → `Location`. 데이터 186–211은 본문 26줄과 1:1(합침 0·본문 한정 신설 0). 수정 후 본문 **26** / 원장 **26** (186–211). `--gate-only` PASS. DESIGN SHA 불변 `b869b52aab36c183e5f21ba7c8bce518573ce65b3d09e2c7e49aa2ba02aba4f9`. 원본·토큰·표·applicability 미수정. `FIX_DONE megabox e1=0`.
+-- 갱신: 2026-09-01 · **F3 B2a·E2 감사 `medibloc`.** 산출 `docs/design-md-weight/migrated/medibloc/{DESIGN.md,provenance.md,migration-log.md,audit-log.md}`. sibling `web/references/medibloc/.verification.md` 경로 직접. 계수 `grep -oF -- | wc -l` 파일별. 본문 한정 35→**37**=원장 37 (168–204). Motion `:157` B3 문서 게이트 완전형. Layout `:388` generous/confident. Semantic `:87` cross-surface 등. How-to-read `:227` keep-both. E2: blog URL P 45→**46** · `Primitive type: \`button\`` 234/261/287 · §9 `26px Pretendard SemiBold #1c1e1f` DESIGN dest **0** → 백틱형 dest **3**. A1 6레코드 키 경로 행 보존(복원 0). DESIGN SHA `e2364c87c8b7e04707a6bc7f58fc1f2192bbfcd41080eba8979d0f7307425fae`. `wc -w` 6886. `AUDIT_DONE fixes=30`.
+-- 갱신: 2026-09-01 · **F3 B2a·E2 감사 `megabox`.** 산출 `docs/design-md-weight/migrated/megabox/{DESIGN.md,provenance.md,migration-log.md,audit-log.md}`. sibling `web/references/megabox/.verification.md` 경로 직접. 계수 `grep -oF -- | wc -l` 파일별. 본문 한정 24→**26**=원장 26 (186–211). Distinctive `:38` interactionCount 캡처 경계. Semantic `:80` YAML `bg` `#ffffff`. `:88` YAML `#ebebeb`. Family `:134`·proof-record `:200` 신설. A1 Movie list action `bg`/`border`/`states` 블록 행. E2 homepage dest 7 at 9×4 · `#503396` dest 9 at 80×2 · exact `tokens.source: reconciled` P dest 2. DESIGN SHA `b869b52aab36c183e5f21ba7c8bce518573ce65b3d09e2c7e49aa2ba02aba4f9`. `wc -w` 4359. `AUDIT_DONE fixes=29`.
+-- 갱신: 2026-09-01 · **F3 B2a·E2 감사 `mastercard`.** 산출 `docs/design-md-weight/migrated/mastercard/{DESIGN.md,provenance.md,migration-log.md,audit-log.md}`. sibling `web/references/mastercard/.verification.md` 경로 직접. 계수 `grep -oF -- | wc -l` 파일별. 본문 한정 22→**24**=원장 24 (173–196). Semantic `:87` Gray 100 + `#FFFFFF` canvas/on-primary + `#141413` primary/foreground. Type roles `:219` §9 eyebrow. Standard Card `:459`·Content locale `:730` 신설. A1 `button-primary.disabled` exact `#CCCCCC bg, #767676 text` dest 1. E2 `#EB001B` 32/8 · `#141413` 26/7 · `editorial syntheses` 3/2 · `SF Mono` 4. DESIGN SHA `6919a3417429308082130504ec28da59a014bb40ffcb154b0d6ba52b5e6cc897`. `wc -w` 8912. `AUDIT_DONE fixes=19`.
+-- 갱신: 2026-09-01 · **F3 B2a·E2 감사 `makinarocks`.** 산출 `docs/design-md-weight/migrated/makinarocks/{DESIGN.md,provenance.md,migration-log.md,audit-log.md}`. sibling `web/references/makinarocks/.verification.md` 경로 직접. 계수 `grep -oF -- | wc -l` 파일별. 본문 한정 23=원장 23 (137–159) 유지, DESIGN.md 미수정(SHA `3a1a534c8f3a8efa9536c10150360de8ae36ccec5aaac4cfceaf306bab50e2c8`). E1: Content `:241`·Principles `:47` 원장을 본문 주어에 맞춤. E2: `zero visible uses` dest 2→1 · `do not attribute…` dest 2→1 · §11 4바늘 dest 1→2 · `getdesign` P 2→3 · `refero` P 1→2 · 색 79–85 · `1440×900` 221 · 원장 줄 번호 · industrial P dest 1. provenance SHA `e5c93a4c96715ec65ef9691fb2230c9d03924829474f6b537198ec79684b2ed4`. A1 복원 0. `AUDIT_DONE fixes=13`.
+-- 갱신: 2026-09-01 · **content-run stripe/omd** 완료. 산출 `test-v2/content-runs/stripe/omd/{render.html,image.jpg,system.md,trace.md}`. 팩 `omd-autopilot-v2`. T3-3 `03-runs` 미사용. 공개 시연용. 다른 arm 팩·산출 미열람. integrity PASS. `CONTENT_RUN_DONE brand=stripe arm=omd outputs=4`.
+-- 갱신: 2026-09-01 · **T2 마이그레이션 `megabox`.** 규칙집 v12. 산출 `docs/design-md-weight/migrated/megabox/{DESIGN.md,provenance.md,migration-log.md}`. 토큰 표면은 공개 웹 3로트 `https://www.megabox.co.kr/` + `/movie` + `/booking` (`1440×900`). 발행 1차 UI 사양 없음 — B2a 예문 `not Megabox-authored or a separately published UI specification` 24=24. A5a 손 대조 발행 카피 22/0 missing, gate compared 3 / candidates 86. 무출처 커브 없음 + B3 전문 DESIGN Motion 114. §13 이해관계자 그룹만 Audience(이름 DESIGN/P dest 0). C2: movie-list `button` L/E/S 개방 dest 1; reservation link·theater lookup·carousel C4 kind/map 생략. YAML `type: button` dest 1. sibling `.verification.md` 채택, `74px`/`72px`/`rgb(34, 34, 34)`/`coverage score 80` 본문 미승격. D1 `native-client`/`storefront` DESIGN dest 0. 고유표현 자가대조 90 추출 / 4 복원. `--gate-only` PASS, `portable_core: true`. SHA `ed6277a9dd6d003e2c5d4d8a93b181253b8e3b5c9ae20a28c7d6b65c4ab39b7e`. 원본·sibling 미수정. 카탈로그 채택 아님. F3 미실행. `DONE migrated=1`.
+-- 갱신: 2026-09-01 · **T2 마이그레이션 `medibloc`.** 규칙집 v12. 산출 `docs/design-md-weight/migrated/medibloc/{DESIGN.md,provenance.md,migration-log.md}`. 토큰 표면은 `https://medibloc.com/` + `https://blog.medibloc.org/` (weavrlog.care). 발행 1차 UI 사양 없음 — B2a 예문 `not MediBloc-authored or a separately published UI specification` 35=35 (원장 167–201). A5a 손 대조 CJK 32/6 D2a identifiers/0 published lost + 라틴 22/0, latin-copy-audit 0 lost, gate `compared` 6/`candidates` 172. C2: Outlined Action L/E/S 개방 dest 1 (`Apply for Token swap`); Visit·text-link·nav L/E/S NA dest 3; card C4; badge non-interactive. YAML type button 3 / card 1 / tab 1 / badge 1. 무출처 커브 3개 삭제·duration 120/200/320ms + B3 전문 `DESIGN.md` 157. sibling `.verification.md`는 Proof 보강, `1440×900`/`36.6px`/`#892bf5`/`공지사항` 본문 미승격. §13 페르소나 삭제(무식별; Audience는 원본 머리글 그룹). D1 `native application`/`mobile app`/`back-office` DESIGN dest 0. 고유표현 자가대조 147 추출 / 4 복원 / 잔여 0. `--gate-only` PASS, `portable_core: true`. SHA `4b745e45e8965c287f433d829e55466141c5be95027400a352965bd103eb9480`. 원본·sibling 미수정. 카탈로그 채택 아님. F3 미실행. `DONE migrated=1`.
+-- 갱신: 2026-09-01 · **content-run stripe/hallmark** 완료. 산출 `test-v2/content-runs/stripe/hallmark/` (render.html · image.jpg · system.md · trace.md). 봉인 T3-3 `03-runs` 미사용. 공개 시연용. 다른 arm 산출은 이 세션에서 안 읽음.
+-- 갱신: 2026-09-01 · **T2 마이그레이션 `makinarocks`.** 규칙집 v12. 산출 `docs/design-md-weight/migrated/makinarocks/{DESIGN,provenance,migration-log}.md`. 토큰 표면은 공개 홈 `https://www.makinarocks.ai/` + About + Blog; 2026 리브랜드 글은 브랜드 맥락. 발행 1차 UI 사양 없음 — B2a 예문 `not MakinaRocks-authored or a separately published UI specification` 23=23 (원장 137–159). A5a 손 대조 발행 카피 12+use 2 / 0 missing, gate compared 0 / candidates 71. 무출처 커브 없음 + B3 전문 DESIGN Motion dest 1. §13 이해관계자 그룹만 Audience(이름 DESIGN/P dest 0). C2: header nav·disabled home control L/E/S NA dest 2 (`loading | applicable` dest 0). YAML type button 1. sibling `.verification.md` 채택, `31.2px`/`24px` about-list/`1,656` 본문 미승격. D1 `native-client`/`storefront`/`mobile app` DESIGN dest 0. 고유표현 자가대조 72/0. `--gate-only` PASS, `portable_core: true`. SHA `3a1a534c8f3a8efa9536c10150360de8ae36ccec5aaac4cfceaf306bab50e2c8`. 원본·sibling 미수정. 카탈로그 채택 아님. F3 미실행. `DONE migrated=1`.
+-- 보관: 2026-08-14~08-29 항목 675건은 `docs/archive/CURRENT_STATE-2026-08.md`로 이동(2026-09-02). 이 파일은 최근 항목만 유지한다 — 훅 출력·SDK 버퍼 상한 때문.
++- `docs/reviews/execution-readiness-2026-09-07.md` — 최신 판정: 구현 착수 가능, 전체 벤치 자동화는 첫 스프린트의 작업.
++- `docs/reviews/runtime-access-preflight-2026-09-07.md` — 최신 브라우저/인증/격리 진단, goal 시작 경계.
++- `docs/OMD_EXECUTION_PLAN_2026-09-07.md` — 최신 실행 기준: F/B/A/D/E, 모델/슬롯/완료 판정.
++- `docs/OMD_EXECUTION_BOARD_2026-09-07.json` — 28개 계획 작업의 의존성·담당·완료 증거. 스케줄러 아님.
++- `docs/reviews/omd-restart-audit-2026-09-07.md` — 코드 근거, 결함, 진척, 검증 결과.
++- `docs/BENCHMARK_RESTART_2026-09-07.md` — 순정 포함 4조건 파일럿. 실행 전 초안.
++- `docs/APHRODITE_REBOOT_2026-09-07.md` — 작품 브리프와 하네스 편입 조건. r10 미제작.
++- `docs/APHRODITE_HANDOVER.md` — 이전 점수/도구/코퍼스. 상단의 인과 해석 보정 먼저 읽기.
++- 이전 장문 상태 원문: `docs/archive/CURRENT_STATE-2026-09-07-before-audit.md`.
++  오래된 실행 명령·승인 대기는 당시 기록이며 자동 재개 지시가 아니다.
++
++## 확인된 현황
++
++| 축 | 상태 |
++|---|---|
++| CLI | 소스 2.0.1. 제품 스킬 28 / Cursor 27. npm latest·실서비스 배포는 이번에 조회 안 함 |
++| T3 | 레인 A 108개 생성, B 0. OMD 75.1 / UIUX 74.2 / Hallmark 68.9; 유의한 우승 없음, α 전 축 미달 |
++| 순정 모델 | 기존 UI-Resolve에 no-skill 인프라 있음. 최근 T3 비교에는 없음 |
++| Aphrodite | r0~r9. 최고 r2 70, r9 10, r7/r8 미채점. 새 미적 합격작 없음 |
++| Core 이관 | staged DESIGN.md 290, DONE 293, deferred openpoint 1, ledger missing 0. 정본 440는 기존 형식 |
++| 블로그 | 출시 글 1편 ko/en. 기업별 연재는 미생성 |
++| GitHub | 조회 당시 open PR 0, open issue 21. 일부 열린 이슈는 현행 구현이 있어 acceptance 후 정리 필요 |
++
++## 이번에 수정한 것 (미커밋)
++
++1. doctor의 aphrodite 누락, 5개 언어 CLI 문서 목록/개수 불일치.
++2. quality gate 기본 strict + prepublish strict. 빈 행렬/오타 selector/빈·알 수 없는 check/누락 source 차단.
++   개발 진단만 `--allow-incomplete`. 정책 회귀 테스트 5개 추가.
++3. 공식 mirror sync로 aphrodite 사본 2개 갱신. 최종 managed drift 0.
++4. 캠페인 초안의 “OMD만 system.md 생성” 오정보 정정: 실제 세 arm 모두 제출.
++5. 인수 감사/벤치/아프로디테 재시작안 작성, 이전 CURRENT_STATE 원문 아카이브.
++
++## 검증
++
++- CLI 전체: 1420 passed / 180 skipped (115 files passed, 20 skipped).
++- 웹 전체: 891 passed (61 files).
++- CLI build/lint, 웹 typecheck, diff whitespace PASS.
++- tarball offline 설치 smoke 2개 PASS: 4채널 doctor + Autopilot HANDOFF + Core compile/adopt.
++- mirror check: 200 managed, drift 0, overlay 98개 명시적 제외.
++- quality gate의 missing karrot 2칸: BLOCKED, exit 1. 전체 시각 gate는 재실행 안 함.
++- 브라우저 하네스 연결 실패(Chrome 연결 없음). 저장된 캡처로만 시각 검토; r9 live 미검증.
++- 후속 계약: `test-asset-generation-contract.mjs` 17/17 PASS, draft validation PASS.
++  calibration/main readiness는 미해결 상태로 exit1 확인. 실제 broker/생성 결과에 대한 PASS가 아님.
++  신규 파일은 `benchmarks/ui-resolve-bench/config/asset-generation-four-arm-v0.1.json` 및 동명 검증/테스트 도구.
++
++## 다음 실행 — 제안, 아직 산출/승인으로 간주하지 않기
++
++1. Sol: F-0 snapshot→F-1 실제 runtime/model/브라우저 probe→F-2 설치 dependency→F-3 SHA receipt.
++2. Opus 5 / Claude Code: F-1 확인 후 A-0 방향, D-0 evidence, E-0 기업 브리프를 개별 실행.
++   Grok 4.6 / Grok Build: probe 후 A-1 에셋. Sol은 코드/통계/통합, Astra/Fable은 필요 시 기획만.
++3. B-0~2: 기존 UI-Resolve에 4조건 portable adapter·격리 검증, calibration 4셀 후 동결.
++   신규 계약은 작성/검증 완료. 다음은 F-1 cross-CLI discovery 격리→B-1 실제 broker/adapter→B-2 도구/에셋 calibration.
++   B-3/4: Grok 4조건 병렬로 첫 제출36+후속12, 각 조건 자율 에셋 생성·공유 browser broker 1슬롯.
++   B-5 에셋/페이지 별도 평가→B-6 우선 결함 수정/B-7 생성 에셋→페이지 비교 영상.
++4. A-1/2 첫 화면+전환의 오너 채택→A-3 작품→A-4 스킬→A-5 다른 업종4회→A-6 출하 후보.
++5. D: 4 canary 소비자 parity·실제 rollback 후 추가10개. E: D-0 근거 재사용, 2편 ko/en와 발행 후14일 학습.
++
++## 실행 운영 결정
++
++- 신규 검증: Opus/Grok 입력파일→출력파일→회수 PASS. Grok4개 별도 session/workspace 동시 실행4/4 PASS.
++  `docs/reviews/evidence/worker-readiness-2026-09-07.json` 참조. media/브라우저가 아닌 작은 파일 작업 기준.
++- F-1은 기본 워커/복구/브라우저 연결, B-1/B-2는 벤치 전용 broker/context/media admission. 순환 대기 금지.
++- 이번 사용자 지시: 사전 점검 이후 실제 작업을 별도로 시작. active goal=null이며 아직 생성하지 않음.
++- 프로젝트 AGENTS에 Computer Use Chrome 우선 기록. Chrome extension 연결/Imagine 로그인 확인; iTerm2는 CUA safety policy 거절.
++- Claude auth sandbox false→host true(Max). safe-mode의 Opus5 실제 호출 성공. 재로그인 불필요.
++- Grok 일반 진단과 임시 격리 프로필 진단 모두 성공. init grok-4.6/modelUsage grok-4.6-build, tools0회 사용.
++- 빈 --tools 인자는 default tools가 남아 부적합. 임시 프로필+명시적 allowlist에서 skills0/tools=[todo_write] 실제 확인.
++- Codex ChatGPT 로그인, 조회 당시 사용21%/잔여79%. 이전 Sol capacity는 auth 오류 아님; 이번 Sol 재호출 미실행.
++- 평시 Sol1+Opus1, 필요할 때 Grok1 추가. 벤치 예외는 Grok4 병렬·공유 browser1슬롯, independent asset 도구 병렬 허용.
++- 공통 크리에이티브 에셋 세트 제공을 철회. 공통 brief/facts/tool 권한만 제공하고 각 조건의 기획·생성·선택을 평가.
++- 브라우저는 실제 broker로 FIFO/셀별 시야·다운로드 귀속/취소를 강제. 아직 broker live 구현/검증 전이며 문구만으로 완료 처리 금지.
++- elapsed/실제 중단된 queue wait/active/browser/media 시간을 구분. 병렬 latency는 descriptive-only. 예산은 calibration 후 동결.
++- 이번 사용자 지시가 모델 기준. 과거 Sol 퇴역 문구는 현행 허용 policy와 다르며 F-1에서 조정; 동결 epoch 보존.
++- CLI help/version/설정 탐색·인증·파일 작업·4세션 기본 병렬 확인. media 생성/다운로드·broker·장시간 복구 검증은 남아 있음.
++- 후속 F-1 읽기 전용 점검: temp cwd에서도 Grok가145skills/15hooks/6MCP를 발견.
++  문서화된 GROK_HOME 분리 후에도 ~/.agents·~/.claude 경로에서122skills/14hooks/6MCP 발견.
++  cwd/config 폴더 분리만으로 순정 격리 완료 아님. `docs/reviews/evidence/grok-parallel-preflight-2026-09-07/discovery-receipt.json` 참조.
++  당시 provider 호출0. 이후 최신 사전 점검에서 실제 marker 호출과 명시적 allowlist 확인; 4세션/생성 미검증. 전역 사용자 설정 변경 안 함.
++- 벤치 우승은 완료 필수 조건 아님. 작품 성공/스킬 재현성, 글 발행/성장 효과를 각각 분리 판정.
++- 공통 코드/생성 파일/mirror/상태 문서는 Sol 통합 담당이 직렬 반영. 새 branch/Grok·Claude CLI 생성/발행은 아직 시작하지 않음.
++
++## 유지할 경계 / 열려 있는 일
++
++- 검사 PASS는 미적 우승이 아니다. 밝은 면·3D·에셋 수가 실패 원인이라는 인과 해석은 미확정.
++- 마이그레이션은 wave54 경계 중단 기록 유지. 이 감사에서 STOP 제거/마라톤 재가동 안 함.
++- 실행 스킬의 스타일 gate 개정과 자연어 aphrodite routing은 미실행. 새 작품 검증 후 편입.
++- npm publish, 외부 포스팅, 새 벤치 생성, r10 제작은 이번 감사에서 실행하지 않음.
++- 기존 사용자 변경: higgsgen/research/r5/scroll-feel.json 및 untracked wanted captures/r4 연구 JSON 보존.
++- 런 디렉터리 삭제 금지. canonical references는 web/references만 편집하며 창작 제안을 공식 사실로 승격 금지.
+diff --git a/docs/JOURNAL.md b/docs/JOURNAL.md
+index 14976bb3..d665f46c 100644
+--- a/docs/JOURNAL.md
++++ b/docs/JOURNAL.md
+@@ -1,3 +1,33 @@
++## 2026-09-07 — 워커 입출력·4-way 병렬 준비 판정
++- 한 일: 임시 폴더에서 Opus/Grok 입력→결과 파일→회수와 Grok4개 동시 실행 검증. 모두 PASS, 인증 사본 제거.
++- 판정: 5트랙/28작업 계획과 기본 워커 경로는 착수 가능. broker/media/장시간 복구는 기존 첫 실행 작업으로 남김.
++- 정리: F-1 기본 워커 확인과 B-1 벤치 전용 admission을 분리해 의미상 순환 대기 제거; 증거/준비 판정 저장.
++- 다음: 기존 로드맵으로 F 기반 구현과 독립 A/D 준비 착수. 사용자가 아직 본 실행을 지시하지 않아 goal 미생성.
++
++## 2026-09-07 — 브라우저·로그인 사전 점검과 처리
++- 한 일: 전역 browser-harness 강제 출처 확인, 프로젝트 CUA Chrome 우선 명시. Chrome/Imagine 로그인 확인; iTerm2 제어는 도구 정책 거절.
++- 검증: Claude sandbox auth false/host Max true, Opus5·Grok4.6 실제 marker 응답 성공. Codex 로그인/잔여79% 확인.
++- 처리: Grok 빈 tools 옵션 대신 임시 프로필+명시 allowlist로 skills0/tools1 확인; credential 사본 제거, 전역 설정 보존.
++- 다음: 본 작업/goal은 사용자 지시대로 미착수. 실제 broker·media·4세션 격리 검증부터 이어가기; 최신 runtime-access-preflight 참조.
++
++## 2026-09-07 — 자율 에셋·Grok 4조건 병렬 계약
++- 한 일: 공통 에셋 제공 철회, 동등한 도구에서 조건별 생성·에셋/페이지 별도 평가로 개정. Sol이 신규 계약·검증 구현.
++- 검증: 17/17 provider-zero PASS, draft PASS, calibration/main 미준비 차단. 실제 Grok 모델 호출/에셋 생성0.
++- 발견: temp cwd+GROK_HOME 분리에도 호환 경로122skills/14hooks/6MCP 탐색. 순정 격리 미확인; discovery receipt 저장.
++- 다음: F-1 호환 설정 격리→B-1 browser broker·adapter→4조건 병렬 calibration. 기존 동결 runner·전역 사용자 설정 보존.
++
++## 2026-09-07 — 5트랙·모델 실행 계획
++- 한 일: F/B/A/D/E 계획과 28개 의존 작업 보드 작성. Sol 통합, Opus 5 제작/집필, Grok 4.6 벤치/에셋 배치.
++- 결정: 벤치 calibration4+첫제출36+후속12, heavy compute 독점; 작품/전이/출하, 발행/14일 학습 완료를 분리.
++- 열린 것: 실제 model ID·인증·browser/media probe, 배포 dependency/receipt. 새 모델 작업·발행·벤치는 미착수.
++- 다음: F-0→F-1~3, 확인된 Opus로 A-0/D-0/E-0, Grok 에셋 probe 후 B-0~2. 최신 실행 계획/보드 우선.
++
++## 2026-09-07 — Codex 인수 감사 및 릴리즈 계약 수정
++- 한 일: 4축 현황/코드/실물/원격 이슈 대조, doctor·5개 언어 목록·strict 품질 gate·mirror 수정, 캠페인 오정보 정정.
++- 검증: CLI 1420 pass/180 skip, 웹 891 pass, build/typecheck·설치본 smoke·mirror PASS; 미생성 2칸 BLOCKED 확인.
++- 열린 것: Aphrodite 배포 dependency/fixture·SHA receipt, 순정 포함 새 실행, Core catalog 채택, 기업별 콘텐츠. live 브라우저 미검증.
++- 다음: 감사/벤치/아프로디테 재시작안 참조. 이전 CURRENT_STATE 원문은 archive에 보존; 기존 사용자 변경 유지.
++
+ ## 2026-09-04 (저녁) — r3 60점 → 리서치 4레인 → 규칙 LC-49~59/LI-34~40 → r4 빌드 (중단)
+ - 한 일: r3 60 원인 진단(개수만 재는 검사기·호버 관문 요구한 C8·3층 허용) → 리서치 4레인(실측 프로브 16사이트·UX 문헌 21·타 스킬 10·OSS 16+효과 3종) → `scale-and-simplicity.md`, 게이트 v2(C8′·C9·C10·D·E·다이얼), 검사기 LI-34~40(폴드 히트테스트 커버리지·호버 관문·초점비·폴드 단위·모션 채널·홀드·여백), 타입 112/80/56/40 → r4 빌드(풀블리드 6·핀 3·GSAP 0·관문 0·LI-1~40 ok·1.13MB) → 페르소나 3인(관문 0·마찰 11·이탈 3/3 CTA 순환) · 리뷰 r4(eye 72·BLOCK 4) → 라운드 2 배치 진행 중 사용자 지시로 안전 중단.
+ - 열린 것: 라운드 2 리뷰 항목 잔여 + 검사기 스윕 → solo 영상 재렌더 → 채점 요청. 도구 후속(text-contrast 전 섹션, scrub-probe `--e`). 재개 절차는 CURRENT_STATE 맨 위.
+diff --git a/docs/handover/x-vercel-designmd-campaign.md b/docs/handover/x-vercel-designmd-campaign.md
+index 7330462c..673e994b 100644
+--- a/docs/handover/x-vercel-designmd-campaign.md
++++ b/docs/handover/x-vercel-designmd-campaign.md
+@@ -3,6 +3,11 @@
+ 담당: 그록봇 (X 포스팅) · 소재 준비: 오케스트레이터 · 승인: 사람 창구
+ 기존 하드 룰(`grokbot-x-posting.md` §4) 전부 적용. 이 문서는 캠페인별 추가 지시.
+ 
++> 2026-09-07 재검토: 세 arm 모두 `system.md`를 제출했다. 기존 초안의
++> “only one ships a design system” 주장은 산출물과 모순되어 아래에서 정정했다.
++> 파일 분량은 품질 우위의 증거가 아니다. 이 문서는 게시 전 초안이며,
++> 외부 기사·조회수·라이브 배포 상태는 게시 시점에 다시 확인해야 한다.
++
+ ## 배경
+ 
+ Vercel이 2026-09-01 자사 에이전트가 design.md 파일 하나로 온브랜드 페이지를 만드는 루프를
+@@ -36,7 +41,8 @@ Vercel이 2026-09-01 자사 에이전트가 design.md 파일 하나로 온브랜
+ > Vercel showed how one design.md file makes their agents build on-brand pages.
+ >
+ > Same prompt. Same model. Only the harness changes.
+-> Here's Stripe's homepage, three ways — and only one ships a design system with it.
++> Three unofficial Stripe homepage concepts, each with a system document.
++> Inspect the pages and the design decisions behind them.
+ >
+ > We curate 440 companies' DESIGN.md files, with provenance. github.com/kwakseongjae/oh-my-design
+ 
+@@ -70,21 +76,21 @@ render-integrity·landing-integrity PASS를 내면 같은 명령으로 3열 비
+ **EN (메인, 영상 첨부):**
+ > Same brief. Same model. Same image channel. Three harnesses.
+ >
+-> Only one of them treats a landing page as a stage instead of a card — a full-bleed hero, one visual concept carried through eight sections, motion that respects reduced-motion.
++> Compare the full pages, their visual concepts, and how each handles motion.
+ >
+ > The rules came from measuring five real sites, not from taste. Unofficial generated concepts — not affiliated with Stripe. github.com/kwakseongjae/oh-my-design
+ 
+ **KR:**
+ > 같은 브리프, 같은 모델, 같은 이미지 채널. 다른 건 하네스뿐입니다.
+-> 랜딩 페이지를 "카드"가 아니라 "무대"로 다루는 건 하나였습니다 — 풀블리드 히어로, 여덟 섹션을 관통하는 컨셉 하나, reduced-motion을 지키는 모션.
++> 완성된 페이지와 각 페이지의 구도·컨셉·모션을 함께 비교했습니다.
+ > 규칙은 취향이 아니라 실제 사이트 다섯 곳을 잰 수치에서 왔습니다. (비공식 생성 컨셉 — 해당 브랜드와 무관)
+ 
+ 하드 룰 적용: 벤치 수치·순위 없음, 브랜드 태그 없음, 고지 유지. "다섯 곳을 잰"은 코덱스(공개 문서)로 뒷받침되는 사실 진술.
+ 
+ ## 이 캠페인의 추가 하드 룰
+ 
+-1. **"only one ships a design system" 문구는 정성 관찰이다** — 실측(세 arm 산출물에서
+-   system.md 유무·분량)으로 뒷받침되지만, 수치 순위·품질 우위 주장으로 확장하지 않는다.
++1. **세 arm 모두 system.md를 제출했다.** 문서 존재를 OMD만의 차별점으로 주장하지 않는다.
++   품질·재사용성 차이를 말하려면 동일한 후속 수정 과제와 실제 산출물로 검증한다.
+ 2. T3 봉인 수치(비용·실패율 등)를 이 캠페인에서 언급하지 않는다.
+ 3. Stripe를 태그·멘션하지 않는다. 영상·페이지의 unofficial 고지를 자르지 않는다.
+ 4. Vercel 아티클 링크는 인용 표기로만 — 제휴·협업 암시 문구 금지.
+diff --git a/package.json b/package.json
+index 7911746a..41bc3e8b 100644
+--- a/package.json
++++ b/package.json
+@@ -107,7 +107,7 @@
+     "lint": "tsc --noEmit",
+     "check:public-core-schemas": "node scripts/check-public-core-schemas.cjs",
+     "prepare": "npm run build",
+-    "prepublishOnly": "npm run query:references:data:check && npm run gen:presets:check && npm run build && node scripts/sync-runtime-mirrors.cjs --check && node scripts/gen-llms-full.cjs --check-only && bash scripts/check-release-hygiene.sh pack && npm run gate:quality",
++    "prepublishOnly": "npm run query:references:data:check && npm run gen:presets:check && npm run build && node scripts/sync-runtime-mirrors.cjs --check && node scripts/gen-llms-full.cjs --check-only && bash scripts/check-release-hygiene.sh pack && npm run gate:quality:strict",
+     "gen:llms-full": "node scripts/gen-llms-full.cjs",
+     "gen:llms-full:check": "node scripts/gen-llms-full.cjs --check-only",
+     "sync:runtime-mirrors": "node scripts/sync-runtime-mirrors.cjs --write",
+diff --git a/src/cli/doctor.ts b/src/cli/doctor.ts
+index 18a053b9..6277dd22 100644
+--- a/src/cli/doctor.ts
++++ b/src/cli/doctor.ts
+@@ -59,6 +59,7 @@ function shellQuote(value: string): string {
+ 
+ export const REQUIRED_PRODUCT_SKILLS = [
+   'claude-design',
++  'omd-aphrodite',
+   'omd-autopilot',
+   'omd-apply',
+   'omd-asset-fetch',
+diff --git a/test-v2/content-runs/aphrodite/higgsgen/research/r5/scroll-feel.json b/test-v2/content-runs/aphrodite/higgsgen/research/r5/scroll-feel.json
+index 19e327a7..2f934288 100644
+--- a/test-v2/content-runs/aphrodite/higgsgen/research/r5/scroll-feel.json
++++ b/test-v2/content-runs/aphrodite/higgsgen/research/r5/scroll-feel.json
+@@ -1160,5 +1160,163 @@
+       "zeroFrames": 140,
+       "droppedFrames": 0
+     }
++  },
++  {
++    "id": "engine-a014",
++    "url": "file:///Users/kwakseongjae/Desktop/projects/oh-my-design/docs/design-excellence/fx-library/smooth-scrub-engine/demo.html",
++    "note": null,
++    "errors": [],
++    "docVh": 4.4,
++    "tracked": "div.sc-track",
++    "impulse": {
++      "frames": 195,
++      "scrollTau": 22,
++      "visualTau": 22,
++      "visualSettleFrames": 3,
++      "scrubTau": null,
++      "alpha": 0.532,
++      "scrubAlpha": null
++    },
++    "jump": {
++      "frames": 437,
++      "catchUpFrames": 5,
++      "scrubCatchUp": null
++    },
++    "velocityCoupled": {
++      "count": 0,
++      "sample": []
++    },
++    "easing": {
++      "transitions": [],
++      "animations": [],
++      "springs": 0
++    },
++    "steady": {
++      "frames": 162,
++      "meanDelta": 4.1,
++      "jitter": 5.19,
++      "zeroFrames": 155,
++      "droppedFrames": 0
++    }
++  },
++  {
++    "id": "r5",
++    "url": "file:///Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/content-runs/aphrodite/higgsgen/render-r5.html",
++    "note": null,
++    "errors": [],
++    "docVh": 11.71,
++    "tracked": "main",
++    "impulse": {
++      "frames": 189,
++      "scrollTau": 15,
++      "visualTau": 15,
++      "visualSettleFrames": 2,
++      "scrubTau": 33,
++      "alpha": 0.672,
++      "scrubAlpha": 0.397
++    },
++    "jump": {
++      "frames": 435,
++      "catchUpFrames": 3,
++      "scrubCatchUp": null
++    },
++    "velocityCoupled": {
++      "count": 3,
++      "sample": [
++        {
++          "el": "div.s2stage",
++          "slow": {
++            "tr": "matrix(1, 0, 0, 1, 0, -7.54992)",
++            "f": "none",
++            "o": "1"
++          },
++          "fast": {
++            "tr": "matrix(1, 0, 0, 1, 0, -6.42096)",
++            "f": "none",
++            "o": "1"
++          }
++        },
++        {
++          "el": "div.s2inner",
++          "slow": {
++            "tr": "matrix(1.00701, 0, 0, 1.00701, 0, 0)",
++            "f": "none",
++            "o": "1"
++          },
++          "fast": {
++            "tr": "matrix(1.002, 0, 0, 1.002, 0, 0)",
++            "f": "none",
++            "o": "1"
++          }
++        },
++        {
++          "el": "img.",
++          "slow": {
++            "tr": "none",
++            "f": "contrast(1.03) saturate(1.02)",
++            "o": "1"
++          },
++          "fast": {
++            "tr": "none",
++            "f": "contrast(1.03) saturate(1.02)",
++            "o": "0"
++          }
++        }
++      ]
++    },
++    "easing": {
++      "transitions": [
++        [
++          "0.56s, 0.56s cubic-bezier(0.22, 0.61, 0.36, 1), cubic-bezier(0.22, 0.61, 0.36, 1)",
++          18
++        ],
++        [
++          "0.28s, 0.28s, 0.16s cubic-bezier(0.22, 0.61, 0.36, 1), cubic-bezier(0.22, 0.61, 0.36, 1), cubic-bezier(0.22, 0.61, 0.36, 1)",
++          7
++        ],
++        [
++          "0.28s cubic-bezier(0.22, 0.61, 0.36, 1)",
++          4
++        ],
++        [
++          "0.28s, 0.16s cubic-bezier(0.22, 0.61, 0.36, 1), cubic-bezier(0.22, 0.61, 0.36, 1)",
++          2
++        ]
++      ],
++      "animations": [
++        [
++          "6s steps(1)",
++          3
++        ],
++        [
++          "5s cubic-bezier(0.45, 0.05, 0.55, 0.95)",
++          3
++        ],
++        [
++          "6s cubic-bezier(0.45, 0.05, 0.55, 0.95)",
++          1
++        ],
++        [
++          "6.2s cubic-bezier(0.45, 0.05, 0.55, 0.95)",
++          1
++        ],
++        [
++          "6.8s cubic-bezier(0.45, 0.05, 0.55, 0.95)",
++          1
++        ],
++        [
++          "35s linear",
++          1
++        ]
++      ],
++      "springs": 0
++    },
++    "steady": {
++      "frames": 164,
++      "meanDelta": 10.31,
++      "jitter": 3.26,
++      "zeroFrames": 149,
++      "droppedFrames": 0
++    }
+   }
+ ]
+\ No newline at end of file
+diff --git a/test-v2/tools/quality-gate.mjs b/test-v2/tools/quality-gate.mjs
+index 1e5c5949..cf437941 100644
+--- a/test-v2/tools/quality-gate.mjs
++++ b/test-v2/tools/quality-gate.mjs
+@@ -10,23 +10,36 @@
+  * 오래됨(STALE) 판정: 산출물이 그 스킬 파일보다 오래됐으면, 지금 통과해도 지금 스킬을 검증한 것이 아니다.
+  * 스킬을 고쳤으면 픽스처를 다시 만들어야 한다 — 그것이 이 게이트가 존재하는 이유다.
+  *
+- * usage: node quality-gate.mjs [--json] [--strict] [--only <id,...>]
+- *        --strict  MISSING·STALE 도 실패로 센다 (릴리즈 게이트 기본값은 --strict)
++ * usage: node quality-gate.mjs [--json] [--strict | --allow-incomplete] [--only <id,...>]
++ *        기본값/--strict: MISSING·STALE 도 실패. --allow-incomplete 는 로컬 진단 전용.
+  */
+ import { execFileSync } from "node:child_process";
+ import { existsSync, readFileSync, statSync } from "node:fs";
+ import { dirname, join, resolve } from "node:path";
+ import { fileURLToPath } from "node:url";
++import { selectFixtures, summarizeQualityGate } from "./lib/quality-gate-policy.mjs";
+ 
+ const HERE = dirname(fileURLToPath(import.meta.url));
+ const ROOT = resolve(HERE, "../..");
+ const argv = process.argv.slice(2);
+ const asJson = argv.includes("--json");
+-const strict = argv.includes("--strict");
++const strict = argv.includes("--strict") || !argv.includes("--allow-incomplete");
+ const onlyIdx = argv.indexOf("--only");
+ const only = onlyIdx >= 0 ? new Set(String(argv[onlyIdx + 1] || "").split(",").map((s) => s.trim())) : null;
+ 
+ const cfg = JSON.parse(readFileSync(join(ROOT, "test-v2/content-runs/fixtures.json"), "utf8"));
++let fixtures;
++try {
++  fixtures = selectFixtures(cfg, only);
++  for (const fixture of fixtures) {
++    for (const source of cfg.sourceSkills[fixture.skill]) {
++      if (!existsSync(join(ROOT, source))) throw new Error(`source skill file not found: ${source}`);
++    }
++  }
++} catch (error) {
++  console.error(`QUALITY_GATE BLOCKED — ${error.message}`);
++  process.exit(1);
++}
+ const mtime = (p) => (existsSync(p) ? statSync(p).mtimeMs : 0);
+ const newestSkillFile = (skill) => {
+   const files = cfg.sourceSkills[skill] || [];
+@@ -46,8 +59,7 @@ function run(tool, args) {
+ }
+ 
+ const rows = [];
+-for (const f of cfg.fixtures) {
+-  if (only && !only.has(f.id)) continue;
++for (const f of fixtures) {
+   const abs = join(ROOT, f.artifact);
+   const row = { id: f.id, skill: f.skill, brand: f.brand, artifact: f.artifact, checks: {} };
+   if (!existsSync(abs)) { row.status = "MISSING"; row.note = "산출물이 없다 — 이 칸은 한 번도 만들어지지 않았다"; rows.push(row); continue; }
+@@ -65,10 +77,7 @@ for (const f of cfg.fixtures) {
+   rows.push(row);
+ }
+ 
+-const counts = rows.reduce((a, r) => ((a[r.status] = (a[r.status] || 0) + 1), a), {});
+-const hardFail = rows.filter((r) => r.status === "FAIL").length;
+-const softFail = rows.filter((r) => r.status === "MISSING" || r.status === "STALE").length;
+-const verdict = hardFail || (strict && softFail) ? "BLOCKED" : "OK";
++const { counts, hardFail, softFail, verdict } = summarizeQualityGate(rows, strict);
+ 
+ if (asJson) console.log(JSON.stringify({ verdict, counts, strict, rows }, null, 1));
+ else {
+diff --git a/web/src/data/cli-docs.ts b/web/src/data/cli-docs.ts
+index a5522b21..b3a3c8cf 100644
+--- a/web/src/data/cli-docs.ts
++++ b/web/src/data/cli-docs.ts
+@@ -319,7 +319,7 @@ export interface CliDocsDictionary {
+ 
+ const sharedSkillIds = {
+   system: ["omd:init", "omd:apply", "omd:sync", "omd:update", "omd:setup", "omd:remember", "omd:learn", "omd:taste"],
+-  build: ["omd:autopilot", "omd:harness", "omd:orchestrator", "omd:landing", "omd:media", "omd:showcase", "omd:asset-fetch", "omd:codex-image", "claude-design"],
++  build: ["omd:autopilot", "omd:harness", "omd:orchestrator", "omd:landing", "omd:aphrodite", "omd:media", "omd:showcase", "omd:asset-fetch", "omd:codex-image", "claude-design"],
+   quality: ["omd:feel", "omd:slop-audit", "omd:designer-review", "omd:final-qa", "omd:experiment-gallery", "omd:issue"],
+   content: ["omd:kr-writer", "omd:locale-adapter", "omd:humanize"],
+   evidence: ["omd:reference-capture"],
+@@ -375,8 +375,8 @@ const en: CliDocsDictionary = {
+     title: "Your agent already writes code. Give it design judgment and ground truth.",
+     lead: "oh-my-design brings a quality-graded reference catalog and reusable design workflows into the coding tool you already use, with specialist agent roles on channels that support them. Then you work in natural language.",
+     truthTitle: "The CLI prepares the environment your coding agent works in.",
+-    truthBody: "The bundle contains 27 skills, 20 agent definitions, and 440 quality-graded DESIGN.md references: 140 verified_v2, 160 partial, and 140 legacy snapshots. Use verified_v2 references for public demos. Cursor 2.4+ receives 26 compatible Agent Skills plus a small project rule; separately generated specialist roles remain available on channels that support them.",
+-    proof: "27 product skills · 20 specialist agents · 140 verified_v2 / 160 partial / 140 legacy · zero AI calls during install",
++    truthBody: "The bundle contains 28 skills, 20 agent definitions, and 440 quality-graded DESIGN.md references: 140 verified_v2, 160 partial, and 140 legacy snapshots. Use verified_v2 references for public demos. Cursor 2.4+ receives 27 compatible Agent Skills plus a small project rule; separately generated specialist roles remain available on channels that support them.",
++    proof: "28 product skills · 20 specialist agents · 140 verified_v2 / 160 partial / 140 legacy · zero AI calls during install",
+     outcomesTitle: "Start with the result you need",
+     outcomesLead: "You do not need to memorize skill names. Describe the product surface; the installed skill layer routes the work.",
+     outcomes: [
+@@ -428,7 +428,7 @@ const en: CliDocsDictionary = {
+       { name: "Codex", body: "Installs skills, embedded agent roles, helpers, and the local reference catalog.", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
+       { name: "Claude Code", body: "Installs skills, sub-agents, catalog, and safely merged project hooks.", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
+       { name: "OpenCode", body: "Installs skills, native sub-agents, and the offline catalog. Project files live under `.opencode`; `--global` uses `~/.config/opencode`, verified with `doctor --global`.", command: "npx oh-my-design-cli@latest install-skills --agent opencode --all" },
+-      { name: "Cursor", body: "Installs 26 native Agent Skills, a small DESIGN.md bootstrap rule, and the shared catalog. Use `--cursor-rule-only` only for older clients.", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
++      { name: "Cursor", body: "Installs 27 native Agent Skills, a small DESIGN.md bootstrap rule, and the shared catalog. Use `--cursor-rule-only` only for older clients.", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
+     ],
+     doneTitle: "You are done when the product changed, not when installation succeeded.",
+     doneBody: "A healthy first run leaves a visible UI improvement, a project DESIGN.md, and a clear next prompt. The installer is only activation infrastructure.",
+@@ -524,9 +524,9 @@ const en: CliDocsDictionary = {
+   },
+   skills: {
+     eyebrow: "CAPABILITY MAP",
+-    title: "27 product skills, organized by outcome.",
+-    lead: "Skill names are useful for explicit control, but normal product requests should trigger them naturally. The release bundle ships the 27 product skills listed below.",
+-    countNote: "27 product skills · 20 specialist agents",
++    title: "28 product skills, organized by outcome.",
++    lead: "Skill names are useful for explicit control, but normal product requests should trigger them naturally. The release bundle ships the 28 product skills listed below.",
++    countNote: "28 product skills · 20 specialist agents",
+     groups: [
+       { title: "Own the system", description: "Create, apply, synchronize, and evolve the project’s design ground truth.", skills: [...sharedSkillIds.system] },
+       { title: "Build the surface", description: "Move from brief to a working, asset-aware interface and handoff.", skills: [...sharedSkillIds.build] },
+@@ -697,7 +697,7 @@ const en: CliDocsDictionary = {
+     changedFiles: ["web/src/app/docs/[locale]/[[...slug]]/page.tsx", "web/src/components/cli-docs/*", "web/src/data/cli-docs.ts", "src/cli/doctor.ts", "src/cli/install-skills.ts"],
+     verification: ["5-locale route completeness", "CLI clean-install tests", "doctor degraded-state tests", "Home → /builder regression", "Production build"],
+     honesty: "The visual below is a schematic map of this repository-owned docs rebuild, not a screenshot of a generated app. It does not claim an unrelated app was produced by a one-shot prompt.",
+-    previewStats: ["27 skills", "20 agents", "10 phases"],
++    previewStats: ["28 skills", "20 agents", "10 phases"],
+   },
+   troubleshooting: {
+     eyebrow: "RECOVERY",
+@@ -745,8 +745,8 @@ const ko: CliDocsDictionary = {
+     title: "코드는 이미 잘 씁니다. 이제 디자인 판단에 근거를 더하세요.",
+     lead: "품질 등급이 표시된 레퍼런스와 반복 가능한 디자인 작업 흐름을 Claude Code·Codex·OpenCode·Cursor에 설치합니다. 이후에는 만들 화면과 지킬 조건만 말하면 됩니다.",
+     truthTitle: "CLI는 에이전트가 일할 환경을 준비합니다.",
+-    truthBody: "번들은 제품 스킬 27개, 에이전트 정의 20개, 품질 등급이 표시된 DESIGN.md 레퍼런스 440개를 담습니다. 현재 verified_v2 140개, partial 160개, legacy snapshot 140개이며 공개 데모에는 verified_v2를 사용합니다. Cursor 2.4+에는 호환 Agent Skills 26개와 작은 프로젝트 규칙이 들어가며, 별도 전문 역할은 이를 지원하는 채널에만 설치됩니다.",
+-    proof: "제품 스킬 27개 · 전문 에이전트 20개 · verified_v2 140 / partial 160 / legacy 140 · 설치 중 AI 호출 0회",
++    truthBody: "번들은 제품 스킬 28개, 에이전트 정의 20개, 품질 등급이 표시된 DESIGN.md 레퍼런스 440개를 담습니다. 현재 verified_v2 140개, partial 160개, legacy snapshot 140개이며 공개 데모에는 verified_v2를 사용합니다. Cursor 2.4+에는 호환 Agent Skills 27개와 작은 프로젝트 규칙이 들어가며, 별도 전문 역할은 이를 지원하는 채널에만 설치됩니다.",
++    proof: "제품 스킬 28개 · 전문 에이전트 20개 · verified_v2 140 / partial 160 / legacy 140 · 설치 중 AI 호출 0회",
+     outcomesTitle: "필요한 결과부터 고르세요",
+     outcomesLead: "스킬 이름을 외울 필요가 없습니다. 만들 화면과 지킬 조건을 말하면 필요한 스킬이 선택됩니다.",
+     outcomes: [
+@@ -778,7 +778,7 @@ const ko: CliDocsDictionary = {
+       { name: "Codex", body: "스킬, 본문이 내장된 에이전트 역할, 헬퍼, 로컬 레퍼런스 카탈로그를 설치합니다.", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
+       { name: "Claude Code", body: "스킬, 서브에이전트, 카탈로그와 안전하게 병합되는 프로젝트 훅을 설치합니다.", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
+       { name: "OpenCode", body: "스킬·네이티브 서브에이전트·오프라인 카탈로그를 설치합니다. 프로젝트는 `.opencode`, `--global`은 `~/.config/opencode`를 사용하며 `doctor --global`로 진단합니다.", command: "npx oh-my-design-cli@latest install-skills --agent opencode --all" },
+-      { name: "Cursor", body: "네이티브 Agent Skills 26개, 작은 DESIGN.md bootstrap rule, 공유 카탈로그를 설치합니다. 구형 클라이언트만 `--cursor-rule-only`를 사용하세요.", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
++      { name: "Cursor", body: "네이티브 Agent Skills 27개, 작은 DESIGN.md bootstrap rule, 공유 카탈로그를 설치합니다. 구형 클라이언트만 `--cursor-rule-only`를 사용하세요.", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
+     ],
+     doneTitle: "첫 실행의 완료 기준은 눈에 보이는 UI 변화입니다.",
+     doneBody: "좋은 첫 실행은 눈에 보이는 UI 개선, 프로젝트 DESIGN.md, 명확한 다음 프롬프트를 남깁니다. 설치기는 활성화 인프라일 뿐입니다.",
+@@ -874,9 +874,9 @@ const ko: CliDocsDictionary = {
+   },
+   skills: {
+     eyebrow: "기능 지도",
+-    title: "결과별로 묶인 제품 스킬 27개",
+-    lead: "전문가는 스킬 이름을 직접 지정할 수 있습니다. 보통은 만들 화면과 조건만 말하면 됩니다. 배포 패키지에는 아래 제품 스킬 27개가 포함됩니다.",
+-    countNote: "제품 스킬 27개 · 전문 에이전트 20개",
++    title: "결과별로 묶인 제품 스킬 28개",
++    lead: "전문가는 스킬 이름을 직접 지정할 수 있습니다. 보통은 만들 화면과 조건만 말하면 됩니다. 배포 패키지에는 아래 제품 스킬 28개가 포함됩니다.",
++    countNote: "제품 스킬 28개 · 전문 에이전트 20개",
+     groups: [
+       { title: "프로젝트 디자인 기준 세우기", description: "프로젝트의 디자인 정본을 만들고 적용하고 동기화합니다.", skills: [...sharedSkillIds.system] },
+       { title: "실제 화면 만들기", description: "요구사항에서 동작하는 UI와 전달 가능한 결과물까지 이어갑니다.", skills: [...sharedSkillIds.build] },
+@@ -1045,7 +1045,7 @@ const ko: CliDocsDictionary = {
+     changedFiles: ["web/src/app/docs/[locale]/[[...slug]]/page.tsx", "web/src/components/cli-docs/*", "web/src/data/cli-docs.ts", "src/cli/doctor.ts", "src/cli/install-skills.ts"],
+     verification: ["5개 언어 경로 완전성", "CLI 클린 설치 테스트", "doctor degraded 상태 테스트", "Home → /builder 회귀 검사", "프로덕션 빌드"],
+     honesty: "아래 시각 자료는 이 저장소에서 실제로 진행한 문서 재구축을 도식화한 맵이며, 생성된 앱의 스크린샷이 아닙니다. 무관한 앱을 원샷 프롬프트로 만들었다고 주장하지 않습니다.",
+-    previewStats: ["스킬 27개", "에이전트 20개", "10단계"],
++    previewStats: ["스킬 28개", "에이전트 20개", "10단계"],
+   },
+   troubleshooting: {
+     eyebrow: "복구",
+@@ -1095,7 +1095,7 @@ const ja = translatedLocale(
+   { overview: "概要", "getting-started": "はじめに", demo: "ライブデモ", workflows: "ワークフロー", skills: "スキル", "anti-slop": "AI slop の判断基準", showcase: "実例", troubleshooting: "トラブルシューティング", ai: "AI 向けドキュメント" },
+   {
+     ui: { product: "oh-my-design CLI", docs: "ドキュメント", language: "言語", copy: "コピー", copied: "コピー済み", openBuilder: "Builder を開く", github: "GitHub", onThisPage: "このページ", previous: "前へ", next: "次へ", actualOutput: "実際のプロジェクト成果", prompt: "プロンプト", result: "結果", files: "変更ファイル", verified: "検証", homeAria: "oh-my-design ホーム", pagination: "ドキュメントのページ移動", skillsLabel: "スキル", pipeline: "品質グレード付きリファレンス → DESIGN.md → 実装 → 検証", pipelineNote: "verified_v2 140件 · partial 160件 · legacy 140件。公開デモには verified_v2 を使います。", skipContent: "本文へスキップ", copyFailed: "コピーできませんでした", copyPage: "ページをコピー", pageCopied: "コピーしました", pageTools: "ページツール", morePageActions: "その他のページ操作", viewMarkdown: "Markdown で表示", copyForAgent: "AI エージェント用にコピー", ready: "準備済み" },
+-    overview: { ...en.overview, eyebrow: "コーディングエージェントのためのデザイン文脈", title: "コードを書けるエージェントに、デザイン判断と根拠を渡す。", lead: "oh-my-design は、品質グレード付きリファレンスと再利用できるデザインワークフローを、普段使っているコーディングツールへ導入します。対応するツールには専門エージェントの役割も追加されます。導入後は、作りたい画面を自然言語で依頼できます。", truthTitle: "CLI はコーディングエージェントの作業環境を整えます。", truthBody: "バンドルには27の製品スキル、20のエージェント定義、品質グレード付き DESIGN.md 440件があります。内訳は verified_v2 140件、partial 160件、legacy snapshot 140件で、公開デモには verified_v2 を使います。Cursor 2.4+ には互換 Agent Skills 26 個と小さなプロジェクトルールが入り、別個の専門ロールは対応チャネルにのみ導入されます。", proof: "製品スキル27個 · 専門エージェント20個 · verified_v2 140 / partial 160 / legacy 140 · インストール時の AI 呼び出し0回", outcomesTitle: "必要な成果から始める", outcomesLead: "スキル名を覚える必要はありません。作りたい画面と守る条件を伝えると、適切なワークフローが選ばれます。", outcomes: [
++    overview: { ...en.overview, eyebrow: "コーディングエージェントのためのデザイン文脈", title: "コードを書けるエージェントに、デザイン判断と根拠を渡す。", lead: "oh-my-design は、品質グレード付きリファレンスと再利用できるデザインワークフローを、普段使っているコーディングツールへ導入します。対応するツールには専門エージェントの役割も追加されます。導入後は、作りたい画面を自然言語で依頼できます。", truthTitle: "CLI はコーディングエージェントの作業環境を整えます。", truthBody: "バンドルには28の製品スキル、20のエージェント定義、品質グレード付き DESIGN.md 440件があります。内訳は verified_v2 140件、partial 160件、legacy snapshot 140件で、公開デモには verified_v2 を使います。Cursor 2.4+ には互換 Agent Skills 27 個と小さなプロジェクトルールが入り、別個の専門ロールは対応チャネルにのみ導入されます。", proof: "製品スキル28個 · 専門エージェント20個 · verified_v2 140 / partial 160 / legacy 140 · インストール時の AI 呼び出し0回", outcomesTitle: "必要な成果から始める", outcomesLead: "スキル名を覚える必要はありません。作りたい画面と守る条件を伝えると、適切なワークフローが選ばれます。", outcomes: [
+       { title: "デザインシステムを作る", description: "製品ブリーフと verified_v2 リファレンスから、プロジェクト所有の DESIGN.md を作ります。不明な事実は補完しません。", prompt: "家族向け資産管理アプリに、落ち着きと信頼感のあるデザインシステムを設定して。Toss を参考にしつつ、既存のロゴとコピーは維持して。", result: "DESIGN.md、エージェント用 shim、明示的なトークン差分、確認済みの最初の画面。" },
+       { title: "完全な画面を作る", description: "Discovery、IA、ワイヤーフレーム、コンポーネント、コピー、アクセシビリティ、検証を一つのチェックポイント付きフローで進めます。", prompt: "このアプリのオンボーディングを設計・実装して。現在のスタックを維持し、DESIGN.md を正本として使って。", result: "動く画面、状態網羅、検証記録、リポジトリ内のハンドオフ成果物。" },
+       { title: "既存UIを改善する", description: "製品の挙動を保ったまま、階層、リズム、アクセシビリティ、典型的なAI UIパターンを修正します。", prompt: "URLとフォーム名は変えずに料金ページを改善して。影響の大きい修正を適用し、結果を検証して。", result: "焦点を絞ったコード変更、前後の根拠、決定論的な品質チェック。" },
+@@ -1109,7 +1109,7 @@ const ja = translatedLocale(
+       { name: "Codex", body: "スキル、本文を内蔵したエージェント定義、ヘルパー、ローカル参照カタログを導入します。", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
+       { name: "Claude Code", body: "スキル、サブエージェント、カタログ、安全にマージされるプロジェクトフックを導入します。", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
+       { name: "OpenCode", body: "スキル、ネイティブのサブエージェント、オフライン対応カタログを導入します。プロジェクトは `.opencode`、`--global` は `~/.config/opencode` を使い、`doctor --global` で診断します。", command: "npx oh-my-design-cli@latest install-skills --agent opencode --all" },
+-      { name: "Cursor", body: "ネイティブ Agent Skills 26 個、小さな DESIGN.md bootstrap rule、共有カタログを導入します。旧クライアントのみ `--cursor-rule-only` を使用します。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
++      { name: "Cursor", body: "ネイティブ Agent Skills 27 個、小さな DESIGN.md bootstrap rule、共有カタログを導入します。旧クライアントのみ `--cursor-rule-only` を使用します。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
+     ], doneTitle: "最初の変更が製品画面に反映されたら完了です", doneBody: "初回実行では、目に見える UI 改善、プロジェクトの DESIGN.md、次に依頼する内容まで確認します。" },
+     demo: {
+       eyebrow: "ライブデモの進行ガイド",
+@@ -1151,7 +1151,7 @@ const ja = translatedLocale(
+       { title: "既存ページを改善する", when: "動くが製品らしさが弱い UI", prompt: "このダッシュボードで、製品の根拠なく繰り返される UI パターン、階層、密度、モーション、アクセシビリティを確認して。挙動を保ち、影響の大きい修正から適用して差分を示して。", outputs: ["優先順位付きの指摘", "焦点を絞ったパッチ", "変更前後の根拠"], skills: ["omd:slop-audit", "omd:feel", "omd:designer-review"] },
+       { title: "好みの修正を記録する", when: "エージェントに好みを教える場合", prompt: "CTA に大文字は使わない。この好みをプロジェクトに記録し、ボタンの動作は変えずに現在の画面を修正して。", outputs: ["保留中の好み", "範囲付きUI修正", "DESIGN.md 反映提案"], skills: ["omd:remember", "omd:learn", "omd:taste"] },
+     ] },
+-    skills: { ...en.skills, eyebrow: "機能マップ", title: "成果別に整理された27の製品スキル", lead: "スキル名を指定することもできますが、通常は作りたい画面と条件を伝えるだけで十分です。リリースパッケージには、以下の27スキルが含まれます。", countNote: "製品スキル27個 · 専門エージェント20個", groups: en.skills.groups.map((g, i) => ({ ...g, title: ["デザイン基準を整える", "画面を作る", "品質を確かめる", "各言語で自然に書く", "根拠のあるリファレンスを残す"][i], description: ["プロジェクトのデザイン基準を作成し、適用・同期します。", "要件を、実際に動くUIと引き継ぎ可能な成果物へつなげます。", "画面の印象、整合性、パターンの反復、アクセシビリティ、公開準備を確認します。", "韓国語の原稿を作り、意味と事実を保ったまま各言語で書き直します。", "不明なトークンを作らず、公開画面をバージョン付きの根拠として記録します。"][i] })), routingTitle: "スキル名の指定は任意です", routingBody: "「このチェックアウトを改善して検証して」と依頼すれば、必要なスキルが選ばれます。" },
++    skills: { ...en.skills, eyebrow: "機能マップ", title: "成果別に整理された28の製品スキル", lead: "スキル名を指定することもできますが、通常は作りたい画面と条件を伝えるだけで十分です。リリースパッケージには、以下の28スキルが含まれます。", countNote: "製品スキル28個 · 専門エージェント20個", groups: en.skills.groups.map((g, i) => ({ ...g, title: ["デザイン基準を整える", "画面を作る", "品質を確かめる", "各言語で自然に書く", "根拠のあるリファレンスを残す"][i], description: ["プロジェクトのデザイン基準を作成し、適用・同期します。", "要件を、実際に動くUIと引き継ぎ可能な成果物へつなげます。", "画面の印象、整合性、パターンの反復、アクセシビリティ、公開準備を確認します。", "韓国語の原稿を作り、意味と事実を保ったまま各言語で書き直します。", "不明なトークンを作らず、公開画面をバージョン付きの根拠として記録します。"][i] })), routingTitle: "スキル名の指定は任意です", routingBody: "「このチェックアウトを改善して検証して」と依頼すれば、必要なスキルが選ばれます。" },
+     antiSlop: {
+       eyebrow: "判断基準",
+       title: "製品に即した判断を欠くパターンの反復を AI slop と捉える",
+@@ -1312,7 +1312,7 @@ const ja = translatedLocale(
+       prompt: "新規ユーザーが内部構造より先に成果を理解し、実例を見て、5言語で読み続けられるよう CLI 体験を再構築してください。製品作成ルートとして /builder を維持してください。",
+       verification: ["5言語ルートの完全性", "CLI クリーンインストールテスト", "doctor の劣化状態テスト", "Home → /builder の回帰確認", "本番ビルド"],
+       honesty: "下の図はこのリポジトリで実施したドキュメント再構築の構成を示す模式図であり、生成アプリのスクリーンショットではありません。無関係なアプリを一発生成したとは主張しません。",
+-      previewStats: ["スキル27個", "エージェント20個", "10フェーズ"],
++      previewStats: ["スキル28個", "エージェント20個", "10フェーズ"],
+     },
+     troubleshooting: { ...en.troubleshooting, eyebrow: "復旧", title: "失敗したら、次の行動が明確であるべきです。", lead: "まず doctor を実行します。一つのスキルファイルだけで正常とせず、チャネル別のスキル、エージェント、カタログ、プロジェクト有効化を確認します。", doctorTitle: "一つの診断から始める", doctorBody: "CI では JSON 出力を使い、人向けレポートはそのままエージェントに貼れます。degraded は非0で終了します。", cases: en.troubleshooting.cases.map((c, i) => ({ symptom: ["インストール後にスキルが見えない", "doctor がカタログ不足を報告する", "デザイン文脈がないと言われる", "守りたい挙動まで書き換えられた", "根拠のないフォントや部品が表示された"][i], fix: ["エージェントを再起動してから doctor を再実行します。", "対象チャネルを指定して最新インストーラーを再実行します。", "プロジェクトのデザインシステム設定を依頼し、DESIGN.md 書き込み前に提案を確認します。", "その変更だけ戻し、守る挙動を明示して omd:remember に記録します。", "未解決のフィールドまたは空のグループだけを削除し、代替値をブランド事実として出しません。"][i] })) },
+     ai: { ...en.ai, eyebrow: "人と AI が読めるドキュメント", title: "確認したページを、そのまま AI エージェントにも渡す", lead: "各ルートは安定した情報構造を持ちます。非推奨の MCP やブラウザセッションがなくても、原典カタログと製品上の決まりを読めます。", machineTitle: "機械可読の入口", machineBody: "ルーティングには compact index、製品モデルと規則全体には full ファイルを使います。", machineLinks: [{ label: "llms.ja.txt", href: "/llms.ja.txt", description: "日本語の製品契約とルーティング概要。" }, { label: "llms.txt", href: "/llms.txt", description: "英語の compact index。" }, { label: "llms-full.txt", href: "/llms-full.txt", description: "拡張ドキュメントとカタログ文脈。" }, { label: "Raw DESIGN.md", href: "/toss/design.md", description: "リファレンスごとの安定した原文パス。" }], promptTitle: "引き継ぎに使えるプロンプト", prompt: "最初に DESIGN.md を読んでください。明示しない限り既存ルート、挙動、ユーザーコピーを維持してください。検証済みトークンだけを使い、不明な参照フィールドは省略し、報告前にアクセシビリティと interface-feel を確認してください。", contractTitle: "エージェントが守る項目", contract: ["DESIGN.md をプロジェクトの基準として扱います。", "不明な参照データを代替値で埋めません。", "リファレンスの根拠と製品の事実を区別します。", "実際の製品ルートを確認してから完了します。", "ユーザーの修正は範囲付きの好みとして残します。"], builderTitle: "視覚プレビューは Builder で確認します", builderBody: "このドキュメントは CLI からエージェントへの引き継ぎを説明します。リファレンスの探索とプレビューは引き続き Home → Builder で行います。" },
+@@ -1325,7 +1325,7 @@ const zhCn = translatedLocale(
+   { overview: "概览", "getting-started": "快速开始", demo: "现场演示", workflows: "工作流", skills: "技能", "anti-slop": "AI slop 判定", showcase: "案例", troubleshooting: "故障排查", ai: "面向 AI 的文档" },
+   {
+     ui: { product: "oh-my-design CLI", docs: "文档", language: "语言", copy: "复制", copied: "已复制", openBuilder: "打开 Builder", github: "GitHub", onThisPage: "本页内容", previous: "上一页", next: "下一页", actualOutput: "实际项目产出", prompt: "提示词", result: "结果", files: "变更文件", verified: "验证", homeAria: "oh-my-design 首页", pagination: "文档翻页", skillsLabel: "技能", pipeline: "质量分级参考 → DESIGN.md → 实现 → 验证", pipelineNote: "verified_v2 140 个 · partial 160 个 · legacy 140 个。公开演示请使用 verified_v2。", skipContent: "跳到文档正文", copyFailed: "复制失败", copyPage: "复制本页", pageCopied: "已复制本页", pageTools: "页面工具", morePageActions: "更多页面操作", viewMarkdown: "以 Markdown 查看", copyForAgent: "复制给 AI 编程助手", ready: "准备就绪" },
+-    overview: { ...en.overview, eyebrow: "给 AI 编程助手的设计上下文", title: "让会写代码的助手，也能读懂设计依据", lead: "oh-my-design 会把带质量等级的参考库和可复用设计工作流装进你正在使用的编程工具。支持的工具还会获得专业智能体角色。安装后，直接描述要改的产品界面即可。", truthTitle: "CLI 为 AI 编程助手准备工作环境", truthBody: "套件包含 27 个产品技能、20 个智能体定义和 440 份带质量等级的 DESIGN.md：verified_v2 140 份、partial 160 份、legacy snapshot 140 份。公开演示请使用 verified_v2。Cursor 2.4+ 会获得 26 个兼容 Agent Skills 和精简的项目规则；独立专业角色仅安装到支持它们的渠道。", proof: "27 个产品技能 · 20 个专业智能体 · verified_v2 140 / partial 160 / legacy 140 · 安装过程 0 次 AI 调用", outcomesTitle: "从你要的结果开始", outcomesLead: "无需记住技能名。说明要改的界面和不能动的内容，系统会选择合适的工作流。", outcomes: [
++    overview: { ...en.overview, eyebrow: "给 AI 编程助手的设计上下文", title: "让会写代码的助手，也能读懂设计依据", lead: "oh-my-design 会把带质量等级的参考库和可复用设计工作流装进你正在使用的编程工具。支持的工具还会获得专业智能体角色。安装后，直接描述要改的产品界面即可。", truthTitle: "CLI 为 AI 编程助手准备工作环境", truthBody: "套件包含 28 个产品技能、20 个智能体定义和 440 份带质量等级的 DESIGN.md：verified_v2 140 份、partial 160 份、legacy snapshot 140 份。公开演示请使用 verified_v2。Cursor 2.4+ 会获得 27 个兼容 Agent Skills 和精简的项目规则；独立专业角色仅安装到支持它们的渠道。", proof: "28 个产品技能 · 20 个专业智能体 · verified_v2 140 / partial 160 / legacy 140 · 安装过程 0 次 AI 调用", outcomesTitle: "从你要的结果开始", outcomesLead: "无需记住技能名。说明要改的界面和不能动的内容，系统会选择合适的工作流。", outcomes: [
+       { title: "建立设计系统", description: "把产品需求和 verified_v2 参考转成项目自有的 DESIGN.md；未知事实不会被补写。", prompt: "为家庭财务应用建立冷静、可信的设计系统。参考 Toss，但保留现有标志和文案。", result: "DESIGN.md、代理连接文件、明确的 token 差异和已确认的首个界面。" },
+       { title: "交付完整界面", description: "把调研、IA、线框、组件、文案、无障碍和验证串成带检查点的流程。", prompt: "设计并实现这个应用的引导流程。保留当前技术栈，以 DESIGN.md 为唯一依据。", result: "可运行界面、完整状态、验证记录和仓库内交付物。" },
+       { title: "改进现有 UI", description: "保留产品行为，同时修复层级、节奏、无障碍和缺少产品依据的重复模式。", prompt: "不要更改 URL 或字段名，改进定价页。先应用影响最大的修复并验证结果。", result: "聚焦的代码改动、前后依据和确定性质量检查。" },
+@@ -1339,7 +1339,7 @@ const zhCn = translatedLocale(
+       { name: "Codex", body: "安装技能、内嵌完整正文的代理角色、辅助脚本和本地参考目录。", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
+       { name: "Claude Code", body: "安装技能、子代理、目录和安全合并的项目 hooks。", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
+       { name: "OpenCode", body: "安装技能、原生子代理和离线参考目录。项目安装使用 `.opencode`，`--global` 使用 `~/.config/opencode`，并通过 `doctor --global` 检查。", command: "npx oh-my-design-cli@latest install-skills --agent opencode --all" },
+-      { name: "Cursor", body: "安装 26 个原生 Agent Skills、精简的 DESIGN.md bootstrap 规则和共享目录。仅旧版客户端使用 `--cursor-rule-only`。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
++      { name: "Cursor", body: "安装 27 个原生 Agent Skills、精简的 DESIGN.md bootstrap 规则和共享目录。仅旧版客户端使用 `--cursor-rule-only`。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
+     ], doneTitle: "产品发生变化才算完成，而不是安装成功。", doneBody: "良好的首次运行会留下可见的 UI 改进、项目 DESIGN.md 和清晰的下一条提示词。" },
+     demo: {
+       eyebrow: "现场演示手册",
+@@ -1381,7 +1381,7 @@ const zhCn = translatedLocale(
+       { title: "改进现有页面", when: "能用但缺少产品特征的 UI", prompt: "检查这个仪表盘中缺少产品依据的重复模式、层级、密度、动效和无障碍。保留行为，先应用影响最大的修复，再展示差异。", outputs: ["按优先级排列的问题", "聚焦补丁", "前后依据"], skills: ["omd:slop-audit", "omd:feel", "omd:designer-review"] },
+       { title: "记录偏好修正", when: "教代理你的偏好", prompt: "我们的 CTA 不使用全大写。把这个偏好记录到项目中，保持按钮行为并修正当前页面。", outputs: ["待处理偏好", "有范围的 UI 修正", "DESIGN.md 合并建议"], skills: ["omd:remember", "omd:learn", "omd:taste"] },
+     ] },
+-    skills: { ...en.skills, eyebrow: "能力地图", title: "按结果整理的 27 个产品技能", lead: "需要精确控制时可以指定技能名。大多数时候，只要说明要做的界面和限制即可。发布包包含下列 27 个产品技能。", countNote: "27 个产品技能 · 20 个专业智能体", groups: en.skills.groups.map((g, i) => ({ ...g, title: ["建立项目设计依据", "构建实际界面", "检查产品质量", "写出自然的多语言文案", "记录有来源的参考"][i], description: ["创建、应用并同步项目的设计依据。", "把需求变成可运行、可交付的产品界面。", "检查界面观感、设计一致性、模式重复、无障碍和发布准备。", "先写好韩语原稿，再在五种语言中保留原意并重新组织表达。", "把公开界面记录成带版本的证据，不编造未知 token。"][i] })), routingTitle: "技能名可以不写", routingBody: "直接说“改进并验证这个结账页”，系统会选择完成任务所需的技能。" },
++    skills: { ...en.skills, eyebrow: "能力地图", title: "按结果整理的 28 个产品技能", lead: "需要精确控制时可以指定技能名。大多数时候，只要说明要做的界面和限制即可。发布包包含下列 28 个产品技能。", countNote: "28 个产品技能 · 20 个专业智能体", groups: en.skills.groups.map((g, i) => ({ ...g, title: ["建立项目设计依据", "构建实际界面", "检查产品质量", "写出自然的多语言文案", "记录有来源的参考"][i], description: ["创建、应用并同步项目的设计依据。", "把需求变成可运行、可交付的产品界面。", "检查界面观感、设计一致性、模式重复、无障碍和发布准备。", "先写好韩语原稿，再在五种语言中保留原意并重新组织表达。", "把公开界面记录成带版本的证据，不编造未知 token。"][i] })), routingTitle: "技能名可以不写", routingBody: "直接说“改进并验证这个结账页”，系统会选择完成任务所需的技能。" },
+     antiSlop: {
+       eyebrow: "判定标准",
+       title: "我们把没有产品依据却反复套用的模式称为 AI slop",
+@@ -1542,7 +1542,7 @@ const zhCn = translatedLocale(
+       prompt: "重构 CLI 体验，让新用户先理解结果、看到真实案例，并能用五种语言继续阅读。保留 /builder 作为产品创建路径。",
+       verification: ["五种语言路由完整性", "CLI 全新安装测试", "doctor 降级状态测试", "Home → /builder 回归检查", "生产构建"],
+       honesty: "下方视觉内容是本仓库真实文档改造的结构示意图，不是生成应用的截图；这里也不声称用一次提示词生成了无关应用。",
+-      previewStats: ["27 个技能", "20 个智能体", "10 个阶段"],
++      previewStats: ["28 个技能", "20 个智能体", "10 个阶段"],
+     },
+     troubleshooting: { ...en.troubleshooting, eyebrow: "恢复", title: "出现问题时，先确认下一步", lead: "先运行 doctor。它会按工具检查技能、智能体角色、参考目录和项目启用状态，不会因为发现一个文件就判定安装正常。", doctorTitle: "先运行一次诊断", doctorBody: "CI 使用 JSON 输出；面向用户的报告可以直接粘贴给 AI 编程助手。degraded 状态会返回非零退出码。", cases: en.troubleshooting.cases.map((c, i) => ({ symptom: ["安装后看不到技能", "doctor 报告目录缺失", "AI 编程助手说没有设计上下文", "想保留的行为也被改写", "参考中出现无依据的字体或组件"][i], fix: ["重启 AI 编程助手，再运行 doctor。", "选择正确的目标工具，重新运行最新版安装器。", "请求建立项目设计系统，并在写入 DESIGN.md 前确认方案。", "只回退相关改动，明确受保护行为并用 omd:remember 记录修正。", "只移除未解决字段或空组，不用系统字体或通用组件冒充品牌事实。"][i] })) },
+     ai: { ...en.ai, eyebrow: "人和 AI 都能读取", title: "把已经确认的文档直接交给 AI 编程助手", lead: "每个文档路由都有稳定的信息结构。无需浏览器会话或已弃用的 MCP，也能读取原始目录和产品约定。", machineTitle: "机器可读入口", machineBody: "路由使用 compact index，需要完整产品模型和规则时使用 full 文件。", machineLinks: [{ label: "llms.zh-cn.txt", href: "/llms.zh-cn.txt", description: "简体中文产品约定与路由概要。" }, { label: "llms.txt", href: "/llms.txt", description: "英文 compact index。" }, { label: "llms-full.txt", href: "/llms-full.txt", description: "扩展文档和目录上下文。" }, { label: "Raw DESIGN.md", href: "/toss/design.md", description: "每个参考的稳定原文路径。" }], promptTitle: "可直接交给 AI 编程助手的提示词", prompt: "先读 DESIGN.md。除非我明确要求，否则保留现有路由、行为和用户文案。只使用已验证的设计 token，省略未知参考字段，并在汇报前运行无障碍和 interface-feel 检查。", contractTitle: "AI 编程助手需要遵守的约定", contract: ["DESIGN.md 是项目唯一的设计依据。", "未知参考数据保持缺省。", "参考证据和产品事实属于不同领域。", "验证实际产品页面后才算完成。", "用户修正应记录为有明确范围的偏好。"], builderTitle: "视觉预览仍以 Builder 为准", builderBody: "这些文档说明 CLI 如何把上下文交给 AI 编程助手。参考探索和视觉预览仍通过 Home → Builder 完成。" },
+@@ -1555,7 +1555,7 @@ const zhTw = translatedLocale(
+   { overview: "總覽", "getting-started": "快速開始", demo: "現場示範", workflows: "工作流程", skills: "技能", "anti-slop": "AI slop 判定", showcase: "案例", troubleshooting: "問題排解", ai: "給 AI 的文件" },
+   {
+     ui: { product: "oh-my-design CLI", docs: "文件", language: "語言", copy: "複製", copied: "已複製", openBuilder: "開啟 Builder", github: "GitHub", onThisPage: "本頁內容", previous: "上一頁", next: "下一頁", actualOutput: "實際專案產出", prompt: "提示詞", result: "結果", files: "變更檔案", verified: "驗證", homeAria: "oh-my-design 首頁", pagination: "文件換頁", skillsLabel: "技能", pipeline: "品質分級參考 → DESIGN.md → 實作 → 驗證", pipelineNote: "verified_v2 140 份 · partial 160 份 · legacy 140 份。公開示範請使用 verified_v2。", skipContent: "跳到文件正文", copyFailed: "複製失敗", copyPage: "複製本頁", pageCopied: "已複製本頁", pageTools: "頁面工具", morePageActions: "更多頁面操作", viewMarkdown: "以 Markdown 檢視", copyForAgent: "複製給 AI 程式助理", ready: "準備完成" },
+-    overview: { ...zhCn.overview, eyebrow: "給 AI 程式助理的設計脈絡", title: "讓會寫程式的助理，也能讀懂設計依據", lead: "oh-my-design 會把有品質分級的參考庫與可重複使用的設計工作流程，安裝到你正在用的程式工具。支援的工具還會加入專業角色。安裝完成後，直接說明要調整的產品介面即可。", truthTitle: "CLI 先把 AI 程式助理需要的環境準備好", truthBody: "套件包含 27 個產品技能、20 個代理定義與 440 份有品質分級的 DESIGN.md：verified_v2 140 份、partial 160 份、legacy snapshot 140 份。公開示範請使用 verified_v2。Cursor 2.4+ 會取得 26 個相容 Agent Skills 與精簡的專案規則；獨立專業角色只安裝到支援它們的通道。", proof: "27 個產品技能 · 20 個專業代理 · verified_v2 140 / partial 160 / legacy 140 · 安裝期間 0 次 AI 呼叫", outcomesTitle: "從想完成的成果開始", outcomesLead: "不用記技能名稱。說明要調整的介面與不能更動的內容，系統會選擇適合的工作流程。", outcomes: [
++    overview: { ...zhCn.overview, eyebrow: "給 AI 程式助理的設計脈絡", title: "讓會寫程式的助理，也能讀懂設計依據", lead: "oh-my-design 會把有品質分級的參考庫與可重複使用的設計工作流程，安裝到你正在用的程式工具。支援的工具還會加入專業角色。安裝完成後，直接說明要調整的產品介面即可。", truthTitle: "CLI 先把 AI 程式助理需要的環境準備好", truthBody: "套件包含 28 個產品技能、20 個代理定義與 440 份有品質分級的 DESIGN.md：verified_v2 140 份、partial 160 份、legacy snapshot 140 份。公開示範請使用 verified_v2。Cursor 2.4+ 會取得 27 個相容 Agent Skills 與精簡的專案規則；獨立專業角色只安裝到支援它們的通道。", proof: "28 個產品技能 · 20 個專業代理 · verified_v2 140 / partial 160 / legacy 140 · 安裝期間 0 次 AI 呼叫", outcomesTitle: "從想完成的成果開始", outcomesLead: "不用記技能名稱。說明要調整的介面與不能更動的內容，系統會選擇適合的工作流程。", outcomes: [
+       { title: "建立設計系統", description: "把產品需求和 verified_v2 參考轉成專案自有 DESIGN.md；未知事實不會被補寫。", prompt: "為家庭財務 App 建立沉穩、可信的設計系統。參考 Toss，但保留現有標誌與文案。", result: "DESIGN.md、代理連接檔、清楚的 token 差異與確認過的第一個介面。" },
+       { title: "交付完整介面", description: "把研究、IA、線框、元件、文案、無障礙與驗證串成有檢查點的流程。", prompt: "設計並實作這個 App 的 onboarding。保留目前技術堆疊，以 DESIGN.md 為唯一依據。", result: "可運作介面、完整狀態、驗證紀錄與程式庫內交付物。" },
+       { title: "改善既有 UI", description: "保留產品行為，同時修正層級、節奏、無障礙與缺少產品依據的重複模式。", prompt: "不要改 URL 或欄位名稱，改善定價頁。先套用影響最大的修正並驗證。", result: "聚焦的程式變更、前後依據與確定性品質檢查。" },
+@@ -1564,7 +1564,7 @@ const zhTw = translatedLocale(
+       { name: "Codex", body: "安裝技能、內嵌完整內容的代理角色、輔助腳本與本地參考目錄。", command: "npx oh-my-design-cli@latest install-skills --agent codex --all" },
+       { name: "Claude Code", body: "安裝技能、子代理、目錄與安全合併的專案 hooks。", command: "npx oh-my-design-cli@latest install-skills --agent claude-code --all" },
+       { name: "OpenCode", body: "安裝技能、原生子代理與離線參考目錄。專案安裝使用 `.opencode`，`--global` 使用 `~/.config/opencode`，並以 `doctor --global` 檢查。", command: "npx oh-my-design-cli@latest install-skills --agent opencode --all" },
+-      { name: "Cursor", body: "安裝 26 個原生 Agent Skills、精簡的 DESIGN.md bootstrap 規則與共享目錄。僅舊版用戶端使用 `--cursor-rule-only`。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
++      { name: "Cursor", body: "安裝 27 個原生 Agent Skills、精簡的 DESIGN.md bootstrap 規則與共享目錄。僅舊版用戶端使用 `--cursor-rule-only`。", command: "npx oh-my-design-cli@latest install-skills --agent cursor --all" },
+     ], doneTitle: "產品發生改變才算完成，而不是安裝成功。", doneBody: "良好的第一次執行會留下可見 UI 改善、專案 DESIGN.md 與清楚的下一個提示詞。" },
+     demo: {
+       eyebrow: "現場示範指南",
+@@ -1606,7 +1606,7 @@ const zhTw = translatedLocale(
+       { title: "改善既有頁面", when: "可用但缺少產品特色的 UI", prompt: "檢查這個儀表板中缺少產品依據的重複模式、層級、密度、動效與無障礙。保留行為，先套用影響最大的修正，再展示差異。", outputs: ["依優先順序整理的問題", "聚焦修補", "前後依據"], skills: ["omd:slop-audit", "omd:feel", "omd:designer-review"] },
+       { title: "記錄偏好修正", when: "教代理你的偏好", prompt: "我們的 CTA 不使用全大寫。把這項偏好記錄到專案中，保留按鈕行為並修正目前頁面。", outputs: ["待處理偏好", "有範圍的 UI 修正", "DESIGN.md 合併建議"], skills: ["omd:remember", "omd:learn", "omd:taste"] },
+     ] },
+-    skills: { ...zhCn.skills, eyebrow: "功能地圖", title: "依成果整理的 27 個產品技能", lead: "需要精準控制時可以指定技能名稱。多數情況只要說明介面與限制即可。發布套件包含下列 27 個產品技能。", countNote: "27 個產品技能 · 20 個專業代理", groups: en.skills.groups.map((g, i) => ({ ...g, title: ["建立專案設計依據", "實作產品介面", "檢查產品品質", "寫出自然的多語文案", "留下可追溯的參考"][i], description: ["建立、套用並同步專案的設計依據。", "把需求做成可操作、可交付的產品介面。", "檢查介面感受、設計一致性、模式重複、無障礙與發布準備。", "先完成韓語原稿，再針對五種語言重寫，保留相同事實與操作。", "把公開介面記錄成含版本資訊的依據，不捏造未知 token。"][i] })), routingTitle: "技能名稱可以省略", routingBody: "直接說「改善並驗證這個結帳頁」，系統會選擇完成工作所需的技能。" },
++    skills: { ...zhCn.skills, eyebrow: "功能地圖", title: "依成果整理的 28 個產品技能", lead: "需要精準控制時可以指定技能名稱。多數情況只要說明介面與限制即可。發布套件包含下列 28 個產品技能。", countNote: "28 個產品技能 · 20 個專業代理", groups: en.skills.groups.map((g, i) => ({ ...g, title: ["建立專案設計依據", "實作產品介面", "檢查產品品質", "寫出自然的多語文案", "留下可追溯的參考"][i], description: ["建立、套用並同步專案的設計依據。", "把需求做成可操作、可交付的產品介面。", "檢查介面感受、設計一致性、模式重複、無障礙與發布準備。", "先完成韓語原稿，再針對五種語言重寫，保留相同事實與操作。", "把公開介面記錄成含版本資訊的依據，不捏造未知 token。"][i] })), routingTitle: "技能名稱可以省略", routingBody: "直接說「改善並驗證這個結帳頁」，系統會選擇完成工作所需的技能。" },
+     antiSlop: {
+       eyebrow: "判定方式",
+       title: "我們把缺少產品判斷的重複模式稱為 AI slop",
+@@ -1767,7 +1767,7 @@ const zhTw = translatedLocale(
+       prompt: "重構 CLI 體驗，讓新使用者先理解成果、看到真實案例，並能以五種語言繼續閱讀。保留 /builder 作為產品建立路徑。",
+       verification: ["五種語言路由完整性", "CLI 全新安裝測試", "doctor 降級狀態測試", "Home → /builder 回歸檢查", "正式環境建置"],
+       honesty: "下方視覺內容是本程式庫真實文件改造的結構示意圖，不是生成應用程式的截圖；這裡也不宣稱一次提示就生成了無關應用。",
+-      previewStats: ["27 個技能", "20 個代理", "10 個階段"],
++      previewStats: ["28 個技能", "20 個代理", "10 個階段"],
+     },
+     troubleshooting: { ...zhCn.troubleshooting, eyebrow: "排除問題", title: "遇到問題時，先確認下一步", lead: "先執行 doctor。它會依工具檢查技能、代理角色、參考目錄與專案啟用狀態，不會因為找到一個檔案就判定安裝正常。", doctorTitle: "先執行一次診斷", doctorBody: "CI 使用 JSON 輸出；給使用者看的報告可以直接貼給 AI 程式助理。degraded 狀態會回傳非零結束碼。", cases: [
+       { symptom: "安裝後看不到技能", fix: "重新啟動 AI 程式助理，再執行 doctor。" },

@@ -1,0 +1,87 @@
+{
+  "schema_version": "0.2",
+  "epoch_id": "grok46-four-arm-2026-09-07-v0.2",
+  "status": "b0-b1-provider-zero-preflight-not-live-ready",
+  "supersedes_epoch": {
+    "path": "config/grok46-four-arm-epoch-2026-09-07-v0.1.json",
+    "sha256": "cde6c005a2896c8a3be0c5032dbe85f5ab975fda837b09b5aed71a57ff1c7963",
+    "reason": "relocate epoch-only tasks outside the strict flat public task inventory without changing task bytes",
+    "historical_path_policy": "the v0.1 input remains byte-frozen even though its task paths are no longer current"
+  },
+  "task_relocation": {
+    "from": "tasks/four-arm-2026-09-07",
+    "to": "epoch-tasks/four-arm-2026-09-07",
+    "task_bytes_changed": false
+  },
+  "predecessor_contract": {
+    "path": "config/asset-generation-four-arm-v0.1.json",
+    "sha256": "0492329a10ba2e94e8cb65d414b3e8dac376d19d98baa3d3d9ad14522d2125ea",
+    "mutation_policy": "frozen; this epoch adds task and broker locks without rewriting the predecessor"
+  },
+  "runtime": {
+    "provider": "grok-build-cli",
+    "requested_model": "grok-4.6",
+    "reasoning_effort": "high",
+    "subagents": false,
+    "reported_model": null,
+    "activation_verified": false
+  },
+  "source_lock": {
+    "path": "config/four-arm-source-lock-2026-09-07-v0.1.json",
+    "sha256": "f3726113aabb5ee7abf0b7cd1a71fd50a4dd21223a2d5afeb589181062f4a3d9"
+  },
+  "tasks": {
+    "calibration": [{
+      "task_id": "calibration-morrow-glass",
+      "path": "epoch-tasks/four-arm-2026-09-07/calibration-morrow-glass/task.json",
+      "sha256": "ff2c96d79cc197a5c796cf0799514474e73208c0f2844009f4cced0e9e1a083c"
+    }],
+    "main": [
+      {
+        "task_id": "main-arcwell-listening",
+        "category": "fictional-creative-product-landing",
+        "path": "epoch-tasks/four-arm-2026-09-07/main-arcwell-listening/task.json",
+        "sha256": "1d7449d46febe8bf1bf4d3ddcfc629568f081146f5ecc337320e279783ddc603"
+      },
+      {
+        "task_id": "main-karrot-neighborhood",
+        "category": "korean-brand-factual-product-surface",
+        "path": "epoch-tasks/four-arm-2026-09-07/main-karrot-neighborhood/task.json",
+        "sha256": "7a25f5bf50f7514856bb7f2e7a47d2783d2df80272c9e1bb8136f94c8587a9e6"
+      },
+      {
+        "task_id": "main-stillwater-booking",
+        "category": "fictional-functional-booking",
+        "path": "epoch-tasks/four-arm-2026-09-07/main-stillwater-booking/task.json",
+        "sha256": "a1330d698e3aaa5cefa2153ed8fa10b34bb8467ae7d7630e66cdb6ceaa7633d8",
+        "followup_path": "epoch-tasks/four-arm-2026-09-07/main-stillwater-booking/FOLLOWUP.md",
+        "followup_sha256": "07a7cae88f2a9740583335e279656119de59281567e0d201cd089fe6725fb9ee"
+      }
+    ]
+  },
+  "matrix": {
+    "arms": ["no-skill", "uiux-pro-max", "hallmark", "omd"],
+    "calibration_trials_per_arm": 1,
+    "main_trials_per_task_arm": 3,
+    "followup_trials_per_arm": 3,
+    "planned_cells": 52,
+    "launch_status": "blocked"
+  },
+  "shared_browser": {
+    "capacity": 1,
+    "discipline": "external FIFO lease with explicit reconciliation",
+    "implementation": "scripts/browser-request-broker.mjs",
+    "bridge_schema": "config/browser-request-bridge-v0.1.schema.json",
+    "operator": "root-cua",
+    "waiting_worker_browser_visibility": "none",
+    "creative_prompt_mutation": "forbidden",
+    "live_service_verified": false
+  },
+  "admission_blockers": [
+    "Current Grok 4.6 activation and negative no-skill discovery have not been proven in the new epoch.",
+    "The external FIFO bridge has provider-zero tests but no actual CUA service/download receipt.",
+    "A live media-enabled Grok probe exposed ambient MCP servers and bundled skills despite task-local configuration; file-only isolation receipts cannot admit media cells.",
+    "Cell context isolation requires the existing sandbox, auth/cache, fixed-flag, and prompt-audit receipts; cwd or GROK_HOME alone are insufficient.",
+    "Final evaluator, budget, power, and multiplicity contracts remain preregistration blockers from the predecessor contract."
+  ]
+}

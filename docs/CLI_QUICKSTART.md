@@ -79,6 +79,23 @@ npx oh-my-design-cli@latest design-md adopt \
   --checkpoint-receipt <fresh-project-checkpoint.json>
 ```
 
+For an owner-reviewed `evidence-backed-reconstruction` package, select the
+reference target explicitly on both target-bound steps:
+
+```bash
+npx oh-my-design-cli@latest design-md prepare-checkpoint \
+  <fresh-reference-package> --reviewer <review-authority-id> \
+  --out <fresh-reference-checkpoint.json> --authority-transition-approved \
+  --adoption-target reference-catalog
+npx oh-my-design-cli@latest design-md adopt \
+  <fresh-reference-package> --project-root <isolated-reference-target> \
+  --checkpoint-receipt <fresh-reference-checkpoint.json> \
+  --adoption-target reference-catalog
+```
+
+This target requires the compiler-bound lossless migration ledger and remains
+Bound System. Coverage metadata alone cannot promote it to Proven System.
+
 For a migrated graph, add
 `--migration-report <fresh-review-dir>/migration-report.json` to `compile`, and
 pass the source migration report to `prepare-review`. Do not copy hashes by hand:

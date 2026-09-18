@@ -44,9 +44,36 @@ function ExternalIcon() {
   );
 }
 
-export function FontCard({ font, role, fontFamilyForRender }: { font: FontInfo; role?: string; fontFamilyForRender?: string }) {
+export function FontCard({
+  font,
+  role,
+  fontFamilyForRender,
+  runtimeStatus,
+}: {
+  font: FontInfo;
+  role?: string;
+  fontFamilyForRender?: string;
+  runtimeStatus?: "unverified";
+}) {
   const license = LICENSE_STYLES[font.license];
   const runtime = resolveRuntimeFont(font.name);
+  if (runtimeStatus === "unverified") {
+    return (
+      <div className="rounded-xl bg-card p-4 ring-1 ring-border/40 flex flex-col gap-3 min-h-[120px]">
+        {role && (
+          <div className="text-[9px] font-mono uppercase tracking-wider text-muted-foreground">
+            {ROLE_LABELS[role] ?? role}
+          </div>
+        )}
+        <div className="text-xl font-semibold leading-tight" title={font.name}>{font.name}</div>
+        <div className="text-[10px] leading-snug text-muted-foreground">
+          Live preview not verified for this Core transaction
+        </div>
+      </div>
+    );
+  }
+  const runtimeUnavailable = runtime.mode === "unavailable";
+  const runtimeLabel = runtime.label;
   return (
     <div className="rounded-xl bg-card p-4 ring-1 ring-border/40 flex flex-col gap-3 min-h-[160px]">
       {/* Role label */}
@@ -75,8 +102,8 @@ export function FontCard({ font, role, fontFamilyForRender }: { font: FontInfo; 
             <span className="text-[10px] text-muted-foreground">no install needed</span>
           )}
         </div>
-        <div className={`mt-2 text-[10px] leading-snug ${runtime.mode === "unavailable" ? "text-amber-700 dark:text-amber-400" : "text-muted-foreground"}`}>
-          {runtime.label}
+        <div className={`mt-2 text-[10px] leading-snug ${runtimeUnavailable ? "text-amber-700 dark:text-amber-400" : "text-muted-foreground"}`}>
+          {runtimeLabel}
         </div>
       </div>
 

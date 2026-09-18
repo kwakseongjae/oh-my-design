@@ -1,0 +1,28 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — light-sweep-sheen</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;min-height:130px}
+.card h3{margin:0 0 6px;font-size:15px}.card p{margin:0;color:var(--mut);font-size:13px}
+.btn{display:inline-block;border:0;border-radius:12px;padding:13px 22px;font:600 14px/1 inherit;cursor:pointer;
+  background:var(--accent);color:#fff}
+[data-theme=light] .card{--fx-sheen-color:rgba(255,255,255,.95);--fx-sheen-color2:rgba(59,91,253,.10)}
+[data-theme=light] .card{box-shadow:0 1px 2px rgba(16,17,26,.06)}
+.spacer{height:70vh;display:grid;place-items:center;color:var(--mut)}
+</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>light-sweep-sheen <code>빛</code></h1>
+<p class="sub">끝없이 도는 빔 대신, 시선이 그 요소에 처음 닿는 순간에만 한 번 지나가는 정반사. 같은 "빛" 어휘지만 소음이 되지 않는다.</p>
+<h2>호버 트리거</h2>
+<div class="grid2">
+  <div class="card fx-sheen fx-sheen--hover"><h3>커서를 올려보세요</h3><p>900ms 한 번. 반복하지 않는다.</p></div>
+  <div class="card fx-sheen fx-sheen--hover" style="--fx-sheen-dur:1500ms;--fx-sheen-angle:88deg"><h3>느리고 수직에 가깝게</h3><p>1500ms / 88deg — 금속판 느낌.</p></div>
+</div>
+<p style="margin-top:18px"><button class="btn fx-sheen fx-sheen--hover" style="--fx-sheen-dur:700ms">시작하기</button></p>
+<h2>스크롤 진입 트리거</h2>
+<div class="spacer">↓ 스크롤</div>
+<div class="card fx-sheen fx-sheen--enter"><h3>화면에 들어오는 동안 한 번 훑는다</h3><p><code>animation-timeline: view()</code>. Firefox 에서는 이 블록 자체가 적용되지 않고 카드는 그대로 멀쩡하다.</p></div>
+<div class="spacer">↑</div>
+</div>
+<script src="../_shell.js"></script></body></html>

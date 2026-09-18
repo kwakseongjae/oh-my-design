@@ -1,0 +1,25 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — flip-expand-card</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>.gridf{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.gridf .fx-flip__card:not(.is-open){aspect-ratio:3/4}</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>flip-expand-card <code>호버 · 전환</code></h1>
+<p class="sub">호버가 예고하고, 클릭이 펼친다. 위치·크기 차이를 <b>역변환으로 되돌린 뒤 0 으로 재생</b>(FLIP)하므로 레이아웃 애니메이션인데도 transform 만 움직인다. GSAP Flip(24.4KB) 없이 WAAPI 46줄.</p>
+<div class="fx-flip">
+  <div class="fx-flip__scrim"></div>
+  <div class="gridf">
+    <div class="fx-flip__card"><div class="fx-flip__inner"><div class="fx-flip__ph" style="--h:210"></div><div class="fx-flip__body"><b>01 표류</b><span>클릭하면 펼쳐진다</span></div></div></div>
+    <div class="fx-flip__card"><div class="fx-flip__inner"><div class="fx-flip__ph" style="--h:262"></div><div class="fx-flip__body"><b>02 잔광</b><span>ESC 로 닫는다</span></div></div></div>
+    <div class="fx-flip__card"><div class="fx-flip__inner"><div class="fx-flip__ph" style="--h:314"></div><div class="fx-flip__body"><b>03 궤도</b><span>키보드 Enter 도 된다</span></div></div></div>
+    <div class="fx-flip__card"><div class="fx-flip__inner"><div class="fx-flip__ph" style="--h:26"></div><div class="fx-flip__body"><b>04 격자</b><span>배경이 어두워진다</span></div></div></div>
+    <div class="fx-flip__card"><div class="fx-flip__inner"><div class="fx-flip__ph" style="--h:78"></div><div class="fx-flip__body"><b>05 파문</b><span>역스케일로 내용이 안 찌그러진다</span></div></div></div>
+    <div class="fx-flip__card"><div class="fx-flip__inner"><div class="fx-flip__ph" style="--h:150"></div><div class="fx-flip__body"><b>06 정지</b><span>리듀스드 모션이면 즉시 전환</span></div></div></div>
+  </div>
+</div>
+<p class="note">색면은 이미지 슬롯 플레이스홀더다 — <code>.fx-flip__ph</code> 를 <code>&lt;img&gt;</code> 로 교체한다.</p>
+</div>
+<script src="./snippet.js"></script>
+<script>fxLib.mountFlipExpand();</script>
+<script src="../_shell.js"></script></body></html>

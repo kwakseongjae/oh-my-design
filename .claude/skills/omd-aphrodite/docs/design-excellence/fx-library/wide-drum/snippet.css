@@ -1,0 +1,73 @@
+/* fx: wide-drum — 뷰포트 전폭 포스터 띠. 입력 0 에서도 계속 돈다.
+   구현: oh-my-design (MIT). 외부 의존 0. */
+
+.fx-drum{
+  --fx-drum-h: 56vh;            /* 타일 높이. 40vh 미만이면 이 효과를 쓸 이유가 없다 */
+  --fx-drum-ar: .74;            /* 타일 가로/세로 비 */
+  --fx-drum-gap: 1.4vw;
+  --fx-drum-bend: 15deg;        /* 가장자리 타일이 안으로 접히는 각 (0 = 평면 띠) */
+  --fx-drum-persp: 1700px;
+  position: relative;
+  width: 100%;
+  overflow: clip;               /* 가로 스크롤바를 절대 만들지 않는다 */
+  padding-block: clamp(10px, 2vh, 26px);
+  perspective: var(--fx-drum-persp);
+  touch-action: pan-y;          /* 세로 스크롤은 페이지에 양보 */
+  cursor: grab;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+.fx-drum.is-drag{ cursor: grabbing }
+
+.fx-drum__track{
+  display: flex;
+  gap: var(--fx-drum-gap);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.fx-drum__tile{
+  position: relative;
+  flex: 0 0 auto;
+  width: calc(var(--fx-drum-h) * var(--fx-drum-ar));
+  height: var(--fx-drum-h);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #111318;
+  transform: rotateY(calc(var(--d, 0) * var(--fx-drum-bend) * -1));
+  transform-origin: 50% 50%;
+  backface-visibility: hidden;
+}
+
+.fx-drum__tile > img,
+.fx-drum__tile > video,
+.fx-drum__ph{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block }
+
+/* 통(drum) 벽면 명암 — 중앙에서 멀수록 어두워진다. opacity 만 움직여 합성만 한다. */
+.fx-drum__tile::after{
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: #05060a;
+  opacity: calc(min(abs(var(--d, 0)), 1) * .5);
+}
+
+.fx-drum__ph{
+  background:
+    radial-gradient(84% 62% at 26% 18%, hsl(var(--h,188) 84% 60% / .62), transparent 64%),
+    linear-gradient(160deg, #0e1116, #1c212a 60%, #0a0c10);
+}
+
+.fx-drum__label{
+  position: absolute; left: 12px; right: 12px; bottom: 10px;
+  color: #fff; font-size: 12px; letter-spacing: .01em;
+  text-shadow: 0 1px 6px rgb(0 0 0 / .6);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce){
+  /* ① 정지하되 남긴다 — 멈춘 띠도 구도로 성립한다. 드래그는 살아 있다. */
+  .fx-drum{ --fx-drum-bend: 8deg }
+}
+
+@media (max-width: 720px){
+  .fx-drum{ --fx-drum-h: 44vh; --fx-drum-gap: 2.6vw; --fx-drum-bend: 10deg }
+}

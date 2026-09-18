@@ -1,0 +1,9 @@
+{
+  "date": "2026-09-07",
+  "source": "https://gsap.com/community/standard-license/",
+  "observed_effective_date": "2025-04-30",
+  "observed_last_modified": "2025-05-30",
+  "summary": "Official FAQ permits AI-generated GSAP code and commercial use under its standard license. License prohibits certain competing visual animation builders and removal of proprietary notices. Existing LICENSES.md describes the code-generation use case consistently. Preserve bundled notices and provenance; this check does not authorize unrelated future product uses.",
+  "reviewed_local_notice": "docs/design-excellence/fx-library/scroll-gsap/lib/LICENSES.md",
+  "scope": "source verification for packaging closure, not a legal opinion"
+}

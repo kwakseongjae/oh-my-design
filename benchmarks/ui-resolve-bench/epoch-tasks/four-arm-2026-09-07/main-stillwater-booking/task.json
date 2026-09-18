@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.1",
+  "task_id": "main-stillwater-booking",
+  "matrix_role": "main-with-followup",
+  "surface": "fictional-functional-booking",
+  "locale": "en-US",
+  "brief": "Create a responsive booking experience for Stillwater Rooms, a fictional neighborhood wellness studio. A visitor must be able to choose a room, date, time, party size, enter contact details, review the reservation, and reach an on-page confirmation.",
+  "locked_facts": {
+    "name": "Stillwater Rooms",
+    "rooms": [{"name": "Cedar", "capacity": 2}, {"name": "Stone", "capacity": 4}, {"name": "Garden", "capacity": 6}],
+    "times": ["09:00", "11:30", "14:00", "16:30"],
+    "booking_window": "next 14 days",
+    "contact_fields": ["name", "email"],
+    "confirmation_code": "SW-2048"
+  },
+  "shared_creative_pack": null,
+  "source_provenance": [{"type": "benchmark-authored-fiction", "path": "task.json", "claim_scope": "all locked facts"}],
+  "deterministic_acceptance": [
+    "A new booking can be completed from room selection through confirmation using keyboard input.",
+    "Dates outside the next 14 days, party sizes above room capacity, absent name, and invalid email are blocked with field-associated messages.",
+    "Back navigation preserves entered values and changing room invalidates an incompatible party size.",
+    "Review shows the selected room, date, time, party size, name, and email before submission.",
+    "Submission displays confirmation code SW-2048 without a network dependency and supports starting over.",
+    "At 390x844 and 1440x900 there is no horizontal document overflow and the current step is announced."
+  ],
+  "followup": {
+    "path": "FOLLOWUP.md",
+    "same_session_required": true,
+    "same_workspace_required": true,
+    "same_arm_trial_required": true
+  }
+}

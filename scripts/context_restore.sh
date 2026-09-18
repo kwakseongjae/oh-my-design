@@ -25,4 +25,15 @@ DIRTY=$(git status --short 2>/dev/null | head -20)
 
 echo ""
 echo "════════ ROADMAP 미완료 (다음 후보) ════════"
-grep -n -E '⬜|🔶|\[ \]' "$ROADMAP_FILE" 2>/dev/null | head -15 || echo "(마커 없음 — $ROADMAP_FILE 확인)"
+if [ -f docs/OMD_EXECUTION_BOARD_2026-09-07.json ]; then
+  node --input-type=module - <<'NODE'
+import { readFileSync } from 'node:fs';
+const board = JSON.parse(readFileSync('docs/OMD_EXECUTION_BOARD_2026-09-07.json', 'utf8'));
+const tasks = board.tasks.filter(task => !/^completed/.test(task.status));
+const active = tasks.filter(task => task.status !== 'planned');
+for (const task of active) console.log(`${task.id} · ${task.status} · ${task.title}`);
+console.log(`후속 계획: ${board.next_roadmap ?? board.plan}; planned ${tasks.length - active.length}개`);
+NODE
+else
+  rg -n '⬜|🔶|\[ \]' "$ROADMAP_FILE" 2>/dev/null | head -15 || echo "(마커 없음 — $ROADMAP_FILE 확인)"
+fi

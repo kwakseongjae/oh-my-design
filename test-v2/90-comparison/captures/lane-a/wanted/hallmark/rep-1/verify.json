@@ -1,0 +1,42 @@
+{
+  "brand": "wanted",
+  "surface": "desktop-1440",
+  "generated": "/Users/kwakseongjae/Desktop/projects/oh-my-design/test-v2/03-runs/lane-a/wanted/hallmark/rep-1/image.jpg",
+  "evidenceCapturedAt": "2026-08-22T19:52:31.934Z",
+  "paletteSource": "capture/desktop-1440-imagery-01.png",
+  "fields": [
+    {
+      "field": "aspect",
+      "eligible": true,
+      "error": 0.0033,
+      "score": 96.67
+    },
+    {
+      "field": "meanLuma",
+      "eligible": true,
+      "error": 0.076,
+      "score": 62
+    },
+    {
+      "field": "dynamicRange",
+      "eligible": true,
+      "error": 0.125,
+      "score": 37.5
+    },
+    {
+      "field": "subjectCentre",
+      "eligible": false,
+      "reason": "source placement omitted — fewer than the resolved-sample floor"
+    },
+    {
+      "field": "palette",
+      "eligible": true,
+      "error": 11.9535,
+      "score": 52.19
+    }
+  ],
+  "eligibleCount": 4,
+  "usable": true,
+  "numericScore": 62.09,
+  "note": "fields are same-day snapshot adherence, not brand invariants"
+}

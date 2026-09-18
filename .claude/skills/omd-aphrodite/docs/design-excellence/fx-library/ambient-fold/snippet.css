@@ -1,0 +1,64 @@
+/* fx: ambient-fold — 폴드가 스스로 살아 있게 하는 최저가 세트. CSS-only. 구현: oh-my-design (MIT).
+   근거: higgsfield.ai 실측(2026-09-04) — canvas 0, GSAP 0, 폴드 안에서 도는 CSS 애니메이션 17개.
+   계열 3종(광원 드리프트 / 타이핑 / 상태 점멸)만 재현한다. */
+
+/* ── 1. 광원 드리프트 — 물체가 아니라 빛이 움직인다 (20~60s) ───────────────── */
+.fx-amb-beam{
+  position: absolute; inset: -20%;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 46% at 30% 34%, var(--fx-amb-a, rgba(120,160,255,.34)), transparent 62%),
+    radial-gradient(30% 40% at 72% 62%, var(--fx-amb-b, rgba(200,255,47,.16)), transparent 66%);
+  filter: blur(28px);
+  animation: fx-amb-drift var(--fx-amb-dur, 42s) ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes fx-amb-drift{
+  from{ transform: translate3d(-4%, -2%, 0) scale(1); }
+  to  { transform: translate3d( 5%,  3%, 0) scale(1.14); }
+}
+
+/* ── 2. 타이핑 헤드라인 — 제품이 '생성'이면 카피도 생성되어야 한다 ────────── */
+.fx-amb-type{
+  display: inline-block;
+  overflow: hidden; white-space: nowrap;
+  vertical-align: bottom;
+  width: 0;
+  animation: fx-amb-typing var(--fx-amb-type-dur, 2.4s) steps(var(--fx-amb-ch, 18)) forwards;
+}
+@keyframes fx-amb-typing{ to{ width: calc(var(--fx-amb-ch, 18) * 1ch); } }
+.fx-amb-caret{
+  display: inline-block; width: .06em; height: 1em;
+  background: currentColor; vertical-align: -.08em;
+  animation: fx-amb-blink 1.06s steps(1) infinite;
+}
+@keyframes fx-amb-blink{ 50%{ opacity: 0; } }
+/* 텍스트 시머 — 완성된 문장 위를 빛이 한 번씩 지나간다 */
+.fx-amb-shimmer{
+  background: linear-gradient(100deg, currentColor 38%, var(--fx-amb-sh, #fff) 50%, currentColor 62%);
+  background-size: 260% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+  animation: fx-amb-sheen var(--fx-amb-sh-dur, 7s) ease-in-out infinite;
+}
+@keyframes fx-amb-sheen{ 0%,62%{ background-position: 190% 0; } 100%{ background-position: -60% 0; } }
+
+/* ── 3. 상태 점멸 — "지금 돌아가고 있다"는 신호 ────────────────────────────── */
+.fx-amb-dot{
+  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--fx-amb-live, #c8ff2f);
+  animation: fx-amb-pulse 2.1s cubic-bezier(.4,0,.6,1) infinite;
+}
+@keyframes fx-amb-pulse{
+  0%,100%{ opacity: 1; box-shadow: 0 0 0 0 var(--fx-amb-live, #c8ff2f); }
+  70%    { opacity: .55; box-shadow: 0 0 0 7px transparent; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .fx-amb-beam{ animation: none; }                       /* 빛은 멈추되 남는다 */
+  .fx-amb-type{ animation: none; width: auto; }          /* 문장은 완성 상태로 스냅 */
+  .fx-amb-caret{ display: none; }
+  .fx-amb-shimmer{ animation: none; background: none; -webkit-background-clip: initial;
+                   background-clip: initial; color: inherit; }
+  .fx-amb-dot{ animation: none; }
+}

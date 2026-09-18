@@ -200,6 +200,12 @@ npx oh-my-design-cli@latest design-md adopt \
   --checkpoint-receipt <fresh-project-checkpoint.json>
 ```
 
+An owner-reviewed reference reconstruction uses the same public commands with
+`--adoption-target reference-catalog` on both `prepare-checkpoint` and `adopt`.
+The checkpoint binds that target to the exact package; the adopter also requires
+an `evidence-backed-reconstruction` graph and its compiler-bound lossless ledger.
+This path reports Bound System and does not treat coverage flags as runtime proof.
+
 For migrated input, pass the reviewed or rebound `migration-report.json` to both
 `prepare-review` and `compile`. Only the project owner, or a pre-registered
 external authority controller acting under the owner's policy, may provide the
@@ -287,7 +293,7 @@ For older Cursor clients, `--cursor-rule-only` installs the historical rule + ca
 
 ## What's inside
 
-**28 skills · 20 sub-agents · 440+ quality-graded references · activation hooks** make up the full bundle. Cursor receives the 26 portable skills; `claude-design`, OmD sub-agent definitions, and activation hooks remain channel-specific.
+**28 skills · 20 sub-agents · 440+ quality-graded references · activation hooks** make up the full bundle. Cursor receives the 27 portable skills; `claude-design`, OmD sub-agent definitions, and activation hooks remain channel-specific.
 
 - **Skills** — core flow (`omd:autopilot` / `omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:update` / `omd:issue` — file feedback straight to GitHub / `omd:remember` / `omd:learn` / `omd:taste` — say "what are my preferences" to see everything the loop has learned, pending, or snoozed), live capture + assets (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), the landing and media track (`omd:setup` — record which image/video channels this machine actually has / `omd:landing` — scroll-native one-page landing / `omd:media` — brand-consistent asset sets / `omd:showcase` — scroll demo video), the writing and review layer (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:humanize` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), interface quality (`omd:feel` / `omd:slop-audit`), plus the standalone `claude-design` skill that drives claude.ai/design from your terminal.
 - **Sub-agents** — `omd-master` + 19 specialists (UX research, UI generation, asset curation, copy humanization, slop auditing, a11y audit, persona testing, critique, …).

@@ -1,0 +1,48 @@
+/* fx: coverflow-ring — 중앙만 정면, 양옆은 안으로 접히는 커버플로우 링. 구현: oh-my-design (MIT). */
+.fx-cf{
+  --fx-cf-w: 220px;       /* 커버 폭 */
+  --fx-cf-h: 280px;
+  --fx-cf-gap: 132px;     /* 이웃 간 X 간격 — 폭보다 작아야 겹쳐 보인다 */
+  --fx-cf-ang: 52deg;     /* 측면 커버가 접히는 각 */
+  --fx-cf-depth: 132px;   /* 뒤로 밀리는 거리 */
+  --fx-cf-persp: 1200px;
+  --fx-cf-ease: cubic-bezier(.22,.61,.36,1);
+  position: relative;
+  perspective: var(--fx-cf-persp);
+  perspective-origin: 50% 50%;
+  touch-action: pan-y;
+  cursor: grab;
+}
+.fx-cf[data-fx-cf="drag"]{ cursor: grabbing; }
+.fx-cf__track{ position:absolute; inset:0; transform-style: preserve-3d; }
+.fx-cf__item{
+  position: absolute; top: 50%; left: 50%;
+  width: var(--fx-cf-w); height: var(--fx-cf-h);
+  margin: calc(var(--fx-cf-h) / -2) 0 0 calc(var(--fx-cf-w) / -2);
+  border-radius: 14px;
+  transform-style: preserve-3d;
+  /* JS 가 --x/--rot/--z/--s 를 프레임마다 써 넣는다. transition 은 클릭 이동용 */
+  transform:
+    translate3d(var(--x, 0px), 0, var(--z, 0px))
+    rotateY(var(--rot, 0deg))
+    scale(var(--s, 1));
+  z-index: var(--zi, 0);
+  filter: brightness(var(--lit, 1));
+  will-change: transform;
+}
+.fx-cf__card{
+  width:100%; height:100%; border-radius:inherit; overflow:hidden;
+  box-shadow: 0 30px 60px -30px rgba(0,0,0,.85);
+  /* 반사는 점진적 향상 — Chromium/Safari 만. 없어도 구도는 성립한다 */
+  -webkit-box-reflect: below 6px linear-gradient(transparent 62%, rgba(255,255,255,.22));
+}
+.fx-cf__card > img{ width:100%; height:100%; object-fit:cover; display:block; }
+.fx-cf__card--ph{
+  background: linear-gradient(155deg, hsl(var(--h,220) 72% 60%), hsl(calc(var(--h,220) + 38) 76% 32%));
+}
+/* 중앙 커버에만 테두리 광 — 지금 무엇이 선택됐는지 */
+.fx-cf__item[data-cf-active] .fx-cf__card{ outline: 1px solid rgba(255,255,255,.42); outline-offset: -1px; }
+
+@media (prefers-reduced-motion: reduce){
+  .fx-cf__item{ transition: none !important; }
+}

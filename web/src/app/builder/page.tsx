@@ -14,6 +14,7 @@ import { encodeConfig, decodeConfig } from "@/lib/core/config-hash";
 import { buildBuilderPrompt, DEFAULT_BUILDER_COMPONENTS } from "@/lib/core/builder-prompt";
 import type { Overrides, StylePreferences } from "@/lib/core/types";
 import type { ReferenceDetailAstContract } from "@/lib/references/detail-projection";
+import type { CoreConsumerContract } from "@/lib/references/core-consumer-contract";
 import { isColorFilter, type ColorFilter } from "@/lib/builder/color-family";
 import { useMounted } from "@/lib/use-mounted";
 
@@ -55,6 +56,10 @@ export interface RefDetail {
   border?: string;
   /** Present on the default AST API path; optional only for the rollback flag. */
   referenceAst?: ReferenceDetailAstContract;
+  /** Present only after the active Core adoption transaction passes the canonical verifier. */
+  coreContract?: CoreConsumerContract;
+  referenceFormat?: "core-v2";
+  coreStatus?: "verified" | "unavailable" | "rejected";
 }
 
 const DEFAULT_COMPONENTS = DEFAULT_BUILDER_COMPONENTS;

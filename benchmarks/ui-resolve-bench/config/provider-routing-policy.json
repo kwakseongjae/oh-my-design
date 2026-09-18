@@ -1,6 +1,17 @@
 {
   "schema_version": "0.2",
   "default_action": "deny",
+  "current_worker_routing": {
+    "decision_date": "2026-09-07",
+    "scope": "execution-workers-only-not-frozen-benchmark-epochs",
+    "routes": [
+      { "runtime": "codex", "model_requested": "gpt-5.6-sol", "role": "implementation-and-integration" },
+      { "runtime": "claude-code", "model_requested": "opus", "model_reported_required": "claude-opus-5", "role": "creative-direction-and-review" },
+      { "runtime": "grok-build-cli", "model_requested": "grok-4.6", "model_reported_required": "grok-4.6-build", "role": "asset-probes-and-isolated-generation" }
+    ],
+    "historical_epoch_mutation_allowed": false,
+    "worker_runs_are_benchmark_cells": false
+  },
   "known_models": {
     "gpt-5.6-luna": {
       "required_runtime": "codex",

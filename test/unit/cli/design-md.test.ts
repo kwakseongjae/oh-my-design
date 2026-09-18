@@ -173,6 +173,42 @@ describe('omd design-md command contract', () => {
       '--checkpoint-receipt', resolve(cwd, '.omd/checkpoints/core-v2.json'),
     ]);
 
+    expect(buildDesignMdToolArgs('prepare-checkpoint', {
+      cwd,
+      input: '.omd/compiled/reference-v2',
+      reviewer: 'gpt-rehearsal-root-reviewer',
+      output: '.omd/checkpoints/reference-v2.json',
+      authorityTransitionApproved: true,
+      adoptionTarget: 'reference-catalog',
+    })).toEqual([
+      resolve(cwd, '.omd/compiled/reference-v2'),
+      '--prepare-checkpoint', resolve(cwd, '.omd/checkpoints/reference-v2.json'),
+      '--reviewer', 'gpt-rehearsal-root-reviewer',
+      '--authority-transition-approved',
+      '--adoption-target', 'reference-catalog',
+    ]);
+
+    expect(buildDesignMdToolArgs('adopt', {
+      cwd,
+      input: '.omd/compiled/reference-v2',
+      projectRoot: 'references/rehearsal',
+      checkpointReceipt: '.omd/checkpoints/reference-v2.json',
+      adoptionTarget: 'reference-catalog',
+    })).toEqual([
+      resolve(cwd, '.omd/compiled/reference-v2'),
+      '--project-root', resolve(cwd, 'references/rehearsal'),
+      '--checkpoint-receipt', resolve(cwd, '.omd/checkpoints/reference-v2.json'),
+      '--adoption-target', 'reference-catalog',
+    ]);
+
+    expect(() => buildDesignMdToolArgs('adopt', {
+      cwd,
+      input: '.omd/compiled/reference-v2',
+      projectRoot: '.',
+      checkpointReceipt: 'checkpoint.json',
+      adoptionTarget: 'automatic' as 'reference-catalog',
+    })).toThrow(/--adoption-target must be project-system or reference-catalog/);
+
     expect(() => buildDesignMdToolArgs('approve-review', {
       cwd,
       input: 'review-request.json',

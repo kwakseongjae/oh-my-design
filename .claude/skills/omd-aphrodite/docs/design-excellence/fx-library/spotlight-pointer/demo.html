@@ -1,0 +1,24 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — spotlight-pointer</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;min-height:170px}
+.card h3{margin:0 0 6px;font-size:15px;position:relative;z-index:2}
+.card p{margin:0;color:var(--mut);font-size:13px;position:relative;z-index:2}
+[data-theme=light] .card{--fx-spot-color:rgba(59,91,253,.12)}
+</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>spotlight-pointer <code>커서 / 빛</code></h1>
+<p class="sub">포인터 좌표를 커스텀 프로퍼티로 넘기고 그리기는 CSS 가 한다. 리스너는 window 하나, 갱신은 rAF 한 프레임에 한 번.</p>
+<div class="grid2">
+  <div class="card fx-spot"><h3>카드 하나하나가 자기 스포트라이트를 그린다</h3><p>경계를 넘으면 opacity 만 페이드된다 — 딱 끊기지 않는다.</p></div>
+  <div class="card fx-spot" style="--fx-spot-size:200px"><h3>좁은 광원</h3><p>200px. 손전등에 가깝다.</p></div>
+  <div class="card fx-spot" style="--fx-spot-size:520px"><h3>넓은 광원</h3><p>520px. 존재를 거의 눈치채지 못하는 쪽 — 대개 이게 낫다.</p></div>
+  <div class="card fx-spot" style="--fx-spot-color:rgba(120,255,200,.2)"><h3>색 광원</h3><p>브랜드 색을 쓰면 강조가 되지만 남용하면 게임 UI 가 된다.</p></div>
+</div>
+<p class="note">터치 기기에서는 CSS 가 <code>@media (hover:none)</code> 로, JS 가 matchMedia 로 두 번 차단한다.</p>
+</div>
+<script src="./snippet.js"></script>
+<script>fxLib.mountSpotlight();</script>
+<script src="../_shell.js"></script></body></html>

@@ -1,0 +1,15 @@
+/* fx: spotlight-pointer — 포인터를 따라오는 스포트라이트. 구현: oh-my-design (MIT). */
+.fx-spot{position:relative;isolation:isolate}
+.fx-spot::before{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;border-radius:inherit;
+  background:radial-gradient(
+    var(--fx-spot-size,320px) circle at var(--fx-spot-x,-999px) var(--fx-spot-y,-999px),
+    var(--fx-spot-color,rgba(255,255,255,.16)), transparent 66%);
+  opacity:0;transition:opacity var(--fx-spot-fade,260ms) ease}
+.fx-spot[data-fx-spot="on"]::before{opacity:1}
+/* 카드 그리드 버전: 부모에서 좌표를 받아 각 카드가 자기 몫만 그린다 */
+.fx-spot-grid{position:relative}
+.fx-spot-grid .fx-spot::before{background:radial-gradient(
+  var(--fx-spot-size,320px) circle at calc(var(--fx-spot-gx,-999px) - var(--fx-card-x,0px)) calc(var(--fx-spot-gy,-999px) - var(--fx-card-y,0px)),
+  var(--fx-spot-color,rgba(255,255,255,.16)), transparent 66%)}
+@media (hover:none){.fx-spot::before{display:none}}

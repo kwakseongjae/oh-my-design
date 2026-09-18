@@ -1,0 +1,18 @@
+/* fx: film-grain — feTurbulence 한 장으로 만드는 필름 그레인. 구현: oh-my-design (MIT).
+   외부 이미지 0. 데이터 URI 하나가 전부이고 해상도 독립적이다. */
+.fx-grain{position:relative;isolation:isolate}
+.fx-grain::after{
+  content:"";position:absolute;inset:0;z-index:9;pointer-events:none;border-radius:inherit;
+  opacity:var(--fx-grain-opacity,.055);
+  mix-blend-mode:var(--fx-grain-blend,overlay);
+  background-image:var(--fx-grain-src,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"));
+  background-size:var(--fx-grain-size,160px) var(--fx-grain-size,160px)}
+/* 살아있는 그레인: 타일을 순간이동시켜 프레임마다 다른 자리를 보여준다 (8fps 느낌) */
+.fx-grain--alive::after{animation:fx-grain-jitter var(--fx-grain-dur,1s) steps(1,end) infinite}
+@keyframes fx-grain-jitter{
+  0%{background-position:0 0}      12.5%{background-position:-13px 7px}
+  25%{background-position:9px -11px} 37.5%{background-position:-6px -14px}
+  50%{background-position:14px 4px}  62.5%{background-position:-11px 12px}
+  75%{background-position:5px -6px}  87.5%{background-position:-15px -3px}}
+@media (prefers-reduced-motion:reduce){.fx-grain--alive::after{animation:none}}

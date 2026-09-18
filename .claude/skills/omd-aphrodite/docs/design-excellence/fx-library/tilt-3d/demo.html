@@ -1,0 +1,24 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — tilt-3d</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;min-height:210px;
+  display:grid;align-content:space-between;box-shadow:0 20px 44px -26px rgba(0,0,0,.6)}
+.card b{font-size:16px}.card span{color:var(--mut);font-size:13px}
+.chip{display:inline-block;padding:6px 12px;border-radius:999px;background:var(--accent);color:#fff;font-size:12px;font-weight:600}
+</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>tilt-3d <code>깊이</code></h1>
+<p class="sub">기울기만으로는 깊이가 안 생긴다. 자식에 <code>--z</code> 를 줘서 <b>시차</b>가 나야 3D 로 읽힌다.</p>
+<div class="grid2">
+  <div class="card fx-tilt"><span class="chip" style="--z:44;justify-self:start">--z: 44</span><b style="--z:22">시차 있음</b><span style="--z:8">칩이 카드보다 앞에 뜬다</span></div>
+  <div class="card fx-tilt"><span class="chip" style="justify-self:start">--z 없음</span><b>시차 없음</b><span>그냥 기울어진 사각형이다</span></div>
+  <div class="card fx-tilt" data-fx-tilt-max="18"><span class="chip" style="--z:44;justify-self:start">max 18</span><b>과한 각도</b><span>18deg — 멀미가 난다. 상한은 10deg.</span></div>
+  <div class="card fx-tilt" data-fx-tilt-max="5" style="--fx-tilt-persp:1100px"><span class="chip" style="--z:30;justify-self:start">max 5</span><b>절제된 각도</b><span>5deg / perspective 1100 — 제품용</span></div>
+</div>
+<p class="note">터치 기기와 <code>prefers-reduced-motion</code> 에서는 마운트조차 하지 않는다.</p>
+</div>
+<script src="./snippet.js"></script>
+<script>fxLib.mountTilt();</script>
+<script src="../_shell.js"></script></body></html>

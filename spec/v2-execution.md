@@ -3,6 +3,8 @@
 Decision date: 2026-07-10
 Positioning: **Verified brand context your coding agent can actually apply.**
 
+Current execution update, 2026-09-08: the active five-track sequence is maintained in [the next roadmap](../docs/OMD_NEXT_ROADMAP_2026-09-08.md) and [CURRENT_STATE](../docs/CURRENT_STATE.md). The numerical targets below remain historical planning targets, not current measured outcomes. Catalog “Verified v2” quality and DESIGN.md Core v2 conformance are separate concepts.
+
 ## Outcome
 
 Move from a 400-file gallery with ambiguous trust to a measured reference-to-agent activation product. The primary KPI is weekly unique web users completing a handoff (`act_handoff`) rather than sessions, raw generations, or one-day launch spikes.
@@ -21,12 +23,12 @@ Day-90 operating thresholds are provisional until the first 14 clean measurement
 
 ```mermaid
 flowchart LR
-  A["Author canonical DESIGN.md"] --> B["Strict YAML + catalog schema"]
+  A["Author canonical DESIGN.md"] --> B["Core v2 contract or legacy import validation"]
   B --> C["Quality evaluator"]
   C --> D{"Computed tier"}
   D -->|Verified v2| E["Builder / API / raw DESIGN.md handoff eligible"]
-  D -->|Partial| F["Show gaps + evidence"]
-  D -->|Legacy| G["Discovery only"]
+  D -->|Partial| F["Preserve known fields and evidence; omit only unresolved values"]
+  D -->|Legacy| G["Preserve verified source context with explicit format provenance"]
   E --> H["Unit + parity + type checks"]
   F --> H
   G --> H
@@ -38,7 +40,7 @@ flowchart LR
 
 The PR workflow has independent CLI and Web/reference jobs. The reference job rebuilds generated data and fails on drift. A daily run re-evaluates evidence TTLs without making network checks a PR hard dependency. The archived MCP package is excluded from the release gate.
 
-The Web merge gate currently requires the complete test suite and TypeScript check. Full Web ESLint is not marked required yet because the pre-existing baseline has seven unrelated React/Next errors; make it required only after a dedicated lint-baseline cleanup, so this pipeline starts green instead of institutionalizing ignored failures.
+The Web merge gate requires the complete test suite and TypeScript check. The earlier ESLint baseline was not clean; re-measure it in a dedicated cleanup before making it required. Do not carry an old error count forward as a current result.
 
 ## Executable backlog
 
@@ -50,7 +52,7 @@ The Web merge gate currently requires the complete test suite and TypeScript che
 | AST0 | 🔶 code complete · deploy pending | P0 | One canonical reference model | Replace page, legacy route, API, builder, JSON-LD, and sitemap regex parsers with one typed AST and parity fixtures; retire MCP transport. | 100% primary/radius/font/status parity | Preserve and expand #37 |
 | CAP0 | ✅ A0–A2 complete | P0 | Deterministic reference evidence | MCP-free multi-surface capture emits raw element provenance, font state, state-style snapshots, five active interaction kinds, and conservative coverage before model reconciliation. | Fixture precision/recall/F1 ≥0.95; current 1.0/1.0/1.0 | New v2 extraction item |
 | F20 | 🔶 in progress · first 10 Verified v2 | P0 | Verified flagship set | Re-audit the top 20 by demand with surface/source/claim evidence and real font/license state. The first 10 passed the standardized deterministic + in-app hybrid audit. | ≥70% top-20 demand covered | Preserve and rewrite #43 |
-| PAGE0 | ⬜ | P1 | Reference page v2 | Implement `spec/preview-v2.md`: surface switcher, REAL/SUBSTITUTE/SYSTEM fonts, evidence drawer, conflicts, checked date, version diff, agent-specific Use actions. | Detail → handoff ordered journey | #22 + preview-v2 |
+| PAGE0 | ⬜ | P1 | Reference and Builder presentation | Apply the current field-level evidence policy: verified font metadata, runtime availability, evidence and version context. A non-loadable known font loses only its live specimen; no substitute specimen is presented as that font. | Home → Builder → selection → preview → handoff; detail remains a separate catalog surface | #22 + current Core consumer contract |
 | CAT0 | 🔶 code complete · deploy pending | P1 | All 400 discoverable honestly | Remove the `ds`-only directory filter; make the brand wall navigable; show computed status tiers. | 400 indexed entries, no false Verified copy | New v2 catalog item |
 | R0 | ✅ adapter-ready · credentials pending | P1 | Periodic model-assisted reverify | Rank TTL/quality/demand gaps, emit provider-neutral high-reasoning packets, execute one shell-free budgeted worker, and enforce deterministic PR gates. | Due queue age; evidence upgrades/attempt; 0 model-promoted trust | New v2 reliability item |
 | I18N0 | ⬜ | P1 | Focused global wedge | `/ko` and `/en` canonical routes + hreflang; English flagship pages for Baemin/Toss/Kakao; `/ja` and `/zh-tw` only after qualified activation. | ≥25% non-Korean handoffs | New v2 discovery item |
@@ -86,7 +88,7 @@ Detailed execution order, dependencies, fixtures, and rollback rules live in `cl
 - [x] `CAP0-A2` — known-CSS/font/state fixture precision/recall/F1 and interaction expansion (all 1.0 baseline).
 - [ ] Migrate the top 20 references through the v2 evidence contract.
 - [x] First set: Toss, Apple, Karrot, Baemin, Kakao, Naver, KRDS, Yeogiotte, 29CM, and LINE complete; hybrid batch audit 10/10 pass.
-- [ ] Implement the existing preview-v2 specification against the typed AST.
+- [ ] Reconcile the historical preview-v2 proposal with the current Core consumer contract and field-level absence policy, then implement the approved differences.
 - [ ] Ship direct Codex/Claude/Cursor/v0 handoff and mobile-safe copy/download behavior.
 
 ### Slice 4 — focused international distribution
@@ -98,8 +100,8 @@ Detailed execution order, dependencies, fixtures, and rollback rules live in `cl
 
 ## Rollout and rollback
 
-- Quality tier rollout is additive: generated status is exposed before any legacy badge is removed. If a consumer disagrees, the manifest wins and the page falls back to Partial/Legacy.
-- The detail API uses Reference AST v1 by default. Set `REFERENCE_AST_V2=0`, `false`, or `off` to return the exact legacy payload while investigating a parity regression.
+- Quality metadata must not replace useful canonical content with status-only or warning-only chrome. Resolve consumer disagreements at the smallest affected field and preserve every other known value and narrative section.
+- Legacy AST rollback flags apply only to the legacy reference path. An active Core document must not silently fall back to a stale legacy AST. Core adoption and rollback use the exact reviewed package and an explicit prior-state snapshot.
 - Analytics events dual-fire through one taxonomy version. Rollback removes the new event while preserving historical events and Redis counters.
 - Network liveness is advisory/nightly, never a PR hard gate. A third-party outage cannot block a content correction.
 - No persistent CLI/project telemetry is introduced. Activation remains a web/remote proxy unless a separate product decision changes that promise.

@@ -1,0 +1,31 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — inertia-drag-gallery</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>.pad{padding:26px 0}</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>inertia-drag-gallery <code>드래그 · 관성</code></h1>
+<p class="sub">잡아 던지면 흐르고, 끝에서는 고무처럼 저항하다 되돌아온다. 던지는 동안 카드가 진행 방향으로 4deg 눕는다 — <b>속도가 눈에 보인다</b>.</p>
+<div class="stage pad">
+  <div class="fx-drag">
+    <div class="fx-drag__track">
+      <div class="fx-drag__item"><div class="fx-drag__ph" style="--h:204"></div></div>
+      <div class="fx-drag__item"><div class="fx-drag__ph" style="--h:228"></div></div>
+      <div class="fx-drag__item"><div class="fx-drag__ph" style="--h:252"></div></div>
+      <div class="fx-drag__item"><div class="fx-drag__ph" style="--h:276"></div></div>
+      <div class="fx-drag__item"><div class="fx-drag__ph" style="--h:300"></div></div>
+      <div class="fx-drag__item"><div class="fx-drag__ph" style="--h:324"></div></div>
+      <div class="fx-drag__item"><div class="fx-drag__ph" style="--h:348"></div></div>
+      <div class="fx-drag__item"><div class="fx-drag__ph" style="--h:12"></div></div>
+      <div class="fx-drag__item"><div class="fx-drag__ph" style="--h:44"></div></div>
+      <div class="fx-drag__item"><div class="fx-drag__ph" style="--h:86"></div></div>
+      <div class="fx-drag__item"><div class="fx-drag__ph" style="--h:128"></div></div>
+      <div class="fx-drag__item"><div class="fx-drag__ph" style="--h:168"></div></div>
+    </div>
+  </div>
+</div>
+<p class="note">트랙패드 가로 스와이프도 같은 축에 들어온다(<code>deltaX &gt; deltaY</code> 일 때만 가로챈다 — 세로 스크롤을 훔치지 않는다). <code>prefers-reduced-motion</code> 에서는 관성을 끄고 <b>네이티브 가로 스크롤</b>로 내려앉는다.</p>
+</div>
+<script src="./snippet.js"></script>
+<script>fxLib.mountDragGallery();</script>
+<script src="../_shell.js"></script></body></html>

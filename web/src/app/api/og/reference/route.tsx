@@ -2,6 +2,7 @@ import { ImageResponse } from "next/og";
 import { NextRequest, NextResponse } from "next/server";
 import { loadReference } from "@/lib/references/repository.server";
 import { getReferenceEnglishEditorial } from "@/lib/references/editorial";
+import { projectActiveReference } from "@/lib/references/consumer-adapter";
 
 export async function GET(request: NextRequest) {
   const id = request.nextUrl.searchParams.get("id") ?? "";
@@ -9,18 +10,24 @@ export async function GET(request: NextRequest) {
   if (!loaded) return new NextResponse("Reference not found", { status: 404 });
 
   const editorial = getReferenceEnglishEditorial(id);
+  const projection = projectActiveReference(loaded);
   const evolution = request.nextUrl.searchParams.get("artifact") === "evolution" && editorial
     ? editorial.evolution[0]
     : null;
-  const colors = Object.values(loaded.ast.tokens.colors)
-    .filter((value) => value.origin === "frontmatter" && value.confidence === "high")
-    .map((value) => value.value)
-    .filter((value, index, all) => all.indexOf(value) === index)
-    .slice(0, 6);
-  const primary = loaded.ast.tokens.colors.primary?.value
-    ?? loaded.ast.identity.brandColor.value;
-  const name = editorial?.name ?? loaded.ast.identity.displayName;
-  const checked = loaded.ast.evidence?.checkedAt ?? loaded.quality.verifiedAt;
+  const colors = loaded.ast
+    ? Object.values(loaded.ast.tokens.colors)
+        .filter((value) => value.origin === "frontmatter" && value.confidence === "high")
+        .map((value) => value.value)
+        .filter((value, index, all) => all.indexOf(value) === index)
+        .slice(0, 6)
+    : [projection.detail.primary, projection.detail.background, projection.detail.foreground]
+        .filter((value, index, all): value is string => Boolean(value) && all.indexOf(value) === index)
+        .slice(0, 6);
+  const primary = loaded.ast?.tokens.colors.primary?.value
+    ?? loaded.ast?.identity.brandColor.value
+    ?? projection.detail.primary;
+  const name = editorial?.name ?? loaded.ast?.identity.displayName ?? loaded.entry.displayName;
+  const checked = loaded.ast?.evidence?.checkedAt ?? loaded.quality.verifiedAt;
 
   return new ImageResponse(
     (

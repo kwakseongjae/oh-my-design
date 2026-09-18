@@ -18,7 +18,13 @@ import { createRequire } from 'node:module';
 import { spawnSync } from 'node:child_process';
 
 const require = createRequire(import.meta.url);
+const core = require('../../../scripts/design-md-core.cjs') as {
+  MIGRATION_EXTENSION: string;
+  migrateDesignMd(source: string, options: Record<string, unknown>): Record<string, any>;
+  writeMigrationResult(result: Record<string, any>, outDir: string): void;
+};
 const adopterModule = require('../../../scripts/adopt-design-md-core.cjs') as {
+  assertReferenceMigrationLedger(pkg: Record<string, any>): Record<string, any>;
   createCheckpointReceipt(pkg: Record<string, any>, reviewer: string): Record<string, any>;
   loadPackage(packageRoot: string): Record<string, any>;
   recoverInterruptedTransaction(projectRoot: string): { recovered: boolean; action: string | null };
@@ -179,6 +185,70 @@ function compilePackage(root: string, options: { resolvedEvidence?: boolean; dup
   return packageRoot;
 }
 
+function compileReferencePackage(root: string, options: { allChecksPass?: boolean } = {}): string {
+  const source = readFileSync(resolve(process.cwd(), 'docs/design-md-weight/migrated/baemin/DESIGN.md'), 'utf8');
+  const candidateRoot = join(root, 'reference-candidate');
+  core.writeMigrationResult(core.migrateDesignMd(source, {
+    sourcePath: 'DESIGN.md',
+    requireSourceValid: true,
+  }), candidateRoot);
+  const graphPath = join(candidateRoot, '.omd/system/graph.json');
+  const graph = JSON.parse(readFileSync(graphPath, 'utf8'));
+  const provenancePath = join(root, 'reference-provenance.json');
+  const coveragePath = join(root, 'reference-coverage.json');
+  const reviewDir = join(root, 'reference-review');
+  const reviewPath = join(root, 'reference-review-approval.json');
+  const packageRoot = join(root, 'reference-compiled');
+  writeFileSync(provenancePath, jsonBytes({
+    schema_version: '2.0.0',
+    decisions: [{
+      path: 'experience.summary',
+      source_class: 'repository-fact',
+      value: graph.experience.summary,
+      evidence: ['DESIGN.md#1-experience'],
+    }],
+  }));
+  writeFileSync(coveragePath, jsonBytes({
+    schema_version: '2.0.0',
+    groups: Object.fromEntries(sectionIds.map((id) => [id, {
+      status: 'covered',
+      evidence: [`DESIGN.md#${sectionFragments[id]}`],
+    }])),
+    checks: Object.fromEntries(checkIds.map((id) => [id, {
+      pass: options.allChecksPass
+        || ['portable_core_structure', 'bound_system_authority', 'unknown_absence', 'opaque_extension_preservation'].includes(id),
+      method: 'controller-computed-system-graph-v2',
+    }])),
+  }));
+  const prepared = spawnSync(process.execPath, [
+    reviewTool, graphPath,
+    '--provenance', provenancePath,
+    '--coverage', coveragePath,
+    '--migration-report', join(candidateRoot, 'migration-report.json'),
+    '--out-dir', reviewDir,
+  ], { encoding: 'utf8' });
+  expect(prepared.status, `${prepared.stderr}\n${prepared.stdout}`).toBe(0);
+  const approved = spawnSync(process.execPath, [
+    reviewTool,
+    '--approve', join(reviewDir, 'review-request.json'),
+    '--reviewer', 'reference-fixture-owner',
+    '--out', reviewPath,
+    '--authority-transition-approved',
+  ], { encoding: 'utf8' });
+  expect(approved.status, `${approved.stderr}\n${approved.stdout}`).toBe(0);
+  const compiled = spawnSync(process.execPath, [
+    compiler, join(reviewDir, 'input-graph.json'),
+    '--provenance', join(reviewDir, 'provenance.json'),
+    '--coverage', join(reviewDir, 'coverage.json'),
+    '--migration-report', join(reviewDir, 'migration-report.json'),
+    '--review-receipt', reviewPath,
+    '--out-dir', packageRoot,
+    '--adopt',
+  ], { encoding: 'utf8' });
+  expect(compiled.status, `${compiled.stderr}\n${compiled.stdout}`).toBe(0);
+  return packageRoot;
+}
+
 function packageHashes(packageRoot: string): Record<string, string> {
   return Object.fromEntries(Object.entries(packageFiles).map(([key, relative]) => [
     `${key}_sha256`,
@@ -214,9 +284,11 @@ function runAdopter(
   projectRoot: string,
   checkpointPath?: string,
   env?: Record<string, string>,
+  adoptionTarget = 'project-system',
 ) {
   const args = [adopter, packageRoot, '--project-root', projectRoot];
   if (checkpointPath) args.push('--checkpoint-receipt', checkpointPath);
+  if (adoptionTarget !== 'project-system') args.push('--adoption-target', adoptionTarget);
   return spawnSync(process.execPath, args, {
     encoding: 'utf8',
     env: { ...process.env, ...env },
@@ -226,11 +298,14 @@ function runAdopter(
 function runPrepare(
   packageRoot: string,
   output: string,
-  options: { reviewer?: string; approve?: boolean } = {},
+  options: { reviewer?: string; approve?: boolean; adoptionTarget?: string } = {},
 ) {
   const args = [adopter, packageRoot, '--prepare-checkpoint', output];
   if (options.reviewer !== undefined) args.push('--reviewer', options.reviewer);
   if (options.approve !== false) args.push('--authority-transition-approved');
+  if (options.adoptionTarget && options.adoptionTarget !== 'project-system') {
+    args.push('--adoption-target', options.adoptionTarget);
+  }
   return spawnSync(process.execPath, args, { encoding: 'utf8' });
 }
 
@@ -279,6 +354,7 @@ describe('DESIGN.md Core v2 project adopter', () => {
       request: {
         kind: 'design-md-core-project-adoption-checkpoint-request',
         schema_version: '2.0.0',
+        adoption_target: 'project-system',
         source_package: packageHashes(packageRoot),
         source_package_tree_sha256: expect.stringMatching(/^[a-f0-9]{64}$/),
         status: 'approval-required',
@@ -384,6 +460,165 @@ describe('DESIGN.md Core v2 project adopter', () => {
     expect(tree(packageRoot)).toEqual(packageBefore);
     expect(readFileSync(checkpointPath, 'utf8')).toBe(checkpointBefore);
   });
+
+  it('installs an explicitly checkpoint-bound reference catalog package as an incomplete Bound System', () => {
+    const root = tempRoot();
+    const packageRoot = compileReferencePackage(root);
+    const packageBefore = tree(packageRoot);
+    const checkpointPath = join(root, 'reference-checkpoint.json');
+    const prepared = runPrepare(packageRoot, checkpointPath, {
+      reviewer: 'reference-fixture-owner',
+      adoptionTarget: 'reference-catalog',
+    });
+    expect(prepared.status, prepared.stderr).toBe(0);
+    expect(JSON.parse(readFileSync(checkpointPath, 'utf8')).request.adoption_target).toBe('reference-catalog');
+    const projectRoot = project(root);
+
+    const adopted = runAdopter(packageRoot, projectRoot, checkpointPath, undefined, 'reference-catalog');
+
+    expect(adopted.status, adopted.stderr).toBe(0);
+    const report = JSON.parse(adopted.stdout);
+    expect(report).toMatchObject({
+      status: 'adopted',
+      adoption_target: 'reference-catalog',
+      conformance_level: 'bound-system',
+      project_proof: {
+        pass: true,
+        authority_mode: 'core-v2-reference-catalog',
+        profile: 'portable-core',
+      },
+    });
+    expect(tree(packageRoot)).toEqual(packageBefore);
+    expect(readFileSync(join(projectRoot, 'DESIGN.md'), 'utf8'))
+      .toBe(readFileSync(join(packageRoot, 'DESIGN.md'), 'utf8'));
+    expect(JSON.parse(readFileSync(join(projectRoot, '.omd/system/coverage.json'), 'utf8'))
+      .checks.implementation_contract_complete.pass).toBe(false);
+  });
+
+  it('keeps reference proof at Bound System when metadata marks every coverage check true', () => {
+    const root = tempRoot();
+    const packageRoot = compileReferencePackage(root, { allChecksPass: true });
+    const checkpointPath = join(root, 'all-checks-reference-checkpoint.json');
+    expect(runPrepare(packageRoot, checkpointPath, {
+      reviewer: 'reference-fixture-owner',
+      adoptionTarget: 'reference-catalog',
+    }).status).toBe(0);
+
+    const adopted = runAdopter(
+      packageRoot,
+      project(root, false),
+      checkpointPath,
+      undefined,
+      'reference-catalog',
+    );
+    expect(adopted.status, adopted.stderr).toBe(0);
+    expect(JSON.parse(adopted.stdout)).toMatchObject({
+      adoption_target: 'reference-catalog',
+      conformance_level: 'bound-system',
+      project_proof: { conformance_level: 'bound-system' },
+    });
+  });
+
+  it('rejects target mismatches and refuses to cross-install reference and project authority kinds', () => {
+    const root = tempRoot();
+    const referencePackage = compileReferencePackage(root);
+    const referenceCheckpoint = join(root, 'reference-target-checkpoint.json');
+    expect(runPrepare(referencePackage, referenceCheckpoint, {
+      reviewer: 'reference-fixture-owner',
+      adoptionTarget: 'reference-catalog',
+    }).status).toBe(0);
+
+    const mismatchProject = project(join(root, 'mismatch'));
+    const mismatchOldDesign = readFileSync(join(mismatchProject, 'DESIGN.md'), 'utf8');
+    const mismatchOldSystem = tree(join(mismatchProject, '.omd/system'));
+    const mismatch = runAdopter(referencePackage, mismatchProject, referenceCheckpoint);
+    expect(mismatch.status).toBe(1);
+    expect(mismatch.stderr).toContain('checkpoint request is stale');
+    expectOldState(mismatchProject, mismatchOldDesign, mismatchOldSystem);
+
+    const referenceAsProjectCheckpoint = join(root, 'reference-as-project-checkpoint.json');
+    expect(runPrepare(referencePackage, referenceAsProjectCheckpoint, {
+      reviewer: 'reference-fixture-owner',
+    }).status).toBe(0);
+    const referenceAsProject = project(join(root, 'reference-as-project'));
+    const referenceOldDesign = readFileSync(join(referenceAsProject, 'DESIGN.md'), 'utf8');
+    const referenceOldSystem = tree(join(referenceAsProject, '.omd/system'));
+    const refusedReference = runAdopter(referencePackage, referenceAsProject, referenceAsProjectCheckpoint);
+    expect(refusedReference.status).toBe(1);
+    expect(refusedReference.stderr).toContain('project-system adoption refuses graph identity.kind=evidence-backed-reconstruction');
+    expectOldState(referenceAsProject, referenceOldDesign, referenceOldSystem);
+
+    const projectPackage = compilePackage(join(root, 'project-package-root'));
+    const projectAsReferenceCheckpoint = join(root, 'project-as-reference-checkpoint.json');
+    expect(runPrepare(projectPackage, projectAsReferenceCheckpoint, {
+      reviewer: 'owner@example.test',
+      adoptionTarget: 'reference-catalog',
+    }).status).toBe(0);
+    const projectAsReference = project(join(root, 'project-as-reference'));
+    const projectOldDesign = readFileSync(join(projectAsReference, 'DESIGN.md'), 'utf8');
+    const projectOldSystem = tree(join(projectAsReference, '.omd/system'));
+    const refusedProject = runAdopter(
+      projectPackage,
+      projectAsReference,
+      projectAsReferenceCheckpoint,
+      undefined,
+      'reference-catalog',
+    );
+    expect(refusedProject.status).toBe(1);
+    expect(refusedProject.stderr).toContain('reference-catalog adoption requires graph identity.kind=evidence-backed-reconstruction');
+    expectOldState(projectAsReference, projectOldDesign, projectOldSystem);
+  });
+
+  it.each([
+    ['missing ledger', (pkg: Record<string, any>) => {
+      delete pkg.graph.value.extensions[core.MIGRATION_EXTENSION];
+    }, 'requires a hash-bound lossless migration ledger'],
+    ['changed source segment', (pkg: Record<string, any>) => {
+      pkg.graph.value.extensions[core.MIGRATION_EXTENSION].original_segments[0].content += 'changed';
+    }, 'segment 0 is invalid or changed'],
+    ['compiler receipt mismatch', (pkg: Record<string, any>) => {
+      pkg.adoptionReceipt.value.migration.source_sha256 = '0'.repeat(64);
+    }, 'compiler receipt does not bind the lossless migration ledger'],
+  ])('rejects a reference package with %s', (_label, mutate, expected) => {
+    const root = tempRoot();
+    const pkg = adopterModule.loadPackage(compileReferencePackage(root));
+    mutate(pkg);
+    expect(() => adopterModule.assertReferenceMigrationLedger(pkg)).toThrow(expected);
+  });
+
+  for (const point of [
+    'after-design-backup',
+    'after-system-backup',
+    'after-design-publish',
+    'after-system-publish',
+    'after-readback',
+    'after-report-publish',
+  ]) {
+    it(`atomically restores a reference catalog destination after an injected failure at ${point}`, () => {
+      const root = tempRoot();
+      const packageRoot = compileReferencePackage(root);
+      const checkpointPath = join(root, `reference-failure-${point}.json`);
+      expect(runPrepare(packageRoot, checkpointPath, {
+        reviewer: 'reference-fixture-owner',
+        adoptionTarget: 'reference-catalog',
+      }).status).toBe(0);
+      const projectRoot = project(root);
+      const oldDesign = readFileSync(join(projectRoot, 'DESIGN.md'), 'utf8');
+      const oldSystem = tree(join(projectRoot, '.omd/system'));
+
+      const result = runAdopter(
+        packageRoot,
+        projectRoot,
+        checkpointPath,
+        { OMD_CORE_ADOPT_FAIL_AT: point },
+        'reference-catalog',
+      );
+
+      expect(result.status).toBe(1);
+      expect(result.stderr).toContain(`injected Core adoption failure at ${point}`);
+      expectOldState(projectRoot, oldDesign, oldSystem);
+    });
+  }
 
   it.each([
     'after-design-backup',

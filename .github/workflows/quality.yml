@@ -45,6 +45,7 @@ jobs:
             --prefix "$RUNNER_TEMP/npm-warm" $DEPS
       - run: npm run lint
       - run: npm test
+      - run: npm run check:web-core-verifier
       - run: npm run build
       - run: npm run check-counts
       - run: npm run bench:ui:public-data:check

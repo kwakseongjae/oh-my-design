@@ -1,0 +1,33 @@
+<style>
+.r8{height:100vh}.r8-stage{height:100vh;position:relative;overflow:hidden;display:grid;place-items:center}
+.r8-a,.r8-b{position:absolute;margin:0;border-radius:var(--r);overflow:hidden;width:34vw;height:52vh}
+.r8-b{opacity:0}
+.r8-note{position:absolute;bottom:8vh;font:12px ui-monospace,monospace;color:var(--dim)}
+</style>
+<section class="r8"><div class="r8-stage">
+  <figure class="r8-a" id="r8a"><img alt=""></figure>
+  <figure class="r8-b" id="r8b"><img alt=""></figure>
+  <div class="r8-note" id="r8note"></div>
+</div></section>
+<script>
+/* R8 MATCH CUT — 섹션 경계에서 이미지를 갈아끼우지 않고 "같은 프레임이 다른 장면이 된다".
+   A가 화면을 채우는 순간 B가 같은 크기로 태어나 다시 작아진다 = 컷이 이어진 것처럼 읽힌다. */
+const A = "ba-01-a", B = "ba-01-b", LABEL = ["draft", "final"];
+document.querySelector("#r8a img").src = IMG(A);
+document.querySelector("#r8b img").src = IMG(B);
+const note = document.getElementById("r8note");
+note.textContent = LABEL[0];
+if (REDUCED) {                      // 폴백: 두 장을 나란히(전/후 비교는 그대로 성립)
+  Object.assign(document.querySelector(".r8-stage").style, { display: "flex", gap: "2vw", position: "static", height: "60vh" });
+  document.querySelectorAll(".r8-a,.r8-b").forEach((f) => { f.style.position = "static"; f.style.opacity = 1; });
+  note.textContent = LABEL.join(" → ");
+} else {
+  gsap.timeline({ scrollTrigger: { trigger: ".r8", start: "top top", end: "+=220%", scrub: 0.5, pin: ".r8-stage",
+      onUpdate: (s) => { note.textContent = LABEL[s.progress < 0.5 ? 0 : 1]; } } })
+    .to("#r8a", { width: "100vw", height: "100vh", borderRadius: 0, ease: "none" }, 0)
+    .to("#r8a img", { scale: 1.12, ease: "none" }, 0)
+    .set("#r8b", { width: "100vw", height: "100vh", borderRadius: 0, opacity: 1 }, 0.5)
+    .set("#r8a", { opacity: 0 }, 0.5)
+    .to("#r8b", { width: "34vw", height: "52vh", borderRadius: 14, ease: "none" }, 0.5);
+}
+</script>

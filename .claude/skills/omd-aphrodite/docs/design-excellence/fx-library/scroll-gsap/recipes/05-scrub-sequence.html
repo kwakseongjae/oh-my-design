@@ -1,0 +1,32 @@
+<style>
+.r5{height:100vh}.r5-stage{height:100vh;position:relative;overflow:hidden}
+.r5-stage figure{position:absolute;inset:0;margin:0;opacity:0;will-change:opacity,transform}
+.r5-stage figure:first-child{opacity:1}
+.r5-tick{position:absolute;left:6vw;bottom:7vh;display:flex;gap:6px}
+.r5-tick b{width:26px;height:2px;background:#ffffff33;display:block}
+.r5-tick b.on{background:var(--accent)}
+.r5-cap{position:absolute;left:6vw;bottom:11vh;font:12px ui-monospace,monospace;color:var(--dim)}
+</style>
+<section class="r5"><div class="r5-stage" id="r5stage"><div class="r5-cap" id="r5cap"></div><div class="r5-tick" id="r5tick"></div></div></section>
+<script>
+/* R5 SCRUB SEQUENCE — 같은 장소·같은 렌즈 프레임을 스크롤로 감는다(핵심: 크로스페이드 + 미세 줌으로 컷이 아니라 시간이 되게). */
+const IDS = ["seq-01","seq-02","seq-03","seq-04","seq-05","seq-06","seq-07","seq-08"];
+const stage = document.getElementById("r5stage");
+stage.insertAdjacentHTML("afterbegin", IDS.map((id)=>`<figure><img src="${IMG(id)}" alt=""></figure>`).join(""));
+document.getElementById("r5tick").innerHTML = IDS.map(()=>"<b></b>").join("");
+const frames = gsap.utils.toArray(".r5-stage figure"), ticks = [...document.querySelectorAll(".r5-tick b")];
+const paint = (p) => { const i = Math.min(IDS.length - 1, Math.floor(p * IDS.length));
+  ticks.forEach((t, n) => t.classList.toggle("on", n <= i));
+  document.getElementById("r5cap").textContent = `frame ${String(i + 1).padStart(2, "0")} / ${IDS.length}`; };
+if (REDUCED) {                      // 폴백: 첫 프레임 정지 + 캡션
+  gsap.set(frames[0], { opacity: 1 }); paint(0);
+} else {
+  const tl = gsap.timeline({ defaults: { ease: "none" },
+    scrollTrigger: { trigger: ".r5", start: "top top", end: "+=" + IDS.length * 90 + "%", scrub: 0.35,
+      pin: ".r5-stage", onUpdate: (s) => paint(s.progress) } });
+  frames.forEach((f, i) => { if (!i) return;
+    tl.fromTo(f, { opacity: 0, scale: 1.06 }, { opacity: 1, scale: 1, duration: 1 }, i - 0.25);
+    tl.to(frames[i - 1], { opacity: 0, duration: 1 }, i - 0.25); });
+  paint(0);
+}
+</script>

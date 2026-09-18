@@ -1,0 +1,26 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — entry-curtain-count</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>.hero{height:320px;display:grid;place-items:center;text-align:center}
+.hero h3{font-size:clamp(28px,5vw,48px);margin:0;letter-spacing:-.035em}
+.btn{margin-top:16px;border:1px solid var(--line);background:var(--card);color:var(--fg);
+  border-radius:999px;padding:9px 18px;font:inherit;cursor:pointer}</style></head><body>
+<div class="fx-curtain" style="--fx-curtain-bg:#0b0c0e;--fx-curtain-accent:#c8ff2f">
+  <div class="fx-curtain__leaf fx-curtain__leaf--t"></div>
+  <div class="fx-curtain__leaf fx-curtain__leaf--b"></div>
+  <div class="fx-curtain__num">00</div>
+  <div class="fx-curtain__bar"></div>
+</div>
+<button class="tgl"></button>
+<div class="wrap fx-curtain-stage">
+<h1>entry-curtain-count <code>진입 시퀀스</code></h1>
+<p class="sub">숫자가 100 에 닿는 순간 커튼 두 짝이 위아래로 갈라지고, <b>같은 순간</b> 본문이 올라온다. 진행률은 지어내지 않는다 — 이미지 디코드 완료 비율과 <code>readyState</code> 에 묶여 있다.</p>
+<div class="stage hero">
+  <div><h3>커튼 뒤의 페이지</h3>
+  <button class="btn" onclick="var c=document.querySelector('.fx-curtain');c.removeAttribute('data-fx-curtain');document.querySelector('.fx-curtain-stage').removeAttribute('data-fx-revealed');fxLib.mountCurtain();">다시 재생</button></div>
+</div>
+<p class="note"><code>tabular-nums</code> 가 없으면 00→99 사이에서 숫자 폭이 흔들려 싸구려가 된다. <code>prefers-reduced-motion</code> 에서는 커튼을 통째로 건너뛴다 — 진입 연출은 정보가 아니다.</p>
+</div>
+<script src="./snippet.js"></script>
+<script>fxLib.mountCurtain();</script>
+<script src="../_shell.js"></script></body></html>

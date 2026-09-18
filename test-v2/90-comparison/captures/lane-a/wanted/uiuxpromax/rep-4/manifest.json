@@ -1,0 +1,31 @@
+{
+  "lane": "A",
+  "brand": "wanted",
+  "arm": "uiuxpromax",
+  "rep": 4,
+  "source": "test-v2/03-runs/lane-a/wanted/uiuxpromax/rep-4/render.html",
+  "sourceSha": "sha256:6391cb7c52d6fc1e30b6491b0b869f2abfb5d95a38079ef5126a545b51fd22c2",
+  "capturedAt": "2026-09-02T12:45:49.130Z",
+  "rule": "RUBRIC §4.1 — viewport capture, scroll 0, 800ms settle, dpr 1",
+  "files": {
+    "desktop-1440": {
+      "file": "desktop-1440.png",
+      "sha": "sha256:81bfe1836671130301edf9ddf081167cc3fee86dde4f1acfddb335d1ceab73e6",
+      "bytes": 185422,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      }
+    },
+    "mobile-390": {
+      "file": "mobile-390.png",
+      "sha": "sha256:58b89105108a5f4c11fd365d9ed7359d035f111fc4abf02b24de7f293e3b7f96",
+      "bytes": 91203,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  },
+  "errors": []
+}

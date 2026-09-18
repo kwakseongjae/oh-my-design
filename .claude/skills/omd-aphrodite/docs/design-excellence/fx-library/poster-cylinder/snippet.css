@@ -1,0 +1,48 @@
+/* fx: poster-cylinder — 포스터가 원통 벽에 붙어 도는 3D 캐러셀. 구현: oh-my-design (MIT). */
+.fx-cyl{
+  --fx-cyl-r: 420px;        /* 원통 반지름 — 클수록 완만한 곡률 */
+  --fx-cyl-w: 176px;        /* 포스터 폭 */
+  --fx-cyl-h: 250px;        /* 포스터 높이 */
+  --fx-cyl-step: 30deg;     /* 360 / 장수 */
+  --fx-cyl-dur: 34s;        /* CSS 폴백 1회전 시간 */
+  --fx-cyl-persp: 1500px;
+  --fx-cyl-tilt: -7deg;     /* 살짝 위에서 내려다본 각 */
+  position: relative;
+  perspective: var(--fx-cyl-persp);
+  perspective-origin: 50% 44%;
+  touch-action: pan-y;      /* 세로 스크롤은 페이지에 양보 */
+}
+.fx-cyl__stage{
+  position: absolute; inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--fx-cyl-tilt)) rotateY(var(--fx-cyl-rot, 0deg));
+  animation: fx-cyl-spin var(--fx-cyl-dur) linear infinite;
+  will-change: transform;   /* 스테이지 1개에만. 면마다 걸지 않는다 */
+}
+@keyframes fx-cyl-spin{ to{ transform: rotateX(var(--fx-cyl-tilt)) rotateY(360deg); } }
+/* JS 가 붙으면 CSS 회전은 물러난다 — 드래그·관성·명암을 JS 가 한 루프에서 처리 */
+.fx-cyl[data-fx-cyl="js"] .fx-cyl__stage{ animation: none; }
+
+.fx-cyl__face{
+  position: absolute; top: 50%; left: 50%;
+  width: var(--fx-cyl-w); height: var(--fx-cyl-h);
+  margin: calc(var(--fx-cyl-h) / -2) 0 0 calc(var(--fx-cyl-w) / -2);
+  transform: rotateY(calc(var(--i) * var(--fx-cyl-step))) translateZ(var(--fx-cyl-r));
+  border-radius: 12px;
+  overflow: hidden;
+  backface-visibility: hidden;          /* 뒷면은 그리지 않는다 = 픽셀 절반 절약 */
+  filter: brightness(var(--fx-cyl-lit, 1));
+  box-shadow: 0 28px 52px -28px rgba(0,0,0,.8);
+}
+.fx-cyl__face > img{ width:100%; height:100%; object-fit:cover; display:block; }
+/* 이미지 슬롯이 비었을 때의 플레이스홀더 색면 */
+.fx-cyl__face--ph{
+  background:
+    linear-gradient(160deg, hsl(var(--h,220) 70% 58% / .95), hsl(calc(var(--h,220) + 42) 78% 34%));
+}
+.fx-cyl[data-fx-cyl="drag"] { cursor: grabbing; }
+.fx-cyl:not([data-fx-cyl="drag"]) { cursor: grab; }
+
+@media (prefers-reduced-motion: reduce){
+  .fx-cyl__stage{ animation: none; }   /* 정지한 원통은 그 자체로 구도다 */
+}

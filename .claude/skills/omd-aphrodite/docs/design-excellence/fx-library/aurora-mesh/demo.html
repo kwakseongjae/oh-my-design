@@ -1,0 +1,21 @@
+<!doctype html><html lang="ko" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>fx — aurora-mesh</title>
+<link rel="stylesheet" href="../_shell.css"><link rel="stylesheet" href="./snippet.css">
+<style>
+.stage{min-height:340px;display:grid;place-items:center;padding:56px 24px;text-align:center}
+[data-theme=dark] .stage{--fx-aurora-base:#0b0c0e;--fx-aurora-opacity:.55}
+[data-theme=light] .stage{--fx-aurora-base:#fff;--fx-aurora-opacity:.42;--fx-aurora-sat:1.25}
+.stage h3{font-size:clamp(26px,5vw,42px);margin:0 0 10px;letter-spacing:-.03em}
+.stage p{margin:0;color:var(--mut);max-width:40ch}
+</style></head><body>
+<button class="tgl"></button>
+<div class="wrap">
+<h1>aurora-mesh <code>빛 / 배경</code></h1>
+<p class="sub">블러 처리한 색 덩어리 3개가 서로 다른 주기로 표류하며 메시 그라디언트를 만든다. transform 만 움직이므로 페인트가 다시 일어나지 않는다.</p>
+<div class="stage fx-aurora">
+  <div class="fx-aurora__field" aria-hidden="true"><i class="fx-aurora__blob"></i><i class="fx-aurora__blob"></i><i class="fx-aurora__blob"></i></div>
+  <div><h3>배경은 조용히 숨쉰다</h3><p>주기를 24s / 31s / 37s 로 서로소에 가깝게 두면 루프 지점이 눈에 띄지 않는다.</p></div>
+</div>
+<p class="note">라이트 모드에서는 opacity 를 낮추고 saturate 를 올린다 — 흰 바탕에서는 같은 알파가 훨씬 세게 읽힌다.</p>
+</div>
+<script src="../_shell.js"></script></body></html>

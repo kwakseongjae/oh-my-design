@@ -1,0 +1,27 @@
+<style>
+.r1{height:100vh}.r1-stage{height:100vh;position:relative;overflow:hidden}
+.r1-frame{position:absolute;inset:0;margin:0;clip-path:inset(30% 34% round 14px);will-change:clip-path}
+.r1-h{position:absolute;left:6vw;bottom:8vh;margin:0;font-size:clamp(32px,7vw,96px);letter-spacing:-.03em;mix-blend-mode:difference}
+.r1-h em{font-style:normal;color:var(--accent)}
+</style>
+<section class="r1"><div class="r1-stage">
+  <figure class="r1-frame"><img id="r1img" alt=""></figure>
+  <h1 class="r1-h">One frame,<br><em>every</em> scale.</h1>
+</div></section>
+<script>
+/* R1 ZOOM-THROUGH — 썸네일 크기의 창이 스크롤과 함께 풀블리드로 열린다.
+   이미지 id 는 변수 하나(HERO)만 바꾸면 어떤 브랜드에서도 성립. */
+const HERO = "hero-01";
+const img = document.getElementById("r1img");
+img.src = IMG(HERO);
+const h = document.querySelector(".r1-h");
+if (REDUCED) {                      // 폴백: 처음부터 풀블리드 정지 화면
+  document.querySelector(".r1-frame").style.clipPath = "inset(0% round 0)";
+} else {
+  gsap.timeline({ scrollTrigger: { trigger: ".r1", start: "top top", end: "+=180%", scrub: 0.6, pin: ".r1-stage" } })
+    .fromTo(".r1-frame", { clipPath: "inset(30% 34% round 14px)" },
+                         { clipPath: "inset(0% 0% round 0px)", ease: "none" }, 0)
+    .fromTo(img, { scale: 1.4 }, { scale: 1, ease: "none" }, 0)
+    .fromTo(h, { yPercent: 60, opacity: 0 }, { yPercent: 0, opacity: 1, ease: "power2.out" }, 0.45);
+}
+</script>

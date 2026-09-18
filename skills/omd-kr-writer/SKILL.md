@@ -1,12 +1,12 @@
 ---
 name: omd:kr-writer
-description: "한국어 글쓰기 멀티-preset 스킬. 12개 preset 지원 — toss-tech-design (default) / karrot-neighborly / brunch-maker-popular / naver-d2-engineering / biz-formal-report / academic-paper / journalism-broadsheet / kakao-warm-product / line-global-saas / academic-lecture-essay / emotional-brand / legal-disclosure. '한글 글 작성', 'KR rewrite', '토스 톤으로', '당근 톤으로', '브런치 톤으로', '보고서로 써줘', '학술 톤', '신문기사체' 류 트리거."
+description: "한국어 블로그·장문 글을 12개 voice preset으로 작성하거나 다듬는다 — toss-tech-design (default), karrot-neighborly, brunch-maker-popular, naver-d2-engineering, biz-formal-report, academic-paper, journalism-broadsheet, kakao-warm-product, line-global-saas, academic-lecture-essay, emotional-brand, legal-disclosure."
 user-invocable: true
 ---
 
 # omd:kr-writer
 
-oh-my-design의 한국어 본문 작성 스킬. **preset_id 인자**로 6개 voice 중 선택.
+oh-my-design의 한국어 본문 작성 스킬. **preset_id 인자**로 12개 voice 중 선택.
 
 ## 0. preset_id 인자
 
@@ -15,24 +15,24 @@ oh-my-design의 한국어 본문 작성 스킬. **preset_id 인자**로 6개 voi
 ```yaml
 agent: omd-kr-writer
 inputs:
-  preset_id: toss-tech-design  # 또는 아래 6개
+  preset_id: toss-tech-design  # 또는 아래 12개
   task: "당근 디자인 분석 글 작성"
   ...
 ```
 
-지원 preset 12개. 각 preset의 핵심 spec은 아래 **§9 (preset 요약 spec)** 에 self-contained로 수록 — 이 SKILL.md만으로 12개 preset 전부 실행 가능. (풀 9-field spec + verbatim 한국어 examples + 출처는 dev 레포의 `data/research/2026-05-18-kr-style-presets.md` — npx 배포본에는 미포함.)
+지원 preset 12개. 각 preset의 핵심 spec은 아래 **§9 (preset 요약 spec)** 에 self-contained로 수록 — 이 SKILL.md만으로 12개 preset 전부 실행 가능.
 
 | # | preset_id | 종결 | 분량 (한글) | 용도 |
 |---|---|---|---|---|
 | 1 | `toss-tech-design` ⭐ (default) | 해요체 -요 | 5,500~7,000자 | omd 블로그 본문, 디자인 deep-dive |
 | 2 | `karrot-neighborly` | 해요체 + 동네 lexicon | 3,000~5,000자 | 마케팅, 커뮤니티 글 |
 | 3 | `brunch-maker-popular` | 해요체 80% + 회상 `-했다` | 4,000~6,000자 | 회고, 포스트모템, 메이커 에세이 |
-| 4 | `naver-d2-engineering` | 해요체 + 격식 mix | 자유 | 엔지니어링 분석 글 |
+| 4 | `naver-d2-engineering` | 하십시오체 -합니다 | 자유 | 엔지니어링 분석 글 |
 | 5 | `biz-formal-report` | 하십시오체 -습니다 | 자유 | 보고서·기획서·BRD |
 | 6 | `academic-paper` | 해라체 `-한다`/`-이다` | 자유 | 학술 논문, 연구 노트 |
 | 7 | `journalism-broadsheet` | 해라체 `-다`/`-했다` | 자유 | 보도자료, 신문기사 |
 | 8 | `kakao-warm-product` | 해요체 + 감정 표현 | 자유 | 카카오톡·카카오뱅크 in-app copy |
-| 9 | `line-global-saas` | 해요체 + 다국어 친화 | 자유 | 한일 brand voice, 글로벌 SaaS |
+| 9 | `line-global-saas` | 하십시오체 + 다국어 친화 | 자유 | 한일 brand voice, 글로벌 SaaS |
 | 10 | `academic-lecture-essay` | 해요체 + 학술 lexicon | 자유 | 교양 강연, 지식 에세이 |
 | 11 | `emotional-brand` | 해요체 + 외래어 자유 | 자유 | 무신사·29CM 패션 커머스 |
 | 12 | `legal-disclosure` | 하십시오체 + 한자어 | 자유 | 법무·약관·고지사항 |
@@ -41,28 +41,28 @@ inputs:
 
 본 문서의 § 1~8은 default preset (`toss-tech-design`)의 상세 spec. 다른 preset 선택 시 §9의 해당 preset 요약 spec 룰로 substitution.
 
-### 전환 매트릭스 (자주 쓰는 6개)
+### preset 전환 예시
 
 같은 콘텐츠를 다른 preset으로 옮길 때 standard rewrite 룰 — 아래 핵심 변환 + §9 spec만으로 수행 가능. (확장 5-step rule은 dev 레포 research doc §14 — 배포본 미포함.)
 
 | from | to | 핵심 변환 |
 |---|---|---|
-| `biz-formal-report` | `toss-tech-design` | `-합니다`→`-해요` · 한자어 풀이 · 50자+ 문장 쪼개기 · 3인칭→1인칭 |
+| `biz-formal-report` | `toss-tech-design` | `-합니다`→`-해요` · 한자어 풀이 · 50자+ 문장 쪼개기 · source에 저자 사실이 있을 때만 1인칭 |
 | `toss-tech-design` | `biz-formal-report` | `-요`→`-니다` · 인사 제거 · 섹션 번호 (1.1) · 한자어 회복 |
 | `academic-paper` | `toss-tech-design` | `-한다`→`-해요` · `우리는`→`저는` · 인용 형식 인라인 |
 | `karrot-neighborly` | `toss-tech-design` | "동네" lexicon 제거 · 분석 voice 강화 · 5,500자+ |
-| `journalism-broadsheet` | `toss-tech-design` | `-다`→`-요` · OOO 대표 said → 직접 quote · narrative 1인칭 |
+| `journalism-broadsheet` | `toss-tech-design` | `-다`→`-요` · 인용 상태와 원문 보존 · source에 저자 사실이 있을 때만 1인칭 |
 | `legal-disclosure` | `kakao-warm-product` | 한자어 → 우리말 · 수동 → 능동 · 친근 어휘 보강 |
 
 ### 한국어 어말어미 — 6단계 speech level
 
 | 단계 | 격식 | 친근 | 종결예 | preset 매핑 |
 |---|---|---|---|---|
-| 하십시오체 | ✓ | ✗ | -습니다 | biz-formal / legal |
+| 하십시오체 | ✓ | ✗ | -습니다 | biz-formal / legal / line |
 | 하오체 | ✓ | ✗ | -오, -소 | (구식, 거의 안 씀) |
 | 하게체 | △ | △ | -네, -게 | (구식, 윗사람→아랫사람) |
 | 해라체 | ✗ | ✗ | -다, -한다 | academic / journalism |
-| 해요체 ⭐ | △ | ✓ | -요, -아요 | toss / karrot / kakao / brunch / line / lecture / emotional |
+| 해요체 ⭐ | △ | ✓ | -요, -아요 | toss / karrot / kakao / brunch / lecture / emotional |
 | 해체 (반말) | ✗ | ✓✓ | -아, -이야 | (사용 안 함 — disrespectful) |
 
 omd 디폴트는 **해요체**. 격식이 필요하면 하십시오체. 학술/뉴스만 해라체. 그 외 모든 경우 해요체.
@@ -75,21 +75,9 @@ oh-my-design 블로그의 한국어 본문을 **Toss Tech 디자인 카테고리
 
 ## 1. Voice DNA — 한국 디자인 블로그 명문 공통 패턴
 
-### 첫 단락 fingerprint (변형 가능)
+### 첫 단락
 
-```
-안녕하세요. [본인 직무] [본인 이름]이에요.
-저는 [구체적인 업무]를 담당하고 있어요.
-[배경 1-2 문장 — 어떤 상황에서 어떤 미션을 받았는지].
-오늘은 [주제]를 나눠보려고 해요.
-```
-
-oh-my-design용 변형:
-```
-안녕하세요. oh-my-design을 만드는 [이름]이에요.
-100개가 넘는 브랜드의 디자인 시스템을 라이브로 캡쳐해서 카탈로그로 모으고 있어요.
-오늘은 그 중 [브랜드]를 들여다본 이야기를 나누려고 해요.
-```
+독자가 바로 이해할 수 있는 구체적인 문제, 장면, 관찰, 또는 결론으로 시작한다. 이름·직무·개인 경험이 입력에 명시된 경우에만 1인칭 소개를 쓸 수 있다. 저자 신원이나 경험을 추측해 `안녕하세요. [직무] [이름]이에요.` 같은 소개를 만들지 않는다. 인사는 글의 목적에 도움이 될 때만 짧게 쓴다.
 
 ### 종결 어미 룰
 
@@ -114,15 +102,9 @@ oh-my-design용 변형:
 - 한 줄 단락 OK — 강조용.
 - 글 전체에서 80% 이상이 짧은 단락.
 
-### 첫 인사 + 마지막 인사
+### 마무리
 
-```
-시작: "안녕하세요. ~이에요."
-마무리: 
-  - "여기까지 [주제]에 대해 나눠봤어요."
-  - "혹시 [관련 질문]이 있다면 댓글로 남겨주세요."
-  - "다음 글에서는 [다음 주제]를 들고 올게요."
-```
+글에서 확인한 결론이나 다음 판단으로 끝낸다. 댓글 요청, 다음 글 예고, 제품 설치 안내 같은 CTA는 brief가 요구하고 실제 독자 행동과 연결될 때만 쓴다. 제공되지 않은 링크·명령·제품 기능을 만들지 않는다.
 
 ## 2. 구조 템플릿 — 디자인 시스템 분석 글
 
@@ -142,7 +124,7 @@ oh-my-design용 변형:
 
 ### 권장 글 구조 (5,500자+ 목표)
 
-1. **인사 + 글 소개** (~300자) — 안녕하세요 인사 + 오늘 분석할 브랜드 소개 + 어떻게 분석했는지
+1. **문제 또는 글 소개** (~300자) — 독자가 알아야 할 맥락 + 오늘 다룰 질문 + 분석 방법
 2. **브랜드 배경** (~600자) — 회사 역사 짧게, 디자인이 왜 지금처럼 됐는지
 3. **첫 인상 — 화면을 열면** (~700자) — 시각 톤, 색, 타입, 첫 느낌
 4. **인사이트 1** (~700자) — 발견 1개, 왜 중요한지, 어떻게 따라할지
@@ -152,23 +134,19 @@ oh-my-design용 변형:
 8. **인사이트 5** (~600자) — 더 짧아도 OK
 9. **가져가도 좋은 것** (~400자) — 5개 정리 (불릿 OK)
 10. **따라하면 안 되는 것** (~400자) — 5개 정리
-11. **마무리 + CTA** (~200자) — MCP 설치, design-system 페이지 링크
+11. **마무리** (~200자) — 핵심 판단 또는 다음 단계. CTA는 brief에 있을 때만
 
 목표: **5,500자~7,000자** (한국어, 공백 제외).
 
 ## 3. 이미지/figure 정책
 
-Toss 글은 단락 2~3개 당 이미지 1개. oh-my-design 본문에서:
+이미지는 근거를 설명하거나 독자의 이해를 높이는 경우에만 넣는다. 개수 할당량은 없다.
 
-- **헤로 이미지**: 글 첫머리, 브랜드 색감 + 타이포 한 컷
-- **인사이트 1~5 각**: 1~2개 이미지 (스크린샷 / 다이어그램 / 컬러 그리드)
-- **figcaption 짧게**: "토스 송금 화면" / "OKLCH 컬러 그리드" / "토스 vs KB의 헤로 비교"
-- **alt 텍스트는 단순한 설명만** — figcaption과 다른 정보
-
-이미지가 부족한 경우:
-- 라이브 캡쳐 (browser-harness로 brand site 스크린샷)
-- CSS 비주얼 컴포넌트 (ColorSwatchGrid, TypeSample 등)
-- 다이어그램 (인라인 SVG, primitive → semantic → component 같은 토큰 트리)
+- 실제로 존재하고 사용 권한이 확인된 에셋만 참조한다.
+- 제공된 스크린샷·다이어그램·컬러 그리드가 본문 주장과 직접 연결될 때 배치한다.
+- alt 텍스트는 이미지가 전달하는 정보를 간결하게 설명한다. figcaption은 출처나 본문과의 관계가 필요할 때만 쓴다.
+- 에셋이 없으면 `./images/...png` 같은 placeholder를 만들지 않는다. 필요한 이미지와 목적을 handoff에 적는다.
+- 라이브 캡처나 새 이미지 생성은 현재 작업에 해당 도구와 권한이 명시된 경우에만 수행한다.
 
 ## 4. 인사이트 본문 패턴
 
@@ -207,22 +185,30 @@ Toss 글은 단락 2~3개 당 이미지 1개. oh-my-design 본문에서:
 
 ## 7. 실행 절차
 
-1. 영문 원문 본문을 가져옴 (`content/posts/<slug>/index.md`의 EN 부분)
-2. 각 H2 섹션을 한 번에 1개씩 KR로 옮김
-3. 첫 단락에 "안녕하세요 ~" intro 삽입
-4. H2 헤더를 짧은 한국어로 다시 작성
-5. 종결어미 100% `-요`로 통일
-6. figure placeholder `![설명](./images/...png "figcaption")` 삽입 — 인사이트당 1~2개
-7. 마지막에 "여기까지 ~ 나눠봤어요" 마무리
-8. 글 끝에 frontmatter의 `title_ko`, `subtitle_ko` 필드 채움
+1. brief, source material, required facts, output path를 확인한다. 없는 저자 경험·수치·인용·링크는 만들지 않는다.
+2. oh-my-design production blog 글은 한국어를 canonical로 작성하고 `web/src/content/blog/<slug>/ko.md`에 둔다. 영문 초안이 입력이어도 사실을 보존해 한국어 독자를 위한 독립 문장으로 다시 쓴다.
+3. production blog frontmatter는 `title`, `description`, `date`, `tags` 네 필드만 쓴다. `date`는 `YYYY-MM-DD`, `tags`는 비어 있지 않은 inline list다. `title_ko`, `subtitle_ko`, `locale`, `voice_preset` 같은 추가 필드는 strict parser가 거부한다.
+4. H2 헤더와 본문을 선택한 preset에 맞춰 작성한다. default에서는 종결어미를 `-요` 계열로 통일한다.
+5. 실제 에셋이 제공된 경우에만 본문 주장과 연결해 배치한다. 에셋이 없으면 placeholder 대신 handoff에 필요 항목을 남긴다.
+6. 글의 핵심 판단으로 마무리하고 사실·frontmatter·링크·이미지 경로를 다시 확인한다.
+7. 영어판이 필요한 경우 한국어 canonical 확정 뒤 locale-adapter가 별도 `en.md`를 만든다. kr-writer는 영어판을 한국어의 원본으로 취급하지 않는다.
+
+production blog가 아닌 문서에는 요청된 출력 스키마를 따른다. 위 네 필드 frontmatter를 임의로 덧붙이지 않는다.
 
 ## 8. Quality bar
 
-- 분량: 5,500자~7,000자 (공백 제외, 한국어 본문)
-- 종결어미 `-습니다` / `-한다` 검사 = 0건
-- 인사이트당 평균 ≥ 2 figure placeholder
-- 첫 단락 "안녕하세요" 인사 포함
-- 가져가도 좋은 것 / 따라하면 안 되는 것 = 각 5개
+공통:
+
+- 선택한 preset의 분량과 종결어미 범위를 지킨다.
+- 이미지 placeholder 0건. 실제 에셋이 있을 때만 의미 있는 alt와 함께 참조한다.
+- 제공되지 않은 저자 신원·경험·수치·인용·CTA 0건.
+- production blog라면 frontmatter가 정확히 네 필드이고 한국어 canonical 본문이 비어 있지 않아야 한다.
+
+default `toss-tech-design` 디자인 분석 글:
+
+- 분량 5,500자~7,000자 (공백 제외).
+- 종결어미 `-습니다` / `-한다` 0건.
+- "가져가도 좋은 것"과 "따라하면 안 되는 것"은 글에 실제 적용 판단이 있을 때 각 5개 이내로 정리한다.
 
 ## 9. Preset 요약 spec (non-default 11개)
 
@@ -230,19 +216,19 @@ toss-tech-design 외 preset 호출 시 아래 요약 spec이 §1 (voice) / §5 (
 
 ### karrot-neighborly — 당근 동네체
 - register: 해요체 (가끔 "~답니다"/"~지요") · 문장 25~45자
-- opening: "안녕하세요, [동네] 이웃 여러분." / closing: "오늘도 따뜻한 하루 보내세요."
+- opening: 입력에 지역·커뮤니티 맥락이 있을 때만 이웃을 호명. 없으면 구체적인 생활 장면이나 문제로 시작
 - 금지: 차가운 비즈니스 한자어("고객", "유저") · 외래어 남발("커뮤니티"보단 "동네") · 단정적 -다 종결
 - 선호: "동네/이웃/우리/근처" lexicon · 다정한 호명("이웃님") · 골목·계절·온도가 묻어나는 묘사어
 
 ### brunch-maker-popular — 브런치 에세이체
 - register: 해요체 80% + 회상 해체 혼용 (1~2문단당 한 번 "-했다") · 문장 40~80자, 시처럼 끊기는 호흡
-- opening: 개인 일화 한 줄 ("그날 저녁, 나는 ~") / closing: 여운 남기는 단문 ("그래서 나는 오늘도 ~.")
+- opening: source에 개인 경험이 있을 때만 일화로 시작. 없으면 관찰된 장면이나 질문으로 시작
 - 금지: 보고서식 bullet · 차트 인용 · 단정적 톤("~해야 한다")
 - 선호: 1인칭 "나"의 일화 · 감각어(냄새·빛·소리) · 단문/만연체 교차 · 은유 · 짧은 의문문("정말 그럴까?")
 
 ### naver-d2-engineering — NAVER D2 기술체
 - register: 하십시오체(-합니다/-입니다) · 문장 40~70자, 명확한 주어-서술 구조
-- opening: "안녕하세요. [팀명] [이름]입니다. 이 글에서는 ~을 다룹니다." / closing: "이 글이 ~ 도움이 되길 바랍니다."
+- opening: 팀명·이름이 source에 있을 때만 소개하고, 없으면 다룰 기술 문제와 범위를 바로 밝힘
 - 금지: 과도한 1인칭 감정 표현 · 비속어/인터넷 약어 · "~해요" 혼용 (문서 내 통일성)
 - 선호: 정확한 기술 용어 + 영문 병기 · "먼저/다음으로/마지막으로" 구조 신호어 · 코드 블록·도식과 본문 1:1
 
@@ -261,38 +247,38 @@ toss-tech-design 외 preset 호출 시 아래 요약 spec이 §1 (voice) / §5 (
 ### journalism-broadsheet — 신문 기사체
 - register: 해라체(-다/-었다) · 문장 35~60자, 리드 문장 명확
 - opening: 리드 = 핵심 사실 한 줄 ("~가 ~했다고 ~일 밝혔다.") / closing: "한편, ~." (배경 정보 마무리)
-- 금지: 1인칭 (기명 칼럼 제외) · "~요/~네요" · 추측만 나열 · 감정 형용사
+- 금지: 1인칭 (기명 칼럼 제외) · "~요/~네요" · 추측만 나열 · 감정 형용사 · 출처 없는 인용/직함/날짜
 - 선호: 5W1H 리드 · 직접 인용("~라고 밝혔다/말했다/강조했다") · 출처 표기("OOO 대표") · "한편/이에 대해/앞서"
 
 ### kakao-warm-product — 카카오 따뜻한 프로덕트체
 - register: 해요체, Toss보다 약간 더 감정적 · 문장 20~40자 (microcopy는 더 짧게)
-- opening: "~ 축하해요!" / "~을(를) 시작해볼까요?" / closing: "오늘도 좋은 하루 보내세요." / "더 알아보기 →"
-- 금지: 비즈니스 한자어("승인/수행/처리" → 부드러운 동사) · 부정·경고 직설("실패/오류" → "다시 시도해볼까요?") · 명령형("입력하시오" → "입력해주세요")
-- 선호: "축하해요/고마워요/함께해요" · "혜택/선물/응원" 어휘 · 짧은 의문문("같이 시작해볼까요?")
+- opening: 완료·시작 맥락이 실제로 있을 때 "축하해요" 또는 짧은 질문 사용
+- 금지: 비즈니스 한자어("승인/수행/처리" → 부드러운 동사) · 명령형("입력하시오" → "입력해주세요") · brief에 없는 CTA
+- 선호: "고마워요/함께해요" · "혜택/선물/응원" 어휘 · 짧은 의문문
 
 ### line-global-saas — LINE 한국어 (cross-locale)
 - register: 하십시오체(-합니다), D2보다 한자어 비중 낮음 · 문장 35~55자, 번역 친화적 단순 구조
-- opening: "이 글에서는 ~을 소개합니다." / "안녕하세요, LINE의 ~입니다." / closing: "감사합니다." / "다음 글에서 ~을 이어 다루겠습니다."
+- opening: 팀·저자 정보가 source에 있으면 소개하고, 없으면 글의 범위를 바로 밝힘
 - 금지: 한국 내수 전용 비유·시사 (동시 번역 시 문제) · 4자 숙어("일석이조") · 비격식체
 - 선호: SVO 단순 구조·능동태 · 영문 약어 병기("LINE 디자인 시스템(LDS)") · terminology 통일 · 중립 호명("독자/사용자")
 
 ### academic-lecture-essay — 교양 강연체
 - register: 해요체 우세 + 학술 한자어 자유 혼용 · 문장 40~70자, 강의처럼 호흡 길게
-- opening: "여러분, ~을 한 번 생각해볼까요?" / closing: "결국 ~인 거죠." / "그래서 저는 ~라고 생각해요."
+- opening: 독자에게 생각할 질문을 제시하거나 핵심 개념을 일상 장면과 연결
 - 금지: 보고서식 bullet · 인용 없는 단정
 - 선호: "~인 거죠/~라는 거예요" · 청자에게 묻는 구조("그렇다면 왜 그럴까요?") · 비유와 일상 예시 · 학문 한자어 즉시 풀이("엔트로피, 그러니까 무질서의 정도")
 
 ### emotional-brand — 패션 커머스 트렌디체
 - register: 해요체 + 체언/명사 종결 자유 혼용("오늘의 픽.") · 헤드라인 15~30자, 본문 40자 내외
-- opening: 명사형 후크 ("이번 주의 무드." / "여름밤, 우리가 입어야 할 것.") / closing: "지금, [브랜드]에서." / "더 보기 →"
-- 금지: 보고서 한자어 · "~합니다" 일변도 (브랜드 거리감) · 길고 설명적인 문장
-- 선호: 외래어·영문 자유("무드/감도/베이직/에디트") · 컬러·재질·실루엣 어휘 · 시즌·시간성 cue("이번 주/오늘 밤/5월의") · 짧은 명령형("입어볼 것.")
+- opening: source가 뒷받침하는 시즌·시간성 cue나 명사형 후크
+- 금지: 보고서 한자어 · "~합니다" 일변도 (브랜드 거리감) · 길고 설명적인 문장 · brief에 없는 구매 CTA
+- 선호: 외래어·영문 자유("무드/감도/베이직/에디트") · 컬러·재질·실루엣 어휘 · 짧은 명령형
 
 ### legal-disclosure — 법무 약관체
-- register: 하십시오체(-합니다) 우세 + 명사 종결("~함") · 문장 50~100자, 의도적으로 길고 한정조건 빽빽
-- opening: "본 약관은 ~을 규정함을 목적으로 합니다." / "제1조 (목적)" / closing: "본 약관은 ~일부터 시행합니다." / "부칙. ~"
-- 금지: 1·2인칭 친밀 표현 · 비격식체 · 감정 형용사 · 모호한 수식("좀", "약간")
-- 선호: "~합니다/~됩니다/~할 수 있습니다" · 수동·피동("간주됩니다/처리됩니다") · 정의 조항("이 약관에서 사용하는 용어의 정의는 다음과 같습니다.") · 법률 한자어("의무/책임/면책/준수") · 조·항·호 번호 체계
+- register: 하십시오체(-합니다) 우세 + 명사 종결("~함") · 문장 50~100자, 한정조건을 명확히 표기
+- opening: 문서 목적 또는 조문 범위를 먼저 명시
+- 금지: 1·2인칭 친밀 표현 · 비격식체 · 감정 형용사 · 모호한 수식("좀", "약간") · 근거 없는 법적 효력/시행일
+- 선호: "~합니다/~됩니다/~할 수 있습니다" · 수동·피동("간주됩니다/처리됩니다") · 정의 조항 · 법률 한자어("의무/책임/면책/준수") · 조·항·호 번호 체계
 
 ---
 
