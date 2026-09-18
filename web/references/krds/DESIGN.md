@@ -18,7 +18,7 @@ ds:
   og_image: "https://www.krds.go.kr/resources/img/guide/KRDS_Open_Graph.png"
 verification_v2:
   schema: 2
-  checked: "2026-09-17"
+  checked: "2026-09-18"
   surfaces:
     - { id: home, kind: design-system, url: "https://www.krds.go.kr/html/site/index.html", inspected: "2026-07-11" }
     - { id: typography, kind: design-system, url: "https://www.krds.go.kr/html/site/style/style_03.html", inspected: "2026-07-11" }
@@ -43,6 +43,7 @@ verification_v2:
     - { id: button-css, kind: official-doc, url: "https://www.krds.go.kr/html/site/component/component_05_02.html", captured: "2026-09-17" }
     - { id: layout-doc, kind: official-doc, url: "https://www.krds.go.kr/html/site/style/style_05.html", captured: "2026-05-08" }
     - { id: tag-doc, kind: official-doc, url: "https://www.krds.go.kr/html/site/component/component_06_04.html", captured: "2026-05-08" }
+    - { id: krds-component-roster, kind: official-doc, url: "https://www.krds.go.kr/html/site/component/component_summary.html", captured: "2026-09-18" }
   claims:
     "tokens.colors.body": &color_doc { surface_id: colors, source_id: colors-doc, method: official-doc, captured: "2026-07-11" }
     "tokens.colors.border-strong": *color_doc
@@ -906,6 +907,28 @@ KRDS 컴포넌트는 5단계 크기 토큰(xsmall/small/medium/large/xlarge)을 
 소스: `component_12_*`. 뒤로가기 / 바텀시트 / 수량토글 / 토스트 / 스낵바 / 탭바 / 스플래시 스크린 / 범위 슬라이더 — 위 Toasts 등 해당 variant에서 다룹니다.
 
 §4 노트 — 모든 컴포넌트는 `--krds-light-*` (일반 모드)와 `--krds-high-contrast-*` (선명한 화면 모드) 두 토큰 레이어를 동시에 가지며, 다크 모드 전환은 같은 컴포넌트가 토큰만 바꿔 끼우는 방식으로 동작합니다.
+
+### Published component roster (34 not yet measured)
+
+KRDS publishes **55 components**, enumerated on its own roster page
+(`component_summary.html`). This reference cites **21** of them by their real page id and
+carries measured values for those; the other **34 are named by KRDS and carry no measured
+values here**:
+
+Masthead, Header, Footer, Skip link, Main menu, Breadcrumb, Side navigation, In-page
+navigation, Pagination, Structured list, Disclosure, Image, Carousel, Table, Text list,
+Favicon, Link, Checkbox, Toggle switch, Help panel, Tutorial panel, Contextual help, Coach
+mark, Tooltip, TTS, Language switcher, Resize, Visually hidden, Range slider, Back button,
+Bottom sheet, Quantity toggle, Tab bars, Splash screen.
+
+They are listed so the gap is visible, not to imply coverage. No token, state, geometry or
+metric is asserted for any of them. Several — Help panel, Tutorial panel, Coach mark, TTS,
+Visually hidden, Resize — are accessibility and guidance components with no equivalent in a
+commercial design system, which is part of what makes KRDS worth reading.
+
+The roster was found by reading the index the sitemap points at. The sitemap reaches 44
+component URLs with opaque ids (`component_04_07.html`); only the roster page maps those ids
+to names, and it lists 55.
 
 ## 5. Layout Principles
 
