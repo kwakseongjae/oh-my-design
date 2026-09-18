@@ -133,6 +133,115 @@ pega는 올바른 호스트를 처음부터 인용하면서 인덱스를 한 번
 
 ---
 
+## 2026-09-19 — 전수 프로브. 대상은 429가 아니라 **50**이었다
+
+정본 스크립트 `web/scripts/probe-design-system-index.mjs` · 원본 `/tmp/index-probe.json`
+
+이 결함("올바른 호스트를 인용하고 인덱스를 열지 않았다")을 가지려면 **컴포넌트 인덱스가
+존재해야 한다.** 그래서 먼저 모집단을 셌고, 내가 A를 계획할 때 쓴 429라는 숫자는 틀렸다.
+
+| 모집단 | 수 | 이 결함을 가질 수 있나 |
+|---|---|---|
+| 레퍼런스 전체 | 440 | — |
+| `homepage`만 있는 것 | 353 | **아니오** — 마케팅 홈페이지는 컴포넌트 인덱스를 주장하지 않는다 |
+| `ds:` 블록이 있는 것 | 86 | 부분 |
+| └ `ds.type: brand` | **37** | **아니오** — 프레스/에셋 페이지다. 인덱스가 없는 게 정상 |
+| └ `ds.type: system` | **50** | **예 — 이것이 A의 실제 대상** |
+
+`ds:`는 "이 브랜드가 디자인 시스템을 발행한다"는 선언이 아니다. 49개의 `system`과 37개의
+`brand`가 한 키를 공유하고 있었고, `brand` 쪽 URL은 트레이드마크 정책(airtable),
+폰트 다운로드(baemin·gmarket), 보도자료(coupang), 블로그 글(kakaopay·gangnamunni),
+브랜드 에셋 페이지(cursor·resend·supabase 외 다수)다. **`type`이 이미 둘을 갈라놓고 있었고
+나는 그걸 읽지 않은 채 429개 호스트를 프로브할 계획을 세웠다** — 이 문서가 말하는 바로 그
+실패(인덱스는 있는데 안 읽음)를 계획 단계에서 한 번 더 반복한 것이다.
+
+### `type: system` 50개의 분포
+
+(`toss`는 채택된 Core v2라 프론트매터가 없다. 1차 실행은 그래서 토스를 아예 빼먹었고 —
+이 문서의 출발점이 된 레퍼런스다 — `readReferenceSource`로 패키지에서 레거시 바이트를
+복원해 넣어 49가 아니라 50이 됐다.)
+
+| | 수 | 다음 조치 |
+|---|---|---|
+| 컴포넌트 경로가 있는 인덱스 | **26** | 이름 단위 대조 (A의 본체) |
+| 인덱스는 있으나 컴포넌트 경로 0 | 8 | 경로 모양 확인 — adobe·likelion은 진짜 로스터였다 |
+| 인덱스 없음 | 16 | SPA/정적 문서 사이트. 스크립트로 안 됨 — 에이전트 작업 |
+
+**26건, 발행 대 보유**(`under-ds` = `ds.url` 경로 하위만):
+
+| | 발행 | `tokens.components` | | | 발행 | `tokens.components` |
+|---|---|---|---|---|---|---|
+| patternfly | 495 | 2 | | pega | 57 | 3 |
+| skyscanner | 307 | 10 | | uswds | 55 | 2 |
+| aws-cloudscape | 300 | 1 | | krds | 45 | 12 |
+| wanted | 196 | 6 | | servicenow | 33 | 3 |
+| google | 151 | 5 | | money-forward | 25 | 8 |
+| smarthr | 100 | 13 | | samsung | 17 | 1 |
+| wise | 95 | 2 | | kdan | 10 | 4 |
+| uber | 94 | 3 | | yeogiotte | 10 | 5 |
+| velog | 94 | 4 | | sanity | 7 | 4 |
+| microsoft | 83 | 1 | | hahow | 4 | 3 |
+| govuk | 74 | 9 | | alipay | 0 | 1 |
+| zendesk | 72 | 3 | | | | |
+| channeltalk | 71 | 5 | | **합계** | **2,529** | **113** |
+| hashicorp | 69 | 1 | | | | |
+| ibm | 65 | 2 | | | | |
+
+중앙값 4% · 10% 미만 17건 · 10~50% 5건 · 50% 이상 3건(yeogiotte·sanity·hahow).
+
+**이 4.5%를 "문서화율"로 읽으면 안 된다.** `tokens.components`는 *측정된 UI 토큰* 수이고,
+레퍼런스는 §4 산문으로도 컴포넌트를 다룬다. 그리고 이 제품의 목적은 컴포넌트 라이브러리를
+복제하는 게 아니다. 이 표가 증명하는 것은 **부피 차이가 크다**는 것뿐이고, toss·pega·krds에서
+확인한 결함(§4가 일부만 이름 대면서 전체를 다룬 듯 읽힘)은 **이름 단위 대조로만** 확인된다.
+스크립트는 거기까지 못 간다 — 26개 호스트에 인덱스 URL을 쥐여 주고 에이전트를 붙이는 것이
+다음 단계다.
+
+### 8건 "인덱스는 있는데 컴포넌트 경로 0" — 절반은 경로 모양 문제였다
+
+- **adobe** — `spectrum.adobe.com/page/action-bar`, `/page/action-button`… 114항목이 전부
+  `/page/` 아래다. **진짜 로스터인데 내 `COMPONENT_PATH`가 `/components|patterns|elements|widgets/`만
+  본다.** 
+- **likelion** — `?path=/docs/components-badge--docs` 형태의 Storybook URL. 로스터가
+  **쿼리스트링에** 있다.
+- **salesforce** — 사이트맵 내용이 `zeroheight.com/…`이다. 호스팅 플랫폼의 사이트맵이지
+  Lightning Design System의 것이 아니다.
+- vercel(7,140항목·`/geist` 하위 0) · sendbird(1,096·블로그) · kakao(316·API 포털) ·
+  zigzag(110·기술 블로그) · hubspot(0항목).
+
+### 1차 실행에서 드러난 내 스크립트의 결함 3건
+
+- **원점(origin)은 잘못된 단위다.** `ds.url` 86개 중 **50개가 루트가 아닌 경로**를 가리키고,
+  그중 7개는 `github.com/<org>/<repo>`다. 원점만 보면 그 7개가 전부 `github.com`으로
+  붕괴해 **GitHub 자신의 `llms.txt`(117항목)를 일곱 번 읽고** 일곱 레퍼런스의 결과로 기록했다.
+  vercel `/geist`, sanity `/ui`, samsung `/one-ui`도 같은 종류다 — 루트 사이트맵은
+  사이트 전체를 세지, 디자인 시스템을 세지 않는다.
+- **`cited`는 문서화량이 아니라 URL 인용 수다.** krds는 `45 발행 · 7 인용`으로 나왔는데
+  나는 이번 세션에 **이름 34개**를 §4에 적었다. pega도 `57 · 2`로 나온다. 즉 이 판정은
+  내가 답을 아는 두 건에서 정확히 틀린다. 갭 판정을 버리고 두 수(프론트매터
+  `tokens.components` 수, §4 로스터 유무)를 나란히 출력하는 것으로 바꾼다.
+- **`components: 57`의 이름표가 틀렸다.** pega의 57 = `/components/` 49 + `/patterns/` 8이고
+  내 로스터 42는 이름 기준이다. 수는 맞고 **이름이 틀렸다** — `component_pages`(상한)이다.
+
+2차 실행에서 추가로 고친 것: 사이트맵 인덱스의 **자식을 전부** 따라간다(Yoast는
+`post-sitemap`을 `page-sitemap` 앞에 놓는다) · `<![CDATA[…]]>` loc 처리 ·
+**GitHub 트리 API**(`api.github.com/repos/…/git/trees/HEAD?recursive=1`)로 레포형 6건을
+읽는다 · 프론트매터 마지막 줄은 개행 없이 닫는 펜스에 붙어 있어 `[^\n]*\n` 패턴이 떨어뜨린다
+(pega의 세 번째 컴포넌트가 이것 때문에 빠졌다).
+
+**`uber/baseweb`은 `components/` 규약을 안 쓴다** — 91개 컴포넌트가 `src/accordion`,
+`src/avatar`처럼 `src/` 바로 아래에 있다. 첫 규약만으로는 3개짜리 시스템으로 보고됐다.
+두 번째 규약을 넣되 `src/*`는 `src/a11y`·`src/styles` 같은 비컴포넌트를 포함하므로
+**어느 규약으로 셌는지 행마다 남긴다.** 상한이지 로스터가 아니다.
+
+### 데이터 품질 플래그 2건 (이번에 고치지 않음)
+
+- `zigzag`는 `type: system`인데 URL이 디자인 시스템 재구축 **블로그 글**이다.
+- `banksalad`는 `type: brand`인데 URL이 GitHub **조직 페이지**다.
+
+둘 다 `ds:` 블록이 URL이 주지 않는 것을 주장하고 있다.
+
+---
+
 ## 절차 수정 (게이트 해제 시 적용)
 
 `omd:add-reference` Phase 2에 **Step 0 — 인덱스 우선**을 추가한다. 이름 추측보다 먼저 온다.
