@@ -17,7 +17,7 @@ ds:
   description: Pega's public, prescribed system for enterprise application workflows.
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-18"
   surfaces:
     - { id: home, kind: design-system, url: "https://design.pega.com/", inspected: "2026-07-13" }
     - { id: surface-2, kind: design-system, url: "https://design.pega.com/", inspected: "2026-07-13" }
@@ -27,6 +27,7 @@ verification_v2:
     - { id: pega-components, kind: official-doc, url: "https://design.pega.com/components/", captured: "2026-07-13" }
     - { id: pega-design-resources, kind: brand-asset, url: "https://design.pega.com/resources/design-resources/", captured: "2026-07-13" }
     - { id: roboto-flex-license, kind: license, url: "https://github.com/googlefonts/roboto-flex", captured: "2026-07-13" }
+    - { id: pega-component-index, kind: official-doc, url: "https://design.pega.com/page-sitemap.xml", captured: "2026-09-18" }
   claims:
     "tokens.colors.header": { surface_id: home, source_id: pega-ui-home, method: computed-style, captured: "2026-07-13" }
     "tokens.colors.action": { surface_id: home, source_id: pega-ui-home, method: computed-style, captured: "2026-07-13" }
@@ -93,9 +94,9 @@ tokens:
   rounded: { version-button: 2, dark-action: 32, search-input: 0 }
   components_harvested: true
   components:
-    dark-link-action: { type: button, bg: "#03102e", fg: "#ffffff", border: "1px solid #ffffff", radius: "32px", height: "59px", padding: "16px 32px", font: "16px / 700 / Roboto Flex", states: "default observed only; interaction capture reported 0", use: "public design-system link with explicit link-as-button class" }
-    header-search: { type: input, bg: "rgba(255, 255, 255, 0.14)", fg: "#ffffff", radius: "0px", height: "32px", padding: "0px 12px", font: "14px / 400 / Roboto Flex", states: "default observed only; interaction capture reported 0", use: "public design-system search input" }
-    menu-row: { type: listItem, fg: "#050505", height: "42px", font: "16px / 400 / Roboto Flex", use: "public design-system menu row" }
+    dark-link-action: { type: button, bg: "#03102e", fg: "#ffffff", border: "1px solid #ffffff", radius: "32px", height: "59px", padding: "16px 32px", font: "16px / 700 / Roboto Flex", states: "default observed only; interaction capture reported 0", use: "design.pega.com documentation-site home action (link-as-button class) — not a Pega UX Design System component" }
+    header-search: { type: input, bg: "rgba(255, 255, 255, 0.14)", fg: "#ffffff", radius: "0px", height: "32px", padding: "0px 12px", font: "14px / 400 / Roboto Flex", states: "default observed only; interaction capture reported 0", use: "design.pega.com documentation-site masthead search field — not a Pega UX Design System component" }
+    menu-row: { type: listItem, fg: "#050505", height: "42px", font: "16px / 400 / Roboto Flex", use: "design.pega.com documentation-site navigation row — not a Pega UX Design System component" }
 ---
 
 # Design System Inspiration of Pega UX Design System
@@ -184,6 +185,43 @@ DM Sans, JetBrains Mono, and Source Serif 4 were declared in the captured CSS bu
 - Use: public design-system menu row
 
 The menu item is retained as `listItem`: the supplied evidence records a row/menuitem, not button semantics. No hover, focus, pressed, disabled, error, or selection styling is asserted because the bundle records zero interaction actions and zero observed states.
+
+### Published component roster (42 not measured here)
+
+Pega publishes **42 components** in its UX Design System, enumerated by its own sitemap at
+`design.pega.com/page-sitemap.xml`:
+
+**form-controls (16)** — button, checkbox, currency-input, date-time-input, email-input,
+field-group, file-input, form-progress, location-input, number-input, phone-input,
+radio-button, rich-text-editor, select-combobox, text-area, text-input
+**case (10)** — app-announcement, assignments, attachments, case-page, case-preview,
+followers, lifecycle, pulse, related-cases, stakeholders
+**information-display (6)** — avatar, badge, banner, card, file-display, icon
+**overlays (4)** — modal-dialog, popover, toast, tooltip
+**tables-and-lists (3)** — field-value-list, tables, timeline-list
+**navigation (3)** — app-shell, link, tabs
+
+**This reference has measured none of them.** They are named so the gap is visible; no token,
+state, geometry or metric is asserted for any.
+
+### The three measurements above are documentation-site chrome, not Pega components
+
+The dark link action, header search input and menu row are real, dated, selector-backed
+measurements and they stay. But they are the chrome of `design.pega.com` itself — its
+masthead search field, its navigation rows, and a link on its home page styled as a call to
+action. Pega's Button is `form-controls/button`, and this reference has never opened it.
+
+Their `use:` strings now say so outright. That is as far as this pass goes, and the reason is
+worth stating: these three are carried in frontmatter `tokens.components`, which is what
+`/builder` renders as *this brand's* button and input, so the labelling does not reach the
+builder. Moving them out of `tokens.components` would fix that — and would orphan the 24
+dated `tokens.components.*` evidence claims that bind them to their capture. Trading 24
+provenance records for a rendering correction is an owner decision, not a cleanup, and it is
+left open.
+
+`design.pega.com/components/` is cited below as a Tier 1 source and returns 200 with a full
+component index. Whoever captured it recorded the page's own chrome and not the components the
+page lists. That is the failure this roster exists to stop repeating.
 
 ---
 **Verified:** 2026-07-13
