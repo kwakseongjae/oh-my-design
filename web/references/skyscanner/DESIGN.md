@@ -91,6 +91,14 @@ The design language is defined by **rounded softness at every scale**: corner ra
 - "Eco" teal (`#0fa1a9`) for environmental/sustainability signals (green travel)
 - Typography weight triad: 900 (display), 700 (headings/labels), 400 (body)
 
+## Primary tasks
+
+- Compare fares across airlines and booking sites at once
+- Search for a hotel or car hire, not only flights
+- Set a price alert and wait for a drop
+- Find the cheapest place to fly with no fixed destination
+- See every price before creating an account
+
 ## 2. Color Palette & Roles
 
 ### Primary

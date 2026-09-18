@@ -82,6 +82,14 @@ The secondary palette is vivid and purposeful: a warm magenta (`#e4007f`) signal
 - Near-shadowless flat design; subtle drop-shadow only on elevated card surfaces
 - Full-viewport scrolljack sections with smooth 0.5s transitions between scenes
 
+## Primary tasks
+
+- Ride the MRT by tapping a phone instead of a card
+- Pay at a convenience store with a QR code
+- Track spending in one consolidated transaction history
+- Pay a bill and check the EasyCard balance
+- Check e-invoice lottery matches inside the app
+
 ## 2. Color Palette & Roles
 
 ### Primary

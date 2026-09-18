@@ -97,6 +97,14 @@ What is distinctive in the observed surfaces:
 - **Editorial scale plus dense enterprise copy.** About-page statements reach 96px, then resolve into 17px/600 explanatory copy and 15px supporting copy.
 - **Rounded actions rather than rounded everything.** Global nav actions use 8px corners; campaign CTAs use 24px pills. No universal card-radius rule is asserted.
 
+## Primary tasks
+
+- Find out which HR operations the platform covers
+- Judge whether an AI subscription actually changes how a company works
+- See how the platform works through application screenshots
+- Read how the company grew and where it is heading
+- Start a trial or send an inquiry
+
 ## 2. Layout & Grid
 
 - **Global announcement strip:** the two captured public surfaces begin with a 48px-high announcement link; it uses 60px horizontal padding at the 1440px collector viewport.

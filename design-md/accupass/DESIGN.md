@@ -82,6 +82,14 @@ Depth is shallow and friendly. Event cards float on a soft `rgba(0,0,0,0.1) 0px 
 - Mixed radius vocabulary: 3-4px utility, 16px cards, 22-100px pills
 - Near-black footer (`#1a1f23`) with icy `#f5faff` link text closing every page
 
+## Primary tasks
+
+- Browse events by channel and by area of Taiwan
+- Find free family events with the search chips
+- Decide within seconds whether an event is worth attending
+- Register for an event and keep the ticket in the app
+- Create an event and publish it as its organizer
+
 ## 2. Color Palette & Roles
 
 ### Blue Family (Primary System)

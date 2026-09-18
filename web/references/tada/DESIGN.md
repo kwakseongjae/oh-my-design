@@ -84,6 +84,14 @@ What defines TADA visually is the discipline of one signature hue against neutra
 - Minimal shadow — calm comes from clarity, not depth
 - Reassuring, unhurried voice — "the trip is handled"
 
+## Primary tasks
+
+- Enter a destination on the home screen
+- Choose a vehicle type and compare its fare estimate
+- Confirm the fare and call a car with one tap
+- Track where the car is until it arrives
+- Book an airport transfer the night before a flight
+
 ## 2. Color Palette & Roles
 
 ### Primary

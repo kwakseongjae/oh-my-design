@@ -129,6 +129,13 @@ Dabang is Station3’s residential-information service: the company presents Dab
 
 The supplied evidence establishes three separate source domains: the home and map as product surfaces, the FAQ as support-documentation chrome, and Station3’s service page as corporate context. This reference does not turn support controls or corporate messaging into universal product tokens.
 
+## Primary tasks
+
+- Search housing information and move from there into an inquiry
+- Look for a place on the map by location
+- Register property information on the service as a licensed broker
+- List a property for rent as a landlord
+
 ## 2. Color Palette & Roles
 
 - `#FFFFFF` — observed public home/map canvas and control background.

@@ -79,6 +79,14 @@ The chrome is deliberately restrained. Buttons are near-black (`#222222`) solid 
 - Secondary blue (`#3860be`) reserved for utility controls like pill filter toggles (17px radius)
 - Restrained elevation — depth comes from whitespace and light/dark cadence, not heavy shadows
 
+## Primary tasks
+
+- Understand the mission and the global reach of the company's products
+- Read what Azar does and where it is used
+- Read the careers and tech pages for evidence of engineering depth
+- Apply for a role using the site's application form
+- Judge the company's scale and reliability before partnering
+
 ## 2. Color Palette & Roles
 
 ### Primary

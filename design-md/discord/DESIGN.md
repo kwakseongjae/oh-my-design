@@ -89,6 +89,14 @@ The 2021 rebrand brightened the original Blurple (`#7289DA`) into the more satur
 - Generous rounded corners (4px–8px–16px scale) and pill buttons
 - Mascot-driven personality (Wumpus, Clyde) and conversational copy
 
+## Primary tasks
+
+- Type a message into the composer and send it to a channel.
+- Spot which server has unread mentions and triage by color.
+- Talk to friends over voice chat while playing a game.
+- Moderate a large community through roles, permissions, and audit logs.
+- Get through a server's rules and verification as a new member.
+
 ## 2. Color Palette & Roles
 
 ### Primary

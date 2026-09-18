@@ -75,6 +75,14 @@ Typography leans on the system font stack for headings — achieving maximum ren
 - Developer-terminal aesthetic where code snippets ARE the hero content
 - Green glow effects (`drop-shadow`, border accents) that make UI elements feel electrically alive
 
+## Primary tasks
+
+- Copy the install command and start a new project
+- Build an agent with memory, RAG, tools, and guardrails
+- Monitor agent behavior with the VoltOps observability tooling
+- Migrate an existing agent project for stronger type safety
+- Read real TypeScript snippets before adopting the framework
+
 ## 2. Color Palette & Roles
 
 ### Primary

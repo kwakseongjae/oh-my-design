@@ -87,6 +87,13 @@ What distinguishes goorm from flashier dev-tool brands is its restraint with dep
 - Leonardo-generated semantic tints (`#c6e6ff` / `#bbecd7` / `#ffd8d7` / `#ffd9c8`) for status
 - Cool-grey neutral ladder (`#4c4c4c` → `#5d5d5d` → `#393939` → `#a3a3a3`) on a `#f7f7f7` surface
 
+## Primary tasks
+
+- Learn to code in the browser without local setup
+- Adopt the component library for an internal tool
+- Preview a component live in the docs before reading its code
+- Run candidate coding assessments and read each result at a glance
+
 ## 2. Color Palette & Roles
 
 ### Primary & Interactive

@@ -72,6 +72,14 @@ Airtable's website is a clean, enterprise-friendly platform that communicates "s
 - Multi-layer blue-tinted shadow: `rgba(45,127,249,0.28) 0px 1px 3px`
 - Semantic theme tokens: `--theme_*` CSS variable naming
 
+## Primary tasks
+
+- Create a first base to start organizing work
+- Build a vendor tracker or content calendar for your team
+- Link records across tables and automate what happens next
+- Filter and sort your own view of shared data
+- Connect an outside data source and keep it synced
+
 ## 2. Color Palette & Roles
 
 ### Primary

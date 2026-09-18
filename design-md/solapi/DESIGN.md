@@ -85,6 +85,14 @@ A distinguishing trait is that SOLAPI is mid-migration between two grey eras. Th
 - Status green (`#28c840`) and a light-purple accent (`#a788ff`) used sparingly for emphasis
 - White (`#ffffff`) page canvas and on-indigo button text throughout
 
+## Primary tasks
+
+- Send SMS, KakaoTalk and RCS messages through one integration
+- Copy a ready-to-run SDK example and finish the integration
+- Automate re-engagement campaigns across SMS and KakaoTalk without writing code
+- Compare plain rate tables before choosing how to send
+- Retry a failed send from a plain-language cause
+
 ## 2. Color Palette & Roles
 
 ### Primary

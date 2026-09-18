@@ -78,6 +78,14 @@ What defines PeopleFund's visual character is its flatness and restraint. There 
 - Dark blue-grey footer (`#263238`) — grounding anchor
 - Primary CTA "상품 보러가기": white button, black text, zero radius — deliberately un-styled
 
+## Primary tasks
+
+- Compare listings by return rate and collateral before investing
+- Act on a near-closing product before it fills up
+- Open an investment product from the hero carousel
+- Place an investment and move on to the portfolio
+- Borrow short-term bridge financing against a commercial property
+
 ## 2. Color Palette & Roles
 
 ### Primary

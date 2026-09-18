@@ -101,6 +101,14 @@ Blueprint is Palantir’s open-source React toolkit for complex, data-dense desk
 - **Dark entry, light reference:** `#111418` is the supplied landing body background; public Docs use white card/canvas samples with `#1c2127` text.
 - **Measured utility:** the captured Docs card is 122px high with 20px padding, a 4px radius, and a low, double-layer outline/shadow rather than promotional elevation.
 
+## Primary tasks
+
+- Find the documented component you need and how to implement it
+- Move an application onto the current version through the migration guidance
+- Load the icon CSS so the toolkit's icons render
+- Check the licence before shipping the toolkit inside a product
+- Decide whether the toolkit suits a desktop-first, data-dense application
+
 ## 2. Color Palette & Roles
 
 ### Selector-backed captured values

@@ -201,6 +201,13 @@ Baemin 2.0 adds a clearer digital layer to that playful heritage. In July 2025, 
 - Playful warmth in brand expression, paired with clearer and more direct product communication
 - Surface-local metrics: app identity, baemin.com, Woowa corporate UI, and the font catalog are not flattened into one false system
 
+## Primary tasks
+
+- Order food for delivery in the app instead of phoning a restaurant
+- Pay for an order and follow its delivery status
+- Sort out what went wrong with an order and what to do next
+- Improve a restaurant's store operations and reach online demand
+
 ## 2. Color Palette & Roles
 
 ### baemin.com

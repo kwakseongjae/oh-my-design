@@ -84,6 +84,13 @@ What distinguishes Fitpet from heavier commerce peers is its near-flat depth. Li
 - Semantic accents only: coral `#ff5967` for discounts, yellow `#ffd633` for ratings/points, `#edf4ff` for coupon strips
 - Near-black `#1b1e21` (mall) and pure `#000000` (corporate) heading text on a bright `#ffffff` canvas
 
+## Primary tasks
+
+- Check a pet's health at home instead of an immediate vet visit
+- Buy food, treats, and supplies chosen against health criteria
+- Find a good animal hospital and book an appointment
+- Search the mall for a product
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -66,6 +66,14 @@ The type system pairs two custom voices. **Feather Bold** — a bespoke display 
 - White-dominant surfaces with bold color reserved for interaction and feedback
 - Generous whitespace, single-focus screens, one clear action at a time
 
+## Primary tasks
+
+- Learn a language in short lessons on a commute
+- Keep a long daily streak from breaking
+- See the correct solution after getting an answer wrong
+- Compete with friends in leagues and XP races
+- Pay for Super Duolingo to remove hearts and ads
+
 ## 2. Color Palette & Roles
 
 Duolingo names its colors after animals and birds — a playful taxonomy that mirrors the owl mascot world. The values below are the widely-documented brand tokens.

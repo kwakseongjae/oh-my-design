@@ -77,6 +77,14 @@ The signature gesture is the red. Ragic's brand red appears in three calibrated 
 - Pure-white canvas with `#fafafa` / `#efefef` neutral bands for sectioning -- no color theming
 - Large weight-300 numbers (`#fa3e3e`) styled like cells in a financial sheet
 
+## Primary tasks
+
+- Design a database the way you lay out a spreadsheet
+- Start from a department template such as Sales or HR
+- Set up forms, permissions, and links between datasets
+- Add the first record to a new empty sheet
+- Filter a sheet and adjust the scope when nothing matches
+
 ## 2. Color Palette & Roles
 
 ### Primary (Ragic Red)

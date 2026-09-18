@@ -74,6 +74,13 @@ What distinguishes Dealicious from typical commerce chrome is its flat restraint
 - Cool-grey neutral ladder (`#bec5d2` → `#a6adbd` → `#8f97a7`) for muted/low-emphasis text
 - White hero flips to `#151f32` navy scrim over imagery for the dark, premium opening
 
+## Primary tasks
+
+- Browse wholesale inventory and order from a phone instead of a dawn market run.
+- List new arrivals daily so retailers see the catalog fast.
+- Settle payment for a wholesale order inside the app.
+- Adjust a search when no wholesale listings match.
+
 ## 2. Color Palette & Roles
 
 ### Primary & Brand

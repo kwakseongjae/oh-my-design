@@ -77,6 +77,14 @@ Where Stripe whispers and Apple subtracts, AmazingTalker reassures. The secondar
 - Conversion-first hero: real tutor imagery, white overlay text, large teal CTA
 - Dual-script discipline — the design assumes both Latin and Traditional-Chinese readers
 
+## Primary tasks
+
+- Compare tutors by profile, reviews, and per-lesson price
+- Get matched with a tutor for the language you want
+- Book a one-on-one lesson with a tutor you picked
+- Arrange weekly lessons for your children with several tutors
+- Apply to teach on the platform as a tutor
+
 ## 2. Color Palette & Roles
 
 ### Primary

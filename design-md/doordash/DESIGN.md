@@ -69,6 +69,14 @@ Geometry throughout is pill-dominant. Every button is `9999px` border-radius —
 - White-dominant surface; red provides all contrast for action
 - Minimal shadow: soft `rgba(25,25,25,0.2)` ring on ghost buttons; no elevation on red buttons
 
+## Primary tasks
+
+- Order dinner and confirm a saved address in a few taps.
+- Order the weekly groceries in the same app as dinner.
+- Watch the delivery move on a live map after ordering.
+- Subscribe to DashPass to pay less on each delivery.
+- Sign up to deliver and work on your own schedule.
+
 ## 2. Color Palette & Roles
 
 ### Primary

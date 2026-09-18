@@ -94,6 +94,14 @@ The custom typeface stack is the brand's quiet engine. **Lausanne** (a clean, ne
 - Editorial Swiss layout: generous whitespace, tight tracking, asymmetric grids
 - Restrained color — black, off-white, lime, and a few muted neutrals; no rainbow palettes
 
+## Primary tasks
+
+- Issue a first company card to start tracking spend.
+- Set spending limits on employee cards and freeze one.
+- Upload a receipt and get reimbursed for a purchase.
+- Filter the transaction table and work an approval queue.
+- See how much the company saved this month.
+
 ## 2. Color Palette & Roles
 
 ### Primary

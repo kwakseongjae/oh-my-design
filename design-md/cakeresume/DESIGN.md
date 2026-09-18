@@ -47,6 +47,13 @@ tokens:
 
 Cake is a Taiwan-built global talent network — formerly CakeResume — that bundles job search, an AI resume and portfolio builder, and recruiting SaaS into one optimistic surface. The atmosphere is clean and professional: a wide white ground (#FFFFFF) lets every element breathe, and a confident Cake green (#13AB67) carries the eye to whatever action matters most. Headings sit in a deep, grounded green (#0C4129) that reads as serious and trustworthy without ever turning cold, while a mid-green accent (#378060) adds quiet warmth between the two. Corners are crisp and small — a consistent 4px radius — so the product feels modern and engineered rather than soft or playful. Set in Inter throughout the UI, the whole experience is tidy, legible, and human: a tool that takes your career seriously but still feels approachable.
 
+## Primary tasks
+
+- Build a resume or portfolio for your career
+- Search for a job on the talent network
+- Scan through candidates inside the recruiting product
+- Switch the interface to another language
+
 ## 2. Color Palette & Roles
 
 - **Brand green / primary action** `#13AB67` — the signature Cake green, reserved for the most important call to action (Sign Up / primary buttons). It is the loudest color on the page and should stay scarce.

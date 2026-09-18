@@ -81,6 +81,14 @@ Depth is almost entirely flat. Live inspection found `box-shadow: none` across t
 - Separate Inter-based docs system keyed on documentation blue `#0c408d` with `#d6d9df` hairlines
 - Supporting accents: soft `#9ebaf4`, pale `#ebf4fd` tint, deep navy `#0e0437` band; `#ffffff` cards
 
+## Primary tasks
+
+- Run A/B tests and messaging campaigns from one dashboard
+- Integrate the SDK into a mobile app
+- Search the documentation for a feature or keyword
+- Explore the demo before asking for a consultation
+- Register a card and start using the platform
+
 ## 2. Color Palette & Roles
 
 ### Primary

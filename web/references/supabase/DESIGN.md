@@ -137,6 +137,13 @@ The official brand-assets page separately governs logo and integration-button us
 - **Light public chrome:** the captured menu and dialog surfaces compute to near-white Oklch values with thin neutral rules.
 - **Compact geometry:** 4px, 8px, 12px, 16px, 24px, and 32px are recurring public-route measurements; the packet does not publish them as an official scale.
 
+## Primary tasks
+
+- Start a project that puts a full Postgres database at its center
+- Work with full Postgres access instead of a wrapped abstraction
+- Begin small and find deeper technical detail when needed
+- Contribute code, improve documentation, or help other developers
+
 ## 2. Color Palette & Roles
 
 ### Selector-backed public roles

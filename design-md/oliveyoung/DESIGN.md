@@ -89,6 +89,13 @@ Olive Young is the CJ retail platform that grew from Korea’s first Beauty & He
 - **Corporate evidence:** the green aligns with the official brand-resources description of Olive Green, while corporate typography resolves to CJONLYONENew.
 - **Current brand evolution:** Olive Young’s official 2025 newsroom announcement says its renewed wordmark was designed for clearer visibility across online and offline global expansion; that is identity context, not a storefront component token.
 
+## Primary tasks
+
+- Search the storefront for a specific beauty product
+- Save a product to your wishlist from the product grid
+- Compare products and services across a dense catalog before choosing
+- Order from the official online store and get same-day delivery
+
 ## 2. Color Palette & Roles
 
 ### Observed storefront roles

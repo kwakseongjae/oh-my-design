@@ -114,6 +114,12 @@ Wise builds an international account for people and businesses that send, spend,
 - **Forest rhythm:** `#163300`, paper white, and `#e8ebe6` make the captured public pages feel warm rather than corporate-blue.
 - **Expressive restraint:** Wise Design reserves Wise Sans for short, high-impact moments and says to default to Inter for most product communication.
 
+## Primary tasks
+
+- Send money abroad from an international account
+- Hold and spend money in several currencies
+- Open an international account with Wise
+
 ## 2. Color Palette & Roles
 
 ### Observed public-surface roles

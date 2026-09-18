@@ -89,6 +89,14 @@ The token system, captured live from `:root`, is **enormous** — 247 CSS custom
 - **BEM-flavored naming** — `button__category-all`, `text__title`, `box__layer-title`, `list-item--recent` — the production code is more disciplined than the rendered density suggests
 - **Density over hierarchy** — page is 10+ stacked category modules deep; users scan visual rhythm (red price + thumbnail), not headings
 
+## Primary tasks
+
+- Find a deal you did not know you wanted
+- Open several product cards and finish one purchase
+- Sort the bestsellers page by price or popularity
+- Check the delivery chip and coupon badges on a product card
+- Pay with SmilePay and shop members-only Club pricing
+
 ## 2. Color Palette & Roles
 
 All values captured 2026-05-15 from production `:root` CSS custom properties via `getComputedStyle(document.documentElement)` on `https://www.gmarket.co.kr/` and `https://corners.gmarket.co.kr/Bestsellers`. Token names preserve Gmarket's own casing (PascalCase-Hyphen, e.g. `--Red-600`, `--Club-Navy-Main`).

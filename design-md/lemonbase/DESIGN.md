@@ -79,6 +79,14 @@ Typographically the system is unmistakably Korean-premium: every headline runs i
 - Pale blue wash (`#edf5ff`) for label / report chips on white
 - Disciplined rounded geometry — 8px buttons, 12px cards, 24px containers, 36px pills
 
+## Primary tasks
+
+- Roll out a structured evaluation cycle instead of spreadsheet reviews
+- Run quarterly 1:1s and goal check-ins in one place
+- Send an engagement survey out and collect what comes back
+- Get expert guidance alongside the software before you adopt it
+- Ask for a consultation from the pricing page
+
 ## 2. Color Palette & Roles
 
 ### Primary

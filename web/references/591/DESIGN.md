@@ -78,6 +78,14 @@ Spatial treatment reflects legacy web conventions adapted for a listing-heavy in
 - Link blue (`#337ab7`) for interactive anchors and supplementary actions
 - Warm grey text ladder (`#333333` → `#4a4a4a` → `#666666` → `#999999`)
 
+## Primary tasks
+
+- Search for an apartment to rent near an MRT station
+- Filter listings by price range, area, and floor
+- Check what similar properties actually sold for before negotiating
+- List a rental unit to reach a wide tenant pool
+- Switch between rentals, resale homes, and new build listings
+
 ## 2. Color Palette & Roles
 
 ### Primary

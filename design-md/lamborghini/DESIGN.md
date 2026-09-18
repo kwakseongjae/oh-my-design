@@ -111,6 +111,12 @@ Automobili Lamborghini is an Italian super sports car maker founded in 1963, who
 - **Measured character:** 0px controls and panels recur throughout the capture; yellow is observed on accent actions rather than elevated to a general semantic palette.
 - **Current context:** the official 2024 identity update links the visual direction to the company’s brave, unexpected, and authentic values.
 
+## Primary tasks
+
+- Open Models, Ownership, or News from the site navigation
+- Browse the model lineup on the public models page
+- Read the brand manifesto to see what the company stands for
+
 ## 2. Color Palette & Roles
 
 The roles below are limited to values that the supplied collector observed in computed styles on the three marketing surfaces.

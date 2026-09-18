@@ -78,6 +78,14 @@ The atmosphere is generous whitespace, neutral light-gray section dividers (`#f7
 - Neutral un-tinted shadows (`rgba(0,0,0,0.08)`) — calm, structural depth
 - A reserved secondary accent palette (violet, amber, coral, blue) confined to illustration and data-viz
 
+## Primary tasks
+
+- Build a long questionnaire from professional question types
+- Run a quarterly employee-engagement survey across a company
+- Share survey results with leadership in a presentable form
+- Evaluate data security and access controls before committing
+- Compare transparent pricing tiers to plan a budget
+
 ## 2. Color Palette & Roles
 
 ### Primary

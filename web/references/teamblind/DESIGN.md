@@ -87,6 +87,15 @@ Typographically the system is pure Pretendard at functional sizes — 16px/600 f
 - Long grey ladder for hierarchy: `#18202a` → `#5f6b7c` → `#94969b` → `#939dac`
 - Anonymity cues in the UI: posts attributed to scrambled handles and "비공개" rather than names or faces
 
+## Primary tasks
+
+- Search the community for a topic you care about
+- Verify your work email to post without being identified
+- Ask a career question anonymously and get blunt answers
+- Check your own company's channel over lunch
+- Compare salary threads and reviews before negotiating a raise
+- Read what employees actually think without posting yourself
+
 ## 2. Color Palette & Roles
 
 ### Primary

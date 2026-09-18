@@ -85,6 +85,15 @@ What gives Cafe24 its distinctive edge is the interplay of two registers. The br
 - Flat depth: separation via tinted surfaces (`#f9fafb`) + thin hairlines (`#e0e0e0`), minimal shadow
 - A tighter app/product variant (`#3971ff`, 4px) that diverges intentionally from the marketing pill chrome
 
+## Primary tasks
+
+- Build, run, and market an online store in one place
+- Start a store without ever having run one
+- Turn a YouTube audience into an online shop
+- Migrate a shop off another commerce solution
+- Sell across borders to Korean and international buyers
+- Log in to the merchant admin to run the store
+
 ## 2. Color Palette & Roles
 
 ### Primary

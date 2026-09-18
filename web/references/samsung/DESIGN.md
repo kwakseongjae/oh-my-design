@@ -110,6 +110,11 @@ The supplied 2026-07-13 evidence covers a Korean homepage, an AI-products page, 
 - 20px contained-CTA and AI-product media-card corners; 0px selected-tab title treatment
 - One UI blue `#0381fe` is an official mobile-system token, not a substitute for the captured commerce CTA
 
+## Primary tasks
+
+- Browse consumer devices and services across the public site
+- See what each AI product does by moving between their tabs
+
 ## 2. Color Palette & Roles
 
 ### Captured Korean public web surfaces

@@ -95,6 +95,13 @@ What defines Studio visually is *absence as a feature*. Borders are hairlines (`
 - Near-invisible elevation — the canvas, not the chrome, carries visual weight
 - Editorial, gallery-like negative space; the product's output is the page's color
 
+## Primary tasks
+
+- Build and publish a production-quality website without writing code
+- Edit a page layout across layers, canvas, and inspector
+- Start from a template tile or reopen a saved project
+- Browse a gallery of real sites made with the tool
+
 ## 2. Color Palette & Roles
 
 ### Primary

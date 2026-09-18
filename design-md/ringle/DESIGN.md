@@ -82,6 +82,13 @@ What distinguishes Ringle is its restraint. There is essentially no decorative d
 - Reserved accents: gold `#ffd391` + promo blue `#2259e5` for promotions; sky blue `#4495ff` for 틴즈
 - Hierarchy by weight/size, not color — ExtraBold to persuade, Medium grey to inform
 
+## Primary tasks
+
+- Book a 1:1 video lesson with a tutor and talk for twenty to forty minutes
+- Save discussion material from the library to use in a lesson
+- Practice speaking with the AI app on your own schedule
+- Roll out English lessons to employees and measure how their speaking improves
+
 ## 2. Color Palette & Roles
 
 ### Primary

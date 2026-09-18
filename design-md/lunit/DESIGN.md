@@ -63,6 +63,13 @@ Atmosphere is built through **vertical band switching**, not elevation. There ar
 - Zero shadows / zero card elevation — depth is band-switching, not floating
 - Uppercase 13.2px Lexend nav — institutional small-caps register, not friendly-app
 
+## Primary tasks
+
+- Contact the company through its single primary action
+- Check how many customer sites and countries it reaches
+- Browse the solutions overview to see what is offered
+- Scan the logo wall to see who works with them
+
 ## 2. Color Palette & Roles
 
 ### Primary

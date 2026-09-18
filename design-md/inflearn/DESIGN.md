@@ -144,6 +144,13 @@ Inflearn is Inflab’s career-learning platform: its official company introducti
 
 The current product shell should not be confused with every Inflearn-owned page. The supplied third route is an Inflab engineering article with separate documentation chrome; it is recorded as first-party context only. Inflab’s own engineering writing says the service has accumulated multiple systems and that its newer shared GNB serves courses, challenges, mentoring, clips, and community across multiple front-end environments. That is useful evidence for the header’s product importance, not authorization to turn documentation styles into product tokens.
 
+## Primary tasks
+
+- Find and compare courses before entering one
+- Judge a course by its learner counts and evaluations
+- Move between courses, challenges, mentoring, clips and community
+- Share professional expertise with learners as an expert
+
 ## 2. Color Palette & Roles
 
 ### Color tokens

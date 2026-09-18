@@ -97,6 +97,12 @@ The evidence covers five distinct public product URLs plus a duplicate home snap
 - Pretendard K Edition is the loaded public-web family; selected product controls also expose an operating-system stack
 - Flat, selector-local controls: 8px and 10px action corners coexist with 0px tabs and utility controls
 
+## Primary tasks
+
+- Explore savings, card, and investment products on the public pages
+- Read what a deposit product is worth before its conditions
+- Check the eligibility limits a product page spells out
+
 ## 2. Layout & Grid
 
 - The supplied collector uses a `1440×900` viewport on the home, product index, two deposit pages, and the ONE card page. The second home record is a duplicate URL, not a breakpoint or a distinct surface.

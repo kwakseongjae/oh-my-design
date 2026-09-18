@@ -97,6 +97,12 @@ tokens:
 
 원스토어 is a Korean mobile-content marketplace spanning games, apps, and story content. It was launched in 2016 by combining the three mobile-carrier app markets with Naver App Store, after the T Store business moved from SK Planet to One store Co., Ltd. Its official company narrative calls for a platform that is closer, more open, and more fun, and its current public messaging centres on “쏠쏠하게 앱하다” and enjoyable game life. The supplied capture shows a deliberately split public ecosystem rather than one universal UI: the consumer storefront is a mostly white, black-text surface with a sparse dark-purple background occurrence, while the separately captured developer portal uses conventional square system controls. The official corporate brand gallery, free mobile-font program, developer-support material, and storefront are related but distinct domains; this reference keeps their evidence boundaries intact. [Company history](https://www.onestorecorp.com/about/corp/) · [Customer commitment](https://onestorecorp.com/sv/ccm/)
 
+## Primary tasks
+
+- Find a game, app, or story title in one marketplace
+- Open an app's detail page to read about it
+- Sign in to the One Store developer portal
+
 ## 2. Color Palette & Roles
 
 ### Selector-backed surface values

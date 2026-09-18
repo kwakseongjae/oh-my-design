@@ -78,6 +78,14 @@ Depth is almost entirely flat: live inspection found no rendered drop shadows on
 - Pink tint family (`#ffe6e7` surface, `#962339` deep text) for announcement and savings accents
 - Green `#00c950` reserved for checkmark/success semantics in pricing tables
 
+## Primary tasks
+
+- Upload from a phone and be on Spotify the same day
+- Earn income from member subscriptions and listener donations
+- Check a show's analytics dashboard week by week
+- Compare pricing plans and pick the recommended one
+- Buy podcast ads across a curated network of creators
+
 ## 2. Color Palette & Roles
 
 ### Primary

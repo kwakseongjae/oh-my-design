@@ -79,6 +79,14 @@ Geometrically, Corca is a pill-and-soft-corner system. Calls to action are fully
 - Flat depth — `box-shadow: none`; color blocks and whitespace do the separating
 - Custom display webfont for headlines over Pretendard / Madefor for body and UI
 
+## Primary tasks
+
+- Find out which products the company actually ships
+- Read how Moonlight helps people understand academic papers faster
+- Try Moonlight from the call to action on its product page
+- Check the benchmark ranking and award before trusting an AI vendor
+- Open a press article behind one of the company's claims
+
 ## 2. Color Palette & Roles
 
 ### Primary & Ink

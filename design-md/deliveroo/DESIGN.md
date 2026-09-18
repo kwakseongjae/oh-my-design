@@ -79,6 +79,14 @@ The typography system is anchored by Stratos, a geometric sans-serif by Producti
 - Dark mode canvas (`#121212`) for night-time ordering
 - Food-first photography with consistent styling across restaurant cards
 
+## Primary tasks
+
+- Enter a delivery address and find restaurants nearby.
+- Filter restaurants by cuisine category and delivery time.
+- Add dishes to a basket and place the order.
+- Track the rider's route on the map after ordering.
+- Report a delivery problem and contact the rider.
+
 ## 2. Color Palette & Roles
 
 ### Primary

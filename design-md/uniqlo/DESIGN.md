@@ -78,6 +78,15 @@ What defines Uniqlo visually is **catalog rigor**: dense, evenly-spaced grids of
 - Flat, shadowless surfaces -- depth comes from grid and whitespace, not elevation
 - Bilingual-native typography -- Japanese and Latin set with equal care, neither subordinate
 
+## Primary tasks
+
+- Scan a category grid where every tile is structured alike.
+- Read why a fabric is warm or breathable before buying.
+- Pick a size and add the garment to the cart.
+- Check whether a size is sold out, then find it in store.
+- Compare a sale price against the original struck-through price.
+- Place an order and see it confirmed with an order number.
+
 ## 2. Color Palette & Roles
 
 ### Primary

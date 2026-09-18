@@ -133,6 +133,12 @@ The captured interface is crisp and utility-led rather than theatrical by defaul
 - Compact 10px, 14px, 15px, and 22px observed text roles
 - Static evidence for buttons, badges, and a navigation row; no interaction state values
 
+## Primary tasks
+
+- Find a film and choose a theatre to watch it in
+- Pick a screening by title, time, location, and format
+- Choose a special-format screening such as 4DX or ScreenX
+
 ## 2. Color Palette & Roles
 
 ### Current public-surface colors

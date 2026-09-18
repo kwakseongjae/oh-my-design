@@ -74,6 +74,14 @@ What makes Patreon unmistakable is its philosophy of *color as creator expressio
 - Surface-inverting primary CTA — black fill on light, white fill on dark
 - Tight negative tracking on display headlines (≈ -0.06em); body text relaxed at weight 400
 
+## Primary tasks
+
+- Find a creator to support from the header search
+- Start a membership page for free as a creator
+- Read the pricing page before committing to a plan
+- Run a tiered membership that posts regularly to paying members
+- Support a handful of creators with a monthly payment
+
 ## 2. Color Palette & Roles
 
 ### Primary (Monochrome)

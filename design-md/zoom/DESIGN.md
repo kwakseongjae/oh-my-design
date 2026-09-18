@@ -76,6 +76,14 @@ Zoom's depth vocabulary is restrained. Cards use thin `#dfe3e8` hairline borders
 - Tinted blue-white surfaces (`#f3f8ff`, `#e6f0ff`) for content zone separation
 - Strong typographic hierarchy: 54px display, 46px section, 32px feature, 20px sub
 
+## Primary tasks
+
+- Join a video meeting without thinking about the technology.
+- Catch up on a meeting you skipped through its AI summary.
+- Switch between annual and monthly billing to compare prices.
+- Sign up for a free account from the homepage header.
+- Explore Meet, Phone, and Team Chat from the products menu.
+
 ## 2. Color Palette & Roles
 
 ### Primary

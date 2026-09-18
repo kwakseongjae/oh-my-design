@@ -106,6 +106,14 @@ Typography is **Inter-led** — a clean, highly-legible neo-grotesque optimized 
 - Perceptual color scales (orange, blue, grey, plus semantic red/green/yellow) for tokens
 - Engineering-grade restraint: clean rules, subtle shadows, generous whitespace, no gratuitous gradients
 
+## Primary tasks
+
+- Add a site and get it set up on Cloudflare
+- Add the first DNS record to an empty zone
+- Turn the proxy on for a record and read its status
+- Manage firewall rules and access policies across many zones
+- Copy an API token or IP address out of the dashboard
+
 ## 2. Color Palette & Roles
 
 ### Primary

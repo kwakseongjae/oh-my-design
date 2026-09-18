@@ -87,6 +87,14 @@ What distinguishes Readmoo from typical commerce design is its restraint with de
 - Split geometry — 25px marketing pills vs 3–4px sharp search/register chrome
 - Cyan-tint panels (`#c2f0ff`) for feature callouts; red (`#dc3545`) sale tags and green (`#28a745`) stock tags on covers
 
+## Primary tasks
+
+- Search the store for a book by keyword.
+- Browse books, magazines, audiobooks, and comics by category.
+- Buy a book and continue reading it immediately.
+- Read a book you bought on any device.
+- Compare mooInk specs and pick a bundle.
+
 ## 2. Color Palette & Roles
 
 ### Primary

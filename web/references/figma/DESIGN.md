@@ -156,6 +156,12 @@ The custom `figmaSans` variable family provides unusually fine weight control—
 - 8px standard actions, 16px large hero controls, 50px segmented tabs, circular icon actions
 - Dashed blue focus treatment that visually echoes selection tooling
 
+## Primary tasks
+
+- Design and prototype an interface with collaborators.
+- Hand a finished design over to development for implementation.
+- Review, comment on, or present shared work with teammates.
+
 ## 2. Color Palette & Roles
 
 - **Primary chrome** (`#000000`): text and default filled public actions.

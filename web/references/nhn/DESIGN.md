@@ -114,6 +114,12 @@ The supplied July 2026 runtime evidence is limited to three public corporate sur
 - Live UI typography: Pretendard Variable; Main Pretendard Variable appears in Korean heading roles
 - Official NHN Sans is a distinct brand asset, not a live-family token for these captured pages
 
+## Primary tasks
+
+- Find out which businesses the group works across
+- Browse the technology services the group offers
+- Look up the group's financial results on its investor-relations page
+
 ## 2. Color Palette & Roles
 
 ### Live corporate-web colors

@@ -109,6 +109,13 @@ The observed system is compact and deliberately repetitive: `#f7f7f4` canvas, `#
 - Do not add hover, pressed, focus, error, loading, or motion values from class names alone; this capture contains no interaction event records.
 - Do not substitute a system font where `CursorGothic` is called for, or promote isolated demo fonts to the general UI family.
 
+## Primary tasks
+
+- Describe a change in natural language and let the editor write it
+- Learn autocomplete, inline edits, and agent chat from the quickstart
+- Hand a complex coding task to the agent, including terminal commands
+- Configure model access and privacy controls for an engineering organization
+
 ## 2. Color Palette & Roles
 
 ### Current public marketing colors

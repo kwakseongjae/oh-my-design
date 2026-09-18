@@ -75,6 +75,13 @@ What distinguishes Airbridge from generic dark SaaS is its restraint and its one
 - Soft-square geometry — 8px buttons, 10px nav/segmented, 16px cards; pure white (`#ffffff`) on nav chrome
 - Muted cool grey (`#98989f`) for eyebrows and secondary metadata
 
+## Primary tasks
+
+- Measure which marketing actually drove installs and revenue
+- Defend a budget allocation with funnel and LTV data
+- Compare competing measurement partners before choosing one
+- Look up what a pricing term like MAU means
+
 ## 2. Color Palette & Roles
 
 ### Primary

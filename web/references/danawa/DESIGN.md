@@ -87,6 +87,14 @@ Typographically the system is unromantic and efficient: **Pretendard** across th
 - Mixed geometry: 52px rounded search pill up top, sharp 2px/4px utility buttons and 8px cards below
 - Slate rank badges (`#afbbc8`) and occasional purple (`#8b38e5`) for ranked / promotional callouts
 
+## Primary tasks
+
+- Compare products side by side before deciding what to buy
+- Price a PC build part by part across sellers
+- Sort by lowest price and check purchase counts before buying
+- Get bulk pricing and seller comparison for an office purchase
+- Search within a long result list to narrow it down
+
 ## 2. Color Palette & Roles
 
 ### Primary & Interactive

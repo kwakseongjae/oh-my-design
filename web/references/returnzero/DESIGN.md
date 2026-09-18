@@ -79,6 +79,13 @@ Where color appears, it is surgical and **per-product**, never spread. A bright 
 - Sharp 4px radius for marketing chrome; 30px / 60px pills only on the developer console
 - Cool neutral ladder: `#444444` → `#999999` → `#bbbbbb`
 
+## Primary tasks
+
+- Try speech recognition in the browser before writing any code
+- Switch the demo between live recording, an uploaded file, and a sample
+- Record live speech and watch the transcript come back
+- Compare the plans side by side and see which one is recommended
+
 ## 2. Color Palette & Roles
 
 ### Primary / Action

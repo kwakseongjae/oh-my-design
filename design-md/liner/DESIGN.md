@@ -76,6 +76,14 @@ Interactive geometry is restrained: standard buttons at 8px radius for nav and p
 - Geometric mix: 8px radius for buttons, 200px for pills, 9999px for tab selectors
 - Light neutral palette (`#f9f9fa`, `#f6f6f7`) with deliberate forest-green accents
 
+## Primary tasks
+
+- Search the web and get an answer with its sources cited
+- Run a deep literature review before writing a paper
+- Draft a piece of writing from your own research highlights
+- Compare the Free, Pro, Max, and Enterprise plans
+- Broaden a search that came back with nothing
+
 ## 2. Color Palette & Roles
 
 ### Primary Brand

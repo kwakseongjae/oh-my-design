@@ -102,6 +102,12 @@ Ant Design is important historical and design context: its official introduction
 - Small 2px search/action geometry alongside an 8px developer-tool card
 - No observed hover, pressed, disabled, menu, dialog, toast, or mobile state in the supplied capture
 
+## Primary tasks
+
+- Integrate Alipay payment into a web or mobile application
+- Take an integration through configuration, review, and release
+- Browse the developer-tools page to find a tool
+
 ## 2. Color Palette & Roles
 
 ### Observed Alipay Open Platform

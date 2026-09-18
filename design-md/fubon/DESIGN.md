@@ -79,6 +79,14 @@ The interactive system is built around the Fubon blue as the sole saturated acti
 - Gentle card shadow (`rgba(0,0,0,0.11) 5px 5px 30px`) — soft elevation not harsh depth
 - Rounded corners at 12px for buttons; service icons on circular 50% containers
 
+## Primary tasks
+
+- Compare foreign currency rates before every trip abroad
+- Open a bank account digitally without visiting a branch
+- Find the nearest branch with the 查詢據點 lookup
+- Run corporate payroll and FX services as a small-business owner
+- Switch to the English-language corporate banking section as a foreign resident
+
 ## 2. Color Palette & Roles
 
 ### Primary

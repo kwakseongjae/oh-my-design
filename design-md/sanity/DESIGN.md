@@ -144,6 +144,12 @@ The observed marketing surface uses a white base (`#ffffff`) and near-black fore
 - Small, exact spacing increments: 4px/8px/12px recur in controls; 24px/32px appear in hero actions
 - Light/dark inversion is an observed hover treatment for the P3-orange action, not a general rule for every control
 
+## Primary tasks
+
+- Build a content-driven website or app on a configurable backend
+- Shape the content workflow around how your own business runs
+- Open the pricing page from the home navigation to compare plans
+
 ## 2. Color Palette & Roles
 
 ### Brand Action

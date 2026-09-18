@@ -82,6 +82,13 @@ Blue is the entire interactive language, and Shiftee runs a deliberate ladder of
 - Grey-blue tinted soft shadows (`rgba(159, 176, 199, 0.3) 0px 8px 13px`) for gentle elevation
 - Near-black ink ladder (`#212529` body, `#1e1f21` heads, `#495057` muted, `#969faa` faint) on white / grey (`#f4f7fb`) surfaces
 
+## Primary tasks
+
+- Draw up a shift plan for staff across several stores
+- Run the month-end payroll report from recorded attendance
+- Request leave from a phone between shifts
+- Check attendance records for a chosen date range
+
 ## 2. Color Palette & Roles
 
 ### Primary / Action

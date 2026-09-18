@@ -113,6 +113,12 @@ Kurly is a Korean commerce company whose retail service began in 2015 around cur
 - The retained component evidence is deliberately surface-specific: category tabs, a form-input error sample, and flat product-list articles.
 - The supplied artifact contains desktop captures only; responsive rules, mobile navigation, checkout, and product-detail UI are not specified.
 
+## Primary tasks
+
+- Shop curated food delivered at a controlled temperature
+- Pick a product category and see its listings
+- Scan the new-products list for recently added items
+
 ## 2. Color Palette & Roles
 
 ### Observed live product surfaces

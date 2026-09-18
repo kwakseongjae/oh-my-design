@@ -138,6 +138,13 @@ tokens:
 - 2px, 4px, 8px, 16px의 반복 간격 샘플
 - 상호작용 확장은 홈 이미지 탭의 selected 상태 세 건만 안전하게 관찰됨
 
+## Primary tasks
+
+- Search and buy Lotte affiliate and open-market products in one place
+- Explore beauty, luxury, fashion, or kids shopping areas
+- Scan a personal history of recently viewed products
+- Browse product categories from the home navigation
+
 ## 2. Color Palette & Roles
 
 ### Core

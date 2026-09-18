@@ -137,6 +137,12 @@ The company’s identity page supplies CI and BI downloads for The Pinkfong Comp
 - Pinkfong Baby Shark Font is an official distributed brand asset and one loaded corporate-business display use; it is not promoted to the corporate UI family.
 - Only corporate-page defaults and their exact selector/surface provenance are documented. Product flows, consumer-site UI, and generic family-site components are omitted.
 
+## Primary tasks
+
+- Find out what the company makes across music, apps, and events
+- Download the identity assets for the company or a franchise
+- Download the official Baby Shark font for a document
+
 ## 2. Color Palette & Roles
 
 ### Observed corporate surfaces

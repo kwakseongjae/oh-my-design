@@ -81,6 +81,14 @@ Typography is the modern Korean product stack — **Pretendard**-led with Apple 
 - Joyful, appetite-led tone — quick and a little delightful, not cartoonish or cold
 - Numbers (price, delivery fee, min order, ETA, rating) as first-class tabular typography
 
+## Primary tasks
+
+- Browse restaurants by category like chicken, pizza, or Korean
+- Compare rating, delivery time, minimum order, and fee
+- Filter for free delivery and read reviews before deciding
+- Add menu items to the cart and place the order
+- Follow the order status from cooking through to delivery
+
 ## 2. Color Palette & Roles
 
 Yogiyo red-pink `#FA0050` is the brief-provided/widely-recognized brand color (dark-pink/red). The live site (WebFetch 2026-05-27) confirmed the red-led, category-organized, trust-forward layout but did not expose a token doc; product grays/blacks below follow modern Korean app conventions. Treat product hexes as conventional, the red as the verified anchor.

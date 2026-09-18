@@ -75,6 +75,14 @@ Color is held to almost nothing. There is exactly one brand hue: a confident stu
 - Sharp `0px` geometry with 2px solid outlines, plus signature asymmetric `0px 80px` / `50px 0px` decorative corners
 - Shadowless flat composition — separation comes from black/white contrast and `#dddddd` hairlines
 
+## Primary tasks
+
+- Read the studio's news about a game release
+- Browse the studio's games and open a project introduction
+- Search the recruit list and filter postings by department
+- Apply to an open posting from the recruit list
+- Check IR disclosures for governance, financials and announcements
+
 ## 2. Color Palette & Roles
 
 ### Brand Accent

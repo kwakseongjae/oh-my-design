@@ -126,6 +126,13 @@ tokens:
 
 Coinone is a Korean virtual-asset exchange whose public company materials frame the business around bringing blockchain into the world and creating an environment grounded in trust, innovation, and expertise. Founded in 2014, the exchange presents a formal blue identity in its corporate guideline, then uses a more utilitarian product language in the public routes captured here. The current exchange home is white, compact, and set in the loaded `pretendardCoinone` webfont; its public trading route is denser and uses the separately loaded `Spoqa Han Sans`. The corporate brand page is a third, distinct source domain: it defines the signature, clear space, and Coinone Blue palette, but its Roboto-led documentation chrome is not a product font rule. This reference preserves those boundaries rather than forcing them into one inferred UI system.
 
+## Primary tasks
+
+- Check how Bitcoin is trading against the Korean won
+- Sign in to the exchange from its public home page
+- Complete customer verification before using the exchange
+- Look up how to protect an account from phishing and fraud
+
 ## 2. Layout & Grid
 
 - The public home and public BTC/KRW trading route are both product surfaces, but their captured controls use different loaded families and density. They are recorded as separate product sub-surfaces.

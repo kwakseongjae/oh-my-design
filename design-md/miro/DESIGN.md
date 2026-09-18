@@ -114,6 +114,13 @@ Miro is a collaborative canvas for teams that want to move from an early idea to
 - **Canvas before chrome:** white surfaces and near-black `#1c1c1e` text dominate the captured public controls, leaving color to mark a moment rather than fill the whole page.
 - **Workroom energy:** Miro’s own language foregrounds collaborative, canvas-first work; brand imagery can be expressive, while functional pricing controls remain compact and measured.
 
+## Primary tasks
+
+- Move a team from an early idea to a shared outcome
+- Work through strategy and product design alongside AI
+- Switch the billing period while choosing a plan
+- Collaborate using a keyboard, screen reader, or voice control
+
 ## 2. Color Palette & Roles
 
 ### Observed public-surface roles

@@ -164,6 +164,13 @@ Airbnb Cereal is the strongest repeatable visual signature. `Airbnb Cereal VF` w
 - 20–32px pill geometry for public actions and search; full circles for icon controls
 - Separate visual domains for marketplace, Newsroom, Help, brand assets, and native product
 
+## Primary tasks
+
+- Browse homes, experiences, and services in one marketplace
+- Compare location, timing, and category before choosing an offering
+- Present and manage an offering as a host
+- Look up an official Help answer about a booking
+
 ## 2. Color Palette & Roles
 
 - **Identity accent** (`#ff385c`): currently observed on the marketplace; retained as Airbnb's primary identity color without inventing a universal component role.

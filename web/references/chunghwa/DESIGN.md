@@ -75,6 +75,14 @@ Border radius centers on 20px — the dominant corner radius (~46% of all measur
 - Near-black (`#333333`) body ink — warm, accessible, never pure black
 - Blue tint surfaces (`#e4f2ff`) for secondary actions and hover affordances
 
+## Primary tasks
+
+- Compare fibre upgrade options against a legacy broadband plan
+- Decide between a carrier mobile plan and a rival operator
+- Apply for a new line from the current promotional offer
+- Evaluate enterprise cloud and data-center services for a company
+- Search for a service and get help when nothing matches
+
 ## 2. Color Palette & Roles
 
 ### Primary

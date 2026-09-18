@@ -80,6 +80,13 @@ What distinguishes KCD from flashier fintech peers is its restraint with depth a
 - Soft rounding ladder — 6px corporate ghost, 12–16px product CTAs, 20px cards
 - Cool neutral text ladder (`#44546f` → `#728094` → `#a4aeba`)
 
+## Primary tasks
+
+- Check consolidated card sales each morning without opening a spreadsheet
+- Connect a sales source so the figures start arriving
+- Work out how settlements run before opening a new business
+- Take payments and buy supplies from the same place
+
 ## 2. Color Palette & Roles
 
 ### Primary

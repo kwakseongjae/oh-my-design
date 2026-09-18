@@ -140,6 +140,13 @@ On the captured marketing surfaces, headings use a display instance of Segoe, te
 - Segoe UI in global navigation/footer chrome, with `#262626` navigation and `#616161` footer links
 - Fluent 2 is a separate official system domain; its component guidance is not used to fill missing marketing variants
 
+## Primary tasks
+
+- Find a product across software, cloud services, devices, and developer tools
+- Read what the company says it stands for
+- Look up Fluent 2 tokens for color, type, spacing, and elevation
+- Follow Fluent component and accessibility guidance while building a product
+
 ## 2. Color Palette & Roles
 
 ### Observed public marketing

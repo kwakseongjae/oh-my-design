@@ -88,6 +88,13 @@ The public design is also in transition. In May 2026, MakinaRocks introduced a n
 - **Type-led hierarchy:** loaded KmrApparat carries public display and navigation moments; loaded Pretendard carries broad reading and control use.
 - **Rebrand expression:** fluorescent yellow-green is first-party brand context, not a captured machine token; do not substitute a guessed hex value.
 
+## Primary tasks
+
+- Read what the company builds and where its AI runs
+- Check the company's founding year and stated deployment figures
+- Find out what the Runway enterprise AI OS does
+- Read the rebrand article explaining the new symbol
+
 ## 2. Color Palette & Roles
 
 ### Observed public-web roles

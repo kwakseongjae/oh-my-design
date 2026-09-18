@@ -130,6 +130,12 @@ No authenticated account, native app, order-entry flow, or documentation UI was 
 - A 100px-radius marketing pill is a marketing-specific component, not a universal product radius
 - Public WTS menu and dialog were interaction-expanded; focus, hover, and pressed states are preserved only where observed
 
+## Primary tasks
+
+- Choose among domestic and overseas stocks, ETFs, options, and bonds
+- Trade through the public web trading surface in a browser
+- Read investment information and take part in the community
+
 ## 2. Color Palette & Roles
 
 - **Primary action** (`#3182f6`): observed on the public WTS compact primary action and the investment-products marketing CTA.

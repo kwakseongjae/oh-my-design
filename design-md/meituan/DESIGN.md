@@ -76,6 +76,13 @@ Typography is system-font-first with full Simplified-Chinese coverage (`PingFang
 - System-font-first + Simplified-Chinese fallbacks (`PingFang SC`, `思源黑体`); loudness from color, not type
 - Price/urgency red-orange as the secondary energy color beside the brand yellow
 
+## Primary tasks
+
+- Compare nearby merchants on rating, price, delivery time, and deals
+- Order a meal and pay for it
+- Follow an order from rider pickup to the door
+- Book a movie ticket or a hotel in the same app
+
 ## 2. Color Palette & Roles
 
 Meituan does not expose a public CSS token layer; the values below combine the brand yellow with observable live-site usage. Non-yellow neutral hexes are best-fit approximations and flagged accordingly.

@@ -69,6 +69,14 @@ The most distinctive geometric choice is what is *absent*: the marketing chrome 
 - Light-mode docs surface (ReadMe) with its own accent blue `#3a61f2`, muted slate nav `#444e57`, info tint `#118cfd`, and 6–8px rounding
 - Near-black heading (`#222222`) and dark-grey body (`#333333`) on light sections; pure `#000000` for maximum-contrast docs controls
 
+## Primary tasks
+
+- Get a first sleep measurement working from the documentation
+- Create an API key or run a sample session
+- Look up a returned error code in the Error Codes reference
+- Check certification and published accuracy numbers before choosing a vendor
+- Read the brand guideline to place a partnership logo correctly
+
 ## 2. Color Palette & Roles
 
 ### Primary & Accents

@@ -163,6 +163,12 @@ The supplied runtime evidence covers only the public home, About, and Brand page
 - Compact 4px controls, 8px tab panels, and no observed box shadows on the retained components
 - Selector-specific cyan and lavender selected-tab surfaces, not an inferred universal palette
 
+## Primary tasks
+
+- Run, train, and serve open-source AI models on the platform
+- Learn what the platform does and who it is built for
+- Read why the founders wanted an open AI ecosystem
+
 ## 2. Color Palette & Roles
 
 ### Observed public web colours

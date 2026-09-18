@@ -126,6 +126,12 @@ Thumbtack helps homeowners identify, plan, and complete home projects with local
 - Fully rounded, dark-blue documentation buttons provide the strongest observed component geometry.
 - No hover, focus, pressed, menu, dialog, toast, or form-error interaction was captured.
 
+## Primary tasks
+
+- Look up a component's documented specification before building it
+- Search the design system from the navigation search field
+- Check which typeface and weights the system specifies
+
 ## 2. Color Palette & Roles
 
 ### Observed public-surface values

@@ -66,6 +66,13 @@ What distinguishes Autopedia from softer fintech-adjacent peers is its refusal o
 - Tight negative tracking that scales with size (-1.36px at 34px, -1.04px at 26px, -0.88px at 22px)
 - Cool grey (`#4B5563`) for secondary/label text below the pure-black primary
 
+## Primary tasks
+
+- Read what the company does across its four business lines
+- Track a car's maintenance history and get a transparent diagnosis
+- Get an imported car repaired by a brand specialist
+- Source imported-car parts for a repair shop
+
 ## 2. Color Palette & Roles
 
 ### Primary

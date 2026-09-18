@@ -90,6 +90,14 @@ The type system uses **A P-OTF UD Shin Go Pr6N**, a Japanese Universal Design ty
 - 4px-based spacing grid; accessibility and UX writing are first-class token categories
 - Open-source design system (Ubie Vitals) — tokens managed in JSON via Style Dictionary
 
+## Primary tasks
+
+- Answer one symptom question per screen until the check finishes.
+- Work out what a symptom might mean in a few minutes.
+- Learn which specialist to see about an unexplained symptom.
+- Decide whether to go to hospital now or wait until morning.
+- Review a patient's symptom answers before the consultation starts.
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -78,6 +78,14 @@ What distinguishes Nintendo from louder consumer-tech peers is its restraint wit
 - Restrained secondary accents — eShop green (`#468254`), occasional blue (`#4b5cce`) and navy (`#27455c`) for service/section theming, never competing with red
 - Muted-grey neutral ladder (`#727272` → `#c8c8c8`) for secondary and disabled text
 
+## Primary tasks
+
+- Search the store for a game, hardware item, or news article
+- Shop for a console and games for your kids
+- Save games to a wish list or cart before buying
+- Pre-order or buy a game and see the next step
+- Read Nintendo Direct recaps and topic announcements
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -73,6 +73,14 @@ What distinguishes Stibee is its restraint with depth. Live inspection found `bo
 - Cool-grey neutral ladder (`#414245` → `#606165` → `#747579`) for text hierarchy
 - Thin hairlines (`#ebebeb` cards, `#d9d9d9` form fields) as the primary separation device
 
+## Primary tasks
+
+- Build a newsletter by dragging blocks, with no developer
+- Import subscribers into a list that is still empty
+- Segment subscribers and test which emails readers open
+- Compare the pricing plans before choosing one
+- Send a campaign and open the delivery report afterwards
+
 ## 2. Color Palette & Roles
 
 ### Primary

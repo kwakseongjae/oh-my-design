@@ -71,6 +71,14 @@ Typography leads with **Noto Sans** backed by a system-font chain (`system-ui, -
 - Warm accent neutrals (e.g. `#FEF9EE` cream tint, `#ECEBE9` warm gray) keep the palette cozy
 - Homey, unintimidating mood — everyday cooking made fun, never chef-elite
 
+## Primary tasks
+
+- Search for a recipe by an ingredient you already have
+- Browse ingredient and category tiles when nothing comes to mind
+- Cook from a recipe's ingredient list and steps at the stove
+- Save a recipe to find it again later
+- Post your own recipes and read the made-it reports left on them
+
 ## 2. Color Palette & Roles
 
 Values below are observed live from cookpad.com/jp computed styles (2026-05-19), supplemented by warm-neutral tints visible in the same render.

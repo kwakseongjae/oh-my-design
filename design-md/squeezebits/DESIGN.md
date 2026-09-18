@@ -82,6 +82,14 @@ What unifies both surfaces is restraint with depth: live inspection found `box-s
 - Slate section heads on light homepage bands (`#1f2937`); faint grey (`#d9d9d9`) for muted copy on the dark stage
 - Small, orderly radii — 6px blog chrome, 8px homepage controls; no pills, no heavy rounding
 
+## Primary tasks
+
+- Read reproducible benchmarks before deciding how to cut serving cost
+- Evaluate a quantization toolchain on its accuracy and latency curve
+- Search the blog and fall back to categories when nothing matches
+- Subscribe to the blog to follow new posts
+- Open the View more link under a product block to read its detail
+
 ## 2. Color Palette & Roles
 
 ### Brand

@@ -84,6 +84,14 @@ The elevation system is notably sophisticated for a minimal site — 11 shadow d
 - Product screenshots as primary visual content — the scheduling UI sells itself
 - Built on Framer platform
 
+## Primary tasks
+
+- Book a time on a page that is mostly calendar
+- Create your first event type from a starter template
+- Check the bookings that have come in so far
+- Reconnect a calendar after its permissions were revoked
+- Embed a booking widget inside a proposal document
+
 ## 2. Color Palette & Roles
 
 ### Primary

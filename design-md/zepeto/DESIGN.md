@@ -80,6 +80,13 @@ Geometry tells the two-register story precisely. The web product uses tight 8px-
 - Mostly flat (`box-shadow: none`); one soft glow (`rgba(0,0,0,0.2) 0px 0px 20px`) on the hero pill
 - Cool-grey neutral ladder (`#5c5c61` → `#75757a` → `#c7c7c9`) for text/UI hierarchy
 
+## Primary tasks
+
+- Style an avatar and enter a world with friends.
+- Top up ZEMs and wait for the purchase to confirm.
+- Design an avatar item and sell it to players.
+- Publish an interactive world you built in Studio.
+
 ## 2. Color Palette & Roles
 
 ### Primary

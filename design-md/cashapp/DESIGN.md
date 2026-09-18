@@ -77,6 +77,14 @@ What distinguishes Cash App from its fintech peers is its flat, pill-forward, an
 - Dual canvas: black brand portal (`design.cash.app`) vs white marketing site (`cash.app`)
 - Black-on-green contrast on the primary CTA — green never carries white text
 
+## Primary tasks
+
+- Send money to another person for free
+- Order a Cash App Card that looks nothing like a bank card
+- Buy and sell bitcoin from the same account
+- Use the app as a primary account with direct deposit
+- Retry a payment after the transaction fails
+
 ## 2. Color Palette & Roles
 
 ### Primary

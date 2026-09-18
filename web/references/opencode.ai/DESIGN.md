@@ -91,6 +91,13 @@ The color system is deliberately minimal. The primary palette consists of just t
 - **DO** underline links by default — text-centric identity reinforces "everything is code."
 - **DON'T** use color-only link styling without underline — accessibility AND identity benefit from the underline.
 
+## Primary tasks
+
+- Install the coding agent with the command shown on the homepage
+- Run the agent from a terminal, desktop, web, or mobile frontend
+- Self-host the agent to keep your work private
+- Compare the agent against other AI coding tools before adopting it
+
 ## 2. Color Palette & Roles
 
 ### Primary

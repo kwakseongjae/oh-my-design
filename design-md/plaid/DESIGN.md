@@ -84,6 +84,12 @@ Geometry is overwhelmingly pill-based. Navigation items, CTAs, and tags all run 
 - Pale blue-white menu surface (`#f7faff`) and dark-teal (`#012e37`) menu text for the mega-menu
 - Muted forest green (`#468254`) as a quieter accent alongside the bright hero gradient
 
+## Primary tasks
+
+- Read the docs and start integrating without booking a sales call.
+- Compare the product catalog to pick the pieces a feature needs.
+- Evaluate whether the data layer will still be there in five years.
+
 ## 2. Color Palette & Roles
 
 ### Primary & Dark Brand

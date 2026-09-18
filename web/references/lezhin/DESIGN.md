@@ -67,6 +67,14 @@ Korea's first premium webtoon platform — bold, content-first, and unapologetic
 
 Lezhin Comics presents a dark, immersive canvas that keeps the spotlight firmly on cover art and episode thumbnails. The interface uses a deep near-black base (`#111115`) punctuated by a single vivid crimson (`#eb0014`) that signals every interactive action — from primary buttons to the switch-selected state and the badge on adult content. Grey neutrals (`#e9e9ec` border-muted through `#09090b` ink-black) form a tight tonal ladder, producing clean hierarchy without decorative flourish. Content grids are tight and image-led; typography is set in Pretendard for sharp legibility in Korean and Latin. The overall atmosphere is premium but unadorned — a platform confident that its 8,000+ titles speak louder than chrome.
 
+## Primary tasks
+
+- Check an episode price and your coin balance before buying
+- Filter by genre chip and bookmark titles for later
+- Read three episodes of a series back to back
+- Follow an artist and get notified of every update
+- See what kind of content a title is before opening it
+
 ## 2. Color Palette & Roles
 
 - **Brand Red:** `#eb0014` — primary CTA buttons, state-switch-selected, state-form-bg-selected, badge

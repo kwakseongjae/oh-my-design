@@ -101,6 +101,13 @@ NAVER WEBTOON is WEBTOON Entertainment's Korean webcomic platform. The company d
 
 The captured product surfaces share a short, practical visual vocabulary: white `#FFFFFF`, black `#000000`, muted `#666666`, pale tag fills `#F6F6F6`, and green `#00DC64` on a creator entry, selected tabs, selected pagination, and a browse heading. This is a record of the current captured routes—not a claim that every NAVER, WEBTOON Entertainment, mobile, reader, payment, or logged-in surface follows the same contract. NAVER account/service utility chrome appears in the artifact as a separate inherited shell and is not promoted into these product tokens.
 
+## Primary tasks
+
+- Discover a webcomic story to follow as a reader
+- Search from the product-home header field
+- Self-publish a webcomic through the BEST CHALLENGE route
+- Build an audience and earn from your webcomics
+
 ## 2. Color Palette & Roles
 
 - **Product green** (`#00DC64`): Observed on the creator-entry button, selected content tabs, selected pagination, and a weekday browse heading.

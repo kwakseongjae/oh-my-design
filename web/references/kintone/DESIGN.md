@@ -95,6 +95,15 @@ Typographically, kintone is pragmatic and Japanese-first. The product UI ships w
 - Generous whitespace and large friendly CTAs — "anyone can do this" reassurance
 - Restrained, mostly flat depth — light cards over heavy shadows
 
+## Primary tasks
+
+- Build an app yourself by dragging fields onto a form
+- Change a field when the work it tracks changes
+- Move an onboarding request through its approval steps
+- Add the first record to an app that is still empty
+- Color-code apps so the launcher reads at a glance
+- Digitize a paper-based process a whole team can use
+
 ## 2. Color Palette & Roles
 
 ### Primary

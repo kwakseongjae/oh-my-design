@@ -78,6 +78,13 @@ Depth is soft and sparing. Most surfaces are flat white cards on the grey canvas
 - Deep navy (`#00001a`) dark sections for brand immersion
 - Relaxed 1.8 body line-height for dense bilingual (KO/EN) reading
 
+## Primary tasks
+
+- Benchmark model quality with Datumo Eval before shipping
+- Commission training data collection and labeling for a model
+- Check the conference publications before trusting the data methodology
+- Compare the product lines named in the top navigation
+
 ## 2. Color Palette & Roles
 
 ### Primary

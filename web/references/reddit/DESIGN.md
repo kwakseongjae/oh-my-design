@@ -89,6 +89,14 @@ The RPL is built on semantic design tokens defined as CSS custom properties (e.g
 - Flat, near-shadowless feed — content cards use only subtle hairline borders and minimal drop shadows
 - Semantic token naming (`--color-action-upvote`, `--color-action-downvote`) — intentional polarity system
 
+## Primary tasks
+
+- Scan hundreds of post titles to find what is worth opening
+- Vote on a post and see the count change immediately
+- Follow a nested comment thread down through many levels of replies
+- Reach a specific answer by searching for the thread that holds it
+- Submit a post and land on the published post itself
+
 ## 2. Color Palette & Roles
 
 ### Brand / Identity

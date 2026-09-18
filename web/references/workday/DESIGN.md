@@ -84,6 +84,13 @@ Beneath the marketing chrome sits **Canvas**, Workday's mature open-source desig
 - Pill geometry on CTAs (24px radius) and 8px radius on cards — modern, soft, never sharp
 - Near-flat depth — separation via soap-grey surfaces (`#f0f1f2`) and `#b6c1cc` hairlines, not heavy elevation
 
+## Primary tasks
+
+- Run HR, finance, and planning on one cloud platform.
+- Move finance operations off a legacy on-premise ERP.
+- Scan large record tables daily in the admin console.
+- Evaluate an HCM platform for a large workforce.
+
 ## 2. Color Palette & Roles
 
 ### Primary & Interactive

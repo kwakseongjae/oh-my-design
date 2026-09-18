@@ -59,6 +59,14 @@ Asia's largest video-based English learning platform, blending immersive YouTube
 
 VoiceTube presents a consistently dark, cinematic atmosphere built around a deep purple-to-near-black canvas. The body background is `#18131D` — a dark aubergine that evokes a premium streaming experience rather than a conventional classroom — while the navigation bar graduates from `#210040` to `#1D102B` as a horizontal gradient, anchoring every page in the brand's deepest signature hues. Primary call-to-action elements arrive as pill-shaped buttons bearing a vivid diagonal gradient from `#653AAF` to `#A73AAF`, injecting a pop of electric violet that reads immediately as the interactive signal layer. Secondary surfaces such as the sidebar and product grid use `#251633`, creating a subtle two-stop dark elevation system. The overall mood is energetic and night-mode-native: think streaming platform meets study app, where video thumbnail cards float on near-black panels, typography in soft white-gray (`#E3E3E3`) maintains clarity without harshness, and playful gradient accents ensure the interface never feels heavy or academic.
 
+## Primary tasks
+
+- Practice English every day with a short video
+- Prepare for an English test with adaptive practice
+- Look up a slang word you heard in a video
+- Take a live course with an established instructor
+- Answer a quiz question and see whether it was correct
+
 ## 2. Color Palette & Roles
 
 - **Brand Purple 400 (Primary):** `#7E3AAF` — interactive accents, badge fills, focused input borders

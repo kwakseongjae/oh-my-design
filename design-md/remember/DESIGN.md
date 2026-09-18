@@ -112,6 +112,13 @@ Remember began with digitising business cards and has since expanded into a prof
 - Loaded Pretendard on the career route, backed by Remember-hosted font files.
 - A corporate-only orange (`#fc5d11`) display treatment, not a general CTA token.
 
+## Primary tasks
+
+- Search the career postings for a role that fits
+- Narrow the posting list with the filter controls
+- Compare postings against each other in one dense list
+- Read a posting for its qualification and its next action
+
 ## 2. Color Palette & Roles
 
 ### Career product surface

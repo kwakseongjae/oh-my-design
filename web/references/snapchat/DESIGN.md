@@ -73,6 +73,14 @@ What distinguishes Snapchat design from other consumer social platforms is the d
 - Ghost mascot as persistent visual anchor — the brand's silhouette is a global icon among Gen Z
 - Warm grey body text (`#53575B`) on white — never pure black for body copy, maintaining approachability
 
+## Primary tasks
+
+- Send a Snap to a tight group of close friends
+- Open a story tile and watch it full screen
+- Discover viral trends on Spotlight before they spread elsewhere
+- Add friends when the stories feed is still empty
+- Chat with friends in the web app
+
 ## 2. Color Palette & Roles
 
 ### Primary

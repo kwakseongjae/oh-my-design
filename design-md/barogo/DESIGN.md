@@ -75,6 +75,13 @@ What gives Barogo its particular flavor is its near-flat, sharp-cornered geometr
 - Cool-grey resting surfaces (`#f6f6f6`, `#f9f9f9`) and `#dcdcdc` hairlines carry structure over heavy cards
 - Black footer (`#1a1a1a`) with white (`#ffffff`) links; electric blue (`#2d3ce6`) as a single brand-identity accent
 
+## Primary tasks
+
+- Set a store up for delivery dispatch instead of juggling riders
+- Route a store's orders from one dashboard and reach support
+- Take delivery jobs through the rider app
+- Weigh opening a delivery hub against the published figures
+
 ## 2. Color Palette & Roles
 
 ### Primary

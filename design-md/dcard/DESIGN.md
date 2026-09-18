@@ -92,6 +92,14 @@ What truly distinguishes Dcard is the **breadth of its semantic token system**. 
 - **Topic purple** (`#bf8ff0`) for cross-cutting interest groups
 - 8px border-radius is the default (buttons, cards, chips); `--vars-max-page-width: 1280px` with 728px main content + 300px aside
 
+## Primary tasks
+
+- Read forum threads late at night without posting.
+- Post anonymously while your school and forum still show.
+- Search for a thread and refine the query when nothing matches.
+- Read salary-transparency threads and interview-prep AMAs in the work forums.
+- Cross-reference forum threads before buying a product.
+
 ## 2. Color Palette & Roles
 
 Dcard exposes its color system via CSS custom properties on `:root`. All values below are extracted directly.

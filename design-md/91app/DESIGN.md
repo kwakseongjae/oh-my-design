@@ -48,6 +48,12 @@ omd: "0.1"
 
 91APP carries the composure of retail infrastructure built to be trusted at scale — the brand of Taiwan's leading omnichannel OMO (online-merge-offline) commerce SaaS. Its identity rests on a deep structural navy (#061C3D) that anchors text, headings, and the primary call-to-action, giving every screen the gravity of a B2B platform that merchants stake their storefronts on. Against a clean white ground (#FFFFFF), that navy reads as steady and engineered rather than playful. A coral-red accent (#E85040) provides the single point of energy — the action color reserved for moments that should feel decisive. Traditional-Chinese Noto Sans TC sets the type with neutral, legible clarity suited to a Taiwanese merchant audience. The overall atmosphere is one of confident retail infrastructure: orderly, generously rounded at the touch points, and quietly serious.
 
+## Primary tasks
+
+- Understand what an online-merge-offline commerce platform does for a retail store
+- Judge whether the platform is dependable enough to run a storefront on
+- Manage day-to-day commerce flows where the interface marks the next action
+
 ## 2. Color Palette & Roles
 
 The palette is disciplined and role-driven, with navy as the dominant structural color and coral as the lone action accent.

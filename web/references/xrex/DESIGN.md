@@ -86,6 +86,13 @@ Depth is handled two ways depending on the section's value. On dark immersive ba
 - Tinted blue surfaces (`#ebf2ff`) and deep navy (`#081b68`) for brand/compliance moments
 - Mixed geometry — 15px soft radius on header buttons, full 999px pills in-page, circular dark icon chips
 
+## Primary tasks
+
+- Reach the sales team to start a business conversation
+- Check the licenses and registrations before trusting the institution
+- Explore how the payment product handles cross-border settlement
+- Move between the payment, RegTech, and company sections
+
 ## 2. Color Palette & Roles
 
 ### Primary

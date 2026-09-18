@@ -73,6 +73,13 @@ What distinguishes Milddang from its edu-tech peers is its restraint with depth.
 - Slate ladder for text hierarchy: `#333333` body → `#494c4f` secondary → `#999999` muted/inactive
 - Dark corporate footer band (`#2f3233`) anchors the parent-company identity (I Hate Flying Bugs Inc.)
 
+## Primary tasks
+
+- Study one-on-one on a plan that adapts to your mistakes
+- Weigh tutoring options as a parent without pressure selling
+- Teach a scheduled one-to-one session as an online teacher
+- Start studying when no lesson has been assigned yet
+
 ## 2. Color Palette & Roles
 
 ### Primary

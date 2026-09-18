@@ -120,6 +120,12 @@ Shinhan Card is a Korean specialist finance company whose stated business spans 
 
 The public system is more varied than the prior snapshot suggested. Product-detail pages carry `#f8f9fc` selection tiles and `#f0f4fa` toned actions; the home surface also exposes red and blue tint badges. Rounded values occur at 8, 12, 16, and 20px, while an opened navigation menu uses a light border and a small, explicit shadow. This reference therefore distinguishes the captured product web surfaces from the company’s corporate narrative and from any unobserved signed-in app, checkout, or documentation UI.
 
+## Primary tasks
+
+- Browse cards and open one card's detail page
+- Borrow through a card loan or pay in instalments
+- Pay for daily purchases through the SOL Pay platform
+
 ## 2. Color Palette & Roles
 
 - **Primary blue** (`#005df9`): observed as the background of `shc-btn theme-primary size-xl` across the home, credit-detail, and premium-detail product surfaces.

@@ -80,6 +80,13 @@ What distinguishes Humanscape from its healthcare peers is its total restraint w
 - Generous rounding — 24px / 32px cards, full-pill toggles and dots
 - Text CTAs are minimalist underlined links (`#28292d` with a 1px bottom border), not filled buttons
 
+## Primary tasks
+
+- Find out which healthcare areas the company works in
+- Weigh the published scale metrics as evidence of real infrastructure
+- Review the investor relations page before backing the company
+- Check whether the company is currently hiring
+
 ## 2. Color Palette & Roles
 
 ### Primary & Accent

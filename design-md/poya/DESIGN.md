@@ -116,6 +116,13 @@ POYA describes its core spirit as beauty, trendiness, and enrichment, and says i
 - The captured primary action and search field share a 45px height and 99px pill geometry.
 - The packet contains no interaction events; its default component geometry remains useful evidence, while state transitions remain absent.
 
+## Primary tasks
+
+- Find personal beauty, health, and care goods through discoverable categories
+- Restock practical household items using direct search and store information
+- Look up store, membership, and online-shopping services from one front door
+- Read the brand story and company timeline behind the 寶雅 name
+
 ## 2. Color Palette & Roles
 
 ### Selector-backed public-surface colors

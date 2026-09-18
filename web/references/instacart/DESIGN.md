@@ -73,6 +73,15 @@ Geometry is rounded-but-restrained. Buttons in the navigation are `20px` radius 
 - No drop shadows on most surfaces; inset shadow on search input for depth cue
 - Near-black ink (`#242529`) for text instead of pure black
 
+## Primary tasks
+
+- Order groceries for delivery or pickup the same day
+- Choose a store by when its delivery can arrive
+- Filter the stores by EBT acceptance, speed or offers
+- Search a store for one specific item
+- Add items to the cart from a store's product grid
+- Confirm an order went through and when it arrives
+
 ## 2. Color Palette & Roles
 
 ### Primary

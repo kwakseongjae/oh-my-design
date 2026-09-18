@@ -76,6 +76,14 @@ The design philosophy is maximum confidence through minimum decoration. Warm cre
 - Minimal border-radius scale: only 8px and 16px — no micro-rounding, no pill shapes
 - Product screenshots dominate the content — the UI sells itself with minimal surrounding decoration
 
+## Primary tasks
+
+- Clear a full inbox at keyboard speed
+- Read an AI summary on every email
+- Reach an empty inbox and see it acknowledged
+- Find Mail, Grammarly, and Coda together under one Superhuman suite
+- Sign up from the marketing site after seeing the product
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -105,6 +105,12 @@ Brandi is an official Korean women's fashion shopping service: the public site t
 - Noto Sans KR and Spoqa Han Sans are live-loaded on the captured web surfaces
 - Active home promotional slider evidence is `#ff365d`, not a general CTA rule
 
+## Primary tasks
+
+- Shop for women's fashion on the Korean service
+- Choose a product option and go through to purchase
+- Buy through the adjacent partner link instead of directly
+
 ## 2. Color Palette & Roles
 
 ### Captured commerce colors

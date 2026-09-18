@@ -79,6 +79,14 @@ What distinguishes Monzo from its fintech peers is the geometry: every interacti
 - Nearly zero shadows; depth through flat surface alternation (white / mint `#f2f8f3` / midnight `#091723`)
 - Negative letter-spacing (`-0.05em`) on MonzoSansText throughout the UI
 
+## Primary tasks
+
+- Open a free bank account from the site
+- Watch a balance and each payment update in real time
+- Set money aside in pots for rent and groceries
+- Search back through months of transactions to find one
+- Send a payment and confirm the amount and recipient
+
 ## 2. Color Palette & Roles
 
 ### Primary

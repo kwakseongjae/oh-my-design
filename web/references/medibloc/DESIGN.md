@@ -78,6 +78,14 @@ What distinguishes MediBloc from typical fintech-adjacent sites is its comfort w
 - Sparse magenta (`#cc3366`) reserved for tiny inline text links — a warm counter-accent to the blue
 - Minimal, atmospheric depth: one ambient shadow, no heavy elevation
 
+## Primary tasks
+
+- Apply for a token swap from the site
+- Check circulating supply and read the validator guide
+- Visit the MediBloc Wallet or Explorer product entry
+- Read the latest company news from the site
+- Run a clinic’s EMR in a browser without building a server
+
 ## 2. Color Palette & Roles
 
 ### Primary

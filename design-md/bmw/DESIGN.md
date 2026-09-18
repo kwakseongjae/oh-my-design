@@ -91,6 +91,12 @@ BMW makes premium automobiles, motorcycles, and mobility services. Its public BM
 - Separate home and configurator foreground values rather than one assumed neutral scale
 - No promoted hover, focus, pressed, modal, or responsive system from this capture
 
+## Primary tasks
+
+- Read what BMW makes before browsing the model range
+- Browse the full BMW model range in one catalogue
+- Configure a car through the build-your-own route
+
 ## 2. Color Palette & Roles
 
 ### Observed BMW USA product-marketing values

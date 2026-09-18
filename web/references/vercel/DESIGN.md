@@ -181,6 +181,12 @@ The official Geist documentation makes the system inspectable beyond marketing. 
 - Flat grid compositions and 6px compact official controls
 - Strict boundary between public home, Geist examples, and authenticated product UI
 
+## Primary tasks
+
+- Evaluate how to build and deploy an application
+- Compare the platform, framework, AI, and enterprise capabilities
+- Consult the official Geist design system while building an interface
+
 ## 2. Color Palette & Roles
 
 - **Primary/foreground** (`#171717`): current headings, controls, and technical content.

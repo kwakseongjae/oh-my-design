@@ -66,6 +66,14 @@ Korea's leading luxury resale marketplace connecting 1,300+ luxury brands and mi
 
 MUSTIT projects a disciplined luxury-marketplace aesthetic: a near-black (`#1F1F2C`) and white canvas that recedes so individual product photography can dominate, accented by a single assertive brand red (`#D00000`) that marks every price-cut, badge, and primary CTA. The official brand philosophy — "Smart Luxury — Make the Best Discovery" — is made tangible through high-density list grids, tight typographic hierarchy in Pretendard, and a periscope-lens symbol (M SCOPE) that signals personal curation. Shadow use is deliberately restrained (max `rgba(0,0,0,.05)`), surfaces feel flat and minimal, and the red accent creates instant visual priority in a visually busy product grid.
 
+## Primary tasks
+
+- Check authenticity badges and discounts before a first luxury purchase
+- Find a specific brand item seen on someone else
+- Filter a large catalogue and compare sellers and price history
+- Browse curated shelves and find something unexpected
+- Add an item to the cart and see it confirmed
+
 ## 2. Color Palette & Roles
 
 - **Brand Navy:** `#1F1F2C` — official primary brand color (CI logotype, hero backgrounds, brand header)

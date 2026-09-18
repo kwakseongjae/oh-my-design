@@ -106,6 +106,14 @@ What is distinctive in the evidence:
 - **Public pricing is calmer than the hero.** The API-pricing surface uses white model cards, `#CDD0D5` borders, and `#525866` supporting text.
 - **Geometry is mostly flat.** Buttons and observed cards use 8px corners; the supplied samples show no general card-shadow system.
 
+## Primary tasks
+
+- Compare what each model costs on the API pricing page.
+- Switch between models to reach the one you need.
+- Design, deploy, and operate a document agent in Studio.
+- Check how deployment, traceability, and controlled access are handled.
+- Find which Upstage product fits a document-heavy industry.
+
 ## 2. Layout & Grid
 
 - **Public action scale:** the repeated home filled and outlined action controls use 12px 18px padding; the compact outlined action uses 10px 16px.

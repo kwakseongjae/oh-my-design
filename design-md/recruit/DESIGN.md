@@ -100,6 +100,12 @@ Recruit is a Japanese matching and productivity business whose public group mate
 - The captured corporate routes are flat and mostly square-cornered: 0px radii dominate, with a 4px one-sided side-control exception.
 - Marketing/corporate pages, Recruit product applications, Recruit Holdings narrative material, font licensing, and declared-only font faces are separate evidence domains.
 
+## Primary tasks
+
+- Learn which services connect individuals with business clients.
+- Move between corporate sections through the primary navigation.
+- Read how the company shifted from magazines to matching platforms.
+
 ## 2. Color Palette & Roles
 
 ### Selector-backed public corporate colors

@@ -49,6 +49,13 @@ Korean game company behind the Cookie Run franchise — building joyful, globall
 
 Devsisters' digital product language is bold, energetic, and unambiguously orange. The homepage announces itself in a full-bleed deep orange (`#FF5F00`) navigation bar that carries through to the footer, wrapping the entire experience in brand warmth. Against this chromatic confidence, content cards surface on pure white with subtle grey borders and generously rounded corners (20 px on cards, 36 px on buttons), giving the layout a playful softness that balances the brand's intensity. Typography oscillates between the heavyweight display face `azo-sans-web` (used at weights 800–900 for English headlines) and the versatile Korean system stack `Pretendard` (used at weight 500–700 for body and UI copy), creating a bilingual dual-register hierarchy that reads as global without feeling generic. The overall atmosphere is that of a confident entertainer: vivid, rounded, action-forward, with just enough restraint in whitespace and card structure to keep the experience legible across ages and screen sizes.
 
+## Primary tasks
+
+- Check parental guidance and the privacy policy before a child plays.
+- Read the studio's philosophy and office locations before applying for a job.
+- Look up company size and studio pipeline after a partnership announcement.
+- Jump from the site to a game download or its patch notes.
+
 ## 2. Color Palette & Roles
 
 - **Brand Orange:** `#FF5F00` — primary background (nav, footer, CTA buttons, section fills); the brand's dominant signal colour

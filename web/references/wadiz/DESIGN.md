@@ -87,6 +87,14 @@ Typography is **Pretendard only** — no display secondary face — loaded from 
 - Single-direction blue-black shadow `0 6px 6px -1px #0a16461a` — never colored, never theatrical
 - `#fcc500` (yellow) for trending / hot-deal labels — the system's hottest visual moment is *promotion*, not error
 
+## Primary tasks
+
+- Browse the rewards feed and read each campaign's funding state
+- Narrow a category down to the campaigns you want
+- Decide on a campaign from the maker's story
+- Fund a campaign from the mobile bottom sheet
+- Set an alert on a campaign instead of funding now
+
 ## 2. Color Palette & Roles
 
 ### Primary

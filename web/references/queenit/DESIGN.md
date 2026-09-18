@@ -76,6 +76,14 @@ Queenit's parent company runs a deliberately different identity on its corporate
 - Light low-spread shadows for chips/floating icons instead of deep elevation
 - Pretendard for the product UI; corporate site uses Noto Sans Korean + a `#ffcb27` yellow accent over `#393838` ink
 
+## Primary tasks
+
+- Scan discount rates to judge a deal at a glance
+- Buy contemporary brands for less than the department-store price
+- Switch between top categories to narrow what you browse
+- Open a limited-time sale event from a home banner
+- Search for a product and fall back to categories when nothing matches
+
 ## 2. Color Palette & Roles
 
 ### Primary

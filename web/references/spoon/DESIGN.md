@@ -77,6 +77,14 @@ Typography is Pretendard-led with a wide cross-market fallback (`Pretendard, "Pr
 - Pretendard-led type stack with JP/TC fallbacks (KR/JP/TW multi-region)
 - Conversation-forward, social-lobby density — many small live rooms
 
+## Primary tasks
+
+- Go live with just your voice, no camera needed
+- Drop into a live room after work and chat with the DJ
+- Find a room to listen to by browsing hashtag chips
+- Send a spoon to cheer the DJ you are listening to
+- Follow a DJ and get a confirmation you can undo
+
 ## 2. Color Palette & Roles
 
 Colors below are extracted from live computed styles on spooncast.net (2026-05-19, web surface). Spoon does not publish a public token layer; values are observed. Note: the web surface uses orange `#FF5500`; Spoon's earlier app brand used a coral/pink — see footer conflict note.

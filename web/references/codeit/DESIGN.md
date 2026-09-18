@@ -83,6 +83,14 @@ What distinguishes Codeit from typical fintech-minimal Korean sites is its playf
 - A wide, playful violet-to-pink accent family (`#8f00ff`, `#760dde`, `#b363fd`, `#c47cfd`, `#ff52b7`)
 - Dark immersive bands in night (`#080c14`) and plum (`#3d1457`) for feature storytelling
 
+## Primary tasks
+
+- Search the explore catalog for a course to take
+- Work through a five-minute lesson, practice, and quiz
+- Start the free trial in one tap, without a sales call
+- Ask the AI GURU tutor when a lesson gets confusing
+- Compare membership plans and pick the recommended one
+
 ## 2. Color Palette & Roles
 
 ### Primary & Accent

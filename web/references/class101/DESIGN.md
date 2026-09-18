@@ -99,6 +99,12 @@ tokens:
 
 Class101 is an online learning marketplace and subscription service. Its public CLASS101+ material describes a subscription that lets members use a range of existing Class101 content, while the official creator centre presents classes and products across hobbies, work skills, and side projects. The captured Korean home is a white, typographic storefront: black and near-black text dominate, with a small `#FF5D00` orange accent appearing in home-title text. Its live web interface uses Pretendard Variable and compact, neutral controls rather than a captured public design-system token set. The current record deliberately separates that product surface from the terms and privacy pages, whose legal-document chrome is evidence for those pages only.
 
+## Primary tasks
+
+- Subscribe as a member and use the range of existing classes the subscription covers
+- Find classes and products across hobbies, work skills, and side projects
+- Publish a class or product as a creator starting a creator journey
+
 ## 2. Color Palette & Roles
 
 Class101 does not publish a public token specification in the sources reviewed. These are raw computed values from the supplied capture, not a reconstructed palette.

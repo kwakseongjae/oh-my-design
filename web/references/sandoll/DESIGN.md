@@ -77,6 +77,14 @@ The system splits across two surfaces. The **corporate** site (sandoll.co.kr) is
 - Product-surface split: blue accent (`#4173fa` / `#0d6efd`) + 19px pill chips + cool grey surfaces on Sandoll Cloud
 - Grey ladder for text hierarchy: `#212121` → `#333333` → `#3b3b3b` → `#808080` → `#999999` → `#a5a5a7`
 
+## Primary tasks
+
+- Find and license the right typeface in minutes
+- Commission a custom corporate typeface from the foundry
+- Choose a Hangul and Latin pairing for a bilingual app
+- Preview a specimen in its catalog card before licensing it
+- Save typefaces under consideration and come back to them later
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -85,6 +85,14 @@ What defines Nike visually is *contrast as a system*: black on white, then white
 - Photography-first: huge imagery, minimal chrome, swoosh as punctuation
 - Flat surfaces — depth comes from contrast and scale, not shadow
 
+## Primary tasks
+
+- Add a shoe to your bag straight from the product grid
+- Narrow a product list with filters, and adjust when nothing matches
+- Compare a sale price against the struck-through original
+- Check size guidance, then reorder the model you already run in
+- Buy a limited-release pair the moment it goes live
+
 ## 2. Color Palette & Roles
 
 ### Primary

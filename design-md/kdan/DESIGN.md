@@ -56,6 +56,12 @@ tokens:
 
 Kdan Mobile presents itself as bold, modern, and developer-credible document software, the kind of digital-workflow SaaS that signs contracts and ships SDKs without losing its sense of energy. The atmosphere is built on a structural deep teal-black base (#002D37) that grounds the interface like ink on a signed page, punctuated by an electric-lime pop (#CAFF00) reserved for the loudest hero moments and the brand's own kdanGreen token (#00DC87) carried over from its open-source UI library. Type is set in Clear Sans, a humanist sans that keeps long documents and dense product copy legible while reading clean and unfussy. Corners are crisp at 4px — tight enough to feel precise and technical, never soft or playful. The overall effect is confident and high-contrast: a serious productivity tool from Tainan, Taiwan that still wants you to feel the charge of getting work done fast. It reads as energetic document software that respects both the signer and the integrating engineer.
 
+## Primary tasks
+
+- Move documents and signatures through quickly
+- Evaluate Kdan's SDKs before integrating them into a product
+- Read long documents and dense product copy on screen
+
 ## 2. Color Palette & Roles
 
 - **kdanGreen / Brand primary** `#00DC87` — the catalog primary, drawn directly from the kdan-ui-revamp brand token.

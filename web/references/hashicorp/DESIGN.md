@@ -141,6 +141,13 @@ The raw capture covers three public-facing domains within the company site, not 
 - Loaded HashiCorp Sans appears in headings and a Boundary eyebrow; system-ui dominates visible UI text
 - Controls use small 4–5px corners; the captured home card uses 6px
 
+## Primary tasks
+
+- Read up on one named product before trying it.
+- Pick a product from the pricing page and start it.
+- Submit an email address through the shared marketing form.
+- Weigh the open-source route against a commercial plan.
+
 ## 2. Color Palette & Roles
 
 ### Shared live surfaces

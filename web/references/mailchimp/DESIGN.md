@@ -77,6 +77,14 @@ What truly distinguishes Mailchimp is its restraint with depth and its warmth in
 - Teal Ink (`#004e56`) reserved for links — the only cool accent in a warm palette
 - Warm-tinted shadows (`rgba(35,30,21,0.15)`) on the rare elevated card — never neutral gray
 
+## Primary tasks
+
+- Start a free trial from the homepage hero
+- Set up a first email campaign without reading a manual
+- Import contacts to build a marketing audience
+- Compare plans in the card-based plan selector
+- Manage campaigns for several local clients
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -78,6 +78,14 @@ What distinguishes FriendliAI typographically is its use of **Saans**, a contemp
 - Split geometry — 4px button corners, 32px card corners, 360px full pills for tags/search
 - Mostly flat: `#d9e2ec` hairlines carry separation, with one soft ambient glow for spotlight cards
 
+## Primary tasks
+
+- Spin up an inference endpoint without booking a sales call
+- Read the blog for model-serving benchmarks before choosing a vendor
+- Search the blog and adjust the query when nothing matches
+- Start an architecture conversation with an engineer instead of a sales pitch
+- Compare inference providers on cost predictability and reliability before committing
+
 ## 2. Color Palette & Roles
 
 ### Primary & Action

@@ -116,6 +116,13 @@ Ohouse is Bucketplace’s lifestyle service for taking an envisioned life into a
 - The representative product-list articles are visually unframed at their outer element: transparent background, zero radius, and zero padding. Their child composition was not separately measured.
 - Captured radii are mostly `0px`, with observed `4px` utility/action corners and a `24px` circular control.
 
+## Primary tasks
+
+- Browse real homes other people have posted for ideas
+- Buy products for a space and have them delivered
+- Arrange a home service such as remodeling, moving, or cleaning
+- Connect with other people through the home community
+
 ## 2. Color Palette & Roles
 
 The values below are representative computed values from the populated consumer-home capture. They are not a public Ohouse palette and should not be expanded into semantic states without new evidence.

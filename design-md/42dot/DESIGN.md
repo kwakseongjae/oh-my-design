@@ -68,6 +68,13 @@ Typographically the system is unmistakably AstaSans (with a Noto Sans KR fallbac
 - Cinematic dark hero footage under white headlines — engineering-lab confidence
 - Pill (22px) tags and circular (9999px) carousel controls as the only rounded shapes
 
+## Primary tasks
+
+- Follow the blog and research feed for posts on 42dot's LLM and autonomy work
+- Filter the blog index by topic tag to narrow it to one subject
+- Read the technology and blog pages for architectural depth rather than marketing claims
+- Browse open roles and the careers pages to judge whether the culture is engineering-led
+
 ## 2. Color Palette & Roles
 
 ### Primary / Accent

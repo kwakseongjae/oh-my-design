@@ -76,6 +76,14 @@ There is also a quieter, corporate second register. Rakuten's ReX design system 
 - Sanctioned festival mode: campaign yellow (`#fff100`) and cream (`#fff9c8`) take over whole sections during sales
 - A second official register — ReX action blue (`#134ff3`) and the Rakuten Font suite — for group-level products
 
+## Primary tasks
+
+- Search the marketplace by keyword from the global header.
+- Compare prices across product cards before choosing an item.
+- Register as a member without paying to join.
+- Move between Rakuten's mobile, travel, card, and bank services.
+- See the points earned after placing an order.
+
 ## 2. Color Palette & Roles
 
 ### Primary

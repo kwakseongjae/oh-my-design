@@ -79,6 +79,14 @@ Pretendard Variable carries 100% of UI text. There is no display face, no custom
 - Korean text dominates; the system stack handles incidental Latin (prices use Hindu-Arabic numerals + "원" suffix)
 - Bottom of the home page is always an app-install rail — web is a discovery funnel, the app is the trade venue
 
+## Primary tasks
+
+- Scroll a deep feed of listings until the right item appears
+- Search for a specific item from the header
+- Check whether a listing carries escrow or authentication
+- Save a listing to come back to it later
+- Sell your own used goods to other traders
+
 ## 2. Color Palette & Roles
 
 All colors below were extracted from production `:root` CSS custom properties (`getComputedStyle(document.documentElement)`) on 2026-05-14. Token names preserve Bunjang's own naming.

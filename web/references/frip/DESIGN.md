@@ -79,6 +79,14 @@ Typographically the system is unmistakably Korean-modern: everything runs in **S
 - Content-dense commerce feed: thumbnail cards, corner tags, price callouts on a white canvas
 - Dark charcoal (`#333333`) app-download bar as the recurring cross-sell chrome
 
+## Primary tasks
+
+- Browse shelves of experiences, classes, and social outings to book
+- Book a spot on an experience and get the reservation detail
+- Check a host's Superhost badge and profile before committing
+- Review how your own listing's thumbnail, tags, and price read in the card grid
+- Sort out a booking that failed and what to do next
+
 ## 2. Color Palette & Roles
 
 ### Primary & Accent

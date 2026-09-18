@@ -74,6 +74,11 @@ Together the system reads as **calm-violet product plus high-energy dark corpora
 - Pill-and-round geometry — 100px pill links, 40px round controls, 12/16px cards, 8px CTA
 - Flat depth: a single `rgba(0,0,0,0.03)` card shadow; grouping by tint and border, not stacked shadows
 
+## Primary tasks
+
+- Read the notice explaining that Typed has been discontinued
+- Export your documents to Google Drive through the migration guide
+
 ## 2. Color Palette & Roles
 
 ### Primary

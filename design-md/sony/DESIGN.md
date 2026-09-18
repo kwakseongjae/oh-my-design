@@ -82,6 +82,13 @@ The supplied 2026-07-13 evidence covers the English corporate home and two publi
 - Loaded SST W20 Roman UI text and SST W20 Bold headings, both limited to the recorded public surfaces.
 - 20px vertical and 13px horizontal padding on the observed header navigation link.
 
+## Primary tasks
+
+- Find out which businesses the group spans, from games to imaging
+- Read product information in the public products catalog
+- Trace the company's history from its 1946 founding
+- Look up the company's stated Purpose in its own words
+
 ## 2. Color Palette & Roles
 
 ### Observed public portal and catalog colors

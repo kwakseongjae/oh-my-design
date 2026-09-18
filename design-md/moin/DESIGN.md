@@ -78,6 +78,13 @@ What distinguishes Moin from heavier fintech peers is its restraint with depth. 
 - 6px workhorse radius (buttons/inputs), 8px controls, 16px cards
 - Cool neutral ladder (`#6b6c74` → `#818daa` → `#a9abb4`) for text hierarchy
 
+## Primary tasks
+
+- Send money across a border in about five minutes
+- See the exchange rate up front, before committing to a transfer
+- Compare the amount that lands against what a bank would deliver
+- Read other senders' reviews before trusting the service with money
+
 ## 2. Color Palette & Roles
 
 ### Primary

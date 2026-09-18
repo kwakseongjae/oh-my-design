@@ -75,6 +75,14 @@ What distinguishes Finda from its fintech peers is its restraint with depth. The
 - Negative letter-spacing on headlines (-0.96px at 64px, -0.51px at 34px)
 - Cool-grey neutral ladder (`#3a415a` → `#65798e` → `#a9b0c9`) for text hierarchy
 
+## Primary tasks
+
+- Compare loan offers from many financial institutions at once.
+- Apply for a loan directly after comparing offers.
+- Work out your borrowing capacity with the DSR calculator.
+- Look into switching an existing loan to a lower rate.
+- Adjust your criteria when no offers match.
+
 ## 2. Color Palette & Roles
 
 ### Primary

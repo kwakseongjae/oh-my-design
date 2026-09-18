@@ -59,6 +59,14 @@ Korea's first live commerce platform — a mobile-first video shopping app where
 
 Grip presents a dark-first, energy-charged visual world tuned for live video commerce. The primary canvas is near-black (#0e1011) — a deliberate cinema-mode choice that keeps product thumbnails and live video feeds visually dominant. Against this dark ground, the brand's signature rose-red (#eb2b51) fires as a call-to-action signal: checkout buttons, coupon highlights, discount badges, and active selection states all pulse in the same hue, creating an unambiguous buy-now urgency. A secondary hot-pink (#ff3c78) appears in borders and icon fills for interactive affordances just below the critical-action tier. The live-streaming avatar ring introduces a vivid gradient (hot-pink to coral #fe0189→#ff583c) that animates with a pulse or ripple when a seller is live — the single most kinetically distinctive element in the UI. A deep purple (#6456dc) serves as a secondary accent for purchase nudges, urgency countdowns, and seller badges, adding a premium-yet-playful counter-note to the red-dominant palette. Typography is set entirely in Pretendard, a Korean variable typeface that reads cleanly at 13–18 px in both dark and light contexts. Component radii cluster at 4–8 px — tight enough to feel structured, not clinical.
 
+## Primary tasks
+
+- Watch a live broadcast and ask the seller questions
+- Follow sellers and get notified when they go live
+- Find a product by swiping the home feed
+- Claim a coupon and use it at checkout
+- Go live from your phone to sell your own products
+
 ## 2. Color Palette & Roles
 
 - **Primary Rose-Red:** `#eb2b51` — primary CTA buttons, checkout actions, coupon card accents, checkbox fill, discount rate text

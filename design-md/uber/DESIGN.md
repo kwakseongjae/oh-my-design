@@ -149,6 +149,11 @@ tokens:
 
 Uber operates a marketplace that connects people who ride, earn, eat, deliver, and sell; its stated mission is to reimagine how the world moves for the better. The current Korean public web capture expresses that broad mobility role through high-contrast black navigation, white type, and compact capsule controls rather than a broad decorative palette. Across the home, About, and Accessibility pages, the same header geometry recurs: black or white 999px controls set in UberMoveText, with an 8px-radius menu panel appearing when a header menu is expanded. Uber's 2018 official “A new look” announcement framed a new logo and mission around clearer recognition for riders, while the current capture confirms the sober black-and-white public chrome is still live. This reference documents that public marketing/corporate surface only; it does not claim the authenticated rider, earner, courier, or merchant product UI uses the same tokens.
 
+## Primary tasks
+
+- Open the header menu to reach Uber's other public pages.
+- Read how Uber describes its mission and who its marketplace serves.
+
 ## 2. Color Palette & Roles
 
 ### Observed public-site foundation

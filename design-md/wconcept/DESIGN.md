@@ -77,6 +77,14 @@ What defines W Concept visually is the tension between the severe black-and-whit
 - Photograph-first composition: the designer piece dominates, chrome yields
 - Black solid as primary CTA -- never blue, never branded color
 
+## Primary tasks
+
+- Find emerging Korean designer labels before they get popular
+- Search for a brand or product by name
+- Narrow a category with size and color filters
+- Save a piece to the wishlist for later
+- Buy a designer piece and review the completed order
+
 ## 2. Color Palette & Roles
 
 ### Primary

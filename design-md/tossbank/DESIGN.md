@@ -133,6 +133,13 @@ The group’s official resource center identifies Toss Blue `#0064FF` and Toss G
 - Marketing, documentation chrome, and unobserved authenticated banking flows kept separate
 - Only selector-backed public controls are described; app-style cards, forms, and transaction states are omitted
 
+## Primary tasks
+
+- Browse bank products across accounts, savings, loans, and cards
+- Report an inconvenient banking experience you want changed
+- Read the product disclosure and protected-product pages
+- Reach a customer center at any hour of the day
+
 ## 2. Color Palette & Roles
 
 ### Official brand assets

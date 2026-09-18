@@ -153,6 +153,13 @@ au is KDDI’s consumer communications brand: it began as a mobile-phone brand a
 
 The current evolution is explicit. In March 2025 au refreshed its Visual Identity guidance, simplified its design and text expression, added slogan rules, and adjusted colour guidance alongside an au UI colour system. The public mobile routes captured here are product-surface evidence, not a wholesale transcription of that brand book: `#EB5505` is officially au Orange and appears on a measured mobile action, while `#0066AA`, `#333333`, white, and hairlines organise the observed catalog UI. This reference retains those domains separately.
 
+## Primary tasks
+
+- Search from the header on a public au.com page
+- Browse au's mobile services in the catalog
+- Follow a link from a mobile-catalog card
+- Browse product cards in the smartphone catalog
+
 ## 2. Color Palette & Roles
 
 - **au Orange** — `#EB5505`: official brand colour (RGB 235, 85, 5); measured as the fill of the supplied mobile-catalog primary action and as product-label text/border.

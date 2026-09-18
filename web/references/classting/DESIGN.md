@@ -61,6 +61,14 @@ AI-powered K–12 education platform from Korea that connects teachers, students
 
 Classting's visual language is built on the clarity of purpose you'd expect from a product used in 99 % of Korean K–12 schools. The dominant feeling is optimistic and clinical at once: a vivid mint-green primary cuts through generous white space, signalling growth and trust, while soft gradient washes (mint → lavender) on section backgrounds give the interface a gentle warmth that never feels cold or corporate. Rounded cards at 16 px radius and pillowed CTA banners at 24 px keep the tone approachable for both teachers and students. The typographic scale is disciplined — Noto Sans KR anchors the Korean-first experience, with a bold 700-weight display stack that speaks with confidence and an unhurried 400-weight body that keeps comprehension low-effort. Depth is handled with light diffuse shadows (0 2px 12px rgba(0,0,0,0.08)) rather than heavy elevation, projecting an honest, de-cluttered utility that places data visibility above decoration.
 
+## Primary tasks
+
+- Check which students are likely to fall behind this week
+- Start a class feed by writing its first post
+- Drill only the problem types the engine recommends
+- Track daily progress and check a class ranking
+- Review a monthly school-level report before renewing a licence
+
 ## 2. Color Palette & Roles
 
 - **CT Green 500:** `#00C896` — primary brand, CTA buttons, active nav, key data highlights

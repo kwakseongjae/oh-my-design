@@ -80,6 +80,14 @@ What gives Yourator its stylish, slightly editorial signature is its shadow lang
 - Pale blue tints (`#edf8ff`, `#cdeaff`) for category chips and explore surfaces
 - Moderate weights (400 / 500, with 700 for emphasis) — hierarchy from space and color, not heavy display weights
 
+## Primary tasks
+
+- Browse open roles by industry or job category
+- Narrow the search to internships, new-grad, or senior roles
+- Compare roles by tech stack and team culture
+- Build a resume before applying to any role
+- Apply to a role and see the submission confirmed
+
 ## 2. Color Palette & Roles
 
 ### Primary

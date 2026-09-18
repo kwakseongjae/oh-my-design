@@ -75,6 +75,14 @@ What defines SSG's interaction language is its near-zero border-radius philosoph
 - No box-shadow on product cards — separation by `#e5e5e5` borders only
 - Light/tinted red (`#fff2f2`) for promotional surface backgrounds (sale zone headers)
 
+## Primary tasks
+
+- Search for a product and move to a related category when nothing matches
+- Switch the category pills to browse a different section
+- Shop the discount sections for marked-down items from trusted brands
+- Check the shipping badges on a card before buying
+- Add an item to the cart and keep shopping
+
 ## 2. Color Palette & Roles
 
 ### Primary Brand

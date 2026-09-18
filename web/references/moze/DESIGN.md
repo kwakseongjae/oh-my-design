@@ -75,6 +75,14 @@ What distinguishes MOZE from flat fintech peers is its embrace of **glow over fl
 - White-at-87%-opacity ink (`rgba(255,255,255,0.87)`) for headings; grey ladder `#d0d0d0` → `#7b7c8c` for secondary text
 - Multi-hue accent set (orange `#f58327`, gold `#f0c732`, green `#4dff64`, violet `#a963ff`, periwinkle `#8897e3`) reserved for charts/data-viz, never chrome
 
+## Primary tasks
+
+- Log an expense as an everyday ritual
+- See a whole financial picture in charts and budgets
+- Enter a transaction on one device and sync it to the others
+- Compare the free and paid tiers before subscribing
+- Separate personal spending from business spending
+
 ## 2. Color Palette & Roles
 
 ### Primary & Brand Gradient

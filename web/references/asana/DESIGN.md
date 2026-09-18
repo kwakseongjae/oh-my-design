@@ -87,6 +87,14 @@ The geometry is pill-everything: navigation buttons, hero CTAs, pricing cards, a
 - Multi-color dots palette: coral, violet, sky-blue, sage — present in product UI and illustrations
 - No heavy shadows — flat elevation via `#e7e7e7` hairlines and subtle card borders
 
+## Primary tasks
+
+- Complete a task and see it register as done
+- Add the first task to a brand-new, empty project
+- See what your team is working on right now
+- Check workload and capacity so nobody becomes the bottleneck
+- Track company-level goals and present them in a board meeting
+
 ## 2. Color Palette & Roles
 
 ### Primary Brand

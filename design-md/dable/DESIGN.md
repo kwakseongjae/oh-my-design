@@ -79,6 +79,13 @@ What distinguishes Dable from heavier adtech dashboards is its restraint with de
 - Pill-everything geometry — 50px capsules on every button
 - Cool neutral ladder (`#464646` → `#8a8a8a` → `#cccccc`) for text hierarchy
 
+## Primary tasks
+
+- Create an advertising account to start a native campaign
+- Check a basic quote for a native ad buy
+- Evaluate content-discovery widgets for a regional media network
+- Justify the media buy internally using the platform's scale numbers
+
 ## 2. Color Palette & Roles
 
 ### Primary

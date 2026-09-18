@@ -119,6 +119,12 @@ Zendesk’s company story gives the system a useful product context: the company
 - Measured editorial hierarchy: 48px/700 display on home, 36px/600 section headings in the button documentation, and repeated 14px/400 reading/control text.
 - System-ui is the only resolved computed family. It is retained as a runtime observation, not represented as a Zendesk brand font.
 
+## Primary tasks
+
+- Find the documented instructions for a component before building it.
+- Look up which color carries an action or a validation.
+- Decide whether a loading state needs a skeleton or a spinner.
+
 ## 2. Color Palette & Roles
 
 ### Selector-backed current-route values

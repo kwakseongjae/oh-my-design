@@ -157,6 +157,14 @@ What distinguishes SOCAR from other Korean transportation apps (Kakao Mobility's
 - The rebrand color is "SOCAR Blue" reserved for the brand symbol and primary CTAs ([abocado.kr](https://abocado.kr/brand_news/news_detail?no=52)); web chrome itself is intentionally achromatic
 - App download badges and the SOCAR Space Frame symbol are the only places the brand blue appears prominently on the public home
 
+## Primary tasks
+
+- Pick a time and a location, then see a car
+- Pick a city tile to start planning a trip
+- Widen the time window when no car is free
+- Confirm a reservation and check its timeline, vehicle and fare
+- Read the insurance terms and FAQ before booking
+
 ## 2. Color Palette & Roles
 
 ### Primary (Brand)

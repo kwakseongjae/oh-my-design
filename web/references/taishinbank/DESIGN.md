@@ -78,6 +78,12 @@ tokens:
 - Compact 16px / 400 computed body metrics with no verified Taishin UI-family token
 - Information-dense personal and investment pages; grid, breakpoint, and authenticated-product rules are not established
 
+## Primary tasks
+
+- Browse the bank's public investment fund listings
+- Read a product's eligibility, cost, and next action
+- Move through the personal-banking menu and tabs to reach a product
+
 ## 2. Color Palette & Roles
 
 ### Observed public-route colors

@@ -95,6 +95,14 @@ What defines pixiv visually is **content-first restraint with bursts of system c
 - Soft 4–8px corner radii, minimal shadows, flat-but-warm surfaces
 - Light theme default with a true dark theme (`#1f1f1f` surfaces) for long browsing sessions
 
+## Primary tasks
+
+- Scroll a dense grid of artwork and open one full screen.
+- Bookmark a work from its thumbnail or its detail page.
+- Follow an artist whose new work you want to keep seeing.
+- Search by tag to find artists across a language barrier.
+- Post an illustration and collect bookmarks, comments, and ranking feedback.
+
 ## 2. Color Palette & Roles
 
 ### Primary

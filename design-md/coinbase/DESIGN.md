@@ -90,6 +90,14 @@ The button system uses a distinctive 56px radius for pill-shaped CTAs with hover
 - Cool gray secondary surface (`#eef0f3`) with blue tint
 - `text-transform: lowercase` on some button labels — unusual
 
+## Primary tasks
+
+- Buy and sell Bitcoin, Ethereum, and other assets
+- Upload a government-issued ID to finish verification
+- Check the full receipt after a purchase clears
+- Follow a withdrawal from submitted through to confirmed
+- Set up a recurring monthly buy of BTC and ETH
+
 ## 2. Color Palette & Roles
 
 ### Primary

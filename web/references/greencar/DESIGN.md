@@ -74,6 +74,13 @@ What distinguishes Greencar from heavier automotive and rental sites is its rest
 - Near-flat depth: one soft `rgba(0,0,0,0.08) 0px 4px 8px` card shadow + `#dddddd` hairlines
 - Cool neutral ladder (`#303030` → `#5e5e5e` → `#777777` → `#b4b4b4`) on `#f6f6f6` surface
 
+## Primary tasks
+
+- Book a shared car for a weekend trip
+- Take a one-way car for errands
+- Compare the services in the mobility line-up
+- Look into a corporate account for a small business
+
 ## 2. Color Palette & Roles
 
 ### Primary

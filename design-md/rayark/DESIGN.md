@@ -39,6 +39,12 @@ tokens:
 
 Rayark presents the cool, premium mood of a rhythm-game interface: a near-black canvas lit by a single shard of electric cyan. The Taipei indie studio behind Cytus, Deemo, VOEZ and the RPG Sdorica carries that gameplay aesthetic straight into its brand surface, where almost everything recedes into darkness so that one accent color can carry all the energy. White display type sits crisply on the black ground, corners stay sharp rather than soft, and the cyan reads like a neon line glowing on a dark stage. The atmosphere is restrained but charged — calm, confident, and unmistakably built by people who design for the screen. Nothing is decorative for its own sake; the contrast between deep black, bright white, and one luminous accent is the entire personality.
 
+## Primary tasks
+
+- Start playing one of the studio's titles from the primary Play Now action
+- Find out which games the studio has made, from its rhythm titles to its RPG
+- Learn who the studio is after arriving as a fan of one of its titles
+
 ## 2. Color Palette & Roles
 The palette is deliberately tight: a single near-black ground, one electric-cyan accent, and white for text. This three-value discipline is what makes the cyan feel like light rather than paint.
 

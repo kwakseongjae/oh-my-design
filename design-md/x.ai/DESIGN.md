@@ -63,6 +63,12 @@ The spacing system operates on an 8px base grid with values concentrated at the 
 - Heroicons SVG icon system -- minimal, functional
 - Tailwind CSS with arbitrary values -- utility-first engineering approach
 
+## Primary tasks
+
+- Try Grok from the site's primary call to action.
+- Read an announcement about a new model release.
+- View the API documentation linked from the site.
+
 ## 2. Color Palette & Roles
 
 ### Primary

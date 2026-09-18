@@ -76,6 +76,14 @@ What distinguishes Quotabook from its fintech peers is the tension between that 
 - Cool grey text ladder (`#e6e6e6` → `#bfbfbf` → `#979797` → `#8e8e94`) for hierarchy on black
 - Dark ink (`#171b21`) for labels on light/mint surfaces; `Fragment Mono` for occasional mono detail
 
+## Primary tasks
+
+- Move a cap table off spreadsheets before a financing round
+- Manage employee option grants, vesting, and disclosure filings
+- Administer a fund and report across its portfolio companies
+- Run a shareholder meeting and board governance on one platform
+- Import your first shareholder records into an empty account
+
 ## 2. Color Palette & Roles
 
 ### Primary / Accent

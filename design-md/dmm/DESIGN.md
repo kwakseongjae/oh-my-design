@@ -80,6 +80,13 @@ The consumer platform at `dmm.com` is a second, older register — a dense white
 - Legacy consumer brand-crimson (`#b42f5a` → `#8f0539`) + promo amber (`#ffc847`) on the white dmm.com platform
 - Japanese-first stack — `"Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif`
 
+## Primary tasks
+
+- Install the shared package instead of rebuilding the same buttons.
+- Pull tokens and components from the Figma library to keep screens consistent.
+- Study how the documented system reaches dark mode in one switch.
+- Settle a design debate by pointing at the documented intent.
+
 ## 2. Color Palette & Roles
 
 ### Turtle Accent (Primary)

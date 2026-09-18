@@ -81,6 +81,14 @@ What defines Tumblbug visually is the warm coral against rigorous black-and-whit
 - Supportive, creativity-romantic voice — "당신의 취향이 세상을 바꿉니다"
 - Light gray `#f0f0f0` surface fills and hairline `#e4e4e4` borders for grid separation
 
+## Primary tasks
+
+- Browse the project grid to find something worth backing
+- Watch how close a project is to its funding goal
+- Pick a reward tier and pledge to the project
+- Save a project you like and return to it later
+- Present your own project and collect pledges from backers
+
 ## 2. Color Palette & Roles
 
 ### Primary

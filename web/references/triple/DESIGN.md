@@ -78,6 +78,14 @@ Typography rides the platform's native system sans (`-apple-system, "system-ui",
 - Personal, collaborative, slightly playful — a travel companion, not a marketplace
 - Itinerary-first: the day-by-day plan is the product
 
+## Primary tasks
+
+- Plan a trip day by day, dragging recommended places onto a timeline
+- Search for a destination or a specific place to put in the plan
+- Edit one shared itinerary together with the people travelling with you
+- Check what each day holds and how far apart its places are
+- Book hotels and tickets straight from the plan you built
+
 ## 2. Color Palette & Roles
 
 Colors below are extracted from live computed styles on triple.guide/intro (2026-05-19). Triple does not publish a public token layer; values are observed.

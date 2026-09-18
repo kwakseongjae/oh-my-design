@@ -75,6 +75,13 @@ What distinguishes POSTYPE from feed-driven peers is its restraint with depth an
 - Soft rounded geometry — 8px buttons/nav, 24px tag chips, full-round avatars
 - Cool-grey text ladder (`#62626a` → `#76767f`) for secondary and muted hierarchy
 
+## Primary tasks
+
+- Publish long-form serialized work and earn directly from the readers who value it
+- Subscribe to a creator as ongoing support rather than a one-off purchase
+- Sell digital asset packs and take commission requests from fans
+- Browse creator work by tag instead of by popularity ranking
+
 ## 2. Color Palette & Roles
 
 ### Brand & Accent

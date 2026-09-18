@@ -91,6 +91,15 @@ Depth is essentially absent: live inspection found `box-shadow: none` across nav
 - Browser-default link blue (`#0000ee`) on text links — pragmatic, unpolished, oddly honest
 - Dark navy `#08236d` reserved for the government (GOV) plan action
 
+## Primary tasks
+
+- Send a batch of signature requests and track who has not signed
+- Sign a document on KakaoTalk without installing anything
+- Manage a finished contract where it was prepared and signed
+- Start a free trial without booking a sales call first
+- Check the legal validity, certifications, and audit trail before adopting
+- Embed signing into your own product through the API
+
 ## 2. Color Palette & Roles
 
 ### Primary (Yellow System)

@@ -76,6 +76,14 @@ Typography is anchored by `TLCircular`, a custom rounded geometric typeface that
 - Deep ink (`#192325`) for primary text — almost-black with a warm dark-teal undertone
 - Minimal shadow usage — flat depth with surface color differentiation
 
+## Primary tasks
+
+- Search for a train by entering departure and arrival stations
+- Compare every operator and fare to find the cheapest
+- Save a third on fares by buying a Railcard
+- Buy a ticket and receive an eticket to travel with
+- Check whether a service disruption affects the journey
+
 ## 2. Color Palette & Roles
 
 ### Primary Brand

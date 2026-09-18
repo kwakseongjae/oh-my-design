@@ -72,6 +72,14 @@ Typographically the system is Korean-modern and restrained: **Pretendard** carri
 - Cool slate-grey text ladder (`#4f5971` → `#9197a6` → `#bdc1ca`) for hierarchy
 - Secondary blue-violet (`#4970f5`) for occasional link/icon accents
 
+## Primary tasks
+
+- Log blood glucose for the first time after a diagnosis
+- Spot patterns in logged glucose data before a doctor's visit
+- Use the B2B health service offered through an employer
+- Understand what the company offers for chronic-disease care
+- Browse press and news items on the homepage
+
 ## 2. Color Palette & Roles
 
 ### Primary & Gradient

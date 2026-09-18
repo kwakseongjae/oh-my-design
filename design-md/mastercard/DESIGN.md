@@ -93,6 +93,13 @@ The typographic voice is the custom **Mark** typeface (commercially **FF Mark**,
 - Generous whitespace, large editorial hero imagery, full-bleed photography
 - "Priceless" warmth balanced against global-network institutional trust
 
+## Primary tasks
+
+- Find a card that fits what you need
+- Browse cardholder benefits and Priceless experiences
+- Read what the network’s protection guarantees actually cover
+- Look up merchant resources for accepting card payments
+
 ## 2. Color Palette & Roles
 
 ### Primary / Brand

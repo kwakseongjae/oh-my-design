@@ -72,6 +72,14 @@ What distinguishes Gaudio Lab is its refusal of elevation. Live inspection found
 - Cool neutral ladder (`#d3d5da` → `#9ca3af`) for text hierarchy against white and dark
 - Near-white label (`#fafafa`) on the blue CTA instead of pure white — a subtle MUI softness
 
+## Primary tasks
+
+- Browse the product line from the app-launcher menu
+- Watch the brand film from the hero video band
+- Read the latest blog and news posts on the site
+- Evaluate the dialogue-separation and loudness tools for a streaming service
+- Contact the team after reading the evidence-first documentation
+
 ## 2. Color Palette & Roles
 
 ### Primary / Brand

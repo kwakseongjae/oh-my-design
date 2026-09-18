@@ -61,6 +61,13 @@ Global No.1 luxury shopping platform from Korea, combining tech-driven authentic
 
 Trenbe's interface balances the accessibility of mass-market ecommerce with the calm restraint expected of a luxury goods destination. The canvas is predominantly white with a warm near-black text system and deliberate use of Trenbe's signature vivid purple (#7620F6) as the sole accent color, signaling trust, exclusivity, and forward-facing technology. Product photography is given maximum breathing room within a tight typographic grid; decorative ornamentation is avoided in favor of clean rule lines and generous whitespace. On marketing surfaces the purple can appear in gradients and saturated CTAs, while within the shopping UI it is reserved for interactive states, labels, and primary links — preventing visual noise against high-resolution luxury imagery. The result feels simultaneously confident and approachable: global in aspiration, Korean in precision.
 
+## Primary tasks
+
+- Check a piece's authentication certificate and price history before buying
+- Compare the price of the same luxury item across global stores
+- Pay with Naver Pay, Apple Pay, or card installments
+- Narrow a category with filters, then broaden them when nothing matches
+
 ## 2. Color Palette & Roles
 
 - **Purple (Primary):** `#7620F6` — brand primary; maps to `--primary` and `--purple` across all Trenbe sub-domains; used for interactive labels, uiPrimary text, hover states on marketing CTAs

@@ -76,6 +76,13 @@ Typography carries the personality. Three working typefaces anchor the system: *
 - Sharp geometry — small 2–4px radii on most UI, occasional large pill radii
 - Editorial, irreverent, feed-like — designed to feel like a zine, not a newspaper
 
+## Primary tasks
+
+- Follow the day's tech news through a chronological feed
+- Read a product review through to its scored verdict
+- Jump into one topic by tapping a section tag
+- Sign up for a newsletter on the site
+
 ## 2. Color Palette & Roles
 
 ### Primary

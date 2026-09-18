@@ -100,6 +100,14 @@ The supplied live capture shows a tightly neutral interface: `#222222` is the re
 - Active search tabs retain the charcoal ink and use a 2px bottom border with 700 weight
 - No captured hover, focus, pressed, dialog, toast, loading, responsive, or other interaction state
 
+## Primary tasks
+
+- Buy a limited-edition item at the lowest sell offer
+- Place a bid instead of buying immediately
+- Search for a product and narrow it with filters
+- Check the authentication standards for a product category
+- Get an authenticated warehouse-held item shipped quickly
+
 ## 2. Color Palette & Roles
 
 ### Observed live commerce surfaces

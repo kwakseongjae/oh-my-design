@@ -166,6 +166,14 @@ Montage is Wanted's current official product-experience design system. Its 2026 
 - Product search dialog captured through safe interaction on four product routes
 - Current job-card composition documented separately from Montage primitives
 
+## Primary tasks
+
+- Compare role, company, location, and reward across job postings
+- Narrow a new career direction by searching openings
+- Filter the job directory down to the tags you want
+- Open a job recommended to you on the home page
+- Check what Wanted offers employers on its company service
+
 ## 2. Color Palette & Roles
 
 - **Primary action** (`#0066ff`): current account/action text across four product surfaces.

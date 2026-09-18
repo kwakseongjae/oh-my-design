@@ -81,6 +81,14 @@ Elevation is minimal and intentional. Rather than multi-layer shadows, HubSpot u
 - Deep teal (`#042729`) for dark brand-immersive sections
 - Warm parchment (`#f8f5ee`) as alternating section tint
 
+## Primary tasks
+
+- Move a deal through the stages of a pipeline
+- Import a list of contacts into an empty CRM
+- Generate a report while the previous data stays visible
+- See every marketing and sales interaction before calling a customer
+- Manage outbound follow-up with a sequence of touches
+
 ## 2. Color Palette & Roles
 
 ### Primary & Brand

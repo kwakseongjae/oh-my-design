@@ -49,6 +49,13 @@ tokens:
 
 Hahow (好學校) is Taiwan's leading EdTech course marketplace, and its interface carries the warmth of a place that wants you to keep learning rather than the polish of a place that wants to close a sale. The atmosphere is friendly, approachable, and unmistakably human: a soft gray-blue page canvas of #F5F7F9 lets bright content breathe, while a vivid brand teal of #00CCB4 — drawn directly from Hahow's own open-source design tokens — signals interactivity and energy without ever shouting. Cards and buttons settle on a gentle 8px radius that rounds every hard edge into something inviting, and text sits in calm near-black #262626 for comfortable, sustained reading. Warm promotional accents in orange #FA8C16 and coral #F65F55 punctuate the surface where excitement is earned — a sale, a featured course, a moment worth noticing. Set throughout in PingFang TC, the typography feels native and legible to a Traditional-Chinese audience. The overall effect is encouraging and personable, the opposite of corporate sterility — a learning surface that feels like a good teacher: clear, warm, and on your side.
 
+## Primary tasks
+
+- Browse the marketplace for a new skill
+- Create and publish a course of your own
+- Come back to pick up a course already started
+- Spot which courses are on sale or featured
+
 ## 2. Color Palette & Roles
 
 Hahow's color system is anchored by a teal Primary scale published in its open-source `hahow-design` theme, layered over a quiet neutral canvas and lifted by warm promotional accents.

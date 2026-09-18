@@ -70,6 +70,14 @@ Typography is handled through `stolzl` as the display face with `Noto Sans TC` a
 - Light grey (`#f4f4f4`) surfaces with white cards — flat, shadow-light aesthetic
 - Civic/transit brand heritage expressed through green sustainability framing
 
+## Primary tasks
+
+- Top up a transit card automatically instead of checking it at the gate
+- Transfer money to another account without paying a fee
+- Pay utility bills and parking fees from the same app
+- Show a payment QR code and regenerate it when it expires
+- Pay in Japan without carrying cash or changing currency
+
 ## 2. Color Palette & Roles
 
 ### Primary Green Family

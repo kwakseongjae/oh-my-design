@@ -77,6 +77,13 @@ Clay is a go-to-market infrastructure company for teams that build revenue syste
 - **Soft geometry:** small actions and tabs are 12px-rounded; a home customer-logo card is 18px-rounded.
 - **System-plus-illustration story:** Clay’s first-party redesign account describes a playful Rube Goldberg visual for an interconnected GTM system; that is brand context, not a token claim.
 
+## Primary tasks
+
+- Read how Clay positions itself as go-to-market infrastructure
+- Work out how the five primitives fit into one revenue system
+- Move between the home, partner solutions, and pricing pages
+- Compare pricing plans on the public pricing page
+
 ## 2. Color Palette & Roles
 
 ### Observed public-marketing roles

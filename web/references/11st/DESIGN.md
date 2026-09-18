@@ -130,6 +130,13 @@ tokens:
 
 The official brand presentation is broader than the captured web palette. It describes the logo’s orange-red-pink gradient as an expression of customer, shopping, and experience. That official identity context is valuable, but it does not authorize unobserved gradient, CTA, or product-status tokens on the public storefront.
 
+## Primary tasks
+
+- Search for a product across the marketplace
+- Scan product names and prices down the home page
+- Compare a deal price against its struck-out original
+- Buy a product after discovering it on the storefront
+
 ## 2. Color Palette & Roles
 
 - **Canvas — `#FFFFFF`:** observed white surface on public product routes and the header-inventory dialog.

@@ -70,6 +70,15 @@ Kraken's website is a clean, trustworthy crypto exchange that uses purple as its
 - Subtle shadows (`rgba(0,0,0,0.03) 0px 4px 24px`) — whisper-level
 - Green accent (`#149e61`) for positive/success states
 
+## Primary tasks
+
+- Make a first trade from an account with no holdings
+- Deposit funds or convert an asset to cover a trade
+- Withdraw holdings to cold storage after low-fee trading
+- Trade derivatives where order book depth matters
+- Turn on two-factor authentication before moving funds out
+- Learn how crypto works through the Learn academy
+
 ## 2. Color Palette & Roles
 
 ### Primary

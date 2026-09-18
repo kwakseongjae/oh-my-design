@@ -75,6 +75,14 @@ What distinguishes Pet Friends from generic marketplaces is its commitment to fr
 - Near-black overlay (`#1c1e21`) for image counters instead of drop shadows
 - Muted grey ladder (`#9ca1aa`) for secondary/metadata text
 
+## Primary tasks
+
+- Order pet food, treats, and pads every week
+- Try a product through a trial before committing to it
+- Scan discount percentages before reading the product name
+- Set a delivery address from the header chip
+- Add an item to the cart and go straight there
+
 ## 2. Color Palette & Roles
 
 ### Primary

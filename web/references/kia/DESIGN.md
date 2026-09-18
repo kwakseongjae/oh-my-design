@@ -70,6 +70,14 @@ The overall geometry is strikingly square and orthogonal. All buttons use `borde
 - Full-bleed vehicle photography as the hero — UI frames the car, not vice versa
 - Flat shadows: `none` throughout; depth via background contrast only
 
+## Primary tasks
+
+- Compare trims and calculate a monthly payment
+- Book a test drive for a model you are considering
+- Check this month's purchase benefits before buying
+- See a car's colour options without visiting a dealer
+- Estimate what an EV costs to own over time
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -76,6 +76,13 @@ What distinguishes TMAP from flashier fintech or commerce peers is its restraint
 - Mixed radius register: 4px nav pills, 19px content cards, 35px search pill, full-round indicator dots
 - Cool neutral surfaces (`#f3f5f7`, `#efefef`) for alternating content bands
 
+## Primary tasks
+
+- Get the fastest route to work with a trusted arrival time
+- Improve driving habits using a safe-driving score and insurance benefit
+- Browse driver, public-transit, and business services on offer
+- Evaluate mobility data and APIs for routing a vehicle fleet
+
 ## 2. Color Palette & Roles
 
 ### Primary

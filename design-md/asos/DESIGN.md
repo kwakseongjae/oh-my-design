@@ -77,6 +77,14 @@ The only moments of colour in the system are purposeful: an electric lime (`#ccf
 - Ultra-bold weight 900 for primary nav labels (WOMEN / MEN) — extreme contrast for dense fashion grid
 - Product photography centred; UI chrome is deliberately minimal and undistracting
 
+## Primary tasks
+
+- Search for a specific item instead of browsing by category
+- Filter a category down to the sizes that fit you
+- See whether your size is available before opening the product
+- Add an item to the bag and keep browsing
+- Scan the New In section as a live trend feed
+
 ## 2. Color Palette & Roles
 
 ### Primary Surface

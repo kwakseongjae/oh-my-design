@@ -78,6 +78,14 @@ Typography leans entirely on the system font stack — `system-ui`, `-apple-syst
 - Recipe cards use generous 16px radius for a modern, friendly container feel
 - Amber accent (`#f0993c`) for seasonal/event badges — keeps warm-food palette cohesive
 
+## Primary tasks
+
+- Search for a recipe and try other keywords when nothing matches
+- Browse everyday recipe categories like quick-and-simple or low-calorie
+- Save a recipe to your collection to cook later
+- Plan weekday dinners in the app while commuting
+- Post your own recipe for the rest of the community
+
 ## 2. Color Palette & Roles
 
 ### Primary Brand

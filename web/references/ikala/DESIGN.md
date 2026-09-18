@@ -75,6 +75,13 @@ The atmosphere is reinforced by soft, diffuse elevation. Rather than hard drop s
 - 8px workhorse radius with an occasional 30px pill for chips/badges
 - Restrained palette: navy + blue + grays, no decorative gradients on the marketing chrome
 
+## Primary tasks
+
+- Contact iKala about an AI transformation project
+- Find the AI solution written for your own industry
+- Read the same material in Traditional Chinese or English
+- Check the credibility signals before shortlisting iKala as a vendor
+
 ## 2. Color Palette & Roles
 
 ### Primary

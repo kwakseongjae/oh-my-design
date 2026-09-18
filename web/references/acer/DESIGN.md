@@ -123,6 +123,13 @@ tokens:
 - Loaded, visibly used `Noto Sans` across all three supplied Acer surfaces.
 - Flat, zero-radius feature cards and pill-shaped CTA/control geometry kept as distinct surface patterns.
 
+## Primary tasks
+
+- Compare public product information for a computer, then move to a next step
+- Browse the laptop catalog card by card to shortlist a model
+- Find a service, support, or partner route instead of a purchase
+- Understand the company's technology scope, services, and long-term direction
+
 ## 2. Color Palette & Roles
 
 - **Primary** (`#80c343`): filled CTA background observed on home, laptop, and corporate public surfaces.

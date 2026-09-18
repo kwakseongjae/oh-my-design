@@ -125,6 +125,15 @@ Monospace is not a decoration here — it is structural. Code, SHAs, file paths,
 - Subtle 1px borders (`#d1d9e0`) do the structural work that shadows do elsewhere
 - Diff semantics (green add / red delete) bleed into the entire color system
 
+## Primary tasks
+
+- Review a pull request diff line by line
+- Create a repository and push its first commit
+- Browse a repository's files through the file tree
+- Read issues and discussions to learn how a project works
+- Check whether a pull request is open, merged, or closed
+- Merge a pull request once the review is finished
+
 ## 2. Color Palette & Roles
 
 GitHub's color system is built in two layers: **base scales** (raw hue ramps, e.g. `blue-0` … `blue-9`) and **functional tokens** (semantic roles like `fgColor-accent`, `bgColor-default`). Values below are the canonical Primer light-theme values unless marked `(dark)`.

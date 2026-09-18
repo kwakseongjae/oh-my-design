@@ -90,6 +90,13 @@ tokens:
 - Three public source domains—corporate home, service directory, and company information—kept distinct from unobserved service flows
 - The logo’s custom lettering is described in a first-party Mynavi News feature; it is brand-asset context, not a reusable UI font token
 
+## Primary tasks
+
+- Find which Mynavi service covers a work, learning, or everyday need
+- Compare job, career-change, and part-time-work routes before choosing one
+- Read the company's history, purpose, and group direction
+- Find recruitment or information-service support as an employer
+
 ## 2. Color Palette & Roles
 
 ### Selector-backed public values

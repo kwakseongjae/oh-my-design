@@ -63,6 +63,14 @@ FLO (플로) is South Korea's music streaming platform operated by Dreamus Compa
 
 FLO's interface reads as clean, luminous, and quietly energetic. A pure electric blue (`#3f3fff`) punches through an overwhelmingly white canvas, anchoring interactive elements — buttons, progress bars, active tab indicators, and checked inputs — with a single, unwavering brand hue. The surrounding palette is almost entirely achromatic: near-black body text on white surfaces, mid-greys for metadata, and a barely-there light grey for resting chips and dividers. This restraint keeps the music and cover art front and center. A muted rose-pink (`#ff4d78`) appears only in error or warning states, creating a deliberate secondary signal language. Overall the product feels like a clean audio studio: cool-toned, confident, and built for extended listening sessions without visual fatigue.
 
+## Primary tasks
+
+- Rely on a daily mix instead of browsing manually
+- Follow an artist and buy their limited merchandise
+- Search the catalog for an obscure track
+- Know what is playing and what plays next
+- Complete a purchase and see it confirmed
+
 ## 2. Color Palette & Roles
 
 - **Brand Blue:** `#3f3fff` — primary CTA buttons, active tab underline, progress fill, checked-state labels

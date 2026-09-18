@@ -153,6 +153,11 @@ Pinterest is a visual discovery platform for searching, saving, and shopping ide
 
 The observed public ecosystem is deliberately not one uniform UI. The signed-out consumer/auth route uses loaded `Pin Sans`, warm `#211922` ink, `#E60023` consumer action, and `#E5E5E0` secondary surface. Pinterest Business is a separate marketing surface with loaded `PinterestSansPro`, `#111111` actions, larger 30px pills, and a selected-tab treatment. These route-local facts are documented side by side without treating business lead-generation chrome as consumer-product UI.
 
+## Primary tasks
+
+- Search for an idea and save it to come back to.
+- Click through from a Pin to buy what it shows.
+
 ## 2. Layout & Grid
 
 - The supplied consumer capture is a public signed-out/product-auth route at 1440×900; it contains a 48px search control and 48px account actions.

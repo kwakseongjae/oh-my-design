@@ -78,6 +78,14 @@ Typography is utilitarian and Traditional-Chinese-first. The primary face is `No
 - Conservative 4px–8px radius; promo badges and prices, not rounding, carry the visual energy
 - Countdown timers, P幣 (P-coin) rebate flags, and strike-through list prices as native commerce ornament
 
+## Primary tasks
+
+- Scan a dense grid of deals for price and rebate
+- Compare a red sale price against the crossed-out list price
+- Add an item to the cart and check out
+- Order household goods that arrive the next day
+- Search for one specific product instead of browsing the grid
+
 ## 2. Color Palette & Roles
 
 ### Primary

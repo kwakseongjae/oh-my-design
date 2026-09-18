@@ -77,6 +77,13 @@ What distinguishes Revolut is its pill-everything button system. Every button us
 - Zero shadows detected — depth through color contrast only
 - Tight display line-heights (1.00) with relaxed body (1.50–1.56)
 
+## Primary tasks
+
+- Hold and spend several currencies while travelling every month
+- Invoice clients from a business account that earns in two currencies
+- Buy stocks or crypto in the same app that holds the money
+- Top up by bank transfer after a payment fails for lack of funds
+
 ## 2. Color Palette & Roles
 
 ### Primary

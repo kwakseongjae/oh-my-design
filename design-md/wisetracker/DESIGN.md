@@ -87,6 +87,12 @@ The second surface — the official developer docs portal (`document.wisetracker
 - Muted greys for hierarchy: label `#b5b5b5`, body-muted `#8a8a8a`, disabled `#b0b0b0`
 - Docs slate active state `#53595f` at weight 600; near-flat depth (only a subtle Framer CTA shadow)
 
+## Primary tasks
+
+- Find out which marketing channel actually drove a conversion.
+- Send a purchase nudge to shoppers who abandoned a cart.
+- Wire the tracking SDK into an app by following the docs.
+
 ## 2. Color Palette & Roles
 
 ### Primary & Action

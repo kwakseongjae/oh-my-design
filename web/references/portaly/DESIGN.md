@@ -80,6 +80,14 @@ Geometrically the system is friendly and rounded but not extreme: filled pricing
 - Gentle depth — one soft grey card shadow (`rgba(99,99,99,0.2) 0px 2px 8px`) + `#d9d9d9` hairlines
 - Off-white canvas (`#f8f8f8`) under white surfaces; warm-grey body text (`#333333`)
 
+## Primary tasks
+
+- Add the first link block to a brand-new creator page.
+- Sell digital goods and collect leads from the same page.
+- Publish the page and get the live link to share.
+- Spin up a campaign landing page with the AI builder.
+- Compare the free and paid plans before upgrading.
+
 ## 2. Color Palette & Roles
 
 ### Primary & Brand

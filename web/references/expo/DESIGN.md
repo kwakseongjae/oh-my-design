@@ -154,6 +154,13 @@ Expo is a React Native framework and cloud-services platform for shipping apps a
 - Rounded action geometry and an 8px observed pricing-dialog panel
 - A neutral, technical presentation that leaves product screenshots and code to carry detail
 
+## Primary tasks
+
+- Ship an app to native and web targets from one framework.
+- Build, submit, and update an app through cloud services.
+- Start building for free and develop against a real device.
+- Compare pricing plans and find the enterprise path.
+
 ## 2. Color Palette & Roles
 
 - **Primary action** (`#000000`): observed as the filled header, hero, and compact pricing action.

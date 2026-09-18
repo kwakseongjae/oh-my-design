@@ -68,6 +68,14 @@ The overall design philosophy is restraint through warmth. Minimal color (almost
 - Uppercase labels with wide letter-spacing (2.4px) for categorization — editorial signaling
 - Pill-shaped dark buttons (`#353534`, 50px radius) — restrained, muted CTAs
 
+## Primary tasks
+
+- Run AI commands in blocks instead of a plain terminal
+- Share a saved workflow with your team
+- Work through a production debugging session in the terminal
+- Code with multiple agents in one environment
+- Download the terminal to try it for free
+
 ## 2. Color Palette & Roles
 
 ### Primary

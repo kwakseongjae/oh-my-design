@@ -125,6 +125,12 @@ China Airlines is Taiwan’s international carrier, founded in 1959, whose publi
 - **One local booking accent:** `#d81159` is a measured home action fill, retained as a local booking accent rather than a global brand-primary claim.
 - **Cultural expression belongs to its own domain:** persimmon, Song-dynasty references, local landscapes, and sapphire details are official cabin-design context, not web token evidence.
 
+## Primary tasks
+
+- Book a ticket and handle the travel services around a trip
+- Choose the booking options for a trip on the home page
+- Search the site for a travel topic
+
 ## 2. Color Palette & Roles
 
 ### Observed public-web roles

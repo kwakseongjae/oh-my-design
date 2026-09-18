@@ -86,6 +86,14 @@ What distinguishes Greeting from flashier consumer fintech is its corporate rest
 - Poppins for the oversized billboard stat numeral (10,000+) at ~175px
 - Negative tracking scales with size (-0.6px at 60px down to -0.16px at 16px)
 
+## Primary tasks
+
+- Track applicants in one place instead of spreadsheets
+- Reach out to candidates before they ever apply
+- Set up a careers page for open roles
+- Compare the pricing plans before bringing the tool in
+- Request a quote or a one-to-one consultation
+
 ## 2. Color Palette & Roles
 
 ### Primary

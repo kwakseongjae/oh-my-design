@@ -93,6 +93,12 @@ Founded in 1967, Hyundai Motor Company now presents itself as a mobility company
 
 The product capture favors flat, rectangular actions for its repeated navy vehicle CTA, but it is not a zero-radius system: the selected carousel control has a 6px radius and the chatbot is circular. Deep navy (`#002c5f`) is the repeated product action color; teal (`#007fa8`) appears in captured carousel controls, while cyan (`#00aad2`) appears on the chatbot. Black (`#000000`), white (`#ffffff`), muted gray (`#999999`), utility gray (`#444444`), and the dark footer (`#1c1b1b`) are also directly observed.
 
+## Primary tasks
+
+- Browse the vehicle catalogue and open a model's intro page
+- Move between top-level menus on every product page
+- Open the chatbot from the home page
+
 ## 2. Color Palette & Roles
 
 ### Product-surface colors

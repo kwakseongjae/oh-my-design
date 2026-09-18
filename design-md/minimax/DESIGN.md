@@ -154,6 +154,12 @@ MiniMax is a general-AI company whose own current account centers a family of pr
 - **Model-family expression:** M3 uses a 78px Outfit hero while the careers page uses a 60px MiSans headline; neither becomes a universal app heading rule.
 - **Bounded source domains:** the raw bundle contains no authenticated product session or documentation chrome. Those domains are intentionally not represented by tokens.
 
+## Primary tasks
+
+- Generate audio on the public audio tool page
+- Read what a newly launched model can do
+- Compare text, video, speech, image, and music model families
+
 ## 2. Color Palette & Roles
 
 ### Repeated public-web roles

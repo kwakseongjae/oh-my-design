@@ -120,6 +120,14 @@ ServiceNow began as Fred Luddy's 2004 effort to make enterprise work easier to r
 - **Documentation as product surface:** cards, navigational triggers, and a restrained teal link treatment (`#00718F`) help creators move among frameworks rather than imply a single end-user application.
 - **Release-aware system:** Horizon's official updates keep its component guidance and Figma libraries aligned with ServiceNow releases; this reference records the supplied 2026-07-13 capture, not a timeless or universal application theme.
 
+## Primary tasks
+
+- Find vetted patterns and code examples for a component you are implementing
+- Open a component page from the Workspace components list
+- Choose which app framework fits the experience being built
+- Check what the current release added before updating a library
+- Settle a design decision using Horizon as a shared reference
+
 ## 2. Color Palette & Roles
 
 ### Observed Horizon roles

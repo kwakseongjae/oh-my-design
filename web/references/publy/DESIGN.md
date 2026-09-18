@@ -85,6 +85,14 @@ What defines PUBLY visually is the pairing of a credible slate-and-white reading
 - Comfortable 14-16px reading scale — the product is long-form career knowledge
 - Slate-200 (`#e2e8f0`) hairline borders for clean card and section separation
 
+## Primary tasks
+
+- Read an in-depth report on a business, product, or career topic
+- Save a template you can adapt at work
+- Browse a personalized reading list of curated career content
+- Set up a role and experience profile so the feed fits you
+- Start a membership that brings new career content every month
+
 ## 2. Color Palette & Roles
 
 ### Primary

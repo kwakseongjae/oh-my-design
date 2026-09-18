@@ -85,6 +85,14 @@ What distinguishes Saramin from a flat content portal is a small, precise depth 
 - A working accent cast: bright blue (`#2d67ff`) search outline, sky-blue (`#02c6ff`) AI glow, coral (`#ff5656`) urgency, cream (`#fff7d6`) premium-listing highlight
 - 16px radius as the card workhorse; pills (28px / 40px) for search and inline chips
 
+## Primary tasks
+
+- Search live postings by keyword from the homepage search field
+- Filter postings by region and see how many are open there
+- Compare companies and salaries before applying to a role
+- Get postings recommended to fit you instead of every listing
+- Post a role and screen the applicants who answer it
+
 ## 2. Color Palette & Roles
 
 ### Primary

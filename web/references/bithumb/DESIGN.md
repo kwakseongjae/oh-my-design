@@ -56,6 +56,13 @@ tokens:
 
 Bithumb wears the aesthetic of money taken seriously: a dark, premium, data-dense trading surface built on a near-black structural base of #1C2028, warmed in carefully chosen places by a bronze/brown accent (#543E35) that signals a deliberate, recent rebrand. As Korea's No.1 crypto-asset exchange, the interface earns trust not through decoration but through density — packed grids of numbers, tight controls, and micro-labels that never waste a pixel. The palette is restrained and structural, letting the trading colors do the emotional work: red (#E15241) reads as price up and blue (#4880EE) as price down, following the Korea-market convention rather than the Western one. Everything is signed by the proprietary 'Bithumb Trading Sans' typeface, a brand-owned voice that lends the dense data UI a consistent, money-grade tone. The result feels less like a consumer app and more like a professional terminal: composed, serious, and engineered for people moving real value. Bronze against near-black is the whole mood — warmth held in tension with a structural, almost industrial calm.
 
+## Primary tasks
+
+- Read at a glance whether a price is up or down
+- Open an account and find the way to the exchange
+- Trade crypto assets on Korea's No.1 exchange
+- Switch between filter options in a chip row
+
 ## 2. Color Palette & Roles
 
 - **Structural near-black** `#1C2028` — the primary structural color; used for the signup button surface and active filter chips. The anchor of the entire dark UI.

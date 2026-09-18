@@ -60,6 +60,14 @@ Korea's largest anime streaming platform — a dual-mode (light/dark) product bu
 
 Laftel's interface reads as a dark-first entertainment shell with a saturated violet accent, much like a premium streaming dashboard tuned for anime fans. The default experience leans toward deep charcoal backgrounds (#121212 / #000000) layered with a luminous purple (#816BFF) that signals interactivity, brand moments, and delight. In light mode the same purple pops against near-white surfaces (#FFFFFF / #F7F7F7), giving the product a punchy, youthful energy without the visual fatigue of a fully dark app. Thumbnail-heavy grids dominate layouts, so colour takes a supporting role — framing content rather than competing with it. The result is a streaming UI that feels simultaneously otaku-authentic and modern enough for a mainstream Korean OTT audience.
 
+## Primary tasks
+
+- Take the preference quiz to get anime matched to your taste
+- Resume a series and roll straight into the next episode
+- Check back every Monday for the newest simulcast episode
+- Rent a single episode instead of paying for a subscription
+- Browse the store tab for merch drops and exclusive goods
+
 ## 2. Color Palette & Roles
 
 - **Purple 500 (Brand Primary):** `#816BFF` — primary CTA buttons, active nav links, badges, icons, brand foreground

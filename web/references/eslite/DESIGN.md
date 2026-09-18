@@ -101,6 +101,13 @@ tokens:
 - Public product cards are square, flat `#ffffff` shells rather than rounded elevated tiles.
 - The supplied artifact records 3 public surfaces and no captured interaction events; component geometry remains useful, while unobserved behaviors remain absent.
 
+## Primary tasks
+
+- Shop across books, design goods, and food in one online store.
+- Search the store for a specific book or object.
+- Read about an object and its maker before buying it.
+- Browse products from cultural-design brands on the expo platform.
+
 ## 2. Color Palette & Roles
 
 ### Selector-backed public commerce colors

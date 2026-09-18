@@ -78,6 +78,13 @@ What distinguishes Spoqa from typical fintech chrome is its restraint with depth
 - Weight contrast as hierarchy: 700 Bold display vs 300 light sub-hero vs 400 body
 - Cool-grey neutral ladder (`#434b4f` → `#717d85` → `#a9afb3`) for text emphasis steps
 
+## Primary tasks
+
+- Order the day's ingredients in one tap instead of phoning each distributor
+- Track unpaid balances and quotes across several suppliers in one place
+- Add a distributor before placing the first order
+- Receive and manage incoming orders as an ingredient distributor
+
 ## 2. Color Palette & Roles
 
 ### Primary

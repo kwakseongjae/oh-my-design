@@ -62,6 +62,14 @@ Typography defers to **clean system fonts** for instant, native rendering of Jap
 - Information-dense but scannable: clear hierarchy, generous tap targets, neutral canvas + red orientation cues
 - Trustworthy-news register: confident, clean, fair — combating clutter, slowness, and filter-bubble bias
 
+## Primary tasks
+
+- Swipe across topic channels and scan headlines at speed
+- Open a headline and start reading on a weak connection
+- Read a range of sources instead of one social feed
+- Check the daily coupons during a quick headline scan
+- Spot genuinely important stories flagged as breaking
+
 ## 2. Color Palette & Roles
 
 SmartNews's brand is anchored on a single strong red against black-and-white. Values below come from SmartNews's documented brand red plus the high-contrast neutral system the app uses.

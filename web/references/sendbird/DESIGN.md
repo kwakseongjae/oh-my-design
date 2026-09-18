@@ -68,6 +68,13 @@ tokens:
 
 Sendbird is a developer-infrastructure company that wears two faces, and the gap between them is the whole story. The **product** — the Sendbird UIKit that powers chat inside thousands of apps — is a disciplined, token-driven system built on a single confident **purple** (`#742DDD`, "Sendbird purple") sitting on an eight-step neutral grayscale, with green, red and blue reserved strictly for semantic meaning. It is functional software color: a 4px corner radius everywhere, flat fills, no gradients, a palette that survives being dropped into a customer's own app without fighting it. The **marketing site** (sendbird.com), by contrast, is a near-monochrome editorial surface — pure white grounds, an oversized **serif display face** running to 72px for headlines, body text set in Helvetica Now Text, and pill-shaped black-and-white CTAs with no brand color at all. One surface is engineered to disappear into a developer's product; the other is engineered to read like a printed enterprise brochure. The through-line is restraint: a brand that earns trust by looking calm, legible, and uncluttered, letting the single purple do its work only where it carries product meaning.
 
+## Primary tasks
+
+- Send a message into a channel conversation
+- Scroll a conversation and read messages from other participants
+- Leave a channel you no longer want to follow
+- Embed chat inside your own app and theme it
+
 ## 2. Color Palette & Roles
 
 Sendbird's UIKit ships a fully named, five-step-per-family color set (the authoritative design-system source). The marketing site layers a separate near-grayscale identity on top.

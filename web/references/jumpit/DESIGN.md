@@ -71,6 +71,14 @@ The signature surface is the **role-filter chip row** on `/positions` — twenty
 
 ---
 
+## Primary tasks
+
+- Narrow developer job postings down to a single role
+- Filter postings further by stack, experience, region, or tag
+- Browse a themed collection of postings for new graduates
+- Read developer interviews to judge what a company is like
+- Check whether a posting lists a compensation range
+
 ## 2. Color Palette & Roles
 
 ### Primary (Brand)

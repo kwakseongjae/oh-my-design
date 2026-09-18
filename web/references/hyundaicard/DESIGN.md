@@ -94,6 +94,11 @@ tokens:
 
 Hyundai Card is a Korean credit-card company whose identity reaches beyond payment products into card design, cultural programming, and branded libraries. Its most recognizable visual asset is Youandi: the company introduced the proprietary typeface in 2003, then renewed it as YouandiNew for contemporary digital media. Hyundai Card’s own account places the card plate’s proportions inside the letterforms, treating type as a carrier of brand identity rather than as a decorative layer. That history is visible on the current captured product home, where loaded YouandiNewKr leads product headings and navigation, while the corporate-information routes use a larger white-on-dark display treatment. The live product routes are not a uniform monochrome system: black and white form the common base, but their product and corporate links use distinct blue values. DIVE, the Design Library, and other cultural/marketing surfaces are meaningful brand context, but were not used to fill product tokens in this reference.
 
+## Primary tasks
+
+- Find a card product from the Hyundai Card home page
+- Read company information on the Hyundai Card corporate pages
+
 ## 2. Color Palette & Roles
 
 The three supplied current captures share black text and white page fields. Two blue link treatments are surface-specific, so neither is promoted as a universal brand primary.

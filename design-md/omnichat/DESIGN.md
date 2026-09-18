@@ -88,6 +88,14 @@ The most distinctive signature is Omnichat's asymmetric corner geometry. Header 
 - Feather shadows (`rgba(0,0,0,0.06) 3px 3px 15px`) on 20px-radius pricing cards
 - Heading color as hierarchy: deep blue for trust claims, sky blue for AI features, ink for plain content
 
+## Primary tasks
+
+- Sell to customers inside chat threads on LINE and WhatsApp
+- Send a segmented LINE campaign and check its open rate
+- Compare plan groups by switching between the three product lines
+- Read a case study before deciding on the platform
+- Book a demo or talk to a specialist instead of buying online
+
 ## 2. Color Palette & Roles
 
 ### Primary

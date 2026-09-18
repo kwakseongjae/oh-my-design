@@ -144,6 +144,13 @@ KakaoPay’s 2024 design article makes the visual rationale unusually explicit: 
 - Loaded KakaoSmall and KakaoBig on the captured corporate service page
 - Corporate service controls, marketing content, developer documentation, and unobserved authenticated payment flows kept separate
 
+## Primary tasks
+
+- Pay without a card or cash, confirmed by biometric verification
+- Complete a purchase at a merchant checkout using KakaoPay
+- Manage money and other financial services alongside everyday payments
+- Set up KakaoPay as a payment option for an online store
+
 ## 2. Color Palette & Roles
 
 ### Observed corporate-service chrome

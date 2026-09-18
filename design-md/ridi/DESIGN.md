@@ -77,6 +77,14 @@ The system is built on **Pretendard Std** (with Pretendard JP and Pretendard fal
 - Radii follow content: 8px (buttons, controls), 12px (cards), 24px (modals, sheets)
 - Subscription surfaces (RIDI Select, Manta) get slightly warmer treatment but inherit the same chrome tokens
 
+## Primary tasks
+
+- Browse curated shelves of covers instead of an endless feed
+- Narrow the catalog by genre before picking something to read
+- Buy a book and open it straight from the purchase confirmation
+- Subscribe to read serials without buying them episode by episode
+- Adjust the typeface, size, and theme before a long reading session
+
 ## 2. Color Palette & Roles
 
 ### Primary

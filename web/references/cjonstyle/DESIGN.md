@@ -80,6 +80,14 @@ What distinguishes CJ ONSTYLE from design-forward fintech peers is its near-tota
 - Sharp geometry — 0px nav/inputs, 2px sale badges, 4px buy buttons; pills (11px/18px) only on carousel controls
 - Dark utility chrome bar (`#26292a`) and grey utility links (`#767676`, `#929292`, `#666666`)
 
+## Primary tasks
+
+- Buy a product once its price and benefits add up
+- Scan the home grid for the best discounts of the day
+- Shop from a TV home-shopping broadcast inside the app
+- Browse curated fashion and living categories on the storefront
+- Place an order and follow its delivery afterwards
+
 ## 2. Color Palette & Roles
 
 ### Primary

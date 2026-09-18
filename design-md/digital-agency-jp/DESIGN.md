@@ -82,6 +82,13 @@ The typographic voice is unmistakably Japanese-civic: the stack leads with **Not
 - Semantic colour reserved for meaning only — error red `#ec0000`, success green `#197a4b`
 - Accessibility-first: high contrast, large 48–56px touch targets, CC BY 4.0 openness
 
+## Primary tasks
+
+- Copy component snippets and Figma files into a government service build.
+- Read a component page to learn when to use it.
+- Justify a design decision to non-design stakeholders with documented guidance.
+- Find the right entry point into the system from the homepage.
+
 ## 2. Color Palette & Roles
 
 ### Primary

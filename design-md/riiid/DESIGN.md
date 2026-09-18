@@ -52,6 +52,12 @@ AI-native education company from Seoul — formerly known as Riiid, reborn as So
 
 Riiid's digital product language is scholarly and calm: a near-white canvas (`#FCFCFC`) anchored by a deep ink foreground (`#14161A`) creates a paper-like reading surface that frames learning rather than shouting it. The dual-typeface pairing — Playfair Display for headings, Pretendard for body — signals both academic credibility and modern Korean product sensibility. Accents stay cool-grey (`#F1F2F4`, `#E8EAED`) rather than saturated; colour is earned, never decorative. The overall effect is focused and unhurried: a tutor's quiet study room where content — not chrome — holds attention.
 
+## Primary tasks
+
+- Read how the company changed its name and what it now stands for
+- Find which of the products fits a given kind of learner
+- Evaluate a product for a school through case studies rather than feature lists
+
 ## 2. Color Palette & Roles
 
 - **Ink / Primary:** `#14161A` — default button background, heading text, primary foreground; hsl(220 13% 9%)

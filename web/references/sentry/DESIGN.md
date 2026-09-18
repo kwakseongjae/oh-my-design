@@ -81,6 +81,14 @@ What makes Sentry distinctive is its embrace of the "dark IDE" aesthetic without
 - Inset shadows on buttons creating tactile depth
 - Frosted glass effects with `blur(18px) saturate(180%)`
 
+## Primary tasks
+
+- Create a first project and install the SDK to start capturing events
+- Track errors from a running backend service in production
+- Triage crashes and track releases for a shipped iOS app
+- Watch Web Vitals and LCP on a frontend you own
+- Run Sentry self-hosted instead of on the managed cloud
+
 ## 2. Color Palette & Roles
 
 ### Primary Brand

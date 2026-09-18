@@ -162,6 +162,14 @@ tokens:
 
 2026-07-11 수집은 홈·국내 숙소 결과·공식 Design Library 6개 route, 총 8 surfaces를 대상으로 했습니다. 37 colors, 21 font families, 30 component variants, 3 interactions, coverage 95/100을 확보했고, `Pretendard`는 560개 요소에서 loaded/high confidence로 확인됐습니다.
 
+## Primary tasks
+
+- Search for a stay after settling on a destination and dates
+- Narrow the results down by price, grade, and amenities
+- Compare photos, location, rating, and price across listings
+- Scan prices on the map before choosing where to look
+- Check the booking conditions, then move on to payment
+
 ## 2. Color Palette & Roles
 
 - **Cyan 800 `#1D8BFF`**: 현재 제품의 주요 탐색·행동 강조. 공식 palette token입니다.

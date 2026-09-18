@@ -105,6 +105,13 @@ JANDI (잔디) is Toss Lab’s Korean business-collaboration service, introduced
 
 The product is evolving beyond messaging. Toss Lab’s June 2026 Project 2.0 announcement describes project management integrated with the messenger, including a contributor-centred work view and a manager dashboard. That is first-party product context, not authorization to treat the public-marketing measurements below as an authenticated-product design system. The values in this reference remain scoped to the six supplied marketing capture records, which represent five distinct URLs.
 
+## Primary tasks
+
+- Message a team and run its projects in the same place
+- Check the work assigned to you and your load for the week
+- Follow project progress and who is working on what
+- Compare the collaboration, security and AI pages before adopting the tool
+
 ## 2. Layout & Grid
 
 - **Landing hierarchy:** `home` records a 56px/700/80px hero and 42px/700/60px feature headings. These are desktop public-marketing samples, not a responsive type contract.

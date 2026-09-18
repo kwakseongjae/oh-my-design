@@ -72,6 +72,13 @@ Loom's other signature is its commitment to the **full-pill geometry**. Every bu
 - Light-blue surface tint (`#e9f2fe`) for secondary buttons and footer
 - Playful coral / purple gradient accents (`#ff613d`, `#bf63f3`, `#48245d`) in illustrations
 
+## Primary tasks
+
+- Record a short video instead of writing a long message
+- Share what you just recorded with an instant link
+- Send a walkthrough someone can watch without an account
+- Retry a recording that failed to upload
+
 ## 2. Color Palette & Roles
 
 ### Primary

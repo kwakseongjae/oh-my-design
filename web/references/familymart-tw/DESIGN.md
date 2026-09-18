@@ -97,6 +97,12 @@ The visual record is deliberately scoped. It describes the captured public marke
 - Zero- and three-pixel corners dominate the measured public routes; no elevation token was observed.
 - The card-title accent is teal `#68b5ac`, separating content emphasis from the navigation green.
 
+## Primary tasks
+
+- Find the nearest store using the store-map route.
+- Browse the changing convenience, food, and store offerings.
+- Check which promotions are currently running on the home page.
+
 ## 2. Color Palette & Roles
 
 ### Observed public-route palette

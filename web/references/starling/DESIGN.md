@@ -71,6 +71,14 @@ The page surface is warm rather than clinical: the main body background is a sof
 - Conservative 4px radius on buttons and inputs — confident and clean, not pill-shaped
 - Interactive/focus purple (`#6935d3`) for skip links and keyboard focus rings
 
+## Primary tasks
+
+- Compare the joint, personal, business and under-16s accounts before applying
+- Switch a current account over from another bank
+- See exactly what you spent and where, in real time
+- Set aside VAT automatically in a separate Space
+- Send a payment and read plainly why it failed
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -76,6 +76,13 @@ Depth is deliberately flat. Live inspection found `box-shadow: none` across the 
 - Cool-neutral ladder: `#d9e4ed` text on dark, `#8d959c` muted, `#3b434a` secondary dark
 - Strict black (`#000000`) only on the contact pill; docs-grade dark (`#14151a`) only on developer docs
 
+## Primary tasks
+
+- Compare inference accelerators on performance per watt.
+- Check whether PyTorch and vLLM run out of the box.
+- Contact the company about deploying its accelerators.
+- Switch between compute, generality, scalability, and capacity views.
+
 ## 2. Color Palette & Roles
 
 ### Primary

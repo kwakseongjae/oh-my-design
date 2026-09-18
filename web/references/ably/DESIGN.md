@@ -197,6 +197,12 @@ The stable cross-surface signal is the current coral-pink `#ff5160`, not the old
 - Seller/user ecosystem and global chain-platform expansion as the company narrative
 - Strict separation of consumer web, native app, corporate, and seller evidence
 
+## Primary tasks
+
+- Discover and buy products that match your personal taste
+- Browse taste categories beyond fashion into beauty, home, stationery and food
+- Start and run a market as a seller on the platform
+
 ## 2. Color Palette & Roles
 
 - **Current ABLY coral** (`#ff5160`): live identity/action color across current official surfaces.

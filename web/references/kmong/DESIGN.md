@@ -171,6 +171,14 @@ tokens:
 
 Kmong is a Korean expert-services marketplace: its public home lets people find and commission specialists, while the official company site describes an escrow-protected transaction model and company-oriented services such as corporate-card payment and tax-invoice issuance. The public marketplace surface is deliberately direct: white space, dark `#212224` headings, a large searchable entry point, and a lime `#92FA72` action that stands apart from a compact dark header action. Kmong’s company site also records a 2025 logo-rebrand story, so the current expression should be treated as a living marketplace identity rather than an inherited generic green UI. This reference separates the public marketplace evidence from company/corporate context; neither is treated as a substitute for a signed-in workflow or documentation chrome.
 
+## Primary tasks
+
+- Find and commission a specialist for a piece of work
+- Search the marketplace for the expert you need
+- Compare specialist listings and reviews before choosing one
+- Request work by chat and pay through escrow
+- Commission work as a company and pay by corporate card
+
 ## 2. Color & Surface Evidence
 
 - `#FFFFFF` — observed public home/category canvas, search shell, and outlined controls.

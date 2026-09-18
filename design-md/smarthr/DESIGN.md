@@ -87,6 +87,13 @@ Typography is deliberately **typeface-agnostic** — SmartHR ships no brand webf
 - Accessibility-first: explicit a11y guidelines, contrast governance, screen-reader-respecting copy
 - The whole system is **fully public** at smarthr.design — governance, principles, components, write rules all open
 
+## Primary tasks
+
+- File social insurance and year-end tax paperwork digitally
+- Enter your bank details and address as a new hire
+- Look up an employee, then clear the filter when nothing matches
+- Submit an application and get a quiet confirmation
+
 ## 2. Color Palette & Roles
 
 SmartHR splits color into **primitive tokens** (the raw palette below) and **semantic tokens** (role aliases that map onto primitives). Author against semantic roles; the primitives exist so the palette stays coherent.

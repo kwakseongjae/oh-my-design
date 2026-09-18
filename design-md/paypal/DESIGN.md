@@ -74,6 +74,14 @@ Beneath the sky-blue hero, the system alternates between pure white canvas secti
 - Black-on-white / white-on-black as the everyday CTA contrast system (not the old PayPal blue)
 - Minimal shadow system: large-radius diffuse lift `rgba(0,0,0,0.08) 0px 24px 48px 0px` on `layered-card` elements; everything else is flat color separation
 
+## Primary tasks
+
+- Get paid by clients for freelance work
+- Pay on a merchant site without handing over a card number
+- Choose between paying in full now and paying over time
+- Track business sales and push a customer dispute to resolution
+- Integrate the checkout flow into another company's product
+
 ## 2. Color Palette & Roles
 
 ### Primary Brand

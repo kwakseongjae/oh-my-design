@@ -118,6 +118,12 @@ The two supplied Tier 1 surfaces are the main Musinsa recommendation storefront 
 - Square product imagery and listing controls; 4px search-input corners and 2px small-icon geometry are local defaults, not a universal radius scale
 - No captured hover, focus, pressed, disabled, dialog, toast, or form-error state is promoted
 
+## Primary tasks
+
+- Search the main storefront for a specific item
+- Browse a brand storefront's grid of product photos
+- Discover Korean fashion brands through snaps and editorials
+
 ## 2. Color Palette & Roles
 
 ### Current storefront tokens

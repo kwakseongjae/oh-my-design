@@ -73,6 +73,14 @@ Typography is the modern Korean product stack — **Pretendard**-led with Apple 
 - Calmer, bluer temperament than the louder red OTT incumbents
 - Standard OTT layout: billboard hero + horizontal poster carousels
 
+## Primary tasks
+
+- Resume a show from where you stopped watching
+- Browse rows of poster art and start playing something
+- Watch live terrestrial and cable channels in one app
+- Save a title to a watchlist for later
+- Subscribe to a plan and confirm the next billing date
+
 ## 2. Color Palette & Roles
 
 Wavve's primary blue `#1351F9` is the brief-provided brand blue, consistent with the documented rebrand ("deep blue background + brand blue point color"). Wavve publishes no public UI token layer; the dark-blue surface scale and grays below follow the documented blue-led dark-theme direction + standard OTT conventions. Treat surface hexes as conventional, the brand blue as the verified anchor.

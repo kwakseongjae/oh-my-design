@@ -85,6 +85,14 @@ What defines ZOZOTOWN visually is its restraint paired with information density.
 - Minimal radius (0–4px), minimal shadow — flat, photographic, neutral
 - `be unique, be equal.` — the parent ZOZO ethos of equal-but-different, expressed as a neutral canvas that flatters every brand equally
 
+## Primary tasks
+
+- Search the catalog by brand, item, or keyword.
+- Save items to favorites to catch restocks and sales.
+- Pick a size and color in the bottom sheet.
+- Add an item to the cart and proceed to checkout.
+- Check a sale price against the struck-through original price.
+
 ## 2. Color Palette & Roles
 
 ### Primary

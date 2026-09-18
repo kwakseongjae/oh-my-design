@@ -80,6 +80,12 @@ What distinguishes Spindle from flashier peers is its near-total restraint with 
 - Lighted accent surfaces in soft green (`#e7f5e9`) with hover `#c6e5c9`
 - Caution red (`#d91c0b`) and focus blue (`#0091ff`) as the documented semantic accents
 
+## Primary tasks
+
+- Write and publish a blog post on Ameba
+- Register for an account or log in from the header
+- Read Ameba blogs on a phone at a larger text size
+
 ## 2. Color Palette & Roles
 
 ### Primary / Accent

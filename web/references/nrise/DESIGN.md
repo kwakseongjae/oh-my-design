@@ -76,6 +76,13 @@ What distinguishes NRISE from its consumer-app peers is its restraint with depth
 - Pill geometry on the corporate home (30px CTAs) vs a sharper 8px solid button on the product surface
 - Quiet 14px / weight 600 nav labels in near-black nav ink (`#212429`)
 
+## Primary tasks
+
+- Express who you are and discover other people
+- Meet neighborhood friends who share your interests
+- Check how the service handles safety before joining
+- Build healthier daily habits with the studio's second product
+
 ## 2. Color Palette & Roles
 
 ### Primary

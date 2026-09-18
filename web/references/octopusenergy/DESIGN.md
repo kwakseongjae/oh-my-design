@@ -72,6 +72,14 @@ What makes the system work is the disciplined three-color hierarchy: **deep indi
 - 12px border-radius on all interactive elements — rounded but not pill
 - Cookie-banner button system doubles as the primary component pattern
 
+## Primary tasks
+
+- Get a quote for your home by entering a postcode
+- Compare fixed and flexible tariffs before choosing one
+- Set up a smart meter to see household usage
+- Fix a failed payment from your account
+- Export excess solar power and get credited for it
+
 ## 2. Color Palette & Roles
 
 ### Primary Action

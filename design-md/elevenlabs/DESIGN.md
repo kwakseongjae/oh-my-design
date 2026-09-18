@@ -104,6 +104,13 @@ ElevenLabs is an AI research and product company that began with human-like voic
 - Inter is the repeated live UI/body family; light-weight Waldenburg is a live public display family.
 - ElevenAgents, ElevenCreative, and ElevenAPI have official platform-specific identities and must not be reduced to one parent-product palette.
 
+## Primary tasks
+
+- Build a customer-facing voice or chat agent with testing and monitoring.
+- Generate and edit speech, music, image, and video in the browser.
+- Call the AI audio models from code using the official SDKs.
+- Make a piece of content available in another language and voice.
+
 ## 2. Color Palette & Roles
 
 ### Selector-backed public surfaces

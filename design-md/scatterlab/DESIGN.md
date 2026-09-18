@@ -79,6 +79,13 @@ What distinguishes Scatter Lab is its near-total rejection of decoration. Depth 
 - A long, precisely graded neutral ladder (`#242424` → `#595959` → `#71717a` → `#8c8c8c` → `#a1a1aa`) for text hierarchy
 - Metric-forward, editorial copy ("하루 2시간 40분", "매월 80만 명") — numbers as persuasion, not superlatives
 
+## Primary tasks
+
+- Read what Zeta is on the company homepage
+- Read the engineering blog to judge how the team reasons
+- Check how the company handles AI ethics before trusting it
+- Open the 채용공고 recruitment posting from the blog
+
 ## 2. Color Palette & Roles
 
 ### Primary / Action

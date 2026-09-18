@@ -77,6 +77,14 @@ What distinguishes Cubo Ai from typical hardware-commerce sites is its commitmen
 - Near-flat depth: tinted `#ebebef` surfaces + `#dedede` hairlines, only a soft shadow on small controls
 - Warm nursery accents — coral (`#ff8784`), amber (`#ffb516`), sky (`#4cc3e5`)
 
+## Primary tasks
+
+- Compare the monitor's safety features before deciding to buy
+- Browse the features by category - safety, sleep, health, memories
+- Buy a monitor through the shop and checkout flow
+- Switch the store to your own country or region
+- Read what the brand promises parents on its About page
+
 ## 2. Color Palette & Roles
 
 ### Primary

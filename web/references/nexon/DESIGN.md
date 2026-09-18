@@ -72,6 +72,13 @@ Geometry is sharp and confident. Buttons and nav items use zero or minimal corne
 - Restrained, functional shadows -- elevation, not atmosphere
 - Muted gray scale (`#737881`, `#4a4e57`, `#919191`, `#9fa1a7`) for hierarchy and utility text
 
+## Primary tasks
+
+- Check which events are running before you play
+- Download a game and start playing from the storefront
+- Scan the game lineup for something worth coming back to
+- Review the publisher as a listed company on its investor pages
+
 ## 2. Color Palette & Roles
 
 ### Primary

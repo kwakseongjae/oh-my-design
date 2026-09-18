@@ -129,6 +129,14 @@ The capture is deliberately narrower than an authenticated workspace or a comple
 - 4–8px controls, 12px marketing cards, and a pill-shaped language menu trigger
 - Public components are flat or whisper-bordered; the observed circular action is the only captured soft-shadow control
 
+## Primary tasks
+
+- Start using Notion free from the public marketing site
+- Organize personal work in configurable pages and blocks
+- Coordinate docs and projects so a team can find them
+- Shape a workspace around a team's process instead of a fixed workflow
+- Work alongside AI agents while keeping ownership of the work
+
 ## 2. Color Palette & Roles
 
 ### Observed public marketing and product palette

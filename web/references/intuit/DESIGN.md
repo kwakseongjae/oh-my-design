@@ -102,6 +102,13 @@ QuickBooks is Intuit’s small-business financial-management product and brand p
 
 The supplied capture covers the public QuickBooks brand hub, its public product-expression route, and an Intuit authentication surface at 1440×900. It does not establish an accounting-app shell, transaction flow, subscription checkout, or post-login dashboard.
 
+## Primary tasks
+
+- Look up the official QuickBooks typeface before setting any headline
+- Sign in with SSO to pull assets from the font library
+- Take a design to review office hours before it ships
+- Use sentence case across the interface copy you write
+
 ## 2. Color Palette & Roles
 
 ### Selector-backed public-surface values

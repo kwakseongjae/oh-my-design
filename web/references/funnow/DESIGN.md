@@ -74,6 +74,14 @@ Typography is deliberately unprecious. The stack is Helvetica Neue with PingFang
 - Photography-led cards: imagery carries the appetite appeal, chrome stays neutral
 - Time-anchored microcopy ("Available now", "Book For 06:00") baked into the component system
 
+## Primary tasks
+
+- Book a restaurant, bar, or spa in Taipei within a few clicks
+- Filter to what is available now and book in a minute
+- Compare off-peak prices and catch a timed flash sale
+- Reserve a same-day hot-spring room without phoning the venue
+- Pick another time when the slot you wanted is taken
+
 ## 2. Color Palette & Roles
 
 ### Primary

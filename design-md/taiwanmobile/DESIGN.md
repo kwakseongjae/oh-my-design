@@ -76,6 +76,14 @@ A defining trait of the system is its pill geometry. Navigation tabs for plan ty
 - Multi-color "Planet Possible" logo (orange, indigo, pink, green) reflecting group identity
 - Corporate sub-site uses electric blue `#0081cc` nav — distinct from consumer orange system
 
+## Primary tasks
+
+- Find a telecom plan that fits what you need
+- Search by handset first, then pick the plan
+- Bundle several streaming services onto one phone bill
+- Switch plans when a better deal comes around
+- Ask the AI assistant about a billing question
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -76,6 +76,14 @@ What distinguishes Datadog from its devops peers is its **restraint with depth c
 - Conservative 4px–8px radius scale — engineered, never pill-shaped
 - Cool neutral ladder (`#333333` → `#555555` → `#c7c7c7`) for text hierarchy; error red `#bf0000`
 
+## Primary tasks
+
+- Correlate a metric spike with the trace that caused it.
+- Monitor metrics, traces, and logs in one correlated place.
+- Connect a first data source to an empty dashboard.
+- Compare pricing plans and choose a datacenter region.
+- Start a free trial from a pricing card.
+
 ## 2. Color Palette & Roles
 
 ### Primary

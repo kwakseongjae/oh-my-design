@@ -78,6 +78,14 @@ What distinguishes iCHEF is the discipline of designing for **operators, not con
 - Trustworthy-but-warm register — partner-to-owner, not vendor-to-customer
 - Conservative radius (`8px` workhorse) for a clean, reliable, professional feel
 
+## Primary tasks
+
+- Open a table and tap through the items a customer orders
+- Charge a customer for the order without double-billing them
+- See at a glance which tables are open and which orders are paid
+- Edit the menu so new items appear on the order screen
+- Check the daily sales total from a phone at home
+
 ## 2. Color Palette & Roles
 
 > **Note:** Live computed-style verification was not completed this pass (WebFetch returned the marketing copy but the inspection browser session redirected unreliably). Values below combine the brief-provided primary, iCHEF's known orange-red operational identity, and conventional POS/SaaS roles. Hexes other than the primary are well-grounded approximations pending live re-inspection.

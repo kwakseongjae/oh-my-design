@@ -77,6 +77,13 @@ What distinguishes LaundryGo from typical app-marketing sites is its restraint a
 - Cool-grey text ladder (`#4b4b4b` → `#60646a` → `#888c8e` → `#b5bcc0`) for hierarchy
 - Blue accent (`#0170b9`) for data/stat text
 
+## Primary tasks
+
+- Drop laundry in a collection bin and get it back by noon
+- Switch between the pickup service and a 런드리24 smart laundromat
+- Weigh a bulk laundry partner before requesting a consultation
+- Read the growth numbers to judge how established the service is
+
 ## 2. Color Palette & Roles
 
 ### Primary

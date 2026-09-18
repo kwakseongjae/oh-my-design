@@ -85,6 +85,14 @@ What makes 삼쩜삼 distinctive among Korean fintechs is its unapologetic direc
 - Honest compliance typography: 12px muted (`#a4acb4`) disclosure lists as a first-class design element
 - Kakao yellow (`#fae100`) social login as the app's single entry action
 
+## Primary tasks
+
+- Check whether you have hidden refund money to claim
+- Sign in with Kakao, the only way in
+- See exactly how an estimated refund number was computed
+- File a 종합소득세 return without hiring an accountant
+- Read the fine print about what the service excludes
+
 ## 2. Color Palette & Roles
 
 ### Official Brand Palette (brand.3o3.co.kr)

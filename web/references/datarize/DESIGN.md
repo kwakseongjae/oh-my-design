@@ -127,6 +127,14 @@ The recognizable typography is a Korean marketing stack built from loaded Preten
 - 8px / 10px small corners and 50px / 100px / 999px pill geometry
 - Flat observed controls (`box-shadow: none`); no general elevation scale is claimed
 
+## Primary tasks
+
+- Register a store and complete installation to start collecting data.
+- Create audiences from customer behavior data.
+- Run an on-site banner or email campaign.
+- Monitor analytics and metrics after campaigns run.
+- Compare pricing by switching between the pricing tabs.
+
 ## 2. Color Palette & Roles
 
 ### Observed Marketing Colors

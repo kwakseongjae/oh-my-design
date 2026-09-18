@@ -75,6 +75,13 @@ What unifies the two surfaces is restraint with depth. Both are essentially shad
 - Bold Inter/Pretendard at 24px/700 for product feature labels; quiet Source Sans Pro body
 - Flat, shadow-free depth on both surfaces — contrast and whitespace do the separating
 
+## Primary tasks
+
+- Generate a mood-matched royalty-free track by picking options instead of learning a DAW
+- Start song ideas and pull stems inside your own DAW
+- Download sheet music for a song the tool composed
+- Commission custom sound for a brand campaign through Poza Studio
+
 ## 2. Color Palette & Roles
 
 ### Primary & Brand

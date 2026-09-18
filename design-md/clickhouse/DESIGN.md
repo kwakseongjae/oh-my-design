@@ -122,6 +122,12 @@ ClickHouse is a column-oriented analytics database built for real-time SQL repor
 - 4px, 6px, 8px, and 10px radii each have selector-backed uses; none is universal.
 - Product, marketing, editorial, privacy-dialog, and Click UI documentation evidence are separate.
 
+## Primary tasks
+
+- Find out whether ClickHouse fits real-time SQL reporting
+- Price a service by filling in the calculator's fields and menus
+- Read the customer story published on the public site
+
 ## 2. Color Palette & Roles
 
 ### Selector-backed public surfaces

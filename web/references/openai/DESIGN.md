@@ -99,6 +99,15 @@ What defines OpenAI visually is **restraint as a statement of trust**. The aesth
 - Dual light/dark parity — both modes are first-class, not afterthoughts
 - Soft-rounded geometry — buttons and cards at 8–12px radius, inputs often fully pill (9999px)
 
+## Primary tasks
+
+- Send a message to the model and read the reply
+- Draft and refine copy with the model every day
+- Stop a reply while it is still generating
+- Copy an API key or model ID in one click
+- Read a model card's limitations before shipping with it
+- Upgrade from the free tier to a paid plan
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -88,6 +88,14 @@ Geometry tells a two-world story. Marketing CTAs are conservative 4px-radius rec
 - Bold 700-weight button labels — enterprise buttons that read as commitments
 - SLDS 2 ("Bring your brand to life") as the token backbone: CSS custom properties, `--slds-g-*` global styling hooks
 
+## Primary tasks
+
+- Get pricing and a demo before any call with sales
+- Watch named customer stories before reading the feature catalog
+- Read a plain-language definition of an unfamiliar platform term
+- Create a new record from a list view that is still empty
+- Re-theme a platform component instead of forking it
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -105,6 +105,12 @@ tokens:
 - Compact outline CTA and 32px full-radius filter-chip geometry
 - Cell consumer surfaces and Welchis back-office documentation are separate evidence domains
 
+## Primary tasks
+
+- Find information about a medical procedure and the hospitals that offer it
+- Compare procedure prices across options and settle on a choice with confidence
+- Narrow procedure options with the compact filter controls on home
+
 ## 2. Color Palette & Roles
 
 - **Canvas** (`#ffffff`): captured home feature-card action.

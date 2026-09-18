@@ -95,6 +95,13 @@ What defines Starbucks visually is **warmth disciplined by restraint**: a single
 - Generous whitespace and large touch targets — premium, unhurried, approachable
 - Accent Spring Green (`#00a862`) and deep forest (`#1e3932`) for layering within the green family
 
+## Primary tasks
+
+- Order ahead through the app and skip the line at pickup
+- Find a store with seating and wifi near the next meeting
+- Check how many Stars remain before the next free drink
+- Browse the menu for new seasonal drinks between visits
+
 ## 2. Color Palette & Roles
 
 ### Primary

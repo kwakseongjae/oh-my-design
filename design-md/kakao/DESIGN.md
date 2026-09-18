@@ -189,6 +189,13 @@ The clean-slate rule is therefore surface identity first: name whether a value b
 - Login compliance: `#fee500`, black symbol, black 85% label, 12px radius, OS system font at 30Pt
 - Corporate marketing yellow `#fae100` remains distinct from login yellow
 
+## Primary tasks
+
+- Browse the company's milestone history filtered by category
+- Read how the company describes itself and its services
+- Search the corporate site for a page or service
+- Add a compliant Kakao Login button to a third-party service
+
 ## 2. Color Palette & Roles
 
 ### Kakao Login compliance

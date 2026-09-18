@@ -110,6 +110,13 @@ Pega is an enterprise AI decisioning and workflow-automation company whose publi
 - Roboto Flex is both loaded on the supplied surfaces and named in Pega’s official UX System ’25 design resources.
 - Current web geometry is limited to Pega’s public design-system documentation, not Pega corporate marketing or an authenticated enterprise application.
 
+## Primary tasks
+
+- Build an enterprise screen from prescribed workflow patterns
+- Search the design-system documentation for a specific component
+- Look up how to label and explain a form field
+- Collect the Figma kit and icon library before designing
+
 ## 2. Color Palette & Roles
 
 ### Public Pega UX System surface roles

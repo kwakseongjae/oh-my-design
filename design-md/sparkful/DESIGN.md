@@ -84,6 +84,14 @@ What distinguishes Fourdesire from louder consumer apps is its **flatness and re
 - Amber-50 (`#fffbeb`) ambient glow as warmth instead of drop shadows
 - Per-app accent worlds layered on the white chassis (Walkr teal `#215468` / deep `#00455b` / cyan `#a5f3fc` over surface `#e3efee`)
 
+## Primary tasks
+
+- Browse the app menu and pick one of the studio apps
+- Download one of the apps from its page
+- Read how an app turns a daily habit into a game
+- Explore the planets of Walkr from its own app page
+- Read an article or watch a video from the studio
+
 ## 2. Color Palette & Roles
 
 ### Primary Action (Gradient)

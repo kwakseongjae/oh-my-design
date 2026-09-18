@@ -175,6 +175,12 @@ Google began as a search engine and now describes a product family used by billi
 - Business Profile actions use Google Blue (#1a73e8), full pills, and 42px or 50px heights.
 - The captured inactive Business Profile card is white, 24px-rounded, and shadowless.
 
+## Primary tasks
+
+- Type a query into Search and submit it
+- Fill in the advanced search form's text inputs
+- Read the public Business Profile product page
+
 ## 2. Color Palette & Roles
 
 ### Observed product colors

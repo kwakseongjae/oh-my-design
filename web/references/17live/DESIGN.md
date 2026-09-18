@@ -77,6 +77,14 @@ What distinguishes 17LIVE from a generic dark-mode app is that **its design is e
 - Rounded, friendly geometry — pill follow buttons, soft cards, circular avatars
 - High motion budget on reactions, low motion on navigation chrome
 
+## Primary tasks
+
+- Watch a live stream and react while it happens
+- Send a virtual gift during a live stream
+- Follow a LIVER from a profile or stream overlay
+- Browse a grid of live streams to pick one
+- Go live and stream gaming or talk content
+
 ## 2. Color Palette & Roles
 
 > **Note:** Live computed-style verification was not completed this pass (the inspection browser session redirected unreliably; WebFetch surfaced only the tagline). Values below combine the brief-provided primary, 17LIVE's known dark-mode + hot-pink streaming identity, and conventional live-streaming-app roles. Hexes other than the primary are well-grounded approximations pending live re-inspection.

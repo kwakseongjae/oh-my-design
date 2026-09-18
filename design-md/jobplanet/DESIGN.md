@@ -75,6 +75,14 @@ What distinguishes Jobplanet from flashier fintech or consumer peers is its rest
 - Dense, tight type sizing (13px body, 24px section head) tuned for information-heavy company data
 - A separate tech-blog surface in IBM Plex Sans (48px / 600 hero) — editorial voice kept apart from product
 
+## Primary tasks
+
+- Compare employers, salaries and interviews before choosing where to apply
+- Read company rankings and salary data while weighing an offer
+- Search for a company from the field at the top
+- Submit a review of a company you have worked at
+- Keep your company page credible for the candidates reading it
+
 ## 2. Color Palette & Roles
 
 ### Primary

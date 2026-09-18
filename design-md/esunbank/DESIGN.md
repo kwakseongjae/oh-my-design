@@ -74,6 +74,13 @@ Depth in the E.SUN system comes not from shadows per se, but from a distinctive 
 - Strict 4px base radius on interactive elements; 8px on content cards
 - ESG and digital banking prominently foregrounded — product and values aligned
 
+## Primary tasks
+
+- Open an account online instead of going into a branch.
+- Check the day's foreign exchange rates before converting money.
+- Read what a credit card offers on its product page.
+- Move between credit cards, savings, and investments in one interface.
+
 ## 2. Color Palette & Roles
 
 ### Primary

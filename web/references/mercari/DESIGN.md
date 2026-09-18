@@ -122,6 +122,13 @@ Mercari operates a marketplace where people can list and buy items that can be s
 - Public marketplace, corporate marketing, and brand-directory chrome kept as separate evidence domains
 - No authenticated marketplace-flow, Japanese-product, responsive, or app-system claims in this update
 
+## Primary tasks
+
+- List an item by taking photos, adding a description, and setting a price
+- Buy a shipped item that another person has listed
+- Judge an item from its stated details before buying
+- Keep contact with a buyer or seller inside the app
+
 ## 2. Color Palette & Roles
 
 ### Observed public surfaces

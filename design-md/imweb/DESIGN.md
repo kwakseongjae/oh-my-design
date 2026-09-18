@@ -77,6 +77,14 @@ Depth is essentially flat. Live inspection found `box-shadow: none` across nav, 
 - Cyan tint ladder (`#2dc5ff` → `#81dcff` → `#ade8ff` → `#dff6ff`) for chart highlights and dark-section text
 - Grey text ladder (`#4b515b` → `#717680` → `#9fa3ab` → `#bcc0c6`) for secondary/muted/faint hierarchy
 
+## Primary tasks
+
+- Start building a site without hiring a developer or designer
+- Compare the plans feature by feature and pick one
+- Choose a template and swap it in yourself
+- Set up a shop, bookings and payments in one place
+- Publish the finished site and share its live URL
+
 ## 2. Color Palette & Roles
 
 ### Brand

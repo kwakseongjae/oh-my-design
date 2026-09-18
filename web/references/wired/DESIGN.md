@@ -88,6 +88,14 @@ Where consumer-tech brands chase soft gradients and rounded friendliness, WIRED 
 - Near-zero border radius — square, print-derived geometry
 - Density as a feature: many stories per viewport, tight verticals
 
+## Primary tasks
+
+- Scan a river of stories and pick what to read
+- Settle into a longform feature on AI or security
+- Subscribe when the metered paywall interrupts a read
+- Search the site for stories on a topic
+- Bookmark a story and come back to it later
+
 ## 2. Color Palette & Roles
 
 ### Primary

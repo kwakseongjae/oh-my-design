@@ -97,6 +97,14 @@ What distinguishes NVIDIA's design from other dark-background tech sites is the 
 - **DO** use Font Awesome 6 Pro/Sharp at weight 900 for sharp iconography matching the engineering aesthetic.
 - **DON'T** use rounded or playful icon sets — they conflict with NVIDIA's industrial precision.
 
+## Primary tasks
+
+- Evaluate a hardware platform against alternatives from its datasheet and support terms
+- Check a performance claim against the benchmark footnote behind it
+- Deploy an always-on AI assistant with a single command
+- Find a research result together with the code and license needed to reuse it
+- Recover from a runtime error using its code and the stated fix
+
 ## 2. Color Palette & Roles
 
 ### Primary Brand

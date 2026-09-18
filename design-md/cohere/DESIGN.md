@@ -126,6 +126,13 @@ This is a public-surface reference, not a claim about signed-in product UI or do
 - A 22px rounded home marketing-card container, without a claim of a universal card recipe.
 - No hover, pressed, focus, menu, dialog, toast, or error state token: the capture recorded no interactions.
 
+## Primary tasks
+
+- Find out what Cohere's enterprise AI products do
+- Read the public product and pricing pages before committing
+- Check how Cohere deploys privately inside a company's own infrastructure
+- Learn what North does with a company's enterprise data
+
 ## 2. Color Palette & Roles
 
 ### Observed public-route values

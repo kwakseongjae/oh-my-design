@@ -74,6 +74,14 @@ The color story is two-note and disciplined: SHOPLINE Blue (`#356dff`) as the si
 - Soft, neutral, low-alpha shadows (`rgba(0,0,0,0.08)`) — airy, not heavy
 - Bright white canvas (`#ffffff`) as the default ground; navy as the dramatic counterpoint
 
+## Primary tasks
+
+- Open an online store and run it without technical setup
+- Add the first product to a store with nothing in it
+- Check whether any orders have come in yet
+- Manage hundreds of product listings in Traditional Chinese
+- Keep stock in sync between the online store and the shop floor
+
 ## 2. Color Palette & Roles
 
 ### Primary

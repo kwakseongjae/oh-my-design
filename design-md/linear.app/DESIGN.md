@@ -170,6 +170,14 @@ The distinctive part is the boundary between public marketing and inspectable pr
 - 6px embedded product controls, 8px cards/menu rows, full-pill public actions
 - Current focus/hover/pressed and menu-open states captured across four routes
 
+## Primary tasks
+
+- Plan work and review how the team is progressing
+- Keep issues, projects, and feedback connected as work ships
+- Read how another organization runs this workflow
+- Weigh workflow, pricing, and migration fit for a team
+- Read the Method for how a team should plan and ship
+
 ## 2. Color Palette & Roles
 
 - **Identity indigo** (`#5e6ad2`): official/live brand-defining accent, not the default public CTA fill.

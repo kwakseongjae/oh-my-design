@@ -95,6 +95,13 @@ The palette is a study in restraint: a deep neutral foundation (the "Cod Gray" n
 - Tight 1px borders and low-radius geometry — structural, not soft
 - Restrained editorial accent set (orange, teal, periwinkle) — terminal-theme energy, not SaaS gradients
 
+## Primary tasks
+
+- Build an internal admin panel instead of hand-coding it
+- Wire a database and an API into a table-and-form screen
+- Run a query and read the rows it returns
+- Check governance, access control, and audit logs before adopting it
+
 ## 2. Color Palette & Roles
 
 ### Primary

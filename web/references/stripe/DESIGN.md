@@ -127,6 +127,11 @@ Stripe builds economic infrastructure for internet businesses, from payments to 
 - Captured geometry is compact: 4px, 6px, and 8px radii; the evidence does not support a universal radius rule.
 - Marketing, Docs, newsroom assets, and unauthenticated product UI remain separate evidence domains.
 
+## Primary tasks
+
+- Find exact implementation information in the API reference
+- Search the documentation from Docs home or the Payments page
+
 ## 2. Color Palette & Roles
 
 ### Selector-backed public Docs colors

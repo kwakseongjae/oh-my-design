@@ -98,6 +98,13 @@ Toyota is an automotive and mobility company whose public Global site brings cor
 - 0px-radius, 80px high desktop global-navigation list rows
 - No promoted consent-banner, hover, focus, pressed, disabled, error, motion, or responsive system
 
+## Primary tasks
+
+- Trace the company's history back to its 1933 origins
+- Learn how the production system aims to eliminate waste
+- Find how the company frames its shift toward mobility
+- Read vehicle stories published on the global site
+
 ## 2. Color Palette & Roles
 
 ### Observed Toyota Global public-surface values

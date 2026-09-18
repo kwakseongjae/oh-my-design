@@ -76,6 +76,13 @@ What distinguishes maum.ai from softer SaaS peers is its restraint with depth an
 - 20px-radius product cards with translucent white (`#ffffff`) hairline outlines over media
 - Cool-grey neutral ladder (`#5b636d` → `#595959` → `#8e8e8e`) for text hierarchy
 
+## Primary tasks
+
+- Read the research blog and GitHub org before booking a call
+- Browse the product lineup from robots to defense systems
+- Check concrete capability claims and integration paths before buying
+- Find a contact path to reach the company
+
 ## 2. Color Palette & Roles
 
 ### Primary

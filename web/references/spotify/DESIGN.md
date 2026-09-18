@@ -169,6 +169,13 @@ Spotify is an audio streaming subscription service whose public company account 
 - The public newsroom uses `#1ed760` as a filled CTA and a 100px pill radius; this is an editorial/newsroom treatment, not evidence of a matching Web Player button.
 - Official context identifies Spotify Green and a flexible Spotify Mix typeface as brand expression, while the captured player loads `SpotifyMixUI` and `SpotifyMixUITitle`.
 
+## Primary tasks
+
+- Search the player for a track, podcast, or audiobook
+- Listen to music, podcasts, and audiobooks in one place
+- Like a song and find it again in Liked Songs
+- Open a track in Spotify from a partner app link
+
 ## 2. Color Palette & Roles
 
 ### Player surface (captured product UI)

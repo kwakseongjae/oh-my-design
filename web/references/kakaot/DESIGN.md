@@ -84,6 +84,14 @@ Typography follows Kakao's house direction — the custom **Kakao** typeface fam
 - Rounded, soft component geometry (8–12px radii) keeping the yellow approachable
 - Bottom-sheet-driven flows over a persistent map canvas
 
+## Primary tasks
+
+- Type a destination into the search field to start a trip
+- Pick which class of vehicle to call from the sheet
+- Check a trip's ETA, fare, and status at a glance
+- Pay for the ride automatically instead of fumbling for cash
+- Share your route and the driver's details on a late-night ride
+
 ## 2. Color Palette & Roles
 
 Kakao Mobility does not publish a public UI token layer. Brand yellow `#FEE500` is the well-documented Kakao corporate color; product UI grays/blacks below follow the live black-led corporate surface (kakaomobility.com, WebFetch 2026-05-27) and standard Korean app conventions. Treat product hexes as conventional, not from a documented token doc.

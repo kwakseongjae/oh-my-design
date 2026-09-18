@@ -73,6 +73,14 @@ What most distinguishes Heydealer is its refusal of depth. Live inspection found
 - Muted neutral ladder (`#37383d` → `#2d2e32` → `#858892`) for de-emphasized text
 - Dark blocks use near-black `#0f1014` / navy `#272e40` with off-white `#f8f8f9` text
 
+## Primary tasks
+
+- Sell your car by letting dealers bid for it.
+- Reserve a certified used car for purchase.
+- Read the certification report and the warranty terms before buying.
+- Compare trims and prices across the listing grid.
+- Get a scrap quote or check a car's hidden history.
+
 ## 2. Color Palette & Roles
 
 ### Primary

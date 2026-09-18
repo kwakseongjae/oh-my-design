@@ -96,6 +96,14 @@ What defines Dell visually is **commerce-grade clarity**: dense product grids, s
 - Near-black slate text (`#11141a`) rather than pure black for reduced harshness
 - 4px base spacing grid, 4px corner radius as the system default
 
+## Primary tasks
+
+- Configure a machine and watch the price recalculate with each change.
+- Compare models by filtering the grid and reading spec bullets.
+- Add a configured machine to the cart and buy it.
+- Save a quote with exact part numbers to forward to finance.
+- Ask to be notified when an out-of-stock machine returns.
+
 ## 2. Color Palette & Roles
 
 ### Primary

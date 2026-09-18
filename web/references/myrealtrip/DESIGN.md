@@ -97,6 +97,12 @@ MyRealTrip is a Korean travel marketplace whose own public materials describe a 
 
 **Observed character:** restrained utility chrome around travel discovery, with `#2B96ED` used for the repeated public header action rather than a generalised brand palette.
 
+## Primary tasks
+
+- Find a locally made tour or travel experience to book
+- Search for a stay from the hotel listing
+- Manage schedules so a confirmed reservation gets fulfilled
+
 ## 2. Color Palette & Roles
 
 The following are current computed observations from the supplied 2026-07-13 product bundle. They are not a published MyRealTrip token library.

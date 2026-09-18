@@ -95,6 +95,14 @@ Typographically, Slack splits its world. The **product UI** runs on **Lato** —
 - Generous border-radius (4px UI, 8–12px marketing cards) for a soft, friendly feel
 - Conversational, action-oriented voice that puts work in human terms
 
+## Primary tasks
+
+- Find a message from three weeks ago
+- React to a message with an emoji instead of replying
+- Create a channel, then invite people and set a topic
+- Retry a message that failed to send
+- Scan the sidebar for unread channels and mentions
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -71,6 +71,14 @@ Depth is almost entirely flat: live inspection found box-shadow none across the 
 - Warm olive-grey muted text (`#737368`) — brown-toned, not blue-toned
 - Campaign yellow (`#ffe145`) as the lone high-saturation secondary accent
 
+## Primary tasks
+
+- Open an online shop in minutes and start selling
+- Combine a net shop, payments and reservations on one subscription
+- Take cashless payments at the counter when cash-only stops working
+- Check the day's bookings from a phone between clients
+- Compare the three plans before committing to one
+
 ## 2. Color Palette & Roles
 
 ### Primary

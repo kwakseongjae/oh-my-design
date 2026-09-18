@@ -75,6 +75,12 @@ Typography is unified under NouvelR — a proprietary geometric sans-serif desig
 - PrimeReact (21 components) + Element Plus (19 components) powering interactive elements
 - Link hover state in Renault Blue (`#1883FD`) — the sole chromatic interaction color
 
+## Primary tasks
+
+- Browse the vehicle range and compare model prices
+- Configure a car, then buy or reserve it
+- Explore the E-Tech electric range and its technology
+
 ## 2. Color Palette & Roles
 
 ### Primary

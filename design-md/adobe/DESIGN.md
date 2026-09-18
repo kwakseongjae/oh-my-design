@@ -83,6 +83,13 @@ The geometry is friendlier than you'd expect from a 40-year-old enterprise: pill
 - Full-bleed creative imagery and video as the actual "color palette" of every page
 - Spectrum 2 tokens published openly as `@adobe/spectrum-tokens` on npm/GitHub
 
+## Primary tasks
+
+- Find the Adobe app that fits what you want to make
+- Compare Creative Cloud plans as an individual, a business, or a student
+- Start a free trial before paying for an app
+- Buy a Creative Cloud plan on the pricing page
+
 ## 2. Color Palette & Roles
 
 ### Brand

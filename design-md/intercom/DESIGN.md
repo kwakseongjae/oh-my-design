@@ -70,6 +70,15 @@ What distinguishes Intercom is its remarkably sharp geometry — 4px border-radi
 - Rich multi-color report palette (blue, green, red, pink, lime, orange)
 - oklab color values for sophisticated opacity management
 
+## Primary tasks
+
+- Answer customer messages as conversations rather than tickets
+- Configure the AI agent to deflect tier-one questions
+- Check how many conversations the AI agent resolved
+- Send an outbound campaign to existing product users
+- Work through the inbox with keyboard shortcuts and macros
+- Book a demo or try the AI agent first
+
 ## 2. Color Palette & Roles
 
 ### Primary

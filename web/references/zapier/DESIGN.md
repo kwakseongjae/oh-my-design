@@ -171,6 +171,13 @@ Zapier is an automation platform that connects apps, data, and processes so team
 - **Compact geometry:** current repeated controls are 4px-rounded, with a distinct 18px header sign-up pill.
 - **Domain boundary:** marketing, pricing, solution pages, Help/docs chrome, and authenticated product UI are separate evidence domains.
 
+## Primary tasks
+
+- Find out what the platform automates before signing up
+- See each product on offer from the home page
+- Compare the pricing plans before choosing one
+- Sign up for an account from the site header
+
 ## 2. Color Palette & Roles
 
 ### Selector-backed public-marketing roles

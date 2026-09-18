@@ -84,6 +84,14 @@ That design system is explicit: utility classes across the site are namespaced `
 - Minimal depth: one `rgba(0, 0, 0, 0.08)` card shadow + 1px `#e8e8e8` hairline ring
 - Soft radius scale — 8px workhorse, 16px cards, 4px chips, 99999px pills, 20px on the blog
 
+## Primary tasks
+
+- Check a product's ingredient list and rating before buying
+- Find products ranked for your own skin type
+- Browse the rankings that Hwahae users chose themselves
+- Submit a review of a product you have used
+- Save a product to a wishlist to come back to
+
 ## 2. Color Palette & Roles
 
 ### Brand

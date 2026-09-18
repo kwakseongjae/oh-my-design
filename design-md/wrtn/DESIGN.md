@@ -80,6 +80,12 @@ What distinguishes Wrtn is its geometry and its "Open Space" color-coding. Inter
 - Soft single-glow card shadow (`rgba(0,0,0,0.1) 0px 0px 15px`) on the composer; flat elsewhere
 - Rounded cards — 20px composer, 24px news cards
 
+## Primary tasks
+
+- Ask the assistant anything from the home composer.
+- Draft an essay or summarize study material with AI.
+- Generate marketing copy and content ideas with the tools.
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -74,6 +74,14 @@ The color temperature is consistently warm. Even the grays lean brown (`#969492`
 - 6px border-radius on buttons and tags — soft but not pill-shaped
 - White canvas with a `#f4f4f4` muted surface for footer / secondary zones
 
+## Primary tasks
+
+- Research a restaurant or a trip through real personal accounts.
+- Publish a long-form article and build an audience for it.
+- Browse trending hashtags on the homepage to see what is hot.
+- Search for a topic and try other keywords when nothing matches.
+- Join the creator program to reach an established Taiwanese audience.
+
 ## 2. Color Palette & Roles
 
 ### Primary

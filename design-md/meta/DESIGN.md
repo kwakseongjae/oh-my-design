@@ -89,6 +89,14 @@ The custom **Optimistic** type superfamily (Optimistic Display for headlines, Op
 - Pill and large-radius buttons (28px+), soft elevation, minimal hard borders
 - Accessibility-first contrast; blue reserved for interaction and brand moments
 
+## Primary tasks
+
+- Run a small shop alongside posting daily content
+- Upload photos and video through a fast composer
+- Run ad campaigns through the Meta Business tools
+- Work through dense campaign tables and filters on a dashboard
+- Search for something from the product search bar
+
 ## 2. Color Palette & Roles
 
 ### Primary

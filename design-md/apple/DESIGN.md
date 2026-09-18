@@ -168,6 +168,14 @@ This reference distinguishes three evidence domains: `apple.com` marketing, Appl
 - 44px large pill and 36px compact pill coexist on the current homepage
 - HIG documentation cards use an 18px radius but are not native-platform component tokens
 
+## Primary tasks
+
+- Choose which product photo to view on a store page
+- Read a product's marketing page, then open its denser store page
+- Decide whether to grant a permission, with the reason stated plainly
+- Reverse a mistake and keep going with the task
+- Use the same interface with a different device, input, or accessibility setting
+
 ## 2. Color Palette & Roles
 
 - **Primary Action** (`#0071e3`): current filled buttons across Apple-owned web surfaces.

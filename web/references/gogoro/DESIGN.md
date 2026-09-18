@@ -72,6 +72,14 @@ What distinguishes Gogoro from other consumer-tech brands is that its design sys
 - Dual-surface system: marketing storytelling (black, cinematic) vs. network/utility flows (light, functional)
 - Neutral gray scale (`#737d82`, `#b9bcbf`, `#888`) for metadata, captions, and disabled chrome
 
+## Primary tasks
+
+- Find the nearest swap station and check battery availability
+- Swap a depleted battery for a charged one at a kiosk
+- Compare models on torque, range, and other spec numbers
+- Check whether station coverage is dense enough for a delivery fleet
+- Work out what to do when a battery swap fails
+
 ## 2. Color Palette & Roles
 
 Values below are drawn from live computed-style inspection of `gogoro.com/media-center/logos/` plus the brand's known monochrome-plus-voltage system. Hexes are converted from observed `rgb()` values.

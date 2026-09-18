@@ -79,6 +79,13 @@ What distinguishes Elice from its peers is its near-total avoidance of elevation
 - Consistent rounding: 8px buttons/inputs, 16–24px cards, 4px chips, 500px pills
 - Status palette: green `#00ab53` / `#1b5e20` on `#dfebe0`, coral `#fa466a` for alerts
 
+## Primary tasks
+
+- Write and run real code in the browser without any local setup.
+- Browse courses, then open your enrolled classes and dashboard.
+- Roll out an AI-upskilling program across a company and follow progress.
+- Evaluate Elice Cloud for GPU-backed training workloads before committing.
+
 ## 2. Color Palette & Roles
 
 ### Primary (Brand Violet)

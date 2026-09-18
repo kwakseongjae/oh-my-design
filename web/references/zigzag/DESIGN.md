@@ -125,6 +125,12 @@ The inspected home and two product details share a restrained neutral system. `#
 - 0px card geometry, 8px icon corners, 24px action corners, and full-pill carousel controls each tied to a specific observed role
 - No published current pink token is promoted from the supplied product capture
 
+## Primary tasks
+
+- Browse product information on the mobile shopping service.
+- Switch between the tabs on a product detail page.
+- Page through the home quick menu with its arrows.
+
 ## 2. Color Palette & Roles
 
 ### Current public product values

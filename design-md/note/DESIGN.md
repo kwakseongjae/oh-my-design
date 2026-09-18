@@ -60,6 +60,14 @@ Typography is content-forward and clean, prioritizing legible Japanese long-form
 - The teal mark signals "this is note" without dominating the interface
 - Reading-and-writing space: discovery is editorial/curated, not endless-scroll engagement-bait
 
+## Primary tasks
+
+- Write and publish a long-form piece in the editor
+- Read substantial essays instead of scrolling a feed
+- Follow a writer and leave a スキ on their work
+- Sell your writing directly to readers as a paid membership
+- Find something new to read through curated recommendations
+
 ## 2. Color Palette & Roles
 
 note's color system is published in its brand/help resources. The teal is the brand identity; the working UI runs on black/white/off-white so content leads.

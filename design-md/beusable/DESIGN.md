@@ -82,6 +82,14 @@ Geometry leans hard into the pill. Primary CTAs and hero buttons carry effective
 - Data-viz palette — teal (`#13a5bf`/`#16b5d2`) and heatmap yellow (`#f6e136`) for visualizations
 - Pure-black (`#000000`) body text with a graphite heading ladder (`#2f2f2f` → `#222222`)
 
+## Primary tasks
+
+- Find where checkout drop-off happens before running an A/B test
+- Read user behaviour as a heatmap rather than a table of numbers
+- Validate a design change by reading Path Plot and Session Report
+- Find out why users behave as they do instead of reading a dashboard
+- Share analytics that non-analyst teammates can actually read
+
 ## 2. Color Palette & Roles
 
 ### Primary & Action

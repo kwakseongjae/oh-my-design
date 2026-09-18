@@ -174,6 +174,13 @@ Pretendard Variable carries all visible public UI and editorial roles. It loaded
 - Flat public components with 0px navigation/tab geometry and 6px black actions
 - Explicit separation between public corporate evidence and native banking-product UI
 
+## Primary tasks
+
+- Compare everyday banking services across deposits, loans, and cards
+- Browse the service catalog one category tab at a time
+- Look into products for youth, business, or investment needs
+- Find official company, ESG, or investor information about the bank
+
 ## 2. Color Palette & Roles
 
 - **KakaoBank Yellow** (`#ffe300`): official primary identity color and protected brand specification.

@@ -87,6 +87,15 @@ What distinguishes Team Sparta from typical ed-tech is its confidence with flat,
 - Pastel-on-saturated category tags — green (`#f0ffeb` / `#66d417`), orange (`#ffeac7` / `#ff7300`)
 - Compact geometry — 4px-6px buttons, 8px-12px cards, 16px hero cards, 99px pills
 
+## Primary tasks
+
+- Browse the course catalog to find a class
+- Check which courses are government-funded before enrolling
+- Enroll in a free course from the catalog
+- Read detailed course reviews before you commit
+- Add AI tools to your workflow after work hours
+- Evaluate corporate training for your company's employees
+
 ## 2. Color Palette & Roles
 
 ### Primary

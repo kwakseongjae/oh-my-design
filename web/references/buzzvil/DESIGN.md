@@ -78,6 +78,14 @@ What distinguishes Buzzvil from heavier enterprise adtech peers is its flatness 
 - Soft geometry: 32px rounded cards, fully-round (9999px) filter pills, 4px header buttons
 - Cool blue-grey neutral ladder (`#3e5463` → `#5b7282` → `#7a909e` → `#9fb1bd` → `#c1ccd6`)
 
+## Primary tasks
+
+- Pick the advertising goal you want to browse by
+- Contact Buzzvil about running an advertising campaign
+- Weigh the performance claims before buying ad inventory
+- Integrate a reward lock-screen SDK into a partner app
+- Read the site in English as an overseas partner
+
 ## 2. Color Palette & Roles
 
 ### Primary

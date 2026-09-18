@@ -95,6 +95,14 @@ The primary action colour is GDS green (`#0f7a52`) for buttons, with the govuk-b
 - Links coloured `#1a65a6` (live inspect) / `#1d70b8` (DS specification); visited links `#54319f` purple
 - Status tags use `#d2e2f1` blue-tint background with `#0f385c` deep blue text
 
+## Primary tasks
+
+- Find a government service without knowing which department runs it
+- Renew a pension credit claim online for the first time
+- Track which steps of an application are done and what is next
+- Jump to each flagged field and fix the form errors
+- Submit an application and keep the confirmation reference number
+
 ## 2. Color Palette & Roles
 
 ### Brand

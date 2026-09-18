@@ -81,6 +81,15 @@ What distinguishes KKday from a generic e-commerce template is the discipline ar
 - Warm, enthusiastic, abundance-clean register — the night-market energy, organized
 - Neutral gray scale for text hierarchy so orange never has to compete
 
+## Primary tasks
+
+- Book a local experience before you land in a city
+- Compare a dozen tours on rating and price
+- Pre-book airport transfers and a SIM card for a trip
+- Buy theme-park tickets late to skip the ticket line
+- Show a mobile voucher at the gate without a printout
+- Save tours to a wishlist and wait for a sale
+
 ## 2. Color Palette & Roles
 
 > **Note:** Live computed-style verification was not completed this pass (the inspection browser session redirected unreliably). Values below combine the brief-provided primary, KKday's known orange-led commerce identity, and conventional OTA roles. Treat hexes other than the primary as well-grounded approximations pending live re-inspection.

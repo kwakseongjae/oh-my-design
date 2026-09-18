@@ -63,6 +63,14 @@ Taiwan's largest television and digital shopping platform, operated by Fubon Med
 
 momo's digital product design radiates warm, confident energy rooted in its signature magenta-pink — a hue that traces back to its television shopping roots and reads instantly as "deal in progress." The overall atmosphere is dense but purposeful: a grid-forward layout packed with product imagery, price badges, and countdown timers communicates urgency and abundance simultaneously. Backgrounds stay cool-neutral (#F2F2F2 page canvas, #FAFAFA card surfaces) so that the hot pink accent and vivid product photography always pop. The typography follows a practical hierarchy — Microsoft JhengHei UI and PingFang TC for body readability in Traditional Chinese, with Century Gothic / Oxygen reserved exclusively for price numerals, which are the true focal stars on every product tile. Depth is achieved through subtle card shadows (0 1px 3px rgba(0,0,0,.1)) rather than heavy borders, keeping the eye moving across the catalogue grid rather than stopping at structural chrome.
 
+## Primary tasks
+
+- Search for a product and pick from the instant suggestions
+- Find a product by image search instead of typing it
+- Compare prices and discount depth across the product grid
+- Choose convenience-store pickup to control when an order arrives
+- Check the daily flash sale and group-buy sections
+
 ## 2. Color Palette & Roles
 
 - **Momo Pink (Primary):** `#D62872` — header background, primary CTA buttons, active nav indicators, brand logos, price accent, search-suggest titles

@@ -111,6 +111,14 @@ The collector confirms a loaded, site-hosted `Pretendard Variable` face througho
 - 8px, 10px, 12px, and 16px are observed radii, with 8px the strongest public-button cluster
 - An expanded navigation menu is the only captured interaction state; it is white, 16px-rounded, and softly elevated
 
+## Primary tasks
+
+- Start a design from a ready-made template
+- Compare plans on the pricing page before subscribing
+- Request approval on a design and exchange feedback with reviewers
+- Restrict which colors, fonts, and templates teammates can use
+- Order printed material made from a finished design
+
 ## 2. Color Palette & Roles
 
 ### Action and canvas

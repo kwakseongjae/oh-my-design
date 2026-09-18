@@ -72,6 +72,14 @@ What distinguishes SPEEDA from its fintech-adjacent peers is its near-total abse
 - Soft-tint pill (`#ffe8e8` bg) for the secondary/trial action — low-pressure, on-brand
 - Cool-grey neutral ladder (`#282828` → `#6f6f6f` → `#a5a5a5`) for text hierarchy
 
+## Primary tasks
+
+- Calculate the market size of an industry, with sources you can cite
+- Scan adjacent industries quickly before a strategy meeting
+- Search for a company or industry, then broaden the criteria when nothing matches
+- Ask the AI agent a research question and keep reading while it works
+- Request a document and follow the download detail it links
+
 ## 2. Color Palette & Roles
 
 ### Primary

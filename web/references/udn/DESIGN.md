@@ -111,6 +111,13 @@ tokens:
 - Flat, 0–3px-radius public controls with no measured elevation
 - Editorial/news-page evidence only; product, corporate, mobile-app, and subscription-flow claims stay separate
 
+## Primary tasks
+
+- Read the latest reporting from the udn news index.
+- Move from the news index into a category page.
+- Load more stories at the end of a category list.
+- Enter an email address to subscribe to the newsletter.
+
 ## 2. Color Palette & Roles
 
 - **Canvas — `#fafafa`:** home body background in the supplied packet.

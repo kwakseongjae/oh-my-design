@@ -80,6 +80,13 @@ What unifies the two systems is a shared warm-orange spine and a hangul-first ty
 - Full-pill geometry on product CTAs (9999px) and emotion chips; conservative 6–12px radii on corporate chrome
 - Peach (`#ffe7d4`) and amber (`#f7b500`) tints add warmth on the product surface only
 
+## Primary tasks
+
+- Type a script and get an emotionally expressive AI voiceover back
+- Pick an emotion preset before generating a line of speech
+- Clone a voice to keep one narrator across every module
+- Download the finished voiceover once the export is ready
+
 ## 2. Color Palette & Roles
 
 ### Brand & Accent

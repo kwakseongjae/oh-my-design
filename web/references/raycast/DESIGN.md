@@ -81,6 +81,13 @@ Inter is used everywhere — headings, body, buttons, captions — with extensiv
 - Subtle rgba white borders (0.06–0.1 opacity) for containment on dark surfaces
 - Keyboard shortcut styling with gradient key caps and heavy shadows
 
+## Primary tasks
+
+- Launch anything from one window instead of Spotlight.
+- Browse the extension store and install an extension.
+- Run an AI command from inside Raycast.
+- Upgrade to Pro to unlock the AI features.
+
 ## 2. Color Palette & Roles
 
 ### Primary

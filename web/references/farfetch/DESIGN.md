@@ -65,6 +65,14 @@ What makes Farfetch's aesthetic distinctive among luxury ecommerce is its absolu
 - Muted Ash Gray (`#b6b6b6`) for secondary icons and underline-search borders
 - Generous whitespace and 8px-base spacing system
 
+## Primary tasks
+
+- Find pieces from independent boutiques that department stores do not stock.
+- Search for an item and find out in one click whether it exists.
+- Add an item to your bag and carry on to checkout.
+- Filter the catalogue by boutique rather than by brand.
+- Check what the current seasonal sale actually covers.
+
 ## 2. Color Palette & Roles
 
 ### Primary

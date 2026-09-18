@@ -84,6 +84,14 @@ What defines Netflix visually is the **theater principle**: dim the room, light 
 - Hover-to-expand cards that scale up and reveal preview controls
 - Top nav fades from transparent over the hero billboard to solid black on scroll
 
+## Primary tasks
+
+- Resume a show from the exact point you stopped watching
+- Preview a title and check its match score before playing
+- Save a title to your list to watch it later
+- Switch audio and subtitle languages while watching a dubbed title
+- Manage several profiles, including a kids profile with its own interface
+
 ## 2. Color Palette & Roles
 
 ### Primary

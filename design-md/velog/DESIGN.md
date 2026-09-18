@@ -50,6 +50,12 @@ tokens:
 
 velog is a Korean developer-blogging platform built by velopert (Minjun Kim), and its surface is unmistakably reading-first: calm, minimal, and content-forward, with prose given room to breathe rather than competing with chrome. The palette is literally the Open Color system — a clean teal brand scale running from the near-white teal0 #F3FFFB up to the deep teal9 #087F5B, paired with a full neutral gray scale from gray0 #F8F9FA to gray9 #212529. The atmosphere is editorial and quiet: a soft gray page background (#F8F9FA) holds white content surfaces, dark near-black text (#212529) carries the writing, and the brand teal (#12B886) appears sparingly as the signal color for action. Nothing shouts; the teal is a confident accent reserved for the write button and primary moments rather than a wash across the page. The result feels engineered for long-form technical reading — high legibility, generous neutrality, and a single decisive brand hue that tells you exactly where to click.
 
+## Primary tasks
+
+- Draft a long-form technical post on a distraction-free canvas
+- Sign in or sign up from the header
+- Scan long technical posts for the signal you need
+
 ## 2. Color Palette & Roles
 velog's color system is the Open Color palette, surfaced through velog-client's `palette.ts` (raw scales) and `themes.ts` (semantic `themedPalette` tokens). The teal scale is the brand spine and the gray scale carries structure and text; red appears only for destructive intent.
 

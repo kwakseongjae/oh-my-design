@@ -83,6 +83,14 @@ The proprietary **Arcadia** and **Arcadia Display** typefaces are the brand's si
 - Refined periwinkle→mist gradient washes (`#9cb4e8` → `#cdddff`) behind product imagery
 - Generous 1.625 body line-height and deliberate letter-spacing on display type
 
+## Primary tasks
+
+- Open a business bank account without visiting a branch
+- Check the company's runway and burn on opening the dashboard
+- Pay a contractor out of the company account
+- Send a transfer and confirm the exact amount and recipient
+- Export transaction data to hand to an accountant
+
 ## 2. Color Palette & Roles
 
 ### Primary

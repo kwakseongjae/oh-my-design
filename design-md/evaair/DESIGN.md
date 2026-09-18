@@ -139,6 +139,12 @@ The distinction matters because EVA’s corporate expression extends beyond this
 - 3px form-control corners coexist with selected 24px booking-widget tabs; geometry is contextual, not a single radius scale.
 - The only captured interaction records are booking-tab selected states. No hover, focus, pressed, disabled, error, dialog, or toast values are promoted.
 
+## Primary tasks
+
+- Search routes, fares, and travel information before booking a flight.
+- Change a booking, check in, and choose seats and meals.
+- Find current information about special travel requirements and support.
+
 ## 2. Color Palette & Roles
 
 ### Selector-backed public surface colours

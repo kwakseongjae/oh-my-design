@@ -68,6 +68,14 @@ Radius is generous but never frivolous. 8px on nav buttons, 10px on station chip
 - Weight 400 dominant — Zigbang resists the bold-Korean-headline default
 - White map canvas is the design's largest surface — chrome must never compete with it
 
+## Primary tasks
+
+- Find a one-room rental that fits your deposit and monthly rent.
+- Compare apartment complexes against each other on the map.
+- Check photographs of the actual unit before trusting a listing.
+- Save a listing from the map to come back to.
+- Read a listing's transaction history, then contact the agent.
+
 ## 2. Color Palette & Roles
 
 ### Brand

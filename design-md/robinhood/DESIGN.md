@@ -92,6 +92,14 @@ The custom typeface **Capsule Sans** is the quiet counterweight to the loud gree
 - Restrained, near-flat depth; emphasis through contrast and color, not heavy shadow
 - Mobile-first at a 390px baseline, scaling to confident full-bleed desktop marketing
 
+## Primary tasks
+
+- Check a portfolio's total value and how it moved today
+- Place a buy order and review it before it goes through
+- Sell a holding through an explicit confirmation step
+- Compare prices and percent moves down a list of tickers
+- Earn interest on uninvested cash through the paid Gold tier
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -79,6 +79,13 @@ What distinguishes mikan from its ed-tech peers is its flat, almost shadowless r
 - Conservative radius ladder: 4px → 6px → 8px → 10px → 12px → 20px cards
 - Oswald numerals (`#fd9b12` marigold) for step counters — numbered-tutorial cadence
 
+## Primary tasks
+
+- Build English vocabulary in short sessions during a commute
+- Finish a lesson and see the win confirmed on screen
+- Save words for later and come back to study them
+- Manage a class's English study at scale as a teacher
+
 ## 2. Color Palette & Roles
 
 ### Primary

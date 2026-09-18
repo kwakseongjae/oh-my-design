@@ -96,6 +96,14 @@ Upbit is a digital-asset service operated by Dunamu. Its public web surface make
 - **Geometry:** the repeated raw radii are 0px and 4px; the captured quick-fill control is the only retained component pattern.
 - **No state inference:** the bundle has `interactionCount: 0` and no observed interaction kind. Hover, focus, pressed, disabled, validation, menu, modal, toast, and transition claims are omitted.
 
+## Primary tasks
+
+- Follow market prices and data on the exchange page.
+- Set up a trade from the exchange's dense controls.
+- Fill an order amount by tapping a percentage shortcut.
+- Tell a rising market from a falling one by colour.
+- Check announcements on the service centre notice page.
+
 ## 2. Color & surface roles
 
 The following values are live computed observations, not a published Upbit token set.

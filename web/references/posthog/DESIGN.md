@@ -88,6 +88,14 @@ The interaction design carries the same spirit: hover states flash PostHog Orang
 - Content-heavy editorial layout — the site reads like a magazine, not a typical landing page
 - Tailwind CSS + Radix UI + shadcn/ui component architecture
 
+## Primary tasks
+
+- Track product analytics, feature flags, and session replay in one stack
+- Self-host the platform to keep customer data on your own infrastructure
+- Install the SDK so a new project starts capturing events
+- Create a first insight from the template gallery
+- Read the public handbook, roadmap, and board materials
+
 ## 2. Color Palette & Roles
 
 ### Primary

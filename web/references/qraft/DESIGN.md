@@ -82,6 +82,14 @@ Color is rationed to near-monochrome. The identity lives on black (`#000000`), w
 - Outline "ghost" CTAs on the dark hero — 1px translucent-white border, 14px radius, no fill
 - Cool near-black inks (`#0e1420`, `#1b2230`) instead of pure black for extended reading text
 
+## Primary tasks
+
+- Read the third-party media coverage before trusting the firm
+- Check who backs the company before evaluating its strategies
+- Discover which investment businesses the company actually runs
+- Explore open engineering roles before applying to work there
+- Check the global office footprint before opening a partnership conversation
+
 ## 2. Color Palette & Roles
 
 ### Primary / Brand

@@ -98,6 +98,14 @@ What defines PayPay visually is the **balance/point hero**: a large red or white
 - Mobile-first at 375px baseline, one-handed checkout-counter ergonomics
 - High-contrast, retail-bright aesthetic over fintech austerity
 
+## Primary tasks
+
+- Pay at the counter with the QR screen one tap away
+- Top up automatically so the balance never runs out at the register
+- Send money to a family member from the same app
+- Check which point offers are running before choosing where to eat
+- Confirm as a shopkeeper that a customer payment landed
+
 ## 2. Color Palette & Roles
 
 ### Primary

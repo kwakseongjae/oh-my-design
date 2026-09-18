@@ -137,6 +137,13 @@ CatchTable is a restaurant platform operated by WAD that connects the diner’s 
 
 The reference therefore preserves three source domains as three facts: consumer-product discovery, merchant marketing, and careers marketing. It does not claim that a merchant lead form or careers campaign button is a restaurant-booking control.
 
+## Primary tasks
+
+- Search for a restaurant from the consumer home screen
+- Browse image-led tiles to find somewhere to eat
+- Reserve a table at a restaurant you picked
+- Wait for a table at a restaurant through the service
+
 ## 2. Layout & Grid
 
 - The captured consumer home is a 1440×900 public route with a 38px search input, compact 32px control, centered 13px discovery labels, a 20px/700 section-title sample, and repeated image-led discovery tiles.

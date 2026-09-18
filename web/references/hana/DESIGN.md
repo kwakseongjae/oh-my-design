@@ -76,6 +76,14 @@ The product catalog (推奨상품 surface) reveals the brand's color hierarchy m
 - Footer buttons with `10px` rounded corners, `48px` height — comfortable Korean web standard
 - Hana Financial Group site: Pretendard Variable + pill CTAs (`27px` radius) — more modern layer
 
+## Primary tasks
+
+- Check a balance and move money between accounts.
+- Compare deposit and savings terms side by side before opening one.
+- Check exchange rates before paying an overseas supplier.
+- Transfer money, then print or share the receipt.
+- Narrow the product list, and start over when nothing matches.
+
 ## 2. Color Palette & Roles
 
 ### Primary Brand

@@ -93,6 +93,12 @@ tokens:
 - Image-led homepage promotion paired with large category labels
 - Measured public marketing and error-surface values kept distinct from unobserved in-game interfaces
 
+## Primary tasks
+
+- Browse the publisher's game titles and company information
+- See which games the publisher is currently promoting
+- Read the company's account of its founding and global reach
+
 ## 2. Color Palette & Roles
 
 - **Ink** (`#000000`): dominant observed public text and border color on all three supplied captures.

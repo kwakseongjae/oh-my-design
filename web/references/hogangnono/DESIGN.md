@@ -61,6 +61,14 @@ Korea's #1 apartment real-estate transparency platform — map-first, data-hones
 
 Hogangnono pairs a bold indigo-violet primary with a crisp, predominantly white canvas to signal data-clarity and trustworthiness. The palette is deliberately restrained: brand purple carries every interactive affordance while the neutral grayscale hierarchy handles all structural content, keeping the map and price data visually dominant. The overall feel is pragmatic and modern — closer to a civic data tool than a lifestyle product — with subtle elevation (gentle card shadows, a floating map-control layer) and minimal decorative flourish. Typography is set exclusively in Pretendard, giving the interface a contemporary Korean-web character without heavy ornamentation. Motion is conservative: 0.3 s transitions on colour and transform keep the product feeling responsive without distracting from data-dense screens.
 
+## Primary tasks
+
+- Check what an apartment actually sold for, and when.
+- Watch price trends in the neighbourhood you are aiming at.
+- Compare a handful of complexes before a school-zone deadline.
+- Search for listings that fit your conditions, then relax a filter.
+- Check sunlight, reconstruction plans, and resident reviews for a complex.
+
 ## 2. Color Palette & Roles
 
 - **Primary:** `#584de4` — interactive elements, primary CTA fill, focus rings, active filter borders, links

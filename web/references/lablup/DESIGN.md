@@ -77,6 +77,13 @@ What distinguishes Lablup from generic enterprise B2B sites is the geometry spli
 - Flat depth: no shadows; `#fafafa`/`#f3f3f3` tints + `#e5e5e5` hairlines do the separating
 - Cool neutral text ladder `#000000` → `#606060` → `#929292`, with mint `#badba3` on dark
 
+## Primary tasks
+
+- Evaluate the platform for a shared GPU cluster
+- Navigate the Backend.AI documentation from its table of contents
+- Move ad-hoc notebooks onto managed training pipelines
+- Install a desktop AI environment that runs models locally
+
 ## 2. Color Palette & Roles
 
 ### Primary & Brand

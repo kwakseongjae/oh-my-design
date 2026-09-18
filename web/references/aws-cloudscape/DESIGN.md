@@ -102,6 +102,12 @@ AWS Cloudscape is an open-source design system for cloud application experiences
 - Observed typography pairs a 42px display sample with 20px/600 headings and 14px/400 body/list text.
 - The observed static component-directory card is sharp and flat; 8px and 12px corners occur elsewhere in the captured public routes.
 
+## Primary tasks
+
+- Move a design from wireframe to prototype using the component library
+- Install the packages and build an application with the components
+- Look up the published guidelines, patterns, and demos
+
 ## 2. Color Palette & Roles
 
 ### Observed public-route palette

@@ -76,6 +76,14 @@ The result is a look that reads as **dark-adjacent without being dark**: all sur
 - High-contrast editorial density: small type (11–14px), generous imagery
 - `#ff3042` hot-red for BEST rank badges — the only accent besides yellow
 
+## Primary tasks
+
+- Start reading a webtoon or novel from its detail page
+- Wait a set interval to open the next episode free
+- Pay for early access to a series you cannot wait for
+- Find something new through the recommendation tab
+- Search for a series by title or author name
+
 ## 2. Color Palette & Roles
 
 ### Primary Action

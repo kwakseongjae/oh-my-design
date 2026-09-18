@@ -59,6 +59,14 @@ South Korea's leading AI career platform connecting 9+ million active job seeker
 
 JobKorea's visual language is confident and data-forward — the UI is built around a deep royal blue (`#083ccc`, JK Blue 600) that signals authority and trust in a crowded recruitment market. Surfaces stay crisp white with an understated gray-scale hierarchy (`#f6f7f8` background through `#1a1a1e` near-black) so that job listings and CTA buttons read at a glance without fatigue. An accent orange (`#ff6d12`, AM Orange 500) is reserved sparingly for urgency cues — deadline badges, highlighted pay rates — creating a clear urgency hierarchy without overwhelming the functional tone. Since the 2023 "Dreammark" brand refresh the product has leaned into a more youthful, mobile-first energy with pill-radius search bars (border-radius: 999px), gradient-glowing AI search inputs, and subtle card elevation — moving away from its legacy portal feel toward a modern career-management platform.
 
+## Primary tasks
+
+- Find postings matched to you instead of scanning every listing
+- Compare salary and application ratios on a job card before applying
+- Submit your resume to a posting in two taps
+- Prepare a resume and cover letter from templates and examples
+- Post a job and review the applicants who apply
+
 ## 2. Color Palette & Roles
 
 - **JK Blue 600 (Primary):** `#083ccc` — primary CTAs, active states, links, focus rings

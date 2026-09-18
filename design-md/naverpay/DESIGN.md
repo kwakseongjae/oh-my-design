@@ -79,6 +79,14 @@ What distinguishes Naver Pay visually is its **shadow-free flatness**. Depth is 
 - Near-black ink (`#1e1e23`) instead of pure black for premium feel
 - Grayscale ladder from `#f6f8fa` to `#1e1e23` — eight defined steps
 
+## Primary tasks
+
+- Pay across merchant sites without re-entering credentials
+- Pay for a convenience store or delivery order by QR
+- Earn and spend points inside the Naver ecosystem
+- Set up payment for a store you run yourself
+- Build a checkout page that complies with the payment spec
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -72,6 +72,14 @@ Typography is the other half of the identity. Latin text is set in **Neue Haas U
 - Restrained weights — 400 for nav/body/tags, 500 for labels/titles; no heavy display
 - Faint grey (`#bebebe`) for inactive tags, mid grey (`#707070`) for secondary meta, `#e2e2e2` hairlines
 
+## Primary tasks
+
+- Browse the Work grid to see what the studio has made
+- Open a project page and read its credits
+- Filter the work by genre, service or sector
+- Switch the site between English and Traditional Chinese
+- Source a studio for a national awards ceremony's visual identity
+
 ## 2. Color Palette & Roles
 
 ### Primary Accent (Bito Red-Orange)

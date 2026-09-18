@@ -110,6 +110,12 @@ MongoDB is a developer data platform built around a flexible document model and 
 - **Editorial plus operational typography:** Value Serif leads headings; Euclid and Source Code Pro support product reading and code/value notation.
 - **Domain boundary:** home is marketing, `mongodb.design` is the LeafyGreen design system, and `/docs/` is documentation chrome. No authenticated product screen was captured.
 
+## Primary tasks
+
+- Find a documentation page and move through it by side navigation
+- Look up which typeface belongs in a heading, body text, or code
+- Read how the company began and why the product exists
+
 ## 2. Color Palette & Roles
 
 ### Observed public and documentation roles

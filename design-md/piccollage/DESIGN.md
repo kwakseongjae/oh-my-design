@@ -63,6 +63,14 @@ A Taiwan-born photo-collage and greeting-card app that turns everyday photos and
 
 PicCollage wraps creativity in warmth. The homepage opens with a soft cream canvas (`#FBF2EB`) that feels like textured scrapbook paper — unhurried, tactile, inviting touch. Against that warm ground, a signature teal (`#4FC3C4`) pops as the primary call-to-action, energetic without being aggressive. Typography mixes a serif display face (Zilla Slab) for expressive headlines with Poppins for clear, friendly body copy, signalling that the product is both crafted and accessible. Feature sections use a vivid purple-to-coral gradient (`#8235B8 → #EE604D`) as a typographic highlight, nodding to the brand's celebratory, multicolour spirit. Elevations are kept light — diffused shadows (`0px 0px 8px rgba(0,0,0,0.15)`) rather than hard drops — so collage content stays the visual hero. The overall register is: "a creative friend's studio, tidied up just enough to feel welcoming."
 
+## Primary tasks
+
+- Add a first photo to an empty canvas
+- Create an invitation card or holiday collage for an occasion
+- Browse the template library for inspiration
+- Share a finished collage right after saving it
+- Use an AI tool to expand an idea without handing over control
+
 ## 2. Color Palette & Roles
 
 - **Teal / Primary CTA:** `#4FC3C4` — main download and action button background

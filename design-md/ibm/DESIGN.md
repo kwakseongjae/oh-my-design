@@ -132,6 +132,13 @@ The July 2026 capture establishes a narrower, current implementation boundary. I
 - Small, explicit action typography: 14px / 400 / 18.0001px with 0.16px tracking
 - A mixed corner treatment: content structures are often sharp, while captured primary actions and tabs use 4px
 
+## Primary tasks
+
+- Find the IBM offering that covers cloud, AI, data or automation
+- Read the detailed product information on an IBM product page
+- Move between the related views of a product page
+- Open a support topic to read what it covers
+
 ## 2. Color Palette & Roles
 
 ### Observed public marketing and product palette

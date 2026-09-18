@@ -136,6 +136,11 @@ Yanolja is a global travel-technology company whose consumer division operates N
 - Yanolja Orange (`#F54B1E`) is a verified Group brand color and logo asset; this packet does not observe it as NOL’s current product-action token.
 - Product typography is loaded Pretendard, backed by computed usage and official NOL-hosted font files.
 
+## Primary tasks
+
+- Search for a place to stay in a destination
+- Browse leisure activities alongside accommodation and flights
+
 ## 2. Color Palette & Roles
 
 ### Live NOL consumer product surfaces

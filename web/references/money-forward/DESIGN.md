@@ -81,6 +81,13 @@ Typography leads with **Noto Sans JP** — the explicit first choice in the them
 - Subtle gradients on buttons (white→solitude on default, royalBlue→cobalt on primary) for gentle dimensionality
 - Calm white + warm-gray (`solitude #ECF2FD`, `linkWater #D4D8DD`) surfaces — trustworthy, never flashy
 
+## Primary tasks
+
+- See bank, credit card, and e-money accounts in one view
+- Work through the invoice and expense screens at month-end
+- Run payroll for staff inside the same cloud suite
+- Delete a ledger entry or void an invoice
+
 ## 2. Color Palette & Roles
 
 Money Forward Cloud UI ships a hand-curated color object (plain English names) and maps it to component roles in a typed theme. Values below are transcribed from the open-source `cloud-react-ui` theme.

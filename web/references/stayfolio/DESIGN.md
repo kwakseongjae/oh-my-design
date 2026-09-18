@@ -75,6 +75,14 @@ What defines Stayfolio is its monochrome discipline. The palette is an *ink ladd
 - Cool paper-grey surfaces (`#f2f2f2`, `#f5f5f5`) + hairlines (`#dfe0e2`, `#cccccc`) for separation
 - Graphite muted ladder (`#6b6b6e` → `#979799` → `#999999`) for secondary/tertiary text
 
+## Primary tasks
+
+- Browse a curated shortlist of stays instead of an ad-ranked feed
+- Switch between domestic and overseas stays while browsing
+- Save stays to come back to later
+- Read the JOURNAL before deciding on a stay
+- Send a reservation inquiry and see the next step
+
 ## 2. Color Palette & Roles
 
 ### Ink (Near-Black Ladder)

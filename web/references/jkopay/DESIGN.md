@@ -54,6 +54,14 @@ Taiwan's most widely used electronic payment platform, positioning itself as a f
 
 JKOPay's visual language is built around approachable confidence: a bold JKO red on a clean white-to-light-gray canvas that reads as modern and trustworthy without the austerity of traditional banking. The interface uses a clear typographic hierarchy with PingFang TC at its core, prioritising readability for Chinese-speaking users across age groups. Card surfaces carry a subtle gradient from pure white to a warm gray (#F4F4F6), with a barely-there shadow (0 15px 30px -25px rgba(0,0,0,0.12)) that lifts them off the page without theatrical depth. Navigation adopts a frosted-glass treatment (rgba(255,255,255,0.80)) that anchors the interface without competing with content. The overall atmosphere is warm, civic, and frictionless — built for the street-level simplicity of scanning and paying in seconds.
 
+## Primary tasks
+
+- Pay at the counter with a single scan
+- Send money straight to another person from the app
+- Top up a transit card and pay monthly utility bills
+- Check your cashback balance and act on an in-app promotion
+- Take payments at a stall and withdraw the takings weekly
+
 ## 2. Color Palette & Roles
 
 - **Brand Red (Primary):** `#C9191D` — primary action color; CTAs, brand highlights, active states, icon fills

@@ -79,6 +79,13 @@ What distinguishes SIONIC is its restraint with depth. The system is effectively
 - Pill-and-rounded geometry — 90px CTA pills, 30px cards, asymmetric tab corners
 - A dark graphite primary pill (`#3b4043`) as the workhorse CTA, with white-pill and blue-outline companions
 
+## Primary tasks
+
+- Design and deploy an AI agent without writing code
+- Ask a question and get an answer grounded in your own company data
+- Turn messy internal documents into data a RAG system can use
+- Integrate the Parse and Retrieval APIs into an existing product
+
 ## 2. Color Palette & Roles
 
 ### Primary

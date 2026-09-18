@@ -57,6 +57,14 @@ KRAFTON is a South Korean game publisher and developer whose digital identity is
 
 KRAFTON's corporate site operates as a dark-mode-first canvas where the page body is assigned the class `Bg-black`, the footer background is `#000000`, and the cookie-consent overlay uses `#0a0a0a`. This near-total blackness is not merely decorative; it positions each game property and studio card as a self-contained illuminated world against the void, echoing the brand's "Pioneer the Undiscovered" manifesto. The rare white surface — appearing only on inner article pages — feels like daylight breaking through. Motion is purposeful and cinematic: content tiles ascend 100px with an opacity fade over 0.8 s (ease-out), hero backgrounds reveal themselves in a 0.4 s parallax bloom with a 0.2 s delay, and a 5px diagonal-skewed progress bar crowns the header on scroll. Typography scales dramatically between breakpoints — a 140px custom-font logotype on desktop collapses gracefully through responsive vw units, maintaining the feeling of largeness even on mobile. Hover interactions on text links extend a thin 2px underline from left to right over 0.3 s, lending restraint to a design that could otherwise feel aggressive.
 
+## Primary tasks
+
+- Filter the careers page for gameplay engineer roles
+- Read a studio subpage to understand a game's technical depth
+- Browse the games listing in English using the language selector
+- Track quarterly earnings and disclosures on the IR page
+- Read the company history page for signals about culture
+
 ## 2. Color Palette & Roles
 
 - **Brand Black:** `#000000` — primary background (homepage, footer, header bar, mega-menu backdrop)

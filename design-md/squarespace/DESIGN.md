@@ -70,6 +70,14 @@ The color system is radical in its restraint: pure `#000000` black, pure `#fffff
 - Full-bleed photography and video as the only "color" in the system
 - Shadow-free: depth through contrast, not elevation
 
+## Primary tasks
+
+- Browse the template gallery and filter it by category
+- Make a chosen template your own site
+- Publish the site and open the link to see it live
+- Sell from a storefront that reads as a boutique
+- Take client bookings on the site through Squarespace Scheduling
+
 ## 2. Color Palette & Roles
 
 ### Primary

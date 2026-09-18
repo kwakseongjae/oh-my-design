@@ -115,6 +115,12 @@ Mistral AI builds frontier models, developer tools, applications, and compute fo
 - **Type as contrast:** `ALTMistral` supplies high-visibility headings and controls; Inter carries repeated reading and transactional copy.
 - **Asset/UI boundary:** the official gradient logo and model artwork establish identity, but their colors are not claimed as current generic UI tokens.
 
+## Primary tasks
+
+- Build or customize an AI system on Mistral models
+- Deploy a tailored AI system with ownership and production reliability
+- Compare pricing plans and set a purchase quantity
+
 ## 2. Color Palette & Roles
 
 ### Current public-web observations

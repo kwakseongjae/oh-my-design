@@ -97,6 +97,14 @@ The typographic system is bilingual by necessity: Japanese (kanji/kana) and Lati
 - Soft, low-opacity neutral shadows — depth through layering, not drama
 - Moderate-to-large border radii (8–16px) for an approachable, modern-SaaS feel
 
+## Primary tasks
+
+- Process an invoice and settle the spend behind it
+- Check which invoices are still waiting on an approver
+- Add the first invoice when the list is still empty
+- Open an invoice preview in a side panel while reviewing
+- Compare money figures down a column of a financial table
+
 ## 2. Color Palette & Roles
 
 ### Primary

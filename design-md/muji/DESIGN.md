@@ -86,6 +86,14 @@ What defines MUJI visually is restraint taken to the level of doctrine. The maro
 - Generous whitespace and wide margins as the core compositional tool
 - Product photography does the talking; chrome stays silent
 
+## Primary tasks
+
+- Scan a category grid of products without visual noise
+- Read a product description for its material and origin
+- Add an item to the cart, then move to checkout
+- Build a wishlist on mobile while browsing categories
+- Check whether an item is out of stock before ordering
+
 ## 2. Color Palette & Roles
 
 ### Primary / Brand

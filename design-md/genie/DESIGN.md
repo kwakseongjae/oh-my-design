@@ -75,6 +75,14 @@ Geometry is conservative and quietly Korean-portal in heritage: small 4px radii 
 - Conservative 4px button/input radius; 13px pill only on the dark search chip
 - Hairline `#eef1f4` borders and barely-there shadows — flat, utilitarian depth
 
+## Primary tasks
+
+- Check the realtime chart for what is trending now
+- Switch the chart between domestic and overseas scopes
+- Search for a song from the header search panel
+- Play a track and download it for offline listening
+- Follow an artist's chart position through comeback week
+
 ## 2. Color Palette & Roles
 
 ### Primary

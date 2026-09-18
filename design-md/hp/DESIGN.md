@@ -74,6 +74,14 @@ The typographic voice is **Forma DJR**, a contemporary grotesque commissioned fr
 - Flat, low-shadow surfaces — hardware photography supplies the visual richness
 - Generous whitespace and a clean 8px-derived spacing rhythm
 
+## Primary tasks
+
+- Add a printer or laptop to the cart
+- Compare specs and total cost across HP products
+- Read every review tab before choosing a laptop
+- Get a printer connected with step-by-step support guidance
+- Ask to be notified when an out-of-stock product returns
+
 ## 2. Color Palette & Roles
 
 ### Primary

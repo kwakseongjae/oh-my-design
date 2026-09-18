@@ -76,6 +76,14 @@ Depth on the main surface is handled through soft single-layer card shadows — 
 - `18px/600 KBFGText` for CTA labels — weight carried in font weight, not size alone
 - Near-black heading text (`rgba(0,0,0,0.87)` ≈ `#151515`) instead of pure black
 
+## Primary tasks
+
+- Tap to pay at a convenience store or a subway gate
+- Add a card to the app before paying with it
+- Follow family cards, loan status, and point accumulation in one place
+- Find out why a payment was declined and what to do next
+- Check loan eligibility and read the rate in plain Korean
+
 ## 2. Color Palette & Roles
 
 ### Primary Brand

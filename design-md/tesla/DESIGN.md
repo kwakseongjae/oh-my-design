@@ -129,6 +129,13 @@ Tesla makes electric vehicles, charging, solar, and energy-storage products; its
 - **Restrained UI color:** the verified marketing palette is blue plus neutrals, not a general semantic-status palette.
 - **Distinct source domains:** support and documentation were captured, but their local typography and browser-like chrome are not promoted into the Model 3 system.
 
+## Primary tasks
+
+- Read a Model 3 page that leads with the vehicle
+- See more of the Model 3 by paging through its carousel
+- Look up support for getting started with your vehicle
+- Read the owner's manual for a vehicle online
+
 ## 2. Color Palette & Roles
 
 ### Observed Model 3 marketing roles

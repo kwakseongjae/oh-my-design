@@ -83,6 +83,14 @@ What distinguishes Bigin from its fintech-blue peers is its **rounded, low-shado
 - Blue-tinted CTA glow shadow (`rgba(0,104,255,0.4)`) instead of neutral elevation
 - Slate text ladder: `#000000` -> `#3d4046` -> `#53585f` -> `#7e8696` -> faint nav `#b2c0cb`
 
+## Primary tasks
+
+- Book a consultation instead of starting a trial alone
+- Compare plans on the pricing page before choosing one
+- Consolidate acquisition through to loyalty in one solution
+- Run personalized, behavior-based messaging campaigns at scale
+- Check that the data integrations fit an existing stack
+
 ## 2. Color Palette & Roles
 
 ### Primary

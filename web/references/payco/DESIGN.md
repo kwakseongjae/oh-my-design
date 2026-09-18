@@ -60,6 +60,14 @@ South Korea's everyday fintech super-app — combining payment, points, financia
 
 PAYCO's digital product language is built on a high-contrast red-and-white foundation that projects urgency, confidence, and accessibility. The vivid brand red (#FF2233) anchors every primary action — sidebar headers, CTA buttons, active navigation underlines — against a clean white canvas, creating an energetic rhythm without visual clutter. Dark charcoal (#2a303a) carries all body copy, keeping legibility sharp on white surfaces. Secondary UI chrome falls into neutral greys and off-whites, so the brand red always reads as a call to action. The overall atmosphere is functional and trustworthy: nothing extraneous competes with the moment of payment or redemption, yet the red signals that speed and benefit are always one tap away.
 
+## Primary tasks
+
+- Pay for a canteen lunch with the company meal voucher
+- Check how many points have accumulated and what they are worth
+- Pull up a stored insurance document when an insurer calls
+- Send a small remittance to a family member
+- Check weekly settlement totals for payments taken in a shop
+
 ## 2. Color Palette & Roles
 
 - **Brand Red:** `#FF2233` — primary brand color; buttons, active nav, sidebar headers, emphasis text (CSS custom property `--brand-color`)

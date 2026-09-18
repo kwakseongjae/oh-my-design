@@ -167,6 +167,13 @@ Pretendard Variable was both declared and loaded, and the collector observed it 
 - Current outline border `#dddddd`; previous `#c4c4c4` claim was not retained
 - Component inventory is based on native buttons, inputs, and list items across multiple routes
 
+## Primary tasks
+
+- Read an editorial story that builds context around a product
+- Scan ranked products by brand, discount, price, and shipping
+- Look through a product's photos on its detail page
+- Compare product details before deciding what to buy
+
 ## 2. Color Palette & Roles
 
 ### Core

@@ -74,6 +74,14 @@ Geometry is the system's most recognizable tell: almost everything you can press
 - Soft, low elevation — 2px-offset shadows only; separation mostly via `#f5f5f5` bands and tinted panels
 - A second, official dark-editorial mode (gray800 `#292929` / `#424242`) on wantedly.design
 
+## Primary tasks
+
+- Ask to visit a company and hear its story
+- Collect teams whose stories make you curious
+- Search for work from the home page
+- Create a profile that makes your own work interesting
+- Write your company's stories to attract candidates
+
 ## 2. Color Palette & Roles
 
 ### Primary

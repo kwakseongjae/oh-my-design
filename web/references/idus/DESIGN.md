@@ -76,6 +76,14 @@ What distinguishes idus from a glossy DTC store is its restraint with depth. Liv
 - Tinted wash surfaces (`#fff7f2`, `#fff2f4`) instead of shadows for gentle section emphasis
 - White (`#ffffff`) canvas and white text (`#ffffff`) on the orange primary
 
+## Primary tasks
+
+- Buy a handmade piece from an independent maker
+- Search for a maker or a piece from the header
+- Add a piece to the cart or send it as a gift
+- Find a gift that does not look mass-produced
+- Follow a maker and buy again when new work appears
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -94,6 +94,12 @@ The supplied July 13 corporate capture covers the home, about, and conduct-guide
 
 MIXI’s current strategic language places emotional, meaningful connection ahead of communication volume. The company calls the present its “Third Founding” and frames a We-Time Economy around experiences shared with other people. That corporate evolution and its product/service portfolio explain the visual balance of forceful black structure and bounded emotional accents; they do not establish unobserved application controls, signed-in flows, or service-level design tokens.
 
+## Primary tasks
+
+- Scan the latest company news from cards on the home page
+- Read the conduct guidelines the company publishes for itself
+- Learn how the company started and what it grew into
+
 ## 2. Color & Surface Evidence
 
 - **Canvas** — `#ffffff`, observed as the home logo block and white news-label foreground/border context.

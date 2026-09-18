@@ -164,6 +164,14 @@ The July 12 capture covers three Korean-localized public marketing/product route
 - Public header menu triggers remain square; full-pill geometry is local to pricing tabs and small actions
 - Pricing menus and dialogs are 12px rounded overlays with a measured layered shadow
 
+## Primary tasks
+
+- Describe an application in plain language and get editable code
+- Start from an idea, then refine and ship it
+- Switch the project preview between web and mobile views
+- Sync the generated code to GitHub, then deploy it
+- Switch the pricing cycle on the public pricing page
+
 ## 2. Color Palette & Roles
 
 - **Ink** (`#030303`): repeated public headings, body copy, and navigation labels.

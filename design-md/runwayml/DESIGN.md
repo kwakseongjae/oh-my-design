@@ -77,6 +77,13 @@ What makes Runway distinctive is its complete commitment to visual content as de
 - Weight 450 (unusual intermediate) for small uppercase text — precision craft
 - Editorial magazine layout with mixed-size image grids
 
+## Primary tasks
+
+- Generate previs and b-roll shots for an independent film
+- Explore concepts and generate visuals for a client pitch
+- Run stylistic transfer experiments on a music video
+- Judge what the tool can produce from the generated work it shows
+
 ## 2. Color Palette & Roles
 
 ### Primary

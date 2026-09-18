@@ -77,6 +77,14 @@ Geometry is equally disciplined. Every button, input, and card is a sharp 0px-ra
 - Custom "gv" webfont over Noto Sans TC for Traditional Chinese display
 - Dark green footer (`#002d18`) with grey column headings (`#9b9b9b`) and white links
 
+## Primary tasks
+
+- Add a skincare product to the cart from its page
+- Read which ingredients the brand refuses to use
+- Browse every product by name in the full-screen menu
+- Find out where the subtraction philosophy came from
+- Return empty bottles through the recycling programme
+
 ## 2. Color Palette & Roles
 
 ### Primary

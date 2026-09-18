@@ -79,6 +79,14 @@ Depth is deliberately flat. Live inspection found `box-shadow: none` across the 
 - Warm tint surfaces (`#fff7eb`, `#ffece8`) for promotional / appetite moments
 - Cool-grey text ladder (`#505c81` → `#6d7583` → `#969fac`) plus a strong-ink `#131517` for ratings
 
+## Primary tasks
+
+- Join a restaurant queue from the app before you arrive
+- Watch the live waiting-team count move while you travel
+- Search by region and cuisine to plan a family dinner
+- Compare TOP100 rankings and ratings to avoid a bad pick
+- Broaden the region or cuisine when nothing matches
+
 ## 2. Color Palette & Roles
 
 ### Brand

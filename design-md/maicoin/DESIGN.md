@@ -90,6 +90,14 @@ Both surfaces are deliberately **shadowless and flat**: live inspection found `b
 - Mixed-but-restrained radius scale — 2px coral CTA, 8px navy CTA, 16px cards, 22px pill
 - Decorative oversized Roboto "MaiCoin" watermark at 4% opacity behind the consumer hero
 
+## Primary tasks
+
+- Buy your first cryptocurrency by following numbered steps
+- Bind a device and verify your identity before buying
+- Trade spot markets while watching the order book
+- Lock coins on chain or run a trading bot
+- Hold crypto long-term on a Taiwan-registered platform
+
 ## 2. Color Palette & Roles
 
 ### Consumer Primary (MaiCoin, coral)

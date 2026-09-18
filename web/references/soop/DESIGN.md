@@ -99,6 +99,12 @@ SOOP is a Korean live-streaming and creator platform whose public ecosystem brin
 - The measured home search control is 45px high with a 45px radius; nearby topic chips use a 30px radius.
 - The supplied bundle includes three snapshots, but the first two are the same SOOP home URL. It records no interaction transitions.
 
+## Primary tasks
+
+- Find a live broadcast or category to watch now
+- Search the home feed or narrow it with topic chips
+- Stream live or VOD content and build a fan community
+
 ## 2. Color Palette & Roles
 
 ### Selector-backed public product colours

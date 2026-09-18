@@ -60,6 +60,14 @@ Taiwan's visual-first stock research and trading platform, built by investors fo
 
 Fugle's interface speaks the language of precision and calm confidence. A predominantly light, near-white canvas — `#f5f5f5` for secondary surfaces, `#ffffff` for foreground containers — keeps the dense data of Taiwan equity markets easy to scan without overwhelming the eye. Against this quiet ground, the brand's signature amber `#f4af1c` appears sparingly but unmistakably: loading indicators, live-chat buttons, version badges, and chart reference lines all carry the same warm gold tone. The dark theme inverts the arrangement, dropping to a near-black `#131313` base with `#323232` surface layers, letting red and green trading signals pop with strong luminance contrast. Two modes share the same structural rhythm — compact rows, 4 px and 8 px radii, tight 12–14 px body type — giving both themes an identical sense of discipline and information density appropriate to active trading.
 
+## Primary tasks
+
+- Add a stock ticker to the watchlist panel
+- Build sector maps and compare fundamentals across several stocks
+- Open the order ticket once ready to transact
+- Prototype a personal screener against the marketdata API
+- Watch intraday tick data in dark mode during market hours
+
 ## 2. Color Palette & Roles
 
 - **Brand Amber:** `#f4af1c` — primary brand color; loading spinners, live-chat button, version badges, chart line accent, primary CTA background

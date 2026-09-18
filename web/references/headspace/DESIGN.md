@@ -82,6 +82,14 @@ The typographic identity is the custom **Headspace Apercu**, a "Headspace-ified"
 - Pill-forward geometry — 32px pill buttons, 24px cards, circular play controls
 - Shadowless depth — warm tints and saturated color blocks instead of elevation
 
+## Primary tasks
+
+- Play a ten-minute meditation before going to sleep.
+- Choose a session by mode: sleep, meditate, move, or focus.
+- Compare subscription plans and pick the one to start.
+- Start clinician-led online therapy instead of only meditating.
+- Check in on your mood with the AI companion.
+
 ## 2. Color Palette & Roles
 
 ### Primary

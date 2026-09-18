@@ -122,6 +122,12 @@ KB국민은행 is a Korean retail and business bank whose public web presence ca
 - Product routes retain square (`0px`) chrome in the measured links, utility controls, and selected online-banking item.
 - The supplied capture records three product snapshots, one of which repeats the public home URL; it records no interaction transitions.
 
+## Primary tasks
+
+- Read through dense lists of banking information on the public site
+- Handle everyday digital banking with a long-established Korean bank
+- Open a public online-banking page on the bank's own site
+
 ## 2. Color Palette & Roles
 
 ### Selector-backed public product-web colours

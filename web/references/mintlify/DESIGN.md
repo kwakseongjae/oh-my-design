@@ -92,6 +92,13 @@ What distinguishes Mintlify from other documentation platforms is its atmospheri
 - **DO** use Geist Mono ONLY for code labels, tracked-out, uppercase, ~12px — the terminal voice should remain a minority.
 - **DON'T** use mono fonts for body or UI labels — Inter handles all non-code text.
 
+## Primary tasks
+
+- Connect a repository and publish a documentation site
+- Fix a failed build reported at a specific line
+- Publish an API reference portal from an OpenAPI spec
+- Search a published docs site with AI search
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -104,6 +104,12 @@ LG유플러스 is a Korean telecommunications and consumer-technology company, e
 - The captured Home CTA is a 40px-high 20px-radius control; the subscription detail also has a static 65px information row with an 8px outline geometry.
 - The 2025 Simply. U+ narrative is brand context only. It does not create colors, components, states, or motion tokens.
 
+## Primary tasks
+
+- Compare mobile plans, benefits, and device-related options
+- Read a subscription product's details, then start the purchase
+- Check what a home internet, IPTV, or smart-home service includes
+
 ## 2. Color Palette & Roles
 
 ### Observed public-surface foundation

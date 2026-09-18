@@ -92,6 +92,13 @@ Ferrari builds road cars and competes in racing from Maranello; its official his
 - **Measured accent:** `#da291c` is an observed 57px Subscribe CTA fill, not a universal semantic color.
 - **Sharp geometry:** public primary and header controls resolve to 0px radius; cookie consent is a separate 2px utility treatment.
 
+## Primary tasks
+
+- Browse the current car range on the public site.
+- Follow Formula 1 racing coverage published on the site.
+- Subscribe for updates from the car range or racing pages.
+- Read how Ferrari tells its history from 1947 onward.
+
 ## 2. Color Palette & Roles
 
 - **Ferrari-red action** (`#da291c`): observed background for the car-range and Formula 1 `BtnCta__button__w7eTRXBJ` Subscribe CTA.

@@ -76,6 +76,14 @@ What makes OPENPOINT's design identity distinctive is the **purple–lavender gr
 - 7-ELEVEN red (`#e60012`) strictly limited to compliance banners and alerts
 - Dropdown navigation reveals lavender-to-purple sub-menus on hover
 
+## Primary tasks
+
+- Browse the promotions running right now on the homepage
+- Track the points earned from every purchase in one place
+- Redeem points from the rewards categories in the main navigation
+- Pay for purchases with icash Pay while collecting points passively
+- Exchange points for Japan Ponta points or airline miles
+
 ## 2. Color Palette & Roles
 
 ### Primary Brand

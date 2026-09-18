@@ -46,6 +46,13 @@ tokens:
 
 Gogolook is the Taiwan TrustTech company behind Whoscall, the caller-ID and anti-scam app, and its design speaks in the language of friendly, reassuring consumer safety rather than cold enterprise security. The world is built on a clean white ground (#FFFFFF) that keeps everything calm and uncluttered, punctuated by a vivid, documented brand green (#0CD25F) that signals "you're protected" without ever feeling alarming. Buttons are fully-rounded pills, soft and tappable, and a big playful rounded display face (Nunito) carries the headlines while Noto Sans handles the body, so the voice reads as approachable and human. The overall feeling is of a trusted neighbor who happens to be excellent at spotting scams: warm, confident, and easy to talk to. Color is used sparingly and purposefully, letting the green do the emotional work of conveying safety against a quiet, bright backdrop. Nothing here shouts; the protection is communicated through friendliness, generous rounding, and a single confident accent rather than through dark, defensive, "security-vendor" visual tropes.
 
+## Primary tasks
+
+- Check who is calling before picking up an unknown number
+- Stay safe from scam calls without learning security jargon
+- Set up scam protection for a parent or a child
+- Upgrade to the premium tier from the Whoscall site
+
 ## 2. Color Palette & Roles
 - **Whoscall Green #0CD25F** — primary brand color, documented on whoscall.com/en/brand; the core identity hue and the emotional anchor for "trusted protection."
 - **Download-CTA Green #05F067** — the live, slightly brighter near-twin green used on the primary download pill on whoscall.com; carries the main call-to-action.

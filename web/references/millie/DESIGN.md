@@ -90,6 +90,12 @@ Millie’s tenth-anniversary site frames the service’s current ambition as mak
 - Home carousel controls use translucent black overlays and strongly rounded geometry over imagery.
 - No consumer reader, account, checkout, error, modal, hover, pressed, disabled, or responsive state is established by this capture.
 
+## Primary tasks
+
+- Discover editorially featured reading content on the public home
+- Read across e-books, audio content, web novels, and webtoons
+- Evaluate the service as a workplace reading benefit for employees
+
 ## 2. Color Palette & Roles
 
 ### Observed public surfaces

@@ -120,6 +120,14 @@ freee also maintains **Vibes**, an official open-source design system. Vibes is 
 - 5px compact header controls and 8px page actions/cards
 - Loaded Noto Sans JP across the supplied public routes
 
+## Primary tasks
+
+- Run accounting, HR, and approvals on one platform
+- Pick a segment on the freee home page
+- Browse the product categories on the products page
+- Check what freee costs on the pricing page
+- Sign up from the public header
+
 ## 2. Color Palette & Roles
 
 ### Observed public-site roles

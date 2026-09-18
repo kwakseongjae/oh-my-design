@@ -78,6 +78,14 @@ Color is deployed with deliberate scarcity. The primary "action" is not a satura
 - Soft-but-restrained radius — 12px on CTAs and cards, 8px on inputs and the subscribe button
 - Cool-grey neutral ladder (`#1e293b` → `#4f5864` → `#4b5563`) for text hierarchy
 
+## Primary tasks
+
+- Read the case IGAWorks makes for its data-first AI platform
+- Scan the solution portfolio to judge which capabilities fit a campaign
+- Open a solution card to read what that solution does
+- Subscribe to the newsletter to get the weekly insight email
+- Contact IGAWorks through the inquiry action in the header
+
 ## 2. Color Palette & Roles
 
 ### Primary

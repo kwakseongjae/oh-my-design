@@ -76,6 +76,13 @@ What distinguishes ProtoPie is how it deploys its single hue across a spectrum. 
 - Mostly flat depth — only floating resource cards carry a soft `rgba(0,0,0,0.08)` shadow
 - Tight 4px button radius, 12px card radius — energy comes from color, not geometry
 
+## Primary tasks
+
+- Turn an interaction idea into a believable prototype without writing production code
+- Prototype micro-interactions before dev handoff and convince stakeholders in review
+- Drive real hardware and inputs so an in-car prototype behaves like the shipping system
+- Learn high-fidelity prototyping through ProtoPie School and the community
+
 ## 2. Color Palette & Roles
 
 ### Primary

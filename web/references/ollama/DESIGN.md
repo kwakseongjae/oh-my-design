@@ -97,6 +97,14 @@ The July 2026 company post describes the product as a way to make open models ea
 - System-stack body text plus a separately unresolved rounded display-family observation.
 - Terminal and command language used as product content, not ornament.
 
+## Primary tasks
+
+- Download Ollama and run an open model on your own machine
+- Pick which open model to run locally
+- Connect a coding agent or editor to open models
+- Compare the Free, Pro, and Max pricing tiers
+- Run a workload on cloud capacity when local hardware is not enough
+
 ## 2. Color Palette & Roles
 
 ### Product marketing surfaces

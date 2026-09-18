@@ -127,6 +127,13 @@ The public system is not a proxy for every Anthropic surface. This reference sep
 - Rounded public tabs (12px), pricing cards (24px), and model cards (32px), each tied to a separate selector.
 - A limited observed `#c96442` accent, without a universal-action claim.
 
+## Primary tasks
+
+- Work through a problem in conversation with documents and web knowledge
+- Study a topic using conversation, documents, images, and visual aids
+- Compare the public plans on the pricing page
+- Decide whether Claude fits the work of a business or nonprofit
+
 ## 2. Color Palette & Roles
 
 ### Selector-backed public colors

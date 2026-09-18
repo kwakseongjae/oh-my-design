@@ -75,6 +75,14 @@ There are no heavy drop shadows. Elevation is almost flat — a barely-there `rg
 - Near-flat elevation; subtle `rgba(0,0,0,0.06)` shadows only
 - Dense, list-first layouts optimized for fast scanning and quote requests
 
+## Primary tasks
+
+- Request a quote by describing the job you need done
+- Compare the pros who replied on price and star rating
+- Read recent reviews and message a pro before committing
+- Sign up as a pro to receive quote requests
+- Browse a service category and narrow it to your region
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -150,6 +150,13 @@ Resend is a communication platform for developers, built from the React Email op
 - **Editorial hierarchy:** Domaine creates the hero moment, ABC Favorit carries section-level display copy, and Inter is the loaded product/UI family.
 - **Precise, not generic:** the blue CTA is a sharp 4px control; the separate outline action is full-pill. Neither shape is generalized into an unobserved global button rule.
 
+## Primary tasks
+
+- Send reliable email from a product you are building
+- Build an email template that renders across email clients
+- Keep product emails coherent with the rest of the product
+- Weigh the platform constraints before a team commits to it
+
 ## 2. Color Palette & Roles
 
 ### Observed marketing roles

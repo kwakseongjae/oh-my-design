@@ -88,6 +88,13 @@ The geometry reinforces the friendliness. Primary buttons are full 100px pills, 
 - Slate-not-black text (`#2a3342` headings, `#727d8c` body) -- soft, never harsh
 - Illustration-led storytelling over dense data -- a consumer app voice, not a developer console
 
+## Primary tasks
+
+- Open a bank account from a phone instead of visiting a branch
+- Set a savings goal and start working toward it
+- Skim a little off every paycheck into savings automatically
+- Check a balance and come away calm rather than stressed
+
 ## 2. Color Palette & Roles
 
 ### Primary

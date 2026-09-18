@@ -96,6 +96,14 @@ Panasonic is a Japan-founded technology group whose public offer spans consumer 
 - Loaded, visibly used `Noto Sans` across the three supplied Panasonic Holdings surfaces.
 - Predominantly square `0px` geometry, with only a `2px` cookie-control radius observed as a separate exception.
 
+## Primary tasks
+
+- Read what the group offers across consumer, business, and technology
+- Follow the route from a public explanation to the relevant offer
+- Understand the technology and operating-company context as a business partner
+- Look up the company history back to its 1918 founding
+- Check the group's current environmental direction
+
 ## 2. Color Palette & Roles
 
 - **Canvas** (`#f2f2f2`): home body background on the supplied public Holdings surface.

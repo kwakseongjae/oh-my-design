@@ -95,6 +95,13 @@ Framer is a platform for designing and publishing websites. Its current careers 
 - **Blue as local evidence:** `#0099ff` is observed in Marketplace and pricing controls and is also published by Framer as “Framer Blue”; it is not promoted as a universal product-state color.
 - **Official brand assets:** Framer separately publishes Black, White, Framer Blue (`#0099FF`), and Framer Deep Blue (`#0055FF`) for marks. Brand-asset colors are not automatically public-web CSS tokens.
 
+## Primary tasks
+
+- Design a website and publish it
+- Browse Marketplace components by category and filter
+- Check pricing before starting a site
+- Sign up for an account from the public pages
+
 ## 2. Color Palette & Roles
 
 ### Observed public-web roles

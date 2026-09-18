@@ -93,6 +93,14 @@ Typographically the brand runs on **FK Grotesk** and **FK Display** (Florian Kar
 - First-class dark mode built on the same teal, on a near-black `#0D1117`-family canvas
 - Generous radii (8–12px) and soft, low-contrast borders for a paper-soft feel
 
+## Primary tasks
+
+- Ask a question and get an answer with citations
+- Click through a citation to verify a claim
+- Switch focus modes between web, academic, and writing
+- Share an answer thread from the thread toolbar
+- Read the Discover feed as a morning news habit
+
 ## 2. Color Palette & Roles
 
 ### Primary

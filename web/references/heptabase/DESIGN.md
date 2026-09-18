@@ -74,6 +74,14 @@ What distinguishes Heptabase from louder SaaS sites is its refusal of elevation.
 - Green (`#75c33a`) used only for pricing checkmarks — never as a brand color
 - Gentle radius ladder — 6px/8px/12px cards, full `9999px` pill for the dark CTA
 
+## Primary tasks
+
+- Lay each source out as a card and draw the connections.
+- Ask the AI chat about sources you brought in yourself.
+- Work through a hard course with the AI tutor.
+- Switch billing between monthly and yearly before subscribing.
+- Search the knowledge base and adjust a query that found nothing.
+
 ## 2. Color Palette & Roles
 
 ### Primary

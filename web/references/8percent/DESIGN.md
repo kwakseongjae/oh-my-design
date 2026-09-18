@@ -74,6 +74,14 @@ What distinguishes 8percent from flashier fintech peers is its restraint with de
 - Light-blue tint surface (`#f1f6fe`) for soft secondary actions
 - Official design system EDS (Eight Design System): EdsButton, EdsTextfield, EdsToggle, EdsCheckbox
 
+## Primary tasks
+
+- Browse investment products laid out as a grid with credit grades
+- Judge the risk of each loan yourself from its credit grade
+- Read the business-disclosure tabs before committing money to a product
+- Invest across all the open products in one action
+- Refinance a high-rate loan into a lower-rate one
+
 ## 2. Color Palette & Roles
 
 ### Primary

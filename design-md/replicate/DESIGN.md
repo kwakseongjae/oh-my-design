@@ -71,6 +71,13 @@ What makes Replicate distinctive is its community-powered energy. The model gall
 - Bold/heavy font weights (600-700) creating maximum typographic impact
 - Playful closing manifesto: "Imagine what you can build."
 
+## Primary tasks
+
+- Try an image model without provisioning your own GPU
+- Browse the model gallery to find a model to run
+- Copy a ready-made code example to call a model
+- Serve model inference inside a product you ship
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -110,6 +110,13 @@ The current direction connects a long data-centre and cloud history to a wider p
 - Spacious 32px/40px card padding and 8px card corners sit beside 46px pill-shaped news tabs.
 - Only selected/tab-selected interaction evidence was supplied; unobserved hover, focus, pressed, disabled, validation, dialog, and toast values are absent.
 
+## Primary tasks
+
+- Find the hosting or cloud option that fits a planned project
+- Read infrastructure detail before making a technical decision
+- Browse case studies through the tabbed case-study navigation
+- Understand how the platform can connect to a wider initiative
+
 ## 2. Color Palette & Roles
 
 ### Supplied public-surface tokens

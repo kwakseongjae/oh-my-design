@@ -153,6 +153,14 @@ SEED is the canonical source for product-system colors, type roles, and componen
 - Official SEED semantic roles backed by the open-source `global.css`
 - Components documented as behavior/state contracts, with marketing geometry kept surface-specific
 
+## Primary tasks
+
+- Scan many listings from your own neighborhood in one sitting
+- Switch the neighborhood whose listings you are looking at
+- Work out with a nearby seller where to hand the item over
+- Close a finished trade and leave the other person a manner rating
+- Share local information or ask neighbors for help
+
 ## 2. Color Palette & Roles
 
 ### SEED v2 product semantics

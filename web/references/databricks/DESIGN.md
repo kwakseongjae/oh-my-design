@@ -80,6 +80,14 @@ The color system is anchored by a dual-background architecture: **Navy 900** (`#
 - Link color (`#016BC1`) — distinct enterprise blue for inline references
 - DM Mono for all code/technical display contexts
 
+## Primary tasks
+
+- Run the ETL pipelines that feed a demand-forecasting model
+- Track machine-learning experiments and register models with MLflow
+- Query the same data with SQL for business intelligence
+- Govern data access across Azure and AWS workloads in one place
+- Check starting prices in DBUs without booking a demo call
+
 ## 2. Color Palette & Roles
 
 ### Primary Brand

@@ -72,6 +72,14 @@ Typography is functional sans-serif throughout. The wordmark and display heading
 - Generous negative space; one message per fold; cinematic black backgrounds for product reveals
 - No gradients-as-decoration, no mascot, no illustration system — engineering credibility carried by photography and restraint
 
+## Primary tasks
+
+- Compare a new model's flight time and range against your current rig.
+- Browse the store grid and open a product you are considering.
+- Place an order and come away with an order number.
+- Ask to be notified when a sold-out product comes back.
+- Check payload, sensor accuracy, and compliance before buying for work.
+
 ## 2. Color Palette & Roles
 
 DJI does not publicly expose a CSS token layer the way a forum or a fintech does; the values below combine the publicly documented brand-guide palette (Titan + white/black/silver + sky-blue accent) with the observable live-site usage. Hex values for Titan and the sky-blue accent are stated by the brand guide by name but not published openly, so the specific hexes below are **best-fit approximations** of the observed values and are flagged accordingly.

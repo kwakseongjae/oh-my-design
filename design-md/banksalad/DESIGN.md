@@ -149,6 +149,14 @@ Typography is consistently Pretendard across the five inspected surfaces. The co
 - 8px, 12px, 16px, and 24px as recurring useful spacing values
 - Public product evidence covers buttons, cards, and list/disclosure rows; inputs, charts, dialogs, and authenticated app states remain unpromoted
 
+## Primary tasks
+
+- Compare cards, loans, deposits, or insurance and read the conditions
+- Check whether an interest-rate reduction request is available
+- Read a card's benefits, disclosures, and product details
+- Get guidance after fraud, identity theft, or a mistaken transfer
+- Read up on a financial decision before entering a product flow
+
 ## 2. Color Palette & Roles
 
 ### Primary

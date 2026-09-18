@@ -94,6 +94,13 @@ The unifying identity is the 2020 **Pentagram** corporate-identity renewal that 
 - Card-radius scale 12px (NC PLAY tiles) → 16px (portal game cards); 6px buttons; full-round avatars/controls
 - Point accent palette (red `#f1415e`, green `#21ab79`, magenta `#fa38ec`, light-blue `#38aefa`) for status/category
 
+## Primary tasks
+
+- Browse the global storefront and find a game to play
+- Pre-order a new chapter before it launches
+- Find which games are currently discounted
+- Read how a game's art, sound, and research were made
+
 ## 2. Color Palette & Roles
 
 ### Primary (NC Purple)

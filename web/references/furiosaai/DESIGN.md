@@ -79,6 +79,14 @@ Where the system permits itself color, it does so in sharp, flat chips rather th
 - Candy-flat category chips — mint (`#70e697`), yellow (`#fffa82`) — and lavender (`#cdbbff`) accents on dark
 - Tight negative tracking on oversized statement headlines (`-2.1px` at 84px)
 
+## Primary tasks
+
+- Read the RNGD product page as an alternative to GPU clusters
+- Request a pilot through the Furiosa Access Program form
+- Read the developer docs quick-start before anything else
+- Follow partnership news and efficiency claims in the newsroom
+- Read the About and Careers pages before applying for a job
+
 ## 2. Color Palette & Roles
 
 ### Primary

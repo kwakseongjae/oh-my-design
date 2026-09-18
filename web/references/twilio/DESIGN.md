@@ -88,6 +88,13 @@ The defining tension is **persuade vs. operate**. The marketing surface persuade
 - Conservative geometry: 8px buttons, 4px inputs, full-pill badges and marketing CTAs
 - Dark immersive bands (`#000d25`, `#081f47`) for code editors and brand moments
 
+## Primary tasks
+
+- Send an SMS or place a phone call from your own application
+- Verify a user with two-factor authentication at sign-in
+- Deliver notifications to customers across email, SMS, and voice
+- Build an accessible product interface from Paste components
+
 ## 2. Color Palette & Roles
 
 ### Brand

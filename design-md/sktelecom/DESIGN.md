@@ -127,6 +127,12 @@ SK텔레콤 is a Korean connectivity and consumer-technology company whose publi
 - Captured actions are square (`0px` radius); 16px rounding is confined to observed media-tile links.
 - The retained values describe the public home and brand-information page only, not T world, A., native apps, advertising, or a general SK텔레콤 product design system.
 
+## Primary tasks
+
+- Read where the company is heading beyond telecom
+- Look up what the renewed T brand stands for
+- Download a published brand resource from the brand page
+
 ## 2. Color Palette & Roles
 
 | Role | Value | Usage and evidence boundary |

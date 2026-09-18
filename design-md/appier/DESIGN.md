@@ -79,6 +79,14 @@ What distinguishes Appier from a generic SaaS template is the **charged blue and
 - Sophisticated, confident, futurist register — "Empowering Businesses to Turn AI into ROI"
 - Conservative-to-moderate radius (`8px` workhorse) for a clean professional feel
 
+## Primary tasks
+
+- Compare case-study results from brands like your own
+- Check third-party credentials and proof of data governance before committing
+- Read a product page to learn how the automations actually work
+- Request a demo and see what happens next
+- Connect a data source, then launch a first campaign
+
 ## 2. Color Palette & Roles
 
 > **Note:** Live computed-style verification was not completed this pass (the inspection browser session redirected unreliably; WebFetch confirmed the blue-dominant identity but not exact hexes). Values below combine the brief-provided primary, Appier's known electric-blue enterprise-AI identity, and conventional B2B SaaS roles. Hexes other than the primary are well-grounded approximations pending live re-inspection.

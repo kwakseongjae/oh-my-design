@@ -89,6 +89,14 @@ What gives Pinkoi its quietly distinctive feel is its **flat semantic button sys
 - High-density grid: 6-column product layout (`16.66%` each) with `12px` total horizontal margin per card
 - 12-step neutral gray scale from `#f7f7f8` → `#202026` for surfaces, borders, and text hierarchy
 
+## Primary tasks
+
+- Browse across several categories in one session to find an aesthetic.
+- Read a shop's about page before buying from it the first time.
+- Save items to a wishlist and keep it as a mood board.
+- Add a maker's item to the cart from its product page.
+- Place an order and see the estimated ship date for each shop.
+
 ## 2. Color Palette & Roles
 
 ### Primary

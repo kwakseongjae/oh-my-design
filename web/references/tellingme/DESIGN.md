@@ -66,6 +66,12 @@ What most distinguishes TellingMe from its fintech and SaaS peers is its complet
 - Soft 20px-radius pill CTAs in pale mint (`#f2fdf6`) / cream (`#f9f7f2`) with black text, no border
 - Weight play within a headline (400 vs 700) to emphasize the key phrase rather than color or size shifts
 
+## Primary tasks
+
+- Answer one delivered question a day instead of facing a blank page
+- Tag the feeling behind an entry with a bird sticker
+- Keep a steady record that reveals more about yourself
+
 ## 2. Color Palette & Roles
 
 ### Primary

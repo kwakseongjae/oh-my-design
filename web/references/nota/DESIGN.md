@@ -77,6 +77,14 @@ Depth is handled with restraint. Most separation comes from flat tinted bands (`
 - One soft diffuse card shadow (`rgba(141,141,141,0.15) 10px 10px 28px`) when lift is needed
 - Gently rounded geometry — 10px cards, 4px / 8px buttons — with sharp 0px outlined form fields
 
+## Primary tasks
+
+- Read the Tech Blog for concrete benchmarks and methods
+- Evaluate NetsPresso for a model that cannot run in the cloud
+- Explore the AI solution built for your own industry
+- Send a project inquiry through the contact form
+- Subscribe to the newsletter to follow new AI insights
+
 ## 2. Color Palette & Roles
 
 ### Primary

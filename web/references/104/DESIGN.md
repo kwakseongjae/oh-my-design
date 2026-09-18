@@ -157,6 +157,13 @@ That operational clarity sits beside an explicitly people-centered corporate ide
 - The supplied surfaces favor compact, bold labels and 4px action geometry; 8px and 12px are present on dialog and card shells.
 - The capture has no interaction events, so no hover, pressed, focus, disabled, error, menu, or authenticated-product behavior is represented as a product fact.
 
+## Primary tasks
+
+- Search for work from the public job-bank home page
+- Look up a company on its public company-information page
+- Browse career and company information through the topic navigation
+- Hire someone and then manage them as talent
+
 ## 2. Color Palette & Roles
 
 ### Selector-backed public product colors

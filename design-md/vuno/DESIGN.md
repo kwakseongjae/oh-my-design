@@ -77,6 +77,13 @@ What distinguishes VUNO from consumer fintech or SaaS peers is its geometry and 
 - White (`#ffffff`) content cards on a faint grey surface (`#f8f8f8`)
 - Restrained, evidence-first tone — small body copy, weighty headlines
 
+## Primary tasks
+
+- Evaluate a medical-AI vendor from its evidence and approvals
+- Track a listed company's revenue and partnership news
+- Read what a solution detects and on which modality
+- Leave an inquiry for the company from the contact band
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -100,6 +100,11 @@ Taiwan High Speed Rail (THSR, 台灣高鐵) operates Taiwan’s north–south hi
 - Noto Sans TC is the only loaded, high-confidence visible text family in the supplied capture.
 - The public controls observed here are flat and predominantly square; the 3px booking control and 5px dialog are bounded local exceptions.
 
+## Primary tasks
+
+- Start booking a trip from the railway home page
+- Read travel information published on the official site
+
 ## 2. Layout & Grid
 
 - The evidence packet covers the public home route plus two official article routes at the collector viewport. It does not establish a breakpoint system, mobile layout, authenticated account layout, T-EX app layout, station kiosk, or purchase-completion layout.

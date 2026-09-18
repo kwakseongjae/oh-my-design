@@ -73,6 +73,14 @@ Restraint is the defining discipline. The live DOM shows green used sparingly an
 - Green-as-punctuation: neutrals dominate, green appears only on intent
 - Deep teal-navy (`#00283d`) grounding the footer and dark surfaces
 
+## Primary tasks
+
+- Check the exchange rate before travelling abroad
+- Transfer money to another account from the quick-action row
+- Open a bank account online from a quick-entry tile
+- Manage a shop's corporate account at the same bank
+- Correct a form field the bank flagged as invalid
+
 ## 2. Color Palette & Roles
 
 ### Primary

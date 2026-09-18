@@ -78,6 +78,13 @@ What distinguishes Weverse from louder commerce sites is its restraint with both
 - Functional accent set (info `#5989fe`, sale `#f65895`, success `#00d284`) used sparingly on Shop status
 - Cool neutral ladder `#111111` → `#484848` → `#8e8e8e` → `#aeaeae`; bright `#08ccca` and editorial `#2bd9d0` as teal variants
 
+## Primary tasks
+
+- Find an artist community and join it
+- Follow posts and livestreams from a favorite group
+- Buy official albums that are hard to find locally
+- Read editorial coverage of K-pop and artist culture
+
 ## 2. Color Palette & Roles
 
 ### Primary

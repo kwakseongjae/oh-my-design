@@ -73,6 +73,14 @@ The GEL (Global Experience Language) design system governs every BBC digital pro
 - WCAG AAA accessibility target — all colour choices validated against contrast requirements
 - Product-specific accent colours: iPlayer pink (`#dc2878`), Sport amber (`#ffd230`), Sounds orange (`#fa6400`)
 
+## Primary tasks
+
+- Read the day's news on the BBC News site
+- Register for a BBC account and sign in to it
+- Search the BBC site for a story or programme
+- Check which stories are live or breaking right now
+- Move between BBC News, Sounds and other BBC services
+
 ## 2. Color Palette & Roles
 
 ### Primary

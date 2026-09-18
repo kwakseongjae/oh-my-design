@@ -113,6 +113,13 @@ The reference therefore preserves the verified distinction between domains. The 
 - Square default geometry: sampled controls and inputs have 0px radius
 - System-font rendering on the captured commerce surface, separate from Coupang Sans on official corporate/careers surfaces
 
+## Primary tasks
+
+- Search the storefront for something to buy
+- Browse the catalog from the menu in the storefront header
+- Open a product page for an item in the catalog
+- Reach your own account area from the storefront header
+
 ## 2. Color Palette & Roles
 
 ### Observed live commerce surface

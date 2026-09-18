@@ -98,6 +98,12 @@ tokens:
 - 네모난 4px 목록 제어와 30px 극장 찾기 칩이 함께 쓰이는 서로 다른 밀도의 형태
 - 반복 로드된 NanumBarunGothic 기반의 공개 웹 타이포그래피
 
+## Primary tasks
+
+- Find a film, a theater, and a showtime
+- Open a film’s reservation link from the movie list
+- Search the movie route for a specific title
+
 ## 2. Layout & Grid
 
 - 공급된 캡처는 home, `/movie`, `/booking`의 `1440×900` 데스크톱 뷰포트 세 개다.

@@ -78,6 +78,14 @@ Depth is essentially flat. Live inspection found `box-shadow: none` across CTAs,
 - 12px workhorse radius; 16px for large CTAs; 100px pill accents
 - 2px borders on all buttons, including filled ones (border matches fill)
 
+## Primary tasks
+
+- Collect timestamped feedback on a video cut from clients
+- Send a client a link that opens on any device
+- Move a studio off a chaotic file server
+- Work out of shared folders and DocSend trackers
+- Compare plans on the pricing page and start free
+
 ## 2. Color Palette & Roles
 
 ### Core (official brand trio)

@@ -116,6 +116,12 @@ The reference deliberately keeps the two domains distinct. Homepage measurements
 - The verified geometry is local: a 16px promo tile and a 9999px navigation-account pill.
 - The observed marketing computed face is unresolved; a loaded Pretendard observation on documentation chrome is not promoted to a homepage UI-family token.
 
+## Primary tasks
+
+- Browse courses, bootcamps, and AI education in one place
+- Search the homepage for a course to take
+- Weigh up a business education program for a team
+
 ## 2. Color Palette & Roles
 
 ### Observed homepage roles

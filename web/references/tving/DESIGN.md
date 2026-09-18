@@ -110,6 +110,11 @@ The captured home and movie routes share an opened content-menu treatment; the s
 - Product chrome uses a loaded, TVING-hosted Pretendard webfont; declared legacy faces are not promoted.
 - The only reusable state claims are an expanded/menu-open content selector and a selected live tab, each with route and selector provenance.
 
+## Primary tasks
+
+- Browse series and movies to find something to watch
+- Watch a live channel or live sports as it airs
+
 ## 2. Color Palette & Roles
 
 ### Observed live product surface

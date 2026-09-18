@@ -98,6 +98,11 @@ The durable brand layer is clearer than any one website implementation. Shinhanâ
 - Corporate actions use 24â€“30px rounded outlines; the captured internet-banking text sample is denser and square-cornered
 - No authenticated mobile-banking, transfer, account, or checkout UI is represented by this packet
 
+## Primary tasks
+
+- Read public product and service information on the bank site
+- Navigate the public banking site by its compact functional labels
+
 ## 2. Color Palette & Roles
 
 ### Official identity

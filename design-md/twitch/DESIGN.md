@@ -73,6 +73,14 @@ The typographic voice is **Roobert TW** — a mono-linear geometric sans Twitch 
 - Shadowless: depth from the live video + translucent thumbnail scrims, not elevation
 - Scarlet `#eb0400` LIVE indicator as the one non-purple signal color
 
+## Primary tasks
+
+- Scan shelves of live channels and pick one to watch
+- Watch a live stream and take part in the chat
+- Follow a channel so its streams surface for you
+- Stream your own gameplay and brand the channel as yours
+- Moderate chat across the channels you help run
+
 ## 2. Color Palette & Roles
 
 ### Primary

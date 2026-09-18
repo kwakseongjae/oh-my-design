@@ -89,6 +89,14 @@ Typography is unapologetically broadcast-bold: weight 700 dominates the entire s
 - Role-locked support colors: mint `#16deb5` (student/free), purple `#a873ff` (premium), cyan `#02d1d6` (PPV), gold `#ffc400` (coins)
 - Custom corporate font stack ("CopyRight" webfont) with Roboto Condensed for numeric/timetable display
 
+## Primary tasks
+
+- Watch free 24-hour linear channels the way you watch broadcast television
+- Join a live broadcast at the moment everyone else is watching
+- Browse the home rails of broadcast content to find something to watch
+- Check the timetable to see what is on later
+- Keep a list of shows to come back to later
+
 ## 2. Color Palette & Roles
 
 ### Primary

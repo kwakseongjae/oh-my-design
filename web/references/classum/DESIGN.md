@@ -134,6 +134,13 @@ Classum’s current public business site presents an AI-focused education offer 
 
 The captured pages pair a lavender-white field (`#F6F6F9` and `#FFFFFF`) with a signal-red action color (`#FF4438`). Large rounded content blocks and compact 8px actions keep the information-heavy pages calm without making their public CTAs look generic. The system is flat in the retained samples: `box-shadow: none` on the documented actions and ordinary grid cards.
 
+## Primary tasks
+
+- Find out what the AI LMS does for instructors and students
+- Check which teaching tasks the AI is said to support
+- Tell the university offer apart from the corporate HR one
+- Request material or send an inquiry from the site
+
 ## 2. Color Palette & Roles
 
 - **Signal red** (`#FF4438`) — observed public-marketing action background and outline/action text. It is not asserted as an in-app destructive or status color.

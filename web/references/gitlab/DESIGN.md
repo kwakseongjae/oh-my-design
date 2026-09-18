@@ -96,6 +96,13 @@ The overall impression is "engineering tool that learned typography." It is dens
 - Near-shadowless; form depth via a single 1px inset hairline (`#89888d`)
 - Cool neutral text ladder: `#171321` → `#3a383f` → `#74717a` → `#626168`
 
+## Primary tasks
+
+- Run planning, CI, security scanning and deploy in one application
+- Build internal tools against the documented component library
+- Start a free trial from the marketing homepage
+- Audit how the platform works instead of trusting a vendor
+
 ## 2. Color Palette & Roles
 
 ### Primary & Brand

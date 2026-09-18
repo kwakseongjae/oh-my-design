@@ -77,6 +77,14 @@ What makes Composio distinctive is its tension between extreme minimalism and st
 - Monochrome hierarchy with color used only at the highest-signal moments
 - Developer-terminal aesthetic that bridges marketing and documentation
 
+## Primary tasks
+
+- Connect a tool like Slack or Notion to an agent instead of building the integration
+- Check per-call pricing and which tools already handle OAuth
+- Watch an agent run and see every tool call it made
+- Debug a failed tool call from its stack trace and error code
+- Copy a working code example out of the documentation
+
 ## 2. Color Palette & Roles
 
 ### Primary

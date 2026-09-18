@@ -81,6 +81,13 @@ What distinguishes PortOne from its fintech peers is restraint with depth and a 
 - Cool gray neutral ladder (`#374151` → `#6b7280` → `#94a3b8`) for text hierarchy
 - Status tints: blue `#e6f1ff`, success `#dcfce7`, error `#df4c4c` on `#fef2f2`
 
+## Primary tasks
+
+- Connect many payment gateways through a single API instead of integrating each one
+- Follow an integration guide in the developer docs to wire up checkout
+- Close the books across several payment gateways from one settlement dashboard
+- Offer shoppers local payment options when selling into another country
+
 ## 2. Color Palette & Roles
 
 ### Primary

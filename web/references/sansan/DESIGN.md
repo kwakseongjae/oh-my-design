@@ -97,6 +97,13 @@ Typography is a pragmatic system sans-serif stack: **Hiragino Kaku Gothic ProN**
 - Restrained, semantic use of red — CTAs, links, brand moments only
 - Mixed JP/EN typesetting with careful vertical-rhythm balancing
 
+## Primary tasks
+
+- Log a business card from your phone after a meeting
+- Check whether a colleague already knows the prospect you are calling
+- Switch between the 名刺, 会社, and 商談 sections while working
+- Keep a sales team from losing warm introductions
+
 ## 2. Color Palette & Roles
 
 ### Primary

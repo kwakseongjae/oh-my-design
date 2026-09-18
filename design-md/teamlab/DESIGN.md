@@ -82,6 +82,13 @@ teamLab is an interdisciplinary art collective formed in 2001, bringing artists,
 - **Measured information layers:** `#999999` appears in product-catalog metadata, separating secondary information without adding a new accent color.
 - **Crisp geometry:** the supplied capture clusters overwhelmingly at `0px` radius; the one observed `2px` footer action is local, not a global rounding rule.
 
+## Primary tasks
+
+- Browse the public product catalog by category
+- Open a product page from the catalog listing
+- Read how the collective describes itself and its work
+- Scan the news cards on the home page
+
 ## 2. Color Palette & Roles
 
 ### Observed public-surface roles

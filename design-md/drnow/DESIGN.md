@@ -76,6 +76,14 @@ The typography is Pretendard Variable, the gold-standard Korean system font — 
 
 Motion is purposefully gentle — slide-up sheets and fade-in transitions at 300ms reinforce that Dr.Now is reliable and steady, not frantic. The interface hierarchy is clear: orange acts, gray informs, white breathes.
 
+## Primary tasks
+
+- Consult a doctor by phone without leaving work
+- Find a pediatrician late at night and have medicine delivered
+- Compare prescription costs across pharmacies before confirming
+- Choose a hospital by symptom instead of medical specialty
+- Refill a monthly prescription for a long-term condition
+
 ## 2. Color Palette & Roles
 
 ### Primary (Orange Scale — official CSS vars --P100 to --P900)

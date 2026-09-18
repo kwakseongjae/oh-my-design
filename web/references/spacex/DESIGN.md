@@ -99,6 +99,13 @@ SpaceX is a launch and spacecraft company whose public site connects an expansiv
 
 The verified visual system is more specific than a generic “black-and-white” treatment. Its primary public CTA is a 50% black surface with `#f0f0fa` text and a faint cool-white border; selected tabs switch to `#ffffff`. D-DIN handles visible UI and body copy, while D-DIN-Bold is the loaded display face. Photography supplies the visual emphasis, not cards or shadows.
 
+## Primary tasks
+
+- Follow the mission story into vehicle and launch detail
+- Read which destinations a named vehicle is built to reach
+- Learn why reusable rockets matter to the cost of launch
+- Switch between tabs to read a program page in sections
+
 ## 2. Color Palette & Roles
 
 ### Observed public-page roles

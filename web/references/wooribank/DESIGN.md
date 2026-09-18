@@ -97,6 +97,11 @@ Woori Bank is a Korean bank whose public narrative links a long institutional hi
 - The measured public surfaces are compact and predominantly square: 0px radius dominates; a single home login utility has 5px corners.
 - The artifact covers a public home and two public legacy service/information routes only; it does not establish native, authenticated, transactional, or mobile UI.
 
+## Primary tasks
+
+- Read the bank's published account of its own history.
+- Look up the financial solutions offered to people and organisations.
+
 ## 2. Color Palette & Roles
 
 ### Official CI asset colors

@@ -163,6 +163,13 @@ The product-documentation domain is visually related but technically separate. M
 - Selected marketing tabs captured through six safe interaction expansions
 - Public Bezier implementation retained as product-system context, not substituted for uninspected app UI
 
+## Primary tasks
+
+- Answer a customer in live chat from the team inbox
+- Review the conversations a support team has handled
+- Configure a customer channel using the product documentation
+- Judge whether the platform fits an ongoing customer workflow
+
 ## 2. Color Palette & Roles
 
 ### Current marketing roles

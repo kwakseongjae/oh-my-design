@@ -78,6 +78,14 @@ The aesthetic across both consumer (`qanda.ai`) and corporate (`mathpresso.com`)
 - 16px base type for all primary actions -- equal-weight friendliness, no aggressive type hierarchy
 - Two canonical surfaces: consumer (cool-gray, conversational) and corporate (warm taupe, narrative)
 
+## Primary tasks
+
+- Photograph a problem you are stuck on and get a worked solution
+- Type a question into the conversation bar and send it
+- Follow a solution step by step once the answer arrives
+- Ask a human teacher or book a tutor session for the hardest problems
+- Revisit an earlier question from your past chat threads
+
 ## 2. Color Palette & Roles
 
 ### Primary

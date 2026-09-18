@@ -98,6 +98,14 @@ Elastic UI (EUI) is Elastic’s public React component framework: its documentat
 - The supplied sample clusters around 4px control corners and 4/6/8/12/16/24px spacing values.
 - Corporate marketing, EUI docs, and the supplied public component surfaces are separate domains; no authenticated Elastic-product UI is represented here.
 
+## Primary tasks
+
+- Find setup, theme, and component guidance for EUI
+- Move between the EUI home, components index, and card documentation
+- Check which font family EUI applies across the UI
+- Style an application by customizing its style tokens
+- Find out which theme EUI provides by default
+
 ## 2. Color Palette & Roles
 
 ### Selector-backed public EUI colors

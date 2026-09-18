@@ -83,6 +83,13 @@ What unites both worlds is restraint with depth and a hairline-first separation 
 - Bilingual JP/EN section labels with muted-grey (`#aaaaaa`) English headers over Japanese content
 - Soft circular icon buttons with a faint `rgba(0,0,0,0.1)` shadow as the corporate site's only elevation
 
+## Primary tasks
+
+- Build your own case-management app in kintone without being an engineer
+- Start the 30-day free trial and try making an app
+- Evaluate kintone and Garoon before choosing one for a company
+- Find the use case that matches your team's work
+
 ## 2. Color Palette & Roles
 
 ### Primary (Corporate Cybozu)

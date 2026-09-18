@@ -77,6 +77,14 @@ What makes Timee structurally interesting is its two-audience color split. The w
 - Audience-split palette: yellow-led worker surface, blue-led business surface
 - Flat tinted sections and big rounded cards (25px) instead of soft elevation
 
+## Primary tasks
+
+- Pick up a single shift with no resume or interview
+- Compare shifts by pay and distance before applying
+- Get paid the same day a shift ends
+- Build a review history that unlocks better shifts
+- Fill tonight's shift by posting it the same day
+
 ## 2. Color Palette & Roles
 
 ### Primary

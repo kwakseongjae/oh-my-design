@@ -71,6 +71,13 @@ What defines Watcha visually is **restraint in service of the catalog**. Radii a
 - Editorial, taste-curated tone — quieter than Netflix red, warmer than institutional blue
 - Catalog-first: chrome recedes, poster grid is the design
 
+## Primary tasks
+
+- Rate a film the moment the credits roll
+- Find something you will actually like, not a blockbuster
+- Browse an arthouse catalog that bigger services underweight
+- Subscribe to a plan and see the next billing date
+
 ## 2. Color Palette & Roles
 
 Colors below are extracted from live computed styles on watcha.com/browse (dark theme, 2026-05-19). Watcha does not publish a public token layer; values are observed, not from a documented system.

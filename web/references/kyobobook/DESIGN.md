@@ -82,6 +82,14 @@ Supporting accents stay quiet and purposeful: an indigo text accent `#474c98`, a
 - Conservative geometry — 8px buttons, 4px segmented toggles, a 24px pill-ended search bar
 - One-action-per-area discipline — the indigo Buy Now is the single emphasized CTA, cart sits in neutral grey
 
+## Primary tasks
+
+- Buy a book with the Buy Now action
+- Add a book to the cart instead of buying now
+- Search the catalog from the header search bar
+- Compare editions and prices across a long listing
+- Browse the best-seller and PICKS rails for something to read
+
 ## 2. Color Palette & Roles
 
 ### Primary

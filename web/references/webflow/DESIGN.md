@@ -77,6 +77,12 @@ Webflow's website is a visually rich, tool-forward platform that communicates "d
 - Uppercase labels: 10px–15px, weight 500–600, wide letter-spacing (0.6px–1.5px)
 - translate(6px) hover animation on buttons
 
+## Primary tasks
+
+- Design a site on a canvas instead of writing code
+- Start a new project from the template gallery
+- Publish a project and open its live URL
+
 ## 2. Color Palette & Roles
 
 ### Primary

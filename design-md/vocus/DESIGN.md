@@ -77,6 +77,14 @@ What truly distinguishes Vocus is its **long-form reading typography**. On a liv
 - The spark motif — "Where the Sparks Begin" / 讓創作，成為一切的起點 — as the brand's core narrative device
 - Conservative geometry: 6–8px on chrome buttons, 14px pill chips, 16px cards, a bold 4px-outline hero CTA at 16px radius
 
+## Primary tasks
+
+- Read long essays for an hour at a time
+- Publish a paid column and own its subscriber relationship
+- Set up a first paid space as a creator
+- Build a genuine, interactive community around your writing
+- Register or log in from the header call to action
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -131,6 +131,14 @@ The corporate record says the website launched in June 2009, took the name “bi
 - A system-resolved `-apple-system` effective family in this capture; no custom family is promoted.
 - The capture did not record a CSS brand swatch, interaction expansion, player controls, mobile layout, or a public design-system surface.
 
+## Primary tasks
+
+- Browse a dense, content-first feed of videos on the home page
+- Tell who posted a video and when, from its card
+- Discover videos across games, anime, lifestyle and knowledge
+- Search for a video from the home page search field
+- Engage with a video through bullet chatting
+
 ## 2. Color Palette & Roles
 
 The values below are limited to computed product-home values in the supplied evidence. They are not an official public Bilibili colour specification.

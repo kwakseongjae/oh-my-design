@@ -73,6 +73,14 @@ Typography is system-font-first with full Simplified-Chinese coverage (`PingFang
 - Content-first chrome: minimal nav, no decorative graphics, the brand defers to the creators
 - Mobile-native feel even on web — card tap targets, bottom-sheet interactions, thumb-friendly
 
+## Primary tasks
+
+- Research a skincare routine or restaurant before buying.
+- Save notes into a collection to decide on later.
+- Judge whether a note is trustworthy from its engagement.
+- Post a lifestyle note with a cover image that earns taps.
+- Buy a recommended item without leaving the app.
+
 ## 2. Color Palette & Roles
 
 Xiaohongshu does not expose a public CSS token layer; the values below combine the verified brand red with the observable live-site usage. Non-red neutral hexes are best-fit approximations of observed values and are flagged accordingly.

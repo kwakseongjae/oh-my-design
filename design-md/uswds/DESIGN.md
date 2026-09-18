@@ -119,6 +119,13 @@ The public documentation also frames USWDS as an active open-source community of
 - Square baselines with 4px control corners
 - Accessible, semantic component documentation rather than agency-specific branding
 
+## Primary tasks
+
+- Find a component's documentation from the site search
+- Configure type by role using the system's included typefaces
+- Check the accessibility conformance stated for a component's guidance
+- Align, design, and maintain a public government service
+
 ## 2. Color Palette & Roles
 
 - **Primary blue** (`#005ea2`): observed documentation action and outline color.

@@ -80,6 +80,13 @@ What distinguishes Goodpatch is its restraint with depth and its commitment to t
 - Bilingual font split — My Galano Grotesque (Latin) over Yu Gothic Pr6N (CJK body), body line-height 2.0
 - Rare editorial accents (coral `#ff776b`, plum `#534c97`) as punctuation, never as UI
 
+## Primary tasks
+
+- Read the case studies as proof of the studio's work
+- Find out which design services the company offers
+- Look into a design career at the studio
+- Send the studio an enquiry and get a confirmation
+
 ## 2. Color Palette & Roles
 
 ### Primary

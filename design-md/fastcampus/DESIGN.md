@@ -83,6 +83,14 @@ Typography is **Pretendard Variable** (the variable-weight version, not static P
 - Zero box-shadow on the category-pill or rank-badge layer (depth is color contrast, not elevation)
 - GNB nav links sit at 16px / 400 default + 12px / 600 (smaller-bolder) for `커뮤니티` / `기업교육` secondary links — an inverted-density signature versus Inflearn's flat 16px/600 nav
 
+## Primary tasks
+
+- Browse courses in a field outside your own work.
+- Search for a specific course from the top navigation.
+- Weigh a course by its instructor credentials and enrolment count.
+- Check when a cohort starts and when its discount ends.
+- Enrol in a course and pay for it.
+
 ## 2. Color Palette & Roles
 
 ### Primary (commerce-red)

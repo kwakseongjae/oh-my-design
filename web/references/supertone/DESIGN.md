@@ -74,6 +74,14 @@ Depth is deliberately flat — live inspection found `box-shadow: none` across t
 - Pill geometry — 30px buttons, fully-round (`9999px`) language pills
 - Tight negative tracking on display (-1.5px at 56px); large 19px body for breathing room
 
+## Primary tasks
+
+- Narrate a video in several languages with one consistent voice
+- Give game characters distinct, controllable voices through the API
+- Confirm rights-holder permission before a voice can be used
+- Retry a failed voice generation after a plain-language explanation
+- Explore voice restoration and dubbing for a media project
+
 ## 2. Color Palette & Roles
 
 ### Action Accents

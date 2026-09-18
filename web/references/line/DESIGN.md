@@ -209,6 +209,14 @@ The July 11 capture covered the Korean consumer site plus seven official design-
 
 Current product identity is anchored by official LINE Green `#06c755`, white `#ffffff`, black `#000000`, and a deep gray scale. The official component system is broader than pills: box buttons, capsule buttons, inputs, popups, tabs, badges, sheets, navigation, lists, cards, and feedback components each have defined anatomy, usage, and state behavior.
 
+## Primary tasks
+
+- Start a chat and keep it going with someone close
+- Spot which conversations have an update waiting
+- Confirm or back out of an important decision when asked
+- Jump to content that arrived above or below where you are reading
+- Recover from a communication error mid-conversation
+
 ## 2. Color Palette & Roles
 
 ### Official Messenger palette

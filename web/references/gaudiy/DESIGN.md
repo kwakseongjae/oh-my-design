@@ -66,6 +66,13 @@ What distinguishes Gaudiy from its fintech and consumer peers is its total absen
 - Flat depth: `box-shadow: none` across the system; grey `#eeeeee` bands segment the page
 - Black-on-white inversion (white `#ffffff` text on ink) for emphasis instead of color
 
+## Primary tasks
+
+- Read the open roles listed on the recruiting site
+- Apply for a low-pressure casual conversation with the team
+- Check the latest investment and partnership announcements
+- Evaluate fan-engagement platforms on behalf of an anime studio
+
 ## 2. Color Palette & Roles
 
 ### Ink & Text

@@ -105,6 +105,14 @@ The supplied capture is limited to the PatternFly public home, button documentat
 - Compact 4/8/16/24px spacing clusters, 6px controls, and 16px featured cards
 - Public documentation components only; no product-console workflow, form, toast, or state system inferred
 
+## Primary tasks
+
+- Find a component example and carry it through to implementation
+- Keep an enterprise workflow consistent using the documented foundations and patterns
+- Submit a feature request, design issue, or documentation update
+- Upgrade across a major release using the published codemods
+- Choose a theme, whether Default, high contrast, or Project Felt
+
 ## 2. Color Palette & Roles
 
 ### Observed public documentation surfaces

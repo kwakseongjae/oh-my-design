@@ -87,6 +87,12 @@ SoftBank Corp. is the operating telecommunications company established in 1986, 
 - Square navigation list items dominate the high-confidence shared shell; 6px, 10px, and fully rounded geometry occur in local public components.
 - Consumer marketing, enterprise marketing, corporate governance, Group identity, trademark policy, and declared-only font evidence are intentionally separate domains.
 
+## Primary tasks
+
+- Read which mobile, fixed-line and internet services the company provides
+- Read AI and network material to understand possible operational applications
+- Look up company strategy, governance and security information
+
 ## 2. Color Palette & Roles
 
 ### Selector-backed public values

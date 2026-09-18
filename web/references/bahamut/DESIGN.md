@@ -70,6 +70,13 @@ Bahamut's layout aesthetic is maximum-information: a fixed horizontal top nav wi
 - Body text in warm dark gray (`#464646`) over near-black heading (`#2d2d2d`)
 - Horizontal tab navigation with teal fill (`#11aac1` bg, white text) on active, transparent on inactive
 
+## Primary tasks
+
+- Check the news feed for game releases and review scores
+- Jump to a board to discuss a game with other fans
+- Watch seasonal anime on the platform's streaming service
+- Look up a game wiki or a strategy-guide board
+
 ## 2. Color Palette & Roles
 
 ### Primary

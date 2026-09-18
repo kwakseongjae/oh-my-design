@@ -75,6 +75,13 @@ What distinguishes IICOMBINED from other premium retail is its total commitment 
 - Full-bleed image and video tiles with zero border — the imagery is the interface
 - Cool neutral text ladder (`#343434` → `#555555` → `#858585`) for secondary hierarchy
 
+## Primary tasks
+
+- Buy a pair of eyewear straight from the campaign page
+- Browse sunglasses, glasses, bestsellers and gifts from the top navigation
+- Scan the product grid and pick an item by its photo
+- Find a new fragrance collection on the Tamburins storefront
+
 ## 2. Color Palette & Roles
 
 ### Primary (Achromatic)

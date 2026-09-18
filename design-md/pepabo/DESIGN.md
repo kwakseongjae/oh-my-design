@@ -90,6 +90,13 @@ The typography is unmistakably Japanese-product: the stack is **`YakuHanJP`, `No
 - Two-level elevation (`rgba(0,0,0,0.12)`) over a mostly-flat surface model
 - Brand mint `#30f4c5` as the pepabo flavor key accent
 
+## Primary tasks
+
+- Reuse a shared component instead of rebuilding a button
+- Repaint the same components with a brand Flavor
+- Call the shared token functions from product code
+- Read the engineering blog for candid trade-off reasoning
+
 ## 2. Color Palette & Roles
 
 ### Primary / Interactive (Pepper Blue — Informative)

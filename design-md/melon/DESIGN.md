@@ -44,6 +44,13 @@ tokens:
 
 Melon is Korea's dominant music-streaming service, operated by Kakao Entertainment, and its interface wears that scale on its sleeve: a dense, white, content-first surface where charts, lists, and player controls are packed tightly together and the music is always the point. The atmosphere is utilitarian and high-density — small type at 12px for body and 13-14px for controls, near-black #1A1A1A headings, and sharp 0px corners everywhere — so the screen reads like a tightly ruled spreadsheet of songs rather than a soft consumer app. Against that white #FFFFFF ground, the signature Melon green (#00CD3C in the source CSS, rendering as a near-twin #00D344 on the live login button) is rationed carefully, lighting up only active navigation, selected tabs, player buttons, and primary actions. Everything else is a quiet grayscale hierarchy — #666666 for muted text, #999999 for the lightest labels and placeholders — that lets the green do all the signaling. The result is unmistakably brand-green-on-white: grid-like, efficient, and built for browsing thousands of tracks without visual fatigue. It is the look of a tool that expects you to scan, tap, and keep listening.
 
+## Primary tasks
+
+- Scan the charts and queue up tracks
+- Jump straight to a song using search
+- Sign in to your account to start listening
+- Play a track and control it from the player
+
 ## 2. Color Palette & Roles
 
 - **Signature green #00CD3C** — the brand-defining Melon green; primary actions, active nav, selected tabs, player buttons (appears ~11x in the live CSS).

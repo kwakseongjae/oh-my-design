@@ -40,6 +40,12 @@ tokens:
 
 KKBOX wraps its interface in a near-black, cinematic canvas where the music itself feels like the source of light. The ground is a deep #111111 that recedes into the background, letting album art, hero photography, and oversized white display type carry the visual weight. A single signature accent — the KKBOX cyan-blue #00B6E1 — punches through the darkness, reserved for the moments that matter most, like the download call to action. The mood is premium and audio-forward, the kind of room you'd want to sit in with headphones on. Typography does the heavy lifting here: Work Sans at hero scale (up to 120px) gives the page an editorial, almost poster-like confidence. Softly rounded pill buttons and generous spacing keep the experience calm rather than busy, so the brand feels less like a utility and more like a stage.
 
+## Primary tasks
+
+- Discover and play music in a distraction-free space
+- Download the app from the page's single call to action
+- Browse the album art and photography on the page
+
 ## 2. Color Palette & Roles
 
 The palette is intentionally narrow and high-contrast, built for a dark environment where one accent has to do all the work.

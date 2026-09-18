@@ -78,6 +78,14 @@ What distinguishes Payhere from its fintech peers is its flat, pill-heavy, near-
 - Faint blue-grey (`#c1cad2`) for inactive/de-emphasized headings; slate `#5f6976` for secondary body
 - Rebranded logo spectrum: bright blue `#1d99ff` → indigo `#163bd8` → purple `#a164f9`
 
+## Primary tasks
+
+- Pick which store setup to buy, from card terminal to kiosk
+- Narrow the feature list down to what the store actually needs
+- Check the POS runs on a device the shop already owns
+- Compare the bundled monthly cost against a legacy POS rental
+- Take table orders without a server writing each one down
+
 ## 2. Color Palette & Roles
 
 ### Primary & Brand

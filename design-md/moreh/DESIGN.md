@@ -77,6 +77,13 @@ Depth is deliberately suppressed. Live inspection found `box-shadow: none` acros
 - Two oranges by job: bright `#ff5700` / hover `#ff793e` on chrome, AA-safe `#dd4300` for inline links
 - Charcoal `#1c1a18` footer with faint `#a09e9a` text and `#2a2926` hairline borders
 
+## Primary tasks
+
+- Request a demo of the inference software
+- Compare benchmark numbers before trusting a performance claim
+- Read a dense technical report on the engineering blog
+- Find which MoAI product covers a given workload
+
 ## 2. Color Palette & Roles
 
 ### Primary

@@ -185,6 +185,12 @@ The official identity constant is NAVER Green (`#03C75A`). Product chrome is oth
 - `InterVariable` on the corporate brand page
 - Search, filters, tabs, cards, menus, and paging controls grounded in live computed evidence
 
+## Primary tasks
+
+- Enter a query and compare the results it returns
+- Scan the portal for news, shopping, maps, and mail
+- Narrow a result set to one vertical or filter
+
 ## 2. Color Palette & Roles
 
 ### Official identity
