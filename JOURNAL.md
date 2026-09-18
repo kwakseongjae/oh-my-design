@@ -6,6 +6,12 @@
 - **열린 것**: 오너 승인 5건 → `docs/OWNER_DECISIONS_2026-09-17.md`. 01 채택 위험은 시험으로 해소(Core v2 정본 투입 시 951중 942 통과, 깨지는 9건 = 계약 갭 3 + toss를 legacy 픽스처로 쓴 6). **write gate 거리가 처음 측정됨: 9건/6파일.** 02는 애널리틱스가 죽어(GA4 GCP 프로젝트 삭제·Mixpanel 402) 수치 없이 결정해야 함. 03 advisory 390 vs 198. `inspected`/`captured` 관례 미확정.
 - **다음**: 인덱스 발행 호스트 4곳(kakao 316·krds 81·yeogiotte 40·pega) 로스터 대조, 나머지 430개 호스트 인덱스 일괄 프로브, `omd:add-reference` Phase 2에 Step 0(인덱스 우선) 추가.
 
+## 2026-09-18 (오후)
+
+- **한 일**: **438개 Primary tasks 완료(`b7299cee`)** — 1,907 과업, `missing-primary-task` 438→0, `portable_core` 1→383. 에이전트 72배치가 초안을 쓰고 `verify-primary-tasks.mjs`가 인용·표면·동사를 기계 검증, 통과분만 적용. 실제 결함 거부 0건(거부 3건은 전부 내 검증기 오탐, 둘 다 좁힘). 3개 바닥을 2개로 내림 — hyundaicard가 맞았고 강제했으면 없는 과업을 만들게 했을 것.
+- **열린 것**: 남은 사유 `[FILL IN]` 39 · 표면 범위 22. 승인 02~05 미착수(advisory 390 vs 198 · 미커밋 스프린트 · 애널리틱스 복구 · `/design-systems`). krds 채택 미실행.
+- **다음**: krds 채택(primary tasks·portable core 준비됨), 인덱스 우선 리서치(kakao 316·krds 81·yeogiotte 40·pega), 1000개 확충.
+
 ## 2026-09-18
 
 - **한 일**: **toss 채택 완료(`482fceca`)** — 카탈로그 최초로 Core 패키지에서 서비스된다. 라우트 4개 200, builder 프리뷰가 패키지에서 렌더, 게이트 전체 통과. 가는 길에 컴파일러 provenance 구멍(9-08부터 잠복), 타이포·radius 타입 승격 누락(240·316개 레퍼런스 복구), 파이프라인 리더 4개 + 원장 침묵 실패를 고쳤다. 투영 동등성 검사(`core-projection-parity`)가 내가 손으로 못 본 2건을 잡았다.
