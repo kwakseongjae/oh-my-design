@@ -32,6 +32,20 @@ describe("Reference AST fleet contract", () => {
     for (const entry of REGISTRY) {
       const quality = REFERENCE_QUALITY_BY_ID[entry.id];
       const markdown = readFileSync(join(REFS_DIR, entry.id, "DESIGN.md"), "utf8");
+
+      // An adopted Core v2 canonical has no legacy AST — `repository.server.ts`
+      // sets `ast: null` for it on purpose, because a Core body must never be
+      // paired with a legacy AST. Normalising it would throw on the missing
+      // frontmatter fence and read as fleet-wide loss. What it owes instead is
+      // its package: the authority that replaced the AST has to be there.
+      if (markdown.includes("<!-- design-md:section ")) {
+        expect(
+          existsSync(join(REFS_DIR, entry.id, ".omd", "system", "manifest.json")),
+          `${entry.id}: adopted Core v2 canonical without its .omd/system package — it has neither a legacy AST nor a verifiable Core contract`,
+        ).toBe(true);
+        continue;
+      }
+
       const ast = normalizeReference({ entry, quality, markdown });
 
       expect(ast.identity.id, `${entry.id}: identity mismatch`).toBe(entry.id);

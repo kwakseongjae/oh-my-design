@@ -10,6 +10,7 @@ import {
   normalizeReference,
   selectReferenceFoundations,
 } from "../src/lib/references/normalize.ts";
+import { readReferenceSource } from "./lib/reference-source.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const WEB_ROOT = resolve(__dirname, "..");
@@ -26,7 +27,9 @@ const references = REGISTRY.map((entry) => {
   if (!quality) throw new Error(`quality manifest is missing ${entry.id}`);
   const designPath = join(REFS_DIR, entry.id, "DESIGN.md");
   if (!existsSync(designPath)) throw new Error(`canonical DESIGN.md is missing: ${entry.id}`);
-  const markdown = readFileSync(designPath, "utf8");
+  // The AST is a legacy-format projection. An adopted reference no longer keeps
+  // that format on disk, but its package reproduces it byte for byte.
+  const markdown = readReferenceSource(join(REFS_DIR, entry.id)).markdown;
   const ast = normalizeReference({
     entry,
     quality,

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { componentsFromTokens, extractComponentSpecs } from "./extract-tokens";
+import { LEGACY_COMPONENT_FIXTURE } from "@/lib/references/legacy-fixtures";
 
 const REFS_DIR = join(process.cwd(), "references");
 
@@ -10,19 +11,22 @@ function readRef(id: string): string {
 }
 
 describe("component extraction against current reference contracts", () => {
-  it("Toss prefers six verified structured components over the retired speculative prose inventory", () => {
-    const blocks = componentsFromTokens(readRef("toss"));
+  it("prefers the verified structured components over the retired speculative prose inventory", () => {
+    const blocks = componentsFromTokens(readRef(LEGACY_COMPONENT_FIXTURE));
     expect(blocks).not.toBeNull();
     const variants = blocks!.flatMap((block) => block.variants.map((variant) => ({ type: block.type, ...variant })));
-    expect(variants).toHaveLength(6);
-    expect(variants.find((variant) => variant.name === "tds-button")).toMatchObject({
+    expect(variants).toHaveLength(8);
+    expect(variants.find((variant) => variant.name === "box-button-primary")).toMatchObject({
       type: "button",
-      bg: "#3182f6",
+      bg: "#06c755",
       fg: "#ffffff",
-      radius: "16px",
+      radius: "5px",
     });
-    expect(variants.find((variant) => variant.name === "text-field")?.extras.states).toContain("focus");
-    expect(variants.find((variant) => variant.name === "agreement")?.extras.states).toContain("unchecked");
+    expect(variants.find((variant) => variant.name === "text-input")?.extras.states).toContain("focused");
+    expect(variants.find((variant) => variant.name === "popup")?.extras.states).toContain("two-button");
+    // The prose inventory used to invent a card for almost every reference.
+    // This one declares buttons, an input, a dialog, tabs and a badge — and no
+    // card — so a card appearing here means prose leaked back in.
     expect(variants.some((variant) => variant.type === "card")).toBe(false);
   });
 

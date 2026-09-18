@@ -1,7 +1,114 @@
 # CURRENT STATE — 단일 복원 지점
 
-갱신: 2026-09-16 · 오너 지시로 **우선순위 재편**. 분기 `codex/track-foundation`, baseline `15ff0139`
+갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
+
+## 🟠 2026-09-18 — 오너 5건 승인. 채택 체인을 돌리다 **폰트 손실**에서 멈췄다
+
+정본: `docs/ADOPTION_CHAIN_2026-09-18.md`
+
+**뚫은 것.** r2 영수증 발급 후 컴파일이 거부됐다 — r1·r2의 `provenance.json`이 마이그레이션
+형태라 컴파일러 스키마(`schema_version`/`design_md_sha256`/`graph_sha256`/`decisions` 넷만 허용)를
+위반한다. 9-08부터 잠복해 있던 구멍이고, 전체 레퍼런스로 컴파일을 끝까지 돌려본 적이 없어
+오늘 처음 드러났다. `decisions` 37건은 그대로 두고 포장만 바꿔 **r3**를 만들었고
+(`r2/DESIGN.md`와 **바이트 동일** — 오너가 검토한 내용 불변, 근거는 `WHY_R3.md`),
+**카탈로그 최초로 컴파일에 성공**했다. 6산출물 + 채택 영수증.
+
+**증명한 것.** 실물 패키지를 정본 자리에 놓고 재니 `coreStatus: **verified**`,
+`model: core-v2`, 색은 전부 정상. **게이트가 요구한 "리더가 패키지를 수용한다"의 답이 나왔다.**
+(중간에 마이그레이션 *스테이징* 사이드카로 시험해 "OG가 500난다"고 잘못 판단했다가 즉시 정정.
+실물에서는 그 실패가 없다. 남는 사실 — 검증기가 거부하면 토큰이 `""`가 되고 OG 라우트가 터진다.)
+
+**고친 것.** `.gitignore`의 `.omd/`가 채택 사이드카까지 삼켜 **Vercel은 영원히
+"패키지 없음" 상태**였을 것. `!web/references/*/.omd/**` 추가, 루트 `.omd/` 무시는 회귀 확인.
+
+**멈춘 이유 — 채택하면 `fontFamily`가 `"Toss Product Sans"` → `""`가 된다.**
+마이그레이터가 타이포를 `typography_assets.rules` 산문으로만 옮기고 `roles`/`assets`
+타입 슬롯을 비워 둔다(색은 `foundations.tokens`로 승격되는데 타이포는 아니다).
+**스키마에는 자리가 있다** — Core v2의 한계가 아니라 마이그레이션 갭이다.
+810회 관측으로 검증된 값이 산문에는 있고 타입 필드에는 없다.
+
+`dropped_segments: 0` · `roundtrip_equal` · `reconstruction_equal` 셋 다 **참이고 불충분하다.**
+셋 다 마크다운 왕복을 잰다. **투영된 필드의 동등성은 아무도 재지 않았다.**
+> 마이그레이션은 텍스트로는 무손실, 데이터로는 유손실이다.
+
+AGENTS.md는 검증된 폰트 패밀리를 지우는 것을 명시적으로 금지한다. 오너 승인은 이 사실이
+알려지기 전에 나왔고, 승인 범위는 "5단계를 돌려라"이지 "검증된 값을 지워라"가 아니다.
+표본 60개 중 13개가 UI 폰트 패밀리를 갖고 있어 **toss만의 문제가 아니다.**
+
+**채택 전에 필요한 것:** (1) 마이그레이터가 `typography_assets.roles`/`assets` 승격
+(2) 손실 게이트에 **투영 동등성 검사** 추가 (3) 그다음 테스트 9건 → 채택 → 미러 → 빌드 확인.
+
+승인 02~05는 아직 미착수(01이 예상보다 깊었다). 951/951 통과, 정본 원상.
+
+---
+
+## 🔴 오너 승인 대기 5건 — 정본: `docs/OWNER_DECISIONS_2026-09-17.md`
+
+각 항목의 근거 수치·선택지·실제 명령은 그 문서에 있다. 요약:
+
+1. **toss r2 승인 → 채택.** 운영 위험은 **직접 시험해 답을 냈다** — Core v2 문서를 정본 자리에
+   넣고 전체 스위트 실행 결과 **951건 중 942 통과**. 리더는 견딘다(`repository.server.ts:81`이
+   `isCoreV2Document`로 이미 이중 판독). 깨지는 **9건**은 계약 갭 3(catalog-integrity의 `---`
+   frontmatter 요구, evidence-integrity 만료 집계, reference-ast-fleet 무손실) + **toss를 legacy
+   픽스처로 하드코딩한 6건**(`expected 'core-v2' to be 'legacy'`). 시험 후 정본 바이트 동일 복원.
+   → **write gate의 "every catalog reader accepts its package" 거리가 처음으로 측정됐다: 9건/6파일.**
+   리더 4개 2,834줄 재작성은 불필요 — `consumer-adapter`가 앞에서 흡수한다.
+   명령은 **5단계**(4단계 아님). `--reviewer`는 자유 문자열, `kwakseongjae` 제안.
+2. **advisory 노출 범위.** 390/440이 표시됨(verified 106·partial 176·legacy 108 — **검증 141건의 75%**).
+   `motion_value_unsourced` 261이 압도적인데 **아무 DS도 그 스케일을 발행하지 않는다**는 게 오늘
+   밝혀졌으므로 레퍼런스별 결함이 아니다. 선택지: (가)390 (나)**198**(모션 제외, 권고) (다)티어 게이트.
+   192개가 오직 모션 때문에 표시되던 것. ※ 261/162/273은 서로 다른 측정이다.
+3. **미커밋 119건**(128 아님). 오늘 8건 스테이징 완료 / 9·7~9·8 보류 스프린트 / 표류(`web/dbg.tmp.mjs`).
+4. **애널리틱스 복구(신규).** `scripts/analytics/` 전부 무동작 — GA4 SA의 **GCP 프로젝트가 삭제**됐고
+   (`Project #95733920708 has been deleted`) Mixpanel은 플랜이 API를 막는다(402), Vercel Analytics 미설치.
+   2026-06 활성화 누수 같은 지표를 **지금 아무도 다시 잴 수 없다.** 메모리 `project_analytics_stack.md` 정정함.
+5. **`/design-systems` 유지·대체·제거.** 권고는 유지. 근거의 절반(착지→builder 도달률)은 4번에 걸려 있다.
+
+---
+
+## 🔵 2026-09-17 저녁 — 오너 지적 2건 처리 완료
+
+### 1. 라우트 — 지목이 반대였다. AGENTS.md가 원인이었다
+
+오너: *"design-systems는 사실 그냥 아무것도 아니거든 … 너만 해도 지금 10번은 실수하고 있어."*
+
+실측 결과 `/design-systems/<id>`는 **440개 색인 + JSON-LD + builder 진입 CTA**를 지는
+영문 SEO/AEO 랜딩이다. "아무것도 아닌" 쪽은 `/reference/<id>` — 61줄, `noindex`,
+사이트맵 부재, canonical을 이미 `/design-systems/<id>`로 넘긴다.
+
+반복 실수의 기계적 원인: **AGENTS.md가 죽은 라우트를 "the catalog/detail"이라고 적고 있었다.**
+매 세션 주입되는 문장이라 읽는 에이전트마다 같은 쪽으로 틀렸다. **수정 완료.**
+정정 1건: AEO는 깨끗하지 않다 — AI 검색은 `llms.txt`가 아니라 색인된 HTML을 인용하므로
+440개 페이지가 곧 AEO 표면이다. 순수 에이전트 채널만 깨끗하다.
+근거·권고: `docs/ROUTE_IDENTITY_2026-09-17.md`.
+
+### 2. 토스 — 찾아놓고 목록을 안 읽었다
+
+오너: *"토스는 design system이 공개되어 있는 몇 안되는 기업인데 … 왜 못찾았어?"*
+
+레퍼런스는 **처음부터 올바른 호스트**(`tossmini-docs.toss.im`)를 인용했다. 놓친 건 로스터다.
+TDS 공식 **11개 코어 컴포넌트** 중 우리가 측정한 건 **2개**(Button, Badge).
+인덱스는 `developers-apps-in-toss.toss.im`(개발자 포털)의 `llms.txt`(32.8KB, 링크 258개)에 있고,
+모든 페이지가 `.md`를 준다. 이름 추측(`toss.design`/`design.toss.im`)으로는 영원히 못 닿는다.
+
+절차 결함: `omd:add-reference` Phase 2에 **"그 사이트가 자기 문서 목록을 발행하는가"** 단계가 없다.
+DS 호스트 10개 실측 → **5개가 인덱스를 발행 중**(kakao sitemap 316 URL, krds 81·컴포넌트 45,
+yeogiotte 40, pega llms.txt, baemin 5). 한 번도 읽지 않았다.
+
+모션 주장은 **철회하지 않는다** — TDS 자체 질의 엔드포인트가 "수치는 문서에 없고
+Figma UI Kit 안에 있다"고 1차 확인. §15가 "출처 없는 면책" → **"출처 있는 부재"**로 승격.
+
+반영: `web/references/toss/DESIGN.md` surfaces +3 / sources +4(라이선스 포함),
+§4 공식 로스터(측정 2·미측정 9는 이름만, 토큰 0건), §15 재작성. 미러 2곳 동기화, **453/453 통과**.
+검토 패키지는 출처 추가 전이라 스테일 → `toss-core-review-r2`로 **재생성 완료**
+(`portable_core: true`, dropped 0, 적합성 사유 0). 구 패키지 보존.
+근거·절차수정안: `docs/SOURCE_INDEX_BLINDNESS_2026-09-17.md`.
+
+**오너 확인 필요:** Core v2 투영이 §4 산문(로스터)을 불투명 확장으로 흡수해 **채택 후에는
+렌더되지 않는다.** 지금은 legacy 리더가 보여준다. 컴파일러 스펙 변경은 검토 직전이라 보류.
+
+---
 
 ## 현재 사용자 지시와 실행 범위
 

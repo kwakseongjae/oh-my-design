@@ -12,6 +12,7 @@ import { readdirSync, readFileSync, writeFileSync, existsSync, mkdirSync } from 
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import yaml from 'js-yaml';
+import { readReferenceSource } from './lib/reference-source.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -134,7 +135,9 @@ const ids = readdirSync(REFS_DIR, { withFileTypes: true })
 const entries = [];
 for (const id of ids) {
   const file = join(REFS_DIR, id, 'DESIGN.md');
-  const md = readFileSync(file, 'utf-8');
+  // An adopted Core v2 canonical has no frontmatter; its legacy source is
+  // rebuilt from the package, hash-checked. See lib/reference-source.mjs.
+  const md = readReferenceSource(join(REFS_DIR, id)).markdown;
   const fm = parseFrontmatter(md, file);
   if (fm.id !== id) fail(file, `id mismatch: frontmatter '${fm.id}' vs directory '${id}'`);
   validate(fm, file);

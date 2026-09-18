@@ -16,6 +16,11 @@ const ROOT = resolve(WEB_ROOT, "..");
 // checkout. The root references symlink is a gitignored local convenience.
 const REFS_DIR = join(WEB_ROOT, "references");
 const DESIGN_MD_MIRROR = join(ROOT, "design-md");
+
+/** Derived trees that must track an adopted canonical byte-for-byte. */
+const CORE_MIRRORS: ReadonlyArray<readonly [string, string]> = [
+  ["design-md", DESIGN_MD_MIRROR],
+];
 const FINGERPRINTS_ROOT = join(ROOT, "data", "reference-fingerprints.json");
 const FINGERPRINTS_CLAUDE = join(ROOT, ".claude", "data", "reference-fingerprints.json");
 const FINGERPRINTS_CODEX = join(ROOT, ".codex", "data", "reference-fingerprints.json");
@@ -128,6 +133,41 @@ describe("catalog-integrity / per-reference", () => {
 
     // §1 header and prose-first rule
     const md = readFileSync(join(REFS_DIR, id, "DESIGN.md"), "utf-8");
+
+    // An adopted Core v2 canonical is a different document: no YAML
+    // frontmatter, no numbered legacy sections, structure carried by
+    // `<!-- design-md:section -->` markers instead. Every guard below reads the
+    // 15-section dialect, so holding a Core canonical to them reports "must
+    // open with a --- frontmatter" — which sounds like a broken reference and
+    // is really just the wrong contract. Core canonicals get their own, and
+    // still owe the mirrors the same byte-for-byte agreement.
+    if (md.includes("<!-- design-md:section ")) {
+      expect(
+        md.startsWith("---\n"),
+        `${id}: an adopted Core v2 canonical must not carry YAML frontmatter — its authority is the .omd/system package`
+      ).toBe(false);
+      // Sections are opened and not closed; claims are the paired construct.
+      const sections = (md.match(/<!-- design-md:section /g) ?? []).length;
+      const claims = (md.match(/<!-- design-md:claim /g) ?? []).length;
+      const claimEnds = (md.match(/<!-- design-md:claim-end -->/g) ?? []).length;
+      expect(sections, `${id}: a Core v2 canonical carries no section markers`).toBeGreaterThan(0);
+      expect(claimEnds, `${id}: Core v2 claim markers are unbalanced (${claims} open, ${claimEnds} closed)`).toBe(claims);
+      expect(
+        existsSync(join(REFS_DIR, id, ".omd", "system", "manifest.json")),
+        `${id}: a Core v2 canonical without its .omd/system package cannot be verified — readers fall back to parsing the markdown and consume nothing the package declares`
+      ).toBe(true);
+      for (const [label, root] of CORE_MIRRORS) {
+        const mirror = join(root, id, "DESIGN.md");
+        expect(existsSync(mirror), `${id}: ${label} mirror missing`).toBe(true);
+        if (existsSync(mirror)) {
+          expect(
+            readFileSync(mirror, "utf-8") === md,
+            `${id}: ${label} mirror is not byte-identical to the reference — re-sync it`
+          ).toBe(true);
+        }
+      }
+      return;
+    }
 
     // Frontmatter-leak guard. The YAML frontmatter (between the opening `---`
     // and its closing `---`) must contain NO markdown prose — a `## heading`

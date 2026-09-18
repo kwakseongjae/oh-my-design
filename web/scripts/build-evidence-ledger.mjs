@@ -27,6 +27,7 @@ import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseReferenceFrontmatter } from "./lib/reference-quality.mjs";
+import { readReferenceSource } from "./lib/reference-source.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const WEB_ROOT = resolve(__dirname, "..");
@@ -52,7 +53,10 @@ let sourceCount = 0;
 for (const id of ids) {
   const designPath = join(REFS_DIR, id, "DESIGN.md");
   let frontmatter;
-  try { frontmatter = parseReferenceFrontmatter(readFileSync(designPath, "utf8"), designPath); }
+  // An adopted reference still owns its evidence; it just keeps it in the
+  // package now. Reading only the file on disk would drop it from the ledger
+  // silently, which is how the expiry count fell 140 → 139 unnoticed.
+  try { frontmatter = parseReferenceFrontmatter(readReferenceSource(dirname(designPath)).markdown, designPath); }
   catch { continue; }
   const v2 = frontmatter?.verification_v2;
   if (!v2 || !Array.isArray(v2.sources)) continue;

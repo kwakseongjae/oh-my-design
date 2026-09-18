@@ -271,9 +271,17 @@ export function extractCoreV2ReferenceDetail(
     ?? "";
 
   // Mood: the scope claim's opening paragraph — the sentence the document
-  // itself leads with.
-  const mood =
-    /### Scope\s*\n+([\s\S]*?)(?=\n\n|\n<!--)/.exec(experience)?.[1]?.trim().slice(0, 400) ?? "";
+  // itself leads with. A migrated reference carries its original section
+  // headings inside the claim body, so the first block is often `### Visual
+  // Theme & Atmosphere` rather than prose; taking it verbatim shows a reader
+  // the name of a section instead of the brand. Skip heading-only blocks and
+  // keep the first block that actually says something.
+  const scopeBody = /### Scope\s*\n+([\s\S]*?)(?=\n<!--|$)/.exec(experience)?.[1] ?? "";
+  const mood = scopeBody
+    .split(/\n{2,}/)
+    .map((block) => block.trim())
+    .find((block) => block !== "" && !/^#{1,6}\s/.test(block))
+    ?.slice(0, 400) ?? "";
 
   return {
     id,

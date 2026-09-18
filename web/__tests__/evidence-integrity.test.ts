@@ -241,7 +241,17 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // piece of content work and have to be edited by whoever did it — a test that cries
     // wolf at exactly the wrong moment. What must stay true is that the July batch is
     // gone by 01-10; anything still standing is new evidence, which is the goal.
-    expect(count("2027-01-07")).toBeGreaterThanOrEqual(140);
+    // An adopted Core v2 canonical has no YAML frontmatter, so the loop above
+    // cannot parse it and drops it from the count. That is not the batch
+    // shrinking — its evidence moved into `.omd/system/provenance.json`, where
+    // this ledger does not look. Counting the adopted references explicitly
+    // keeps the July batch fully accounted for and makes adoption visible here
+    // instead of letting it quietly erode the number this assertion defends.
+    const adopted = readdirSync(refsDir).filter((id) => {
+      const design = join(refsDir, id, "DESIGN.md");
+      return existsSync(design) && readFileSync(design, "utf8").includes("<!-- design-md:section ");
+    });
+    expect(count("2027-01-07") + adopted.length).toBeGreaterThanOrEqual(140);
     expect(count("2027-01-10")).toBeLessThanOrEqual(11);
   }, 120_000);
 });

@@ -7,6 +7,7 @@ import {
   type ReferenceQualityEntry,
   type ReferenceQualityStatus,
 } from "@/data/reference-quality.generated";
+import { LEGACY_DISTINCT_BRAND_FIXTURE } from "./legacy-fixtures";
 import {
   normalizeReference,
   ReferenceAstError,
@@ -79,21 +80,21 @@ Synthetic reference body.
 `;
 
 describe("Reference AST normalization", () => {
-  it("keeps Toss brand color separate from its canonical UI primary", () => {
-    const ast = loadReference("toss");
+  it("keeps a brand color separate from its canonical UI primary", () => {
+    const ast = loadReference(LEGACY_DISTINCT_BRAND_FIXTURE);
 
     expect(ast.identity.brandColor).toMatchObject({
-      value: "#0064ff",
+      value: "#000000",
       claimPath: "primary_color",
       origin: "frontmatter",
     });
     expect(selectPrimaryColor(ast)).toMatchObject({
-      value: "#3182f6",
+      value: "#0071e3",
       claimPath: "tokens.colors.primary",
       confidence: "high",
     });
-    expect(selectCanvas(ast)?.value).toBe("#ffffff");
-    expect(selectForeground(ast)?.value).toBe("#191f28");
+    expect(selectCanvas(ast)?.value).toBe("#f5f5f7");
+    expect(selectForeground(ast)?.value).toBe("#1d1d1f");
     expect(ast.document.sections.some((section) => section.number === "1")).toBe(true);
   });
 

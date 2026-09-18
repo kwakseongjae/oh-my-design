@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oh-my-design.kr/schema/design-system-provenance-v2.schema.json",
+  "title": "Design System Provenance v2",
+  "description": "Portable provenance sidecar for a hash-bound DESIGN.md Core v2 projection and its canonical System Graph.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "design_md_sha256",
+    "graph_sha256",
+    "decisions"
+  ],
+  "properties": {
+    "schema_version": { "const": "2.0.0" },
+    "design_md_sha256": { "$ref": "#/$defs/finalSha256" },
+    "graph_sha256": { "$ref": "#/$defs/finalSha256" },
+    "decisions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/decision" }
+    }
+  },
+  "$defs": {
+    "finalSha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "not": {
+        "const": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    },
+    "nonBlankText": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!\\s*$).+"
+    },
+    "semanticText": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!\\s*$).+",
+      "not": {
+        "$ref": "#/$defs/unresolvedSemanticPlaceholder"
+      }
+    },
+    "unresolvedSemanticPlaceholder": {
+      "type": "string",
+      "pattern": "^\\s*(?:\\[\\s*(?:[Ff][Ii][Ll][Ll](?:\\s|_|-)*[Ii][Nn]|[Tt][Oo][Dd][Oo]|[Tt][Bb][Dd]|[Uu][Nn][Kk][Nn][Oo][Ww][Nn]|[Uu][Nn][Rr][Ee][Ss][Oo][Ll][Vv][Ee][Dd]|[Nn][Oo][Tt](?:\\s|_|-)*[Ss][Pp][Ee][Cc][Ii][Ff][Ii][Ee][Dd]|미확정|미정|알\\s*수\\s*없음|未確定|未确定|尚未確定|尚未确定|未定|不明|未知|未指定|待定)[^\\]]*\\]|(?:[Ff][Ii][Ll][Ll](?:\\s|_|-)*[Ii][Nn]|[Tt][Oo][Dd][Oo]|[Tt][Bb][Dd]|[Uu][Nn][Kk][Nn][Oo][Ww][Nn]|[Uu][Nn][Rr][Ee][Ss][Oo][Ll][Vv][Ee][Dd]|[Nn][Oo][Tt](?:\\s|_|-)*[Ss][Pp][Ee][Cc][Ii][Ff][Ii][Ee][Dd]|미확정|미정|알\\s*수\\s*없음|未確定|未确定|尚未確定|尚未确定|未定|不明|未知|未指定|待定)(?:\\s*(?::|：|—|–|-)\\s*.*|\\s*\\([^)]*\\)|\\s+(?:[Ll][Aa][Tt][Ee][Rr]|[Pp][Ee][Nn][Dd][Ii][Nn][Gg]|[Pp][Ll][Aa][Cc][Ee][Hh][Oo][Ll][Dd][Ee][Rr]|[Dd][Ee][Ff][Ee][Rr][Rr][Ee][Dd]|[Uu][Nn][Cc][Oo][Nn][Ff][Ii][Rr][Mm][Ee][Dd]|[Uu][Nn][Dd][Ee][Cc][Ii][Dd][Ee][Dd]|[Aa][Ww][Aa][Ii][Tt][Ii][Nn][Gg](?:\\s+(?:[Ii][Nn][Pp][Uu][Tt]|[Rr][Ee][Vv][Ii][Ee][Ww]|[Cc][Oo][Nn][Ff][Ii][Rr][Mm][Aa][Tt][Ii][Oo][Nn]|[Dd][Ee][Cc][Ii][Ss][Ii][Oo][Nn]))?|[Tt][Oo]\\s+[Bb][Ee]\\s+(?:[Dd][Ee][Cc][Ii][Dd][Ee][Dd]|[Dd][Ee][Ff][Ii][Nn][Ee][Dd]|[Cc][Oo][Nn][Ff][Ii][Rr][Mm][Ee][Dd]|[Ss][Pp][Ee][Cc][Ii][Ff][Ii][Ee][Dd]|[Dd][Ee][Tt][Ee][Rr][Mm][Ii][Nn][Ee][Dd])|[Oo][Ww][Nn][Ee][Rr]\\s+[Ii][Nn][Pp][Uu][Tt](?:\\s+[Rr][Ee][Qq][Uu][Ii][Rr][Ee][Dd])?|추후(?:\\s+(?:결정|확인|지정))?|대기(?:\\s*중)?|확인\\s*(?:필요|대기|중)|결정\\s*(?:필요|대기|중)|後日(?:\\s*(?:決定|確認))?|確認待ち|保留|待確認|待确认|稍後(?:確認|決定)?|稍后(?:确认|决定)?))?)\\s*$"
+    },
+    "sourceClass": {
+      "enum": [
+        "prompt-fact",
+        "repository-fact",
+        "verified-reference-inspiration",
+        "agent-proposed-greenfield-decision",
+        "unresolved"
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/nonBlankText" }
+    },
+    "resolvedValue": {
+      "anyOf": [
+        { "$ref": "#/$defs/semanticText" },
+        { "type": "number" },
+        { "type": "boolean" },
+        {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": { "$ref": "#/$defs/resolvedValue" }
+        },
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/resolvedValue" }
+        }
+      ]
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "source_class", "evidence"],
+      "properties": {
+        "path": { "$ref": "#/$defs/nonBlankText" },
+        "source_class": { "$ref": "#/$defs/sourceClass" },
+        "value": { "$ref": "#/$defs/resolvedValue" },
+        "evidence": { "$ref": "#/$defs/evidence" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "source_class": { "const": "unresolved" } },
+            "required": ["source_class"]
+          },
+          "then": {
+            "not": { "required": ["value"] }
+          },
+          "else": {
+            "properties": {
+              "evidence": { "minItems": 1 }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

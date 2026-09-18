@@ -2,6 +2,7 @@
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { readReferenceSource } from '../web/scripts/lib/reference-source.mjs';
 import {
   evaluateReferenceQuality,
   parseReferenceFrontmatter,
@@ -29,7 +30,8 @@ const ids = readdirSync(REFS_DIR, { withFileTypes: true })
 
 const items = ids.map((id) => {
   const designPath = join(REFS_DIR, id, 'DESIGN.md');
-  const markdown = readFileSync(designPath, 'utf8');
+  // An adopted reference keeps its frontmatter inside its Core package.
+  const markdown = readReferenceSource(join(REFS_DIR, id)).markdown;
   const frontmatter = parseReferenceFrontmatter(markdown, designPath);
   const verificationPath = join(REFS_DIR, id, '.verification.md');
   const verificationMarkdown = existsSync(verificationPath)

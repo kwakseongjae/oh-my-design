@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oh-my-design.kr/schema/design-system-coverage-v2.schema.json",
+  "title": "Design System Coverage v2",
+  "description": "Portable coverage sidecar for a hash-bound DESIGN.md Core v2 projection and its canonical System Graph.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "design_md_sha256",
+    "graph_sha256",
+    "groups",
+    "checks"
+  ],
+  "properties": {
+    "schema_version": { "const": "2.0.0" },
+    "design_md_sha256": { "$ref": "#/$defs/finalSha256" },
+    "graph_sha256": { "$ref": "#/$defs/finalSha256" },
+    "groups": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "experience",
+        "foundations",
+        "typography-assets",
+        "components-states",
+        "layout-platforms",
+        "content-locales",
+        "governance"
+      ],
+      "properties": {
+        "experience": { "$ref": "#/$defs/group" },
+        "foundations": { "$ref": "#/$defs/group" },
+        "typography-assets": { "$ref": "#/$defs/group" },
+        "components-states": { "$ref": "#/$defs/group" },
+        "layout-platforms": { "$ref": "#/$defs/group" },
+        "content-locales": { "$ref": "#/$defs/group" },
+        "governance": { "$ref": "#/$defs/group" }
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "portable_core_structure",
+        "bound_system_authority",
+        "token_reference_closure",
+        "contrast",
+        "component_state_coverage",
+        "responsive_320_200",
+        "reduced_motion",
+        "assets_fonts_licenses",
+        "implementation_contract_complete",
+        "unknown_absence",
+        "opaque_extension_preservation"
+      ],
+      "properties": {
+        "portable_core_structure": { "$ref": "#/$defs/check" },
+        "bound_system_authority": { "$ref": "#/$defs/check" },
+        "token_reference_closure": { "$ref": "#/$defs/check" },
+        "contrast": { "$ref": "#/$defs/check" },
+        "component_state_coverage": { "$ref": "#/$defs/check" },
+        "responsive_320_200": { "$ref": "#/$defs/check" },
+        "reduced_motion": { "$ref": "#/$defs/check" },
+        "assets_fonts_licenses": { "$ref": "#/$defs/check" },
+        "implementation_contract_complete": { "$ref": "#/$defs/check" },
+        "unknown_absence": { "$ref": "#/$defs/check" },
+        "opaque_extension_preservation": { "$ref": "#/$defs/check" }
+      }
+    }
+  },
+  "$defs": {
+    "finalSha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "not": {
+        "const": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    },
+    "nonBlankText": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!\\s*$).+"
+    },
+    "semanticText": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!\\s*$).+",
+      "not": {
+        "$ref": "#/$defs/unresolvedSemanticPlaceholder"
+      }
+    },
+    "unresolvedSemanticPlaceholder": {
+      "type": "string",
+      "pattern": "^\\s*(?:\\[\\s*(?:[Ff][Ii][Ll][Ll](?:\\s|_|-)*[Ii][Nn]|[Tt][Oo][Dd][Oo]|[Tt][Bb][Dd]|[Uu][Nn][Kk][Nn][Oo][Ww][Nn]|[Uu][Nn][Rr][Ee][Ss][Oo][Ll][Vv][Ee][Dd]|[Nn][Oo][Tt](?:\\s|_|-)*[Ss][Pp][Ee][Cc][Ii][Ff][Ii][Ee][Dd]|미확정|미정|알\\s*수\\s*없음|未確定|未确定|尚未確定|尚未确定|未定|不明|未知|未指定|待定)[^\\]]*\\]|(?:[Ff][Ii][Ll][Ll](?:\\s|_|-)*[Ii][Nn]|[Tt][Oo][Dd][Oo]|[Tt][Bb][Dd]|[Uu][Nn][Kk][Nn][Oo][Ww][Nn]|[Uu][Nn][Rr][Ee][Ss][Oo][Ll][Vv][Ee][Dd]|[Nn][Oo][Tt](?:\\s|_|-)*[Ss][Pp][Ee][Cc][Ii][Ff][Ii][Ee][Dd]|미확정|미정|알\\s*수\\s*없음|未確定|未确定|尚未確定|尚未确定|未定|不明|未知|未指定|待定)(?:\\s*(?::|：|—|–|-)\\s*.*|\\s*\\([^)]*\\)|\\s+(?:[Ll][Aa][Tt][Ee][Rr]|[Pp][Ee][Nn][Dd][Ii][Nn][Gg]|[Pp][Ll][Aa][Cc][Ee][Hh][Oo][Ll][Dd][Ee][Rr]|[Dd][Ee][Ff][Ee][Rr][Rr][Ee][Dd]|[Uu][Nn][Cc][Oo][Nn][Ff][Ii][Rr][Mm][Ee][Dd]|[Uu][Nn][Dd][Ee][Cc][Ii][Dd][Ee][Dd]|[Aa][Ww][Aa][Ii][Tt][Ii][Nn][Gg](?:\\s+(?:[Ii][Nn][Pp][Uu][Tt]|[Rr][Ee][Vv][Ii][Ee][Ww]|[Cc][Oo][Nn][Ff][Ii][Rr][Mm][Aa][Tt][Ii][Oo][Nn]|[Dd][Ee][Cc][Ii][Ss][Ii][Oo][Nn]))?|[Tt][Oo]\\s+[Bb][Ee]\\s+(?:[Dd][Ee][Cc][Ii][Dd][Ee][Dd]|[Dd][Ee][Ff][Ii][Nn][Ee][Dd]|[Cc][Oo][Nn][Ff][Ii][Rr][Mm][Ee][Dd]|[Ss][Pp][Ee][Cc][Ii][Ff][Ii][Ee][Dd]|[Dd][Ee][Tt][Ee][Rr][Mm][Ii][Nn][Ee][Dd])|[Oo][Ww][Nn][Ee][Rr]\\s+[Ii][Nn][Pp][Uu][Tt](?:\\s+[Rr][Ee][Qq][Uu][Ii][Rr][Ee][Dd])?|추후(?:\\s+(?:결정|확인|지정))?|대기(?:\\s*중)?|확인\\s*(?:필요|대기|중)|결정\\s*(?:필요|대기|중)|後日(?:\\s*(?:決定|確認))?|確認待ち|保留|待確認|待确认|稍後(?:確認|決定)?|稍后(?:确认|决定)?))?)\\s*$"
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/nonBlankText" }
+    },
+    "group": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "evidence"],
+      "properties": {
+        "status": { "enum": ["covered", "not-applicable"] },
+        "evidence": { "$ref": "#/$defs/evidence" },
+        "reason": { "$ref": "#/$defs/semanticText" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "status": { "const": "not-applicable" } },
+            "required": ["status"]
+          },
+          "then": { "required": ["reason"] }
+        }
+      ]
+    },
+    "check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pass", "method"],
+      "properties": {
+        "pass": { "type": "boolean" },
+        "method": { "const": "controller-computed-system-graph-v2" }
+      }
+    }
+  }
+}

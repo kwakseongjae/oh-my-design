@@ -93,7 +93,11 @@ function detailFromCoreContract(
     return typed.found ? typed.value : explicitlyAbsent(absencePaths) ? "" : portableValue;
   };
   const uiRoleIds = ["ui", "ui-sans", "body"];
-  const headingRoleIds = ["heading", "display", "title", ...uiRoleIds];
+  // `h1`/`h2` sit between the semantic heading ids and the UI fallback: a
+  // reference that names its heading role wins, but one that only declares a
+  // numbered type scale — which is how the catalogue actually writes them —
+  // still yields a heading weight instead of falling through to body text.
+  const headingRoleIds = ["heading", "display", "title", "h1", "h2", ...uiRoleIds];
   const uiRole = roleByPriority(uiRoleIds);
   const headingRole = roleByPriority(headingRoleIds);
   const family = uiRole?.metadata.family;

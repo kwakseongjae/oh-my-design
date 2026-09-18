@@ -6,6 +6,7 @@ import {
   type ReferenceDetailAstContract,
 } from "@/lib/references/detail-projection";
 import { loadReference } from "@/lib/references/repository.server";
+import { LEGACY_DISTINCT_BRAND_FIXTURE, LEGACY_PAYLOAD_FIXTURE } from "@/lib/references/legacy-fixtures";
 
 interface ReferenceDetailResponse extends ReferenceDetail {
   readonly referenceAst?: ReferenceDetailAstContract;
@@ -35,8 +36,8 @@ async function requestReference(id: string, flag?: string) {
 }
 
 describe.sequential("GET /api/references/[id] AST contract", () => {
-  it("uses the AST model by default and separates Toss brand/UI color", async () => {
-    const { response, body } = await requestReference("toss");
+  it("uses the AST model by default and keeps brand colour separate from UI primary", async () => {
+    const { response, body } = await requestReference(LEGACY_DISTINCT_BRAND_FIXTURE);
     const contract = body.referenceAst;
 
     expect(response.status).toBe(200);
@@ -45,17 +46,17 @@ describe.sequential("GET /api/references/[id] AST contract", () => {
     expect(contract?.schemaVersion).toBe(1);
     expect(contract?.quality.status).toBe("verified_v2");
     expect(contract?.foundations.brandColor).toMatchObject({
-      value: "#0064ff",
+      value: "#000000",
       claimPath: "primary_color",
     });
     expect(contract?.foundations.primary).toMatchObject({
-      value: "#3182f6",
+      value: "#0071e3",
       claimPath: "tokens.colors.primary",
       origin: "frontmatter",
       confidence: "high",
     });
     expect(contract?.tokens.colors.primary).toMatchObject({
-      value: "#3182f6",
+      value: "#0071e3",
       claimPath: "tokens.colors.primary",
     });
     expect(contract?.compatibilityFallbacks).toEqual([]);
@@ -64,22 +65,25 @@ describe.sequential("GET /api/references/[id] AST contract", () => {
       checkedAt: "2026-09-17",
       conflictCount: 0,
     });
-    // 6 since 2026-09-17: the button-state re-verification is recorded as its own source
-    // rather than folded into the July capture, so the two inspections stay separable.
-    expect(contract?.evidence?.sources).toHaveLength(6);
+    // Five: the July marketing capture, its 2026-09-17 state re-verification
+    // kept as its own source rather than folded in, the store product page, and
+    // two Human Interface Guidelines pages.
+    expect(contract?.evidence?.sources).toHaveLength(5);
     expect(contract?.evidence?.claims.find((claim) => claim.claimPath === "tokens.colors.primary")).toMatchObject({
-      surfaceId: "tds-button",
-      sourceId: "tds-button-live",
-      method: "computed-style-and-official-doc",
+      surfaceId: "apple-home",
+      sourceId: "apple-live",
+      method: "computed-style",
       capturedAt: "2026-07-11",
       confidence: "high",
     });
 
-    expect(body.primary).toBe("#3182f6");
-    expect(body.background).toBe("#ffffff");
-    expect(body.foreground).toBe("#191f28");
-    expect(body.fontFamily).toBe("Toss Product Sans");
-    expect(body.radius).toBe("6px");
+    expect(body.primary).toBe("#0071e3");
+    expect(body.background).toBe("#f5f5f7");
+    expect(body.foreground).toBe("#1d1d1f");
+    expect(body.fontFamily).toBe("SF Pro Text");
+    // The AST model serves the declared control radius (`rounded.control`);
+    // the prose-derived legacy path used to reach for the 980px marketing pill.
+    expect(body.radius).toBe("8px");
 
     const differences = contract?.parity.differences ?? [];
     expect(response.headers.get("x-omd-reference-parity")).toBe(
@@ -135,11 +139,13 @@ describe.sequential("GET /api/references/[id] AST contract", () => {
   });
 
   it.each(["0", "false", "off"])("restores the exact legacy payload when REFERENCE_AST_V2=%s", async (flag) => {
-    const loaded = loadReference("toss");
-    if (!loaded) throw new Error("toss fixture is missing");
-    const expected = JSON.parse(JSON.stringify(extractLegacyReferenceDetail("toss", loaded.markdown))) as ReferenceDetail;
+    const loaded = loadReference(LEGACY_PAYLOAD_FIXTURE);
+    if (!loaded) throw new Error(`${LEGACY_PAYLOAD_FIXTURE} fixture is missing`);
+    const expected = JSON.parse(
+      JSON.stringify(extractLegacyReferenceDetail(LEGACY_PAYLOAD_FIXTURE, loaded.markdown)),
+    ) as ReferenceDetail;
 
-    const { response, body } = await requestReference("toss", flag);
+    const { response, body } = await requestReference(LEGACY_PAYLOAD_FIXTURE, flag);
 
     expect(response.headers.get("x-omd-reference-model")).toBe("legacy");
     expect(response.headers.get("x-omd-reference-parity")).toBeNull();

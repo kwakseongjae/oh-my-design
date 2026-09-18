@@ -30,6 +30,13 @@ experiments/
 
 # Per-harness-run artifacts (regenerable; not for public repo)
 .omd/
+# ...but an adopted reference's Core v2 package is product data, not a run
+# artifact. It ships: `repository.server.ts` admits the contract only when the
+# sidecar sits beside the DESIGN.md, and without it a Core canonical falls back
+# to markdown parsing — the reference still renders, but nothing consumes the
+# package, so production would not be running what adoption installed.
+!web/references/*/.omd/
+!web/references/*/.omd/**
 
 # npm pack tarball outputs (build artifacts)
 *.tgz

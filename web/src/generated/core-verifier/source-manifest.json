@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "kind": "generated-web-core-verifier-closure",
+  "files": [
+    {
+      "source": "scripts/compile-design-md-core.cjs",
+      "target": "compile-design-md-core.cjs",
+      "sha256": "b226d89ea7d922df9431e1e68ce87572fffb4aa69179540c682e005aa032ac23"
+    },
+    {
+      "source": "scripts/design-md-core.cjs",
+      "target": "design-md-core.cjs",
+      "sha256": "9426a043421d81fa6133bd8d343ec2fdd5bb48d850a88c5d37abb5d3ec9be8df"
+    },
+    {
+      "source": "scripts/design-md-core-schema.cjs",
+      "target": "design-md-core-schema.cjs",
+      "sha256": "64e35d4c75cf259c4fe1bfb86b04130e622926ebf5c0448d947ef5fdbef66ba1"
+    },
+    {
+      "source": "scripts/design-md-core-conformance.cjs",
+      "target": "design-md-core-conformance.cjs",
+      "sha256": "9e4e9b05e092621ac2125e31dab10168aab97f2ee8ac1c380fb5bf8c186234bb"
+    },
+    {
+      "source": "scripts/prepare-design-md-core-review.cjs",
+      "target": "prepare-design-md-core-review.cjs",
+      "sha256": "4a7db54c752c2cfe83de7c7daa6c294361d5ecfc4796f53b8f7ba333b6a2ff29"
+    },
+    {
+      "source": "spec/schema/design-md-core-adoption-receipt-v2.schema.json",
+      "target": "schema/design-md-core-adoption-receipt-v2.schema.json",
+      "sha256": "6f08c91ab6d7b95b86abdb6121871d0376888c5bacc424a394e57e62caf0b0fc"
+    },
+    {
+      "source": "spec/schema/design-md-core-adoption-review-v2.schema.json",
+      "target": "schema/design-md-core-adoption-review-v2.schema.json",
+      "sha256": "e6e07b923c53e6a89e0eb75ad299128acd105e5e9947f88165c42f022aeeaed1"
+    },
+    {
+      "source": "spec/schema/design-md-core-manifest-v2.schema.json",
+      "target": "schema/design-md-core-manifest-v2.schema.json",
+      "sha256": "cdd4d56ea619cdc496655a4d68d6b7c8dc98002805eddf845097e3e36bef83e8"
+    },
+    {
+      "source": "spec/schema/design-md-core-project-checkpoint-v2.schema.json",
+      "target": "schema/design-md-core-project-checkpoint-v2.schema.json",
+      "sha256": "fa5923c0b6af56c1629733bc899f99ec67494fa478d88326dbade4628cb5d9fd"
+    },
+    {
+      "source": "spec/schema/design-system-coverage-v2.schema.json",
+      "target": "schema/design-system-coverage-v2.schema.json",
+      "sha256": "bb25e4bd857eea0a35bf1b508012f44e7716a575d9b8c30a7cb9b460f9373267"
+    },
+    {
+      "source": "spec/schema/design-system-graph-v2.schema.json",
+      "target": "schema/design-system-graph-v2.schema.json",
+      "sha256": "d0a7218e37aea0590236de51496cfc728b2113a7fc1aff7654545b0f6e9b8e56"
+    },
+    {
+      "source": "spec/schema/design-system-provenance-v2.schema.json",
+      "target": "schema/design-system-provenance-v2.schema.json",
+      "sha256": "580ee9f31d1d77fbde1c6c8595c861ea93a69eccd005b86cc0fed56ff130c1aa"
+    },
+    {
+      "source": null,
+      "target": "web-core-verifier.cjs",
+      "sha256": "93e51e648076ef08f67905297c65e263c49c2a233cb03f7df8c53d1cbfff67a4"
+    }
+  ]
+}

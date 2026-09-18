@@ -2,6 +2,7 @@
 import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { readReferenceSource } from "./lib/reference-source.mjs";
 import {
   evaluateReferenceQuality,
   parseReferenceFrontmatter,
@@ -39,7 +40,9 @@ const entries = [];
 const parseErrors = [];
 for (const id of ids) {
   const designPath = join(REFS_DIR, id, "DESIGN.md");
-  const markdown = readFileSync(designPath, "utf8");
+  // Quality is computed from frontmatter evidence. An adopted reference keeps
+  // that source inside its package; see lib/reference-source.mjs.
+  const markdown = readReferenceSource(join(REFS_DIR, id)).markdown;
   try {
     const frontmatter = parseReferenceFrontmatter(markdown, designPath);
     const verificationPath = join(REFS_DIR, id, ".verification.md");

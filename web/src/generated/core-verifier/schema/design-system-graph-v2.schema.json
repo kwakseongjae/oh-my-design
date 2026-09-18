@@ -1,0 +1,354 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://oh-my-design.kr/schema/design-system-graph-v2.schema.json",
+  "title": "Design System Graph v2",
+  "description": "Canonical, typed authority behind a portable DESIGN.md Core v2 projection.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "identity",
+    "projection",
+    "experience",
+    "foundations",
+    "typography_assets",
+    "components_states",
+    "layout_platforms",
+    "content_locales",
+    "governance"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://oh-my-design.kr/schema/design-system-graph-v2.schema.json"
+    },
+    "schema_version": { "const": "2.0.0" },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "kind", "scope"],
+      "properties": {
+        "name": { "$ref": "#/$defs/semanticText" },
+        "kind": {
+          "enum": [
+            "project-system",
+            "evidence-backed-reconstruction",
+            "portable-brief"
+          ]
+        },
+        "scope": { "$ref": "#/$defs/semanticText" }
+      }
+    },
+    "projection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": { "const": "DESIGN.md" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "locale": { "enum": ["en", "ko", "ja", "zh-cn", "zh-tw"] }
+      }
+    },
+    "experience": { "$ref": "#/$defs/experience" },
+    "foundations": { "$ref": "#/$defs/foundations" },
+    "typography_assets": { "$ref": "#/$defs/typographyAssets" },
+    "components_states": { "$ref": "#/$defs/componentsStates" },
+    "layout_platforms": { "$ref": "#/$defs/layoutPlatforms" },
+    "content_locales": { "$ref": "#/$defs/contentLocales" },
+    "governance": { "$ref": "#/$defs/governance" },
+    "extensions": { "$ref": "#/$defs/extensions" }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "semanticText": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!\\s*$).+",
+      "not": {
+        "$ref": "#/$defs/unresolvedSemanticPlaceholder"
+      }
+    },
+    "unresolvedSemanticPlaceholder": {
+      "type": "string",
+      "pattern": "^\\s*(?:\\[\\s*(?:[Ff][Ii][Ll][Ll](?:\\s|_|-)*[Ii][Nn]|[Tt][Oo][Dd][Oo]|[Tt][Bb][Dd]|[Uu][Nn][Kk][Nn][Oo][Ww][Nn]|[Uu][Nn][Rr][Ee][Ss][Oo][Ll][Vv][Ee][Dd]|[Nn][Oo][Tt](?:\\s|_|-)*[Ss][Pp][Ee][Cc][Ii][Ff][Ii][Ee][Dd]|미확정|미정|알\\s*수\\s*없음|未確定|未确定|尚未確定|尚未确定|未定|不明|未知|未指定|待定)[^\\]]*\\]|(?:[Ff][Ii][Ll][Ll](?:\\s|_|-)*[Ii][Nn]|[Tt][Oo][Dd][Oo]|[Tt][Bb][Dd]|[Uu][Nn][Kk][Nn][Oo][Ww][Nn]|[Uu][Nn][Rr][Ee][Ss][Oo][Ll][Vv][Ee][Dd]|[Nn][Oo][Tt](?:\\s|_|-)*[Ss][Pp][Ee][Cc][Ii][Ff][Ii][Ee][Dd]|미확정|미정|알\\s*수\\s*없음|未確定|未确定|尚未確定|尚未确定|未定|不明|未知|未指定|待定)(?:\\s*(?::|：|—|–|-)\\s*.*|\\s*\\([^)]*\\)|\\s+(?:[Ll][Aa][Tt][Ee][Rr]|[Pp][Ee][Nn][Dd][Ii][Nn][Gg]|[Pp][Ll][Aa][Cc][Ee][Hh][Oo][Ll][Dd][Ee][Rr]|[Dd][Ee][Ff][Ee][Rr][Rr][Ee][Dd]|[Uu][Nn][Cc][Oo][Nn][Ff][Ii][Rr][Mm][Ee][Dd]|[Uu][Nn][Dd][Ee][Cc][Ii][Dd][Ee][Dd]|[Aa][Ww][Aa][Ii][Tt][Ii][Nn][Gg](?:\\s+(?:[Ii][Nn][Pp][Uu][Tt]|[Rr][Ee][Vv][Ii][Ee][Ww]|[Cc][Oo][Nn][Ff][Ii][Rr][Mm][Aa][Tt][Ii][Oo][Nn]|[Dd][Ee][Cc][Ii][Ss][Ii][Oo][Nn]))?|[Tt][Oo]\\s+[Bb][Ee]\\s+(?:[Dd][Ee][Cc][Ii][Dd][Ee][Dd]|[Dd][Ee][Ff][Ii][Nn][Ee][Dd]|[Cc][Oo][Nn][Ff][Ii][Rr][Mm][Ee][Dd]|[Ss][Pp][Ee][Cc][Ii][Ff][Ii][Ee][Dd]|[Dd][Ee][Tt][Ee][Rr][Mm][Ii][Nn][Ee][Dd])|[Oo][Ww][Nn][Ee][Rr]\\s+[Ii][Nn][Pp][Uu][Tt](?:\\s+[Rr][Ee][Qq][Uu][Ii][Rr][Ee][Dd])?|추후(?:\\s+(?:결정|확인|지정))?|대기(?:\\s*중)?|확인\\s*(?:필요|대기|중)|결정\\s*(?:필요|대기|중)|後日(?:\\s*(?:決定|確認))?|確認待ち|保留|待確認|待确认|稍後(?:確認|決定)?|稍后(?:确认|决定)?))?)\\s*$"
+    },
+    "stringList": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/semanticText" },
+      "uniqueItems": true
+    },
+    "token": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["$type", "$value"],
+      "properties": {
+        "$type": { "type": "string", "minLength": 1 },
+        "$value": { "$ref": "#/$defs/resolvedSemanticValue" },
+        "$description": { "$ref": "#/$defs/semanticText" },
+        "$extensions": { "$ref": "#/$defs/extensions" }
+      }
+    },
+    "resolvedSemanticValue": {
+      "anyOf": [
+        { "$ref": "#/$defs/semanticText" },
+        { "type": "number" },
+        { "type": "boolean" },
+        {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": { "$ref": "#/$defs/resolvedSemanticValue" }
+        },
+        {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/resolvedSemanticValue" }
+        }
+      ]
+    },
+    "tokenMap": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z][a-z0-9.-]*$" },
+      "additionalProperties": { "$ref": "#/$defs/token" }
+    },
+    "experience": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "summary": { "$ref": "#/$defs/semanticText" },
+        "primary_tasks": { "$ref": "#/$defs/stringList" },
+        "design_direction": { "$ref": "#/$defs/stringList" },
+        "principles": { "$ref": "#/$defs/stringList" },
+        "avoid": { "$ref": "#/$defs/stringList" }
+      }
+    },
+    "foundations": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tokens": { "$ref": "#/$defs/tokenMap" },
+        "rules": { "$ref": "#/$defs/stringList" },
+        "contrast_pairs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["foreground", "background", "minimum_ratio"],
+            "properties": {
+              "foreground": { "$ref": "#/$defs/semanticText" },
+              "background": { "$ref": "#/$defs/semanticText" },
+              "minimum_ratio": { "type": "number", "minimum": 1, "maximum": 21 }
+            }
+          }
+        },
+        "reduced_motion": { "type": "boolean" }
+      }
+    },
+    "typeRole": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "usage"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "usage": { "$ref": "#/$defs/semanticText" },
+        "family": { "$ref": "#/$defs/semanticText" },
+        "size": { "$ref": "#/$defs/semanticText" },
+        "weight": { "anyOf": [{ "type": "integer" }, { "$ref": "#/$defs/semanticText" }] },
+        "line_height": { "anyOf": [{ "type": "number" }, { "$ref": "#/$defs/semanticText" }] },
+        "tracking": { "$ref": "#/$defs/semanticText" }
+      }
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind", "source_status", "license_status"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "kind": { "enum": ["font", "logo", "icon", "image", "illustration", "video", "other"] },
+        "source_status": { "enum": ["project-owned", "official", "user-provided", "licensed-sourced", "generated-original", "unresolved"] },
+        "license_status": { "enum": ["verified", "not-required", "unresolved"] },
+        "source": { "$ref": "#/$defs/semanticText" },
+        "notes": { "$ref": "#/$defs/semanticText" }
+      }
+    },
+    "typographyAssets": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "roles": { "type": "array", "items": { "$ref": "#/$defs/typeRole" } },
+        "assets": { "type": "array", "items": { "$ref": "#/$defs/asset" } },
+        "rules": { "$ref": "#/$defs/stringList" }
+      }
+    },
+    "componentStateDisposition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["applicability"],
+      "properties": {
+        "applicability": { "enum": ["applicable", "not-applicable"] },
+        "reason": { "$ref": "#/$defs/semanticText" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "applicability": { "const": "not-applicable" } },
+            "required": ["applicability"]
+          },
+          "then": { "required": ["reason"] }
+        }
+      ]
+    },
+    "componentStateApplicability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["default", "hover", "focus-visible", "disabled", "loading", "error", "success"],
+      "properties": {
+        "default": { "$ref": "#/$defs/componentStateDisposition" },
+        "hover": { "$ref": "#/$defs/componentStateDisposition" },
+        "focus-visible": { "$ref": "#/$defs/componentStateDisposition" },
+        "disabled": { "$ref": "#/$defs/componentStateDisposition" },
+        "loading": { "$ref": "#/$defs/componentStateDisposition" },
+        "error": { "$ref": "#/$defs/componentStateDisposition" },
+        "success": { "$ref": "#/$defs/componentStateDisposition" }
+      }
+    },
+    "componentInteraction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind"],
+      "properties": {
+        "kind": { "enum": ["interactive", "non-interactive"] },
+        "state_applicability": { "$ref": "#/$defs/componentStateApplicability" },
+        "reason": { "$ref": "#/$defs/semanticText" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "kind": { "const": "interactive" } },
+            "required": ["kind"]
+          },
+          "then": { "required": ["state_applicability"] }
+        },
+        {
+          "if": {
+            "properties": { "kind": { "const": "non-interactive" } },
+            "required": ["kind"]
+          },
+          "then": {
+            "required": ["reason"],
+            "not": { "required": ["state_applicability"] }
+          }
+        }
+      ]
+    },
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "anatomy", "states", "semantics"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "anatomy": { "$ref": "#/$defs/stringList" },
+        "variants": { "$ref": "#/$defs/stringList" },
+        "states": { "$ref": "#/$defs/stringList" },
+        "token_refs": { "$ref": "#/$defs/stringList" },
+        "semantics": { "$ref": "#/$defs/semanticText" },
+        "interaction": { "$ref": "#/$defs/componentInteraction" }
+      }
+    },
+    "componentsStates": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "components": { "type": "array", "items": { "$ref": "#/$defs/component" } },
+        "rules": { "$ref": "#/$defs/stringList" }
+      }
+    },
+    "platformProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "rules"],
+      "properties": {
+        "id": { "enum": ["web", "ios", "android", "macos", "windows", "desktop", "other"] },
+        "rules": { "$ref": "#/$defs/stringList" }
+      }
+    },
+    "layoutPlatforms": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "minimum_width_px": { "type": "integer", "minimum": 1 },
+        "reflow_zoom_percent": { "type": "integer", "minimum": 100 },
+        "rules": { "$ref": "#/$defs/stringList" },
+        "platforms": { "type": "array", "items": { "$ref": "#/$defs/platformProfile" } }
+      }
+    },
+    "localeProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["locale", "status", "rules"],
+      "properties": {
+        "locale": { "type": "string", "pattern": "^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$" },
+        "status": { "enum": ["supported", "partial", "planned"] },
+        "rules": { "$ref": "#/$defs/stringList" }
+      }
+    },
+    "contentLocales": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "voice": { "$ref": "#/$defs/stringList" },
+        "terminology": {
+          "type": "object",
+          "propertyNames": { "$ref": "#/$defs/semanticText" },
+          "additionalProperties": { "$ref": "#/$defs/semanticText" }
+        },
+        "locales": { "type": "array", "items": { "$ref": "#/$defs/localeProfile" } }
+      }
+    },
+    "sourceClass": {
+      "enum": [
+        "prompt-fact",
+        "repository-fact",
+        "verified-reference-inspiration",
+        "agent-proposed-greenfield-decision",
+        "unresolved"
+      ]
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "source_class", "evidence"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "source_class": { "$ref": "#/$defs/sourceClass" },
+        "value": { "$ref": "#/$defs/resolvedSemanticValue" },
+        "evidence": { "$ref": "#/$defs/stringList" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "source_class": { "const": "unresolved" } }, "required": ["source_class"] },
+          "then": { "not": { "properties": { "value": {} }, "required": ["value"] } }
+        }
+      ]
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "priority": { "$ref": "#/$defs/stringList" },
+        "unknown_policy": { "const": "absent-at-smallest-unresolved-boundary" },
+        "change_policy": { "$ref": "#/$defs/stringList" },
+        "decisions": { "type": "array", "items": { "$ref": "#/$defs/decision" } }
+      }
+    },
+    "extensions": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(?:\\.[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)+$"
+      },
+      "additionalProperties": true
+    }
+  }
+}
