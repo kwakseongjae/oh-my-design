@@ -6,6 +6,12 @@
 - **열린 것**: 오너 승인 5건 → `docs/OWNER_DECISIONS_2026-09-17.md`. 01 채택 위험은 시험으로 해소(Core v2 정본 투입 시 951중 942 통과, 깨지는 9건 = 계약 갭 3 + toss를 legacy 픽스처로 쓴 6). **write gate 거리가 처음 측정됨: 9건/6파일.** 02는 애널리틱스가 죽어(GA4 GCP 프로젝트 삭제·Mixpanel 402) 수치 없이 결정해야 함. 03 advisory 390 vs 198. `inspected`/`captured` 관례 미확정.
 - **다음**: 인덱스 발행 호스트 4곳(kakao 316·krds 81·yeogiotte 40·pega) 로스터 대조, 나머지 430개 호스트 인덱스 일괄 프로브, `omd:add-reference` Phase 2에 Step 0(인덱스 우선) 추가.
 
+## 2026-09-19
+
+- **한 일**: 인덱스 우선 리서치 — 호스트 4곳 조사 후 pega(42개 발행/0개 인용)·krds(55/21) 로스터 기록(`f8d8e03a`·`08e9d85e`). Step 0을 6단계로 정정: `llms.txt`가 Yoast SEO 스텁일 수 있고(pega — 내용 검사를 통과하는데 컴포넌트 0개), 316 URL 사이트맵이 컴포넌트 0개일 수 있으며(kakao), 사이트맵이 닿는 수와 호스트가 발행하는 수가 다를 수 있다(krds 44 vs 55).
+- **열린 것**: pega의 3개 측정값이 `tokens.components`에 `type: button`으로 있어 builder가 브랜드 버튼으로 렌더한다. 빼면 증거 클레임 24건이 고아 — §4에 오너 결정으로 남김. 05(GA4 GCP 재생성) 오너 콘솔 작업 대기. krds 채택 미실행.
+- **다음**: 나머지 430개 호스트 인덱스 일괄 프로브, krds 채택, 1000개 확충.
+
 ## 2026-09-18 (오후)
 
 - **한 일**: **438개 Primary tasks 완료(`b7299cee`)** — 1,907 과업, `missing-primary-task` 438→0, `portable_core` 1→383. 에이전트 72배치가 초안을 쓰고 `verify-primary-tasks.mjs`가 인용·표면·동사를 기계 검증, 통과분만 적용. 실제 결함 거부 0건(거부 3건은 전부 내 검증기 오탐, 둘 다 좁힘). 3개 바닥을 2개로 내림 — hyundaicard가 맞았고 강제했으면 없는 과업을 만들게 했을 것.

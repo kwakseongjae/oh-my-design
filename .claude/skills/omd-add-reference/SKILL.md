@@ -50,3 +50,27 @@ migration gate all pass together.
 
 Never restore a legacy YAML marker, 13/15/16-section output, placeholder
 sentinels, or a second authoritative Markdown dialect as a shortcut.
+
+## When Phase 2 comes back, it needs a Step 0
+
+The Tier 1 discovery this skill used to run had three moves — guess `<brand>.design`,
+search `site:<domain>`, search GitHub — and all three are name-guessing or search. None
+asks whether the host publishes its own documentation index.
+
+That gap has now been measured four times. Toss publishes an `llms.txt` with 258 links on a
+**developer** portal no name-guess reaches, and our reference documented 2 of the 11
+components it lists. Pega's `design.pega.com` was cited correctly from the first pass and its
+index was never opened: 42 published components, 0 documented. KRDS publishes 55 and we cite
+21. Of ten hosts with an official design-system surface, five publish a machine-readable
+index and none had been read.
+
+The rule and its two traps are written up in `docs/SOURCE_INDEX_BLINDNESS_2026-09-17.md`
+(2026-09-19 section). The short version, because it is the part that is easy to get wrong:
+
+- **A file that passes a content check is not necessarily an index.** Pega's `llms.txt` is
+  real, well-formed, `text/plain`, correctly sized — and Yoast generated it from five SEO
+  pages. It lists zero components out of the 66 its own sitemap publishes.
+- **A large index is not a component index.** Kakao's sitemap is real and has 316 URLs, all
+  of them API documentation.
+
+Fold Step 0 in before restoring the three name-guessing moves, not after.
