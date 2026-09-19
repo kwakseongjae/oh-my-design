@@ -55,7 +55,7 @@ A를 계획할 때 쓴 "429개 호스트"는 틀린 모집단이었다. 이 결�
 만들어낼 수는 없고 실제는 최소한 이만큼. 불투명 슬러그(skyscanner `web-sEshz9Z5`,
 krds `component_04_07`)는 제외했다.
 
-검증: 손으로 "완전"이라 본 **yeogiotte가 3/3(100%)**, 9-18에 42개를 적은 **pega가 73%**(3단 경로라 추출이 범주를 잡음). 최악: velog 7% · wise 9% · google 11% · alipay 15% ·
+검증: 손으로 "완전"이라 본 **yeogiotte가 3/3(100%)**, 9-18에 42개를 적은 **pega가 73%**(3단 경로라 추출이 범주를 잡음). 최악(스크립트 기준): velog 7%(단 velog는 발행 로스터가 아니라 앱 내부 컴포넌트다 — 이 행은 무효) · wise 9% · google 11% · alipay 15% ·
 channeltalk 18% · uber 21% · patternfly 25% · vercel 26%.
 
 **→ 오너 판단 기준("갭 크면 A 우선")에 따라 A가 B보다 위.**
@@ -66,8 +66,14 @@ channeltalk 18% · uber 21% · patternfly 25% · vercel 26%.
 `components` 이름표가 상한을 로스터처럼 보이게 했다. `uber/baseweb`은 `components/` 규약을
 안 써서 91개가 3개로 보고됐다.
 
-**데이터 품질 플래그 2건**(미수정): `zigzag`는 `type: system`인데 URL이 블로그 글 ·
-`banksalad`는 `type: brand`인데 URL이 GitHub 조직 페이지.
+**`ds:` 플래그는 처리 완료 — 그리고 내 첫 진술은 철회했다**(`636e95d3`, `399d5196`).
+설명문을 열어보기 전에 "URL이 주지 않는 걸 주장한다"고 썼는데, 열어보니 셋 다 자기 URL이
+뭔지 정직하게 적고 있었다. velog "컴포넌트 93개"도 `apps/web/src/components/*`로, 레퍼런스가
+발행 로스터라 주장한 적 없는 것 — 내 스크립트 결함이다. 실제로 고친 것은 **설명문의 낡은
+사실 2건**: velog는 토큰 위치가 `src/lib/styles/themes.ts`가 아니라 `apps/web/src/styles/
+global.css`의 CSS 커스텀 프로퍼티 157개다(값은 실제로 Open Color 일치 — 그래서 삭제가 아니라
+위치 정정) · banksalad는 org에 BPL이 없고 `styleguide`가 코드 스타일 가이드다.
+`zigzag`는 설명문이 정확해 건드리지 않았다 — 남는 건 `type: system`의 배지 표시 문제뿐.
 
 ---
 
