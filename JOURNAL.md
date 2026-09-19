@@ -6,7 +6,8 @@
 - **열린 것**: adobe(`/page/` 114개)·likelion(Storybook 쿼리스트링)은 진짜 로스터인데 자동 판정 보류 — 한 호스트씩이라 규칙 안 넓힘. 인덱스 없는 16개는 렌더된 내비 읽기 필요. 데이터 품질 2건: `zigzag`는 `type: system`인데 URL이 블로그 글, `banksalad`는 `type: brand`인데 GitHub 조직. B(`contains-prescriptive-placeholder` 39·`missing-product-surface-scope` 22)·C(krds 채택, B 뒤)·만료 벽(141건 전부 2027-01-10) 그대로.
 - **한 일(2)**: A 보수 1차 — wise 55·alipay 72·channeltalk 60·patternfly 72·vercel 72·zendesk 55 = **386개 이름** 기록(`7c2496c6`, `0d0040d4`). 게이트 전부 통과, 티어·portable_core 불변, 원장 899→905. wise가 인용하던 `docs.wise.design`가 죽어 있었다(302→404, 리다이렉트 후 200이라 상태코드 검사는 통과).
 - **한 일(3)**: A 보수 2차 — skyscanner 91+10·smarthr 61·uswds 47·ibm 39·govuk 37 = 285개, 누적 **11건 671개**(`ac211f6b`). 에이전트 5명이 55분간 못 써서 직접 마무리. skyscanner는 2KB 셸이라 브라우저 렌더 필요 — 이 카탈로그에서 프로브를 무력화하는 유일한 호스트. ibm만 1개를 클래스 결합으로 진짜 측정(`cds--accordion__heading`), uswds는 자기 소스에 인덱스를 2개월간 들고도 안 읽었다.
-- **다음**: 남은 로스터 12개 호스트(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(4)**: 로스터 **완료** — fetch 가능 5건(cloudscape 108·hashicorp 37·money-forward 25·kdan 9·hahow 4, `5bedd33e`) + 브라우저 9건(uber 89·wanted 53·microsoft 47·google 36·sanity 36·likelion 18·samsung 8 + adobe 114페이지 + servicenow 기록, `d5d1e246`). 누적 **25건 1,141개**. baseweb 91 주장 정정(`7e61175f`) — 레포 트리는 로스터가 아니고 문서 사이트가 89.
+- **다음**: 인덱스 없는 16개 SPA(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

@@ -3,6 +3,42 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-19 — 후보 A 로스터 작업 **완료**. 25건 / **1,141개 컴포넌트 이름**
+
+`ds.type: system` 50건 중 **인덱스를 가진 것은 전부 기록했다.**
+
+| 회차 | 건 | 이름 | 커밋 |
+|---|---|---|---|
+| 1차 (에이전트 5 + 직접 1) | 6 | 386 | `7c2496c6` `0d0040d4` |
+| 2차 (직접) | 5 | 275 + 유틸 10 | `ac211f6b` |
+| fetch 가능 (직접) | 5 | 183 | `5bedd33e` |
+| 브라우저 필요 (직접) | 8 | 287 | `d5d1e246` |
+
+최대 **cloudscape 108** · skyscanner 91+10 · uber 89 · alipay 72 · patternfly 72 · vercel 72 ·
+channeltalk 60 · smarthr 61 · wise 55 · zendesk 55 · wanted 53 · microsoft 47 · uswds 47 ·
+ibm 39 · govuk 37 · hashicorp 37 · google 36 · sanity 36 · money-forward 25 · likelion 18 ·
+kdan 9 · samsung 8 · hahow 4. 별도: **adobe 114개 페이지**(로스터 아님) · **servicenow 기록만**.
+
+**신원 근거 — 25건 중 발행 컴포넌트를 실제로 측정하는 건 3건뿐이다**: patternfly 2
+(`pf-v6-c-button pf-m-primary`) · ibm 1 (`cds--accordion__heading`). 나머지는 전부 제품·마케팅
+표면 캡쳐이거나 선택자 위치 기반이다. govuk은 제3의 범주(캡쳐 없음 + 시스템 자신의 토큰
+함수 인용).
+
+**fetch로 못 가는 호스트가 실재한다**: skyscanner(2KB 셸·불투명 id) · likelion(Storybook
+쿼리스트링 — 경로 크롤로는 구조상 불가, 답은 `/index.json`) · uber(레포 트리는 3개도 94개도
+나오고 **둘 다 로스터가 아니다**, 문서 사이트가 89) · google·microsoft·sanity·wanted·samsung.
+**servicenow는 자기 인덱스가 "Failed to load components"** (브라우저 2회) ·
+**adobe는 Spectrum 1만 열거 가능**(S2 사이트맵 403, 사이드바 렌더 안 됨).
+
+게이트 전부 통과 · 474/474 · 티어 **141/183/116 불변** · `portable_core` **383 불변** ·
+원장 899 → **917**.
+
+**남은 것**: 인덱스 없는 16개 SPA(apple·line·mongodb·pinterest·zendesk 외) — 렌더된 내비
+읽기 필요 · B(`contains-prescriptive-placeholder` 39 · `missing-product-surface-scope` 22) ·
+만료 벽(141건 전부 2027-01-10).
+
+---
+
 ## ✅ 2026-09-19 — 후보 A 보수 2차. 누적 **11건 / 671개 이름**
 
 2차(`ac211f6b`): skyscanner 91+유틸 10 · smarthr 61 · uswds 47 · ibm 39 · govuk 37 = **285개**.
