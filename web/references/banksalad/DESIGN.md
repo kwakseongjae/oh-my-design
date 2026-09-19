@@ -14,7 +14,7 @@ ds:
   name: Banksalad GitHub
   url: "https://github.com/banksalad"
   type: brand
-  description: Banksalad's public GitHub org including styleguide repos and BPL (Banksalad Product Library) reference material.
+  description: Banksalad's public GitHub org. Its styleguide repo is a code style guide (android/git/python/web); no design-system or component library is published there.
   og_image: "https://avatars.githubusercontent.com/u/71009899?s=280&v=4"
 verification_v2:
   schema: 2
