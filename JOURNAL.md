@@ -8,7 +8,8 @@
 - **한 일(3)**: A 보수 2차 — skyscanner 91+10·smarthr 61·uswds 47·ibm 39·govuk 37 = 285개, 누적 **11건 671개**(`ac211f6b`). 에이전트 5명이 55분간 못 써서 직접 마무리. skyscanner는 2KB 셸이라 브라우저 렌더 필요 — 이 카탈로그에서 프로브를 무력화하는 유일한 호스트. ibm만 1개를 클래스 결합으로 진짜 측정(`cds--accordion__heading`), uswds는 자기 소스에 인덱스를 2개월간 들고도 안 읽었다.
 - **한 일(4)**: 로스터 **완료** — fetch 가능 5건(cloudscape 108·hashicorp 37·money-forward 25·kdan 9·hahow 4, `5bedd33e`) + 브라우저 9건(uber 89·wanted 53·microsoft 47·google 36·sanity 36·likelion 18·samsung 8 + adobe 114페이지 + servicenow 기록, `d5d1e246`). 누적 **25건 1,141개**. baseweb 91 주장 정정(`7e61175f`) — 레포 트리는 로스터가 아니고 문서 사이트가 89.
 - **한 일(5)**: B 완료 — `portable_core` **383 → 440/440, 사유 0건**. 61건 중 **2/3이 체커 버그**였다: `unresolved`가 플레이스홀더 어휘와 스펙 사유 클래스에 동시 소속(스펙 자신의 예시도 탈락, AGENTS.md §3 다섯 줄 표를 가진 22건이 규칙 준수로 탈락) · scope 부정 판정이 "The green is a signal, not a surface" 같은 디자인 산문을 자기부정으로 읽음(허용 단어 목록을 세 번 넓혀온 이력). 어휘 대신 구조로 판정하도록 교체(`6dd29a4b`, `bae760bc`) + 진짜 `[FILL IN]` 36줄 제거(`17d6f7c3`).
-- **다음**: C(krds 채택, 이제 선행조건 해제) · 인덱스 없는 16개 SPA(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(6)**: **C 완료 — krds 채택**(`115cd802`). 5단계 완주, `coreStatus: verified`. accent 1건만 손실(오너 수용, 302건이 18가지 이름을 써서 매핑 불가). 폰트 패밀리·heading weight는 마이그레이터/어댑터를 모양 기반으로 고쳐 보존(`dbfb248c`, `1245b737`). **파리티 게이트가 조용한 0을 잡았다** — 첫 패키지가 verified인데 토큰 0개였고, 내 provenance 변환기가 토큰 자기 경로 결정을 안 낸 탓. 트랜잭션 게이트 셋은 통과시켰다.
+- **다음**: 인덱스 없는 16개 SPA(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)
