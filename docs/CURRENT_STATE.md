@@ -3,6 +3,35 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-19 — 후보 A 보수 1차. 레퍼런스 6건에 **386개 컴포넌트 이름** 기록
+
+| 레퍼런스 | 발행 | 기록 | 비고 |
+|---|---|---|---|
+| wise | 55 | 55 | 인용하던 `docs.wise.design`가 **죽어 있었다**(302 → `/404`) |
+| alipay | 72 | 72 | 시스템은 **Ant Design**(Ant Group), Alipay 전용이 아님. 호스트 7개 범주 |
+| channeltalk | 60 | 60 | export 인덱스 66 − 프로바이더 6. 44 정식 / 13 Alpha / 3 Legacy |
+| patternfly | 72 | 70 미측정 | 인덱스가 스스로 "72 items". 패턴 9건 제외, 중복 2건은 호스트 것이라 유지 |
+| vercel | 72 | 72 | 71 페이지 + `pill`(`/geist/badge#pill` 앵커, 사이트맵엔 없음) |
+| zendesk | 55 | 55 | 호스트가 붙인 소제목 5개 + 소제목 없는 26개는 **범주 없이** 기록 |
+
+커밋 `7c2496c6`(wise) · `0d0040d4`(5건). 게이트 전부 통과 · 474/474 ·
+티어 **141/183/116 불변** · `portable_core` **383/440 불변** · 카탈로그 440 pass / dropped 0 ·
+원장 899 → **905**(인덱스 출처 6건). `tokens.components`는 어느 것도 안 건드렸다.
+
+**가장 중요한 건 기록한 이름이 아니라 거절한 주장이다.** zendesk의 측정 3건은
+`/components/button` 문서 페이지 **위에서** 캡쳐됐는데도 Garden의 `button`이라고 부르지
+않는다 — 위치는 정체성이 아니고, 캡쳐 어디에도 그것이 발행된 컴포넌트의 렌더 인스턴스라는
+표시가 없다. vercel도 같은 선을 긋는다(6건 중 5건이 Geist 소개 페이지 자체의 랜딩 그리드).
+
+**보고를 그대로 믿지 않고 직접 확인한 것**: ant.design 서빙 HTML에 7개 범주와 74개 슬러그
+(→ `overview`·`changelog` 빼면 72) · bezier `src/index.ts`가 정확히 66개 모듈 re-export하고
+로스터가 "미export"라 한 5개는 실제로 없음 · `badge#pill`이 Geist 서빙 HTML에 존재.
+(첫 ant.design 확인은 `-L`을 빼먹어 301 본문을 읽었다.)
+
+남은 로스터 대상 **21개 호스트**. 다음 파도 후보: skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity.
+
+---
+
 ## 🔎 2026-09-19 — 후보 A 전수 프로브 완료. **대상은 429가 아니라 50이었다**
 
 스크립트 `web/scripts/probe-design-system-index.mjs`(신규, 미커밋) · 원본 `/tmp/probe-system.json`
