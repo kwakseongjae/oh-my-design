@@ -154,9 +154,15 @@ async function readGithubTree(owner, repo) {
   if (!Array.isArray(tree)) return null;
   const dirs = tree.filter((entry) => entry.type === "tree").map((entry) => entry.path);
 
-  // Two conventions, and the second is not optional: uber/baseweb keeps its 91
-  // components as immediate children of `src/` with no `components/` dir at all,
-  // so the first convention alone reported baseweb as a three-component system.
+  // Two conventions, and the second is not optional: uber/baseweb keeps its
+  // source as immediate children of `src/` with no `components/` dir at all, so
+  // the first convention alone reported baseweb as a three-component system.
+  //
+  // Neither convention gives a roster, though. Measured 2026-09-19: the repo
+  // yields 3 or 94 depending on which is assumed, while baseweb.design publishes
+  // 89 in ten named categories. A repo scan measures source layout; only the
+  // documentation site says what the system publishes. Treat both numbers as a
+  // signal that a roster exists, never as the roster.
   const byComponentsDir = dirs.filter((path) => /(^|\/)components\/[^/]+$/i.test(path));
   const bySrcChild = dirs.filter((path) => /^(?:src|packages)\/[^/]+$/i.test(path));
   const useSrc = byComponentsDir.length < 5 && bySrcChild.length > byComponentsDir.length;
@@ -170,7 +176,7 @@ async function readGithubTree(owner, repo) {
     opaque: false,
     sample: children.slice(0, 5),
     urls: children,
-    // `src/*` is a looser convention than `components/*` — baseweb's 91 include
+    // `src/*` is a looser convention than `components/*` — baseweb's include
     // `src/a11y` and `src/styles`, which are not components. The number is an
     // upper bound either way, and this says which shape produced it.
     notes: children.length === 0
