@@ -116,6 +116,25 @@ Hahow's color system is anchored by a teal Primary scale published in its open-s
 - Font: 14px / 400
 - Use: metadata, category, and filter tags
 
+### Published component roster (4 published, none measured here)
+
+`hahow-design` publishes **4 components**, enumerated from the directories under
+`src/components/` in the repository this reference cites
+(`https://github.com/hahow/hahow-design`, read 2026-09-19): Button, Rate, RatingModal, Spinner.
+
+This is the smallest published roster in the catalogue, and worth stating plainly rather than
+treating as a gap: a four-component library is what Hahow publishes, not evidence that something
+is missing.
+
+### What this reference's three entries are
+
+The three stylings in §4 carry `use:` strings that describe appearance and purpose — "Teal
+outline primary CTA, 2px #dcf9f3 border, 42px height" — with no selector, no capture id, and no
+class from the package. This reference has no `verification_v2` block and so no surface record.
+
+One of the three shares a name with a published component (Button). It is not claimed as a
+rendered instance of it, and none of the four above carries a measured value here.
+
 ## 5. Layout Principles
 
 - Content sits on a soft gray-blue #F5F7F9 canvas, letting white cards and bright accents read as the foreground.

@@ -17,13 +17,14 @@ ds:
   description: HashiCorp's public design system for product foundations, content, components, and patterns.
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: marketing, url: "https://www.hashicorp.com/ko", inspected: "2026-07-13" }
     - { id: pricing, kind: pricing, url: "https://www.hashicorp.com/ko/pricing", inspected: "2026-07-13" }
     - { id: boundary, kind: product-marketing, url: "https://www.hashicorp.com/ko/products/boundary", inspected: "2026-07-13" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://www.hashicorp.com/ko", captured: "2026-07-13" }
+    - { id: hashicorp-component-index, kind: official-doc, url: "https://helios.hashicorp.design/components", captured: "2026-09-19" }
     - { id: pricing-live, kind: product-surface, url: "https://www.hashicorp.com/ko/pricing", captured: "2026-07-13" }
     - { id: boundary-live, kind: product-surface, url: "https://www.hashicorp.com/ko/products/boundary", captured: "2026-07-13" }
     - { id: helios, kind: official-doc, url: "https://helios.hashicorp.design/", captured: "2026-07-13" }
@@ -298,6 +299,25 @@ All values below are raw computed values from the supplied 2026-07-13 capture. S
 - Padding: `3px 7px`
 - Font: `16px / 400 / system-ui`
 - Use: `.badge__zns82.type-filled__ZaWsu.color-neutral__6Csf4` on home
+
+### Published component roster (37 published, none measured here)
+
+Helios publishes **37 components**, read from its own component index at
+`https://helios.hashicorp.design/components` on 2026-09-19. No value, state or geometry below is
+asserted by this reference.
+
+Accordion, Advanced Table, Alert, App Footer, App Header, App Side Nav, Application State, Badge, Badge Count, Breadcrumb, Button, Button Set, Card, Code Block, Code Editor, Copy Snippet, Dropdown, Filter Bar, Flyout, Icon, Icon Tile, Modal, Page Header, Pagination, Reveal, Rich Tooltip, Segmented Group, Separator, Standalone Link, Stepper Nav, Tabs, Tag, Text, Time, Toast, Toggle, Tooltip
+
+The list is flat because the index presents it flat, and names are given as it renders them.
+
+### The one entry in §4 is the Helios home page's own card
+
+This reference records a single component styling, described in its own `use:` string as a "home
+content card with a 1px rgba(101,104,118,0.2) outline shadow" — a card on the Helios site's
+landing page, not a reading of the published Card component. This file contains no occurrence of
+the `hds-` prefix, which is how Helios names its published components in markup.
+
+None of the 37 carries a measured value here, including Card.
 
 ## 5. Layout Principles
 

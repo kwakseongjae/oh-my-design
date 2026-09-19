@@ -17,13 +17,14 @@ ds:
   description: AWS's open-source design system for cloud application experiences.
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: marketing, url: "https://cloudscape.design/", inspected: "2026-07-13" }
     - { id: components, kind: documentation, url: "https://cloudscape.design/components/", inspected: "2026-07-13" }
     - { id: about, kind: corporate, url: "https://cloudscape.design/about/", inspected: "2026-07-13" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://cloudscape.design/", captured: "2026-07-13" }
+    - { id: aws-cloudscape-component-index, kind: official-doc, url: "https://cloudscape.design/components/", captured: "2026-09-19" }
     - { id: components-live, kind: official-doc, url: "https://cloudscape.design/components/", captured: "2026-07-13" }
     - { id: about-live, kind: product-surface, url: "https://cloudscape.design/about/", captured: "2026-07-13" }
     - { id: typography-doc, kind: official-doc, url: "https://cloudscape.design/foundation/visual-foundation/typography/", captured: "2026-07-13" }
@@ -152,6 +153,30 @@ The supplied artifact records 36 instances of this 305px-wide, 272px-high defaul
 **Tier 1 sources:** [Cloudscape home](https://cloudscape.design/), [Components](https://cloudscape.design/components/), [About Cloudscape](https://cloudscape.design/about/), [Typography](https://cloudscape.design/foundation/visual-foundation/typography/), [Global styles](https://cloudscape.design/get-started/for-developers/global-styles/)
 **Tier 2 sources:** getdesign attempt: https://getdesign.md/aws-cloudscape (web safety layer rejected direct open); Refero attempt: https://styles.refero.design/?q=Cloudscape (web safety layer rejected direct open).
 **Conflicts unresolved:** none
+
+### Published component roster (108 published, none measured here)
+
+Cloudscape publishes **108 components**, read from its own component index at
+`https://cloudscape.design/components/` on 2026-09-19 — the largest roster in this catalogue.
+No value, state or geometry below is asserted by this reference.
+
+Action card, Alert, Anchor navigation, Annotation context, App layout, App layout toolbar, Area chart, Attribute editor, Autosuggest, Avatar, Badge, Bar chart, Board, Board item, Box, Breadcrumb group, Button, Button dropdown, Button group, Calendar, Cards, Cartesian charts, Charts (Legacy), Chat bubble, Checkbox, Code editor, Code view, Collection preferences, Collection select filter, Column layout, Container, Content layout, Copy to clipboard, Date input, Date picker, Date range picker, Divider, Drawer, Dropdown, Error boundary, Expandable section, File dropzone, File input, File token group, File upload, Flashbar, Form, Form field, Grid, Header, Help panel, Hotspot, Icon, Icon provider, Input, Item card, Items palette, Key-value pairs, Line chart, Link, List, Live region, Loading bar, Mixed line and bar chart, Modal, Multiselect, Navigable group, Pagination, Panel layout, Pie and donut charts, Pie and donut charts (legacy), Popover, Progress bar, Prompt input, Property filter, Radio button, Radio group, S3 resource selector, Segmented control, Select, Side navigation, Skeleton, Slider, Space between, Spinner, Split panel, Status indicator, Steps, Support prompt group, Table, Tabs, Tag editor, Text area, Text content, Text filter, Tiles, Time input, Toggle, Toggle button, Token, Token group, Tooltip, Top navigation, Tree view, Truncated text, Tutorial components, Tutorial panel, Wizard
+
+Four cards on that index are group pages rather than components and are excluded: Board
+components, Charts, File uploading components, and Generative AI components. "Pie and donut
+charts" appears twice because Cloudscape publishes `pie-chart` and `pie-chart-legacy` as separate
+pages under one label; the second is marked here so the two are distinguishable.
+
+### The one entry in §4 is the index page's own card
+
+This reference records a single component styling, and its `use:` string says what it is: a
+"static component-directory card; selector `surface-2::div`, class `card`". That is a card on the
+components directory page — documentation chrome, captured by selector position, with the generic
+class `card` rather than any `awsui-*` class. This file contains no occurrence of the `awsui-`
+prefix, which is how Cloudscape names its published components in markup.
+
+So the capture was taken on the very page that lists the 108 above, and it measured the page's
+furniture rather than anything on the list. None of the 108 carries a measured value here.
 
 ## 5. Layout Principles
 

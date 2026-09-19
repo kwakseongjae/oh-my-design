@@ -240,6 +240,26 @@ Noto Sans JP is the explicit lead, backed by the full platform-native Japanese c
 - Text: `apple #65AB51`
 - Use: Positive confirmation (inferred from status tokens)
 
+### Published component roster (25 published, none measured here)
+
+`@moneyforward/cloud-react-ui` publishes **25 components**, enumerated from the directories under
+`src/components/` in the repository this reference cites
+(`https://github.com/moneyforward/cloud-react-ui`, read 2026-09-19). No value, state or geometry
+below is asserted by this reference.
+
+Backdrop, Block, Box, Button, Checkbox, CircularProgress, Dropdown, FlashMessage, Heading, Icon, Link, Modal, Notification, Pagination, ProgressLabel, Radio, SearchPanel, Select, StatusLabel, Steps, Switch, Table, Text, TextField, Tooltip
+
+Names are the repository's own directory names, which are also the exported component names.
+
+### What this reference's eight entries are
+
+The eight stylings in §4 carry `use:` strings that describe purpose — "Single primary action per
+screen", "Secondary / cancel actions" — with no selector, no capture id, and no class from the
+package. This reference has no `verification_v2` block and so no surface record either.
+
+Several of the eight share a name with a published component. None is claimed as a rendered
+instance of one, and none of the 25 above carries a measured value here.
+
 ## 5. Layout Principles
 
 ### Density

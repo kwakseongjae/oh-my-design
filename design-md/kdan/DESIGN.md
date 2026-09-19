@@ -126,6 +126,30 @@ Clear Sans is a humanist sans-serif chosen for sustained legibility in document-
 - Radius: 4px
 - Use: non-interactive disabled state
 
+### Published component roster (9 published, none measured here)
+
+`kdan-ui-revamp` publishes **9 components**, enumerated from the directories under
+`src/components/` in the repository this reference cites
+(`https://github.com/kdan-mobile-software-ltd/kdan-ui-revamp`, read 2026-09-19). No value, state
+or geometry below is asserted by this reference.
+
+Button, Checkbox, Hyperlink, Image, RadioButton, select, TextArea, TextField, Typography
+
+A tenth directory, `components/private/`, holds an internal `Toggle` and is excluded: the package
+files it as private, and listing it would assert something the library does not publish. `select`
+is given in the repository's own lower-case spelling rather than normalised to match its
+PascalCase siblings.
+
+### What this reference's four entries are, and which surface they came from
+
+The four stylings in §4 were captured on **`kdan.com`** — their `use:` strings say so ("Primary
+action on live kdan.com"). That is the company's live product site, a different evidence domain
+from the component repository above. The repository is the design system; the website is built by
+Kdan but is not the library's documentation.
+
+So the four are not a subset of the nine, they carry no class or selector binding to any of them,
+and none of the nine carries a measured value here.
+
 ## 5. Layout Principles
 
 Kdan's layout reads as confident document software: a structural deep teal-black base anchors the page, with content set against the light neutral scale (gray100 #FAFAFA at the bright end). A steep type hierarchy — 56px/700 hero down to 16px body — establishes a clear declarative top and a calm reading body. Primary and outline actions share the same 38px height and 4px radius so action rows align cleanly, while the taller 53px lime hero CTA stands apart as the single loudest target. The crisp 4px corner radius is applied consistently across controls, reinforcing a precise, technical feel rather than a soft one.
