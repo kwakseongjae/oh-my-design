@@ -17,13 +17,14 @@ ds:
   description: Uber's public React component library implementing the Base design language; its repository license does not establish the current public-site runtime.
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: marketing, url: "https://www.uber.com/kr/ko/", inspected: "2026-07-13" }
     - { id: about, kind: corporate, url: "https://www.uber.com/kr/ko/about/", inspected: "2026-07-13" }
     - { id: accessibility, kind: official-content, url: "https://www.uber.com/kr/ko/about/accessibility/", inspected: "2026-07-13" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://www.uber.com/kr/ko/", captured: "2026-07-13" }
+    - { id: uber-component-index, kind: official-doc, url: "https://baseweb.design/components/", captured: "2026-09-19" }
     - { id: about-live, kind: product-surface, url: "https://www.uber.com/kr/ko/about/", captured: "2026-07-13" }
     - { id: accessibility-live, kind: product-surface, url: "https://www.uber.com/kr/ko/about/accessibility/", captured: "2026-07-13" }
     - { id: new-look, kind: official-doc, url: "https://www.uber.com/us/en/blog/a-new-look/", captured: "2026-07-13" }
@@ -240,6 +241,36 @@ Base Web is an Uber-published React component library under an MIT repository li
 - Use: Expanded header menu on home, About, and Accessibility; representative selector `surface-2::[data-omd-interaction-capture="menu-0-0"]`.
 
 No authenticated ride-request form, trip card, map control, checkout, or error-state component was present in the supplied public capture, so none is specified here.
+
+### Published component roster (89 published, none measured here)
+
+Base Web publishes **89 documented entries** in ten categories, read from the rendered navigation
+at `https://baseweb.design/components/` on 2026-09-19. The categories and their ordering are Base
+Web's own, including the UTILITY group, which is why providers and styling helpers appear
+alongside components rather than being silently dropped.
+
+- **INPUTS (20)** — Button, Button Dock, Button Group, Button Timed, Checkbox, Checkbox-v2, Combobox, Form Control, Input, Payment Card, Phone Input, Pin Code, Segmented Control, Radio, Radio-v2, Slider, Sliding Button, Stepper, Switch, Textarea
+- **PICKERS (5)** — File Uploader, File Uploader Basic, Menu, Rating, Select
+- **DATE & TIME (3)** — Datepicker, Time Picker, Timezone Picker
+- **NAVIGATION (11)** — Bottom Navigation, Breadcrumbs, Navigation Bar, Header Navigation, Link, Mobile Header, Page Control, Pagination, Side Navigation, Tabs, Tabs (Motion)
+- **CONTENT (16)** — Accordion, Avatar, Badge, Badge - NotificationCircle, Badge - HintDot, Drag and Drop List, Layout Grid, Heading, Icon, List, Message Card, Tag, Tag Group, Tile, Tree View, Typography
+- **SURFACES (6)** — Card, Dialog, Drawer, Modal, Popover, Tooltip
+- **PROGRESS & VALIDATION (10)** — Banner, System Banner, Empty State, Notification, Progress Bar, Progress Steps, Skeleton, Snackbar, Spinner, Toast
+- **TABLES (4)** — Table, Data Table, Grid Table, Flex Table
+- **MAP MARKER (4)** — Fixed Marker, Floating Marker, Floating Route Marker, Location Puck
+- **UTILITY (10)** — AspectRatioBox, BaseProvider, Block, Divider, FlexGrid, Layer, UseStyletron, Styled, Tokens, A11y Validator
+
+**This supersedes what the repository tree suggested.** `github.com/uber/baseweb` — the URL this
+reference's `ds:` block points at — keeps its source in `src/<name>` directories with no
+`components/` directory at all, so a repository scan reports either 3 entries or 94 depending on
+the convention assumed, and neither is the published roster. The documentation site is the
+authority and gives 89.
+
+### What this reference measured
+
+The three stylings in §4 are public-site header controls, captured on Uber's own marketing pages
+rather than on the Base Web documentation. No capture carries a `baseui` class. None of the 89
+above carries a measured value here.
 
 ## 5. Layout Principles
 

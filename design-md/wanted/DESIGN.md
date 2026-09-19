@@ -17,7 +17,7 @@ ds:
   description: Wanted's official product-experience design system with foundations, cross-platform components, UI kits, utilities, and usage guidance.
 verification_v2:
   schema: 2
-  checked: "2026-07-12"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: product-home, url: "https://www.wanted.co.kr/", inspected: "2026-07-12" }
     - { id: jobs, kind: product-directory, url: "https://www.wanted.co.kr/wdlist/518", inspected: "2026-07-12" }
@@ -26,6 +26,7 @@ verification_v2:
     - { id: foundations, kind: official-design-system, url: "https://montage.wanted.co.kr/docs/foundations", inspected: "2026-07-12" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://www.wanted.co.kr/", captured: "2026-07-12" }
+    - { id: wanted-component-index, kind: official-doc, url: "https://montage.wanted.co.kr/docs/components", captured: "2026-09-19" }
     - { id: jobs-live, kind: product-surface, url: "https://www.wanted.co.kr/wdlist/518", captured: "2026-07-12" }
     - { id: company-live, kind: product-surface, url: "https://www.wanted.co.kr/company", captured: "2026-07-12" }
     - { id: montage-live, kind: official-doc, url: "https://montage.wanted.co.kr/", captured: "2026-07-12" }
@@ -239,6 +240,26 @@ Montage's official typography utility documents a broader scale from Display 1 t
 - Open overlay captured on both Montage surfaces
 
 No filled apply CTA, segmented control, form validation, toast, or native navigation token is promoted without a current matching sample.
+
+### Published component roster (53 published, none measured here)
+
+Wanted's Montage publishes **53 components** in six categories, read from the rendered navigation
+of its own component index at `https://montage.wanted.co.kr/docs/components` on 2026-09-19. The
+categories are Montage's own. No value, state or geometry below is asserted by this reference.
+
+- **Actions (5)** — Action area, Button, Chip, Icon button, Text button
+- **Contents (11)** — Accordion, Avatar, Avatar group, Card, Content badge, List card, List cell, Play badge, Section header, Table, Thumbnail
+- **Feedback (8)** — Alert, Fallback view, Push badge, Section message, Snackbar, Toast, Loading, Skeleton
+- **Navigations (9)** — Bottom navigation, Category, Page counter, Pagination, Pagination dots, Progress indicator, Progress tracker, Tab, Top navigation
+- **Presentation (6)** — Autocomplete, Bottom sheet, Menu, Popover, Popup, Tooltip
+- **Selection and input (14)** — Check mark, Checkbox, Date picker, Filter button, Framed style, Radio, Search field, Segmented control, Select, Slider, Switch, Text area, Text field, Time picker
+
+### What this reference measured
+
+The six stylings in §4 were captured on Wanted's product surfaces — the first reads "Current
+product header account action" — not on the Montage documentation site. The `montage` strings
+elsewhere in this file are source URLs, not classes on a capture. None of the 53 above carries a
+measured value here.
 
 ## 5. Layout Principles
 

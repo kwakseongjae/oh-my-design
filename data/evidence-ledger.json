@@ -3,11 +3,11 @@
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
   "references_with_verification_v2": 141,
-  "sources": 909,
+  "sources": 917,
   "sources_by_kind": {
     "brand-asset": 75,
     "license": 76,
-    "official-doc": 387,
+    "official-doc": 395,
     "product-surface": 371
   },
   "references": {
@@ -1794,7 +1794,7 @@
       ]
     },
     "google": {
-      "checked": "2026-07-13",
+      "checked": "2026-09-19",
       "claims": 0,
       "sources": [
         {
@@ -1814,6 +1814,12 @@
           "kind": "brand-asset",
           "captured": "2026-07-13",
           "host": "about.google"
+        },
+        {
+          "id": "google-component-index",
+          "kind": "official-doc",
+          "captured": "2026-09-19",
+          "host": "m3.material.io"
         },
         {
           "id": "google-philosophy",
@@ -2778,7 +2784,7 @@
       ]
     },
     "likelion": {
-      "checked": "2026-07-13",
+      "checked": "2026-09-19",
       "claims": 0,
       "sources": [
         {
@@ -2804,6 +2810,12 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "likelion.net"
+        },
+        {
+          "id": "likelion-component-index",
+          "kind": "official-doc",
+          "captured": "2026-09-19",
+          "host": "designsystem.likelion.net"
         },
         {
           "id": "pretendard-license",
@@ -3168,7 +3180,7 @@
       ]
     },
     "microsoft": {
-      "checked": "2026-07-13",
+      "checked": "2026-09-19",
       "claims": 0,
       "sources": [
         {
@@ -3194,6 +3206,12 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "www.microsoft.com"
+        },
+        {
+          "id": "microsoft-component-index",
+          "kind": "official-doc",
+          "captured": "2026-09-19",
+          "host": "fluent2.microsoft.design"
         },
         {
           "id": "segoue-font",
@@ -4524,7 +4542,7 @@
       ]
     },
     "samsung": {
-      "checked": "2026-07-13",
+      "checked": "2026-09-19",
       "claims": 0,
       "sources": [
         {
@@ -4558,6 +4576,12 @@
           "host": "developer.samsung.com"
         },
         {
+          "id": "samsung-component-index",
+          "kind": "official-doc",
+          "captured": "2026-09-19",
+          "host": "developer.samsung.com"
+        },
+        {
           "id": "samsungone-font",
           "kind": "official-doc",
           "captured": "2026-07-13",
@@ -4572,7 +4596,7 @@
       ]
     },
     "sanity": {
-      "checked": "2026-07-13",
+      "checked": "2026-09-19",
       "claims": 0,
       "sources": [
         {
@@ -4592,11 +4616,17 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "www.sanity.io"
+        },
+        {
+          "id": "sanity-component-index",
+          "kind": "official-doc",
+          "captured": "2026-09-19",
+          "host": "www.sanity.io"
         }
       ]
     },
     "servicenow": {
-      "checked": "2026-07-13",
+      "checked": "2026-09-19",
       "claims": 0,
       "sources": [
         {
@@ -4633,6 +4663,12 @@
           "id": "horizon-whats-new-doc",
           "kind": "official-doc",
           "captured": "2026-07-13",
+          "host": "horizon.servicenow.com"
+        },
+        {
+          "id": "servicenow-component-index",
+          "kind": "official-doc",
+          "captured": "2026-09-19",
           "host": "horizon.servicenow.com"
         }
       ]
@@ -5640,7 +5676,7 @@
       ]
     },
     "uber": {
-      "checked": "2026-07-13",
+      "checked": "2026-09-19",
       "claims": 0,
       "sources": [
         {
@@ -5678,6 +5714,12 @@
           "kind": "official-doc",
           "captured": "2026-07-13",
           "host": "www.uber.com"
+        },
+        {
+          "id": "uber-component-index",
+          "kind": "official-doc",
+          "captured": "2026-09-19",
+          "host": "baseweb.design"
         }
       ]
     },
@@ -5898,7 +5940,7 @@
       ]
     },
     "wanted": {
-      "checked": "2026-07-12",
+      "checked": "2026-09-19",
       "claims": 0,
       "sources": [
         {
@@ -5941,6 +5983,12 @@
           "id": "typography-doc",
           "kind": "official-doc",
           "captured": "2026-07-12",
+          "host": "montage.wanted.co.kr"
+        },
+        {
+          "id": "wanted-component-index",
+          "kind": "official-doc",
+          "captured": "2026-09-19",
           "host": "montage.wanted.co.kr"
         }
       ]

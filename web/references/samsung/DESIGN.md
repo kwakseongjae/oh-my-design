@@ -18,13 +18,14 @@ ds:
   description: Samsung's official platform design guidance. Its component and color rules are a separate evidence domain from the captured Samsung Korea public web surfaces.
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: marketing, url: "https://www.samsung.com/sec/", inspected: "2026-07-13" }
     - { id: ai-products, kind: public-product, url: "https://www.samsung.com/sec/ai-products/", inspected: "2026-07-13" }
     - { id: brand-identity, kind: official-doc, url: "https://www.samsung.com/sec/about-us/brand-identity/", inspected: "2026-07-13" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://www.samsung.com/sec/", captured: "2026-07-13" }
+    - { id: samsung-component-index, kind: official-doc, url: "https://developer.samsung.com/one-ui/", captured: "2026-09-19" }
     - { id: ai-live, kind: product-surface, url: "https://www.samsung.com/sec/ai-products/", captured: "2026-07-13" }
     - { id: brand-live, kind: product-surface, url: "https://www.samsung.com/sec/about-us/brand-identity/", captured: "2026-07-13" }
     - { id: one-ui-color, kind: official-doc, url: "https://developer.samsung.com/one-ui/color/system.html", captured: "2026-07-13" }
@@ -190,6 +191,25 @@ The capture records a pressed underlined CTA on the homepage, pressed search con
 **Tier 2 sources:** https://getdesign.md/samsung and https://styles.refero.design/?q=samsung were both attempted through built-in web retrieval; both returned an internal error, so neither supplied a value or an absence determination.
 **Resolution note:** The prior universal e-commerce filter/input/card/shadow/state rules were removed because this packet did not observe their matching current component provenance. One UI blue remains documentation-only rather than a commerce CTA token.
 **Conflicts unresolved:** none
+
+### Published component roster (8 published, none measured here)
+
+Samsung's One UI design guidance publishes **8 components**, read from its own navigation at
+`https://developer.samsung.com/one-ui/` on 2026-09-19 — the pages filed under `comp/`:
+
+App bar, Bottom bar, Bottom navigation, Buttons, Dialog, Lists, Search, Toasts
+
+Eight is the real number and not a shortfall in the reading. One UI's published guidance is
+mostly foundations rather than a component library: the same navigation carries structure,
+layout, colour, iconography, motion, sound and haptics, writing, accessibility, and large-screen
+and foldable guidance, and only these eight pages document components.
+
+### What this reference measured
+
+The single styling in §4 is an AI-products tab captured by selector position on a Samsung
+developer page (`tab__item-title`), which is that site's own class and not a One UI component
+class. The `one-ui-` strings elsewhere in this file are a source id and a token name, not classes
+on a capture. None of the eight above carries a measured value here.
 
 ## 5. Layout Principles
 

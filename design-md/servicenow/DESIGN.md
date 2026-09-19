@@ -17,13 +17,14 @@ ds:
   description: ServiceNow's source of truth for experience design across the Now Platform.
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: design-system-home, url: "https://horizon.servicenow.com/", inspected: "2026-07-13" }
     - { id: about-horizon, kind: design-system-about, url: "https://horizon.servicenow.com/getting-started/about-horizon", inspected: "2026-07-13" }
     - { id: workspace-components, kind: design-system-components, url: "https://horizon.servicenow.com/workspace/components", inspected: "2026-07-13" }
   sources:
     - { id: horizon-home-capture, kind: product-surface, url: "https://horizon.servicenow.com/", captured: "2026-07-13" }
+    - { id: servicenow-component-index, kind: official-doc, url: "https://horizon.servicenow.com/workspace/components", captured: "2026-09-19" }
     - { id: horizon-about-capture, kind: product-surface, url: "https://horizon.servicenow.com/getting-started/about-horizon", captured: "2026-07-13" }
     - { id: horizon-components-capture, kind: official-doc, url: "https://horizon.servicenow.com/workspace/components", captured: "2026-07-13" }
     - { id: horizon-about-doc, kind: official-doc, url: "https://horizon.servicenow.com/getting-started/about-horizon", captured: "2026-07-13" }
@@ -195,6 +196,27 @@ The following entries are restricted to selector-backed default samples in the s
 - Font: `16px / 300 ServiceNowSansLight`
 - States: default only; no interaction state captured.
 - Use: global-navigation item with an observed `button` role; `home::[data-omd-capture="1"]`.
+
+### The published component index exists and is currently broken
+
+ServiceNow's Horizon design system publishes a component index at
+`https://horizon.servicenow.com/workspace/components`. On 2026-09-19 it was loaded twice in a
+real browser, with a nine-second wait on the second attempt, and both times its own page rendered
+the message **"Failed to load components. Try refreshing the page."** The surrounding chrome
+loads; the component data does not.
+
+No roster is recorded here, because none could be read. That is the honest outcome: the host
+publishes an index, this reference does not enumerate it, and the gap between the two cannot be
+measured today. Every other host in this review yielded its roster to either a fetch or a
+rendered read.
+
+### What this reference measured
+
+The three stylings in §4 are identified by anonymous selector position — the first is a
+"Workspace components page-card link, selector `surface-3::[data-omd-capture=…]`". That is a card
+on the components index page, captured while the index's own content was unavailable, so what was
+measured is the page's furniture rather than any component it was meant to list. No `now-` class
+is recorded on any capture.
 
 ## 5. Layout Principles
 

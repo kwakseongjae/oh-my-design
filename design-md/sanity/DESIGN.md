@@ -45,13 +45,14 @@ tokens:
   components_harvested: true
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, url: "https://www.sanity.io/", inspected: "2026-07-13" }
     - { id: surface-2, url: "https://www.sanity.io/pricing", inspected: "2026-07-13" }
     - { id: surface-3, url: "https://www.sanity.io/pricing?ref=navbar", inspected: "2026-07-13" }
   sources:
     - { id: home, url: "https://www.sanity.io/", kind: product-surface, captured: "2026-07-13" }
+    - { id: sanity-component-index, kind: official-doc, url: "https://www.sanity.io/ui/docs", captured: "2026-09-19" }
     - { id: pricing, url: "https://www.sanity.io/pricing", kind: product-surface, captured: "2026-07-13" }
     - { id: pricing-navbar, url: "https://www.sanity.io/pricing?ref=navbar", kind: product-surface, captured: "2026-07-13" }
   claims:
@@ -257,6 +258,24 @@ The observed marketing surface uses a white base (`#ffffff`) and near-black fore
 - Padding: 16px
 - Font: 14px / 400 / Waldenburg-75357948a2b6a39b
 - Use: Observed open after pricing controls; `surface-2::[data-omd-interaction-capture="dialog-0-0"]` and repeated on the query-ref pricing capture.
+
+### Published component roster (36 published, none measured here)
+
+Sanity UI publishes **36 documented exports**, read from its own docs navigation at
+`https://www.sanity.io/ui/docs` on 2026-09-19. The three groupings are the host's own — its URLs
+are `/ui/docs/primitive/…`, `/ui/docs/component/…` and `/ui/docs/util/…` — and are kept rather
+than flattened, because the distinction is Sanity's.
+
+- **Primitives (26)** — Avatar, AvatarCounter, AvatarStack, Badge, Box, Button, Card, Checkbox, Code, Container, Flex, Grid, Heading, Inline, KBD, Label, Popover, Radio, Select, Spinner, Stack, Switch, Text, TextArea, TextInput, Tooltip
+- **Components (7)** — Autocomplete, Dialog, Hotkeys, Menu, MenuButton, Tab, Toast
+- **Utils (3)** — ElementQuery, Layer, Portal
+
+### What this reference measured
+
+The four stylings in §4 came from `sanity.io` marketing surfaces — the first reads "P3 orange
+pill; home + pricing surfaces". That is the company's website, a separate evidence domain from
+the Sanity UI documentation, and no capture carries a `@sanity/ui` class. None of the 36 above
+carries a measured value here.
 
 ## 5. Layout Principles
 

@@ -19,12 +19,13 @@ ds:
 omd: "0.1"
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: marketing-course-catalog, url: "https://likelion.net/", inspected: "2026-07-13" }
     - { id: docs, kind: documentation-chrome, url: "https://designsystem.likelion.net/?path=/docs/intro-introduction--docs", inspected: "2026-07-13" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://likelion.net/", captured: "2026-07-13" }
+    - { id: likelion-component-index, kind: official-doc, url: "https://designsystem.likelion.net/index.json", captured: "2026-09-19" }
     - { id: docs-live, kind: official-doc, url: "https://designsystem.likelion.net/?path=/docs/intro-introduction--docs", captured: "2026-07-13" }
     - { id: history-context, kind: official-doc, url: "https://k-digital.likelion.net/364c521d-31d4-425e-a281-7d056ce3f8a6", captured: "2026-07-13" }
     - { id: b2b-context, kind: official-doc, url: "https://likelion.net/b2b", captured: "2026-07-13" }
@@ -201,6 +202,29 @@ No ActionButton, TextField, chip, tab, tag, toast, dialog, card, or responsive v
 **Tier 1 sources:** https://likelion.net/; https://designsystem.likelion.net/?path=/docs/intro-introduction--docs; https://k-digital.likelion.net/364c521d-31d4-425e-a281-7d056ce3f8a6; https://likelion.net/b2b
 **Tier 2 sources:** https://getdesign.md/likelion (attempted; no usable LikeLion record extracted); https://styles.refero.design/?q=likelion (attempted; no usable LikeLion record extracted)
 **Conflicts unresolved:** none
+
+### Published component roster (18 published, none measured here)
+
+Likelion's design system is a Storybook, and its own index (`/index.json`, read 2026-09-19 from
+`https://designsystem.likelion.net/`) declares **18 components** under its `components-*` ids.
+The slash-separated names are Storybook's own hierarchy, kept as published:
+
+Badge, Button/ActionButton, Button/IconButton, Chip, Controls/Checkbox, Controls/RadioButton, Controls/Toggle, DatePicker, Dialog, Pagination, Select/SelectBox, Select/SelectHeader, Select/SelectMenu, Tab, Tag, TextField, Toast, Tooltip
+
+Storybook lists 36 entries under `components-*`; the other 18 are `/Properties` sub-documents,
+one per component, and are not separate components.
+
+**Why a sitemap could not have found these.** Every Storybook page is the same URL with a
+different query string — `?path=/docs/components-badge--docs` — so the roster lives in the query,
+where path-based crawling does not look. The machine-readable answer was `/index.json`, which
+Storybook publishes for exactly this purpose.
+
+### What this reference measured
+
+The three stylings in §4 are identified by anonymous selector position
+(`home::[data-omd-capture=…]`) on the Storybook site itself. Being captured on the design
+system's own host is not the same as reading its components. None of the 18 above carries a
+measured value here.
 
 ## 5. Layout Principles
 

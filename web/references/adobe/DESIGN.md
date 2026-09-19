@@ -234,6 +234,29 @@ The geometry is friendlier than you'd expect from a 40-year-old enterprise: pill
 **Tier 2 sources:** none available (getdesign.md/adobe and getdesign.md/spectrum both return "No designs found"; styles.refero.design searched ?q=adobe, ?q=adobe.com, ?q=photoshop — Adobe not listed)
 **Conflicts unresolved:** none
 
+### Published pages under `/page/` (114, none measured here)
+
+Spectrum publishes **114 pages** under `spectrum.adobe.com/page/`, enumerated from its own sitemap
+on 2026-09-19. They are listed here as slugs because that is the level at which the host makes
+them machine-readable:
+
+action-bar, action-button, action-group, alert-banner, alert-dialog, application-frame, area-chart, avatar, axis, badge, bar-chart, bar-loader, bi-directionality, big-number, body, bottom-navigation-android, breadcrumbs, button, button-group, cards, checkbox, checkbox-group, circle-loader, close-button, coach-mark, code, color, color-area, color-for-data-visualization, color-fundamentals, color-loupe, color-palette, color-palette-archive, color-slider, color-system, color-wheel, combo-box, contact-us, contextual-help, data-visualization-fundamentals, design-tokens, detail, divider, donut-chart, dropdown, field-label, fonts, form-errors, grammar-and-mechanics, headers, heading, help-text, histogram, home, iconography, icons, illustration, in-line-alert, in-product-word-list, inclusive-design, inclusive-ux-writing, international-design, legend, line-chart, link, menu, meter, motion, object-styles, picker, platform-scale, popover, principles, progress-bar, progress-circle, quick-actions, radio-button, radio-group, rating, responsive-grid, scatter-plot, scroll-zoom-bar, search-field, side-navigation, slider, spacing, spectrum-xd-plugin, states, status-light, swatch, swatch-group, switch, tab-bar-ios, table, tabs, tag, text-area, text-field, theming, toast, tool, tooltip, tray, tree-view, typography, ui-kits, using-color, voice-and-tone, whats-new, writing-about-people, writing-for-errors, writing-for-onboarding, writing-for-readability, writing-with-visuals
+
+**This is deliberately not called a component roster, for two reasons.**
+
+First, the 114 mix components with foundations and guidance. `button`, `checkbox` and `tooltip`
+sit in the same list as `color-fundamentals`, `design-tokens`, `iconography`, `motion`,
+`voice-and-tone`, `writing-for-errors` and `whats-new`. Spectrum's site navigation, which would
+separate them, renders nothing on a component page — the sidebar is not in the served HTML and
+did not appear in a real browser either, so the host's own grouping could not be read. Splitting
+the list by eye would be a structure this reference invented, and that is not done here.
+
+Second, and more important: **this is Spectrum 1.** This reference's own `ds:` description says
+Spectrum 2 at `s2.spectrum.adobe.com` is the current generation. That host answers `403
+AccessDenied` for its sitemap and publishes no machine-readable index at all, so the current
+generation cannot be enumerated. The list above belongs to the generation the `ds.url` points at,
+not the one the description calls current, and conflating the two would be wrong.
+
 ## 5. Layout Principles
 
 ### Spacing System

@@ -18,13 +18,14 @@ ds:
   description: "Google's public design system. Its documentation and baseline guidance are context, not a substitute for observed Google product tokens."
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: public-search-product-dark, url: "https://www.google.com/", inspected: "2026-07-13" }
     - { id: advanced-search, kind: public-search-product-form, url: "https://www.google.com/advanced_search?hl=ko", inspected: "2026-07-13" }
     - { id: business-profile, kind: public-business-product-marketing, url: "https://business.google.com/kr/business-profile/", inspected: "2026-07-13" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://www.google.com/", captured: "2026-07-13" }
+    - { id: google-component-index, kind: official-doc, url: "https://m3.material.io/components", captured: "2026-09-19" }
     - { id: advanced-search-live, kind: product-surface, url: "https://www.google.com/advanced_search?hl=ko", captured: "2026-07-13" }
     - { id: business-profile-live, kind: product-surface, url: "https://business.google.com/kr/business-profile/", captured: "2026-07-13" }
     - { id: google-story, kind: official-doc, url: "https://about.google/company-info/our-story/", captured: "2026-07-13" }
@@ -303,6 +304,23 @@ Material Design 3 publishes its own typography guidance, but no Material documen
 **Tier 1 sources:** https://www.google.com/ (captured dark Search product), https://www.google.com/advanced_search?hl=ko (captured Advanced Search product), https://business.google.com/kr/business-profile/ (captured Business Profile product), https://about.google/company-info/our-story/, https://about.google/company-info/philosophy/, https://design.google/library/google-sans-flex-font, https://about.google/brand-resource-center/guidance/, https://m3.material.io/styles/typography/overview, https://github.com/googlefonts/googlesans-code
 **Tier 2 sources:** https://getdesign.md/google (direct fetch unavailable; no value adopted), https://styles.refero.design/?q=google (query fetch unavailable; no value adopted)
 **Conflicts unresolved:** none
+
+### Published component roster (36 published, none measured here)
+
+Material 3 publishes **36 components**, read from its own component index at
+`https://m3.material.io/components` on 2026-09-19. The index is client-rendered, so the names
+come from the rendered page. No value, state or geometry below is asserted by this reference.
+
+App bars, Badges, Bottom sheets, Button groups, Buttons, Cards, Carousel, Checkbox, Chips, Date pickers, Dialogs, Divider, Extended FABs, FAB menu, Floating action buttons (FABs), Icon buttons, Lists, Loading indicator, Menus, Navigation bar, Navigation drawer, Navigation rail, Progress indicators, Radio button, Search, Segmented buttons, Side sheets, Sliders, Snackbar, Split buttons, Switch, Tabs, Text fields, Time pickers, Toolbars, Tooltips
+
+### What this reference measured
+
+The five stylings in §4 were captured on Google product surfaces — the first one's `use:` string
+says "Business Profile high-emphasis action only" — not on m3.material.io. Google's products are
+built with Material, but a Business Profile control is a product observation and not a reading of
+Material's published Buttons page. This file contains no Material class prefix on any capture.
+
+None of the 36 above carries a measured value here.
 
 ## 5. Layout Principles
 

@@ -18,13 +18,14 @@ ds:
   description: "Microsoft's cross-platform design system, with platform-aware typography, tokens, component guidance, and accessibility guidance."
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: public-marketing, url: "https://www.microsoft.com/ko-kr", inspected: "2026-07-13" }
     - { id: fluent-docs, kind: documentation-chrome, url: "https://fluent2.microsoft.design/", inspected: "2026-07-13" }
     - { id: microsoft-365, kind: public-marketing, url: "https://www.microsoft.com/en-us/microsoft-365", inspected: "2026-07-13" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://www.microsoft.com/ko-kr", captured: "2026-07-13" }
+    - { id: microsoft-component-index, kind: official-doc, url: "https://fluent2.microsoft.design/components/web/react", captured: "2026-09-19" }
     - { id: fluent-docs-live, kind: official-doc, url: "https://fluent2.microsoft.design/", captured: "2026-07-13" }
     - { id: microsoft-365-live, kind: product-surface, url: "https://www.microsoft.com/en-us/microsoft-365", captured: "2026-07-13" }
     - { id: fluent-typography, kind: official-doc, url: "https://fluent2.microsoft.design/typography", captured: "2026-07-13" }
@@ -276,6 +277,25 @@ All values below retain their public-surface and selector provenance. State rows
 **Tier 1 sources:** supplied collector evidence for https://www.microsoft.com/ko-kr and https://www.microsoft.com/en-us/microsoft-365; https://fluent2.microsoft.design/typography; https://fluent2.microsoft.design/shapes; https://fluent2.microsoft.design/design-tokens; https://learn.microsoft.com/en-us/typography/font-list/segoe-ui; https://learn.microsoft.com/en-us/typography/fonts/font-faq; https://www.microsoft.com/en-us/about
 **Tier 2 sources:** https://getdesign.md/microsoft (attempted; safe-open error and no search record); https://styles.refero.design/?q=microsoft (attempted; safe-open error); https://styles.refero.design/style/5f39e778-d204-42a9-8b8b-a1519dbd3971; https://styles.refero.design/style/c70a9990-bc4b-4a64-a69b-aeb7b344fb74
 **Conflicts unresolved:** none
+
+### Published component roster (47 published for Web/React, none measured here)
+
+Fluent 2 publishes **47 components** on its Web/React platform, read from the rendered navigation
+at `https://fluent2.microsoft.design/components/web/react` on 2026-09-19. No value, state or
+geometry below is asserted by this reference.
+
+Accordion, Avatar, Avatar group, Badge, Breadcrumb, Button, Card, Carousel, Checkbox, Combobox, Dialog, Divider, Drawer, Dropdown, Field, Fluent provider, Icon, Image, Info label, Input, Label, Link, List, Menu, Message bar, Nav, Persona, Popover, Progress bar, Radio group, Rating, Searchbox, Select, Skeleton, Slider, Spin button, Spinner, Switch, Tablist, Tag, Tag picker, Text, Textarea, Toast, Toolbar, Tooltip, Tree
+
+**The platform qualifier matters.** Fluent 2 documents separately for Web, iOS, Android and
+Windows, and the rosters differ. This is the Web/React list only; the other three are not
+enumerated here and should not be assumed to match.
+
+### What this reference measured
+
+The single styling in §4 is an "observed active Microsoft 365 pill tab" — captured on a Microsoft
+product surface rather than on the Fluent documentation, and identified by position with no
+`fui-` class recorded. Microsoft 365 is built with Fluent, but that does not make the capture a
+reading of Fluent's published Tablist. None of the 47 above carries a measured value here.
 
 ## 5. Layout Principles
 
