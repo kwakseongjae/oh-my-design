@@ -1,4 +1,4 @@
-# krds 채택 — 준비까지 갔고, 투영 손실 2건에서 멈췄다
+# krds 채택 — 손실 2건 중 1건 해소, 1건은 오너가 수용
 
 2026-09-19. 오너가 C(krds 채택)를 승인했고, 체인 1단계(prepare)까지 실행한 뒤
 **채택 후 페이지가 실제로 무엇을 받는지 재고 멈췄다.** toss 때와 같은 이유이고,
@@ -29,8 +29,8 @@ legacy 투영과 그래프가 제공하는 것을 비교했다.
 | foreground | `#1e2124` | `#1e2124` | ✅ |
 | radius | `6px` | `6px` | ✅ |
 | **fontFamily** | `Pretendard GOV` | `Pretendard GOV` | ✅ **오늘 고친 것** |
-| **headingWeight** | **`700`** | **`""`** | ❌ |
-| **accent** | **`#D63D4A`** | **없음** | ❌ |
+| **headingWeight** | `700` | `700` | ✅ **해소** |
+| **accent** | `#D63D4A` | **없음** | ⚠️ **오너가 손실 수용** |
 
 ### ① headingWeight — 폰트 패밀리와 **같은 결함**, 다른 역할
 
@@ -41,7 +41,30 @@ legacy 투영과 그래프가 제공하는 것을 비교했다.
 오늘 패밀리에 넣은 "선언된 패밀리가 하나면 그걸 쓴다" 폴백은 weight엔 못 쓴다. weight는
 역할마다 다르고(700 일곱 / 400 넷) 유일하지 않다. **heading 쪽 폴백은 별도 판단이 필요하다.**
 
-### ② accent — 이건 이름 문제이고 오너 판단일 수 있다
+### ① 해소 — heading 역할도 모양으로 찾는다
+
+패밀리에 쓴 "선언된 게 하나면 그걸 쓴다" 폴백은 weight엔 못 쓴다(11개 역할에 700 일곱·400 넷).
+대신 **우선순위 목록 자체**를 재사용한다: 각 id에 대해 정확 일치 우선, 없으면 그 모양의
+**가장 짧은** id, 동률은 알파벳순. 가장 짧은 것이 가장 덜 수식된 것 —
+`heading` > `heading-large` > `heading-xlarge` — 이고 동률 처리로 문서 순서에 안 흔들린다.
+krds는 `heading-large`(weight 700)로 해소됐다. legacy와 같은 값이다.
+
+### ② accent — 매핑하지 않기로 했다 (오너 결정, 2026-09-19)
+
+**측정 결과 매핑이 비싼 게 아니라 정의가 안 된다.**
+
+- 프론트매터에 `accent` 색 키가 **있는 레퍼런스: 32건**
+- 없는데 산문에서 accent가 추출되는 레퍼런스: **302건**
+- 그 302건이 쓰는 대체 이름: `signal`·`accent-signal`·`points`·`attention-emphasis`·
+  `on-emphasis`·`emphasis`·`highlight`·`point`·`point-orange`·`point-red`·`point-green`·
+  `point-magenta`·`point-lavender`·`point-gold`·`highlight-cream`·`surface-highlight`·
+  `highlight-yellow`·`highlight-teal` — **18가지**
+
+`point → accent` 같은 일반 규칙이 성립하지 않는다. 그리고 현행 accent 값 자체가 타입 필드가
+아니라 `detail-projection.ts:94`의 **산문 정규식**이 긁는 것이다. 색 이름을 추측해 슬롯에
+넣는 것은 AGENTS.md가 막는 치환이므로, **채택 시 accent를 잃는 것을 받아들이고 기록한다.**
+
+원래 이 문단이 남긴 판단 근거:
 
 krds는 이 색을 `point: "#d63d4a"`라고 부른다. `accent`가 아니다. 그래프에는
 `color.point`로 정확히 들어갔고, 어댑터는 `color.accent`를 찾는다.

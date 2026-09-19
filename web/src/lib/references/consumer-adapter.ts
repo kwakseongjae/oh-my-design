@@ -98,8 +98,33 @@ function detailFromCoreContract(
   // numbered type scale — which is how the catalogue actually writes them —
   // still yields a heading weight instead of falling through to body text.
   const headingRoleIds = ["heading", "display", "title", "h1", "h2", ...uiRoleIds];
+  // Same defect as the family, one role over: references qualify their heading
+  // ids — krds writes `heading-xlarge` and `display-large`, never bare
+  // `heading` — so the exact pass finds nothing and a weight that is sitting in
+  // the graph on seven roles projects as "".
+  //
+  // The family's "exactly one declares it" fallback cannot be reused here:
+  // weight is declared on every role, so uniqueness says nothing. What does
+  // carry over is the priority list itself. For each id in priority order, an
+  // exact match wins; failing that, the shortest id of that shape, ties broken
+  // alphabetically. "Shortest" picks the least-qualified variant, which is the
+  // general one — `heading` over `heading-large` over `heading-xlarge` — and
+  // the tie-break keeps the choice independent of document order.
+  const roleByShape = (ids: readonly string[]): FontRole | undefined => {
+    for (const id of ids) {
+      const exact = contract.fontRoles.find((candidate) => candidate.metadata.id === id);
+      if (exact) return exact;
+      const shape = new RegExp(`(^|[-_])${id}([-_]|$)`, "i");
+      const shaped = contract.fontRoles
+        .filter((candidate) => shape.test(String(candidate.metadata.id)))
+        .sort((a, b) => String(a.metadata.id).length - String(b.metadata.id).length
+          || String(a.metadata.id).localeCompare(String(b.metadata.id)));
+      if (shaped.length > 0) return shaped[0];
+    }
+    return undefined;
+  };
   const uiRole = roleByPriority(uiRoleIds);
-  const headingRole = roleByPriority(headingRoleIds);
+  const headingRole = roleByShape(headingRoleIds);
   // A reference that declares one family and names its body role with a
   // qualifier — `body-large` (krds), `public-body` (framer), `consumer-body`
   // (catchtable) — has no id in `uiRoleIds`, so the exact match above finds
