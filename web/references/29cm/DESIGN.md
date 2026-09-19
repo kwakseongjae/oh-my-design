@@ -327,7 +327,7 @@ The July 11 evidence set validates current desktop layouts and component geometr
 - Preserve image aspect ratio and metadata order when adapting product and story list items.
 - Keep the full 52px carousel control target when space permits; verify any compact mobile variant separately.
 - Retain semantic list and button structure at every viewport.
-- Treat navigation collapse, mobile column counts, tablet gutters, and fixed-position help behavior as `[FILL IN: controlled multi-viewport capture required]`.
+- Treat navigation collapse, mobile column counts, tablet gutters, and fixed-position help behavior as unestablished until a controlled multi-viewport capture is made.
 
 ## 9. Agent Prompt Guide
 
@@ -393,15 +393,15 @@ No current first-party persona definitions were verified. Observable task contex
 | Pressed | Captured on eligible button controls |
 | Disabled | Captured on product-gallery controls |
 | Sale | `#ff4800` text, transparent background, 0px radius |
-| Empty | `[FILL IN: dedicated public empty-state capture required]` |
-| Loading | `[FILL IN: dedicated loading-state capture required]` |
-| Error | `[FILL IN: dedicated public error-state capture required]` |
-| Success | `[FILL IN: dedicated public success-state capture required]` |
+| Empty | Not captured — a dedicated public empty-state capture is required |
+| Loading | Not captured — a dedicated loading-state capture is required |
+| Error | Not captured — a dedicated public error-state capture is required |
+| Success | Not captured — a dedicated public success-state capture is required |
 
 Pseudo-state evidence records visual variants available without executing state-changing commerce interactions. It does not prove every control implements every state.
 
 ## 15. Motion & Easing
 
-`[FILL IN: no canonical motion duration or easing curve was published or extracted in this verification pass.]`
+No canonical motion duration or easing curve was published or extracted in this verification pass.
 
 The evidence set records static default and pseudo-state snapshots only. Do not infer 150ms/250ms durations, cubic-bezier curves, image scaling, scroll reveals, stagger timing, toast dismissal, or reduced-motion substitutions from the visual captures. A future motion pass should record computed transition properties, animation names, durations, easing, and reduced-motion behavior per component.

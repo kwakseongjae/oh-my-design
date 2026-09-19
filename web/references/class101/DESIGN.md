@@ -260,12 +260,12 @@ The reviewed sources do not establish founding history, named founders, rebrand 
 
 ## 13. Personas
 
-[FILL IN] No first-party user-research or persona material was found in the reviewed sources. Do not substitute fictional learners or creators for evidence.
+No first-party user-research or persona material was found in the reviewed sources. Do not substitute fictional learners or creators for evidence.
 
 ## 14. States
 
-[FILL IN] Empty, loading, success, error, disabled, skeleton, and validation states were not observed in the supplied capture. No state token or copy should be inferred from the default-state components.
+Empty, loading, success, error, disabled, skeleton, and validation states were not observed in the supplied capture. No state token or copy should be inferred from the default-state components.
 
 ## 15. Motion & Easing
 
-[FILL IN] The supplied evidence contains no transition, animation, easing, or reduced-motion observations. Do not promote durations or curves.
+The supplied evidence contains no transition, animation, easing, or reduced-motion observations. Do not promote durations or curves.

@@ -399,7 +399,7 @@ NAVER has not published validated product personas for the inspected portal, sea
 - **Selected:** captured on portal/search/corporate tabs.
 - **Expanded:** captured for the portal listbox/menu.
 - **Checked / unchecked:** captured for portal display controls and a search switch.
-- **Empty, loading, error, success, disabled:** [FILL IN — no safe representative live evidence captured in this run.]
+- **Empty, loading, error, success, disabled:** no safe representative live evidence was captured in this run.
 
 Do not fill absent states with generic NAVER-looking values.
 
@@ -407,7 +407,7 @@ Do not fill absent states with generic NAVER-looking values.
 
 The collector captured state changes but did not establish a canonical duration or easing scale. Use motion only to clarify menu expansion, tab selection, and focus transitions; respect reduced-motion preferences.
 
-[FILL IN — official product motion tokens were not found in the inspected public sources.]
+Official product motion tokens were not found in the inspected public sources.
 
 ---
 

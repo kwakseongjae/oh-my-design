@@ -244,19 +244,19 @@ No mobile viewport was supplied. The public evidence does not establish breakpoi
 
 ## 10. Voice & Tone
 
-The supplied capture establishes the service name and commerce labels only; it does not provide a first-party editorial voice guide or enough verified copy to derive one. [FILL IN: official voice principles or source-backed microcopy.]
+The supplied capture establishes the service name and commerce labels only; it does not provide a first-party editorial voice guide or enough verified copy to derive one. No official voice principles or source-backed microcopy are available.
 
 ## 11. Brand Narrative
 
-Brandi’s public site identifies the service as “여성 패션 쇼핑앱 브랜디.” Its product pages show a public option-selection and purchase surface, while the site footer identifies Newnex as the hosting operator and describes its payment/intermediation boundary. These are product and legal-context facts, not authority for a broader origin story, market position, mission, or rebrand narrative. [FILL IN: first-party history, mission, or current-evolution source.]
+Brandi’s public site identifies the service as “여성 패션 쇼핑앱 브랜디.” Its product pages show a public option-selection and purchase surface, while the site footer identifies Newnex as the hosting operator and describes its payment/intermediation boundary. These are product and legal-context facts, not authority for a broader origin story, market position, mission, or rebrand narrative. No first-party history, mission, or current-evolution source is available.
 
 ## 12. Principles
 
-[FILL IN: official Brandi product or design principles. The observed commerce constraints above are not presented as official principles.]
+No official Brandi product or design principles are available. The observed commerce constraints above are not presented as official principles.
 
 ## 13. Personas
 
-[FILL IN: first-party, source-backed stakeholder groups or research. No synthetic personas are included.]
+No first-party, source-backed stakeholder groups or research are available. No synthetic personas are included.
 
 ## 14. States
 

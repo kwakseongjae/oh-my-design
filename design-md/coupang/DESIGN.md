@@ -273,8 +273,6 @@ The current public brand record also includes a purpose-built Coupang Sans famil
 
 *No first-party persona research was collected for this reference. Do not fabricate customer archetypes or demographic facts.*
 
-- [FILL IN: user-provided primary customer segment]
-- [FILL IN: user-provided commerce task and context]
 
 ## 14. States
 
@@ -282,13 +280,13 @@ Only default states were captured. The following states require a product-specif
 
 | Category | Evidence status |
 |----------|-----------------|
-| Empty | [FILL IN: no observed state] |
-| Loading | [FILL IN: no observed state] |
-| Error | [FILL IN: no observed state] |
-| Success | [FILL IN: no observed state] |
-| Skeleton | [FILL IN: no observed state] |
-| Disabled | [FILL IN: no observed state] |
+| Empty | Not observed in the captured routes |
+| Loading | Not observed in the captured routes |
+| Error | Not observed in the captured routes |
+| Success | Not observed in the captured routes |
+| Skeleton | Not observed in the captured routes |
+| Disabled | Not observed in the captured routes |
 
 ## 15. Motion & Easing
 
-No motion, transition, or interaction state was captured. [FILL IN: product-specific motion evidence]
+No motion, transition, or interaction state was captured.

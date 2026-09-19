@@ -284,8 +284,6 @@ The current public surface reflects that service model through discovery, search
 
 *No first-party persona research was collected for this reference. Do not fabricate customer archetypes or demographic facts.*
 
-- [FILL IN: user-provided primary customer segment]
-- [FILL IN: user-provided transaction or discovery task]
 
 ## 14. States
 
@@ -293,13 +291,13 @@ Only component defaults and the route-selected search tab were captured. The fol
 
 | Category | Evidence status |
 | --- | --- |
-| Empty | [FILL IN: no observed state] |
-| Loading | [FILL IN: no observed state] |
-| Error | [FILL IN: recovery-route component only; no error treatment captured] |
-| Success | [FILL IN: no observed state] |
-| Skeleton | [FILL IN: no observed state] |
-| Disabled | [FILL IN: no observed state] |
+| Empty | Not observed in the captured routes |
+| Loading | Not observed in the captured routes |
+| Error | Recovery-route component only; no error treatment captured |
+| Success | Not observed in the captured routes |
+| Skeleton | Not observed in the captured routes |
+| Disabled | Not observed in the captured routes |
 
 ## 15. Motion & Easing
 
-No motion, transition, or interaction state was captured. [FILL IN: product-specific motion evidence]
+No motion, transition, or interaction state was captured.

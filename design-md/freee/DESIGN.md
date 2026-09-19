@@ -291,15 +291,15 @@ In 2023 freee publicly released Vibes and its accessibility-related frontend-dev
 
 ## 13. Personas
 
-[FILL IN] No official persona research or product-user interviews were collected in this re-verification packet. Do not create synthetic users as evidence.
+No official persona research or product-user interviews were collected in this re-verification packet. Do not create synthetic users as evidence.
 
 ## 14. States
 
-[FILL IN] The supplied capture has pseudo-state visual snapshots for selected public buttons, but no observable error, loading, success, empty, disabled, dialog, or authenticated-product state model. Add a state only after collecting its selector and surface provenance.
+The supplied capture has pseudo-state visual snapshots for selected public buttons, but no observable error, loading, success, empty, disabled, dialog, or authenticated-product state model. Add a state only after collecting its selector and surface provenance.
 
 ## 15. Motion & Easing
 
-[FILL IN] The collector recorded no interaction event or timing data. Hover, focus, and pressed images do not establish duration, easing, or reduced-motion behavior.
+The collector recorded no interaction event or timing data. Hover, focus, and pressed images do not establish duration, easing, or reduced-motion behavior.
 
 ---
 **Verified:** 2026-07-13

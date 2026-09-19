@@ -245,7 +245,7 @@ All selector-backed component samples used here reported `box-shadow: none`. The
 
 ## 8. Responsive Behavior
 
-`[FILL IN — this packet contains one 1440×900 desktop capture only. No breakpoint, mobile, touch-target, or responsive-layout claim is established.]`
+This packet contains one 1440×900 desktop capture only. No breakpoint, mobile, touch-target, or responsive-layout claim is established.
 
 ## 9. Agent Prompt Guide
 
@@ -292,16 +292,16 @@ The supplied product-home observation contributes a narrow visual counterpart: a
 
 | State | Evidence-bound treatment |
 |---|---|
-| Empty | `[FILL IN — no first-party empty-state observation in this packet.]` |
+| Empty | No first-party empty-state observation in this packet |
 | Loading | Video-card skeleton text lines use `#f1f2f3` with 4px corners on the product home. |
-| Error | `[FILL IN — no error-state observation in this packet.]` |
-| Success | `[FILL IN — no success-state observation in this packet.]` |
+| Error | No error-state observation in this packet |
+| Success | No success-state observation in this packet |
 | Skeleton | Cover fallback is `#f1f2f3` with 6px corners; text lines use 4px corners. |
-| Disabled | `[FILL IN — no disabled-state observation in this packet.]` |
+| Disabled | No disabled-state observation in this packet |
 
 ## 15. Motion & Easing
 
-`[FILL IN — the supplied capture reports no interaction expansion and no motion/easing measurements. Do not infer hover, player, or celebratory motion from static component evidence.]`
+The supplied capture reports no interaction expansion and no motion/easing measurements. Do not infer hover, player, or celebratory motion from static component evidence.
 
 ---
 

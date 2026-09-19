@@ -272,18 +272,18 @@ These are source-grounded stakeholder groups, not fictional research personas.
 
 | Category | Evidence boundary |
 |---|---|
-| Empty | [FILL IN — no public empty state captured] |
-| Loading | [FILL IN — no loading state captured] |
-| Error: form validation | [FILL IN — no validation state captured] |
-| Error: service disruption | [FILL IN — no operational-error state captured] |
-| Success | [FILL IN — no success state captured] |
-| Skeleton | [FILL IN — no skeleton state captured] |
-| Disabled | [FILL IN — no disabled control captured] |
-| Focus | [FILL IN — no focus-visible state captured] |
+| Empty | No public empty state captured |
+| Loading | No loading state captured |
+| Error: form validation | No validation state captured |
+| Error: service disruption | No operational-error state captured |
+| Success | No success state captured |
+| Skeleton | No skeleton state captured |
+| Disabled | No disabled control captured |
+| Focus | No focus-visible state captured |
 | Pressed | [FILL IN — no pressed state captured] |
 | Hover | [FILL IN — no hover state captured] |
 | Selected tab | Public home `aria-selected="true"` element only; no selection-change interaction captured. |
 
 ## 15. Motion & Easing
 
-The supplied raw evidence contains no interaction records, interaction kinds, motion values, transition values, or easing values. Motion tokens and behavioral rules remain `[FILL IN]`; the selected tab and static SweetAlert dialog DOM samples are not proof of transitions, opening behavior, or easing.
+The supplied raw evidence contains no interaction records, interaction kinds, motion values, transition values, or easing values. Motion tokens and behavioral rules are not established here; the selected tab and static SweetAlert dialog DOM samples are not proof of transitions, opening behavior, or easing.

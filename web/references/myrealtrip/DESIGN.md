@@ -243,7 +243,7 @@ MyRealTrip’s own public offer page identifies founder Lee Dong-geon and says t
 
 ## 13. Personas
 
-The first-party materials identify public stakeholder groups rather than research-backed personas: travellers seeking travel products, partners who operate listings and reservations, and support visitors looking for help. No named or synthetic persona is supplied here; demographic needs, booking journeys, and conversion motivations remain `[FILL IN]` pending first-party research or user-provided evidence.
+The first-party materials identify public stakeholder groups rather than research-backed personas: travellers seeking travel products, partners who operate listings and reservations, and support visitors looking for help. No named or synthetic persona is supplied here; demographic needs, booking journeys, and conversion motivations are not established here, pending first-party research or user-provided evidence.
 
 ## 14. States
 
@@ -252,12 +252,12 @@ The collector reports one selected tab observation and `interactionCount: 0`. No
 | State | Evidence boundary |
 |---|---|
 | Selected locale tab | `aria-selected="true"` static home-header observation; values recorded in §4. |
-| Empty | `[FILL IN]` |
-| Loading | `[FILL IN]` |
-| Error | `[FILL IN]` |
-| Success | `[FILL IN]` |
+| Empty | Not observed |
+| Loading | Not observed |
+| Error | Not observed |
+| Success | Not observed |
 | Disabled | `[FILL IN]` |
 
 ## 15. Motion & Easing
 
-`[FILL IN]` No duration, easing, transition, reduced-motion, or animated-state measurement was captured. Do not infer motion from class names or from the presence of interactive-looking controls.
+No duration, easing, transition, reduced-motion, or animated-state measurement was captured. Do not infer motion from class names or from the presence of interactive-looking controls.

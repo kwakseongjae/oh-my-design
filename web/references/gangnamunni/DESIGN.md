@@ -242,12 +242,12 @@ The public product presents Gangnamunni as a place to compare procedure informat
 
 No named synthetic personas are included. First-party sources substantiate only consumer-app users (Cell) and PC back-office users (Welchis).
 
-**[FILL IN]** Add research-backed decision, accessibility, and locale needs only when a user or first-party source supplies them.
+Research-backed decision, accessibility, and locale needs are not established here. Add them only when a user or first-party source supplies them.
 
 ## 14. States
 
-**[FILL IN]** The supplied bundle has `interactionCount: 0` and no current first-party contract for loading, empty, error, success, disabled, or selection behavior beyond the captured DOM variants.
+The supplied bundle has `interactionCount: 0` and no current first-party contract for loading, empty, error, success, disabled, or selection behavior beyond the captured DOM variants.
 
 ## 15. Motion & Easing
 
-**[FILL IN]** No current first-party motion token, duration, easing curve, or reduced-motion behavior was collected.
+No current first-party motion token, duration, easing curve, or reduced-motion behavior was collected.

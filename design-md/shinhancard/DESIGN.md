@@ -302,7 +302,7 @@ The recent public evolution relevant to this reference is the SOL Pay naming tra
 - **Customers considering card-finance products.** The official page describes short-term and long-term card loans and instalment finance. This supports a service audience only, not a persona journey.
 - **SOL Pay users.** Shinhan Card describes SOL Pay as its digital platform for connecting finance and daily life. The supplied web capture does not expose a signed-in user flow or user-research segment.
 
-Specific personas, motivations, and quotes remain **[FILL IN]** until supported by first-party research or user-provided material.
+Specific personas, motivations, and quotes are not established here, and remain so until supported by first-party research or user-provided material.
 
 ## 14. States
 
@@ -313,4 +313,4 @@ Specific personas, motivations, and quotes remain **[FILL IN]** until supported 
 
 ## 15. Motion & Easing
 
-No motion duration, easing curve, or reduced-motion treatment was captured. The menu’s open state proves that a menu can expand; it does not prove a transition recipe. Motion tokens and animation guidance are therefore **[FILL IN]** pending a capture that records timing and behaviour.
+No motion duration, easing curve, or reduced-motion treatment was captured. The menu’s open state proves that a menu can expand; it does not prove a transition recipe. Motion tokens and animation guidance are therefore not established here, pending a capture that records timing and behaviour.

@@ -298,7 +298,7 @@ The evidence bundle contains two desktop 1440px-wide product surfaces. It suppor
 - Keep home product-card media and information grouping together when adapting width.
 - Retain the 46px home tab and 30px search-input heights unless a measured responsive variant replaces them.
 - Preserve the recent-products list hierarchy and its dropdown trigger as separate controls.
-- Treat mobile columns, navigation collapse, touch-target expansion, sticky elements, tablet gutters, and image crop policy as `[FILL IN: controlled multi-viewport capture required]`.
+- Treat mobile columns, navigation collapse, touch-target expansion, sticky elements, tablet gutters, and image crop policy as unestablished until a controlled multi-viewport capture is made.
 
 ## 9. Agent Prompt Guide
 
@@ -375,19 +375,19 @@ No age, income, motivation, task-success rate, or behavioral preference is infer
 | Search input default | Transparent background, `#333333` text, 30px height, 0px radius |
 | Dropdown default | `#ffffff` background, `#333333` text, 1px `#dddddd` border, 32px height |
 | Product card default | Transparent `#333333` information container, 0px radius, 368px height |
-| Hover | `[FILL IN: no hover value captured]` |
-| Focus | `[FILL IN: no focus value captured]` |
-| Pressed | `[FILL IN: no pressed value captured]` |
-| Disabled | `[FILL IN: no disabled value captured]` |
-| Error | `[FILL IN: no error value captured]` |
-| Empty | `[FILL IN: no empty-state capture]` |
-| Loading | `[FILL IN: no loading-state capture]` |
-| Success | `[FILL IN: no success-state capture]` |
+| Hover | No hover value captured |
+| Focus | No focus value captured |
+| Pressed | No pressed value captured |
+| Disabled | No disabled value captured |
+| Error | No error value captured |
+| Empty | No empty-state capture |
+| Loading | No loading-state capture |
+| Success | No success-state capture |
 
 The interaction count of three supports the selected tab state only. It does not justify filling interactive-state values for buttons, inputs, or other tabs.
 
 ## 15. Motion & Easing
 
-`[FILL IN: no transition duration, easing curve, animation name, or reduced-motion behavior was present in the supplied evidence.]`
+No transition duration, easing curve, animation name, or reduced-motion behavior was present in the supplied evidence.
 
 The evidence records static values and three tab selected-state interactions. Do not infer hover animation, carousel timing, modal transitions, skeleton motion, toast dismissal, or a generic ecommerce duration scale from this capture.

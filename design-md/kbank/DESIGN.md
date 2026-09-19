@@ -286,18 +286,18 @@ These are source-grounded service audiences, not fictional user profiles.
 
 | Category | Evidence boundary |
 |---|---|
-| Empty | [FILL IN — no public product empty state captured] |
-| Loading | [FILL IN — no loading state captured] |
-| Error: validation | [FILL IN — no validation state captured] |
-| Error: transaction or service interruption | [FILL IN — no operational-error state captured] |
-| Success | [FILL IN — no public product success state captured] |
-| Skeleton | [FILL IN — no skeleton state captured] |
-| Disabled | [FILL IN — no disabled control captured] |
-| Focus | [FILL IN — no focus-visible state captured] |
-| Pressed | [FILL IN — no pressed state captured] |
-| Hover | [FILL IN — no hover state captured] |
+| Empty | No public product empty state captured |
+| Loading | No loading state captured |
+| Error: validation | No validation state captured |
+| Error: transaction or service interruption | No operational-error state captured |
+| Success | No public product success state captured |
+| Skeleton | No skeleton state captured |
+| Disabled | No disabled control captured |
+| Focus | No focus-visible state captured |
+| Pressed | No pressed state captured |
+| Hover | No hover state captured |
 | Selected tab | Public deposit-index `aria-selected="true"` only; no selection-change interaction captured. |
 
 ## 15. Motion & Easing
 
-No motion, transition, easing, or interaction expansion appears in the supplied raw evidence. Motion tokens and behavioral rules remain `[FILL IN]`; the observed selected tab is not proof of a tab transition or easing curve.
+No motion, transition, easing, or interaction expansion appears in the supplied raw evidence. Motion tokens and behavioral rules are not established here; the observed selected tab is not proof of a tab transition or easing curve.

@@ -293,9 +293,9 @@ The orange-and-warm-neutral homepage is a separately observed public course-mark
 
 The first-party sources in this pass establish learner and organisation-facing education contexts, but do not supply enough persona research to support invented demographic archetypes.
 
-- **Individual learners:** public course and bootcamp visitors. [FILL IN: task, constraints, and needs from user-provided research]
-- **Organisation learning teams:** business/AX education decision-makers and participants. [FILL IN: task, constraints, and needs from user-provided research]
-- **Documentation readers:** public Storybook/documentation visitors. [FILL IN: task and component-story evidence]
+- **Individual learners:** public course and bootcamp visitors. Task, constraints, and needs are not established without user-provided research.
+- **Organisation learning teams:** business/AX education decision-makers and participants. Task, constraints, and needs are not established without user-provided research.
+- **Documentation readers:** public Storybook/documentation visitors. Task and component-story evidence are not established here.
 
 ## 14. States
 
@@ -303,13 +303,13 @@ No course-product empty, loading, success, disabled, or error state was captured
 
 | Category | Evidence status |
 |---|---|
-| Empty | [FILL IN: public course-surface observation required] |
-| Loading | [FILL IN: public course-surface observation required] |
-| Error | [FILL IN: public course-surface observation required] |
-| Success | [FILL IN: public course-surface observation required] |
-| Skeleton | [FILL IN: public course-surface observation required] |
-| Disabled | [FILL IN: public course-surface observation required] |
+| Empty | Not observed — a public course-surface observation is required |
+| Loading | Not observed — a public course-surface observation is required |
+| Error | Not observed — a public course-surface observation is required |
+| Success | Not observed — a public course-surface observation is required |
+| Skeleton | Not observed — a public course-surface observation is required |
+| Disabled | Not observed — a public course-surface observation is required |
 
 ## 15. Motion & Easing
 
-No motion, transition, or user-flow state was supplied for the homepage. [FILL IN: selector-backed public motion evidence required]
+No motion, transition, or user-flow state was supplied for the homepage. Selector-backed public motion evidence is required before any is specified.

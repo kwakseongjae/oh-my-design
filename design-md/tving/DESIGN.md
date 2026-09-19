@@ -252,23 +252,19 @@ The current public editorial record emphasizes a varied original-content slate a
 
 *No first-party TVING persona research or demographic segmentation was collected for this reference. Do not fabricate customer archetypes, motivations, or survey findings.*
 
-- [FILL IN: user-provided primary viewer segment and viewing context]
-- [FILL IN: user-provided live or on-demand task]
-- [FILL IN: user-provided accessibility or device requirement]
-
 ## 14. States
 
 Only an opened content menu and a selected live tab were captured. The following product states require direct product-surface observation before specification:
 
 | Category | Evidence status |
 |---|---|
-| Empty | [FILL IN: no observed state] |
-| Loading | [FILL IN: no observed state] |
-| Error | [FILL IN: no observed state] |
-| Success | [FILL IN: no observed state] |
-| Skeleton | [FILL IN: no observed state] |
-| Disabled | [FILL IN: no observed state] |
+| Empty | Not observed in the captured routes |
+| Loading | Not observed in the captured routes |
+| Error | Not observed in the captured routes |
+| Success | Not observed in the captured routes |
+| Skeleton | Not observed in the captured routes |
+| Disabled | Not observed in the captured routes |
 
 ## 15. Motion & Easing
 
-No timing, easing, transition, or playback-control animation was captured. The opened-menu and selected-tab observations establish static states only. [FILL IN: product-specific motion evidence]
+No timing, easing, transition, or playback-control animation was captured. The opened-menu and selected-tab observations establish static states only.

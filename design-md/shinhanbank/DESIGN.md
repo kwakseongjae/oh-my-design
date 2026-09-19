@@ -222,7 +222,7 @@ The group’s stated mission is “금융으로 세상을 이롭게” and its v
 |---------|---------------------|
 | Corporate brand narrative | Mission- and customer-oriented language grounded in the group’s published vision |
 | Public banking navigation | Compact functional labels only where a product-surface sample is available |
-| Security, validation, and transaction copy | [FILL IN: requires first-party product copy or a captured state] |
+| Security, validation, and transaction copy | Not established — requires first-party product copy or a captured state |
 
 **Official voice samples:**
 - “금융으로 세상을 이롭게 한다” — group mission.
@@ -237,18 +237,18 @@ Today’s official narrative is customer-centered and future-facing: the group s
 
 ## 12. Principles
 
-1. **Customer-centered finance.** The group calls customer-centeredness its highest value. *UI implication:* [FILL IN: requires a documented product interaction rule.]
-2. **Easier, more comfortable, newer finance.** This is the published group vision. *UI implication:* [FILL IN: requires a product-surface component or journey source.]
-3. **Right, fast, different.** These are published organizational core values. *UI implication:* [FILL IN: requires first-party design guidance before conversion into UI rules.]
+1. **Customer-centered finance.** The group calls customer-centeredness its highest value. *UI implication:* not derived here — this requires a documented product interaction rule.
+2. **Easier, more comfortable, newer finance.** This is the published group vision. *UI implication:* not derived here — this requires a product-surface component or journey source.
+3. **Right, fast, different.** These are published organizational core values. *UI implication:* not derived here — this requires first-party design guidance before conversion into UI rules.
 
 ## 13. Personas
 
-[FILL IN: Shinhan Bank has not provided the specific user-segment facts needed to create reference personas. Do not invent customer names, ages, tasks, or motivations.]
+Shinhan Bank has not provided the specific user-segment facts needed to create reference personas. Do not invent customer names, ages, tasks, or motivations.
 
 ## 14. States
 
-[FILL IN: The supplied artifact reports `interactionCount: 0` and no observed state snapshots. Empty, loading, error, success, validation, disabled, and reduced-motion treatments require a first-party product-surface capture or official documentation.]
+The supplied artifact reports `interactionCount: 0` and no observed state snapshots. Empty, loading, error, success, validation, disabled, and reduced-motion treatments require a first-party product-surface capture or official documentation.
 
 ## 15. Motion & Easing
 
-[FILL IN: No first-party motion tokens, transitions, or reduced-motion rules were observed in the supplied artifact or located in the reviewed official sources.]
+No first-party motion tokens, transitions, or reduced-motion rules were observed in the supplied artifact or located in the reviewed official sources.
