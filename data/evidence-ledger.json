@@ -3,11 +3,11 @@
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
   "references_with_verification_v2": 141,
-  "sources": 899,
+  "sources": 900,
   "sources_by_kind": {
     "brand-asset": 75,
     "license": 76,
-    "official-doc": 377,
+    "official-doc": 378,
     "product-surface": 371
   },
   "references": {
@@ -5898,7 +5898,7 @@
       ]
     },
     "wise": {
-      "checked": "2026-07-13",
+      "checked": "2026-09-19",
       "claims": 0,
       "sources": [
         {
@@ -5924,6 +5924,12 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "wise.com"
+        },
+        {
+          "id": "wise-component-index",
+          "kind": "official-doc",
+          "captured": "2026-09-19",
+          "host": "wise.design"
         },
         {
           "id": "wise-components",

@@ -17,7 +17,7 @@ ds:
   description: Wise's public design system for product, editorial, and brand guidance.
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: marketing, url: "https://wise.com/", inspected: "2026-07-13" }
     - { id: business-pricing, kind: public-pricing, url: "https://wise.com/gb/pricing/business", inspected: "2026-07-13" }
@@ -28,6 +28,7 @@ verification_v2:
     - { id: kr-pricing-live, kind: product-surface, url: "https://wise.com/kr/pricing/", captured: "2026-07-13" }
     - { id: wise-typography, kind: official-doc, url: "https://wise.design/foundations/typography", captured: "2026-07-13" }
     - { id: wise-components, kind: official-doc, url: "https://docs.wise.design/components", captured: "2026-07-13" }
+    - { id: wise-component-index, kind: official-doc, url: "https://wise.design/sitemap.xml", captured: "2026-09-19" }
     - { id: inter-license, kind: license, url: "https://github.com/rsms/inter/blob/master/LICENSE.txt", captured: "2026-07-13" }
   conflicts: []
   claims:
@@ -212,6 +213,32 @@ All variants below are observations from the supplied public home/pricing captur
 - Font: `16px / 400 / Inter`
 - Dialog-open: `home::[data-omd-interaction-capture="dialog-0-3"]`; inset shadow `rgb(52, 74, 36) 0px 0px 0px 2.45557px`
 - Use: field inside the captured home dialog
+
+### Published component roster (55 not measured here)
+
+Wise publishes **55 components** at `wise.design`, enumerated by that host's own sitemap
+(`https://wise.design/sitemap.xml`, read 2026-09-19). None of them is measured in this
+reference. The five stylings above were captured from the **wise.com public marketing home and
+pricing pages** — a different host and a different evidence domain from the design system — so
+they are not a subset of this list and no value here is asserted for any name below.
+
+action-prompt, avatar, bottom-sheet, button, card, carousel-cards, checkbox, chip, circular-button, compact-date-input, copy-block, critical-banner, date-input, date-picker, divider, dropdown, expressive-money-input, icon-button, image-ratios, info-prompt, inline-prompt, instruction, list-item, list-item-button, list-item-checkbox, list-item-icon-button, list-item-navigation, list-item-no-action, list-item-radio, list-item-switch, media-button, modal, money-input, navigation-option, nudge, password-input, popover, progress-bar, progress-spinner, promo-card, radio, screen-loader, search-input, section-header, segmented-control, select, snackbar, summary, switch, table, tabs, text-area, text-input, upload, upload-input
+
+The list is flat because the host publishes it flat: every page is `wise.design/components/<name>`
+with no category segment. Grouping them into sections would be structure this reference invented
+rather than structure Wise publishes.
+
+### The source this reference cites for components no longer exists
+
+`verification_v2.sources` carries `wise-components` → `https://docs.wise.design/components`,
+captured 2026-07-13. As of 2026-09-19 the whole of `docs.wise.design` answers `302` to
+`https://wise.design/404`: Wise moved its design system to a Figma Sites build on the apex
+domain and retired the documentation host. The old entry is kept with its original capture date,
+because it records an observation that was true when it was made; `wise-component-index` is
+added alongside it for the index actually read today.
+
+The URL returns `200` after the redirect, so a status-code check calls it healthy. It is the
+same soft-404 shape that made this catalogue-wide review necessary.
 
 ## 5. Layout Principles
 
