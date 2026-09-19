@@ -17,13 +17,14 @@ ds:
   description: Official brand foundations plus the separate Click UI design system and component library.
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: marketing, url: "https://clickhouse.com/", inspected: "2026-07-13" }
     - { id: pricing, kind: public-calculator, url: "https://clickhouse.com/pricing", inspected: "2026-07-13" }
     - { id: story, kind: editorial, url: "https://clickhouse.com/blog/corsearch-replaces-mysql-with-clickhouse-for-content-and-brand-protection", inspected: "2026-07-13" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://clickhouse.com/", captured: "2026-07-13" }
+    - { id: clickhouse-component-index, kind: official-doc, url: "https://clickhouse.design/click-ui", captured: "2026-09-19" }
     - { id: pricing-live, kind: product-surface, url: "https://clickhouse.com/pricing", captured: "2026-07-13" }
     - { id: story-live, kind: product-surface, url: "https://clickhouse.com/blog/corsearch-replaces-mysql-with-clickhouse-for-content-and-brand-protection", captured: "2026-07-13" }
     - { id: brand-guide, kind: official-doc, url: "https://clickhouse.design/brand", captured: "2026-07-13" }
@@ -251,6 +252,18 @@ Click UI documents broader Button, IconButton, SplitButton, Text Field, and Sele
 **Tier 2 sources:** [getdesign ClickHouse directory](https://getdesign.md/clickhouse/design-md); Refero query attempted at `https://styles.refero.design/?q=ClickHouse`, but returned an internal error and is not treated as a positive or negative result.
 **Resolution note:** Earlier claims of universal forest-green conversion CTAs, 4px/8px card rules, and a universal neon-on-black product system were rolled back. The fresh packet ties green to cookie consent, gives each component a route/selector boundary, and keeps official Click UI documentation separate from public-surface measurements.
 **Conflicts unresolved:** none
+
+### Published component roster (57 published, none measured here)
+
+Click UI publishes **57 components**, read from its own index at `https://clickhouse.design/click-ui` on
+2026-09-19. Every host in this group serves a shell to a plain fetch, so the names come from the
+rendered page in a browser. No value, state or geometry below is asserted by this reference.
+
+accordions, alert, autocomplete, avatar, badge, bigStat, buttons, cards, checkbox, checkboxmultiselect, codeblock, confirmationdialog, container, contextmenu, datedetails, datepicker, daterangepicker, datetimerangepicker, dialog, dropdown, ellipsiscontent, filemultiupload, filetabs, fileupload, flyout, genericlabel, grid, gridcontainer, hovercard, icon, iconLibrary, label, link, logo, logoLibrary, multiaccordion, numberField, pagination, panel, passwordField, popover, progressbar, radiogroup, searchField, select, separator, spacer, switch, table, tabs, text, textArea, textField, title, toast, tooltip, verticalstepper
+
+Ten further pages under `/click-ui/` are documentation rather than components — accessibility,
+ai-quick-reference, availability, contributors, getting-started, tokens, patterns, releases,
+templates, supporting-tools — and are excluded.
 
 ## 5. Layout Principles
 

@@ -17,13 +17,14 @@ ds:
   description: Thumbtack's public design-system documentation.
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: design-system-home, url: "https://thumbprint.design/", inspected: "2026-07-13" }
     - { id: button-doc, kind: design-system-component-doc, url: "https://thumbprint.design/components/button/v2/react", inspected: "2026-07-13" }
     - { id: token-doc, kind: design-system-token-doc, url: "https://thumbprint.design/tokens", inspected: "2026-07-13" }
   sources:
     - { id: thumbprint-home, kind: product-surface, url: "https://thumbprint.design/", captured: "2026-07-13" }
+    - { id: thumbtack-component-index, kind: official-doc, url: "https://thumbprint.design/components/", captured: "2026-09-19" }
     - { id: thumbprint-button-doc, kind: official-doc, url: "https://thumbprint.design/components/button/v2/react", captured: "2026-07-13" }
     - { id: thumbprint-token-doc, kind: product-surface, url: "https://thumbprint.design/tokens", captured: "2026-07-13" }
     - { id: thumbprint-type-guide, kind: official-doc, url: "https://thumbprint.thumbtack.com/guidelines/typography", captured: "2026-07-13" }
@@ -204,6 +205,14 @@ The Button v2 documentation also contains a dark #07344a / light #7cdcfd button 
 - Use: Public component-documentation list row; selector surface-2::li
 
 No hover, focus, pressed, error, selected, menu, dialog, toast, or input-validation state is added: the capture reports zero interactions. The default button, input, and list geometry remains measured static evidence.
+
+### Published component roster (45 published, none measured here)
+
+Thumbprint publishes **45 components**, read from its own index at `https://thumbprint.design/components/` on
+2026-09-19. Every host in this group serves a shell to a plain fetch, so the names come from the
+rendered page in a browser. No value, state or geometry below is asserted by this reference.
+
+Accordion, Action Sheet, Alert, Alert Banner, Avatar, Button, Button Row, Calendar, Carousel, Checkbox, Chip, Date Picker, Dropdown, Fab, Form Note, Grid, Horizontal Rule, Icon Button, Image, Input Row, Label, Link, List, Loader Dots, Longread, Modal, Modal Curtain, Navigation Bar, Partial Sheet, Pill, Popover, Radio, Segmented Control, Service Card, Shadow Card, Slider, Star Rating, Switch, Tabs, Text Area, Text Input, Toast, Tooltip, Type, Wrap
 
 ## 5. Layout Principles
 

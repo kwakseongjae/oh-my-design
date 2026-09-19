@@ -18,7 +18,7 @@ ds:
   og_image: "https://design.socar.kr/og.jpg"
 verification_v2:
   schema: 2
-  checked: "2026-07-12"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: marketing-product, url: "https://www.socar.kr/", inspected: "2026-07-12" }
     - { id: service, kind: product-directory, url: "https://www.socar.kr/service", inspected: "2026-07-12" }
@@ -27,6 +27,7 @@ verification_v2:
     - { id: fare, kind: product-guide, url: "https://www.socar.kr/fare", inspected: "2026-07-12" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://www.socar.kr/", captured: "2026-07-12" }
+    - { id: socar-component-index, kind: official-doc, url: "https://design.socar.kr/", captured: "2026-09-19" }
     - { id: service-live, kind: product-surface, url: "https://www.socar.kr/service", captured: "2026-07-12" }
     - { id: guide-live, kind: product-surface, url: "https://www.socar.kr/guide", captured: "2026-07-12" }
     - { id: brand-live, kind: brand-asset, url: "https://design.socar.kr/", captured: "2026-07-12" }
@@ -334,6 +335,17 @@ Specimen availability is evaluated independently for brand and live web surfaces
 - Brand-document typefaces (Sandoll Gothic Neo2 / Avenir) vs. actual web fonts (Pretendard / PretendardVariable). Treated as intentional: brand print system uses the licensed faces; the public web substitutes Pretendard. Documented in §3.
 - Exact SOCAR Blue hex not publicly published. §1–§2 reference the color by its brand name; §9 lists it as "SOCAR Blue (brand-published hex pending — use Brand Center reference)" rather than guess.
 - SOCAR FRAME 2.0 component-level tokens (button height variants, dark-mode palette) live behind the internal SOCAR Frame docs and were not extracted in this run.
+
+### `design.socar.kr` is a brand centre, not a component system
+
+This reference's `ds:` block is typed `system` and points at `https://design.socar.kr/`. Opened in
+a browser on 2026-09-19, that host publishes four pages — 브랜드 로고, 브랜드 에셋, 브랜드 표기 규정,
+새로운 쏘카 — and its own title is 쏘카 브랜드 센터, the Socar Brand Centre. There is no component
+index, and the one link that suggests otherwise, `/socar.design/`, redirects to the same root.
+
+No roster is recorded because there is nothing to enumerate. The absence is the finding: SOCAR
+publishes brand assets and naming rules at this address, not a component library, and the `ds`
+type says otherwise.
 
 ## 5. Layout Principles
 

@@ -18,7 +18,7 @@ ds:
   og_image: "https://docs.developer.apple.com/tutorials/developer-og.jpg"
 verification_v2:
   schema: 2
-  checked: "2026-09-17"
+  checked: "2026-09-19"
   surfaces:
     - { id: apple-home, kind: marketing, url: "https://www.apple.com/", inspected: "2026-07-11" }
     - { id: apple-home-states, kind: marketing, url: "https://www.apple.com/", inspected: "2026-09-17" }
@@ -27,6 +27,7 @@ verification_v2:
     - { id: hig-components, kind: design-system, url: "https://developer.apple.com/design/human-interface-guidelines/components", inspected: "2026-07-11" }
   sources:
     - { id: apple-live, kind: product-surface, url: "https://www.apple.com/", captured: "2026-07-11" }
+    - { id: apple-component-index, kind: official-doc, url: "https://developer.apple.com/design/human-interface-guidelines/components", captured: "2026-09-19" }
     - { id: apple-live-states, kind: product-surface, url: "https://www.apple.com/", captured: "2026-09-17" }
     - { id: apple-store-live, kind: product-surface, url: "https://www.apple.com/shop/product/mw5g3am/a/siri-remote", captured: "2026-07-11" }
     - { id: hig-buttons-live, kind: official-doc, url: "https://developer.apple.com/design/human-interface-guidelines/buttons", captured: "2026-07-11" }
@@ -268,6 +269,30 @@ Do not infer a universal native-platform semantic palette from these web values.
 **Tier 2 sources:** https://styles.refero.design/style/a4f123f2 and https://styles.refero.design/style/c9cabb96 remain historical cross-checks only; https://getdesign.md/apple did not provide an importable current record in this run.
 **Surface split:** apple.com marketing, Apple Store product UI, and HIG documentation chrome are retained as separate evidence domains.
 **Conflicts unresolved:** none
+
+### Published component roster (64 published, none measured here)
+
+The Apple Human Interface Guidelines publishes **64 components**, read from its own index at `https://developer.apple.com/design/human-interface-guidelines/components` on
+2026-09-19. The groupings are the host's own. Every host in this group serves a shell to a plain
+fetch, so the names come from the rendered page in a browser. No value, state or geometry below
+is asserted by this reference.
+
+- **Content** — Charts, Image views, Text views, Web views
+- **Layout and organization** — Boxes, Collections, Column views, Disclosure controls, Labels, Lists and tables, Lockups, Outline views, Split views, Tab views
+- **Menus and actions** — Activity views, Buttons, Context menus, Dock menus, Edit menus, Home Screen quick actions, Menus, Ornaments, Pop-up buttons, Pull-down buttons, The menu bar, Toolbars
+- **Navigation and search** — Path controls, Search fields, Sidebars, Tab bars, Token fields
+- **Presentation** — Action sheets, Alerts, Page controls, Panels, Popovers, Scroll views, Sheets, Windows
+- **Selection and input** — Color wells, Combo boxes, Digit entry views, Image wells, Pickers, Segmented controls, Sliders, Steppers, Text fields, Toggles, Virtual keyboards
+- **Status** — Activity rings, Gauges, Progress indicators, Rating indicators
+- **System experiences** — App Shortcuts, Complications, Controls, Live Activities, Notifications, Snippets, Status bars, Top Shelf, Watch faces, Widgets
+
+The page is client-rendered; the names come from Apple's own documentation JSON API, which is
+the machine-readable index this host publishes.
+
+The HIG is guidance for platform-provided components rather than a library Apple ships to
+third parties, and it spans iOS, iPadOS, macOS, tvOS, visionOS and watchOS — an entry like
+`Watch faces` or `Top Shelf` belongs to one platform only. Nothing above is asserted to apply
+to every platform.
 
 ## 5. Layout Principles
 

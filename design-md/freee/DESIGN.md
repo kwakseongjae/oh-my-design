@@ -17,13 +17,14 @@ ds:
   description: Official freee design system, published with accessibility-focused frontend-development materials.
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: public-marketing, url: "https://www.freee.co.jp/", inspected: "2026-07-12" }
     - { id: pricing, kind: public-marketing, url: "https://www.freee.co.jp/pricing/", inspected: "2026-07-12" }
     - { id: products, kind: public-marketing, url: "https://www.freee.co.jp/products/", inspected: "2026-07-12" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://www.freee.co.jp/", captured: "2026-07-12" }
+    - { id: freee-component-index, kind: official-doc, url: "https://vibes.freee.co.jp/index.json", captured: "2026-09-19" }
     - { id: pricing-live, kind: product-surface, url: "https://www.freee.co.jp/pricing/", captured: "2026-07-12" }
     - { id: products-live, kind: product-surface, url: "https://www.freee.co.jp/products/", captured: "2026-07-12" }
     - { id: vibes-repo, kind: official-doc, url: "https://github.com/freee/vibes", captured: "2026-07-13" }
@@ -227,6 +228,22 @@ Every component below is a public-site observation with preserved selector and s
 - Use: products category link at `products::[data-omd-capture="37"]`; 186px rendered height, default state only.
 
 No authenticated-app fields, data tables, status badges, dialogs, errors, disabled states, responsive breakpoints, or documentation components are specified: none had the required public selector/surface/state provenance in the supplied evidence.
+
+### Published component roster (69 published, none measured here)
+
+freee's Vibes publishes **69 components** in the two tiers it names itself, read from its
+Storybook index (`https://vibes.freee.co.jp/index.json`) on 2026-09-19. No value, state or geometry below is asserted by
+this reference.
+
+- **lv1 (16)** — InlineSpinner, Loading, a11y, bases, buttons, calendar, forms, grids, icons, images, interactiveParts, layout, lists, messages, progress, typography
+- **lv2 (53)** — accordionPanel, breadcrumbs, bulletedList, buttonGroup, calendar, cardNavigation, combobox, descriptionList, dialogs, dropdown, dropdownButton, emptyStates, fileUploader, filterTag, filterableDropdownButton, footer, formBlock, formControl, formFields, globalNavi, guidanceMessage, guidedContent, header, headlineArea, hierarchicalTable, indexSearchField, lineSeparatedList, listCard, listTable, messageBlock, messageIcon, modals, numericTable, pageSelector, pager, personTag, popupProgressBar, popupProgressBarPortal, propsListForm, scrimCoveredContent, selectableButton, skeleton, stackedBarChart, statusSelector, stepper, tabBar, tagBox, withAccordionContent, withBalloon, withDropdown, withFilterableDropdown, withPopup, withTOC
+
+The host marks a further six deprecated, and they are listed apart rather than dropped:
+basicTable, buttons, forms, interactiveParts, listButtonSelector, listButtons.
+
+**Why a fetch could not find this.** `vibes.freee.co.jp` is a Storybook: the page returns a shell
+with zero anchors, and the roster lives in `/index.json`, which Storybook publishes for exactly
+this purpose. A path crawl finds nothing here no matter how patient it is.
 
 ## 5. Layout Principles
 

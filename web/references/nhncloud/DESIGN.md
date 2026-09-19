@@ -17,13 +17,14 @@ ds:
   description: NHN Cloud's official, continuously maintained open-source JavaScript UI catalog; it is a distinct developer/documentation surface, not a published token sheet for the NHN Cloud marketing site.
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: corporate-marketing, kind: marketing, url: "https://www.nhncloud.com/kr", inspected: "2026-07-13" }
     - { id: toast-catalog, kind: documentation-catalog, url: "https://ui.toast.com/", inspected: "2026-07-13" }
     - { id: cloud-docs, kind: documentation-chrome, url: "https://docs.nhncloud.com/ko/nhncloud/ko/overview/", inspected: "2026-07-13" }
   sources:
     - { id: corporate-marketing-live, kind: product-surface, url: "https://www.nhncloud.com/kr", captured: "2026-07-13" }
+    - { id: nhncloud-component-index, kind: official-doc, url: "https://ui.toast.com/", captured: "2026-09-19" }
     - { id: toast-catalog-live, kind: product-surface, url: "https://ui.toast.com/", captured: "2026-07-13" }
     - { id: cloud-docs-live, kind: product-surface, url: "https://docs.nhncloud.com/ko/nhncloud/ko/overview/", captured: "2026-07-13" }
     - { id: company-about, kind: official-doc, url: "https://company.nhncloud.com/about?lang=en", captured: "2026-07-13" }
@@ -194,6 +195,18 @@ The capture also records `#E9F1FF` in documentation chrome. It is not promoted a
 - Use: Expanded corporate-marketing menu panel; `home::[data-omd-interaction-capture="menu-0-0"]`.
 
 No TOAST widget, input, grid, editor, hover color, error treatment, or responsive variant is specified here without a captured selector/value pair on an actual relevant surface.
+
+### Published component roster (14 published, none measured here)
+
+TOAST UI publishes **14 components**, read from its own index at `https://ui.toast.com/` on
+2026-09-19. Every host in this group serves a shell to a plain fetch, so the names come from the
+rendered page in a browser. No value, state or geometry below is asserted by this reference.
+
+App Loader, Auto Complete, Calendar, Chart, Color Picker, Context Menu, Date Picker, Editor, Grid, Image-editor, Pagination, Rolling, Time Picker, Tree
+
+Fourteen is the real number, not a short read. TOAST UI is published as a set of standalone
+libraries — Grid, Chart, Editor and Calendar are each their own release — rather than as one
+component set covering a whole interface.
 
 ## 5. Layout Principles
 

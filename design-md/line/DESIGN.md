@@ -18,7 +18,7 @@ ds:
   og_image: "https://designsystem.line.me/static/36a4ead41b7b972b1130287e849a14b1/73f08/SEO_IMG_1741574443.png"
 verification_v2:
   schema: 2
-  checked: "2026-07-11"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: marketing, url: "https://www.line.me/ko/", inspected: "2026-07-11" }
     - { id: ds-home, kind: design-system, url: "https://designsystem.line.me/", inspected: "2026-07-11" }
@@ -36,6 +36,7 @@ verification_v2:
     - { id: corporate-style, kind: corporate, url: "https://www.lycorp.co.jp/en/technology-design/design/", inspected: "2026-07-11" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://www.line.me/ko/", captured: "2026-07-11" }
+    - { id: line-component-index, kind: official-doc, url: "https://designsystem.line.me/LDSM/components/", captured: "2026-09-19" }
     - { id: ds-home-doc, kind: official-doc, url: "https://designsystem.line.me/", captured: "2026-07-11" }
     - { id: colors-doc, kind: official-doc, url: "https://designsystem.line.me/LDSM/foundation/color/line-color-guide-ex-en/", captured: "2026-07-11" }
     - { id: typography-doc, kind: official-doc, url: "https://designsystem.line.me/LDSM/foundation/typography-ex-en/", captured: "2026-07-11" }
@@ -371,6 +372,17 @@ Only one tab can be active. Tabs may scroll horizontally when all items do not f
 **Conflicts unresolved:** none
 
 LY Corporation's corporate Design Style is retained as organizational context only. Its corporate chrome and values are not used as LINE Messenger component tokens.
+
+### Published component roster (34 published, none measured here)
+
+The LINE Design System for Messenger (LDSM) publishes **34 components**, read from its own index at `https://designsystem.line.me/LDSM/components/` on
+2026-09-19. Every host in this group serves a shell to a plain fetch, so the names come from the
+rendered page in a browser. No value, state or geometry below is asserted by this reference.
+
+Badge, Banner, Bottom Navigation, Bottom Sheet, Box Button, Capsule Button, Card, Checkbox, Checkmark, Chips, Empty, Flex Message, Floating Action Button, Icon button, Image Grid, List, List Header, Page Indicator, Popup, Profile, Progress Indicator, Radio Button, Search Bar, Slider, Snackbar, Spinner, Switch, Tabs, Text Button, Text Inputs, Toast Overlay, Tooltip, Top Navigation, Video Player
+
+LINE publishes a **second** system at the same host, LDSG, with its own component set. This
+roster is LDSM only; LDSG is not enumerated here and should not be assumed to match.
 
 ## 5. Layout Principles
 

@@ -17,13 +17,14 @@ ds:
   description: Karrot (Daangn)'s open-source design system for marketplace apps.
 verification_v2:
   schema: 2
-  checked: "2026-09-17"
+  checked: "2026-09-19"
   surfaces:
     - { id: marketing-home, kind: marketing, url: "https://www.karrotmarket.com/", inspected: "2026-07-11" }
     - { id: marketing-about, kind: marketing, url: "https://www.karrotmarket.com/about/", inspected: "2026-07-11" }
     - { id: seed-system, kind: design-system, url: "https://v2.seed-design.io/", inspected: "2026-07-11" }
   sources:
     - { id: karrot-live, kind: product-surface, url: "https://www.karrotmarket.com/", captured: "2026-07-11" }
+    - { id: karrot-component-index, kind: official-doc, url: "https://v2.seed-design.io/component/", captured: "2026-09-19" }
     - { id: seed-source, kind: official-doc, url: "https://github.com/daangn/seed-design/blob/fb4459e90f84e049112395964319b163f980b821/packages/stylesheet/global.css", captured: "2026-07-11" }
     - { id: seed-typography, kind: official-doc, url: "https://v2.seed-design.io/foundation/typography/", captured: "2026-07-11" }
     - { id: seed-box-button, kind: official-doc, url: "https://v2.seed-design.io/component/box-button/usage/", captured: "2026-07-11" }
@@ -242,6 +243,17 @@ SEED is the canonical source for product-system colors, type roles, and componen
 **Snackbar**
 - States: default, success, warning, action focus
 - Use: Brief action feedback with at most one related action
+
+### Published component roster (34 published, none measured here)
+
+SEED Design publishes **34 components**, read from its own index at `https://v2.seed-design.io/component/` on
+2026-09-19. Every host in this group serves a shell to a plain fetch, so the names come from the
+rendered page in a browser. No value, state or geometry below is asserted by this reference.
+
+Action Sheet, Alert Dialog, Avatar, Avatar Group, Bottom Sheet, Box Button, Box Toggle Button, Capsule Toggle Button, Text Button, Actionable Callout, Callout, Dismissable Callout, Checkbox, Chip Button, Chip Filter, Chip Radio Group, Chip Toggle Button, Extended Floating Action Button, Floating Action Button, Menu Floating Action Button, Help Bubble, Actionable Inline Alert, Dismissable Inline Alert, Inline Alert, Radio Group, Select Box, Range Slider, Slider, Snackbar, Spinner, Switch, Tabs, Multiline Text Field, Text Field
+
+The host groups variants under a shared heading — Buttons, Callouts, Chips, FABs, Inline Alerts,
+Sliders, Text Fields — and each variant above is its own documented component.
 
 ## 5. Layout Principles
 

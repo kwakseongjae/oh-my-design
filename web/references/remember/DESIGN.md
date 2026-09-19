@@ -18,13 +18,14 @@ ds:
   og_image: "https://cdn.rememberapp.co.kr/logos/remember/rmbr_og_image.png"
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: career-postings, kind: product, url: "https://career.rememberapp.co.kr/job/postings", inspected: "2026-07-13" }
     - { id: career-postings-repeat, kind: product, url: "https://career.rememberapp.co.kr/job/postings", inspected: "2026-07-13" }
     - { id: corporate-home, kind: marketing, url: "https://corp.remember.co.kr/", inspected: "2026-07-13" }
   sources:
     - { id: career-postings-live, kind: product-surface, url: "https://career.rememberapp.co.kr/job/postings", captured: "2026-07-13" }
+    - { id: remember-component-index, kind: official-doc, url: "https://dramancompany.github.io/remember-ui/", captured: "2026-09-19" }
     - { id: corporate-home-live, kind: product-surface, url: "https://corp.remember.co.kr/", captured: "2026-07-13" }
     - { id: company-context, kind: official-doc, url: "https://corp.remember.co.kr/company", captured: "2026-07-13" }
     - { id: brand-guideline, kind: brand-asset, url: "https://static.rememberapp.co.kr/brand/brand_guideline_logo.pdf", captured: "2026-07-13" }
@@ -227,6 +228,24 @@ Do not substitute a system font for Pretendard or a named Founders face. The cor
 **Tier 2 sources:** https://getdesign.md/remember (attempted; no raw entry retrieved) · https://styles.refero.design/?q=remember (attempted; no raw result retrieved)
 
 **Conflicts unresolved:** none
+
+### Published component roster (32 published, none measured here)
+
+remember-ui publishes **32 components**, read from its own index at `https://dramancompany.github.io/remember-ui/` on
+2026-09-19. The groupings are the host's own. Every host in this group serves a shell to a plain
+fetch, so the names come from the rendered page in a browser. No value, state or geometry below
+is asserted by this reference.
+
+- **BUTTONS** — BaseButton, CustomButton, LinkButton, MoreButton, NewBaseButton, TopButton
+- **COMMON** — Chip, Container, Pagination, Spinner
+- **CONTROL** — Accordion, BasePopover, BaseTooltip, Checkbox, InfoTooltip, PopoverItem, Radio, Select, Switch
+- **ICON** — ProfileAvatar
+- **INPUT** — BaseInput, DoubleInput, ImageInput, MaskingInput, Textarea
+- **LOGO** — RememberLogo
+- **MODAL** — BaseModal, ConfirmModal, DesignedModal, MessageModal, MobileFullModal, ProgressModal
+
+Read from the Storybook sidebar. The seventh sidebar entry, `RDS`, is the documentation canvas
+rather than a component group, and is excluded.
 
 ## 5. Layout Principles
 

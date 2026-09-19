@@ -17,13 +17,14 @@ ds:
   description: MongoDB's open-source design system and React component library.
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: marketing, url: "https://www.mongodb.com/", inspected: "2026-07-13" }
     - { id: surface-2, kind: design-system, url: "https://www.mongodb.design/", inspected: "2026-07-13" }
     - { id: surface-3, kind: documentation, url: "https://www.mongodb.com/ko-kr/docs/", inspected: "2026-07-13" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://www.mongodb.com/", captured: "2026-07-13" }
+    - { id: mongodb-component-index, kind: official-doc, url: "https://www.mongodb.design/", captured: "2026-09-19" }
     - { id: leafygreen-live, kind: official-doc, url: "https://www.mongodb.design/", captured: "2026-07-13" }
     - { id: docs-live, kind: official-doc, url: "https://www.mongodb.com/ko-kr/docs/", captured: "2026-07-13" }
     - { id: typography-guidance, kind: official-doc, url: "https://www.mongodb.design/foundations/typography", captured: "2026-07-13" }
@@ -208,6 +209,14 @@ All variants below are baseline observations from the supplied 2026-07-13 collec
 - Radius: `50px`
 - Font: `13px / 500 / Euclid Circular A`
 - Use: LeafyGreen design-system utility control; `surface-2::[data-omd-capture="48"]`
+
+### Published component roster (61 published, none measured here)
+
+LeafyGreen publishes **61 components**, read from its own index at `https://www.mongodb.design/` on
+2026-09-19. Every host in this group serves a shell to a plain fetch, so the names come from the
+rendered page in a browser. No value, state or geometry below is asserted by this reference.
+
+Avatar, Badge, Banner, Button, Callout, Canvas Header, Card, Charts, Checkbox, Chip, Cloud Nav Layout, Code, Code Editor, Combobox, Confirmation Modal, Context Drawer, Copyable, Date Picker, Drawer, Empty State, Expandable Card, Feature Walls, Form Footer, Gallery Indicator, Guide Cue, Icon, Icon Button, Info Sprinkle, Inline Definition, Loading Indicator, Logo, Marketing Modal, Menu, Modal, Number Input, Ordered List, Pagination, Palette, Password Input, Pipeline, Popover, Preview Card, Progress Bar, Radio Box Group, Radio Group, Search Input, Section Nav, Segmented Control, Select, Side Nav, Skeleton Loader, Split Button, Stepper, Table, Tabs, Text Area, Text Input, Toast, Toggle, Tooltip, Typography
 
 ## 5. Layout Principles
 

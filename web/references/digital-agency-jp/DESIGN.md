@@ -218,6 +218,17 @@ The typographic voice is unmistakably Japanese-civic: the stack leads with **Not
 **Tier 2 sources:** getdesign.md/digital-agency-jp — not listed (government DS, outside coverage); styles.refero.design — not listed
 **Conflicts unresolved:** none
 
+### Published component roster (49 published, none measured here)
+
+The Japan Digital Agency Design System (DADS) publishes **49 components**, read from its own index at `https://design.digital.go.jp/dads/components/` on
+2026-09-19. Every host in this group serves a shell to a plain fetch, so the names come from the
+rendered page in a browser. No value, state or geometry below is asserted by this reference.
+
+アコーディオン, イメージスライダー, インプットテキスト, カルーセル, カード, コンボボックス, スイッチ, スクロールトップボタン, ステップナビゲーション, セレクトボックス, タブ, チェックボックス, チップタグ, チップラベル, テキストエリア, テーブルコントロール, テーブル／データテーブル, ディスクロージャー, ディバイダー, ドロワー, ノティフィケーションバナー, ハンバーガーメニューボタン, パンくずナビゲーション, ファイルアップロード／ドロップエリア, プログレスインジケーター, ヘッダーコンテナ, ページナビゲーション, ボタン, ボトムナビゲーション, メガメニュー, メニューリスト, メニューリストボックス, モバイルメニュー, モーダルダイアログ, ユーティリティリンク, ラジオボタン, ランゲージセレクター, リソースリスト, 引用ブロック, 日付ピッカー／カレンダー, 検索ボックス, 水平メニュー, 注釈ブロック, 画像, 目次, 箇条書きリスト, 緊急時バナー, 見出し, 説明リスト
+
+Names are given in Japanese because that is how the host publishes them. Translating them would
+produce names this design system does not use.
+
 ## 5. Layout Principles
 
 ### Spacing System

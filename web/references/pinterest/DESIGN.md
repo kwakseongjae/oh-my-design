@@ -17,13 +17,14 @@ ds:
   description: Pinterest's public design system for product teams.
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: consumer-product, url: "https://kr.pinterest.com/", inspected: "2026-07-13" }
     - { id: surface-2, kind: consumer-auth, url: "https://kr.pinterest.com/", inspected: "2026-07-13" }
     - { id: surface-3, kind: business-marketing, url: "https://business.pinterest.com/ko/", inspected: "2026-07-13" }
   sources:
     - { id: consumer-capture, kind: product-surface, url: "https://kr.pinterest.com/", captured: "2026-07-13" }
+    - { id: pinterest-component-index, kind: official-doc, url: "https://gestalt.pinterest.systems/web/overview", captured: "2026-09-19" }
     - { id: business-capture, kind: product-surface, url: "https://business.pinterest.com/ko/", captured: "2026-07-13" }
     - { id: gestalt-context, kind: official-doc, url: "https://gestalt.pinterest.systems/", captured: "2026-07-13" }
     - { id: brand-guidelines, kind: brand-asset, url: "https://business.pinterest.com/en-in/brand-guidelines/", captured: "2026-07-13" }
@@ -258,6 +259,17 @@ No hover, focus, pressed, disabled, menu, dialog, validation, or responsive comp
 **Conflicts unresolved:** none
 
 Legacy global component, font, responsive, motion, and product-state claims were removed because the supplied 2026-07-13 capture establishes only the selector- and surface-scoped observations above.
+
+### Published component roster (86 published, none measured here)
+
+Gestalt publishes **86 components**, read from its own index at `https://gestalt.pinterest.systems/web/overview` on
+2026-09-19. Every host in this group serves a shell to a plain fetch, so the names come from the
+rendered page in a browser. No value, state or geometry below is asserted by this reference.
+
+Accordion, ActivationCard, Avatar, AvatarGroup, AvatarGroupCluster, Badge, BannerCallout, BannerOverlay, BannerSlim, BannerUpsell, Box, Button, ButtonGroup, ButtonLink, ButtonSocial, ButtonToggle, ChartGraph, Checkbox, Collage, ColorSchemeProvider, Column, ComboBox, Container, Datapoint, DateField, DatePicker, DateRange, Divider, Dropdown, Fieldset, Flex, Heading, HelpButton, Icon, IconButton, IconButtonFloating, IconButtonLink, IconCompact, Image, Indicator, Label, Layer, Letterbox, Link, List, Mask, Masonry, Modal, ModalAlert, NumberField, OverlayPanel, PageHeader, Pog, Popover, PopoverMessage, Pulsar, RadioGroup, SearchField, SearchGuide, SearchGuideLink, SegmentedControl, SelectList, SheetMobile, SideNavigation, Spinner, Status, Sticky, Switch, Table, TableOfContents, Tabs, Tag, TagData, TapArea, TapAreaLink, Text, TextArea, TextCompact, TextField, TextUI, TileData, Toast, Tooltip, Video, WashAnimated, ZIndex
+
+This is the **web** platform list; Gestalt documents iOS and Android separately and those are
+not enumerated here.
 
 ## 5. Elevation
 

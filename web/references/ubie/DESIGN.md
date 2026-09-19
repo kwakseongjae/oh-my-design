@@ -364,6 +364,14 @@ Ubie `<Tag>` — short keyword for attributes or classification. Bold (DB), 12px
 **Tier 2 sources:** speakerdeck.com/ubie/ubie-brand-guideline (brand concept "あたたかさと賢さで寄り添う", heart motif, UD Shin Go + Open Sans fallback); note.com/ubie rebranding article; X/@rhatake_jp (logo encodes 36°C body temperature).
 **Notes:** Primitive hex values are authoritative (cross-checked Vitals docs ↔ token JSON, identical). Component padding/height/shadow values are reconstructed from the documented radius/spacing/typography tokens + size-rule (§5) where Vitals docs describe behavior but omit exact px; flagged as derived, not invented.
 
+### Published component roster (28 published, none measured here)
+
+Ubie Vitals publishes **28 components**, read from its own index at `https://vitals.ubie.life/components` on
+2026-09-19. Every host in this group serves a shell to a plain fetch, so the names come from the
+rendered page in a browser. No value, state or geometry below is asserted by this reference.
+
+Accordion, ActionHalfModal, ActionModal, Bold, Box, Button, ButtonCard, Center, Checkbox, CheckboxCard, Color, Divider, Flex, Heading, Icon, Input, LinkButton, LinkCard, MessageHalfModal, MessageModal, Pre, RadioButton, RadioCard, Select, Stack, Text, TextArea, Toggle
+
 ## 5. Layout Principles
 
 ### Spacing System

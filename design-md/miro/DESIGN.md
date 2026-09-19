@@ -18,13 +18,14 @@ ds:
   og_image: "https://www.mirotone.xyz/cover.png"
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: public-marketing, url: "https://miro.com/ko/", inspected: "2026-07-13" }
     - { id: pricing-desktop, kind: public-pricing, url: "https://miro.com/ko/pricing/", inspected: "2026-07-13" }
     - { id: pricing-repeat, kind: public-pricing-repeat, url: "https://miro.com/ko/pricing/", inspected: "2026-07-13" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://miro.com/ko/", captured: "2026-07-13" }
+    - { id: miro-component-index, kind: official-doc, url: "https://www.mirotone.xyz/css", captured: "2026-09-19" }
     - { id: pricing-live, kind: product-surface, url: "https://miro.com/ko/pricing/", captured: "2026-07-13" }
     - { id: miro-about, kind: official-doc, url: "https://miro.com/about/", captured: "2026-07-13" }
     - { id: miro-aura, kind: brand-asset, url: "https://miro.com/aura/", captured: "2026-07-13" }
@@ -221,6 +222,18 @@ All variants below are constrained to the supplied public marketing/pricing capt
 - Font: `16px / 400 / roobertPROLocal`
 - Dialog-open: `surface-2::[data-omd-interaction-capture="dialog-0-8"]`; shadow includes `rgba(0, 0, 0, 0.1) 0px 10px 15px -3px`
 - Use: dialog opened by a captured public-pricing interaction; no global modal token or further state contract is inferred
+
+### Published component roster (14 published, none measured here)
+
+Mirotone publishes **14 components**, read from its own index at `https://www.mirotone.xyz/css` on
+2026-09-19. Every host in this group serves a shell to a plain fetch, so the names come from the
+rendered page in a browser. No value, state or geometry below is asserted by this reference.
+
+App card, Button, Checkbox, Divider, Input, Label, Link, Radio button, Select, Table, Tabs, Tags, TextArea, Toggle
+
+Mirotone publishes 29 pages under `/css/`. Fifteen are not components and are excluded: seven
+foundations (Colors, Icons, Layout, Placement, Spacing, Typography, Variables) and eight page
+templates (Draggable app card, Form, Gallery, Icon, Message, Mixed, Onboarding, Scrollable view).
 
 ## 5. Layout Principles
 

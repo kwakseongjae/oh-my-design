@@ -17,12 +17,13 @@ ds:
   description: "Palantir's open-source React UI toolkit for complex, data-dense desktop web interfaces."
 verification_v2:
   schema: 2
-  checked: "2026-07-14"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: public-product, url: "https://blueprintjs.com/", inspected: "2026-07-13" }
     - { id: docs, kind: official-documentation, url: "https://blueprintjs.com/docs/", inspected: "2026-07-13" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://blueprintjs.com/", captured: "2026-07-13" }
+    - { id: palantir-component-index, kind: official-doc, url: "https://blueprintjs.com/docs/", captured: "2026-09-19" }
     - { id: docs-live, kind: official-doc, url: "https://blueprintjs.com/docs/", captured: "2026-07-13" }
     - { id: blueprint-repository, kind: official-doc, url: "https://github.com/palantir/blueprint", captured: "2026-07-14" }
     - { id: blueprint-license, kind: license, url: "https://github.com/palantir/blueprint/blob/develop/LICENSE", captured: "2026-07-14" }
@@ -160,6 +161,17 @@ The supplied capture contains twelve detected variants, including links, buttons
 ### Measured but non-tokenized controls
 
 The landing includes a 40px minimal action (`4px 16px` padding, 4px radius) and a 30px blue action (`4px 8px` padding, 4px radius). The Docs include a 30px minimal button and a version-selector trigger that opened the one recorded menu. These values remain raw evidence rather than general button tokens: the supplied interaction data contains only the version-menu expansion, not a complete, selector-specific state summary for those button variants.
+
+### Published component roster (58 published, none measured here)
+
+Blueprint publishes **58 components**, read from its own index at `https://blueprintjs.com/docs/` on
+2026-09-19. Every host in this group serves a shell to a plain fetch, so the names come from the
+rendered page in a browser. No value, state or geometry below is asserted by this reference.
+
+Alert, Breadcrumbs, Button group, Buttons, Callout, Card, Card List, Checkbox, Collapse, Compound Tag, Context Menu, Context Menu Popover, Control card, Control group, Dialog, Divider, Drawer, Editable text, Entity Title, File input, Form group, HTML elements, HTML select, HTML table, HotkeysTarget, Icon, Icon Next (new), Input group, Label, Link (new), Menu, Navbar, Non-ideal state, Numeric input, Overflow list, Overlay2, Overlay (deprecated), Panel stack, Popover Next (new), Popover (deprecated), Portal, Progress bar, Radio, Resize sensor, Section, Segmented control, Skeleton, Slider, Spinner, Switch, Tabs, Tag, Tag input, Text, Text area, Toast, Tooltip, Tree
+
+Names carry the host's own status badges — `Icon Next (new)`, `Overlay (deprecated)`,
+`Popover Next (new)` — because Blueprint marks its migration state in the index itself.
 
 ## 5. Layout Principles
 
