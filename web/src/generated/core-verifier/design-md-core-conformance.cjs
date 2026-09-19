@@ -223,6 +223,46 @@ function claimBlocks(sectionBody) {
   });
 }
 
+/**
+ * `unresolved` is in two vocabularies at once, and that is the whole problem.
+ *
+ * It is a placeholder word — `Motion: UNRESOLVED` is a value nobody filled in.
+ * It is also one of the three closed reason classes this spec defines for the
+ * Omitted block (see the table under "The reason classes are closed"), where
+ * `unresolved` means "the value may exist; this document could not establish
+ * it". Naming that, with a justification, is what the spec asks for.
+ *
+ * Without a way to tell the two apart, a row that correctly declares an absence
+ * reads as a failure to declare one. That is not hypothetical: the spec's own
+ * normative example —
+ *   | `unresolved` | The value may exist; this document could not establish it | … |
+ * — was reported as containing an unresolved placeholder by the checker that
+ * enforces the spec, and so were 22 references that had done exactly as told.
+ *
+ * Position separates the roles. A reason class labels its row, so it sits in the
+ * first cell and the cells after it carry the explanation. A placeholder is a
+ * missing *value*, so it sits where the value belongs — after the label.
+ * `| Motion | UNRESOLVED |` is still a placeholder and still fails.
+ *
+ * Only these three words are exempt, because only these three are the spec's
+ * classes. `| UNKNOWN | Native app typography … |` still fails: "unknown" is not
+ * a reason class, so it cannot be one here either.
+ */
+const REASON_CLASS_CELL = /^`?(?:verified-absent|unresolved|out-of-scope)`?$/i;
+
+/** Enough text to be an explanation. Counted in characters — krds's row is Korean. */
+const MIN_JUSTIFICATION_CHARS = 12;
+
+function rowClassifiesRatherThanOmits(cells) {
+  const [first, ...rest] = cells.map((cell) => cell.replace(/[*_`]/g, '').trim());
+  if (!REASON_CLASS_CELL.test(first)) return false;
+  return rest.some((cell) => (
+    cell.replace(/\s+/g, '').length >= MIN_JUSTIFICATION_CHARS
+    && !BARE_PLACEHOLDER.test(cell)
+    && !DELIMITED_PLACEHOLDER.test(cell)
+  ));
+}
+
 function prescriptivePlaceholderLines(markdown) {
   const findings = [];
   for (const [index, sourceLine] of activeTopLevelMarkdown(markdown).split('\n').entries()) {
@@ -232,8 +272,11 @@ function prescriptivePlaceholderLines(markdown) {
       findings.push({ line: index + 1, value: line });
       continue;
     }
-    const candidates = /^\|.*\|$/.test(line)
-      ? line.slice(1, -1).split('|')
+    const isRow = /^\|.*\|$/.test(line);
+    const cells = isRow ? line.slice(1, -1).split('|') : [];
+    if (isRow && rowClassifiesRatherThanOmits(cells)) continue;
+    const candidates = isRow
+      ? cells
       : [line.replace(/^\s*(?:[-*+] |\d+\.\s+)/, '').replace(/^[^:：]{1,80}[:：]\s*/, '')];
     if (candidates.some((candidate) => BARE_PLACEHOLDER.test(candidate.replace(/[*_`]/g, '').trim()))) {
       findings.push({ line: index + 1, value: line });

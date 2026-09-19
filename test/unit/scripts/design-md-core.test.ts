@@ -540,6 +540,44 @@ This document is the project design contract. User direction wins over repositor
     }
   });
 
+  // `unresolved` belongs to two vocabularies: it is a word nobody filled in, and
+  // it is one of the spec's three closed reason classes. Conflating them failed
+  // 22 references for doing what AGENTS.md requires of §3 — distinguishing
+  // official product-use, live surface-use, distributed assets, declared-only
+  // faces, and unresolved claims — and failed the spec's own normative example.
+  //
+  // Position tells the roles apart: a reason class labels its row and the cells
+  // after it explain; a placeholder sits where the value belongs. These sentinels
+  // pin both halves, so widening PLACEHOLDER_WORD later cannot quietly undo it.
+  it('reads a leading reason class with a justification as a declaration, not a placeholder', () => {
+    const declarations = [
+      '| `unresolved` | The value may exist; this document could not establish it | Do not synthesize |',
+      '| Unresolved | Campaign-only use of Wanted Sans and native-app overrides remain unresolved. |',
+      '| Unresolved | 개별 도입 기관의 자체 서체는 해당 기관 surface를 별도로 검증하기 전에는 미확정입니다. |',
+      '| verified-absent | The value does not exist on the captured surface |',
+      '| out-of-scope | Authenticated flows sit outside the declared surface scope of this document. |',
+    ];
+    for (const sentinel of declarations) {
+      const variant = fixture('core-v2.md').replace('Blue is reserved for actions.', `${sentinel}\n\nBlue is reserved for actions.`);
+      expect(engine.inspectDesignMd(variant).conformance.reasons, sentinel)
+        .not.toContainEqual(expect.objectContaining({ code: 'contains-prescriptive-placeholder' }));
+    }
+
+    // Still placeholders: the word sits in the value cell, or is not a reason
+    // class, or the row has no justification to offer.
+    const stillPlaceholders = [
+      '| Motion | UNRESOLVED |',
+      '| UNKNOWN | Native app typography remains unestablished here. |',
+      '| Unresolved | TBD |',
+      '| Unresolved | short |',
+    ];
+    for (const sentinel of stillPlaceholders) {
+      const variant = fixture('core-v2.md').replace('Blue is reserved for actions.', `${sentinel}\n\nBlue is reserved for actions.`);
+      expect(engine.inspectDesignMd(variant).conformance.reasons, sentinel)
+        .toContainEqual(expect.objectContaining({ code: 'contains-prescriptive-placeholder' }));
+    }
+  });
+
   it('rejects tool and evidence metadata in the visible Core preamble', () => {
     const source = fixture('core-v2.md');
     for (const metadata of [
