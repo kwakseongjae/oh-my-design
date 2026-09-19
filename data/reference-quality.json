@@ -230,7 +230,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 8,
+      "source_count": 9,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -619,7 +619,7 @@
       "next_reverify_at": "2027-01-08",
       "evidence_coverage": 1,
       "surface_count": 6,
-      "source_count": 7,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -3408,7 +3408,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 5,
-      "source_count": 7,
+      "source_count": 8,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -5182,7 +5182,7 @@
       "next_reverify_at": "2027-01-08",
       "evidence_coverage": 1,
       "surface_count": 2,
-      "source_count": 3,
+      "source_count": 4,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -5553,7 +5553,7 @@
       "next_reverify_at": "2027-01-09",
       "evidence_coverage": 1,
       "surface_count": 3,
-      "source_count": 8,
+      "source_count": 9,
       "conflict_count": 0,
       "reason_codes": []
     },

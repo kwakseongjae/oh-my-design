@@ -299,12 +299,22 @@ adobe는 `ds.url`이 루트라 쓸 경로 접두사가 없고 `/page/`가 패턴
 두 번째 규약을 넣되 `src/*`는 `src/a11y`·`src/styles` 같은 비컴포넌트를 포함하므로
 **어느 규약으로 셌는지 행마다 남긴다.** 상한이지 로스터가 아니다.
 
-### 데이터 품질 플래그 2건 (이번에 고치지 않음)
+### `ds:` 블록이 URL이 주지 않는 것을 주장하는 3건
 
-- `zigzag`는 `type: system`인데 URL이 디자인 시스템 재구축 **블로그 글**이다.
-- `banksalad`는 `type: brand`인데 URL이 GitHub **조직 페이지**다.
+`ds.type`은 내부 메타데이터가 아니라 **사용자에게 보이는 값**이다. `ds-card.tsx`가
+`type: system`을 "Design System", `brand`를 "Brand Guide" 배지로 렌더하고,
+`preview-export-view.tsx`는 `"<이름> Design System"`이라고 쓴다. 아래 3건은 그래서
+사용자에게 없는 것을 있다고 말하고 있다.
 
-둘 다 `ds:` 블록이 URL이 주지 않는 것을 주장하고 있다.
+| 레퍼런스 | 선언 | URL이 실제로 주는 것 | 확인 방법 |
+|---|---|---|---|
+| **velog** | `type: system` | 애플리케이션 모노레포. `packages/*`는 commonjs·database·eslint-config·library·markdown-editor·scripts·tsconfig로 **디자인 시스템 패키지가 없다.** 프로브가 센 93개 "컴포넌트"는 `apps/web/src/components/*` — 앱 내부 컴포넌트다 | 트리 API 전수 |
+| **banksalad** | `type: brand` | GitHub **조직 페이지**. 19개 레포 중 ui/design 이름은 `styleguide`(= **코드** 스타일 가이드)와 `figma-component-list-generator`뿐 | org repos API |
+| **zigzag** | `type: system` | 프론트엔드 디자인 시스템 재구축 **블로그 글** 1건 | URL |
+
+셋 다 "unknown means absent" 규칙의 대상이다 — 근거 없는 주장은 필드/그룹 경계에서
+빠져야 한다. 다만 사용자에게 보이는 카탈로그 주장을 3건 지우는 일이라 로스터 기록과
+분리해 별도로 처리한다.
 
 ---
 

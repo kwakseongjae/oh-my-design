@@ -17,7 +17,7 @@ ds:
   description: Vercel's official design-system and type-family documentation; marketing, component examples, and authenticated dashboard evidence remain distinct.
 verification_v2:
   schema: 2
-  checked: "2026-07-12"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: public-product, url: "https://vercel.com/", inspected: "2026-07-12" }
     - { id: geist, kind: official-design-system, url: "https://vercel.com/geist/introduction", inspected: "2026-07-12" }
@@ -25,6 +25,7 @@ verification_v2:
     - { id: home-live, kind: product-surface, url: "https://vercel.com/", captured: "2026-07-12" }
     - { id: geist-live, kind: official-doc, url: "https://vercel.com/geist/introduction", captured: "2026-07-12" }
     - { id: geist-font, kind: license, url: "https://vercel.com/font", captured: "2026-07-12" }
+    - { id: vercel-component-index, kind: official-doc, url: "https://vercel.com/geist/introduction", captured: "2026-09-19" }
   conflicts: []
   claims:
     "tokens.colors.primary": &home_evidence { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-12" }
@@ -250,6 +251,44 @@ Earlier Ship red, Preview pink, Develop blue, console syntax colors, link blue, 
 - Participates in the shared `#ebebeb` documentation grid rather than carrying an independent floating shadow
 
 Login CTAs, dashboard project cards, deployment states, command menus, badges, toasts, and authenticated inputs are omitted until a current accessible product path verifies their exact implementation.
+
+### Published component roster (72 not measured here)
+
+Geist publishes **72 components**, enumerated by its own sidebar index at
+`https://vercel.com/geist/introduction` (read 2026-09-19). No value, state, or geometry is
+asserted for any name below.
+
+avatar, badge, banner, book, breadcrumbs, browser, button, calendar, checkbox, choicebox, clearable-input, code, code-block, collapse, combobox, command-menu, context-card, context-menu, copy-button, description, destructive-action-modal, dots-menu, drawer, empty-state, entity, error, error-card, feedback, fieldset, file-tree, gauge, grid, input, json-view, keyboard-input, label, load-more-button, loading-dots, menu, middle-truncate, modal, multi-select, note, pagination, phone, pill, progress, project-banner, radio, relative-time-card, scroller, search-input, select, separator, sheet, show-more, skeleton, slider, snippet, spinner, split-button, status-dot, switch, table, tabs, text-with-copy-button, textarea, theme-switcher, toast, toggle, tooltip, video
+
+The list is flat because the index publishes one flat `Components` group with no sub-categories.
+Its two sibling groups are excluded, and they are the only exclusions: **Foundations**
+(`introduction`, `colors`, `typography`, `materials`) and **Brands** (`brands`, whose six entries
+are in-page anchors for the Vercel, Next.js, Turbo, v0, eve, and AI SDK marks). Those five pages
+are the entire difference between the 76 URLs under `/geist/` in vercel.com's sitemap and the 71
+component pages; the sitemap carries 7,167 URLs in total, and the remaining 7,091 are marketing,
+docs, and knowledge base, not Geist. `grid` stays because the index files Grid under Components
+— the sitemap alone would not have said so. `pill` is the 72nd name and the only one without a
+page of its own: the index points it at `/geist/badge#pill`.
+
+### What this reference measured instead
+
+The six stylings above are recorded under this reference's own descriptors rather than Geist's
+names, and none of them was read from a component page.
+
+`header-link` came from the **vercel.com public home**, a marketing surface and a separate
+evidence domain from the Geist documentation, so it is not drawn from the roster at all.
+
+The other five came from `/geist/introduction` itself — they are the controls the index renders
+inside its own landing grid, captured 2026-07-12. Geist publishes Button, Input, and Radio among
+the 72, and this reference's labels name a secondary action, an icon button, a compact input, and
+a radio; whether the geometry recorded above is any published component's is not established
+here, because `/geist/button`, `/geist/input`, and `/geist/radio` were never opened.
+`geist-example-card` is the introduction page's own documentation grid cell — documentation
+chrome, not a component Geist publishes.
+
+`geist-live` and `vercel-component-index` are the same URL. This reference already cited the page
+that lists all 72, and measured five examples off it, without reading the index that page
+carries. Both entries are kept, because they record different observations on different dates.
 
 ## 5. Layout Principles
 

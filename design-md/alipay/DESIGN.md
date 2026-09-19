@@ -17,7 +17,7 @@ ds:
   description: Ant Group's open enterprise design language; it is design context, not a substitute for the observed Alipay Open Platform surface.
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: developer-platform, url: "https://open.alipay.com/?mobile=2", inspected: "2026-07-13" }
     - { id: web-app, kind: developer-platform-product, url: "https://open.alipay.com/module/webApp", inspected: "2026-07-13" }
@@ -31,6 +31,7 @@ verification_v2:
     - { id: ant-values, kind: official-doc, url: "https://ant.design/docs/spec/values/", captured: "2026-07-13" }
     - { id: ant-license, kind: license, url: "https://github.com/ant-design/ant-design/blob/master/LICENSE", captured: "2026-07-13" }
     - { id: antgroup-context, kind: official-doc, url: "https://www.antgroup.com/en/home", captured: "2026-07-13" }
+    - { id: alipay-component-index, kind: official-doc, url: "https://ant.design/components/overview", captured: "2026-09-19" }
   conflicts: []
   claims:
     "tokens.colors.primary": &webapp { surface_id: web-app, source_id: web-app-live, method: live-inspect, captured: "2026-07-13" }
@@ -188,6 +189,45 @@ Do not render Inter, an Ant Design default stack, or a declared AlipayNumber fac
 - Use: `home::li`, class `alipay-open-footer-li`; observed across all three surfaces.
 
 No modal, table, payment form, merchant dashboard, consumer-wallet control, status badge, dropdown, toast, hover, pressed, disabled, error, or responsive variant is specified: the supplied developer-platform capture has no selector/state provenance for one.
+
+### Published component roster (72 not measured here)
+
+The design system this reference cites is **Ant Design** — Ant Group's open-source React
+library — not an Alipay-specific system. Its own component index at
+`https://ant.design/components/overview` (read 2026-09-19) publishes **72 components**, grouped
+into the seven categories the index itself names. This reference measures five component
+stylings, all of them captured from `open.alipay.com`, the Alipay Open Platform developer site
+— a different host in a different evidence domain from `ant.design` — and machine-binds exactly
+one of them, `tool-card`, which is an Open Platform page class rather than an Ant Design
+component.
+
+Two of the five carry Ant class names in their captured markup: the banner action is
+`ant-btn ant-btn-primary` and the search field is `ant-input`. That shows the Open Platform is
+built on the library. It is not a measurement of Ant Design's published Button or Input, and it
+says nothing about the other seventy. No value, state, or geometry is asserted for any name
+below, and listing them is not a claim that Alipay's own product uses them.
+
+- **General** (4) — Button, FloatButton, Icon, Typography
+- **Layout** (7) — Divider, Flex, Grid, Layout, Masonry, Space, Splitter
+- **Navigation** (7) — Anchor, Breadcrumb, Dropdown, Menu, Pagination, Steps, Tabs
+- **Data Entry** (18) — AutoComplete, Cascader, Checkbox, ColorPicker, DatePicker, Form, Input, InputNumber, Mentions, Radio, Rate, Select, Slider, Switch, TimePicker, Transfer, TreeSelect, Upload
+- **Data Display** (21) — Avatar, Badge, Calendar, Card, Carousel, Collapse, Descriptions, Empty, Image, List, Listy, Popover, QRCode, Segmented, Statistic, Table, Tag, Timeline, Tooltip, Tour, Tree
+- **Feedback** (11) — Alert, Drawer, Message, Modal, Notification, Popconfirm, Progress, Result, Skeleton, Spin, Watermark
+- **Other** (4) — Affix, App, BorderBeam, ConfigProvider
+
+The grouping is the host's, not this reference's: the index publishes these seven categories as
+its own navigation groups. Because the index's grid is client-rendered, the names were read from
+that published navigation in the page's served HTML, then cross-checked against
+`https://ant.design/llms.txt`, which lists 150 component-doc URLs — every page twice, once in
+English and once as a `-cn` locale duplicate. The 75 distinct slugs there reconcile to 72 after
+three pages that are not components are removed: `overview` (the index page itself), `changelog`
+(release history), and `_util` (internal helper documentation, which the index does list under
+**Other** as "Util"). `config-provider` is kept, because the host publishes ConfigProvider under
+**Other** as a component with its own API rather than as a documentation page.
+
+The index labels `List` as deprecated and tags `Masonry`, `BorderBeam`, and `Listy` with the
+version each was introduced in. Those labels are the host's; nothing about their styling is
+carried over here.
 
 ---
 **Verified:** 2026-07-13

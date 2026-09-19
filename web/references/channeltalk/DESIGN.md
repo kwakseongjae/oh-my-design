@@ -18,7 +18,7 @@ ds:
   og_image: "https://opengraph.githubassets.com/d5fd6836ec938de2c8399cf28b2ceabc49104fbbf86e937f9e89983f1b50d638/channel-io/bezier-react"
 verification_v2:
   schema: 2
-  checked: "2026-09-17"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: marketing-product, url: "https://channel.io/kr", inspected: "2026-07-12" }
     - { id: home-states, kind: marketing-product, url: "https://channel.io/kr", inspected: "2026-09-17" }
@@ -34,6 +34,7 @@ verification_v2:
     - { id: help-live, kind: official-doc, url: "https://docs.channel.io/help/en/articles/94f34984", captured: "2026-07-12" }
     - { id: rebrand-official, kind: official-doc, url: "https://channel.io/kr/blog/articles/rebranding-channeltalk-3aff8113", captured: "2026-07-12" }
     - { id: bezier-official, kind: official-doc, url: "https://github.com/channel-io/bezier-react", captured: "2026-07-12" }
+    - { id: channeltalk-component-index, kind: official-doc, url: "https://github.com/channel-io/bezier-react/blob/main/packages/bezier-react/src/index.ts", captured: "2026-09-19" }
   conflicts: []
   claims:
     "tokens.colors.primary": &home_evidence { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-12" }
@@ -235,6 +236,37 @@ Bezier's historical Cobalt `#329BE7` is not promoted as a universal current prim
 - Loaded Inter alias; pressed state observed
 
 Inputs, dialogs, toasts, authenticated inbox rows, and error/success patterns are not promoted because current inspectable evidence did not establish them at the required boundary.
+
+### Published component roster (60 not measured here)
+
+Bezier publishes **60 components** from `@channel.io/bezier-react`, enumerated by that package's
+own public export index (`packages/bezier-react/src/index.ts`, read 2026-09-19). The repository
+carries 71 directories under `src/components/`, but five of them — `AlphaTokenProvider`,
+`BetaTokenProvider`, `TokenProvider`, `BaseButton`, `BaseTagBadge` — are never exported, so the
+package does not publish them. Of the 66 entries the index does export, six are providers and
+render utilities rather than components — `AppProvider`, `ThemeProvider`, `FeatureProvider`,
+`WindowProvider`, `AutoFocus`, `VisuallyHidden` — and are excluded here. That leaves 60.
+
+None of the 60 is measured in this reference. The five stylings above were captured from
+`channel.io/kr`, `channel.io/us`, and `docs.channel.io` — marketing and product-documentation
+surfaces, a different evidence domain from the Bezier package, as §1 and §3 already set out. They
+are not a subset of the list below, and no value, state, or geometry is asserted for any name in
+it.
+
+Published without either prefix (44): Avatar, AvatarGroup, Badge, Banner, Box, Button, ButtonGroup, Center, CheckableAvatar, Checkbox, ConfirmModal, Divider, Emoji, FormControl, FormGroup, FormHelperText, FormLabel, Help, Icon, KeyValueItem, ListItem, Modal, NavGroup, NavItem, OutlineItem, Overlay, ProgressBar, RadioGroup, SectionLabel, SegmentedControl, Select, Slider, SmoothCornersBox, Spinner, Stack, Status, Switch, Tabs, Tag, Text, TextArea, TextField, Toast, Tooltip
+
+Alpha-prefixed (13): AlphaAvatar, AlphaAvatarGroup, AlphaButton, AlphaDialogPrimitive, AlphaFloatingButton, AlphaFloatingIconButton, AlphaIconButton, AlphaLoader, AlphaStatusBadge, AlphaToggleButton, AlphaToggleButtonGroup, AlphaToggleEmojiButtonGroup, AlphaTooltipPrimitive
+
+Legacy-prefixed and deprecated (3): LegacyIcon, LegacyStack, LegacyTooltip
+
+The three-way split is the repository's own, not a grouping added here. Bezier's changelog for
+2.0.1 records "Remove the `/alpha` directory and add the `Alpha` prefix to alpha components"
+(PR #2140, `https://github.com/channel-io/bezier-react/blob/main/packages/bezier-react/CHANGELOG.md`),
+so the prefix is how the package marks its alpha track, in the repository's own words. The three
+`Legacy*` entries are deprecated by the repository itself: `LegacyIcon` and `LegacyTooltip` carry
+`@deprecated` in source, and `LegacyStack`'s own documentation page warns that it "is no longer
+supported for updates and may be removed in the next major version." Both tracks are published;
+neither should be read as the package's current recommended surface.
 
 ## 5. Layout Principles
 

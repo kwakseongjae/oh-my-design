@@ -17,7 +17,7 @@ ds:
   description: Zendesk's public design-system documentation.
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: design-system-home, url: "https://garden.zendesk.com/", inspected: "2026-07-13" }
     - { id: surface-2, kind: component-documentation, url: "https://garden.zendesk.com/components/button", inspected: "2026-07-13" }
@@ -31,6 +31,7 @@ verification_v2:
     - { id: zendesk-company, kind: official-doc, url: "https://www.zendesk.com/company/", captured: "2026-07-13" }
     - { id: zendesk-signin-refresh, kind: official-doc, url: "https://support.zendesk.com/hc/en-us/articles/9850316391322-Announcing-an-updated-look-to-the-team-member-and-end-user-sign-in-experiences", captured: "2026-07-13" }
     - { id: garden-github, kind: brand-asset, url: "https://github.com/zendeskgarden", captured: "2026-07-13" }
+    - { id: zendesk-component-index, kind: official-doc, url: "https://garden.zendesk.com/components/", captured: "2026-09-19" }
   conflicts: []
   claims:
     "tokens.colors.primary": &button { surface_id: surface-2, source_id: garden-button-live, method: live-inspect, captured: "2026-07-13" }
@@ -194,6 +195,58 @@ Observed-state summary: default only. No interactive state is in the supplied ca
 - Use: Public documentation sidebar `li`; selector surface-2::li
 
 This is a list item, not a button: the representative evidence is a static `li` row. The capture’s linked anchors are likewise not reclassified as buttons merely because they participate in navigation.
+
+### Published component roster (55 not measured here)
+
+Garden publishes **55 components**, read from its own component index at
+`https://garden.zendesk.com/components/` (2026-09-19). No value below is asserted for any of them.
+
+This reference measures **three** component stylings, all captured from the `/components/button`
+documentation route by anonymous selector position — a native button (`data-omd-capture="90"`), a
+native icon button (`data-omd-capture="64"`), and a sidebar `li`. That is the same host as the
+index, but position is not identity: nothing in the capture marks any of the three as a rendered
+instance of a published Garden component. The primary button was captured on the Button page and
+is still not claimed as `button`; the local name `icon-button` coincides with a published name and
+is still not claimed as it. All three stay documentation-surface observations, and every name
+below stays unmeasured.
+
+The index publishes its components as one alphabetical list with five inline subheadings:
+
+- **Buttons** — button, icon-button, split-button, toggle-button, toggle-icon-button
+- **Forms** — checkbox, combobox, file-upload, input, input-group, radio, range, select, textarea, toggle
+- **Loaders** — dots, inline, progress, skeleton, spinner
+- **Notification** — alerts, global-alert, notifications
+- **Typography** — code, kbd, lists, paragraph, span, typography
+
+The remaining 26 sit in that same list under no subheading, so they are recorded here without one
+rather than filed under a category Garden does not publish: accordion, anchor, avatar, breadcrumbs,
+code-block, color-picker, color-swatch, date-picker, draggable, drawer, grid, menu, modal,
+pagination, pane, sheet, status-indicator, stepper, table, tabs, tags, tiles, timeline, tooltip,
+tooltip-dialog, well.
+
+### What the route list holds that the index does not
+
+Garden's sitemap carries 72 URLs beneath `/components/` and `/patterns/`. Seventeen of them are not
+components, and the index is what separates them:
+
+- **Six are Foundations.** `color-scheme-provider`, `palette`, `theme-object`, `theme-provider`,
+  `utilities`, and `versions` sit at `/components/<slug>` URLs — the index links all 61 pages in
+  that tree — but the index files them under its Foundations heading, beside three entries that
+  leave the site altogether for GitHub and GitHub Pages.
+- **Nine are patterns.** `buttons`, `copy`, `drag-and-drop`, `errors`, `filters`, `loaders`,
+  `rich-text-editor`, `save`, and `tables` live under `/patterns/`; each returns 404 under
+  `/components/`. This is what the apparent singular/plural pairs really are: `/components/button`
+  is the component and `/patterns/buttons` is the usage pattern; `/components/table` is the
+  component and `/patterns/tables/basic-formatting` is the pattern. Two sections of one host
+  flattened into a single list, not one component listed twice. `tables` is not even a page — only
+  a path segment above `basic-formatting`. There is no `list` slug in either tree; `lists` is the
+  Typography component and has no singular twin.
+- **Two are the section indexes themselves**, `components` and `patterns`.
+
+The flattening loses the distinction in the other direction too. `dots`, `inline`, `grid`, and
+`span` read like layout or documentation utilities; the index publishes all four as components —
+`dots` and `inline` as loaders, `span` under Typography, `grid` on its own. A route list can say
+which pages exist. Only the index says which of them Garden calls a component.
 
 ## 5. Layout Principles
 

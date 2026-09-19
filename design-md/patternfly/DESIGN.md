@@ -17,7 +17,7 @@ ds:
   description: "Red Hat-sponsored open-source design system for consistent, accessible enterprise products."
 verification_v2:
   schema: 2
-  checked: "2026-07-14"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: marketing, url: "https://www.patternfly.org/", inspected: "2026-07-13" }
     - { id: button-docs, kind: documentation, url: "https://www.patternfly.org/components/button/", inspected: "2026-07-13" }
@@ -32,6 +32,7 @@ verification_v2:
     - { id: typography-official, kind: official-doc, url: "https://www.patternfly.org/foundations-and-styles/typography/", captured: "2026-07-14" }
     - { id: theming-official, kind: official-doc, url: "https://staging.patternfly.org/foundations-and-styles/theming/", captured: "2026-07-14" }
     - { id: releases-official, kind: official-doc, url: "https://www.patternfly.org/get-started/release-highlights", captured: "2026-07-14" }
+    - { id: patternfly-component-index, kind: official-doc, url: "https://www.patternfly.org/components/overview/", captured: "2026-09-19" }
   conflicts: []
   claims:
     "tokens.colors.primary": { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-07-13" }
@@ -169,6 +170,38 @@ Do not substitute a system font and label it Red Hat Text or Red Hat Display. Li
 - Use: `home::#featured-blog-post-1`, a selector-backed `pf-v6-c-card pf-m-clickable` on the supplied public home.
 
 The artifact records 27 component variants but zero interaction snapshots and zero interaction kinds. Therefore this reference preserves only default measured geometry; it does not claim hover, focus, pressed, disabled, error, selected, or animated values. Links and rows that were not captured as button semantics are not reclassified as button components.
+
+### Published component roster (70 not measured here)
+
+PatternFly publishes **72 components**, enumerated and counted by its own components index
+(`https://www.patternfly.org/components/overview/`, read 2026-09-19), whose "Explore components"
+gallery is labelled "72 items". Two of them are measured above — **Button** and **Card**, as the
+`pf-v6-c-button pf-m-primary` primary action and the `pf-v6-c-card pf-m-clickable` featured card on
+the supplied public home — and each in a single default variant only. The remaining 70 names carry
+no asserted value here: no geometry, no color, no state.
+
+About modal, Accordion, Action list, Alert, Avatar, Back to top, Backdrop, Background image, Badge, Banner, Brand, Breadcrumb, Button, Card, Chip, Clipboard copy, Code block, Code editor, Compass, Content, Data list, Description list, Divider, Drag and drop, Drawer, Dual list selector, Empty state, Expandable section, Helper text, Hint, Icon, Inline edit, Input group, Jump links, Label, List, Login page, Masthead, Modal, Navigation, Notification badge, Notification drawer, Number input, Overflow menu, Page, Pagination, Panel, Password generator, Password strength, Popover, Progress, Progress stepper, Search input, Sidebar, Simple list, Skeleton, Skip to content, Slider, Spinner, Switch, Table, Tabs, Text input group, Tile, Timestamp, Title, Toggle group, Toolbar, Tooltip, Tree view, Truncate, Wizard
+
+The list is flat and alphabetical because the index publishes it flat: one gallery, no category
+headings, no grouping. Names are given as the index renders them.
+
+#### What is excluded from the roster, and why
+
+PatternFly separates **components** from **patterns** and publishes a second index at
+`https://www.patternfly.org/patterns/overview`, labelled "11 items". Nine of those eleven are
+patterns only and are therefore absent above: Actions, Bulk selection, Card view, Component usage
+and behavior, Dashboard, Filters, Primary-detail, Right-to-left, Status and severity. The other two
+— **Password generator** and **Password strength** — are published in *both* indexes, under
+`/components/` and `/patterns/` alike. They are kept in the roster because the components index
+cards them; the duplication is the host's, not this reference's.
+
+Six further paths sit under `/components/` without being carded by the index. Five are sidebar
+families whose own path returns 404 and whose leaves are documented one level down: **Charts**,
+**Date and time**, **File upload**, **Forms**, **Menus**. The sixth is **Hero**, which resolves and
+is marked Beta in the sidebar but is not one of the 72 cards. None of the six is added to the
+roster, and no family leaf is enumerated: the index is the source cited here, and expanding a
+family or promoting an uncarded path would be structure this reference invented rather than
+structure PatternFly publishes.
 
 ---
 **Verified:** 2026-07-14

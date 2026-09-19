@@ -3,11 +3,11 @@
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
   "references_with_verification_v2": 141,
-  "sources": 900,
+  "sources": 905,
   "sources_by_kind": {
     "brand-asset": 75,
     "license": 76,
-    "official-doc": 378,
+    "official-doc": 383,
     "product-surface": 371
   },
   "references": {
@@ -228,9 +228,15 @@
       ]
     },
     "alipay": {
-      "checked": "2026-07-13",
+      "checked": "2026-09-19",
       "claims": 0,
       "sources": [
+        {
+          "id": "alipay-component-index",
+          "kind": "official-doc",
+          "captured": "2026-09-19",
+          "host": "ant.design"
+        },
         {
           "id": "ant-context",
           "kind": "official-doc",
@@ -702,13 +708,19 @@
       ]
     },
     "channeltalk": {
-      "checked": "2026-09-17",
+      "checked": "2026-09-19",
       "claims": 0,
       "sources": [
         {
           "id": "bezier-official",
           "kind": "official-doc",
           "captured": "2026-07-12",
+          "host": "github.com"
+        },
+        {
+          "id": "channeltalk-component-index",
+          "kind": "official-doc",
+          "captured": "2026-09-19",
           "host": "github.com"
         },
         {
@@ -4086,7 +4098,7 @@
       ]
     },
     "patternfly": {
-      "checked": "2026-07-14",
+      "checked": "2026-09-19",
       "claims": 0,
       "sources": [
         {
@@ -4111,6 +4123,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-07-13",
+          "host": "www.patternfly.org"
+        },
+        {
+          "id": "patternfly-component-index",
+          "kind": "official-doc",
+          "captured": "2026-09-19",
           "host": "www.patternfly.org"
         },
         {
@@ -5826,7 +5844,7 @@
       ]
     },
     "vercel": {
-      "checked": "2026-07-12",
+      "checked": "2026-09-19",
       "claims": 0,
       "sources": [
         {
@@ -5845,6 +5863,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-07-12",
+          "host": "vercel.com"
+        },
+        {
+          "id": "vercel-component-index",
+          "kind": "official-doc",
+          "captured": "2026-09-19",
           "host": "vercel.com"
         }
       ]
@@ -6168,7 +6192,7 @@
       ]
     },
     "zendesk": {
-      "checked": "2026-07-13",
+      "checked": "2026-09-19",
       "claims": 0,
       "sources": [
         {
@@ -6212,6 +6236,12 @@
           "kind": "official-doc",
           "captured": "2026-07-13",
           "host": "www.zendesk.com"
+        },
+        {
+          "id": "zendesk-component-index",
+          "kind": "official-doc",
+          "captured": "2026-09-19",
+          "host": "garden.zendesk.com"
         },
         {
           "id": "zendesk-signin-refresh",
