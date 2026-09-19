@@ -396,8 +396,32 @@ function explicitlyNegatesClaim(kind, value) {
     "근거|증거|관측|캡처|범위\\s*밖|証拠|観測|证据|證據",
   ].join("|"), "i");
   const sentences = plain.split(/(?<=[.!?。！？])\s+|\n+/).filter(Boolean);
-  return patterns[kind].some((pattern) =>
-    sentences.some((sentence) => pattern.test(sentence) && !ATTRIBUTED.test(sentence)));
+  const negating = (sentence) => patterns[kind].some((pattern) => pattern.test(sentence))
+    && !ATTRIBUTED.test(sentence);
+  if (!sentences.some(negating)) return false;
+
+  // A claim that states its subject somewhere is not a claim that denies it.
+  //
+  // The catch this check is for is a body that is *nothing but* a denial —
+  // "This reference names no product surface." The vocabulary guard above tried
+  // to recognise the opposite case by listing the words that excuse a negation,
+  // and it has been widened three times because prose keeps finding new ones.
+  // It was still wrong for 22 references, and not narrowly: "The green is a
+  // signal, not a surface" (nvidia), "not the clinical #ffffff of a tech
+  // product" (starbucks), "not a typical tech product page" (runwayml), "The
+  // public system is not a proxy for every Anthropic surface" (claude). Four
+  // design observations and an evidence boundary, none of them denying anything,
+  // all inside bodies that spend a thousand characters describing the surface
+  // they were accused of not having.
+  //
+  // No word list can settle this, because the signal is not vocabulary — it is
+  // whether the body ALSO says what the scope is. So the structural question
+  // replaces the lexical one: if any sentence affirmatively states the subject,
+  // a negation elsewhere is prose, not self-denial. That is exactly the line the
+  // tests already drew — every case pinned as passing is an affirmative scope
+  // sentence plus a negating tail, and the one pinned as failing is a bare
+  // denial with nothing else in it.
+  return !sentences.some((sentence) => !negating(sentence) && hasSubstantiveText(sentence, 4, 16));
 }
 
 function evaluatePortableCoreClaims(markdown, options = {}) {

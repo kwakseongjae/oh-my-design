@@ -656,6 +656,36 @@ This document is the project design contract. User direction wins over repositor
     expect(conformance.reasons).toEqual([]);
   });
 
+  // The four sentences below are verbatim from references the lexical guard
+  // failed. None denies a product surface; three are design observations and one
+  // is an evidence boundary. They are pinned here because the guard was widened
+  // three times before it was replaced, and a word list will be tempting again.
+  it.each([
+    ['a design observation about colour', 'The green is a signal, not a surface.'],
+    ['a comparison to other products', 'The page opens on warm, near-white surfaces — not the clinical #ffffff of a tech product, but slightly cream.'],
+    ['a characterisation of the page', "This is not a typical tech product page; it's a visual manifesto for AI-powered creativity."],
+    ['an evidence boundary', 'The public system is not a proxy for every Anthropic surface.'],
+  ])('keeps a scope claim whose negation is prose, not self-denial (%s)', (_label, tail) => {
+    const scopeBody = 'Atlas helps dispatchers resolve exceptions while preserving shipment identity and ownership.';
+    const conformance = engine.inspectDesignMd(
+      fixture('core-v2.md').replace(scopeBody, `${scopeBody} ${tail}`),
+    ).conformance;
+    expect(conformance.portable_core).toBe(true);
+    expect(conformance.reasons).toEqual([]);
+  });
+
+  // The other half: a body with nothing in it but the denial still fails, and
+  // padding the denial with more denial does not rescue it.
+  it.each([
+    ['bare denial', 'This reference names no product surface.'],
+    ['denial twice over', 'This reference names no product surface. It does not describe a product scope either.'],
+  ])('still refuses a scope claim that is only a denial (%s)', (_label, body) => {
+    const scopeBody = 'Atlas helps dispatchers resolve exceptions while preserving shipment identity and ownership.';
+    const conformance = engine.inspectDesignMd(fixture('core-v2.md').replace(scopeBody, body)).conformance;
+    expect(conformance.portable_core).toBe(false);
+    expect(conformance.reasons).toContainEqual(expect.objectContaining({ code: 'missing-product-surface-scope' }));
+  });
+
   it('keeps a foundations claim whose unresolved subject is the source, not the claim', () => {
     const scopeBody = 'Atlas helps dispatchers resolve exceptions while preserving shipment identity and ownership.';
     // The sentence the expo migration worker hit: measured values sit above it,

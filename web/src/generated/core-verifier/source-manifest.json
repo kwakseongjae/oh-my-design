@@ -20,7 +20,7 @@
     {
       "source": "scripts/design-md-core-conformance.cjs",
       "target": "design-md-core-conformance.cjs",
-      "sha256": "80d7348a933ea4417174284924e3426e1532fd3c6711b485986f0f1032cb9918"
+      "sha256": "e33508e4ce7dccace40e56c521fcc399a569e99e63a47a1930c5fe80daafccce"
     },
     {
       "source": "scripts/prepare-design-md-core-review.cjs",
