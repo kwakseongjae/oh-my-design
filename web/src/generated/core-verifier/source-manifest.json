@@ -10,7 +10,7 @@
     {
       "source": "scripts/design-md-core.cjs",
       "target": "design-md-core.cjs",
-      "sha256": "9426a043421d81fa6133bd8d343ec2fdd5bb48d850a88c5d37abb5d3ec9be8df"
+      "sha256": "c28698b1b465838a94730a22881072bf132f1494989532e18bd2e54bd2f5c5ae"
     },
     {
       "source": "scripts/design-md-core-schema.cjs",

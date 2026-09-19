@@ -551,6 +551,9 @@ const RADIUS_PILL_SLOTS = ['full', 'pill', 'circle'];
 // which does not name a family of its own.
 const UI_ROLE_IDS = ['ui', 'ui-sans', 'body'];
 
+/** `body`, `body-large`, `public_body` — a body role however the reference qualifies it. */
+const BODY_SHAPED_ROLE = /(^|[-_])body([-_]|$)/i;
+
 /** `{ size: 36, weight: 700, lineHeight: "54px" }` → a plain object. Strict: a
  * line that is not an inline map yields nothing rather than a guess. */
 function parseInlineMap(text) {
@@ -589,8 +592,24 @@ function extractTypographyRoles(frontmatter) {
 
   let family = '';
   const roles = [];
-  for (const line of frontmatter.slice(start).split('\n').slice(1)) {
+  // `family:` comes in two shapes. 416 references write it inline as
+  // `family: { ui: "X" }`; five — class101, naver, poya, soop, spotify — write it
+  // as a nested block with the slots on following lines. Reading only the inline
+  // form dropped all five, and the pattern that looked like it covered both used
+  // `\s*`, which matches newlines and silently bridged into the next line.
+  const lines = frontmatter.slice(start).split('\n').slice(1);
+  for (const [index, line] of lines.entries()) {
     if (/^\s{0,2}\S/.test(line)) break;
+    if (/^[ ]{4}family:[ \t]*$/.test(line)) {
+      for (const slotLine of lines.slice(index + 1)) {
+        if (!/^[ ]{6}\S/.test(slotLine)) break;
+        const slot = /^[ ]{6}([A-Za-z][A-Za-z0-9_-]*):[ \t]*(.+)$/.exec(slotLine);
+        if (!slot) continue;
+        const value = slot[2].trim().replace(/^["']|["']$/g, '');
+        if (!family && UI_FAMILY_SLOTS.includes(slot[1]) && value) family = value;
+      }
+      continue;
+    }
     const entry = /^\s{4}([A-Za-z][A-Za-z0-9_-]*):\s*(.+)$/.exec(line);
     if (!entry) continue;
     const [, key, rest] = entry;
@@ -612,8 +631,25 @@ function extractTypographyRoles(frontmatter) {
 
   // Attach the family to the one role the interface actually renders in. A
   // heading role that never declared a family keeps not declaring one.
+  //
+  // Exact ids alone are not enough. Of 279 references that declare a UI family,
+  // 40 name their body role with a qualifier — krds writes `body-large`, framer
+  // `public-body`, catchtable `consumer-body` — and an exact match against
+  // `UI_ROLE_IDS` finds none of them. Measured on krds: the family survives the
+  // markdown round-trip as prose and then projects as `fontFamily: ""`, which is
+  // the same defect that stopped the toss adoption and the one AGENTS.md names
+  // outright ("A missing font family removes that family/specimen, not verified
+  // typography metrics"). So the exact ids are tried first, and a body-shaped id
+  // is the fallback — least-qualified first, so `body` beats `body-large` beats
+  // `public-body-large` and the choice is deterministic rather than document order.
   if (family) {
-    const uiRole = UI_ROLE_IDS.map((id) => roles.find((role) => role.id === id)).find(Boolean);
+    const uiRole = UI_ROLE_IDS.map((id) => roles.find((role) => role.id === id)).find(Boolean)
+      ?? roles
+        .filter((role) => BODY_SHAPED_ROLE.test(role.id))
+        .sort((a, b) => a.id.length - b.id.length || a.id.localeCompare(b.id))[0];
+    // A reference with a declared family and no body-shaped role to hang it on
+    // keeps the family in prose and nowhere else. That is a real gap in the
+    // source, not something to resolve by inventing a role to hold it.
     if (uiRole) uiRole.family = family;
   }
   return roles;

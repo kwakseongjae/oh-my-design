@@ -100,7 +100,24 @@ function detailFromCoreContract(
   const headingRoleIds = ["heading", "display", "title", "h1", "h2", ...uiRoleIds];
   const uiRole = roleByPriority(uiRoleIds);
   const headingRole = roleByPriority(headingRoleIds);
-  const family = uiRole?.metadata.family;
+  // A reference that declares one family and names its body role with a
+  // qualifier — `body-large` (krds), `public-body` (framer), `consumer-body`
+  // (catchtable) — has no id in `uiRoleIds`, so the exact match above finds
+  // nothing and the family projects as "". Sixteen of the catalogue's 276
+  // declared families reached this adapter that way.
+  //
+  // This is not substring matching, which would leave `body`, `body-large`,
+  // `body-small` and `body-xsmall` competing with no principled winner. It is
+  // narrower: when exactly one role in the whole contract declares a family,
+  // that is the family the reference declared, whatever the role is called. The
+  // migrator attaches a declared family to a single role, so "exactly one" is
+  // the normal shape rather than a coincidence, and more than one leaves this
+  // untouched.
+  const soleFamilyRole = uiRole ?? (() => {
+    const withFamily = contract.fontRoles.filter((role) => typeof role.metadata.family === "string");
+    return withFamily.length === 1 ? withFamily[0] : undefined;
+  })();
+  const family = soleFamilyRole?.metadata.family;
   const weight = headingRole?.metadata.weight;
   const summary = contract.claims.find((claim) => claim.claimPath === "experience.summary")?.value;
   const typedSummary = typeof summary === "string" && !/<!--\s*design-md:|^#{1,6}\s/m.test(summary)
@@ -114,7 +131,7 @@ function detailFromCoreContract(
     foreground: resolvedOrPortable(["color.foreground", "color.text.strong"], "color", portable.foreground),
     fontFamily: typeof family === "string"
       ? family
-      : roleFieldAbsent("family", uiRole, uiRoleIds)
+      : roleFieldAbsent("family", soleFamilyRole, uiRoleIds)
         ? ""
         : portable.fontFamily,
     headingWeight: typeof weight === "number" || typeof weight === "string"

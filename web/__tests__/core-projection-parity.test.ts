@@ -110,7 +110,7 @@ describe("Core v2 projection parity — adoption may not empty a served field", 
           + `before reading parity. Reasons: ${JSON.stringify((transport as { reasons?: unknown }).reasons ?? null)}`,
       ).toBe("verified");
 
-      const after = adopted.detail as Record<string, unknown>;
+      const after = adopted.detail as unknown as Record<string, unknown>;
 
       // Once the canonical has been adopted there is no legacy baseline left to
       // compare against — the question the comparison answered is settled, and
@@ -131,7 +131,7 @@ describe("Core v2 projection parity — adoption may not empty a served field", 
         return;
       }
 
-      const before = projectActiveReference(legacy!).detail as Record<string, unknown>;
+      const before = projectActiveReference(legacy!).detail as unknown as Record<string, unknown>;
       const lost = PROJECTED_FIELDS.filter((field) => {
         const was = before[field];
         const now = after[field];
