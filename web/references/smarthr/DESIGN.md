@@ -251,6 +251,32 @@ There is no brand webfont. This is a deliberate accessibility and performance de
 - Radius: `full` (9999px) or `4px`
 - Use: Employee status, application state — color-coded by semantic family
 
+### Published component roster (61 published, none measured here)
+
+The SmartHR Design System publishes **61 components**, read from its own component index at
+`https://smarthr.design/products/components/` on 2026-09-19. Names are given as the host
+publishes them — the PascalCase identifiers of the `smarthr-ui` package, which is how the index
+labels each card. No value, state or geometry below is asserted by this reference.
+
+AccordionPanel, AppHeader, AppNavi, Badge, Base, BottomFixedArea, Browser, Button, Calendar, Checkbox, Chip, Combobox, DatePicker, DefinitionList, Dialog, Disclosure, DropZone, Dropdown, ErrorScreen, Fieldset, FileViewer, FloatArea, FormControl, Formatter, Header, Heading, Icon, InformationPanel, Input, InputFile, Layout, LineClamp, Loader, NotificationBar, PageCounter, Pagination, Picker, RadioButton, RadioButtonPanel, ResponseMessage, Scroller, SectioningContent, SegmentedControl, Select, SideMenu, SideNav, SmartHRAILogo, SmartHRLogo, SpreadsheetTable, StatusLabel, Stepper, Switch, TabBar, Table, Text, TextLink, Textarea, Timeline, Tooltip, VisuallyHiddenText, WarekiPicker
+
+**Two are marked deprecated by the host itself**: `BottomFixedArea` and `DatePicker` are both
+labelled 非推奨 on the index. They stay in the roster because SmartHR still publishes them, and
+the label is recorded because it is the host's, not this reference's judgement.
+
+The list is flat because the index presents it flat, in one alphabetical grid of cards with no
+category headings.
+
+### What this reference's thirteen entries are, and what they are not
+
+§4 records thirteen stylings. Their `use:` strings are descriptions of purpose — "Single most
+important action (Save/Submit)", "Cancel / secondary beside primary" — with no selector, no
+capture id, and no class from the `smarthr-ui` package. This reference has no `verification_v2`
+block and therefore no surface record either.
+
+Several of the thirteen carry names that resemble published components. None is claimed as a
+rendered instance of one, and none of the 61 above carries a measured value here.
+
 ## 5. Layout Principles
 
 ### Density

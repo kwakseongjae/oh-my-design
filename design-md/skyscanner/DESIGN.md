@@ -310,6 +310,46 @@ The design language is defined by **rounded softness at every scale**: corner ra
 **Tier 2 sources:** getdesign.md/skyscanner — "No designs found"; styles.refero.design/?q=skyscanner — no Skyscanner entry found (results were unrelated travel brands)
 **Conflicts unresolved:** none
 
+### Published component roster (91 components and 10 utility components, none measured here)
+
+Backpack publishes **91 components** plus a separate **Utility components** section of 10, read
+from the design system's own left-hand navigation at `https://www.skyscanner.design/latest/`
+on 2026-09-19. No value, state or geometry is asserted for any name below.
+
+Accordion, AI Blurb, App Search Modal, Autosuggest, Badge, Banner alert, Bar chart, Blockquote, Bottom navigation, Bottom sheet, Breadcrumb, Breakpoint, Bubble, Button, Calendar, Card, Card button, Card carousel, Card list, Carousel, Cells, Chat UI, Checkbox, Checkbox Card, Chip, Chip group, Collapsible, Compare, Context Menu, Data Table, Datepicker, Description list, Dialog, Divider, Drawer, Field Set, Flare, Flight leg, Floating action button, Floating notification, Flow Stack View, Form label, Form validation, Graphic promotion, Horizontal navigation, Image, Image Gallery, Infinite scroll, Info Banner, Inset Banner, Journey Arrow, Link, List, Map, Mobile scroll container, Modal, Navigation bar, Navigation Tab Group, Nudger, Overlay, Page indicator, Pagination, Panel, Phone input, Popover, Price, Price Range, Progress bar, Radio button, Rating, Rating Bar, Scrollable calendar, Search Input Control, Search Input Summary, Section header, Section list, Segmented Control, Select, Skeleton, Slider, Snippet, Spinner, Split input, Star rating, Swap Button, Switch, Table, Text, Text input, Thumb Button, Tooltip
+
+**Utility components (10):** Alignment, Aria live, Code, Dynamic Layout, Intent Trigger Button,
+Interactive, Skip link, Theming, Visually Hidden, Z index. Backpack files these under their own
+heading, separate from the 91, and that separation is kept here rather than folded in.
+
+The list is flat because the navigation presents it flat — one `Components` group in alphabetical
+order, with `Utility components` as its own sibling heading.
+
+**How it was read, and why that matters.** `skyscanner.design` serves a 2 KB shell: the whole
+site is client-rendered, `/components` redirects to a welcome page, and the served HTML contains
+no component links at all. Every URL also carries an opaque suffix — Accordion's page is
+`/latest/components/accordion/web-sEshz9Z5` — so a sitemap gives ids, not names. The names above
+come from the rendered navigation in a real browser. A fetch-only pass cannot reproduce them, and
+recording that is part of the record: this host defeats the probe that found every other roster
+in this catalogue.
+
+### What this reference measured, and on which surface
+
+The eighteen stylings above are grouped as Buttons, Inputs & Forms, Cards & Containers, Badges &
+Chips, and Tabs. Their **colour values are Backpack's own**, cited by the system's variable names
+— `--bpk-core-accent` `#0062e3`, `--bpk-core-primary` `#05203c` — and drawn from the published
+`theme-backpack-light.css` and the `@skyscanner/bpk-foundations-web` token package. That is
+first-party token identity, and it is stronger evidence than most references in this catalogue
+carry.
+
+The **geometry** is a different matter. Per this reference's own Tier 1 list, the computed
+button, tab and input values were inspected on `skyscanner.co.kr` — the live traveller product,
+which is built with Backpack but is not Backpack's documentation. So "Primary", "Filter Chip
+(On / Active)" and "Product Tab (Active)" are this reference's descriptors for controls observed
+in the product, not readings of Backpack's Button, Chip or Navigation Tab Group pages. Several
+names coincide with published components; none of the eighteen is claimed as a documented
+instance of one, and none of the 91 above carries a measured value here.
+
 ## 5. Layout Principles
 
 ### Spacing System

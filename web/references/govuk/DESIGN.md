@@ -265,6 +265,38 @@ The system includes 12 semantic tag colour variants including grey, blue, green,
 **Tier 2 sources:** getdesign.md/govuk — not listed (0 results); styles.refero.design/?q=GOV.UK — not listed
 **Conflicts unresolved:** none — Tier 1 DS documentation is the gold standard and fully consistent with live DOM inspect.
 
+### Published component roster (37 published, none measured here)
+
+The GOV.UK Design System publishes **37 components**, read from its own components index at
+`https://design-system.service.gov.uk/components/` on 2026-09-19. No value, state or geometry
+below is asserted by this reference.
+
+Accordion, Back link, Breadcrumbs, Button, Character count, Checkboxes, Cookie banner, Date input, Details, Error message, Error summary, Exit this page, Feedback, Fieldset, File upload, GOV.UK footer, GOV.UK header, Generic header, Inset text, Language navigation, Notification banner, Pagination, Panel, Password input, Phase banner, Radios, Select, Service navigation, Skip link, Summary list, Table, Tabs, Tag, Task list, Text input, Textarea, Warning text
+
+**Patterns are a separate index and are excluded.** GOV.UK files 30 pages under
+`/patterns/` — addresses, bank details, check answers, confirm an email address, create accounts,
+question pages, step by step navigation and the rest. They are page-level recipes rather than
+components, the host keeps the two indexes apart, and so does this roster.
+
+### What this reference's nine entries are, and what they are not
+
+§4 records nine stylings — three buttons, text input, select, tag, notification banner, inset
+text and cookie banner — and seven of those names correspond to components in the list above.
+That correspondence is not established here, and the distinction is worth being exact about.
+
+This reference cites the system's own token functions by name in its prose:
+`govuk-functional-colour("brand")` for `#1d70b8`, `govuk-functional-colour("text")` for
+`#0b0c0c`, `govuk-functional-colour("error")`, and the `govuk-spacing($spacing)` scale. That is
+first-party token identity and it is real.
+
+What it has no record of is where any of the nine was observed. There is no
+`verification_v2` block, no surfaces, no selector, no capture id, and no `govuk-*` CSS class on
+any entry — the `use:` strings are descriptions ("Primary CTA — Save and continue"), not
+provenance. So the nine read as values transcribed from the published system rather than
+measured off a page, and while that is a respectable way to write a reference, it cannot
+demonstrate that any entry is a rendered instance of the component whose name it shares. Seven
+names coinciding is a coincidence of naming until a capture says otherwise.
+
 ## 5. Layout Principles
 
 ### Spacing System

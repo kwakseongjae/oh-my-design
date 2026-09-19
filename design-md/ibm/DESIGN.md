@@ -18,13 +18,14 @@ ds:
   og_image: "https://carbondesignsystem.com/ogimage.png"
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, kind: marketing, url: "https://www.ibm.com/kr-ko", inspected: "2026-07-13" }
     - { id: cloud-support, kind: public-product, url: "https://www.ibm.com/kr-ko/products/cloud/support?lnk=flathl", inspected: "2026-07-13" }
     - { id: confluent, kind: public-product, url: "https://www.ibm.com/kr-ko/products/confluent?lnk=hpfp4kr", inspected: "2026-07-13" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://www.ibm.com/kr-ko", captured: "2026-07-13" }
+    - { id: ibm-component-index, kind: official-doc, url: "https://carbondesignsystem.com/components/overview/components/", captured: "2026-09-19" }
     - { id: cloud-support-live, kind: product-surface, url: "https://www.ibm.com/kr-ko/products/cloud/support?lnk=flathl", captured: "2026-07-13" }
     - { id: confluent-live, kind: product-surface, url: "https://www.ibm.com/kr-ko/products/confluent?lnk=hpfp4kr", captured: "2026-07-13" }
     - { id: carbon-docs, kind: official-doc, url: "https://carbondesignsystem.com/components/button/usage/", captured: "2026-07-13" }
@@ -233,6 +234,32 @@ This form field is not promoted into the IBM Plex product token set.
 **Tier 2 sources:** [getdesign IBM directory](https://getdesign.md/ibm); Refero query attempted, but the built-in web tool refused the direct URL and no indexed Refero IBM result was used.
 **Resolution note:** The earlier universal 0px primary-button claim was rolled back: the supplied fresh public-product evidence measures 4px on the captured primary CTAs.
 **Conflicts unresolved:** none
+
+### Published component roster (39 published, one identified here)
+
+Carbon publishes **39 components**, read from its own component gallery at
+`https://carbondesignsystem.com/components/overview/components/` on 2026-09-19. The gallery is a
+level below the overview page, which links to it and lists nothing itself.
+
+Accordion, AI label, Breadcrumb, Button, Checkbox, Code snippet, Contained list, Content switcher, Data table, Date picker, Dropdown, File uploader, Form, Inline loading, Link, List, Loading, Menu, Menu buttons, Modal, Notification, Number input, Pagination, Popover, Progress bar, Progress indicator, Radio button, Search, Select, Slider, Structured list, Tabs, Tag, Text input, Tile, Toggle, Toggletip, Tooltip, Tree view
+
+Carbon files patterns in a separate index and they are excluded; so are the doc pages that my
+sitemap sweep had flattened in alongside components. The gallery is the source, and anything it
+does not card is out by that fact.
+
+### One of the two entries is genuinely identified; the other is not
+
+§4 records two stylings, and they do not have the same standing.
+
+The **accordion heading** carries `class cds--accordion__heading cmp-accordion__button` in its
+capture. `cds--` is Carbon's own class prefix, so that capture is bound by name to Carbon's
+published **Accordion** — this is real identity evidence, of the kind most references in this
+catalogue lack, and it means this reference measures one of the 39 above.
+
+The **search input** is identified only by selector position on a documentation surface, with no
+`cds--` or `bx--` class recorded. It is not claimed as Carbon's published Search.
+
+The remaining 38 carry no measured value here.
 
 ## 5. Layout Principles
 

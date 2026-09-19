@@ -17,7 +17,7 @@ ds:
   description: "GSA's open-source design system for accessible, mobile-friendly U.S. government websites and services."
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-19"
   surfaces:
     - { id: home, url: "https://designsystem.digital.gov/", inspected: "2026-07-13" }
     - { id: components, url: "https://designsystem.digital.gov/components/overview/", inspected: "2026-07-13" }
@@ -25,6 +25,7 @@ verification_v2:
   sources:
     - { id: home-live, kind: product-surface, url: "https://designsystem.digital.gov/", captured: "2026-07-13" }
     - { id: components-live, kind: official-doc, url: "https://designsystem.digital.gov/components/overview/", captured: "2026-07-13" }
+    - { id: uswds-component-index, kind: official-doc, url: "https://designsystem.digital.gov/components/overview/", captured: "2026-09-19" }
     - { id: accordion-live, kind: official-doc, url: "https://designsystem.digital.gov/components/accordion/", captured: "2026-07-13" }
     - { id: about-doc, kind: official-doc, url: "https://designsystem.digital.gov/about/", captured: "2026-07-13" }
     - { id: typography-doc, kind: official-doc, url: "https://designsystem.digital.gov/components/typography/", captured: "2026-07-13" }
@@ -187,6 +188,34 @@ USWDS’s typography guidance says its faces are selected for legibility and can
 - Use: Side-navigation row observed on the components overview and accordion documentation surfaces.
 
 The packet contains zero interaction records. Static default geometry above is retained because it is selector- and surface-backed; no interactive visual state is inferred from component names or CSS class names.
+
+### Published component roster (47 published, none measured here)
+
+USWDS publishes **47 components**, read from the card grid under "Find a USWDS component" on its
+own index at `https://designsystem.digital.gov/components/overview/` on 2026-09-19. No value,
+state or geometry below is asserted by this reference.
+
+Accordion, Alert, Banner, Breadcrumb, Button, Button group, Card, Character count, Checkbox, Collection, Combo box, Data visualizations, Date picker, Date range picker, File input, Footer, Form, Header, Icon, Icon list, Identifier, In-page navigation, Input mask, Input prefix/suffix, Language selector, Link, List, Memorable date, Modal, Pagination, Process list, Prose, Radio buttons, Range slider, Search, Select, Side navigation, Site alert, Step indicator, Summary box, Table, Tag, Text input, Time picker, Tooltip, Typography, Validation
+
+Four entries may look like foundations rather than components — Data visualizations, Prose,
+Typography and Validation — and they are kept because the host's own grid cards them as
+components. Three pages that live under `/components/` are excluded for the opposite reason: the
+grid does not card them. `component-lifecycle` and `component-status` are meta-documentation
+about the system's own process, and `packages` is a distribution page.
+
+### What this reference's two entries are, and what they are not
+
+§4 records two stylings: a site-search submit control and a side-navigation row. Both are
+identified by anonymous selector position — `surface-2::[data-omd-capture="..."]` — and this
+reference contains **no occurrence of the `usa-` class prefix anywhere**, which is how USWDS
+names every one of its published components in markup.
+
+Both were captured on USWDS's own documentation surfaces, including the components overview page
+that carries the index above — this reference has cited that page as `components-live` since
+2026-07-13 without reading the 47 names on it, which is precisely the failure this roster
+exists to correct. Being captured on a component's page is not the same as capturing
+the component: the search control belongs to the documentation site's chrome. Neither is claimed
+as a rendered instance of any of the 47, and none of the 47 carries a measured value here.
 
 ## 5. Layout & Spacing
 
