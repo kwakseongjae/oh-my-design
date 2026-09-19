@@ -50,11 +50,28 @@ const ZERO_SHA = '0'.repeat(64);
 /** Graph containers whose authored contents each earn a decision. */
 const LEAF_CONTAINERS = new Set(['rules', 'roles', 'assets', 'voice', 'primary_tasks', 'decisions']);
 
-/** Every authored path in the graph, in the shape the compiler records. */
+/** A DTCG token: the object the consumer contract looks up as one unit. */
+const isDesignToken = (node) => Boolean(node) && typeof node === 'object' && !Array.isArray(node)
+  && typeof node.$type === 'string' && Object.hasOwn(node, '$value');
+
+/**
+ * Every authored path in the graph, in the shape the compiler records.
+ *
+ * A token earns a decision at its own path *and* at each `$` member. Both are
+ * needed and for different readers: the compiler binds the members, while
+ * `core-consumer-contract.ts` looks the token up by its own three-segment path
+ * (`foundations.tokens.color.body`) and silently omits any token it cannot find
+ * there. Emitting only the members produced a package that verified, reported
+ * `status: "verified"`, and served **zero** tokens — every colour and radius
+ * empty, with no error anywhere. The projection-parity gate is what caught it.
+ */
 function authoredPaths(node, prefix = '') {
   if (node === null || node === undefined) return [];
   if (Array.isArray(node)) return node.length ? [prefix] : [];
   if (typeof node !== 'object') return prefix ? [prefix] : [];
+  if (isDesignToken(node)) {
+    return [prefix, ...Object.keys(node).filter((key) => key.startsWith('$')).map((key) => `${prefix}.${key}`)];
+  }
   const out = [];
   for (const [key, value] of Object.entries(node)) {
     if (key === 'extensions' || key === '$schema' || key === 'schema_version') continue;

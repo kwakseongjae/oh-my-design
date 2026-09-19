@@ -1,0 +1,1415 @@
+{
+  "decisions": [
+    {
+      "evidence": [
+        "web/references/krds/DESIGN.md (migrated segment for components_states.rules)"
+      ],
+      "path": "components_states.rules",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/krds/DESIGN.md (migrated segment for content_locales.voice)"
+      ],
+      "path": "content_locales.voice",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/krds/DESIGN.md (migrated segment for experience.primary_tasks)"
+      ],
+      "path": "experience.primary_tasks",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/krds/DESIGN.md (migrated segment for experience.summary)"
+      ],
+      "path": "experience.summary",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/krds/DESIGN.md (migrated segment for foundations.rules)"
+      ],
+      "path": "foundations.rules",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.body",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.body.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.body.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.border-strong",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.border-strong.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.border-strong.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.brand",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.brand.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.brand.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.canvas",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.canvas.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.canvas.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.danger",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.danger.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.danger.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.foreground",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.foreground.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.foreground.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.hairline",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.hairline.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.hairline.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.information",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.information.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.information.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.muted",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.muted.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.muted.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.on-primary",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.on-primary.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.on-primary.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.point",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.point.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.point.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.primary",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.primary-deep",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.primary-deep.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.primary-deep.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.primary-hover",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.primary-hover.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.primary-hover.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.primary.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.primary.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.secondary",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.secondary.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.secondary.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.success",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.success.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.success.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.surface",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.surface-primary",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.surface-primary.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.surface-primary.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.surface.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.surface.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.warning",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.warning.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.color.warning.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.radius.default",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.radius.default.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.radius.default.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.radius.full",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.radius.full.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.radius.full.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.radius.lg",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.radius.lg.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.radius.lg.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.radius.md",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.radius.md.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.radius.md.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.radius.sm",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.radius.sm.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source home-live: https://www.krds.go.kr/html/site/index.html",
+        "verification_v2 source type-doc: https://www.krds.go.kr/html/site/style/style_03.html",
+        "verification_v2 source colors-doc: https://www.krds.go.kr/html/site/style/style_02.html",
+        "verification_v2 source button-doc: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source input-doc: https://www.krds.go.kr/html/site/component/component_09_03.html",
+        "verification_v2 source select-doc: https://www.krds.go.kr/html/site/component/component_06_03.html",
+        "verification_v2 source modal-doc: https://www.krds.go.kr/html/site/component/component_04_05.html",
+        "verification_v2 source badge-doc: https://www.krds.go.kr/html/site/component/component_04_06.html",
+        "verification_v2 source button-css: https://www.krds.go.kr/html/site/component/component_05_02.html",
+        "verification_v2 source layout-doc: https://www.krds.go.kr/html/site/style/style_05.html",
+        "verification_v2 source tag-doc: https://www.krds.go.kr/html/site/component/component_06_04.html",
+        "verification_v2 source krds-component-roster: https://www.krds.go.kr/html/site/component/component_summary.html"
+      ],
+      "path": "foundations.tokens.radius.sm.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/krds/DESIGN.md (migrated segment for governance.change_policy)"
+      ],
+      "path": "governance.change_policy",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/krds/DESIGN.md (migrated segment for governance.unknown_policy)"
+      ],
+      "path": "governance.unknown_policy",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/krds/DESIGN.md (migrated segment for identity.kind)"
+      ],
+      "path": "identity.kind",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/krds/DESIGN.md (migrated segment for identity.name)"
+      ],
+      "path": "identity.name",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/krds/DESIGN.md (migrated segment for identity.scope)"
+      ],
+      "path": "identity.scope",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/krds/DESIGN.md (migrated segment for layout_platforms.rules)"
+      ],
+      "path": "layout_platforms.rules",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/krds/DESIGN.md (migrated segment for projection.locale)"
+      ],
+      "path": "projection.locale",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/krds/DESIGN.md (migrated segment for projection.path)"
+      ],
+      "path": "projection.path",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/krds/DESIGN.md (migrated segment for projection.sha256)"
+      ],
+      "path": "projection.sha256",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/krds/DESIGN.md (migrated segment for typography_assets.roles)"
+      ],
+      "path": "typography_assets.roles",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/krds/DESIGN.md (migrated segment for typography_assets.rules)"
+      ],
+      "path": "typography_assets.rules",
+      "source_class": "repository-fact"
+    }
+  ],
+  "design_md_sha256": "bf899b0098e1ded5590b1217805260f453a3d8e3165443866900a958c3666143",
+  "graph_sha256": "2a32ba831d89a819b0df8eaa49231d17f6f1136a9ca62fcb14087f759bea09a1",
+  "schema_version": "2.0.0"
+}

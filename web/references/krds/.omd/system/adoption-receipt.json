@@ -1,0 +1,53 @@
+{
+  "authority": "system-graph",
+  "inputs": {
+    "coverage_sha256": "1a13ee03d8530c0679031e6e1707cc43d83a128f1291e7961d8477a3011f8e71",
+    "graph_sha256": "2a32ba831d89a819b0df8eaa49231d17f6f1136a9ca62fcb14087f759bea09a1",
+    "migration_report_sha256": "3c68a71c3814eff4ace05673b5da9ace12e653fa147b2b41c8cffe664628d919",
+    "provenance_sha256": "07301e3135189d796312da97b41678e36ca7b1d41934b17402515c42b27f8a5b"
+  },
+  "kind": "design-md-core-adoption-receipt",
+  "migration": {
+    "candidate_design_md_sha256": "bf899b0098e1ded5590b1217805260f453a3d8e3165443866900a958c3666143",
+    "candidate_graph_sha256": "2a32ba831d89a819b0df8eaa49231d17f6f1136a9ca62fcb14087f759bea09a1",
+    "dropped_segments": 0,
+    "observation_fast_path_disabled": true,
+    "preserved_extension_sha256": "b33bafd4e627df0b637caa54b58ac7bcba73ed1454fa39a4da2fed770ff131cb",
+    "source_reconstruction_equal": true,
+    "source_sha256": "f1a6f764daf044a81e9ffdb0745c45926a3ac861369e0e1b155b36b4bd162dcb",
+    "unsupported_claims_approved": true,
+    "unsupported_claims_reviewed": true
+  },
+  "outputs": {
+    "coverage": {
+      "path": ".omd/system/coverage.json",
+      "sha256": "63efd9ff591e5b30b544a8cd1a24654472bad38981c7a181c84a9b8871c8863a"
+    },
+    "design_md": {
+      "path": "DESIGN.md",
+      "sha256": "bf899b0098e1ded5590b1217805260f453a3d8e3165443866900a958c3666143"
+    },
+    "graph": {
+      "path": ".omd/system/graph.json",
+      "sha256": "2a32ba831d89a819b0df8eaa49231d17f6f1136a9ca62fcb14087f759bea09a1"
+    },
+    "manifest": {
+      "path": ".omd/system/manifest.json",
+      "sha256": "942b9febb67855f8d42516cb482f2d087f0cb38ca95728d0007773e885ac6d09"
+    },
+    "provenance": {
+      "path": ".omd/system/provenance.json",
+      "sha256": "01688edfa4a01127a3bd9b13d268d4d10704d55e61f8aa6a8821e74685189a4b"
+    }
+  },
+  "review": {
+    "authority_transition_approved": true,
+    "receipt_sha256": "fcaad94225ae59109a47c68404b088e555a5f03c999b32f5d73941ca65bdc5f2",
+    "reviewer": {
+      "identifier": "kwakseongjae",
+      "role": "project-owner"
+    }
+  },
+  "schema_version": "2.0.0",
+  "status": "adopted"
+}
