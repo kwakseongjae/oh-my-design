@@ -329,22 +329,33 @@ adobe는 `ds.url`이 루트라 쓸 경로 접두사가 없고 `/page/`가 패턴
 두 번째 규약을 넣되 `src/*`는 `src/a11y`·`src/styles` 같은 비컴포넌트를 포함하므로
 **어느 규약으로 셌는지 행마다 남긴다.** 상한이지 로스터가 아니다.
 
-### `ds:` 블록이 URL이 주지 않는 것을 주장하는 3건
+### `ds:` 3건 재검토 — 내 첫 진술이 과했다
 
-`ds.type`은 내부 메타데이터가 아니라 **사용자에게 보이는 값**이다. `ds-card.tsx`가
-`type: system`을 "Design System", `brand`를 "Brand Guide" 배지로 렌더하고,
-`preview-export-view.tsx`는 `"<이름> Design System"`이라고 쓴다. 아래 3건은 그래서
-사용자에게 없는 것을 있다고 말하고 있다.
+먼저 정정한다. 나는 이 3건이 "URL이 주지 않는 것을 주장한다"고 적고 velog를 "디자인 시스템
+패키지가 아예 없다"고 썼다. **설명문을 열어보기 전에 쓴 문장이었고, 열어보니 셋 다 자기
+URL이 무엇인지 꽤 정직하게 말하고 있다.** velog는 "production frontend is fully
+open-source", banksalad는 "public GitHub org", zigzag는 "engineering **account of** the
+ZDS rebuild"라고 적혀 있다. 이 문서가 경계하는 바로 그 실수 — 보지 않고 판단하기 — 를
+플래그를 다는 쪽에서 내가 했다.
 
-| 레퍼런스 | 선언 | URL이 실제로 주는 것 | 확인 방법 |
-|---|---|---|---|
-| **velog** | `type: system` | 애플리케이션 모노레포. `packages/*`는 commonjs·database·eslint-config·library·markdown-editor·scripts·tsconfig로 **디자인 시스템 패키지가 없다.** 프로브가 센 93개 "컴포넌트"는 `apps/web/src/components/*` — 앱 내부 컴포넌트다 | 트리 API 전수 |
-| **banksalad** | `type: brand` | GitHub **조직 페이지**. 19개 레포 중 ui/design 이름은 `styleguide`(= **코드** 스타일 가이드)와 `figma-component-list-generator`뿐 | org repos API |
-| **zigzag** | `type: system` | 프론트엔드 디자인 시스템 재구축 **블로그 글** 1건 | URL |
+또 하나: 프로브가 센 velog "컴포넌트 93개"는 `apps/web/src/components/*`인데
+**레퍼런스는 그걸 발행 로스터라고 주장한 적이 없다.** velog의 결함이 아니라 내 스크립트의
+결함이다.
 
-셋 다 "unknown means absent" 규칙의 대상이다 — 근거 없는 주장은 필드/그룹 경계에서
-빠져야 한다. 다만 사용자에게 보이는 카탈로그 주장을 3건 지우는 일이라 로스터 기록과
-분리해 별도로 처리한다.
+실제로 확인된 것은 더 좁고 더 구체적이다.
+
+| | 실제 문제 | 확인 |
+|---|---|---|
+| **velog** | 설명문이 토큰은 `src/lib/styles`의 `themes.ts` + `palette.ts`에 있고 Open Color 팔레트 기반이라고 적는다. 디렉터리는 **있지만** 내용물은 `bindClassNames.ts`와 CSS 모듈 5개뿐 — **두 파일 다 없고** 레포 어디에도 Open Color 팔레트가 없다. **설명문이 지난 상태를 적고 있다** | contents API |
+| **banksalad** | 설명문이 "styleguide repos and **BPL (Banksalad Product Library)** reference material"이라 하는데 org 19개 레포에 BPL이 없다. `styleguide`는 android/git/python/web — **코드** 스타일 가이드다 | org repos + 트리 |
+| **zigzag** | 설명문은 정확하다("engineering account of the ZDS rebuild"). 남는 건 `type: system`이 카드에 **"Design System" 배지**로 렌더돼 글 한 편이 발행된 시스템처럼 보이는 것뿐 | — |
+
+velog·banksalad는 설명문의 **특정 사실**이 틀렸고 고칠 수 있다. zigzag는 사실이 아니라
+`type`의 표시 문제다. 셋을 한 덩어리로 "근거 없는 주장"이라 묶은 첫 진술은 철회한다.
+
+`ds.type`이 사용자에게 보이는 값이라는 점은 그대로다 — `ds-card.tsx`가 `system`을
+"Design System", `brand`를 "Brand Guide" 배지로 렌더하고 `preview-export-view.tsx`는
+`"<이름> Design System"`이라 쓴다.
 
 ---
 
