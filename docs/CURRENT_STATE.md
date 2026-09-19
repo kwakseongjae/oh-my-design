@@ -3,6 +3,43 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-19 — 후보 A 보수 2차. 누적 **11건 / 671개 이름**
+
+2차(`ac211f6b`): skyscanner 91+유틸 10 · smarthr 61 · uswds 47 · ibm 39 · govuk 37 = **285개**.
+**에이전트가 아니라 내가 직접 했다** — 5명이 55분간 파일을 못 썼고 원인의 상당 부분이 내
+브리프였다("인덱스가 이긴다"면서 셋에게 틀렸거나 도달 불가능한 인덱스를 줬다).
+
+**skyscanner는 fetch로는 불가능한 유일한 호스트다.** 2KB 셸 · `/components`는 환영 페이지로
+리다이렉트 · 서빙 HTML에 컴포넌트 링크 0개 · 모든 URL이 불투명 접미사(`accordion/web-sEshz9Z5`)라
+사이트맵은 이름이 아니라 id를 준다. 브라우저로 렌더한 내비게이션에서 읽었다.
+
+**내 브리프 오류 3건**(직접 fetch해서 발견): uswds `/components/`는 556바이트 스텁이고 진짜는
+`/components/overview/`(76KB) · ibm overview는 2.9MB인데 아무것도 안 나열하고 한 단계 아래
+`/components/overview/components/`가 진짜 갤러리 · govuk·smarthr는 예상대로 서버 렌더.
+
+**신원 근거 — 96 대 2를 가르는 지점**:
+- **ibm은 39개 중 1개를 진짜로 측정한다** — accordion 캡쳐가 `class cds--accordion__heading`을
+  들고 있다. `cds--`는 Carbon 자신의 접두사다.
+- **uswds는 0개** — `usa-` 접두사가 파일에 하나도 없다. 게다가 `/components/overview/`를
+  `components-live`로 **2026-07-13부터 인용**하면서 거기 적힌 47개를 안 읽었다.
+- **govuk은 제3의 범주**였다 — 캡쳐 provenance는 전혀 없는데(surfaces·selector·class 없음)
+  산문에서 시스템 자신의 토큰 함수(`govuk-functional-colour("brand")`)를 인용한다. 값은
+  1차 출처인데 컴포넌트는 관측 기록이 없다. 9개 중 7개가 발행 컴포넌트와 이름이 겹치지만
+  §4는 그 일치가 증거가 아니라고 적었다.
+- **smarthr 0개** · **skyscanner는 분리** — 색상은 Backpack 자신의 `--bpk-*` 변수명(강함),
+  지오메트리는 `skyscanner.co.kr` 라이브 제품(Backpack 문서 아님).
+
+게이트 전부 통과 · 474/474 · 티어 **141/183/116 불변** · `portable_core` **383 불변** ·
+원장 905 → **907**(ibm·uswds만. govuk·smarthr·skyscanner는 `verification_v2` 블록이 없어
+**만들어내지 않았다** — 만들었으면 티어가 움직였다).
+
+**남은 로스터 12건**: aws-cloudscape · uber · sanity · hashicorp · google · samsung ·
+money-forward · servicenow · kdan · wanted · microsoft · hahow.
+**브라우저 필요**: adobe(Spectrum 1/2 세대 구분 + 내비 클라이언트 렌더) · likelion(Storybook) ·
+인덱스 없는 16개 SPA. 이건 fetch 에이전트로 또 보내면 이미 실패한 걸 반복하는 것이다.
+
+---
+
 ## ✅ 2026-09-19 — 후보 A 보수 1차. 레퍼런스 6건에 **386개 컴포넌트 이름** 기록
 
 | 레퍼런스 | 발행 | 기록 | 비고 |
