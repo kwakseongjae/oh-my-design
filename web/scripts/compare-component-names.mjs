@@ -62,14 +62,21 @@ const OPAQUE = /-[A-Za-z0-9]{6,}$|^[a-z_]*\d+_\d+$/;
 
 const normalise = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, "");
 
-/** The component a URL is about, as its author named it in the path. */
+/**
+ * The component a URL is about, as its author named it in the path.
+ *
+ * The segment *after* the component directory, not the last segment: PatternFly
+ * publishes `/components/tree-view`, `/components/tree-view/html` and
+ * `/components/tree-view/design-guidelines`, and taking the last segment turned
+ * one component into three names, two of which no reference would ever say.
+ * It cut the other way too — Material 3's `/components/all-buttons` became
+ * `accessibility` and `specs`, scoring google at 9 names when it publishes 40.
+ */
 function nameOf(url) {
-  try {
-    return new URL(url).pathname.replace(/\/$/, "").split("/").pop()
-      .replace(/\.(html?|md|json)$/i, "");
-  } catch {
-    return url.split("/").pop();
-  }
+  const path = url.startsWith("http") ? new URL(url).pathname : `/${url}`;
+  const inside = /\/(?:components?|patterns?|elements?|widgets?)\/([^/]+)/i.exec(path);
+  const segment = inside ? inside[1] : path.replace(/\/$/, "").split("/").pop();
+  return segment.replace(/\.(html?|md|json)$/i, "");
 }
 
 const results = [];
@@ -79,7 +86,9 @@ for (const file of readdirSync(urlsDir).sort()) {
   if (onlyHost && id !== onlyHost) continue;
 
   const urls = readFileSync(join(urlsDir, file), "utf8").trim().split("\n").filter(Boolean);
-  const all = [...new Set(urls.map(nameOf).filter((n) => n && n.length > 1 && !/^\d+$/.test(n)))];
+  const all = [...new Set(urls.map((u) => {
+    try { return nameOf(u); } catch { return ""; }
+  }).filter((n) => n && n.length > 1 && !/^\d+$/.test(n)))];
   const opaque = all.filter((n) => OPAQUE.test(n));
   const usable = all.filter((n) => !OPAQUE.test(n));
   if (usable.length === 0) continue;
