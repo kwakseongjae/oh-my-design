@@ -21,6 +21,28 @@ The verified common language is Toss Product Sans, a bright blue interaction acc
 ### Brand Narrative
 
 Toss presents finance as a connected product experience rather than a collection of institutional silos. Its design system supports that ambition by making repeated actions—checking, comparing, agreeing, paying, and recovering—feel consistent even when the underlying financial products differ.
+
+The company’s first-party design writing shows how this consistency became a brand system inside the product. Product branding is treated as the experience people receive while using a feature, not merely a campaign wrapped around it. Toss Product Sans extends the same logic into typography: numbers, symbols, Korean text, and multiple digital and offline contexts were considered as one product problem.
+
+The practical design position is therefore clarity with momentum. **Easy to answer** reduces the cognitive cost of a decision; **Value first, cost later** makes benefit legible before asking for commitment. Blue, typography, motion, and microcopy are useful only when they help a person move through money with more confidence.
+
+### Principles
+
+The following are implementation principles derived from the verified surfaces, not quoted corporate doctrine:
+
+1. Separate product-system evidence from marketing-surface evidence.
+2. Make interaction blue functional rather than decorative.
+3. Preserve component states, especially disabled, loading, pressed, and keyboard focus.
+4. Prefer exact, readable typography over ornamental depth.
+5. Treat financial outcomes as explicit states with clear next actions.
+
+### Personas
+
+These are first-party product contexts, not invented demographic personas.
+
+- **A person answering a financial question:** needs options translated into concrete, comparable choices rather than a dense form or open-ended prompt.
+- **A person evaluating value before effort:** needs the likely benefit made visible before consent, document upload, consultation, or payment is requested.
+- **A person recovering from an interrupted flow:** needs the current state, consequence, and next safe action stated explicitly, especially in insurance, payment, or account contexts.
 <!-- design-md:claim-end -->
 
 <!-- design-md:claim primary-tasks kind=user-outcomes count=6 lang=en -->
@@ -87,7 +109,9 @@ No canonical shadow token is promoted in this revision. The inspected evidence c
 
 ### Motion & Easing
 
-No canonical motion duration or easing token is promoted, and the absence is now sourced rather than assumed. TDS publishes no numeric `duration`, `easing`, or `cubic-bezier` value in its documentation; Toss states that component motion is carried inside the Figma UI Kit library, so…
+No canonical motion duration or easing token is promoted, and the absence is now sourced rather than assumed. TDS publishes no numeric `duration`, `easing`, or `cubic-bezier` value in its documentation; Toss states that component motion is carried inside the Figma UI Kit library, so timing must be read off the kit rather than cited from a page. The two motion rules TDS does publish are qualitative: 3D graphics and animation may use only resources from the Toss-provided module, and a loading animation must not appear where there is nothing to wait for.
+
+Preserve state clarity and reduced-motion compatibility. Label any exact animation curve or duration as a local extension — for Toss there is no official numeric value to promote it to.
 <!-- design-md:claim-end -->
 
 <!-- design-md:section typography-assets -->
@@ -121,6 +145,14 @@ No canonical motion duration or easing token is promoted, and the absence is now
 | Body Small | 14px | 400 | 21px | secondary visible role |
 
 These are evidence-backed public-document roles, not a claim that every native Toss product screen uses this exact hierarchy.
+
+| Evidence class | Toss status |
+|---|---|
+| **Official product-use** | Toss Product Sans was designed for financial symbols and mobile, desktop, and offline product contexts |
+| **Live surface-use** | Toss Product Sans is loaded and visibly used throughout the inspected TDS documentation surfaces |
+| **Official distributed asset** | No general redistribution right is asserted by the current official sources |
+| **Declared-only** | Tossface is declared in captured FontFace resources but was not observed as the visible first family |
+| **Unresolved** | Public redistribution/license terms and exact native-screen type metrics beyond documented TDS roles |
 
 <!-- design-md:section components-states -->
 ## 4. Components & States
@@ -160,12 +192,53 @@ These are evidence-backed public-document roles, not a claim that every native T
 - States: default observed; hover not captured in the retained evidence bundle
 - Use: light-blue marketing CTA
 
+### toss.im Marketing Dark
+- Background: `rgba(0, 12, 30, 0.8)`
+- Text: `#ffffff`
+- Radius: 7px
+- Height: 46px
+- Padding: 11px 16px
+- Font: 17px / 600 / Toss Product Sans
+- States: default observed; hover not captured in the retained evidence bundle
+- Use: app-store style marketing CTA
+
+### Published component roster (43 published, 4 measured)
+
+TDS Mobile publishes **43 components**, read from the rendered navigation at
+`https://tossmini-docs.toss.im/tds-mobile/` on 2026-09-19. This reference measures four of them —
+Button, Badge, TextField and Agreement — and asserts no value, state or geometry for the other 39.
+
+Agreement, Alphabet Keypad, Asset, Badge, Bar Chart, Board Row, Border, Bottom Info, Bottom Sheet, BottomCTA, Bubble, Button, Checkbox, Dialog, Grid List, Highlight, Icon Button, List Footer, List Header, ListRow, Loader, Menu, Modal, Numeric Spinner, Paragraph, Post, Progress Bar, Progress Stepper, Rating, Result, Search Field, Segmented Control, Skeleton, Slider, Stepper, Switch, Tab, Table Row, Text Button, TextField, Toast, Tooltip, Top
+
+**This replaces a smaller, curated list and answers the question the old text left open.** The
+previous roster recorded the 11 components Toss names as "most frequently used in Apps in Toss",
+a partner-facing selection, and said plainly that "TDS's full component surface is larger than 11
+and is not enumerated by any index found so far". It is enumerated now: 43.
+
+**Why no index found it.** `tossmini-docs.toss.im` serves a shell, and the roster exists only in
+the rendered navigation. Four pages are titled in Korean as "X 이해하기" — understanding X — so
+their labels read as guides while their routes are the components `Asset`, `BottomCTA`, `Dialog`
+and `ListRow`. A fifth, routed at `Agreement`, renders with its version tab `V3` as the visible
+label. Reading labels alone would have produced five wrong names and missed five components; the
+names above follow the routes.
+
+The Figma/TDS Mobile UI Kit is distributed under a named licence from Viva Republica, which
+terminates automatically on breach and requires deleting all copies — relevant to any adopter
+redistributing kit-derived assets.
+
+---
+
+**Surface split:** TDS Mobile xlarge uses 56px height and 16px radius; `toss.im` marketing actions observed here use 40–46px height and 7px radius.
+**Conflicts unresolved:** none
+
 ### States
 
 | Component | Verified state contract |
 |---|---|
 | TDS Button | fill/weak, semantic color, loading, disabled, pressed, keyboard focus |
-| TDS Text Field |…
+| TDS Text Field | box/line/big/hero, focus, error, disabled, read-only |
+| TDS Agreement | checked, unchecked, disabled, nested hierarchy |
+| Marketing CTAs | default geometry captured; hover remains unclaimed |
 
 <!-- design-md:section layout-platforms -->
 ## 5. Layout & Platforms
@@ -244,4 +317,6 @@ Record, review, and validate changes before adoption.
 ### Agent Prompt Guide
 
 - “Create a TDS Mobile xlarge primary button using `#3182f6`, white text, 56px height, 16px radius, 17px/600 Toss Product Sans, and explicit loading/disabled/focus behavior.”
-- “Create a `toss.im` weak marketing CTA using `#e8f3ff` background, `#1b64da` text, 40px height, and 7px…
+- “Create a `toss.im` weak marketing CTA using `#e8f3ff` background, `#1b64da` text, 40px height, and 7px radius.”
+- “Use Toss Product Sans for the verified UI family; do not promote Tossface without visible usage evidence.”
+- “If building a component not listed here, mark it as an extension rather than presenting it as verified TDS.”

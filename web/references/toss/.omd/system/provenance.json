@@ -16,10 +16,7 @@
     },
     {
       "evidence": [
-        "web/references/toss/DESIGN.md §11 Brand Narrative",
-        "web/references/toss/DESIGN.md §13 Personas",
-        "web/references/toss/DESIGN.md §12 Principles",
-        "web/references/toss/DESIGN.md tokens.components.agreement"
+        "web/references/toss/DESIGN.md (migrated segment for experience.primary_tasks)"
       ],
       "path": "experience.primary_tasks",
       "source_class": "repository-fact"
@@ -40,242 +37,914 @@
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.color.body",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.body.$type",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.body.$value",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.color.border",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.border.$type",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.border.$value",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.color.canvas",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.canvas.$type",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.canvas.$value",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.color.danger",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.danger.$type",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.danger.$value",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.color.foreground",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.foreground.$type",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.foreground.$value",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.color.muted",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.muted.$type",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.muted.$value",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.color.on-primary",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.on-primary.$type",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.on-primary.$value",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
-      "path": "foundations.tokens.color.primary.$type",
+      "path": "foundations.tokens.color.primary",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
-      "path": "foundations.tokens.color.primary.$value",
+      "path": "foundations.tokens.color.primary-hover",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.primary-hover.$type",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.primary-hover.$value",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.color.primary.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.color.primary.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.color.surface",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.surface.$type",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.surface.$value",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.color.weak-background",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.weak-background.$type",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.weak-background.$value",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.color.weak-foreground",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.weak-foreground.$type",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
-        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source toss-live: https://toss.im/",
         "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
-        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/"
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
       ],
       "path": "foundations.tokens.color.weak-foreground.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.button-large",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.button-large.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.button-large.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.button-medium",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.button-medium.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.button-medium.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.button-small",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.button-small.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.button-small.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.button-xlarge",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.button-xlarge.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.button-xlarge.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.default",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.default.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.default.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.md",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.md.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.md.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.sm",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.sm.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source toss-live: https://toss.im/",
+        "verification_v2 source tds-button-live: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-button-states: https://tossmini-docs.toss.im/tds-mobile/components/button/",
+        "verification_v2 source tds-text-field: https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+        "verification_v2 source tds-badge: https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+        "verification_v2 source tds-agreement: https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+        "verification_v2 source tds-overview-md: https://developers-apps-in-toss.toss.im/design/components.md",
+        "verification_v2 source tds-ux-guide-md: https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+        "verification_v2 source tds-ui-kit-license: https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+        "verification_v2 source tds-index: https://developers-apps-in-toss.toss.im/llms.txt"
+      ],
+      "path": "foundations.tokens.radius.sm.$value",
       "source_class": "repository-fact"
     },
     {
@@ -283,13 +952,6 @@
         "web/references/toss/DESIGN.md (migrated segment for governance.change_policy)"
       ],
       "path": "governance.change_policy",
-      "source_class": "repository-fact"
-    },
-    {
-      "evidence": [
-        "web/references/toss/DESIGN.md (migrated segment for governance.decisions)"
-      ],
-      "path": "governance.decisions",
       "source_class": "repository-fact"
     },
     {
@@ -329,153 +991,41 @@
     },
     {
       "evidence": [
-        "web/references/toss/DESIGN.md (migrated segment for typography_assets.rules)"
+        "web/references/toss/DESIGN.md (migrated segment for projection.locale)"
       ],
-      "path": "typography_assets.rules",
+      "path": "projection.locale",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "web/references/toss/DESIGN.md frontmatter tokens.typography (declared type scale and UI family)"
+        "web/references/toss/DESIGN.md (migrated segment for projection.path)"
+      ],
+      "path": "projection.path",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md (migrated segment for projection.sha256)"
+      ],
+      "path": "projection.sha256",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/toss/DESIGN.md (migrated segment for typography_assets.roles)"
       ],
       "path": "typography_assets.roles",
       "source_class": "repository-fact"
     },
     {
       "evidence": [
-        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
+        "web/references/toss/DESIGN.md (migrated segment for typography_assets.rules)"
       ],
-      "path": "foundations.tokens.color.body",
-      "source_class": "repository-fact"
-    },
-    {
-      "evidence": [
-        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
-      ],
-      "path": "foundations.tokens.color.border",
-      "source_class": "repository-fact"
-    },
-    {
-      "evidence": [
-        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
-      ],
-      "path": "foundations.tokens.color.canvas",
-      "source_class": "repository-fact"
-    },
-    {
-      "evidence": [
-        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
-      ],
-      "path": "foundations.tokens.color.danger",
-      "source_class": "repository-fact"
-    },
-    {
-      "evidence": [
-        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
-      ],
-      "path": "foundations.tokens.color.foreground",
-      "source_class": "repository-fact"
-    },
-    {
-      "evidence": [
-        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
-      ],
-      "path": "foundations.tokens.color.muted",
-      "source_class": "repository-fact"
-    },
-    {
-      "evidence": [
-        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
-      ],
-      "path": "foundations.tokens.color.on-primary",
-      "source_class": "repository-fact"
-    },
-    {
-      "evidence": [
-        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
-      ],
-      "path": "foundations.tokens.color.primary",
-      "source_class": "repository-fact"
-    },
-    {
-      "evidence": [
-        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
-      ],
-      "path": "foundations.tokens.color.primary-hover",
-      "source_class": "repository-fact"
-    },
-    {
-      "evidence": [
-        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
-      ],
-      "path": "foundations.tokens.color.surface",
-      "source_class": "repository-fact"
-    },
-    {
-      "evidence": [
-        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
-      ],
-      "path": "foundations.tokens.color.weak-background",
-      "source_class": "repository-fact"
-    },
-    {
-      "evidence": [
-        "web/references/toss/DESIGN.md frontmatter tokens.colors (declared token)"
-      ],
-      "path": "foundations.tokens.color.weak-foreground",
-      "source_class": "repository-fact"
-    },
-    {
-      "evidence": [
-        "web/references/toss/DESIGN.md frontmatter tokens.rounded (declared token)"
-      ],
-      "path": "foundations.tokens.radius.button-large",
-      "source_class": "repository-fact"
-    },
-    {
-      "evidence": [
-        "web/references/toss/DESIGN.md frontmatter tokens.rounded (declared token)"
-      ],
-      "path": "foundations.tokens.radius.button-medium",
-      "source_class": "repository-fact"
-    },
-    {
-      "evidence": [
-        "web/references/toss/DESIGN.md frontmatter tokens.rounded (declared token)"
-      ],
-      "path": "foundations.tokens.radius.button-small",
-      "source_class": "repository-fact"
-    },
-    {
-      "evidence": [
-        "web/references/toss/DESIGN.md frontmatter tokens.rounded (declared token)"
-      ],
-      "path": "foundations.tokens.radius.button-xlarge",
-      "source_class": "repository-fact"
-    },
-    {
-      "evidence": [
-        "web/references/toss/DESIGN.md frontmatter tokens.rounded (declared token)"
-      ],
-      "path": "foundations.tokens.radius.default",
-      "source_class": "repository-fact"
-    },
-    {
-      "evidence": [
-        "web/references/toss/DESIGN.md frontmatter tokens.rounded (declared token)"
-      ],
-      "path": "foundations.tokens.radius.md",
-      "source_class": "repository-fact"
-    },
-    {
-      "evidence": [
-        "web/references/toss/DESIGN.md frontmatter tokens.rounded (declared token)"
-      ],
-      "path": "foundations.tokens.radius.sm",
+      "path": "typography_assets.rules",
       "source_class": "repository-fact"
     }
   ],
-  "design_md_sha256": "90b4d65034b466aa80ee751f6ca74dfa4a23cae61ee9bc8338468392dfaa896c",
-  "graph_sha256": "cd0eb8d6f3e461e282f675c304a7e53c2d71a81909622e65e8ee93e21758fc32",
+  "design_md_sha256": "f4c4683b7c87fba2eb28595c9008f812c8458987faf4a5568c66a0a292bc4715",
+  "graph_sha256": "c20d1835dd5021f54a145d4d1fba61b3673d0d3beabc1c1170aa6de97e5290c0",
   "schema_version": "2.0.0"
 }
