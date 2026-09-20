@@ -39,11 +39,13 @@
  * `artifacts/reference-evidence-2026-07/`, which is read-only and unbacked.
  *
  * usage:
- *   node scripts/measure-surface-drift.mjs [--limit N] [--concurrency N] [--json <out>]
+ *   node scripts/measure-surface-drift.mjs [--limit N] [--concurrency N] [--json <out>] [--only id,id]
  */
 import { readFileSync, readdirSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { chromium } from "playwright-core";
+import { readReferenceSource } from "../web/scripts/lib/reference-source.mjs";
+import { parseReferenceFrontmatter } from "../web/scripts/lib/reference-quality.mjs";
 
 const BUNDLES = "artifacts/reference-evidence-2026-07";
 const UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
@@ -72,11 +74,13 @@ const jsonAt = flag("--json", null);
 function baseline() {
   const norm = (url) => String(url ?? "").replace(/\/+$/, "").toLowerCase();
   const out = [];
+  const only = new Set(String(flag("--only", "")).split(",").filter(Boolean));
   for (const file of readdirSync(BUNDLES).sort()) {
     if (!file.endsWith(".json")) continue;
     const id = file.replace(/\.json$/, "");
-    const designPath = join("web", "references", id, "DESIGN.md");
-    if (!existsSync(designPath)) continue;
+    if (only.size > 0 && !only.has(id)) continue;
+    const dir = join("web", "references", id);
+    if (!existsSync(join(dir, "DESIGN.md"))) continue;
     let bundle;
     try { bundle = JSON.parse(readFileSync(join(BUNDLES, file), "utf8")); } catch { continue; }
 
@@ -97,15 +101,33 @@ function baseline() {
     }
     if (surfaces.size === 0) continue;
 
-    const markdown = readFileSync(designPath, "utf8");
-    const sources = markdown.matchAll(
-      /- \{ id: ([A-Za-z0-9._-]+), kind: ([a-z-]+), url: "([^"]+)", captured: "([^"]+)" \}/g,
-    );
-    for (const [, sourceId, kind, url, captured] of sources) {
-      const match = surfaces.get(norm(url));
+    // Read the evidence graph the way every other catalog reader does.
+    //
+    // This used to `readFileSync(DESIGN.md)` and pull sources out with a regex
+    // pinned to one flow-style key order. Both halves were wrong, and each lost
+    // real references rather than failing loudly:
+    //
+    //   - An *adopted* reference has no frontmatter in DESIGN.md at all — the
+    //     graph lives in its `.omd/` package and only `readReferenceSource`
+    //     rebuilds it. krds and toss therefore contributed zero sources, and
+    //     the run reported them as having no baseline when both have bundles.
+    //   - `{ id, kind, url, captured }` was hardcoded, so block-style sources
+    //     (bilibili, spotify) and a different key order (sanity) parsed as
+    //     nothing. 13 sources across 3 references, silently.
+    //
+    // A second, weaker implementation of a parse the repository already owns
+    // is how a reader goes blind. There is one parse now.
+    let sources;
+    try {
+      sources = parseReferenceFrontmatter(readReferenceSource(dir).markdown, `${id}/DESIGN.md`)
+        ?.verification_v2?.sources ?? [];
+    } catch { continue; }
+
+    for (const source of sources) {
+      const match = surfaces.get(norm(source.url));
       if (!match) continue;
       out.push({
-        id, sourceId, kind, url, captured,
+        id, sourceId: source.id, kind: source.kind, url: source.url, captured: source.captured,
         capturedAt: String(bundle.capturedAt ?? "").slice(0, 10),
         surfaceId: match.surfaceId, viewport: match.viewport, july: match.july,
       });
@@ -148,16 +170,24 @@ async function measure(browser, row) {
     const fields = ["color", "background", "font", "size"];
     const changed = fields.filter((field) => row.july[field] !== now[field]);
     return {
-      ...row, now, httpStatus: status,
+      ...row, now, httpStatus: status, userAgent: UA,
       // A theme-responsive page compared under a scheme July did not record is
       // not a measurement; say so rather than counting it either way.
-      verdict: status >= 400 ? "unreachable"
-        : now.themeResponsive && changed.some((f) => f === "color" || f === "background") ? "not-comparable"
-          : changed.length === 0 ? "unchanged" : "changed",
+      // A 4xx is not one verdict. `dead` means the cited URL no longer serves
+      // anything — that is a defect in the reference, not a limit of this
+      // instrument, and no user-agent or retry recovers it. `blocked` means the
+      // page is there and refused us, which stays genuinely unknown. Collapsing
+      // both into "unreachable" hid 13 dead citations behind a word that reads
+      // like a measurement problem.
+      verdict: status === 404 || status === 410 ? "dead"
+        : status === 403 || status === 429 ? "blocked"
+          : status >= 400 ? "unreachable"
+            : now.themeResponsive && changed.some((f) => f === "color" || f === "background") ? "not-comparable"
+              : changed.length === 0 ? "unchanged" : "changed",
       changed,
     };
   } catch (error) {
-    return { ...row, verdict: "unreachable", error: String(error).split("\n")[0].slice(0, 120) };
+    return { ...row, verdict: "unreachable", httpStatus: null, userAgent: UA, error: String(error).split("\n")[0].slice(0, 120) };
   } finally {
     await context.close();
   }
@@ -174,8 +204,8 @@ await Promise.all(Array.from({ length: Math.min(concurrency, rows.length) }, asy
     const index = cursor++;
     const result = await measure(browser, rows[index]);
     results[index] = result;
-    const mark = { unchanged: "  ok    ", changed: "  CHANGED", "not-comparable": "  theme ", unreachable: "  gone  " }[result.verdict];
-    console.log(`${mark} ${`${result.id}/${result.sourceId}`.padEnd(38)} ${result.changed?.join(",") || result.error || ""}`.slice(0, 130));
+  const mark = { unchanged: "  ok    ", changed: "  CHANGED", "not-comparable": "  theme ", dead: "  DEAD  ", blocked: "  blocked", unreachable: "  ?     " }[result.verdict];
+    console.log(`${mark} ${`${result.id}/${result.sourceId}`.padEnd(38)} ${result.changed?.join(",") || result.error || (result.httpStatus >= 400 ? `HTTP ${result.httpStatus}` : "")}`.slice(0, 130));
   }
 }));
 await browser.close();

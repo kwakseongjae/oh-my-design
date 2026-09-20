@@ -92,7 +92,9 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 2,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": [],
+    "advisoryCodes": [
+      "source_url_dead"
+    ],
     "paletteGrounding": null
   },
   {
@@ -805,6 +807,7 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 0,
     "reasonCodes": [],
     "advisoryCodes": [
+      "source_url_dead",
       "component_state_prose_only"
     ],
     "paletteGrounding": null
@@ -920,7 +923,7 @@ export const REFERENCE_QUALITY = [
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
     "nextReverifyAt": "2027-01-09",
-    "renewedSourceCount": 0,
+    "renewedSourceCount": 2,
     "tokenSource": "live-extract",
     "claimCount": 39,
     "evidenceClaimCount": 39,
@@ -1011,6 +1014,7 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 0,
     "reasonCodes": [],
     "advisoryCodes": [
+      "source_url_dead",
       "component_absent"
     ],
     "paletteGrounding": null
@@ -1035,6 +1039,7 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 0,
     "reasonCodes": [],
     "advisoryCodes": [
+      "source_url_dead",
       "component_noninteractive_only"
     ],
     "paletteGrounding": null
@@ -3814,6 +3819,7 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 0,
     "reasonCodes": [],
     "advisoryCodes": [
+      "source_url_dead",
       "component_state_prose_only"
     ],
     "paletteGrounding": null
@@ -4790,8 +4796,8 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-11",
     "tokensExtractedAt": "2026-07-11",
-    "nextReverifyAt": "2027-01-07",
-    "renewedSourceCount": 0,
+    "nextReverifyAt": "2027-03-19",
+    "renewedSourceCount": 9,
     "tokenSource": "reconciled",
     "claimCount": 199,
     "evidenceClaimCount": 199,
@@ -4827,6 +4833,7 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 0,
     "reasonCodes": [],
     "advisoryCodes": [
+      "source_url_dead",
       "component_absent"
     ],
     "paletteGrounding": null
@@ -4850,7 +4857,9 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 2,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": [],
+    "advisoryCodes": [
+      "source_url_dead"
+    ],
     "paletteGrounding": null
   },
   {
@@ -6740,6 +6749,7 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 0,
     "reasonCodes": [],
     "advisoryCodes": [
+      "source_url_dead",
       "component_state_prose_only"
     ],
     "paletteGrounding": null
@@ -6917,6 +6927,7 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 0,
     "reasonCodes": [],
     "advisoryCodes": [
+      "source_url_dead",
       "component_state_prose_only"
     ],
     "paletteGrounding": null
@@ -8376,8 +8387,8 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2027-01-09",
-    "renewedSourceCount": 0,
+    "nextReverifyAt": "2027-03-19",
+    "renewedSourceCount": 3,
     "tokenSource": "reconciled",
     "claimCount": 71,
     "evidenceClaimCount": 71,
@@ -9199,8 +9210,8 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2027-01-09",
-    "renewedSourceCount": 0,
+    "nextReverifyAt": "2027-03-19",
+    "renewedSourceCount": 3,
     "tokenSource": "reconciled",
     "claimCount": 50,
     "evidenceClaimCount": 50,
@@ -9861,6 +9872,7 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 0,
     "reasonCodes": [],
     "advisoryCodes": [
+      "source_url_dead",
       "component_state_prose_only"
     ],
     "paletteGrounding": null
@@ -9969,7 +9981,7 @@ export const REFERENCE_QUALITY = [
     "verifiedAt": "2026-07-11",
     "tokensExtractedAt": "2026-07-11",
     "nextReverifyAt": "2027-01-07",
-    "renewedSourceCount": 0,
+    "renewedSourceCount": 3,
     "tokenSource": "reconciled",
     "claimCount": 81,
     "evidenceClaimCount": 81,
@@ -10651,6 +10663,7 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 0,
     "reasonCodes": [],
     "advisoryCodes": [
+      "source_url_dead",
       "component_state_prose_only"
     ],
     "paletteGrounding": null

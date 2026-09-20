@@ -178,6 +178,37 @@ describe("reference quality v2", () => {
     expect(build({ [`fixture/${sourceId}`]: "2026-01-01" }).reasonCodes).toContain("source_expired");
   });
 
+  // A cited URL that 404s is a defect in the reference; a URL that 403s is a
+  // fact about the probe. The sweep used to call both "unreachable", which read
+  // like a measurement gap and hid 12 dead citations.
+  it("flags a dead cited URL as advisory, and never demotes a tier for it", () => {
+    const referenceTokens = tokens();
+    const v2 = verification(referenceTokens);
+    const sourceId = v2.sources[0].id;
+    const base = {
+      id: "fixture",
+      markdown,
+      frontmatter: { id: "fixture", verified: "2026-07-01", tokens: referenceTokens, verification_v2: v2 },
+      verificationMarkdown: proof,
+      asOf: "2026-07-10",
+    };
+    const clean = evaluateReferenceQuality(base);
+    const dead = evaluateReferenceQuality({ ...base, driftDeadSources: { [`fixture/${sourceId}`]: true } });
+
+    expect(clean.advisoryCodes).not.toContain("source_url_dead");
+    expect(dead.advisoryCodes).toContain("source_url_dead");
+    // The observation was valid when it was made and the capture is archived.
+    // What is lost is the reader's ability to re-check it — surfaced, not punished.
+    expect(dead.status).toBe(clean.status);
+    expect(dead.reasonCodes).toEqual(clean.reasonCodes);
+    // It leads the advisory list: every other advisory infers something about a
+    // value, this one records an HTTP status.
+    expect(dead.advisoryCodes[0]).toBe("source_url_dead");
+    // Another reference's dead source says nothing about this one.
+    expect(evaluateReferenceQuality({ ...base, driftDeadSources: { [`other/${sourceId}`]: true } }).advisoryCodes)
+      .not.toContain("source_url_dead");
+  });
+
   it("reports the due date from the same day the gate counts from", () => {
     const referenceTokens = tokens();
     const v2 = verification(referenceTokens);

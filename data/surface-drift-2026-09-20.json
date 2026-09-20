@@ -17,29 +17,6 @@
  "results": [
   {
    "id": "104",
-   "sourceId": "home-live",
-   "kind": "product-surface",
-   "url": "https://www.104.com.tw/",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-2",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(41, 41, 41)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Arial",
-    "size": "14px"
-   },
-   "now": {
-    "color": "rgb(41, 41, 41)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Arial",
-    "size": "14px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "104",
    "sourceId": "company-live",
    "kind": "product-surface",
    "url": "https://www.104.com.tw/company/main/",
@@ -62,6 +39,53 @@
     "size": "14px",
     "themeResponsive": false
    }
+  },
+  {
+   "id": "104",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.104.com.tw/",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-2",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(41, 41, 41)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Arial",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(41, 41, 41)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Arial",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "11st",
+   "sourceId": "category-capture",
+   "kind": "product-surface",
+   "url": "https://www.11st.co.kr/categories/1467565",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-3",
+   "verdict": "dead",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "돋움",
+    "size": "12px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "돋움",
+    "size": "12px",
+    "themeResponsive": false
+   },
+   "httpStatus": 404
   },
   {
    "id": "11st",
@@ -110,36 +134,12 @@
    }
   },
   {
-   "id": "11st",
-   "sourceId": "category-capture",
-   "kind": "product-surface",
-   "url": "https://www.11st.co.kr/categories/1467565",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-3",
-   "verdict": "unreachable",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "돋움",
-    "size": "12px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "돋움",
-    "size": "12px",
-    "themeResponsive": false
-   },
-   "httpStatus": 404
-  },
-  {
    "id": "29cm",
-   "sourceId": "home-live",
+   "sourceId": "best-live",
    "kind": "product-surface",
-   "url": "https://www.29cm.co.kr/",
+   "url": "https://www.29cm.co.kr/best-products?period=HOURLY&ranking=POPULARITY&gender=F&age=30",
    "captured": "2026-07-11",
-   "surfaceId": "home",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -158,11 +158,11 @@
   },
   {
    "id": "29cm",
-   "sourceId": "best-live",
+   "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://www.29cm.co.kr/best-products?period=HOURLY&ranking=POPULARITY&gender=F&age=30",
+   "url": "https://www.29cm.co.kr/",
    "captured": "2026-07-11",
-   "surfaceId": "surface-2",
+   "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -204,11 +204,11 @@
   },
   {
    "id": "29cm",
-   "sourceId": "showcase-live",
+   "sourceId": "product-live",
    "kind": "product-surface",
-   "url": "https://www.29cm.co.kr/store/showcase",
+   "url": "https://www.29cm.co.kr/products/3970725",
    "captured": "2026-07-11",
-   "surfaceId": "surface-4",
+   "surfaceId": "surface-5",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -227,11 +227,11 @@
   },
   {
    "id": "29cm",
-   "sourceId": "product-live",
+   "sourceId": "showcase-live",
    "kind": "product-surface",
-   "url": "https://www.29cm.co.kr/products/3970725",
+   "url": "https://www.29cm.co.kr/store/showcase",
    "captured": "2026-07-11",
-   "surfaceId": "surface-5",
+   "surfaceId": "surface-4",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -299,6 +299,29 @@
   },
   {
    "id": "acer",
+   "sourceId": "corporate-live",
+   "kind": "product-surface",
+   "url": "https://www.acer.com/corporate/en",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-3",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(34, 34, 34)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Noto Sans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(34, 34, 34)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Noto Sans",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "acer",
    "sourceId": "home-live",
    "kind": "product-surface",
    "url": "https://www.acer.com/kr-ko/",
@@ -327,29 +350,6 @@
    "url": "https://www.acer.com/us-en/laptops",
    "captured": "2026-07-13",
    "surfaceId": "surface-2",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(34, 34, 34)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Noto Sans",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(34, 34, 34)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Noto Sans",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "acer",
-   "sourceId": "corporate-live",
-   "kind": "product-surface",
-   "url": "https://www.acer.com/corporate/en",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-3",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -417,29 +417,6 @@
   },
   {
    "id": "alipay",
-   "sourceId": "web-app-live",
-   "kind": "product-surface",
-   "url": "https://open.alipay.com/module/webApp",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-2",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgba(0, 0, 0, 0.85)",
-    "background": "rgb(245, 245, 245)",
-    "font": "-apple-system",
-    "size": "14px"
-   },
-   "now": {
-    "color": "rgba(0, 0, 0, 0.85)",
-    "background": "rgb(245, 245, 245)",
-    "font": "-apple-system",
-    "size": "14px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "alipay",
    "sourceId": "tools-live",
    "kind": "product-surface",
    "url": "https://open.alipay.com/tool",
@@ -462,25 +439,25 @@
    }
   },
   {
-   "id": "apple",
-   "sourceId": "apple-live",
+   "id": "alipay",
+   "sourceId": "web-app-live",
    "kind": "product-surface",
-   "url": "https://www.apple.com/",
-   "captured": "2026-07-11",
-   "surfaceId": "home",
+   "url": "https://open.alipay.com/module/webApp",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(29, 29, 31)",
-    "background": "rgb(255, 255, 255)",
-    "font": "SF Pro Text",
-    "size": "17px"
+    "color": "rgba(0, 0, 0, 0.85)",
+    "background": "rgb(245, 245, 245)",
+    "font": "-apple-system",
+    "size": "14px"
    },
    "now": {
-    "color": "rgb(29, 29, 31)",
-    "background": "rgb(255, 255, 255)",
-    "font": "SF Pro Text",
-    "size": "17px",
+    "color": "rgba(0, 0, 0, 0.85)",
+    "background": "rgb(245, 245, 245)",
+    "font": "-apple-system",
+    "size": "14px",
     "themeResponsive": false
    }
   },
@@ -505,6 +482,29 @@
     "font": "SF Pro Text",
     "size": "17px",
     "themeResponsive": true
+   }
+  },
+  {
+   "id": "apple",
+   "sourceId": "apple-live",
+   "kind": "product-surface",
+   "url": "https://www.apple.com/",
+   "captured": "2026-07-11",
+   "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(29, 29, 31)",
+    "background": "rgb(255, 255, 255)",
+    "font": "SF Pro Text",
+    "size": "17px"
+   },
+   "now": {
+    "color": "rgb(29, 29, 31)",
+    "background": "rgb(255, 255, 255)",
+    "font": "SF Pro Text",
+    "size": "17px",
+    "themeResponsive": false
    }
   },
   {
@@ -601,11 +601,11 @@
   },
   {
    "id": "aws-cloudscape",
-   "sourceId": "home-live",
+   "sourceId": "about-live",
    "kind": "product-surface",
-   "url": "https://cloudscape.design/",
+   "url": "https://cloudscape.design/about/",
    "captured": "2026-07-13",
-   "surfaceId": "home",
+   "surfaceId": "surface-3",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -670,11 +670,11 @@
   },
   {
    "id": "aws-cloudscape",
-   "sourceId": "about-live",
+   "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://cloudscape.design/about/",
+   "url": "https://cloudscape.design/",
    "captured": "2026-07-13",
-   "surfaceId": "surface-3",
+   "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -710,29 +710,6 @@
     "color": "rgb(0, 0, 0)",
     "background": "rgb(246, 246, 246)",
     "font": "-apple-system",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "baemin",
-   "sourceId": "woowa-live",
-   "kind": "product-surface",
-   "url": "https://www.woowahan.com/",
-   "captured": "2026-07-11",
-   "surfaceId": "surface-2",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(35, 35, 36)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard Variable",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(35, 35, 36)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard Variable",
     "size": "16px",
     "themeResponsive": false
    }
@@ -784,12 +761,35 @@
    }
   },
   {
-   "id": "banksalad",
-   "sourceId": "home-live",
+   "id": "baemin",
+   "sourceId": "woowa-live",
    "kind": "product-surface",
-   "url": "https://www.banksalad.com/",
+   "url": "https://www.woowahan.com/",
+   "captured": "2026-07-11",
+   "surfaceId": "surface-2",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(35, 35, 36)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(35, 35, 36)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "banksalad",
+   "sourceId": "card-live",
+   "kind": "product-surface",
+   "url": "https://www.banksalad.com/product/cards/CARD002319",
    "captured": "2026-07-12",
-   "surfaceId": "home",
+   "surfaceId": "surface-5",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -813,7 +813,7 @@
    "url": "https://www.banksalad.com/contents",
    "captured": "2026-07-12",
    "surfaceId": "surface-2",
-   "verdict": "unreachable",
+   "verdict": "dead",
    "changed": [],
    "july": {
     "color": "rgb(17, 17, 17)",
@@ -829,6 +829,29 @@
     "themeResponsive": false
    },
    "httpStatus": 404
+  },
+  {
+   "id": "banksalad",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.banksalad.com/",
+   "captured": "2026-07-12",
+   "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(17, 17, 17)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(17, 17, 17)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard",
+    "size": "16px",
+    "themeResponsive": false
+   }
   },
   {
    "id": "banksalad",
@@ -877,51 +900,104 @@
    }
   },
   {
-   "id": "banksalad",
-   "sourceId": "card-live",
+   "id": "bilibili",
+   "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://www.banksalad.com/product/cards/CARD002319",
-   "captured": "2026-07-12",
-   "surfaceId": "surface-5",
-   "verdict": "unchanged",
-   "changed": [],
+   "url": "https://www.bilibili.com/",
+   "captured": "2026-07-13",
+   "capturedAt": "2026-07-13",
+   "surfaceId": "surface-2",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
    "july": {
-    "color": "rgb(17, 17, 17)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Pretendard",
+    "color": "rgb(24, 25, 28)",
+    "background": "rgb(241, 242, 243)",
+    "font": "-apple-system",
     "size": "16px"
    },
    "now": {
-    "color": "rgb(17, 17, 17)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Pretendard",
+    "color": "rgb(24, 25, 28)",
+    "background": "rgb(241, 242, 243)",
+    "font": "-apple-system",
     "size": "16px",
-    "themeResponsive": false
-   }
+    "themeResponsive": false,
+    "elements": 1544,
+    "textLength": 842
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "unchanged",
+   "changed": []
   },
   {
-   "id": "bmw",
-   "sourceId": "models-live",
+   "id": "bilibili",
+   "sourceId": "home-refresh-live",
    "kind": "product-surface",
-   "url": "https://www.bmwusa.com/vehicles/all-bmw-models.html",
+   "url": "https://www.bilibili.com/",
    "captured": "2026-07-13",
+   "capturedAt": "2026-07-13",
    "surfaceId": "surface-2",
-   "verdict": "unreachable",
-   "changed": [],
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
    "july": {
-    "color": "rgb(65, 65, 65)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "bmwTypeNextWeb",
+    "color": "rgb(24, 25, 28)",
+    "background": "rgb(241, 242, 243)",
+    "font": "-apple-system",
     "size": "16px"
    },
    "now": {
-    "color": "rgb(65, 65, 65)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "bmwTypeNextWeb",
+    "color": "rgb(24, 25, 28)",
+    "background": "rgb(241, 242, 243)",
+    "font": "-apple-system",
     "size": "16px",
-    "themeResponsive": false
+    "themeResponsive": false,
+    "elements": 1544,
+    "textLength": 841
    },
-   "httpStatus": 404
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "unchanged",
+   "changed": []
+  },
+  {
+   "id": "bilibili",
+   "sourceId": "popular-live",
+   "kind": "product-surface",
+   "url": "https://www.bilibili.com/v/popular/all/",
+   "captured": "2026-07-13",
+   "capturedAt": "2026-07-13",
+   "surfaceId": "surface-3",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Helvetica Neue",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(34, 34, 34)",
+    "background": "rgb(255, 255, 255)",
+    "font": "-apple-system",
+    "size": "12px",
+    "themeResponsive": false,
+    "elements": 953,
+    "textLength": 1730
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "changed",
+   "changed": [
+    "color",
+    "font",
+    "size"
+   ]
   },
   {
    "id": "bmw",
@@ -945,6 +1021,30 @@
     "size": "16px",
     "themeResponsive": false
    }
+  },
+  {
+   "id": "bmw",
+   "sourceId": "models-live",
+   "kind": "product-surface",
+   "url": "https://www.bmwusa.com/vehicles/all-bmw-models.html",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-2",
+   "verdict": "dead",
+   "changed": [],
+   "july": {
+    "color": "rgb(65, 65, 65)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "bmwTypeNextWeb",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(65, 65, 65)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "bmwTypeNextWeb",
+    "size": "16px",
+    "themeResponsive": false
+   },
+   "httpStatus": 404
   },
   {
    "id": "brandi",
@@ -999,7 +1099,7 @@
    "url": "https://www.brandi.co.kr/products/125381184",
    "captured": "2026-07-13",
    "surfaceId": "surface-3",
-   "verdict": "unreachable",
+   "verdict": "dead",
    "changed": [],
    "july": {
     "color": "rgb(32, 36, 41)",
@@ -1133,6 +1233,29 @@
   },
   {
    "id": "channeltalk",
+   "sourceId": "help-live",
+   "kind": "official-doc",
+   "url": "https://docs.channel.io/help/en/articles/94f34984",
+   "captured": "2026-07-12",
+   "surfaceId": "surface-4",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgba(0, 0, 0, 0.85)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "__Inter_f367f3",
+    "size": "10px"
+   },
+   "now": {
+    "color": "rgba(0, 0, 0, 0.85)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "__Inter_f367f3",
+    "size": "10px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "channeltalk",
    "sourceId": "home-live",
    "kind": "product-surface",
    "url": "https://channel.io/kr",
@@ -1179,23 +1302,23 @@
   },
   {
    "id": "channeltalk",
-   "sourceId": "us-live",
-   "kind": "product-surface",
-   "url": "https://channel.io/us",
+   "sourceId": "rebrand-official",
+   "kind": "official-doc",
+   "url": "https://channel.io/kr/blog/articles/rebranding-channeltalk-3aff8113",
    "captured": "2026-07-12",
-   "surfaceId": "surface-2",
+   "surfaceId": "surface-5",
    "verdict": "unchanged",
    "changed": [],
    "july": {
     "color": "rgba(0, 0, 0, 0.85)",
     "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard",
+    "font": "Inter",
     "size": "10px"
    },
    "now": {
     "color": "rgba(0, 0, 0, 0.85)",
     "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard",
+    "font": "Inter",
     "size": "10px",
     "themeResponsive": false
    }
@@ -1225,70 +1348,24 @@
   },
   {
    "id": "channeltalk",
-   "sourceId": "help-live",
-   "kind": "official-doc",
-   "url": "https://docs.channel.io/help/en/articles/94f34984",
-   "captured": "2026-07-12",
-   "surfaceId": "surface-4",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgba(0, 0, 0, 0.85)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "__Inter_f367f3",
-    "size": "10px"
-   },
-   "now": {
-    "color": "rgba(0, 0, 0, 0.85)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "__Inter_f367f3",
-    "size": "10px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "channeltalk",
-   "sourceId": "rebrand-official",
-   "kind": "official-doc",
-   "url": "https://channel.io/kr/blog/articles/rebranding-channeltalk-3aff8113",
-   "captured": "2026-07-12",
-   "surfaceId": "surface-5",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgba(0, 0, 0, 0.85)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Inter",
-    "size": "10px"
-   },
-   "now": {
-    "color": "rgba(0, 0, 0, 0.85)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Inter",
-    "size": "10px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "china-airlines",
-   "sourceId": "home-live",
+   "sourceId": "us-live",
    "kind": "product-surface",
-   "url": "https://www.china-airlines.com/kr/ko",
-   "captured": "2026-07-13",
-   "surfaceId": "home",
+   "url": "https://channel.io/us",
+   "captured": "2026-07-12",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(0, 0, 0)",
+    "color": "rgba(0, 0, 0, 0.85)",
     "background": "rgba(0, 0, 0, 0)",
-    "font": "Roboto",
-    "size": "16px"
+    "font": "Pretendard",
+    "size": "10px"
    },
    "now": {
-    "color": "rgb(0, 0, 0)",
+    "color": "rgba(0, 0, 0, 0.85)",
     "background": "rgba(0, 0, 0, 0)",
-    "font": "Roboto",
-    "size": "16px",
+    "font": "Pretendard",
+    "size": "10px",
     "themeResponsive": false
    }
   },
@@ -1339,12 +1416,35 @@
    }
   },
   {
-   "id": "class101",
+   "id": "china-airlines",
    "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://class101.net/ko?viewMode=svod",
-   "captured": "2026-07-12",
+   "url": "https://www.china-airlines.com/kr/ko",
+   "captured": "2026-07-13",
    "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Roboto",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Roboto",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "class101",
+   "sourceId": "giftcard-live",
+   "kind": "product-surface",
+   "url": "https://class101.net/ko/docs/terms/giftcard?viewMode=svod",
+   "captured": "2026-07-12",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -1363,11 +1463,11 @@
   },
   {
    "id": "class101",
-   "sourceId": "giftcard-live",
+   "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://class101.net/ko/docs/terms/giftcard?viewMode=svod",
+   "url": "https://class101.net/ko?viewMode=svod",
    "captured": "2026-07-12",
-   "surfaceId": "surface-2",
+   "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -1404,6 +1504,29 @@
     "background": "rgb(255, 255, 255)",
     "font": "Pretendard Variable",
     "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "classum",
+   "sourceId": "company-context",
+   "kind": "official-doc",
+   "url": "https://business.classum.com/",
+   "captured": "2026-07-13",
+   "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgb(246, 246, 249)",
+    "font": "Pretendard Variable",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgb(246, 246, 249)",
+    "font": "Pretendard Variable",
+    "size": "14px",
     "themeResponsive": false
    }
   },
@@ -1455,8 +1578,8 @@
   },
   {
    "id": "classum",
-   "sourceId": "university-lms-capture",
-   "kind": "product-surface",
+   "sourceId": "lms-context",
+   "kind": "official-doc",
    "url": "https://business.classum.com/university/lms",
    "captured": "2026-07-13",
    "surfaceId": "surface-3",
@@ -1478,31 +1601,8 @@
   },
   {
    "id": "classum",
-   "sourceId": "company-context",
-   "kind": "official-doc",
-   "url": "https://business.classum.com/",
-   "captured": "2026-07-13",
-   "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(51, 51, 51)",
-    "background": "rgb(246, 246, 249)",
-    "font": "Pretendard Variable",
-    "size": "14px"
-   },
-   "now": {
-    "color": "rgb(51, 51, 51)",
-    "background": "rgb(246, 246, 249)",
-    "font": "Pretendard Variable",
-    "size": "14px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "classum",
-   "sourceId": "lms-context",
-   "kind": "official-doc",
+   "sourceId": "university-lms-capture",
+   "kind": "product-surface",
    "url": "https://business.classum.com/university/lms",
    "captured": "2026-07-13",
    "surfaceId": "surface-3",
@@ -1829,6 +1929,29 @@
   },
   {
    "id": "dabang",
+   "sourceId": "faq-capture",
+   "kind": "product-surface",
+   "url": "https://www.dabangapp.com/service/faq",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-3",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "dabang",
    "sourceId": "home-capture",
    "kind": "product-surface",
    "url": "https://www.dabangapp.com/",
@@ -1874,35 +1997,12 @@
    }
   },
   {
-   "id": "dabang",
-   "sourceId": "faq-capture",
-   "kind": "product-surface",
-   "url": "https://www.dabangapp.com/service/faq",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-3",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard Variable",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard Variable",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
    "id": "datarize",
-   "sourceId": "home-live",
+   "sourceId": "blog-live",
    "kind": "product-surface",
-   "url": "https://www.datarize.ai/",
+   "url": "https://www.datarize.ai/blog/hidden_product",
    "captured": "2026-07-13",
-   "surfaceId": "home",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -1921,11 +2021,11 @@
   },
   {
    "id": "datarize",
-   "sourceId": "blog-live",
+   "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://www.datarize.ai/blog/hidden_product",
+   "url": "https://www.datarize.ai/",
    "captured": "2026-07-13",
-   "surfaceId": "surface-2",
+   "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -1967,11 +2067,11 @@
   },
   {
    "id": "elastic",
-   "sourceId": "eui-home-live",
-   "kind": "product-surface",
-   "url": "https://eui.elastic.co/",
+   "sourceId": "eui-card-live",
+   "kind": "official-doc",
+   "url": "https://eui.elastic.co/docs/components/containers/card/index.html",
    "captured": "2026-07-13",
-   "surfaceId": "home",
+   "surfaceId": "surface-3",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -2013,11 +2113,11 @@
   },
   {
    "id": "elastic",
-   "sourceId": "eui-card-live",
-   "kind": "official-doc",
-   "url": "https://eui.elastic.co/docs/components/containers/card/index.html",
+   "sourceId": "eui-home-live",
+   "kind": "product-surface",
+   "url": "https://eui.elastic.co/",
    "captured": "2026-07-13",
-   "surfaceId": "surface-3",
+   "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -2054,29 +2154,6 @@
     "background": "rgb(253, 252, 252)",
     "font": "Inter",
     "size": "18px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "eslite",
-   "sourceId": "home-live",
-   "kind": "product-surface",
-   "url": "https://www.eslite.com/",
-   "captured": "2026-07-13",
-   "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(33, 37, 41)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Noto Sans TC",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(33, 37, 41)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Noto Sans TC",
-    "size": "16px",
     "themeResponsive": false
    }
   },
@@ -2150,24 +2227,24 @@
    }
   },
   {
-   "id": "evaair",
+   "id": "eslite",
    "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://www.evaair.com/ko-kr/index.html",
+   "url": "https://www.eslite.com/",
    "captured": "2026-07-13",
    "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(0, 0, 0)",
+    "color": "rgb(33, 37, 41)",
     "background": "rgb(255, 255, 255)",
-    "font": "Dotum",
+    "font": "Noto Sans TC",
     "size": "16px"
    },
    "now": {
-    "color": "rgb(0, 0, 0)",
+    "color": "rgb(33, 37, 41)",
     "background": "rgb(255, 255, 255)",
-    "font": "Dotum",
+    "font": "Noto Sans TC",
     "size": "16px",
     "themeResponsive": false
    }
@@ -2219,35 +2296,35 @@
    }
   },
   {
+   "id": "evaair",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.evaair.com/ko-kr/index.html",
+   "captured": "2026-07-13",
+   "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Dotum",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Dotum",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
    "id": "expo",
    "sourceId": "home-live",
    "kind": "product-surface",
    "url": "https://expo.dev/",
    "captured": "2026-07-13",
    "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(28, 32, 36)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Inter",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(28, 32, 36)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Inter",
-    "size": "16px",
-    "themeResponsive": true
-   }
-  },
-  {
-   "id": "expo",
-   "sourceId": "services-live",
-   "kind": "product-surface",
-   "url": "https://expo.dev/services",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -2288,12 +2365,35 @@
    }
   },
   {
-   "id": "familymart-tw",
-   "sourceId": "familymart-home-live",
+   "id": "expo",
+   "sourceId": "services-live",
    "kind": "product-surface",
-   "url": "https://www.family.com.tw/Marketing/ko",
+   "url": "https://expo.dev/services",
    "captured": "2026-07-13",
-   "surfaceId": "home",
+   "surfaceId": "surface-2",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(28, 32, 36)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Inter",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(28, 32, 36)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Inter",
+    "size": "16px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "familymart-tw",
+   "sourceId": "familymart-convenience-live",
+   "kind": "product-surface",
+   "url": "https://www.family.com.tw/Marketing/zh/Convenience",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -2312,11 +2412,11 @@
   },
   {
    "id": "familymart-tw",
-   "sourceId": "familymart-convenience-live",
+   "sourceId": "familymart-home-live",
    "kind": "product-surface",
-   "url": "https://www.family.com.tw/Marketing/zh/Convenience",
+   "url": "https://www.family.com.tw/Marketing/ko",
    "captured": "2026-07-13",
-   "surfaceId": "surface-2",
+   "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -2427,11 +2527,11 @@
   },
   {
    "id": "flex",
-   "sourceId": "home-live",
+   "sourceId": "about-live",
    "kind": "product-surface",
-   "url": "https://flex.team/",
+   "url": "https://flex.team/about",
    "captured": "2026-07-13",
-   "surfaceId": "home",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -2450,11 +2550,11 @@
   },
   {
    "id": "flex",
-   "sourceId": "about-live",
+   "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://flex.team/about",
+   "url": "https://flex.team/",
    "captured": "2026-07-13",
-   "surfaceId": "surface-2",
+   "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -2611,11 +2711,11 @@
   },
   {
    "id": "gangnamunni",
-   "sourceId": "live-home",
+   "sourceId": "live-events",
    "kind": "product-surface",
-   "url": "https://www.gangnamunni.com/",
+   "url": "https://www.gangnamunni.com/events",
    "captured": "2026-07-13",
-   "surfaceId": "home",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -2634,11 +2734,11 @@
   },
   {
    "id": "gangnamunni",
-   "sourceId": "live-events",
+   "sourceId": "live-home",
    "kind": "product-surface",
-   "url": "https://www.gangnamunni.com/events",
+   "url": "https://www.gangnamunni.com/",
    "captured": "2026-07-13",
-   "surfaceId": "surface-2",
+   "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -2676,29 +2776,6 @@
     "font": "pretendard",
     "size": "16px",
     "themeResponsive": false
-   }
-  },
-  {
-   "id": "google",
-   "sourceId": "home-live",
-   "kind": "product-surface",
-   "url": "https://www.google.com/",
-   "captured": "2026-07-13",
-   "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(232, 232, 232)",
-    "background": "rgb(34, 36, 42)",
-    "font": "Arial",
-    "size": "14px"
-   },
-   "now": {
-    "color": "rgb(232, 232, 232)",
-    "background": "rgb(34, 36, 42)",
-    "font": "Arial",
-    "size": "14px",
-    "themeResponsive": true
    }
   },
   {
@@ -2751,6 +2828,52 @@
    }
   },
   {
+   "id": "google",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.google.com/",
+   "captured": "2026-07-13",
+   "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(232, 232, 232)",
+    "background": "rgb(34, 36, 42)",
+    "font": "Arial",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(232, 232, 232)",
+    "background": "rgb(34, 36, 42)",
+    "font": "Arial",
+    "size": "14px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "hashicorp",
+   "sourceId": "boundary-live",
+   "kind": "product-surface",
+   "url": "https://www.hashicorp.com/ko/products/boundary",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-3",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "system-ui",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "system-ui",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
    "id": "hashicorp",
    "sourceId": "home-live",
    "kind": "product-surface",
@@ -2797,29 +2920,6 @@
    }
   },
   {
-   "id": "hashicorp",
-   "sourceId": "boundary-live",
-   "kind": "product-surface",
-   "url": "https://www.hashicorp.com/ko/products/boundary",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-3",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "system-ui",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "system-ui",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
    "id": "hyundai",
    "sourceId": "home-live",
    "kind": "product-surface",
@@ -2844,12 +2944,12 @@
   },
   {
    "id": "hyundai",
-   "sourceId": "vehicles-live",
+   "sourceId": "ioniq6-live",
    "kind": "product-surface",
-   "url": "https://www.hyundai.com/kr/ko/e/vehicles",
+   "url": "https://www.hyundai.com/kr/ko/e/vehicles/the-new-ioniq-6/intro",
    "captured": "2026-07-13",
-   "surfaceId": "surface-2",
-   "verdict": "unreachable",
+   "surfaceId": "surface-3",
+   "verdict": "dead",
    "changed": [],
    "july": {
     "color": "rgb(0, 0, 0)",
@@ -2868,12 +2968,12 @@
   },
   {
    "id": "hyundai",
-   "sourceId": "ioniq6-live",
+   "sourceId": "vehicles-live",
    "kind": "product-surface",
-   "url": "https://www.hyundai.com/kr/ko/e/vehicles/the-new-ioniq-6/intro",
+   "url": "https://www.hyundai.com/kr/ko/e/vehicles",
    "captured": "2026-07-13",
-   "surfaceId": "surface-3",
-   "verdict": "unreachable",
+   "surfaceId": "surface-2",
+   "verdict": "dead",
    "changed": [],
    "july": {
     "color": "rgb(0, 0, 0)",
@@ -2889,29 +2989,6 @@
     "themeResponsive": false
    },
    "httpStatus": 404
-  },
-  {
-   "id": "hyundaicard",
-   "sourceId": "collector-home",
-   "kind": "product-surface",
-   "url": "https://www.hyundaicard.com/index.jsp",
-   "captured": "2026-07-13",
-   "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "-apple-system",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "-apple-system",
-    "size": "16px",
-    "themeResponsive": false
-   }
   },
   {
    "id": "hyundaicard",
@@ -2960,24 +3037,24 @@
    }
   },
   {
-   "id": "inflearn",
-   "sourceId": "home-capture",
+   "id": "hyundaicard",
+   "sourceId": "collector-home",
    "kind": "product-surface",
-   "url": "https://www.inflearn.com/",
+   "url": "https://www.hyundaicard.com/index.jsp",
    "captured": "2026-07-13",
    "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(33, 37, 41)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Pretendard",
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "-apple-system",
     "size": "16px"
    },
    "now": {
-    "color": "rgb(33, 37, 41)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Pretendard",
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "-apple-system",
     "size": "16px",
     "themeResponsive": false
    }
@@ -3024,6 +3101,29 @@
     "color": "rgba(0, 0, 0, 0.87)",
     "background": "rgb(255, 255, 255)",
     "font": "Roboto",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "inflearn",
+   "sourceId": "home-capture",
+   "kind": "product-surface",
+   "url": "https://www.inflearn.com/",
+   "captured": "2026-07-13",
+   "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard",
     "size": "16px",
     "themeResponsive": false
    }
@@ -3109,11 +3209,11 @@
   },
   {
    "id": "kakao",
-   "sourceId": "corp-home-live",
+   "sourceId": "corp-culture-live",
    "kind": "product-surface",
-   "url": "https://www.kakaocorp.com/page/",
+   "url": "https://www.kakaocorp.com/page/about/culture",
    "captured": "2026-07-11",
-   "surfaceId": "home",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -3132,11 +3232,11 @@
   },
   {
    "id": "kakao",
-   "sourceId": "corp-culture-live",
+   "sourceId": "corp-home-live",
    "kind": "product-surface",
-   "url": "https://www.kakaocorp.com/page/about/culture",
+   "url": "https://www.kakaocorp.com/page/",
    "captured": "2026-07-11",
-   "surfaceId": "surface-2",
+   "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -3204,6 +3304,29 @@
   },
   {
    "id": "kakaobank",
+   "sourceId": "brand-live",
+   "kind": "brand-asset",
+   "url": "https://www.kakaobank.com/view/about/brand/resource",
+   "captured": "2026-07-12",
+   "surfaceId": "surface-4",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard Variable",
+    "size": "16px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "kakaobank",
    "sourceId": "home-live",
    "kind": "product-surface",
    "url": "https://www.kakaobank.com/",
@@ -3249,26 +3372,26 @@
    }
   },
   {
-   "id": "kakaobank",
-   "sourceId": "brand-live",
-   "kind": "brand-asset",
-   "url": "https://www.kakaobank.com/view/about/brand/resource",
-   "captured": "2026-07-12",
-   "surfaceId": "surface-4",
+   "id": "kakaogames",
+   "sourceId": "error-live",
+   "kind": "product-surface",
+   "url": "https://kakaogames.com/error/",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-3",
    "verdict": "unchanged",
    "changed": [],
    "july": {
     "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Pretendard Variable",
-    "size": "16px"
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "SUIT Variable",
+    "size": "0px"
    },
    "now": {
     "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Pretendard Variable",
-    "size": "16px",
-    "themeResponsive": true
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "SUIT Variable",
+    "size": "0px",
+    "themeResponsive": false
    }
   },
   {
@@ -3295,77 +3418,6 @@
    }
   },
   {
-   "id": "kakaogames",
-   "sourceId": "error-live",
-   "kind": "product-surface",
-   "url": "https://kakaogames.com/error/",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-3",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "SUIT Variable",
-    "size": "0px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "SUIT Variable",
-    "size": "0px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "kakaopay",
-   "sourceId": "story-live",
-   "kind": "product-surface",
-   "url": "https://story.kakaopay.com/",
-   "captured": "2026-07-13",
-   "surfaceId": "home",
-   "verdict": "unreachable",
-   "changed": [],
-   "july": {
-    "color": "rgb(17, 21, 22)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Helvetica Neue",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(17, 21, 22)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Helvetica Neue",
-    "size": "16px",
-    "themeResponsive": false
-   },
-   "httpStatus": 403
-  },
-  {
-   "id": "kakaopay",
-   "sourceId": "design-story-doc",
-   "kind": "official-doc",
-   "url": "https://story.kakaopay.com/225-kakaopay-design/",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-2",
-   "verdict": "unreachable",
-   "changed": [],
-   "july": {
-    "color": "rgb(17, 21, 22)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Helvetica Neue",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(17, 21, 22)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Helvetica Neue",
-    "size": "16px",
-    "themeResponsive": false
-   },
-   "httpStatus": 403
-  },
-  {
    "id": "kakaopay",
    "sourceId": "corporate-service-live",
    "kind": "product-surface",
@@ -3387,6 +3439,54 @@
     "size": "14px",
     "themeResponsive": false
    }
+  },
+  {
+   "id": "kakaopay",
+   "sourceId": "design-story-doc",
+   "kind": "official-doc",
+   "url": "https://story.kakaopay.com/225-kakaopay-design/",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-2",
+   "verdict": "blocked",
+   "changed": [],
+   "july": {
+    "color": "rgb(17, 21, 22)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Helvetica Neue",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(17, 21, 22)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Helvetica Neue",
+    "size": "16px",
+    "themeResponsive": false
+   },
+   "httpStatus": 403
+  },
+  {
+   "id": "kakaopay",
+   "sourceId": "story-live",
+   "kind": "product-surface",
+   "url": "https://story.kakaopay.com/",
+   "captured": "2026-07-13",
+   "surfaceId": "home",
+   "verdict": "blocked",
+   "changed": [],
+   "july": {
+    "color": "rgb(17, 21, 22)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Helvetica Neue",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(17, 21, 22)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Helvetica Neue",
+    "size": "16px",
+    "themeResponsive": false
+   },
+   "httpStatus": 403
   },
   {
    "id": "karrot",
@@ -3459,6 +3559,29 @@
   },
   {
    "id": "kbank",
+   "sourceId": "product-curious-source",
+   "kind": "product-surface",
+   "url": "https://www.kbanknow.com/web/product/deposit/curious-saving",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-4",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "-apple-system",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "-apple-system",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "kbank",
    "sourceId": "product-home",
    "kind": "product-surface",
    "url": "https://www.kbanknow.com/web/web-home/home/main",
@@ -3505,11 +3628,11 @@
   },
   {
    "id": "kbank",
-   "sourceId": "product-curious-source",
+   "sourceId": "product-one-card-source",
    "kind": "product-surface",
-   "url": "https://www.kbanknow.com/web/product/deposit/curious-saving",
+   "url": "https://www.kbanknow.com/web/product/card/one-card",
    "captured": "2026-07-13",
-   "surfaceId": "surface-4",
+   "surfaceId": "surface-6",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -3550,26 +3673,26 @@
    }
   },
   {
-   "id": "kbank",
-   "sourceId": "product-one-card-source",
+   "id": "kmong",
+   "sourceId": "category-capture",
    "kind": "product-surface",
-   "url": "https://www.kbanknow.com/web/product/card/one-card",
+   "url": "https://kmong.com/category/1",
    "captured": "2026-07-13",
-   "surfaceId": "surface-6",
+   "surfaceId": "surface-3",
    "verdict": "unchanged",
    "changed": [],
    "july": {
     "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "-apple-system",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
     "size": "16px"
    },
    "now": {
     "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "-apple-system",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
     "size": "16px",
-    "themeResponsive": false
+    "themeResponsive": true
    }
   },
   {
@@ -3596,27 +3719,292 @@
    }
   },
   {
-   "id": "kmong",
-   "sourceId": "category-capture",
-   "kind": "product-surface",
-   "url": "https://kmong.com/category/1",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-3",
-   "verdict": "unchanged",
-   "changed": [],
+   "id": "krds",
+   "sourceId": "badge-doc",
+   "kind": "official-doc",
+   "url": "https://www.krds.go.kr/html/site/component/component_04_06.html",
+   "captured": "2026-07-11",
+   "capturedAt": "2026-07-11",
+   "surfaceId": "surface-8",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
    "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard",
-    "size": "16px"
+    "color": "rgb(30, 33, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard GOV",
+    "size": "17px"
    },
    "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard",
-    "size": "16px",
-    "themeResponsive": true
-   }
+    "color": "rgb(30, 33, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard GOV",
+    "size": "17px",
+    "themeResponsive": true,
+    "elements": 2385,
+    "textLength": 2353
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "unchanged",
+   "changed": []
+  },
+  {
+   "id": "krds",
+   "sourceId": "button-css",
+   "kind": "official-doc",
+   "url": "https://www.krds.go.kr/html/site/component/component_05_02.html",
+   "captured": "2026-09-17",
+   "capturedAt": "2026-07-11",
+   "surfaceId": "surface-4",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
+   "july": {
+    "color": "rgb(30, 33, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard GOV",
+    "size": "17px"
+   },
+   "now": {
+    "color": "rgb(30, 33, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard GOV",
+    "size": "17px",
+    "themeResponsive": true,
+    "elements": 2637,
+    "textLength": 3046
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "unchanged",
+   "changed": []
+  },
+  {
+   "id": "krds",
+   "sourceId": "button-doc",
+   "kind": "official-doc",
+   "url": "https://www.krds.go.kr/html/site/component/component_05_02.html",
+   "captured": "2026-07-11",
+   "capturedAt": "2026-07-11",
+   "surfaceId": "surface-4",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
+   "july": {
+    "color": "rgb(30, 33, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard GOV",
+    "size": "17px"
+   },
+   "now": {
+    "color": "rgb(30, 33, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard GOV",
+    "size": "17px",
+    "themeResponsive": true,
+    "elements": 2637,
+    "textLength": 3046
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "unchanged",
+   "changed": []
+  },
+  {
+   "id": "krds",
+   "sourceId": "colors-doc",
+   "kind": "official-doc",
+   "url": "https://www.krds.go.kr/html/site/style/style_02.html",
+   "captured": "2026-07-11",
+   "capturedAt": "2026-07-11",
+   "surfaceId": "surface-3",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
+   "july": {
+    "color": "rgb(30, 33, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard GOV",
+    "size": "17px"
+   },
+   "now": {
+    "color": "rgb(30, 33, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard GOV",
+    "size": "17px",
+    "themeResponsive": true,
+    "elements": 1588,
+    "textLength": 7513
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "unchanged",
+   "changed": []
+  },
+  {
+   "id": "krds",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.krds.go.kr/html/site/index.html",
+   "captured": "2026-07-11",
+   "capturedAt": "2026-07-11",
+   "surfaceId": "home",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
+   "july": {
+    "color": "rgb(30, 33, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard GOV",
+    "size": "17px"
+   },
+   "now": {
+    "color": "rgb(30, 33, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard GOV",
+    "size": "17px",
+    "themeResponsive": true,
+    "elements": 933,
+    "textLength": 1456
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "unchanged",
+   "changed": []
+  },
+  {
+   "id": "krds",
+   "sourceId": "input-doc",
+   "kind": "official-doc",
+   "url": "https://www.krds.go.kr/html/site/component/component_09_03.html",
+   "captured": "2026-07-11",
+   "capturedAt": "2026-07-11",
+   "surfaceId": "surface-5",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
+   "july": {
+    "color": "rgb(30, 33, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard GOV",
+    "size": "17px"
+   },
+   "now": {
+    "color": "rgb(30, 33, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard GOV",
+    "size": "17px",
+    "themeResponsive": true,
+    "elements": 3031,
+    "textLength": 2510
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "unchanged",
+   "changed": []
+  },
+  {
+   "id": "krds",
+   "sourceId": "modal-doc",
+   "kind": "official-doc",
+   "url": "https://www.krds.go.kr/html/site/component/component_04_05.html",
+   "captured": "2026-07-11",
+   "capturedAt": "2026-07-11",
+   "surfaceId": "surface-7",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
+   "july": {
+    "color": "rgb(30, 33, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard GOV",
+    "size": "17px"
+   },
+   "now": {
+    "color": "rgb(30, 33, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard GOV",
+    "size": "17px",
+    "themeResponsive": true,
+    "elements": 2850,
+    "textLength": 4523
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "unchanged",
+   "changed": []
+  },
+  {
+   "id": "krds",
+   "sourceId": "select-doc",
+   "kind": "official-doc",
+   "url": "https://www.krds.go.kr/html/site/component/component_06_03.html",
+   "captured": "2026-07-11",
+   "capturedAt": "2026-07-11",
+   "surfaceId": "surface-6",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
+   "july": {
+    "color": "rgb(30, 33, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard GOV",
+    "size": "17px"
+   },
+   "now": {
+    "color": "rgb(30, 33, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard GOV",
+    "size": "17px",
+    "themeResponsive": true,
+    "elements": 3035,
+    "textLength": 2306
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "unchanged",
+   "changed": []
+  },
+  {
+   "id": "krds",
+   "sourceId": "type-doc",
+   "kind": "official-doc",
+   "url": "https://www.krds.go.kr/html/site/style/style_03.html",
+   "captured": "2026-07-11",
+   "capturedAt": "2026-07-11",
+   "surfaceId": "surface-2",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
+   "july": {
+    "color": "rgb(30, 33, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard GOV",
+    "size": "17px"
+   },
+   "now": {
+    "color": "rgb(30, 33, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard GOV",
+    "size": "17px",
+    "themeResponsive": true,
+    "elements": 1701,
+    "textLength": 9249
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "unchanged",
+   "changed": []
   },
   {
    "id": "kream",
@@ -3648,7 +4036,7 @@
    "url": "https://kream.co.kr/shop",
    "captured": "2026-07-13",
    "surfaceId": "surface-2",
-   "verdict": "unreachable",
+   "verdict": "dead",
    "changed": [],
    "july": {
     "color": "rgb(34, 34, 34)",
@@ -3690,35 +4078,12 @@
   },
   {
    "id": "kurly",
-   "sourceId": "home-live",
-   "kind": "product-surface",
-   "url": "https://www.kurly.com/main",
-   "captured": "2026-07-13",
-   "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(51, 51, 51)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Pretendard",
-    "size": "14px"
-   },
-   "now": {
-    "color": "rgb(51, 51, 51)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Pretendard",
-    "size": "14px",
-    "themeResponsive": true
-   }
-  },
-  {
-   "id": "kurly",
    "sourceId": "category-live",
    "kind": "product-surface",
    "url": "https://www.kurly.com/shopping/categories/list",
    "captured": "2026-07-13",
    "surfaceId": "surface-2",
-   "verdict": "unreachable",
+   "verdict": "dead",
    "changed": [],
    "july": {
     "color": "rgb(51, 51, 51)",
@@ -3759,12 +4124,35 @@
    }
   },
   {
-   "id": "lamborghini",
+   "id": "kurly",
    "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://www.lamborghini.com/ko-en",
+   "url": "https://www.kurly.com/main",
    "captured": "2026-07-13",
    "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard",
+    "size": "14px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "lamborghini",
+   "sourceId": "global-home-live",
+   "kind": "product-surface",
+   "url": "https://www.lamborghini.com/en-en",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -3783,11 +4171,11 @@
   },
   {
    "id": "lamborghini",
-   "sourceId": "global-home-live",
+   "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://www.lamborghini.com/en-en",
+   "url": "https://www.lamborghini.com/ko-en",
    "captured": "2026-07-13",
-   "surfaceId": "surface-2",
+   "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -3825,6 +4213,29 @@
     "font": "LamboType",
     "size": "16px",
     "themeResponsive": false
+   }
+  },
+  {
+   "id": "lguplus",
+   "sourceId": "lguplus-about-live",
+   "kind": "product-surface",
+   "url": "https://www.lguplus.com/about/ko",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-3",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(23, 23, 23)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(23, 23, 23)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard Variable",
+    "size": "16px",
+    "themeResponsive": true
    }
   },
   {
@@ -3874,26 +4285,26 @@
    }
   },
   {
-   "id": "lguplus",
-   "sourceId": "lguplus-about-live",
-   "kind": "product-surface",
-   "url": "https://www.lguplus.com/about/ko",
+   "id": "likelion",
+   "sourceId": "docs-live",
+   "kind": "official-doc",
+   "url": "https://designsystem.likelion.net/?path=/docs/intro-introduction--docs",
    "captured": "2026-07-13",
-   "surfaceId": "surface-3",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(23, 23, 23)",
+    "color": "rgb(51, 61, 75)",
     "background": "rgb(255, 255, 255)",
-    "font": "Pretendard Variable",
+    "font": "pretendard",
     "size": "16px"
    },
    "now": {
-    "color": "rgb(23, 23, 23)",
+    "color": "rgb(51, 61, 75)",
     "background": "rgb(255, 255, 255)",
-    "font": "Pretendard Variable",
+    "font": "pretendard",
     "size": "16px",
-    "themeResponsive": true
+    "themeResponsive": false
    }
   },
   {
@@ -3920,58 +4331,12 @@
    }
   },
   {
-   "id": "likelion",
-   "sourceId": "docs-live",
-   "kind": "official-doc",
-   "url": "https://designsystem.likelion.net/?path=/docs/intro-introduction--docs",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-2",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(51, 61, 75)",
-    "background": "rgb(255, 255, 255)",
-    "font": "pretendard",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(51, 61, 75)",
-    "background": "rgb(255, 255, 255)",
-    "font": "pretendard",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
    "id": "line",
-   "sourceId": "home-live",
-   "kind": "product-surface",
-   "url": "https://www.line.me/ko/",
-   "captured": "2026-07-11",
-   "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "SFPro",
-    "size": "20px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "SFPro",
-    "size": "20px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "line",
-   "sourceId": "ds-home-doc",
+   "sourceId": "box-button-doc",
    "kind": "official-doc",
-   "url": "https://designsystem.line.me/",
+   "url": "https://designsystem.line.me/LDSM/components/box-button-ex-en/",
    "captured": "2026-07-11",
-   "surfaceId": "surface-2",
+   "surfaceId": "surface-6",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -4013,11 +4378,57 @@
   },
   {
    "id": "line",
-   "sourceId": "typography-doc",
+   "sourceId": "ds-home-doc",
    "kind": "official-doc",
-   "url": "https://designsystem.line.me/LDSM/foundation/typography-ex-en/",
+   "url": "https://designsystem.line.me/",
    "captured": "2026-07-11",
-   "surfaceId": "surface-4",
+   "surfaceId": "surface-2",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "system-ui",
+    "size": "15px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "system-ui",
+    "size": "15px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "line",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.line.me/ko/",
+   "captured": "2026-07-11",
+   "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "SFPro",
+    "size": "20px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "SFPro",
+    "size": "20px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "line",
+   "sourceId": "input-doc",
+   "kind": "official-doc",
+   "url": "https://designsystem.line.me/LDSM/components/input-ex-en/",
+   "captured": "2026-07-11",
+   "surfaceId": "surface-7",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -4059,52 +4470,6 @@
   },
   {
    "id": "line",
-   "sourceId": "box-button-doc",
-   "kind": "official-doc",
-   "url": "https://designsystem.line.me/LDSM/components/box-button-ex-en/",
-   "captured": "2026-07-11",
-   "surfaceId": "surface-6",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "system-ui",
-    "size": "15px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "system-ui",
-    "size": "15px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "line",
-   "sourceId": "input-doc",
-   "kind": "official-doc",
-   "url": "https://designsystem.line.me/LDSM/components/input-ex-en/",
-   "captured": "2026-07-11",
-   "surfaceId": "surface-7",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "system-ui",
-    "size": "15px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "system-ui",
-    "size": "15px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "line",
    "sourceId": "popup-doc",
    "kind": "official-doc",
    "url": "https://designsystem.line.me/LDSM/components/popup-ex-en/",
@@ -4124,6 +4489,52 @@
     "font": "system-ui",
     "size": "15px",
     "themeResponsive": false
+   }
+  },
+  {
+   "id": "line",
+   "sourceId": "typography-doc",
+   "kind": "official-doc",
+   "url": "https://designsystem.line.me/LDSM/foundation/typography-ex-en/",
+   "captured": "2026-07-11",
+   "surfaceId": "surface-4",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "system-ui",
+    "size": "15px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "system-ui",
+    "size": "15px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "linear.app",
+   "sourceId": "customers-live",
+   "kind": "product-surface",
+   "url": "https://linear.app/customers",
+   "captured": "2026-07-12",
+   "surfaceId": "surface-4",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(247, 248, 248)",
+    "background": "rgb(8, 9, 10)",
+    "font": "Inter Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(247, 248, 248)",
+    "background": "rgb(8, 9, 10)",
+    "font": "Inter Variable",
+    "size": "16px",
+    "themeResponsive": true
    }
   },
   {
@@ -4179,29 +4590,6 @@
    "url": "https://linear.app/method",
    "captured": "2026-07-12",
    "surfaceId": "surface-3",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(247, 248, 248)",
-    "background": "rgb(8, 9, 10)",
-    "font": "Inter Variable",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(247, 248, 248)",
-    "background": "rgb(8, 9, 10)",
-    "font": "Inter Variable",
-    "size": "16px",
-    "themeResponsive": true
-   }
-  },
-  {
-   "id": "linear.app",
-   "sourceId": "customers-live",
-   "kind": "product-surface",
-   "url": "https://linear.app/customers",
-   "captured": "2026-07-12",
-   "surfaceId": "surface-4",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -4367,29 +4755,6 @@
   },
   {
    "id": "makinarocks",
-   "sourceId": "home-capture",
-   "kind": "product-surface",
-   "url": "https://www.makinarocks.ai/",
-   "captured": "2026-07-13",
-   "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "makinarocks",
    "sourceId": "about-capture",
    "kind": "product-surface",
    "url": "https://www.makinarocks.ai/en/about/",
@@ -4431,6 +4796,52 @@
     "background": "rgba(0, 0, 0, 0)",
     "font": "Pretendard",
     "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "makinarocks",
+   "sourceId": "home-capture",
+   "kind": "product-surface",
+   "url": "https://www.makinarocks.ai/",
+   "captured": "2026-07-13",
+   "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "megabox",
+   "sourceId": "product-booking",
+   "kind": "product-surface",
+   "url": "https://www.megabox.co.kr/booking",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-3",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(68, 68, 68)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "NanumBarunGothic",
+    "size": "15px"
+   },
+   "now": {
+    "color": "rgb(68, 68, 68)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "NanumBarunGothic",
+    "size": "15px",
     "themeResponsive": false
    }
   },
@@ -4481,52 +4892,6 @@
    }
   },
   {
-   "id": "megabox",
-   "sourceId": "product-booking",
-   "kind": "product-surface",
-   "url": "https://www.megabox.co.kr/booking",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-3",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(68, 68, 68)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "NanumBarunGothic",
-    "size": "15px"
-   },
-   "now": {
-    "color": "rgb(68, 68, 68)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "NanumBarunGothic",
-    "size": "15px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "mercari",
-   "sourceId": "home-live",
-   "kind": "product-surface",
-   "url": "https://www.mercari.com/",
-   "captured": "2026-07-12",
-   "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(34, 34, 34)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Averta",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(34, 34, 34)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Averta",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
    "id": "mercari",
    "sourceId": "about-live",
    "kind": "product-surface",
@@ -4573,24 +4938,24 @@
    }
   },
   {
-   "id": "microsoft",
+   "id": "mercari",
    "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://www.microsoft.com/ko-kr",
-   "captured": "2026-07-13",
+   "url": "https://www.mercari.com/",
+   "captured": "2026-07-12",
    "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(0, 0, 0)",
+    "color": "rgb(34, 34, 34)",
     "background": "rgb(255, 255, 255)",
-    "font": "Segoe UI Variable Text",
+    "font": "Averta",
     "size": "16px"
    },
    "now": {
-    "color": "rgb(0, 0, 0)",
+    "color": "rgb(34, 34, 34)",
     "background": "rgb(255, 255, 255)",
-    "font": "Segoe UI Variable Text",
+    "font": "Averta",
     "size": "16px",
     "themeResponsive": false
    }
@@ -4620,6 +4985,29 @@
   },
   {
    "id": "microsoft",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.microsoft.com/ko-kr",
+   "captured": "2026-07-13",
+   "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Segoe UI Variable Text",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Segoe UI Variable Text",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "microsoft",
    "sourceId": "microsoft-365-live",
    "kind": "product-surface",
    "url": "https://www.microsoft.com/en-us/microsoft-365",
@@ -4639,29 +5027,6 @@
     "font": "Segoe UI Variable Text",
     "size": "16px",
     "themeResponsive": true
-   }
-  },
-  {
-   "id": "millie",
-   "sourceId": "home-live",
-   "kind": "product-surface",
-   "url": "https://www.millie.co.kr/",
-   "captured": "2026-07-12",
-   "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(36, 36, 36)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Pretendard Variable",
-    "size": "14px"
-   },
-   "now": {
-    "color": "rgb(36, 36, 36)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Pretendard Variable",
-    "size": "14px",
-    "themeResponsive": false
    }
   },
   {
@@ -4688,48 +5053,25 @@
    }
   },
   {
-   "id": "minimax",
+   "id": "millie",
    "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://www.minimaxi.com/",
-   "captured": "2026-07-13",
+   "url": "https://www.millie.co.kr/",
+   "captured": "2026-07-12",
    "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(24, 24, 27)",
+    "color": "rgb(36, 36, 36)",
     "background": "rgb(255, 255, 255)",
-    "font": "MiSans",
-    "size": "16px"
+    "font": "Pretendard Variable",
+    "size": "14px"
    },
    "now": {
-    "color": "rgb(24, 24, 27)",
+    "color": "rgb(36, 36, 36)",
     "background": "rgb(255, 255, 255)",
-    "font": "MiSans",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "minimax",
-   "sourceId": "m3-live",
-   "kind": "product-surface",
-   "url": "https://www.minimaxi.com/models/text/m3",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-2",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(24, 24, 27)",
-    "background": "rgb(255, 255, 255)",
-    "font": "MiSans",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(24, 24, 27)",
-    "background": "rgb(255, 255, 255)",
-    "font": "MiSans",
-    "size": "16px",
+    "font": "Pretendard Variable",
+    "size": "14px",
     "themeResponsive": false
    }
   },
@@ -4780,6 +5122,52 @@
    }
   },
   {
+   "id": "minimax",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.minimaxi.com/",
+   "captured": "2026-07-13",
+   "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(24, 24, 27)",
+    "background": "rgb(255, 255, 255)",
+    "font": "MiSans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(24, 24, 27)",
+    "background": "rgb(255, 255, 255)",
+    "font": "MiSans",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "minimax",
+   "sourceId": "m3-live",
+   "kind": "product-surface",
+   "url": "https://www.minimaxi.com/models/text/m3",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-2",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(24, 24, 27)",
+    "background": "rgb(255, 255, 255)",
+    "font": "MiSans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(24, 24, 27)",
+    "background": "rgb(255, 255, 255)",
+    "font": "MiSans",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
    "id": "miricanvas",
    "sourceId": "home-live",
    "kind": "product-surface",
@@ -4804,11 +5192,11 @@
   },
   {
    "id": "miricanvas",
-   "sourceId": "templates-live",
+   "sourceId": "pricing-live",
    "kind": "product-surface",
-   "url": "https://www.miricanvas.com/ko/templates",
+   "url": "https://www.miricanvas.com/ko/pricing",
    "captured": "2026-07-13",
-   "surfaceId": "surface-2",
+   "surfaceId": "surface-3",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -4827,11 +5215,11 @@
   },
   {
    "id": "miricanvas",
-   "sourceId": "pricing-live",
+   "sourceId": "templates-live",
    "kind": "product-surface",
-   "url": "https://www.miricanvas.com/ko/pricing",
+   "url": "https://www.miricanvas.com/ko/templates",
    "captured": "2026-07-13",
-   "surfaceId": "surface-3",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -4946,29 +5334,6 @@
   },
   {
    "id": "mixi",
-   "sourceId": "home-capture",
-   "kind": "product-surface",
-   "url": "https://mixi.co.jp/",
-   "captured": "2026-07-13",
-   "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Noto Sans JP",
-    "size": "10px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Noto Sans JP",
-    "size": "10px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "mixi",
    "sourceId": "about-capture",
    "kind": "product-surface",
    "url": "https://mixi.co.jp/about/",
@@ -5014,26 +5379,49 @@
    }
   },
   {
-   "id": "mongodb",
-   "sourceId": "mongodb-component-index",
-   "kind": "official-doc",
-   "url": "https://www.mongodb.design/",
-   "captured": "2026-09-19",
-   "surfaceId": "surface-2",
+   "id": "mixi",
+   "sourceId": "home-capture",
+   "kind": "product-surface",
+   "url": "https://mixi.co.jp/",
+   "captured": "2026-07-13",
+   "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
     "color": "rgb(0, 0, 0)",
-    "background": "rgb(0, 30, 43)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Noto Sans JP",
+    "size": "10px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Noto Sans JP",
+    "size": "10px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "mongodb",
+   "sourceId": "docs-live",
+   "kind": "official-doc",
+   "url": "https://www.mongodb.com/ko-kr/docs/",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-3",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 30, 43)",
+    "background": "rgb(255, 255, 255)",
     "font": "Euclid Circular A",
     "size": "16px"
    },
    "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(0, 30, 43)",
+    "color": "rgb(0, 30, 43)",
+    "background": "rgb(255, 255, 255)",
     "font": "Euclid Circular A",
     "size": "16px",
-    "themeResponsive": false
+    "themeResponsive": true
    }
   },
   {
@@ -5061,25 +5449,25 @@
   },
   {
    "id": "mongodb",
-   "sourceId": "docs-live",
+   "sourceId": "mongodb-component-index",
    "kind": "official-doc",
-   "url": "https://www.mongodb.com/ko-kr/docs/",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-3",
+   "url": "https://www.mongodb.design/",
+   "captured": "2026-09-19",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(0, 30, 43)",
-    "background": "rgb(255, 255, 255)",
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(0, 30, 43)",
     "font": "Euclid Circular A",
     "size": "16px"
    },
    "now": {
-    "color": "rgb(0, 30, 43)",
-    "background": "rgb(255, 255, 255)",
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(0, 30, 43)",
     "font": "Euclid Circular A",
     "size": "16px",
-    "themeResponsive": true
+    "themeResponsive": false
    }
   },
   {
@@ -5134,6 +5522,29 @@
   },
   {
    "id": "mynavi",
+   "sourceId": "company-live",
+   "kind": "product-surface",
+   "url": "https://www.mynavi.jp/company/",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-3",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(50, 55, 70)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "游ゴシック体",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(50, 55, 70)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "游ゴシック体",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "mynavi",
    "sourceId": "home-live",
    "kind": "product-surface",
    "url": "https://www.mynavi.jp/",
@@ -5179,25 +5590,25 @@
    }
   },
   {
-   "id": "mynavi",
-   "sourceId": "company-live",
+   "id": "myrealtrip",
+   "sourceId": "about-live",
    "kind": "product-surface",
-   "url": "https://www.mynavi.jp/company/",
+   "url": "https://about.myrealtrip.com/",
    "captured": "2026-07-13",
-   "surfaceId": "surface-3",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(50, 55, 70)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "游ゴシック体",
-    "size": "14px"
+    "color": "rgb(26, 26, 26)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard Variable",
+    "size": "16px"
    },
    "now": {
-    "color": "rgb(50, 55, 70)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "游ゴシック体",
-    "size": "14px",
+    "color": "rgb(26, 26, 26)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard Variable",
+    "size": "16px",
     "themeResponsive": false
    }
   },
@@ -5245,24 +5656,70 @@
    "error": "Error: page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at https://www.myrealtrip.com/hotels"
   },
   {
-   "id": "myrealtrip",
-   "sourceId": "about-live",
-   "kind": "product-surface",
-   "url": "https://about.myrealtrip.com/",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-2",
+   "id": "naver",
+   "sourceId": "brand-guide",
+   "kind": "official-doc",
+   "url": "https://www.navercorp.com/company/brandGuide",
+   "captured": "2026-07-11",
+   "surfaceId": "surface-3",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(26, 26, 26)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Pretendard Variable",
+    "color": "rgb(26, 29, 36)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "InterVariable",
     "size": "16px"
    },
    "now": {
-    "color": "rgb(26, 26, 26)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Pretendard Variable",
+    "color": "rgb(26, 29, 36)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "InterVariable",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "naver",
+   "sourceId": "brand-live",
+   "kind": "product-surface",
+   "url": "https://www.navercorp.com/company/brandGuide",
+   "captured": "2026-07-11",
+   "surfaceId": "surface-3",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(26, 29, 36)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "InterVariable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(26, 29, 36)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "InterVariable",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "naver",
+   "sourceId": "company-about",
+   "kind": "official-doc",
+   "url": "https://www.navercorp.com/company/about",
+   "captured": "2026-07-11",
+   "surfaceId": "surface-4",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(26, 29, 36)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "InterVariable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(26, 29, 36)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "InterVariable",
     "size": "16px",
     "themeResponsive": false
    }
@@ -5314,71 +5771,25 @@
    }
   },
   {
-   "id": "naver",
-   "sourceId": "brand-live",
+   "id": "naverwebtoon",
+   "sourceId": "best-challenge-capture",
    "kind": "product-surface",
-   "url": "https://www.navercorp.com/company/brandGuide",
-   "captured": "2026-07-11",
+   "url": "https://comic.naver.com/bestChallenge",
+   "captured": "2026-07-13",
    "surfaceId": "surface-3",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(26, 29, 36)",
+    "color": "rgb(0, 0, 0)",
     "background": "rgba(0, 0, 0, 0)",
-    "font": "InterVariable",
-    "size": "16px"
+    "font": "Pretendard",
+    "size": "12px"
    },
    "now": {
-    "color": "rgb(26, 29, 36)",
+    "color": "rgb(0, 0, 0)",
     "background": "rgba(0, 0, 0, 0)",
-    "font": "InterVariable",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "naver",
-   "sourceId": "brand-guide",
-   "kind": "official-doc",
-   "url": "https://www.navercorp.com/company/brandGuide",
-   "captured": "2026-07-11",
-   "surfaceId": "surface-3",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(26, 29, 36)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "InterVariable",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(26, 29, 36)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "InterVariable",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "naver",
-   "sourceId": "company-about",
-   "kind": "official-doc",
-   "url": "https://www.navercorp.com/company/about",
-   "captured": "2026-07-11",
-   "surfaceId": "surface-4",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(26, 29, 36)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "InterVariable",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(26, 29, 36)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "InterVariable",
-    "size": "16px",
+    "font": "Pretendard",
+    "size": "12px",
     "themeResponsive": false
    }
   },
@@ -5429,35 +5840,35 @@
    }
   },
   {
-   "id": "naverwebtoon",
-   "sourceId": "best-challenge-capture",
-   "kind": "product-surface",
-   "url": "https://comic.naver.com/bestChallenge",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-3",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard",
-    "size": "12px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard",
-    "size": "12px",
-    "themeResponsive": false
-   }
-  },
-  {
    "id": "nhn",
    "sourceId": "home-live",
    "kind": "product-surface",
    "url": "https://www.nhn.com/",
    "captured": "2026-07-13",
    "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(33, 33, 38)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(33, 33, 38)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "nhn",
+   "sourceId": "ir-live",
+   "kind": "product-surface",
+   "url": "https://www.nhn.com/ir?tab=financials&subTab=consolidatedFinancial",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-3",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -5498,25 +5909,25 @@
    }
   },
   {
-   "id": "nhn",
-   "sourceId": "ir-live",
+   "id": "nhncloud",
+   "sourceId": "cloud-docs-live",
    "kind": "product-surface",
-   "url": "https://www.nhn.com/ir?tab=financials&subTab=consolidatedFinancial",
+   "url": "https://docs.nhncloud.com/ko/nhncloud/ko/overview/",
    "captured": "2026-07-13",
    "surfaceId": "surface-3",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(33, 33, 38)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard Variable",
-    "size": "16px"
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Noto Sans KR",
+    "size": "14px"
    },
    "now": {
-    "color": "rgb(33, 33, 38)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard Variable",
-    "size": "16px",
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Noto Sans KR",
+    "size": "14px",
     "themeResponsive": false
    }
   },
@@ -5591,29 +6002,6 @@
   },
   {
    "id": "nhncloud",
-   "sourceId": "cloud-docs-live",
-   "kind": "product-surface",
-   "url": "https://docs.nhncloud.com/ko/nhncloud/ko/overview/",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-3",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Noto Sans KR",
-    "size": "14px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Noto Sans KR",
-    "size": "14px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "nhncloud",
    "sourceId": "toast-ui-official",
    "kind": "official-doc",
    "url": "https://ui.toast.com/",
@@ -5633,6 +6021,29 @@
     "font": "Noto Sans CJK KR",
     "size": "16px",
     "themeResponsive": false
+   }
+  },
+  {
+   "id": "notion",
+   "sourceId": "help-live",
+   "kind": "product-surface",
+   "url": "https://www.notion.com/ko/help",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-3",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgba(0, 0, 0, 0.95)",
+    "background": "rgb(255, 255, 255)",
+    "font": "NotionInter",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgba(0, 0, 0, 0.95)",
+    "background": "rgb(255, 255, 255)",
+    "font": "NotionInter",
+    "size": "16px",
+    "themeResponsive": true
    }
   },
   {
@@ -5682,48 +6093,29 @@
    }
   },
   {
-   "id": "notion",
-   "sourceId": "help-live",
+   "id": "ohouse",
+   "sourceId": "customer-live",
    "kind": "product-surface",
-   "url": "https://www.notion.com/ko/help",
+   "url": "https://ohou.se/customer_center",
    "captured": "2026-07-13",
    "surfaceId": "surface-3",
-   "verdict": "unchanged",
-   "changed": [],
+   "verdict": "changed",
+   "changed": [
+    "color",
+    "background",
+    "font"
+   ],
    "july": {
-    "color": "rgba(0, 0, 0, 0.95)",
-    "background": "rgb(255, 255, 255)",
-    "font": "NotionInter",
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Times",
     "size": "16px"
    },
    "now": {
-    "color": "rgba(0, 0, 0, 0.95)",
+    "color": "rgb(20, 20, 20)",
     "background": "rgb(255, 255, 255)",
-    "font": "NotionInter",
+    "font": "Pretendard Variable",
     "size": "16px",
-    "themeResponsive": true
-   }
-  },
-  {
-   "id": "ohouse",
-   "sourceId": "home-live",
-   "kind": "product-surface",
-   "url": "https://ohou.se/",
-   "captured": "2026-07-13",
-   "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(66, 66, 66)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard Variable",
-    "size": "15px"
-   },
-   "now": {
-    "color": "rgb(66, 66, 66)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard Variable",
-    "size": "15px",
     "themeResponsive": false
    }
   },
@@ -5756,28 +6148,47 @@
   },
   {
    "id": "ohouse",
-   "sourceId": "customer-live",
+   "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://ohou.se/customer_center",
+   "url": "https://ohou.se/",
    "captured": "2026-07-13",
-   "surfaceId": "surface-3",
-   "verdict": "changed",
-   "changed": [
-    "color",
-    "background",
-    "font"
-   ],
+   "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(66, 66, 66)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "15px"
+   },
+   "now": {
+    "color": "rgb(66, 66, 66)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "15px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "oliveyoung",
+   "sourceId": "corporate-live",
+   "kind": "product-surface",
+   "url": "https://corp.oliveyoung.com/ko",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-2",
+   "verdict": "unchanged",
+   "changed": [],
    "july": {
     "color": "rgb(0, 0, 0)",
     "background": "rgba(0, 0, 0, 0)",
-    "font": "Times",
-    "size": "16px"
+    "font": "CJONLYONENew",
+    "size": "9px"
    },
    "now": {
-    "color": "rgb(20, 20, 20)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Pretendard Variable",
-    "size": "16px",
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "CJONLYONENew",
+    "size": "9px",
     "themeResponsive": false
    }
   },
@@ -5805,25 +6216,25 @@
    }
   },
   {
-   "id": "oliveyoung",
-   "sourceId": "corporate-live",
-   "kind": "product-surface",
-   "url": "https://corp.oliveyoung.com/ko",
+   "id": "ollama",
+   "sourceId": "docs-live",
+   "kind": "official-doc",
+   "url": "https://docs.ollama.com/",
    "captured": "2026-07-13",
-   "surfaceId": "surface-2",
+   "surfaceId": "surface-3",
    "verdict": "unchanged",
    "changed": [],
    "july": {
     "color": "rgb(0, 0, 0)",
     "background": "rgba(0, 0, 0, 0)",
-    "font": "CJONLYONENew",
-    "size": "9px"
+    "font": "ui-sans-serif",
+    "size": "16px"
    },
    "now": {
     "color": "rgb(0, 0, 0)",
     "background": "rgba(0, 0, 0, 0)",
-    "font": "CJONLYONENew",
-    "size": "9px",
+    "font": "ui-sans-serif",
+    "size": "16px",
     "themeResponsive": false
    }
   },
@@ -5870,99 +6281,6 @@
     "background": "rgba(0, 0, 0, 0)",
     "font": "ui-sans-serif",
     "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "ollama",
-   "sourceId": "docs-live",
-   "kind": "official-doc",
-   "url": "https://docs.ollama.com/",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-3",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "ui-sans-serif",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "ui-sans-serif",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "onestore",
-   "sourceId": "store-home-live",
-   "kind": "product-surface",
-   "url": "https://m.onestore.co.kr/",
-   "captured": "2026-07-13",
-   "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "helvetica",
-    "size": "15px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "helvetica",
-    "size": "15px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "onestore",
-   "sourceId": "game-catalog-live",
-   "kind": "product-surface",
-   "url": "https://m.onestore.co.kr/v2/ko-kr/game",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-2",
-   "verdict": "unreachable",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "helvetica",
-    "size": "15px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "helvetica",
-    "size": "15px",
-    "themeResponsive": false
-   },
-   "httpStatus": 404
-  },
-  {
-   "id": "onestore",
-   "sourceId": "oneplay-live",
-   "kind": "product-surface",
-   "url": "https://m.onestore.co.kr/v2/ko-kr/about/oneplay",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-3",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "helvetica",
-    "size": "15px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "helvetica",
-    "size": "15px",
     "themeResponsive": false
    }
   },
@@ -6016,6 +6334,99 @@
    }
   },
   {
+   "id": "onestore",
+   "sourceId": "game-catalog-live",
+   "kind": "product-surface",
+   "url": "https://m.onestore.co.kr/v2/ko-kr/game",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-2",
+   "verdict": "dead",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "helvetica",
+    "size": "15px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "helvetica",
+    "size": "15px",
+    "themeResponsive": false
+   },
+   "httpStatus": 404
+  },
+  {
+   "id": "onestore",
+   "sourceId": "oneplay-live",
+   "kind": "product-surface",
+   "url": "https://m.onestore.co.kr/v2/ko-kr/about/oneplay",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-3",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "helvetica",
+    "size": "15px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "helvetica",
+    "size": "15px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "onestore",
+   "sourceId": "store-home-live",
+   "kind": "product-surface",
+   "url": "https://m.onestore.co.kr/",
+   "captured": "2026-07-13",
+   "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "helvetica",
+    "size": "15px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "helvetica",
+    "size": "15px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "palantir",
+   "sourceId": "docs-live",
+   "kind": "official-doc",
+   "url": "https://blueprintjs.com/docs/",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-2",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(28, 33, 39)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "-apple-system",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(28, 33, 39)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "-apple-system",
+    "size": "14px",
+    "themeResponsive": true
+   }
+  },
+  {
    "id": "palantir",
    "sourceId": "home-live",
    "kind": "product-surface",
@@ -6062,52 +6473,6 @@
    }
   },
   {
-   "id": "palantir",
-   "sourceId": "docs-live",
-   "kind": "official-doc",
-   "url": "https://blueprintjs.com/docs/",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-2",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(28, 33, 39)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "-apple-system",
-    "size": "14px"
-   },
-   "now": {
-    "color": "rgb(28, 33, 39)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "-apple-system",
-    "size": "14px",
-    "themeResponsive": true
-   }
-  },
-  {
-   "id": "patternfly",
-   "sourceId": "home-live",
-   "kind": "product-surface",
-   "url": "https://www.patternfly.org/",
-   "captured": "2026-07-13",
-   "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(21, 21, 21)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Red Hat Text",
-    "size": "14px"
-   },
-   "now": {
-    "color": "rgb(21, 21, 21)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Red Hat Text",
-    "size": "14px",
-    "themeResponsive": false
-   }
-  },
-  {
    "id": "patternfly",
    "sourceId": "button-live",
    "kind": "product-surface",
@@ -6137,7 +6502,7 @@
    "url": "https://www.patternfly.org/design-foundations/colors/",
    "captured": "2026-07-13",
    "surfaceId": "surface-3",
-   "verdict": "unreachable",
+   "verdict": "dead",
    "changed": [
     "color",
     "font",
@@ -6159,25 +6524,25 @@
    "httpStatus": 404
   },
   {
-   "id": "pega",
-   "sourceId": "pega-ui-home",
+   "id": "patternfly",
+   "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://design.pega.com/",
+   "url": "https://www.patternfly.org/",
    "captured": "2026-07-13",
-   "surfaceId": "surface-2",
+   "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(5, 5, 5)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Roboto Flex",
-    "size": "16px"
+    "color": "rgb(21, 21, 21)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Red Hat Text",
+    "size": "14px"
    },
    "now": {
-    "color": "rgb(5, 5, 5)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Roboto Flex",
-    "size": "16px",
+    "color": "rgb(21, 21, 21)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Red Hat Text",
+    "size": "14px",
     "themeResponsive": false
    }
   },
@@ -6205,12 +6570,35 @@
    }
   },
   {
-   "id": "pinkfong",
-   "sourceId": "home-live",
+   "id": "pega",
+   "sourceId": "pega-ui-home",
    "kind": "product-surface",
-   "url": "https://www.thepinkfongcompany.com/",
+   "url": "https://design.pega.com/",
    "captured": "2026-07-13",
-   "surfaceId": "home",
+   "surfaceId": "surface-2",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(5, 5, 5)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Roboto Flex",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(5, 5, 5)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Roboto Flex",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "pinkfong",
+   "sourceId": "business-live",
+   "kind": "product-surface",
+   "url": "https://www.thepinkfongcompany.com/business",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-3",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -6252,11 +6640,11 @@
   },
   {
    "id": "pinkfong",
-   "sourceId": "business-live",
+   "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://www.thepinkfongcompany.com/business",
+   "url": "https://www.thepinkfongcompany.com/",
    "captured": "2026-07-13",
-   "surfaceId": "surface-3",
+   "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -6298,29 +6686,6 @@
   },
   {
    "id": "pinterest",
-   "sourceId": "consumer-capture",
-   "kind": "product-surface",
-   "url": "https://kr.pinterest.com/",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-2",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(33, 25, 34)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pin Sans",
-    "size": "12px"
-   },
-   "now": {
-    "color": "rgb(33, 25, 34)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pin Sans",
-    "size": "12px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "pinterest",
    "sourceId": "business-capture",
    "kind": "product-surface",
    "url": "https://business.pinterest.com/ko/",
@@ -6339,6 +6704,29 @@
     "background": "rgb(255, 255, 255)",
     "font": "PinterestSansPro",
     "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "pinterest",
+   "sourceId": "consumer-capture",
+   "kind": "product-surface",
+   "url": "https://kr.pinterest.com/",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-2",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(33, 25, 34)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pin Sans",
+    "size": "12px"
+   },
+   "now": {
+    "color": "rgb(33, 25, 34)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pin Sans",
+    "size": "12px",
     "themeResponsive": false
    }
   },
@@ -6362,6 +6750,29 @@
     "background": "rgb(255, 255, 255)",
     "font": "PT Serif",
     "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "recruit",
+   "sourceId": "about-rss-live",
+   "kind": "product-surface",
+   "url": "https://www.recruit.co.jp/about_rss/",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-3",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(81, 101, 111)",
+    "background": "rgb(255, 255, 255)",
+    "font": "YakuHanJP",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(81, 101, 111)",
+    "background": "rgb(255, 255, 255)",
+    "font": "YakuHanJP",
+    "size": "14px",
     "themeResponsive": false
    }
   },
@@ -6397,29 +6808,6 @@
    "url": "https://www.recruit.co.jp/sustainability/improve-productivity/",
    "captured": "2026-07-13",
    "surfaceId": "surface-2",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(81, 101, 111)",
-    "background": "rgb(255, 255, 255)",
-    "font": "YakuHanJP",
-    "size": "14px"
-   },
-   "now": {
-    "color": "rgb(81, 101, 111)",
-    "background": "rgb(255, 255, 255)",
-    "font": "YakuHanJP",
-    "size": "14px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "recruit",
-   "sourceId": "about-rss-live",
-   "kind": "product-surface",
-   "url": "https://www.recruit.co.jp/about_rss/",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-3",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -6484,29 +6872,6 @@
   },
   {
    "id": "resend",
-   "sourceId": "resend-home-live",
-   "kind": "product-surface",
-   "url": "https://resend.com/",
-   "captured": "2026-07-13",
-   "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(240, 240, 240)",
-    "background": "rgb(0, 0, 0)",
-    "font": "inter",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(240, 240, 240)",
-    "background": "rgb(0, 0, 0)",
-    "font": "inter",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "resend",
    "sourceId": "resend-audiences-live",
    "kind": "product-surface",
    "url": "https://resend.com/features/audiences",
@@ -6552,24 +6917,24 @@
    }
   },
   {
-   "id": "sakura-internet",
-   "sourceId": "home-live",
+   "id": "resend",
+   "sourceId": "resend-home-live",
    "kind": "product-surface",
-   "url": "https://www.sakura.ad.jp/",
+   "url": "https://resend.com/",
    "captured": "2026-07-13",
    "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(29, 29, 29)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Noto Sans JP",
+    "color": "rgb(240, 240, 240)",
+    "background": "rgb(0, 0, 0)",
+    "font": "inter",
     "size": "16px"
    },
    "now": {
-    "color": "rgb(29, 29, 29)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Noto Sans JP",
+    "color": "rgb(240, 240, 240)",
+    "background": "rgb(0, 0, 0)",
+    "font": "inter",
     "size": "16px",
     "themeResponsive": false
    }
@@ -6598,25 +6963,25 @@
    }
   },
   {
-   "id": "samsung",
+   "id": "sakura-internet",
    "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://www.samsung.com/sec/",
+   "url": "https://www.sakura.ad.jp/",
    "captured": "2026-07-13",
    "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(0, 0, 0)",
+    "color": "rgb(29, 29, 29)",
     "background": "rgba(0, 0, 0, 0)",
-    "font": "SamsungOneKorean",
-    "size": "15.9998px"
+    "font": "Noto Sans JP",
+    "size": "16px"
    },
    "now": {
-    "color": "rgb(0, 0, 0)",
+    "color": "rgb(29, 29, 29)",
     "background": "rgba(0, 0, 0, 0)",
-    "font": "SamsungOneKorean",
-    "size": "15.9998px",
+    "font": "Noto Sans JP",
+    "size": "16px",
     "themeResponsive": false
    }
   },
@@ -6667,35 +7032,131 @@
    }
   },
   {
-   "id": "servicenow",
-   "sourceId": "horizon-home-capture",
+   "id": "samsung",
+   "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://horizon.servicenow.com/",
+   "url": "https://www.samsung.com/sec/",
    "captured": "2026-07-13",
    "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(34, 34, 34)",
-    "background": "rgb(255, 255, 255)",
-    "font": "ServiceNowSans",
-    "size": "16px"
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "SamsungOneKorean",
+    "size": "15.9998px"
    },
    "now": {
-    "color": "rgb(34, 34, 34)",
-    "background": "rgb(255, 255, 255)",
-    "font": "ServiceNowSans",
-    "size": "16px",
-    "themeResponsive": true
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "SamsungOneKorean",
+    "size": "15.9998px",
+    "themeResponsive": false
    }
   },
   {
-   "id": "servicenow",
-   "sourceId": "servicenow-component-index",
-   "kind": "official-doc",
-   "url": "https://horizon.servicenow.com/workspace/components",
-   "captured": "2026-09-19",
+   "id": "sanity",
+   "sourceId": "home",
+   "kind": "product-surface",
+   "url": "https://www.sanity.io/",
+   "captured": "2026-07-13",
+   "capturedAt": "2026-07-13",
+   "surfaceId": "home",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
+   "july": {
+    "color": "rgb(11, 11, 11)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Waldenburg-75357948a2b6a39b",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(11, 11, 11)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Waldenburg-75357948a2b6a39b",
+    "size": "16px",
+    "themeResponsive": false,
+    "elements": 1999,
+    "textLength": 9681
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "unchanged",
+   "changed": []
+  },
+  {
+   "id": "sanity",
+   "sourceId": "pricing",
+   "kind": "product-surface",
+   "url": "https://www.sanity.io/pricing",
+   "captured": "2026-07-13",
+   "capturedAt": "2026-07-13",
+   "surfaceId": "surface-2",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
+   "july": {
+    "color": "rgb(11, 11, 11)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Waldenburg-75357948a2b6a39b",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(11, 11, 11)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Waldenburg-75357948a2b6a39b",
+    "size": "16px",
+    "themeResponsive": false,
+    "elements": 4229,
+    "textLength": 11008
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "unchanged",
+   "changed": []
+  },
+  {
+   "id": "sanity",
+   "sourceId": "pricing-navbar",
+   "kind": "product-surface",
+   "url": "https://www.sanity.io/pricing?ref=navbar",
+   "captured": "2026-07-13",
+   "capturedAt": "2026-07-13",
    "surfaceId": "surface-3",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
+   "july": {
+    "color": "rgb(11, 11, 11)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Waldenburg-75357948a2b6a39b",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(11, 11, 11)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Waldenburg-75357948a2b6a39b",
+    "size": "16px",
+    "themeResponsive": false,
+    "elements": 4229,
+    "textLength": 11008
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "unchanged",
+   "changed": []
+  },
+  {
+   "id": "servicenow",
+   "sourceId": "horizon-about-capture",
+   "kind": "product-surface",
+   "url": "https://horizon.servicenow.com/getting-started/about-horizon",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -6714,8 +7175,8 @@
   },
   {
    "id": "servicenow",
-   "sourceId": "horizon-about-capture",
-   "kind": "product-surface",
+   "sourceId": "horizon-about-doc",
+   "kind": "official-doc",
    "url": "https://horizon.servicenow.com/getting-started/about-horizon",
    "captured": "2026-07-13",
    "surfaceId": "surface-2",
@@ -6760,11 +7221,34 @@
   },
   {
    "id": "servicenow",
-   "sourceId": "horizon-about-doc",
-   "kind": "official-doc",
-   "url": "https://horizon.servicenow.com/getting-started/about-horizon",
+   "sourceId": "horizon-home-capture",
+   "kind": "product-surface",
+   "url": "https://horizon.servicenow.com/",
    "captured": "2026-07-13",
-   "surfaceId": "surface-2",
+   "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(34, 34, 34)",
+    "background": "rgb(255, 255, 255)",
+    "font": "ServiceNowSans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(34, 34, 34)",
+    "background": "rgb(255, 255, 255)",
+    "font": "ServiceNowSans",
+    "size": "16px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "servicenow",
+   "sourceId": "servicenow-component-index",
+   "kind": "official-doc",
+   "url": "https://horizon.servicenow.com/workspace/components",
+   "captured": "2026-09-19",
+   "surfaceId": "surface-3",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -6852,11 +7336,11 @@
   },
   {
    "id": "shinhancard",
-   "sourceId": "home-live",
+   "sourceId": "credit-detail-live",
    "kind": "product-surface",
-   "url": "https://www.shinhancard.com/pconts/html/main.html",
+   "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1232390_2207.html",
    "captured": "2026-07-13",
-   "surfaceId": "home",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -6875,11 +7359,11 @@
   },
   {
    "id": "shinhancard",
-   "sourceId": "credit-detail-live",
+   "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1232390_2207.html",
+   "url": "https://www.shinhancard.com/pconts/html/main.html",
    "captured": "2026-07-13",
-   "surfaceId": "surface-2",
+   "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -6921,29 +7405,6 @@
   },
   {
    "id": "sktelecom",
-   "sourceId": "home-live",
-   "kind": "product-surface",
-   "url": "https://www.sktelecom.com/",
-   "captured": "2026-07-13",
-   "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "SKT Sans Text",
-    "size": "10px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "SKT Sans Text",
-    "size": "10px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "sktelecom",
    "sourceId": "brand-live",
    "kind": "official-doc",
    "url": "https://www.sktelecom.com/view/introduce/brand.do",
@@ -6966,94 +7427,25 @@
    }
   },
   {
-   "id": "socar",
+   "id": "sktelecom",
    "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://www.socar.kr/",
-   "captured": "2026-07-12",
+   "url": "https://www.sktelecom.com/",
+   "captured": "2026-07-13",
    "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
     "color": "rgb(0, 0, 0)",
     "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard",
-    "size": "16px"
+    "font": "SKT Sans Text",
+    "size": "10px"
    },
    "now": {
     "color": "rgb(0, 0, 0)",
     "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "socar",
-   "sourceId": "socar-component-index",
-   "kind": "official-doc",
-   "url": "https://design.socar.kr/",
-   "captured": "2026-09-19",
-   "surfaceId": "surface-4",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(20, 26, 36)",
-    "font": "IBMPlexSansKR",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(20, 26, 36)",
-    "font": "IBMPlexSansKR",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "socar",
-   "sourceId": "service-live",
-   "kind": "product-surface",
-   "url": "https://www.socar.kr/service",
-   "captured": "2026-07-12",
-   "surfaceId": "surface-2",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "socar",
-   "sourceId": "guide-live",
-   "kind": "product-surface",
-   "url": "https://www.socar.kr/guide",
-   "captured": "2026-07-12",
-   "surfaceId": "surface-3",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard",
-    "size": "16px",
+    "font": "SKT Sans Text",
+    "size": "10px",
     "themeResponsive": false
    }
   },
@@ -7104,6 +7496,121 @@
    }
   },
   {
+   "id": "socar",
+   "sourceId": "guide-live",
+   "kind": "product-surface",
+   "url": "https://www.socar.kr/guide",
+   "captured": "2026-07-12",
+   "surfaceId": "surface-3",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "socar",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.socar.kr/",
+   "captured": "2026-07-12",
+   "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "socar",
+   "sourceId": "service-live",
+   "kind": "product-surface",
+   "url": "https://www.socar.kr/service",
+   "captured": "2026-07-12",
+   "surfaceId": "surface-2",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "socar",
+   "sourceId": "socar-component-index",
+   "kind": "official-doc",
+   "url": "https://design.socar.kr/",
+   "captured": "2026-09-19",
+   "surfaceId": "surface-4",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(20, 26, 36)",
+    "font": "IBMPlexSansKR",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(20, 26, 36)",
+    "font": "IBMPlexSansKR",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "softbank",
+   "sourceId": "corporate-security-live",
+   "kind": "product-surface",
+   "url": "https://www.softbank.jp/corp/aboutus/governance/security/",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-3",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Meiryo",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Meiryo",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
    "id": "softbank",
    "sourceId": "home-live",
    "kind": "product-surface",
@@ -7127,24 +7634,24 @@
    }
   },
   {
-   "id": "softbank",
-   "sourceId": "corporate-security-live",
+   "id": "sony",
+   "sourceId": "electronics-live",
    "kind": "product-surface",
-   "url": "https://www.softbank.jp/corp/aboutus/governance/security/",
+   "url": "https://www.sony.com/en/SonyInfo/products/#electronics",
    "captured": "2026-07-13",
    "surfaceId": "surface-3",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(51, 51, 51)",
+    "color": "rgb(0, 0, 0)",
     "background": "rgba(0, 0, 0, 0)",
-    "font": "Meiryo",
+    "font": "SST W20 Roman",
     "size": "16px"
    },
    "now": {
-    "color": "rgb(51, 51, 51)",
+    "color": "rgb(0, 0, 0)",
     "background": "rgba(0, 0, 0, 0)",
-    "font": "Meiryo",
+    "font": "SST W20 Roman",
     "size": "16px",
     "themeResponsive": false
    }
@@ -7179,29 +7686,6 @@
    "url": "https://www.sony.com/en/SonyInfo/products/",
    "captured": "2026-07-13",
    "surfaceId": "surface-2",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "SST W20 Roman",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "SST W20 Roman",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "sony",
-   "sourceId": "electronics-live",
-   "kind": "product-surface",
-   "url": "https://www.sony.com/en/SonyInfo/products/#electronics",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-3",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -7311,6 +7795,125 @@
    }
   },
   {
+   "id": "spotify",
+   "sourceId": "capture-newsroom",
+   "kind": "official-doc",
+   "url": "https://newsroom.spotify.com/company-info/",
+   "captured": "2026-07-13",
+   "capturedAt": "2026-07-13",
+   "surfaceId": "surface-3",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Spotify Mix",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Spotify Mix",
+    "size": "16px",
+    "themeResponsive": false,
+    "elements": 1170,
+    "textLength": 2690
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "unchanged",
+   "changed": []
+  },
+  {
+   "id": "spotify",
+   "sourceId": "capture-product-home",
+   "kind": "product-surface",
+   "url": "https://open.spotify.com/",
+   "captured": "2026-07-13",
+   "capturedAt": "2026-07-13",
+   "surfaceId": "home",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
+   "july": {
+    "color": "rgb(179, 179, 179)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "SpotifyMixUI",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(179, 179, 179)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "SpotifyMixUI",
+    "size": "16px",
+    "themeResponsive": false,
+    "elements": 2537,
+    "textLength": 2013
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "unchanged",
+   "changed": []
+  },
+  {
+   "id": "spotify",
+   "sourceId": "capture-product-search",
+   "kind": "product-surface",
+   "url": "https://open.spotify.com/search",
+   "captured": "2026-07-13",
+   "capturedAt": "2026-07-13",
+   "surfaceId": "surface-2",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
+   "july": {
+    "color": "rgb(179, 179, 179)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "SpotifyMixUI",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(179, 179, 179)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "SpotifyMixUI",
+    "size": "16px",
+    "themeResponsive": false,
+    "elements": 1850,
+    "textLength": 1445
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "unchanged",
+   "changed": []
+  },
+  {
+   "id": "stripe",
+   "sourceId": "docs-api-live",
+   "kind": "product-surface",
+   "url": "https://docs.stripe.com/api",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-3",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(60, 66, 87)",
+    "background": "rgb(244, 247, 250)",
+    "font": "-apple-system",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(60, 66, 87)",
+    "background": "rgb(244, 247, 250)",
+    "font": "-apple-system",
+    "size": "14px",
+    "themeResponsive": true
+   }
+  },
+  {
    "id": "stripe",
    "sourceId": "docs-home-live",
    "kind": "product-surface",
@@ -7357,26 +7960,26 @@
    }
   },
   {
-   "id": "stripe",
-   "sourceId": "docs-api-live",
+   "id": "supabase",
+   "sourceId": "features-live",
    "kind": "product-surface",
-   "url": "https://docs.stripe.com/api",
+   "url": "https://supabase.com/features",
    "captured": "2026-07-13",
-   "surfaceId": "surface-3",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(60, 66, 87)",
-    "background": "rgb(244, 247, 250)",
-    "font": "-apple-system",
-    "size": "14px"
+    "color": "oklch(0.1 0 34)",
+    "background": "oklch(0.995 0 34)",
+    "font": "ui-sans-serif",
+    "size": "16px"
    },
    "now": {
-    "color": "rgb(60, 66, 87)",
-    "background": "rgb(244, 247, 250)",
-    "font": "-apple-system",
-    "size": "14px",
-    "themeResponsive": true
+    "color": "oklch(0.1 0 34)",
+    "background": "oklch(0.995 0 34)",
+    "font": "ui-sans-serif",
+    "size": "16px",
+    "themeResponsive": false
    }
   },
   {
@@ -7398,29 +8001,6 @@
     "color": "oklch(0.1 0 34)",
     "background": "oklch(0.995 0 34)",
     "font": "Inter",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "supabase",
-   "sourceId": "features-live",
-   "kind": "product-surface",
-   "url": "https://supabase.com/features",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-2",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "oklch(0.1 0 34)",
-    "background": "oklch(0.995 0 34)",
-    "font": "ui-sans-serif",
-    "size": "16px"
-   },
-   "now": {
-    "color": "oklch(0.1 0 34)",
-    "background": "oklch(0.995 0 34)",
-    "font": "ui-sans-serif",
     "size": "16px",
     "themeResponsive": false
    }
@@ -7496,11 +8076,11 @@
   },
   {
    "id": "teamlab",
-   "sourceId": "home-live",
+   "sourceId": "about-live",
    "kind": "product-surface",
-   "url": "https://www.team-lab.com/",
+   "url": "https://www.team-lab.com/about/",
    "captured": "2026-07-13",
-   "surfaceId": "home",
+   "surfaceId": "surface-3",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -7542,11 +8122,11 @@
   },
   {
    "id": "teamlab",
-   "sourceId": "about-live",
+   "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://www.team-lab.com/about/",
+   "url": "https://www.team-lab.com/",
    "captured": "2026-07-13",
-   "surfaceId": "surface-3",
+   "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -7560,29 +8140,6 @@
     "background": "rgba(0, 0, 0, 0)",
     "font": "Helvetica",
     "size": "13px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "tesla",
-   "sourceId": "support-live",
-   "kind": "official-doc",
-   "url": "https://www.tesla.com/support/getting-started-with-your-vehicle",
-   "captured": "2026-07-13",
-   "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Times",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Times",
-    "size": "16px",
     "themeResponsive": false
    }
   },
@@ -7610,26 +8167,24 @@
    }
   },
   {
-   "id": "thsr",
-   "sourceId": "product-home",
-   "kind": "product-surface",
-   "url": "https://www.thsrc.com.tw/",
+   "id": "tesla",
+   "sourceId": "support-live",
+   "kind": "official-doc",
+   "url": "https://www.tesla.com/support/getting-started-with-your-vehicle",
    "captured": "2026-07-13",
    "surfaceId": "home",
-   "verdict": "changed",
-   "changed": [
-    "background"
-   ],
+   "verdict": "unchanged",
+   "changed": [],
    "july": {
-    "color": "rgb(51, 51, 51)",
+    "color": "rgb(0, 0, 0)",
     "background": "rgba(0, 0, 0, 0)",
-    "font": "Noto Sans TC",
+    "font": "Times",
     "size": "16px"
    },
    "now": {
-    "color": "rgb(51, 51, 51)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Noto Sans TC",
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Times",
     "size": "16px",
     "themeResponsive": false
    }
@@ -7641,7 +8196,7 @@
    "url": "https://www.thsrc.com.tw/ArticleContent/46de4c5f-7c2e-4583-bd4c-0f5d67fbb9b8",
    "captured": "2026-07-13",
    "surfaceId": "surface-2",
-   "verdict": "unreachable",
+   "verdict": "dead",
    "changed": [],
    "july": {
     "color": "rgb(51, 51, 51)",
@@ -7682,12 +8237,37 @@
    }
   },
   {
-   "id": "thumbtack",
-   "sourceId": "thumbprint-home",
+   "id": "thsr",
+   "sourceId": "product-home",
    "kind": "product-surface",
-   "url": "https://thumbprint.design/",
+   "url": "https://www.thsrc.com.tw/",
    "captured": "2026-07-13",
    "surfaceId": "home",
+   "verdict": "changed",
+   "changed": [
+    "background"
+   ],
+   "july": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Noto Sans TC",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Noto Sans TC",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "thumbtack",
+   "sourceId": "thumbprint-button-doc",
+   "kind": "official-doc",
+   "url": "https://thumbprint.design/components/button/v2/react",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -7706,11 +8286,11 @@
   },
   {
    "id": "thumbtack",
-   "sourceId": "thumbprint-button-doc",
-   "kind": "official-doc",
-   "url": "https://thumbprint.design/components/button/v2/react",
+   "sourceId": "thumbprint-home",
+   "kind": "product-surface",
+   "url": "https://thumbprint.design/",
    "captured": "2026-07-13",
-   "surfaceId": "surface-2",
+   "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -7755,31 +8335,8 @@
   },
   {
    "id": "together.ai",
-   "sourceId": "home-live",
-   "kind": "product-surface",
-   "url": "https://www.together.ai/",
-   "captured": "2026-07-13",
-   "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "The Future",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "The Future",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "together.ai",
-   "sourceId": "about-live",
-   "kind": "product-surface",
+   "sourceId": "about-context",
+   "kind": "official-doc",
    "url": "https://www.together.ai/about-us",
    "captured": "2026-07-13",
    "surfaceId": "surface-2",
@@ -7801,31 +8358,8 @@
   },
   {
    "id": "together.ai",
-   "sourceId": "brand-live",
-   "kind": "brand-asset",
-   "url": "https://www.together.ai/brand",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-3",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "The Future",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "The Future",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "together.ai",
-   "sourceId": "about-context",
-   "kind": "official-doc",
+   "sourceId": "about-live",
+   "kind": "product-surface",
    "url": "https://www.together.ai/about-us",
    "captured": "2026-07-13",
    "surfaceId": "surface-2",
@@ -7869,26 +8403,49 @@
    }
   },
   {
-   "id": "toss-securities",
-   "sourceId": "wts-live",
+   "id": "together.ai",
+   "sourceId": "brand-live",
+   "kind": "brand-asset",
+   "url": "https://www.together.ai/brand",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-3",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "The Future",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "The Future",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "together.ai",
+   "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://www.tossinvest.com/?focusedProductCode=A000660",
+   "url": "https://www.together.ai/",
    "captured": "2026-07-13",
    "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(78, 89, 104)",
+    "color": "rgb(0, 0, 0)",
     "background": "rgb(255, 255, 255)",
-    "font": "Toss Product Sans",
+    "font": "The Future",
     "size": "16px"
    },
    "now": {
-    "color": "rgb(78, 89, 104)",
+    "color": "rgb(0, 0, 0)",
     "background": "rgb(255, 255, 255)",
-    "font": "Toss Product Sans",
+    "font": "The Future",
     "size": "16px",
-    "themeResponsive": true
+    "themeResponsive": false
    }
   },
   {
@@ -7915,27 +8472,159 @@
    }
   },
   {
-   "id": "tossbank",
-   "sourceId": "home-live",
+   "id": "toss-securities",
+   "sourceId": "wts-live",
    "kind": "product-surface",
-   "url": "https://www.tossbank.com/",
-   "captured": "2026-07-12",
+   "url": "https://www.tossinvest.com/?focusedProductCode=A000660",
+   "captured": "2026-07-13",
    "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
+    "color": "rgb(78, 89, 104)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Toss Product Sans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(78, 89, 104)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Toss Product Sans",
+    "size": "16px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "toss",
+   "sourceId": "tds-agreement",
+   "kind": "official-doc",
+   "url": "https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+   "captured": "2026-07-11",
+   "capturedAt": "2026-07-11",
+   "surfaceId": "surface-5",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
+   "july": {
     "color": "rgb(33, 37, 41)",
-    "background": "rgb(16, 16, 19)",
+    "background": "rgb(255, 255, 255)",
     "font": "Toss Product Sans",
     "size": "16px"
    },
    "now": {
     "color": "rgb(33, 37, 41)",
-    "background": "rgb(16, 16, 19)",
+    "background": "rgb(255, 255, 255)",
     "font": "Toss Product Sans",
     "size": "16px",
-    "themeResponsive": true
-   }
+    "themeResponsive": false,
+    "elements": 3164,
+    "textLength": 15724
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "unchanged",
+   "changed": []
+  },
+  {
+   "id": "toss",
+   "sourceId": "tds-button-live",
+   "kind": "official-doc",
+   "url": "https://tossmini-docs.toss.im/tds-mobile/components/button/",
+   "captured": "2026-07-11",
+   "capturedAt": "2026-07-11",
+   "surfaceId": "surface-3",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
+   "july": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Toss Product Sans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Toss Product Sans",
+    "size": "16px",
+    "themeResponsive": false,
+    "elements": 1876,
+    "textLength": 7054
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "unchanged",
+   "changed": []
+  },
+  {
+   "id": "toss",
+   "sourceId": "tds-button-states",
+   "kind": "official-doc",
+   "url": "https://tossmini-docs.toss.im/tds-mobile/components/button/",
+   "captured": "2026-09-17",
+   "capturedAt": "2026-07-11",
+   "surfaceId": "surface-3",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
+   "july": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Toss Product Sans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Toss Product Sans",
+    "size": "16px",
+    "themeResponsive": false,
+    "elements": 1876,
+    "textLength": 7054
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "unchanged",
+   "changed": []
+  },
+  {
+   "id": "toss",
+   "sourceId": "toss-live",
+   "kind": "product-surface",
+   "url": "https://toss.im/",
+   "captured": "2026-07-11",
+   "capturedAt": "2026-07-11",
+   "surfaceId": "home",
+   "viewport": {
+    "width": 1440,
+    "height": 900
+   },
+   "july": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Toss Product Sans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Toss Product Sans OTF",
+    "size": "16px",
+    "themeResponsive": false,
+    "elements": 209,
+    "textLength": 144
+   },
+   "httpStatus": 200,
+   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+   "verdict": "changed",
+   "changed": [
+    "color",
+    "background",
+    "font"
+   ]
   },
   {
    "id": "tossbank",
@@ -7955,6 +8644,29 @@
    "now": {
     "color": "rgb(33, 37, 41)",
     "background": "rgba(0, 0, 0, 0)",
+    "font": "Toss Product Sans",
+    "size": "16px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "tossbank",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.tossbank.com/",
+   "captured": "2026-07-12",
+   "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(16, 16, 19)",
+    "font": "Toss Product Sans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(16, 16, 19)",
     "font": "Toss Product Sans",
     "size": "16px",
     "themeResponsive": true
@@ -8031,8 +8743,8 @@
   },
   {
    "id": "toyota",
-   "sourceId": "tps-live",
-   "kind": "product-surface",
+   "sourceId": "toyota-tps",
+   "kind": "official-doc",
    "url": "https://global.toyota/en/company/vision-and-philosophy/production-system/?padid=ag478_from_header_menu",
    "captured": "2026-07-13",
    "surfaceId": "surface-3",
@@ -8054,8 +8766,8 @@
   },
   {
    "id": "toyota",
-   "sourceId": "toyota-tps",
-   "kind": "official-doc",
+   "sourceId": "tps-live",
+   "kind": "product-surface",
    "url": "https://global.toyota/en/company/vision-and-philosophy/production-system/?padid=ag478_from_header_menu",
    "captured": "2026-07-13",
    "surfaceId": "surface-3",
@@ -8100,29 +8812,6 @@
   },
   {
    "id": "tving",
-   "sourceId": "movie-live",
-   "kind": "product-surface",
-   "url": "https://www.tving.com/movie",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-2",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(248, 250, 252)",
-    "background": "rgb(0, 0, 0)",
-    "font": "Pretendard",
-    "size": "13.2px"
-   },
-   "now": {
-    "color": "rgb(248, 250, 252)",
-    "background": "rgb(0, 0, 0)",
-    "font": "Pretendard",
-    "size": "13.2px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "tving",
    "sourceId": "live-live",
    "kind": "product-surface",
    "url": "https://www.tving.com/live/C00551",
@@ -8145,25 +8834,25 @@
    }
   },
   {
-   "id": "uber",
-   "sourceId": "home-live",
+   "id": "tving",
+   "sourceId": "movie-live",
    "kind": "product-surface",
-   "url": "https://www.uber.com/kr/ko/",
+   "url": "https://www.tving.com/movie",
    "captured": "2026-07-13",
-   "surfaceId": "home",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "sans-serif",
-    "size": "16px"
+    "color": "rgb(248, 250, 252)",
+    "background": "rgb(0, 0, 0)",
+    "font": "Pretendard",
+    "size": "13.2px"
    },
    "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "sans-serif",
-    "size": "16px",
+    "color": "rgb(248, 250, 252)",
+    "background": "rgb(0, 0, 0)",
+    "font": "Pretendard",
+    "size": "13.2px",
     "themeResponsive": false
    }
   },
@@ -8209,6 +8898,52 @@
     "color": "rgb(0, 0, 0)",
     "background": "rgba(0, 0, 0, 0)",
     "font": "sans-serif",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "uber",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.uber.com/kr/ko/",
+   "captured": "2026-07-13",
+   "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "sans-serif",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "sans-serif",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "udn",
+   "sourceId": "finance-live",
+   "kind": "product-surface",
+   "url": "https://udn.com/news/cate/2/6649",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-3",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(250, 250, 250)",
+    "font": "Noto Sans TC",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(250, 250, 250)",
+    "font": "Noto Sans TC",
     "size": "16px",
     "themeResponsive": false
    }
@@ -8260,35 +8995,12 @@
    }
   },
   {
-   "id": "udn",
-   "sourceId": "finance-live",
-   "kind": "product-surface",
-   "url": "https://udn.com/news/cate/2/6649",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-3",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(250, 250, 250)",
-    "font": "Noto Sans TC",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(250, 250, 250)",
-    "font": "Noto Sans TC",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
    "id": "upbit",
-   "sourceId": "home-live",
+   "sourceId": "exchange-live",
    "kind": "product-surface",
-   "url": "https://www.upbit.com/home",
+   "url": "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC",
    "captured": "2026-07-13",
-   "surfaceId": "home",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -8307,11 +9019,11 @@
   },
   {
    "id": "upbit",
-   "sourceId": "exchange-live",
+   "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC",
+   "url": "https://www.upbit.com/home",
    "captured": "2026-07-13",
-   "surfaceId": "surface-2",
+   "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -8353,29 +9065,6 @@
   },
   {
    "id": "upstage",
-   "sourceId": "home-live",
-   "kind": "product-surface",
-   "url": "https://www.upstage.ai/",
-   "captured": "2026-07-13",
-   "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(82, 82, 91)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Geist",
-    "size": "18px"
-   },
-   "now": {
-    "color": "rgb(82, 82, 91)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Geist",
-    "size": "18px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "upstage",
    "sourceId": "api-pricing-live",
    "kind": "product-surface",
    "url": "https://www.upstage.ai/pricing/api",
@@ -8398,12 +9087,35 @@
    }
   },
   {
-   "id": "uswds",
+   "id": "upstage",
    "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://designsystem.digital.gov/",
+   "url": "https://www.upstage.ai/",
    "captured": "2026-07-13",
    "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(82, 82, 91)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Geist",
+    "size": "18px"
+   },
+   "now": {
+    "color": "rgb(82, 82, 91)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Geist",
+    "size": "18px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "uswds",
+   "sourceId": "accordion-live",
+   "kind": "official-doc",
+   "url": "https://designsystem.digital.gov/components/accordion/",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-3",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -8445,11 +9157,11 @@
   },
   {
    "id": "uswds",
-   "sourceId": "uswds-component-index",
-   "kind": "official-doc",
-   "url": "https://designsystem.digital.gov/components/overview/",
-   "captured": "2026-09-19",
-   "surfaceId": "surface-2",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://designsystem.digital.gov/",
+   "captured": "2026-07-13",
+   "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -8468,46 +9180,23 @@
   },
   {
    "id": "uswds",
-   "sourceId": "accordion-live",
+   "sourceId": "uswds-component-index",
    "kind": "official-doc",
-   "url": "https://designsystem.digital.gov/components/accordion/",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-3",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgba(0, 0, 0, 0.8)",
-    "background": "rgb(252, 252, 252)",
-    "font": "Public Sans Web",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgba(0, 0, 0, 0.8)",
-    "background": "rgb(252, 252, 252)",
-    "font": "Public Sans Web",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "vercel",
-   "sourceId": "home-live",
-   "kind": "product-surface",
-   "url": "https://vercel.com/",
-   "captured": "2026-07-12",
+   "url": "https://designsystem.digital.gov/components/overview/",
+   "captured": "2026-09-19",
    "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
-    "color": "rgb(23, 23, 23)",
-    "background": "rgb(250, 250, 250)",
-    "font": "GeistSans",
+    "color": "rgba(0, 0, 0, 0.8)",
+    "background": "rgb(252, 252, 252)",
+    "font": "Public Sans Web",
     "size": "16px"
    },
    "now": {
-    "color": "rgb(23, 23, 23)",
-    "background": "rgb(250, 250, 250)",
-    "font": "GeistSans",
+    "color": "rgba(0, 0, 0, 0.8)",
+    "background": "rgb(252, 252, 252)",
+    "font": "Public Sans Web",
     "size": "16px",
     "themeResponsive": false
    }
@@ -8537,6 +9226,29 @@
   },
   {
    "id": "vercel",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://vercel.com/",
+   "captured": "2026-07-12",
+   "surfaceId": "surface-2",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(23, 23, 23)",
+    "background": "rgb(250, 250, 250)",
+    "font": "GeistSans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(23, 23, 23)",
+    "background": "rgb(250, 250, 250)",
+    "font": "GeistSans",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "vercel",
    "sourceId": "vercel-component-index",
    "kind": "official-doc",
    "url": "https://vercel.com/geist/introduction",
@@ -8554,6 +9266,56 @@
     "color": "rgb(23, 23, 23)",
     "background": "rgb(255, 255, 255)",
     "font": "Geist",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "wanted",
+   "sourceId": "company-live",
+   "kind": "product-surface",
+   "url": "https://www.wanted.co.kr/company",
+   "captured": "2026-07-12",
+   "surfaceId": "surface-4",
+   "verdict": "dead",
+   "changed": [
+    "color",
+    "background"
+   ],
+   "july": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgb(248, 248, 248)",
+    "font": "Pretendard Variable",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(23, 23, 25)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard Variable",
+    "size": "14px",
+    "themeResponsive": false
+   },
+   "httpStatus": 404
+  },
+  {
+   "id": "wanted",
+   "sourceId": "foundations-live",
+   "kind": "official-doc",
+   "url": "https://montage.wanted.co.kr/docs/foundations",
+   "captured": "2026-07-12",
+   "surfaceId": "surface-6",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard Variable",
     "size": "16px",
     "themeResponsive": false
    }
@@ -8612,33 +9374,6 @@
   },
   {
    "id": "wanted",
-   "sourceId": "company-live",
-   "kind": "product-surface",
-   "url": "https://www.wanted.co.kr/company",
-   "captured": "2026-07-12",
-   "surfaceId": "surface-4",
-   "verdict": "unreachable",
-   "changed": [
-    "color",
-    "background"
-   ],
-   "july": {
-    "color": "rgb(51, 51, 51)",
-    "background": "rgb(248, 248, 248)",
-    "font": "Pretendard Variable",
-    "size": "14px"
-   },
-   "now": {
-    "color": "rgb(23, 23, 25)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Pretendard Variable",
-    "size": "14px",
-    "themeResponsive": false
-   },
-   "httpStatus": 404
-  },
-  {
-   "id": "wanted",
    "sourceId": "montage-live",
    "kind": "official-doc",
    "url": "https://montage.wanted.co.kr/",
@@ -8661,35 +9396,12 @@
    }
   },
   {
-   "id": "wanted",
-   "sourceId": "foundations-live",
-   "kind": "official-doc",
-   "url": "https://montage.wanted.co.kr/docs/foundations",
-   "captured": "2026-07-12",
-   "surfaceId": "surface-6",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Pretendard Variable",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "Pretendard Variable",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
    "id": "wise",
-   "sourceId": "home-live",
+   "sourceId": "business-pricing-live",
    "kind": "product-surface",
-   "url": "https://wise.com/",
+   "url": "https://wise.com/gb/pricing/business",
    "captured": "2026-07-13",
-   "surfaceId": "home",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -8708,11 +9420,11 @@
   },
   {
    "id": "wise",
-   "sourceId": "business-pricing-live",
+   "sourceId": "home-live",
    "kind": "product-surface",
-   "url": "https://wise.com/gb/pricing/business",
+   "url": "https://wise.com/",
    "captured": "2026-07-13",
-   "surfaceId": "surface-2",
+   "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -8777,11 +9489,11 @@
   },
   {
    "id": "wooribank",
-   "sourceId": "legacy-service-live",
+   "sourceId": "legacy-information-live",
    "kind": "product-surface",
-   "url": "https://spot.wooribank.com/pot/Dream?withyou=PODEP0001",
+   "url": "https://spot.wooribank.com/pot/Dream?withyou=ln",
    "captured": "2026-07-13",
-   "surfaceId": "surface-2",
+   "surfaceId": "surface-3",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -8800,11 +9512,11 @@
   },
   {
    "id": "wooribank",
-   "sourceId": "legacy-information-live",
+   "sourceId": "legacy-service-live",
    "kind": "product-surface",
-   "url": "https://spot.wooribank.com/pot/Dream?withyou=ln",
+   "url": "https://spot.wooribank.com/pot/Dream?withyou=PODEP0001",
    "captured": "2026-07-13",
-   "surfaceId": "surface-3",
+   "surfaceId": "surface-2",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -8892,77 +9604,6 @@
   },
   {
    "id": "yeogiotte",
-   "sourceId": "product-live",
-   "kind": "product-surface",
-   "url": "https://www.yeogi.com/",
-   "captured": "2026-07-11",
-   "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "yeogiotte",
-   "sourceId": "results-live",
-   "kind": "product-surface",
-   "url": "https://www.yeogi.com/domestic-accommodations",
-   "captured": "2026-07-11",
-   "surfaceId": "surface-2",
-   "verdict": "changed",
-   "changed": [
-    "font"
-   ],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Times",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Pretendard",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "yeogiotte",
-   "sourceId": "ds-doc",
-   "kind": "official-doc",
-   "url": "https://designlibrary.yeogi.com/",
-   "captured": "2026-07-11",
-   "surfaceId": "surface-3",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "sans-serif",
-    "size": "12px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgb(255, 255, 255)",
-    "font": "sans-serif",
-    "size": "12px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "yeogiotte",
    "sourceId": "colors-doc",
    "kind": "official-doc",
    "url": "https://designlibrary.yeogi.com/foudations/color/palette-color",
@@ -8986,11 +9627,34 @@
   },
   {
    "id": "yeogiotte",
-   "sourceId": "typography-doc",
+   "sourceId": "components-doc",
    "kind": "official-doc",
-   "url": "https://designlibrary.yeogi.com/foudations/typography",
+   "url": "https://designlibrary.yeogi.com/components/overview",
    "captured": "2026-07-11",
-   "surfaceId": "surface-5",
+   "surfaceId": "surface-8",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "sans-serif",
+    "size": "12px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "sans-serif",
+    "size": "12px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "yeogiotte",
+   "sourceId": "ds-doc",
+   "kind": "official-doc",
+   "url": "https://designlibrary.yeogi.com/",
+   "captured": "2026-07-11",
+   "surfaceId": "surface-3",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -9032,6 +9696,29 @@
   },
   {
    "id": "yeogiotte",
+   "sourceId": "product-live",
+   "kind": "product-surface",
+   "url": "https://www.yeogi.com/",
+   "captured": "2026-07-11",
+   "surfaceId": "home",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "yeogiotte",
    "sourceId": "radius-doc",
    "kind": "official-doc",
    "url": "https://designlibrary.yeogi.com/foudations/radius",
@@ -9055,11 +9742,36 @@
   },
   {
    "id": "yeogiotte",
-   "sourceId": "components-doc",
-   "kind": "official-doc",
-   "url": "https://designlibrary.yeogi.com/components/overview",
+   "sourceId": "results-live",
+   "kind": "product-surface",
+   "url": "https://www.yeogi.com/domestic-accommodations",
    "captured": "2026-07-11",
-   "surfaceId": "surface-8",
+   "surfaceId": "surface-2",
+   "verdict": "changed",
+   "changed": [
+    "font"
+   ],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Times",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "yeogiotte",
+   "sourceId": "typography-doc",
+   "kind": "official-doc",
+   "url": "https://designlibrary.yeogi.com/foudations/typography",
+   "captured": "2026-07-11",
+   "surfaceId": "surface-5",
    "verdict": "unchanged",
    "changed": [],
    "july": {
@@ -9073,6 +9785,29 @@
     "background": "rgb(255, 255, 255)",
     "font": "sans-serif",
     "size": "12px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "zapier",
+   "sourceId": "customer-support-live",
+   "kind": "product-surface",
+   "url": "https://zapier.com/solutions/customer-support",
+   "captured": "2026-07-13",
+   "surfaceId": "surface-3",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(32, 21, 21)",
+    "background": "rgb(255, 254, 251)",
+    "font": "Inter",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(32, 21, 21)",
+    "background": "rgb(255, 254, 251)",
+    "font": "Inter",
+    "size": "16px",
     "themeResponsive": false
    }
   },
@@ -9123,52 +9858,6 @@
    }
   },
   {
-   "id": "zapier",
-   "sourceId": "customer-support-live",
-   "kind": "product-surface",
-   "url": "https://zapier.com/solutions/customer-support",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-3",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(32, 21, 21)",
-    "background": "rgb(255, 254, 251)",
-    "font": "Inter",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(32, 21, 21)",
-    "background": "rgb(255, 254, 251)",
-    "font": "Inter",
-    "size": "16px",
-    "themeResponsive": false
-   }
-  },
-  {
-   "id": "zendesk",
-   "sourceId": "garden-home-live",
-   "kind": "product-surface",
-   "url": "https://garden.zendesk.com/",
-   "captured": "2026-07-13",
-   "surfaceId": "home",
-   "verdict": "unchanged",
-   "changed": [],
-   "july": {
-    "color": "rgb(41, 50, 57)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "system-ui",
-    "size": "14px"
-   },
-   "now": {
-    "color": "rgb(41, 50, 57)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "system-ui",
-    "size": "14px",
-    "themeResponsive": false
-   }
-  },
-  {
    "id": "zendesk",
    "sourceId": "garden-button-live",
    "kind": "official-doc",
@@ -9198,6 +9887,29 @@
    "url": "https://garden.zendesk.com/design/color",
    "captured": "2026-07-13",
    "surfaceId": "surface-3",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(41, 50, 57)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "system-ui",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(41, 50, 57)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "system-ui",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "zendesk",
+   "sourceId": "garden-home-live",
+   "kind": "product-surface",
+   "url": "https://garden.zendesk.com/",
+   "captured": "2026-07-13",
+   "surfaceId": "home",
    "verdict": "unchanged",
    "changed": [],
    "july": {

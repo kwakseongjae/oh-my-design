@@ -38,27 +38,32 @@ const CHECK = process.argv.includes("--check");
  * reference, or any verdict other than `unchanged` all mean no confirmation,
  * and no confirmation leaves the TTL exactly as it was.
  */
+const EMPTY_DRIFT = Object.freeze({ confirmations: {}, dead: {} });
 function loadDriftConfirmations() {
   const dataDir = join(REPO_ROOT, "data");
-  if (!existsSync(dataDir)) return {};
+  if (!existsSync(dataDir)) return EMPTY_DRIFT;
   const newest = readdirSync(dataDir)
     .filter((name) => /^surface-drift-\d{4}-\d{2}-\d{2}\.json$/.test(name))
     .sort()
     .pop();
-  if (!newest) return {};
+  if (!newest) return EMPTY_DRIFT;
   let report;
-  try { report = JSON.parse(readFileSync(join(dataDir, newest), "utf8")); } catch { return {}; }
+  try { report = JSON.parse(readFileSync(join(dataDir, newest), "utf8")); } catch { return EMPTY_DRIFT; }
   const measuredAt = String(report?.measuredAt ?? "");
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(measuredAt)) return {};
-  const out = {};
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(measuredAt)) return EMPTY_DRIFT;
+  const confirmations = {};
+  const dead = {};
   for (const row of report.results ?? []) {
-    if (row?.verdict !== "unchanged" || !row.id || !row.sourceId) continue;
-    out[`${row.id}/${row.sourceId}`] = measuredAt;
+    if (!row?.id || !row.sourceId) continue;
+    if (row.verdict === "unchanged") confirmations[`${row.id}/${row.sourceId}`] = measuredAt;
+    // 404/410 only. `blocked` (403/429) and `unreachable` (network) are unknown,
+    // and an unknown filed as a defect is a worse error than not filing it.
+    else if (row.verdict === "dead") dead[`${row.id}/${row.sourceId}`] = true;
   }
-  return out;
+  return { confirmations, dead };
 }
 
-const DRIFT_CONFIRMATIONS = loadDriftConfirmations();
+const { confirmations: DRIFT_CONFIRMATIONS, dead: DRIFT_DEAD_SOURCES } = loadDriftConfirmations();
 
 const asOfIndex = process.argv.indexOf("--as-of");
 const AS_OF = asOfIndex >= 0 ? process.argv[asOfIndex + 1] : new Date().toISOString().slice(0, 10);
@@ -79,7 +84,7 @@ for (const id of ids) {
     const frontmatter = parseReferenceFrontmatter(markdown, designPath);
     const verificationPath = join(REFS_DIR, id, ".verification.md");
     const verificationMarkdown = existsSync(verificationPath) ? readFileSync(verificationPath, "utf8") : "";
-    entries.push(evaluateReferenceQuality({ id, markdown, frontmatter, verificationMarkdown, asOf: AS_OF, colourGrounding: COLOUR_GROUNDING[id], driftConfirmations: DRIFT_CONFIRMATIONS }));
+    entries.push(evaluateReferenceQuality({ id, markdown, frontmatter, verificationMarkdown, asOf: AS_OF, colourGrounding: COLOUR_GROUNDING[id], driftConfirmations: DRIFT_CONFIRMATIONS, driftDeadSources: DRIFT_DEAD_SOURCES }));
   } catch (error) {
     parseErrors.push(`${id}: ${error.message}`);
   }

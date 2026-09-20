@@ -381,12 +381,16 @@ function componentStateGaps(tokens) {
  * snapshot and passes the row for this reference, or nothing.
  */
 /**
+ * `driftDeadSources`: `"<referenceId>/<sourceId>" -> true` for a cited URL the
+ * sweep found returning 404/410. Advisory, never blocking — see the
+ * `source_url_dead` note below for why a dead citation does not demote a tier.
+ *
  * `driftConfirmations`: `"<referenceId>/<sourceId>" -> YYYY-MM-DD`, the date a
  * sweep last found that source's URL serving what it served when it was
  * captured. Produced by `scripts/measure-surface-drift.mjs`; absent by default,
  * and an absent confirmation changes nothing.
  */
-export function evaluateReferenceQuality({ id, markdown, frontmatter, verificationMarkdown = "", asOf, colourGrounding = undefined, driftConfirmations = {} }) {
+export function evaluateReferenceQuality({ id, markdown, frontmatter, verificationMarkdown = "", asOf, colourGrounding = undefined, driftConfirmations = {}, driftDeadSources = {} }) {
   if (!isDate(asOf)) throw new Error(`invalid asOf date: ${asOf}`);
 
   const reasons = [];
@@ -515,6 +519,7 @@ export function evaluateReferenceQuality({ id, markdown, frontmatter, verificati
  * "산문으로만 서술됨"은 틀렸다는 뜻이 전혀 아니라 가장 약하다.
  */
 const ADVISORY_SEVERITY = [
+  "source_url_dead",
   "palette_contradicted",
   "token_value_self_declared_derived",
   "palette_grounding_low",
@@ -532,6 +537,25 @@ function bySeverity(a, b) {
 
   const coverage = componentCoverage(tokens);
   const advisories = [];
+  /**
+   * A cited URL that now returns 404/410. Advisory, not blocking, and the
+   * distinction is the point.
+   *
+   * The observation is not wrong: the page existed when it was read in July and
+   * the capture is archived. What is gone is the reader's ability to check it,
+   * and that is a real loss for a catalogue whose whole claim is provenance you
+   * can follow. So it is surfaced and repairable — point the source at the live
+   * replacement — rather than silently demoting a reference for a fact about
+   * someone else's sitemap.
+   *
+   * It leads ADVISORY_SEVERITY because it is the only advisory that is certain:
+   * every other one infers something about a value, this one records an HTTP
+   * status. Separated from `blocked` (403/429) on purpose — that stays unknown,
+   * and unknown must not be filed as a defect.
+   */
+  const deadSources = normalizeList(v2?.sources)
+    .filter((source) => source?.id && driftDeadSources[`${id}/${source.id}`]);
+  if (deadSources.length > 0) advisories.push("source_url_dead");
   if (coverage.total === 0) advisories.push("component_absent");
   else if (coverage.interactive === 0) advisories.push("component_noninteractive_only");
   else if (coverage.stated === 0) advisories.push("component_state_prose_only");
