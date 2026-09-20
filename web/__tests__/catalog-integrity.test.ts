@@ -524,6 +524,11 @@ describe("adopted references survive every catalog reader", () => {
   test("every generated artifact carries it with a peer's key set and real values", async () => {
     const { REFERENCE_QUALITY_BY_ID } = await import("../src/data/reference-quality.generated");
     const peerId = REGISTRY.map((entry) => entry.id).find((id) => !adoptedIds.includes(id))!;
+    const { readReferenceSource } = await import("../scripts/lib/reference-source.mjs");
+    const { parseReferenceFrontmatter } = await import("../scripts/lib/reference-quality.mjs");
+    const sourceCounts = new Map(adoptedIds.map((id) => [id, (parseReferenceFrontmatter(
+      readReferenceSource(join(REFS_DIR, id)).markdown, id,
+    ).verification_v2?.sources ?? []).length]));
     const astManifest = JSON.parse(
       readFileSync(join(WEB_ROOT, "src", "data", "reference-ast.generated.json"), "utf8"),
     ) as { references: Array<{ identity: { id: string } }> };
@@ -548,9 +553,14 @@ describe("adopted references survive every catalog reader", () => {
       expect(quality, `reference-quality.generated.ts is missing ${id}`).toBeTruthy();
       expect(Object.keys(REFERENCE_QUALITY_BY_ID[peerId]!).filter((key) => !(key in quality!)),
         `${id}: quality keys present on ${peerId} but missing here`).toEqual([]);
-      // A blind reader yields sourceCount 0 and a legacy_snapshot tier. This is
-      // the exact shape of the drift-sweep bug, asserted from the other end.
-      expect(quality!.sourceCount, `${id}: quality sourceCount is 0 — the graph did not survive`).toBeGreaterThan(0);
+      // The artifact must agree with the reconstruction. Not `> 0`: a
+      // legacy_snapshot reference has no sources before or after adoption, and
+      // the catalog is adopting all 440 — an assertion that fails on the first
+      // such adoption is testing the fixture, not the property. Equality is the
+      // real claim, and it is still the drift-sweep bug asserted from the other
+      // end: a blind reader yields 0 against a reconstruction that has 12.
+      expect(quality!.sourceCount, `${id}: quality sourceCount disagrees with the reconstruction`)
+        .toBe(sourceCounts.get(id));
 
       expect(astManifest.references.some((reference) => reference.identity.id === id),
         `portable AST is missing ${id}`).toBe(true);

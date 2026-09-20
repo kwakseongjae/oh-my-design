@@ -63,11 +63,21 @@ function listReferences() {
   const { dir, ids } = listReferenceIds();
   if (!dir) return '_(references catalog not found at build time)_';
   return ids.map((id) => {
-    // pull the first non-empty paragraph from DESIGN.md as a one-liner
+    // Pull the first non-empty paragraph from DESIGN.md as a one-liner.
+    //
+    // Raw is correct here: for an adopted reference the Core v2 body IS the
+    // canonical, and this publishes what the twin endpoint serves. What is not
+    // correct is letting the marker count as prose — an adopted document opens
+    // `<!-- design-md:section experience -->` above its first heading, and the
+    // paragraph splitter took the pair as the brand's description. Measured
+    // 2026-09-20: krds and toss would have published
+    // "<!-- design-md:section experience --> ## 1. Experience" as their catalog
+    // line the next time this ran. Dropping leading comment lines changes those
+    // two and nothing else in the other 438.
     const md = fs.readFileSync(path.join(dir, id, 'DESIGN.md'), 'utf8');
     const firstPara = md
       .split(/\n\s*\n/)
-      .map((p) => p.trim())
+      .map((p) => p.replace(/^(?:\s*<!--[\s\S]*?-->\s*\n?)+/, '').trim())
       .find((p) => p && !p.startsWith('#') && !p.startsWith('---') && !p.startsWith('>'));
     const oneLine = firstPara ? firstPara.replace(/\s+/g, ' ').slice(0, 200) : '';
     return `- **${id}** — ${oneLine} · raw: ${siteUrl}/${id}/design.md`;

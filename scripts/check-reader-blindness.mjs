@@ -35,6 +35,16 @@
  * or `packages/mcp/src/`. Tests are out — a test that reads a fixture raw is
  * usually asserting something about the bytes.
  *
+ * ## What this layer does not catch
+ *
+ * It checks pipeline entry points, not what they import. A script that reads
+ * through a new `./lib/<helper>.mjs` doing `readFileSync(designPath)` passes
+ * here, because the helper is out of scope unless some package.json script
+ * invokes it directly. The behavioural half in
+ * `web/__tests__/catalog-integrity.test.ts` is the backstop for that: whatever
+ * route a reader takes, an adopted reference has to come out of every generated
+ * artifact shaped like an unadopted one.
+ *
  *   node scripts/check-reader-blindness.mjs          # exit 1 on an unlisted blind reader
  *   node scripts/check-reader-blindness.mjs --list   # show every reader and its verdict
  */
@@ -62,6 +72,8 @@ const ALLOWED = new Map([
     "dev-only diagnostic page, prose regexes over the body by design; degrades for adopted references and is not a product surface"],
   ["web/scripts/retire-template-motion.mjs",
     "writer: rewrites DESIGN.md in place, so it must see the bytes it will overwrite. Reading the reconstructed legacy body and writing it back would silently un-adopt the reference — it refuses on isCoreV2Markdown instead"],
+  ["scripts/gen-llms-full.cjs",
+    "publishes the canonical body to llms-full.txt, so raw is what should be published; it drops the Core section marker before picking the catalog one-liner. Reading the reconstruction would publish the pre-adoption text instead of the shipped file"],
   ["scripts/check-counts.mjs",
     "counts directories that contain a DESIGN.md; never reads one"],
 ]);
@@ -92,23 +104,32 @@ const JOIN_DESIGN_MD = /(?:path\.)?join\(([^)]{0,200}?["']DESIGN\.md["'])\)/;
  * it constantly. Only reading it counts.
  */
 function rawReads(source) {
+  // A join can name the tree indirectly — `path.join(dir, id, "DESIGN.md")`
+  // where `dir` came from a list of reference roots. `gen-llms-full.cjs` reads
+  // exactly that way, and the first version of this check, which only matched
+  // the tree inside the join expression itself, lost a published surface
+  // silently. So the file naming a references tree anywhere is enough to make
+  // its DESIGN.md joins count; anything that catches is a decision to record,
+  // not noise to suppress.
+  const fileNamesTree = REFERENCE_TREE.test(source);
   const bound = new Set();
   for (const [, name, expression] of source.matchAll(
     /(?:const|let|var)\s+([A-Za-z_$][\w$]*)\s*=\s*((?:path\.)?join\([^)]{0,200}?["']DESIGN\.md["']\))/g,
   )) {
-    if (REFERENCE_TREE.test(expression)) bound.add(name);
+    if (fileNamesTree || REFERENCE_TREE.test(expression)) bound.add(name);
   }
   const hits = [];
   const lines = source.split("\n");
   for (const [index, line] of lines.entries()) {
     for (const [, argument] of line.matchAll(/\b(?:await\s+)?readFileSync?\s*\(\s*([^,)]+)/g)) {
       const arg = argument.trim();
-      const inlineJoin = JOIN_DESIGN_MD.test(line) && REFERENCE_TREE.test(line);
+      const inlineJoin = JOIN_DESIGN_MD.test(line) && (fileNamesTree || REFERENCE_TREE.test(line));
       if (bound.has(arg) || (inlineJoin && /DESIGN\.md/.test(line))) hits.push(index + 1);
     }
     // `readFileSync(join(REFS, id, "DESIGN.md"), "utf8")` — the argument capture
     // above stops at the first comma inside join(), so match the whole line too.
-    if (/\breadFile(?:Sync)?\s*\(/.test(line) && JOIN_DESIGN_MD.test(line) && REFERENCE_TREE.test(line)) {
+    if (/\breadFile(?:Sync)?\s*\(/.test(line) && JOIN_DESIGN_MD.test(line)
+      && (fileNamesTree || REFERENCE_TREE.test(line))) {
       if (!hits.includes(index + 1)) hits.push(index + 1);
     }
   }
@@ -130,8 +151,9 @@ function stripComments(source) {
 
 /** True when the file touches a reference DESIGN.md path at all — the scope filter. */
 function touchesAReference(source) {
+  const fileNamesTree = REFERENCE_TREE.test(source);
   for (const [, expression] of source.matchAll(new RegExp(JOIN_DESIGN_MD, "g"))) {
-    if (REFERENCE_TREE.test(expression)) return true;
+    if (fileNamesTree || REFERENCE_TREE.test(expression)) return true;
   }
   return false;
 }
