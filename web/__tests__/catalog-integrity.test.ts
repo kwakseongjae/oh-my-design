@@ -448,3 +448,115 @@ describe("catalog-integrity / cross-cutting", () => {
 
 // touch statSync to keep import for potential future timestamp checks
 void statSync;
+
+/**
+ * The write gate: every catalog reader accepts an adopted package.
+ *
+ * Adoption moves a reference's frontmatter — country, category, verified date,
+ * tokens, the whole `verification_v2` graph — out of DESIGN.md and into
+ * `.omd/system/`. A reader that opens the raw file and parses frontmatter does
+ * not fail on one. It succeeds and returns nothing, and every count downstream
+ * is quietly short.
+ *
+ * That shipped twice before this existed: the drift sweep reported krds and toss
+ * as having no evidence sources, and the MCP bundle served toss with an empty
+ * frontmatter map. Both were found by hand, months apart. `scripts/check-reader-
+ * blindness.mjs` is the static half — it fails a new pipeline reader that has not
+ * chosen a side. This is the behavioural half: whatever the readers do, an
+ * adopted reference must come out of every generated artifact shaped like any
+ * other, because that is the property the catalog actually depends on.
+ *
+ * The adopted set is derived, never listed. Two references are adopted today and
+ * the catalog is going that way; a test that names them stops testing the moment
+ * a third arrives.
+ */
+describe("adopted references survive every catalog reader", () => {
+  const adoptedIds = readdirSync(REFS_DIR, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory()
+      && existsSync(join(REFS_DIR, entry.name, ".omd", "system", "graph.json")))
+    .map((entry) => entry.name)
+    .sort();
+
+  test("at least one reference is adopted, or this whole block is vacuous", () => {
+    expect(adoptedIds.length).toBeGreaterThan(0);
+  });
+
+  test("an adopted canonical carries no frontmatter — the premise of the gate", () => {
+    for (const id of adoptedIds) {
+      const raw = readFileSync(join(REFS_DIR, id, "DESIGN.md"), "utf8");
+      expect(raw.startsWith("---\n"), `${id}: adopted canonical unexpectedly has frontmatter`).toBe(false);
+      expect(raw).toContain("<!-- design-md:section ");
+    }
+  });
+
+  test("the package-aware reader rebuilds the legacy source for each", async () => {
+    const { readReferenceSource } = await import("../scripts/lib/reference-source.mjs");
+    for (const id of adoptedIds) {
+      const source = readReferenceSource(join(REFS_DIR, id));
+      expect(source.format, `${id}`).toBe("core-v2");
+      expect(source.reconstructed, `${id}: rebuilt from the package, not read off disk`).toBe(true);
+      expect(source.markdown.startsWith("---\n"), `${id}: reconstruction has no frontmatter`).toBe(true);
+    }
+  });
+
+  test("its frontmatter has the same shape as an unadopted reference's", async () => {
+    const { readReferenceSource } = await import("../scripts/lib/reference-source.mjs");
+    const { parseReferenceFrontmatter } = await import("../scripts/lib/reference-quality.mjs");
+    const peer = REGISTRY.map((entry) => entry.id).find((id) => !adoptedIds.includes(id));
+    if (!peer) throw new Error("no unadopted reference to compare against");
+    const peerKeys = new Set(Object.keys(parseReferenceFrontmatter(
+      readReferenceSource(join(REFS_DIR, peer)).markdown, peer,
+    )));
+
+    for (const id of adoptedIds) {
+      const frontmatter = parseReferenceFrontmatter(readReferenceSource(join(REFS_DIR, id)).markdown, id);
+      // Not equality: references legitimately differ in optional keys. What must
+      // hold is that the load-bearing ones are all there and non-empty — an empty
+      // map is precisely what a blind reader produces.
+      for (const key of ["id", "name", "country", "category", "verified", "tokens", "verification_v2"]) {
+        expect(frontmatter[key], `${id}: frontmatter.${key} missing after reconstruction`).toBeTruthy();
+      }
+      expect(Object.keys(frontmatter).length, `${id}: far fewer keys than ${peer}`)
+        .toBeGreaterThanOrEqual(Math.floor(peerKeys.size * 0.7));
+    }
+  });
+
+  test("every generated artifact carries it with a peer's key set and real values", async () => {
+    const { REFERENCE_QUALITY_BY_ID } = await import("../src/data/reference-quality.generated");
+    const peerId = REGISTRY.map((entry) => entry.id).find((id) => !adoptedIds.includes(id))!;
+    const astManifest = JSON.parse(
+      readFileSync(join(WEB_ROOT, "src", "data", "reference-ast.generated.json"), "utf8"),
+    ) as { references: Array<{ identity: { id: string } }> };
+    const ledger = JSON.parse(
+      readFileSync(join(ROOT, "data", "evidence-ledger.json"), "utf8"),
+    ) as { references: Record<string, unknown> };
+    const ledgerIds = new Set(Object.keys(ledger.references ?? {}));
+
+    for (const id of adoptedIds) {
+      const entry = REGISTRY_BY_ID[id];
+      expect(entry, `registry.generated.ts is missing ${id}`).toBeTruthy();
+      // Superset, not equality: `ds` and other optional keys legitimately vary
+      // between references. The failure mode being guarded is the adopted entry
+      // coming out *thinner* than a peer, never richer.
+      expect(Object.keys(REGISTRY_BY_ID[peerId]!).filter((key) => !(key in entry!)),
+        `${id}: registry keys present on ${peerId} but missing here`).toEqual([]);
+      // The values a blind reader loses first.
+      expect(entry!.country, `${id}: registry country`).toBeTruthy();
+      expect(entry!.tokens?.colors?.primary ?? entry!.tokens?.color?.primary, `${id}: registry primary token`).toBeTruthy();
+
+      const quality = REFERENCE_QUALITY_BY_ID[id];
+      expect(quality, `reference-quality.generated.ts is missing ${id}`).toBeTruthy();
+      expect(Object.keys(REFERENCE_QUALITY_BY_ID[peerId]!).filter((key) => !(key in quality!)),
+        `${id}: quality keys present on ${peerId} but missing here`).toEqual([]);
+      // A blind reader yields sourceCount 0 and a legacy_snapshot tier. This is
+      // the exact shape of the drift-sweep bug, asserted from the other end.
+      expect(quality!.sourceCount, `${id}: quality sourceCount is 0 — the graph did not survive`).toBeGreaterThan(0);
+
+      expect(astManifest.references.some((reference) => reference.identity.id === id),
+        `portable AST is missing ${id}`).toBe(true);
+      if (quality!.status === "verified_v2") {
+        expect(ledgerIds.has(id), `evidence ledger is missing verified ${id}`).toBe(true);
+      }
+    }
+  });
+});

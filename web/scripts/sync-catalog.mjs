@@ -21,6 +21,7 @@
 import { readFileSync, writeFileSync, existsSync, readdirSync, cpSync, mkdirSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { readReferenceSource } from './lib/reference-source.mjs';
 import { execSync } from 'node:child_process';
 import yaml from 'js-yaml';
 
@@ -81,7 +82,10 @@ function countRules({ refs, skills, subagents }) {
 const TONE_LEXICON = ['clean', 'bold', 'warm', 'dark', 'playful', 'minimal', 'dense', 'flat', 'editorial', 'calm', 'energetic', 'trustworthy', 'friendly', 'modern', 'vivid', 'systematic', 'utilitarian', 'premium', 'approachable', 'confident', 'cinematic', 'immersive', 'organic', 'human'];
 
 function frontmatter(id) {
-  const md = readFileSync(join(REFS, id, 'DESIGN.md'), 'utf-8');
+  // Through the package-aware reader: an adopted reference keeps its frontmatter
+  // in `.omd/`, and the raw file is a Core body whose `md.indexOf('\n---\n')`
+  // finds no fence — yaml.load would then be handed the whole document.
+  const md = readReferenceSource(join(REFS, id)).markdown;
   const close = md.indexOf('\n---\n', 4);
   return { fm: yaml.load(md.slice(4, close)), md };
 }

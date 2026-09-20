@@ -29,6 +29,7 @@
 import { existsSync, readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { isCoreV2Markdown } from "./lib/reference-source.mjs";
 import yaml from "js-yaml";
 
 const WEB = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -72,6 +73,11 @@ export function retire(id) {
   const file = join(REFS, id, "DESIGN.md");
   if (!existsSync(file)) return { id, ok: false, reason: "missing" };
   const raw = readFileSync(file, "utf8");
+  // Deliberately the raw file, and deliberately refusing on an adopted one.
+  // This rewrites DESIGN.md in place; writing a reconstructed legacy body over
+  // an adopted canonical would silently un-adopt the reference. The motion table
+  // for an adopted reference has to be retired in its package instead.
+  if (isCoreV2Markdown(raw)) return { id, ok: false, reason: "adopted-core-v2" };
   const fm = raw.match(/^---\n([\s\S]*?)\n---\n/);
   if (!fm) return { id, ok: false, reason: "no-frontmatter" };
   let front; try { front = yaml.load(fm[1], { schema: yaml.JSON_SCHEMA }); } catch { return { id, ok: false, reason: "bad-yaml" }; }

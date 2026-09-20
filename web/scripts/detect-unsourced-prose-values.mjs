@@ -36,6 +36,7 @@
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { readReferenceSource } from "./lib/reference-source.mjs";
 import yaml from "js-yaml";
 
 const WEB = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -73,7 +74,9 @@ const records = [];
 for (const id of readdirSync(REFS).sort()) {
   const design = join(REFS, id, "DESIGN.md");
   if (!existsSync(design)) continue;
-  const raw = readFileSync(design, "utf8");
+  // Through the package-aware reader: an adopted reference keeps its frontmatter
+  // in `.omd/`, and reading the raw file would return a Core body this parses to nothing.
+  const raw = readReferenceSource(join(REFS, id)).markdown;
   const fmMatch = raw.match(/^---\n([\s\S]*?)\n---\n/);
   if (!fmMatch) continue;
   let front; try { front = yaml.load(fmMatch[1], { schema: yaml.JSON_SCHEMA }); } catch { continue; }

@@ -2,6 +2,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { readReferenceSource } from "./lib/reference-source.mjs";
 import { chromium, type Page, type Response as PlaywrightResponse } from "playwright-core";
 import {
   aggregateReferenceEvidence,
@@ -35,7 +36,11 @@ if (!target) {
 const isUrl = /^https?:\/\//.test(target);
 const referenceId = option("--id") ?? (isUrl ? slugFromUrl(target) : target);
 const designPath = join(WEB_ROOT, "references", referenceId, "DESIGN.md");
-const markdown = existsSync(designPath) ? readFileSync(designPath, "utf8") : "";
+// Through the package-aware reader: an adopted reference keeps its frontmatter
+// in `.omd/`, and reading the raw file would return a Core body this parses to nothing.
+const markdown = existsSync(designPath)
+  ? readReferenceSource(join(WEB_ROOT, "references", referenceId)).markdown
+  : "";
 const homepage = option("--url") ?? (isUrl ? target : markdown.match(/^homepage:\s*"?([^"\n]+)"?/m)?.[1]);
 if (!homepage) throw new Error(`no homepage for ${referenceId}; pass --url`);
 

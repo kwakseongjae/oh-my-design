@@ -16,6 +16,7 @@
 import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { readReferenceSource } from "./lib/reference-source.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REFS_DIR = path.resolve(__dirname, "..", "references");
@@ -81,7 +82,10 @@ async function main() {
 
   const items = ids.map((id) => ({
     id,
-    text: embedTextFor(id, readFileSync(path.join(REFS_DIR, id, "DESIGN.md"), "utf-8")),
+    // Package-aware: an adopted reference would otherwise contribute its Core
+    // body to a corpus embedded from legacy documents, which is a different
+    // text for the same brand and quietly skews its neighbours.
+    text: embedTextFor(id, readReferenceSource(path.join(REFS_DIR, id)).markdown),
   }));
 
   const vectors = {};

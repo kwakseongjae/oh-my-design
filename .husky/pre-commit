@@ -20,6 +20,14 @@ fi
 echo "[husky] count-drift gate…"
 node scripts/check-counts.mjs
 
+# --- Reader-blindness gate: an adopted reference keeps no frontmatter, so a
+# reader that opens its DESIGN.md raw succeeds and returns nothing. Has shipped
+# twice (drift sweep, MCP bundle). Fast (reads ~250 files); fails the commit on
+# a new pipeline reader that has not chosen a side.
+# Fix: read via readReferenceSource, or list the path with a reason.
+echo "[husky] reader-blindness gate…"
+node scripts/check-reader-blindness.mjs
+
 changed=$(git diff --cached --name-only)
 
 if echo "$changed" | grep -qE '^(web/references/|data/reference-(fingerprints|quality)\.json|scripts/build-reference-quality-data\.mjs|web/scripts/lib/reference-quality\.mjs)'; then

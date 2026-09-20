@@ -1,6 +1,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { readReferenceSource } from "./lib/reference-source.mjs";
 
 const WEB_ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const ROOT = resolve(WEB_ROOT, "..");
@@ -49,8 +50,10 @@ function contextEvidenceBlock(verification) {
 
 function auditReference(id, policy) {
   const markdownPath = join(WEB_ROOT, "references", id, "DESIGN.md");
+  // Through the package-aware reader: an adopted reference keeps its frontmatter
+  // in `.omd/`, and reading the raw file would return a Core body this parses to nothing.
   const verificationPath = join(WEB_ROOT, "references", id, ".verification.md");
-  const markdown = readFileSync(markdownPath, "utf8");
+  const markdown = readReferenceSource(join(WEB_ROOT, "references", id)).markdown;
   const verification = existsSync(verificationPath) ? readFileSync(verificationPath, "utf8") : "";
   const sections = sectionMap(markdown);
   const intro = firstParagraph(sections[1]);
