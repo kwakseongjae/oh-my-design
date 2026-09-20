@@ -112,7 +112,7 @@ function validGraph(): Record<string, any> {
   return graph;
 }
 
-function compilePackage(root: string, options: { resolvedEvidence?: boolean; duplicateEvidenceFile?: boolean } = {}): string {
+function compilePackage(root: string, options: { resolvedEvidence?: boolean; duplicateEvidenceFile?: boolean; extensions?: Record<string, unknown> } = {}): string {
   const inputs = join(root, 'compiler-inputs');
   const packageRoot = join(root, 'compiled-package');
   mkdirSync(inputs, { recursive: true });
@@ -122,6 +122,7 @@ function compilePackage(root: string, options: { resolvedEvidence?: boolean; dup
   const reviewPath = join(inputs, 'review.json');
   const reviewDir = join(inputs, 'prepared-review');
   const graph = validGraph();
+  if (options.extensions) graph.extensions = options.extensions;
   const graphBytes = jsonBytes(graph);
   const decisions = [options.resolvedEvidence ? {
     path: 'identity.name',
@@ -874,5 +875,71 @@ describe('DESIGN.md Core v2 project adopter', () => {
     expect(tree(join(projectRoot, '.omd/system'))).toEqual(oldSystem);
     expect(readFileSync(join(projectRoot, '.omd/core-adoption-transaction.json'), 'utf8'))
       .toBe('{"foreign":true}\n');
+  });
+});
+
+/**
+ * Authoring a reference as Core v2 from the start — spec §10 stage 5.
+ *
+ * There is no separate native writer, and the one I assumed was missing turned
+ * out to be this chain: `prepare` → owner approval → `compile --adopt` takes a
+ * draft graph and emits the sealed six-artifact package with no
+ * `--migration-report`, because there is nothing to migrate. What blocked stage 5
+ * was only the read side, which required `original_segments` to recover catalog
+ * metadata a native package never had.
+ *
+ * Two properties make this an authoring path rather than an accident, and
+ * neither was covered: `validGraph()` deletes `extensions` outright, so nothing
+ * asserted that the compiler honours spec §6 — "a reader that does not
+ * understand an extension MUST preserve its key and value" — and nothing
+ * connected a compiled package to the catalog readers that have to consume it.
+ */
+describe('authoring a reference natively as Core v2', () => {
+  const catalogExtension = {
+    'dev.oh-my-design.catalog': {
+      schema_version: '1.0.0',
+      frontmatter: {
+        id: 'fixture-native',
+        name: 'Fixture Native',
+        country: 'JP',
+        category: 'consumer-tech',
+        homepage: 'https://example.test/',
+        primary_color: '#0650a0',
+        logo: { type: 'favicon', slug: 'example.test' },
+        verified: '2026-09-21',
+        added: '2026-09-21',
+      },
+    },
+  };
+
+  it('preserves an opaque extension through the sealed transaction', () => {
+    const packageRoot = compilePackage(tempRoot(), { extensions: catalogExtension });
+    const graph = JSON.parse(readFileSync(join(packageRoot, '.omd/system/graph.json'), 'utf8'));
+    // Byte-identical, not merely present: an extension the compiler half-understood
+    // would be worse than one it dropped.
+    expect(graph.extensions).toEqual(catalogExtension);
+    expect(readFileSync(join(packageRoot, 'DESIGN.md'), 'utf8').startsWith('---')).toBe(false);
+  });
+
+  it('produces a package the catalog readers accept, with no migration to rebuild from', async () => {
+    const packageRoot = compilePackage(tempRoot(), { extensions: catalogExtension });
+    const { readReferenceSource } = await import('../../../web/scripts/lib/reference-source.mjs');
+    const source = readReferenceSource(packageRoot);
+
+    expect(source.format).toBe('core-v2');
+    expect(source.projected, 'declared catalog metadata, rendered').toBe(true);
+    expect(source.reconstructed, 'nothing was migrated, so nothing is reconstructed').toBe(false);
+    const { parseReferenceFrontmatter } = await import('../../../web/scripts/lib/reference-quality.mjs');
+    expect(parseReferenceFrontmatter(source.markdown, 'fixture-native'))
+      .toEqual(catalogExtension['dev.oh-my-design.catalog'].frontmatter);
+  });
+
+  it('still refuses a package that declares nothing at all', () => {
+    const packageRoot = compilePackage(tempRoot());
+    return import('../../../web/scripts/lib/reference-source.mjs').then(({ readReferenceSource }) => {
+      // No migration and no catalog extension: the reference has no catalog
+      // identity and must not be guessed into one.
+      expect(() => readReferenceSource(packageRoot)).toThrow(/no preserved original segments/);
+    });
   });
 });
