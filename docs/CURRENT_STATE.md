@@ -3,7 +3,41 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
-## ✅ 2026-09-21 — Stage 5 **읽기 경로 해제**: 네이티브 Core v2 레퍼런스가 읽힌다 (`778907ea`)
+## ✅ 2026-09-21 — **Stage 5 열림.** 네이티브 writer는 없는 게 아니라 이미 있었다 (`39c94ea3`)
+→ 절차: `docs/NATIVE_CORE_AUTHORING_2026-09-21.md`
+
+**정정**: 어제 "네이티브 writer가 없다, 5개 아티팩트를 손으로 만들어야 한다"고 썼다(`778907ea`).
+**코드를 읽고 쓴 것이고 돌려보지 않았다.** 기존 5단계 체인이 그대로 네이티브 writer다 —
+`--migration-report`가 **선택 인자**라 마이그레이션할 게 없으면 안 주면 된다.
+
+카탈로그 확장을 실은 draft graph로 끝까지 돌린 결과:
+
+```
+compile --adopt      → DESIGN.md + .omd/system/{graph,provenance,coverage,manifest,receipt}
+컴파일된 graph        → dev.oh-my-design.catalog 그대로 보존 (스펙 §6)
+canonical frontmatter → 없음
+readReferenceSource  → core-v2 · projected · 12키 · 출처 12건
+웹 봉인 검증기        → verified
+```
+
+**즉 Stage 5를 막고 있던 건 읽기 쪽 하나뿐이었고, 그건 어제 고쳤다.** 확충의 기술적 전제는
+이제 없다. 남은 건 오너 결정 2건과 draft graph를 조사 결과에서 만드는 도구뿐이다.
+
+테스트 3건 추가. 메우는 구멍이 실재한다 — 기존 `validGraph()`가 `extensions`를 지워서
+**컴파일러가 스펙 §6(확장 보존)을 지키는지 아무도 검사하지 않고 있었다.** 세 번째는 거부를
+고정한다: 마이그레이션도 카탈로그 확장도 없는 패키지는 여전히 던진다(카탈로그 정체성이
+없는 레퍼런스를 추측으로 만들면 안 된다).
+
+**어제의 번들 churn을 진단 완료.** `tsup.config.ts:101`이 `capture-reference-evidence.ts`를
+`skills/`로 번들하고, `prepare: npm run build`가 `npm pack`에서 돌고, `packaged-*-smoke`
+테스트 3개가 pack한다 → **추적되는 7MB 파일을 스위트 중간에 비결정적으로 다시 쓴다**
+(7143941 vs 7252465바이트). 이번 전체 실행에서 `activation-reuse`의 byte-stable 단언이
+해시 불일치로 실패했다(격리 실행은 통과). **단순한 지저분함이 아니라 플레이크의 원인**이다.
+수정은 릴리스 패키징(pack 시 생성·추적 중단) 또는 번들 결정화 — 둘 중 추측하지 않고 보고만.
+
+---
+
+## ✅ 2026-09-21 — Stage 5 읽기 경로 해제 (`778907ea`)
 
 어제 막혀 있던 것을 열었다. 리더 12개가 전부 `original_segments`(마이그레이션 산물)에서
 카탈로그 메타데이터를 복원하고 있었고, 네이티브 레퍼런스엔 그게 없어 전부 던졌다.

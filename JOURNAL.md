@@ -18,7 +18,8 @@
 - **한 일(13)**: **write gate 완성**(`126e50b5`). 정적(`check-reader-blindness`, husky) + 행위(`catalog-integrity`) 2층. 눈먼 리더 7개 발견 → 6개 전환, 1개(라이터)는 거부하게. 먼저 **MCP 번들이 toss를 frontmatter 0키로 서빙**하던 실제 버그 수정(`eaceab89`). 게이트를 시험해서 내 설계 결함 5개 교정 — 파일 단위 판정·자기 문서 오탐·`gen-llms-full` false negative(발행 surface 잠복 버그 포함)·배포 스킬 사본 stale·`sourceCount>0`이 픽스처 테스트.
 - **한 일(14)**: 확충 계획 수립(`docs/EXPANSION_PLAN_2026-09-20.md`). **Stage 5가 막혀 있음을 실측** — 네이티브 Core v2 레퍼런스는 리더 12개 전부가 던진다(legacy 복원이 마이그레이션 산물에 의존). 선정 기준 답: 기존 440의 55%는 기록된 근거 없음.
 - **한 일(15)**: **Stage 5 읽기 경로 해제**(`778907ea`). 네이티브 Core v2는 `extensions["dev.oh-my-design.catalog"]`로 카탈로그 메타데이터를 선언하고, 리더는 reconstruct(마이그레이션·해시검증·우선) / project(네이티브)로 갈린다. **웹 소비자는 이미 열려 있었다**(확인 후 진행). 내 실수 2건을 clean worktree로 잡음(픽스처 gitignore·테스트가 빌드 산출물 읽음).
-- **다음**: **네이티브 writer**(웨이브 1이 필요) · 오너 결정 2건 대기(목표 630~710 vs 1000 · CN 확대) · CN proof gate → 분류 정리 → 어휘 재조사 · 죽은 인용 8건(1월 마감)(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(16)**: **Stage 5 열림**(`39c94ea3`). "네이티브 writer가 없다"는 **내 오판** — 기존 체인이 `--migration-report` 없이 그대로 동작한다(끝까지 돌려 확인: 확장 보존·projected·웹 verified). 절차 문서화 + 테스트 3건(확장 보존을 아무도 검사 안 하고 있었다). 번들 churn 원인 규명: `npm pack`→`tsup`이 추적 파일을 비결정적으로 재생성 → `activation-reuse` 플레이크.
+- **다음**: **오너 결정 2건**(목표 630~710 vs 1000 · CN 확대) · draft graph 생성 도구(웨이브 1) · CN proof gate → 분류 정리 → 어휘 재조사 · 죽은 인용 8건(1월 마감)(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)
