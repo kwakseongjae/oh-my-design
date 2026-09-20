@@ -3,7 +3,34 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
-## 🔬 2026-09-20 — 만료 벽: 드리프트를 처음으로 **실측**했다 (`6cf1502f`)
+## 🔬 2026-09-20 — 만료 벽: 드리프트 **전수 실측 완료** (`6cf1502f`, `59d0a9f0`)
+
+`scripts/measure-surface-drift.mjs` · 베이스라인 `data/surface-drift-2026-09-20.json`
+playwright-core 헤드리스 · **라이트 모드 강제** · 번들 기록 viewport · 경과 **69일**
+
+| 판정 | 수 |
+|---|---|
+| **unchanged** | **154** |
+| changed | 10 |
+| unreachable | 4 |
+| not-comparable(테마 반응형) | 1 (tesla) |
+
+**비교 가능 164건 중 154건 = 94%가 네 값(color·background·font·size) 전부 동일.**
+변한 10건 중 **musinsa·myrealtrip(빌드 해시)·lovable(oklch 표기)·ably(헤드리스 폰트 미로드
+의심)는 드리프트가 아니다** → 실제 변화는 **6~7건, 약 4%**.
+진짜로 변한 것: intuit(폰트명+색4) · recruit(Tazugane Gothic→Noto Sans JP) · toss(전면 개편) ·
+kakao-login · wanted · mistral.ai.
+
+**만료 정책에 대한 답**: 2027-01-07~09에 **141건이 한꺼번에 만료**되는데 실제로 변한 건 약 4%다.
+날짜는 **135건가량의 올바른 관측을 무효화**하고, 동시에 다음 주 개편될 표면을 180일간
+통과시킨다. **양쪽에서 잘못된 도구다.** 변경 감지가 더 싸다 — 이 전수가 헤드리스 1회 수 분.
+
+**부수 발견 2건**: `inline`·`kakaopay`·`kktix`가 헤드리스에 **403**(재검증이 이 경로로는 못 봄) ·
+`fixture` 번들이 `127.0.0.1:50625`를 가리킨다(`reference-capture-fixture` — 카탈로그
+레퍼런스가 아니라 캡쳐 하네스 테스트 픽스처가 증거 디렉터리에 남은 것).
+
+**남은 한계**: `body` 프로브만이라 "개편 안 됨"이지 "모든 값 동일"이 아니다 · 69일이지 180일이
+아니다 · 번들에 `colorScheme` 기록이 필요하다(tesla 비교 불가 원인).
 
 `SOURCE_TTLS` 주석이 남긴 숙제("7월 번들과 diff해서 90일에 실제로 얼마나 변하는지 알아내라")를
 실행했다. 177개 번들 중 **169개**가 `home` 표면 `body`의 computed style을 갖고 있다 —
