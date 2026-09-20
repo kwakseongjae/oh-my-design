@@ -1,0 +1,3429 @@
+{
+ "measuredAt": "2026-09-20",
+ "baseline": "artifacts/reference-evidence-2026-07",
+ "probe": "home surface body computed style",
+ "conditions": {
+  "colorScheme": "light",
+  "viewport": "per-bundle, 1440x900",
+  "tool": "playwright-core headless chrome"
+ },
+ "tally": {
+  "unchanged": 154,
+  "changed": 10,
+  "unreachable": 4,
+  "not-comparable": 1
+ },
+ "results": [
+  {
+   "id": "104",
+   "url": "https://www.104.com.tw/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(41, 41, 41)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Arial",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(41, 41, 41)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Arial",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "11st",
+   "url": "https://www.11st.co.kr/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(102, 102, 102)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Noto Sans KR",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(102, 102, 102)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Noto Sans KR",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "29cm",
+   "url": "https://www.29cm.co.kr/",
+   "capturedAt": "2026-07-11",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "ably",
+   "url": "https://m.a-bly.com/",
+   "capturedAt": "2026-07-12",
+   "verdict": "changed",
+   "changed": [
+    "font"
+   ],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "__Pretendard_a4ae19",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Times",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "acer",
+   "url": "https://www.acer.com/kr-ko/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(34, 34, 34)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Noto Sans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(34, 34, 34)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Noto Sans",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "airbnb",
+   "url": "https://www.airbnb.co.kr/?_set_bev_on_new_domain=1783835184_EANmM1ZDE2NjhhOT&set_everest_cookie_on_new_domain=1783835184.EAYjhhZmJmNWVjMGZlZD.ScsfUgAzjAnjtgcnHqlhKlNOQ06TLxd0gM7gUH0CiaQ",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(34, 34, 34)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Airbnb Cereal VF",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(34, 34, 34)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Airbnb Cereal VF",
+    "size": "14px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "alipay",
+   "url": "https://open.alipay.com/?mobile=2",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgba(0, 0, 0, 0.85)",
+    "background": "rgb(245, 245, 245)",
+    "font": "-apple-system",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgba(0, 0, 0, 0.85)",
+    "background": "rgb(245, 245, 245)",
+    "font": "-apple-system",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "apple-hig",
+   "url": "https://developer.apple.com/design/human-interface-guidelines/buttons",
+   "capturedAt": "2026-07-11",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(29, 29, 31)",
+    "background": "rgb(255, 255, 255)",
+    "font": "SF Pro Text",
+    "size": "17px"
+   },
+   "now": {
+    "color": "rgb(29, 29, 31)",
+    "background": "rgb(255, 255, 255)",
+    "font": "SF Pro Text",
+    "size": "17px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "apple",
+   "url": "https://www.apple.com/",
+   "capturedAt": "2026-07-11",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(29, 29, 31)",
+    "background": "rgb(255, 255, 255)",
+    "font": "SF Pro Text",
+    "size": "17px"
+   },
+   "now": {
+    "color": "rgb(29, 29, 31)",
+    "background": "rgb(255, 255, 255)",
+    "font": "SF Pro Text",
+    "size": "17px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "aws-cloudscape",
+   "url": "https://cloudscape.design/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Times",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Times",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "baemin",
+   "url": "https://www.baemin.com/",
+   "capturedAt": "2026-07-11",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(246, 246, 246)",
+    "font": "-apple-system",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(246, 246, 246)",
+    "font": "-apple-system",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "banksalad",
+   "url": "https://www.banksalad.com/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(17, 17, 17)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(17, 17, 17)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "bilibili",
+   "url": "https://www.bilibili.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(24, 25, 28)",
+    "background": "rgb(241, 242, 243)",
+    "font": "-apple-system",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(24, 25, 28)",
+    "background": "rgb(241, 242, 243)",
+    "font": "-apple-system",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "brandi",
+   "url": "https://www.brandi.co.kr/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(32, 36, 41)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Spoqa Han Sans",
+    "size": "13px"
+   },
+   "now": {
+    "color": "rgb(32, 36, 41)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Spoqa Han Sans",
+    "size": "13px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "catchtable",
+   "url": "https://www.catchtable.net/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Std Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Std Variable",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "cgv",
+   "url": "https://cgv.co.kr/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(18, 18, 18)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "pretendard",
+    "size": "10px"
+   },
+   "now": {
+    "color": "rgb(18, 18, 18)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "pretendard",
+    "size": "10px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "channeltalk",
+   "url": "https://channel.io/kr",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgba(0, 0, 0, 0.85)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "10px"
+   },
+   "now": {
+    "color": "rgba(0, 0, 0, 0.85)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "10px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "china-airlines",
+   "url": "https://www.china-airlines.com/kr/ko",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Roboto",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Roboto",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "class101",
+   "url": "https://class101.net/ko?viewMode=svod",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard Variable",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "classum",
+   "url": "https://business.classum.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgb(246, 246, 249)",
+    "font": "Pretendard Variable",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgb(246, 246, 249)",
+    "font": "Pretendard Variable",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "claude",
+   "url": "https://www.anthropic.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(20, 20, 19)",
+    "background": "rgb(250, 249, 245)",
+    "font": "Anthropic Serif",
+    "size": "20px"
+   },
+   "now": {
+    "color": "rgb(20, 20, 19)",
+    "background": "rgb(250, 249, 245)",
+    "font": "Anthropic Serif",
+    "size": "20px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "clay",
+   "url": "https://www.clay.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Roobertvf",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Roobertvf",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "clickhouse",
+   "url": "https://clickhouse.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "lab(88.8292 0 -0.0000119209)",
+    "background": "rgb(19, 19, 18)",
+    "font": "Inter",
+    "size": "16px"
+   },
+   "now": {
+    "color": "lab(88.8292 0 -0.0000119209)",
+    "background": "rgb(19, 19, 18)",
+    "font": "Inter",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "cohere",
+   "url": "https://cohere.com/ko",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Unica77 Cohere Web",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Unica77 Cohere Web",
+    "size": "16px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "coinone",
+   "url": "https://coinone.co.kr/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(23, 24, 27)",
+    "background": "rgb(255, 255, 255)",
+    "font": "pretendardCoinone",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(23, 24, 27)",
+    "background": "rgb(255, 255, 255)",
+    "font": "pretendardCoinone",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "cookpad",
+   "url": "https://cookpad.com/uk",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(248, 246, 242)",
+    "font": "noto-sans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(248, 246, 242)",
+    "font": "noto-sans",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "coupang",
+   "url": "https://www.coupang.com/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Apple SD Gothic Neo",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Apple SD Gothic Neo",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "ctbc",
+   "url": "https://www.ctbcbank.com/content/twrbo/zh_tw/index.html",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(50, 65, 72)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Arial",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(50, 65, 72)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Arial",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "cursor",
+   "url": "https://cursor.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(38, 37, 30)",
+    "background": "rgb(247, 247, 244)",
+    "font": "CursorGothic",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(38, 37, 30)",
+    "background": "rgb(247, 247, 244)",
+    "font": "CursorGothic",
+    "size": "16px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "dabang",
+   "url": "https://www.dabangapp.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "datarize",
+   "url": "https://www.datarize.ai/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "sans-serif",
+    "size": "12px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "sans-serif",
+    "size": "12px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "dena",
+   "url": "https://dena.com/intl/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "dnp-shuei-gothic-gin-std",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "dnp-shuei-gothic-gin-std",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "dji",
+   "url": "https://www.dji.com/kr",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Open Sans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Open Sans",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "elastic",
+   "url": "https://eui.elastic.co/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(29, 42, 62)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Inter",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(29, 42, 62)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Inter",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "elevenlabs",
+   "url": "https://elevenlabs.io/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(253, 252, 252)",
+    "font": "Inter",
+    "size": "18px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(253, 252, 252)",
+    "font": "Inter",
+    "size": "18px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "eslite",
+   "url": "https://www.eslite.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Noto Sans TC",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Noto Sans TC",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "evaair",
+   "url": "https://www.evaair.com/ko-kr/index.html",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Dotum",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Dotum",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "expo",
+   "url": "https://expo.dev/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(28, 32, 36)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Inter",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(28, 32, 36)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Inter",
+    "size": "16px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "familymart-tw",
+   "url": "https://www.family.com.tw/Marketing/ko",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Microsoft JhengHei",
+    "size": "10px"
+   },
+   "now": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Microsoft JhengHei",
+    "size": "10px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "figma",
+   "url": "https://www.figma.com/ko-kr/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "figmaSans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "figmaSans",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "fixture",
+   "url": "http://127.0.0.1:50625/",
+   "capturedAt": "2026-07-11",
+   "verdict": "unreachable",
+   "changed": [],
+   "july": {
+    "color": "rgb(17, 24, 39)",
+    "background": "rgb(247, 248, 252)",
+    "font": "Arial",
+    "size": "16px"
+   },
+   "now": null,
+   "error": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:50625/"
+  },
+  {
+   "id": "flex",
+   "url": "https://flex.team/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "framer",
+   "url": "https://www.framer.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(0, 0, 0)",
+    "font": "sans-serif",
+    "size": "12px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(0, 0, 0)",
+    "font": "sans-serif",
+    "size": "12px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "freee",
+   "url": "https://www.freee.co.jp/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(89, 89, 89)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Noto Sans JP",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(89, 89, 89)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Noto Sans JP",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "gangnamunni",
+   "url": "https://www.gangnamunni.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "PretendardVariable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "PretendardVariable",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "google",
+   "url": "https://www.google.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(232, 232, 232)",
+    "background": "rgb(34, 36, 42)",
+    "font": "Arial",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(232, 232, 232)",
+    "background": "rgb(34, 36, 42)",
+    "font": "Arial",
+    "size": "14px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "hashicorp",
+   "url": "https://www.hashicorp.com/ko",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "system-ui",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "system-ui",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "hyundai",
+   "url": "https://www.hyundai.com/kr/ko/e",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "HyundaiSansTextKR",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "HyundaiSansTextKR",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "hyundaicard",
+   "url": "https://www.hyundaicard.com/index.jsp",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "-apple-system",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "-apple-system",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "inflearn",
+   "url": "https://www.inflearn.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "inline",
+   "url": "https://inline.app/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unreachable",
+   "changed": [],
+   "july": {
+    "color": "rgb(17, 21, 22)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Helvetica Neue",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(17, 21, 22)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Helvetica Neue",
+    "size": "16px",
+    "themeResponsive": false
+   },
+   "httpStatus": 403
+  },
+  {
+   "id": "intuit",
+   "url": "https://design.intuit.com/quickbooks/brand/",
+   "capturedAt": "2026-07-13",
+   "verdict": "changed",
+   "changed": [
+    "color",
+    "background",
+    "font",
+    "size"
+   ],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "AvenirNext forINTUIT",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(57, 58, 61)",
+    "background": "rgb(255, 255, 255)",
+    "font": "AvenirForIntuit",
+    "size": "20px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "jumpit",
+   "url": "https://jumpit.saramin.co.kr/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "kakao-login",
+   "url": "https://developers.kakao.com/docs/ko/kakaologin/design-guide",
+   "capturedAt": "2026-07-11",
+   "verdict": "changed",
+   "changed": [
+    "color",
+    "background"
+   ],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(66, 66, 66)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "kakao",
+   "url": "https://www.kakaocorp.com/page/",
+   "capturedAt": "2026-07-11",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgb(255, 255, 255)",
+    "font": "KakaoSmall",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgb(255, 255, 255)",
+    "font": "KakaoSmall",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "kakaobank",
+   "url": "https://www.kakaobank.com/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard Variable",
+    "size": "16px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "kakaogames",
+   "url": "https://kakaogames.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "SUIT Variable",
+    "size": "0px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "SUIT Variable",
+    "size": "0px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "kakaopay",
+   "url": "https://story.kakaopay.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unreachable",
+   "changed": [],
+   "july": {
+    "color": "rgb(17, 21, 22)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Helvetica Neue",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(17, 21, 22)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Helvetica Neue",
+    "size": "16px",
+    "themeResponsive": false
+   },
+   "httpStatus": 403
+  },
+  {
+   "id": "kakaot",
+   "url": "https://www.kakaomobility.com/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "KakaoBig",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "KakaoBig",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "karrot",
+   "url": "https://www.karrotmarket.com/",
+   "capturedAt": "2026-07-11",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(42, 48, 56)",
+    "background": "rgb(255, 255, 255)",
+    "font": "-apple-system",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(42, 48, 56)",
+    "background": "rgb(255, 255, 255)",
+    "font": "-apple-system",
+    "size": "14px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "kb-kookmin",
+   "url": "https://www.kbstar.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(90, 90, 90)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "맑은 고딕",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(90, 90, 90)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "맑은 고딕",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "kbank",
+   "url": "https://www.kbanknow.com/web/web-home/home/main",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard K Edition",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard K Edition",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "kktix",
+   "url": "https://kktix.com/events",
+   "capturedAt": "2026-07-13",
+   "verdict": "unreachable",
+   "changed": [],
+   "july": {
+    "color": "rgb(49, 49, 49)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "system-ui",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(49, 49, 49)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "system-ui",
+    "size": "16px",
+    "themeResponsive": true
+   },
+   "httpStatus": 403
+  },
+  {
+   "id": "kmong",
+   "url": "https://kmong.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "krds",
+   "url": "https://www.krds.go.kr/html/site/index.html",
+   "capturedAt": "2026-07-11",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(30, 33, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard GOV",
+    "size": "17px"
+   },
+   "now": {
+    "color": "rgb(30, 33, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard GOV",
+    "size": "17px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "kream",
+   "url": "https://kream.co.kr/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(34, 34, 34)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(34, 34, 34)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "kurly",
+   "url": "https://www.kurly.com/main",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard",
+    "size": "14px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "lamborghini",
+   "url": "https://www.lamborghini.com/ko-en",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(32, 32, 32)",
+    "background": "rgb(255, 255, 255)",
+    "font": "LamboType",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(32, 32, 32)",
+    "background": "rgb(255, 255, 255)",
+    "font": "LamboType",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "lguplus",
+   "url": "https://www.lguplus.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "likelion",
+   "url": "https://likelion.net/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(34, 34, 34)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(34, 34, 34)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "line",
+   "url": "https://www.line.me/ko/",
+   "capturedAt": "2026-07-11",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "SFPro",
+    "size": "20px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "SFPro",
+    "size": "20px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "linear.app",
+   "url": "https://linear.app/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(247, 248, 248)",
+    "background": "rgb(8, 9, 10)",
+    "font": "Inter Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(247, 248, 248)",
+    "background": "rgb(8, 9, 10)",
+    "font": "Inter Variable",
+    "size": "16px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "lotteon",
+   "url": "https://www.lotteon.com/p/display/main/lotteon",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgb(255, 255, 255)",
+    "font": "NotoSansKR",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgb(255, 255, 255)",
+    "font": "NotoSansKR",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "lovable",
+   "url": "https://lovable.dev/ko",
+   "capturedAt": "2026-07-12",
+   "verdict": "changed",
+   "changed": [
+    "color",
+    "background"
+   ],
+   "july": {
+    "color": "rgb(3, 3, 3)",
+    "background": "rgb(250, 250, 250)",
+    "font": "Camera Plain Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "oklch(0.1 0 0)",
+    "background": "oklch(0.9699 0 107)",
+    "font": "Camera Plain Variable",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "makinarocks",
+   "url": "https://www.makinarocks.ai/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "megabox",
+   "url": "https://www.megabox.co.kr/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(68, 68, 68)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "NanumBarunGothic",
+    "size": "15px"
+   },
+   "now": {
+    "color": "rgb(68, 68, 68)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "NanumBarunGothic",
+    "size": "15px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "meituan",
+   "url": "https://www.meituan.com/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(17, 25, 37)",
+    "background": "rgb(243, 243, 243)",
+    "font": "PingFang SC",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(17, 25, 37)",
+    "background": "rgb(243, 243, 243)",
+    "font": "PingFang SC",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "mercari",
+   "url": "https://www.mercari.com/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(34, 34, 34)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Averta",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(34, 34, 34)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Averta",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "microsoft",
+   "url": "https://www.microsoft.com/ko-kr",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Segoe UI Variable Text",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Segoe UI Variable Text",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "millie",
+   "url": "https://www.millie.co.kr/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(36, 36, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard Variable",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(36, 36, 36)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard Variable",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "minimax",
+   "url": "https://www.minimaxi.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(24, 24, 27)",
+    "background": "rgb(255, 255, 255)",
+    "font": "MiSans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(24, 24, 27)",
+    "background": "rgb(255, 255, 255)",
+    "font": "MiSans",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "miricanvas",
+   "url": "https://www.miricanvas.com/ko",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Times",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Times",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "miro",
+   "url": "https://miro.com/ko/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(240, 240, 240)",
+    "font": "sans-serif",
+    "size": "12px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(240, 240, 240)",
+    "font": "sans-serif",
+    "size": "12px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "mistral.ai",
+   "url": "https://mistral.ai/",
+   "capturedAt": "2026-07-13",
+   "verdict": "changed",
+   "changed": [
+    "color"
+   ],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(251, 251, 248)",
+    "font": "Inter",
+    "size": "16px"
+   },
+   "now": {
+    "color": "oklch(0.21 0.006 285.885)",
+    "background": "rgb(251, 251, 248)",
+    "font": "Inter",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "mixi",
+   "url": "https://mixi.co.jp/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Noto Sans JP",
+    "size": "10px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Noto Sans JP",
+    "size": "10px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "money-forward",
+   "url": "https://moneyforward.com/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Hiragino Kaku Gothic Pro",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Hiragino Kaku Gothic Pro",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "mozilla",
+   "url": "https://protocol.mozilla.org/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Inter",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Inter",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "musinsa",
+   "url": "https://www.musinsa.com/main/musinsa/recommend?gf=A",
+   "capturedAt": "2026-07-12",
+   "verdict": "changed",
+   "changed": [
+    "font"
+   ],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "mynavi",
+   "url": "https://www.mynavi.jp/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(50, 55, 70)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "游ゴシック体",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(50, 55, 70)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "游ゴシック体",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "myrealtrip",
+   "url": "https://www.myrealtrip.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "changed",
+   "changed": [
+    "font"
+   ],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "__pretandard_7bdbf6",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "__pretandard_1bb09b",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "naver",
+   "url": "https://www.naver.com/",
+   "capturedAt": "2026-07-11",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(46, 46, 46)",
+    "background": "rgb(255, 255, 255)",
+    "font": "-apple-system",
+    "size": "14.7px"
+   },
+   "now": {
+    "color": "rgb(46, 46, 46)",
+    "background": "rgb(255, 255, 255)",
+    "font": "-apple-system",
+    "size": "14.7px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "naverwebtoon",
+   "url": "https://comic.naver.com/index",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "12px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "12px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "nhn",
+   "url": "https://www.nhn.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(33, 33, 38)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(33, 33, 38)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "nhncloud",
+   "url": "https://www.nhncloud.com/kr",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "note",
+   "url": "https://note.com/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(8, 19, 26)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Helvetica Neue",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(8, 19, 26)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Helvetica Neue",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "notion",
+   "url": "https://www.notion.com/ko",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgba(0, 0, 0, 0.95)",
+    "background": "rgb(255, 255, 255)",
+    "font": "NotionInter",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgba(0, 0, 0, 0.95)",
+    "background": "rgb(255, 255, 255)",
+    "font": "NotionInter",
+    "size": "16px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "ohouse",
+   "url": "https://ohou.se/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(66, 66, 66)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "15px"
+   },
+   "now": {
+    "color": "rgb(66, 66, 66)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "15px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "oliveyoung",
+   "url": "https://www.oliveyoung.co.kr/store/main/main.do?oy=0",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(102, 102, 102)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Montserrat",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(102, 102, 102)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Montserrat",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "ollama",
+   "url": "https://ollama.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "ui-sans-serif",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "ui-sans-serif",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "onestore",
+   "url": "https://m.onestore.co.kr/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "helvetica",
+    "size": "15px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "helvetica",
+    "size": "15px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "palantir",
+   "url": "https://blueprintjs.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(28, 33, 39)",
+    "background": "rgb(17, 20, 24)",
+    "font": "-apple-system",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(28, 33, 39)",
+    "background": "rgb(17, 20, 24)",
+    "font": "-apple-system",
+    "size": "14px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "patternfly",
+   "url": "https://www.patternfly.org/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(21, 21, 21)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Red Hat Text",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(21, 21, 21)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Red Hat Text",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "pega",
+   "url": "https://design.pega.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(5, 5, 5)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Roboto Flex",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(5, 5, 5)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Roboto Flex",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "pinkfong",
+   "url": "https://www.thepinkfongcompany.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Spoqa Han Sans Neo",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Spoqa Han Sans Neo",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "pinkoi",
+   "url": "https://www.pinkoi.com/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(57, 57, 62)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Helvetica Neue",
+    "size": "13px"
+   },
+   "now": {
+    "color": "rgb(57, 57, 62)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Helvetica Neue",
+    "size": "13px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "pinterest",
+   "url": "https://kr.pinterest.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(33, 25, 34)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pin Sans",
+    "size": "12px"
+   },
+   "now": {
+    "color": "rgb(33, 25, 34)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pin Sans",
+    "size": "12px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "poya",
+   "url": "https://www.poya.com.tw/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "PT Serif",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "PT Serif",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "publy",
+   "url": "https://publy.co/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(15, 23, 42)",
+    "background": "rgb(255, 255, 255)",
+    "font": "-apple-system",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(15, 23, 42)",
+    "background": "rgb(255, 255, 255)",
+    "font": "-apple-system",
+    "size": "16px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "qanda",
+   "url": "https://qanda.ai/ko",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Std",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Std",
+    "size": "16px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "recruit",
+   "url": "https://www.recruit.co.jp/",
+   "capturedAt": "2026-07-13",
+   "verdict": "changed",
+   "changed": [
+    "font"
+   ],
+   "july": {
+    "color": "rgb(45, 49, 51)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Tazugane Gothic",
+    "size": "10px"
+   },
+   "now": {
+    "color": "rgb(45, 49, 51)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Noto Sans JP",
+    "size": "10px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "redhat",
+   "url": "https://ux.redhat.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(21, 21, 21)",
+    "background": "rgb(255, 255, 255)",
+    "font": "RedHatText",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(21, 21, 21)",
+    "background": "rgb(255, 255, 255)",
+    "font": "RedHatText",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "remember",
+   "url": "https://career.rememberapp.co.kr/job/postings",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(34, 34, 34)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(34, 34, 34)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "resend",
+   "url": "https://resend.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(240, 240, 240)",
+    "background": "rgb(0, 0, 0)",
+    "font": "inter",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(240, 240, 240)",
+    "background": "rgb(0, 0, 0)",
+    "font": "inter",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "ridi",
+   "url": "https://ridibooks.com/comics/ebook",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(20, 20, 20)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(20, 20, 20)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "sakura-internet",
+   "url": "https://www.sakura.ad.jp/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(29, 29, 29)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Noto Sans JP",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(29, 29, 29)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Noto Sans JP",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "samsung",
+   "url": "https://www.samsung.com/sec/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "SamsungOneKorean",
+    "size": "15.9998px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "SamsungOneKorean",
+    "size": "15.9998px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "sanity",
+   "url": "https://www.sanity.io/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(11, 11, 11)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Waldenburg-75357948a2b6a39b",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(11, 11, 11)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Waldenburg-75357948a2b6a39b",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "segment-evergreen",
+   "url": "https://evergreen.segment.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Times",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Times",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "sentry",
+   "url": "https://sentry.io/welcome/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(255, 255, 255)",
+    "background": "rgb(31, 22, 51)",
+    "font": "Rubik",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(255, 255, 255)",
+    "background": "rgb(31, 22, 51)",
+    "font": "Rubik",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "servicenow",
+   "url": "https://horizon.servicenow.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(34, 34, 34)",
+    "background": "rgb(255, 255, 255)",
+    "font": "ServiceNowSans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(34, 34, 34)",
+    "background": "rgb(255, 255, 255)",
+    "font": "ServiceNowSans",
+    "size": "16px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "shinhanbank",
+   "url": "https://bank.shinhan.com/index.jsp#010800000000",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(102, 102, 102)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Spoqa",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(102, 102, 102)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Spoqa",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "shinhancard",
+   "url": "https://www.shinhancard.com/pconts/html/main.html",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(16, 24, 40)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Digital One Shinhan",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(16, 24, 40)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Digital One Shinhan",
+    "size": "14px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "sktelecom",
+   "url": "https://www.sktelecom.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "SKT Sans Text",
+    "size": "10px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "SKT Sans Text",
+    "size": "10px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "smarthr",
+   "url": "https://smarthr.jp/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(35, 34, 31)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "AdjustedYuGothic",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(35, 34, 31)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "AdjustedYuGothic",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "smartnews",
+   "url": "https://www.smartnews.com/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgba(0, 0, 0, 0.87)",
+    "background": "rgb(255, 255, 255)",
+    "font": "system-ui",
+    "size": "10px"
+   },
+   "now": {
+    "color": "rgba(0, 0, 0, 0.87)",
+    "background": "rgb(255, 255, 255)",
+    "font": "system-ui",
+    "size": "10px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "socar",
+   "url": "https://www.socar.kr/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "softbank",
+   "url": "https://www.softbank.jp/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Meiryo",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Meiryo",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "sony",
+   "url": "https://www.sony.com/en/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Times",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Times",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "soop",
+   "url": "https://www.sooplive.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "12px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "12px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "spacex",
+   "url": "https://www.spacex.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(240, 240, 250)",
+    "background": "rgb(0, 0, 0)",
+    "font": "D-DIN",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(240, 240, 250)",
+    "background": "rgb(0, 0, 0)",
+    "font": "D-DIN",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "spoon",
+   "url": "https://www.spooncast.net/kr",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(26, 26, 26)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(26, 26, 26)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard",
+    "size": "16px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "spotify",
+   "url": "https://open.spotify.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(179, 179, 179)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "SpotifyMixUI",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(179, 179, 179)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "SpotifyMixUI",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "stripe",
+   "url": "https://docs.stripe.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(60, 66, 87)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "-apple-system",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(60, 66, 87)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "-apple-system",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "supabase",
+   "url": "https://supabase.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "oklch(0.1 0 34)",
+    "background": "oklch(0.995 0 34)",
+    "font": "Inter",
+    "size": "16px"
+   },
+   "now": {
+    "color": "oklch(0.1 0 34)",
+    "background": "oklch(0.995 0 34)",
+    "font": "Inter",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "tada",
+   "url": "https://www.tadatada.com/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "sans-serif",
+    "size": "12px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "sans-serif",
+    "size": "12px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "taishinbank",
+   "url": "https://www.taishinbank.com.tw/TSB/personal/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(249, 249, 249)",
+    "font": "-apple-system",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(249, 249, 249)",
+    "font": "-apple-system",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "teamlab",
+   "url": "https://www.team-lab.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(33, 33, 33)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Helvetica",
+    "size": "13px"
+   },
+   "now": {
+    "color": "rgb(33, 33, 33)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Helvetica",
+    "size": "13px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "tesla",
+   "url": "https://www.tesla.com/support/getting-started-with-your-vehicle",
+   "capturedAt": "2026-07-13",
+   "verdict": "not-comparable",
+   "changed": [
+    "color",
+    "background",
+    "font",
+    "size"
+   ],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Times",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(57, 60, 65)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Universal Sans Text",
+    "size": "14px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "thsr",
+   "url": "https://www.thsrc.com.tw/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Noto Sans TC",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Noto Sans TC",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "thumbtack",
+   "url": "https://thumbprint.design/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(47, 48, 51)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Rise",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(47, 48, 51)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Rise",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "together.ai",
+   "url": "https://www.together.ai/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "The Future",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(255, 255, 255)",
+    "font": "The Future",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "toss-securities",
+   "url": "https://www.tossinvest.com/?focusedProductCode=A000660",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(78, 89, 104)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Toss Product Sans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(78, 89, 104)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Toss Product Sans",
+    "size": "16px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "toss-tds",
+   "url": "https://tossmini-docs.toss.im/tds-mobile/components/button/",
+   "capturedAt": "2026-07-11",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Toss Product Sans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Toss Product Sans",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "toss",
+   "url": "https://toss.im/",
+   "capturedAt": "2026-07-11",
+   "verdict": "changed",
+   "changed": [
+    "color",
+    "background",
+    "font"
+   ],
+   "july": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Toss Product Sans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Toss Product Sans OTF",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "tossbank",
+   "url": "https://www.tossbank.com/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(16, 16, 19)",
+    "font": "Toss Product Sans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(33, 37, 41)",
+    "background": "rgb(16, 16, 19)",
+    "font": "Toss Product Sans",
+    "size": "16px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "toyota",
+   "url": "https://global.toyota/en/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(33, 33, 33)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "toyotatext_rg",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(33, 33, 33)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "toyotatext_rg",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "triple",
+   "url": "https://triple.guide/intro",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "-apple-system",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "-apple-system",
+    "size": "16px",
+    "themeResponsive": true
+   }
+  },
+  {
+   "id": "tumblbug",
+   "url": "https://tumblbug.com/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "tving",
+   "url": "https://www.tving.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(248, 250, 252)",
+    "background": "rgb(0, 0, 0)",
+    "font": "Pretendard",
+    "size": "13.2px"
+   },
+   "now": {
+    "color": "rgb(248, 250, 252)",
+    "background": "rgb(0, 0, 0)",
+    "font": "Pretendard",
+    "size": "13.2px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "uber",
+   "url": "https://www.uber.com/kr/ko/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "sans-serif",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "sans-serif",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "udn",
+   "url": "https://udn.com/news/index",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(250, 250, 250)",
+    "font": "Noto Sans TC",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgb(250, 250, 250)",
+    "font": "Noto Sans TC",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "upbit",
+   "url": "https://www.upbit.com/home",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgb(233, 236, 241)",
+    "font": "Roboto",
+    "size": "12px"
+   },
+   "now": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgb(233, 236, 241)",
+    "font": "Roboto",
+    "size": "12px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "upstage",
+   "url": "https://www.upstage.ai/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(82, 82, 91)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Geist",
+    "size": "18px"
+   },
+   "now": {
+    "color": "rgb(82, 82, 91)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Geist",
+    "size": "18px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "uswds",
+   "url": "https://designsystem.digital.gov/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgba(0, 0, 0, 0.8)",
+    "background": "rgb(252, 252, 252)",
+    "font": "Public Sans Web",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgba(0, 0, 0, 0.8)",
+    "background": "rgb(252, 252, 252)",
+    "font": "Public Sans Web",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "vercel",
+   "url": "https://vercel.com/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(23, 23, 23)",
+    "background": "rgb(250, 250, 250)",
+    "font": "GeistSans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(23, 23, 23)",
+    "background": "rgb(250, 250, 250)",
+    "font": "GeistSans",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "wanted",
+   "url": "https://www.wanted.co.kr/",
+   "capturedAt": "2026-07-12",
+   "verdict": "changed",
+   "changed": [
+    "color",
+    "background"
+   ],
+   "july": {
+    "color": "rgb(51, 51, 51)",
+    "background": "rgb(248, 248, 248)",
+    "font": "Pretendard Variable",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(23, 23, 25)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard Variable",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "watcha",
+   "url": "https://watcha.com/ko/browse/all",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(255, 255, 255)",
+    "background": "rgb(0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(255, 255, 255)",
+    "background": "rgb(0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "wavve",
+   "url": "https://www.wavve.com/",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(165, 165, 165)",
+    "background": "rgb(27, 27, 27)",
+    "font": "NotoSans",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(165, 165, 165)",
+    "background": "rgb(27, 27, 27)",
+    "font": "NotoSans",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "wconcept",
+   "url": "https://display.wconcept.co.kr/rn/women",
+   "capturedAt": "2026-07-12",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "wise",
+   "url": "https://wise.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(69, 71, 69)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Inter",
+    "size": "18px"
+   },
+   "now": {
+    "color": "rgb(69, 71, 69)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Inter",
+    "size": "18px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "wooribank",
+   "url": "https://www.wooribank.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "맑은 고딕",
+    "size": "12px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "맑은 고딕",
+    "size": "12px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "woowahan-fonts",
+   "url": "https://www.woowahan.com/fonts",
+   "capturedAt": "2026-07-11",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(35, 35, 36)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(35, 35, 36)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "woowahan-license",
+   "url": "https://www.woowahan.com/fonts/license",
+   "capturedAt": "2026-07-11",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(35, 35, 36)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(35, 35, 36)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "woowahan",
+   "url": "https://www.woowahan.com/",
+   "capturedAt": "2026-07-11",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(35, 35, 36)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(35, 35, 36)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard Variable",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "yanolja",
+   "url": "https://nol.yanolja.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(27, 28, 31)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard",
+    "size": "10px"
+   },
+   "now": {
+    "color": "rgb(27, 28, 31)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard",
+    "size": "10px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "yeogiotte",
+   "url": "https://www.yeogi.com/",
+   "capturedAt": "2026-07-11",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(0, 0, 0)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "Pretendard",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "zapier",
+   "url": "https://zapier.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(32, 21, 21)",
+    "background": "rgb(255, 254, 251)",
+    "font": "Inter",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(32, 21, 21)",
+    "background": "rgb(255, 254, 251)",
+    "font": "Inter",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "zendesk",
+   "url": "https://garden.zendesk.com/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(41, 50, 57)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "system-ui",
+    "size": "14px"
+   },
+   "now": {
+    "color": "rgb(41, 50, 57)",
+    "background": "rgba(0, 0, 0, 0)",
+    "font": "system-ui",
+    "size": "14px",
+    "themeResponsive": false
+   }
+  },
+  {
+   "id": "zigzag",
+   "url": "https://zigzag.kr/",
+   "capturedAt": "2026-07-13",
+   "verdict": "unchanged",
+   "changed": [],
+   "july": {
+    "color": "rgb(41, 43, 43)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard JP",
+    "size": "16px"
+   },
+   "now": {
+    "color": "rgb(41, 43, 43)",
+    "background": "rgb(255, 255, 255)",
+    "font": "Pretendard JP",
+    "size": "16px",
+    "themeResponsive": false
+   }
+  }
+ ]
+}
