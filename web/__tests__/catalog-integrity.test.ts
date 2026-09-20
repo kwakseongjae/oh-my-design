@@ -494,7 +494,13 @@ describe("adopted references survive every catalog reader", () => {
     for (const id of adoptedIds) {
       const source = readReferenceSource(join(REFS_DIR, id));
       expect(source.format, `${id}`).toBe("core-v2");
+      // Every adopted reference in the catalog today is a *migrated* one, so it
+      // rebuilds from `original_segments` and is hash-checked. A native package
+      // projects instead — covered separately below, and asserted here only so
+      // that a native reference landing in web/references/ changes this test
+      // deliberately rather than sliding through it.
       expect(source.reconstructed, `${id}: rebuilt from the package, not read off disk`).toBe(true);
+      expect(source.projected, `${id}: migrated packages reconstruct, they do not project`).toBe(false);
       expect(source.markdown.startsWith("---\n"), `${id}: reconstruction has no frontmatter`).toBe(true);
     }
   });
@@ -568,5 +574,69 @@ describe("adopted references survive every catalog reader", () => {
         expect(ledgerIds.has(id), `evidence ledger is missing verified ${id}`).toBe(true);
       }
     }
+  });
+});
+
+/**
+ * A reference authored as Core v2 from the start — spec §10 stage 5, the stage
+ * the 1000 expansion opens at.
+ *
+ * Until 2026-09-21 no such reference could exist. `readReferenceSource` rebuilt
+ * catalog metadata from `original_segments`, a migration artifact a native
+ * package does not have, so all twelve pipeline readers threw. It now reads a
+ * declared `dev.oh-my-design.catalog` extension instead, and this pins the two
+ * properties that makes safe: the projection survives a YAML round-trip
+ * unchanged, and the sealed package is still a valid one.
+ *
+ * The fixture is derived from krds's real adopted package by
+ * `web/scripts/build-native-core-fixture.mjs` — migration extension removed,
+ * catalog extension added, the whole hash chain re-sealed. Hand-writing it would
+ * only have proved the verifier can be fooled. It lives under `__tests__` and
+ * not in `web/references/`, where every reader walks the directory and the
+ * sitemap advertises a page per id; a synthetic entry there is a published
+ * reference.
+ */
+describe("a natively-authored Core v2 reference", () => {
+  const NATIVE = join(__dirname, "fixtures", "native-core-reference");
+
+  test("carries no migration extension — the premise", () => {
+    const graph = JSON.parse(readFileSync(join(NATIVE, ".omd", "system", "graph.json"), "utf8"));
+    expect(Object.keys(graph.extensions)).toEqual(["dev.oh-my-design.catalog"]);
+    expect(readFileSync(join(NATIVE, "DESIGN.md"), "utf8").startsWith("---\n")).toBe(false);
+  });
+
+  test("reads as a projection, not a reconstruction", async () => {
+    const { readReferenceSource } = await import("../scripts/lib/reference-source.mjs");
+    const source = readReferenceSource(NATIVE);
+    expect(source.format).toBe("core-v2");
+    expect(source.projected, "native packages project declared metadata").toBe(true);
+    expect(source.reconstructed, "there are no original bytes to be faithful to").toBe(false);
+  });
+
+  test("projects frontmatter that survives the round-trip every reader performs", async () => {
+    const { readReferenceSource } = await import("../scripts/lib/reference-source.mjs");
+    const { parseReferenceFrontmatter } = await import("../scripts/lib/reference-quality.mjs");
+    const graph = JSON.parse(readFileSync(join(NATIVE, ".omd", "system", "graph.json"), "utf8"));
+    const declared = graph.extensions["dev.oh-my-design.catalog"].frontmatter;
+
+    const parsed = parseReferenceFrontmatter(readReferenceSource(NATIVE).markdown, "native");
+    // The contract is the parsed object, not the bytes. If `yaml.dump` ever
+    // emits a date as a timestamp instead of a string, or drops a nested map,
+    // this is where it shows — every downstream reader compares dates as strings.
+    expect(parsed).toEqual(declared);
+    expect(typeof parsed.verified).toBe("string");
+    expect(parsed.verification_v2.sources.length).toBeGreaterThan(0);
+  });
+
+  test("is still a sealed package the web consumer admits", async () => {
+    const { loadCoreConsumerContract } = await import("@/lib/references/core-consumer-contract");
+    const { verifyCanonicalCorePackage } = await import("@/lib/references/core-canonical-verifier.server");
+    const admission = loadCoreConsumerContract(
+      NATIVE, readFileSync(join(NATIVE, "DESIGN.md"), "utf8"), verifyCanonicalCorePackage,
+    );
+    // The build side and the web side are two consumers of one package. A format
+    // that unblocked only the first would pass the write gate and fail the route.
+    expect("reasons" in admission ? admission.reasons : [], "web consumer rejected the native package").toEqual([]);
+    expect(admission.status).toBe("verified");
   });
 });
