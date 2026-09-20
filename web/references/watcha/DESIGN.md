@@ -2,7 +2,7 @@
 id: watcha
 name: Watcha
 country: KR
-category: entertainment
+category: consumer-tech
 homepage: "https://watcha.com"
 primary_color: "#F82F62"
 logo:

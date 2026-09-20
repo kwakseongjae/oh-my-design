@@ -9,6 +9,7 @@ import { readFileSync, readdirSync, existsSync, statSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { REGISTRY, REGISTRY_BY_ID } from "../src/data/registry.generated";
 import { KNOWN_FIELD_KEYS } from "../src/lib/extract-tokens";
+import { REFERENCE_CATEGORIES, isReferenceCategory } from "../src/lib/reference-categories";
 
 const WEB_ROOT = resolve(__dirname, "..");
 const ROOT = resolve(WEB_ROOT, "..");
@@ -134,6 +135,16 @@ describe("catalog-integrity / per-reference", () => {
     expect(entry.name.length).toBeGreaterThan(0);
     expect(VALID_COUNTRIES).toContain(entry.country);
     expect(typeof entry.category).toBe("string");
+    // The enum lived only in `web/scripts/verify-reference.mjs`, a tool run by
+    // hand, so nothing stopped thirteen references drifting outside it — and the
+    // UI showed them as raw slugs, because CATEGORY_LABELS has no entry for
+    // `social-commerce` or `audio-social`. A rubric applied to a dirty taxonomy
+    // produces a dirtier one, and the expansion is about to apply one.
+    expect(
+      isReferenceCategory(entry.category),
+      `${id}: category '${entry.category}' is not in the catalog enum (${REFERENCE_CATEGORIES.join(", ")}). `
+      + "Pick the bucket the catalog already files comparable companies under — see web/src/lib/reference-categories.ts.",
+    ).toBe(true);
     expect(entry.homepage).toMatch(/^https?:\/\//);
     expect(entry.primaryColor).toMatch(/^#[0-9a-fA-F]{6}$/);
     expect(VALID_LOGO_TYPES).toContain(entry.logo.type);

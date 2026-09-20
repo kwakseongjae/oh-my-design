@@ -2,7 +2,7 @@
 id: "rayark"
 name: "Rayark"
 country: TW
-category: entertainment
+category: consumer-tech
 homepage: "https://rayark.com"
 primary_color: "#5FE0EE"
 logo:

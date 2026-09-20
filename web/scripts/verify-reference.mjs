@@ -33,6 +33,10 @@ if (!id) { console.error('usage: verify-reference.mjs <id> [--no-net]'); process
 
 const VALID_COUNTRIES = ['KR', 'US', 'JP', 'TW', 'CN', 'UK', 'DE', 'FR', 'IT'];
 const VALID_LOGO_TYPES = ['favicon', 'simpleicons', 'github'];
+// Kept in step with src/lib/reference-categories.ts, which the catalog-integrity
+// gate enforces. Two copies of an enum is how the first nine strays got in; this
+// one is a .mjs tool that cannot import the .ts module, so the list is asserted
+// equal in web/__tests__/catalog-integrity.test.ts rather than trusted.
 const VALID_CATEGORIES = ['ecommerce', 'fintech', 'saas', 'ai', 'consumer-tech', 'education', 'productivity', 'developer-tools', 'design-tools', 'backend-devops', 'automotive', 'marketing', 'government', 'healthcare'];
 const RENDER_TYPES = ['button', 'input', 'card', 'badge', 'tab', 'toggle', 'toast', 'dialog', 'listItem', 'avatar'];
 const PROOF_GATE_CUTOFF = '2026-06-01';

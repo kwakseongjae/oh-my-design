@@ -2,7 +2,7 @@
 id: meituan
 name: Meituan
 country: CN
-category: local-services
+category: consumer-tech
 homepage: "https://www.meituan.com"
 primary_color: "#FFC300"
 logo:

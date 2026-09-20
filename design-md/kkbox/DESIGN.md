@@ -2,7 +2,7 @@
 id: kkbox
 name: "KKBOX"
 country: TW
-category: entertainment
+category: consumer-tech
 homepage: "https://www.kkbox.com"
 primary_color: "#00B6E1"
 logo:

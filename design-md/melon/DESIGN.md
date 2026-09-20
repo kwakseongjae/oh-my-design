@@ -2,7 +2,7 @@
 id: melon
 name: "Melon"
 country: KR
-category: entertainment
+category: consumer-tech
 homepage: "https://www.melon.com"
 primary_color: "#00CD3C"
 logo:

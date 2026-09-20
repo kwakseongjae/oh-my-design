@@ -2,7 +2,7 @@
 id: pixnet
 name: PIXNET
 country: TW
-category: content
+category: consumer-tech
 homepage: "https://www.pixnet.net"
 primary_color: "#ff7200"
 logo:

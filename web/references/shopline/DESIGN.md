@@ -2,7 +2,7 @@
 id: shopline
 name: SHOPLINE
 country: TW
-category: e-commerce
+category: ecommerce
 homepage: "https://shopline.tw"
 primary_color: "#356dff"
 logo:

@@ -2,7 +2,7 @@
 id: cathay
 name: Cathay
 country: TW
-category: finance
+category: fintech
 homepage: "https://www.cathaybk.com.tw"
 primary_color: "#00512a"
 logo:

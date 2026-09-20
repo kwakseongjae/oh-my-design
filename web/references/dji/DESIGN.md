@@ -2,7 +2,7 @@
 id: dji
 name: DJI
 country: CN
-category: consumer-hardware
+category: consumer-tech
 homepage: "https://www.dji.com"
 primary_color: "#000000"
 logo:

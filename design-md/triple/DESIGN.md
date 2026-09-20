@@ -2,7 +2,7 @@
 id: triple
 name: Triple
 country: KR
-category: travel
+category: consumer-tech
 homepage: "https://triple.guide"
 primary_color: "#368FFF"
 logo:

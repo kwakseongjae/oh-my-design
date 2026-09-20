@@ -2,7 +2,7 @@
 id: spoon
 name: Spoon
 country: KR
-category: audio-social
+category: consumer-tech
 homepage: "https://www.spooncast.net"
 primary_color: "#FF5500"
 logo:

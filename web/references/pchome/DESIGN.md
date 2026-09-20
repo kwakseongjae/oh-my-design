@@ -2,7 +2,7 @@
 id: pchome
 name: PChome
 country: TW
-category: e-commerce
+category: ecommerce
 homepage: "https://www.pchome.com.tw"
 primary_color: "#ea1717"
 logo:

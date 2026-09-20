@@ -2,7 +2,7 @@
 id: xiaohongshu
 name: Xiaohongshu
 country: CN
-category: social-commerce
+category: consumer-tech
 homepage: "https://www.xiaohongshu.com"
 primary_color: "#FF2442"
 logo:

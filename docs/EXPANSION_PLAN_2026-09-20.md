@@ -125,8 +125,8 @@ THROWS: no preserved original segments. This package cannot reproduce the legacy
 | # | 할 일 | 왜 이 순서인가 |
 |---|---|---|
 | **1** | **Stage 5 해제** — Core-네이티브 증거 경로 | 이게 없으면 신규 560건이 전부 `partial`이 아니라 **빌드 실패**다. 카탈로그 필드(country/category/added)와 `verification_v2`를 Core 패키지 안에서 1급으로 표현하고, `readReferenceSource`가 네이티브를 받게 한다 |
-| **2** | **proof gate를 CN까지** | `REGIONAL_PROOF_COUNTRIES = {KR, TW, JP}` — **CN만 빠져 있다.** 5건이 검사 없이 통과 중이고, 확충은 이걸 35건으로 만든다. 게이트 밖에서 늘리면 나중에 못 되돌린다 |
-| **3** | **분류 체계 정리** | `ecommerce`(43) vs `e-commerce`(2), `fintech`(61) vs `finance`(1), 1~2개짜리 카테고리 8개. **더러운 분류에 루브릭을 적용하면 더 더러워진다.** 440을 먼저 고친다 |
+| ~~**2**~~ ✅ | **proof gate를 CN까지** (`942c5067`) | `REGIONAL_PROOF_COUNTRIES = {KR, TW, JP}` — **CN만 빠져 있다.** 5건이 검사 없이 통과 중이고, 확충은 이걸 35건으로 만든다. 게이트 밖에서 늘리면 나중에 못 되돌린다 |
+| ~~**3**~~ ✅ | **분류 체계 정리** (`2026-09-21`) | `ecommerce`(43) vs `e-commerce`(2), `fintech`(61) vs `finance`(1), 1~2개짜리 카테고리 8개. **더러운 분류에 루브릭을 적용하면 더 더러워진다.** 440을 먼저 고친다 |
 | **4** | **탐색 어휘 재조사 (JP·TW·CN)** | KR이 "identity/CI" 어휘로 0→4가 됐다. §C.3의 시장별 숫자는 **이 재조사 전에는 확정이 아니다** — 문서 스스로 그렇게 적고 있다 |
 | **5** | **1차 웨이브 3건** — Serendie + PayPay + AntUI | 네이티브 경로로 **끝까지** 한 번 통과시킨다. 리더 전부·게이트 전부. 규모를 키우기 전에 1단계가 실제로 동작하는지 증명 |
 | 6 | JP 깊이 → CN ~30 → KR 편중 해소 | §C.3 순서. TW는 신규 0 권장, 예산을 **깊이로** 돌린다(10/63이 인증됨) |
@@ -164,4 +164,10 @@ onestore · patternfly는 **가장 먼저 만료되는 출처가 404**다. 죽�
 - **막힌 것**: 네이티브 Core v2 레퍼런스는 **모든 리더가 던진다.** 확충은 여기서 시작한다.
 - **결정됨(09-21)**: 목표 **700**, CN은 **proof gate 확장 후** 키운다.
 - **1단계 완료**: Stage 5는 열려 있다 → `docs/NATIVE_CORE_AUTHORING_2026-09-21.md`.
-- **다음**: 2단계(CN proof gate) → 3단계(분류 정리) → 4단계(어휘 재조사) → 웨이브 1.
+- **완료**: 1단계(Stage 5) · 2단계(CN proof gate, `942c5067`) · 3단계(분류 정리).
+- **다음**: 4단계(JP·TW·CN 어휘 재조사) → 웨이브 1.
+- **보고만 하고 안 건드림**: `data/reference-fingerprints.json`의 `category`는 레지스트리의
+  낡은 사본이 아니라 **더 세밀한 별개 필드**다(201/440 불일치). 레지스트리 슬러그로 맞추면
+  `omd-init` 스킬의 entertainment·travel·content 매칭이 **사라진다**(실측). 진짜 결함은
+  `sync-catalog`가 신규 항목만 `fm.category`(거친 슬러그)로 채워 **확충할수록 세밀한 어휘가
+  침식**된다는 것 — 260건이 추가되면 그만큼 더 침식된다.
