@@ -20,7 +20,8 @@
 - **한 일(15)**: **Stage 5 읽기 경로 해제**(`778907ea`). 네이티브 Core v2는 `extensions["dev.oh-my-design.catalog"]`로 카탈로그 메타데이터를 선언하고, 리더는 reconstruct(마이그레이션·해시검증·우선) / project(네이티브)로 갈린다. **웹 소비자는 이미 열려 있었다**(확인 후 진행). 내 실수 2건을 clean worktree로 잡음(픽스처 gitignore·테스트가 빌드 산출물 읽음).
 - **한 일(16)**: **Stage 5 열림**(`39c94ea3`). "네이티브 writer가 없다"는 **내 오판** — 기존 체인이 `--migration-report` 없이 그대로 동작한다(끝까지 돌려 확인: 확장 보존·projected·웹 verified). 절차 문서화 + 테스트 3건(확장 보존을 아무도 검사 안 하고 있었다). 번들 churn 원인 규명: `npm pack`→`tsup`이 추적 파일을 비결정적으로 재생성 → `activation-reuse` 플레이크.
 - **한 일(17)**: **오너 결정 = 목표 700**, CN은 게이트 확장 후. **생성기 완성**(`e5087982`) — 매핑은 기존 매퍼에 맡기고 마이그레이션→카탈로그 확장 교체만 한다. 돌려보고 2건 수정(provenance 스키마가 매퍼≠컴파일러 · 스테이징 디렉터리). `added` 필수화로 krds를 즉시 거부.
-- **다음(권장 순서)**: **2단계 CN proof gate** → 3단계 분류 정리 → 4단계 어휘 재조사 → 웨이브 1(Serendie 본문 조사부터) · 죽은 인용 8건(1월 마감)(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(18)**: **2단계**(`942c5067`) CN을 proof gate에 넣고, 중국 플랫폼이 하나도 없어 남의 글이 브랜드 증거로 집계되던 것 차단(기존 0건 영향). **3단계**(`59678351`) 분류 enum 단일화+CI 강제, 흘러나온 13건을 카탈로그 선례대로 접음. fingerprints는 **낡은 사본이 아니라 별개 필드**임을 실측하고 손대지 않음.
+- **다음**: **4단계 JP·TW·CN 어휘 재조사** → 웨이브 1(Serendie 본문 조사) · 죽은 인용 8건(1월 마감) · `consumer-tech` 135/440 분할은 제품 결정(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)
