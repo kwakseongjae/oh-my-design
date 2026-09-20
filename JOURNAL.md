@@ -14,7 +14,8 @@
 - **한 일(9)**: 만료 벽 — 드리프트 첫 실측(`6cf1502f`). 69~71일 경과, 비교 가능 5건 중 **4건이 완전 동일**, 1건(toss)은 전면 개편. **표면은 조금씩 낡지 않고 안 바뀌거나 갈린다** → 날짜 만료가 양쪽에서 잘못된 도구. patternfly는 내 브라우저 다크 모드 탓 오판을 잡아 폐기.
 - **한 일(10)**: 드리프트 **전수 완료**(`59d0a9f0`) — 164건 비교 가능 중 **154건(94%) 무변화**, 아티팩트 제외 실제 변화 **약 4%**. 2027-01 만료는 올바른 관측 ~135건을 무효화하고 다음 주 개편될 표면은 180일 통과시킨다 → **날짜는 양쪽에서 잘못된 도구**. 베이스라인 커밋(`data/surface-drift-2026-09-20.json`)해서 다음은 diff. 부수: inline·kakaopay·kktix 403, `fixture`는 localhost 픽스처 번들.
 - **한 일(11)**: **만료를 변경 감지로 전환**(`3aa53f28`). 출처 단위 스윕 384건 중 359건(93%) 동일 → 시계가 캡쳐일이 아니라 확인일부터. 1월 벽 140건 → **45건만 잔류, 95건은 3월로**. 미획득 갱신 방지 3성질을 테스트로 고정. 부수: API 계약 테스트를 내가 `cd11a528`에서 깨고 `src/app`을 안 돌려 두 커밋 놓쳤던 것 수정.
-- **다음**: 1000 확충(CJK) · write gate · 남은 45건 재확인(베이스라인 없는 출처 프로브 확대)(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(12)**: 드리프트 프로브가 **채택 레퍼런스(krds·toss)를 못 읽고 있었다** — raw DESIGN.md + 키순서 박은 정규식. 정식 파서로 통일해 22개 출처 회수(20 unchanged). `unreachable` 15건 중 **13건이 404** → `dead`/`blocked`/`unreachable` 분리, 죽은 인용 12건을 `source_url_dead` advisory로 발행. 1월 45 → **42**. (`60c7d506`)
+- **다음**: **1000 확충(CJK)** · write gate("모든 리더가 패키지를 받는다" — 이번 프로브 버그가 그 클래스의 실례) · 다음 계측기는 `tokens.*` 주장을 베이스라인으로(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)
