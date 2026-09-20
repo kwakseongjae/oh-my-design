@@ -38,6 +38,12 @@ experiments/
 !web/references/*/.omd/
 !web/references/*/.omd/**
 
+# The native Core v2 package fixture is the same kind of product data, and the
+# tests that prove a natively-authored reference is readable open its artifacts
+# directly. Ignored, those tests pass locally and fail on a clean checkout.
+!web/__tests__/fixtures/*/.omd/
+!web/__tests__/fixtures/*/.omd/**
+
 # npm pack tarball outputs (build artifacts)
 *.tgz
 
