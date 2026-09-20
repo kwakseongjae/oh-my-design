@@ -3,6 +3,44 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-20 — **write gate**: 모든 리더가 패키지에 대해 입장을 정해야 한다 (`126e50b5`)
+
+채택된 레퍼런스는 frontmatter가 **없다**. 원본 파일을 열어 frontmatter를 파싱하는 리더는
+**실패하지 않는다 — 성공하고 빈 값을 돌려준다.** 이게 두 번 출시됐고 둘 다 몇 달 간격으로
+손으로 발견했다(드리프트 스윕 `60c7d506`, MCP 번들 `eaceab89`).
+
+**먼저 찾은 실제 버그 — MCP 번들** (`eaceab89`). `sync-data.mjs`가 바이트를 그대로 복사해서
+**toss가 frontmatter 키 0개**로 서빙됐다(정상 피어는 12개). 국가·카테고리·티어·토큰 전부 소실,
+displayName만 살아남았는데 그건 portable AST가 따로 들고 있어서다. krds는 로컬 번들이
+채택 이전 파일이라 우연히 멀쩡했고, **다음 sync면 같이 죽었다.** 이 패키지는 archived라
+사용자에게 나간 적은 없다 — 그래도 게이트가 필요로 하는 가장 명료한 사례다.
+
+**정적 — `scripts/check-reader-blindness.mjs`** (husky 빠른 게이트). 범위는 **파생**한다:
+package.json 스크립트/husky가 호출하거나 `web/src`·`packages/mcp/src` 제품 코드. DESIGN.md를
+만지는 18개 중 12개는 raw로 안 읽고, 6개는 **이유와 함께** 등재(Core 경로, 원문 트윈 라우트,
+registry-first API, dev 진단 페이지, in-place 라이터, 디렉터리만 세는 check-counts).
+정말 눈먼 7개를 잡았다 — 6개는 `readReferenceSource`로 전환, `retire-template-motion`은
+**라이터**라 재구성본을 덮어쓰면 채택이 풀리므로 `isCoreV2Markdown`에서 거부하게 했다.
+
+**행위 — `catalog-integrity.test.ts`**. 채택 집합을 `.omd/system/graph.json` 존재로 **파생**
+(하드코딩 금지 — 세 번째가 생기는 순간 테스트가 멈춘다). 채택 레퍼런스가 모든 생성 산출물에서
+**다른 것과 같은 모양**으로 나오는지: 재구성 frontmatter 핵심 키, registry·quality 키 누락 0,
+`sourceCount > 0`(드리프트 버그를 반대편에서 고정), portable AST·원장 등재.
+
+**게이트를 만들며 내가 틀린 것 2건 — 게이트를 *시험해서* 잡았다.**
+① 1차는 **파일 단위**로 "helper를 import하는가"를 물었다. `build-reference-quality.mjs`에
+버그를 다시 넣어봤더니 **통과했다** — 다른 곳에서 helper를 쓰고 있으니까. 지금은 **호출
+지점 단위**로 해석한다(인라인 경로거나, 같은 파일에서 DESIGN.md join이 할당된 식별자).
+② 그랬더니 **자기 문서를 신고**했다 — 헤더 주석이 금지 패턴을 인용하니까. 설명을 쓴 파일이
+벌을 받는 셈이라, 스캔 전에 주석을 공백 처리(줄 번호 보존)한다.
+
+대표 회귀로 종단 검증: `build-registry`가 raw로 읽고 파싱 실패를 건너뛰면 카탈로그가 438로
+줄고 **양쪽 다 발화**한다 — 정적은 줄 번호를, 행위는 "krds·toss가 registry에 없음"을 댄다.
+
+게이트: root 1492 · web 965 · mcp 8 · tsc clean · 카탈로그 440/0 · 원장 930.
+
+---
+
 ## ✅ 2026-09-20 — 프로브가 자기 레퍼런스 2개를 못 보고 있었다 + 죽은 인용 12건 (`60c7d506`)
 
 전환 후 1월에 남은 46건을 "가장 먼저 만료되는 출처의 판정"으로 갈랐다 —
