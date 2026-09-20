@@ -3,6 +3,8 @@ import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+// @ts-expect-error -- plain .mjs helper shared with the build pipeline, no types
+import { readReferenceSource } from '../../../web/scripts/lib/reference-source.mjs';
 import { loadAllReferences, getReference } from '../src/data.js';
 import { runListReferences } from '../src/tools/list-references.js';
 import { runGetDesignMd } from '../src/tools/get-design-md.js';
@@ -76,7 +78,17 @@ describe('oh-my-design-mcp smoke', () => {
     expect(portableAst.references.map((entry) => entry.identity.id)).toEqual(canonicalIds);
 
     for (const entry of manifest.references) {
-      const canonical = readFileSync(path.join(CANONICAL_DIR, entry.id, 'DESIGN.md'));
+      // The bundle carries the *legacy source*, which for an unadopted
+      // reference is the file on disk and for an adopted one is rebuilt from
+      // its `.omd/` package. Comparing against the raw bytes was the assumption
+      // that shipped adopted references to MCP with an empty frontmatter map —
+      // it made "the Core body, parsed as legacy, yielding nothing" look
+      // byte-perfect. The hash still has to match exactly; what changed is
+      // which canonical it matches against.
+      const canonical = Buffer.from(
+        readReferenceSource(path.join(CANONICAL_DIR, entry.id)).markdown,
+        'utf8',
+      );
       const bundled = readFileSync(path.join(BUNDLED_DIR, entry.id, 'DESIGN.md'));
       const canonicalHash = sha256(canonical);
       expect(sha256(bundled), `${entry.id}: bundled DESIGN.md drift`).toBe(canonicalHash);
@@ -98,10 +110,14 @@ describe('oh-my-design-mcp smoke', () => {
     expect(kr.count).toBeGreaterThan(0);
     expect(kr.references.every((r) => r.country?.toUpperCase() === 'KR')).toBe(true);
     const toss = all.references.find((reference) => reference.id === 'toss');
+    // toss is adopted. It read as `legacy_snapshot` here for exactly as long as
+    // the bundle shipped its Core body to a frontmatter parser — no frontmatter,
+    // no evidence graph, no tier. Serving the reconstructed legacy source
+    // restores the tier the catalog actually assigns it.
     expect(toss).toMatchObject({
       primaryColor: '#3182f6',
       brandColor: '#0064ff',
-      qualityStatus: 'legacy_snapshot',
+      qualityStatus: 'verified_v2',
     });
   });
 
@@ -114,7 +130,7 @@ describe('oh-my-design-mcp smoke', () => {
     expect(out.sections.length).toBeGreaterThan(0);
     expect(out.foundations?.primary?.value).toBe('#3182f6');
     expect(out.foundations?.brandColor.value).toBe('#0064ff');
-    expect(out.quality?.status).toBe('legacy_snapshot');
+    expect(out.quality?.status).toBe('verified_v2');
     expect(out.tokens).toBeTruthy();
   });
 

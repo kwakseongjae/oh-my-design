@@ -1,11 +1,25 @@
 #!/usr/bin/env node
 // Copy web/references/<id>/DESIGN.md into packages/mcp/data/references/<id>/DESIGN.md
 // Runs at prepublish + build time. Output dir is gitignored.
+//
+// What gets copied is the *legacy* source, not the bytes on disk. `data.ts`
+// reads a reference by parsing YAML frontmatter, and an adopted reference has
+// none — its canonical is the Core v2 body and the frontmatter lives in the
+// `.omd/` package. Copying raw bytes therefore shipped adopted references with
+// an empty frontmatter map: measured 2026-09-20, MCP served `toss` with 0
+// frontmatter keys against 12 for every unadopted peer, losing country,
+// category, homepage, verified date and every token. Only the display name
+// survived, and only because the portable AST carries it separately.
+//
+// `readReferenceSource` rebuilds those bytes from the package's migration
+// extension and checks them against the hash the migration recorded, so this
+// ships the original or fails — never a plausible reconstruction.
 import { mkdir, readdir, readFile, writeFile, stat, rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { readReferenceSource } from '../../../web/scripts/lib/reference-source.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PKG_ROOT = path.resolve(__dirname, '..');
@@ -43,7 +57,7 @@ async function main() {
     if (!existsSync(designPath)) continue;
     const dst = path.join(DEST, ent.name);
     await mkdir(dst, { recursive: true });
-    const buf = await readFile(designPath);
+    const buf = Buffer.from(readReferenceSource(path.join(SRC, ent.name)).markdown, 'utf8');
     await writeFile(path.join(dst, 'DESIGN.md'), buf);
     references.push({ id: ent.name, sha256: sha256(buf), bytes: buf.byteLength });
     copied++;
