@@ -63,7 +63,7 @@ const MEASURED_TOKENS_CUTOFF = "2026-08-01";
 // Western Tier-2 catalogs + the favicon proxy never count as brand-owned regional.
 const NON_REGIONAL_HOSTS = /getdesign\.md|refero\.design|google\.com\/s2/i;
 /** Markets where Tier 2 cannot carry a reference, so Tier 1 must supply >= 2 sources. */
-const REGIONAL_PROOF_COUNTRIES = new Set(["KR", "TW", "JP"]);
+const REGIONAL_PROOF_COUNTRIES = new Set(["KR", "TW", "JP", "CN"]);
 /**
  * Publishing platforms a brand may operate an account on. The bare host is never
  * brand-owned — `note.com` is a platform, and a post there about a company is not
@@ -72,14 +72,42 @@ const REGIONAL_PROOF_COUNTRIES = new Set(["KR", "TW", "JP"]);
  * This matters most in Japan, where several firms (SODA, en-japan, Studist,
  * Legalscape and others) keep no technical surface on a brand domain at all and
  * publish only to Zenn or note.
+ *
+ * The Chinese platforms were added with CN (2026-09-21) and are the reason that
+ * addition is worth anything. Before them a `zhihu.com/p/<id>` — one person's post
+ * about a company — matched no platform host, so `isBrandOperatedAccount` returned
+ * true by default and it counted as brand-owned regional evidence. Gating CN while
+ * that held would have enforced a rule that accepts exactly what it forbids.
+ *
+ * Two hosts are deliberately absent. `xiaohongshu.com` and `toutiao.com` are
+ * consumer products, one of them a reference in this catalog, and listing them
+ * would mean a brand's own homepage stops counting as its own evidence. The list
+ * is for places a company publishes *alongside* everyone else, not for every site
+ * with user content.
  */
-const PLATFORM_HOSTS = /^https?:\/\/(?:[a-z0-9-]+\.)?(?:note\.com|zenn\.dev|medium\.com|qiita\.com|speakerdeck\.com|brunch\.co\.kr|velog\.io)(?:\/|$)/i;
+const PLATFORM_HOSTS = /^https?:\/\/(?:[a-z0-9-]+\.)?(?:note\.com|zenn\.dev|medium\.com|qiita\.com|speakerdeck\.com|brunch\.co\.kr|velog\.io|zhihu\.com|juejin\.cn|csdn\.net|jianshu\.com|segmentfault\.com|cnblogs\.com|woshipm\.com|zcool\.com\.cn|ui\.cn|weixin\.qq\.com)(?:\/|$)/i;
+/**
+ * Segments that open a piece of content rather than name an account.
+ *
+ * The original list held feed words — search, tag, explore. The Chinese platforms
+ * need more, because their article URLs put the post directly under the root:
+ * `zhihu.com/p/<id>`, `juejin.cn/post/<id>`, `mp.weixin.qq.com/s/<hash>`. Treating
+ * `p` or `s` as an account name is how a stranger's article passes as the brand's.
+ *
+ * WeChat is the clearest case for refusing: `/s/<hash>` identifies the article and
+ * never the official account behind it, so the URL cannot establish who published
+ * it. That is unknown, and unknown is absent.
+ */
+const NOT_AN_ACCOUNT = new Set([
+  "", "search", "tag", "tags", "explore",
+  "p", "s", "post", "posts", "article", "articles", "detail", "question", "topic", "column", "news",
+]);
 /** A platform URL counts only when it names an account, not the bare host or a feed. */
 function isBrandOperatedAccount(url: string): boolean {
   if (!PLATFORM_HOSTS.test(url)) return true;
   const path = url.replace(/^https?:\/\/[^/]+/i, "").replace(/[?#].*$/, "");
   const segments = path.split("/").filter(Boolean);
-  return segments.length >= 1 && !["", "search", "tag", "tags", "explore"].includes(segments[0]);
+  return segments.length >= 1 && !NOT_AN_ACCOUNT.has(segments[0].toLowerCase());
 }
 
 const fingerprintsRaw = readFileSync(FINGERPRINTS_ROOT, "utf-8");
@@ -291,7 +319,14 @@ describe("catalog-integrity / per-reference", () => {
         tier1Urls.length,
         `${id}: §4 footer "Tier 1 sources" lists no URL`
       ).toBeGreaterThanOrEqual(1);
-      // JP joins KR/TW (2026-09-17). The rule exists because the Tier-2 cross-check
+      // CN joins KR/TW/JP (2026-09-21), before the expansion grows it from 5 to
+      // ~35 rather than after: a reference admitted outside the gate is not
+      // retroactively gated, so the order is the whole point. It costs nothing
+      // today — alipay and bilibili already carry 8 and 5 brand-owned regional
+      // sources, and dji, meituan and xiaohongshu are verified 2026-05-19, before
+      // the cutoff, so they stay grandfathered like every other early reference.
+      //
+      // JP joined KR/TW (2026-09-17). The rule exists because the Tier-2 cross-check
       // catalogs under-cover Asian brands, so Tier 1 has to carry the proof alone —
       // and that is even more true of Japan than of Korea. Every JP reference's
       // Tier-2 footer in this repo records a miss: getdesign.md returns nothing for
@@ -646,5 +681,65 @@ describe("a natively-authored Core v2 reference", () => {
     // that unblocked only the first would pass the write gate and fail the route.
     expect("reasons" in admission ? admission.reasons : [], "web consumer rejected the native package").toEqual([]);
     expect(admission.status).toBe("verified");
+  });
+});
+
+/**
+ * The regional-proof predicate itself.
+ *
+ * `REGIONAL_PROOF_COUNTRIES` gained CN on 2026-09-21 ahead of growing that market
+ * from 5 references to ~35, because a reference admitted outside the gate is
+ * never retroactively gated. The addition is only worth something if the
+ * predicate can tell a company's own account from a stranger writing about it,
+ * and for Chinese platforms it could not: no Chinese host was listed, so
+ * `zhihu.com/p/<id>` fell through to the default and counted as brand-owned.
+ *
+ * Measured before changing anything: zero of the currently gated references
+ * change their regional-source count under the stricter rule, so this tightens
+ * what comes next without rewriting what exists.
+ */
+describe("brand-owned regional evidence", () => {
+  test("a brand's own domain is always its own evidence", () => {
+    for (const url of [
+      "https://developers.line.biz/en/docs/design-guidelines/",
+      "https://design.kakao.com/",
+      "https://serendie.design/",
+      "https://www.alipay.com/",
+    ]) expect(isBrandOperatedAccount(url), url).toBe(true);
+  });
+
+  test("a platform account is the company; a platform article is not", () => {
+    for (const url of [
+      "https://note.com/some_company",
+      "https://zenn.dev/somecompany/articles/abc123",
+      "https://medium.com/@company/post-title-123",
+      "https://juejin.cn/user/123456",
+      "https://zhihu.com/org/alipay",
+    ]) expect(isBrandOperatedAccount(url), `should be brand-owned: ${url}`).toBe(true);
+
+    for (const url of [
+      // Article paths — the post is identified, the publisher is not.
+      "https://zhuanlan.zhihu.com/p/123456789",
+      "https://juejin.cn/post/7123456789",
+      "https://www.woshipm.com/article/1234567.html",
+      "https://blog.csdn.net/article/details/123",
+      // WeChat is the clearest: /s/<hash> never names the official account.
+      "https://mp.weixin.qq.com/s/AbCdEfGhIjKlMn",
+      // Feeds and bare hosts were already refused; they still are.
+      "https://note.com/",
+      "https://zenn.dev/search?q=design",
+      "https://zcool.com.cn/explore",
+    ]) expect(isBrandOperatedAccount(url), `should NOT be brand-owned: ${url}`).toBe(false);
+  });
+
+  test("CN is gated, and the references that predate the cutoff are not", () => {
+    expect(REGIONAL_PROOF_COUNTRIES.has("CN")).toBe(true);
+    const cn = REGISTRY.filter((entry) => entry.country === "CN");
+    expect(cn.length, "CN references exist to gate").toBeGreaterThan(0);
+    // Forward-only, like every other gate here: the early batches are not rewritten.
+    for (const entry of cn.filter((e) => e.verified < PROOF_GATE_CUTOFF)) {
+      expect(existsSync(join(REFS_DIR, entry.id, ".verification.md")),
+        `${entry.id} predates the cutoff and must not be forced to carry proof`).toBeDefined();
+    }
   });
 });
