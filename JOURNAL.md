@@ -11,7 +11,8 @@
 - **한 일(6)**: **C 완료 — krds 채택**(`115cd802`). 5단계 완주, `coreStatus: verified`. accent 1건만 손실(오너 수용, 302건이 18가지 이름을 써서 매핑 불가). 폰트 패밀리·heading weight는 마이그레이터/어댑터를 모양 기반으로 고쳐 보존(`dbfb248c`, `1245b737`). **파리티 게이트가 조용한 0을 잡았다** — 첫 패키지가 verified인데 토큰 0개였고, 내 provenance 변환기가 토큰 자기 경로 결정을 안 낸 탓. 트랜잭션 게이트 셋은 통과시켰다.
 - **한 일(7)**: 인덱스 없는 16개 완료(`cd11a528`) — 688개 이름, 누적 **40건 1,829개**. freee·remember는 Storybook `/index.json`, apple은 문서 JSON API로 도달. **socar는 브랜드 센터일 뿐 컴포넌트 시스템이 아니다**(네 번째 ds 오표기). toss는 Core v2 해시 결속 때문에 보류 — 재마이그레이션 필요, 실제 숫자는 43(리뷰 시작점의 "2 of 11").
 - **한 일(8)**: **채택 절단 결함 해소** — 채택이 본문의 82%를 서빙에서 없애고 있었고(두 정본 다 로스터를 잃은 상태) 오너가 옵션1(예산 제거)을 택했다. 서빙 18%→85%, 로스터 23/42→42/42, toss·krds 재채택(`08cd0a4f`, `4d63413a`). 예산이 가리던 `[FILL IN]` 20건 + scope 오탐 2건도 해소. 스펙 §3 이탈은 `exceeds_spec_word_guidance`로 계수화(415/440).
-- **다음**: 만료 벽(141건 2027-01-10) · 1000 확충(CJK) · write gate(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(9)**: 만료 벽 — 드리프트 첫 실측(`6cf1502f`). 69~71일 경과, 비교 가능 5건 중 **4건이 완전 동일**, 1건(toss)은 전면 개편. **표면은 조금씩 낡지 않고 안 바뀌거나 갈린다** → 날짜 만료가 양쪽에서 잘못된 도구. patternfly는 내 브라우저 다크 모드 탓 오판을 잡아 폐기.
+- **다음**: 169건 전수 드리프트(헤드리스 1회) → 변경 감지 기반 만료 · 1000 확충(CJK) · write gate(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)
