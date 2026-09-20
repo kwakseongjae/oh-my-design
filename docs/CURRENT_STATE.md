@@ -3,7 +3,46 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
-## 🛑 2026-09-20 — 확충 계획: **Stage 5가 막혀 있다** + 오너 결정 2건 대기
+## ✅ 2026-09-21 — Stage 5 **읽기 경로 해제**: 네이티브 Core v2 레퍼런스가 읽힌다 (`778907ea`)
+
+어제 막혀 있던 것을 열었다. 리더 12개가 전부 `original_segments`(마이그레이션 산물)에서
+카탈로그 메타데이터를 복원하고 있었고, 네이티브 레퍼런스엔 그게 없어 전부 던졌다.
+
+**해법은 스펙이 이미 골라놨다.** §6 "extensions는 유일한 이식 가능 확장점", §11 "린터는 새
+frontmatter를 거부해야 한다" → 네이티브 패키지는 `extensions["dev.oh-my-design.catalog"]`에
+country·category·added·logo·`verification_v2`·`tokens`를 **선언**한다. Core 필드가 되지 않는다.
+
+`readReferenceSource`가 둘을 구분해 보장을 유지한다: 마이그레이션 패키지는 **reconstruct**
+(원본 바이트 + 해시 검증)이고 **둘 다 있으면 이긴다**(더 강한 주장이니까). 네이티브는
+**project**(패키지가 명시한 데이터의 렌더링, 해시 없음 — 충실할 이전 버전이 없다).
+우선순위 규칙을 지금 써뒀다 — 세 번째 채택에서 급히 발명하지 않도록.
+
+**웹 쪽은 이미 열려 있었고, 만들기 전에 확인한 게 중요했다.** 빌드 파이프라인과
+`repository.server.ts`는 **한 패키지의 두 소비자**다. 봉인 검증기가 네이티브 패키지를
+`verified`로 받는다 — 영수증 스키마가 `migration` 블록을 이미 optional로 두고 있고
+`status:"adopted"`도 참이다(마이그레이션 여부와 무관하게 graph가 채택된 canonical이다).
+
+픽스처는 krds 실제 패키지에서 **파생**(`web/scripts/build-native-core-fixture.mjs`) — 아티팩트가
+해시로 연쇄(graph→provenance/coverage→manifest→receipt)라 손으로 쓰면 검증기를 속일 수
+있다는 것만 증명한다. 라운드트립이 핵심: `yaml.dump`를 `JSON_SCHEMA`로 돌린다(기본 스키마는
+`2026-07-11`을 Date로 되읽고 이 파이프라인의 모든 날짜는 문자열 비교다). krds 재구성본과
+**deep-equal**, 출처 12건 온전.
+
+**아직 아닌 것**: **네이티브 writer가 없다.** 새 레퍼런스를 만들려면 graph·provenance·
+coverage·manifest·receipt를 손으로 만들어야 한다. 포맷과 두 소비자 경로는 증명됐고,
+**writer가 다음 조각**이며 웨이브 1이 필요로 하는 것이다.
+
+**내가 깨고 잡은 것 2건**: ① 픽스처가 `.gitignore`의 `.omd/`에 걸려 **테스트가 내 기계에서만
+통과**했다(`2ae9a471`). ② 깨끗한 worktree로 검증하니 테스트가 gitignore된 빌드 산출물
+(`reference-ast.generated.json`)을 읽고 있었다(`e7021cfb`). **둘 다 게이트가 아니라
+`git status`와 clean worktree 실행이 잡았다.**
+
+부수 확인: `omd install-skills`가 추적되는 7MB 캡쳐 번들을 **비결정적으로** 다시 만든다
+(같은 입력에 7143941 / 7252465 바이트, 난독화 변수명이 다름). 커밋된 번들의 동작은 맞다.
+
+---
+
+## 🛑 2026-09-20 — 확충 계획: 오너 결정 2건 대기
 → `docs/EXPANSION_PLAN_2026-09-20.md`
 
 **확충은 지금 시작할 수 없다.** 로드맵은 "신규는 Core v2로 직접 작성"(5단계)에서 확충이
