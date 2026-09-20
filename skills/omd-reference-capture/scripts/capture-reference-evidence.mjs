@@ -17967,7 +17967,7 @@ Expecting one of '${allowedValues.join("', '")}'`);
         var http = __require("http");
         var net = __require("net");
         var tls = __require("tls");
-        var { randomBytes, createHash: createHash2 } = __require("crypto");
+        var { randomBytes, createHash: createHash3 } = __require("crypto");
         var { Duplex, Readable: Readable2 } = __require("stream");
         var { URL: URL3 } = __require("url");
         var PerMessageDeflate = require_permessage_deflate();
@@ -18623,7 +18623,7 @@ Expecting one of '${allowedValues.join("', '")}'`);
               abortHandshake(websocket, socket, "Invalid Upgrade header");
               return;
             }
-            const digest = createHash2("sha1").update(key + GUID).digest("base64");
+            const digest = createHash3("sha1").update(key + GUID).digest("base64");
             if (res.headers["sec-websocket-accept"] !== digest) {
               abortHandshake(websocket, socket, "Invalid Sec-WebSocket-Accept header");
               return;
@@ -18865,7 +18865,7 @@ Expecting one of '${allowedValues.join("', '")}'`);
         var EventEmitter = __require("events");
         var http = __require("http");
         var { Duplex } = __require("stream");
-        var { createHash: createHash2 } = __require("crypto");
+        var { createHash: createHash3 } = __require("crypto");
         var extension = require_extension();
         var PerMessageDeflate = require_permessage_deflate();
         var subprotocol = require_subprotocol();
@@ -19160,7 +19160,7 @@ Expecting one of '${allowedValues.join("', '")}'`);
               );
             }
             if (this._state > RUNNING) return abortHandshake(socket, 503);
-            const digest = createHash2("sha1").update(key + GUID).digest("base64");
+            const digest = createHash3("sha1").update(key + GUID).digest("base64");
             const headers = [
               "HTTP/1.1 101 Switching Protocols",
               "Upgrade: websocket",
@@ -27682,7 +27682,7 @@ ${end.comment}` : end.comment;
           return path2;
         }
         exports22.normalize = normalize;
-        function join2(aRoot, aPath) {
+        function join3(aRoot, aPath) {
           if (aRoot === "") {
             aRoot = ".";
           }
@@ -27714,7 +27714,7 @@ ${end.comment}` : end.comment;
           }
           return joined;
         }
-        exports22.join = join2;
+        exports22.join = join3;
         exports22.isAbsolute = function(aPath) {
           return aPath.charAt(0) === "/" || urlRegexp.test(aPath);
         };
@@ -27887,7 +27887,7 @@ ${end.comment}` : end.comment;
                 parsed.path = parsed.path.substring(0, index + 1);
               }
             }
-            sourceURL = join2(urlGenerate(parsed), sourceURL);
+            sourceURL = join3(urlGenerate(parsed), sourceURL);
           }
           return normalize(sourceURL);
         }
@@ -83402,7 +83402,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
         this._protocolVersion = version22;
       }
     };
-    var import_node_crypto = __require("crypto");
+    var import_node_crypto2 = __require("crypto");
     var import_node_tls = __require("tls");
     var import_bytes = __toESM3(require_bytes());
     function getRawBody(req, { limit, encoding }) {
@@ -83438,7 +83438,7 @@ Set the \`cycles\` parameter to \`"ref"\` to resolve cyclical schemas with defs.
       constructor(_endpoint, res, options2) {
         this._endpoint = _endpoint;
         this.res = res;
-        this._sessionId = (0, import_node_crypto.randomUUID)();
+        this._sessionId = (0, import_node_crypto2.randomUUID)();
         this._options = options2 || { enableDnsRebindingProtection: false };
       }
       /**
@@ -159012,9 +159012,49 @@ var require_playwright_core = __commonJS2({
 
 // web/scripts/capture-reference-evidence.ts
 init_esm_shims();
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
-import { dirname, join, resolve } from "path";
+import { existsSync as existsSync2, mkdirSync, readFileSync as readFileSync2, writeFileSync } from "fs";
+import { dirname, join as join2, resolve } from "path";
 import { fileURLToPath as fileURLToPath3 } from "url";
+
+// web/scripts/lib/reference-source.mjs
+init_esm_shims();
+import { createHash as createHash2 } from "crypto";
+import { existsSync, readFileSync } from "fs";
+import { join } from "path";
+var MIGRATION_EXTENSION = "dev.oh-my-design.migration";
+var CORE_MARKER = "<!-- design-md:section ";
+function isCoreV2Markdown(markdown2) {
+  return markdown2.includes(CORE_MARKER);
+}
+function readReferenceSource(referenceDir) {
+  const designPath2 = join(referenceDir, "DESIGN.md");
+  const onDisk = readFileSync(designPath2, "utf8");
+  if (!isCoreV2Markdown(onDisk)) {
+    return { markdown: onDisk, format: "legacy", reconstructed: false };
+  }
+  const graphPath = join(referenceDir, ".omd", "system", "graph.json");
+  if (!existsSync(graphPath)) {
+    throw new Error(
+      `${designPath2}: adopted Core v2 canonical without ${graphPath}. The legacy source lives in the package's migration extension, so without the package there is nothing to rebuild the catalog entry from.`
+    );
+  }
+  const graph = JSON.parse(readFileSync(graphPath, "utf8"));
+  const migration = graph?.extensions?.[MIGRATION_EXTENSION];
+  const segments = migration?.original_segments;
+  if (!Array.isArray(segments) || segments.length === 0) {
+    throw new Error(
+      `${graphPath}: no preserved original segments. This package cannot reproduce the legacy source, so the reference's catalog metadata is unrecoverable from it.`
+    );
+  }
+  const markdown2 = segments.map((segment) => String(segment.content ?? "")).join("");
+  const actual = createHash2("sha256").update(markdown2).digest("hex");
+  if (actual !== migration.source_sha256) {
+    throw new Error(
+      `${graphPath}: rebuilt legacy source does not match the recorded hash (expected ${migration.source_sha256}, got ${actual}). Refusing to build catalog data from it.`
+    );
+  }
+  return { markdown: markdown2, format: "core-v2", reconstructed: true };
+}
 
 // web/node_modules/playwright-core/index.mjs
 init_esm_shims();
@@ -159283,14 +159323,14 @@ if (!target) {
 }
 var isUrl = /^https?:\/\//.test(target);
 var referenceId = option("--id") ?? (isUrl ? slugFromUrl(target) : target);
-var designPath = join(WEB_ROOT, "references", referenceId, "DESIGN.md");
-var markdown = existsSync(designPath) ? readFileSync(designPath, "utf8") : "";
+var designPath = join2(WEB_ROOT, "references", referenceId, "DESIGN.md");
+var markdown = existsSync2(designPath) ? readReferenceSource(join2(WEB_ROOT, "references", referenceId)).markdown : "";
 var homepage = option("--url") ?? (isUrl ? target : markdown.match(/^homepage:\s*"?([^"\n]+)"?/m)?.[1]);
 if (!homepage) throw new Error(`no homepage for ${referenceId}; pass --url`);
-var output = resolve(option("--out") ?? join(ROOT, "artifacts", "reference-evidence", `${referenceId}.json`));
+var output = resolve(option("--out") ?? join2(ROOT, "artifacts", "reference-evidence", `${referenceId}.json`));
 var explicitRoutes = option("--routes")?.split(",").map((value2) => value2.trim()).filter(Boolean) ?? [];
-var routeConfigPath = join(ROOT, "config", "reference-capture-routes.json");
-var routeConfig = existsSync(routeConfigPath) ? JSON.parse(readFileSync(routeConfigPath, "utf8")) : void 0;
+var routeConfigPath = join2(ROOT, "config", "reference-capture-routes.json");
+var routeConfig = existsSync2(routeConfigPath) ? JSON.parse(readFileSync2(routeConfigPath, "utf8")) : void 0;
 if (routeConfig && routeConfig.schemaVersion !== 1) throw new Error(`unsupported capture route config: ${routeConfig.schemaVersion}`);
 var routeEntry = routeConfig?.references?.[referenceId];
 var configuredRoutes = Array.isArray(routeEntry) ? routeEntry : routeEntry?.routes ?? [];
@@ -159308,7 +159348,7 @@ var chromeCandidates = [
   "/usr/bin/google-chrome-stable",
   "/usr/bin/chromium"
 ].filter((value2) => Boolean(value2));
-var chromePath = chromeCandidates.find(existsSync);
+var chromePath = chromeCandidates.find(existsSync2);
 if (!chromePath) throw new Error("Chrome executable not found; set OMD_CHROME_PATH");
 function normalizeFamily(value2) {
   return value2.replace(/["']/g, "").trim();
