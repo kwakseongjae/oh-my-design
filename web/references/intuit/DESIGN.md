@@ -237,8 +237,8 @@ No QuickBooks state styling is established by the supplied capture. The followin
 | Error — access | Explain the access boundary without inventing an authentication-error component. |
 | Error — validation | Describe the relevant field or issue plainly; no error color or focus style is verified. |
 | Success | Confirm the completed outcome in sentence case; no success icon or color is verified. |
-| Skeleton | Unresolved: no selector-backed skeleton shape, color, or animation was captured. |
-| Disabled | Unresolved: no disabled visual value or state was captured. |
+| Skeleton | No selector-backed skeleton shape, color, or animation was captured |
+| Disabled | No disabled visual value or state was captured |
 
 ## 15. Motion & Easing
 

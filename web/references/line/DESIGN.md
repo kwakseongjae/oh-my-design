@@ -525,4 +525,4 @@ The inspected documents define interaction outcomes but do not publish canonical
 - Code inputs submit automatically after the final digit.
 - Popup content can scroll while its button area remains fixed.
 
-`[FILL IN: capture computed transition-duration, transition-timing-function, animation-duration, and reduced-motion behavior before adding motion tokens.]`
+Computed transition-duration, transition-timing-function, animation-duration, and reduced-motion behaviour must be captured before any motion token is added.

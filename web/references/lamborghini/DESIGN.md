@@ -257,7 +257,7 @@ Lamborghini’s official company material dates the founding to 1963 in Sant’A
 
 ## 13. Personas
 
-No first-party persona segmentation or user-research evidence was supplied for this reverify. **[FILL IN: add research-backed audience needs only when an official or user-provided source is available.]**
+No first-party persona segmentation or user-research evidence was supplied for this reverify. Research-backed audience needs may be added only when an official or user-provided source is available.
 
 ## 14. States
 

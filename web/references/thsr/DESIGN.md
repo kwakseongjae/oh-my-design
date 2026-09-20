@@ -280,8 +280,8 @@ These are source-grounded stakeholder groups, not fictional research personas.
 | Skeleton | No skeleton state captured |
 | Disabled | No disabled control captured |
 | Focus | No focus-visible state captured |
-| Pressed | [FILL IN — no pressed state captured] |
-| Hover | [FILL IN — no hover state captured] |
+| Pressed | No pressed state captured |
+| Hover | No hover state captured |
 | Selected tab | Public home `aria-selected="true"` element only; no selection-change interaction captured. |
 
 ## 15. Motion & Easing

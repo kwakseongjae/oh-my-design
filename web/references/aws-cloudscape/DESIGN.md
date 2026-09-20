@@ -269,4 +269,4 @@ Cloudscape's first-party materials identify designers and developers as primary 
 
 ## 15. Motion & Easing
 
-The supplied evidence identifies dialog-open interactions but contains no measured duration, easing curve, transition property, reduced-motion behavior, or motion token. Do not derive a motion scale from a static card or from general Cloudscape documentation. **[FILL IN: selector-backed or official-token motion values after dedicated evidence collection.]**
+The supplied evidence identifies dialog-open interactions but contains no measured duration, easing curve, transition property, reduced-motion behavior, or motion token. Do not derive a motion scale from a static card or from general Cloudscape documentation.

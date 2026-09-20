@@ -256,7 +256,7 @@ The collector reports one selected tab observation and `interactionCount: 0`. No
 | Loading | Not observed |
 | Error | Not observed |
 | Success | Not observed |
-| Disabled | `[FILL IN]` |
+| Disabled | Not observed |
 
 ## 15. Motion & Easing
 

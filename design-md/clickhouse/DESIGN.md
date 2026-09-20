@@ -334,8 +334,7 @@ That engineering origin gives the present brand its useful tension: a public ide
 
 The reviewed first-party material identifies developers and data teams as the intended audience, but it does not provide validated demographic or task-research personas suitable for named archetypes. Do not invent them.
 
-- **[FILL IN: validated developer workflow audience]** — add only with a first-party product-research or workflow source.
-- **[FILL IN: validated data-team decision audience]** — add only with a first-party product-research or workflow source.
+Developer-workflow and data-team audiences may be added only with a first-party product-research or workflow source.
 
 ## 14. States
 
@@ -351,4 +350,4 @@ The reviewed first-party material identifies developers and data teams as the in
 
 ## 15. Motion & Easing
 
-The supplied evidence records interaction outcomes (public navigation focus/hover/pressed, pricing-menu expansion, toggle state labels, and dialogs) but no duration, easing, transition-property, or reduced-motion measurement. Do not infer a ClickHouse motion scale from static public states or Click UI documentation. **[FILL IN: motion tokens only after direct surface or official token evidence.]**
+The supplied evidence records interaction outcomes (public navigation focus/hover/pressed, pricing-menu expansion, toggle state labels, and dialogs) but no duration, easing, transition-property, or reduced-motion measurement. Do not infer a ClickHouse motion scale from static public states or Click UI documentation. Motion tokens may be added only after direct surface or official token evidence.

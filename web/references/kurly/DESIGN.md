@@ -281,8 +281,6 @@ Its own introduction connects the service proposition to product selection, deli
 
 Kurly’s first-party material identifies stakeholder groups rather than providing customer personas: customers and families, producers, partners, shareholders, and employees. No demographic archetypes, purchase behavior, or individual personas were collected for this reference, so they are not fabricated here.
 
-- [FILL IN: user-provided primary customer segment and task]
-- [FILL IN: user-provided producer or partner workflow, if the target surface serves one]
 
 ## 14. States
 
@@ -294,13 +292,13 @@ The collector recorded category-tab hover and pressed samples and a form-input e
 | Hover | Captured for one inactive category tab |
 | Pressed | Captured for one inactive category tab |
 | Error | Captured for a form input; retained computed values matched the default sample |
-| Empty | [FILL IN: no observed state] |
-| Loading | [FILL IN: no observed state] |
-| Success | [FILL IN: no observed state] |
-| Skeleton | [FILL IN: no observed state] |
-| Disabled | [FILL IN: no observed state] |
-| Focus | [FILL IN: no observed state] |
+| Empty | Not observed in the captured routes |
+| Loading | Not observed in the captured routes |
+| Success | Not observed in the captured routes |
+| Skeleton | Not observed in the captured routes |
+| Disabled | Not observed in the captured routes |
+| Focus | Not observed in the captured routes |
 
 ## 15. Motion & Easing
 
-No motion duration, easing curve, or transition was captured. The hover and pressed samples establish resulting computed styles for one category tab only; they do not establish motion behavior. [FILL IN: product-specific motion evidence]
+No motion duration, easing curve, or transition was captured. The hover and pressed samples establish resulting computed styles for one category tab only; they do not establish motion behavior.

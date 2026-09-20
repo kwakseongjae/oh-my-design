@@ -234,7 +234,6 @@ In 2021, the company made three mobile fonts publicly available and described th
 
 - **Consumer of mobile content:** a service stakeholder named in the mission. Specific browsing, payment, and retention behaviour is not asserted.
 - **Creator or developer:** a stakeholder named in the mission and developer-support material. Specific tool needs and workflow stages are not asserted.
-- **[FILL IN: user-provided primary storefront task and context]**
 
 ## 14. States
 

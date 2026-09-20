@@ -329,8 +329,7 @@ The contemporary expression is held together by IBM Plex and Carbon. IBM calls P
 
 No first-party audience research suitable for named personas was collected in this packet. Do not invent demographic personas.
 
-- **[FILL IN: validated public-product audience]** — add only with an IBM first-party research or product source.
-- **[FILL IN: validated support-information audience]** — add only with an IBM first-party research or product source.
+Public-product and support-information audiences may be added only with an IBM first-party research or product source.
 
 ## 14. States
 
@@ -348,4 +347,4 @@ No first-party audience research suitable for named personas was collected in th
 
 ## 15. Motion & Easing
 
-The supplied evidence records hover, pressed, focus, and tab-selected results but does not measure durations, curves, or reduced-motion behavior. Do not infer a motion scale from Carbon documentation or from static state values. **[FILL IN: motion tokens only after direct IBM-surface or official-token evidence.]**
+The supplied evidence records hover, pressed, focus, and tab-selected results but does not measure durations, curves, or reduced-motion behavior. Do not infer a motion scale from Carbon documentation or from static state values. Motion tokens may be added only after direct IBM-surface or official-token evidence.

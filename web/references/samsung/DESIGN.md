@@ -268,8 +268,7 @@ The current design expression spans more than the captured commerce pages. Samsu
 
 No first-party audience research suitable for named personas was collected in this packet. Do not invent demographic personas.
 
-- **[FILL IN: validated Samsung Korea public-web audience]** — add only with a Samsung first-party audience or product-research source.
-- **[FILL IN: validated Galaxy platform audience]** — add only with a Samsung first-party audience or product-research source.
+Samsung Korea public-web and Galaxy platform audiences may be added only with a Samsung first-party audience or product-research source.
 
 ## 14. States
 

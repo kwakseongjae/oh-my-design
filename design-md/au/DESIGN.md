@@ -328,7 +328,7 @@ The present visual-identity update makes the design implication concrete. au say
 
 ## 13. Personas
 
-No first-party persona segmentation was found in the sources consulted for this reference. ` [FILL IN: validated au audience archetypes, jobs, accessibility needs, and evidence source] `
+No first-party persona segmentation was found in the sources consulted for this reference.
 
 The available first-party material addresses customers broadly and calls for consideration of diverse people; it does not authorize invented demographic or behavioral personas.
 

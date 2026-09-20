@@ -259,7 +259,7 @@ NHN traces its history to Hangame Communication and the Hangame online-game port
 
 ## 13. Personas
 
-[FILL IN] NHN has not supplied first-party audience-segment or persona documentation in the sources reviewed for this reference. Do not fabricate named user personas from the corporate, services, or IR surfaces.
+NHN has not supplied first-party audience-segment or persona documentation in the sources reviewed for this reference. Do not fabricate named user personas from the corporate, services, or IR surfaces.
 
 ## 14. States
 

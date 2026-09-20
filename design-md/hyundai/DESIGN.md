@@ -253,7 +253,7 @@ Since 2018, Hyundai has described Sensuous Sportiness as the evolution of its de
 
 ## 13. Personas
 
-[FILL IN] No first-party audience segmentation with enough detail to define personas was collected in this reverify packet. Do not use synthetic personas as evidence for Hyundai product decisions.
+No first-party audience segmentation with enough detail to define personas was collected in this reverify packet. Do not use synthetic personas as evidence for Hyundai product decisions.
 
 ## 14. States
 

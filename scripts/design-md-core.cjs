@@ -665,10 +665,37 @@ function buildGraphFromLegacy(markdown, inspection, options) {
     ? { ...extractColorTokens(frontmatter), ...extractRadiusTokens(frontmatter) }
     : {};
   const mapped = Object.fromEntries(SECTION_ORDER.map((id) => [id, []]));
+  // Owner decision, 2026-09-20: the projected document carries the whole mapped
+  // body rather than a per-section slice of it.
+  //
+  // What the slice cost. `/design-systems/[id]` renders the canonical markdown,
+  // and for an adopted reference that is this projection. krds's legacy body is
+  // 72,602 bytes; the budgeted projection served 13,267, so 82% of the document
+  // stopped being shown. Both adopted references silently lost their component
+  // roster that way — toss's on 2026-09-18, krds's on 2026-09-20 — and 19 of the
+  // 41 rosters written into the catalogue would have gone the same way, chosen
+  // by nothing more principled than document length.
+  //
+  // The deviation this accepts, stated plainly. spec/design-md-core-v2.md §3:
+  // "The document SHOULD normally remain between 600 and 1,800 words… Repeated
+  // evidence, exhaustive token scales, component matrices, and migration records
+  // belong in the System Graph or sidecars." The old budgets implemented that.
+  // Against it stands the same sentence — "a context budget, not a reason to omit
+  // critical constraints" — and AGENTS.md's hard rule never to "replace the
+  // canonical reference body" or collapse "a useful reference into a status
+  // document", which a SHOULD does not outrank.
+  //
+  // So the budget is lifted, not deleted: `documentWordBudgetExceeded` on the
+  // migration report says when a projection passes the spec's ceiling, which
+  // keeps the deviation countable instead of invisible. Truncating was the
+  // silent option; this one is loud.
   const budgets = {
-    experience: 1600, foundations: 1600, 'typography-assets': 1400, 'components-states': 1600,
-    'layout-platforms': 1200, 'content-locales': 1200, governance: 1200,
+    experience: Infinity, foundations: Infinity, 'typography-assets': Infinity,
+    'components-states': Infinity, 'layout-platforms': Infinity,
+    'content-locales': Infinity, governance: Infinity,
   };
+  /** spec §3's upper guidance, in words. Reported, never enforced. */
+  const SPEC_WORD_CEILING = 1800;
   const mappedSegmentIds = [];
   const partiallyMappedSegmentIds = [];
   const unmappedSegmentIds = [];
@@ -1446,7 +1473,13 @@ function migrateDesignMd(markdown, options = {}) {
     clean_top: reparsed.cleanTop,
     core_section_ids: reparsed.coreSectionIds,
     opaque_extension_preserved: migration.original_segments.map((segment) => segment.content).join('') === markdown,
+    // Reported so lifting the section budgets stays countable. spec §3 puts the
+    // document's normal range at 600-1,800 words; carrying the whole body pushes
+    // some references past that, and the number says which and by how much
+    // instead of leaving the deviation to be rediscovered.
+    projection_word_count: (designMd.match(/[\p{L}\p{N}]+/gu) ?? []).length,
   };
+  report.exceeds_spec_word_guidance = report.projection_word_count > 1800;
   const result = {
     inspection,
     designMd,

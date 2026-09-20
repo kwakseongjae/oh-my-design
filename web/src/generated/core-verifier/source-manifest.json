@@ -10,7 +10,7 @@
     {
       "source": "scripts/design-md-core.cjs",
       "target": "design-md-core.cjs",
-      "sha256": "c28698b1b465838a94730a22881072bf132f1494989532e18bd2e54bd2f5c5ae"
+      "sha256": "ef38eb4de6e50c25b9c8ad1ce28284d01fda9f2f10d041e1a52f5435193698db"
     },
     {
       "source": "scripts/design-md-core-schema.cjs",
@@ -20,7 +20,7 @@
     {
       "source": "scripts/design-md-core-conformance.cjs",
       "target": "design-md-core-conformance.cjs",
-      "sha256": "e33508e4ce7dccace40e56c521fcc399a569e99e63a47a1930c5fe80daafccce"
+      "sha256": "ecf0253de953de81df748476dbd39bce49c646ad0f7fc3ead84655dc39ce9a18"
     },
     {
       "source": "scripts/prepare-design-md-core-review.cjs",

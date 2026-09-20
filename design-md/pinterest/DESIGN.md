@@ -322,7 +322,7 @@ The red-badge mark provides the most explicit first-party brand expression in th
 
 ## 13. Personas
 
-Official sources checked for this update describe broad audiences such as people discovering ideas, shoppers, creators, and businesses, but do not provide verified user-persona definitions suitable for this reference. `[FILL IN: user research or customer-segment source supplied by Pinterest]`
+Official sources checked for this update describe broad audiences such as people discovering ideas, shoppers, creators, and businesses, but do not provide verified user-persona definitions suitable for this reference.
 
 ## 14. States
 

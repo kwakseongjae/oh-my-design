@@ -220,7 +220,7 @@ The company’s own design reporting adds a current evolution: Ferrari establish
 
 ## 13. Personas
 
-Ferrari’s official corporate material identifies clients as the recipients of its exclusive, authentic, and memorable experiences. No first-party research in this packet establishes demographics, jobs-to-be-done, purchase behavior, accessibility needs, or task flows for a detailed persona. [FILL IN: validated stakeholder research before adding user archetypes.]
+Ferrari’s official corporate material identifies clients as the recipients of its exclusive, authentic, and memorable experiences. No first-party research in this packet establishes demographics, jobs-to-be-done, purchase behavior, accessibility needs, or task flows for a detailed persona.
 
 ## 14. States
 

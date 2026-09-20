@@ -329,7 +329,30 @@ function containsUnresolvedSemanticClaim(kind, value) {
   const leadingUnknown = new RegExp(`^${unresolved}(?:\\b|[:：—-])`, 'iu');
   const sentences = plain.split(/(?<=[.!?。！？])\s+|\n+/).filter(Boolean);
   const hits = sentences.filter((sentence) => subjectThenUnknown.test(sentence) && !ATTRIBUTED_UNKNOWN.test(sentence));
-  return hits.length > 0 || leadingUnknown.test(plain);
+  if (leadingUnknown.test(plain)) return true;
+  if (hits.length === 0) return false;
+  // Scope only, deliberately. The two false positives measured were both scope
+  // bodies, and scope is the claim that runs long enough for one clause to be
+  // swamped by context. `tasks` and `foundations` keep the strict reading: a
+  // foundations body that says "Foundation rules are unknown" beside one real
+  // rule has denied its own subject, and the suite pins that. Fixing what was
+  // measured, not what might follow from it.
+  if (kind !== 'scope') return true;
+
+  // The same structural test the negation check uses, for the same reason: a
+  // claim that states its subject somewhere is not a claim that resolves to
+  // nothing. Proximity cannot tell the two apart, and it was wrong in both
+  // directions once the section budgets stopped hiding long bodies —
+  //   figma: "…subscription tiers, and productivity goals are intentionally
+  //           unspecified"   (the subject matched is "product" inside
+  //           "productivity")
+  //   kurly: "responsive rules, mobile navigation, checkout, and product-detail
+  //           UI are not specified"   (a boundary on the capture, not the claim)
+  // Both bodies describe their scope at length — 33 and 26 substantive sentences
+  // — and both were failing on one clause.
+  return !sentences.some((sentence) => (
+    !subjectThenUnknown.test(sentence) && hasSubstantiveText(sentence, 4, 16)
+  ));
 }
 
 function explicitlyNegatesClaim(kind, value) {

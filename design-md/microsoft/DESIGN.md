@@ -370,12 +370,12 @@ Fluent 2 supplies the cross-platform design-system context: official documentati
 
 ## 13. Personas
 
-Microsoft’s official mission names people and organizations globally, but this capture does not provide validated research defining product-specific personas. **[FILL IN: add personas only from approved, product-specific research.]**
+Microsoft’s official mission names people and organizations globally, but this capture does not provide validated research defining product-specific personas. Personas may be added only from approved, product-specific research.
 
 ## 14. States
 
-The collector recorded a Fluent documentation form-error interaction and Microsoft 365 dialog/tab interactions, but does not provide reusable error, success, loading, empty, disabled, or responsive state specifications. **[FILL IN: add state treatments only from the target product’s observed surface or official component guidance.]**
+The collector recorded a Fluent documentation form-error interaction and Microsoft 365 dialog/tab interactions, but does not provide reusable error, success, loading, empty, disabled, or responsive state specifications. State treatments may be added only from the target product’s observed surface or official component guidance.
 
 ## 15. Motion & Easing
 
-Fluent’s official design-token documentation establishes that motion can be tokenized, but the supplied capture does not provide a source-backed Microsoft-wide duration or easing table. **[FILL IN: use the relevant official Fluent platform token source when a target product and platform are known.]**
+Fluent’s official design-token documentation establishes that motion can be tokenized, but the supplied capture does not provide a source-backed Microsoft-wide duration or easing table. The relevant official Fluent platform token source applies once a target product and platform are known.

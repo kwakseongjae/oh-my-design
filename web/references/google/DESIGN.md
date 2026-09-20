@@ -402,7 +402,7 @@ Google Design's account of Google Sans explains the visual bridge between that s
 
 ## 13. Personas
 
-No first-party user-research or stakeholder-segment source was supplied for this packet. Do not infer named personas from Search, Advanced Search, or Business Profile traffic. [FILL IN: user-provided or first-party-researched audience segment.]
+No first-party user-research or stakeholder-segment source was supplied for this packet. Do not infer named personas from Search, Advanced Search, or Business Profile traffic.
 
 ## 14. States
 
@@ -414,11 +414,11 @@ No first-party user-research or stakeholder-segment source was supplied for this
 | Focus | Captured for Business Profile actions and dark Search submit keys; blue focus rings are recorded only where observed. |
 | Disabled | Captured only for the Business Profile inactive image card. |
 | Expanded menu | Captured on the dark Search homepage language/menu interaction. |
-| Empty | [FILL IN: no empty-state surface was observed.] |
-| Loading | [FILL IN: no loading-state surface was observed.] |
-| Error | [FILL IN: no error-state surface was observed.] |
-| Success | [FILL IN: no success-state surface was observed.] |
+| Empty | No empty-state surface was observed |
+| Loading | No loading-state surface was observed |
+| Error | No error-state surface was observed |
+| Success | No success-state surface was observed |
 
 ## 15. Motion & Easing
 
-The supplied capture records interaction states but no duration or easing measurement. Material Design 3 typography guidance is official design-system context, not evidence for a motion token on the captured Search or Business Profile pages. [FILL IN: first-party product motion source or measured product motion values.]
+The supplied capture records interaction states but no duration or easing measurement. Material Design 3 typography guidance is official design-system context, not evidence for a motion token on the captured Search or Business Profile pages.

@@ -205,7 +205,7 @@ The following are evidence-bounded reference implications, not quoted Upbit prin
 
 ## 13. Personas
 
-[FILL IN] No first-party user research, audience segmentation, or persona material was collected for this update. No fictional names, demographics, jobs, or motivations are supplied.
+No first-party user research, audience segmentation, or persona material was collected for this update. No fictional names, demographics, jobs, or motivations are supplied.
 
 ## 14. States
 

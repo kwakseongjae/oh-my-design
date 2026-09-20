@@ -259,7 +259,7 @@ The captured site’s current public expression pairs that mission language with
 
 ## 13. Personas
 
-[FILL IN: SpaceX has not supplied audience research, role definitions, or public product-persona material in the sources used for this reference. Do not invent named personas from launch interest or inferred job titles.]
+SpaceX has not supplied audience research, role definitions, or public product-persona material in the sources used for this reference. Do not invent named personas from launch interest or inferred job titles.
 
 ## 14. States
 
