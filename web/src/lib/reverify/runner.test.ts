@@ -10,6 +10,7 @@ const candidate: ReverifyCandidate = {
   verifiedAt: "2026-07-01",
   tokensExtractedAt: "2026-07-01",
   nextReverifyAt: null,
+  renewedSourceCount: 0,
   tokenSource: "reconciled",
   claimCount: 10,
   evidenceClaimCount: 9,

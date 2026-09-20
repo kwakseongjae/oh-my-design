@@ -7,7 +7,7 @@ function contract(): ReferenceDetailAstContract {
     schemaVersion: 1,
     quality: {
       id: "fixture", status: "verified_v2", verifiedAt: "2026-07-12", tokensExtractedAt: "2026-07-12",
-      nextReverifyAt: null, tokenSource: "reconciled", claimCount: 3, evidenceClaimCount: 3,
+      nextReverifyAt: null, renewedSourceCount: 0, tokenSource: "reconciled", claimCount: 3, evidenceClaimCount: 3,
       evidenceCoverage: 1, surfaceCount: 2, sourceCount: 2, conflictCount: 0, tier1SourceCount: 2,
       componentCount: 4, interactiveComponentCount: 2, statedComponentCount: 2, paletteGrounding: null,
       reasonCodes: [], advisoryCodes: [],

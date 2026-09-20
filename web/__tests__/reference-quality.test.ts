@@ -141,6 +141,57 @@ describe("reference quality v2", () => {
     expect(result.status).toBe("partial");
     expect(result.reasonCodes).toContain("source_expired");
   });
+
+  // Owner decision 2026-09-20: expiry counts from the last day a source's own URL
+  // was confirmed to be serving what it served when captured, not from the
+  // capture alone. The measurement behind it is in
+  // `data/surface-drift-2026-09-20.json` — 359 of 384 re-probed sources
+  // identical after 69 days — and `docs/DRIFT_MEASUREMENT_2026-09-20.md`.
+  //
+  // The three cases that keep this from becoming a way to wave evidence through.
+  it("counts expiry from a confirmed-unchanged date, and only with evidence for that source", () => {
+    const build = (driftConfirmations: Record<string, string>) => {
+      const referenceTokens = tokens();
+      const v2 = verification(referenceTokens);
+      v2.checked = "2026-01-01";
+      v2.sources[0].captured = "2026-01-01";
+      return evaluateReferenceQuality({
+        id: "fixture",
+        markdown,
+        frontmatter: { verified: "2026-01-01", tokens: { ...referenceTokens, extracted: "2026-01-01" }, verification_v2: v2 },
+        verificationMarkdown: proof,
+        asOf: "2026-07-10",
+        driftConfirmations,
+      });
+    };
+    const sourceId = verification(tokens()).sources[0].id;
+
+    // 1. A confirmation for this source restarts its clock.
+    expect(build({ [`fixture/${sourceId}`]: "2026-06-01" }).reasonCodes).not.toContain("source_expired");
+
+    // 2. A confirmation for a *different* source renews nothing. A probe of one
+    //    page is not evidence about another.
+    expect(build({ "fixture/some-other-source": "2026-06-01" }).reasonCodes).toContain("source_expired");
+
+    // 3. The confirmation ages exactly like a capture — it buys a new TTL, not
+    //    permanence. Confirmed on the same day it was captured, still expired.
+    expect(build({ [`fixture/${sourceId}`]: "2026-01-01" }).reasonCodes).toContain("source_expired");
+  });
+
+  it("reports the due date from the same day the gate counts from", () => {
+    const referenceTokens = tokens();
+    const v2 = verification(referenceTokens);
+    v2.checked = "2026-01-01";
+    v2.sources[0].captured = "2026-01-01";
+    const frontmatter = { verified: "2026-01-01", tokens: { ...referenceTokens, extracted: "2026-01-01" }, verification_v2: v2 };
+    const base = { id: "fixture", markdown, frontmatter, verificationMarkdown: proof, asOf: "2026-07-10" };
+    const before = evaluateReferenceQuality(base);
+    const after = evaluateReferenceQuality({ ...base, driftConfirmations: { [`fixture/${v2.sources[0].id}`]: "2026-06-01" } });
+    // A published due date that contradicted the gate would be worse than none.
+    expect(after.nextReverifyAt! > before.nextReverifyAt!).toBe(true);
+    expect(after.renewedSourceCount).toBe(1);
+    expect(before.renewedSourceCount).toBe(0);
+  });
 });
 
 describe("generated reference quality manifest", () => {

@@ -53,6 +53,7 @@ function syntheticQuality(
     verifiedAt: "2026-07-11",
     tokensExtractedAt: null,
     nextReverifyAt: null,
+    renewedSourceCount: 0,
     tokenSource: null,
     claimCount: 0,
     evidenceClaimCount: 0,

@@ -380,7 +380,13 @@ function componentStateGaps(tokens) {
  * `data/colour-grounding.json`. The evaluator does no I/O; the caller loads the
  * snapshot and passes the row for this reference, or nothing.
  */
-export function evaluateReferenceQuality({ id, markdown, frontmatter, verificationMarkdown = "", asOf, colourGrounding = undefined }) {
+/**
+ * `driftConfirmations`: `"<referenceId>/<sourceId>" -> YYYY-MM-DD`, the date a
+ * sweep last found that source's URL serving what it served when it was
+ * captured. Produced by `scripts/measure-surface-drift.mjs`; absent by default,
+ * and an absent confirmation changes nothing.
+ */
+export function evaluateReferenceQuality({ id, markdown, frontmatter, verificationMarkdown = "", asOf, colourGrounding = undefined, driftConfirmations = {} }) {
   if (!isDate(asOf)) throw new Error(`invalid asOf date: ${asOf}`);
 
   const reasons = [];
@@ -428,6 +434,7 @@ export function evaluateReferenceQuality({ id, markdown, frontmatter, verificati
   if (tier1Urls.length === 0) blockPartial("tier1_source_missing");
   if (hasExplicitUnresolvedConflict(markdown)) blockPartial("conflict_unresolved");
 
+  const renewedSources = [];
   if (!v2 || typeof v2 !== "object" || Array.isArray(v2)) {
     blockVerified("verification_v2_missing");
   } else {
@@ -454,8 +461,24 @@ export function evaluateReferenceQuality({ id, markdown, frontmatter, verificati
         continue;
       }
       const ttl = SOURCE_TTLS[source.kind];
+      // A confirmed-unchanged surface restarts the clock from the day it was
+      // confirmed. Measured 2026-09-20: of 164 surfaces re-probed against the
+      // frozen July bundles, 154 were serving identical values 69 days on, and
+      // once build hashes and colour-notation rewrites are discounted only about
+      // 4% had genuinely moved. A date expires the other 96% anyway, and lets a
+      // surface rebuilt the week after capture pass for the rest of its TTL.
+      //
+      // This does not make an observation eternal. The TTL still governs; what
+      // changes is what it counts from, so an old confirmation ages out exactly
+      // like an old capture and a reference nobody re-probes behaves as before.
+      // What renews a source is evidence about *that source's own URL* — a probe
+      // of a different page renews nothing, which is why the sweep matches
+      // source URL to surface URL rather than checking one page per reference.
+      const confirmedOn = driftConfirmations[`${id}/${source.id}`];
+      const countFrom = isDate(confirmedOn) && confirmedOn > source.captured ? confirmedOn : source.captured;
+      if (confirmedOn && countFrom === confirmedOn) renewedSources.push(source.id);
       if (!ttl) blockVerified("source_kind_invalid");
-      else if (ageInDays(source.captured, asOf) > ttl) blockVerified("source_expired");
+      else if (ageInDays(countFrom, asOf) > ttl) blockVerified("source_expired");
     }
 
     for (const surface of surfaces) {
@@ -545,10 +568,15 @@ function bySeverity(a, b) {
   const evidenceClaims = v2?.claims && typeof v2.claims === "object" && !Array.isArray(v2.claims)
     ? Object.keys(v2.claims).filter((path) => claims.includes(path)).length
     : 0;
+  // Counted from the same date the gate counts from, so the published due date
+  // cannot contradict the decision that uses it.
   const sourceDueDates = normalizeList(v2?.sources)
     .flatMap((source) => {
       const ttl = SOURCE_TTLS[source?.kind];
-      return ttl && isDate(source?.captured) ? [addDays(source.captured, ttl)] : [];
+      if (!ttl || !isDate(source?.captured)) return [];
+      const confirmedOn = driftConfirmations[`${id}/${source.id}`];
+      const countFrom = isDate(confirmedOn) && confirmedOn > source.captured ? confirmedOn : source.captured;
+      return [addDays(countFrom, ttl)];
     })
     .sort();
 
@@ -558,6 +586,7 @@ function bySeverity(a, b) {
     verifiedAt: isDate(verifiedAt) ? verifiedAt : null,
     tokensExtractedAt: extractedAt && isDate(extractedAt) ? extractedAt : null,
     nextReverifyAt: sourceDueDates[0] ?? null,
+    renewedSourceCount: renewedSources.length,
     tokenSource,
     claimCount: claims.length,
     evidenceClaimCount: evidenceClaims,

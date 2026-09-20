@@ -14,6 +14,7 @@ function candidate(
     verifiedAt: "2026-07-01",
     tokensExtractedAt: "2026-07-01",
     nextReverifyAt: null,
+    renewedSourceCount: 0,
     tokenSource: "live-extract",
     claimCount: 10,
     evidenceClaimCount: 10,

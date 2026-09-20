@@ -28,6 +28,38 @@ if (existsSync(groundingPath)) {
 const REFS_DIR = join(WEB_ROOT, "references");
 const OUT_FILE = join(WEB_ROOT, "src", "data", "reference-quality.generated.ts");
 const CHECK = process.argv.includes("--check");
+/**
+ * Confirmed-unchanged sources, keyed `"<referenceId>/<sourceId>"` to the date a
+ * sweep found that URL still serving what it served when captured.
+ *
+ * Same shape of dependency as the colour-grounding snapshot above and for the
+ * same reason: it needs a live browser, so it is measured, committed, and read
+ * here. The newest `data/surface-drift-*.json` wins. Missing file, missing
+ * reference, or any verdict other than `unchanged` all mean no confirmation,
+ * and no confirmation leaves the TTL exactly as it was.
+ */
+function loadDriftConfirmations() {
+  const dataDir = join(REPO_ROOT, "data");
+  if (!existsSync(dataDir)) return {};
+  const newest = readdirSync(dataDir)
+    .filter((name) => /^surface-drift-\d{4}-\d{2}-\d{2}\.json$/.test(name))
+    .sort()
+    .pop();
+  if (!newest) return {};
+  let report;
+  try { report = JSON.parse(readFileSync(join(dataDir, newest), "utf8")); } catch { return {}; }
+  const measuredAt = String(report?.measuredAt ?? "");
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(measuredAt)) return {};
+  const out = {};
+  for (const row of report.results ?? []) {
+    if (row?.verdict !== "unchanged" || !row.id || !row.sourceId) continue;
+    out[`${row.id}/${row.sourceId}`] = measuredAt;
+  }
+  return out;
+}
+
+const DRIFT_CONFIRMATIONS = loadDriftConfirmations();
+
 const asOfIndex = process.argv.indexOf("--as-of");
 const AS_OF = asOfIndex >= 0 ? process.argv[asOfIndex + 1] : new Date().toISOString().slice(0, 10);
 
@@ -47,7 +79,7 @@ for (const id of ids) {
     const frontmatter = parseReferenceFrontmatter(markdown, designPath);
     const verificationPath = join(REFS_DIR, id, ".verification.md");
     const verificationMarkdown = existsSync(verificationPath) ? readFileSync(verificationPath, "utf8") : "";
-    entries.push(evaluateReferenceQuality({ id, markdown, frontmatter, verificationMarkdown, asOf: AS_OF, colourGrounding: COLOUR_GROUNDING[id] }));
+    entries.push(evaluateReferenceQuality({ id, markdown, frontmatter, verificationMarkdown, asOf: AS_OF, colourGrounding: COLOUR_GROUNDING[id], driftConfirmations: DRIFT_CONFIRMATIONS }));
   } catch (error) {
     parseErrors.push(`${id}: ${error.message}`);
   }
@@ -80,6 +112,12 @@ export interface ReferenceQualityEntry {
   readonly verifiedAt: string | null;
   readonly tokensExtractedAt: string | null;
   readonly nextReverifyAt: string | null;
+  /**
+   * How many of this reference's sources had their expiry clock restarted by a
+   * confirmed-unchanged surface probe. Published so the renewal is auditable
+   * from the manifest rather than only from the drift report.
+   */
+  readonly renewedSourceCount: number;
   readonly tokenSource: string | null;
   readonly claimCount: number;
   readonly evidenceClaimCount: number;

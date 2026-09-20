@@ -55,28 +55,61 @@ const limit = Number(flag("--limit", "0"));
 const concurrency = Number(flag("--concurrency", "6"));
 const jsonAt = flag("--json", null);
 
-/** July's `body` probe for every bundle that carries one. */
+/**
+ * Every `verification_v2` source that has a July baseline at its own URL.
+ *
+ * The first pass compared one `home` surface per reference, which answered "was
+ * this site redesigned" but renewed nothing: only 16% of sources sit at the home
+ * URL, and renewing a source from a probe of a different page is the unearned
+ * promotion this catalogue exists to avoid. The bundles record several surfaces
+ * each, so matching source URL to surface URL raises real coverage to 400 of 895
+ * sources across 132 references — each one then carries its own evidence.
+ *
+ * A source with no July baseline is not probed. It has no "before", so a reading
+ * today is a new baseline and not a change detection, and the two must not be
+ * confused.
+ */
 function baseline() {
+  const norm = (url) => String(url ?? "").replace(/\/+$/, "").toLowerCase();
   const out = [];
   for (const file of readdirSync(BUNDLES).sort()) {
     if (!file.endsWith(".json")) continue;
+    const id = file.replace(/\.json$/, "");
+    const designPath = join("web", "references", id, "DESIGN.md");
+    if (!existsSync(designPath)) continue;
     let bundle;
     try { bundle = JSON.parse(readFileSync(join(BUNDLES, file), "utf8")); } catch { continue; }
-    const home = (bundle.surfaces ?? []).find((surface) => surface.id === "home");
-    const body = (home?.elements ?? []).find((element) => /::body$/.test(element.selector));
-    if (!home?.url || !body?.style) continue;
-    const [width, height] = String(home.viewport ?? "1440x900").split("x").map(Number);
-    out.push({
-      id: file.replace(/\.json$/, ""),
-      url: home.url,
-      capturedAt: String(bundle.capturedAt ?? "").slice(0, 10),
-      viewport: { width: width || 1440, height: height || 900 },
-      july: {
-        color: body.style.color, background: body.style.backgroundColor,
-        font: (body.style.fontFamily ?? "").split(",")[0].replace(/["']/g, "").trim(),
-        size: body.style.fontSize,
-      },
-    });
+
+    const surfaces = new Map();
+    for (const surface of bundle.surfaces ?? []) {
+      const body = (surface.elements ?? []).find((element) => /::body$/.test(element.selector));
+      if (!surface.url || !body?.style) continue;
+      const [width, height] = String(surface.viewport ?? "1440x900").split("x").map(Number);
+      surfaces.set(norm(surface.url), {
+        surfaceId: surface.id,
+        viewport: { width: width || 1440, height: height || 900 },
+        july: {
+          color: body.style.color, background: body.style.backgroundColor,
+          font: (body.style.fontFamily ?? "").split(",")[0].replace(/["']/g, "").trim(),
+          size: body.style.fontSize,
+        },
+      });
+    }
+    if (surfaces.size === 0) continue;
+
+    const markdown = readFileSync(designPath, "utf8");
+    const sources = markdown.matchAll(
+      /- \{ id: ([A-Za-z0-9._-]+), kind: ([a-z-]+), url: "([^"]+)", captured: "([^"]+)" \}/g,
+    );
+    for (const [, sourceId, kind, url, captured] of sources) {
+      const match = surfaces.get(norm(url));
+      if (!match) continue;
+      out.push({
+        id, sourceId, kind, url, captured,
+        capturedAt: String(bundle.capturedAt ?? "").slice(0, 10),
+        surfaceId: match.surfaceId, viewport: match.viewport, july: match.july,
+      });
+    }
   }
   return out;
 }
@@ -131,7 +164,7 @@ async function measure(browser, row) {
 }
 
 const rows = limit > 0 ? baseline().slice(0, limit) : baseline();
-console.log(`[drift] ${rows.length} reference(s) with a comparable body probe, concurrency ${concurrency}`);
+console.log(`[drift] ${rows.length} source(s) with a July baseline across ${new Set(rows.map((r) => r.id)).size} reference(s), concurrency ${concurrency}`);
 
 const browser = await chromium.launch({ headless: true, channel: "chrome" }).catch(() => chromium.launch({ headless: true }));
 const results = [];
@@ -142,7 +175,7 @@ await Promise.all(Array.from({ length: Math.min(concurrency, rows.length) }, asy
     const result = await measure(browser, rows[index]);
     results[index] = result;
     const mark = { unchanged: "  ok    ", changed: "  CHANGED", "not-comparable": "  theme ", unreachable: "  gone  " }[result.verdict];
-    console.log(`${mark} ${result.id.padEnd(20)} ${result.changed?.join(",") || result.error || ""}`.slice(0, 120));
+    console.log(`${mark} ${`${result.id}/${result.sourceId}`.padEnd(38)} ${result.changed?.join(",") || result.error || ""}`.slice(0, 130));
   }
 }));
 await browser.close();
@@ -152,8 +185,10 @@ for (const r of results) tally[r.verdict] = (tally[r.verdict] ?? 0) + 1;
 const comparable = (tally.unchanged ?? 0) + (tally.changed ?? 0);
 console.log(`\n[drift] ${JSON.stringify(tally)}`);
 if (comparable) {
-  console.log(`[drift] of ${comparable} comparable surfaces, ${tally.unchanged ?? 0} unchanged `
+  console.log(`[drift] of ${comparable} comparable sources, ${tally.unchanged ?? 0} unchanged `
     + `(${Math.round(100 * (tally.unchanged ?? 0) / comparable)}%) after ~${Math.round(
       (Date.now() - new Date(rows[0].capturedAt).getTime()) / 864e5)} days`);
+  const refs = new Set(results.filter((r) => r.verdict === "unchanged").map((r) => r.id));
+  console.log(`[drift] ${refs.size} reference(s) have at least one confirmed-unchanged source`);
 }
 if (jsonAt) { writeFileSync(jsonAt, `${JSON.stringify(results, null, 1)}\n`); console.log(`[drift] wrote ${jsonAt}`); }

@@ -62,13 +62,21 @@ describe.sequential("GET /api/references/[id] AST contract", () => {
     expect(contract?.compatibilityFallbacks).toEqual([]);
     expect(contract?.evidence).toMatchObject({
       schemaVersion: 2,
-      checkedAt: "2026-09-17",
+      // Moves whenever the fixture reference is re-checked — it tracked 09-17
+      // until a component-index source captured on 09-19 was added. The
+      // assertion is that the evidence block reaches the API at all; if this
+      // date fails again, read the fixture's `verification_v2.checked` and
+      // match it rather than assuming a regression.
+      checkedAt: "2026-09-19",
       conflictCount: 0,
     });
-    // Five: the July marketing capture, its 2026-09-17 state re-verification
-    // kept as its own source rather than folded in, the store product page, and
-    // two Human Interface Guidelines pages.
-    expect(contract?.evidence?.sources).toHaveLength(5);
+    // Six: the July marketing capture, its 2026-09-17 state re-verification kept
+    // as its own source rather than folded in, the store product page, two Human
+    // Interface Guidelines pages, and the 2026-09-19 HIG component index behind
+    // the §4 roster. A count that grows when the reference gains a source is
+    // working as intended — read the fixture before treating a change here as a
+    // regression.
+    expect(contract?.evidence?.sources).toHaveLength(6);
     expect(contract?.evidence?.claims.find((claim) => claim.claimPath === "tokens.colors.primary")).toMatchObject({
       surfaceId: "apple-home",
       sourceId: "apple-live",
