@@ -18,7 +18,7 @@ frontmatter가 **없다**(`.omd/` 패키지에 있고 `readReferenceSource`만 �
 새로 보인 22건 프로브: **20 unchanged / 2 changed** → krds·spotify·sanity 3월로 이동,
 toss·bilibili는 실제 변화라 **정당하게 잔류**.
 
-**고침 2 — 죽은 인용을 계측 실패로 분류했다.** `unreachable` 15건 중 **13건이 HTTP 404**.
+**고침 2 — 죽은 인용을 계측 실패로 분류했다.** `unreachable` 15건 중 **12건이 HTTP 404**(403 2건·네트워크 1건).
 UA를 바꿔도 없어진 페이지는 안 돌아온다. `dead`(404/410, **레퍼런스의 결함**) /
 `blocked`(403/429, 모름) / `unreachable`(네트워크, 모름)로 분리하고 모든 행에
 `httpStatus`·`userAgent`를 기록. 죽은 인용 **12건/11개 레퍼런스**를 `source_url_dead`

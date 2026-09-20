@@ -39,7 +39,8 @@
  * `artifacts/reference-evidence-2026-07/`, which is read-only and unbacked.
  *
  * usage:
- *   node scripts/measure-surface-drift.mjs [--limit N] [--concurrency N] [--json <out>] [--only id,id]
+ *   node scripts/measure-surface-drift.mjs [--limit N] [--concurrency N] [--json <out>]
+ *                                           [--only id,id] [--measured-at YYYY-MM-DD]
  */
 import { readFileSync, readdirSync, writeFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
@@ -221,4 +222,15 @@ if (comparable) {
   const refs = new Set(results.filter((r) => r.verdict === "unchanged").map((r) => r.id));
   console.log(`[drift] ${refs.size} reference(s) have at least one confirmed-unchanged source`);
 }
-if (jsonAt) { writeFileSync(jsonAt, `${JSON.stringify(results, null, 1)}\n`); console.log(`[drift] wrote ${jsonAt}`); }
+// The envelope is not cosmetic. `loadDriftConfirmations` in
+// web/scripts/build-reference-quality.mjs reads the NEWEST `surface-drift-*.json`
+// and requires `measuredAt`; a bare array parses fine, yields no date, and every
+// renewal in the catalog silently reverts to capture-date expiry while the tier
+// counts stay put and nothing fails. The 2026-09-20 file only worked because it
+// was wrapped by hand. Write the envelope here so the next run cannot lose it.
+if (jsonAt) {
+  const measuredAt = String(flag("--measured-at", new Date().toISOString().slice(0, 10)));
+  const doc = { measuredAt, userAgent: UA, bundles: BUNDLES, results };
+  writeFileSync(jsonAt, `${JSON.stringify(doc, null, 1)}\n`);
+  console.log(`[drift] wrote ${jsonAt} (measuredAt ${measuredAt})`);
+}

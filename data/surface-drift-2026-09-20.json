@@ -1,19 +1,7 @@
 {
  "measuredAt": "2026-09-20",
- "baseline": "artifacts/reference-evidence-2026-07",
- "probe": "body computed style of the surface serving each verification_v2 source URL",
- "conditions": {
-  "colorScheme": "light",
-  "viewport": "per-bundle, usually 1440x900",
-  "tool": "playwright-core headless chrome"
- },
- "granularity": "source",
- "tally": {
-  "unchanged": 359,
-  "changed": 25,
-  "unreachable": 15,
-  "not-comparable": 1
- },
+ "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+ "bundles": "artifacts/reference-evidence-2026-07",
  "results": [
   {
    "id": "104",

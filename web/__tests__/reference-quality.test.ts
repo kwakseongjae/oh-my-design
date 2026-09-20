@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { readdirSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import {
   collectCanonicalClaimPaths,
   evaluateReferenceQuality,
@@ -222,6 +224,28 @@ describe("reference quality v2", () => {
     expect(after.nextReverifyAt! > before.nextReverifyAt!).toBe(true);
     expect(after.renewedSourceCount).toBe(1);
     expect(before.renewedSourceCount).toBe(0);
+  });
+});
+
+describe("committed drift reports", () => {
+  // The builder reads the NEWEST data/surface-drift-*.json and needs its
+  // `measuredAt`. A bare array parses fine, yields no date, and silently reverts
+  // every renewal in the catalog to capture-date expiry — while the tier counts
+  // stay put and no other gate fires. This is the gate that fires.
+  it("carry a measuredAt, so a new sweep cannot silently disable every renewal", () => {
+    const dataDir = join(process.cwd(), "..", "data");
+    const reports = readdirSync(dataDir).filter((name) => /^surface-drift-\d{4}-\d{2}-\d{2}\.json$/.test(name));
+    expect(reports.length).toBeGreaterThan(0);
+    for (const name of reports) {
+      const doc = JSON.parse(readFileSync(join(dataDir, name), "utf8"));
+      expect(Array.isArray(doc), `${name} is a bare array; it needs the { measuredAt, results } envelope`).toBe(false);
+      expect(doc.measuredAt, `${name} has no measuredAt`).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(Array.isArray(doc.results), `${name} has no results array`).toBe(true);
+      // A verdict the builder does not know is a verdict it will treat as
+      // "no confirmation" — visible here rather than as a quiet non-renewal.
+      const known = new Set(["unchanged", "changed", "dead", "blocked", "unreachable", "not-comparable"]);
+      for (const row of doc.results) expect(known.has(row.verdict), `${name}: unknown verdict ${row.verdict}`).toBe(true);
+    }
   });
 });
 

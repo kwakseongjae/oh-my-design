@@ -50,7 +50,14 @@ function loadDriftConfirmations() {
   let report;
   try { report = JSON.parse(readFileSync(join(dataDir, newest), "utf8")); } catch { return EMPTY_DRIFT; }
   const measuredAt = String(report?.measuredAt ?? "");
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(measuredAt)) return EMPTY_DRIFT;
+  // A newest file without a date is a broken run, not an absence of data. Say so
+  // — silently returning empty would revert every renewal in the catalog while
+  // the tier counts stayed put and no gate fired.
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(measuredAt)) {
+    console.error(`[reference-quality] data/${newest} has no valid measuredAt; ignoring it. `
+      + "Every drift renewal is disabled until it is fixed or removed.");
+    return EMPTY_DRIFT;
+  }
   const confirmations = {};
   const dead = {};
   for (const row of report.results ?? []) {
