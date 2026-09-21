@@ -3,6 +3,43 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-21 — **웨이브 1 완료: serendie**, 카탈로그 첫 네이티브 Core v2 레퍼런스 (`81e048a9`)
+
+**441개 · verified 142.** 레거시 frontmatter를 한 번도 발행한 적 없는 첫 레퍼런스 —
+카탈로그 평면이 패키지의 `dev.oh-my-design.catalog` 확장에 있다.
+
+**reason code 0 · advisory 0**으로 `verified_v2`: 클레임 54/54 근거(100%), 출처 8,
+그리고 **컴포넌트 1 · 인터랙티브 1 · 상태 1** — verified 141건 중 36건이 인터랙티브 0인
+카탈로그에서 이게 핵심이다.
+
+**범주 문제는 규칙으로 해결**(`c40bfb0e`): "이름이 시스템과 별개의 제품·플랫폼을 가리키면
+브랜드, 툴킷만 가리키면 라이브러리". **넌센스 경로 대조군**으로 검증했고
+(bytedance는 `/arco`·`/semi`·`/zz-없는경로`에 전부 동일한 6,667자) CN 기각 10건이 유지된다.
+규칙은 AGENTS.md 하드 룰에도 넣었다.
+
+**게이트 4개가 순서대로 진짜 문제를 잡았다**: ①`ds.type: public` 무효 — **내 생성기가 잡겠다고
+해놓고 `ds`를 아예 검사 안 했다**(이제 검사한다) ②Primary tasks를 `###` 산문으로 써서
+`primary_task` 실패 → 고치니 `structural-core`→`portable-core` ③`tokens.spacing`은 1개가
+아니라 **인덱스마다 12개** + `.use` 5개 + `pressed` → 37→54 ④`**Tier 1 sources:**` 산문 줄이
+투영에서 사라진다(스펙 §11은 Core 문서에서 레거시 관행을 거부하라고 한다) → **증거 그래프의
+`sources`로 폴백**(더 나은 데이터, 폴백이라 기존 0건 영향).
+
+**write gate가 설계대로 발화**했다 — "네이티브가 들어오면 이 테스트가 *의도적으로* 바뀌어야
+한다"고 주석에 적어뒀고, 그대로 됐다.
+
+**낡은 하드코딩 카운트 3곳**을 발견해 **재고정이 아니라 count-agnostic으로** 바꿨다
+(`doctor.test` ×2, `omd-reference-query`, CLI 문서 5개 로케일 — **ja·zh는 이미 틀려** legacy를
+141이라 쓰고 있었다, 실제 116).
+
+부수: `sync-catalog`가 design-md 미러의 **기존 드리프트 41건**도 정리했다(canonical은 serendie만 변경).
+
+**기록만 하고 안 고침**: Core v2 레퍼런스는 상세 페이지에서 **"UI font basis unresolved"**로
+보인다 — AST는 `Roboto`를 high confidence로 해석하는데, Core canonical은
+`repository.server.ts`가 패키지를 서빙하며 `referenceAst`를 null로 둔다. krds도 같다.
+**리더 갭 클래스가 이번엔 표현 계층에서** 나왔다.
+
+---
+
 ## 🛑 2026-09-21 — 웨이브 1 보류: **Serendie의 범주가 의심스럽다**
 → `docs/WAVE1_SERENDIE_2026-09-21.md`
 
