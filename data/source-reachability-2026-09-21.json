@@ -3,8 +3,8 @@
  "method": "two-stage — curl with a desktop Chrome UA, then every non-200 re-opened in a real browser. 95 of 127 curl failures were reachable, so a single-stage sweep would have reported 127 dead when 22 are.",
  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
  "summary": {
-  "dead": 22,
-  "reachable": 898,
+  "dead": 17,
+  "reachable": 903,
   "unreachable": 4,
   "blocked": 6
  },
@@ -2291,10 +2291,11 @@
    "id": "hyundai",
    "sourceId": "ioniq6-live",
    "kind": "product-surface",
-   "url": "https://www.hyundai.com/kr/ko/e/vehicles/the-new-ioniq-6/intro",
+   "url": "https://www.hyundai.com/kr/ko/e/vehicles/the-new-ioniq6/intro",
    "curlStatus": 404,
-   "browserStatus": 404,
-   "verdict": "dead"
+   "browserStatus": 200,
+   "verdict": "reachable",
+   "repointedFrom": "https://www.hyundai.com/kr/ko/e/vehicles/the-new-ioniq-6/intro"
   },
   {
    "id": "google",
@@ -2549,10 +2550,11 @@
    "id": "hyundai",
    "sourceId": "vehicles-live",
    "kind": "product-surface",
-   "url": "https://www.hyundai.com/kr/ko/e/vehicles",
+   "url": "https://www.hyundai.com/kr/ko/vehicles",
    "curlStatus": 404,
-   "browserStatus": 404,
-   "verdict": "dead"
+   "browserStatus": 200,
+   "verdict": "reachable",
+   "repointedFrom": "https://www.hyundai.com/kr/ko/e/vehicles"
   },
   {
    "id": "jandi",
@@ -4902,28 +4904,31 @@
    "id": "patternfly",
    "sourceId": "color-live",
    "kind": "product-surface",
-   "url": "https://www.patternfly.org/design-foundations/colors/",
+   "url": "https://www.patternfly.org/foundations-and-styles/colors",
    "curlStatus": 404,
-   "browserStatus": 404,
-   "verdict": "dead"
+   "browserStatus": 200,
+   "verdict": "reachable",
+   "repointedFrom": "https://www.patternfly.org/design-foundations/colors/"
   },
   {
    "id": "patternfly",
    "sourceId": "about-official",
    "kind": "official-doc",
-   "url": "https://www.patternfly.org/get-started/about-patternfly/",
+   "url": "https://www.patternfly.org/about-us",
    "curlStatus": 404,
-   "browserStatus": 404,
-   "verdict": "dead"
+   "browserStatus": 200,
+   "verdict": "reachable",
+   "repointedFrom": "https://www.patternfly.org/get-started/about-patternfly/"
   },
   {
    "id": "patternfly",
    "sourceId": "releases-official",
    "kind": "official-doc",
-   "url": "https://www.patternfly.org/get-started/release-highlights",
+   "url": "https://www.patternfly.org/releases/release-highlights",
    "curlStatus": 404,
-   "browserStatus": 404,
-   "verdict": "dead"
+   "browserStatus": 200,
+   "verdict": "reachable",
+   "repointedFrom": "https://www.patternfly.org/get-started/release-highlights"
   },
   {
    "id": "patternfly",

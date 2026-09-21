@@ -2931,54 +2931,6 @@
    }
   },
   {
-   "id": "hyundai",
-   "sourceId": "ioniq6-live",
-   "kind": "product-surface",
-   "url": "https://www.hyundai.com/kr/ko/e/vehicles/the-new-ioniq-6/intro",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-3",
-   "verdict": "dead",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "HyundaiSansTextKR",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "HyundaiSansTextKR",
-    "size": "16px",
-    "themeResponsive": false
-   },
-   "httpStatus": 404
-  },
-  {
-   "id": "hyundai",
-   "sourceId": "vehicles-live",
-   "kind": "product-surface",
-   "url": "https://www.hyundai.com/kr/ko/e/vehicles",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-2",
-   "verdict": "dead",
-   "changed": [],
-   "july": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "HyundaiSansTextKR",
-    "size": "16px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "HyundaiSansTextKR",
-    "size": "16px",
-    "themeResponsive": false
-   },
-   "httpStatus": 404
-  },
-  {
    "id": "hyundaicard",
    "sourceId": "collector-ceh",
    "kind": "product-surface",
@@ -6485,34 +6437,6 @@
   },
   {
    "id": "patternfly",
-   "sourceId": "color-live",
-   "kind": "product-surface",
-   "url": "https://www.patternfly.org/design-foundations/colors/",
-   "captured": "2026-07-13",
-   "surfaceId": "surface-3",
-   "verdict": "dead",
-   "changed": [
-    "color",
-    "font",
-    "size"
-   ],
-   "july": {
-    "color": "rgb(21, 21, 21)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Red Hat Text",
-    "size": "14px"
-   },
-   "now": {
-    "color": "rgb(0, 0, 0)",
-    "background": "rgba(0, 0, 0, 0)",
-    "font": "Times",
-    "size": "16px",
-    "themeResponsive": false
-   },
-   "httpStatus": 404
-  },
-  {
-   "id": "patternfly",
    "sourceId": "home-live",
    "kind": "product-surface",
    "url": "https://www.patternfly.org/",
@@ -10006,5 +9930,6 @@
     "themeResponsive": false
    }
   }
- ]
+ ],
+ "note_2026_09_21": "3 rows removed: patternfly/color-live, hyundai/vehicles-live and hyundai/ioniq6-live were repointed to the URLs their content moved to, so this sweep's comparison against a July baseline for the old URL no longer describes them."
 }

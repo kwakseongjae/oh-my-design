@@ -1938,7 +1938,7 @@
       ]
     },
     "hyundai": {
-      "checked": "2026-07-13",
+      "checked": "2026-09-21",
       "claims": 0,
       "sources": [
         {
@@ -1962,7 +1962,7 @@
         {
           "id": "ioniq6-live",
           "kind": "product-surface",
-          "captured": "2026-07-13",
+          "captured": "2026-09-21",
           "host": "www.hyundai.com"
         },
         {
@@ -1974,7 +1974,7 @@
         {
           "id": "vehicles-live",
           "kind": "product-surface",
-          "captured": "2026-07-13",
+          "captured": "2026-09-21",
           "host": "www.hyundai.com"
         }
       ]
@@ -4188,13 +4188,13 @@
       ]
     },
     "patternfly": {
-      "checked": "2026-09-19",
+      "checked": "2026-09-21",
       "claims": 0,
       "sources": [
         {
           "id": "about-official",
           "kind": "official-doc",
-          "captured": "2026-07-14",
+          "captured": "2026-09-21",
           "host": "www.patternfly.org"
         },
         {
@@ -4206,7 +4206,7 @@
         {
           "id": "color-live",
           "kind": "product-surface",
-          "captured": "2026-07-13",
+          "captured": "2026-09-21",
           "host": "www.patternfly.org"
         },
         {
@@ -4224,7 +4224,7 @@
         {
           "id": "releases-official",
           "kind": "official-doc",
-          "captured": "2026-07-14",
+          "captured": "2026-09-21",
           "host": "www.patternfly.org"
         },
         {

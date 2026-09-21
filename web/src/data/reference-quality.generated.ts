@@ -3807,7 +3807,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2027-01-09",
+    "nextReverifyAt": "2027-03-19",
     "renewedSourceCount": 1,
     "tokenSource": "reconciled",
     "claimCount": 32,
@@ -3822,7 +3822,6 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 0,
     "reasonCodes": [],
     "advisoryCodes": [
-      "source_url_dead",
       "component_state_prose_only"
     ],
     "paletteGrounding": null
@@ -6916,7 +6915,7 @@ export const REFERENCE_QUALITY = [
     "status": "verified_v2",
     "verifiedAt": "2026-07-14",
     "tokensExtractedAt": "2026-07-13",
-    "nextReverifyAt": "2027-01-09",
+    "nextReverifyAt": "2027-03-19",
     "renewedSourceCount": 2,
     "tokenSource": "reconciled",
     "claimCount": 35,
@@ -6931,7 +6930,6 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 0,
     "reasonCodes": [],
     "advisoryCodes": [
-      "source_url_dead",
       "component_state_prose_only"
     ],
     "paletteGrounding": null

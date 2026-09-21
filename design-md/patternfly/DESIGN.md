@@ -17,7 +17,7 @@ ds:
   description: "Red Hat-sponsored open-source design system for consistent, accessible enterprise products."
 verification_v2:
   schema: 2
-  checked: "2026-09-19"
+  checked: "2026-09-21"
   surfaces:
     - { id: home, kind: marketing, url: "https://www.patternfly.org/", inspected: "2026-07-13" }
     - { id: button-docs, kind: documentation, url: "https://www.patternfly.org/components/button/", inspected: "2026-07-13" }
@@ -27,11 +27,11 @@ verification_v2:
   sources:
     - { id: home-live, kind: product-surface, url: "https://www.patternfly.org/", captured: "2026-07-13" }
     - { id: button-live, kind: product-surface, url: "https://www.patternfly.org/components/button/", captured: "2026-07-13" }
-    - { id: color-live, kind: product-surface, url: "https://www.patternfly.org/design-foundations/colors/", captured: "2026-07-13" }
-    - { id: about-official, kind: official-doc, url: "https://www.patternfly.org/get-started/about-patternfly/", captured: "2026-07-14" }
+    - { id: color-live, kind: product-surface, url: "https://www.patternfly.org/foundations-and-styles/colors", captured: "2026-09-21" }
+    - { id: about-official, kind: official-doc, url: "https://www.patternfly.org/about-us", captured: "2026-09-21" }
     - { id: typography-official, kind: official-doc, url: "https://www.patternfly.org/foundations-and-styles/typography/", captured: "2026-07-14" }
     - { id: theming-official, kind: official-doc, url: "https://staging.patternfly.org/foundations-and-styles/theming/", captured: "2026-07-14" }
-    - { id: releases-official, kind: official-doc, url: "https://www.patternfly.org/get-started/release-highlights", captured: "2026-07-14" }
+    - { id: releases-official, kind: official-doc, url: "https://www.patternfly.org/releases/release-highlights", captured: "2026-09-21" }
     - { id: patternfly-component-index, kind: official-doc, url: "https://www.patternfly.org/components/overview/", captured: "2026-09-19" }
   conflicts: []
   claims:

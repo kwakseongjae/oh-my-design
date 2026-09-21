@@ -13,15 +13,15 @@ verified: "2026-07-13"
 omd: "0.1"
 verification_v2:
   schema: 2
-  checked: "2026-07-13"
+  checked: "2026-09-21"
   surfaces:
     - { id: home, kind: product, url: "https://www.hyundai.com/kr/ko/e", inspected: "2026-07-13" }
     - { id: vehicles, kind: product, url: "https://www.hyundai.com/kr/ko/e/vehicles", inspected: "2026-07-13" }
     - { id: ioniq6, kind: product, url: "https://www.hyundai.com/kr/ko/e/vehicles/the-new-ioniq-6/intro", inspected: "2026-07-13" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://www.hyundai.com/kr/ko/e", captured: "2026-07-13" }
-    - { id: vehicles-live, kind: product-surface, url: "https://www.hyundai.com/kr/ko/e/vehicles", captured: "2026-07-13" }
-    - { id: ioniq6-live, kind: product-surface, url: "https://www.hyundai.com/kr/ko/e/vehicles/the-new-ioniq-6/intro", captured: "2026-07-13" }
+    - { id: vehicles-live, kind: product-surface, url: "https://www.hyundai.com/kr/ko/vehicles", captured: "2026-09-21" }
+    - { id: ioniq6-live, kind: product-surface, url: "https://www.hyundai.com/kr/ko/e/vehicles/the-new-ioniq6/intro", captured: "2026-09-21" }
     - { id: design, kind: official-doc, url: "https://www.hyundai.com/worldwide/en/company/innovation/design", captured: "2026-07-13" }
     - { id: typeface, kind: official-doc, url: "https://www.hyundai.com/worldwide/en/newsroom/detail/0000000287", captured: "2026-07-13" }
     - { id: history, kind: official-doc, url: "https://www.hyundai.com/worldwide/en/footer/corporate/history/1967-2000", captured: "2026-07-13" }
