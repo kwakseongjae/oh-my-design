@@ -170,8 +170,8 @@ canonical을 이미 `/design-systems/<id>`로 넘긴다.
    가장 큰 덩어리는 `benchmarks/ui-resolve-bench/` 20건(Grok 피벗 벤치), `test/unit/` 6,
    `test-v2/content-runs/` 6, `docs/archive/` 6, `docs/reviews/` 4.
    **질문은 하나뿐:** 보류 스프린트 커밋 1건으로 묶을까, 계속 미커밋으로 둘까.
-3. **표류 산출물.** `web/dbg.tmp.mjs`는 디버그 잔재다. 삭제 대상으로 표시만 해 둔다 —
-   제가 지우지 않는다.
+3. **표류 산출물.** `web/dbg.tmp.mjs`는 디버그 잔재였다. **2026-09-21 삭제됨** — 단일 Toss 문서
+   URL을 긁는 일회용 프로브였고 참조하는 곳이 없었다.
 
 ---
 

@@ -71,3 +71,65 @@ GitHub URL이 있는 것부터 처리하면 API 없이 상당수를 덮을 수 �
 **부분적으로.** 즉시 착수 가능한 **8건**을 확보했고(그중 asana는 상태까지 측정 가능한 스토리북),
 **방법의 한계와 다음 방법을 증거로 확정**했다. 264건이 "없다"로 판정된 것이 아니라
 **"이 방법으로는 안 보인다"**로 판정된 것이고, 그 차이가 이 문서의 요점이다.
+
+---
+
+# 5. ①b GitHub 스윕 — **가설이 틀렸다는 것을 측정했다**
+
+§3에서 "올바른 계측기는 GitHub"라고 적었고, 그대로 했다.
+
+```
+297개 브랜드 홈페이지를 긁어 GitHub org 수확        → 69개 브랜드 / 77개 org
+77개 org의 repo 목록(프로필 탭, 서버 렌더·무제한)   → 26개 org에 design 계열 repo 40개
+40개 repo의 homepage + <org>.github.io 프로브       → **스토리북 2개**
+```
+
+**찾은 것은 실질적으로 1건이다** — `sendbird/sendbird-uikit-react`(**56 스토리**).
+나머지 하나는 `kintone-labs`(cybozu, 이미 §9에서 도메인 불일치로 기각).
+docsite 5건은 대부분 잡음이다: `localhost:5173`(포크의 잘못된 homepage) ·
+`chakra-ui.com`(velog가 포크한 남의 문서) · Atlassian 사내 위키. 실물은
+`moneyforward.github.io/cloud-react-ui/` 정도다.
+
+**여기서도 계측기를 한 번 고쳤다.** homepage 추출 정규식이 전부 빈값을 뱉길래 알려진 정답
+(`kufu/smarthr-ui` → `story.smarthr-ui.dev`)으로 검증했더니 **내 정규식이 틀렸다**. GitHub은
+homepage를 `<a href="URL">URL</a>` 쌍으로 렌더하는데 그 패턴을 안 잡고 있었다. 고쳐서 재실행 —
+그래도 **결과는 2건으로 같았다.**
+
+## 5.1 그래서 무엇이 밝혀졌나 — **남은 297건은 구조적으로 다르다**
+
+```
+공식 디자인 시스템(ds.url)을 선언한 비율
+   verified_v2  65/141  =  46%
+   미검증       21/297  =   7%      ← 6.5배 차이
+```
+
+미검증 297건의 구성: consumer-tech 88 · fintech 43 · ecommerce 30 · ai 26 · saas 18 …
+
+**pixiv·smarthr·cybozu가 숨은 스토리북을 갖고 있던 건 대표성이 없었다.** 그 셋은 공개 디자인
+시스템을 운영하는 기술 회사다. 카탈로그는 **그런 회사를 이미 다 걷어갔고**(verified의 46%),
+남은 것은 애초에 디자인 시스템을 발행하지 않는 소비자 브랜드가 대부분이다.
+
+## 5.2 계획 수정 — 예산을 깊이가 아니라 확충으로
+
+①a(8건) + ①b(1건) = **도달 가능한 것은 약 9건**이다. 297건이 아니다.
+
+- **기존 카탈로그의 깊이 상한은 낮다.** 표면이 없는 브랜드는 아무리 조사해도 `partial`이 맞고,
+  그게 틀린 상태가 아니다(cybozu·paypay가 그 증거다).
+- **확충은 브랜드를 고를 수 있다.** 디자인 시스템을 발행하는 회사를 골라 넣으면 처음부터
+  verified 경로에 올릴 수 있다 — Serendie가 그랬고 asana가 그랬다.
+
+→ **남은 예산은 ③ 확충으로 간다.** 깊이는 ①이 찾아낸 9건으로 한정한다.
+
+## 5.3 즉시 착수 가능한 9건
+
+| 브랜드 | 표면 | 종류 |
+|---|---|---|
+| **sendbird** | `sendbird.github.io/sendbird-uikit-react` | **스토리북 56** |
+| ~~asana~~ | `storybook.asana.com` | ✅ 2026-09-21 완료(증거 1.00, partial) |
+| gitlab | `design.gitlab.com` | 컴포넌트 89 · 토큰 1,197 |
+| workday | `design.workday.com` | 컴포넌트 55 · 토큰 1,229 |
+| digital-agency-jp | `design.digital.go.jp` | 컴포넌트 27 |
+| octopusenergy | `design.octopus.energy` | 토큰 787 |
+| smartnews · renault | zeroheight | 토큰 사이트 |
+| cal | `ui.cal.com` · `design.cal.com` | 스토리북 + 토큰 |
+| money-forward | `moneyforward.github.io/cloud-react-ui/` | 문서 사이트 |
