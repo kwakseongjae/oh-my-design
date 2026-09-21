@@ -3,6 +3,39 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-21 — 오너 결정 C: **깊이를 노출한다** (`114fe953`)
+
+"아이덴티티 전용을 넣을 것인가"에 **C(넣되 구분한다)**. 숫자는 이미 매니페스트에 있었고
+아무도 읽지 않았다.
+
+**재보니 무엇을 인쇄할지가 바뀌었다.** 카탈로그 전체로는 440 중 404가 인터랙티브 컴포넌트를
+갖는다 — 안심되는 숫자이고 **틀린 숫자**다. 독자가 오해하는 지점을 묻어버린다. 문제는
+**verified 티어 안에만** 있다:
+
+```
+verified_v2  141 →  105 인터랙티브 있음 ·  38 per-state 값 있음 ·  36 없음
+```
+
+**인터랙티브 0인 36건이 전부 verified_v2다.** `partial`·`legacy_snapshot`엔 **한 건도 없다.**
+우연이 아니라 티어 정의 그대로다 — `verified_v2`는 증거 그래프 완전성을 묻고, **주장을 적게
+하는 문서는 근거 댈 것도 적다.** 36건 평균 클레임 35, 나머지 62, 둘 다 커버리지 100%.
+**적게 주장하는 게 뱃지로 가는 싼 길**이므로 뱃지를 깊이로 읽으면 안 된다.
+
+세 표면, 새 어휘 없이:
+- **상세 페이지**: "12 documented" → **"12 documented · 5 interactive, 5 with states"**.
+  toyota와 krds 둘 다 `verified v2`인데 이제 한눈에 다르다(`1 documented · none interactive`).
+  카운트 출처도 `referenceAst`(AST 없으면 null)에서 **매니페스트**(440 전부)로 옮겼다 —
+  두 값이 440건 전부 일치함을 확인하고 옮겼으므로 정보 손실 0, 드리프트 경로만 제거.
+- **`/api/references`**: `components`·`interactiveComponents` 추가. `qualityScore`는 깊이를
+  표현 못 한다 — 실행 중인 라우트에서 확인: **krds(12/5)와 baemin(7/7)이 똑같이 0.85**.
+- **목록 헤드라인**: 티어 줄 밑에 **"of the verified: 105 carry interactive components ·
+  38 record per-state values"**.
+
+퍼널 확인(AGENTS.md): `/` `/builder` `/design-systems` `/design-systems/toyota` 전부 200,
+두 페이지는 소스가 아니라 **렌더된 텍스트**로 검증.
+
+---
+
 ## ✅ 2026-09-21 — 4단계 어휘 재조사 완료: **세 시장이 서로 다른 답**
 → `docs/VOCABULARY_RESURVEY_2026-09-21.md`
 
