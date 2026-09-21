@@ -47,7 +47,7 @@ verification_v2:
     tokens.colors.success: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
     tokens.colors.surface: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
     tokens.colors.surface-pressed: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
-    tokens.colors.text: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.foreground: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
     tokens.colors.text-disabled: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
     tokens.colors.text-muted: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
     tokens.colors.text-tertiary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
@@ -161,7 +161,7 @@ tokens:
     canvas: "#ffffff"
     surface: "#f5f5f5"
     surface-pressed: "#d6d6d6"
-    text: "#1f1f1f"
+    foreground: "#1f1f1f"
     text-muted: "#474747"
     text-tertiary: "#858585"
     text-disabled: "#adadad"
@@ -272,7 +272,7 @@ Charcoal names its neutrals by role, not by numeric weight:
 - **Canvas** (`#ffffff`) — `--charcoal-background1`, `--charcoal-surface1`. Page background.
 - **Surface** (`#f5f5f5`) — `--charcoal-background2`. Secondary background and hover fill.
 - **Surface Pressed** (`#d6d6d6`) — `--charcoal-background1-press`.
-- **Text** (`#1f1f1f`) — `--charcoal-text1`. Primary text on light surfaces.
+- **Foreground** (`#1f1f1f`) — `--charcoal-text1`. Primary text on light surfaces.
 - **Text Muted** (`#474747`) — `--charcoal-text2`. Secondary text.
 - **Text Tertiary** (`#858585`) — `--charcoal-text3`. Captions, metadata, counts.
 - **Text Disabled** (`#adadad`) — `--charcoal-text4`.
