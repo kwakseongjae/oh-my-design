@@ -4,9 +4,9 @@
   "generator": "scripts/build-reference-quality-data.mjs",
   "count": 441,
   "counts": {
-    "verified_v2": 143,
+    "verified_v2": 144,
     "partial": 183,
-    "legacy_snapshot": 115,
+    "legacy_snapshot": 114,
     "total": 441
   },
   "items": [
@@ -4362,18 +4362,14 @@
     },
     {
       "id": "smarthr",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-05-19",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-21",
+      "next_reverify_at": "2027-03-20",
+      "evidence_coverage": 1,
+      "surface_count": 2,
+      "source_count": 6,
       "conflict_count": 0,
-      "reason_codes": [
-        "proof_incomplete",
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "smartnews",

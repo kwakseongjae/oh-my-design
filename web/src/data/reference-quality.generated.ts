@@ -8841,27 +8841,23 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "smarthr",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-05-19",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-09-21",
+    "tokensExtractedAt": "2026-09-21",
+    "nextReverifyAt": "2027-03-20",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 121,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 124,
+    "evidenceClaimCount": 124,
+    "evidenceCoverage": 1,
+    "surfaceCount": 2,
+    "sourceCount": 6,
     "conflictCount": 0,
-    "tier1SourceCount": 2,
-    "componentCount": 13,
+    "tier1SourceCount": 4,
+    "componentCount": 8,
     "interactiveComponentCount": 7,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "proof_incomplete",
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
+    "statedComponentCount": 6,
+    "reasonCodes": [],
     "advisoryCodes": [
       "motion_value_unsourced"
     ],
@@ -11404,9 +11400,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 143,
+  "verified_v2": 144,
   "partial": 183,
-  "legacy_snapshot": 115,
+  "legacy_snapshot": 114,
   "total": 441
 } as const;
 

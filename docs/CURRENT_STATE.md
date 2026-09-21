@@ -3,6 +3,34 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-21 — smarthr도 `verified_v2`: **선언된 primary가 버튼색이 아니었다**
+→ `docs/PIXIV_CHARCOAL_2026-09-21.md` §7–§8
+
+pixiv와 같은 파이프라인으로 smarthr 완료. **카탈로그 144 verified / 183 partial / 114 legacy.**
+
+```
+claims 124/124 · components 8 · interactive 7 · stated 6 · Tier-1 4 · reasonCodes []
+```
+
+**핵심**: 선언된 `button-primary #00C4CC`는 **브랜드 아쿠아이지 버튼 색이 아니다** — 실제
+primary는 `#0077c7`(`--color-bg-blue`). 그리고 **시맨틱 4색이 계열째 틀렸다**:
+`success`는 초록(`#3DCC65`)으로 선언됐지만 실제로는 **틸 `#0f7f85`**이고, 그 값은 레퍼런스가
+`aqua-dark`로 이미 따로 갖고 있던 색이다. `error #e01e5a` · `warning #ffcc17` · `info #0077c7`.
+`button-text`의 fg로 적혀 있던 `#0F7F85`는 **success 색**이었고 링크는 `#0071c1`이다.
+
+**구조가 pixiv와 다르다**: smarthr-ui는 커스텀 프로퍼티를 발행하지 않고 Tailwind `shr-`
+유틸리티로 컴파일한다 → `:root` 한 번이 아니라 **스토리별 실측**. `components-button--variant`
+하나가 변형 6개를, `components-statuslabel--type`이 시맨틱 전부를 렌더한다.
+
+**서체는 비웠다** — family 토큰이 없고 세 표면(컴포넌트 `system-ui` · 문서 `SDSYuGothic` ·
+마케팅 `AdjustedYuGothic`)이 서로 다르다. 시스템 폰트 승격 금지 규칙대로 `uiFont`는 null.
+
+**§7의 교차확인을 1단위 정정**: `--color-light-grey-1 #d6d3d0`은 컴포넌트와 정확히 일치하지만
+`--color-text-black`은 문서 `#23221f` vs 컴포넌트 `#23221e`로 **파랑 채널이 1 다르다.**
+평균 내지 않고 컴포넌트 값 채택 + 문서 값은 Conflict Matrix에 보존.
+
+---
+
 ## ✅ 2026-09-21 — pixiv: 선언 팔레트가 **머티리얼이었다**, `legacy_snapshot` → `verified_v2`
 → `docs/PIXIV_CHARCOAL_2026-09-21.md`
 

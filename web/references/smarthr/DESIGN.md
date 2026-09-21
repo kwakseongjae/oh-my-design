@@ -8,61 +8,207 @@ primary_color: "#00C4CC"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=smarthr.jp&sz=128"
-verified: "2026-05-19"
+verified: "2026-09-21"
 omd: "0.1"
 ds:
   name: SmartHR Design System
   url: "https://smarthr.design"
   type: system
   description: SmartHR's fully public, governance-driven design system — primitive and semantic tokens, accessibility-first components, and inclusive UI guidelines published openly at smarthr.design.
+verification_v2:
+  schema: 2
+  checked: "2026-09-21"
+  surfaces:
+    - { id: sds, kind: official-doc, url: "https://smarthr.design/products/design-tokens/", inspected: "2026-09-21" }
+    - { id: ui-story, kind: product-surface, url: "https://story.smarthr-ui.dev/", inspected: "2026-09-21" }
+  sources:
+    - { id: sds-tokens-live, kind: official-doc, url: "https://smarthr.design/products/design-tokens/", captured: "2026-09-21" }
+    - { id: ui-button-variant, kind: product-surface, url: "https://story.smarthr-ui.dev/iframe.html?id=components-button--variant&viewMode=story", captured: "2026-09-21" }
+    - { id: ui-button-disabled, kind: product-surface, url: "https://story.smarthr-ui.dev/iframe.html?id=components-button--disabled&viewMode=story", captured: "2026-09-21" }
+    - { id: ui-statuslabel-type, kind: product-surface, url: "https://story.smarthr-ui.dev/iframe.html?id=components-statuslabel--type&viewMode=story", captured: "2026-09-21" }
+    - { id: ui-input, kind: product-surface, url: "https://story.smarthr-ui.dev/iframe.html?id=components-input--playground&viewMode=story", captured: "2026-09-21" }
+    - { id: smarthr-ui-repo, kind: official-doc, url: "https://github.com/kufu/smarthr-ui", captured: "2026-09-21" }
+  conflicts: []
+  claims:
+    tokens.colors.body: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.border: { surface_id: ui-story, source_id: ui-button-variant, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.border-hover: { surface_id: ui-story, source_id: ui-button-variant, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.brand: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.canvas: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.danger: { surface_id: ui-story, source_id: ui-button-variant, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.danger-hover: { surface_id: ui-story, source_id: ui-button-variant, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.disabled-bg: { surface_id: ui-story, source_id: ui-button-disabled, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.disabled-fg: { surface_id: ui-story, source_id: ui-button-disabled, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.foreground: { surface_id: ui-story, source_id: ui-button-variant, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.hairline: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.info: { surface_id: ui-story, source_id: ui-statuslabel-type, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.link: { surface_id: ui-story, source_id: ui-button-variant, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.muted: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.on-primary: { surface_id: ui-story, source_id: ui-button-variant, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.primary: { surface_id: ui-story, source_id: ui-button-variant, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.primary-hover: { surface_id: ui-story, source_id: ui-button-variant, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.success: { surface_id: ui-story, source_id: ui-statuslabel-type, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.surface: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.surface-hover: { surface_id: ui-story, source_id: ui-button-variant, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.text-grey: { surface_id: ui-story, source_id: ui-statuslabel-type, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.warning: { surface_id: ui-story, source_id: ui-statuslabel-type, method: computed-style, captured: "2026-09-21" }
+    tokens.components.button-danger.bg: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-danger.border: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-danger.fg: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-danger.font: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-danger.hover: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-danger.padding: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-danger.pressed: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-danger.radius: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-danger.type: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-danger.use: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-disabled.bg: { surface_id: ui-story, source_id: ui-button-disabled, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-disabled.disabled: { surface_id: ui-story, source_id: ui-button-disabled, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-disabled.fg: { surface_id: ui-story, source_id: ui-button-disabled, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-disabled.radius: { surface_id: ui-story, source_id: ui-button-disabled, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-disabled.type: { surface_id: ui-story, source_id: ui-button-disabled, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-disabled.use: { surface_id: ui-story, source_id: ui-button-disabled, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-ghost.fg: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-ghost.font: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-ghost.hover: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-ghost.pressed: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-ghost.radius: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-ghost.type: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-ghost.use: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.bg: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.border: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.fg: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.font: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.hover: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.padding: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.pressed: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.radius: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.type: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.use: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.bg: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.border: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.fg: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.font: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.hover: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.padding: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.pressed: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.radius: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.type: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.use: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-text.fg: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-text.font: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-text.hover: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-text.pressed: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-text.radius: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-text.type: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-text.use: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input.bg: { surface_id: ui-story, source_id: ui-input, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input.border: { surface_id: ui-story, source_id: ui-input, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input.fg: { surface_id: ui-story, source_id: ui-input, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input.focus: { surface_id: ui-story, source_id: ui-input, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input.radius: { surface_id: ui-story, source_id: ui-input, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input.type: { surface_id: ui-story, source_id: ui-input, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input.use: { surface_id: ui-story, source_id: ui-input, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.status-label.bg: { surface_id: ui-story, source_id: ui-statuslabel-type, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.status-label.border: { surface_id: ui-story, source_id: ui-statuslabel-type, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.status-label.fg: { surface_id: ui-story, source_id: ui-statuslabel-type, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.status-label.type: { surface_id: ui-story, source_id: ui-statuslabel-type, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.status-label.use: { surface_id: ui-story, source_id: ui-statuslabel-type, method: live-inspect, captured: "2026-09-21" }
+    tokens.rounded.full: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.rounded.md: { surface_id: ui-story, source_id: ui-button-variant, method: live-inspect, captured: "2026-09-21" }
+    tokens.spacing.base: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.lg: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.md: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.sm: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.xl: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.xs: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-10.size: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-10.use: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-11.size: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-11.use: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-12.size: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-12.use: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-13.size: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-13.use: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-14.size: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-14.use: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-15.size: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-15.use: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-16.size: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-16.use: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-18.size: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-18.use: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-20.size: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-20.use: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-24.size: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-24.use: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-26.size: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-26.use: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-28.size: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-28.use: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-36.size: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-36.use: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-48.size: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-48.use: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-52.size: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-52.use: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-54.size: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.size-54.use: { surface_id: sds, source_id: sds-tokens-live, method: computed-style, captured: "2026-09-21" }
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: live-extract
+  extracted: "2026-09-21"
   colors:
-    primary: "#00C4CC"
-    brand: "#00C4CC"
-    canvas: "#FFFFFF"
-    foreground: "#23221F"
-    body: "#4E4C49"
-    muted: "#AAA69F"
-    on-primary: "#FFFFFF"
-    accent-orange: "#FF9900"
-    surface: "#F8F7F6"
-    hairline: "#EDEBE6"
-    success: "#3DCC65"
-    error: "#EC5A55"
-    warning: "#FFD74A"
-    info: "#32B7F0"
-    aqua-dark: "#0F7F85"
+    brand: "#00c4cc"
+    primary: "#0077c7"
+    primary-hover: "#0068ae"
+    danger: "#e01e5a"
+    danger-hover: "#ca1b51"
+    canvas: "#ffffff"
+    surface: "#f8f7f6"
+    surface-hover: "#f2f2f2"
+    foreground: "#23221e"
+    text-grey: "#706d65"
+    body: "#4e4c49"
+    muted: "#aaa69f"
+    border: "#d6d3d0"
+    border-hover: "#cac6c2"
+    hairline: "#edebe6"
+    success: "#0f7f85"
+    warning: "#ffcc17"
+    info: "#0077c7"
+    link: "#0071c1"
+    disabled-bg: "#f2f2f2"
+    disabled-fg: "#c1bdb7"
+    on-primary: "#ffffff"
   typography:
-    family: { sans: "system-ui", mono: "system-ui" }
-    page-heading:  { size: 32, weight: 700, lineHeight: 1.25, use: "Page headings (XXL; mobile 28.8px)" }
-    section:       { size: 24, weight: 700, lineHeight: 1.25, use: "Section headings (XL)" }
-    subheading:    { size: 19.2, weight: 700, lineHeight: 1.25, use: "Subheadings (L)" }
-    body:          { size: 16, weight: 400, lineHeight: 1.50, use: "Body default (M)" }
-    label:         { size: 13.71, weight: 400, lineHeight: 1.00, use: "Secondary labels (S)" }
-    caption:       { size: 12, weight: 400, lineHeight: 1.50, use: "Captions, helper text (XS)" }
-    fine:          { size: 10.67, weight: 400, lineHeight: 1.50, use: "Fine print, dense table captions (XXS)" }
+    size-10: { size: 10, use: "Smallest published step" }
+    size-11: { size: 11, use: "Dense metadata" }
+    size-12: { size: 12, use: "Helper and caption text" }
+    size-13: { size: 13, use: "Dense table text" }
+    size-14: { size: 14, use: "Secondary body" }
+    size-15: { size: 15, use: "Body alternate" }
+    size-16: { size: 16, use: "Base body and control text" }
+    size-18: { size: 18, use: "Sub-heading" }
+    size-20: { size: 20, use: "Section heading" }
+    size-24: { size: 24, use: "Page heading" }
+    size-26: { size: 26, use: "Large heading" }
+    size-28: { size: 28, use: "Display heading" }
+    size-36: { size: 36, use: "Marketing heading" }
+    size-48: { size: 48, use: "Marketing display" }
+    size-52: { size: 52, use: "Marketing display, large" }
+    size-54: { size: 54, use: "Largest published step" }
   spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32 }
-  rounded: { sm: 4, md: 6, lg: 8, full: 9999 }
-  shadow:
-    popover: "subtle tokenized shadow (light)"
-    modal: "stronger tokenized shadow + Stone01 backdrop scrim"
-  components_harvested: true
+  rounded: { md: 6, full: 9999 }
   components:
-    button-primary: { type: button, bg: "#00C4CC", fg: "#FFFFFF", radius: "6px", font: "16px / 700", use: "Single most important action (Save/Submit)" }
-    button-secondary: { type: button, bg: "#FFFFFF", fg: "#23221F", border: "1px solid #EDEBE6", radius: "6px", use: "Cancel / secondary beside primary" }
-    button-danger: { type: button, bg: "#EC5A55", fg: "#FFFFFF", radius: "6px", use: "Destructive action" }
-    button-text: { type: button, bg: "transparent", fg: "#0F7F85", use: "Low-emphasis inline action" }
-    button-disabled: { type: button, bg: "#EDEBE6", fg: "#AAA69F", disabled: "palette swap, no opacity trick", use: "Unavailable action" }
-    input: { type: input, bg: "#FFFFFF", fg: "#23221F", border: "1px solid #AAA69F", radius: "4px", focus: "border #00C4CC + focus ring", use: "Form text field" }
-    input-error: { type: input, border: "1px solid #EC5A55", use: "Validation failure; helper text #A53F3F at 12px" }
-    card: { type: card, bg: "#FFFFFF", border: "1px solid #EDEBE6", radius: "8px", use: "Content panel on Stone01 #F8F7F6 page bg" }
-    notice-info: { type: card, bg: "#DDF2FB", fg: "#1376A0", radius: "4px", use: "Informational banner" }
-    notice-success: { type: card, bg: "#E6F2C8", fg: "#378445", radius: "4px", use: "Confirmation message" }
-    notice-warning: { type: card, bg: "#FAF2D0", fg: "#F56121", radius: "4px", use: "Caution message" }
-    notice-error: { type: card, bg: "#FFE7E5", fg: "#A53F3F", radius: "4px", use: "Error / failure banner" }
-    badge: { type: badge, radius: "9999px", use: "Status chip — family-01 tint bg, family-04 dark text, color-coded by semantic family" }
+    button-primary: { type: button, bg: "#0077c7", fg: "#ffffff", border: "1px solid #0077c7", radius: 6, padding: "12px 16px", font: "16px / 700", hover: "#0068ae", pressed: "#0068ae", use: "Single most important action — 42px tall." }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#23221e", border: "1px solid #d6d3d0", radius: 6, padding: "12px 16px", font: "16px / 700", hover: "#f2f2f2", pressed: "#f2f2f2", use: "Cancel or secondary action beside a primary." }
+    button-danger: { type: button, bg: "#e01e5a", fg: "#ffffff", border: "1px solid #e01e5a", radius: 6, padding: "12px 16px", font: "16px / 700", hover: "#ca1b51", pressed: "#ca1b51", use: "Destructive action." }
+    button-text: { type: button, fg: "#0071c1", radius: 6, font: "16px / 400", hover: "#f2f2f2", pressed: "#f2f2f2", use: "Low-emphasis inline action on a transparent fill." }
+    button-ghost: { type: button, fg: "#23221e", radius: 6, font: "16px / 700", hover: "#f2f2f2", pressed: "#f2f2f2", use: "Neutral low-emphasis action on a transparent fill." }
+    button-disabled: { type: button, bg: "#f2f2f2", fg: "#c1bdb7", radius: 6, disabled: "#f2f2f2", use: "Unavailable action — palette swap with cursor not-allowed, no opacity trick." }
+    input: { type: input, bg: "#ffffff", fg: "#23221e", border: "1px solid #d6d3d0", radius: 6, focus: "outline ring", use: "Form text field, 42px tall." }
+    status-label: { type: badge, bg: "#ffffff", fg: "#706d65", border: "1px solid #d6d3d0", use: "Status chip — 24px tall; semantic variants recolour text and border." }
+  components_harvested: true
 ---
 
 # Design System Inspiration of SmartHR
@@ -96,121 +242,136 @@ Typography is deliberately **typeface-agnostic** — SmartHR ships no brand webf
 
 ## 2. Color Palette & Roles
 
-SmartHR splits color into **primitive tokens** (the raw palette below) and **semantic tokens** (role aliases that map onto primitives). Author against semantic roles; the primitives exist so the palette stays coherent.
+Two first-party surfaces were measured on 2026-09-21 and they are **not interchangeable**:
+`smarthr.design` (the design system's own site, which publishes 22 `--color-*` custom
+properties) and `story.smarthr-ui.dev` (the official smarthr-ui Storybook — 988 stories,
+144 components — where the values are compiled into Tailwind `shr-` utility classes and
+must be read off rendered components).
 
 ### Brand
-- **SmartHR Blue** (`#00C4CC`): The primary brand color. RGB `rgb(0, 196, 204)`. Used for primary buttons, brand mark, active/selected emphasis, links in brand context.
-- **Black** (`#23221F`): RGB `rgb(35, 34, 31)`. The recommended text color — a warm near-black, never pure `#000000`. Softer on the eye for dense administrative reading.
-- **Orange** (`#FF9900`): RGB `rgb(255, 153, 0)`. Accent color for emphasis and highlight; used sparingly, never as a second primary.
-- **White** (`#FFFFFF`): Default surface.
 
-### Stone (neutral / grayscale family)
-- **Stone01** (`#F8F7F6`): Lightest — page/section background, subtle fills.
-- **Stone02** (`#EDEBE6`): Borders, dividers, disabled fills.
-- **Stone03** (`#AAA69F`): Mid-gray — placeholder, secondary icon, muted text.
-- **Stone04** (`#4E4C49`): Dark neutral — secondary text, strong borders.
+- **SmartHR Blue** (`#00c4cc`) — `--color-smarthr-blue`. The corporate aqua. **It is not the
+  primary button colour** — see below. Recorded as the brand mark colour.
 
-### Aqua (cyan family — extends the brand)
-- **Aqua01** (`#D4F4F5`): Tint background for cyan-themed surfaces.
-- **Aqua02** (`#69D9DE`): Light cyan.
-- **Aqua03** (`#12ABB1`): Mid cyan.
-- **Aqua04** (`#0F7F85`): Dark cyan — text/icon on light cyan.
+### Interactive
 
-### Semantic Color Families
-Each family is a four-step ramp (01 lightest tint → 04 darkest); semantic tokens map these to roles.
-- **Grass (green / success)**: `#E6F2C8` · `#AEE26B` · `#3DCC65` · `#378445`. Success states, positive confirmation.
-- **Momiji (red / danger)**: `#FFE7E5` · `#FF9E9C` · `#EC5A55` · `#A53F3F`. Error, danger, destructive actions.
-- **Sunlight (yellow / warning)**: `#FAF2D0` · `#FFEE11` · `#FFD74A` · `#F56121`. Warning, caution.
-- **Sky (light blue / info)**: `#DDF2FB` · `#8FE2FC` · `#32B7F0` · `#1376A0`. Informational notices.
-- **Sakura (pink)**: `#F9E9F7` · `#F8B2E1` · `#D362AF` · `#82407C`. Decorative / categorical.
-- **Marine (navy)**: `#DEE9FF` · `#8AC0FF` · `#0075E3` · `#26519F`. Secondary blue / links.
-- **Galaxy (purple)**: `#EEE5FD` · `#9D8EF8` · `#8C5EEE` · `#6E4CA6`. Categorical / decorative.
-- **Earth (brown)**: `#FBEDE1` · `#F2D3A4` · `#BA621E` · `#76533E`. Categorical / decorative.
+Measured on the smarthr-ui Button `variant` story:
+
+- **Primary** (`#0077c7`) — primary button fill; hover and pressed both `#0068ae`. This is
+  `--color-bg-blue`, *not* the brand aqua.
+- **Danger** (`#e01e5a`) — destructive fill (`--color-danger`); hover and pressed `#ca1b51`.
+- **Link** (`#0071c1`) — the text-button foreground.
+- **Surface Hover** (`#f2f2f2`) and **Border Hover** (`#cac6c2`) — the neutral hover pair
+  shared by secondary, text and ghost buttons.
+- **Disabled** — fill `#f2f2f2`, text `#c1bdb7`, cursor `not-allowed`. A palette swap, not an
+  opacity trick.
+
+### Stone (neutral family)
+
+- **Canvas** (`#ffffff`) — `--color-white`.
+- **Surface** (`#f8f7f6`) — `--color-light-grey-3`, the page wash behind cards.
+- **Border** (`#d6d3d0`) — `--color-light-grey-1`. Measured identically on both surfaces.
+- **Hairline** (`#edebe6`) — `--color-divider`.
+- **Muted** (`#aaa69f`) — `--color-light-grey-4`.
+- **Body** (`#4e4c49`) — `--color-dark-grey-1`.
+- **Text Grey** (`#706d65`) — `--color-text-grey`; measured as the StatusLabel resting text.
 
 ### Text
-- **Default text**: `#23221F` (warm near-black).
-- **Secondary / muted**: `Stone04 #4E4C49` and `Stone03 #AAA69F`.
-- **On-brand (text on SmartHR Blue)**: `#FFFFFF`.
+
+- **Foreground** (`#23221e`) — measured on rendered smarthr-ui components.
+  **The two surfaces disagree by one unit here**: `smarthr.design` declares
+  `--color-text-black: #23221f` and paints it 440 times, while smarthr-ui components compute
+  `#23221e`. Both are SmartHR's; the component value is recorded because it is what products
+  render. The docs value is kept in the conflict matrix rather than averaged away.
+
+### Semantic Color Families
+
+Measured on the smarthr-ui StatusLabel `type` story — this is the real semantic set:
+
+- **Info** (`#0077c7`) — same value as the primary action.
+- **Success** (`#0f7f85`) — a **teal**, `--color-nav-active`, not a green.
+- **Error** (`#e01e5a`) — same value as the danger action.
+- **Warning** (`#ffcc17`) — a yellow fill carrying `#23221e` text, the only semantic variant
+  that fills rather than outlines.
 
 ## 3. Typography Rules
 
 ### Font Stack
-SmartHR is intentionally **typeface-agnostic**. The system explicitly avoids specifying a bespoke typeface and respects the OS font setting, deferring to native system fonts so Japanese, alphanumerics, and assistive-tech output render correctly everywhere. A representative OS-native stack:
-```
-system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif
-```
-There is no brand webfont. This is a deliberate accessibility and performance decision, not an omission.
+
+**SmartHR publishes no brand typeface token.** The design system's token set contains
+`--font-size-*` and `--leading-*` but no font-family entry, so no family is recorded here —
+the field is absent, not substituted.
+
+What was observed, kept separate by surface:
+
+- **smarthr-ui components** compute `system-ui` — the OS UI font. A deliberate choice for a
+  dense B2B product, but a system stack is not promoted to a brand face.
+- **smarthr.design** renders `SDSYuGothic`, a webfont scoped to the design-system site.
+- **smarthr.jp** (corporate marketing) renders `AdjustedYuGothic`.
+
+Three surfaces, three different faces, none of them a published product-font token.
 
 ### Type Scale (semantic font-size tokens)
-| Token | rem | px | Typical Use |
-|---|---|---|---|
-| `XXS` | `0.667rem` | `10.67px` | Fine print, dense table captions |
-| `XS` | `0.75rem` | `12px` | Captions, helper text |
-| `S` | `0.857rem` | `13.71px` | Secondary labels |
-| `M` (standard) | `1rem` | `16px` | Body default |
-| `L` | `1.2rem` | `19.2px` | Subheadings |
-| `XL` | `1.5rem` | `24px` | Section headings |
-| `XXL` | `2rem` | `32px` (mobile `1.8rem`/28.8px) | Page headings |
+
+Read live from `smarthr.design`; the tokens are named by their pixel value and expressed
+in rem:
+
+| Token | rem | px |
+|---|---|---|
+| `--font-size-10` … `--font-size-16` | .625 / .688 / .75 / .813 / .875 / .938 / 1 | 10 · 11 · 12 · 13 · 14 · 15 · 16 |
+| `--font-size-18` … `--font-size-28` | 1.125 / 1.25 / 1.5 / 1.625 / 1.75 | 18 · 20 · 24 · 26 · 28 |
+| `--font-size-36` … `--font-size-54` | 2.25 / 3 / 3.25 / 3.375 | 36 · 48 · 52 · 54 |
+
+Sixteen steps. Control text measures **16px** on rendered buttons and inputs.
 
 ### Line Heights (leading tokens)
-- **TIGHT** (`1.25×`): Headings.
-- **NORMAL** (`1.5×`): Body text — generous for dense JP administrative reading.
-- **NONE** (`1×`): Labels and single-line UI text.
+
+- `--leading-normal` **1.5** — body and running text.
+- `--leading-tight` **1.25** — headings and dense rows.
+
+Only two leading tokens are published.
 
 ### Conventions
-- **M (16px) is the body default** — readable, not cramped, sized for forms full of legal/labor terminology.
-- **Mobile reduces only XXL** (32px → 28.8px); body and below stay constant.
-- **Bold is contextual** — applied by components (headings, buttons) rather than exposed as a heavy display weight. SmartHR builds hierarchy from size + leading + color, not from a dramatic weight jump.
-- **Never hardcode a typeface** — always go through the OS-native stack.
+- **16px is the control baseline**: buttons and inputs both compute 16px, buttons at weight
+  700 and inputs at 400.
+- **Weight carries emphasis, not size**: the filled and neutral buttons share 16px and differ
+  by weight and fill.
+- **The scale is named by pixels**: a token is `--font-size-24`, not `--font-size-lg`, so the
+  intended size is unambiguous at the call site.
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Primary**
-- Background: `#00C4CC` (SmartHR Blue)
-- Text: `#FFFFFF`
-- Radius: `6px` (token `m`)
-- Font: `1rem` (16px) / bold
-- Use: The single most important action on a screen (Save / Submit / 申請する)
+Measured on the smarthr-ui `variant` and `disabled` stories, pointer parked between
+readings. All variants share **42px height, 6px radius, `12px 16px` padding and 16px text**;
+they differ by fill, border and weight. **No variant changes on focus** — smarthr-ui draws
+focus with a separate ring rather than restyling the control.
 
-**Secondary / Default**
-- Background: `#FFFFFF`
-- Text: `#23221F`
-- Border: `1px solid` Stone02 `#EDEBE6`
-- Radius: `6px` (token `m`)
-- Use: Cancel / secondary actions sitting beside a primary
+| Variant | Rest | Hover / Pressed | Weight |
+|---|---|---|---|
+| **Primary** | `#0077c7` fill, `#ffffff` text, `1px solid #0077c7` | `#0068ae` | 700 |
+| **Secondary** | `#ffffff` fill, `#23221e` text, `1px solid #d6d3d0` | `#f2f2f2` fill, `#cac6c2` border | 700 |
+| **Danger** | `#e01e5a` fill, `#ffffff` text | `#ca1b51` | 700 |
+| **Text** | transparent, `#0071c1` text | `#f2f2f2` fill | 400 |
+| **Ghost** | transparent, `#23221e` text | `#f2f2f2` fill | 700 |
+| **On-dark** | transparent, `#ffffff` text and border | `rgba(3,3,2,0.15)` fill | 700 |
+| **Disabled** | `#f2f2f2` fill, `#c1bdb7` text, `cursor: not-allowed` | — | 700 |
 
-**Danger**
-- Background: Momiji `#EC5A55`
-- Text: `#FFFFFF`
-- Radius: `6px` (token `m`)
-- Use: Destructive actions (delete, withdraw application)
-
-**Text / Skeleton button**
-- Background: transparent
-- Text: Aqua04 `#0F7F85` (cyan-dark, readable on white)
-- Use: Low-emphasis inline actions
-
-**Disabled**
-- Background: Stone02 `#EDEBE6`
-- Text: Stone03 `#AAA69F`
-- Use: Unavailable actions — palette swap is the signal, no opacity trick
+The disabled treatment is a **palette swap at full opacity**, so disabled text keeps its own
+contrast rather than inheriting a dimmed parent.
 
 ### Inputs
 
-**Text Field**
-- Background: `#FFFFFF`
-- Text: `#23221F`
-- Border: `1px solid` Stone03 `#AAA69F`
-- Radius: `4px` (token `s`)
-- Focus: border SmartHR Blue `#00C4CC` + focus ring
-- Use: Form fields — the workhorse of an HR product
+- Rest: `#ffffff` fill, `#23221e` text, `1px solid #d6d3d0`, **6px radius, 42px tall**,
+  16px / 400 — the same height and radius as a button, so a field and a button align on a row.
+- Focus and pressed add an outline ring; no fill or border colour change was observed.
 
-**Error Field**
-- Border: Momiji `#EC5A55`
-- Helper text below in Momiji `#A53F3F`, font `XS` (12px)
-- Use: Validation failure on a field
+### Status labels
+
+- 24px tall, `#ffffff` fill, `#706d65` text, `1px solid #d6d3d0` at rest. Semantic variants
+  recolour **text and border together** (info `#0077c7`, success `#0f7f85`, error `#e01e5a`);
+  warning is the exception and fills `#ffcc17` with `#23221e` text.
 
 ### Cards / Surfaces
 
@@ -251,7 +412,7 @@ There is no brand webfont. This is a deliberate accessibility and performance de
 - Radius: `full` (9999px) or `4px`
 - Use: Employee status, application state — color-coded by semantic family
 
-### Published component roster (61 published, none measured here)
+### Published component roster (144 published in Storybook; 8 measured here)
 
 The SmartHR Design System publishes **61 components**, read from its own component index at
 `https://smarthr.design/products/components/` on 2026-09-19. Names are given as the host
@@ -480,6 +641,6 @@ Verified vs assumed:
 ---
 
 **Verified:** 2026-05-19 (omd:add-reference — JP batch)
-**Tier 1 sources:** https://smarthr.design (public SmartHR Design System — colors #00C4CC / #23221F / #FF9900 + 10 four-step families; typography rem scale + OS-font policy; radius s/m/l/full); https://smarthr.jp (homepage).
+**Tier 1 sources:** https://smarthr.design/products/design-tokens/ (SmartHR Design System's own token page — 22 `--color-*`, 16 `--font-size-*`, 2 `--leading-*` read live via getComputedStyle); https://story.smarthr-ui.dev (official smarthr-ui Storybook, 988 stories / 144 components — component geometry, variants and hover/pressed/disabled measured on rendered DOM); https://github.com/kufu/smarthr-ui (the library's official repository on SmartHR's GitHub org, kufu); https://smarthr.jp (corporate marketing — font observation only, a separate evidence domain).
 **Tier 2 sources:** getdesign.md / refero — not separately fetched (official public DS supersedes).
 **Conflicts unresolved:** none. Brief-supplied #00C4CC confirmed exactly against smarthr.design/basics/colors/.

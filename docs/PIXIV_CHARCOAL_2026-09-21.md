@@ -144,7 +144,7 @@ components 6 · interactive 5 · **stated 5** · reasonCodes []
 
 ---
 
-# 7. smarthr 정찰 — **측정 가능하지만 pixiv와 구조가 다르다** (다음 세션용)
+# 7. smarthr — 정찰에서 완료까지 (아래 7.4는 이후 해결됨)
 
 pixiv를 끝내고 smarthr를 열었다. **완성하지 않았다** — 아래는 실측해 둔 것과, 왜 남겼는지다.
 
@@ -198,6 +198,72 @@ resolve되는 것은 `--tw-*` 17개뿐이고, 값은 **Tailwind 유틸리티 클
 **988개 스토리 중 다른 곳**에 있다. 여기서 추정으로 채우면 이 세션 내내 막아온 바로 그
 실패(절반만 측정된 레퍼런스)가 된다.
 
-**남은 일**: primary/danger/text/disabled 버튼 변형 스토리 특정 → 실측 → 시맨틱 4색을
-smarthr-ui의 Notice/Message 계열에서 확정 → pixiv와 동일한 파이프라인(토큰 재작성 ·
-`verification_v2` · `.verification.md` · 미러). 인프라와 함정은 이 문서에 다 적혀 있다.
+**남은 일이었던 것 → 같은 세션에서 해결했다.** `components-button--variant` 하나가 변형 6개를
+전부 렌더하고, 시맨틱 4색은 Notice가 아니라 **`components-statuslabel--type`**에 있었다. §8 참조.
+
+
+---
+
+# 8. smarthr 완료 — **선언된 primary가 브랜드색이지 버튼색이 아니었다**
+
+`components-button--variant` 하나가 변형 6개를 전부 렌더한다. 시맨틱은 Notice 계열이 아니라
+**StatusLabel `type`** 스토리에 있었다.
+
+```
+Button (전 변형 공통: 42px · radius 6px · pad 12px 16px · 16px)   focus 변화 없음
+  primary    #0077c7 → hover/press #0068ae      (weight 700)
+  secondary  #ffffff / #23221e / border #d6d3d0 → #f2f2f2 / #cac6c2
+  danger     #e01e5a → #ca1b51
+  text       투명 / #0071c1 (weight 400) → #f2f2f2
+  ghost      투명 / #23221e → #f2f2f2
+  on-dark    투명 / #ffffff → rgba(3,3,2,.15)
+  disabled   #f2f2f2 / #c1bdb7 · cursor not-allowed · **opacity 1**(팔레트 교체)
+StatusLabel (24px)  info #0077c7 · success #0f7f85 · error #e01e5a · warning bg #ffcc17
+Input  #ffffff / #23221e / border #d6d3d0 · radius 6px · 42px · 16px/400 · focus는 outline만
+```
+
+## 8.1 가장 큰 발견
+
+**선언된 `button-primary: #00C4CC`는 브랜드 아쿠아이지 버튼 색이 아니다.** 실제 primary 버튼은
+**`#0077c7`**(`--color-bg-blue`)이다. `#00c4cc`는 `brand` 역할로 남기고 `primary`를 분리했다.
+
+그리고 **시맨틱 4색이 전부 틀렸다** — 색상 계열 자체가 다르다:
+
+| 선언 | 실측 | |
+|---|---|---|
+| `success #3DCC65`(초록) | **`#0f7f85`** | **틸이다.** `--color-nav-active`이자 레퍼런스가 `aqua-dark`로 따로 갖고 있던 값 |
+| `error #EC5A55` | **`#e01e5a`** | `--color-danger` |
+| `warning #FFD74A` | **`#ffcc17`** | 유일하게 채우는 변형(글자 `#23221e`) |
+| `info #32B7F0` | **`#0077c7`** | primary와 같은 값 |
+
+`button-text fg #0F7F85`도 틀렸다 — 그건 **success 색**이고 링크는 `#0071c1`이다.
+선언이 성공색을 링크색 자리에 넣어둔 것이다.
+
+## 8.2 §7의 교차 확인을 **한 단위 정정한다**
+
+§7에서 "문서 사이트와 컴포넌트가 정확히 일치한다"고 썼다. **테두리는 맞고 글자색은 틀렸다.**
+
+```
+--color-light-grey-1  #d6d3d0  = 컴포넌트 테두리 rgb(214,211,208)   일치
+--color-text-black    #23221f  ≠ 컴포넌트 글자 rgb(35,34,30)=#23221e
+```
+
+`smarthr.design`은 `#23221f`를 **440번 칠하고**, smarthr-ui 컴포넌트는 `#23221e`를 낸다.
+**둘 다 SmartHR의 것이고 파랑 채널이 1 다르다.** 평균 내지 않고 컴포넌트 값을 채택한 뒤
+(제품이 렌더하는 값이므로) 문서 값을 Conflict Matrix에 남겼다.
+
+## 8.3 결과
+
+```
+claims 124/124 (coverage 1.00) · sources 6 · surfaces 2 · Tier-1 4
+components 8 · interactive 7 · stated 6 · reasonCodes []
+카탈로그 143 → 144 verified_v2 / 183 partial / 114 legacy
+```
+
+**서체는 비웠다.** SmartHR은 family 토큰을 발행하지 않는다(`--font-size-*`·`--leading-*`뿐).
+컴포넌트는 `system-ui`, 문서 사이트는 `SDSYuGothic`, 마케팅은 `AdjustedYuGothic` — **세 표면에
+세 서체이고 어느 것도 제품 서체 토큰이 아니다.** 그래서 `family`를 제거했고 `uiFont`는 null이다.
+시스템 폰트를 브랜드 사실로 올리지 않는다는 규칙 그대로다.
+
+**내린 것**: `notice-info/success/warning/error` 4개 틴트 컴포넌트와 `badge`·`card` — 144개
+발행 컴포넌트 중 이 틴트 쌍 패턴에 맞는 것이 없다. `accent-orange #FF9900`, `rounded.sm/lg`.
