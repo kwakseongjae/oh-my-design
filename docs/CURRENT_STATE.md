@@ -3,6 +3,43 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-21 — pixiv: 선언 팔레트가 **머티리얼이었다**, `legacy_snapshot` → `verified_v2`
+→ `docs/PIXIV_CHARCOAL_2026-09-21.md`
+
+JP 깊이 목록을 재개하며 smarthr를 1순위로 잡았다가 **네임스페이스를 측정하고 순위를 뒤집었다.**
+`smarthr.design`은 398 props 중 **355개가 `--tw-*`**(문서 사이트 = Tailwind, PayPay와 같은 계통)인데
+**pixiv는 제품 도메인 `pixiv.net`이 `--charcoal-*` 토큰을 328개 발행한다.**
+
+> 기준 변경: JP 깊이 순위는 **"자기 네임스페이스 토큰이 제품 표면에 실재하는가"**로 정렬한다.
+
+**그리고 깊이가 아니라 정확성 문제였다.** 선언된 24색 중 역할까지 맞는 것은 9개이고,
+`success #4caf50`·`warning #ff9800`·`premium-gold #ffb300`은 **머티리얼 디자인 기본값**
+(Green 500 · Orange 500 · Amber 600)이다. 실제 charcoal은 `#b1cc29`·`#ffaf0f`·(없음)이다.
+버튼도 `radius: 6`으로 선언돼 있는데 **charcoal 버튼은 알약(`999999px`)**이다.
+
+```
+claims 120/120 evidence (coverage 1.00) · sources 8 · surfaces 3 · Tier-1 3
+components 6 · interactive 5 · stated 5 · reasonCodes []
+카탈로그 142 → 143 verified_v2 / 183 partial / 115 legacy
+```
+
+내린 것: 머티리얼 3색 · 일반 그레이 램프 10단 · `primary-tint` · `dark-raised` · `SF Mono` ·
+secondary/follow/premium 버튼 변형 · 그림자 5단(§6은 산문 유지 + **미측정 명시**) · spacing 48px.
+`family.sans`는 charcoal 선언값 `Noto Sans CJK JP`로 두고, 제품 본문이 `win-bug-omega, system-ui, …`
+로 **OS 서체에 떨어진다는 사실은 §3 산문으로만** 적었다(시스템 폰트 승격 금지 규칙).
+
+**계측기 오류 3건을 스스로 잡았다**: ① 스타일시트 열거가 라이트/다크를 섞어 `brand-hover`를
+`#1fa3fb`(다크)로 읽음 → `getComputedStyle(:root)`는 `#0090f0`. 394개 중 **223개가 테마별로 다르다.**
+② 값 인덱스가 만든 이름 `--charcoal---pixiv-brand-color-highlight`로 조회해 `(unset)`을 얻고
+**"날조"로 분류** → 실제 토큰은 `--pixiv-brand-color-highlight = #0086e0`으로 **선언값이 옳았다.**
+**조회 실패는 부재의 증거가 아니다.** ③ 스토리북의 **0×0 "Set string" 버튼**을 컴포넌트로 잡아
+hover가 30초 타임아웃 — serendie의 탭-크롬 오인과 같은 계통.
+
+부수로 **카운트 드리프트**도 정리: `cli-docs.ts` 5개 로케일(개/件/份/个 계수사 포함)과
+`layout.tsx`·`llms.txt`가 **440/141/159/140**으로 멈춰 있었다 → 441/143/183/115.
+
+---
+
 ## 🛑 2026-09-21 — paypay 깊이 보정: **재보니 손대지 않는 것이 맞다** (`3d9d7c37`)
 
 JP 깊이 3순위. 자체 표면을 실측한 뒤 **아무것도 바꾸지 않기로** 했다.

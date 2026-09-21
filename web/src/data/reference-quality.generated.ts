@@ -7304,26 +7304,23 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "pixiv",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-06-06",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-09-21",
+    "tokensExtractedAt": "2026-09-21",
+    "nextReverifyAt": "2027-03-20",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 173,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 120,
+    "evidenceClaimCount": 120,
+    "evidenceCoverage": 1,
+    "surfaceCount": 3,
+    "sourceCount": 8,
     "conflictCount": 0,
-    "tier1SourceCount": 2,
-    "componentCount": 16,
-    "interactiveComponentCount": 9,
-    "statedComponentCount": 2,
-    "reasonCodes": [
-      "token_source_unverified",
-      "verification_v2_missing"
-    ],
+    "tier1SourceCount": 3,
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 5,
+    "reasonCodes": [],
     "advisoryCodes": [
       "motion_value_unsourced"
     ],
@@ -11407,9 +11404,9 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 142,
+  "verified_v2": 143,
   "partial": 183,
-  "legacy_snapshot": 116,
+  "legacy_snapshot": 115,
   "total": 441
 } as const;
 

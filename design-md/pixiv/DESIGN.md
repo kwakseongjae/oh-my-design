@@ -8,71 +8,196 @@ primary_color: "#0096fa"
 logo:
   type: simpleicons
   slug: "pixiv"
-verified: "2026-06-06"
+verified: "2026-09-21"
 added: "2026-06-06"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-21"
+  surfaces:
+    - { id: home, kind: product-surface, url: "https://www.pixiv.net/", inspected: "2026-09-21" }
+    - { id: home-dark, kind: product-surface, url: "https://www.pixiv.net/", inspected: "2026-09-21" }
+    - { id: charcoal-story, kind: product-surface, url: "https://charcoal-web.pixiv.design/", inspected: "2026-09-21" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://www.pixiv.net/", captured: "2026-09-21" }
+    - { id: home-dark-live, kind: product-surface, url: "https://www.pixiv.net/", captured: "2026-09-21" }
+    - { id: charcoal-button-story, kind: product-surface, url: "https://charcoal-web.pixiv.design/iframe.html?id=react-button--primary&viewMode=story", captured: "2026-09-21" }
+    - { id: charcoal-iconbutton-story, kind: product-surface, url: "https://charcoal-web.pixiv.design/iframe.html?id=react-iconbutton--default&viewMode=story", captured: "2026-09-21" }
+    - { id: charcoal-switch-story, kind: product-surface, url: "https://charcoal-web.pixiv.design/iframe.html?id=react-switch--default&viewMode=story", captured: "2026-09-21" }
+    - { id: charcoal-checkbox-story, kind: product-surface, url: "https://charcoal-web.pixiv.design/iframe.html?id=react-checkbox--default&viewMode=story", captured: "2026-09-21" }
+    - { id: charcoal-tagitem-story, kind: product-surface, url: "https://charcoal-web.pixiv.design/iframe.html?id=react-tagitem--default&viewMode=story", captured: "2026-09-21" }
+    - { id: charcoal-repo, kind: official-doc, url: "https://github.com/pixiv/charcoal", captured: "2026-09-21" }
+  conflicts: []
+  claims:
+    tokens.colors.canvas: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.dark-canvas: { surface_id: home-dark, source_id: home-dark-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.dark-elevated: { surface_id: home-dark, source_id: home-dark-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.dark-text: { surface_id: home-dark, source_id: home-dark-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.dark-text-muted: { surface_id: home-dark, source_id: home-dark-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.engagement-red: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.error: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.link: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.link-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.on-primary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.primary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.primary-faded: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.primary-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.primary-pressed: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.primary-ui-hover: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.success: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.surface: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.surface-pressed: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.text: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.text-disabled: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.text-muted: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.text-tertiary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.warning: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.components.button-default.fg: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-default.font: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-default.hover: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-default.padding: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-default.pressed: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-default.radius: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-default.type: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-default.use: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.bg: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.fg: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.font: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.hover: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.padding: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.pressed: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.radius: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.type: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.use: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.checkbox.border: { surface_id: charcoal-story, source_id: charcoal-checkbox-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.checkbox.focus: { surface_id: charcoal-story, source_id: charcoal-checkbox-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.checkbox.radius: { surface_id: charcoal-story, source_id: charcoal-checkbox-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.checkbox.type: { surface_id: charcoal-story, source_id: charcoal-checkbox-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.checkbox.use: { surface_id: charcoal-story, source_id: charcoal-checkbox-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.icon-button.fg: { surface_id: charcoal-story, source_id: charcoal-iconbutton-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.icon-button.font: { surface_id: charcoal-story, source_id: charcoal-iconbutton-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.icon-button.hover: { surface_id: charcoal-story, source_id: charcoal-iconbutton-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.icon-button.pressed: { surface_id: charcoal-story, source_id: charcoal-iconbutton-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.icon-button.radius: { surface_id: charcoal-story, source_id: charcoal-iconbutton-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.icon-button.type: { surface_id: charcoal-story, source_id: charcoal-iconbutton-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.icon-button.use: { surface_id: charcoal-story, source_id: charcoal-iconbutton-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.switch.bg: { surface_id: charcoal-story, source_id: charcoal-switch-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.switch.focus: { surface_id: charcoal-story, source_id: charcoal-switch-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.switch.hover: { surface_id: charcoal-story, source_id: charcoal-switch-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.switch.pressed: { surface_id: charcoal-story, source_id: charcoal-switch-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.switch.radius: { surface_id: charcoal-story, source_id: charcoal-switch-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.switch.type: { surface_id: charcoal-story, source_id: charcoal-switch-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.switch.use: { surface_id: charcoal-story, source_id: charcoal-switch-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.tag-item.fg: { surface_id: charcoal-story, source_id: charcoal-tagitem-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.tag-item.font: { surface_id: charcoal-story, source_id: charcoal-tagitem-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.tag-item.padding: { surface_id: charcoal-story, source_id: charcoal-tagitem-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.tag-item.radius: { surface_id: charcoal-story, source_id: charcoal-tagitem-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.tag-item.type: { surface_id: charcoal-story, source_id: charcoal-tagitem-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.tag-item.use: { surface_id: charcoal-story, source_id: charcoal-tagitem-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.rounded.full: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.rounded.lg: { surface_id: charcoal-story, source_id: charcoal-switch-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.rounded.sm: { surface_id: charcoal-story, source_id: charcoal-checkbox-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.spacing.base: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.lg: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.md: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.section: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.sm: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.xl: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.xs: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.body.lineHeight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.body.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.body.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.body.weight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.caption-m.lineHeight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.caption-m.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.caption-m.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.caption-m.weight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.caption-s.lineHeight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.caption-s.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.caption-s.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.caption-s.weight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.family.sans: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-l.lineHeight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-l.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-l.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-l.weight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-m.lineHeight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-m.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-m.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-m.weight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-s.lineHeight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-s.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-s.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-s.weight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-xl.lineHeight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-xl.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-xl.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-xl.weight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-xs.lineHeight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-xs.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-xs.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-xs.weight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-xxl.lineHeight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-xxl.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-xxl.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-xxl.weight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-xxxl.lineHeight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-xxxl.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-xxxl.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-xxxl.weight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.paragraph.lineHeight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.paragraph.size: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.paragraph.use: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.paragraph.weight: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: live-extract
+  extracted: "2026-09-21"
   colors:
     primary: "#0096fa"
     primary-hover: "#0086e0"
-    primary-tint: "#e3f3ff"
-    engagement-red: "#ff4060"
+    primary-ui-hover: "#0090f0"
+    primary-pressed: "#007ed2"
+    primary-faded: "#99d7ff"
     canvas: "#ffffff"
-    heading: "#1a1a1a"
-    grey-50: "#fafafa"
-    grey-100: "#f5f5f5"
-    grey-200: "#eeeeee"
-    grey-300: "#dddddd"
-    grey-400: "#cccccc"
-    grey-500: "#999999"
-    grey-600: "#858585"
-    body: "#666666"
-    label: "#333333"
-    dark-surface: "#1f1f1f"
-    dark-raised: "#2b2b2b"
-    dark-border: "#3a3a3a"
-    dark-text: "#f0f0f0"
-    success: "#4caf50"
-    error: "#e3413f"
-    warning: "#ff9800"
-    premium-gold: "#ffb300"
+    surface: "#f5f5f5"
+    surface-pressed: "#d6d6d6"
+    text: "#1f1f1f"
+    text-muted: "#474747"
+    text-tertiary: "#858585"
+    text-disabled: "#adadad"
     on-primary: "#ffffff"
+    engagement-red: "#ff4060"
+    success: "#b1cc29"
+    warning: "#ffaf0f"
+    error: "#ff2b00"
+    link: "#3d7699"
+    link-hover: "#336481"
+    dark-canvas: "#1f1f1f"
+    dark-elevated: "#3a3a3a"
+    dark-text: "#f5f5f5"
+    dark-text-muted: "#d6d6d6"
   typography:
-    family: { sans: "system-ui", mono: "SF Mono" }
-    display:      { size: 28, weight: 700, lineHeight: 1.36, use: "Landing hero, campaign headers" }
-    heading-lg:   { size: 22, weight: 700, lineHeight: 1.36, use: "Page titles, artwork title" }
-    heading:      { size: 18, weight: 700, lineHeight: 1.44, use: "Card section titles, ranking headers" }
-    subtitle:     { size: 16, weight: 600, lineHeight: 1.50, use: "List section labels, modal headers" }
-    body-lg:      { size: 15, weight: 400, lineHeight: 1.60, use: "Artwork descriptions, captions" }
-    body:         { size: 14, weight: 400, lineHeight: 1.57, use: "Standard reading text, comments" }
-    body-sm:      { size: 13, weight: 400, lineHeight: 1.54, use: "Metadata, secondary info" }
-    caption:      { size: 12, weight: 400, lineHeight: 1.50, use: "Tag counts, timestamps, view counts" }
-    micro:        { size: 11, weight: 400, lineHeight: 1.45, use: "Badge text, thumbnail overlay counters" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 6, lg: 8, full: 9999 }
-  shadow:
-    ambient: "rgba(0,0,0,0.12) 0px 2px 8px"
-    standard: "rgba(0,0,0,0.2) 0px 4px 12px"
-    elevated: "rgba(0,0,0,0.25) 0px 8px 28px"
+    family: { sans: "Noto Sans CJK JP" }
+    heading-xxxl: { size: 32, weight: 700, lineHeight: 40, use: "Largest published heading role" }
+    heading-xxl:  { size: 28, weight: 700, lineHeight: 36, use: "Page-level heading" }
+    heading-xl:   { size: 25, weight: 700, lineHeight: 32, use: "Section heading" }
+    heading-l:    { size: 22, weight: 700, lineHeight: 28, use: "Sub-section heading" }
+    heading-m:    { size: 20, weight: 700, lineHeight: 28, use: "Card / panel heading" }
+    heading-s:    { size: 18, weight: 700, lineHeight: 24, use: "Dense heading" }
+    heading-xs:   { size: 16, weight: 700, lineHeight: 24, use: "Smallest heading role" }
+    body:         { size: 14, weight: 400, lineHeight: 22, use: "Standard reading text" }
+    paragraph:    { size: 14, weight: 400, lineHeight: 22, use: "Running paragraph text" }
+    caption-m:    { size: 14, weight: 400, lineHeight: 22, use: "Caption, medium" }
+    caption-s:    { size: 12, weight: 400, lineHeight: 20, use: "Metadata, counts, timestamps" }
+  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, section: 64 }
+  rounded: { sm: 4, lg: 16, full: 9999 }
   components:
-    button-primary: { type: button, bg: "#0096fa", fg: "#ffffff", radius: 6, padding: "10px 20px", font: "14px / 700", use: "Primary CTA — Follow, Post, Login (~40px)" }
-    button-secondary: { type: button, bg: "#ffffff", fg: "#0096fa", radius: 6, padding: "10px 20px", font: "14px / 700", use: "Secondary action, 1px #0096fa border" }
-    button-neutral: { type: button, bg: "#f5f5f5", fg: "#666666", radius: 6, padding: "10px 20px", font: "14px / 600", use: "Low-emphasis action, 1px #dddddd border" }
-    button-follow: { type: toggle, bg: "#0096fa", fg: "#ffffff", radius: 6, use: "Follow toggle", active: "#ffffff bg, #999999 text, 1px #dddddd border (following)" }
-    button-premium: { type: button, bg: "#ffb300", fg: "#ffffff", radius: 6, padding: "10px 20px", font: "14px / 700", use: "Premium upsell CTA" }
-    input: { type: input, bg: "#ffffff", fg: "#333333", radius: 4, padding: "10px 12px", font: "14px / 400", use: "Text field, 1px #dddddd border, focus #0096fa" }
-    search: { type: input, bg: "#f5f5f5", fg: "#333333", radius: 9999, padding: "8px 16px", use: "Global search pill, focus white + #0096fa border" }
-    thumbnail-card: { type: card, bg: "#ffffff", radius: 8, use: "Artwork thumbnail — atomic discovery unit" }
-    content-card: { type: card, bg: "#ffffff", radius: 8, padding: "16px", use: "Ranking / recommendation panel, 1px #eeeeee border" }
-    tag-pill: { type: badge, bg: "#f5f5f5", fg: "#0096fa", radius: 4, padding: "4px 8px", font: "13px / 400", use: "Tag pill — primary navigation surface" }
-    badge-r18: { type: badge, bg: "#ff4060", fg: "#ffffff", radius: 4, font: "11px / 700", use: "Age-restricted content marker" }
-    badge-premium: { type: badge, bg: "#ffb300", fg: "#ffffff", radius: 4, use: "Premium member / feature marker" }
-    tab: { type: tab, fg: "#858585", font: "14px / 700", padding: "12px 16px", use: "Section switching", active: "#0096fa text, 2px bottom border #0096fa" }
-    toast: { type: toast, bg: "#333333", fg: "#ffffff", radius: 4, padding: "12px 16px", font: "14px / 400", use: "Bookmark confirmation, ~2.5s dismiss" }
-    dialog: { type: dialog, bg: "#ffffff", radius: 8, padding: "24px", use: "Login prompts, settings, confirmations" }
-    toggle: { type: toggle, bg: "#0096fa", radius: 9999, use: "Settings switch, white thumb, off #cccccc" }
+    button-primary: { type: button, bg: "#0096fa", fg: "#ffffff", radius: 9999, padding: "0 24px", font: "14px / 700", hover: "#0090f0", pressed: "#007ed2", use: "Primary CTA — 40px tall, fully oval." }
+    button-default: { type: button, fg: "#474747", radius: 9999, padding: "0 24px", font: "14px / 700", hover: "rgba(0,0,0,0.08)", pressed: "rgba(0,0,0,0.192)", use: "Neutral action on a translucent black fill (4% at rest); 40px tall, oval." }
+    icon-button: { type: button, fg: "#858585", radius: 9999, font: "16px / 400", hover: "#f5f5f5", pressed: "#d6d6d6", use: "Icon-only action, 40px square, transparent at rest." }
+    switch: { type: toggle, bg: "#858585", radius: 9999, hover: "#808080", pressed: "#707070", focus: "#0096fa", use: "Settings switch — 16px track; focus turns it brand blue." }
+    checkbox: { type: toggle, radius: 4, border: "2px solid #858585", focus: "#0096fa", use: "Checkbox — 20px box; focus fills brand blue and drops the border." }
+    tag-item: { type: badge, fg: "#ffffff", radius: 4, padding: "4px 24px", font: "16px / 400", use: "Tag pill — 40px tall; fill varies by tag category." }
   components_harvested: true
 ---
 
@@ -105,129 +230,159 @@ What defines pixiv visually is **content-first restraint with bursts of system c
 
 ## 2. Color Palette & Roles
 
+Every value below is a **live computed reading** of pixiv's own production surface
+(`pixiv.net`, 2026-09-21) or of a Charcoal component story. pixiv publishes its design
+system, **Charcoal**, as CSS custom properties on the product itself — 328 `--charcoal-*`
+tokens resolve on the logged-out home page — so the palette is measured, not transcribed.
+Charcoal's own token name is given for each role.
+
 ### Primary
-- **pixiv Blue** (`#0096fa`): Primary interactive color — links, primary CTAs, active tabs, focus rings, the wordmark dot. The single most recognizable brand token.
-- **pixiv Blue Dark** (`#0086e0`): Hover/pressed state for blue elements.
-- **pixiv Blue Light** (`#e3f3ff`): Tinted informational backgrounds, selected chips, subtle blue surfaces.
-- **Pure White** (`#ffffff`): Page background, card/thumbnail surface in light theme.
-- **Near-Black Text** (`#1a1a1a`): Primary heading and body text on light surfaces.
+
+- **pixiv Blue** (`#0096fa`) — `--charcoal-brand`, also `--pixiv-brand-color`. Primary
+  interactive colour: links, primary CTAs, active tabs, focus rings. The single most
+  recognisable brand token, and identical in light and dark themes.
+- **Brand Highlight** (`#0086e0`) — `--pixiv-brand-color-highlight`. pixiv's own hover
+  token for brand-blue surfaces.
+- **Button Hover** (`#0090f0`) — `--charcoal-brand-hover`. Charcoal's component-level hover,
+  measured on the primary button. It is a *different* value from the brand highlight above:
+  the site keeps one, the component library the other.
+- **Button Pressed** (`#007ed2`) — `--charcoal-brand-press`.
+- **Brand Faded** (`#99d7ff`) — `--pixiv-brand-color-faded`. Tinted brand surface.
 
 ### Engagement (Brand Signature)
-- **pixiv Red** (`#ff4060`): The bookmark/like heart, engagement counts, "新着" (new) accents. pixiv's second iconic color — energetic coral-red used sparingly but recognizably.
-- **Heart Outline** (`#cccccc`): Un-bookmarked heart resting state.
+
+- **pixiv Red** (`#ff4060`) — `--charcoal-like` and `--charcoal-r18`. The bookmark/like
+  heart and the age-restricted marker share one token. pixiv's second iconic colour.
 
 ### Semantic
-- **Success Green** (`#4caf50`): Upload success, confirmations, positive system messages.
-- **Error Red** (`#e3413f`): Form errors, destructive actions, validation failures. Distinct from the warmer engagement red.
-- **Warning Amber** (`#ff9800`): Pending states, R-18 content gates, attention banners.
-- **Premium Gold** (`#ffb300`): pixiv Premium membership accents, badges, upsell surfaces.
+
+Charcoal's semantic ramp is **not** a conventional green/amber/red set:
+
+- **Success** (`#b1cc29`) — `--charcoal-success`. A yellow-green, not a conventional green.
+- **Warning** (`#ffaf0f`) — `--charcoal-warning`.
+- **Assertive / Error** (`#ff2b00`) — `--charcoal-assertive`. A pure orange-red, distinctly
+  hotter than the engagement red.
+- **Link** (`#3d7699`) — `--charcoal-link1`; hover `#336481` (`--pixiv-spa-link-hover`).
+  Note that in-body links are *not* brand blue — a deliberate separation.
 
 ### Neutral Scale (Light Theme)
-- **Grey 50** (`#fafafa`): Lightest surface, page wash behind cards.
-- **Grey 100** (`#f5f5f5`): Secondary background, hover fills, input backgrounds.
-- **Grey 200** (`#eeeeee`): Card fills, disabled surfaces.
-- **Grey 300** (`#dddddd`): Default borders, dividers.
-- **Grey 400** (`#cccccc`): Strong borders, icon outlines, inactive hearts.
-- **Grey 500** (`#999999`): Placeholder text, disabled labels.
-- **Grey 600** (`#858585`): Caption text, secondary metadata, tag counts.
-- **Grey 700** (`#666666`): Body text on light surfaces, secondary labels.
-- **Grey 800** (`#333333`): Strong labels, navigation text, sub-headings.
-- **Grey 900** (`#1a1a1a`): Primary text, headings.
+
+Charcoal names its neutrals by role, not by numeric weight:
+
+- **Canvas** (`#ffffff`) — `--charcoal-background1`, `--charcoal-surface1`. Page background.
+- **Surface** (`#f5f5f5`) — `--charcoal-background2`. Secondary background and hover fill.
+- **Surface Pressed** (`#d6d6d6`) — `--charcoal-background1-press`.
+- **Text** (`#1f1f1f`) — `--charcoal-text1`. Primary text on light surfaces.
+- **Text Muted** (`#474747`) — `--charcoal-text2`. Secondary text.
+- **Text Tertiary** (`#858585`) — `--charcoal-text3`. Captions, metadata, counts.
+- **Text Disabled** (`#adadad`) — `--charcoal-text4`.
+- **On Primary** (`#ffffff`) — measured as the primary button's computed text colour.
+- **Border Default** — `--charcoal-border-default`, `rgba(0,0,0,0.08)`. Charcoal builds its
+  separators from translucent black rather than a solid grey, so borders composite over
+  whatever surface they sit on.
 
 ### Dark Theme
-- **Surface Base** (`#1f1f1f`): Dark-theme page background.
-- **Surface Raised** (`#2b2b2b`): Cards, headers, raised panels in dark mode.
-- **Surface Border** (`#3a3a3a`): Dividers and borders in dark mode.
-- **Text Primary Dark** (`#f0f0f0`): Primary text on dark surfaces.
-- **Text Secondary Dark** (`#aaaaaa`): Secondary text on dark surfaces.
-- **pixiv Blue stays `#0096fa`** in dark mode — the accent does not shift.
 
-### Surface & Borders
-- **Border Default**: `#dddddd`. Card edges, input borders, list dividers.
-- **Border Strong**: `#cccccc`. Active inputs, emphasized separators.
-- **Overlay Scrim**: `rgba(0,0,0,0.6)`. Modal/lightbox backdrops — darker than typical to let illustrations pop in the viewer.
-- **Tag Chip**: `#f5f5f5` bg / `#0096fa` text. The ubiquitous tag pill.
+pixiv honours `prefers-color-scheme`; **223 of 394 custom properties change value** between
+the two themes. Measured on the same page with the dark scheme forced:
+
+- **Canvas** (`#1f1f1f`) — dark `--charcoal-background1` / `--charcoal-surface1`.
+- **Elevated** (`#3a3a3a`) — dark `--charcoal-surface1-hover`.
+- **Text** (`#f5f5f5`) — dark `--charcoal-text1`.
+- **Text Muted** (`#d6d6d6`) — dark `--charcoal-text2`.
+- **Text Tertiary stays `#858585`** and **pixiv Blue stays `#0096fa`** — neither shifts
+  between themes.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Primary (JP)**: `-apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic Medium", "Meiryo", "Noto Sans JP", "Helvetica Neue", Arial, sans-serif`
-- **Latin/Numerals**: Falls through to `-apple-system`/`Helvetica Neue`/`Arial` ahead of the JP faces so Latin glyphs render cleanly.
-- **Monospace**: `"SF Mono", Consolas, "Courier New", monospace` — used only in dev/embed contexts.
-- pixiv ships **no custom brand typeface**; it relies on the platform system stack for speed and broad device coverage. Brand personality lives in color and layout, not a proprietary font.
+
+Three distinct facts, on three distinct surfaces — they are not interchangeable:
+
+- **Charcoal's declared token**: `--charcoal-text-v1-font-family-sans` resolves to
+  **`Noto Sans CJK JP`**. This is the design system's own declaration, read from the token
+  live on `pixiv.net`.
+- **Charcoal components as rendered**: component stories compute `Noto Sans JP` on buttons,
+  fields and tags.
+- **The product's body stack**, computed on `pixiv.net`, is *not* the token. It is verbatim:
+  `win-bug-omega, system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif`.
+  The leading `win-bug-omega` is a deliberately non-existent family — a known sentinel used
+  to work around a Windows font-matching bug — so body text resolves to the **OS UI font**.
+
+pixiv ships **no proprietary brand typeface**. Brand personality lives in colour and layout.
+The system stack is a deliberate choice for paint speed on a thumbnail grid, not a fallback;
+it is recorded here as an observation of the product, and is not promoted to a brand face.
 
 ### Hierarchy
 
-| Role | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|--------|-------------|----------------|-------|
-| Display | 28px | 700 | 38px (1.36) | normal | Landing hero, section campaign headers |
-| Heading Large | 22px | 700 | 30px (1.36) | normal | Page titles, artwork title on detail page |
-| Heading | 18px | 700 | 26px (1.44) | normal | Card section titles, ranking headers |
-| Subtitle | 16px | 600 | 24px (1.50) | normal | List section labels, modal headers |
-| Body Large | 15px | 400 | 24px (1.60) | normal | Artwork descriptions, captions |
-| Body | 14px | 400 | 22px (1.57) | normal | Standard reading text, comments |
-| Body Small | 13px | 400 | 20px (1.54) | normal | Metadata, secondary info |
-| Caption | 12px | 400 | 18px (1.50) | normal | Tag counts, timestamps, view counts |
-| Micro | 11px | 400 | 16px (1.45) | normal | Badge text, overlay counters on thumbnails |
+Charcoal publishes size and line-height as paired pixel tokens
+(`--charcoal-text-font-size-*` / `--charcoal-text-line-height-*`). Read live:
+
+| Role | Size | Line Height | Weight | Charcoal token |
+|------|------|-------------|--------|----------------|
+| Heading XXXL | 32px | 40px | 700 | `heading-xxxl` |
+| Heading XXL | 28px | 36px | 700 | `heading-xxl` |
+| Heading XL | 25px | 32px | 700 | `heading-xl` |
+| Heading L | 22px | 28px | 700 | `heading-l` |
+| Heading M | 20px | 28px | 700 | `heading-m` |
+| Heading S | 18px | 24px | 700 | `heading-s` |
+| Heading XS | 16px | 24px | 700 | `heading-xs` |
+| Body | 14px | 22px | 400 | `body` |
+| Paragraph | 14px | 22px | 400 | `paragraph` |
+| Caption M | 14px | 22px | 400 | `caption-m` |
+| Caption S | 12px | 20px | 400 | `caption-s` |
+
+Charcoal also publishes `caption-s-10` (10px) and a `text-v1-*` compatibility scale
+(12 / 14 / 16 / 20 / 32px). Only two weights are tokenised: **400** and **700**.
 
 ### Principles
-- **System-stack first**: Speed over custom type. The font must already be on the device so a thumbnail grid paints instantly.
-- **Three weights**: 400 (body), 600 (emphasis), 700 (headings/titles). Bold is for titles, never long body.
-- **JP line-height runs generous**: Japanese text uses 1.5–1.6 line-height for legibility of dense kanji at small sizes.
-- **Numbers are metadata, not heroes**: View/like counts render small (12px) and grey — the art is the hero, not the stats.
-- **Tags are typographic UI**: Tag pills use 13px text and are themselves a primary navigation surface, colored pixiv blue.
+- **System-stack first**: the face must already be on the device so a thumbnail grid paints
+  instantly.
+- **Two tokenised weights**: 400 for body, 700 for headings. Charcoal publishes no 600.
+- **JP line-height runs generous**: 22px on 14px body (≈1.57) for dense kanji legibility.
+- **Numbers are metadata, not heroes**: counts render at 12px in `#858585` — the art is the
+  hero, not the stats.
+- **Tags are typographic UI**: tag pills are a primary navigation surface.
 
 ## 4. Component Stylings
 
 ### Buttons
 
+Measured on Charcoal component stories (`charcoal-web.pixiv.design`), pointer parked between
+readings. **Charcoal buttons are fully oval** (`border-radius: 999999px`, `--charcoal-radius-oval`)
+— not the 6px rectangle an earlier pass of this reference declared.
+
 **Primary (Fill)**
-- Background: `#0096fa`
-- Text: `#ffffff`
-- Border: none
-- Radius: 6px
-- Padding: 10px 20px
-- Font: 14px / 700
-- Hover: `#0086e0`
-- Disabled: `#cccccc` bg, `#ffffff` text
-- Use: Primary CTA — フォロー (Follow), 投稿 (Post), ログイン (Login). ~40px tall.
+- Background: `#0096fa` · Text: `#ffffff` · Border: none
+- Radius: oval (`999999px`) · Padding: `0 24px` · Height: 40px · Font: 14px / 700
+- Hover: bg `#0090f0`, text `#f5f5f5` · Pressed: bg `#007ed2`, text `#d6d6d6`
+- Focus: no computed change from rest — Charcoal draws focus with a `FocusRing` component
+  rather than a style on the button itself.
+- Use: Primary CTA — フォロー (Follow), 投稿 (Post), ログイン (Login).
 
-**Secondary (Outline)**
-- Background: `#ffffff`
-- Text: `#0096fa`
-- Border: 1px solid `#0096fa`
-- Radius: 6px
-- Padding: 10px 20px
-- Font: 14px / 700
-- Hover: `#e3f3ff` bg
-- Use: Secondary action paired with a primary (キャンセル alt, フォロー中 toggled state).
+**Default (Neutral)**
+- Background: translucent black — 4% at rest, 8% hover, 19% pressed · Text: `#474747`
+- Radius: oval · Padding: `0 24px` · Height: 40px · Font: 14px / 700
+- Use: low-emphasis actions. Composites over its surface instead of using a solid grey.
 
-**Neutral (Grey)**
-- Background: `#f5f5f5`
-- Text: `#666666`
-- Border: 1px solid `#dddddd`
-- Radius: 6px
-- Padding: 10px 20px
-- Font: 14px / 600
-- Hover: `#eeeeee`
-- Use: Low-emphasis actions (もっと見る / "show more", filters, cancel).
+**Icon Button**
+- Transparent at rest, icon `#858585` · 40px square · oval · Font: 16px / 400
+- Hover: fill `#f5f5f5` · Pressed: fill `#d6d6d6`
 
-**Follow (Toggle)**
-- Unfollowed: `#0096fa` fill, white text, "+ フォロー"
-- Following: `#ffffff` bg, `#999999` text, 1px `#dddddd` border, "フォロー中"
-- Radius: 6px
-- Use: The signature follow toggle — the most-pressed button on the site.
+**Not measured**: secondary/outline, follow-toggle and premium variants were declared by an
+earlier prose pass but have no matching published story, and no disabled state was captured
+for any button. The segmented control (32px tall, 16px radius on a 4% black fill) and text
+field (40px row) were read at their **container** only — the inner control was not isolated —
+so they are described here but not tokenised as components. All are omitted rather than inferred.
 
-**Premium (Gold)**
-- Background: `#ffb300`
-- Text: `#ffffff`
-- Border: none
-- Radius: 6px
-- Padding: 10px 20px
-- Font: 14px / 700
-- Use: pixiv Premium upsell CTAs.
+### Switch, Checkbox and Controls
 
-Size scale (height · font · radius): `small` 32px · 13px / 600 · 4px; `medium` (default) 40px · 14px / 700 · 6px; `large` 48px · 15px / 700 · 8px.
+- **Switch** — 16px track, fully round, `#858585` off. Hover and pressed darken the track;
+  **focus turns it `#0096fa`**. A rare case of focus carrying the state change.
+- **Checkbox** — 20px box, 4px radius, `2px solid #858585`. Focus fills `#0096fa` and drops
+  the border. Hover and pressed are unchanged from rest.
+- **Tag Item** — 40px tall, 4px radius, `0 24px`-class padding, text `#ffffff`. The fill
+  varies by tag category, so no single tag background is recorded.
 
 ### Bookmark / Like
 
@@ -369,13 +524,14 @@ Size scale (height · font · radius): `small` 32px · 13px / 600 · 4px; `mediu
 - Use: Settings (R-18 display, notifications, dark mode).
 
 
-**Tier 1 sources:** https://www.pixiv.net (live production site, verified via live DOM getComputedStyle); https://github.com/pixiv/charcoal (Charcoal — pixiv's own design-system library, Apache-2.0 on the official pixiv GitHub org; foundation package defines color, typography, spacing and border-radius token modules).
+**Tier 1 sources:** https://www.pixiv.net (live production site, verified via live DOM getComputedStyle, light and dark); https://charcoal-web.pixiv.design (Charcoal's published component stories — 38 components / 215 stories — measured for component geometry and state); https://github.com/pixiv/charcoal (Charcoal — pixiv's own design-system library, Apache-2.0 on the official pixiv GitHub org; foundation package defines color, typography, spacing and border-radius token modules).
 
 ## 5. Layout Principles
 
 ### Spacing System
 - Base unit: 4px
-- Common values: 4px, 8px, 12px, 16px, 24px, 32px, 48px
+- Published scale (`--charcoal-space-*`): 4px, 8px, 12px, 16px, 24px, 32px, 64px. Charcoal
+  publishes no 48px step; the earlier prose listed one.
 - Grid gutters: 12px–16px between thumbnails
 - Section spacing: 32px between discovery blocks
 
@@ -391,13 +547,20 @@ Size scale (height · font · radius): `small` 32px · 13px / 600 · 4px; `mediu
 - **Scroll is infinite**: Discovery feeds are designed for endless vertical scroll — there is no "bottom" to optimize toward.
 
 ### Border Radius Scale
-- Sharp (4px): Inputs, tag pills, small badges
-- Standard (6px): Buttons
-- Comfortable (8px): Cards, thumbnails, modals
-- Pill (20px): Search bar
-- Round (9999px): Avatars, toggle tracks
+
+Measured: Charcoal publishes `--charcoal-radius-oval` (`999999px`) and the component
+readings give the rest.
+
+- **Sharp (4px)**: checkboxes, tag pills
+- **Comfortable (16px)**: segmented control
+- **Oval (`999999px`)**: buttons, icon buttons, switch tracks — Charcoal's dominant shape
 
 ## 6. Depth & Elevation
+
+> **Not measured.** Charcoal publishes no shadow or elevation token — the only shadow
+> custom properties resolving on `pixiv.net` belong to Tailwind (`--tw-shadow`), not to
+> pixiv. The table below is retained as the earlier prose pass's description of observed
+> practice; its specific shadow recipes are **not** verified values and are not tokenised.
 
 | Level | Treatment | Use |
 |-------|-----------|-----|

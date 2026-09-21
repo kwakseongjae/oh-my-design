@@ -4,9 +4,9 @@
   "generator": "scripts/build-reference-quality-data.mjs",
   "count": 441,
   "counts": {
-    "verified_v2": 142,
+    "verified_v2": 143,
     "partial": 183,
-    "legacy_snapshot": 116,
+    "legacy_snapshot": 115,
     "total": 441
   },
   "items": [
@@ -3596,17 +3596,14 @@
     },
     {
       "id": "pixiv",
-      "status": "legacy_snapshot",
-      "verified_at": "2026-06-06",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-21",
+      "next_reverify_at": "2027-03-20",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
       "conflict_count": 0,
-      "reason_codes": [
-        "token_source_unverified",
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "pixnet",
