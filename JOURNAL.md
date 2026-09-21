@@ -26,7 +26,8 @@
 - **한 일(21)**: 죽은 인용 12건 조사 — 전부 실브라우저 404 확인, 10건은 클레임 0(그래도 기록이라 안 지움·게이트도 안 약화), 사이트 nav로 대체 URL 3건 확보. **복구했다가 revert** — `evidence-integrity`가 `captured > checked`를 잡았고 옳다. **재검증 큐지 인용 패치가 아니다.**
 - **한 일(22)**: 출처 **930개 전수 도달성 조사**(`19618127`). 드리프트가 베이스라인 있는 400개만 봐서 죽은 인용을 12건으로 과소 보고하고 있었다 → **실제 22건**. 2단계(curl→실브라우저)가 핵심 — 1단계 127 실패 중 **95건(75%)이 브라우저에선 정상**. advisory 11→17 레퍼런스. resend 3건은 Next.js 해시 자산이라 **인용 불가능한 종류**.
 - **한 일(23)**: patternfly·hyundai **정식 재검증**(`148b0f23`). 출처 14개 전부 실브라우저 확인 후 `checked` 갱신 — 첫 시도를 게이트가 거절한 이유(`captured > checked`)를 제대로 해소. URL 5개 재지정(전부 사이트 nav에서 발견, 사라진 건 없음). 둘 다 1월 → **2027-03-19**, advisory 17→15, 1월 벽 43→41.
-- **다음**: 웨이브 1(Serendie 본문 조사) · 남은 죽은 인용 15건 재검증 · 셀렉터 depth UI(오너 선택)(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(24)**: 웨이브 1 Serendie **실측 완료**(토큰 373개·3계층·버튼 상태) — 그러나 About 페이지가 "범용 기반 + 도메인별 VI를 위에 올림 + 사외 누구나 사용"이라 **루브릭의 라이브러리 배제에 걸린다.** 본문 쓰기 전 보류하고 오너 판단 요청. 측정 중 내 오류 2건(hover 눌러붙음·docs 크롬을 컴포넌트로 오인) 자체 발견·재측정.
+- **다음**: **Serendie 범주 결정**(넣기/제외/별도트랙) · 결정 시 PayPay·AntUI로 이동 가능 · 죽은 인용 15건 재검증 · 셀렉터 depth UI(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)
