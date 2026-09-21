@@ -128,6 +128,7 @@ This mirrors the `omd:apply` Claude Code skill behavior.
   value at its smallest field/group boundary; `[FILL IN]` is legacy-read
   compatibility only and must not be emitted by a new Core writer.
 - Never introduce a token absent from DESIGN.md without going through Phase 5 (system extension with checkpoint #2 approval).
+- **A component library is not a brand reference, and depth does not decide which one you have.** A published design system belongs in the catalog when its name refers to a product or platform that exists apart from the system; it is a library when the name refers only to the toolkit. Check by opening that name's product page on the company's own domain **with a nonsense path as a control** — `bytedance.com/arco` returns 200, and so does `bytedance.com/zz-this-does-not-exist`, byte for byte. Without the control you will read a catch-all as a product. (Decided 2026-09-21 admitting Mitsubishi Electric's Serendie, which has a real platform site, while keeping TDesign, Arco, Semi, Vant and the rest out.)
 - Never download from Pinterest. Pinterest URLs are listed for the user to download manually.
 - Never emit SUS / NPS / "satisfaction score" from synthetic personas. Use task_success / steps_vs_optimal / friction_count / heuristic_violations / abandonment instead.
 - Never auto-skip user checkpoints.
