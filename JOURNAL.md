@@ -32,7 +32,8 @@
 - **한 일(27)**: 죽은 인용 재검증 완료(`6a1934e0`) — 출처 115개 전수 확인, thumbtack 복구, **6건은 복구 불가이고 1월 강등이 옳다**(페이지가 옮겨간 게 아니라 없어졌다). 계측기 교훈 추가: **페이지는 브라우저·자산은 curl**(폰트가 브라우저에선 ERR, curl로 200). advisory 17→14.
 - **한 일(28)**: 'UI font unresolved'를 파보니 **UI 갭이 아니라 투영 갭** — `typography_assets.assets` 슬롯이 스키마에 있는데 마이그레이터가 roles만 채워서 **Core 그래프 3개 전부 브랜드 서체가 없다**. krds·toss는 레거시 복원본이 가려주고 있었고 serendie는 카탈로그 확장에만 있다. 폴백으로 덮지 않고 기록(투영 변경 + 재채택 3건 + source_status 판단 필요).
 - **한 일(29)**: Core 상세 'UI font basis' 수정 — **그리고 내 앞선 진단이 틀렸음을 정정**. `fontRoles[0]`만 보고 "그래프에 서체가 없다"고 했는데 family는 **body 롤에** 있다(앞선 세션이 toss 때문에 일부러 만든 동작). 실제로는 `detail-view`가 AST만 읽던 한 칸 문제. `unresolved → repository fact`, 레거시 불변, confidence는 지어내지 않음.
-- **다음**: paypay 깊이 보정(웨이브 규모) · 셀렉터 depth UI(오너 선택)(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(30)**: paypay 깊이 보정 — **실측 후 손대지 않기로**(`3d9d7c37`). 선언 팔레트 19개 중 웹 관측 5개인데 **그건 틀린 게 아니라 앱 값**이다(웹은 앱 시스템 검증 표면이 아님, 제품 웹 표면 없음). 게다가 `verified`를 올리면 measured-tokens 컷오프 안으로 들어가 **grandfathered `prose-derived`가 차단 사유가 된다** — 부분 재검증은 강등이다.
+- **다음**: 셀렉터 depth UI(오너 선택) · JP 깊이 목록의 나머지(smarthr·pixiv·sansan·cybozu 등) · Core 서체 assets 슬롯(선택)(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)
