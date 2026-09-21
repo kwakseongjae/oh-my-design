@@ -62,6 +62,8 @@ interface Detail {
   accent?: string;
   border?: string;
   referenceAst?: ReferenceDetailAstContract;
+  /** Set only for Core v2 references, which carry no legacy AST. */
+  coreFontBasis?: { family: string; sourceClass: string };
   referenceQuality: ReferenceQualityEntry;
 }
 
@@ -143,6 +145,15 @@ export function DetailView({
     ds?.name ?? detail.id.replace(/\.(app|ai)$/, "").replace(/^./, (c) => c.toUpperCase());
   const quality = detail.referenceAst?.quality ?? detail.referenceQuality;
   const fontEvidence = detail.referenceAst?.foundations.uiFont;
+  // A Core reference has no AST, so its font basis comes from the package's own
+  // font role. Rendered as the source class alone: the Core contract states where
+  // a value came from but not a confidence, and inventing one to fill the same
+  // shape would be presenting an ungrounded value as a grounded one.
+  const fontBasis = fontEvidence
+    ? `${fontEvidence.origin.replaceAll("_", " ")} · ${fontEvidence.confidence}`
+    : detail.coreFontBasis
+      ? detail.coreFontBasis.sourceClass.replaceAll("-", " ")
+      : null;
   /**
    * From the quality manifest, not the AST.
    *
@@ -370,9 +381,7 @@ export function DetailView({
               <div>
                 <dt className="text-muted-foreground">UI font basis</dt>
                 <dd className="mt-0.5 font-medium text-foreground">
-                  {fontEvidence
-                    ? `${fontEvidence.origin.replaceAll("_", " ")} · ${fontEvidence.confidence}`
-                    : "unresolved"}
+                  {fontBasis ?? "unresolved"}
                 </dd>
               </div>
               {/*

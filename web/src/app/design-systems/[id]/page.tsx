@@ -67,9 +67,32 @@ function loadDetail(id: string) {
   return {
     ...projection.detail,
     ...(projection.referenceAst ? { referenceAst: projection.referenceAst } : {}),
+    ...((basis) => (basis ? { coreFontBasis: basis } : {}))(coreFontBasis(loaded)),
     referenceQuality: loaded.quality,
     entry: loaded.entry,
   };
+}
+
+/**
+ * Where a Core v2 reference's UI font comes from.
+ *
+ * The evidence snapshot reads the font's provenance off `referenceAst`, which
+ * `repository.server.ts` leaves null for a Core canonical — it serves the package
+ * instead — so krds and serendie showed "UI font basis unresolved" while their
+ * Fonts section rendered Pretendard GOV and Roboto correctly. The basis was
+ * missing, not the font.
+ *
+ * It is not missing from the data. The projector attaches the declared family to
+ * the body-shaped type role, so the Core contract carries it as a font role with
+ * a `sourceClass` and evidence of its own. That is real provenance, read from the
+ * package rather than substituted for it.
+ */
+function coreFontBasis(loaded: ReturnType<typeof loadReference>) {
+  const transport = loaded?.coreTransport;
+  if (!transport || transport.status !== "verified") return null;
+  const role = transport.contract.fontRoles.find((entry) => typeof entry.metadata?.family === "string");
+  if (!role) return null;
+  return { family: String(role.metadata.family), sourceClass: role.sourceClass };
 }
 
 export async function generateStaticParams() {
