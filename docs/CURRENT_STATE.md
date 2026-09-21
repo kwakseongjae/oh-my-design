@@ -3,6 +3,39 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-21 — patternfly·hyundai **정식 재검증** 완료 (`148b0f23`)
+
+첫 시도를 `evidence-integrity`가 거절했었다(`captured > checked`). 그래서 **이번엔 리뷰를
+실제로 했다** — 두 레퍼런스의 출처 **14개 전부**를 오늘 실브라우저로 열어 서빙을 확인했다.
+새 `checked`가 기록하는 건 그것이다: **출처 계층의 재확인**이지 토큰 값 재추출이 아니고,
+안 움직인 출처의 `captured`는 그대로 둔다(그 관측이 실제로 이뤄진 날이니까).
+
+**5개 URL이 옮겨갔을 뿐 사라진 건 없었다.** 전부 사이트 자신의 내비게이션에서 찾았고,
+기록 전에 열어서 관측했다:
+
+```
+patternfly  color-live        /design-foundations/colors/     → /foundations-and-styles/colors
+            about-official    /get-started/about-patternfly/  → /about-us
+            releases-official /get-started/release-highlights → /releases/release-highlights
+hyundai     vehicles-live     /kr/ko/e/vehicles               → /kr/ko/vehicles
+            ioniq6-live       …/the-new-ioniq-6/intro         → …/the-new-ioniq6/intro
+```
+
+PatternFly는 IA를 개편했고(`design-foundations`→`foundations-and-styles`, `get-started` 제거),
+그걸 알아챌 수 있었던 건 **`typography-official`이 이미 새 경로를 쓰고 있었기** 때문이다.
+관측: `Red Hat Text 14px` `rgb(21,21,21)` · `HyundaiSansTextKR 16px` · 더 뉴 아이오닉 6.
+
+**둘 다 `verified_v2` 유지, 2027-01-09 → 2027-03-19.** advisory **17 → 15 레퍼런스**,
+1월 벽 **43 → 41**.
+
+**나중에 거짓말하지 않기 위한 장부 처리**: 재지정된 출처의 드리프트 행은 **갱신이 아니라 제거**
+했다 — 드리프트 행은 7월 베이스라인과의 비교인데 새 URL엔 베이스라인이 없다. 판정이 **바뀐 게
+아니라 적용을 멈춘 것**이다. 반면 도달성 행은 `repointedFrom`을 달아 제자리 갱신했다 —
+그 파일의 질문("이 URL이 서빙하나")에는 새 URL이 진짜로 답하니까. 각 `.verification.md`에
+**무엇을 재확인했고 무엇은 안 했는지** 적었다.
+
+---
+
 ## 🔬 2026-09-21 — 죽은 인용 **22건**(12건이 아니었다) + 재검증 큐 (`19618127`)
 → `docs/DEAD_CITATIONS_2026-09-21.md`
 
