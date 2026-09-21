@@ -96,6 +96,7 @@ const CATALOG_EXTENSION_VERSION = "1.0.0";
 const REQUIRED_STRINGS = ["id", "name", "country", "category", "homepage", "primary_color", "verified"];
 const VALID_COUNTRIES = new Set(["KR", "US", "JP", "TW", "CN", "UK", "DE", "FR", "IT"]);
 const VALID_LOGO_TYPES = new Set(["favicon", "simpleicons", "github"]);
+const VALID_DS_TYPES = new Set(["system", "brand"]);
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 const argv = process.argv.slice(2);
@@ -148,6 +149,22 @@ if (!DATE.test(String(frontmatter.verified))) problems.push(`verified '${frontma
 // so there is no record of when or why more than half the catalog arrived.
 if (!DATE.test(String(frontmatter.added ?? ""))) {
   problems.push("added is required for a new reference (YYYY-MM-DD) — it is the only record of when this entered the catalog");
+}
+//  is optional, but when present the registry validates its shape and rejects
+// an unknown . Missing that here sent an invalid package all the way through
+// prepare, approval and seal before  caught it — which is exactly
+// the three-steps-later failure this validation exists to prevent.
+if (frontmatter.ds !== undefined) {
+  const ds = frontmatter.ds;
+  if (!ds || typeof ds !== "object" || Array.isArray(ds)) problems.push("ds must be a mapping");
+  else {
+    for (const key of ["name", "url", "type", "description"]) {
+      if (!ds[key]) problems.push();
+    }
+    if (ds.type !== undefined && !VALID_DS_TYPES.has(ds.type)) {
+      problems.push();
+    }
+  }
 }
 if (!frontmatter.logo || typeof frontmatter.logo !== "object") problems.push("missing 'logo' object");
 else {

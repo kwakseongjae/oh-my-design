@@ -126,9 +126,29 @@ export function collectCanonicalClaimPaths(tokens) {
   return [...new Set(paths)].sort();
 }
 
-function extractTier1Urls(markdown) {
+/**
+ * The Tier-1 source URLs a reference cites.
+ *
+ * The original mechanism is a `**Tier 1 sources:**` prose line in §4, and for the
+ * 440 legacy documents it is the only place they exist. A reference authored
+ * natively as Core v2 has no such line and cannot be given one: the projector
+ * drops a bare bold line between blocks, and spec §11 says a linter SHOULD reject
+ * legacy conventions in a Core document anyway. Serendie, the first native
+ * reference, therefore read as `tier1_source_missing` while declaring eight
+ * sources in its package.
+ *
+ * So when the prose line is absent, fall back to the evidence graph's own
+ * `sources`, which is strictly better data — typed, per-source, and already what
+ * every other gate reads. This is a fallback and not a replacement: where the
+ * prose line exists it still wins, so no existing reference changes.
+ */
+function extractTier1Urls(markdown, verificationV2) {
   const line = markdown.match(/^\*\*Tier 1 sources:\*\*\s*(.+)$/m)?.[1] ?? "";
-  return line.match(/https?:\/\/[^\s,)]+/g) ?? [];
+  const fromProse = line.match(/https?:\/\/[^\s,)]+/g) ?? [];
+  if (fromProse.length > 0) return fromProse;
+  return normalizeList(verificationV2?.sources)
+    .map((source) => source?.url)
+    .filter((url) => typeof url === "string" && /^https?:\/\//.test(url));
 }
 
 /**
@@ -400,7 +420,7 @@ export function evaluateReferenceQuality({ id, markdown, frontmatter, verificati
   const tokenSource = tokens?.source ?? null;
   const verifiedAt = String(frontmatter?.verified ?? "");
   const extractedAt = typeof tokens?.extracted === "string" ? tokens.extracted : null;
-  const tier1Urls = extractTier1Urls(markdown);
+  const tier1Urls = extractTier1Urls(markdown, frontmatter?.verification_v2);
   const proof = proofSignals(verificationMarkdown);
   const claims = collectCanonicalClaimPaths(tokens);
   const v2 = frontmatter?.verification_v2;

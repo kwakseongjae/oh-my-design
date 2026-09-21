@@ -540,14 +540,16 @@ describe("adopted references survive every catalog reader", () => {
     for (const id of adoptedIds) {
       const source = readReferenceSource(join(REFS_DIR, id));
       expect(source.format, `${id}`).toBe("core-v2");
-      // Every adopted reference in the catalog today is a *migrated* one, so it
-      // rebuilds from `original_segments` and is hash-checked. A native package
-      // projects instead — covered separately below, and asserted here only so
-      // that a native reference landing in web/references/ changes this test
-      // deliberately rather than sliding through it.
-      expect(source.reconstructed, `${id}: rebuilt from the package, not read off disk`).toBe(true);
-      expect(source.projected, `${id}: migrated packages reconstruct, they do not project`).toBe(false);
-      expect(source.markdown.startsWith("---\n"), `${id}: reconstruction has no frontmatter`).toBe(true);
+      // A package produces its legacy source one of exactly two ways, and which
+      // one is not incidental: a *migrated* package rebuilds preserved original
+      // bytes and is hash-checked, a *native* one projects metadata it declares.
+      // This assertion was `reconstructed === true` for every reference until
+      // serendie was authored natively on 2026-09-21 — written that way so the
+      // first native reference in web/references/ would change the test
+      // deliberately instead of sliding through it. It did.
+      expect(source.reconstructed !== source.projected,
+        `${id}: a package either reconstructs or projects, never both or neither`).toBe(true);
+      expect(source.markdown.startsWith("---\n"), `${id}: no frontmatter came out`).toBe(true);
     }
   });
 
@@ -617,7 +619,7 @@ describe("adopted references survive every catalog reader", () => {
       // such adoption is testing the fixture, not the property. Equality is the
       // real claim, and it is still the drift-sweep bug asserted from the other
       // end: a blind reader yields 0 against a reconstruction that has 12.
-      expect(quality!.sourceCount, `${id}: quality sourceCount disagrees with the reconstruction`)
+      expect(quality!.sourceCount, `${id}: quality sourceCount disagrees with the package`)
         .toBe(sourceCounts.get(id));
 
       if (astManifest) {

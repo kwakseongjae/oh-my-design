@@ -169,10 +169,14 @@ describe('omd:init deterministic reference query', () => {
     }
   });
 
-  it('keeps all 440 catalog entries paired with a valid quality status', () => {
+  // Count-agnostic on purpose. The property is that fingerprints and quality stay
+  // *paired* — pinning a literal made this fail on the 441st reference for a reason
+  // that had nothing to do with pairing, and `check-counts` already guards the
+  // number across ten surfaces.
+  it('keeps every catalog entry paired with a valid quality status', () => {
     const data = productionData();
-    expect(data.fingerprints).toHaveLength(440);
-    expect(data.qualityById.size).toBe(440);
+    expect(data.fingerprints.length).toBeGreaterThan(0);
+    expect(data.qualityById.size).toBe(data.fingerprints.length);
     for (const item of data.fingerprints) {
       expect(['verified_v2', 'partial', 'legacy_snapshot']).toContain(
         data.qualityById.get(item.id)?.status,

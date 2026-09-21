@@ -1,0 +1,102 @@
+{
+  "checks": {
+    "assets_fonts_licenses": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": false
+    },
+    "bound_system_authority": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": true
+    },
+    "component_state_coverage": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": false
+    },
+    "contrast": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": false
+    },
+    "implementation_contract_complete": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": false
+    },
+    "opaque_extension_preservation": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": true
+    },
+    "portable_core_structure": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": true
+    },
+    "reduced_motion": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": false
+    },
+    "responsive_320_200": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": false
+    },
+    "token_reference_closure": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": false
+    },
+    "unknown_absence": {
+      "method": "controller-computed-system-graph-v2",
+      "pass": true
+    }
+  },
+  "design_md_sha256": "bb3883a2f37a5622f0cd9515dbb52fd9e51cee9fe4da80886d97d9ec64d41d06",
+  "graph_sha256": "8f8e66a33162d8de958b6dc9dd6777378c33411eb6547ef3c43b2bf00217c629",
+  "groups": {
+    "components-states": {
+      "evidence": [
+        "migrated from web/references/serendie/DESIGN.md into core section 'components-states'",
+        "migration report: dropped_segments=0, roundtrip_equal=True"
+      ],
+      "status": "covered"
+    },
+    "content-locales": {
+      "evidence": [
+        "migrated from web/references/serendie/DESIGN.md into core section 'content-locales'",
+        "migration report: dropped_segments=0, roundtrip_equal=True"
+      ],
+      "status": "covered"
+    },
+    "experience": {
+      "evidence": [
+        "migrated from web/references/serendie/DESIGN.md into core section 'experience'",
+        "migration report: dropped_segments=0, roundtrip_equal=True"
+      ],
+      "status": "covered"
+    },
+    "foundations": {
+      "evidence": [
+        "migrated from web/references/serendie/DESIGN.md into core section 'foundations'",
+        "migration report: dropped_segments=0, roundtrip_equal=True"
+      ],
+      "status": "covered"
+    },
+    "governance": {
+      "evidence": [
+        "migrated from web/references/serendie/DESIGN.md into core section 'governance'",
+        "migration report: dropped_segments=0, roundtrip_equal=True"
+      ],
+      "status": "covered"
+    },
+    "layout-platforms": {
+      "evidence": [
+        "migrated from web/references/serendie/DESIGN.md into core section 'layout-platforms'",
+        "migration report: dropped_segments=0, roundtrip_equal=True"
+      ],
+      "status": "covered"
+    },
+    "typography-assets": {
+      "evidence": [
+        "migrated from web/references/serendie/DESIGN.md into core section 'typography-assets'",
+        "migration report: dropped_segments=0, roundtrip_equal=True"
+      ],
+      "status": "covered"
+    }
+  },
+  "schema_version": "2.0.0"
+}

@@ -8568,6 +8568,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": 0.733
   },
   {
+    "id": "serendie",
+    "status": "verified_v2",
+    "verifiedAt": "2026-09-21",
+    "tokensExtractedAt": "2026-09-21",
+    "nextReverifyAt": "2027-03-20",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 54,
+    "evidenceClaimCount": 54,
+    "evidenceCoverage": 1,
+    "surfaceCount": 7,
+    "sourceCount": 8,
+    "conflictCount": 0,
+    "tier1SourceCount": 8,
+    "componentCount": 1,
+    "interactiveComponentCount": 1,
+    "statedComponentCount": 1,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "servicenow",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
@@ -11386,10 +11408,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 141,
+  "verified_v2": 142,
   "partial": 183,
   "legacy_snapshot": 116,
-  "total": 440
+  "total": 441
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

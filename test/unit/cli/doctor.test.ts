@@ -10,6 +10,20 @@ import {
   writeFileSync,
 } from 'node:fs';
 import { tmpdir } from 'node:os';
+import { readdirSync, existsSync as fileExists } from 'node:fs';
+import { resolve as resolvePath } from 'node:path';
+
+/**
+ * How many references the catalog actually has, counted rather than pinned.
+ *
+ * This was written as a literal `440` in two assertions and went stale the day a
+ * 441st reference landed, failing for a reason unrelated to what either test is
+ * about (whether Cursor's install is detected correctly). `check-counts` already
+ * guards the number itself across ten surfaces; here it only has to match.
+ */
+const CATALOG_REFERENCE_COUNT = readdirSync(resolvePath(process.cwd(), 'web', 'references'), { withFileTypes: true })
+  .filter((entry) => entry.isDirectory() && fileExists(resolvePath(process.cwd(), 'web', 'references', entry.name, 'DESIGN.md')))
+  .length;
 import { join } from 'node:path';
 import {
   collectDoctorReport,
@@ -467,7 +481,7 @@ describe('omd doctor', () => {
       installed: true,
       ready: true,
       skills: REQUIRED_PRODUCT_SKILLS.length - 1,
-      references: 440,
+      references: CATALOG_REFERENCE_COUNT,
       issues: [],
     });
   });
@@ -510,7 +524,7 @@ describe('omd doctor', () => {
       installed: true,
       ready: true,
       skills: 0,
-      references: 440,
+      references: CATALOG_REFERENCE_COUNT,
       issues: [],
     });
   });

@@ -1,0 +1,687 @@
+{
+  "$schema": "https://oh-my-design.kr/schema/design-system-graph-v2.schema.json",
+  "components_states": {
+    "rules": [
+      "### Component Stylings\n\nMeasured on the design-system home in the default KONJO theme, with the pointer parked between reads so a sticky hover could not be recorded as another state.\n\n| Component | Rest | Hover / pressed | Geometry |\n|---|---|---|---|\n| Theme action (button) | bg `#0650a0`, fg `#ffffff` | `#024288` | radius `9999px`, height `40px`, padding `0 12px 0 16px`, 16px/400 |\n\nOnly one component is recorded with measured values. The documentation site publishes a larger set (accordion, list, search and others), and the button page itself has sections for サイズ, バリエーション, アイコン付きボタン and 状態. Those are not transcribed here because they were not measured in this pass, and a documented variant is not an observation.",
+      "### States\n\nMeasured for the theme action only: rest `#0650a0` → hover `#024288`, with pressed matching hover. Focus was not separately distinguishable from hover in the observed component, and no focus-ring value is asserted. The button documentation page carries a 状態 section that was not transcribed in this pass."
+    ]
+  },
+  "content_locales": {
+    "voice": [
+      "### Voice & Tone\n\nThe documentation writes to practitioners in plain Japanese and states its own limits — it names what the system is for, and where a business domain should keep its own components instead. It does not market itself."
+    ]
+  },
+  "experience": {
+    "primary_tasks": [
+      "Read a design token from the published three-tier set",
+      "Pick a theme, or add a business-specific one over the defaults",
+      "Build a screen from the published component set",
+      "Follow the design or development track under Get Started",
+      "Sync tokens between Figma and code"
+    ],
+    "summary": "### Visual Theme & Atmosphere\n\nSerendie is Mitsubishi Electric's digital-platform brand, and Serendie Design System is the design language its DX Innovation Center publishes for it. The atmosphere is a calm institutional blue on white with generously rounded action shapes — a deep `#0650a0` fill on a fully-rounded 40px pill, white surfaces, and a near-navy `#073165` for text on tinted panels. Nothing in the palette shouts; the contrast work is done by one saturated blue against a large amount of white and a warm grey (`#efeeeb`) used for recessed surfaces.\n\n**Key characteristics:**\n- Impression blue `#0a69cf` with a darker `#0650a0` carrying the default theme's actions\n- Fully-rounded actions (`9999px`) at 40px height — no square buttons in the observed default theme\n- A three-tier token architecture published as CSS custom properties: 184 reference, 158 system, 31 web-system\n- Five themes named for Japanese traditional colours, with KONJO (紺青) as the default\n\n**One thing this reference must not overstate.** Serendie Design System is deliberately skinnable. Its own About page describes 着せ替え型の設計 — a dress-up design — and says the five default themes follow the *Serendie brand* while each Mitsubishi Electric business domain may add custom themes that override Serendie UI, with the system acting as 各事業デザインシステムの骨格 (\"the skeleton of each business's design system\"). Everything documented here is the Serendie brand's own default expression. It is not a description of how every Mitsubishi Electric product looks.\n\n### Brand Narrative\n\nSerendie Design System is published by 三菱電機株式会社DXイノベーションセンター (Mitsubishi Electric's DX Innovation Center). Its stated aim is to be a foundation for producing experimental new services quickly while staying close to Mitsubishi Electric's manufacturing culture — the About page says the assets it provides are centred on what is immediately effective for digital product development, and that it is a design system for light, flexible product-making rather than one pursuing only completeness and robustness.\n\nThe GitHub organisation describes it in one line: \"An open-source design system by Mitsubishi Electric\".\n\n### Principles\n\nThree, stated on the About page:\n\n- **Adaptive** — aims to fit business domains from the home to space (家庭から宇宙まで) and every phase from validation to productisation, by providing basic assets that prioritise generality.\n- **Borderless** — a shared asset for everyone connected to Mitsubishi Electric, usable freely without permission or approval, inside or outside the company.\n- **Circulative** — never finished; analysis of usage and continuous improvement are cycled, and the work is not closed to one team.\n\n### Personas\n\nNot asserted. The documentation addresses designers and developers by role, but no persona research is published and none is invented here."
+  },
+  "extensions": {
+    "dev.oh-my-design.catalog": {
+      "frontmatter": {
+        "added": "2026-09-21",
+        "category": "saas",
+        "country": "JP",
+        "ds": {
+          "description": "Mitsubishi Electric DX Innovation Center's public design system for the Serendie platform brand: a three-tier token set (reference, system, web-system), a themeable UI library, and Figma/code token sync.",
+          "name": "Serendie Design System",
+          "type": "system",
+          "url": "https://serendie.design/"
+        },
+        "homepage": "https://www.mitsubishielectric.co.jp/serendie/",
+        "id": "serendie",
+        "logo": {
+          "slug": "serendie.design",
+          "type": "favicon"
+        },
+        "name": "Serendie",
+        "omd": {
+          "schema": 1
+        },
+        "primary_color": "#0A69CF",
+        "tokens": {
+          "colors": {
+            "canvas": "#ffffff",
+            "on-primary": "#ffffff",
+            "on-tertiary": "#073165",
+            "primary": "#0a69cf",
+            "primary-hover": "#024288",
+            "secondary": "#0650a0",
+            "surface-dim": "#efeeeb",
+            "surface-dimmest": "#afaeaa",
+            "tertiary": "#eff2fc"
+          },
+          "components": {
+            "theme-action": {
+              "bg": "#0650a0",
+              "fg": "#ffffff",
+              "font": "16px / 400 / Roboto",
+              "hover": "#024288",
+              "padding": "0px 12px 0px 16px",
+              "pressed": "#024288",
+              "radius": "9999px",
+              "type": "button",
+              "use": "Observed KONJO-theme action on the design-system home only."
+            }
+          },
+          "components_harvested": true,
+          "extracted": "2026-09-21",
+          "rounded": {
+            "action": 9999
+          },
+          "source": "live-extract",
+          "spacing": [
+            0,
+            4,
+            8,
+            12,
+            16,
+            20,
+            24,
+            32,
+            40,
+            48,
+            64,
+            80
+          ],
+          "typography": {
+            "body": {
+              "lineHeight": 1.6,
+              "size": 14,
+              "use": "Observed system token body-medium (expanded).",
+              "weight": 400
+            },
+            "display": {
+              "lineHeight": 1.6,
+              "size": 64,
+              "use": "Observed system token display-medium (expanded).",
+              "weight": 400
+            },
+            "family": {
+              "jp": "Noto Sans JP",
+              "mono": "Noto Sans Mono",
+              "ui": "Roboto"
+            },
+            "heading": {
+              "lineHeight": 1.6,
+              "size": 32,
+              "use": "Observed system token headline-large (expanded).",
+              "weight": 400
+            },
+            "label": {
+              "lineHeight": 1,
+              "size": 13,
+              "use": "Observed system token label-large (expanded).",
+              "weight": 400
+            },
+            "title": {
+              "lineHeight": 1.6,
+              "size": 18,
+              "use": "Observed system token title-large (expanded).",
+              "weight": 700
+            }
+          }
+        },
+        "verification_v2": {
+          "checked": "2026-09-21",
+          "claims": {
+            "tokens.colors.canvas": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.colors.on-primary": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.colors.on-tertiary": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.colors.primary": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.colors.primary-hover": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.colors.secondary": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.colors.surface-dim": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.colors.surface-dimmest": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.colors.tertiary": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.components.theme-action.bg": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-button-doc",
+              "surface_id": "button-doc"
+            },
+            "tokens.components.theme-action.fg": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-button-doc",
+              "surface_id": "button-doc"
+            },
+            "tokens.components.theme-action.font": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-button-doc",
+              "surface_id": "button-doc"
+            },
+            "tokens.components.theme-action.hover": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-button-doc",
+              "surface_id": "button-doc"
+            },
+            "tokens.components.theme-action.padding": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-button-doc",
+              "surface_id": "button-doc"
+            },
+            "tokens.components.theme-action.pressed": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-button-doc",
+              "surface_id": "button-doc"
+            },
+            "tokens.components.theme-action.radius": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-button-doc",
+              "surface_id": "button-doc"
+            },
+            "tokens.components.theme-action.type": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-button-doc",
+              "surface_id": "button-doc"
+            },
+            "tokens.components.theme-action.use": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-button-doc",
+              "surface_id": "button-doc"
+            },
+            "tokens.rounded.action": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-button-doc",
+              "surface_id": "button-doc"
+            },
+            "tokens.spacing.0": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.spacing.1": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.spacing.10": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.spacing.11": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.spacing.2": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.spacing.3": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.spacing.4": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.spacing.5": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.spacing.6": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.spacing.7": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.spacing.8": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.spacing.9": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.typography.body.lineHeight": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.typography.body.size": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.typography.body.use": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.typography.body.weight": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.typography.display.lineHeight": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.typography.display.size": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.typography.display.use": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.typography.display.weight": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.typography.family.jp": {
+              "captured": "2026-09-21",
+              "method": "official-doc",
+              "source_id": "serendie-typography-doc",
+              "surface_id": "typography-doc"
+            },
+            "tokens.typography.family.mono": {
+              "captured": "2026-09-21",
+              "method": "official-doc",
+              "source_id": "serendie-typography-doc",
+              "surface_id": "typography-doc"
+            },
+            "tokens.typography.family.ui": {
+              "captured": "2026-09-21",
+              "method": "official-doc",
+              "source_id": "serendie-typography-doc",
+              "surface_id": "typography-doc"
+            },
+            "tokens.typography.heading.lineHeight": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.typography.heading.size": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.typography.heading.use": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.typography.heading.weight": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.typography.label.lineHeight": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.typography.label.size": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.typography.label.use": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.typography.label.weight": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.typography.title.lineHeight": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.typography.title.size": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.typography.title.use": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            },
+            "tokens.typography.title.weight": {
+              "captured": "2026-09-21",
+              "method": "computed-style",
+              "source_id": "serendie-live",
+              "surface_id": "home"
+            }
+          },
+          "conflicts": [],
+          "schema": 2,
+          "sources": [
+            {
+              "captured": "2026-09-21",
+              "id": "serendie-live",
+              "kind": "product-surface",
+              "url": "https://serendie.design/"
+            },
+            {
+              "captured": "2026-09-21",
+              "id": "serendie-color-doc",
+              "kind": "official-doc",
+              "url": "https://serendie.design/foundations/color"
+            },
+            {
+              "captured": "2026-09-21",
+              "id": "serendie-typography-doc",
+              "kind": "official-doc",
+              "url": "https://serendie.design/foundations/typography"
+            },
+            {
+              "captured": "2026-09-21",
+              "id": "serendie-button-doc",
+              "kind": "official-doc",
+              "url": "https://serendie.design/components/button"
+            },
+            {
+              "captured": "2026-09-21",
+              "id": "serendie-tokens-doc",
+              "kind": "official-doc",
+              "url": "https://serendie.design/foundations/design-tokens"
+            },
+            {
+              "captured": "2026-09-21",
+              "id": "serendie-about-doc",
+              "kind": "official-doc",
+              "url": "https://serendie.design/about"
+            },
+            {
+              "captured": "2026-09-21",
+              "id": "serendie-github",
+              "kind": "official-doc",
+              "url": "https://github.com/serendie"
+            },
+            {
+              "captured": "2026-09-21",
+              "id": "melco-serendie-platform",
+              "kind": "product-surface",
+              "url": "https://www.mitsubishielectric.co.jp/serendie/"
+            }
+          ],
+          "surfaces": [
+            {
+              "id": "home",
+              "inspected": "2026-09-21",
+              "kind": "design-system",
+              "url": "https://serendie.design/"
+            },
+            {
+              "id": "color-doc",
+              "inspected": "2026-09-21",
+              "kind": "design-system",
+              "url": "https://serendie.design/foundations/color"
+            },
+            {
+              "id": "typography-doc",
+              "inspected": "2026-09-21",
+              "kind": "design-system",
+              "url": "https://serendie.design/foundations/typography"
+            },
+            {
+              "id": "button-doc",
+              "inspected": "2026-09-21",
+              "kind": "design-system",
+              "url": "https://serendie.design/components/button"
+            },
+            {
+              "id": "tokens-doc",
+              "inspected": "2026-09-21",
+              "kind": "design-system",
+              "url": "https://serendie.design/foundations/design-tokens"
+            },
+            {
+              "id": "about-doc",
+              "inspected": "2026-09-21",
+              "kind": "design-system",
+              "url": "https://serendie.design/about"
+            },
+            {
+              "id": "platform",
+              "inspected": "2026-09-21",
+              "kind": "marketing",
+              "url": "https://www.mitsubishielectric.co.jp/serendie/"
+            }
+          ]
+        },
+        "verified": "2026-09-21"
+      },
+      "schema_version": "1.0.0"
+    }
+  },
+  "foundations": {
+    "rules": [
+      "### Color Palette & Roles\n\nObserved as CSS custom properties on the live site under the `--web-system-color-*` namespace, which is the layer a consumer binds to.\n\n| Role | Value | Token |\n|---|---|---|\n| Primary | `#0a69cf` | `impression-primary` |\n| On primary | `#ffffff` | `impression-onPrimary` |\n| Secondary (default-theme action) | `#0650a0` | `impression-secondary` |\n| Tertiary / subtle | `#eff2fc` | `impression-tertiary`, `impression-subtle` |\n| On tertiary | `#073165` | `impression-onTertiary` |\n| Surface | `#ffffff` | `component-surface` |\n| On surface | `#073165` | `component-onSurface` |\n| Surface dim | `#efeeeb` | `component-surfaceDim` |\n| Surface dimmest | `#afaeaa` | `component-surfaceDimmest` |\n\nA further data-visualisation ramp is published under `mvShape-*` (`#428cfe`, `#bfcefc`, `#f84258`, `#f2dbc0`, `#aeead5` and others). It is recorded here as observed but is not a UI role set.",
+      "### Depth & Elevation\n\nFour published shadow levels, as `drop-shadow` filters:\n\n- level 1 — `0px 1px 2px 0px #0000004D`\n- level 2 — `0px 1px 4px 0px #00000033`\n- level 3 — `0px 2px 8px 0px #00000033`\n- level 4 — `0px 4px 12px 0px #00000033`\n\nElevation is expressed as a filter rather than a box-shadow, and the opacity drops from 30% at level 1 to 20% for levels 2–4 while the blur grows.",
+      "### Motion & Easing\n\nNot measured. No motion tokens appear in the observed custom-property set, and none are asserted."
+    ],
+    "tokens": {
+      "color.canvas": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "color.on-primary": {
+        "$type": "color",
+        "$value": "#ffffff"
+      },
+      "color.on-tertiary": {
+        "$type": "color",
+        "$value": "#073165"
+      },
+      "color.primary": {
+        "$type": "color",
+        "$value": "#0a69cf"
+      },
+      "color.primary-hover": {
+        "$type": "color",
+        "$value": "#024288"
+      },
+      "color.secondary": {
+        "$type": "color",
+        "$value": "#0650a0"
+      },
+      "color.surface-dim": {
+        "$type": "color",
+        "$value": "#efeeeb"
+      },
+      "color.surface-dimmest": {
+        "$type": "color",
+        "$value": "#afaeaa"
+      },
+      "color.tertiary": {
+        "$type": "color",
+        "$value": "#eff2fc"
+      },
+      "radius.action": {
+        "$type": "dimension",
+        "$value": {
+          "unit": "px",
+          "value": 9999
+        }
+      },
+      "radius.default": {
+        "$type": "dimension",
+        "$value": {
+          "unit": "px",
+          "value": 9999
+        }
+      }
+    }
+  },
+  "governance": {
+    "change_policy": [
+      "### Do's and Don'ts\n\n- **Do** bind to the `--web-system-*` layer. The reference and system tiers exist so that the binding layer can be re-themed without touching consumers.\n- **Do** treat the five themes as the brand's own range, not as decoration — they are named for Japanese traditional colours (KONJO 紺青, ASAGI 浅葱, KURIKAWA 栗皮, SUMIRE 菫, TSUTSUJI 躑躅), with a dark variant of KONJO.\n- **Don't** read this reference as Mitsubishi Electric's corporate identity. Serendie is one platform brand inside the company, and business domains layer their own visual identity on top of this system.\n- **Don't** assume a square action. Every observed action in the default theme is fully rounded.",
+      "### Agent Prompt Guide\n\nAsk for \"Serendie, default KONJO theme\": deep blue `#0650a0` actions, fully-rounded pills at 40px, white surfaces with `#eff2fc` tinted panels, `#073165` text on tint, Roboto with Noto Sans JP for Japanese. Say \"expanded scale\" for the 64/43/32/18/16/14/13 ramp. If a brief needs a different accent, say \"custom theme over Serendie\" rather than changing the token values — re-theming is how this system is meant to be adapted."
+    ],
+    "decisions": [],
+    "unknown_policy": "absent-at-smallest-unresolved-boundary"
+  },
+  "identity": {
+    "kind": "evidence-backed-reconstruction",
+    "name": "Serendie",
+    "scope": "Reference reconstruction for Serendie"
+  },
+  "layout_platforms": {
+    "rules": [
+      "### Layout Principles\n\nSpacing is a published scale rather than ad-hoc values: 0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80px, named none through sixExtraLarge. The typographic scale is paired compact/expanded, which is the system's mechanism for density rather than a separate spacing mode.",
+      "### Responsive Behavior\n\nNot measured in this pass. The system publishes a compact/expanded typographic pairing which implies a density switch, but no breakpoint values were observed and none are asserted here."
+    ]
+  },
+  "projection": {
+    "locale": "en",
+    "path": "DESIGN.md",
+    "sha256": "bb3883a2f37a5622f0cd9515dbb52fd9e51cee9fe4da80886d97d9ec64d41d06"
+  },
+  "schema_version": "2.0.0",
+  "typography_assets": {
+    "roles": [
+      {
+        "id": "display",
+        "line_height": "1.6",
+        "size": "64px",
+        "usage": "declared type role: display",
+        "weight": 400
+      },
+      {
+        "id": "heading",
+        "line_height": "1.6",
+        "size": "32px",
+        "usage": "declared type role: heading",
+        "weight": 400
+      },
+      {
+        "id": "title",
+        "line_height": "1.6",
+        "size": "18px",
+        "usage": "declared type role: title",
+        "weight": 700
+      },
+      {
+        "family": "Roboto",
+        "id": "body",
+        "line_height": "1.6",
+        "size": "14px",
+        "usage": "declared type role: body",
+        "weight": 400
+      },
+      {
+        "id": "label",
+        "line_height": "1",
+        "size": "13px",
+        "usage": "declared type role: label",
+        "weight": 400
+      }
+    ],
+    "rules": [
+      "### Typography Rules\n\nFirst-party, from the typography foundation page: 「Serendieブランドは、欧文フォント「Roboto」、和文フォント「Noto Sans JP」を採用しています。Serendie Design Systemにおいてもそれを踏襲しつつ、等幅フォント「Noto Sans Mono」を追加しています」 — the Serendie brand adopts **Roboto** for Latin and **Noto Sans JP** for Japanese, and the design system adds **Noto Sans Mono**. All three are open source and free for commercial use. The page records an update date of 2024/11/1.\n\nThe system publishes a paired compact/expanded scale. Expanded values, observed as tokens:\n\n| Role | Weight / size / line-height |\n|---|---|\n| display-medium | 400 · 64px · 1.6 |\n| display-small | 400 · 43px · 1.6 |\n| headline-large | 400 · 32px · 1.6 |\n| headline-medium | 400 · 26px · 1.6 |\n| title-large | 700 · 18px · 1.6 |\n| title-medium | 700 · 16px · 1.6 |\n| body-large | 400 · 16px · 1.6 |\n| body-medium | 400 · 14px · 1.6 |\n| label-large | 400 · 13px · 1 |\n\nWeight is binary in the reference layer: 400 regular, 700 bold. Line-height is a named scale — none 1, tight 1.4, normal 1.6, relaxed 1.8."
+    ]
+  }
+}

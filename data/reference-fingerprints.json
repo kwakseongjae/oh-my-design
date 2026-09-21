@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-09-03T00:00:00Z",
+ "generated_at": "2026-09-21T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 440,
+ "count": 441,
  "items": [
   {
    "id": "104",
@@ -8080,6 +8080,30 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "developer-tools"
+  },
+  {
+   "id": "serendie",
+   "primary_color_hex": "#0A69CF",
+   "category": "saas",
+   "visual_theme": "",
+   "voice_fingerprint": {
+    "register": "saas",
+    "sentence_length": "medium declarative",
+    "metaphor_density": "low",
+    "vocabulary_register": "brand-appropriate"
+   },
+   "tone_keywords": [
+    "bold",
+    "warm",
+    "dark",
+    "calm"
+   ],
+   "antipatterns": [
+    "off-brand"
+   ],
+   "signature_motion": "See §15 Motion.",
+   "has_personas": true,
+   "category_raw": "saas"
   },
   {
    "id": "servicenow",

@@ -1,13 +1,13 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-20",
+  "generated_at": "2026-09-21",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 440,
+  "count": 441,
   "counts": {
-    "verified_v2": 141,
+    "verified_v2": 142,
     "partial": 183,
     "legacy_snapshot": 116,
-    "total": 440
+    "total": 441
   },
   "items": [
     {
@@ -4228,6 +4228,17 @@
         "token_source_unverified",
         "verification_v2_missing"
       ]
+    },
+    {
+      "id": "serendie",
+      "status": "verified_v2",
+      "verified_at": "2026-09-21",
+      "next_reverify_at": "2027-03-20",
+      "evidence_coverage": 1,
+      "surface_count": 7,
+      "source_count": 8,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "servicenow",

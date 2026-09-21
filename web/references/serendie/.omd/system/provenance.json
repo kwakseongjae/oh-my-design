@@ -1,0 +1,574 @@
+{
+  "decisions": [
+    {
+      "evidence": [
+        "web/references/serendie/DESIGN.md (migrated segment for components_states.rules)"
+      ],
+      "path": "components_states.rules",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/serendie/DESIGN.md (migrated segment for content_locales.voice)"
+      ],
+      "path": "content_locales.voice",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/serendie/DESIGN.md (migrated segment for experience.primary_tasks)"
+      ],
+      "path": "experience.primary_tasks",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/serendie/DESIGN.md (migrated segment for experience.summary)"
+      ],
+      "path": "experience.summary",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/serendie/DESIGN.md (migrated segment for foundations.rules)"
+      ],
+      "path": "foundations.rules",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.canvas",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.canvas.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.canvas.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.on-primary",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.on-primary.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.on-primary.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.on-tertiary",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.on-tertiary.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.on-tertiary.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.primary",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.primary-hover",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.primary-hover.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.primary-hover.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.primary.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.primary.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.secondary",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.secondary.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.secondary.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.surface-dim",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.surface-dim.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.surface-dim.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.surface-dimmest",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.surface-dimmest.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.surface-dimmest.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.tertiary",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.tertiary.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.color.tertiary.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.radius.action",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.radius.action.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.radius.action.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.radius.default",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.radius.default.$type",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "verification_v2 source serendie-live: https://serendie.design/",
+        "verification_v2 source serendie-color-doc: https://serendie.design/foundations/color",
+        "verification_v2 source serendie-typography-doc: https://serendie.design/foundations/typography",
+        "verification_v2 source serendie-button-doc: https://serendie.design/components/button",
+        "verification_v2 source serendie-tokens-doc: https://serendie.design/foundations/design-tokens",
+        "verification_v2 source serendie-about-doc: https://serendie.design/about",
+        "verification_v2 source serendie-github: https://github.com/serendie",
+        "verification_v2 source melco-serendie-platform: https://www.mitsubishielectric.co.jp/serendie/"
+      ],
+      "path": "foundations.tokens.radius.default.$value",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/serendie/DESIGN.md (migrated segment for governance.change_policy)"
+      ],
+      "path": "governance.change_policy",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/serendie/DESIGN.md (migrated segment for governance.unknown_policy)"
+      ],
+      "path": "governance.unknown_policy",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/serendie/DESIGN.md (migrated segment for identity.kind)"
+      ],
+      "path": "identity.kind",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/serendie/DESIGN.md (migrated segment for identity.name)"
+      ],
+      "path": "identity.name",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/serendie/DESIGN.md (migrated segment for identity.scope)"
+      ],
+      "path": "identity.scope",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/serendie/DESIGN.md (migrated segment for layout_platforms.rules)"
+      ],
+      "path": "layout_platforms.rules",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/serendie/DESIGN.md (migrated segment for projection.locale)"
+      ],
+      "path": "projection.locale",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/serendie/DESIGN.md (migrated segment for projection.path)"
+      ],
+      "path": "projection.path",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/serendie/DESIGN.md (migrated segment for typography_assets.roles)"
+      ],
+      "path": "typography_assets.roles",
+      "source_class": "repository-fact"
+    },
+    {
+      "evidence": [
+        "web/references/serendie/DESIGN.md (migrated segment for typography_assets.rules)"
+      ],
+      "path": "typography_assets.rules",
+      "source_class": "repository-fact"
+    }
+  ],
+  "design_md_sha256": "bb3883a2f37a5622f0cd9515dbb52fd9e51cee9fe4da80886d97d9ec64d41d06",
+  "graph_sha256": "8f8e66a33162d8de958b6dc9dd6777378c33411eb6547ef3c43b2bf00217c629",
+  "schema_version": "2.0.0"
+}
