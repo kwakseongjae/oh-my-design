@@ -8,59 +8,222 @@ primary_color: "#742DDD"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=sendbird.com&sz=128"
-verified: "2026-06-01"
+verified: "2026-09-21"
 omd: "0.1"
 ds:
   name: Sendbird UIKit
-  url: "https://sendbird.com/docs/chat/uikit/v3/react/overview"
+  url: "https://sendbird.github.io/sendbird-uikit-react"
   type: system
   description: Sendbird's official chat UIKit — a documented, token-driven conversation-UI system (React, iOS, Android, React Native) with named color sets, message components, and themeable light/dark resources.
+verification_v2:
+  schema: 2
+  checked: "2026-09-21"
+  surfaces:
+    - { id: uikit, kind: product-surface, url: "https://sendbird.github.io/sendbird-uikit-react", inspected: "2026-09-21" }
+    - { id: marketing, kind: product-surface, url: "https://sendbird.com/", inspected: "2026-09-21" }
+  sources:
+    - { id: uikit-button, kind: product-surface, url: "https://sendbird.github.io/sendbird-uikit-react/iframe.html?id=2-ui-button--primary&viewMode=story", captured: "2026-09-21" }
+    - { id: uikit-danger, kind: product-surface, url: "https://sendbird.github.io/sendbird-uikit-react/iframe.html?id=2-ui-button--danger&viewMode=story", captured: "2026-09-21" }
+    - { id: uikit-disabled, kind: product-surface, url: "https://sendbird.github.io/sendbird-uikit-react/iframe.html?id=2-ui-button--disabled&viewMode=story", captured: "2026-09-21" }
+    - { id: uikit-checkbox, kind: product-surface, url: "https://sendbird.github.io/sendbird-uikit-react/iframe.html?id=2-ui-checkbox--unchecked&viewMode=story", captured: "2026-09-21" }
+    - { id: uikit-toggle, kind: product-surface, url: "https://sendbird.github.io/sendbird-uikit-react/iframe.html?id=2-ui-toggle--default&viewMode=story", captured: "2026-09-21" }
+    - { id: marketing-live, kind: product-surface, url: "https://sendbird.com/", captured: "2026-09-21" }
+    - { id: marketing-june, kind: product-surface, url: "https://sendbird.com/", captured: "2026-06-01" }
+    - { id: uikit-docs, kind: official-doc, url: "https://sendbird.com/docs/chat/uikit/v3/react/overview", captured: "2026-09-21" }
+  conflicts: []
+  claims:
+    tokens.colors.body: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.colors.border-light: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.colors.brand: { surface_id: uikit, source_id: uikit-button, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.canvas: { surface_id: uikit, source_id: uikit-button, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.error: { surface_id: uikit, source_id: uikit-button, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.foreground: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.colors.hairline: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.colors.info: { surface_id: uikit, source_id: uikit-button, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.ink-dark: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.colors.muted: { surface_id: uikit, source_id: uikit-button, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.on-primary: { surface_id: uikit, source_id: uikit-button, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.primary: { surface_id: uikit, source_id: uikit-button, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.primary-active: { surface_id: uikit, source_id: uikit-button, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.primary-hover: { surface_id: uikit, source_id: uikit-button, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.success: { surface_id: uikit, source_id: uikit-button, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.surface: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.components.bubble-incoming.bg: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.bubble-incoming.fg: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.bubble-incoming.type: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.bubble-incoming.use: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.bubble-outgoing.bg: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.bubble-outgoing.fg: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.bubble-outgoing.type: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.bubble-outgoing.use: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.button-danger.bg: { surface_id: uikit, source_id: uikit-danger, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-danger.fg: { surface_id: uikit, source_id: uikit-danger, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-danger.font: { surface_id: uikit, source_id: uikit-danger, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-danger.hover: { surface_id: uikit, source_id: uikit-danger, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-danger.pressed: { surface_id: uikit, source_id: uikit-danger, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-danger.radius: { surface_id: uikit, source_id: uikit-danger, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-danger.type: { surface_id: uikit, source_id: uikit-danger, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-danger.use: { surface_id: uikit, source_id: uikit-danger, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-disabled.bg: { surface_id: uikit, source_id: uikit-disabled, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-disabled.disabled: { surface_id: uikit, source_id: uikit-disabled, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-disabled.fg: { surface_id: uikit, source_id: uikit-disabled, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-disabled.radius: { surface_id: uikit, source_id: uikit-disabled, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-disabled.type: { surface_id: uikit, source_id: uikit-disabled, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-disabled.use: { surface_id: uikit, source_id: uikit-disabled, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.bg: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.fg: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.focus: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.font: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.hover: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.pressed: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.radius: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.type: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.use: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.fg: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.font: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.hover: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.pressed: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.radius: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.type: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.use: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.checkbox.focus: { surface_id: uikit, source_id: uikit-checkbox, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.checkbox.radius: { surface_id: uikit, source_id: uikit-checkbox, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.checkbox.type: { surface_id: uikit, source_id: uikit-checkbox, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.checkbox.use: { surface_id: uikit, source_id: uikit-checkbox, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.chip.bg: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.chip.border: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.chip.fg: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.chip.font: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.chip.height: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.chip.padding: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.chip.radius: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.chip.type: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.chip.use: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.cta-dark-pill.bg: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.cta-dark-pill.border: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.cta-dark-pill.fg: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.cta-dark-pill.font: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.cta-dark-pill.height: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.cta-dark-pill.padding: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.cta-dark-pill.radius: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.cta-dark-pill.type: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.cta-dark-pill.use: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.cta-outline-pill.bg: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.cta-outline-pill.border: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.cta-outline-pill.fg: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.cta-outline-pill.font: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.cta-outline-pill.height: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.cta-outline-pill.padding: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.cta-outline-pill.radius: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.cta-outline-pill.type: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.cta-outline-pill.use: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.input-newsletter.bg: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.input-newsletter.border: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.input-newsletter.fg: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.input-newsletter.font: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.input-newsletter.padding: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.input-newsletter.radius: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.input-newsletter.type: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.input-newsletter.use: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
+    tokens.components.input.bg: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input.border: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input.fg: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input.focus: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input.font: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input.padding: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input.radius: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input.type: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input.use: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.toggle.bg: { surface_id: uikit, source_id: uikit-toggle, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.toggle.focus: { surface_id: uikit, source_id: uikit-toggle, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.toggle.radius: { surface_id: uikit, source_id: uikit-toggle, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.toggle.type: { surface_id: uikit, source_id: uikit-toggle, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.toggle.use: { surface_id: uikit, source_id: uikit-toggle, method: live-inspect, captured: "2026-09-21" }
+    tokens.rounded.full: { surface_id: uikit, source_id: uikit-button, method: computed-style, captured: "2026-09-21" }
+    tokens.rounded.lg: { surface_id: uikit, source_id: uikit-button, method: computed-style, captured: "2026-09-21" }
+    tokens.rounded.md: { surface_id: uikit, source_id: uikit-button, method: computed-style, captured: "2026-09-21" }
+    tokens.rounded.sm: { surface_id: uikit, source_id: uikit-button, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.base: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.spacing.lg: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.spacing.md: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.spacing.sm: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.spacing.xl: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.spacing.xs: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.typography.body-lg.size: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.typography.body-lg.use: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.typography.body-lg.weight: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.typography.body.size: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.typography.body.use: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.typography.body.weight: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.typography.cta.size: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.typography.cta.use: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.typography.cta.weight: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.typography.display-serif.size: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.typography.display-serif.use: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.typography.display-serif.weight: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.typography.family.mono: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.typography.family.sans: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.typography.label.size: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.typography.label.use: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.typography.label.weight: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.typography.nav.size: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.typography.nav.use: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.typography.nav.weight: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
 tokens:
-  source: prose-derived
-  extracted: "2026-06-09"
+  source: live-extract
+  extracted: "2026-09-21"
   colors:
-    primary: "#742DDD"
-    primary-hover: "#6211C8"
+    primary: "#742ddd"
+    primary-hover: "#6211c8"
     primary-active: "#491389"
-    brand: "#742DDD"
-    canvas: "#FFFFFF"
-    foreground: "#0D0D0D"
+    brand: "#742ddd"
+    canvas: "#ffffff"
+    foreground: "#0d0d0d"
     body: "#424242"
-    muted: "#EEEEEE"
-    on-primary: "#FFFFFF"
-    success: "#259C72"
-    error: "#DE360B"
-    info: "#ADC9FF"
-    surface: "#F2F3F7"
-    hairline: "#E3E5EF"
-    border-light: "#D1D1D1"
-    ink-dark: "#0D0D0D"
+    muted: "#eeeeee"
+    on-primary: "#ffffff"
+    success: "#259c72"
+    error: "#de360b"
+    info: "#adc9ff"
+    surface: "#f2f3f7"
+    hairline: "#e3e5ef"
+    border-light: "#d1d1d1"
+    ink-dark: "#0d0d0d"
   typography:
-    family: { sans: "Helvetica Now Text", mono: "system-ui" }
-    display-serif: { size: 72, weight: 500, use: "Marketing hero headline (serif)" }
-    body-lg:    { size: 18, weight: 400, use: "Marketing body text" }
-    nav:        { size: 16, weight: 500, use: "Marketing nav links" }
-    body:       { size: 14, weight: 400, use: "UIKit message text and labels" }
-    label:      { size: 14, weight: 600, use: "UIKit labels, button text" }
-    cta:        { size: 13, weight: 600, use: "Marketing pill CTA text" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32 }
-  rounded: { sm: 4, md: 8, lg: 24, full: 9999 }
-  shadow:
-    focus-ring: "0 0 0 1px #742DDD"
-    scrim: "rgba(0,0,0,0.55)"
-  components_harvested: true
+    family: {sans: Helvetica Now Text, mono: system-ui}
+    display-serif: {size: 72, weight: 500, use: Marketing hero headline (serif)}
+    body-lg: {size: 18, weight: 400, use: Marketing body text}
+    nav: {size: 16, weight: 500, use: Marketing nav links}
+    body: {size: 14, weight: 400, use: UIKit message text and labels}
+    label: {size: 14, weight: 600, use: 'UIKit labels, button text'}
+    cta: {size: 13, weight: 600, use: Marketing pill CTA text}
+  spacing:
+    xs: 4
+    sm: 8
+    md: 12
+    base: 16
+    lg: 24
+    xl: 32
+  rounded:
+    sm: 4
+    md: 8
+    lg: 24
+    full: 9999
   components:
-    button-primary: { type: button, bg: "#742DDD", fg: "#FFFFFF", radius: "4px", height: "40px", padding: "10px 16px", font: "14px / 600", hover: "#6211C8", active: "#491389", use: "UIKit primary action (send, confirm)" }
-    button-secondary: { type: button, bg: "transparent", fg: "#742DDD", border: "1px solid #742DDD", radius: "4px", active: "rgba(0,0,0,0.04)", use: "UIKit ghost alternative beside primary" }
-    button-danger: { type: button, bg: "#DE360B", fg: "#FFFFFF", radius: "4px", hover: "#BF0711", active: "#9D091E", use: "UIKit destructive action" }
-    button-disabled: { type: button, bg: "#E0E0E0", fg: "rgba(0,0,0,0.38)", radius: "4px", disabled: "non-interactive", use: "UIKit blocked action" }
-    input: { type: input, bg: "#FFFFFF", fg: "rgba(0,0,0,0.87)", border: "1px solid rgba(0,0,0,0.12)", radius: "4px", padding: "7px 12px", font: "14px / 400", focus: "border #742DDD + 0 0 0 1px #742DDD", use: "UIKit text field" }
-    bubble-outgoing: { type: listItem, bg: "#742DDD", fg: "#FFFFFF", use: "Outgoing message bubble, right-aligned, max 400px" }
-    bubble-incoming: { type: listItem, bg: "#EEEEEE", fg: "rgba(0,0,0,0.87)", use: "Incoming message bubble, left-aligned, 40px avatar" }
-    cta-dark-pill: { type: button, bg: "#0D0D0D", fg: "#FFFFFF", border: "1px solid #0D0D0D", radius: "24px", height: "42px", padding: "12px 10px", font: "13px / 600", use: "Marketing highest-emphasis CTA" }
-    cta-outline-pill: { type: button, bg: "#FFFFFF", fg: "#0D0D0D", border: "1px solid #0D0D0D", radius: "24px", height: "42px", padding: "12px 10px", font: "13px / 600", use: "Marketing secondary CTA" }
-    chip: { type: badge, bg: "#F2F3F7", fg: "#0D0D0D", border: "1px solid #E3E5EF", radius: "8px", height: "50px", padding: "8px 12px", font: "18px / 400", use: "Marketing neutral selector / utility control" }
-    input-newsletter: { type: input, bg: "#FFFFFF", fg: "#424242", border: "1px solid #D1D1D1", radius: "50px", padding: "6px 35px", font: "12.8px / 400", use: "Marketing pill email capture" }
+    button-primary: { type: "button", bg: "#742ddd", fg: "#ffffff", radius: "4", font: "13px / 400 Roboto", hover: "#6211c8", pressed: "#491389", focus: "1px solid #ffffff", use: "UIKit primary action — 40px tall." }
+    button-secondary: { type: "button", fg: "#742ddd", radius: "4", font: "13px / 400 Roboto", hover: "1px solid #742ddd", pressed: "1px solid #742ddd", use: "UIKit secondary action — transparent fill, 40px tall." }
+    button-danger: { type: "button", bg: "#de360b", fg: "#ffffff", radius: "4", font: "13px / 400 Roboto", hover: "#bf0711", pressed: "#9d091e", use: "UIKit destructive action — 40px tall." }
+    button-disabled: { type: "button", bg: "#e0e0e0", fg: "#101010", radius: "4", disabled: "#e0e0e0", use: "UIKit unavailable action — palette swap, 40px tall." }
+    input: { type: "input", bg: "#FFFFFF", fg: "rgba(0,0,0,0.87)", border: "1px solid rgba(0,0,0,0.12)", radius: "4px", padding: "7px 12px", font: "14px / 400", focus: "border #742DDD + 0 0 0 1px #742DDD", use: "UIKit text field" }
+    bubble-outgoing: { type: "listItem", bg: "#742DDD", fg: "#FFFFFF", use: "Outgoing message bubble, right-aligned, max 400px" }
+    bubble-incoming: { type: "listItem", bg: "#EEEEEE", fg: "rgba(0,0,0,0.87)", use: "Incoming message bubble, left-aligned, 40px avatar" }
+    cta-dark-pill: { type: "button", bg: "#0D0D0D", fg: "#FFFFFF", border: "1px solid #0D0D0D", radius: "24px", height: "42px", padding: "12px 10px", font: "13px / 600", use: "Marketing highest-emphasis CTA" }
+    cta-outline-pill: { type: "button", bg: "#FFFFFF", fg: "#0D0D0D", border: "1px solid #0D0D0D", radius: "24px", height: "42px", padding: "12px 10px", font: "13px / 600", use: "Marketing secondary CTA" }
+    chip: { type: "badge", bg: "#F2F3F7", fg: "#0D0D0D", border: "1px solid #E3E5EF", radius: "8px", height: "50px", padding: "8px 12px", font: "18px / 400", use: "Marketing neutral selector / utility control" }
+    input-newsletter: { type: "input", bg: "#FFFFFF", fg: "#424242", border: "1px solid #D1D1D1", radius: "50px", padding: "6px 35px", font: "12.8px / 400", use: "Marketing pill email capture" }
+    checkbox: { type: "toggle", radius: "2", focus: "#742ddd", use: "UIKit checkbox — 22px box; focus fills brand purple." }
+    toggle: { type: "toggle", bg: "#bdbdbd", radius: "12", focus: "#742ddd", use: "UIKit switch — 20px track, off #bdbdbd." }
+  components_harvested: true
 ---
 # Design System Inspiration of Sendbird
 
@@ -77,50 +240,40 @@ Sendbird is a developer-infrastructure company that wears two faces, and the gap
 
 ## 2. Color Palette & Roles
 
-Sendbird's UIKit ships a fully named, five-step-per-family color set (the authoritative design-system source). The marketing site layers a separate near-grayscale identity on top.
+This reference covers **two surfaces that are not the same design language**, and the palette
+splits along that line. The **Sendbird UIKit** — the chat system Sendbird's customers embed —
+publishes **90 `--sendbird-*` custom properties**, measured 2026-09-21 on its public Storybook.
+The **marketing site** `sendbird.com` is a separate surface with only 7 custom properties and
+its own neutrals.
 
-**Primary — Sendbird purple (brand + primary actions)**
-- primary-100: `#DBD1FF`
-- primary-200: `#C2A9FA`
-- primary-300: `#742DDD` (the main color — default fills, links, focus)
-- primary-400: `#6211C8` (hover)
-- primary-500: `#491389` (pressed/active)
+### UIKit palette — published tokens
 
-**Secondary — green (accents, success-adjacent)**
-- secondary-100: `#A8E2AB`
-- secondary-200: `#69C085`
-- secondary-300: `#259C72`
-- secondary-400: `#027D69`
-- secondary-500: `#066858`
+Sendbird names positionally (`light-primary-300`, `light-error-300`), so the role names here
+are this reference's and the UIKit token is given beside each.
 
-**Error — red (destructive, validation)**
-- error-100: `#FDAAAA`
-- error-200: `#F66161`
-- error-300: `#DE360B` (light-theme error border + danger fill)
-- error-400: `#BF0711`
-- error-500: `#9D091E`
+- **Primary** (`#742ddd`) — `light-primary-300`. The brand purple, and the UIKit primary action.
+- **Primary Hover** (`#6211c8`) — `light-primary-400`.
+- **Primary Active** (`#491389`) — `light-primary-500`.
+- **Error** (`#de360b`) — `light-error-300`. Also the destructive button fill.
+- **Success** (`#259c72`) — `light-secondary-300`.
+- **Info** (`#adc9ff`) — `light-information-100`.
+- **Muted** (`#eeeeee`) — `light-background-100`.
+- **Canvas / On-Primary** (`#ffffff`) — `file-message-icon-background`, `button-border-focus`.
 
-**Information — `#ADC9FF`** (informational highlights, link previews)
+The ramp runs 100–500 per family in both `light-` and `dark-` variants: Sendbird ships a full
+dark theme, which this pass did **not** measure and does not claim.
 
-**Background — neutral grayscale (surfaces, light → dark)**
-- background-50: `#FFFFFF`
-- background-100: `#EEEEEE` (incoming message bubble, subtle fills)
-- background-200: `#E0E0E0` (disabled fills)
-- background-300: `#BDBDBD`
-- background-400: `#393939`
-- background-500: `#2C2C2C`
-- background-600: `#161616`
-- background-700: `#000000`
+### Marketing palette — `sendbird.com`
 
-**Text on light (alpha black)**
-- onlight-01: `#000000` @ 87% (primary text)
-- onlight-02: `#000000` @ 50% (secondary text)
-- onlight-03: `#000000` @ 38% (disabled text)
-- onlight-04: `#000000` @ 12% (dividers, default input border)
+These six have **no UIKit token** and belong to the marketing surface only. They were captured
+by the 2026-06-01 pass and carry that date; `#f2f3f7` was re-confirmed live today.
 
-**Text on dark (alpha white)** mirrors the above at 87 / 50 / 38 / 12% white. **Overlay:** `#000000` @ 55% (modal scrim), `#000000` @ 32% (lighter scrim).
+- **Foreground / Ink Dark** (`#0d0d0d`) · **Body** (`#424242`)
+- **Surface** (`#f2f3f7`) · **Hairline** (`#e3e5ef`) · **Border Light** (`#d1d1d1`)
 
-**Marketing surface (sendbird.com, live):** ground `#FFFFFF`, body text `#424242`, near-black display + CTA ink `#0D0D0D`, nav ink `#0E1017`, footer + chip fill `#F2F3F7`, hairline borders `#E3E5EF` and `#D1D1D1`. No purple appears in the marketing chrome — brand color is held back for the product.
+Mixing the two is the error to avoid: `#742ddd` is what an embedded Sendbird chat looks like,
+and `#0d0d0d` on `#f2f3f7` is what Sendbird's own website looks like. A consumer building a
+chat UI wants the first set.
 
 ## 3. Typography Rules
 
@@ -135,47 +288,28 @@ Sendbird's UIKit ships a fully named, five-step-per-family color set (the author
 
 ### UIKit Button
 
-**Primary — Big (default)**
-- Background: `#742DDD` (primary-300)
-- Text: `#FFFFFF`
-- Border: none
-- Radius: 4px
-- Padding: 10px 16px
-- Height: 40px
-- Font: 14px / 600 / system default
-- Hover: background `#6211C8` (primary-400)
-- Pressed: background `#491389` (primary-500)
-- Use: the single most prominent action in a UIKit surface (send, confirm, create channel)
+Measured 2026-09-21 on the UIKit's published Storybook, pointer parked between readings. All
+variants are **40px tall, 4px radius, 13px/400 Roboto**.
 
-**Primary — Small**
-- Background: `#742DDD`
-- Text: `#FFFFFF`
-- Radius: 4px
-- Padding: 6px 16px
-- Height: 32px
-- Use: inline and toolbar actions
+| Variant | Rest | Hover | Pressed | Focus |
+|---|---|---|---|---|
+| **Primary** | `#742ddd` fill | `#6211c8` | `#491389` | `1px solid #ffffff` ring |
+| **Secondary** | transparent, `#742ddd` text | `1px solid #742ddd` border | same | border clears |
+| **Danger** | `#de360b` fill | `#bf0711` | `#9d091e` | `1px solid #ffffff` ring |
+| **Disabled** | `#e0e0e0` fill, **`#101010`** text | — | — | — |
 
-**Secondary (ghost)**
-- Background: transparent
-- Text: `#742DDD`
-- Border: 1px solid `#742DDD`
-- Radius: 4px
-- Pressed: background `#000000` @ 4% (onlight wash)
-- Use: lower-emphasis alternative beside a primary button
+The primary and danger buttons both **darken twice** — hover then pressed — and both draw a
+white focus ring. Disabled is a palette swap at full opacity, not a dimmed primary: its text
+stays `#101010` so the label keeps its own contrast.
 
-**Danger**
-- Background: `#DE360B` (error-300)
-- Text: `#FFFFFF`
-- Radius: 4px
-- Hover: background `#BF0711` (error-400)
-- Pressed: background `#9D091E` (error-500)
-- Use: destructive actions (leave channel, delete message)
+### UIKit Checkbox and Toggle
 
-**Disabled**
-- Background: `#E0E0E0` (background-200)
-- Text: `#000000` @ 38% (onlight-03)
-- Radius: 4px
-- Use: any blocked action; non-interactive
+- **Checkbox** — 22px box, 2px radius. Hover and pressed are unchanged; **focus fills
+  `#742ddd`**, so focus is the state that carries the brand colour.
+- **Toggle** — 20px track, 12px radius, off at **`#bdbdbd`**. Focus turns it `#742ddd`.
+
+Both follow the button pattern: the neutral rest state is grey, and brand purple appears on
+interaction rather than at rest.
 
 ### UIKit Input / TextField
 
@@ -331,7 +465,7 @@ Motion is **minimal and purposeful**. New messages slide/fade into the list at t
 
 ---
 **Verified:** 2026-06-01 (CREATE pilot — first ref through the proof-gated pipeline)
-**Tier 1 sources:** https://sendbird.com (live DOM via playwright getComputedStyle — marketing chrome: nav `#0E1017` 16px/500, serif h1 72px/500 `#0D0D0D`, dark pill `#0D0D0D` 24px radius, neutral chip `#F2F3F7`/`#E3E5EF` 8px, pill input 50px radius), https://sendbird.com/docs/chat/uikit/v3/android-view/customizations/resource-customization/color-resources (official UIKit color tokens — primary/secondary/error/background/onlight/ondark/overlay full palette), https://github.com/sendbird/sendbird-uikit-react (official UIKit source — Button index.scss 4px radius / Big 40px / Small 32px / variant fills, Input index.scss 7px·12px / focus + error borders, MessageContent index.scss 400px max-width / 40px avatar)
+**Tier 1 sources:** https://sendbird.github.io/sendbird-uikit-react (the UIKit's published Storybook — 38 stories / 18 components; 90 `--sendbird-*` tokens and every button state read live 2026-09-21); https://sendbird.com (live DOM via playwright getComputedStyle — marketing chrome: nav `#0E1017` 16px/500, serif h1 72px/500 `#0D0D0D`, dark pill `#0D0D0D` 24px radius, neutral chip `#F2F3F7`/`#E3E5EF` 8px, pill input 50px radius), https://sendbird.com/docs/chat/uikit/v3/android-view/customizations/resource-customization/color-resources (official UIKit color tokens — primary/secondary/error/background/onlight/ondark/overlay full palette), https://github.com/sendbird/sendbird-uikit-react (official UIKit source — Button index.scss 4px radius / Big 40px / Small 32px / variant fills, Input index.scss 7px·12px / focus + error borders, MessageContent index.scss 400px max-width / 40px avatar)
 **Tier 2 sources:** getdesign.md/sendbird — NOT LISTED ("No designs found"). styles.refero.design — NOT LISTED (curated taste-set; ?q= does not server-filter; B2B SDK absent). Tier 1 (official UIKit docs + source + live inspect) treated as authoritative per pipeline.
 **Conflicts unresolved:** none. Note: an earlier web search reported a green primary (#259c72) — that is the UIKit **secondary** palette; the Android `colors.xml` source confirms **primary = purple #742DDD**. Resolved in favor of the official source file.
 **Proof:** see `.verification.md` (`## Proof` block, ≥5 raw computed-style samples).

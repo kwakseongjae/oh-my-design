@@ -8512,25 +8512,24 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "sendbird",
-    "status": "legacy_snapshot",
-    "verifiedAt": "2026-06-01",
-    "tokensExtractedAt": "2026-06-09",
-    "nextReverifyAt": null,
+    "status": "partial",
+    "verifiedAt": "2026-09-21",
+    "tokensExtractedAt": "2026-09-21",
+    "nextReverifyAt": "2026-11-28",
     "renewedSourceCount": 0,
-    "tokenSource": "prose-derived",
-    "claimCount": 130,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 137,
+    "evidenceClaimCount": 137,
+    "evidenceCoverage": 1,
+    "surfaceCount": 2,
+    "sourceCount": 8,
     "conflictCount": 0,
-    "tier1SourceCount": 3,
-    "componentCount": 11,
-    "interactiveComponentCount": 8,
-    "statedComponentCount": 4,
+    "tier1SourceCount": 4,
+    "componentCount": 13,
+    "interactiveComponentCount": 10,
+    "statedComponentCount": 7,
     "reasonCodes": [
-      "token_source_unverified",
-      "verification_v2_missing"
+      "interactive_state_missing"
     ],
     "advisoryCodes": [
       "motion_value_unsourced"
@@ -11400,8 +11399,8 @@ export const REFERENCE_QUALITY = [
 
 export const REFERENCE_QUALITY_COUNTS = {
   "verified_v2": 144,
-  "partial": 183,
-  "legacy_snapshot": 114,
+  "partial": 184,
+  "legacy_snapshot": 113,
   "total": 441
 } as const;
 

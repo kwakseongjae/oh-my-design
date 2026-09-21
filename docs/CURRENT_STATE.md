@@ -3,6 +3,32 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## 🧱 2026-09-21 — sendbird: **완전한 컴포넌트 라이브러리로도 verified에 못 간다**
+
+스윕이 찾은 `sendbird.github.io/sendbird-uikit-react`(38스토리·18컴포넌트·**90개 `--sendbird-*`**)로
+sendbird를 처리했다. **`legacy_snapshot` → `partial`**, evidenceCoverage **0 → 1.00**(137/137),
+stated 7/10.
+
+**6월 값이 정확히 맞았다.** 선언 16색 중 **10개가 published `--sendbird-*` 토큰**이고 위치 이름까지
+대응한다: `primary`=`light-primary-300` · `primary-hover`=`light-primary-400` ·
+`primary-active`=`light-primary-500` · `error`=`light-error-300`.
+
+**`prose-derived` 라벨도 틀린 게 아니었다.** 6월 패스는 UIKit **소스**(Android `colors.xml`,
+컴포넌트 SCSS)에서 값을 읽었고 그건 전사(transcription)다. 오늘 같은 값을 **렌더된 DOM에서** 읽었기
+때문에 비로소 `live-extract`가 참이 됐다 — 라벨이 틀렸던 게 아니라 **방법이 바뀐 것**이다.
+
+> **구조적 발견**: 그런데도 **verified가 아니다.** 상태가 없는 3개(`cta-dark-pill`·
+> `cta-outline-pill`·`input-newsletter`)가 전부 **마케팅 사이트 컴포넌트**이고 UIKit 스토리북이
+> 다루지 않는다. **완전한 컴포넌트 라이브러리도 충분하지 않다** — 레퍼런스가 제품 시스템과
+> 마케팅 표면 **두 도메인을 섞어 문서화**하면, verified_v2는 양쪽 모두의 상태를 요구한다.
+> asana가 반대 방향에서 같은 벽에 부딪혔다(마케팅은 다 쟀는데 사라진 컴포넌트 1개가 막았다).
+
+계측기 규율 한 건 더: 마케팅 사이트에서 잡힌 컨트롤이 **쿠키 동의 배너**였다(`#0d0d0d` 24px 알약 —
+공교롭게 선언된 `cta-dark-pill`과 일치). **수락하지 않고 CSS로 숨겼고** 값도 기록하지 않았다.
+동의 위젯은 브랜드 컴포넌트가 아니다.
+
+---
+
 ## 🔭 2026-09-21 — ①b GitHub 스윕: **깊이 가설이 틀렸다는 것을 측정했다**
 → `docs/SURFACE_SWEEP_2026-09-21.md` §5
 

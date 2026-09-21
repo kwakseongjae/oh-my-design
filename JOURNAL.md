@@ -41,7 +41,8 @@
 - **한 일(35)**: 표면 발견 스윕 실행(1,782 프로브·4단계) — **8건 확보**(asana 스토리북 596 스토리 포함). 더 중요한 건 **계측기 검증**: 알려진 정답 3개를 전부 놓친다(DS 호스트는 브랜드가 아니라 *시스템 이름*을 땀). 264건은 "없음"이 아니라 **"이 방법으로 안 보임"**. 다음은 GitHub org 경유.
 - **한 일(36)**: 스윕이 찾은 `storybook.asana.com`(526스토리)으로 asana 처리 — **evidenceCoverage 0 → 1.00**(160/160), stated 6/8. 6월 값이 **18/20 정확**했고(이름만 달랐다: sky=blue 0, violet=blue 1000) 버튼 hover가 전부 published black 램프였다. **그래도 partial** — 인터랙티브 2개(hero-accent는 사이트에서 사라짐, input은 인증 화면)에 관측 상태가 없다.
 - **한 일(37)**: ①b GitHub 스윕 — org 69/297 → design repo 40 → **스토리북 2건**(실질 신규 1: sendbird 56스토리). **가설이 틀렸음을 측정**: ds.url 선언 비율이 verified 46% vs 미검증 7%(6.5배) — 카탈로그가 디자인 시스템 운영 회사를 이미 다 걷어갔다. 도달 가능은 297이 아니라 **~9건**. `web/dbg.tmp.mjs` 삭제.
-- **다음**: 깊이는 9건으로 한정(sendbird·gitlab·workday·digital-agency-jp 등) · **예산은 ③ 확충으로** — 확충은 표면 있는 브랜드를 고를 수 있다. **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(38)**: sendbird — UIKit 스토리북(90 토큰)으로 **`legacy` → `partial`**, 증거 **0 → 1.00**(137/137), stated 7/10. 6월 값이 **정확히 맞았고**(10/16이 published 토큰) `prose-derived` 라벨도 옳았다(소스 전사 → 오늘 렌더 측정으로 `live-extract`가 됨). **구조적 발견: 완전한 컴포넌트 라이브러리로도 verified에 못 간다** — 상태 없는 3개가 전부 마케팅 컴포넌트라 UIKit이 안 다룬다.
+- **다음**: **③ 확충**(깊이는 구조적 상한 확인됨) · 티어 카운트 자동 동기화(오늘만 수동 3회) **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

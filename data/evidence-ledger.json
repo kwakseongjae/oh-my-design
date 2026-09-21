@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 146,
-  "sources": 965,
+  "references_with_verification_v2": 147,
+  "sources": 973,
   "sources_by_kind": {
     "brand-asset": 75,
     "license": 76,
-    "official-doc": 419,
-    "product-surface": 395
+    "official-doc": 420,
+    "product-surface": 402
   },
   "references": {
     "104": {
@@ -4832,6 +4832,60 @@
           "kind": "official-doc",
           "captured": "2026-09-19",
           "host": "www.sanity.io"
+        }
+      ]
+    },
+    "sendbird": {
+      "checked": "2026-09-21",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "marketing-june",
+          "kind": "product-surface",
+          "captured": "2026-06-01",
+          "host": "sendbird.com"
+        },
+        {
+          "id": "marketing-live",
+          "kind": "product-surface",
+          "captured": "2026-09-21",
+          "host": "sendbird.com"
+        },
+        {
+          "id": "uikit-button",
+          "kind": "product-surface",
+          "captured": "2026-09-21",
+          "host": "sendbird.github.io"
+        },
+        {
+          "id": "uikit-checkbox",
+          "kind": "product-surface",
+          "captured": "2026-09-21",
+          "host": "sendbird.github.io"
+        },
+        {
+          "id": "uikit-danger",
+          "kind": "product-surface",
+          "captured": "2026-09-21",
+          "host": "sendbird.github.io"
+        },
+        {
+          "id": "uikit-disabled",
+          "kind": "product-surface",
+          "captured": "2026-09-21",
+          "host": "sendbird.github.io"
+        },
+        {
+          "id": "uikit-docs",
+          "kind": "official-doc",
+          "captured": "2026-09-21",
+          "host": "sendbird.com"
+        },
+        {
+          "id": "uikit-toggle",
+          "kind": "product-surface",
+          "captured": "2026-09-21",
+          "host": "sendbird.github.io"
         }
       ]
     },
