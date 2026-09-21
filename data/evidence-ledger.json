@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 145,
-  "sources": 957,
+  "references_with_verification_v2": 146,
+  "sources": 965,
   "sources_by_kind": {
     "brand-asset": 75,
     "license": 76,
-    "official-doc": 418,
-    "product-surface": 388
+    "official-doc": 419,
+    "product-surface": 395
   },
   "references": {
     "104": {
@@ -326,6 +326,60 @@
           "kind": "official-doc",
           "captured": "2026-07-11",
           "host": "developer.apple.com"
+        }
+      ]
+    },
+    "asana": {
+      "checked": "2026-09-21",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "brand-official",
+          "kind": "official-doc",
+          "captured": "2026-09-21",
+          "host": "asana.com"
+        },
+        {
+          "id": "ds-colors",
+          "kind": "product-surface",
+          "captured": "2026-09-21",
+          "host": "storybook.asana.com"
+        },
+        {
+          "id": "ds-shadows",
+          "kind": "product-surface",
+          "captured": "2026-09-21",
+          "host": "storybook.asana.com"
+        },
+        {
+          "id": "ds-spacing",
+          "kind": "product-surface",
+          "captured": "2026-09-21",
+          "host": "storybook.asana.com"
+        },
+        {
+          "id": "ds-typography",
+          "kind": "product-surface",
+          "captured": "2026-09-21",
+          "host": "storybook.asana.com"
+        },
+        {
+          "id": "home-june",
+          "kind": "product-surface",
+          "captured": "2026-06-22",
+          "host": "asana.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-09-21",
+          "host": "asana.com"
+        },
+        {
+          "id": "pricing-live",
+          "kind": "product-surface",
+          "captured": "2026-09-21",
+          "host": "asana.com"
         }
       ]
     },

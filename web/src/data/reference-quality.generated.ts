@@ -589,27 +589,26 @@ export const REFERENCE_QUALITY = [
   {
     "id": "asana",
     "status": "partial",
-    "verifiedAt": "2026-06-22",
-    "tokensExtractedAt": "2026-06-22",
-    "nextReverifyAt": null,
+    "verifiedAt": "2026-09-21",
+    "tokensExtractedAt": "2026-09-21",
+    "nextReverifyAt": "2026-12-19",
     "renewedSourceCount": 0,
     "tokenSource": "live-extract",
-    "claimCount": 158,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "claimCount": 160,
+    "evidenceClaimCount": 160,
+    "evidenceCoverage": 1,
+    "surfaceCount": 3,
+    "sourceCount": 8,
     "conflictCount": 0,
-    "tier1SourceCount": 4,
+    "tier1SourceCount": 5,
     "componentCount": 12,
     "interactiveComponentCount": 8,
-    "statedComponentCount": 0,
+    "statedComponentCount": 6,
     "reasonCodes": [
-      "verification_v2_missing"
+      "interactive_state_missing"
     ],
     "advisoryCodes": [
-      "motion_value_unsourced",
-      "component_state_prose_only"
+      "motion_value_unsourced"
     ],
     "paletteGrounding": null
   },

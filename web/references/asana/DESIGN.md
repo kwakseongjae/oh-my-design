@@ -8,12 +8,194 @@ primary_color: "#f06a6a"
 logo:
   type: simpleicons
   slug: asana
-verified: "2026-06-22"
+verified: "2026-09-21"
+ds:
+  name: "Asana Design System"
+  url: "https://storybook.asana.com"
+  type: system
+  description: "Asana's published marketing-site design system — 526 Storybook stories across 215 components, with Design System stories for Colors, Typography, Spacing and Shadows."
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-21"
+  surfaces:
+    - { id: home, kind: product-surface, url: "https://asana.com/", inspected: "2026-09-21" }
+    - { id: pricing, kind: product-surface, url: "https://asana.com/pricing", inspected: "2026-09-21" }
+    - { id: storybook, kind: product-surface, url: "https://storybook.asana.com/", inspected: "2026-09-21" }
+  sources:
+    - { id: home-live, kind: product-surface, url: "https://asana.com/", captured: "2026-09-21" }
+    - { id: pricing-live, kind: product-surface, url: "https://asana.com/pricing", captured: "2026-09-21" }
+    - { id: ds-colors, kind: product-surface, url: "https://storybook.asana.com/iframe.html?id=design-system-colors--primitives&viewMode=story", captured: "2026-09-21" }
+    - { id: ds-typography, kind: product-surface, url: "https://storybook.asana.com/iframe.html?id=design-system-typography--all-types&viewMode=story", captured: "2026-09-21" }
+    - { id: ds-spacing, kind: product-surface, url: "https://storybook.asana.com/iframe.html?id=design-system-spacing--spacing-example&viewMode=story", captured: "2026-09-21" }
+    - { id: ds-shadows, kind: product-surface, url: "https://storybook.asana.com/iframe.html?id=design-system-shadows--shadow-example&viewMode=story", captured: "2026-09-21" }
+    - { id: home-june, kind: product-surface, url: "https://asana.com/", captured: "2026-06-22" }
+    - { id: brand-official, kind: official-doc, url: "https://asana.com/brand", captured: "2026-09-21" }
+  conflicts: []
+  claims:
+    tokens.colors.body: { surface_id: storybook, source_id: ds-colors, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.border-muted: { surface_id: storybook, source_id: ds-colors, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.brand-dark: { surface_id: storybook, source_id: ds-colors, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.brand-pink: { surface_id: home, source_id: brand-official, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.canvas: { surface_id: storybook, source_id: ds-colors, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.coral-blush: { surface_id: storybook, source_id: ds-colors, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.deep-coral: { surface_id: storybook, source_id: ds-colors, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.hairline: { surface_id: storybook, source_id: ds-colors, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.heading: { surface_id: storybook, source_id: ds-colors, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.ink: { surface_id: storybook, source_id: ds-colors, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.muted: { surface_id: storybook, source_id: ds-colors, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.on-dark: { surface_id: storybook, source_id: ds-colors, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.on-primary: { surface_id: storybook, source_id: ds-colors, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.primary: { surface_id: home, source_id: brand-official, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.sky: { surface_id: storybook, source_id: ds-colors, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.surface: { surface_id: storybook, source_id: ds-colors, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.surface-alt: { surface_id: storybook, source_id: ds-colors, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.violet: { surface_id: storybook, source_id: ds-colors, method: computed-style, captured: "2026-09-21" }
+    tokens.components.badge-coral.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.badge-coral.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.badge-coral.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.badge-coral.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.badge-coral.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.badge-coral.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.badge-sky.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.badge-sky.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.badge-sky.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.badge-sky.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.badge-sky.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.badge-sky.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-card-primary.bg: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-card-primary.fg: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-card-primary.font: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-card-primary.height: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-card-primary.hover: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-card-primary.padding: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-card-primary.radius: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-card-primary.type: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-card-primary.use: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-card.bg: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-card.fg: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-card.font: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-card.height: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-card.hover: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-card.padding: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-card.radius: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-card.type: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-card.use: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-hero-accent.bg: { surface_id: home, source_id: home-june, method: live-inspect, captured: "2026-06-22" }
+    tokens.components.button-hero-accent.fg: { surface_id: home, source_id: home-june, method: live-inspect, captured: "2026-06-22" }
+    tokens.components.button-hero-accent.font: { surface_id: home, source_id: home-june, method: live-inspect, captured: "2026-06-22" }
+    tokens.components.button-hero-accent.height: { surface_id: home, source_id: home-june, method: live-inspect, captured: "2026-06-22" }
+    tokens.components.button-hero-accent.padding: { surface_id: home, source_id: home-june, method: live-inspect, captured: "2026-06-22" }
+    tokens.components.button-hero-accent.radius: { surface_id: home, source_id: home-june, method: live-inspect, captured: "2026-06-22" }
+    tokens.components.button-hero-accent.type: { surface_id: home, source_id: home-june, method: live-inspect, captured: "2026-06-22" }
+    tokens.components.button-hero-accent.use: { surface_id: home, source_id: home-june, method: live-inspect, captured: "2026-06-22" }
+    tokens.components.button-nav.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-nav.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-nav.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-nav.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-nav.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-nav.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-nav.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-nav.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-nav.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.border: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-secondary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.card-surface.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.card-surface.border: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.card-surface.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.card-surface.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.card-surface.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.card-tinted.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.card-tinted.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.card-tinted.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.card-tinted.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input-default.bg: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input-default.border: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input-default.fg: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input-default.font: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input-default.height: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input-default.padding: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input-default.radius: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input-default.type: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input-default.use: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.toggle-on.bg: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.toggle-on.hover: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.toggle-on.focus: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.toggle-on.fg: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.toggle-on.radius: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.toggle-on.type: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.toggle-on.use: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.rounded.card: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.rounded.full: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.rounded.lg: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.rounded.md: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.rounded.sm: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.base: { surface_id: storybook, source_id: ds-spacing, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.lg: { surface_id: storybook, source_id: ds-spacing, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.md: { surface_id: storybook, source_id: ds-spacing, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.section: { surface_id: storybook, source_id: ds-spacing, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.sm: { surface_id: storybook, source_id: ds-spacing, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.xl: { surface_id: storybook, source_id: ds-spacing, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.xs: { surface_id: storybook, source_id: ds-spacing, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.xxl: { surface_id: storybook, source_id: ds-spacing, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.body-lg.lineHeight: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.body-lg.size: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.body-lg.use: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.body-lg.weight: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.body.lineHeight: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.body.size: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.body.use: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.body.weight: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.caption.lineHeight: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.caption.size: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.caption.tracking: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.caption.use: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.caption.weight: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.display-hero.lineHeight: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.display-hero.size: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.display-hero.tracking: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.display-hero.use: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.display-hero.weight: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.display-lg.lineHeight: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.display-lg.size: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.display-lg.tracking: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.display-lg.use: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.display-lg.weight: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.family.display: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.family.fallback: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.family.sans: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-sm.lineHeight: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-sm.size: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-sm.use: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.heading-sm.weight: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.section.lineHeight: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.section.size: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.section.use: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.section.weight: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.subheading.lineHeight: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.subheading.size: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.subheading.tracking: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.subheading.use: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.subheading.weight: { surface_id: storybook, source_id: ds-typography, method: computed-style, captured: "2026-09-21" }
 tokens:
   source: live-extract
-  extracted: "2026-06-22"
-  note: "primary = brand coral (#f06a6a) from CSS on asana.com/brand; live homepage hero CTA uses #fd3ffd magenta-pink accent; nav CTA uses high-contrast #0d0d0d. Signature TWK Lausanne font confirmed live. Multi-color dots palette: coral, violet, sky, sage."
+  extracted: "2026-09-21"
   colors:
     primary: "#f06a6a"
     brand-pink: "#fd3ffd"
@@ -28,42 +210,49 @@ tokens:
     on-primary: "#ffffff"
     on-dark: "#ffffff"
     hairline: "#e7e7e7"
-    success: "#466451"
     violet: "#222875"
     sky: "#cbefff"
-    sage: "#466451"
     coral-blush: "#ffeaec"
     deep-coral: "#690031"
     border-muted: "#6e6e6e"
   typography:
-    family: { display: "Ghost", sans: "TWK Lausanne", fallback: "Helvetica Neue, Helvetica, sans-serif" }
-    display-hero: { size: 102, weight: 300, lineHeight: 1.0, tracking: -0.007, use: "Hero headline — light authority, Ghost or TWK Lausanne" }
-    display-lg:   { size: 72, weight: 500, lineHeight: 1.0, tracking: -0.007, use: "Display headings, Ghost display font" }
-    section:      { size: 54, weight: 300, lineHeight: 1.15, use: "Section headings" }
-    subheading:   { size: 36, weight: 400, lineHeight: 1.2, tracking: -0.01, use: "Card / sub-section heads" }
-    heading-sm:   { size: 24, weight: 500, lineHeight: 1.2, use: "Small headings" }
-    body-lg:      { size: 20, weight: 400, lineHeight: 1.5, use: "Lead body / subheadings" }
-    body:         { size: 16, weight: 400, lineHeight: 1.5, use: "Standard body text" }
-    caption:      { size: 11, weight: 400, lineHeight: 1.75, tracking: 0.04, use: "Labels, captions" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 48, xxl: 80, section: 120 }
-  rounded: { sm: 4, md: 8, lg: 16, card: 20, full: 9999 }
-  shadow:
-    none: "none"
-    card: "0px 1px 3px rgba(0,0,0,0.08)"
-    elevated: "0px 4px 16px rgba(0,0,0,0.10)"
+    family: {display: Ghost, sans: TWK Lausanne, fallback: 'Helvetica Neue, Helvetica, sans-serif'}
+    display-hero: {size: 102, weight: 300, lineHeight: 1, tracking: -0.007, use: 'Hero headline — light authority, Ghost or TWK Lausanne'}
+    display-lg: {size: 72, weight: 500, lineHeight: 1, tracking: -0.007, use: 'Display headings, Ghost display font'}
+    section: {size: 54, weight: 300, lineHeight: 1.15, use: Section headings}
+    subheading: {size: 36, weight: 400, lineHeight: 1.2, tracking: -0.01, use: Card / sub-section heads}
+    heading-sm: {size: 24, weight: 500, lineHeight: 1.2, use: Small headings}
+    body-lg: {size: 20, weight: 400, lineHeight: 1.5, use: Lead body / subheadings}
+    body: {size: 16, weight: 400, lineHeight: 1.5, use: Standard body text}
+    caption: {size: 11, weight: 400, lineHeight: 1.75, tracking: 0.04, use: 'Labels, captions'}
+  spacing:
+    xs: 4
+    sm: 8
+    md: 12
+    base: 16
+    lg: 24
+    xl: 48
+    xxl: 80
+    section: 120
+  rounded:
+    sm: 4
+    md: 8
+    lg: 16
+    card: 20
+    full: 9999
   components:
-    button-primary: { type: button, bg: "#0d0d0d", fg: "#ffffff", radius: "100px", padding: "16px 32px", height: "64px", font: "20px / 400 TWK Lausanne", use: "Hero primary CTA — Get started, black pill" }
-    button-hero-accent: { type: button, bg: "#fd3ffd", fg: "#0b0505", radius: "100px", padding: "16px 32px", height: "64px", font: "20px / 400 TWK Lausanne", use: "Hero accent CTA — magenta-pink brand moment" }
-    button-secondary: { type: button, bg: "#fafafa", fg: "#0d0d0d", border: "1px solid #6e6e6e", radius: "100px", padding: "16px 32px", font: "20px / 400 TWK Lausanne", use: "Secondary outline pill — View demo, Learn more" }
-    button-nav: { type: button, bg: "#0d0d0d", fg: "#ffffff", radius: "100px", padding: "0px 16px", height: "44px", font: "14px / 500 TWK Lausanne", use: "Nav bar CTA — Get started (compact)" }
-    button-card: { type: button, bg: "#f3f3f3", fg: "#0d0d0d", radius: "100px", padding: "16px 32px", height: "50px", font: "16px / 500 TWK Lausanne", use: "Pricing card secondary — Get started (light)" }
-    button-card-primary: { type: button, bg: "#0d0d0d", fg: "#ffffff", radius: "100px", padding: "16px 32px", height: "50px", font: "16px / 500 TWK Lausanne", use: "Pricing card primary — Get started (dark)" }
-    input-default: { type: input, bg: "#ffffff", border: "1px solid #757677", radius: "6px", padding: "6px 12px", height: "36px", font: "14px / 400", fg: "#000000", use: "Login / form text input" }
-    card-surface: { type: card, bg: "#ffffff", radius: "16px", border: "1px solid #e7e7e7", use: "Feature / pricing card — no shadow, hairline border" }
-    card-tinted: { type: card, bg: "#f3f3f3", radius: "8px", use: "Tinted content card on grey surface" }
-    badge-coral: { type: badge, bg: "#ffeaec", fg: "#690031", radius: "9999px", font: "12px / 400 TWK Lausanne", use: "Coral blush tag / label pill" }
-    badge-sky: { type: badge, bg: "#cbefff", fg: "#0d0e10", radius: "9999px", font: "12px / 400 TWK Lausanne", use: "Sky blue tag / status pill" }
-    toggle-on: { type: toggle, bg: "#36a651", fg: "#ffffff", radius: "100px", use: "Toggle switch — on state (success green)" }
+    button-primary: { type: "button", bg: "#0d0d0d", fg: "#ffffff", radius: "100px", padding: "16px 32px", height: "64px", font: "20px / 400 TWK Lausanne", use: "Hero primary CTA — Get started, black pill", hover: "#6e6e6e" }
+    button-hero-accent: { type: "button", bg: "#fd3ffd", fg: "#0b0505", radius: "100px", padding: "16px 32px", height: "64px", font: "20px / 400 TWK Lausanne", use: "Hero accent CTA — magenta-pink brand moment" }
+    button-secondary: { type: "button", bg: "#fafafa", fg: "#0d0d0d", border: "1px solid #6e6e6e", radius: "100px", padding: "16px 32px", font: "20px / 400 TWK Lausanne", use: "Secondary outline pill — View demo, Learn more", hover: "#f3f3f3" }
+    button-nav: { type: "button", bg: "#0d0d0d", fg: "#ffffff", radius: "100px", padding: "0px 16px", height: "44px", font: "14px / 500 TWK Lausanne", use: "Nav bar CTA — Get started (compact)", hover: "#6e6e6e" }
+    button-card: { type: "button", bg: "#f3f3f3", fg: "#0d0d0d", radius: "100px", padding: "16px 32px", height: "50px", font: "16px / 500 TWK Lausanne", use: "Pricing card secondary — Get started (light)", hover: "#e7e7e7" }
+    button-card-primary: { type: "button", bg: "#0d0d0d", fg: "#ffffff", radius: "100px", padding: "16px 32px", height: "50px", font: "16px / 500 TWK Lausanne", use: "Pricing card primary — Get started (dark)", hover: "#6e6e6e" }
+    input-default: { type: "input", bg: "#ffffff", border: "1px solid #757677", radius: "6px", padding: "6px 12px", height: "36px", font: "14px / 400", fg: "#000000", use: "Login / form text input" }
+    card-surface: { type: "card", bg: "#ffffff", radius: "16px", border: "1px solid #e7e7e7", use: "Feature / pricing card — no shadow, hairline border" }
+    card-tinted: { type: "card", bg: "#f3f3f3", radius: "8px", use: "Tinted content card on grey surface" }
+    badge-coral: { type: "badge", bg: "#ffeaec", fg: "#690031", radius: "9999px", font: "12px / 400 TWK Lausanne", use: "Coral blush tag / label pill" }
+    badge-sky: { type: "badge", bg: "#cbefff", fg: "#0d0e10", radius: "9999px", font: "12px / 400 TWK Lausanne", use: "Sky blue tag / status pill" }
+    toggle-on: { type: "toggle", bg: "#24a651", fg: "#ffffff", radius: "100px", hover: "#1d8541", focus: "#24a651", use: "Pricing billing-period switch — on state; 22px track" }
   components_harvested: true
 ---
 
@@ -97,27 +286,52 @@ The geometry is pill-everything: navigation buttons, hero CTAs, pricing cards, a
 
 ## 2. Color Palette & Roles
 
+Measured 2026-09-21 on two surfaces that agree: `asana.com` resolves **353 CSS custom
+properties**, and `storybook.asana.com` publishes a **Design System / Colors** story with
+**113 named swatches**. Asana names its colours *positionally* — `blue 0` … `blue 1000`,
+`black 20` … `black 1000` — so the role names below are this reference's, and Asana's own
+token name is given beside each one.
+
 ### Primary Brand
-- **Asana Coral** (`#f06a6a`): The signature brand color — Asana's most iconic hue, a warm red-orange that has anchored the three-dots logo since the company's founding. Lives in brand CSS and product UI.
-- **Magenta-Pink Accent** (`#fd3ffd`): The 2026 homepage hero CTA color — a bold, unexpected magenta that creates a brand energy moment on the primary call-to-action.
-- **Ink Black** (`#0d0d0d`): Primary interactive color for nav CTA, dark pricing buttons. Near-black with warmth (not pure 000000).
-- **Dark Heading** (`#0d0e10`): Heading text color — the darkest tone, used for H1 and display text.
+
+- **Asana Coral** (`#f06a6a`): the signature brand hue, anchoring the three-dots logo.
+  It is **not** in the marketing system's primitive ramp; it resolves live as
+  `--darkmode-button-secondary-hover` and `--darkmode-link-hover`, and is confirmed on the
+  official brand page. Asana's *marketing buttons are black*, not coral — the coral is a
+  brand and dark-mode accent, not the primary action colour.
+- **Magenta-Pink Accent** (`#fd3ffd`): `fuchsia 700` / `--fuchsia-700`. The hero CTA accent.
+- **Ink Black** (`#0d0d0d`): `--black-1000` / `--lightmode-button-primary`. The real primary
+  action colour — nav CTAs, pricing buttons, hero CTA.
+- **Dark Heading** (`#0d0e10`): `--darkmode-button-text-primary`. Display and H1 text.
 
 ### Neutrals
-- **Pure White** (`#ffffff`): Page canvas, card backgrounds.
-- **Surface Grey** (`#f3f3f3`): Tinted surface for secondary card backgrounds and contained sections.
-- **Surface Alt** (`#fafafa`): Near-white surface used for secondary CTA buttons and subtle distinctions.
-- **Hairline** (`#e7e7e7`): Card borders and dividers — the primary separation device.
-- **Body Text** (`#646f79`): Secondary body copy, captions, metadata.
-- **Muted** (`#9ca6af`): Tertiary text, placeholders, and disabled labels.
-- **Border Muted** (`#6e6e6e`): Outline for secondary ghost buttons.
 
-### Multi-Color Dots Palette
-- **Violet** (`#222875`): Deep indigo from the brand dots palette — used in illustrations and product UI feature callouts.
-- **Sky Blue** (`#cbefff`): Light sky tint from the multi-color palette — used in product feature sections.
-- **Coral Blush** (`#ffeaec`): The softest coral — tinted badge/tag background for the signature color.
-- **Deep Coral** (`#690031`): Dark coral for text on coral-blush badge backgrounds.
-- **Sage / Success** (`#466451`): Green-derived success state color.
+Asana publishes a 15-step `black` ramp; these are the four this reference uses.
+
+- **Surface Alt** (`#fafafa`): `black 20` / `--lightmode-bg-inverted`.
+- **Surface** (`#f3f3f3`): `black 50` / `--lightmode-accent-gray-light`.
+- **Hairline** (`#e7e7e7`): `black 100` / `--lightmode-bg-med-hover`.
+- **Border Muted** (`#6e6e6e`): `black 600` / `--lightmode-link-text-weak`. Also the hover
+  fill for every dark button (see §4).
+- **Canvas / On-Primary / On-Dark** (`#ffffff`): `white` / `--lightmode-accent-white`.
+- **Body** (`#646f79`): `--gray-8`. **Muted** (`#9ca6af`): `--gray-6`.
+
+### Accent Ramps
+
+The reference cites four endpoints of two published 17-step ramps:
+
+- **Sky** (`#cbefff`) is `blue 0`; **Violet** (`#222875`) is `blue 1000` — the two ends of
+  the same ramp, not two separate hues.
+- **Coral Blush** (`#ffeaec`) is `coral 0`; **Deep Coral** (`#690031`) is `coral 1000`.
+
+Asana publishes 13 colour families in total — blue, coral, green, purple and black at 15–18
+steps each, plus `bright`, `glow`, `chartreuse`, `fuchsia`, `google`, `white`, `red`, `amber`.
+
+### Dark theme
+
+`--darkmode-*` (62 properties) and `--lightmode-*` (62) both resolve on the product surface,
+so Asana ships a full dark theme. **This reference does not yet record it** — only the light
+values above were measured, and the dark set is left unclaimed rather than guessed.
 
 ## 3. Typography Rules
 
@@ -150,59 +364,45 @@ The geometry is pill-everything: navigation buttons, hero CTAs, pricing cards, a
 
 ### Buttons
 
-**Hero Primary (Black Pill)**
-- Background: `#0d0d0d`
-- Text: `#ffffff`
-- Radius: 100px
-- Padding: 16px 32px
-- Height: 64px
-- Font: 20px / 400 / TWK Lausanne
-- Use: Primary hero CTA — "Get started" (standard, high-contrast)
+Every button is a **pill** (`border-radius: 100px`), measured live on `asana.com` and
+`asana.com/pricing` with the pointer parked between readings and navigation suppressed so
+`:active` could be read without leaving the page.
 
-**Hero Accent (Magenta-Pink)**
-- Background: `#fd3ffd`
-- Text: `#0b0505`
-- Radius: 100px
-- Padding: 16px 32px
-- Height: 64px
-- Font: 20px / 400 / TWK Lausanne
-- Use: Homepage hero brand-energy CTA — the single chromatic exception
+| Variant | Rest | Hover | Size |
+|---|---|---|---|
+| **Primary (hero)** | `#0d0d0d` fill, `#ffffff` text | **`#6e6e6e`** | 64px · `16px 32px` · 20px/400 |
+| **Secondary (hero)** | `#fafafa` fill, `#0d0d0d` text | **`#f3f3f3`** | 64px · `16px 32px` · 20px/400 |
+| **Nav** | `#0d0d0d` fill, `#ffffff` text | **`#6e6e6e`** | 44px · `0 16px` · 14px/500 |
+| **Nav outline** | `#ffffff` fill, `#0d0d0d` text | **`#fafafa`** | 44px · `0 16px` · 14px/500 |
+| **Card** | `#f3f3f3` fill, `#0d0d0d` text | **`#e7e7e7`** | 50px · 16px/500 |
+| **Card primary** | `#0d0d0d` fill, `#ffffff` text | **`#6e6e6e`** | 50px · 16px/500 |
 
-**Secondary Outline (Ghost Pill)**
-- Background: `#fafafa`
-- Text: `#0d0d0d`
-- Border: 1px solid `#6e6e6e`
-- Radius: 100px
-- Padding: 16px 32px
-- Font: 20px / 400 / TWK Lausanne
-- Use: Secondary action — "View demo", "Learn more"
+**Every hover value is a step on the published `black` ramp** — `black 600` (`#6e6e6e`),
+`black 100` (`#e7e7e7`), `black 50` (`#f3f3f3`), `black 20` (`#fafafa`). The hover contract
+is "move one or more steps along the neutral ramp", not a bespoke colour per button.
 
-**Nav CTA (Compact Black)**
-- Background: `#0d0d0d`
-- Text: `#ffffff`
-- Radius: 100px
-- Padding: 0px 16px
-- Height: 44px
-- Font: 14px / 500 / TWK Lausanne
-- Use: Navigation bar "Get started" — compact variant
+**Pressed and focus produced no computed change** on any variant. That is a real observation,
+not a gap: Asana's buttons transition on hover only.
 
-**Pricing Card Secondary**
-- Background: `#f3f3f3`
-- Text: `#0d0d0d`
-- Radius: 100px
-- Padding: 16px 32px
-- Height: 50px
-- Font: 16px / 500 / TWK Lausanne
-- Use: Pricing card secondary CTA — free / starter tiers
+### Toggle
 
-**Pricing Card Primary**
-- Background: `#0d0d0d`
-- Text: `#ffffff`
-- Radius: 100px
-- Padding: 16px 32px
-- Height: 50px
-- Font: 16px / 500 / TWK Lausanne
-- Use: Pricing card primary CTA — paid / recommended tiers
+The pricing page's billing-period switch, measured live: **`#24a651`** on, 100px track, 22px tall.
+Hover darkens to **`#1d8541`**, and focus draws a **`#24a651`** outline ring. The June pass
+recorded `#36a651` for this control; the live value today is `#24a651`, and the measured one is
+kept.
+
+### Inputs — measured, and deliberately not merged
+
+`asana.com/create-account` serves an email field at `#ffffff`, **50px** tall with an asymmetric
+`3px 0 0 3px` radius — it is the left half of an input-group, not the standalone field the June
+pass measured on `app.asana.com/-/login` (36px, 6px radius). Neither hover nor focus changed it.
+Two different controls on two different surfaces, so the declared `input-default` keeps its own
+values and its own date rather than being overwritten by a lookalike.
+
+**Not re-measured today**: the magenta hero-accent variant (`#fd3ffd` fill, `#0b0505` text) was
+recorded by the June pass and did not appear on the surfaces measured on 2026-09-21 — the
+homepage hero now leads with the black primary. Its values are retained from that capture and
+carry its date, not today's; no hover is claimed for it.
 
 ### Inputs
 
@@ -255,7 +455,7 @@ The geometry is pill-everything: navigation buttons, hero CTAs, pricing cards, a
 ---
 
 **Verified:** 2026-06-22 (omd:add-reference CREATE — Tier 1 live inspect)
-**Tier 1 sources:** https://asana.com/ (homepage, TWK Lausanne confirmed, hero CTA colors, color frequency scan); https://asana.com/pricing (pricing buttons, surface card colors); https://asana.com/brand (brand CSS hex extraction — #f06a6a confirmed as primary brand color); https://app.asana.com/-/login (input field, app-level component colors)
+**Tier 1 sources:** https://storybook.asana.com (Asana's published design system — 526 stories / 215 components; Design System stories for Colors, Typography, Spacing and Shadows read live); https://asana.com/ (homepage, TWK Lausanne confirmed, hero CTA colors, color frequency scan); https://asana.com/pricing (pricing buttons, surface card colors); https://asana.com/brand (brand CSS hex extraction — #f06a6a confirmed as primary brand color); https://app.asana.com/-/login (input field, app-level component colors)
 **Tier 2 sources:** styles.refero.design/style/6b2a0513-df80-4140-87a8-38b1fef34313 (Ghost font, coral palette, button specs); getdesign.md/asana — no entry found
 **Conflicts unresolved:** none — Tier 1 live confirms TWK Lausanne, 100px pill geometry, high-contrast monochrome; refero adds Ghost display font and coral palette detail consistent with brand CSS. Hero CTA magenta-pink (#fd3ffd) is 2026-era marketing; coral (#f06a6a) is the permanent brand primary per brand page CSS.
 
