@@ -5454,7 +5454,7 @@
       ]
     },
     "thumbtack": {
-      "checked": "2026-09-19",
+      "checked": "2026-09-21",
       "claims": 0,
       "sources": [
         {
@@ -5502,7 +5502,7 @@
         {
           "id": "thumbtack-component-index",
           "kind": "official-doc",
-          "captured": "2026-09-19",
+          "captured": "2026-09-21",
           "host": "thumbprint.design"
         }
       ]

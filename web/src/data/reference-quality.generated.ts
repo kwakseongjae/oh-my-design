@@ -9922,7 +9922,6 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 0,
     "reasonCodes": [],
     "advisoryCodes": [
-      "source_url_dead",
       "component_state_prose_only"
     ],
     "paletteGrounding": null

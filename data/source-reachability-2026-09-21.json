@@ -3,8 +3,8 @@
  "method": "two-stage — curl with a desktop Chrome UA, then every non-200 re-opened in a real browser. 95 of 127 curl failures were reachable, so a single-stage sweep would have reported 127 dead when 22 are.",
  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
  "summary": {
-  "dead": 17,
-  "reachable": 903,
+  "dead": 16,
+  "reachable": 904,
   "unreachable": 4,
   "blocked": 6
  },
@@ -7576,10 +7576,11 @@
    "id": "thumbtack",
    "sourceId": "thumbtack-component-index",
    "kind": "official-doc",
-   "url": "https://thumbprint.design/components/",
+   "url": "https://thumbprint.design/components/overview",
    "curlStatus": 404,
-   "browserStatus": 404,
-   "verdict": "dead"
+   "browserStatus": 200,
+   "verdict": "reachable",
+   "repointedFrom": "https://thumbprint.design/components/"
   }
  ]
 }

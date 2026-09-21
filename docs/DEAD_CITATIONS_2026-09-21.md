@@ -124,3 +124,60 @@ dead by kind: product-surface 12 · official-doc 7 · brand-asset 3
 `resend.com/_next/static/media/inter_variable.p.0r27k….woff2`.
 이런 URL은 **배포할 때마다 바뀐다.** 죽은 게 아니라 **애초에 인용 불가능한 종류**다.
 빌드 해시가 붙은 자산 URL은 출처가 될 수 없다 — 이건 개별 수리가 아니라 규칙 문제다.
+
+
+---
+
+# 8. 15건 재검증 결과 — **6건은 복구 불가이고, 그게 맞다**
+
+patternfly·hyundai와 같은 방법으로 남은 15개 레퍼런스의 **출처 115개 전부**를 실제
+브라우저로 열었다. **93개 정상 · 22개 비200.**
+
+## 계측기를 잘못 쓰면 살아있는 것을 죽었다고 한다
+
+22개 중 5개는 죽지 않았다:
+
+| 출처 | 브라우저 | curl | 진실 |
+|---|---|---|---|
+| `thumbtack/rise-webfont` | ERR "Download is starting" | **200 `font/woff2` 58,996 bytes** | **살아있다** |
+| `thumbtack/…/typography` | 202 | 202, 0 bytes | **봇 챌린지** — 브라우저에선 4,123자 렌더 |
+| `thumbtack/…/product-design` | 202 | 202, 0 bytes | 같음 — 3,536자 렌더 |
+| `bmw/bmwtype-web-assets` | ERR | 000 | 도달 불가(미확정) |
+| `bmw/bmw-club-ci` | ERR | 000 | 도달 불가(미확정) |
+
+**페이지는 브라우저로, 자산(폰트·PDF)은 curl로.** 폰트 URL에 `page.goto`를 쓰면 다운로드가
+시작될 뿐 페이지 로드가 아니라서 살아있는 자산이 ERR로 찍힌다. 오늘 아침 "curl로는 부족하다"를
+배웠는데, **반대 방향도 참이다.**
+
+## 날짜를 실제로 움직이는 것은 6건뿐이다
+
+15개 중 **가장 먼저 만료되는 출처가 죽은 것**은 6개다 — 11st · banksalad · brandi · kream ·
+kurly · onestore. 나머지 8개는 살아있는 다른 출처가 날짜를 지배한다(thumbtack 포함).
+
+## 그 6건 전부 복구 불가다 — 사이트 내비게이션을 읽어 확인했다
+
+| ref | 죽은 URL | 사이트 nav가 제공하는 것 | 판정 |
+|---|---|---|---|
+| 11st | `/categories/1467565` | `/category`(인덱스) | 그 카테고리가 아님 |
+| banksalad | `/contents` | `/articles/<slug>` 개별 글만 | 허브 소멸 — **클레임 9개(filter-chip)** |
+| brandi | `/products/125381184` | 다른 상품들 | 그 상품이 내려감 |
+| kream | `/shop` | `/search` · `/exhibitions/*` | 동등물 없음 |
+| kurly | `/shopping/categories/list` | `/categories/<id>` · `/collection-groups/*` | 일반 목록 페이지 소멸 |
+| onestore | `/v2/ko-kr/game` | `/v2/ko-kr/search` · `/v2/gameloop` | 게임 카탈로그 소멸 |
+
+**페이지가 옮겨간 게 아니라 없어졌다.** patternfly(섹션 개명)·hyundai(경로 변경)·
+thumbtack(`/components/`→`/components/overview`)이 운 좋은 쪽이었다.
+
+→ **이 6건의 1월 강등은 옳다.** `verified_v2`는 증거를 다시 확인할 수 있다고 주장하는데
+이들은 일부를 확인할 수 없다. 뱃지를 지키려고 다른 페이지를 끼워넣는 것이 바로 이 카탈로그가
+막으려는 행동이다.
+
+## 오늘 이 항목에서 실제로 고친 것
+
+| ref | 무엇 | 효과 |
+|---|---|---|
+| patternfly | URL 3개 재지정 + 전체 출처 재확인 | 1월 → **2027-03-19** |
+| hyundai | URL 2개 재지정 + 전체 출처 재확인 | 1월 → **2027-03-19** |
+| thumbtack | URL 1개 재지정 + 출처 8개 재확인 | advisory 해소(날짜는 다른 출처가 지배) |
+
+`source_url_dead` **17 → 14 레퍼런스**.
