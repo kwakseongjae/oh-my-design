@@ -67,3 +67,61 @@ computed-style 캡쳐하지 않는다.** 캡쳐하면 Element UI와 Bootstrap �
 
 **이번 세션에서는 시작하지 않았다.** 202개 클레임 재검증은 웨이브 규모의 작업이고,
 위 제약을 모르고 시작하면 잘못된 값을 확신 있게 기록하게 된다.
+
+
+---
+
+# 4. 깊이 보정을 시도한 결과 — **손대지 않는 것이 맞다**
+
+PayPay 자체 표면을 실제로 쟀다(playwright 실브라우저, 1440×900, 라이트 강제).
+
+```
+paypay.ne.jp        body #242323 / #ffffff / Hiragino Kaku Gothic ProN 16px
+                    상위색 #242323×1306 · #3895ff×181 · #000000×126 …   (#ff0033 없음)
+about.paypay.ne.jp  body #242323 / -apple-system
+                    #ff0033×96  ← 선언된 primary는 여기에 있다
+```
+
+## 선언된 팔레트 19개 중 **5개만** 관측된다
+
+```
+관측됨   primary #ff0033(105) · canvas #ffffff(913) · gray-400 · gray-500 · gray-700
+미관측   primary-pressed/deep/tint/disabled · ink #222222 · success · error · warning
+         · info · point-gold · gray-50/100/200/300                      (14개)
+선언 안 됨인데 많이 칠해짐   #242323×2770 · #696969×288 · #3895ff×198
+```
+
+선언된 서체 `Noto Sans JP`는 **두 표면 어디에도 없다**(Hiragino Kaku Gothic ProN / -apple-system).
+선언된 `ink #222222`는 없고 실제로는 `#242323`이 2,770번 칠해진다.
+
+## 그런데 이걸 "틀렸다"고 하면 안 된다
+
+**PayPay는 주로 모바일 앱이다.** pressed/disabled/success/error/point-gold/그레이 램프는
+**앱에서** 쓰이지 마케팅 웹사이트에 나올 값이 아니다. 앱 스타일가이드가 그걸 문서화하는데
+**그 문서는 이미지다**(§2).
+
+즉 **"웹에서 관측 안 됨"은 "값이 틀렸다"가 아니라 "웹은 앱 디자인 시스템을 검증할 표면이
+아니다"**를 뜻한다.
+
+제품 웹 표면을 찾아봤지만 없다: `paypay.ne.jp/app/` 404 · `card.paypay.ne.jp` 에러 ·
+`paypay-bank.co.jp`는 **다른 법인**(PayPay銀行, Helvetica Neue, `#ff0033` 0회).
+
+## 그래서 건드리면 더 나빠진다
+
+paypay는 `verified: 2026-06-06`으로 **measured-tokens 컷오프(2026-08-01) 이전**이라
+`prose-derived`가 grandfathered 상태다. 재검증한답시고 `verified`를 오늘로 올리면
+**컷오프 안으로 들어가 `prose-derived`가 차단 사유가 된다** — 측정할 수 있는 것은 5개뿐인데.
+
+> **부분 재검증은 이 레퍼런스를 개선하지 않고 강등시킨다.**
+
+## 결론
+
+- **손대지 않았다.** 202개 클레임 중 웹에서 근거 댈 수 있는 것은 5개뿐이고, 날짜를 올리면
+  grandfather가 깨진다.
+- JP 깊이 목록 3순위는 **캡쳐로 고칠 수 있는 항목이 아니다.** 앱을 직접 재거나, 스타일가이드
+  이미지를 사람이 읽어 `official-doc` 근거로 전사해야 한다 — 둘 다 이 세션의 범위 밖이고
+  후자는 "문서가 말한 것"이지 "관측"이 아니다.
+- **팔레트 근거율 26%(5/19)**는 기존 측정(prose-derived 111건 평균 43%)보다 낮다. 이 수치는
+  `palette_grounding_low` advisory가 이미 잡는 종류이므로 `data/colour-grounding.json`에
+  넣을 수 있다 — 다만 그 파일은 **웹 표면 기준**이고 앱 시스템에는 부당하게 낮게 나온다는
+  단서가 필요하다.
