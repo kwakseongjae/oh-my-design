@@ -35,7 +35,7 @@
 - **한 일(30)**: paypay 깊이 보정 — **실측 후 손대지 않기로**(`3d9d7c37`). 선언 팔레트 19개 중 웹 관측 5개인데 **그건 틀린 게 아니라 앱 값**이다(웹은 앱 시스템 검증 표면이 아님, 제품 웹 표면 없음). 게다가 `verified`를 올리면 measured-tokens 컷오프 안으로 들어가 **grandfathered `prose-derived`가 차단 사유가 된다** — 부분 재검증은 강등이다.
 - **한 일(31)**: JP 깊이 재개 — 네임스페이스 측정으로 **순위를 뒤집고**(smarthr 문서사이트는 Tailwind 355/398, pixiv 제품은 charcoal 328) pixiv를 **`legacy_snapshot` → `verified_v2`**로. 선언 24색 중 머티리얼 기본값 3개(#4caf50·#ff9800·#ffb300)를 포함해 15개가 근거 없음 → 내리고 실측으로 재작성. claims 120/120, stated 5. 카탈로그 **143 verified**.
 - **열린 것**: pixiv 홈이 로그인 월이라 §5·§8(레이아웃·브레이크포인트)은 여전히 이전 산문 — `.verification.md`에 한계로 명시.
-- **다음**: 같은 패턴으로 smarthr(`smarthr.jp` `--service-*` 43) · cybozu(`--c-*` 404) · 셀렉터 depth UI(오너 선택)(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **다음**: smarthr 마무리(토큰·교차확인·버튼 기본형까지 실측 완료 — primary/danger 변형 스토리만 남음, §7에 기록) · cybozu(`--c-*` 404) · 셀렉터 depth UI(오너 선택)(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

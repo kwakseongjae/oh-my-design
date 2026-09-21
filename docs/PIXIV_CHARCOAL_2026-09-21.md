@@ -141,3 +141,63 @@ components 6 · interactive 5 · **stated 5** · reasonCodes []
 **남는 한계**: 홈이 로그인 월이라 레이아웃·그리드·브레이크포인트(§5·§8)는 여전히 이전 산문이고
 이번 검증 범위 밖이다. `.verification.md`에 명시했다. `paletteGrounding 0.333`은 낮게 보이지만
 **로그인 월에서는 선언된 토큰 대부분이 칠해지지 않기 때문**이지 값이 틀려서가 아니다.
+
+---
+
+# 7. smarthr 정찰 — **측정 가능하지만 pixiv와 구조가 다르다** (다음 세션용)
+
+pixiv를 끝내고 smarthr를 열었다. **완성하지 않았다** — 아래는 실측해 둔 것과, 왜 남겼는지다.
+
+## 7.1 토큰은 실재한다. 그리고 **교차 확인에 성공했다**
+
+```
+smarthr.design   --color-* 22개 + --font-size-* 16개 + --leading-* 2개   (Tailwind v4 @theme)
+  smarthr-blue #00c4cc · text-black #23221f · dark-grey-1 #4e4c49 · light-grey-4 #aaa69f
+  light-grey-3 #f8f7f6 · divider #edebe6 · nav-active #0f7f85 · danger #e01e5a
+  warning #f80 · caution-default #f60 · bg-blue #0077c7
+```
+
+`smarthr.design`은 **문서 사이트**라 PayPay식 함정을 의심해야 한다. 그래서 **독립 표면으로
+교차 확인**했다 — `story.smarthr-ui.dev`(smarthr-ui 공식 스토리북, **988 스토리 / 144 컴포넌트**)의
+버튼 실측값이 `#23221f`(글자)와 `#d6d3d0`(테두리)인데, 이는 문서 사이트의
+`--color-text-black` · `--color-light-grey-1`과 **정확히 일치한다.**
+
+→ **`smarthr.design`의 `--color-*`는 문서 크롬이 아니라 제품 디자인 시스템의 토큰이다.**
+독립된 두 표면이 같은 값을 말한다. (단 `--color-divider-search-h2`·`--size-content-width`처럼
+**문서 사이트 전용 토큰도 섞여 있으므로** 전부를 브랜드 토큰으로 승격하면 안 된다.)
+
+## 7.2 선언값은 pixiv보다 훨씬 건강하다 — **15개 중 9개 정확히 일치**
+
+```
+일치  primary/brand #00C4CC=smarthr-blue · foreground #23221F=text-black
+      body #4E4C49=dark-grey-1 · muted #AAA69F=light-grey-4 · surface #F8F7F6=light-grey-3
+      hairline #EDEBE6=divider · aqua-dark #0F7F85=nav-active · canvas/on-primary #FFFFFF=white
+불일치 success #3DCC65 · error #EC5A55(토큰은 danger #e01e5a) · warning #FFD74A(토큰은 #f80)
+      info #32B7F0(토큰은 bg-blue #0077c7) · accent-orange #FF9900(토큰은 #f80/#f60)
+```
+
+pixiv와 달리 **머티리얼 값이 아니다.** 시맨틱 4색만 어긋나고 브랜드·중립은 전부 맞다.
+
+## 7.3 실측한 컴포넌트
+
+```
+Button(기본)  bg #ffffff · fg #23221f · border #d6d3d0 · radius 6px · h42 · 16px/700 · pad 12px 16px
+              hover/press  bg #f2f2f2 · border #cac6c2      focus 변화 없음
+Input         bg #ffffff · fg #23221f · radius 6px · h42     press/focus: outline
+Checkbox h20 · Switch radius 9999 h18 · NotificationBar h44
+```
+
+## 7.4 왜 여기서 멈췄나
+
+**구조가 pixiv와 다르다.** smarthr-ui는 **CSS 커스텀 프로퍼티를 발행하지 않는다** — 스토리에서
+resolve되는 것은 `--tw-*` 17개뿐이고, 값은 **Tailwind 유틸리티 클래스(`shr-` 접두사)로 컴파일**돼
+있다. 그래서 pixiv처럼 `:root` 한 번 읽어 328개를 얻는 방식이 통하지 않고, **컴포넌트마다
+스토리를 찾아 실측**해야 한다.
+
+지금 잡은 버튼은 **기본(흰색) 변형**이고, 선언된 `button-primary #00C4CC`·`button-danger`는
+**988개 스토리 중 다른 곳**에 있다. 여기서 추정으로 채우면 이 세션 내내 막아온 바로 그
+실패(절반만 측정된 레퍼런스)가 된다.
+
+**남은 일**: primary/danger/text/disabled 버튼 변형 스토리 특정 → 실측 → 시맨틱 4색을
+smarthr-ui의 Notice/Message 계열에서 확정 → pixiv와 동일한 파이프라인(토큰 재작성 ·
+`verification_v2` · `.verification.md` · 미러). 인프라와 함정은 이 문서에 다 적혀 있다.
