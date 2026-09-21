@@ -70,7 +70,49 @@ function loadDriftConfirmations() {
   return { confirmations, dead };
 }
 
+/**
+ * Dead cited URLs, from the reachability sweep rather than the drift report.
+ *
+ * The drift sweep can only speak about sources it probed, and it probes only
+ * those with a July bundle baseline — 400 of 930. Every source without one was
+ * invisible to it, so `source_url_dead` undercounted: it knew 12 dead URLs and
+ * there are 22. patternfly alone had two more (`about-official`,
+ * `releases-official`) that nothing had ever opened.
+ *
+ * This sweep asks a different and simpler question — does the URL still serve
+ * anything — which needs no baseline, so it covers all 930.
+ *
+ * It is two-stage on purpose. A single curl pass reported 127 failures; opening
+ * each one in a real browser recovered 95 of them. Publishing the one-stage
+ * number would have marked 127 references defective when 22 are. Same lesson as
+ * the drift sweep's 403s, one step further: a desktop UA on curl is not enough.
+ */
+function loadDeadSources() {
+  const dataDir = join(REPO_ROOT, "data");
+  if (!existsSync(dataDir)) return {};
+  const newest = readdirSync(dataDir)
+    .filter((name) => /^source-reachability-\d{4}-\d{2}-\d{2}\.json$/.test(name))
+    .sort()
+    .pop();
+  if (!newest) return {};
+  let report;
+  try { report = JSON.parse(readFileSync(join(dataDir, newest), "utf8")); } catch { return {}; }
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(String(report?.measuredAt ?? ""))) {
+    console.error(`[reference-quality] data/${newest} has no valid measuredAt; ignoring it.`);
+    return {};
+  }
+  const out = {};
+  for (const row of report.results ?? []) {
+    if (row?.verdict === "dead" && row.id && row.sourceId) out[`${row.id}/${row.sourceId}`] = true;
+  }
+  return out;
+}
+
 const { confirmations: DRIFT_CONFIRMATIONS, dead: DRIFT_DEAD_SOURCES } = loadDriftConfirmations();
+// The reachability sweep is the broader measurement; the drift report's dead rows
+// are a subset of it. Union rather than replace, so removing the newer file
+// degrades to the old behaviour instead of silently clearing every advisory.
+const DEAD_SOURCES = { ...DRIFT_DEAD_SOURCES, ...loadDeadSources() };
 
 const asOfIndex = process.argv.indexOf("--as-of");
 const AS_OF = asOfIndex >= 0 ? process.argv[asOfIndex + 1] : new Date().toISOString().slice(0, 10);
@@ -91,7 +133,7 @@ for (const id of ids) {
     const frontmatter = parseReferenceFrontmatter(markdown, designPath);
     const verificationPath = join(REFS_DIR, id, ".verification.md");
     const verificationMarkdown = existsSync(verificationPath) ? readFileSync(verificationPath, "utf8") : "";
-    entries.push(evaluateReferenceQuality({ id, markdown, frontmatter, verificationMarkdown, asOf: AS_OF, colourGrounding: COLOUR_GROUNDING[id], driftConfirmations: DRIFT_CONFIRMATIONS, driftDeadSources: DRIFT_DEAD_SOURCES }));
+    entries.push(evaluateReferenceQuality({ id, markdown, frontmatter, verificationMarkdown, asOf: AS_OF, colourGrounding: COLOUR_GROUNDING[id], driftConfirmations: DRIFT_CONFIRMATIONS, driftDeadSources: DEAD_SOURCES }));
   } catch (error) {
     parseErrors.push(`${id}: ${error.message}`);
   }

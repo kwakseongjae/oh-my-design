@@ -1,0 +1,7580 @@
+{
+ "measuredAt": "2026-09-21",
+ "method": "two-stage — curl with a desktop Chrome UA, then every non-200 re-opened in a real browser. 95 of 127 curl failures were reachable, so a single-stage sweep would have reported 127 dead when 22 are.",
+ "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+ "summary": {
+  "dead": 22,
+  "reachable": 898,
+  "unreachable": 4,
+  "blocked": 6
+ },
+ "results": [
+  {
+   "id": "11st",
+   "sourceId": "category-capture",
+   "kind": "product-surface",
+   "url": "https://www.11st.co.kr/categories/1467565",
+   "curlStatus": 404,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "11st",
+   "sourceId": "main-capture",
+   "kind": "product-surface",
+   "url": "https://www.11st.co.kr/main",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "11st",
+   "sourceId": "brand-context",
+   "kind": "official-doc",
+   "url": "https://www.11stcorp.com/brand",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "11st",
+   "sourceId": "home-capture",
+   "kind": "product-surface",
+   "url": "https://www.11st.co.kr/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "104",
+   "sourceId": "company-live",
+   "kind": "product-surface",
+   "url": "https://www.104.com.tw/company/main/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "104",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.104.com.tw/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "11st",
+   "sourceId": "advertising-guide",
+   "kind": "official-doc",
+   "url": "https://ads.11st.co.kr/contents/guide/read?bbsNo=617&incHideYN=Y",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "11st",
+   "sourceId": "design-system",
+   "kind": "official-doc",
+   "url": "https://design.11stcorp.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "29cm",
+   "sourceId": "magazine-live",
+   "kind": "product-surface",
+   "url": "https://www.29cm.co.kr/content/29magazine",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "29cm",
+   "sourceId": "best-live",
+   "kind": "product-surface",
+   "url": "https://www.29cm.co.kr/best-products?period=HOURLY&ranking=POPULARITY&gender=F&age=30",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "29cm",
+   "sourceId": "showcase-live",
+   "kind": "product-surface",
+   "url": "https://www.29cm.co.kr/store/showcase",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ably",
+   "sourceId": "consumer-live",
+   "kind": "product-surface",
+   "url": "https://m.a-bly.com/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "29cm",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.29cm.co.kr/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "104",
+   "sourceId": "be-a-giver",
+   "kind": "official-doc",
+   "url": "https://corp.104.com.tw/zh/sustainability/community/be-a-giver",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "104",
+   "sourceId": "innovative-services",
+   "kind": "official-doc",
+   "url": "https://corp.104.com.tw/zh/sustainability/customer/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "104",
+   "sourceId": "brand-story",
+   "kind": "official-doc",
+   "url": "https://corp.104.com.tw/zh/about104/brand-story/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "29cm",
+   "sourceId": "product-live",
+   "kind": "product-surface",
+   "url": "https://www.29cm.co.kr/products/3970725",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ably",
+   "sourceId": "team-live",
+   "kind": "official-doc",
+   "url": "https://ably.team/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ably",
+   "sourceId": "product-story",
+   "kind": "official-doc",
+   "url": "https://ably.team/news/ZS8_IREAACIAr50Y",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "acer",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.acer.com/kr-ko/",
+   "curlStatus": 0,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "acer",
+   "sourceId": "corporate-live",
+   "kind": "product-surface",
+   "url": "https://www.acer.com/corporate/en",
+   "curlStatus": 0,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "acer",
+   "sourceId": "laptops-live",
+   "kind": "product-surface",
+   "url": "https://www.acer.com/us-en/laptops",
+   "curlStatus": 0,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "104",
+   "sourceId": "vision-mission",
+   "kind": "official-doc",
+   "url": "https://corp.104.com.tw/zh/about104/vision-mission/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "11st",
+   "sourceId": "company-profile",
+   "kind": "official-doc",
+   "url": "https://www.11stcorp.com/resources/guide/2026_11street_Brochure_Kor.pdf",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "acer",
+   "sourceId": "noto-license",
+   "kind": "license",
+   "url": "https://github.com/notofonts/noto-fonts/blob/main/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ably",
+   "sourceId": "seller-live",
+   "kind": "product-surface",
+   "url": "https://square.a-bly.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "airbnb",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.airbnb.co.kr/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "alipay",
+   "sourceId": "ant-context",
+   "kind": "official-doc",
+   "url": "https://ant.design/docs/spec/introduce/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "airbnb",
+   "sourceId": "help-live",
+   "kind": "official-doc",
+   "url": "https://www.airbnb.com/help/article/2503",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "alipay",
+   "sourceId": "ant-values",
+   "kind": "official-doc",
+   "url": "https://ant.design/docs/spec/values/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "alipay",
+   "sourceId": "ant-font",
+   "kind": "official-doc",
+   "url": "https://ant.design/docs/spec/font-cn/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "apple",
+   "sourceId": "apple-live",
+   "kind": "product-surface",
+   "url": "https://www.apple.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "airbnb",
+   "sourceId": "release-live",
+   "kind": "official-doc",
+   "url": "https://news.airbnb.com/product-releases/airbnb-2026-summer-release/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "apple",
+   "sourceId": "apple-live-states",
+   "kind": "product-surface",
+   "url": "https://www.apple.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "apple",
+   "sourceId": "apple-component-index",
+   "kind": "official-doc",
+   "url": "https://developer.apple.com/design/human-interface-guidelines/components",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "apple",
+   "sourceId": "hig-components-live",
+   "kind": "official-doc",
+   "url": "https://developer.apple.com/design/human-interface-guidelines/components",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "au",
+   "sourceId": "home-capture",
+   "kind": "product-surface",
+   "url": "https://www.au.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "alipay",
+   "sourceId": "ant-license",
+   "kind": "license",
+   "url": "https://github.com/ant-design/ant-design/blob/master/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "apple",
+   "sourceId": "hig-buttons-live",
+   "kind": "official-doc",
+   "url": "https://developer.apple.com/design/human-interface-guidelines/buttons",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "au",
+   "sourceId": "mobile-capture",
+   "kind": "product-surface",
+   "url": "https://www.au.com/mobile/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "apple",
+   "sourceId": "apple-store-live",
+   "kind": "product-surface",
+   "url": "https://www.apple.com/shop/product/mw5g3am/a/siri-remote",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "airbnb",
+   "sourceId": "brand-official",
+   "kind": "brand-asset",
+   "url": "https://brand.withairbnb.com",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "alipay",
+   "sourceId": "alipay-component-index",
+   "kind": "official-doc",
+   "url": "https://ant.design/components/overview",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "au",
+   "sourceId": "vi-typography",
+   "kind": "official-doc",
+   "url": "https://www.kddi.com/brand/visual-identity/au/typography/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "au",
+   "sourceId": "vi-principles",
+   "kind": "official-doc",
+   "url": "https://www.kddi.com/brand/visual-identity/au/design-principles/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "au",
+   "sourceId": "vi-voice",
+   "kind": "official-doc",
+   "url": "https://www.kddi.com/brand/visual-identity/au/toneofvoice/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "au",
+   "sourceId": "vi-color",
+   "kind": "official-doc",
+   "url": "https://www.kddi.com/brand/visual-identity/au/color/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "aws-cloudscape",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://cloudscape.design/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "aws-cloudscape",
+   "sourceId": "components-live",
+   "kind": "official-doc",
+   "url": "https://cloudscape.design/components/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "aws-cloudscape",
+   "sourceId": "aws-cloudscape-component-index",
+   "kind": "official-doc",
+   "url": "https://cloudscape.design/components/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "aws-cloudscape",
+   "sourceId": "typography-doc",
+   "kind": "official-doc",
+   "url": "https://cloudscape.design/foundation/visual-foundation/typography/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "aws-cloudscape",
+   "sourceId": "components-license",
+   "kind": "license",
+   "url": "https://github.com/cloudscape-design/components/blob/main/LICENSE",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "aws-cloudscape",
+   "sourceId": "global-styles-doc",
+   "kind": "official-doc",
+   "url": "https://cloudscape.design/get-started/for-developers/global-styles/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "au",
+   "sourceId": "brand-message",
+   "kind": "official-doc",
+   "url": "https://www.kddi.com/brand/knowing-au/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "baemin",
+   "sourceId": "baemin-live",
+   "kind": "product-surface",
+   "url": "https://www.baemin.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "baemin",
+   "sourceId": "woowa-live",
+   "kind": "product-surface",
+   "url": "https://www.woowahan.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "baemin",
+   "sourceId": "font-catalog-live",
+   "kind": "official-doc",
+   "url": "https://www.woowahan.com/fonts",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "baemin",
+   "sourceId": "font-license-live",
+   "kind": "license",
+   "url": "https://www.woowahan.com/fonts/license",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "alipay",
+   "sourceId": "web-app-live",
+   "kind": "product-surface",
+   "url": "https://open.alipay.com/module/webApp",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "baemin",
+   "sourceId": "baemin-rebrand-official",
+   "kind": "official-doc",
+   "url": "https://www.woowahan.com/report/detail/975?page=1",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "alipay",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://open.alipay.com/?mobile=2",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "banksalad",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.banksalad.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "banksalad",
+   "sourceId": "safety-live",
+   "kind": "product-surface",
+   "url": "https://www.banksalad.com/customer-safety",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "banksalad",
+   "sourceId": "contents-live",
+   "kind": "product-surface",
+   "url": "https://www.banksalad.com/contents",
+   "curlStatus": 404,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "banksalad",
+   "sourceId": "loan-live",
+   "kind": "product-surface",
+   "url": "https://www.banksalad.com/loan/interest-rate-cut",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "banksalad",
+   "sourceId": "bpl-design",
+   "kind": "official-doc",
+   "url": "https://blog.banksalad.com/tech/banksalad-product-language-design/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "banksalad",
+   "sourceId": "card-live",
+   "kind": "product-surface",
+   "url": "https://www.banksalad.com/product/cards/CARD002319",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "bilibili",
+   "sourceId": "popular-live",
+   "kind": "product-surface",
+   "url": "https://www.bilibili.com/v/popular/all/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "banksalad",
+   "sourceId": "bpl-engineering",
+   "kind": "official-doc",
+   "url": "https://blog.banksalad.com/tech/banksalad-product-language-ios/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "bilibili",
+   "sourceId": "home-refresh-live",
+   "kind": "product-surface",
+   "url": "https://www.bilibili.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "bilibili",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.bilibili.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "bmw",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.bmwusa.com/",
+   "curlStatus": 0,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "bmw",
+   "sourceId": "bmwtype-web-assets",
+   "kind": "brand-asset",
+   "url": "https://www.bmwusa.com/etc.clientlibs/bmw-web/clientlibs/clientlib-site/resources/fonts/BMWTypeNext-Regular.woff2",
+   "curlStatus": 0,
+   "browserStatus": null,
+   "verdict": "unreachable"
+  },
+  {
+   "id": "bmw",
+   "sourceId": "configurator-live",
+   "kind": "product-surface",
+   "url": "https://www.bmwusa.com/build-your-own.html#/",
+   "curlStatus": 0,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "bmw",
+   "sourceId": "models-live",
+   "kind": "product-surface",
+   "url": "https://www.bmwusa.com/vehicles/all-bmw-models.html",
+   "curlStatus": 0,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "aws-cloudscape",
+   "sourceId": "about-live",
+   "kind": "product-surface",
+   "url": "https://cloudscape.design/about/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "bilibili",
+   "sourceId": "corporate-information",
+   "kind": "official-doc",
+   "url": "https://ir.bilibili.com/en/corporate-information/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "alipay",
+   "sourceId": "antgroup-context",
+   "kind": "official-doc",
+   "url": "https://www.antgroup.com/en/home",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "bmw",
+   "sourceId": "bmw-club-ci",
+   "kind": "official-doc",
+   "url": "https://www.bmwgroup-werke.com/content/dam/grpw/websites/bmwgroup-classic_com/bmw_clubs/downloads/leitlinien/en/BCIC_Guideline_no5_version2.1.1.pdf",
+   "curlStatus": 0,
+   "browserStatus": null,
+   "verdict": "unreachable"
+  },
+  {
+   "id": "bmw",
+   "sourceId": "bmw-neue-klasse",
+   "kind": "official-doc",
+   "url": "https://www.bmwgroup.com/en/company/neue-klasse.html",
+   "curlStatus": 0,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "brandi",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.brandi.co.kr/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "bmw",
+   "sourceId": "bmw-history",
+   "kind": "official-doc",
+   "url": "https://www.bmwgroup.com/en/company/history.html",
+   "curlStatus": 0,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "bilibili",
+   "sourceId": "sustainability-framework",
+   "kind": "official-doc",
+   "url": "https://ir.bilibili.com/media/crul0g3t/bilibili-sustainable-finance-framework.pdf",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "catchtable",
+   "sourceId": "consumer-capture",
+   "kind": "product-surface",
+   "url": "https://www.catchtable.net/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "brandi",
+   "sourceId": "noto-font",
+   "kind": "official-doc",
+   "url": "https://notofonts.github.io/noto-docs/website/use/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "brandi",
+   "sourceId": "product-b-live",
+   "kind": "product-surface",
+   "url": "https://www.brandi.co.kr/products/125381184",
+   "curlStatus": 404,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "brandi",
+   "sourceId": "product-a-live",
+   "kind": "product-surface",
+   "url": "https://www.brandi.co.kr/products/106329458",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "alipay",
+   "sourceId": "tools-live",
+   "kind": "product-surface",
+   "url": "https://open.alipay.com/tool",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "cgv",
+   "sourceId": "cgv-home",
+   "kind": "product-surface",
+   "url": "https://cgv.co.kr/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "cgv",
+   "sourceId": "cgv-home-2",
+   "kind": "product-surface",
+   "url": "https://cgv.co.kr/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "cgv",
+   "sourceId": "cgv-home-3",
+   "kind": "product-surface",
+   "url": "https://cgv.co.kr/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "catchtable",
+   "sourceId": "careers-capture",
+   "kind": "product-surface",
+   "url": "https://career.catchtable.co.kr/ko/service",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "catchtable",
+   "sourceId": "service-context",
+   "kind": "official-doc",
+   "url": "https://career.catchtable.co.kr/ko/service",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "cgv",
+   "sourceId": "cgv-2024-report",
+   "kind": "official-doc",
+   "url": "https://img.cgv.co.kr/company/sustainabilityStrategy/Report/2024/2024_CJCGV_SUSTAINABILITY_REPORT_kor.pdf",
+   "curlStatus": 404,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "brandi",
+   "sourceId": "spoqa-font",
+   "kind": "official-doc",
+   "url": "https://github.com/spoqa/spoqa-han-sans",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "channeltalk",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://channel.io/kr",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "catchtable",
+   "sourceId": "merchant-capture",
+   "kind": "product-surface",
+   "url": "https://biz.catchtable.co.kr/n/main",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "catchtable",
+   "sourceId": "font-design",
+   "kind": "official-doc",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/packages/pretendard/docs/en/README.md",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "cgv",
+   "sourceId": "pretendard-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "catchtable",
+   "sourceId": "font-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "channeltalk",
+   "sourceId": "home-states",
+   "kind": "product-surface",
+   "url": "https://channel.io/kr",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "channeltalk",
+   "sourceId": "channeltalk-component-index",
+   "kind": "official-doc",
+   "url": "https://github.com/channel-io/bezier-react/blob/main/packages/bezier-react/src/index.ts",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "channeltalk",
+   "sourceId": "updates-live",
+   "kind": "official-doc",
+   "url": "https://docs.channel.io/updates/en/articles/Notice-Channel-Talk-Major-Updates--b3d45997",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "china-airlines",
+   "sourceId": "about-live",
+   "kind": "product-surface",
+   "url": "https://www.china-airlines.com/kr/ko/about-china-airlines/about-us",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "china-airlines",
+   "sourceId": "design-story",
+   "kind": "official-doc",
+   "url": "https://www.china-airlines.com/it/en/about-us/design-story",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "china-airlines",
+   "sourceId": "governance-live",
+   "kind": "product-surface",
+   "url": "https://www.china-airlines.com/kr/ko/about-china-airlines/corporate-governance",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "china-airlines",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.china-airlines.com/kr/ko",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "china-airlines",
+   "sourceId": "roboto-license",
+   "kind": "license",
+   "url": "https://github.com/googlefonts/roboto-2/blob/main/LICENSE",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "china-airlines",
+   "sourceId": "noto-license",
+   "kind": "license",
+   "url": "https://notofonts.github.io/noto-docs/website/use/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "china-airlines",
+   "sourceId": "sustainability-vision",
+   "kind": "official-doc",
+   "url": "https://calec.china-airlines.com/csr/en/aboutus.html",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "channeltalk",
+   "sourceId": "us-live",
+   "kind": "product-surface",
+   "url": "https://channel.io/us",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "channeltalk",
+   "sourceId": "help-live",
+   "kind": "official-doc",
+   "url": "https://docs.channel.io/help/en/articles/94f34984",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "channeltalk",
+   "sourceId": "rebrand-official",
+   "kind": "official-doc",
+   "url": "https://channel.io/kr/blog/articles/rebranding-channeltalk-3aff8113",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "class101",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://class101.net/ko?viewMode=svod",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "class101",
+   "sourceId": "subscription",
+   "kind": "official-doc",
+   "url": "https://class101.net/ko/pages/subscription-year2",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "class101",
+   "sourceId": "creator",
+   "kind": "official-doc",
+   "url": "https://creator.class101.net/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "class101",
+   "sourceId": "giftcard-live",
+   "kind": "product-surface",
+   "url": "https://class101.net/ko/docs/terms/giftcard?viewMode=svod",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "class101",
+   "sourceId": "privacy-live",
+   "kind": "product-surface",
+   "url": "https://class101.net/ko/docs/terms/privacy?viewMode=svod",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "classum",
+   "sourceId": "home-capture",
+   "kind": "product-surface",
+   "url": "https://business.classum.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "classum",
+   "sourceId": "learning-capture",
+   "kind": "product-surface",
+   "url": "https://business.classum.com/learning",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "china-airlines",
+   "sourceId": "brand-center",
+   "kind": "brand-asset",
+   "url": "https://brandcenter.china-airlines.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "classum",
+   "sourceId": "company-context",
+   "kind": "official-doc",
+   "url": "https://business.classum.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "classum",
+   "sourceId": "university-lms-capture",
+   "kind": "product-surface",
+   "url": "https://business.classum.com/university/lms",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "classum",
+   "sourceId": "font-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "classum",
+   "sourceId": "font-design",
+   "kind": "official-doc",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/packages/pretendard/docs/en/README.md",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "classum",
+   "sourceId": "lms-context",
+   "kind": "official-doc",
+   "url": "https://business.classum.com/university/lms",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "classum",
+   "sourceId": "culture-context",
+   "kind": "official-doc",
+   "url": "https://careers.classum.com/culture",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "claude",
+   "sourceId": "anthropic-home-live",
+   "kind": "product-surface",
+   "url": "https://www.anthropic.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "clay",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.clay.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "clay",
+   "sourceId": "partners-live",
+   "kind": "product-surface",
+   "url": "https://www.clay.com/partners/solutions",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "channeltalk",
+   "sourceId": "bezier-official",
+   "kind": "official-doc",
+   "url": "https://github.com/channel-io/bezier-react",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "class101",
+   "sourceId": "pretendard",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "clay",
+   "sourceId": "pricing-live",
+   "kind": "product-surface",
+   "url": "https://www.clay.com/pricing",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "claude",
+   "sourceId": "anthropic-company",
+   "kind": "official-doc",
+   "url": "https://www.anthropic.com/company",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "clickhouse",
+   "sourceId": "pricing-live",
+   "kind": "product-surface",
+   "url": "https://clickhouse.com/pricing",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "clickhouse",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://clickhouse.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "claude",
+   "sourceId": "claude-pricing-live",
+   "kind": "product-surface",
+   "url": "https://claude.com/pricing",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "claude",
+   "sourceId": "claude-constitution",
+   "kind": "official-doc",
+   "url": "https://www.anthropic.com/constitution",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "cohere",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://cohere.com/ko",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "clickhouse",
+   "sourceId": "click-ui",
+   "kind": "official-doc",
+   "url": "https://clickhouse.design/click-ui",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "bmw",
+   "sourceId": "bmw-brand-design",
+   "kind": "official-doc",
+   "url": "https://www.press.bmwgroup.com/global/article/detail/T0306305EN/introducing-bmw%E2%80%99s-new-brand-design-for-online-and-offline-communication?language=en",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "clickhouse",
+   "sourceId": "story-live",
+   "kind": "product-surface",
+   "url": "https://clickhouse.com/blog/corsearch-replaces-mysql-with-clickhouse-for-content-and-brand-protection",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "cohere",
+   "sourceId": "cohere-about",
+   "kind": "official-doc",
+   "url": "https://cohere.com/about",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "clickhouse",
+   "sourceId": "brand-guide",
+   "kind": "official-doc",
+   "url": "https://clickhouse.design/brand",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "clickhouse",
+   "sourceId": "clickhouse-component-index",
+   "kind": "official-doc",
+   "url": "https://clickhouse.design/click-ui",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "coinone",
+   "sourceId": "trading-capture",
+   "kind": "product-surface",
+   "url": "https://coinone.co.kr/exchange/trade/btc/krw",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "claude",
+   "sourceId": "claude-overview-live",
+   "kind": "product-surface",
+   "url": "https://claude.com/product/overview",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "cohere",
+   "sourceId": "cohere-careers",
+   "kind": "official-doc",
+   "url": "https://cohere.com/careers",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "coinone",
+   "sourceId": "home-capture",
+   "kind": "product-surface",
+   "url": "https://coinone.co.kr/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "cohere",
+   "sourceId": "pricing-live",
+   "kind": "product-surface",
+   "url": "https://cohere.com/ko/pricing",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "coupang",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.coupang.com/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "coinone",
+   "sourceId": "brand-guideline-pdf",
+   "kind": "official-doc",
+   "url": "https://image-public.coinone.co.kr/download/corphome/coinone_guide_4.0.pdf",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "clay",
+   "sourceId": "roobert-license",
+   "kind": "license",
+   "url": "https://displaay.net/help/licenses",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "coupang",
+   "sourceId": "product-a-live",
+   "kind": "product-surface",
+   "url": "https://www.coupang.com/vp/products/7225189423?itemId=18319675609&vendorItemId=5351802654",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "coupang",
+   "sourceId": "product-b-live",
+   "kind": "product-surface",
+   "url": "https://www.coupang.com/vp/products/7225189423?itemId=18319675609&vendorItemId=80324048129",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "cohere",
+   "sourceId": "products-live",
+   "kind": "product-surface",
+   "url": "https://cohere.com/ko/products",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "coinone",
+   "sourceId": "brand-capture",
+   "kind": "official-doc",
+   "url": "https://coinonecorp.com/company/brand",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "coinone",
+   "sourceId": "history-context",
+   "kind": "official-doc",
+   "url": "https://www.coinonecorp.com/company/history",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "coupang",
+   "sourceId": "coupang-sans",
+   "kind": "official-doc",
+   "url": "https://news.coupang.com/archives/19962/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "cursor",
+   "sourceId": "brand-context",
+   "kind": "official-doc",
+   "url": "https://cursor.com/en-US/brand",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "cursor",
+   "sourceId": "public-capture",
+   "kind": "product-surface",
+   "url": "https://cursor.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "dabang",
+   "sourceId": "home-capture",
+   "kind": "product-surface",
+   "url": "https://www.dabangapp.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "cursor",
+   "sourceId": "docs-context",
+   "kind": "official-doc",
+   "url": "https://cursor.com/docs",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "cursor",
+   "sourceId": "changelog-context",
+   "kind": "official-doc",
+   "url": "https://cursor.com/en-US/changelog/1-0",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "dabang",
+   "sourceId": "map-capture",
+   "kind": "product-surface",
+   "url": "https://www.dabangapp.com/map/onetwo?m_lat=37.494367328004216&m_lng=127.01446798508894&m_zoom=11",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "coupang",
+   "sourceId": "brand-guidelines",
+   "kind": "brand-asset",
+   "url": "https://news.coupang.com/coupang-media-assets-brand-guidelines-eng/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "dabang",
+   "sourceId": "faq-capture",
+   "kind": "product-surface",
+   "url": "https://www.dabangapp.com/service/faq",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "dabang",
+   "sourceId": "font-design",
+   "kind": "brand-asset",
+   "url": "https://github.com/orioncactus/pretendard",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "dabang",
+   "sourceId": "font-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "coinone",
+   "sourceId": "business-context",
+   "kind": "official-doc",
+   "url": "https://www.coinonecorp.com/business/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "coinone",
+   "sourceId": "mission-context",
+   "kind": "official-doc",
+   "url": "https://www.coinonecorp.com/company/mission",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "datarize",
+   "sourceId": "blog-live",
+   "kind": "product-surface",
+   "url": "https://www.datarize.ai/blog/hidden_product",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "datarize",
+   "sourceId": "pricing-live",
+   "kind": "product-surface",
+   "url": "https://www.datarize.ai/pricing",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "datarize",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.datarize.ai/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "datarize",
+   "sourceId": "about",
+   "kind": "official-doc",
+   "url": "https://www.datarize.ai/en/about",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "datarize",
+   "sourceId": "pretendard-project",
+   "kind": "official-doc",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/packages/pretendard/docs/en/README.md",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "dabang",
+   "sourceId": "terms-context",
+   "kind": "official-doc",
+   "url": "https://static.dabangapp.com/html/useragreement.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "datarize",
+   "sourceId": "pretendard-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "elastic",
+   "sourceId": "eui-home-live",
+   "kind": "product-surface",
+   "url": "https://eui.elastic.co/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "datarize",
+   "sourceId": "terms",
+   "kind": "official-doc",
+   "url": "https://policy.datarize.ai/en/terms",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "dabang",
+   "sourceId": "service-context",
+   "kind": "official-doc",
+   "url": "https://www.station3.co.kr/service/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "datarize",
+   "sourceId": "product-guide",
+   "kind": "official-doc",
+   "url": "https://datarize.gitbook.io/docs/guide-en",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "elastic",
+   "sourceId": "eui-components-live",
+   "kind": "official-doc",
+   "url": "https://eui.elastic.co/docs/components/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "elastic",
+   "sourceId": "eui-font-settings",
+   "kind": "official-doc",
+   "url": "https://eui.elastic.co/docs/getting-started/theming/tokens/typography/font-settings/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "elastic",
+   "sourceId": "eui-card-live",
+   "kind": "official-doc",
+   "url": "https://eui.elastic.co/docs/components/containers/card/index.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "elastic",
+   "sourceId": "eui-theme-provider",
+   "kind": "official-doc",
+   "url": "https://eui.elastic.co/docs/getting-started/theming/theme-provider/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "elevenlabs",
+   "sourceId": "official-brand",
+   "kind": "brand-asset",
+   "url": "https://elevenlabs.io/brand",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "elastic",
+   "sourceId": "elastic-design-hierarchy",
+   "kind": "brand-asset",
+   "url": "https://www.elastic.co/blog/redesigning-product-logos-and-icons-while-building-a-design-hierarchy-at-elastic",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "elevenlabs",
+   "sourceId": "official-about",
+   "kind": "official-doc",
+   "url": "https://elevenlabs.io/about",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "eslite",
+   "sourceId": "brand-directory-live",
+   "kind": "product-surface",
+   "url": "https://www.eslite.com/brand",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "eslite",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.eslite.com/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "elastic",
+   "sourceId": "eui-elastic-license",
+   "kind": "license",
+   "url": "https://github.com/elastic/eui/blob/main/licenses/ELASTIC-LICENSE-2.0.md",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "elevenlabs",
+   "sourceId": "public-capture",
+   "kind": "product-surface",
+   "url": "https://elevenlabs.io/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "eslite",
+   "sourceId": "expo-brand-live",
+   "kind": "product-surface",
+   "url": "https://www.eslite.com/brand/1098",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "eslite",
+   "sourceId": "japan-cultural-bridge",
+   "kind": "official-doc",
+   "url": "https://meet.eslite.com/tw/tc/article/201909260001",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "eslite",
+   "sourceId": "expo-platform",
+   "kind": "product-surface",
+   "url": "https://www.eslite.com/brand/1098",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "eslite",
+   "sourceId": "anniversary-35",
+   "kind": "official-doc",
+   "url": "https://meet.eslite.com/tw/tcr/article/202411040002",
+   "curlStatus": 403,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "evaair",
+   "sourceId": "awards-live",
+   "kind": "product-surface",
+   "url": "https://www.evaair.com/ko-kr/about-eva-air/about-us/awards-and-honors/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "evaair",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.evaair.com/ko-kr/index.html",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "evaair",
+   "sourceId": "about-live",
+   "kind": "product-surface",
+   "url": "https://www.evaair.com/ko-kr/about-eva-air/about-us/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "evaair",
+   "sourceId": "eva-chronicle",
+   "kind": "official-doc",
+   "url": "https://www.evaair.com/en-au/about-eva-air/about-us/company-chronicle/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "evaair",
+   "sourceId": "eva-marketing-policy",
+   "kind": "official-doc",
+   "url": "https://www.evaair.com/en-global/about-eva-air/marketing-and-advertising-policy/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "evaair",
+   "sourceId": "eva-values",
+   "kind": "official-doc",
+   "url": "https://www.evaair.com/en-global/about-eva-air/about-us/eva-values/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "eslite",
+   "sourceId": "corporate-ideals",
+   "kind": "official-doc",
+   "url": "https://www.eslitecorp.com/eslite/index.jsp?func_id=fee3ba0215&site_id=eslite_tw",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "evaair",
+   "sourceId": "eva-ip",
+   "kind": "brand-asset",
+   "url": "https://www.evaair.com/en-sg/website-disclaimer/intellectual-property-rights/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "eslite",
+   "sourceId": "corporate-founder",
+   "kind": "official-doc",
+   "url": "https://www.eslitecorp.com/eslite/index.jsp?func_id=20f9eec115&site_id=eslite_tw",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "elastic",
+   "sourceId": "elastic-history",
+   "kind": "brand-asset",
+   "url": "https://www.elastic.co/about/press/elasticsearch-changes-name-to-elastic-to-reflect-wide-adoption-beyond-search",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "elevenlabs",
+   "sourceId": "official-safety",
+   "kind": "official-doc",
+   "url": "https://elevenlabs.io/safety",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "elevenlabs",
+   "sourceId": "official-docs",
+   "kind": "official-doc",
+   "url": "https://elevenlabs.io/docs/overview/intro",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "expo",
+   "sourceId": "eas-docs",
+   "kind": "official-doc",
+   "url": "https://docs.expo.dev/eas/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "expo",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://expo.dev/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "expo",
+   "sourceId": "services-live",
+   "kind": "product-surface",
+   "url": "https://expo.dev/services",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "expo",
+   "sourceId": "brand-official",
+   "kind": "brand-asset",
+   "url": "https://expo.dev/brand",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "expo",
+   "sourceId": "pricing-live",
+   "kind": "product-surface",
+   "url": "https://expo.dev/pricing",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "expo",
+   "sourceId": "about-official",
+   "kind": "official-doc",
+   "url": "https://expo.dev/about",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "cohere",
+   "sourceId": "lineto-unica77",
+   "kind": "license",
+   "url": "https://lineto.com/api/front/font-families/393/document?index=1",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "evaair",
+   "sourceId": "roboto-license",
+   "kind": "license",
+   "url": "https://github.com/googlefonts/roboto-2/blob/main/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "familymart-tw",
+   "sourceId": "familymart-vision",
+   "kind": "official-doc",
+   "url": "https://www.family.com.tw/web_enterprise/page/business.aspx",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "expo",
+   "sourceId": "inter-license",
+   "kind": "license",
+   "url": "https://github.com/rsms/inter",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "familymart-tw",
+   "sourceId": "familymart-convenience-live",
+   "kind": "product-surface",
+   "url": "https://www.family.com.tw/Marketing/zh/Convenience",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "expo",
+   "sourceId": "jetbrains-mono-license",
+   "kind": "license",
+   "url": "https://github.com/JetBrains/JetBrainsMono",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "familymart-tw",
+   "sourceId": "familymart-company-info",
+   "kind": "official-doc",
+   "url": "https://www.family.com.tw/web_enterprise/page/information.aspx",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "familymart-tw",
+   "sourceId": "familymart-home-live",
+   "kind": "product-surface",
+   "url": "https://www.family.com.tw/Marketing/ko",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "familymart-tw",
+   "sourceId": "familymart-map-live",
+   "kind": "product-surface",
+   "url": "https://www.family.com.tw/Marketing/zh/Map",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ferrari",
+   "sourceId": "ferrari-sans-asset",
+   "kind": "brand-asset",
+   "url": "https://www.ferrari.com/etc.clientlibs/ferrari-fcom/clientlibs/clientlib-site/resources/fonts/Ferrari-SansRegular.woff2?v=1",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "familymart-tw",
+   "sourceId": "familymart-franchise",
+   "kind": "official-doc",
+   "url": "https://www.family.com.tw/Web_Franchise/page/advantage.aspx",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ferrari",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.ferrari.com/en-EN",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ferrari",
+   "sourceId": "ferrari-font-context",
+   "kind": "official-doc",
+   "url": "https://www.ferrari.com/en-EN/formula1/articles/the-sf-24-is-here",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ferrari",
+   "sourceId": "car-range-live",
+   "kind": "product-surface",
+   "url": "https://www.ferrari.com/en-EN/auto/car-range",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ferrari",
+   "sourceId": "ferrari-legal",
+   "kind": "license",
+   "url": "https://www.ferrari.com/en-US/legal",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "figma",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.figma.com/ko-kr/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "framer",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.framer.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "flex",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://flex.team/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ferrari",
+   "sourceId": "ferrari-about",
+   "kind": "official-doc",
+   "url": "https://www.ferrari.com/en-EN/corporate/about-us",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ferrari",
+   "sourceId": "formula1-live",
+   "kind": "product-surface",
+   "url": "https://www.ferrari.com/en-EN/formula1",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "flex",
+   "sourceId": "about-live",
+   "kind": "product-surface",
+   "url": "https://flex.team/about",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "framer",
+   "sourceId": "pricing-live",
+   "kind": "product-surface",
+   "url": "https://www.framer.com/pricing",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "framer",
+   "sourceId": "brand-guidelines",
+   "kind": "brand-asset",
+   "url": "https://www.framer.com/brand?page=1",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "freee",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.freee.co.jp/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "freee",
+   "sourceId": "pricing-live",
+   "kind": "product-surface",
+   "url": "https://www.freee.co.jp/pricing/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "freee",
+   "sourceId": "products-live",
+   "kind": "product-surface",
+   "url": "https://www.freee.co.jp/products/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ferrari",
+   "sourceId": "ferrari-design",
+   "kind": "official-doc",
+   "url": "https://www.ferrari.com/en-EN/magazine/articles/new-language-of-ferrari-design",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "figma",
+   "sourceId": "design-live",
+   "kind": "product-surface",
+   "url": "https://www.figma.com/ko-kr/design/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "framer",
+   "sourceId": "inter-license",
+   "kind": "license",
+   "url": "https://github.com/rsms/inter/blob/master/LICENSE.txt",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "freee",
+   "sourceId": "vibes-release",
+   "kind": "official-doc",
+   "url": "https://corp.freee.co.jp/news/20231219_design.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "freee",
+   "sourceId": "freee-component-index",
+   "kind": "official-doc",
+   "url": "https://vibes.freee.co.jp/index.json",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "freee",
+   "sourceId": "mission",
+   "kind": "official-doc",
+   "url": "https://corp.freee.co.jp/mission/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "gangnamunni",
+   "sourceId": "official-voice",
+   "kind": "official-doc",
+   "url": "https://blog.gangnamunni.com/post/ui-text-guideline",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "freee",
+   "sourceId": "company",
+   "kind": "official-doc",
+   "url": "https://corp.freee.co.jp/company/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "gangnamunni",
+   "sourceId": "official-welchis",
+   "kind": "official-doc",
+   "url": "https://blog.gangnamunni.com/post/welchis/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "gangnamunni",
+   "sourceId": "pretendard-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "framer",
+   "sourceId": "marketplace-live",
+   "kind": "product-surface",
+   "url": "https://www.framer.com/community/marketplace/components/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "freee",
+   "sourceId": "vibes-repo",
+   "kind": "official-doc",
+   "url": "https://github.com/freee/vibes",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "google",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.google.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "google",
+   "sourceId": "advanced-search-live",
+   "kind": "product-surface",
+   "url": "https://www.google.com/advanced_search?hl=ko",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "gangnamunni",
+   "sourceId": "live-events",
+   "kind": "product-surface",
+   "url": "https://www.gangnamunni.com/events",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "figma",
+   "sourceId": "brand-official",
+   "kind": "official-doc",
+   "url": "https://www.figma.com/using-the-figma-brand",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "google",
+   "sourceId": "google-component-index",
+   "kind": "official-doc",
+   "url": "https://m3.material.io/components",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "google",
+   "sourceId": "google-story",
+   "kind": "official-doc",
+   "url": "https://about.google/company-info/our-story/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "google",
+   "sourceId": "google-philosophy",
+   "kind": "official-doc",
+   "url": "https://about.google/company-info/philosophy/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "hashicorp",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.hashicorp.com/ko",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "gangnamunni",
+   "sourceId": "live-home",
+   "kind": "product-surface",
+   "url": "https://www.gangnamunni.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "google",
+   "sourceId": "google-brand-guidance",
+   "kind": "brand-asset",
+   "url": "https://about.google/brand-resource-center/guidance/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "hashicorp",
+   "sourceId": "pricing-live",
+   "kind": "product-surface",
+   "url": "https://www.hashicorp.com/ko/pricing",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "hashicorp",
+   "sourceId": "boundary-live",
+   "kind": "product-surface",
+   "url": "https://www.hashicorp.com/ko/products/boundary",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "au",
+   "sourceId": "smartphone-capture",
+   "kind": "product-surface",
+   "url": "https://www.au.com/mobile/product/smartphone/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "hashicorp",
+   "sourceId": "typography-guideline",
+   "kind": "brand-asset",
+   "url": "https://www.hashicorp.com/en/brand/hcp-product-typography",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "hashicorp",
+   "sourceId": "hashicorp-component-index",
+   "kind": "official-doc",
+   "url": "https://helios.hashicorp.design/components",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "hashicorp",
+   "sourceId": "terms",
+   "kind": "license",
+   "url": "https://www.hashicorp.com/terms-of-service",
+   "curlStatus": 429,
+   "browserStatus": null,
+   "verdict": "unreachable"
+  },
+  {
+   "id": "hashicorp",
+   "sourceId": "helios",
+   "kind": "official-doc",
+   "url": "https://helios.hashicorp.design/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "hashicorp",
+   "sourceId": "about",
+   "kind": "official-doc",
+   "url": "https://www.hashicorp.com/en/about",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "hashicorp",
+   "sourceId": "font-announcement",
+   "kind": "official-doc",
+   "url": "https://www.hashicorp.com/en/blog/introducing-hashicorp-sans",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "ferrari",
+   "sourceId": "ferrari-history",
+   "kind": "official-doc",
+   "url": "https://www.ferrari.com/en-EN/history",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "hyundai",
+   "sourceId": "design",
+   "kind": "official-doc",
+   "url": "https://www.hyundai.com/worldwide/en/company/innovation/design",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "hyundai",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.hyundai.com/kr/ko/e",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "hyundai",
+   "sourceId": "typeface",
+   "kind": "official-doc",
+   "url": "https://www.hyundai.com/worldwide/en/newsroom/detail/0000000287",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "hyundai",
+   "sourceId": "history",
+   "kind": "official-doc",
+   "url": "https://www.hyundai.com/worldwide/en/footer/corporate/history/1967-2000",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "google",
+   "sourceId": "material-typography",
+   "kind": "official-doc",
+   "url": "https://m3.material.io/styles/typography/overview",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "hyundai",
+   "sourceId": "ioniq6-live",
+   "kind": "product-surface",
+   "url": "https://www.hyundai.com/kr/ko/e/vehicles/the-new-ioniq-6/intro",
+   "curlStatus": 404,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "google",
+   "sourceId": "business-profile-live",
+   "kind": "product-surface",
+   "url": "https://business.google.com/kr/business-profile/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "hyundaicard",
+   "sourceId": "youandi-official",
+   "kind": "official-doc",
+   "url": "https://newsroom.hyundaicard.com/front/board/Hyundai-Card-branding-through-typeface?country=en",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ibm",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.ibm.com/kr-ko",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "google",
+   "sourceId": "google-sans-context",
+   "kind": "official-doc",
+   "url": "https://design.google/library/google-sans-flex-font",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "google",
+   "sourceId": "google-sans-code-license",
+   "kind": "license",
+   "url": "https://github.com/googlefonts/googlesans-code",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ibm",
+   "sourceId": "ibm-history",
+   "kind": "official-doc",
+   "url": "https://www.ibm.com/history/ctr-and-ibm",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ibm",
+   "sourceId": "carbon-docs",
+   "kind": "official-doc",
+   "url": "https://carbondesignsystem.com/components/button/usage/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "hyundaicard",
+   "sourceId": "collector-ceh",
+   "kind": "product-surface",
+   "url": "https://www.hyundaicard.com/about/ceh/ho/cehho0101_01.hc",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "hyundaicard",
+   "sourceId": "collector-ckh",
+   "kind": "product-surface",
+   "url": "https://www.hyundaicard.com/about/ckh/ho/ckhho0101_01.hc",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "hyundaicard",
+   "sourceId": "collector-home",
+   "kind": "product-surface",
+   "url": "https://www.hyundaicard.com/index.jsp",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "inflearn",
+   "sourceId": "home-capture",
+   "kind": "product-surface",
+   "url": "https://www.inflearn.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ibm",
+   "sourceId": "ibm-component-index",
+   "kind": "official-doc",
+   "url": "https://carbondesignsystem.com/components/overview/components/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "inflearn",
+   "sourceId": "design-system-context",
+   "kind": "official-doc",
+   "url": "https://tech.inflab.com/20240224-design-system/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "inflearn",
+   "sourceId": "courses-capture",
+   "kind": "product-surface",
+   "url": "https://www.inflearn.com/courses",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "inflearn",
+   "sourceId": "font-design",
+   "kind": "official-doc",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/packages/pretendard/docs/en/README.md",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "inflearn",
+   "sourceId": "engineering-context",
+   "kind": "official-doc",
+   "url": "https://tech.inflab.com/20260305-new-header/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "inflearn",
+   "sourceId": "font-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "intuit",
+   "sourceId": "avenir-font-asset",
+   "kind": "brand-asset",
+   "url": "https://lib.intuitcdn.net/fonts/AvenirNext/3.0/AvenirNextforINTUIT-Regular.1.woff2",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "inflearn",
+   "sourceId": "company-context",
+   "kind": "official-doc",
+   "url": "https://story.inflab.com/main/%ED%9A%8C%EC%82%AC%EC%86%8C%EA%B0%9C/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ibm",
+   "sourceId": "cloud-support-live",
+   "kind": "product-surface",
+   "url": "https://www.ibm.com/kr-ko/products/cloud/support?lnk=flathl",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "jandi",
+   "sourceId": "surface-home",
+   "kind": "product-surface",
+   "url": "https://www.jandi.com/landing/kr",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "jandi",
+   "sourceId": "surface-surface-2",
+   "kind": "product-surface",
+   "url": "https://www.jandi.com/landing/kr",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "intuit",
+   "sourceId": "intuit-origins",
+   "kind": "official-doc",
+   "url": "https://www.intuit.com/company/origins/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "intuit",
+   "sourceId": "intuit-values",
+   "kind": "official-doc",
+   "url": "https://www.intuit.com/company/operating-values/",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "ibm",
+   "sourceId": "confluent-live",
+   "kind": "product-surface",
+   "url": "https://www.ibm.com/kr-ko/products/confluent?lnk=hpfp4kr",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "jandi",
+   "sourceId": "surface-surface-3",
+   "kind": "product-surface",
+   "url": "https://www.jandi.com/landing/kr/features/collaboration",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "jandi",
+   "sourceId": "surface-surface-5",
+   "kind": "product-surface",
+   "url": "https://www.jandi.com/landing/kr/security",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "jandi",
+   "sourceId": "surface-surface-4",
+   "kind": "product-surface",
+   "url": "https://www.jandi.com/landing/kr/features/member",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "jandi",
+   "sourceId": "surface-surface-6",
+   "kind": "product-surface",
+   "url": "https://www.jandi.com/landing/kr/jandi-ai",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "intuit",
+   "sourceId": "sign-in-capture",
+   "kind": "product-surface",
+   "url": "https://federation.intuit.com/as/authorization.oauth2?scope=openid+profile+email&response_type=code&redirect_uri=https%3A%2F%2Fpartnerauth.platform.intuit.com%2Fexternal_partner%2Fintuit_eiam%2Fcallback&client_id=9d678f82-f00e-4e8f-875e-484cac84cbc1&state=awb.228bcc57-93dd-4b7c-8691-6e252452f1e8",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "jandi",
+   "sourceId": "company-context",
+   "kind": "official-doc",
+   "url": "https://finalpick.jandi.com/landing/en/company",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "hyundai",
+   "sourceId": "vehicles-live",
+   "kind": "product-surface",
+   "url": "https://www.hyundai.com/kr/ko/e/vehicles",
+   "curlStatus": 404,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "jandi",
+   "sourceId": "noto-license",
+   "kind": "license",
+   "url": "https://notofonts.github.io/noto-docs/website/use/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kakao",
+   "sourceId": "corp-home-live",
+   "kind": "product-surface",
+   "url": "https://www.kakaocorp.com/page/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kakao",
+   "sourceId": "corp-culture-live",
+   "kind": "product-surface",
+   "url": "https://www.kakaocorp.com/page/about/culture",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kakao",
+   "sourceId": "corp-milestones-live",
+   "kind": "product-surface",
+   "url": "https://www.kakaocorp.com/page/about/milestones",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ibm",
+   "sourceId": "plex-typeface",
+   "kind": "license",
+   "url": "https://www.ibm.com/design/language/typography/typeface/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kakao",
+   "sourceId": "login-guide-live",
+   "kind": "official-doc",
+   "url": "https://developers.kakao.com/docs/ko/kakaologin/design-guide",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "jandi",
+   "sourceId": "docs-chrome",
+   "kind": "official-doc",
+   "url": "https://support.jandi.com/en/articles/Changing-themes-bf4edc58",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kakaobank",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.kakaobank.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kakaobank",
+   "sourceId": "service-live",
+   "kind": "product-surface",
+   "url": "https://www.kakaobank.com/view/service",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kakaobank",
+   "sourceId": "brand-live",
+   "kind": "brand-asset",
+   "url": "https://www.kakaobank.com/view/about/brand/resource",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kakaogames",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://kakaogames.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kakaogames",
+   "sourceId": "company-about-doc",
+   "kind": "official-doc",
+   "url": "https://kakaogames.com/en-us/about/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kakaogames",
+   "sourceId": "error-live",
+   "kind": "product-surface",
+   "url": "https://kakaogames.com/error/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kakaopay",
+   "sourceId": "marketing-main-live",
+   "kind": "product-surface",
+   "url": "https://www.kakaopay.com/main",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "jandi",
+   "sourceId": "project-context",
+   "kind": "official-doc",
+   "url": "https://blog.jandi.com/ko/2026/06/08/pr-project-2-0/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kakaobank",
+   "sourceId": "brand-pdf",
+   "kind": "official-doc",
+   "url": "https://www.kakaobank.com/static/etc/logo/KakaoBank_BrandIdentityGuidelines_V2.0.pdf",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kakaopay",
+   "sourceId": "developer-docs-live",
+   "kind": "official-doc",
+   "url": "https://developers.kakaopay.com/docs/payment/online/reference",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kakaopay",
+   "sourceId": "corporate-service-live",
+   "kind": "product-surface",
+   "url": "https://www.kakaocorp.com/page/service/service/KakaoPay",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kakaopay",
+   "sourceId": "font-resource-doc",
+   "kind": "brand-asset",
+   "url": "https://www.kakaocorp.com/page/detail/11571",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kakaopay",
+   "sourceId": "story-live",
+   "kind": "product-surface",
+   "url": "https://story.kakaopay.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kakaogames",
+   "sourceId": "suit-license",
+   "kind": "license",
+   "url": "https://github.com/sun-typeface/SUIT/blob/main/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "intuit",
+   "sourceId": "brand-hub-capture",
+   "kind": "official-doc",
+   "url": "https://design.intuit.com/quickbooks/brand/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "intuit",
+   "sourceId": "quickbooks-type-guidance",
+   "kind": "official-doc",
+   "url": "https://design.intuit.com/quickbooks/brand/design-foundations/type/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "intuit",
+   "sourceId": "product-expression-capture",
+   "kind": "product-surface",
+   "url": "https://design.intuit.com/quickbooks/product/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "karrot",
+   "sourceId": "seed-typography",
+   "kind": "official-doc",
+   "url": "https://v2.seed-design.io/foundation/typography/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "karrot",
+   "sourceId": "seed-box-button-tokens",
+   "kind": "official-doc",
+   "url": "https://v2.seed-design.io/component/box-button/usage/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "karrot",
+   "sourceId": "seed-box-button",
+   "kind": "official-doc",
+   "url": "https://v2.seed-design.io/component/box-button/usage/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kb-kookmin",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.kbstar.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "karrot",
+   "sourceId": "seed-source",
+   "kind": "official-doc",
+   "url": "https://github.com/daangn/seed-design/blob/fb4459e90f84e049112395964319b163f980b821/packages/stylesheet/global.css",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kb-kookmin",
+   "sourceId": "kb-bank-ci",
+   "kind": "brand-asset",
+   "url": "https://omoney.kbstar.com/quics?page=C017667",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kb-kookmin",
+   "sourceId": "kbfg-ci",
+   "kind": "brand-asset",
+   "url": "https://www.kbfg.com/kor/about/corporate/ci.htm",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kb-kookmin",
+   "sourceId": "online-banking-live",
+   "kind": "product-surface",
+   "url": "https://obank.kbstar.com/quics?page=C018702",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kb-kookmin",
+   "sourceId": "kbfg-history",
+   "kind": "official-doc",
+   "url": "https://www.kbfg.com/eng/about/group/history/merge.htm",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kb-kookmin",
+   "sourceId": "kbfg-values",
+   "kind": "official-doc",
+   "url": "https://www.kbfg.com/kor/about/group/value.htm",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kb-kookmin",
+   "sourceId": "kbfg-font",
+   "kind": "brand-asset",
+   "url": "https://www.kbfg.com/kor/about/corporate/font.htm",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kbank",
+   "sourceId": "product-home",
+   "kind": "product-surface",
+   "url": "https://www.kbanknow.com/web/web-home/home/main",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "karrot",
+   "sourceId": "karrot-component-index",
+   "kind": "official-doc",
+   "url": "https://v2.seed-design.io/component/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kbank",
+   "sourceId": "product-index-source",
+   "kind": "product-surface",
+   "url": "https://www.kbanknow.com/web/product/info/list?tab=deposit",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "karrot",
+   "sourceId": "seed-tabs",
+   "kind": "official-doc",
+   "url": "https://v2.seed-design.io/component/tabs/usage/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kbank",
+   "sourceId": "product-curious-source",
+   "kind": "product-surface",
+   "url": "https://www.kbanknow.com/web/product/deposit/curious-saving",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kbank",
+   "sourceId": "product-rolling-source",
+   "kind": "product-surface",
+   "url": "https://www.kbanknow.com/web/product/deposit/rolling-farm",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kbank",
+   "sourceId": "product-one-card-source",
+   "kind": "product-surface",
+   "url": "https://www.kbanknow.com/web/product/card/one-card",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kbank",
+   "sourceId": "brand-resource",
+   "kind": "brand-asset",
+   "url": "https://brand.kbanknow.com/resource.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kbank",
+   "sourceId": "brand-story",
+   "kind": "official-doc",
+   "url": "https://brand.kbanknow.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "karrot",
+   "sourceId": "seed-snackbar",
+   "kind": "official-doc",
+   "url": "https://v2.seed-design.io/component/snackbar/usage/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kmong",
+   "sourceId": "font-design",
+   "kind": "official-doc",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/packages/pretendard/docs/en/README.md",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "kmong",
+   "sourceId": "font-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "karrot",
+   "sourceId": "seed-text-field",
+   "kind": "official-doc",
+   "url": "https://v2.seed-design.io/component/text-field/usage/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "krds",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.krds.go.kr/html/site/index.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kmong",
+   "sourceId": "company-context",
+   "kind": "official-doc",
+   "url": "https://company.kmong.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kakaopay",
+   "sourceId": "design-story-doc",
+   "kind": "official-doc",
+   "url": "https://story.kakaopay.com/225-kakaopay-design/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "krds",
+   "sourceId": "type-doc",
+   "kind": "official-doc",
+   "url": "https://www.krds.go.kr/html/site/style/style_03.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "krds",
+   "sourceId": "button-doc",
+   "kind": "official-doc",
+   "url": "https://www.krds.go.kr/html/site/component/component_05_02.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "krds",
+   "sourceId": "colors-doc",
+   "kind": "official-doc",
+   "url": "https://www.krds.go.kr/html/site/style/style_02.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "krds",
+   "sourceId": "input-doc",
+   "kind": "official-doc",
+   "url": "https://www.krds.go.kr/html/site/component/component_09_03.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "krds",
+   "sourceId": "select-doc",
+   "kind": "official-doc",
+   "url": "https://www.krds.go.kr/html/site/component/component_06_03.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "krds",
+   "sourceId": "modal-doc",
+   "kind": "official-doc",
+   "url": "https://www.krds.go.kr/html/site/component/component_04_05.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "krds",
+   "sourceId": "badge-doc",
+   "kind": "official-doc",
+   "url": "https://www.krds.go.kr/html/site/component/component_04_06.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "krds",
+   "sourceId": "button-css",
+   "kind": "official-doc",
+   "url": "https://www.krds.go.kr/html/site/component/component_05_02.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "krds",
+   "sourceId": "layout-doc",
+   "kind": "official-doc",
+   "url": "https://www.krds.go.kr/html/site/style/style_05.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "krds",
+   "sourceId": "tag-doc",
+   "kind": "official-doc",
+   "url": "https://www.krds.go.kr/html/site/component/component_06_04.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "krds",
+   "sourceId": "krds-component-roster",
+   "kind": "official-doc",
+   "url": "https://www.krds.go.kr/html/site/component/component_summary.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kmong",
+   "sourceId": "category-capture",
+   "kind": "product-surface",
+   "url": "https://kmong.com/category/1",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kmong",
+   "sourceId": "home-capture",
+   "kind": "product-surface",
+   "url": "https://kmong.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kream",
+   "sourceId": "pretendard-docs",
+   "kind": "official-doc",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/packages/pretendard/docs/en/README.md",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "kream",
+   "sourceId": "pretendard-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "kurly",
+   "sourceId": "category-live",
+   "kind": "product-surface",
+   "url": "https://www.kurly.com/shopping/categories/list",
+   "curlStatus": 404,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "kurly",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.kurly.com/main",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kurly",
+   "sourceId": "kurly-introduce",
+   "kind": "official-doc",
+   "url": "https://www.kurly.com/introduce",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kurly",
+   "sourceId": "collection-live",
+   "kind": "product-surface",
+   "url": "https://www.kurly.com/collections/market-newproduct",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kurly",
+   "sourceId": "pretendard-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "kbank",
+   "sourceId": "culture-story",
+   "kind": "official-doc",
+   "url": "https://blog.kbanknow.com/%EC%BC%80%EB%AF%B8%EC%BD%94%EB%93%9C-1%ED%8E%B8-%EC%BC%80%EB%AF%B8%EC%BD%94%EB%93%9C-%ED%83%84%EC%83%9D-%EA%B8%B0%EB%A1%9D-%EC%9D%91%EC%95%A0%F0%9F%90%A3/",
+   "curlStatus": 404,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "karrot",
+   "sourceId": "karrot-live",
+   "kind": "product-surface",
+   "url": "https://www.karrotmarket.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kurly",
+   "sourceId": "kurly-company",
+   "kind": "official-doc",
+   "url": "https://newsroom.kurlycorp.com/%ED%9A%8C%EC%82%AC%EC%86%8C%EA%B0%9C/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kb-kookmin",
+   "sourceId": "kbfg-annual-report-2024",
+   "kind": "official-doc",
+   "url": "https://www.kbfg.com/common/jsp/fileDownUtil.jsp?filepath=%2Fdata%2Fannual_report%2F2024+KB_ar_full+version.pdf",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lamborghini",
+   "sourceId": "global-home-live",
+   "kind": "product-surface",
+   "url": "https://www.lamborghini.com/en-en",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lamborghini",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.lamborghini.com/ko-en",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lamborghini",
+   "sourceId": "models-live",
+   "kind": "product-surface",
+   "url": "https://www.lamborghini.com/en-en/models",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lguplus",
+   "sourceId": "lguplus-home-live",
+   "kind": "product-surface",
+   "url": "https://www.lguplus.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lguplus",
+   "sourceId": "lguplus-subscription-live",
+   "kind": "product-surface",
+   "url": "https://www.lguplus.com/pogg/product/%EC%9C%A0%ED%8A%9C%EB%B8%8C-%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84-%EC%9C%A0%EB%8F%85pick-2?utm_campaign=o25o25udok04pfm&utm_source=uplusapp&utm_medium=main_eventbanner_empty_empty&utm_content=notsetpick2_6&utm_term=notsetnone",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lguplus",
+   "sourceId": "lguplus-about-live",
+   "kind": "product-surface",
+   "url": "https://www.lguplus.com/about/ko",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lguplus",
+   "sourceId": "lguplus-pretendard-asset",
+   "kind": "brand-asset",
+   "url": "https://www.lguplus.com/static/pc-static/common/fonts/Pretendard-Regular.subset.woff2",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lguplus",
+   "sourceId": "pretendard-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "likelion",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://likelion.net/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "likelion",
+   "sourceId": "likelion-component-index",
+   "kind": "official-doc",
+   "url": "https://designsystem.likelion.net/index.json",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lamborghini",
+   "sourceId": "brand-manifesto",
+   "kind": "official-doc",
+   "url": "https://www.lamborghini.com/en-en/beyond/brand-manifesto",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "likelion",
+   "sourceId": "docs-live",
+   "kind": "official-doc",
+   "url": "https://designsystem.likelion.net/?path=/docs/intro-introduction--docs",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "likelion",
+   "sourceId": "b2b-context",
+   "kind": "official-doc",
+   "url": "https://likelion.net/b2b",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "likelion",
+   "sourceId": "pretendard-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lamborghini",
+   "sourceId": "corporate-look",
+   "kind": "official-doc",
+   "url": "https://www.lamborghini.com/en-en/news/automobili-lamborghini-launches-its-new-corporate-look",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "line",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.line.me/ko/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "line",
+   "sourceId": "line-component-index",
+   "kind": "official-doc",
+   "url": "https://designsystem.line.me/LDSM/components/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "line",
+   "sourceId": "ds-home-doc",
+   "kind": "official-doc",
+   "url": "https://designsystem.line.me/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "likelion",
+   "sourceId": "history-context",
+   "kind": "official-doc",
+   "url": "https://k-digital.likelion.net/364c521d-31d4-425e-a281-7d056ce3f8a6",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "line",
+   "sourceId": "typography-doc",
+   "kind": "official-doc",
+   "url": "https://designsystem.line.me/LDSM/foundation/typography-ex-en/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "line",
+   "sourceId": "layout-doc",
+   "kind": "official-doc",
+   "url": "https://designsystem.line.me/LDSM/foundation/layout-ex-en/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "line",
+   "sourceId": "colors-doc",
+   "kind": "official-doc",
+   "url": "https://designsystem.line.me/LDSM/foundation/color/line-color-guide-ex-en/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "line",
+   "sourceId": "input-doc",
+   "kind": "official-doc",
+   "url": "https://designsystem.line.me/LDSM/components/input-ex-en/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "line",
+   "sourceId": "box-button-doc",
+   "kind": "official-doc",
+   "url": "https://designsystem.line.me/LDSM/components/box-button-ex-en/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "line",
+   "sourceId": "capsule-button-doc",
+   "kind": "official-doc",
+   "url": "https://designsystem.line.me/LDSM/components/capsule-button-ex-en/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lamborghini",
+   "sourceId": "website-terms",
+   "kind": "license",
+   "url": "https://www.lamborghini.com/en-en/privacy-legal",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lamborghini",
+   "sourceId": "lambotype-design",
+   "kind": "brand-asset",
+   "url": "https://charactertype.com/typefaces/lamborghini/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "line",
+   "sourceId": "popup-doc",
+   "kind": "official-doc",
+   "url": "https://designsystem.line.me/LDSM/components/popup-ex-en/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "line",
+   "sourceId": "badge-doc",
+   "kind": "official-doc",
+   "url": "https://designsystem.line.me/LDSM/components/badge-ex-en/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "line",
+   "sourceId": "principles-doc",
+   "kind": "official-doc",
+   "url": "https://designsystem.line.me/about/design-principle-en",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "line",
+   "sourceId": "tabs-doc",
+   "kind": "official-doc",
+   "url": "https://designsystem.line.me/LDSM/components/tabs-ex-en/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "line",
+   "sourceId": "voice-doc",
+   "kind": "official-doc",
+   "url": "https://designsystem.line.me/about/line-voice-en",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "line",
+   "sourceId": "corporate-style-doc",
+   "kind": "official-doc",
+   "url": "https://www.lycorp.co.jp/en/technology-design/design/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "linear.app",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://linear.app/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "linear.app",
+   "sourceId": "method-live",
+   "kind": "product-surface",
+   "url": "https://linear.app/method",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "linear.app",
+   "sourceId": "home-states",
+   "kind": "product-surface",
+   "url": "https://linear.app/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lotteon",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.lotteon.com/p/display/main/lotteon",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "linear.app",
+   "sourceId": "customers-live",
+   "kind": "product-surface",
+   "url": "https://linear.app/customers",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lotteon",
+   "sourceId": "recent-products-live",
+   "kind": "product-surface",
+   "url": "https://www.lotteon.com/p/mylotte/recent/product",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "linear.app",
+   "sourceId": "pricing-live",
+   "kind": "product-surface",
+   "url": "https://linear.app/pricing",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lotteon",
+   "sourceId": "pretendard-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "lotteon",
+   "sourceId": "corporate-profile",
+   "kind": "official-doc",
+   "url": "https://www.lotte.co.kr/business/compDetail.do?compCd=L207",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lovable",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://lovable.dev/ko",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "lovable",
+   "sourceId": "pricing-live",
+   "kind": "product-surface",
+   "url": "https://lovable.dev/ko/pricing",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "linear.app",
+   "sourceId": "brand-official",
+   "kind": "official-doc",
+   "url": "https://linear.app/brand",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lovable",
+   "sourceId": "product-managers-live",
+   "kind": "product-surface",
+   "url": "https://lovable.dev/ko/product-managers",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "makinarocks",
+   "sourceId": "home-capture",
+   "kind": "product-surface",
+   "url": "https://www.makinarocks.ai/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "makinarocks",
+   "sourceId": "about-capture",
+   "kind": "product-surface",
+   "url": "https://www.makinarocks.ai/en/about/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "makinarocks",
+   "sourceId": "blog-capture",
+   "kind": "product-surface",
+   "url": "https://www.makinarocks.ai/en/blog/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "makinarocks",
+   "sourceId": "rebrand-context",
+   "kind": "brand-asset",
+   "url": "https://www.makinarocks.ai/en/blog/makinarocks-rebranding-meet-our-new-logo/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lovable",
+   "sourceId": "docs-welcome-official",
+   "kind": "official-doc",
+   "url": "https://docs.lovable.dev/introduction/welcome",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lovable",
+   "sourceId": "docs-quick-start-official",
+   "kind": "official-doc",
+   "url": "https://docs.lovable.dev/introduction/getting-started",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "makinarocks",
+   "sourceId": "kmr-apparat-assets",
+   "kind": "brand-asset",
+   "url": "https://www.makinarocks.ai/fonts/kmr-apparat-regular.woff2",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "makinarocks",
+   "sourceId": "pretendard-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "megabox",
+   "sourceId": "product-movie",
+   "kind": "product-surface",
+   "url": "https://www.megabox.co.kr/movie",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "megabox",
+   "sourceId": "product-booking",
+   "kind": "product-surface",
+   "url": "https://www.megabox.co.kr/booking",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lovable",
+   "sourceId": "camera-font-asset",
+   "kind": "brand-asset",
+   "url": "https://lovable.dev/fonts/CameraPlainVariable-c48bd243.woff2",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "megabox",
+   "sourceId": "company-introduction",
+   "kind": "official-doc",
+   "url": "https://www.megabox.co.kr/megaboxinfo/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "megabox",
+   "sourceId": "recruiting",
+   "kind": "official-doc",
+   "url": "https://www.megabox.co.kr/recruit",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mercari",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.mercari.com/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "megabox",
+   "sourceId": "product-home",
+   "kind": "product-surface",
+   "url": "https://www.megabox.co.kr/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mercari",
+   "sourceId": "about-live",
+   "kind": "product-surface",
+   "url": "https://www.mercari.com/about/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "megabox",
+   "sourceId": "nanum-webfont-asset",
+   "kind": "brand-asset",
+   "url": "https://img.megabox.co.kr/static/pc/font/nanum/NanumBarunGothicSubset.woff",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "megabox",
+   "sourceId": "naver-nanum-catalog",
+   "kind": "brand-asset",
+   "url": "https://hangeul.naver.com/fonts/search?f=nanum",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mercari",
+   "sourceId": "brand-live",
+   "kind": "product-surface",
+   "url": "https://www.mercari.com/us/brand/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "mercari",
+   "sourceId": "marketplace-principles",
+   "kind": "official-doc",
+   "url": "https://pj.mercari.com/principles/marketplace-principles-and-history_EN.pdf",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mercari",
+   "sourceId": "listing-guide",
+   "kind": "official-doc",
+   "url": "https://www.mercari.com/us/help_center/topics/listing/guides/creating-a-listing/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mercari",
+   "sourceId": "marketplace-guidelines",
+   "kind": "official-doc",
+   "url": "https://www.mercari.com/us/help_center/article/407/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "microsoft",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.microsoft.com/ko-kr",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mercari",
+   "sourceId": "averta-license",
+   "kind": "license",
+   "url": "https://foundryfivetype.com/eulas/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "microsoft",
+   "sourceId": "microsoft-365-live",
+   "kind": "product-surface",
+   "url": "https://www.microsoft.com/en-us/microsoft-365",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "lotteon",
+   "sourceId": "lotteon-story",
+   "kind": "official-doc",
+   "url": "https://story.lotteon.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "microsoft",
+   "sourceId": "fluent-docs-live",
+   "kind": "official-doc",
+   "url": "https://fluent2.microsoft.design/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mercari",
+   "sourceId": "averta-foundry",
+   "kind": "official-doc",
+   "url": "https://foundryfivetype.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "millie",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.millie.co.kr/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "microsoft",
+   "sourceId": "segoue-font",
+   "kind": "official-doc",
+   "url": "https://learn.microsoft.com/en-us/typography/font-list/segoe-ui",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "millie",
+   "sourceId": "b2b-live",
+   "kind": "product-surface",
+   "url": "https://www.millie.co.kr/v4/brand/b2b",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "millie",
+   "sourceId": "company-business",
+   "kind": "official-doc",
+   "url": "https://company.millie.co.kr/business/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "millie",
+   "sourceId": "anniversary-context",
+   "kind": "official-doc",
+   "url": "https://10th.millie.co.kr/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "microsoft",
+   "sourceId": "microsoft-component-index",
+   "kind": "official-doc",
+   "url": "https://fluent2.microsoft.design/components/web/react",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "millie",
+   "sourceId": "pretendard-docs",
+   "kind": "official-doc",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/packages/pretendard/docs/en/README.md",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "millie",
+   "sourceId": "pretendard-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "microsoft",
+   "sourceId": "segoue-license",
+   "kind": "license",
+   "url": "https://learn.microsoft.com/en-us/typography/fonts/font-faq",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "minimax",
+   "sourceId": "audio-live",
+   "kind": "product-surface",
+   "url": "https://www.minimaxi.com/audio",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "microsoft",
+   "sourceId": "fluent-typography",
+   "kind": "official-doc",
+   "url": "https://fluent2.microsoft.design/typography",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "kream",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://kream.co.kr/",
+   "curlStatus": 500,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "kream",
+   "sourceId": "recovery-live",
+   "kind": "product-surface",
+   "url": "https://kream.co.kr/shop",
+   "curlStatus": 500,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "kream",
+   "sourceId": "search-live",
+   "kind": "product-surface",
+   "url": "https://kream.co.kr/search?keyword=nike",
+   "curlStatus": 500,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "kream",
+   "sourceId": "buying-faq",
+   "kind": "official-doc",
+   "url": "https://kream.co.kr/faq?category=buying&page=0",
+   "curlStatus": 500,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "kream",
+   "sourceId": "authentication-policy",
+   "kind": "official-doc",
+   "url": "https://kream.co.kr/auth_policy",
+   "curlStatus": 500,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "minimax",
+   "sourceId": "careers-live",
+   "kind": "product-surface",
+   "url": "https://www.minimaxi.com/careers",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "miricanvas",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.miricanvas.com/ko",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "miricanvas",
+   "sourceId": "pricing-live",
+   "kind": "product-surface",
+   "url": "https://www.miricanvas.com/ko/pricing",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "minimax",
+   "sourceId": "misans-asset",
+   "kind": "brand-asset",
+   "url": "https://filecdn.minimax.chat/public/MiSans-Regular.woff2",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "miricanvas",
+   "sourceId": "editor-doc",
+   "kind": "official-doc",
+   "url": "https://help.miricanvas.com/hc/ko/articles/4413862566937",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "minimax",
+   "sourceId": "minimax-about",
+   "kind": "official-doc",
+   "url": "https://minimaxi.com/about",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "miricanvas",
+   "sourceId": "company-context",
+   "kind": "official-doc",
+   "url": "https://www.miridih.com/ko/home",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "miricanvas",
+   "sourceId": "license-doc",
+   "kind": "official-doc",
+   "url": "https://help.miricanvas.com/hc/ko/articles/56483608870681",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "minimax",
+   "sourceId": "misans-license",
+   "kind": "license",
+   "url": "https://hyperos.mi.com/font-download/MiSans%E5%AD%97%E4%BD%93%E7%9F%A5%E8%AF%86%E4%BA%A7%E6%9D%83%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.pdf",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "minimax",
+   "sourceId": "outfit-license",
+   "kind": "license",
+   "url": "https://github.com/Outfitio/Outfit-Fonts",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "miricanvas",
+   "sourceId": "templates-live",
+   "kind": "product-surface",
+   "url": "https://www.miricanvas.com/ko/templates",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "miro",
+   "sourceId": "miro-component-index",
+   "kind": "official-doc",
+   "url": "https://www.mirotone.xyz/css",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "millie",
+   "sourceId": "careers-context",
+   "kind": "official-doc",
+   "url": "https://company.millie.co.kr/careers/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "miro",
+   "sourceId": "miro-identity",
+   "kind": "brand-asset",
+   "url": "https://miro.com/blog/miro-vis/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "miro",
+   "sourceId": "pricing-live",
+   "kind": "product-surface",
+   "url": "https://miro.com/ko/pricing/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "miro",
+   "sourceId": "miro-aura",
+   "kind": "brand-asset",
+   "url": "https://miro.com/aura/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "miro",
+   "sourceId": "miro-about",
+   "kind": "official-doc",
+   "url": "https://miro.com/about/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mistral.ai",
+   "sourceId": "inter-asset",
+   "kind": "brand-asset",
+   "url": "https://mistral.ai/fonts/inter/Inter-VariableFont.ttf",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mistral.ai",
+   "sourceId": "alt-mistral-asset",
+   "kind": "brand-asset",
+   "url": "https://mistral.ai/fonts/alt-mistral/ALTMistral-Regular.woff2",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "minimax",
+   "sourceId": "platform-models",
+   "kind": "official-doc",
+   "url": "https://platform.minimaxi.com/docs/guides/models-intro",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "miro",
+   "sourceId": "mirotone-docs",
+   "kind": "official-doc",
+   "url": "https://developers.miro.com/docs/design-guidelines",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "miro",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://miro.com/ko/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mistral.ai",
+   "sourceId": "space-mono-asset",
+   "kind": "brand-asset",
+   "url": "https://mistral.ai/fonts/space-mono/SpaceMono-Regular.ttf",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mistral.ai",
+   "sourceId": "pricing-live",
+   "kind": "product-surface",
+   "url": "https://mistral.ai/pricing/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mistral.ai",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://mistral.ai/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mistral.ai",
+   "sourceId": "careers",
+   "kind": "official-doc",
+   "url": "https://mistral.ai/careers/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "miro",
+   "sourceId": "roobert-license",
+   "kind": "license",
+   "url": "https://displaay.net/help/licenses",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mistral.ai",
+   "sourceId": "about",
+   "kind": "official-doc",
+   "url": "https://mistral.ai/about/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "miro",
+   "sourceId": "roobert-foundry",
+   "kind": "brand-asset",
+   "url": "https://displaay.net/typeface/roobert",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mixi",
+   "sourceId": "conduct-capture",
+   "kind": "product-surface",
+   "url": "https://mixi.co.jp/about/conductguidelines/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mixi",
+   "sourceId": "about-capture",
+   "kind": "product-surface",
+   "url": "https://mixi.co.jp/about/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mixi",
+   "sourceId": "about-context",
+   "kind": "official-doc",
+   "url": "https://mixi.co.jp/en/about/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mixi",
+   "sourceId": "history-context",
+   "kind": "official-doc",
+   "url": "https://mixi.co.jp/en/company/history/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mixi",
+   "sourceId": "home-capture",
+   "kind": "product-surface",
+   "url": "https://mixi.co.jp/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mongodb",
+   "sourceId": "leafygreen-live",
+   "kind": "official-doc",
+   "url": "https://www.mongodb.design/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mongodb",
+   "sourceId": "mongodb-component-index",
+   "kind": "official-doc",
+   "url": "https://www.mongodb.design/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mixi",
+   "sourceId": "design-culture",
+   "kind": "official-doc",
+   "url": "https://design-note.mixi.co.jp/n/n72743daaf24b",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "musinsa",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.musinsa.com/main/musinsa/recommend?gf=A",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mistral.ai",
+   "sourceId": "brand-guidance",
+   "kind": "official-doc",
+   "url": "https://mistral.ai/brand/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mongodb",
+   "sourceId": "typography-guidance",
+   "kind": "official-doc",
+   "url": "https://www.mongodb.design/foundations/typography",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "musinsa",
+   "sourceId": "standard-live",
+   "kind": "product-surface",
+   "url": "https://www.musinsa.com/brand/musinsastandard?gf=A",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mynavi",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.mynavi.jp/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mynavi",
+   "sourceId": "history-doc",
+   "kind": "official-doc",
+   "url": "https://www.mynavi.jp/company/history/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mongodb",
+   "sourceId": "source-code-license",
+   "kind": "license",
+   "url": "https://github.com/adobe-fonts/source-code-pro/blob/release/LICENSE.md",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mynavi",
+   "sourceId": "service-live",
+   "kind": "product-surface",
+   "url": "https://www.mynavi.jp/service/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mynavi",
+   "sourceId": "company-live",
+   "kind": "product-surface",
+   "url": "https://www.mynavi.jp/company/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "myrealtrip",
+   "sourceId": "hotel-live",
+   "kind": "product-surface",
+   "url": "https://www.myrealtrip.com/hotels",
+   "curlStatus": 404,
+   "browserStatus": null,
+   "verdict": "unreachable"
+  },
+  {
+   "id": "myrealtrip",
+   "sourceId": "about-live",
+   "kind": "product-surface",
+   "url": "https://about.myrealtrip.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "myrealtrip",
+   "sourceId": "pretendard-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "mynavi",
+   "sourceId": "message-doc",
+   "kind": "official-doc",
+   "url": "https://www.mynavi.jp/company/message/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "myrealtrip",
+   "sourceId": "help-center",
+   "kind": "product-surface",
+   "url": "https://help.myrealtrip.com/hc/ko",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "naver",
+   "sourceId": "portal-live",
+   "kind": "product-surface",
+   "url": "https://www.naver.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "naver",
+   "sourceId": "brand-live",
+   "kind": "product-surface",
+   "url": "https://www.navercorp.com/company/brandGuide",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mynavi",
+   "sourceId": "logo-story",
+   "kind": "brand-asset",
+   "url": "https://news.mynavi.jp/article/font_quiz-2/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "naver",
+   "sourceId": "brand-guide",
+   "kind": "official-doc",
+   "url": "https://www.navercorp.com/company/brandGuide",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "naverwebtoon",
+   "sourceId": "home-capture",
+   "kind": "product-surface",
+   "url": "https://comic.naver.com/index",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "naverwebtoon",
+   "sourceId": "webtoon-list-capture",
+   "kind": "product-surface",
+   "url": "https://comic.naver.com/webtoon",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "naver",
+   "sourceId": "company-about",
+   "kind": "official-doc",
+   "url": "https://www.navercorp.com/company/about",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "naverwebtoon",
+   "sourceId": "best-challenge-capture",
+   "kind": "product-surface",
+   "url": "https://comic.naver.com/bestChallenge",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "naverwebtoon",
+   "sourceId": "font-design",
+   "kind": "official-doc",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/packages/pretendard/docs/en/README.md",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "naverwebtoon",
+   "sourceId": "company-about",
+   "kind": "official-doc",
+   "url": "https://about.webtoon.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "naverwebtoon",
+   "sourceId": "company-brands",
+   "kind": "official-doc",
+   "url": "https://about.webtoon.com/our-brands?company=naverWebtoon",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "myrealtrip",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.myrealtrip.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "naverwebtoon",
+   "sourceId": "font-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "nhn",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.nhn.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "nhn",
+   "sourceId": "services-live",
+   "kind": "product-surface",
+   "url": "https://www.nhn.com/services?tab=technology",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "nhn",
+   "sourceId": "ir-live",
+   "kind": "product-surface",
+   "url": "https://www.nhn.com/ir?tab=financials&subTab=consolidatedFinancial",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "nhn",
+   "sourceId": "ci-story",
+   "kind": "official-doc",
+   "url": "https://inside.nhn.com/corp/245",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "nhn",
+   "sourceId": "type-story",
+   "kind": "official-doc",
+   "url": "https://inside.nhn.com/corp/260",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "naver",
+   "sourceId": "search-live",
+   "kind": "product-surface",
+   "url": "https://search.naver.com/search.naver?query=%EB%94%94%EC%9E%90%EC%9D%B8",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "nhncloud",
+   "sourceId": "cloud-docs-live",
+   "kind": "product-surface",
+   "url": "https://docs.nhncloud.com/ko/nhncloud/ko/overview/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mongodb",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.mongodb.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "nhncloud",
+   "sourceId": "company-about",
+   "kind": "official-doc",
+   "url": "https://company.nhncloud.com/about?lang=en",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mongodb",
+   "sourceId": "docs-live",
+   "kind": "official-doc",
+   "url": "https://www.mongodb.com/ko-kr/docs/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "nhncloud",
+   "sourceId": "toast-ui-official",
+   "kind": "official-doc",
+   "url": "https://ui.toast.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "nhncloud",
+   "sourceId": "toast-catalog-live",
+   "kind": "product-surface",
+   "url": "https://ui.toast.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "nhncloud",
+   "sourceId": "nhncloud-component-index",
+   "kind": "official-doc",
+   "url": "https://ui.toast.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "nhncloud",
+   "sourceId": "pretendard-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "nhncloud",
+   "sourceId": "corporate-marketing-live",
+   "kind": "product-surface",
+   "url": "https://www.nhncloud.com/kr",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "notion",
+   "sourceId": "about",
+   "kind": "official-doc",
+   "url": "https://www.notion.com/about",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "notion",
+   "sourceId": "notioninter-assets",
+   "kind": "brand-asset",
+   "url": "https://www.notion.com/front-static/fonts/NotionInter-Regular.woff2",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ohouse",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://ohou.se/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "ohouse",
+   "sourceId": "experts-live",
+   "kind": "product-surface",
+   "url": "https://ohou.se/experts",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "ohouse",
+   "sourceId": "customer-live",
+   "kind": "product-surface",
+   "url": "https://ohou.se/customer_center",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "notion",
+   "sourceId": "help-live",
+   "kind": "product-surface",
+   "url": "https://www.notion.com/ko/help",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ohouse",
+   "sourceId": "pretendard-doc",
+   "kind": "official-doc",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/packages/pretendard/docs/en/README.md",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "ohouse",
+   "sourceId": "bucketplace-about",
+   "kind": "official-doc",
+   "url": "https://www.bucketplace.com/en/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "notion",
+   "sourceId": "product-live",
+   "kind": "product-surface",
+   "url": "https://www.notion.com/ko/product",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "oliveyoung",
+   "sourceId": "storefront-live",
+   "kind": "product-surface",
+   "url": "https://www.oliveyoung.co.kr/store/main/main.do?oy=0",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "ohouse",
+   "sourceId": "pretendard-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "oliveyoung",
+   "sourceId": "history-context",
+   "kind": "official-doc",
+   "url": "https://corp.oliveyoung.com/en/company/history",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "oliveyoung",
+   "sourceId": "brand-resources",
+   "kind": "brand-asset",
+   "url": "https://corp.oliveyoung.com/en/company/brand",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "oliveyoung",
+   "sourceId": "mission-context",
+   "kind": "official-doc",
+   "url": "https://corp.oliveyoung.com/en/company/main",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "oliveyoung",
+   "sourceId": "corporate-live",
+   "kind": "product-surface",
+   "url": "https://corp.oliveyoung.com/ko",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "oliveyoung",
+   "sourceId": "vision-context",
+   "kind": "official-doc",
+   "url": "https://corp.oliveyoung.com/en/company/vision",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "notion",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.notion.com/ko",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "mynavi",
+   "sourceId": "purpose-doc",
+   "kind": "official-doc",
+   "url": "https://www.mynavi.jp/recruit/career/company/purpose/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ollama",
+   "sourceId": "docs-live",
+   "kind": "official-doc",
+   "url": "https://docs.ollama.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "onestore",
+   "sourceId": "game-catalog-live",
+   "kind": "product-surface",
+   "url": "https://m.onestore.co.kr/v2/ko-kr/game",
+   "curlStatus": 404,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "onestore",
+   "sourceId": "store-home-live",
+   "kind": "product-surface",
+   "url": "https://m.onestore.co.kr/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "notion",
+   "sourceId": "careers",
+   "kind": "official-doc",
+   "url": "https://www.notion.com/careers",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ollama",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://ollama.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "nhncloud",
+   "sourceId": "toast-ui-license",
+   "kind": "official-doc",
+   "url": "https://github.com/nhn/toast-ui.doc",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "ollama",
+   "sourceId": "pricing-live",
+   "kind": "product-surface",
+   "url": "https://ollama.com/pricing",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "onestore",
+   "sourceId": "oneplay-live",
+   "kind": "product-surface",
+   "url": "https://m.onestore.co.kr/v2/ko-kr/about/oneplay",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "onestore",
+   "sourceId": "customer-commitment",
+   "kind": "official-doc",
+   "url": "https://onestorecorp.com/sv/ccm/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "onestore",
+   "sourceId": "company-about",
+   "kind": "official-doc",
+   "url": "https://www.onestorecorp.com/about/corp/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "onestore",
+   "sourceId": "developer-support",
+   "kind": "official-doc",
+   "url": "https://onestorecorp.com/sv/fordev/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "onestore",
+   "sourceId": "app-detail-live",
+   "kind": "product-surface",
+   "url": "https://m.onestore.co.kr/v2/ko-kr/app/0000117501/about",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "onestore",
+   "sourceId": "mobile-font-assets",
+   "kind": "brand-asset",
+   "url": "https://www.onestorecorp.com/sv/fordev_font/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "onestore",
+   "sourceId": "mobile-font-commercial-use",
+   "kind": "license",
+   "url": "https://onestorecorp.com/news/presskit/2021/2021-05-17.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "notion",
+   "sourceId": "ai-story",
+   "kind": "official-doc",
+   "url": "https://www.notion.com/blog/behind-the-scenes-notion-ai",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "palantir",
+   "sourceId": "blueprint-license",
+   "kind": "license",
+   "url": "https://github.com/palantir/blueprint/blob/develop/LICENSE",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "ollama",
+   "sourceId": "repository",
+   "kind": "official-doc",
+   "url": "https://github.com/ollama/ollama",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "panasonic",
+   "sourceId": "home-capture",
+   "kind": "product-surface",
+   "url": "https://holdings.panasonic/global/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "panasonic",
+   "sourceId": "about-capture",
+   "kind": "product-surface",
+   "url": "https://holdings.panasonic/global/corporate/about.html",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "palantir",
+   "sourceId": "palantir-component-index",
+   "kind": "official-doc",
+   "url": "https://blueprintjs.com/docs/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "palantir",
+   "sourceId": "docs-live",
+   "kind": "official-doc",
+   "url": "https://blueprintjs.com/docs/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "palantir",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://blueprintjs.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "panasonic",
+   "sourceId": "technology-capture",
+   "kind": "product-surface",
+   "url": "https://holdings.panasonic/global/corporate/technology.html",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "onestore",
+   "sourceId": "brand-gallery",
+   "kind": "brand-asset",
+   "url": "https://www.onestorecorp.com/brand/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "palantir",
+   "sourceId": "blueprint-repository",
+   "kind": "official-doc",
+   "url": "https://github.com/palantir/blueprint",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "patternfly",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.patternfly.org/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "panasonic",
+   "sourceId": "noto-license",
+   "kind": "license",
+   "url": "https://github.com/googlefonts/noto-cjk/blob/main/Sans/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "patternfly",
+   "sourceId": "color-live",
+   "kind": "product-surface",
+   "url": "https://www.patternfly.org/design-foundations/colors/",
+   "curlStatus": 404,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "patternfly",
+   "sourceId": "about-official",
+   "kind": "official-doc",
+   "url": "https://www.patternfly.org/get-started/about-patternfly/",
+   "curlStatus": 404,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "patternfly",
+   "sourceId": "releases-official",
+   "kind": "official-doc",
+   "url": "https://www.patternfly.org/get-started/release-highlights",
+   "curlStatus": 404,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "patternfly",
+   "sourceId": "patternfly-component-index",
+   "kind": "official-doc",
+   "url": "https://www.patternfly.org/components/overview/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "patternfly",
+   "sourceId": "typography-official",
+   "kind": "official-doc",
+   "url": "https://www.patternfly.org/foundations-and-styles/typography/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "patternfly",
+   "sourceId": "button-live",
+   "kind": "product-surface",
+   "url": "https://www.patternfly.org/components/button/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "palantir",
+   "sourceId": "palantir-values",
+   "kind": "official-doc",
+   "url": "https://www.palantir.com/careers/infrastructure",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "patternfly",
+   "sourceId": "theming-official",
+   "kind": "official-doc",
+   "url": "https://staging.patternfly.org/foundations-and-styles/theming/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "pinkfong",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.thepinkfongcompany.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "pega",
+   "sourceId": "pega-ui-home",
+   "kind": "product-surface",
+   "url": "https://design.pega.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "pega",
+   "sourceId": "roboto-flex-license",
+   "kind": "license",
+   "url": "https://github.com/googlefonts/roboto-flex",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "onestore",
+   "sourceId": "developer-portal-live",
+   "kind": "product-surface",
+   "url": "https://dev.onestore.net/dev",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "pinkfong",
+   "sourceId": "company-live",
+   "kind": "product-surface",
+   "url": "https://www.thepinkfongcompany.com/company",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "pinkfong",
+   "sourceId": "spoqa-license",
+   "kind": "license",
+   "url": "https://github.com/spoqa/spoqa-han-sans",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "pinkfong",
+   "sourceId": "business-live",
+   "kind": "product-surface",
+   "url": "https://www.thepinkfongcompany.com/business",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "pinkfong",
+   "sourceId": "identity-official",
+   "kind": "brand-asset",
+   "url": "https://www.thepinkfongcompany.com/company",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "pega",
+   "sourceId": "pega-components",
+   "kind": "official-doc",
+   "url": "https://design.pega.com/components/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "pega",
+   "sourceId": "pega-component-index",
+   "kind": "official-doc",
+   "url": "https://design.pega.com/page-sitemap.xml",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "pinkfong",
+   "sourceId": "font-release-official",
+   "kind": "official-doc",
+   "url": "https://www.thepinkfongcompany.com/news/pr/207",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "pinterest",
+   "sourceId": "consumer-font-assets",
+   "kind": "brand-asset",
+   "url": "https://s.pinimg.com/font/Pin-Sans-Regular.ttf",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "pinterest",
+   "sourceId": "consumer-capture",
+   "kind": "product-surface",
+   "url": "https://kr.pinterest.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "pinterest",
+   "sourceId": "business-font-assets",
+   "kind": "brand-asset",
+   "url": "https://s.pinimg.com/font/Pinterest-Sans-Pro-Regular.otf",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "pega",
+   "sourceId": "pega-design-resources",
+   "kind": "brand-asset",
+   "url": "https://design.pega.com/resources/design-resources/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "poya",
+   "sourceId": "timeline-live",
+   "kind": "product-surface",
+   "url": "https://www.poya.com.tw/about/61/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "poya",
+   "sourceId": "brand-story-live",
+   "kind": "product-surface",
+   "url": "https://www.poya.com.tw/about/60/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "poya",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.poya.com.tw/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "poya",
+   "sourceId": "company-profile",
+   "kind": "official-doc",
+   "url": "https://www.poya.com.tw/en/investor/43/4564523/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "pinterest",
+   "sourceId": "pinterest-component-index",
+   "kind": "official-doc",
+   "url": "https://gestalt.pinterest.systems/web/overview",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "poya",
+   "sourceId": "noto-license",
+   "kind": "license",
+   "url": "https://github.com/googlefonts/noto-cjk/blob/main/Sans/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "pinterest",
+   "sourceId": "business-capture",
+   "kind": "product-surface",
+   "url": "https://business.pinterest.com/ko/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "pinterest",
+   "sourceId": "gestalt-context",
+   "kind": "official-doc",
+   "url": "https://gestalt.pinterest.systems/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "recruit",
+   "sourceId": "corporate-home-live",
+   "kind": "product-surface",
+   "url": "https://www.recruit.co.jp/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "recruit",
+   "sourceId": "about-rss-live",
+   "kind": "product-surface",
+   "url": "https://www.recruit.co.jp/about_rss/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "recruit",
+   "sourceId": "productivity-live",
+   "kind": "product-surface",
+   "url": "https://www.recruit.co.jp/sustainability/improve-productivity/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "remember",
+   "sourceId": "corporate-home-live",
+   "kind": "product-surface",
+   "url": "https://corp.remember.co.kr/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "remember",
+   "sourceId": "career-postings-live",
+   "kind": "product-surface",
+   "url": "https://career.rememberapp.co.kr/job/postings",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "remember",
+   "sourceId": "remember-component-index",
+   "kind": "official-doc",
+   "url": "https://dramancompany.github.io/remember-ui/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "pinterest",
+   "sourceId": "brand-guidelines",
+   "kind": "brand-asset",
+   "url": "https://business.pinterest.com/en-in/brand-guidelines/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "remember",
+   "sourceId": "pretendard-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "curlStatus": 429,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "recruit",
+   "sourceId": "group-history",
+   "kind": "official-doc",
+   "url": "https://recruit-holdings.com/en/about/history/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "remember",
+   "sourceId": "brand-guideline",
+   "kind": "brand-asset",
+   "url": "https://static.rememberapp.co.kr/brand/brand_guideline_logo.pdf",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "resend",
+   "sourceId": "resend-home-live",
+   "kind": "product-surface",
+   "url": "https://resend.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "recruit",
+   "sourceId": "group-about",
+   "kind": "official-doc",
+   "url": "https://recruit-holdings.com/en/about/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "remember",
+   "sourceId": "company-context",
+   "kind": "official-doc",
+   "url": "https://corp.remember.co.kr/company",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "recruit",
+   "sourceId": "tazugane-license",
+   "kind": "license",
+   "url": "https://www.monotype.com/fonts/tazugane",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "resend",
+   "sourceId": "resend-rebrand",
+   "kind": "official-doc",
+   "url": "https://resend.com/blog/rebranding-resend",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "resend",
+   "sourceId": "resend-audiences-live",
+   "kind": "product-surface",
+   "url": "https://resend.com/features/audiences",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "resend",
+   "sourceId": "resend-brand-guidelines",
+   "kind": "official-doc",
+   "url": "https://resend.com/handbook/design/what-are-our-brand-guidelines",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "resend",
+   "sourceId": "resend-automations-live",
+   "kind": "product-surface",
+   "url": "https://resend.com/features/automations",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "resend",
+   "sourceId": "inter-asset",
+   "kind": "brand-asset",
+   "url": "https://resend.com/_next/static/media/inter_variable.p.0r27kd5h06n72.woff2?dpl=dpl_6QdhL9DCTN9ExbvTURDkdxpxJgKR",
+   "curlStatus": 404,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "resend",
+   "sourceId": "abc-favorit-asset",
+   "kind": "brand-asset",
+   "url": "https://resend.com/_next/static/media/abc_favorit_book.p.0or15w12zowqm.woff2?dpl=dpl_6QdhL9DCTN9ExbvTURDkdxpxJgKR",
+   "curlStatus": 404,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "resend",
+   "sourceId": "domaine-asset",
+   "kind": "brand-asset",
+   "url": "https://resend.com/_next/static/media/domaine_regular.p.0e_gg6~4pmz90.woff2?dpl=dpl_6QdhL9DCTN9ExbvTURDkdxpxJgKR",
+   "curlStatus": 404,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "resend",
+   "sourceId": "resend-about",
+   "kind": "official-doc",
+   "url": "https://resend.com/about",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "sakura-internet",
+   "sourceId": "brand-assets-live",
+   "kind": "brand-asset",
+   "url": "https://www.sakura.ad.jp/brand-assets/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "sakura-internet",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.sakura.ad.jp/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "sakura-internet",
+   "sourceId": "company-history",
+   "kind": "official-doc",
+   "url": "https://www.sakura.ad.jp/corporate/corp/history/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "sakura-internet",
+   "sourceId": "company-vision",
+   "kind": "official-doc",
+   "url": "https://www.sakura.ad.jp/corporate/corp/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "samsung",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.samsung.com/sec/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "sakura-internet",
+   "sourceId": "brand-design",
+   "kind": "brand-asset",
+   "url": "https://www.sakura.ad.jp/corporate/corp/design/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "samsung",
+   "sourceId": "ai-live",
+   "kind": "product-surface",
+   "url": "https://www.samsung.com/sec/ai-products/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "recruit",
+   "sourceId": "group-values",
+   "kind": "official-doc",
+   "url": "https://recruit-holdings.com/ja/about/vision-mission-values/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "resend",
+   "sourceId": "resend-history",
+   "kind": "official-doc",
+   "url": "https://resend.com/handbook/company/how-we-got-here",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "samsung",
+   "sourceId": "sharp-sans-brand",
+   "kind": "official-doc",
+   "url": "https://www.samsung.com/bd/about-us/brand-identity/color-and-typo/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "resend",
+   "sourceId": "resend-mission",
+   "kind": "official-doc",
+   "url": "https://resend.com/handbook/company/why-we-exist",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "samsung",
+   "sourceId": "brand-story",
+   "kind": "official-doc",
+   "url": "https://www.samsung.com/sec/about-us/brand-identity/brand-story/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "sanity",
+   "sourceId": "home",
+   "kind": "product-surface",
+   "url": "https://www.sanity.io/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "samsung",
+   "sourceId": "brand-live",
+   "kind": "product-surface",
+   "url": "https://www.samsung.com/sec/about-us/brand-identity/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "servicenow",
+   "sourceId": "horizon-home-capture",
+   "kind": "product-surface",
+   "url": "https://horizon.servicenow.com/",
+   "curlStatus": 0,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "servicenow",
+   "sourceId": "servicenow-component-index",
+   "kind": "official-doc",
+   "url": "https://horizon.servicenow.com/workspace/components",
+   "curlStatus": 0,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "servicenow",
+   "sourceId": "horizon-about-capture",
+   "kind": "product-surface",
+   "url": "https://horizon.servicenow.com/getting-started/about-horizon",
+   "curlStatus": 0,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "servicenow",
+   "sourceId": "horizon-components-capture",
+   "kind": "official-doc",
+   "url": "https://horizon.servicenow.com/workspace/components",
+   "curlStatus": 0,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "servicenow",
+   "sourceId": "horizon-about-doc",
+   "kind": "official-doc",
+   "url": "https://horizon.servicenow.com/getting-started/about-horizon",
+   "curlStatus": 0,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "servicenow",
+   "sourceId": "horizon-principles-doc",
+   "kind": "official-doc",
+   "url": "https://horizon.servicenow.com/getting-started/principles",
+   "curlStatus": 0,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "servicenow",
+   "sourceId": "horizon-whats-new-doc",
+   "kind": "official-doc",
+   "url": "https://horizon.servicenow.com/getting-started/whats-new",
+   "curlStatus": 0,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "shinhanbank",
+   "sourceId": "banking-live",
+   "kind": "product-surface",
+   "url": "https://bank.shinhan.com/index.jsp#010800000000",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "shinhanbank",
+   "sourceId": "group-live",
+   "kind": "product-surface",
+   "url": "https://www.shinhangroup.com/kr/main",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "shinhanbank",
+   "sourceId": "shinhan-live",
+   "kind": "product-surface",
+   "url": "https://www.shinhan.com/index.jsp",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "samsung",
+   "sourceId": "samsungone-font",
+   "kind": "official-doc",
+   "url": "https://developer.samsung.com/design-system/font",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "shinhanbank",
+   "sourceId": "official-ci",
+   "kind": "brand-asset",
+   "url": "https://shinhangroup.com/kr/about/identity/ci",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "sanity",
+   "sourceId": "pricing",
+   "kind": "product-surface",
+   "url": "https://www.sanity.io/pricing",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "shinhanbank",
+   "sourceId": "official-typeface",
+   "kind": "brand-asset",
+   "url": "https://shinhangroup.com/kr/about/identity/typeface",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "shinhanbank",
+   "sourceId": "official-history",
+   "kind": "official-doc",
+   "url": "https://shinhangroup.com/kr/about/group/history1",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "shinhancard",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.shinhancard.com/pconts/html/main.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "shinhanbank",
+   "sourceId": "official-mission",
+   "kind": "official-doc",
+   "url": "https://shinhangroup.com/kr/about/group/mission",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "shinhancard",
+   "sourceId": "premium-detail-live",
+   "kind": "product-surface",
+   "url": "https://www.shinhancard.com/pconts/html/card/apply/premium/1236160_2205.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "shinhancard",
+   "sourceId": "credit-detail-live",
+   "kind": "product-surface",
+   "url": "https://www.shinhancard.com/pconts/html/card/apply/credit/1232390_2207.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "sktelecom",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.sktelecom.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "sanity",
+   "sourceId": "pricing-navbar",
+   "kind": "product-surface",
+   "url": "https://www.sanity.io/pricing?ref=navbar",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "sktelecom",
+   "sourceId": "brand-live",
+   "kind": "official-doc",
+   "url": "https://www.sktelecom.com/view/introduce/brand.do",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "samsung",
+   "sourceId": "samsung-component-index",
+   "kind": "official-doc",
+   "url": "https://developer.samsung.com/one-ui/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "samsung",
+   "sourceId": "one-ui-color",
+   "kind": "official-doc",
+   "url": "https://developer.samsung.com/one-ui/color/system.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "socar",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.socar.kr/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "socar",
+   "sourceId": "socar-component-index",
+   "kind": "official-doc",
+   "url": "https://design.socar.kr/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "resend",
+   "sourceId": "favorit-license",
+   "kind": "license",
+   "url": "https://abcdinamo.com/buy/favorit",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "socar",
+   "sourceId": "service-live",
+   "kind": "product-surface",
+   "url": "https://www.socar.kr/service",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "socar",
+   "sourceId": "brand-live",
+   "kind": "brand-asset",
+   "url": "https://design.socar.kr/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "socar",
+   "sourceId": "guide-live",
+   "kind": "product-surface",
+   "url": "https://www.socar.kr/guide",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "socar",
+   "sourceId": "fare-live",
+   "kind": "product-surface",
+   "url": "https://www.socar.kr/fare",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "softbank",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.softbank.jp/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "sktelecom",
+   "sourceId": "skt-sans-regular",
+   "kind": "brand-asset",
+   "url": "https://www.sktelecom.com/fonts/SKTSans-Regular.woff2",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "softbank",
+   "sourceId": "corporate-security-live",
+   "kind": "product-surface",
+   "url": "https://www.softbank.jp/corp/aboutus/governance/security/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "sanity",
+   "sourceId": "sanity-component-index",
+   "kind": "official-doc",
+   "url": "https://www.sanity.io/ui/docs",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "softbank",
+   "sourceId": "trademark-policy",
+   "kind": "official-doc",
+   "url": "https://www.softbank.jp/corp/aboutus/governance/intellectual-property/trademark/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "sony",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.sony.com/en/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "softbank",
+   "sourceId": "company-history",
+   "kind": "official-doc",
+   "url": "https://www.softbank.jp/en/corp/aboutus/profile/history/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "softbank",
+   "sourceId": "management-strategy",
+   "kind": "official-doc",
+   "url": "https://www.softbank.jp/en/corp/ir/policy/strategy/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "sony",
+   "sourceId": "products-live",
+   "kind": "product-surface",
+   "url": "https://www.sony.com/en/SonyInfo/products/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "sony",
+   "sourceId": "electronics-live",
+   "kind": "product-surface",
+   "url": "https://www.sony.com/en/SonyInfo/products/#electronics",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "sony",
+   "sourceId": "sst-type-project",
+   "kind": "official-doc",
+   "url": "https://www.sony.com/en/SonyInfo/design/stories/sst-font/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "sony",
+   "sourceId": "purpose-values",
+   "kind": "official-doc",
+   "url": "https://www.sony.com/en/SonyInfo/CorporateInfo/purpose_and_values/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "sony",
+   "sourceId": "corporate-history",
+   "kind": "official-doc",
+   "url": "https://www.sony.com/en/SonyInfo/CorporateInfo/History/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "sktelecom",
+   "sourceId": "t-brand-renewal",
+   "kind": "official-doc",
+   "url": "https://news.sktelecom.com/182844",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "sony",
+   "sourceId": "corporate-blog",
+   "kind": "official-doc",
+   "url": "https://www.sony.com/en/SonyInfo/blog/2021/04/08/",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "soop",
+   "sourceId": "esports-live",
+   "kind": "product-surface",
+   "url": "https://esports.sooplive.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "soop",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.sooplive.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "sktelecom",
+   "sourceId": "current-company-facts",
+   "kind": "official-doc",
+   "url": "https://news.sktelecom.com/223776",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "soop",
+   "sourceId": "brand-guide",
+   "kind": "official-doc",
+   "url": "https://res.sooplive.com/policy/contents/brand_guide.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "soop",
+   "sourceId": "esg-user-feedback",
+   "kind": "official-doc",
+   "url": "https://corp.sooplive.com/esg/2023/index.php?page=winwin",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "soop",
+   "sourceId": "esg-overview",
+   "kind": "official-doc",
+   "url": "https://corp.sooplive.com/esg/2024/index.php?page=overview",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "soop",
+   "sourceId": "pretendard-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "spacex",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.spacex.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "spacex",
+   "sourceId": "starship-live",
+   "kind": "product-surface",
+   "url": "https://www.spacex.com/vehicles/starship",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "spacex",
+   "sourceId": "mission-live",
+   "kind": "product-surface",
+   "url": "https://www.spacex.com/mission",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "spacex",
+   "sourceId": "d-din-asset",
+   "kind": "brand-asset",
+   "url": "https://www.spacex.com/D-DIN.e58c68e58b09fc0e.woff2",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "sktelecom",
+   "sourceId": "ai-company-vision",
+   "kind": "official-doc",
+   "url": "https://news.sktelecom.com/182728",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "spacex",
+   "sourceId": "d-din-bold-asset",
+   "kind": "brand-asset",
+   "url": "https://www.spacex.com/D-DIN-Bold.9a5ce67e997fd030.woff2",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "spotify",
+   "sourceId": "capture-product-search",
+   "kind": "product-surface",
+   "url": "https://open.spotify.com/search",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "spotify",
+   "sourceId": "capture-product-home",
+   "kind": "product-surface",
+   "url": "https://open.spotify.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "spotify",
+   "sourceId": "official-developer-guidelines",
+   "kind": "official-doc",
+   "url": "https://developer.spotify.com/documentation/design",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "softbank",
+   "sourceId": "group-identity",
+   "kind": "official-doc",
+   "url": "https://group.softbank/en/philosophy/identity",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "softbank",
+   "sourceId": "enterprise-ai-live",
+   "kind": "product-surface",
+   "url": "https://www.softbank.jp/biz/about/ai/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "spotify",
+   "sourceId": "capture-newsroom",
+   "kind": "official-doc",
+   "url": "https://newsroom.spotify.com/company-info/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "stripe",
+   "sourceId": "docs-home-live",
+   "kind": "product-surface",
+   "url": "https://docs.stripe.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "stripe",
+   "sourceId": "source-code-license",
+   "kind": "license",
+   "url": "https://github.com/adobe-fonts/source-code-pro/blob/release/LICENSE.md",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "stripe",
+   "sourceId": "docs-api-live",
+   "kind": "product-surface",
+   "url": "https://docs.stripe.com/api",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "stripe",
+   "sourceId": "docs-payments-live",
+   "kind": "product-surface",
+   "url": "https://docs.stripe.com/payments",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "supabase",
+   "sourceId": "features-live",
+   "kind": "product-surface",
+   "url": "https://supabase.com/features",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "supabase",
+   "sourceId": "pricing-live",
+   "kind": "product-surface",
+   "url": "https://supabase.com/pricing",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "soop",
+   "sourceId": "creative-guide",
+   "kind": "brand-asset",
+   "url": "https://static.file.sooplive.co.kr/da_guide_file/2024/10/24/SOOP_CreativeGuide.pdf",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "supabase",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://supabase.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "supabase",
+   "sourceId": "architecture",
+   "kind": "official-doc",
+   "url": "https://supabase.com/docs/guides/getting-started/architecture",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "supabase",
+   "sourceId": "inter-license",
+   "kind": "license",
+   "url": "https://github.com/rsms/inter",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "stripe",
+   "sourceId": "newsroom",
+   "kind": "brand-asset",
+   "url": "https://stripe.com/newsroom/information",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "stripe",
+   "sourceId": "soehne-foundry",
+   "kind": "license",
+   "url": "https://klim.co.nz/fonts/soehne/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "supabase",
+   "sourceId": "brand-assets",
+   "kind": "brand-asset",
+   "url": "https://supabase.com/brand-assets",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "supabase",
+   "sourceId": "community",
+   "kind": "official-doc",
+   "url": "https://supabase.com/contribute/about",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "stripe",
+   "sourceId": "culture",
+   "kind": "official-doc",
+   "url": "https://stripe.com/jobs/culture",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "supabase",
+   "sourceId": "source-code-license",
+   "kind": "license",
+   "url": "https://github.com/adobe-fonts/source-code-pro",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "supabase",
+   "sourceId": "manrope-license",
+   "kind": "license",
+   "url": "https://github.com/davelab6/manrope",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "taishinbank",
+   "sourceId": "investment-live",
+   "kind": "product-surface",
+   "url": "https://www.taishinbank.com.tw/invst/product/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "teamlab",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.team-lab.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "teamlab",
+   "sourceId": "catalog-live",
+   "kind": "product-surface",
+   "url": "https://www.team-lab.com/product/?category=all",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "taishinbank",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.taishinbank.com.tw/TSB/personal/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "taishinbank",
+   "sourceId": "richart-upgrade",
+   "kind": "official-doc",
+   "url": "https://www.taishinbank.com.tw/TSB/personal/common/news/TSBankNews-007654/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "taishinbank",
+   "sourceId": "bank-history",
+   "kind": "official-doc",
+   "url": "https://www.taishinbank.com.tw/TSB/about-taishin/brief-introduction-to-the-bank/taishin-story/index.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "teamlab",
+   "sourceId": "about-live",
+   "kind": "product-surface",
+   "url": "https://www.team-lab.com/about/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "spotify",
+   "sourceId": "official-design-history",
+   "kind": "official-doc",
+   "url": "https://newsroom.spotify.com/2026-04-23/spotify-design-history/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "taishinbank",
+   "sourceId": "bank-services",
+   "kind": "official-doc",
+   "url": "https://www.taishinbank.com.tw/TSB/about-taishin/brief-introduction-to-the-bank/TSBankGridPage-000091-00002/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "teamlab",
+   "sourceId": "company-about",
+   "kind": "official-doc",
+   "url": "https://www.team-lab.com/en/about/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "tesla",
+   "sourceId": "support-live",
+   "kind": "official-doc",
+   "url": "https://www.tesla.com/support/getting-started-with-your-vehicle",
+   "curlStatus": 403,
+   "browserStatus": 403,
+   "verdict": "blocked"
+  },
+  {
+   "id": "tesla",
+   "sourceId": "model3-live",
+   "kind": "product-surface",
+   "url": "https://www.tesla.com/model3?lang=en",
+   "curlStatus": 403,
+   "browserStatus": 403,
+   "verdict": "blocked"
+  },
+  {
+   "id": "tesla",
+   "sourceId": "manual-live",
+   "kind": "official-doc",
+   "url": "https://www.tesla.com/ownersmanual/",
+   "curlStatus": 403,
+   "browserStatus": 403,
+   "verdict": "blocked"
+  },
+  {
+   "id": "teamlab",
+   "sourceId": "adobe-webfont-license",
+   "kind": "license",
+   "url": "https://helpx.adobe.com/fonts/using/webfont-licensing.html",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "taishinbank",
+   "sourceId": "fair-treatment",
+   "kind": "official-doc",
+   "url": "https://www.taishinbank.com.tw/TSB/fair-treatment/about/TSBankGridPage-000226/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "teamlab",
+   "sourceId": "borderless-2024",
+   "kind": "brand-asset",
+   "url": "https://architects.team-lab.com/projects/teamLab_borderless/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "tesla",
+   "sourceId": "tesla-legal",
+   "kind": "license",
+   "url": "https://www.tesla.com/legal/terms",
+   "curlStatus": 403,
+   "browserStatus": 403,
+   "verdict": "blocked"
+  },
+  {
+   "id": "teamlab",
+   "sourceId": "careers",
+   "kind": "official-doc",
+   "url": "https://www.team-lab.com/en/recruit/tsunen/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "tesla",
+   "sourceId": "universal-display-asset",
+   "kind": "brand-asset",
+   "url": "https://digitalassets.tesla.com/tesla-design-system/raw/upload/static/fonts/universal-sans-2/web/display/Universal-Sans-Display-Regular.woff2",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "tesla",
+   "sourceId": "universal-text-asset",
+   "kind": "brand-asset",
+   "url": "https://digitalassets.tesla.com/tesla-design-system/raw/upload/static/fonts/universal-sans-2/web/text/Universal-Sans-Text-Regular.woff2",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "taishinbank",
+   "sourceId": "bank-integration",
+   "kind": "official-doc",
+   "url": "https://web.taishinbank.com.tw/TSB/personal/common/news/TSBankNews-008090/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "thumbtack",
+   "sourceId": "thumbprint-home",
+   "kind": "product-surface",
+   "url": "https://thumbprint.design/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "thsr",
+   "sourceId": "product-home",
+   "kind": "product-surface",
+   "url": "https://www.thsrc.com.tw/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "thsr",
+   "sourceId": "product-article-46de4c5f",
+   "kind": "product-surface",
+   "url": "https://www.thsrc.com.tw/ArticleContent/46de4c5f-7c2e-4583-bd4c-0f5d67fbb9b8",
+   "curlStatus": 404,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "thumbtack",
+   "sourceId": "thumbprint-type-guide",
+   "kind": "official-doc",
+   "url": "https://thumbprint.thumbtack.com/guidelines/typography",
+   "curlStatus": 202,
+   "browserStatus": 202,
+   "verdict": "blocked"
+  },
+  {
+   "id": "thumbtack",
+   "sourceId": "thumbprint-product-design",
+   "kind": "official-doc",
+   "url": "https://thumbprint.thumbtack.com/overview/product-design",
+   "curlStatus": 202,
+   "browserStatus": 202,
+   "verdict": "blocked"
+  },
+  {
+   "id": "thsr",
+   "sourceId": "corporate-identity",
+   "kind": "brand-asset",
+   "url": "https://www.thsrc.com.tw/ArticleContent/605d1cb2-2d98-4d73-9586-7e8363ee44e3",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "thsr",
+   "sourceId": "sustainability-mission",
+   "kind": "official-doc",
+   "url": "https://www.thsrc.com.tw/corp/9012aea2-04b9-45f4-b3a4-8bcb6782f735",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "thsr",
+   "sourceId": "product-article-743c51ac",
+   "kind": "product-surface",
+   "url": "https://www.thsrc.com.tw/ArticleContent/743c51ac-124d-4b1a-a57b-1fd820848032",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "together.ai",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.together.ai/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "together.ai",
+   "sourceId": "about-live",
+   "kind": "product-surface",
+   "url": "https://www.together.ai/about-us",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "thumbtack",
+   "sourceId": "rise-webfont",
+   "kind": "brand-asset",
+   "url": "https://fonts.thumbtack.com/thumbtack-rise/v10/ThumbtackRiseVF.woff2",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "together.ai",
+   "sourceId": "brand-live",
+   "kind": "brand-asset",
+   "url": "https://www.together.ai/brand",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "together.ai",
+   "sourceId": "about-context",
+   "kind": "official-doc",
+   "url": "https://www.together.ai/about-us",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "thumbtack",
+   "sourceId": "thumbprint-button-doc",
+   "kind": "official-doc",
+   "url": "https://thumbprint.design/components/button/v2/react",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toss",
+   "sourceId": "toss-live",
+   "kind": "product-surface",
+   "url": "https://toss.im/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "together.ai",
+   "sourceId": "docs-context",
+   "kind": "official-doc",
+   "url": "https://docs.together.ai/intro",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "thsr",
+   "sourceId": "annual-report",
+   "kind": "official-doc",
+   "url": "https://www.thsrc.com.tw/Corp/e5d9a893-ea05-4ff7-80e6-cc71c46d2fb4/assets/d3d47001-95a2-457e-aeef-22b2e1cb45cd.pdf",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "together.ai",
+   "sourceId": "brand-context",
+   "kind": "brand-asset",
+   "url": "https://www.together.ai/brand",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "together.ai",
+   "sourceId": "careers-context",
+   "kind": "official-doc",
+   "url": "https://www.together.ai/careers",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "thumbtack",
+   "sourceId": "ai-home-care",
+   "kind": "official-doc",
+   "url": "https://press.thumbtack.com/announcements/thumbtack-introduces-ai-powered-experience-to-reinvent-how-homeowners-care-for-their-homes/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toss",
+   "sourceId": "tds-overview-md",
+   "kind": "official-doc",
+   "url": "https://developers-apps-in-toss.toss.im/design/components.md",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toss",
+   "sourceId": "tds-ux-guide-md",
+   "kind": "official-doc",
+   "url": "https://developers-apps-in-toss.toss.im/design/consumer-ux-guide.md",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toss",
+   "sourceId": "tds-text-field",
+   "kind": "official-doc",
+   "url": "https://tossmini-docs.toss.im/tds-mobile/components/TextField/text-field/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toss",
+   "sourceId": "tds-badge",
+   "kind": "official-doc",
+   "url": "https://tossmini-docs.toss.im/tds-mobile/components/badge/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toss",
+   "sourceId": "tds-ui-kit-license",
+   "kind": "license",
+   "url": "https://developers-apps-in-toss.toss.im/design/prepare/figma-ui-license.md",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toss-securities",
+   "sourceId": "wts-live",
+   "kind": "product-surface",
+   "url": "https://www.tossinvest.com/?focusedProductCode=A000660",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toss",
+   "sourceId": "tds-index",
+   "kind": "official-doc",
+   "url": "https://developers-apps-in-toss.toss.im/llms.txt",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toss",
+   "sourceId": "tds-button-live",
+   "kind": "official-doc",
+   "url": "https://tossmini-docs.toss.im/tds-mobile/components/button/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toss",
+   "sourceId": "tds-agreement",
+   "kind": "official-doc",
+   "url": "https://tossmini-docs.toss.im/tds-mobile/components/Agreement/v4/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toss-securities",
+   "sourceId": "tps-design",
+   "kind": "brand-asset",
+   "url": "https://toss.im/simplicity-21/sessions/3-3",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toss-securities",
+   "sourceId": "corporate-live",
+   "kind": "official-doc",
+   "url": "https://home.tossinvest.com/en/corporate-info",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toss-securities",
+   "sourceId": "investment-live",
+   "kind": "official-doc",
+   "url": "https://home.tossinvest.com/en/investment-products",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toss",
+   "sourceId": "tds-button-states",
+   "kind": "official-doc",
+   "url": "https://tossmini-docs.toss.im/tds-mobile/components/button/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "tossbank",
+   "sourceId": "protected-live",
+   "kind": "product-surface",
+   "url": "https://www.tossbank.com/customer/protected-products",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "tossbank",
+   "sourceId": "disclosure-live",
+   "kind": "product-surface",
+   "url": "https://www.tossbank.com/customer/product-disclosure",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "tossbank",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.tossbank.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "tossbank",
+   "sourceId": "bank-story",
+   "kind": "official-doc",
+   "url": "https://www.tossbank.com/ten-million",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toyota",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://global.toyota/en/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "tossbank",
+   "sourceId": "tps-history",
+   "kind": "official-doc",
+   "url": "https://toss.im/tossfeed/article/beginning-of-tps",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toyota",
+   "sourceId": "production-sales-live",
+   "kind": "product-surface",
+   "url": "https://global.toyota/en/company/profile/production-sales-figures/?padid=ag478_from_header_menu",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toss-securities",
+   "sourceId": "tossface-repo",
+   "kind": "brand-asset",
+   "url": "https://github.com/toss/tossface",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "tossbank",
+   "sourceId": "brand-resource",
+   "kind": "brand-asset",
+   "url": "https://brand.toss.im/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toyota",
+   "sourceId": "toyota-text-web-assets",
+   "kind": "brand-asset",
+   "url": "https://global.toyota/fonts/toyotatext/toyotatext_rg.woff2",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toyota",
+   "sourceId": "tps-live",
+   "kind": "product-surface",
+   "url": "https://global.toyota/en/company/vision-and-philosophy/production-system/?padid=ag478_from_header_menu",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "thumbtack",
+   "sourceId": "thumbprint-token-doc",
+   "kind": "product-surface",
+   "url": "https://thumbprint.design/tokens",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toyota",
+   "sourceId": "toyota-history",
+   "kind": "official-doc",
+   "url": "https://global.toyota/en/company/trajectory-of-toyota/history/%26gt",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toyota",
+   "sourceId": "toyota-philosophy",
+   "kind": "official-doc",
+   "url": "https://global.toyota/en/company/vision-and-philosophy/philosophy/?bt_code=brand_google_pai",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toyota",
+   "sourceId": "toyota-mobility",
+   "kind": "official-doc",
+   "url": "https://global.toyota/en/mobility/?padid=ag478_from_header_menu",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "tving",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.tving.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "toyota",
+   "sourceId": "toyota-tps",
+   "kind": "official-doc",
+   "url": "https://global.toyota/en/company/vision-and-philosophy/production-system/?padid=ag478_from_header_menu",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "tving",
+   "sourceId": "pretendard-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "tving",
+   "sourceId": "movie-live",
+   "kind": "product-surface",
+   "url": "https://www.tving.com/movie",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "tving",
+   "sourceId": "tving-policy",
+   "kind": "official-doc",
+   "url": "https://www.tving.com/policy/terms?viewType=webview",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "uber",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.uber.com/kr/ko/",
+   "curlStatus": 406,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "uber",
+   "sourceId": "about-live",
+   "kind": "product-surface",
+   "url": "https://www.uber.com/kr/ko/about/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "uber",
+   "sourceId": "uber-component-index",
+   "kind": "official-doc",
+   "url": "https://baseweb.design/components/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "uber",
+   "sourceId": "accessibility-live",
+   "kind": "product-surface",
+   "url": "https://www.uber.com/kr/ko/about/accessibility/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "tving",
+   "sourceId": "live-live",
+   "kind": "product-surface",
+   "url": "https://www.tving.com/live/C00551",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "uber",
+   "sourceId": "new-look",
+   "kind": "official-doc",
+   "url": "https://www.uber.com/us/en/blog/a-new-look/",
+   "curlStatus": 406,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "udn",
+   "sourceId": "politics-live",
+   "kind": "product-surface",
+   "url": "https://udn.com/news/cate/2/6638",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "udn",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://udn.com/news/index",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "udn",
+   "sourceId": "finance-live",
+   "kind": "product-surface",
+   "url": "https://udn.com/news/cate/2/6649",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "tving",
+   "sourceId": "cj-tving-history",
+   "kind": "official-doc",
+   "url": "https://newsroom.cj.net/cj-enms-tving-and-kts-seezn-announce-merger-to-become-south-koreas-largest-ott-platform/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "uber",
+   "sourceId": "advertising-guide",
+   "kind": "official-doc",
+   "url": "https://www.uber.com/us/en/advertising/specs/guidelines/",
+   "curlStatus": 406,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "tving",
+   "sourceId": "cj-lineup-2025",
+   "kind": "official-doc",
+   "url": "https://newsroom.cj.net/?p=5803",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "udn",
+   "sourceId": "noto-license",
+   "kind": "license",
+   "url": "https://notofonts.github.io/noto-docs/website/use/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "upbit",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.upbit.com/home",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "upbit",
+   "sourceId": "exchange-live",
+   "kind": "product-surface",
+   "url": "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "upbit",
+   "sourceId": "notice-live",
+   "kind": "product-surface",
+   "url": "https://www.upbit.com/service_center/notice",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "uber",
+   "sourceId": "baseweb",
+   "kind": "official-doc",
+   "url": "https://github.com/uber/baseweb",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "upbit",
+   "sourceId": "developer-center",
+   "kind": "official-doc",
+   "url": "https://global-docs.upbit.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "upbit",
+   "sourceId": "noto-license",
+   "kind": "license",
+   "url": "https://notofonts.github.io/noto-docs/website/use/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "upbit",
+   "sourceId": "sdk-license",
+   "kind": "license",
+   "url": "https://docs.upbit.com/kr/page/upbit_developer_sdk_license",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "udn",
+   "sourceId": "mobile-product",
+   "kind": "official-doc",
+   "url": "https://mobile.udn.com/re/udnnews.shtml",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "upstage",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.upstage.ai/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "udn",
+   "sourceId": "group-history",
+   "kind": "official-doc",
+   "url": "https://www.udngroup.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "upstage",
+   "sourceId": "api-pricing-live",
+   "kind": "product-surface",
+   "url": "https://www.upstage.ai/pricing/api",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "upstage",
+   "sourceId": "about-context",
+   "kind": "official-doc",
+   "url": "https://www.upstage.ai/about",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "upbit",
+   "sourceId": "roboto-license",
+   "kind": "license",
+   "url": "https://github.com/googlefonts/roboto-2/blob/main/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "upstage",
+   "sourceId": "studio-context",
+   "kind": "official-doc",
+   "url": "https://www.upstage.ai/products/studio",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "upstage",
+   "sourceId": "brand-assets",
+   "kind": "brand-asset",
+   "url": "https://www.upstage.ai/resources/brand-resource-center",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "udn",
+   "sourceId": "group-journalism",
+   "kind": "official-doc",
+   "url": "https://www.udngroup.com/journalism",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "uswds",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://designsystem.digital.gov/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "uswds",
+   "sourceId": "components-live",
+   "kind": "official-doc",
+   "url": "https://designsystem.digital.gov/components/overview/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "uswds",
+   "sourceId": "uswds-component-index",
+   "kind": "official-doc",
+   "url": "https://designsystem.digital.gov/components/overview/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "upstage",
+   "sourceId": "geist-license",
+   "kind": "license",
+   "url": "https://github.com/vercel/geist-font",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "vercel",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://vercel.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "tossbank",
+   "sourceId": "tds-design-tool",
+   "kind": "official-doc",
+   "url": "https://developers-apps-in-toss.toss.im/design/prepare/design.html",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "uswds",
+   "sourceId": "accordion-live",
+   "kind": "official-doc",
+   "url": "https://designsystem.digital.gov/components/accordion/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "uswds",
+   "sourceId": "about-doc",
+   "kind": "official-doc",
+   "url": "https://designsystem.digital.gov/about/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "vercel",
+   "sourceId": "vercel-component-index",
+   "kind": "official-doc",
+   "url": "https://vercel.com/geist/introduction",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "vercel",
+   "sourceId": "geist-live",
+   "kind": "official-doc",
+   "url": "https://vercel.com/geist/introduction",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "vercel",
+   "sourceId": "geist-font",
+   "kind": "license",
+   "url": "https://vercel.com/font",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "wanted",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.wanted.co.kr/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "minimax",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.minimaxi.com/",
+   "curlStatus": 0,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "wanted",
+   "sourceId": "company-live",
+   "kind": "product-surface",
+   "url": "https://www.wanted.co.kr/company",
+   "curlStatus": 404,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "wanted",
+   "sourceId": "montage-live",
+   "kind": "official-doc",
+   "url": "https://montage.wanted.co.kr/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "wanted",
+   "sourceId": "wanted-component-index",
+   "kind": "official-doc",
+   "url": "https://montage.wanted.co.kr/docs/components",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "minimax",
+   "sourceId": "m3-live",
+   "kind": "product-surface",
+   "url": "https://www.minimaxi.com/models/text/m3",
+   "curlStatus": 0,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "wanted",
+   "sourceId": "jobs-live",
+   "kind": "product-surface",
+   "url": "https://www.wanted.co.kr/wdlist/518",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "wanted",
+   "sourceId": "foundations-live",
+   "kind": "official-doc",
+   "url": "https://montage.wanted.co.kr/docs/foundations",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "wanted",
+   "sourceId": "text-button-doc",
+   "kind": "official-doc",
+   "url": "https://montage.wanted.co.kr/docs/components/actions/text-button/design",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "wanted",
+   "sourceId": "typography-doc",
+   "kind": "official-doc",
+   "url": "https://montage.wanted.co.kr/docs/utilities/web-utilities/typography-style",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "uswds",
+   "sourceId": "policy-license",
+   "kind": "license",
+   "url": "https://designsystem.digital.gov/about/website-policies-notices/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "wise",
+   "sourceId": "inter-license",
+   "kind": "license",
+   "url": "https://github.com/rsms/inter/blob/master/LICENSE.txt",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "wooribank",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://www.wooribank.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "uswds",
+   "sourceId": "typography-doc",
+   "kind": "official-doc",
+   "url": "https://designsystem.digital.gov/components/typography/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "wooribank",
+   "sourceId": "legacy-service-live",
+   "kind": "product-surface",
+   "url": "https://spot.wooribank.com/pot/Dream?withyou=PODEP0001",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "wooribank",
+   "sourceId": "legacy-information-live",
+   "kind": "product-surface",
+   "url": "https://spot.wooribank.com/pot/Dream?withyou=ln",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "wise",
+   "sourceId": "wise-component-index",
+   "kind": "official-doc",
+   "url": "https://wise.design/sitemap.xml",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "wooribank",
+   "sourceId": "corporate-ci-source",
+   "kind": "brand-asset",
+   "url": "https://spot.wooribank.com/pot/Dream?withyou=BPBKI0056",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "wise",
+   "sourceId": "wise-typography",
+   "kind": "official-doc",
+   "url": "https://wise.design/foundations/typography",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "wise",
+   "sourceId": "wise-components",
+   "kind": "official-doc",
+   "url": "https://docs.wise.design/components",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "wooribank",
+   "sourceId": "corporate-history",
+   "kind": "official-doc",
+   "url": "https://spot.wooribank.com/pot/Dream?withyou=BPBKI0084",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "wooribank",
+   "sourceId": "corporate-vision",
+   "kind": "official-doc",
+   "url": "https://spot.wooribank.com/pot/Dream?withyou=BPBKI0049",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "wooribank",
+   "sourceId": "bank-museum-history",
+   "kind": "official-doc",
+   "url": "https://spot.wooribank.com/pot/Dream?withyou=HMMUM0024",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "wooribank",
+   "sourceId": "corporate-esg",
+   "kind": "official-doc",
+   "url": "https://spot.wooribank.com/pot/Dream?withyou=BPPCT0068",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "wise",
+   "sourceId": "business-pricing-live",
+   "kind": "product-surface",
+   "url": "https://wise.com/gb/pricing/business",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "yanolja",
+   "sourceId": "brand-center-source",
+   "kind": "brand-asset",
+   "url": "https://www.yanoljagroup.com/brand_center",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "yanolja",
+   "sourceId": "yanolja-3",
+   "kind": "official-doc",
+   "url": "https://www.yanoljagroup.com/en/press_release/view?id=1534",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "yeogiotte",
+   "sourceId": "results-live",
+   "kind": "product-surface",
+   "url": "https://www.yeogi.com/domestic-accommodations",
+   "curlStatus": 403,
+   "browserStatus": 200,
+   "verdict": "reachable"
+  },
+  {
+   "id": "yeogiotte",
+   "sourceId": "product-live",
+   "kind": "product-surface",
+   "url": "https://www.yeogi.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "yeogiotte",
+   "sourceId": "ds-doc",
+   "kind": "official-doc",
+   "url": "https://designlibrary.yeogi.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "yeogiotte",
+   "sourceId": "typography-doc",
+   "kind": "official-doc",
+   "url": "https://designlibrary.yeogi.com/foudations/typography",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "yanolja",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://nol.yanolja.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "yeogiotte",
+   "sourceId": "radius-doc",
+   "kind": "official-doc",
+   "url": "https://designlibrary.yeogi.com/foudations/radius",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "yeogiotte",
+   "sourceId": "components-doc",
+   "kind": "official-doc",
+   "url": "https://designlibrary.yeogi.com/components/overview",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "wise",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://wise.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "wise",
+   "sourceId": "kr-pricing-live",
+   "kind": "product-surface",
+   "url": "https://wise.com/kr/pricing/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "yanolja",
+   "sourceId": "hotel-live",
+   "kind": "product-surface",
+   "url": "https://nol.yanolja.com/sub-home/hotel",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "yanolja",
+   "sourceId": "leisure-live",
+   "kind": "product-surface",
+   "url": "https://nol.yanolja.com/sub-home/leisure",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "yeogiotte",
+   "sourceId": "colors-doc",
+   "kind": "official-doc",
+   "url": "https://designlibrary.yeogi.com/foudations/color/palette-color",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "yeogiotte",
+   "sourceId": "layout-doc",
+   "kind": "official-doc",
+   "url": "https://designlibrary.yeogi.com/foudations/layout",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zapier",
+   "sourceId": "customer-support-live",
+   "kind": "product-surface",
+   "url": "https://zapier.com/solutions/customer-support",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zapier",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://zapier.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zapier",
+   "sourceId": "about",
+   "kind": "official-doc",
+   "url": "https://zapier.com/about",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "yanolja",
+   "sourceId": "pretendard-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "yeogiotte",
+   "sourceId": "spacing-doc",
+   "kind": "official-doc",
+   "url": "https://designlibrary.yeogi.com/foudations/spacing",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "yeogiotte",
+   "sourceId": "shadow-doc",
+   "kind": "official-doc",
+   "url": "https://designlibrary.yeogi.com/foudations/shadow",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zapier",
+   "sourceId": "pricing-live",
+   "kind": "product-surface",
+   "url": "https://zapier.com/pricing",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zapier",
+   "sourceId": "product-definition",
+   "kind": "official-doc",
+   "url": "https://help.zapier.com/hc/en-us/articles/37518970271245-What-is-Zapier",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zapier",
+   "sourceId": "refero-tier2",
+   "kind": "official-doc",
+   "url": "https://styles.refero.design/?q=Zapier",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zendesk",
+   "sourceId": "garden-home-live",
+   "kind": "product-surface",
+   "url": "https://garden.zendesk.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zapier",
+   "sourceId": "getdesign-tier2",
+   "kind": "official-doc",
+   "url": "https://getdesign.md/zapier/design-md",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zendesk",
+   "sourceId": "zendesk-signin-refresh",
+   "kind": "official-doc",
+   "url": "https://support.zendesk.com/hc/en-us/articles/9850316391322-Announcing-an-updated-look-to-the-team-member-and-end-user-sign-in-experiences",
+   "curlStatus": 404,
+   "browserStatus": 404,
+   "verdict": "dead"
+  },
+  {
+   "id": "zapier",
+   "sourceId": "degular-license",
+   "kind": "license",
+   "url": "https://fonts.adobe.com/fonts/degular",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zendesk",
+   "sourceId": "garden-home-official",
+   "kind": "official-doc",
+   "url": "https://garden.zendesk.com/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zapier",
+   "sourceId": "rebrand",
+   "kind": "official-doc",
+   "url": "https://zapier.com/blog/zapiers-new-look/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zigzag",
+   "sourceId": "home-live",
+   "kind": "product-surface",
+   "url": "https://zigzag.kr/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zendesk",
+   "sourceId": "garden-github",
+   "kind": "brand-asset",
+   "url": "https://github.com/zendeskgarden",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zigzag",
+   "sourceId": "pretendard-license",
+   "kind": "license",
+   "url": "https://github.com/orioncactus/pretendard/blob/main/LICENSE",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zigzag",
+   "sourceId": "product-a-live",
+   "kind": "product-surface",
+   "url": "https://zigzag.kr/catalog/products/145661347",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zendesk",
+   "sourceId": "garden-palette-official",
+   "kind": "official-doc",
+   "url": "https://garden.zendesk.com/design/palette/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zigzag",
+   "sourceId": "product-b-live",
+   "kind": "product-surface",
+   "url": "https://zigzag.kr/catalog/products/162934185",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zigzag",
+   "sourceId": "zds-engineering",
+   "kind": "official-doc",
+   "url": "https://devblog.kakaostyle.com/ko/2024-12-13-1-rebuilding-frontend-design-system/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zendesk",
+   "sourceId": "zendesk-company",
+   "kind": "official-doc",
+   "url": "https://www.zendesk.com/company/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zendesk",
+   "sourceId": "garden-button-live",
+   "kind": "official-doc",
+   "url": "https://garden.zendesk.com/components/button",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zendesk",
+   "sourceId": "zendesk-component-index",
+   "kind": "official-doc",
+   "url": "https://garden.zendesk.com/components/",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "zendesk",
+   "sourceId": "garden-color-live",
+   "kind": "product-surface",
+   "url": "https://garden.zendesk.com/design/color",
+   "verdict": "reachable",
+   "curlStatus": 200
+  },
+  {
+   "id": "thumbtack",
+   "sourceId": "thumbtack-component-index",
+   "kind": "official-doc",
+   "url": "https://thumbprint.design/components/",
+   "curlStatus": 404,
+   "browserStatus": 404,
+   "verdict": "dead"
+  }
+ ]
+}

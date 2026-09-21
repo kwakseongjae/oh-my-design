@@ -1273,6 +1273,7 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 0,
     "reasonCodes": [],
     "advisoryCodes": [
+      "source_url_dead",
       "component_state_prose_only"
     ],
     "paletteGrounding": null
@@ -2480,7 +2481,9 @@ export const REFERENCE_QUALITY = [
     "interactiveComponentCount": 1,
     "statedComponentCount": 1,
     "reasonCodes": [],
-    "advisoryCodes": [],
+    "advisoryCodes": [
+      "source_url_dead"
+    ],
     "paletteGrounding": null
   },
   {
@@ -4525,6 +4528,7 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 0,
     "reasonCodes": [],
     "advisoryCodes": [
+      "source_url_dead",
       "component_noninteractive_only"
     ],
     "paletteGrounding": null
@@ -8031,6 +8035,7 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 0,
     "reasonCodes": [],
     "advisoryCodes": [
+      "source_url_dead",
       "component_state_prose_only"
     ],
     "paletteGrounding": null
@@ -9897,6 +9902,7 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 0,
     "reasonCodes": [],
     "advisoryCodes": [
+      "source_url_dead",
       "component_state_prose_only"
     ],
     "paletteGrounding": null
@@ -11242,6 +11248,7 @@ export const REFERENCE_QUALITY = [
     "statedComponentCount": 0,
     "reasonCodes": [],
     "advisoryCodes": [
+      "source_url_dead",
       "component_state_prose_only"
     ],
     "paletteGrounding": null
