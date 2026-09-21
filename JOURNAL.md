@@ -30,7 +30,8 @@
 - **한 일(25)**: **웨이브 1 완료 — serendie 추가**(`81e048a9`), 카탈로그 첫 **네이티브 Core v2** 레퍼런스. 441개·verified 142. reason 0·advisory 0, 클레임 54/54, 컴포넌트 1·인터랙티브 1·상태 1. 범주는 **규칙**으로 해결(`c40bfb0e`, 넌센스 경로 대조군으로 검증, CN 기각 10건 유지). 게이트 4개가 실제 결함을 잡았고 내 생성기 구멍(`ds` 미검사)도 드러났다. 낡은 하드코딩 카운트 3곳 count-agnostic화.
 - **한 일(26)**: 웨이브 1 잔여 조사 — PayPay·AntUI는 **신규가 아니라 깊이 보정**. alipay의 라이브러리 출처 의심은 **세어보니 클레임 0개 근거**라 무혐의. **paypay 스타일가이드는 캡쳐 함정** — 커스텀 프로퍼티 577개 중 547개가 Element UI, 페인트 1315×#2C3E50 vs 10×PayPay레드, 내용은 이미지 33장. 오늘 세 번째 같은 계통(cookpad·Serendie·paypay).
 - **한 일(27)**: 죽은 인용 재검증 완료(`6a1934e0`) — 출처 115개 전수 확인, thumbtack 복구, **6건은 복구 불가이고 1월 강등이 옳다**(페이지가 옮겨간 게 아니라 없어졌다). 계측기 교훈 추가: **페이지는 브라우저·자산은 curl**(폰트가 브라우저에선 ERR, curl로 200). advisory 17→14.
-- **다음**: paypay 깊이 보정(202클레임, 제약 문서화됨) · Core 상세 'UI font unresolved' 갭 · 셀렉터 depth UI(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(28)**: 'UI font unresolved'를 파보니 **UI 갭이 아니라 투영 갭** — `typography_assets.assets` 슬롯이 스키마에 있는데 마이그레이터가 roles만 채워서 **Core 그래프 3개 전부 브랜드 서체가 없다**. krds·toss는 레거시 복원본이 가려주고 있었고 serendie는 카탈로그 확장에만 있다. 폴백으로 덮지 않고 기록(투영 변경 + 재채택 3건 + source_status 판단 필요).
+- **다음**: **Core 서체 투영 결정**(오너) · paypay 깊이 보정(웨이브 규모) · 셀렉터 depth UI(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

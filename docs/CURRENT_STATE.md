@@ -3,6 +3,35 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## 🔬 2026-09-21 — "작은 UI 갭"이 아니었다: **Core 그래프에 브랜드 서체가 없다**
+→ `docs/CORE_TYPOGRAPHY_ASSETS_GAP_2026-09-21.md`
+
+상세 페이지의 "UI font basis unresolved"를 UI 폴백으로 고치려다 **읽을 것이 없다**는 걸 발견했다:
+
+```
+coreTransport.fontRoles          → 타입 롤만(display 64px/400/1.6 …)
+coreTransport의 family 토큰       → 0개
+serendie/krds/toss 그래프의
+  typography_assets.assets       → 셋 다 null
+```
+
+**스키마에는 자리가 있다.** `typographyAssets`는 `roles`·**`assets`**·`rules` 세 슬롯이고
+`asset`은 `kind: font`를 받는다. 마이그레이터 주석이 그대로 말한다(`design-md-core.cjs:572`):
+"Promote `tokens.typography` into typed `typography_assets.roles`" — **roles만**.
+
+**왜 안 보였나**: krds·toss는 마이그레이션이라 `original_segments` 복원본의 frontmatter가
+서체를 갖고 있어 레지스트리·AST는 안다. **Core 그래프만 모른다.** serendie는 네이티브라
+서체가 **카탈로그 확장(레거시 모양 비상구) 안에만** 있다 → **Core 구조 자체는 브랜드 서체를
+한 번도 담은 적이 없다.** 이식 가능한 그래프가 목적인 포맷에서 작은 일이 아니다.
+
+**고치지 않고 적어둔 이유**: 투영 변경이라 앞으로의 모든 채택에 영향을 주고, 봉인된 패키지
+3개를 다시 채택해야 하며, `source_status`/`license_status`를 뭘로 쓸지는 증거 주장이라
+오너 판단이다(스펙: *"a migrator never inserts … merely to satisfy schema"*).
+**UI 폴백으로 덮으면 그래프가 서체를 모른다는 사실만 가려진다** — 게다가 화면이 보여주는
+`origin · confidence`는 AST에만 있어서 폴백에는 붙일 근거가 없다.
+
+---
+
 ## ✅ 2026-09-21 — 죽은 인용 재검증 완료: **6건은 복구 불가이고 그게 맞다** (`6a1934e0`)
 
 남은 15개 레퍼런스의 **출처 115개 전부**를 patternfly와 같은 기준(실제 브라우저)으로 열었다.
