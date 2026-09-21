@@ -1808,23 +1808,23 @@ export const REFERENCE_QUALITY = [
   {
     "id": "cybozu",
     "status": "partial",
-    "verifiedAt": "2026-06-17",
+    "verifiedAt": "2026-09-21",
     "tokensExtractedAt": "2026-06-17",
-    "nextReverifyAt": null,
+    "nextReverifyAt": "2026-12-14",
     "renewedSourceCount": 0,
     "tokenSource": "live-extract",
     "claimCount": 114,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "evidenceClaimCount": 114,
+    "evidenceCoverage": 1,
+    "surfaceCount": 2,
+    "sourceCount": 5,
     "conflictCount": 0,
     "tier1SourceCount": 4,
     "componentCount": 8,
     "interactiveComponentCount": 5,
     "statedComponentCount": 1,
     "reasonCodes": [
-      "verification_v2_missing"
+      "interactive_state_missing"
     ],
     "advisoryCodes": [
       "motion_value_unsourced"

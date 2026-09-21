@@ -873,14 +873,14 @@
     {
       "id": "cybozu",
       "status": "partial",
-      "verified_at": "2026-06-17",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "verified_at": "2026-09-21",
+      "next_reverify_at": "2026-12-14",
+      "evidence_coverage": 1,
+      "surface_count": 2,
+      "source_count": 5,
       "conflict_count": 0,
       "reason_codes": [
-        "verification_v2_missing"
+        "interactive_state_missing"
       ]
     },
     {

@@ -8,9 +8,137 @@ primary_color: "#139cb7"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=cybozu.co.jp&sz=128"
-verified: "2026-06-17"
+verified: "2026-09-21"
 added: "2026-06-17"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-21"
+  surfaces:
+    - { id: corporate, kind: product-surface, url: "https://cybozu.co.jp/", inspected: "2026-09-21" }
+    - { id: kintone, kind: product-surface, url: "https://kintone.cybozu.co.jp/", inspected: "2026-09-21" }
+  sources:
+    - { id: corp-live, kind: product-surface, url: "https://cybozu.co.jp/", captured: "2026-09-21" }
+    - { id: kintone-live, kind: product-surface, url: "https://kintone.cybozu.co.jp/", captured: "2026-09-21" }
+    - { id: corp-components-jun, kind: product-surface, url: "https://cybozu.co.jp/", captured: "2026-06-17" }
+    - { id: kintone-components-jun, kind: product-surface, url: "https://kintone.cybozu.co.jp/", captured: "2026-06-17" }
+    - { id: kuc-repo, kind: official-doc, url: "https://github.com/kintone-labs/kintone-ui-component", captured: "2026-09-21" }
+  conflicts: []
+  claims:
+    tokens.colors.canvas: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.hairline: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.ink: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.ink-pure: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.kintone-amber: { surface_id: kintone, source_id: kintone-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.kintone-amber-deep: { surface_id: kintone, source_id: kintone-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.kintone-card-border: { surface_id: kintone, source_id: kintone-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.kintone-dark: { surface_id: kintone, source_id: kintone-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.kintone-ink: { surface_id: kintone, source_id: kintone-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.kintone-surface: { surface_id: kintone, source_id: kintone-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.kintone-tint: { surface_id: kintone, source_id: kintone-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.kintone-yellow: { surface_id: kintone, source_id: kintone-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.muted: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.muted-slate: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.on-primary: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.primary: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.primary-light: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.slate-dark: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.slate-darker: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.colors.surface: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.components.corp-card.bg: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.corp-card.border: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.corp-card.type: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.corp-card.use: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.corp-icon-button.bg: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.corp-icon-button.fg: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.corp-icon-button.radius: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.corp-icon-button.shadow: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.corp-icon-button.type: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.corp-icon-button.use: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.corp-nav-link.active: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.corp-nav-link.fg: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.corp-nav-link.font: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.corp-nav-link.type: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.corp-nav-link.use: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.corp-text-link.fg: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.corp-text-link.font: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.corp-text-link.type: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.corp-text-link.use: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-badge.bg: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-badge.fg: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-badge.font: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-badge.padding: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-badge.radius: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-badge.type: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-badge.use: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-card.bg: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-card.border: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-card.fg: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-card.padding: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-card.radius: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-card.type: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-card.use: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-cta-dark.bg: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-cta-dark.fg: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-cta-dark.font: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-cta-dark.height: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-cta-dark.padding: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-cta-dark.radius: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-cta-dark.type: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-cta-dark.use: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-outline-button.bg: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-outline-button.border: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-outline-button.fg: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-outline-button.height: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-outline-button.padding: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-outline-button.radius: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-outline-button.type: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-outline-button.use: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.rounded.full: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.rounded.lg: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.rounded.md: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.rounded.sm: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.shadow.none: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.shadow.pickup: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.shadow.soft: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.base: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.lg: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.md: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.section: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.sm: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.xl: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.xs: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.spacing.xxl: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.chip.size: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.chip.use: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.chip.weight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.corp-body.lineHeight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.corp-body.size: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.corp-body.use: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.corp-body.weight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.corp-en-label.size: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.corp-en-label.use: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.corp-en-label.weight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.corp-nav.size: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.corp-nav.use: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.corp-nav.weight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.family.corporate: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.family.fallback: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.family.product: { surface_id: kintone, source_id: kintone-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.kintone-body.lineHeight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.kintone-body.size: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.kintone-body.use: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.kintone-body.weight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.kintone-h2-alt.lineHeight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.kintone-h2-alt.size: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.kintone-h2-alt.tracking: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.kintone-h2-alt.use: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.kintone-h2-alt.weight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.kintone-h2.lineHeight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.kintone-h2.size: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.kintone-h2.tracking: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.kintone-h2.use: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
+    tokens.typography.kintone-h2.weight: { surface_id: corporate, source_id: corp-live, method: computed-style, captured: "2026-09-21" }
 tokens:
   source: live-extract
   extracted: "2026-06-17"
