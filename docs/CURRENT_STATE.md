@@ -25,7 +25,7 @@
 ---
 
 ## ✅ 2026-09-21 — smarthr도 `verified_v2`: **선언된 primary가 버튼색이 아니었다**
-→ `docs/PIXIV_CHARCOAL_2026-09-21.md` §7–§8
+→ `docs/JP_DEPTH_2026-09-21.md` §7–§8
 
 pixiv와 같은 파이프라인으로 smarthr 완료. **카탈로그 144 verified / 183 partial / 114 legacy.**
 
@@ -53,7 +53,7 @@ primary는 `#0077c7`(`--color-bg-blue`). 그리고 **시맨틱 4색이 계열째
 ---
 
 ## ✅ 2026-09-21 — pixiv: 선언 팔레트가 **머티리얼이었다**, `legacy_snapshot` → `verified_v2`
-→ `docs/PIXIV_CHARCOAL_2026-09-21.md`
+→ `docs/JP_DEPTH_2026-09-21.md`
 
 JP 깊이 목록을 재개하며 smarthr를 1순위로 잡았다가 **네임스페이스를 측정하고 순위를 뒤집었다.**
 `smarthr.design`은 398 props 중 **355개가 `--tw-*`**(문서 사이트 = Tailwind, PayPay와 같은 계통)인데
