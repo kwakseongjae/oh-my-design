@@ -3,6 +3,37 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## 🔬 2026-09-21 — 죽은 인용 12건: **재검증 큐지 인용 패치가 아니다**
+→ `docs/DEAD_CITATIONS_2026-09-21.md`
+
+**12건 전부 실제 브라우저로 404 재확인.** 봇 차단도 JS 셸도 아니고 대부분 **사이트 자신의
+브랜드 404 페이지**를 돌려준다(그래서 body 비교엔 "도달함"으로 보였다).
+
+**12건 중 10건은 어떤 클레임도 근거하지 않는다**(banksalad 9, kream 1만 무겁다). 클레임
+형태를 직접 확인하고 셌고 합계도 맞다. **그러나 "인용 안 됨"≠"쓸모없음"** — 인용 없는 출처는
+흔하고(patternfly만 7개, 그중 component-index는 §4 로스터를 받친다) **출처 목록은 무엇을
+들여다봤는지의 기록**이다. 그래서 **지우지 않고, 게이트도 약화시키지 않는다**(인용만 떼면
+영원히 안 만료되는 우회로가 생긴다).
+
+**사이트 내비게이션을 읽어 대체 URL을 찾았다**(추측 금지): patternfly는 섹션 개명
+(`design-foundations`→`foundations-and-styles`), hyundai vehicles는 `/e/` 제거,
+hyundai ioniq6는 **하이픈 하나**(`the-new-ioniq-6`→`the-new-ioniq6`). 나머지는 대체 아님 —
+11st·kurly·kream은 다른 페이지, brandi는 상품 자체가 내려갔다. **banksalad가 제일 무겁다**:
+9개 클레임이 전부 사라진 허브의 **filter-chip** `live-inspect` 관측이다.
+
+**고쳤다가 되돌렸다 — 게이트가 옳았다.** 3건을 복구하고 실제로 관측까지 했더니
+(`Red Hat Text 14px` · `HyundaiSansTextKR 16px`) 만료가 **1월→3월**로 가고 advisory도
+사라졌다. 그런데 `evidence-integrity`가 잡았다: **"An observation cannot have been made
+after the review that accepted it"** (`captured > checked`). 맞다 — `captured`를 오늘로
+두려면 `checked`도 오늘이어야 하고 **그건 내가 안 한 전면 재검토를 주장하는 것**이다.
+**URL 수정은 공짜 연산이 아니라 레퍼런스 재검토를 요구한다.** 3건 전부 revert.
+
+→ **1월 강등은 막을 것이 아니라 옳은 동작이다.** 답은 뱃지 방어가 아니라 **제대로 재검증**
+(그때 `checked`를 올리는 게 정직해진다). 대체 URL 3건은 조사·검증 끝나 **바로 쓸 수 있다.**
+`bmw`·`onestore`·`thsr`·`wanted` 4건은 고쳐도 날짜가 안 움직여 **이 항목이 아니다**(평범한 1월 벽).
+
+---
+
 ## ✅ 2026-09-21 — 오너 결정 C: **깊이를 노출한다** (`114fe953`)
 
 "아이덴티티 전용을 넣을 것인가"에 **C(넣되 구분한다)**. 숫자는 이미 매니페스트에 있었고
