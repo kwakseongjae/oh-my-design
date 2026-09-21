@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { REGISTRY } from '@/data/registry.generated';
+import { REFERENCE_QUALITY_BY_ID } from '@/data/reference-quality.generated';
 import { counterKey, getRedis } from '@/lib/kv';
 
 // Re-resolve the HOT set at most every 30s (matches /api/leaderboard) so the
@@ -141,6 +142,14 @@ export async function GET() {
         pop: popMap.get(e.id) ?? 0,        // select-counter score, for Popular sort + blend
         added: e.added ?? null,            // first-added date, for New sort + recency boost
         quality: qualityScore(e),          // 0..1 content-completeness (marquee proxy)
+        // Component depth, so a consumer can distinguish a reference with twelve
+        // components from one with a logo and a colour. `qualityScore` above
+        // cannot: it weighs `tokens.source`, `ds`, the `components_harvested`
+        // flag, colour count and typography — nothing that counts components, so
+        // a 12-component reference and a 1-component one score identically.
+        // Carried as data now; how the selector shows it is a separate choice.
+        components: REFERENCE_QUALITY_BY_ID[e.id]?.componentCount ?? 0,
+        interactiveComponents: REFERENCE_QUALITY_BY_ID[e.id]?.interactiveComponentCount ?? 0,
       };
     });
 

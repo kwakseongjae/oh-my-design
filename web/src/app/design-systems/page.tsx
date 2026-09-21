@@ -18,8 +18,26 @@ import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import { DSCard } from "@/components/ds-card";
 import { GithubStarButton } from "@/components/github-star-button";
 import { COLLECTIONS } from "@/lib/collections";
-import { REFERENCE_QUALITY_COUNTS } from "@/data/reference-quality.generated";
+import { REFERENCE_QUALITY, REFERENCE_QUALITY_COUNTS } from "@/data/reference-quality.generated";
 import { CollectionInlineLink } from "@/app/collections/collection-inline-link";
+
+/**
+ * Depth *within the verified tier*, which is where the claim needs qualifying.
+ *
+ * Catalog-wide the numbers read reassuringly — 404 of 440 have an interactive
+ * component — and that is exactly why they are the wrong ones to print here: they
+ * bury the thing a reader is being misled about. All 36 references with no
+ * interactive component sit in `verified_v2`; there are none in `partial` and none
+ * in `legacy_snapshot`.
+ *
+ * That is not a coincidence, it is how the tier is defined. `verified_v2` asks for
+ * a complete evidence graph, and a document that claims less has less to ground:
+ * the 36 average 35 claims against 62 for the rest, both at 100% coverage. Claiming
+ * less is the cheaper route to the badge, so the badge cannot be read as depth.
+ */
+const VERIFIED = REFERENCE_QUALITY.filter((entry) => entry.status === "verified_v2");
+const verifiedInteractive = VERIFIED.filter((entry) => entry.interactiveComponentCount > 0).length;
+const verifiedStateful = VERIFIED.filter((entry) => entry.statedComponentCount > 0).length;
 
 export default function DesignSystemsPage() {
   const { theme, setTheme } = useTheme();
@@ -71,6 +89,16 @@ export default function DesignSystemsPage() {
         <p className="mt-3 font-mono text-xs text-muted-foreground">
           {REFERENCE_QUALITY_COUNTS.verified_v2} Verified v2 · {REFERENCE_QUALITY_COUNTS.partial} Partial ·{" "}
           {REFERENCE_QUALITY_COUNTS.legacy_snapshot} Legacy snapshots
+        </p>
+        {/*
+          * Qualifying the line above, because "Verified v2" does not mean what a
+          * reader reasonably hears. It means the evidence graph is complete — not
+          * that there is a button documented. Printed second and in the same
+          * register so it reads as a qualification of the tier, not a new metric.
+          */}
+        <p className="mt-1 font-mono text-xs text-muted-foreground">
+          of the verified: {verifiedInteractive} carry interactive components ·{" "}
+          {verifiedStateful} record per-state values
         </p>
 
         {/* Curated collections — intent-keyword entry points (#5) */}

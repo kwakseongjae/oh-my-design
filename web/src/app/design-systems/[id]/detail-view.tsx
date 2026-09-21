@@ -143,9 +143,17 @@ export function DetailView({
     ds?.name ?? detail.id.replace(/\.(app|ai)$/, "").replace(/^./, (c) => c.toUpperCase());
   const quality = detail.referenceAst?.quality ?? detail.referenceQuality;
   const fontEvidence = detail.referenceAst?.foundations.uiFont;
-  const componentCount = detail.referenceAst
-    ? Object.keys(detail.referenceAst.tokens.components).length
-    : null;
+  /**
+   * From the quality manifest, not the AST.
+   *
+   * This read `Object.keys(referenceAst.tokens.components).length`, which is
+   * null for every reference without an AST — and the manifest covers all 440.
+   * Checked before switching: the two counts agree on all 440, so there is no
+   * information in keeping the second source, only a way for them to drift.
+   */
+  const componentCount = quality.componentCount;
+  const interactiveCount = quality.interactiveComponentCount;
+  const statedCount = quality.statedComponentCount;
   const evidencePercent = Math.round(quality.evidenceCoverage * 100);
 
   function copyMd() {
@@ -367,14 +375,33 @@ export function DetailView({
                     : "unresolved"}
                 </dd>
               </div>
-              {detail.referenceAst && componentCount !== null && (
-                <div>
-                  <dt className="text-muted-foreground">Components</dt>
-                  <dd className="mt-0.5 font-medium text-foreground">
-                    {componentCount} documented · {detail.referenceAst.tokens.componentsHarvested ? "harvested" : "documented"}
-                  </dd>
-                </div>
-              )}
+              {/*
+                * Interactive count, not just the total.
+                *
+                * 31 of 440 references carry one component or none and nothing
+                * interactive — all of them `verified_v2`, because that tier means
+                * the evidence graph is complete, not that there is a button to
+                * look at. A reader had no way to tell those from a reference with
+                * twelve components and five carrying real per-state values. The
+                * numbers were already computed and published; they were just not
+                * read.
+                */}
+              <div>
+                <dt className="text-muted-foreground">Components</dt>
+                <dd className="mt-0.5 font-medium text-foreground">
+                  {componentCount === 0 ? (
+                    "none documented"
+                  ) : (
+                    <>
+                      {componentCount} documented
+                      {" · "}
+                      {interactiveCount === 0
+                        ? "none interactive"
+                        : `${interactiveCount} interactive${statedCount > 0 ? `, ${statedCount} with states` : ""}`}
+                    </>
+                  )}
+                </dd>
+              </div>
             </dl>
             {quality.reasonCodes.length > 0 && (
               <p className="mt-2 border-t border-border/50 pt-2 font-mono text-[10px] leading-relaxed text-muted-foreground">
