@@ -8,13 +8,14 @@
  * that with a blended, locale-aware score.
  */
 
-export type SortMode = "recommend" | "popular" | "az" | "new";
+export type SortMode = "recommend" | "popular" | "az" | "new" | "depth";
 
 export const SORT_MODES: { mode: SortMode; label: string }[] = [
   { mode: "recommend", label: "Recommended" },
   { mode: "popular", label: "Popular" },
   { mode: "az", label: "A–Z" },
   { mode: "new", label: "New" },
+  { mode: "depth", label: "Depth" },
 ];
 
 /** Minimal shape the comparators need — a subset of RefListItem. */
@@ -25,6 +26,40 @@ export interface SortableRef {
   pop: number;
   added: string | null;
   quality: number;
+  /** Total documented components. */
+  components: number;
+  /** Components rendering an interactive type. */
+  interactiveComponents: number;
+  /** Components carrying per-state values — see `hasMeasuredStates`. */
+  statedComponents: number;
+  /** Evidence tier; only verified_v2 guarantees the state keys were observed. */
+  qualityTier: string | null;
+}
+
+/**
+ * Whether a reference's per-state component values are *evidence-backed*.
+ *
+ * `statedComponents` counts state keys, and a prose pass can write `hover:`
+ * without observing one. Measured 2026-09-21: of the 17 references with >= 4
+ * stated components only 3 are verified_v2, and the deepest (github, 37/15/14)
+ * is a legacy snapshot. verified_v2 is the tier where every canonical token path
+ * — state keys included — carries a claim with a real observation method, so it
+ * is the gate. Two is the floor because one stated component is the catalog's
+ * median and separates nothing.
+ */
+export function hasMeasuredStates(r: SortableRef): boolean {
+  return r.qualityTier === "verified_v2" && r.statedComponents >= 2;
+}
+
+/**
+ * Depth ordering: how much of a real component contract a reference actually
+ * hands the generator. Evidence-backed states rank first, then raw interactive
+ * count, then total components — so a measured 6-component reference outranks a
+ * 37-component prose snapshot. That is this catalog's thesis expressed as an
+ * ordering, not an accident.
+ */
+export function depthScore(r: SortableRef): [number, number, number] {
+  return [hasMeasuredStates(r) ? r.statedComponents : 0, r.interactiveComponents, r.components];
 }
 
 const DAY = 86_400_000;
@@ -76,6 +111,15 @@ export function sortRefs<T extends SortableRef>(
 
   if (mode === "az") {
     return out.sort((a, b) => a.name.localeCompare(b.name));
+  }
+  if (mode === "depth") {
+    // Pure, like az/new: someone who picks Depth wants the deep ones, not the
+    // popular ones, so HOT is not pinned.
+    return out.sort((a, b) => {
+      const [as, ai, ac] = depthScore(a);
+      const [bs, bi, bc] = depthScore(b);
+      return bs - as || bi - ai || bc - ac || a.name.localeCompare(b.name);
+    });
   }
   if (mode === "new") {
     return out.sort(

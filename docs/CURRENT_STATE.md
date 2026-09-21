@@ -3,6 +3,31 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-21 — 셀렉터 depth UI: **뱃지를 개수가 아니라 증거에 걸었다**
+
+`/api/references`가 컴포넌트 깊이를 데이터로만 들고 있던 것("how the selector shows it is a
+separate choice")을 UI로 마감했다. **Depth 정렬 모드 + STATES 뱃지 + `statedComponents`·
+`qualityTier` 노출.**
+
+**설계에서 한 번 틀릴 뻔했다.** 처음엔 `statedComponents >= 4`(17건)로 뱃지를 걸려 했는데,
+재보니 **17건 중 verified_v2는 3건뿐**이고 가장 깊어 보이는 **github(37/15/14)이
+`legacy_snapshot`**이다 — 산문이 `hover:`를 쓴 것일 뿐 관측이 아니다. 그대로 갔으면
+**"상태 키를 가장 많이 적은 레퍼런스"에 뱃지를 달 뻔했다.** 오늘 cybozu가 가르친
+"선언 ≠ 관측"이 그대로 재현됐다.
+
+→ 게이트를 **`verified_v2` AND `stated >= 2`**로 바꿨다(**441 중 20건**). verified_v2는 모든
+토큰 경로가 실제 관측 method(`live-inspect`/`computed-style`)를 가진 클레임을 요구하므로
+산문이 통과할 수 없다. 정렬도 같은 원칙 — **측정된 6컴포넌트가 산문 37컴포넌트를 앞선다.**
+
+**부수로 접근성 결함 3건을 고쳤다(기존 결함).** 뱃지 유리가 타일 색 위에 합성돼 밝은 타일에서
+흰 글씨가 사라진다: **HOT 2.22:1**(배민 청록) · **HOT 2.47:1**(당근 주황) · **NEW 2.93:1**(Serendie).
+세 종류 전부 **불투명 베이스**를 깔아 타일과 무관하게 **HOT 4.60 · NEW 4.58 · STATES 6.27**로
+올렸다(9px 소문자 대문자 텍스트라 AA 4.5 필요).
+
+`/builder` 워크 완주: Home → `/builder` → Depth → 뱃지 카드 → preview(32KB), 콘솔 에러 0.
+
+---
+
 ## ⚖️ 2026-09-21 — cybozu: 증거는 붙였지만 **verified로 올리지 않았다** → §9
 
 6월 세션이 실측은 했으나 구조로 남기지 않아 `verification_v2_missing` 하나만 걸려 있었다.

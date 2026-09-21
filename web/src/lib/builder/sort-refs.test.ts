@@ -1,10 +1,14 @@
 import { describe, it, expect } from "vitest";
-import { sortRefs, recommendScore, resolveVisitorCountry, type SortableRef } from "./sort-refs";
+import { sortRefs, recommendScore, resolveVisitorCountry, hasMeasuredStates, depthScore, type SortableRef } from "./sort-refs";
 
 const NOW = Date.parse("2026-06-24");
 
 function ref(p: Partial<SortableRef> & { name: string }): SortableRef {
-  return { countryCode: "US", hot: false, pop: 0, added: null, quality: 0.5, ...p };
+  return {
+    countryCode: "US", hot: false, pop: 0, added: null, quality: 0.5,
+    components: 0, interactiveComponents: 0, statedComponents: 0, qualityTier: "legacy_snapshot",
+    ...p,
+  };
 }
 
 describe("sortRefs", () => {
@@ -55,6 +59,54 @@ describe("sortRefs", () => {
     const input = [...all];
     sortRefs(input, "az", "US", NOW);
     expect(input).toEqual(all);
+  });
+});
+
+describe("depth sort", () => {
+  // Shaped after the real catalog (measured 2026-09-21): github is the deepest
+  // reference by raw count and is a legacy snapshot; pixiv is shallow by count
+  // and fully measured.
+  const github = ref({ name: "GitHub", components: 37, interactiveComponents: 15, statedComponents: 14, qualityTier: "legacy_snapshot", hot: true });
+  const pixiv = ref({ name: "pixiv", components: 6, interactiveComponents: 5, statedComponents: 5, qualityTier: "verified_v2" });
+  const smarthr = ref({ name: "SmartHR", components: 8, interactiveComponents: 7, statedComponents: 6, qualityTier: "verified_v2" });
+  const cybozu = ref({ name: "Cybozu", components: 8, interactiveComponents: 5, statedComponents: 1, qualityTier: "partial" });
+  const thin = ref({ name: "Thin", components: 1, interactiveComponents: 0, statedComponents: 0, qualityTier: "legacy_snapshot" });
+  const all = [thin, github, cybozu, pixiv, smarthr];
+
+  it("ranks evidence-backed states above a deeper prose snapshot", () => {
+    const out = sortRefs(all, "depth", "US", NOW);
+    expect(out.map((r) => r.name)).toEqual(["SmartHR", "pixiv", "GitHub", "Cybozu", "Thin"]);
+  });
+
+  it("does not pin HOT — Depth means deep, not popular", () => {
+    // github is the only hot ref and still sorts below the two measured ones.
+    const out = sortRefs(all, "depth", "US", NOW);
+    expect(out[0].hot).toBe(false);
+    expect(out.indexOf(github)).toBeGreaterThan(out.indexOf(pixiv));
+  });
+
+  it("falls back to interactive, then total components, for unmeasured refs", () => {
+    const out = sortRefs([thin, cybozu, github], "depth", "US", NOW);
+    expect(out.map((r) => r.name)).toEqual(["GitHub", "Cybozu", "Thin"]);
+  });
+
+  it("hasMeasuredStates gates on verified_v2, not on the raw count", () => {
+    expect(hasMeasuredStates(github)).toBe(false); // 14 stated, but legacy prose
+    expect(hasMeasuredStates(pixiv)).toBe(true);
+    expect(hasMeasuredStates(cybozu)).toBe(false); // partial, and only 1
+    // one stated component is the catalog median — it separates nothing
+    expect(hasMeasuredStates(ref({ name: "One", statedComponents: 1, qualityTier: "verified_v2" }))).toBe(false);
+  });
+
+  it("zeroes the states term for unverified refs rather than trusting the count", () => {
+    expect(depthScore(github)[0]).toBe(0);
+    expect(depthScore(pixiv)[0]).toBe(5);
+  });
+
+  it("does not mutate the input array", () => {
+    const before = [...all];
+    sortRefs(all, "depth", "US", NOW);
+    expect(all).toEqual(before);
   });
 });
 

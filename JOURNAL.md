@@ -37,7 +37,8 @@
 - **열린 것**: pixiv 홈이 로그인 월이라 §5·§8(레이아웃·브레이크포인트)은 여전히 이전 산문 — `.verification.md`에 한계로 명시.
 - **한 일(32)**: smarthr도 완주 — `legacy_snapshot` → **`verified_v2`**(claims 124/124, stated 6). 선언 `button-primary #00C4CC`는 **브랜드색이지 버튼색이 아니었고**(실제 `#0077c7`), 시맨틱 4색은 **계열째** 틀렸다(success는 초록이 아니라 틸 `#0f7f85`). family 토큰이 없어 서체는 비웠다. 카탈로그 **144 verified**.
 - **한 일(33)**: cybozu — 선언 20색이 두 표면에서 **전부 유효**함을 재확인하고 `verification_v2` 부착(evidenceCoverage **0 → 1.00**). 다만 라이브 마케팅 페이지에서 잰 상태값이 **크롬 기본 포커스 링(#2693ff)**을 내놓아 기록하지 않고 `partial` 유지. kintone-ui-component(파랑 #3498db)는 **세 번째 증거 도메인**이라 미반입.
-- **다음**: 셀렉터 depth UI(오너 선택) · cybozu 상태(인증 테넌트 또는 앱 표면 필요) · smarthr/cybozu 내용이 pixiv 파일명 아래 있는 부채 정리(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(34)**: 셀렉터 depth UI — Depth 정렬 + STATES 뱃지. **뱃지를 개수가 아니라 `verified_v2`에 걸었다**(441중 20건): `stated>=4` 17건 중 verified는 3건뿐이고 최상위 github(37/15/14)이 legacy라 개수로 걸면 **산문에 뱃지를 달 뻔했다.** 기존 접근성 결함 3건(HOT 2.22 · 2.47 · NEW 2.93)도 불투명 베이스로 전부 AA 통과.
+- **다음**: cybozu 상태(인증 테넌트 필요 — **권장하지 않음**) · CN 확충 · 1000/700 확충 본편(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

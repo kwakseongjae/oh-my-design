@@ -150,6 +150,20 @@ export async function GET() {
         // Carried as data now; how the selector shows it is a separate choice.
         components: REFERENCE_QUALITY_BY_ID[e.id]?.componentCount ?? 0,
         interactiveComponents: REFERENCE_QUALITY_BY_ID[e.id]?.interactiveComponentCount ?? 0,
+        // Components carrying per-state values (hover/pressed/focus/disabled).
+        // This is the scarce signal: 177 references have none and 191 have
+        // exactly one, so it separates a real component contract from a colour
+        // swatch in a way `components` cannot.
+        statedComponents: REFERENCE_QUALITY_BY_ID[e.id]?.statedComponentCount ?? 0,
+        // Shipped alongside because the count alone is not a claim worth making.
+        // `statedComponentCount` counts state *keys*, and a legacy prose pass can
+        // write `hover:` without ever observing one — measured 2026-09-21, only
+        // 3 of the 17 references with >= 4 stated components are verified_v2, and
+        // the deepest of them (github 37/15/14) is a legacy snapshot. A consumer
+        // that wants evidence-backed depth must read this together with the count;
+        // verified_v2 is the tier where every state key carries a claim with a
+        // real observation method (live-inspect / computed-style), never prose.
+        qualityTier: REFERENCE_QUALITY_BY_ID[e.id]?.status ?? null,
       };
     });
 

@@ -38,6 +38,15 @@ export interface RefListItem {
   added: string | null;
   /** 0..1 content-completeness — the algorithmic "marquee" proxy. */
   quality: number;
+  /** Total documented components. */
+  components: number;
+  /** Of those, ones that render an interactive type (button/input/tab/toggle). */
+  interactiveComponents: number;
+  /** Of those, ones carrying per-state values. Read with `qualityTier` — the
+   *  count alone does not say the states were observed. */
+  statedComponents: number;
+  /** verified_v2 | partial | legacy_snapshot — the evidence tier. */
+  qualityTier: string | null;
 }
 
 export interface RefDetail {

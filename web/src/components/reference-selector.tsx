@@ -3,7 +3,7 @@
 import { useState, useRef, useCallback, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { trackReferenceSelect, trackSearch, trackCategoryFilter, trackCountryFilter, trackColorFilter, trackHotFilter, trackSortChange } from "@/lib/builder/analytics";
-import { sortRefs, SORT_MODES, resolveVisitorCountry, type SortMode } from "@/lib/builder/sort-refs";
+import { sortRefs, SORT_MODES, resolveVisitorCountry, hasMeasuredStates, type SortMode } from "@/lib/builder/sort-refs";
 import { buildColorConceptGroups, colorFamilyForHex, type ColorFilter } from "@/lib/builder/color-family";
 import { Loader2, ChevronDown, Download } from "lucide-react";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
@@ -767,10 +767,22 @@ export function ReferenceSelector({
                   </span>
                   {/* NEW (7-day window) + HOT (top-5 by select) — glass badges,
                       top-right of the brand color header. */}
-                  {(ref.hot || isNewRef(ref.id)) && (
+                  {(ref.hot || isNewRef(ref.id) || hasMeasuredStates(ref)) && (
                     <span className="absolute right-2 top-2 flex items-center gap-1">
                       {ref.hot && <StatusBadge kind="hot" />}
                       {isNewRef(ref.id) && <StatusBadge kind="new" />}
+                      {/* Observed per-state component values — 20 of 441 qualify,
+                          so it stays as scarce as HOT rather than decorating the
+                          grid. Gated on verified_v2, never on the raw count: a
+                          legacy prose pass can write `hover:` without measuring
+                          one, which is why github (37 components, 14 "stated")
+                          does not carry this badge and pixiv (6) does. */}
+                      {hasMeasuredStates(ref) && (
+                        <StatusBadge
+                          kind="states"
+                          className="hidden sm:inline-flex"
+                        />
+                      )}
                     </span>
                   )}
                 </div>
