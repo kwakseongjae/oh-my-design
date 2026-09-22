@@ -53,7 +53,10 @@
 - **한 일(47)**: **focus 주장 6건 정정**(10곳). 사후 확인이 진단을 확정 — 잡은 건 전부 폼 컨트롤/평범한 `:focus`, 놓친 건 전부 `:focus-visible` 버튼.
 - **한 일(48)**: 샌드박스 복구 후 재개. **CN 웨이브 2 — deepseek 등재**(447 refs / **150 verified**, 59/59, 2/2 stated). `--ds-*` 82개로 **CN 중 가장 완전한 시스템**이고 **유일하게 서체 토큰 선언**(DM Sans). 토큰↔렌더 일치 재확인. **포커스 링을 처음 관측**(`#005fcc`, fv=true) — 순서 수정이 동작한다.
 - **한 일(49)**: 후보 3건 검증 탈락 — **shein은 `kr.shein.com`(한국 사이트)로 리다이렉트 + 본사 싱가포르**라 CN 아님 · zhipu 타임아웃 · iqiyi 컨트롤 0. 웨이브 2는 웨이브 1보다 얇다.
-- **다음**: taobao(`--tbpc-*` 28) 등재 → CN 후보 재탐색 또는 JP +40으로 전환. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(50)**: **taobao 등재** — 448 refs / **151 verified**, 43/43, 2/2 stated, reason·advisory 둘 다 0. **첫 CN 커머스 레퍼런스.** `--tbpc-*` 28개, `world.taobao.com`이 키·값 바이트 동일로 교차확인. nonsense-path가 `error.taobao.com/**tbpc**/error.html`로 가서 네임스페이스를 확인해줬다.
+- **한 일(51)**: **focus 측정법 2차 결함.** mousedown 한 번이 페이지 전체 modality를 바꿔서 **다음 컨트롤의** `.focus()`가 `fv=false`가 된다. 컨트롤 단위 순서로는 부족 → rest·focus 전체 먼저, hover·press 나중의 2-패스로 교정하니 둘 다 `fv=true`. **weibo의 focus 주장 재확인 필요(미처리).**
+- **한 일(52)**: taobao 두 버튼은 4개 상태 17개 속성이 전부 동일 — 상태 스타일이 **없다**. `:focus-visible`=true인데 `outline-style: none`. 관측으로 기록. 티어 카운트 5개 로케일 수동 동기화(7번째) — 다음 커밋에서 `check-counts`에 넣는다.
+- **다음**: `check-counts`에 티어 카운트 규칙 추가 → weibo focus 재확인 → CN 후보 재탐색 또는 JP +40. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

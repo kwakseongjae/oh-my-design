@@ -3,6 +3,41 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-22 — taobao 등재(**첫 CN 커머스**), 그리고 focus 측정법이 한 번 더 틀렸다
+
+**448 refs · 151 verified.** taobao claims 43/43 · 컴포넌트 2/2 stated ·
+**reasonCodes·advisoryCodes 둘 다 0**. CN 레퍼런스 12개 중 커머스는 처음이다.
+
+**측정법 결함 2차.** 1차 수정(컨트롤 안에서 마우스보다 focus 먼저)은 **충분하지 않았다.**
+컨트롤 [0]에서 mousedown이 한 번 일어나면 Chrome의 modality가 페이지 전체에서 포인터로
+바뀌고, 그 뒤 컨트롤 [1]에 건 프로그램적 `.focus()`는 `:focus-visible=false`를 돌려준다.
+**오염이 컨트롤 경계를 넘는다.** rest·focus를 **모든** 컨트롤에 대해 먼저 읽고(마우스 이동
+0회) 그다음에 hover·press를 도는 2-패스로 바꾸니 **두 컨트롤 다 `fv=true`**.
+→ 앞 항목의 "weibo·taobao 일부는 여전히 false"는 **taobao에 관해서는 프로브 아티팩트였다.**
+   **weibo도 같은 순서로 쟀으므로 focus 주장을 재확인해야 한다**(미처리).
+
+**taobao는 상태가 진짜로 없다.** 두 주황 버튼 모두 rest/hover/press/focus가 17개 속성
+전부 바이트 동일하다(bg·bgImage·fg·border·radius·shadow·filter·transform·opacity·
+outline·text-decoration…). `:hover`가 true인 상태에서 읽었으므로 놓친 게 아니라 **없는**
+것이다. `:focus-visible`은 true인데 `outline-style: none` — 포커스는 인식되고 아무것도
+그리지 않는다. 관측으로 기록했다.
+
+**nonsense-path 컨트롤이 네임스페이스를 알려줬다.** `/zz-this-does-not-exist`는 홈이 아니라
+`error.taobao.com/**tbpc**/error.html`로 간다 — 경로 이름이 곧 `--tbpc-*`(TaoBao PC)이고,
+에러 페이지에도 같은 토큰 3개가 살아 있다. `world.taobao.com`은 **28개 키·값이 바이트 동일** →
+페이지 지역 override가 아니라 브랜드 전역 세트.
+
+**버린 것**: `s.taobao.com/search`는 200이지만 본문 160자·제목 없음(zhipu와 같은 모양).
+거기에만 있는 `--tbpc-layout-page-margin-*`는 6단계가 값 2개로 뭉치고
+`--tbpc-split-main-width`가 **뷰포트 폭과 정확히 같아서** 실행시점 값이다 → `spacing` 없음.
+서체 토큰 없음·webfont 없음(system-ui / PingFang SC) → `family` 없음.
+
+**부수 작업**: 티어 카운트를 5개 로케일 전부에서 448/151로 맞췄다(EN·KO·JA·ZH-CN·ZH-TW).
+`check-counts`는 `N references`만 보고 `verified_v2 N`은 보지 않는다 — **이번이 7번째 수동
+동기화**다. 다음 커밋에서 게이트에 넣는다.
+
+---
+
 ## ✅ 2026-09-22 — CN 웨이브 2 착수: deepseek 등재, **후보 3건이 검증에서 탈락**
 → `docs/CN_WAVE1_CANDIDATES_2026-09-22.md`(웨이브1) · 웨이브2 프로브는 scratchpad
 

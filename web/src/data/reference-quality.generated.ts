@@ -9809,6 +9809,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "taobao",
+    "status": "verified_v2",
+    "verifiedAt": "2026-09-22",
+    "tokensExtractedAt": "2026-09-22",
+    "nextReverifyAt": "2027-03-21",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 43,
+    "evidenceClaimCount": 43,
+    "evidenceCoverage": 1,
+    "surfaceCount": 2,
+    "sourceCount": 3,
+    "conflictCount": 0,
+    "tier1SourceCount": 3,
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "teamblind",
     "status": "partial",
     "verifiedAt": "2026-06-10",
@@ -11534,10 +11556,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 150,
+  "verified_v2": 151,
   "partial": 184,
   "legacy_snapshot": 113,
-  "total": 447
+  "total": 448
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

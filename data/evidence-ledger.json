@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 153,
-  "sources": 985,
+  "references_with_verification_v2": 154,
+  "sources": 988,
   "sources_by_kind": {
     "brand-asset": 75,
     "license": 76,
-    "official-doc": 420,
-    "product-surface": 414
+    "official-doc": 421,
+    "product-surface": 416
   },
   "references": {
     "104": {
@@ -5630,6 +5630,30 @@
           "kind": "official-doc",
           "captured": "2026-07-14",
           "host": "www.taishinbank.com.tw"
+        }
+      ]
+    },
+    "taobao": {
+      "checked": "2026-09-22",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "alibaba-business",
+          "kind": "official-doc",
+          "captured": "2026-09-22",
+          "host": "www.alibabagroup.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-09-22",
+          "host": "www.taobao.com"
+        },
+        {
+          "id": "world-live",
+          "kind": "product-surface",
+          "captured": "2026-09-22",
+          "host": "world.taobao.com"
         }
       ]
     },
