@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-22T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 455,
+ "count": 456,
  "items": [
   {
    "id": "104",
@@ -6233,6 +6233,34 @@
    "signature_motion": "*Durations:**",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "newspicks",
+   "primary_color_hex": "#146AF5",
+   "category": "consumer-tech",
+   "visual_theme": "A white, extremely dense feed set almost entirely at 12px in the system stack with no webfont at all, where #222222 ink does nearly all the work at eight alpha steps instead of a grey ramp. 220 custom properties and not one belongs to a framework: an 84-step palette under four parallel semantic families named for what is painted (surface, text, object, border), plus a layer made of the product's own nouns - a Premium green, an AI purple, a BookPicks cream, a read/unread pair, and a brand colour for each third-party sign-in.",
+   "voice_fingerprint": {
+    "register": "Japanese business news plus expert commentary; 19,523 characters on one screen",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "ja-business-media"
+   },
+   "tone_keywords": [
+    "dense",
+    "restrained",
+    "semantic",
+    "reading-first",
+    "unadorned"
+   ],
+   "antipatterns": [
+    "copying the focus ring - every control renders Chrome's auto 1px and NewsPicks authors none",
+    "using #146af5 for Premium; the Premium button is blue but Premium itself is the green #00b357",
+    "building a grey ramp for secondary text - the system uses #222222 at .7/.62/.4/.24/.16/.12/.08/.05",
+    "reading a control's own computed colour on the selected tab; its label is a child span at #ffffff",
+    "treating the type sizes as tokens - there is no font or size token in the set, only rendered readings"
+   ],
+   "has_personas": false,
+   "category_raw": "business-news-platform"
   },
   {
    "id": "nexon",

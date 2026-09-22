@@ -88,7 +88,11 @@
 - **한 일(82)**: **Aside Browser를 Tier 2 수집기로 채택**(`docs/ASIDE_PIPELINE_2026-09-22.md`). 로컬 헤드리스가 7조합 전부 실패한 `jal.co.jp`가 **첫 시도에 열렸다** — 봇 방어가 헤드리스 지문 기준이었다. known-answer 검증 통과(**자체 토큰 416개 정확히 일치**; 총계는 Tailwind 레이어 차이로 445 vs 479 — **총계 말고 자체 토큰으로 비교**해야 한다).
 - **한 일(83)**: **`exec`(에이전트)는 증거원에서 배제.** 측정 위임하면 오늘 잡은 다섯 건을 전부 놓친다. **JAL에서 즉시 재확인** — 최다 렌더 본문색 `oklch(0.145 0 0)` ×150이 JAL이 아니라 **shadcn 기본값**이다. 토큰 실측: 로컬 실패 4,000→0, Aside 5,600→verified 1건. **단가는 같고 헛돈을 안 쓴다.**
 - **한 일(84)**: **jal 등재**(455 / **161 verified**, 95/95, 2/2, reason·advisory 0). **칠하는 대상별 4가족**(surface/text/icon/strokeColor) · **언어별 서체 7종** · **마일리지 등급 색 11개**(카탈로그 최초) · hover가 같은 빨강의 알파. **색 87개가 두 번 발행**(69 바이트 동일 + 18 표기만 다름)된 것을 기계적 쌍 비교로 확인 — 불일치가 아니라 이름 바꾸는 중이라 `conflicts`에 안 넣었다.
-- **다음**: JP 웨이브 3 프로브, 또는 KR 편중(45%) 대비 US/UK 기회편성 검토. **브랜치가 origin에 없다**(main 대비 175 커밋). **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(85)**: **수집 모델 실험 회차 1**(`docs/COLLECTOR_MODEL_TRIAL_2026-09-22.md`). 위임 가능 단계를 먼저 갈랐다(①스카우팅만). 세 팔 동일 입력 결과 **sonnet ≫ haiku** — haiku는 체크리스트를 받고도 3개 함정을 전부 놓쳤고 `lang`이 비면 substantive 이유 대신 locale 규칙을 집는다. **체크리스트는 품질을 지탱하지 못한다**(sonnet은 없어도 잡았다).
+- **한 일(86)**: sonnet-terse의 "ana는 JAL처럼 차단" 추론을 **Aside로 반증**(토큰 4개 동일, ctrl 29 정상). **차단된 페이지는 컨트롤 32개를 주지 않는다** — 자기 데이터에 반증이 있었다. flag였고 한 번에 반증돼서 쌌다. 스크립트 FW 목록에 `fa` 추가.
+- **한 일(87)**: **newspicks 등재**(456 / **162 verified**, 108/108, 4/4, reason·advisory 0). **220개 전부 자기 것**(프레임워크 0 — 분리할 게 없던 첫 사례). 4가족 + palette 84 위에 **제품 명사 층**(Premium 초록≠성공 초록 · AI 보라 · unread · 소셜 로그인 브랜드색 · 카테고리 골드). 토큰↔렌더 3회 일치.
+- **한 일(88)**: 선택된 탭이 파란 배경에 `color:#222222`라 **대비 실패로 읽힐 뻔했다** — 자식 span이 `#ffffff`다. 버튼의 `color`는 상속돼 있을 뿐 안 쓰인다.
+- **다음**: 회차 2(zenn 심층 프로브 sonnet 위임) 채점 → qiita·crowdworks. **브랜치가 origin에 없다**(main 대비 177 커밋). **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

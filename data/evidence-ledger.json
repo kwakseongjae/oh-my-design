@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 161,
-  "sources": 1012,
+  "references_with_verification_v2": 162,
+  "sources": 1014,
   "sources_by_kind": {
     "brand-asset": 75,
     "license": 76,
     "official-doc": 424,
-    "product-surface": 437
+    "product-surface": 439
   },
   "references": {
     "104": {
@@ -4052,6 +4052,24 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "comic.naver.com"
+        }
+      ]
+    },
+    "newspicks": {
+      "checked": "2026-09-22",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-09-22",
+          "host": "newspicks.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-09-22",
+          "host": "newspicks.com"
         }
       ]
     },
