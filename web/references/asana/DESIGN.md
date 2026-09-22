@@ -17,11 +17,12 @@ ds:
 omd: "0.1"
 verification_v2:
   schema: 2
-  checked: "2026-09-21"
+  checked: "2026-09-22"
   surfaces:
     - { id: home, kind: product-surface, url: "https://asana.com/", inspected: "2026-09-21" }
     - { id: pricing, kind: product-surface, url: "https://asana.com/pricing", inspected: "2026-09-21" }
     - { id: storybook, kind: product-surface, url: "https://storybook.asana.com/", inspected: "2026-09-21" }
+    - { id: login, kind: product-surface, url: "https://app.asana.com/-/login", inspected: "2026-09-22" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://asana.com/", captured: "2026-09-21" }
     - { id: pricing-live, kind: product-surface, url: "https://asana.com/pricing", captured: "2026-09-21" }
@@ -29,6 +30,8 @@ verification_v2:
     - { id: ds-typography, kind: product-surface, url: "https://storybook.asana.com/iframe.html?id=design-system-typography--all-types&viewMode=story", captured: "2026-09-21" }
     - { id: ds-spacing, kind: product-surface, url: "https://storybook.asana.com/iframe.html?id=design-system-spacing--spacing-example&viewMode=story", captured: "2026-09-21" }
     - { id: ds-shadows, kind: product-surface, url: "https://storybook.asana.com/iframe.html?id=design-system-shadows--shadow-example&viewMode=story", captured: "2026-09-21" }
+    - { id: login-live, kind: product-surface, url: "https://app.asana.com/-/login", captured: "2026-09-22" }
+    - { id: home-0922, kind: product-surface, url: "https://asana.com/", captured: "2026-09-22" }
     - { id: home-june, kind: product-surface, url: "https://asana.com/", captured: "2026-06-22" }
     - { id: brand-official, kind: official-doc, url: "https://asana.com/brand", captured: "2026-09-21" }
   conflicts: []
@@ -81,14 +84,6 @@ verification_v2:
     tokens.components.button-card.radius: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
     tokens.components.button-card.type: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
     tokens.components.button-card.use: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
-    tokens.components.button-hero-accent.bg: { surface_id: home, source_id: home-june, method: live-inspect, captured: "2026-06-22" }
-    tokens.components.button-hero-accent.fg: { surface_id: home, source_id: home-june, method: live-inspect, captured: "2026-06-22" }
-    tokens.components.button-hero-accent.font: { surface_id: home, source_id: home-june, method: live-inspect, captured: "2026-06-22" }
-    tokens.components.button-hero-accent.height: { surface_id: home, source_id: home-june, method: live-inspect, captured: "2026-06-22" }
-    tokens.components.button-hero-accent.padding: { surface_id: home, source_id: home-june, method: live-inspect, captured: "2026-06-22" }
-    tokens.components.button-hero-accent.radius: { surface_id: home, source_id: home-june, method: live-inspect, captured: "2026-06-22" }
-    tokens.components.button-hero-accent.type: { surface_id: home, source_id: home-june, method: live-inspect, captured: "2026-06-22" }
-    tokens.components.button-hero-accent.use: { surface_id: home, source_id: home-june, method: live-inspect, captured: "2026-06-22" }
     tokens.components.button-nav.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
     tokens.components.button-nav.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
     tokens.components.button-nav.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
@@ -125,15 +120,17 @@ verification_v2:
     tokens.components.card-tinted.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
     tokens.components.card-tinted.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
     tokens.components.card-tinted.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-21" }
-    tokens.components.input-default.bg: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
-    tokens.components.input-default.border: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
-    tokens.components.input-default.fg: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
-    tokens.components.input-default.font: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
-    tokens.components.input-default.height: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
-    tokens.components.input-default.padding: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
-    tokens.components.input-default.radius: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
-    tokens.components.input-default.type: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
-    tokens.components.input-default.use: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.input-default.bg: { surface_id: login, source_id: login-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.input-default.border: { surface_id: login, source_id: login-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.input-default.fg: { surface_id: login, source_id: login-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.input-default.font: { surface_id: login, source_id: login-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.input-default.height: { surface_id: login, source_id: login-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.input-default.padding: { surface_id: login, source_id: login-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.input-default.radius: { surface_id: login, source_id: login-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.input-default.hover: { surface_id: login, source_id: login-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.input-default.focus: { surface_id: login, source_id: login-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.input-default.type: { surface_id: login, source_id: login-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.input-default.use: { surface_id: login, source_id: login-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.toggle-on.bg: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
     tokens.components.toggle-on.hover: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
     tokens.components.toggle-on.focus: { surface_id: pricing, source_id: pricing-live, method: live-inspect, captured: "2026-09-21" }
@@ -242,12 +239,11 @@ tokens:
     full: 9999
   components:
     button-primary: { type: "button", bg: "#0d0d0d", fg: "#ffffff", radius: "100px", padding: "16px 32px", height: "64px", font: "20px / 400 TWK Lausanne", use: "Hero primary CTA — Get started, black pill", hover: "#6e6e6e" }
-    button-hero-accent: { type: "button", bg: "#fd3ffd", fg: "#0b0505", radius: "100px", padding: "16px 32px", height: "64px", font: "20px / 400 TWK Lausanne", use: "Hero accent CTA — magenta-pink brand moment" }
     button-secondary: { type: "button", bg: "#fafafa", fg: "#0d0d0d", border: "1px solid #6e6e6e", radius: "100px", padding: "16px 32px", font: "20px / 400 TWK Lausanne", use: "Secondary outline pill — View demo, Learn more", hover: "#f3f3f3" }
     button-nav: { type: "button", bg: "#0d0d0d", fg: "#ffffff", radius: "100px", padding: "0px 16px", height: "44px", font: "14px / 500 TWK Lausanne", use: "Nav bar CTA — Get started (compact)", hover: "#6e6e6e" }
     button-card: { type: "button", bg: "#f3f3f3", fg: "#0d0d0d", radius: "100px", padding: "16px 32px", height: "50px", font: "16px / 500 TWK Lausanne", use: "Pricing card secondary — Get started (light)", hover: "#e7e7e7" }
     button-card-primary: { type: "button", bg: "#0d0d0d", fg: "#ffffff", radius: "100px", padding: "16px 32px", height: "50px", font: "16px / 500 TWK Lausanne", use: "Pricing card primary — Get started (dark)", hover: "#6e6e6e" }
-    input-default: { type: "input", bg: "#ffffff", border: "1px solid #757677", radius: "6px", padding: "6px 12px", height: "36px", font: "14px / 400", fg: "#000000", use: "Login / form text input" }
+    input-default: { type: "input", bg: "#ffffff", border: "1px solid #e1e1e1", radius: "6px", padding: "6px 12px", height: "36px", font: "14px / 400", fg: "#000000", hover: "#c6c6c6", focus: "#4075cf", use: "Login field on app.asana.com/-/login — 36px, hairline border that darkens on hover and gains a 2px #4075cf ring on focus." }
     card-surface: { type: "card", bg: "#ffffff", radius: "16px", border: "1px solid #e7e7e7", use: "Feature / pricing card — no shadow, hairline border" }
     card-tinted: { type: "card", bg: "#f3f3f3", radius: "8px", use: "Tinted content card on grey surface" }
     badge-coral: { type: "badge", bg: "#ffeaec", fg: "#690031", radius: "9999px", font: "12px / 400 TWK Lausanne", use: "Coral blush tag / label pill" }
@@ -392,6 +388,39 @@ input, in both colour schemes, and the `auto` style is the tell: an authored rin
 style and a width. **No focus token is recorded for the buttons**, because Asana declares
 none on them. The pricing toggle is a different matter — see below; `#24a651` there is
 Asana's own green, painted by the brand's CSS.
+
+### The magenta hero CTA is gone — re-measured 2026-09-22
+
+`#fd3ffd` was declared here as `button-hero-accent`, a 64px magenta pill on the homepage.
+Re-measured today, **no element on asana.com paints it**: 2,734 elements scanned, zero hits on
+background, text or border.
+
+**The colour itself is still live.** `--fuchsia-700: #fd3ffd` resolves on the document element,
+one of 357 custom properties, so it remains a declared palette entry and stays in
+`tokens.colors` as `brand-pink`. What is gone is the control that used it. The homepage's
+accent pill today is a paler `#ffc9ff` at 56px with a 64px radius, which is a different value
+on a different control and is not silently renamed into the old component's slot.
+
+`button-hero-accent` is therefore **removed from `components`**. A component nobody can
+measure is not a component here, and the palette entry does not need one to stand.
+
+### Login input — re-measured with three states
+
+Measured on `app.asana.com/-/login`, logged out, with nothing typed into the field.
+
+- Rest: `#ffffff`, `#000000` text, **`1px solid #e1e1e1`**, 6px radius, 36px, `6px 12px`, 14px/400.
+- Hover: border darkens to **`#c6c6c6`**.
+- Focus: border **`#888888`** plus a **`#4075cf` 2px ring** (`box-shadow`, so authored — the
+  browser's own ring is an `outline`).
+
+Two corrections came out of this. The declared border was `#757677`; it measures `#e1e1e1`
+today. And the claims for this component pointed at the pricing page, which is not where it
+lives — they now cite the login surface they were always describing.
+
+**The field autofocuses on load.** Read naively, rest, hover and pressed all come back
+carrying `:focus-visible` and the `#4075cf` ring, which looks like a control with no states
+rather than one that is already focused. The probe now blurs the active element before every
+non-focus reading.
 
 ### Toggle
 
@@ -638,6 +667,12 @@ The 2026 homepage reflects Asana's current chapter: positioning the product as t
 **Jordan Kim, 38, New York.** Chief of Staff at a 500-person tech company. Manages the CEO's strategic initiatives and company-level OKRs in Asana. Presents Asana portfolios in board meetings. Cares deeply about the visual legibility of goals and status — if the board can't read the roadmap, the tool has failed.
 
 ## 14. States
+
+**Measured, 2026-09-22.** Six interactive components carry observed states, including the
+login input's hover and focus added today. The magenta `button-hero-accent` was removed
+rather than given a state: the control no longer renders on asana.com, though
+`--fuchsia-700: #fd3ffd` is still a live token. See §4.
+
 
 | State | Treatment |
 |---|---|

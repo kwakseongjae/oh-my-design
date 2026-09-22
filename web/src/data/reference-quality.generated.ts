@@ -588,26 +588,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "asana",
-    "status": "partial",
+    "status": "verified_v2",
     "verifiedAt": "2026-09-21",
     "tokensExtractedAt": "2026-09-21",
     "nextReverifyAt": "2026-12-19",
     "renewedSourceCount": 0,
     "tokenSource": "live-extract",
-    "claimCount": 160,
-    "evidenceClaimCount": 160,
+    "claimCount": 154,
+    "evidenceClaimCount": 154,
     "evidenceCoverage": 1,
-    "surfaceCount": 3,
-    "sourceCount": 8,
+    "surfaceCount": 4,
+    "sourceCount": 10,
     "conflictCount": 0,
     "tier1SourceCount": 5,
-    "componentCount": 12,
-    "interactiveComponentCount": 8,
-    "statedComponentCount": 6,
-    "reasonCodes": [
-      "interactive_state_missing"
-    ],
+    "componentCount": 11,
+    "interactiveComponentCount": 7,
+    "statedComponentCount": 7,
+    "reasonCodes": [],
     "advisoryCodes": [
+      "token_value_possibly_derived",
       "motion_value_unsourced"
     ],
     "paletteGrounding": null
@@ -1828,25 +1827,23 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "cybozu",
-    "status": "partial",
+    "status": "verified_v2",
     "verifiedAt": "2026-09-21",
     "tokensExtractedAt": "2026-06-17",
     "nextReverifyAt": "2026-12-14",
     "renewedSourceCount": 0,
     "tokenSource": "live-extract",
-    "claimCount": 114,
-    "evidenceClaimCount": 114,
+    "claimCount": 126,
+    "evidenceClaimCount": 126,
     "evidenceCoverage": 1,
     "surfaceCount": 2,
-    "sourceCount": 5,
+    "sourceCount": 7,
     "conflictCount": 0,
     "tier1SourceCount": 4,
     "componentCount": 8,
     "interactiveComponentCount": 5,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "interactive_state_missing"
-    ],
+    "statedComponentCount": 5,
+    "reasonCodes": [],
     "advisoryCodes": [
       "motion_value_unsourced"
     ],
@@ -8604,25 +8601,23 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "sendbird",
-    "status": "partial",
+    "status": "verified_v2",
     "verifiedAt": "2026-09-21",
     "tokensExtractedAt": "2026-09-21",
     "nextReverifyAt": "2026-11-28",
     "renewedSourceCount": 0,
     "tokenSource": "live-extract",
-    "claimCount": 137,
-    "evidenceClaimCount": 137,
+    "claimCount": 121,
+    "evidenceClaimCount": 121,
     "evidenceCoverage": 1,
     "surfaceCount": 2,
-    "sourceCount": 8,
+    "sourceCount": 9,
     "conflictCount": 0,
     "tier1SourceCount": 4,
-    "componentCount": 13,
-    "interactiveComponentCount": 10,
-    "statedComponentCount": 7,
-    "reasonCodes": [
-      "interactive_state_missing"
-    ],
+    "componentCount": 11,
+    "interactiveComponentCount": 8,
+    "statedComponentCount": 8,
+    "reasonCodes": [],
     "advisoryCodes": [
       "motion_value_unsourced"
     ],
@@ -11578,8 +11573,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 152,
-  "partial": 184,
+  "verified_v2": 155,
+  "partial": 181,
   "legacy_snapshot": 113,
   "total": 449
 } as const;

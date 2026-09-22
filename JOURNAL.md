@@ -67,7 +67,10 @@
 - **한 일(61)**: 후보 30개 중 1건 생존. **새 함정 2종**: ① **nio** — `--nio-*` 3206개가 전부 `--nio-web-register-login_lego-*`, **접두사가 브랜드여도 라이브러리다** ② **hisense** — 541개가 손으로 쓴 것처럼 보이지만 **아무 경로나 홈을 주는 캐치올**이라 보류. 로케일 함정 4건(xiaomi/popmart/insta360은 한국 사이트, feishu는 larksuite).
 - **한 일(62)**: **카운트 게이트가 자기 함정을 잡았다** — `check-counts`와 `sync-catalog`가 같은 `reference-quality.json`을 읽어서 **같이 틀리고 ✓**를 냈다. 그 파일의 `count`가 디렉터리 수와 다르면 실패하는 가드 추가. 재실행 시 3파일 21곳 자동 수정.
 - **한 일(63)**: 앞 커밋 메시지의 "987 tests pass"는 **틀렸다 — 987/988이었다.** `"448 quality-graded DESIGN.md references"`처럼 숫자와 명사 사이에 낀 어구를 references 규칙이 못 잡아서 **11곳이 5개 로케일에서 448에 멈춰 있었다.** `cli-docs.test.ts`가 잡았지만 **husky는 테스트 3개만 돌려서** 커밋을 못 막았다. 다섯 어구를 양쪽 게이트에 열거. **988/988.**
-- **다음**: hisense 재검토(제2 표면 확보 가능하면) · xpeng/lenovo/midea 재시도 · 아니면 JP +40. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(64)**: **A단계 완료 — asana·cybozu·sendbird 셋 다 verified**(449 / **155**). `interactive_state_missing`이 카탈로그에서 0건이 됐다. 셋이 전부 다른 결말: cybozu 4개는 **다 있었고**, asana의 마젠타 버튼은 **사라졌고**(토큰 `--fuchsia-700`은 살아 있음), sendbird는 2개가 **재디자인** 1개가 **오명명**(newsletter라던 게 placeholder "Search…"인 사이트 검색창, 0×0).
+- **한 일(65)**: **`#2693ff`는 cybozu 것이다** — 대조군에서 UA는 focus에 `color`/`border-color`를 안 건드린다. 이전 메모("브라우저 기본") 정정. kintone은 반대로 **색은 작성자(`#ffbf00`) 모양은 UA(`auto`)**.
+- **한 일(66)**: **자동 포커스된 컨트롤에는 rest가 없다** — asana 로그인 입력이 4상태 전부 `:focus-visible`로 읽혔다(상태 없는 것처럼 보임). 프로브에 blur 추가. 그 외 `--locale`·`--text`·`--wait`·rest에서 border/outline 항상 출력 — **전부 쓰다가 나온 결함 5건.**
+- **다음(B단계)**: JP 후보 10건 프로브 → 수율 20% 넘으면 본 웨이브. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

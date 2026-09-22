@@ -4,8 +4,8 @@
   "generator": "scripts/build-reference-quality-data.mjs",
   "count": 449,
   "counts": {
-    "verified_v2": 152,
-    "partial": 184,
+    "verified_v2": 155,
+    "partial": 181,
     "legacy_snapshot": 113,
     "total": 449
   },
@@ -275,16 +275,14 @@
     },
     {
       "id": "asana",
-      "status": "partial",
+      "status": "verified_v2",
       "verified_at": "2026-09-21",
       "next_reverify_at": "2026-12-19",
       "evidence_coverage": 1,
-      "surface_count": 3,
-      "source_count": 8,
+      "surface_count": 4,
+      "source_count": 10,
       "conflict_count": 0,
-      "reason_codes": [
-        "interactive_state_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "asleep",
@@ -883,16 +881,14 @@
     },
     {
       "id": "cybozu",
-      "status": "partial",
+      "status": "verified_v2",
       "verified_at": "2026-09-21",
       "next_reverify_at": "2026-12-14",
       "evidence_coverage": 1,
       "surface_count": 2,
-      "source_count": 5,
+      "source_count": 7,
       "conflict_count": 0,
-      "reason_codes": [
-        "interactive_state_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "dabang",
@@ -4243,16 +4239,14 @@
     },
     {
       "id": "sendbird",
-      "status": "partial",
+      "status": "verified_v2",
       "verified_at": "2026-09-21",
       "next_reverify_at": "2026-11-28",
       "evidence_coverage": 1,
       "surface_count": 2,
-      "source_count": 8,
+      "source_count": 9,
       "conflict_count": 0,
-      "reason_codes": [
-        "interactive_state_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "sentry",

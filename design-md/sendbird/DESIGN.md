@@ -17,7 +17,7 @@ ds:
   description: Sendbird's official chat UIKit — a documented, token-driven conversation-UI system (React, iOS, Android, React Native) with named color sets, message components, and themeable light/dark resources.
 verification_v2:
   schema: 2
-  checked: "2026-09-21"
+  checked: "2026-09-22"
   surfaces:
     - { id: uikit, kind: product-surface, url: "https://sendbird.github.io/sendbird-uikit-react", inspected: "2026-09-21" }
     - { id: marketing, kind: product-surface, url: "https://sendbird.com/", inspected: "2026-09-21" }
@@ -27,6 +27,7 @@ verification_v2:
     - { id: uikit-disabled, kind: product-surface, url: "https://sendbird.github.io/sendbird-uikit-react/iframe.html?id=2-ui-button--disabled&viewMode=story", captured: "2026-09-21" }
     - { id: uikit-checkbox, kind: product-surface, url: "https://sendbird.github.io/sendbird-uikit-react/iframe.html?id=2-ui-checkbox--unchecked&viewMode=story", captured: "2026-09-21" }
     - { id: uikit-toggle, kind: product-surface, url: "https://sendbird.github.io/sendbird-uikit-react/iframe.html?id=2-ui-toggle--default&viewMode=story", captured: "2026-09-21" }
+    - { id: marketing-0922, kind: product-surface, url: "https://sendbird.com/", captured: "2026-09-22" }
     - { id: marketing-live, kind: product-surface, url: "https://sendbird.com/", captured: "2026-09-21" }
     - { id: marketing-june, kind: product-surface, url: "https://sendbird.com/", captured: "2026-06-01" }
     - { id: uikit-docs, kind: official-doc, url: "https://sendbird.com/docs/chat/uikit/v3/react/overview", captured: "2026-09-21" }
@@ -48,6 +49,16 @@ verification_v2:
     tokens.colors.primary-hover: { surface_id: uikit, source_id: uikit-button, method: computed-style, captured: "2026-09-21" }
     tokens.colors.success: { surface_id: uikit, source_id: uikit-button, method: computed-style, captured: "2026-09-21" }
     tokens.colors.surface: { surface_id: marketing, source_id: marketing-june, method: computed-style, captured: "2026-06-01" }
+    tokens.components.button-pill-marketing.bg: { surface_id: marketing, source_id: marketing-0922, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-pill-marketing.fg: { surface_id: marketing, source_id: marketing-0922, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-pill-marketing.focus: { surface_id: marketing, source_id: marketing-0922, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-pill-marketing.font: { surface_id: marketing, source_id: marketing-0922, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-pill-marketing.height: { surface_id: marketing, source_id: marketing-0922, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-pill-marketing.hover: { surface_id: marketing, source_id: marketing-0922, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-pill-marketing.pressed: { surface_id: marketing, source_id: marketing-0922, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-pill-marketing.radius: { surface_id: marketing, source_id: marketing-0922, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-pill-marketing.type: { surface_id: marketing, source_id: marketing-0922, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-pill-marketing.use: { surface_id: marketing, source_id: marketing-0922, method: live-inspect, captured: "2026-09-22" }
     tokens.components.bubble-incoming.bg: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
     tokens.components.bubble-incoming.fg: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
     tokens.components.bubble-incoming.type: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
@@ -99,32 +110,6 @@ verification_v2:
     tokens.components.chip.radius: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
     tokens.components.chip.type: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
     tokens.components.chip.use: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.cta-dark-pill.bg: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.cta-dark-pill.border: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.cta-dark-pill.fg: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.cta-dark-pill.font: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.cta-dark-pill.height: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.cta-dark-pill.padding: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.cta-dark-pill.radius: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.cta-dark-pill.type: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.cta-dark-pill.use: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.cta-outline-pill.bg: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.cta-outline-pill.border: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.cta-outline-pill.fg: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.cta-outline-pill.font: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.cta-outline-pill.height: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.cta-outline-pill.padding: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.cta-outline-pill.radius: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.cta-outline-pill.type: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.cta-outline-pill.use: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.input-newsletter.bg: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.input-newsletter.border: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.input-newsletter.fg: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.input-newsletter.font: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.input-newsletter.padding: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.input-newsletter.radius: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.input-newsletter.type: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
-    tokens.components.input-newsletter.use: { surface_id: marketing, source_id: marketing-june, method: live-inspect, captured: "2026-06-01" }
     tokens.components.input.bg: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
     tokens.components.input.border: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
     tokens.components.input.fg: { surface_id: uikit, source_id: uikit-button, method: live-inspect, captured: "2026-09-21" }
@@ -217,10 +202,8 @@ tokens:
     input: { type: "input", bg: "#FFFFFF", fg: "rgba(0,0,0,0.87)", border: "1px solid rgba(0,0,0,0.12)", radius: "4px", padding: "7px 12px", font: "14px / 400", focus: "border #742DDD + 0 0 0 1px #742DDD", use: "UIKit text field" }
     bubble-outgoing: { type: "listItem", bg: "#742DDD", fg: "#FFFFFF", use: "Outgoing message bubble, right-aligned, max 400px" }
     bubble-incoming: { type: "listItem", bg: "#EEEEEE", fg: "rgba(0,0,0,0.87)", use: "Incoming message bubble, left-aligned, 40px avatar" }
-    cta-dark-pill: { type: "button", bg: "#0D0D0D", fg: "#FFFFFF", border: "1px solid #0D0D0D", radius: "24px", height: "42px", padding: "12px 10px", font: "13px / 600", use: "Marketing highest-emphasis CTA" }
-    cta-outline-pill: { type: "button", bg: "#FFFFFF", fg: "#0D0D0D", border: "1px solid #0D0D0D", radius: "24px", height: "42px", padding: "12px 10px", font: "13px / 600", use: "Marketing secondary CTA" }
+    button-pill-marketing: { type: "button", bg: "transparent", fg: "#ffffff", radius: "8px", height: "42px", font: "18px / 700", hover: "#ffffff", pressed: "#ffffff", focus: "#0d0d0d", use: "Marketing CTA pill (Contact sales), 139×42 in the header. The element itself is transparent — the fill is painted by a child — so only the text, geometry and states are measured. Hover and pressed change nothing; focus draws a #0d0d0d 2px solid outline." }
     chip: { type: "badge", bg: "#F2F3F7", fg: "#0D0D0D", border: "1px solid #E3E5EF", radius: "8px", height: "50px", padding: "8px 12px", font: "18px / 400", use: "Marketing neutral selector / utility control" }
-    input-newsletter: { type: "input", bg: "#FFFFFF", fg: "#424242", border: "1px solid #D1D1D1", radius: "50px", padding: "6px 35px", font: "12.8px / 400", use: "Marketing pill email capture" }
     checkbox: { type: "toggle", radius: "2", focus: "#742ddd", use: "UIKit checkbox — 22px box; focus fills brand purple." }
     toggle: { type: "toggle", bg: "#bdbdbd", radius: "12", focus: "#742ddd", use: "UIKit switch — 20px track, off #bdbdbd." }
   components_harvested: true
@@ -343,29 +326,33 @@ interaction rather than at rest.
 - Avatar: 40px (min-width, left of bubble)
 - Use: messages from other participants, left-aligned
 
-### Marketing CTA — Dark pill (primary)
+### Marketing CTAs — re-measured 2026-09-22, and two of them were not there
 
-**Default**
-- Background: `#0D0D0D`
-- Text: `#FFFFFF`
-- Border: 1px solid `#0D0D0D`
-- Radius: 24px
-- Padding: 12px 10px
-- Height: 42px
-- Font: 13px / 600 / Helvetica Now Text
-- Use: highest-emphasis marketing action
+The declared `cta-dark-pill` and `cta-outline-pill` were 42px pills with a **24px radius**, a
+`#0D0D0D` fill and a `1px solid #0D0D0D` border. Re-measured today, sendbird.com's CTAs are
+`.btn theme-pill` elements with an **8px radius**, no border, and a **transparent background
+on the element itself** — the fill is painted by a child. The geometry and the fill in the old
+records do not describe what the site renders now, so neither component survives as declared.
 
-### Marketing CTA — Outline pill (secondary)
+What does measure cleanly is the pill's behaviour, and it is recorded as one component:
 
-**Default**
-- Background: `#FFFFFF`
-- Text: `#0D0D0D`
-- Border: 1px solid `#0D0D0D`
-- Radius: 24px
-- Padding: 12px 10px
-- Height: 42px
-- Font: 13px / 600
-- Use: secondary marketing action paired with the dark pill
+- **Header pill (Contact sales)** — 139×42, 8px radius, `#ffffff` text at 18px/700, element
+  background transparent.
+- Hover and pressed: **no change** on any property.
+- Focus: **`outline: rgb(13, 13, 13) solid 2px`**. `solid 2px` is authored — the browser's own
+  ring is `auto 1px` — so `#0d0d0d`, sendbird's ink, is the real focus colour.
+- A second instance in the body (Explore, 123×52, `#000000` text) carries the **same** focus
+  ring, so the ring belongs to `.btn`, not to one placement.
+
+### The newsletter input was the site search
+
+`input-newsletter` was declared as a "marketing pill email capture": `#FFFFFF`,
+`1px solid #D1D1D1`, 50px radius, 12.8px/400. Every one of those values is correct and still
+present — on a field whose placeholder is **"Search…"**. It is sendbird.com's site search, it
+measures **0×0** because it expands on demand, and it captures no email.
+
+Removed rather than renamed. The values were right and the description was wrong, which is the
+harder of the two errors to notice.
 
 ### Marketing Utility chip
 
@@ -378,17 +365,6 @@ interaction rather than at rest.
 - Height: 50px
 - Font: 18px / 400 / Helvetica Now Text
 - Use: neutral selector / utility control on marketing surfaces
-
-### Marketing Input (newsletter)
-
-**Default**
-- Background: `#FFFFFF`
-- Text: `#424242`
-- Border: 1px solid `#D1D1D1`
-- Radius: 50px
-- Padding: 6px 35px
-- Font: 12.8px / 400
-- Use: pill-shaped email capture in footer/forms
 
 ## 5. Layout Principles
 
@@ -451,6 +427,13 @@ Founded in Korea (originally as a community for parents) and now powering in-app
 - **The end user** inside a customer's app — never sees "Sendbird," only a calm, legible conversation that feels native to the app they're using.
 
 ## 14. States
+
+**Measured, 2026-09-22.** The UIKit components carry their published states. On the marketing
+surface, the CTA pill's hover and pressed change nothing and its focus draws a
+`#0d0d0d solid 2px` outline — authored, not the browser's. Two previously declared marketing
+components were removed rather than given states: the 24px-radius dark and outline pills no
+longer render as recorded, and the "newsletter" input turned out to be the site search. See §4.
+
 
 - **Default / Hover / Pressed:** buttons step purple-300 → purple-400 → purple-500 (danger steps error-300 → 400 → 500).
 - **Focus:** 1px purple `#742DDD` border + 1px purple box-shadow halo on inputs.

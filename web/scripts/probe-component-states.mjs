@@ -32,10 +32,24 @@ const argv = process.argv.slice(2);
 const url = argv.find((a) => /^https?:\/\//.test(a));
 const opt = (name, fallback) => { const i = argv.indexOf(`--${name}`); return i >= 0 ? argv[i + 1] : fallback; };
 const flag = (name) => argv.includes(`--${name}`);
-if (!url) { console.error("usage: probe-component-states.mjs <url> [--match <hex>|--selector <css>] [--open-tabs] [--vars <prefix>]"); process.exit(2); }
+if (!url) { console.error("usage: probe-component-states.mjs <url> [--match <hex>|--selector <css>] [--text <label>] [--text <label>] [--open-tabs] [--vars <prefix>] [--locale ja-JP] [--wait 8000]"); process.exit(2); }
 
 const match = opt("match");
 const selector = opt("selector");
+/**
+ * `--text`. The selector runs as plain `querySelectorAll` inside the page, so
+ * Playwright's `:has-text()` does not apply there — it silently matches nothing.
+ * A control is most naturally named by its label ("ニュース 一覧"), and on sites
+ * that hash their class names that is the only stable handle. Substring match,
+ * trimmed, case-insensitive.
+ */
+const textNeedle = opt("text");
+/**
+ * `--wait`. 2.5s is enough for a server-rendered page and not for a marketing
+ * page that hydrates and animates in: sendbird.com reports 117 anchors with 664
+ * characters of text at 2.5s, which is a half-built page, not a thin one.
+ */
+const waitMs = Number(opt("wait", "2500"));
 const varPrefix = opt("vars");
 const minHeight = Number(opt("min-height", "20"));
 /** 문서화된 높이로 후보를 좁힌다. 흰 배경처럼 흔한 색은 색만으로는 못 고른다. */
@@ -56,8 +70,17 @@ const CHROME = process.env.OMD_CHROME_PATH ?? "/Applications/Google Chrome.app/C
  */
 const REAL_UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36";
 const LAUNCH = { headless: true, args: ["--disable-http2", "--disable-blink-features=AutomationControlled"] };
+/**
+ * `--locale`. Hardcoded ko-KR until 2026-09-22, which is wrong for every non-KR
+ * surface and actively dangerous on the ones that redirect by language: mi.com,
+ * popmart.com/cn and insta360.com all served Korean sites in that day's CN sweep,
+ * and a token read from the wrong market is not a measurement of the brand.
+ */
+const LOCALE = opt("locale", "ko-KR");
+const LANG_BASE = LOCALE.split("-")[0];
 const CONTEXT = { viewport: { width: 1440, height: 1000 }, userAgent: REAL_UA,
-  locale: "ko-KR", extraHTTPHeaders: { "Accept-Language": "ko-KR,ko;q=0.9,en;q=0.8" } };
+  locale: LOCALE,
+  extraHTTPHeaders: { "Accept-Language": `${LOCALE},${LANG_BASE};q=0.9,en;q=0.8` } };
 
 
 /** hex → "r,\\s*g,\\s*b" 정규식 소스. 계산된 값은 rgb()로 돌아온다. */
@@ -74,7 +97,7 @@ async function visit(act) {
   const context = await browser.newContext(CONTEXT);
   const page = await context.newPage();
   await page.goto(url, { waitUntil: "domcontentloaded", timeout: 45000 });
-  await page.waitForTimeout(2500);
+  await page.waitForTimeout(waitMs);
 
   if (flag("open-tabs")) {
     await page.evaluate(() => {
@@ -104,16 +127,20 @@ async function visit(act) {
 
   // 메인 프레임과 하위 프레임(Storybook 등) 모두에서 찾는다
   for (const frame of page.frames()) {
-    const found = await frame.evaluate(({ match, selector, minHeight, nth, wantHeight, rgbSrc }) => {
+    const found = await frame.evaluate(({ match, selector, minHeight, nth, wantHeight, rgbSrc, textNeedle }) => {
       const visible = (el) => { const r = el.getBoundingClientRect(); return r.height >= minHeight && r.width >= 8; };
       let pool = selector ? [...document.querySelectorAll(selector)]
         : [...document.querySelectorAll("*")].filter((el) => new RegExp(rgbSrc).test(getComputedStyle(el).backgroundColor));
       pool = pool.filter(visible);
+      if (textNeedle) {
+        const needle = textNeedle.trim().toLowerCase();
+        pool = pool.filter((el) => (el.textContent || "").trim().toLowerCase().includes(needle));
+      }
       if (wantHeight != null) pool = pool.filter((el) => Math.abs(el.getBoundingClientRect().height - wantHeight) <= 2);
       if (!pool[nth]) return false;
       pool[nth].setAttribute("data-omd-probe", "1");
       return true;
-    }, { match, selector, minHeight, nth, wantHeight, rgbSrc: match ? rgbPattern(match) : "(?!)" }).catch(() => false);
+    }, { match, selector, minHeight, nth, wantHeight, textNeedle, rgbSrc: match ? rgbPattern(match) : "(?!)" }).catch(() => false);
     if (found) return { page, frame };
   }
   await page.close();
@@ -212,6 +239,12 @@ async function capture(name, fn) {
       unmeasured[name] = "이 로드에서 대상 요소를 찾지 못했다";
       return;
     }
+    // **자동 포커스된 컨트롤에는 rest가 없다** (2026-09-22).
+    // `app.asana.com/-/login`의 이메일 입력은 로드되자마자 포커스를 받아서,
+    // rest·hover·pressed가 전부 `:focus-visible`이고 `#4075cf` 링을 단 채로 읽혔다.
+    // 네 상태가 똑같이 나오니 "상태 없음"처럼 보이는데, 실제로는 **전부 focus**였다.
+    // focus를 재는 판독만 빼고, 읽기 전에 활성 요소를 풀어준다.
+    if (name !== "focus") await v.frame.evaluate(() => document.activeElement?.blur?.()).catch(() => {});
     await fn(v);
     states[name] = await read(v.frame);
   } catch (err) {
@@ -272,8 +305,13 @@ for (const [name, s] of Object.entries(states)) {
   // 정확히 이 스크립트로 확인하러 오는 값이다 (2026-09-22).
   if (s.shadow !== states.rest.shadow || name === "rest") extras.push(`shadow=${s.shadow}`);
   if (s.transform !== "none") extras.push(`transform=${s.transform}`);
-  if (s.outline !== states.rest.outline) extras.push(`outline=${s.outline}`);
-  if (s.border !== states.rest.border) extras.push(`border=${hex(s.border)}`);
+  // border와 같은 이유로 rest에서도 항상 찍는다. 포커스 판정은 색이 아니라
+  // **스타일**로 갈린다(`auto` = 브라우저, `solid`/`none` = 작성자) — 그 비교를
+  // 하려면 rest 값이 출력에 있어야 한다. 측정법 문서 §2.5.
+  if (s.outline !== states.rest.outline || name === "rest") extras.push(`outline=${s.outline}`);
+  // rest는 항상 테두리를 찍는다. 변화만 찍으면 rest 값이 출력에 아예 없어서,
+  // "hover에서 #c6c6c6으로 바뀐다"를 읽고도 무엇에서 바뀌는지 알 수 없다 (2026-09-22).
+  if (s.border !== states.rest.border || name === "rest") extras.push(`border=${hex(s.border)}`);
   if (extras.length) console.log(`           ${extras.join("  ")}`);
 }
 for (const [name, why] of Object.entries(unmeasured)) {

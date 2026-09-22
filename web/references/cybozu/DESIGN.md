@@ -13,13 +13,15 @@ added: "2026-06-17"
 omd: "0.1"
 verification_v2:
   schema: 2
-  checked: "2026-09-21"
+  checked: "2026-09-22"
   surfaces:
-    - { id: corporate, kind: product-surface, url: "https://cybozu.co.jp/", inspected: "2026-09-21" }
-    - { id: kintone, kind: product-surface, url: "https://kintone.cybozu.co.jp/", inspected: "2026-09-21" }
+    - { id: corporate, kind: product-surface, url: "https://cybozu.co.jp/", inspected: "2026-09-22" }
+    - { id: kintone, kind: product-surface, url: "https://kintone.cybozu.co.jp/", inspected: "2026-09-22" }
   sources:
     - { id: corp-live, kind: product-surface, url: "https://cybozu.co.jp/", captured: "2026-09-21" }
     - { id: kintone-live, kind: product-surface, url: "https://kintone.cybozu.co.jp/", captured: "2026-09-21" }
+    - { id: corp-states, kind: product-surface, url: "https://cybozu.co.jp/", captured: "2026-09-22" }
+    - { id: kintone-states, kind: product-surface, url: "https://kintone.cybozu.co.jp/", captured: "2026-09-22" }
     - { id: corp-components-jun, kind: product-surface, url: "https://cybozu.co.jp/", captured: "2026-06-17" }
     - { id: kintone-components-jun, kind: product-surface, url: "https://kintone.cybozu.co.jp/", captured: "2026-06-17" }
     - { id: kuc-repo, kind: official-doc, url: "https://github.com/kintone-labs/kintone-ui-component", captured: "2026-09-21" }
@@ -49,6 +51,9 @@ verification_v2:
     tokens.components.corp-card.border: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
     tokens.components.corp-card.type: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
     tokens.components.corp-card.use: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.corp-icon-button.focus: { surface_id: corporate, source_id: corp-states, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.corp-icon-button.hover: { surface_id: corporate, source_id: corp-states, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.corp-icon-button.pressed: { surface_id: corporate, source_id: corp-states, method: live-inspect, captured: "2026-09-22" }
     tokens.components.corp-icon-button.bg: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
     tokens.components.corp-icon-button.fg: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
     tokens.components.corp-icon-button.radius: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
@@ -60,6 +65,9 @@ verification_v2:
     tokens.components.corp-nav-link.font: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
     tokens.components.corp-nav-link.type: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
     tokens.components.corp-nav-link.use: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.corp-text-link.focus: { surface_id: corporate, source_id: corp-states, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.corp-text-link.hover: { surface_id: corporate, source_id: corp-states, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.corp-text-link.pressed: { surface_id: corporate, source_id: corp-states, method: live-inspect, captured: "2026-09-22" }
     tokens.components.corp-text-link.fg: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
     tokens.components.corp-text-link.font: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
     tokens.components.corp-text-link.type: { surface_id: corporate, source_id: corp-components-jun, method: live-inspect, captured: "2026-06-17" }
@@ -78,6 +86,9 @@ verification_v2:
     tokens.components.kintone-card.radius: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
     tokens.components.kintone-card.type: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
     tokens.components.kintone-card.use: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-cta-dark.focus: { surface_id: kintone, source_id: kintone-states, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.kintone-cta-dark.hover: { surface_id: kintone, source_id: kintone-states, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.kintone-cta-dark.pressed: { surface_id: kintone, source_id: kintone-states, method: live-inspect, captured: "2026-09-22" }
     tokens.components.kintone-cta-dark.bg: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
     tokens.components.kintone-cta-dark.fg: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
     tokens.components.kintone-cta-dark.font: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
@@ -86,6 +97,9 @@ verification_v2:
     tokens.components.kintone-cta-dark.radius: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
     tokens.components.kintone-cta-dark.type: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
     tokens.components.kintone-cta-dark.use: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
+    tokens.components.kintone-outline-button.focus: { surface_id: kintone, source_id: kintone-states, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.kintone-outline-button.hover: { surface_id: kintone, source_id: kintone-states, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.kintone-outline-button.pressed: { surface_id: kintone, source_id: kintone-states, method: live-inspect, captured: "2026-09-22" }
     tokens.components.kintone-outline-button.bg: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
     tokens.components.kintone-outline-button.border: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
     tokens.components.kintone-outline-button.fg: { surface_id: kintone, source_id: kintone-components-jun, method: live-inspect, captured: "2026-06-17" }
@@ -181,11 +195,11 @@ tokens:
     none: "none"
   components:
     corp-nav-link: { type: tab, fg: "#333333", font: "14px / 700 Hiragino", active: "teal #139cb7 text on hover/active", use: "Corporate top-nav item" }
-    corp-text-link: { type: button, fg: "#139cb7", font: "16px / 400 Hiragino", use: "Corporate inline / list text link — the single teal action color" }
-    corp-icon-button: { type: button, bg: "#ffffff", fg: "#139cb7", radius: "9999px", shadow: "rgba(0,0,0,0.1) 0 0 6px", use: "Circular icon button, soft shadow, 40px" }
+    corp-text-link: { type: button, fg: "#139cb7", font: "16px / 400 Hiragino", hover: "#139cb7", pressed: "#139cb7", focus: "#2693ff", use: "Corporate inline / list text link — the single teal action color. Hover and pressed leave it unchanged; focus recolours the text to #2693ff." }
+    corp-icon-button: { type: button, bg: "#ffffff", fg: "#139cb7", radius: "9999px", shadow: "rgba(0,0,0,0.1) 0 0 6px", hover: "rgba(0,0,0,0.2) 0 0 2px", pressed: "rgba(0,0,0,0.2) 0 0 2px", focus: "#2693ff", use: "Circular icon button, soft shadow, 40px. Hover and pressed tighten the shadow and drop it 2px — it presses into the page rather than lifting off it." }
     corp-card: { type: card, bg: "#ffffff", border: "1px solid #e6e6e6", use: "Corporate content card, hairline-separated on #f6f6f6 surface" }
-    kintone-cta-dark: { type: button, bg: "#333333", fg: "#ffffff", radius: "8px", padding: "5px 5px 5px 20px", height: "64px", font: "16px / 400 Roboto", use: "kintone primary CTA (30日間無料お試し) — dark fill with yellow accent" }
-    kintone-outline-button: { type: button, bg: "#ffffff", fg: "#231200", border: "1px solid #d6d5d5", radius: "8px", padding: "5px 5px 5px 20px", height: "66px", use: "kintone secondary outlined button" }
+    kintone-cta-dark: { type: button, bg: "#333333", fg: "#ffffff", radius: "8px", padding: "5px 5px 5px 20px", height: "64px", font: "16px / 400 Roboto", hover: "#333333", pressed: "#ffbf00", focus: "#ffbf00", use: "kintone primary CTA (30日間無料お試し) — dark fill with yellow accent. Hover changes nothing; pressed and focus draw the kintone yellow as the outline colour." }
+    kintone-outline-button: { type: button, bg: "#ffffff", fg: "#231200", border: "1px solid #d6d5d5", radius: "8px", padding: "5px 5px 5px 20px", height: "66px", hover: "#ffffff", pressed: "#ffbf00", focus: "#ffbf00", use: "kintone secondary outlined button — the same yellow outline on pressed and focus as the dark CTA, and the same unchanged hover." }
     kintone-card: { type: card, bg: "#ffffff", fg: "#231200", border: "1px solid #d6d5d5", radius: "10px", padding: "24px", use: "kintone feature card, flat (no shadow)" }
     kintone-badge: { type: badge, bg: "#ffbf00", fg: "#231200", radius: "8px", padding: "5px 8px 10px", font: "12px / 700", use: "kintone yellow tab/banner chip (さわってみよう！, 30日間無料！)" }
   components_harvested: true
@@ -313,6 +327,34 @@ What unites both worlds is restraint with depth and a hairline-first separation 
 - Padding: 2px 2px 2px 12px
 - Height: 42px
 - Use: kintone compact link buttons ("動画をみる", "資料をみる")
+
+### Measured states — 2026-09-22
+
+Four controls re-measured with each state on its own page load, so no mouse press precedes
+the focus reading.
+
+| Control | Hover | Pressed | Focus |
+|---|---|---|---|
+| **Corporate text link** | no change | no change | text recolours to **`#2693ff`** |
+| **Corporate icon button** | shadow tightens to `rgba(0,0,0,0.2) 0 0 2px` and the button **translates 2px down** | same as hover | icon and border recolour to **`#2693ff`** |
+| **kintone dark CTA** | no change | outline colour → **`#ffbf00`** | outline colour → **`#ffbf00`** |
+| **kintone outline button** | no change | outline colour → **`#ffbf00`** | outline colour → **`#ffbf00`** |
+
+Two things are worth separating here.
+
+**`#2693ff` is cybozu's, not the browser's.** The focus reading also carries
+`outline: rgb(0, 95, 204) auto 1px`, which is Chrome's default ring and is not recorded. But
+the `color` and `border-color` change to `#2693ff` **is** authored: a control page with no
+author stylesheet at all leaves `color` and `border-color` untouched on focus and only swaps
+the outline. Cybozu recolours the text and lets the browser draw the ring.
+
+**kintone authors the colour and leaves the shape.** Its focus outline computes as
+`rgb(255, 191, 0) auto 1px` — the width and style are the UA's `auto`, the colour is
+`#ffbf00`, which is `kintone-yellow` already in this palette. The product's focus ring is
+yellow, at whatever thickness the browser draws.
+
+**The icon button presses in rather than lifting.** Most hover shadows grow; this one shrinks
+from `0 0 6px` at 10% to `0 0 2px` at 20% and moves the button down 2px.
 
 ### Cards & Containers
 
@@ -520,6 +562,16 @@ What Cybozu's design refuses, visible on the surface: the heavy, intimidating ch
 **鈴木あみ, 29, 大阪.** A product designer at Cybozu contributing to the kintone Design System and writing for the Product Design Magazine. Believes design should be published and shared; cares about the `kintone-ui-component` library staying consistent across the product.
 
 ## 14. States
+
+**Measured, 2026-09-22.** Four interactive components carry observed hover, pressed and focus;
+see the table in §4. The pattern across both brands is the same: **hover does almost nothing,
+and focus carries the whole affordance** — `#2693ff` on the corporate side, `#ffbf00` on
+kintone. The one exception is the corporate icon button, which tightens its shadow and
+translates 2px down on hover and pressed.
+
+The table below is the prescriptive system for states this capture could not observe (empty,
+loading, error, success, skeleton, disabled). It is design guidance, not measurement.
+
 
 | State | Treatment |
 |---|---|
