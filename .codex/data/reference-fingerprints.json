@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-22T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 453,
+ "count": 454,
  "items": [
   {
    "id": "104",
@@ -1051,6 +1051,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "marketing"
+  },
+  {
+   "id": "caddi",
+   "primary_color_hex": "#224BD2",
+   "category": "saas",
+   "visual_theme": "Completely square - a census of 2,500 elements found one 50% avatar and no other radius, while a four-step radius scale sits published and unused. Ink #1f2533 on white with #d5d7e0 rules and one blue #224bd2 that is only ever a link colour and a focus ring. The system's centre is spacing: 54 --space-* tokens in four directional families (inline, stack, inset, block) drawn from one seventeen-step ramp, where inline and stack carry identical numbers because the distinction is direction, not value.",
+   "voice_fingerprint": {
+    "register": "Japanese B2B manufacturing; 3,679 characters, carried at 500 weight on 109 of 189 elements",
+    "sentence_length": "medium",
+    "metaphor_density": "low",
+    "vocabulary_register": "ja-b2b-industrial"
+   },
+   "tone_keywords": [
+    "square",
+    "engineered",
+    "restrained",
+    "grey",
+    "directional"
+   ],
+   "antipatterns": [
+    "reading the colour names as separate values - #1f2533 answers to --color-text-primary, --color-neutral-800, --color-bg-dark and --color-state-default",
+    "setting Zalando Sans Expanded because --font-family-display names it; it does not load",
+    "using the --radius-* tokens - the design leaves all four alone and draws everything square",
+    "assuming every control shares the focus ring; the CMS-authored contact button falls back to Chrome's auto 1px",
+    "picking a spacing token by size alone - the families exist to say inline, stack, inset or block"
+   ],
+   "has_personas": false,
+   "category_raw": "manufacturing-ai-platform"
   },
   {
    "id": "cafe24",
