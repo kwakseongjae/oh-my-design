@@ -1,6 +1,6 @@
 # oh-my-design
 
-> Skill-driven design harness for AI coding agents. Claude Code, Codex, and OpenCode receive the full 27-skill + 20-sub-agent bundle; Cursor receives 27 compatible Agent Skills, a project rule, and the local catalog. The quality-graded catalog contains 446 DESIGN.md references: 149 verified_v2, 184 partial, and 113 legacy. Use verified_v2 references for public demos.
+> Skill-driven design harness for AI coding agents. Claude Code, Codex, and OpenCode receive the full 27-skill + 20-sub-agent bundle; Cursor receives 27 compatible Agent Skills, a project rule, and the local catalog. The quality-graded catalog contains 447 DESIGN.md references: 150 verified_v2, 184 partial, and 113 legacy. Use verified_v2 references for public demos.
 
 ## What
 
@@ -601,7 +601,7 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 oh-my-design/
 ├── skills/              # 21 shipped product skills (source of truth)
 ├── agents/              # 18 sub-agent definitions
-├── web/references/      # 446 reference DESIGN.md files (canonical)
+├── web/references/      # 447 reference DESIGN.md files (canonical)
 ├── data/                # reference fingerprints, vocabulary, opt-out corpus
 ├── .claude/hooks/       # UserPromptSubmit / SessionStart / PostToolUse hooks
 ├── src/cli/             # installer + doctor entry points

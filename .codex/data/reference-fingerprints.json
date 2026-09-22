@@ -2,7 +2,7 @@
   "schema_version": 1,
   "generated_at": "2026-09-22T00:00:00Z",
   "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
-  "count": 446,
+  "count": 447,
   "items": [
     {
       "id": "104",
@@ -1923,6 +1923,34 @@
       "signature_motion": "See §15 Motion.",
       "has_personas": true,
       "category_raw": "ecommerce"
+    },
+    {
+      "id": "deepseek",
+      "primary_color_hex": "#4D6BFE",
+      "category": "ai",
+      "visual_theme": "Pale frosted-glass surface that says almost nothing - a warm off-white #f9f8f8 page with translucent white panels at .2-.45 alpha, a 12px blur token, and borders as a four-step ladder of black at .06/.08/.1/.2. The brand blue #4d6bfe is an accent; the primary button is a warm near-black #1a1615.",
+      "voice_fingerprint": {
+        "register": "spare and technical; states what the models do and links the papers, 521 characters of copy on the whole landing",
+        "sentence_length": "short",
+        "metaphor_density": "low",
+        "vocabulary_register": "bilingual-en-zh"
+      },
+      "tone_keywords": [
+        "spare",
+        "technical",
+        "understated",
+        "research-forward",
+        "quiet"
+      ],
+      "antipatterns": [
+        "flattening the hsla surfaces to opaque hex - the alpha is the design",
+        "using #4d6bfe as a large fill; it is an accent and chip text, not the action",
+        "picking an arbitrary grey for borders instead of the black-alpha ladder",
+        "treating the 17 --tw-* properties as DeepSeek tokens",
+        "adding marketing copy to a surface built to carry almost none"
+      ],
+      "has_personas": false,
+      "category_raw": "ai-research-lab"
     },
     {
       "id": "deliveroo",

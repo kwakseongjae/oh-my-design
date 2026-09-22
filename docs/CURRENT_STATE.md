@@ -3,6 +3,38 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-22 — CN 웨이브 2 착수: deepseek 등재, **후보 3건이 검증에서 탈락**
+→ `docs/CN_WAVE1_CANDIDATES_2026-09-22.md`(웨이브1) · 웨이브2 프로브는 scratchpad
+
+**447 refs · 150 verified.** deepseek claims 59/59 · 컴포넌트 2/2 stated · reasonCodes 없음.
+
+**deepseek은 지금까지 잰 CN 브랜드 중 시스템이 가장 완전하다** — `--ds-*` 82개:
+색 37(bg/border/text/brand) · **버튼 21(4개 변형 각각 bg·border·text·hover)** ·
+radius 6 · spacing 13(4→240px) · **font-sans/body/mono**. CN 레퍼런스 중 **유일하게 서체
+토큰을 선언**한다(DM Sans · Fragment Mono) — 나머지는 전부 시스템 스택이라 family를 비웠다.
+
+**토큰과 렌더가 또 일치했다.** `--ds-btn-secondary-bg hsla(0,0%,100%,.4)`와
+`-secondary-border rgba(9,45,78,.18)`가 실측 rest와 정확히 같고, `-secondary-hover-border`
+`rgba(9,45,78,.36)`이 실측 hover `#092d4e`로 합성된다.
+
+> **포커스 링을 처음으로 잡았다.** 순서 수정(마우스 전에 focus) 후 deepseek 보조 알약에서
+> `:focus-visible=true`와 `#005fcc` outline이 관측됐다. 수정이 실제로 동작한다 —
+> 다만 모든 사이트에서는 아니다(weibo·taobao 일부는 여전히 false).
+
+**후보 검증에서 3건이 떨어졌다**(자문 지적 전부 적중):
+- **shein** — `shein.com`이 **`kr.shein.com`으로 리다이렉트**("SHEIN KOREA"). 앞서 잰 51개
+  토큰은 **한국 사이트** 것이다. xiaomi와 같은 함정. 게다가 **본사가 싱가포르**라
+  국가 규칙상 CN이 아니다. **CN 웨이브에서 제외.**
+- **zhipu** — 45초 타임아웃. 앞서 본 160 vars는 느린 부분 로드였다. 신뢰 불가.
+- **iqiyi** — 토큰 107개는 진짜 자기 것(`--vipForegroundColor`·`--blockBackColor` 등 손으로
+  이름 붙인 것)인데 **측정 가능한 컨트롤이 0개**이고 서체는 HarmonyOS Sans(플랫폼).
+- kuaishou·pinduoduo·didi·toutiao·neteasemusic·moonshot·oppo — 토큰 0~10.
+  (oppo는 **자체 서체 `OPPOSans-Ver2`**를 쓰는데 토큰이 없다.)
+
+**웨이브 2는 웨이브 1보다 얇다.** 남은 실착수 후보는 taobao(`--tbpc-*` 28, 컨트롤 2개)뿐이다.
+
+---
+
 ## 🧪 2026-09-22 — ego lite 검증 통과, **로그인 월 계획은 무산**, focus 주장 6건 정정
 
 **known-answer 테스트가 제값을 했다.** 첫 실행이 커밋된 weibo와 어긋났다(`#ea8011` vs `#ff8200`) —
