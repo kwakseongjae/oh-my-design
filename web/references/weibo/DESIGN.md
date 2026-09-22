@@ -43,8 +43,8 @@ tokens:
   spacing: { control-y: 9, control-x: 15 }
   rounded: { sm: 4, input: 8, pill: 36, circle: 9999 }
   components:
-    button-search: { type: button, bg: "#ff8200", fg: "#ffffff", radius: 0, padding: "9px 15px", font: "20px / 500", hover: "#ff5900", pressed: "#ff5900", use: "Top-bar search submit — 48px tall, square, the largest control on the page." }
-    button-primary-pill: { type: button, bg: "#ff8200", fg: "#ffffff", radius: 36, padding: "9px 15px", font: "14px / 500", hover: "#ff5900", pressed: "#ff5900", use: "Sign-in / register call to action — 34px tall pill." }
+    button-search: { type: button, bg: "#ff8200", fg: "#ffffff", radius: 0, padding: "9px 15px", font: "20px / 500", hover: "#ff5900", pressed: "#ff5900", focus: "#ff8200", use: "Top-bar search submit — 48px tall, square, the largest control on the page." }
+    button-primary-pill: { type: button, bg: "#ff8200", fg: "#ffffff", radius: 36, padding: "9px 15px", font: "14px / 500", hover: "#ff5900", pressed: "#ff5900", focus: "#ff8200", use: "Sign-in / register call to action — 34px tall pill." }
   components_harvested: true
 verification_v2:
   schema: 2
@@ -100,6 +100,7 @@ verification_v2:
     tokens.components.button-search.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-search.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-search.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-search.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-search.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-primary-pill.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-primary-pill.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
@@ -109,6 +110,7 @@ verification_v2:
     tokens.components.button-primary-pill.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-primary-pill.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-primary-pill.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-primary-pill.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-primary-pill.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
 ---
 
@@ -234,8 +236,15 @@ Measured live with the pointer parked between readings and navigation suppressed
 | **Sign-in pill** | `#ff8200` fill, `#ffffff` text | **`#ff5900`** | **`#ff5900`** | 34px tall, **36px radius**, `9px 15px`, 14px/500 |
 
 Both share one contract — `--w-b-flat-primary-bg` → `--w-b-flat-primary-bg-hover` — and
-**pressed does not darken further**: hover and pressed are the same value. **Focus is not
-claimed** — it focus was **not measured reliably** — it was read after a mouse press, which suppresses Chrome's `:focus-visible` heuristic, so a ring that a keyboard user sees would not have rendered. **No focus claim is made either way** (method: `docs/MEASUREMENT_METHOD_2026-09-22.md` §2).
+**pressed does not darken further**: hover and pressed are the same value.
+
+**Focus was re-measured on 2026-09-22 and now is claimed.** The first reading was taken after
+a mouse press and reported nothing usable; reading focus for every control before the mouse
+moved at all — and pinning each control by element handle, because this page re-renders and an
+index-based selector hands back a different node between passes — gives `:focus-visible` true
+on both. **Neither changes a single property.** Background, text, border, radius, shadow,
+filter and outline are identical to rest, and `outline-style` stays `none`. Focus is
+recognised and draws nothing, so the recorded focus value is the rest fill `#ff8200`.
 
 The two differ in *shape*, not colour: the search submit is a hard rectangle butted against
 the search field, the sign-in a full pill. Weibo uses geometry, not hue, to separate a
@@ -325,8 +334,14 @@ Not researched. No persona claim is made from a UI capture.
 
 ## 14. States
 
-Only hover and pressed were observed, on two controls, and they are identical (`#ff5900`).
-**Focus is not claimed** — it focus was **not measured reliably** — it was read after a mouse press, which suppresses Chrome's `:focus-visible` heuristic, so a ring that a keyboard user sees would not have rendered. **No focus claim is made either way** (method: `docs/MEASUREMENT_METHOD_2026-09-22.md` §2). Disabled exists as a token
+Hover and pressed were observed on two controls and are identical (`#ff5900`).
+
+**Focus was re-measured on 2026-09-22 and is now recorded.** Both declared controls match
+`:focus-visible` and change nothing — every property equals rest and `outline-style` remains
+`none`. The secondary line pills beside them behave differently: they keep `outline-style:
+none` but their computed `outline-width` goes `0px` → `3px` under focus, which still paints
+nothing. Both readings are recorded as measurements of the surface, not as a pattern to
+copy. Disabled exists as a token
 (`--w-disabled: #cccccc`) but was not observed on a rendered control, so no disabled
 component is declared.
 

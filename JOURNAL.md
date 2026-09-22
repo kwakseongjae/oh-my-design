@@ -56,7 +56,10 @@
 - **한 일(50)**: **taobao 등재** — 448 refs / **151 verified**, 43/43, 2/2 stated, reason·advisory 둘 다 0. **첫 CN 커머스 레퍼런스.** `--tbpc-*` 28개, `world.taobao.com`이 키·값 바이트 동일로 교차확인. nonsense-path가 `error.taobao.com/**tbpc**/error.html`로 가서 네임스페이스를 확인해줬다.
 - **한 일(51)**: **focus 측정법 2차 결함.** mousedown 한 번이 페이지 전체 modality를 바꿔서 **다음 컨트롤의** `.focus()`가 `fv=false`가 된다. 컨트롤 단위 순서로는 부족 → rest·focus 전체 먼저, hover·press 나중의 2-패스로 교정하니 둘 다 `fv=true`. **weibo의 focus 주장 재확인 필요(미처리).**
 - **한 일(52)**: taobao 두 버튼은 4개 상태 17개 속성이 전부 동일 — 상태 스타일이 **없다**. `:focus-visible`=true인데 `outline-style: none`. 관측으로 기록. 티어 카운트 5개 로케일 수동 동기화(7번째) — 다음 커밋에서 `check-counts`에 넣는다.
-- **다음**: `check-counts`에 티어 카운트 규칙 추가 → weibo focus 재확인 → CN 후보 재탐색 또는 JP +40. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(53)**: **weibo focus 재측정** — 유보를 실측으로 교체. 두 컴포넌트 다 `:focus-visible`=true인데 속성 변화 0(`outline-style: none`). claims 54→56. hover·pressed는 이번엔 `:hover`가 안 잡혀 **건드리지 않았다**(재현 실패는 반증이 아니다).
+- **한 일(54)**: **3차 결함 — 인덱스는 엘리먼트가 아니다.** weibo 홈은 리렌더링돼서 셀렉터 재평가가 다른 노드를 준다(컨트롤 [4]가 클래스·크기·배경까지 바뀜). element handle 고정 + 매 판독 동일성 검사로 교정. 측정법 문서 §2·§7 갱신.
+- **한 일(55)**: **티어 카운트를 게이트에 넣었다** — `check-counts`+`sync-catalog` 양쪽에. EN 전위/CJK 후위 양방향 규칙, `(?![\d/-])`로 `legacy 13/15/16-section` 오탐 차단(`\d` 빠지면 "legacy 1"로 백트래킹). cli-docs.ts 추가 → 11개 표면. 3곳에 드리프트 심어 탐지·치유 확인.
+- **다음**: 남은 negative focus 주장 3건(pixiv·asana·zhihu) 재측정 → CN 후보 재탐색 또는 JP +40. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

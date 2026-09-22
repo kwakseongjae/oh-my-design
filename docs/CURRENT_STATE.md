@@ -3,6 +3,40 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## 🔧 2026-09-22 — weibo focus 재측정, 그리고 **인덱스는 엘리먼트가 아니다**(3차 결함)
+
+**weibo는 틀린 주장을 한 게 아니라 유보하고 있었다** — "focus 신뢰할 수 없음". 그 유보를
+실측으로 바꿨다. 두 선언 컴포넌트 모두 `:focus-visible`=true인데 **속성이 하나도 안 바뀐다**
+(`outline-style: none` 유지). claims 54 → **56**, 여전히 verified_v2 · reason/advisory 0.
+
+**3차 결함 — 셀렉터를 패스마다 다시 평가하면 다른 노드가 온다.** weibo 재측정 1차에서
+컨트롤 [4]가 클래스(`woo-button-flat`→`woo-button-line`)·크기(160×34→64×28)·배경까지
+바뀌어 돌아왔다. **weibo 홈은 리렌더링된다.** element handle로 고정하고 매 판독마다
+(class, width, height) 동일성을 찍게 하니 다섯 컨트롤 전부 안정. taobao에서 인덱스로도
+맞았던 건 정적 페이지였기 때문이고, 모든 속성이 일치한 것이 그 증거였다.
+
+**이번 실행에서는 hover가 안 잡혔다**(`:hover`=false, 컨트롤 5개 중 4개). 그래서
+hover·pressed(`#ff5900`)는 **건드리지 않았다** — 원래 판독이 유효하다. 재현 실패는 반증이 아니다.
+
+**남은 negative focus 주장**: pixiv 1 · asana 1 · zhihu 2.
+
+### 티어 카운트가 이제 게이트에 들어갔다 (수동 동기화 7회로 끝)
+
+`check-counts`는 `N references`만 봤고 `verified_v2 N`은 안 봤다. 규칙을 추가했다:
+
+- **EN은 숫자가 앞**(`151 verified_v2`), **CJK는 뒤**(`verified_v2 151개` · `151 份` ·
+  `legacy snapshot 113件`) → 티어마다 양방향 규칙.
+- 후위형에 `(?![\d/-])` — README의 `legacy 13/15/16-section`(포맷 버전 나열)을 걸러낸다.
+  **클래스에 `\d`가 꼭 들어가야 한다**: 없으면 엔진이 "13"에서 "1"로 백트래킹해서
+  `legacy 1`이라고 보고한다(실제로 그렇게 나왔다).
+- `web/src/data/cli-docs.ts`를 감시 대상에 추가(5개 로케일 카피가 여기 있다) → 11개 표면.
+- `sync-catalog.mjs`에도 같은 규칙을 넣었다. 에러 메시지가 그 스크립트를 가리키므로
+  **탐지만 하고 고치지 못하면 안내가 거짓말이 된다.**
+
+세 곳(KO 후위·EN 전위·ZH 후위)에 드리프트를 심어 탐지·치유 양쪽을 확인했다. 986 tests pass.
+
+---
+
 ## ✅ 2026-09-22 — taobao 등재(**첫 CN 커머스**), 그리고 focus 측정법이 한 번 더 틀렸다
 
 **448 refs · 151 verified.** taobao claims 43/43 · 컴포넌트 2/2 stated ·

@@ -47,6 +47,7 @@ const COUNT_SURFACES = [
   'web/public/llms.txt',
   'web/src/app/layout.tsx', 'web/src/app/docs/layout.tsx',
   'web/src/app/builder/layout.tsx', 'web/src/app/design-systems/layout.tsx',
+  'web/src/data/cli-docs.ts',
 ].map(p => join(ROOT, p));
 
 // Authoritative bundled counts (mirror what npm ships + the installer's filters,
@@ -68,8 +69,8 @@ function bundledCounts() {
 // number, which is how "15 skills" / "221 references" froze). Sub-counts like
 // "15 specialists" / "6 skills (v0.2 layer)" use different phrasing and are left
 // untouched by design.
-function countRules({ refs, skills, subagents }) {
-  return [
+function countRules({ refs, skills, subagents, tiers }) {
+  const rules = [
     { re: /\b\d+(?=\s+skills\b)/g, val: skills },
     { re: /\b\d+(?=\s+sub-agents\b)/g, val: subagents },
     {
@@ -77,6 +78,31 @@ function countRules({ refs, skills, subagents }) {
       val: refs,
     },
   ];
+  // Tier counts drift in five locales at once and nothing healed them: seven manual
+  // passes between 2026-09-16 and 2026-09-22. English writes the number before the
+  // label ("151 verified_v2"), every CJK locale writes it after ("verified_v2 151개",
+  // "legacy snapshot 113件"), so each tier needs a rule in both directions. The
+  // after-form's `(?![\d/-])` keeps it off an enumeration — README's
+  // "legacy 13/15/16-section" lists format versions. `\d` belongs in that class
+  // alongside the separators, or the engine backtracks the match to "legacy 1".
+  if (tiers) {
+    for (const [noun, val] of [['verified_v2\\b', tiers.verified],
+                               ['partial\\b', tiers.partial],
+                               ['legacy(?:\\s+snapshots?)?\\b', tiers.legacy]]) {
+      if (val == null) continue;
+      rules.push({ re: new RegExp(`\\b\\d+(?=\\s+${noun})`, 'g'), val });
+      rules.push({ re: new RegExp(`(?<=${noun}\\s+)\\d+(?![\\d/-])`, 'g'), val });
+    }
+  }
+  return rules;
+}
+
+function tierCounts() {
+  const p = join(ROOT, 'data', 'reference-quality.json');
+  if (!existsSync(p)) return null;
+  const c = JSON.parse(readFileSync(p, 'utf-8')).counts ?? {};
+  return c.verified_v2 == null ? null
+    : { verified: c.verified_v2, partial: c.partial, legacy: c.legacy_snapshot };
 }
 
 const TONE_LEXICON = ['clean', 'bold', 'warm', 'dark', 'playful', 'minimal', 'dense', 'flat', 'editorial', 'calm', 'energetic', 'trustworthy', 'friendly', 'modern', 'vivid', 'systematic', 'utilitarian', 'premium', 'approachable', 'confident', 'cinematic', 'immersive', 'organic', 'human'];
@@ -149,8 +175,10 @@ console.log('[mirror] design-md re-synced');
 // ── 4. count strings (self-healing) ────────────────────────────────────
 {
   const { skills, subagents } = bundledCounts();
-  const rules = countRules({ refs: fp.count, skills, subagents });
-  console.log(`[count] targets: refs=${fp.count} skills=${skills} sub-agents=${subagents}`);
+  const tiers = tierCounts();
+  const rules = countRules({ refs: fp.count, skills, subagents, tiers });
+  console.log(`[count] targets: refs=${fp.count} skills=${skills} sub-agents=${subagents}`
+    + (tiers ? ` verified=${tiers.verified} partial=${tiers.partial} legacy=${tiers.legacy}` : ''));
   for (const p of COUNT_SURFACES) {
     if (!existsSync(p)) { console.warn(`[count] skip missing ${p}`); continue; }
     const before = readFileSync(p, 'utf-8');
