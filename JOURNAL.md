@@ -76,7 +76,10 @@
 - **한 일(70)**: **base 등재** — 451 / **157 verified**, 88/88, 3/3, reason·**advisory 둘 다 0**. **`motion_value_unsourced`(카탈로그 1순위 advisory 261건)를 토큰으로 해결한 첫 레퍼런스.** 이징 10개가 각각 용도로 이름 붙어 있고, **그중 `--duration-hover`+`--ease-link`가 렌더된 CTA의 `transition`에서 그대로 잡힌다.**
 - **한 일(71)**: `thebase.com`은 **캐치올**(`/zz-…`가 홈) → 이 호스트의 다른 경로는 인용 안 함. 제2 출처는 다른 호스트 binc.jp(모리사와 Tazugane를 실제로 칠한다). hisense를 보류한 것과 갈리는 지점.
 - **한 일(72)**: **만료 테스트가 자기 의도와 반대로 실패했다** — `count(...) <= 11`은 **생존자**를 세는데, 주석의 의도는 "7월 배치가 사라졌는가"다. 생존자는 verified가 늘 때마다 증가하므로 **장려하려던 일 때문에 터진다.** 의도를 직접 재도록 교체(캡처 트랙 이전 증거로 생존한 건 0). **990/990.**
-- **다음**: chatwork 등재(자체 서체 Chatwork Sans) → JP 후보 2차 프로브. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(73)**: **chatwork 등재 — JP 웨이브 1 완료**(452 / **158 verified**). 생존 3건이 **3건 다 등재**됐고 셋 다 reason·advisory 0. RISE는 **토큰 20개 중 16개가 타입**이고 간격·radius·그림자·모션이 아예 없다. **자체 서체를 4웨이트 4토큰으로 선언**(L/R/B/EB), 실측 318/319.
+- **한 일(74)**: **`#645b4a`를 세 번 확인했다** — 빨강 브랜드에 올리브 hover는 전이 중간값 모양이라 ① 새 페이지 재현 ② `transition: all`은 0s ③ **스타일시트 9곳**(`.btn--secondary`)에서 확인. 작성자 값.
+- **한 일(75)**: **Marketo 폼 분리.** 첫 패스에서 `.mktoButton`을 Chatwork CTA로 쟀다 — 230×45·hover 90% 축소·`#3c480e`·`#bf0000`·페이지 유일 box-shadow까지 전부 Marketo 것. 조상 클래스로 걸러냈다. Chatwork 자신의 primary는 앵커 안 `<span>`이라 포커스 불가.
+- **다음**: JP 후보 2차 프로브(12건) → 수율 유지되면 계속. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

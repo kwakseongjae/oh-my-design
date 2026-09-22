@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-22T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 451,
+ "count": 452,
  "items": [
   {
    "id": "104",
@@ -1229,6 +1229,34 @@
    "has_official_ds": true,
    "ds_name": "Bezier",
    "ds_url": "https://github.com/channel-io/bezier-react"
+  },
+  {
+   "id": "chatwork",
+   "primary_color_hex": "#F03748",
+   "category": "saas",
+   "visual_theme": "A design system called RISE in which sixteen of twenty tokens are typographic: four font-family tokens naming four weights of Chatwork's own face, a ten-step rem scale with role names, and two line heights. Chatwork Sans renders on 318 of 319 text elements. Two reds split by job - #f03748 fills the 50px pill repeated at five sizes, #df1c13 carries text actions - and both turn the same olive #645b4a on hover.",
+   "voice_fingerprint": {
+    "register": "Japanese B2B product copy; 3,807 characters, set small at 12px on 105 elements",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "ja-b2b"
+   },
+   "tone_keywords": [
+    "typographic",
+    "direct",
+    "compact",
+    "red-forward",
+    "unanimated"
+   ],
+   "antipatterns": [
+    "taking #bf0000 or rgb(60,72,14) as Chatwork's - both belong to the embedded Marketo form",
+    "copying the focus ring; it is Chrome's auto 1px and RISE declares none",
+    "expecting the primary pill to respond on hover - measured, and it does not",
+    "picking a weight with font-weight instead of the family token; RISE names four separate families",
+    "inventing spacing, radius, shadow or motion tokens - RISE has none of them"
+   ],
+   "has_personas": false,
+   "category_raw": "business-chat"
   },
   {
    "id": "china-airlines",
