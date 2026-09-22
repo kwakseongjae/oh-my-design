@@ -227,7 +227,7 @@ Measured live on both surfaces, pointer parked, navigation suppressed.
 - Rest `#1772f6` fill, `#ffffff` label, **3px radius**, `14px / 400`. 36px tall on the home
   feed, 34px in columns.
 - Hover and pressed both **`oklch(0.535218 0.21381 259.318)`**, with a matching 1px border.
-- Focus produced no change.
+- Focus **not claimed** — focus was **not measured reliably** — it was read after a mouse press, which suppresses Chrome's `:focus-visible` heuristic, so a ring that a keyboard user sees would not have rendered. **No focus claim is made either way** (method: `docs/MEASUREMENT_METHOD_2026-09-22.md` §2).
 
 ### Rounded utility control
 
@@ -312,8 +312,7 @@ Not researched. No persona claim is made from a UI capture.
 ## 14. States
 
 Two controls, both carrying hover and pressed, both identical between the two states, both
-expressed in modern colour spaces. Focus produced no change on either. No disabled state was
-observed on a rendered control.
+expressed in modern colour spaces. **Focus is not claimed on either** — it focus was **not measured reliably** — it was read after a mouse press, which suppresses Chrome's `:focus-visible` heuristic, so a ring that a keyboard user sees would not have rendered. **No focus claim is made either way** (method: `docs/MEASUREMENT_METHOD_2026-09-22.md` §2). No disabled state was observed on a rendered control.
 
 ## 15. Motion & Easing
 

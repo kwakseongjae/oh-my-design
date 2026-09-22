@@ -356,8 +356,11 @@ readings. **Charcoal buttons are fully oval** (`border-radius: 999999px`, `--cha
 - Background: `#0096fa` · Text: `#ffffff` · Border: none
 - Radius: oval (`999999px`) · Padding: `0 24px` · Height: 40px · Font: 14px / 700
 - Hover: bg `#0090f0`, text `#f5f5f5` · Pressed: bg `#007ed2`, text `#d6d6d6`
-- Focus: no computed change from rest — Charcoal draws focus with a `FocusRing` component
-  rather than a style on the button itself.
+- Focus: **not reliably measured.** It was read after a mouse press, which suppresses
+  Chrome's `:focus-visible`, so a keyboard user's ring would not have rendered here. Charcoal
+  does publish a `FocusRing` component, which is consistent with focus living outside the
+  button's own styles — but that is the library's structure, not an observation. No focus
+  claim is made (see `docs/MEASUREMENT_METHOD_2026-09-22.md` §2).
 - Use: Primary CTA — フォロー (Follow), 投稿 (Post), ログイン (Login).
 
 **Default (Neutral)**

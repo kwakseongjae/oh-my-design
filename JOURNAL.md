@@ -48,7 +48,10 @@
 - **한 일(42)**: **게이트 라이브 버그 수정** — `zhihu.com`이 `PLATFORM_HOSTS`라 **zhihu 자신의 홈페이지가 zhihu의 proof gate에서 탈락**했다. `isBrandOperatedAccount`에 레퍼런스 자신의 homepage 호스트 예외를 좁게 추가. `note`·`velog`가 이미 같은 모양.
 - **한 일(43)**: 측정 방법 리서치 — **내 포커스 측정이 틀렸음을 실측**(마우스 press 뒤 `.focus()`는 `:focus-visible`을 죽인다). 레포 프로버가 9/17부터 경고하던 것. "focus 변화 없음" 6건 무효, 긍정 관측은 유효. Shadow DOM·Typed OM·컴포넌트 스코프 토큰은 실측으로 **불필요 판정**.
 - **한 일(44)**: **ego lite 도입**(오너 승인) — 앱·CLI·스킬 설치 완료, **온보딩만 오너 대기**(Chrome 로그인 데이터 가져오기는 오너 결정). 하네스 `probe-surface-ego.js` 작성: Tab 기반 포커스 · 선언/렌더 이중 덤프 · 네임스페이스 미병합 · **토큰·기하만 추출하는 개인정보 규칙을 코드로**.
-- **다음**: 온보딩 후 **weibo known-answer 테스트**(root 479 / own 309 / #ff8200→#ff5900) → focus 재측정 6건 → CN 웨이브 2. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(45)**: ego lite **known-answer 검증 통과**(토큰 4/4, own 309=309). 첫 실행 불일치는 **OS 다크모드 상속** 때문이었고 Playwright dark가 바이트 단위 재현 → 엔진 동등 확인. `page.cdp(Emulation.setEmulatedMedia)`로 스킴 강제.
+- **한 일(46)**: **로그인 월 계획 무산** — 표적 5곳 전부 로그아웃(오너가 CN 계정 없음). 계정 생성은 안 한다. ego lite 이점은 오너가 실제 쓰는 사이트에 한정.
+- **한 일(47)**: **focus 주장 6건 정정**(10곳). 사후 확인이 진단을 확정 — 잡은 건 전부 폼 컨트롤/평범한 `:focus`, 놓친 건 전부 `:focus-visible` 버튼.
+- **다음**: CN 웨이브 2(kuaishou 등) — 검증된 툴체인으로. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

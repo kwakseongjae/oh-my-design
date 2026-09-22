@@ -41,6 +41,20 @@ negative ("focus 변화 없음"이라 적은 것)  pixiv 1 · asana 1 · weibo 2
    → 신뢰할 수 없다. 편향된 계측기로 부재를 주장했다.
 ```
 
+### 증거가 한 번 더 맞아떨어졌다 (2026-09-22 사후 확인)
+
+수정하면서 보니 **내가 실제로 잡은 focus 값이 전부 폼 컨트롤이거나 평범한 `:focus` 사용처다**:
+
+```
+pixiv    switch · checkbox          asana  toggle-on
+sendbird checkbox · toggle · input  smarthr input
+ctrip    button-login-pill  ← 버튼이지만 :focus-visible이 아니라 :focus를 쓴다
+```
+
+**명세대로다.** 텍스트 입력과 폼 컨트롤은 입력 양식과 무관하게 `:focus-visible`에 매칭되고,
+버튼은 아니다. 즉 **내가 관측한 것은 전부 휴리스틱이 양식을 안 따지는 종류**였고,
+**놓친 것은 전부 따지는 종류**였다. 진단이 양방향으로 확인된다.
+
 정확한 진술: **내 방법은 `:focus` 스타일은 잡고 `:focus-visible` 스타일은 체계적으로 놓친다.**
 그리고 `:focus-visible`이 현재 권장 패턴이다. **긍정 관측은 유효하고 부정 관측은 무효다.**
 

@@ -3,6 +3,33 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## 🧪 2026-09-22 — ego lite 검증 통과, **로그인 월 계획은 무산**, focus 주장 6건 정정
+
+**known-answer 테스트가 제값을 했다.** 첫 실행이 커밋된 weibo와 어긋났다(`#ea8011` vs `#ff8200`) —
+컬러 매니지먼트 버그의 모양이었는데 **아니었다.** macOS가 다크 모드이고 ego lite가 OS의
+`prefers-color-scheme`을 상속한다. **Playwright를 dark로 돌리니 바이트 단위로 재현** →
+두 엔진은 동등하다. 내가 잰 건 weibo의 다크 테마였다.
+
+`page.cdp("Emulation.setEmulatedMedia")`로 스킴을 강제하게 했고 재실행 결과
+**토큰 4/4 · own-namespace 309=309 · body 동일**. ego lite는 검증됐다.
+
+**그런데 로그인 월 계획은 무산이다.** 다섯 표적 전부 **로그아웃 상태**다 —
+pixiv·weibo·douyin·zhihu·asana. 오너가 이 CN 사이트들 계정이 없다(당연하다). **계정 생성·로그인은
+내가 하지 않는다.** ego lite의 간판 이점은 **오너가 실제로 쓰는 사이트에서만** 유효하다.
+
+**focus 주장 6건을 정정했다**(pixiv·asana·weibo·zhihu, 10곳). "focus 변화 없음"을 전부
+**"신뢰성 있게 측정되지 않음, 어느 쪽도 주장하지 않음"**으로 바꿨다.
+
+> **사후 확인이 진단을 양방향으로 확정했다.** 내가 실제로 잡은 focus 값은 **전부 폼 컨트롤**
+> (switch·checkbox·toggle·input)이거나 `:focus-visible`이 아닌 평범한 `:focus`를 쓰는 곳
+> (ctrip 로그인 알약)이다. 명세상 폼 컨트롤은 입력 양식과 무관하게 매칭되고 버튼은 아니다 —
+> **관측한 것은 휴리스틱이 양식을 안 따지는 종류, 놓친 것은 따지는 종류.** 정확히 들어맞는다.
+
+ego lite는 **순서 수정 후에도** `:focus-visible`을 못 띄웠다. 하네스가 `focused`·`focusVisible`을
+별도로 기록하고, **"자동화에서 링이 안 떴다"≠"포커스 스타일이 없다"**를 주석에 박아뒀다.
+
+---
+
 ## 🔧 2026-09-22 — ego lite 도입(오너 승인) + **내 측정 방법의 결함 실측**
 → `docs/MEASUREMENT_METHOD_2026-09-22.md` · `docs/EGO_LITE_SETUP_2026-09-22.md`
 

@@ -234,8 +234,8 @@ Measured live with the pointer parked between readings and navigation suppressed
 | **Sign-in pill** | `#ff8200` fill, `#ffffff` text | **`#ff5900`** | **`#ff5900`** | 34px tall, **36px radius**, `9px 15px`, 14px/500 |
 
 Both share one contract — `--w-b-flat-primary-bg` → `--w-b-flat-primary-bg-hover` — and
-**pressed does not darken further**: hover and pressed are the same value. Focus produced no
-computed change on either.
+**pressed does not darken further**: hover and pressed are the same value. **Focus is not
+claimed** — it focus was **not measured reliably** — it was read after a mouse press, which suppresses Chrome's `:focus-visible` heuristic, so a ring that a keyboard user sees would not have rendered. **No focus claim is made either way** (method: `docs/MEASUREMENT_METHOD_2026-09-22.md` §2).
 
 The two differ in *shape*, not colour: the search submit is a hard rectangle butted against
 the search field, the sign-in a full pill. Weibo uses geometry, not hue, to separate a
@@ -326,8 +326,9 @@ Not researched. No persona claim is made from a UI capture.
 ## 14. States
 
 Only hover and pressed were observed, on two controls, and they are identical (`#ff5900`).
-Focus produced no computed change. Disabled exists as a token (`--w-disabled: #cccccc`) but
-was not observed on a rendered control, so no disabled component is declared.
+**Focus is not claimed** — it focus was **not measured reliably** — it was read after a mouse press, which suppresses Chrome's `:focus-visible` heuristic, so a ring that a keyboard user sees would not have rendered. **No focus claim is made either way** (method: `docs/MEASUREMENT_METHOD_2026-09-22.md` §2). Disabled exists as a token
+(`--w-disabled: #cccccc`) but was not observed on a rendered control, so no disabled
+component is declared.
 
 ## 15. Motion & Easing
 

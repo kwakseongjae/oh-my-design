@@ -381,8 +381,8 @@ Every button is a **pill** (`border-radius: 100px`), measured live on `asana.com
 `black 100` (`#e7e7e7`), `black 50` (`#f3f3f3`), `black 20` (`#fafafa`). The hover contract
 is "move one or more steps along the neutral ramp", not a bespoke colour per button.
 
-**Pressed and focus produced no computed change** on any variant. That is a real observation,
-not a gap: Asana's buttons transition on hover only.
+**Pressed produced no computed change** on any variant — hover and pressed are the same
+value, and that is a real observation. **Focus is a different matter:** it focus was **not measured reliably** — it was read after a mouse press, which suppresses Chrome's `:focus-visible` heuristic, so a ring that a keyboard user sees would not have rendered. **No focus claim is made either way** (method: `docs/MEASUREMENT_METHOD_2026-09-22.md` §2).
 
 ### Toggle
 
