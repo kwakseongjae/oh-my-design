@@ -93,6 +93,12 @@ Vant는 **라이브러리**다) ② `bytedance.com/arco`가 200을 주지만 넌
    그 사이트가 아니라 프레임워크다).
 3. **상태를 잴 수 있는 컴포넌트가 몇 개인가** — 그 수만큼만 선언한다(§3b).
 4. **CN/JP/TW/KR이면** 브랜드 소유 지역 Tier-1 **2개 이상**(proof gate).
+5. **역할 이름을 렌더러 어휘에 맞춘다** — 본문색은 `foreground`여야 한다.
+   `selectForeground`가 받는 건 `foreground`·`heading`·`ink`·`body`뿐이고, `text`로 지으면
+   상세 페이지의 foreground 슬롯이 **빈 채로 렌더된다**. (pixiv·weibo·ctrip에서 세 번 반복한
+   실수. `src/lib/references/normalize.ts`의 셀렉터가 정답지다.)
+6. **CREATE 절차**: `data/reference-fingerprints.json` + **삼중 미러**(`.claude/data`·`.codex/data`) ·
+   `design-md/<id>/` · `packages/mcp/data/references/<id>/` · 티어 카운트 3개 surface.
 
 **계측기 규율**(오늘 6건의 오류에서): 라이트/다크 섞임 → `getComputedStyle(:root)` ·
 값 역인덱스 금지, 이름으로 조회 · 스토리북 0×0 로더 버튼 · 래퍼 div · 라이브 앵커 press는

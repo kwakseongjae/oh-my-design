@@ -25,7 +25,7 @@ tokens:
     brand-border: "#93bff5"
     brand-tint: "#ebf4ff"
     brand-tint-low: "#f5f9ff"
-    text: "#111111"
+    foreground: "#111111"
     text-secondary: "#555555"
     text-muted: "#aaaaaa"
     border: "#d5d5d5"
@@ -72,7 +72,7 @@ verification_v2:
     tokens.colors.brand-border: { surface_id: hotels, source_id: hotels-live, method: computed-style, captured: "2026-09-22" }
     tokens.colors.brand-tint: { surface_id: hotels, source_id: hotels-live, method: computed-style, captured: "2026-09-22" }
     tokens.colors.brand-tint-low: { surface_id: hotels, source_id: hotels-live, method: computed-style, captured: "2026-09-22" }
-    tokens.colors.text: { surface_id: hotels, source_id: hotels-live, method: computed-style, captured: "2026-09-22" }
+    tokens.colors.foreground: { surface_id: hotels, source_id: hotels-live, method: computed-style, captured: "2026-09-22" }
     tokens.colors.text-secondary: { surface_id: hotels, source_id: hotels-live, method: computed-style, captured: "2026-09-22" }
     tokens.colors.text-muted: { surface_id: hotels, source_id: hotels-live, method: computed-style, captured: "2026-09-22" }
     tokens.colors.border: { surface_id: hotels, source_id: hotels-live, method: computed-style, captured: "2026-09-22" }
@@ -185,7 +185,7 @@ primitive and the meaning are wired together rather than left to the implementer
 
 ### Neutrals
 
-- **Text** (`#111111`) — `coreColorGray1` / `smtcColorTextPrimary`.
+- **Foreground** (`#111111`) — `coreColorGray1` / `smtcColorTextPrimary`.
 - **Text Secondary** (`#555555`) — `coreColorGray2`.
 - **Text Muted** (`#aaaaaa`) — `coreColorGray4`.
 - **Border** (`#d5d5d5`) — `coreColorGray6`.
