@@ -3,6 +3,52 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-22 — B단계: JP 수율 **25%**, **nulab 등재** (450 refs · **156 verified** · 1000 sources)
+
+**JP 후보 12건 프로브 → 3건 생존(25%).** CN 웨이브 3의 **3.3%**와 비교하면 시장을 옮긴
+판단이 맞았다. 사전에 정한 임계치 20%를 넘었으므로 **JP 웨이브 진행.**
+
+| 생존 | 근거 |
+|---|---|
+| **nulab** | own 146개 · 컨트롤 4개 전부 상태 있음 → **등재 완료** |
+| **base** | own 64개(`--color*36 --ease*10 --spacing*10 --z*8`) · 웹폰트 **TazuganeGothicStdN**(모리사와) + Gilroy · 컨트롤 4 |
+| **chatwork** | **자체 서체 `Chatwork Sans`** · `--rise*20` · 컨트롤 16 |
+
+기각 9건: yahoo·plaid·yappli·visional·tabelog 토큰 0 · raksul `--tw` · andpad `--wp` +
+컨트롤 0 · kyash Webflow · dena URL 오류.
+
+### nulab — **제품 하나당 패밀리 하나**, 이 카탈로그에서 가장 선명한 다중 제품 시트
+
+claims 116/116 · 컴포넌트 6/6 · reason·advisory 0. 206개 중 **60개가 WordPress**라 제외,
+남은 **146개가 누라보 것**이다.
+
+```
+--backlog-*  --cacoo-*  --typetalk-*  --nulab-*  --nulabpass-*  --flowbase-*  --ad-*
+--button-<제품> / -hover / -pressed / -disabled     ← 7개 제품 전부 4단
+--banner-<제품> / -secondary                        ← 배너 쌍도 제품마다
+```
+
+- **포커스 링이 하나고 브랜드를 넘는다**: `--outline-primary #cbc2e8`가 `nulab.com`과
+  `backlog.com` 양쪽에서 `solid 4px`로 렌더된다. 채워진 버튼에는 `outline`, 조용한
+  컨트롤에는 **같은 색·같은 4px를 `box-shadow`로**.
+- 토큰↔렌더 일치: `--button-default #74758b`/`-hover #696a7d` = 실측 rest/hover,
+  `--button-nulab #7a6abf`/`-hover #6e5fac` = 실측.
+- **dp 간격 스케일은 40px에서 시작한다** — 섹션 리듬이지 컴포넌트 리듬이 아니고,
+  컴포넌트는 별도 `--button-horizontal-padding-sm/md/lg`(rem)를 쓴다.
+- 서체는 **Noto Sans JP 하나**(텍스트 요소 119/119).
+
+> **`conflicts`에 넣었다가 뺐다.** 회사 시트는 Backlog를 초록(`#319b77`)이라 하는데
+> `backlog.com` 버튼은 **주황 `#f27100`**이다. 스키마의 conflict는 **한 주장에 대해 두
+> 출처가 엇갈리는 것**인데, 이건 **서로 다른 두 가지에 대한 각각 맞는 측정**이다 —
+> 회사 시트가 이름 붙인 토큰과 제품 사이트가 칠하는 값. 넣어두면 **존재하지 않는 불일치로
+> 등급이 막힌다.** 초록은 팔레트에, 주황은 Backlog 컴포넌트에 두고 산문으로 경고했다.
+
+> **패밀리가 제품보다 오래 산다.** `--typetalk-*` 10개가 전부 살아 있는데 Typetalk은
+> 누라보 About 페이지의 현재 제품 목록(Backlog·Cacoo·Nulab Pass·Flowbase)에 없다.
+> 측정된 대로 기록하고 제품 상태에 대해서는 아무 주장도 하지 않았다.
+
+---
+
 ## ✅ 2026-09-22 — A단계 완료: **asana·cybozu·sendbird 셋 다 verified** (449 / **155**)
 
 **카탈로그에서 verification_v2를 갖고도 verified가 아니던 레퍼런스 3건이 0건이 됐다.**

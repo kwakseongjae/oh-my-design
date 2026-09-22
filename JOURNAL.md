@@ -70,7 +70,10 @@
 - **한 일(64)**: **A단계 완료 — asana·cybozu·sendbird 셋 다 verified**(449 / **155**). `interactive_state_missing`이 카탈로그에서 0건이 됐다. 셋이 전부 다른 결말: cybozu 4개는 **다 있었고**, asana의 마젠타 버튼은 **사라졌고**(토큰 `--fuchsia-700`은 살아 있음), sendbird는 2개가 **재디자인** 1개가 **오명명**(newsletter라던 게 placeholder "Search…"인 사이트 검색창, 0×0).
 - **한 일(65)**: **`#2693ff`는 cybozu 것이다** — 대조군에서 UA는 focus에 `color`/`border-color`를 안 건드린다. 이전 메모("브라우저 기본") 정정. kintone은 반대로 **색은 작성자(`#ffbf00`) 모양은 UA(`auto`)**.
 - **한 일(66)**: **자동 포커스된 컨트롤에는 rest가 없다** — asana 로그인 입력이 4상태 전부 `:focus-visible`로 읽혔다(상태 없는 것처럼 보임). 프로브에 blur 추가. 그 외 `--locale`·`--text`·`--wait`·rest에서 border/outline 항상 출력 — **전부 쓰다가 나온 결함 5건.**
-- **다음(B단계)**: JP 후보 10건 프로브 → 수율 20% 넘으면 본 웨이브. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(67)**: **B단계 — JP 후보 12건 중 3건 생존(25%)**. CN 웨이브 3의 3.3%와 비교하면 시장 이동이 맞았다. 임계치 20% 초과 → JP 웨이브 진행. 남은 후보: **base**(`--ease*10`, 모리사와 TazuganeGothic), **chatwork**(자체 서체 Chatwork Sans).
+- **한 일(68)**: **nulab 등재** — 450 refs / **156 verified** / **1000 sources**. 116/116, 6/6, reason·advisory 0. **제품 하나당 패밀리 하나**(7제품 × 4단 버튼 + 배너 쌍)로 이 카탈로그에서 가장 선명한 다중 제품 시트. **포커스 링 하나(`#cbc2e8` 4px)가 nulab.com·backlog.com 양쪽에서** 렌더되고, 채워진 버튼엔 outline 조용한 컨트롤엔 box-shadow.
+- **한 일(69)**: **`conflicts`에 넣었다 뺐다** — 회사 시트의 Backlog 초록 vs backlog.com 버튼 주황은 **불일치가 아니라 서로 다른 두 가지의 각각 맞는 측정**이다. 넣어두면 없는 불일치로 등급이 막힌다. 산문으로 경고하고 필드는 비웠다.
+- **다음**: base · chatwork 등재 → JP 후보 2차 프로브. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

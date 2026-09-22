@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-22T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 449,
+ "count": 450,
  "items": [
   {
    "id": "104",
@@ -6353,6 +6353,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "nulab",
+   "primary_color_hex": "#7A6ABF",
+   "category": "productivity",
+   "visual_theme": "A white corporate page set entirely in Noto Sans JP, with a soft purple #7a6abf used sparingly - and behind it a token sheet organised one family per product. Seven products each get a brand colour, a background pair, a banner pair and a four-state button ramp (base/hover/pressed/disabled), and every one of them shares a single focus ring, #cbc2e8 at 4px, which renders as an outline on filled controls and a box-shadow on quiet ones.",
+   "voice_fingerprint": {
+    "register": "plain corporate Japanese; 2,343 characters that are mostly product names and one-line descriptions",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "ja-product"
+   },
+   "tone_keywords": [
+    "calm",
+    "systematic",
+    "multi-product",
+    "understated",
+    "collaborative"
+   ],
+   "antipatterns": [
+    "reading --wp--preset--* as Nulab tokens; 60 of the 206 properties are WordPress",
+    "assuming --brand-backlog #42ce9f is what Backlog paints - backlog.com's buttons are #f27100",
+    "using the dp spacing scale for component padding; it has no step below 40px",
+    "inventing a focus colour - #cbc2e8 at 4px is the only one, across both brands",
+    "taking a product action colour without its four states; every family publishes base, hover, pressed and disabled"
+   ],
+   "has_personas": false,
+   "category_raw": "collaboration-tools"
   },
   {
    "id": "nvidia",

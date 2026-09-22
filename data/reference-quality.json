@@ -2,12 +2,12 @@
   "schema_version": 2,
   "generated_at": "2026-09-22",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 449,
+  "count": 450,
   "counts": {
-    "verified_v2": 155,
+    "verified_v2": 156,
     "partial": 181,
     "legacy_snapshot": 113,
-    "total": 449
+    "total": 450
   },
   "items": [
     {
@@ -3280,6 +3280,17 @@
       "reason_codes": [
         "verification_v2_missing"
       ]
+    },
+    {
+      "id": "nulab",
+      "status": "verified_v2",
+      "verified_at": "2026-09-22",
+      "next_reverify_at": "2027-03-21",
+      "evidence_coverage": 1,
+      "surface_count": 2,
+      "source_count": 3,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "nvidia",
