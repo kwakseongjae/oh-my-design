@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "ego-browser": {
+      "source": "citrolabs/ego-lite",
+      "sourceType": "github",
+      "skillPath": "skills/ego-browser/SKILL.md",
+      "computedHash": "54b594d28b3f0fe191d6a3341c4eaa71ccb7295fbba6a32be9445d5ab0d444a5"
+    },
     "google-analytics": {
       "source": "davila7/claude-code-templates",
       "sourceType": "github",

@@ -46,7 +46,9 @@
 - **한 일(40)**: ctrip 등재 — **443 refs / 146 verified**, claims 63/63, 3/3 stated, **무결함 2연속**. **3계층 토큰 시스템**(core 286 / smtc 86 / comp 30) 발견 — 카탈로그 최고 성숙도. 다만 **자기 홈페이지가 시스템 밖**(`#0086f6`·`#f2f8fe`·`#2953d6`은 미선언) — 양쪽 다 기록. 브라우저 기본 링크색 `#0000ee`/`#ff0000` 배제.
 - **한 일(41)**: **CN 웨이브 1 완료 — 5/5 전원 verified, reasonCodes 전부 비어 있음.** 441→446, verified 144→149, CN 5→10. huawei·douyin은 **컴포넌트 0 선언**으로 verified(측정한 만큼만 선언이 정상 경로임을 확인). ctrip 3계층 토큰 시스템, douyin `gift-*`/`pk-*`, zhihu `_light`/`_dark` 쌍 + VIP/SVIP 브랜드색 + **oklch 원문 기록**.
 - **한 일(42)**: **게이트 라이브 버그 수정** — `zhihu.com`이 `PLATFORM_HOSTS`라 **zhihu 자신의 홈페이지가 zhihu의 proof gate에서 탈락**했다. `isBrandOperatedAccount`에 레퍼런스 자신의 homepage 호스트 예외를 좁게 추가. `note`·`velog`가 이미 같은 모양.
-- **다음**: CN 웨이브 2(kuaishou 등 25건) → JP +40. 티어 카운트 자동 동기화(수동 6회째). **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(43)**: 측정 방법 리서치 — **내 포커스 측정이 틀렸음을 실측**(마우스 press 뒤 `.focus()`는 `:focus-visible`을 죽인다). 레포 프로버가 9/17부터 경고하던 것. "focus 변화 없음" 6건 무효, 긍정 관측은 유효. Shadow DOM·Typed OM·컴포넌트 스코프 토큰은 실측으로 **불필요 판정**.
+- **한 일(44)**: **ego lite 도입**(오너 승인) — 앱·CLI·스킬 설치 완료, **온보딩만 오너 대기**(Chrome 로그인 데이터 가져오기는 오너 결정). 하네스 `probe-surface-ego.js` 작성: Tab 기반 포커스 · 선언/렌더 이중 덤프 · 네임스페이스 미병합 · **토큰·기하만 추출하는 개인정보 규칙을 코드로**.
+- **다음**: 온보딩 후 **weibo known-answer 테스트**(root 479 / own 309 / #ff8200→#ff5900) → focus 재측정 6건 → CN 웨이브 2. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

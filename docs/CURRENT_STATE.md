@@ -3,6 +3,30 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## 🔧 2026-09-22 — ego lite 도입(오너 승인) + **내 측정 방법의 결함 실측**
+→ `docs/MEASUREMENT_METHOD_2026-09-22.md` · `docs/EGO_LITE_SETUP_2026-09-22.md`
+
+**먼저: 내 포커스 측정이 틀렸다.** 레포의 `probe-component-states.mjs`가 9월 17일부터
+경고하던 것을 실측으로 확인했다 — **마우스로 누른 뒤 `.focus()`를 부르면 `:focus`는 true인데
+`:focus-visible`이 false**라 링이 안 뜬다. 내 순서가 정확히 그거였다(park→hover→**press**→focus).
+→ **긍정 관측은 유효**(pixiv 4·sendbird 8·ctrip 2 등), **"focus 변화 없음" 6건은 무효**
+(pixiv·asana·weibo·zhihu). 팔레트·등급엔 영향 없다.
+
+**실측으로 기각한 것들**(만들 뻔했다): Shadow DOM(4개 사이트 전부 0) · 컴포넌트 스코프
+토큰(1개, 빌드 해시) · CSS Typed OM(getComputedStyle과 출력 동일) · iframe(0).
+
+**ego lite 설치 완료, 온보딩만 오너 대기.** `/Applications/ego lite.app` v0.5.1.11 ·
+`~/.local/bin/ego-browser` · 스킬 설치됨. `install.sh` 234줄 읽고 실행했다 —
+**Gatekeeper 격리 속성을 벗긴다는 점**은 명시해 둔다. 온보딩에서 Chrome 로그인 데이터
+가져오기를 묻는데 **그건 오너가 정할 일**이라 멈췄다.
+
+**하네스**(`web/scripts/probe-surface-ego.js`)에 세 수정을 코드로 박았다 — 포커스는 **실제
+Tab**으로, 선언값·렌더값 **둘 다** 덤프(krds 채널당 1 차이 때문), 네임스페이스 **미병합**.
+개인정보 규칙도 코드에 있다: **토큰·기하만, 텍스트는 안 읽음**, `OMD_ALLOW_TEXT`는
+인증돼 보이는 페이지에서 자동 거부, 출력에 `looksAuthenticated` 기록.
+
+---
+
 ## ✅ 2026-09-22 — **CN 웨이브 1 완료: 5/5 전원 verified, 결함 0**
 
 **441 → 446 · verified 144 → 149 · CN 5 → 10.** 다섯 건 모두 `reasonCodes` 비어 있다.
