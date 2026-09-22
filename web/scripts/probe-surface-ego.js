@@ -17,11 +17,22 @@
  *
  * ## Three corrections over what I was doing on 2026-09-21/22
  *
- * 1. **Focus is measured with a real Tab press, never `el.focus()`.** Measured 2026-09-22:
- *    after a mouse press, `.focus()` sets `:focus` but NOT `:focus-visible`, so no ring
- *    renders and the reading is a false negative. Chrome keys `:focus-visible` off the last
- *    interaction modality. Every state is therefore read in its own pass from a clean
- *    pointer state, and focus gets a keyboard modality first.
+ * 1. **Focus is measured first, before the mouse ever touches the control.** Measured
+ *    2026-09-22: after a mouse press `.focus()` sets `:focus` but NOT `:focus-visible`, so
+ *    no ring renders and the reading is a false negative — which is exactly what produced
+ *    this session's "focus produced no change" entries. Chrome keys the heuristic off the
+ *    last interaction modality, so the fix is ordering: focus, blur, then rest/hover/press.
+ *    (Tabbing to the element also works in principle but does not reliably arrive — weibo
+ *    needs more than 40 presses.)
+ *
+ *    **This reduces the false negatives; it does not eliminate them.** Measured on weibo
+ *    through ego lite, `.focus()` set `:focus` and still not `:focus-visible`, where the
+ *    same call on an isolated test page did set it — Chrome's modality heuristic depends on
+ *    browser-session state an automated run does not fully control. So the harness records
+ *    `focused` and `focusVisible` as two separate flags on every reading. A focus entry with
+ *    `focusVisible: false` means *the ring did not render under automation*, which is NOT
+ *    the same claim as *this control has no focus style*. Never write the second into a
+ *    reference on the strength of the first.
  *
  * 2. **Declared and rendered values are both dumped, never just one.** krds authors
  *    `#0b50d0` where `getComputedStyle` returns `#0c51d1` — one per channel. Painting the
@@ -42,12 +53,16 @@
  * page looks authenticated.
  */
 
-const URL_ = process.env.OMD_URL;
-const LABEL = process.env.OMD_LABEL || "surface";
-const ALLOW_TEXT = process.env.OMD_ALLOW_TEXT === "1";
-const SCHEME = process.env.OMD_SCHEME || "light";
-const MAX_CONTROLS = Number(process.env.OMD_MAX_CONTROLS || "6");
-if (!URL_) { console.error("OMD_URL is required"); process.exit(2); }
+/* ego's Node runtime does not inherit the caller's environment — measured 2026-09-22,
+   process.env has 81 keys and none of them are ours. The wrapper therefore prepends a
+   `globalThis.OMD_CFG = {...}` line to this file before piping it in. */
+const CFG = globalThis.OMD_CFG || {};
+const URL_ = CFG.url;
+const LABEL = CFG.label || "surface";
+const ALLOW_TEXT = CFG.allowText === true;
+const SCHEME = CFG.scheme || "light";
+const MAX_CONTROLS = Number(CFG.maxControls || 6);
+if (!URL_) { console.error("no url — run through web/scripts/probe-surface-ego.sh"); throw new Error("no url"); }
 
 const hx = (s) => {
   const t = String(s).match(/rgba\(\s*\d+,\s*\d+,\s*\d+,\s*0\s*\)/);
@@ -58,6 +73,17 @@ const hx = (s) => {
 
 const task = await taskSpace(`omd probe ${LABEL}`);
 const page = task.page("p1");
+
+/* ego lite inherits prefers-color-scheme from the OS, unlike a Playwright context where it
+   is set explicitly. Measured 2026-09-22: with macOS in Dark, weibo returned #ea8011 where
+   Playwright-light returned #ff8200 — not a colour-management difference, the brand's dark
+   theme. Playwright forced to dark reproduced ego's numbers byte for byte, which is how the
+   engines were shown equivalent. Forcing the scheme here makes a run reproducible regardless
+   of the operator's OS setting, and `scheme: "dark"` is a deliberate second measurement
+   rather than an accident. */
+await page.cdp("Emulation.setEmulatedMedia", {
+  features: [{ name: "prefers-color-scheme", value: SCHEME }],
+});
 await page.goto(URL_, { waitUntil: "domcontentloaded", timeout: 60000 });
 await page.waitForTimeout(6000);
 
@@ -135,49 +161,45 @@ const boxOf = (i) => page.evaluate(`(() => { const e=(${SEL})[${i}]; if(!e) retu
 
 const controls = [];
 for (let i = 0; i < Math.min(count, MAX_CONTROLS); i++) {
+  /* Focus FIRST, before this control has ever been touched by the mouse.
+     Measured 2026-09-22: `.focus()` matches :focus-visible when no mouse interaction
+     preceded it, and fails to when one did — Chrome keys the heuristic off the last
+     interaction modality. Tabbing to the element would also work but does not reliably
+     reach it (weibo needs more than 40 presses), so ordering is the reliable lever.
+     `focusVisible` is recorded so a reader can tell a real ring from a bare :focus. */
+  await page.evaluate(`(() => { const e = (${SEL})[${i}]; if (e && e.focus) e.focus(); })()`);
+  await page.waitForTimeout(320);
+  const focus = await read(i);
+
+  await page.evaluate(() => { document.activeElement?.blur?.(); });
   await park();
   const rest = await read(i);
   if (!rest) continue;
 
-  await page.mouse.move(...Object.values(await boxOf(i) || { x: 2, y: 2 }));
-  await page.waitForTimeout(450);
+  const box = await boxOf(i);
+  if (box) { await page.mouse.move(box.x, box.y); await page.waitForTimeout(450); }
   const hover = await read(i);
 
   await park();
-  const bb = await boxOf(i);
-  if (bb) { await page.mouse.move(bb.x, bb.y); await page.mouse.down(); await page.waitForTimeout(380); }
+  if (box) { await page.mouse.move(box.x, box.y); await page.mouse.down(); await page.waitForTimeout(380); }
   const press = await read(i);
-  if (bb) await page.mouse.up();
-
-  /* Focus: a real Tab press, from a clean state. `.focus()` after a mouse press sets :focus
-     but not :focus-visible, which is a false negative. Reload resets the modality. */
+  if (box) await page.mouse.up();
   await park();
-  await page.evaluate(() => { document.activeElement?.blur?.(); });
-  await page.keyboard.press("Tab");
-  await page.waitForTimeout(200);
-  let focus = null, tabs = 0;
-  while (tabs < 40) {
-    const cur = await read(i);
-    if (cur && cur.focused) { focus = cur; break; }
-    await page.keyboard.press("Tab");
-    await page.waitForTimeout(90);
-    tabs++;
-  }
 
   const label = textAllowed
     ? await page.evaluate(`(() => { const e=(${SEL})[${i}]; return e ? (e.innerText||"").trim().slice(0,20) : ""; })()`)
     : `#${i}`;
-  const diff = (x) => !x ? "(not reached)" : Object.keys(rest).filter((k) => rest[k] !== x[k]).map((k) => `${k}:${hx(x[k])}`).join(" ") || "-";
-  controls.push({ i, label, rest, hover, press, focus, focusReachedInTabs: focus ? tabs : null });
+  const diff = (x) => !x ? "(not read)" : Object.keys(rest).filter((k) => rest[k] !== x[k]).map((k) => `${k}:${hx(x[k])}`).join(" ") || "-";
+  controls.push({ i, label, rest, hover, press, focus });
   console.log(`  [${i}] ${label.padEnd(18)} <${rest.tag}> bg=${hx(rest.bg).padEnd(11)} fg=${hx(rest.fg).padEnd(11)} r=${rest.radius.padEnd(8)} h=${rest.h}`);
   console.log(`      hover[${diff(hover)}]`);
   console.log(`      press[${diff(press)}]`);
-  console.log(`      focus[${diff(focus)}]${focus ? `  :focus-visible=${focus.focusVisible}` : "  ← not reachable by Tab"}`);
+  console.log(`      focus[${diff(focus)}]  :focus-visible=${focus ? focus.focusVisible : "?"}`);
 }
 
 const out = {
   measuredAt: new Date().toISOString(), url: URL_, label: LABEL, scheme: SCHEME,
-  engine: "ego-lite", looksAuthenticated: looksAuthed, textCaptured: textAllowed,
+  engine: "ego-lite", schemeForced: true, looksAuthenticated: looksAuthed, textCaptured: textAllowed,
   tokens, rendered, controlCount: count, controls,
 };
 console.log("\n" + "=".repeat(60));
