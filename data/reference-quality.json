@@ -2,12 +2,12 @@
   "schema_version": 2,
   "generated_at": "2026-09-22",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 443,
+  "count": 446,
   "counts": {
-    "verified_v2": 146,
+    "verified_v2": 149,
     "partial": 184,
     "legacy_snapshot": 113,
-    "total": 443
+    "total": 446
   },
   "items": [
     {
@@ -1107,6 +1107,17 @@
       ]
     },
     {
+      "id": "douyin",
+      "status": "verified_v2",
+      "verified_at": "2026-09-22",
+      "next_reverify_at": "2027-03-21",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 2,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
       "id": "drdiary",
       "status": "partial",
       "verified_at": "2026-07-02",
@@ -1825,6 +1836,17 @@
         "token_source_unverified",
         "verification_v2_missing"
       ]
+    },
+    {
+      "id": "huawei",
+      "status": "verified_v2",
+      "verified_at": "2026-09-22",
+      "next_reverify_at": "2027-03-21",
+      "evidence_coverage": 1,
+      "surface_count": 2,
+      "source_count": 2,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "hubspot",
@@ -5594,6 +5616,17 @@
       "reason_codes": [
         "verification_v2_missing"
       ]
+    },
+    {
+      "id": "zhihu",
+      "status": "verified_v2",
+      "verified_at": "2026-09-22",
+      "next_reverify_at": "2027-03-21",
+      "evidence_coverage": 1,
+      "surface_count": 2,
+      "source_count": 2,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "zigbang",

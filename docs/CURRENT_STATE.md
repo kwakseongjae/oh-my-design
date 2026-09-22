@@ -3,6 +3,48 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-22 — **CN 웨이브 1 완료: 5/5 전원 verified, 결함 0**
+
+**441 → 446 · verified 144 → 149 · CN 5 → 10.** 다섯 건 모두 `reasonCodes` 비어 있다.
+
+```
+weibo   54/54  comps 2/2/2      ctrip  63/63  comps 3/3/3
+huawei  50/50  comps 0/0/0      douyin 29/29  comps 0/0/0
+zhihu   54/54  comps 2/2/2
+```
+
+**컴포넌트 0 선언이 실제로 동작한다.** huawei·douyin은 토큰이 풍부한데(339 `--hwp-*` / 424)
+어느 컨트롤도 hover·press·focus에 반응하지 않았다. **선언하지 않았고 verified로 갔다** —
+"측정한 만큼만 선언한다"가 게이트 우회가 아니라 정상 경로임을 확인.
+
+**브랜드별 발견**
+- **weibo** — 선언 토큰 `--w-b-flat-primary-bg-hover #ff5900`과 실측 hover가 **독립 일치**.
+  473개 중 309개만 weibo 것이고 나머지에 **GitHub prettylights 테마**가 섞여 있었다.
+- **ctrip** — **3계층 토큰 시스템**(core 286 / smtc 86 / comp 30), 카탈로그 최고 성숙도.
+  그런데 **자기 홈페이지가 시스템 밖**(`#0086f6`·`#f2f8fe`·`#2953d6` 미선언).
+- **huawei** — **13단 헤드라인 스케일**을 발행하는데 홈은 `15.64px`·`15.3px` 같은
+  **root-relative 분수 크기**를 렌더한다. 시스템과 앞면이 서로 다른 기반 위에 있다.
+  미사용 원시 램프 7계열(yellow·rose·pink·mint·cyan…)은 "존재 증거"로만 기록.
+- **douyin** — **`gift-*` 19 · `pk-*` 18** 토큰 계열. 가상 선물과 PK 배틀이 자체 토큰 패밀리를
+  가질 만큼 디자인 비중이 있다 — **회사가 무엇으로 돈을 버는지가 토큰에 적혀 있다.**
+  텍스트를 회색 값이 아니라 **흰색 알파(.9/.75/.34)**로 표현해 영상 위에서 읽히게 한다.
+- **zhihu** — `Map*` 시맨틱을 **`_light`/`_dark` 쌍으로** 발행하고, **VIP 금색 `#ce994f` ·
+  SVIP 남색 `#142457`**이 별도 브랜드 색이다. 유료 등급이 시각적 1급 개념이다.
+  hover가 **`oklch()`·`color(srgb …)`** — 카탈로그 유일. **hex로 변환하지 않고 원문 기록**
+  (oklch는 sRGB로 무손실 왕복이 안 되고, hex를 쓰면 없는 정밀도를 주장하게 된다).
+
+**게이트를 하나 고쳤다 — 라이브 버그였다.** `zhihu.com`이 `PLATFORM_HOSTS`에 있어
+**zhihu 자신의 홈페이지가 zhihu의 proof gate에서 탈락**했다. 규칙의 취지는 "남의 플랫폼에 올린
+글을 브랜드 증거로 쓰지 말라"인데 **주체가 그 플랫폼일 때는 뒤집힌다.** `isBrandOperatedAccount`가
+레퍼런스 자신의 homepage 호스트를 받아 같은 호스트면 통과시키도록 좁게 수정했다.
+`note`(note.com) · `velog`(velog.io, **proof gate 컷오프에 정확히 걸쳐 있다**)가 이미 같은 모양이라
+가설이 아니라 실재하던 버그다.
+
+**후보 선정에서 걸러낸 것**: xiaomi(`mi.com`이 **한국 사이트** 서빙, CN 표면은 vars 0) ·
+tencent(WordPress+Bootstrap) · byd(Element UI) · jd·netease·lenovo·haier(vars 0~4).
+
+---
+
 ## 🎉 2026-09-22 — CN 웨이브 1 #2: **ctrip — 카탈로그에서 가장 성숙한 토큰 구조**
 
 **443 refs · 146 verified.** claims 63/63 · 컴포넌트 3/3 stated · **reasonCodes·advisory 모두 0**

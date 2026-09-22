@@ -103,9 +103,31 @@ const NOT_AN_ACCOUNT = new Set([
   "", "search", "tag", "tags", "explore",
   "p", "s", "post", "posts", "article", "articles", "detail", "question", "topic", "column", "news",
 ]);
-/** A platform URL counts only when it names an account, not the bare host or a feed. */
-function isBrandOperatedAccount(url: string): boolean {
+/** Registrable-ish host, lower-cased, `www.` dropped. */
+function hostOf(url: string): string {
+  return (url.match(/^https?:\/\/([^/?#]+)/i)?.[1] ?? "").toLowerCase().replace(/^www\./, "");
+}
+
+/**
+ * A platform URL counts only when it names an account, not the bare host or a feed.
+ *
+ * `ownHost` is the reference's own homepage host, and it is the exception that makes
+ * the rule correct. PLATFORM_HOSTS exists to stop *someone else's post* on note.com or
+ * zhihu.com being cited as a brand's evidence. When the reference **is** that platform,
+ * its bare homepage is its product surface, not a third party's account — and without
+ * this, zhihu's own site fails zhihu's proof gate. `note` and `velog` are already in the
+ * catalog with the same shape (added 2026-09-22 while writing the zhihu reference).
+ *
+ * The exception is deliberately narrow: same registrable host as the reference's own
+ * homepage, or a subdomain of it. A post on zhihu.com still has to name an account for
+ * every *other* reference.
+ */
+function isBrandOperatedAccount(url: string, ownHost?: string): boolean {
   if (!PLATFORM_HOSTS.test(url)) return true;
+  if (ownHost) {
+    const h = hostOf(url);
+    if (h === ownHost || h.endsWith("." + ownHost)) return true;
+  }
   const path = url.replace(/^https?:\/\/[^/]+/i, "").replace(/[?#].*$/, "");
   const segments = path.split("/").filter(Boolean);
   return segments.length >= 1 && !NOT_AN_ACCOUNT.has(segments[0].toLowerCase());
@@ -344,7 +366,8 @@ describe("catalog-integrity / per-reference", () => {
       // abema, rakuten, nintendo, dmm, mercari, recruit, sony or toyota. There is no
       // second opinion to fall back on.
       if (REGIONAL_PROOF_COUNTRIES.has(entry.country)) {
-        const regional = tier1Urls.filter(u => !NON_REGIONAL_HOSTS.test(u) && isBrandOperatedAccount(u));
+        const ownHost = hostOf(entry.homepage ?? "");
+        const regional = tier1Urls.filter(u => !NON_REGIONAL_HOSTS.test(u) && isBrandOperatedAccount(u, ownHost));
         expect(
           regional.length,
           `${id}: ${entry.country} gated ref needs >= 2 brand-owned regional Tier-1 sources (getdesign/refero don't count), got ${regional.length}: ${regional.join(", ")}`

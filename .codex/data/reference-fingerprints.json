@@ -2,7 +2,7 @@
   "schema_version": 1,
   "generated_at": "2026-09-22T00:00:00Z",
   "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
-  "count": 443,
+  "count": 446,
   "items": [
     {
       "id": "104",
@@ -2132,6 +2132,33 @@
       "category_raw": "consumer-tech"
     },
     {
+      "id": "douyin",
+      "primary_color_hex": "#FE2C55",
+      "category": "consumer-tech",
+      "visual_theme": "Dark-first video chrome that refuses to compete with content - #161823 canvas, #252632 panels one step lighter, 12px radius on 81 of the page corners, and text expressed as white at stated alpha (.9 / .75 / .34) rather than as grey values so it stays legible over any frame. One red, #fe2c55, for the action.",
+      "voice_fingerprint": {
+        "register": "terse and mechanical in the chrome; personality lives in content and livestream mechanics, not interface copy",
+        "sentence_length": "short",
+        "metaphor_density": "low",
+        "vocabulary_register": "chinese-simplified-dominant"
+      },
+      "tone_keywords": [
+        "dark",
+        "kinetic",
+        "content-first",
+        "terse",
+        "livestream-native"
+      ],
+      "antipatterns": [
+        "converting the alpha text tokens into opaque greys - the alpha is what makes them work over video",
+        "taking open.douyin.com colours (#1c5cfb, #1ff17f, #692cea) as product values",
+        "letting chrome compete with video for contrast",
+        "inventing hover states - the tokens exist but nothing observed renders them"
+      ],
+      "has_personas": false,
+      "category_raw": "short-video"
+    },
+    {
       "id": "drdiary",
       "primary_color_hex": "#3eaeff",
       "category": "healthcare",
@@ -3482,6 +3509,34 @@
       "signature_motion": "*Durations:**",
       "has_personas": true,
       "category_raw": "consumer-tech"
+    },
+    {
+      "id": "huawei",
+      "primary_color_hex": "#C7000B",
+      "category": "consumer-tech",
+      "visual_theme": "Austere monochrome corporate surface - 17px Microsoft YaHei on white with 788 of ~2000 elements at that one size, #dfdfdf rules instead of shadow, and a single saturated Huawei Red #c7000b painted 68 times doing every job colour does. Underneath: 339 --hwp-* properties including a thirteen-step headline scale the front page barely uses.",
+      "voice_fingerprint": {
+        "register": "corporate and declarative; states business lines plainly and does not persuade in the interface",
+        "sentence_length": "medium",
+        "metaphor_density": "low",
+        "vocabulary_register": "chinese-simplified-dominant"
+      },
+      "tone_keywords": [
+        "corporate",
+        "restrained",
+        "institutional",
+        "declarative",
+        "monochrome"
+      ],
+      "antipatterns": [
+        "decorating with the yellow/rose/pink/mint/cyan primitive ramps - they are published but unpainted on the corporate surface",
+        "assuming consumer.huawei.com shares the system - it resolves 4 properties and a different typeface",
+        "promoting Microsoft YaHei to a brand face",
+        "spending the red so often it stops signalling",
+        "adding shadow where Huawei uses a 1px rule"
+      ],
+      "has_personas": false,
+      "category_raw": "telecom-enterprise"
     },
     {
       "id": "hubspot",
@@ -10704,6 +10759,34 @@
       "signature_motion": "See §15 Motion.",
       "has_personas": true,
       "category_raw": "consumer-tech"
+    },
+    {
+      "id": "zhihu",
+      "primary_color_hex": "#1772F6",
+      "category": "consumer-tech",
+      "visual_theme": "Reading-first Q&A chrome that gets out of the way of prose - 15px on the feed, 16px in columns, near-black #191b1f with a faint blue cast on a cool #f4f6f9 wash, one #1772f6 action at an unusually tight 3px radius. Membership is a visual concept: VIP gold #ce994f and SVIP navy #142457 have their own brand colours.",
+      "voice_fingerprint": {
+        "register": "considered and explanatory; the product is argued prose and the chrome stays unpersuasive",
+        "sentence_length": "long",
+        "metaphor_density": "moderate",
+        "vocabulary_register": "chinese-simplified-dominant"
+      },
+      "tone_keywords": [
+        "considered",
+        "long-form",
+        "explanatory",
+        "restrained",
+        "earnest"
+      ],
+      "antipatterns": [
+        "converting the oklch() hover values to hex - they do not round-trip",
+        "reading a _dark suffixed token as a light-theme value",
+        "spending VIP gold or SVIP navy as general accents - they mean paid tiers",
+        "setting feed and long-form at the same size; Zhihu separates 15px and 16px",
+        "promoting the system font stack to a brand typeface"
+      ],
+      "has_personas": false,
+      "category_raw": "qa-knowledge-community"
     },
     {
       "id": "zigbang",

@@ -2276,6 +2276,30 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "douyin",
+    "status": "verified_v2",
+    "verifiedAt": "2026-09-22",
+    "tokensExtractedAt": "2026-09-22",
+    "nextReverifyAt": "2027-03-21",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 29,
+    "evidenceClaimCount": 29,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 2,
+    "conflictCount": 0,
+    "tier1SourceCount": 2,
+    "componentCount": 0,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_absent"
+    ],
+    "paletteGrounding": null
+  },
+  {
     "id": "drdiary",
     "status": "partial",
     "verifiedAt": "2026-07-02",
@@ -3718,6 +3742,30 @@ export const REFERENCE_QUALITY = [
       "component_state_prose_only"
     ],
     "paletteGrounding": 0.222
+  },
+  {
+    "id": "huawei",
+    "status": "verified_v2",
+    "verifiedAt": "2026-09-22",
+    "tokensExtractedAt": "2026-09-22",
+    "nextReverifyAt": "2027-03-21",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 50,
+    "evidenceClaimCount": 50,
+    "evidenceCoverage": 1,
+    "surfaceCount": 2,
+    "sourceCount": 2,
+    "conflictCount": 0,
+    "tier1SourceCount": 2,
+    "componentCount": 0,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_absent"
+    ],
+    "paletteGrounding": null
   },
   {
     "id": "hubspot",
@@ -11334,6 +11382,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "zhihu",
+    "status": "verified_v2",
+    "verifiedAt": "2026-09-22",
+    "tokensExtractedAt": "2026-09-22",
+    "nextReverifyAt": "2027-03-21",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 54,
+    "evidenceClaimCount": 54,
+    "evidenceCoverage": 1,
+    "surfaceCount": 2,
+    "sourceCount": 2,
+    "conflictCount": 0,
+    "tier1SourceCount": 2,
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "zigbang",
     "status": "legacy_snapshot",
     "verifiedAt": "2026-05-15",
@@ -11442,10 +11512,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 146,
+  "verified_v2": 149,
   "partial": 184,
   "legacy_snapshot": 113,
-  "total": 443
+  "total": 446
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(
