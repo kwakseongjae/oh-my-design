@@ -210,6 +210,37 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // known, dated fact in the test suite rather than a Saturday-morning surprise —
     // and a change that "fixes" it has to explain itself here first.
     const refsDir = join(import.meta.dirname, "..", "references");
+    const frontOf = (id: string) => {
+      const design = join(refsDir, id, "DESIGN.md");
+      if (!existsSync(design)) return null;
+      try { return parseReferenceFrontmatter(readFileSync(design, "utf8"), design) as any; }
+      catch { return null; }
+    };
+    /** The newest `captured` date across a reference's verification_v2 sources. */
+    const latestCapture = (id: string) => {
+      const sources = frontOf(id)?.verification_v2?.sources ?? [];
+      const dates = (Array.isArray(sources) ? sources : [])
+        .map((s: any) => s?.captured).filter((d: any) => typeof d === "string").sort();
+      return dates[dates.length - 1] ?? "";
+    };
+    const ids = (asOf: string) => {
+      const out: string[] = [];
+      for (const id of readdirSync(refsDir)) {
+        const design = join(refsDir, id, "DESIGN.md");
+        if (!existsSync(design)) continue;
+        const markdown = readFileSync(design, "utf8");
+        let front: any;
+        try { front = parseReferenceFrontmatter(markdown, design); } catch { continue; }
+        const verification = join(refsDir, id, ".verification.md");
+        const result = evaluateReferenceQuality({
+          id, markdown, frontmatter: front,
+          verificationMarkdown: existsSync(verification) ? readFileSync(verification, "utf8") : "",
+          asOf,
+        });
+        if (result.status === "verified_v2") out.push(id);
+      }
+      return out;
+    };
     const count = (asOf: string) => {
       let verified = 0;
       for (const id of readdirSync(refsDir)) {
@@ -252,6 +283,27 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
       return existsSync(design) && readFileSync(design, "utf8").includes("<!-- design-md:section ");
     });
     expect(count("2027-01-07") + adopted.length).toBeGreaterThanOrEqual(140);
-    expect(count("2027-01-10")).toBeLessThanOrEqual(11);
+
+    // Changed shape on 2026-09-22, and the comment above asked whoever did it to say why.
+    //
+    // It used to read `expect(count("2027-01-10")).toBeLessThanOrEqual(11)`, which counts
+    // *survivors*. But the paragraph above states the intent plainly: "the July batch is
+    // gone by 01-10; anything still standing is new evidence, which is the goal." A count
+    // of survivors goes UP with every reference the capture track verifies, so the
+    // assertion failed on the eighth one — for the catalog getting better at exactly the
+    // thing this test exists to encourage. That is the cry-wolf failure the paragraph was
+    // trying to avoid, arriving through the other assertion.
+    //
+    // So it now measures the intent directly: no reference may still be verified on that
+    // date on evidence older than the capture track. Checked 2026-09-22 — all twelve
+    // survivors carried sources captured 2026-09-21 or later, and none of the July batch
+    // stood. This bound does not need raising when a wave lands.
+    const survivors = ids("2027-01-10");
+    const CAPTURE_TRACK_BEGAN = "2026-08-01";
+    const stale = survivors.filter((id) => latestCapture(id) < CAPTURE_TRACK_BEGAN);
+    expect(stale).toEqual([]);
+    // And the track has to actually be producing: a zero here would mean the assertion
+    // above is passing vacuously.
+    expect(survivors.length).toBeGreaterThan(0);
   }, 120_000);
 });

@@ -73,7 +73,10 @@
 - **한 일(67)**: **B단계 — JP 후보 12건 중 3건 생존(25%)**. CN 웨이브 3의 3.3%와 비교하면 시장 이동이 맞았다. 임계치 20% 초과 → JP 웨이브 진행. 남은 후보: **base**(`--ease*10`, 모리사와 TazuganeGothic), **chatwork**(자체 서체 Chatwork Sans).
 - **한 일(68)**: **nulab 등재** — 450 refs / **156 verified** / **1000 sources**. 116/116, 6/6, reason·advisory 0. **제품 하나당 패밀리 하나**(7제품 × 4단 버튼 + 배너 쌍)로 이 카탈로그에서 가장 선명한 다중 제품 시트. **포커스 링 하나(`#cbc2e8` 4px)가 nulab.com·backlog.com 양쪽에서** 렌더되고, 채워진 버튼엔 outline 조용한 컨트롤엔 box-shadow.
 - **한 일(69)**: **`conflicts`에 넣었다 뺐다** — 회사 시트의 Backlog 초록 vs backlog.com 버튼 주황은 **불일치가 아니라 서로 다른 두 가지의 각각 맞는 측정**이다. 넣어두면 없는 불일치로 등급이 막힌다. 산문으로 경고하고 필드는 비웠다.
-- **다음**: base · chatwork 등재 → JP 후보 2차 프로브. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(70)**: **base 등재** — 451 / **157 verified**, 88/88, 3/3, reason·**advisory 둘 다 0**. **`motion_value_unsourced`(카탈로그 1순위 advisory 261건)를 토큰으로 해결한 첫 레퍼런스.** 이징 10개가 각각 용도로 이름 붙어 있고, **그중 `--duration-hover`+`--ease-link`가 렌더된 CTA의 `transition`에서 그대로 잡힌다.**
+- **한 일(71)**: `thebase.com`은 **캐치올**(`/zz-…`가 홈) → 이 호스트의 다른 경로는 인용 안 함. 제2 출처는 다른 호스트 binc.jp(모리사와 Tazugane를 실제로 칠한다). hisense를 보류한 것과 갈리는 지점.
+- **한 일(72)**: **만료 테스트가 자기 의도와 반대로 실패했다** — `count(...) <= 11`은 **생존자**를 세는데, 주석의 의도는 "7월 배치가 사라졌는가"다. 생존자는 verified가 늘 때마다 증가하므로 **장려하려던 일 때문에 터진다.** 의도를 직접 재도록 교체(캡처 트랙 이전 증거로 생존한 건 0). **990/990.**
+- **다음**: chatwork 등재(자체 서체 Chatwork Sans) → JP 후보 2차 프로브. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

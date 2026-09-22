@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-22T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 450,
+ "count": 451,
  "items": [
   {
    "id": "104",
@@ -784,6 +784,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "base",
+   "primary_color_hex": "#0BB7AE",
+   "category": "ecommerce",
+   "visual_theme": "White with a teal identity #0bb7ae and a single pink #fc6589 call to action repeated at three sizes, ink in a blue-leaning #233237. Two ten-step ramps carry the whole palette - teal for identity, blue-grey for structure - and the accent deliberately has none. The considered work is underneath: eleven motion tokens, ten of them easing curves named for what they animate, plus leading-trim and viewport arithmetic published as custom properties.",
+   "voice_fingerprint": {
+    "register": "plain Japanese product copy; 1,435 characters, set mostly in 600 and 700 weights",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "ja-consumer"
+   },
+   "tone_keywords": [
+    "approachable",
+    "bold",
+    "utilitarian",
+    "teal-forward",
+    "motion-aware"
+   ],
+   "antipatterns": [
+    "inventing a focus ring, or copying the one you see - all three controls render Chrome's auto 1px default",
+    "expecting the pink CTAs to respond; measured across hover and pressed, they do not move",
+    "treating --spacing-* as pixels, they are unitless numbers",
+    "taking only one typeface - TazuganeGothicStdN is declared and Gilroy is what the landing page renders",
+    "using a generic easing when the token set names one for the job (--ease-drawer, --ease-progressbar)"
+   ],
+   "has_personas": false,
+   "category_raw": "commerce-platform"
   },
   {
    "id": "bbc",
