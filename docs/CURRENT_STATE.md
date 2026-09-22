@@ -3,6 +3,37 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## 🔍 2026-09-22 — **census의 서체는 렌더된 서체가 아니다**(§2.6) → deepseek 정정
+
+qiita 정답지를 만들다 걸렸다. 내 census는 전부 `fontFamily.split(",")[0]`으로 세는데,
+그건 **스택의 첫 이름**이지 실제로 쓰인 서체가 아니다.
+
+```
+qiita census family:  YakuHanJPs ×458          ← 1위
+qiita @font-face:     Material Symbols(loaded) · FontAwesome(unloaded)   ← 2개뿐
+```
+
+**`YakuHanJPs`는 로드되지 않는다.** 그냥 썼으면 "458개 요소에 렌더된다"고 적었을 것이다.
+caddi의 `Zalando Sans Expanded`와 같은 부류인데, **그건 토큰 이름으로 드러났고 이건 census
+1위라 오히려 더 그럴듯하다.** `document.fonts.check()`로도 안 갈린다(폴백으로 그릴 수 있으면
+`true`를 준다 — qiita에서 실제로 `true`가 나왔다). **loaded 목록에 이름이 있는지**를 봐야 한다.
+
+### 그래서 오늘 쓴 것을 전부 감사했고, **deepseek이 걸렸다**
+
+`DM Sans`는 **진짜 로드된다**(400·500) — 그건 맞았다. 그런데
+**`Fragment Mono`는 `@font-face`에 없다.** `--ds-font-mono`에 이름만 있고 떨어진다.
+토큰 이름만 보고 브랜드 서체로 기록한 것이다. → `family.mono` **삭제**, 산문으로 이동.
+claims 58 → 57, 여전히 verified.
+
+덤으로: `Montserrat`은 **로드되는데 어떤 `--ds-font-*` 토큰에도 없다.**
+**토큰 없는 로드된 서체는, 로드 안 된 토큰만큼이나 기록할 수 없다.** 둘 다 안 적었다.
+
+나머지 일곱 건(base·chatwork·caddi·nulab·smartbank·jal·zenn)은 전부 loaded 목록과
+대조돼 있었다 — **우연이 아니라 그때마다 webfonts를 같이 읽었기 때문**이고, qiita가 처음으로
+그 습관이 없으면 틀리는 모양이었다.
+
+---
+
 ## ✅ 2026-09-22 — 실험 회차 2(심층 프로브 위임) + **zenn 등재**(457 · 163)
 
 **②도 위임할 수 있다 — 단 헤드라인 주장은 검증하고 쓴다.** zenn 심층 프로브를 sonnet에

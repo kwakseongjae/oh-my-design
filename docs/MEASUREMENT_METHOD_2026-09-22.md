@@ -137,6 +137,46 @@ negative 주장을 고치는 데 세션을 다 쓴 직후였고, **positive 관�
 
 ---
 
+## 2.6 **census의 서체는 "선언된 첫 항목"이지 "렌더된 서체"가 아니다**
+
+내 census는 전부 이렇게 센다:
+
+```js
+const f = c.fontFamily.split(",")[0].replace(/["']/g, "");
+```
+
+**스택의 첫 이름을 셀 뿐, 그게 실제로 쓰였는지는 안 본다.** 첫 이름이 시스템 폰트이거나
+실제로 로드된 웹폰트면 결과가 같아서 오늘 여덟 건은 우연히 맞았다.
+
+**qiita에서 처음 어긋났다** (2026-09-22):
+
+```
+census family:  YakuHanJPs ×458   ← 1위
+로드된 @font-face: Material Symbols Outlined(loaded) · FontAwesome(unloaded)  ← 2개뿐
+전체 스택:      YakuHanJPs, -apple-system, "system-ui", "Segoe UI",
+                "Hiragino Kaku Gothic ProN", … , sans-serif
+```
+
+**`YakuHanJPs`는 @font-face에 없다.** 선언만 되고 로드되지 않으므로 텍스트는
+`-apple-system` 이하로 떨어진다. census만 읽었으면 **"YakuHanJPs가 458개 요소에
+렌더된다"**고 썼을 것이다. caddi의 `Zalando Sans Expanded`와 같은 부류인데, 그건 토큰
+이름으로 드러나서 잡혔고 이건 census 1위라 오히려 더 그럴듯하다.
+
+### 규칙
+
+**census의 family는 `document.fonts`의 loaded 목록과 대조하기 전까지 서체 주장이 아니다.**
+
+| 대조 결과 | 처리 |
+|---|---|
+| 첫 이름이 loaded 목록에 있다 | 렌더된 서체. `tokens.typography.family`에 기록 |
+| 첫 이름이 시스템 폰트다 | 렌더된다. 단 **브랜드 서체가 아니므로** family는 비운다 |
+| **첫 이름이 둘 다 아니다** | **선언만 됐고 렌더 안 된다.** 산문에만 적고 토큰에 넣지 않는다 |
+
+`document.fonts.check('16px X')`로는 안 갈린다 — 폴백으로 그릴 수 있으면 `true`를 준다
+(qiita에서 `true`가 나왔다). **loaded 목록에 그 이름이 있는지**를 봐야 한다.
+
+---
+
 ## 3. 레포가 이미 갖고 있던 것을 안 썼다
 
 `probe-component-states.mjs` 251줄이 **내가 이번 세션에 손으로 다시 발견한 함정 4개를

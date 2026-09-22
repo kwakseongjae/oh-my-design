@@ -38,7 +38,7 @@ tokens:
     btn-ghost-text: "#121c31"
     on-brand: "#ffffff"
   typography:
-    family: { sans: "DM Sans", mono: "Fragment Mono" }
+    family: { sans: "DM Sans" }
     body: { size: 15, use: "Control and body text on the landing surface" }
     small: { size: 13, use: "Compact pill and label text" }
   spacing: { s1: 4, s2: 8, s3: 12, s4: 16, s5: 24, s6: 32, s7: 40, s8: 56, s9: 80, s10: 120, s11: 160, s12: 200, s13: 240 }
@@ -98,7 +98,6 @@ verification_v2:
     tokens.spacing.s12: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
     tokens.spacing.s13: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
     tokens.typography.family.sans: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
-    tokens.typography.family.mono: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
     tokens.components.button-secondary.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-secondary.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-secondary.border: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
@@ -189,9 +188,17 @@ picks up the blue.
 `--ds-font-body` both resolve to `"DM Sans", system-ui, -apple-system, BlinkMacSystemFont`,
 and `--ds-font-mono` to `"Fragment Mono", "Roboto Mono", ui-monospace, monospace`.
 
-DM Sans and Fragment Mono are the declared faces and are recorded as such. Every other CN
-reference in this catalog leaves `family` absent because the brand ships only a system stack;
-DeepSeek is the exception.
+**DM Sans loads and Fragment Mono does not.** Re-audited 2026-09-22: the page declares six
+`@font-face` entries — `DM Sans` at 400 and 500 (both loaded), `DM Sans` 700 and three
+`Montserrat` weights (one loaded) — and **`Fragment Mono` is not among them.** It is named in
+`--ds-font-mono` and falls through to `Roboto Mono` / `ui-monospace`.
+
+So `tokens.typography.family` records **DM Sans only**. Fragment Mono is a declared,
+unrendered face and stays here in prose, the same treatment CADDi's `Zalando Sans Expanded`
+gets. Montserrat loads and is named in no `--ds-font-*` token, so it is not recorded either.
+
+Every other CN reference in this catalog leaves `family` absent because the brand ships only a
+system stack; DeepSeek is the exception, for one face rather than two.
 
 ### Scale
 

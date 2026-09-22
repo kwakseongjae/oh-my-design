@@ -95,7 +95,9 @@
 - **한 일(89)**: **실험 회차 2 — ② 심층 프로브도 sonnet에 위임 가능**. 보고가 정확했고 산술까지 맞았으며 함정 3개를 스스로 처리했다(CDN CORS → getComputedStyle 전환 · **내가 오늘 만든 `--text` 함정** 우회 · `outline: none`≠`auto` 판정). zenn 오타 `forcus`까지 짚었다.
 - **한 일(90)**: **검증이 결론의 등급을 바꿨다.** "primary에 링 없음"은 맞지만 **기본이 없었다 vs 작성자가 껐다**로 갈린다. **진짜 Tab 키**로 로고에 `auto 1px`가 뜨는 걸 확인 → **기본 링이 살아 있는데 버튼만 끈다**. 위임된 실행은 지시에 없던 이 검사를 못 했다. → **②는 위임하되 헤드라인 1건은 반드시 독립 검증.**
 - **한 일(91)**: **zenn 등재**(457 / **163 verified**, 106/106, 3/3, reason·advisory 0). **토큰 층에서 컴포넌트를 조립**한다(버튼 8변형·라벨 4변형·메시지박스 3종이 각자 색 세트 통째로). 99rem=1584px 알약, **`--rounded-publication: 25%`**, 잉크가 검정 82% 알파. 포맷 게이트 3개(8자리 알파·퍼센트·컴포넌트 hex)에 걸려 **알파와 퍼센트를 산문으로** 옮겼다.
-- **다음**: qiita·crowdworks 등재. 회차 3(①→② 한 에이전트 연속 위임, 핸드오프 누수 관찰). **브랜치가 origin에 없다**(main 대비 178 커밋). **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(92)**: **census의 서체는 렌더된 서체가 아니다**(측정법 §2.6 추가). `fontFamily.split(",")[0]`은 **스택의 첫 이름**일 뿐이다. qiita에서 `YakuHanJPs`가 census 1위(458개)인데 **@font-face에 없다** — 그냥 썼으면 "458개에 렌더"라고 적었을 것. `document.fonts.check()`로는 안 갈린다(폴백 가능하면 true).
+- **한 일(93)**: 그 규칙으로 오늘 쓴 것 전부 감사 → **deepseek 정정**. `DM Sans`는 진짜 로드되지만 **`Fragment Mono`는 @font-face에 없다** → `family.mono` 삭제, 산문으로(58→57 claims, verified 유지). `Montserrat`은 로드되는데 토큰이 없어서 역시 기록 안 함 — **토큰 없는 로드 서체는 로드 안 된 토큰만큼 기록 불가.**
+- **다음**: 회차 3 채점(haiku×crowdworks vs sonnet×qiita) → 둘 다 등재. **브랜치가 origin에 없다**(main 대비 179 커밋). **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)
