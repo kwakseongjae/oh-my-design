@@ -7838,6 +7838,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": 0.632
   },
   {
+    "id": "qiita",
+    "status": "verified_v2",
+    "verifiedAt": "2026-09-22",
+    "tokensExtractedAt": "2026-09-22",
+    "nextReverifyAt": "2027-03-21",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 106,
+    "evidenceClaimCount": 106,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 2,
+    "conflictCount": 0,
+    "tier1SourceCount": 2,
+    "componentCount": 6,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 6,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "qraft",
     "status": "partial",
     "verifiedAt": "2026-07-02",
@@ -11751,10 +11773,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 163,
+  "verified_v2": 164,
   "partial": 181,
   "legacy_snapshot": 113,
-  "total": 457
+  "total": 458
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

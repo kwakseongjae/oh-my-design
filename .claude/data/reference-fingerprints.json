@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-22T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 457,
+ "count": 458,
  "items": [
   {
    "id": "104",
@@ -7484,6 +7484,34 @@
    "signature_motion": "Step-by-step solution reveal fades each numbered step in with an 8px upward translate at 80ms intervals, ending with a soft green checkmark scale-spring.",
    "has_personas": true,
    "category_raw": "edutech / AI math solver"
+  },
+  {
+   "id": "qiita",
+   "primary_color_hex": "#55C500",
+   "category": "developer-tools",
+   "visual_theme": "White, set at 16px on 908 of 1,999 elements, with ink that is black at 87% rather than a grey. The system is shaped like Material Design without saying so - highEmphasis, divider, surface, container/on-container, elevation - over a five-hue tonal scale where each hue also publishes Text, Container, Border and Dim variants. Hover is one rung down the grey ramp from wherever the control starts. Two greens for two products: the logo's #55c500 and the interface's darker #357a00.",
+   "voice_fingerprint": {
+    "register": "a feed of Japanese engineers' article titles; the chrome says almost nothing",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "ja-developer"
+   },
+   "tone_keywords": [
+    "clean",
+    "conventional",
+    "reading-first",
+    "green",
+    "unadorned"
+   ],
+   "antipatterns": [
+    "taking --color-github or --color-twitter as Qiita's; they are other companies' brand tints living in Qiita's namespace",
+    "setting YakuHanJPs because it leads the font stack - it does not load and the text renders in the OS stack",
+    "using the logo green #55c500 as a fill; the filled control paints #357a00",
+    "authoring a focus ring from this reference - six component families and all six render Chrome's default",
+    "picking a grey for ink instead of the emphasis tokens, black at 87% and 60%"
+   ],
+   "has_personas": false,
+   "category_raw": "developer-publishing"
   },
   {
    "id": "qraft",

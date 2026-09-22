@@ -97,7 +97,10 @@
 - **한 일(91)**: **zenn 등재**(457 / **163 verified**, 106/106, 3/3, reason·advisory 0). **토큰 층에서 컴포넌트를 조립**한다(버튼 8변형·라벨 4변형·메시지박스 3종이 각자 색 세트 통째로). 99rem=1584px 알약, **`--rounded-publication: 25%`**, 잉크가 검정 82% 알파. 포맷 게이트 3개(8자리 알파·퍼센트·컴포넌트 hex)에 걸려 **알파와 퍼센트를 산문으로** 옮겼다.
 - **한 일(92)**: **census의 서체는 렌더된 서체가 아니다**(측정법 §2.6 추가). `fontFamily.split(",")[0]`은 **스택의 첫 이름**일 뿐이다. qiita에서 `YakuHanJPs`가 census 1위(458개)인데 **@font-face에 없다** — 그냥 썼으면 "458개에 렌더"라고 적었을 것. `document.fonts.check()`로는 안 갈린다(폴백 가능하면 true).
 - **한 일(93)**: 그 규칙으로 오늘 쓴 것 전부 감사 → **deepseek 정정**. `DM Sans`는 진짜 로드되지만 **`Fragment Mono`는 @font-face에 없다** → `family.mono` 삭제, 산문으로(58→57 claims, verified 유지). `Montserrat`은 로드되는데 토큰이 없어서 역시 기록 안 함 — **토큰 없는 로드 서체는 로드 안 된 토큰만큼 기록 불가.**
-- **다음**: 회차 3 채점(haiku×crowdworks vs sonnet×qiita) → 둘 다 등재. **브랜치가 origin에 없다**(main 대비 179 커밋). **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(94)**: **실험 회차 3 — ②에서 격차가 ①보다 크다.** haiku는 `--fa`는 맞혔지만 `--aicw-`(자사 AI 제품)를 서드파티로 의심, 웹폰트를 CSSOM만 보고 "CORS 추정"으로 종료, 비가시 노드까지 세서 `Times`를 서체로 보고, CTA를 "4상태 NO CHANGE"라 적었다(실제 focus에 `auto 2px`). **규칙 하나는 적용하는데 데이터가 어긋날 때 멈추지 못한다.**
+- **한 일(95)**: sonnet(qiita)은 **내 정답지보다 세밀한 게 셋** — `--color-*` 중 5개가 남의 브랜드색임을 구분, census `Times`가 비가시 노드·`Arial`이 스타일 안 먹은 폼 컨트롤임을 짚음(**§2.6과 같은 결함을 독립 발견**), **primary 버튼이 위치에 따라 뒤집히는 것**을 판단으로 표시. **최종 권고: ①②는 sonnet + 헤드라인 1건 검증, ③④는 위임 안 함, haiku는 3회 모두 탈락.**
+- **한 일(96)**: **qiita 등재**(458 / **164 verified**, 106/106, 6/6, reason·advisory 0). Material 어휘 + 자기 명사(markdown 3 · Advent 2), 색상군 5개가 각각 Text/Container/Border/Dim 변형까지, **초록이 둘**(로고 `#55c500` vs 인터페이스 `#357a00`), hover가 **회색 램프 한 칸 아래**, 컨트롤 6종 전부 크롬 기본 focus, `family` 없음(YakuHanJPs 미로드).
+- **다음**: **crowdworks 저작**(실측 완료, 측정값은 실험 문서 §7). **브랜치가 origin에 없다**(main 대비 180 커밋). **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

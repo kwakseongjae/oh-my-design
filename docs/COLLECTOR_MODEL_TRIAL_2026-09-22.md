@@ -202,8 +202,104 @@ OS 스택으로 떨어진다는 것, census n=2227이 절단이 아니라 **페�
 보고서는 쌌지만 그걸 믿었으면 crowdworks를 잃었다. **싼 보고서의 진짜 비용은 토큰이
 아니라 그 보고서가 틀렸을 때 잃는 레퍼런스다.**
 
-## 5. 다음 회차 후보
+## 5. 회차 3 — 같은 심층 프로브를 haiku와 sonnet에 나란히
 
-- **회차 3**: ①과 ②를 **한 에이전트에 이어서** 맡긴다(스카우팅 → 최상위 후보 심층 프로브).
-  핸드오프에서 정보가 새는지가 관심사다.
-- **회차 4**: 같은 심층 프로브를 haiku에 줘서, ②에서도 모델 차이가 ①만큼 벌어지는지 본다.
+**설계**: 동일한 프롬프트 형식, 다른 사이트(둘 다 JP 웨이브 3 잔여 후보),
+haiku=crowdworks · sonnet=qiita. 둘 다 내가 독립 재측정으로 대조했다.
+
+### 결과 — **②에서 격차가 ①보다 더 벌어진다**
+
+**haiku (crowdworks)**: 핵심 판별점은 맞혔다 —
+`--fa*17`을 **"NOT theirs. Font Awesome 6 icon library"**로 정확히 짚었다. 총계 412도 맞다.
+그런데 나머지가 무너진다:
+
+| | 정답 | haiku |
+|---|---|---|
+| `--aicw*56` | **AI CrowdWorks**(자사 AI 제품). `--z-aicw-projects-login-gate-overlay`가 자사 z-index 네임스페이스와 엮여 있다 | **"UNCLEAR… 서드파티 컴포넌트 시스템일 수 있다"** — 자기 회사 서브브랜드를 남의 것으로 의심 |
+| 웹폰트 | `document.fonts`로 `Noto Sans JP` | **CSSOM만 써보고 "CORS 차단 추정"으로 종료.** zenn에서 sonnet이 전환했던 바로 그 지점 |
+| census | 렌더 노드만 | **비가시 노드까지 세서 `Times ×140`을 서체로 보고**(sonnet은 qiita에서 같은 것을 아티팩트로 짚었다) |
+| CTA 상태 | focus에 `outline: rgb(0,95,204) auto 2px` | **"rest/hover/pressed/focus: NO CHANGE (CSS-in-JS 주입 추정)"** — 변화를 놓치고 추정으로 메웠다 |
+
+**패턴이 ①과 같다**: 규칙 목록의 항목 하나는 적용하는데, **자기 데이터가 반증하는데도
+추정으로 넘어간다.** ①에서 `lang`이 비면 locale 규칙을 집었던 것과 같은 실패다.
+
+**sonnet (qiita)**: 이번 회차에서 가장 좋은 보고였고, **내 정답지보다 세밀한 게 세 개** 있었다.
+
+1. **`--color-*` 110개 중 5개가 남의 브랜드색**임을 구분했다 — `twitter` `github`
+   `hatena-blog` `findy` `findyDim`. *"Qiita가 작성했지만 색 자체는 다른 브랜드의 것"*.
+   나는 네임스페이스 단위로만 봤다.
+2. **census의 `Times ×236`이 `<html>/<head>/<script>` 비가시 노드**라고 짚었다.
+   **내가 §2.6을 쓰게 만든 것과 같은 결함을 독립적으로 찾았다.**
+3. **`Arial ×156`이 스타일 안 먹은 `<input>`/`<button>`**이 UA 기본으로 떨어진 것이라고 짚었다.
+
+그리고 **primary 버튼이 헤더와 하단 패널에서 뒤집힌다**는 것을 찾아 *"팔레트에 primary가
+두 개라고 오독되지 않도록 표시한다"*고 적었다 — 측정이 아니라 **판단**이다.
+UNCERTAIN도 정확히 걸었다(컨트롤 6개로 "사이트 전체"라고 말할 수 없다).
+
+### 회차 3 결론
+
+```
+②에서 haiku는 쓰지 않는다. ①보다 격차가 크다.
+haiku는 "규칙 하나를 적용"은 하지만 "데이터가 규칙과 어긋날 때 멈추기"를 못 한다.
+그게 이 작업의 전부다.
+```
+
+## 6. 최종 권고 (3회차 기준)
+
+| 단계 | 모델 | 조건 |
+|---|---|---|
+| ① 스카우팅 | **sonnet** | 체크리스트 유지 |
+| ② 심층 프로브 | **sonnet** | **헤드라인 주장 1건 독립 검증 필수** |
+| ③ 분리 판정 | opus | 위임 안 함 |
+| ④ 저작 | opus | 위임 안 함 |
+
+**haiku는 세 회차 모두에서 탈락했다.** 값이 싼 게 문제가 아니라, **보고서를 검증 없이 쓸 수
+없으면 위임의 이득이 사라진다** — 검증 비용이 위임으로 아낀 것보다 크다.
+
+**검증의 성격도 3회에 걸쳐 분명해졌다**: 검증은 값을 바꾸지 않는다. **결론의 등급을
+바꾼다.** zenn에서 "링이 없다"가 "버튼이 껐다"가 됐고, crowdworks에서 "변화 없음"이
+"focus에 브라우저 링이 뜬다"가 됐다.
+
+## 7. crowdworks — 실측 기록 (등재 대기)
+
+재측정했고 저작만 남았다. 잃어버리지 않게 여기 남긴다.
+
+- **412개 토큰, 28 네임스페이스.** `--z*91` · `--aicw*56` · **`--fa*17`(Font Awesome — 제외)**
+  · `--space*16` · `--paragraph*16` · `--single*16` · `--line*15` · `--surface*13` ·
+  `--text*13` · `--font*13` · 색상군 8개 × 10단 · `--shadow*9` · `--border*7`
+- **`--paragraph-*` 16 + `--single-*` 16 = `font` 단축 속성을 통째로 담은 토큰**:
+  `--paragraph-m-w3` = `400 18px / 1.8 "Hiragino Kaku Gothic Pro", sans-serif`.
+  `-w3`/`-w6`가 weight 400/700, `single-`은 line-height 1. **이 카탈로그에 없던 형태.**
+- `--aicw-*` = AI CrowdWorks: `-primary-900` `#2d1254` · `-700` `#5628a8` · `-400` `#9891ef` ·
+  `-secondary-500` `#52c0e6` · `-secondary-800` `#0a7093` · `-tertiary` `#32d4af` ·
+  `-purple-900` `#49148c` · `-gradient-secondary-tertiary`
+  `linear-gradient(90deg, #0a7093, #32d4af)`
+- `--space-0/3/4/8/16/24/32/40/48/64/72` + **`--space-outline-offset-focus` `3px`**
+- 세만틱: `--surface-color-warning-light` `#fef9e4` · `--line-color-gray-light` `#cfd4da` ·
+  `--background-color-blue-light` `#e7f1fa` · `--background-color-white` `#fff`
+- 램프: `--primary-800` `#006ab6` · `-600` `#198dda` · `-500` `#239ae7` ·
+  `--orange-400` `#f26731` · `-500` `#f0510f` · `-700` `#d54507` · `--accent-600` `#dd2d4a` ·
+  `--green-900` `#025923` · `--blue-400` `#2ca6dd` · `-100` `#b0dff3` · `--purple-200` `#ce93d8`
+  · `--bluegray-50` `#f5f9ff` · `--gray-25` `#f9fafb` · `--black-90` `rgb(0 0 0 / 90%)`
+- **웹폰트 `Noto Sans JP`**(census 308). `Hiragino Kaku Gothic Pro` 54는
+  **`--paragraph-*` 토큰이 스택에 박아둔 것**이다.
+- census: 12px×190 · 14px×67 · 16px×37 / 400×217 · 700×143 /
+  radius 4px×32 · 8px×18 · 10px×7 · **10000px×3** /
+  **`rgb(0,73,128)` = `#004980` ×138**(최다) · `#000000`×123 · `#ffffff`×60
+- 컨트롤 6개, 4상태 전부 측정:
+  - `ログイン` 89×40 흰 배경 `#353d48` 글자 `1px #afb7c1` r4 — hover 변화 없음,
+    press·focus `outline: rgb(0,95,204) auto 3px`
+  - `会員登録（無料）` 130×40 `#f26731` — hover 변화 없음, press·focus `auto 2px`
+  - `無料ではじめる` 312×48 `#f26731` 16px/700 — hover 변화 없음, press·focus `auto 3px`
+  - `Google` 148×32 흰 배경 `1px #d6d6d6` r4 `shadow rgba(163,162,162,.2) -1px 2px 4px`
+    — hover 변화 없음, focus `auto 1px`
+  - `はじめての方へ` 360×53 `#f7f9fa` — **hover·press `rgba(32,34,39,.05)`**(유일하게 반응)
+  - 이메일 입력 291×45 `1px #bcc5cc` r4 — **4상태 전부 변화 없음**
+- **focus는 전부 크롬 기본**(`auto`), 다만 **너비가 1/2/3px로 다르다** — 작성자가
+  `outline-width`만 손댔고 `--space-outline-offset-focus: 3px`가 그 옆에 있다. 기록 대상.
+- 넌센스 경로: 진짜 **404**, 664자, 「ページが見つかりませんでした」. 캐치올 아님.
+
+## 8. 다음 회차 후보
+
+- **회차 4**: ①과 ②를 **한 에이전트에 이어서**(스카우팅 → 최상위 후보 심층 프로브).
+  핸드오프에서 정보가 새는지.

@@ -2,12 +2,12 @@
   "schema_version": 2,
   "generated_at": "2026-09-22",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 457,
+  "count": 458,
   "counts": {
-    "verified_v2": 163,
+    "verified_v2": 164,
     "partial": 181,
     "legacy_snapshot": 113,
-    "total": 457
+    "total": 458
   },
   "items": [
     {
@@ -3858,6 +3858,17 @@
         "token_source_unverified",
         "verification_v2_missing"
       ]
+    },
+    {
+      "id": "qiita",
+      "status": "verified_v2",
+      "verified_at": "2026-09-22",
+      "next_reverify_at": "2027-03-21",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 2,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "qraft",

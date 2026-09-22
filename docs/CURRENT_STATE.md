@@ -3,6 +3,62 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-22 — 실험 회차 3 + **qiita 등재**(458 · 164). crowdworks는 실측 완료·저작 대기
+
+**②에서 haiku와 sonnet의 격차가 ①보다 더 벌어진다.** 같은 프롬프트 형식으로
+haiku=crowdworks · sonnet=qiita를 주고 둘 다 독립 재측정으로 대조했다.
+
+**haiku**는 핵심 판별점(`--fa`=Font Awesome)은 맞혔는데 나머지가 무너졌다:
+`--aicw-*`(자사 AI 제품)를 **"서드파티일 수 있다"**고 했고, 웹폰트를 CSSOM으로만 보고
+**"CORS 차단 추정"으로 종료**했으며(zenn에서 sonnet이 전환했던 지점), **비가시 노드까지 세서
+`Times`를 서체로 보고**했고, CTA를 **"4상태 NO CHANGE (CSS-in-JS 추정)"**이라 적었다 —
+실제로는 focus에 `outline: rgb(0,95,204) auto 2px`가 뜬다.
+**①과 같은 실패다: 규칙 하나는 적용하는데 데이터가 어긋날 때 멈추지 못하고 추정으로 메운다.**
+
+**sonnet**은 이번 회차 최고 보고였고 **내 정답지보다 세밀한 게 셋** 있었다:
+`--color-*` 110개 중 **5개가 남의 브랜드색**(`twitter`·`github`·`hatena-blog`·`findy`)임을
+구분했고, census의 **`Times ×236`이 비가시 노드**임을, **`Arial ×156`이 스타일 안 먹은
+폼 컨트롤**임을 짚었다 — **내가 §2.6을 쓰게 만든 것과 같은 결함을 독립적으로 찾았다.**
+그리고 **primary 버튼이 헤더와 하단에서 뒤집히는 것**을 찾아 "팔레트에 primary가 둘이라고
+오독되지 않도록" 표시했다 — 측정이 아니라 판단이다.
+
+### 최종 권고 (3회차)
+
+```
+① 스카우팅    sonnet
+② 심층 프로브  sonnet + 헤드라인 1건 독립 검증 필수
+③ 분리 판정    opus   위임 안 함
+④ 저작        opus   위임 안 함
+haiku는 3회 모두 탈락 — 검증 없이 못 쓰면 위임 이득이 사라진다
+```
+
+**검증의 성격이 3회에 걸쳐 분명해졌다: 검증은 값을 안 바꾸고 결론의 등급을 바꾼다.**
+zenn에서 "링이 없다"→"버튼이 껐다", crowdworks에서 "변화 없음"→"focus에 브라우저 링".
+
+### qiita — claims 106/106 · 6/6 · reason·advisory 0
+
+**Material Design 어휘를 빌리고 자기 명사를 얹었다.** `highEmphasis`·`divider`·`surface`·
+`container`/`on-container`·`elevation` 위에, **markdown 렌더링 토큰 3개**와
+**Advent Calendar 토큰 2개**가 있다. 12월 행사를 토큰으로 두는 시스템.
+
+- **색상군 5개 × 0~110단**에, 각 색상군이 **`Text`·`Container`·`Border`·`Dim` 변형**도 발행
+- **초록이 둘**: 로고 `#55c500`(qiitaGreen)과 인터페이스 `#357a00` — 채워진 버튼은 후자다
+- **hover 규칙이 "시작한 자리에서 회색 램프 한 칸 아래"**: 흰→gray10, gray20→gray30, 투명→gray20
+- 잉크가 회색이 아니라 **검정 87%/60%**, 링크 `#2c6897`이 2위 잉크(166개)
+- **컨트롤 6개 전부 크롬 기본 focus** — 독립 컴포넌트 6종에 authored 링 0
+- **`family` 없음**: `YakuHanJPs`가 스택 1위지만 로드 안 된다(§2.6 사례)
+
+### crowdworks — 실측 끝, 저작만 남았다
+→ 전체 측정값은 `docs/COLLECTOR_MODEL_TRIAL_2026-09-22.md` §7에 기록했다
+
+**`--paragraph-*` 16 + `--single-*` 16 = `font` 단축 속성을 통째로 담은 토큰**
+(`400 18px / 1.8 "Hiragino Kaku Gothic Pro"`) — 이 카탈로그에 없던 형태.
+`--z-*` 91개 초세밀 z-index, `--aicw-*` 56개 AI CrowdWorks 서브브랜드,
+**`--space-outline-offset-focus: 3px`**. focus는 전부 크롬 기본인데 **너비만 1/2/3px로
+다르다** — 작성자가 `outline-width`만 손댔다.
+
+---
+
 ## 🔍 2026-09-22 — **census의 서체는 렌더된 서체가 아니다**(§2.6) → deepseek 정정
 
 qiita 정답지를 만들다 걸렸다. 내 census는 전부 `fontFamily.split(",")[0]`으로 세는데,
