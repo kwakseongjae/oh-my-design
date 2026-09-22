@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-09-21T00:00:00Z",
+ "generated_at": "2026-09-22T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 441,
+ "count": 442,
  "items": [
   {
    "id": "104",
@@ -10222,6 +10222,34 @@
    "signature_motion": "translate(6px) hover slide on buttons.",
    "has_personas": false,
    "category_raw": "saas-tool"
+  },
+  {
+   "id": "weibo",
+   "primary_color_hex": "#FF8200",
+   "category": "consumer-tech",
+   "visual_theme": "Dense grey-on-grey public square - white cards on a #f1f2f5 wash, one reading size (16px on 921 of ~2000 sampled elements), and a single loud orange (#ff8200) reserved for the action and almost nothing else. Hierarchy comes from card edges and colour, never from scaling type up.",
+   "voice_fingerprint": {
+    "register": "public, immediate, compressed; two-character imperatives that assume the reader knows the platform",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "chinese-simplified-dominant"
+   },
+   "tone_keywords": [
+    "public",
+    "immediate",
+    "dense",
+    "utilitarian",
+    "unexplaining"
+   ],
+   "antipatterns": [
+    "treating the warm link orange #eb7350 or the link blue #507daf as the brand colour",
+    "adding a distinct pressed shade - hover and pressed are the same #ff5900",
+    "promoting the system font stack to a brand typeface (QuoteFallback is a sentinel)",
+    "separating surfaces with shadow instead of fill and gap",
+    "spending the orange on decoration so it stops reading as the action"
+   ],
+   "has_personas": false,
+   "category_raw": "social-microblog"
   },
   {
    "id": "weverse",

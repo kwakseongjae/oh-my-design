@@ -3,6 +3,41 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## 🎉 2026-09-22 — CN 웨이브 1 #1: **weibo 신규 등재, 결함 0으로 verified**
+
+15개 브랜드를 실측해 고른 5건 중 첫 번째. **카탈로그 441 → 442 · verified 144 → 145.**
+
+```
+claims 54/54 (coverage 1.00) · components 2/2 interactive **2 stated**
+reasonCodes []  ·  advisoryCodes []      ← 이번 세션에서 유일하게 자문까지 0
+```
+
+**토큰과 렌더가 서로를 확인했다.** `--w-b-flat-primary-bg-hover`가 `#ff5900`이고 두 컨트롤의
+실측 hover가 정확히 `rgb(255,89,0)`이다 — 선언된 토큰과 렌더된 상태가 독립적으로 일치.
+
+**473개 중 309개만 weibo 것이다**(`--w-*` 190 · `--feed-*` 50 · `--weibo-*` 44 · `--chaohua-*` 15).
+나머지에 **GitHub의 `--color-prettylights-syntax-*`**(임베드된 서드파티 스타일시트)가 섞여 있다 —
+네임스페이스를 안 봤으면 GitHub 테마를 weibo 토큰으로 기록했을 것이다.
+
+**`open.weibo.com`은 토큰 출처로 쓰지 않았다.** CTA가 `#fa8c16`→`#e67e15`인데 `#fa8c16`은
+**Ant Design orange-6**이다. weibo 도메인 위의 범용 개발자 포털은 여전히 범용 포털이다.
+proof gate용 두 번째 지역 Tier-1로만 인용했다(CN은 브랜드 소유 지역 출처 2개 필수).
+
+서체는 **비웠다** — 본문 스택 첫 항목 `QuoteFallback`은 pixiv의 `win-bug-omega`와 같은
+**존재하지 않는 sentinel**이고 실제로는 OS 서체로 떨어진다. 시스템 폰트 승격 금지.
+
+**게이트가 가르친 CREATE 절차 2건**: ① `data/reference-fingerprints.json`에 항목 추가 +
+**삼중 미러**(`data/` · `.claude/data/` · `.codex/data/`) ② `sync-catalog`이 끝에 테스트를 돌려
+티어 카운트 불일치로 실패한다. **`signature_motion`은 비웠다** — 모션 토큰이 0개였고,
+44개 기존 항목이 이미 비어 있어 선례가 있다.
+
+> **다음 브랜드 주의**: `zhihu.com`은 `PLATFORM_HOSTS`에 있다. zhihu 레퍼런스를 만들 때
+> **자기 홈페이지가 `isBrandOperatedAccount`에서 탈락**한다 — 계정 경로가 없는 bare host라서.
+> 게이트가 "남의 브랜드가 계정을 갖는 플랫폼"으로 취급하기 때문이고, 주체가 zhihu 자신일 때는
+> 맞지 않는다. 착수 전에 처리 방법을 정해야 한다.
+
+---
+
 ## 🧱 2026-09-21 — sendbird: **완전한 컴포넌트 라이브러리로도 verified에 못 간다**
 
 스윕이 찾은 `sendbird.github.io/sendbird-uikit-react`(38스토리·18컴포넌트·**90개 `--sendbird-*`**)로
