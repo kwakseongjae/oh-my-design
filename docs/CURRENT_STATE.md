@@ -3,6 +3,28 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## 🔧 2026-09-22 — 카운트 게이트가 **놓친 어구가 하나 더 있었다**(11곳, 5개 로케일)
+
+앞 커밋에 "987 tests pass"라고 적었는데 **987/988이었다.** 하나가 실패하고 있었다.
+
+`check-counts`의 references 규칙은 **숫자 바로 뒤에 명사**가 와야 매칭된다. 그런데 카피가
+`"448 quality-graded DESIGN.md references"`라고 쓴다 — 숫자와 명사 사이에 `quality-graded`가
+끼어 있다. CJK는 더 멀다: `DESIGN.md 레퍼런스 448개` · `DESIGN.md 448件` ·
+`448 份带质量等级` · `448 份有品質分級`.
+
+**11곳이 448에 멈춰 있는데 게이트는 ✓를 냈다.** 잡은 건 `src/data/cli-docs.test.ts`인데
+**husky 커밋 게이트는 테스트 파일 3개만 돌린다**(catalog-integrity·reference-quality·
+evidence-integrity). 그래서 커밋을 막지 못했다.
+
+다섯 어구를 `check-counts`와 `sync-catalog` 양쪽에 **열거해서** 넣었다(느슨한
+"DESIGN.md 근처의 아무 숫자" 패턴은 버전 문자열을 잡기 시작한다). 재실행하니 11곳 자동 수정.
+**988/988 pass.**
+
+> 오늘만 카운트 게이트를 세 번 고쳤다: 티어 카운트 누락 → `reference-quality.json` staleness →
+> 어구 누락. 매번 "이제 됐다"고 생각했다. **표면을 열거하는 게이트는 어구도 열거해야 한다.**
+
+---
+
 ## ✅ 2026-09-22 — CN 웨이브 3: **wps 등재**(449 / 152). 후보 30개 중 살아남은 건 하나
 
 **wps claims 85/85 · 컴포넌트 4/4 stated · reason·advisory 0.** 첫 CN 생산성 레퍼런스.

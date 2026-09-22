@@ -101,6 +101,21 @@ const rules = [
   },
 ];
 
+// The reference total is also written in a phrasing the rule above cannot reach,
+// in all five locales at once: "448 quality-graded DESIGN.md references" puts
+// "quality-graded" between the number and the noun, and the CJK copy puts the
+// number after "DESIGN.md" entirely. Eleven places drifted to 448 while this gate
+// reported green on 2026-09-22; src/data/cli-docs.test.ts caught it, outside the
+// commit gate. Enumerated rather than generalised, because a loose "any number
+// near DESIGN.md" pattern would start matching version strings.
+for (const [label, re] of [
+  ['quality-graded references', /\b(\d+)(?=\s+quality-graded\b)/g],
+  ['quality-graded references', /DESIGN\.md 레퍼런스 (\d+)개/g],
+  ['quality-graded references', /DESIGN\.md (\d+)件/g],
+  ['quality-graded references', /(\d+)(?= 份带质量等级)/g],
+  ['quality-graded references', /(\d+)(?= 份有品質分級)/g],
+]) rules.push({ label, re, val: refs });
+
 // The tier counts are written with the number before the label in English
 // ("151 verified_v2") and after it in every CJK locale ("verified_v2 151개",
 // "verified_v2 151 份", "legacy snapshot 113件"), so each tier needs both directions.

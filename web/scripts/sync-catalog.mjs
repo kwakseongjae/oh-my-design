@@ -78,6 +78,21 @@ function countRules({ refs, skills, subagents, tiers }) {
       val: refs,
     },
   ];
+  // The reference total is also written in a phrasing the rule above cannot reach,
+  // in all five locales at once: "448 quality-graded DESIGN.md references" puts
+  // "quality-graded" between the number and the noun, and the CJK copy puts the
+  // number after "DESIGN.md" entirely. Eleven places drifted to 448 while this gate
+  // reported green on 2026-09-22; src/data/cli-docs.test.ts caught it, outside the
+  // commit gate. Enumerated rather than generalised, because a loose "any number
+  // near DESIGN.md" pattern would start matching version strings.
+  for (const re of [
+    /\b\d+(?=\s+quality-graded\b)/g,
+    /(?<=DESIGN\.md 레퍼런스 )\d+(?=개)/g,
+    /(?<=DESIGN\.md )\d+(?=件)/g,
+    /\d+(?= 份带质量等级)/g,
+    /\d+(?= 份有品質分級)/g,
+  ]) rules.push({ re, val: refs });
+
   // Tier counts drift in five locales at once and nothing healed them: seven manual
   // passes between 2026-09-16 and 2026-09-22. English writes the number before the
   // label ("151 verified_v2"), every CJK locale writes it after ("verified_v2 151개",
