@@ -2,12 +2,12 @@
   "schema_version": 2,
   "generated_at": "2026-09-22",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 442,
+  "count": 443,
   "counts": {
-    "verified_v2": 145,
+    "verified_v2": 146,
     "partial": 184,
     "legacy_snapshot": 113,
-    "total": 442
+    "total": 443
   },
   "items": [
     {
@@ -843,6 +843,17 @@
       "evidence_coverage": 1,
       "surface_count": 3,
       "source_count": 5,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "ctrip",
+      "status": "verified_v2",
+      "verified_at": "2026-09-22",
+      "next_reverify_at": "2027-03-21",
+      "evidence_coverage": 1,
+      "surface_count": 2,
+      "source_count": 2,
       "conflict_count": 0,
       "reason_codes": []
     },

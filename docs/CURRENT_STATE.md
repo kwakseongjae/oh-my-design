@@ -3,6 +3,31 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## 🎉 2026-09-22 — CN 웨이브 1 #2: **ctrip — 카탈로그에서 가장 성숙한 토큰 구조**
+
+**443 refs · 146 verified.** claims 63/63 · 컴포넌트 3/3 stated · **reasonCodes·advisory 모두 0**
+(weibo에 이어 2연속 무결함).
+
+**3계층 토큰 시스템을 발견했다** — 이 카탈로그에서 본 것 중 가장 성숙하다:
+```
+core*  286  원시값     coreColorBlue1-5 · Gray1-9 · Orange1-5 · Green1-4 · Bluegray3-9
+smtc*   86  의미역할   smtcColorTextBrand · smtcColorBgFavorite · smtcColorBgStarRating …
+comp*   30  컴포넌트   compHotelMapActiveLine · compSearchBoxCalendarHighlight …
+```
+파랑 램프 5단 중 **1·3·4·5단이 각각 명명된 의미 역할을 갖는다** — 원시값과 의미가 배선돼 있다.
+색을 **범주로** 쓴다: 파랑=인터랙티브 · 주황=긴급(notice와 discount가 **같은 토큰**) ·
+금색=별점 · 빨강=즐겨찾기.
+
+**그런데 자기 홈페이지가 시스템 밖이다.** `hotels.ctrip.com` 검색 버튼은 `#006ff6`으로
+`coreColorBlue1`과 정확히 일치하는데, `ctrip.com`은 `#0086f6`·`#f2f8fe`·`#2953d6`을 렌더하고
+**셋 다 같은 페이지가 로드한 404개 프로퍼티 어디에도 없다.** 평균 내지 않고 양쪽 다 기록했다 —
+팔레트는 선언된 시스템, off-system 값은 실측 컴포넌트에만.
+
+**브라우저 기본값을 또 만났다**: 앵커 하나가 rest `#0000ee` / press `#ff0000`을 냈는데
+**크롬의 기본 링크·활성링크 색**이다. 기록하지 않았다. cybozu의 `#2693ff` 포커스 링과 같은 계통.
+
+---
+
 ## 🎉 2026-09-22 — CN 웨이브 1 #1: **weibo 신규 등재, 결함 0으로 verified**
 
 15개 브랜드를 실측해 고른 5건 중 첫 번째. **카탈로그 441 → 442 · verified 144 → 145.**
