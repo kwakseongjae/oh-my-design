@@ -11142,6 +11142,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "wps",
+    "status": "verified_v2",
+    "verifiedAt": "2026-09-22",
+    "tokensExtractedAt": "2026-09-22",
+    "nextReverifyAt": "2027-03-21",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 85,
+    "evidenceClaimCount": 85,
+    "evidenceCoverage": 1,
+    "surfaceCount": 2,
+    "sourceCount": 3,
+    "conflictCount": 0,
+    "tier1SourceCount": 3,
+    "componentCount": 4,
+    "interactiveComponentCount": 4,
+    "statedComponentCount": 4,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "wrtn",
     "status": "partial",
     "verifiedAt": "2026-06-17",
@@ -11556,10 +11578,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 151,
+  "verified_v2": 152,
   "partial": 184,
   "legacy_snapshot": 113,
-  "total": 448
+  "total": 449
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

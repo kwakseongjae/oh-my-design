@@ -53,7 +53,23 @@ function authoritative() {
   const qualityPath = path.join(ROOT, 'data', 'reference-quality.json');
   let tiers = null;
   if (existsSync(qualityPath)) {
-    const counts = JSON.parse(readFileSync(qualityPath, 'utf-8')).counts ?? {};
+    const quality = JSON.parse(readFileSync(qualityPath, 'utf-8'));
+    // Staleness guard, and it caught itself on the first run. This file and
+    // sync-catalog.mjs both read the tier split from here, so a stale copy makes
+    // the gate and the healer agree on the *same wrong number* and report green —
+    // exactly what happened on 2026-09-22 when the counts were synced before the
+    // quality data was regenerated. Its own total has to match the directory count
+    // or the tier numbers are from a different catalog and get no vote.
+    const counts = quality.counts ?? {};
+    if (quality.count != null && quality.count !== refs) {
+      console.error(
+        `✗ check-counts: data/reference-quality.json is stale — it evaluated ${quality.count} `
+        + `reference(s), web/references/ has ${refs}.\n`
+        + `  The tier counts in it are from a different catalog, so this run cannot check them.\n`
+        + `  Fix with: npm run query:references:data   (then re-run node web/scripts/sync-catalog.mjs)`,
+      );
+      process.exit(1);
+    }
     if (counts.verified_v2 != null) {
       tiers = {
         verified: counts.verified_v2,

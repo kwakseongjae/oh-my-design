@@ -62,7 +62,11 @@
 - **한 일(56)**: **오늘 커밋한 deepseek `#005fcc` 포커스 링이 크롬 기본값이었다.** 작성자 스타일시트 없는 페이지로 컨트롤을 돌려 확인(`outline: rgb(0,95,204) auto 1px`, 라이트·다크 동일). 토큰 삭제 + 문서 정정. **`auto`는 작성자가 안 쓴다**가 판별 규칙. `catalog-integrity`에 UA 기본값 검사 추가(전 카탈로그 스캔: deepseek 1건뿐).
 - **한 일(57)**: negative focus 3건 처리 — **pixiv** `rgba(0,150,250,.32) 4px`(세 버튼 동일 → Charcoal `FocusRing` 관측 확정, 120→123) · **zhihu** 2겹 oklch 링(54→56) · **asana** UA 링이라 토큰 없음(토글 `#24a651`은 `solid 2px`로 진짜 확인).
 - **한 일(58)**: **또 레포 도구를 안 썼다.** `probe-component-states.mjs`는 상태마다 페이지를 새로 열어서 modality 오염이 애초에 불가능한데, 오후 내내 그 열화판을 손으로 재발명했다. 그 스크립트도 3곳 고침(shadow 절단 · 상태 하나 실패가 전체를 죽이던 것 · 요소 못 찾은 상태가 조용히 사라지던 것).
-- **다음**: CN 후보 재탐색 또는 JP +40. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(59)**: **CN 웨이브 3 — wps 등재**(449 / **152 verified**, 85/85, 4/4 stated, reason·advisory 0). `--kd-*` 293(이식 가능한 킹소프트 시스템) + `--wps-*` 146(이 페이지)로 층이 갈린다. **`ai` 색 가족이 1급**, 헤드라인 CTA가 **에러 레드**고 토큰↔렌더 3단 전부 일치.
+- **한 일(60)**: `--kd-`가 **Kingdee의 KDesign이 아님**을 확인(이름이 같다) — 두 후보 사이트에 겹치는 토큰 0개 + 값이 WPS 브랜드색에 배선 + 렌더 클래스 `kdv-button`. 넌센스 경로는 진짜 404.
+- **한 일(61)**: 후보 30개 중 1건 생존. **새 함정 2종**: ① **nio** — `--nio-*` 3206개가 전부 `--nio-web-register-login_lego-*`, **접두사가 브랜드여도 라이브러리다** ② **hisense** — 541개가 손으로 쓴 것처럼 보이지만 **아무 경로나 홈을 주는 캐치올**이라 보류. 로케일 함정 4건(xiaomi/popmart/insta360은 한국 사이트, feishu는 larksuite).
+- **한 일(62)**: **카운트 게이트가 자기 함정을 잡았다** — `check-counts`와 `sync-catalog`가 같은 `reference-quality.json`을 읽어서 **같이 틀리고 ✓**를 냈다. 그 파일의 `count`가 디렉터리 수와 다르면 실패하는 가드 추가. 재실행 시 3파일 21곳 자동 수정.
+- **다음**: hisense 재검토(제2 표면 확보 가능하면) · xpeng/lenovo/midea 재시도 · 아니면 JP +40. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

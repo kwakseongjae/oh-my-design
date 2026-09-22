@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-22T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 448,
+ "count": 449,
  "items": [
   {
    "id": "104",
@@ -10530,6 +10530,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "saas"
+  },
+  {
+   "id": "wps",
+   "primary_color_hex": "#1F69E0",
+   "category": "productivity",
+   "visual_theme": "A white, type-only landing page hiding a complete design system: 293 --kd-* tokens publishing a ten-step brand ramp as raw r,g,b, five semantic families (error, success, warning and a first-class ai family at #8350f2) each with normal/hover/pressed/light, and every neutral composed from one #0d0d0d ink at four text alphas and four rule alphas. The headline call to action is the error red #dd3332, not the brand blue.",
+   "voice_fingerprint": {
+    "register": "almost none — 307 characters on the landing surface: a headline, two buttons and a nav",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "zh-cn-product"
+   },
+   "tone_keywords": [
+    "systematic",
+    "restrained",
+    "utilitarian",
+    "multi-market",
+    "token-first"
+   ],
+   "antipatterns": [
+    "treating --wps-* layout constants like --wps-hero-wps-cover-crop-height as portable tokens; only --kd-* travels",
+    "reading #1e5fc7 as the resting brand blue — it is the ramp pressed step; brand-normal is #1f69e0",
+    "flattening the text and rule alphas to grey hex; they are one ink at .9/.66/.46/.27 and .06/.12/.24/.48",
+    "copying the focus behaviour — all five controls suppress the browser ring and draw nothing",
+    "promoting the PingFang SC stack to a brand face; every entry in it is an OS font"
+   ],
+   "has_personas": false,
+   "category_raw": "office-suite"
   },
   {
    "id": "wrtn",

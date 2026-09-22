@@ -3,6 +3,62 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-22 — CN 웨이브 3: **wps 등재**(449 / 152). 후보 30개 중 살아남은 건 하나
+
+**wps claims 85/85 · 컴포넌트 4/4 stated · reason·advisory 0.** 첫 CN 생산성 레퍼런스.
+
+**토큰 층이 두 개고, 그게 핵심이다.** 439개 중 `--kd-*` 293개는 **킹소프트의 이식 가능한
+시스템**(브랜드 10단 램프를 생 `r,g,b`로 발행 · error/success/warning/**ai** 4가족 각각
+normal·hover·pressed·light · radius 7단 · type 8단 · line-height를 `calc(size+8px|12px)`
+**규칙으로** · z-index 9단), `--wps-*` 146개는 **이 페이지**(`--wps-hero-wps-cover-crop-height:
+458px`). 앞엣것만 시스템으로 기록했다.
+
+- **`ai` 색 가족이 1급이다**(`#8350f2`→`#682aef`, 전용 text·line·background·gradient).
+  상태가 아니라 **기능**을 위한 색 가족은 이 카탈로그에 없던 것이다.
+- **헤드라인 CTA가 브랜드 블루가 아니라 에러 레드**(`#dd3332`)다. 토큰↔렌더가
+  **3단 전부 일치**(`#dd3332`/`#c42e2d`/`#b02928` = 실측 rest/hover/press).
+- 중성색은 전부 `#0d0d0d` 하나를 텍스트 4단(.9/.66/.46/.27)·선 4단(.06/.12/.24/.48)으로 쓴다.
+- `#1e5fc7`는 **브랜드의 rest가 아니라 pressed 단계**인데 페이지가 그걸 쓴다.
+
+**`--kd-`가 남의 라이브러리인지 확인했다.** "KDesign"을 찾으면 **금蝶(Kingdee)**의
+`kingdee.design`이 나온다 — 金山이 아니다. ① 두 사이트(kingdee.design · design.ksyun.com)에
+wps의 `--kd-*` 293개 중 **0개**가 있다(단, 둘 다 마케팅 셸이라 보강 증거일 뿐) ②
+`--kd-color-line-public`이 `#1e5fc7` = `--wps-color-primary` — **값이 이 제품 브랜드에 배선돼
+있다.** 스톡 라이브러리라면 라이브러리 기본색이 있을 자리다. 렌더 클래스도 `kdv-button`.
+
+**넌센스 경로**: `wps.cn/zz-…`는 **진짜 404**(vars 0, 26자). 대조군 통과.
+
+**선언 안 한 컨트롤 1개**: 파란 히어로 버튼은 캐러셀 안에 덮여 있어 hover를 **두 번 다**
+못 쟀다(생포인터 / 레포 프로브 둘 다 타임아웃). rest·focus는 진짜지만 **hover를 아무도 못 본
+컨트롤은 컴포넌트가 아니다.** 산문에만 적었다. ← 오늘 오후 프로브에 넣은 "못 쟀음" 출력이
+바로 이 판단을 가능하게 했다.
+
+### 후보 30개 스캔 — 살아남은 게 하나뿐인 이유
+
+| 기각 사유 | 건수 | 예 |
+|---|---|---|
+| 토큰 0~10 | 12 | wechat·netease·mihoyo·csdn·douban·anta·qunar |
+| **로케일 함정** | 4 | **xiaomi(`lang=ko-KR`)·popmart(`lang=ko`)·insta360(`lang=ko-kr`)·feishu(→larksuite.com)** |
+| 프레임워크 | 4 | tencent(`--bs`·`--wp`)·byd(`--el`)·autohome(`--tw`)·**gitee(`--gitee-*`가 Ant Design 이름)** |
+| **브랜드 접두사인데 라이브러리** | 1 | **nio — `--nio-*` 3206개가 전부 `--nio-web-register-login_lego-*`** |
+| 캐치올(경로 대조군 실패) | 1 | **hisense — 아무 경로나 홈을 준다** |
+| 타임아웃 | 3 | lenovo·midea·xpeng |
+
+**nio가 새로운 모양의 함정이다.** 접두사가 브랜드 이름이어도 라이브러리일 수 있다 —
+**이름의 나머지를 읽어야 한다.** `_lego`는 키트고 `web-register-login`은 페이지 모듈이다.
+(`--nio-…-font-size-14 = 52px` 같은 이름/값 불일치가 결정적.) **hisense는 토큰 541개가
+진짜 손으로 쓴 것처럼 보이지만**(`min(3.19444444vw, 46px)` = 1440 기준 손계산)
+**넌센스 경로가 홈을 돌려줘서 보류**했다.
+
+### 카운트 게이트가 **자기 자신의 함정을 잡았다**
+
+티어 동기화를 돌렸더니 `verified=151`이 나왔다 — `data/reference-quality.json`이 아직
+448건짜리였기 때문이다. `check-counts`와 `sync-catalog`가 **같은 파일을 읽으므로 둘이 같이
+틀리고 ✓를 낸다.** → `check-counts`에 **그 파일의 `count`가 실제 디렉터리 수와 다르면 실패**
+하는 staleness 가드를 넣었다. 재실행하니 3개 파일에서 **21곳**을 자동으로 고쳤다(5개 로케일).
+
+---
+
 ## ❗ 2026-09-22 — **오늘 커밋한 deepseek 포커스 링은 크롬 것이었다.** 정정 + 게이트 추가
 
 **`#005fcc`는 DeepSeek의 값이 아니라 크롬의 기본 `:focus-visible` 링이다.** 오늘 아침
