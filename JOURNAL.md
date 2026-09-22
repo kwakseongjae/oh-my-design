@@ -85,7 +85,10 @@
 - **한 일(79)**: **caddi 등재**(454 / **160 verified**, 90/90, 3/3, reason·advisory 0). **완전히 사각**(radius 토큰 4단이 발행돼 있고 안 쓰인다), **간격이 방향별 4가족**(`inline`/`stack`이 **같은 숫자** — 구분이 값이 아니라 의도), 색 25개 이름에 **값은 9개**, 인터랙션 언어가 **뒤집기 한 동작**.
 - **한 일(80)**: caddi의 **`--label-*` 46개가 UI 문구를 담은 토큰**이다. 결함 2건 그대로 기록 — `--label-mission`이 `"文字列値"`(플레이스홀더), 슬러그 망가진 이름 6개. 토큰으로 안 올렸다. `--font-family-display`는 선언만 되고 로드 안 됨 → 산문에만.
 - **한 일(81)**: **jal 중단.** 7가지 조합(HTTP2 on/off × URL 4종 · 재시도 · 셀렉터 대기 · 레포 프로브) 전부 `ERR_HTTP2_PROTOCOL_ERROR` 또는 70초 타임아웃. 404 경로만 뜬다. **초기 1회 성공 판독은 진짜지만 재현 불가** — 재현 못 하는 증거로 레퍼런스를 쓰지 않는다. 더 밀면 우회가 된다.
-- **다음**: JP 웨이브 3 프로브, 또는 KR 편중(45%) 대비 US/UK 기회편성 검토. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(82)**: **Aside Browser를 Tier 2 수집기로 채택**(`docs/ASIDE_PIPELINE_2026-09-22.md`). 로컬 헤드리스가 7조합 전부 실패한 `jal.co.jp`가 **첫 시도에 열렸다** — 봇 방어가 헤드리스 지문 기준이었다. known-answer 검증 통과(**자체 토큰 416개 정확히 일치**; 총계는 Tailwind 레이어 차이로 445 vs 479 — **총계 말고 자체 토큰으로 비교**해야 한다).
+- **한 일(83)**: **`exec`(에이전트)는 증거원에서 배제.** 측정 위임하면 오늘 잡은 다섯 건을 전부 놓친다. **JAL에서 즉시 재확인** — 최다 렌더 본문색 `oklch(0.145 0 0)` ×150이 JAL이 아니라 **shadcn 기본값**이다. 토큰 실측: 로컬 실패 4,000→0, Aside 5,600→verified 1건. **단가는 같고 헛돈을 안 쓴다.**
+- **한 일(84)**: **jal 등재**(455 / **161 verified**, 95/95, 2/2, reason·advisory 0). **칠하는 대상별 4가족**(surface/text/icon/strokeColor) · **언어별 서체 7종** · **마일리지 등급 색 11개**(카탈로그 최초) · hover가 같은 빨강의 알파. **색 87개가 두 번 발행**(69 바이트 동일 + 18 표기만 다름)된 것을 기계적 쌍 비교로 확인 — 불일치가 아니라 이름 바꾸는 중이라 `conflicts`에 안 넣었다.
+- **다음**: JP 웨이브 3 프로브, 또는 KR 편중(45%) 대비 US/UK 기회편성 검토. **브랜치가 origin에 없다**(main 대비 175 커밋). **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

@@ -4335,6 +4335,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "jal",
+    "status": "verified_v2",
+    "verifiedAt": "2026-09-22",
+    "tokensExtractedAt": "2026-09-22",
+    "nextReverifyAt": "2027-03-21",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 95,
+    "evidenceClaimCount": 95,
+    "evidenceCoverage": 1,
+    "surfaceCount": 2,
+    "sourceCount": 2,
+    "conflictCount": 0,
+    "tier1SourceCount": 2,
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "jandi",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
@@ -11685,10 +11707,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 160,
+  "verified_v2": 161,
   "partial": 181,
   "legacy_snapshot": 113,
-  "total": 454
+  "total": 455
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

@@ -3,6 +3,55 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## 🔌 2026-09-22 — **Aside Browser를 Tier 2로 채택. jal 등재**(455 · 161)
+→ `docs/ASIDE_PIPELINE_2026-09-22.md`
+
+오너 제안을 테스트했고 **뚫렸다.** 로컬 헤드리스가 7가지 조합으로 전부 실패한
+`www.jal.co.jp`가 **Aside Browser에서 첫 시도에 열렸다.** 봇 방어가 IP가 아니라
+**헤드리스 지문** 기준이었다.
+
+**계층**: Tier 1 로컬 Playwright(기본) → Tier 2 `mcp__aside__repl`(막혔을 때, **같은 프로브
+코드 다른 브라우저**) → Tier 3 `exec`는 **증거원으로 안 쓴다.**
+
+> **`exec`(에이전트)에 측정을 위임하지 않는 이유가 오늘 하루치 기록에 다 있다.** 카탈로그를
+> 구한 다섯 건이 전부 원값을 직접 본 결과였다(크롬 기본 링 · Marketo 버튼 · modality 오염 ·
+> 자동 포커스 · `#645b4a` 3회 확인). **그리고 JAL에서 곧바로 또 나왔다** — 가장 많이
+> 렌더되는 본문색 `oklch(0.145 0 0)` ×150이 JAL 게 아니라 **shadcn 기본값**이다.
+> 에이전트 요약이었으면 그대로 브랜드 잉크가 됐다.
+
+**known-answer 검증 통과**: 본문 2810자 동일, **자체 토큰 416개 정확히 일치**
+(총계는 445 vs 479로 다르다 — Tailwind 레이어 차이. **총계가 아니라 자체 토큰으로
+비교해야 한다**는 것도 같이 배웠다).
+
+**토큰 실측**: 로컬 실패 ~4,000 토큰 → **0**. Aside ~5,600 토큰 → **verified 1건**.
+단가는 같고 **헛돈을 안 쓰는 것**이 실제 이득이다.
+
+**프라이버시**: `openTab()`만(오너의 다른 탭 안 봄, 끝나면 닫음) · computed style과 기하만 ·
+**측정 전 `looksAuthenticated` 확인**(전부 false) · 로그인 안 함 · `memory_search` 안 씀.
+`.verification.md`에 **수집기와 재현 조건**을 명시했다.
+
+### jal — claims 95/95 · 컴포넌트 2/2 · reason·advisory 0
+
+479개 중 **416개가 JAL 것**. 구조가 **칠하는 대상별 4가족**이다:
+`--surfaceColor-` / `--textColor-` / `--iconColor-` / `--strokeColor-` × 역할 × 상태.
+
+- **언어별 서체 토큰 7종** — japanese·english·korean·thai·chineseSimplified·
+  chineseTraditional·chineseHongKong. 폴백 체인이 아니라 **각각 토큰**이다.
+- **마일리지 등급 색 11개** — `--jmbStatus-{crystalRed #ba1334, sapphireBlue #066fbf,
+  emblemGold #edc900, …}` · `--lspStatus-{jgcThreeStar #960a20 … jmbElite #652d73}`.
+  **로열티 티어를 디자인 토큰으로** 발행한다. 이 카탈로그에 없던 것.
+- hover가 별도 색이 아니라 **같은 빨강의 알파**(`rgba(204,0,0,0.8)` / `0.6`).
+- 토큰↔렌더 일치: `--strokeColor-focus-primary #cc0000` = 실측 `solid 2px` 링.
+
+> **87개 색이 두 번 발행돼 있다.** camelCase 105개 중 69개가 `--color-<kebab>`와
+> **바이트 동일**, 18개가 **표기만 다른 같은 색**(`rgba(255,255,255,0.6)` vs `#fff9` —
+> `0x99`=153=0.6×255). 기계적으로 쌍을 만들어 비교해서 확인했다. 간격(`--space-16` vs
+> `--spacing-space-16`)과 타입(시맨틱 vs 숫자 스케일)도 같은 이중화다.
+> **`conflicts`에는 안 넣었다** — 존재하는 쌍은 전부 일치한다. 불일치가 아니라
+> **이름 바꾸는 중인 한 시스템**이다.
+
+---
+
 ## ✅ 2026-09-22 — **caddi 등재** (454 · 160). **jal은 봇 방어로 차단 — 재시도 중단**
 
 caddi claims 90/90 · 컴포넌트 3/3 · reason·advisory **0**.

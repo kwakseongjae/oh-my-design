@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-22T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 454,
+ "count": 455,
  "items": [
   {
    "id": "104",
@@ -4098,6 +4098,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "fintech"
+  },
+  {
+   "id": "jal",
+   "primary_color_hex": "#CC0000",
+   "category": "consumer-tech",
+   "visual_theme": "A white booking surface set almost entirely in Noto Sans JP at 16px, with one red #cc0000 carrying the brand and hover done as that red at 0.8 or 0.6 alpha rather than a second hue. The token set is organised by what is being painted - surfaceColor, textColor, iconColor and strokeColor as four parallel families, each role by state - and it publishes a font family per language across seven scripts plus a colour for every JMB and JGC membership tier.",
+   "voice_fingerprint": {
+    "register": "Japanese airline booking; 2,810 characters, mostly fare and route names",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "ja-transactional"
+   },
+   "tone_keywords": [
+    "infrastructural",
+    "dense",
+    "single-accent",
+    "multilingual",
+    "state-explicit"
+   ],
+   "antipatterns": [
+    "reading oklch(0.145 0 0) as JAL's ink because it paints 150 elements - it is shadcn's default foreground; JAL's heading colour is #000000",
+    "reusing the JMB and JGC tier colours decoratively; #066fbf means Sapphire",
+    "assuming #a30000 is only the pressed red - it is also danger and form-error",
+    "colouring a glyph from textColor; iconColor is a separate family with its own states",
+    "inventing a hover hue - the system reuses the base colour at 0.8 or 0.6 alpha"
+   ],
+   "has_personas": false,
+   "category_raw": "airline"
   },
   {
    "id": "jandi",

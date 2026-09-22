@@ -2,12 +2,12 @@
   "schema_version": 2,
   "generated_at": "2026-09-22",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 454,
+  "count": 455,
   "counts": {
-    "verified_v2": 160,
+    "verified_v2": 161,
     "partial": 181,
     "legacy_snapshot": 113,
-    "total": 454
+    "total": 455
   },
   "items": [
     {
@@ -2127,6 +2127,17 @@
       "reason_codes": [
         "verification_v2_missing"
       ]
+    },
+    {
+      "id": "jal",
+      "status": "verified_v2",
+      "verified_at": "2026-09-22",
+      "next_reverify_at": "2027-03-21",
+      "evidence_coverage": 1,
+      "surface_count": 2,
+      "source_count": 2,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "jandi",
