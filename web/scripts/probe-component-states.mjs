@@ -190,20 +190,50 @@ const read = (frame) => frame.evaluate((prefix) => {
 }, varPrefix);
 
 const states = {};
-{ const v = await visit(); if (!v) { console.error("대상 요소를 찾지 못했다"); await browser.close(); process.exit(1); }
-  states.rest = await read(v.frame); await v.page.close(); }
-{ const v = await visit(); await clearOverlays(v.frame); const loc = v.frame.locator('[data-omd-probe="1"]');
-  await loc.scrollIntoViewIfNeeded(); await loc.hover(); await settle(v.frame, v.page);
-  states.hover = await read(v.frame); await v.page.close(); }
-{ const v = await visit(); await clearOverlays(v.frame); const loc = v.frame.locator('[data-omd-probe="1"]');
-  await loc.scrollIntoViewIfNeeded(); await loc.hover(); await settle(v.frame, v.page);
-  await v.page.mouse.down(); await settle(v.frame, v.page);
-  states.pressed = await read(v.frame); await v.page.mouse.up(); await v.page.close(); }
-{ const v = await visit(); await clearOverlays(v.frame);
+const unmeasured = {};
+
+/**
+ * 상태 하나를 못 재는 것과 **전부** 못 재는 것은 다르다 (2026-09-22).
+ *
+ * zhihu의 `.CornerButton`은 떠 있는 위젯이라 그 위를 다른 레이어가 덮고 있고,
+ * Playwright `hover()`의 actionability 검사가 30초 뒤 throw한다. 예전 구조에서는 그
+ * throw가 프로세스를 죽여서 **focus까지 같이 잃었다** — 그런데 focus는 마우스가 필요
+ * 없고, 정확히 그것을 확인하러 온 실행이었다.
+ *
+ * 그래서 상태마다 격리한다. 못 잰 상태는 "없음"이 아니라 **"못 쟀음"**으로 출력에 남는다.
+ * 부재 주장과 측정 실패를 같은 칸에 적지 않는 것이 이 카탈로그의 규칙이다.
+ */
+async function capture(name, fn) {
+  let v = null;
+  try { v = await visit();
+    if (!v) {
+      // 조용히 건너뛰면 "안 나온 상태"와 "변화 없는 상태"가 출력에서 구별되지 않는다.
+      if (name === "rest") return null;
+      unmeasured[name] = "이 로드에서 대상 요소를 찾지 못했다";
+      return;
+    }
+    await fn(v);
+    states[name] = await read(v.frame);
+  } catch (err) {
+    unmeasured[name] = String(err?.message ?? err).split("\n")[0].slice(0, 96);
+  } finally { await v?.page.close().catch(() => {}); }
+}
+
+if ((await capture("rest", async () => {})) === null || !states.rest) {
+  console.error(states.rest ? "rest를 읽지 못했다" : "대상 요소를 찾지 못했다");
+  await browser.close(); process.exit(1);
+}
+await capture("hover", async (v) => { await clearOverlays(v.frame);
+  const loc = v.frame.locator('[data-omd-probe="1"]');
+  await loc.scrollIntoViewIfNeeded(); await loc.hover({ timeout: 8000 }); await settle(v.frame, v.page); });
+await capture("pressed", async (v) => { await clearOverlays(v.frame);
+  const loc = v.frame.locator('[data-omd-probe="1"]');
+  await loc.scrollIntoViewIfNeeded(); await loc.hover({ timeout: 8000 }); await settle(v.frame, v.page);
+  await v.page.mouse.down(); await settle(v.frame, v.page); });
+await capture("focus", async (v) => { await clearOverlays(v.frame);
   await v.page.keyboard.press("Tab");                       // 키보드 모달리티 — toss에서 이게 없으면 focus가 안 뜬다
   await v.frame.evaluate(() => document.querySelector('[data-omd-probe="1"]').focus());
-  await settle(v.frame, v.page);
-  states.focus = await read(v.frame); await v.page.close(); }
+  await settle(v.frame, v.page); });
 
 await browser.close();
 
@@ -237,14 +267,23 @@ for (const [name, s] of Object.entries(states)) {
   const marks = [s.is.hover && "hover", s.is.active && "active", s.is.focusVisible && "focus-visible"].filter(Boolean).join("+") || "-";
   console.log(`  ${name.padEnd(8)} bg=${hex(s.bg).padEnd(24)} fg=${hex(s.fg).padEnd(20)} [${marks}]`);
   const extras = [];
-  if (s.shadow !== states.rest.shadow || name === "rest") extras.push(`shadow=${s.shadow.slice(0, 54)}`);
+  // 54자는 포커스 링을 자른다. zhihu의 focus shadow는 흰 안쪽 링과 색 있는 바깥 링을
+  // 겹친 두 겹짜리라 앞부분만 보면 "흰 테두리"로 잘못 읽힌다. 그리고 포커스 링은
+  // 정확히 이 스크립트로 확인하러 오는 값이다 (2026-09-22).
+  if (s.shadow !== states.rest.shadow || name === "rest") extras.push(`shadow=${s.shadow}`);
   if (s.transform !== "none") extras.push(`transform=${s.transform}`);
   if (s.outline !== states.rest.outline) extras.push(`outline=${s.outline}`);
   if (s.border !== states.rest.border) extras.push(`border=${hex(s.border)}`);
   if (extras.length) console.log(`           ${extras.join("  ")}`);
 }
+for (const [name, why] of Object.entries(unmeasured)) {
+  console.log(`  ${name.padEnd(8)} ${"못 쟀음".padEnd(20)} ${why}`);
+}
 const changed = Object.entries(states).filter(([k, s]) => k !== "rest" && hex(s.bg) !== hex(states.rest.bg));
 console.log(`\n배경이 바뀌는 상태: ${changed.length ? changed.map(([k]) => k).join(", ") : "없음 — 색 변화 없음을 부재로 기록할 것"}`);
+if (Object.keys(unmeasured).length) {
+  console.log(`못 잰 상태: ${Object.keys(unmeasured).join(", ")} — **부재가 아니다.** 레퍼런스에 "없음"으로 적지 말 것.`);
+}
 if (varPrefix && Object.keys(states.rest.vars ?? {}).length) {
   console.log(`\nauthored --${varPrefix}* (칠해진 값보다 이쪽을 쓴다):`);
   for (const [k, v] of Object.entries(states.rest.vars)) console.log(`  ${k.padEnd(52)} ${v}`);

@@ -59,7 +59,10 @@
 - **한 일(53)**: **weibo focus 재측정** — 유보를 실측으로 교체. 두 컴포넌트 다 `:focus-visible`=true인데 속성 변화 0(`outline-style: none`). claims 54→56. hover·pressed는 이번엔 `:hover`가 안 잡혀 **건드리지 않았다**(재현 실패는 반증이 아니다).
 - **한 일(54)**: **3차 결함 — 인덱스는 엘리먼트가 아니다.** weibo 홈은 리렌더링돼서 셀렉터 재평가가 다른 노드를 준다(컨트롤 [4]가 클래스·크기·배경까지 바뀜). element handle 고정 + 매 판독 동일성 검사로 교정. 측정법 문서 §2·§7 갱신.
 - **한 일(55)**: **티어 카운트를 게이트에 넣었다** — `check-counts`+`sync-catalog` 양쪽에. EN 전위/CJK 후위 양방향 규칙, `(?![\d/-])`로 `legacy 13/15/16-section` 오탐 차단(`\d` 빠지면 "legacy 1"로 백트래킹). cli-docs.ts 추가 → 11개 표면. 3곳에 드리프트 심어 탐지·치유 확인.
-- **다음**: 남은 negative focus 주장 3건(pixiv·asana·zhihu) 재측정 → CN 후보 재탐색 또는 JP +40. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(56)**: **오늘 커밋한 deepseek `#005fcc` 포커스 링이 크롬 기본값이었다.** 작성자 스타일시트 없는 페이지로 컨트롤을 돌려 확인(`outline: rgb(0,95,204) auto 1px`, 라이트·다크 동일). 토큰 삭제 + 문서 정정. **`auto`는 작성자가 안 쓴다**가 판별 규칙. `catalog-integrity`에 UA 기본값 검사 추가(전 카탈로그 스캔: deepseek 1건뿐).
+- **한 일(57)**: negative focus 3건 처리 — **pixiv** `rgba(0,150,250,.32) 4px`(세 버튼 동일 → Charcoal `FocusRing` 관측 확정, 120→123) · **zhihu** 2겹 oklch 링(54→56) · **asana** UA 링이라 토큰 없음(토글 `#24a651`은 `solid 2px`로 진짜 확인).
+- **한 일(58)**: **또 레포 도구를 안 썼다.** `probe-component-states.mjs`는 상태마다 페이지를 새로 열어서 modality 오염이 애초에 불가능한데, 오후 내내 그 열화판을 손으로 재발명했다. 그 스크립트도 3곳 고침(shadow 절단 · 상태 하나 실패가 전체를 죽이던 것 · 요소 못 찾은 상태가 조용히 사라지던 것).
+- **다음**: CN 후보 재탐색 또는 JP +40. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

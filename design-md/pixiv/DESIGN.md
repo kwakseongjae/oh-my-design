@@ -13,15 +13,16 @@ added: "2026-06-06"
 omd: "0.1"
 verification_v2:
   schema: 2
-  checked: "2026-09-21"
+  checked: "2026-09-22"
   surfaces:
     - { id: home, kind: product-surface, url: "https://www.pixiv.net/", inspected: "2026-09-21" }
     - { id: home-dark, kind: product-surface, url: "https://www.pixiv.net/", inspected: "2026-09-21" }
-    - { id: charcoal-story, kind: product-surface, url: "https://charcoal-web.pixiv.design/", inspected: "2026-09-21" }
+    - { id: charcoal-story, kind: product-surface, url: "https://charcoal-web.pixiv.design/", inspected: "2026-09-22" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://www.pixiv.net/", captured: "2026-09-21" }
     - { id: home-dark-live, kind: product-surface, url: "https://www.pixiv.net/", captured: "2026-09-21" }
     - { id: charcoal-button-story, kind: product-surface, url: "https://charcoal-web.pixiv.design/iframe.html?id=react-button--primary&viewMode=story", captured: "2026-09-21" }
+    - { id: charcoal-buttondefault-story, kind: product-surface, url: "https://charcoal-web.pixiv.design/iframe.html?id=react-button--default&viewMode=story", captured: "2026-09-22" }
     - { id: charcoal-iconbutton-story, kind: product-surface, url: "https://charcoal-web.pixiv.design/iframe.html?id=react-iconbutton--default&viewMode=story", captured: "2026-09-21" }
     - { id: charcoal-switch-story, kind: product-surface, url: "https://charcoal-web.pixiv.design/iframe.html?id=react-switch--default&viewMode=story", captured: "2026-09-21" }
     - { id: charcoal-checkbox-story, kind: product-surface, url: "https://charcoal-web.pixiv.design/iframe.html?id=react-checkbox--default&viewMode=story", captured: "2026-09-21" }
@@ -52,16 +53,18 @@ verification_v2:
     tokens.colors.text-muted: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
     tokens.colors.text-tertiary: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
     tokens.colors.warning: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-21" }
-    tokens.components.button-default.fg: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
-    tokens.components.button-default.font: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
-    tokens.components.button-default.hover: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
-    tokens.components.button-default.padding: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
-    tokens.components.button-default.pressed: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
-    tokens.components.button-default.radius: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
-    tokens.components.button-default.type: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
-    tokens.components.button-default.use: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-default.fg: { surface_id: charcoal-story, source_id: charcoal-buttondefault-story, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-default.focus: { surface_id: charcoal-story, source_id: charcoal-buttondefault-story, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-default.font: { surface_id: charcoal-story, source_id: charcoal-buttondefault-story, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-default.hover: { surface_id: charcoal-story, source_id: charcoal-buttondefault-story, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-default.padding: { surface_id: charcoal-story, source_id: charcoal-buttondefault-story, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-default.pressed: { surface_id: charcoal-story, source_id: charcoal-buttondefault-story, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-default.radius: { surface_id: charcoal-story, source_id: charcoal-buttondefault-story, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-default.type: { surface_id: charcoal-story, source_id: charcoal-buttondefault-story, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-default.use: { surface_id: charcoal-story, source_id: charcoal-buttondefault-story, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-primary.bg: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
     tokens.components.button-primary.fg: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.button-primary.focus: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-primary.font: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
     tokens.components.button-primary.hover: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
     tokens.components.button-primary.padding: { surface_id: charcoal-story, source_id: charcoal-button-story, method: live-inspect, captured: "2026-09-21" }
@@ -75,6 +78,7 @@ verification_v2:
     tokens.components.checkbox.type: { surface_id: charcoal-story, source_id: charcoal-checkbox-story, method: live-inspect, captured: "2026-09-21" }
     tokens.components.checkbox.use: { surface_id: charcoal-story, source_id: charcoal-checkbox-story, method: live-inspect, captured: "2026-09-21" }
     tokens.components.icon-button.fg: { surface_id: charcoal-story, source_id: charcoal-iconbutton-story, method: live-inspect, captured: "2026-09-21" }
+    tokens.components.icon-button.focus: { surface_id: charcoal-story, source_id: charcoal-iconbutton-story, method: live-inspect, captured: "2026-09-22" }
     tokens.components.icon-button.font: { surface_id: charcoal-story, source_id: charcoal-iconbutton-story, method: live-inspect, captured: "2026-09-21" }
     tokens.components.icon-button.hover: { surface_id: charcoal-story, source_id: charcoal-iconbutton-story, method: live-inspect, captured: "2026-09-21" }
     tokens.components.icon-button.pressed: { surface_id: charcoal-story, source_id: charcoal-iconbutton-story, method: live-inspect, captured: "2026-09-21" }
@@ -192,9 +196,9 @@ tokens:
   spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, section: 64 }
   rounded: { sm: 4, lg: 16, full: 9999 }
   components:
-    button-primary: { type: button, bg: "#0096fa", fg: "#ffffff", radius: 9999, padding: "0 24px", font: "14px / 700", hover: "#0090f0", pressed: "#007ed2", use: "Primary CTA — 40px tall, fully oval." }
-    button-default: { type: button, fg: "#474747", radius: 9999, padding: "0 24px", font: "14px / 700", hover: "rgba(0,0,0,0.08)", pressed: "rgba(0,0,0,0.192)", use: "Neutral action on a translucent black fill (4% at rest); 40px tall, oval." }
-    icon-button: { type: button, fg: "#858585", radius: 9999, font: "16px / 400", hover: "#f5f5f5", pressed: "#d6d6d6", use: "Icon-only action, 40px square, transparent at rest." }
+    button-primary: { type: button, bg: "#0096fa", fg: "#ffffff", radius: 9999, padding: "0 24px", font: "14px / 700", hover: "#0090f0", pressed: "#007ed2", focus: "#0096fa", use: "Primary CTA — 40px tall, fully oval; focus adds a 4px brand-blue halo at 32%." }
+    button-default: { type: button, fg: "#474747", radius: 9999, padding: "0 24px", font: "14px / 700", hover: "rgba(0,0,0,0.08)", pressed: "rgba(0,0,0,0.192)", focus: "#0096fa", use: "Neutral action on a translucent black fill (4% at rest); 40px tall, oval; the same 4px brand-blue focus halo." }
+    icon-button: { type: button, fg: "#858585", radius: 9999, font: "16px / 400", hover: "#f5f5f5", pressed: "#d6d6d6", focus: "#0096fa", use: "Icon-only action, 40px square, transparent at rest; the same 4px brand-blue focus halo." }
     switch: { type: toggle, bg: "#858585", radius: 9999, hover: "#808080", pressed: "#707070", focus: "#0096fa", use: "Settings switch — 16px track; focus turns it brand blue." }
     checkbox: { type: toggle, radius: 4, border: "2px solid #858585", focus: "#0096fa", use: "Checkbox — 20px box; focus fills brand blue and drops the border." }
     tag-item: { type: badge, fg: "#ffffff", radius: 4, padding: "4px 24px", font: "16px / 400", use: "Tag pill — 40px tall; fill varies by tag category." }
@@ -356,11 +360,13 @@ readings. **Charcoal buttons are fully oval** (`border-radius: 999999px`, `--cha
 - Background: `#0096fa` · Text: `#ffffff` · Border: none
 - Radius: oval (`999999px`) · Padding: `0 24px` · Height: 40px · Font: 14px / 700
 - Hover: bg `#0090f0`, text `#f5f5f5` · Pressed: bg `#007ed2`, text `#d6d6d6`
-- Focus: **not reliably measured.** It was read after a mouse press, which suppresses
-  Chrome's `:focus-visible`, so a keyboard user's ring would not have rendered here. Charcoal
-  does publish a `FocusRing` component, which is consistent with focus living outside the
-  button's own styles — but that is the library's structure, not an observation. No focus
-  claim is made (see `docs/MEASUREMENT_METHOD_2026-09-22.md` §2).
+- Focus: **`box-shadow: rgba(0, 150, 250, 0.32) 0 0 0 4px`** — a 4px halo of the brand blue
+  at 32%, measured 2026-09-22 with each state read on its own page load so no mouse press
+  precedes the focus reading. The earlier pass abstained here; the abstention is resolved.
+  **The same value appears on the Default button and the icon button**, which is Charcoal's
+  published `FocusRing` observed rather than inferred: one ring for the library, not a style
+  per button. It is a `box-shadow`, so it is unmistakably authored — the browser's own ring
+  is an `outline`.
 - Use: Primary CTA — フォロー (Follow), 投稿 (Post), ログイン (Login).
 
 **Default (Neutral)**

@@ -382,7 +382,16 @@ Every button is a **pill** (`border-radius: 100px`), measured live on `asana.com
 is "move one or more steps along the neutral ramp", not a bespoke colour per button.
 
 **Pressed produced no computed change** on any variant — hover and pressed are the same
-value, and that is a real observation. **Focus is a different matter:** it focus was **not measured reliably** — it was read after a mouse press, which suppresses Chrome's `:focus-visible` heuristic, so a ring that a keyboard user sees would not have rendered. **No focus claim is made either way** (method: `docs/MEASUREMENT_METHOD_2026-09-22.md` §2).
+value, and that is a real observation.
+
+**Focus was re-measured on 2026-09-22**, each state on its own page load so no mouse press
+precedes the focus reading. `:focus-visible` matches on the black primary pill and what
+paints is `outline: rgb(0, 95, 204) auto 1px` — **Chrome's own default ring, not Asana's.**
+A page carrying no author stylesheet at all paints exactly that on a bare button, anchor and
+input, in both colour schemes, and the `auto` style is the tell: an authored ring names a
+style and a width. **No focus token is recorded for the buttons**, because Asana declares
+none on them. The pricing toggle is a different matter — see below; `#24a651` there is
+Asana's own green, painted by the brand's CSS.
 
 ### Toggle
 

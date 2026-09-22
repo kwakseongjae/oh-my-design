@@ -489,6 +489,47 @@ describe("catalog-integrity / cross-cutting", () => {
     }
   });
 
+  /**
+   * A browser default is not a brand value, and `#005fcc` is the one that got through.
+   *
+   * deepseek shipped `button-secondary.focus: "#005fcc"` on 2026-09-22, written up as the
+   * catalog's first confirmed focus ring. The observation was real — `:focus-visible`
+   * matched and an outline painted — but no control was run. A page set with no author
+   * stylesheet at all paints `outline: rgb(0, 95, 204) auto 1px` on a bare button, anchor
+   * and input, in both colour schemes. It was Chrome's ring the whole time.
+   *
+   * The `auto` outline style is the tell in the raw reading; by the time a value reaches
+   * the token block the style is gone and only the hex survives, so the hex is what this
+   * checks. Same class as cybozu's excluded focus ring and ctrip's default link colours —
+   * those were caught by hand, and this is the part that does not depend on remembering.
+   *
+   * Scoped to state slots on purpose. `#005fcc` is a perfectly ordinary blue for a brand to
+   * choose as a palette entry; what it cannot be is a *state* nobody authored.
+   */
+  it("no component state carries a known browser-default value", () => {
+    const UA_DEFAULTS = new Map([
+      ["#005fcc", "Chrome :focus-visible outline"],
+      ["#0000ee", "UA link colour"],
+      ["#551a8b", "UA visited-link colour"],
+    ]);
+    const STATE_SLOTS = ["hover", "pressed", "focus", "active", "checked", "error"];
+    const offenders: string[] = [];
+    for (const e of REGISTRY) {
+      const components = (e.tokens as Record<string, any> | undefined)?.components;
+      if (!components || typeof components !== "object") continue;
+      for (const [name, comp] of Object.entries(components as Record<string, any>)) {
+        if (!comp || typeof comp !== "object") continue;
+        for (const slot of STATE_SLOTS) {
+          const v = comp[slot];
+          if (typeof v !== "string") continue;
+          const why = UA_DEFAULTS.get(v.trim().toLowerCase());
+          if (why) offenders.push(`${e.id}.${name}.${slot} = ${v} (${why})`);
+        }
+      }
+    }
+    expect(offenders).toEqual([]);
+  });
+
   it("registry is sorted by id (stable diff)", () => {
     const sorted = [...REGISTRY].map(e => e.id).sort();
     expect(REGISTRY.map(e => e.id)).toEqual(sorted);

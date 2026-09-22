@@ -44,7 +44,7 @@ tokens:
   spacing: { s1: 4, s2: 8, s3: 12, s4: 16, s5: 24, s6: 32, s7: 40, s8: 56, s9: 80, s10: 120, s11: 160, s12: 200, s13: 240 }
   rounded: { sm: 8, input: 10, media: 12, panel: 16, card: 24, pill: 100 }
   components:
-    button-secondary: { type: "button", fg: "#1e232c", border: "1px solid rgba(9,45,78,.18)", radius: 100, font: "15px / 500", hover: "#092d4e", pressed: "#092d4e", focus: "#005fcc", use: "Secondary action — 44px liquid-glass pill on a 40% white fill; hover darkens the border, focus draws a #005fcc ring." }
+    button-secondary: { type: "button", fg: "#1e232c", border: "1px solid rgba(9,45,78,.18)", radius: 100, font: "15px / 500", hover: "#092d4e", pressed: "#092d4e", use: "Secondary action — 44px liquid-glass pill on a 40% white fill; hover darkens the border. Focus is not declared: what renders is Chrome's own ring." }
     chip-brand: { type: "button", fg: "#4176e6", border: "1px solid rgba(65,118,230,.3)", radius: 18, font: "13px / 500", hover: "#4176e6", pressed: "#4176e6", use: "Brand-tinted announcement chip — 34px, on a 12% brand wash." }
   components_harvested: true
 verification_v2:
@@ -106,7 +106,6 @@ verification_v2:
     tokens.components.button-secondary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-secondary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-secondary.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-secondary.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-secondary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.chip-brand.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.chip-brand.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
@@ -210,7 +209,11 @@ did not suppress `:focus-visible`.
 - Rest: `hsla(0,0%,100%,.4)` fill, `#1e232c` text, `1px solid rgba(9,45,78,.18)`,
   **100px radius**, 44px tall, 15px/500.
 - Hover and pressed: border darkens to **`#092d4e`**.
-- Focus: a **`#005fcc` outline ring**, with `:focus-visible` confirmed true.
+- Focus: `:focus-visible` matches, and what paints is **`outline: rgb(0, 95, 204) auto 1px`
+  — Chrome's own default ring, not DeepSeek's.** The `auto` style is the tell: an authored
+  ring names a style and a width. A page with no author stylesheet at all paints exactly
+  this value on a button, an anchor and an input, in both colour schemes. **No focus token
+  is recorded**, because the brand declares none.
 
 **Token and render agree.** `--ds-btn-secondary-bg` is `hsla(0,0%,100%,.4)` and
 `--ds-btn-secondary-border` is `rgba(9,45,78,.18)` — exactly the measured rest state — while
@@ -283,7 +286,8 @@ drops. With `--ds-blur-glass: 12px`, depth here is glass and hairline, not drop 
 
 ### Example Component Prompts
 - "A 44px liquid-glass pill: 40% white fill over `#f9f8f8`, `rgba(9,45,78,.18)` border,
-  `#1e232c` 15px/500 label, border to `#092d4e` on hover, `#005fcc` focus ring."
+  `#1e232c` 15px/500 label, border to `#092d4e` on hover. Supply your own focus ring —
+  DeepSeek leaves the browser's."
 
 ## 10. Voice & Tone
 
@@ -310,10 +314,13 @@ Not researched. No persona claim is made from a UI capture.
 
 ## 14. States
 
-The secondary pill carries hover, pressed and a **confirmed `:focus-visible` ring**
-(`#005fcc`) — the first focus ring this catalog captured after correcting the measurement
-order. The brand chip carries hover and pressed. The other three button variants are declared
-in the token set and were not observed rendering.
+The secondary pill carries hover and pressed. **Focus is deliberately not recorded.** It was
+first read as a `#005fcc` ring and written up as a brand value; re-measured against a control
+page carrying no author stylesheet, `rgb(0, 95, 204) auto 1px` turned out to be **Chrome's
+default `:focus-visible` outline**, painted identically on a bare button, anchor and input in
+both colour schemes. DeepSeek declares no focus style, so none is claimed. The brand chip
+carries hover and pressed. The other three button variants are declared in the token set and
+were not observed rendering.
 
 ## 15. Motion & Easing
 

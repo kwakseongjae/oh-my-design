@@ -51,8 +51,8 @@ tokens:
     micro: { size: 11, use: "Smallest observed step" }
   rounded: { sm: 3, md: 6, pill: 20, circle: 9999 }
   components:
-    button-primary: { type: "button", bg: "#1772f6", fg: "#ffffff", radius: 3, font: "14px / 400", hover: "oklch(0.535218 0.21381 259.318)", pressed: "oklch(0.535218 0.21381 259.318)", use: "Sign-in / register — 36px on the home feed, 34px in columns." }
-    button-secondary: { type: "button", bg: "#ffffff", fg: "#8491a5", radius: 20, font: "14px / 400", hover: "color(srgb 0.870588 0.876471 0.889412)", pressed: "color(srgb 0.870588 0.876471 0.889412)", use: "Rounded utility control, 60px — hover shifts both fill and label." }
+    button-primary: { type: "button", bg: "#1772f6", fg: "#ffffff", radius: 3, font: "14px / 400", hover: "oklch(0.535218 0.21381 259.318)", pressed: "oklch(0.535218 0.21381 259.318)", focus: "oklch(0.581758 0.21381 259.318 / 0.3)", use: "Sign-in / register — 36px on the home feed, 34px in columns; focus draws a two-layer ring." }
+    button-secondary: { type: "button", bg: "#ffffff", fg: "#8491a5", radius: 20, font: "14px / 400", hover: "color(srgb 0.870588 0.876471 0.889412)", pressed: "color(srgb 0.870588 0.876471 0.889412)", focus: "oklch(0.581758 0.21381 259.318 / 0.3)", use: "Rounded utility control, 60px — hover shifts both fill and label; the same two-layer focus ring as the primary." }
   components_harvested: true
 verification_v2:
   schema: 2
@@ -110,6 +110,7 @@ verification_v2:
     tokens.components.button-primary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-primary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-primary.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-primary.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-primary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-secondary.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-secondary.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
@@ -118,6 +119,7 @@ verification_v2:
     tokens.components.button-secondary.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-secondary.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-secondary.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-secondary.focus: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-secondary.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
 ---
 # Design System Inspiration of Zhihu (知乎)
@@ -227,7 +229,10 @@ Measured live on both surfaces, pointer parked, navigation suppressed.
 - Rest `#1772f6` fill, `#ffffff` label, **3px radius**, `14px / 400`. 36px tall on the home
   feed, 34px in columns.
 - Hover and pressed both **`oklch(0.535218 0.21381 259.318)`**, with a matching 1px border.
-- Focus **not claimed** — focus was **not measured reliably** — it was read after a mouse press, which suppresses Chrome's `:focus-visible` heuristic, so a ring that a keyboard user sees would not have rendered. **No focus claim is made either way** (method: `docs/MEASUREMENT_METHOD_2026-09-22.md` §2).
+- Focus, measured 2026-09-22 with each state read on its own page load:
+  **`box-shadow: rgb(255, 255, 255) 0 0 0 2px, oklch(0.581758 0.21381 259.318 / 0.3) 0 0 0 4px`**
+  — a 2px white spacer ring, then a 4px halo of the brand blue at 30%. The earlier pass
+  abstained; the abstention is resolved.
 
 ### Rounded utility control
 
@@ -312,7 +317,15 @@ Not researched. No persona claim is made from a UI capture.
 ## 14. States
 
 Two controls, both carrying hover and pressed, both identical between the two states, both
-expressed in modern colour spaces. **Focus is not claimed on either** — it focus was **not measured reliably** — it was read after a mouse press, which suppresses Chrome's `:focus-visible` heuristic, so a ring that a keyboard user sees would not have rendered. **No focus claim is made either way** (method: `docs/MEASUREMENT_METHOD_2026-09-22.md` §2). No disabled state was observed on a rendered control.
+expressed in modern colour spaces.
+
+**Both controls carry the same focus ring**, measured 2026-09-22:
+`rgb(255, 255, 255) 0 0 0 2px, oklch(0.581758 0.21381 259.318 / 0.3) 0 0 0 4px`. A white 2px
+spacer lifts the halo off the control, then 4px of brand blue at 30% — and the halo's hue and
+chroma (`0.21381 259.318`) are exactly the hover value's, one lightness step up. **One ring
+token across component types**, from a 36px rectangular sign-in button to a 60px round corner
+widget. It is a `box-shadow`, so it is authored: the browser's own ring is an `outline`.
+No disabled state was observed on a rendered control.
 
 ## 15. Motion & Easing
 
