@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-22T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 452,
+ "count": 453,
  "items": [
   {
    "id": "104",
@@ -8537,6 +8537,34 @@
    "signature_motion": "*Durations:**",
    "has_personas": true,
    "category_raw": "productivity"
+  },
+  {
+   "id": "smartbank",
+   "primary_color_hex": "#1DD0B0",
+   "category": "fintech",
+   "visual_theme": "A plain black-on-white corporate page sitting on a cross-platform design system of 371 tokens: nine named colour hues at twelve steps each, a Material-3-shaped semantic layer with base/container/on-container for every role, font families split three ways for web, iOS and Android, a line-height matrix of three densities by twelve sizes, seventeen durations with four named easings - and two families nothing else in this catalog publishes, one for emoji and one per prepaid card product.",
+   "voice_fingerprint": {
+    "register": "plain Japanese corporate; 1,605 characters, heavy at 700 and 600 weight",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "ja-fintech"
+   },
+   "tone_keywords": [
+    "systematic",
+    "restrained",
+    "cross-platform",
+    "token-complete",
+    "product-specific"
+   ],
+   "antipatterns": [
+    "flattening the text, border and state tokens to grey hex - they are black or white at alpha and are meant to composite",
+    "inventing components from the tokens; every measured control is a transparent wrapper and nothing shows what a filled button does",
+    "copying the focus ring, which is Chrome's auto 1px default",
+    "taking one value out of a role - base, container and on-container are published together",
+    "using the dimension scale and the radius scale as if they were separate systems; the radius names are a subset"
+   ],
+   "has_personas": false,
+   "category_raw": "prepaid-card-fintech"
   },
   {
    "id": "smarthr",

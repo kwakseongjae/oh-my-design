@@ -3,6 +3,57 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-22 — JP 웨이브 2 착수: **smartbank 등재** (453 · 159). 토큰 371개, 컴포넌트 0
+
+claims 67/67 · reason **0** · advisory는 `component_absent` 하나 — **정직한 결과다.**
+
+**이 카탈로그에서 가장 완전한 토큰 시스템이다.** 371개 중 370개가 자기 이름(나머지 1개는
+swiper). 프레임워크 접두사가 하나도 없다.
+
+- **색 스케일 110개 = 이름 붙은 색상군 9개 × 12단**: marine · mint · coral · sky · **wood** ·
+  grape · peach · carrot · **stone**. 회색도 *색상군*으로 취급한다.
+- **시맨틱 76개가 Material 3 모양**: 모든 역할이 `base` / `container` / `on-container` 3종.
+  text·border·state는 전부 **검정·흰색의 알파**(`#000000de` `#0006` `#ffffff3d`)라 실측
+  본문색 `rgba(0,0,0,0.6)` ×74 · `rgba(0,0,0,0.87)` ×63과 그대로 맞는다.
+- **이 카탈로그에 없던 두 가족**: `--color-emoji-<hue>-*`(**이모지 색을 토큰화**)와
+  `--color-prepaid-card-{my,pair,junior}-*`(**발행 카드마다 색 가족 + 3스톱 그라디언트 3종** =
+  그라디언트 18개).
+- **서체를 플랫폼으로 쪼갰다**: `--font-family-{web,ios,android}-{japanese,latin}`.
+  **웹이 아니라 앱의 토큰 시트고, 웹은 그 한 열이다.**
+- **line-height가 행렬**: `{dense,normal,comfort}` × 12단 = 36개. 밀도가 1급 축이다.
+- 크기 12단이 16px에서 **비율 1.14로 계산된 그대로**(10.6672 · 14.2224 · 42.6672) —
+  반올림 안 한 소수가 생성된 스케일이라는 증거다.
+- duration 17단 + **easing 4개가 종류로 이름**(enter/exit/move/**feedback**은 linear).
+
+> **두 표면이 한 시트를 쓴다.** `b43.jp`는 `onebank.jp`(ワンバンク로 개명)로 리다이렉트되는데,
+> 그 제품면이 칠하는 **색 8개가 전부** 회사 사이트의 이름 붙은 토큰으로 해소된다.
+> 마케팅 페이지의 스타일이 아니라 **제품의 시트**라는 증거다.
+
+> **컴포넌트를 0개로 선언했다.** 양쪽 표면의 컨트롤이 전부 CSS-module 래퍼
+> (`_rounded-button_gtcz6_1`)이고 **배경 투명 + 테두리 0**이다. 칠은 자식이 한다.
+> 4개 상태 전부 **아무 속성도 안 바뀌고** focus는 크롬 기본. `--color-state-*-hover`를
+> 발행하는 시스템에 컴포넌트가 없을 리 없지만 **이 캡처는 못 봤다.** huawei·douyin과 같은 길.
+
+> **`primary_color`는 인용이 아니라 판독이다.** 브랜드 토큰이 없다. mint `#1dd0b0`을
+> 쓴 근거(selected 상태의 원값 · positive impression · Pair Card 그라디언트 시작 · 제품면
+> 실제 렌더)를 §2에 적어놨다.
+
+### JP 웨이브 2 중간 집계
+
+프로브 12 → 유효 3 (25%, 웨이브 1과 동일) → **1건 등재**
+
+- **jal** — `ds-*` 컴포넌트 클래스에 `--surfaceColor-*`/`--strokeColor-*` 시맨틱,
+  `#cc0000` 알약의 focus가 **`solid 2px`(작성자)**, JMB/JGC **회원 등급 색 토큰**까지.
+  다만 **`www.jal.co.jp`가 자동화에 불안정**(HTTP2 오류 → 타임아웃 → 요소 못 찾음).
+  재시도 필요. **다음 1순위.**
+- **caddi** — `--space-{inset,inline,stack,block}-*` **방향성 간격 시스템**, 자체 웹폰트
+  Pi Shii Gothic 3웨이트 + JetBrains Mono, focus `solid 2px`가 `--color-primary-500`과 일치.
+  컨트롤 1개뿐이라 얇다.
+- 기각 9: bizreach(`--mantine*349`) · hennge/atamaplus(`--wp`) · kaonavi(`--wp` 우세) ·
+  eureka(단문자 네임스페이스) · dena(`--tw`, 컨트롤 1) · medley·shiseido·squareenix(토큰 0)
+
+---
+
 ## ✅ 2026-09-22 — **chatwork 등재.** JP 웨이브 1 완료: 후보 3건 → **3건 전부 등재** (452 · 158)
 
 claims 59/59 · 컴포넌트 3/3 · reason·advisory **0**.

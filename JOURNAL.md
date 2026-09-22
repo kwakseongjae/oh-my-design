@@ -79,7 +79,10 @@
 - **한 일(73)**: **chatwork 등재 — JP 웨이브 1 완료**(452 / **158 verified**). 생존 3건이 **3건 다 등재**됐고 셋 다 reason·advisory 0. RISE는 **토큰 20개 중 16개가 타입**이고 간격·radius·그림자·모션이 아예 없다. **자체 서체를 4웨이트 4토큰으로 선언**(L/R/B/EB), 실측 318/319.
 - **한 일(74)**: **`#645b4a`를 세 번 확인했다** — 빨강 브랜드에 올리브 hover는 전이 중간값 모양이라 ① 새 페이지 재현 ② `transition: all`은 0s ③ **스타일시트 9곳**(`.btn--secondary`)에서 확인. 작성자 값.
 - **한 일(75)**: **Marketo 폼 분리.** 첫 패스에서 `.mktoButton`을 Chatwork CTA로 쟀다 — 230×45·hover 90% 축소·`#3c480e`·`#bf0000`·페이지 유일 box-shadow까지 전부 Marketo 것. 조상 클래스로 걸러냈다. Chatwork 자신의 primary는 앵커 안 `<span>`이라 포커스 불가.
-- **다음**: JP 후보 2차 프로브(12건) → 수율 유지되면 계속. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(76)**: **JP 웨이브 2 프로브 12건 → 유효 3건(25%, 웨이브 1과 동일 수율)**. bizreach는 `--mantine*349`(프레임워크), hennge·atamaplus·kaonavi는 WordPress 우세, medley·shiseido·squareenix는 토큰 0.
+- **한 일(77)**: **smartbank 등재**(453 / **159 verified**, 67/67, reason 0). **카탈로그에서 가장 완전한 토큰 시스템** — 이름 붙은 색상군 9×12단 110개 · Material 3 모양 시맨틱 76개 · **이모지 색 가족** · **발행 카드별 색 가족 + 그라디언트 18개** · **서체를 web/ios/android로 쪼갠 시트** · line-height 3밀도×12단 행렬 · duration 17 + easing 4.
+- **한 일(78)**: **제품면(onebank.jp)이 칠하는 색 8개가 전부** 회사 사이트 토큰으로 해소됐다 — 마케팅 스타일이 아니라 제품 시트라는 증거. **컴포넌트는 0개로 선언**(컨트롤이 전부 투명 CSS-module 래퍼, 4상태 변화 0, focus는 크롬 기본) — huawei·douyin과 같은 길. `primary_color`는 브랜드 토큰이 없어 **판독임을 §2에 명시**.
+- **다음**: **jal 재시도**(`ds-*` + 회원등급 토큰, 사이트가 자동화에 불안정) → caddi 판단. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

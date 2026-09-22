@@ -8991,6 +8991,30 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": 0.286
   },
   {
+    "id": "smartbank",
+    "status": "verified_v2",
+    "verifiedAt": "2026-09-22",
+    "tokensExtractedAt": "2026-09-22",
+    "nextReverifyAt": "2027-03-21",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 67,
+    "evidenceClaimCount": 67,
+    "evidenceCoverage": 1,
+    "surfaceCount": 2,
+    "sourceCount": 3,
+    "conflictCount": 0,
+    "tier1SourceCount": 3,
+    "componentCount": 0,
+    "interactiveComponentCount": 0,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
+    "advisoryCodes": [
+      "component_absent"
+    ],
+    "paletteGrounding": null
+  },
+  {
     "id": "smarthr",
     "status": "verified_v2",
     "verifiedAt": "2026-09-21",
@@ -11639,10 +11663,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 158,
+  "verified_v2": 159,
   "partial": 181,
   "legacy_snapshot": 113,
-  "total": 452
+  "total": 453
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(
