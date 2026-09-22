@@ -92,7 +92,10 @@
 - **한 일(86)**: sonnet-terse의 "ana는 JAL처럼 차단" 추론을 **Aside로 반증**(토큰 4개 동일, ctrl 29 정상). **차단된 페이지는 컨트롤 32개를 주지 않는다** — 자기 데이터에 반증이 있었다. flag였고 한 번에 반증돼서 쌌다. 스크립트 FW 목록에 `fa` 추가.
 - **한 일(87)**: **newspicks 등재**(456 / **162 verified**, 108/108, 4/4, reason·advisory 0). **220개 전부 자기 것**(프레임워크 0 — 분리할 게 없던 첫 사례). 4가족 + palette 84 위에 **제품 명사 층**(Premium 초록≠성공 초록 · AI 보라 · unread · 소셜 로그인 브랜드색 · 카테고리 골드). 토큰↔렌더 3회 일치.
 - **한 일(88)**: 선택된 탭이 파란 배경에 `color:#222222`라 **대비 실패로 읽힐 뻔했다** — 자식 span이 `#ffffff`다. 버튼의 `color`는 상속돼 있을 뿐 안 쓰인다.
-- **다음**: 회차 2(zenn 심층 프로브 sonnet 위임) 채점 → qiita·crowdworks. **브랜치가 origin에 없다**(main 대비 177 커밋). **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(89)**: **실험 회차 2 — ② 심층 프로브도 sonnet에 위임 가능**. 보고가 정확했고 산술까지 맞았으며 함정 3개를 스스로 처리했다(CDN CORS → getComputedStyle 전환 · **내가 오늘 만든 `--text` 함정** 우회 · `outline: none`≠`auto` 판정). zenn 오타 `forcus`까지 짚었다.
+- **한 일(90)**: **검증이 결론의 등급을 바꿨다.** "primary에 링 없음"은 맞지만 **기본이 없었다 vs 작성자가 껐다**로 갈린다. **진짜 Tab 키**로 로고에 `auto 1px`가 뜨는 걸 확인 → **기본 링이 살아 있는데 버튼만 끈다**. 위임된 실행은 지시에 없던 이 검사를 못 했다. → **②는 위임하되 헤드라인 1건은 반드시 독립 검증.**
+- **한 일(91)**: **zenn 등재**(457 / **163 verified**, 106/106, 3/3, reason·advisory 0). **토큰 층에서 컴포넌트를 조립**한다(버튼 8변형·라벨 4변형·메시지박스 3종이 각자 색 세트 통째로). 99rem=1584px 알약, **`--rounded-publication: 25%`**, 잉크가 검정 82% 알파. 포맷 게이트 3개(8자리 알파·퍼센트·컴포넌트 hex)에 걸려 **알파와 퍼센트를 산문으로** 옮겼다.
+- **다음**: qiita·crowdworks 등재. 회차 3(①→② 한 에이전트 연속 위임, 핸드오프 누수 관찰). **브랜치가 origin에 없다**(main 대비 178 커밋). **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

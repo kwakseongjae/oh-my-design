@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-22T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 456,
+ "count": 457,
  "items": [
   {
    "id": "104",
@@ -11015,6 +11015,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "saas"
+  },
+  {
+   "id": "zenn",
+   "primary_color_hex": "#3EA8FF",
+   "category": "developer-tools",
+   "visual_theme": "White cards on a pale blue-grey #edf2f7 with one saturated blue #3ea8ff doing every action and black at 82% carrying 1,471 of 2,227 elements. Every control is a full pill at 99rem. The token set stops being abstract about halfway: roughly half the 109 --c-* colours are components rather than roles - eight button variants and four label variants each publish their own bg, fg, border and hover - and one radius token is named after a product concept, --rounded-publication at 25%.",
+   "voice_fingerprint": {
+    "register": "a feed of Japanese developer article titles; the chrome says almost nothing",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "ja-developer"
+   },
+   "tone_keywords": [
+    "clean",
+    "airy",
+    "blue",
+    "unobtrusive",
+    "component-explicit"
+   ],
+   "antipatterns": [
+    "copying the primary button's focus behaviour - it suppresses the browser ring and adds nothing in its place",
+    "reading #0f83fd as only a hover; it is also the link colour",
+    "setting Inter for body text - it is scoped to --font-latin-hero and does not cover Japanese",
+    "composing a button from semantic roles; every variant publishes its own complete colour set",
+    "hard-coding a translucent white instead of composing from --c-bg-base-rgb"
+   ],
+   "has_personas": false,
+   "category_raw": "developer-publishing"
   },
   {
    "id": "zepeto",
