@@ -57,6 +57,10 @@
    남음: jal(로컬 차단 → Aside), kakaopay corporate-search(레거시 캡처 인덱스라 라벨 없음).
 5. ~~**위생**~~ — 완료 2026-09-23: velog·banksalad `ds:` 제거(디자인 시스템이 없는데 카드가
    "Design System"/"Brand Guide"로 GitHub를 가리켰다 — 없는 것은 없다), adobe 설명에 링크=Spectrum 1 명시
+5b. **JP 웨이브 5 + UK 웨이브 2** — 스카우팅 2026-09-23: JP 2/12(17%, pairs·hatena — 15% 하한 근접),
+   UK 4/12(33%, sainsburys `--ln*364` Luna · bloomandwild · gousto · nhs `--nhsuk*73`). 경계 zopa. 탈락 사유: 토큰 ≈0
+   (retty·openwork·cyberagent·gmo·waitrose·sky), 프레임워크(bizreach Mantine·raksul tw·kaonavi wp), 소수(connpass·dena·itv·nothing),
+   차단(argos 403·boots catch-all), 중복(sakura = sakura-internet). 심층 프로브 6건(sonnet) 진행 중.
 6. JP/US 웨이브를 수율이 유지되는 한 반복. 수율이 15% 밑으로 두 번 연속 떨어지면
    그 시장을 멈추고 다음 시장으로.
 
