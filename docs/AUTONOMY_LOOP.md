@@ -88,7 +88,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 - [ ] 역할명: 본문색은 `foreground`(`text` 아님 — `selectForeground`가 못 읽는다)
 - [ ] 서체: census 1위 이름을 **`document.fonts` loaded 목록과 대조**했다(측정법 §2.6)
 - [ ] focus: `auto`면 브라우저 것 → 토큰 안 만듦(측정법 §2.5)
-- [ ] 컴포넌트: 상태를 못 잰 컨트롤은 선언 안 함. "못 쟀음" ≠ "변화 없음"
+- [ ] 컴포넌트: 못 잰 **상태**는 적지 않는다(잰 상태만 선언). "못 쟀음" ≠ "변화 없음". Aside로 hover를 쟀다면 `matches(':hover')`가 true였는지 확인
 - [ ] `npm run build-registry` 순서대로 → quality → evidence:ledger → reference-ast
 - [ ] fingerprint 추가 + 3중 미러(`data/`, `.claude/data/`, `.codex/data/`)
 - [ ] `design-md/<id>/` 와 `packages/mcp/data/references/<id>/` 미러
@@ -107,6 +107,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 
 회차가 끝날 때마다 한 줄. 최신이 위.
 
+- 2026-09-23 · 회차 7 · ft 등재(96/96) — 로컬은 Cloudflare 챌린지라 Aside로 측정. 포커스는 저작된 2겹 링, **hover는 Aside 세션이 :hover를 못 만들어 미측정으로 둠**(JAL 땐 됐음). Origami 문서는 로그인 뒤로 → 웨이백 스냅샷으로 대조. 국가는 UK(자회사 선례: skyscanner·farfetch) · 463 / 169
 - 2026-09-23 · 회차 6 · "변화 없음" 스윕 7/7 유지 — 도구 결함은 커밋된 데이터를 오염시키지 않았다 · 462 / 168
 - 2026-09-23 · 회차 5 · loglass 등재(99/99, 4 stated). JP 웨이브 4 마감 3/3 — 스카우트 유효 판정 전부 verified. 헤드라인(CTA 호버 링 #e77623) 일치, 인용 못 하는 봇월 출처 2건 제외 · 462 / 168
 - 2026-09-23 · 회차 4 · folio 등재(95/95, 4 stated). 위임 프로브 5개 컨트롤 전부 재측정 일치, 헤드라인(모리사와 あおとゴシック 실제 로드) 확인, CDO 리브랜딩 글 원문 대조. 프로브 `--vars` 재귀(@layer) 수정 · 461 / 167

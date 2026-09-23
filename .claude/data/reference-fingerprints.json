@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-23T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 462,
+ "count": 463,
  "items": [
   {
    "id": "104",
@@ -2930,6 +2930,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "ft",
+   "primary_color_hex": "#0D7680",
+   "category": "consumer-tech",
+   "visual_theme": "The pink newspaper as a screen: content sits on paper #fff1e5 rather than white, the greys are mixed from that paper, and a warm ink #33302e carries the text. Teal #0d7680 is the one action and link colour, claret #990f3d belongs to myFT and oxford #0f5499 to opinion, while the logo pink stays out of the interface. Headlines in Financier Display, everything functional in Metric, small 2-4px radii, almost no shadow, and authored focus rings built from a paired light and dark box-shadow that swap to suit their ground.",
+   "voice_fingerprint": {
+    "register": "British business news home page; 10,211 characters, headlines and standfirsts",
+    "sentence_length": "medium",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-gb-financial-news"
+   },
+   "tone_keywords": [
+    "authoritative",
+    "warm",
+    "editorial",
+    "restrained",
+    "paper-toned"
+   ],
+   "antipatterns": [
+    "using white instead of paper #fff1e5 as the page ground",
+    "using the logo pink #fcd0b1 or FT grey in the interface - Origami reserves them for the brand mark",
+    "using neutral greys; the black-N ladder is mixed into paper",
+    "using claret #990f3d as a background",
+    "taking FT Professional's grey button tokens (#515257 hover) for ft.com's teal ones"
+   ],
+   "has_personas": false,
+   "category_raw": "business-news"
   },
   {
    "id": "fubon",
