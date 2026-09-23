@@ -60,7 +60,8 @@
 5b. **JP 웨이브 5 + UK 웨이브 2** — 스카우팅 2026-09-23: JP 2/12(17%, pairs·hatena — 15% 하한 근접),
    UK 4/12(33%, sainsburys `--ln*364` Luna · bloomandwild · gousto · nhs `--nhsuk*73`). 경계 zopa. 탈락 사유: 토큰 ≈0
    (retty·openwork·cyberagent·gmo·waitrose·sky), 프레임워크(bizreach Mantine·raksul tw·kaonavi wp), 소수(connpass·dena·itv·nothing),
-   차단(argos 403·boots catch-all), 중복(sakura = sakura-internet). 심층 프로브 6건(sonnet) 진행 중.
+   차단(argos 403·boots catch-all), 중복(sakura = sakura-internet). 심층 프로브 6건(sonnet)을 띄웠으나 **OS 재부팅(09-23 밤)으로 스크래치패드와 함께 결과가 사라졌다 — 6건 재실행 필요.**
+   프로브 지시는 `docs/PROBE_BRIEF.md`.
 6. JP/US 웨이브를 수율이 유지되는 한 반복. 수율이 15% 밑으로 두 번 연속 떨어지면
    그 시장을 멈추고 다음 시장으로.
 
@@ -89,6 +90,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 - [ ] 서체: census 1위 이름을 **`document.fonts` loaded 목록과 대조**했다(측정법 §2.6)
 - [ ] focus: `auto`면 브라우저 것 → 토큰 안 만듦(측정법 §2.5)
 - [ ] 컴포넌트: 못 잰 **상태**는 적지 않는다(잰 상태만 선언). "못 쟀음" ≠ "변화 없음". Aside로 hover를 쟀다면 `matches(':hover')`가 true였는지 확인
+- [ ] 저작 도구: `web/scripts/assemble-reference.mjs`(front.yaml+body.md → DESIGN.md + 클레임), `web/scripts/add-fingerprint.mjs`(3중 미러)
 - [ ] `npm run build-registry` 순서대로 → quality → evidence:ledger → reference-ast
 - [ ] fingerprint 추가 + 3중 미러(`data/`, `.claude/data/`, `.codex/data/`)
 - [ ] `design-md/<id>/` 와 `packages/mcp/data/references/<id>/` 미러
@@ -107,6 +109,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 
 회차가 끝날 때마다 한 줄. 최신이 위.
 
+- 2026-09-23 밤 · 재개 준비 · OS 재부팅으로 스크래치패드 소실(프로브 결과 6건·저작 도구). 도구 2종과 프로브 지시를 레포로 옮김 · 466 / 172
 - 2026-09-23 · 회차 10 · theguardian 등재(43/43). **UK 웨이브 1 마감 4/4 verified**(ft·citymapper·ocado·theguardian). 검색칸은 7값 중 5값만 잰 채라 컴포넌트 선언 안 함 · 466 / 172
 - 2026-09-23 · 회차 9 · ocado 등재(79/79). 헤드라인(`--salt-*` ≠ J.P. Morgan Salt) 독립 검증: 1,869개 이름과 겹침 0. 프로브 요약이 그려지지 않는 outline(style none) 변화를 세지 않도록 수정 · 465 / 171
 - 2026-09-23 · 회차 8 · citymapper 등재(91/91). 헤드라인(검색칸 포커스 표시 없음) 재측정 일치. 프로브 `--text`가 aria-label·placeholder도 찾도록 수정. 국가 UK(Via 인수, 자회사 선례) · 464 / 170
