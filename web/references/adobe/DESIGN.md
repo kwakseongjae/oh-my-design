@@ -15,7 +15,7 @@ ds:
   name: Spectrum
   url: "https://spectrum.adobe.com"
   type: system
-  description: "Adobe's design system. Spectrum 2 (s2.spectrum.adobe.com) is the current generation — blue-900 #3b63fb accent, 16px pill geometry, Adobe Clean Spectrum VF."
+  description: "Adobe's design system. This link is the Spectrum 1 site, whose component list §4 enumerates; Spectrum 2 (s2.spectrum.adobe.com) is the current generation — blue-900 #3b63fb accent, 16px pill geometry, Adobe Clean Spectrum VF."
 tokens:
   source: reconciled
   extracted: "2026-06-11"

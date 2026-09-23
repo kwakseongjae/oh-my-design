@@ -10,12 +10,6 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=banksalad.com&sz=256"
 verified: "2026-07-12"
 omd: "0.1"
-ds:
-  name: Banksalad GitHub
-  url: "https://github.com/banksalad"
-  type: brand
-  description: Banksalad's public GitHub org. Its styleguide repo is a code style guide (android/git/python/web); no design-system or component library is published there.
-  og_image: "https://avatars.githubusercontent.com/u/71009899?s=280&v=4"
 verification_v2:
   schema: 2
   checked: "2026-07-12"

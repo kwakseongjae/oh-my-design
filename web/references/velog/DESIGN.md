@@ -10,11 +10,6 @@ logo:
   slug: "https://www.google.com/s2/favicons?domain=velog.io&sz=128"
 verified: "2026-06-01"
 omd: "0.1"
-ds:
-  name: velog (open source)
-  url: "https://github.com/velog-io/velog"
-  type: system
-  description: velog's production frontend is fully open-source (MIT); its design tokens are 157 CSS custom properties in apps/web/src/styles/global.css, whose scale values are Open Color's. Not a published design system — an application repository whose tokens are readable.
 tokens:
   source: prose-derived
   extracted: "2026-06-09"
