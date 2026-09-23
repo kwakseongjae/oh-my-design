@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-23T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 463,
+ "count": 464,
  "items": [
   {
    "id": "104",
@@ -1333,6 +1333,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "citymapper",
+   "primary_color_hex": "#37AB2F",
+   "category": "consumer-tech",
+   "visual_theme": "A friendly, rounded transit brand: one key green #37ab2f named --color-key, a soft charcoal ink #383838, a near-black #090512 with a violet cast, pale grey surfaces and pill buttons, all set in Proxima Soft from its 2013 identity. Dividers are hairline box-shadows in a shade colour rather than borders, the app-store buttons lift on hover with a scale and a long shadow, and focus is authored in four different ways - black, blue, white, and none on the search field.",
+   "voice_fingerprint": {
+    "register": "Transit app web home; 262 characters, short emoji-punctuated company copy",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-consumer-transit"
+   },
+   "tone_keywords": [
+    "friendly",
+    "rounded",
+    "green",
+    "playful",
+    "practical"
+   ],
+   "antipatterns": [
+    "using pure black for the brand black - --color-black is #090512",
+    "drawing dividers as borders; the page uses hairline shade shadows",
+    "reading --font-base (Proxima Nova Soft) as the rendered family - elements compute proxima-soft",
+    "copying the search field's missing focus indicator",
+    "counting BloggerSans, the self-hosted fallback, as the brand face"
+   ],
+   "has_personas": false,
+   "category_raw": "transit-navigation"
   },
   {
    "id": "cjonstyle",

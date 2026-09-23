@@ -138,7 +138,11 @@ async function visit(act) {
       pool = pool.filter(visible);
       if (textNeedle) {
         const needle = textNeedle.trim().toLowerCase();
-        pool = pool.filter((el) => (el.textContent || "").trim().toLowerCase().includes(needle));
+        // 입력칸은 textContent가 비어 있다 — 라벨은 aria-label·placeholder·value에 있다
+        // (2026-09-23 citymapper 검색칸, aria-label만 있음).
+        const label = (el) => [el.textContent, el.getAttribute("aria-label"), el.getAttribute("placeholder"), el.value]
+          .filter(Boolean).join(" ").trim().toLowerCase();
+        pool = pool.filter((el) => label(el).includes(needle));
       }
       if (wantHeight != null) pool = pool.filter((el) => Math.abs(el.getBoundingClientRect().height - wantHeight) <= 2);
       if (!pool[nth]) return false;
