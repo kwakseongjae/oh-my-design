@@ -1820,6 +1820,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "crowdworks",
+    "status": "verified_v2",
+    "verifiedAt": "2026-09-23",
+    "tokensExtractedAt": "2026-09-22",
+    "nextReverifyAt": "2027-03-21",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 141,
+    "evidenceClaimCount": 141,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 2,
+    "conflictCount": 0,
+    "tier1SourceCount": 2,
+    "componentCount": 6,
+    "interactiveComponentCount": 6,
+    "statedComponentCount": 6,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "ctrip",
     "status": "verified_v2",
     "verifiedAt": "2026-09-22",
@@ -11773,10 +11795,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 164,
+  "verified_v2": 165,
   "partial": 181,
   "legacy_snapshot": 113,
-  "total": 458
+  "total": 459
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

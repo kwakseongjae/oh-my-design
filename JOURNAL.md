@@ -101,7 +101,8 @@
 - **한 일(95)**: sonnet(qiita)은 **내 정답지보다 세밀한 게 셋** — `--color-*` 중 5개가 남의 브랜드색임을 구분, census `Times`가 비가시 노드·`Arial`이 스타일 안 먹은 폼 컨트롤임을 짚음(**§2.6과 같은 결함을 독립 발견**), **primary 버튼이 위치에 따라 뒤집히는 것**을 판단으로 표시. **최종 권고: ①②는 sonnet + 헤드라인 1건 검증, ③④는 위임 안 함, haiku는 3회 모두 탈락.**
 - **한 일(96)**: **qiita 등재**(458 / **164 verified**, 106/106, 6/6, reason·advisory 0). Material 어휘 + 자기 명사(markdown 3 · Advent 2), 색상군 5개가 각각 Text/Container/Border/Dim 변형까지, **초록이 둘**(로고 `#55c500` vs 인터페이스 `#357a00`), hover가 **회색 램프 한 칸 아래**, 컨트롤 6종 전부 크롬 기본 focus, `family` 없음(YakuHanJPs 미로드).
 - **한 일(97)**: **자율 운영 루프로 전환**(`docs/AUTONOMY_LOOP.md`) — 오너 지시로 단계별 검수 요청을 끊고 판단 경계(§1)만 묻는다. **브랜치 origin 백업**(`511e9edb`, 172 커밋) — 증거물·비밀값·CI 트리거 전부 0 확인 후. **브랜치 푸시는 8/20부터 위임이었는데 며칠째 물어봤다** — MEMORY.md 인덱스 한 줄이 자기 파일과 어긋나 있어서 고쳤다.
-- **다음**: 루프 큐 순서대로 — crowdworks 저작 → JP 웨이브 4 → US/UK 수율 측정 → 위생. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
+- **한 일(98)**: **루프 회차 1 — crowdworks 등재**(459 / **165 verified**, 141/141, 6/6). `font` 단축 속성 통째 토큰 32개(카탈로그 최초), 요소 이름 z-index 91개, AI CrowdWorks 네임스페이스. 최다 렌더 색이 링크색이라 본문 잉크를 따로 짚었다. §4 체크리스트 덕에 게이트 첫 시도 통과. 증거 날짜를 캡처일로 정정.
+- **다음**: JP 웨이브 4 → US/UK 수율 측정 → 위생. **zhihu 주의 — `zhihu.com`이 `PLATFORM_HOSTS`라 자기 홈페이지가 proof gate에서 탈락한다.** 티어 카운트 자동 동기화(오늘만 4회 수동). **183건 일괄 구조화는 등급 0 상승이라 권장 안 함**(상태 게이트에 전부 막힘).(skyscanner·smarthr·govuk·uswds·hashicorp·ibm·sanity…) · `ds:` 오표기 3건(velog·banksalad·zigzag) 처리 · adobe는 Spectrum 1/2 세대 구분 필요.
 
 
 ## 2026-09-17 (저녁)

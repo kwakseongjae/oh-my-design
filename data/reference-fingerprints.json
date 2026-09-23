@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-09-22T00:00:00Z",
+ "generated_at": "2026-09-23T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 458,
+ "count": 459,
  "items": [
   {
    "id": "104",
@@ -1731,6 +1731,34 @@
    "signature_motion": "Add-to-cart fly performs a brief 8% scaled translate of the thumbnail toward the cart icon with a +1 badge increment — confirms without blocking.",
    "has_personas": true,
    "category_raw": "e-commerce mass market"
+  },
+  {
+   "id": "crowdworks",
+   "primary_color_hex": "#006AB6",
+   "category": "productivity",
+   "visual_theme": "A dense white marketplace directory set mostly at 12px, where the most-rendered colour is the link navy #004980 rather than the ink #353d48, and a saturated orange #f26731 appears only on the buttons that start an account. The token set packages decisions whole: 32 typography tokens are complete CSS font shorthands, 91 z-index tokens are named for the exact element they stack, and the AI CrowdWorks sub-brand keeps its own purple-and-teal system in a separate namespace.",
+   "voice_fingerprint": {
+    "register": "Japanese marketplace directory; 5,686 characters, mostly category and job links",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "ja-marketplace"
+   },
+   "tone_keywords": [
+    "dense",
+    "directory-like",
+    "systematic",
+    "packaged",
+    "orange-accented"
+   ],
+   "antipatterns": [
+    "counting --fa-* as CrowdWorks' tokens; they are Font Awesome 6",
+    "using the link navy #004980 as body ink - body text is #353d48",
+    "rebuilding a text style from size and weight when a --paragraph-* or --single-* token carries the whole font declaration",
+    "taking the Google button's offset shadow as an elevation token; every --shadow-* is centred",
+    "copying the email field's missing focus indicator"
+   ],
+   "has_personas": false,
+   "category_raw": "crowdsourcing-marketplace"
   },
   {
    "id": "ctrip",
