@@ -6939,6 +6939,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": 0.318
   },
   {
+    "id": "ocado",
+    "status": "verified_v2",
+    "verifiedAt": "2026-09-23",
+    "tokensExtractedAt": "2026-09-23",
+    "nextReverifyAt": "2027-03-22",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 79,
+    "evidenceClaimCount": 79,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 4,
+    "conflictCount": 0,
+    "tier1SourceCount": 4,
+    "componentCount": 4,
+    "interactiveComponentCount": 3,
+    "statedComponentCount": 3,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "octopusenergy",
     "status": "partial",
     "verifiedAt": "2026-06-23",
@@ -11903,10 +11925,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 170,
+  "verified_v2": 171,
   "partial": 181,
   "legacy_snapshot": 113,
-  "total": 464
+  "total": 465
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

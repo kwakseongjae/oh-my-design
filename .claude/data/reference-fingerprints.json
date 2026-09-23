@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-23T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 464,
+ "count": 465,
  "items": [
   {
    "id": "104",
@@ -6683,6 +6683,34 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "enterprise hardware"
+  },
+  {
+   "id": "ocado",
+   "primary_color_hex": "#4D216D",
+   "category": "ecommerce",
+   "visual_theme": "A calm, practical online-grocery storefront: pale blue-grey panels #e6ecf0 around white 8px cards, a slate ink #2d333a, lavender #e9e4ed buttons with deep-purple text for everyday actions, the brand purple #4d216d held in reserve, and a warm yellow #f1c500 that means only one thing - add to basket. Colour is assigned by intent in ten-step ramps whose key steps name their own contrast text colour, spacing doubles in 4px units, and cards lift with a soft shadow on hover rather than changing colour.",
+   "voice_fingerprint": {
+    "register": "UK online grocery storefront; 5,667 characters, product and category labels",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-gb-grocery-retail"
+   },
+   "tone_keywords": [
+    "practical",
+    "calm",
+    "systematic",
+    "purple-accented",
+    "functional"
+   ],
+   "antipatterns": [
+    "treating --salt-* as J.P. Morgan's Salt design system - none of its 156 names match",
+    "using the basket yellow #f1c500 for anything other than adding to the basket",
+    "spreading the brand purple #4d216d across surfaces; it is an accent",
+    "picking a text colour by eye instead of the -contrast twin of the intent step",
+    "recolouring cards on hover; Ocado lifts them with --salt-elevation-shadow-1"
+   ],
+   "has_personas": false,
+   "category_raw": "online-grocery"
   },
   {
    "id": "octopusenergy",

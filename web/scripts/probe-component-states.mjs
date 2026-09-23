@@ -338,7 +338,10 @@ for (const [name, why] of Object.entries(unmeasured)) {
   console.log(`  ${name.padEnd(8)} ${"못 쟀음".padEnd(20)} ${why}`);
 }
 // 배경만 보던 판정은 fg·테두리·그림자·opacity만 바뀌는 상태를 "변화 없음"으로 불렀다.
-const VISUAL = (s) => [hex(s.bg), hex(s.fg), hex(s.border), s.shadow, s.outline, s.transform, s.opacity].join("|");
+// outline-style이 none이면 색·너비가 바뀌어도 아무것도 그려지지 않는다 — 그 변화를 "바뀜"으로
+// 세면 포커스 표시가 없는 입력칸이 있는 것처럼 보인다 (2026-09-23 citymapper·guardian 검색칸).
+const drawnOutline = (o) => (/\bnone\b/.test(o) ? "none" : o);
+const VISUAL = (s) => [hex(s.bg), hex(s.fg), hex(s.border), s.shadow, drawnOutline(s.outline), s.transform, s.opacity].join("|");
 const changed = Object.entries(states).filter(([k, s]) => k !== "rest" && VISUAL(s) !== VISUAL(states.rest));
 console.log(`\n눈에 보이는 값이 바뀌는 상태: ${changed.length ? changed.map(([k]) => k).join(", ") : "없음 (bg·fg·border·shadow·outline·transform·opacity 전부 동일)"}`);
 if (Object.keys(unmeasured).length) {
