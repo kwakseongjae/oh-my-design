@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-23T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 465,
+ "count": 466,
  "items": [
   {
    "id": "104",
@@ -9848,6 +9848,34 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "automotive"
+  },
+  {
+   "id": "theguardian",
+   "primary_color_hex": "#052962",
+   "category": "consumer-tech",
+   "visual_theme": "A navy #052962 news masthead over a white page with one ink #121212 for headline and body, links in red #c70000, a single yellow #ffe500 for highlights, and each news pillar carrying its own colour - opinion orange, sport blue, culture brown, lifestyle pink. The identity lives in four bespoke Commercial Type faces, Guardian Headline and Guardian Text Sans rendering on the front. The page is nearly shadow-free, masthead controls have no hover change, and every one draws the same 3px #0077b6 focus ring as a box-shadow.",
+   "voice_fingerprint": {
+    "register": "British news front; 21,210 characters, headlines and standfirsts",
+    "sentence_length": "medium",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-gb-news"
+   },
+   "tone_keywords": [
+    "editorial",
+    "confident",
+    "pillar-coded",
+    "type-led",
+    "flat"
+   ],
+   "antipatterns": [
+    "substituting another serif under the name Guardian Headline - the faces are licensed to the Guardian only",
+    "colouring a story outside its pillar colour",
+    "using the highlight yellow #ffe500 as a general accent or text colour",
+    "adding hover colour to masthead links; they have none",
+    "reading the ~560 per-component tokens as the palette used on one page - the frontend emits them everywhere"
+   ],
+   "has_personas": false,
+   "category_raw": "news-media"
   },
   {
    "id": "theverge",

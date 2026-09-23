@@ -51,11 +51,7 @@
 1. ~~**브랜치 origin 백업**~~ — 완료 2026-09-23 (`511e9edb`)
 2. ~~**crowdworks 저작**~~ — 완료 2026-09-23, verified 141/141
 3. ~~**JP 웨이브 4**~~ — 완료 2026-09-23: studysapuri·folio·loglass 3/3 verified. spacemarket은 Aside 대기(429).
-4. **UK 웨이브 1** — 수율 측정 완료(2026-09-23): 12 중 **4 유효 = 33%** → 본 웨이브. citymapper(`--color*66`, proxima-soft) ·
-   theguardian(자체 --article/--football…, Guardian Headline) · ft(`--o3*101` Origami, Financier) · ocado(`--salt*156`
-   컴포넌트 토큰 + `--intent*105`, 오카도 보라 — J.P. Morgan Salt와의 관계는 프로브에서 판정). 경계: zopa(daisyUI 어휘 + 자체 lab 값).
-   탈락: 토큰 ≈0 ×5(gocardless·moonpig·rightmove·johnlewis·nationwide — 전부 자체 폰트는 있음), cleo(ctrl 2), tesco(403 → Aside).
-   심층 프로브 4건(sonnet) 진행 중.
+4. ~~**UK 웨이브 1**~~ — 완료 2026-09-23: 스카우트 12 → 4 유효(33%) → **4/4 verified**. tesco(403)는 Aside 대기. 경계 zopa는 다음 UK 웨이브 후보.
 4b. ~~**"변화 없음" 재검증 스윕**~~ — 2026-09-23: 옛 프로브로 "hover 변화 없음"을 적은 10건 중 7건(crowdworks·taobao·base·newspicks·
    chatwork·nulab·cybozu)을 새 도구로 재측정 — **전부 유지**(7개 값 모두 동일). 커밋된 데이터에 영향 없음, studysapuri만 커밋 전에 잡혔다.
    남음: jal(로컬 차단 → Aside), kakaopay corporate-search(레거시 캡처 인덱스라 라벨 없음).
@@ -107,6 +103,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 
 회차가 끝날 때마다 한 줄. 최신이 위.
 
+- 2026-09-23 · 회차 10 · theguardian 등재(43/43). **UK 웨이브 1 마감 4/4 verified**(ft·citymapper·ocado·theguardian). 검색칸은 7값 중 5값만 잰 채라 컴포넌트 선언 안 함 · 466 / 172
 - 2026-09-23 · 회차 9 · ocado 등재(79/79). 헤드라인(`--salt-*` ≠ J.P. Morgan Salt) 독립 검증: 1,869개 이름과 겹침 0. 프로브 요약이 그려지지 않는 outline(style none) 변화를 세지 않도록 수정 · 465 / 171
 - 2026-09-23 · 회차 8 · citymapper 등재(91/91). 헤드라인(검색칸 포커스 표시 없음) 재측정 일치. 프로브 `--text`가 aria-label·placeholder도 찾도록 수정. 국가 UK(Via 인수, 자회사 선례) · 464 / 170
 - 2026-09-23 · 회차 7 · ft 등재(96/96) — 로컬은 Cloudflare 챌린지라 Aside로 측정. 포커스는 저작된 2겹 링, **hover는 Aside 세션이 :hover를 못 만들어 미측정으로 둠**(JAL 땐 됐음). Origami 문서는 로그인 뒤로 → 웨이백 스냅샷으로 대조. 국가는 UK(자회사 선례: skyscanner·farfetch) · 463 / 169
