@@ -51,8 +51,11 @@
 1. ~~**브랜치 origin 백업**~~ — 완료 2026-09-23 (`511e9edb`)
 2. ~~**crowdworks 저작**~~ — 완료 2026-09-23, verified 141/141
 3. ~~**JP 웨이브 4**~~ — 완료 2026-09-23: studysapuri·folio·loglass 3/3 verified. spacemarket은 Aside 대기(429).
-4. **US/UK 수율 측정** — UK 1/12 verified로 방치됨. 12 후보 스카우팅으로 수율부터 잰다.
-   20% 넘으면 본 웨이브.
+4. **UK 웨이브 1** — 수율 측정 완료(2026-09-23): 12 중 **4 유효 = 33%** → 본 웨이브. citymapper(`--color*66`, proxima-soft) ·
+   theguardian(자체 --article/--football…, Guardian Headline) · ft(`--o3*101` Origami, Financier) · ocado(`--salt*156`
+   컴포넌트 토큰 + `--intent*105`, 오카도 보라 — J.P. Morgan Salt와의 관계는 프로브에서 판정). 경계: zopa(daisyUI 어휘 + 자체 lab 값).
+   탈락: 토큰 ≈0 ×5(gocardless·moonpig·rightmove·johnlewis·nationwide — 전부 자체 폰트는 있음), cleo(ctrl 2), tesco(403 → Aside).
+   심층 프로브 4건(sonnet) 진행 중.
 4b. ~~**"변화 없음" 재검증 스윕**~~ — 2026-09-23: 옛 프로브로 "hover 변화 없음"을 적은 10건 중 7건(crowdworks·taobao·base·newspicks·
    chatwork·nulab·cybozu)을 새 도구로 재측정 — **전부 유지**(7개 값 모두 동일). 커밋된 데이터에 영향 없음, studysapuri만 커밋 전에 잡혔다.
    남음: jal(로컬 차단 → Aside), kakaopay corporate-search(레거시 캡처 인덱스라 라벨 없음).
