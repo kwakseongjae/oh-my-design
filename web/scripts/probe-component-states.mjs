@@ -305,6 +305,10 @@ for (const [name, s] of Object.entries(states)) {
   // 정확히 이 스크립트로 확인하러 오는 값이다 (2026-09-22).
   if (s.shadow !== states.rest.shadow || name === "rest") extras.push(`shadow=${s.shadow}`);
   if (s.transform !== "none") extras.push(`transform=${s.transform}`);
+  // 색만 비교하면 opacity 페이드가 "변화 없음"으로 읽힌다. studysapuri CTA는
+  // `transition: opacity 0.3s`로 hover에 0.9가 되는데, 위임 프로브는 색 여섯 개가
+  // 그대로라서 "hover·pressed 변화 없음"으로 보고했다 (2026-09-23).
+  if (s.opacity !== states.rest.opacity || name === "rest") extras.push(`opacity=${s.opacity}`);
   // border와 같은 이유로 rest에서도 항상 찍는다. 포커스 판정은 색이 아니라
   // **스타일**로 갈린다(`auto` = 브라우저, `solid`/`none` = 작성자) — 그 비교를
   // 하려면 rest 값이 출력에 있어야 한다. 측정법 문서 §2.5.
@@ -317,8 +321,10 @@ for (const [name, s] of Object.entries(states)) {
 for (const [name, why] of Object.entries(unmeasured)) {
   console.log(`  ${name.padEnd(8)} ${"못 쟀음".padEnd(20)} ${why}`);
 }
-const changed = Object.entries(states).filter(([k, s]) => k !== "rest" && hex(s.bg) !== hex(states.rest.bg));
-console.log(`\n배경이 바뀌는 상태: ${changed.length ? changed.map(([k]) => k).join(", ") : "없음 — 색 변화 없음을 부재로 기록할 것"}`);
+// 배경만 보던 판정은 fg·테두리·그림자·opacity만 바뀌는 상태를 "변화 없음"으로 불렀다.
+const VISUAL = (s) => [hex(s.bg), hex(s.fg), hex(s.border), s.shadow, s.outline, s.transform, s.opacity].join("|");
+const changed = Object.entries(states).filter(([k, s]) => k !== "rest" && VISUAL(s) !== VISUAL(states.rest));
+console.log(`\n눈에 보이는 값이 바뀌는 상태: ${changed.length ? changed.map(([k]) => k).join(", ") : "없음 (bg·fg·border·shadow·outline·transform·opacity 전부 동일)"}`);
 if (Object.keys(unmeasured).length) {
   console.log(`못 잰 상태: ${Object.keys(unmeasured).join(", ")} — **부재가 아니다.** 레퍼런스에 "없음"으로 적지 말 것.`);
 }

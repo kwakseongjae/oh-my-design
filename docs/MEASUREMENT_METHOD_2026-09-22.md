@@ -177,6 +177,19 @@ census family:  YakuHanJPs ×458   ← 1위
 
 ---
 
+## 2.7 **"변화 없음"은 색 여섯 개가 같다는 뜻이 아니다 — opacity 페이드** (2026-09-23)
+
+studysapuri 심층 프로브(sonnet)가 컨트롤 6개 전부 "hover·pressed 변화 없음"이라고 보고했다.
+헤드라인 검증에서 주 CTA를 다시 재니 `transition: background-color 0.3s, color 0.3s, opacity 0.3s`
+이고 hover에 **opacity가 1 → 0.9**로 내려간다. bg·fg·border·shadow는 그대로다.
+
+원인은 도구였다. `probe-component-states.mjs`는 opacity를 **읽고도 출력하지 않았고**, 요약 줄이
+배경색만 비교해 "없음 — 색 변화 없음을 부재로 기록할 것"이라고 안내했다. 위임 모델은 그 안내를
+그대로 따랐다. 고친 뒤: opacity를 rest에서 항상, 바뀌면 상태마다 출력하고, 요약은
+bg·fg·border·shadow·outline·transform·opacity 전부를 비교한다.
+
+**규칙**: 상태 "없음"을 적기 전에 7개 값이 전부 같은지 본다. 하나라도 다르면 그 값이 상태다.
+
 ## 3. 레포가 이미 갖고 있던 것을 안 썼다
 
 `probe-component-states.mjs` 251줄이 **내가 이번 세션에 손으로 다시 발견한 함정 4개를
