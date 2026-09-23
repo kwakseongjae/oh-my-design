@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-23T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 459,
+ "count": 460,
  "items": [
   {
    "id": "104",
@@ -9344,6 +9344,34 @@
    "signature_motion": "*Durations:**",
    "has_personas": true,
    "category_raw": "design-tools"
+  },
+  {
+   "id": "studysapuri",
+   "primary_color_hex": "#0B41A0",
+   "category": "education",
+   "visual_theme": "A white-and-pale-blue learning hub where one deep sapuri blue #0b41a0 carries the brand and every primary label, a charcoal-navy #24243f carries the text, and bright sky, turquoise and pink mark the separate services. Two colour generations sit side by side - a flat --cl_* palette named for the brand and a semantic --cl-* layer that adds a colour per school subject and a campaign palette - and every control answers hover with an opacity fade whose depth differs by control: 0.9, 0.8, 0.7, 0.5.",
+   "voice_fingerprint": {
+    "register": "Japanese learning-service hub; 1,832 characters, mostly school levels, grades and course names",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "ja-education"
+   },
+   "tone_keywords": [
+    "clear",
+    "school-structured",
+    "blue-anchored",
+    "subject-coded",
+    "fade-responsive"
+   ],
+   "antipatterns": [
+    "counting --breakpoints-*, --sizes-* or Panda's utility variables as Studysapuri's tokens",
+    "changing a control's colour on hover - Studysapuri fades opacity instead",
+    "rendering StudySapuriNumbers as though it loaded; it is declared and did not load",
+    "treating the unstyled #efefef course button as a component",
+    "using sky blue #0ca5e6 as the primary label colour - the measured primary is #0b41a0"
+   ],
+   "has_personas": false,
+   "category_raw": "online-learning"
   },
   {
    "id": "supabase",

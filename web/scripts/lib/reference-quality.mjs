@@ -314,7 +314,11 @@ function isRenderableStateValue(value) {
     || /\b(?:rgb|rgba|hsl|hsla|oklch|oklab|color)\(/i.test(trimmed) // functional colour
     || /\b\d*\.?\d+(?:px|rem|em|%|ms|s)\b/.test(trimmed)    // dimension or duration
     || /\{[^}]+\}/.test(trimmed)                      // token reference, e.g. {color.primary}
-    || /\bvar\(--/.test(trimmed);                     // CSS custom property
+    || /\bvar\(--/.test(trimmed)                      // CSS custom property
+    // An opacity fade is a rendered state with no colour in it. studysapuri signals every
+    // hover as `opacity 0.9`/`0.8`/`0.7`/`0.5`; without this the four measured states read
+    // as prose-only (2026-09-23).
+    || /\bopacity\s*:?\s*(?:0?\.\d+|[01])\b/i.test(trimmed);
 }
 
 /**
