@@ -3,6 +3,20 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-23 · 루프 회차 2–3 — **studysapuri 등재** (460 · 166) · 위생 3건 · 프로브 도구 결함 2건
+
+- **studysapuri** 89/89 · 4/4 stated · reason·advisory 0. hover가 전부 **opacity 페이드**(0.9/0.8/0.7/0.5).
+- **위임 프로브(sonnet)의 헤드라인 "hover 변화 없음"이 틀렸다** — 원인은 모델이 아니라 도구:
+  `probe-component-states.mjs`가 opacity를 읽고도 출력 안 했고 요약이 배경색만 비교. 수정
+  (7개 값 비교) + `--text` 단독 검색 버그 수정 + 평가기가 `opacity N`을 렌더 상태로 인식.
+  측정법 §2.7. crowdworks는 새 도구로 재측정해 유지. **옛 도구로 "변화 없음"을 적은 다른
+  레퍼런스 재검증 스윕을 큐 4b에 넣었다.**
+- 위생: velog·banksalad `ds:` 제거(디자인 시스템 없음), adobe 설명에 링크=Spectrum 1 명시.
+- JP 웨이브 4 스카우팅 3/12(folio·studysapuri·loglass), spacemarket은 429 → Aside 대기.
+- 진행 중: folio·loglass 심층 프로브, UK 12 스카우팅(scout-uk1).
+
+---
+
 ## ✅ 2026-09-23 · 루프 회차 1 — **crowdworks 등재** (459 · 165)
 
 claims 141/141 · 6/6 · reason·advisory 0. JP 웨이브 3 마감(newspicks·zenn·qiita·crowdworks).
