@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-23T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 460,
+ "count": 461,
  "items": [
   {
    "id": "104",
@@ -2810,6 +2810,34 @@
    "signature_motion": "transform 0.25s ease-in for UI transitions; opacity 0.3s for player overlays; stagger on entrance with 0.15s transform + 0.3s delay",
    "has_personas": true,
    "category_raw": "music streaming / consumer-tech"
+  },
+  {
+   "id": "folio",
+   "primary_color_hex": "#F26161",
+   "category": "fintech",
+   "visual_theme": "A flat, rounded securities landing page where a coral #f26161 - chosen in a 2018 rebrand that deliberately left fintech's reassuring blue for a red with momentum - opens every account and is where outline buttons and navigation go on hover. The pre-rebrand blue #6585c2 survives only as the inline link colour. A cool, faintly violet gray ramp from #202128 to #f7f8fa, 999px pill buttons, no shadow anywhere, and Morisawa's Aoto Gothic actually delivered through TypeSquare; all 75 tokens sit under one --FOLIOWEB-LP-* prefix.",
+   "voice_fingerprint": {
+    "register": "Japanese online securities landing page; 2,908 characters",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "ja-fintech"
+   },
+   "tone_keywords": [
+    "coral",
+    "flat",
+    "rounded",
+    "uplifting",
+    "restrained"
+   ],
+   "antipatterns": [
+    "using the blue #6585c2 for actions - it is the link colour the 2018 rebrand left behind",
+    "rendering a system gothic under the name Aoto Gothic; TypeSquare fonts are licensed to the serving domain",
+    "adding shadows - no element or state on the page has one",
+    "taking #b0b0bb as body ink because it is the most-rendered text colour; paragraph ink is #202128",
+    "copying the inline link's missing hover state"
+   ],
+   "has_personas": false,
+   "category_raw": "online-securities"
   },
   {
    "id": "framer",

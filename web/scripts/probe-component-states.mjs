@@ -207,14 +207,22 @@ const read = (frame) => frame.evaluate((prefix) => {
   };
   if (prefix) {
     out.vars = {};
-    for (const sheet of document.styleSheets) {
-      let rules; try { rules = sheet.cssRules; } catch { continue; }
+    // `@layer`·`@media` 안까지 내려간다 — Tailwind v4는 테마 변수를 `@layer theme`에 둔다.
+    // 자식 판정은 `.length`로 한다: CSS Nesting을 지원하는 Chrome은 평범한 스타일 규칙에도
+    // 빈 `cssRules`를 붙여서, 참/거짓으로 판정하면 규칙 자신의 선언을 건너뛴다
+    // (2026-09-23 loglass 프로브가 발견).
+    const walk = (rules) => {
       for (const rule of rules ?? []) {
         for (const m of (rule.style?.cssText ?? "").matchAll(new RegExp(`(--${prefix}[a-z0-9-]*)`, "gi"))) {
           const v = s.getPropertyValue(m[1]).trim();
           if (v && /^#|^rgb/.test(v)) out.vars[m[1]] = v;
         }
+        if (rule.cssRules?.length) walk(rule.cssRules);
       }
+    };
+    for (const sheet of document.styleSheets) {
+      let rules; try { rules = sheet.cssRules; } catch { continue; }
+      walk(rules);
     }
   }
   return out;
