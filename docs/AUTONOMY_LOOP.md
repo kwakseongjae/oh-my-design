@@ -53,8 +53,9 @@
 3. ~~**JP 웨이브 4**~~ — 완료 2026-09-23: studysapuri·folio·loglass 3/3 verified. spacemarket은 Aside 대기(429).
 4. **US/UK 수율 측정** — UK 1/12 verified로 방치됨. 12 후보 스카우팅으로 수율부터 잰다.
    20% 넘으면 본 웨이브.
-4b. **"변화 없음" 재검증 스윕** — 옛 프로브(opacity 미출력)로 "hover 변화 없음"을 적은 레퍼런스를
-   새 프로브로 다시 잰다. crowdworks는 확인 완료(유지). 대상: zenn·qiita·newspicks·jal·nulab·base·chatwork 등 09-17 이후 등재분.
+4b. ~~**"변화 없음" 재검증 스윕**~~ — 2026-09-23: 옛 프로브로 "hover 변화 없음"을 적은 10건 중 7건(crowdworks·taobao·base·newspicks·
+   chatwork·nulab·cybozu)을 새 도구로 재측정 — **전부 유지**(7개 값 모두 동일). 커밋된 데이터에 영향 없음, studysapuri만 커밋 전에 잡혔다.
+   남음: jal(로컬 차단 → Aside), kakaopay corporate-search(레거시 캡처 인덱스라 라벨 없음).
 5. ~~**위생**~~ — 완료 2026-09-23: velog·banksalad `ds:` 제거(디자인 시스템이 없는데 카드가
    "Design System"/"Brand Guide"로 GitHub를 가리켰다 — 없는 것은 없다), adobe 설명에 링크=Spectrum 1 명시
 6. JP/US 웨이브를 수율이 유지되는 한 반복. 수율이 15% 밑으로 두 번 연속 떨어지면
@@ -103,6 +104,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 
 회차가 끝날 때마다 한 줄. 최신이 위.
 
+- 2026-09-23 · 회차 6 · "변화 없음" 스윕 7/7 유지 — 도구 결함은 커밋된 데이터를 오염시키지 않았다 · 462 / 168
 - 2026-09-23 · 회차 5 · loglass 등재(99/99, 4 stated). JP 웨이브 4 마감 3/3 — 스카우트 유효 판정 전부 verified. 헤드라인(CTA 호버 링 #e77623) 일치, 인용 못 하는 봇월 출처 2건 제외 · 462 / 168
 - 2026-09-23 · 회차 4 · folio 등재(95/95, 4 stated). 위임 프로브 5개 컨트롤 전부 재측정 일치, 헤드라인(모리사와 あおとゴシック 실제 로드) 확인, CDO 리브랜딩 글 원문 대조. 프로브 `--vars` 재귀(@layer) 수정 · 461 / 167
 - 2026-09-23 · 회차 3 · studysapuri 등재(89/89, 4/4 stated). 위임 프로브의 헤드라인 "hover 변화 없음"이 틀림 — opacity 페이드(0.9/0.8/0.7/0.5). 원인은 프로브 도구(opacity 미출력·배경만 비교) → 수정, 평가기도 opacity 상태 인식. crowdworks는 재측정해 유지 · 460 / 166

@@ -190,6 +190,10 @@ bg·fg·border·shadow·outline·transform·opacity 전부를 비교한다.
 
 **규칙**: 상태 "없음"을 적기 전에 7개 값이 전부 같은지 본다. 하나라도 다르면 그 값이 상태다.
 
+**소급 확인(같은 날)**: 옛 도구로 "hover 변화 없음"이 커밋된 7개 레퍼런스(crowdworks·taobao·base·newspicks·
+chatwork·nulab·cybozu)를 고친 도구로 다시 쟀다 — 전부 유지. 결함이 실제로 오답을 낸 건 커밋 전의
+studysapuri 하나였다. jal(Aside 필요)·kakaopay(라벨 없는 레거시 캡처)는 미확인으로 남긴다.
+
 ## 3. 레포가 이미 갖고 있던 것을 안 썼다
 
 `probe-component-states.mjs` 251줄이 **내가 이번 세션에 손으로 다시 발견한 함정 4개를
