@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-23T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 461,
+ "count": 462,
  "items": [
   {
    "id": "104",
@@ -5172,6 +5172,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "ai"
+  },
+  {
+   "id": "loglass",
+   "primary_color_hex": "#2352C8",
+   "category": "saas",
+   "visual_theme": "A clean B2B finance-software site on white and cool-gray surfaces: near-black ink #171725, one confident blue #2352c8 on every filled action deepening to #1337a1, and orange #e77623 held back as an accent - most visibly a 3px ring that snaps around the demo card on hover. Buttons are 4px, pills and badges fully round, shadows tinted with the ink rather than black. Under it, six ten-step ramps sit behind a role layer (bg, border, surface, text, cta) and an eleven-step categorical chart palette.",
+   "voice_fingerprint": {
+    "register": "Japanese B2B SaaS product site; 3,010 characters",
+    "sentence_length": "medium",
+    "metaphor_density": "low",
+    "vocabulary_register": "ja-b2b-finance"
+   },
+   "tone_keywords": [
+    "systematic",
+    "role-based",
+    "confident",
+    "data-first",
+    "restrained"
+   ],
+   "antipatterns": [
+    "counting --tw-*, --default-* or Tailwind's stock containers as Loglass tokens",
+    "rendering headings in Montserrat on the strength of --font-heading; it did not load and the h1 falls back to YuGothic",
+    "reading --font-mono as a monospace face - it resolves to Avenir Next",
+    "treating -summit or -lp campaign colours as the product palette",
+    "using orange #e77623 as the default fill; blue #2352c8 fills every primary action"
+   ],
+   "has_personas": false,
+   "category_raw": "management-accounting-saas"
   },
   {
    "id": "loom",

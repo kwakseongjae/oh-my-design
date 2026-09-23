@@ -50,11 +50,7 @@
 
 1. ~~**브랜치 origin 백업**~~ — 완료 2026-09-23 (`511e9edb`)
 2. ~~**crowdworks 저작**~~ — 완료 2026-09-23, verified 141/141
-3. **JP 웨이브 4** — 스카우팅 완료(2026-09-23): 12 중 **3 유효 = 25%** — folio(`--folioweb*`75,
-   자체 웹폰트), studysapuri(`--cl*`103), loglass(`--color-*` 자체 1–10 스케일, `--tw` 제외).
-   탈락 8: own=0 ×5(kakaku·suumo·minne·standfm·kurashiru), lancers(lang=en·405), bengo4(403),
-   voicy(`--mat*`867 = Material). **spacemarket은 로컬 429 반복 → Aside 대기열.**
-   심층 프로브 3건(sonnet) 진행 중 → 헤드라인 검증 → 저작.
+3. ~~**JP 웨이브 4**~~ — 완료 2026-09-23: studysapuri·folio·loglass 3/3 verified. spacemarket은 Aside 대기(429).
 4. **US/UK 수율 측정** — UK 1/12 verified로 방치됨. 12 후보 스카우팅으로 수율부터 잰다.
    20% 넘으면 본 웨이브.
 4b. **"변화 없음" 재검증 스윕** — 옛 프로브(opacity 미출력)로 "hover 변화 없음"을 적은 레퍼런스를
@@ -107,6 +103,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 
 회차가 끝날 때마다 한 줄. 최신이 위.
 
+- 2026-09-23 · 회차 5 · loglass 등재(99/99, 4 stated). JP 웨이브 4 마감 3/3 — 스카우트 유효 판정 전부 verified. 헤드라인(CTA 호버 링 #e77623) 일치, 인용 못 하는 봇월 출처 2건 제외 · 462 / 168
 - 2026-09-23 · 회차 4 · folio 등재(95/95, 4 stated). 위임 프로브 5개 컨트롤 전부 재측정 일치, 헤드라인(모리사와 あおとゴシック 실제 로드) 확인, CDO 리브랜딩 글 원문 대조. 프로브 `--vars` 재귀(@layer) 수정 · 461 / 167
 - 2026-09-23 · 회차 3 · studysapuri 등재(89/89, 4/4 stated). 위임 프로브의 헤드라인 "hover 변화 없음"이 틀림 — opacity 페이드(0.9/0.8/0.7/0.5). 원인은 프로브 도구(opacity 미출력·배경만 비교) → 수정, 평가기도 opacity 상태 인식. crowdworks는 재측정해 유지 · 460 / 166
 - 2026-09-23 · 회차 2 · JP 웨이브 4 스카우팅 3/12(25%) + 위생 3건(velog·banksalad ds 제거, adobe S1 명시) · 459 / 165
