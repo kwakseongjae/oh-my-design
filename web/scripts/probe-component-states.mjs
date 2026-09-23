@@ -129,7 +129,11 @@ async function visit(act) {
   for (const frame of page.frames()) {
     const found = await frame.evaluate(({ match, selector, minHeight, nth, wantHeight, rgbSrc, textNeedle }) => {
       const visible = (el) => { const r = el.getBoundingClientRect(); return r.height >= minHeight && r.width >= 8; };
+      // `--text`만 주면 색 조건이 "(?!)"라서 후보가 0이었다 — 라벨로 찾으려던 호출이 전부
+      // "찾지 못했다"로 끝났다 (2026-09-23 studysapuri). 라벨만 있으면 조작 가능한 요소에서 찾는다.
+      const INTERACTIVE = "a,button,[role=button],input,select,textarea,summary,label";
       let pool = selector ? [...document.querySelectorAll(selector)]
+        : (textNeedle && !match) ? [...document.querySelectorAll(INTERACTIVE)]
         : [...document.querySelectorAll("*")].filter((el) => new RegExp(rgbSrc).test(getComputedStyle(el).backgroundColor));
       pool = pool.filter(visible);
       if (textNeedle) {
