@@ -4,7 +4,8 @@
 
 - **한 일**: 자율 루프 회차 1–6. crowdworks·studysapuri·folio·loglass 등재(JP 웨이브 4는 스카우트 통과 3/3 전부 verified) → **462 / verified 168**. 위생 3건(velog·banksalad `ds:` 제거, adobe S1 명시). 프로브 도구 결함 3건 수정: opacity 미출력·배경만 비교(studysapuri 헤드라인 오답의 원인), `--text` 단독 검색 불가, `--vars`가 `@layer` 미순회. "변화 없음" 소급 스윕 7/7 유지.
 - **열린 것**: spacemarket(로컬 429 → Aside), jal·kakaopay 스윕 미확인, UK 스카우트(scout-uk1) 결과 대기.
-- **다음**: UK 수율 판정 → 20% 넘으면 본 웨이브. 아니면 JP 웨이브 5.
+- **한 일(2)**: UK 수율 4/12(33%) → UK 웨이브 1: ft(Aside)·citymapper·ocado·theguardian 4/4 verified → **466 / 172**, 오늘 신규 10. 도구 개선 2건 추가(aria-label 매칭, 그려지지 않는 outline 무시).
+- **다음**: JP 웨이브 5 + UK 웨이브 2 스카우팅(수율 유지되는 한 반복).
 
 ## 2026-09-19
 

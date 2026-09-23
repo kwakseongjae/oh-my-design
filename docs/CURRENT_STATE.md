@@ -3,6 +3,20 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-23 · 루프 회차 4–10 — **JP 웨이브 4·UK 웨이브 1 마감** (466 · 172) · 오늘 신규 10건
+
+- 오늘 등재: crowdworks · studysapuri · folio · loglass (JP) · ft · citymapper · ocado · theguardian (UK)
+  — **스카우트 통과분 7/7 전부 verified**. 스카우트 수율 JP 3/12, UK 4/12.
+- **ft는 Aside로 측정**(로컬 Cloudflare 챌린지). 이 세션에선 Aside 포인터가 `:hover`를 못 만들어
+  hover는 미측정으로 기록(JAL 땐 됐음). Origami 문서가 로그인 뒤로 가서 웨이백 스냅샷과 대조.
+- **국가 판정**: 인수된 운영회사는 자기 본사로(skyscanner·farfetch 선례) → ft·citymapper = UK.
+- 프로브 도구 개선 5건: opacity 출력·7값 비교, `--text` 단독 검색, `--vars` @layer 재귀(`.length`),
+  `--text`가 aria-label·placeholder도 매칭, 그려지지 않는 outline(style none) 변화 무시.
+- "변화 없음" 소급 스윕 7/7 유지 — 옛 도구 결함은 커밋된 데이터에 영향 없음.
+- 대기: spacemarket·tesco(Aside), jal·kakaopay 스윕, zopa(daisyUI 경계).
+
+---
+
 ## ✅ 2026-09-23 · 루프 회차 2–3 — **studysapuri 등재** (460 · 166) · 위생 3건 · 프로브 도구 결함 2건
 
 - **studysapuri** 89/89 · 4/4 stated · reason·advisory 0. hover가 전부 **opacity 페이드**(0.9/0.8/0.7/0.5).
