@@ -1,5 +1,11 @@
 # JOURNAL
 
+## 2026-09-23
+
+- **한 일**: 자율 루프 회차 1–6. crowdworks·studysapuri·folio·loglass 등재(JP 웨이브 4는 스카우트 통과 3/3 전부 verified) → **462 / verified 168**. 위생 3건(velog·banksalad `ds:` 제거, adobe S1 명시). 프로브 도구 결함 3건 수정: opacity 미출력·배경만 비교(studysapuri 헤드라인 오답의 원인), `--text` 단독 검색 불가, `--vars`가 `@layer` 미순회. "변화 없음" 소급 스윕 7/7 유지.
+- **열린 것**: spacemarket(로컬 429 → Aside), jal·kakaopay 스윕 미확인, UK 스카우트(scout-uk1) 결과 대기.
+- **다음**: UK 수율 판정 → 20% 넘으면 본 웨이브. 아니면 JP 웨이브 5.
+
 ## 2026-09-19
 
 - **한 일**: 후보 A(인덱스 전수 프로브) 완료. **대상 모집단이 429가 아니라 50이었다** — 353개는 `homepage`만 있고 `ds:` 86개 중 37개가 `type: brand`(트레이드마크·폰트·보도자료)라 컴포넌트 로스터를 주장하지 않는다. `type`은 프론트매터에 있었고 안 읽고 계획했다. 50개 중 27개 로스터 확인, 7개 경로 모양 보류, 16개 SPA(에이전트 몫). **이름 단위 결론: 발행 1,111개 중 레퍼런스가 부르는 것 308개(27.7%, 상한).** pega 42/45·yeogiotte 4/6로 검증됨. 스크립트 2개(`probe-design-system-index.mjs`, `compare-component-names.mjs`) 커밋(`7cebaacf`, `c6731b95`).
