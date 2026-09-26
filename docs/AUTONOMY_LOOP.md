@@ -65,6 +65,7 @@
    **마감 2026-09-26: 6/7 verified**(n26·sumup·wolt·qonto·zalando·doctolib). **check24 탈락** — 자체 변수 7개(브랜드색 0,
    나머지 217-7은 Tailwind v4·shadcn 기본값), 빨강은 알림 배지 1개·파랑은 숨은 skip 링크뿐, CTA·타일은 닫힌 shadow root.
    traderepublic 등과 같은 '자체 토큰 ≈0' 기준. (위임 프로브의 필별 hover 편차는 전환 도중 값 — 재측정하니 전부 `rgba(255,255,255,0.15)`.)
+5f. **bg-image 소급 스윕** — 2026-09-26 시작: 커밋된 verified 레퍼런스의 'hover 변화 없음' 39개(23건)를 고친 도구로 재측정(위임, 결과는 본 세션이 검토 후 정정). hm·jal은 Aside 필요.
 5e. **EU 웨이브 2** — 스카우팅 2026-09-26: **12/18(67%)** — klarna(SE) · ikea · hm(`--fds` 11,430, SE) · adyen(NL) ·
    coolblue(NL) · otto(`--oc`, DE) · flixbus(`--flix`, DE) · getyourguide(DE) · leboncoin(FR) · alan(FR) · glovo(ES) ·
    typeform(ES). 탈락: bunq(4)·picnic(wp/tw)·booking(26, 약함)·polestar(26, 보류). blablacar·idealista 403 → Aside 후보.
@@ -117,6 +118,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 
 회차가 끝날 때마다 한 줄. 최신이 위.
 
+- 2026-09-26 · 회차 24 · flixbus 등재(63/63, Honeycomb). hover가 background-image 반투명 레이어 → **프로브 도구 사각지대 발견·수정**(bg-image·밑줄 비교, shadow root 동의 배너). '변화 없음' 39개(23건) 소급 스윕 위임 중 · 480 / 186
 - 2026-09-26 · 회차 23 · hm 등재(52/52, Fabric Design System, SE). Akamai가 로컬 IP 차단 → Aside로 재측정(openTab·looksAuthenticated=false). **위임 프로브가 프라이버시 규칙 없이 Aside를 썼다** → PROBE_BRIEF에 위임 Aside 금지, 진행 중 프로브 전원에 통지 · 479 / 185
 - 2026-09-26 · 회차 22 · doctolib 등재(59/59, Oxygen). 헤드라인 재측정: Rechercher 포커스 이중 링은 Tab 직후 첫 프레임엔 투명 → 대기 후 읽어야 함. Turnstile 오버레이 때문에 probe 도구가 대상 못 찾음 → 같은 방법의 짧은 스크립트로 측정 · 478 / 184
 - 2026-09-26 · 회차 21 · zalando 등재(62/62). 리브랜드 토큰 레이어(`@scope (:root)`)가 기본 테마를 덮는 구조 — 렌더 값은 오버라이드 쪽. 위임 프로브의 "lagom=블로그 테마명"·"25개 시장"·"프랑크푸르트 상장"은 인용 페이지에 없어 제외 · 477 / 183

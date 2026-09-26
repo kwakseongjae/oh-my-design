@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 479,
+ "count": 480,
  "items": [
   {
    "id": "104",
@@ -2866,6 +2866,34 @@
    "has_personas": true,
    "category_raw": "HR SaaS / Workforce Management",
    "country": "KR"
+  },
+  {
+   "id": "flixbus",
+   "primary_color_hex": "#97d700",
+   "category": "consumer-tech",
+   "visual_theme": "A bright, practical travel-booking site: white ground, #353535 text in Roboto, and Flix lime #97d700 on the header, the primary button and icons. 36px buttons with 6px radius; hover and press are 6% and 12% black gradient layers over the fill, never new colours; focus is a white 4px halo inside a 2px #016ae7 outline. Public Honeycomb tokens (--flix-*) match the live site exactly.",
+   "voice_fingerprint": {
+    "register": "German travel-booking site, plain and task-first",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "de-travel-booking"
+   },
+   "tone_keywords": [
+    "bright",
+    "practical",
+    "friendly",
+    "systematic",
+    "lime"
+   ],
+   "antipatterns": [
+    "per-component hover colours; states are shared translucent layers",
+    "white labels on the lime; the live button uses #353535",
+    "using the AI magenta #e100e1 as a general accent",
+    "large radii; buttons are 6px",
+    "browser-default focus; the ring is a white halo plus blue outline"
+   ],
+   "has_personas": false,
+   "category_raw": "travel-mobility"
   },
   {
    "id": "flo",
