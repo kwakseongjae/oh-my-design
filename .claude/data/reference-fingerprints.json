@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 483,
+ "count": 484,
  "items": [
   {
    "id": "104",
@@ -430,6 +430,34 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "Design Tools"
+  },
+  {
+   "id": "alan",
+   "primary_color_hex": "#5c59f3",
+   "category": "healthcare",
+   "visual_theme": "A soft, friendly health-insurance site: white and pale-blue #f5f8fe surfaces, #282830 headings and #464754 body text in Alan's own open-source Alan Sans, and indigo #5c59f3 on the main actions, darkening to #2f33a8 on hover and #0c0a66 on press. 16px corners and a faint rgba(40,40,48,0.06) shadow; cream, teal and fluorescent yellow for illustration.",
+   "voice_fingerprint": {
+    "register": "French health insurer, warm and plain-spoken",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "fr-health-insurance"
+   },
+   "tone_keywords": [
+    "soft",
+    "friendly",
+    "indigo",
+    "rounded",
+    "reassuring"
+   ],
+   "antipatterns": [
+    "counting react-toastify --toastify-* variables as Alan tokens",
+    "fluo yellow #fcff7e as a text colour",
+    "caption grey #656779 as body text",
+    "sharp corners; Alan rounds at 16px",
+    "heavy shadows; elevation is faint"
+   ],
+   "has_personas": false,
+   "category_raw": "health-insurance"
   },
   {
    "id": "alipay",
