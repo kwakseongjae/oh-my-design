@@ -65,7 +65,11 @@
    **마감 2026-09-26: 6/7 verified**(n26·sumup·wolt·qonto·zalando·doctolib). **check24 탈락** — 자체 변수 7개(브랜드색 0,
    나머지 217-7은 Tailwind v4·shadcn 기본값), 빨강은 알림 배지 1개·파랑은 숨은 skip 링크뿐, CTA·타일은 닫힌 shadow root.
    traderepublic 등과 같은 '자체 토큰 ≈0' 기준. (위임 프로브의 필별 hover 편차는 전환 도중 값 — 재측정하니 전부 `rgba(255,255,255,0.15)`.)
-5f. **bg-image 소급 스윕** — 2026-09-26 시작: 커밋된 verified 레퍼런스의 'hover 변화 없음' 39개(23건)를 고친 도구로 재측정(위임, 결과는 본 세션이 검토 후 정정). hm·jal은 Aside 필요.
+5f. ~~**bg-image 소급 스윕**~~ — 완료 2026-09-26: 37개 재측정(위임) → 본 세션 재확인 후 **정정 5개**: crowdworks 버튼 4개
+   (hover = 10%/5% 검은 그라디언트 레이어), bloomandwild Log in(밑줄). **위임 스윕의 '발견' 3건은 다른 요소를 잰 것**
+   (hatena 24px `#0000ee` 링크 ≠ 기록된 14px `#111111`, chatwork 투명 텍스트 링크 ≠ `#f03748` 알약, zalando 236px 컨테이너 ≠
+   40px 입력) → 채택 안 함. chatwork 알약은 새 도구로 재확인 불가(주석 남김). kakaopay는 레거시 캡처 인덱스라 보류.
+   미측정 9개는 그대로 둠(기록값 유지). 교훈: 위임 스윕도 **대상 동일성(기하·rest값)**을 본 세션이 다시 봐야 한다.
 5e. **EU 웨이브 2** — 스카우팅 2026-09-26: **12/18(67%)** — klarna(SE) · ikea · hm(`--fds` 11,430, SE) · adyen(NL) ·
    coolblue(NL) · otto(`--oc`, DE) · flixbus(`--flix`, DE) · getyourguide(DE) · leboncoin(FR) · alan(FR) · glovo(ES) ·
    typeform(ES). 탈락: bunq(4)·picnic(wp/tw)·booking(26, 약함)·polestar(26, 보류). blablacar·idealista 403 → Aside 후보.
@@ -118,6 +122,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 
 회차가 끝날 때마다 한 줄. 최신이 위.
 
+- 2026-09-26 · 회차 27 · 소급 스윕 정정: crowdworks 4(bg-image 레이어)·bloomandwild 1(밑줄). 위임 스윕 발견 3건은 다른 요소 → 기각 · 482 / 188
 - 2026-09-26 · 회차 26 · otto 등재(55/55, OTTO Components). 레거시 문서는 SPA라 curl 대조군이 거짓 음성 — 렌더링해서 404 제목 확인. PDP는 자동화에 HTTP 400 → 장바구니 버튼 미측정 · 482 / 188
 - 2026-09-26 · 회차 25 · klarna 등재(80/80, SE). 잉크 `#0b051d`=`--brand`, 핑크 `#ffa8cd`는 면·배지. 도구: `:focus-visible` 미매칭 focus도 못 쟀음 처리, 스웨덴어·네덜란드어 거부 문구 추가 · 481 / 187
 - 2026-09-26 · 회차 24 · flixbus 등재(63/63, Honeycomb). hover가 background-image 반투명 레이어 → **프로브 도구 사각지대 발견·수정**(bg-image·밑줄 비교, shadow root 동의 배너). '변화 없음' 39개(23건) 소급 스윕 위임 중 · 480 / 186

@@ -67,21 +67,22 @@ tokens:
   spacing: { s2: 2, s3: 3, s4: 4, s8: 8, s12: 12, s16: 16, s24: 24, s32: 32, s40: 40, s48: 48, s56: 56, s64: 64, s72: 72, s80: 80 }
   rounded: { xs: 2, sm: 4, md: 8, lg: 16, xl: 24, xxl: 32, pill: 10000 }
   components:
-    button-cta: { type: "button", bg: "#f26731", fg: "#ffffff", radius: 4, height: "48px", padding: "0 16px", font: "16px / 700", hover: "#f26731", pressed: "#f26731", use: "無料ではじめる — the wide call to action, 312×48. Hover and pressed change nothing; focus shows only the browser's ring." }
-    button-signup: { type: "button", bg: "#f26731", fg: "#ffffff", radius: 4, height: "40px", padding: "0 16px", font: "14px / 700", hover: "#f26731", pressed: "#f26731", use: "会員登録（無料） in the header, 130×40 — the same orange at the header size, and the same absence of hover styling." }
-    button-login: { type: "button", bg: "#ffffff", fg: "#353d48", border: "1px solid #afb7c1", radius: 4, height: "40px", padding: "0 16px", font: "14px / 700", hover: "#ffffff", pressed: "#ffffff", use: "ログイン, 89×40 — the outline twin. No hover change." }
-    button-google: { type: "button", bg: "#ffffff", fg: "#353d48", border: "1px solid #d6d6d6", radius: 4, height: "32px", padding: "4px 16px 4px 8px", font: "12px / 700", shadow: "rgba(163,162,162,0.2) -1px 2px 4px", hover: "#ffffff", pressed: "#ffffff", use: "Sign in with Google, 148×32 — the only measured control with a shadow, cast down and to the left. No hover change." }
+    button-cta: { type: "button", bg: "#f26731", fg: "#ffffff", radius: 4, height: "48px", padding: "0 16px", font: "16px / 700", hover: "layer rgba(0,0,0,0.1)", pressed: "layer rgba(0,0,0,0.1)", use: "無料ではじめる — the wide call to action, 312×48. Hover and press lay a 10% black gradient over the orange (background-image); the fill value itself does not change. Focus shows the same layer and the browser's ring." }
+    button-signup: { type: "button", bg: "#f26731", fg: "#ffffff", radius: 4, height: "40px", padding: "0 16px", font: "14px / 700", hover: "layer rgba(0,0,0,0.1)", pressed: "layer rgba(0,0,0,0.1)", use: "会員登録（無料） in the header, 130×40 — the same orange at the header size, with the same 10% black layer on hover and press." }
+    button-login: { type: "button", bg: "#ffffff", fg: "#353d48", border: "1px solid #afb7c1", radius: 4, height: "40px", padding: "0 16px", font: "14px / 700", hover: "layer rgba(0,0,0,0.05)", pressed: "layer rgba(0,0,0,0.05)", use: "ログイン, 89×40 — the outline twin; hover and press lay a 5% black layer over the white." }
+    button-google: { type: "button", bg: "#ffffff", fg: "#353d48", border: "1px solid #d6d6d6", radius: 4, height: "32px", padding: "4px 16px 4px 8px", font: "12px / 700", shadow: "rgba(163,162,162,0.2) -1px 2px 4px", hover: "layer rgba(0,0,0,0.05)", pressed: "layer rgba(0,0,0,0.05)", use: "Sign in with Google, 148×32 — the only measured control with a shadow, cast down and to the left; hover and press lay a 5% black layer." }
     link-guide: { type: "button", bg: "#f7f9fa", fg: "#000000", border: "1px solid #ecedf0", radius: 0, height: "53px", padding: "16px 32px", font: "11px / 700", hover: "rgba(32,34,39,.05)", pressed: "rgba(32,34,39,.05)", use: "はじめての方へ, a 360×53 guide row with a top rule only — the one measured control that responds, washing to ink at 5% on hover and press." }
     input-email: { type: "input", bg: "#ffffff", fg: "#353d48", border: "1px solid #bcc5cc", radius: 4, height: "45px", padding: "4px", font: "14px / 400", hover: "#ffffff", pressed: "#ffffff", focus: "#ffffff", use: "The email field, 291×45. Every property is identical at rest, hover, pressed and focus — including under :focus-visible, where it shows no ring at all." }
   components_harvested: true
 verification_v2:
   schema: 2
-  checked: "2026-09-23"
+  checked: "2026-09-26"
   surfaces:
     - { id: home, kind: product-surface, url: "https://crowdworks.jp/", inspected: "2026-09-22" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://crowdworks.jp/", captured: "2026-09-22" }
     - { id: control-404, kind: product-surface, url: "https://crowdworks.jp/zz-this-does-not-exist", captured: "2026-09-22" }
+    - { id: home-recheck, kind: product-surface, url: "https://crowdworks.jp/", captured: "2026-09-26" }
   conflicts: []
   claims:
     tokens.colors.accent: { surface_id: home, source_id: home-live, method: computed-style, captured: "2026-09-22" }
@@ -119,9 +120,9 @@ verification_v2:
     tokens.components.button-cta.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-cta.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-cta.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-cta.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-cta.hover: { surface_id: home, source_id: home-recheck, method: live-inspect, captured: "2026-09-26" }
     tokens.components.button-cta.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-cta.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-cta.pressed: { surface_id: home, source_id: home-recheck, method: live-inspect, captured: "2026-09-26" }
     tokens.components.button-cta.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-cta.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-cta.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
@@ -130,9 +131,9 @@ verification_v2:
     tokens.components.button-google.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-google.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-google.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-google.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-google.hover: { surface_id: home, source_id: home-recheck, method: live-inspect, captured: "2026-09-26" }
     tokens.components.button-google.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-google.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-google.pressed: { surface_id: home, source_id: home-recheck, method: live-inspect, captured: "2026-09-26" }
     tokens.components.button-google.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-google.shadow: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-google.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
@@ -142,9 +143,9 @@ verification_v2:
     tokens.components.button-login.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-login.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-login.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-login.hover: { surface_id: home, source_id: home-recheck, method: live-inspect, captured: "2026-09-26" }
     tokens.components.button-login.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-login.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-login.pressed: { surface_id: home, source_id: home-recheck, method: live-inspect, captured: "2026-09-26" }
     tokens.components.button-login.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-login.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-login.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
@@ -152,9 +153,9 @@ verification_v2:
     tokens.components.button-signup.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-signup.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-signup.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-signup.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-signup.hover: { surface_id: home, source_id: home-recheck, method: live-inspect, captured: "2026-09-26" }
     tokens.components.button-signup.padding: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-signup.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-signup.pressed: { surface_id: home, source_id: home-recheck, method: live-inspect, captured: "2026-09-26" }
     tokens.components.button-signup.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-signup.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-signup.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
@@ -352,12 +353,14 @@ Rendered: 12px ×190 · 14px ×67 · 16px ×37 · 20px ×18 · 18px ×15 · 24px
 Six controls measured, every state on its own page load, focus read for every control before
 the mouse moved.
 
-### Almost nothing responds to hover
+### Hover is a translucent layer
 
-Five of six controls change **nothing** on hover. The two orange sign-up buttons, the outline
-login button, the Google button and the email field are identical at rest and under the pointer
-while `:hover` matches true. The one that responds is a guide row, **はじめての方へ**, which
-washes to `rgba(32,34,39,.05)` — ink at 5%.
+The buttons keep their fill colour on hover and lay a black gradient over it in
+`background-image`: **10%** on the two orange sign-up buttons, **5%** on the white login and
+Google buttons. (Measured 2026-09-26; the first capture on 2026-09-22 read these as "no change"
+because the probe compared background colour but not background image.) The guide row,
+**はじめての方へ**, washes its background to `rgba(32,34,39,.05)` — ink at 5%. The email field is
+the one control that stays identical under the pointer.
 
 - **Wide CTA** — `#f26731`, white 16px/700, 4px radius, 312×48.
 - **Header sign-up** — the same orange, 14px/700, 130×40.
@@ -428,7 +431,7 @@ token set.
 AI CrowdWorks `#5628a8` / `#0a7093` / `#32d4af`
 
 ### Example Component Prompts
-- "A 48px sign-up button: `#f26731`, white 16px/700 label, 4px radius, no hover change."
+- "A 48px sign-up button: `#f26731`, white 16px/700 label, 4px radius; hover lays a 10% black layer over the orange."
 - "Body copy as `400 16px / 1.8 'Hiragino Kaku Gothic Pro', sans-serif` in `#353d48`."
 
 ## 10. Voice & Tone
@@ -459,8 +462,8 @@ Not researched. No persona claim is made from a UI capture.
 
 ## 14. States
 
-Six components, every state measured. Five change nothing on hover or press; the guide row
-washes to ink at 5%. Focus is the browser's `auto` ring at a per-control width on every button,
+Six components, every state measured. Hover and press lay a black layer over the buttons — 10% on
+orange, 5% on white; the guide row washes to ink at 5%; the email field does not change. Focus is the browser's `auto` ring at a per-control width on every button,
 and **nothing at all** on the email field.
 
 No disabled state was observed on a rendered control. `--text-color-disabled` `#cfd4da` exists
@@ -469,7 +472,7 @@ in the set.
 ## 15. Motion & Easing
 
 **No motion token exists** among the 395, and every measured control computes
-`transition: all` with no duration — so the one hover change there is happens instantly.
+`transition: all` with no duration — so the hover changes happen instantly.
 
 ---
 

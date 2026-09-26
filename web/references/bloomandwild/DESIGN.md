@@ -44,7 +44,7 @@ tokens:
     button-secondary: { type: "button", bg: "transparent", fg: "#262626", border: "#262626", radius: 2, height: "48px", padding: "13px 19px", font: "18px / 400", hover: "transparent", pressed: "transparent", focus: "outline 2px solid #2771fc", use: "Next slide — the outline carousel-arrow control. No visible change on hover or press." }
     nav-link: { type: "button", bg: "transparent", fg: "#262626", radius: 0, height: "45px", padding: "10px 4px 11px", font: "16px / 500", hover: "transparent", pressed: "transparent", focus: "outline 2px solid #2771fc", use: "Flowers — a mega-nav top-level item. No visible change on hover or press." }
     search-trigger: { type: "input", bg: "#ffffff", fg: "#534e46", border: "#e2e0dc", radius: 9999, height: "37px", padding: "8px 72px 8px 36px", font: "16px / 400", hover: "#fcf5ea", pressed: "#fcf5ea", focus: "#fcf5ea, outline 2px solid #2771fc", use: "Search for products — the header search pill. The only control with a real colour-changing hover: a cream fill close to the linen family." }
-    icon-link: { type: "button", bg: "transparent", fg: "#262626", border: "#262626", radius: 0, height: "58px", padding: "8px", font: "16px / 400", hover: "transparent", pressed: "transparent", focus: "outline 2px solid #2771fc", use: "Log in — secondary-nav icon link. No visible change on hover or press." }
+    icon-link: { type: "button", bg: "transparent", fg: "#262626", border: "#262626", radius: 0, height: "58px", padding: "8px", font: "16px / 400", hover: "underline #262626", pressed: "underline #262626", focus: "outline 2px solid #2771fc", use: "Log in — secondary-nav icon link. Hover and press underline the label in #262626." }
     card-link: { type: "card", bg: "transparent", fg: "#ffffff", radius: 0, height: "24px", padding: "0", font: "16px / 500", focus: "outline 2px solid #2771fc", use: "Birthday Gifts — an image-backed category card, white label over a photo. Focus draws the #2771fc outline. Hover and press were not measured (the pointer could not reach it)." }
   components_harvested: true
 verification_v2:
@@ -189,8 +189,9 @@ What makes it worth reading:
 - **Two foundry faces, both self-hosted.** Tiempos Headline (Klim) and Unica 77 LL
   (Lineto) both load and render, served as hashed webfont files from Bloom & Wild's own asset
   host rather than a foundry CDN.
-- **Almost nothing changes on hover.** Of six probed controls, five show no visible change beyond
-  an authored focus ring; only the header search pill fills with a cream tint.
+- **Hover is quiet.** The primary, outline and nav controls show no visible change beyond an
+  authored focus ring; the header search pill fills with a cream tint and the Log in link
+  underlines.
 - **A shared group platform underneath.** `--oasys-*` supplies the universal focus-ring blue and
   feeds at least one brand colour (the pine-green ramp) without being a Bloom & Wild-specific
   namespace itself.
@@ -320,11 +321,12 @@ of its own resting colour.
   **Hover and press were not measured** — the pointer could not reach the element under a sibling;
   recorded as unmeasured, not as "no change."
 - **Icon-link** ("Log in", secondary nav) — transparent bg, `#262626` fg and border, 58px tall, 8px
-  padding, 16px/400. No visible change on hover or press.
+  padding, 16px/400. Hover and press underline the label (`text-decoration: underline #262626`;
+  re-measured 2026-09-26 — the first pass compared colours only and read it as unchanged).
 
-Only the search pill shows a colour-changing hover across all six controls; every other resting
-colour carries through to hover and pressed identically, with the `#2771fc` ring the sole marker
-of interactivity on focus.
+Only the search pill shows a colour-changing hover, and only the Log in link an underline; the
+primary, outline and nav controls carry their resting values through hover and press, with the
+`#2771fc` ring the sole marker of interactivity on focus.
 
 ## 5. Layout Principles
 
@@ -365,8 +367,8 @@ reserved for card/panel surfaces, not buttons or links.
   inventing intermediate weights that were not observed loaded.
 
 ### Don't
-- Don't assume hover changes anything: five of six probed controls show identical rest and hover
-  states; only the search pill's `#fcf5ea` fill is a real colour change.
+- Don't assume hover changes much: three of six probed controls show identical rest and hover
+  states; the search pill's `#fcf5ea` fill and the Log in underline are the exceptions.
 - Don't count `--oasys-*` (889 declarations) as Bloom & Wild-specific — it is the group's shared
   platform layer, feeding only a couple of brand values.
 - Don't round buttons to the named radius scale (0/4/8/12/16/9999) — the CTA and outline buttons
@@ -413,7 +415,7 @@ Tiempos/Unica pairing publicly; it is read here from the rendered page alone.
 ## 12. Principles
 
 - **Near-monochrome, warmed by bands.** `#262626` on white, lit by linen and lemon.
-- **Interaction is quiet.** Most controls don't change on hover; the focus ring is the constant.
+- **Interaction is quiet.** Half the controls don't change on hover; the focus ring is the constant.
 - **Two foundry faces, self-hosted.** Tiempos Headline for display, Unica 77 LL for the rest.
 
 ## 13. Personas
@@ -422,9 +424,9 @@ Not researched. No persona claim is made from a UI capture.
 
 ## 14. States
 
-Six components probed. Hover: no visible change on five of six controls (primary CTA, secondary
-button, nav link, icon-link, card-link at rest/press); the search trigger is the exception,
-filling `#fcf5ea` on both hover and press. Focus: a universal `#2771fc` 2px outline on five
+Six components probed. Hover: no visible change on the primary CTA, secondary button and nav
+link; the search trigger fills `#fcf5ea` and the Log in icon-link underlines, on both hover and
+press; the card-link's hover was not measured. Focus: a universal `#2771fc` 2px outline on five
 controls; the card-link instead flips its fg/border to `#262626` with no visible outline. The
 card-link's hover state was not measured (locator timeout) and is left unrecorded rather than
 marked unchanged. No disabled state was observed.

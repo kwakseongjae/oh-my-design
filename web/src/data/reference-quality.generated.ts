@@ -1873,7 +1873,7 @@ export const REFERENCE_QUALITY = [
     "evidenceClaimCount": 141,
     "evidenceCoverage": 1,
     "surfaceCount": 1,
-    "sourceCount": 2,
+    "sourceCount": 3,
     "conflictCount": 0,
     "tier1SourceCount": 2,
     "componentCount": 6,

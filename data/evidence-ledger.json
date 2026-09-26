@@ -3,12 +3,12 @@
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
   "references_with_verification_v2": 188,
-  "sources": 1119,
+  "sources": 1120,
   "sources_by_kind": {
     "brand-asset": 75,
     "license": 76,
     "official-doc": 471,
-    "product-surface": 497
+    "product-surface": 498
   },
   "references": {
     "104": {
@@ -1338,7 +1338,7 @@
       ]
     },
     "crowdworks": {
-      "checked": "2026-09-23",
+      "checked": "2026-09-26",
       "claims": 0,
       "sources": [
         {
@@ -1351,6 +1351,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-09-22",
+          "host": "crowdworks.jp"
+        },
+        {
+          "id": "home-recheck",
+          "kind": "product-surface",
+          "captured": "2026-09-26",
           "host": "crowdworks.jp"
         }
       ]
