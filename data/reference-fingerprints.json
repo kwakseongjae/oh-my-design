@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 490,
+ "count": 491,
  "items": [
   {
    "id": "104",
@@ -1135,6 +1135,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "marketing"
+  },
+  {
+   "id": "cabify",
+   "primary_color_hex": "#7145d6",
+   "category": "consumer-tech",
+   "visual_theme": "A friendly purple mobility site: white and lavender #f2f2fd surfaces, #1a1a1c and blue-grey #5e6088 text, Cabify purple #7145d6 on the main action (hover lightens to #8a6ee4) and a deep aubergine #1f123f secondary (hover #362065). 8px buttons at 40px and 50px; pressing adds a 2px lighter ring. Cabify Ciudad headings over Cabify Ciudad Text.",
+   "voice_fingerprint": {
+    "register": "Iberoamerican mobility brand, warm and direct",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "es-mobility"
+   },
+   "tone_keywords": [
+    "friendly",
+    "purple",
+    "modern",
+    "trustworthy",
+    "urban"
+   ],
+   "antipatterns": [
+    "darkening on hover; Cabify lightens to #8a6ee4",
+    "pure black text; the ink is #1a1a1c",
+    "other brand hues for actions",
+    "large radii; buttons are 8px",
+    "shadows at rest; the only shadow is the press ring"
+   ],
+   "has_personas": false,
+   "category_raw": "ride-hailing"
   },
   {
    "id": "caddi",
