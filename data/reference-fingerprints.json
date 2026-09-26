@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
- "generated_at": "2026-09-23T00:00:00Z",
+ "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 466,
+ "count": 467,
  "items": [
   {
    "id": "104",
@@ -6919,6 +6919,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "pairs",
+   "primary_color_hex": "#00C1D4",
+   "category": "consumer-tech",
+   "visual_theme": "A light, soft, teal dating-app landing page: brand cyan #00c1d4 on every interactive border and label, pale #e0f8fc section bands, green-grey text #325151 instead of black, #dae4e5 hairlines instead of shadows, and pill buttons throughout. The primary calls to action sit on a mint-to-cyan gradient (#70dfab to #3bd6cb to #20cfe3) that is stored as a PNG token and inverts to white with a teal label on hover. Every type step names a separate desktop and smartphone size.",
+   "voice_fingerprint": {
+    "register": "Japanese consumer dating-app landing page",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "ja-consumer-app"
+   },
+   "tone_keywords": [
+    "soft",
+    "fresh",
+    "teal",
+    "trustworthy",
+    "rounded"
+   ],
+   "antipatterns": [
+    "using the generic --color-blue-* ramp (#007bcc) as the brand colour; the brand is --color-pairs-blue-*",
+    "setting text in pure black; body text is the green-grey #325151",
+    "separating content with shadows rather than #dae4e5 hairlines",
+    "counting Tailwind v4's lab() greys and stock text sizes as Pairs tokens",
+    "oversaturating the gradient beyond its sampled stops"
+   ],
+   "has_personas": false,
+   "category_raw": "dating-app"
   },
   {
    "id": "palantir",

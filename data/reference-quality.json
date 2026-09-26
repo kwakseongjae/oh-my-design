@@ -1,13 +1,13 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-23",
+  "generated_at": "2026-09-26",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 466,
+  "count": 467,
   "counts": {
-    "verified_v2": 172,
+    "verified_v2": 173,
     "partial": 181,
     "legacy_snapshot": 113,
-    "total": 466
+    "total": 467
   },
   "items": [
     {
@@ -3537,6 +3537,17 @@
       "reason_codes": [
         "verification_v2_missing"
       ]
+    },
+    {
+      "id": "pairs",
+      "status": "verified_v2",
+      "verified_at": "2026-09-26",
+      "next_reverify_at": "2027-03-25",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 3,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "palantir",

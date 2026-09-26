@@ -42,6 +42,17 @@ for (const p of paths) {
   lines.push(`    ${p}: { surface_id: home, source_id: home-live, method: ${method}, captured: "${captured}" }`);
 }
 
+// 근거 사전 점검 — catalog-integrity는 tokens.colors와 컴포넌트 bg/fg/border의 hex가 전부
+// 본문(토큰 블록 밖)에 나오기를 요구한다. 테스트까지 가서 걸리면 빌드 전체를 다시 돈다
+// (2026-09-26 pairs: 카드 fg #000000 누락). 여기서 먼저 알린다.
+const body = readFileSync(bodyP, "utf8").toLowerCase();
+const hexes = new Set(Object.values(fm.tokens?.colors ?? {}).map(String));
+for (const c of Object.values(fm.tokens?.components ?? {})) {
+  for (const k of ["bg", "fg", "border"]) for (const h of String(c?.[k] ?? "").match(/#[0-9a-f]{6}\b/gi) ?? []) hexes.add(h);
+}
+const ungrounded = [...hexes].filter((h) => /^#[0-9a-f]{6}$/i.test(h) && !body.includes(h.toLowerCase()));
+if (ungrounded.length) console.warn(`⚠ not in body text (grounding will fail): ${ungrounded.join(" ")}`);
+
 mkdirSync(dirname(outP), { recursive: true });
 writeFileSync(outP, `---\n${frontSrc.trimEnd()}\n${lines.join("\n")}\n---\n${readFileSync(bodyP, "utf8")}`);
 console.log(`claims ${paths.length}`);

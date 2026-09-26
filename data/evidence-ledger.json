@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 172,
-  "sources": 1045,
+  "references_with_verification_v2": 173,
+  "sources": 1048,
   "sources_by_kind": {
     "brand-asset": 75,
     "license": 76,
-    "official-doc": 434,
-    "product-surface": 460
+    "official-doc": 435,
+    "product-surface": 462
   },
   "references": {
     "104": {
@@ -4574,6 +4574,30 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "m.onestore.co.kr"
+        }
+      ]
+    },
+    "pairs": {
+      "checked": "2026-09-26",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-09-26",
+          "host": "www.pairs.lv"
+        },
+        {
+          "id": "eureka-corp",
+          "kind": "official-doc",
+          "captured": "2026-09-26",
+          "host": "eure.jp"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-09-26",
+          "host": "www.pairs.lv"
         }
       ]
     },
