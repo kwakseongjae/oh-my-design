@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 496,
+ "count": 497,
  "items": [
   {
    "id": "104",
@@ -5150,6 +5150,34 @@
    ],
    "has_personas": false,
    "category_raw": "payments"
+  },
+  {
+   "id": "klm",
+   "primary_color_hex": "#0070c2",
+   "category": "consumer-tech",
+   "visual_theme": "A clean airline booking site: white and cool grey #f6f7f8 surfaces, deep navy #002746 text, and KLM blue #0070c2 for the brand, links and the flight search (hover #005496, pressed #003d6d). White tabs and utility buttons wash to #eaebec and #d4d8da; focus is a 2px #001527 outline. 4px corners; Universal Sans Display and Text. --aero-* tokens name airports, cabins and Flying Blue tiers.",
+   "voice_fingerprint": {
+    "register": "Dutch national airline, clear and service-minded",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "nl-airline"
+   },
+   "tone_keywords": [
+    "clean",
+    "blue",
+    "trustworthy",
+    "service",
+    "Dutch"
+   ],
+   "antipatterns": [
+    "counting Angular Material --mat-* as KLM tokens",
+    "Flying Blue indigo #0800b9 outside loyalty contexts",
+    "black text; the ink is navy #002746",
+    "large radii; controls are 4px",
+    "missing focus outlines; focus is a 2px navy outline"
+   ],
+   "has_personas": false,
+   "category_raw": "airline"
   },
   {
    "id": "kmong",
