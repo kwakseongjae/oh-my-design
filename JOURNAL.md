@@ -9,7 +9,8 @@
 - **한 일(4)**: hm·flixbus·klarna·otto verified(**482 / 188**). 프로브 도구 사각지대(bg-image hover, focus-visible 미매칭) 수정 → 'hover 변화 없음' 39개 소급 스윕 위임. 위임 Aside 금지.
 - **한 일(5)**: 스윕 정정 5개, getyourguide·alan·adyen verified(**485 / 191**). 도구 사각지대 3번째(가상 요소) 수정.
 - **한 일(6)**: coolblue(Aside)·typeform·ikea verified(**488 / 194**). glovo 보류(WAF). EU 웨이브 3 스카우팅 12/20.
-- **다음**: 가상 요소 스윕 검토 → malt·payfit·storytel·cabify → 웨이브 3 나머지 8건. booth·coconala 상태 확인.
+- **한 일(7)**: deutschebahn·storytel·cabify·malt·payfit verified(**493 / 199**) — 위임 에이전트 7개 무응답으로 전부 종료, 본 세션 직접 측정으로 전환.
+- **다음**: 웨이브 3 나머지(oura·satispay·pennylane·contentful·klm·ing·deezer) 직접 → 가상 요소 스윕 직접 실행 → JP6 booth·coconala.
 
 ## 2026-09-23
 

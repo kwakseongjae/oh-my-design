@@ -3,6 +3,18 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-26 · 루프 회차 34–38 — **EU 웨이브 3, 본 세션 직접 측정** (493 · 199)
+
+- 등재: deutschebahn(DE, DB UX 공개) · storytel(SE) · cabify(ES) · malt(FR, Joy) · payfit(FR, oklch→hex).
+- **위임 에이전트 7개(스윕·malt·payfit·storytel·cabify·booth2·coconala2) 1.5~5시간 무응답** → 전부 종료.
+  원인 미상(패인이 권한 프롬프트에 걸렸을 가능성). EU 웨이브 3은 본 세션이 범용 survey 스크립트
+  (`scratchpad/survey.mjs`) + probe-component-states로 직접 측정 — 건당 ~5분, 안정적.
+- leboncoin: DataDome이 헤드리스·Aside 모두 차단 → 보류. glovo 보류(WAF).
+- 가상 요소 스윕 미완(에이전트 종료) — 본 세션이 나중에 직접 실행.
+- 오늘 누적 +21 (472→493), verified +21 (178→199).
+
+---
+
 ## ✅ 2026-09-26 · 루프 회차 31–33 — **EU 웨이브 2 거의 마감** (488 · 194)
 
 - 등재: coolblue(NL, 본 세션 Aside — 동의창 수락 안 함) · typeform(ES, Paper·Ink) · ikea(NL, Skapa `data-skapa` 속성).
