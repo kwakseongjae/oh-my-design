@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 470,
+ "count": 471,
  "items": [
   {
    "id": "104",
@@ -6534,6 +6534,34 @@
    "signature_motion": "Restrained corporate transitions; functional widget interactions in TOAST UI. Motion clarifies, never decorates.",
    "has_personas": true,
    "category_raw": "backend-devops / cloud infrastructure (NHN Cloud + TOAST UI)"
+  },
+  {
+   "id": "nhs",
+   "primary_color_hex": "#005EB8",
+   "category": "healthcare",
+   "visual_theme": "A public-service website built for everyone: NHS blue #005eb8 for the header, links and brand, near-black #212b32 text at a generous 19px, white cards on a pale grey #f0f4f5 page, a green #007f3b primary button with a hard 4px shadow, and the licensed NHS brand font Frutiger. Almost nothing is rounded and every shadow is an unblurred offset. Focus is designed rather than left to the browser: links fill yellow #ffeb3b with a black bottom border, inputs get a yellow ring and a thick black border.",
+   "voice_fingerprint": {
+    "register": "public health information for England, plain and direct",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-gb-public-service"
+   },
+   "tone_keywords": [
+    "accessible",
+    "plain",
+    "trustworthy",
+    "flat",
+    "high-contrast"
+   ],
+   "antipatterns": [
+    "leaving focus to the browser - every control needs the yellow-and-black focus",
+    "rounding cards and links; only buttons and inputs take 4px",
+    "blurring shadows; NHS shadows are hard offsets",
+    "rendering Arial under the name Frutiger - Frutiger is licensed to NHS organisations",
+    "shrinking body text below 19px"
+   ],
+   "has_personas": false,
+   "category_raw": "public-health-service"
   },
   {
    "id": "nike",
