@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 507,
+ "count": 508,
  "items": [
   {
    "id": "104",
@@ -2802,6 +2802,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "education"
+  },
+  {
+   "id": "epidemicsound",
+   "primary_color_hex": "#ff82c2",
+   "category": "consumer-tech",
+   "visual_theme": "A Stockholm music-licensing storefront that turns a dark-first product system (#121418 base, white text) into a light override: off-white #f1f0eb page, black ink, black full pills lifting to #272727 and #333333, translucent blue-grey secondary pills stepping 6% to 24%, and brand accents — pink #ff82c2, azur #20afff, yellow #ffda40, red #ff6138 — beside named neutrals (fog, ecru, moss, stone). Sebenta headlines at 80px over Inter.",
+   "voice_fingerprint": {
+    "register": "creator-focused, upbeat and reassuring",
+    "sentence_length": "short",
+    "metaphor_density": "medium",
+    "vocabulary_register": "en-music-licensing"
+   },
+   "tone_keywords": [
+    "creative",
+    "off-white",
+    "pill",
+    "pink",
+    "worry-free"
+   ],
+   "antipatterns": [
+    "pure white marketing ground; it is off-white #f1f0eb",
+    "square buttons; everything is a full pill",
+    "platform brand colours used for Epidemic's own UI",
+    "opaque grey secondary buttons; they are translucent tints",
+    "actions without hovered, pressed and disabled values"
+   ],
+   "has_personas": false,
+   "category_raw": "music-licensing"
   },
   {
    "id": "eslite",

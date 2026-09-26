@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 213,
-  "sources": 1219,
+  "references_with_verification_v2": 214,
+  "sources": 1223,
   "sources_by_kind": {
     "brand-asset": 75,
     "license": 76,
-    "official-doc": 518,
-    "product-surface": 550
+    "official-doc": 520,
+    "product-surface": 552
   },
   "references": {
     "104": {
@@ -1964,6 +1964,36 @@
           "kind": "product-surface",
           "captured": "2026-07-12",
           "host": "elevenlabs.io"
+        }
+      ]
+    },
+    "epidemicsound": {
+      "checked": "2026-09-26",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "about",
+          "kind": "official-doc",
+          "captured": "2026-09-26",
+          "host": "www.epidemicsound.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-09-26",
+          "host": "www.epidemicsound.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-09-26",
+          "host": "www.epidemicsound.com"
+        },
+        {
+          "id": "press",
+          "kind": "official-doc",
+          "captured": "2026-09-26",
+          "host": "corporate.epidemicsound.com"
         }
       ]
     },

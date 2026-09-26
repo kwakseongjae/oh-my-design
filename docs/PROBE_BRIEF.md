@@ -23,3 +23,9 @@ Do not guess; mark anything unverified. Note the company's own HQ country and an
 **Identity and blind spots (2026-09-26).** For every control, report the geometry (height, radius, padding, font) and rest bg/fg you measured, so the main session can confirm it is the intended element — a sweep reported three "findings" that were different elements. The probe tool compares bg, fg, border, shadow, outline, transform, opacity, `background-image`, `text-decoration` and `::before`/`::after`; if you read states with your own script, compare all of these too (FlixBus hovers via a background-image layer, Adyen via a `::before` overlay). A link's own `color` may be the browser default (`#0000ee`, active `#ff0000`) while the visible label is a child — report the child's colour.
 
 **Time box (2026-09-26).** Finish within about 45 minutes. If a step stalls, mark it UNMEASURED and move on, and write the report even if it is partial — two probes ran five hours without reporting and had to be stopped.
+
+## 순서: 대조군·회사 사실 먼저, 프로브는 나중 (2026-09-26)
+
+idealista·wetransfer는 상태 프로브(상태마다 새 컨텍스트 = 짧은 시간에 수십 번 로드)를 돌린 직후
+WAF가 403을 돌려주기 시작해, nonsense-path 대조군과 회사 페이지를 읽지 못했다. 측정값은 남았지만
+등재를 못 했다. **nonsense-path 대조군 → 회사/법적 고지 페이지 → survey → 프로브** 순으로 한다.
