@@ -203,6 +203,11 @@ export function ReferenceSelector({
     Netherlands: "🇳🇱",
     Sweden: "🇸🇪",
     Spain: "🇪🇸",
+    Lithuania: "🇱🇹",
+    Norway: "🇳🇴",
+    Denmark: "🇩🇰",
+    Austria: "🇦🇹",
+    Estonia: "🇪🇪",
     UK: "🇬🇧",
   };
 

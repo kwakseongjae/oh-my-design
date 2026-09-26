@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 500,
+ "count": 501,
  "items": [
   {
    "id": "104",
@@ -11398,6 +11398,34 @@
    "signature_motion": "Shadow-border hover lift; card shadow intensifies without translation.",
    "has_personas": true,
    "category_raw": "developer-infra"
+  },
+  {
+   "id": "vinted",
+   "primary_color_hex": "#007782",
+   "category": "ecommerce",
+   "visual_theme": "A clean, quiet second-hand marketplace from Lithuania: white ground, blue-grey ink #15191a and subtle #5a6566 text, a pale teal-grey surface #edf2f2, and Vinted teal #007782 for every action. Tokens are named by intent, prominence and state and stored as RGB channels; states are translucent ::after overlays (2% hover and focus, 8% press) rather than new fills. 6px corners, 12px on sheets.",
+   "voice_fingerprint": {
+    "register": "friendly European marketplace, plain and encouraging",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-resale-marketplace"
+   },
+   "tone_keywords": [
+    "quiet",
+    "teal",
+    "second-hand",
+    "practical",
+    "calm"
+   ],
+   "antipatterns": [
+    "swapping the fill on hover; states are 2-8% overlays",
+    "pure black text; the ink is #15191a",
+    "teal on passive text; teal is for actions",
+    "colour-named roles; roles are named by intent and prominence",
+    "large radii on buttons; they are 6px"
+   ],
+   "has_personas": false,
+   "category_raw": "resale-marketplace"
   },
   {
    "id": "vocus",

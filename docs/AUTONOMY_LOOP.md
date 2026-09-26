@@ -61,7 +61,12 @@
 5c. ~~**JP 웨이브 6**~~ — 스카우팅 2026-09-26: 2/12(17%, booth `--charcoal*691`·coconala) — 하한 근접 두 번째. 첫 프로브 2건은 5시간 무응답으로 종료, 45분 제한을 걸어 재실행(15:55).
    **마감 2026-09-26: 2/2 verified**(booth — pixiv Charcoal; coconala — 헤더가 중첩 shadow root 166개, 도구의 오버레이 제거가
    shadow 경계에서 조상 탐색을 멈춰 헤더 host를 숨기던 결함 수정). JP 수율 17%로 하한(15%) 위 — 시장 유지, 다음 JP 웨이브는 EU 뒤.
-5i. **EU 웨이브 4** — 스카우팅 대기. EU 수율 58~67%로 현재 주력.
+5i. **EU 웨이브 4** — 스카우팅 2026-09-26: **16/32(50%)** — vinted(LT, --v) · vipps(NO, 854) · lego(DK, --ds 2,178) ·
+   toogoodtogo(DK, --dt) · idealista(ES, kiwi) · fever(ES, --fv 608) · bitpanda(AT) · wetransfer(NL, --wt) · ns(NL, --nes 496) ·
+   zooplus(DE, --pp) · epidemicsound(SE, --es) · bolt(EE — ruby/iris/mint은 Radix 기본값, 제외 후 판단) · avanza(SE) ·
+   celonis(DE, --fnd) · ecosia(DE) · trivago(DE, 컨트롤 0 — 지연 렌더 의심). 탈락: booking(202·27)·picnic(wp/tw)·bunq(4)·
+   swile(tw)·vestiaire(1)·kahoot(wp)·polestar(6)·factorial(tw)·travelperk(tw 팔레트)·mytheresa(0)·supercell(23)·scalapay(webflow).
+   차단: thuisbezorgd·trustpilot·blablacar·decathlon(403).
 5d. ~~**EU 웨이브 1**~~ — 스카우팅 2026-09-26: **7/12(58%)** — n26 · zalando · check24 · sumup(`--cui` Circuit UI) · qonto ·
    doctolib(`--oxygen` 3,650) · wolt(DoorDash 소유, 본사 헬싱키 → FI). 탈락: traderepublic·mollie·backmarket(토큰 ≈0),
    personio(tw), hellofresh(403 → Aside). 카탈로그 EU는 사실상 공백(spotify·IT 2·FR 2·DE 1) — **다음 주력 시장**.

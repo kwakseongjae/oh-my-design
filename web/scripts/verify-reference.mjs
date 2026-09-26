@@ -31,7 +31,7 @@ const id = process.argv[2];
 const NO_NET = process.argv.includes('--no-net');
 if (!id) { console.error('usage: verify-reference.mjs <id> [--no-net]'); process.exit(1); }
 
-const VALID_COUNTRIES = ['KR', 'US', 'JP', 'TW', 'CN', 'UK', 'DE', 'FR', 'IT', 'FI', 'NL', 'SE', 'ES'];
+const VALID_COUNTRIES = ['KR', 'US', 'JP', 'TW', 'CN', 'UK', 'DE', 'FR', 'IT', 'FI', 'NL', 'SE', 'ES', 'LT', 'NO', 'DK', 'AT', 'EE'];
 const VALID_LOGO_TYPES = ['favicon', 'simpleicons', 'github'];
 // Kept in step with src/lib/reference-categories.ts, which the catalog-integrity
 // gate enforces. Two copies of an enum is how the first nine strays got in; this
