@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 475,
+ "count": 476,
  "items": [
   {
    "id": "104",
@@ -7848,6 +7848,34 @@
    ],
    "has_personas": false,
    "category_raw": "developer-publishing"
+  },
+  {
+   "id": "qonto",
+   "primary_color_hex": "#050505",
+   "category": "fintech",
+   "visual_theme": "A confident, editorial business-banking site in near-black #050505 and white, set very large in the company's own QontoSans - display steps run to 128px - with full-bleed dark and light sections. Colour comes as soft pastel families (blueberry, plum, peach, sakura, mint, mustard) used for tints and translucent highlights, while every action stays black and states are washes of #1d1d1b. 8px buttons, 24px cards, soft shadows plus one hard sticker offset.",
+   "voice_fingerprint": {
+    "register": "French business-banking marketing site, confident and direct",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "fr-fintech-smb"
+   },
+   "tone_keywords": [
+    "confident",
+    "editorial",
+    "monochrome",
+    "pastel-accented",
+    "bold-type"
+   ],
+   "antipatterns": [
+    "counting Tailwind v4's stock oklch palette as Qonto colours",
+    "using a pastel as a button colour; actions are near-black",
+    "bold-weighted button labels; Qonto keeps actions at 400",
+    "using the hard -4px 4px 0 #1d1d1b shadow everywhere; it is for accent cards",
+    "mixing #000 and #050505 freely; --color-primary-black is the authored ink"
+   ],
+   "has_personas": false,
+   "category_raw": "business-banking"
   },
   {
    "id": "qraft",

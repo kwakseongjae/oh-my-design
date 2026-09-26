@@ -2,12 +2,12 @@
   "schema_version": 2,
   "generated_at": "2026-09-26",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 475,
+  "count": 476,
   "counts": {
-    "verified_v2": 181,
+    "verified_v2": 182,
     "partial": 181,
     "legacy_snapshot": 113,
-    "total": 475
+    "total": 476
   },
   "items": [
     {
@@ -3999,6 +3999,17 @@
       "evidence_coverage": 1,
       "surface_count": 1,
       "source_count": 2,
+      "conflict_count": 0,
+      "reason_codes": []
+    },
+    {
+      "id": "qonto",
+      "status": "verified_v2",
+      "verified_at": "2026-09-26",
+      "next_reverify_at": "2027-03-25",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 5,
       "conflict_count": 0,
       "reason_codes": []
     },
