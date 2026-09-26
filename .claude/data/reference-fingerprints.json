@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 468,
+ "count": 469,
  "items": [
   {
    "id": "104",
@@ -8346,6 +8346,34 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "consumer"
+  },
+  {
+   "id": "sainsburys",
+   "primary_color_hex": "#F06C00",
+   "category": "ecommerce",
+   "visual_theme": "A plain, square British supermarket site on Luna, Sainsbury's design system: the store orange #f06c00 for every primary action and #e55000 for its highlight, one charcoal #404040 for body text and the footer, white and pale grey surfaces, 2px corners, and headings, navigation and calls to action in the brand face MaryAnn over a system Arial body. Every focusable element carries an invisible 3px ring that turns rgba(25,118,210,0.7) on focus - the focus ring is a token.",
+   "voice_fingerprint": {
+    "register": "British supermarket homepage; 3,903 characters",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-gb-grocery-retail"
+   },
+   "tone_keywords": [
+    "plain",
+    "warm",
+    "orange",
+    "square",
+    "accessible"
+   ],
+   "antipatterns": [
+    "using the plum brand-2 #7f0442 as a second action colour beside the orange",
+    "rounding corners beyond 2px on buttons and cards",
+    "dropping the 3px rgba(25,118,210,0.7) focus ring",
+    "copying the #400 / #800 font-weight token values literally",
+    "setting body copy in MaryAnn; it is for headings, navigation and actions"
+   ],
+   "has_personas": false,
+   "category_raw": "supermarket"
   },
   {
    "id": "sakura-internet",
