@@ -3,6 +3,15 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-26 · 루프 회차 39–42 — **EU 웨이브 3: 9/12** (497 · 203)
+
+- 등재: oura(FI — 미국 이전 공지, 재분류 조건 기록) · satispay(IT) · pennylane(FR) · klm(NL).
+- 보류: ing(shadow DOM) · contentful(Vercel 429, US 가능성) · deezer(동의층 의심). glovo·leboncoin은 차단.
+- 다음 할 일: 도구에 open shadow root 관통 추가(ing·check24 류), 가상 요소 스윕을 본 세션이 직접, JP6 booth·coconala 직접.
+- 오늘 누적 +25 (472→497), verified +25 (178→203).
+
+---
+
 ## ✅ 2026-09-26 · 루프 회차 34–38 — **EU 웨이브 3, 본 세션 직접 측정** (493 · 199)
 
 - 등재: deutschebahn(DE, DB UX 공개) · storytel(SE) · cabify(ES) · malt(FR, Joy) · payfit(FR, oklch→hex).

@@ -68,7 +68,9 @@
 5g. **EU 웨이브 3** — 스카우팅 2026-09-26: **12/20(60%)** — malt(FR, --p/--joy) · payfit(FR, --uy 803) · pennylane(FR) ·
    contentful · db(DE, 자체 서체) · ing(NL, 1,691) · klm(NL, --aero) · storytel(SE, 1,027) · oura(FI) · cabify(ES) ·
    satispay(IT, --ds) · deezer(FR). 탈락: lydia(wp·sumeria 리다이렉트)·ledger(wp)·lufthansa(4)·aboutyou(1)·bol(0)·
-   wallapop(bs)·volvo(대부분 --v 프레임워크?)·sncf(403). 1차 프로브 4건(malt·payfit·storytel·cabify) 진행 중.
+   wallapop(bs)·volvo(대부분 --v 프레임워크?)·sncf(403). **진행 2026-09-26: 9/12 verified**(deutschebahn·storytel·cabify·malt·payfit·oura·satispay·pennylane·klm, 전부 본 세션 직접).
+   보류 3: **ing**(컨트롤이 shadow DOM 웹 컴포넌트 — 도구에 shadow 관통 필요) · **contentful**(Vercel 보안 체크포인트 429,
+   본사 샌프란시스코·덴버/베를린 이원 → US 가능성) · **deezer**(/fr/ 404, offers는 컨트롤 2개뿐 — 동의층 의심, Tempo 토큰은 있음).
 5f. ~~**bg-image 소급 스윕**~~ — 완료 2026-09-26: 37개 재측정(위임) → 본 세션 재확인 후 **정정 5개**: crowdworks 버튼 4개
    (hover = 10%/5% 검은 그라디언트 레이어), bloomandwild Log in(밑줄). **위임 스윕의 '발견' 3건은 다른 요소를 잰 것**
    (hatena 24px `#0000ee` 링크 ≠ 기록된 14px `#111111`, chatwork 투명 텍스트 링크 ≠ `#f03748` 알약, zalando 236px 컨테이너 ≠
