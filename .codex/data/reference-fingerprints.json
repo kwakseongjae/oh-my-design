@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 503,
+ "count": 504,
  "items": [
   {
    "id": "104",
@@ -10908,6 +10908,34 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "ai-infrastructure"
+  },
+  {
+   "id": "toogoodtogo",
+   "primary_color_hex": "#00615f",
+   "category": "consumer-tech",
+   "visual_theme": "A warm, food-bright Copenhagen app site: leafy green #00615f hero sections alternating with creamy oat-milk #f9f3f0, huge Korolev 900 uppercase headlines, Tenon body text, and brand colours named like food — crunchy apple #79e4a7, juicy watermelon #ff7973, sour lemon #fff29a. Theme tokens flip heading and highlight colours per surface. White pill buttons with #012625 ink grey to #ececee on hover.",
+   "voice_fingerprint": {
+    "register": "mission-led consumer brand, upbeat",
+    "sentence_length": "short",
+    "metaphor_density": "medium",
+    "vocabulary_register": "en-food-waste"
+   },
+   "tone_keywords": [
+    "warm",
+    "food",
+    "green",
+    "cream",
+    "mission"
+   ],
+   "antipatterns": [
+    "pure white page ground; the ground is oat milk #f9f3f0",
+    "watermelon highlights on green; on green the highlight is lemon",
+    "body text in Korolev; it is for display only",
+    "square buttons; actions are full pills",
+    "cold greys in place of the named food palette"
+   ],
+   "has_personas": false,
+   "category_raw": "food-waste-marketplace"
   },
   {
    "id": "toss",
