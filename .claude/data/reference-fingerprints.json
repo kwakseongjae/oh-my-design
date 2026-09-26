@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 501,
+ "count": 502,
  "items": [
   {
    "id": "104",
@@ -11426,6 +11426,34 @@
    ],
    "has_personas": false,
    "category_raw": "resale-marketplace"
+  },
+  {
+   "id": "vipps",
+   "primary_color_hex": "#ff5b24",
+   "category": "fintech",
+   "visual_theme": "A warm, loud Norwegian payments site: peach ground #fff4ec, Vipps orange #ff5b24 in the nav bar under a near-black toolbar #161225, near-black text #0f0e0e in its own VeryVerySans, and purple #722ac9 pills on the home page that lighten to #8851f6 on hover and deepen to #551488 on press. Warm red-leaning neutrals; focus is a thick 3px outline. A --general-* semantic layer sits over colour ramps.",
+   "voice_fingerprint": {
+    "register": "playful Norwegian consumer brand, direct",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "nb-payments"
+   },
+   "tone_keywords": [
+    "warm",
+    "playful",
+    "orange",
+    "purple",
+    "easy"
+   ],
+   "antipatterns": [
+    "cold greys; neutrals are warm",
+    "mixing the orange and purple button systems in one component",
+    "thin or missing focus; focus is a 3px outline",
+    "square buttons; actions are full pills",
+    "white page ground; the ground is peach #fff4ec"
+   ],
+   "has_personas": false,
+   "category_raw": "mobile-payments"
   },
   {
    "id": "vocus",
