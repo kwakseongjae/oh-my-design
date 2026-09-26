@@ -1,5 +1,11 @@
 # JOURNAL
 
+## 2026-09-26
+
+- **한 일**: 재부팅으로 잃은 프로브 6건 재실행 → pairs·hatena·sainsburys·bloomandwild·gousto·nhs 전부 verified(**472 / 178**). 위임 프로브 헤드라인 오답 3건을 재측정으로 잡음. 프로브 도구: 동의 배너 선거부·`:hover` 매칭 검사. 저작 도구를 레포로.
+- **열린 것**: 모델 시험 4회차 결론 = sonnet 저작 불채택. JP 수율 17%(하한 15% 근접). 쿠키 배너 방식(거부 vs Accept all)은 오너 확인 대기.
+- **다음**: JP 웨이브 6 스카우팅 — 15% 미만이면 JP 중단, 다른 시장(US/DE 등) 수율 측정.
+
 ## 2026-09-23
 
 - **한 일**: 자율 루프 회차 1–6. crowdworks·studysapuri·folio·loglass 등재(JP 웨이브 4는 스카우트 통과 3/3 전부 verified) → **462 / verified 168**. 위생 3건(velog·banksalad `ds:` 제거, adobe S1 명시). 프로브 도구 결함 3건 수정: opacity 미출력·배경만 비교(studysapuri 헤드라인 오답의 원인), `--text` 단독 검색 불가, `--vars`가 `@layer` 미순회. "변화 없음" 소급 스윕 7/7 유지.
