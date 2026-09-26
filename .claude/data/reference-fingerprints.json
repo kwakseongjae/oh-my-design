@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 497,
+ "count": 498,
  "items": [
   {
    "id": "104",
@@ -4484,6 +4484,34 @@
    "has_personas": true,
    "category_raw": "EdTech / Online Courses",
    "country": "KR"
+  },
+  {
+   "id": "ing",
+   "primary_color_hex": "#ff6200",
+   "category": "fintech",
+   "visual_theme": "A bright, orderly Dutch bank site built from web components: white and light grey #f0f0f0 surfaces, #333333 text in INGMe, ING orange #ff6200 as the brand and indigo #525199 for actions and links. Hover and press add translucent layers (8%, 16%, 30%) and a white inner ring; quick links fill #cfe4f4; focus is a 2px #335d7d outline with a white inner ring. 8px corners.",
+   "voice_fingerprint": {
+    "register": "Dutch retail bank, clear and supportive",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "nl-banking"
+   },
+   "tone_keywords": [
+    "orderly",
+    "bright",
+    "trustworthy",
+    "orange",
+    "indigo"
+   ],
+   "antipatterns": [
+    "orange action buttons; actions are indigo #525199",
+    "pure black text; the ink is #333333",
+    "focus without the white inner ring",
+    "new colours for hover; states are translucent layers",
+    "large radii; controls are 8px"
+   ],
+   "has_personas": false,
+   "category_raw": "retail-banking"
   },
   {
    "id": "instacart",

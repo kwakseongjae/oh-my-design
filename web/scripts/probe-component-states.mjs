@@ -95,6 +95,14 @@ const browser = await chromium.launch({ executablePath: CHROME, ...LAUNCH });
 /** 한 번의 방문에서 한 상태만 읽는다. 상태 오염을 막으려면 새로 여는 편이 확실하다. */
 async function visit(act) {
   const context = await browser.newContext(CONTEXT);
+  // 열린 shadow root 안까지 찾는다. ing.nl(2026-09-26)은 버튼·링크가 전부 웹 컴포넌트 안에 있어
+  // document.querySelectorAll이 아무것도 못 찾았다. 페이지마다 __omdAll/__omdOne을 심어 두고
+  // 이 스크립트의 모든 DOM 조회가 그것을 쓴다(없으면 document로 떨어진다).
+  await context.addInitScript(() => {
+    const roots = () => { const out = [document]; const walk = (r) => { for (const el of r.querySelectorAll("*")) if (el.shadowRoot) { out.push(el.shadowRoot); walk(el.shadowRoot); } }; walk(document); return out; };
+    window.__omdAll = (sel) => roots().flatMap((r) => [...r.querySelectorAll(sel)]);
+    window.__omdOne = (sel) => { for (const r of roots()) { const e = r.querySelector(sel); if (e) return e; } return null; };
+  });
   const page = await context.newPage();
   await page.goto(url, { waitUntil: "domcontentloaded", timeout: 45000 });
   await page.waitForTimeout(waitMs);
@@ -110,10 +118,12 @@ async function visit(act) {
     // Usercentrics v3 등은 배너를 열린 shadow root 안에 그린다 — document.querySelector로는 안 보인다.
     // flixbus.de(2026-09-26)는 그 배너가 hover를 가로채는데 도구가 거부를 못 눌렀다.
     const roots = [document];
-    for (const h of document.querySelectorAll("*")) if (h.shadowRoot) roots.push(h.shadowRoot);
+    // 중첩된 shadow root까지 (ing.nl 동의 배너는 웹 컴포넌트 두 겹 안에 있다, 2026-09-26)
+    const walk = (r) => { for (const h of r.querySelectorAll("*")) if (h.shadowRoot) { roots.push(h.shadowRoot); walk(h.shadowRoot); } };
+    walk(document);
     for (const root of roots) for (const sel of REJECT) { const b = root.querySelector(sel); if (b && b.getClientRects().length) { b.click(); return sel; } }
     // 자체 제작 배너는 선택자가 없다 — 거부 문구로 찾는다 (wolt "Nur erforderliche verwenden", 2026-09-26).
-    const WORDS = /^(reject all|reject|decline all|only necessary|necessary only|use necessary only|alle ablehnen|ablehnen|nur erforderliche( verwenden)?|nur notwendige|tout refuser|refuser|continuer sans accepter|rechazar todo|rifiuta tutto|avvisa alla|neka alla|alles weigeren|weigeren|weiger|拒否する|すべて拒否|모두 거부|거부)$/i;
+    const WORDS = /^(reject all|reject|decline all|only necessary|necessary only|use necessary only|alle ablehnen|ablehnen|nur erforderliche( verwenden)?|nur notwendige|tout refuser|refuser|continuer sans accepter|rechazar todo|rifiuta tutto|avvisa alla|neka alla|alles weigeren|weigeren|weiger|alleen noodzakelijke cookies|alleen noodzakelijk|weiger alle|拒否する|すべて拒否|모두 거부|거부)$/i;
     // 거부 링크가 <a>인 배너도 있다 — alan.com "Continuer sans accepter"(2026-09-26). 문구가 거부일 때만 누른다.
     for (const root of roots) for (const b of root.querySelectorAll("button, [role=button], a")) {
       if (b.getClientRects().length && WORDS.test((b.textContent || "").trim())) { b.click(); return "text:" + b.textContent.trim(); }
@@ -161,9 +171,10 @@ async function visit(act) {
       // `--text`만 주면 색 조건이 "(?!)"라서 후보가 0이었다 — 라벨로 찾으려던 호출이 전부
       // "찾지 못했다"로 끝났다 (2026-09-23 studysapuri). 라벨만 있으면 조작 가능한 요소에서 찾는다.
       const INTERACTIVE = "a,button,[role=button],input,select,textarea,summary,label";
-      let pool = selector ? [...document.querySelectorAll(selector)]
-        : (textNeedle && !match) ? [...document.querySelectorAll(INTERACTIVE)]
-        : [...document.querySelectorAll("*")].filter((el) => new RegExp(rgbSrc).test(getComputedStyle(el).backgroundColor));
+      const all = (sel) => (window.__omdAll ? window.__omdAll(sel) : [...document.querySelectorAll(sel)]);
+      let pool = selector ? all(selector)
+        : (textNeedle && !match) ? all(INTERACTIVE)
+        : all("*").filter((el) => new RegExp(rgbSrc).test(getComputedStyle(el).backgroundColor));
       pool = pool.filter(visible);
       if (textNeedle) {
         const needle = textNeedle.trim().toLowerCase();
@@ -194,7 +205,7 @@ async function visit(act) {
  */
 async function settle(frame, page) {
   const ms = await frame.evaluate(() => {
-    const el = document.querySelector('[data-omd-probe="1"]');
+    const el = (window.__omdOne ? window.__omdOne('[data-omd-probe="1"]') : document.querySelector('[data-omd-probe="1"]'));
     const durations = [getComputedStyle(el).transitionDuration, getComputedStyle(el).animationDuration]
       .join(",").split(",")
       .map((v) => (v.trim().endsWith("ms") ? parseFloat(v) : parseFloat(v) * 1000))
@@ -213,7 +224,7 @@ async function settle(frame, page) {
  */
 async function clearOverlays(frame) {
   await frame.evaluate(() => {
-    const target = document.querySelector('[data-omd-probe="1"]');
+    const target = (window.__omdOne ? window.__omdOne('[data-omd-probe="1"]') : document.querySelector('[data-omd-probe="1"]'));
     const ancestors = new Set();
     for (let n = target; n; n = n.parentElement) ancestors.add(n);
     for (const el of document.querySelectorAll("body *")) {
@@ -228,7 +239,7 @@ async function clearOverlays(frame) {
 }
 
 const read = (frame) => frame.evaluate((prefix) => {
-  const el = document.querySelector('[data-omd-probe="1"]');
+  const el = (window.__omdOne ? window.__omdOne('[data-omd-probe="1"]') : document.querySelector('[data-omd-probe="1"]'));
   const s = getComputedStyle(el);
   const rect = el.getBoundingClientRect();
   const out = {
@@ -329,7 +340,7 @@ await capture("pressed", async (v) => { await clearOverlays(v.frame);
   await v.page.mouse.down(); await settle(v.frame, v.page); });
 await capture("focus", async (v) => { await clearOverlays(v.frame);
   await v.page.keyboard.press("Tab");                       // 키보드 모달리티 — toss에서 이게 없으면 focus가 안 뜬다
-  await v.frame.evaluate(() => document.querySelector('[data-omd-probe="1"]').focus());
+  await v.frame.evaluate(() => (window.__omdOne ? window.__omdOne('[data-omd-probe="1"]') : document.querySelector('[data-omd-probe="1"]')).focus());
   await settle(v.frame, v.page); });
 
 await browser.close();

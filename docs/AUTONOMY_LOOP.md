@@ -68,8 +68,8 @@
 5g. **EU 웨이브 3** — 스카우팅 2026-09-26: **12/20(60%)** — malt(FR, --p/--joy) · payfit(FR, --uy 803) · pennylane(FR) ·
    contentful · db(DE, 자체 서체) · ing(NL, 1,691) · klm(NL, --aero) · storytel(SE, 1,027) · oura(FI) · cabify(ES) ·
    satispay(IT, --ds) · deezer(FR). 탈락: lydia(wp·sumeria 리다이렉트)·ledger(wp)·lufthansa(4)·aboutyou(1)·bol(0)·
-   wallapop(bs)·volvo(대부분 --v 프레임워크?)·sncf(403). **진행 2026-09-26: 9/12 verified**(deutschebahn·storytel·cabify·malt·payfit·oura·satispay·pennylane·klm, 전부 본 세션 직접).
-   보류 3: **ing**(컨트롤이 shadow DOM 웹 컴포넌트 — 도구에 shadow 관통 필요) · **contentful**(Vercel 보안 체크포인트 429,
+   wallapop(bs)·volvo(대부분 --v 프레임워크?)·sncf(403). **진행 2026-09-26: 10/12 verified**(deutschebahn·storytel·cabify·malt·payfit·oura·satispay·pennylane·klm, 전부 본 세션 직접).
+   보류 2(ing는 도구에 shadow 관통 추가 후 등재): **contentful**(Vercel 보안 체크포인트 429,
    본사 샌프란시스코·덴버/베를린 이원 → US 가능성) · **deezer**(/fr/ 404, offers는 컨트롤 2개뿐 — 동의층 의심, Tempo 토큰은 있음).
 5f. ~~**bg-image 소급 스윕**~~ — 완료 2026-09-26: 37개 재측정(위임) → 본 세션 재확인 후 **정정 5개**: crowdworks 버튼 4개
    (hover = 10%/5% 검은 그라디언트 레이어), bloomandwild Log in(밑줄). **위임 스윕의 '발견' 3건은 다른 요소를 잰 것**
@@ -130,6 +130,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 
 회차가 끝날 때마다 한 줄. 최신이 위.
 
+- 2026-09-26 · 회차 43 · ing 등재(62/62, NL). **도구: 열린 shadow root(중첩) 안의 대상·동의 거부 버튼까지 탐색**(__omdAll/__omdOne 초기화 스크립트). ING 컨트롤이 전부 웹 컴포넌트 안 · 498 / 204
 - 2026-09-26 · 회차 42 · klm 등재(59/59, NL — 합병 운영사는 자기 본사 규칙). --aero-* 832, --mat-* 884 제외. 도구에 네덜란드어 'Weiger' 추가. contentful은 보류(Vercel 체크포인트, 본사 미국 가능성) · 497 / 203
 - 2026-09-26 · 회차 41 · pennylane 등재(45/45, FR). CTA hover = 2px 상승+그림자(색 불변) · 496 / 202
 - 2026-09-26 · 회차 40 · satispay 등재(55/55, IT). --ds-* 87개. 포커스 링 #94a3b8·테두리 #e2e8f0은 Tailwind 기본값 → 브랜드 토큰에서 제외 · 495 / 201
