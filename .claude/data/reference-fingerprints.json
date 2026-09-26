@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 481,
+ "count": 482,
  "items": [
   {
    "id": "104",
@@ -7171,6 +7171,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "otto",
+   "primary_color_hex": "#eb001f",
+   "category": "ecommerce",
+   "visual_theme": "A calm, white German online shop: #212121 text in OTTO Sans, blue #2366cb interactive text that darkens to #1c50a0 on hover and #143b75 on press, and two reds — #eb001f for the brand, #dc001d for sale and primary fills. Grey #f0f0f0 frames, square inputs, one soft two-layer elevation. OTTO Components tokens in base, semantic and component layers, with a separate --ofc-* commerce layer for energy labels, swatches, wishlist and prices.",
+   "voice_fingerprint": {
+    "register": "German e-commerce storefront, friendly and direct (du)",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "de-ecommerce"
+   },
+   "tone_keywords": [
+    "calm",
+    "friendly",
+    "systematic",
+    "retail",
+    "clear"
+   ],
+   "antipatterns": [
+    "red links; interactive text is blue #2366cb",
+    "swapping brand red #eb001f and sale red #dc001d",
+    "OTTO Play in interface text; it is a campaign face",
+    "heavy shadows; there is one soft elevation",
+    "folding commerce details into generic component tokens"
+   ],
+   "has_personas": false,
+   "category_raw": "online-retail"
   },
   {
    "id": "pairs",
