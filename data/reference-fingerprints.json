@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 486,
+ "count": 487,
  "items": [
   {
    "id": "104",
@@ -10807,6 +10807,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "productivity"
+  },
+  {
+   "id": "typeform",
+   "primary_color_hex": "#2a222b",
+   "category": "saas",
+   "visual_theme": "A calm, editorial form-builder site in two named colours — Paper #faf9fb and Ink #2a222b, a warm plum-tinted near-black — with lavender and orchid only as highlights. Tobias serif headlines over TWK Lausanne at regular weight. 12px-rounded buttons that step along the neutral ramp on hover (#eeecee on Paper, #564b58 on Ink); flat, no shadows.",
+   "voice_fingerprint": {
+    "register": "Form-builder SaaS, bold, authentic and witty",
+    "sentence_length": "short",
+    "metaphor_density": "medium",
+    "vocabulary_register": "en-saas-creative"
+   },
+   "tone_keywords": [
+    "bold",
+    "witty",
+    "editorial",
+    "warm",
+    "minimal"
+   ],
+   "antipatterns": [
+    "pure black and white instead of Ink #2a222b and Paper #faf9fb",
+    "interface text in the logo face Aperçu Pro",
+    "drop shadows; the site is flat",
+    "bright brand colours on buttons; buttons are Paper or Ink",
+    "bold UI labels; buttons are 16px/400"
+   ],
+   "has_personas": false,
+   "category_raw": "forms-surveys"
   },
   {
    "id": "uber",
