@@ -6,7 +6,8 @@
 - **열린 것**: 모델 시험 4회차 결론 = sonnet 저작 불채택. JP 수율 17%(하한 15% 근접). 쿠키 배너 방식(거부 vs Accept all)은 오너 확인 대기.
 - **한 일(2)**: JP6 스카우팅 2/12, **EU 스카우팅 7/12** → n26·sumup·wolt·qonto verified(**476 / 182**). 09-22부터 잠복한 tsc 오류(tokens.motion) 수정. 국가 FI·NL·SE·ES 추가. 패인 누적 스폰 실패 해결.
 - **한 일(3)**: zalando·doctolib verified(**478 / 184**), check24 탈락 → EU 웨이브 1 = 6/7. 전환 도중 값 함정 2건 → PROBE_BRIEF 대기 규칙. EU 웨이브 2 스카우팅 12/18.
-- **다음**: 프로브 7건(klarna·hm·otto·flixbus·leboncoin + booth·coconala) 처리 → 웨이브 2 나머지 7건 프로브.
+- **한 일(4)**: hm·flixbus·klarna·otto verified(**482 / 188**). 프로브 도구 사각지대(bg-image hover, focus-visible 미매칭) 수정 → 'hover 변화 없음' 39개 소급 스윕 위임. 위임 Aside 금지.
+- **다음**: 스윕 결과 검토·정정 → 프로브 7건(leboncoin·booth·coconala·adyen·coolblue·getyourguide·alan) 처리 → glovo·typeform·ikea.
 
 ## 2026-09-23
 

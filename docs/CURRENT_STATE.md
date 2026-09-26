@@ -3,6 +3,19 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-26 · 루프 회차 23–26 — **EU 웨이브 2 진행** (482 · 188)
+
+- 등재: hm(SE, Fabric Design System, 다크 루트) · flixbus(DE, Honeycomb) · klarna(SE) · otto(DE, OTTO Components).
+- **프로브 도구 사각지대 2건 수정**: ① hover를 `background-image` 반투명 그라디언트로 그리는 경우(flixbus)와
+  밑줄 hover를 "변화 없음"으로 읽음 → bg-image·text-decoration 비교 추가 ② `:focus-visible` 미매칭 focus를
+  "변화 없음"으로 찍음 → 못 쟀음. 그 외: shadow root 안 동의 배너 거부, 거부 후 재로드 대기, hover 타임아웃 시 포인터 이동.
+- **소급 스윕 위임 중**: 커밋된 verified의 'hover 변화 없음' 39개(23건). 결과 검토 후 정정 예정.
+- **위임 프로브가 프라이버시 규칙 없이 Aside를 씀(hm)** → PROBE_BRIEF에 위임 Aside 금지·차단 시 3회 제한. hm은
+  본 세션이 Aside로 재측정(openTab, looksAuthenticated=false).
+- 진행 중: leboncoin 재프로브, booth·coconala(JP6), adyen·coolblue·getyourguide·alan(EU2), 스윕.
+
+---
+
 ## ✅ 2026-09-26 · 루프 회차 21–22 — **EU 웨이브 1 마감** (478 · 184)
 
 - 등재: zalando(DE, 리브랜드 토큰 레이어가 기본 테마를 `@scope`로 덮음) · doctolib(FR, Oxygen 3,650).
