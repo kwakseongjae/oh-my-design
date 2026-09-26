@@ -36,7 +36,7 @@ export const viewport = {
 export const metadata: Metadata = {
   title: "oh-my-design — DESIGN.md for AI coding agents",
   description:
-    "One DESIGN.md spec. 513 quality-graded brand references: 219 verified_v2, 181 partial, and 113 legacy snapshots. The bundle ships 28 skills and 20 specialist definitions; Cursor 2.4+ receives 27 native Agent Skills. MIT open source.",
+    "One DESIGN.md spec. 514 quality-graded brand references: 220 verified_v2, 181 partial, and 113 legacy snapshots. The bundle ships 28 skills and 20 specialist definitions; Cursor 2.4+ receives 27 native Agent Skills. MIT open source.",
   keywords: [
     "design system",
     "DESIGN.md",
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     type: "website",
     title: "oh-my-design — DESIGN.md for AI coding agents",
     description:
-      "513 quality-graded references: 219 verified_v2, 181 partial, 113 legacy snapshots. Channel-compatible skills and roles for Claude Code, Codex, and OpenCode; a project rule and catalog for Cursor.",
+      "514 quality-graded references: 220 verified_v2, 181 partial, 113 legacy snapshots. Channel-compatible skills and roles for Claude Code, Codex, and OpenCode; a project rule and catalog for Cursor.",
     // og:url intentionally omitted — same inheritance reason as canonical.
     siteName: "oh-my-design",
     images: [
@@ -95,7 +95,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "oh-my-design — DESIGN.md for AI coding agents",
     description:
-      "513 quality-graded references: 219 verified_v2, 181 partial, 113 legacy. 23 shipped skills · 19 specialist definitions · channel-aware install.",
+      "514 quality-graded references: 220 verified_v2, 181 partial, 113 legacy. 23 shipped skills · 19 specialist definitions · channel-aware install.",
     images: ["/twitter-image.png"],
   },
 };
@@ -134,7 +134,7 @@ export default function RootLayout({
                   name: "oh-my-design",
                   url: siteUrl,
                   description:
-                    "DESIGN.md as ground truth for AI coding agents. 513 quality-graded references: 219 verified_v2, 181 partial, and 113 legacy snapshots.",
+                    "DESIGN.md as ground truth for AI coding agents. 514 quality-graded references: 220 verified_v2, 181 partial, and 113 legacy snapshots.",
                   potentialAction: {
                     "@type": "SearchAction",
                     target: `${siteUrl}/design-systems?q={search_term_string}`,
@@ -152,7 +152,7 @@ export default function RootLayout({
                   softwareVersion: CLI_VERSION,
                   license: "https://opensource.org/licenses/MIT",
                   description:
-                    "Skill-driven design workflows for Claude Code, Codex, OpenCode, and Cursor. One npx command installs compatible skills, specialist roles, and an offline catalog of 513 quality-graded DESIGN.md references.",
+                    "Skill-driven design workflows for Claude Code, Codex, OpenCode, and Cursor. One npx command installs compatible skills, specialist roles, and an offline catalog of 514 quality-graded DESIGN.md references.",
                   offers: {
                     "@type": "Offer",
                     price: "0",
@@ -161,7 +161,7 @@ export default function RootLayout({
                   featureList: [
                     "23 product skills and 19 specialist agent definitions",
                     "Native project skills for Claude Code, Codex, OpenCode, and Cursor 2.4+",
-                    "513 quality-graded references: 219 verified_v2, 181 partial, and 113 legacy snapshots",
+                    "514 quality-graded references: 220 verified_v2, 181 partial, and 113 legacy snapshots",
                     "verified_v2 references recommended for public demos",
                     "Channel-aware doctor diagnostics and deterministic installation checks",
                     "Zero AI calls during install",

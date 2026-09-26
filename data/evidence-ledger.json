@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 219,
-  "sources": 1241,
+  "references_with_verification_v2": 220,
+  "sources": 1245,
   "sources_by_kind": {
     "brand-asset": 75,
     "license": 76,
-    "official-doc": 528,
-    "product-surface": 562
+    "official-doc": 530,
+    "product-surface": 564
   },
   "references": {
     "104": {
@@ -7760,6 +7760,36 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "global.toyota"
+        }
+      ]
+    },
+    "trivago": {
+      "checked": "2026-09-26",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "company",
+          "kind": "official-doc",
+          "captured": "2026-09-26",
+          "host": "company.trivago.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-09-26",
+          "host": "www.trivago.de"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-09-26",
+          "host": "www.trivago.de"
+        },
+        {
+          "id": "legal",
+          "kind": "official-doc",
+          "captured": "2026-09-26",
+          "host": "www.trivago.com"
         }
       ]
     },

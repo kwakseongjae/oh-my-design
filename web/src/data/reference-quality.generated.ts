@@ -11532,6 +11532,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": 0.313
   },
   {
+    "id": "trivago",
+    "status": "verified_v2",
+    "verifiedAt": "2026-09-26",
+    "tokensExtractedAt": "2026-09-26",
+    "nextReverifyAt": "2027-03-25",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 47,
+    "evidenceClaimCount": 47,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 4,
+    "conflictCount": 0,
+    "tier1SourceCount": 4,
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "tumblbug",
     "status": "legacy_snapshot",
     "verifiedAt": "2026-05-27",
@@ -12981,10 +13003,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 219,
+  "verified_v2": 220,
   "partial": 181,
   "legacy_snapshot": 113,
-  "total": 513
+  "total": 514
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

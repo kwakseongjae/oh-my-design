@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 513,
+ "count": 514,
  "items": [
   {
    "id": "104",
@@ -11335,6 +11335,34 @@
    "signature_motion": "Add-to-itinerary spring-pop and overshooting map-pin drops.",
    "has_personas": true,
    "category_raw": "Travel"
+  },
+  {
+   "id": "trivago",
+   "primary_color_hex": "#0079c2",
+   "category": "consumer-tech",
+   "visual_theme": "A white, utilitarian hotel-search product from Düsseldorf: near-black text #171717 in the system font stack, trivago blue #0079c2 for the search button and links, green #0a850e for revenue (deal) actions, red #e22851 and orange #e27423 for alerts, and decorative blue, orange and pink. Actions are named by business meaning — primary, highlight, revenue, success, critical, warning — each with default, hovered, pressed and disabled values; 8px buttons on a 10px rem base.",
+   "voice_fingerprint": {
+    "register": "practical comparison tool, direct",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "de-hotel-search"
+   },
+   "tone_keywords": [
+    "utilitarian",
+    "blue",
+    "deal green",
+    "dense",
+    "clear"
+   ],
+   "antipatterns": [
+    "a decorative brand typeface; the product uses the system stack",
+    "revenue green for navigation or links",
+    "decorative colours for text",
+    "actions without hovered, pressed and disabled values",
+    "price highlights outside #ebfdec"
+   ],
+   "has_personas": false,
+   "category_raw": "hotel-search"
   },
   {
    "id": "tumblbug",
