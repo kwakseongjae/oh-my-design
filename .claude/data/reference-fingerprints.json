@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 517,
+ "count": 518,
  "items": [
   {
    "id": "104",
@@ -7083,6 +7083,34 @@
    ],
    "has_personas": false,
    "category_raw": "mobile-bank"
+  },
+  {
+   "id": "n8n",
+   "primary_color_hex": "#ea4b71",
+   "category": "developer-tools",
+   "visual_theme": "A dark, warm Berlin automation site: midnight navy #0e0918 page with navy panels (#1b1728, #1f192a), soft grey text #d1cece under white headings in Geomanist, n8n pink #ea4b71, and a 30-degree orange-to-red gradient #fd8925 to #ff0c00 on the main CTA that brightens with a 12% white layer on hover. Buttons are two-stop gradient token pairs; secondary buttons are translucent grey glass. Headlines 28-80px at 100% line height; 8px buttons.",
+   "voice_fingerprint": {
+    "register": "technical but approachable, builder-focused",
+    "sentence_length": "medium",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-workflow-automation"
+   },
+   "tone_keywords": [
+    "dark",
+    "warm gradient",
+    "technical",
+    "open",
+    "navy"
+   ],
+   "antipatterns": [
+    "flat orange where the CTA gradient belongs",
+    "pure black backgrounds; the page is midnight navy",
+    "carousel library variables treated as n8n tokens",
+    "capitalising the name; it is always n8n",
+    "opaque grey secondary buttons; they are translucent glass"
+   ],
+   "has_personas": false,
+   "category_raw": "workflow-automation"
   },
   {
    "id": "naver",
