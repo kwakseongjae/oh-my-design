@@ -61,6 +61,11 @@
 5c. ~~**JP 웨이브 6**~~ — 스카우팅 2026-09-26: 2/12(17%, booth `--charcoal*691`·coconala) — 하한 근접 두 번째. 첫 프로브 2건은 5시간 무응답으로 종료, 45분 제한을 걸어 재실행(15:55).
    **마감 2026-09-26: 2/2 verified**(booth — pixiv Charcoal; coconala — 헤더가 중첩 shadow root 166개, 도구의 오버레이 제거가
    shadow 경계에서 조상 탐색을 멈춰 헤더 host를 숨기던 결함 수정). JP 수율 17%로 하한(15%) 위 — 시장 유지, 다음 JP 웨이브는 EU 뒤.
+5j. **EU 웨이브 5** — 스카우팅 2026-09-27: **16/32(50%)** — deepl(DE, --dui 1,094) · komoot(DE, --theme 482) · blinkist(DE) · sixt(DE, 컨트롤 지연) ·
+   n8n(DE) · withings(FR) · dailymotion(FR) · spendesk(FR) · zara(ES) · mango(ES, --sem) · bbva(ES, --spherica 3,127) · kiwi(CZ) ·
+   emag(RO, --brand 187) · odoo(BE) · sbb(CH, --sbb 1,197) · finnair(FI). 탈락: babbel(0)·idealo(tw)·raisin(404)·scalable(--bs=Bootstrap)·
+   on(4)·proton(tw)·galaxus(해시)·catawiki(tw·toastify)·mistral(이미 등재). 차단: mobile.de·immoscout(401)·flink·allegro·inpost·rohlik·sezane(403).
+   국가 CZ·RO·BE·CH 추가.
 5i. **EU 웨이브 4** — 스카우팅 2026-09-26: **16/32(50%)** — vinted(LT, --v) · vipps(NO, 854) · lego(DK, --ds 2,178) ·
    toogoodtogo(DK, --dt) · idealista(ES, kiwi) · fever(ES, --fv 608) · bitpanda(AT) · wetransfer(NL, --wt) · ns(NL, --nes 496) ·
    zooplus(DE, --pp) · epidemicsound(SE, --es) · bolt(EE — ruby/iris/mint은 Radix 기본값, 제외 후 판단) · avanza(SE) ·

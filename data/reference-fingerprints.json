@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 514,
+ "count": 515,
  "items": [
   {
    "id": "104",
@@ -2371,6 +2371,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "ecommerce"
+  },
+  {
+   "id": "deepl",
+   "primary_color_hex": "#0f2b46",
+   "category": "ai",
+   "visual_theme": "A quiet Cologne language-AI product: white translator, near-black #191919 text in Roboto, DeepL navy #0f2b46 on brand pills that deepen to #091a2b on hover and flash mint #6cf1c9 when pressed, and a working blue #0070c9 for primary actions and links (#0053a9 hover, #00388d pressed). 1,094 --dui tokens declare every colour as light-dark() pairs; tabs use 1px inset borders and an #e0f0ff active state.",
+   "voice_fingerprint": {
+    "register": "calm, precise enterprise AI",
+    "sentence_length": "medium",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-language-ai"
+   },
+   "tone_keywords": [
+    "calm",
+    "navy",
+    "precise",
+    "mint",
+    "language"
+   ],
+   "antipatterns": [
+    "mint #6cf1c9 as a resting fill; it marks the pressed moment",
+    "pure black text; the ink is #191919",
+    "drop shadows in place of 1px inset borders",
+    "colours declared for one theme only",
+    "actions without hover, pressed and disabled values"
+   ],
+   "has_personas": false,
+   "category_raw": "language-ai"
   },
   {
    "id": "deepseek",
