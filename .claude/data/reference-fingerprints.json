@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 506,
+ "count": 507,
  "items": [
   {
    "id": "104",
@@ -7305,6 +7305,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "ns",
+   "primary_color_hex": "#ffc917",
+   "category": "consumer-tech",
+   "visual_theme": "The Dutch railway site in its own colours: NS yellow #ffc917 and deep blue #003082, with blue as the text colour, a working blue #0063d3 for the journey planner, white cards on #f7f7f9 and NS Sans throughout. Buttons carry a 2px darker inset bottom edge (#004ba0 on blue, #ffb519 on yellow) that floods the whole button on hover; header links gain a yellow bar. A three-tier --nes token system includes transport-mode colours.",
+   "voice_fingerprint": {
+    "register": "Dutch public transport, clear and service-minded",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "nl-rail-travel"
+   },
+   "tone_keywords": [
+    "reliable",
+    "yellow",
+    "blue",
+    "service",
+    "door-to-door"
+   ],
+   "antipatterns": [
+    "white text on NS yellow; the pairing is blue on yellow",
+    "black body text; NS text is blue #003082",
+    "flat buttons without the darker bottom edge",
+    "the working blue #0063d3 for body copy",
+    "ad-hoc colours for transport modes instead of the modality tokens"
+   ],
+   "has_personas": false,
+   "category_raw": "public-transport"
   },
   {
    "id": "nulab",
