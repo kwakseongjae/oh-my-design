@@ -58,8 +58,10 @@
 5. ~~**위생**~~ — 완료 2026-09-23: velog·banksalad `ds:` 제거(디자인 시스템이 없는데 카드가
    "Design System"/"Brand Guide"로 GitHub를 가리켰다 — 없는 것은 없다), adobe 설명에 링크=Spectrum 1 명시
 5b. ~~**JP 웨이브 5 + UK 웨이브 2**~~ — 완료 2026-09-26: pairs·hatena(JP 2/2)·sainsburys·bloomandwild·gousto·nhs(UK 4/4) 전부 verified.
-5c. **JP 웨이브 6** — 스카우팅 2026-09-26: 2/12(17%, booth `--charcoal*691`·coconala) — 하한 근접 두 번째. 첫 프로브 2건은 5시간 무응답으로 종료, 45분 제한을 걸어 재실행(15:55).
-   **진행 2026-09-26: booth verified**(본 세션 직접, pixiv Charcoal — GitHub 공개, nonsense 저장소 404). 남음: coconala(본 세션 직접).
+5c. ~~**JP 웨이브 6**~~ — 스카우팅 2026-09-26: 2/12(17%, booth `--charcoal*691`·coconala) — 하한 근접 두 번째. 첫 프로브 2건은 5시간 무응답으로 종료, 45분 제한을 걸어 재실행(15:55).
+   **마감 2026-09-26: 2/2 verified**(booth — pixiv Charcoal; coconala — 헤더가 중첩 shadow root 166개, 도구의 오버레이 제거가
+   shadow 경계에서 조상 탐색을 멈춰 헤더 host를 숨기던 결함 수정). JP 수율 17%로 하한(15%) 위 — 시장 유지, 다음 JP 웨이브는 EU 뒤.
+5i. **EU 웨이브 4** — 스카우팅 대기. EU 수율 58~67%로 현재 주력.
 5d. ~~**EU 웨이브 1**~~ — 스카우팅 2026-09-26: **7/12(58%)** — n26 · zalando · check24 · sumup(`--cui` Circuit UI) · qonto ·
    doctolib(`--oxygen` 3,650) · wolt(DoorDash 소유, 본사 헬싱키 → FI). 탈락: traderepublic·mollie·backmarket(토큰 ≈0),
    personio(tw), hellofresh(403 → Aside). 카탈로그 EU는 사실상 공백(spotify·IT 2·FR 2·DE 1) — **다음 주력 시장**.
@@ -134,6 +136,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 
 회차가 끝날 때마다 한 줄. 최신이 위.
 
+- 2026-09-26 · 회차 45 · coconala 등재(JP, 19개 색 램프) → **JP 웨이브 6 마감 2/2**. 도구: 오버레이 제거가 shadow host를 조상으로 인식 · **500 / 206**
 - 2026-09-26 · 회차 44 · booth 등재(JP, pixiv Charcoal) + 가상 요소 스윕 정정 2건(base·otto). 도구: 칠해지지 않은 가상 요소 무시 · 499 / 205
 - 2026-09-26 · 회차 43 · ing 등재(62/62, NL). **도구: 열린 shadow root(중첩) 안의 대상·동의 거부 버튼까지 탐색**(__omdAll/__omdOne 초기화 스크립트). ING 컨트롤이 전부 웹 컴포넌트 안 · 498 / 204
 - 2026-09-26 · 회차 42 · klm 등재(59/59, NL — 합병 운영사는 자기 본사 규칙). --aero-* 832, --mat-* 884 제외. 도구에 네덜란드어 'Weiger' 추가. contentful은 보류(Vercel 체크포인트, 본사 미국 가능성) · 497 / 203
