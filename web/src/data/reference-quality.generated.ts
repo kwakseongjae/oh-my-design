@@ -407,6 +407,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "adyen",
+    "status": "verified_v2",
+    "verifiedAt": "2026-09-26",
+    "tokensExtractedAt": "2026-09-26",
+    "nextReverifyAt": "2027-03-25",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 37,
+    "evidenceClaimCount": 37,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 5,
+    "conflictCount": 0,
+    "tier1SourceCount": 5,
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "airbnb",
     "status": "verified_v2",
     "verifiedAt": "2026-07-12",
@@ -12343,10 +12365,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 190,
+  "verified_v2": 191,
   "partial": 181,
   "legacy_snapshot": 113,
-  "total": 484
+  "total": 485
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

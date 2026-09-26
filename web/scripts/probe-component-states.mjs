@@ -240,6 +240,10 @@ const read = (frame) => frame.evaluate((prefix) => {
     // 레이어로 그린다(`--flix-hover-layer-color`). 배경색만 보던 판정은 이를 "변화 없음"으로
     // 읽었다. 밑줄 hover도 같은 사각지대였다 (2026-09-26).
     bgImage: s.backgroundImage, decoration: `${s.textDecorationLine} ${s.textDecorationColor}`,
+    // adyen.com은 hover를 ::before 오버레이(잉크 7.4%)의 opacity 0→1로 그린다. 요소 자신의 값은
+    // 하나도 안 바뀐다 — 가상 요소를 안 보면 "변화 없음"이다 (2026-09-26). content가 있는 것만 센다.
+    pseudo: ["::before", "::after"].map((ps) => { const c = getComputedStyle(el, ps);
+      return c.content === "none" || c.content === "normal" ? "" : `${ps}{bg:${c.backgroundColor};img:${c.backgroundImage.slice(0, 60)};op:${c.opacity};tf:${c.transform};bs:${c.boxShadow}}`; }).join(""),
     is: { hover: el.matches(":hover"), active: el.matches(":active"), focusVisible: el.matches(":focus-visible") },
   };
   if (prefix) {
@@ -384,6 +388,7 @@ for (const [name, s] of Object.entries(states)) {
   if (s.opacity !== states.rest.opacity || name === "rest") extras.push(`opacity=${s.opacity}`);
   if (s.bgImage !== states.rest.bgImage) extras.push(`background-image=${s.bgImage.slice(0, 90)}`);
   if (s.decoration !== states.rest.decoration) extras.push(`text-decoration=${s.decoration}`);
+  if (s.pseudo !== states.rest.pseudo) extras.push(`pseudo=${s.pseudo.slice(0, 160)}`);
   // border와 같은 이유로 rest에서도 항상 찍는다. 포커스 판정은 색이 아니라
   // **스타일**로 갈린다(`auto` = 브라우저, `solid`/`none` = 작성자) — 그 비교를
   // 하려면 rest 값이 출력에 있어야 한다. 측정법 문서 §2.5.
@@ -400,9 +405,9 @@ for (const [name, why] of Object.entries(unmeasured)) {
 // outline-style이 none이면 색·너비가 바뀌어도 아무것도 그려지지 않는다 — 그 변화를 "바뀜"으로
 // 세면 포커스 표시가 없는 입력칸이 있는 것처럼 보인다 (2026-09-23 citymapper·guardian 검색칸).
 const drawnOutline = (o) => (/\bnone\b/.test(o) || /rgba\([^)]*,\s*0\)/.test(o) || /\b0px\b/.test(o) ? "none" : o);
-const VISUAL = (s) => [hex(s.bg), hex(s.fg), hex(s.border), s.shadow, drawnOutline(s.outline), s.transform, s.opacity, s.bgImage, s.decoration].join("|");
+const VISUAL = (s) => [hex(s.bg), hex(s.fg), hex(s.border), s.shadow, drawnOutline(s.outline), s.transform, s.opacity, s.bgImage, s.decoration, s.pseudo].join("|");
 const changed = Object.entries(states).filter(([k, s]) => k !== "rest" && VISUAL(s) !== VISUAL(states.rest));
-console.log(`\n눈에 보이는 값이 바뀌는 상태: ${changed.length ? changed.map(([k]) => k).join(", ") : "없음 (bg·fg·border·shadow·outline·transform·opacity 전부 동일 · background-image·text-decoration 포함)"}`);
+console.log(`\n눈에 보이는 값이 바뀌는 상태: ${changed.length ? changed.map(([k]) => k).join(", ") : "없음 (bg·fg·border·shadow·outline·transform·opacity 전부 동일 · background-image·text-decoration·::before/::after 포함)"}`);
 if (Object.keys(unmeasured).length) {
   console.log(`못 잰 상태: ${Object.keys(unmeasured).join(", ")} — **부재가 아니다.** 레퍼런스에 "없음"으로 적지 말 것.`);
 }

@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 484,
+ "count": 485,
  "items": [
   {
    "id": "104",
@@ -357,6 +357,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "design-tools"
+  },
+  {
+   "id": "adyen",
+   "primary_color_hex": "#00d16a",
+   "category": "fintech",
+   "visual_theme": "A dark, precise payments site: deep navy #001222 heroes, white sections and one bright green #00d16a for actions, with a navy label on the green. Surfaces are the navy mixed at fixed strengths (4.2%, 7.4%, 17.8%, 48%, 60.7%, 81.2%). Hover fades in a ::before overlay of navy at 7.4%; focus is a 1px white outline. Adyen and Adyen Mono, self-hosted variable faces, over a Tailwind v4 base.",
+   "voice_fingerprint": {
+    "register": "Enterprise payments platform, confident and concise",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-fintech-enterprise"
+   },
+   "tone_keywords": [
+    "precise",
+    "dark",
+    "enterprise",
+    "green",
+    "minimal"
+   ],
+   "antipatterns": [
+    "counting Tailwind v4 --text-*, --tw-* or container tokens as Adyen's",
+    "pure black ink; the navy is #001222",
+    "white labels on the green; the live label is navy",
+    "state colour swaps; hover is a 7.4% navy overlay",
+    "heavy drop shadows; elevation is ink density"
+   ],
+   "has_personas": false,
+   "category_raw": "payments-platform"
   },
   {
    "id": "airbnb",

@@ -300,3 +300,10 @@ FlixBus Honeycomb은 hover·press를 `background-color`가 아니라 `background
 동의 배너**도 거부 버튼을 찾고, 거부 뒤 재로드 대기를 `--wait` 값 그대로 쓴다. Playwright `hover()`가
 actionability 검사로 타임아웃하면 중심 좌표로 포인터만 옮긴다(판정은 여전히 `:hover` 매칭).
 소급 스윕: 커밋된 verified 레퍼런스 중 "hover 변화 없음" 컴포넌트 39개(23건) — §3 큐 참조.
+
+### 2.9 가상 요소 사각지대 (2026-09-26)
+
+adyen.com의 "Contact us"는 hover를 `::before`(배경 = `--main-light-secondary`, 네이비 7.4%)의 opacity 0→1로 그린다.
+요소 자신의 값은 하나도 바뀌지 않는다. `probe-component-states.mjs`가 이제 `content`가 있는 `::before`/`::after`의
+bg·background-image·opacity·transform·shadow를 비교한다. 같은 날 세 번째 사각지대(bg-image → 밑줄 → 가상 요소)라,
+'변화 없음' 기록 34개를 다시 스윕한다. 교훈: "변화 없음"은 도구가 보는 속성 목록만큼만 참이다.
