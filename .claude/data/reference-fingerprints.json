@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 485,
+ "count": 486,
  "items": [
   {
    "id": "104",
@@ -1788,6 +1788,34 @@
    "signature_motion": "Calm standard motion with one reserved soft overshoot on the save heart tap; appetizing image fade-ins.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "coolblue",
+   "primary_color_hex": "#0090e3",
+   "category": "ecommerce",
+   "visual_theme": "A crisp, friendly Dutch electronics shop: white and pale-blue #f2f7fc surfaces, #1b1e24 text in Open Sans, Coolblue blue #0090e3 for the brand, #285dab main buttons and #008a00 action buttons, each 4px-rounded with a 2px darker inset along the bottom that deepens on hover. Hot orange #ff6600 as accent; focus is a navy #14315c outline or ring. 441 --cb-* tokens with playful primitive names.",
+   "voice_fingerprint": {
+    "register": "Dutch retail, friendly and informal",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "nl-ecommerce"
+   },
+   "tone_keywords": [
+    "friendly",
+    "crisp",
+    "blue",
+    "playful",
+    "helpful"
+   ],
+   "antipatterns": [
+    "brand blue #0090e3 as the button colour; buttons are #285dab",
+    "orange #ff6600 for actions; actions are green #008a00",
+    "large radii; buttons are 4px",
+    "flat buttons without the darker bottom inset",
+    "browser-default focus; focus is navy #14315c"
+   ],
+   "has_personas": false,
+   "category_raw": "electronics-retail"
   },
   {
    "id": "corca",
