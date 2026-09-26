@@ -59,6 +59,7 @@
    "Design System"/"Brand Guide"로 GitHub를 가리켰다 — 없는 것은 없다), adobe 설명에 링크=Spectrum 1 명시
 5b. ~~**JP 웨이브 5 + UK 웨이브 2**~~ — 완료 2026-09-26: pairs·hatena(JP 2/2)·sainsburys·bloomandwild·gousto·nhs(UK 4/4) 전부 verified.
 5c. **JP 웨이브 6** — 스카우팅 2026-09-26: 2/12(17%, booth `--charcoal*691`·coconala) — 하한 근접 두 번째. 첫 프로브 2건은 5시간 무응답으로 종료, 45분 제한을 걸어 재실행(15:55).
+   **진행 2026-09-26: booth verified**(본 세션 직접, pixiv Charcoal — GitHub 공개, nonsense 저장소 404). 남음: coconala(본 세션 직접).
 5d. ~~**EU 웨이브 1**~~ — 스카우팅 2026-09-26: **7/12(58%)** — n26 · zalando · check24 · sumup(`--cui` Circuit UI) · qonto ·
    doctolib(`--oxygen` 3,650) · wolt(DoorDash 소유, 본사 헬싱키 → FI). 탈락: traderepublic·mollie·backmarket(토큰 ≈0),
    personio(tw), hellofresh(403 → Aside). 카탈로그 EU는 사실상 공백(spotify·IT 2·FR 2·DE 1) — **다음 주력 시장**.
@@ -71,6 +72,9 @@
    wallapop(bs)·volvo(대부분 --v 프레임워크?)·sncf(403). **진행 2026-09-26: 10/12 verified**(deutschebahn·storytel·cabify·malt·payfit·oura·satispay·pennylane·klm, 전부 본 세션 직접).
    보류 2(ing는 도구에 shadow 관통 추가 후 등재): **contentful**(Vercel 보안 체크포인트 429,
    본사 샌프란시스코·덴버/베를린 이원 → US 가능성) · **deezer**(/fr/ 404, offers는 컨트롤 2개뿐 — 동의층 의심, Tempo 토큰은 있음).
+5h. ~~**가상 요소 소급 스윕**~~ — 완료 2026-09-26: "변화 없음" 34개 중 12개를 본 세션이 재측정(도구에 칠해지지 않은
+   ::before/::after 무시 추가) → **정정 2건**: base 분홍 CTA 2개(hover·pressed = 흰 ::before 8%), otto Mein Konto(::after 3%/9%).
+   나머지 10개는 기록과 일치. 남은 22개는 가상 요소 없는 대상이라 재측정 생략.
 5f. ~~**bg-image 소급 스윕**~~ — 완료 2026-09-26: 37개 재측정(위임) → 본 세션 재확인 후 **정정 5개**: crowdworks 버튼 4개
    (hover = 10%/5% 검은 그라디언트 레이어), bloomandwild Log in(밑줄). **위임 스윕의 '발견' 3건은 다른 요소를 잰 것**
    (hatena 24px `#0000ee` 링크 ≠ 기록된 14px `#111111`, chatwork 투명 텍스트 링크 ≠ `#f03748` 알약, zalando 236px 컨테이너 ≠
@@ -130,6 +134,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 
 회차가 끝날 때마다 한 줄. 최신이 위.
 
+- 2026-09-26 · 회차 44 · booth 등재(JP, pixiv Charcoal) + 가상 요소 스윕 정정 2건(base·otto). 도구: 칠해지지 않은 가상 요소 무시 · 499 / 205
 - 2026-09-26 · 회차 43 · ing 등재(62/62, NL). **도구: 열린 shadow root(중첩) 안의 대상·동의 거부 버튼까지 탐색**(__omdAll/__omdOne 초기화 스크립트). ING 컨트롤이 전부 웹 컴포넌트 안 · 498 / 204
 - 2026-09-26 · 회차 42 · klm 등재(59/59, NL — 합병 운영사는 자기 본사 규칙). --aero-* 832, --mat-* 884 제외. 도구에 네덜란드어 'Weiger' 추가. contentful은 보류(Vercel 체크포인트, 본사 미국 가능성) · 497 / 203
 - 2026-09-26 · 회차 41 · pennylane 등재(45/45, FR). CTA hover = 2px 상승+그림자(색 불변) · 496 / 202

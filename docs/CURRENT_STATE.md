@@ -3,6 +3,16 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-26 · 루프 회차 43–44 — **ing·booth, 가상 요소 스윕 마감** (499 · 205)
+
+- 등재: ing(NL, 도구가 open shadow root 관통) · booth(JP6, pixiv Charcoal).
+- 가상 요소 스윕: 12개 재측정 → 정정 2건(base CTA 흰 ::before 8%, otto Mein Konto ::after 3%/9%), 나머지 일치.
+- 다음: coconala(JP6) 직접 → EU 웨이브 4 스카우팅 → 보류분(contentful·deezer·glovo·leboncoin) 재시도.
+- 쿠키 Accept-all 전환은 오너 확인 대기(현재 거부 유지). `web/scripts/.tmp-survey.mjs`는 임시 파일, 미커밋.
+- 오늘 누적 +27 (472→499), verified +27 (178→205).
+
+---
+
 ## ✅ 2026-09-26 · 루프 회차 39–42 — **EU 웨이브 3: 9/12** (497 · 203)
 
 - 등재: oura(FI — 미국 이전 공지, 재분류 조건 기록) · satispay(IT) · pennylane(FR) · klm(NL).
