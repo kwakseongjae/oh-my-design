@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 184,
-  "sources": 1096,
+  "references_with_verification_v2": 185,
+  "sources": 1101,
   "sources_by_kind": {
     "brand-asset": 75,
     "license": 76,
-    "official-doc": 457,
-    "product-surface": 488
+    "official-doc": 460,
+    "product-surface": 490
   },
   "references": {
     "104": {
@@ -2378,6 +2378,42 @@
           "kind": "official-doc",
           "captured": "2026-09-26",
           "host": "hatena.co.jp"
+        }
+      ]
+    },
+    "hm": {
+      "checked": "2026-09-26",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "about",
+          "kind": "official-doc",
+          "captured": "2026-09-26",
+          "host": "hmgroup.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-09-26",
+          "host": "cinfprxnprci.hm.com"
+        },
+        {
+          "id": "fds-host",
+          "kind": "official-doc",
+          "captured": "2026-09-26",
+          "host": "cinfprxnprci.hm.com"
+        },
+        {
+          "id": "history",
+          "kind": "official-doc",
+          "captured": "2026-09-26",
+          "host": "hmgroup.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-09-26",
+          "host": "www2.hm.com"
         }
       ]
     },

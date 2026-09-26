@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 478,
+ "count": 479,
  "items": [
   {
    "id": "104",
@@ -3790,6 +3790,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "hm",
+   "primary_color_hex": "#eb0010",
+   "category": "ecommerce",
+   "visual_theme": "A dark, photography-led fashion storefront: black ground, near-white #f2f2f2 type in HM Slussen at weight 100, and the red logo #eb0010 as the only colour on the chrome. Controls are square, unfilled and text-only; hover dims the label to #a0a0a0. Fabric Design System tokens carry a typography scale per locale and seven-slot campaign palettes (Black Friday, sale, gift-giving).",
+   "voice_fingerprint": {
+    "register": "Global fashion retail storefront, terse and navigational",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "de-fashion-retail"
+   },
+   "tone_keywords": [
+    "minimal",
+    "dark",
+    "editorial",
+    "photographic",
+    "square"
+   ],
+   "antipatterns": [
+    "reading the product swatch palette (#ff0000, #00a1ff) as brand colours",
+    "rounded or filled buttons; controls are square and text-only",
+    "bold UI type; the type tokens set weight 100",
+    "using red beyond the logo and discount prices",
+    "treating a campaign palette as the default theme"
+   ],
+   "has_personas": false,
+   "category_raw": "fashion-retail"
   },
   {
    "id": "hogangnono",
