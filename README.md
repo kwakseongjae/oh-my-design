@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>A design system your coding agent can actually hold.</strong> <code>oh-my-design-cli</code> installs the middle that AI UI work keeps missing: a philosophy you declare, tokens and component contracts derived from it, numbered gates for the failures AI repeats, and <code>omd book</code> to read your own system back. 28 skills, 20 specialist roles, 93 preset contracts, 440+ quality-graded references. No API key or MCP server for the core workflows.
+  <strong>A design system your coding agent can actually hold.</strong> <code>oh-my-design-cli</code> installs the middle that AI UI work keeps missing: a philosophy you declare, tokens and component contracts derived from it, numbered gates for the failures AI repeats, and <code>omd book</code> to read your own system back. 28 skills, 20 specialist roles, 93 preset contracts, 500+ quality-graded references. No API key or MCP server for the core workflows.
 </p>
 
 <p align="center">
@@ -13,7 +13,7 @@
   <a href="https://www.npmjs.com/package/oh-my-design-cli"><img src="https://img.shields.io/npm/dm/oh-my-design-cli?style=flat-square&color=cb3837" alt="npm downloads" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/kwakseongjae/oh-my-design?style=flat-square" alt="License" /></a>
   <a href="https://github.com/kwakseongjae/oh-my-design/stargazers"><img src="https://img.shields.io/github/stars/kwakseongjae/oh-my-design?style=social" alt="GitHub Stars" /></a>
-  <img src="https://img.shields.io/badge/references-440%2B-7c5cfc?style=flat-square" alt="440+ References" />
+  <img src="https://img.shields.io/badge/references-500%2B-7c5cfc?style=flat-square" alt="500+ References" />
   <img src="https://img.shields.io/badge/CLI-install%20%2B%20doctor-blue?style=flat-square" alt="Install and doctor CLI" />
 </p>
 
@@ -115,7 +115,7 @@ Nothing above needs the CLI installed to check — these are files in this repo:
 
 ## What is oh-my-design?
 
-**oh-my-design (OmD)** installs local design workflows into the coding tool you already use. Claude Code, Codex, and OpenCode receive reusable skills and specialist roles; Cursor receives native Agent Skills plus a focused project rule that applies the same `DESIGN.md`. New design-system creation targets the vendor-neutral [DESIGN.md Core v2](./spec/design-md-core-v2.md): a concise portable contract that remains useful when pasted into a generic chat or attached to Claude Design/Open Design, with optional structured evidence under `.omd/system/`. The package also includes 440+ quality-graded company references. Existing reference formats remain readable during the lossless migration window. **Core install and local workflows need no separate API key, daemon, or MCP server; inference stays inside your existing coding-agent session. The optional `claude-design` skill opens your logged-in claude.ai/design session in Chrome.**
+**oh-my-design (OmD)** installs local design workflows into the coding tool you already use. Claude Code, Codex, and OpenCode receive reusable skills and specialist roles; Cursor receives native Agent Skills plus a focused project rule that applies the same `DESIGN.md`. New design-system creation targets the vendor-neutral [DESIGN.md Core v2](./spec/design-md-core-v2.md): a concise portable contract that remains useful when pasted into a generic chat or attached to Claude Design/Open Design, with optional structured evidence under `.omd/system/`. The package also includes 500+ quality-graded company references. Existing reference formats remain readable during the lossless migration window. **Core install and local workflows need no separate API key, daemon, or MCP server; inference stays inside your existing coding-agent session. The optional `claude-design` skill opens your logged-in claude.ai/design session in Chrome.**
 
 ### DESIGN.md Core v2
 
@@ -251,7 +251,7 @@ This is the shortest path from install to a visible result.
    > Create a project-owned DESIGN.md for a family meal-tracking app. Use Toss as a reference, keep only verified reference facts, and ask before deciding product-specific facts.
 
    Your skill-enabled agent runs **`omd:init`**: it recommends a reference from
-   the 440+ quality-graded company catalog and prepares the exact graph and
+   the 500+ quality-graded company catalog and prepares the exact graph and
    `DESIGN.md` preview. After the project owner (or a pre-registered external
    authority controller) reviews and approves the exact bytes, OmD compiles a
    hash-bound package and adopts it atomically into the project. The agent never
@@ -293,11 +293,11 @@ For older Cursor clients, `--cursor-rule-only` installs the historical rule + ca
 
 ## What's inside
 
-**28 skills · 20 sub-agents · 440+ quality-graded references · activation hooks** make up the full bundle. Cursor receives the 27 portable skills; `claude-design`, OmD sub-agent definitions, and activation hooks remain channel-specific.
+**28 skills · 20 sub-agents · 500+ quality-graded references · activation hooks** make up the full bundle. Cursor receives the 27 portable skills; `claude-design`, OmD sub-agent definitions, and activation hooks remain channel-specific.
 
 - **Skills** — core flow (`omd:autopilot` / `omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:update` / `omd:issue` — file feedback straight to GitHub / `omd:remember` / `omd:learn` / `omd:taste` — say "what are my preferences" to see everything the loop has learned, pending, or snoozed), live capture + assets (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), the landing and media track (`omd:setup` — record which image/video channels this machine actually has / `omd:landing` — scroll-native one-page landing / `omd:media` — brand-consistent asset sets / `omd:showcase` — scroll demo video), the writing and review layer (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:humanize` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), interface quality (`omd:feel` / `omd:slop-audit`), plus the standalone `claude-design` skill that drives claude.ai/design from your terminal.
 - **Sub-agents** — `omd-master` + 19 specialists (UX research, UI generation, asset curation, copy humanization, slop auditing, a11y audit, persona testing, critique, …).
-- **References** — 440+ company `DESIGN.md` files with explicit evidence and quality status. Every reference is also served as raw markdown at `oh-my-design.kr/<id>/design.md`, so agents can fetch it directly.
+- **References** — 500+ company `DESIGN.md` files with explicit evidence and quality status. Every reference is also served as raw markdown at `oh-my-design.kr/<id>/design.md`, so agents can fetch it directly.
 - **Hooks** — UserPromptSubmit / SessionStart / PostToolUse activation so the skills trigger on natural language, not just slash commands.
 
 Outcome-first workflows, reproducible examples, and all five locales: **[oh-my-design.kr/docs/en](https://oh-my-design.kr/docs/en)** · [한국어](https://oh-my-design.kr/docs/ko) · [日本語](https://oh-my-design.kr/docs/ja) · [简体中文](https://oh-my-design.kr/docs/zh-cn) · [繁體中文](https://oh-my-design.kr/docs/zh-tw).

@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>AI コーディングエージェントが、プロジェクト専用の DESIGN.md を基準に作業できる環境を整えます。</strong> ガイド付きインストールと doctor、27 の再利用可能なスキル、20 の専門ロール、品質評価済みの企業リファレンス 440 件以上を提供します。ローカルワークフローに別の API キーや MCP サーバーは不要です。
+  <strong>AI コーディングエージェントが、プロジェクト専用の DESIGN.md を基準に作業できる環境を整えます。</strong> ガイド付きインストールと doctor、28 の再利用可能なスキル、20 の専門ロール、品質評価済みの企業リファレンス 500 件以上を提供します。ローカルワークフローに別の API キーや MCP サーバーは不要です。
 </p>
 
 <p align="center">
@@ -13,7 +13,7 @@
   <a href="https://www.npmjs.com/package/oh-my-design-cli"><img src="https://img.shields.io/npm/dm/oh-my-design-cli?style=flat-square&color=cb3837" alt="npm downloads" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/kwakseongjae/oh-my-design?style=flat-square" alt="License" /></a>
   <a href="https://github.com/kwakseongjae/oh-my-design/stargazers"><img src="https://img.shields.io/github/stars/kwakseongjae/oh-my-design?style=social" alt="GitHub Stars" /></a>
-  <img src="https://img.shields.io/badge/references-440%2B-7c5cfc?style=flat-square" alt="440+ References" />
+  <img src="https://img.shields.io/badge/references-500%2B-7c5cfc?style=flat-square" alt="500+ References" />
   <img src="https://img.shields.io/badge/CLI-install%20%2B%20doctor-blue?style=flat-square" alt="Install and doctor CLI" />
 </p>
 
@@ -80,7 +80,7 @@ CLI を入れなくても確認できます。すべてこのリポジトリ内�
 
 ## oh-my-design とは?
 
-**oh-my-design (OmD)** は、普段使っている AI コーディングツールにローカルのデザインワークフローを導入します。新しい `DESIGN.md Core v2` は、YAML やツール・モデル情報を表面に出さない 7 領域の vendor-neutral な契約です。Claude Design、Open Design、一般的なチャットにはファイル単体で渡せます。任意の `.omd/system` Graph は、検証済みプロジェクトでのみ machine authority になります。Google DESIGN.md との import/export 互換を目指しますが、同一仕様または Google 公式仕様とは主張しません。パッケージには品質と根拠の状態を明示した企業リファレンス 440 件以上も含まれます。**コアのインストールとローカルワークフローに別の API キー、デーモン、MCP サーバーは不要です。**
+**oh-my-design (OmD)** は、普段使っている AI コーディングツールにローカルのデザインワークフローを導入します。新しい `DESIGN.md Core v2` は、YAML やツール・モデル情報を表面に出さない 7 領域の vendor-neutral な契約です。Claude Design、Open Design、一般的なチャットにはファイル単体で渡せます。任意の `.omd/system` Graph は、検証済みプロジェクトでのみ machine authority になります。Google DESIGN.md との import/export 互換を目指しますが、同一仕様または Google 公式仕様とは主張しません。パッケージには品質と根拠の状態を明示した企業リファレンス 500 件以上も含まれます。**コアのインストールとローカルワークフローに別の API キー、デーモン、MCP サーバーは不要です。**
 
 ## インストール
 
@@ -135,7 +135,7 @@ CLI の役割はバンドルの導入と診断までです。その後のデザ�
 | **Claude Code** | `--agent claude-code` (デフォルト) | フルバンドル — `.claude/` 配下のスキル、20 サブエージェント、hooks、data |
 | **Codex** | `--agent codex` | `.agents/skills/` のスキル、`.codex/agents/` の埋め込みサブエージェント定義、`.codex/data/` のローカルカタログ |
 | **OpenCode** | `--agent opencode` | Project: `.opencode/{skills,agents,data}/` のスキル・ネイティブのサブエージェント・カタログ。Global: `~/.config/opencode/{skills,agents,data}/` の同じバンドル |
-| **Cursor** | `--agent cursor` | `.cursor/skills/` の互換 Agent Skills 26 個、小さな `.cursor/rules/omd-design.mdc` bootstrap、共有 `.claude/data` カタログ。別個のサブエージェント定義と hooks は導入しない |
+| **Cursor** | `--agent cursor` | `.cursor/skills/` の互換 Agent Skills 27 個、小さな `.cursor/rules/omd-design.mdc` bootstrap、共有 `.claude/data` カタログ。別個のサブエージェント定義と hooks は導入しない |
 
 デフォルトでは検出されたすべてのエージェントにインストールします。単一チャネルを非対話で導入するには `npx oh-my-design-cli@latest install-skills --agent <name> --all` を実行します。
 
@@ -147,7 +147,7 @@ Cursor 2.4+ は `.cursor/skills/` から互換 OmD Agent Skills 26 個を読み�
 
 ## パッケージの中身
 
-**27 スキル · 20 サブエージェント · 品質・根拠ステータス付きの 440 件以上のリファレンス · 起動 hooks** がフルバンドルです。Cursor には移植可能な 26 スキルを導入し、`claude-design`、別個のサブエージェント定義、起動 hooks はチャネル固有です。
+**28 スキル · 20 サブエージェント · 品質・根拠ステータス付きの 500 件以上のリファレンス · 起動 hooks** がフルバンドルです。Cursor には移植可能な 27 スキルを導入し、`claude-design`、別個のサブエージェント定義、起動 hooks はチャネル固有です。
 
 すべてのリファレンスは `oh-my-design.kr/<id>/design.md` から raw markdown としても取得でき、エージェントが直接 fetch できます。スキル・エージェントごとの詳細リファレンス: **[oh-my-design.kr/docs/ja](https://oh-my-design.kr/docs/ja)**。
 

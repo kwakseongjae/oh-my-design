@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>讓 AI 程式助理依照專案自己的 DESIGN.md 工作。</strong> 內含引導式安裝與 doctor、27 個可重複使用的 skills、20 個專業角色，以及 440 個以上經過品質分級的企業參考。使用本機工作流程不需要另外申請 API 金鑰或架設 MCP 伺服器。
+  <strong>讓 AI 程式助理依照專案自己的 DESIGN.md 工作。</strong> 內含引導式安裝與 doctor、28 個可重複使用的 skills、20 個專業角色，以及 500 個以上經過品質分級的企業參考。使用本機工作流程不需要另外申請 API 金鑰或架設 MCP 伺服器。
 </p>
 
 <p align="center">
@@ -13,7 +13,7 @@
   <a href="https://www.npmjs.com/package/oh-my-design-cli"><img src="https://img.shields.io/npm/dm/oh-my-design-cli?style=flat-square&color=cb3837" alt="npm downloads" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/kwakseongjae/oh-my-design?style=flat-square" alt="License" /></a>
   <a href="https://github.com/kwakseongjae/oh-my-design/stargazers"><img src="https://img.shields.io/github/stars/kwakseongjae/oh-my-design?style=social" alt="GitHub Stars" /></a>
-  <img src="https://img.shields.io/badge/references-440%2B-7c5cfc?style=flat-square" alt="440+ References" />
+  <img src="https://img.shields.io/badge/references-500%2B-7c5cfc?style=flat-square" alt="500+ References" />
   <img src="https://img.shields.io/badge/CLI-install%20%2B%20doctor-blue?style=flat-square" alt="Install and doctor CLI" />
 </p>
 
@@ -78,7 +78,7 @@
 
 ## 什麼是 oh-my-design?
 
-**oh-my-design (OmD)** 會把本機設計工作流程安裝到你原本使用的 AI 程式助理。新的 `DESIGN.md Core v2` 是不在可見頂部放置 YAML、工具或模型資訊的七領域 vendor-neutral 契約，可將單一檔案交給 Claude Design、Open Design 或一般聊天使用。選用的 `.omd/system` Graph 只在通過驗證的專案中成為 machine authority。它以與 Google DESIGN.md 的匯入／匯出相容為目標，但不宣稱是同一規格或 Google 官方規格。套件另附 440 個以上標示品質與依據狀態的企業參考。**核心安裝與本機工作流程不需要額外 API 金鑰、daemon 或 MCP 伺服器。**
+**oh-my-design (OmD)** 會把本機設計工作流程安裝到你原本使用的 AI 程式助理。新的 `DESIGN.md Core v2` 是不在可見頂部放置 YAML、工具或模型資訊的七領域 vendor-neutral 契約，可將單一檔案交給 Claude Design、Open Design 或一般聊天使用。選用的 `.omd/system` Graph 只在通過驗證的專案中成為 machine authority。它以與 Google DESIGN.md 的匯入／匯出相容為目標，但不宣稱是同一規格或 Google 官方規格。套件另附 500 個以上標示品質與依據狀態的企業參考。**核心安裝與本機工作流程不需要額外 API 金鑰、daemon 或 MCP 伺服器。**
 
 ## 安裝
 
@@ -130,19 +130,19 @@ CLI 只負責安裝與檢查套件。之後的設計工作都以自然語言交�
 | **Claude Code** | `--agent claude-code` (預設) | 完整套件 — `.claude/` 下的 skills、20 個子代理、hooks、data |
 | **Codex** | `--agent codex` | `.agents/skills/` 技能、`.codex/agents/` 內嵌子代理角色，以及 `.codex/data/` 本機參考目錄 |
 | **OpenCode** | `--agent opencode` | 專案：`.opencode/{skills,agents,data}/` 內的技能、原生子代理與參考目錄；全域：`~/.config/opencode/{skills,agents,data}/` 內的相同套件 |
-| **Cursor** | `--agent cursor` | `.cursor/skills/` 中 26 個相容 Agent Skills、精簡 `.cursor/rules/omd-design.mdc` bootstrap 與共用 `.claude/data` 目錄；不安裝獨立子代理定義或 hooks |
+| **Cursor** | `--agent cursor` | `.cursor/skills/` 中 27 個相容 Agent Skills、精簡 `.cursor/rules/omd-design.mdc` bootstrap 與共用 `.claude/data` 目錄；不安裝獨立子代理定義或 hooks |
 
 預設會安裝到所有偵測到的 AI 程式助理。若要以非互動方式安裝單一通道，請執行 `npx oh-my-design-cli@latest install-skills --agent <name> --all`。
 
 ### Cursor 的正確使用路徑
 
-Cursor 2.4+ 會從 `.cursor/skills/` 載入 26 個相容 OmD Agent Skills。安裝後重新啟動 Cursor，以自然語言要求建立設計系統，或直接呼叫 `/omd-init`。常駐 rule 維持保留中的使用者修正、已採用 Bound System／standalone DESIGN.md、框架預設值的順序，以及 unknown-as-absence。
+Cursor 2.4+ 會從 `.cursor/skills/` 載入 27 個相容 OmD Agent Skills。安裝後重新啟動 Cursor，以自然語言要求建立設計系統，或直接呼叫 `/omd-init`。常駐 rule 維持保留中的使用者修正、已採用 Bound System／standalone DESIGN.md、框架預設值的順序，以及 unknown-as-absence。
 
 舊版 Cursor 可使用 `--cursor-rule-only` 安裝既有 rule + 目錄相容模式。OmD 的獨立專業子代理定義與 hooks 不會安裝到 Cursor。
 
 ## 套件內容
 
-**27 個 skills · 20 個子代理角色 · 440 個以上附品質與依據狀態的參考 · 啟動 hooks** 是完整套件。Cursor 會取得 26 個可攜 skills；`claude-design`、獨立子代理定義與啟動 hooks 仍依通道而定。
+**28 個 skills · 20 個子代理角色 · 500 個以上附品質與依據狀態的參考 · 啟動 hooks** 是完整套件。Cursor 會取得 27 個可攜 skills；`claude-design`、獨立子代理定義與啟動 hooks 仍依通道而定。
 
 每個參考也以 raw markdown 形式提供於 `oh-my-design.kr/<id>/design.md`，AI 程式助理可以直接讀取。完整的 skill 與 agent 參考文件：**[oh-my-design.kr/docs/zh-tw](https://oh-my-design.kr/docs/zh-tw)**。
 

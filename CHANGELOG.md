@@ -6,6 +6,19 @@ After any release: run `npx oh-my-design-cli@latest`, keep the detected channels
 
 ---
 
+## 2.0.2 — 2026-09-27
+
+**A larger, better-evidenced reference catalog and a more honest DESIGN.md Core v2. Patch release — no change to the installer's file ownership rules. 2.0.1 was never published to npm; this release includes everything listed under 2.0.1.**
+
+- **Catalog: 521 references, 227 of them `verified_v2`** (npm 2.0.0 shipped the earlier catalog). New verified references span Japan, the UK and a first European push — Germany, France, the Netherlands, the Nordics, Spain, Italy, Austria, the Baltics — each measured live (computed tokens, component states under a real Tab key, pseudo-element and background-image hover layers) and grounded in the company's own legal and about pages. Country codes LT, NO, DK, AT, EE, CZ, RO, BE and CH are now accepted.
+- **Core v2 `omitted` claim** — a Core file can now say what it left out and why (`verified-absent`, `unresolved`, `out-of-scope`), so an agent can tell "the brand publishes nothing" from "nobody looked".
+- **Core v2 conflict consumption** — a reader meeting a preserved conflict follows surface match → declared authority → freshness → do not choose, instead of silently picking a value.
+- **Google-shaped input detection** in the Core dual-read path.
+- **`omd-reference-capture`** — the shipped capture bundle now reads the Core package instead of raw DESIGN.md bytes, and fails loudly when a Core body has no `.omd/` package.
+- Counts in the READMEs (all four locales), package description, MCP README and `llms.txt` now read "500+" references and 28 skills / 27 Cursor Agent Skills.
+
+---
+
 ## 2.0.1 — 2026-09-02
 
 **Landing craft as a shipped workflow: five new skills, an art-director role, and the machine checks that keep a one-page landing honest. Patch release — no change to the DESIGN.md Core v2 contract or the installer's file ownership rules.**

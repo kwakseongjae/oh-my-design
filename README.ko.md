@@ -5,7 +5,7 @@
 <h1 align="center">oh-my-design</h1>
 
 <p align="center">
-  <strong>코딩 에이전트가 실제로 붙들 수 있는 디자인 시스템.</strong> <code>oh-my-design-cli</code>는 AI UI 작업에 늘 비어 있던 중간 단계를 설치합니다 — 직접 선언하는 철학, 거기서 유도된 토큰과 컴포넌트 계약, AI가 반복하는 실패에 번호를 붙인 게이트, 그리고 자기 시스템을 되읽는 <code>omd book</code>. 스킬 27개, 전문 역할 20개, 프리셋 계약 93개, 품질 등급 레퍼런스 440개 이상. 핵심 워크플로에 API 키도 MCP 서버도 필요 없습니다.
+  <strong>코딩 에이전트가 실제로 붙들 수 있는 디자인 시스템.</strong> <code>oh-my-design-cli</code>는 AI UI 작업에 늘 비어 있던 중간 단계를 설치합니다 — 직접 선언하는 철학, 거기서 유도된 토큰과 컴포넌트 계약, AI가 반복하는 실패에 번호를 붙인 게이트, 그리고 자기 시스템을 되읽는 <code>omd book</code>. 스킬 28개, 전문 역할 20개, 프리셋 계약 93개, 품질 등급 레퍼런스 500개 이상. 핵심 워크플로에 API 키도 MCP 서버도 필요 없습니다.
 </p>
 
 <p align="center">
@@ -13,7 +13,7 @@
   <a href="https://www.npmjs.com/package/oh-my-design-cli"><img src="https://img.shields.io/npm/dm/oh-my-design-cli?style=flat-square&color=cb3837" alt="npm downloads" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/kwakseongjae/oh-my-design?style=flat-square" alt="License" /></a>
   <a href="https://github.com/kwakseongjae/oh-my-design/stargazers"><img src="https://img.shields.io/github/stars/kwakseongjae/oh-my-design?style=social" alt="GitHub Stars" /></a>
-  <img src="https://img.shields.io/badge/references-440%2B-7c5cfc?style=flat-square" alt="440+ References" />
+  <img src="https://img.shields.io/badge/references-500%2B-7c5cfc?style=flat-square" alt="500+ References" />
   <img src="https://img.shields.io/badge/CLI-install%20%2B%20doctor-blue?style=flat-square" alt="Install and doctor CLI" />
 </p>
 
@@ -114,7 +114,7 @@ competing CTA. Painted hover uses four-sided space.4 (P-FN-07).
 
 ## oh-my-design이란?
 
-**oh-my-design (OmD)** 은 지금 쓰는 AI 코딩 도구에 로컬 디자인 워크플로를 설치합니다. 새 `DESIGN.md Core v2`는 상단 YAML이나 도구·모델 표식 없이 읽히는 7영역의 vendor-neutral 계약입니다. Claude Design, Open Design, 일반 채팅에는 파일만 전달해도 되고, 선택적 `.omd/system` Graph는 검증된 프로젝트에서만 machine authority가 됩니다. Google DESIGN.md와 가져오기·내보내기 호환을 목표로 하지만 같은 규격이나 Google 공식 규격이라고 주장하지 않습니다. 패키지에는 품질 등급과 근거 상태를 표시한 기업 레퍼런스 440개 이상도 들어 있습니다. **핵심 설치와 로컬 워크플로에는 별도 API 키·데몬·MCP 서버가 필요 없습니다.**
+**oh-my-design (OmD)** 은 지금 쓰는 AI 코딩 도구에 로컬 디자인 워크플로를 설치합니다. 새 `DESIGN.md Core v2`는 상단 YAML이나 도구·모델 표식 없이 읽히는 7영역의 vendor-neutral 계약입니다. Claude Design, Open Design, 일반 채팅에는 파일만 전달해도 되고, 선택적 `.omd/system` Graph는 검증된 프로젝트에서만 machine authority가 됩니다. Google DESIGN.md와 가져오기·내보내기 호환을 목표로 하지만 같은 규격이나 Google 공식 규격이라고 주장하지 않습니다. 패키지에는 품질 등급과 근거 상태를 표시한 기업 레퍼런스 500개 이상도 들어 있습니다. **핵심 설치와 로컬 워크플로에는 별도 API 키·데몬·MCP 서버가 필요 없습니다.**
 
 ## 설치
 
@@ -143,7 +143,7 @@ CLI는 번들을 설치하고 진단하는 역할만 합니다. 이후 디자인
    > 가족 식단 기록 앱의 DESIGN.md를 만들어줘. Toss를 레퍼런스로 쓰되 확인된 값만 가져오고, 제품 고유 정보는 결정하기 전에 물어봐.
 
    스킬이 설치된 에이전트가 **`omd:init`** 을 실행합니다. 품질 등급을
-   매긴 기업 카탈로그 440개 이상에서 레퍼런스를 추천하고, 정확한 Graph와
+   매긴 기업 카탈로그 500개 이상에서 레퍼런스를 추천하고, 정확한 Graph와
    `DESIGN.md` 미리보기를 준비합니다. 프로젝트 소유자 또는 소유자 정책에
    사전 등록된 외부 권한 컨트롤러가 그 바이트를 검토·승인하고, 컴파일된
    hash-bound 패키지도 체크포인트에서 확인하면 OmD가 프로젝트에 원자적으로
@@ -172,7 +172,7 @@ Toss가 아니어도 됩니다 — `Stripe-style`, `Linear-clone B2B SaaS`, `Kar
 | **Claude Code** | `--agent claude-code` (기본) | 풀 번들 — `.claude/` 아래 스킬, 20 서브에이전트, hooks, data |
 | **Codex** | `--agent codex` | `.agents/skills/` 스킬, `.codex/agents/` 내장 서브에이전트 역할, `.codex/data/` 로컬 카탈로그 |
 | **OpenCode** | `--agent opencode` | 프로젝트: `.opencode/{skills,agents,data}/`의 스킬·네이티브 서브에이전트·카탈로그; 전역: `~/.config/opencode/{skills,agents,data}/`의 동일 번들 |
-| **Cursor** | `--agent cursor` | `.cursor/skills/`의 호환 Agent Skills 26개 + 작은 `.cursor/rules/omd-design.mdc` bootstrap + 공용 `.claude/data` 카탈로그; 별도 서브에이전트 정의·훅은 설치하지 않음 |
+| **Cursor** | `--agent cursor` | `.cursor/skills/`의 호환 Agent Skills 27개 + 작은 `.cursor/rules/omd-design.mdc` bootstrap + 공용 `.claude/data` 카탈로그; 별도 서브에이전트 정의·훅은 설치하지 않음 |
 
 기본 설치는 감지된 모든 에이전트를 대상으로 합니다. 단일 채널을 비대화형으로 설치하려면 `npx oh-my-design-cli@latest install-skills --agent <name> --all`을 실행하세요.
 
@@ -184,11 +184,11 @@ Cursor 2.4+는 `.cursor/skills/`에서 호환 OmD Agent Skills 26개를 읽습�
 
 ## 패키지 구성
 
-**27 스킬 · 20 서브에이전트 · 440개 이상의 품질 등급형 레퍼런스 · 활성화 hooks**가 전체 번들입니다. Cursor에는 이식 가능한 스킬 26개가 설치되며 `claude-design`, 별도 서브에이전트 정의, 활성화 hooks는 채널별로 제한됩니다.
+**28 스킬 · 20 서브에이전트 · 500개 이상의 품질 등급형 레퍼런스 · 활성화 hooks**가 전체 번들입니다. Cursor에는 이식 가능한 스킬 27개가 설치되며 `claude-design`, 별도 서브에이전트 정의, 활성화 hooks는 채널별로 제한됩니다.
 
 - **스킬** — core flow (`omd:autopilot` / `omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:update` / `omd:issue` — 불만을 GitHub 이슈로 바로 접수 / `omd:remember` / `omd:learn` / `omd:taste` — "내 취향 보여줘" 한마디로 루프가 배운 것·대기 중·보류된 것을 한 뷰로), 라이브 캡처 + 에셋 (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), 랜딩과 미디어 (`omd:setup` — 이 머신에 실제로 있는 이미지·영상 채널을 찾아 기록 / `omd:landing` — 스크롤 원페이지 랜딩 / `omd:media` — 브랜드 자산 세트 / `omd:showcase` — 스크롤 시연 영상), 글쓰기와 리뷰 (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:humanize` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), 인터페이스 품질 (`omd:feel` / `omd:slop-audit`), 그리고 터미널에서 claude.ai/design을 구동하는 단독 스킬 `claude-design`.
 - **서브에이전트** — `omd-master` + 19 스페셜리스트 (UX 리서치, UI 생성, 에셋 큐레이션, 문장 다듬기, slop 감사, a11y 감사, 페르소나 테스트, 비평, …).
-- **레퍼런스** — 기업 `DESIGN.md` 440개 이상에 근거와 품질 상태를 명시합니다. 모든 레퍼런스는 `oh-my-design.kr/<id>/design.md`에서 raw markdown으로도 제공되어 에이전트가 직접 가져올 수 있습니다.
+- **레퍼런스** — 기업 `DESIGN.md` 500개 이상에 근거와 품질 상태를 명시합니다. 모든 레퍼런스는 `oh-my-design.kr/<id>/design.md`에서 raw markdown으로도 제공되어 에이전트가 직접 가져올 수 있습니다.
 - **Hooks** — UserPromptSubmit / SessionStart / PostToolUse 활성화 — 슬래시 명령 없이 자연어만으로 스킬이 발동합니다.
 
 스킬·에이전트별 상세 레퍼런스: **[oh-my-design.kr/docs/ko](https://oh-my-design.kr/docs/ko)**.

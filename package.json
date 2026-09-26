@@ -1,7 +1,7 @@
 {
   "name": "oh-my-design-cli",
-  "version": "2.0.1",
-  "description": "Give your AI coding agent a project-owned DESIGN.md workflow with a guided installer, doctor, and 440+ quality-graded references.",
+  "version": "2.0.2",
+  "description": "Give your AI coding agent a project-owned DESIGN.md workflow with a guided installer, doctor, and 500+ quality-graded references.",
   "type": "module",
   "bin": {
     "oh-my-design": "dist/bin/oh-my-design.js",
