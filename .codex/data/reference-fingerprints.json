@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 502,
+ "count": 503,
  "items": [
   {
    "id": "104",
@@ -5559,6 +5559,34 @@
    "signature_motion": "*Durations:**",
    "has_personas": true,
    "category_raw": "fintech"
+  },
+  {
+   "id": "lego",
+   "primary_color_hex": "#ffd400",
+   "category": "ecommerce",
+   "visual_theme": "The LEGO store in its brick colours: a bright yellow #ffd400 main bar under a light #f7f7f7 utility bar, ink #141414 in Cera Pro, LEGO red #dd1a22 for highlighted links that invert to black on hover, and an operational blue #005ad2 for primary actions. 2,178 --ds-* tokens name the brand palette (87 colours) and give every action enabled, hovered, pressed and selected values; translucent white pills sit on coloured panels. Focus is a 2px #4695f0 ring.",
+   "voice_fingerprint": {
+    "register": "playful family brand, clear retail",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-toy-retail"
+   },
+   "tone_keywords": [
+    "playful",
+    "primary colours",
+    "yellow",
+    "reinvention",
+    "family"
+   ],
+   "antipatterns": [
+    "substitute yellows; the brand yellow is #ffd400",
+    "opaque white buttons on coloured panels; use the translucent static-light family",
+    "pure black body text; the ink is #141414",
+    "actions without hovered and pressed values",
+    "focus without the 2px #4695f0 ring"
+   ],
+   "has_personas": false,
+   "category_raw": "toy-retail"
   },
   {
    "id": "lemonbase",
