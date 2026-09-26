@@ -3,6 +3,15 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-26 · 루프 회차 31–33 — **EU 웨이브 2 거의 마감** (488 · 194)
+
+- 등재: coolblue(NL, 본 세션 Aside — 동의창 수락 안 함) · typeform(ES, Paper·Ink) · ikea(NL, Skapa `data-skapa` 속성).
+- EU 웨이브 2 = 10/12. glovo 보류(WAF 403·색 토큰 0), leboncoin 재프로브 대기.
+- **EU 웨이브 3 스카우팅 12/20(60%)**, 1차 프로브 4건 진행. 가상 요소 스윕·booth·coconala 대기.
+- 오늘 누적 +16 (472→488), verified +16 (178→194).
+
+---
+
 ## ✅ 2026-09-26 · 루프 회차 27–30 — **EU 웨이브 2 계속** (485 · 191)
 
 - 등재: getyourguide(DE, 채용 사이트 'Established Berlin HQ') · alan(FR, Alan Sans OFL) · adyen(NL).
