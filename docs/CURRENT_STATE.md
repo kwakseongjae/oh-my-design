@@ -3,6 +3,13 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-27 · 루프 회차 58–63 — **EU 웨이브 4 마감 14/16, EU 웨이브 5 4/16** (518 · 224)
+
+- EU4: avanza · trivago 추가(idealista·zooplus 보류). EU5 스카우팅 16/32: deepl · komoot · blinkist · n8n 등재.
+- 국가 CZ·RO·BE·CH 추가. 다음: withings → dailymotion → spendesk → zara → mango → bbva → kiwi → emag → odoo → sbb → finnair → sixt.
+
+---
+
 ## ✅ 2026-09-27 · 루프 회차 46–57 — **EU 웨이브 4: 12/16** (512 · 218)
 
 - 스카우팅 16/32(50%). 등재: vinted(LT, 오버레이 상태) · vipps(NO, 보라/주황 두 버튼 체계) · lego(DK, --ds 2,178, 사이트 선택창은 응답 안 함).

@@ -149,6 +149,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 
 회차가 끝날 때마다 한 줄. 최신이 위.
 
+- 2026-09-27 · 회차 60–63 · deepl · komoot(Schönefeld GmbH) · blinkist · n8n — EU 웨이브 5 4/16. 국가 CZ·RO·BE·CH 추가, 거부어 "Refuse" · **518 / 224**
 - 2026-09-27 · 회차 58–59 · avanza(SE, soft 404 대조군·자사 favicon) · trivago(DE, hover 오버레이로 미측정·catch-all 대조군 무신호 기록) · 동의 거부어에 스웨덴어 추가 · **514 / 220**
 - 2026-09-26~27 · 회차 52–57 · ns(NL) · epidemicsound(SE) · bolt(EE) · wetransfer(NL, 1시간 차단 해제 뒤 마감) · celonis(DE, pressed 미측정 생략) · ecosia(DE). zooplus 재차단(사실·토큰·Warenkorb hover까지 확보) · **512 / 218**
 - 2026-09-26 · 회차 49–51 · toogoodtogo(DK) · fever(**US** — 약관의 Fever Labs Inc.(델라웨어·뉴욕 사무소), 마드리드 캠퍼스는 본사 아님) · bitpanda(AT). idealista는 측정 후 403 차단 → 보류(측정값 scratchpad 보존) · **506 / 212 — 10건 진행 보고**
