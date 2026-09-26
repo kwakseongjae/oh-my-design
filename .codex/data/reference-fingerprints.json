@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 491,
+ "count": 492,
  "items": [
   {
    "id": "104",
@@ -5803,6 +5803,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "ai"
+  },
+  {
+   "id": "malt",
+   "primary_color_hex": "#fc5757",
+   "category": "saas",
+   "visual_theme": "A warm, upbeat freelance marketplace: white and warm off-white #f7f7f5 surfaces, #4b4b4b body and #333330 headings, coral #fc5757 for the main action (hover #d4524f) and deep teal #0f6378 for links and every interaction state. Pink, cyan and yellow accents and a purple-to-coral AI gradient. Agrandir Tight headings over Moderat; pill-like buttons. Tokens from Malt's Joy design system.",
+   "voice_fingerprint": {
+    "register": "French freelance marketplace, upbeat and friendly",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "fr-marketplace"
+   },
+   "tone_keywords": [
+    "warm",
+    "upbeat",
+    "coral",
+    "friendly",
+    "professional"
+   ],
+   "antipatterns": [
+    "coral links; links are teal #0f6378",
+    "cold grey neutrals; Joy neutrals are warm",
+    "counting --mui-* as Joy tokens",
+    "controls without a visible focus state",
+    "square buttons; the primary is a 30px-rounded pill"
+   ],
+   "has_personas": false,
+   "category_raw": "freelance-marketplace"
   },
   {
    "id": "mastercard",
