@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 477,
+ "count": 478,
  "items": [
   {
    "id": "104",
@@ -2302,6 +2302,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "doctolib",
+   "primary_color_hex": "#045fae",
+   "category": "healthcare",
+   "visual_theme": "A calm, clinical booking site: white ground, deep navy #00264c ink, and one 60px search pill (two white fields with #294056 borders, a navy Rechercher button) that is the whole home page. Montserrat bold titles over Roboto. Brand blue #045fae and chrome blue #107aca carry the brand while the main action stays navy; focus is a white 2px ring inside a slate #3a5978 ring. Oxygen tokens named by intent, surface and strength.",
+   "voice_fingerprint": {
+    "register": "French healthcare booking platform, plain and reassuring",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "fr-healthcare-booking"
+   },
+   "tone_keywords": [
+    "calm",
+    "clinical",
+    "trustworthy",
+    "navy",
+    "search-first"
+   ],
+   "antipatterns": [
+    "brightening the main action to chrome blue #107aca; it is navy #00264c",
+    "counting Tailwind --tw-* variables as Oxygen tokens",
+    "inputs without a focus indicator; the live fields lack one and it is a gap",
+    "display type in Roboto; titles are Montserrat bold",
+    "heavy shadows; the one elevation is soft and navy-tinted"
+   ],
+   "has_personas": false,
+   "category_raw": "healthcare-booking"
   },
   {
    "id": "doordash",
