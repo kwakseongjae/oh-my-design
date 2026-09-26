@@ -254,7 +254,11 @@ const read = (frame) => frame.evaluate((prefix) => {
     // adyen.com은 hover를 ::before 오버레이(잉크 7.4%)의 opacity 0→1로 그린다. 요소 자신의 값은
     // 하나도 안 바뀐다 — 가상 요소를 안 보면 "변화 없음"이다 (2026-09-26). content가 있는 것만 센다.
     pseudo: ["::before", "::after"].map((ps) => { const c = getComputedStyle(el, ps);
-      return c.content === "none" || c.content === "normal" ? "" : `${ps}{bg:${c.backgroundColor};img:${c.backgroundImage.slice(0, 60)};op:${c.opacity};tf:${c.transform};bs:${c.boxShadow}}`; }).join(""),
+      if (c.content === "none" || c.content === "normal") return "";
+      // 칠해지는 것이 없는 가상 요소(투명 배경·이미지 없음·그림자 없음·테두리 없음)는 보이지 않는다 —
+      // booth 캐러셀 화살표의 투명 ::before가 hover에 생기는 것을 "변화"로 셌다 (2026-09-26).
+      const paints = !/rgba\([^)]*,\s*0\)|transparent/.test(c.backgroundColor) || c.backgroundImage !== "none" || c.boxShadow !== "none" || parseFloat(c.borderTopWidth) > 0;
+      return paints ? `${ps}{bg:${c.backgroundColor};img:${c.backgroundImage.slice(0, 60)};op:${c.opacity};tf:${c.transform};bs:${c.boxShadow}}` : ""; }).join(""),
     is: { hover: el.matches(":hover"), active: el.matches(":active"), focusVisible: el.matches(":focus-visible") },
   };
   if (prefix) {

@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 498,
+ "count": 499,
  "items": [
   {
    "id": "104",
@@ -1074,6 +1074,34 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "Automotive"
+  },
+  {
+   "id": "booth",
+   "primary_color_hex": "#fc4d50",
+   "category": "ecommerce",
+   "visual_theme": "pixiv's creator marketplace on Charcoal, pixiv's public design system: white ground with cool greys #f1f5f8 and #dee4e9, ink #171d26, teal links #1b7f8c and a teal primary #2c9ba6, and BOOTH red #fc4d50 for discovery and promotion. Every container role has default, hover and press steps; focus is a two-colour border (#067a87, #94dee2). The search field is #ebedf2 with a #d5d9de border and turns white with a dark border on focus. 5px corners.",
+   "voice_fingerprint": {
+    "register": "Japanese creator marketplace, event-driven",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "ja-creator-commerce"
+   },
+   "tone_keywords": [
+    "creator",
+    "neutral chrome",
+    "teal",
+    "red discovery",
+    "event-driven"
+   ],
+   "antipatterns": [
+    "red body links; links are teal #1b7f8c",
+    "containers without hover and press steps",
+    "single-colour focus; Charcoal focus is two colours",
+    "counting Tailwind variables as Charcoal tokens",
+    "loud chrome competing with creators' work"
+   ],
+   "has_personas": false,
+   "category_raw": "creator-marketplace"
   },
   {
    "id": "brandi",
