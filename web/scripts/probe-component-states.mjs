@@ -226,7 +226,9 @@ async function clearOverlays(frame) {
   await frame.evaluate(() => {
     const target = (window.__omdOne ? window.__omdOne('[data-omd-probe="1"]') : document.querySelector('[data-omd-probe="1"]'));
     const ancestors = new Set();
-    for (let n = target; n; n = n.parentElement) ancestors.add(n);
+    // shadow root 경계에서 parentElement는 null이다 — host로 건너가야 한다. coconala(2026-09-26)는
+    // 헤더가 fixed인 웹 컴포넌트 안이라, 경계에서 멈춘 조상 집합이 헤더 host를 숨겨 버렸다.
+    for (let n = target; n; n = n.parentElement || n.getRootNode?.().host) ancestors.add(n);
     for (const el of document.querySelectorAll("body *")) {
       if (ancestors.has(el) || el.contains(target)) continue;
       const s = getComputedStyle(el);

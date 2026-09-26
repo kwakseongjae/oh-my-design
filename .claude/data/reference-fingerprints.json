@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 499,
+ "count": 500,
  "items": [
   {
    "id": "104",
@@ -1695,6 +1695,34 @@
    "signature_motion": "*Durations** (named, not raw ms):",
    "has_personas": true,
    "category_raw": "backend-devops"
+  },
+  {
+   "id": "coconala",
+   "primary_color_hex": "#00a38d",
+   "category": "consumer-tech",
+   "visual_theme": "A light, practical Japanese skills marketplace: white and blue-grey surfaces #f3f4f5 and #e7eaeb, blue-grey ink #202a2e in the system Hiragino stack, and one action green #00a38d stepping to #00866e on hover and #006650 on press. The outline twin tints 4% and 12% green. Category tiles fade to 70% on hover. Nineteen named colour ramps with alpha variants sit underneath. 4px corners on buttons, 6px on search.",
+   "voice_fingerprint": {
+    "register": "Japanese consumer marketplace, friendly and practical",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "ja-skills-marketplace"
+   },
+   "tone_keywords": [
+    "practical",
+    "calm",
+    "green",
+    "blue-grey",
+    "marketplace"
+   ],
+   "antipatterns": [
+    "logo colours for interface actions; actions are green #00a38d",
+    "pure grey neutrals; the ramp leans blue",
+    "hover colours invented outside the green ramp",
+    "counting Tailwind variables as coconala tokens",
+    "large radii on header buttons; they are 4px"
+   ],
+   "has_personas": false,
+   "category_raw": "skills-marketplace"
   },
   {
    "id": "codeit",
