@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 473,
+ "count": 474,
  "items": [
   {
    "id": "104",
@@ -9708,6 +9708,34 @@
    ],
    "has_personas": false,
    "category_raw": "online-learning"
+  },
+  {
+   "id": "sumup",
+   "primary_color_hex": "#FF61F2",
+   "category": "fintech",
+   "visual_theme": "A warm, plain payments site on SumUp's Circuit UI design system: off-white #fbfbf9 pages instead of white, warm near-black #1e1c1c for text and for the primary buttons, warm greys and a sparing SumUp magenta #ff61f2 as accent. SumUp Narrow sets text and buttons, SumUp Black the headlines. Every colour token carries its own hovered, pressed and disabled steps, and one focus ring - 2px off-white inside 4px near-black - covers every control.",
+   "voice_fingerprint": {
+    "register": "payments for small businesses; direct product copy",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "de-fintech-smb"
+   },
+   "tone_keywords": [
+    "warm",
+    "plain",
+    "practical",
+    "systematic",
+    "understated"
+   ],
+   "antipatterns": [
+    "filling large surfaces or primary buttons with the magenta #ff61f2 - primary actions are near-black",
+    "using pure white pages; SumUp uses off-white #fbfbf9",
+    "cold neutral greys; the neutrals are warm",
+    "improvising hover colours instead of each token's -hovered and -pressed step",
+    "using a different focus style per component; there is one ring"
+   ],
+   "has_personas": false,
+   "category_raw": "payments"
   },
   {
    "id": "supabase",

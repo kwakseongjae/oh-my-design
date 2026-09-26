@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 179,
-  "sources": 1069,
+  "references_with_verification_v2": 180,
+  "sources": 1074,
   "sources_by_kind": {
     "brand-asset": 75,
     "license": 76,
-    "official-doc": 443,
-    "product-surface": 475
+    "official-doc": 445,
+    "product-surface": 478
   },
   "references": {
     "104": {
@@ -6086,6 +6086,42 @@
           "kind": "product-surface",
           "captured": "2026-09-23",
           "host": "studysapuri.jp"
+        }
+      ]
+    },
+    "sumup": {
+      "checked": "2026-09-26",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "about-us",
+          "kind": "official-doc",
+          "captured": "2026-09-26",
+          "host": "www.sumup.com"
+        },
+        {
+          "id": "circuit-ui-repo",
+          "kind": "official-doc",
+          "captured": "2026-09-26",
+          "host": "github.com"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-09-26",
+          "host": "www.sumup.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-09-26",
+          "host": "www.sumup.com"
+        },
+        {
+          "id": "product-page",
+          "kind": "product-surface",
+          "captured": "2026-09-26",
+          "host": "www.sumup.com"
         }
       ]
     },
