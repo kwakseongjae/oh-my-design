@@ -107,10 +107,14 @@ async function visit(act) {
     const REJECT = ["#onetrust-reject-all-handler", "#CybotCookiebotDialogBodyButtonDecline",
       "button[data-testid='uc-deny-all-button']", ".didomi-continue-without-agreeing", "#didomi-notice-disagree-button",
       "#cm [data-role=\"necessary\"]", "#c-s-bn", "button.cc-btn[data-role=necessary]"];
-    for (const sel of REJECT) { const b = document.querySelector(sel); if (b && b.getClientRects().length) { b.click(); return sel; } }
+    // Usercentrics v3 등은 배너를 열린 shadow root 안에 그린다 — document.querySelector로는 안 보인다.
+    // flixbus.de(2026-09-26)는 그 배너가 hover를 가로채는데 도구가 거부를 못 눌렀다.
+    const roots = [document];
+    for (const h of document.querySelectorAll("*")) if (h.shadowRoot) roots.push(h.shadowRoot);
+    for (const root of roots) for (const sel of REJECT) { const b = root.querySelector(sel); if (b && b.getClientRects().length) { b.click(); return sel; } }
     // 자체 제작 배너는 선택자가 없다 — 거부 문구로 찾는다 (wolt "Nur erforderliche verwenden", 2026-09-26).
     const WORDS = /^(reject all|reject|decline all|only necessary|necessary only|use necessary only|alle ablehnen|ablehnen|nur erforderliche( verwenden)?|nur notwendige|tout refuser|refuser|continuer sans accepter|rechazar todo|rifiuta tutto|拒否する|すべて拒否|모두 거부|거부)$/i;
-    for (const b of document.querySelectorAll("button, [role=button]")) {
+    for (const root of roots) for (const b of root.querySelectorAll("button, [role=button]")) {
       if (b.getClientRects().length && WORDS.test((b.textContent || "").trim())) { b.click(); return "text:" + b.textContent.trim(); }
     }
     return null;
@@ -119,7 +123,8 @@ async function visit(act) {
   if (rejected) {
     await page.waitForTimeout(1500);
     await page.waitForLoadState("load").catch(() => {});
-    await page.waitForTimeout(Math.min(waitMs, 4000));
+    // flixbus.de는 거부 뒤 다시 그리는 데 4초로 모자랐다 — --wait 값을 그대로 쓴다 (2026-09-26).
+    await page.waitForTimeout(waitMs);
   }
 
   if (flag("open-tabs")) {
@@ -230,6 +235,10 @@ const read = (frame) => frame.evaluate((prefix) => {
     height: Math.round(rect.height), padding: s.padding, font: `${s.fontSize} / ${s.fontWeight}`,
     shadow: s.boxShadow, outline: `${s.outlineColor} ${s.outlineStyle} ${s.outlineWidth}`,
     transform: s.transform, opacity: s.opacity,
+    // FlixBus Honeycomb은 hover·press를 배경색이 아니라 background-image의 반투명 그라디언트
+    // 레이어로 그린다(`--flix-hover-layer-color`). 배경색만 보던 판정은 이를 "변화 없음"으로
+    // 읽었다. 밑줄 hover도 같은 사각지대였다 (2026-09-26).
+    bgImage: s.backgroundImage, decoration: `${s.textDecorationLine} ${s.textDecorationColor}`,
     is: { hover: el.matches(":hover"), active: el.matches(":active"), focusVisible: el.matches(":focus-visible") },
   };
   if (prefix) {
@@ -295,12 +304,23 @@ if ((await capture("rest", async () => {})) === null || !states.rest) {
   console.error(states.rest ? "rest를 읽지 못했다" : "대상 요소를 찾지 못했다");
   await browser.close(); process.exit(1);
 }
+// Playwright hover()의 actionability 검사가 flixbus.de에서 매번 8초 타임아웃했다 — 요소 위에
+// 아무것도 없는데도(elementFromPoint = 대상). 실패하면 중심 좌표로 포인터만 옮긴다. 판정은
+// 어차피 `:hover` 매칭으로 거르므로 가려진 경우는 여전히 못 쟀음으로 남는다 (2026-09-26).
+async function hoverOrMove(loc, v) {
+  try { await loc.hover({ timeout: 8000 }); }
+  catch {
+    const box = await loc.boundingBox();
+    if (!box) throw new Error("hover: 요소 좌표 없음");
+    await v.page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+  }
+}
 await capture("hover", async (v) => { await clearOverlays(v.frame);
   const loc = v.frame.locator('[data-omd-probe="1"]');
-  await loc.scrollIntoViewIfNeeded(); await loc.hover({ timeout: 8000 }); await settle(v.frame, v.page); });
+  await loc.scrollIntoViewIfNeeded(); await hoverOrMove(loc, v); await settle(v.frame, v.page); });
 await capture("pressed", async (v) => { await clearOverlays(v.frame);
   const loc = v.frame.locator('[data-omd-probe="1"]');
-  await loc.scrollIntoViewIfNeeded(); await loc.hover({ timeout: 8000 }); await settle(v.frame, v.page);
+  await loc.scrollIntoViewIfNeeded(); await hoverOrMove(loc, v); await settle(v.frame, v.page);
   await v.page.mouse.down(); await settle(v.frame, v.page); });
 await capture("focus", async (v) => { await clearOverlays(v.frame);
   await v.page.keyboard.press("Tab");                       // 키보드 모달리티 — toss에서 이게 없으면 focus가 안 뜬다
@@ -355,6 +375,8 @@ for (const [name, s] of Object.entries(states)) {
   // `transition: opacity 0.3s`로 hover에 0.9가 되는데, 위임 프로브는 색 여섯 개가
   // 그대로라서 "hover·pressed 변화 없음"으로 보고했다 (2026-09-23).
   if (s.opacity !== states.rest.opacity || name === "rest") extras.push(`opacity=${s.opacity}`);
+  if (s.bgImage !== states.rest.bgImage) extras.push(`background-image=${s.bgImage.slice(0, 90)}`);
+  if (s.decoration !== states.rest.decoration) extras.push(`text-decoration=${s.decoration}`);
   // border와 같은 이유로 rest에서도 항상 찍는다. 포커스 판정은 색이 아니라
   // **스타일**로 갈린다(`auto` = 브라우저, `solid`/`none` = 작성자) — 그 비교를
   // 하려면 rest 값이 출력에 있어야 한다. 측정법 문서 §2.5.
@@ -371,9 +393,9 @@ for (const [name, why] of Object.entries(unmeasured)) {
 // outline-style이 none이면 색·너비가 바뀌어도 아무것도 그려지지 않는다 — 그 변화를 "바뀜"으로
 // 세면 포커스 표시가 없는 입력칸이 있는 것처럼 보인다 (2026-09-23 citymapper·guardian 검색칸).
 const drawnOutline = (o) => (/\bnone\b/.test(o) || /rgba\([^)]*,\s*0\)/.test(o) || /\b0px\b/.test(o) ? "none" : o);
-const VISUAL = (s) => [hex(s.bg), hex(s.fg), hex(s.border), s.shadow, drawnOutline(s.outline), s.transform, s.opacity].join("|");
+const VISUAL = (s) => [hex(s.bg), hex(s.fg), hex(s.border), s.shadow, drawnOutline(s.outline), s.transform, s.opacity, s.bgImage, s.decoration].join("|");
 const changed = Object.entries(states).filter(([k, s]) => k !== "rest" && VISUAL(s) !== VISUAL(states.rest));
-console.log(`\n눈에 보이는 값이 바뀌는 상태: ${changed.length ? changed.map(([k]) => k).join(", ") : "없음 (bg·fg·border·shadow·outline·transform·opacity 전부 동일)"}`);
+console.log(`\n눈에 보이는 값이 바뀌는 상태: ${changed.length ? changed.map(([k]) => k).join(", ") : "없음 (bg·fg·border·shadow·outline·transform·opacity 전부 동일 · background-image·text-decoration 포함)"}`);
 if (Object.keys(unmeasured).length) {
   console.log(`못 잰 상태: ${Object.keys(unmeasured).join(", ")} — **부재가 아니다.** 레퍼런스에 "없음"으로 적지 말 것.`);
 }

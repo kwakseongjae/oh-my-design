@@ -290,3 +290,13 @@ asana는 UA 기본 링이라 토큰을 안 만들었다. **재측정은 새 하�
 긍정 관측(ctrip·sendbird·pixiv·smarthr·asana의 focus 값)은 유효하므로 건드리지 않는다.
 **팔레트나 등급에는 영향이 없다** — focus는 컴포넌트 상태 한 칸이고, 그 칸이 "없음"에서
 "있음"으로 바뀌면 오히려 깊이가 늘어난다.
+
+### 2.8 background-image·밑줄 사각지대 (2026-09-26)
+
+FlixBus Honeycomb은 hover·press를 `background-color`가 아니라 `background-image`의 반투명 그라디언트
+레이어(`--flix-hover-layer-color` = `linear-gradient(rgba(0,0,0,.06)…)`, press `.12`)로 그린다. 7값 비교는
+이를 "변화 없음"으로 읽었다. 밑줄(`text-decoration`) hover도 같은 사각지대였다. `probe-component-states.mjs`가
+이제 두 값을 비교·출력한다. 같은 날 두 가지를 더 고쳤다: Usercentrics처럼 **열린 shadow root 안의
+동의 배너**도 거부 버튼을 찾고, 거부 뒤 재로드 대기를 `--wait` 값 그대로 쓴다. Playwright `hover()`가
+actionability 검사로 타임아웃하면 중심 좌표로 포인터만 옮긴다(판정은 여전히 `:hover` 매칭).
+소급 스윕: 커밋된 verified 레퍼런스 중 "hover 변화 없음" 컴포넌트 39개(23건) — §3 큐 참조.
