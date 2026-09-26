@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 476,
+ "count": 477,
  "items": [
   {
    "id": "104",
@@ -11502,6 +11502,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "zalando",
+   "primary_color_hex": "#ff4c00",
+   "category": "ecommerce",
+   "visual_theme": "A black-and-white fashion storefront where orange #ff4c00 marks the brand and never the actions: navigation is 36px white pills (9984px radius) that grey to #f1f1f1, the primary action is a black pill whose hover flips to #d2d8dd and press to #b9c0c6. Flat - shadows are inset rings only. ZalandoSans variable face; a rebrand token layer (@scope :root) sits over the older theme and supplies the pills, 12px cards and the grey ramp.",
+   "voice_fingerprint": {
+    "register": "German fashion e-commerce storefront, plain and navigational",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "de-fashion-ecommerce"
+   },
+   "tone_keywords": [
+    "monochrome",
+    "flat",
+    "rounded",
+    "fashion",
+    "systematic"
+   ],
+   "antipatterns": [
+    "using orange #ff4c00 as the button colour; actions are black",
+    "reading the base :root greys (#efeff0, #d0d1d3) as current; the rebrand layer overrides them",
+    "treating purple #6328e0 as a brand colour; it marks interactive text",
+    "adding drop shadows; elevation is inset rings only",
+    "square buttons; the rebrand uses full pills"
+   ],
+   "has_personas": false,
+   "category_raw": "fashion-ecommerce"
   },
   {
    "id": "zapier",
