@@ -108,6 +108,11 @@ async function visit(act) {
       "button[data-testid='uc-deny-all-button']", ".didomi-continue-without-agreeing", "#didomi-notice-disagree-button",
       "#cm [data-role=\"necessary\"]", "#c-s-bn", "button.cc-btn[data-role=necessary]"];
     for (const sel of REJECT) { const b = document.querySelector(sel); if (b && b.getClientRects().length) { b.click(); return sel; } }
+    // 자체 제작 배너는 선택자가 없다 — 거부 문구로 찾는다 (wolt "Nur erforderliche verwenden", 2026-09-26).
+    const WORDS = /^(reject all|reject|decline all|only necessary|necessary only|use necessary only|alle ablehnen|ablehnen|nur erforderliche( verwenden)?|nur notwendige|tout refuser|refuser|continuer sans accepter|rechazar todo|rifiuta tutto|拒否する|すべて拒否|모두 거부|거부)$/i;
+    for (const b of document.querySelectorAll("button, [role=button]")) {
+      if (b.getClientRects().length && WORDS.test((b.textContent || "").trim())) { b.click(); return "text:" + b.textContent.trim(); }
+    }
     return null;
   }).catch(() => null);
   // 거부가 페이지를 새로 불러오는 사이트가 있다(gousto) — 다시 안착할 때까지 기다린다.
@@ -365,7 +370,7 @@ for (const [name, why] of Object.entries(unmeasured)) {
 // 배경만 보던 판정은 fg·테두리·그림자·opacity만 바뀌는 상태를 "변화 없음"으로 불렀다.
 // outline-style이 none이면 색·너비가 바뀌어도 아무것도 그려지지 않는다 — 그 변화를 "바뀜"으로
 // 세면 포커스 표시가 없는 입력칸이 있는 것처럼 보인다 (2026-09-23 citymapper·guardian 검색칸).
-const drawnOutline = (o) => (/\bnone\b/.test(o) ? "none" : o);
+const drawnOutline = (o) => (/\bnone\b/.test(o) || /rgba\([^)]*,\s*0\)/.test(o) || /\b0px\b/.test(o) ? "none" : o);
 const VISUAL = (s) => [hex(s.bg), hex(s.fg), hex(s.border), s.shadow, drawnOutline(s.outline), s.transform, s.opacity].join("|");
 const changed = Object.entries(states).filter(([k, s]) => k !== "rest" && VISUAL(s) !== VISUAL(states.rest));
 console.log(`\n눈에 보이는 값이 바뀌는 상태: ${changed.length ? changed.map(([k]) => k).join(", ") : "없음 (bg·fg·border·shadow·outline·transform·opacity 전부 동일)"}`);

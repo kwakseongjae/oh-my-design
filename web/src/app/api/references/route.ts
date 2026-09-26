@@ -39,6 +39,10 @@ const COUNTRY_LABELS: Record<string, string> = {
   FR: 'France',
   IT: 'Italy',
   DE: 'Germany',
+  FI: 'Finland',
+  NL: 'Netherlands',
+  SE: 'Sweden',
+  ES: 'Spain',
   UK: 'UK',
   US: 'United States',
 };

@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 474,
+ "count": 475,
  "items": [
   {
    "id": "104",
@@ -11156,6 +11156,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "marketing"
+  },
+  {
+   "id": "wolt",
+   "primary_color_hex": "#66CBF0",
+   "category": "consumer-tech",
+   "visual_theme": "A bright, friendly delivery site on Wolt's in-house design system Alchemy: white and warm greige surfaces #f5f1ed, a navy ink #272b42, the Wolt light blue #66cbf0 as the brand fill and a deep teal #145367 for brand text and links, generous 20px and fully round radii, and a 3px teal #23748f focus outline. Every colour carries hovered, pressed, selected and disabled steps; the older --cb layer sits beside it. Headlines use DD Scoop, served from DoorDash's CDN since the 2022 acquisition.",
+   "voice_fingerprint": {
+    "register": "delivery app landing page, friendly and short",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "de-consumer-delivery"
+   },
+   "tone_keywords": [
+    "friendly",
+    "bright",
+    "rounded",
+    "warm",
+    "playful"
+   ],
+   "antipatterns": [
+    "treating --cb-* as a second palette; it is the earlier layer with the same values",
+    "cold grey neutrals; Alchemy's neutrals are warm greige",
+    "small sharp radii; Alchemy rounds at 20px or fully",
+    "setting body text in DD Scoop; it is a headline face",
+    "dropping the 3px #23748f focus outline"
+   ],
+   "has_personas": false,
+   "category_raw": "delivery-platform"
   },
   {
    "id": "wooribank",

@@ -97,7 +97,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 - [ ] fingerprint 추가 + 3중 미러(`data/`, `.claude/data/`, `.codex/data/`)
 - [ ] `design-md/<id>/` 와 `packages/mcp/data/references/<id>/` 미러
 - [ ] `npm run query:references:data` → `node web/scripts/sync-catalog.mjs` → `check-counts` ✓
-- [ ] `web`에서 `npm test` 전부 통과
+- [ ] `web`에서 `npm test` 전부 통과 + `npx tsc --noEmit -p .` 통과(생성된 registry 타입 — 새 토큰 그룹이 타입에 없으면 `next build`가 깨진다, 2026-09-26 motion)
 - [ ] 커밋 → 푸시
 
 ## 5. 루프를 멈추는 조건
@@ -111,6 +111,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 
 회차가 끝날 때마다 한 줄. 최신이 위.
 
+- 2026-09-26 · 회차 19 · wolt 등재(62/62, FI 신규 국가 — FI·NL·SE·ES 허용 목록 추가). 09-22부터 있던 tsc 오류(tokens.motion 타입 누락 → next build 실패) 발견·수정, 체크리스트에 tsc 추가 · 475 / 181
 - 2026-09-26 · 회차 18 · sumup 등재(66/66, Circuit UI). 브랜드 토큰이 레포 문서값과 일치, 모든 색이 hovered/pressed 단계 보유 · 474 / 180
 - 2026-09-26 · 회차 17 · n26 등재(53/53) — EU 첫 건. 위임 프로브가 '동의 배너 없음·hover 미측정'이라 한 것은 Usercentrics 배너가 가린 것 — 거부 후 hover·이중 포커스 링 측정. 서브에이전트 스폰 실패(fork failed)는 끝난 에이전트 패인이 쌓인 탓 — 종료 요청으로 정리 · 473 / 179
 - 2026-09-26 · 회차 16 · gousto 등재(71/71) — sonnet 저작 초안 2번째. 컴포넌트 값은 전부 맞았으나 서사·출처 오류 4건. **4회차 결론: sonnet 저작 채택 안 함**(COLLECTOR_MODEL_TRIAL §8). UK 웨이브 2 마감 4/4 · 472 / 178

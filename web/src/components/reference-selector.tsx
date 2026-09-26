@@ -199,6 +199,10 @@ export function ReferenceSelector({
     France: "🇫🇷",
     Italy: "🇮🇹",
     Germany: "🇩🇪",
+    Finland: "🇫🇮",
+    Netherlands: "🇳🇱",
+    Sweden: "🇸🇪",
+    Spain: "🇪🇸",
     UK: "🇬🇧",
   };
 

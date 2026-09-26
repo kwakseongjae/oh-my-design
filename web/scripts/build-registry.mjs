@@ -24,7 +24,7 @@ const REFS_DIR = join(WEB_ROOT, 'references');
 const OUT_FILE = join(WEB_ROOT, 'src', 'data', 'registry.generated.ts');
 const EVIDENCE_OUT_FILE = join(WEB_ROOT, 'src', 'data', 'reference-verification.generated.ts');
 
-const VALID_COUNTRIES = new Set(['KR','US','JP','TW','CN','UK','DE','FR','IT']);
+const VALID_COUNTRIES = new Set(['KR','US','JP','TW','CN','UK','DE','FR','IT','FI','NL','SE','ES']);
 const VALID_LOGO_TYPES = new Set(['favicon','simpleicons','github']);
 const VALID_DS_TYPES = new Set(['system','brand']);
 
@@ -199,7 +199,7 @@ const TYPES = `export interface RefEntry {
   readonly id: string;
   readonly name: string;
   readonly displayName: string;
-  readonly country: 'KR' | 'US' | 'JP' | 'TW' | 'CN' | 'UK' | 'DE' | 'FR' | 'IT';
+  readonly country: 'KR' | 'US' | 'JP' | 'TW' | 'CN' | 'UK' | 'DE' | 'FR' | 'IT' | 'FI' | 'NL' | 'SE' | 'ES';
   readonly category: string;
   readonly homepage: string;
   readonly primaryColor: string;
@@ -224,6 +224,8 @@ const TYPES = `export interface RefEntry {
     // Flat string (legacy/summary) OR structured object (getdesign-aligned
     // component tokens: { type, bg, fg, radius, padding, height, … }).
     readonly components?: Readonly<Record<string, string | Readonly<Record<string, unknown>>>>;
+    // base·smartbank(2026-09-22)는 tokens.motion을 싣는다. 타입에 없어서 next build의 tsc가 실패했다.
+    readonly motion?: Readonly<Record<string, unknown>>;
   };
   readonly ds?: {
     readonly name: string;

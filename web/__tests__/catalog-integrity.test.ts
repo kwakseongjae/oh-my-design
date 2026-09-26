@@ -27,7 +27,7 @@ const FINGERPRINTS_CLAUDE = join(ROOT, ".claude", "data", "reference-fingerprint
 const FINGERPRINTS_CODEX = join(ROOT, ".codex", "data", "reference-fingerprints.json");
 const LLMS_TXT = join(WEB_ROOT, "public", "llms.txt");
 
-const VALID_COUNTRIES = ["KR", "US", "JP", "TW", "CN", "UK", "DE", "FR", "IT"] as const;
+const VALID_COUNTRIES = ["KR", "US", "JP", "TW", "CN", "UK", "DE", "FR", "IT", "FI", "NL", "SE", "ES"] as const;
 const VALID_LOGO_TYPES = ["favicon", "simpleicons", "github"] as const;
 // The 10 component types the preview can render (componentsFromTokens). A
 // structured component token's `type` must be one of these.
