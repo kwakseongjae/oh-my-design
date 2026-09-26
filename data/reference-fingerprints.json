@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 520,
+ "count": 521,
  "items": [
   {
    "id": "104",
@@ -12755,6 +12755,34 @@
    "signature_motion": "Inset orange underline marks active tabs; sand underline previews hover.",
    "has_personas": false,
    "category_raw": "saas-tool"
+  },
+  {
+   "id": "zara",
+   "primary_color_hex": "#000000",
+   "category": "ecommerce",
+   "visual_theme": "Inditex's fashion brand in black and white: #000000 and #ffffff with a percentage-of-black grey ramp (#333333 to #f7f7f7), square corners, light 13px/300 uppercase buttons in Helvetica Now Text (Didot also loaded), and colour only for signals — sales green #23f444, emphasis red #ff3b30, focus blue #0170e9. Black buttons lift to #333333 on hover; white buttons grey their text to #757575.",
+   "voice_fingerprint": {
+    "register": "minimal fashion retail, terse",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "es-fashion"
+   },
+   "tone_keywords": [
+    "minimal",
+    "monochrome",
+    "uppercase",
+    "square",
+    "fashion"
+   ],
+   "antipatterns": [
+    "rounded corners; everything is square",
+    "a brand accent colour; the palette is black and white",
+    "heavy button weights; buttons are light 300",
+    "sentence-case labels; titles and labels are uppercase",
+    "colour used decoratively rather than as a signal"
+   ],
+   "has_personas": false,
+   "category_raw": "fashion-retail"
   },
   {
    "id": "zendesk",

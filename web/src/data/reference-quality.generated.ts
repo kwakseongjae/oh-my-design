@@ -12932,6 +12932,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "zara",
+    "status": "verified_v2",
+    "verifiedAt": "2026-09-27",
+    "tokensExtractedAt": "2026-09-27",
+    "nextReverifyAt": "2027-03-26",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 44,
+    "evidenceClaimCount": 44,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 4,
+    "conflictCount": 0,
+    "tier1SourceCount": 4,
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "zendesk",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
@@ -13135,10 +13157,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 226,
+  "verified_v2": 227,
   "partial": 181,
   "legacy_snapshot": 113,
-  "total": 520
+  "total": 521
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(
