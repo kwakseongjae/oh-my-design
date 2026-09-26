@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 508,
+ "count": 509,
  "items": [
   {
    "id": "104",
@@ -1102,6 +1102,34 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "Automotive"
+  },
+  {
+   "id": "bolt",
+   "primary_color_hex": "#32bb78",
+   "category": "consumer-tech",
+   "visual_theme": "An Estonian mobility platform in light green and charcoal: pale green-grey ground #f7f9f8, charcoal ink #2f313f in Inter, Bolt green for actions (#32bb78 tokens, #2b8659 app buttons darkening to #18784c), and full pills everywhere that also shrink to 97% when pressed. Semantic families each carry a solid primary, a translucent secondary and an active step; elevation is expressed as layer floors rather than shadows.",
+   "voice_fingerprint": {
+    "register": "confident mobility brand, practical",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-mobility"
+   },
+   "tone_keywords": [
+    "light",
+    "green",
+    "charcoal",
+    "tactile",
+    "practical"
+   ],
+   "antipatterns": [
+    "drop shadows for elevation; use floors and surfaces",
+    "promo blue for primary actions",
+    "square buttons; everything is a pill",
+    "pure black text; the ink is charcoal #2f313f",
+    "colours without an active state"
+   ],
+   "has_personas": false,
+   "category_raw": "mobility-platform"
   },
   {
    "id": "booth",
