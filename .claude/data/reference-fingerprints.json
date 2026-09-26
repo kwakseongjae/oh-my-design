@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 516,
+ "count": 517,
  "items": [
   {
    "id": "104",
@@ -1079,6 +1079,34 @@
    ],
    "has_personas": false,
    "category_raw": "retail-investing"
+  },
+  {
+   "id": "blinkist",
+   "primary_color_hex": "#2ee081",
+   "category": "education",
+   "visual_theme": "A fresh, legible Berlin reading app: white and pale mint-grey #eff5f3, deep midnight #033049 for headings and text in Cera Pro, Blinkist green #2ee081 for the one conversion button (midnight text, 80% on hover with a soft shadow), and blue #0266f2 for links and focus. Container, content and outline roles cover primary, accent, conversion and status, over named eight-step ramps (midnight, blue, green, orchid-violet, raspberry, summer-yellow).",
+   "voice_fingerprint": {
+    "register": "curious, encouraging learning brand",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-learning"
+   },
+   "tone_keywords": [
+    "fresh",
+    "midnight",
+    "green",
+    "curious",
+    "calm"
+   ],
+   "antipatterns": [
+    "white text on the green; the pairing is midnight on green",
+    "green for secondary actions",
+    "black headings; headings are midnight #033049",
+    "Tailwind's default grey border treated as brand",
+    "more than one conversion colour"
+   ],
+   "has_personas": false,
+   "category_raw": "book-summaries"
   },
   {
    "id": "bloomandwild",
