@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 467,
+ "count": 468,
  "items": [
   {
    "id": "104",
@@ -3606,6 +3606,34 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "enterprise infrastructure / developer tools"
+  },
+  {
+   "id": "hatena",
+   "primary_color_hex": "#00A0F0",
+   "category": "consumer-tech",
+   "visual_theme": "A plain, dense, text-first portal: black text #111111 on white, one bright highlight blue #00a0f0 kept for signing up and the selected tab, grey #eaeaea pill fields, 4px corners and no shadows anywhere, all in the reader's own system Japanese font. The palette gives each Hatena service its own hue and includes the five Hatena Star colours; controls barely respond to hover, and only the search field authors a pressed and focused state.",
+   "voice_fingerprint": {
+    "register": "Japanese community-service portal, link-heavy feeds",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "ja-web-community"
+   },
+   "tone_keywords": [
+    "plain",
+    "text-first",
+    "dense",
+    "service-coded",
+    "unadorned"
+   ],
+   "antipatterns": [
+    "adding a web font - Hatena renders the system Japanese face",
+    "adding shadows or large radii; the portal is flat with 4px corners",
+    "using the highlight blue for anything beyond joining and the selected state",
+    "reading the hidden menu links' default #0000ee as a Hatena colour",
+    "painting a service in another service's colour"
+   ],
+   "has_personas": false,
+   "category_raw": "community-web-services"
   },
   {
    "id": "headspace",
