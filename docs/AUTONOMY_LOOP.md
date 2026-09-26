@@ -91,6 +91,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 - [ ] 서체: census 1위 이름을 **`document.fonts` loaded 목록과 대조**했다(측정법 §2.6)
 - [ ] focus: `auto`면 브라우저 것 → 토큰 안 만듦(측정법 §2.5)
 - [ ] 컴포넌트: 못 잰 **상태**는 적지 않는다(잰 상태만 선언). "못 쟀음" ≠ "변화 없음". Aside로 hover를 쟀다면 `matches(':hover')`가 true였는지 확인
+- [ ] **끝난 서브에이전트는 종료한다** — SendMessage `{"type":"shutdown_request"}`. 끝난 에이전트도 패인을 붙잡고 있어서 ~11개가 쌓이면 새 스폰이 `fork failed: Device not configured`로 실패한다(2026-09-26).
 - [ ] 저작 도구: `web/scripts/assemble-reference.mjs`(front.yaml+body.md → DESIGN.md + 클레임), `web/scripts/add-fingerprint.mjs`(3중 미러)
 - [ ] `npm run build-registry` 순서대로 → quality → evidence:ledger → reference-ast
 - [ ] fingerprint 추가 + 3중 미러(`data/`, `.claude/data/`, `.codex/data/`)
