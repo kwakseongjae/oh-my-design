@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 493,
+ "count": 494,
  "items": [
   {
    "id": "104",
@@ -7423,6 +7423,34 @@
    ],
    "has_personas": false,
    "category_raw": "online-retail"
+  },
+  {
+   "id": "oura",
+   "primary_color_hex": "#2a72de",
+   "category": "consumer-tech",
+   "visual_theme": "A calm, editorial health-wearable site: warm cream #f7f1e8 and deep sandstone #4a4741 with slate, olive and mustard accents, Editorial New serif headlines over Akkurat LL, product photography, and a single blue #2a72de pill for the call to action (hover #2056a6). Header controls are pills that do not change on hover; focus is a 2px #3184ff outline.",
+   "voice_fingerprint": {
+    "register": "Finnish health-tech brand, calm and optimistic",
+    "sentence_length": "medium",
+    "metaphor_density": "medium",
+    "vocabulary_register": "de-health-wearables"
+   },
+   "tone_keywords": [
+    "calm",
+    "editorial",
+    "natural",
+    "warm",
+    "premium"
+   ],
+   "antipatterns": [
+    "counting Tailwind's oklch palette as Oura's colours",
+    "extra saturated colours; one blue acts",
+    "cold greys; neutrals are cream and sand",
+    "square controls; controls are pills",
+    "sans-serif headlines; headlines are Editorial New"
+   ],
+   "has_personas": false,
+   "category_raw": "health-wearables"
   },
   {
    "id": "pairs",
