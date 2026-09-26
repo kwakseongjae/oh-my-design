@@ -3,6 +3,17 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-26 · 루프 회차 27–30 — **EU 웨이브 2 계속** (485 · 191)
+
+- 등재: getyourguide(DE, 채용 사이트 'Established Berlin HQ') · alan(FR, Alan Sans OFL) · adyen(NL).
+- **소급 스윕 1차(bg-image·밑줄) 정정 5개**: crowdworks 버튼 4(10%/5% 그라디언트 레이어)·bloomandwild Log in(밑줄).
+  위임 스윕 '발견' 3건은 다른 요소 → 기각. 교훈: 대상 동일성(기하·rest값)을 본 세션이 재확인.
+- **세 번째 사각지대(adyen)**: `::before` 오버레이 hover → 도구에 가상 요소 비교 추가, 2차 스윕 위임 중(34개).
+- coolblue: 헤드리스 403(지문 차단) → Aside 후보로 보류. leboncoin 재프로브 대기.
+- 진행 중: sweep-pseudo, leboncoin2, booth·coconala(JP6), glovo·typeform·ikea.
+
+---
+
 ## ✅ 2026-09-26 · 루프 회차 23–26 — **EU 웨이브 2 진행** (482 · 188)
 
 - 등재: hm(SE, Fabric Design System, 다크 루트) · flixbus(DE, Honeycomb) · klarna(SE) · otto(DE, OTTO Components).
