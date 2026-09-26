@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 494,
+ "count": 495,
  "items": [
   {
    "id": "104",
@@ -9101,6 +9101,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "saas"
+  },
+  {
+   "id": "satispay",
+   "primary_color_hex": "#ff3d00",
+   "category": "fintech",
+   "visual_theme": "A warm, confident Italian payments site: off-white #fffbef and white, dark aubergine #290402 for titles and the sign-up button, and a vivid orange-red #ff3d00 in bold brand blocks (hover #e53700, pressed #b52b00). Bricolage Grotesque headlines; 12px buttons with an aubergine-tinted soft shadow; lilac, sage and mint accents. Compact --ds-* tokens over a Tailwind v4 base.",
+   "voice_fingerprint": {
+    "register": "Italian payments app, friendly and direct",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "it-fintech-consumer"
+   },
+   "tone_keywords": [
+    "warm",
+    "confident",
+    "orange",
+    "friendly",
+    "bold"
+   ],
+   "antipatterns": [
+    "pure black titles; titles are aubergine #290402",
+    "counting Tailwind defaults as Satispay tokens",
+    "grey shadows; shadows are tinted with the aubergine",
+    "treating the slate focus ring as a brand colour",
+    "cold white grounds everywhere; off-white #fffbef is part of the palette"
+   ],
+   "has_personas": false,
+   "category_raw": "mobile-payments"
   },
   {
    "id": "scatterlab",
