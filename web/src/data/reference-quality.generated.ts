@@ -1015,6 +1015,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "bloomandwild",
+    "status": "verified_v2",
+    "verifiedAt": "2026-09-26",
+    "tokensExtractedAt": "2026-09-26",
+    "nextReverifyAt": "2027-03-25",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 104,
+    "evidenceClaimCount": 104,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 3,
+    "conflictCount": 0,
+    "tier1SourceCount": 1,
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 5,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "bmw",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
@@ -12013,10 +12035,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 175,
+  "verified_v2": 176,
   "partial": 181,
   "legacy_snapshot": 113,
-  "total": 469
+  "total": 470
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

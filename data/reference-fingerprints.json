@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 469,
+ "count": 470,
  "items": [
   {
    "id": "104",
@@ -967,6 +967,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "design-tools"
+  },
+  {
+   "id": "bloomandwild",
+   "primary_color_hex": "#262626",
+   "category": "ecommerce",
+   "visual_theme": "A warm, near-monochrome British letterbox-flower storefront: near-black ink #262626 on white, lit by cream #f9ecd7 linen and bright #fdf888 lemon section bands, with a muted #447964 pine-green accent. Buttons use an off-scale 2px radius while the search field is a full pill. Almost no interactive control changes on hover -- the header search pill's #fcf5ea cream fill is the exception -- and every focus state shares the same #2771fc ring from the Bloom & Wild Group's shared design-token platform.",
+   "voice_fingerprint": {
+    "register": "British consumer ecommerce/gifting landing page",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "uk-consumer-retail"
+   },
+   "tone_keywords": [
+    "warm",
+    "restrained",
+    "paper-toned",
+    "quiet",
+    "near-monochrome"
+   ],
+   "antipatterns": [
+    "rounding buttons to the named 0/4/8/12/16/9999 radius scale; the CTA and outline buttons use an undocumented 2px radius",
+    "counting the --oasys-* group platform (889 vars) as Bloom & Wild-specific tokens",
+    "assuming hover changes a control's colour; five of six probed controls show no visible hover change",
+    "treating the search pill's #fcf5ea fill as if every button shared it",
+    "asserting a rebrand case study for the Tiempos Headline + Unica 77 pairing; none was found on-site"
+   ],
+   "has_personas": false,
+   "category_raw": "ecommerce-flowers-gifting"
   },
   {
    "id": "bmw",
