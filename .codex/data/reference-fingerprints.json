@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 510,
+ "count": 511,
  "items": [
   {
    "id": "104",
@@ -1413,6 +1413,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "finance"
+  },
+  {
+   "id": "celonis",
+   "primary_color_hex": "#5cfe50",
+   "category": "saas",
+   "visual_theme": "A stark Munich enterprise site: black header and hero, white and light grey sections (#f5f5f5, #e5e5e5), black text in Poppins, 80px headlines, and a single neon green #5cfe50 for the call to action, darkened on hover by a 20% black inset. A 127-token --fnd foundation system covers colour roles, a 4px spacing grid, 2/4/8px radii, a tracked type scale and three motion personalities (expressive, focused, informative).",
+   "voice_fingerprint": {
+    "register": "enterprise, purpose-led and assured",
+    "sentence_length": "medium",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-enterprise-software"
+   },
+   "tone_keywords": [
+    "stark",
+    "black",
+    "neon green",
+    "enterprise",
+    "precise"
+   ],
+   "antipatterns": [
+    "a second accent colour; the only accent is #5cfe50",
+    "rounded buttons; buttons are 2px",
+    "new fills for hover; hover is a 20% black inset",
+    "green behind body text",
+    "ad-hoc animation timings outside the motion tokens"
+   ],
+   "has_personas": false,
+   "category_raw": "process-intelligence"
   },
   {
    "id": "cgv",
