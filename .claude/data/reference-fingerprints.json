@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 489,
+ "count": 490,
  "items": [
   {
    "id": "104",
@@ -9965,6 +9965,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "saas"
+  },
+  {
+   "id": "storytel",
+   "primary_color_hex": "#ff501c",
+   "category": "consumer-tech",
+   "visual_theme": "A warm, bookish audiobook service: a near-black #101010 hero, sand #dcd5cd sections with rows of covers, and Storytel orange #ff501c for links, badges and brand headings (hover #c6461b, press #a33815). White pill buttons go #f2eeeb on hover and #eae6e0 on press. Storytel Euclid; 1,027 tokens naming every button variant and state.",
+   "voice_fingerprint": {
+    "register": "Swedish streaming service, warm and inviting",
+    "sentence_length": "short",
+    "metaphor_density": "medium",
+    "vocabulary_register": "sv-streaming"
+   },
+   "tone_keywords": [
+    "warm",
+    "bookish",
+    "orange",
+    "rounded",
+    "inviting"
+   ],
+   "antipatterns": [
+    "cold grey page grounds; the ground is sand #dcd5cd",
+    "pure black; the ink is #101010",
+    "square buttons; buttons are full pills",
+    "orange for body text; it marks brand accents",
+    "one-off state colours; every state has a token"
+   ],
+   "has_personas": false,
+   "category_raw": "audiobooks-streaming"
   },
   {
    "id": "stripe",
