@@ -33,8 +33,12 @@ const lines = [
   "verification_v2:", "  schema: 2", `  checked: "${fm.verified}"`, "  surfaces:",
   `    - { id: home, kind: product-surface, url: "${home}", inspected: "${captured}" }`, "  sources:",
   `    - { id: home-live, kind: product-surface, url: "${home}", captured: "${captured}" }`,
-  `    - { id: control-404, kind: product-surface, url: "${origin}/zz-this-does-not-exist", captured: "${captured}" }`,
 ];
+// 넌센스 경로 대조군 — 다른 경로로 쟀으면 extra에 id "control-404"로 넘긴다. 기본 경로를 적어 두면
+// 실제로 열지 않은 URL이 출처로 남는다 (2026-09-26 n26: -omd-probe 경로로 쟀다).
+if (!extra.some((x) => x.id === "control-404")) {
+  lines.push(`    - { id: control-404, kind: product-surface, url: "${origin}/zz-this-does-not-exist", captured: "${captured}" }`);
+}
 for (const s of extra) lines.push(`    - { id: ${s.id}, kind: ${s.kind}, url: "${s.url}", captured: "${s.captured}" }`);
 lines.push("  conflicts: []", "  claims:");
 for (const p of paths) {

@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 472,
+ "count": 473,
  "items": [
   {
    "id": "104",
@@ -6299,6 +6299,34 @@
    "signature_motion": "Card hover lift with soft shadow; header frosts on scroll; wishlist heart spring-pop.",
    "has_personas": true,
    "category_raw": "Travel"
+  },
+  {
+   "id": "n26",
+   "primary_color_hex": "#088177",
+   "category": "fintech",
+   "visual_theme": "A soft, warm mobile-bank site on white and cream #faf8f5 with a soft black ink #1b1b1b, built on the four colour families of N26's 2018 rebrand - brand teal #088177 (deep #003b39 on the account-opening pill), rhubarb, lagoon petrol blue and golden-wheat sand used translucently on quiet buttons. Pill buttons, 16px cards, no drop shadows, and a white-and-teal double focus ring; every token carries a nemo name, and the N26 type families are served from GT America files.",
+   "voice_fingerprint": {
+    "register": "German mobile-bank homepage; functional in German, emotional in English",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "de-fintech"
+   },
+   "tone_keywords": [
+    "soft",
+    "warm",
+    "teal",
+    "modern",
+    "approachable"
+   ],
+   "antipatterns": [
+    "using Tailwind's default palette - N26's colours are its own flat hex ramps",
+    "setting text in pure black; the ink is #1b1b1b",
+    "using sand as an opaque fill; it appears at 15-50% opacity",
+    "square buttons; N26 buttons are 24px-radius pills",
+    "dropping the white-and-teal double focus ring"
+   ],
+   "has_personas": false,
+   "category_raw": "mobile-bank"
   },
   {
    "id": "naver",
