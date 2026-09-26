@@ -4,7 +4,8 @@
 
 - **한 일**: 재부팅으로 잃은 프로브 6건 재실행 → pairs·hatena·sainsburys·bloomandwild·gousto·nhs 전부 verified(**472 / 178**). 위임 프로브 헤드라인 오답 3건을 재측정으로 잡음. 프로브 도구: 동의 배너 선거부·`:hover` 매칭 검사. 저작 도구를 레포로.
 - **열린 것**: 모델 시험 4회차 결론 = sonnet 저작 불채택. JP 수율 17%(하한 15% 근접). 쿠키 배너 방식(거부 vs Accept all)은 오너 확인 대기.
-- **다음**: JP 웨이브 6 스카우팅 — 15% 미만이면 JP 중단, 다른 시장(US/DE 등) 수율 측정.
+- **한 일(2)**: JP6 스카우팅 2/12, **EU 스카우팅 7/12** → n26·sumup·wolt·qonto verified(**476 / 182**). 09-22부터 잠복한 tsc 오류(tokens.motion) 수정. 국가 FI·NL·SE·ES 추가. 패인 누적 스폰 실패 해결.
+- **다음**: 진행 중 프로브 5건(booth·coconala·zalando·doctolib·check24) 처리 → EU 웨이브 2 스카우팅.
 
 ## 2026-09-23
 

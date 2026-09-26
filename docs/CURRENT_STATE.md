@@ -3,6 +3,18 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-26 · 루프 회차 17–20 — **EU 웨이브 1 시작** (476 · 182)
+
+- 등재: n26(DE) · sumup(UK, Circuit UI) · wolt(FI, Alchemy) · qonto(FR). EU 스카우팅 7/12(58%) — 다음 주력 시장.
+- 국가 허용 목록에 FI·NL·SE·ES 추가(빌드·검증·테스트·API 라벨·국기).
+- **09-22부터 있던 tsc 오류 발견·수정**: base·smartbank의 `tokens.motion`이 생성 타입에 없어 `next build`가
+  깨지는 상태였다(피처 브랜치만, 배포 영향 없음). 체크리스트에 tsc 추가.
+- 서브에이전트 스폰 실패 원인 = 끝난 에이전트 패인 누적 → 종료 요청으로 해결, 체크리스트화.
+- 프로브 도구: 자체 제작 동의 배너를 거부 문구로 찾기, 투명 outline을 그려지지 않은 것으로 처리.
+- 진행 중: booth·coconala(JP6), zalando·doctolib·check24(EU).
+
+---
+
 ## ✅ 2026-09-26 · 루프 회차 11–16 — **JP 웨이브 5·UK 웨이브 2 마감** (472 · 178)
 
 - 등재: pairs · hatena (JP) · sainsburys · bloomandwild · gousto · nhs (UK) — 6/6 verified.
