@@ -141,6 +141,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 
 회차가 끝날 때마다 한 줄. 최신이 위.
 
+- 2026-09-26 · 회차 46–48 · vinted(LT) · vipps(NO) · lego(DK) 등재 — EU 웨이브 4 3/16. 국가 LT·NO·DK·AT·EE 추가(build-registry·verify·route·selector·catalog-integrity 테스트) · 503 / 209
 - 2026-09-26 · 회차 45 · coconala 등재(JP, 19개 색 램프) → **JP 웨이브 6 마감 2/2**. 도구: 오버레이 제거가 shadow host를 조상으로 인식 · **500 / 206**
 - 2026-09-26 · 회차 44 · booth 등재(JP, pixiv Charcoal) + 가상 요소 스윕 정정 2건(base·otto). 도구: 칠해지지 않은 가상 요소 무시 · 499 / 205
 - 2026-09-26 · 회차 43 · ing 등재(62/62, NL). **도구: 열린 shadow root(중첩) 안의 대상·동의 거부 버튼까지 탐색**(__omdAll/__omdOne 초기화 스크립트). ING 컨트롤이 전부 웹 컴포넌트 안 · 498 / 204

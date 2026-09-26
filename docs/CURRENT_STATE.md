@@ -3,6 +3,13 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-26 · 루프 회차 46–48 — **EU 웨이브 4 시작: 3/16** (503 · 209)
+
+- 스카우팅 16/32(50%). 등재: vinted(LT, 오버레이 상태) · vipps(NO, 보라/주황 두 버튼 체계) · lego(DK, --ds 2,178, 사이트 선택창은 응답 안 함).
+- 국가 코드 LT·NO·DK·AT·EE 추가. 다음: toogoodtogo → idealista → fever → bitpanda …
+
+---
+
 ## ✅ 2026-09-26 · 루프 회차 43–45 — **ing·booth·coconala, JP6 마감, 가상 요소 스윕 마감** (500 · 206)
 
 - 등재: ing(NL, 도구가 open shadow root 관통) · booth(JP6, pixiv Charcoal) · coconala(JP6, 헤더 중첩 shadow — 오버레이 제거 결함 수정).
