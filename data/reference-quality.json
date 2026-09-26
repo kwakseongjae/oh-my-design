@@ -422,7 +422,7 @@
       "next_reverify_at": "2027-03-21",
       "evidence_coverage": 1,
       "surface_count": 2,
-      "source_count": 2,
+      "source_count": 3,
       "conflict_count": 0,
       "reason_codes": []
     },
@@ -3765,7 +3765,7 @@
       "next_reverify_at": "2027-03-25",
       "evidence_coverage": 1,
       "surface_count": 1,
-      "source_count": 6,
+      "source_count": 7,
       "conflict_count": 0,
       "reason_codes": []
     },

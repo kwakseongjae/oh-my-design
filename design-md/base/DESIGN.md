@@ -76,17 +76,18 @@ tokens:
     ease-chart-pie-2: "cubic-bezier(.16, 1, .3, 1)"
   components:
     button-login: { type: "button", bg: "#ffffff", fg: "#233237", radius: 0, height: "60px", font: "16px / 400", hover: "#233237", pressed: "#233237", use: "ログイン, 160×60 — a square white button that inverts entirely on hover: fill #233237, text #ffffff. transition: background-color 0.3s." }
-    button-header-cta: { type: "button", bg: "#fc6589", fg: "#ffffff", radius: 0, height: "60px", font: "16px / 400", hover: "#fc6589", pressed: "#fc6589", use: "無料ではじめる, 160×60 — the pink header action. :hover matched and no property changed; the declared transition animates colour, which does not move here." }
-    button-hero-cta: { type: "button", bg: "#fc6589", fg: "#ffffff", radius: 999, height: "70px", font: "20px / 700", hover: "#fc6589", pressed: "#fc6589", use: "無料でショップを開設する, 432×70 — the same pink as a full pill, one size and two weights up. Also unchanged across hover and pressed." }
+    button-header-cta: { type: "button", bg: "#fc6589", fg: "#ffffff", radius: 0, height: "60px", font: "16px / 400", hover: "rgba(255,255,255,0.08)", pressed: "rgba(255,255,255,0.08)", use: "無料ではじめる, 160×60 — the pink header action. The button's own properties do not change; hover and pressed lay a white ::before at 8% opacity over the pink (re-checked 2026-09-26)." }
+    button-hero-cta: { type: "button", bg: "#fc6589", fg: "#ffffff", radius: 999, height: "70px", font: "20px / 700", hover: "rgba(255,255,255,0.08)", pressed: "rgba(255,255,255,0.08)", use: "無料でショップを開設する, 432×70 — the same pink as a full pill, one size and two weights up. Hover and pressed add the same 8% white ::before, and an ::after picks up a background image (re-checked 2026-09-26)." }
   components_harvested: true
 verification_v2:
   schema: 2
-  checked: "2026-09-22"
+  checked: "2026-09-26"
   surfaces:
     - { id: home, kind: product-surface, url: "https://thebase.com/", inspected: "2026-09-22" }
     - { id: corporate, kind: product-surface, url: "https://binc.jp/about/history", inspected: "2026-09-22" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://thebase.com/", captured: "2026-09-22" }
+    - { id: home-recheck, kind: product-surface, url: "https://thebase.com/", captured: "2026-09-26" }
     - { id: corp-live, kind: product-surface, url: "https://binc.jp/about/history", captured: "2026-09-22" }
   conflicts: []
   claims:
@@ -124,20 +125,20 @@ verification_v2:
     tokens.components.button-header-cta.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-header-cta.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-header-cta.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-header-cta.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-header-cta.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-header-cta.hover: { surface_id: home, source_id: home-recheck, method: live-inspect, captured: "2026-09-26" }
+    tokens.components.button-header-cta.pressed: { surface_id: home, source_id: home-recheck, method: live-inspect, captured: "2026-09-26" }
     tokens.components.button-header-cta.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-header-cta.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-header-cta.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-header-cta.use: { surface_id: home, source_id: home-recheck, method: live-inspect, captured: "2026-09-26" }
     tokens.components.button-hero-cta.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-hero-cta.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-hero-cta.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-hero-cta.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-hero-cta.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-hero-cta.pressed: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-hero-cta.hover: { surface_id: home, source_id: home-recheck, method: live-inspect, captured: "2026-09-26" }
+    tokens.components.button-hero-cta.pressed: { surface_id: home, source_id: home-recheck, method: live-inspect, captured: "2026-09-26" }
     tokens.components.button-hero-cta.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-hero-cta.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
-    tokens.components.button-hero-cta.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
+    tokens.components.button-hero-cta.use: { surface_id: home, source_id: home-recheck, method: live-inspect, captured: "2026-09-26" }
     tokens.components.button-login.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-login.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
     tokens.components.button-login.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-22" }
@@ -283,10 +284,12 @@ Hover and pressed **invert it completely**: fill `#233237`, text `#ffffff`.
 - **Header**: `#fc6589`, `#ffffff` text, 0px radius, 160×60, 16px/400.
 - **Hero**: the same pink as a **999px pill**, 432×70, 20px/700.
 
-**Neither changes on hover or pressed.** `:hover` matched true while the reading was taken, so
-the state was live and nothing is declared for it. Both carry
-`transition: color 0.2s cubic-bezier(0.3, 0.7, 0.7, 0.3)` — they are set up to animate their
-*text* colour, which on a solid pink button does not move.
+**The buttons themselves do not change on hover or pressed; an overlay does.** The first reading
+compared only the element's own properties and recorded no change. A re-check on 2026-09-26 that
+also reads `::before` and `::after` found a white `::before` at **8% opacity**
+(`rgba(255,255,255,0.08)`) laid over the pink on hover and pressed; on the hero pill an `::after`
+also picks up a background image. Both carry `transition: color 0.2s cubic-bezier(0.3, 0.7, 0.7,
+0.3)` for the label.
 
 ### Focus
 
@@ -327,7 +330,7 @@ scale step; it is a value chosen to win.
 
 ### Don't
 - Don't invent a focus ring for these buttons and don't copy the one you see — it is Chrome's.
-- Don't expect the pink CTAs to respond. They were measured across hover and pressed and do not.
+- Don't change the pink itself on hover. The CTAs keep `#fc6589` and lighten through an 8% white overlay.
 - Don't treat `--spacing-*` as pixels. They are unitless numbers.
 
 ## 8. Responsive Behavior
@@ -346,7 +349,7 @@ but no breakpoint was observed.
 ### Example Component Prompts
 - "A 60px square sign-in button: `#ffffff` with `#233237` 16px/400 label, no radius, and a
   complete inversion on hover over `background-color 0.3s`."
-- "A 70px pink pill: `#fc6589`, `#ffffff` 20px/700, 999px radius, no hover change."
+- "A 70px pink pill: `#fc6589`, `#ffffff` 20px/700, 999px radius; hover lays an 8% white overlay on it."
 
 ## 10. Voice & Tone
 
@@ -376,9 +379,9 @@ Not researched. No persona claim is made from a UI capture.
 
 ## 14. States
 
-**Measured and mostly empty.** Of three controls, one responds: the sign-in button inverts on
-hover and pressed. Both pink calls to action were measured with `:hover` matching true and
-changed no property.
+**Measured.** The sign-in button inverts on hover and pressed. The two pink calls to action keep
+their own properties and add a white `::before` at 8% opacity on hover and pressed (re-checked
+2026-09-26 with pseudo-elements included; the first reading missed it).
 
 Focus matches `:focus-visible` on all three and renders Chrome's own `auto 1px` ring. **No
 focus state is recorded**, because none is authored. No disabled state was observed on a

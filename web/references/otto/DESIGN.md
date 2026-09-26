@@ -45,7 +45,7 @@ tokens:
   components:
     link-product: { type: "button", bg: "transparent", fg: "#2366cb", radius: 0, font: "14px / 400", hover: "fg #1c50a0", pressed: "fg #143b75", use: "A product tile link on a search results page — the interactive blue darkens a step on hover and another on press." }
     input-search: { type: "input", bg: "transparent", fg: "#212121", radius: 0, height: "48px", padding: "1px 2px 1px 16px", font: "16px / 400", hover: "transparent", focus: "transparent", use: "The header search field (Wonach suchst du?). None of its measured values change on hover, press or focus." }
-    link-nav: { type: "button", bg: "transparent", fg: "#212121", radius: 0, height: "40px", hover: "transparent", use: "Mein Konto in the header. Hover changes nothing." }
+    link-nav: { type: "button", bg: "transparent", fg: "#212121", radius: 0, height: "40px", hover: "rgba(0,0,0,0.03)", pressed: "rgba(0,0,0,0.09)", use: "Mein Konto in the header. The link itself does not change; an ::after overlay darkens it by 3% on hover and 9% when pressed." }
   components_harvested: true
 verification_v2:
   schema: 2
@@ -54,6 +54,7 @@ verification_v2:
     - { id: home, kind: product-surface, url: "https://www.otto.de/", inspected: "2026-09-26" }
   sources:
     - { id: home-live, kind: product-surface, url: "https://www.otto.de/", captured: "2026-09-26" }
+    - { id: home-recheck, kind: product-surface, url: "https://www.otto.de/", captured: "2026-09-26" }
     - { id: control-404, kind: product-surface, url: "https://designsystem.otto.de/zz-this-does-not-exist", captured: "2026-09-26" }
     - { id: search-page, kind: product-surface, url: "https://www.otto.de/suche/sofa/", captured: "2026-09-26" }
     - { id: ds-docs, kind: official-doc, url: "https://designsystem.otto.de/", captured: "2026-09-26" }
@@ -91,10 +92,11 @@ verification_v2:
     tokens.components.link-nav.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
     tokens.components.link-nav.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
     tokens.components.link-nav.height: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.hover: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
+    tokens.components.link-nav.hover: { surface_id: home, source_id: home-recheck, method: live-inspect, captured: "2026-09-26" }
+    tokens.components.link-nav.pressed: { surface_id: home, source_id: home-recheck, method: live-inspect, captured: "2026-09-26" }
     tokens.components.link-nav.radius: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
     tokens.components.link-nav.type: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
-    tokens.components.link-nav.use: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
+    tokens.components.link-nav.use: { surface_id: home, source_id: home-recheck, method: live-inspect, captured: "2026-09-26" }
     tokens.components.link-product.bg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
     tokens.components.link-product.fg: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
     tokens.components.link-product.font: { surface_id: home, source_id: home-live, method: live-inspect, captured: "2026-09-26" }
@@ -196,7 +198,8 @@ under a real Tab key, and a hover counted only when `:hover` matched.
 - **Product tile link** — `#2366cb`, 14px. Hover darkens it to **`#1c50a0`**, press to **`#143b75`**.
 - **Search field** — transparent, `#212121`, 48px, `1px 2px 1px 16px`, 16px/400. Nothing measured
   changes on hover, press or focus.
-- **Header link** — Mein Konto, `#212121`, 40px. Hover changes nothing.
+- **Header link** — Mein Konto, `#212121`, 40px. The link's own properties do not change; an
+  `::after` overlay adds `rgba(0,0,0,0.03)` on hover and `rgba(0,0,0,0.09)` when pressed.
 
 ### Radius
 
@@ -261,8 +264,8 @@ Not researched. No persona claim is made from a UI capture.
 
 ## 14. States
 
-Hover: product links darken to `#1c50a0`; the search field and header link do not change. Press:
-`#143b75` on product links. Focus on the search field changes nothing. The product-page basket
+Hover: product links darken to `#1c50a0`; the search field does not change; the header link gains a 3% `::after`
+overlay. Press: `#143b75` on product links, a 9% overlay on the header link. Focus on the search field changes nothing. The product-page basket
 button could not be reached (product pages returned HTTP 400 to automation).
 
 ## 15. Motion & Easing

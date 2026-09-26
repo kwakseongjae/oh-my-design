@@ -3,12 +3,12 @@
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
   "references_with_verification_v2": 205,
-  "sources": 1187,
+  "sources": 1189,
   "sources_by_kind": {
     "brand-asset": 75,
     "license": 76,
     "official-doc": 504,
-    "product-surface": 532
+    "product-surface": 534
   },
   "references": {
     "104": {
@@ -642,7 +642,7 @@
       ]
     },
     "base": {
-      "checked": "2026-09-22",
+      "checked": "2026-09-26",
       "claims": 0,
       "sources": [
         {
@@ -655,6 +655,12 @@
           "id": "home-live",
           "kind": "product-surface",
           "captured": "2026-09-22",
+          "host": "thebase.com"
+        },
+        {
+          "id": "home-recheck",
+          "kind": "product-surface",
+          "captured": "2026-09-26",
           "host": "thebase.com"
         }
       ]
@@ -5231,6 +5237,12 @@
         },
         {
           "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-09-26",
+          "host": "www.otto.de"
+        },
+        {
+          "id": "home-recheck",
           "kind": "product-surface",
           "captured": "2026-09-26",
           "host": "www.otto.de"
