@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 505,
+ "count": 506,
  "items": [
   {
    "id": "104",
@@ -1023,6 +1023,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "design-tools"
+  },
+  {
+   "id": "bitpanda",
+   "primary_color_hex": "#103e36",
+   "category": "fintech",
+   "visual_theme": "A Vienna investing platform in deep forest green #103e36 and bright mint #2cec9a: dark-green hero and Sign-up buttons that lift to #28514a on hover, neutral greys #282828 and #f4f4f4, and an 88px Bitpanda Compressed headline over Inter. Colours are named by group and role (brand, neutrals, positive, negative, information, best) with fill, hover, pressed and disabled values, and every asset class has its own colour. 4-5px corners.",
+   "voice_fingerprint": {
+    "register": "confident European investing brand",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-retail-investing"
+   },
+   "tone_keywords": [
+    "confident",
+    "forest green",
+    "mint",
+    "compressed",
+    "accessible"
+   ],
+   "antipatterns": [
+    "mint primary buttons; the action colour is forest green #103e36",
+    "asset-class colours reused for status",
+    "body text in the compressed display face",
+    "fills without hover, pressed and disabled values",
+    "rounded pill buttons; buttons are 4-5px"
+   ],
+   "has_personas": false,
+   "category_raw": "retail-investing"
   },
   {
    "id": "bloomandwild",
