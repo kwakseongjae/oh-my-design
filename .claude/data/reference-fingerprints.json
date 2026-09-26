@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 518,
+ "count": 519,
  "items": [
   {
    "id": "104",
@@ -2258,6 +2258,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "marketing"
+  },
+  {
+   "id": "dailymotion",
+   "primary_color_hex": "#6200ee",
+   "category": "consumer-tech",
+   "visual_theme": "A French video platform with neutral surfaces and playful accents: white and light grey (#f8f8f8, #f0f0f0), near-black #0d0d0d in ABC Favorit with DailySans titles, a deep purple #6200ee, lavender #c5a1f9, lime decorations, and a 228-degree pink-lavender gradient (#fab3f7 to #f682f2 to #a2a2fb) on the sign-in button that turns solid pink on hover. Gradient borders, drop-shadow colour tokens and layered core/current/role naming; 6px buttons.",
+   "voice_fingerprint": {
+    "register": "friendly, youthful media brand",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "fr-video"
+   },
+   "tone_keywords": [
+    "playful",
+    "neutral",
+    "purple",
+    "gradient",
+    "kind"
+   ],
+   "antipatterns": [
+    "large purple fills; purple is an accent",
+    "pure black; the ink is #0d0d0d",
+    "flattening the sign-in gradient at rest",
+    "hard drop shadows; shadows are 1-20% ink tokens",
+    "colourful surfaces behind the feed"
+   ],
+   "has_personas": false,
+   "category_raw": "video-platform"
   },
   {
    "id": "danawa",
