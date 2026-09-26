@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 515,
+ "count": 516,
  "items": [
   {
    "id": "104",
@@ -5510,6 +5510,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "komoot",
+   "primary_color_hex": "#4f6814",
+   "category": "consumer-tech",
+   "visual_theme": "An earthy outdoor-route planner: off-white #faf9f4 and sand #ede9de grounds, warm ink #1c1a18, olive #4f6814 primary buttons darkening to #404823, and a trail-marker orange #ee6b17 accent, with beige #e3d2b4 secondaries and a lilac #8879e1. Nohemi headlines at 72px over Satoshi text; 16px buttons. Action tokens pair a base fill with a content fill for every variant and state.",
+   "voice_fingerprint": {
+    "register": "adventurous, friendly outdoor brand",
+    "sentence_length": "short",
+    "metaphor_density": "medium",
+    "vocabulary_register": "en-outdoor"
+   },
+   "tone_keywords": [
+    "earthy",
+    "olive",
+    "orange",
+    "warm",
+    "adventurous"
+   ],
+   "antipatterns": [
+    "cool greys or pure white grounds; neutrals are warm",
+    "orange primary buttons; primary is olive #4f6814",
+    "fill tokens without their paired content tokens",
+    "adopting the framework's blue focus ring as brand colour",
+    "square buttons; they are 16px"
+   ],
+   "has_personas": false,
+   "category_raw": "outdoor-route-planning"
   },
   {
    "id": "krafton",
