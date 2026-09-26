@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 495,
+ "count": 496,
  "items": [
   {
    "id": "104",
@@ -7746,6 +7746,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "saas"
+  },
+  {
+   "id": "pennylane",
+   "primary_color_hex": "#003d3d",
+   "category": "fintech",
+   "visual_theme": "A fresh, confident accounting platform site: deep teal #003d3d for text and the main action, a flashy green #00f872 accent, white and beige #f8f4f1 surfaces with salmon, yellow and blue supporting colours. Manrope throughout. The teal call to action keeps its colour on hover and lifts 2px with a soft shadow.",
+   "voice_fingerprint": {
+    "register": "French accounting SaaS, confident and modern",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "fr-accounting-saas"
+   },
+   "tone_keywords": [
+    "fresh",
+    "confident",
+    "teal",
+    "modern",
+    "friendly"
+   ],
+   "antipatterns": [
+    "navy or black ink; the ink is teal #003d3d",
+    "flashy green body text on white",
+    "counting --tw-* as Pennylane tokens",
+    "colour-swap hovers; the CTA lifts instead",
+    "heavy rounding; buttons are 4–6px"
+   ],
+   "has_personas": false,
+   "category_raw": "accounting-platform"
   },
   {
    "id": "peoplefund",
