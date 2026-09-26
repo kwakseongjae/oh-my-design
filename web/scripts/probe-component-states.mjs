@@ -99,6 +99,24 @@ async function visit(act) {
   await page.goto(url, { waitUntil: "domcontentloaded", timeout: 45000 });
   await page.waitForTimeout(waitMs);
 
+  // 동의 배너는 숨기기만 하면 포커스 트랩이 남는다 — 대상을 찾기 전에 거부 버튼을 누른다.
+  // Sainsbury's(2026-09-26)는 배너를 닫기 전까지 hover·focus가 전부 "변화 없음"으로 읽혔다.
+  // 대상 표시(data-omd-probe) 뒤에 누르면 안 된다: gousto의 cookieconsent는 거부 시 DOM을
+  // 다시 그려 표시가 사라졌다.
+  const rejected = await page.evaluate(() => {
+    const REJECT = ["#onetrust-reject-all-handler", "#CybotCookiebotDialogBodyButtonDecline",
+      "button[data-testid='uc-deny-all-button']", ".didomi-continue-without-agreeing", "#didomi-notice-disagree-button",
+      "#cm [data-role=\"necessary\"]", "#c-s-bn", "button.cc-btn[data-role=necessary]"];
+    for (const sel of REJECT) { const b = document.querySelector(sel); if (b && b.getClientRects().length) { b.click(); return sel; } }
+    return null;
+  }).catch(() => null);
+  // 거부가 페이지를 새로 불러오는 사이트가 있다(gousto) — 다시 안착할 때까지 기다린다.
+  if (rejected) {
+    await page.waitForTimeout(1500);
+    await page.waitForLoadState("load").catch(() => {});
+    await page.waitForTimeout(Math.min(waitMs, 4000));
+  }
+
   if (flag("open-tabs")) {
     await page.evaluate(() => {
       // 닫힌 탭 패널을 여는 컨트롤을 누른다 (krds의 "코드" 탭 같은 것)
@@ -183,13 +201,6 @@ async function settle(frame, page) {
  * 대상의 조상은 절대 건드리지 않는다 — 그러면 컴포넌트 자신을 숨기게 된다.
  */
 async function clearOverlays(frame) {
-  // 동의 배너는 숨기기만 하면 포커스 트랩이 남는다 — 먼저 거부 버튼을 누른다.
-  // Sainsbury's(2026-09-26)는 배너를 닫기 전까지 hover·focus가 전부 "변화 없음"으로 읽혔다.
-  await frame.evaluate(() => {
-    const REJECT = ["#onetrust-reject-all-handler", "#CybotCookiebotDialogBodyButtonDecline",
-      "button[data-testid='uc-deny-all-button']", ".didomi-continue-without-agreeing", "#didomi-notice-disagree-button"];
-    for (const sel of REJECT) { const b = document.querySelector(sel); if (b) { b.click(); break; } }
-  }).catch(() => {});
   await frame.evaluate(() => {
     const target = document.querySelector('[data-omd-probe="1"]');
     const ancestors = new Set();

@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 471,
+ "count": 472,
  "items": [
   {
    "id": "104",
@@ -3410,6 +3410,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "education"
+  },
+  {
+   "id": "gousto",
+   "primary_color_hex": "#615CFF",
+   "category": "ecommerce",
+   "visual_theme": "A UK recipe-box site with no published design-system name, running 212 first-party custom properties beyond a third-party cookie-consent widget's own: an indigo #615cff for every primary action, deepening to #412dee on hover, pressed and focus; #516272 body copy distinct from a #373a3c navigation ink; white #ffffff and light-grey #f4f7fa surfaces against two dark bands, #333d47 and #11161b; and headings, buttons and nav set in the self-hosted variable font Axiforma over four overlapping type-scale namespaces and three overlapping grey ramps left in place from what reads as several redesign generations.",
+   "voice_fingerprint": {
+    "register": "UK e-commerce homepage; no first-party about/brand-history page found",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-gb-food-retail"
+   },
+   "tone_keywords": [
+    "indigo",
+    "recipe-box",
+    "self-hosted",
+    "inconsistent",
+    "layered"
+   ],
+   "antipatterns": [
+    "counting the --cc-* cookie-consent variables (vanilla-cookieconsent) as Gousto tokens",
+    "assuming the CTA's 8px radius matches the declared 3px --Gousto-button-border-radius token",
+    "treating #0275d8 as a brand colour rather than a stray default link colour",
+    "copying --NeutralGrey_500's malformed quoted value instead of #7d7e7f",
+    "measuring hover/focus with the cookie-consent banner still open"
+   ],
+   "has_personas": false,
+   "category_raw": "recipe-box e-commerce"
   },
   {
    "id": "govuk",

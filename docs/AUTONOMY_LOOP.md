@@ -57,11 +57,7 @@
    남음: jal(로컬 차단 → Aside), kakaopay corporate-search(레거시 캡처 인덱스라 라벨 없음).
 5. ~~**위생**~~ — 완료 2026-09-23: velog·banksalad `ds:` 제거(디자인 시스템이 없는데 카드가
    "Design System"/"Brand Guide"로 GitHub를 가리켰다 — 없는 것은 없다), adobe 설명에 링크=Spectrum 1 명시
-5b. **JP 웨이브 5 + UK 웨이브 2** — 스카우팅 2026-09-23: JP 2/12(17%, pairs·hatena — 15% 하한 근접),
-   UK 4/12(33%, sainsburys `--ln*364` Luna · bloomandwild · gousto · nhs `--nhsuk*73`). 경계 zopa. 탈락 사유: 토큰 ≈0
-   (retty·openwork·cyberagent·gmo·waitrose·sky), 프레임워크(bizreach Mantine·raksul tw·kaonavi wp), 소수(connpass·dena·itv·nothing),
-   차단(argos 403·boots catch-all), 중복(sakura = sakura-internet). 심층 프로브 6건(sonnet)을 띄웠으나 **OS 재부팅(09-23 밤)으로 스크래치패드와 함께 결과가 사라졌다 — 6건 재실행 필요.**
-   프로브 지시는 `docs/PROBE_BRIEF.md`.
+5b. ~~**JP 웨이브 5 + UK 웨이브 2**~~ — 완료 2026-09-26: pairs·hatena(JP 2/2)·sainsburys·bloomandwild·gousto·nhs(UK 4/4) 전부 verified.
 6. JP/US 웨이브를 수율이 유지되는 한 반복. 수율이 15% 밑으로 두 번 연속 떨어지면
    그 시장을 멈추고 다음 시장으로.
 
@@ -109,6 +105,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 
 회차가 끝날 때마다 한 줄. 최신이 위.
 
+- 2026-09-26 · 회차 16 · gousto 등재(71/71) — sonnet 저작 초안 2번째. 컴포넌트 값은 전부 맞았으나 서사·출처 오류 4건. **4회차 결론: sonnet 저작 채택 안 함**(COLLECTOR_MODEL_TRIAL §8). UK 웨이브 2 마감 4/4 · 472 / 178
 - 2026-09-26 · 회차 15 · nhs 등재(87/87). 저작된 노랑·검정 포커스 두 변형(링크 채움+하단선 / 입력 링+굵은 테두리) 재측정 일치, 디자인 시스템 문서 인용 대조 · 471 / 177
 - 2026-09-26 · 회차 14 · bloomandwild 등재(104/104) — **첫 sonnet 저작 초안**. 검토에서 사실 오류 6건 정정(포커스 메커니즘×5, 카드 포커스·pressed, '브라우저 링' 서술, 출처 도메인만, 미확인 그룹 연혁, B Corp 누락) · 470 / 176
 - 2026-09-26 · 회차 13 · sainsburys 등재(52/52, Luna). 동의 배너가 열린 채로는 hover·focus가 전부 '변화 없음' — 거부 후 저작된 포커스 링(토큰 그대로) 확인. 프로브 도구가 배너를 먼저 닫고 :hover 미매칭을 미측정 처리 · 469 / 175
