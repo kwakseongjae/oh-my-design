@@ -2825,6 +2825,28 @@ export const REFERENCE_QUALITY = [
     "paletteGrounding": null
   },
   {
+    "id": "ecosia",
+    "status": "verified_v2",
+    "verifiedAt": "2026-09-26",
+    "tokensExtractedAt": "2026-09-26",
+    "nextReverifyAt": "2027-03-25",
+    "renewedSourceCount": 0,
+    "tokenSource": "live-extract",
+    "claimCount": 53,
+    "evidenceClaimCount": 53,
+    "evidenceCoverage": 1,
+    "surfaceCount": 1,
+    "sourceCount": 3,
+    "conflictCount": 0,
+    "tier1SourceCount": 3,
+    "componentCount": 2,
+    "interactiveComponentCount": 2,
+    "statedComponentCount": 2,
+    "reasonCodes": [],
+    "advisoryCodes": [],
+    "paletteGrounding": null
+  },
+  {
     "id": "elastic",
     "status": "verified_v2",
     "verifiedAt": "2026-07-13",
@@ -12937,10 +12959,10 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 217,
+  "verified_v2": 218,
   "partial": 181,
   "legacy_snapshot": 113,
-  "total": 511
+  "total": 512
 } as const;
 
 export const REFERENCE_QUALITY_BY_ID: Readonly<Record<string, ReferenceQualityEntry>> = Object.freeze(

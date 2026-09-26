@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 511,
+ "count": 512,
  "items": [
   {
    "id": "104",
@@ -2789,6 +2789,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "fintech"
+  },
+  {
+   "id": "ecosia",
+   "primary_color_hex": "#275243",
+   "category": "consumer-tech",
+   "visual_theme": "A calm, earthy Berlin search engine: charcoal #333333 as brand primary and text, deep forest green #275243 as secondary, a fresh lime #d7eb80 for featured actions darkening to #bbcf65 and #a1b353, warm off-whites #f8f8f6 and #f0f0eb, Founders Grotesk headlines over Inter, and full pills throughout. Button families each have hover and active steps; glass buttons sit over video; search results keep #1a0dab and #681da8.",
+   "voice_fingerprint": {
+    "register": "purpose-driven, direct and transparent",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-climate-tech"
+   },
+   "tone_keywords": [
+    "earthy",
+    "calm",
+    "lime",
+    "forest",
+    "transparent"
+   ],
+   "antipatterns": [
+    "lime for body text or large backgrounds",
+    "pure white everywhere; secondary grounds are warm off-white",
+    "square buttons; everything is a pill",
+    "restyling search result links away from #1a0dab and #681da8",
+    "loud multi-colour palettes; the brand is charcoal and forest"
+   ],
+   "has_personas": false,
+   "category_raw": "climate-search-engine"
   },
   {
    "id": "elastic",
