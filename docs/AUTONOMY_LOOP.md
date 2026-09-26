@@ -58,7 +58,7 @@
 5. ~~**위생**~~ — 완료 2026-09-23: velog·banksalad `ds:` 제거(디자인 시스템이 없는데 카드가
    "Design System"/"Brand Guide"로 GitHub를 가리켰다 — 없는 것은 없다), adobe 설명에 링크=Spectrum 1 명시
 5b. ~~**JP 웨이브 5 + UK 웨이브 2**~~ — 완료 2026-09-26: pairs·hatena(JP 2/2)·sainsburys·bloomandwild·gousto·nhs(UK 4/4) 전부 verified.
-5c. **JP 웨이브 6** — 스카우팅 2026-09-26: 2/12(17%, booth `--charcoal*691`·coconala) — 하한 근접 두 번째. 심층 프로브 2건 진행 중.
+5c. **JP 웨이브 6** — 스카우팅 2026-09-26: 2/12(17%, booth `--charcoal*691`·coconala) — 하한 근접 두 번째. 첫 프로브 2건은 5시간 무응답으로 종료, 45분 제한을 걸어 재실행(15:55).
 5d. ~~**EU 웨이브 1**~~ — 스카우팅 2026-09-26: **7/12(58%)** — n26 · zalando · check24 · sumup(`--cui` Circuit UI) · qonto ·
    doctolib(`--oxygen` 3,650) · wolt(DoorDash 소유, 본사 헬싱키 → FI). 탈락: traderepublic·mollie·backmarket(토큰 ≈0),
    personio(tw), hellofresh(403 → Aside). 카탈로그 EU는 사실상 공백(spotify·IT 2·FR 2·DE 1) — **다음 주력 시장**.
@@ -79,7 +79,7 @@
    typeform(ES). 탈락: bunq(4)·picnic(wp/tw)·booking(26, 약함)·polestar(26, 보류). blablacar·idealista 403 → Aside 후보.
    **진행 2026-09-26: 10/12 verified**(hm·flixbus·klarna·otto·getyourguide·alan·adyen·coolblue·typeform·ikea).
    남음: **glovo** 보류 — 루트 변수 71개가 전부 타입·간격(색 토큰 0), Datadog WAF가 몇 번 로드 후 403 → CTA 1개만 측정
-   (`#017963`→hover `#035949`, focus 2px `#017963`). 나중에 시간대를 바꿔 재시도. **leboncoin** 재프로브 대기(DataDome 간헐).
+   (`#017963`→hover `#035949`, focus 2px `#017963`). 나중에 시간대를 바꿔 재시도. **leboncoin** 보류 — DataDome이 헤드리스와 Aside 모두 차단(15:55, CloudFront 오류). CTA rest만 1회 읽음(`#ec5a13`, 알약, 44px). 재프로브 에이전트는 3시간 무응답 → 종료.
 6. JP/US 웨이브를 수율이 유지되는 한 반복. 수율이 15% 밑으로 두 번 연속 떨어지면
    그 시장을 멈추고 다음 시장으로.
 

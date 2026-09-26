@@ -21,3 +21,5 @@ Measure:
 Do not guess; mark anything unverified. Note the company's own HQ country and any parent company.
 
 **Identity and blind spots (2026-09-26).** For every control, report the geometry (height, radius, padding, font) and rest bg/fg you measured, so the main session can confirm it is the intended element — a sweep reported three "findings" that were different elements. The probe tool compares bg, fg, border, shadow, outline, transform, opacity, `background-image`, `text-decoration` and `::before`/`::after`; if you read states with your own script, compare all of these too (FlixBus hovers via a background-image layer, Adyen via a `::before` overlay). A link's own `color` may be the browser default (`#0000ee`, active `#ff0000`) while the visible label is a child — report the child's colour.
+
+**Time box (2026-09-26).** Finish within about 45 minutes. If a step stalls, mark it UNMEASURED and move on, and write the report even if it is partial — two probes ran five hours without reporting and had to be stopped.
