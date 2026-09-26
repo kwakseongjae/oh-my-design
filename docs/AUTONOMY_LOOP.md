@@ -118,6 +118,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 
 회차가 끝날 때마다 한 줄. 최신이 위.
 
+- 2026-09-26 · 회차 25 · klarna 등재(80/80, SE). 잉크 `#0b051d`=`--brand`, 핑크 `#ffa8cd`는 면·배지. 도구: `:focus-visible` 미매칭 focus도 못 쟀음 처리, 스웨덴어·네덜란드어 거부 문구 추가 · 481 / 187
 - 2026-09-26 · 회차 24 · flixbus 등재(63/63, Honeycomb). hover가 background-image 반투명 레이어 → **프로브 도구 사각지대 발견·수정**(bg-image·밑줄 비교, shadow root 동의 배너). '변화 없음' 39개(23건) 소급 스윕 위임 중 · 480 / 186
 - 2026-09-26 · 회차 23 · hm 등재(52/52, Fabric Design System, SE). Akamai가 로컬 IP 차단 → Aside로 재측정(openTab·looksAuthenticated=false). **위임 프로브가 프라이버시 규칙 없이 Aside를 썼다** → PROBE_BRIEF에 위임 Aside 금지, 진행 중 프로브 전원에 통지 · 479 / 185
 - 2026-09-26 · 회차 22 · doctolib 등재(59/59, Oxygen). 헤드라인 재측정: Rechercher 포커스 이중 링은 Tab 직후 첫 프레임엔 투명 → 대기 후 읽어야 함. Turnstile 오버레이 때문에 probe 도구가 대상 못 찾음 → 같은 방법의 짧은 스크립트로 측정 · 478 / 184

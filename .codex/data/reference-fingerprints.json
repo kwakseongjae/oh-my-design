@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 480,
+ "count": 481,
  "items": [
   {
    "id": "104",
@@ -4926,6 +4926,34 @@
    "signature_motion": "Brisk card-hover shadow lift + filter bottom-sheet slide; no spring, commerce-functional feedback.",
    "has_personas": true,
    "category_raw": "ecommerce"
+  },
+  {
+   "id": "klarna",
+   "primary_color_hex": "#ffa8cd",
+   "category": "fintech",
+   "visual_theme": "A confident payments site in violet-black #0b051d on white, with Klarna's pink #ffa8cd as a surface and badge fill and a ten-step purple scale for links, accents and focus. Klarna Text and Klarna Title, self-hosted. Pill buttons lift from #0b051d to #2c2242 on hover; text controls dim to opacity 0.84; focus is a purple #7b57d8 ring with a near-black 2px outline.",
+   "voice_fingerprint": {
+    "register": "Swedish payments brand, playful and self-assured",
+    "sentence_length": "short",
+    "metaphor_density": "medium",
+    "vocabulary_register": "sv-fintech-consumer"
+   },
+   "tone_keywords": [
+    "playful",
+    "confident",
+    "pink",
+    "violet-black",
+    "rounded"
+   ],
+   "antipatterns": [
+    "pink body text; pink is a surface colour",
+    "pure black ink; the brand ink is #0b051d",
+    "square buttons; actions are pills",
+    "browser-default focus; focus uses the #7b57d8 ring",
+    "mixing the duplicate camelCase and kebab-case token layers"
+   ],
+   "has_personas": false,
+   "category_raw": "payments"
   },
   {
    "id": "kmong",

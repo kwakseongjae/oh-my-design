@@ -113,7 +113,7 @@ async function visit(act) {
     for (const h of document.querySelectorAll("*")) if (h.shadowRoot) roots.push(h.shadowRoot);
     for (const root of roots) for (const sel of REJECT) { const b = root.querySelector(sel); if (b && b.getClientRects().length) { b.click(); return sel; } }
     // 자체 제작 배너는 선택자가 없다 — 거부 문구로 찾는다 (wolt "Nur erforderliche verwenden", 2026-09-26).
-    const WORDS = /^(reject all|reject|decline all|only necessary|necessary only|use necessary only|alle ablehnen|ablehnen|nur erforderliche( verwenden)?|nur notwendige|tout refuser|refuser|continuer sans accepter|rechazar todo|rifiuta tutto|拒否する|すべて拒否|모두 거부|거부)$/i;
+    const WORDS = /^(reject all|reject|decline all|only necessary|necessary only|use necessary only|alle ablehnen|ablehnen|nur erforderliche( verwenden)?|nur notwendige|tout refuser|refuser|continuer sans accepter|rechazar todo|rifiuta tutto|avvisa alla|neka alla|alles weigeren|weigeren|拒否する|すべて拒否|모두 거부|거부)$/i;
     for (const root of roots) for (const b of root.querySelectorAll("button, [role=button]")) {
       if (b.getClientRects().length && WORDS.test((b.textContent || "").trim())) { b.click(); return "text:" + b.textContent.trim(); }
     }
@@ -359,6 +359,12 @@ for (const k of ["hover", "pressed"]) {
     unmeasured[k] = ":hover가 매칭되지 않음(오버레이가 포인터를 가로챔)";
     delete states[k];
   }
+}
+// focus도 같다. `:focus-visible`이 매칭되지 않은 읽기는 포커스 상태가 아니다 — 포커스가 대상에
+// 가지 않았다(덮개·포커스 트랩). klarna "Visa fler"(2026-09-26)가 이 경우를 "변화 없음"으로 찍었다.
+if (states.focus && !states.focus.is.focusVisible) {
+  unmeasured.focus = ":focus-visible이 매칭되지 않음(포커스가 대상에 가지 않음)";
+  delete states.focus;
 }
 console.log(`\n${url}`);
 console.log(`geometry: h=${states.rest.height} radius=${states.rest.radius} padding=${states.rest.padding} font=${states.rest.font}\n`);
