@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 509,
+ "count": 510,
  "items": [
   {
    "id": "104",
@@ -11985,6 +11985,34 @@
    ],
    "has_personas": false,
    "category_raw": "social-microblog"
+  },
+  {
+   "id": "wetransfer",
+   "primary_color_hex": "#3767ea",
+   "category": "productivity",
+   "visual_theme": "A plain, confident file-transfer product from Amsterdam: white and light grey (#f9f9f9, #d6d6d6), near-black ink #161616, a charcoal neutral action #353535 stepping to #464646 and #161616, and WeTransfer blue #3767ea for the base action. Four action intents (base, neutral, upsell purple #8e21cc, destructive) each carry enabled, hover, active and tint values. GT Super WT display over Actief Grotesque; 8px buttons.",
+   "voice_fingerprint": {
+    "register": "playful creative-industry brand, plain",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-creative-tools"
+   },
+   "tone_keywords": [
+    "plain",
+    "confident",
+    "charcoal",
+    "blue",
+    "creative"
+   ],
+   "antipatterns": [
+    "purple outside upsell moments",
+    "pure black; the darkest ink is #161616",
+    "action colours without hover, active and tint values",
+    "invented ramp steps between the published ones",
+    "decorative chrome competing with the transfer area"
+   ],
+   "has_personas": false,
+   "category_raw": "file-transfer"
   },
   {
    "id": "weverse",
