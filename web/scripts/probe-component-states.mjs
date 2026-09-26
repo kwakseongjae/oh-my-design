@@ -123,7 +123,7 @@ async function visit(act) {
     walk(document);
     for (const root of roots) for (const sel of REJECT) { const b = root.querySelector(sel); if (b && b.getClientRects().length) { b.click(); return sel; } }
     // 자체 제작 배너는 선택자가 없다 — 거부 문구로 찾는다 (wolt "Nur erforderliche verwenden", 2026-09-26).
-    const WORDS = /^(reject all|reject|decline all|only necessary|necessary only|use necessary only|alle ablehnen|ablehnen|nur erforderliche( verwenden)?|nur notwendige|tout refuser|refuser|continuer sans accepter|rechazar todo|rifiuta tutto|avvisa alla|neka alla|endast nödvändiga cookies|endast nödvändiga|reject non-essential|refuse|alles weigeren|weigeren|weiger|alleen noodzakelijke cookies|alleen noodzakelijk|weiger alle|拒否する|すべて拒否|모두 거부|거부)$/i;
+    const WORDS = /^(reject all|reject|decline all|only necessary|necessary only|use necessary only|alle ablehnen|ablehnen|nur erforderliche( verwenden)?|nur notwendige|tout refuser|refuser|continuer sans accepter|rechazar todo|rifiuta tutto|avvisa alla|neka alla|endast nödvändiga cookies|endast nödvändiga|reject non-essential|refuse|deny all|deny|alles weigeren|weigeren|weiger|alleen noodzakelijke cookies|alleen noodzakelijk|weiger alle|拒否する|すべて拒否|모두 거부|거부)$/i;
     // 거부 링크가 <a>인 배너도 있다 — alan.com "Continuer sans accepter"(2026-09-26). 문구가 거부일 때만 누른다.
     for (const root of roots) for (const b of root.querySelectorAll("button, [role=button], a")) {
       if (b.getClientRects().length && WORDS.test((b.textContent || "").trim())) { b.click(); return "text:" + b.textContent.trim(); }

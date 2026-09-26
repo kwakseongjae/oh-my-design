@@ -2,12 +2,12 @@
   "schema_version": 2,
   "generated_at": "2026-09-26",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 519,
+  "count": 520,
   "counts": {
-    "verified_v2": 225,
+    "verified_v2": 226,
     "partial": 181,
     "legacy_snapshot": 113,
-    "total": 519
+    "total": 520
   },
   "items": [
     {
@@ -5170,6 +5170,17 @@
       "reason_codes": [
         "verification_v2_missing"
       ]
+    },
+    {
+      "id": "spendesk",
+      "status": "verified_v2",
+      "verified_at": "2026-09-27",
+      "next_reverify_at": "2027-03-26",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "spindle",

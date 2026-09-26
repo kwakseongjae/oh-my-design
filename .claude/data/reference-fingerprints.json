@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 519,
+ "count": 520,
  "items": [
   {
    "id": "104",
@@ -10346,6 +10346,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "saas"
+  },
+  {
+   "id": "spendesk",
+   "primary_color_hex": "#7136ed",
+   "category": "fintech",
+   "visual_theme": "A Paris spend-management site reduced to three named brand colours — carbon #191b1b ink, deep purple #7136ed actions and an olive-tinted 'grolive' #f3f4ef ground — with soft accents (lavender #9477f3, periwinkle #b3bffa, mint #91d69f) in section fills. Roobert headlines at 64px over Inter; 8px buttons that hold their colour on hover.",
+   "voice_fingerprint": {
+    "register": "confident B2B finance, clear",
+    "sentence_length": "medium",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-spend-management"
+   },
+   "tone_keywords": [
+    "clear",
+    "purple",
+    "carbon",
+    "soft accents",
+    "confident"
+   ],
+   "antipatterns": [
+    "pure black text; the ink is carbon #191b1b",
+    "pure grey surfaces; grolive has an olive tint",
+    "invented hover colours on buttons that hold their colour",
+    "loud saturated accents; accents are soft",
+    "rounded pill buttons; buttons are 8px"
+   ],
+   "has_personas": false,
+   "category_raw": "spend-management"
   },
   {
    "id": "spindle",
