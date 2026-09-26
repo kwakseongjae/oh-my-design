@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 488,
+ "count": 489,
  "items": [
   {
    "id": "104",
@@ -2253,6 +2253,34 @@
    "signature_motion": "*Durations** (named, not raw milliseconds):",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "deutschebahn",
+   "primary_color_hex": "#ec0016",
+   "category": "consumer-tech",
+   "visual_theme": "A functional, trustworthy railway booking site: white ground, slate #282d37 text in DB Screen Sans, pale grey #f0f3f5 fields with a bottom rule, and the DB red #ec0016 only on the search action (hover #c50014). Header links show an underline bar on hover; ghost buttons wash in grey at 24% and 32%; every control focuses with a 2px #257fa8 outline. Backed by the public DB UX Design System.",
+   "voice_fingerprint": {
+    "register": "German national railway, factual and service-oriented",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "de-rail-travel"
+   },
+   "tone_keywords": [
+    "functional",
+    "trustworthy",
+    "red",
+    "public-service",
+    "clear"
+   ],
+   "antipatterns": [
+    "red on secondary controls; red is the primary action only",
+    "pure black text; the ink is #282d37",
+    "shadows on controls",
+    "missing focus outlines; every control uses #257fa8",
+    "decorative type; DB Screen Sans and Head only"
+   ],
+   "has_personas": false,
+   "category_raw": "rail-travel"
   },
   {
    "id": "devsisters",

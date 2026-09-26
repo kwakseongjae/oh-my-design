@@ -128,6 +128,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 
 회차가 끝날 때마다 한 줄. 최신이 위.
 
+- 2026-09-26 · 회차 34 · deutschebahn 등재(54/54, DE, DB UX Design System 공개). 본 세션 직접 측정. 헤더 링크 hover가 `::after` 막대 — 가상 요소 비교가 첫 실전에서 잡음. `--db-adaptive-*` 1,040개는 컴포넌트 스코프라 값 미해결 → 렌더 값만 기록 · 489 / 195
 - 2026-09-26 · 회차 33 · ikea 등재(48/48, NL). 국가: ikea.com 약관·저작권 = Inter IKEA Systems B.V.(델프트) → 모회사 본사 규칙 NL. Skapa는 문서가 SSO 뒤라 라이브 `data-skapa` 버전 속성으로 입증 · 488 / 194
 - 2026-09-26 · 회차 32 · typeform 등재(58/58, ES). 브랜드 페이지의 Paper·Ink가 곧 토큰(#faf9fb·#2a222b), Webflow 변수 2단. 검색 결과 제목에 LLM 대상 지시문이 섞여 있었음 → 무시, 주소는 자체 개인정보처리방침·DPA에서 · 487 / 193
 - 2026-09-26 · 회차 31 · coolblue 등재(69/69, NL). 헤드리스 403 → 본 세션 Aside(openTab·looksAuthenticated=false). 동의창은 '전부 수락'/'직접 설정'뿐 — 수락 안 함('직접 설정' 열고 닫기). 녹색 action 스타일은 동의창 수락 버튼에서 hover/focus만 읽음(클릭 안 함) · 486 / 192 — **오늘 10건째(qonto 이후)**
