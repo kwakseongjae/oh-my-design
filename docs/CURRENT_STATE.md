@@ -3,11 +3,12 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
-## ✅ 2026-09-26 · 루프 회차 46–51 — **EU 웨이브 4: 6/16** (506 · 212)
+## ✅ 2026-09-27 · 루프 회차 46–57 — **EU 웨이브 4: 12/16** (512 · 218)
 
 - 스카우팅 16/32(50%). 등재: vinted(LT, 오버레이 상태) · vipps(NO, 보라/주황 두 버튼 체계) · lego(DK, --ds 2,178, 사이트 선택창은 응답 안 함).
 - 이어서 toogoodtogo(DK) · fever(US, 델라웨어 모회사) · bitpanda(AT). idealista 보류(측정 뒤 403).
-- 국가 코드 LT·NO·DK·AT·EE 추가. 다음: wetransfer → ns → zooplus → epidemicsound → bolt → avanza → celonis → ecosia → trivago.
+- 이어서 ns · epidemicsound · bolt · wetransfer · celonis · ecosia. **교훈: 대조군·회사 사실을 프로브 전에 읽는다**(PROBE_BRIEF) — idealista·wetransfer·zooplus가 프로브 연타 뒤 403.
+- 국가 코드 LT·NO·DK·AT·EE 추가. 남음: idealista(차단)·zooplus(재시도)·avanza·trivago(soft 404 확인).
 
 ---
 

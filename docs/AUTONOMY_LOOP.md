@@ -67,7 +67,9 @@
    celonis(DE, --fnd) · ecosia(DE) · trivago(DE, 컨트롤 0 — 지연 렌더 의심). 탈락: booking(202·27)·picnic(wp/tw)·bunq(4)·
    swile(tw)·vestiaire(1)·kahoot(wp)·polestar(6)·factorial(tw)·travelperk(tw 팔레트)·mytheresa(0)·supercell(23)·scalapay(webflow).
    차단: thuisbezorgd·trustpilot·blablacar·decathlon(403).
-   **진행: 6/16 등재**(vinted·vipps·lego·toogoodtogo·fever[US]·bitpanda). idealista 보류(측정 완료, 이후 403 — 대조군·회사 사실 재시도 필요).
+   **진행: 12/16 등재**(vinted·vipps·lego·toogoodtogo·fever[US]·bitpanda·ns·epidemicsound·bolt·wetransfer·celonis·ecosia).
+   남음: idealista(403 지속 — 측정 완료, 대조군·회사 사실 필요) · zooplus(사실 완료, 프로브 2회 만에 재차단 — 1시간+ 간격 두고 pressed·focus) ·
+   avanza·trivago(nonsense 경로가 200 — soft 404 여부 확인 필요).
 5d. ~~**EU 웨이브 1**~~ — 스카우팅 2026-09-26: **7/12(58%)** — n26 · zalando · check24 · sumup(`--cui` Circuit UI) · qonto ·
    doctolib(`--oxygen` 3,650) · wolt(DoorDash 소유, 본사 헬싱키 → FI). 탈락: traderepublic·mollie·backmarket(토큰 ≈0),
    personio(tw), hellofresh(403 → Aside). 카탈로그 EU는 사실상 공백(spotify·IT 2·FR 2·DE 1) — **다음 주력 시장**.
@@ -142,6 +144,7 @@ haiku는 쓰지 않는다(3회 모두 탈락).
 
 회차가 끝날 때마다 한 줄. 최신이 위.
 
+- 2026-09-26~27 · 회차 52–57 · ns(NL) · epidemicsound(SE) · bolt(EE) · wetransfer(NL, 1시간 차단 해제 뒤 마감) · celonis(DE, pressed 미측정 생략) · ecosia(DE). zooplus 재차단(사실·토큰·Warenkorb hover까지 확보) · **512 / 218**
 - 2026-09-26 · 회차 49–51 · toogoodtogo(DK) · fever(**US** — 약관의 Fever Labs Inc.(델라웨어·뉴욕 사무소), 마드리드 캠퍼스는 본사 아님) · bitpanda(AT). idealista는 측정 후 403 차단 → 보류(측정값 scratchpad 보존) · **506 / 212 — 10건 진행 보고**
 - 2026-09-26 · 회차 46–48 · vinted(LT) · vipps(NO) · lego(DK) 등재 — EU 웨이브 4 3/16. 국가 LT·NO·DK·AT·EE 추가(build-registry·verify·route·selector·catalog-integrity 테스트) · 503 / 209
 - 2026-09-26 · 회차 45 · coconala 등재(JP, 19개 색 램프) → **JP 웨이브 6 마감 2/2**. 도구: 오버레이 제거가 shadow host를 조상으로 인식 · **500 / 206**
