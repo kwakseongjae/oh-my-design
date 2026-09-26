@@ -59,10 +59,16 @@
    "Design System"/"Brand Guide"로 GitHub를 가리켰다 — 없는 것은 없다), adobe 설명에 링크=Spectrum 1 명시
 5b. ~~**JP 웨이브 5 + UK 웨이브 2**~~ — 완료 2026-09-26: pairs·hatena(JP 2/2)·sainsburys·bloomandwild·gousto·nhs(UK 4/4) 전부 verified.
 5c. **JP 웨이브 6** — 스카우팅 2026-09-26: 2/12(17%, booth `--charcoal*691`·coconala) — 하한 근접 두 번째. 심층 프로브 2건 진행 중.
-5d. **EU 웨이브 1** — 스카우팅 2026-09-26: **7/12(58%)** — n26 · zalando · check24 · sumup(`--cui` Circuit UI) · qonto ·
+5d. ~~**EU 웨이브 1**~~ — 스카우팅 2026-09-26: **7/12(58%)** — n26 · zalando · check24 · sumup(`--cui` Circuit UI) · qonto ·
    doctolib(`--oxygen` 3,650) · wolt(DoorDash 소유, 본사 헬싱키 → FI). 탈락: traderepublic·mollie·backmarket(토큰 ≈0),
    personio(tw), hellofresh(403 → Aside). 카탈로그 EU는 사실상 공백(spotify·IT 2·FR 2·DE 1) — **다음 주력 시장**.
-   1차 프로브 5건(n26·zalando·sumup·qonto·doctolib) 진행 중, check24·wolt는 다음.
+   **마감 2026-09-26: 6/7 verified**(n26·sumup·wolt·qonto·zalando·doctolib). **check24 탈락** — 자체 변수 7개(브랜드색 0,
+   나머지 217-7은 Tailwind v4·shadcn 기본값), 빨강은 알림 배지 1개·파랑은 숨은 skip 링크뿐, CTA·타일은 닫힌 shadow root.
+   traderepublic 등과 같은 '자체 토큰 ≈0' 기준. (위임 프로브의 필별 hover 편차는 전환 도중 값 — 재측정하니 전부 `rgba(255,255,255,0.15)`.)
+5e. **EU 웨이브 2** — 스카우팅 2026-09-26: **12/18(67%)** — klarna(SE) · ikea · hm(`--fds` 11,430, SE) · adyen(NL) ·
+   coolblue(NL) · otto(`--oc`, DE) · flixbus(`--flix`, DE) · getyourguide(DE) · leboncoin(FR) · alan(FR) · glovo(ES) ·
+   typeform(ES). 탈락: bunq(4)·picnic(wp/tw)·booking(26, 약함)·polestar(26, 보류). blablacar·idealista 403 → Aside 후보.
+   ikea 국가는 저작 때 판정(모회사 본사 규칙). 1차 프로브 5건(klarna·hm·otto·flixbus·leboncoin) 진행 중.
 6. JP/US 웨이브를 수율이 유지되는 한 반복. 수율이 15% 밑으로 두 번 연속 떨어지면
    그 시장을 멈추고 다음 시장으로.
 

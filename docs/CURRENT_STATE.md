@@ -3,6 +3,18 @@
 갱신: **2026-09-17 저녁** · 오너 지적 2건(라우트·토스) 처리. 우선순위는 2026-09-16 재편분 유지. 분기 `codex/track-foundation`, baseline `15ff0139`
 (main과 동일 커밋). 9/7~9/8 스프린트 산출물은 **전부 미커밋 상태로 보존**되어 있다.
 
+## ✅ 2026-09-26 · 루프 회차 21–22 — **EU 웨이브 1 마감** (478 · 184)
+
+- 등재: zalando(DE, 리브랜드 토큰 레이어가 기본 테마를 `@scope`로 덮음) · doctolib(FR, Oxygen 3,650).
+  EU 웨이브 1 = **6/7 verified**. check24 탈락(자체 변수 7개·브랜드색 토큰 0·CTA는 닫힌 shadow root).
+- **전환(transition) 함정 2건**: check24 위임 프로브의 필별 hover 14종은 전환 도중 값(정착값은 전부
+  `rgba(255,255,255,0.15)`), doctolib 포커스 링은 Tab 직후 첫 프레임에 투명. PROBE_BRIEF에 대기 규칙 추가.
+- **EU 웨이브 2 스카우팅 12/18(67%)**. 1차 프로브 5건(klarna·hm·otto·flixbus·leboncoin) 진행 중,
+  JP6 booth·coconala 프로브도 진행 중.
+- 쿠키 배너: 여전히 거부 방식(오너 확인 대기 — Accept all 전환 여부).
+
+---
+
 ## ✅ 2026-09-26 · 루프 회차 17–20 — **EU 웨이브 1 시작** (476 · 182)
 
 - 등재: n26(DE) · sumup(UK, Circuit UI) · wolt(FI, Alchemy) · qonto(FR). EU 스카우팅 7/12(58%) — 다음 주력 시장.
