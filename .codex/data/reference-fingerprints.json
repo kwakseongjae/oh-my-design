@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 512,
+ "count": 513,
  "items": [
   {
    "id": "104",
@@ -717,6 +717,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "automotive"
+  },
+  {
+   "id": "avanza",
+   "primary_color_hex": "#068e6a",
+   "category": "fintech",
+   "visual_theme": "A clean Swedish savings platform: white and faint green-grey #f9fbfb, near-black #0d1112 for text and primary pills (hover #243133, pressed scale 0.98), Avanza green #068e6a for brand and active states, blue #2970c2 for buy and red #d0184d for sell in buttons and graphs, and its own Avanza typeface for 60px headlines over Roboto. The 'Mint' token system covers containers, content, strokes, tags, tables and eleven graph series.",
+   "voice_fingerprint": {
+    "register": "friendly Swedish retail bank, plain and confident",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "sv-savings"
+   },
+   "tone_keywords": [
+    "clean",
+    "near-black",
+    "green",
+    "trustworthy",
+    "simple"
+   ],
+   "antipatterns": [
+    "swapping buy and sell colours; buy is blue, sell is red",
+    "pure black; the ink is #0d1112",
+    "square primary buttons; they are full pills",
+    "green used for buy actions",
+    "decorative colour outside the Mint roles"
+   ],
+   "has_personas": false,
+   "category_raw": "retail-savings"
   },
   {
    "id": "aws-cloudscape",
