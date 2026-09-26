@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 504,
+ "count": 505,
  "items": [
   {
    "id": "104",
@@ -2948,6 +2948,34 @@
    "signature_motion": null,
    "has_personas": false,
    "category_raw": "automotive"
+  },
+  {
+   "id": "fever",
+   "primary_color_hex": "#0079ca",
+   "category": "consumer-tech",
+   "visual_theme": "A live-entertainment discovery site that steps back behind photography: a full-bleed video hero, then an off-white #fafbfb page of plan cards, blue-grey ink #031419 in Montserrat, one blue #0079ca for primary actions (hover #0068b0), and magenta #eb0052 for alerts. 608 component-scoped --fv-* tokens pair every status colour with a weak tint. Category chips are 64px pills: selected near-black, others white with a #a7b2ba border.",
+   "voice_fingerprint": {
+    "register": "energetic city-guide, inviting",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "en-live-entertainment"
+   },
+   "tone_keywords": [
+    "photographic",
+    "city",
+    "blue",
+    "off-white",
+    "energetic"
+   ],
+   "antipatterns": [
+    "pure black text; the ink is #031419",
+    "magenta #eb0052 for actions; it signals danger and alerts",
+    "status colours without their weak tints",
+    "chips without the 2px focus outline",
+    "flat colour heroes where the brand uses photography"
+   ],
+   "has_personas": false,
+   "category_raw": "live-entertainment-discovery"
   },
   {
    "id": "figma",
