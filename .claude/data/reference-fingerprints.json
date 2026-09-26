@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 487,
+ "count": 488,
  "items": [
   {
    "id": "104",
@@ -4363,6 +4363,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "developer-tools"
+  },
+  {
+   "id": "ikea",
+   "primary_color_hex": "#0058a3",
+   "category": "ecommerce",
+   "visual_theme": "A near-monochrome, matter-of-fact furniture storefront: white ground, #484848 text and hairlines, #111111 headings and primary actions, with IKEA blue #0058a3 and yellow #ffdb00 kept for the brand and the emphasised role, and offer red #cc0008 for commercial messages. Noto IKEA. Header links darken and underline on hover; focus is a white 4px ring inside a 2px #111111 outline. Skapa components are version-stamped in the markup.",
+   "voice_fingerprint": {
+    "register": "Home-furnishing retail, plain and friendly (du)",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "de-home-retail"
+   },
+   "tone_keywords": [
+    "plain",
+    "monochrome",
+    "functional",
+    "democratic",
+    "friendly"
+   ],
+   "antipatterns": [
+    "blue as the default button colour; primary actions are #111111",
+    "offer red #cc0008 outside commercial messages",
+    "shadows on product cards",
+    "decorative colour on body text; text is #484848",
+    "browser-default focus; focus is a white ring plus a #111111 outline"
+   ],
+   "has_personas": false,
+   "category_raw": "home-furnishing"
   },
   {
    "id": "imweb",
