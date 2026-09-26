@@ -183,6 +183,13 @@ async function settle(frame, page) {
  * 대상의 조상은 절대 건드리지 않는다 — 그러면 컴포넌트 자신을 숨기게 된다.
  */
 async function clearOverlays(frame) {
+  // 동의 배너는 숨기기만 하면 포커스 트랩이 남는다 — 먼저 거부 버튼을 누른다.
+  // Sainsbury's(2026-09-26)는 배너를 닫기 전까지 hover·focus가 전부 "변화 없음"으로 읽혔다.
+  await frame.evaluate(() => {
+    const REJECT = ["#onetrust-reject-all-handler", "#CybotCookiebotDialogBodyButtonDecline",
+      "button[data-testid='uc-deny-all-button']", ".didomi-continue-without-agreeing", "#didomi-notice-disagree-button"];
+    for (const sel of REJECT) { const b = document.querySelector(sel); if (b) { b.click(); break; } }
+  }).catch(() => {});
   await frame.evaluate(() => {
     const target = document.querySelector('[data-omd-probe="1"]');
     const ancestors = new Set();
@@ -310,6 +317,13 @@ const hex = (v) => {
   return s;
 };
 
+// :hover가 실제로 매칭되지 않았으면 그 hover/pressed 값은 측정이 아니다 — 덮개가 포인터를 가로챘다.
+for (const k of ["hover", "pressed"]) {
+  if (states[k] && !states[k].is.hover) {
+    unmeasured[k] = ":hover가 매칭되지 않음(오버레이가 포인터를 가로챔)";
+    delete states[k];
+  }
+}
 console.log(`\n${url}`);
 console.log(`geometry: h=${states.rest.height} radius=${states.rest.radius} padding=${states.rest.padding} font=${states.rest.font}\n`);
 for (const [name, s] of Object.entries(states)) {
