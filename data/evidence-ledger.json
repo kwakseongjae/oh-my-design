@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 188,
-  "sources": 1120,
+  "references_with_verification_v2": 189,
+  "sources": 1124,
   "sources_by_kind": {
     "brand-asset": 75,
     "license": 76,
-    "official-doc": 471,
-    "product-surface": 498
+    "official-doc": 473,
+    "product-surface": 500
   },
   "references": {
     "104": {
@@ -2252,6 +2252,36 @@
           "kind": "license",
           "captured": "2026-07-13",
           "host": "github.com"
+        }
+      ]
+    },
+    "getyourguide": {
+      "checked": "2026-09-26",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "blog",
+          "kind": "official-doc",
+          "captured": "2026-09-26",
+          "host": "inside.getyourguide.com"
+        },
+        {
+          "id": "careers",
+          "kind": "official-doc",
+          "captured": "2026-09-26",
+          "host": "www.getyourguide.careers"
+        },
+        {
+          "id": "control-404",
+          "kind": "product-surface",
+          "captured": "2026-09-26",
+          "host": "inside.getyourguide.com"
+        },
+        {
+          "id": "home-live",
+          "kind": "product-surface",
+          "captured": "2026-09-26",
+          "host": "www.getyourguide.de"
         }
       ]
     },

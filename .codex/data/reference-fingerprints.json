@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 482,
+ "count": 483,
  "items": [
   {
    "id": "104",
@@ -3272,6 +3272,34 @@
    "signature_motion": "See §15 Motion.",
    "has_personas": true,
    "category_raw": "consumer-tech"
+  },
+  {
+   "id": "getyourguide",
+   "primary_color_hex": "#ff5533",
+   "category": "consumer-tech",
+   "visual_theme": "A bright, photo-led travel marketplace: white ground, midnight #1a2b49 text in GT Eesti, and actions in blue #0071eb that deepen to #304c84 on hover and press. The orange-red #ff5533 is the brand accent, not the action colour. A 56px pill search button with a 24px bold label; focus is a 2px #0071eb outline. Role-named tokens (interactive, label, surface, border) plus six named decorative colours.",
+   "voice_fingerprint": {
+    "register": "Travel marketplace, friendly and inviting",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "de-travel-marketplace"
+   },
+   "tone_keywords": [
+    "friendly",
+    "bright",
+    "photographic",
+    "travel",
+    "clear"
+   ],
+   "antipatterns": [
+    "orange buttons; actions are blue #0071eb",
+    "claiming GYG Sans as the rendered face; GT Eesti renders",
+    "decorative colours as text colours",
+    "heavy elevation; controls carry no shadow",
+    "calling the system Compass; that is only the icon font's name"
+   ],
+   "has_personas": false,
+   "category_raw": "travel-experiences"
   },
   {
    "id": "github",
