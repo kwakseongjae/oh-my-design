@@ -2,12 +2,12 @@
   "schema_version": 2,
   "generated_at": "2026-09-26",
   "generator": "scripts/build-reference-quality-data.mjs",
-  "count": 492,
+  "count": 493,
   "counts": {
-    "verified_v2": 198,
+    "verified_v2": 199,
     "partial": 181,
     "legacy_snapshot": 113,
-    "total": 492
+    "total": 493
   },
   "items": [
     {
@@ -3807,6 +3807,17 @@
         "token_source_unverified",
         "verification_v2_missing"
       ]
+    },
+    {
+      "id": "payfit",
+      "status": "verified_v2",
+      "verified_at": "2026-09-26",
+      "next_reverify_at": "2027-03-25",
+      "evidence_coverage": 1,
+      "surface_count": 1,
+      "source_count": 4,
+      "conflict_count": 0,
+      "reason_codes": []
     },
     {
       "id": "payhere",

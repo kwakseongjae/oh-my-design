@@ -2,7 +2,7 @@
  "schema_version": 1,
  "generated_at": "2026-09-26T00:00:00Z",
  "generator": "oh-my-design parallel agent extraction (Claude Code Agent tool, no API key)",
- "count": 492,
+ "count": 493,
  "items": [
   {
    "id": "104",
@@ -7568,6 +7568,34 @@
    "signature_motion": "fp_nav active underline width expansion 0.5s",
    "has_personas": true,
    "category_raw": "fintech / payment super-app"
+  },
+  {
+   "id": "payfit",
+   "primary_color_hex": "#f048f0",
+   "category": "saas",
+   "visual_theme": "A clean, warm payroll-software site: near-black #0d0d0c buttons and type on white and warm greys (#f5f5f4, #e7e6e4), with a bright magenta #f048f0 accent, soft pink highlights (#ffc7ff) and deep plum #7f007f. Primary buttons lift to #333332 on hover; focus is a 2px #0d9ad8 outline. Restart Soft variable face with Heartbreak Eighties for display; 803 oklch --uy-* tokens covering every state.",
+   "voice_fingerprint": {
+    "register": "French HR and payroll SaaS, reassuring and upbeat",
+    "sentence_length": "short",
+    "metaphor_density": "low",
+    "vocabulary_register": "fr-hr-saas"
+   },
+   "tone_keywords": [
+    "reassuring",
+    "warm",
+    "magenta",
+    "clean",
+    "modern"
+   ],
+   "antipatterns": [
+    "magenta primary buttons; the primary is near-black",
+    "cold greys; neutrals are warm",
+    "counting --tw-* as PayFit tokens",
+    "large radii; buttons are 8px",
+    "browser-default focus on buttons; focus is #0d9ad8"
+   ],
+   "has_personas": false,
+   "category_raw": "payroll-hr"
   },
   {
    "id": "payhere",
