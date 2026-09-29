@@ -2,6 +2,8 @@
 name: omd:designer-review
 description: "시각 + 브랜드 일관성 리뷰. HTML/MD/JSX artifact를 받아 brand DESIGN.md 대비 typo hierarchy, 색 budget, radius scale, 컴포넌트 state, 모바일 반응형 검수. severity BLOCK/WARN/FYI + line ref 출력. 'UI 리뷰', '디자인 검토', 'DESIGN.md 대비 검수' 류 트리거."
 user-invocable: true
+metadata:
+  internal: true
 ---
 
 # omd:designer-review

@@ -1,6 +1,6 @@
 # oh-my-design
 
-> Skill-driven design harness for AI coding agents. Claude Code, Codex, and OpenCode receive the full 27-skill + 20-sub-agent bundle; Cursor receives 27 compatible Agent Skills, a project rule, and the local catalog. The quality-graded catalog contains 448 DESIGN.md references: 227 verified_v2, 181 partial, and 113 legacy. Use verified_v2 references for public demos.
+> Skill-driven design harness for AI coding agents. Claude Code, Codex, and OpenCode receive the full 29-skill + 20-sub-agent bundle; Cursor receives 28 compatible Agent Skills, a project rule, and the local catalog. The quality-graded catalog contains 448 DESIGN.md references: 227 verified_v2, 181 partial, and 113 legacy. Use verified_v2 references for public demos.
 
 ## What
 
@@ -51,7 +51,7 @@ When `omd:harness` activates, it runs three new steps **before** any reference q
 
 The `omd-master` sub-agent reads `prefilled_slots` on INTAKE and skips its slot-gate entirely, jumping straight to PROPOSE_PLAN. Net effect: the conversation feels like a senior designer who already read your repo, not an interrogation.
 
-## The 28 skills (Claude Code, Codex, OpenCode)
+## The 29 skills (Claude Code, Codex, OpenCode)
 
 Core flow (10):
 - **omd:autopilot** — One-prompt autonomous product design: decides whether to reuse, establish, or refresh the design system, then builds and verifies the real surface.
@@ -85,9 +85,10 @@ Localization + review layer (7):
 - **omd:final-qa** — Read-only final-gate critic enforcing an 8-item rubric with a hard revision cap.
 - **omd:codex-image** — Channel-aware image materializer for `omd:gen-image` spec blocks (Codex native gen / asset fallback / user queue).
 
-Interface quality (2):
+Interface quality (3):
 - **omd:feel** — Applies and audits 113 provenance-graded HIG / Material / WCAG rules for motion, spacing, typography, and accessibility.
 - **omd:slop-audit** — Finds clusters of context-free UI and copy defaults without guessing authorship, then separates slop, quality failures, and preference.
+- **hangul** — Korean typography for web UI (line breaking, letter-spacing, line-height, font stacks, `lang`, synthetic italic/bold, number formatting): numeric rules from W3C klreq / CSS Text, KRDS / SEED / TDS, and 67 measured Korean services, plus a deterministic source checker. Invoked as `hangul`, without the `omd:` prefix.
 
 Standalone (1):
 - **claude-design** — Analyzes the current codebase into a design-context brief and drives claude.ai/design (via logged-in Chrome) to generate a design, returning a result link.

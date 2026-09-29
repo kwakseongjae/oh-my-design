@@ -1,6 +1,8 @@
 ---
 name: omd-token-backfill
 description: "Legacy reference token writer compatibility gate during the DESIGN.md Core v2 catalog cutover."
+metadata:
+  internal: true
 ---
 
 # omd:token-backfill — Core v2 catalog cutover gate

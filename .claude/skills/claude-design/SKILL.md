@@ -13,6 +13,7 @@ description: |
   "클로드 디자인에 디자인 요청해줘", "이 레퍼런스로 디자인 만들어줘", "Claude Design에 시안 요청".
 x-omd-channels: claude-code codex opencode
 metadata:
+  internal: true
   author: 곽성재
   version: "2.1.0"
 ---

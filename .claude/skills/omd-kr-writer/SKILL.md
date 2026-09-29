@@ -2,6 +2,8 @@
 name: omd:kr-writer
 description: "한국어 블로그·장문 글을 12개 voice preset으로 작성하거나 다듬는다 — toss-tech-design (default), karrot-neighborly, brunch-maker-popular, naver-d2-engineering, biz-formal-report, academic-paper, journalism-broadsheet, kakao-warm-product, line-global-saas, academic-lecture-essay, emotional-brand, legal-disclosure."
 user-invocable: true
+metadata:
+  internal: true
 ---
 <!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->
 

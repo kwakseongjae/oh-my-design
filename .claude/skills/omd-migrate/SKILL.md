@@ -3,6 +3,8 @@ name: omd:migrate
 description: "Legacy deep-reference writer safety gate. Use for old brand migration requests only to prevent retired section/frontmatter writes until the Core v2 catalog migration pipeline is authoritative."
 argument-hint: "<brand-id>"
 user-invocable: true
+metadata:
+  internal: true
 ---
 
 **Expiry.** This gate is a waiting state, not a policy. It lifts when the

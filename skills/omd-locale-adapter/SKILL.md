@@ -1,6 +1,8 @@
 ---
 name: omd:locale-adapter
 description: "한국어 canonical 문서·UX copy를 EN/JA/ZH-CN/ZH-TW로 번역이 아니라 locale adaptation한다. thesis·사실·명령어는 보존하되 문장 순서, 주어, register, 제품 용어와 호흡은 각 언어에서 다시 쓴다. '다국어 적용', '영문/일문/간체/대만어 버전', 'locale 문서 만들어줘' 요청에 사용한다."
+metadata:
+  internal: true
 ---
 
 # omd:locale-adapter

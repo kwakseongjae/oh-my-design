@@ -1,6 +1,8 @@
 ---
 name: omd:reference-capture
 description: "선택된 reference brand의 라이브 사이트에서 디자인 컨텍스트(토큰·구조·visual reference)를 캡쳐. brand homepage 패칭, 컴퓨티드 스타일 inspect, 로고/스크린샷을 assets/_reference/<id>/ 로 가져와 attribution.md + LICENSE-NOTE.md와 함께 저장. '뱅크샐러드 에셋 가져와줘', 'X 사이트 패칭', 'X reference 캡쳐', 'X 라이브 스타일 추출', '브랜드 자료 받아와' 류 요청에 트리거. omd:init 직후 또는 omd:harness 중간에 호출 가능. DESIGN.md는 이 스킬이 만들지 않음 (omd:init 책임)."
+metadata:
+  internal: true
 ---
 <!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->
 

@@ -3,6 +3,8 @@ name: omd:showcase
 description: "Turn a rendered page (or several, side by side) into a scroll demo video — deterministic frame capture, ffmpeg H.264/GIF, labels per arm. Trigger: '시연 영상', '스크롤 영상 만들어', 'showcase', 'demo video', '비교 영상', 'record the page'."
 argument-hint: "<render.html> [--compare a.html b.html c.html] [--labels 'A|B|C'] [--seconds 12] [--gif]"
 user-invocable: true
+metadata:
+  internal: true
 ---
 <!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->
 

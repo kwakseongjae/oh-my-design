@@ -1,6 +1,8 @@
 ---
 name: omd:design
 description: "Legacy survey-based DESIGN.md writer redirect. Use for old omd:design requests only to route them to the Core v2 Autopilot or init workflow; this compatibility skill never writes DESIGN.md itself."
+metadata:
+  internal: true
 ---
 
 # omd:design — Core v2 compatibility redirect

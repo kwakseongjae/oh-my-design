@@ -3,6 +3,8 @@ name: omd-landing
 description: "Scroll-native one-page landing that overwhelms — concept, composition, asset placement, and scroll choreography derived from DESIGN.md and the measured landing-craft codex. Trigger: '랜딩 페이지', '원페이지', 'landing page', 'one-pager', 'hero to footer', '스크롤 랜딩', 'affinity.studio 같은'."
 argument-hint: "<brand or DESIGN.md path> — <one line: what the page must make the visitor feel and do>"
 user-invocable: true
+metadata:
+  internal: true
 ---
 
 # omd:landing — 압도적 원페이지

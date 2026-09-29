@@ -3,6 +3,8 @@ name: omd:add-reference
 description: "Reference catalog authoring compatibility gate. Core v2 cutover가 끝나기 전에는 신규 legacy DESIGN.md 쓰기를 차단하고 안전한 재개 조건을 설명한다."
 argument-hint: "<url|id>"
 user-invocable: true
+metadata:
+  internal: true
 ---
 
 **Expiry.** This gate is a waiting state, not a policy. It lifts when the

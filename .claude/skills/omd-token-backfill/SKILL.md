@@ -1,6 +1,8 @@
 ---
 name: omd-token-backfill
 description: "Legacy reference token writer compatibility gate during the DESIGN.md Core v2 catalog cutover."
+metadata:
+  internal: true
 ---
 
 **Expiry.** This gate is a waiting state, not a policy. It lifts when the

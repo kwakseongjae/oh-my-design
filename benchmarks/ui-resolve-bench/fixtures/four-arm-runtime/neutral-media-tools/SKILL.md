@@ -1,6 +1,8 @@
 ---
 name: benchmark-media-tools
 description: Neutral mechanics and safety boundary for the equal media-enabled benchmark runtime. It contains no visual direction or creative decisions.
+metadata:
+  internal: true
 ---
 
 # Benchmark media tools

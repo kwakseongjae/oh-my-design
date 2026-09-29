@@ -1,6 +1,8 @@
 ---
 name: omd:asset-fetch
 description: "사용자 product UI 생성 시 placeholder 자리를 generic SVG가 아닌 **실제 free-license CDN 자산**으로 채운다. 로고·일러스트·아이콘·사진·폰트·패턴 카탈로그를 verified URL만으로 운영. '에셋 가져와줘', '플레이스홀더 진짜 이미지로', '로고 자리 채워줘', 'unsplash에서 사진 가져와' 류 요청에 트리거. omd:apply / omd:harness 안에서 자동 호출됨."
+metadata:
+  internal: true
 ---
 
 # omd:asset-fetch — Free-license Asset Catalog

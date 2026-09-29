@@ -3,6 +3,8 @@ name: omd:media
 description: "Brand-consistent asset sets from DESIGN.md — hero, section illustrations, icon sets, OG image — generated through whichever channel the user actually has (grok build image_gen, Codex $imagegen, Gemini, xAI/Recraft/OpenAI keys) as recorded by omd:setup, with a provenance and cost ledger. No channel → prompt pack + manual queue, never stock. Trigger: '이미지 세트 만들어', '에셋 생성', 'generate assets', 'hero image', '아이콘 세트', 'OG 이미지'."
 argument-hint: "<set: hero|sections|icons|og|all> [--brand <id>|--design DESIGN.md] [--budget 1.00] [--channel grok-build|codex-imagegen|…]"
 user-invocable: true
+metadata:
+  internal: true
 ---
 <!-- omd:installed-skill — managed by `omd install-skills`. Do not edit; rerun the command to refresh. -->
 

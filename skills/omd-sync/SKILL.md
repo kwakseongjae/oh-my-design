@@ -1,6 +1,8 @@
 ---
 name: omd:sync
 description: "DESIGN.md 변경분을 CLAUDE.md / AGENTS.md / .cursor/rules/omd-design.mdc shim 3종에 전파. 'shim 갱신', 'drift 확인', 'ship', 'publish', 「shimを更新」, 「同步 CLAUDE.md」류의 요청에 트리거. DESIGN.md가 수정됐는데 shim이 오래됐을 때 자동 감지해 제안하기도 함."
+metadata:
+  internal: true
 ---
 
 # omd:sync — Shim Maintenance

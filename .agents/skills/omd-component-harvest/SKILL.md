@@ -1,6 +1,8 @@
 ---
 name: omd-component-harvest
 description: "Legacy catalog component writer safety gate. Use when component harvesting is requested, but stop before editing until the Core v2 graph-backed catalog writer and readers are available."
+metadata:
+  internal: true
 ---
 
 # omd:component-harvest — catalog write safety gate

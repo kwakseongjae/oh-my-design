@@ -1,6 +1,8 @@
 ---
 name: omd
 description: "Compatibility router for older `omd` invocations. Route existing UI work to omd:apply, autonomous greenfield work to omd:autopilot, and DESIGN.md-only setup or migration to omd:init. Use it only when the legacy skill name is invoked; it reads Core v2 or legacy context without writing DESIGN.md itself."
+metadata:
+  internal: true
 ---
 
 # OmD compatibility router

@@ -2,6 +2,8 @@
 name: omd:release-hygiene
 description: "오픈소스 릴리스 위생 루틴. 새 기능/스킬/에이전트를 추가했을 때 (1) 부산물(v1/v2 .bak, _source, 로그, scratch dir)이 changeset에 없는지, (2) 문서(README/docs/home)가 동기화됐는지, (3) npm 배포 대상인지(skills/ + files vs .claude local-preview) 판단했는지 체크리스트로 강제. '릴리스 준비', '커밋 전 점검', 'push 전에 정리', '배포 위생', 'release hygiene' 류 트리거. husky pre-commit이 부산물 게이트를 자동 실행."
 user-invocable: true
+metadata:
+  internal: true
 ---
 
 # omd:release-hygiene

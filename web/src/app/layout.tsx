@@ -36,7 +36,7 @@ export const viewport = {
 export const metadata: Metadata = {
   title: "oh-my-design — DESIGN.md for AI coding agents",
   description:
-    "One DESIGN.md spec. 521 quality-graded brand references: 227 verified_v2, 181 partial, and 113 legacy snapshots. The bundle ships 28 skills and 20 specialist definitions; Cursor 2.4+ receives 27 native Agent Skills. MIT open source.",
+    "One DESIGN.md spec. 521 quality-graded brand references: 227 verified_v2, 181 partial, and 113 legacy snapshots. The bundle ships 29 skills and 20 specialist definitions; Cursor 2.4+ receives 28 native Agent Skills. MIT open source.",
   keywords: [
     "design system",
     "DESIGN.md",

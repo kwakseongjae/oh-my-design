@@ -3,6 +3,8 @@ name: omd:batch-launch
 description: "Reference batch writer compatibility gate during the DESIGN.md Core v2 catalog cutover."
 argument-hint: "[category|theme]"
 user-invocable: true
+metadata:
+  internal: true
 ---
 
 # omd:batch-launch — Core v2 catalog cutover gate

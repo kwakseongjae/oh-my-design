@@ -37,6 +37,7 @@
     "skills/omd-media",
     "skills/omd-setup",
     "skills/omd-showcase",
+    "skills/hangul",
     "agents",
     "data/opt-out-corpus.json",
     "data/synonyms.json",

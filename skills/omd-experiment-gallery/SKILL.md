@@ -1,6 +1,8 @@
 ---
 name: omd:experiment-gallery
 description: "N개 brand experiment를 한 화면에서 비교하는 gallery index.html을 생성. 각 카드는 brand name, wow rating, multi-turn refinement deltas, iframe scaled preview, standalone link 포함. '결과물 한 번에 보여줘', '갤러리 만들어', '5개 비교 뷰', 'experiment 결과 정리' 류 트리거. omd:harness가 N개 brand batch 작업 끝낸 직후 자동 호출되거나 사용자가 명시적으로 호출."
+metadata:
+  internal: true
 ---
 
 # omd:experiment-gallery — N-brand comparison index
