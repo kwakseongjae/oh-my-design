@@ -114,13 +114,16 @@ rg -n -e 'text-autospace|text-spacing-trim|line-break\s*:\s*anywhere|auto-phrase
 ```
 
 4. Read every hit in context, drop false positives, and report with the §7 table.
+5. Optional render step, when the page can be opened (a dev-server URL or an `.html` file): `node <this-skill-dir>/scripts/render-check.mjs <url-or-file> [widths]`. It renders the page in headless Chrome at 360, 390 and 1440px and lists every Korean word broken across lines (`생 / 활`, `있어 / 요.`), which the source checker cannot see. It needs `playwright-core` (or `playwright`) and a local Chrome or Chromium; without them it prints how to install one and exits 0. Exit 1 means at least one broken word. Body prose may break between syllables by design (HG-10), so read each hit in context; headings, buttons, labels and captions should have none.
 
 Severity:
-- **BLOCK**: breaks text or contradicts a SPEC/DS rule. `break-all`, a Latin-only stack, a missing or wrong `lang`, italic on confirmed Hangul, tracking below −0.03em.
-- **WARN**: outside the DS/DATA range, or the target can't be confirmed. Negative tracking or line-height under 1.3 on body text, a system-only stack, CSS italic whose target is unknown, `<em>` around Hangul with no reset.
-- **FYI**: hygiene and OP. keep-all without overflow-wrap, `1000원`, Tailwind `text-3xl`+ with no explicit leading, CSS properties that do nothing for Korean.
+- **BLOCK**: breaks text or contradicts a SPEC/DS rule. `break-all` on Korean text, a Latin-only stack, a missing or wrong `lang`, italic on confirmed Hangul, tracking below −0.03em on Hangul text.
+- **WARN**: outside the DS/DATA range, or the target can't be confirmed. Negative tracking or line-height under 1.3 on body text, a system-only stack, a CSS italic rule whose elements hold Hangul, `<em>`/`<i>` around Hangul with no reset.
+- **FYI**: hygiene and OP. keep-all without overflow-wrap, `1000원`, Tailwind `text-3xl`+ with no explicit leading, CSS properties that do nothing for Korean, italic whose text can't be confirmed as Hangul, `break-all` on a URL, email or long unbroken token (prefer `overflow-wrap: anywhere` with `keep-all`).
 
-The checker reads source, not rendered pages. It can't see which font actually renders, how lines really wrap, or styles applied at runtime. A clean run is not proof, and a hit is not always a defect.
+HG-1, HG-6, HG-7, HG-8 and HG-11 are judged on the text a rule actually reaches. The checker traces each selector, class or style attribute to the elements in the scanned markup and reads their text; attributes such as `aria-label` don't count. HG-1, HG-6 and HG-7 are skipped only when every element they reach holds non-Hangul text (a Latin wordmark, an English tagline in Georgia). HG-11 fires only on confirmed Hangul, and HG-8 drops to FYI only for a URL, email or long token. When the text can't be traced (dynamic values, components, form fields, markup outside the scan), HG-1, HG-6, HG-7 and HG-8 keep their severity and HG-11 drops to FYI. Font stacks set page-wide (a `--font-*` variable, a `next/font` import, the Tailwind config) are always checked.
+
+`check.mjs` reads source, not rendered pages. It can't see which font actually renders, how lines really wrap, or styles applied at runtime; `render-check.mjs` covers line wrapping only. A clean run is not proof, and a hit is not always a defect.
 
 ## 7. Output contract
 
@@ -150,4 +153,5 @@ Every run ends with this table, in the user's language. One row per change; Why 
 
 - [`references/rules.md`](./references/rules.md): every rule with source URLs, tier, the 2026-09-29 verification log, and the Unverified list.
 - [`references/measured-67.md`](./references/measured-67.md): how OmD measured 67 Korean services, the distributions, and the per-service table.
-- [`scripts/check.mjs`](./scripts/check.mjs): the deterministic checker. `node scripts/check.mjs --self-test` runs the fixtures in `scripts/fixtures/`.
+- [`scripts/check.mjs`](./scripts/check.mjs): the deterministic checker, zero dependencies. `node scripts/check.mjs --self-test` runs the fixtures in `scripts/fixtures/` (`bad`, `good`, `fp` for known false-positive classes, `tp` for the true positives next to them).
+- [`scripts/render-check.mjs`](./scripts/render-check.mjs): the optional rendered word-break check (needs `playwright-core` and Chrome/Chromium). `node scripts/render-check.mjs --self-test` renders `scripts/fixtures/render/`.

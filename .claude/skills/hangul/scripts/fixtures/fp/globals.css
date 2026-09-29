@@ -1,0 +1,9 @@
+/* Latin-only targets on a Korean page, as found by rendering the 2026-09 eval outputs. None is a Hangul defect. */
+.brand { font-size: 34px; font-weight: 800; letter-spacing: -2px; }
+.side-note > span { font-size: 12px; font-style: italic; }
+.logos .logo-fast { font-size: 25px; font-style: italic; letter-spacing: -1.4px; }
+.link-box span { word-break: break-all; }
+.promo-tag { font-style: italic; } /* no markup uses it: target unknown, FYI at most */
+.side-note > span { font-family: Georgia, "Times New Roman", serif; } /* the Latin tagline in a serif face */
+.price-en { font-size: 14px; letter-spacing: -0.02em; } /* a Latin price line beside Hangul */
+.logo-plain { font-family: "Inter", sans-serif; } /* Latin logo text in a Latin-only stack */
