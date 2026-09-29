@@ -1,0 +1,4 @@
+/* The same rules on Hangul text still fire. */
+.hero-title { font-size: 48px; line-height: 1.3; letter-spacing: -0.05em; }
+.quote { font-style: italic; }
+.desc { word-break: break-all; }

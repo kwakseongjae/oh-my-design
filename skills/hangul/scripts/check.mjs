@@ -12,6 +12,12 @@
  * Heuristic by design: it reads source text, not rendered pages. It cannot see which font
  * actually renders, how lines really wrap, or styles applied at runtime. Korean checks run
  * only when at least one scanned file contains Hangul (or with --assume-ko).
+ *
+ * HG-7, HG-8 and HG-11 judge the text a rule reaches: a tolerant markup index traces each selector
+ * or class attribute to the scanned elements and reads their text nodes (attributes excluded). HG-7
+ * is skipped when every reached element holds non-Hangul text, HG-11 fires only on confirmed Hangul,
+ * and HG-8 drops to FYI on a URL, email or long token. Untraceable text keeps HG-7/HG-8 as they were
+ * and gives HG-11 an FYI (references/rules.md, "Checker scope"). Rendered line breaks: render-check.mjs.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -213,6 +219,219 @@ function cssRegions(file) {
   return out;
 }
 
+// ---- markup index: which text does a rule or a class actually reach? ------------------
+// HG-7, HG-8 and HG-11 are about Hangul text, but their triggers usually sit elsewhere: a rule in
+// globals.css, or a class token whose text is on another line. This tolerant scanner records every
+// element in the markup files (tag, classes, id, parent) and its descendant text nodes. Attributes
+// never count as text (aria-label="모아 홈" on a "moa." logo is not Hangul text). No cascade, no runtime.
+const MARKUP_EXT = new Set(['.html', '.htm', '.jsx', '.tsx', '.js', '.vue', '.svelte', '.astro', '.mdx']);
+const VOID_TAG = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr']);
+const STR_LIT = /(["'`])((?:\\.|(?!\1)[^\\])*?)\1/g;
+const UNRESOLVED = { kinds: new Set(), unresolved: true };
+
+// A URL, an email address, or one long unbroken Latin/number token: text that has to break somewhere.
+function isUrlish(s) {
+  const t = String(s).trim();
+  if (!t || HANGUL.test(t) || /\s/.test(t)) return false;
+  return /^(https?:\/\/|www\.)\S+$/i.test(t) || /^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(t) || /^[\w-]+(\.[\w-]+)+\/\S*$/.test(t) || (t.length >= 20 && /[A-Za-z0-9]/.test(t));
+}
+
+function maskMarkup(text, ext) {
+  const blank = (s) => s.replace(/[^\n]/g, ' '); // offsets and line numbers stay put
+  let t = text.replace(/<!--[\s\S]*?-->/g, blank);
+  if (ext === '.html' || ext === '.htm' || ext === '.vue' || ext === '.svelte' || ext === '.astro') {
+    t = t.replace(/(<(script|style)\b[^>]*>)([\s\S]*?)(<\/\2\s*>)/gi, (w, open, _n, body, close) => open + blank(body) + close);
+  }
+  if (ext !== '.html' && ext !== '.htm') t = t.replace(/\/\*[\s\S]*?\*\//g, blank).replace(/(^|[\s;{}()])(\/\/[^\n]*)/g, (w, p, c) => p + blank(c));
+  return t;
+}
+
+function attrClasses(attrs) {
+  const out = new Set();
+  const re = /(?:^|\s)(?:class|className|class:list)\s*=\s*(?:"([^"]*)"|'([^']*)'|\{)/g;
+  let m;
+  while ((m = re.exec(attrs))) {
+    let src = m[1] ?? m[2];
+    if (src == null) { // className={cn("a", ok && "b")} / {styles.card}
+      let k = re.lastIndex;
+      let d = 1;
+      let q = null;
+      for (; k < attrs.length && d > 0; k++) {
+        const ch = attrs[k];
+        if (q) { if (ch === q) q = null; continue; }
+        if (ch === '"' || ch === "'" || ch === '`') q = ch;
+        else if (ch === '{') d++;
+        else if (ch === '}') d--;
+      }
+      const expr = attrs.slice(re.lastIndex, k - 1);
+      src = [...expr.matchAll(STR_LIT)].map((x) => x[2].replace(/\$\{[^}]*\}/g, ' ')).join(' ');
+      for (const x of expr.matchAll(/[A-Za-z_$][\w$]*\??\.([A-Za-z_][\w-]*)/g)) out.add(x[1]); // CSS Modules
+    }
+    for (const c of src.split(/\s+/)) if (c) out.add(c);
+  }
+  return out;
+}
+
+function scanMarkup(abs, ext, raw) {
+  const text = maskMarkup(raw, ext);
+  const els = [];
+  const segs = []; // text nodes in document order; expr = a {…} expression (JSX/Vue/Svelte)
+  const stack = [];
+  const pushSeg = (a, b, expr) => {
+    const s = text.slice(a, b);
+    if (!s.trim() || (expr && !s.replace(/[{}\s]/g, ''))) return; // blank, or an emptied {/* comment */}
+    segs.push({ pos: a, s, expr, hangul: HANGUL.test(s) });
+  };
+  const addText = (a, b) => {
+    let depth = 0;
+    let from = a;
+    let q = null;
+    for (let k = a; k < b; k++) {
+      const ch = text[k];
+      if (depth > 0 && q) { if (ch === q) q = null; continue; }
+      if (depth > 0 && (ch === '"' || ch === "'" || ch === '`')) { q = ch; continue; }
+      if (ch === '{') { if (depth === 0) { pushSeg(from, k, false); from = k; } depth++; }
+      else if (ch === '}') {
+        if (depth <= 1) { pushSeg(from, k + 1, true); from = k + 1; } // closes an expression (or a stray outer one)
+        depth = Math.max(0, depth - 1);
+      }
+    }
+    if (from < b) pushSeg(from, b, depth > 0);
+  };
+  let i = 0;
+  let textFrom = 0;
+  while (i < text.length) {
+    const lt = text.indexOf('<', i);
+    if (lt < 0) break;
+    const m = /^<(\/?)([A-Za-z][\w:.-]*)(?=[\s/>])/.exec(text.slice(lt, lt + 80));
+    if (!m) { i = lt + 1; continue; }
+    let j = lt + m[0].length;
+    let q = null;
+    let depth = 0;
+    for (; j < text.length; j++) {
+      const ch = text[j];
+      if (q) { if (ch === q) q = null; continue; }
+      if (ch === '"' || ch === "'" || (ch === '`' && depth > 0)) { q = ch; continue; }
+      if (ch === '{') depth++;
+      else if (ch === '}') depth = Math.max(0, depth - 1);
+      else if (ch === '>' && depth === 0) break;
+    }
+    if (j >= text.length) break;
+    addText(textFrom, lt);
+    textFrom = i = j + 1;
+    const name = m[2];
+    if (m[1]) {
+      const k = stack.map((e) => e.raw).lastIndexOf(name);
+      if (k >= 0) while (stack.length > k) stack.pop().end = lt;
+      continue;
+    }
+    const attrs = text.slice(lt + m[0].length, j);
+    const idm = /(?:^|\s)id\s*=\s*(?:"([^"]*)"|'([^']*)')/.exec(attrs);
+    // components, custom elements, slots and injected HTML render text this scan cannot see
+    const opaque = /^[A-Z]/.test(name) || /[.-]/.test(name) || name === 'slot' || /dangerouslySetInnerHTML|v-html|innerHTML|\{@html/.test(attrs);
+    const el = { abs, raw: name, tag: name.toLowerCase(), cls: attrClasses(attrs), id: idm ? idm[1] ?? idm[2] : null, start: lt, tagEnd: j + 1, end: j + 1, parent: stack[stack.length - 1] || null, opaque, kind: null };
+    if (opaque) for (const a of stack) a.opaque = true;
+    els.push(el);
+    if (!/\/\s*$/.test(attrs) && !VOID_TAG.has(el.tag)) { el.end = null; stack.push(el); }
+  }
+  addText(textFrom, text.length);
+  for (const e of stack) e.end = text.length;
+  return { abs, raw, els, segs };
+}
+
+// A bare identifier or member chain ({url}, {ACCOUNT.referralUrl}): look for its string literal in the
+// same file, then fall back to the name. Only Hangul or URL-ish count as a positive answer.
+function exprKind(src, raw) {
+  const body = src.replace(/^[\s{]+|[\s}]+$/g, '');
+  if (!/^[A-Za-z_$][\w$]*(?:\??\.[A-Za-z_$][\w$]*)*$/.test(body)) return 'unknown';
+  const name = body.split(/\??\./).pop();
+  const lit = new RegExp(`(?:^|[^\\w$.])${name.replace(/\$/g, '\\$')}\\s*[:=]\\s*(["'\`])((?:\\\\.|(?!\\1)[^\\\\\\n])*)\\1`).exec(raw);
+  if (lit) {
+    if (HANGUL.test(lit[2])) return 'hangul';
+    if (isUrlish(lit[2].replace(/\$\{[^}]*\}/g, 'x'))) return 'urlish';
+    return 'unknown';
+  }
+  return /(url|uri|href|link|e?mail)$/i.test(name) ? 'urlish' : 'unknown';
+}
+
+// 'hangul' | 'urlish' | 'latin' (static, no Hangul) | 'empty' | 'unknown' (dynamic or opaque content)
+function elementKind(rec, el) {
+  if (el.kind) return el.kind;
+  let lo = 0;
+  let hi = rec.segs.length;
+  while (lo < hi) { const mid = (lo + hi) >> 1; if (rec.segs[mid].pos < el.tagEnd) lo = mid + 1; else hi = mid; }
+  let stat = '';
+  const dyn = [];
+  let kind = null;
+  for (let k = lo; k < rec.segs.length && rec.segs[k].pos < el.end; k++) {
+    const s = rec.segs[k];
+    if (s.hangul) { kind = 'hangul'; break; }
+    if (s.expr) dyn.push(s.s);
+    else stat += s.s;
+  }
+  if (!kind) {
+    const st = stat.replace(/&(nbsp|#160|#xa0);/gi, ' ').trim();
+    const ks = dyn.map((src) => exprKind(src, rec.raw));
+    if (ks.includes('hangul')) kind = 'hangul';
+    else if (el.opaque) kind = 'unknown';
+    else if (!dyn.length) kind = !st ? 'empty' : isUrlish(st) ? 'urlish' : 'latin';
+    else kind = ks.every((x) => x === 'urlish') && (!st || isUrlish(st)) ? 'urlish' : 'unknown';
+  }
+  el.kind = kind;
+  return kind;
+}
+
+function compoundOf(s) {
+  const unesc = (x) => x.replace(/\\(.)/g, '$1');
+  const tag = /^([A-Za-z][\w-]*)/.exec(s);
+  const id = /#((?:\\.|[\w-])+)/.exec(s);
+  return { tag: tag ? tag[1].toLowerCase() : null, cls: [...s.matchAll(/\.((?:\\.|[\w-])+)/g)].map((x) => unesc(x[1])), id: id ? unesc(id[1]) : null };
+}
+const matchesCompound = (el, c) => (!c.tag || el.tag === c.tag) && c.cls.every((x) => el.cls.has(x)) && (!c.id || el.id === c.id);
+function ancestorsMatch(p, chain, k) {
+  if (k < 0) return true;
+  for (let a = p; a; a = a.parent) if (matchesCompound(a, chain[k]) && ancestorsMatch(a.parent, chain, k - 1)) return true;
+  return false;
+}
+
+// Selector list → the kinds of text its elements hold. `A B` and `A > B` both need an A ancestor in the
+// same file; pseudo-elements, attribute selectors and :is/:where/:has/:not stay unresolved.
+function resolveSelector(ctx, selector) {
+  if (ctx.selCache.has(selector)) return ctx.selCache.get(selector);
+  const kinds = new Set();
+  let unresolved = false;
+  for (const part of splitTop(selector)) {
+    const bare = part.replace(/\\./g, 'x');
+    if (!part || part.startsWith('@') || /::|:(before|after|first-line|first-letter)\b|\[|:(is|where|has|not|global|host|deep)\(/i.test(bare)) { unresolved = true; continue; }
+    const s = part.replace(/:[\w-]+(\([^()]*\))?/g, '').split(/\s*[+~]\s*/).pop(); // state pseudo-classes keep the same text
+    const chain = s.replace(/\s*>\s*/g, ' ').trim().split(/\s+/).filter(Boolean).map(compoundOf);
+    const subj = chain[chain.length - 1];
+    if (!subj || (!subj.tag && !subj.cls.length && !subj.id) || subj.tag === 'html' || subj.tag === 'body') { // :root, *, html, body: the whole page
+      if (ctx.hasHangul) kinds.add('hangul');
+      else unresolved = true;
+      continue;
+    }
+    const hit = ctx.els.filter((el) => matchesCompound(el, subj) && ancestorsMatch(el.parent, chain, chain.length - 2));
+    if (!hit.length) { unresolved = true; continue; }
+    for (const el of hit) kinds.add(elementKind(ctx.markup.get(el.abs), el));
+  }
+  const res = { kinds, unresolved };
+  ctx.selCache.set(selector, res);
+  return res;
+}
+
+// The element whose opening tag contains `off` (a class, style or style-object attribute).
+function targetAt(ctx, abs, off) {
+  const rec = ctx.markup.get(abs);
+  let best = null;
+  if (rec) for (const el of rec.els) { if (el.start > off) break; if (off < el.tagEnd) best = el; }
+  return best ? { kinds: new Set([elementKind(rec, best)]), unresolved: false } : UNRESOLVED;
+}
+const tHangul = (t) => t.kinds.has('hangul');
+const tNonHangul = (t) => !t.unresolved && t.kinds.size > 0 && [...t.kinds].every((k) => k === 'latin' || k === 'urlish' || k === 'empty');
+const tUrlish = (t) => !t.unresolved && t.kinds.has('urlish') && [...t.kinds].every((k) => k === 'urlish' || k === 'empty');
+const HG8_URL = 'break-all on a URL, email or long unbroken token, which has to break somewhere anyway. Prefer overflow-wrap: anywhere with word-break: keep-all: it splits the token only where it overflows and never splits Korean words';
+
 // ---- findings ------------------------------------------------------------------------
 class Findings {
   constructor() { this.map = new Map(); }
@@ -235,8 +454,10 @@ function checkStack(env, line, value) {
   if (f) env.F.add(env.file, line, f[0], 'HG-1', f[1]);
 }
 
-function checkBlock(env, selector, decls, lineOf) {
+function checkBlock(env, selector, decls, lineOf, inlineTarget = null) {
   if (/^@font-face/i.test(selector)) return;
+  let tgtMemo = inlineTarget;
+  const tgt = () => (tgtMemo ??= resolveSelector(env.ctx, selector)); // what text this rule reaches
   const last = (p) => decls.filter((d) => d.prop === p).pop() || null;
   const fontD = last('font');
   const short = fontD ? parseFontShorthand(fontD.value) : null;
@@ -262,7 +483,10 @@ function checkBlock(env, selector, decls, lineOf) {
       if (!lhD && short.lh) checkLh(short.lh, line);
     } else if (FONT_VAR.test(d.prop) && /[a-z]/i.test(v) && !/^[\d.]/.test(v)) checkStack(env, line, v);
     else if (d.prop === 'word-break') {
-      if (/break-all/.test(v)) env.F.add(env.file, line, 'BLOCK', 'HG-8', 'word-break: break-all splits Latin words and numbers; Hangul already breaks between syllables. Use keep-all + overflow-wrap: anywhere, or overflow-wrap: anywhere alone');
+      if (/break-all/.test(v)) {
+        if (tUrlish(tgt())) env.F.add(env.file, line, 'FYI', 'HG-8', `word-break: ${HG8_URL}`);
+        else env.F.add(env.file, line, 'BLOCK', 'HG-8', 'word-break: break-all splits Latin words and numbers; Hangul already breaks between syllables. Use keep-all + overflow-wrap: anywhere, or overflow-wrap: anywhere alone');
+      }
       else if (/keep-all/.test(v) && !hasWrap && !env.ctx.globalWrap) env.F.add(env.file, line, 'FYI', 'HG-9', 'keep-all without overflow-wrap: a long word or URL can overflow; add overflow-wrap: anywhere');
       else if (/break-word/.test(v)) env.F.add(env.file, line, 'FYI', 'HG-9', 'word-break: break-word is deprecated (= normal + overflow-wrap: anywhere) and drops keep-all; use overflow-wrap: anywhere');
       else if (/auto-phrase/.test(v)) env.F.add(env.file, line, 'FYI', 'HG-D', 'word-break: auto-phrase shipped for Japanese only (Chrome 2023-12); do not rely on it for Korean');
@@ -271,11 +495,16 @@ function checkBlock(env, selector, decls, lineOf) {
     else if (d.prop === 'letter-spacing') {
       const ls = lsEm(v, sizePx);
       if (!ls || ls.n >= 0) continue;
-      if (ls.em != null && ls.em < FLOOR_EM - EPS) env.F.add(env.file, line, 'BLOCK', 'HG-7', `letter-spacing ${v} (≈${ls.em.toFixed(3)}em) is below the -0.03em floor measured across Korean services`);
-      else if (role === 'body') env.F.add(env.file, line, 'WARN', 'HG-6', `negative letter-spacing ${v} on body-sized text; Hangul body tracking is 0`);
+      if (ls.em != null && ls.em < FLOOR_EM - EPS) {
+        // HG-7 is a Hangul rule: skip it only when every element the rule reaches holds non-Hangul text (a Latin wordmark)
+        if (!tNonHangul(tgt())) env.F.add(env.file, line, 'BLOCK', 'HG-7', `letter-spacing ${v} (≈${ls.em.toFixed(3)}em) is below the -0.03em floor measured across Korean services`);
+      } else if (role === 'body') env.F.add(env.file, line, 'WARN', 'HG-6', `negative letter-spacing ${v} on body-sized text; Hangul body tracking is 0`);
     } else if (d.prop === 'line-height') checkLh(v, line);
-    else if (d.prop === 'font-style' && /italic|oblique/.test(v) && !CODE_SEL.test(selector)) env.F.add(env.file, line, 'WARN', 'HG-11', 'font-style: italic; if this applies to Hangul, the browser slants it synthetically. Emphasize with weight or color');
-    else if (d.prop === '@apply') checkTailwind(env, v.split(/\s+/), line, true, role === 'heading' ? 'heading' : role === 'body' ? 'body' : null);
+    else if (d.prop === 'font-style' && /italic|oblique/.test(v) && !CODE_SEL.test(selector)) {
+      const t = tgt(); // flag only when the styled text is confirmed Hangul; a Latin face has a real italic
+      if (tHangul(t)) env.F.add(env.file, line, 'WARN', 'HG-11', `font-style: ${v} reaches Hangul text, which the browser slants synthetically. Emphasize with weight or color`);
+      else if (!tNonHangul(t)) env.F.add(env.file, line, 'FYI', 'HG-11', `font-style: ${v}; could not confirm the styled text is Hangul (no matching markup, or dynamic text). If it renders Hangul, emphasize with weight or color`);
+    } else if (d.prop === '@apply') checkTailwind(env, v.split(/\s+/), line, true, role === 'heading' ? 'heading' : role === 'body' ? 'body' : null, tgt);
   }
 }
 
@@ -291,7 +520,9 @@ function stripVariant(tok) {
   return tok.slice(cut + 1).replace(/^!|!$/g, '');
 }
 
-function checkTailwind(env, rawTokens, line, near, tagRole) {
+// near = Hangul within this line or the next two (used by most rules). getTarget() = the text the classes
+// reach (owning element, or the @apply rule's selector); HG-7/8/11 decide on it and fall back to near.
+function checkTailwind(env, rawTokens, line, near, tagRole, getTarget = null) {
   const items = rawTokens.filter(Boolean).map((raw) => {
     const clean = raw.replace(/^!|!$/g, '');
     const base = stripVariant(raw);
@@ -320,10 +551,20 @@ function checkTailwind(env, rawTokens, line, near, tagRole) {
   const size = baseSize ?? maxSize;
   const role = tagRole === 'heading' ? 'heading' : maxSize != null ? (maxSize >= 20 ? 'heading' : 'body') : tagRole || 'body';
   const add = (sev, rule, msg) => env.F.add(env.file, line, sev, rule, msg);
+  let tMemo = null;
+  const tgt = () => (tMemo ??= getTarget ? getTarget() : UNRESOLVED);
+  const hangulEl = () => (tHangul(tgt()) ? true : tNonHangul(tgt()) ? false : null); // null = unknown: fall back to near
 
-  if (toks.includes('break-all')) add('BLOCK', 'HG-8', 'Tailwind break-all splits Latin words and numbers; Hangul already breaks between syllables. Use break-keep + wrap-anywhere, or wrap-anywhere alone');
+  if (toks.includes('break-all')) {
+    if (tUrlish(tgt())) add('FYI', 'HG-8', `Tailwind ${HG8_URL.replace('overflow-wrap: anywhere with word-break: keep-all', 'wrap-anywhere with break-keep')}`);
+    else add('BLOCK', 'HG-8', 'Tailwind break-all splits Latin words and numbers; Hangul already breaks between syllables. Use break-keep + wrap-anywhere, or wrap-anywhere alone');
+  }
   if (near && toks.includes('break-keep') && !env.ctx.globalWrap && !toks.some((t) => /^(wrap-anywhere|wrap-break-word|break-words|\[(overflow-wrap|word-wrap):[^\]]+\])$/.test(t))) add('FYI', 'HG-9', 'break-keep without an overflow-wrap utility: a long word or URL can overflow; add wrap-anywhere');
-  if (near && toks.includes('italic')) add('BLOCK', 'HG-11', 'italic on Hangul renders as a synthetic slant; emphasize with weight or color');
+  if (toks.includes('italic')) {
+    const h = hangulEl();
+    if (h === true) add('BLOCK', 'HG-11', 'italic on Hangul renders as a synthetic slant; emphasize with weight or color');
+    else if (h === null && near) add('FYI', 'HG-11', "italic near Hangul, but the element's text is dynamic or unresolved; if it renders Hangul, emphasize with weight or color");
+  }
   for (const t of toks) {
     let m = /^font-\[(.+)\]$/.exec(t);
     if (near && m && !/^\d/.test(m[1]) && !/^(weight|number):/.test(m[1])) checkStack(env, line, m[1].replace(/_/g, ' ')); // element-scoped: only near Hangul
@@ -334,9 +575,11 @@ function checkTailwind(env, rawTokens, line, near, tagRole) {
       const ls = lsEm(m[1], size);
       if (ls) em = ls.em ?? (ls.n < 0 ? -EPS : 0);
     }
-    if (near && em != null && em < 0) {
-      if (em < FLOOR_EM - EPS) add('BLOCK', 'HG-7', `${label} (${em}em) is below the -0.03em floor measured across Korean services`);
-      else if (role === 'body') add('WARN', 'HG-6', `${label} on body-sized Hangul; body tracking is 0`);
+    if (em != null && em < FLOOR_EM - EPS) {
+      const h = hangulEl(); // a Latin wordmark ("moa.") is not a Hangul headline
+      if (h === true || (h === null && near)) add('BLOCK', 'HG-7', `${label} (${em}em) is below the -0.03em floor measured across Korean services`);
+    } else if (near && em != null && em < 0) {
+      if (role === 'body') add('WARN', 'HG-6', `${label} on body-sized Hangul; body tracking is 0`);
     } else if (near && em != null && em > 0 && role === 'body') add('FYI', 'HG-D', `${label} (wide tracking) on body-sized Hangul; no DS or measured service does this (0/67)`);
     let r = null;
     if ((m = /^leading-(none|tight|snug|normal|relaxed|loose)$/.exec(t))) r = TW_LEADING[m[1]];
@@ -352,9 +595,12 @@ function checkTailwind(env, rawTokens, line, near, tagRole) {
 
 function checkLines(env, lines) {
   const jsLike = !EMBED_STYLE_EXT.has(env.ext) || env.ext === '.vue' || env.ext === '.svelte' || env.ext === '.astro';
+  const starts = [0];
+  for (let k = 0; k < lines.length; k++) starts.push(starts[k] + lines[k].length + 1);
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
     const ln = i + 1;
+    const targetOf = (idx) => targetAt(env.ctx, env.abs, starts[i] + idx); // the element whose tag holds column idx
     const near = HANGUL.test(line) || HANGUL.test(lines[i + 1] || '') || HANGUL.test(lines[i + 2] || '');
     const add = (sev, rule, msg) => env.F.add(env.file, ln, sev, rule, msg);
 
@@ -385,25 +631,35 @@ function checkLines(env, lines) {
     };
     const classRe = /\bclass(?:Name)?\s*=\s*(?:\{\s*)?(?:"([^"]*)"|'([^']*)'|`([^`]*)`)/g;
     let m;
-    while ((m = classRe.exec(line))) checkTailwind(env, (m[1] ?? m[2] ?? m[3]).split(/\s+/), ln, near, roleAt(m.index));
+    while ((m = classRe.exec(line))) {
+      const at = m.index;
+      checkTailwind(env, (m[1] ?? m[2] ?? m[3]).split(/\s+/), ln, near, roleAt(at), () => targetOf(at));
+    }
     if (/\b(cn|clsx|classnames|twMerge|twJoin|cva)\s*\(/.test(line)) {
       const toks = [];
       for (const s of line.matchAll(/"([^"]*)"|'([^']*)'|`([^`]*)`/g)) toks.push(...(s[1] ?? s[2] ?? s[3]).split(/\s+/));
-      checkTailwind(env, toks, ln, near, roleAt(line.search(/\b(cn|clsx|classnames|twMerge|twJoin|cva)\s*\(/)));
+      const at = line.search(/\b(cn|clsx|classnames|twMerge|twJoin|cva)\s*\(/);
+      checkTailwind(env, toks, ln, near, roleAt(at), () => targetOf(at));
     }
-
-    for (const em of line.matchAll(/<(em|i)\b[^>]*>([^<]*)/gi)) {
-      if (HANGUL.test(em[2]) && !env.ctx.emReset) add('WARN', 'HG-11', `<${em[1]}> around Hangul renders a synthetic italic by default; add :lang(ko) ${em[1]} { font-style: normal }`);
-    }
+    // <em>/<i> around Hangul: checked per element in run() (a self-closing <i/> has no text of its own)
 
     for (const st of line.matchAll(/<([a-zA-Z][\w-]*)\b[^>]*?\sstyle\s*=\s*(?:"([^"]*)"|'([^']*)')/g)) {
-      checkBlock(env, st[1].toLowerCase(), parseDecls(st[2] ?? st[3], 0), () => ln);
+      checkBlock(env, st[1].toLowerCase(), parseDecls(st[2] ?? st[3], 0), () => ln, targetOf(st.index));
     }
 
     if (jsLike) {
       if (near && (m = /\bfontFamily\s*:\s*(?:"([^"]*)"|'([^']*)'|`([^`]*)`)/.exec(line))) checkStack(env, ln, m[1] ?? m[2] ?? m[3]); // inline style: element-scoped
-      if (/\bwordBreak\s*:\s*['"`]break-all['"`]/.test(line)) add('BLOCK', 'HG-8', "wordBreak: 'break-all' splits Latin words and numbers; use overflowWrap: 'anywhere'");
-      if (near && /\bfontStyle\s*:\s*['"`](italic|oblique)['"`]/.test(line)) add('BLOCK', 'HG-11', 'fontStyle italic on Hangul renders a synthetic slant; emphasize with weight or color');
+      const wb = /\bwordBreak\s*:\s*['"`]break-all['"`]/.exec(line);
+      if (wb) {
+        if (tUrlish(targetOf(wb.index))) add('FYI', 'HG-8', `wordBreak: ${HG8_URL.replace('overflow-wrap: anywhere with word-break: keep-all', "overflowWrap: 'anywhere' with wordBreak: 'keep-all'")}`);
+        else add('BLOCK', 'HG-8', "wordBreak: 'break-all' splits Latin words and numbers; use overflowWrap: 'anywhere'");
+      }
+      const fsI = /\bfontStyle\s*:\s*['"`](italic|oblique)['"`]/.exec(line);
+      if (fsI) {
+        const t = targetOf(fsI.index);
+        if (tHangul(t)) add('BLOCK', 'HG-11', 'fontStyle italic on Hangul renders a synthetic slant; emphasize with weight or color');
+        else if (near && !tNonHangul(t)) add('FYI', 'HG-11', "fontStyle italic near Hangul, but the element's text is dynamic or unresolved; if it renders Hangul, emphasize with weight or color");
+      }
       const fsM = /\bfontSize\s*:\s*(?:['"`](\d*\.?\d+)(px|rem)['"`]|(\d*\.?\d+)\b)/.exec(line);
       const jsSize = fsM ? (fsM[3] != null ? parseFloat(fsM[3]) : toPx(fsM[1] + fsM[2])) : null;
       const jsRole = (idx) => (jsSize != null ? (jsSize < 20 ? 'body' : 'heading') : roleAt(idx) || 'body');
@@ -490,9 +746,14 @@ function makeLineAt(text) {
 }
 
 function buildContext(files) {
-  const ctx = { hasHangul: false, koreanFaceSeen: false, props: new Map(), globalWrap: false, emReset: false, sawHtml: false };
+  const ctx = { hasHangul: false, koreanFaceSeen: false, props: new Map(), globalWrap: false, emReset: false, sawHtml: false, markup: new Map(), els: [], selCache: new Map() };
   for (const f of files) {
     if (HANGUL.test(f.text)) ctx.hasHangul = true;
+    if (MARKUP_EXT.has(f.ext)) {
+      const rec = scanMarkup(f.abs, f.ext, f.text);
+      ctx.markup.set(f.abs, rec);
+      for (const el of rec.els) ctx.els.push(el);
+    }
     if (KOREAN_LOAD_HINT.test(f.text) || /\bSUIT\b/.test(f.text)) ctx.koreanFaceSeen = true;
     if (/<html\b/i.test(f.text)) ctx.sawHtml = true;
     if (/<(body|html)\b[^>]*\bclass(?:Name)?\s*=[^>]*\b(wrap-anywhere|wrap-break-word|break-words)\b/i.test(f.text)) ctx.globalWrap = true;
@@ -526,12 +787,18 @@ function run(inputs, { base = process.cwd(), assumeKo = false } = {}) {
       // Korean lives in components) and CSS/JSX files follow the project-wide gate.
       if (!assumeKo && (f.ext === '.html' || f.ext === '.htm') && !HANGUL.test(f.text) && visibleWords(f.text) >= 40) continue;
       const rel = path.relative(base, f.abs);
-      const env = { file: (rel.startsWith('..') ? f.abs : rel).split(path.sep).join('/'), ext: f.ext, ctx, F };
+      const env = { file: (rel.startsWith('..') ? f.abs : rel).split(path.sep).join('/'), abs: f.abs, ext: f.ext, ctx, F };
       const lineAt = makeLineAt(f.text);
       for (const { css, base: off } of cssRegions(f)) forEachBlock(css, (sel, body, bodyOff) => checkBlock(env, sel, parseDecls(body, off + bodyOff), lineAt));
       if (!STYLE_EXT.has(f.ext)) {
         checkLines(env, f.text.split('\n'));
         if (!EMBED_STYLE_EXT.has(f.ext)) checkFontFamilyConfig(env, f.text, lineAt);
+        const rec = ctx.markup.get(f.abs);
+        if (rec && !ctx.emReset) {
+          for (const el of rec.els) {
+            if ((el.raw === 'em' || el.raw === 'i') && !el.cls.has('not-italic') && elementKind(rec, el) === 'hangul') F.add(env.file, lineAt(el.start), 'WARN', 'HG-11', `<${el.raw}> around Hangul renders a synthetic italic by default; add :lang(ko) ${el.raw} { font-style: normal }`);
+          }
+        }
       }
     }
     if (!ctx.sawHtml) notes.push('No <html> element in the scanned files; make sure the root layout sets lang="ko".');
@@ -563,22 +830,34 @@ const EXPECTED_BAD = [
   'tailwind.config.js:5 BLOCK HG-1',
 ];
 
+// fixtures/fp: the false-positive classes found by rendering the 2026-09 eval outputs (a Latin wordmark with
+// tight tracking, an italic Latin tagline and logo, an empty <i/>, URL/email boxes with break-all). Only FYIs.
+const EXPECTED_FP = ['globals.css:5 FYI HG-8', 'globals.css:6 FYI HG-11', 'page.tsx:12 FYI HG-8'];
+// fixtures/tp: the same rules on Hangul text still fire, including a class whose text sits 4 lines below it.
+const EXPECTED_TP = ['globals.css:2 BLOCK HG-7', 'globals.css:3 WARN HG-11', 'globals.css:4 BLOCK HG-8', 'page.tsx:8 BLOCK HG-7', 'page.tsx:14 BLOCK HG-11', 'page.tsx:15 BLOCK HG-8', 'page.tsx:16 WARN HG-11'];
+
 function selfTest() {
   const dir = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures');
   const key = (f) => `${f.file}:${f.line} ${f.severity} ${f.rule}`;
-  const bad = run([path.join(dir, 'bad')], { base: path.join(dir, 'bad') });
-  const again = run([path.join(dir, 'bad')], { base: path.join(dir, 'bad') });
-  const good = run([path.join(dir, 'good')], { base: path.join(dir, 'good') });
-  const got = new Set(bad.findings.map(key));
-  const want = new Set(EXPECTED_BAD);
-  const missing = [...want].filter((k) => !got.has(k));
-  const extra = [...got].filter((k) => !want.has(k));
-  const deterministic = JSON.stringify(bad) === JSON.stringify(again);
-  const ok = !missing.length && !extra.length && good.findings.length === 0 && deterministic && bad.summary.BLOCK > 0;
-  console.log(`self-test: bad ${bad.findings.length} finding(s) (${bad.summary.BLOCK} BLOCK · ${bad.summary.WARN} WARN · ${bad.summary.FYI} FYI), expected ${want.size}; good ${good.findings.length}; deterministic ${deterministic}`);
-  for (const k of missing) console.log(`  missing: ${k}`);
-  for (const k of extra) console.log(`  unexpected: ${k}`);
-  for (const f of good.findings) console.log(`  good fixture flagged: ${key(f)} ${f.message}`);
+  const scan = (name) => run([path.join(dir, name)], { base: path.join(dir, name) });
+  const again = JSON.stringify(scan('bad'));
+  let ok = true;
+  const parts = [];
+  for (const [name, expected] of [['bad', EXPECTED_BAD], ['good', []], ['fp', EXPECTED_FP], ['tp', EXPECTED_TP]]) {
+    const res = scan(name);
+    const got = new Set(res.findings.map(key));
+    const want = new Set(expected);
+    const missing = [...want].filter((k) => !got.has(k));
+    const extra = [...got].filter((k) => !want.has(k));
+    if (missing.length || extra.length) ok = false;
+    if (name === 'bad' && (JSON.stringify(res) !== again || res.summary.BLOCK === 0)) ok = false;
+    parts.push(`${name} ${res.findings.length} (${res.summary.BLOCK} BLOCK · ${res.summary.WARN} WARN · ${res.summary.FYI} FYI), expected ${want.size}`);
+    for (const k of missing) console.log(`  ${name} missing: ${k}`);
+    for (const k of extra) console.log(`  ${name} unexpected: ${k} ${res.findings.find((f) => key(f) === k).message}`);
+  }
+  const deterministic = JSON.stringify(scan('bad')) === again;
+  console.log(`self-test: ${parts.join('; ')}; deterministic ${deterministic}`);
+  ok = ok && deterministic;
   console.log(ok ? 'self-test: PASS' : 'self-test: FAIL');
   return ok ? 0 : 1;
 }
