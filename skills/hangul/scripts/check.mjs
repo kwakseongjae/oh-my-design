@@ -13,11 +13,13 @@
  * actually renders, how lines really wrap, or styles applied at runtime. Korean checks run
  * only when at least one scanned file contains Hangul (or with --assume-ko).
  *
- * HG-7, HG-8 and HG-11 judge the text a rule reaches: a tolerant markup index traces each selector
- * or class attribute to the scanned elements and reads their text nodes (attributes excluded). HG-7
- * is skipped when every reached element holds non-Hangul text, HG-11 fires only on confirmed Hangul,
- * and HG-8 drops to FYI on a URL, email or long token. Untraceable text keeps HG-7/HG-8 as they were
- * and gives HG-11 an FYI (references/rules.md, "Checker scope"). Rendered line breaks: render-check.mjs.
+ * HG-1, HG-6, HG-7, HG-8 and HG-11 judge the text a rule reaches: a tolerant markup index traces each
+ * selector, class or style attribute to the scanned elements and reads their text nodes (attributes
+ * excluded). HG-1, HG-6 and HG-7 are skipped when every reached element holds non-Hangul text, HG-11
+ * fires only on confirmed Hangul, and HG-8 drops to FYI on a URL, email or long token. Untraceable text
+ * (dynamic values, components, form fields) keeps HG-1/6/7/8 as they were and gives HG-11 an FYI.
+ * Page-wide stacks (--font-* variables, next/font imports, Tailwind config) are not traced
+ * (references/rules.md, "Checker scope"). Rendered line breaks: render-check.mjs.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -220,7 +222,7 @@ function cssRegions(file) {
 }
 
 // ---- markup index: which text does a rule or a class actually reach? ------------------
-// HG-7, HG-8 and HG-11 are about Hangul text, but their triggers usually sit elsewhere: a rule in
+// HG-1, HG-6, HG-7, HG-8 and HG-11 are about Hangul text, but their triggers usually sit elsewhere: a rule in
 // globals.css, or a class token whose text is on another line. This tolerant scanner records every
 // element in the markup files (tag, classes, id, parent) and its descendant text nodes. Attributes
 // never count as text (aria-label="모아 홈" on a "moa." logo is not Hangul text). No cascade, no runtime.
@@ -329,8 +331,13 @@ function scanMarkup(abs, ext, raw) {
     const idm = /(?:^|\s)id\s*=\s*(?:"([^"]*)"|'([^']*)')/.exec(attrs);
     // components, custom elements, slots and injected HTML render text this scan cannot see
     const opaque = /^[A-Z]/.test(name) || /[.-]/.test(name) || name === 'slot' || /dangerouslySetInnerHTML|v-html|innerHTML|\{@html/.test(attrs);
-    const el = { abs, raw: name, tag: name.toLowerCase(), cls: attrClasses(attrs), id: idm ? idm[1] ?? idm[2] : null, start: lt, tagEnd: j + 1, end: j + 1, parent: stack[stack.length - 1] || null, opaque, kind: null };
+    const tag = name.toLowerCase();
+    // a form field holds text typed at runtime: unknown, not empty, unless its placeholder or value shows Hangul
+    const field = tag === 'input' || tag === 'textarea' || /(?:^|\s)contenteditable\b/i.test(attrs);
+    const fieldHangul = field && [...attrs.matchAll(/(?:^|\s)(?:placeholder|value|defaultValue)\s*=\s*(?:"([^"]*)"|'([^']*)')/g)].some((x) => HANGUL.test(x[1] ?? x[2]));
+    const el = { abs, raw: name, tag, cls: attrClasses(attrs), id: idm ? idm[1] ?? idm[2] : null, start: lt, tagEnd: j + 1, end: j + 1, parent: stack[stack.length - 1] || null, opaque, field, fieldHangul, kind: null };
     if (opaque) for (const a of stack) a.opaque = true;
+    if (field) for (const a of stack) { a.field = true; a.fieldHangul ||= fieldHangul; } // an ancestor's stack or tracking reaches it too
     els.push(el);
     if (!/\/\s*$/.test(attrs) && !VOID_TAG.has(el.tag)) { el.end = null; stack.push(el); }
   }
@@ -377,6 +384,7 @@ function elementKind(rec, el) {
     else if (!dyn.length) kind = !st ? 'empty' : isUrlish(st) ? 'urlish' : 'latin';
     else kind = ks.every((x) => x === 'urlish') && (!st || isUrlish(st)) ? 'urlish' : 'unknown';
   }
+  if (el.field && kind !== 'hangul') kind = el.fieldHangul ? 'hangul' : 'unknown';
   el.kind = kind;
   return kind;
 }
@@ -449,9 +457,11 @@ class Findings {
 // ---- checks --------------------------------------------------------------------------
 const FONT_VAR = /^--font-(?!weight|size|feature|variation|stretch|style|synthesis|kerning|smoothing|optical)[\w-]+$/;
 
-function checkStack(env, line, value) {
+// tgt (optional) = the text the stack reaches. HG-1 is about Hangul glyphs, so a stack whose every reached
+// element holds non-Hangul text is skipped (Georgia on an English tagline). Untraced or unresolved keeps it.
+function checkStack(env, line, value, tgt = null) {
   const f = stackFinding(classifyStack(value, env.ctx.props));
-  if (f) env.F.add(env.file, line, f[0], 'HG-1', f[1]);
+  if (f && !(tgt && tNonHangul(tgt()))) env.F.add(env.file, line, f[0], 'HG-1', f[1]);
 }
 
 function checkBlock(env, selector, decls, lineOf, inlineTarget = null) {
@@ -477,11 +487,11 @@ function checkBlock(env, selector, decls, lineOf, inlineTarget = null) {
     const v = d.value;
     const alias = /^var\(\s*(--font-[\w-]+)\s*\)$/.exec(v);
     if (d.prop === 'font-family' && alias && FONT_VAR.test(alias[1]) && env.ctx.props.has(alias[1])) continue; // reported where the variable is defined
-    if (d.prop === 'font-family') checkStack(env, line, v);
+    if (d.prop === 'font-family') checkStack(env, line, v, tgt);
     else if (d.prop === 'font' && short) {
-      checkStack(env, line, short.families);
+      checkStack(env, line, short.families, tgt);
       if (!lhD && short.lh) checkLh(short.lh, line);
-    } else if (FONT_VAR.test(d.prop) && /[a-z]/i.test(v) && !/^[\d.]/.test(v)) checkStack(env, line, v);
+    } else if (FONT_VAR.test(d.prop) && /[a-z]/i.test(v) && !/^[\d.]/.test(v)) checkStack(env, line, v); // a variable is consumed page-wide: not traced
     else if (d.prop === 'word-break') {
       if (/break-all/.test(v)) {
         if (tUrlish(tgt())) env.F.add(env.file, line, 'FYI', 'HG-8', `word-break: ${HG8_URL}`);
@@ -498,7 +508,7 @@ function checkBlock(env, selector, decls, lineOf, inlineTarget = null) {
       if (ls.em != null && ls.em < FLOOR_EM - EPS) {
         // HG-7 is a Hangul rule: skip it only when every element the rule reaches holds non-Hangul text (a Latin wordmark)
         if (!tNonHangul(tgt())) env.F.add(env.file, line, 'BLOCK', 'HG-7', `letter-spacing ${v} (≈${ls.em.toFixed(3)}em) is below the -0.03em floor measured across Korean services`);
-      } else if (role === 'body') env.F.add(env.file, line, 'WARN', 'HG-6', `negative letter-spacing ${v} on body-sized text; Hangul body tracking is 0`);
+      } else if (role === 'body' && !tNonHangul(tgt())) env.F.add(env.file, line, 'WARN', 'HG-6', `negative letter-spacing ${v} on body-sized text; Hangul body tracking is 0`);
     } else if (d.prop === 'line-height') checkLh(v, line);
     else if (d.prop === 'font-style' && /italic|oblique/.test(v) && !CODE_SEL.test(selector)) {
       const t = tgt(); // flag only when the styled text is confirmed Hangul; a Latin face has a real italic
@@ -521,7 +531,7 @@ function stripVariant(tok) {
 }
 
 // near = Hangul within this line or the next two (used by most rules). getTarget() = the text the classes
-// reach (owning element, or the @apply rule's selector); HG-7/8/11 decide on it and fall back to near.
+// reach (owning element, or the @apply rule's selector); HG-1/6/7/8/11 decide on it and fall back to near.
 function checkTailwind(env, rawTokens, line, near, tagRole, getTarget = null) {
   const items = rawTokens.filter(Boolean).map((raw) => {
     const clean = raw.replace(/^!|!$/g, '');
@@ -567,7 +577,10 @@ function checkTailwind(env, rawTokens, line, near, tagRole, getTarget = null) {
   }
   for (const t of toks) {
     let m = /^font-\[(.+)\]$/.exec(t);
-    if (near && m && !/^\d/.test(m[1]) && !/^(weight|number):/.test(m[1])) checkStack(env, line, m[1].replace(/_/g, ' ')); // element-scoped: only near Hangul
+    if (m && !/^\d/.test(m[1]) && !/^(weight|number):/.test(m[1])) {
+      const h = hangulEl(); // element-scoped: the element's text decides; unresolved falls back to near
+      if (h === true || (h === null && near)) checkStack(env, line, m[1].replace(/_/g, ' '));
+    }
     let em = null;
     let label = t;
     if ((m = /^tracking-(tighter|tight|normal|wide|wider|widest)$/.exec(t))) em = TW_TRACKING[m[1]];
@@ -578,8 +591,9 @@ function checkTailwind(env, rawTokens, line, near, tagRole, getTarget = null) {
     if (em != null && em < FLOOR_EM - EPS) {
       const h = hangulEl(); // a Latin wordmark ("moa.") is not a Hangul headline
       if (h === true || (h === null && near)) add('BLOCK', 'HG-7', `${label} (${em}em) is below the -0.03em floor measured across Korean services`);
-    } else if (near && em != null && em < 0) {
-      if (role === 'body') add('WARN', 'HG-6', `${label} on body-sized Hangul; body tracking is 0`);
+    } else if (em != null && em < 0) {
+      const h = role === 'body' ? hangulEl() : false; // Latin text beside Hangul is not Hangul body text
+      if (h === true || (h === null && near)) add('WARN', 'HG-6', `${label} on body-sized Hangul; body tracking is 0`);
     } else if (near && em != null && em > 0 && role === 'body') add('FYI', 'HG-D', `${label} (wide tracking) on body-sized Hangul; no DS or measured service does this (0/67)`);
     let r = null;
     if ((m = /^leading-(none|tight|snug|normal|relaxed|loose)$/.exec(t))) r = TW_LEADING[m[1]];
@@ -648,7 +662,10 @@ function checkLines(env, lines) {
     }
 
     if (jsLike) {
-      if (near && (m = /\bfontFamily\s*:\s*(?:"([^"]*)"|'([^']*)'|`([^`]*)`)/.exec(line))) checkStack(env, ln, m[1] ?? m[2] ?? m[3]); // inline style: element-scoped
+      if ((m = /\bfontFamily\s*:\s*(?:"([^"]*)"|'([^']*)'|`([^`]*)`)/.exec(line))) { // inline style: element-scoped
+        const t = targetOf(m.index);
+        if (tHangul(t) || (near && !tNonHangul(t))) checkStack(env, ln, m[1] ?? m[2] ?? m[3]);
+      }
       const wb = /\bwordBreak\s*:\s*['"`]break-all['"`]/.exec(line);
       if (wb) {
         if (tUrlish(targetOf(wb.index))) add('FYI', 'HG-8', `wordBreak: ${HG8_URL.replace('overflow-wrap: anywhere with word-break: keep-all', "overflowWrap: 'anywhere' with wordBreak: 'keep-all'")}`);
@@ -664,7 +681,8 @@ function checkLines(env, lines) {
       const jsSize = fsM ? (fsM[3] != null ? parseFloat(fsM[3]) : toPx(fsM[1] + fsM[2])) : null;
       const jsRole = (idx) => (jsSize != null ? (jsSize < 20 ? 'body' : 'heading') : roleAt(idx) || 'body');
       const lsM = /\bletterSpacing\s*:\s*(?:['"`]\s*(-?\d*\.?\d+)(em|px|rem)?\s*['"`]|(-?\d*\.?\d+)\b)/.exec(line);
-      if (near && lsM) {
+      const lsT = lsM ? targetOf(lsM.index) : null; // HG-6/HG-7 on a style object: the element's text decides
+      if (lsM && (tHangul(lsT) || (near && !tNonHangul(lsT)))) {
         const ls = lsM[3] != null ? lsEm(`${lsM[3]}px`, jsSize) : lsEm(lsM[1] + (lsM[2] || 'px'), jsSize);
         if (ls && ls.n < 0) {
           if (ls.em != null && ls.em < FLOOR_EM - EPS) add('BLOCK', 'HG-7', `letterSpacing ≈${ls.em.toFixed(3)}em is below the -0.03em floor`);
@@ -831,10 +849,16 @@ const EXPECTED_BAD = [
 ];
 
 // fixtures/fp: the false-positive classes found by rendering the 2026-09 eval outputs (a Latin wordmark with
-// tight tracking, an italic Latin tagline and logo, an empty <i/>, URL/email boxes with break-all). Only FYIs.
+// tight tracking, an italic Latin tagline and logo, an empty <i/>, URL/email boxes with break-all), and Latin
+// text in a serif, system or Latin-only stack or with negative body tracking beside Hangul (HG-1, HG-6). Only FYIs.
 const EXPECTED_FP = ['globals.css:5 FYI HG-8', 'globals.css:6 FYI HG-11', 'page.tsx:12 FYI HG-8'];
-// fixtures/tp: the same rules on Hangul text still fire, including a class whose text sits 4 lines below it.
-const EXPECTED_TP = ['globals.css:2 BLOCK HG-7', 'globals.css:3 WARN HG-11', 'globals.css:4 BLOCK HG-8', 'page.tsx:8 BLOCK HG-7', 'page.tsx:14 BLOCK HG-11', 'page.tsx:15 BLOCK HG-8', 'page.tsx:16 WARN HG-11'];
+// fixtures/tp: the same rules on Hangul text still fire, including classes whose text sits 3-4 lines below them.
+// A class no markup uses and a form field (text typed at runtime) are unresolved and keep their severity.
+const EXPECTED_TP = [
+  'globals.css:2 BLOCK HG-7', 'globals.css:3 WARN HG-11', 'globals.css:4 BLOCK HG-8', 'page.tsx:8 BLOCK HG-7', 'page.tsx:14 BLOCK HG-11', 'page.tsx:15 BLOCK HG-8', 'page.tsx:16 WARN HG-11',
+  'globals.css:5 WARN HG-1', 'globals.css:6 BLOCK HG-1', 'globals.css:7 WARN HG-6', 'globals.css:8 WARN HG-1', 'globals.css:9 WARN HG-1', 'globals.css:9 WARN HG-6',
+  'page.tsx:21 WARN HG-6', 'page.tsx:26 WARN HG-1', 'page.tsx:27 WARN HG-6',
+];
 
 function selfTest() {
   const dir = path.join(path.dirname(fileURLToPath(import.meta.url)), 'fixtures');

@@ -44,17 +44,19 @@ When a project's DESIGN.md sets a value, it overrides every tier here.
 | D-4 | Full-width `。` `、` in horizontal Korean copy | klreq §6.1.3: horizontal writing uses U+002E and U+002C, and curly quotes U+2018/2019/201C/201D | SPEC | [klreq](https://www.w3.org/TR/klreq/) |
 | D-5 | Latin eyebrow styling (uppercase + wide tracking) on Hangul labels | No DS defines positive tracking below KRDS's 32px headings; DATA: 0/67 bodies and 1/65 headings (+0.006em) use positive tracking | DS + DATA | [KRDS](https://www.krds.go.kr/html/site/style/style_03.html) · [measured-67](./measured-67.md) |
 
-## Checker scope for HG-7, HG-8 and HG-11 (2026-09-30)
+## Checker scope for HG-1, HG-6, HG-7, HG-8 and HG-11 (2026-09-30)
 
-These three rules are about Hangul text, so `scripts/check.mjs` judges them on the text a rule reaches, not on whether Hangul appears somewhere near the declaration. A tolerant markup index records each element in the scanned HTML/JSX/TSX/Vue/Svelte/Astro files, with its tag, classes, id, parent and descendant text nodes. Attributes never count as text. A CSS selector is traced through that index: `A B` and `A > B` both need an `A` ancestor in the same file. Pseudo-elements, attribute selectors and `:is/:where/:has/:not` stay unresolved. A class, `style` or style-object attribute is traced to the element whose tag holds it.
+These five rules are about Hangul text, so `scripts/check.mjs` judges them on the text a rule reaches, not on whether Hangul appears somewhere near the declaration. A tolerant markup index records each element in the scanned HTML/JSX/TSX/Vue/Svelte/Astro files, with its tag, classes, id, parent and descendant text nodes. Attributes never count as text. A CSS selector is traced through that index: `A B` and `A > B` both need an `A` ancestor in the same file. Pseudo-elements, attribute selectors and `:is/:where/:has/:not` stay unresolved. A class, `style` or style-object attribute is traced to the element whose tag holds it. A form field (`input`, `textarea`, `contenteditable`) is unresolved unless its placeholder or value shows Hangul, because its text is typed at runtime. The same goes for an element that contains a form field. HG-1 does not trace stacks set page-wide (a `--font-*` variable, a `next/font` import, the Tailwind config's `fontFamily`), so they keep their severity.
 
-| Rule | Confirmed Hangul | Confirmed non-Hangul | URL, email or long token | Unresolved (dynamic text, components, markup outside the scan) |
+| Rule | Confirmed Hangul | Confirmed non-Hangul | URL, email or long token | Unresolved (dynamic text, components, form fields, markup outside the scan) |
 |---|---|---|---|---|
-| HG-7 | BLOCK | skipped (a Latin wordmark is not a Hangul headline) | skipped | BLOCK (class tokens: only with Hangul within two lines) |
+| HG-1 | BLOCK (Latin-only stack) or WARN (system-only stack, or an unknown face) | skipped (a Latin face on Latin text is not a Hangul defect) | skipped | as for confirmed Hangul (class tokens and style objects: only with Hangul within two lines) |
+| HG-6 | WARN | skipped (Latin text beside Hangul is not Hangul body text) | skipped | WARN (class tokens and style objects: only with Hangul within two lines) |
+| HG-7 | BLOCK | skipped (a Latin wordmark is not a Hangul headline) | skipped | BLOCK (class tokens and style objects: only with Hangul within two lines) |
 | HG-8 | BLOCK | BLOCK | FYI: prefer `overflow-wrap: anywhere` + `keep-all` | BLOCK |
 | HG-11 | CSS rule: WARN; Tailwind `italic` / `fontStyle`: BLOCK; `<em>`/`<i>`: WARN | silent (a Latin face has a real italic) | silent | FYI (class tokens and style objects: only with Hangul within two lines; `<em>`/`<i>`: silent) |
 
-The asymmetry is deliberate. HG-7 and HG-8 give way only on positive evidence that the text isn't Korean prose, so a gap in the resolver can't hide a real defect. HG-11 fires only on positive evidence of Hangul, because a Latin italic is not a defect. Why the change was made: rendering the 2026-09 eval outputs showed five findings that weren't Korean typography defects (see `eval-2026-09.md`).
+The asymmetry is deliberate. HG-1, HG-6, HG-7 and HG-8 give way only on positive evidence that the text isn't Korean prose, so a gap in the resolver can't hide a real defect. HG-11 fires only on positive evidence of Hangul, because a Latin italic is not a defect. Why the change was made: rendering the 2026-09 eval outputs showed five findings that weren't Korean typography defects, so HG-7, HG-8 and HG-11 changed first. HG-1 and HG-6 had the same blind spot (Georgia on an English tagline, tracking on Latin text beside Hangul) and followed the same day (see `eval-2026-09.md`).
 
 ## Verification log (2026-09-29)
 

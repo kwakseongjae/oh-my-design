@@ -2,3 +2,8 @@
 .hero-title { font-size: 48px; line-height: 1.3; letter-spacing: -0.05em; }
 .quote { font-style: italic; }
 .desc { word-break: break-all; }
+.notice { font-family: Georgia, serif; } /* a serif stack with no Korean face, on Hangul text */
+.lede { font-family: "Inter", sans-serif; }
+.body-copy { font-size: 15px; letter-spacing: -0.02em; }
+.ghost-note { font-family: Georgia, serif; } /* no markup uses it: unresolved, so it keeps its WARN */
+input { font-family: Arial, sans-serif; letter-spacing: -0.01em; } /* typed text is unknown, not empty */
