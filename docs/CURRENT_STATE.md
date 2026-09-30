@@ -459,6 +459,13 @@
   - 버튼 규칙과 경로 정규화 중복 제거, 도착 URL 중복 건너뛰기, 중첩 컨트롤 채움 중복 방지를 넣었다. 결과: greeting 28→73, protopie 54→74, goorm 100(+27 변형은 경로 수정 덕), kakaopage 68→72.
   - **남은 문제:** Framer 앵커의 Chromium 기본 링크색(#0000ee·누름 #ff0000)이 변형과 pressed 상태에 섞인다 → 기본색 무시와 자식 라벨색 기록을 수정 중이다. 끝나면 병합하고 protopie·greeting을 재시도한다.
 - **오늘 KR partial 누계: 49곳 승격(227→276), 보류 5곳(ssg·cafe24 봇 차단, greeting·protopie Framer, drdiary coverage).**
+- **완료 — 수집기 개선 병합 (20:05, `0112ea64`·`2a417078`·`a2059d71`).**
+  - 채움 기록(자식·조상), 버튼 규칙(오너 결정), 경로 정규화·도착 URL 중복 건너뛰기, 기본 링크색 제외(`labelColor` 기록)를 넣었다.
+  - 재캡처 결과: protopie 54→78, greeting 28→73(상태를 빼도 66·61), lemonbase 87→91, goorm 100, kakaopage 68→72.
+  - 확인: tsc 통과, 웹 테스트 1077건(+12), 파이프라인·고정 페이지 검사 통과. 고정 페이지 출력 `fixture.json`은 매니페스트에 갱신했다.
+- **진행 중 (20:08~):**
+  - 웨이브 P6: greeting·protopie 재시도, drdiary 재시도·kcd, petfriends·buzzvil, soomgo·medibloc, teamsparta·tellingme, shiftee·quotabook. 실행 로그에서 쌍을 확인했다.
+  - 타사 오염 감사(읽기 전용): 홈페이지 외 도메인을 제품·실측 표면으로 쓴 54곳의 소유 주체를 확인한다(`contamination-candidates.md` → `contamination-audit.md`).
 
 - **다음.**
   1. ~~저작 E1~~ (완료).
