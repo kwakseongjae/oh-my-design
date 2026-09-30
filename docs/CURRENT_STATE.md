@@ -444,6 +444,11 @@
   - 수집기 폼 단계 점검: 실제 사이트에서는 제출하지 않는다(`reportValidity()`만 호출한다).
   - 모션 고정값 234→224.
 - **오늘 KR partial 누계: 38곳 승격(227→265), 보류 4곳(ssg 403, greeting·protopie Framer, drdiary coverage).** 남은 후보 약 58곳.
+- **수집기 개선 1차 (워크트리 `ea9fc002`, 미병합).**
+  - 자식·조상 요소의 채움을 기록한다(kakaopage 노랑 `ancestor:2`). 상태 읽기를 2초에서 끊는다(greeting 191초→63초, 프레임 36→68). goorm은 동일하다.
+  - **Framer 보류의 진짜 원인은 분류기다.** 해시 클래스 `<a>`를 unknown으로 분류해서 컴포넌트로 세지 않는다. 채움은 자식이 아니라 `<a>` 자신에 있다.
+  - 발견한 버그: 경로 중복 제거가 `https://x.com`과 `https://x.com/`을 다르게 본다.
+  - **결정 (19:20, 오너): 채움이 있는 버튼 크기 `<a>`는 버튼으로 센다**(GROWTH_DECISIONS). 워크트리에서 구현과 재캡처를 진행하고, P5가 끝나면 병합한다.
 - **진행 중 (18:40~).**
   - 웨이브 P5: vuno·pozalabs / sandoll·returnzero / ringle·cjonstyle / 8percent·laundrygo / maum-ai·saramin / genie·cafe24. 인자 전용 스크립트를 쓰고, 실행 로그에서 P5 쌍을 확인했다.
   - 수집기 개선(격리 워크트리): Framer·Webflow처럼 투명한 버튼의 채움이 자식이나 조상 요소에 있을 때 그 채움과 상태를 기록한다. 게이트 가중치는 그대로다. 회귀 대상: goorm·lemonbase·protopie·greeting·kakaopage. P5 캡처가 끝난 뒤 검토해서 합친다.
