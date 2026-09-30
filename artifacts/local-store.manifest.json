@@ -7,8 +7,8 @@
       "dir": "artifacts/reference-evidence",
       "why": "140개 verified 레퍼런스의 캡쳐 근거. 만료 대응 R트랙 55건의 유일한 입력.",
       "critical": true,
-      "fileCount": 228,
-      "bytes": 193536863,
+      "fileCount": 237,
+      "bytes": 199852601,
       "files": {
         "104.json": {
           "sha256": "006a9edc3a9ee4c87f1189cc315b1b22c0ab769c4a014b50d435a04670c715ae",
@@ -89,6 +89,10 @@
         "brandi.json": {
           "sha256": "d9e2fc9da4955ff6910671560460bb7d2a7ef3a591ca9cd786912ddcc6dfdc7e",
           "bytes": 480717
+        },
+        "buzzvil.json": {
+          "sha256": "58869382017d61adfc049c4aeb178bbd3b8af2ae950d538413bb49348c2e8878",
+          "bytes": 591544
         },
         "catchtable.json": {
           "sha256": "b08dec18ecc882b5dda8e395f1b7669dc741f5d2b886e12a15d41ed90dc97fd7",
@@ -179,8 +183,8 @@
           "bytes": 766741
         },
         "drdiary.json": {
-          "sha256": "c127378646fb5a593e65b752ec364555f88732e502230b5d411a7a02bbb716b1",
-          "bytes": 333275
+          "sha256": "ac09c5ce03332dd3c541f6cce1906757a06c563f9cb388c0c12e7ca5928f9e7e",
+          "bytes": 421894
         },
         "elastic.json": {
           "sha256": "02ee6db1a0e2e73d2ddf7ab6d057bd1e579a7fc423ab5cf978d8bd11b9950b95",
@@ -261,6 +265,10 @@
         "goorm.json": {
           "sha256": "baf97585744761fbbe64c0a9ef3a315623114e50693bfbbc88d64bb347ee0ad5",
           "bytes": 1778070
+        },
+        "greeting.json": {
+          "sha256": "add142a032825281d4d7335ddc1f5fca0d6947caa32c45a41fab37ea5028ba8b",
+          "bytes": 1079514
         },
         "hana.json": {
           "sha256": "54c33552a056824b9f07a0a38a1f779033901970d80f73dd40a4774526d206f1",
@@ -365,6 +373,10 @@
         "kbpay.json": {
           "sha256": "add785a9cc12462490a7da260b9134095923025ceeaf48ccaef4d81d73304608",
           "bytes": 699117
+        },
+        "kcd.json": {
+          "sha256": "36bb571d4ea38d2140daa922b0fef87059d2b001465374ce24ecbdbaa7e1f0ba",
+          "bytes": 576600
         },
         "kia.json": {
           "sha256": "c97c7240902176a9deb5a962b1d4cd64e4ab589ca550c276a270071ef02754ab",
@@ -590,6 +602,10 @@
           "sha256": "c3d85b21c3e93b5900876ad59669d898f3d97845157e29588a7a9b9b811d41a7",
           "bytes": 466757
         },
+        "petfriends.json": {
+          "sha256": "d087de52c0ced4692688b9ca2924c8da43f6a2b05807612495c648e59b01bfc0",
+          "bytes": 503785
+        },
         "pinkfong.json": {
           "sha256": "1779c796f3b57e6fdf81b41a9657dc67039cebcf6e1d6c6abd8b8981a1bbd26f",
           "bytes": 371173
@@ -611,8 +627,8 @@
           "bytes": 323347
         },
         "protopie.json": {
-          "sha256": "ccb6f659d9b5161717ba14cc2c367652d4c93381007f762e301ee71c58bbb114",
-          "bytes": 1088848
+          "sha256": "3e51b898cc31de867f0846ffce503ae9a6d52f9f8c83a4479a5d33e5bb6ea7fb",
+          "bytes": 1115841
         },
         "publy.json": {
           "sha256": "2e38e099a5de82931b7dff5308e6b87402bdf8f708854ae31e425e14ebbede9c",
@@ -621,6 +637,10 @@
         "qanda.json": {
           "sha256": "b8dee9d3fb23f73d0bbbff0611cdc111f08a4eb07e57dfea3dc35c2ff434507e",
           "bytes": 246496
+        },
+        "quotabook.json": {
+          "sha256": "74158bf54ce0c83f1a2a874413a5a6272d90f68916a4c999f03dc14ad8fe45d6",
+          "bytes": 625486
         },
         "recruit.json": {
           "sha256": "7dc408aebf801e0db0d8208501d191a917bc959d862a07fc681d964af09f5261",
@@ -686,6 +706,10 @@
           "sha256": "001e42130c15dde4f14bcdde418cb927a66ff3410f3aa00216492f366e7b9e6c",
           "bytes": 913349
         },
+        "shiftee.json": {
+          "sha256": "5a5e4c6f64809a3984d5a864c561049b372151f57435059e43ca118d7546aa0c",
+          "bytes": 1099505
+        },
         "shiftup.json": {
           "sha256": "8954581e331edcb8aa162ee2c7ed3095ac712341a47f95959966d049313ef25e",
           "bytes": 584216
@@ -721,6 +745,10 @@
         "sony.json": {
           "sha256": "c490e6d04f044da993be7c98961a95883aeefc71bcced7762fcfbff6d4dd7c6c",
           "bytes": 1050240
+        },
+        "soomgo.json": {
+          "sha256": "7e9d1d75eb2177213fe2b29abacf51caca48ea960914ffed2f63f2e719b4011a",
+          "bytes": 1130360
         },
         "soop.json": {
           "sha256": "d27c848fd9d09b9bfa2d472aa7f3cbeafbd6ae8220bc3c6795fee0447985f132",
@@ -773,6 +801,14 @@
         "teamlab.json": {
           "sha256": "23602b8a06150417f20e9e1cdf1328d974d972465d3bebc3c2bd03bd8fbb760f",
           "bytes": 921481
+        },
+        "teamsparta.json": {
+          "sha256": "6e06b045585f5d44da6a0d49a46de82912cbb0eb33a2afc83cd2ec5ed7f4cf8e",
+          "bytes": 541746
+        },
+        "tellingme.json": {
+          "sha256": "5145397b776e7c7c1a58a40c3fcfa8a0dfac6ce40c9a9f6e04cc64da8b789044",
+          "bytes": 51586
         },
         "tesla.json": {
           "sha256": "1bcb767965251a91469bd968ca3093a8fc1c6cdcbc85d02bbea30645d6614f77",

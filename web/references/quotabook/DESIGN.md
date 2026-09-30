@@ -4,55 +4,242 @@ name: Quotabook
 display_name_kr: 쿼타북
 country: KR
 category: fintech
-homepage: "https://quotabook.com/"
+homepage: "https://quotabook.com"
 primary_color: "#00e8c5"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=quotabook.com&sz=128"
-verified: "2026-07-02"
+verified: "2026-09-30"
 added: "2026-07-02"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://quotabook.com/", inspected: "2026-09-30" }
+    - { id: surface-2, kind: marketing, url: "https://quotabook.com/pricing", inspected: "2026-09-30" }
+    - { id: surface-3, kind: marketing, url: "https://quotabook.com/platform/stock-award", inspected: "2026-09-30" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://quotabook.com/", captured: "2026-09-30" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://quotabook.com/pricing", captured: "2026-09-30" }
+    - { id: surface-surface-3, kind: product-surface, url: "https://quotabook.com/platform/stock-award", captured: "2026-09-30" }
+    - { id: quotabook-probe-home, kind: product-surface, url: "https://quotabook.com/", captured: "2026-09-30" }
+    - { id: quotalab, kind: official-doc, url: "https://www.quotalab.com/", captured: "2026-09-30" }
+    - { id: quotabook-blog, kind: official-doc, url: "https://blog.naver.com/quotabook", captured: "2026-09-30" }
+    - { id: pretendard-license, kind: license, url: "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE", captured: "2026-09-30" }
+    - { id: geist-license, kind: license, url: "https://raw.githubusercontent.com/vercel/geist-font/main/OFL.txt", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &pay { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-09-30" }
+    "tokens.colors.on-primary": &payst { surface_id: home, source_id: quotabook-probe-home, method: live-state-probe, selector: "a 바로 결제 in the hero (90.3 x 46, rest bg rgb(0, 232, 197), radius 50px); label p.framer-text fg rgb(23, 27, 33), 16px/700; hover no change across self, 3 descendants and 3 ancestor levels; pressed only Chromium's default link colour rgb(0, 0, 238) -> rgb(255, 0, 0) on the anchor and its wrapper divs; focus (Tab #8) outline none -> rgb(0, 95, 204) auto 1px; transition all 0s", captured: "2026-09-30" }
+    "tokens.colors.canvas": &body { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
+    "tokens.colors.white": &login { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-09-30" }
+    "tokens.colors.heading-soft": &h2 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
+    "tokens.colors.band-mint": &payclosest { surface_id: home, source_id: quotabook-probe-home, method: live-state-probe, selector: "a 바로 결제 on the closing band (90.3 x 44, rest bg rgb(0, 0, 0), radius 50px); label fg rgb(255, 255, 255), 16px/700; rest.ups up2 section.framer-1mzs6bo (검증된 1위와 함께 가장 안전한 성장을) bg rgb(4, 232, 198); hover no change; pressed only the default link colour; focus (Tab #15) the browser ring", captured: "2026-09-30" }
+    "tokens.colors.mint-text": &quotest { surface_id: home, source_id: quotabook-probe-home, method: live-state-probe, selector: "a 견적 문의 in the hero (90.3 x 46, rest transparent, behind rgb(0, 0, 0), radius 50px, padding 15px 16px); label fg rgb(150, 250, 235), 16px/700; hover no change; pressed only the default link colour; focus (Tab #9) the browser ring", captured: "2026-09-30" }
+    "tokens.colors.nav-grey": &nav { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.muted": &desc { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.muted-light": &lightp { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.footer-grey": &foot { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.surface-dark": &social { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"30\"]", captured: "2026-09-30" }
+    "tokens.colors.text-dark": &stockh4 { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h4", captured: "2026-09-30" }
+    "tokens.typography.family.display": &h1 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h1", captured: "2026-09-30" }
+    "tokens.typography.mega.size": *h1
+    "tokens.typography.mega.weight": *h1
+    "tokens.typography.mega.lineHeight": *h1
+    "tokens.typography.mega.tracking": *h1
+    "tokens.typography.mega.use": *h1
+    "tokens.typography.product-hero.size": &h1stock { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h1", captured: "2026-09-30" }
+    "tokens.typography.product-hero.weight": *h1stock
+    "tokens.typography.product-hero.lineHeight": *h1stock
+    "tokens.typography.product-hero.tracking": *h1stock
+    "tokens.typography.product-hero.use": *h1stock
+    "tokens.typography.pricing-hero.size": &h1price { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h1", captured: "2026-09-30" }
+    "tokens.typography.pricing-hero.weight": *h1price
+    "tokens.typography.pricing-hero.lineHeight": *h1price
+    "tokens.typography.pricing-hero.tracking": *h1price
+    "tokens.typography.pricing-hero.use": *h1price
+    "tokens.typography.display.size": *h2
+    "tokens.typography.display.weight": *h2
+    "tokens.typography.display.lineHeight": *h2
+    "tokens.typography.display.tracking": *h2
+    "tokens.typography.display.use": *h2
+    "tokens.typography.display-md.size": &h2md { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
+    "tokens.typography.display-md.weight": *h2md
+    "tokens.typography.display-md.lineHeight": *h2md
+    "tokens.typography.display-md.tracking": *h2md
+    "tokens.typography.display-md.use": *h2md
+    "tokens.typography.section.size": &h2price { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h2", captured: "2026-09-30" }
+    "tokens.typography.section.weight": *h2price
+    "tokens.typography.section.lineHeight": *h2price
+    "tokens.typography.section.tracking": *h2price
+    "tokens.typography.section.use": *h2price
+    "tokens.typography.closing.size": &closingp { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.closing.weight": *closingp
+    "tokens.typography.closing.lineHeight": *closingp
+    "tokens.typography.closing.tracking": *closingp
+    "tokens.typography.closing.use": *closingp
+    "tokens.typography.feature.size": &h4 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h4", captured: "2026-09-30" }
+    "tokens.typography.feature.weight": *h4
+    "tokens.typography.feature.lineHeight": *h4
+    "tokens.typography.feature.tracking": *h4
+    "tokens.typography.feature.use": *h4
+    "tokens.typography.card-title.size": *stockh4
+    "tokens.typography.card-title.weight": *stockh4
+    "tokens.typography.card-title.lineHeight": *stockh4
+    "tokens.typography.card-title.tracking": *stockh4
+    "tokens.typography.card-title.use": *stockh4
+    "tokens.typography.lead.size": *desc
+    "tokens.typography.lead.weight": *desc
+    "tokens.typography.lead.lineHeight": *desc
+    "tokens.typography.lead.tracking": *desc
+    "tokens.typography.lead.use": *desc
+    "tokens.typography.button.size": &paylabel { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.button.weight": *paylabel
+    "tokens.typography.button.lineHeight": *paylabel
+    "tokens.typography.button.tracking": *paylabel
+    "tokens.typography.button.use": *paylabel
+    "tokens.typography.nav.size": *nav
+    "tokens.typography.nav.weight": *nav
+    "tokens.typography.nav.lineHeight": *nav
+    "tokens.typography.nav.tracking": *nav
+    "tokens.typography.nav.use": *nav
+    "tokens.typography.chip.size": &chiplabel { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.chip.weight": *chiplabel
+    "tokens.typography.chip.lineHeight": *chiplabel
+    "tokens.typography.chip.tracking": *chiplabel
+    "tokens.typography.chip.use": *chiplabel
+    "tokens.typography.login.size": &loginlabel { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.login.weight": *loginlabel
+    "tokens.typography.login.lineHeight": *loginlabel
+    "tokens.typography.login.tracking": *loginlabel
+    "tokens.typography.login.use": *loginlabel
+    "tokens.typography.legal.size": *foot
+    "tokens.typography.legal.weight": *foot
+    "tokens.typography.legal.lineHeight": *foot
+    "tokens.typography.legal.use": *foot
+    "tokens.spacing.cta-y": *pay
+    "tokens.spacing.cta-x": *pay
+    "tokens.spacing.chip-y": &chip { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"8\"]", captured: "2026-09-30" }
+    "tokens.spacing.chip-x": *chip
+    "tokens.spacing.social-y": *social
+    "tokens.spacing.social-x": *social
+    "tokens.rounded.pill": *pay
+    "tokens.rounded.chip": *chip
+    "tokens.rounded.social": *social
+    "tokens.components.pay-button.type": *pay
+    "tokens.components.pay-button.bg": *pay
+    "tokens.components.pay-button.fg": *payst
+    "tokens.components.pay-button.radius": *pay
+    "tokens.components.pay-button.padding": *pay
+    "tokens.components.pay-button.height": *pay
+    "tokens.components.pay-button.font": *payst
+    "tokens.components.pay-button.states": *payst
+    "tokens.components.pay-button.use": *pay
+    "tokens.components.plan-button.type": &paysm { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"5\"]", captured: "2026-09-30" }
+    "tokens.components.plan-button.bg": *paysm
+    "tokens.components.plan-button.radius": *paysm
+    "tokens.components.plan-button.padding": *paysm
+    "tokens.components.plan-button.height": *paysm
+    "tokens.components.plan-button.states": *paysm
+    "tokens.components.plan-button.use": *paysm
+    "tokens.components.quote-ghost-button.type": *quotest
+    "tokens.components.quote-ghost-button.bg": *quotest
+    "tokens.components.quote-ghost-button.fg": *quotest
+    "tokens.components.quote-ghost-button.radius": *quotest
+    "tokens.components.quote-ghost-button.padding": *quotest
+    "tokens.components.quote-ghost-button.height": *quotest
+    "tokens.components.quote-ghost-button.font": *quotest
+    "tokens.components.quote-ghost-button.states": *quotest
+    "tokens.components.quote-ghost-button.use": *quotest
+    "tokens.components.login-pill.type": *login
+    "tokens.components.login-pill.bg": *login
+    "tokens.components.login-pill.fg": &loginst { surface_id: home, source_id: quotabook-probe-home, method: live-state-probe, selector: "a 로그인 in the header (67.9 x 42, rest bg rgb(255, 255, 255), radius 50px, padding 14px 16px); label p.framer-text fg rgb(23, 27, 33), 14px/700; hover no change across self, 2 descendants and 3 ancestor levels; pressed only the default link colour; focus (Tab #6) the browser ring", captured: "2026-09-30" }
+    "tokens.components.login-pill.radius": *login
+    "tokens.components.login-pill.padding": *login
+    "tokens.components.login-pill.height": *login
+    "tokens.components.login-pill.font": *loginst
+    "tokens.components.login-pill.states": *loginst
+    "tokens.components.login-pill.use": *login
+    "tokens.components.category-chip.type": *chip
+    "tokens.components.category-chip.bg": *chip
+    "tokens.components.category-chip.fg": &chipst { surface_id: home, source_id: quotabook-probe-home, method: live-state-probe, selector: "a 디지털 플랫폼 chip (110.2 x 39, rest bg rgb(255, 255, 255), radius 30px, padding 12px 15px); label p.framer-text fg rgb(23, 27, 33), 15px/700; hover no change across self, 2 descendants and 3 ancestor levels; pressed only the default link colour; focus (Tab #10) the browser ring", captured: "2026-09-30" }
+    "tokens.components.category-chip.radius": *chip
+    "tokens.components.category-chip.padding": *chip
+    "tokens.components.category-chip.height": *chip
+    "tokens.components.category-chip.font": *chipst
+    "tokens.components.category-chip.states": *chipst
+    "tokens.components.category-chip.use": *chip
+    "tokens.components.closing-pay-button.type": &payclose { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-09-30" }
+    "tokens.components.closing-pay-button.bg": *payclose
+    "tokens.components.closing-pay-button.fg": *payclosest
+    "tokens.components.closing-pay-button.radius": *payclose
+    "tokens.components.closing-pay-button.padding": *payclose
+    "tokens.components.closing-pay-button.height": *payclose
+    "tokens.components.closing-pay-button.font": *payclosest
+    "tokens.components.closing-pay-button.states": *payclosest
+    "tokens.components.closing-pay-button.use": *payclose
+    "tokens.components.closing-quote-button.type": &quoteclose { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-09-30" }
+    "tokens.components.closing-quote-button.bg": *quoteclose
+    "tokens.components.closing-quote-button.fg": &quoteclosest { surface_id: home, source_id: quotabook-probe-home, method: live-state-probe, selector: "a 견적 문의 on the closing band (90.2 x 46, rest bg rgba(255, 255, 255, 0.95), radius 50px); label fg rgb(0, 0, 0), 16px/800; hover no change; pressed only the default link colour; focus (Tab #16) the browser ring", captured: "2026-09-30" }
+    "tokens.components.closing-quote-button.radius": *quoteclose
+    "tokens.components.closing-quote-button.padding": *quoteclose
+    "tokens.components.closing-quote-button.height": *quoteclose
+    "tokens.components.closing-quote-button.font": *quoteclosest
+    "tokens.components.closing-quote-button.states": *quoteclosest
+    "tokens.components.closing-quote-button.use": *quoteclose
+    "tokens.components.social-button.type": *social
+    "tokens.components.social-button.bg": *social
+    "tokens.components.social-button.radius": *social
+    "tokens.components.social-button.padding": *social
+    "tokens.components.social-button.height": *social
+    "tokens.components.social-button.states": *social
+    "tokens.components.social-button.use": *social
 tokens:
-  source: live-extract
-  extracted: "2026-07-02"
-  note: "primary = live interactive mint on CTA (#00e8c5 rgb 0,232,197); brighter #21fce3 used for decorative section fills. Canvas is pure black (#000000); display type is oversized Pretendard Black/ExtraBold; shadowless system."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
     primary: "#00e8c5"
-    primary-bright: "#21fce3"
-    primary-muted: "#7be3d3"
+    on-primary: "#171b21"
     canvas: "#000000"
-    surface: "#050505"
-    surface-raised: "#121212"
-    surface-chip: "#1c1c1c"
-    ink-dark: "#171b21"
-    foreground: "#ffffff"
+    white: "#ffffff"
     heading-soft: "#e6e6e6"
-    muted: "#bfbfbf"
-    muted-alt: "#8e8e94"
-    faint: "#979797"
-    slate: "#7e8387"
+    band-mint: "#04e8c6"
+    mint-text: "#96faeb"
+    nav-grey: "#979797"
+    muted: "#8e8e94"
+    muted-light: "#bfbfbf"
+    footer-grey: "#828282"
+    surface-dark: "#121212"
+    text-dark: "#333333"
   typography:
-    family: { display: "Pretendard", mono: "Fragment Mono", latin: "Geist" }
-    display-mega:    { size: 180, weight: 800, use: "Oversized single-word hero, Pretendard ExtraBold" }
-    display-hero:    { size: 130, weight: 900, use: "Page hero headline, Pretendard Black" }
-    display-section: { size: 100, weight: 900, use: "Full-bleed section labels, Pretendard Black" }
-    display-md:      { size: 90, weight: 900, use: "Feature section heads, Pretendard Black" }
-    subhead:         { size: 26, weight: 900, use: "Card / feature subheads, Pretendard Black" }
-    button:          { size: 12, weight: 400, use: "Pill button and nav labels" }
-    body:            { size: 12, weight: 400, use: "Base UI / body text" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 48, section: 140 }
-  rounded: { xs: 3, sm: 8, chip: 30, pill: 50, full: 1000 }
-  shadow:
-    none: "none"
+    family: { display: "Pretendard" }
+    mega: { size: 180, weight: 800, lineHeight: 1.05, tracking: -8.4, use: "Home hero word 금융, Pretendard ExtraBold, white, 189px line; the hero lines above it share the size at -9px tracking" }
+    product-hero: { size: 140, weight: 900, lineHeight: 1, tracking: -3, use: "Hero headline of /platform/stock-award, Pretendard Black, white, 140px line" }
+    pricing-hero: { size: 130, weight: 900, lineHeight: 1.1, tracking: -3, use: "Pricing headline, Pretendard Black, white, 143px line" }
+    display: { size: 100, weight: 900, lineHeight: 1.05, tracking: -3.5, use: "Section heading 쿼타북 BizSuite on home, Pretendard Black, #e6e6e6, 105px line" }
+    display-md: { size: 90, weight: 900, lineHeight: 1.05, tracking: -3.5, use: "Section heading 기업 맞춤형 End-to-End 서비스 on home, Pretendard Black, #e6e6e6, 94.5px line" }
+    section: { size: 80, weight: 900, lineHeight: 1.15, tracking: -3.2, use: "Section headings on /pricing, Pretendard Black, #e6e6e6, 92px line" }
+    closing: { size: 79, weight: 900, lineHeight: 1.15, tracking: -3.2, use: "Closing-band headline on home, Pretendard Black, #000000 on the mint band, 90.85px line" }
+    feature: { size: 59, weight: 900, lineHeight: 1.15, tracking: -2, use: "Large feature labels on home, Pretendard Black, #e6e6e6, 67.85px line" }
+    card-title: { size: 25, weight: 800, lineHeight: 1.35, tracking: -0.8, use: "Card headings on /platform/stock-award, Pretendard ExtraBold, #333333, 33.75px line" }
+    lead: { size: 18, weight: 500, lineHeight: 1.4, tracking: -0.5, use: "Descriptions on home, Pretendard Medium, #8e8e94, 25.2px line" }
+    button: { size: 16, weight: 700, lineHeight: 1, tracking: -0.15, use: "Action labels 바로 결제 and 견적 문의, Pretendard Bold, 16px line" }
+    nav: { size: 15, weight: 700, lineHeight: 1, tracking: -0.1, use: "Header navigation labels, Pretendard Bold, #979797" }
+    chip: { size: 15, weight: 700, lineHeight: 1, tracking: -0.15, use: "Category chip labels, Pretendard Bold, #171b21" }
+    login: { size: 14, weight: 700, lineHeight: 1, tracking: -0.15, use: "Header 로그인 label, Pretendard Bold, #171b21" }
+    legal: { size: 14, weight: 500, lineHeight: 0.93, use: "Footer company disclosure, Pretendard Medium, #828282, 13px line" }
+  spacing: { cta-y: 15, cta-x: 16, chip-y: 12, chip-x: 15, social-y: 10, social-x: 12 }
+  rounded: { pill: 50, chip: 30, social: 3 }
   components:
-    button-pay:     { type: button, bg: "#00e8c5", fg: "#171b21", radius: "50px", padding: "15px 16px", height: "46px", font: "12px / 400 Pretendard", use: "Primary mint CTA — 바로 결제" }
-    button-login:   { type: button, bg: "#ffffff", fg: "#171b21", radius: "50px", padding: "14px 16px", height: "42px", font: "12px / 400 Pretendard", use: "Login pill, white on black" }
-    button-outline: { type: button, fg: "#ffffff", radius: "50px", padding: "15px 16px", height: "46px", font: "12px / 400 Pretendard", use: "Secondary transparent pill — 견적 문의" }
-    chip-category:  { type: badge, bg: "#ffffff", fg: "#171b21", radius: "30px", padding: "12px 15px", height: "39px", font: "12px / 400 Pretendard", use: "White category chip — 디지털 플랫폼" }
-    social-button:  { type: button, bg: "#121212", fg: "#ffffff", radius: "3px", padding: "10px 12px", height: "34px", font: "12px / 400 Pretendard", use: "Footer social buttons — 링크드인 / 네이버 블로그" }
-    nav-link:       { type: tab, fg: "#ffffff", font: "12px / 400 Pretendard", active: "text #00e8c5", use: "Top nav item, mint on active" }
-    card-dark:      { type: card, bg: "#121212", radius: "8px", use: "Dark surface card on black canvas, shadowless" }
-    badge-mint:     { type: badge, bg: "#21fce3", fg: "#171b21", radius: "1000px", font: "12px / 400 Pretendard", use: "Bright mint highlight tag" }
+    pay-button: { type: button, bg: "#00e8c5", fg: "#171b21", radius: "50px", padding: "15px 16px", height: "46px", font: "16px / 700 / 16px Pretendard Bold (label), letter-spacing -0.15px", states: "probe on home: hover shows no change across the button, its 3 descendants and 3 ancestor levels; pressed changes only Chromium's default link colour on the anchor and its wrappers, not the visible label; focus draws only the browser's default ring; transition all 0s; no brand state is declared", use: "바로 결제 in the home hero at home::[data-omd-capture=\"6\"], 90.3 x 46, linking to the app checkout; the same mint pill opens /platform/stock-award" }
+    plan-button: { type: button, bg: "#00e8c5", radius: "50px", padding: "12px 14px", height: "39px", states: "rest only: the bundle's hover and focus frames show no change on the anchor and its pressed frame only the default link colour; the label child was not recorded, so no label value or state is declared", use: "바로 결제 and 견적 문의 on the plan cards of /pricing at surface-2::[data-omd-capture=\"5\"] (16 instances, 83 x 39)" }
+    quote-ghost-button: { type: button, bg: "transparent", fg: "#96faeb", radius: "50px", padding: "15px 16px", height: "46px", font: "16px / 700 Pretendard Bold (label)", states: "probe on home: hover no change; pressed only the default link colour; focus only the browser ring; transition all 0s", use: "견적 문의 beside 바로 결제 in the home hero, a borderless pill over the black canvas, 90.3 x 46, read by the fixed probe" }
+    login-pill: { type: button, bg: "#ffffff", fg: "#171b21", radius: "50px", padding: "14px 16px", height: "42px", font: "14px / 700 / 14px Pretendard Bold (label), letter-spacing -0.15px", states: "probe on home: hover no change; pressed only the default link colour; focus only the browser ring", use: "로그인 in the header of all three pages at home::[data-omd-capture=\"5\"], 67.9 x 42, linking to the app login" }
+    category-chip: { type: button, bg: "#ffffff", fg: "#171b21", radius: "30px", padding: "12px 15px", height: "39px", font: "15px / 700 / 15px Pretendard Bold (label), letter-spacing -0.15px", states: "probe on home: hover no change; pressed only the default link colour; focus only the browser ring", use: "디지털 플랫폼 chips on the BizSuite cards of home at home::[data-omd-capture=\"8\"], 110.2 x 39, linking to the platform pages" }
+    closing-pay-button: { type: button, bg: "#000000", fg: "#ffffff", radius: "50px", padding: "14px 16px", height: "44px", font: "16px / 700 / 16px Pretendard Bold (label)", states: "probe on home: hover no change; pressed only the default link colour; focus only the browser ring", use: "바로 결제 on the mint closing band of home at home::[data-omd-capture=\"13\"], 90.3 x 44; the band is #04e8c6" }
+    closing-quote-button: { type: button, bg: "rgba(255, 255, 255, 0.95)", fg: "#000000", radius: "50px", padding: "15px 16px", height: "46px", font: "16px / 800 / 16px Pretendard ExtraBold (label)", states: "probe on home: hover no change; pressed only the default link colour; focus only the browser ring", use: "견적 문의 beside the black 바로 결제 on the closing band at home::[data-omd-capture=\"14\"], 90.2 x 46" }
+    social-button: { type: button, bg: "#121212", radius: "3px", padding: "10px 12px", height: "34px", states: "rest only; not probed", use: "링크드인, 네이버 블로그 and 브런치 스토리 in the footer of all three pages at home::[data-omd-capture=\"30\"] (72 to 98 wide, 34 tall); the label sits in a child the collector did not record, so no label colour is declared" }
   components_harvested: true
 ---
 
@@ -60,21 +247,17 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-Quotabook (쿼타북) is Korea's equity-and-securities-management platform — a Carta-style cap table, stock-option, and fund-administration suite that markets itself as "국내유일 기업 증권금융" (Korea's only corporate securities finance). Its homepage rejects the pastel, rounded friendliness of most Korean consumer fintech and instead commits to a confident, almost editorial dark aesthetic: a pure black canvas (`#000000`) carrying oversized Pretendard headlines and a single electric mint accent (`#00e8c5`). The effect is closer to a design-studio portfolio or a financial-infrastructure brand than a retail banking app — it signals seriousness, capital-markets weight, and technical competence to a B2B audience of founders, CFOs, and investors.
+Quotabook (쿼타북) is the corporate securities platform of 쿼타랩 주식회사 (Quotalab), a company based in Gangnam, Seoul, whose site footer dates Quotabook from 2019. Quotalab describes itself as Korean financial infrastructure — "독자적인 금융 생태계로 대한민국 자본시장의 미래를 만듭니다" — built from two products: 쿼타북, which leads the digital transformation of securities and voting (의결) management, and 킵스, which standardises investment and fund management. Quotabook's own title now calls it "국내 1위 기업 증권금융" (Korea's number-one corporate securities finance). Its BizSuite covers 증권 (issuing and managing shares and bonds in real time), 의결 (running shareholder meetings and boards under the Commercial Act), 주식보상 (RSU, stock-option and virtual-stock programmes) and 투자관계 (reporting under investment contracts), alongside consulting for IPOs and compensation plans. Quotalab's newsroom lists the steps of that expansion: the acquisition of 로고스시스템 (2023), Korea's first virtual-stock compensation service (2024), a stock-compensation service inside NH투자증권's trading app (2025), a 2025 Korea Economic Daily fintech award, and a bid to become an electronic registration body for unlisted shares.
 
-The typographic personality is built on scale and weight. Headlines run in **Pretendard Black (weight 900)** and **Pretendard ExtraBold (weight 800)** at genuinely enormous display sizes — a single word "금융" set at 180px, section labels at 100px, the pricing hero at 130px — layered directly on black in white (`#ffffff`) and a soft display grey (`#e6e6e6`). This oversized-type-on-black treatment is the system's loudest gesture: the words themselves are the visual, doing the work that photography or illustration would do elsewhere. Body and UI text drop dramatically to a quiet 12px, so the page reads as a hierarchy of huge statements punctuated by small, functional labels.
-
-What distinguishes Quotabook from its fintech peers is the tension between that monumental type and its restrained interactive chrome. Depth is entirely flat — live inspection found `box-shadow: none` across the nav, hero, cards, and chips. Separation comes from near-black surface steps (`#050505`, `#121212`, `#1c1c1c`) rather than elevation. Interaction leans hard into the pill: the mint pay CTA and login button at 50px radius, white category chips at 30px, and small 3px-radius social buttons in the footer. The lone saturated hue — mint, at `#00e8c5` on the CTA and a brighter `#21fce3` on decorative section fills — is the system's single "action / energy" color against an otherwise monochrome black-and-grey field.
+The website looks nothing like pastel consumer fintech. Home and /pricing sit on a pure black canvas (`#000000`); /platform/stock-award opens on a dark hero with a white page below it. Headlines are monumental Pretendard: the hero word 금융 at 180px ExtraBold, a 140px product headline, a 130px pricing headline, and section headings at 100px, 90px and 80px in Pretendard Black, most of them in a soft grey `#e6e6e6` rather than white. Tracking is very tight: -8.4px at 180px, -3.5px at 100px. Actions are pills: a mint `#00e8c5` 바로 결제 with a dark `#171b21` label, a white 로그인, white category chips at 30px radius. At the foot of home a mint band (`#04e8c6`) turns the primary action black. All 521 recorded elements are flat.
 
 **Key Characteristics:**
-- Pure black canvas (`#000000`) as the default surface — not dark-grey, true black
-- Oversized Pretendard Black / ExtraBold headlines (90px–180px) as the primary visual
-- Single electric mint accent (`#00e8c5`) reserved for the primary CTA; brighter `#21fce3` for decorative fills
-- Flat, shadowless depth — near-black surface steps (`#050505` → `#121212` → `#1c1c1c`) do the separating
-- Pill geometry — 50px CTA/login buttons, 30px category chips, 1000px full-round tags
-- Tiny 12px functional UI/body text against monumental display type
-- Cool grey text ladder (`#e6e6e6` → `#bfbfbf` → `#979797` → `#8e8e94`) for hierarchy on black
-- Dark ink (`#171b21`) for labels on light/mint surfaces; `Fragment Mono` for occasional mono detail
+- Black canvas (`#000000`) on home and pricing; white body on the product page below its dark hero
+- Pretendard Black (900) and ExtraBold (800) at 59–180px with tracking between -2px and -9px
+- One mint for actions (`#00e8c5`), a mint closing band (`#04e8c6`) where the action inverts to black
+- Pill geometry: 50px actions and login, 30px chips; 3px footer social buttons
+- Grey text ladder on black: `#e6e6e6` headings, `#bfbfbf`, `#979797` navigation, `#8e8e94` descriptions, `#828282` footer
+- No shadows anywhere in the capture
 
 ## Primary tasks
 
@@ -86,372 +269,312 @@ What distinguishes Quotabook from its fintech peers is the tension between that 
 
 ## 2. Color Palette & Roles
 
-### Primary / Accent
-- **Quotabook Mint** (`#00e8c5`): The primary brand accent and CTA background (rgb 0,232,197). The single saturated hue — the "action" color on the pay button across home and pricing.
-- **Bright Mint** (`#21fce3`): A brighter, more electric mint used for decorative full-bleed section fills and highlight tags. The high-energy companion to the primary.
-- **Muted Mint** (`#7be3d3`): A softened mint that appears in secondary text/graphic accents on dark surfaces.
+Every token below was read on 2026-09-30 from quotabook.com, /pricing and /platform/stock-award by the deterministic collector, and label colours by the fixed keyboard probe. The tokens describe Quotabook's public marketing website; the app behind 로그인 and 바로 결제 (app.quotabook.com) was not captured and none of its values is claimed.
 
-### Canvas & Surfaces (dark ladder)
-- **Canvas Black** (`#000000`): The page background — true black, the default surface for the entire system.
-- **Surface** (`#050505`): The deepest near-black section fill, a barely-perceptible step off pure black.
-- **Surface Raised** (`#121212`): Near-black raised surface for dark cards and the footer social buttons.
-- **Surface Chip** (`#1c1c1c`): A slightly lighter raised step for chips and inset panels.
+### Primary
+- **Quotabook Mint** (`#00e8c5`): The fill of 바로 결제 — the purchase action — in the home hero, on the plan cards of /pricing (where 견적 문의 is mint too) and on /platform/stock-award: 19 recorded fills across the three pages. It is the primary because it is the colour of the product's primary action on every page; no other colour fills an action on the black canvas. On the mint closing band the same action is black `#000000` with a white label.
+- **On Primary** (`#171b21`): The label of 바로 결제, and of the white 로그인 and category chips (16px, 14px and 15px Pretendard Bold).
 
-### Text & Ink
-- **White** (`#ffffff`): Primary heading and hero text on black; also the login-button and category-chip background.
-- **Heading Soft** (`#e6e6e6`): Soft display grey for large section labels — a step down from pure white to keep the monumental type from over-glaring.
-- **Muted** (`#bfbfbf`): Muted grey for secondary text and inactive labels on dark.
-- **Faint** (`#979797`): Faint grey for tertiary/disabled labels — the most-used muted text color in the frequency scan.
-- **Muted Alt** (`#8e8e94`): An alternate cool grey for fine print and metadata.
-- **Ink Dark** (`#171b21`): Near-black ink used for text/labels sitting on light or mint surfaces (mint CTA, white pills), and for body text on the light pricing plan surface.
-- **Slate** (`#7e8387`): A mid grey used as the pricing plan comparison surface fill.
+### Surfaces
+- **Canvas** (`#000000`): The body of home and /pricing, and the closing 바로 결제 pill.
+- **White** (`#ffffff`): 로그인 and the category chips, hero headlines, and the body of /platform/stock-award.
+- **Band Mint** (`#04e8c6`): The closing band of home (검증된 1위와 함께 가장 안전한 성장을 시작하세요), read from the section behind its actions.
+- **Surface Dark** (`#121212`): The footer social buttons.
+
+### Text
+- **Heading Soft** (`#e6e6e6`): The 59–100px section headings on black.
+- **Mint Text** (`#96faeb`): The label of the borderless 견적 문의 beside 바로 결제 in the hero.
+- **Muted Light** (`#bfbfbf`): 20px ExtraBold lines on home.
+- **Nav Grey** (`#979797`): Header navigation labels (디지털 플랫폼, 금융 컨설팅, 요금제, 유용한 자료, 회사 소개).
+- **Muted** (`#8e8e94`): 18px descriptions on home.
+- **Footer Grey** (`#828282`): Footer disclosure text.
+- **Text Dark** (`#333333`): Card headings on the white part of /platform/stock-award.
+
+### Brand assets, not tokens
+- Smaller accent labels on home use other mints and blues (`#20fde3`, `#52ffe5`, `#7be3d3`, and `#03c4ff` for the NEW flag of the top banner); each appears once to six times and they are not interface tokens.
+- The Quotabook logo was not measured; no logo colour is claimed.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Display / Body**: `Pretendard` — the de-facto Korean product font, carrying every headline and label. Used at Black (900) and ExtraBold (800) for display, and Regular (400) for UI/body. Bold and SemiBold appear for intermediate emphasis.
-- **Latin / numeric**: `Geist` — appears for select Latin and numeric runs.
-- **Monospace**: `Fragment Mono` — occasional mono detailing (labels, technical accents).
+- **Live surface use**: Pretendard, uploaded to Framer and served from `framerusercontent.com/assets/` as one family per weight: `Pretendard Bold` (124 uses), `Pretendard SemiBold` (101), `Pretendard ExtraBold` (67), `Pretendard Black` (54) and `Pretendard Medium` (14), all `loaded / high`. `Geist` is loaded from Google Fonts (`fonts.gstatic.com/s/geist/v5/`) with 8 uses on short labels; it is not a token. The anchors, list items and body compute the browser's `sans-serif` (153 uses), because Framer sets fonts only on the text layers inside them; `sans-serif` is not a brand face.
+- **Official distributed font assets**: Pretendard is Kil Hyung-jin's open-source typeface; its LICENSE states the SIL Open Font License 1.1. Geist's OFL.txt states "Copyright 2024 The Geist Project Authors" and the SIL Open Font License 1.1. Both were opened on 2026-09-30. The identification of the uploaded files rests on their declared family names; their name tables were not inspected.
+- **Official product use**: no Quotabook page opened this session names its typefaces, so no statement of official product use is made.
+- **Declared only (no visible use)**: `Pretendard Regular`, `Fragment Mono`, `Inter`, `SangBleu Versailles Book`, `Angkor` and their Framer placeholders, with 0 observed uses.
+- **Unresolved**: none.
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Notes |
-|------|------|------|--------|-------|
-| Display Mega | Pretendard ExtraBold | 180px | 800 | Oversized single-word hero ("금융") |
-| Display Hero | Pretendard Black | 130px | 900 | Pricing / page hero headline |
-| Display Section | Pretendard Black | 100px | 900 | Full-bleed section labels |
-| Display Medium | Pretendard Black | 90px | 900 | Feature section heads |
-| Subhead | Pretendard Black | 26px | 900 | Card / feature subheads |
-| Button / Nav | Pretendard | 12px | 400 | Pill button and nav labels |
-| Body | Pretendard | 12px | 400 | Base UI / body text |
+| Role | Font | Size | Weight | Line Height | Tracking | Observed on |
+|------|------|------|--------|-------------|----------|-------------|
+| Mega | Pretendard ExtraBold | 180px | 800 | 189px (1.05) | -8.4px | Home hero word 금융, white |
+| Product Hero | Pretendard Black | 140px | 900 | 140px (1) | -3px | /platform/stock-award headline |
+| Pricing Hero | Pretendard Black | 130px | 900 | 143px (1.1) | -3px | /pricing headline |
+| Display | Pretendard Black | 100px | 900 | 105px (1.05) | -3.5px | 쿼타북 BizSuite, `#e6e6e6` |
+| Display Medium | Pretendard Black | 90px | 900 | 94.5px (1.05) | -3.5px | 기업 맞춤형 End-to-End 서비스 |
+| Section | Pretendard Black | 80px | 900 | 92px (1.15) | -3.2px | /pricing sections |
+| Closing | Pretendard Black | 79px | 900 | 90.85px (1.15) | -3.2px | Closing band, `#000000` on mint |
+| Feature | Pretendard Black | 59px | 900 | 67.85px (1.15) | -2px | Feature labels on home |
+| Card Title | Pretendard ExtraBold | 25px | 800 | 33.75px (1.35) | -0.8px | Cards on /platform/stock-award, `#333333` |
+| Lead | Pretendard Medium | 18px | 500 | 25.2px (1.4) | -0.5px | Descriptions, `#8e8e94` |
+| Button | Pretendard Bold | 16px | 700 | 16px | -0.15px | 바로 결제, 견적 문의 |
+| Nav | Pretendard Bold | 15px | 700 | 15px | -0.1px | Header navigation, `#979797` |
+| Chip | Pretendard Bold | 15px | 700 | 15px | -0.15px | Category chips |
+| Login | Pretendard Bold | 14px | 700 | 14px | -0.15px | 로그인 |
+| Legal | Pretendard Medium | 14px | 500 | 13px | normal | Footer disclosure, `#828282` |
 
 ### Principles
-- **Monumental display, tiny UI**: Headlines at 90–180px in weight 900/800 carry all visual weight; functional text sits at a quiet 12px. The size contrast IS the hierarchy.
-- **Black is a weight, not just a color**: Pretendard Black (900) is the signature display weight — the type reads as heavy, architectural, capital-markets-serious.
-- **Soft-grey the giants**: The largest labels use `#e6e6e6` rather than pure white so monumental type doesn't glare; only the sharpest hero words go full `#ffffff`.
-- **One font family, many weights**: Pretendard does display and UI both; Geist and Fragment Mono are supporting roles, never the headline voice.
+- **Monumental display, compact labels**: headlines run from 59px to 180px in weights 800–900; action and navigation labels sit at 14–16px Bold.
+- **Tight tracking that grows with size**: -8.4px at 180px, -3.5px at 90–100px, -2px at 59px, -0.15px on labels.
+- **Soft grey for the giants**: the largest section headings are `#e6e6e6`; only the hero lines are pure white.
+- **One family, many weights**: Pretendard carries display and UI; Geist appears only on a few short labels.
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Pay CTA (Primary)**
+**Pay button (primary)**
 - Background: `#00e8c5`
 - Text: `#171b21`
 - Radius: 50px
 - Padding: 15px 16px
 - Height: 46px
-- Font: 12px Pretendard weight 400
-- Use: Primary mint call-to-action ("바로 결제") — the system's single primary action
+- Font: 16px / 700 / 16px Pretendard Bold, letter-spacing -0.15px
+- States: the probe found no hover change; pressed shows only the browser's default link colour on the anchor; focus shows only the browser's default ring
+- Use: 바로 결제 in the home hero (90.3 × 46), also on /platform/stock-award
 
-**Login (White Pill)**
+**Plan button**
+- Background: `#00e8c5`
+- Radius: 50px
+- Padding: 12px 14px
+- Height: 39px
+- States: rest only; the label was not recorded
+- Use: 바로 결제 and 견적 문의 on the plan cards of /pricing (16 instances, 83 × 39)
+
+**Quote ghost button**
+- Background: transparent
+- Text: `#96faeb`
+- Radius: 50px
+- Padding: 15px 16px
+- Height: 46px
+- Font: 16px / 700 Pretendard Bold
+- States: no hover change; browser-default pressed colour and focus ring only
+- Use: 견적 문의 beside 바로 결제 in the home hero, borderless on black
+
+**Login pill**
 - Background: `#ffffff`
 - Text: `#171b21`
 - Radius: 50px
 - Padding: 14px 16px
 - Height: 42px
-- Font: 12px Pretendard weight 400
-- Use: Header login button — white pill on the black nav
+- Font: 14px / 700 / 14px Pretendard Bold
+- States: no hover change; browser-default pressed colour and focus ring only
+- Use: 로그인 in the header of all three pages (67.9 × 42)
 
-**Quote / Secondary (Transparent Pill)**
-- Background: transparent
-- Text: `#ffffff`
-- Radius: 50px
-- Padding: 15px 16px
-- Height: 46px
-- Font: 12px Pretendard weight 400
-- Use: Secondary action ("견적 문의") — transparent pill beside the mint CTA
-
-**Social Button**
-- Background: `#121212`
-- Text: `#ffffff`
-- Radius: 3px
-- Padding: 10px 12px
-- Height: 34px
-- Font: 12px Pretendard weight 400
-- Use: Footer social links ("링크드인", "네이버 블로그", "브런치 스토리")
-
-### Inputs & Forms
-- Background: `#121212`
-- Text: `#ffffff`
-- Radius: 8px
-- Use: Dark form fields on the black canvas; placeholder in muted grey (`#8e8e94`), no shadow
-
-### Cards & Containers
-
-**Dark Surface Card**
-- Background: `#121212`
-- Radius: 8px
-- Use: Dark content card on the black canvas — shadowless, separated by surface step
-
-**Pricing Plan Surface**
-- Background: `#7e8387`
-- Text: `#171b21`
-- Radius: 8px
-- Use: Pricing plan comparison panel (lighter slate block against black)
-
-### Badges
-
-**Category Chip**
+**Category chip**
 - Background: `#ffffff`
 - Text: `#171b21`
 - Radius: 30px
 - Padding: 12px 15px
 - Height: 39px
-- Font: 12px Pretendard weight 400
-- Use: White navigation/category chip ("디지털 플랫폼")
+- Font: 15px / 700 / 15px Pretendard Bold
+- States: no hover change; browser-default pressed colour and focus ring only
+- Use: 디지털 플랫폼 chips on the BizSuite cards of home (110.2 × 39)
 
-**Mint Highlight Tag**
-- Background: `#21fce3`
-- Text: `#171b21`
-- Radius: 1000px (full)
-- Font: 12px Pretendard weight 400
-- Use: Bright mint emphasis tag / highlight pill
-
-### Navigation
+**Closing pay button**
 - Background: `#000000`
 - Text: `#ffffff`
-- Font: 12px Pretendard weight 400
-- Active: mint `#00e8c5` text on active item
-- Use: Top nav ("금융 컨설팅", "요금제", "회사 소개") on the black header
+- Radius: 50px
+- Padding: 14px 16px
+- Height: 44px
+- Font: 16px / 700 / 16px Pretendard Bold
+- States: no hover change; browser-default pressed colour and focus ring only
+- Use: 바로 결제 on the mint closing band of home, over `#04e8c6`
+
+**Closing quote button**
+- Background: `rgba(255, 255, 255, 0.95)`
+- Text: `#000000`
+- Radius: 50px
+- Padding: 15px 16px
+- Height: 46px
+- Font: 16px / 800 / 16px Pretendard ExtraBold
+- States: no hover change; browser-default pressed colour and focus ring only
+- Use: 견적 문의 beside the black 바로 결제 on the closing band
+
+**Social button**
+- Background: `#121212`
+- Radius: 3px
+- Padding: 10px 12px
+- Height: 34px
+- States: rest only; not probed
+- Use: 링크드인, 네이버 블로그 and 브런치 스토리 in the footer of all three pages
 
 ---
 
-**Verified:** 2026-07-02 (omd:add-reference CREATE — Tier 1 live inspect, 2 surfaces)
-**Tier 1 sources:** https://quotabook.com/ , https://quotabook.com/pricing , https://blog.naver.com/quotabook
-**Tier 2 sources:** getdesign.md/quotabook (not listed — "0 DESIGN.md files") ; styles.refero.design/?q=quotabook (not listed — search falls back to generic catalog, no Quotabook style page)
+**Verified:** 2026-09-30 (deterministic collector capture of three public, logged-out pages of quotabook.com plus fixed keyboard-probe reads and first-party context)
+**Tier 1 sources:** https://quotabook.com/ ; https://quotabook.com/pricing ; https://quotabook.com/platform/stock-award ; https://www.quotalab.com/ ; https://blog.naver.com/quotabook
+**Tier 2 sources:** getdesign.md/quotabook (HTTP 200, the name does not appear in the response) and styles.refero.design/?q=quotabook (HTTP 200, the name appears only as the echoed query), requested 2026-09-30; no Tier 2 value used
 **Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
 ### Spacing System
-- Base unit: ~4px
-- Scale: 4px, 8px, 12px, 16px, 24px, 48px, and a dramatic 140px section rhythm
-- Notable: Section vertical padding lands at 140px (measured), giving the oversized headlines room to breathe as full-bleed statements
+- Pay and quote pills: 15px 16px at 46px; the closing pay pill 14px 16px at 44px
+- Plan buttons: 12px 14px at 39px
+- Category chips: 12px 15px at 39px
+- Footer social buttons: 10px 12px at 34px
+- Frequent spacing values in the capture: 10, 12, 14, 16 and 15px
 
 ### Grid & Container
-- Full-bleed dark sections stacked vertically, each anchored by a monumental Pretendard headline
-- Horizontal pill-chip rows for category/product navigation beneath hero statements
-- Pricing surfaces group plan tiers as lighter slate (`#7e8387`) panels against the black field
-- Cards use an 8px radius and sit directly on black, separated by surface tone rather than borders
+- Home stacks a top banner, a header with grey navigation and a white 로그인 pill, the 180px hero with its two actions, a logo strip of listed companies and start-ups, the BizSuite cards with white chips, the End-to-End service section, feature sections, and the mint closing band.
+- /pricing opens with a 130px headline over black, then plan cards with small mint pills and 80px section headings.
+- /platform/stock-award opens with a 140px headline on a dark hero, then continues on white with `#333333` card headings.
 
 ### Whitespace Philosophy
-- **Scale over density**: enormous headlines with generous 140px section padding — the marketing surface is spacious and cinematic, not information-dense.
-- **Flat segmentation**: sections separate by near-black surface steps (`#050505` / `#121212` / `#1c1c1c`) and by the mint accent, never by shadow.
-- **Pill rhythm**: repeated 50px and 30px pills create a consistent rounded cadence across CTAs and category chips.
+- **Words as imagery**: the oversized headlines fill the space that photography would take elsewhere.
+- **Dark separation**: sections separate by scale and by space on black, not by borders or cards with shadows.
 
 ### Border Radius Scale
-- Micro (3px): footer social buttons, small tags
-- Small (8px): cards, dark inputs, content containers
-- Chip (30px): white category/navigation chips
-- Pill (50px): primary CTA, login, secondary buttons
-- Full (1000px): highlight tags, fully-round elements
+- 0px: the default (477 of the recorded radii)
+- 3px: footer social buttons
+- 30px: category chips
+- 50px: every action pill and 로그인
 
 ## 6. Depth & Elevation
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, hero, most surfaces |
-| Surface step 1 | `#050505` fill on `#000000` | Barely-there section separation |
-| Surface step 2 | `#121212` fill | Dark cards, footer social buttons, inputs |
-| Surface step 3 | `#1c1c1c` fill | Raised chips, inset panels |
+| Flat | No shadow | All 521 recorded elements |
+| Canvas | `#000000` | Home and /pricing |
+| Inset | `#121212` | Footer social buttons |
+| Band | `#04e8c6` | The closing band of home |
 
-**Shadow Philosophy**: Quotabook is a strictly shadowless system. Live inspection returned `box-shadow: none` across the nav, hero, cards, and chips on both the homepage and pricing surface. Depth is communicated entirely through a ladder of near-black surface tones (`#000000` → `#050505` → `#121212` → `#1c1c1c`) and through the mint accent, never through elevation. This keeps the dark UI feeling flat, modern, and architectural — the monumental type and the single mint hue carry all the emphasis that a shadow system would otherwise provide.
+**Shadow Philosophy**: every recorded element computes `box-shadow: none`. Emphasis comes from type scale and from the single mint, not from elevation.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use a true black (`#000000`) canvas — the whole system is built on it
-- Set headlines in Pretendard Black (900) or ExtraBold (800) at monumental sizes (90px+)
-- Reserve mint (`#00e8c5`) for the primary CTA — keep it the single "action" color
-- Use the brighter mint (`#21fce3`) only for decorative section fills and highlight tags
-- Separate surfaces with near-black steps (`#050505`, `#121212`, `#1c1c1c`), never shadows
-- Use pill geometry — 50px buttons, 30px category chips, full-round tags
-- Soften the largest labels to `#e6e6e6` so monumental type doesn't glare
-- Use dark ink (`#171b21`) for labels on mint or white surfaces
+- Use `#00e8c5` for the primary action and label it in `#171b21`
+- Set headlines in Pretendard Black or ExtraBold at monumental sizes with tight tracking
+- Use `#e6e6e6` for the largest section headings on black
+- Shape actions as 50px pills and chips as 30px pills
+- Invert the action to `#000000` with a white label when it sits on the mint band
 
 ### Don't
-- Use drop shadows for elevation — Quotabook is a flat, shadowless system
-- Spread mint across many elements — it dilutes the single-action signal
-- Use a dark-grey "almost black" as the canvas — the base is true `#000000`
-- Set headlines in a light weight — display is always Black/ExtraBold
-- Use sharp square corners on interactive elements — CTAs and chips are pills
-- Introduce a second saturated accent hue — mint is the only color
-- Blow up 12px UI text to compensate for the giant headlines — the size contrast is intentional
-- Put light-on-light or white text on the mint CTA — labels on mint are dark ink
+- Don't add drop shadows; none of the 521 recorded elements has one
+- Don't use a second saturated hue for actions
+- Don't render Pretendard with another face in its place, and don't treat the wrappers' `sans-serif` as the brand face
+- Don't invent hover or focus styles; the probed controls show only browser defaults
+- Don't set headlines in light weights
 
 ## 8. Responsive Behavior
 
 ### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, monumental headlines scale down sharply, chips wrap |
-| Tablet | 640-1024px | Moderate padding, 2-up feature blocks |
-| Desktop | 1024-1440px | Full layout, oversized hero statements, multi-column product grids |
+Only the 1440 × 900 desktop viewport was captured (the probe used 1440 × 1000). The site is built with Framer, whose breakpoint variants were not measured.
 
 ### Touch Targets
-- Primary mint CTA at 46px height, full 50px pill — an unmistakable target
-- Login pill at 42px height; category chips at 39px height with 12px 15px padding
-- Nav labels spaced for touch on the black header
+- Pay and quote pills: 46px
+- Closing pay pill: 44px
+- 로그인: 42px
+- Plan buttons and category chips: 39px
+- Footer social buttons: 34px
 
 ### Collapsing Strategy
-- Hero: 180px/130px display type scales down aggressively on mobile, weight 900/800 maintained
-- Category chip rows: horizontal wrap/scroll on narrow viewports
-- Full-bleed dark sections maintain their treatment; 140px section padding compresses
-- Pricing plan panels stack single-column
+- How the pages collapse was not captured.
 
 ### Image Behavior
-- Product/app imagery carries no shadow at any size, consistent with the flat system
-- Cards maintain 8px radius across breakpoints
-- Mint accents and decorative fills persist across sizes
+- The logo strip and product images sit flat on black, without borders or shadows.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary CTA: Quotabook Mint (`#00e8c5`)
-- Decorative fill / highlight: Bright Mint (`#21fce3`)
-- Canvas: Black (`#000000`)
-- Surfaces: `#050505` → `#121212` → `#1c1c1c` (near-black ladder)
-- Heading text: White (`#ffffff`), softened to `#e6e6e6` at largest sizes
-- Muted text: `#bfbfbf` / `#979797` / `#8e8e94`
-- Ink on light/mint: `#171b21`
-- Pricing slate panel: `#7e8387`
+- Primary action: `#00e8c5` with `#171b21` label; on the mint band `#000000` with a white label
+- Canvas: `#000000`; band: `#04e8c6`; inset: `#121212`
+- Text on black: `#ffffff` hero, `#e6e6e6` headings, `#bfbfbf`, `#979797` nav, `#8e8e94` descriptions, `#828282` footer
+- Ghost label: `#96faeb`; text on white: `#333333`
 
 ### Example Component Prompts
-- "Create a hero on a pure black (#000000) background. Headline as a single word at 180px Pretendard ExtraBold weight 800, color #ffffff. Below it, a mint CTA: #00e8c5 background, #171b21 text, 50px radius, 15px 16px padding, 12px Pretendard — '바로 결제'. Beside it a transparent 50px pill with white text — '견적 문의'."
-- "Design a dark card: #121212 background, 8px radius, no shadow, on a #000000 canvas. Subhead 26px Pretendard Black weight 900, #ffffff. Body 12px Pretendard weight 400, #bfbfbf."
-- "Build a category chip row: white #ffffff chips, #171b21 text, 30px radius, 12px 15px padding, 12px Pretendard — 'digital platform' labels."
-- "Create a top nav on #000000. 12px Pretendard weight 400 links, #ffffff text, mint #00e8c5 on active. White login pill (#ffffff bg, #171b21 text, 50px radius) right-aligned."
-- "Add a bright-mint highlight tag: #21fce3 background, #171b21 text, full 1000px radius, 12px Pretendard."
+- "Create a primary pill: `#00e8c5` background, `#171b21` 16px Pretendard Bold label with -0.15px tracking, 50px radius, 15px 16px padding, 46px tall, no shadow."
+- "Pair it with a borderless ghost pill: transparent background, `#96faeb` 16px Pretendard Bold label, 50px radius, same size."
+- "Set a hero on `#000000`: the headline in Pretendard ExtraBold at 180px, line height 1.05, tracking -8.4px, white; section headings in Pretendard Black at 100px, tracking -3.5px, `#e6e6e6`."
+- "Build a closing band on `#04e8c6` with a 79px Pretendard Black headline in `#000000`, a black 바로 결제 pill with a white label and a `rgba(255, 255, 255, 0.95)` 견적 문의 pill with a black label."
 
 ### Iteration Guide
-1. Canvas is true black (`#000000`); build up with near-black surface steps, never shadows
-2. Headlines are Pretendard Black/ExtraBold at 90px+; UI text stays at 12px
-3. Mint (`#00e8c5`) is the single action color — don't spread it
-4. Brighter mint (`#21fce3`) is decorative-only (section fills, tags)
-5. Pill geometry throughout — 50px buttons, 30px chips, 1000px tags, 8px cards
-6. Labels on mint/white use dark ink (`#171b21`); text on black uses white → grey ladder
-7. Soften the largest labels to `#e6e6e6` to avoid glare
+1. Black canvas, monumental Pretendard, tight tracking
+2. One mint for actions, labelled in `#171b21`
+3. Pills for actions (50px) and chips (30px)
+4. Soft grey `#e6e6e6` for the largest headings
+5. No shadows
 
 ---
 
 ## 10. Voice & Tone
 
-Quotabook's voice is **authoritative, precise, and category-defining** — it speaks to founders, CFOs, and institutional investors as a peer in capital markets, not to consumers being onboarded. The positioning line "국내유일 기업 증권금융" ("Korea's only corporate securities finance") sets the register: a confident category claim, stated plainly, no exclamation. Copy favors institutional financial vocabulary (증권금융, 주주명부, 스톡옵션, RSU, 팬텀스톡, 공시연동) used correctly and without over-explanation, trusting that its B2B audience already knows the terms. Where consumer fintech decodes jargon, Quotabook wields it as a competence signal.
+Quotabook's voice is **authoritative and precise**. It speaks to founders, finance teams and investors as a peer in capital markets, uses institutional vocabulary without explaining it, and states its category claim plainly.
 
 | Context | Tone |
 |---|---|
-| Positioning / hero | Category-defining, declarative. "국내유일 기업 증권금융." Confident, not hype. |
-| Product labels | Precise capital-markets vocabulary. "주주명부", "스톡옵션", "이사회", "공시연동". |
-| CTAs | Direct, transactional. "바로 결제", "견적 문의". |
-| Pricing | Growth-framed, plain. "기업 성장에 최적화된 요금제". |
-| Service framing | End-to-end, enterprise. "기업 맞춤형 End-to-End 서비스". |
+| Positioning | Category claim, stated plainly. "국내 1위 기업 증권금융". |
+| Hero | Declarative and stacked. "기업을 위한 기업을 돕는 증권·의결·투자 금융". |
+| Product labels | Capital-markets vocabulary. "증권", "의결", "주식보상", "투자관계", "주주명부 정비", "전자증권 등록". |
+| Actions | Direct and transactional. "바로 결제", "견적 문의", "로그인". |
+| Closing | Confident and reassuring. "검증된 1위와 함께 가장 안전한 성장을 시작하세요." |
 
-**Voice samples (verbatim from live site):**
-- "국내유일 기업 증권금융" — homepage positioning / page title. *(verified live 2026-07-02)*
-- "기업 맞춤형 End-to-End 서비스" — homepage section head. *(verified live 2026-07-02)*
-- "기업 성장에 최적화된 요금제" — pricing hero headline. *(verified live 2026-07-02)*
+**Voice samples (verbatim, opened 2026-09-30):**
+- "쿼타북｜국내 1위 기업 증권금융" — quotabook.com page title.
+- "쿼타북 BizSuite" — home section heading.
+- "기업 맞춤형 End-to-End 서비스" — home section heading.
+- "RSU∙스톡옵션∙가상주식 보상제도 설계 및 운영" — home, the 주식보상 card.
+- "검증된 1위와 함께 가장 안전한 성장을 시작하세요." — home closing band.
 
-**Forbidden register**: consumer-cutesy tone, emoji, exclamation-heavy hype, over-explaining basic securities terms to a professional audience, or softening the category claim with hedges.
+**Forbidden register**: consumer-cutesy tone, emoji, exclamation-heavy hype, over-explaining basic securities terms to a professional audience.
 
 ## 11. Brand Narrative
 
-Quotabook (쿼타북) is operated by **Quotalab (쿼타랩)** and addresses a structural gap in the Korean startup ecosystem: equity, cap tables, stock options, and shareholder records were historically managed in spreadsheets, scattered paper filings, and law-firm back-and-forth, with no single source of truth connecting founders, employees, and investors. Quotabook reframed that fragmentation into a single digital platform — a "BizSuite" spanning cap-table management (주주명부), stock options and RSU/phantom-stock programs, shareholder meetings (주주총회) and board governance (이사회), regulatory disclosure integration (공시연동), and, on the investor side, fund administration and portfolio management.
+Quotabook is run by Quotalab, which frames its mission at the scale of a market: "쿼타랩이 만드는 최초의 금융 생태계" — Quotabook for securities and voting management and KIPS for investment and fund management, connecting companies and capital "하나의 금융 인프라로". Its home page counts the stock-compensation securities it has issued, the companies and funds it manages and its adoption among companies, asset managers and limited partners, and Quotabook's own banner says more than 80% of Korean asset managers use its infrastructure.
 
-The homepage states the ambition directly — "국내유일 기업 증권금융" (Korea's only corporate securities finance) and "기업 맞춤형 End-to-End 서비스" — positioning Quotabook not as a single tool but as the connective financial infrastructure between a company and its stakeholders, from incorporation through IPO. It is frequently described as the Korean analog to Carta.
+Quotalab's newsroom shows how the product widened. In July 2023 it acquired 로고스시스템 ("40조원 비상장주식 관리 쿼타랩, 로고스시스템 인수"). In February 2024 Quotabook launched what it calls Korea's first virtual-stock (가상주식) compensation service. In 2025 it signed a stock-compensation agreement with NH투자증권, launched a link service inside NH's trading app, and won the tech prize of the 2025 한경 핀테크대상. In December 2025 it declared a bid to become an electronic registration body for unlisted shares. Quotabook's home adds ISO/IEC 27001:2022 certification and a consulting arm for IPOs, share administration and compensation design.
 
-What Quotabook refuses, visible in its design: the pastel, rounded, consumer-friendly look of retail fintech, and the intimidating navy-and-gold institutionalism of legacy financial software. What it embraces: a black, editorial, capital-markets-serious aesthetic; monumental Pretendard type that makes the words themselves the visual; a single electric mint accent; and a flat, shadowless, engineered surface that signals technical competence to a professional B2B audience.
+Quotabook's site names six qualities for the product and its consulting: 완결성 (a flawless operating system), 확장성 (coverage from start-up to listed company), 투명성 (a communication hub for executives, staff and shareholders), 전문성, 연속성 (from strategy to execution in one place) and 합리성. The design carries the same confidence: black pages, words at architectural scale, and one mint for the next step.
 
 ## 12. Principles
 
-1. **Category authority, stated plainly.** Quotabook claims a category ("국내유일 기업 증권금융") rather than describing features. *UI implication:* lead with monumental, declarative headlines; let the words carry the page.
-2. **One action, one color.** Mint (`#00e8c5`) means "do this." *UI implication:* reserve the saturated mint exclusively for the primary CTA so the next step is never ambiguous on the dark field.
-3. **Serious by surface.** The black canvas and heavy type signal capital-markets weight, not consumer play. *UI implication:* true black (`#000000`), Pretendard Black display, no decorative softness.
-4. **Flat and engineered.** Depth comes from surface tone, not shadow. *UI implication:* build the near-black ladder (`#050505` / `#121212` / `#1c1c1c`); never reach for a drop shadow.
-5. **Competence over hand-holding.** Financial vocabulary is used correctly and confidently. *UI implication:* label products with real capital-markets terms; don't dumb them down for the professional audience.
+1. **Completeness (완결성).** "검증된 자동화 프로세스를 통해 단일 시스템 내에서 증권사무를 일괄 관리합니다." *UI implication:* one system, one consistent set of pills and labels.
+2. **Scalability (확장성).** Coverage "스타트업의 유연함은 물론, 상장사가 갖춰야할 엔터프라이즈 기준까지". *UI implication:* the same components at every company stage, without special cases.
+3. **Transparency (투명성).** A hub where "이해관계자별 권리 정보를 실시간 확인". *UI implication:* plain, high-contrast labels on black.
+4. **One action, one colour.** *UI implication:* `#00e8c5` for the primary action, black on the mint band. (An editorial reading of the captured pages, not a Quotabook statement.)
+5. **Flat and serious.** *UI implication:* no shadows, scale instead of decoration. (Editorial.)
 
 ## 13. Personas
 
 *Personas below are fictional archetypes informed by publicly observable Quotabook user segments (Korean startup founders, finance/CFO teams, and venture investors), not individual people.*
 
-**정민석, 38, 서울.** Co-founder and CEO of a Series-B SaaS startup. Migrated his cap table off spreadsheets before a new financing round. Values a single source of truth for the 주주명부 and stock-option pool that his lawyers, board, and employees can all trust. Chose Quotabook because it looked and felt like serious financial infrastructure, not a consumer app.
+**정민석, 38, 서울.** Co-founder and CEO of a Series-B SaaS start-up. Moved the shareholder register and option pool off spreadsheets before a new round and wants one record his lawyers, board and employees can trust.
 
-**한지우, 33, 성남.** Finance lead at a growth-stage company running an employee stock-option and RSU program. Uses Quotabook to manage grants, vesting, and 공시연동 without stitching together spreadsheets and law-firm emails. Appreciates that the product speaks her professional vocabulary directly.
+**한지우, 33, 성남.** Finance lead at a growth-stage company running RSU and stock-option programmes. Uses Quotabook to manage grants and vesting and appreciates that it speaks her professional vocabulary.
 
-**이도현, 45, 서울.** Partner at a venture fund using Quotabook's investor-side tools for fund administration and portfolio management. Wants clean, precise reporting across portfolio companies. Trusts the brand's serious, capital-markets-grade presentation over flashier alternatives.
+**이도현, 45, 서울.** Partner at a venture fund who needs clean reporting across portfolio companies and trusts a platform that looks like financial infrastructure.
 
 ## 14. States
 
-| State | Treatment |
+Only these states were observed on the captured pages; nothing else is specified here.
+
+| State | Observation |
 |---|---|
-| **Empty (no cap-table data yet)** | Black canvas. Single white (`#ffffff`) line explaining nothing has been added, with one mint (`#00e8c5`) CTA to import or add. No decorative illustration. |
-| **Empty (no portfolio/fund yet)** | Muted grey (`#979797`) single line: nothing tracked yet, plus a path to add the first entity. Calm, professional. |
-| **Loading (data fetch)** | Skeleton rows on a `#121212` surface at final dimensions, 8px radius. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
-| **Loading (compute/report)** | Inline progress on a dark surface; previous values stay visible. |
-| **Error (action failed)** | Inline message in white text on a `#121212` surface with a plain explanation and a retry. No bare "오류가 발생했습니다" — states the next step. |
-| **Error (form validation)** | Field-level message below the dark input; describes what is valid, not just "필수". |
-| **Success (action completed)** | Brief inline confirmation in a calm tone; next-step detail linked below. Mint (`#00e8c5`) accent, no celebratory emoji. |
-| **Skeleton** | `#121212` blocks at final dimensions, 8px radius, flat pulse. |
-| **Disabled** | Faint grey (`#8e8e94`) text on a reduced-opacity dark surface; mint actions fade rather than turn grey to preserve the brand read. |
+| **Hover** | No change on 바로 결제, 견적 문의, 로그인, the category chip or the two closing pills, across each control, its descendants and three ancestor levels. |
+| **Pressed** | Only Chromium's default link colour (`rgb(0, 0, 238)` → `rgb(255, 0, 0)`) on the anchor and its wrapper layers; the visible labels do not change. Not a brand state. |
+| **Focus** | Only the browser's default ring (`outline: auto`); no brand focus style. |
+
+Error, empty, loading, success and disabled states were not captured and are not described. The plan buttons and footer social buttons were not probed, so their states are unmeasured, not absent.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, pill press, focus |
-| `motion-standard` | 220ms | Card/section reveal, sheet, dropdown |
-| `motion-slow` | 340ms | Page-level transitions, monumental hero reveals |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sheets, cards, chips |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is restrained and precise — consistent with the flat, serious aesthetic. Pills respond to press with a subtle scale/opacity shift; monumental section headlines reveal with a quiet fade-and-rise at `motion-slow / ease-enter` as the user scrolls. No bounce or spring — a capital-markets platform signals steadiness, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
+The six probed controls compute `transition: all 0s`, so any colour change they had would be instant; none was observed. Framer-driven scroll or appear animation was not measured; treat it as unspecified and honour `prefers-reduced-motion` in any build.
 
 <!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on
-https://quotabook.com/ and https://quotabook.com/pricing:
-- Home H1 "금융" — Pretendard ExtraBold 180px / weight 800 / color rgb(255,255,255) #ffffff
-- Home H2 "쿼타북 BizSuite" — Pretendard Black 100px / weight 900 / rgb(230,230,230) #e6e6e6
-- Home H2 "기업 맞춤형 End-to-End 서비스" — 90px / weight 900
-- Pay CTA "바로 결제" — bg rgb(0,232,197) #00e8c5 / radius 50px / 15px 16px padding
-- Login pill "로그인" — bg rgb(255,255,255) #ffffff / radius 50px
-- Category chip "디지털 플랫폼" — bg #ffffff / radius 30px
-- Social buttons "링크드인/네이버 블로그/브런치 스토리" — bg rgb(18,18,18) #121212 / radius 3px
-- Pricing H1 "기업 성장에 최적화된 요금제" — Pretendard Black 130px / weight 900
-- box-shadow: none across nav/hero/cards/chips (shadowless system confirmed)
-- Canvas bg rgb(0,0,0) #000000; near-black ladder #050505 / #121212 / #1c1c1c
-- document.title home: "쿼타북｜국내유일 기업 증권금융"; pricing: "쿼타북｜요금제"
-
-Token-level claims (§1–9) are sourced from this live inspection (see
-web/references/quotabook/.verification.md for the full raw sample set).
-
-Voice samples (§10) are verbatim from the live site (homepage positioning/title,
-homepage section head, pricing hero).
-
-Brand narrative (§11): Quotabook (쿼타북) is operated by Quotalab (쿼타랩) and is a
-Korean equity / cap-table / stock-option / fund-administration platform positioned
-as "국내유일 기업 증권금융" and frequently described as the Korean analog to Carta.
-The product scope (주주명부, 스톡옵션, RSU, 팬텀스톡, 주주총회, 이사회, 공시연동,
-fund/portfolio management) is drawn directly from the live homepage navigation. These
-are widely documented public facts about the company; specific corporate details beyond
-the site are general public knowledge, not directly quoted from a verified Quotabook
-statement in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable Quotabook user
-segments (Korean startup founders, finance/CFO teams, venture investors). Names are
-illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "black as a capital-markets seriousness signal", "one action,
-one color", "flat and engineered as a rejection of both consumer-fintech softness and
-legacy financial institutionalism") are editorial readings connecting Quotabook's observed
-design to its positioning, not directly sourced Quotabook statements.
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/quotabook.json (capturedAt 2026-09-30T11:08:00Z), deterministic collector, 1440x900, logged out: quotabook.com, /pricing, /platform/stock-award. Labels and states: fixed keyboard probe raw docs/research/2026-09-29-growth/raw/quotabook-states-home.json.
+- §1, §10, §11, §12 context: quotabook.com home copy and footer, www.quotalab.com (mission, products, newsroom list), blog.naver.com/quotabook, opened 2026-09-30.
+- §3 licences: Pretendard LICENSE and Geist OFL.txt on GitHub, opened 2026-09-30.
+- Personas are fictional archetypes. Interpretive readings are editorial.
 -->

@@ -4,66 +4,268 @@ name: Team Sparta
 display_name_kr: 팀스파르타 (스파르타코딩클럽)
 country: KR
 category: education
-homepage: "https://spartacodingclub.kr/"
+homepage: "https://spartaclub.kr/"
 primary_color: "#fa0030"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=spartaclub.kr&sz=128"
-verified: "2026-07-02"
+verified: "2026-09-30"
 added: "2026-07-02"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://spartaclub.kr/", inspected: "2026-09-30" }
+    - { id: surface-2, kind: marketing, url: "https://spartaclub.kr/catalog/scc", inspected: "2026-09-30" }
+    - { id: surface-3, kind: product, url: "https://spartaclub.kr/product/9", inspected: "2026-09-30" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://spartaclub.kr/", captured: "2026-09-30" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://spartaclub.kr/catalog/scc", captured: "2026-09-30" }
+    - { id: surface-surface-3, kind: product-surface, url: "https://spartaclub.kr/product/9", captured: "2026-09-30" }
+    - { id: teamsparta-probe-course, kind: product-surface, url: "https://spartaclub.kr/product/9", captured: "2026-09-30" }
+    - { id: teamsparta-probe-home, kind: product-surface, url: "https://spartaclub.kr/", captured: "2026-09-30" }
+    - { id: teamsparta-career, kind: official-doc, url: "https://career.spartaclub.kr/ko/home", captured: "2026-09-30" }
+    - { id: teamsparta-design-blog, kind: official-doc, url: "https://blog.career.spartaclub.kr/designer", captured: "2026-09-30" }
+    - { id: pretendard-license, kind: license, url: "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &cta { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"1\"]", captured: "2026-09-30" }
+    "tokens.colors.on-primary": *cta
+    "tokens.colors.ink": &h1 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h1", captured: "2026-09-30" }
+    "tokens.colors.slate": &reviewmeta { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.muted": &h4 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h4", captured: "2026-09-30" }
+    "tokens.colors.faint": &footer { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.coral": *reviewmeta
+    "tokens.colors.hero-aqua": &aqua { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
+    "tokens.colors.on-dark-soft": &soft { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h4", captured: "2026-09-30" }
+    "tokens.colors.category-red": &camp { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"15\"]", captured: "2026-09-30" }
+    "tokens.colors.category-teal": &ent { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"19\"]", captured: "2026-09-30" }
+    "tokens.colors.category-purple": &purple { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"17\"]", captured: "2026-09-30" }
+    "tokens.colors.charcoal": &darkcta { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"23\"]", captured: "2026-09-30" }
+    "tokens.colors.surface": &more { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"11\"]", captured: "2026-09-30" }
+    "tokens.colors.surface-alt": &faq { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"16\"]", captured: "2026-09-30" }
+    "tokens.colors.hover-tint": &navstate { surface_id: home, source_id: teamsparta-probe-home, method: live-state-probe, selector: "a 전체 강의 (79 x 40): hover bg rgba(0, 0, 0, 0) -> rgb(249, 249, 251), radius 0px -> 6px; pressed the same plus the Chromium default link colour rgb(0, 0, 238) -> rgb(255, 0, 0); focus (Tab #6) outline none -> rgb(0, 95, 204) auto 1px", captured: "2026-09-30" }
+    "tokens.colors.canvas": &body { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
+    "tokens.typography.family.display": *h1
+    "tokens.typography.family.body": &coursebody { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::body", captured: "2026-09-30" }
+    "tokens.typography.family.accent": &stat { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.hero.size": &hero { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.hero.weight": *hero
+    "tokens.typography.hero.lineHeight": *hero
+    "tokens.typography.hero.tracking": *hero
+    "tokens.typography.hero.use": *hero
+    "tokens.typography.stat.size": *stat
+    "tokens.typography.stat.weight": *stat
+    "tokens.typography.stat.lineHeight": *stat
+    "tokens.typography.stat.use": *stat
+    "tokens.typography.display-band.size": &bandh { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h1", captured: "2026-09-30" }
+    "tokens.typography.display-band.weight": *bandh
+    "tokens.typography.display-band.lineHeight": *bandh
+    "tokens.typography.display-band.use": *bandh
+    "tokens.typography.step-number.size": &step { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h1", captured: "2026-09-30" }
+    "tokens.typography.step-number.weight": *step
+    "tokens.typography.step-number.lineHeight": *step
+    "tokens.typography.step-number.use": *step
+    "tokens.typography.section.size": *h1
+    "tokens.typography.section.weight": *h1
+    "tokens.typography.section.lineHeight": *h1
+    "tokens.typography.section.use": *h1
+    "tokens.typography.section-sm.size": &h2 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
+    "tokens.typography.section-sm.weight": *h2
+    "tokens.typography.section-sm.lineHeight": *h2
+    "tokens.typography.section-sm.use": *h2
+    "tokens.typography.hero-sub.size": *aqua
+    "tokens.typography.hero-sub.weight": *aqua
+    "tokens.typography.hero-sub.lineHeight": *aqua
+    "tokens.typography.hero-sub.use": *aqua
+    "tokens.typography.course-title.size": &ctitle { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h1", captured: "2026-09-30" }
+    "tokens.typography.course-title.weight": *ctitle
+    "tokens.typography.course-title.lineHeight": *ctitle
+    "tokens.typography.course-title.use": *ctitle
+    "tokens.typography.card-title.size": &h3 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
+    "tokens.typography.card-title.weight": *h3
+    "tokens.typography.card-title.lineHeight": *h3
+    "tokens.typography.card-title.use": *h3
+    "tokens.typography.eyebrow.size": &eyebrow { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h4", captured: "2026-09-30" }
+    "tokens.typography.eyebrow.weight": *eyebrow
+    "tokens.typography.eyebrow.lineHeight": *eyebrow
+    "tokens.typography.eyebrow.tracking": *eyebrow
+    "tokens.typography.eyebrow.use": *eyebrow
+    "tokens.typography.label.size": *h4
+    "tokens.typography.label.weight": *h4
+    "tokens.typography.label.lineHeight": *h4
+    "tokens.typography.label.use": *h4
+    "tokens.typography.button.size": *cta
+    "tokens.typography.button.weight": *cta
+    "tokens.typography.button.lineHeight": *cta
+    "tokens.typography.button.use": *cta
+    "tokens.typography.footer.size": *footer
+    "tokens.typography.footer.weight": *footer
+    "tokens.typography.footer.lineHeight": *footer
+    "tokens.typography.footer.use": *footer
+    "tokens.typography.caption.size": &caption { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::p", captured: "2026-09-30" }
+    "tokens.typography.caption.weight": *caption
+    "tokens.typography.caption.lineHeight": *caption
+    "tokens.typography.caption.use": *caption
+    "tokens.spacing.cta-y": *cta
+    "tokens.spacing.cta-x": *cta
+    "tokens.spacing.button-y": &reviewbtn { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"24\"]", captured: "2026-09-30" }
+    "tokens.spacing.button-x": *reviewbtn
+    "tokens.spacing.card-y": &catcard { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"10\"]", captured: "2026-09-30" }
+    "tokens.spacing.card-x": *catcard
+    "tokens.spacing.course-card": *camp
+    "tokens.spacing.band-top": &band { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"29\"]", captured: "2026-09-30" }
+    "tokens.rounded.chip": &chip { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"11\"]", captured: "2026-09-30" }
+    "tokens.rounded.button": *reviewbtn
+    "tokens.rounded.card": *catcard
+    "tokens.rounded.course-card": *camp
+    "tokens.rounded.cta": *cta
+    "tokens.components.enroll-cta.type": *cta
+    "tokens.components.enroll-cta.bg": *cta
+    "tokens.components.enroll-cta.fg": *cta
+    "tokens.components.enroll-cta.radius": *cta
+    "tokens.components.enroll-cta.padding": *cta
+    "tokens.components.enroll-cta.height": *cta
+    "tokens.components.enroll-cta.font": *cta
+    "tokens.components.enroll-cta.states": &ctastate { surface_id: surface-3, source_id: teamsparta-probe-course, method: live-state-probe, selector: "button 수강신청하기 (320 x 56, rest bg #fa0030, fg #ffffff, transition width 0.2s ease-in-out): hover and pressed no change across self and 3 ancestor levels; focus (Tab #2) outline none -> rgb(0, 95, 204) auto 1px, the browser default ring", captured: "2026-09-30" }
+    "tokens.components.enroll-cta.use": *cta
+    "tokens.components.course-tab.type": &tab { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"4\"]", captured: "2026-09-30" }
+    "tokens.components.course-tab.fg": *tab
+    "tokens.components.course-tab.border": *tab
+    "tokens.components.course-tab.padding": *tab
+    "tokens.components.course-tab.height": *tab
+    "tokens.components.course-tab.font": *tab
+    "tokens.components.course-tab.selected": { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"3\"]", captured: "2026-09-30" }
+    "tokens.components.course-tab.states": { surface_id: surface-3, source_id: teamsparta-probe-course, method: live-state-probe, selector: "button 강의소개 (selected, fg #fa0030) and 커리큘럼 (fg #858893), 51.9 x 53: hover and pressed UNMEASURED, the pointer target was covered by the fixed 1440 x 36 utility bar; focus (Tabs #4 and #5) outline none -> rgb(0, 95, 204) auto 1px only", captured: "2026-09-30" }
+    "tokens.components.course-tab.use": *tab
+    "tokens.components.review-button.type": *reviewbtn
+    "tokens.components.review-button.bg": *reviewbtn
+    "tokens.components.review-button.radius": *reviewbtn
+    "tokens.components.review-button.padding": *reviewbtn
+    "tokens.components.review-button.height": *reviewbtn
+    "tokens.components.review-button.states": { surface_id: home, source_id: teamsparta-probe-home, method: live-state-probe, selector: "span[role=link] 후기 자세히 보기 (108.8 x 36, rest bg #0c0e13): hover and pressed UNMEASURED, :hover did not match (elementFromPoint is the h5 label); focus (Tab #28) outline none -> rgb(0, 95, 204) auto 1px only", captured: "2026-09-30" }
+    "tokens.components.review-button.use": *reviewbtn
+    "tokens.components.enterprise-button.type": *ent
+    "tokens.components.enterprise-button.bg": *ent
+    "tokens.components.enterprise-button.fg": *ent
+    "tokens.components.enterprise-button.radius": *ent
+    "tokens.components.enterprise-button.padding": *ent
+    "tokens.components.enterprise-button.height": *ent
+    "tokens.components.enterprise-button.states": { surface_id: home, source_id: teamsparta-probe-home, method: live-state-probe, selector: "a 기업교육 알아보기 (125 x 40, rest bg #0b495c): hover no change across self, 3 descendants and 3 ancestor levels; pressed changes only the Chromium default link colour rgb(0, 0, 238) -> rgb(255, 0, 0) on the anchor and two label wrappers; focus (Tab #23) outline none -> rgb(0, 95, 204) auto 1px", captured: "2026-09-30" }
+    "tokens.components.enterprise-button.use": *ent
+    "tokens.components.nav-item.type": &nav { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-09-30" }
+    "tokens.components.nav-item.fg": *nav
+    "tokens.components.nav-item.radius": *nav
+    "tokens.components.nav-item.padding": *nav
+    "tokens.components.nav-item.height": *nav
+    "tokens.components.nav-item.hover": *navstate
+    "tokens.components.nav-item.states": *navstate
+    "tokens.components.nav-item.use": *nav
+    "tokens.components.category-card.type": *camp
+    "tokens.components.category-card.bg": *camp
+    "tokens.components.category-card.fg": *camp
+    "tokens.components.category-card.radius": *camp
+    "tokens.components.category-card.padding": *camp
+    "tokens.components.category-card.size": *camp
+    "tokens.components.category-card.variants": *purple
+    "tokens.components.category-card.use": *camp
+    "tokens.components.conversion-band.type": *band
+    "tokens.components.conversion-band.bg": *band
+    "tokens.components.conversion-band.fg": *band
+    "tokens.components.conversion-band.padding": *band
+    "tokens.components.conversion-band.size": *band
+    "tokens.components.conversion-band.use": *band
+    "tokens.components.catalog-card.type": *catcard
+    "tokens.components.catalog-card.bg": *catcard
+    "tokens.components.catalog-card.fg": *catcard
+    "tokens.components.catalog-card.radius": *catcard
+    "tokens.components.catalog-card.padding": *catcard
+    "tokens.components.catalog-card.size": *catcard
+    "tokens.components.catalog-card.use": *catcard
+    "tokens.components.more-button.type": *more
+    "tokens.components.more-button.bg": *more
+    "tokens.components.more-button.radius": *more
+    "tokens.components.more-button.padding": *more
+    "tokens.components.more-button.height": *more
+    "tokens.components.more-button.states": *more
+    "tokens.components.more-button.use": *more
+    "tokens.components.dark-cta.type": *darkcta
+    "tokens.components.dark-cta.bg": *darkcta
+    "tokens.components.dark-cta.fg": *darkcta
+    "tokens.components.dark-cta.radius": *darkcta
+    "tokens.components.dark-cta.padding": *darkcta
+    "tokens.components.dark-cta.height": *darkcta
+    "tokens.components.dark-cta.states": *darkcta
+    "tokens.components.dark-cta.use": *darkcta
+    "tokens.components.faq-button.type": *faq
+    "tokens.components.faq-button.bg": *faq
+    "tokens.components.faq-button.fg": &faqstate { surface_id: surface-3, source_id: teamsparta-probe-course, method: live-state-probe, selector: "button 더 많은 질문 보기 (237 x 48, rest bg #f1f1f3, fg #000000, transition all 0s): hover and pressed no change across self and 3 ancestor levels; focus (Tab #17) outline none -> rgb(0, 95, 204) auto 1px", captured: "2026-09-30" }
+    "tokens.components.faq-button.radius": *faq
+    "tokens.components.faq-button.height": *faq
+    "tokens.components.faq-button.font": *faq
+    "tokens.components.faq-button.states": *faqstate
+    "tokens.components.faq-button.use": *faq
+    "tokens.components.learn-more-chip.type": *chip
+    "tokens.components.learn-more-chip.bg": *chip
+    "tokens.components.learn-more-chip.fg": &chipstate { surface_id: surface-3, source_id: teamsparta-probe-course, method: live-state-probe, selector: "button 더 알아보기 (83.8 x 30, rest bg #ffffff, fg #000000, transition all 0s): hover and pressed no change across self and 3 ancestor levels; focus (Tab #12) outline none -> rgb(0, 95, 204) auto 1px", captured: "2026-09-30" }
+    "tokens.components.learn-more-chip.radius": *chip
+    "tokens.components.learn-more-chip.padding": *chip
+    "tokens.components.learn-more-chip.height": *chip
+    "tokens.components.learn-more-chip.states": *chipstate
+    "tokens.components.learn-more-chip.use": *chip
 tokens:
-  source: live-extract
-  extracted: "2026-07-02"
-  note: "primary = live signature red (#fa0030) used on the full-bleed conversion band, numbered step accents, and eyebrow labels; ink near-black (#0c0e13) for headings; deep red (#d90b32), teal-dark (#0b495c) and purple (#8723ba) are the hero course-card backgrounds. Near-flat system (box-shadow: none)."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
     primary: "#fa0030"
-    primary-deep: "#d90b32"
-    coral: "#ff4660"
-    red-alt: "#e8354e"
+    on-primary: "#ffffff"
     ink: "#0c0e13"
-    canvas: "#ffffff"
-    surface: "#f2f6f8"
-    surface-cyan: "#ecf8fc"
-    teal-dark: "#0b495c"
-    teal: "#249eb3"
-    cyan: "#93e6f5"
-    purple: "#8723ba"
-    body: "#41414b"
+    slate: "#41414b"
     muted: "#858793"
     faint: "#a4a7b0"
-    hairline: "#e0e1e5"
-    on-primary: "#ffffff"
-    tag-green: "#66d417"
-    tag-green-bg: "#f0ffeb"
-    tag-orange: "#ff7300"
-    tag-orange-bg: "#ffeac7"
+    coral: "#ff4660"
+    hero-aqua: "#93e6f5"
+    on-dark-soft: "#e0e1e5"
+    category-red: "#d90b32"
+    category-teal: "#0b495c"
+    category-purple: "#8723ba"
+    charcoal: "#1d1e22"
+    surface: "#f5f6f7"
+    surface-alt: "#f1f1f3"
+    hover-tint: "#f9f9fb"
+    canvas: "#ffffff"
   typography:
-    family: { display: "Pretendard Bold", body: "Pretendard", accent: "Gmarket Sans" }
-    display-step:  { size: 40, weight: 700, lineHeight: 1.30, use: "Numbered step display (1/2/3), Pretendard Bold" }
-    section:       { size: 32, weight: 700, lineHeight: 1.375, use: "Hero / section H1, Pretendard Bold" }
-    subsection:    { size: 28, weight: 700, lineHeight: 1.36, use: "Feature section heads, Pretendard Bold" }
-    title:         { size: 22, weight: 700, lineHeight: 1.45, use: "Card / decorative titles" }
-    body-lg:       { size: 18, weight: 700, lineHeight: 1.44, use: "Lead / sub-head copy" }
-    eyebrow:       { size: 15, weight: 700, lineHeight: 1.47, tracking: -0.2, use: "Eyebrow label (e.g. Total Career Solution), red" }
-    body:          { size: 16, weight: 400, lineHeight: 1.50, use: "Standard reading text, Pretendard" }
-    caption:       { size: 12, weight: 500, lineHeight: 1.40, use: "Tags, nav, metadata" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 4, md: 6, lg: 8, xl: 12, pill: 99, full: 9999 }
-  shadow:
-    none: "none"
-    inset: "rgba(255,255,255,0.12) 0px 0px 2px 0px inset"
+    family: { display: "Pretendard", body: "Pretendard", accent: "Gmarket Sans" }
+    hero: { size: 50, weight: 700, lineHeight: 1.32, tracking: -1, use: "Home hero headline (AI 시대, / 미래를 돌파하는 힘 / 스파르타클럽), Framer's Pretendard Bold face, 66px line, in #ffffff over the hero media" }
+    stat: { size: 48, weight: 700, lineHeight: 1.08, use: "Four statistic figures on home, Gmarket Sans TTF Bold, 52px line, in #0c0e13" }
+    display-band: { size: 40, weight: 700, lineHeight: 1.35, use: "Headline of the red conversion band on home (지금 스파르타클럽에서 / 잠재력을 깨우세요.), 54px line, in #ffffff" }
+    step-number: { size: 40, weight: 700, lineHeight: 1.3, use: "Red step numerals of the Total Career Solution section on home, 52px line, in #fa0030" }
+    section: { size: 32, weight: 700, lineHeight: 1.375, use: "Section headings on home, Pretendard Bold face, 44px line, in #0c0e13 (#ffffff on dark bands); the course page's h2 computes the same metrics in #0d0e11" }
+    section-sm: { size: 28, weight: 700, lineHeight: 1.36, use: "Smaller section heading on home, 38px line, in #0c0e13" }
+    hero-sub: { size: 22, weight: 700, lineHeight: 1.45, use: "Hero line above the headline (도전하는 누구나 잠재력을 깨울 수 있도록), 32px line, in #93e6f5" }
+    course-title: { size: 22, weight: 700, lineHeight: 1.36, use: "Course title on the course page (오늘 배워 내일 바로 써먹는 ChatGPT 활용법), Pretendard, 30px line, in #000000" }
+    card-title: { size: 18, weight: 700, lineHeight: 1.44, use: "Copy on the home category cards and step descriptions, 26px line, #ffffff on the cards and #0c0e13 in the step section" }
+    eyebrow: { size: 15, weight: 700, lineHeight: 1.47, tracking: -0.2, use: "Red eyebrow label on home (Total Career Solution), 22px line, -0.2px tracking, in #fa0030" }
+    label: { size: 15, weight: 500, lineHeight: 1.47, use: "Supporting lines under home section headings, Pretendard Medium face, 22px line, in #858793 (#e0e1e5 on the dark band)" }
+    button: { size: 15, weight: 700, lineHeight: 1.47, use: "수강신청하기 and 더 많은 질문 보기 labels and the course tabs on the course page, Pretendard, 22px line" }
+    footer: { size: 13, weight: 400, lineHeight: 1.54, use: "Footer company and legal lines on home and the catalog, 20px line, in #a4a7b0" }
+    caption: { size: 12, weight: 500, lineHeight: 1.5, use: "Footer company lines on the course page, Pretendard, 18px line, in #a4a7b0" }
+  spacing: { cta-y: 16, cta-x: 20, button-y: 8, button-x: 12, card-y: 24, card-x: 18, course-card: 32, band-top: 80 }
+  rounded: { chip: 4, button: 6, card: 8, course-card: 16, cta: 38 }
   components:
-    cta-primary: { type: button, bg: "#fa0030", fg: "#ffffff", radius: "8px", padding: "10px 16px", height: "42px", font: "16px / 700", use: "Primary enrollment CTA / red conversion band action" }
-    cta-enterprise: { type: button, bg: "#0b495c", fg: "#ffffff", radius: "6px", padding: "10px 12px", height: "40px", font: "16px / 700", use: "기업교육 알아보기 — secondary teal-dark CTA" }
-    cta-dark: { type: button, bg: "#0c0e13", fg: "#ffffff", radius: "6px", padding: "8px 12px", height: "36px", font: "14px / 600", use: "후기 자세히 보기 — dark ink button" }
-    login-chip: { type: button, bg: "#ffffff", fg: "#0c0e13", border: "1px solid #e0e1e5", radius: "4px", padding: "8px 11px", height: "36px", font: "14px / 500", use: "Header login chip" }
-    course-card: { type: card, bg: "#ffffff", radius: "8px", padding: "24px", use: "Course catalog card, white on canvas, no shadow" }
-    surface-card: { type: card, bg: "#f2f6f8", radius: "12px", padding: "16px", use: "Info / summary card on tinted surface" }
-    tag-green: { type: badge, bg: "#f0ffeb", fg: "#66d417", radius: "4px", padding: "0 4px", font: "12px / 500", use: "국비지원 category tag" }
-    tag-orange: { type: badge, bg: "#ffeac7", fg: "#ff7300", radius: "4px", padding: "0 4px", font: "12px / 500", use: "NEW category tag" }
-    nav-link: { type: tab, fg: "#0c0e13", font: "16px / 600", active: "text #fa0030", use: "Top nav item, red on active" }
-    challenge-chip: { type: badge, bg: "#249eb3", fg: "#ffffff", radius: "4px", padding: "6px 12px", font: "12px / 600", use: "챌린지형 강의 course-type chip" }
+    enroll-cta: { type: button, bg: "#fa0030", fg: "#ffffff", radius: "38px", padding: "16px 20px", height: "56px", font: "15px / 700 / 22px Pretendard", states: "probe on the course page: hover and pressed show no change across the button and three ancestor levels; focus (Tab #2) draws only the browser's default ring, so no brand focus style is declared; it computes transition width 0.2s ease-in-out", use: "수강신청하기, the enrolment action of the course page at surface-3::[data-omd-capture=\"1\"], 320 x 56" }
+    course-tab: { type: tab, fg: "#858893", border: "0px 0px 2px, bottom edge transparent at rest", padding: "3px 0px 0px", height: "53px", font: "15px / 700 / 22px Pretendard", selected: "fg #fa0030 with a 2px #fa0030 bottom border (강의소개 at capture 3)", states: "selected variant read from rest values; hover and pressed are unmeasured because the fixed utility bar covered the pointer target; focus (Tabs #4 and #5) draws only the browser's default ring", use: "Section tabs of the course page (강의소개, 커리큘럼 and three more) at surface-3::[data-omd-capture=\"4\"]; product surface" }
+    review-button: { type: button, bg: "#0c0e13", radius: "6px", padding: "8px 12px", height: "36px", states: "hover and pressed unmeasured (the probe's pointer landed on the h5 label and :hover did not match); focus (Tab #28) draws only the browser's default ring", use: "후기 자세히 보기 under the review cards on home at home::[data-omd-capture=\"24\"], 109 x 36 (five instances); the label sits in a Framer h5 whose colour the collector did not record, so no fg is declared" }
+    enterprise-button: { type: button, bg: "#0b495c", fg: "#ffffff", radius: "6px", padding: "10px 12px", height: "40px", states: "probe on home: hover shows no change; pressed changes only the Chromium default link colour of the anchor and its label wrappers, which is not a brand state; focus (Tab #23) draws only the browser's default ring", use: "기업교육 알아보기 on home at home::[data-omd-capture=\"19\"], 125 x 40; the white label is the collector's recorded label colour" }
+    nav-item: { type: tab, fg: "#0c0e13", radius: "0px (6px on hover)", padding: "8px 10px", height: "40px", hover: "bg #f9f9fb, radius 6px", states: "hover settles on a #f9f9fb fill with a 6px radius (probe and bundle frame agree on the radius); pressed adds only the Chromium default link colour; focus (Tab #6) draws only the browser's default ring", use: "Header navigation (전체 강의, 취업 캠프, 재직자 캠프, 커뮤니티, 수강후기, 이벤트) on home and the catalog at home::[data-omd-capture=\"5\"]; the label colour is the collector's recorded label colour" }
+    category-card: { type: card, bg: "#d90b32", fg: "#ffffff", radius: "16px", padding: "32px 32px 48px", size: "373px x 460px", variants: "#0b495c (AI 입문), #8723ba (직장인 스킬업)", use: "Three linked course-category cards at the top of home (AI 시대 취업 캠프 in #d90b32 at capture 15, AI 입문 in #0b495c at 16, 직장인 스킬업 in #8723ba at 17); the bundle's hover frames record a transform change whose value was not recorded" }
+    conversion-band: { type: card, bg: "#fa0030", fg: "#ffffff", padding: "80px 0px 40px", size: "1440px x 547px", use: "Full-bleed red band near the foot of home at home::[data-omd-capture=\"29\"]; the whole band is one link carrying 지금 스파르타클럽에서 잠재력을 깨우세요." }
+    catalog-card: { type: card, bg: "#ffffff", fg: "#0c0e13", radius: "8px", padding: "24px 18px", size: "371px x 399px", use: "Course cards under 이번 달 가장 많이 신청한 강의 on the catalog at surface-2::[data-omd-capture=\"10\"] (three instances)" }
+    more-button: { type: button, bg: "#f5f6f7", radius: "8px", padding: "12px 0px", height: "48px", states: "rest on three captured instances; no state frame and no probe, so no state is declared", use: "더보기 inside each catalog course card at surface-2::[data-omd-capture=\"11\"], 335 x 48; the label colour was not recorded" }
+    dark-cta: { type: button, bg: "#1d1e22", fg: "#ffffff", radius: "8px", padding: "14px 12px", height: "52px", states: "rest on two captured instances; no state frame and no probe", use: "발급 가이드 확인하기 and 문의하기 on the catalog at surface-2::[data-omd-capture=\"23\"], 260 x 52" }
+    faq-button: { type: button, bg: "#f1f1f3", fg: "#000000", radius: "8px", height: "48px", font: "15px / 700 / 22px Pretendard", states: "probe on the course page: hover and pressed show no change; focus (Tab #17) draws only the browser's default ring", use: "더 많은 질문 보기 under the FAQ of the course page at surface-3::[data-omd-capture=\"16\"], 237 x 48" }
+    learn-more-chip: { type: button, bg: "#ffffff", fg: "#000000", radius: "4px", padding: "8px 12px", height: "30px", states: "probe on the course page: hover and pressed show no change; focus (Tab #12) draws only the browser's default ring", use: "더 알아보기 on the dark promotion panel of the course page (더 많은 활용법을 알고 싶다면?) at surface-3::[data-omd-capture=\"11\"], 84 x 30; it computes the browser's default button face, so no font is declared" }
   components_harvested: true
 ---
 
@@ -71,411 +273,356 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-Team Sparta (팀스파르타), the operator of 스파르타코딩클럽 (Spartacodingclub), runs Korea's most recognizable coding-education brand, and its site reads like a high-energy motivational campaign rather than a quiet courseware catalog. The canvas is pure white (`#ffffff`) broken up by big, saturated, full-bleed color blocks — a signature electric red (`#fa0030`), a deep red (`#d90b32`), a teal-dark (`#0b495c`), and a vivid purple (`#8723ba`) — each carrying a course category as an oversized card. Headlines sit in a near-black ink (`#0c0e13`), never pure black on body copy, keeping the page grounded and readable between the loud color bands. The overall impression is bootcamp adrenaline made tasteful: bold, confident, and unafraid of color, but disciplined by a clean grid and a single dominant accent.
+Team Sparta (팀스파르타) is the Seoul company behind 스파르타클럽, the online AI and IT course brand its own design team still called 스파르타코딩클럽 (Spartacodingclub) in its team introduction. Its careers site states the belief the brand is built on: "팀스파르타는 누구나 잠재력을 깨워 큰일을 낼 수 있다고 믿습니다" — it started with IT education, and says it wakes the potential of 200,000 people a year and supplies some 4,000 trained people to the job market; the same page lists selection as a 2025 예비 유니콘 (pre-unicorn) company. The current evolution is visible in the product itself: spartacodingclub.kr now redirects to spartaclub.kr, the site is titled "스파르타클럽 | AI시대, 미래를 돌파하는 힘", and the course list now centres on AI skills — ChatGPT, Claude Code, AI PPT and work automation — alongside government-funded bootcamps (내일배움캠프), camps for working people and corporate training. The footer names the operator: 팀스파르타(주), 대표자 이범규, with a 평생교육시설 (lifelong-education facility) registration, 제 661호.
 
-The typographic personality is Korean-product-modern: every headline runs in **Pretendard Bold (weight 700)** — 40px on the numbered step displays, 32px on section titles, 28px on feature heads — with **Gmarket Sans** appearing as an occasional display accent. Body and UI text stay in **Pretendard** at weight 400, the de-facto Korean product font optimized for dense hangul legibility. The signature red is reserved for high-intent moments: the full-bleed conversion band ("지금 스파르타클럽에서 잠재력을 깨우세요"), the numbered "1 / 2 / 3" step markers, and the small red eyebrow labels ("Total Career Solution") — so the eye is trained to read `#fa0030` as "this is where the momentum is."
-
-What distinguishes Team Sparta from typical ed-tech is its confidence with flat, shadowless depth. Live inspection found `box-shadow: none` across the hero, nav, headings, catalog cards, and tags — separation comes from bold background color and thin `#e0e1e5` hairlines, not elevation. Interactive chrome is compact and pragmatic: 4px-6px radii on buttons and chips, 8px-12px on cards, 16px on the big hero course cards, and occasional 99px pills. Category tags form a pastel-on-saturated system — a light green tint (`#f0ffeb`) with green label (`#66d417`), a light orange tint (`#ffeac7`) with orange label (`#ff7300`) — that keeps a dense catalog scannable without shouting.
+The site reads like a campaign. Home opens on a 50px white Pretendard Bold headline over hero media, with the line above it in aqua `#93e6f5`; below sit three large, saturated course-category cards — deep red `#d90b32`, dark teal `#0b495c` and purple `#8723ba` — each a 16px-radius link. Section headings are 32px Pretendard Bold in near-black ink `#0c0e13`. The signature red `#fa0030` is spent on action and emphasis: the enrolment button of the course page, the selected course tab, a full-bleed red conversion band near the foot of home, the step numerals and the Total Career Solution eyebrow. Every one of the 429 captured element records computes `box-shadow: none`; separation comes from colour blocks and pale grey fills.
 
 **Key Characteristics:**
-- Pretendard Bold (weight 700) for every headline; Gmarket Sans as an occasional display accent
-- Pretendard weight 400 for body and dense UI text — hangul-optimized
-- Signature electric red (`#fa0030`) reserved for the conversion band, numbered steps, and eyebrow labels
-- Near-black ink (`#0c0e13`) for headings instead of pure black
-- Full-bleed saturated color blocks — deep red (`#d90b32`), teal-dark (`#0b495c`), purple (`#8723ba`), teal (`#249eb3`), light cyan (`#93e6f5`)
-- Flat, shadowless system — `#e0e1e5` hairlines and color blocks do the separating
-- Pastel-on-saturated category tags — green (`#f0ffeb` / `#66d417`), orange (`#ffeac7` / `#ff7300`)
-- Compact geometry — 4px-6px buttons, 8px-12px cards, 16px hero cards, 99px pills
+- Signature red `#fa0030` for the primary action (수강신청하기), the selected tab, the conversion band, step numerals and eyebrows
+- Pretendard throughout — Framer's named Pretendard Bold, Medium and SemiBold faces on home and the catalog, a self-hosted Pretendard on the course page — with Gmarket Sans for four statistic figures
+- Near-black ink `#0c0e13` for headings and dark buttons; `#858793`, `#a4a7b0` and `#41414b` for supporting text
+- Category colour blocks — `#d90b32`, `#0b495c`, `#8723ba` — on the home course cards; `#0b495c` also fills 기업교육 알아보기
+- Compact radii for controls (4px, 6px, 8px), 16px for the category cards and a 38px pill for the enrolment button
+- Flat: no shadow anywhere; grey fills `#f5f6f7` and `#f1f1f3` for secondary buttons
 
 ## Primary tasks
 
 - Browse the course catalog to find a class
 - Check which courses are government-funded before enrolling
-- Enroll in a free course from the catalog
-- Read detailed course reviews before you commit
+- Enroll in a course from its course page
+- Read course reviews before you commit
 - Add AI tools to your workflow after work hours
 - Evaluate corporate training for your company's employees
 
 ## 2. Color Palette & Roles
 
+Every token below was read on 2026-09-30 from spartaclub.kr, /catalog/scc and the course page /product/9 by the deterministic collector, with states from the fixed keyboard probe. Home and the catalog are built in Framer; the course page is a separate build on the same host with the same header links. Components are labelled with the page they came from.
+
 ### Primary
-- **Sparta Red** (`#fa0030`): The signature brand color and single "action" red. Used on the full-bleed conversion band, the numbered step accents, the red eyebrow labels, and the primary enrollment CTA.
-- **Deep Red** (`#d90b32`): A darker, richer red used as a full hero course-card background — the "취업 캠프" block.
-- **Coral** (`#ff4660`): A lighter, softer red for secondary accents, hover tints, and highlight text.
-- **Red Alt** (`#e8354e`): An intermediate red seen in accent text and gradient transitions between the reds.
+- **Sparta Red** (`#fa0030`): The fill of 수강신청하기, the enrolment button of the course page (320 × 56, `#ffffff` label; surface-3 capture 1). It is the primary because it is the product's primary action fill; the same red marks the selected course tab (강의소개: `#fa0030` label and 2px bottom border), fills the full-bleed conversion band on home, which is itself a link, and colours the red step numerals and the Total Career Solution eyebrow. The probe found no hover or pressed change on 수강신청하기.
+- **On Primary** (`#ffffff`): The enrolment label, the conversion band copy and text on the category cards.
 
-### Ink & Neutral
-- **Ink** (`#0c0e13`): Primary heading, nav, and strong-label color — a near-black with a faint blue undertone, warmer than pure black. Also the dark ink button background.
-- **Pure White** (`#ffffff`): Page background, white course cards, and text on saturated blocks.
-- **Body Slate** (`#41414b`): Secondary body copy and descriptions.
-- **Muted Slate** (`#858793`): Tertiary text, metadata, captions.
-- **Faint Grey** (`#a4a7b0`): Lowest-emphasis labels, placeholder, disabled text.
-- **Hairline** (`#e0e1e5`): Thin borders, dividers, and card outlines — the primary separation device in the shadowless system.
+### Category colours
+- **Category Red** (`#d90b32`): The AI 시대 취업 캠프 card on home.
+- **Category Teal** (`#0b495c`): The AI 입문 card on home and the fill of 기업교육 알아보기.
+- **Category Purple** (`#8723ba`): The 직장인 스킬업 card on home.
+- Headings in the numbered step section take a dark tint of the same families (`#470024`, `#512369`, `#0d3440`); they are prose here, not tokens.
 
-### Surface
-- **Surface Grey** (`#f2f6f8`): Cool-grey tinted surface for summary/info cards.
-- **Surface Cyan** (`#ecf8fc`): A very light cyan tint for alternating section bands and soft feature blocks.
+### Neutral & Surface
+- **Canvas** (`#ffffff`): The home body background, catalog course cards and the 더 알아보기 chip.
+- **Surface** (`#f5f6f7`): 더보기 buttons inside catalog cards.
+- **Surface Alt** (`#f1f1f3`): 더 많은 질문 보기 on the course page.
+- **Hover Tint** (`#f9f9fb`): The hover fill of header navigation items.
+- **Charcoal** (`#1d1e22`): Dark call-to-action buttons on the catalog (발급 가이드 확인하기, 문의하기).
 
-### Category Color Blocks
-- **Teal-Dark** (`#0b495c`): Full course-card background ("AI 입문") and the enterprise-education CTA button.
-- **Teal** (`#249eb3`): Course-type chip background ("챌린지형 강의").
-- **Purple** (`#8723ba`): Full course-card background ("직장인 스킬업").
-- **Light Cyan** (`#93e6f5`): Decorative heading color on dark bands ("도전하는 누구나...").
+### Text
+- **Ink** (`#0c0e13`): Section headings, header navigation labels, catalog card text and the fill of 후기 자세히 보기. The course page's large h2 computes a near-identical `#0d0e11`.
+- **Slate** (`#41414b`): Meta lines in the home review cards (and `#40414b` for bold copy on the course page).
+- **Muted** (`#858793`): Supporting lines under home section headings; idle course tabs compute `#858893`.
+- **Faint** (`#a4a7b0`): Footer lines, statistic labels and the top utility links (항해, 기업교육, 블로그, 고객센터).
+- **Coral** (`#ff4660`): A short label at the top of each home review card.
+- **Hero Aqua** (`#93e6f5`): The line above the home headline.
+- **On-dark Soft** (`#e0e1e5`): Supporting lines on the dark band of home.
 
-### Category Tags
-- **Tag Green** (`#66d417`) on **Green Tint** (`#f0ffeb`): "국비지원" (gov-funded) tag.
-- **Tag Orange** (`#ff7300`) on **Orange Tint** (`#ffeac7`): "NEW" tag.
-- **On-Primary** (`#ffffff`): Label color on red / saturated backgrounds.
+### Not tokens
+- Anchors on the Framer pages compute Chromium's default link colours (`#0000ee`, and `#ff0000` while pressed) on the anchor element while the visible labels sit in child text elements. Those defaults are neither brand colours nor states.
+- The favicon was not measured; no logo colour is claimed.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Display**: `Pretendard Bold` (weight 700) — carries every headline, from the 40px numbered steps down to the 18px lead copy.
-- **Body**: `Pretendard` (weight 400) — the document default for body copy and dense UI text.
-- **Accent**: `Gmarket Sans` — an occasional display accent font (G마켓 산스) used on select promotional headings.
+- **Live surface use**: Pretendard, in two forms. The Framer pages (home and the catalog) set text in separately named faces — `Pretendard Bold` (111 observed uses), `Pretendard Medium` (109) and `Pretendard SemiBold` (13) — each `loaded / high`; the weight lives in the face, so a Medium line can compute `font-weight: 400`. The course page sets `Pretendard, -apple-system, …` from files Team Sparta serves itself (`static.spartacodingclub.kr/static/fonts/Pretendard/Pretendard-Regular.subset.woff2` and siblings; 32 uses). `Gmarket Sans TTF Bold` (4 uses, `loaded`) sets the four 48px statistic figures on home.
+- **Official distributed font assets**: Pretendard is Kil Hyung-jin's open-source family; its LICENSE (opened 2026-09-30) reads "This Font Software is licensed under the SIL Open Font License, Version 1.1." Gmarket Sans is Gmarket's own typeface; Gmarket's font page (corp.gmarket.com/fonts) returned a page titled "G마켓 - 쇼핑을 바꾸는 쇼핑" with no licence text in its served HTML, so no licence is stated here.
+- **Official product use**: no Team Sparta page opened this session names its typefaces; not claimed.
+- **Declared only (no visible use)**: Cafe24Ohsquare, Cafe24Surround, Dokrip, DsDigital, DungGeunMo, EBSHunminjeongeumSBA, GmarketSans, Jeju Hallasan, NanumHandWritingDaughter, Inter, Noto Sans, Pretendard Black, Pretendard ExtraBold and FontAwesome are declared by the pages with 0 observed uses.
+- **Not brand faces**: 150 elements compute the browser default `sans-serif` (Framer anchors and list wrappers whose visible text is a child) and 10 course-page buttons compute `Arial` (the browser's default button face).
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Step Display | Pretendard Bold | 40px (2.50rem) | 700 | 1.30 (52px) | normal | Numbered "1 / 2 / 3" step markers, in red `#fa0030` |
-| Section Heading | Pretendard Bold | 32px (2.00rem) | 700 | 1.375 (44px) | normal | Hero / section H1 |
-| Sub-section | Pretendard Bold | 28px (1.75rem) | 700 | 1.36 (38px) | normal | Feature section heads |
-| Title | Pretendard Bold | 22px (1.38rem) | 700 | 1.45 (32px) | normal | Card / decorative titles |
-| Lead | Pretendard Bold | 18px (1.13rem) | 700 | 1.44 (26px) | normal | Lead / sub-head copy |
-| Eyebrow | Pretendard Bold | 15px (0.94rem) | 700 | 1.47 (22px) | -0.2px | Small red eyebrow labels |
-| Body | Pretendard | 16px (1.00rem) | 400 | 1.50 | normal | Standard reading text |
-| Caption | Pretendard | 12px (0.75rem) | 500 | 1.40 | normal | Tags, nav, metadata |
+| Role | Font | Size | Weight | Line Height | Tracking | Observed on |
+|------|------|------|--------|-------------|----------|-------------|
+| Hero | Pretendard Bold | 50px | 700 | 66px (1.32) | -1px | Home headline, `#ffffff` |
+| Stat | Gmarket Sans TTF Bold | 48px | 700 | 52px (1.08) | normal | Four figures on home, `#0c0e13` |
+| Band | Pretendard Bold | 40px | 700 | 54px (1.35) | normal | Conversion band headline, `#ffffff` |
+| Step Number | Pretendard Bold | 40px | 700 | 52px (1.3) | normal | Step numerals, `#fa0030` |
+| Section | Pretendard Bold | 32px | 700 | 44px (1.375) | normal | Home section headings, `#0c0e13` |
+| Section Small | Pretendard Bold | 28px | 700 | 38px (1.36) | normal | Home section heading |
+| Hero Sub | Pretendard Bold | 22px | 700 | 32px (1.45) | normal | Line above the hero, `#93e6f5` |
+| Course Title | Pretendard | 22px | 700 | 30px (1.36) | normal | Course page title, `#000000` |
+| Card Title | Pretendard Bold | 18px | 700 | 26px (1.44) | normal | Category cards and step copy |
+| Eyebrow | Pretendard Bold | 15px | 700 | 22px (1.47) | -0.2px | Total Career Solution, `#fa0030` |
+| Label | Pretendard Medium | 15px | 500 | 22px (1.47) | normal | Supporting lines, `#858793` |
+| Button | Pretendard | 15px | 700 | 22px (1.47) | normal | Course page buttons and tabs |
+| Footer | Pretendard Medium | 13px | 400 | 20px (1.54) | normal | Footer lines, `#a4a7b0` |
+| Caption | Pretendard | 12px | 500 | 18px (1.5) | normal | Course page footer, `#a4a7b0` |
 
 ### Principles
-- **Bold everywhere it persuades**: display, section, and lead text all run at Pretendard Bold 700 — the weight itself is the hierarchy signal.
-- **Ink for reading, red for action**: headings and body sit in ink `#0c0e13`; the red `#fa0030` is spent only on numbers, eyebrows, and CTAs.
-- **Hangul-first sizing**: body sits at a comfortable 16px with 1.5 line-height for dense Korean curriculum copy.
-- **One display voice**: Pretendard Bold owns headlines; Gmarket Sans is a rare accent, never the workhorse.
+- **Bold is the voice**: every heading from 18px to 50px is weight 700; only the hero tightens its tracking (-1px), and the eyebrow takes -0.2px.
+- **Weight carried by the face**: on the Framer pages the named face (Bold, Medium, SemiBold) decides the visible weight, not the computed `font-weight`.
+- **One accent face**: Gmarket Sans appears only on the statistic figures.
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Primary Enrollment CTA**
+**Enrolment button (primary)**
 - Background: `#fa0030`
 - Text: `#ffffff`
-- Radius: 8px
-- Padding: 10px 16px
-- Height: 42px
-- Font: 16px Pretendard Bold weight 700
-- Use: Primary enrollment action ("무료 수강신청") and the full-bleed red conversion band CTA
+- Radius: 38px
+- Padding: 16px 20px
+- Height: 56px
+- Font: 15px / 700 / 22px Pretendard
+- States: the probe found no hover or pressed change; focus shows only the browser's default ring
+- Use: 수강신청하기 on the course page (320 × 56)
 
-**Enterprise CTA (Teal-Dark)**
+**Enterprise button**
 - Background: `#0b495c`
 - Text: `#ffffff`
 - Radius: 6px
 - Padding: 10px 12px
 - Height: 40px
-- Font: 16px Pretendard Bold weight 700
-- Use: "기업교육 알아보기" secondary call-to-action
+- States: no hover change; pressed changes only Chromium's default link colour; focus shows only the default ring
+- Use: 기업교육 알아보기 on home
 
-**Dark Ink Button**
+**Review button**
 - Background: `#0c0e13`
-- Text: `#ffffff`
 - Radius: 6px
 - Padding: 8px 12px
 - Height: 36px
-- Font: 14px Pretendard weight 600
-- Use: "후기 자세히 보기" low-emphasis dark button
+- States: hover and pressed unmeasured; focus shows only the default ring
+- Use: 후기 자세히 보기 under the home review cards; the label colour was not recorded
 
-**Login Chip**
+**Catalog dark button**
+- Background: `#1d1e22`
+- Text: `#ffffff`
+- Radius: 8px
+- Padding: 14px 12px
+- Height: 52px
+- Use: 발급 가이드 확인하기 and 문의하기 on the catalog; states not measured
+
+**Grey buttons**
+- 더보기 in catalog cards: `#f5f6f7`, 8px radius, 12px 0px padding, 48px tall; states not measured
+- 더 많은 질문 보기 on the course page: `#f1f1f3`, `#000000` label, 8px radius, 48px tall, 15px / 700 Pretendard; no hover or pressed change
+
+**Learn-more chip**
 - Background: `#ffffff`
-- Text: `#0c0e13`
-- Border: 1px solid `#e0e1e5`
+- Text: `#000000`
 - Radius: 4px
-- Padding: 8px 11px
-- Height: 36px
-- Font: 14px Pretendard weight 500
-- Use: Header login chip
+- Padding: 8px 12px
+- Height: 30px
+- Use: 더 알아보기 on the course page's dark promotion panel; no hover or pressed change
 
-### Cards & Containers
+### Tabs & Navigation
 
-**Course Card (White)**
+**Course tab**
+- Text: `#858893`
+- Border: 2px bottom edge, transparent at rest
+- Padding: 3px 0px 0px
+- Height: 53px
+- Font: 15px / 700 / 22px Pretendard
+- Selected: `#fa0030` label with a 2px `#fa0030` bottom border
+- States: hover and pressed unmeasured (a fixed bar covered them); focus shows only the default ring
+- Use: 강의소개, 커리큘럼 and the other section tabs of the course page
+
+**Header navigation**
+- Text: `#0c0e13`
+- Padding: 8px 10px
+- Height: 40px
+- Hover: `#f9f9fb` fill with a 6px radius
+- Use: 전체 강의, 취업 캠프, 재직자 캠프, 커뮤니티, 수강후기 and 이벤트
+
+### Cards
+
+**Category card**
+- Background: `#d90b32` (also `#0b495c` and `#8723ba`)
+- Text: `#ffffff`
+- Radius: 16px
+- Padding: 32px 32px 48px
+- Use: 373 × 460 course-category links at the top of home
+
+**Conversion band**
+- Background: `#fa0030`
+- Text: `#ffffff`
+- Padding: 80px 0px 40px
+- Use: the full-bleed 1440 × 547 red band near the foot of home, one link
+
+**Catalog card**
 - Background: `#ffffff`
 - Text: `#0c0e13`
 - Radius: 8px
-- Padding: 24px
-- Use: Course catalog card on white canvas — no shadow
-
-**Summary Card (Tinted)**
-- Background: `#f2f6f8`
-- Text: `#0c0e13`
-- Radius: 12px
-- Padding: 16px
-- Use: Info / summary card sitting on the cool-grey surface
-
-### Badges
-
-**Category Tag — Gov-Funded**
-- Background: `#f0ffeb`
-- Text: `#66d417`
-- Radius: 4px
-- Padding: 0px 4px
-- Font: 12px Pretendard weight 500
-- Use: "국비지원" (gov-funded) course tag
-
-**Category Tag — New**
-- Background: `#ffeac7`
-- Text: `#ff7300`
-- Radius: 4px
-- Padding: 0px 4px
-- Font: 12px Pretendard weight 500
-- Use: "NEW" course tag
-
-**Course-Type Chip (Teal)**
-- Background: `#249eb3`
-- Text: `#ffffff`
-- Radius: 4px
-- Padding: 6px 12px
-- Font: 12px Pretendard weight 600
-- Use: "챌린지형 강의" course-type chip
-
-### Navigation
-- Background: `#ffffff`
-- Text: `#0c0e13`
-- Font: 16px Pretendard weight 600
-- Active: red `#fa0030` text on active item
-- Use: Top horizontal nav ("전체 강의", "재직자 캠프", "커뮤니티", "수강후기", "이벤트")
+- Padding: 24px 18px
+- Use: 371 × 399 course cards on the catalog
 
 ---
 
-**Verified:** 2026-07-02 (omd:add-reference CREATE — Tier 1 live inspect)
-**Tier 1 sources:** https://spartacodingclub.kr/ ; https://spartaclub.kr/catalog/scc ; https://blog.career.spartaclub.kr/designer
-**Tier 2 sources:** getdesign.md/teamsparta — 404 (also getdesign.md/spartacodingclub — 404); styles.refero.design/?q=team+sparta — not listed (only unrelated fuzzy matches)
+**Verified:** 2026-09-30 (deterministic collector capture of three public, logged-out pages of spartaclub.kr plus fixed keyboard-probe state reads and first-party context)
+**Tier 1 sources:** https://spartaclub.kr/ ; https://spartaclub.kr/catalog/scc ; https://spartaclub.kr/product/9 ; https://career.spartaclub.kr/ko/home ; https://blog.career.spartaclub.kr/designer
+**Tier 2 sources:** getdesign.md/teamsparta (HTTP 200, the name does not appear in the response) and styles.refero.design/?q=teamsparta (HTTP 200, the name appears only as the echoed query), requested 2026-09-30; no Tier 2 value used
 **Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
 ### Spacing System
-- Base unit: 4px
-- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px
-- Notable: Hero course cards use a generous 32px 32px 48px padding; catalog cards use 24px; summary cards 16px
+- Enrolment button: 16px vertical, 20px horizontal padding at 56px height
+- Small dark buttons: 8px 12px (36px) and 10px 12px (40px)
+- Catalog cards: 24px 18px padding; category cards: 32px 32px 48px with a 40px gap
+- Conversion band: 80px top and 40px bottom padding
 
 ### Grid & Container
-- Full-bleed saturated color bands stack vertically, each carrying a course category as an oversized 16px-radius card
-- Course catalog uses a multi-column grid of 8px-radius white cards (~373px wide)
-- Numbered "1 / 2 / 3" step sections walk the visitor through the value proposition
-- The page closes on a full-width red (`#fa0030`) conversion band with a white enrollment CTA
+- Home runs a full-width hero, a row of three category cards, a numbered three-step section, statistics, review cards in a row of four, and the red band before the footer.
+- The catalog lists course cards in rows of three under a monthly ranking heading.
+- The course page places a tab bar (강의소개, 커리큘럼, …) and the enrolment button above long-form course content and an FAQ.
 
 ### Whitespace Philosophy
-- **Momentum over minimalism**: color blocks and bold headlines create energy; whitespace paces the sections rather than emptying them.
-- **Flat segmentation**: sections separate by saturated background color and `#e0e1e5` hairlines, not by shadow.
-- **Scannable density**: the catalog packs many course cards but stays legible via pastel category tags and consistent card geometry.
+- **Loud blocks, quiet chrome**: colour carries the sections; buttons and tabs stay small and flat.
+- **Flat segmentation**: pale greys (`#f5f6f7`, `#f1f1f3`) and colour blocks separate content; nothing floats.
 
 ### Border Radius Scale
-- Small (4px): tags, chips, small buttons, login chip
-- Medium (6px): standard buttons (enterprise CTA, dark button)
-- Large (8px): white course cards, primary CTA
-- XL (12px): tinted summary cards
-- Hero (16px): oversized full-color course cards
-- Pill (99px): occasional fully-rounded pills and media frames
+- 0px: the default and the course tabs
+- 4px: learn-more chip
+- 6px: dark home buttons and hovered navigation items
+- 8px: catalog cards, grey and charcoal buttons
+- 16px: home category cards
+- 38px: the enrolment button
 
 ## 6. Depth & Elevation
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| Flat (Level 0) | `box-shadow: none` | Page background, headings, most surfaces |
-| Color block (Level 1) | Saturated background fill (`#fa0030` / `#0b495c` / `#8723ba` / `#d90b32`) | Section / course-card separation |
-| Hairline (Level 2) | `1px solid #e0e1e5` border | White card outlines, dividers |
-| Inset (rare) | `rgba(255,255,255,0.12) 0px 0px 2px 0px inset` | Faint inner edge on rounded media frames |
+| Flat | No shadow | Every captured element |
+| Grey fill | `#f5f6f7` / `#f1f1f3` | Secondary buttons |
+| Colour block | `#d90b32`, `#0b495c`, `#8723ba`, `#fa0030` | Category cards and the conversion band |
+| Dark | `#0c0e13` / `#1d1e22` | Dark buttons |
 
-**Shadow Philosophy**: Team Sparta is a near-shadowless system. Live inspection found `box-shadow: none` across the hero, nav, headings, catalog cards, and category tags. Depth and grouping come from bold, full-bleed color blocks and thin `#e0e1e5` hairlines — never elevation. This keeps the high-energy marketing surface feeling flat, fast, and mobile-native. When emphasis is needed the system reaches for color (the red `#fa0030` or a saturated block), not a drop shadow.
+**Shadow Philosophy**: all 429 element records compute `box-shadow: none`. Emphasis comes from saturated fills and bold type.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use Pretendard Bold (weight 700) for every headline — it's the brand's display voice
-- Reserve the red `#fa0030` for high-intent moments: the conversion band, numbered steps, eyebrow labels, and the primary CTA
-- Use near-black ink `#0c0e13` for headings and body instead of pure black
-- Separate sections with saturated color blocks and `#e0e1e5` hairlines, not shadows
-- Use full-bleed color bands (`#d90b32`, `#0b495c`, `#8723ba`) to carry course categories
-- Keep the pastel-on-saturated tag system consistent — green (`#f0ffeb` / `#66d417`), orange (`#ffeac7` / `#ff7300`)
-- Keep geometry compact — 4px-6px on buttons/chips, 8px-12px on cards, 16px on hero cards
-- Use white (`#ffffff`) course cards on the white canvas, relying on hairlines for definition
+- Use `#fa0030` for the primary action, the selected tab and the one red band
+- Set headings in Pretendard at weight 700; keep supporting lines in `#858793`
+- Use the category colours `#d90b32`, `#0b495c` and `#8723ba` for course categories
+- Keep controls small and flat: 4px, 6px and 8px radii; a 38px pill only for enrolment
+- Use Gmarket Sans only for statistic figures
 
 ### Don't
-- Spread the red `#fa0030` across decorative elements — it dilutes the single-action signal
-- Use pure black for text — reserve near-black ink `#0c0e13`
-- Add drop shadows for elevation — Team Sparta is a flat, shadowless system
-- Set headlines in a light weight — display is always Pretendard Bold (700)
-- Mix in a competing accent color against the red — the reds and category blocks are the palette
-- Use Gmarket Sans for body text — it is a rare display accent only
-- Overload a card with more than one category-tag color role at a time
+- Don't add shadows; none of the 429 captured elements has one
+- Don't invent hover or focus styles; the captured buttons show none of their own (the header navigation's `#f9f9fb` hover is the one measured exception)
+- Don't render Pretendard or Gmarket Sans with another face in their place
+- Don't treat Chromium's default link colours on Framer anchors as brand colours
+- Don't spread the red across secondary buttons; those are ink, charcoal or grey
 
 ## 8. Responsive Behavior
 
 ### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, color bands stack, hero cards full-width |
-| Tablet | 640-1024px | 2-up course cards, moderate padding |
-| Desktop | 1024-1440px | Full layout, multi-column catalog grid, full-bleed bands |
+Only the 1440 × 900 desktop viewport was captured. The Framer stylesheet served with home declares its text presets at three ranges — 1200px and up, 820–1199px and 0–819px (for example the 32px section heading steps to 30px and then 26px); those values were read from the served CSS, not from a narrow-viewport capture.
 
 ### Touch Targets
-- Primary CTA at 42px height, comfortable 10px 16px padding
-- Enterprise CTA at 40px, dark button at 36px height
-- Category tags compact (0px 4px) but grouped with generous card padding for tap comfort
+- Enrolment button: 56px
+- Course tabs: 53px
+- Catalog dark buttons: 52px; grey buttons: 48px
+- Enterprise button and header navigation: 40px
+- Review button: 36px; learn-more chip: 30px
 
 ### Collapsing Strategy
-- Hero color bands maintain full-bleed treatment; cards go full-width on mobile
-- Catalog grid: multi-column → 2-up → single column stacked
-- Numbered step sections stack vertically on narrow viewports
-- The red conversion band stays full-width across all breakpoints
+- How the pages collapse was not captured.
 
 ### Image Behavior
-- Course thumbnails and illustrations carry no shadow at any size, consistent with the flat system
-- Cards maintain their radius (8px catalog, 16px hero) across breakpoints
-- Media frames may use the faint inset edge and larger 30px-50px radii
+- Hero media and course imagery sit flat, without borders or shadows.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary CTA / action: Sparta Red (`#fa0030`)
-- Deep red block: (`#d90b32`)
-- Coral accent: (`#ff4660`)
-- Heading / body ink: Ink (`#0c0e13`)
-- Background: Pure White (`#ffffff`)
-- Tinted surface: Surface Grey (`#f2f6f8`), Surface Cyan (`#ecf8fc`)
-- Teal-dark block / enterprise CTA: (`#0b495c`)
-- Teal chip: (`#249eb3`)
-- Purple block: (`#8723ba`)
-- Light cyan decorative: (`#93e6f5`)
-- Body text: Slate (`#41414b`), muted (`#858793`), faint (`#a4a7b0`)
-- Hairline: (`#e0e1e5`)
-- Tags: green (`#66d417` on `#f0ffeb`), orange (`#ff7300` on `#ffeac7`)
+- Primary action, selected tab, band: `#fa0030` with `#ffffff`
+- Ink: `#0c0e13`; supporting text `#858793`, `#41414b`; footer `#a4a7b0`
+- Categories: `#d90b32`, `#0b495c`, `#8723ba`
+- Greys: `#f5f6f7`, `#f1f1f3`, hover `#f9f9fb`; charcoal `#1d1e22`
 
 ### Example Component Prompts
-- "Create a hero on white background with Pretendard Bold. Section H1 at 32px weight 700, line-height 44px, color #0c0e13. Below it, oversized 16px-radius course cards with full color backgrounds (#d90b32, #0b495c, #8723ba), white heading text, 32px 32px 48px padding."
-- "Build a red conversion band: full-width #fa0030 background, 80px top / 40px bottom padding, white Pretendard Bold headline, and a white 8px-radius CTA button (#ffffff bg, red text, 10px 16px padding)."
-- "Design a course catalog card: white #ffffff background, 8px radius, 24px padding, no shadow, 1px solid #e0e1e5 hairline. Title 22px Pretendard Bold #0c0e13, body 16px Pretendard #41414b. Add category tags: green (#f0ffeb bg, #66d417 text) and orange (#ffeac7 bg, #ff7300 text), 4px radius, 0 4px padding, 12px."
-- "Create top nav: white 56px header, Pretendard 16px weight 600 links in #0c0e13, red #fa0030 on active. Enterprise CTA right-aligned: #0b495c background, white text, 6px radius."
+- "Create an enrolment button: `#fa0030` background, `#ffffff` 15px Pretendard label at weight 700 with a 22px line, 38px radius, 16px 20px padding, 56px tall, no shadow."
+- "Build course section tabs: 15px Pretendard at weight 700 in `#858893`, 53px tall, a 2px transparent bottom border; the selected tab turns `#fa0030` with a 2px `#fa0030` bottom border."
+- "Create a category card: `#d90b32` background (or `#0b495c`, `#8723ba`), white 18px bold copy, 16px radius, 32px 32px 48px padding, 373 × 460."
+- "Create a small dark button: `#0c0e13` background, 6px radius, 8px 12px padding, 36px tall."
 
 ### Iteration Guide
-1. Pretendard Bold (700) for every headline; Pretendard 400 for body
-2. Red `#fa0030` is the single action color — spend it on CTAs, numbers, eyebrows only
-3. No shadows — separate with color blocks and `#e0e1e5` hairlines
-4. Ink `#0c0e13` for text, never pure black
-5. Compact geometry: 4px-6px buttons, 8px-12px cards, 16px hero cards
-6. Category tags are pastel-bg + saturated-label pairs; keep them consistent
-7. Full-bleed saturated bands carry course categories; the page ends on a red band
+1. One red, `#fa0030`, for the primary action and selection
+2. Pretendard 700 for every heading; Gmarket Sans only for statistics
+3. Category colours for course families, never for buttons in general
+4. Small radii on controls; 16px on category cards; the 38px pill is for enrolment
+5. Flat everywhere
 
 ---
 
 ## 10. Voice & Tone
 
-Team Sparta's voice is **energetic, encouraging, and plain-spoken** — a motivational coach that removes the intimidation from learning to build software. The brand's positioning "AI시대, 미래를 돌파하는 힘" ("the power to break through the future in the AI era") and the recurring "누구나 잠재력을 깨워 나아가도록" ("so anyone can awaken their potential and move forward") set the register: high-agency, inclusive, forward-leaning, never elitist. Copy treats the learner as someone on the verge of doing something big, not a student to be lectured.
+Team Sparta's voice is **energetic, encouraging and plain-spoken**. The positioning line "AI 시대, 미래를 돌파하는 힘" (the power to break through the future in the AI era) and the careers-site belief that anyone can wake their potential and do something big set the register: inclusive, forward-leaning, never elitist.
 
 | Context | Tone |
 |---|---|
-| Hero headlines | Aspirational, momentum-driven. "AI시대, 미래를 돌파하는 힘." Confident, inclusive. |
-| Course / section labels | Plain and outcome-first. "AI 시대 취업 캠프", "직장인 스킬업", "누구나 쉽게". |
-| CTAs | Direct, low-friction. "무료 수강신청", "기업교육 알아보기", "후기 자세히 보기". |
-| Curriculum copy | Benefit-first, jargon decoded — explains what the learner will be able to do. |
-| Enterprise copy | Credible and proof-led. "대한민국 대표 기업들의 AI 교육도 스파르타입니다." |
+| Hero headlines | Aspirational and momentum-driven. "AI 시대, 미래를 돌파하는 힘." |
+| Course and section labels | Plain and outcome-first. "AI 시대 취업 캠프", "직장인 스킬업", "AI 입문". |
+| Proof lines | Concrete claims. "누적 수강생, 취업생 수 1위!" |
+| Actions | Direct, low-friction. "수강신청하기", "기업교육 알아보기", "후기 자세히 보기", "더 많은 질문 보기". |
+| Course titles | Benefit-first. "오늘 배워 내일 바로 써먹는 ChatGPT 활용법". |
 
-**Voice samples (verbatim from live surfaces):**
-- "도전하는 누구나 잠재력을 깨울 수 있도록" — decorative section heading, on the homepage. *(verified live 2026-07-02)*
-- "맞춤형 AI 교육으로 IT 커리어의 모든 성장 과정을 함께해 보세요" — hero headline. *(verified live 2026-07-02)*
-- "지금 스파르타클럽에서 잠재력을 깨우세요" — red conversion-band CTA copy. *(verified live 2026-07-02)*
+**Voice samples (verbatim, opened 2026-09-30):**
+- "스파르타클럽 | AI시대, 미래를 돌파하는 힘" — spartaclub.kr page title.
+- "도전하는 누구나 잠재력을 깨울 수 있도록" — the line above the home headline.
+- "지금 스파르타클럽에서 / 잠재력을 깨우세요." — the red conversion band.
+- "스파르타클럽 AI 강의 | 맞춤형 교육으로 AI 시대 돌파!" — catalog page title.
+- "더 많은 활용법을 알고 싶다면?" — course page promotion panel.
 
-**Forbidden register**: fear-based "you'll fall behind" pressure, credential gatekeeping, undefined jargon left unexplained, cynical hype without a concrete outcome.
+**Forbidden register**: fear-based "you'll fall behind" pressure, credential gatekeeping, unexplained jargon, hype without a concrete outcome.
 
 ## 11. Brand Narrative
 
-Team Sparta (팀스파르타) was founded in **2018** and built its reputation through **스파르타코딩클럽 (Spartacodingclub)**, which set out to make coding — long treated in Korea as the domain of a technical elite — accessible to complete beginners. The brand's founding conviction is captured in its recurring mission language: "각자의 삶에 소프트웨어라는 도구를 더해 나만의 큰일을 가꾸어 나아갈 수 있도록" ("so that everyone can add software as a tool to their life and grow their own big thing"). The Sparta name — evoking rigorous, high-intensity training — is the promise: an environment engineered to get ordinary people across the finish line, "온라인 강의를 끝까지 완주하는 경험" (the experience of actually completing an online course).
+Team Sparta describes itself on its careers site as a company that believes anyone can wake their potential and do something big ("누구나 잠재력을 깨워 큰일을 낼 수 있다고 믿습니다"). It started with IT education; the same page says it now wakes the potential of 200,000 people a year and supplies some 4,000 trained people to the market, reports its 2024 operating profit and its 2025 selection as a 예비 유니콘 company, and states the aim that anyone can gain and use AI skills ("누구나 AI 역량을 갖추고 활용할 수 있도록").
 
-The product matured from beginner coding classes into a full "Total Career Solution" — bootcamps (내일배움캠프 / 항해), professional up-skilling (직장인 스킬업), AI-era job camps, 1:1 mentoring and career coaching, and corporate training for Korea's largest companies. The design surface mirrors this breadth: many course categories, each carried by its own saturated full-bleed color block, unified by a single red action color and a flat, fast, mobile-native aesthetic.
+The team blog's introduction of the design team — "“1명 같은 5명이 되자.” 팀스파르타 디자인팀을 소개합니다!" — describes a design team "누구나 큰일 내는 세상을 만드는 팀스파르타의" and an online part working on 스파르타코딩클럽, where government funding lets learners take courses free once they hold a 내일배움카드. It names the company's core values as 빠우성 — 빠르게, 와우하게, 진정성있게 (fast, wow, with sincerity) — says sincerity matters most to the design team, and that the team always tries to be the user's advocate ("디자인팀은 언제나 사용자의 대변인이 되려고 해요").
 
-What Team Sparta refuses, visible in its design and copy: the dry, intimidating chrome of institutional e-learning, and the passive lecture-hall framing of "study." What it embraces: bootcamp energy made tasteful — bold Pretendard headlines, loud but disciplined color, and copy that insists "누구나" (anyone) can break through. Internally the design team frames itself as **"디자인팀은 사용자 대변인이다" (the design team is the user's advocate)**, guided by the company value **"빠우성"** — 빠름 (speed), 와우 (wow), 진정성 (authenticity) — with a stated emphasis on authenticity.
+The product has since broadened its name and its catalog. spartacodingclub.kr redirects to spartaclub.kr; the brand on the page is 스파르타클럽; and the courses on the captured pages are AI courses — ChatGPT, Claude Code, AI PPT and automation — next to the funded 내일배움캠프, camps for working people, the 항해 programme and corporate training. The design reads the same way: loud category colour and bold Pretendard for momentum, one red for the next step, and small, flat controls around it.
 
 ## 12. Principles
 
-1. **Anyone can break through.** The brand exists to make software skills accessible to non-experts. *UI implication:* keep entry copy plain and outcome-first; never gate the value proposition behind jargon or credentials.
-2. **One action, one red.** The red `#fa0030` means "start here." *UI implication:* reserve the saturated red for CTAs, numbered steps, and eyebrows so the next move is never ambiguous.
-3. **Momentum by color, not clutter.** Energy comes from bold full-bleed blocks, not decoration. *UI implication:* use saturated bands (`#0b495c`, `#8723ba`, `#d90b32`) to segment and motivate; stay shadow-free.
-4. **Bold where it persuades.** *UI implication:* Pretendard Bold 700 on every headline; the weight itself carries the drive.
-5. **Speed, wow, authenticity (빠우성).** The company value made visible. *UI implication:* pages load fast and flat, moments of delight are earned, and claims are backed by real proof ("누적 수강생 1위", enterprise logos), not empty superlatives.
-6. **The design team is the user's advocate.** *UI implication:* dense catalogs stay scannable (pastel category tags, consistent card geometry) so the learner — not the funnel — is served first.
+1. **Anyone can break through.** The stated belief of the company. *UI implication:* keep entry copy plain and outcome-first; never gate the value proposition behind jargon.
+2. **One action, one red.** *UI implication:* `#fa0030` fills the enrolment button, marks the selected tab and paints the one conversion band; secondary actions are ink, charcoal or grey.
+3. **Momentum by colour, not decoration.** *UI implication:* course families get saturated blocks (`#d90b32`, `#0b495c`, `#8723ba`); nothing gets a shadow.
+4. **Fast, wow, sincere (빠우성).** The company's stated values. *UI implication:* flat pages, earned moments of delight and proof lines backed by numbers.
+5. **The design team is the user's advocate.** The design team's own description. *UI implication:* dense catalogs stay scannable with consistent card geometry.
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable Team Sparta / Spartacodingclub user segments (career-changers, working professionals up-skilling, gov-funded bootcamp students, enterprise L&D buyers), not individual people.*
+*Personas below are fictional archetypes informed by publicly observable Team Sparta user segments (career-changers, working professionals up-skilling, government-funded bootcamp students, corporate training buyers), not individual people.*
 
-**김도현, 27, 서울.** A non-CS graduate preparing for a career change into tech. Enrolled in an AI 취업 캠프 after browsing the 국비지원 (gov-funded) options. Values that the curriculum is outcome-first and the copy never assumes prior coding knowledge. Chose Sparta because it felt like it would push him to actually finish.
+**김도현, 27, 서울.** A non-CS graduate preparing for a career change. Browses the funded 내일배움캠프 options and the AI 시대 취업 캠프 card; values copy that never assumes prior coding knowledge.
 
-**이서연, 34, 판교.** A marketer up-skilling with 직장인 스킬업 to add AI tools to her workflow after hours. Appreciates the plain "퇴근 후" framing and the bold, motivating headlines that make studying feel like momentum rather than homework.
+**이서연, 34, 판교.** A marketer adding AI tools to her work after hours through 직장인 스킬업 courses such as the ChatGPT course; likes that each course page states what she can use tomorrow.
 
-**박준호, 41, 기업 인사팀.** An L&D manager evaluating "기업교육" for his company's employees. Trusts the brand because it leads with proof — "대한민국 대표 기업들의 AI 교육도 스파르타입니다" — and a credible Total Career Solution rather than vague promises.
+**박준호, 41, 기업 인사팀.** An L&D manager evaluating 기업교육 for his company; reaches it from the teal 기업교육 알아보기 button and wants proof before committing.
 
 ## 14. States
 
-| State | Treatment |
+Only these states were observed on the three captured pages; nothing else is specified here.
+
+| State | Observation |
 |---|---|
-| **Empty (no course results)** | White canvas. Single Ink (`#0c0e13`) line at body size explaining no matching courses, with one red (`#fa0030`) CTA to adjust filters. No illustration clutter. |
-| **Empty (saved list, none yet)** | Muted Slate (`#858793`) single line: nothing saved yet, plus a path back to the catalog. Calm and honest. |
-| **Loading (catalog fetch)** | Skeleton course cards on white at final 8px-radius dimensions. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
-| **Loading (in-place filter)** | Previous cards stay visible; a subtle red (`#fa0030`) progress indicator signals the refresh. |
-| **Error (fetch failed)** | Inline message in Ink with a plain-language explanation and a retry. No bare "오류가 발생했습니다" — states what to do next. |
-| **Error (form validation)** | Field-level message below the input in a warm error tone (coral `#ff4660`); describes what's valid, not just "필수". |
-| **Success (enrollment complete)** | Brief inline confirmation in an encouraging tone; next-step (수강 시작) linked immediately below. No gratuitous emoji. |
-| **Skeleton** | Surface-grey (`#f2f6f8`) blocks at final dimensions, matching card radius, flat pulse. |
-| **Disabled** | Faint Grey (`#a4a7b0`) text on reduced-opacity surface; the red CTA fades rather than turning grey, to preserve the brand read. |
+| **Hover (header navigation)** | Transparent → `#f9f9fb` fill with a 6px radius (probe; the bundle frame records the radius change). |
+| **No change** | 수강신청하기, 더 많은 질문 보기 and 더 알아보기 show no hover or pressed change; 기업교육 알아보기 shows no hover change and only Chromium's default link colour while pressed. |
+| **Selected (course tab)** | `#fa0030` label and 2px `#fa0030` bottom border; idle tabs `#858893`. |
+| **Hover (category cards)** | The bundle's hover and focus frames record a transform change; its value was not recorded, so it is unmeasured. |
+| **Focus** | Every probed control shows only the browser's default ring (`outline-style: auto`); no authored focus style. |
+| **Unmeasured** | Hover and pressed on the course tabs (covered by a fixed bar) and on 후기 자세히 보기 (:hover did not match). |
+
+Error, empty, loading and success states were not captured and are not described.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, chip press, focus |
-| `motion-standard` | 220ms | Card / section reveal, sheet, dropdown |
-| `motion-slow` | 340ms | Page-level transitions, hero band reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, chips, sections |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is energetic but controlled — consistent with the bold, flat aesthetic. Course cards and color bands fade-in from below at `motion-standard / ease-enter` as the visitor scrolls; the red CTA responds to press with a subtle scale/opacity shift. Numbered step sections may reveal sequentially to reinforce the "1 → 2 → 3" progression. No excessive bounce or spring — the energy comes from color and copy, not novelty motion. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and scroll reveals become immediate; the site stays fully functional.
+The probe read the transitions the controls compute. 수강신청하기 transitions `width 0.2s ease-in-out`; the course tabs carry a transition of up to 300ms whose property the probe did not name; 더 많은 질문 보기, 더 알아보기, 기업교육 알아보기, 후기 자세히 보기 and the header navigation compute `transition: all 0s`. The Framer category cards change transform on hover, but the value and timing were not recorded. Nothing else about motion (hero media, scroll reveals) was measured; treat it as unspecified and honour `prefers-reduced-motion` in any build.
 
 <!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on
-https://spartacodingclub.kr/ (301 → spartaclub.kr) and https://spartaclub.kr/catalog/scc:
-- Signature red #fa0030 (rgb 250,0,48) — full-bleed conversion band, numbered "1/2/3" steps, "Total Career Solution" eyebrow
-- Ink #0c0e13 (rgb 12,14,19) headings; Pretendard Bold 700 across all headlines; Gmarket Sans accent
-- Hero course-card backgrounds: deep red #d90b32, teal-dark #0b495c, purple #8723ba; 16px radius
-- box-shadow: none across hero/nav/headings/cards (flat system); #e0e1e5 hairlines
-- Category tags: green #66d417 on #f0ffeb, orange #ff7300 on #ffeac7; 4px radius
-- Live voice samples: "도전하는 누구나 잠재력을 깨울 수 있도록", "맞춤형 AI 교육으로 IT 커리어의 모든 성장 과정을 함께해 보세요", "지금 스파르타클럽에서 잠재력을 깨우세요"
-- document.title: "스파르타클럽 | AI시대, 미래를 돌파하는 힘"
-
-Brand values / philosophy (§10-12) sourced from Team Sparta's official design-team blog
-https://blog.career.spartaclub.kr/designer:
-- Company value "빠우성" = 빠름 (speed) / 와우 (wow) / 진정성 (authenticity), emphasis on authenticity
-- Design-team self-identity "디자인팀은 사용자 대변인이다" (the design team is the user's advocate)
-- Mission framing "각자의 삶에 소프트웨어라는 도구를 더해 나만의 큰일을 가꾸어 나아갈 수 있도록"
-  and "누구나 잠재력을 깨워 나아가도록" (from spartaclub.kr homepage copy)
-
-Founding year (2018) and product breadth (Spartacodingclub, 내일배움캠프/항해 bootcamps, 직장인 스킬업,
-기업교육) are widely documented public facts about Team Sparta; not directly quoted from a single
-verified statement in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable Team Sparta user segments
-(career-changers, working professionals, gov-funded bootcamp students, enterprise L&D). Names are
-illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "one action, one red", "momentum by color, not clutter", "bootcamp energy
-made tasteful") are editorial readings connecting Team Sparta's observed design to its positioning,
-not directly sourced statements.
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/teamsparta.json (capturedAt 2026-09-30T11:09:02Z), deterministic collector, 1440x900, logged out: spartaclub.kr (spartacodingclub.kr redirects here), /catalog/scc, /product/9. States: fixed keyboard probe raws docs/research/2026-09-29-growth/raw/teamsparta-states-course.json and teamsparta-states-home.json.
+- §1, §10, §11 context: spartaclub.kr home, catalog and course page copy and footer; career.spartaclub.kr/ko/home; blog.career.spartaclub.kr/designer, opened 2026-09-30.
+- §3 licence: the Pretendard LICENSE on GitHub, opened 2026-09-30.
+- Personas are fictional archetypes. Interpretive readings are editorial.
 -->

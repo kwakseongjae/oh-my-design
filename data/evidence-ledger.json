@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 276,
-  "sources": 1668,
+  "references_with_verification_v2": 286,
+  "sources": 1752,
   "sources_by_kind": {
     "brand-asset": 79,
-    "license": 112,
-    "official-doc": 666,
-    "product-surface": 811
+    "license": 124,
+    "official-doc": 684,
+    "product-surface": 865
   },
   "references": {
     "104": {
@@ -1226,6 +1226,54 @@
           "kind": "official-doc",
           "captured": "2026-07-13",
           "host": "github.com"
+        }
+      ]
+    },
+    "buzzvil": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "buzzvil-careers",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.buzzvil.com"
+        },
+        {
+          "id": "buzzvil-ds-post",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "tech.buzzvil.com"
+        },
+        {
+          "id": "buzzvil-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.buzzvil.com"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.buzzvil.com"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.buzzvil.com"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.buzzvil.com"
         }
       ]
     },
@@ -2507,6 +2555,66 @@
         }
       ]
     },
+    "drdiary": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "drdiary-blog",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "blog.naver.com"
+        },
+        {
+          "id": "drdiary-probe-contact",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "drdiary.co.kr"
+        },
+        {
+          "id": "drdiary-probe-press",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "drdiary.co.kr"
+        },
+        {
+          "id": "drdiary-probe-solution",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "drdiary.co.kr"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "drdiary.co.kr"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "drdiary.co.kr"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "drdiary.co.kr"
+        },
+        {
+          "id": "surface-surface-4",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "drdiary.co.kr"
+        }
+      ]
+    },
     "ecosia": {
       "checked": "2026-09-26",
       "claims": 0,
@@ -3578,6 +3686,66 @@
           "kind": "product-surface",
           "captured": "2026-09-26",
           "host": "www.gousto.co.uk"
+        }
+      ]
+    },
+    "greeting": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "doodlin-about",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.doodlin.co.kr"
+        },
+        {
+          "id": "greeting-blog",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "blog.greetinghr.com"
+        },
+        {
+          "id": "greeting-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.greetinghr.com"
+        },
+        {
+          "id": "greeting-probe-pricing",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.greetinghr.com"
+        },
+        {
+          "id": "poppins-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.greetinghr.com"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.greetinghr.com"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.greetinghr.com"
         }
       ]
     },
@@ -4796,6 +4964,66 @@
           "kind": "product-surface",
           "captured": "2026-09-30",
           "host": "card.kbcard.com"
+        }
+      ]
+    },
+    "kcd": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "kcd-blog",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "blog.kcd.co.kr"
+        },
+        {
+          "id": "kcd-probe-about",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "kcd.co.kr"
+        },
+        {
+          "id": "kcd-probe-cashnote",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "cashnote.kr"
+        },
+        {
+          "id": "kcd-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "kcd.co.kr"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "kcd.co.kr"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "kcd.co.kr"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "kcd.co.kr"
+        },
+        {
+          "id": "surface-surface-4",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "cashnote.kr"
         }
       ]
     },
@@ -7727,6 +7955,36 @@
         }
       ]
     },
+    "petfriends": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "petfriends-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "m.pet-friends.co.kr"
+        },
+        {
+          "id": "petfriends-probe-home-sheet",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "m.pet-friends.co.kr"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "m.pet-friends.co.kr"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "m.pet-friends.co.kr"
+        }
+      ]
+    },
     "pinkfong": {
       "checked": "2026-07-13",
       "claims": 0,
@@ -7973,6 +8231,66 @@
         }
       ]
     },
+    "protopie": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "figtree-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "inter-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "protopie-ko",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.protopie.io"
+        },
+        {
+          "id": "protopie-legal",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.protopie.io"
+        },
+        {
+          "id": "protopie-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.protopie.io"
+        },
+        {
+          "id": "protopie-probe-plans",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.protopie.io"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.protopie.io"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.protopie.io"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.protopie.io"
+        }
+      ]
+    },
     "qiita": {
       "checked": "2026-09-22",
       "claims": 0,
@@ -8024,6 +8342,60 @@
           "kind": "product-surface",
           "captured": "2026-09-26",
           "host": "qonto.com"
+        }
+      ]
+    },
+    "quotabook": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "geist-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "quotabook-blog",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "blog.naver.com"
+        },
+        {
+          "id": "quotabook-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "quotabook.com"
+        },
+        {
+          "id": "quotalab",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.quotalab.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "quotabook.com"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "quotabook.com"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "quotabook.com"
         }
       ]
     },
@@ -8831,6 +9203,60 @@
         }
       ]
     },
+    "shiftee": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "inter-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "shiftee-blog",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "shiftee.io"
+        },
+        {
+          "id": "shiftee-news-2023",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "shiftee.io"
+        },
+        {
+          "id": "shiftee-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "shiftee.io"
+        },
+        {
+          "id": "shiftee-probe-pricing",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "shiftee.io"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "shiftee.io"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "shiftee.io"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "shiftee.io"
+        }
+      ]
+    },
     "shiftup": {
       "checked": "2026-09-30",
       "claims": 0,
@@ -9236,6 +9662,90 @@
           "kind": "official-doc",
           "captured": "2026-07-13",
           "host": "www.sony.com"
+        }
+      ]
+    },
+    "soomgo": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "soomgo-about",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "soomgo.com"
+        },
+        {
+          "id": "soomgo-culture",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "soomgo.team"
+        },
+        {
+          "id": "soomgo-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "soomgo.com"
+        },
+        {
+          "id": "soomgo-probe-home-region",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "soomgo.com"
+        },
+        {
+          "id": "soomgo-probe-pro",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "soomgo.com"
+        },
+        {
+          "id": "soomgo-probe-search",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "soomgo.com"
+        },
+        {
+          "id": "soomgo-probe-search-input",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "soomgo.com"
+        },
+        {
+          "id": "soomgo-rebrand",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "soomgo.team"
+        },
+        {
+          "id": "soomgo-team",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "soomgo.team"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "soomgo.com"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "soomgo.com"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "soomgo.com"
         }
       ]
     },
@@ -9890,6 +10400,60 @@
           "kind": "product-surface",
           "captured": "2026-07-13",
           "host": "www.team-lab.com"
+        }
+      ]
+    },
+    "teamsparta": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "spartaclub.kr"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "spartaclub.kr"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "spartaclub.kr"
+        },
+        {
+          "id": "teamsparta-career",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "career.spartaclub.kr"
+        },
+        {
+          "id": "teamsparta-design-blog",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "blog.career.spartaclub.kr"
+        },
+        {
+          "id": "teamsparta-probe-course",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "spartaclub.kr"
+        },
+        {
+          "id": "teamsparta-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "spartaclub.kr"
         }
       ]
     },

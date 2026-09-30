@@ -9,53 +9,272 @@ primary_color: "#f44336"
 logo:
   type: favicon
   slug: "https://www.buzzvil.com/favicon.png"
-verified: "2026-06-26"
+verified: "2026-09-30"
 added: "2026-06-26"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://www.buzzvil.com/", inspected: "2026-09-30" }
+    - { id: surface-2, kind: corporate, url: "https://www.buzzvil.com/company/about_us", inspected: "2026-09-30" }
+    - { id: surface-3, kind: marketing, url: "https://www.buzzvil.com/monetize/buzzbenefit", inspected: "2026-09-30" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://www.buzzvil.com/", captured: "2026-09-30" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://www.buzzvil.com/company/about_us", captured: "2026-09-30" }
+    - { id: surface-surface-3, kind: product-surface, url: "https://www.buzzvil.com/monetize/buzzbenefit", captured: "2026-09-30" }
+    - { id: buzzvil-probe-home, kind: product-surface, url: "https://www.buzzvil.com/", captured: "2026-09-30" }
+    - { id: buzzvil-careers, kind: official-doc, url: "https://www.buzzvil.com/career/how_we_work", captured: "2026-09-30" }
+    - { id: buzzvil-ds-post, kind: official-doc, url: "https://tech.buzzvil.com/blog/design-system-at-buzzvil", captured: "2026-09-30" }
+    - { id: pretendard-license, kind: license, url: "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &cta { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"7\"]", captured: "2026-09-30" }
+    "tokens.colors.on-primary": *cta
+    "tokens.colors.black": &adc { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-09-30" }
+    "tokens.colors.navy": &ghostprobe { surface_id: home, source_id: buzzvil-probe-home, method: live-state-probe, selector: "a 광고 문의하기 (204 x 54.7): rest bg transparent over rgb(14, 23, 31), fg rgb(242, 245, 247), border 1.17647px solid rgb(242, 245, 247), radius 8px; hover and pressed bg rgba(0, 0, 0, 0) -> rgba(242, 245, 247, 0.125) and filter none -> brightness(1.1); transition background-color, color 0.3s ease; focus (Tab #10) outline none -> rgb(0, 95, 204) auto 1.17647px, the browser default ring", captured: "2026-09-30" }
+    "tokens.colors.ink-slate": &slate { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h3", captured: "2026-09-30" }
+    "tokens.colors.body": &body { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.colors.secondary": &desc { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.muted": &nav { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-09-30" }
+    "tokens.colors.muted-alt": &mutedalt { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.faint": &faint { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.surface": &sec { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-09-30" }
+    "tokens.colors.surface-soft": &aboutcard { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::li", captured: "2026-09-30" }
+    "tokens.colors.mist": &mistcard { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"10\"]", captured: "2026-09-30" }
+    "tokens.colors.white": &hdr { surface_id: home, source_id: buzzvil-probe-home, method: live-state-probe, selector: "header, third ancestor of 문의하기 and 광고센터 바로가기: bg rgb(255, 255, 255)", captured: "2026-09-30" }
+    "tokens.typography.family.sans": &bodydef { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
+    "tokens.typography.display-hero.size": &h1 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h1", captured: "2026-09-30" }
+    "tokens.typography.display-hero.weight": *h1
+    "tokens.typography.display-hero.lineHeight": *h1
+    "tokens.typography.display-hero.tracking": *h1
+    "tokens.typography.display-hero.use": *h1
+    "tokens.typography.display-about.size": &abouth1 { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h1", captured: "2026-09-30" }
+    "tokens.typography.display-about.weight": *abouth1
+    "tokens.typography.display-about.lineHeight": *abouth1
+    "tokens.typography.display-about.tracking": *abouth1
+    "tokens.typography.display-about.use": *abouth1
+    "tokens.typography.display-product.size": &prodh1 { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h1", captured: "2026-09-30" }
+    "tokens.typography.display-product.weight": *prodh1
+    "tokens.typography.display-product.lineHeight": *prodh1
+    "tokens.typography.display-product.tracking": *prodh1
+    "tokens.typography.display-product.use": *prodh1
+    "tokens.typography.stat.size": &stat { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.stat.weight": *stat
+    "tokens.typography.stat.lineHeight": *stat
+    "tokens.typography.stat.tracking": *stat
+    "tokens.typography.stat.use": *stat
+    "tokens.typography.section.size": &h2 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
+    "tokens.typography.section.weight": *h2
+    "tokens.typography.section.lineHeight": *h2
+    "tokens.typography.section.tracking": *h2
+    "tokens.typography.section.use": *h2
+    "tokens.typography.stat-value.size": &aboutstat { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.typography.stat-value.weight": *aboutstat
+    "tokens.typography.stat-value.lineHeight": *aboutstat
+    "tokens.typography.stat-value.tracking": *aboutstat
+    "tokens.typography.stat-value.use": *aboutstat
+    "tokens.typography.subsection.size": &h3dark { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
+    "tokens.typography.subsection.weight": *h3dark
+    "tokens.typography.subsection.lineHeight": *h3dark
+    "tokens.typography.subsection.tracking": *h3dark
+    "tokens.typography.subsection.use": *h3dark
+    "tokens.typography.card-title.size": &cardh3 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
+    "tokens.typography.card-title.weight": *cardh3
+    "tokens.typography.card-title.lineHeight": *cardh3
+    "tokens.typography.card-title.tracking": *cardh3
+    "tokens.typography.card-title.use": *cardh3
+    "tokens.typography.lead.size": &lead { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h1", captured: "2026-09-30" }
+    "tokens.typography.lead.weight": *lead
+    "tokens.typography.lead.lineHeight": *lead
+    "tokens.typography.lead.tracking": *lead
+    "tokens.typography.lead.use": *lead
+    "tokens.typography.eyebrow.size": &eyebrow { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.eyebrow.weight": *eyebrow
+    "tokens.typography.eyebrow.lineHeight": *eyebrow
+    "tokens.typography.eyebrow.tracking": *eyebrow
+    "tokens.typography.eyebrow.use": *eyebrow
+    "tokens.typography.body-lg.size": *desc
+    "tokens.typography.body-lg.weight": *desc
+    "tokens.typography.body-lg.lineHeight": *desc
+    "tokens.typography.body-lg.tracking": *desc
+    "tokens.typography.body-lg.use": *desc
+    "tokens.typography.body.size": *body
+    "tokens.typography.body.weight": *body
+    "tokens.typography.body.lineHeight": *body
+    "tokens.typography.body.tracking": *body
+    "tokens.typography.body.use": *body
+    "tokens.typography.nav.size": *nav
+    "tokens.typography.nav.weight": *nav
+    "tokens.typography.nav.lineHeight": *nav
+    "tokens.typography.nav.tracking": *nav
+    "tokens.typography.nav.use": *nav
+    "tokens.typography.button.size": *cta
+    "tokens.typography.button.weight": *cta
+    "tokens.typography.button.lineHeight": *cta
+    "tokens.typography.button.tracking": *cta
+    "tokens.typography.button.use": *cta
+    "tokens.typography.button-lg.size": *sec
+    "tokens.typography.button-lg.weight": *sec
+    "tokens.typography.button-lg.lineHeight": *sec
+    "tokens.typography.button-lg.tracking": *sec
+    "tokens.typography.button-lg.use": *sec
+    "tokens.typography.caption.size": &caption { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.caption.weight": *caption
+    "tokens.typography.caption.lineHeight": *caption
+    "tokens.typography.caption.tracking": *caption
+    "tokens.typography.caption.use": *caption
+    "tokens.spacing.cta-y": *cta
+    "tokens.spacing.cta-x": *cta
+    "tokens.spacing.hero-btn-y": *sec
+    "tokens.spacing.hero-btn-x": *sec
+    "tokens.spacing.card": &prodcard { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"28\"]", captured: "2026-09-30" }
+    "tokens.spacing.card-top": *mistcard
+    "tokens.rounded.cta": *cta
+    "tokens.rounded.button": *sec
+    "tokens.rounded.feature": *mistcard
+    "tokens.rounded.card": *prodcard
+    "tokens.components.contact-button.type": *cta
+    "tokens.components.contact-button.bg": *cta
+    "tokens.components.contact-button.fg": *cta
+    "tokens.components.contact-button.radius": *cta
+    "tokens.components.contact-button.padding": *cta
+    "tokens.components.contact-button.height": *cta
+    "tokens.components.contact-button.font": *cta
+    "tokens.components.contact-button.hover": &ctaprobe { surface_id: home, source_id: buzzvil-probe-home, method: live-state-probe, selector: "a 문의하기 (94.1 x 44.1): rest bg rgb(244, 67, 54), fg rgb(255, 255, 255), transition all 0.4s ease; hover and pressed transform none -> matrix(1, 0, 0, 1, 0, -4) on self and label, colours unchanged; focus (Tab #7) outline none -> rgb(0, 95, 204) auto 1.17647px, the browser default ring", captured: "2026-09-30" }
+    "tokens.components.contact-button.pressed": *ctaprobe
+    "tokens.components.contact-button.states": *ctaprobe
+    "tokens.components.contact-button.use": *cta
+    "tokens.components.adcenter-button.type": *adc
+    "tokens.components.adcenter-button.bg": *adc
+    "tokens.components.adcenter-button.fg": *adc
+    "tokens.components.adcenter-button.radius": *adc
+    "tokens.components.adcenter-button.padding": *adc
+    "tokens.components.adcenter-button.height": *adc
+    "tokens.components.adcenter-button.font": *adc
+    "tokens.components.adcenter-button.hover": &adcprobe { surface_id: home, source_id: buzzvil-probe-home, method: live-state-probe, selector: "a 광고센터 바로가기 (143.8 x 44.1): rest bg rgb(0, 0, 0), fg rgb(255, 255, 255), transition all 0.4s ease; hover and pressed transform none -> matrix(1, 0, 0, 1, 0, -4) on self and label; focus (Tab #6) the browser default ring only", captured: "2026-09-30" }
+    "tokens.components.adcenter-button.pressed": *adcprobe
+    "tokens.components.adcenter-button.states": *adcprobe
+    "tokens.components.adcenter-button.use": *adc
+    "tokens.components.lang-toggle.type": &eng { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"8\"]", captured: "2026-09-30" }
+    "tokens.components.lang-toggle.bg": *eng
+    "tokens.components.lang-toggle.fg": *eng
+    "tokens.components.lang-toggle.border": *eng
+    "tokens.components.lang-toggle.radius": *eng
+    "tokens.components.lang-toggle.padding": *eng
+    "tokens.components.lang-toggle.height": *eng
+    "tokens.components.lang-toggle.font": *eng
+    "tokens.components.lang-toggle.hover": &engprobe { surface_id: home, source_id: buzzvil-probe-home, method: live-state-probe, selector: "button ENG (56.3 x 44.1): rest transparent over rgb(255, 255, 255), fg rgb(0, 0, 0), border 1.17647px solid rgb(0, 0, 0); hover and pressed transform none -> matrix(1, 0, 0, 1, 0, -4); focus (Tab #8) NO CHANGE across self, 1 descendant and 3 ancestor levels", captured: "2026-09-30" }
+    "tokens.components.lang-toggle.pressed": *engprobe
+    "tokens.components.lang-toggle.states": *engprobe
+    "tokens.components.lang-toggle.use": *eng
+    "tokens.components.nav-item.type": *nav
+    "tokens.components.nav-item.fg": *nav
+    "tokens.components.nav-item.height": *nav
+    "tokens.components.nav-item.font": *nav
+    "tokens.components.nav-item.hover": &navprobe { surface_id: home, source_id: buzzvil-probe-home, method: live-state-probe, selector: "button Products (55.7 x 74.8): rest fg rgb(91, 114, 130); hover and pressed fg -> rgb(0, 0, 0) on self and label, settled (bundle ::state-hover and ::state-pressed frames agree); focus (Tab #1) NO CHANGE", captured: "2026-09-30" }
+    "tokens.components.nav-item.pressed": *navprobe
+    "tokens.components.nav-item.states": *navprobe
+    "tokens.components.nav-item.use": *nav
+    "tokens.components.explore-button.type": *sec
+    "tokens.components.explore-button.bg": *sec
+    "tokens.components.explore-button.fg": *sec
+    "tokens.components.explore-button.border": *sec
+    "tokens.components.explore-button.radius": *sec
+    "tokens.components.explore-button.padding": *sec
+    "tokens.components.explore-button.height": *sec
+    "tokens.components.explore-button.font": *sec
+    "tokens.components.explore-button.hover": &secprobe { surface_id: home, source_id: buzzvil-probe-home, method: live-state-probe, selector: "a 광고 상품 둘러보기 (204 x 54.7): rest bg rgb(242, 245, 247), fg rgb(62, 84, 99); hover and pressed filter none -> brightness(0.9); transition background-color, color 0.3s ease; focus (Tab #9) the browser default ring only", captured: "2026-09-30" }
+    "tokens.components.explore-button.pressed": *secprobe
+    "tokens.components.explore-button.states": *secprobe
+    "tokens.components.explore-button.use": *sec
+    "tokens.components.ghost-button.type": &ghost { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-09-30" }
+    "tokens.components.ghost-button.bg": *ghost
+    "tokens.components.ghost-button.fg": *ghost
+    "tokens.components.ghost-button.border": *ghost
+    "tokens.components.ghost-button.radius": *ghost
+    "tokens.components.ghost-button.padding": *ghost
+    "tokens.components.ghost-button.height": *ghost
+    "tokens.components.ghost-button.font": *ghost
+    "tokens.components.ghost-button.hover": *ghostprobe
+    "tokens.components.ghost-button.pressed": *ghostprobe
+    "tokens.components.ghost-button.states": *ghostprobe
+    "tokens.components.ghost-button.use": *ghost
+    "tokens.components.feature-card.type": *mistcard
+    "tokens.components.feature-card.bg": *mistcard
+    "tokens.components.feature-card.radius": *mistcard
+    "tokens.components.feature-card.padding": *mistcard
+    "tokens.components.feature-card.size": *mistcard
+    "tokens.components.feature-card.states": *mistcard
+    "tokens.components.feature-card.use": *mistcard
+    "tokens.components.product-link-card.type": *prodcard
+    "tokens.components.product-link-card.radius": *prodcard
+    "tokens.components.product-link-card.padding": *prodcard
+    "tokens.components.product-link-card.size": *prodcard
+    "tokens.components.product-link-card.use": *prodcard
+    "tokens.components.about-card.type": *aboutcard
+    "tokens.components.about-card.bg": *aboutcard
+    "tokens.components.about-card.radius": *aboutcard
+    "tokens.components.about-card.size": *aboutcard
+    "tokens.components.about-card.use": *aboutcard
+    "tokens.components.carousel-arrow.type": &arrow { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-09-30" }
+    "tokens.components.carousel-arrow.bg": *arrow
+    "tokens.components.carousel-arrow.border": *arrow
+    "tokens.components.carousel-arrow.radius": *arrow
+    "tokens.components.carousel-arrow.shadow": *arrow
+    "tokens.components.carousel-arrow.size": *arrow
+    "tokens.components.carousel-arrow.disabled": *arrow
+    "tokens.components.carousel-arrow.states": *arrow
+    "tokens.components.carousel-arrow.use": *arrow
 tokens:
-  source: live-extract
-  extracted: "2026-06-26"
-  note: "primary = live contact-CTA coral red (#f44336, also the brandmark color); hero/dark sections sit on ink navy (#0e171f) with a dark slate card surface (#2a3f4d); the cool light surface (#f2f5f7) carries secondary buttons. Flat — box-shadow: none across the flagship surface."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
     primary: "#f44336"
-    ink: "#0e171f"
-    ink-pure: "#000000"
-    canvas: "#ffffff"
-    surface: "#f2f5f7"
-    surface-dark: "#2a3f4d"
-    body: "#3e5463"
+    on-primary: "#ffffff"
+    black: "#000000"
+    navy: "#0e171f"
+    ink-slate: "#1c2b36"
+    body: "#2a3f4d"
+    secondary: "#3e5463"
     muted: "#5b7282"
     muted-alt: "#7a909e"
     faint: "#9fb1bd"
-    faint-alt: "#c1ccd6"
-    hairline: "#dce3e8"
-    on-primary: "#ffffff"
+    surface: "#f2f5f7"
+    surface-soft: "#f8f9fa"
+    mist: "#dce3e8"
+    white: "#ffffff"
   typography:
     family: { sans: "Pretendard" }
-    display-hero: { size: 78, weight: 800, lineHeight: 1.19, use: "Hero headline, Pretendard ExtraBold" }
-    display:      { size: 56, weight: 700, use: "Large section headline" }
-    section:      { size: 48, weight: 700, use: "Section title" }
-    subsection:   { size: 32, weight: 700, use: "Card / feature heading" }
-    title:        { size: 24, weight: 700, use: "Sub-heading" }
-    lead:         { size: 24, weight: 400, lineHeight: 1.31, use: "Hero subhead / lead paragraph" }
-    nav:          { size: 16, weight: 600, use: "Top nav link, Pretendard SemiBold" }
-    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Standard reading text" }
-    button-lg:    { size: 20, weight: 400, use: "Large CTA / filter-pill label" }
-    caption:      { size: 12, weight: 500, use: "Small labels, metadata" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 40, section: 80 }
-  rounded: { sm: 4, md: 8, lg: 16, xl: 32, full: 9999 }
-  shadow:
-    none: "none"
+    display-hero: { size: 78, weight: 800, lineHeight: 1.4, tracking: -0.78, use: "Home hero headline (모두가 사랑하는 방식의 광고), 109.2px line; its fill is clipped to the text over the #0e171f hero, so no text colour is a token" }
+    display-about: { size: 76, weight: 800, lineHeight: 1.4, tracking: -0.76, use: "Mission headline on /company/about_us (Boost our client growth in a way people love.), white, 106.4px line" }
+    display-product: { size: 56, weight: 800, lineHeight: 1.4, tracking: -0.56, use: "Product page headline on /monetize/buzzbenefit, #000000, 78.4px line" }
+    stat: { size: 56, weight: 700, lineHeight: 1.4, tracking: -0.56, use: "Hero statistics on home (39%, x4, 82%), white" }
+    section: { size: 48, weight: 700, lineHeight: 1.4, tracking: -0.48, use: "Section headings on all three pages, white on dark bands and #000000 on light ones, 67.2px line" }
+    stat-value: { size: 48, weight: 800, lineHeight: 1.4, tracking: -0.48, use: "Company figures on /company/about_us (9,000만+, 82%, 500개+, 4배)" }
+    subsection: { size: 36, weight: 700, lineHeight: 1.5, tracking: -0.36, use: "Feature headings on home and about (white on dark, #1c2b36 on light), 54px line" }
+    card-title: { size: 32, weight: 700, lineHeight: 1.4, tracking: -0.32, use: "Ad-product card titles on home (노출형 →, SNS형 →), #000000, 44.8px line" }
+    lead: { size: 24, weight: 400, lineHeight: 1.5, tracking: -0.24, use: "Hero subline on home, 36px line" }
+    eyebrow: { size: 20, weight: 700, lineHeight: 1.5, tracking: -0.2, use: "Red eyebrows over the ad-product cards (압도적인 클릭률) and the product page name (버즈베네핏), in #f44336" }
+    body-lg: { size: 20, weight: 400, lineHeight: 1.5, tracking: -0.2, use: "Card descriptions on home, in #3e5463, 30px line" }
+    body: { size: 18, weight: 400, lineHeight: 1.64, tracking: -0.18, use: "Reading copy on about and the product page, in #2a3f4d, 29.52px line" }
+    nav: { size: 16, weight: 600, lineHeight: 1.6, tracking: -0.16, use: "Header navigation (Products, Technologies, Resources, Company, Career)" }
+    button: { size: 16, weight: 400, lineHeight: 1.6, tracking: -0.16, use: "Header action labels (광고센터 바로가기, 문의하기)" }
+    button-lg: { size: 20, weight: 400, lineHeight: 1.5, tracking: -0.2, use: "Hero button labels (광고 상품 둘러보기, 광고 문의하기)" }
+    caption: { size: 12, weight: 500, lineHeight: 1.6, tracking: -0.12, use: "Group labels in the footer, in #9fb1bd, 19.2px line" }
+  spacing: { cta-y: 12, cta-x: 16, hero-btn-y: 16, hero-btn-x: 32, card: 40, card-top: 80 }
+  rounded: { cta: 4, button: 8, feature: 12, card: 32 }
   components:
-    button-contact:    { type: button, bg: "#f44336", fg: "#ffffff", radius: "4px", height: "44px", padding: "12px 16px", font: "16px / 400", use: "Header 문의하기 contact CTA — coral-red primary action" }
-    button-adcenter:   { type: button, bg: "#000000", fg: "#ffffff", radius: "4px", height: "44px", padding: "12px 16px", font: "16px / 400", use: "Header 광고센터 바로가기 — black high-contrast action" }
-    button-outline:    { type: button, fg: "#000000", border: "1px solid #000000", radius: "4px", padding: "12px 16px", font: "16px / 400", use: "ENG / KOR language toggle" }
-    button-secondary:  { type: button, bg: "#f2f5f7", fg: "#3e5463", radius: "8px", height: "55px", padding: "16px 32px", font: "20px / 400", use: "광고 상품 둘러보기 secondary explore" }
-    button-ghost-dark: { type: button, fg: "#f2f5f7", border: "1px solid #f2f5f7", radius: "8px", height: "55px", padding: "16px 32px", font: "20px / 400", use: "광고 문의하기 ghost CTA over dark navy hero" }
-    nav-link:          { type: tab, fg: "#5b7282", font: "16px / 600", active: "text #0e171f", use: "Top nav item (Products / Technologies / Company)" }
-    filter-chip:       { type: tab, fg: "#c1ccd6", border: "1px solid #c1ccd6", radius: "9999px", height: "55px", padding: "16px", font: "20px / 400", active: "text #000000 on #ffffff fill", use: "Goal filter segmented pills (전체 / 브랜드 알리기)" }
-    card-feature:      { type: card, bg: "#ffffff", fg: "#0e171f", radius: "32px", padding: "80px 40px 40px", use: "Large rounded feature / stat card, flat (no shadow)" }
-    card-dark:         { type: card, bg: "#2a3f4d", fg: "#ffffff", radius: "32px", use: "Dark slate feature card on the navy hero section" }
+    contact-button: { type: button, bg: "#f44336", fg: "#ffffff", radius: "4px", padding: "12px 16px", height: "44px", font: "16px / 400 / 25.6px Pretendard, letter-spacing -0.16px", hover: "lifts 4px (transform translateY(-4px)); colours unchanged", pressed: "lifts 4px, as hover", states: "transition all 0.4s ease; focus shows only the browser's default ring, so no brand focus style is declared", use: "문의하기 with an arrow icon in the fixed header of all three pages (home capture 7, about and product page capture 6)" }
+    adcenter-button: { type: button, bg: "#000000", fg: "#ffffff", radius: "4px", padding: "12px 16px", height: "44px", font: "16px / 400 / 25.6px Pretendard, letter-spacing -0.16px", hover: "lifts 4px (transform translateY(-4px))", pressed: "lifts 4px, as hover", states: "transition all 0.4s ease; focus shows only the browser's default ring", use: "광고센터 바로가기 with an arrow icon in the fixed header, linking to the self-serve ad centre" }
+    lang-toggle: { type: button, bg: "transparent", fg: "#000000", border: "1.17647px solid #000000", radius: "4px", padding: "12px 16px", height: "44px", font: "16px / 400 Pretendard", hover: "lifts 4px (transform translateY(-4px))", pressed: "lifts 4px, as hover", states: "focus (Tab #8) shows no change", use: "ENG language switch at the end of the header" }
+    nav-item: { type: tab, fg: "#5b7282", height: "75px", font: "16px / 600 / 25.6px Pretendard, letter-spacing -0.16px", hover: "fg #000000", pressed: "fg #000000", states: "hover and pressed settle on #000000 (probe and bundle frames agree); focus (Tab #1) shows no change", use: "Header navigation buttons (Products, Technologies, Resources, Company, Career), 56 x 75" }
+    explore-button: { type: button, bg: "#f2f5f7", fg: "#3e5463", border: "1.17647px solid #f2f5f7", radius: "8px", padding: "16px 32px", height: "55px", font: "20px / 400 / 30px Pretendard, letter-spacing -0.2px", hover: "filter brightness(0.9)", pressed: "filter brightness(0.9)", states: "transition background-color, color 0.3s ease; focus shows only the browser's default ring", use: "광고 상품 둘러보기 in the home hero, 204 x 55" }
+    ghost-button: { type: button, bg: "transparent", fg: "#f2f5f7", border: "1.17647px solid #f2f5f7", radius: "8px", padding: "16px 32px", height: "55px", font: "20px / 400 / 30px Pretendard, letter-spacing -0.2px", hover: "bg rgba(242, 245, 247, 0.125), filter brightness(1.1)", pressed: "bg rgba(242, 245, 247, 0.125), filter brightness(1.1)", states: "transition background-color, color 0.3s ease; focus shows only the browser's default ring", use: "광고 문의하기 beside the explore button, over the #0e171f hero" }
+    feature-card: { type: button, bg: "#dce3e8", radius: "12px", padding: "80px 40px 0px", size: "500px x 588px", states: "rest on seven captured instances; no state frame, not probed", use: "Large selectable cards lower on /monetize/buzzbenefit (7 instances); their labels were not read" }
+    product-link-card: { type: card, radius: "32px", padding: "40px", size: "496px x 153px", use: "버즈베네핏 → and 버즈부스터 → links on home, each on a white gradient fill (not a token) with a 36px / 700 title and a #7a909e line" }
+    about-card: { type: card, bg: "#f8f9fa", radius: "8px", size: "317px x 516px", use: "Advertise, Activate and Monetize cards under 브랜드의 성장 단계별 지원 on /company/about_us, with #7a909e labels and #1c2b36 32px titles" }
+    carousel-arrow: { type: button, bg: "transparent", border: "1.17647px solid #ffffff", radius: "8px", shadow: "rgba(22, 34, 51, 0.12) 0px 4px 12px -4px", size: "54px x 54px", disabled: "all four instances were disabled at capture", states: "disabled at rest only; no other state read", use: "Carousel arrows on home, two pairs (captures 18-19 at the ad-product carousel, 26-27 lower on the page); the only elements with a shadow" }
   components_harvested: true
 ---
 
@@ -63,403 +282,349 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-Buzzvil (버즈빌) is Korea's reward-advertising and adtech platform, and its homepage reads like a confident, AI-forward product company rather than a media-buying middleman. The flagship surface (`www.buzzvil.com`) alternates two moods: bright, airy white (`#ffffff`) and cool-grey (`#f2f5f7`) bands for informational content, and immersive dark navy (`#0e171f`) sections — paired with a dark slate card surface (`#2a3f4d`) — for the persuasive, atmospheric moments. Text is set in pure black (`#000000`) and a deep near-black navy ink (`#0e171f`), never softened, which gives the marketing copy a crisp, declarative weight. The single saturated brand accent is a coral red (`#f44336`) — the exact hue of the Buzzvil brandmark — reserved almost entirely for the "문의하기" (contact) call-to-action, so the eye learns that red means "talk to us."
+Buzzvil (버즈빌) is a Korean ad-tech company built on reward advertising: brands reward users for engaging, and partner apps earn revenue by hosting that inventory. Its own history begins with the founding of the company in April 2012 and the HoneyScreen lock-screen app in January 2013. In 2016 it merged with Slidejoy, then the leading lock-screen company in the US, and by 2017 it described itself as the world's largest lock-screen ad platform, active in 30 countries. 버즈베네핏 took the model into in-app placements in 2018 and relaunched as a next-generation offerwall in October 2023, the same year the homepage was rebuilt to present Buzzvil as a reward-based full-funnel marketing platform. The newest chapter is AI: a targeting model (Performance Maximizer, 2024), AI 리뷰픽 review-summary ads and the self-serve 광고센터 (2025), and in January 2026 Olive Young cooperative ads. Today the company frames itself as "인터랙션 AI 에이전트의 혁신, 버즈빌" and cites 90 million cumulative users, 500+ premium partners and conversion four times that of ordinary ads.
 
-The typographic personality is unmistakably Korean-premium and entirely **Pretendard**, the de-facto hangul product font, carried at a wide weight range. Headlines run enormous and heavy — the hero "모두가 사랑하는 방식의 광고" ("Advertising that everyone loves") lands at **78px / weight 800 (ExtraBold)** — while section heads step down through 56px, 48px, and 32px at weight 700, and the lead subhead sits quiet at 24px / 400. Body and UI text drop to 16px / 400, with navigation labels at 16px / 600 SemiBold. There is exactly one font family doing every job; hierarchy comes from size and weight, not from a second typeface.
-
-What distinguishes Buzzvil from heavier enterprise adtech peers is its flatness and its generous rounding. Live inspection found `box-shadow: none` across the hero, nav, cards, and buttons — depth is communicated by background color (white vs cool-grey `#f2f5f7` vs navy `#0e171f`) and by thin `#dce3e8` hairlines, never by elevation. Geometry leans soft: feature and stat cards use a large **32px** radius, segmented "goal" filter pills go fully round (9999px), and the smaller header buttons sit at a tidy 4px. The cool-slate neutral ladder — body slate `#3e5463`, nav muted `#5b7282`, then `#7a909e`, `#9fb1bd`, and the faint `#c1ccd6` used for inactive controls — gives text and UI a calm, engineered, blue-grey temperature. White CTA text (`#ffffff`) reads as `on-primary` against both the red and the navy.
+The site speaks in one family, Pretendard, and in large, confident numbers. A white header carries two filled actions — black 광고센터 바로가기 and red `#f44336` 문의하기 — and an outlined ENG toggle, all at a crisp 4px radius; on hover they lift 4px. Below it, the home hero opens on a dark navy `#0e171f` field. The 78px ExtraBold headline "모두가 사랑하는 방식의 광고" is painted as a gradient clipped to the letters, which a same-day supplementary read shows as coral fading to pale blue-grey. The rest of the site keeps the same mood: white statistics at 56px, section headings at 48px bold, cool slate greys (`#1c2b36`, `#2a3f4d`, `#3e5463`, `#5b7282`, `#7a909e`, `#9fb1bd`) for text, and red eyebrows over the ad-product cards. Nearly everything is flat: of 515 recorded elements, only the four carousel arrows carry a shadow.
 
 **Key Characteristics:**
-- Pretendard for everything — display ExtraBold (800) down to 16px body (400); hierarchy by size/weight, not by a second font
-- Single saturated coral red (`#f44336`) reserved for the primary contact CTA — same hue as the brandmark
-- Dual-mood layout: bright white/`#f2f5f7` info bands vs immersive dark navy (`#0e171f`) / slate (`#2a3f4d`) sections
-- Pure black (`#000000`) and near-black navy (`#0e171f`) text — crisp and declarative, never grey-softened headlines
-- Flat depth: `box-shadow: none`; separation by background color and `#dce3e8` hairlines
-- Soft geometry: 32px rounded cards, fully-round (9999px) filter pills, 4px header buttons
-- Cool blue-grey neutral ladder (`#3e5463` → `#5b7282` → `#7a909e` → `#9fb1bd` → `#c1ccd6`)
+- One red, `#f44336`, for the persistent contact action and for eyebrows; black `#000000` for the second header action
+- Pretendard for every role: 78px / 800 hero, 48px / 700 sections, 16px / 600 navigation, all with tracking at -1% of the size
+- Dark `#0e171f` hero under a white header; light `#f2f5f7` and `#dce3e8` fills for buttons and cards
+- A cool slate text ladder from `#1c2b36` to `#9fb1bd`
+- Small radii on actions (4px header, 8px hero buttons), large on cards (12px and 32px)
+- Motion as a lift: header actions rise 4px over 0.4s on hover
 
 ## Primary tasks
 
-- Pick the advertising goal you want to browse by
-- Contact Buzzvil about running an advertising campaign
-- Weigh the performance claims before buying ad inventory
-- Integrate a reward lock-screen SDK into a partner app
+- Contact Buzzvil about an advertising campaign
+- Open the self-serve 광고센터 to run ads directly
+- Choose an ad product by goal (노출형, SNS형, UA 특화형, 앱 유입형, 액션 유도형)
+- Monetize a partner app with the 버즈베네핏 offerwall
 - Read the site in English as an overseas partner
 
 ## 2. Color Palette & Roles
 
+Every token below was read on 2026-09-30 from buzzvil.com, /company/about_us and /monetize/buzzbenefit by the deterministic collector, and state values by the fixed keyboard probe. The tokens describe Buzzvil's public website; the ad centre, SDKs and partner apps were not captured.
+
 ### Primary
-- **Buzzvil Coral Red** (`#f44336`): Primary brand color and the contact-CTA background. The saturated red that matches the Buzzvil brandmark — the system's single "action" hue.
-- **Ink Navy** (`#0e171f`): Near-black navy used for dark hero/immersive section backgrounds and for strong heading text. Carries warmth and weight without going pure black.
-- **Pure Black** (`#000000`): Body and headline text, the black header "광고센터" CTA background, and the language-toggle outline color.
+- **Buzzvil Red** (`#f44336`): The fill of 문의하기, the contact action in the fixed header of all three pages (home capture 7, capture 6 on the other two), and the colour of the eyebrows over the ad-product cards and the 버즈베네핏 product name. It is the primary because it is the site's persistent primary action and its only accent; the black 광고센터 바로가기 beside it is a secondary route to the self-serve tool.
+- **On Primary** (`#ffffff`): The 문의하기 and 광고센터 바로가기 labels.
 
 ### Neutral & Surface
-- **Pure White** (`#ffffff`): Page background, white feature cards, and `on-primary` text on red/navy/black.
-- **Surface Grey** (`#f2f5f7`): Cool light-grey surface for alternating content bands and the secondary explore button.
-- **Surface Dark** (`#2a3f4d`): Dark slate card surface used inside the navy sections.
-- **Hairline** (`#dce3e8`): Thin borders and dividers — the primary separation device in this shadow-free system.
+- **White** (`#ffffff`): The fixed header; headings and statistics on dark bands.
+- **Black** (`#000000`): The 광고센터 바로가기 fill, the ENG outline and label, the document default text colour and headings on light sections.
+- **Navy** (`#0e171f`): The home hero field behind the ghost button; the hero headline computes it as its background colour under the clipped gradient. It also colours the footer links.
+- **Surface** (`#f2f5f7`): The fill of 광고 상품 둘러보기 and the border and label of 광고 문의하기.
+- **Surface Soft** (`#f8f9fa`): The Advertise / Activate / Monetize cards on the about page.
+- **Mist** (`#dce3e8`): The large cards on the 버즈베네핏 page, and reading copy on its dark bands.
 
-### Text Hierarchy
-- **Pure Black** (`#000000`): Primary headings and body copy at maximum contrast.
-- **Body Slate** (`#3e5463`): Secondary body text and the secondary-button label color.
-- **Muted Slate** (`#5b7282`): Top-nav link color, tertiary labels.
-- **Muted Alt** (`#7a909e`): Alternate muted slate for captions and metadata.
-- **Faint Blue-Grey** (`#9fb1bd`): Low-emphasis labels and quiet supporting text.
-- **Faint Alt** (`#c1ccd6`): Inactive control text and borders (e.g. unselected filter pills).
-- **White** (`#ffffff`): Text on dark navy, slate, red, and black surfaces.
+### Text
+- **Ink Slate** (`#1c2b36`): Headings and timeline text on the about and product pages.
+- **Body** (`#2a3f4d`): Reading copy at 18px on the about and product pages and in the home contact band.
+- **Secondary** (`#3e5463`): Card descriptions on home and the 광고 상품 둘러보기 label.
+- **Muted** (`#5b7282`): Header navigation at rest; eyebrows on the product page.
+- **Muted Alt** (`#7a909e`): Small labels on dark bands, product-link descriptions and the about-card labels.
+- **Faint** (`#9fb1bd`): Captions under the hero statistics and group labels in the footer.
+
+### Brand assets, not tokens
+- The hero headline's gradient, the translucent tints of the statistic cards and the white gradient of the product-link cards were read only in a supplementary pass; they are not tokens.
+- The red Buzzvil logo was not measured; no logo colour is claimed.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Sans (all roles)**: `Pretendard` (with `sans-serif` fallback) — the single family for headlines, navigation, buttons, and body. ExtraBold (800) at the hero, 700 for section heads, 600 for nav, 400 for body.
+- **Live surface use**: `Pretendard` (515 observed uses, `loaded / high`) for every heading, paragraph, button and list item on all three pages, served from jsDelivr as the dynamic-subset build of `orioncactus/pretendard@v1.3.6`. The body computes `Pretendard, sans-serif`.
+- **Official distributed font assets**: the files come from Pretendard's own distribution on GitHub (orioncactus) via jsDelivr. The LICENSE file, opened on 2026-09-30, states the SIL Open Font License 1.1 (copyright Kil Hyung-jin).
+- **Official product use**: no Buzzvil page opened this session names its typeface; not claimed.
+- **Declared only (no visible use)**: `Inter` (from `cdn.jotfor.ms`, a form embed) and `swiper-icons` (the carousel library's icon font), both with 0 observed uses.
+- **Unresolved**: none of the observed families is unidentified.
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Display Hero | Pretendard | 78px (4.88rem) | 800 | 1.19 (93px) | Hero headline, ExtraBold |
-| Display | Pretendard | 56px (3.50rem) | 700 | — | Large section headline |
-| Section | Pretendard | 48px (3.00rem) | 700 | — | Section title |
-| Sub-section | Pretendard | 32px (2.00rem) | 700 | — | Card / feature heading |
-| Title | Pretendard | 24px (1.50rem) | 700 | — | Sub-heading |
-| Lead | Pretendard | 24px (1.50rem) | 400 | 1.31 | Hero subhead / lead paragraph |
-| Nav Link | Pretendard | 16px (1.00rem) | 600 | — | Top navigation items |
-| Body | Pretendard | 16px (1.00rem) | 400 | 1.50 | Standard reading text |
-| Button Large | Pretendard | 20px (1.25rem) | 400 | — | Large CTA / filter-pill labels |
-| Caption | Pretendard | 12px (0.75rem) | 500 | — | Small labels, metadata |
+| Role | Font | Size | Weight | Line Height | Tracking | Observed on |
+|------|------|------|--------|-------------|----------|-------------|
+| Display Hero | Pretendard | 78px | 800 | 109.2px (1.4) | -0.78px | Home hero headline |
+| Display About | Pretendard | 76px | 800 | 106.4px (1.4) | -0.76px | About mission headline, white |
+| Display Product | Pretendard | 56px | 800 | 78.4px (1.4) | -0.56px | 버즈베네핏 headline |
+| Stat | Pretendard | 56px | 700 | 78.4px (1.4) | -0.56px | 39%, x4, 82% |
+| Section | Pretendard | 48px | 700 | 67.2px (1.4) | -0.48px | Section headings |
+| Stat Value | Pretendard | 48px | 800 | 67.2px (1.4) | -0.48px | About figures |
+| Subsection | Pretendard | 36px | 700 | 54px (1.5) | -0.36px | Feature headings |
+| Card Title | Pretendard | 32px | 700 | 44.8px (1.4) | -0.32px | Ad-product cards |
+| Lead | Pretendard | 24px | 400 | 36px (1.5) | -0.24px | Hero subline |
+| Eyebrow | Pretendard | 20px | 700 | 30px (1.5) | -0.2px | Red eyebrows |
+| Body Large | Pretendard | 20px | 400 | 30px (1.5) | -0.2px | Card descriptions |
+| Button Large | Pretendard | 20px | 400 | 30px (1.5) | -0.2px | Hero buttons |
+| Body | Pretendard | 18px | 400 | 29.52px (1.64) | -0.18px | Reading copy, `#2a3f4d` |
+| Nav | Pretendard | 16px | 600 | 25.6px (1.6) | -0.16px | Header navigation |
+| Button | Pretendard | 16px | 400 | 25.6px (1.6) | -0.16px | Header actions |
+| Caption | Pretendard | 12px | 500 | 19.2px (1.6) | -0.12px | Footer group labels |
 
 ### Principles
-- **One family, full weight range**: Pretendard does every job; the jump from ExtraBold 800 headlines to 400 body is the system's primary hierarchy signal.
-- **Headlines run large and heavy**: the hero is 78px / 800 — a declarative, brand-forward scale that compresses on smaller viewports while keeping the weight.
-- **SemiBold for navigation**: nav links sit at 16px / 600, a notch heavier than 400 body so the chrome reads as interactive.
-- **Hangul-first body**: 16px / 400 with 1.5 line-height keeps dense Korean marketing copy legible and breathable.
+- **One family, weight does the work**: 800 for headlines, 700 for sections and figures, 600 for navigation, 400 for reading copy and buttons.
+- **Tracking at -1%**: every measured style tracks at one hundredth of its size, from -0.78px at 78px to -0.12px at 12px.
+- **Generous line heights**: 1.4 for display and section type, 1.5–1.64 for reading copy.
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Contact CTA (Primary)**
+**Contact action (primary)**
 - Background: `#f44336`
-- Text: `#ffffff`
+- Text: `#ffffff`, 16px / 400 / 25.6px, with an arrow icon
 - Radius: 4px
 - Padding: 12px 16px
 - Height: 44px
-- Font: 16px / 400 / Pretendard
-- Use: Header "문의하기" contact call-to-action — the saturated coral-red action
+- Hover: lifts 4px
+- Pressed: lifts 4px
+- States: `transition: all 0.4s ease`; focus shows only the browser's default ring
+- Use: 문의하기 in the fixed header of every page
 
-**Ad-Center CTA (Black)**
+**Ad-centre action**
 - Background: `#000000`
-- Text: `#ffffff`
+- Text: `#ffffff`, 16px / 400 / 25.6px, with an arrow icon
 - Radius: 4px
 - Padding: 12px 16px
 - Height: 44px
-- Font: 16px / 400 / Pretendard
-- Use: Header "광고센터 바로가기" — neutral high-contrast secondary action
+- Hover: lifts 4px
+- Use: 광고센터 바로가기 in the header
 
-**Language Toggle (Outline)**
+**Language toggle**
 - Background: transparent
 - Text: `#000000`
-- Border: 1px solid `#000000`
+- Border: 1.17647px solid `#000000`
 - Radius: 4px
 - Padding: 12px 16px
 - Height: 44px
-- Font: 16px / 400 / Pretendard
-- Use: ENG / KOR language switch
+- Hover: lifts 4px; focus shows no change
+- Use: ENG
 
-**Secondary Explore (Light)**
+**Explore button**
 - Background: `#f2f5f7`
-- Text: `#3e5463`
-- Border: 1px solid `#f2f5f7`
+- Text: `#3e5463`, 20px / 400 / 30px
 - Radius: 8px
 - Padding: 16px 32px
 - Height: 55px
-- Font: 20px / 400 / Pretendard
-- Use: "광고 상품 둘러보기" secondary explore button
+- Hover: brightness 0.9
+- Use: 광고 상품 둘러보기 in the home hero
 
-**Ghost on Dark**
+**Ghost button**
 - Background: transparent
 - Text: `#f2f5f7`
-- Border: 1px solid `#f2f5f7`
+- Border: 1.17647px solid `#f2f5f7`
 - Radius: 8px
 - Padding: 16px 32px
 - Height: 55px
-- Font: 20px / 400 / Pretendard
-- Use: "광고 문의하기" ghost CTA over the dark navy hero
+- Hover: background `rgba(242, 245, 247, 0.125)` and brightness 1.1
+- Use: 광고 문의하기 over the navy hero
 
-### Tabs & Segmented Controls
-
-**Top Nav Link**
-- Text: `#5b7282`
-- Font: 16px / 600 / Pretendard
-- Active: `#0e171f` text on the selected/hover item
-- Use: Top navigation (Products / Technologies / Resources / Company / Career)
-
-**Goal Filter Pill**
+**Carousel arrow**
 - Background: transparent
-- Text: `#c1ccd6`
-- Border: 1px solid `#c1ccd6`
-- Radius: 9999px
-- Padding: 16px
-- Height: 55px
-- Font: 20px / 400 / Pretendard
-- Active: `#000000` text on `#ffffff` fill, weight 700
-- Use: Goal segmented filter ("전체", "브랜드 알리기")
-
-### Cards & Containers
-
-**Feature / Stat Card**
-- Background: `#ffffff`
-- Text: `#0e171f`
-- Radius: 32px
-- Padding: 80px 40px 40px
-- Shadow: none
-- Use: Large rounded feature/stat card (e.g. "39% 평균 클릭률", "x4 전환율", "82% 리텐션")
-
-**Dark Slate Card**
-- Background: `#2a3f4d`
-- Text: `#ffffff`
-- Radius: 32px
-- Shadow: none
-- Use: Dark feature card nested in the navy hero/immersive sections
+- Border: 1.17647px solid `#ffffff`
+- Radius: 8px
+- Shadow: `rgba(22, 34, 51, 0.12) 0px 4px 12px -4px`
+- Size: 54 × 54
+- States: disabled at capture
+- Use: Carousel arrows on home (two pairs, one at the ad-product carousel)
 
 ### Navigation
-- Background: `#ffffff`
-- Text: `#5b7282` (active `#0e171f`)
-- Font: 16px / 600 / Pretendard
-- Height: 75px header row
-- Use: Sticky top nav with right-aligned black "광고센터 바로가기" + red "문의하기" CTAs
+
+**Header item**
+- Text: `#5b7282`, 16px / 600 / 25.6px
+- Height: 75px
+- Hover: `#000000`
+- Pressed: `#000000`
+- Use: Products, Technologies, Resources, Company, Career
+
+### Cards
+
+**Product-link card**
+- Radius: 32px
+- Padding: 40px
+- Size: 496 × 153
+- Use: 버즈베네핏 → and 버즈부스터 → on home
+
+**About card**
+- Background: `#f8f9fa`
+- Radius: 8px
+- Size: 317 × 516
+- Use: Advertise, Activate, Monetize on the about page
+
+**Feature card**
+- Background: `#dce3e8`
+- Radius: 12px
+- Padding: 80px 40px 0px
+- Size: 500 × 588
+- Use: Seven large cards on the 버즈베네핏 page
 
 ---
 
-**Verified:** 2026-06-26 (omd:add-reference CREATE — Tier 1 live inspect)
-**Tier 1 sources:** https://www.buzzvil.com (homepage, live computed style — hero, nav, CTAs, cards, filter pills); https://tech.buzzvil.com/ (official Buzzvil Tech blog — brand-owned); https://tech.buzzvil.com/blog/design-system-at-buzzvil (official Buzzvil design-system post — brand-owned, design philosophy)
-**Tier 2 sources:** getdesign.md/buzzvil — 404 (not listed); styles.refero.design ?q=buzzvil — no Buzzvil-specific entry (generic catalog results only)
+**Verified:** 2026-09-30 (deterministic collector capture of three public, logged-out pages of buzzvil.com plus fixed keyboard-probe state reads and first-party context)
+**Tier 1 sources:** https://www.buzzvil.com/ ; https://www.buzzvil.com/company/about_us ; https://www.buzzvil.com/monetize/buzzbenefit ; https://www.buzzvil.com/career/how_we_work ; https://tech.buzzvil.com/blog/design-system-at-buzzvil
+**Tier 2 sources:** not re-attempted on 2026-09-30; the June record found no Buzzvil entry on getdesign.md (404) or styles.refero.design; no Tier 2 value used
 **Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
 ### Spacing System
-- Base unit: 4px
-- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 40px, 80px
-- Notable: card interiors use a deliberate 80px top / 40px side pad (measured 80px 40px 40px), giving the big 32px-radius stat cards an airy, gallery-like presence
+- Header actions: 12px 16px
+- Hero buttons: 16px 32px
+- Product-link cards: 40px all round
+- Feature cards: 80px top, 40px sides
 
 ### Grid & Container
-- Centered single-column hero anchored by the 78px Pretendard ExtraBold headline over a dark navy (`#0e171f`) backdrop
-- Goal-selector row of fully-round filter pills beneath the hero
-- Content alternates full-width bands: white (`#ffffff`), cool-grey (`#f2f5f7`), and immersive navy (`#0e171f`)
-- Stat/feature cards group at a 32px radius; nested dark cards use slate (`#2a3f4d`)
+- A fixed 75px white header sits above every page; home adds a fixed announcement banner above it.
+- Home: dark hero with headline, subline and two buttons, three statistic cards, then a goal-based ad-product carousel, alternating dark and light sections, product links, a contact band and the footer.
+- About: a dark mission hero, company figures, the year-by-year history, three service cards and a contact prompt.
+- Content sits in a centred column about 1020px wide.
 
 ### Whitespace Philosophy
-- **Airy over dense**: despite being a data/performance product, the marketing surface is generous with vertical rhythm and large card padding.
-- **Color-band segmentation**: sections separate by background color (white vs `#f2f5f7` vs navy), not by borders or shadows.
-- **Round rhythm**: the repeated 32px card radius and 9999px pills set a consistently soft horizontal cadence.
+- **Big type, open bands**: 48px section headings with 1.4 line height and wide vertical spacing between full-width bands.
+- **Colour-band segmentation**: sections separate by fill, not by borders or shadows.
 
 ### Border Radius Scale
-- Small (4px): header buttons (contact, ad-center, language toggle)
-- Medium (8px): hero secondary/ghost buttons
-- Large (16px): inner white cards / media tiles
-- XL (32px): feature and stat cards — the workhorse rounding
-- Full (9999px): goal filter pills, round chips
+- Header actions (4px)
+- Hero buttons, about cards and carousel arrows (8px)
+- Feature cards (12px)
+- Product-link cards (32px)
 
 ## 6. Depth & Elevation
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
-| Color band (Level 1) | Background shift (white / `#f2f5f7` / `#0e171f`) | Section separation without elevation |
-| Hairline (Level 2) | `1px solid #dce3e8` border | Dividers and subtle card outlines |
-| Tint card (Level 3) | Tinted surface inside dark sections (slate `#2a3f4d`) | Grouping within immersive bands |
+| Flat | No shadow | 511 of 515 recorded elements |
+| Band | Navy `#0e171f` field under white type | Home hero |
+| Tint | `#f2f5f7`, `#f8f9fa`, `#dce3e8` fills | Buttons and cards |
+| Soft shadow | `rgba(22, 34, 51, 0.12) 0px 4px 12px -4px` | The four carousel arrows only |
 
-**Shadow Philosophy**: Buzzvil is a near-shadowless system. Live inspection found `box-shadow: none` across the hero, nav, headings, cards, and buttons. Depth and grouping are communicated entirely through background color (white, cool-grey `#f2f5f7`, and dark navy `#0e171f`) and thin `#dce3e8` hairlines. When emphasis is needed, the system reaches for the coral red (`#f44336`) or a dark slate card (`#2a3f4d`), never elevation — keeping the adtech UI feeling clean, fast, and modern.
+**Shadow Philosophy**: emphasis comes from the red action, the navy field and large type. The carousel arrows are the one exception to a flat system.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use Pretendard for everything — ExtraBold (800) for the hero, 700 for section heads, 600 for nav, 400 for body
-- Reserve coral red (`#f44336`) for the primary contact CTA — keep it the single "action" color
-- Use pure black (`#000000`) and near-black navy (`#0e171f`) for text — crisp and declarative
-- Alternate white, cool-grey (`#f2f5f7`), and dark navy (`#0e171f`) full-width bands for rhythm
-- Keep the system flat — separate with color bands and `#dce3e8` hairlines, never shadows
-- Use large 32px rounding on feature/stat cards and full-round (9999px) filter pills
-- Use the cool blue-grey neutral ladder (`#3e5463` → `#5b7282` → `#7a909e` → `#9fb1bd` → `#c1ccd6`) for text hierarchy
-- Use a dark slate card (`#2a3f4d`) for grouping inside navy sections
+- Keep `#f44336` for the contact action and eyebrows; pair it with a black secondary action
+- Set everything in Pretendard with tracking at -1% of the size
+- Use 800 for headlines, 700 for sections, 600 for navigation
+- Use the slate greys for text hierarchy on light sections
+- Lift header actions 4px on hover over 0.4s
+- Keep action radii small (4px, 8px) and card radii large (12px, 32px)
 
 ### Don't
-- Spread coral red across many elements — it dilutes the single-action signal
-- Add drop shadows for elevation — Buzzvil is a flat, shadow-free system
-- Introduce a second display typeface — Pretendard owns every weight and role
-- Soften headlines to a light weight — display is ExtraBold (800)
-- Mix in a second saturated accent hue — coral red is the only one
-- Use sharp corners on big cards — large 32px rounding is the brand geometry
-- Use grey for inactive-only controls when the faint slate (`#c1ccd6`) is the system's quiet state
+- Don't add shadows to cards or buttons; only the carousel arrows carry one
+- Don't use red for large fills or backgrounds
+- Don't render Pretendard with another face in its place
+- Don't invent focus styles; the site shows only the browser's default ring
+- Don't set headlines in light weights
+- Don't use pill radii on actions; none was observed
 
 ## 8. Responsive Behavior
 
 ### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero compresses from 78px, filter pills wrap/scroll |
-| Tablet | 640-1024px | Moderate padding, 2-up feature cards |
-| Desktop | 1024-1440px | Full layout, centered hero, multi-column card bands |
+Only the 1440 × 900 desktop viewport was captured. Borders compute as 1.17647px, which suggests the page is scaled; no breakpoint value was measured.
 
 ### Touch Targets
-- Header CTAs at 44px height with 12px 16px padding — comfortably tappable
-- Hero secondary/ghost buttons at 55px height, 16px 32px padding
-- Filter pills at 55px height, fully round for unmistakable targets
+- Hero buttons: 55px tall
+- Carousel arrows: 54 × 54
+- Header actions and ENG: 44px
+- Header navigation: 75px tall
 
 ### Collapsing Strategy
-- Hero: 78px ExtraBold headline scales down on mobile, weight 800 maintained
-- Filter-pill row: horizontal wrap/scroll on narrow viewports
-- Feature/stat cards: multi-column → stacked single column, 32px radius retained
-- White / grey / navy bands maintain full-width treatment
+- Not captured.
 
 ### Image Behavior
-- Product screenshots and illustrations carry no shadow at any size, consistent with the flat system
-- Cards keep their 32px (feature) / 16px (inner) radius across breakpoints
+- Illustrations and statistic artwork sit flat on their bands.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary CTA: Buzzvil Coral Red (`#f44336`)
-- Dark sections / strong text: Ink Navy (`#0e171f`)
-- Body / headline text: Pure Black (`#000000`)
-- Background: Pure White (`#ffffff`)
-- Light surface / secondary button: Surface Grey (`#f2f5f7`)
-- Dark card surface: Surface Dark (`#2a3f4d`)
-- Secondary text: Body Slate (`#3e5463`)
-- Nav / muted text: Muted Slate (`#5b7282`), `#7a909e`
-- Faint / inactive: Faint Blue-Grey (`#9fb1bd`), `#c1ccd6`
-- Hairline: `#dce3e8`
-- On primary/dark: White (`#ffffff`)
+- Primary action and eyebrows: `#f44336` with `#ffffff` labels
+- Secondary action: `#000000` with `#ffffff`
+- Hero field: `#0e171f`; header `#ffffff`
+- Light fills: `#f2f5f7`, `#f8f9fa`, `#dce3e8`
+- Text: `#000000`, `#1c2b36`, `#2a3f4d`, `#3e5463`, `#5b7282`, `#7a909e`, `#9fb1bd`
 
 ### Example Component Prompts
-- "Create a sticky white top nav (75px). Pretendard 16px / 600 links in `#5b7282`, active `#0e171f`. Right-aligned: black `#000000` 'ad center' CTA and coral-red `#f44336` 'contact' CTA, white text, 4px radius, 12px 16px padding, 44px height."
-- "Build a dark hero: `#0e171f` background. Headline 78px Pretendard weight 800, white text. Subhead 24px / 400 in `#f2f5f7`. Two buttons at 8px radius, 16px 32px padding, 55px height: light `#f2f5f7` fill with `#3e5463` text, and a ghost with 1px `#f2f5f7` border and `#f2f5f7` text."
-- "Design a stat card: white `#ffffff` background, 32px radius, no shadow, 80px 40px 40px padding. Big number in `#0e171f`, label in `#3e5463`. Place three side by side in a band."
-- "Create a goal filter row of fully-round pills (9999px, 55px height, 16px padding, 20px Pretendard). Inactive: transparent with 1px `#c1ccd6` border and `#c1ccd6` text. Active: `#ffffff` fill, `#000000` text, weight 700."
+- "Create a white header with Pretendard 16px / 600 navigation in `#5b7282` (hover `#000000`) and two actions at 4px radius, 12px 16px padding, 44px tall: black `#000000` and red `#f44336`, white 16px labels with arrow icons; both lift 4px on hover over 0.4s."
+- "Build a dark hero on `#0e171f`: a 78px Pretendard headline at weight 800 with -0.78px tracking and 1.4 line height, a 24px subline, and two 55px buttons at 8px radius — `#f2f5f7` fill with a `#3e5463` label, and a ghost with a `#f2f5f7` border and label."
+- "Design a product card row: 32px Pretendard titles at weight 700 in `#000000`, 20px red `#f44336` eyebrows at weight 700, and 20px `#3e5463` descriptions."
 
 ### Iteration Guide
-1. Pretendard everywhere — 800 hero, 700 sections, 600 nav, 400 body
-2. Coral red (`#f44336`) is the single action color — don't spread it
-3. No shadows — separate with white / `#f2f5f7` / `#0e171f` color bands and `#dce3e8` hairlines
-4. Round geometry — 32px cards, 9999px pills, 4px header buttons
-5. Text is black `#000000` / navy `#0e171f`; secondary slate `#3e5463`; muted `#5b7282`
-6. Dark sections use navy `#0e171f` with slate `#2a3f4d` cards
-7. White (`#ffffff`) is the on-primary text on red, navy, black, and slate
+1. Red `#f44336` for contact and eyebrows, black for the second action
+2. Pretendard only; weight and size carry the hierarchy
+3. Tracking at -1% of the size
+4. Navy hero, white header, light tinted cards
+5. Small action radii, large card radii
+6. No shadows except the carousel arrows
 
 ---
 
 ## 10. Voice & Tone
 
-Buzzvil's voice is **confident, benefit-first, and friendly-technical** — an adtech company that frames advertising not as interruption but as something users genuinely welcome. The hero line "모두가 사랑하는 방식의 광고" ("Advertising that everyone loves") sets the register: optimistic, human-centered, and quietly bold. Performance is communicated through concrete numbers (CTR, CVR, retention) rather than hype adjectives, and the product story leans into "인터랙션 AI 에이전트" (interaction AI agents) as the next chapter.
+Buzzvil's voice is **confident, human-centred and proven in numbers**. It frames advertising as something people welcome and backs each claim with a figure.
 
 | Context | Tone |
 |---|---|
-| Hero headlines | Optimistic, human-centered, declarative. "모두가 사랑하는 방식의 광고." |
-| Product / feature copy | Benefit-first, backed by a concrete metric. "39% 평균 클릭률", "x4 전환율". |
-| CTAs | Direct and low-pressure. "문의하기", "광고센터 바로가기", "광고 상품 둘러보기". |
-| Goal selector | Plain, outcome-framed. "브랜드 알리기", "전체". |
-| Tech / design blog | Peer-to-peer engineering voice, reflective and principled (e.g. minimalism, technical debt in design). |
+| Hero | Optimistic and declarative. "모두가 사랑하는 방식의 광고" |
+| Positioning | Technology-forward. "인터랙션 AI 에이전트를 기반으로, 고객에게 필요한 초개인화 된 경험을 설계합니다." |
+| Proof | Metric first. "39% 리워드 광고로 만드는 평균 클릭률 (CTR)", "x4 일반 광고 대비 리워드 광고 전환율 (CVR)" |
+| Calls to action | Direct. "문의하기", "광고센터 바로가기", "버즈빌에 지금 문의하세요" |
+| Culture | Challenging convention. "우리는 정해진 방식대로 일하지 않습니다." |
 
-**Voice samples (verbatim from live brand surfaces):**
-- "모두가 사랑하는 방식의 광고" — homepage hero headline (mission-framed). *(verified live 2026-06-26)*
-- "인터랙션 AI 에이전트를 기반으로, 고객에게 필요한 초개인화 된 경험을" — hero subhead (positioning). *(verified live 2026-06-26)*
-- "Simplicity is key. By keeping things simple, more people will understand what you want to express." — Buzzvil design-system blog. *(verified live 2026-06-26)*
+**Voice samples (read on first-party pages, 2026-09-30):**
+- "Boost our client growth in a way people love." — mission, /company/about_us.
+- "'마케팅은 당연히 이렇게 해야해'라는 고정관념, '광고는 늘 이렇지'라는 편견, 우리는 그 모든 것에 반문을 제기합니다." — /company/about_us.
+- "Simplicity is key. By keeping things simple, more people will understand what you want to express." — Buzzvil design-system post (2019).
 
-**Forbidden register**: interruption-framed ad language, fear-based or dark-pattern urgency, hollow superlatives without a metric, jargon left unexplained to non-marketers.
+**Forbidden register**: interruption-framed ad language, dark-pattern urgency, superlatives without a figure.
 
 ## 11. Brand Narrative
 
-Buzzvil (버즈빌) was founded in **2012** by **John Gwanwoo Lee (이관우, CEO)** and co-founder **Robert Seo**, who named the company for the "buzz" they intended to create. The founding insight is famously concrete: Lee took the idea for lock-screen advertising from the platform screen doors at subway stations — an everyday surface people glance at constantly — and asked what a smartphone's first screen could become. From that came **HoneyScreen** (a reward lock-screen app) and then **BuzzScreen**, a B2B SDK that lets any partner app run a reward-advertising lock screen without shipping a separate app.
+Buzzvil was founded in April 2012 and launched HoneyScreen, a reward lock-screen app, in January 2013. Merging with the US lock-screen leader Slidejoy in 2016 made it global; by 2017 it was active in 30 countries, and acquisitions followed — 42Company (India and Pakistan) in 2018, the finance ad platform 핀크럭스 in 2020 and the reward ad-tech company 아바티 in 2022. Its products widened from lock screens to in-app placements (버즈베네핏, 2018; relaunched as an offerwall in 2023), point-based CRM (버즈부스터, 2022) and AI: the Performance Maximizer targeting model (2024), AI 리뷰픽 and the self-serve 광고센터 (2025). The 2023 homepage renewal marked its repositioning as a reward-based full-funnel marketing platform; today it calls itself an interaction-AI company.
 
-The company grew into a cross-border reward-advertising and adtech platform, acquiring the US lock-screen company **SlideJoy** in 2016 and operating offices across Korea, the US, Japan, and Taiwan. Its mission — to let advertisers and publishers engage users on the first screen in a way that rewards rather than interrupts — is captured on the homepage as "모두가 사랑하는 방식의 광고" (advertising everyone loves). The current chapter reframes the platform around "인터랙션 AI 에이전트" — interaction AI agents that deliver hyper-personalized experiences.
-
-What Buzzvil refuses, visible in its design: the heavy, shadow-stacked chrome and interruption aesthetics of legacy adtech. What it embraces — echoed in its own design-system writing ("Simplicity is key… minimalism comes from this mindset") — is a flat, fast, Pretendard-set interface; a single trustworthy coral red; large soft rounding; and copy that backs claims with numbers.
+Its mission reads "우리는 모두가 사랑하는 방식으로, 고객사의 성장을 촉진합니다." The careers page describes how the team works — responsible autonomy, a growth mindset, grit and one team; OKRs, company-wide meetings and English nicknames instead of titles. Design is part of that story: a 2019 post by Maxence Mauduit (Product Designer, CDO) explains that the team built its design system on Google's Material Design and chose minimalism as a key principle so a small team could serve partners in Korea, Japan and the US. The tech blog still publishes on it — a June 2026 post on a design system for AI agents, and a September 2026 post on designers shipping pull requests.
 
 ## 12. Principles
 
-1. **Advertising people welcome.** The brand exists to make ads rewarding, not interruptive. *UI implication:* lead with user benefit and concrete value (reward, relevance), never dark-pattern urgency.
-2. **One action, one color.** Coral red (`#f44336`) means "do this / talk to us." *UI implication:* reserve the saturated red for the primary CTA so the next step is unambiguous.
-3. **Simplicity by design.** Buzzvil's own design team states "simplicity is key… minimalism comes from this mindset." *UI implication:* fewer typefaces, flat depth, color-band layout; remove before adding.
-4. **Prove it with numbers.** Performance claims are shown as metrics (CTR, CVR, retention). *UI implication:* pair every benefit headline with a measurable stat in a card.
-5. **Soft, modern, flat.** Large rounding and shadow-free surfaces over heavy elevation. *UI implication:* 32px cards, pills, color bands and hairlines instead of drop shadows.
+1. **Advertising people love.** *UI implication:* lead with user benefit and a concrete figure, never urgency.
+2. **One accent, one action.** *UI implication:* red marks the contact action and eyebrows; everything else stays neutral.
+3. **Simplicity is key.** Buzzvil's design team names minimalism as a key principle. *UI implication:* one typeface, flat surfaces, few colours.
+4. **Prove it with numbers.** *UI implication:* statistics get display-size type.
+5. **Question convention.** "우리는 그 모든 것에 반문을 제기합니다." *UI implication:* confident, large type and bold dark bands rather than a conventional ad-network look. (An editorial reading.)
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable Buzzvil user segments (performance marketers, app publishers integrating reward ads, adtech partners), not individual people.*
+*Personas below are fictional archetypes informed by publicly observable Buzzvil user segments (performance marketers, app publishers monetizing with reward ads, overseas partners), not individual people.*
 
-**박지훈, 33, 서울.** A performance marketer at a mid-size e-commerce brand. Buys reward-ad inventory through Buzzvil and judges every channel by CTR and CVR. Trusts the homepage because the claims come with numbers, not adjectives.
+**박지훈, 33, 서울.** A performance marketer at an e-commerce brand who buys reward-ad inventory and judges every channel by CTR and CVR. Trusts claims that come with figures.
 
-**이서연, 29, 경기.** A product manager at a consumer app integrating the BuzzScreen reward SDK. Wants a clean, well-documented surface and values that Buzzvil frames ads as user reward rather than interruption.
+**이서연, 29, 경기.** A product manager at a consumer app evaluating the 버즈베네핏 offerwall as a new revenue line. Wants clear documentation and an ad experience her users will not resent.
 
-**Daniel Kim, 41, San Francisco.** A US partnerships lead evaluating cross-border reward-ad supply. Appreciates the bilingual (ENG/KOR) surface and the calm, metric-driven positioning over hype.
+**Daniel Kim, 41, San Francisco.** A partnerships lead evaluating cross-border reward-ad supply. Uses the ENG toggle and looks for proof of scale.
 
 ## 14. States
 
-| State | Treatment |
+Only these states were observed; nothing else is specified here.
+
+| State | Observation |
 |---|---|
-| **Empty (no campaign / results)** | White canvas. Single near-black navy (`#0e171f`) line explaining there's nothing yet, with one coral-red (`#f44336`) CTA to start. No clutter. |
-| **Empty (saved list, none yet)** | Muted slate (`#5b7282`) single line: nothing saved yet, plus a path back. Calm and honest. |
-| **Loading (results fetch)** | Skeleton blocks on `#f2f5f7` tinted surface at final card dimensions, 32px radius. Flat pulse, no shadow shimmer — consistent with the shadow-free system. |
-| **Loading (in-place refresh)** | Subtle inline progress; previous values stay visible. |
-| **Error (request failed)** | Inline message in `#0e171f` with a plain-language explanation and a retry. No generic "오류가 발생했습니다" alone. |
-| **Error (form validation)** | Field-level message below the input describing what's valid, not just "필수". |
-| **Success (inquiry submitted)** | Brief inline confirmation in a calm tone; next-step detail linked immediately below. No celebratory emoji. |
-| **Skeleton** | `#f2f5f7` blocks at final dimensions, 32px radius, flat pulse. |
-| **Disabled** | Faint blue-grey (`#c1ccd6`) text on a reduced-opacity surface; red actions fade rather than turn grey to preserve brand read. |
+| **Hover / pressed (header actions, ENG)** | Lift 4px (`translateY(-4px)`), colours unchanged, `transition: all 0.4s ease`. |
+| **Hover / pressed (header navigation)** | `#5b7282` → `#000000`, settled (probe and bundle frames agree). |
+| **Hover / pressed (explore button)** | `filter: brightness(0.9)`. |
+| **Hover / pressed (ghost button)** | Background `rgba(242, 245, 247, 0.125)` and `filter: brightness(1.1)`. |
+| **Focus** | The four links show only the browser's default ring; ENG and navigation show no change. No brand focus style exists. |
+| **Disabled** | The four carousel arrows were `disabled` at capture. |
+
+Error, empty, loading and success states were not captured and are not described.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, pill press, focus |
-| `motion-standard` | 200ms | Card/section reveal, filter switch |
-| `motion-slow` | 320ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, pills, panels |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and quiet, matching the flat, fast aesthetic. Filter pills respond to press with a subtle scale/opacity shift; stat and feature cards fade-in from below at `motion-standard / ease-enter`. No bounce or spring — an adtech platform signals reliability, not gimmickry. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
+The probe read the transitions the controls compute: the header actions and ENG use `all 0.4s ease` and lift 4px on hover and press; the hero buttons transition `background-color` and `color` over 0.3s with `ease` (their brightness filter is outside that list, so it changes instantly); the navigation items compute `all 0s`. Nothing else about motion (carousels, scroll effects) was measured; treat it as unspecified and honour `prefers-reduced-motion` in any build.
 
 <!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-26) via playwright getComputedStyle on https://www.buzzvil.com:
-- Hero H1 "모두가 사랑하는 방식의 광고" — Pretendard 78px / weight 800 / over dark navy rgb(14,23,31) #0e171f
-- Hero subhead "인터랙션 AI 에이전트를 기반으로..." — 24px / 400
-- Contact CTA "문의하기" — bg rgb(244,67,54) #f44336 / white text / radius 4px / 12px 16px / height 44px
-- Ad-center CTA "광고센터 바로가기" — bg rgb(0,0,0) #000000 / white text / radius 4px
-- Secondary "광고 상품 둘러보기" — bg rgb(242,245,247) #f2f5f7 / text rgb(62,84,99) #3e5463 / radius 8px / 16px 32px
-- Nav links — color rgb(91,114,130) #5b7282 / 16px / 600
-- Filter pills — radius 9999px / active #ffffff fill + #000000 text / inactive #c1ccd6 border+text
-- Stat/feature cards — radius 32px / box-shadow none
-- box-shadow: none across hero/nav/cards/buttons (flat system confirmed)
-- document.title: "버즈빌 | 인터랙션 AI agent로 시작하는 모두가 사랑하는 방식의 광고"
-
-Token-level claims (§1-9) are sourced from this live inspection.
-
-Voice samples (§10): hero headline + subhead verbatim from the live homepage; the
-"Simplicity is key…" line is verbatim from the Buzzvil design-system blog
-(https://tech.buzzvil.com/blog/design-system-at-buzzvil), fetched this turn.
-
-Brand narrative (§11): Buzzvil founded 2012 by John Gwanwoo Lee (이관우, CEO) and
-Robert Seo; lock-screen idea from subway platform screen doors; HoneyScreen → BuzzScreen
-SDK; SlideJoy (US) acquisition 2016; offices in KR/US/JP/TW. These are widely documented
-public facts about the company gathered via web search this turn; not all are directly
-quoted from a single verified Buzzvil statement.
-
-Personas (§13) are fictional archetypes informed by publicly observable Buzzvil segments
-(performance marketers, app publishers, adtech partners). Names are illustrative; they do
-not refer to real people.
-
-Interpretive claims (e.g., "one action, one color", "flat and fast as a rejection of
-legacy adtech chrome") are editorial readings connecting Buzzvil's observed design and
-stated design-team values to its positioning, not directly sourced Buzzvil statements.
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/buzzvil.json (capturedAt 2026-09-30T11:09:05Z), deterministic collector, 1440x900, logged out: buzzvil.com, /company/about_us, /monetize/buzzbenefit. States: fixed keyboard probe raw docs/research/2026-09-29-growth/raw/buzzvil-states-home.json.
+- Hero gradient, band fills and label texts: a same-day supplementary headless read, logged in .verification.md; not used for tokens.
+- §1, §10, §11 context: /company/about_us (mission, history), /career/how_we_work (values), tech.buzzvil.com (2019 design-system post, blog index), opened 2026-09-30.
+- §3 licence: the Pretendard LICENSE on GitHub, opened 2026-09-30.
+- Personas are fictional archetypes. Interpretive readings are editorial.
 -->

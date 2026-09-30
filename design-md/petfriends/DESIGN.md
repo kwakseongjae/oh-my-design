@@ -9,49 +9,220 @@ primary_color: "#ff4081"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=pet-friends.co.kr&sz=128"
-verified: "2026-07-02"
+verified: "2026-09-30"
 added: "2026-07-02"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: home, kind: product, url: "https://m.pet-friends.co.kr/main/tab/2", inspected: "2026-09-30" }
+    - { id: surface-2, kind: product, url: "https://m.pet-friends.co.kr/main/product/list?tab_info_id=1960", inspected: "2026-09-30" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://m.pet-friends.co.kr/main/tab/2", captured: "2026-09-30" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://m.pet-friends.co.kr/main/product/list?tab_info_id=1960", captured: "2026-09-30" }
+    - { id: petfriends-probe-home, kind: product-surface, url: "https://m.pet-friends.co.kr/main/tab/2", captured: "2026-09-30" }
+    - { id: petfriends-probe-home-sheet, kind: product-surface, url: "https://m.pet-friends.co.kr/main/tab/2", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &tabsel { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"49\"]", captured: "2026-09-30" }
+    "tokens.colors.on-primary": *tabsel
+    "tokens.colors.ink": &h2 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
+    "tokens.colors.ink-pure": &body { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
+    "tokens.colors.muted": &hint { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.discount": &red { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.magenta": &mag { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.surface-pink": &chip { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-09-30" }
+    "tokens.colors.hairline": &sort { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"15\"]", captured: "2026-09-30" }
+    "tokens.typography.family.brand": *body
+    "tokens.typography.section-title.size": *h2
+    "tokens.typography.section-title.weight": *h2
+    "tokens.typography.section-title.tracking": *h2
+    "tokens.typography.section-title.use": *h2
+    "tokens.typography.list-title.size": &listh2 { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h2", captured: "2026-09-30" }
+    "tokens.typography.list-title.weight": *listh2
+    "tokens.typography.list-title.lineHeight": *listh2
+    "tokens.typography.list-title.tracking": *listh2
+    "tokens.typography.list-title.use": *listh2
+    "tokens.typography.search.size": &input { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"0\"]", captured: "2026-09-30" }
+    "tokens.typography.search.weight": *input
+    "tokens.typography.search.use": *input
+    "tokens.typography.keyword.size": &pilllabel { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.keyword.weight": *pilllabel
+    "tokens.typography.keyword.tracking": *pilllabel
+    "tokens.typography.keyword.use": *pilllabel
+    "tokens.typography.tab-selected.size": *tabsel
+    "tokens.typography.tab-selected.weight": *tabsel
+    "tokens.typography.tab-selected.lineHeight": *tabsel
+    "tokens.typography.tab-selected.use": *tabsel
+    "tokens.typography.tab.size": &tab { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"50\"]", captured: "2026-09-30" }
+    "tokens.typography.tab.weight": *tab
+    "tokens.typography.tab.lineHeight": *tab
+    "tokens.typography.tab.use": *tab
+    "tokens.typography.nav-selected.size": &navsel { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.nav-selected.weight": *navsel
+    "tokens.typography.nav-selected.tracking": *navsel
+    "tokens.typography.nav-selected.use": *navsel
+    "tokens.typography.nav.size": &navlabel { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.nav.weight": *navlabel
+    "tokens.typography.nav.lineHeight": *navlabel
+    "tokens.typography.nav.tracking": *navlabel
+    "tokens.typography.nav.use": *navlabel
+    "tokens.typography.product-title.size": &pname { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-testid=\"product-card-name\"]", captured: "2026-09-30" }
+    "tokens.typography.product-title.weight": *pname
+    "tokens.typography.product-title.lineHeight": *pname
+    "tokens.typography.product-title.tracking": *pname
+    "tokens.typography.product-title.use": *pname
+    "tokens.typography.product-title-list.size": &pname2 { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-testid=\"product-card-name\"]", captured: "2026-09-30" }
+    "tokens.typography.product-title-list.weight": *pname2
+    "tokens.typography.product-title-list.lineHeight": *pname2
+    "tokens.typography.product-title-list.tracking": *pname2
+    "tokens.typography.product-title-list.use": *pname2
+    "tokens.typography.meta.size": &meta { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.meta.weight": *meta
+    "tokens.typography.meta.lineHeight": *meta
+    "tokens.typography.meta.tracking": *meta
+    "tokens.typography.meta.use": *meta
+    "tokens.typography.label-bold.size": *mag
+    "tokens.typography.label-bold.weight": *mag
+    "tokens.typography.label-bold.lineHeight": *mag
+    "tokens.typography.label-bold.tracking": *mag
+    "tokens.typography.label-bold.use": *mag
+    "tokens.typography.hint.size": *hint
+    "tokens.typography.hint.weight": *hint
+    "tokens.typography.hint.lineHeight": *hint
+    "tokens.typography.hint.tracking": *hint
+    "tokens.typography.hint.use": *hint
+    "tokens.spacing.chip-y": *chip
+    "tokens.spacing.chip-x-start": *chip
+    "tokens.spacing.chip-x-end": *chip
+    "tokens.spacing.chip-gap": *chip
+    "tokens.spacing.pill-y": &pill { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-09-30" }
+    "tokens.spacing.pill-x": *pill
+    "tokens.spacing.input-y": *input
+    "tokens.spacing.input-x": *input
+    "tokens.spacing.input-icon": *input
+    "tokens.spacing.nav-top": &nav { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-09-30" }
+    "tokens.spacing.nav-bottom": *nav
+    "tokens.spacing.gutter": &navbar { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::nav", captured: "2026-09-30" }
+    "tokens.spacing.sort-x": *sort
+    "tokens.rounded.input": *input
+    "tokens.rounded.tile": &tile { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::li", captured: "2026-09-30" }
+    "tokens.rounded.tab": *tabsel
+    "tokens.rounded.pill": *pill
+    "tokens.rounded.chip": *chip
+    "tokens.rounded.cta": &sheet { surface_id: home, source_id: petfriends-probe-home-sheet, method: live-state-probe, selector: "button APP 설치하기 in the app-install sheet (162 x 48): rest bg rgb(255, 64, 129), radius 48px, padding 0px, label p rgb(255, 255, 255) 16px/700; hover and pressed NO CHANGE across self, 5 descendants and 3 ancestor levels; transition all 0s; focus not reached (Tab walk cycled after 34 stops)", captured: "2026-09-30" }
+    "tokens.rounded.sort": *sort
+    "tokens.components.category-tab.type": *tab
+    "tokens.components.category-tab.fg": *tab
+    "tokens.components.category-tab.radius": *tab
+    "tokens.components.category-tab.size": *tab
+    "tokens.components.category-tab.font": *tab
+    "tokens.components.category-tab.selected": *tabsel
+    "tokens.components.category-tab.states": &tabprobe { surface_id: home, source_id: petfriends-probe-home, method: live-state-probe, selector: "button 사료 (74 x 32, role tab, selected): rest bg rgb(255, 64, 129), fg rgb(255, 255, 255), transition all 0s; button 간식: rest fg rgb(45, 48, 53) over rgb(255, 255, 255); hover and pressed unmeasured (pointer-events none while the app-install sheet was open), focus not reached", captured: "2026-09-30" }
+    "tokens.components.category-tab.use": *tab
+    "tokens.components.app-install-button.type": *sheet
+    "tokens.components.app-install-button.bg": *sheet
+    "tokens.components.app-install-button.fg": *sheet
+    "tokens.components.app-install-button.radius": *sheet
+    "tokens.components.app-install-button.height": *sheet
+    "tokens.components.app-install-button.size": *sheet
+    "tokens.components.app-install-button.font": *sheet
+    "tokens.components.app-install-button.states": *sheet
+    "tokens.components.app-install-button.use": *sheet
+    "tokens.components.header-chip.type": *chip
+    "tokens.components.header-chip.bg": *chip
+    "tokens.components.header-chip.fg": &chipprobe { surface_id: home, source_id: petfriends-probe-home, method: live-state-probe, selector: "button 강아지 (84 x 32): rest bg rgb(255, 241, 245), label span rgb(45, 48, 53) 14px/700; focus (Tab #24) NO CHANGE across self, 4 descendants and 3 ancestor levels; hover and pressed unmeasured (pointer-events none while the app-install sheet was open)", captured: "2026-09-30" }
+    "tokens.components.header-chip.radius": *chip
+    "tokens.components.header-chip.padding": *chip
+    "tokens.components.header-chip.height": *chip
+    "tokens.components.header-chip.font": *chipprobe
+    "tokens.components.header-chip.states": *chipprobe
+    "tokens.components.header-chip.use": *chip
+    "tokens.components.keyword-pill.type": *pill
+    "tokens.components.keyword-pill.bg": *pill
+    "tokens.components.keyword-pill.fg": *pilllabel
+    "tokens.components.keyword-pill.radius": *pill
+    "tokens.components.keyword-pill.padding": *pill
+    "tokens.components.keyword-pill.height": *pill
+    "tokens.components.keyword-pill.font": *pilllabel
+    "tokens.components.keyword-pill.states": &pillprobe { surface_id: home, source_id: petfriends-probe-home, method: live-state-probe, selector: "a 체험단 (73.6 x 30): rest bg rgba(255, 170, 199, 0.5), label p rgb(45, 48, 53) 16px/500; focus (Tab #12) NO CHANGE across self, 1 descendant and 3 ancestor levels; hover and pressed unmeasured (pointer-events none)", captured: "2026-09-30" }
+    "tokens.components.keyword-pill.use": *pill
+    "tokens.components.search-input.type": *input
+    "tokens.components.search-input.fg": *input
+    "tokens.components.search-input.border": &inputprobe { surface_id: home, source_id: petfriends-probe-home, method: live-state-probe, selector: "input 어떤 상품을 찾으시나요? (280 x 52): border none, radius 6px, fg rgb(45, 48, 53); focus (Tab #10) NO CHANGE across self and 3 ancestor levels; submit button 검색 (67 x 67) focus (Tab #11) NO CHANGE; hover and pressed unmeasured (pointer-events none)", captured: "2026-09-30" }
+    "tokens.components.search-input.radius": *input
+    "tokens.components.search-input.padding": *input
+    "tokens.components.search-input.height": *input
+    "tokens.components.search-input.font": *input
+    "tokens.components.search-input.states": *inputprobe
+    "tokens.components.search-input.use": *input
+    "tokens.components.sort-button.type": *sort
+    "tokens.components.sort-button.border": *sort
+    "tokens.components.sort-button.radius": *sort
+    "tokens.components.sort-button.padding": *sort
+    "tokens.components.sort-button.height": *sort
+    "tokens.components.sort-button.states": *sort
+    "tokens.components.sort-button.use": *sort
+    "tokens.components.nav-tab.type": *nav
+    "tokens.components.nav-tab.fg": *navlabel
+    "tokens.components.nav-tab.padding": *nav
+    "tokens.components.nav-tab.height": *nav
+    "tokens.components.nav-tab.font": *navlabel
+    "tokens.components.nav-tab.selected": *navsel
+    "tokens.components.nav-tab.states": *nav
+    "tokens.components.nav-tab.use": *nav
+    "tokens.components.banner-control.type": &bannerbtn { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-09-30" }
+    "tokens.components.banner-control.bg": *bannerbtn
+    "tokens.components.banner-control.radius": *bannerbtn
+    "tokens.components.banner-control.padding": *bannerbtn
+    "tokens.components.banner-control.size": *bannerbtn
+    "tokens.components.banner-control.states": *bannerbtn
+    "tokens.components.banner-control.use": *bannerbtn
+    "tokens.components.image-tile.type": *tile
+    "tokens.components.image-tile.radius": *tile
+    "tokens.components.image-tile.size": *tile
+    "tokens.components.image-tile.use": *tile
 tokens:
-  source: live-extract
-  extracted: "2026-07-02"
-  note: "primary = live vivid pink #ff4081 (Material Pink A400) used as emphasis type + solid action fills; deeper magenta #ea306f for sale copy; signal red #f33f46 for discount %. Charcoal ink #2d3035 for text. Near-flat/shadowless system — separation via tint + #e9ebec hairlines."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
     primary: "#ff4081"
-    primary-deep: "#ea306f"
-    discount: "#f33f46"
-    surface-pink: "#fff1f5"
-    pink-soft: "#ffaac7"
+    on-primary: "#ffffff"
     ink: "#2d3035"
     ink-pure: "#000000"
     muted: "#9ca1aa"
-    surface: "#f8f8f8"
-    surface-alt: "#fafafa"
+    discount: "#f33f46"
+    magenta: "#ea306f"
+    surface-pink: "#fff1f5"
     hairline: "#e9ebec"
-    overlay: "#1c1e21"
-    accent-blue: "#6078e4"
-    canvas: "#ffffff"
-    on-primary: "#ffffff"
   typography:
-    family: { brand: "Lific", fallback: "Noto Sans KR" }
-    section-title: { size: 18, weight: 700, lineHeight: 1.30, tracking: -0.2, use: "Section headings (H2), Lific Bold" }
-    emphasis:      { size: 18, weight: 900, tracking: -0.2, use: "Emphasized phrase inside a heading, pink #ff4081" }
-    discount:      { size: 16, weight: 700, lineHeight: 1.38, tracking: -0.32, use: "Discount percentage, signal red #f33f46" }
-    label:         { size: 14, weight: 700, tracking: -0.2, use: "Bold UI labels (delivery address, tabs)" }
-    body:          { size: 14, weight: 400, use: "Standard reading text, Noto Sans KR fallback" }
-    product-title: { size: 13, weight: 400, lineHeight: 1.38, tracking: -0.2, use: "Product names in cards" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 15, lg: 16, gutter: 44 }
-  rounded: { sm: 6, md: 8, lg: 16, pill: 36, full: 9999 }
-  shadow:
-    none: "none"
+    family: { brand: "Lific" }
+    section-title: { size: 18, weight: 700, tracking: -0.2, use: "Merchandising section headings on home (h2, line height normal), in #2d3035; the emphasised phrase inside each heading is set apart in pink (see §3)" }
+    list-title: { size: 16, weight: 700, lineHeight: 1.25, tracking: -0.2, use: "Page title in the header of the best-products list, 20px line" }
+    search: { size: 20, weight: 500, use: "Search field text and placeholder (어떤 상품을 찾으시나요?)" }
+    keyword: { size: 16, weight: 500, tracking: -0.2, use: "Trending-keyword pill labels (체험단, 개구리, 오리젠), in #2d3035" }
+    tab-selected: { size: 14, weight: 700, lineHeight: 2.14, use: "Selected category tab label (사료), white on #ff4081, 30px line" }
+    tab: { size: 14, weight: 500, lineHeight: 2.14, use: "Unselected category tab labels (간식, 용품), in #2d3035, 30px line" }
+    nav-selected: { size: 14, weight: 700, tracking: -0.2, use: "Label of the current top tab (HOME), line height normal" }
+    nav: { size: 14, weight: 400, lineHeight: 1.64, tracking: -0.2, use: "Top tab labels (웰컴펫페어, 심쿵펫페어, 사료 최저가 도전!), 23px line, in #2d3035" }
+    product-title: { size: 13, weight: 400, lineHeight: 1.38, tracking: -0.2, use: "Product names in home carousels, 18px line, in #2d3035" }
+    product-title-list: { size: 14, weight: 400, lineHeight: 1.64, tracking: -0.2, use: "Product names in the best-products grid, 23px line" }
+    meta: { size: 12, weight: 500, lineHeight: 1, tracking: -0.2, use: "Sub-category names under the category tabs (어덜트, 퍼피, 시니어) and small product lines, 12px line" }
+    label-bold: { size: 12, weight: 700, lineHeight: 1, tracking: -0.2, use: "펫프 Only label above exclusive products, in #ea306f" }
+    hint: { size: 10, weight: 400, lineHeight: 1, tracking: -0.2, use: "Age hints under sub-categories ((1-7세), (1세미만)), in #9ca1aa" }
+  spacing: { chip-y: 4, chip-x-start: 12, chip-x-end: 8, chip-gap: 8, pill-y: 3, pill-x: 15, input-y: 14.5, input-x: 16, input-icon: 44, nav-top: 14, nav-bottom: 10, gutter: 16, sort-x: 12 }
+  rounded: { input: 6, tile: 8, tab: 16, pill: 18.5, chip: 36, cta: 48, sort: 100 }
   components:
-    chip-category: { type: button, bg: "#fff1f5", fg: "#000000", radius: "36px", padding: "4px 8px 4px 12px", height: "32px", use: "Header category / delivery-address selector chip" }
-    pill-keyword: { type: badge, bg: "#ffaac7", fg: "#ffffff", radius: "19px", padding: "3px 15px", height: "30px", use: "Trending search-keyword pill (rendered at 0.5 alpha over hero)" }
-    input-search: { type: input, bg: "#ffffff", fg: "#2d3035", border: "1px solid #e9ebec", radius: "6px", padding: "15px 44px 15px 16px", height: "52px", font: "20px / 500 Lific", use: "Main product search field, placeholder 어떤 상품을 찾으시나요?" }
-    card-product: { type: card, bg: "#f8f8f8", radius: "16px", use: "Product image card surface in grids / carousels" }
-    button-primary: { type: button, bg: "#ff4081", fg: "#ffffff", font: "16px / 700 Lific", use: "Primary brand action — solid pink fill (add-to-cart / buy)" }
-    badge-overlay: { type: badge, bg: "#1c1e21", fg: "#ffffff", radius: "20px", padding: "5px 8px", use: "Carousel index / image counter (rendered at 0.6 alpha)" }
-    avatar-round: { type: avatar, radius: "9999px", use: "Circular avatar / icon frame (border-radius 50%)" }
+    category-tab: { type: tab, fg: "#2d3035", radius: "16px", size: "74px x 32px", font: "14px / 500 / 30px Lific", selected: "bg #ff4081, fg #ffffff, 14px / 700 (class data-[state=active]:bg-brand)", states: "selected read from rest values; hover and pressed unmeasured because the page ignored the pointer while the app-install sheet was open, and Tab never reached the tabs; transition all 0s", use: "사료 / 간식 / 용품 category switcher on home at home::[data-omd-capture=\"49\"] (selected) and [data-omd-capture=\"50\"]" }
+    app-install-button: { type: button, bg: "#ff4081", fg: "#ffffff", radius: "48px", height: "48px", size: "162px x 48px", font: "16px / 700 Lific (label p) with a white download icon", states: "probe: hover and pressed show no change across the button, its 5 descendants and 3 ancestor levels (transition all 0s); focus was not reached by the Tab walk", use: "APP 설치하기 in the app-install sheet that opens over home for logged-out visitors (펫프렌즈 앱에서 가입하면 5,000원 쿠폰 즉시 지급); read by the fixed probe" }
+    header-chip: { type: button, bg: "#fff1f5", fg: "#2d3035", radius: "36px", padding: "4px 8px 4px 12px", height: "32px", font: "14px / 700 Lific (label span)", states: "probe: focus (Tab #24) shows no change; hover and pressed unmeasured (pointer ignored while the sheet was open)", use: "Pet-type (강아지) and delivery-address (배송지 입력) selectors in the app header, each with a chevron icon; the button itself computes #000000, the visible label is its child span" }
+    keyword-pill: { type: badge, bg: "rgba(255, 170, 199, 0.5)", fg: "#2d3035", radius: "18.5px", padding: "3px 15px", height: "30px", font: "16px / 500 Lific, letter-spacing -0.2px (label p)", states: "probe: focus (Tab #12) shows no change; hover and pressed unmeasured", use: "Trending search keywords (체험단, 개구리, 오리젠, 호랑이, 터키츄) under the search field of the desktop side panel, linking to search results; the anchor computes #ffffff but the visible label is its child p" }
+    search-input: { type: input, fg: "#2d3035", border: "none", radius: "6px", padding: "14.5px 44px 14.5px 16px", height: "52px", font: "20px / 500 Lific", states: "probe: focus (Tab #10) shows no change on the field or its three ancestors; hover and pressed unmeasured", use: "Product search in the desktop side panel, placeholder 어떤 상품을 찾으시나요?, 280 x 52; the frame drawn around it and the round submit control are painted by something outside the probe's compared scope, so no frame colour is declared" }
+    sort-button: { type: button, border: "1px solid #e9ebec", radius: "100px", padding: "0px 12px", height: "32px", states: "rest only; no state frame was recorded and the probe did not read it", use: "펫프추천순 sort control at the top of the best-products list at surface-2::[data-omd-capture=\"15\"], 105 x 32; its label sits in a child span the collector did not record, so no label colour is declared" }
+    nav-tab: { type: tab, fg: "#2d3035", padding: "14px 0px 10px", height: "47px", font: "14px / 400 / 23px Lific, letter-spacing -0.2px (label p)", selected: "label 14px / 700 on the current tab (HOME); the underline indicator was not recorded", states: "selected variant read from rest values; no pointer or focus state was read", use: "Scrolling top tabs of the app (HOME, 웰컴펫페어, 심쿵펫페어, 사료 최저가 도전!, 할인, NEW 신상, 오직 펫프에서만) in a role=tablist nav" }
+    banner-control: { type: button, bg: "rgba(0, 0, 0, 0.1)", radius: "8px", padding: "7px", size: "30px x 30px", states: "rest only; not probed", use: "Icon control over the home banner carousel, with a 4px backdrop blur (class backdrop-blur-[4px])" }
+    image-tile: { type: card, radius: "8px", size: "136px x 72px", use: "Rounded image tiles on home (4 instances)" }
   components_harvested: true
 ---
 
@@ -59,378 +230,334 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-Pet Friends (펫프렌즈) is Korea's self-described "반려동물 1등 쇼핑몰" (No.1 pet shopping mall), and its interface reads like a friendly, high-energy commerce app built for anxious-but-loving pet parents (집사님). The canvas is pure white (`#ffffff`) broken up by soft grey product surfaces (`#f8f8f8`) and warm pink tints (`#fff1f5`), so the page feels bright and merchandising-forward rather than clinical. Text sits in a soft charcoal (`#2d3035`) — never a harsh pure black for reading copy — which keeps the dense product grids legible without feeling heavy. The signature move is color as emotion: a single vivid pink (`#ff4081`, Material's Pink A400) carries the brand's affection and doubles as the "do this" action color.
+Pet Friends (펫프렌즈) is a Korean pet-commerce platform that sells food, treats and supplies to dog and cat owners. Its storefront introduces itself as "반려동물 1등 쇼핑몰, 펫프렌즈" and promises "사료, 간식, 용품을 한곳에서! 서울, 경기 당일&새벽배송" — everything in one place, with same-day and dawn delivery in Seoul and Gyeonggi. Korean press traces the company to its founding in 2015 and to 2021, when IMM Private Equity and GS Retail acquired it and growth accelerated: revenue roughly doubled from about ₩61bn in 2021 to ₩117.1bn in 2024, and in the first half of 2025 the company reported its first half-year profit. The same coverage credits 집사생활, the in-app community where owners trade care tips and share photos of their pets ('내새꾸 자랑'), for the brand's emotional pull, and quotes the company's stated ambition to grow into a "super app" covering a pet's whole life cycle.
 
-The typographic personality is warm and declarative. Section headlines run in the brand's custom **Lific** typeface at 18px / weight 700 with tight `-0.2px` tracking, and the persuasive word in each headline jumps to **weight 900 in pink** (`#ff4081`) — e.g. "재구매율 **89%**", "최저가 **도전 사료 모음!**", "집사님을 위한 **오늘 특가!**". Body and product-name text drop to Lific / **Noto Sans KR** at 13–14px weight 400, optimized for dense hangul product listings. This heavy-pink-emphasis-over-quiet-grey-body split is the core tension of the system: shout the deal, whisper the detail.
-
-What distinguishes Pet Friends from generic marketplaces is its commitment to friendly geometry and near-flat depth. Interactive chrome leans hard into the pill and the rounded rectangle: category chips at 36px radius on a pink tint (`#fff1f5`), soft-pink search-keyword pills (`#ffaac7`) at ~19px radius, product cards at a comfortable 16px, and circular avatars. Live inspection returned `box-shadow: none` on chips, inputs, and headings — separation comes from tinted surfaces, thin `#e9ebec` hairlines, and a near-black image overlay (`#1c1e21`), not from elevation. Price urgency gets its own dedicated signal red (`#f33f46`) for discount percentages and a deeper magenta (`#ea306f`) for sale copy, keeping the primary pink from being diluted by commerce noise. A periwinkle accent-blue (`#6078e4`) and alternate light surface (`#fafafa`) show up on promotional landing bands.
+The brand speaks to owners as 집사 (the pet's devoted butler) and to pets as 내새꾸 (my baby). On the live site this shows up as a warm, deal-forward mobile storefront. At desktop width the product keeps its phone shape: a 430px app column sits beside a fixed side panel that carries the search field and trending keywords over a pale field with pink and mint diagonal artwork. Inside the app column everything is set in Lific. Headings are charcoal `#2d3035` at 18px bold, and a supplementary read shows each one lifting a phrase such as 재구매율 81% or 최저가 도전 사료 모음! into weight 900 pink. The one saturated colour, pink `#ff4081`, fills the selected category tab and the APP 설치하기 call to action. Price copy has its own reds: `#f33f46` for the 첫구매 혜택가 label and `#ea306f` for 펫프 Only. Every one of the 409 recorded elements is flat; nothing computes a box-shadow.
 
 **Key Characteristics:**
-- Custom **Lific** typeface with **Noto Sans KR** fallback — one warm family across display and body
-- Single vivid pink (`#ff4081`) as both emotional brand color and primary action fill
-- Heading emphasis in weight 900 pink; quiet 13–14px weight-400 grey body (`#2d3035`)
-- Friendly geometry — 36px chips, ~19px keyword pills, 16px cards, circular avatars
-- Near-flat / shadowless: tint surfaces (`#f8f8f8`, `#fff1f5`) + `#e9ebec` hairlines do the separating
-- Dedicated commerce signals: signal red (`#f33f46`) for discount %, deeper magenta (`#ea306f`) for sale copy
-- Near-black overlay (`#1c1e21`) for image counters instead of drop shadows
-- Muted grey ladder (`#9ca1aa`) for secondary/metadata text
+- One pink, `#ff4081`, for selection and the primary call to action (the category tab's class names it `bg-brand`)
+- Lific for every role: 18px bold headings, 13–14px product names, 10–12px meta lines, all with -0.2px tracking
+- Charcoal `#2d3035` for reading text rather than pure black; `#9ca1aa` for hints and "전체보기"
+- Commerce signals in their own reds: `#f33f46` (첫구매 혜택가) and `#ea306f` (펫프 Only)
+- Soft pink `#fff1f5` pills for the pet-type and delivery chips in the header
+- Rounded everywhere: 6px field, 8px tiles, 16px tabs, 18.5px keyword pills, 36px chips, 48px call to action, 100px sort pill
+- Flat surfaces; separation comes from tint and a single `#e9ebec` hairline
 
 ## Primary tasks
 
-- Order pet food, treats, and pads every week
-- Try a product through a trial before committing to it
-- Scan discount percentages before reading the product name
-- Set a delivery address from the header chip
-- Add an item to the cart and go straight there
+- Order pet food, treats and supplies in one place
+- Set the delivery address and pet type from the header chips
+- Search for a product, or tap a trending keyword such as 체험단
+- Scan discount rates and first-purchase prices before the product name
+- Claim the first-purchase benefit (첫구매 혜택가) or the app sign-up coupon
 
 ## 2. Color Palette & Roles
 
+Every token below was read on 2026-09-30 from the logged-out home (m.pet-friends.co.kr/main/tab/2, where www.pet-friends.co.kr lands) and the best-products list by the deterministic collector at 1440 × 900, and the call to action by the fixed keyboard probe. The tokens describe the mobile web storefront; the native app was not captured.
+
 ### Primary
-- **Pet Friends Pink** (`#ff4081`): The brand's signature vivid pink (Material Pink A400). Used for weight-900 emphasis words in headlines, solid primary-action button/badge fills, and brand accents. The system's single "do this" color.
-- **Deep Magenta** (`#ea306f`): A deeper pink-magenta for sale copy and secondary emphasis text where the primary pink would be too light.
+- **Pet Friends Pink** (`#ff4081`): The fill of the selected category tab (사료, `aria-selected=true`, class `data-[state=active]:bg-brand`) and of APP 설치하기, the one call to action shown to every logged-out visitor in the sheet that opens over home. It is the primary because it is the colour the product uses for both its selected state and its primary action; no other saturated fill was recorded.
+- **On Primary** (`#ffffff`): The selected tab's label and the APP 설치하기 label.
 
 ### Text
-- **Ink Charcoal** (`#2d3035`): Primary text, headings, product names, labels. A soft near-black used instead of pure black for reading comfort in dense grids.
-- **Pure Black** (`#000000`): Maximum-contrast text used on some hero headings and chip labels.
-- **Muted Grey** (`#9ca1aa`): Tertiary text, captions, metadata, disabled labels.
+- **Ink** (`#2d3035`): Section headings, product names, tab and chip labels, keyword labels and the search text.
+- **Pure Black** (`#000000`): The document default colour; the header chips compute it on the button while their visible labels are `#2d3035`.
+- **Muted** (`#9ca1aa`): Age hints under sub-categories and the "전체보기" links; a supplementary read also finds it on struck-through original prices and review counts.
 
-### Commerce Signals
-- **Signal Red** (`#f33f46`): The discount-percentage color — used almost exclusively on the bold "17%", "50%", "36%" markdown that drives conversion.
+### Commerce signals
+- **Discount Red** (`#f33f46`): The 첫구매 혜택가 (first-purchase price) label on product cards. A supplementary read shows the discount rate beside the price (for example 50 %) in the same red.
+- **Magenta** (`#ea306f`): The 펫프 Only label above products sold only on Pet Friends; a supplementary read also finds it on "쿠폰 적용됨" lines.
 
 ### Surface & Neutral
-- **Pure White** (`#ffffff`): Page background, card surfaces, and text on pink/dark fills.
-- **Product Grey** (`#f8f8f8`): The light-grey image surface behind product photography in cards and carousels.
-- **Alt Surface** (`#fafafa`): A slightly warmer alternate light surface for promotional landing bands.
-- **Surface Pink** (`#fff1f5`): A pale pink tint used as the background of header category / delivery chips.
-- **Soft Pink** (`#ffaac7`): The soft pink of the trending search-keyword pills (rendered at 0.5 alpha over the hero imagery).
-- **Hairline** (`#e9ebec`): Thin borders, input outlines, and dividers — the primary separation device given the shadow-free system.
-- **Overlay Ink** (`#1c1e21`): A near-black used (at ~0.6 alpha) for image overlays and carousel index counters.
+- **Surface Pink** (`#fff1f5`): The fill of the 강아지 and 배송지 입력 chips in the header.
+- **Hairline** (`#e9ebec`): The 1px border of the 펫프추천순 sort pill on the best-products list, the only drawn neutral border recorded. (The search field declares this colour but draws no border.)
 
-### Accent
-- **Accent Blue** (`#6078e4`): A periwinkle blue used sparingly on promotional / event landing bands as a secondary accent to the pink.
-- **On-Primary White** (`#ffffff`): Text and iconography on pink, magenta, and dark overlay fills.
+### Brand assets, not tokens
+- The trending-keyword pills are `rgba(255, 170, 199, 0.5)`, a half-transparent pink laid over the side panel; it is kept as a component value, not a colour token.
+- The desktop frame's pink and mint diagonal artwork, the "반려동물 1등 쇼핑몰 펫프렌즈" headline graphic and the pink logo were not measured; no colour is claimed for them.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Brand**: `Lific` — Pet Friends' custom typeface, used across headings, UI, and body.
-- **Fallback**: `Noto Sans KR` — the hangul fallback that carries dense product-listing and body copy.
+- **Live surface use**: `Lific` (409 observed uses, `loaded / high`), self-hosted by Pet Friends as `Lific-Regular`, `Lific-Medium` and `Lific-Bold` WOFF2/WOFF/OTF files on `cdn.pet-friends.co.kr/font/`. The body computes `Lific, "Noto Sans KR", sans-serif` on both pages, and every heading, label, input and list item renders in Lific.
+- **Official distributed font assets**: none found. No page opened this session names Lific's designer, owner or licence.
+- **Official product use**: no Pet Friends page opened this session names its typeface; not claimed.
+- **Declared only (no visible use)**: `Noto Sans KR` (a Light face served from `m.pet-friends.co.kr/fonts/`), `hi-melody` (from `cdn.pet-friends.co.kr/font/`) and FontAwesome 4.7 (from `use.fontawesome.com`), each with 0 observed uses.
+- **Unresolved**: whether Lific is a face made for Pet Friends or a licensed retail family, and under what licence it is served.
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Section Heading | Lific | 18px (1.13rem) | 700 | ~1.30 | -0.2px | H2 section titles ("맘마값 부담 DOWN…") |
-| Emphasis | Lific | 18px (1.13rem) | 900 | normal | -0.2px | Emphasized phrase in a heading, pink `#ff4081` |
-| Discount | Lific | 16px (1.00rem) | 700 | 1.38 (22px) | -0.32px | Discount percentage, signal red `#f33f46` |
-| Label | Lific | 14px (0.88rem) | 700 | ~1.48 | -0.2px | Bold UI labels (배송지 입력, tabs) |
-| Body | Noto Sans KR | 14px (0.88rem) | 400 | normal | normal | Standard reading text |
-| Product Title | Lific | 13px (0.81rem) | 400 | 1.38 (18px) | -0.2px | Product names in cards |
+| Role | Font | Size | Weight | Line Height | Tracking | Observed on |
+|------|------|------|--------|-------------|----------|-------------|
+| Search | Lific | 20px | 500 | normal | normal | Search field and placeholder |
+| Section Title | Lific | 18px | 700 | normal | -0.2px | Home section headings, `#2d3035` |
+| List Title | Lific | 16px | 700 | 20px (1.25) | -0.2px | Best-products page title |
+| Keyword | Lific | 16px | 500 | normal | -0.2px | Trending-keyword pill labels |
+| Tab (selected) | Lific | 14px | 700 | 30px (2.14) | normal | 사료, white on pink |
+| Tab | Lific | 14px | 500 | 30px (2.14) | normal | 간식, 용품 |
+| Nav (selected) | Lific | 14px | 700 | normal | -0.2px | HOME |
+| Nav | Lific | 14px | 400 | 23px (1.64) | -0.2px | Other top tabs |
+| Product Title (list) | Lific | 14px | 400 | 23px (1.64) | -0.2px | Best-products grid |
+| Product Title | Lific | 13px | 400 | 18px (1.38) | -0.2px | Home carousels |
+| Meta | Lific | 12px | 500 | 12px (1.0) | -0.2px | Sub-category names |
+| Label Bold | Lific | 12px | 700 | 12px (1.0) | -0.2px | 펫프 Only, `#ea306f` |
+| Hint | Lific | 10px | 400 | 10px (1.0) | -0.2px | Age hints, `#9ca1aa` |
 
 ### Principles
-- **Bold pink emphasis, quiet grey body**: Headlines carry a weight-900 pink phrase for the persuasive beat; product names and body drop to weight 400 charcoal. The weight-and-color jump is the primary hierarchy signal.
-- **Tight negative tracking on headings**: -0.2px on titles, -0.32px on discount figures. Body stays at normal tracking.
-- **Hangul-first sizing**: Product titles sit at a deliberate 13px, body at 14px — dense enough for merchandising grids, legible for hangul.
-- **One warm family**: Lific covers display and UI; Noto Sans KR is the reading/fallback voice. There is no second display typeface competing for attention.
+- **One family**: Lific carries every role; hierarchy comes from size and weight, not from a second face.
+- **Tight, uniform tracking**: -0.2px on headings, names and meta lines alike (class `tracking-tight-02`).
+- **Small, dense type**: product names at 13–14px and meta at 10–12px, sized for a phone-width commerce grid.
+- **Heading emphasis in pink** (supplementary read, not a token): the persuasive phrase inside a section heading renders in `#ff4081` at weight 900 — 재구매율 81%, 최저가 도전 사료 모음!, 오늘 특가!.
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Primary Action (Pink)**
+**App-install call to action (primary)**
 - Background: `#ff4081`
-- Text: `#ffffff`
-- Font: 16px Lific weight 700
-- Use: Primary brand action — the solid vivid-pink fill used for add-to-cart / buy and headline CTAs
+- Text: `#ffffff`, 16px / 700 Lific, with a white download icon
+- Radius: 48px
+- Size: 162 × 48
+- States: the probe found no hover or pressed change; focus was not reached
+- Use: APP 설치하기 in the sheet that opens over home ("펫프렌즈 앱에서 가입하면 5,000원 쿠폰 즉시 지급")
 
-**Category / Delivery Chip**
+**Header chip**
 - Background: `#fff1f5`
-- Text: `#000000`
+- Text: `#2d3035`, 14px / 700 Lific (child span)
 - Radius: 36px
-- Padding: 4px 8px 4px 12px
+- Padding: 4px 8px 4px 12px (the 8px end leaves room for a chevron)
 - Height: 32px
-- Use: Header chips for category ("강아지") and delivery-address ("배송지 입력") selection
+- States: focus shows no change; hover and pressed unmeasured
+- Use: 강아지 and 배송지 입력
+
+**Sort pill**
+- Background: transparent
+- Border: 1px solid `#e9ebec`
+- Radius: 100px
+- Padding: 0px 12px
+- Height: 32px
+- Use: 펫프추천순 on the best-products list
+
+**Banner control**
+- Background: `rgba(0, 0, 0, 0.1)` with a 4px backdrop blur
+- Radius: 8px
+- Size: 30 × 30, 7px padding
+- Use: Icon control over the home banner carousel
+
+### Tabs
+
+**Category tab**
+- Selected: `#ff4081` fill, `#ffffff` 14px / 700 label
+- Unselected: transparent, `#2d3035` 14px / 500 label
+- Radius: 16px
+- Size: 74 × 32, 30px line
+- Use: 사료 / 간식 / 용품 on home
+
+**Top tab**
+- Text: `#2d3035`, 14px / 400 / 23px; current tab 14px / 700
+- Padding: 14px 0px 10px
+- Height: 47px
+- Use: HOME, 웰컴펫페어, 심쿵펫페어, 사료 최저가 도전!, 할인, NEW 신상, 오직 펫프에서만
 
 ### Inputs
 
-**Search Field**
-- Background: `#ffffff`
-- Text: `#2d3035`
-- Border: 1px solid `#e9ebec`
+**Search field**
+- Background: transparent
+- Text: `#2d3035`, 20px / 500 Lific
+- Border: none on the field itself
 - Radius: 6px
-- Padding: 15px 44px 15px 16px
+- Padding: 14.5px 44px 14.5px 16px (the 44px end reserves room for the submit control)
 - Height: 52px
-- Font: 20px Lific weight 500
-- Use: Main product search — placeholder "어떤 상품을 찾으시나요?"
-
-### Cards
-
-**Product Card**
-- Background: `#f8f8f8`
-- Radius: 16px
-- Use: Light-grey image surface behind product photography in grids and carousels
+- Use: 어떤 상품을 찾으시나요? in the desktop side panel
 
 ### Badges
 
-**Search-Keyword Pill**
-- Background: `#ffaac7`
-- Text: `#ffffff`
-- Radius: 19px
+**Trending-keyword pill**
+- Background: `rgba(255, 170, 199, 0.5)`
+- Text: `#2d3035`, 16px / 500 Lific (child p)
+- Radius: 18.5px
 - Padding: 3px 15px
 - Height: 30px
-- Use: Trending search-keyword pills on the hero (rendered at 0.5 alpha)
+- Use: 체험단, 개구리, 오리젠, 호랑이, 터키츄, 프라이엄프, 배변패드, 하네스, 오메가3, 트릿
 
-**Image Counter Overlay**
-- Background: `#1c1e21`
-- Text: `#ffffff`
-- Radius: 20px
-- Padding: 5px 8px
-- Use: Carousel index / image counter ("2/14"), rendered at ~0.6 alpha over media
+### Tiles
 
-### Avatars
-
-**Circular Frame**
-- Radius: 9999px (border-radius 50%)
-- Use: Circular avatar / icon frame in list and community surfaces
+**Image tile**
+- Radius: 8px
+- Size: 136 × 72
+- Use: Rounded image tiles on home
 
 ---
 
-**Verified:** 2026-07-02 (omd:add-reference CREATE — Tier 1 live inspect, 3 surfaces)
-**Tier 1 sources:** https://www.pet-friends.co.kr/ , https://m.pet-friends.co.kr/main/product/list/16982
-**Tier 2 sources:** getdesign.md/petfriends (0 files) ; styles.refero.design/?q=petfriends (no genuine Pet Friends entry — returns generic default styles)
+**Verified:** 2026-09-30 (deterministic collector capture of two public, logged-out pages of the Pet Friends mobile web storefront plus fixed keyboard-probe state reads and first-party and Korean press context)
+**Tier 1 sources:** https://m.pet-friends.co.kr/main/tab/2 ; https://m.pet-friends.co.kr/main/product/list?tab_info_id=1960
+**Tier 2 sources:** not re-attempted on 2026-09-30; the July record found no Pet Friends entry on getdesign.md or styles.refero.design; no Tier 2 value used
 **Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
 ### Spacing System
-- Base units (measured): 4px, 8px, 12px, 15px, 16px, 44px
-- Notable: chip padding lands at an asymmetric `4px 8px 4px 12px` (room for a trailing chevron icon); the search field reserves a 44px right gutter for its search/clear icon
+- Chip padding: 4px vertical, 12px start, 8px end, 8px gap
+- Keyword pill padding: 3px 15px
+- Search field: 14.5px vertical, 16px start, 44px end
+- Top tabs: 14px above and 10px below the label; the tab strip has a 16px side gutter
+- Sort pill: 12px horizontal
 
 ### Grid & Container
-- Mobile-first, single-column app shell (the desktop `www` host redirects to the `m.` mobile commerce surface)
-- Sticky header: category + delivery chips over a full-width search field
-- Trending-keyword pill row directly beneath search
-- Product merchandising in horizontally scrolling carousels and 2-up grids, each product on a `#f8f8f8` card at 16px radius
-- Section headlines ("최저가 도전 사료 모음!") anchor each merchandising band
+- At desktop width the storefront renders a 430px app column (classes such as `max-w-mobile-max` and `max-w-[42.8rem]`) beside a fixed 512px side panel with the search field, trending keywords and app-store links.
+- Inside the column: header chips, a scrolling top-tab strip, banner carousel, category tabs with sub-category grids, then merchandising sections of product carousels.
+- The best-products page swaps the home header for a back button and page title, then a sort pill over a product grid.
 
 ### Whitespace Philosophy
-- **Merchandising density with breathing room**: product grids are information-rich, but each card gets a clean grey surface and generous rounding so the page never feels cramped.
-- **Flat segmentation**: sections separate by background tint (`#f8f8f8` grey, `#fff1f5` pink, `#fafafa` alt) and `#e9ebec` hairlines, not shadow.
-- **Pill rhythm**: repeated rounded chips and pills create a consistent, friendly horizontal cadence.
+- **Dense merchandising**: small type and tight line heights (1.0 on meta lines) pack prices and labels close together.
+- **Soft grouping**: tinted chips and pills and rounded tiles group content without borders.
 
 ### Border Radius Scale
-- Small (6px): search input
-- Medium (8px): icon buttons, small controls
-- Large (16px): product cards, content containers — the workhorse
-- Pill (36px): category / delivery chips
-- Full (9999px / 50%): keyword pills, avatars, circular frames
+- Field (6px): search input
+- Tile (8px): image tiles, banner control
+- Tab (16px): category tabs
+- Pill (18.5px): trending keywords
+- Chip (36px): header chips
+- Call to action (48px): APP 설치하기
+- Sort (100px): 펫프추천순
 
 ## 6. Depth & Elevation
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, chips, inputs, headings |
-| Tint (Level 1) | `#f8f8f8` / `#fff1f5` / `#fafafa` background shift | Card & section separation without elevation |
-| Hairline (Level 2) | `1px solid #e9ebec` border | Input outlines, dividers |
-| Overlay (Level 3) | `#1c1e21` at ~0.6 alpha | Image-on-media counters and scrims |
+| Flat | No shadow | Every recorded element |
+| Tint | `#fff1f5` fill; half-transparent pink pills | Header chips, trending keywords |
+| Hairline | 1px solid `#e9ebec` | Sort pill |
+| Frosted | `rgba(0, 0, 0, 0.1)` with a 4px backdrop blur | Banner control |
 
-**Shadow Philosophy**: Pet Friends is a near-shadowless, flat system. Live inspection returned `box-shadow: none` across the header chips, search input, and headings. Depth and grouping come from flat tinted surfaces (`#f8f8f8`, `#fff1f5`), thin `#e9ebec` hairlines, and — where content sits on photography — a near-black `#1c1e21` overlay rather than a cast shadow. This keeps the commerce UI feeling fast, bright, and mobile-native. When emphasis is needed the system reaches for color (pink `#ff4081`, red `#f33f46`), never elevation.
+**Shadow Philosophy**: all 409 elements the collector recorded compute `box-shadow: none`. Emphasis comes from the pink fill and from colour in the price lines, not from elevation.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use the custom Lific typeface (with Noto Sans KR fallback) across headings and body
-- Reserve the vivid pink (`#ff4081`) for emphasis words and the primary action — keep it the single "do this" color
-- Put the persuasive word of a headline in weight 900 pink; keep the rest quiet grey
-- Use signal red (`#f33f46`) only for discount percentages, and deeper magenta (`#ea306f`) for sale copy
-- Use soft charcoal (`#2d3035`) for reading text instead of pure black
-- Separate sections with flat tints (`#f8f8f8`, `#fff1f5`) and `#e9ebec` hairlines, not shadows
-- Use friendly geometry — 36px chips, 16px product cards, circular avatars
-- Apply the `#1c1e21` overlay for counters/scrims on top of product imagery
+- Keep `#ff4081` for the selected state and the primary call to action
+- Set everything in Lific with -0.2px tracking on headings, names and meta lines
+- Use `#2d3035` for reading text and `#9ca1aa` for hints
+- Use `#f33f46` for first-purchase prices and `#ea306f` for 펫프 Only labels
+- Use soft pink `#fff1f5` pills for header selectors
+- Round every control: 16px tabs, 36px chips, 48px call to action
 
 ### Don't
-- Spread the pink across many elements — it dilutes the single-action signal
-- Use drop shadows for elevation — Pet Friends is a flat, shadow-free system
-- Use signal red (`#f33f46`) for anything other than price/discount urgency
-- Set headline emphasis in a light weight — the persuasive word is always weight 900
-- Use pure black (`#000000`) for long-form body text — reserve charcoal `#2d3035`
-- Introduce a competing display typeface — Lific owns the voice
-- Use sharp square corners on chips, cards, or pills — everything is rounded
-- Let the periwinkle accent-blue (`#6078e4`) compete with pink as a primary action
+- Don't add drop shadows; none of the 409 recorded elements has one
+- Don't use the price reds for actions or selection
+- Don't set white labels on the half-transparent keyword pills; their labels are `#2d3035`
+- Don't render Lific with another face in its place
+- Don't invent hover, pressed or focus styles; the probe measured none (see §14)
+- Don't use square corners on actions or pills
 
 ## 8. Responsive Behavior
 
 ### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Primary target — single column app shell, chips + search header, carousels |
-| Tablet | 640-1024px | Wider grids, 2–3-up product cards |
-| Desktop | >1024px | `www` host redirects to the `m.` mobile commerce experience; layout stays app-width and centered |
+Only the 1440 × 900 desktop viewport was captured. At that width the storefront already renders its phone-width column beside a side panel; no breakpoint value was measured.
 
 ### Touch Targets
-- Category / delivery chips at 32px height with asymmetric padding — comfortably tappable
-- Search field at 52px height, full-width
-- Keyword pills at 30px height, 3px 15px padding
+- Search field: 52px tall
+- APP 설치하기: 48px
+- Top tabs: 47px
+- Header chips, category tabs and sort pill: 32px
+- Keyword pills and banner control: 30px
 
 ### Collapsing Strategy
-- Header: category + delivery chips stay pinned above the search field
-- Product carousels scroll horizontally on narrow viewports
-- Merchandising bands stack vertically, each keeping its tinted background
-- Product cards maintain 16px radius across breakpoints
+- Not captured. The column layout suggests the side panel drops away on phones, but that was not observed.
 
 ### Image Behavior
-- Product photography sits on `#f8f8f8` card surfaces at all sizes, no shadow
-- Media carousels carry the `#1c1e21` overlay counter regardless of viewport
-- Cards maintain consistent 16px radius
+- Product and banner images sit flat, without borders or shadows; image tiles round to 8px.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary action / emphasis: Pet Friends Pink (`#ff4081`)
-- Sale copy: Deep Magenta (`#ea306f`)
-- Discount %: Signal Red (`#f33f46`)
-- Background: Pure White (`#ffffff`)
-- Product surface: Product Grey (`#f8f8f8`)
-- Chip tint: Surface Pink (`#fff1f5`)
-- Keyword pill: Soft Pink (`#ffaac7`)
-- Text / headings: Ink Charcoal (`#2d3035`)
-- Muted text: Muted Grey (`#9ca1aa`)
-- Hairline: `#e9ebec`
-- Overlay: `#1c1e21`
-- Accent: Periwinkle (`#6078e4`)
+- Selected state and primary call to action: `#ff4081` with `#ffffff` text
+- Text: `#2d3035`; hints `#9ca1aa`; document default `#000000`
+- First-purchase price: `#f33f46`; 펫프 Only: `#ea306f`
+- Header chip fill: `#fff1f5`; hairline `#e9ebec`
 
 ### Example Component Prompts
-- "Create a mobile commerce header on white. A row of pill chips: `#fff1f5` background, `#000000` text, 36px radius, 4px 8px 4px 12px padding, 32px height (category + '배송지 입력'). Below it a 52px search field: white background, 1px solid `#e9ebec` border, 6px radius, 20px Lific text, placeholder '어떤 상품을 찾으시나요?'."
-- "Design a section headline in Lific 18px weight 700, letter-spacing -0.2px, `#2d3035`, with the key phrase in weight 900 pink `#ff4081` — e.g. 최저가 **도전 사료 모음!**."
-- "Build a product card: `#f8f8f8` background, 16px radius, no shadow. Product title 13px Lific weight 400, `#2d3035`. Discount percentage 16px weight 700 in signal red `#f33f46`."
-- "Create a trending-keyword pill row: soft pink `#ffaac7` background, white text, 19px radius, 3px 15px padding, 30px height."
+- "Create a category tab row: 74 × 32 tabs with 16px radius. Selected: `#ff4081` fill, white 14px Lific at weight 700 on a 30px line. Unselected: transparent with a `#2d3035` label at weight 500."
+- "Create an app-install button: `#ff4081` fill, 48px radius, 162 × 48, white 16px Lific label at weight 700 with a download icon, no hover change, no shadow."
+- "Build header chips: `#fff1f5` fill, 36px radius, 4px 8px 4px 12px padding, 32px tall, `#2d3035` 14px Lific label at weight 700 followed by a chevron."
+- "Build trending-keyword pills: `rgba(255, 170, 199, 0.5)` fill, 18.5px radius, 3px 15px padding, 30px tall, `#2d3035` 16px Lific label at weight 500 with -0.2px tracking."
 
 ### Iteration Guide
-1. Lific (Noto Sans KR fallback) everywhere; no second display face
-2. Pink (`#ff4081`) is the single action / emphasis color — don't spread it
-3. Headline emphasis word = weight 900 pink; body = weight 400 charcoal
-4. No shadows — separate with `#f8f8f8` / `#fff1f5` tint and `#e9ebec` hairlines
-5. Discount % is always signal red `#f33f46`; sale copy is deep magenta `#ea306f`
-6. Friendly geometry — 36px chips, 16px cards, circular avatars
-7. Overlay counters on media use `#1c1e21` at low alpha, never a cast shadow
+1. Pink `#ff4081` only for selection and the primary call to action
+2. Lific everywhere, -0.2px tracking
+3. `#2d3035` text, `#9ca1aa` hints
+4. Price reds `#f33f46` and `#ea306f` stay in price and label lines
+5. Tinted pills and rounded tiles; no shadows
+6. Small, dense type sized for a phone column
 
 ---
 
 ## 10. Voice & Tone
 
-Pet Friends' voice is **warm, playful, and reassuring** — it speaks to owners as fellow "집사" (butlers/servants of their pets) raising "내새꾸" (my babies), turning the transactional act of buying pet food into a caring, community-flavored ritual. The register is upbeat and benefit-first, unafraid of a pun: the search placeholder reads "어떤 상품을 찾고 있개?" — swapping 개 (dog) into "찾고 있어?" for a smile. Copy leads with the deal and the emotional payoff, then backs it with hard numbers (재구매율 89%, 최저가).
+Pet Friends' voice is **warm, playful and deal-forward**. It calls owners 집사님 and pets 내새꾸, and leads with a benefit or a number.
 
 | Context | Tone |
 |---|---|
-| Section headlines | Upbeat, benefit-first, one emphasized phrase in pink. "집사님을 위한 오늘 특가!" |
-| Product titles | Plain, descriptive, brand + spec. Quiet grey, no hype. |
-| Discount / price | Numeric and confident. Big red "%", "최저가 도전". |
-| Search / empty prompts | Playful, pet-punny. "어떤 상품을 찾고 있개?" |
-| Trust / community copy | Warm, proof-backed. "써봐야 아니까! 심쿵 체험단", "재구매율 89%". |
+| Positioning | Confident, first-place claim. "반려동물 1등 쇼핑몰, 펫프렌즈" |
+| Promise | Everything-in-one-place convenience with delivery speed. "사료, 간식, 용품을 한곳에서! 서울, 경기 당일&새벽배송" |
+| Section headings | Upbeat and benefit-first, one phrase lifted in pink. "최저가 도전 사료 모음!", "오늘 특가!" |
+| Price lines | Plain and numeric. "첫구매 혜택가", "쿠폰 적용됨" |
+| App prompt | Direct offer with a polite way out. "펫프렌즈 앱에서 가입하면 5,000원 쿠폰 즉시 지급" / "괜찮아요. 모바일 웹으로 볼게요" |
 
-**Voice samples (verbatim from live surfaces):**
-- "반려동물 1등 쇼핑몰, 펫프렌즈" — page title / positioning. *(verified live 2026-07-02)*
-- "내새꾸 친구들에게 재구매율 89%를 보이는 영양/기능" — merchandising headline (proof-backed care). *(verified live 2026-07-02)*
-- "육아비는 펫프랑 나눠요\n집사님을 위한 오늘 특가!" — section headline (community + deal). *(verified live 2026-07-02)*
-- "어떤 상품을 찾고 있개?" — search placeholder (pet pun). *(verified live 2026-07-02)*
+**Voice samples (read on the live home page, 2026-09-30):**
+- "반려동물 1등 쇼핑몰, 펫프렌즈" — page and Open Graph title.
+- "사료, 간식, 용품을 한곳에서! 서울, 경기 당일&새벽배송, 가입 5천원 쿠폰부터 80% 첫구매 혜택까지" — page description.
+- "재구매율 81%" — emphasised phrase in a home section heading.
+- "괜찮아요. 모바일 웹으로 볼게요" — the dismiss line of the app-install sheet.
 
-**Forbidden register**: cold marketplace/logistics jargon, guilt-based pet-parent pressure, undefined promotional fine print, hype that isn't backed by a concrete number.
+**Forbidden register**: cold logistics jargon, guilt-based pressure on pet owners, promotional claims without a concrete figure.
 
 ## 11. Brand Narrative
 
-Pet Friends (펫프렌즈) launched in **2015** and grew into Korea's leading pet-commerce platform, positioning itself plainly on every surface as the "반려동물 1등 쇼핑몰" (No.1 pet shopping mall). Its founding premise addressed a specific Korean pain point: pet owners buying food and supplies across fragmented offline shops and generic marketplaces, with little curation and slow delivery. Pet Friends reframed the category around fast (same-day / dawn) delivery of pet essentials, data-driven product curation, and a community of owners who trust each other's reviews.
+Pet Friends began in 2015 as a specialist online shop for pet supplies, built around a single promise that still heads its storefront: food, treats and supplies in one place, delivered the same day or at dawn in Seoul and Gyeonggi. In 2021 IMM Private Equity and GS Retail acquired the company, and Korean business press describes the years since as a period of rapid growth: revenue rose from about ₩61bn in 2021 to ₩117.1bn in 2024, and the first half of 2025 brought the company's first half-year profit. Coverage also notes a distribution deal for the North American organic pet-food brand Blue Buffalo and a stated plan to become a "super app" spanning a pet's life cycle.
 
-The product's identity is built around the emotional relationship between owner and pet — the recurring "집사님" (butler) and "내새꾸" (my baby) language treats customers as devoted caregivers rather than shoppers. Merchandising leans on social proof ("재구매율 89%", "심쿵 체험단" trial squads) and price confidence ("최저가 도전"), reflecting a business that competes on trust, speed, and value at once.
-
-What Pet Friends refuses, visible in its design: the cold, shadow-heavy chrome of a generic logistics marketplace, and the guilt-driven marketing sometimes used in the pet category. What it embraces: a bright, near-flat mobile-first interface; a single affectionate pink; playful, punny copy; and a relentless, number-backed focus on the deal — all in service of making caring for a pet feel joyful and effortless.
+What sets the brand apart in that coverage is emotion rather than logistics: the 집사생활 community inside the app, where first-time owners swap care tips and post photos of their pets. The storefront speaks the same language — 집사님, 내새꾸 — and its design reads the same way: one affectionate pink for the actions that matter, charcoal type, soft rounded pills and flat surfaces that keep a dense catalogue light.
 
 ## 12. Principles
 
-1. **Pink means love and action.** The vivid pink (`#ff4081`) is both the brand's warmth and its call-to-action. *UI implication:* reserve pink for emphasis words and the primary action so affection and "do this" read as the same gesture.
-2. **Owner as devoted caregiver.** Customers are 집사 raising 내새꾸, not buyers. *UI implication:* copy and empty states speak with warmth and play (the 개 pun), never cold transaction language.
-3. **Prove the promise.** Trust is earned with numbers — 재구매율 89%, 최저가, 체험단. *UI implication:* pair every persuasive headline with a concrete figure in red or bold.
-4. **Flat and fast.** A mobile-native commerce app should feel bright and quick. *UI implication:* no shadows; separate with tint and `#e9ebec` hairlines; keep cards clean and rounded.
-5. **Friendly geometry.** Rounded chips, pills, and cards make a data-dense store feel approachable. *UI implication:* use 36px chips, 16px cards, and circular frames; avoid sharp corners.
+1. **One pink for what matters.** *UI implication:* `#ff4081` marks the selected state and the primary call to action, and nothing else competes with it.
+2. **Owners as 집사.** *UI implication:* copy is warm and familiar (집사님, 내새꾸), never cold transaction language.
+3. **Prove the deal.** *UI implication:* show the number — discount rate, first-purchase price, coupon value — in its own colour.
+4. **Flat and light.** *UI implication:* no shadows; group with tinted pills and rounded tiles. (An editorial reading of the captured pages, not a Pet Friends statement.)
+5. **Friendly geometry.** *UI implication:* every control is rounded, from the 6px field to the 100px sort pill.
 
 ## 13. Personas
 
 *Personas below are fictional archetypes informed by publicly observable Pet Friends user segments (Korean dog and cat owners buying food and supplies online), not individual people.*
 
-**김서연, 32, 서울.** A first-time puppy owner who orders food, treats, and pads weekly. Values same-day delivery and the "심쿵 체험단" trials that let her test products before committing. Chose Pet Friends because the app feels warm and the reviews feel honest, not like a faceless marketplace.
+**김서연, 32, 서울.** A first-time puppy owner who orders food, treats and pads every week and relies on dawn delivery. Reads the 집사생활 community before trying a new brand.
 
-**이준호, 41, 경기.** A two-cat household manager who buys in bulk and chases "최저가 도전" deals. Scans the red discount percentages first, then the product title. Appreciates that the price signal is unmistakable without hunting through fine print.
+**이준호, 41, 경기.** Runs a two-cat household and buys in bulk. Scans the red discount rate and first-purchase price before reading the product name.
 
-**박민지, 27, 부산.** A dog owner active in the community and 체험단 program. Loves the playful copy ("찾고 있개?") and the sense that Pet Friends is run by fellow 집사. Trusts the "재구매율 89%" style proof more than star ratings.
+**박민지, 27, 부산.** A dog owner who taps trending keywords such as 체험단 to find trial offers, and trusts repurchase figures more than star ratings.
 
 ## 14. States
 
-| State | Treatment |
+Only these states were observed on the two captured pages; nothing else is specified here.
+
+| State | Observation |
 |---|---|
-| **Empty (search, no results)** | White canvas. Charcoal (`#2d3035`) line explaining no matching products, with a pink (`#ff4081`) suggestion to browse categories. Playful, never a dead end. |
-| **Empty (cart)** | Charcoal single line plus a pink CTA back to shopping. Warm, low-pressure tone. |
-| **Loading (product grid)** | Skeleton cards on `#f8f8f8` at final 16px-radius dimensions. Flat pulse, no shadow shimmer — consistent with the shadowless system. |
-| **Loading (search)** | Inline spinner in the 52px field; previous results stay visible where possible. |
-| **Error (fetch failed)** | Inline message in charcoal with a plain-language explanation and a retry. No bare "오류가 발생했습니다". |
-| **Error (form validation)** | Field-level message below the input in a warm tone; describes what's valid, not just "필수". |
-| **Success (added to cart)** | Brief confirmation in the pink brand tone; quick path to cart. No guilt, no clutter. |
-| **Skeleton** | `#f8f8f8` blocks at final dimensions, 16px radius, flat pulse. |
-| **Disabled** | Muted grey (`#9ca1aa`) text on reduced-opacity surface; pink actions fade rather than turn grey to preserve brand read. |
+| **Selected (category tab)** | `#ff4081` fill with a white 14px / 700 label; unselected tabs are transparent with `#2d3035` 14px / 500 labels. |
+| **Selected (top tab)** | The current tab's label is 14px / 700; the others are 14px / 400. The underline indicator was not recorded. |
+| **Hover / pressed (APP 설치하기)** | No change (probe, transition all 0s). |
+| **Focus** | No change on the header chip, keyword pill, search field and submit control (Tab stops #24, #12, #10, #11). |
+| **Dialog open** | An app-install sheet covered the app column on load for a logged-out visitor, with APP 설치하기 and a "괜찮아요. 모바일 웹으로 볼게요" dismiss line. |
+
+Hover and pressed on the tabs, chips, pills and search field are **unmeasured**, not absent: while the sheet was open the page ignored the pointer. Error, empty, loading and success states were not captured and are not described.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Chip / pill press, hover, focus |
-| `motion-standard` | 220ms | Card & sheet reveal, carousel slide, dropdown |
-| `motion-slow` | 320ms | Page-level transitions, promotional reveals |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sheets, cards, carousels |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is friendly but quick — consistent with the bright, fast commerce feel. Pill chips respond to press with a subtle scale/opacity shift; product carousels slide at `motion-standard / ease-enter`; add-to-cart confirmations pop briefly in the pink tone. No heavy bounce that would slow browsing. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the store remains fully functional.
+Every control the probe read computes `transition: all 0s`, so its states change instantly. Nothing else about motion (carousels, the sheet's entrance) was measured; treat it as unspecified and honour `prefers-reduced-motion` in any build.
 
 <!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on Pet Friends
-mobile commerce surfaces (www.pet-friends.co.kr redirects to m.pet-friends.co.kr):
-- Homepage (m.pet-friends.co.kr/main/tab/2): body font "Lific, Noto Sans KR";
-  section H2 18px/700/-0.2px color rgb(45,48,53) #2d3035 with <b> emphasis 18px/900
-  in rgb(255,64,129) #ff4081; product H3 13px/400/lh18px; discount <strong> 16px/700
-  color rgb(243,63,70) #f33f46; category chip bg rgb(255,241,245) #fff1f5 radius 36px;
-  keyword pill bg rgba(255,170,199,0.5) (#ffaac7) radius 18.5px; search input radius 6px
-  border-color rgb(233,235,236) #e9ebec text rgb(45,48,53); product card bg rgb(248,248,248)
-  #f8f8f8 radius 16px; overlay counter bg rgba(28,30,33,0.6) #1c1e21 radius 20px.
-- Search surface (m.pet-friends.co.kr/search/result): same chip/pill/input system;
-  placeholders "어떤 상품을 찾으시나요?" and "어떤 상품을 찾고 있개?".
-- Product-list surface (m.pet-friends.co.kr/main/product/list/16982): bg-frequency scan
-  showed rgb(255,64,129) #ff4081 ×20 (solid pink action fills), rgb(45,48,53) ×20,
-  rgb(96,120,228) #6078e4 ×20 (promo accent), rgb(250,250,250) #fafafa ×20; circular
-  avatar bg rgb(249,249,249) radius 50%.
-
-Token-level claims (§1–9) are sourced from this live inspection; raw samples logged in
-web/references/petfriends/.verification.md.
-
-Voice samples (§10) are verbatim from live surfaces (page title, merchandising headlines,
-search placeholder).
-
-Brand narrative (§11): Pet Friends (펫프렌즈) is a Korean pet e-commerce platform that
-launched in 2015 and positions itself as the "반려동물 1등 쇼핑몰" (verified live on the
-homepage/title). Broader founding/company details beyond the on-site positioning are
-general public knowledge and were not independently re-verified from a first-party Pet
-Friends statement in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable Pet Friends user
-segments (Korean dog/cat owners). Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "pink means love and action", "flat and fast as a rejection of
-cold marketplace chrome") are editorial readings connecting the observed design to the
-brand's positioning, not directly sourced Pet Friends statements.
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/petfriends.json (capturedAt 2026-09-30T11:09:05Z), deterministic collector, 1440x900, logged out: m.pet-friends.co.kr/main/tab/2 and /main/product/list?tab_info_id=1960. States: fixed keyboard probe raws docs/research/2026-09-29-growth/raw/petfriends-states-home.json and petfriends-states-home-sheet.json.
+- Heading emphasis, price-line colours beyond the bundle, and label texts: a same-day supplementary headless read, logged in .verification.md; not used for tokens.
+- §1, §10, §11 context: the live home page (title, description, sheet copy) and Korean press opened 2026-09-30 (newsis 2025-08-04 and 2025-05-07, news1 2025-05-07).
+- Personas are fictional archetypes. Interpretive readings are editorial.
 -->

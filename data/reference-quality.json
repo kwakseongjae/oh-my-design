@@ -4,8 +4,8 @@
   "generator": "scripts/build-reference-quality-data.mjs",
   "count": 521,
   "counts": {
-    "verified_v2": 276,
-    "partial": 132,
+    "verified_v2": 286,
+    "partial": 122,
     "legacy_snapshot": 113,
     "total": 521
   },
@@ -601,16 +601,14 @@
     },
     {
       "id": "buzzvil",
-      "status": "partial",
-      "verified_at": "2026-06-26",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "cabify",
@@ -1343,16 +1341,14 @@
     },
     {
       "id": "drdiary",
-      "status": "partial",
-      "verified_at": "2026-07-02",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 4,
+      "source_count": 9,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "drnow",
@@ -1995,16 +1991,14 @@
     },
     {
       "id": "greeting",
-      "status": "partial",
-      "verified_at": "2026-06-11",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 9,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "grip",
@@ -2618,16 +2612,14 @@
     },
     {
       "id": "kcd",
-      "status": "partial",
-      "verified_at": "2026-06-26",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 4,
+      "source_count": 9,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "kdan",
@@ -4079,16 +4071,14 @@
     },
     {
       "id": "petfriends",
-      "status": "partial",
-      "verified_at": "2026-07-02",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 2,
+      "source_count": 4,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "piccollage",
@@ -4254,16 +4244,14 @@
     },
     {
       "id": "protopie",
-      "status": "partial",
-      "verified_at": "2026-07-02",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 9,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "publy",
@@ -4347,16 +4335,14 @@
     },
     {
       "id": "quotabook",
-      "status": "partial",
-      "verified_at": "2026-07-02",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "ragic",
@@ -4825,16 +4811,14 @@
     },
     {
       "id": "shiftee",
-      "status": "partial",
-      "verified_at": "2026-06-26",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "shiftup",
@@ -5032,16 +5016,14 @@
     },
     {
       "id": "soomgo",
-      "status": "partial",
-      "verified_at": "2026-06-09",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 13,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "soop",
@@ -5451,16 +5433,14 @@
     },
     {
       "id": "teamsparta",
-      "status": "partial",
-      "verified_at": "2026-07-02",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "tellingme",

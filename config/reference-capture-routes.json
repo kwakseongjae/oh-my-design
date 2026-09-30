@@ -539,6 +539,87 @@
         "https://www.vuno.co/about",
         "https://www.vuno.co/deepcars"
       ]
+    },
+    "buzzvil": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.buzzvil.com/",
+        "https://www.buzzvil.com/company/about_us",
+        "https://www.buzzvil.com/monetize/buzzbenefit"
+      ]
+    },
+    "drdiary": {
+      "maxRoutes": 4,
+      "routes": [
+        "https://drdiary.co.kr/",
+        "https://drdiary.co.kr/solution",
+        "https://drdiary.co.kr/news/press",
+        "https://drdiary.co.kr/contact"
+      ]
+    },
+    "greeting": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.greetinghr.com/",
+        "https://www.greetinghr.com/pricing",
+        "https://www.greetinghr.com/why-greeting"
+      ]
+    },
+    "kcd": {
+      "maxRoutes": 4,
+      "routes": [
+        "https://kcd.co.kr/",
+        "https://kcd.co.kr/about/",
+        "https://kcd.co.kr/service/",
+        "https://cashnote.kr/"
+      ]
+    },
+    "petfriends": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://m.pet-friends.co.kr/main/tab/2",
+        "https://m.pet-friends.co.kr/main/product/list?tab_info_id=1960"
+      ]
+    },
+    "protopie": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.protopie.io/",
+        "https://www.protopie.io/discover",
+        "https://www.protopie.io/plans"
+      ]
+    },
+    "quotabook": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://quotabook.com/",
+        "https://quotabook.com/pricing",
+        "https://quotabook.com/platform/stock-award"
+      ]
+    },
+    "shiftee": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://shiftee.io/ko",
+        "https://shiftee.io/ko/pricing",
+        "https://shiftee.io/ko/company"
+      ]
+    },
+    "soomgo": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://soomgo.com/",
+        "https://soomgo.com/search/pro/review_count",
+        "https://soomgo.com/pro"
+      ]
+    },
+    "teamsparta": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://spartaclub.kr/",
+        "https://spartaclub.kr/catalog/scc",
+        "https://spartaclub.kr/product/9"
+      ]
     }
   }
 }

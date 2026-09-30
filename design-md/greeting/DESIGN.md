@@ -9,59 +9,275 @@ primary_color: "#1890ff"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=greetinghr.com&sz=128"
-verified: "2026-06-11"
+verified: "2026-09-30"
 added: "2026-06-11"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://www.greetinghr.com/", inspected: "2026-09-30" }
+    - { id: surface-2, kind: marketing, url: "https://www.greetinghr.com/pricing", inspected: "2026-09-30" }
+    - { id: surface-3, kind: marketing, url: "https://www.greetinghr.com/why-greeting", inspected: "2026-09-30" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://www.greetinghr.com/", captured: "2026-09-30" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://www.greetinghr.com/pricing", captured: "2026-09-30" }
+    - { id: surface-surface-3, kind: product-surface, url: "https://www.greetinghr.com/why-greeting", captured: "2026-09-30" }
+    - { id: greeting-probe-home, kind: product-surface, url: "https://www.greetinghr.com/", captured: "2026-09-30" }
+    - { id: greeting-probe-pricing, kind: product-surface, url: "https://www.greetinghr.com/pricing", captured: "2026-09-30" }
+    - { id: doodlin-about, kind: official-doc, url: "https://www.doodlin.co.kr/ko/about", captured: "2026-09-30" }
+    - { id: greeting-blog, kind: official-doc, url: "https://blog.greetinghr.com/", captured: "2026-09-30" }
+    - { id: pretendard-license, kind: license, url: "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE", captured: "2026-09-30" }
+    - { id: poppins-license, kind: license, url: "https://raw.githubusercontent.com/google/fonts/main/ofl/poppins/OFL.txt", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &cta { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-09-30" }
+    "tokens.colors.on-primary": *cta
+    "tokens.colors.action-dark": &dark { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-09-30" }
+    "tokens.colors.heading": &hero { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.ink-soft": &section { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.secondary": &eyebrow { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h1", captured: "2026-09-30" }
+    "tokens.colors.muted": &subline { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.faint": &featdesc { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.plan-ink": &plantext { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.colors.link": &link { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"22\"]", captured: "2026-09-30" }
+    "tokens.colors.white": &body { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
+    "tokens.colors.surface-soft": &soft { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"0\"]", captured: "2026-09-30" }
+    "tokens.colors.surface": &navstate { surface_id: home, source_id: greeting-probe-home, method: live-state-probe, selector: "a 가격 in the header nav (51.7 x 36): hover and pressed bg rgba(252, 252, 252, 0) -> rgb(244, 244, 245); transition all 0s; focus (Tab #8) browser default ring rgb(0, 95, 204) auto 1px only", captured: "2026-09-30" }
+    "tokens.colors.hairline": &quotestate { surface_id: surface-2, source_id: greeting-probe-pricing, method: live-state-probe, selector: "a 견적 문의하기 (218.7 x 50, rest bg rgb(15, 15, 15)): hover and pressed bg -> rgb(63, 63, 70) and ::after painted with border 1px solid rgb(228, 228, 231); transition all 0s; focus (Tab #4) browser default ring only", captured: "2026-09-30" }
+    "tokens.typography.family.display": *hero
+    "tokens.typography.family.text": &bodytext { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.typography.family.body": *subline
+    "tokens.typography.family.numeral": &numeral { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.display-hero.size": *hero
+    "tokens.typography.display-hero.weight": *hero
+    "tokens.typography.display-hero.lineHeight": *hero
+    "tokens.typography.display-hero.tracking": *hero
+    "tokens.typography.display-hero.use": *hero
+    "tokens.typography.section.size": *section
+    "tokens.typography.section.weight": *section
+    "tokens.typography.section.lineHeight": *section
+    "tokens.typography.section.tracking": *section
+    "tokens.typography.section.use": *section
+    "tokens.typography.band.size": &band { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.band.weight": *band
+    "tokens.typography.band.lineHeight": *band
+    "tokens.typography.band.tracking": *band
+    "tokens.typography.band.use": *band
+    "tokens.typography.statement.size": &statement { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.statement.weight": *statement
+    "tokens.typography.statement.lineHeight": *statement
+    "tokens.typography.statement.tracking": *statement
+    "tokens.typography.statement.use": *statement
+    "tokens.typography.feature.size": &feat { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
+    "tokens.typography.feature.weight": *feat
+    "tokens.typography.feature.lineHeight": *feat
+    "tokens.typography.feature.tracking": *feat
+    "tokens.typography.feature.use": *feat
+    "tokens.typography.quote.size": &quote { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.quote.weight": *quote
+    "tokens.typography.quote.lineHeight": *quote
+    "tokens.typography.quote.tracking": *quote
+    "tokens.typography.quote.use": *quote
+    "tokens.typography.card-title.size": &cardtitle { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
+    "tokens.typography.card-title.weight": *cardtitle
+    "tokens.typography.card-title.lineHeight": *cardtitle
+    "tokens.typography.card-title.tracking": *cardtitle
+    "tokens.typography.card-title.use": *cardtitle
+    "tokens.typography.subline.size": *subline
+    "tokens.typography.subline.weight": *subline
+    "tokens.typography.subline.lineHeight": *subline
+    "tokens.typography.subline.use": *subline
+    "tokens.typography.stat.size": &stat { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.stat.weight": *stat
+    "tokens.typography.stat.lineHeight": *stat
+    "tokens.typography.stat.use": *stat
+    "tokens.typography.numeral.size": *numeral
+    "tokens.typography.numeral.weight": *numeral
+    "tokens.typography.numeral.lineHeight": *numeral
+    "tokens.typography.numeral.tracking": *numeral
+    "tokens.typography.numeral.use": *numeral
+    "tokens.typography.eyebrow.size": *eyebrow
+    "tokens.typography.eyebrow.weight": *eyebrow
+    "tokens.typography.eyebrow.lineHeight": *eyebrow
+    "tokens.typography.eyebrow.tracking": *eyebrow
+    "tokens.typography.eyebrow.use": *eyebrow
+    "tokens.typography.button.size": &btnlabel { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.button.weight": *btnlabel
+    "tokens.typography.button.lineHeight": *btnlabel
+    "tokens.typography.button.tracking": *btnlabel
+    "tokens.typography.button.use": *btnlabel
+    "tokens.typography.nav.size": &navlabel { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.nav.weight": *navlabel
+    "tokens.typography.nav.lineHeight": *navlabel
+    "tokens.typography.nav.use": *navlabel
+    "tokens.typography.plan-body.size": *plantext
+    "tokens.typography.plan-body.weight": *plantext
+    "tokens.typography.plan-body.lineHeight": *plantext
+    "tokens.typography.plan-body.use": *plantext
+    "tokens.typography.body.size": *bodytext
+    "tokens.typography.body.weight": *bodytext
+    "tokens.typography.body.lineHeight": *bodytext
+    "tokens.typography.body.use": *bodytext
+    "tokens.typography.caption.size": &caption { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.typography.caption.weight": *caption
+    "tokens.typography.caption.lineHeight": *caption
+    "tokens.typography.caption.use": *caption
+    "tokens.typography.fine.size": &fine { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.fine.weight": *fine
+    "tokens.typography.fine.lineHeight": *fine
+    "tokens.typography.fine.use": *fine
+    "tokens.spacing.cta-y": *dark
+    "tokens.spacing.cta-x": *dark
+    "tokens.spacing.nav-y": &nav { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"3\"]", captured: "2026-09-30" }
+    "tokens.spacing.nav-x": *nav
+    "tokens.spacing.pill-y": &pill { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-09-30" }
+    "tokens.spacing.pill-x": *pill
+    "tokens.spacing.bar-y": &bar { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"0\"]", captured: "2026-09-30" }
+    "tokens.spacing.bar-x": *bar
+    "tokens.rounded.button": *cta
+    "tokens.rounded.dialog-button": &promo { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"87\"]", captured: "2026-09-30" }
+    "tokens.rounded.card": &featcard { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"29\"]", captured: "2026-09-30" }
+    "tokens.rounded.pill": *pill
+    "tokens.rounded.switch": &billing { surface_id: surface-2, source_id: greeting-probe-pricing, method: live-state-probe, selector: "div 월간연간 (-10%) billing switch (175.4 x 49): rest bg rgb(244, 244, 245), radius 100px, padding 6px 8px; hover and pressed no change across self, 7 descendants and 3 ancestor levels; focus (Tab #1) browser default ring only", captured: "2026-09-30" }
+    "tokens.components.header-demo-button.type": *cta
+    "tokens.components.header-demo-button.bg": *cta
+    "tokens.components.header-demo-button.fg": *cta
+    "tokens.components.header-demo-button.radius": *cta
+    "tokens.components.header-demo-button.padding": *cta
+    "tokens.components.header-demo-button.height": *cta
+    "tokens.components.header-demo-button.font": &ctalabel { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.components.header-demo-button.hover": &ctastate { surface_id: home, source_id: greeting-probe-home, method: live-state-probe, selector: "a 도입 문의 in the header (97.1 x 36, rest bg rgb(24, 144, 255)): hover and pressed bg -> rgba(44, 147, 242, 0.8); transition all 0s; focus (Tab #11) browser default ring rgb(0, 95, 204) auto 1px only", captured: "2026-09-30" }
+    "tokens.components.header-demo-button.pressed": *ctastate
+    "tokens.components.header-demo-button.states": *ctastate
+    "tokens.components.header-demo-button.use": *cta
+    "tokens.components.dark-button.type": *dark
+    "tokens.components.dark-button.bg": *dark
+    "tokens.components.dark-button.fg": *dark
+    "tokens.components.dark-button.radius": *dark
+    "tokens.components.dark-button.padding": *dark
+    "tokens.components.dark-button.height": *dark
+    "tokens.components.dark-button.font": *btnlabel
+    "tokens.components.dark-button.hover": *quotestate
+    "tokens.components.dark-button.pressed": *quotestate
+    "tokens.components.dark-button.states": *quotestate
+    "tokens.components.dark-button.use": *dark
+    "tokens.components.light-button.type": &light { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"4\"]", captured: "2026-09-30" }
+    "tokens.components.light-button.bg": *light
+    "tokens.components.light-button.fg": *light
+    "tokens.components.light-button.radius": *light
+    "tokens.components.light-button.padding": *light
+    "tokens.components.light-button.height": *light
+    "tokens.components.light-button.font": *btnlabel
+    "tokens.components.light-button.hover": &lightstate { surface_id: surface-2, source_id: greeting-probe-pricing, method: live-state-probe, selector: "a 도입 혜택 문의하기 (181 x 50, rest bg rgb(255, 255, 255)): hover and pressed bg -> rgb(244, 244, 245), label and arrow rgb(23, 23, 23) -> rgb(15, 15, 15); transition all 0s; focus (Tab #6) browser default ring only", captured: "2026-09-30" }
+    "tokens.components.light-button.pressed": *lightstate
+    "tokens.components.light-button.states": *lightstate
+    "tokens.components.light-button.use": *light
+    "tokens.components.soft-button.type": *soft
+    "tokens.components.soft-button.bg": *soft
+    "tokens.components.soft-button.fg": *soft
+    "tokens.components.soft-button.radius": *soft
+    "tokens.components.soft-button.padding": *soft
+    "tokens.components.soft-button.height": *soft
+    "tokens.components.soft-button.hover": &softstate { surface_id: surface-2, source_id: greeting-probe-pricing, method: live-state-probe, selector: "a 무료 체험 시작 (230.7 x 50, rest bg rgb(252, 252, 252)): hover and pressed bg -> rgb(244, 244, 245), label rgb(23, 23, 23) -> rgb(15, 15, 15); transition all 0s; focus (Tab #2) browser default ring only", captured: "2026-09-30" }
+    "tokens.components.soft-button.pressed": *softstate
+    "tokens.components.soft-button.states": *softstate
+    "tokens.components.soft-button.use": *soft
+    "tokens.components.nav-item.type": *nav
+    "tokens.components.nav-item.fg": *nav
+    "tokens.components.nav-item.radius": *nav
+    "tokens.components.nav-item.padding": *nav
+    "tokens.components.nav-item.height": *nav
+    "tokens.components.nav-item.font": *navlabel
+    "tokens.components.nav-item.hover": *navstate
+    "tokens.components.nav-item.pressed": *navstate
+    "tokens.components.nav-item.states": *navstate
+    "tokens.components.nav-item.use": *nav
+    "tokens.components.eyebrow-pill.type": *pill
+    "tokens.components.eyebrow-pill.bg": *pill
+    "tokens.components.eyebrow-pill.fg": *eyebrow
+    "tokens.components.eyebrow-pill.radius": *pill
+    "tokens.components.eyebrow-pill.padding": *pill
+    "tokens.components.eyebrow-pill.height": *pill
+    "tokens.components.eyebrow-pill.states": &pillstate { surface_id: home, source_id: greeting-probe-home, method: live-state-probe, selector: "a 국내 1위 채용 관리 솔루션 (198.4 x 32): hover and pressed UNMEASURED, pointer covered by the fixed promotion dialog div.framer-wbFZi (1440 x 1000); focus UNMEASURED, not reached within 99 Tab presses", captured: "2026-09-30" }
+    "tokens.components.eyebrow-pill.use": *pill
+    "tokens.components.dark-pill.type": &darkpill { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"21\"]", captured: "2026-09-30" }
+    "tokens.components.dark-pill.bg": *darkpill
+    "tokens.components.dark-pill.fg": &darkpilllabel { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h1", captured: "2026-09-30" }
+    "tokens.components.dark-pill.radius": *darkpill
+    "tokens.components.dark-pill.padding": *darkpill
+    "tokens.components.dark-pill.use": *darkpill
+    "tokens.components.billing-switch.type": *billing
+    "tokens.components.billing-switch.bg": *billing
+    "tokens.components.billing-switch.radius": *billing
+    "tokens.components.billing-switch.padding": *billing
+    "tokens.components.billing-switch.height": *billing
+    "tokens.components.billing-switch.states": *billing
+    "tokens.components.billing-switch.use": *billing
+    "tokens.components.promo-dialog-button.type": *promo
+    "tokens.components.promo-dialog-button.bg": *promo
+    "tokens.components.promo-dialog-button.fg": *promo
+    "tokens.components.promo-dialog-button.radius": *promo
+    "tokens.components.promo-dialog-button.padding": *promo
+    "tokens.components.promo-dialog-button.height": *promo
+    "tokens.components.promo-dialog-button.font": &promolabel { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.components.promo-dialog-button.states": *promo
+    "tokens.components.promo-dialog-button.use": *promo
+    "tokens.components.feature-card.type": *featcard
+    "tokens.components.feature-card.radius": *featcard
+    "tokens.components.feature-card.padding": *featcard
+    "tokens.components.feature-card.size": *featcard
+    "tokens.components.feature-card.use": *featcard
 tokens:
-  source: live-extract
-  extracted: "2026-06-11"
-  note: "primary = live CTA azure (#1890ff); dark CTA/ink (#0f0f0f, #171717). Deep navy stat band bg (#001946). Text on a zinc neutral ladder (#27272a→#71717a→#a1a1aa). Surfaces white/near-white with light-blue tints (#f2f9ff, #e4f0fc)."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
     primary: "#1890ff"
-    primary-hover: "#2c93f2"
-    primary-deep: "#0a58a1"
-    ink: "#0f0f0f"
-    ink-soft: "#171717"
+    on-primary: "#ffffff"
+    action-dark: "#0f0f0f"
     heading: "#27272a"
-    body: "#3f3f46"
+    ink-soft: "#171717"
+    secondary: "#3f3f46"
     muted: "#71717a"
     faint: "#a1a1aa"
+    plan-ink: "#09090b"
+    link: "#0a58a1"
+    white: "#ffffff"
+    surface-soft: "#fcfcfc"
+    surface: "#f4f4f5"
     hairline: "#e4e4e7"
-    disabled: "#d4d4d8"
-    navy: "#001946"
-    canvas: "#ffffff"
-    surface: "#fcfcfc"
-    surface-alt: "#fafafa"
-    surface-zinc: "#f4f4f5"
-    tint-blue: "#f2f9ff"
-    tint-blue-alt: "#e4f0fc"
-    success: "#4ba63d"
-    on-primary: "#ffffff"
   typography:
-    family: { display: "Pretendard SemiBold", body: "Pretendard Regular", numeral: "Poppins" }
-    hero-accent:  { size: 60, weight: 600, lineHeight: 1.20, tracking: -0.6, use: "Hero accent word 채용 성공, Pretendard SemiBold, azure" }
-    display:      { size: 48, weight: 600, lineHeight: 1.30, tracking: -0.48, use: "Primary section headline, Pretendard SemiBold" }
-    section:      { size: 36, weight: 600, lineHeight: 1.20, tracking: -0.36, use: "Band headline, Pretendard SemiBold" }
-    feature:      { size: 28, weight: 600, lineHeight: 1.40, tracking: -0.56, use: "Feature card heading, Pretendard SemiBold" }
-    quote:        { size: 24, weight: 600, lineHeight: 1.50, tracking: -0.24, use: "Testimonial quote, Pretendard SemiBold" }
-    card-title:   { size: 20, weight: 600, lineHeight: 1.50, tracking: -0.4, use: "Product card title, Pretendard SemiBold" }
-    label:        { size: 16, weight: 600, lineHeight: 1.00, tracking: -0.16, use: "Eyebrow / badge H1-H2 labels, Pretendard SemiBold" }
-    numeral:      { size: 175, weight: 400, lineHeight: 1.00, tracking: -8.74, use: "Big stat numeral 10,000+, Poppins" }
-  spacing: { xs: 4, sm: 8, base: 12, md: 16, lg: 20, xl: 25, xxl: 48, section: 80 }
-  rounded: { sm: 4, md: 8, lg: 16, xl: 30, pill: 50 }
-  shadow:
-    none: "none"
-    card-inset: "rgba(255,255,255,0.12) 0px 0px 2px 0px inset"
+    family: { display: "Pretendard SemiBold", text: "Pretendard Medium", body: "Pretendard Regular", numeral: "Poppins" }
+    display-hero: { size: 60, weight: 400, lineHeight: 1.2, tracking: -0.6, use: "Home hero headline (채용 관리를 넘어 채용 성공으로), Pretendard SemiBold face at computed weight 400, 72px line, in #27272a; the closing band repeats it in #ffffff" }
+    section: { size: 48, weight: 400, lineHeight: 1.3, tracking: -0.48, use: "Section headlines on home and /pricing, Pretendard SemiBold face, 62.4px line, in #171717" }
+    band: { size: 36, weight: 400, lineHeight: 1.2, tracking: -0.36, use: "Band headlines on home and plan prices on /pricing, Pretendard SemiBold face, 43.2px line, in #27272a" }
+    statement: { size: 32, weight: 400, lineHeight: 1.4, tracking: -0.32, use: "Wide statement paragraph on home, Pretendard SemiBold face, 44.8px line, in #27272a" }
+    feature: { size: 28, weight: 400, lineHeight: 1.4, tracking: -0.56, use: "Feature panel headings on home and /pricing, Pretendard SemiBold face, 39.2px line, in #27272a" }
+    quote: { size: 24, weight: 400, lineHeight: 1.5, tracking: -0.24, use: "Customer quotes on home, Pretendard SemiBold face, 36px line, in #27272a" }
+    card-title: { size: 20, weight: 400, lineHeight: 1.5, tracking: -0.4, use: "Feature list titles on home and plan names on /pricing, Pretendard SemiBold face, 30px line, in #27272a" }
+    subline: { size: 20, weight: 400, lineHeight: 1.6, use: "Home hero subline, Pretendard Regular face, 32px line, in #71717a" }
+    stat: { size: 96, weight: 400, lineHeight: 1, use: "White statistic figures in the proof band on home, Pretendard Medium face, 96px line" }
+    numeral: { size: 174.851, weight: 400, lineHeight: 1, tracking: -8.74, use: "Oversized white Poppins numeral in the proof band on home, 174.851px line, letter-spacing -8.74254px; a 137.235px #0f0f0f instance sits further down" }
+    eyebrow: { size: 16, weight: 400, lineHeight: 1, tracking: -0.16, use: "Eyebrow labels set as h1 and h2 (국내 1위 채용 관리 솔루션 in #3f3f46, section labels in #171717), Pretendard SemiBold face, 16px line" }
+    button: { size: 16, weight: 400, lineHeight: 1, tracking: -0.32, use: "Labels of the 50px buttons (무료 체험하기, 도입 문의하기, 서비스 소개서 다운로드), Pretendard SemiBold face, 16px line" }
+    nav: { size: 16, weight: 400, lineHeight: 1.5, use: "Header navigation labels, Pretendard SemiBold face, 24px line, in #171717" }
+    plan-body: { size: 16, weight: 400, lineHeight: 1.8, use: "Plan feature lines on /pricing, Pretendard Regular face, 28.8px line, in #09090b" }
+    body: { size: 14, weight: 400, lineHeight: 1.5, use: "Descriptions on /pricing and in the home footer, Pretendard Medium face, 21px line, in #71717a" }
+    caption: { size: 12, weight: 400, lineHeight: 1.2, use: "Plan labels and feature notes on /pricing, Pretendard SemiBold face, 14.4px line, in #71717a" }
+    fine: { size: 11, weight: 400, lineHeight: 1.4, use: "Footer legal line on home, Pretendard Regular face, 15.4px line, in #71717a" }
+  spacing: { cta-y: 14, cta-x: 25, nav-y: 18, nav-x: 12, pill-y: 8, pill-x: 20, bar-y: 10, bar-x: 15 }
+  rounded: { button: 4, dialog-button: 6, card: 16, pill: 50, switch: 100 }
   components:
-    button-primary: { type: button, bg: "#1890ff", fg: "#ffffff", radius: "4px", padding: "5px 8px 5px 12px", height: "36px", font: "12px / 600 Pretendard", states: "hover #2c93f2", use: "Header 도입 문의 azure CTA" }
-    button-dark: { type: button, bg: "#0f0f0f", fg: "#ffffff", radius: "4px", padding: "14px 25px", height: "50px", font: "12px / 600 Pretendard", states: "hover #171717", use: "Primary dark CTA 도입 문의하기 / 견적 문의하기" }
-    button-white: { type: button, bg: "#ffffff", fg: "#171717", radius: "4px", padding: "14px 25px", height: "50px", border: "1px solid #e4e4e7", font: "12px / 600 Pretendard", use: "Secondary CTA 무료 체험하기 / 서비스 소개서 다운로드" }
-    badge-pill: { type: badge, bg: "#ffffff", fg: "#0f0f0f", radius: "50px", padding: "8px 20px", height: "32px", font: "12px / 600 Pretendard", use: "국내 1위 채용 관리 솔루션 eyebrow pill" }
-    badge-tag: { type: badge, bg: "#ffffff", fg: "#0f0f0f", radius: "6px", padding: "8px 10px", height: "30px", border: "1px solid #e4e4e7", font: "12px / 600 Pretendard", use: "Pricing feature tag 소규모 팀 추천 / 커뮤니케이션" }
-    card-product: { type: card, bg: "#fafafa", fg: "#27272a", radius: "16px", padding: "16px", use: "Hero product feature card 채용 홈페이지/다이렉트 소싱" }
-    card-zinc: { type: card, bg: "#f4f4f5", fg: "#27272a", radius: "8px", use: "Light zinc list / menu surface" }
-    card-pricing: { type: card, bg: "#001946", fg: "#ffffff", radius: "30px", shadow: "rgba(255,255,255,0.12) 0px 0px 2px 0px inset", use: "Pricing plan card on deep navy band" }
-    nav-link: { type: tab, fg: "#171717", font: "12px / 600 Pretendard", radius: "4px", padding: "18px 12px", active: "azure #1890ff text on active", use: "Top nav item 제품/솔루션/가격" }
+    header-demo-button: { type: button, bg: "#1890ff", fg: "#ffffff", radius: "4px", padding: "5px 8px 5px 12px", height: "36px", font: "16px / 400 / 28.8px Pretendard SemiBold", hover: "bg rgba(44, 147, 242, 0.8)", pressed: "bg rgba(44, 147, 242, 0.8)", states: "probe on home: hover and pressed settle on rgba(44, 147, 242, 0.8) with transition all 0s; focus (Tab #11) draws only the browser default ring, so no brand focus style is declared", use: "도입 문의 at the right end of the header on all three captured pages (home::[data-omd-capture=\"10\"], 97 x 36)" }
+    dark-button: { type: button, bg: "#0f0f0f", fg: "#ffffff", radius: "4px", padding: "14px 20px 14px 25px", height: "50px", font: "16px / 400 / 16px Pretendard SemiBold, letter-spacing -0.32px", hover: "bg #3f3f46 plus a 1px solid #e4e4e7 ::after border", pressed: "bg #3f3f46 plus a 1px solid #e4e4e7 ::after border", states: "measured on the /pricing instance 견적 문의하기 (transition all 0s); the home hero instance was covered by the promotion dialog, so its hover and pressed are unmeasured; focus draws only the browser default ring", use: "도입 문의하기 in the home hero (151 x 50) and 견적 문의하기 on the /pricing plan cards (219 x 50); a #171717 fill variant appears on the lower /pricing card" }
+    light-button: { type: button, bg: "#ffffff", fg: "#171717", radius: "4px", padding: "14px 20px 14px 25px", height: "50px", font: "16px / 400 / 16px Pretendard SemiBold, letter-spacing -0.32px", hover: "bg #f4f4f5, label #0f0f0f", pressed: "bg #f4f4f5, label #0f0f0f", states: "measured on 도입 혜택 문의하기 (transition all 0s); focus draws only the browser default ring", use: "도입 혜택 문의하기 on /pricing (181 x 50); the same white button carries a #0f0f0f label on 서비스 소개서 다운로드 and 1:1 맞춤 상담받기 and a #3f3f46 label on the hero 무료 체험하기, whose states were not reached" }
+    soft-button: { type: button, bg: "#fcfcfc", fg: "#171717", radius: "4px", padding: "14px 25px", height: "50px", hover: "bg #f4f4f5, label #0f0f0f", pressed: "bg #f4f4f5, label #0f0f0f", states: "measured on the first 무료 체험 시작 (transition all 0s); focus draws only the browser default ring", use: "무료 체험 시작 on the /pricing plan cards (231 x 50 and 244 x 50)" }
+    nav-item: { type: tab, fg: "#171717", radius: "4px", padding: "18px 12px", height: "36px", font: "16px / 400 / 24px Pretendard SemiBold", hover: "bg #f4f4f5", pressed: "bg #f4f4f5", states: "probe on 가격: the transparent item fills #f4f4f5 on hover and pressed; focus (Tab #8) draws only the browser default ring; no selected variant was observed", use: "Header items 왜 그리팅인가, 제품, 솔루션, 고객 사례, 가격, 유용한 자료 and 로그인 on all three pages" }
+    eyebrow-pill: { type: badge, bg: "#ffffff", fg: "#3f3f46", radius: "50px", padding: "8px 20px", height: "32px", states: "unmeasured: the promotion dialog covered the pill and the Tab walk did not reach it", use: "국내 1위 채용 관리 솔루션 above the home hero headline (198 x 32); its label is the page's h1, 16px Pretendard SemiBold face" }
+    dark-pill: { type: badge, bg: "#0f0f0f", fg: "#ffffff", radius: "50px", padding: "8px 20px", use: "왜 그리팅인가 label above the /why-greeting hero, the dark counterpart of the home eyebrow pill" }
+    billing-switch: { type: tab, bg: "#f4f4f5", radius: "100px", padding: "6px 8px", height: "49px", states: "probe: no change on hover or pressed; focus (Tab #1) draws only the browser default ring", use: "월간 / 연간 (-10%) billing switch above the /pricing plan cards, 175 x 49" }
+    promo-dialog-button: { type: button, bg: "rgba(255, 255, 255, 0.12)", fg: "#ffffff", radius: "6px", padding: "12px 16px", height: "39px", font: "15px / 600 / 15px Pretendard SemiBold, letter-spacing -0.15px", states: "rest only: the dialog button was not probed, so no hover, pressed or focus value is declared", use: "그리팅 AX 보기 in the AI promotion dialog that was open over home at capture (123 x 39)" }
+    feature-card: { type: card, radius: "16px", padding: "16px", size: "702px x 694px", use: "Feature panel beside the 채용 홈페이지 빌더 list on home (home::[data-omd-capture=\"29\"]); transparent at rest, with a #a1a1aa description line" }
   components_harvested: true
 ---
 
@@ -69,402 +285,368 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-Greeting (그리팅) is Korea's self-described #1 recruitment-management SaaS — an applicant-tracking system (ATS) built by the operator 두들린 (Doodlin) — and its marketing surface reads like a confident, enterprise-grade B2B product that has shed the heaviness of legacy HR software. The canvas is overwhelmingly white (`#ffffff`) and near-white (`#fcfcfc`, `#fafafa`), with content segmented into airy full-width bands. Text rides a cool, near-neutral zinc ladder — headings in `#27272a`, body in `#3f3f46`, supporting copy fading through `#71717a` to `#a1a1aa` — which gives the page a clean, modern, slightly technical temperature rather than warm or playful. The brand's single saturated accent is a bright azure (`#1890ff`), reserved for the hero accent word ("채용 성공") and the primary inquiry CTA, so the eye learns to read that one blue as "the action / the promise."
+Greeting (그리팅) is the recruiting platform of 두들린 (Doodlin), a Seoul company at 테헤란로 427 whose own site states its mission as "우리는 채용의 문제를 해결하는 것이 모든 문제 해결의 시작임을 믿습니다" — solving hiring problems is where every other problem gets solved. Doodlin describes Greeting as an ATS plus TRM (talent relationship management) that helps companies "더 빠르게 채용" with a better process, and the company page counts its growth in the product's own units: 6,129 customer companies, 1.37 million applicants, 4,272 career sites and 1.05 million written evaluations as of December 2023. The marketing site now claims "10,000+ 기업이 그리팅과 함께합니다" (January 2026 customers) and frames itself as "국내 1위 채용 관리 솔루션". Its current evolution is visible in the header: an AI promotion ("그리팅 AI는 다릅니다 — 내장 AI & 외부 AI 연동 모두 가능한") opens over the home page, and the navigation groups the product into 모집 (채용 홈페이지, 인재풀 구축, 다이렉트 소싱), 관리 (공고, 지원자, 평가) and 운영 (면접 일정 조율, 지원자 연락, 채용 데이터 분석).
 
-Typographically the system is unmistakably Korean-product-modern: every headline and UI label runs in **Pretendard SemiBold** with characteristic tight negative tracking that scales with size (-0.6px at 60px, -0.48px at 48px, -0.36px at 36px, -0.56px at 28px), while body and dense UI copy fall to **Pretendard Regular**. The one departure is the oversized statistic numeral — "10,000+" rendered at ~175px in **Poppins** — a deliberate Latin-numeral flourish that lets the headline metric breathe at billboard scale. The result is a layout that feels engineered and trustworthy: bold where it persuades (SemiBold display, azure accent, giant proof numbers), quiet where it informs (Regular body on a muted zinc scale).
-
-What distinguishes Greeting from flashier consumer fintech is its corporate restraint. Buttons are tight 4px-radius rectangles rather than pills; the primary persuasion CTA is often near-black (`#0f0f0f` / `#171717`) rather than colored, with azure held in reserve for the header inquiry button. Depth is almost entirely flat — `box-shadow: none` across nav, hero, and feature cards — separation comes from background shifts (white → `#fafafa` → deep navy `#001946`) and thin `#e4e4e7` hairlines. The one place the system goes dramatic is the dark proof/pricing band: a deep navy (`#001946`) surface carrying the giant white stat numeral and the pricing plan cards (30px radius, a faint white inset rim). This light-to-dark rhythm — clean white product story, then a confident navy "by the numbers" — is the signature of the page.
+On greetinghr.com the brand speaks in a calm, zinc-grey Korean register. Headlines are set large in the Pretendard SemiBold face with tracking tightened to 1% of the size (-0.6px at 60px, -0.48px at 48px), in `#27272a` and `#171717`; supporting copy steps down through `#71717a` and `#a1a1aa`. One saturated colour does the pointing: azure `#1890ff` fills the 도입 문의 button at the end of the header on every captured page and colours the EVENT and New labels in the announcement bar above it. The heavy persuasion buttons in the page are near-black `#0f0f0f` or white, all 4px-radius rectangles 50px tall. The site is flat — none of the 871 recorded elements computes a box-shadow — and it switches to a dark proof band where white statistics and an oversized Poppins numeral carry the "10,000+" claim.
 
 **Key Characteristics:**
-- Pretendard SemiBold for every headline/label; Pretendard Regular for body — weight + tracking carry hierarchy
-- Single azure accent (`#1890ff`) reserved for hero accent word and header inquiry CTA
-- Near-black CTAs (`#0f0f0f` / `#171717`) for primary persuasion buttons, azure held back
-- Cool zinc neutral ladder (`#27272a` → `#3f3f46` → `#71717a` → `#a1a1aa`) for text hierarchy
-- Tight 4px-radius rectangular buttons (corporate, not pill-y); 16px cards; 30px pricing cards
-- Flat depth: `box-shadow: none`; separation by background tint + `#e4e4e7` hairlines
-- Light-to-dark band rhythm — white product story → deep navy (`#001946`) proof/pricing band
-- Poppins for the oversized billboard stat numeral (10,000+) at ~175px
-- Negative tracking scales with size (-0.6px at 60px down to -0.16px at 16px)
+- One azure action: `#1890ff` fills the header 도입 문의 on all three pages; hover settles on `rgba(44, 147, 242, 0.8)`
+- Near-black `#0f0f0f` and white `#ffffff` 50px buttons with 4px radius for in-page calls to action
+- Pretendard faces loaded as separate families (SemiBold, Medium, Regular), headlines tracked at -1% of their size
+- A zinc text ladder: `#27272a` headings, `#171717` section headlines and navigation, `#3f3f46`, `#71717a`, `#a1a1aa`
+- Hover is a grey fill: navigation items and light buttons turn `#f4f4f5`; the dark button turns `#3f3f46`
+- No shadows on any captured element; a white 50px-radius eyebrow pill and a 100px-radius billing switch are the only round shapes
 
 ## Primary tasks
 
 - Track applicants in one place instead of spreadsheets
-- Reach out to candidates before they ever apply
-- Set up a careers page for open roles
-- Compare the pricing plans before bringing the tool in
-- Request a quote or a one-to-one consultation
+- Reach out to candidates before they apply (다이렉트 소싱)
+- Build a career site for open roles
+- Compare the plans on /pricing before bringing the tool in
+- Request a demo, a quote or a one-to-one consultation
 
 ## 2. Color Palette & Roles
 
+Every token below was read on 2026-09-30 from greetinghr.com, /pricing and /why-greeting by the deterministic collector, and state values by the fixed keyboard probe. The tokens describe Greeting's public website; the Greeting app (app.greetinghr.com) sits behind a login and was not captured.
+
 ### Primary
-- **Greeting Azure** (`#1890ff`): Primary brand accent and CTA color. The saturated blue on the hero accent word ("채용 성공") and the header 도입 문의 inquiry button — the system's single "action / promise" color.
-- **Azure Hover** (`#2c93f2`): Slightly lighter azure observed on interactive/hover blue surfaces.
-- **Deep Azure** (`#0a58a1`): A darker blue used for stronger blue accents and deep links.
+- **Greeting Azure** (`#1890ff`): The fill of 도입 문의, the action at the right end of the header on all three captured pages (97 × 36, `#ffffff` label; capture #10 on each page). It is the primary because it is the one coloured action the site repeats on every page, and the only saturated colour in a primary role: the announcement bar's EVENT and New labels use the same azure. The probe read its hover and pressed fill as `rgba(44, 147, 242, 0.8)`.
+- **On Primary** (`#ffffff`): The label of 도입 문의 and of the dark buttons.
 
-### Ink & CTA
-- **Ink Black** (`#0f0f0f`): Near-black background for the primary dark CTA buttons (도입 문의하기, 견적 문의하기) and maximum-contrast labels.
-- **Ink Soft** (`#171717`): Soft near-black for primary headings on dark CTAs and strong labels.
-- **Deep Navy** (`#001946`): The dramatic dark band background — carries the giant white stat numeral and the pricing plan cards.
+### Action neutrals
+- **Action Dark** (`#0f0f0f`): The fill of 도입 문의하기 in the home hero and 견적 문의하기 on /pricing; the /why-greeting eyebrow pill uses it too. Hover and pressed settle on `#3f3f46` with a 1px `#e4e4e7` border drawn by `::after`.
+- **Surface Soft** (`#fcfcfc`): The fill of 무료 체험 시작 on the /pricing plan cards.
+- **Surface** (`#f4f4f5`): The hover fill of navigation items and of the light and soft buttons, and the rest fill of the billing switch.
+- **Hairline** (`#e4e4e7`): The 1px border the dark button paints on hover.
 
-### Text Hierarchy (Zinc ladder)
-- **Heading** (`#27272a`): Primary feature-card and product headings.
-- **Body** (`#3f3f46`): Secondary body copy and small headings.
-- **Muted** (`#71717a`): Tertiary text, captions, metadata.
-- **Faint** (`#a1a1aa`): Lowest-emphasis labels, footnotes (e.g. "*2026년 1월 그리팅 이용 고객사").
-- **Disabled** (`#d4d4d8`): Disabled text, lowest contrast.
+### Text
+- **Heading** (`#27272a`): The hero headline, band headlines, feature and card titles, quotes.
+- **Ink Soft** (`#171717`): Section headlines, eyebrow section labels and navigation labels.
+- **Secondary** (`#3f3f46`): The home h1 eyebrow and the hero 무료 체험하기 label; plan headings on /pricing.
+- **Muted** (`#71717a`): The hero subline, descriptions and the footer.
+- **Faint** (`#a1a1aa`): Feature descriptions, statistic captions and footer link labels.
+- **Plan Ink** (`#09090b`): Plan feature lines on /pricing.
+- **Link** (`#0a58a1`): Solution links on /why-greeting (아웃바운드 채용, 인바운드 채용, 수시 채용, 대규모 채용 and others).
+- **White** (`#ffffff`): The page canvas (the body computes `#ffffff`) and text on dark and azure.
 
-### Neutral & Surface
-- **Pure White** (`#ffffff`): Page background, cards, text on dark/azure.
-- **Surface** (`#fcfcfc`): Near-white nav/button surface.
-- **Surface Alt** (`#fafafa`): Warm-neutral product card background.
-- **Surface Zinc** (`#f4f4f5`): Cool light zinc list / menu surface.
-- **Hairline** (`#e4e4e7`): Thin borders, dividers, card outlines — the primary separation device in the shadowless system.
-- **Tint Blue** (`#f2f9ff`): Faint blue wash for highlighted blue zones.
-- **Tint Blue Alt** (`#e4f0fc`): Slightly stronger blue tint for emphasis blocks.
-
-### Semantic
-- **Success Green** (`#4ba63d`): Positive/success accent observed on checkmarks and confirmation marks.
+### Observed but not tokens
+- A second azure, `#2c93f2`, colours four small labels (신규 업데이트 in the header menu, one /pricing label); an orange `#e07400` marks one /pricing plan label. Each is a single label, not a role.
+- The proof band behind the white statistics was not recorded by the collector, so its colour is not claimed.
+- The Greeting logo was not measured; no logo colour is claimed.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Display / UI**: `Pretendard SemiBold` — used for all headlines, nav, labels, and button text at weight 600.
-- **Body**: `Pretendard Regular` — body copy and dense UI text at weight 400.
-- **Numeral**: `Poppins` — reserved for the oversized billboard statistic numeral (10,000+).
+- **Live surface use**: Framer serves Pretendard as one family per weight — `Pretendard SemiBold` (212 observed uses), `Pretendard Medium` (205), `Pretendard Regular` (119), `Pretendard Bold` (7) and `Pretendard ExtraBold` (6), all `loaded / high` — so every Pretendard element computes `font-weight: 400` and the weight lives in the family name. Headlines, navigation and button labels use the SemiBold face; descriptions and statistics the Medium face; sublines and plan lines the Regular face. `Poppins` (2 uses) sets the two oversized numerals; `Inter` (4) appears in four /pricing glyphs.
+- **Official distributed font assets**: Pretendard is by Kil Hyung-jin (orioncactus), and its LICENSE states the SIL Open Font License 1.1. Poppins is published by the Poppins Project Authors (Indian Type Foundry) under the SIL Open Font License 1.1. Both licence files were opened on 2026-09-30. The identification rests on the family names; the served files' name tables were not inspected.
+- **Official product use**: no Greeting or Doodlin page opened this session names its typefaces, so no statement of official product use is made.
+- **Declared only (no visible use)**: Framer project fonts with 0 observed uses — Geist, General Sans, Google Sans, Hanken Grotesk, Instrument Sans, Inter Tight, Koulen, Outfit, PP Neue Montreal Medium, Pragati Narrow, Work Sans, Fragment Mono, Pretendard Black and Pretendard Light — and the `Placeholder` fallbacks.
+- **Unresolved**: none of the observed families is unidentified.
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Hero Accent | Pretendard SemiBold | 60px | 600 | 72px (1.20) | -0.6px | Hero accent word "채용 성공", azure `#1890ff` |
-| Display | Pretendard SemiBold | 48px | 600 | 62.4px (1.30) | -0.48px | Primary section headline |
-| Section | Pretendard SemiBold | 36px | 600 | 43.2px (1.20) | -0.36px | Band headline |
-| Feature | Pretendard SemiBold | 28px | 600 | 39.2px (1.40) | -0.56px | Feature card heading |
-| Quote | Pretendard SemiBold | 24px | 600 | 36px (1.50) | -0.24px | Testimonial quote |
-| Card Title | Pretendard SemiBold | 20px | 600 | 30px (1.50) | -0.4px | Product card title |
-| Label / Eyebrow | Pretendard SemiBold | 16px | 600 | 16px (1.00) | -0.16px | Badge / eyebrow labels |
-| Big Numeral | Poppins | ~175px | 400 | 1.00 | -8.74px | "10,000+" billboard stat |
+| Role | Face | Size | Computed weight | Line Height | Tracking | Observed on |
+|------|------|------|-----------------|-------------|----------|-------------|
+| Numeral | Poppins | 174.851px | 400 | 174.851px (1.0) | -8.74px | Proof band on home, white |
+| Stat | Pretendard Medium | 96px | 400 | 96px (1.0) | normal | Proof band statistics, white |
+| Display Hero | Pretendard SemiBold | 60px | 400 | 72px (1.2) | -0.6px | Home hero, `#27272a` |
+| Section | Pretendard SemiBold | 48px | 400 | 62.4px (1.3) | -0.48px | Section headlines, `#171717` |
+| Band | Pretendard SemiBold | 36px | 400 | 43.2px (1.2) | -0.36px | Band headlines, plan prices |
+| Statement | Pretendard SemiBold | 32px | 400 | 44.8px (1.4) | -0.32px | Wide statement on home |
+| Feature | Pretendard SemiBold | 28px | 400 | 39.2px (1.4) | -0.56px | Feature panel headings |
+| Quote | Pretendard SemiBold | 24px | 400 | 36px (1.5) | -0.24px | Customer quotes |
+| Card Title | Pretendard SemiBold | 20px | 400 | 30px (1.5) | -0.4px | Feature list titles, plan names |
+| Subline | Pretendard Regular | 20px | 400 | 32px (1.6) | normal | Hero subline, `#71717a` |
+| Eyebrow | Pretendard SemiBold | 16px | 400 | 16px (1.0) | -0.16px | h1 / h2 labels |
+| Button | Pretendard SemiBold | 16px | 400 | 16px (1.0) | -0.32px | 50px button labels |
+| Nav | Pretendard SemiBold | 16px | 400 | 24px (1.5) | normal | Header navigation |
+| Plan Body | Pretendard Regular | 16px | 400 | 28.8px (1.8) | normal | Plan feature lines, `#09090b` |
+| Body | Pretendard Medium | 14px | 400 | 21px (1.5) | normal | Descriptions, footer |
+| Caption | Pretendard SemiBold | 12px | 400 | 14.4px (1.2) | normal | Plan labels |
+| Fine | Pretendard Regular | 11px | 400 | 15.4px (1.4) | normal | Footer legal line |
 
 ### Principles
-- **One family, two weights**: Pretendard SemiBold (600) carries every headline and label; Pretendard Regular (400) carries body. The weight contrast is the primary hierarchy signal.
-- **Tracking compresses with size**: -0.6px at 60px, -0.48px at 48px, -0.36px at 36px, narrowing toward -0.16px at 16px. Display compresses; small text relaxes.
-- **Latin numerals get Poppins**: big proof statistics switch to Poppins for a confident billboard read, while Korean copy stays Pretendard.
-- **Tight, technical, calm**: negative tracking + cool zinc color give the type an engineered, enterprise-trustworthy feel rather than a warm consumer one.
+- **Weight lives in the face**: to reproduce the site, load the named Pretendard face (SemiBold for headlines, Medium for descriptions, Regular for sublines) rather than a `font-weight` value; with a single variable Pretendard the equivalents are 600, 500 and 400.
+- **Tracking at -1%**: from 20px up, SemiBold headlines are tracked at about -1% of their size (-2% at 20px and 28px).
+- **Latin numerals get Poppins**: the two proof numerals switch to Poppins while every Korean line stays Pretendard.
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Azure Inquiry CTA (Primary)**
+**Header demo button (primary)**
 - Background: `#1890ff`
 - Text: `#ffffff`
 - Radius: 4px
 - Padding: 5px 8px 5px 12px
-- Font: 12px Pretendard SemiBold weight 600
 - Height: 36px
-- Hover: `#2c93f2`
-- Use: Header 도입 문의 azure call-to-action — the system's single colored action
+- Font: 16px / 28.8px Pretendard SemiBold face
+- Hover: background `rgba(44, 147, 242, 0.8)`
+- Pressed: background `rgba(44, 147, 242, 0.8)`
+- States: focus draws only the browser default ring
+- Use: 도입 문의 in the header of all three pages
 
-**Dark CTA**
+**Dark button**
 - Background: `#0f0f0f`
 - Text: `#ffffff`
 - Radius: 4px
-- Padding: 14px 25px
-- Font: 12px Pretendard SemiBold weight 600
+- Padding: 14px 20px 14px 25px
 - Height: 50px
-- Hover: `#171717`
-- Use: Primary persuasion buttons (도입 문의하기, 견적 문의하기)
+- Font: 16px / 16px Pretendard SemiBold face, letter-spacing -0.32px
+- Hover: background `#3f3f46` and a 1px solid `#e4e4e7` border drawn by `::after`
+- Pressed: the same as hover
+- States: measured on 견적 문의하기; the home hero instance was covered by the promotion dialog
+- Use: 도입 문의하기 (home hero), 견적 문의하기 (/pricing); a `#171717` variant sits on the lower plan card
 
-**White Secondary CTA**
+**Light button**
 - Background: `#ffffff`
+- Text: `#171717` (`#0f0f0f` on 서비스 소개서 다운로드 and 1:1 맞춤 상담받기, `#3f3f46` on the hero 무료 체험하기)
+- Radius: 4px
+- Padding: 14px 20px 14px 25px (14px 25px without an arrow)
+- Height: 50px
+- Hover: background `#f4f4f5`, label `#0f0f0f`
+- Pressed: the same as hover
+- Use: 도입 혜택 문의하기 on /pricing and the white buttons on home; no border is drawn at rest
+
+**Soft button**
+- Background: `#fcfcfc`
 - Text: `#171717`
-- Border: 1px solid `#e4e4e7`
 - Radius: 4px
 - Padding: 14px 25px
-- Font: 12px Pretendard SemiBold weight 600
 - Height: 50px
-- Use: Secondary actions (무료 체험하기, 서비스 소개서 다운로드)
+- Hover: background `#f4f4f5`, label `#0f0f0f`
+- Use: 무료 체험 시작 on the /pricing plan cards
 
-### Cards & Containers
-
-**Product Feature Card**
-- Background: `#fafafa`
-- Text: `#27272a`
-- Radius: 16px
-- Padding: 16px
-- Use: Hero product feature cards (채용 홈페이지 빌더, 다이렉트 소싱, 인재풀 구축)
-
-**Zinc List Surface**
-- Background: `#f4f4f5`
-- Text: `#27272a`
-- Radius: 8px
-- Use: Light zinc list / menu surface and grouped tiles
-
-**Pricing Plan Card**
-- Background: `#001946`
+**Promotion dialog button**
+- Background: `rgba(255, 255, 255, 0.12)`
 - Text: `#ffffff`
-- Radius: 30px
-- Shadow: `rgba(255,255,255,0.12) 0px 0px 2px 0px inset`
-- Use: Pricing plan cards on the deep navy proof band
+- Radius: 6px
+- Padding: 12px 16px
+- Height: 39px
+- Font: 15px / 600 / 15px Pretendard SemiBold, letter-spacing -0.15px
+- Use: 그리팅 AX 보기 in the AI promotion dialog over home
 
 ### Badges
 
-**Eyebrow Pill**
+**Eyebrow pill**
 - Background: `#ffffff`
-- Text: `#0f0f0f`
+- Text: `#3f3f46` (the page's h1, 16px SemiBold face)
 - Radius: 50px
 - Padding: 8px 20px
-- Font: 12px Pretendard SemiBold weight 600
 - Height: 32px
-- Use: Eyebrow pill ("국내 1위 채용 관리 솔루션")
+- Use: 국내 1위 채용 관리 솔루션 above the home hero; states unmeasured
 
-**Feature Tag**
-- Background: `#ffffff`
-- Text: `#0f0f0f`
-- Border: 1px solid `#e4e4e7`
-- Radius: 6px
-- Padding: 8px 10px
-- Font: 12px Pretendard SemiBold weight 600
-- Height: 30px
-- Use: Pricing feature tags (소규모 팀 추천, 커뮤니케이션, 캘린더 연동)
+**Dark pill**
+- Background: `#0f0f0f`
+- Text: `#ffffff`
+- Radius: 50px
+- Padding: 8px 20px
+- Use: 왜 그리팅인가 above the /why-greeting hero
 
-### Navigation
-- Background: `#ffffff`
+### Navigation & Controls
+
+**Header navigation item**
 - Text: `#171717`
-- Font: 12px Pretendard SemiBold weight 600
-- Radius: 4px (hover surface)
+- Radius: 4px
 - Padding: 18px 12px
-- Active: azure `#1890ff` text on active item
-- Use: Top horizontal nav (왜 그리팅인가, 제품, 솔루션, 고객 사례, 가격, 유용한 자료)
+- Height: 36px
+- Font: 16px / 24px Pretendard SemiBold face
+- Hover: background `#f4f4f5`
+- Pressed: background `#f4f4f5`
+- Use: 왜 그리팅인가, 제품, 솔루션, 고객 사례, 가격, 유용한 자료, 로그인
+
+**Billing switch**
+- Background: `#f4f4f5`
+- Radius: 100px
+- Padding: 6px 8px
+- Height: 49px
+- States: no change on hover or pressed
+- Use: 월간 / 연간 (-10%) on /pricing
+
+**Announcement bar**: a 1200 × 47 link row above the header on home and /why-greeting, 10px 15px padding, white 15px SemiBold text with EVENT and New labels in `#1890ff` 12px; its background was not recorded.
+
+### Cards
+
+**Feature panel**
+- Radius: 16px
+- Padding: 16px
+- Use: the 702 × 694 panel beside the 채용 홈페이지 빌더 list on home, transparent at rest
 
 ---
 
-**Verified:** 2026-06-11 (omd:add-reference CREATE — Tier 1 live inspect)
-**Tier 1 sources:** https://www.greetinghr.com, https://www.greetinghr.com/pricing, https://blog.greetinghr.com, https://www.doodlin.co.kr
-**Tier 2 sources:** getdesign.md/greeting (no data) | styles.refero.design (no Greeting match — search returns Workable/other ATS, not Greeting)
+**Verified:** 2026-09-30 (deterministic collector capture of three public, logged-out pages of greetinghr.com plus fixed keyboard-probe state reads and first-party context)
+**Tier 1 sources:** https://www.greetinghr.com/ ; https://www.greetinghr.com/pricing ; https://www.greetinghr.com/why-greeting ; https://www.doodlin.co.kr/ko/about ; https://blog.greetinghr.com/
+**Tier 2 sources:** not attempted in this pass; no Tier 2 value used
 **Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
 ### Spacing System
-- Base unit: ~4px
-- Scale: 4px, 8px, 12px, 16px, 20px, 25px, 48px, 80px
-- Notable: CTA buttons land at 14px×25px padding (50px tall); nav links at 18px×12px
+- 50px buttons: 14px vertical, 25px horizontal padding (20px on the right when an arrow icon follows)
+- Header items: 18px 12px padding in 36px cells; the header demo button 5px 8px 5px 12px
+- Eyebrow pills: 8px 20px
+- Announcement bar: 10px 15px
+- Frequent spacing values in the capture: 4, 5, 12, 10, 14, 18 and 25px
 
 ### Grid & Container
-- Centered single-column hero with the azure accent word as the focal anchor
-- Product features arranged as a row of `#fafafa` cards (16px radius)
-- Sections alternate white (`#ffffff` / `#fcfcfc` / `#fafafa`) full-width bands
-- The proof/pricing section flips to a deep navy (`#001946`) band carrying the giant Poppins numeral and 30px-radius plan cards
+- Content sits in a 1200px column (the announcement bar and header rows are 1200px wide; headline blocks 1170–1200px).
+- Home runs a centred hero (eyebrow pill, 60px headline, subline, white and dark buttons), a sticky feature list beside a 702px panel, a dark proof band with statistics, quotes, and a closing band that repeats the 60px headline in white.
+- /pricing sets plan cards side by side under a billing switch, then a feature comparison and an FAQ.
 
 ### Whitespace Philosophy
-- **Breathing room over density**: generous vertical rhythm (≈80px) between bands despite information-rich enterprise content.
-- **Flat segmentation**: bands separate by background tint (white → `#fafafa` → navy `#001946`) and `#e4e4e7` hairlines, not by shadow.
-- **Light-to-dark crescendo**: the layout builds from clean white product storytelling to a dramatic navy "by the numbers" band.
+- **Large type, quiet colour**: size and tracking create hierarchy; colour stays on the zinc ladder except for the one azure action.
+- **Flat segmentation**: sections are separated by space and by the dark band, not by shadows.
 
 ### Border Radius Scale
-- Small (4px): buttons — corporate, tight rectangles
-- Medium (8px): zinc list/menu surfaces, eyebrow tag chips
-- Large (16px): product feature cards
-- XL (30px): pricing plan cards
-- Pill (50px): eyebrow status pills
+- 0px: the default (748 of the recorded radii)
+- 4px: buttons and navigation items
+- 6px: the promotion dialog button
+- 16px: the feature panel
+- 50px: eyebrow pills
+- 100px: the billing switch
 
 ## 6. Depth & Elevation
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, nav, hero, most feature cards |
-| Tint (Level 1) | `#fafafa` / `#f4f4f5` background shift | Card/section separation without elevation |
-| Hairline (Level 2) | `1px solid #e4e4e7` border | White card/button outlines, dividers |
-| Inset rim (Level 3) | `rgba(255,255,255,0.12) 0px 0px 2px 0px inset` | Pricing plan cards on the dark navy band |
+| Flat | No shadow | Every captured element |
+| Grey | `#f4f4f5` fill | Hover on navigation and light buttons; the billing switch |
+| Soft | `#fcfcfc` fill | 무료 체험 시작 |
+| Dark | `#0f0f0f` fill | In-page primary buttons, the /why-greeting pill |
+| Overlay | Fixed promotion dialog | Open over home at capture |
 
-**Shadow Philosophy**: Greeting is a near-shadowless system. Live inspection found `box-shadow: none` across the nav, hero, and feature cards. Depth and grouping are communicated through flat background tints (`#fafafa`, `#f4f4f5`) and thin `#e4e4e7` hairlines rather than drop shadows. The only elevation cue is a faint white inset rim (`rgba(255,255,255,0.12)`) on the pricing cards, which separates them from the deep navy `#001946` band without a heavy outer shadow. This keeps the enterprise UI feeling clean, fast, and modern.
+**Shadow Philosophy**: all 871 elements the collector recorded compute `box-shadow: none`. The only edge that appears is the 1px `#e4e4e7` border the dark button draws on hover.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use Pretendard SemiBold (weight 600) for every headline and label
-- Use Pretendard Regular (400) for body and dense UI text
-- Reserve azure (`#1890ff`) for the hero accent word and the header inquiry CTA — keep it the single colored action
-- Use near-black (`#0f0f0f` / `#171717`) for primary persuasion CTAs
-- Keep text on the cool zinc ladder (`#27272a` → `#71717a` → `#a1a1aa`)
-- Use tight 4px-radius rectangular buttons — corporate, not pill-y
-- Separate sections with background tint (`#fafafa`) and `#e4e4e7` hairlines, not shadows
-- Flip to the deep navy band (`#001946`) for the proof/pricing crescendo
-- Apply tight negative tracking that scales with size (-0.6px at 60px)
-- Use Poppins for oversized billboard statistic numerals
+- Keep `#1890ff` for the one header action (도입 문의); hover it to `rgba(44, 147, 242, 0.8)`
+- Use `#0f0f0f` and `#ffffff` 50px buttons with 4px radius for in-page calls to action
+- Hover grey: `#f4f4f5` for navigation and light buttons, `#3f3f46` for the dark button
+- Set headlines in the Pretendard SemiBold face with tracking near -1% of the size
+- Keep text on the zinc ladder: `#27272a`, `#171717`, `#3f3f46`, `#71717a`, `#a1a1aa`
+- Use Poppins only for oversized Latin numerals
 
 ### Don't
-- Use drop shadows for elevation — Greeting is a flat, shadow-free system
-- Spread azure across many elements — it dilutes the single-action signal
-- Use pill-shaped (50px) radius on buttons — buttons are tight 4px rectangles
-- Use warm or playful colors — the palette is cool zinc + azure
-- Set headlines in a light weight — display is always SemiBold (600)
-- Use pure black (`#000000`) for body text — text rides the zinc ladder
-- Use positive letter-spacing at display sizes — Greeting tracks tight
-- Use Pretendard for the giant proof numerals — those are Poppins
+- Don't add drop shadows; none of the 871 captured elements has one
+- Don't spread azure across buttons; the in-page buttons are black and white
+- Don't round buttons into pills; pills are reserved for the eyebrow labels and the billing switch
+- Don't draw a border on the light buttons at rest; none was observed
+- Don't invent focus styles; every probed control shows only the browser default ring
+- Don't substitute another face for Pretendard or Poppins
 
 ## 8. Responsive Behavior
 
 ### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses, feature cards stack |
-| Tablet | 640-1024px | Moderate padding, 2-up feature cards |
-| Desktop | 1024-1440px | Full layout, centered hero, multi-column feature/pricing bands |
+Only the 1440 × 900 desktop viewport was captured. No breakpoint value was measured.
 
 ### Touch Targets
-- Primary CTAs at 50px height — comfortably tappable
-- Header inquiry CTA at 36px height
-- Nav links with 18px×12px padding within the header
+- In-page buttons: 50px
+- Billing switch: 49px
+- Promotion dialog button: 39px
+- Header demo button and navigation items: 36px
+- Eyebrow pill: 32px
 
 ### Collapsing Strategy
-- Hero: 60px accent word + 48px headline scale down on mobile, weight 600 maintained
-- Feature card row: multi-column → stacked single column
-- Pricing plan cards: side-by-side → stacked, 30px radius maintained
-- Deep navy proof band: full-width treatment with the big numeral scaling down
+- How the pages collapse was not captured.
 
 ### Image Behavior
-- Product screenshots carry no shadow at any size, consistent with the flat system
-- Cards maintain 16px radius across breakpoints
+- Product screenshots sit flat, without shadows.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary accent / CTA: Greeting Azure (`#1890ff`)
-- Dark CTA: Ink Black (`#0f0f0f`) / Ink Soft (`#171717`)
-- Dark band: Deep Navy (`#001946`)
-- Heading text: Heading (`#27272a`)
-- Body text: Body (`#3f3f46`)
-- Muted text: Muted (`#71717a`) / Faint (`#a1a1aa`)
-- Background: Pure White (`#ffffff`)
-- Surfaces: `#fafafa`, `#f4f4f5`
-- Hairline: `#e4e4e7`
-- Success: `#4ba63d`
+- Header action: `#1890ff` with `#ffffff` text; hover `rgba(44, 147, 242, 0.8)`
+- In-page actions: `#0f0f0f` (hover `#3f3f46` + 1px `#e4e4e7` border), `#ffffff` and `#fcfcfc` (hover `#f4f4f5`)
+- Text: `#27272a` headings, `#171717` section heads and nav, `#3f3f46`, `#71717a`, `#a1a1aa`; plan lines `#09090b`; links `#0a58a1`
+- Canvas: `#ffffff`
 
 ### Example Component Prompts
-- "Create a hero on white background. Eyebrow pill: white bg, 50px radius, 8px 20px padding, 12px Pretendard SemiBold, '국내 1위 채용 관리 솔루션'. Headline 48px Pretendard SemiBold weight 600, line-height 1.30, letter-spacing -0.48px, color #171717 — with the accent word '채용 성공' at 60px in azure #1890ff."
-- "Design a product feature card: #fafafa background, 16px radius, 16px padding, no shadow. Title 20px Pretendard SemiBold, letter-spacing -0.4px, #27272a. Body 12px Pretendard Regular, #3f3f46."
-- "Build a CTA row: primary dark button (#0f0f0f bg, white text, 4px radius, 14px 25px padding, 12px Pretendard SemiBold) + secondary white button (#ffffff bg, #171717 text, 1px solid #e4e4e7 border, 4px radius)."
-- "Create a proof band: deep navy #001946 full-width. Giant numeral '10,000+' in Poppins at 175px, white, letter-spacing -8.74px. Below, pricing plan cards: #001946 bg, 30px radius, faint white inset rim rgba(255,255,255,0.12) 0 0 2px inset."
+- "Create a header demo button: `#1890ff` background, `#ffffff` 16px Pretendard SemiBold label, 4px radius, 5px 8px 5px 12px padding, 36px tall; hover and pressed `rgba(44, 147, 242, 0.8)`; no shadow."
+- "Create a CTA pair: a white button (`#ffffff`, `#3f3f46` label) and a dark button (`#0f0f0f`, `#ffffff` label), both 50px tall, 4px radius, 14px 25px padding, 16px Pretendard SemiBold labels with -0.32px tracking. Dark hover `#3f3f46` with a 1px `#e4e4e7` inner border; white hover `#f4f4f5`."
+- "Set a hero: white eyebrow pill (50px radius, 8px 20px padding, 16px `#3f3f46` label), then a 60px Pretendard SemiBold headline with -0.6px tracking in `#27272a`, then a 20px Pretendard Regular subline in `#71717a`."
 
 ### Iteration Guide
-1. Pretendard SemiBold (600) for every headline; Pretendard Regular (400) for body
-2. Azure (`#1890ff`) is the single accent — reserve it for the hero word + inquiry CTA
-3. Primary persuasion buttons are near-black (`#0f0f0f`), not colored
-4. No shadows — separate with `#fafafa` tint and `#e4e4e7` hairlines
-5. Buttons are tight 4px rectangles; cards 16px; pricing 30px
-6. Text rides the zinc ladder (`#27272a` → `#71717a` → `#a1a1aa`), never pure black
-7. Build to the deep navy band (`#001946`) for the proof/pricing crescendo
+1. One azure action in the header; everything else in black, white and zinc
+2. Pretendard SemiBold face for headlines, tracked at -1%
+3. 4px rectangles for buttons; pills only for labels and the billing switch
+4. Grey `#f4f4f5` hover everywhere except the dark button
+5. No shadows
 
 ---
 
 ## 10. Voice & Tone
 
-Greeting's voice is **confident, professional, and outcome-oriented** — an enterprise HR guide that frames recruiting not as administrative drudgery but as a strategic path to "채용 성공" (recruitment success). The hero line "채용 관리를 넘어 채용 성공으로" ("Beyond recruitment management, toward recruitment success") sets the register: it positions the product above mere tooling, promising an outcome. Copy speaks to HR practitioners and talent teams as capable professionals, leaning on proof ("국내 1위", "10,000+ 기업") rather than hype, and decoding the recruiting workflow into clear, named steps (모집 → 선발, 다이렉트 소싱, 인재풀 구축).
+Greeting's voice is **confident and outcome-framed**: it sells 채용 성공 (hiring success) rather than administration, and backs the claim with customer counts and quotes.
 
 | Context | Tone |
 |---|---|
-| Hero headline | Outcome-framed, confident. "채용 관리를 넘어 채용 성공으로." Promise over feature. |
-| Proof / stats | Quietly authoritative. "국내 1위 채용 관리 솔루션", "10,000+ 기업이 그리팅과 함께합니다." |
-| Feature labels | Plain and functional. "다이렉트 소싱", "인재풀 구축", "채용 홈페이지 빌더". |
-| CTAs | Direct, low-pressure. "무료 체험하기", "도입 문의하기", "1:1 맞춤 상담받기". |
-| Section titles | Strategy-framed. "유연한 모집 전략", "데이터 기반 운영 · 최적화". |
+| Hero | Outcome over tooling. "채용 관리를 넘어 채용 성공으로." |
+| Proof | Quietly quantified. "10,000+ 기업이 그리팅과 함께합니다." |
+| Product labels | Plain nouns. "채용 홈페이지", "인재풀 구축", "다이렉트 소싱", "면접 일정 조율". |
+| Actions | Direct and low-pressure. "도입 문의", "무료 체험하기", "서비스 소개서 다운로드", "1:1 맞춤 상담받기". |
+| Company voice (Doodlin) | Mission-first. "우리는 채용의 문제를 해결하는 것이 모든 문제 해결의 시작임을 믿습니다." |
 
-**Voice samples (verbatim from live homepage):**
-- "채용 관리를 넘어 채용 성공으로" — hero headline (outcome-framed promise). *(verified live 2026-06-11)*
-- "국내 1위 채용 관리 솔루션" — eyebrow / positioning claim. *(verified live 2026-06-11)*
-- "성과를 만드는 인재, 전략에 구애받지 말고 확보하세요" — section headline (strategic empowerment). *(verified live 2026-06-11)*
+**Voice samples (verbatim, opened 2026-09-30):**
+- "그리팅 | 채용 성공을 위한, 국내 1위 채용 관리 솔루션" — greetinghr.com page title.
+- "채용 관리를 넘어 채용 성공으로" — home headline.
+- "10,000+ 기업이 그리팅과 함께합니다" — home proof line, footnoted "*2026년 1월 그리팅 이용 고객사".
+- "채용 성공을 원한다면 그리팅이어야 하는 이유" — /why-greeting title.
+- "그리팅 블로그 | 채용 관리를 넘어, 채용 성공으로" — blog.greetinghr.com title.
 
-**Forbidden register**: aggressive sales urgency, exclamation-heavy hype, undefined HR jargon left unexplained, casual/cutesy consumer tone that undercuts enterprise trust.
+**Forbidden register**: aggressive urgency, stacked exclamation marks, unexplained HR jargon, a cute consumer tone.
 
 ## 11. Brand Narrative
 
-Greeting (그리팅) is the flagship product of **두들린 (Doodlin)**, a Korean HR-tech company building software to fix a structural pain in Korean hiring: recruiting workflows scattered across email, spreadsheets, and disconnected tools, with no system of record from sourcing through selection. Greeting consolidates that workflow into a single applicant-tracking system (ATS) — "모집부터 선발까지, 수시부터 대규모 채용까지 그리팅 하나로" (from sourcing to selection, from rolling to large-scale hiring, all in one Greeting).
+Doodlin's company page begins with a definition: hiring is how a company fulfils its mission, and solving hiring problems lays the ground for every company to achieve its own — "우린 이 순환 고리의 가장 중요한 시작점이 채용 문제의 해결이라 믿습니다." It cites 공자's 人事萬事 to argue that the problem is old and still unsolved, and admits that the team does not yet know the single innovation that solves it.
 
-The product has grown into what the company describes as Korea's #1 recruitment-management solution, with **10,000+ companies** using it (per the homepage's "*2026년 1월 그리팅 이용 고객사" footnote). Its positioning thesis — "채용 관리를 넘어 채용 성공으로" — reframes the category from passive applicant-tracking into active recruiting outcomes: not just managing who applied, but helping teams source proactively (다이렉트 소싱), build talent pools (인재풀 구축), and run structured, data-driven evaluation.
+Greeting is the product that carries that mission: an ATS and TRM for "더 빠르게 채용". The company page counts growth in product units — 6,129 customers, 1.37 million applicants, 4,272 career sites, 45,000 job posts, 1.05 million evaluations and 140,000 interviews as of December 2023 — and the marketing site now claims more than 10,000 customer companies (January 2026). Doodlin's own careers site at doodlin.co.kr is itself built on Greeting ("made with Greeting").
 
-What Greeting refuses, visible in its design: the heavy, dated chrome of enterprise HR legacy software (no shadow-stacked panels, no institutional gradients), and the gimmicky over-coloring of consumer apps. What it embraces: a clean white product canvas, a cool zinc type ladder, a single disciplined azure accent, and a confident navy "by the numbers" band — an enterprise tool that signals competence and trust without intimidation.
+The current site shows where the product is heading: a header menu organised around 모집, 관리 and 운영, an AI promotion over the home page, and a sales motion built on 도입 문의, demos and consultations. The design mirrors the pitch — a single azure action, black-and-white buttons and large calm type that reads as dependable business software.
 
 ## 12. Principles
 
-1. **Outcome over administration.** The product is sold as 채용 성공 (recruitment success), not just management. *UI implication:* lead with outcome-framed headlines and proof metrics; keep feature lists secondary to the promise.
-2. **Proof over hype.** Authority comes from "국내 1위" and "10,000+", not exclamation marks. *UI implication:* give proof numbers billboard scale (Poppins 175px on the navy band); keep copy calm and declarative.
-3. **One disciplined accent.** Azure (`#1890ff`) means "the action / the promise." *UI implication:* reserve azure for the hero accent word and the inquiry CTA; use near-black for other CTAs so the blue stays meaningful.
-4. **Flat and clean.** Modern enterprise clarity beats decorative depth. *UI implication:* no shadows; separate with tint and hairlines; keep the page fast and scannable.
-5. **Decode the workflow.** Recruiting is broken into clearly named, approachable steps. *UI implication:* label every stage plainly (모집, 다이렉트 소싱, 인재풀, 평가, 데이터 분석) so the product feels comprehensible.
+1. **Hiring is the first problem.** Doodlin's stated mission. *UI implication:* lead with outcomes (채용 성공) and proof, keep feature lists secondary.
+2. **Proof over hype.** *UI implication:* give figures scale — 96px statistics and an oversized Poppins numeral — and keep the copy calm.
+3. **One coloured action.** *UI implication:* azure `#1890ff` only on 도입 문의; in-page actions stay black and white. (An editorial reading of the captured pages.)
+4. **Name the workflow.** *UI implication:* label every stage plainly (모집, 관리, 운영; 공고 관리, 평가 관리, 면접 일정 조율).
+5. **Flat and legible.** *UI implication:* no shadows; grey hover fills; zinc text. (Editorial.)
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable Greeting user segments (Korean HR/talent-acquisition teams), not individual people.*
+*Personas below are fictional archetypes informed by publicly observable Greeting user segments (Korean HR and talent-acquisition teams), not individual people.*
 
-**박지현, 34, 서울.** An in-house HR manager at a mid-size company running both rolling and large-scale hiring. Tired of tracking applicants across email and spreadsheets; values one system of record from sourcing to selection. Chose Greeting because it consolidated the whole workflow.
+**박지현, 34, 서울.** An in-house recruiter at a mid-size company running rolling and large-scale hiring. Wants one system of record from job post to offer instead of email and spreadsheets.
 
-**김도윤, 29, 경기.** A talent-acquisition lead focused on proactive sourcing. Uses 다이렉트 소싱 and 인재풀 구축 to reach candidates before they apply. Appreciates that the tool makes proactive recruiting feel structured rather than ad-hoc.
+**김도윤, 29, 경기.** A talent-acquisition lead who sources proactively. Uses 인재풀 구축 and 다이렉트 소싱 to reach candidates before they apply.
 
-**이서연, 41, 서울.** A people-ops leader evaluating ATS vendors for the org. Wants proof (국내 1위, 10,000+ 고객사) and a clean, trustworthy interface she can present to executives. Trusts the calm, enterprise tone over flashier competitors.
+**이서연, 41, 서울.** A people-operations lead comparing ATS vendors on /pricing. Wants proof and a clear plan table she can take to leadership.
 
 ## 14. States
 
-| State | Treatment |
+Only these states were observed on the three captured pages; nothing else is specified here.
+
+| State | Observation |
 |---|---|
-| **Empty (no candidates yet)** | White canvas. Single Heading (`#27272a`) line explaining no applicants yet, with one azure CTA to post a job or import. No illustration clutter. |
-| **Empty (no talent pool)** | Muted (`#71717a`) single line: nothing in the pool yet, plus a path to 인재풀 구축. Honest, calm. |
-| **Loading (list fetch)** | Skeleton rows on `#fafafa` surface at final card dimensions, 16px radius. Flat pulse, no shadow shimmer — consistent with the shadowless system. |
-| **Loading (action submit)** | Inline spinner within the dark CTA; previous state stays visible. |
-| **Error (load failed)** | Inline message in Heading color with a plain-language explanation and a retry. Never a bare "오류가 발생했습니다" — states the next step. |
-| **Error (form validation)** | Field-level message below the input describing what's valid, not just "필수". |
-| **Success (action complete)** | Brief inline confirmation, optionally with the `#4ba63d` success mark; next-step linked immediately below. No celebratory excess. |
-| **Skeleton** | `#f4f4f5` / `#fafafa` blocks at final dimensions, 16px radius, flat pulse. |
-| **Disabled** | Disabled text (`#d4d4d8`) on reduced-opacity surface; azure actions fade rather than turn grey to preserve brand read. |
+| **Hover / pressed (header demo button)** | `#1890ff` → `rgba(44, 147, 242, 0.8)`, settled. |
+| **Hover / pressed (dark button)** | `#0f0f0f` → `#3f3f46` with a 1px `#e4e4e7` `::after` border (견적 문의하기). |
+| **Hover / pressed (light and soft buttons)** | `#ffffff` / `#fcfcfc` → `#f4f4f5`; label `#171717` → `#0f0f0f`. |
+| **Hover / pressed (navigation)** | Transparent → `#f4f4f5`. |
+| **No change** | The billing switch shows no hover or pressed change. |
+| **Unmeasured** | The home hero buttons, 서비스 소개서 다운로드 and the eyebrow pill were covered by the promotion dialog; their hover and pressed states are unmeasured, not absent. |
+| **Focus** | Every probed control draws only the browser default ring (`rgb(0, 95, 204) auto 1px`); no authored focus style. |
+| **Dialog open** | An AI promotion dialog (fixed, 960 × 520 over a full-viewport layer) covered home at capture. |
+
+Error, empty, loading and success states were not captured and are not described.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, focus |
-| `motion-standard` | 200ms | Card/section reveal, dropdown, menu |
-| `motion-slow` | 320ms | Page-level transitions, band reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, menus, panels |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and quiet — consistent with the flat, clean enterprise aesthetic. Buttons respond to hover with a subtle background shift (azure `#1890ff` → `#2c93f2`, dark `#0f0f0f` → `#171717`); feature cards and bands fade-in from below at `motion-standard / ease-enter`. No bounce or spring — an enterprise recruiting product signals steadiness, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
+Every probed control computes `transition: all 0s ease 0s`, and the probe read settled values after 900ms. The collector's immediate hover and focus frames caught intermediate fills (`#1d91fc` at 0.96 alpha on the header button, `#1d1d20` on the dark button), which shows that Framer animates these changes in script; no duration or easing was measured, so none is declared.
 
 <!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-11) via playwright getComputedStyle on https://www.greetinghr.com and /pricing:
-- Hero accent "채용 성공" — Pretendard SemiBold 60px / weight 600 / -0.6px / color rgb(24,144,255) #1890ff
-- Section headline "성과를 만드는 인재, 전략에 구애받지 말고 확보하세요" — 48px / 600 / -0.48px / rgb(23,23,23) #171717
-- Feature card H3 "지원자를 사로잡는 첫인상, 채용 홈페이지로부터" — 28px / 600 / -0.56px / rgb(39,39,42) #27272a
-- Eyebrow pill "국내 1위 채용 관리 솔루션" — white bg, 50px radius, 8px 20px padding
-- Header CTA "도입 문의" — bg rgb(24,144,255) #1890ff / radius 4px / height 36px
-- Dark CTA "도입 문의하기" / "견적 문의하기" — bg rgb(15,15,15) #0f0f0f & rgb(23,23,23) #171717 / radius 4px / 14px 25px
-- Big numeral "10,000+" — Poppins ~175px / -8.74px / white on navy rgb(0,25,70) #001946
-- Pricing card — bg navy #001946 / radius 30px / inset rim rgba(255,255,255,0.12) 0 0 2px inset
-- box-shadow: none across nav/hero/feature cards (shadowless system)
-- document.title: "그리팅 | 채용 성공을 위한, 국내 1위 채용 관리 솔루션"
-
-Token-level claims (§1-9) are sourced from this live inspection.
-
-Voice samples (§10) are verbatim from the live homepage and blog title.
-
-Brand narrative (§11): Greeting (그리팅) is operated by 두들린 (Doodlin) — confirmed via doodlin.co.kr
-(operator careers page lists [그리팅] roles). "10,000+" and "국내 1위" are from the homepage; the operator
-relationship is from the operator's own site. Specifics beyond these surfaces are general public knowledge,
-not directly quoted from a verified company statement in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable Greeting user segments
-(Korean HR/TA teams). Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "outcome over administration", "light-to-dark crescendo") are editorial readings
-connecting Greeting's observed design to its positioning, not directly sourced Greeting statements.
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/greeting.json (capturedAt 2026-09-30T11:07:19Z), deterministic collector, 1440x900, logged out: greetinghr.com, /pricing, /why-greeting. States: fixed keyboard probe raws docs/research/2026-09-29-growth/raw/greeting-states-{home,pricing}.json (configs greeting-cfg-*.json; labels from greeting-survey-{home,pricing,why}.json).
+- §1, §10, §11 context: greetinghr.com home, /pricing and /why-greeting copy; doodlin.co.kr/ko/about (mission, growth figures, address); blog.greetinghr.com title; opened 2026-09-30.
+- §3 licences: the Pretendard LICENSE and the Poppins OFL.txt on GitHub, opened 2026-09-30.
+- Personas are fictional archetypes. Interpretive readings are editorial.
 -->

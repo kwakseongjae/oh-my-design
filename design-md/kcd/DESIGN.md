@@ -9,54 +9,288 @@ primary_color: "#2d91ff"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=kcd.co.kr&sz=128"
-verified: "2026-06-26"
+verified: "2026-09-30"
 added: "2026-06-26"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: home, kind: corporate, url: "https://kcd.co.kr/", inspected: "2026-09-30" }
+    - { id: surface-2, kind: corporate, url: "https://kcd.co.kr/about/", inspected: "2026-09-30" }
+    - { id: surface-3, kind: corporate, url: "https://kcd.co.kr/service/", inspected: "2026-09-30" }
+    - { id: surface-4, kind: marketing, url: "https://cashnote.kr/", inspected: "2026-09-30" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://kcd.co.kr/", captured: "2026-09-30" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://kcd.co.kr/about/", captured: "2026-09-30" }
+    - { id: surface-surface-3, kind: product-surface, url: "https://kcd.co.kr/service/", captured: "2026-09-30" }
+    - { id: surface-surface-4, kind: product-surface, url: "https://cashnote.kr/", captured: "2026-09-30" }
+    - { id: kcd-probe-home, kind: product-surface, url: "https://kcd.co.kr/", captured: "2026-09-30" }
+    - { id: kcd-probe-about, kind: product-surface, url: "https://kcd.co.kr/about/", captured: "2026-09-30" }
+    - { id: kcd-probe-cashnote, kind: product-surface, url: "https://cashnote.kr/", captured: "2026-09-30" }
+    - { id: kcd-blog, kind: official-doc, url: "https://blog.kcd.co.kr/", captured: "2026-09-30" }
+    - { id: pretendard-license, kind: license, url: "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &navsel { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-09-30" }
+    "tokens.colors.navy": &eyebrow { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h4", captured: "2026-09-30" }
+    "tokens.colors.ink": &body { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
+    "tokens.colors.ink-deep": &cnfoot { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::h3", captured: "2026-09-30" }
+    "tokens.colors.ink-black": &ghost { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"17\"]", captured: "2026-09-30" }
+    "tokens.colors.body": &foot { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.gray": &cardp { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.muted": &legal { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.grey": &menusub { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-09-30" }
+    "tokens.colors.faint": &headsub { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-09-30" }
+    "tokens.colors.sky": &cardtitle { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h4", captured: "2026-09-30" }
+    "tokens.colors.hairline": &menu { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-09-30" }
+    "tokens.colors.surface": &cnstart { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::[data-omd-capture=\"1\"]", captured: "2026-09-30" }
+    "tokens.colors.on-blue": &cnhero { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::h2", captured: "2026-09-30" }
+    "tokens.colors.white": &hero { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
+    "tokens.typography.family.sans": *body
+    "tokens.typography.product-display.size": *cnhero
+    "tokens.typography.product-display.weight": *cnhero
+    "tokens.typography.product-display.lineHeight": *cnhero
+    "tokens.typography.product-display.use": *cnhero
+    "tokens.typography.display.size": *hero
+    "tokens.typography.display.weight": *hero
+    "tokens.typography.display.lineHeight": *hero
+    "tokens.typography.display.use": *hero
+    "tokens.typography.product-section.size": &cnsection { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::h2", captured: "2026-09-30" }
+    "tokens.typography.product-section.weight": *cnsection
+    "tokens.typography.product-section.lineHeight": *cnsection
+    "tokens.typography.product-section.use": *cnsection
+    "tokens.typography.section.size": &h3 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
+    "tokens.typography.section.weight": *h3
+    "tokens.typography.section.lineHeight": *h3
+    "tokens.typography.section.use": *h3
+    "tokens.typography.product-feature.size": &cnfeature { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::h3", captured: "2026-09-30" }
+    "tokens.typography.product-feature.weight": *cnfeature
+    "tokens.typography.product-feature.lineHeight": *cnfeature
+    "tokens.typography.product-feature.use": *cnfeature
+    "tokens.typography.service-lead.size": &svclead { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h2", captured: "2026-09-30" }
+    "tokens.typography.service-lead.weight": *svclead
+    "tokens.typography.service-lead.lineHeight": *svclead
+    "tokens.typography.service-lead.use": *svclead
+    "tokens.typography.card-title.size": *cardtitle
+    "tokens.typography.card-title.weight": *cardtitle
+    "tokens.typography.card-title.lineHeight": *cardtitle
+    "tokens.typography.card-title.use": *cardtitle
+    "tokens.typography.eyebrow.size": *eyebrow
+    "tokens.typography.eyebrow.weight": *eyebrow
+    "tokens.typography.eyebrow.lineHeight": *eyebrow
+    "tokens.typography.eyebrow.use": *eyebrow
+    "tokens.typography.menu.size": *menu
+    "tokens.typography.menu.weight": *menu
+    "tokens.typography.menu.lineHeight": *menu
+    "tokens.typography.menu.use": *menu
+    "tokens.typography.lead.size": &lead { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.lead.weight": *lead
+    "tokens.typography.lead.lineHeight": *lead
+    "tokens.typography.lead.use": *lead
+    "tokens.typography.nav.size": &nav { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-09-30" }
+    "tokens.typography.nav.weight": *nav
+    "tokens.typography.nav.lineHeight": *nav
+    "tokens.typography.nav.use": *nav
+    "tokens.typography.button.size": *ghost
+    "tokens.typography.button.weight": *ghost
+    "tokens.typography.button.use": *ghost
+    "tokens.typography.product-button.size": &cnherobtn { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::[data-omd-capture=\"3\"]", captured: "2026-09-30" }
+    "tokens.typography.product-button.weight": *cnherobtn
+    "tokens.typography.product-button.lineHeight": *cnherobtn
+    "tokens.typography.product-button.use": *cnherobtn
+    "tokens.typography.product-button-sm.size": *cnstart
+    "tokens.typography.product-button-sm.weight": *cnstart
+    "tokens.typography.product-button-sm.lineHeight": *cnstart
+    "tokens.typography.product-button-sm.use": *cnstart
+    "tokens.typography.body.size": *cardp
+    "tokens.typography.body.weight": *cardp
+    "tokens.typography.body.lineHeight": *cardp
+    "tokens.typography.body.use": *cardp
+    "tokens.typography.caption.size": *foot
+    "tokens.typography.caption.weight": *foot
+    "tokens.typography.caption.lineHeight": *foot
+    "tokens.typography.caption.use": *foot
+    "tokens.typography.fine.size": *legal
+    "tokens.typography.fine.weight": *legal
+    "tokens.typography.fine.lineHeight": *legal
+    "tokens.typography.fine.use": *legal
+    "tokens.spacing.ghost-y": *ghost
+    "tokens.spacing.ghost-x": *ghost
+    "tokens.spacing.menu-bottom": *menu
+    "tokens.spacing.tab-x": &tab { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"24\"]", captured: "2026-09-30" }
+    "tokens.spacing.chip-y": &chip { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::p", captured: "2026-09-30" }
+    "tokens.spacing.chip-x": *chip
+    "tokens.spacing.soft-x": *cnstart
+    "tokens.spacing.soft-lg-x": *cnherobtn
+    "tokens.spacing.download-y": &cndl { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::[data-omd-capture=\"5\"]", captured: "2026-09-30" }
+    "tokens.spacing.download-x": *cndl
+    "tokens.rounded.ghost": *ghost
+    "tokens.rounded.soft": *cnstart
+    "tokens.rounded.soft-lg": *cnherobtn
+    "tokens.rounded.pill": *tab
+    "tokens.components.ghost-button.type": *ghost
+    "tokens.components.ghost-button.bg": *ghost
+    "tokens.components.ghost-button.fg": *ghost
+    "tokens.components.ghost-button.border": *ghost
+    "tokens.components.ghost-button.radius": *ghost
+    "tokens.components.ghost-button.padding": *ghost
+    "tokens.components.ghost-button.height": *ghost
+    "tokens.components.ghost-button.font": *ghost
+    "tokens.components.ghost-button.hover": &ghoststate { surface_id: home, source_id: kcd-probe-home, method: live-state-probe, selector: "button 서비스 보기 (260 x 51): hover and pressed bg rgba(0, 0, 0, 0) -> rgb(25, 45, 130), fg rgb(0, 0, 0) -> rgb(255, 255, 255), border 1px solid rgb(30, 33, 55) -> 1px solid rgb(25, 45, 130) (transition all 0.2s); focus (Tab #17) changes only an ancestor's scroll-reveal transform and opacity", captured: "2026-09-30" }
+    "tokens.components.ghost-button.pressed": *ghoststate
+    "tokens.components.ghost-button.states": *ghoststate
+    "tokens.components.ghost-button.use": *ghost
+    "tokens.components.ghost-link.type": &more { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"19\"]", captured: "2026-09-30" }
+    "tokens.components.ghost-link.bg": *more
+    "tokens.components.ghost-link.fg": *more
+    "tokens.components.ghost-link.border": *more
+    "tokens.components.ghost-link.radius": *more
+    "tokens.components.ghost-link.padding": *more
+    "tokens.components.ghost-link.height": *more
+    "tokens.components.ghost-link.font": *more
+    "tokens.components.ghost-link.hover": &morestate { surface_id: home, source_id: kcd-probe-home, method: live-state-probe, selector: "a 더보기 (260 x 48): hover and pressed bg rgba(0, 0, 0, 0) -> rgb(25, 45, 130), fg rgb(30, 33, 55) -> rgb(255, 255, 255), border -> 1px solid rgb(25, 45, 130); focus (Tab #23) outline none -> rgb(0, 95, 204) auto 1px, the browser default", captured: "2026-09-30" }
+    "tokens.components.ghost-link.pressed": *morestate
+    "tokens.components.ghost-link.states": *morestate
+    "tokens.components.ghost-link.use": *more
+    "tokens.components.ghost-inverse.type": &inverse { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"19\"]", captured: "2026-09-30" }
+    "tokens.components.ghost-inverse.bg": *inverse
+    "tokens.components.ghost-inverse.fg": *inverse
+    "tokens.components.ghost-inverse.border": *inverse
+    "tokens.components.ghost-inverse.radius": *inverse
+    "tokens.components.ghost-inverse.padding": *inverse
+    "tokens.components.ghost-inverse.height": *inverse
+    "tokens.components.ghost-inverse.font": *inverse
+    "tokens.components.ghost-inverse.states": *inverse
+    "tokens.components.ghost-inverse.use": *inverse
+    "tokens.components.menu-item.type": *menu
+    "tokens.components.menu-item.fg": *menu
+    "tokens.components.menu-item.border": *menu
+    "tokens.components.menu-item.padding": *menu
+    "tokens.components.menu-item.height": *menu
+    "tokens.components.menu-item.font": *menu
+    "tokens.components.menu-item.selected": { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"9\"]", captured: "2026-09-30" }
+    "tokens.components.menu-item.states": *menu
+    "tokens.components.menu-item.use": *menu
+    "tokens.components.header-nav-item.type": *nav
+    "tokens.components.header-nav-item.fg": *nav
+    "tokens.components.header-nav-item.height": *nav
+    "tokens.components.header-nav-item.font": *nav
+    "tokens.components.header-nav-item.selected": *navsel
+    "tokens.components.header-nav-item.states": *nav
+    "tokens.components.header-nav-item.use": *nav
+    "tokens.components.leadership-tab.type": *tab
+    "tokens.components.leadership-tab.bg": *tab
+    "tokens.components.leadership-tab.fg": *tab
+    "tokens.components.leadership-tab.border": *tab
+    "tokens.components.leadership-tab.radius": *tab
+    "tokens.components.leadership-tab.padding": *tab
+    "tokens.components.leadership-tab.height": *tab
+    "tokens.components.leadership-tab.font": *tab
+    "tokens.components.leadership-tab.selected": { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"23\"]", captured: "2026-09-30" }
+    "tokens.components.leadership-tab.states": { surface_id: surface-2, source_id: kcd-probe-about, method: live-state-probe, selector: "button C-level (selected, 104 x 44; rest bg rgba(0, 0, 0, 0), behind rgb(255, 255, 255), fg rgb(255, 255, 255), border 1px solid rgb(25, 45, 130)) and Advisor (108 x 44): hover, pressed and focus (Tabs #20 and #21) no change", captured: "2026-09-30" }
+    "tokens.components.leadership-tab.use": *tab
+    "tokens.components.entity-link.type": &entity { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"19\"]", captured: "2026-09-30" }
+    "tokens.components.entity-link.fg": *entity
+    "tokens.components.entity-link.height": *entity
+    "tokens.components.entity-link.font": *entity
+    "tokens.components.entity-link.states": { surface_id: surface-2, source_id: kcd-probe-about, method: live-state-probe, selector: "a 바로가기 (first of four, 620 x 28): hover and pressed no change; focus (Tab #16) outline none -> rgb(0, 95, 204) auto 1px, the browser default", captured: "2026-09-30" }
+    "tokens.components.entity-link.use": *entity
+    "tokens.components.service-chip.type": *chip
+    "tokens.components.service-chip.fg": *chip
+    "tokens.components.service-chip.border": *chip
+    "tokens.components.service-chip.radius": *chip
+    "tokens.components.service-chip.padding": *chip
+    "tokens.components.service-chip.height": *chip
+    "tokens.components.service-chip.font": *chip
+    "tokens.components.service-chip.use": *chip
+    "tokens.components.carousel-arrow.type": &arrow { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::div", captured: "2026-09-30" }
+    "tokens.components.carousel-arrow.bg": *arrow
+    "tokens.components.carousel-arrow.fg": *arrow
+    "tokens.components.carousel-arrow.radius": *arrow
+    "tokens.components.carousel-arrow.size": *arrow
+    "tokens.components.carousel-arrow.states": *arrow
+    "tokens.components.carousel-arrow.use": *arrow
+    "tokens.components.cashnote-start-button.type": *cnstart
+    "tokens.components.cashnote-start-button.bg": *cnstart
+    "tokens.components.cashnote-start-button.fg": *cnstart
+    "tokens.components.cashnote-start-button.radius": *cnstart
+    "tokens.components.cashnote-start-button.padding": *cnstart
+    "tokens.components.cashnote-start-button.height": *cnstart
+    "tokens.components.cashnote-start-button.font": *cnstart
+    "tokens.components.cashnote-start-button.states": &cnstate { surface_id: surface-4, source_id: kcd-probe-cashnote, method: live-state-probe, selector: "button 캐시노트 시작하기 (138.4 x 40) and 앱 다운로드 (118.5 x 48): hover, pressed and focus (Tabs #3 and #5) no change across self and 3 ancestor levels; transition all 0s", captured: "2026-09-30" }
+    "tokens.components.cashnote-start-button.use": *cnstart
+    "tokens.components.cashnote-download-button.type": *cnherobtn
+    "tokens.components.cashnote-download-button.bg": *cnherobtn
+    "tokens.components.cashnote-download-button.fg": *cnherobtn
+    "tokens.components.cashnote-download-button.radius": *cnherobtn
+    "tokens.components.cashnote-download-button.padding": *cnherobtn
+    "tokens.components.cashnote-download-button.height": *cnherobtn
+    "tokens.components.cashnote-download-button.font": *cnherobtn
+    "tokens.components.cashnote-download-button.states": *cnstate
+    "tokens.components.cashnote-download-button.use": *cnherobtn
+    "tokens.components.cashnote-footer-download.type": *cndl
+    "tokens.components.cashnote-footer-download.bg": *cndl
+    "tokens.components.cashnote-footer-download.fg": *cndl
+    "tokens.components.cashnote-footer-download.radius": *cndl
+    "tokens.components.cashnote-footer-download.padding": *cndl
+    "tokens.components.cashnote-footer-download.height": *cndl
+    "tokens.components.cashnote-footer-download.font": *cndl
+    "tokens.components.cashnote-footer-download.states": *cndl
+    "tokens.components.cashnote-footer-download.use": *cndl
 tokens:
-  source: live-extract
-  extracted: "2026-06-26"
-  note: "primary = live action blue (#2d91ff), confirmed across both kcd.co.kr corporate and cashnote.kr product surfaces; pressed/strong blue (#0257d7). Deep navy (#192d82) carries product headings; corporate ink (#1e2137). Near-shadowless flat system; separation via tinted surfaces (#f4f7f9 / #f9fbfc) + blue tints (#e2f3ff / #cae7ff)."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
     primary: "#2d91ff"
-    primary-deep: "#0257d7"
     navy: "#192d82"
     ink: "#1e2137"
     ink-deep: "#0c1120"
+    ink-black: "#000000"
     body: "#44546f"
+    gray: "#666666"
     muted: "#728094"
+    grey: "#9f9f9f"
     faint: "#a4aeba"
-    canvas: "#ffffff"
+    sky: "#57a8ff"
+    hairline: "#d9d9d9"
     surface: "#f4f7f9"
-    surface-alt: "#f9fbfc"
-    tint-blue: "#e2f3ff"
-    tint-blue-strong: "#cae7ff"
-    pale-blue: "#f3faff"
-    hairline: "#eeeeee"
-    on-primary: "#ffffff"
+    on-blue: "#f3faff"
+    white: "#ffffff"
   typography:
     family: { sans: "Pretendard" }
-    display-hero: { size: 72, weight: 700, lineHeight: 1.10, use: "Product hero headline, Pretendard Bold" }
-    display:      { size: 56, weight: 700, lineHeight: 1.21, use: "Section hero headlines" }
-    heading:      { size: 46, weight: 700, lineHeight: 1.35, use: "Corporate section heads" }
-    subheading:   { size: 44, weight: 700, lineHeight: 1.27, use: "Product feature heads" }
-    title:        { size: 24, weight: 600, lineHeight: 1.21, use: "Stat / sub-section titles" }
-    nav:          { size: 18, weight: 700, lineHeight: 1.20, use: "Corporate top nav links" }
-    body:         { size: 16, weight: 400, lineHeight: 1.50, use: "Standard reading text" }
-    button-lg:    { size: 19, weight: 700, lineHeight: 1.00, use: "Large CTA label" }
-    button:       { size: 16, weight: 600, lineHeight: 1.00, use: "Compact CTA label" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 6, md: 12, lg: 16, xl: 20, full: 9999 }
-  shadow:
-    none: "none"
+    product-display: { size: 72, weight: 700, lineHeight: 1.19, use: "CashNote product site (cashnote.kr): hero headline, 86px line, in #f3faff" }
+    display: { size: 52, weight: 700, lineHeight: 1.27, use: "Corporate page heroes on kcd.co.kr (home, /about/, /service/), 66px line, white over imagery" }
+    product-section: { size: 56, weight: 700, lineHeight: 1.21, use: "CashNote product site (cashnote.kr): section headlines, 68px line, in #192d82" }
+    section: { size: 46, weight: 700, lineHeight: 1.35, use: "Corporate section headings, 62px line, in #1e2137 (white on dark bands)" }
+    product-feature: { size: 44, weight: 700, lineHeight: 1.27, use: "CashNote product site (cashnote.kr): feature headings, 56px line, in #192d82" }
+    service-lead: { size: 44, weight: 300, lineHeight: 1.23, use: "Light-weight service introductions on /service/, 54px line, in #1e2137" }
+    card-title: { size: 22, weight: 600, lineHeight: 1.45, use: "Card titles on the corporate pages, 32px line, in #1e2137, or #57a8ff on dark bands" }
+    eyebrow: { size: 18, weight: 600, lineHeight: 1.56, use: "Section eyebrows above corporate headings, 28px line, in #192d82 (#57a8ff on dark bands)" }
+    menu: { size: 18, weight: 700, lineHeight: 1.0, use: "Full-screen menu items (회사소개, 서비스, 팀 문화, 인재영입, 새 소식), 18px line" }
+    lead: { size: 18, weight: 400, lineHeight: 1.67, use: "Lead paragraphs under corporate headings, 30px line, in #1e2137" }
+    nav: { size: 16, weight: 400, lineHeight: 1.0, use: "Header navigation over the hero, 16px line, white; the current page's item turns #2d91ff" }
+    button: { size: 16, weight: 700, use: "Corporate ghost button labels (서비스 보기, 자세히 보기, 더보기)" }
+    product-button: { size: 19, weight: 700, lineHeight: 1.37, use: "CashNote product site (cashnote.kr): hero 앱 다운로드 label, 26px line" }
+    product-button-sm: { size: 16, weight: 600, lineHeight: 1.63, use: "CashNote product site (cashnote.kr): header 캐시노트 시작하기 label, 26px line" }
+    body: { size: 16, weight: 400, lineHeight: 1.63, use: "Card descriptions and body copy, 26px line, in #666666" }
+    caption: { size: 14, weight: 400, lineHeight: 1.71, use: "Footer company details, 24px line, in #44546f" }
+    fine: { size: 13, weight: 400, lineHeight: 1.54, use: "Footer legal line, 20px line, in #728094" }
+  spacing: { ghost-y: 15, ghost-x: 32, menu-bottom: 25, tab-x: 23, chip-y: 3, chip-x: 25, soft-x: 12, soft-lg-x: 16, download-y: 12, download-x: 28 }
+  rounded: { ghost: 6, soft: 12, soft-lg: 16, pill: 100 }
   components:
-    button-soft: { type: button, bg: "#f4f7f9", fg: "#2d91ff", radius: "16px", height: "48px", padding: "0 16px", font: "19px / 700", use: "Primary soft CTA — 앱 다운로드, 캐시노트 시작하기 (blue label on grey fill)" }
-    button-outline: { type: button, bg: "#ffffff", fg: "#2d91ff", border: "1px solid #2d91ff", radius: "16px", height: "56px", padding: "0 24px", font: "19px / 600", use: "Outline CTA — 캐시노트 컨설턴트" }
-    button-corporate: { type: button, fg: "#1e2137", border: "1px solid #1e2137", radius: "6px", height: "51px", padding: "15px 32px", font: "16px / 700", use: "Corporate ghost CTA — 서비스 보기, 자세히 보기" }
-    input-field: { type: input, bg: "#f4f7f9", fg: "#1e2137", border: "1px solid #eeeeee", radius: "12px", padding: "0 16px", use: "Form/search field — surface fill + hairline, focus #2d91ff" }
-    card-surface: { type: card, bg: "#f9fbfc", border: "1px solid #f9fbfc", radius: "20px", padding: "0 24px", use: "Feature card on light surface (shadowless)" }
-    card-tint: { type: card, bg: "#e2f3ff", fg: "#192d82", radius: "20px", use: "Blue-tinted highlight card" }
-    badge-stat: { type: badge, bg: "#e2f3ff", fg: "#192d82", radius: "20px", font: "16px / 600", use: "Stat / metric chip — 2026년 5월 기준" }
-    nav-link: { type: tab, fg: "#1e2137", font: "18px / 700", active: "text #2d91ff", use: "Corporate top nav item" }
+    ghost-button: { type: button, bg: "transparent", fg: "#000000", border: "1px solid #1e2137", radius: "6px", padding: "15px 32px", height: "51px", font: "16px / 700", hover: "bg #192d82, fg #ffffff, border #192d82", pressed: "bg #192d82, fg #ffffff, border #192d82", states: "probe on home: hover and pressed fill the button #192d82 with a #ffffff label after a 0.2s transition; focus draws no authored style (the Tab landing only finished an ancestor's scroll-reveal)", use: "서비스 보기 and 자세히 보기 on home (260 x 51); 캐시노트 바로가기, Google Play and Apple Store on /service/ (260 x 59). The button element computes Arial 13.33px; the visible label is a child span whose family was not recorded" }
+    ghost-link: { type: button, bg: "transparent", fg: "#1e2137", border: "1px solid #1e2137", radius: "6px", padding: "15px 32px", height: "48px", font: "16px / 700 / 16px Pretendard", hover: "bg #192d82, fg #ffffff, border #192d82", pressed: "bg #192d82, fg #ffffff, border #192d82", states: "probe: hover and pressed settle on #192d82 with a #ffffff label (transition all 0.2s); focus shows only the browser's default ring", use: "더보기 under the news list on home, 260 x 48" }
+    ghost-inverse: { type: button, bg: "transparent", fg: "#ffffff", border: "1px solid #ffffff", radius: "6px", padding: "15px 32px", height: "51px", font: "16px / 700", states: "rest only; not probed", use: "데이터 랩 바로가기 on the dark band of /service/ and 인재영입 중 on home" }
+    menu-item: { type: tab, fg: "#1e2137", border: "1px solid #d9d9d9 (bottom only)", padding: "0px 0px 25px", height: "44px", font: "18px / 700 / 18px Pretendard", selected: "fg #2d91ff on the current section (회사소개 on /about/, 서비스 on /service/)", states: "selected variant from rest values; no pointer frame", use: "Full-screen menu list, 1380 x 44 rows" }
+    header-nav-item: { type: tab, fg: "#ffffff", height: "16px", font: "16px / 400 / 16px Pretendard", selected: "fg #2d91ff on the current page", states: "selected variant from rest values on /about/ and /service/; no pointer frame", use: "Header navigation over the hero image (회사소개, 서비스, 팀 문화, 인재영입, 새 소식); two secondary header links, one of them 데이터 랩, sit in #a4aeba" }
+    leadership-tab: { type: tab, bg: "transparent", fg: "#9f9f9f", border: "1px solid #d9d9d9", radius: "100px", padding: "0px 23px", height: "44px", font: "18px / 500 / 26px (the button computes Arial; see §3)", selected: "fg #ffffff with a 1px #192d82 border; the fill behind the white label is painted outside the probe's scope and is not declared", states: "probe: neither tab changes on hover, pressed or focus", use: "C-level / Advisor switch in the leadership section of /about/" }
+    entity-link: { type: button, fg: "#2d91ff", height: "28px", font: "18px / 700 / 28px Pretendard", states: "probe: hover and pressed show no change; focus shows only the browser's default ring", use: "바로가기 links on the four KCD 공동체 company cards of /about/" }
+    service-chip: { type: badge, fg: "#192d82", border: "1px solid #192d82", radius: "100px", padding: "3px 25px", height: "38px", font: "18px / 400 / 30px Pretendard", use: "Outlined label chips above the service introductions on /service/, 150 x 38" }
+    carousel-arrow: { type: button, bg: "#192d82", fg: "#ffffff", radius: "50%", size: "56px x 56px", states: "rest only; not probed", use: "Previous and next arrows of the service carousel on /service/" }
+    cashnote-start-button: { type: button, bg: "#f4f7f9", fg: "#2d91ff", radius: "12px", padding: "0px 12px", height: "40px", font: "16px / 600 / 26px Pretendard", states: "probe: hover, pressed and focus (Tab #3) show no change", use: "CashNote product site (cashnote.kr): 캐시노트 시작하기 in the header, 138 x 40" }
+    cashnote-download-button: { type: button, bg: "#f4f7f9", fg: "#2d91ff", radius: "16px", padding: "0px 16px", height: "48px", font: "19px / 700 / 26px Pretendard", states: "probe: hover, pressed and focus (Tab #5) show no change", use: "CashNote product site (cashnote.kr): 앱 다운로드 in the hero, 118.5 x 48" }
+    cashnote-footer-download: { type: button, bg: "#f4f7f9", fg: "#2d91ff", radius: "12px", padding: "12px 28px", height: "40px", font: "16px / 600 / 16px Pretendard", states: "rest only; not probed", use: "CashNote product site (cashnote.kr): 앱 다운로드 in the closing band, 129 x 40" }
   components_harvested: true
 ---
 
@@ -64,21 +298,17 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-Korea Credit Data (한국신용데이터) is the SME-fintech company behind 캐시노트 (CashNote), Korea's most widely used business-management platform for small-business owners (사장님), and its surfaces read like calm, data-grade financial software rather than a loud consumer app. Across both the corporate site (`kcd.co.kr`) and the flagship product page (`cashnote.kr`) the canvas is pure white (`#ffffff`), segmented by cool near-white surfaces — a grey surface (`#f4f7f9`) and an even paler card surface (`#f9fbfc`) — so content breaks into airy, legible zones. The single saturated brand accent is a confident action blue (`#2d91ff`), reserved for CTAs and key interactive text; a deeper pressed blue (`#0257d7`) backs it for strong states. The effect is trustworthy and engineered: a fintech that handles real money for hundreds of thousands of merchants and looks like it.
+Korea Credit Data (한국신용데이터, KCD) builds software and data services for Korean small-business owners (사장님). Its /about/ page gives the founding and the product in the company's own words. CEO 김동호 co-founded KCD in 2016. He is a serial founder who co-founded 아이디인큐 (now 오픈서베이) in 2011 while at Yonsei University. The first product answered one question owners ask every day, "그래서 오늘 통장에 돈이 얼마 들어올까?". In 2017 "카카오톡 챗봇 기반의 캐시노트가 탄생했습니다". CashNote (캐시노트) is still the company's service. KCD's /service/ page presents it with 캐시노트 바로가기, and cashnote.kr's footer links back to 한국신용데이터. The mission line is "우리는 사업을 시작하고 운영하고 성장시키는 모든 과정이 쉬워지도록 돕습니다". The company now describes itself as a group, the KCD 공동체: 한국평가정보 (KCS, a sole-proprietor credit bureau licensed in July 2022), 한국결제네트웍스 (KPN, payments), 아임유 (IMU, POS hardware and software), 한국사업자경험 (KMX, owner support) and 바틀드 (BOTTLED, a store near 강남역 where staff "become owners" and new CashNote features are tried first).
 
-The typographic personality is Korean-product-standard: everything is set in **Pretendard**, the de-facto hangul UI face, with display weight at Bold (700) and body at Regular (400). The product hero runs large — 72px Bold on `cashnote.kr` ("내 사업이 채워지는 모든 순간") — while the corporate site anchors on 52–56px Bold headlines and 46px section heads. Headings carry a deep navy (`#192d82`) on the product surface and a warmer corporate ink (`#1e2137`) on the company site, with the darkest text reaching a near-black (`#0c1120`). Below the headline, the text ladder cools and lightens through a body slate (`#44546f`), a muted slate (`#728094`), and a faint blue-grey (`#a4aeba`) for the lowest-emphasis labels.
-
-What distinguishes KCD from flashier fintech peers is its restraint with depth and its disciplined blue. Live inspection found `box-shadow: none` across heroes, nav, headings, buttons, and cards — separation is done entirely with flat tinted surfaces and a single `#eeeeee` hairline, never elevation. When the system wants to highlight a metric or a card it does not add a shadow; it reaches for the blue family — a light blue tint (`#e2f3ff`), a stronger blue tint (`#cae7ff`), or the palest blue (`#f3faff`) used for text reversed on a blue field. Geometry is softly rounded: 6px on corporate ghost buttons, 12–16px on product CTAs, and a generous 20px on cards. The result is a flat, fast, mobile-native aesthetic — financial tooling that feels approachable to a shop owner and rigorous to an engineer at once.
+This reference covers two evidence domains. The corporate site (kcd.co.kr) is a white, editorial page system. Large white 52px headlines sit over full-bleed imagery. Section heads are 46px/700 in an ink (`#1e2137`), with navy (`#192d82`) eyebrows. Actions are quiet 6px-radius ghost buttons outlined in ink that fill navy on hover. The product site (cashnote.kr) is a different register. A blue hero band carries a 72px headline in `#f3faff`, and headings run in navy. Every action is a soft grey (`#f4f7f9`) button with a blue (`#2d91ff`) label. The two domains share Pretendard and one blue. On kcd.co.kr the blue marks where you are: the current header item, the current menu section, the 바로가기 links. On cashnote.kr it is the action label.
 
 **Key Characteristics:**
-- Pretendard throughout — Bold (700) for display, Regular (400) for body, hangul-optimized
-- Single saturated action blue (`#2d91ff`) reserved for CTAs and key interactive text
-- Deeper pressed blue (`#0257d7`) for strong/active states
-- Deep navy (`#192d82`) product headings; warmer corporate ink (`#1e2137`); near-black (`#0c1120`) for max contrast
-- Flat depth: `box-shadow: none` everywhere; tinted surfaces (`#f4f7f9`, `#f9fbfc`) + `#eeeeee` hairline do the separating
-- Blue tints (`#e2f3ff`, `#cae7ff`, `#f3faff`) for highlight cards, metric chips, and reversed text
-- Soft rounding ladder — 6px corporate ghost, 12–16px product CTAs, 20px cards
-- Cool neutral text ladder (`#44546f` → `#728094` → `#a4aeba`)
+- One blue, `#2d91ff`: the selected state on kcd.co.kr and the action label on cashnote.kr
+- Navy `#192d82` for eyebrows, the ghost-button hover fill, the carousel arrows and CashNote headings
+- Ink `#1e2137` for corporate text, menu items and ghost-button outlines; ghost labels in `#000000`
+- Quiet corporate actions: 6px ghost buttons, 15px 32px padding, a navy fill on hover
+- CashNote soft buttons: `#f4f7f9` fill, `#2d91ff` label, 12px and 16px radii
+- Pretendard throughout, 300–700; the corporate `button` elements fall back to Arial
 
 ## Primary tasks
 
@@ -89,351 +319,228 @@ What distinguishes KCD from flashier fintech peers is its restraint with depth a
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Action Blue** (`#2d91ff`): Primary brand and action color. The saturated blue on CTA labels, interactive text, and emphasis — the system's single "do this" color, confirmed live on both `kcd.co.kr` and `cashnote.kr`.
-- **Pressed Blue** (`#0257d7`): Deeper blue for pressed/active and strong-emphasis states on the action blue.
-- **Deep Navy** (`#192d82`): Primary heading color on the product surface — a dark, trustworthy blue that carries the CashNote headlines and stat labels.
+### Why `#2d91ff` is the primary
+- **Blue** (`#2d91ff`): the one colour KCD renders in a primary role on both domains. On kcd.co.kr it is the selected state: the current item in the header navigation and in the full-screen menu (/about/ and /service/), plus the four 바로가기 links on the KCD 공동체 cards. On cashnote.kr it is the label of every captured action (캐시노트 시작하기, both 앱 다운로드 buttons). The corporate site has no chromatic action fill; its actions are ink outlines that fill navy on hover. Navy is therefore recorded as `navy`, the hover and heading colour, and blue as the primary.
 
-### Ink & Neutrals
-- **Corporate Ink** (`#1e2137`): Primary text/heading color on the company site; nav links and body. A dark blue-charcoal used instead of pure black.
-- **Ink Deep** (`#0c1120`): Near-black for maximum-contrast text moments.
-- **Body Slate** (`#44546f`): Secondary body copy and descriptions.
-- **Muted Slate** (`#728094`): Tertiary text, captions, metadata.
-- **Faint Blue-Grey** (`#a4aeba`): Disabled text, placeholders, lowest-emphasis labels.
+### Navy & Ink
+- **Navy** (`#192d82`): section eyebrows on light bands, the hover and pressed fill of the ghost buttons (probe), the leadership tab's selected border, the /service/ chip outline and carousel arrows, and CashNote section and feature headings.
+- **Ink** (`#1e2137`): the corporate body colour, headings, menu items and ghost outlines.
+- **Ink Deep** (`#0c1120`): CashNote footer headings.
+- **Ink Black** (`#000000`): the label colour the ghost buttons compute.
 
-### Surface & Tint
-- **Pure White** (`#ffffff`): Page background, white cards, text reversed on blue/navy.
-- **Surface Grey** (`#f4f7f9`): Cool grey surface for soft buttons and segmented sections.
-- **Surface Alt** (`#f9fbfc`): Palest near-white card surface.
-- **Tint Blue** (`#e2f3ff`): Light blue tint for highlight cards and metric chips.
-- **Tint Blue Strong** (`#cae7ff`): Stronger blue tint for emphasized blue surfaces.
-- **Pale Blue** (`#f3faff`): The palest blue, used for text reversed on a saturated blue field.
-- **Hairline** (`#eeeeee`): Thin borders and dividers — the primary separation device in the shadowless system.
-- **On Primary** (`#ffffff`): White text/iconography on blue and navy fills.
+### Neutrals
+- **Body** (`#44546f`): footer details on both domains and CashNote body copy.
+- **Gray** (`#666666`): card descriptions on the corporate pages.
+- **Muted** (`#728094`): the footer legal line and CashNote legal links.
+- **Grey** (`#9f9f9f`): secondary menu links and the unselected leadership tab.
+- **Faint** (`#a4aeba`): two secondary header links (one is 데이터 랩).
+- **Hairline** (`#d9d9d9`): menu-row and leadership-tab borders.
+
+### Surface & Light
+- **White** (`#ffffff`): canvas, hero headlines, labels on navy.
+- **Surface** (`#f4f7f9`): the CashNote soft-button fill.
+- **Sky** (`#57a8ff`): eyebrows and card titles on the corporate site's dark bands.
+- **On Blue** (`#f3faff`): the CashNote hero headline and lead on the blue band.
+
+### Brand assets outside the tokens
+- /about/ offers a media kit (KCD 공동체 브랜드 가이드 and 로고, 캐시노트 브랜드 가이드 and 로고). The files were not opened, so nothing is taken from them. A supplementary survey read the CashNote hero band as the primary blue behind a background image, and the corporate dark band as a deep navy. Neither band was recorded by the collector, so neither is a token.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Sans**: `Pretendard` (with system sans fallback) — the single family across corporate and product surfaces. Bold (700) for display and nav, SemiBold (600) for compact UI, Regular (400) for body.
+- **Sans:** `Pretendard`. Loaded and in use on 467 recorded elements across both domains (body, headings, cards, list items). The survey's `document.fonts` lists weights 400–700 on kcd.co.kr (300 on /service/) and 400, 600 and 700 on cashnote.kr. Distributed under the SIL Open Font License 1.1. No KCD or CashNote page opened names its typeface, so there is no official product-use claim.
+- **Arial (live surface use, not a brand face):** 20 recorded elements compute the system Arial. They are the corporate site's `button` elements, which do not inherit Pretendard. The leadership tabs (C-level, Advisor) and the media-kit row headings render in Arial for that reason. It is a CSS inheritance gap, not a typeface choice.
+- **Declared only:** `Plipop-Social-Icons` and `swiper-icons` (icon fonts, 0 text uses).
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Product Hero | Pretendard | 72px (4.50rem) | 700 | 1.10 | CashNote hero ("내 사업이 채워지는 모든 순간") |
-| Section Hero | Pretendard | 56px (3.50rem) | 700 | 1.21 | Product/corporate section heroes |
-| Corporate Head | Pretendard | 46px (2.88rem) | 700 | 1.35 | Corporate section headings |
-| Feature Head | Pretendard | 44px (2.75rem) | 700 | 1.27 | Product feature headings |
-| Title | Pretendard | 24px (1.50rem) | 600 | 1.21 | Stat labels, sub-section titles |
-| Nav Link | Pretendard | 18px (1.13rem) | 700 | 1.20 | Corporate top nav items |
-| Body | Pretendard | 16px (1.00rem) | 400 | 1.50 | Standard reading text |
-| Button Large | Pretendard | 19px (1.19rem) | 700 | 1.00 | Large CTA labels |
-| Button | Pretendard | 16px (1.00rem) | 600 | 1.00 | Compact CTA labels |
+| Role | Size | Weight | Line height | Colour | Domain |
+|------|------|--------|-------------|--------|--------|
+| Product display | 72px | 700 | 86px | `#f3faff` | cashnote.kr hero |
+| Product section | 56px | 700 | 68px | `#192d82` | cashnote.kr |
+| Display | 52px | 700 | 66px | white | kcd.co.kr heroes |
+| Section | 46px | 700 | 62px | `#1e2137` | kcd.co.kr |
+| Product feature | 44px | 700 | 56px | `#192d82` | cashnote.kr |
+| Service lead | 44px | 300 | 54px | `#1e2137` | kcd.co.kr /service/ |
+| Card title | 22px | 600 | 32px | `#1e2137` / `#57a8ff` | kcd.co.kr |
+| Eyebrow | 18px | 600 | 28px | `#192d82` / `#57a8ff` | kcd.co.kr |
+| Menu | 18px | 700 | 18px | `#1e2137` / `#2d91ff` | kcd.co.kr |
+| Lead | 18px | 400 | 30px | `#1e2137` | kcd.co.kr |
+| Product button | 19px | 700 | 26px | `#2d91ff` | cashnote.kr |
+| Button | 16px | 700 | — | `#000000` / `#1e2137` | kcd.co.kr ghost |
+| Nav | 16px | 400 | 16px | white / `#2d91ff` | kcd.co.kr header |
+| Body | 16px | 400 | 26px | `#666666` | kcd.co.kr |
+| Caption | 14px | 400 | 24px | `#44546f` | footer |
+| Fine | 13px | 400 | 20px | `#728094` | footer |
 
 ### Principles
-- **One family, weight-driven hierarchy**: Pretendard carries everything; the jump from Bold (700) display to Regular (400) body is the primary hierarchy signal.
-- **Large product display**: the CashNote hero runs to 72px Bold — generous, declarative, mobile-first.
-- **SemiBold for UI density**: 600 is the working weight for stat titles and compact buttons; 700 for the large CTAs and corporate nav.
-- **Hangul-first sizing**: body sits at 16px / line-height 1.5 for comfortable hangul legibility in information-dense layouts.
+- **Bold display, light introductions.** Headlines run at 700; /service/ switches its long introductions to Pretendard 300.
+- **Eyebrow, heading, lead.** Each corporate section stacks an 18px/600 navy eyebrow, a 46px/700 heading and an 18px/400 lead with a 30px line.
 
 ## 4. Component Stylings
 
-### Buttons
+### Corporate buttons (kcd.co.kr)
 
-**Soft CTA (Primary)**
-- Background: `#f4f7f9`
-- Text: `#2d91ff`
-- Radius: 16px
-- Padding: 0px 16px
-- Height: 48px
-- Font: 19px Pretendard weight 700
-- Use: Primary soft call-to-action — "앱 다운로드", "캐시노트 시작하기" (blue label on grey fill)
+**Ghost Button**: transparent, 1px `#1e2137` outline, `#000000` label, 6px radius, 15px 32px padding, 51px tall (59px on /service/), 16px/700. Hover and pressed: `#192d82` fill, `#ffffff` label, `#192d82` border, after a 0.2s transition (probe). Use: 서비스 보기, 자세히 보기, 캐시노트 바로가기, Google Play, Apple Store.
 
-**Outline CTA**
-- Background: `#ffffff`
-- Text: `#2d91ff`
-- Border: 1px solid `#2d91ff`
-- Radius: 16px
-- Padding: 0px 24px
-- Height: 56px
-- Font: 19px Pretendard weight 600
-- Use: Secondary outline action — "캐시노트 컨설턴트"
+**Ghost Link**: the same shape as an anchor, label `#1e2137`, 48px tall; the same navy hover (probe). Use: 더보기.
 
-**Corporate Ghost**
-- Text: `#1e2137`
-- Border: 1px solid `#1e2137`
-- Radius: 6px
-- Padding: 15px 32px
-- Height: 51px
-- Font: 16px Pretendard weight 700
-- Use: Corporate-site ghost CTA — "서비스 보기", "자세히 보기"
+**Ghost Inverse**: `#ffffff` outline and label on dark bands (데이터 랩 바로가기, 인재영입 중); rest only.
 
-### Inputs
+**Entity Link**: `#2d91ff` at 18px/700 with an arrow icon; no hover change (probe). Use: 바로가기 on the KCD 공동체 cards.
 
-**Form / Search Field**
-- Background: `#f4f7f9`
-- Text: `#1e2137`
-- Border: 1px solid `#eeeeee`
-- Radius: 12px
-- Padding: 0px 16px
-- Focus: `#2d91ff`
-- Use: Form/search field following the surface-fill + hairline convention; faint blue-grey (`#a4aeba`) placeholder
+### Navigation & tabs (kcd.co.kr)
 
-### Cards & Containers
+**Header Item**: white at 16px/400 over the hero; the current page's item is `#2d91ff`.
 
-**Surface Card**
-- Background: `#f9fbfc`
-- Border: 1px solid `#f9fbfc`
-- Radius: 20px
-- Padding: 0px 24px
-- Use: Feature card on the light surface — flat, shadowless
+**Menu Item**: `#1e2137` at 18px/700, 25px bottom padding over a 1px `#d9d9d9` rule; the current section is `#2d91ff`.
 
-**Blue-Tinted Card**
-- Background: `#e2f3ff`
-- Text: `#192d82`
-- Radius: 20px
-- Use: Highlight card that uses blue tint instead of elevation
+**Leadership Tab**: 100px radius, padding 0 23px, 44px tall, 18px/500; unselected `#9f9f9f` label with a `#d9d9d9` border. Selected: `#ffffff` label with a `#192d82` border; its fill was not measurable, so it is not declared. No change on hover, pressed or focus (probe).
 
-### Badges
+**Service Chip**: `#192d82` outline and label, 100px radius, 3px 25px padding, 38px tall, 18px/400.
 
-**Stat Chip**
-- Background: `#e2f3ff`
-- Text: `#192d82`
-- Radius: 20px
-- Font: 16px Pretendard weight 600
-- Use: Metric / stat chip — "2026년 5월 기준", deep-navy label on a light blue tint
+**Carousel Arrow**: a 56 × 56 `#192d82` circle with a `#ffffff` arrow (/service/).
 
-### Navigation
-- Background: `#ffffff`
-- Text: `#1e2137`
-- Font: 18px Pretendard weight 700
-- Active: action blue `#2d91ff` text on active item
-- Use: Corporate top nav ("회사소개", "서비스", "팀 문화", "인재영입", "새 소식")
+### CashNote buttons (cashnote.kr)
+
+**Start Button**: `#f4f7f9` fill, `#2d91ff` label, 12px radius, padding 0 12px, 40px tall, 16px/600 (header).
+**Download Button**: `#f4f7f9` fill, `#2d91ff` label, 16px radius, padding 0 16px, 48px tall, 19px/700 (hero).
+**Footer Download**: `#f4f7f9` fill, `#2d91ff` label, 12px radius, 12px 28px padding, 40px tall.
+None changes on hover, pressed or focus (probe on the first two).
 
 ---
 
-**Verified:** 2026-06-26 (omd:add-reference CREATE — Tier 1 live inspect, 2 surfaces)
-**Tier 1 sources:** https://kcd.co.kr (corporate, live computed style); https://cashnote.kr (CashNote product, live computed style); https://blog.kcd.co.kr (official company blog); https://github.com/koreacreditdata (official GitHub org)
-**Tier 2 sources:** getdesign.md/kcd — SPA shell only, no KCD-specific data; styles.refero.design ?q=cashnote / ?q=korea credit — returns only the generic browse list (same UUIDs across unrelated queries), no genuine KCD entry
+**Verified:** 2026-09-30 (deterministic collector on three kcd.co.kr pages and cashnote.kr + fixed keyboard probe on three)
+**Tier 1 sources:** https://kcd.co.kr/ | https://kcd.co.kr/about/ | https://kcd.co.kr/service/ | https://cashnote.kr/
+**Tier 2 sources:** getdesign.md/kcd and styles.refero.design/?q=cashnote — no KCD or CashNote entry
 **Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px
-- Scale: 4px, 8px, 12px, 16px, 24px, 32px, 48px, 64px
-- Notable: large CTAs use generous horizontal padding (24–32px) and tall 48–56px hit areas for comfortable touch
+### Spacing
+- Ghost buttons 15px 32px; menu rows 25px bottom padding; leadership tabs 0 23px; service chips 3px 25px
+- CashNote soft buttons 0 12px (header), 0 16px (hero), 12px 28px (footer)
 
 ### Grid & Container
-- Centered single-column heroes with the large Bold Pretendard headline as the anchor
-- Stat/metric blocks arranged in a horizontal row of navy-titled figures
-- Feature sections alternate white (`#ffffff`) and pale surface (`#f9fbfc`) full-width bands
-- Cards use a 20px radius and group related features/metrics
-
-### Whitespace Philosophy
-- **Breathing room over density**: despite being a data-heavy fintech, the marketing surfaces are airy with generous vertical rhythm.
-- **Flat segmentation**: sections separate by background tint (`#f4f7f9` / `#f9fbfc`) and `#eeeeee` hairlines, not by shadow.
-- **Blue for emphasis, not depth**: highlights reach for `#e2f3ff` / `#cae7ff` tint rather than elevation.
+- kcd.co.kr: full-bleed hero image with a 52px white headline; sections of eyebrow, heading, lead and a ghost button at 1280px; a dark band for recruiting; a full-screen menu of 1380px rows
+- /about/: mission stories as expandable 620px rows; four KCD 공동체 cards with 바로가기 links; the leadership switch; the media kit
+- cashnote.kr: a blue hero band with the download button, then navy-headed feature sections and a closing download band
 
 ### Border Radius Scale
-- Small (6px): corporate ghost buttons
-- Medium (12px): compact buttons, inputs
-- Large (16px): product CTAs
-- XLarge (20px): cards — the workhorse
-- Full (9999px): pills, avatars
+- 6px ghost buttons · 12px CashNote header and footer buttons · 16px CashNote hero button · 100px tabs and chips · 50% carousel arrows
 
 ## 6. Depth & Elevation
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
-| Tint (Level 1) | `#f4f7f9` / `#f9fbfc` background shift | Card/section separation without elevation |
-| Hairline (Level 2) | `1px solid #eeeeee` border | Dividers, field outlines |
-| Accent (Level 3) | `#e2f3ff` / `#cae7ff` blue tint | Highlight cards, metric chips — emphasis via color |
+| Flat | No shadow | Recorded controls and text |
+| Rule | 1px `#d9d9d9` | Menu rows, tab outlines |
+| Fill on hover | `#192d82` | Ghost buttons |
 
-**Shadow Philosophy**: KCD is a near-shadowless system. Live inspection found `box-shadow: none` across the hero, nav, headings, buttons, and cards on both surfaces. Depth and grouping come entirely from flat tinted surfaces (`#f4f7f9`, `#f9fbfc`) and thin `#eeeeee` hairlines. When emphasis is needed the system reaches for color — the action blue (`#2d91ff`), the deep navy (`#192d82`), or a blue tint (`#e2f3ff` / `#cae7ff`) — never elevation. This keeps a money-handling product feeling clean, fast, and mobile-native rather than heavy.
+The supplementary survey read one soft shadow on /service/ and one on cashnote.kr, on elements the collector did not record. Their values are in `.verification.md`; no shadow token is declared.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Set everything in Pretendard — Bold (700) for display, Regular (400) for body
-- Reserve action blue (`#2d91ff`) for CTAs and key interactive text — keep it the single action color
-- Use the deeper blue (`#0257d7`) for pressed/active states
-- Use deep navy (`#192d82`) for product headings and corporate ink (`#1e2137`) for the company site
-- Separate sections with flat tints (`#f4f7f9` / `#f9fbfc`) and `#eeeeee` hairlines, not shadows
-- Highlight with blue tints (`#e2f3ff` / `#cae7ff`) instead of elevation
-- Use the soft-CTA pattern — blue label on a grey (`#f4f7f9`) fill at 16px radius
-- Round cards generously at 20px
+- Use `#2d91ff` for where-you-are on kcd.co.kr and for action labels on CashNote
+- Outline corporate actions in `#1e2137` and fill them `#192d82` on hover
+- Put CashNote actions on a `#f4f7f9` fill with a `#2d91ff` label
+- Stack eyebrow (`#192d82`, 18px/600), heading (46px/700) and lead (18px/400/30px)
+- Set text in Pretendard, and give buttons the family explicitly (the site's own buttons fall back to Arial)
 
 ### Don't
-- Use drop shadows for elevation — KCD is a flat, shadow-free system
-- Spread the action blue across many elements — it dilutes the single-action signal
-- Use pure black for text — reach for ink (`#1e2137`), deep navy (`#192d82`), or near-black (`#0c1120`)
-- Mix in a second saturated accent color — blue is the only hue
-- Set body text in Bold — Bold is for display and CTAs
-- Use a different font for headlines — Pretendard owns both display and body
-- Use sharp/square corners on cards — cards round at 20px
+- Don't mix the domains' button styles: ghost outlines belong to kcd.co.kr, soft grey buttons to CashNote
+- Don't fill corporate actions blue at rest; the site keeps blue for selection and links
+- Don't add drop shadows to controls
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses, stat rows stack |
-| Tablet | 640-1024px | Moderate padding, 2-up feature cards |
-| Desktop | 1024-1440px | Full layout, centered hero, multi-column feature bands |
+Only the 1440px desktop layout was captured; no breakpoint table is given.
 
-### Touch Targets
-- Soft CTA at 48px height, outline CTA at 56px — comfortably tappable
-- Corporate ghost button at 51px with 15px 32px padding
-- Nav links at 18px Bold with generous spacing
-
-### Collapsing Strategy
-- Hero: 72px Bold product headline scales down on mobile, weight 700 maintained
-- Stat row: horizontal figures wrap/stack on narrow viewports
-- Feature bands: multi-column → stacked single column
-- White / pale (`#f9fbfc`) alternating sections keep full-width treatment
-
-### Image Behavior
-- App screenshots and illustrations carry no shadow at any size, consistent with the flat system
-- Cards maintain the 20px radius across breakpoints
+### Touch Targets (measured at 1440px)
+- Ghost buttons 48–59px tall; menu rows 44px; leadership tabs 44px; CashNote buttons 40–48px; carousel arrows 56px
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary CTA / interactive: Action Blue (`#2d91ff`)
-- Pressed/active: Pressed Blue (`#0257d7`)
-- Product heading: Deep Navy (`#192d82`)
-- Corporate text/heading: Corporate Ink (`#1e2137`)
-- Max-contrast text: Ink Deep (`#0c1120`)
-- Body / muted / faint: `#44546f` → `#728094` → `#a4aeba`
-- Background: Pure White (`#ffffff`)
-- Surfaces: Grey (`#f4f7f9`), Alt (`#f9fbfc`)
-- Blue tints: `#e2f3ff`, `#cae7ff`, palest `#f3faff`
-- Hairline: `#eeeeee`
+- Primary (selected state, CashNote action label): `#2d91ff`
+- Navy (eyebrows, hover fill, CashNote headings): `#192d82`
+- Ink `#1e2137`; ghost label `#000000`; deep `#0c1120`
+- Text ladder: `#44546f`, `#666666`, `#728094`, `#9f9f9f`, `#a4aeba`
+- CashNote button fill `#f4f7f9`; hero text `#f3faff`; dark-band eyebrow `#57a8ff`; hairline `#d9d9d9`; white `#ffffff`
 
 ### Example Component Prompts
-- "Create a hero on white background. Headline at 72px Pretendard weight 700, color #192d82, '내 사업이 채워지는 모든 순간'. Soft CTA: #f4f7f9 background, #2d91ff text, 16px radius, 0 16px padding, 48px height, 19px Pretendard 700 — '앱 다운로드'. No shadow."
-- "Design a feature card: #f9fbfc background, 20px radius, no shadow, 0 24px padding. Title 44px Pretendard weight 700, #192d82. Body 16px Pretendard 400, #44546f."
-- "Build a stat chip: #e2f3ff background, #192d82 text, 20px radius, 16px Pretendard weight 600 — '2026년 5월 기준'."
-- "Create corporate nav: white header. 18px Pretendard 700 links, #1e2137 text, action blue #2d91ff on active. Ghost CTA: transparent, 1px solid #1e2137, 6px radius, 15px 32px padding — '서비스 보기'."
+- "Corporate section: 18px/600 eyebrow in #192d82, 46px/700 heading in #1e2137 with a 62px line, 18px/400 lead with a 30px line, then a ghost button: transparent, 1px #1e2137 border, 6px radius, 15px 32px padding, 16px/700 label; on hover fill #192d82 with a #ffffff label."
+- "CashNote header action: #f4f7f9 fill, #2d91ff label at 16px/600 Pretendard, 12px radius, 0 12px padding, 40px tall."
+- "Full-screen menu: 18px/700 Pretendard items in #1e2137 with 25px bottom padding over a 1px #d9d9d9 rule; the current section in #2d91ff."
 
 ### Iteration Guide
-1. Pretendard for everything; weight 700 display, 400 body
-2. Action blue (`#2d91ff`) is the single action color — don't spread it
-3. No shadows — separate with `#f4f7f9` / `#f9fbfc` tint and `#eeeeee` hairlines
-4. Blue tints (`#e2f3ff` / `#cae7ff`) for highlight, never elevation
-5. Headings are navy (`#192d82`) or ink (`#1e2137`), never pure black
-6. Cards round at 20px; product CTAs at 16px; corporate ghost at 6px
-7. Soft-CTA pattern is signature: blue label on grey fill
+1. Blue marks selection on kcd.co.kr and labels actions on CashNote
+2. Navy is the hover fill and the heading colour on CashNote
+3. Ghost 6px outlines for corporate; soft grey 12–16px buttons for CashNote
+4. Pretendard everywhere, set explicitly on buttons
 
 ---
 
 ## 10. Voice & Tone
 
-KCD's voice is **plain, empathetic, and reassuring** — a partner that speaks to small-business owners (사장님) in everyday Korean, not finance jargon. The corporate mission line "모든 과정이 쉬워지도록 돕습니다" ("We help make every step easier") and the product hero "내 사업이 채워지는 모든 순간" ("Every moment my business fills up") set the register: warm, ownership-centered, never hype. Copy frames the company as solving the small-business owner's real problems "데이터와 연결로" (with data and connection), and consistently starts from "공감" (empathy) toward the 사장님.
+KCD talks about owners' days, not about finance. The /about/ page opens with "사업의 모든 순간 — 더 쉽게, 더 빠르게, 더 똑똑하게" and states the mission as helping every stage of starting, running and growing a business get easier. Its mission stories are plain first-person beliefs: "우리는 사업의 모든 순간이 지금보다 더 쉬워질 수 있다고 믿습니다." CashNote's page title keeps the same register: "사장님의 모든 순간 캐시노트로 쉽고 빠르고 똑똑하게".
 
 | Context | Tone |
 |---|---|
-| Corporate mission | Calm, purpose-framed. "모든 과정이 쉬워지도록 돕습니다." |
-| Product hero | Ownership-centered, warm. "내 사업이 채워지는 모든 순간." |
-| Feature copy | Benefit-first, plain Korean. "매출을 확인하고 관리하는 모든 순간." |
-| CTAs | Direct, low-pressure. "캐시노트 시작하기", "앱 다운로드", "자세히 보기". |
-| Trust / scale copy | Concrete, dated. "2026년 5월 기준" beside real metrics, not vague claims. |
+| Mission | Calm, first-person beliefs ("우리는 … 믿습니다") |
+| Origin | A real owner's question: "그래서 오늘 통장에 돈이 얼마 들어올까?" |
+| Group | Descriptive, one line per company (KCS, KPN, IMU, KMX, BOTTLED) |
+| Actions | Short and direct: 서비스 보기, 자세히 보기, 더보기, 캐시노트 시작하기, 앱 다운로드 |
 
-**Voice samples (verbatim from live surfaces):**
-- "모든 과정이 쉬워지도록 돕습니다" — corporate hero (mission). *(verified live 2026-06-26, kcd.co.kr)*
-- "사업의 모든 순간 마주하는 문제를 데이터와 연결로 풀어내고자 합니다." — corporate statement. *(verified live 2026-06-26, kcd.co.kr)*
-- "모든 고민은 사장님에 대한 공감에서 시작합니다." — corporate statement (empathy-first). *(verified live 2026-06-26, kcd.co.kr)*
-- "내 사업이 채워지는 모든 순간" — CashNote product hero. *(verified live 2026-06-26, cashnote.kr)*
-
-**Forbidden register**: aggressive sales urgency, undefined financial jargon left unexplained, fear-based pitching, exclamation-heavy hype, anything that talks down to a 사장님.
+**Forbidden register:** sales urgency, unexplained financial jargon, fear-based pitching, talking down to 사장님.
 
 ## 11. Brand Narrative
 
-Korea Credit Data (한국신용데이터) was founded in **2016** by **김동호 (Kim Dong-ho, CEO)** to solve a structural gap in Korea's small-business economy: the country's millions of independent shop owners generated rich commercial data — card sales, settlements, cash flow — but had no simple way to see or use it. Kim, who had previously founded the survey company 아이디인큐 (now 오픈서베이), built KCD around a single conviction stated on its site: that "누구나 기술 혜택을 누릴 수 있는 세상" (a world where anyone can enjoy the benefits of technology) should include the corner-store owner, not just large enterprises.
+The /about/ page argues that owners miss decisions because the information they need never reaches them. It names how to manage cash flow, how to win regulars, where to borrow more cheaply and which government support applies. KCD answers in three beliefs, each on its own row: every moment of a business can be easier; every owner should get the right information at the right time; and owners need a trustworthy data and business ecosystem, built with partners vetted to a high standard.
 
-The company's flagship product, **캐시노트 (CashNote)**, launched in 2017 as a business-management service delivered first through KakaoTalk: a sole proprietor could see consolidated card-sales and settlement data without installing complex accounting software. CashNote grew into one of Korea's most widely used SME platforms — the homepage frames it as serving "사업자 경영관리" across "관리 거래액" and a large base of "캐시노트 이용 사업장" — expanding from sales tracking into payments, supplies purchasing, lending/credit, and consultant services, all under the "사업의 모든 순간" (every moment of business) framing.
-
-What KCD refuses, visible in its design: the heavy, intimidating chrome of legacy financial software (no shadow-stacked enterprise dashboards), and the dark-pattern urgency of consumer fintech marketing. What it embraces: a flat, fast, mobile-native interface; a single trustworthy action blue; large plain-Korean headlines; and an empathy-first stance toward the 사장님 it explicitly names as the starting point for every product decision.
+CashNote was the first answer. In 2017 it launched as a KakaoTalk chatbot that told owners what would land in their account that day. The group grew around it: a credit bureau (KCS, licensed for sole-proprietor credit in July 2022), payments (KPN), POS (IMU), owner support (KMX), and a working store (BOTTLED) where every employee goes through a "사장님 되어보기" onboarding. CTO 임정기, formerly of 우아한형제들, 쿠팡 and 네이버, has led technology since September 2022. 김동호 was named a World Economic Forum Young Global Leader in 2025. The home page's news list carries the current framing, for example "AI 승부는 모델보다 데이터… 220만 자영업 고객이 경쟁력" (매일경제). Headquarters: 서울특별시 강남구 테헤란로 127.
 
 ## 12. Principles
 
-1. **Empathy for the 사장님 first.** KCD states that every concern "begins from empathy for the business owner." *UI implication:* lead with the owner's real moment and plain language; never with the product's feature list or jargon.
-2. **Data and connection, made simple.** The mission is to resolve business problems "데이터와 연결로." *UI implication:* surface consolidated numbers clearly (dated metrics, navy stat labels) and hide the underlying complexity.
-3. **One action, one color.** Action blue (`#2d91ff`) means "do this." *UI implication:* reserve the saturated blue for CTAs and key interactive text so the next step is never ambiguous.
-4. **Flat and fast.** Mobile-native clarity beats decorative depth. *UI implication:* no shadows; separate with tint and hairlines; reach for blue tint, not elevation, to emphasize.
-5. **Tech benefits for everyone.** "누구나 기술 혜택을 누릴 수 있는 세상." *UI implication:* keep targets large, copy plain, and the interface approachable to a non-technical owner.
+1. **Start from the owner's question.** *UI implication:* lead with the number or answer an owner wants today.
+2. **Make every step easier.** *UI implication:* one quiet action per section; large, plain headings.
+3. **Blue shows where you are.** *UI implication:* keep `#2d91ff` for selection and product actions, not decoration.
+4. **Trust through restraint.** *UI implication:* ink outlines, navy hover, no shadows.
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable KCD / CashNote user segments (Korean small-business owners, sole proprietors,店 operators), not individual people.*
+*Fictional archetypes informed by the owners KCD serves; not real people.*
 
-**박은정, 47, 대구.** Runs a neighborhood bakery. Uses CashNote to see consolidated card sales each morning without opening a spreadsheet. Trusts the product because it speaks plain Korean and never pressures her to buy more.
+**박은정, 47, 대구.** Runs a neighbourhood bakery and checks yesterday's card sales in CashNote each morning.
 
-**김상호, 39, 인천.** A first-time restaurant owner preparing to open. Uses the 창업 준비 flow and consultant entry to understand settlements before launch. Values that the interface feels calm, not like enterprise accounting software.
+**김상호, 39, 인천.** Preparing to open a restaurant; wants to understand settlements before launch.
 
-**이지연, 52, 부산.** Operates two retail shops. Relies on CashNote for payments and supplies purchasing in one place, and reads the dated metrics ("2026년 5월 기준") as a sign the numbers are real and current.
+**이지연, 52, 부산.** Runs two shops and handles payments and supplies from one place.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (no sales data yet)** | White canvas. Single deep-navy (`#192d82`) line explaining no data has synced yet, with one action-blue CTA to connect a source. No illustration clutter. |
-| **Empty (saved/bookmarked, none yet)** | Muted slate (`#728094`) single line: nothing saved yet, plus a path back. Honest, calm. |
-| **Loading (metrics fetch)** | Skeleton blocks on `#f4f7f9` surface at final card dimensions, 20px radius. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
-| **Loading (in-place refresh)** | Subtle action-blue (`#2d91ff`) progress indicator; previous values stay visible. |
-| **Error (sync failed)** | Inline message in corporate ink (`#1e2137`) with a plain-language explanation and a retry. No bare "오류가 발생했습니다" — states what to do next. |
-| **Error (form validation)** | Field-level message below the input; describes what is valid, not just "필수". |
-| **Success (action complete)** | Brief inline confirmation in calm tone; next-step detail linked below. No celebratory emoji. |
-| **Skeleton** | `#f4f7f9` / `#f9fbfc` blocks at final dimensions, 20px radius, flat pulse. |
-| **Disabled** | Faint blue-grey (`#a4aeba`) text on reduced-opacity surface; blue actions fade rather than turn grey to preserve brand read. |
+Observed only:
+- **Hover / pressed:** ghost button and ghost link fill `#192d82` with a `#ffffff` label; the entity link, leadership tabs and CashNote buttons show no change.
+- **Selected:** `#2d91ff` on the current header item and menu section; the leadership tab's `#ffffff` label and `#192d82` border.
+- **Focus:** no authored focus style. 더보기 and 바로가기 draw only the browser's default ring.
+
+Empty, loading, error and success states belong to the CashNote app, which was not captured.
 
 ## 15. Motion & Easing
 
-**Durations**:
+Measured transitions only:
+- `all 0.2s ease` on the ghost buttons and ghost link (hover fill)
+- `all 0s ease 0.2s` on the selected leadership tab
+- `transform 0.5s, height 0.2s` on a 40 × 40 icon button present on every corporate page
+- `opacity 1s, transform 1s` fade-up on CashNote's consultant button and `0.3s` on CashNote links, from the supplementary survey
+- `all 0s` on the CashNote soft buttons
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, focus |
-| `motion-standard` | 200ms | Card/section reveal, sheet, dropdown |
-| `motion-slow` | 320ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sheets, cards, chips |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and quiet — consistent with the flat, fast aesthetic. Buttons respond to press with a subtle scale/opacity shift; cards and metrics fade-in from below at `motion-standard / ease-enter`. No bounce or spring — a money-handling product for shop owners signals steadiness, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
+No durations or easings beyond these are declared.
 
 <!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-26) via playwright getComputedStyle on https://kcd.co.kr and https://cashnote.kr:
-- Corporate hero H2 "모든 과정이 쉬워지도록 돕습니다" — Pretendard 52px / 700 / white
-- Corporate H3 "사업의 모든 순간 마주하는 문제를 데이터와 연결로 풀어내고자 합니다." — Pretendard 46px / 700 / rgb(30,33,55) #1e2137
-- Corporate H3 "모든 고민은 사장님에 대한 공감에서 시작합니다." — 46px / 700
-- CashNote hero H2 "내 사업이 채워지는 모든 순간" — Pretendard 72px / 700 / rgb(25,45,130) #192d82
-- CashNote section "창업을 준비하는 사장님들을 위한 첫걸음" — 56px / 700 / #192d82
-- Action blue #2d91ff (rgb 45,145,255) confirmed across both surfaces (CTA text + fills)
-- box-shadow: none across hero/nav/headings/buttons/cards (shadowless system)
-
-Voice samples (§10) are verbatim from the live corporate (kcd.co.kr) and product (cashnote.kr) surfaces.
-
-Brand narrative (§11): KCD (한국신용데이터) founded 2016 by 김동호 (Kim Dong-ho); CashNote (캐시노트)
-launched 2017 as a KakaoTalk-delivered SME business-management service. These are widely
-documented public facts about the company; specific founding details beyond the live homepage
-mission text are general public knowledge, not directly quoted from a verified KCD statement
-in this turn. Mission phrases ("누구나 기술 혜택을 누릴 수 있는 세상", "사업의 모든 순간",
-"공감") are verbatim from the live homepage.
-
-Personas (§13) are fictional archetypes informed by publicly observable KCD/CashNote user
-segments (Korean small-business owners). Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "one action, one color", "flat and fast as a rejection of legacy
-financial software chrome") are editorial readings connecting KCD's observed design to its
-stated positioning, not directly sourced KCD statements.
+Sources (2026-09-30): artifacts/reference-evidence/kcd.json (capturedAt 2026-09-30T11:08:27.287Z, four surfaces,
+coverage 66); docs/research/2026-09-29-growth/raw/kcd-states-home.json, kcd-states-about.json,
+kcd-states-cashnote.json (fixed keyboard probe). Narrative from kcd.co.kr/about/ (mission, 지나온 길,
+KCD 공동체, leadership, media kit, footer) and kcd.co.kr/service/. Personas are fictional. Details in .verification.md.
 -->

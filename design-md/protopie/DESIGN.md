@@ -9,50 +9,264 @@ primary_color: "#8169ff"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=protopie.io&sz=128"
-verified: "2026-07-02"
+verified: "2026-09-30"
 added: "2026-07-02"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://www.protopie.io/", inspected: "2026-09-30" }
+    - { id: surface-2, kind: marketing, url: "https://www.protopie.io/discover", inspected: "2026-09-30" }
+    - { id: surface-3, kind: marketing, url: "https://www.protopie.io/plans", inspected: "2026-09-30" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://www.protopie.io/", captured: "2026-09-30" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://www.protopie.io/discover", captured: "2026-09-30" }
+    - { id: surface-surface-3, kind: product-surface, url: "https://www.protopie.io/plans", captured: "2026-09-30" }
+    - { id: protopie-probe-home, kind: product-surface, url: "https://www.protopie.io/", captured: "2026-09-30" }
+    - { id: protopie-probe-plans, kind: product-surface, url: "https://www.protopie.io/plans", captured: "2026-09-30" }
+    - { id: protopie-ko, kind: official-doc, url: "https://www.protopie.io/ko/", captured: "2026-09-30" }
+    - { id: protopie-legal, kind: official-doc, url: "https://www.protopie.io/legal", captured: "2026-09-30" }
+    - { id: figtree-license, kind: license, url: "https://raw.githubusercontent.com/google/fonts/main/ofl/figtree/OFL.txt", captured: "2026-09-30" }
+    - { id: inter-license, kind: license, url: "https://raw.githubusercontent.com/rsms/inter/master/LICENSE.txt", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &cta { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"8\"]", captured: "2026-09-30" }
+    "tokens.colors.on-primary": *cta
+    "tokens.colors.primary-hover": &ctastate { surface_id: home, source_id: protopie-probe-home, method: live-state-probe, selector: "a Get started for free (198 x 53.2, rest bg rgb(129, 105, 255)): hover and pressed bg -> rgb(91, 62, 224); transition all 0s; focus (Tab #6) browser default ring rgb(0, 95, 204) auto 1px only", captured: "2026-09-30" }
+    "tokens.colors.annotation": &note { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.ink": &hero { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h1", captured: "2026-09-30" }
+    "tokens.colors.body": &discoverlead { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.colors.muted": &carddesc { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.faint": &faint { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.surface": &protocard { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"10\"]", captured: "2026-09-30" }
+    "tokens.colors.white": &body { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
+    "tokens.typography.family.display": *hero
+    "tokens.typography.family.body": &lead { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.family.annotation": *note
+    "tokens.typography.display-hero.size": *hero
+    "tokens.typography.display-hero.weight": *hero
+    "tokens.typography.display-hero.lineHeight": *hero
+    "tokens.typography.display-hero.use": *hero
+    "tokens.typography.section.size": &h2 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
+    "tokens.typography.section.weight": *h2
+    "tokens.typography.section.lineHeight": *h2
+    "tokens.typography.section.use": *h2
+    "tokens.typography.subsection.size": &h3 { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h3", captured: "2026-09-30" }
+    "tokens.typography.subsection.weight": *h3
+    "tokens.typography.subsection.lineHeight": *h3
+    "tokens.typography.subsection.use": *h3
+    "tokens.typography.card-title.size": &h4 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h4", captured: "2026-09-30" }
+    "tokens.typography.card-title.weight": *h4
+    "tokens.typography.card-title.lineHeight": *h4
+    "tokens.typography.card-title.use": *h4
+    "tokens.typography.plan-title.size": &plantitle { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::p", captured: "2026-09-30" }
+    "tokens.typography.plan-title.weight": *plantitle
+    "tokens.typography.plan-title.lineHeight": *plantitle
+    "tokens.typography.plan-title.use": *plantitle
+    "tokens.typography.lead.size": *lead
+    "tokens.typography.lead.weight": *lead
+    "tokens.typography.lead.lineHeight": *lead
+    "tokens.typography.lead.use": *lead
+    "tokens.typography.nav.size": &navlabel { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.nav.weight": *navlabel
+    "tokens.typography.nav.lineHeight": *navlabel
+    "tokens.typography.nav.use": *navlabel
+    "tokens.typography.button-lg.size": &btnlg { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.button-lg.weight": *btnlg
+    "tokens.typography.button-lg.lineHeight": *btnlg
+    "tokens.typography.button-lg.use": *btnlg
+    "tokens.typography.button.size": &btn { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.button.weight": *btn
+    "tokens.typography.button.lineHeight": *btn
+    "tokens.typography.button.use": *btn
+    "tokens.typography.button-sm.size": &btnsm { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.button-sm.weight": *btnsm
+    "tokens.typography.button-sm.lineHeight": *btnsm
+    "tokens.typography.button-sm.use": *btnsm
+    "tokens.typography.body.size": *carddesc
+    "tokens.typography.body.weight": *carddesc
+    "tokens.typography.body.lineHeight": *carddesc
+    "tokens.typography.body.use": *carddesc
+    "tokens.typography.body-sm.size": &small { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.body-sm.weight": *small
+    "tokens.typography.body-sm.lineHeight": *small
+    "tokens.typography.body-sm.use": *small
+    "tokens.typography.caption.size": &tag { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.typography.caption.weight": *tag
+    "tokens.typography.caption.lineHeight": *tag
+    "tokens.typography.caption.use": *tag
+    "tokens.typography.eyebrow.size": &eyebrow { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.eyebrow.weight": *eyebrow
+    "tokens.typography.eyebrow.lineHeight": *eyebrow
+    "tokens.typography.eyebrow.tracking": *eyebrow
+    "tokens.typography.eyebrow.use": *eyebrow
+    "tokens.typography.annotation.size": *note
+    "tokens.typography.annotation.weight": *note
+    "tokens.typography.annotation.lineHeight": *note
+    "tokens.typography.annotation.tracking": *note
+    "tokens.typography.annotation.use": *note
+    "tokens.spacing.cta-y": *cta
+    "tokens.spacing.cta-x": *cta
+    "tokens.spacing.header-cta-y": &header { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"7\"]", captured: "2026-09-30" }
+    "tokens.spacing.sm-y": &smallbtn { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-09-30" }
+    "tokens.spacing.nav-y": &nav { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-09-30" }
+    "tokens.spacing.nav-x": *nav
+    "tokens.spacing.card-y": *protocard
+    "tokens.spacing.card-x": *protocard
+    "tokens.rounded.button": *cta
+    "tokens.rounded.card": &rescard { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"23\"]", captured: "2026-09-30" }
+    "tokens.rounded.panel": *protocard
+    "tokens.rounded.chip": &chipstate { surface_id: surface-3, source_id: protopie-probe-plans, method: live-state-probe, selector: "div All feature filter (68.6 x 44, selected): rest bg rgb(129, 105, 255), radius 100px, padding 10px 24px, ::after border 1px solid rgb(129, 105, 255); hover and pressed no change. div Essentials (127.9 x 44): rest bg rgb(255, 255, 255); hover and pressed opacity 1 -> 0.8; focus browser default ring only on both", captured: "2026-09-30" }
+    "tokens.components.primary-button.type": *cta
+    "tokens.components.primary-button.bg": *cta
+    "tokens.components.primary-button.fg": *cta
+    "tokens.components.primary-button.radius": *cta
+    "tokens.components.primary-button.padding": *cta
+    "tokens.components.primary-button.height": *cta
+    "tokens.components.primary-button.font": *btnlg
+    "tokens.components.primary-button.hover": *ctastate
+    "tokens.components.primary-button.pressed": *ctastate
+    "tokens.components.primary-button.states": *ctastate
+    "tokens.components.primary-button.use": *cta
+    "tokens.components.header-button.type": *header
+    "tokens.components.header-button.bg": *header
+    "tokens.components.header-button.fg": *header
+    "tokens.components.header-button.radius": *header
+    "tokens.components.header-button.padding": *header
+    "tokens.components.header-button.height": *header
+    "tokens.components.header-button.font": *btn
+    "tokens.components.header-button.hover": &demostate { surface_id: home, source_id: protopie-probe-home, method: live-state-probe, selector: "a Book a Demo in the header (133.6 x 40, rest bg rgb(129, 105, 255)): hover and pressed bg -> rgb(91, 62, 224); transition all 0s; focus (Tab #5) browser default ring only", captured: "2026-09-30" }
+    "tokens.components.header-button.pressed": *demostate
+    "tokens.components.header-button.states": *demostate
+    "tokens.components.header-button.use": *header
+    "tokens.components.small-button.type": *smallbtn
+    "tokens.components.small-button.bg": *smallbtn
+    "tokens.components.small-button.fg": *smallbtn
+    "tokens.components.small-button.radius": *smallbtn
+    "tokens.components.small-button.padding": *smallbtn
+    "tokens.components.small-button.height": *smallbtn
+    "tokens.components.small-button.font": *btnsm
+    "tokens.components.small-button.states": *smallbtn
+    "tokens.components.small-button.use": *smallbtn
+    "tokens.components.text-button.type": &startfree { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-09-30" }
+    "tokens.components.text-button.bg": *startfree
+    "tokens.components.text-button.fg": *startfree
+    "tokens.components.text-button.radius": *startfree
+    "tokens.components.text-button.height": *startfree
+    "tokens.components.text-button.font": *btn
+    "tokens.components.text-button.hover": &startstate { surface_id: home, source_id: protopie-probe-home, method: live-state-probe, selector: "a Start for Free in the header (101.6 x 40, transparent): hover and pressed label rgb(129, 105, 255) -> rgb(91, 62, 224); transition all 0s; focus (Tab #4) browser default ring only", captured: "2026-09-30" }
+    "tokens.components.text-button.pressed": *startstate
+    "tokens.components.text-button.states": *startstate
+    "tokens.components.text-button.use": *startfree
+    "tokens.components.ghost-button.type": &ghost { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"19\"]", captured: "2026-09-30" }
+    "tokens.components.ghost-button.bg": *ghost
+    "tokens.components.ghost-button.fg": *ghost
+    "tokens.components.ghost-button.radius": *ghost
+    "tokens.components.ghost-button.padding": *ghost
+    "tokens.components.ghost-button.height": *ghost
+    "tokens.components.ghost-button.font": &ghostlabel { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.components.ghost-button.hover": &ghoststate { surface_id: surface-3, source_id: protopie-probe-plans, method: live-state-probe, selector: "a Get Started on the Free plan card (268 x 53.2, rest bg rgba(123, 99, 255, 0)): hover and pressed bg -> rgb(129, 105, 255), label rgb(129, 105, 255) -> rgb(255, 255, 255); transition all 0s; focus browser default ring only", captured: "2026-09-30" }
+    "tokens.components.ghost-button.pressed": *ghoststate
+    "tokens.components.ghost-button.states": *ghoststate
+    "tokens.components.ghost-button.use": *ghost
+    "tokens.components.white-button.type": &whitebtn { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"10\"]", captured: "2026-09-30" }
+    "tokens.components.white-button.bg": *whitebtn
+    "tokens.components.white-button.fg": *whitebtn
+    "tokens.components.white-button.radius": *whitebtn
+    "tokens.components.white-button.padding": *whitebtn
+    "tokens.components.white-button.height": *whitebtn
+    "tokens.components.white-button.hover": &whitestate { surface_id: surface-3, source_id: protopie-probe-plans, method: live-state-probe, selector: "a Learn More on a plan card (268 x 53.2, rest bg rgb(255, 255, 255)): hover and pressed label rgb(129, 105, 255) -> rgb(91, 62, 224); transition all 0s; focus browser default ring only", captured: "2026-09-30" }
+    "tokens.components.white-button.pressed": *whitestate
+    "tokens.components.white-button.states": *whitestate
+    "tokens.components.white-button.use": *whitebtn
+    "tokens.components.nav-item.type": *nav
+    "tokens.components.nav-item.fg": *navlabel
+    "tokens.components.nav-item.padding": *nav
+    "tokens.components.nav-item.height": *nav
+    "tokens.components.nav-item.font": *navlabel
+    "tokens.components.nav-item.hover": &navstate { surface_id: home, source_id: protopie-probe-home, method: live-state-probe, selector: "a Pricing in the header nav (101.5 x 60): hover and pressed label rgb(24, 24, 24) -> rgb(91, 62, 224); transition all 0s; focus (Tab #2) browser default ring only", captured: "2026-09-30" }
+    "tokens.components.nav-item.pressed": *navstate
+    "tokens.components.nav-item.states": *navstate
+    "tokens.components.nav-item.use": *nav
+    "tokens.components.industry-tab.type": &tabstate { surface_id: home, source_id: protopie-probe-home, method: live-state-probe, selector: "div Automotive industry tab (106 x 81, selected): rest bg rgb(129, 105, 255), hover and pressed no change. div Website (106 x 81): rest bg rgba(122, 100, 255, 0.35), hover and pressed -> rgba(122, 100, 255, 0.5); transition all 0s; focus (Tabs #11, #12) browser default ring only", captured: "2026-09-30" }
+    "tokens.components.industry-tab.bg": *tabstate
+    "tokens.components.industry-tab.radius": *tabstate
+    "tokens.components.industry-tab.size": *tabstate
+    "tokens.components.industry-tab.selected": *tabstate
+    "tokens.components.industry-tab.hover": *tabstate
+    "tokens.components.industry-tab.pressed": *tabstate
+    "tokens.components.industry-tab.states": *tabstate
+    "tokens.components.industry-tab.use": *tabstate
+    "tokens.components.filter-chip.type": *chipstate
+    "tokens.components.filter-chip.bg": *chipstate
+    "tokens.components.filter-chip.radius": *chipstate
+    "tokens.components.filter-chip.padding": *chipstate
+    "tokens.components.filter-chip.height": *chipstate
+    "tokens.components.filter-chip.selected": *chipstate
+    "tokens.components.filter-chip.hover": *chipstate
+    "tokens.components.filter-chip.pressed": *chipstate
+    "tokens.components.filter-chip.states": *chipstate
+    "tokens.components.filter-chip.use": *chipstate
+    "tokens.components.resource-card.type": *rescard
+    "tokens.components.resource-card.bg": *rescard
+    "tokens.components.resource-card.fg": *rescard
+    "tokens.components.resource-card.radius": *rescard
+    "tokens.components.resource-card.shadow": *rescard
+    "tokens.components.resource-card.size": *rescard
+    "tokens.components.resource-card.hover": &resstate { surface_id: home, source_id: protopie-probe-home, method: live-state-probe, selector: "a ProtoPie School resource card (384 x 385.8): hover shadow rgba(0, 0, 0, 0.08) 0px 3px 12px 0px, rgba(0, 0, 0, 0.2) 0px 0px 2px 0px -> rgba(0, 0, 0, 0.08) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 0px 6px 3px; transition all 0s", captured: "2026-09-30" }
+    "tokens.components.resource-card.use": *rescard
+    "tokens.components.prototype-card.type": *protocard
+    "tokens.components.prototype-card.bg": *protocard
+    "tokens.components.prototype-card.radius": *protocard
+    "tokens.components.prototype-card.padding": *protocard
+    "tokens.components.prototype-card.size": *protocard
+    "tokens.components.prototype-card.use": *protocard
 tokens:
-  source: live-extract
-  extracted: "2026-07-02"
-  note: "primary = live CTA violet (#8169ff, 12–19× bg freq); deeper emphasis violet (#6d4ff0) appears on animated hero words and inline links; near-black ink (#181818) for headings; dark section band (#1a1935). Framer marketing site — button/nav text color reads UA-default on the anchor, so brand colors were taken from the bg/fg frequency scan + display nodes."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
     primary: "#8169ff"
-    primary-deep: "#6d4ff0"
-    primary-soft: "#ab9eff"
-    primary-tint: "#e3deff"
+    on-primary: "#ffffff"
+    primary-hover: "#5b3ee0"
+    annotation: "#6d4ff0"
     ink: "#181818"
     body: "#373737"
-    muted: "#636363"
-    muted-alt: "#474747"
+    muted: "#474747"
     faint: "#999999"
-    dark: "#1a1935"
-    canvas: "#ffffff"
     surface: "#fafafa"
-    hairline: "#e9e9e9"
-    on-primary: "#ffffff"
+    white: "#ffffff"
   typography:
-    family: { display: "Gilroy", body: "Inter" }
-    display-hero: { size: 62, weight: 700, lineHeight: 1.29, use: "Hero H1, Gilroy Bold" }
-    section:      { size: 48, weight: 700, lineHeight: 1.30, use: "Section titles H2, Gilroy Bold" }
-    subsection:   { size: 36, weight: 700, lineHeight: 1.40, use: "Card / blog heads H3, Gilroy Bold" }
-    caption:      { size: 16, weight: 400, lineHeight: 1.50, use: "Captions, eyebrow labels, Inter" }
-    body:         { size: 14, weight: 400, lineHeight: 1.40, use: "Body & UI text, footer/industry links, Inter" }
-    nav:          { size: 12, weight: 400, lineHeight: 1.00, use: "Nav items and button labels" }
-  spacing: { xs: 4, sm: 6, base: 12, md: 16, lg: 20, xl: 24, xxl: 48 }
-  rounded: { sm: 4, md: 12, full: 9999 }
-  shadow:
-    none: "none"
-    card: "rgba(0,0,0,0.08) 0px 3px 12px 0px"
+    family: { display: "Figtree", body: "Inter", annotation: "Palmer Lake Print Regular" }
+    display-hero: { size: 62, weight: 700, lineHeight: 1.29, use: "Hero headline on home and /discover, Figtree, 80px line, in #181818" }
+    section: { size: 48, weight: 700, lineHeight: 1.3, use: "Section headlines on home and /discover, Figtree, 62.4px line, in #181818" }
+    subsection: { size: 36, weight: 700, lineHeight: 1.4, use: "Plan names and comparison headings on /plans, Figtree, 50.4px line, in #181818" }
+    card-title: { size: 28, weight: 700, lineHeight: 1.4, use: "Resource card and feature headings, Figtree, 39.2px line, in #181818 (white on the dark band)" }
+    plan-title: { size: 24, weight: 700, lineHeight: 1.4, use: "Violet plan headers (#8169ff) and ink comparison-row titles on /plans, Figtree, 33.6px line" }
+    lead: { size: 24, weight: 400, lineHeight: 1.4, use: "Hero lead on home (#181818) and /discover (#373737), Inter, 33.6px line" }
+    nav: { size: 16, weight: 700, lineHeight: 1.4, use: "Header navigation labels (Solutions, Resources, Features, Pricing, Download), Figtree, 22.4px line, in #181818" }
+    button-lg: { size: 18, weight: 600, lineHeight: 1.4, use: "Labels of the 53px buttons (Get started for free, Read Comparison), Inter, 25.2px line" }
+    button: { size: 16, weight: 600, lineHeight: 1.4, use: "Header button labels (Book a Demo, Start for Free) and inline links, Inter, 22.4px line" }
+    button-sm: { size: 14, weight: 600, lineHeight: 1.4, use: "Labels of the 32px buttons (Learn More, Request Demo), Inter, 19.6px line" }
+    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Resource card descriptions and feature copy, Inter, 24px line, in #474747" }
+    body-sm: { size: 14, weight: 400, lineHeight: 1.4, use: "Footer text, Inter, 19.6px line, in #373737" }
+    caption: { size: 12, weight: 600, lineHeight: 1.4, use: "Prototype tags on /discover, Inter, 16.8px line, in #474747" }
+    eyebrow: { size: 11, weight: 700, lineHeight: 1.2, tracking: -0.11, use: "Industry tab labels on the dark band, Figtree, 13.2px line, in #ffffff" }
+    annotation: { size: 48, weight: 400, lineHeight: 0.79, tracking: 0.48, use: "Handwritten annotations beside the feature rows on home, Palmer Lake Print Regular, 38px line, in #6d4ff0" }
+  spacing: { cta-y: 14, cta-x: 16, header-cta-y: 12, sm-y: 6, nav-y: 4, nav-x: 20, card-y: 25, card-x: 30 }
+  rounded: { button: 4, card: 12, panel: 16, chip: 100 }
   components:
-    button-primary: { type: button, bg: "#8169ff", fg: "#ffffff", radius: "4px", padding: "14px 16px", font: "12px / 400", use: "Primary CTA — Get started for free, Book a Demo, Request Demo" }
-    button-ghost: { type: button, fg: "#8169ff", radius: "4px", padding: "6px 16px", font: "12px / 400", use: "Secondary text CTA — Learn More, Start for Free (transparent bg)" }
-    nav-link: { type: tab, fg: "#181818", font: "12px / 400", use: "Top nav item — Solutions/Features/Pricing", active: "text #6d4ff0" }
-    card-resource: { type: card, bg: "#ffffff", radius: "12px", shadow: "rgba(0,0,0,0.08) 0px 3px 12px", use: "Floating resource card — School / Community / Blog" }
-    card-tint: { type: card, bg: "#e3deff", fg: "#181818", radius: "12px", use: "Light-purple feature / highlight card" }
-    badge-soft: { type: badge, bg: "#e3deff", fg: "#6d4ff0", radius: "4px", padding: "4px 8px", font: "12px / 400", use: "Blog category tag / soft emphasis pill" }
-    input-text: { type: input, bg: "#ffffff", border: "1px solid #e9e9e9", fg: "#181818", radius: "4px", use: "Text field / search, focus ring #8169ff, placeholder #999999" }
-    footer-link: { type: listItem, fg: "#636363", font: "14px / 400 Inter", use: "Footer / industry navigation link" }
+    primary-button: { type: button, bg: "#8169ff", fg: "#ffffff", radius: "4px", padding: "14px 16px", height: "53px", font: "18px / 600 / 25.2px Inter", hover: "bg #5b3ee0", pressed: "bg #5b3ee0", states: "probe: hover and pressed settle on #5b3ee0 (transition all 0s) on Get started for free and Subscribe Now; focus draws only the browser default ring", use: "Get started for free in the home hero (198 x 53), Read Comparison, Explore Gallery, Get Started for Free on /discover and Subscribe Now on /plans" }
+    header-button: { type: button, bg: "#8169ff", fg: "#ffffff", radius: "4px", padding: "12px 16px", height: "40px", font: "16px / 600 / 22.4px Inter", hover: "bg #5b3ee0", pressed: "bg #5b3ee0", states: "probe: hover and pressed settle on #5b3ee0; focus (Tab #5) draws only the browser default ring", use: "Book a Demo at the right end of the header on all three pages (134 x 40); View All Features and Get Started (46px) share the 12px 16px padding" }
+    small-button: { type: button, bg: "#8169ff", fg: "#ffffff", radius: "4px", padding: "6px 16px", height: "32px", font: "14px / 600 / 19.6px Inter", states: "rest only: this size was not probed, and its bundle frames (#7f66fd, #8068fe) are Framer transition frames, so no hover or pressed value is declared", use: "Request Demo on the dark industry band of home; Get Started, Subscribe and Chat with Us under the /plans comparison" }
+    text-button: { type: button, bg: "transparent", fg: "#8169ff", radius: "4px", height: "40px", font: "16px / 600 / 22.4px Inter", hover: "label #5b3ee0", pressed: "label #5b3ee0", states: "probe: the label settles on #5b3ee0; focus (Tab #4) draws only the browser default ring", use: "Start for Free beside Book a Demo in the header (102 x 40)" }
+    ghost-button: { type: button, bg: "transparent", fg: "#8169ff", radius: "4px", padding: "14px 16px", height: "53px", font: "18px / 600 / 25.2px Inter", hover: "bg #8169ff, label #ffffff", pressed: "bg #8169ff, label #ffffff", states: "probe on /plans: the button fills violet on hover and pressed; focus draws only the browser default ring", use: "View All Prototypes and Learn More on /discover (202 x 53, 131 x 53) and Get Started on the /plans Free card (268 x 53); no border is drawn at rest" }
+    white-button: { type: button, bg: "#ffffff", fg: "#8169ff", radius: "4px", padding: "14px 16px", height: "53px", hover: "label #5b3ee0", pressed: "label #5b3ee0", states: "probe on /plans: the label settles on #5b3ee0; focus draws only the browser default ring", use: "Learn More on a /plans card (268 x 53)" }
+    nav-item: { type: tab, fg: "#181818", padding: "4px 20px", height: "60px", font: "16px / 700 / 22.4px Figtree", hover: "label #5b3ee0", pressed: "label #5b3ee0", states: "probe on Pricing: the label turns #5b3ee0 on hover and pressed; focus (Tab #2) draws only the browser default ring; no selected variant was observed", use: "Solutions, Resources, Features, Pricing and Download in the sticky 60px header" }
+    industry-tab: { type: tab, bg: "rgba(122, 100, 255, 0.35)", radius: "4px", size: "106px x 81px", selected: "bg #8169ff", hover: "bg rgba(122, 100, 255, 0.5)", pressed: "bg rgba(122, 100, 255, 0.5)", states: "probe: unselected tabs deepen to 0.5 alpha on hover and pressed; the selected tab shows no change; focus draws only the browser default ring", use: "Automotive, Website, Mobile & Tablet, TV & Productions, Smartwatches and Game tabs on the dark industry band of home" }
+    filter-chip: { type: tab, bg: "#ffffff", radius: "100px", padding: "10px 24px", height: "44px", selected: "bg #8169ff with a 1px solid #8169ff ::after border", hover: "opacity 0.8", pressed: "opacity 0.8", states: "probe on /plans: unselected chips fade to opacity 0.8 on hover and pressed; the selected chip shows no change; focus draws only the browser default ring", use: "Feature filters (All, Essentials, Collaboration, Security, Support, Add-ons) above the /plans comparison" }
+    resource-card: { type: card, bg: "rgba(255, 255, 255, 0.2)", fg: "#181818", radius: "12px", shadow: "rgba(0, 0, 0, 0.08) 0px 3px 12px 0px, rgba(0, 0, 0, 0.2) 0px 0px 2px 0px", size: "384px x 386px", hover: "shadow rgba(0, 0, 0, 0.08) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 0px 6px 3px", use: "ProtoPie School, Community and Blog cards on home (captures 23 to 25)" }
+    prototype-card: { type: card, bg: "#fafafa", radius: "16px", padding: "25px 30px 33px", size: "373px x 371px", use: "Featured prototype cards on /discover" }
   components_harvested: true
 ---
 
@@ -60,367 +274,375 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-ProtoPie (프로토파이) is the Seoul-born high-fidelity prototyping tool from Studio XID, and its marketing site reads like a confident, product-led design tool rather than a generic SaaS landing page. The canvas is pure white (`#ffffff`) with occasional cool light-grey surfaces (`#fafafa`), and the whole page is punctuated by one unmistakable brand signal: an electric violet (`#8169ff`) that saturates every call-to-action. Headings sit in a near-black ink (`#181818`) — never pure black — which keeps the type crisp without feeling harsh, and the interface leans flat, letting color and typography carry the hierarchy rather than heavy elevation.
+ProtoPie (프로토파이) is the interaction prototyping tool made by Studio XID; its terms of service are issued by Studio XID Korea Inc. and Studio XID, Inc., and the site footer reads "© 2026 Studio XID". The product lets designers build prototypes that behave like the finished thing — multi-device prototyping, interaction logic, hardware and system integration, developer handoff — and sells into automotive, aviation, finance, gaming, MedTech, IoT and digital products. Its current evolution is the AI turn: the site's title changed from "ProtoPie: Interactive Prototyping Tool" (July 2026) to "ProtoPie: AI-driven Prototyping Platform", the hero now claims "#1 AI-driven advanced prototyping platform", and the feature menu adds ProtoPie AI (New) and ProtoPie MCP alongside hardware integration (Beta). The Korean site at /ko still calls it "인터랙티브 프로토타이핑 툴". Around the product sit ProtoPie School, the ProtoPioneers community and a prototype gallery.
 
-The typographic personality is bold and declarative. Display headlines run in **Gilroy Bold (weight 700)** at large sizes — 62px on the hero, 48px on section titles — with tall, airy line-heights (80px on the H1) that give the geometric sans a premium, spacious feel. Body and UI text drop to **Inter** at a quiet 14–16px, weight 400, the neutral workhorse that keeps dense feature copy legible. This split — geometric Gilroy for persuasion, humanist Inter for information — is the core tension of the system: assertive where it sells the product, calm where it explains it.
-
-What distinguishes ProtoPie is how it deploys its single hue across a spectrum. The primary violet (`#8169ff`) owns the CTAs; a deeper, more saturated violet (`#6d4ff0`) appears on animated hero emphasis words ("BUILDS", "TRUST", "RICHER") and inline links; softer tints (`#ab9eff` and the pale `#e3deff`) back highlight cards and decorative surfaces. Against these, full-bleed dark bands in a deep indigo-navy (`#1a1935`) create dramatic, immersive breaks in the scroll. Interactive geometry is restrained — buttons at a tight 4px radius, floating resource cards at 12px with a soft `rgba(0,0,0,0.08)` shadow — so the energy comes from the violet, not from rounding or chrome. The neutral text ladder (`#373737` → `#474747` → `#636363` → `#999999`) and hairline grey (`#e9e9e9`) do the quiet structural work.
+The website is a Framer build with one violet doing the work. `#8169ff` fills every primary action — Book a Demo in the header of every page, the 53px hero and section buttons, Subscribe Now — and marks the selected industry tab and filter chip; hover darkens it to `#5b3ee0`. Headlines are set in Figtree Bold (700) in near-black `#181818`, and body copy in Inter, stepping down through `#373737`, `#474747` and `#999999`. A handwritten face, Palmer Lake Print, adds violet `#6d4ff0` annotations beside the feature rows. Geometry is tight — 4px buttons, 12px and 16px cards — and depth is kept to one soft two-layer shadow on the resource cards.
 
 **Key Characteristics:**
-- Gilroy Bold (weight 700) for all display headlines — geometric, declarative, product-confident
-- Inter weight 400 at 14–16px for body and dense UI text — neutral, legible
-- Single saturated violet (`#8169ff`) reserved for every primary call-to-action
-- A violet spectrum: deep `#6d4ff0` for emphasis text, soft `#ab9eff` and pale `#e3deff` for tinted surfaces
-- Near-black ink (`#181818`) for headings instead of pure black — crisp, premium
-- Full-bleed dark indigo-navy bands (`#1a1935`) for immersive scroll breaks
-- Mostly flat depth — only floating resource cards carry a soft `rgba(0,0,0,0.08)` shadow
-- Tight 4px button radius, 12px card radius — energy comes from color, not geometry
+- One violet: `#8169ff` for every primary action, the selected industry tab and the selected filter chip; hover `#5b3ee0`
+- Figtree Bold 700 for all headlines (62px hero, 48px sections), Inter for reading copy and button labels
+- Handwritten Palmer Lake Print annotations in `#6d4ff0` at 48px
+- 4px-radius buttons in four forms: filled, text, ghost that fills on hover, and white with a violet label
+- Near-black ink `#181818` rather than pure black; greys `#373737`, `#474747`, `#999999`
+- Flat pages except the resource cards, which carry a soft two-layer shadow that spreads on hover
 
 ## Primary tasks
 
-- Turn an interaction idea into a believable prototype without writing production code
-- Prototype micro-interactions before dev handoff and convince stakeholders in review
-- Drive real hardware and inputs so an in-car prototype behaves like the shipping system
-- Learn high-fidelity prototyping through ProtoPie School and the community
+- Turn an interaction idea into a working prototype without writing production code
+- Prototype across devices and connect real hardware and system inputs
+- Generate interactions with AI and hand clean specs to developers
+- Compare the plans before subscribing or booking a demo
+- Learn prototyping through ProtoPie School and the community
 
 ## 2. Color Palette & Roles
 
+Every token below was read on 2026-09-30 from protopie.io, /discover and /plans by the deterministic collector, and state values by the fixed keyboard probe. The tokens describe ProtoPie's public website; the ProtoPie Studio and Cloud apps were not captured.
+
 ### Primary
-- **ProtoPie Violet** (`#8169ff`): Primary brand color and CTA background. The saturated electric violet on every call-to-action — the system's single "action" color (12–19× the most frequent background).
-- **Deep Violet** (`#6d4ff0`): A darker, more saturated companion used for animated hero emphasis words and inline text links. The active/emphasis form of the brand hue.
-- **Soft Violet** (`#ab9eff`): A lighter violet for tinted decorative surfaces and secondary highlight backgrounds.
-- **Violet Tint** (`#e3deff`): The palest violet, used as a highlight card surface and soft category-tag background.
+- **ProtoPie Violet** (`#8169ff`): The fill of Book a Demo in the header of all three captured pages (the same 134 × 40 fill recorded 3 times across the three surfaces), of the hero's Get started for free and of every 53px section button, and the fill of the selected industry tab and the selected /plans filter chip. It is the primary because it is the only saturated colour the product surfaces use in primary roles: primary action fill, selected state and link label.
+- **Violet Hover** (`#5b3ee0`): The settled hover and pressed fill of the violet buttons and the hover label of the text, white and navigation items (probe, `transition: all 0s`).
+- **On Primary** (`#ffffff`): Labels on violet.
+
+### Accent
+- **Annotation Violet** (`#6d4ff0`): The handwritten Palmer Lake Print notes beside the feature rows on home. It is decoration, not an action colour.
 
 ### Neutral & Surface
-- **Pure White** (`#ffffff`): Page background, card surfaces, text on violet/dark.
-- **Surface Grey** (`#fafafa`): Light off-white surface for alternating content bands.
-- **Hairline** (`#e9e9e9`): Thin borders, dividers, and input outlines — the primary separation device in the flat system.
-- **Dark Indigo** (`#1a1935`): Full-bleed dark section band background for immersive, high-contrast scroll breaks.
+- **White** (`#ffffff`): The page canvas (the body computes `#ffffff`) and the white plan button.
+- **Surface** (`#fafafa`): The featured prototype cards on /discover.
 
-### Text Hierarchy
-- **Ink** (`#181818`): Primary heading and strong-label color — a near-black used instead of pure black.
-- **Body** (`#373737`): Standard body copy and descriptions.
-- **Muted Alt** (`#474747`): Secondary body and industry-link text.
-- **Muted** (`#636363`): Tertiary text, footer links, metadata.
-- **Faint** (`#999999`): Captions, eyebrow labels, placeholder and lowest-emphasis text.
-- **On-Primary** (`#ffffff`): Text and icons on violet and dark surfaces.
+### Text
+- **Ink** (`#181818`): Headlines, navigation labels and the home hero lead.
+- **Body** (`#373737`): The /discover lead and the footer.
+- **Muted** (`#474747`): Resource card descriptions and prototype tags.
+- **Faint** (`#999999`): The design-tool survey line on home and footer notes.
+- Footer links also render in `#636363`; it is kept out of the tokens because its captured element was not pinned.
+
+### Brand assets, not tokens
+- The ProtoPie logo was not measured; no logo colour is claimed.
+- Plan-specific text colours on /plans (a green `#156534`, a brown `#613f00`, a red `#fa5650`) each label a single plan detail and are not roles.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Display**: `Gilroy` (Gilroy Bold) — used for all headlines at weight 700. Geometric, high-contrast, brand-defining.
-- **Body**: `Inter` — the functional reading/UI font, used at weight 400 for body copy, captions, footer, and industry links.
+- **Live surface use**: `Inter` (685 observed uses, `loaded / high`) for body copy, lists and button labels; `Figtree` (83, `loaded / high`) for h1–h4, navigation labels and plan headers; `Palmer Lake Print Regular` (20, `loaded / high`) for the handwritten annotations. The bundle records no source URLs for them, so how each is served was not established. The body element computes a 12px sans-serif default.
+- **Official distributed font assets**: Figtree is published by the Figtree Project Authors (github.com/erikdkennedy/figtree) under the SIL Open Font License 1.1, and Inter by the Inter Project Authors (github.com/rsms/inter) under the same licence; both licence files were opened on 2026-09-30. No licence for Palmer Lake Print was opened, so its licence is not stated. Identification rests on the family names.
+- **Official product use**: no ProtoPie page opened this session names its typefaces, so no statement of official product use is made.
+- **Declared only (no visible use)**: `Gilroy Bold`, `Gilroy ExtraBold` and `Gilroy SemiBold` (the June record's display face), `General Sans`, `Inter Variable`, `Atkinson Hyperlegible Mono`, `Fragment Mono`, `Edu QLD Hand`, `Noto Sans`, `Noto Sans KR` and `Noto Sans SC` (Google Fonts URLs declared), with 0 observed uses, plus the `Placeholder` fallbacks.
+- **Unresolved**: none of the observed families is unidentified.
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Display Hero | Gilroy | 62px (3.88rem) | 700 | 80px (1.29) | Hero H1 |
-| Section Heading | Gilroy | 48px (3.00rem) | 700 | 62.4px (1.30) | Section titles H2 |
-| Sub-section | Gilroy | 36px (2.25rem) | 700 | 50.4px (1.40) | Card / blog heads H3 |
-| Caption | Inter | 16px (1.00rem) | 400 | 24px (1.50) | Eyebrow labels, captions |
-| Body | Inter | 14px (0.88rem) | 400 | 19.6px (1.40) | Body, footer / industry links |
-| Nav / Button | (system) | 12px (0.75rem) | 400 | normal | Nav items and button labels |
+| Role | Font | Size | Weight | Line Height | Tracking | Observed on |
+|------|------|------|--------|-------------|----------|-------------|
+| Display Hero | Figtree | 62px | 700 | 80px (1.29) | normal | Home and /discover hero, `#181818` |
+| Section | Figtree | 48px | 700 | 62.4px (1.3) | normal | Section headlines |
+| Annotation | Palmer Lake Print Regular | 48px | 400 | 38px (0.79) | 0.48px | Feature-row notes, `#6d4ff0` |
+| Subsection | Figtree | 36px | 700 | 50.4px (1.4) | normal | /plans plan names and headings |
+| Card Title | Figtree | 28px | 700 | 39.2px (1.4) | normal | Resource card and feature headings |
+| Plan Title | Figtree | 24px | 700 | 33.6px (1.4) | normal | /plans headers, `#8169ff` or `#181818` |
+| Lead | Inter | 24px | 400 | 33.6px (1.4) | normal | Hero leads |
+| Button Large | Inter | 18px | 600 | 25.2px (1.4) | normal | 53px button labels |
+| Nav | Figtree | 16px | 700 | 22.4px (1.4) | normal | Header navigation |
+| Button | Inter | 16px | 600 | 22.4px (1.4) | normal | Header button labels, inline links |
+| Body | Inter | 16px | 400 | 24px (1.5) | normal | Card descriptions, `#474747` |
+| Button Small | Inter | 14px | 600 | 19.6px (1.4) | normal | 32px button labels |
+| Body Small | Inter | 14px | 400 | 19.6px (1.4) | normal | Footer, `#373737` |
+| Caption | Inter | 12px | 600 | 16.8px (1.4) | normal | Prototype tags |
+| Eyebrow | Figtree | 11px | 700 | 13.2px (1.2) | -0.11px | Industry tab labels |
 
 ### Principles
-- **Bold display, neutral body**: Gilroy Bold (700) carries every headline; Inter 400 carries every paragraph. The weight-and-family contrast is the primary hierarchy signal.
-- **Airy display line-height**: headlines run tall (80px on a 62px H1, 62.4px on a 48px H2) — the type breathes rather than compresses.
-- **Two fonts, two jobs**: Gilroy is the persuasive/branding voice; Inter is the functional/reading voice. They never swap roles.
-- **Small, quiet UI text**: nav and control labels sit at 12px, keeping chrome subordinate to the big Gilroy headlines and the violet CTAs.
+- **Figtree for voice, Inter for information**: every heading and the navigation are Figtree 700; reading copy and all button labels are Inter.
+- **A 1.4 rhythm**: most roles from 14px to 36px sit on a 1.4 line height; the hero opens up to 1.29 at 62px.
+- **Handwriting as annotation**: Palmer Lake Print appears only as violet notes, never as a heading.
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Primary CTA**
+**Primary button**
 - Background: `#8169ff`
 - Text: `#ffffff`
 - Radius: 4px
 - Padding: 14px 16px
-- Font: 12px weight 400
 - Height: 53px
-- Use: Primary call-to-action — "Get started for free", "Book a Demo", "Request Demo"
+- Font: 18px / 600 / 25.2px Inter
+- Hover: background `#5b3ee0`
+- Pressed: background `#5b3ee0`
+- States: focus draws only the browser default ring
+- Use: Get started for free, Read Comparison, Explore Gallery, Subscribe Now
 
-**Text / Ghost CTA**
-- Background: transparent
-- Text: `#8169ff`
+**Header button**
+- Background: `#8169ff`
+- Text: `#ffffff`
+- Radius: 4px
+- Padding: 12px 16px
+- Height: 40px
+- Font: 16px / 600 / 22.4px Inter
+- Hover: background `#5b3ee0`
+- Pressed: background `#5b3ee0`
+- Use: Book a Demo in the header of every page
+
+**Small button**
+- Background: `#8169ff`
+- Text: `#ffffff`
 - Radius: 4px
 - Padding: 6px 16px
 - Height: 32px
-- Use: Secondary inline action — "Learn More", "Start for Free"
+- Font: 14px / 600 / 19.6px Inter
+- States: rest only; not probed at this size
+- Use: Request Demo on the dark band; Get Started, Subscribe and Chat with Us on /plans
 
-### Inputs
-
-**Text Field**
-- Background: `#ffffff`
-- Border: 1px solid `#e9e9e9`
-- Text: `#181818`
+**Text button**
+- Background: transparent
+- Text: `#8169ff`
 - Radius: 4px
-- Placeholder: `#999999`
-- Focus: ring in `#8169ff`
-- Use: Search / newsletter text input
+- Height: 40px
+- Font: 16px / 600 / 22.4px Inter
+- Hover: label `#5b3ee0`
+- Pressed: label `#5b3ee0`
+- Use: Start for Free in the header
 
-### Cards & Containers
-
-**Resource Card**
-- Background: `#ffffff`
-- Radius: 12px
-- Shadow: `rgba(0,0,0,0.08) 0px 3px 12px 0px`
-- Use: Floating resource card — "ProtoPie School", "Community", "Blog"
-
-**Light Purple Card**
-- Background: `#e3deff`
-- Text: `#181818`
-- Radius: 12px
-- Use: Feature / highlight card on the pale violet tint
-
-### Badges
-
-**Soft Category Tag**
-- Background: `#e3deff`
-- Text: `#6d4ff0`
+**Ghost button**
+- Background: transparent
+- Text: `#8169ff`
 - Radius: 4px
-- Padding: 4px 8px
-- Font: 12px weight 400
-- Use: Blog category tag / soft emphasis pill
+- Padding: 14px 16px
+- Height: 53px
+- Hover: background `#8169ff`, label `#ffffff`
+- Pressed: the same as hover
+- Use: View All Prototypes and Learn More on /discover, Get Started on the /plans Free card
 
-### Navigation
+**White button**
 - Background: `#ffffff`
-- Text: `#181818`
-- Font: 12px weight 400
-- Padding: 4px 20px per item
-- Height: 60px header row
-- Active: violet `#6d4ff0` text on active item
-- Use: Top horizontal nav ("Solutions", "Resources", "Features", "Pricing", "Download")
+- Text: `#8169ff`
+- Radius: 4px
+- Padding: 14px 16px
+- Height: 53px
+- Hover: label `#5b3ee0`
+- Pressed: label `#5b3ee0`
+- Use: Learn More on a /plans card
 
-### Footer
-- Links: `#636363`, 14px Inter weight 400
-- Use: Footer / industry navigation ("Automotive", "Aviation", "Finance", "MedTech", "IoT")
+### Tabs & Navigation
+
+**Header navigation item**
+- Text: `#181818`
+- Padding: 4px 20px
+- Height: 60px
+- Font: 16px / 700 / 22.4px Figtree
+- Hover: label `#5b3ee0`
+- Pressed: label `#5b3ee0`
+- Use: Solutions, Resources, Features, Pricing, Download
+
+**Industry tab**
+- Background: `rgba(122, 100, 255, 0.35)`
+- Radius: 4px
+- Size: 106 × 81
+- Selected: background `#8169ff`
+- Hover: background `rgba(122, 100, 255, 0.5)`
+- Pressed: the same as hover
+- States: the selected tab does not change
+- Use: industry switcher on the dark band of home
+
+**Filter chip**
+- Background: `#ffffff`
+- Radius: 100px
+- Padding: 10px 24px
+- Height: 44px
+- Selected: background `#8169ff` with a 1px `#8169ff` border
+- Hover: opacity 0.8
+- Pressed: opacity 0.8
+- Use: All, Essentials, Collaboration, Security, Support, Add-ons on /plans
+
+### Cards
+
+**Resource card**
+- Background: `rgba(255, 255, 255, 0.2)`
+- Text: `#181818`
+- Radius: 12px
+- Shadow: `rgba(0, 0, 0, 0.08) 0px 3px 12px 0px, rgba(0, 0, 0, 0.2) 0px 0px 2px 0px`
+- Hover: shadow `rgba(0, 0, 0, 0.08) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 0px 6px 3px`
+- Use: ProtoPie School, Community and Blog on home (384 × 386)
+
+**Prototype card**
+- Background: `#fafafa`
+- Radius: 16px
+- Padding: 25px 30px 33px
+- Use: featured prototypes on /discover (373 × 371)
 
 ---
 
-**Verified:** 2026-07-02 (omd:add-reference CREATE — Tier 1 live inspect, 3 surfaces)
-**Tier 1 sources:** https://www.protopie.io/, https://www.protopie.io/blog, https://www.protopie.io/learn/docs/introducing-protopie/getting-started
-**Tier 2 sources:** getdesign.md/protopie (0 files — empty); styles.refero.design/?q=protopie (no ProtoPie-specific entry — generic grid only)
-**Conflicts unresolved:** none (both Tier 2 catalogs empty for ProtoPie; all values are Tier-1 live-inspected)
+**Verified:** 2026-09-30 (deterministic collector capture of three public, logged-out pages of protopie.io plus fixed keyboard-probe state reads and first-party context)
+**Tier 1 sources:** https://www.protopie.io/ ; https://www.protopie.io/discover ; https://www.protopie.io/plans ; https://www.protopie.io/ko/ ; https://www.protopie.io/legal
+**Tier 2 sources:** not attempted in this pass; no Tier 2 value used
+**Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
 ### Spacing System
-- Base unit: ~4px
-- Scale: 4px, 6px, 12px, 16px, 20px, 24px, 48px
-- Notable: nav items carry a generous 4px 20px padding; primary CTAs use 12–14px vertical × 16px horizontal, giving comfortable tap targets
+- 53px buttons: 14px 16px padding; 40px and 46px buttons: 12px 16px; 32px buttons: 6px 16px
+- Header items: 4px 20px padding in a 60px sticky header
+- Prototype cards: 25px 30px 33px
+- Frequent spacing values in the capture: 16, 20, 4, 10 and 14px
 
 ### Grid & Container
-- Centered single-column hero anchored by the 62px Gilroy headline
-- Feature and resource sections use multi-column card grids that collapse responsively
-- Full-bleed dark indigo bands (`#1a1935`) break the white scroll with immersive, high-contrast sections
-- Floating resource cards (School / Community / Blog) group secondary destinations at 12px radius
+- Content sits in a 1200px column under a sticky 1200 × 60 header.
+- Home runs a centred hero (62px headline, 24px lead, one violet button), tool-integration icons, a dark industry band with tabs, feature rows annotated by hand, a testimonial row, three resource cards, the gallery and a closing call to action.
+- /plans sets plan cards side by side under a billing toggle, then a filtered feature comparison; /discover alternates featured prototype cards with maker stories.
 
 ### Whitespace Philosophy
-- **Breathing room over density**: generous vertical rhythm and tall display line-heights keep the marketing surface airy
-- **Flat segmentation**: sections separate by background shift (`#ffffff` ↔ `#fafafa` ↔ dark `#1a1935`) and `#e9e9e9` hairlines, rarely by shadow
-- **Color as emphasis**: where a section needs to pop, it reaches for the violet spectrum (`#8169ff`, `#6d4ff0`, `#e3deff`) or a dark band, not for heavier elevation
+- **Colour as emphasis**: sections stay white and ink; the violet appears only on actions and selection.
+- **Mostly flat**: only the resource cards lift off the page.
 
 ### Border Radius Scale
-- Small (4px): buttons, inputs, tags — the tight workhorse radius
-- Medium (12px): cards and floating containers
-- Full (9999px): pills / circular controls where used
+- 0px: the default (874 of the recorded radii)
+- 4px: buttons and industry tabs
+- 12px: resource cards
+- 16px: prototype cards
+- 100px: filter chips
 
 ## 6. Depth & Elevation
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, headings, nav, most surfaces |
-| Tint (Level 1) | `#fafafa` / `#e3deff` background shift | Section and highlight separation without elevation |
-| Hairline (Level 2) | `1px solid #e9e9e9` border | Input outlines, dividers |
-| Card (Level 3) | `rgba(0,0,0,0.08) 0px 3px 12px 0px` | Floating resource cards |
+| Flat | No shadow | Headlines, buttons, tabs, prototype cards |
+| Surface | `#fafafa` fill | Prototype cards |
+| Card | `rgba(0, 0, 0, 0.08) 0px 3px 12px 0px, rgba(0, 0, 0, 0.2) 0px 0px 2px 0px` | Resource cards |
+| Card hover | `rgba(0, 0, 0, 0.08) 0px 3px 12px 0px, rgba(0, 0, 0, 0.08) 0px 0px 6px 3px` | Resource cards on hover |
 
-**Shadow Philosophy**: ProtoPie is a mostly-flat system. Live inspection found `box-shadow: none` across the hero, nav, and headings; only the floating resource cards (School / Community / Blog) carry a single soft `rgba(0,0,0,0.08)` shadow at 3px offset / 12px blur. Depth and grouping are otherwise communicated through flat surface shifts (`#ffffff`, `#fafafa`, the pale `#e3deff`, and full-bleed dark `#1a1935` bands) and thin `#e9e9e9` hairlines. When emphasis is needed the system reaches for the violet (`#8169ff` / `#6d4ff0`) or a dark section, never heavier elevation.
+**Shadow Philosophy**: of the 953 recorded elements, only the three resource cards carry a visible shadow (the integration icons compute fully transparent shadow layers). Emphasis otherwise comes from the violet.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use Gilroy Bold (weight 700) for all display headlines — it's the brand's voice
-- Use Inter weight 400 at 14–16px for body and dense UI text
-- Reserve violet (`#8169ff`) for the primary call-to-action — keep it the single "action" color
-- Use the deeper violet (`#6d4ff0`) for emphasis words and inline links
-- Use near-black ink (`#181818`) for headings instead of pure black
-- Keep tall, airy line-heights on display type (80px on a 62px H1)
-- Separate sections with flat surface shifts (`#fafafa`, `#e3deff`) and `#e9e9e9` hairlines
-- Reach for a dark `#1a1935` band when a section needs immersive contrast
+- Use `#8169ff` for every primary action and for selection; darken to `#5b3ee0` on hover
+- Set headlines and navigation in Figtree 700; set reading copy and button labels in Inter
+- Keep buttons at 4px radius; round only the filter chips (100px)
+- Let a ghost button fill violet on hover
+- Use `#181818` for headlines and step greys through `#373737`, `#474747` and `#999999`
+- Keep shadows for the resource cards only
 
 ### Don't
-- Use a light or thin weight for headlines — display is always Gilroy Bold (700)
-- Spread the primary violet across many elements — it dilutes the single-action signal
-- Use pure black (`#000000`) for body or heading text — use ink `#181818` and the grey ladder
-- Add heavy drop shadows for elevation — ProtoPie is a mostly-flat system
-- Introduce a second saturated accent hue — the violet spectrum is the only brand color
-- Use Inter for big headlines — Gilroy owns display
-- Cram headlines with tight line-height — the display type is meant to breathe
-- Use large pill radii on buttons — the button radius is a tight 4px
+- Don't set headlines in Gilroy; it is declared but no element renders it
+- Don't add a second saturated action colour; the annotation violet `#6d4ff0` is decoration only
+- Don't use pure black for text
+- Don't invent focus styles; every probed control shows only the browser default ring
+- Don't substitute another face for Figtree, Inter or Palmer Lake Print
+- Don't give buttons pill radii
 
 ## 8. Responsive Behavior
 
 ### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses, card grids stack |
-| Tablet | 640-1024px | Moderate padding, 2-up feature/resource cards |
-| Desktop | 1024-1440px | Full layout, centered hero, multi-column feature grids |
+Only the 1440 × 900 desktop viewport was captured. No breakpoint value was measured.
 
 ### Touch Targets
-- Primary CTAs at 40–53px height with 12–14px × 16px padding — comfortably tappable
-- Nav items spaced with 4px 20px padding inside the 60px header
-- Text CTAs at 32px height for secondary inline actions
+- Section buttons: 53px
+- Filter chips: 44px
+- Header buttons: 40px
+- Small buttons: 32px
+- Header items: 60px cells
+- Industry tabs: 106 × 81
 
 ### Collapsing Strategy
-- Hero: 62px Gilroy headline scales down on mobile, weight 700 maintained
-- Feature / resource card grids: multi-column → 2-up → stacked single column
-- Dark `#1a1935` bands maintain full-width treatment, reduce internal padding
-- White / grey alternating sections maintain full-bleed treatment
+- How the pages collapse was not captured.
 
 ### Image Behavior
-- Product screenshots and gallery pieces sit on white or dark bands with minimal chrome
-- Floating resource cards keep their 12px radius and soft shadow across breakpoints
+- Product shots and prototype videos sit flat inside the page; only the resource cards carry a shadow.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary CTA: ProtoPie Violet (`#8169ff`)
-- Emphasis text / link: Deep Violet (`#6d4ff0`)
-- Highlight surface: Violet Tint (`#e3deff`), Soft Violet (`#ab9eff`)
-- Background: Pure White (`#ffffff`), Surface Grey (`#fafafa`)
-- Dark band: Dark Indigo (`#1a1935`)
-- Heading text: Ink (`#181818`)
-- Body text: Body (`#373737`), Muted (`#636363`)
-- Faint / caption: Faint (`#999999`)
-- Hairline: `#e9e9e9`
+- Primary action and selection: `#8169ff` with `#ffffff` labels; hover `#5b3ee0`
+- Annotation: `#6d4ff0`
+- Text: `#181818` headlines and nav, `#373737`, `#474747`, `#999999`
+- Surfaces: `#ffffff` canvas, `#fafafa` prototype cards
 
 ### Example Component Prompts
-- "Create a hero on white background. Headline at 62px Gilroy Bold weight 700, line-height 80px, color #181818, with one emphasis word in deep violet #6d4ff0. Below it a primary CTA: #8169ff background, white text, 4px radius, 14px 16px padding, 'Get started for free'."
-- "Design a floating resource card: white #ffffff background, 12px radius, box-shadow rgba(0,0,0,0.08) 0px 3px 12px. Title 36px Gilroy Bold #181818, body 16px Inter #373737."
-- "Build a dark immersive band: #1a1935 background, full-width. Section title 48px Gilroy Bold #ffffff, line-height 62.4px. Body 14px Inter rgba(255,255,255,0.8)."
-- "Create top nav: white 60px header. 12px links, #181818 text, deep violet #6d4ff0 on active. Violet CTA 'Book a Demo' right-aligned (#8169ff bg, white text, 4px radius)."
+- "Create a primary button: `#8169ff` background, `#ffffff` 18px Inter label at weight 600, 4px radius, 14px 16px padding, 53px tall; hover and pressed `#5b3ee0`; no shadow."
+- "Create a ghost button: transparent background, `#8169ff` 18px Inter 600 label, 4px radius, 53px tall, no border; on hover fill `#8169ff` and turn the label `#ffffff`."
+- "Build a header: sticky, 60px, Figtree 700 16px nav labels in `#181818` that turn `#5b3ee0` on hover, a violet text button Start for Free and a `#8169ff` Book a Demo button (12px 16px padding, 40px tall)."
+- "Build filter chips: white, 100px radius, 10px 24px padding, 44px tall; the selected chip is `#8169ff` with a 1px `#8169ff` border; unselected chips fade to 0.8 opacity on hover."
 
 ### Iteration Guide
-1. Gilroy Bold (700) for every headline; Inter 400 for every paragraph
-2. Violet (`#8169ff`) is the single action color — don't spread it; use `#6d4ff0` for emphasis text
-3. Mostly flat — separate with `#fafafa` / `#e3deff` tints and `#e9e9e9` hairlines; only resource cards get the soft shadow
-4. Tight 4px radius on buttons/inputs, 12px on cards
-5. Heading color is ink `#181818`, never pure black; body drops through the grey ladder
-6. Reach for a `#1a1935` dark band for immersive contrast sections
-7. Keep display line-heights tall and airy (80px on a 62px H1)
+1. One violet (`#8169ff`) for actions and selection; `#5b3ee0` on hover
+2. Figtree 700 headlines, Inter copy and labels
+3. 4px buttons, 12px and 16px cards, 100px chips
+4. `#181818` ink, never pure black
+5. Shadows only on the resource cards
 
 ---
 
 ## 10. Voice & Tone
 
-ProtoPie's voice is **confident, capability-focused, and craft-proud** — a tool that speaks to designers as makers who want the highest fidelity without writing code. The hero line "#1 advanced prototyping tool for dynamic interactions" sets the register: assertive, benefit-forward, unafraid to claim leadership. Copy foregrounds what the tool can do ("high-fidelity prototyping", "hardware interaction") and treats the reader as a serious product person, not a beginner to be coddled.
+ProtoPie's voice is **confident and capability-first**: it claims leadership, names concrete capabilities and speaks to designers as makers.
 
 | Context | Tone |
 |---|---|
-| Hero headlines | Assertive, leadership-claiming. "#1 advanced prototyping tool for dynamic interactions." |
-| Feature descriptions | Capability-first, concrete. Names the interaction ("sensors", "voice", "hardware") plainly. |
-| CTAs | Direct, low-friction. "Get started for free", "Book a Demo", "Explore Gallery". |
-| Editorial / blog | Practical and teacherly. "Low-Fidelity vs. High-Fidelity Prototyping", tips and tutorials. |
-| Community copy | Warm, belonging-framed. "Join the ProtoPioneers community." |
+| Hero | Leadership claim. "#1 AI-driven advanced prototyping platform." |
+| AI positioning | Control over automation. "Don't let AI guess your intent." |
+| Hardware | Empowering. "Don't limit hardware interaction, Empower your designs." |
+| Actions | Direct, low-friction. "Get started for free", "Book a Demo", "Explore Gallery", "Read Comparison". |
+| Community | Belonging. "Join the ProtoPioneers community." |
 
-**Voice samples (verbatim from live surfaces):**
-- "#1 advanced prototyping tool for dynamic interactions" — hero H1 (leadership claim). *(verified live 2026-07-02)*
-- "Powerful features for highest fidelity" — section H2 (capability-first). *(verified live 2026-07-02)*
-- "Join the ProtoPioneers community" — resource card (belonging-framed). *(verified live 2026-07-02)*
+**Voice samples (verbatim, opened 2026-09-30):**
+- "ProtoPie: AI-driven Prototyping Platform" — protopie.io page title.
+- "#1 AI-driven advanced prototyping platform" — home headline.
+- "Don't let AI guess your intent. Use AI to generate interactions, perfect them credit-free, and hand off clean specs." — home lead.
+- "Trusted by world's top design teams" — home.
+- "ProtoPie: 인터랙티브 프로토타이핑 툴" — protopie.io/ko page title.
 
-**Forbidden register**: talking down to designers, hiding capability behind vague jargon, fear-based urgency, exclamation-heavy hype that undercuts the craft-proud confidence.
+**Forbidden register**: talking down to designers, vague capability claims, fear-based urgency, stacked exclamation marks.
 
 ## 11. Brand Narrative
 
-ProtoPie (프로토파이) is the flagship product of **Studio XID, Inc.**, founded in **2015** in **Seoul, Korea** by **Tony Kim (김수형)**, a former interaction designer who was frustrated that turning rich interaction ideas into believable prototypes required either writing production code or accepting the low fidelity of click-through mockups. ProtoPie's founding premise — that any designer should be able to build genuinely interactive, sensor-and-hardware-aware prototypes without code — reframed prototyping from a developer handoff problem into a designer's native craft.
+ProtoPie's pitch has always been fidelity: prototypes that respond to real sensors, devices and logic instead of click-through mockups. The site's feature menu names that craft directly — Interaction Logic, Multi-Device Prototyping, Hardware & System Integration, Developer Handoff — and its industry menu shows where fidelity matters most: automotive, aviation, finance, gaming, MedTech and IoT.
 
-The product matured into a leading high-fidelity prototyping tool used by product teams across automotive, aviation, finance, and consumer software — the industries surfaced on its own site. Its distinguishing claim is fidelity: prototypes that respond to real sensors, hardware inputs, and conditional logic, closing the gap between a static design and the finished product. The "ProtoPioneers" community and ProtoPie School reflect a company that invests in teaching the craft, not just selling a license.
+In 2026 the story turned to AI. Between the July record and this capture the site title changed to "AI-driven Prototyping Platform" and the hero to "#1 AI-driven advanced prototyping platform", with ProtoPie AI marked New and a ProtoPie MCP entry. The lead frames the stance: AI should generate interactions but not guess the designer's intent, and the output should be clean specs a developer can build. The Korean site keeps the original description, 인터랙티브 프로토타이핑 툴.
 
-What ProtoPie refuses, visible in its design: the intimidating chrome and dense toolbars of legacy prototyping suites, and the generic sameness of undifferentiated SaaS marketing. What it embraces: a bold Gilroy display voice, a single confident violet that owns every action, a mostly-flat interface that keeps focus on the work, and immersive dark bands that let the product's motion and interaction shine.
+Around the tool, Studio XID invests in teaching and community — ProtoPie School, the ProtoPioneers community, a prototype gallery and a /discover page of featured makers. The website's design follows the product's discipline: one violet for every action, Figtree headlines, handwritten notes where a designer would scribble them, and very little chrome.
 
 ## 12. Principles
 
-1. **Fidelity is the point.** ProtoPie exists to close the gap between a design and the real product. *UI implication:* let product screenshots, motion, and interaction take center stage; keep chrome flat and quiet so the work reads first.
-2. **One action, one color.** Violet (`#8169ff`) means "do this." *UI implication:* reserve the saturated violet exclusively for the primary CTA so the next step is never ambiguous; use `#6d4ff0` only for emphasis.
-3. **Speak to makers, not beginners.** *UI implication:* name capabilities concretely (sensors, hardware, conditions) and trust the reader; avoid over-explaining or dumbing down.
-4. **Bold where it persuades, neutral where it informs.** *UI implication:* Gilroy Bold for headlines that sell the product; Inter 400 for the copy that explains it.
-5. **Flat and focused.** *UI implication:* separate with surface tints and hairlines, not heavy shadows; reach for a dark `#1a1935` band when a section needs immersive contrast.
+1. **Fidelity is the point.** *UI implication:* let prototypes, videos and product shots carry the page; keep chrome flat.
+2. **One action colour.** *UI implication:* `#8169ff` for actions and selection only; hover darkens to `#5b3ee0`. (An editorial reading of the captured pages.)
+3. **AI serves intent.** "Don't let AI guess your intent." *UI implication:* present AI as a tool the designer steers, with clear controls.
+4. **Speak to makers.** *UI implication:* name capabilities concretely (hardware, logic, handoff).
+5. **Annotate like a designer.** *UI implication:* handwritten violet notes explain features in place. (Editorial.)
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable ProtoPie user segments (product designers, interaction designers, automotive/hardware UX teams), not individual people.*
+*Personas below are fictional archetypes informed by publicly observable ProtoPie user segments (product and interaction designers, automotive HMI teams, design students), not individual people.*
 
-**Seoyeon Park, 30, Seoul.** A product designer at a mobile app studio who prototypes micro-interactions before dev handoff. Chose ProtoPie because she can build sensor- and gesture-aware prototypes without asking an engineer, and because the fidelity convinces stakeholders in review.
+**박서연, 30, 서울.** A product designer who prototypes micro-interactions before handoff and wants stakeholders to feel the real behaviour.
 
-**Marcus Lindqvist, 38, Gothenburg.** An automotive HMI designer prototyping in-car cluster and infotainment interactions. Values that ProtoPie can drive hardware and respond to real inputs, so his prototypes behave like the shipping system, not a slideshow.
+**Marcus Lindqvist, 38, Gothenburg.** An automotive HMI designer who needs prototypes that respond to real hardware inputs.
 
-**Priya Nair, 27, Bangalore.** An interaction designer learning high-fidelity prototyping through ProtoPie School and the community. Appreciates that the tool treats her as a capable maker and that the tutorials teach craft, not just clicks.
+**Priya Nair, 27, Bangalore.** A design student learning high-fidelity prototyping through ProtoPie School and the community.
 
 ## 14. States
 
-| State | Treatment |
+Only these states were observed on the three captured pages; nothing else is specified here.
+
+| State | Observation |
 |---|---|
-| **Empty (no projects yet)** | White canvas. Single Ink (`#181818`) line at caption/body size, one violet `#8169ff` CTA to create or import a project. No decorative clutter. |
-| **Empty (gallery / search, no results)** | Faint (`#999999`) single line explaining nothing matched, with a path back to browse. Calm and honest. |
-| **Loading (content fetch)** | Skeleton blocks on `#fafafa` surface at final card dimensions, 12px radius. Flat pulse consistent with the mostly-flat system — no heavy shimmer. |
-| **Loading (preview/render)** | Inline progress within the card; previous content stays visible until the new render is ready. |
-| **Error (action failed)** | Inline message in Ink (`#181818`) with a plain-language explanation and a retry — never a bare generic error, always states what to do next. |
-| **Error (form validation)** | Field-level message below the input; describes what is valid, not just that a field is required. |
-| **Success (saved / published)** | Brief inline confirmation in a calm tone; next-step detail linked immediately below. No celebratory emoji. |
-| **Skeleton** | `#fafafa` blocks at final dimensions, 12px radius, flat pulse. |
-| **Disabled** | Faint (`#999999`) text on reduced-opacity surface; violet actions fade rather than turn grey to preserve the brand read. |
+| **Hover / pressed (violet buttons)** | `#8169ff` → `#5b3ee0`, settled (Book a Demo, Get started for free, Subscribe Now). |
+| **Hover / pressed (text, white and nav items)** | Label → `#5b3ee0`. |
+| **Hover / pressed (ghost button)** | Transparent → `#8169ff` fill, label `#ffffff`. |
+| **Hover / pressed (industry tab)** | `rgba(122, 100, 255, 0.35)` → `rgba(122, 100, 255, 0.5)`; the selected `#8169ff` tab does not change. |
+| **Hover / pressed (filter chip)** | Opacity 1 → 0.8; the selected chip does not change. |
+| **Hover (resource card)** | The second shadow layer spreads to `0px 0px 6px 3px`. |
+| **Selected** | `#8169ff` fill on the current industry tab and filter chip. |
+| **Focus** | Every probed control draws only the browser default ring (`rgb(0, 95, 204) auto 1px`); no authored focus style. |
+
+Error, empty, loading and success states were not captured and are not described.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, focus |
-| `motion-standard` | 240ms | Card / section reveal, dropdown, sheet |
-| `motion-slow` | 400ms | Page-level transitions, hero and dark-band reveals |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sections, sheets |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is expressive but purposeful — fitting for a prototyping tool whose entire value proposition is interaction. Hero emphasis words in deep violet (`#6d4ff0`) animate through the headline; content fades in from below at `motion-standard / ease-enter`; dark `#1a1935` bands reveal cinematically at `motion-slow`. Because ProtoPie sells motion, the marketing surface allows richer transitions than a utilitarian dashboard would — but interactive controls stay quick and steady. Under `prefers-reduced-motion: reduce`, decorative animation freezes and all transitions collapse to instant; the product remains fully functional.
+Every probed control computes `transition: all 0s ease 0s`, and the probe read settled values after 900ms. The collector's immediate focus and pressed frames caught intermediate violets (`#7f67fd`, `#7e66fc`, `#7a62f9`, `#8068fe`) between `#8169ff` and `#5b3ee0`, which shows that Framer animates these changes in script; no duration or easing was measured, so none is declared.
 
 <!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on https://www.protopie.io/,
-https://www.protopie.io/pricing, https://www.protopie.io/blog:
-- Hero H1 "#1 advanced prototyping tool for dynamic interactions" — Gilroy Bold 62px / 700 / lh 80px / color rgb(24,24,24) #181818
-- Section H2 "Powerful features for highest fidelity" — Gilroy Bold 48px / 700 / lh 62.4px
-- Primary CTA "Get started for free" / "Book a Demo" — bg rgb(129,105,255) #8169ff / radius 4px / padding 14px 16px
-- Emphasis words "BUILDS"/"TRUST"/"RICHER" — color rgb(109,79,240) #6d4ff0 / 48px
-- Dark band DIV — bg rgb(26,25,53) #1a1935 (full-bleed)
-- Resource cards — radius 12px / box-shadow rgba(0,0,0,0.08) 0px 3px 12px
-- box-shadow: none across hero/nav/headings (mostly-flat system)
-- document.title: "ProtoPie: Interactive Prototyping Tool"; blog title "ProtoPie Blog | Prototyping Tips & Insights"
-
-Token-level claims (§1-9) are sourced from this live inspection (see web/references/protopie/.verification.md).
-
-Voice samples (§10) are verbatim from the live homepage and resource cards.
-
-Brand narrative (§11): ProtoPie is the product of Studio XID, Inc., founded 2015 in Seoul, Korea
-by Tony Kim (김수형). These are widely documented public facts about the company; specific
-founding details beyond the site are general public knowledge, not directly quoted from a
-verified ProtoPie statement in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable ProtoPie user segments
-(product/interaction designers, automotive HMI teams). Names are illustrative; they do not refer
-to real people.
-
-Interpretive claims (e.g., "one action, one color", "flat and focused so the work reads first")
-are editorial readings connecting ProtoPie's observed design to its positioning, not directly
-sourced ProtoPie statements.
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/protopie.json (capturedAt 2026-09-30T11:07:22Z), deterministic collector, 1440x900, logged out: protopie.io, /discover, /plans. States: fixed keyboard probe raws docs/research/2026-09-29-growth/raw/protopie-states-{home,plans}.json (configs protopie-cfg-*.json; labels from protopie-survey-{home,discover,plans}.json).
+- §1, §10, §11 context: protopie.io home copy and footer, /ko title, /legal (Studio XID entities), /discover and /plans titles; opened 2026-09-30. The July 2026 title and hero are from the previous record.
+- §3 licences: Figtree OFL.txt (google/fonts) and Inter LICENSE.txt (rsms/inter), opened 2026-09-30.
+- Personas are fictional archetypes. Interpretive readings are editorial.
 -->
