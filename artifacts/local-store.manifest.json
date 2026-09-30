@@ -7,8 +7,8 @@
       "dir": "artifacts/reference-evidence",
       "why": "140개 verified 레퍼런스의 캡쳐 근거. 만료 대응 R트랙 55건의 유일한 입력.",
       "critical": true,
-      "fileCount": 217,
-      "bytes": 184178291,
+      "fileCount": 228,
+      "bytes": 193533990,
       "files": {
         "104.json": {
           "sha256": "006a9edc3a9ee4c87f1189cc315b1b22c0ab769c4a014b50d435a04670c715ae",
@@ -29,6 +29,10 @@
         "42dot.json": {
           "sha256": "6ed37bb4ef3ce3a7a8c3ea2e1a972ddcf927f80e9035a93df3b4739fbdf693ff",
           "bytes": 700363
+        },
+        "8percent.json": {
+          "sha256": "61b46b5e4357d17bb6c633b2c41aa3a56fb0d8d4d2177e5ba7bf23687f8dbbcf",
+          "bytes": 663337
         },
         "ably.json": {
           "sha256": "752a569bafa0a5d5e7cd95d7e07b2819ca63ac455ba4aa1cf5e5d926d5d5e797",
@@ -101,6 +105,10 @@
         "china-airlines.json": {
           "sha256": "a8fff244970e6f53e7945f1277639c87a2aac5d461490e42ce1e7c2ac7ea4756",
           "bytes": 1529641
+        },
+        "cjonstyle.json": {
+          "sha256": "956ff4ae63aa528162d9cc37775ad71f7ec4a4f3390b97680a5e768309d351f4",
+          "bytes": 1617818
         },
         "class101.json": {
           "sha256": "9b61ffc27e4ad76a243c717492cbb09209238ea9424682425541385cb4ae593a",
@@ -241,6 +249,10 @@
         "gangnamunni.json": {
           "sha256": "6c0df5db5e2bbd2d8dedacd612a9e44d96c52e1cacb8b5dfb002752083fc9969",
           "bytes": 823872
+        },
+        "genie.json": {
+          "sha256": "2fa15abbbfb3b5651cebe23a95d59b4cb9eee1fe7a3b9ed220773d66911e3fd7",
+          "bytes": 1481933
         },
         "google.json": {
           "sha256": "ad5807fc2f0431f208ad2b2e1beb56151723a24b560b955cbd5876ef1ad9e946",
@@ -386,6 +398,10 @@
           "sha256": "ed0fd0fdafc0e2adc726666b4418916e9cccac9134c31319d66cef9d3a571f4e",
           "bytes": 995031
         },
+        "laundrygo.json": {
+          "sha256": "5385ce2fd3b64611972beb2461f91a5d8eb2bbd4334df6d9a7ac6e3a739b7bee",
+          "bytes": 461831
+        },
         "lemonbase.json": {
           "sha256": "1ea5cf01c72a9ec6c2d000f8cba17c0d4b5a39baf242f1b11d2896f3b6bd8f13",
           "bytes": 776587
@@ -421,6 +437,10 @@
         "makinarocks.json": {
           "sha256": "fea1aa72ee9518a239d97f85e73341431d29c80784f0e54f9d9e2c1512a4a501",
           "bytes": 568250
+        },
+        "maum-ai.json": {
+          "sha256": "6e29ff3a0c1420fa726536eb67319f6b20693ef32f9d82854fee187ed342633d",
+          "bytes": 202589
         },
         "megabox.json": {
           "sha256": "6957be91c9f9cd99a0ef09326fe30e86fe274795c3ccfdefdbb1721d49623c9a",
@@ -586,6 +606,10 @@
           "sha256": "55886f5e5e39aedd68aa8abd3055802e941fbd3cb6055ec7cfb9ba2bb572fdfe",
           "bytes": 935999
         },
+        "pozalabs.json": {
+          "sha256": "ddc3670e020943d6aebeec9bb03d9b067c99e02bf672ead1a72048ac0690babf",
+          "bytes": 323347
+        },
         "protopie.json": {
           "sha256": "ccb6f659d9b5161717ba14cc2c367652d4c93381007f762e301ee71c58bbb114",
           "bytes": 1088848
@@ -614,9 +638,17 @@
           "sha256": "8ae0bd2beadebc76619856c580c56a80c949c3bc0b42882177c6524ea0c6712b",
           "bytes": 909023
         },
+        "returnzero.json": {
+          "sha256": "884cd791dcbce89f1808d3b77666db0e117f77ed18627fc08ce3d50192b191fe",
+          "bytes": 168390
+        },
         "ridi.json": {
           "sha256": "2a3ae2b3c51304b04661cc3d65c6b3b37008524681daf30d3dc882ffda75d9c1",
           "bytes": 330712
+        },
+        "ringle.json": {
+          "sha256": "fdcecbb386c1a7c756021f10a1c7cf2773759d2b4a9ad95ae4f63f4c32aba0d8",
+          "bytes": 1088088
         },
         "sakura-internet.json": {
           "sha256": "841edc0670aa1972c5e01330e9072409281ef312e99bc704dd2a06a966f3e5fd",
@@ -626,9 +658,17 @@
           "sha256": "3c30df46401a26cbd6f3fb567938f2de85b6b8e8b5cc6774e51b7085f07a4146",
           "bytes": 1617647
         },
+        "sandoll.json": {
+          "sha256": "37efcd7ac9170f6ec6eb5daaf73ba774bf45d1e8543c270504eebdb62d5c0c30",
+          "bytes": 1115952
+        },
         "sanity.json": {
           "sha256": "f8f4383a2955d1f879eb9913b34b6bd8c245d97691427f49af44b3641be75b21",
           "bytes": 1807301
+        },
+        "saramin.json": {
+          "sha256": "466c5fa1f90039d624a7591d3c80323f340a7073b34cdb8e5d96848b6a88a4a2",
+          "bytes": 1724565
         },
         "scatterlab.json": {
           "sha256": "36d2791920b1456ebaea6fe56b0b6cb858e307c41135664a488bafa64bd1d347",
@@ -809,6 +849,10 @@
         "vercel.json": {
           "sha256": "d0658e7d4e25f61f0d6a39eaeba2fe8eda6b91c0cac5caef83b269d0d6078a3d",
           "bytes": 705693
+        },
+        "vuno.json": {
+          "sha256": "8c0a620c8503c32b0ae08889282793f5a95f5db811a048d47deae979f4082834",
+          "bytes": 507849
         },
         "wanted.json": {
           "sha256": "a74b3080834ebf394a9b308eb4bbf201106f296b47472135c9f4c72137f25fcd",

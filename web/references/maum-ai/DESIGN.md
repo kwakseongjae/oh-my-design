@@ -9,50 +9,243 @@ primary_color: "#4262ff"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=maum.ai&sz=128"
-verified: "2026-07-02"
+verified: "2026-09-30"
 added: "2026-07-02"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://maum.ai/", inspected: "2026-09-30" }
+    - { id: surface-2, kind: marketing, url: "https://maum.ai/physical-ai-service", inspected: "2026-09-30" }
+    - { id: surface-3, kind: product, url: "https://maum.ai/maum-gpt", inspected: "2026-09-30" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://maum.ai/", captured: "2026-09-30" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://maum.ai/physical-ai-service", captured: "2026-09-30" }
+    - { id: surface-surface-3, kind: product-surface, url: "https://maum.ai/maum-gpt", captured: "2026-09-30" }
+    - { id: maum-ai-probe-home, kind: product-surface, url: "https://maum.ai/", captured: "2026-09-30" }
+    - { id: maum-ai-probe-physical, kind: product-surface, url: "https://maum.ai/physical-ai-service", captured: "2026-09-30" }
+    - { id: maum-ai-probe-gpt, kind: product-surface, url: "https://maum.ai/maum-gpt", captured: "2026-09-30" }
+    - { id: maum-company, kind: official-doc, url: "https://maum.ai/company", captured: "2026-09-30" }
+    - { id: maum-brain-blog, kind: official-doc, url: "https://maum-ai.github.io/", captured: "2026-09-30" }
+    - { id: maum-github, kind: official-doc, url: "https://github.com/maum-ai", captured: "2026-09-30" }
+    - { id: pretendard-license, kind: license, url: "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &newchat { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"9\"]", captured: "2026-09-30" }
+    "tokens.colors.on-primary": *newchat
+    "tokens.colors.dark": &contact { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-09-30" }
+    "tokens.colors.nav-selected": &sidesel { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"9\"]", captured: "2026-09-30" }
+    "tokens.colors.secondary": &retrieval { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"14\"]", captured: "2026-09-30" }
+    "tokens.colors.ink": &body { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
+    "tokens.colors.lead-grey": &lead { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.nav-muted": &gnb { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-09-30" }
+    "tokens.colors.muted": &caption { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.colors.white": &top { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"26\"]", captured: "2026-09-30" }
+    "tokens.colors.selected-tint": &chatsel { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"10\"]", captured: "2026-09-30" }
+    "tokens.colors.hover-surface": &sidestate { surface_id: surface-2, source_id: maum-ai-probe-physical, method: live-state-probe, selector: "a AI Integration Module (176 x 64): hover and pressed bg rgba(0, 0, 0, 0) -> rgb(242, 243, 247), shadow none -> rgb(210, 220, 234) 0px 1px 0px 0px; selected a HOME (176 x 52, rest bg rgb(41, 45, 51)): hover and pressed opacity 1 -> 0.9; transition 0.15s cubic-bezier(0.4, 0, 0.2, 1); focus (Tabs #10, #11) outline rgb(0, 95, 204) auto 1px (browser default)", captured: "2026-09-30" }
+    "tokens.colors.hairline": &card { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::li", captured: "2026-09-30" }
+    "tokens.colors.underline": *chatsel
+    "tokens.typography.family.display": &hero { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.family.body": *body
+    "tokens.typography.display-hero.size": *hero
+    "tokens.typography.display-hero.weight": *hero
+    "tokens.typography.display-hero.lineHeight": *hero
+    "tokens.typography.display-hero.use": *hero
+    "tokens.typography.section-title.size": &h2 { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h2", captured: "2026-09-30" }
+    "tokens.typography.section-title.weight": *h2
+    "tokens.typography.section-title.lineHeight": *h2
+    "tokens.typography.section-title.use": *h2
+    "tokens.typography.product-name.size": &pname { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::div", captured: "2026-09-30" }
+    "tokens.typography.product-name.weight": *pname
+    "tokens.typography.product-name.lineHeight": *pname
+    "tokens.typography.product-name.use": *pname
+    "tokens.typography.prompt-title.size": &h2gpt { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h2", captured: "2026-09-30" }
+    "tokens.typography.prompt-title.weight": *h2gpt
+    "tokens.typography.prompt-title.lineHeight": *h2gpt
+    "tokens.typography.prompt-title.use": *h2gpt
+    "tokens.typography.section-label.size": &plabel { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.typography.section-label.weight": *plabel
+    "tokens.typography.section-label.lineHeight": *plabel
+    "tokens.typography.section-label.use": *plabel
+    "tokens.typography.lead.size": *lead
+    "tokens.typography.lead.weight": *lead
+    "tokens.typography.lead.lineHeight": *lead
+    "tokens.typography.lead.use": *lead
+    "tokens.typography.description.size": &desc { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.typography.description.weight": *desc
+    "tokens.typography.description.lineHeight": *desc
+    "tokens.typography.description.use": *desc
+    "tokens.typography.button-lg.size": *contact
+    "tokens.typography.button-lg.weight": *contact
+    "tokens.typography.button-lg.lineHeight": *contact
+    "tokens.typography.button-lg.use": *contact
+    "tokens.typography.nav.size": *gnb
+    "tokens.typography.nav.weight": *gnb
+    "tokens.typography.nav.lineHeight": *gnb
+    "tokens.typography.nav.use": *gnb
+    "tokens.typography.button.size": *newchat
+    "tokens.typography.button.weight": *newchat
+    "tokens.typography.button.lineHeight": *newchat
+    "tokens.typography.button.use": *newchat
+    "tokens.typography.body.size": *body
+    "tokens.typography.body.weight": *body
+    "tokens.typography.body.lineHeight": *body
+    "tokens.typography.body.use": *body
+    "tokens.typography.caption.size": *caption
+    "tokens.typography.caption.weight": *caption
+    "tokens.typography.caption.lineHeight": *caption
+    "tokens.typography.caption.use": *caption
+    "tokens.spacing.cta-y": *contact
+    "tokens.spacing.cta-x": *contact
+    "tokens.spacing.side-y": &side { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"10\"]", captured: "2026-09-30" }
+    "tokens.spacing.side-x": *side
+    "tokens.spacing.list-y": *chatsel
+    "tokens.spacing.list-x": *chatsel
+    "tokens.spacing.icon-inset": *newchat
+    "tokens.rounded.menu": &lang { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"7\"]", captured: "2026-09-30" }
+    "tokens.rounded.card": *card
+    "tokens.rounded.action": *newchat
+    "tokens.rounded.pill": *contact
+    "tokens.shadow.top-button": *top
+    "tokens.shadow.card-line": *card
+    "tokens.components.contact-cta.type": *contact
+    "tokens.components.contact-cta.bg": *contact
+    "tokens.components.contact-cta.fg": *contact
+    "tokens.components.contact-cta.radius": *contact
+    "tokens.components.contact-cta.padding": *contact
+    "tokens.components.contact-cta.height": *contact
+    "tokens.components.contact-cta.font": *contact
+    "tokens.components.contact-cta.hover": &contactstate { surface_id: home, source_id: maum-ai-probe-home, method: live-state-probe, selector: "button Contact Us (192 x 65, rest bg rgb(52, 52, 52), fg rgb(255, 255, 255)): hover and pressed bg -> rgba(0, 0, 0, 0), bg-image none -> linear-gradient(93deg, rgb(107, 157, 205) 0%, rgb(113, 166, 47) 170.68%); transition all 0s; focus (Tab #11) outline rgb(0, 95, 204) auto 1px (browser default)", captured: "2026-09-30" }
+    "tokens.components.contact-cta.pressed": *contactstate
+    "tokens.components.contact-cta.states": *contactstate
+    "tokens.components.contact-cta.use": *contact
+    "tokens.components.gnb-link.type": *gnb
+    "tokens.components.gnb-link.fg": *gnb
+    "tokens.components.gnb-link.font": *gnb
+    "tokens.components.gnb-link.hover": &gnbstate { surface_id: home, source_id: maum-ai-probe-home, method: live-state-probe, selector: "a Physical AI (82.5 x 19): hover and pressed fg rgb(142, 142, 142) -> rgb(17, 17, 17); transition color, background-color, border-color, text-decoration-color, fill, stroke 0.2s cubic-bezier(0.4, 0, 0.2, 1); focus (Tab #6) outline rgb(0, 95, 204) auto 1px (browser default)", captured: "2026-09-30" }
+    "tokens.components.gnb-link.pressed": *gnbstate
+    "tokens.components.gnb-link.states": *gnbstate
+    "tokens.components.gnb-link.use": *gnb
+    "tokens.components.top-button.type": *top
+    "tokens.components.top-button.bg": *top
+    "tokens.components.top-button.radius": *top
+    "tokens.components.top-button.size": *top
+    "tokens.components.top-button.shadow": *top
+    "tokens.components.top-button.states": &topstate { surface_id: home, source_id: maum-ai-probe-home, method: live-state-probe, selector: "button back to top (48 x 48, rest bg rgb(255, 255, 255)): hover and pressed NO CHANGE across self, 1 descendant (img) and 3 ancestor levels; focus (Tab #58) outline rgb(0, 95, 204) auto 1px (browser default)", captured: "2026-09-30" }
+    "tokens.components.top-button.use": *top
+    "tokens.components.new-chat-button.type": *newchat
+    "tokens.components.new-chat-button.bg": *newchat
+    "tokens.components.new-chat-button.fg": *newchat
+    "tokens.components.new-chat-button.radius": *newchat
+    "tokens.components.new-chat-button.padding": *newchat
+    "tokens.components.new-chat-button.height": *newchat
+    "tokens.components.new-chat-button.font": *newchat
+    "tokens.components.new-chat-button.states": &newchatstate { surface_id: surface-3, source_id: maum-ai-probe-gpt, method: live-state-probe, selector: "button 새로운 대화 (208 x 56, rest bg rgb(66, 98, 255), fg rgb(255, 255, 255)): hover and pressed NO CHANGE across self and 3 ancestor levels; transition all 0s; focus (Tab #10) outline rgb(0, 95, 204) auto 1px (browser default)", captured: "2026-09-30" }
+    "tokens.components.new-chat-button.use": *newchat
+    "tokens.components.retrieval-button.type": *retrieval
+    "tokens.components.retrieval-button.bg": *retrieval
+    "tokens.components.retrieval-button.fg": *retrieval
+    "tokens.components.retrieval-button.radius": *retrieval
+    "tokens.components.retrieval-button.padding": *retrieval
+    "tokens.components.retrieval-button.height": *retrieval
+    "tokens.components.retrieval-button.font": *retrieval
+    "tokens.components.retrieval-button.states": &retrievalstate { surface_id: surface-3, source_id: maum-ai-probe-gpt, method: live-state-probe, selector: "button Retrieval 모델 설정 (208 x 56, rest bg rgb(91, 99, 109)): hover and pressed NO CHANGE across self and 3 ancestor levels; focus (Tab #15) outline rgb(0, 95, 204) auto 1px (browser default)", captured: "2026-09-30" }
+    "tokens.components.retrieval-button.use": *retrieval
+    "tokens.components.chat-list-item.type": &chat { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"11\"]", captured: "2026-09-30" }
+    "tokens.components.chat-list-item.bg": *chat
+    "tokens.components.chat-list-item.fg": *chat
+    "tokens.components.chat-list-item.radius": *chat
+    "tokens.components.chat-list-item.padding": *chat
+    "tokens.components.chat-list-item.height": *chat
+    "tokens.components.chat-list-item.font": *chat
+    "tokens.components.chat-list-item.selected": *chatsel
+    "tokens.components.chat-list-item.hover": &chatstate { surface_id: surface-3, source_id: maum-ai-probe-gpt, method: live-state-probe, selector: "a MAAL (208 x 48): hover and pressed bg rgba(0, 0, 0, 0) -> rgb(242, 243, 247), shadow none -> rgb(210, 220, 234) 0px 1px 0px 0px; selected a 외부 GPT (rest bg rgb(226, 237, 252)): hover and pressed shadow only; transition 0.15s cubic-bezier(0.4, 0, 0.2, 1); focus (Tabs #11, #12) outline rgb(0, 95, 204) auto 1px (browser default)", captured: "2026-09-30" }
+    "tokens.components.chat-list-item.pressed": *chatstate
+    "tokens.components.chat-list-item.states": *chatstate
+    "tokens.components.chat-list-item.use": *chat
+    "tokens.components.side-menu-item.type": *side
+    "tokens.components.side-menu-item.fg": *side
+    "tokens.components.side-menu-item.radius": *side
+    "tokens.components.side-menu-item.padding": *side
+    "tokens.components.side-menu-item.height": *side
+    "tokens.components.side-menu-item.font": *side
+    "tokens.components.side-menu-item.selected": *sidesel
+    "tokens.components.side-menu-item.hover": *sidestate
+    "tokens.components.side-menu-item.pressed": *sidestate
+    "tokens.components.side-menu-item.states": *sidestate
+    "tokens.components.side-menu-item.use": *side
+    "tokens.components.language-dropdown.type": *lang
+    "tokens.components.language-dropdown.fg": *lang
+    "tokens.components.language-dropdown.radius": *lang
+    "tokens.components.language-dropdown.size": *lang
+    "tokens.components.language-dropdown.font": *lang
+    "tokens.components.language-dropdown.hover": &langstate { surface_id: surface-2, source_id: maum-ai-probe-physical, method: live-state-probe, selector: "button KOR (80 x 40): hover and pressed bg rgba(0, 0, 0, 0) -> rgb(242, 243, 247); transition 0.15s cubic-bezier(0.4, 0, 0.2, 1); focus (Tab #8) outline rgb(0, 95, 204) auto 1px (browser default)", captured: "2026-09-30" }
+    "tokens.components.language-dropdown.pressed": *langstate
+    "tokens.components.language-dropdown.states": *langstate
+    "tokens.components.language-dropdown.use": *lang
+    "tokens.components.product-card.type": *card
+    "tokens.components.product-card.bg": *card
+    "tokens.components.product-card.border": *card
+    "tokens.components.product-card.radius": *card
+    "tokens.components.product-card.size": *card
+    "tokens.components.product-card.shadow": *card
+    "tokens.components.product-card.use": *card
+    "tokens.components.chat-input.type": &input { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"16\"]", captured: "2026-09-30" }
+    "tokens.components.chat-input.fg": *input
+    "tokens.components.chat-input.padding": *input
+    "tokens.components.chat-input.height": *input
+    "tokens.components.chat-input.font": *input
+    "tokens.components.chat-input.disabled": *input
+    "tokens.components.chat-input.use": *input
 tokens:
-  source: live-extract
-  extracted: "2026-07-02"
-  note: "primary = live hero CTA blue (#4262ff, 시작하기) with a darker #3652d8 border; secondary action system is a charcoal #343434 full-pill (Contact/Chatbot). Text is near-black #111111 on white; #ff4d4d is the single warm accent. Flat, near-shadowless system."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
     primary: "#4262ff"
-    primary-border: "#3652d8"
-    dark: "#343434"
-    ink: "#111111"
-    ink-pure: "#000000"
-    body: "#5b636d"
-    muted: "#595959"
-    nav-muted: "#8e8e8e"
-    accent-red: "#ff4d4d"
-    link-blue: "#2563eb"
-    canvas: "#ffffff"
-    surface: "#f2f3f8"
-    surface-alt: "#f2f5f9"
-    hairline: "#dee4eb"
     on-primary: "#ffffff"
+    dark: "#343434"
+    nav-selected: "#292d33"
+    secondary: "#5b636d"
+    ink: "#111111"
+    lead-grey: "#595959"
+    nav-muted: "#8e8e8e"
+    muted: "#949ca5"
+    white: "#ffffff"
+    selected-tint: "#e2edfc"
+    hover-surface: "#f2f3f7"
+    hairline: "#dee4eb"
+    underline: "#d2dcea"
   typography:
-    family: { display: "Jamsil", body: "Pretendard", techno: "Orbitron" }
-    display-techno: { size: 115, weight: 700, lineHeight: 1.01, use: "Oversized MAIED techno wordmark, Orbitron" }
-    section:        { size: 36, weight: 700, lineHeight: 1.25, use: "Section heads (MAUM.AI Foundation Model), Jamsil" }
-    heading-sm:     { size: 18, weight: 700, lineHeight: 1.25, use: "Sub-heads / policy titles, Pretendard" }
-    button-lg:      { size: 20, weight: 600, lineHeight: 1.40, use: "Large charcoal round CTA label, Pretendard" }
-    button:         { size: 16, weight: 700, lineHeight: 1.25, use: "Primary CTA label (시작하기), Pretendard" }
-    nav:            { size: 16, weight: 700, lineHeight: 1.19, use: "Top nav item, Pretendard" }
-    body:           { size: 16, weight: 500, lineHeight: 1.25, use: "Standard reading / UI text, Pretendard" }
-  spacing: { xs: 4, sm: 8, md: 16, base: 20, lg: 32, xl: 40, xxl: 64 }
-  rounded: { sm: 6, md: 8, lg: 20, full: 9999 }
+    family: { display: "Jamsil", body: "Pretendard" }
+    display-hero: { size: 72, weight: 700, lineHeight: 1.02, use: "Home headline (Physical AI 로봇을 구독하세요.), Jamsil, 73.6px line, in #111111" }
+    section-title: { size: 48, weight: 700, lineHeight: 1, use: "Page headings on /physical-ai-service (Physical AI Product) and /maum-gpt (maumChatbot), Pretendard, 48px line" }
+    product-name: { size: 32, weight: 600, lineHeight: 1.13, use: "Product names on the /physical-ai-service cards, 36px line" }
+    prompt-title: { size: 24, weight: 700, lineHeight: 1.33, use: "Chat prompt heading on /maum-gpt (지금 MAAL과 대화해 보세요.), 32px line; chatbot product surface" }
+    section-label: { size: 24, weight: 600, lineHeight: 1.33, use: "Section label above the product cards on /physical-ai-service, 32px line" }
+    lead: { size: 20, weight: 500, lineHeight: 1.3, use: "Product descriptions in the home carousel, 26px line, in #595959" }
+    description: { size: 20, weight: 400, lineHeight: 1.45, use: "Page introductions on /physical-ai-service and /maum-gpt, 29px line" }
+    button-lg: { size: 20, weight: 600, lineHeight: 1.25, use: "Contact Us label on home, 25px line" }
+    nav: { size: 16, weight: 700, lineHeight: 1.25, use: "Home navigation links (Physical AI, Defense, MAIED, 회사소개), 20px line, in #8e8e8e" }
+    button: { size: 16, weight: 700, lineHeight: 1.25, use: "새로운 대화 and Retrieval 모델 설정 labels on /maum-gpt, 20px line" }
+    body: { size: 16, weight: 500, lineHeight: 1.25, use: "Document default on all three pages, 20px line, in #111111" }
+    caption: { size: 14, weight: 500, lineHeight: 1.14, use: "Small grey meta text on /physical-ai-service, 16px line, in #949ca5" }
+  spacing: { cta-y: 20, cta-x: 32, side-y: 32, side-x: 16, list-y: 16, list-x: 20, icon-inset: 48 }
+  rounded: { menu: 8, card: 10, action: 12, pill: 9999 }
   shadow:
-    none: "none"
+    top-button: "rgba(18, 44, 72, 0.2) 0px 2px 8px 0px"
+    card-line: "rgb(222, 228, 235) 0px 1px 0px 0px"
   components:
-    button-primary: { type: button, bg: "#4262ff", fg: "#ffffff", radius: "8px", height: "50px", padding: "0px 32px", border: "1px solid #3652d8", font: "16px / 700 Pretendard", use: "Primary hero CTA (시작하기)" }
-    button-dark-round: { type: button, bg: "#343434", fg: "#ffffff", radius: "9999px", height: "65px", padding: "20px 32px", font: "20px / 600 Pretendard", use: "Contact Us / Chatbot Inquiry round CTA" }
-    input-text: { type: input, bg: "#f2f3f8", fg: "#111111", border: "1px solid #dee4eb", radius: "6px", height: "64px", font: "16px Pretendard", use: "Contact form text field" }
-    card-outline: { type: card, radius: "20px", border: "1px solid #ffffff", padding: "40px 0px", use: "Product showcase card with white hairline outline over media" }
-    card-surface: { type: card, bg: "#f2f3f8", fg: "#111111", radius: "20px", use: "Tinted content / section card" }
-    nav-link: { type: tab, fg: "#8e8e8e", font: "16px / 700 Pretendard", active: "ink #111111 text on active", use: "Top navigation item" }
-    badge-accent: { type: badge, fg: "#ff4d4d", radius: "9999px", font: "16px / 700 Pretendard", use: "Warm-red emphasis label / highlight tag" }
+    contact-cta: { type: button, bg: "#343434", fg: "#ffffff", radius: "9999px", padding: "20px 32px", height: "65px", font: "20px / 600 / 25px Pretendard", hover: "background-color becomes transparent and a linear-gradient(93deg, rgb(107, 157, 205) 0%, rgb(113, 166, 47) 170.68%) fills the pill", pressed: "the same gradient", states: "settles at once (transition all 0s); focus draws only the browser's default ring, so no brand focus style is declared", use: "Contact Us under the home headline, 192 x 65; marketing page" }
+    gnb-link: { type: tab, fg: "#8e8e8e", font: "16px / 700 / 20px Pretendard", hover: "fg #111111", pressed: "fg #111111", states: "0.2s colour transition on cubic-bezier(0.4, 0, 0.2, 1); focus draws only the browser default ring", use: "Home navigation (Physical AI, Defense, MAIED, 회사소개)" }
+    top-button: { type: button, bg: "#ffffff", radius: "9999px", size: "48px x 48px", shadow: "rgba(18, 44, 72, 0.2) 0px 2px 8px 0px", states: "hover and pressed show no change", use: "Back-to-top circle on home, the one lifted control captured" }
+    new-chat-button: { type: button, bg: "#4262ff", fg: "#ffffff", radius: "12px", padding: "0px 0px 0px 48px", height: "56px", font: "16px / 700 / 20px Pretendard", states: "hover and pressed show no change (transition all 0s); focus draws only the browser default ring", use: "새로운 대화, the primary action of the maumChatbot page, 208 x 56 with an icon inset at the left; chatbot product surface" }
+    retrieval-button: { type: button, bg: "#5b636d", fg: "#ffffff", radius: "12px", padding: "0px 0px 0px 48px", height: "56px", font: "16px / 700 / 20px Pretendard", states: "hover and pressed show no change", use: "Retrieval 모델 설정 at the foot of the chatbot sidebar, 208 x 56; chatbot product surface" }
+    chat-list-item: { type: tab, bg: "transparent", fg: "#111111", radius: "12px", padding: "16px 20px", height: "48px", font: "16px / 700 / 20px Pretendard", selected: "bg #e2edfc with a 1px #d2dcea bottom border and 12px 12px 0 0 corners", hover: "bg #f2f3f7 with a 1px #d2dcea bottom shadow line", pressed: "bg #f2f3f7 with the same line", states: "0.15s transition on cubic-bezier(0.4, 0, 0.2, 1); the selected item gains only the line on hover", use: "Chatbot list in the /maum-gpt sidebar (외부 GPT selected, MAAL and others); chatbot product surface" }
+    side-menu-item: { type: tab, fg: "#111111", radius: "12px", padding: "32px 16px", height: "64px", font: "16px / 700 / 20px Pretendard", selected: "bg #292d33, fg #ffffff, 16px / 600, 16px padding, 52px tall", hover: "bg #f2f3f7 with a 1px #d2dcea bottom shadow line", pressed: "bg #f2f3f7 with the same line", states: "the selected item fades to opacity 0.9 on hover and press; 0.15s transition on cubic-bezier(0.4, 0, 0.2, 1)", use: "Left menu of /physical-ai-service (HOME selected, AI Integration Module and others), 176px wide" }
+    language-dropdown: { type: button, fg: "#111111", radius: "8px", size: "80px x 40px", font: "16px / 500 / 20px Pretendard", hover: "bg #f2f3f7", pressed: "bg #f2f3f7", states: "0.15s transition", use: "KOR language toggle in the header of /physical-ai-service and /maum-gpt" }
+    product-card: { type: card, bg: "transparent", border: "1px solid #dee4eb", radius: "10px", size: "355px x 487px", shadow: "rgb(222, 228, 235) 0px 1px 0px 0px", use: "Product cards on /physical-ai-service (4 instances)" }
+    chat-input: { type: input, fg: "#111111", padding: "8px 40px", height: "40px", font: "16px / 500 / 24px Pretendard", disabled: "the textarea is disabled for logged-out visitors", use: "Message field of the maumChatbot page, 517 x 40; never typed into; chatbot product surface" }
   components_harvested: true
 ---
 
@@ -60,371 +253,356 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-maum.ai (마음AI, formerly MindsLab / 마인즈랩) presents itself as a "Physical AI" platform, and its homepage carries the calm, engineered confidence of a deep-tech company that ships real hardware and models rather than a consumer app chasing delight. The canvas is pure white (`#ffffff`) with cool-grey tinted surfaces (`#f2f3f8`, `#f2f5f9`) that segment the page into airy, breathable bands. Text sits in a near-black `#111111` — never a flat pure black for running copy — which reads as precise and trustworthy, occasionally dropping to true `#000000` only for maximum-contrast display moments. The one saturated brand anchor is an electric indigo-blue (`#4262ff`), reserved almost exclusively for the primary "시작하기" call-to-action, so the eye is trained to read that single color as "the action."
+maum.ai (마음AI) is a Korean artificial-intelligence company that now calls itself "The Physical AI Company" and describes its work as "Building Robot Brains". Its company page says it was founded in 2014 (회사설립년도 2014년 1월) as an AI specialist able to take technology from development to industrial deployment, and that it is moving beyond AI that processes documents and data toward AI embedded in robots and machines that judge and act for themselves. The company overview on the same page lists (주)마음에이아이, CEO 유태준, a head office in Pangyo, Seongnam, and 130 staff. The site still carries traces of its former name, MindsLab (마인즈랩): a "2022 마인즈랩 사업보고서" disclosure label and an engine-owner value `MindsLab` that the interface labels 마음AI.
 
-The typographic personality is a three-font system, each with a distinct job. **Pretendard** is the workhorse — the de-facto Korean product font — carrying body, navigation, and button labels at a quiet 16px. **Jamsil** (잠실체) steps up for section headings such as "MAUM.AI Foundation Model" at 36px / weight 700, lending a heavier, more editorial Korean voice to feature titles. And **Orbitron**, a geometric techno face, appears at an oversized 115px for the "MAIED" wordmark — a deliberate sci-fi flourish that signals the company's frontier-model ambitions. The result is a hierarchy where the functional font stays calm and the display fonts do the persuading.
+The product story is built on four foundation models — MAAL (an edge agent LLM), SUDA (speech-to-text, LLM and text-to-speech combined on-device for zero-latency voice conversation), BODA (a vision-language model) and WoRV (a vision-based robotics model) — and on MAIED (Maum AI Edge Device), an edge module that runs them without the cloud. The home page puts robots first: JINDO BOT, a domestically built four-legged robot; AIden, a conversational, self-driving service robot; an unmanned pesticide sprayer; a barrier-free kiosk with an AI human; and Woochi Bot, a performance humanoid for events. Its headline asks visitors to subscribe to Physical AI robots.
 
-What distinguishes maum.ai from softer SaaS peers is its restraint with depth and its two-track button geometry. The system is essentially shadowless: live inspection returned `box-shadow: none` across nav, hero, and product cards, with separation coming from flat tinted surfaces and thin `#dee4eb` hairlines instead of elevation. Buttons split into two families — the sharp-cornered indigo primary (`#4262ff`, 8px radius, with a darker `#3652d8` outline) for the main funnel, and a charcoal (`#343434`) full-pill (9999px radius) for softer "Contact Us" and "Chatbot Inquiry" secondary actions. A single warm red (`#ff4d4d`) provides emphasis accents, and a secondary link blue (`#2563eb`) handles inline links. Product showcase cards use a 20px radius with a translucent white (`#ffffff`) hairline outline floating over media. The overall impression is flat, modern, and industrial — an AI infrastructure brand that looks built, not decorated.
+The website is quiet and near-monochrome. Pages are white with `#111111` text set in Pretendard at weight 500. The home headline is the one expressive type moment: Jamsil at 72px, weight 700. The home call to action is a charcoal `#343434` pill that turns into a blue-to-green gradient on hover. Product pages add a left menu whose selected item is a dark `#292d33` tile and whose hover is a pale `#f2f3f7` fill with a thin `#d2dcea` line. Colour appears in the chatbot product: its primary action, 새로운 대화, is filled in indigo `#4262ff`, and its selected list item sits on a pale blue `#e2edfc`. Depth is almost absent; 131 of the 150 recorded elements compute `box-shadow: none`, and the rest are transparent rings, a hairline under the cards and one lifted back-to-top button.
 
 **Key Characteristics:**
-- Three-font system: Pretendard (body/UI), Jamsil (section display), Orbitron (techno wordmark)
-- Single saturated indigo (`#4262ff`) reserved for the primary "시작하기" CTA
-- Two-track buttons: sharp 8px indigo primary vs charcoal (`#343434`) full-pill secondary
-- Near-black `#111111` text instead of pure black for running copy
-- Flat depth: `box-shadow: none`; separation via tinted `#f2f3f8` surfaces and `#dee4eb` hairlines
-- Warm red (`#ff4d4d`) as the single accent; blue (`#2563eb`) for inline links
-- 20px-radius product cards with translucent white (`#ffffff`) hairline outlines over media
-- Cool-grey neutral ladder (`#5b636d` → `#595959` → `#8e8e8e`) for text hierarchy
+- Near-monochrome marketing pages: white, `#111111` text, `#595959` and `#949ca5` greys, `#8e8e8e` navigation
+- Jamsil 72px / 700 for the home headline; Pretendard 500 for body and 700 for navigation and actions
+- A charcoal `#343434` pill call to action whose hover is a blue-to-green gradient
+- Indigo `#4262ff` as the filled primary action of the chatbot product, with a pale blue `#e2edfc` selection
+- 12px corners on menu and action tiles, 10px on cards, pills for the marketing call to action
+- Pale `#f2f3f7` hover fills with a 1px `#d2dcea` line under menu and list items
+- Flat surfaces; only the back-to-top button is lifted
 
 ## Primary tasks
 
-- Read the research blog and GitHub org before booking a call
-- Browse the product lineup from robots to defense systems
-- Check concrete capability claims and integration paths before buying
-- Find a contact path to reach the company
+- Browse the robot and Physical AI product lineup
+- Read what the foundation models and the MAIED edge module do
+- Try the maumChatbot and see which models it offers
+- Find a contact path to the company
 
 ## 2. Color Palette & Roles
 
+Every token below was read on 2026-09-30 by the deterministic collector from the logged-out home (maum.ai), the product showcase (/physical-ai-service) and the chatbot page (/maum-gpt), and hover values by the fixed keyboard probe. The home and /physical-ai-service are marketing pages; /maum-gpt is a separate evidence domain, the maumChatbot product, and components from it are labelled "chatbot product surface". No value is taken from the app behind the login.
+
 ### Primary
-- **maum Indigo** (`#4262ff`): Primary brand color and CTA background. The saturated indigo-blue on the "시작하기" button — the system's single "action" color.
-- **Indigo Border** (`#3652d8`): A darker indigo used as the 1px border/outline on the primary button, giving the fill a subtle engineered edge.
-- **Charcoal** (`#343434`): The secondary-action color. Backs the full-pill "Contact Us" and "Chatbot Inquiry" round buttons.
+- **maum Indigo** (`#4262ff`): The fill of 새로운 대화, the primary action of the maumChatbot page (208 × 56, 12px radius, `#ffffff` label). It is the primary because it is the only chromatic colour that fills a primary action on the captured surfaces; the marketing home's call to action is charcoal, and nothing else carries a saturated hue. The evidence is one control on one page, and the probe found no hover or pressed change on it.
+- **On Primary** (`#ffffff`): Labels on the indigo, charcoal, slate and dark-tile fills.
 
-### Neutral & Surface
-- **Pure White** (`#ffffff`): Page background, card surfaces, text on indigo/charcoal, and the translucent card outline.
-- **Surface Grey** (`#f2f3f8`): Cool-grey tinted surface for input fields and segmented content sections.
-- **Surface Alt** (`#f2f5f9`): A slightly cooler secondary grey for alternating bands.
-- **Hairline** (`#dee4eb`): Thin borders and field outlines — the primary separation device in this shadow-free system.
+### Actions
+- **Charcoal** (`#343434`): The Contact Us pill on the home page, the marketing site's call to action. On hover and press its fill gives way to `linear-gradient(93deg, rgb(107, 157, 205) 0%, rgb(113, 166, 47) 170.68%)`.
+- **Slate** (`#5b636d`): Retrieval 모델 설정, the secondary action at the foot of the chatbot sidebar.
+- **Dark Tile** (`#292d33`): The selected item (HOME) of the /physical-ai-service left menu.
 
-### Text Hierarchy
-- **Ink** (`#111111`): Primary text, headings, nav labels, strong copy — a near-black used instead of pure black.
-- **Pure Black** (`#000000`): Reserved for maximum-contrast display moments only.
-- **Body Slate** (`#5b636d`): Secondary body copy and descriptions.
-- **Muted Grey** (`#595959`): Tertiary text, captions, metadata.
-- **Nav Muted** (`#8e8e8e`): Inactive top-navigation labels.
+### Text
+- **Ink** (`#111111`): The document default on every page, headings and menu labels.
+- **Lead Grey** (`#595959`): Product descriptions in the home carousel.
+- **Nav Muted** (`#8e8e8e`): Home navigation links at rest; they turn `#111111` on hover.
+- **Muted** (`#949ca5`): Small meta text and header utility links on the product pages.
 
-### Accent
-- **Accent Red** (`#ff4d4d`): The single warm accent — emphasis labels, highlight numbers, and attention cues.
-- **Link Blue** (`#2563eb`): Inline text links and secondary interactive text.
-- **On Primary** (`#ffffff`): Text/icon color on indigo and charcoal buttons.
+### Surface & Borders
+- **White** (`#ffffff`): The back-to-top button; the page canvas is the browser's white (the body computes a transparent background).
+- **Selected Tint** (`#e2edfc`): The selected chatbot in the /maum-gpt list.
+- **Hover Surface** (`#f2f3f7`): Hover fill of menu items, list items and the KOR toggle.
+- **Hairline** (`#dee4eb`): The 1px border and bottom line of the product cards.
+- **Underline** (`#d2dcea`): The 1px bottom border of the selected chatbot and the hover line under menu and list items.
+
+### Brand assets, not tokens
+- The Contact Us hover gradient (`rgb(107, 157, 205)` to `rgb(113, 166, 47)`) is a state fill, not a colour token.
+- The left icon rail of the product pages sets its labels in `rgba(255, 255, 255, 0.3)` on a dark rail whose fill the collector did not record.
+- The maum.ai logo was not measured; no logo colour is claimed.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Body / UI**: `Pretendard` — the document default; body, nav, and button labels at 16px.
-- **Display**: `Jamsil` (잠실체) — heavier Korean face for section headings (e.g. "MAUM.AI Foundation Model").
-- **Techno**: `Orbitron` — geometric sci-fi face used for the oversized "MAIED" wordmark only.
+- **Live surface use**: `Pretendard` (118 observed uses) and `Jamsil` (2), both `loaded / high`, self-hosted by maum.ai: Pretendard as OTF files (`maum.ai/assets/Pretendard-Regular-….otf` and other weights) and Jamsil as `maum.ai/assets/The-Jamsil-1-Thin-….ttf` through `The-Jamsil-4-Medium-….ttf` and further weights. Pretendard carries body, navigation, headings and buttons on all three pages; Jamsil sets the home headline and its container.
+- **Official distributed font assets**: Pretendard is an open-source Korean typeface by Kil Hyung-jin (orioncactus); its LICENSE, opened on 2026-09-30, states the SIL Open Font License 1.1. Jamsil's served files are named "The-Jamsil", which matches the typeface The Jamsil (더잠실); no distributor or licence page was opened this session, so its origin and licence are not stated.
+- **Official product use**: no maum.ai page opened this session names its typefaces, so no statement of official product use is made.
+- **Declared only (no visible use)**: `Orbitron` (Regular to Bold, self-hosted at `maum.ai/assets/Orbitron-….ttf`, 0 observed uses), `Pretendard Variable` (from jsDelivr, pretendard@1.3.9, 0 uses) and `swiper-icons` (the carousel library's icon font). No Orbitron text was observed, so no Orbitron specimen or size is given.
+- **Unresolved**: Jamsil's distributor and licence.
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display Techno | Orbitron | 115px (7.20rem) | 700 | 1.01 | normal | "MAIED" oversized wordmark |
-| Section Heading | Jamsil | 36px (2.25rem) | 700 | 1.25 (45px) | normal | Feature section titles |
-| Sub-heading | Pretendard | 18px (1.13rem) | 700 | 1.25 | normal | Sub-heads, policy titles |
-| Button Large | Pretendard | 20px (1.25rem) | 600 | 1.40 | normal | Charcoal round CTA labels |
-| Button | Pretendard | 16px (1.00rem) | 700 | 1.25 | normal | Primary CTA label (시작하기) |
-| Nav | Pretendard | 16px (1.00rem) | 700 | 1.19 | normal | Top navigation items |
-| Body | Pretendard | 16px (1.00rem) | 500 | 1.25 (20px) | normal | Standard reading / UI text |
+| Role | Font | Size | Weight | Line Height | Observed on |
+|------|------|------|--------|-------------|-------------|
+| Display Hero | Jamsil | 72px | 700 | 73.6px (1.02) | Home headline, `#111111` |
+| Section Title | Pretendard | 48px | 700 | 48px (1.0) | Page headings on the product and chatbot pages |
+| Product Name | Pretendard | 32px | 600 | 36px (1.13) | Product cards |
+| Prompt Title | Pretendard | 24px | 700 | 32px (1.33) | Chatbot prompt heading |
+| Section Label | Pretendard | 24px | 600 | 32px (1.33) | Label above the product cards |
+| Lead | Pretendard | 20px | 500 | 26px (1.3) | Home carousel descriptions, `#595959` |
+| Description | Pretendard | 20px | 400 | 29px (1.45) | Page introductions |
+| Button Large | Pretendard | 20px | 600 | 25px (1.25) | Contact Us |
+| Nav | Pretendard | 16px | 700 | 20px (1.25) | Home navigation, `#8e8e8e` |
+| Button | Pretendard | 16px | 700 | 20px (1.25) | Chatbot actions |
+| Body | Pretendard | 16px | 500 | 20px (1.25) | Document default |
+| Caption | Pretendard | 14px | 500 | 16px (1.14) | Product-page meta, `#949ca5` |
 
 ### Principles
-- **Functional font stays calm, display fonts persuade**: Pretendard carries the reading load at a quiet weight 500; Jamsil and Orbitron are reserved for headlines and the techno wordmark.
-- **Three fonts, three jobs**: Pretendard = product/UI, Jamsil = editorial section voice, Orbitron = frontier-tech display. They never swap roles.
-- **Hangul-first sizing**: Body sits at a comfortable 16px, generous for hangul legibility in an information-dense B2B deep-tech context.
-- **Weight, not size, carries UI hierarchy**: nav and buttons share 16px but split by weight (700 vs 500) and color, keeping the chrome compact.
+- **One display moment**: Jamsil appears only in the home headline; everything else is Pretendard.
+- **Medium by default**: the body weight is 500, not 400; navigation and actions step up to 700.
+- **Tight lines**: headings run near 1.0 line height, and body text sits at 20px on 16px.
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Primary CTA (시작하기)**
-- Background: `#4262ff`
-- Text: `#ffffff`
-- Border: 1px solid `#3652d8`
-- Radius: 8px
-- Padding: 0px 32px
-- Height: 50px
-- Font: 16px Pretendard weight 700
-- Use: Primary hero call-to-action — the system's single primary action
-
-**Charcoal Round (Contact / Chatbot)**
+**Contact call to action (marketing)**
 - Background: `#343434`
 - Text: `#ffffff`
 - Radius: 9999px
 - Padding: 20px 32px
-- Height: 65px
-- Font: 20px Pretendard weight 600
-- Use: Secondary actions — "Contact Us", "Chatbot Inquiry"
+- Height: 65px (192px wide)
+- Font: 20px / 600 / 25px Pretendard
+- Hover / pressed: the fill becomes `linear-gradient(93deg, rgb(107, 157, 205) 0%, rgb(113, 166, 47) 170.68%)`
+- Focus: browser default ring only
 
-### Inputs
+**New chat (chatbot primary)**
+- Background: `#4262ff`
+- Text: `#ffffff`
+- Radius: 12px
+- Padding: 0 0 0 48px (icon inset at the left)
+- Height: 56px (208px wide)
+- Font: 16px / 700 / 20px Pretendard
+- States: no hover or pressed change
 
-**Contact Field**
-- Background: `#f2f3f8`
+**Retrieval settings (chatbot secondary)**
+- Background: `#5b636d`
+- Text: `#ffffff`
+- Radius: 12px
+- Padding: 0 0 0 48px
+- Height: 56px
+- Font: 16px / 700 / 20px Pretendard
+- States: no hover or pressed change
+
+**Back to top**
+- Background: `#ffffff`
+- Radius: 9999px (48 × 48)
+- Shadow: `rgba(18, 44, 72, 0.2) 0px 2px 8px 0px`
+- States: no hover or pressed change
+
+**Language toggle (KOR)**
 - Text: `#111111`
-- Border: 1px solid `#dee4eb`
-- Radius: 6px
-- Height: 64px
-- Font: 16px Pretendard
-- Use: Contact form text fields and message textarea
-
-### Cards & Containers
-
-**Product Showcase Card**
-- Border: 1px solid `#ffffff`
-- Radius: 20px
-- Padding: 40px 0px
-- Use: Product carousel card with a translucent white hairline outline floating over media
-
-**Tinted Surface Card**
-- Background: `#f2f3f8`
-- Text: `#111111`
-- Radius: 20px
-- Use: Tinted content / section card on the cool-grey surface
-
-### Badges
-
-**Accent Highlight**
-- Text: `#ff4d4d`
-- Radius: 9999px
-- Font: 16px Pretendard weight 700
-- Use: Warm-red emphasis label / highlight tag
+- Radius: 8px
+- Size: 80 × 40px
+- Font: 16px / 500 / 20px Pretendard
+- Hover / pressed: background `#f2f3f7`
 
 ### Navigation
-- Background: `#ffffff`
+
+**Home navigation link**
 - Text: `#8e8e8e`
-- Font: 16px Pretendard weight 700
-- Active: ink `#111111` text on the active item
-- Use: Top horizontal nav ("Physical AI", "Defense", "MAIED", "Company")
+- Font: 16px / 700 / 20px Pretendard
+- Hover / pressed: `#111111` after a 0.2s colour transition
+
+**Side menu item (product pages)**
+- Text: `#111111`
+- Radius: 12px
+- Padding: 32px 16px
+- Height: 64px (176px wide)
+- Font: 16px / 700 / 20px Pretendard
+- Selected: background `#292d33`, text `#ffffff`, 16px / 600, 52px tall
+- Hover / pressed: background `#f2f3f7` with a 1px `#d2dcea` line; the selected item fades to opacity 0.9
+
+**Chatbot list item**
+- Background: transparent
+- Text: `#111111`
+- Radius: 12px
+- Padding: 16px 20px
+- Height: 48px (208px wide)
+- Font: 16px / 700 / 20px Pretendard
+- Selected: background `#e2edfc` with a 1px `#d2dcea` bottom border
+- Hover / pressed: background `#f2f3f7` with a 1px `#d2dcea` line
+
+### Cards & Inputs
+
+**Product card**
+- Background: transparent
+- Border: 1px solid `#dee4eb`
+- Radius: 10px
+- Size: 355 × 487px
+- Shadow: `rgb(222, 228, 235) 0px 1px 0px 0px`
+
+**Chat input**
+- Text: `#111111`
+- Padding: 8px 40px
+- Height: 40px (517px wide)
+- Font: 16px / 500 / 24px Pretendard
+- Disabled: disabled for logged-out visitors
 
 ---
 
-**Verified:** 2026-07-02 (omd:add-reference CREATE — Tier 1 live inspect)
-**Tier 1 sources:** https://maum.ai/ ; https://maum-ai.github.io/ ; https://github.com/maum-ai
-**Tier 2 sources:** getdesign.md/maum-ai — no real entry (generic SPA shell; returns 200 + identical shell for any slug) ; styles.refero.design/?q=maum — no maum.ai match (only unrelated fuzzy "ma*" results)
+**Verified:** 2026-09-30 (deterministic collector capture of three public, logged-out maum.ai pages plus fixed keyboard-probe state reads and first-party context)
+**Tier 1 sources:** https://maum.ai/ ; https://maum.ai/physical-ai-service ; https://maum.ai/maum-gpt ; https://maum.ai/company ; https://maum-ai.github.io/ ; https://github.com/maum-ai
+**Tier 2 sources:** getdesign.md/maum-ai (HTTP 200, the name does not appear in the response) and styles.refero.design/?q=maum (HTTP 200, the name appears only as the echoed query), requested 2026-09-30; no Tier 2 value used
 **Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
 ### Spacing System
-- Base unit: ~4px, with a dominant 8/16/20/32 rhythm
-- Scale: 4px, 8px, 16px, 20px, 32px, 40px, 64px
-- Notable: CTA horizontal padding lands at 32px; product cards use 40px vertical padding, giving the deep-tech content generous breathing room
+- Contact Us: 20px 32px padding at 65px height
+- Side menu items: 32px 16px padding (16px on the selected tile)
+- Chatbot list items: 16px 20px padding at 48px height
+- Chatbot actions: a 48px left inset for the icon
+- Frequent spacing values in the capture: 16, 20, 32, 4 and 56px
 
 ### Grid & Container
-- Centered hero with a large Orbitron/Jamsil display anchor and a single indigo CTA
-- Product/solution cards arranged as a horizontal carousel of 20px-radius outlined tiles
-- Feature sections alternate white (`#ffffff`) and tinted grey (`#f2f3f8` / `#f2f5f9`) full-width bands
-- Contact form uses stacked `#f2f3f8` fields at 6px radius
+- Home: a fixed header with navigation, the Jamsil headline and Contact Us, a horizontal product carousel of 340 × 464 tiles, a MAIED section, foundation-model blocks and a contact form (not captured or used).
+- /physical-ai-service: a dark icon rail, a 176px left menu and a grid of 355 × 487 product cards under a 48px heading.
+- /maum-gpt: a 208px sidebar with 새로운 대화, the chatbot list and Retrieval 모델 설정, beside the chat area and its disabled input.
 
 ### Whitespace Philosophy
-- **Engineered breathing room**: despite dense B2B AI content, sections are airy with generous vertical rhythm.
-- **Flat segmentation**: bands separate by background tint and `#dee4eb` hairlines, not by shadow or heavy borders.
-- **Two-track button rhythm**: the sharp indigo primary and the charcoal pill recur as a consistent action vocabulary across surfaces.
+- **Quiet marketing**: large white space around a few headings and one call to action.
+- **Soft segmentation**: hover fills and a 1px line mark the active row; cards use a hairline, not a shadow.
 
 ### Border Radius Scale
-- Small (6px): input fields, small containers
-- Medium (8px): the primary CTA button
-- Large (20px): product and content cards — the workhorse card radius
-- Full (9999px): charcoal round buttons, accent pills
+- 0px: the default (122 of the recorded radii)
+- 8px: the language toggle
+- 10px: product cards
+- 12px: side menu items, chatbot list items and chatbot actions
+- 9999px: the Contact Us pill and the back-to-top circle
 
 ## 6. Depth & Elevation
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
-| Tint (Level 1) | `#f2f3f8` / `#f2f5f9` background shift | Section / card separation without elevation |
-| Hairline (Level 2) | `1px solid #dee4eb` (fields) or `1px solid #ffffff` (cards over media) | Field and card outlines |
+| Flat | No shadow | 131 of 150 recorded elements |
+| Hairline | 1px solid `#dee4eb` plus a `rgb(222, 228, 235) 0px 1px 0px 0px` line | Product cards |
+| Row line | `rgb(210, 220, 234) 0px 1px 0px 0px` | Hovered menu and list items |
+| Lift | `rgba(18, 44, 72, 0.2) 0px 2px 8px 0px` | Back-to-top button |
 
-**Shadow Philosophy**: maum.ai is a near-shadowless system. Live inspection returned `box-shadow: none` across the nav, hero, headings, buttons, and product cards. Depth and grouping are communicated entirely through flat tinted surfaces (`#f2f3f8`, `#f2f5f9`) and thin hairlines (`#dee4eb`, plus translucent white outlines on media cards). This is a deliberate modern-flat, industrial choice — it keeps the deep-tech UI feeling engineered and fast rather than decorated. When emphasis is needed, the system reaches for color (indigo `#4262ff`, accent red `#ff4d4d`, or the charcoal `#343434` pill), never elevation.
+**Shadow Philosophy**: maum.ai is flat. Its only real shadow lifts the back-to-top button; cards and active rows are marked with 1px lines.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Reserve indigo (`#4262ff`) for the primary CTA — keep it the single "action" color
-- Use the charcoal (`#343434`) full-pill for secondary "Contact"/"Chatbot" actions
-- Use near-black `#111111` for text instead of pure black for running copy
-- Separate sections with flat tinted surfaces (`#f2f3f8` / `#f2f5f9`) and `#dee4eb` hairlines, not shadows
-- Use Pretendard weight 500 for body/UI, weight 700 for buttons and nav
-- Reserve Jamsil for section headings and Orbitron for the techno wordmark only
-- Use the warm red (`#ff4d4d`) sparingly as the single emphasis accent
-- Keep product cards at 20px radius with a hairline outline over media
+- Keep marketing pages white and near-monochrome, with `#111111` text
+- Set one headline in Jamsil 700 and everything else in Pretendard, 500 for body and 700 for actions
+- Fill the product's primary action in `#4262ff` with a white label and 12px corners
+- Use a charcoal `#343434` pill for the marketing call to action
+- Mark hovered rows with `#f2f3f7` and a 1px `#d2dcea` line; mark the selected tile `#292d33` or `#e2edfc`
+- Keep cards flat with a `#dee4eb` hairline
 
 ### Don't
-- Spread indigo across many elements — it dilutes the single-action signal
-- Use drop shadows for elevation — maum.ai is a flat, shadow-free system
-- Use pure black (`#000000`) for body copy — reserve it for max-contrast display
-- Give the primary CTA a pill radius — the indigo button is sharp 8px; only the charcoal action is a pill
-- Introduce a second saturated hue alongside the indigo and the red accent
-- Set body copy in Jamsil or Orbitron — Pretendard owns reading text
-- Overuse the red accent (`#ff4d4d`) — it is emphasis-only, never a surface or CTA fill
+- Don't spread `#4262ff` across marketing pages; it appears only on the chatbot's primary action
+- Don't add drop shadows to cards
+- Don't set body copy in Jamsil
+- Don't use Orbitron; it is declared but was never observed in use
+- Don't invent focus styles; every probed control shows only the browser's default ring
+- Don't render Pretendard or Jamsil with another face in their place
 
 ## 8. Responsive Behavior
 
 ### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, display sizes compress, product carousel scrolls |
-| Tablet | 640-1024px | Moderate padding, 2-up feature cards |
-| Desktop | 1024-1440px | Full layout, centered hero, multi-column feature bands |
+Only the 1440 × 900 desktop viewport was captured. Class names such as `laptop-sm:order-4`, `laptop:inline` and `tablet:text-base` show named tablet and laptop breakpoints; no breakpoint value was measured.
 
 ### Touch Targets
-- Primary CTA at 50px height with 32px horizontal padding — comfortably tappable
-- Charcoal round buttons at 65px height, full pill for an unmistakable target
-- Contact fields at 64px height for easy touch entry
-- Nav items spaced within the top header
+- Contact Us: 65px tall
+- Side menu items: 64px (selected 52px)
+- Chatbot actions: 56px
+- Chatbot list items: 48px; back-to-top 48 × 48
+- Language toggle: 40px
 
 ### Collapsing Strategy
-- Hero: Orbitron/Jamsil display scales down on mobile, weight maintained
-- Product cards: horizontal carousel becomes swipe/scroll on narrow viewports
-- Feature bands: multi-column → stacked single column
-- Tinted/white alternating sections maintain full-width treatment
+Not captured.
 
 ### Image Behavior
-- Product and robotics imagery carries no shadow at any size, consistent with the flat system
-- Cards maintain 20px radius and the translucent white outline across breakpoints
+- Product and robot imagery sits flat in carousel tiles and 10px-radius cards.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary CTA: maum Indigo (`#4262ff`), border `#3652d8`
-- Secondary action: Charcoal (`#343434`)
-- Background: Pure White (`#ffffff`)
-- Tinted surface: Surface Grey (`#f2f3f8`) / Surface Alt (`#f2f5f9`)
-- Heading / body text: Ink (`#111111`)
-- Secondary text: Body Slate (`#5b636d`)
-- Muted text: Muted Grey (`#595959`), Nav Muted (`#8e8e8e`)
-- Accent: Accent Red (`#ff4d4d`); links Link Blue (`#2563eb`)
-- Hairline: `#dee4eb`
+- Product primary action: `#4262ff` with `#ffffff`
+- Marketing call to action: `#343434` pill; hover gradient rgb(107, 157, 205) to rgb(113, 166, 47)
+- Secondary action: `#5b636d`; selected tile `#292d33`
+- Text: `#111111`, `#595959`, `#8e8e8e` (navigation), `#949ca5` (meta)
+- Surfaces: `#ffffff`, `#e2edfc` (selected), `#f2f3f7` (hover)
+- Lines: `#dee4eb` (cards), `#d2dcea` (rows)
 
 ### Example Component Prompts
-- "Create a hero on white background. Oversized Orbitron wordmark, a Jamsil section title at 36px weight 700, and one indigo CTA: `#4262ff` background, white text, 1px solid `#3652d8` border, 8px radius, 0px 32px padding, 50px tall, 16px Pretendard weight 700 — '시작하기'."
-- "Design a product card: transparent background over media, 1px solid `#ffffff` outline, 20px radius, 40px vertical padding, no shadow. Title in Jamsil weight 700, `#111111`. Body 16px Pretendard weight 500, `#5b636d`."
-- "Build a contact form field: `#f2f3f8` background, 1px solid `#dee4eb` border, 6px radius, 64px tall, `#111111` text, 16px Pretendard, no shadow."
-- "Create a secondary CTA: charcoal `#343434` background, white text, full 9999px pill, 20px 32px padding, 65px tall, 20px Pretendard weight 600 — 'Contact Us'."
-- "Top nav: white header, 16px Pretendard weight 700 links in `#8e8e8e`, ink `#111111` on the active item."
+- "Create a marketing call to action: `#343434` pill, white 20px Pretendard label at weight 600, 20px 32px padding, 65px tall; on hover replace the fill with linear-gradient(93deg, rgb(107, 157, 205) 0%, rgb(113, 166, 47) 170.68%)."
+- "Create a chatbot sidebar: a `#4262ff` 새로운 대화 button (white 16px / 700 label, 12px radius, 208 × 56, icon inset 48px), a list of 48px items with 12px radius and 16px 20px padding (selected `#e2edfc` with a 1px `#d2dcea` bottom border, hover `#f2f3f7`), and a `#5b636d` settings button at the foot."
+- "Build a product card: transparent background, 1px solid `#dee4eb` border, 10px radius, a 32px / 600 product name in `#111111` and 14px / 500 meta text in `#949ca5`; no shadow."
 
 ### Iteration Guide
-1. Indigo (`#4262ff`) is the single action color — don't spread it
-2. Charcoal (`#343434`) full-pill for secondary actions; sharp 8px indigo for the primary
-3. No shadows — separate with `#f2f3f8` / `#f2f5f9` tint and `#dee4eb` hairlines
-4. Pretendard 500 body, 700 buttons/nav; Jamsil headings; Orbitron techno wordmark only
-5. Text is `#111111` ink, never pure black for running copy
-6. Product cards at 20px radius with a translucent white outline over media
-7. Warm red (`#ff4d4d`) is emphasis-only; link blue (`#2563eb`) for inline links
+1. White and near-monochrome; `#111111` text
+2. Jamsil for one headline only; Pretendard 500 / 700 elsewhere
+3. `#4262ff` only for the product's primary action
+4. Charcoal pill for the marketing call to action
+5. 12px tiles, 10px cards, pills for the call to action
+6. Flat; 1px lines instead of shadows
 
 ---
 
 ## 10. Voice & Tone
 
-maum.ai's voice is **precise, confident, and frontier-facing** — a deep-tech company that talks about building real AI systems (foundation models, robots, defense) without hype or consumer cuteness. The positioning line "Physical AI 플랫폼" sets the register: technical, ambitious, matter-of-fact. Product names are terse and engineered ("MAIED", "AIden", "JINDO BOT"), and CTAs are direct verbs ("시작하기", "Contact Us", "Chatbot Inquiry"). The bilingual KR/ENG surface treats the reader as a technical or enterprise buyer, not a casual visitor.
+maum.ai's voice is **confident, technical and matter-of-fact**: short statements about what its models and robots do, product names that read like engineering designations, and direct calls to action.
 
 | Context | Tone |
 |---|---|
-| Hero / positioning | Ambitious, technical. "Physical AI 플랫폼." Confident, not hype. |
-| Product names | Terse, engineered. "MAIED", "AIden", "JINDO BOT". |
-| CTAs | Direct imperatives. "시작하기", "Contact Us", "Chatbot Inquiry". |
-| Feature descriptions | Capability-first, concrete. States what the model/robot does. |
-| Company / IR | Formal, credibility-forward — a KOSDAQ-listed AI company register. |
+| Positioning | Declarative. "로봇에 두뇌를 탑재하다", "The Physical AI Company" |
+| Headline | A direct offer. "Physical AI 로봇을 구독하세요." |
+| Product names | Terse, engineered. "JINDO BOT", "AIden", "MAIED", "MAAL", "SUDA", "BODA", "WoRV" |
+| Capability copy | Concrete. "Full Autonomy 기반 국내 생산 4족 보행 로봇" |
+| Chatbot | Inviting, one line. "지금 MAAL과 대화해 보세요." |
+| Actions | Plain. "Contact Us", "문의하기", "새로운 대화" |
 
-**Voice samples (verbatim from live surfaces):**
-- "마음AI - Physical AI 플랫폼" — homepage H1 / title (positioning). *(verified live 2026-07-02)*
-- "MAUM.AI Foundation Model" — section heading (frontier-model framing). *(verified live 2026-07-02)*
-- "maum.ai BRAIN Team" — official research blog H1 (engineering identity). *(verified live 2026-07-02)*
+**Voice samples (verbatim, opened 2026-09-30):**
+- "로봇에 두뇌를 탑재하다" — the page heading on maum.ai.
+- "Physical AI 로봇을 구독하세요." — home headline.
+- "The Physical AI Company — Building Robot Brains" — /company.
+- "마음AI는 2014년 설립된 인공지능 전문 기업으로, AI 기술 개발부터 실제 산업 현장 적용까지 가능한 역량을 보유하고 있습니다." — /company.
+- "지금 MAAL과 대화해 보세요." — /maum-gpt.
+- "AI for the Physical World" — the maum.ai BRAIN Team site.
 
-**Forbidden register**: consumer-app cuteness, exclamation-heavy hype, vague "revolutionary/game-changing" superlatives, and undefined jargon left unexplained to an enterprise reader.
+**Forbidden register**: consumer-app cuteness, exclamation-heavy hype, vague superlatives, jargon left unexplained for an enterprise reader.
 
 ## 11. Brand Narrative
 
-maum.ai (마음AI) is a Korean artificial-intelligence company formerly known as **MindsLab (마인즈랩)**, founded in **2014** by **유태준 (Taejun Yoo)**. The company began as a conversational-AI and "AI Human" specialist — speech-to-text, text-to-speech, and virtual-human technology — and later listed on Korea's **KOSDAQ** market. The rebrand from MindsLab to maum.ai reframed the company around a broader, more ambitious thesis: not just software AI, but **"Physical AI"** — foundation models embodied in robots, industrial machines (e.g. agricultural spraying robots), and defense systems, as surfaced across the current homepage's product lineup (JINDO BOT, AIden, MAIED, Defense).
+maum.ai's company page tells its story in two moves. First, what it is: an AI specialist founded in 2014 that can take technology from research to the field. Second, where it is going: from AI that handles documents and data to "Physical AI", AI that sits inside robots and machines and decides and acts on its own. It claims to be the only Korean company to have taken Physical AI all the way to commercial use, and lists deployments across defence (perimeter and patrol robots), construction (site-safety inspection), agriculture (autonomous tractors), manufacturing (assembly), logistics (autonomous yard tractors), shipbuilding (welding), smart homes, public services (care robots, the maum-TOUCH barrier-free kiosk), service (AIden) and promotion (WOOCHI BOT). A "Physical AI Data Factory" runs from simulation through field trials and commercial operation to monitoring.
 
-The product surface makes the positioning explicit: a "MAUM.AI Foundation Model" at the core, applied outward into physical and enterprise domains. The company maintains an official engineering identity through its **BRAIN Team** research blog and a public **GitHub organization**, signaling a build-in-the-open, research-forward posture typical of a frontier AI lab.
+The rebrand from MindsLab to maum.ai shows in that reframing, and in what the site still carries: a label for the "2022 마인즈랩 사업보고서" and an engine owner recorded as `MindsLab` but shown as 마음AI. The company's research arm, the maum.ai BRAIN Team, publishes at maum-ai.github.io under the line "AI for the Physical World". It works on Embodied AI, Agentic LLM, Audio Intelligence, Robotics and Physical World Modeling, with recent papers at EMNLP Findings, INTERSPEECH and ICASSP, and keeps its code in the public GitHub organisation github.com/maum-ai.
 
-What maum.ai's design refuses, visible in its restraint: the soft, playful chrome of consumer apps and the heavy shadow-stacked cards of legacy enterprise software. What it embraces: a flat, engineered, near-shadowless interface; a single decisive indigo action color; a three-font system where a techno display face (Orbitron) telegraphs frontier ambition while Pretendard keeps the reading calm; and a bilingual, credibility-forward tone appropriate to a listed deep-tech company selling to enterprise and government buyers.
+The website reflects the same engineering posture: little colour, one strong headline, square-edged structure, and saturated indigo kept for the moment a visitor actually uses the product.
 
 ## 12. Principles
 
-1. **Engineered, not decorated.** The system is flat and shadow-free by design. *UI implication:* separate with tint and hairlines; avoid elevation and ornament — the product should look built.
-2. **One decisive action.** Indigo (`#4262ff`) means "do this." *UI implication:* reserve the saturated indigo for the single primary CTA so the next step is never ambiguous; use charcoal pills for softer secondary actions.
-3. **Frontier signalled through type, not noise.** *UI implication:* let Orbitron/Jamsil display faces carry the ambition; keep body copy in calm Pretendard rather than shouting with color or motion.
-4. **Bilingual clarity for enterprise buyers.** *UI implication:* KR/ENG parity, terse product names, and capability-first descriptions that respect a technical reader.
-5. **Restraint as credibility.** A listed deep-tech company earns trust by looking precise. *UI implication:* limited palette (indigo + charcoal + one red accent), consistent 20px card radius, and disciplined typographic hierarchy.
+1. **Robots first.** The home leads with robots to subscribe to. *UI implication:* products appear as a large visual carousel before any explanation.
+2. **Models as named parts.** MAAL, SUDA, BODA and WoRV are presented as components of a robot brain. *UI implication:* terse names with one concrete line each.
+3. **Quiet until it matters.** *UI implication:* monochrome marketing pages; indigo `#4262ff` only on the product's primary action. (An editorial reading of the captured pages, not a maum.ai statement.)
+4. **From research to the field.** The company page stresses deployment. *UI implication:* concrete capability copy rather than slogans.
+5. **Flat and engineered.** *UI implication:* 1px lines and pale fills mark state; no card shadows.
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable maum.ai audiences (enterprise AI buyers, robotics/defense procurement, ML engineers evaluating the foundation model), not individual people.*
+*Personas below are fictional archetypes informed by publicly observable maum.ai audiences (industrial and public-sector buyers of robots, ML engineers), not individual people.*
 
-**정민석, 41, 서울.** Head of AI transformation at a manufacturer evaluating physical-AI robots for the factory floor. Wants concrete capability claims and integration paths, not slogans. Trusts the brand more because it is KOSDAQ-listed and publishes research.
+**정민석, 41, 서울.** Head of AI transformation at a manufacturer evaluating robots for the factory floor. Wants concrete capability claims and integration paths, not slogans.
 
-**Grace Lim, 33, 판교.** ML engineer assessing the MAUM.AI Foundation Model for an internal product. Reads the BRAIN Team blog and the GitHub org before booking a call. Values the terse, engineering-first tone over marketing polish.
+**Grace Lim, 33, 판교.** An ML engineer assessing maum.ai's models. Reads the BRAIN Team site and the GitHub organisation before booking a call, and tries the maumChatbot first.
 
-**한도윤, 47, 대전.** Public-sector procurement lead reviewing AI/defense solutions. Needs a formal, credibility-forward surface and clear contact paths. Reassured by the calm, industrial, non-hype presentation.
+**한도윤, 47, 대전.** A public-sector procurement lead reviewing AI and defence solutions. Needs a formal, credible surface and a clear contact path.
 
 ## 14. States
 
-| State | Treatment |
+Only these states were observed on the three captured pages; nothing else is specified here.
+
+| State | Observation |
 |---|---|
-| **Empty (no results / no data)** | White canvas. Single Ink (`#111111`) line explaining the empty condition, with one indigo CTA to proceed. No illustration clutter. |
-| **Empty (saved / list none yet)** | Muted Grey (`#595959`) single line stating nothing yet, plus a path back to the action. Calm, honest. |
-| **Loading (content fetch)** | Skeleton blocks on `#f2f3f8` tinted surface at final card dimensions, 20px radius. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
-| **Loading (form submit)** | Inline progress within the charcoal button; label stays visible, action disabled until response. |
-| **Error (request failed)** | Inline message in Ink (`#111111`) with a plain explanation and a retry. Accent red (`#ff4d4d`) marks the error cue; never a generic "오류" alone. |
-| **Error (form validation)** | Field-level message below the `#f2f3f8` input; accent-red cue; describes what is valid, not just "필수". |
-| **Success (form submitted)** | Brief inline confirmation in a calm tone; next-step detail linked immediately below. No celebratory emoji. |
-| **Skeleton** | `#f2f3f8` blocks at final dimensions, 20px radius, flat pulse. |
-| **Disabled** | Muted Grey (`#8e8e8e`) text on reduced-opacity surface; indigo actions fade rather than turn grey to preserve brand read. |
+| **Hover / pressed (Contact Us)** | Charcoal fill → the blue-to-green gradient, at once (transition all 0s). |
+| **Hover / pressed (home navigation)** | `#8e8e8e` → `#111111` over 0.2s. |
+| **Hover / pressed (menu and list items)** | Transparent → `#f2f3f7` with a 1px `#d2dcea` line, over 0.15s. |
+| **Hover / pressed (selected menu tile)** | Opacity 1 → 0.9. |
+| **Hover / pressed (KOR toggle)** | Transparent → `#f2f3f7`. |
+| **No change** | 새로운 대화, Retrieval 모델 설정, the header 문의하기 icon button and the back-to-top button. |
+| **Selected** | Side menu tile `#292d33` with white text; chatbot list item `#e2edfc`. |
+| **Disabled** | The chat input is disabled for logged-out visitors. |
+| **Focus** | Every probed control shows only the browser's default ring (`rgb(0, 95, 204)` auto); no brand focus style is declared. |
+
+Error, empty, loading and success states were not captured and are not described.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, focus |
-| `motion-standard` | 240ms | Card/section reveal, carousel step, dropdown |
-| `motion-slow` | 360ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, carousel |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and restrained — consistent with the flat, engineered aesthetic. The product carousel steps horizontally at `motion-standard / ease-enter`; buttons respond to press with a subtle opacity/scale shift. No bounce or spring — a deep-tech AI platform signals steadiness, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the carousel becomes a static scroll; the product remains fully functional.
+The probe read the transitions the controls compute. Home navigation links transition colour, background, border, text-decoration colour, fill and stroke over 0.2s with `cubic-bezier(0.4, 0, 0.2, 1)`. The side menu items, chatbot list items and the KOR toggle transition colour, background, opacity, box-shadow, transform and filters over 0.15s with the same curve. Contact Us, 새로운 대화, Retrieval 모델 설정 and the back-to-top button compute `transition: all 0s`, so their changes are instant. No other duration or easing is specified.
 
 <!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on https://maum.ai/:
-- Primary CTA "시작하기" — bg rgb(66,98,255) #4262ff / border 1px solid rgb(54,82,216) #3652d8 / radius 8px / padding 0px 32px / height 50px / Pretendard 16px weight 700 / white text
-- Charcoal round buttons "Chatbot Inquiry"/"Contact Us" — bg rgb(52,52,52) #343434 / radius 9999px / padding 20px 32px / 20px weight 600 / white text
-- Contact inputs/textarea — bg rgb(242,243,248) #f2f3f8 / border rgb(222,228,235) #dee4eb / radius 6px / height 64px / text rgb(17,17,17) #111111 / 16px
-- Product cards — radius 20px / border 1px solid #ffffff / padding 40px 0px / box-shadow none
-- Nav links — color rgb(142,142,142) #8e8e8e / Pretendard 16px weight 700; header buttons ink rgb(17,17,17) #111111
-- Section heading "MAUM.AI Foundation Model" — Jamsil 36px weight 700 lh 45px; "MAIED" — Orbitron 115px weight 700 white
-- Body — Pretendard, color rgb(17,17,17) #111111, 16px, lh 20px
-- fg frequency: #111111 ×393, #595959 ×63, #000000 ×47, #5b636d ×46, #ff4d4d ×41, #8e8e8e, #2563eb ×6
-- box-shadow: none across nav/hero/headings/buttons/cards (shadowless system confirmed)
-- document.title: "마음AI"
-
-Second surface — https://maum-ai.github.io/ (official maum.ai BRAIN Team research blog, Docusaurus):
-- H1 "maum.ai BRAIN Team"; confirms official engineering identity and brand-owned status.
-
-Token-level claims (§1-9) are sourced from this live inspection.
-
-Voice samples (§10) are verbatim from live surfaces (homepage H1/title, section heading, blog H1).
-
-Brand narrative (§11): maum.ai (마음AI), formerly MindsLab (마인즈랩), founded 2014 by 유태준 (Taejun Yoo);
-KOSDAQ-listed Korean AI company that rebranded around a "Physical AI" thesis (foundation model + robots +
-defense), as surfaced by the current homepage product lineup (JINDO BOT, AIden, MAIED, Defense) and the
-official BRAIN Team blog + GitHub org. Founding year, founder, and the MindsLab→maum.ai rebrand are
-widely documented public facts; specifics beyond the observed surfaces are general public knowledge, not a
-directly quoted maum.ai statement in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable maum.ai audiences (enterprise AI
-buyers, robotics/defense procurement, ML engineers). Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "engineered, not decorated", "frontier signalled through type") are editorial
-readings connecting maum.ai's observed design to its positioning, not directly sourced maum.ai statements.
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/maum-ai.json (capturedAt 2026-09-30T10:01:20Z), deterministic collector, 1440x900, logged out: maum.ai, /physical-ai-service, /maum-gpt. States: fixed keyboard probe raws docs/research/2026-09-29-growth/raw/maum-ai-states-{home,physical,gpt}.json.
+- §1, §10, §11 context: maum.ai/company (company overview), the maum.ai home copy and application bundle strings, maum-ai.github.io and github.com/maum-ai, opened 2026-09-30.
+- §3 licence: the Pretendard LICENSE on GitHub, opened 2026-09-30.
+- Personas are fictional archetypes. Interpretive readings are editorial.
 -->

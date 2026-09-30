@@ -5,60 +5,307 @@ display_name_kr: 링글
 country: KR
 category: education
 homepage: "https://www.ringleplus.com"
-primary_color: "#3c2bac"
+primary_color: "#3e00d9"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=ringleplus.com&sz=128"
-verified: "2026-06-11"
+verified: "2026-09-30"
 added: "2026-06-11"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://www.ringleplus.com/ko/1on1", inspected: "2026-09-30" }
+    - { id: surface-2, kind: marketing, url: "https://www.ringleplus.com/ko/student/landing/home", inspected: "2026-09-30" }
+    - { id: surface-3, kind: corporate, url: "https://www.ringleplus.com/ko/company", inspected: "2026-09-30" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://www.ringleplus.com/ko/1on1", captured: "2026-09-30" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://www.ringleplus.com/ko/student/landing/home", captured: "2026-09-30" }
+    - { id: surface-surface-3, kind: product-surface, url: "https://www.ringleplus.com/ko/company", captured: "2026-09-30" }
+    - { id: ringle-probe-1on1, kind: product-surface, url: "https://www.ringleplus.com/ko/1on1", captured: "2026-09-30" }
+    - { id: ringle-probe-company, kind: product-surface, url: "https://www.ringleplus.com/ko/company", captured: "2026-09-30" }
+    - { id: ringle-cofounder, kind: official-doc, url: "https://www.ringleplus.com/ko/company/1", captured: "2026-09-30" }
+    - { id: ringle-global-bd, kind: official-doc, url: "https://www.ringleplus.com/en/company/4", captured: "2026-09-30" }
+    - { id: ringle-b2b, kind: official-doc, url: "https://www.ringleplus.com/ko/b2b", captured: "2026-09-30" }
+    - { id: pretendard-license, kind: license, url: "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &start { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-09-30" }
+    "tokens.colors.on-primary": &startprobe { surface_id: home, source_id: ringle-probe-1on1, method: live-state-probe, selector: "a 링글 시작하기 (200 x 61): rest bg rgb(62, 0, 217), label h6 fg rgb(255, 255, 255) 18px/700, transition all 0s; hover and pressed unmeasured (a Channel Talk modal covered the pointer target even with --hide-overlays); focus (Tab #11) outline none -> rgb(0, 95, 204) auto 1px, the browser default", captured: "2026-09-30" }
+    "tokens.colors.deep-violet": &band { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"19\"]", captured: "2026-09-30" }
+    "tokens.colors.navy": &product { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"21\"]", captured: "2026-09-30" }
+    "tokens.colors.app-violet": &apptrial { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"10\"]", captured: "2026-09-30" }
+    "tokens.colors.promo-violet": &pill { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-09-30" }
+    "tokens.colors.sky": &sky { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"23\"]", captured: "2026-09-30" }
+    "tokens.colors.promo-red": &banner { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-09-30" }
+    "tokens.colors.promo-yellow": &h3 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
+    "tokens.colors.lilac": &h2 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
+    "tokens.colors.ink": &h1 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h1", captured: "2026-09-30" }
+    "tokens.colors.ink-soft": &topbar { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"0\"]", captured: "2026-09-30" }
+    "tokens.colors.body": &lead { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.slate": &semib { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.colors.muted": &bodyp { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.faint": &faint { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.app-slate": &appnav { surface_id: surface-3, source_id: ringle-probe-company, method: live-state-probe, selector: "a 기업 교육 (51.8 x 22): label span fg rgb(62, 66, 106) 14px/500; hover and pressed parent li bg rgba(0, 0, 0, 0) -> rgb(251, 251, 255); focus (Tab #9) outline none -> rgb(0, 95, 204) auto 1px, the browser default", captured: "2026-09-30" }
+    "tokens.colors.app-muted": &appfoot { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::li", captured: "2026-09-30" }
+    "tokens.colors.hairline": &tile { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"39\"]", captured: "2026-09-30" }
+    "tokens.colors.nav-hover": *appnav
+    "tokens.colors.white": &chip { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-09-30" }
+    "tokens.typography.family.display": *h1
+    "tokens.typography.family.body": *bodyp
+    "tokens.typography.family.app": &apph1 { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h1", captured: "2026-09-30" }
+    "tokens.typography.display-hero.size": *h1
+    "tokens.typography.display-hero.weight": *h1
+    "tokens.typography.display-hero.lineHeight": *h1
+    "tokens.typography.display-hero.tracking": *h1
+    "tokens.typography.display-hero.use": *h1
+    "tokens.typography.section-xl.size": *h2
+    "tokens.typography.section-xl.weight": *h2
+    "tokens.typography.section-xl.lineHeight": *h2
+    "tokens.typography.section-xl.tracking": *h2
+    "tokens.typography.section-xl.use": *h2
+    "tokens.typography.section.size": *h2
+    "tokens.typography.section.weight": *h2
+    "tokens.typography.section.lineHeight": *h2
+    "tokens.typography.section.tracking": *h2
+    "tokens.typography.section.use": *h2
+    "tokens.typography.subsection.size": *h3
+    "tokens.typography.subsection.weight": *h3
+    "tokens.typography.subsection.lineHeight": *h3
+    "tokens.typography.subsection.tracking": *h3
+    "tokens.typography.subsection.use": *h3
+    "tokens.typography.card-title.size": &h4 { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h4", captured: "2026-09-30" }
+    "tokens.typography.card-title.weight": *h4
+    "tokens.typography.card-title.lineHeight": *h4
+    "tokens.typography.card-title.tracking": *h4
+    "tokens.typography.card-title.use": *h4
+    "tokens.typography.button-lg.size": *startprobe
+    "tokens.typography.button-lg.weight": *startprobe
+    "tokens.typography.button-lg.use": *startprobe
+    "tokens.typography.lead.size": *lead
+    "tokens.typography.lead.weight": *lead
+    "tokens.typography.lead.lineHeight": *lead
+    "tokens.typography.lead.tracking": *lead
+    "tokens.typography.lead.use": *lead
+    "tokens.typography.body-strong.size": *semib
+    "tokens.typography.body-strong.weight": *semib
+    "tokens.typography.body-strong.lineHeight": *semib
+    "tokens.typography.body-strong.tracking": *semib
+    "tokens.typography.body-strong.use": *semib
+    "tokens.typography.body.size": *bodyp
+    "tokens.typography.body.weight": *bodyp
+    "tokens.typography.body.lineHeight": *bodyp
+    "tokens.typography.body.tracking": *bodyp
+    "tokens.typography.body.use": *bodyp
+    "tokens.typography.caption.size": &cap { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.caption.weight": *cap
+    "tokens.typography.caption.lineHeight": *cap
+    "tokens.typography.caption.tracking": *cap
+    "tokens.typography.caption.use": *cap
+    "tokens.typography.app-title.size": *apph1
+    "tokens.typography.app-title.weight": *apph1
+    "tokens.typography.app-title.lineHeight": *apph1
+    "tokens.typography.app-title.use": *apph1
+    "tokens.typography.app-body.size": &appli { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::li", captured: "2026-09-30" }
+    "tokens.typography.app-body.weight": *appli
+    "tokens.typography.app-body.lineHeight": *appli
+    "tokens.typography.app-body.use": *appli
+    "tokens.typography.app-label.size": *appfoot
+    "tokens.typography.app-label.weight": *appfoot
+    "tokens.typography.app-label.lineHeight": *appfoot
+    "tokens.typography.app-label.use": *appfoot
+    "tokens.spacing.action-y": *band
+    "tokens.spacing.action-x": *band
+    "tokens.spacing.pill-y": *pill
+    "tokens.spacing.pill-x": *pill
+    "tokens.spacing.banner-y": *banner
+    "tokens.spacing.banner-x": *banner
+    "tokens.spacing.chip-y": *chip
+    "tokens.spacing.chip-x": *chip
+    "tokens.spacing.header-y": *apptrial
+    "tokens.spacing.header-x": *apptrial
+    "tokens.spacing.nav-y": *appli
+    "tokens.spacing.nav-x": *appli
+    "tokens.spacing.tile": *tile
+    "tokens.rounded.nav": *appli
+    "tokens.rounded.chip": *chip
+    "tokens.rounded.header-button": *apptrial
+    "tokens.rounded.tile": *tile
+    "tokens.rounded.cta": *start
+    "tokens.rounded.pill": *pill
+    "tokens.rounded.banner": *banner
+    "tokens.rounded.arrow": &arrow { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"16\"]", captured: "2026-09-30" }
+    "tokens.rounded.circle": &circle { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-09-30" }
+    "tokens.components.start-button.type": *start
+    "tokens.components.start-button.bg": *start
+    "tokens.components.start-button.fg": *startprobe
+    "tokens.components.start-button.radius": *start
+    "tokens.components.start-button.height": *start
+    "tokens.components.start-button.font": *startprobe
+    "tokens.components.start-button.states": *startprobe
+    "tokens.components.start-button.use": *start
+    "tokens.components.band-button.type": *band
+    "tokens.components.band-button.bg": *band
+    "tokens.components.band-button.radius": *band
+    "tokens.components.band-button.padding": *band
+    "tokens.components.band-button.height": *band
+    "tokens.components.band-button.states": *band
+    "tokens.components.band-button.use": *band
+    "tokens.components.product-button.type": *product
+    "tokens.components.product-button.bg": *product
+    "tokens.components.product-button.radius": *product
+    "tokens.components.product-button.height": *product
+    "tokens.components.product-button.states": *product
+    "tokens.components.product-button.use": *product
+    "tokens.components.promo-pill.type": *pill
+    "tokens.components.promo-pill.bg": *pill
+    "tokens.components.promo-pill.fg": &pillprobe { surface_id: home, source_id: ringle-probe-1on1, method: live-state-probe, selector: "a 9회말 역전 이벤트 특가 확인하기 (660 x 80): rest bg rgb(84, 66, 251), label h5 fg rgb(255, 255, 255) 20px/700, transition all 0s; hover and pressed unmeasured (no point inside the viewport); focus (Tab #10) outline none -> rgb(0, 95, 204) auto 1px, the browser default", captured: "2026-09-30" }
+    "tokens.components.promo-pill.radius": *pill
+    "tokens.components.promo-pill.padding": *pill
+    "tokens.components.promo-pill.height": *pill
+    "tokens.components.promo-pill.font": *pillprobe
+    "tokens.components.promo-pill.states": *pillprobe
+    "tokens.components.promo-pill.use": *pill
+    "tokens.components.promo-banner.type": *banner
+    "tokens.components.promo-banner.bg": *banner
+    "tokens.components.promo-banner.radius": *banner
+    "tokens.components.promo-banner.padding": *banner
+    "tokens.components.promo-banner.size": *banner
+    "tokens.components.promo-banner.use": *banner
+    "tokens.components.top-bar.type": *topbar
+    "tokens.components.top-bar.bg": *topbar
+    "tokens.components.top-bar.size": *topbar
+    "tokens.components.top-bar.use": *topbar
+    "tokens.components.site-header.type": &headerprobe { surface_id: home, source_id: ringle-probe-1on1, method: live-state-probe, selector: "a 튜터 (35.5 x 30.4): label p fg rgb(13, 13, 13) 14px/500; ancestor up3 div.framer-1s4jyvg bg rgb(255, 255, 255), box-shadow rgba(20, 15, 51, 0.05) 0px 4px 30px 0px; hover and pressed unmeasured (Channel Talk modal backdrop on top); focus (Tab #3) outline none -> rgb(0, 95, 204) auto 1px, the browser default", captured: "2026-09-30" }
+    "tokens.components.site-header.bg": *headerprobe
+    "tokens.components.site-header.shadow": *headerprobe
+    "tokens.components.site-header.use": *headerprobe
+    "tokens.components.nav-link.type": *headerprobe
+    "tokens.components.nav-link.fg": *headerprobe
+    "tokens.components.nav-link.font": *headerprobe
+    "tokens.components.nav-link.height": *headerprobe
+    "tokens.components.nav-link.states": *headerprobe
+    "tokens.components.nav-link.use": *headerprobe
+    "tokens.components.app-trial-button.type": *apptrial
+    "tokens.components.app-trial-button.bg": *apptrial
+    "tokens.components.app-trial-button.fg": &apptrialprobe { surface_id: surface-3, source_id: ringle-probe-company, method: live-state-probe, selector: "button 무료 체험하기 (108 x 40): rest bg rgb(60, 43, 172), label fg rgb(255, 255, 255) 14px/500, transition all 0s; hover, pressed and focus (Tab #11) no change across self, 1 descendant and 3 ancestor levels", captured: "2026-09-30" }
+    "tokens.components.app-trial-button.radius": *apptrial
+    "tokens.components.app-trial-button.padding": *apptrial
+    "tokens.components.app-trial-button.height": *apptrial
+    "tokens.components.app-trial-button.font": *apptrialprobe
+    "tokens.components.app-trial-button.states": *apptrialprobe
+    "tokens.components.app-trial-button.use": *apptrialprobe
+    "tokens.components.app-login-button.type": &login { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"11\"]", captured: "2026-09-30" }
+    "tokens.components.app-login-button.bg": *login
+    "tokens.components.app-login-button.fg": &loginprobe { surface_id: surface-3, source_id: ringle-probe-company, method: live-state-probe, selector: "button 로그인 (70.3 x 40): rest bg rgb(255, 255, 255), border 1px solid rgb(60, 43, 172), radius 5px, padding 8px 16px, label fg rgb(60, 43, 172) 14px/500; hover, pressed and focus (Tab #12) no change across self, 1 descendant and 3 ancestor levels", captured: "2026-09-30" }
+    "tokens.components.app-login-button.border": *login
+    "tokens.components.app-login-button.radius": *login
+    "tokens.components.app-login-button.padding": *login
+    "tokens.components.app-login-button.height": *login
+    "tokens.components.app-login-button.font": *loginprobe
+    "tokens.components.app-login-button.states": *loginprobe
+    "tokens.components.app-login-button.use": *loginprobe
+    "tokens.components.app-nav-item.type": *appli
+    "tokens.components.app-nav-item.fg": *appnav
+    "tokens.components.app-nav-item.radius": *appli
+    "tokens.components.app-nav-item.padding": *appli
+    "tokens.components.app-nav-item.font": *appnav
+    "tokens.components.app-nav-item.hover": *appnav
+    "tokens.components.app-nav-item.pressed": *appnav
+    "tokens.components.app-nav-item.states": *appnav
+    "tokens.components.app-nav-item.use": *appnav
+    "tokens.components.tile-button.type": *tile
+    "tokens.components.tile-button.bg": *tile
+    "tokens.components.tile-button.border": *tile
+    "tokens.components.tile-button.radius": *tile
+    "tokens.components.tile-button.padding": *tile
+    "tokens.components.tile-button.height": *tile
+    "tokens.components.tile-button.font": *tile
+    "tokens.components.tile-button.states": *tile
+    "tokens.components.tile-button.use": *tile
+    "tokens.components.filter-chip.type": *chip
+    "tokens.components.filter-chip.bg": *chip
+    "tokens.components.filter-chip.radius": *chip
+    "tokens.components.filter-chip.padding": *chip
+    "tokens.components.filter-chip.height": *chip
+    "tokens.components.filter-chip.states": *chip
+    "tokens.components.filter-chip.use": *chip
+    "tokens.components.carousel-arrow.type": *arrow
+    "tokens.components.carousel-arrow.bg": *arrow
+    "tokens.components.carousel-arrow.radius": *arrow
+    "tokens.components.carousel-arrow.size": *arrow
+    "tokens.components.carousel-arrow.states": *arrow
+    "tokens.components.carousel-arrow.use": *arrow
+    "tokens.components.round-button.type": *circle
+    "tokens.components.round-button.bg": *circle
+    "tokens.components.round-button.radius": *circle
+    "tokens.components.round-button.size": *circle
+    "tokens.components.round-button.states": *circle
+    "tokens.components.round-button.use": *circle
+    "tokens.components.story-card.type": &card { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::article", captured: "2026-09-30" }
+    "tokens.components.story-card.radius": *card
+    "tokens.components.story-card.size": *card
+    "tokens.components.story-card.use": *card
 tokens:
-  source: live-extract
-  extracted: "2026-06-11"
-  note: "primary = live CTA indigo (#3c2bac, '링글 시작하기' / '무료체험'); deeper indigos (#2b1e90, #4130a4, #201852, #120b60) anchor dark hero bands. Headings near-black indigo #140f33; muted nav/sub text #80839e. Single body font Pretendard Variable; display in Pretendard JP ExtraBold. Flat, shadowless on inspected nodes."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
-    primary: "#3c2bac"
-    primary-deep: "#2b1e90"
-    indigo: "#4130a4"
-    indigo-darker: "#201852"
-    indigo-darkest: "#120b60"
-    indigo-title: "#1c1374"
-    ink: "#140f33"
-    body: "#3e426a"
-    slate: "#5a5e7f"
-    muted: "#80839e"
-    tint: "#eeebfa"
-    tint-mid: "#cbc5f0"
-    lilac: "#a89ee6"
-    canvas: "#ffffff"
-    surface: "#f8f8fb"
-    gold: "#ffd391"
-    promo-blue: "#2259e5"
-    teens-blue: "#4495ff"
+    primary: "#3e00d9"
     on-primary: "#ffffff"
+    deep-violet: "#1d0788"
+    navy: "#120968"
+    app-violet: "#3c2bac"
+    promo-violet: "#5442fb"
+    sky: "#1170ff"
+    promo-red: "#e80023"
+    promo-yellow: "#ffe999"
+    lilac: "#aa9dff"
+    ink: "#000000"
+    ink-soft: "#0d0d0d"
+    body: "#242730"
+    slate: "#4f545c"
+    muted: "#6e737c"
+    faint: "#9ea3ab"
+    app-slate: "#3e426a"
+    app-muted: "#80839e"
+    hairline: "#e4e7f4"
+    nav-hover: "#fbfbff"
+    white: "#ffffff"
   typography:
-    family: { display: "Pretendard JP ExtraBold", body: "Pretendard Variable" }
-    display-hero: { size: 52, weight: 800, lineHeight: 1.30, use: "Hero headline, Pretendard JP ExtraBold" }
-    section:      { size: 40, weight: 800, lineHeight: 1.30, use: "Product/section headlines, ExtraBold" }
-    feature:      { size: 32, weight: 800, lineHeight: 1.31, use: "Feature headline, ExtraBold" }
-    eyebrow:      { size: 22, weight: 700, lineHeight: 1.40, use: "Section label, Pretendard JP Bold" }
-    lead:         { size: 20, weight: 500, lineHeight: 1.40, use: "Hero sub / lead text, Pretendard JP Medium" }
-    body:         { size: 14, weight: 400, lineHeight: 1.57, use: "Body + nav, Pretendard Variable" }
-    nav:          { size: 14, weight: 500, lineHeight: 1.57, use: "Top nav items, Pretendard JP Medium" }
-  spacing: { xs: 4, sm: 8, md: 10, base: 16, lg: 24, xl: 40, xxl: 60 }
-  rounded: { xs: 4, sm: 5, md: 8, lg: 12, xl: 24, full: 40 }
-  shadow:
-    none: "none"
+    family: { display: "Pretendard JP Bold", body: "Pretendard JP Medium", app: "Pretendard Variable" }
+    display-hero: { size: 50, weight: 700, lineHeight: 1.25, tracking: -2.25, use: "Hero headline on /ko/1on1 and /ko/student/landing/home (영어는 실전처럼), Pretendard JP Bold, 62.5px line, in #000000; dark-band headlines use the same style in #ffffff with a lilac second line" }
+    section-xl: { size: 48, weight: 700, lineHeight: 1.25, tracking: -1.92, use: "Large stacked section headlines on /ko/1on1, Pretendard JP Bold, 60px line" }
+    section: { size: 40, weight: 700, lineHeight: 1.2, tracking: -1.6, use: "Section headlines on both Framer pages, Pretendard JP Bold, 48px line, in #000000 or #0d0d0d" }
+    subsection: { size: 32, weight: 700, lineHeight: 1.25, tracking: -0.96, use: "Feature headlines on /ko/1on1, Pretendard JP Bold, 40px line; the accented half of a headline turns #3e00d9" }
+    card-title: { size: 26, weight: 700, lineHeight: 1.3, tracking: -0.65, use: "Card and list headings on /ko/student/landing/home (60 instances), Pretendard JP Bold, 33.8px line" }
+    button-lg: { size: 18, weight: 700, use: "링글 시작하기 label, a Framer text element inside the button, in #ffffff" }
+    lead: { size: 17, weight: 500, lineHeight: 1.4, tracking: -0.425, use: "Review and story copy on /ko/1on1, Pretendard JP Medium, 23.8px line, in #242730" }
+    body-strong: { size: 16, weight: 600, lineHeight: 1.6, tracking: -0.4, use: "Descriptions under the card headings on /ko/student/landing/home, Pretendard JP SemiBold, 25.6px line, in #4f545c" }
+    body: { size: 14, weight: 500, lineHeight: 1.6, tracking: -0.35, use: "Running copy on the Framer pages, Pretendard JP Medium, 22.4px line, in #6e737c" }
+    caption: { size: 10, weight: 500, lineHeight: 1.6, tracking: -0.2, use: "Review metadata on /ko/1on1, Pretendard JP Medium, 16px line, in #6e737c" }
+    app-title: { size: 24, weight: 700, lineHeight: 1.5, use: "Section headings on /ko/company, Pretendard Variable, 36px line, in #000000" }
+    app-body: { size: 16, weight: 400, lineHeight: 1.5, use: "Header navigation rows on /ko/company, Pretendard Variable, 24px line" }
+    app-label: { size: 14, weight: 500, lineHeight: 1.57, use: "Footer lists and header button labels on /ko/company, Pretendard Variable, 22px line, footer lists in #80839e" }
+  spacing: { action-y: 16, action-x: 24, pill-y: 14, pill-x: 16, banner-y: 60, banner-x: 80, chip-y: 10, chip-x: 16, header-y: 8, header-x: 16, nav-y: 4, nav-x: 6, tile: 12 }
+  rounded: { nav: 4, chip: 4, header-button: 5, tile: 7, cta: 8, pill: 16, banner: 24, arrow: 40, circle: 100 }
   components:
-    button-primary: { type: button, bg: "#3c2bac", fg: "#ffffff", radius: "8px", height: "61px", font: "18px / 400 Pretendard", use: "Primary CTA — 링글 시작하기" }
-    button-nav: { type: button, bg: "#3c2bac", fg: "#ffffff", radius: "5px", padding: "10px 16px", height: "42px", use: "Header 무료체험 CTA" }
-    button-on-dark: { type: button, bg: "#120b60", fg: "#ffffff", radius: "8px", height: "60px", use: "더 알아보기 link on dark indigo band" }
-    button-teens: { type: button, bg: "#4495ff", fg: "#ffffff", radius: "8px", height: "60px", use: "링글 틴즈 더 알아보기 CTA" }
-    nav-link: { type: tab, fg: "#80839e", font: "14px / 500 Pretendard JP Medium", active: "text #3c2bac", use: "Top nav item, indigo on active/hover" }
-    card-tint: { type: card, bg: "#eeebfa", fg: "#140f33", radius: "12px", use: "Soft lilac-tint content card" }
-    card-promo: { type: card, bg: "#2259e5", fg: "#ffffff", radius: "24px", padding: "60px", use: "Promotion banner card, gold accent #ffd391" }
-    badge-gold: { type: badge, bg: "#2259e5", fg: "#ffd391", radius: "4px", font: "16px / 700 Pretendard JP Bold", use: "Promo accent label (gold on promo blue)" }
-    footer-link: { type: listItem, fg: "#80839e", font: "14px / 400 Pretendard Variable", use: "Footer / nav link" }
+    start-button: { type: button, bg: "#3e00d9", fg: "#ffffff", radius: "8px", height: "61px", font: "18px / 700 Pretendard JP Bold (label)", states: "focus (Tab #11) draws only the browser's default ring; hover and pressed are unmeasured because a Channel Talk modal covered the button even with --hide-overlays; transition all 0s", use: "링글 시작하기, the primary action: 200 x 61 in the hero of /ko/1on1 and /ko/student/landing/home, repeated at 320 x 61 three more times down /ko/1on1" }
+    band-button: { type: button, bg: "#1d0788", radius: "8px", padding: "16px 24px", height: "57px", states: "rest only; the bundle's pressed frame changes nothing but the browser's default link colour, which is not a brand state", use: "320 x 57 actions inside the product bands of /ko/1on1 (captures 19 and 20); the label element was not recorded" }
+    product-button: { type: button, bg: "#120968", radius: "8px", height: "60px", states: "rest only; the collector's pseudo-state pass on /ko/student/landing/home stalled and was logged unmeasured, and the probe did not reach this control", use: "200 x 60 더 알아보기-sized actions in the product list of /ko/student/landing/home; siblings fill #3e00d9, #1d0788 and #1170ff; labels not recorded" }
+    promo-pill: { type: button, bg: "#5442fb", fg: "#ffffff", radius: "16px", padding: "14px 16px", height: "80px", font: "20px / 700 Pretendard JP Bold (label)", states: "focus (Tab #10) draws only the browser's default ring; hover and pressed unmeasured", use: "9회말 역전 이벤트 특가 확인하기, a 660 x 80 promotion link under the hero of both Framer pages; time-boxed campaign" }
+    promo-banner: { type: card, bg: "#e80023", radius: "24px", padding: "60px 0px 60px 80px", size: "1180px x 170px", use: "Promotion banner card on both Framer pages with a #ffe999 32px heading; time-boxed campaign" }
+    top-bar: { type: card, bg: "#0d0d0d", size: "1440px x 44px", use: "Full-width countdown bar at the top of both Framer pages (내일 마감! 9월 마지막 역전 찬스, 최대 59% 할인!); time-boxed campaign" }
+    site-header: { type: card, bg: "#ffffff", shadow: "0px 4px 30px rgba(20, 15, 51, 0.05)", use: "Header container of /ko/1on1 behind the navigation, the only shadow observed" }
+    nav-link: { type: tab, fg: "#0d0d0d", font: "14px / 500 Pretendard JP Medium", height: "30px", states: "focus (Tab #3) draws only the browser's default ring; hover and pressed unmeasured (the Channel Talk modal backdrop was on top)", use: "Header navigation of the Framer pages (튜터, 교재, 학습 체계, AI, 후기, 가격, 기업 교육)" }
+    app-trial-button: { type: button, bg: "#3c2bac", fg: "#ffffff", radius: "5px", padding: "8px 16px", height: "40px", font: "14px / 500 Pretendard Variable", states: "hover, pressed and focus (Tab #11) show no change across the button, its label and three ancestor levels; transition all 0s", use: "무료 체험하기 in the header of /ko/company, the Next.js web template, 108 x 40 in the probe" }
+    app-login-button: { type: button, bg: "#ffffff", fg: "#3c2bac", border: "1px solid #3c2bac", radius: "5px", padding: "8px 16px", height: "40px", font: "14px / 500 Pretendard Variable", states: "hover, pressed and focus (Tab #12) show no change", use: "로그인 beside 무료 체험하기 in the /ko/company header" }
+    app-nav-item: { type: tab, fg: "#3e426a", radius: "4px", padding: "4px 6px", font: "14px / 500 Pretendard Variable", hover: "row bg #fbfbff", pressed: "row bg #fbfbff", states: "hover and pressed tint the parent row #fbfbff; focus (Tab #9) draws only the browser's default ring", use: "Header navigation of /ko/company (1:1 화상영어, 튜터, 교재, 기업 교육)" }
+    tile-button: { type: button, bg: "#ffffff", border: "1px solid #e4e7f4", radius: "7px", padding: "12px", height: "48px", font: "14px / 500 Pretendard Variable", states: "rest on four captured instances; no state frame and no probe read", use: "112 x 48 white tiles in a row of four near the foot of /ko/company" }
+    filter-chip: { type: button, bg: "#ffffff", radius: "4px", padding: "10px 16px", height: "42px", states: "rest on four captured instances; the pseudo-state pass on this page stalled, so hover and pressed are unmeasured", use: "White 112 x 42 chips in a row of four on /ko/student/landing/home (captures 42-45); labels not recorded" }
+    carousel-arrow: { type: button, bg: "rgba(0, 0, 0, 0.2)", radius: "40px", size: "40px x 40px", states: "rest on two captured instances; hover and pressed unmeasured", use: "Translucent round arrows over the hero carousel of /ko/student/landing/home" }
+    round-button: { type: button, bg: "#ffffff", radius: "100px", size: "40px x 40px", states: "rest only; hover and pressed unmeasured", use: "White round control after the chip row on /ko/student/landing/home" }
+    story-card: { type: card, radius: "8px", size: "333px x 331px", use: "Story cards on /ko/1on1; their fill is imagery" }
   components_harvested: true
 ---
 
@@ -66,21 +313,20 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-Ringle (링글) is Korea's premium 1:1 video-English edtech — "명문대 튜터와의 1:1 화상영어" — and its marketing surface reads like a serious, career-grade learning product rather than a playful language app. The canvas is pure white (`#ffffff`) with the occasional cool near-white surface (`#f8f8fb`), and the whole identity orbits a single confident indigo: the CTA purple `#3c2bac` that fills every "링글 시작하기" / "무료체험" button. That indigo deepens into a family of dark blues — `#2b1e90`, `#4130a4`, `#201852`, `#120b60`, `#1c1374` — that paint the full-bleed feature bands where Ringle showcases its 1:1 화상영어, AI 스피킹, and 기업 솔루션 products in reversed-out white type. The effect is studious and trustworthy: indigo signals focus and intellect, the right register for a product that pairs learners with Ivy/top-MBA tutors.
+Ringle (링글) is a Korean English-tutoring company that sells 1:1 video lessons with tutors from top English-speaking universities ("명문대 튜터와의 1:1 화상영어"), plus AI 스피킹, an AI speaking test, a corporate English programme and 링글 틴즈 for teenagers. The company behind it, (주)링글잉글리시에듀케이션서비스, is run by its two co-founders and chief executives, 이성파 and 이승훈. Its own team page says 이승훈 started Ringle during his Stanford MBA after six years at BCG, and that the company keeps its head office on 테헤란로 in Seoul with a branch in San Mateo, near Stanford. It states its mission as "누구나 영어의 장벽을 넘어 더 큰 기회를 잡을 수 있는 세상", and its Global BD page says more than 30% of revenue comes from outside Korea. The product pitch is career English, not casual chat: "꿈꾸던 영어실력과 커리어를 만드는 일하는 사람을 위한 영어, 링글".
 
-Typography is the system's backbone and its single most distinctive trait. Display runs in **Pretendard JP ExtraBold (weight 800)** at large sizes — 52px on the hero, 40px on product headlines, 32px on features — in a deep near-black indigo `#140f33`, projecting declarative confidence ("영어는 실전처럼"). Body and UI text collapse to a single workhorse, **Pretendard Variable**, at a quiet 14px / weight 400, with nav and lead text stepping up to Pretendard JP Medium at 14–20px in muted slate `#80839e`. The hierarchy is carried almost entirely by weight and size, not color: ExtraBold black-indigo to persuade, Medium grey to inform.
+The marketing surface now lives on two Framer pages: /ko/1on1, where ringleplus.com lands, and /ko/student/landing/home. They set bold Korean headlines in Pretendard JP Bold with very tight tracking (50px at -2.25px on the hero) over white, in black `#000000` and `#0d0d0d`, and put every primary action in one electric violet, `#3e00d9`. Deeper violets `#1d0788` and `#120968` fill the secondary actions inside product bands, and the accented half of a headline switches to `#3e00d9`. Running copy is quiet grey Pretendard JP Medium, `#6e737c` at 14px. The company page (/ko/company) comes from a different build: Ringle's Next.js web template, set in Pretendard Variable, whose header still carries the earlier indigo `#3c2bac`. The June 2026 record put `#3c2bac` on the same 61px 링글 시작하기 button that now computes `#3e00d9`. Between those dates the marketing CTA moved to a brighter violet, while the app template kept the older one.
 
-What distinguishes Ringle is its restraint. There is essentially no decorative depth — inspected hero, nav, headings, and CTAs all return `box-shadow: none`; separation comes from flat indigo bands and soft lilac tints (`#eeebfa`, `#cbc5f0`, `#a89ee6`) rather than elevation. Geometry is gently rounded: 8px on primary buttons and cards, 5px on the compact nav CTA, 12px on tinted cards, and a generous 24px on promo banners. A warm gold accent (`#ffd391`) and a saturated promo blue (`#2259e5`) appear only in time-boxed promotion chrome, and a bright sky blue (`#4495ff`) is reserved for the 틴즈 (teens) sub-brand. The result is a calm, intellectual, mobile-first system — premium without being cold.
+Promotions are loud and time-boxed. At capture a black `#0d0d0d` countdown bar, a `#5442fb` pill and a red `#e80023` banner card with `#ffe999` type ran the "9회말 역전 이벤트" sale, up to 59% off. Everything else is flat. The one shadow observed is a faint `rgba(20, 15, 51, 0.05)` glow under the header.
 
 **Key Characteristics:**
-- Single indigo identity — CTA purple `#3c2bac` deepening into `#2b1e90`, `#4130a4`, `#201852`, `#120b60` dark bands
-- Pretendard JP ExtraBold (weight 800) for all display headlines — declarative, career-grade voice
-- Pretendard Variable weight 400 at 14px as the single body/UI workhorse
-- Near-black indigo `#140f33` for headings; muted slate `#80839e` for nav and sub-text
-- Flat depth: no shadow on inspected nodes; lilac tints (`#eeebfa`, `#cbc5f0`, `#a89ee6`) and indigo bands do the separating
-- Gently rounded geometry — 8px buttons/cards, 5px nav CTA, 12px tint cards, 24px promo banners
-- Reserved accents: gold `#ffd391` + promo blue `#2259e5` for promotions; sky blue `#4495ff` for 틴즈
-- Hierarchy by weight/size, not color — ExtraBold to persuade, Medium grey to inform
+- One electric violet `#3e00d9` for every 링글 시작하기 and for accented headline words; deeper `#1d0788` and `#120968` for secondary product actions
+- Pretendard JP Bold 700 headlines with very tight tracking: -2.25px at 50px, -1.92px at 48px, -1.6px at 40px, -0.96px at 32px
+- Grey Pretendard JP Medium copy (`#6e737c`, `#242730`, `#4f545c`) under black `#000000` headings
+- 8px corners on primary actions, 16px on the promotion pill, 24px on the banner card, 4px on chips
+- A second template on /ko/company: Pretendard Variable, indigo `#3c2bac` header button, 5px corners, hairline `#e4e7f4`
+- Time-boxed campaign chrome in `#0d0d0d`, `#5442fb`, `#e80023` and `#ffe999`
+- Flat surfaces; the header's `rgba(20, 15, 51, 0.05)` glow is the only shadow
 
 ## Primary tasks
 
@@ -91,361 +337,365 @@ What distinguishes Ringle is its restraint. There is essentially no decorative d
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **Ringle Indigo** (`#3c2bac`): Primary brand color and CTA background — the saturated indigo-purple that fills "링글 시작하기" and "무료체험". The single "action" color.
-- **Deep Indigo** (`#2b1e90`): Brand-text indigo used for inline product names and emphasis (e.g. "링글 1:1 화상영어").
-- **Indigo Band** (`#4130a4`): A mid dark-indigo seen as a recurring surface fill across feature sections.
+Every token below was read on 2026-09-30 from /ko/1on1, /ko/student/landing/home and /ko/company by the deterministic collector, and label colours and states by the fixed keyboard probe. Tokens describe Ringle's public web pages; the lesson app behind the login was not opened.
 
-### Dark Indigo Bands
-- **Indigo Dark** (`#201852`): Dark band background behind reversed-out white feature copy.
-- **Indigo Darkest** (`#120b60`): Near-black indigo for "더 알아보기" links on the darkest product bands.
-- **Indigo Title** (`#1c1374`): Deep indigo used on some product-landing hero headlines.
+### Primary
+- **Ringle Violet** (`#3e00d9`): The fill of 링글 시작하기, the primary action, which is 200 × 61 in the hero of both Framer pages and repeats at 320 × 61 three more times down /ko/1on1. The same violet fills two of the "더 알아보기" actions on /ko/student/landing/home and colours the accented half of feature headlines. It is the primary because it is the colour of the one action the homepage asks for, in every place it asks. The older `#3c2bac` survives only in the /ko/company header, a different template.
+- **On Primary** (`#ffffff`): The 18px/700 label inside 링글 시작하기 and the label of the promotion pill.
+
+### Secondary violets
+- **Deep Violet** (`#1d0788`): 320 × 57 actions inside the product bands of /ko/1on1 and a 200 × 60 action on the landing page.
+- **Navy** (`#120968`): A 200 × 60 action on the landing page, dark 48px headlines on /ko/1on1 and 16px bold link text.
+- **App Violet** (`#3c2bac`): The fill of 무료 체험하기 and the outline and label of 로그인 in the /ko/company header.
+- **Lilac** (`#aa9dff`): The second line of white headlines on dark bands. `#7665f7` plays the same role once.
+- **Sky** (`#1170ff`): One 200 × 60 action with a nine-character label in the product list of /ko/student/landing/home. The collector did not record the label.
+
+### Campaign (time-boxed)
+- **Promo Violet** (`#5442fb`): The 660 × 80 "9회말 역전 이벤트 특가 확인하기" pill.
+- **Promo Red** (`#e80023`): The 1180 × 170 promotion banner card.
+- **Promo Yellow** (`#ffe999`): The 32px heading on that card.
+- **Ink Soft** (`#0d0d0d`): The 44px countdown bar across the top. The same near-black also sets navigation labels and many headings.
+
+### Text
+- **Ink** (`#000000`): Hero and section headlines.
+- **Body** (`#242730`): Review and story copy at 17px.
+- **Slate** (`#4f545c`): Card descriptions at 16px SemiBold.
+- **Muted** (`#6e737c`): Running copy at 14px and review metadata at 10px. This is the most frequent text colour on the Framer pages.
+- **Faint** (`#9ea3ab`): The quietest copy and metadata.
+- **App Slate** (`#3e426a`): Navigation labels on /ko/company.
+- **App Muted** (`#80839e`): Footer lists on /ko/company.
 
 ### Neutral & Surface
-- **Pure White** (`#ffffff`): Page background, white cards, reversed-out text on indigo bands.
-- **Surface** (`#f8f8fb`): Cool near-white surface for alternating sections.
-- **Tint** (`#eeebfa`): Soft lilac-tint card and section background.
-- **Tint Mid** (`#cbc5f0`): A stronger lilac tint for highlighted surfaces.
-- **Lilac** (`#a89ee6`): The mid lilac used for illustration fills and accent surfaces.
+- **White** (`#ffffff`): The page, the header, chips and round controls.
+- **Hairline** (`#e4e7f4`): The 1px border of the white tiles on /ko/company, and its default border colour.
+- **Nav Hover** (`#fbfbff`): The row tint behind a /ko/company navigation item on hover and press.
 
-### Text Hierarchy
-- **Ink Indigo** (`#140f33`): Primary heading and strong text — near-black indigo, never pure black.
-- **Body Slate** (`#3e426a`): Secondary body copy.
-- **Slate** (`#5a5e7f`): Tertiary headings and labels.
-- **Muted** (`#80839e`): Nav items, captions, lead/sub text, lowest-emphasis labels.
-
-### Accents (reserved)
-- **Gold** (`#ffd391`): Warm gold accent text, used only inside promotion chrome.
-- **Promo Blue** (`#2259e5`): Saturated blue for the time-boxed promotion bar and banner cards.
-- **Teens Blue** (`#4495ff`): Bright sky blue reserved for the 링글 틴즈 (teens) sub-brand CTAs.
-- **On Primary** (`#ffffff`): White text/icons on indigo and blue surfaces.
+### Brand assets, not tokens
+- The Ringle logo was not measured; no logo colour is claimed. Framer links report the browser's default link colours (`#0000ee`, and `#ff0000` while pressed) on elements whose visible text is a child. Those are not brand colours.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Display**: `Pretendard JP ExtraBold` (also `Pretendard JP Bold`, `Pretendard JP Medium`, `Pretendard JP Regular`) — all headlines, eyebrows, nav, and lead text.
-- **Body**: `Pretendard Variable` (with `Noto Sans KR` fallback) — the document default and the single body/UI workhorse at weight 400.
+- **Live surface use**: `Pretendard JP Medium` (282 observed uses), `Pretendard JP Bold` (204) and `Pretendard JP SemiBold` (42), all `loaded / high`, on the two Framer pages. They are uploaded to Framer as custom fonts and served from `framerusercontent.com/assets/` (for example `gTPCJvFiJP72BBM1FJNS8i0ZKM.woff2` for Bold and `ZSHRGvJTyXobYS1wVqLXesolkY.woff2` for Medium). `Pretendard Variable` (78 uses, `loaded / high`) sets /ko/company, served from `cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6`. `Source Serif 4` is loaded and computed on 3 elements of the Framer pages.
+- **Official distributed font assets**: Pretendard is Kil Hyung-jin's open-source family (orioncactus/pretendard). Its LICENSE, opened on 2026-09-30, reserves the font name 'Pretendard', lists works including M PLUS 1 among the included sources, and states the SIL Open Font License 1.1. The identification of Ringle's files rests on the declared family names; the files' name tables were not inspected.
+- **Official product use**: no Ringle page opened this session names its typefaces, so no statement of official product use is made.
+- **Declared only (no visible use)**: `Pretendard JP ExtraBold` has an `@font-face` rule on the Framer pages (`NTnDzxbPhY5dHz1DNJIl5Jgf9o0.woff2`), but no captured element computes it. Framer also declares Archivo, Archivo Narrow, Barlow Semi Condensed, Charis SIL, Inter, Noto Sans KR and others with 0 uses. /ko/company declares the Feather icon font.
+- **Unresolved**: one element computes `CUSTOM;Pretendard Medium`. Framer's wrapper elements compute the browser default `sans-serif` at 12px; the text inside them is set in the Pretendard JP faces above.
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Display Hero | Pretendard JP ExtraBold | 52px (3.25rem) | 800 | ~1.30 | Homepage hero, color `#140f33` |
-| Section Headline | Pretendard JP ExtraBold | 40px (2.50rem) | 800 | ~1.30 | Product hub headlines |
-| Feature Headline | Pretendard JP ExtraBold | 32px (2.00rem) | 800 | ~1.31 | In-section feature heads |
-| Eyebrow / Label | Pretendard JP Bold | 22px (1.38rem) | 700 | ~1.40 | Product name label (e.g. "링글 AI 스피킹") |
-| Lead / Sub | Pretendard JP Medium | 20px (1.25rem) | 500 | ~1.40 | Hero sub-line, color `#80839e` |
-| Nav | Pretendard JP Medium | 14px (0.88rem) | 500 | ~1.57 | Top nav items |
-| Body | Pretendard Variable | 14px (0.88rem) | 400 | ~1.57 | Standard reading text |
+| Role | Font | Size | Weight | Line Height | Tracking | Observed on |
+|------|------|------|--------|-------------|----------|-------------|
+| Display Hero | Pretendard JP Bold | 50px | 700 | 62.5px (1.25) | -2.25px | Hero of both Framer pages, `#000000` |
+| Section XL | Pretendard JP Bold | 48px | 700 | 60px (1.25) | -1.92px | Stacked headlines on /ko/1on1 |
+| Section | Pretendard JP Bold | 40px | 700 | 48px (1.2) | -1.6px | Section headlines |
+| Subsection | Pretendard JP Bold | 32px | 700 | 40px (1.25) | -0.96px | Feature headlines, accent `#3e00d9` |
+| Card Title | Pretendard JP Bold | 26px | 700 | 33.8px (1.3) | -0.65px | Cards on the landing page |
+| App Title | Pretendard Variable | 24px | 700 | 36px (1.5) | normal | /ko/company headings |
+| Button Large | Pretendard JP Bold | 18px | 700 | — | — | 링글 시작하기 label |
+| Lead | Pretendard JP Medium | 17px | 500 | 23.8px (1.4) | -0.425px | Reviews, `#242730` |
+| Body Strong | Pretendard JP SemiBold | 16px | 600 | 25.6px (1.6) | -0.4px | Card descriptions, `#4f545c` |
+| App Body | Pretendard Variable | 16px | 400 | 24px (1.5) | normal | /ko/company navigation rows |
+| Body | Pretendard JP Medium | 14px | 500 | 22.4px (1.6) | -0.35px | Running copy, `#6e737c` |
+| App Label | Pretendard Variable | 14px | 500 | 22px (1.57) | normal | /ko/company footer and buttons |
+| Caption | Pretendard JP Medium | 10px | 500 | 16px (1.6) | -0.2px | Review metadata |
 
 ### Principles
-- **Bold display, light body**: ExtraBold (800) carries every headline; Pretendard Variable 400 carries every paragraph. Weight contrast is the primary hierarchy signal.
-- **One body font**: Pretendard Variable is the single workhorse for body and UI — the system does not mix functional typefaces.
-- **Color stays quiet in type**: headings sit in near-black indigo `#140f33`, sub/nav in muted `#80839e`; saturated indigo is reserved for interactive elements, not running text.
-- **Hangul-first sizing**: body at 14px with ~1.57 line-height — generous for dense hangul reading.
+- **Bold, tracked tight**: every Framer headline is weight 700, with tracking at about -4.5% of the size at 48–50px and -3% at 32px.
+- **Medium for reading**: copy runs in Pretendard JP Medium or SemiBold, never Regular, in cool greys.
+- **Two templates**: the Framer marketing pages use the Pretendard JP faces; the Next.js company page uses Pretendard Variable at 400 and 500 with untracked text.
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Primary CTA**
-- Background: `#3c2bac`
+**Start button (primary)**
+- Background: `#3e00d9`
 - Text: `#ffffff`
 - Radius: 8px
-- Font: 18px Pretendard
 - Height: 61px
-- Use: Primary call-to-action — "링글 시작하기"
+- Font: 18px 700 Pretendard JP Bold
+- States: focus shows the browser's default ring; hover and pressed were covered by a Channel Talk modal and are unmeasured
+- Use: 링글 시작하기, 200 × 61 in the hero of both Framer pages and 320 × 61 three more times on /ko/1on1
 
-**Header CTA (무료체험)**
+**Band button**
+- Background: `#1d0788`
+- Radius: 8px
+- Padding: 16px 24px
+- Height: 57px
+- Use: Actions inside the product bands of /ko/1on1
+
+**Product button**
+- Background: `#120968`
+- Radius: 8px
+- Height: 60px
+- Use: The 200 × 60 actions in the landing page's product list; siblings fill `#3e00d9`, `#1d0788` and `#1170ff`
+
+**Promotion pill**
+- Background: `#5442fb`
+- Text: `#ffffff`
+- Radius: 16px
+- Padding: 14px 16px
+- Height: 80px
+- Font: 20px 700 Pretendard JP Bold
+- Use: 9회말 역전 이벤트 특가 확인하기, 660 × 80, time-boxed
+
+**App trial button**
 - Background: `#3c2bac`
 - Text: `#ffffff`
 - Radius: 5px
+- Padding: 8px 16px
+- Height: 40px
+- Font: 14px 500 Pretendard Variable
+- States: no hover, pressed or focus change within the probe's scope
+- Use: 무료 체험하기 in the /ko/company header
+
+**App login button**
+- Background: `#ffffff`
+- Text: `#3c2bac`
+- Border: 1px solid `#3c2bac`
+- Radius: 5px
+- Padding: 8px 16px
+- Height: 40px
+- Font: 14px 500 Pretendard Variable
+- Use: 로그인 in the /ko/company header
+
+**Tile button**
+- Background: `#ffffff`
+- Border: 1px solid `#e4e7f4`
+- Radius: 7px
+- Padding: 12px
+- Height: 48px
+- Use: Four 112 × 48 tiles near the foot of /ko/company
+
+**Filter chip**
+- Background: `#ffffff`
+- Radius: 4px
 - Padding: 10px 16px
 - Height: 42px
-- Use: Compact header free-trial button
+- Use: Four 112 × 42 chips on /ko/student/landing/home
 
-**On-Dark Link**
-- Background: `#120b60`
-- Text: `#ffffff`
-- Radius: 8px
-- Height: 60px
-- Use: "더 알아보기" link on the darkest indigo feature bands
+**Carousel arrow**
+- Background: `rgba(0, 0, 0, 0.2)`
+- Radius: 40px
+- Size: 40 × 40
+- Use: Hero carousel of /ko/student/landing/home
 
-**Teens CTA**
-- Background: `#4495ff`
-- Text: `#ffffff`
-- Radius: 8px
-- Height: 60px
-- Use: 링글 틴즈 sub-brand "틴즈 더 알아보기" button
-
-### Inputs
-
-**Default**
+**Round button**
 - Background: `#ffffff`
-- Border: 1px solid `#cbc5f0`
-- Radius: 8px
-- Text: 14px Pretendard Variable
-- Use: Form / auth text field on white canvas
-
-### Cards & Containers
-
-**Lilac Tint Card**
-- Background: `#eeebfa`
-- Text: `#140f33`
-- Radius: 12px
-- Use: Soft lilac-tinted content card on white
-
-**Promotion Banner**
-- Background: `#2259e5`
-- Text: `#ffffff`
-- Radius: 24px
-- Padding: 60px
-- Use: Time-boxed promotion banner card (gold `#ffd391` accent label inside)
-
-### Badges
-
-**Gold Promo Label**
-- Background: `#2259e5`
-- Text: `#ffd391`
-- Radius: 4px
-- Font: 16px Pretendard JP Bold
-- Use: Promotion accent label — warm gold on promo blue
+- Radius: 100px
+- Size: 40 × 40
+- Use: Round control after the chip row on the landing page
 
 ### Navigation
-- Background: `#ffffff`
-- Text: `#80839e`
-- Active: `#3c2bac` indigo text
-- Font: 14px Pretendard JP Medium
-- Use: Top horizontal nav ("제품소개", "고객사례", "튜터", "교재", "가격")
 
-### Footer
-- Links: `#80839e`, 14px Pretendard Variable
-- Use: Footer navigation links
+**Site header**
+- Background: `#ffffff`
+- Shadow: 0px 4px 30px `rgba(20, 15, 51, 0.05)`
+- Use: The header container of /ko/1on1
+
+**Nav link (Framer)**
+- Text: `#0d0d0d`
+- Font: 14px 500 Pretendard JP Medium
+- Height: 30px
+- States: focus shows the browser's default ring; hover and pressed unmeasured
+- Use: 튜터, 교재, 학습 체계, AI, 후기, 가격, 기업 교육
+
+**Nav item (/ko/company)**
+- Text: `#3e426a`
+- Radius: 4px
+- Padding: 4px 6px
+- Font: 14px 500 Pretendard Variable
+- Hover: row background `#fbfbff`
+- Use: Header navigation of the company page
+
+### Cards & Banners
+
+**Promotion banner**
+- Background: `#e80023`
+- Radius: 24px
+- Padding: 60px 0px 60px 80px
+- Size: 1180 × 170
+- Use: Campaign card with a `#ffe999` heading, time-boxed
+
+**Top bar**
+- Background: `#0d0d0d`
+- Size: 1440 × 44
+- Use: Countdown bar across the top of both Framer pages, time-boxed
+
+**Story card**
+- Radius: 8px
+- Size: 333 × 331
+- Use: Image-filled story cards on /ko/1on1
 
 ---
 
-**Verified:** 2026-06-11 (omd:add-reference CREATE — Tier 1 live inspect)
-**Tier 1 sources:** https://www.ringleplus.com, https://www.ringleplus.com/ko/student/landing/home, https://www.ringleplus.com/en/student/landing/blog
-**Tier 2 sources:** none available (getdesign.md/ringle → "No designs found"; styles.refero.design ?q=ringle → no Ringle-specific style)
+**Verified:** 2026-09-30 (deterministic collector capture of three public, logged-out ringleplus.com pages plus fixed keyboard-probe state reads and first-party context)
+**Tier 1 sources:** https://www.ringleplus.com/ko/1on1 ; https://www.ringleplus.com/ko/student/landing/home ; https://www.ringleplus.com/ko/company ; https://www.ringleplus.com/ko/company/1
+**Tier 2 sources:** getdesign.md/ringle (HTTP 200, the name does not appear in the response) and styles.refero.design/?q=ringle (HTTP 200, the name appears only as the echoed query), requested 2026-09-30; no Tier 2 value used
 **Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
 ### Spacing System
-- Base unit: ~4px
-- Scale: 4px, 8px, 10px, 16px, 24px, 40px, 60px
-- Notable: promotion banner cards use a generous 60px padding for an editorial, full-bleed feel
+- Observed paddings: 16px 24px on band buttons, 14px 16px on the promotion pill, 60px 0 60px 80px on the banner card, 10px 16px on chips, 8px 16px on /ko/company header buttons, 4px 6px on its navigation rows, 12px in its tiles.
+- The Framer primary button computes 0 padding; its size comes from the layout (200 × 61 or 320 × 61).
 
 ### Grid & Container
-- Centered single-column hero anchored by the 52px ExtraBold headline
-- Product hubs (1:1 화상영어 / AI 스피킹 / 기업 / 틴즈) stack as alternating full-width bands — white sections vs dark indigo bands (`#201852`, `#120b60`)
-- Each product band pairs a 22px Bold eyebrow label, a 40px ExtraBold headline, and an indigo "더 알아보기" CTA
-- Cards group related case studies and use 12px radius
+- Content sits in an 1180px column at the 1440px viewport, the width of the section headlines and the banner card.
+- /ko/1on1 is a long page (about 26,700px) of alternating white and dark bands; the landing page stacks product blocks, each with a heading and a 200 × 60 action.
 
 ### Whitespace Philosophy
-- **Editorial breathing room**: generous vertical rhythm between product bands; the page reads top-to-bottom as a sequence of self-contained product stories.
-- **Band segmentation**: sections separate by background — white `#ffffff`, near-white `#f8f8fb`, lilac tint `#eeebfa`, and dark indigo bands — not by borders or shadow.
-- **Reserved accent rhythm**: gold `#ffd391` and promo blue `#2259e5` appear only in promotion chrome, keeping the indigo identity dominant.
+- Headlines carry the page; large bold type with generous space between bands, and grey copy kept short beside it.
 
 ### Border Radius Scale
-- Extra small (4px): badges, small chips
-- Small (5px): compact header CTA
-- Medium (8px): primary buttons, inputs, standard cards — the workhorse
-- Large (12px): tinted content cards
-- Extra large (24px): promotion banner cards
+- 4px: chips and /ko/company navigation rows
+- 5px: /ko/company header buttons
+- 7px: /ko/company tiles
+- 8px: primary and product actions, story cards
+- 16px: promotion pill
+- 24px: promotion banner card
+- 40px and 100px: round controls
 
 ## 6. Depth & Elevation
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, hero, nav, CTAs (inspected `box-shadow: none`) |
-| Tint (Level 1) | Lilac `#eeebfa` / surface `#f8f8fb` background shift | Card/section separation without elevation |
-| Band (Level 2) | Dark indigo (`#201852`, `#120b60`) full-bleed band | Product feature sections with reversed white type |
+| Flat | No shadow | Buttons, cards, banners, text |
+| Header | 0px 4px 30px `rgba(20, 15, 51, 0.05)` | The header container of the Framer pages |
+| Band | Dark fill | Product bands with white headlines and lilac `#aa9dff` accents |
 
-**Shadow Philosophy**: Ringle reads as a near-shadowless system on its primary surfaces. Live inspection found `box-shadow: none` across the hero, nav, headings, and CTAs. Depth and grouping are communicated through flat color — soft lilac tints (`#eeebfa`, `#cbc5f0`) and full-bleed dark indigo bands (`#201852`, `#120b60`) — rather than elevation. When emphasis is needed the system reaches for color (indigo `#3c2bac`, or a dark band), not a drop shadow.
+Depth is colour, not shadow. Apart from the header's faint glow, every recorded element computes `box-shadow: none`.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use indigo `#3c2bac` as the single primary action color for CTAs ("링글 시작하기", "무료체험")
-- Use Pretendard JP ExtraBold (800) for all display headlines — it's the brand's voice
-- Use Pretendard Variable weight 400 at 14px for body and dense UI text
-- Use near-black indigo `#140f33` for headings instead of pure black
-- Separate sections with flat tints (`#eeebfa`, `#f8f8fb`) and dark indigo bands (`#201852`, `#120b60`)
-- Reverse copy out to white on the dark indigo product bands
-- Reserve gold `#ffd391` and promo blue `#2259e5` for promotion chrome only
-- Use sky blue `#4495ff` only for the 틴즈 sub-brand
+- Fill the primary action with `#3e00d9` and a white 18px bold label
+- Use `#1d0788` or `#120968` for secondary actions inside product bands
+- Set headlines in Pretendard JP Bold 700 with tight negative tracking
+- Keep reading copy in Pretendard JP Medium greys (`#6e737c`, `#242730`)
+- Keep campaign colours (`#e80023`, `#5442fb`, `#ffe999`) inside time-boxed promotion chrome
+- Use 8px corners on actions and 24px on large banners
 
 ### Don't
-- Spread the indigo across many elements — keep `#3c2bac` the single action signal
-- Use a drop shadow for elevation — separate with tint and bands instead
-- Use pure black for headings — reserve near-black indigo `#140f33`
-- Mix a second body typeface — Pretendard Variable is the one workhorse
-- Let gold or promo blue leak outside time-boxed promotion surfaces
-- Set headlines in a light weight — display is always ExtraBold (800)
-- Carry color in running text — keep saturated indigo for interactive elements
+- Use `#3c2bac` for marketing actions; it belongs to the /ko/company template
+- Add drop shadows to cards or buttons
+- Set headlines in ExtraBold; the declared 800 face is not used on these pages
+- Treat browser link colours (`#0000ee`, `#ff0000`) as brand colours
+- Let campaign red or yellow leak into permanent navigation
 
 ## 8. Responsive Behavior
 
 ### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses, product bands stack |
-| Tablet | 640-1024px | Moderate padding, 2-up case-study cards |
-| Desktop | 1024-1440px | Full layout, centered hero, full-bleed alternating bands |
+Only the 1440 × 900 desktop viewport was captured. Framer marks its breakpoint variants with `ssr-variant hidden-…` classes, so the pages switch layouts, but no breakpoint width was measured.
 
 ### Touch Targets
-- Primary CTA at 61px height — an unmistakable tap target
-- Header CTA at 42px height with 10px 16px padding
-- On-dark and teens links at 60px height
+- Promotion pill: 80px tall
+- Start button: 61px
+- Product buttons: 60px
+- Band buttons: 57px
+- /ko/company tiles: 48px
+- Chips: 42px
+- /ko/company header buttons and round controls: 40px
+- Framer navigation links: 30px
 
 ### Collapsing Strategy
-- Hero: 52px ExtraBold headline scales down on mobile, weight 800 maintained
-- Product bands: full-bleed white/indigo alternation preserved on all viewports
-- Case-study cards: multi-column → stacked single column
+- Not captured; only the desktop layout was measured.
 
 ### Image Behavior
-- Product/illustration imagery carries no shadow, consistent with the flat system
-- Cards maintain 12px radius across breakpoints
+- Story cards are image-filled at 8px corners, without borders or shadows.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary CTA: Ringle Indigo (`#3c2bac`)
-- Deep / brand-text indigo: (`#2b1e90`)
-- Dark bands: (`#201852`, `#120b60`)
-- Background: Pure White (`#ffffff`); near-white surface (`#f8f8fb`)
-- Lilac tints: (`#eeebfa`, `#cbc5f0`, `#a89ee6`)
-- Heading text: Ink Indigo (`#140f33`)
-- Body text: Body Slate (`#3e426a`)
-- Nav / muted text: Muted (`#80839e`)
-- Promotion accents: gold (`#ffd391`) + promo blue (`#2259e5`)
-- Teens sub-brand: (`#4495ff`)
+- Primary action: Ringle Violet (`#3e00d9`), label `#ffffff`
+- Secondary actions: `#1d0788`, `#120968`
+- Headlines: `#000000` or `#0d0d0d`; accented words `#3e00d9`; on dark bands `#ffffff` with `#aa9dff`
+- Copy: `#242730`, `#4f545c`, `#6e737c`, `#9ea3ab`
+- Campaign: `#0d0d0d` bar, `#5442fb` pill, `#e80023` card, `#ffe999` heading
+- /ko/company template: `#3c2bac` button, `#3e426a` navigation, `#80839e` footer, `#e4e7f4` hairline
 
 ### Example Component Prompts
-- "Create a hero on white. Headline at 52px Pretendard JP ExtraBold weight 800, color #140f33. Sub-line 20px Pretendard JP Medium, color #80839e. Primary CTA: #3c2bac background, white text, 8px radius, 61px tall — '링글 시작하기'."
-- "Design a dark product band: #120b60 background, full width. 22px Bold white eyebrow, 40px ExtraBold white headline, and a '더 알아보기' link on #120b60 with 8px radius."
-- "Build a lilac tint card: #eeebfa background, 12px radius, no shadow. Title 32px Pretendard JP ExtraBold #140f33, body 14px Pretendard Variable #3e426a."
-- "Create a top nav: white background, 14px Pretendard JP Medium links in #80839e, active item indigo #3c2bac. Right-aligned '무료체험' CTA: #3c2bac, 5px radius, 10px 16px padding."
+- "Create a hero on white: headline 50px Pretendard JP Bold, line height 62.5px, tracking -2.25px, colour #000000. Below it a 200 × 61 button, background #3e00d9, radius 8px, label 18px bold #ffffff: '링글 시작하기'."
+- "Build a product block: 40px Pretendard JP Bold heading (tracking -1.6px), 16px SemiBold #4f545c description, and a 200 × 60 action with background #120968 and 8px radius."
+- "Add a campaign banner: 1180 × 170 card, background #e80023, radius 24px, padding 60px 0 60px 80px, heading 32px bold #ffe999."
 
 ### Iteration Guide
-1. Pretendard JP ExtraBold (800) for every headline; Pretendard Variable 400 for every paragraph
-2. Indigo `#3c2bac` is the single action color — don't spread it
-3. No shadows — separate with lilac tint `#eeebfa` and dark indigo bands `#201852` / `#120b60`
-4. Gently rounded — 8px buttons/cards, 12px tint cards, 24px promo banners
-5. Heading color is `#140f33` indigo, never pure black
-6. Reverse to white on dark bands; keep gold/promo blue inside promotion chrome only
-7. Sky blue `#4495ff` only for the 틴즈 sub-brand
+1. `#3e00d9` is the one primary action colour on the marketing pages
+2. Headlines are Pretendard JP Bold 700 with tight tracking; copy is Medium grey
+3. Actions have 8px corners; large banners 24px
+4. No shadows except the header's faint glow
+5. Campaign colours are temporary; the violet is not
 
 ---
 
 ## 10. Voice & Tone
 
-Ringle's voice is **earnest, ambitious, and pragmatic** — an English-learning guide aimed squarely at working adults and high achievers who want real, career-grade fluency, not casual chat practice. The hero line "영어는 실전처럼" ("English, like the real thing") sets the register: outcome-focused, confident, never gimmicky. Copy treats the learner as a serious professional building a skill that compounds into a career — "일하는 사람을 위한 영어" (English for people who work).
+Ringle speaks to working adults who want English that holds up in real work. It sounds confident and outcome-driven, and it doesn't chase gimmicks. The hero line "영어는 실전처럼" (English, like the real thing) sets the register, and the copy ties English to careers ("일하는 사람을 위한 영어").
 
 | Context | Tone |
 |---|---|
-| Hero headlines | Declarative, outcome-framed. "영어는 실전처럼." Confident, not hype. |
-| Product labels | Plain and structural. "링글 1:1 화상영어", "링글 AI 스피킹", "링글 기업 영어 솔루션". |
-| CTAs | Direct, low-pressure. "링글 시작하기", "무료체험", "더 알아보기". |
-| Feature descriptions | Benefit-first, career-framed. Ties English skill to professional outcomes. |
-| Trust copy | Concrete and proof-led. "200+개 이상의 기업이 링글과 함께 하고 있습니다". |
+| Hero headlines | Declarative and outcome-framed: "영어는 실전처럼 — 명문대 튜터와의 1:1 맞춤 화상영어" |
+| Product framing | Plain and concrete: lesson length, tutor, correction |
+| CTAs | Direct: "링글 시작하기", "무료 체험하기", "더 알아보기" |
+| Proof | Numbers: "누적 수업 수 2,100,460" |
+| Campaigns | Urgent and time-boxed: "내일 마감! 9월 마지막 역전 찬스, 최대 59% 할인!" |
 
-**Voice samples (verbatim from live surfaces):**
-- "영어는 실전처럼. 명문대 튜터와의 1:1 맞춤 화상영어" — homepage hero. *(verified live 2026-06-11)*
-- "꿈꾸던 영어실력과 커리어를 만드는 일하는 사람을 위한 영어, 링글" — hero sub-line. *(verified live 2026-06-11)*
-- "200+개 이상의 기업이 링글과 함께 하고 있습니다" — B2B proof headline. *(verified live 2026-06-11)*
+**Voice samples (verbatim from pages opened on 2026-09-30):**
+- "영어는 실전처럼 · 명문대 튜터와의 1:1 맞춤 화상영어" (/ko/1on1 hero)
+- "꿈꾸던 영어실력과 커리어를 만드는 일하는 사람을 위한 영어, 링글" (/ko/1on1 hero subline)
+- "20분부터 40분까지, 내게 딱 맞는 수업으로 시작하세요." (/ko/1on1)
+- "실전 비즈니스를 위한 영어교육부터 평가까지 한 번에" (/ko/b2b)
 
-**Forbidden register**: casual gamified hype, fear-based "you're behind" pressure, undefined jargon, exclamation-heavy marketing.
+**Forbidden register**: gamified hype, fear-based pressure, undefined jargon.
 
 ## 11. Brand Narrative
 
-Ringle (링글, 링글잉글리시에듀케이션서비스) was founded in **2015** by **이성파 (Lee Sungpah)** and **이승훈 (Lee Seunghoon)**, two co-founders who met as classmates in the **Stanford MBA** program. The founding insight came directly from their own pain: despite strong credentials, they struggled to express themselves in English in a top global environment — and realized many capable Korean professionals hit the same wall. The product they built reframed English education from rote test-prep into real conversation practice with tutors from top universities, structured around current-affairs reading material and AI-assisted feedback.
+(주)링글잉글리시에듀케이션서비스 is led by its co-founders 이성파 and 이승훈, both listed as 대표이사. On the co-founder page, 이승훈 says he started Ringle during his Stanford MBA after six years at BCG, and 이성파 says he studied engineering and business and wants to build services that make learning easier and more efficient. The company says Ringle exists for the growth of its customers, its tutors and its team.
 
-Ringle's stated mission, per the founders, is "영어 장벽이 없는 세상을 만드는 것" — to build a world without the English-language barrier. The product matured into Korea's leading premium 1:1 화상영어 (video-English) platform: 20–40 minute lessons with Ivy/top-MBA tutors, a library of 200+ discussion materials, real-time Google Docs collaboration, and AI conversation analysis — later extended into AI 스피킹 (unlimited AI speaking), a 기업 (B2B corporate) solution used by 200+ companies, and the 틴즈 (teens) sub-brand.
+The team page states the mission: "링글은 누구나 영어의 장벽을 넘어 더 큰 기회를 잡을 수 있는 세상을 만듭니다". Its stated aim is to become the world's No.1 edu-tech company through differentiated tutors, content and technology. It describes a small core team based in Korea and the US: head office on 테헤란로 in Seoul, a branch at a WeWork in San Mateo between Stanford and San Francisco, and remote members in Sydney, Seattle and Pennsylvania. Culture notes include no titles such as 대표님 or 팀장님, only names with 님, and the principle that "모든 아이디어는 평등하다". The Global BD page reports more than 30% of revenue from outside Korea. The site footer lists 링글 1:1 화상영어, 링글 AI 스피킹, 링글 AI 스피킹 테스트, 링글 기업 영어 솔루션 and 링글 틴즈, and cites six consecutive years (2020–2025) as a 한국소비자 평가 최고의 브랜드. The B2B page cites 2000+ native tutors from leading English-speaking universities, more than 75% of them with work experience.
 
-What Ringle refuses, visible in its design: the playful, gamified chrome of casual language apps, and the intimidating test-factory aesthetic of legacy English academies. What it embraces: a calm, intellectual indigo identity; bold ExtraBold headlines that speak to ambition; and copy that ties English fluency directly to career and real-world performance. The company also notes it now earns 30%+ of revenue outside Korea, reflecting a global ambition consistent with its founding story.
+In design terms, Ringle presents itself as serious and ambitious rather than playful: big bold headlines, one decisive violet for the next step, grey copy that stays out of the way.
 
 ## 12. Principles
 
-1. **Real practice over rote prep.** Ringle exists to build usable fluency, not test scores. *UI implication:* lead with conversation/outcome framing ("영어는 실전처럼"); keep product structure (tutor, material, feedback) visible and concrete.
-2. **Premium and intellectual, not playful.** The brand earns trust by feeling serious. *UI implication:* indigo `#3c2bac` identity, ExtraBold display type, near-black indigo `#140f33` text — no gamified color or bounce.
-3. **One action, one color.** Indigo means "do this." *UI implication:* reserve `#3c2bac` for the primary CTA so the next step is never ambiguous.
-4. **Calm bands over decorative depth.** *UI implication:* no shadows; separate with lilac tints and full-bleed dark indigo bands; reverse copy to white on dark.
-5. **Career-first framing.** English is a professional skill that compounds. *UI implication:* tie features to outcomes ("일하는 사람을 위한 영어", B2B proof), and address the learner as a serious professional.
+1. **Real practice over rote prep.** *UI implication:* lead with conversation and outcomes ("영어는 실전처럼"); show lesson length, tutor and correction concretely.
+2. **One action, one colour.** *UI implication:* `#3e00d9` means "start"; secondary actions step down to deeper violets.
+3. **Headlines carry the page.** *UI implication:* large Pretendard JP Bold with tight tracking; copy in quiet Medium grey.
+4. **Flat, not decorated.** *UI implication:* separate with bands and colour, not shadows.
+5. **Campaigns are temporary.** *UI implication:* promotion colours live in removable chrome (top bar, pill, banner card).
 
 ## 13. Personas
 
 *Personas below are fictional archetypes informed by publicly observable Ringle user segments (Korean working professionals, jobseekers targeting global roles, corporate L&D buyers), not individual people.*
 
-**김도현, 31, 서울.** A product manager preparing to interview at global tech companies. Wants real speaking reps with a sharp tutor, not vocabulary drills. Chose Ringle because the lessons feel like the actual high-stakes conversations he's preparing for.
+**김도현, 31, 서울.** A product manager preparing for interviews at global tech companies. Wants real speaking practice with a sharp tutor, not vocabulary drills.
 
-**박지은, 36, 경기.** A working parent who studies in 20-minute lessons between job and home life. Values the flexibility and the AI 스피킹 app for unlimited low-pressure practice on her own schedule.
+**박지은, 36, 경기.** A working parent who fits 20-minute lessons between work and home, and uses AI 스피킹 for low-pressure practice.
 
-**이상우, 44, 기업 HR.** An L&D manager rolling out Ringle's B2B solution to employees. Wants measurable speaking assessment, managed delivery, and a vendor that feels premium enough to put in front of executives.
+**이상우, 44, 기업 HR.** An L&D manager rolling out Ringle's corporate programme, who wants assessment and attendance management.
 
 ## 14. States
 
-| State | Treatment |
+Only these states were observed on the three captured pages; nothing else is specified here.
+
+| State | Observation |
 |---|---|
-| **Empty (no lessons booked)** | White canvas. Single Ink Indigo (`#140f33`) line at body size explaining nothing is scheduled, with one indigo `#3c2bac` CTA to book. No clutter. |
-| **Empty (no saved material)** | Muted (`#80839e`) single line: nothing saved yet, plus a path back to the material library. Calm and honest. |
-| **Loading (tutor list / schedule)** | Skeleton rows on lilac tint `#eeebfa` at final card dimensions, 12px radius. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
-| **Loading (AI speaking compute)** | Inline progress within the tool surface; previous content stays visible. |
-| **Error (booking failed)** | Inline message in Ink Indigo with a plain-language explanation and a retry. States the next step, never a bare "오류가 발생했습니다". |
-| **Error (form validation)** | Field-level message below the input describing what's valid, not just "필수". |
-| **Success (lesson booked)** | Brief inline confirmation in calm tone; next-step detail linked immediately below. No celebratory emoji. |
-| **Skeleton** | `#eeebfa` blocks at final dimensions, 12px radius, flat pulse. |
-| **Disabled** | Muted (`#80839e`) text on reduced-opacity surface; indigo actions fade rather than turn grey to preserve brand read. |
+| **Hover / pressed (/ko/company navigation)** | The parent row tints `#fbfbff` (the probe read it settled). |
+| **No change** | 무료 체험하기 and 로그인 in the /ko/company header show no hover, pressed or focus change within the probe's compared scope; neither does 상세 채용공고 확인하기 on hover or press. |
+| **Focus** | No probed control draws an authored focus style; every focus read is the browser's default ring (`outline: auto`, `rgb(0, 95, 204)`). |
+| **Unmeasured** | Hover and pressed on 링글 시작하기, the promotion pill and the Framer navigation: a third-party Channel Talk modal covered them, even with `--hide-overlays`. The bundle's Framer navigation frames show translucent grey fills at varying alphas, which were not settled and are not declared. |
+
+Error, empty, loading and success states were not captured and are not described.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, focus |
-| `motion-standard` | 220ms | Card/section reveal, sheet, dropdown |
-| `motion-slow` | 340ms | Page-level transitions, hero/band reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, bands, sheets |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and composed — consistent with the calm, intellectual aesthetic. Product bands fade-and-rise into view at `motion-standard / ease-enter`; CTAs respond to press with a subtle scale/opacity shift. No bounce or spring — a career-grade learning product signals steadiness, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
+Every probed control computes `transition: all 0s`: 링글 시작하기, the promotion pill, the Framer navigation, and the header buttons and navigation of /ko/company. Their state changes are therefore instant. Framer animation on scroll or in carousels was not measured; treat it as unspecified.
 
 <!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-11) via playwright getComputedStyle on https://www.ringleplus.com
-and https://www.ringleplus.com/ko/student/landing/home:
-- Hero H1 "영어는 실전처럼. 명문대 튜터와의 1:1 맞춤 화상영어" — Pretendard JP ExtraBold 52px / 800 / color rgb(20,15,51) #140f33
-- Hero sub-H3 "꿈꾸던 영어실력과 커리어를 만드는 일하는 사람을 위한 영어, 링글" — Pretendard JP Medium 20px / 500 / rgb(128,131,158) #80839e
-- Primary CTA "링글 시작하기" — bg rgb(60,43,172) #3c2bac / radius 8px / 61px tall
-- Dark band "더 알아보기" — bg rgb(18,11,96) #120b60 / radius 8px / 60px
-- Teens CTA "틴즈 더 알아보기" — bg rgb(68,149,255) #4495ff
-- B2B proof "200+개 이상의 기업이 링글과 함께 하고 있습니다" — ExtraBold 40px #140f33
-- box-shadow: none across hero/nav/headings/CTAs (flat system on inspected nodes)
-
-Voice samples (§10) are verbatim from live surfaces (homepage hero, hero sub-line, B2B proof headline).
-
-Brand narrative (§11): Ringle (링글잉글리시에듀케이션서비스) founded 2015 by co-founders
-이성파 (Lee Sungpah) and 이승훈 (Lee Seunghoon), who met in the Stanford MBA program; stated
-mission "영어 장벽이 없는 세상을 만드는 것". These are widely documented public facts (founder
-interviews, company press); the "30%+ revenue outside Korea" figure appears on Ringle's own
-company/team page (https://www.ringleplus.com/en/company/4). Details beyond the inspected
-homepage are general public knowledge, not directly quoted from a single verified statement in
-this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable Ringle user segments
-(Korean working professionals, global-role jobseekers, corporate L&D buyers). Names are
-illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "premium and intellectual, not playful", "calm bands over
-decorative depth") are editorial readings connecting Ringle's observed design to its
-positioning, not directly sourced Ringle statements.
+Sources — 2026-09-30
+Capture: artifacts/reference-evidence/ringle.json (capturedAt 2026-09-30T09:59:21.699Z; surfaces home /ko/1on1, surface-2 /ko/student/landing/home, surface-3 /ko/company; coverage 66).
+Probes: docs/research/2026-09-29-growth/raw/ringle-states-1on1.json (run with --hide-overlays) and ringle-states-company.json.
+Narrative: /ko/company, /ko/company/1, /en/company/4, /ko/b2b, /ko/1on1, all opened 2026-09-30.
+Personas are fictional archetypes; names do not refer to real people.
 -->

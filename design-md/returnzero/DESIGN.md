@@ -9,53 +9,228 @@ primary_color: "#222222"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=rtzr.ai&sz=128"
-verified: "2026-06-26"
+verified: "2026-09-30"
 added: "2026-06-26"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://www.rtzr.ai/", inspected: "2026-09-30" }
+    - { id: surface-2, kind: marketing, url: "https://www.rtzr.ai/stt", inspected: "2026-09-30" }
+    - { id: surface-3, kind: marketing, url: "https://www.rtzr.ai/pricing", inspected: "2026-09-30" }
+    - { id: surface-4, kind: product, url: "https://developers.rtzr.ai/", inspected: "2026-09-30" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://www.rtzr.ai/", captured: "2026-09-30" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://www.rtzr.ai/stt", captured: "2026-09-30" }
+    - { id: surface-surface-3, kind: product-surface, url: "https://www.rtzr.ai/pricing", captured: "2026-09-30" }
+    - { id: surface-surface-4, kind: product-surface, url: "https://developers.rtzr.ai/", captured: "2026-09-30" }
+    - { id: returnzero-probe-home, kind: product-surface, url: "https://www.rtzr.ai/", captured: "2026-09-30" }
+    - { id: returnzero-probe-stt, kind: product-surface, url: "https://www.rtzr.ai/stt", captured: "2026-09-30" }
+    - { id: returnzero-probe-pricing, kind: product-surface, url: "https://www.rtzr.ai/pricing", captured: "2026-09-30" }
+    - { id: returnzero-probe-developers, kind: product-surface, url: "https://developers.rtzr.ai/", captured: "2026-09-30" }
+    - { id: rtzr-company, kind: official-doc, url: "https://www.rtzr.ai/company", captured: "2026-09-30" }
+    - { id: rtzr-blog, kind: official-doc, url: "https://blog.rtzr.ai/", captured: "2026-09-30" }
+    - { id: pretendard-license, kind: license, url: "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &headercta { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-09-30" }
+    "tokens.colors.on-primary": *headercta
+    "tokens.colors.ink": &h1 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h1", captured: "2026-09-30" }
+    "tokens.colors.text": &body { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
+    "tokens.colors.white": &trynow { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"17\"]", captured: "2026-09-30" }
+    "tokens.colors.hairline": &cardstate { surface_id: home, source_id: returnzero-probe-home, method: live-state-probe, selector: "button 더 알아보기 and 읽어보기 (98 x 42, rest bg rgb(34, 34, 34), fg rgb(255, 255, 255), radius 4px, padding 10px, 14px/600): the buttons show no change; their card ancestor up2 (bg rgb(255, 255, 255), border 1px solid rgb(238, 238, 238)) changes border to 1px solid rgb(204, 204, 204) on hover and pressed; focus (Tabs #20, #24) moves only a carousel slide transform", captured: "2026-09-30" }
+    "tokens.colors.hairline-hover": *cardstate
+    "tokens.colors.slate": &demoh4 { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::h4", captured: "2026-09-30" }
+    "tokens.colors.muted": &tabupload { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::[data-omd-capture=\"7\"]", captured: "2026-09-30" }
+    "tokens.colors.accent": &record { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::[data-omd-capture=\"9\"]", captured: "2026-09-30" }
+    "tokens.colors.accent-hover": &recordstate { surface_id: surface-4, source_id: returnzero-probe-developers, method: live-state-probe, selector: "button 녹음시작 (167.3 x 58): hover and pressed bg rgb(58, 137, 255) -> rgb(49, 116, 217); focus (Tab #10) no change across self, 3 descendants incl. 1 svg and 3 ancestor levels; transition all 0s", captured: "2026-09-30" }
+    "tokens.typography.family.sans": *body
+    "tokens.typography.display.size": *h1
+    "tokens.typography.display.weight": *h1
+    "tokens.typography.display.lineHeight": *h1
+    "tokens.typography.display.use": *h1
+    "tokens.typography.dev-hero.size": &devh1 { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::h1", captured: "2026-09-30" }
+    "tokens.typography.dev-hero.weight": *devh1
+    "tokens.typography.dev-hero.lineHeight": *devh1
+    "tokens.typography.dev-hero.tracking": *devh1
+    "tokens.typography.dev-hero.use": *devh1
+    "tokens.typography.plan-title.size": &planh4 { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h4", captured: "2026-09-30" }
+    "tokens.typography.plan-title.weight": *planh4
+    "tokens.typography.plan-title.use": *planh4
+    "tokens.typography.plan-lead.size": &planp { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::p", captured: "2026-09-30" }
+    "tokens.typography.plan-lead.weight": *planp
+    "tokens.typography.plan-lead.lineHeight": *planp
+    "tokens.typography.plan-lead.use": *planp
+    "tokens.typography.button-lg.size": &herocta { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"17\"]", captured: "2026-09-30" }
+    "tokens.typography.button-lg.weight": *herocta
+    "tokens.typography.button-lg.use": *herocta
+    "tokens.typography.button.size": *headercta
+    "tokens.typography.button.weight": *headercta
+    "tokens.typography.button.lineHeight": *headercta
+    "tokens.typography.button.use": *headercta
+    "tokens.typography.nav.size": &nav { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-09-30" }
+    "tokens.typography.nav.weight": *nav
+    "tokens.typography.nav.use": *nav
+    "tokens.typography.menu.size": &menu { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"7\"]", captured: "2026-09-30" }
+    "tokens.typography.menu.weight": *menu
+    "tokens.typography.menu.use": *menu
+    "tokens.typography.body.size": *body
+    "tokens.typography.body.weight": *body
+    "tokens.typography.body.lineHeight": *body
+    "tokens.typography.body.use": *body
+    "tokens.typography.demo-title.size": *demoh4
+    "tokens.typography.demo-title.weight": *demoh4
+    "tokens.typography.demo-title.lineHeight": *demoh4
+    "tokens.typography.demo-title.use": *demoh4
+    "tokens.typography.demo-body.size": &demop { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::p", captured: "2026-09-30" }
+    "tokens.typography.demo-body.weight": *demop
+    "tokens.typography.demo-body.lineHeight": *demop
+    "tokens.typography.demo-body.tracking": *demop
+    "tokens.typography.demo-body.use": *demop
+    "tokens.typography.pill.size": &pill { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::[data-omd-capture=\"2\"]", captured: "2026-09-30" }
+    "tokens.typography.pill.weight": *pill
+    "tokens.typography.pill.lineHeight": *pill
+    "tokens.typography.pill.use": *pill
+    "tokens.spacing.button-pad": *headercta
+    "tokens.spacing.cta-y": *herocta
+    "tokens.spacing.cta-x": *herocta
+    "tokens.spacing.dev-cta-y": &devwhite { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::[data-omd-capture=\"5\"]", captured: "2026-09-30" }
+    "tokens.spacing.record-y": *record
+    "tokens.spacing.pill-y": *pill
+    "tokens.spacing.pill-x": *pill
+    "tokens.rounded.action": *headercta
+    "tokens.rounded.nav-pill": &devnav { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::li", captured: "2026-09-30" }
+    "tokens.rounded.pill": *pill
+    "tokens.rounded.record": *record
+    "tokens.components.header-cta.type": *headercta
+    "tokens.components.header-cta.bg": *headercta
+    "tokens.components.header-cta.fg": *headercta
+    "tokens.components.header-cta.radius": *headercta
+    "tokens.components.header-cta.padding": *headercta
+    "tokens.components.header-cta.height": *headercta
+    "tokens.components.header-cta.font": *headercta
+    "tokens.components.header-cta.states": &headerstate { surface_id: home, source_id: returnzero-probe-home, method: live-state-probe, selector: "button 문의하기 (98 x 42, header): hover, pressed and focus (Tab #6) no change across self and 3 ancestor levels; transition all 0s", captured: "2026-09-30" }
+    "tokens.components.header-cta.use": *headercta
+    "tokens.components.primary-cta.type": *herocta
+    "tokens.components.primary-cta.bg": *herocta
+    "tokens.components.primary-cta.fg": *herocta
+    "tokens.components.primary-cta.radius": *herocta
+    "tokens.components.primary-cta.padding": *herocta
+    "tokens.components.primary-cta.height": *herocta
+    "tokens.components.primary-cta.font": *herocta
+    "tokens.components.primary-cta.states": &herostate { surface_id: home, source_id: returnzero-probe-home, method: live-state-probe, selector: "button 리턴제로 STT 알아보기 (247 x 69): hover, pressed and focus (Tab #18) no change; same on /stt 서비스 도입문의 (Tab #25) and /pricing 맞춤 요금제 문의 (Tab #23); transition all 0s", captured: "2026-09-30" }
+    "tokens.components.primary-cta.use": *herocta
+    "tokens.components.card-button.type": *cardstate
+    "tokens.components.card-button.bg": *cardstate
+    "tokens.components.card-button.fg": *cardstate
+    "tokens.components.card-button.radius": *cardstate
+    "tokens.components.card-button.padding": *cardstate
+    "tokens.components.card-button.height": *cardstate
+    "tokens.components.card-button.font": *cardstate
+    "tokens.components.card-button.states": *cardstate
+    "tokens.components.card-button.use": *cardstate
+    "tokens.components.feature-card.type": *cardstate
+    "tokens.components.feature-card.bg": *cardstate
+    "tokens.components.feature-card.border": *cardstate
+    "tokens.components.feature-card.use": *cardstate
+    "tokens.components.secondary-cta.type": *trynow
+    "tokens.components.secondary-cta.bg": *trynow
+    "tokens.components.secondary-cta.fg": *trynow
+    "tokens.components.secondary-cta.radius": *trynow
+    "tokens.components.secondary-cta.padding": *trynow
+    "tokens.components.secondary-cta.height": *trynow
+    "tokens.components.secondary-cta.font": *trynow
+    "tokens.components.secondary-cta.states": &whitestate { surface_id: surface-2, source_id: returnzero-probe-stt, method: live-state-probe, selector: "button 바로 체험 (146.5 x 69, rest bg rgb(255, 255, 255), fg rgb(34, 34, 34)): hover, pressed and focus (Tab #18) no change; /pricing 상담신청 the same (Tab #24); /pricing plan buttons 바로 무료 체험 and 클라우드 도입 문의: hover and pressed unmeasured, focus (Tabs #19, #21) no change", captured: "2026-09-30" }
+    "tokens.components.secondary-cta.use": *trynow
+    "tokens.components.outline-cta.type": &outline { surface_id: surface-2, source_id: returnzero-probe-stt, method: live-state-probe, selector: "button 요금제 보기 and 정확도 비교 (164.1 x 71, rest bg rgba(0, 0, 0, 0), fg rgb(255, 255, 255), border 1px solid rgb(255, 255, 255), radius 4px, padding 24px 40px, 18px/600): hover, pressed and focus (Tabs #20, #22) no change; transition opacity 0.5s ease", captured: "2026-09-30" }
+    "tokens.components.outline-cta.fg": *outline
+    "tokens.components.outline-cta.border": *outline
+    "tokens.components.outline-cta.radius": *outline
+    "tokens.components.outline-cta.padding": *outline
+    "tokens.components.outline-cta.height": *outline
+    "tokens.components.outline-cta.font": *outline
+    "tokens.components.outline-cta.states": *outline
+    "tokens.components.outline-cta.use": *outline
+    "tokens.components.record-button.type": *record
+    "tokens.components.record-button.bg": *record
+    "tokens.components.record-button.fg": *record
+    "tokens.components.record-button.radius": *record
+    "tokens.components.record-button.padding": *record
+    "tokens.components.record-button.height": *record
+    "tokens.components.record-button.font": *record
+    "tokens.components.record-button.hover": *recordstate
+    "tokens.components.record-button.pressed": *recordstate
+    "tokens.components.record-button.states": *recordstate
+    "tokens.components.record-button.use": *record
+    "tokens.components.demo-tab.type": *tabupload
+    "tokens.components.demo-tab.fg": *tabupload
+    "tokens.components.demo-tab.font": *tabupload
+    "tokens.components.demo-tab.selected": { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::#realtime", captured: "2026-09-30" }
+    "tokens.components.demo-tab.states": &tabstate { surface_id: surface-4, source_id: returnzero-probe-developers, method: live-state-probe, selector: "button 파일 업로드 (73 x 22, rest fg rgb(153, 153, 153)): hover, pressed and focus (Tab #8) no change across self, 2 descendants and 3 ancestor levels", captured: "2026-09-30" }
+    "tokens.components.demo-tab.use": *tabupload
+    "tokens.components.account-pill.type": *pill
+    "tokens.components.account-pill.fg": *pill
+    "tokens.components.account-pill.border": *pill
+    "tokens.components.account-pill.radius": *pill
+    "tokens.components.account-pill.padding": *pill
+    "tokens.components.account-pill.height": *pill
+    "tokens.components.account-pill.font": *pill
+    "tokens.components.account-pill.hover": &pillstate { surface_id: surface-4, source_id: returnzero-probe-developers, method: live-state-probe, selector: "button 회원가입 (91.5 x 34, header): hover and pressed bg rgba(0, 0, 0, 0) -> rgba(0, 0, 0, 0.05), fg rgb(85, 85, 85) -> rgb(34, 34, 34), border 1px solid rgb(85, 85, 85) -> 1px solid rgb(34, 34, 34), read with the header in its scrolled state; focus (Tab #3) no change", captured: "2026-09-30" }
+    "tokens.components.account-pill.pressed": *pillstate
+    "tokens.components.account-pill.states": *pillstate
+    "tokens.components.account-pill.use": *pill
+    "tokens.components.dev-outline-cta.type": &devoutline { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::[data-omd-capture=\"4\"]", captured: "2026-09-30" }
+    "tokens.components.dev-outline-cta.fg": *devoutline
+    "tokens.components.dev-outline-cta.border": *devoutline
+    "tokens.components.dev-outline-cta.radius": *devoutline
+    "tokens.components.dev-outline-cta.padding": *devoutline
+    "tokens.components.dev-outline-cta.height": *devoutline
+    "tokens.components.dev-outline-cta.font": *devoutline
+    "tokens.components.dev-outline-cta.states": { surface_id: surface-4, source_id: returnzero-probe-developers, method: live-state-probe, selector: "button 사용문의 (144.2 x 67) and 무료로 체험하기 (193.2 x 67): hover, pressed and focus (Tabs #5, #6) no change; transition all 0s", captured: "2026-09-30" }
+    "tokens.components.dev-outline-cta.use": *devoutline
 tokens:
-  source: live-extract
-  extracted: "2026-06-26"
-  note: "Intentionally near-monochrome system: charcoal ink (#222222) is the single action color across every surface (CTAs, nav, headings). Selective accents are per-product — mint (#98ffac) for dark-band metrics, brand blue (#2e67fe) for corporate product titles, STT blue (#3a89ff) on developers.rtzr.ai, highlight yellow (#ffde30) on pricing. Sole typeface Pretendard. Shadowless."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
+    primary: "#222222"
+    on-primary: "#ffffff"
     ink: "#222222"
-    black: "#000000"
-    canvas: "#ffffff"
-    mint: "#98ffac"
-    brand-blue: "#2e67fe"
-    stt-blue: "#3a89ff"
-    highlight: "#ffde30"
-    slate: "#444444"
-    muted: "#999999"
-    faint: "#bbbbbb"
+    text: "#000000"
+    white: "#ffffff"
     hairline: "#eeeeee"
-    surface: "#fafafa"
+    hairline-hover: "#cccccc"
+    slate: "#555555"
+    muted: "#999999"
+    accent: "#3a89ff"
+    accent-hover: "#3174d9"
   typography:
     family: { sans: "Pretendard" }
-    display-stat: { size: 124, weight: 300, use: "Hero metric numbers (35, 48, 2.5배) on dark bands" }
-    display-mint: { size: 60, weight: 600, use: "Mint highlight figures on dark sections" }
-    section:      { size: 40, weight: 600, lineHeight: 1.3, use: "Section headings" }
-    hero-dev:     { size: 36, weight: 600, use: "Developer-site hero H1" }
-    body-lg:      { size: 18, weight: 600, use: "Large button labels, lead text" }
-    body:         { size: 16, weight: 400, lineHeight: 1.5, use: "Standard body, nav links" }
-    button:       { size: 14, weight: 600, use: "Compact button label" }
-    caption:      { size: 12, weight: 500, use: "Pill / fine label" }
-  spacing: { xs: 4, sm: 8, md: 10, base: 16, lg: 24, xl: 40, section: 64 }
-  rounded: { sm: 4, pill-sm: 30, pill: 60, full: 9999 }
-  shadow:
-    none: "none"
+    display: { size: 42, weight: 300, lineHeight: 1.29, use: "Home hero headline, Pretendard Light, 54px line, in #222222" }
+    dev-hero: { size: 36, weight: 600, lineHeight: 1.33, tracking: -1.5, use: "developers.rtzr.ai hero headline, 48px line, letter-spacing -1.5px, in white over the hero image" }
+    plan-title: { size: 32, weight: 700, use: "White headings in the /pricing plan-card row; normal line height" }
+    plan-lead: { size: 20, weight: 600, lineHeight: 1.6, use: "Subline in the /pricing hero, 32px line, in white" }
+    button-lg: { size: 18, weight: 600, use: "Large action labels (리턴제로 STT 알아보기, 바로 체험, 서비스 도입문의); normal line height" }
+    button: { size: 14, weight: 600, lineHeight: 1.4, use: "Compact action labels (문의하기 in the header, 더 알아보기, 읽어보기), 19.6px line" }
+    nav: { size: 16, weight: 500, use: "Header navigation (COMPANY, RTZR STT, CALLABO, VITO), in #222222; normal line height" }
+    menu: { size: 16, weight: 600, use: "Header menu links (News, Career, Blog, CI, 공고, Pricing, Developers), in #222222; normal line height" }
+    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Document default, 24px line, in #000000" }
+    demo-title: { size: 18, weight: 700, lineHeight: 1.17, use: "Heading inside the developers.rtzr.ai STT demo, 21px line, in #555555" }
+    demo-body: { size: 14, weight: 400, lineHeight: 1.57, tracking: -0.5, use: "Copy inside the developers.rtzr.ai STT demo, 21.98px line, letter-spacing -0.5px, in #555555" }
+    pill: { size: 12, weight: 500, lineHeight: 1.17, use: "회원가입 / 로그인 account pills on developers.rtzr.ai, 14px line" }
+  spacing: { button-pad: 10, cta-y: 24, cta-x: 40, dev-cta-y: 22, record-y: 20, pill-y: 9, pill-x: 24 }
+  rounded: { action: 4, nav-pill: 20, pill: 30, record: 60 }
   components:
-    button-primary: { type: button, bg: "#222222", fg: "#ffffff", radius: "4px", padding: "24px 40px", height: "69px", font: "18px / 600", use: "Primary CTA — 리턴제로 STT 알아보기, 맞춤 요금제 문의" }
-    button-primary-sm: { type: button, bg: "#222222", fg: "#ffffff", radius: "4px", padding: "10px", height: "42px", font: "14px / 600", use: "Compact header CTA — 문의하기, 더 알아보기" }
-    button-secondary: { type: button, bg: "#ffffff", fg: "#222222", radius: "4px", padding: "24px 40px", font: "18px / 600", use: "Secondary CTA — 바로 체험하기, 상담신청" }
-    button-ghost-dark: { type: button, fg: "#ffffff", border: "1px solid #ffffff", radius: "4px", padding: "24px 40px", font: "18px / 600", use: "Outline CTA on dark hero — 정확도 비교, 사용문의" }
-    button-pill: { type: button, fg: "#ffffff", border: "1px solid #eeeeee", radius: "30px", padding: "9px 24px", font: "12px / 500", use: "Developer-site account pill — 회원가입, 로그인" }
-    button-record: { type: button, bg: "#3a89ff", fg: "#ffffff", radius: "60px", padding: "20px 40px", font: "18px / 400", use: "STT demo record action — 녹음시작" }
-    input-field: { type: input, bg: "#ffffff", fg: "#222222", border: "1px solid #bbbbbb", radius: "4px", height: "74px", use: "Large demo input/select; focus border darkens to #666666" }
-    tab-demo: { type: tab, fg: "#999999", active: "text #3a89ff weight 700", use: "STT demo mode tabs — 실시간 녹음 / 파일 업로드 / 샘플파일" }
-    card-feature: { type: card, bg: "#ffffff", border: "1px solid #eeeeee", radius: "4px", use: "White service/feature card, hairline outline, shadowless" }
-    card-stat: { type: card, bg: "#222222", fg: "#ffffff", radius: "4px", use: "Dark metric band — 124px weight-300 figure in white, mint #98ffac highlight accent" }
-    badge-highlight: { type: badge, bg: "#ffde30", fg: "#222222", radius: "4px", font: "13px / 600", use: "Recommended-plan / emphasis pill on pricing" }
-    nav-link: { type: tab, fg: "#222222", active: "text #222222 weight 600", use: "Top nav — COMPANY, RTZR STT, CALLABO, VITO" }
+    header-cta: { type: button, bg: "#222222", fg: "#ffffff", radius: "4px", padding: "10px", height: "42px", font: "14px / 600 / 19.6px Pretendard", states: "probe on home: hover, pressed and focus (Tab #6) show no change; transition all 0s", use: "문의하기 in the header of every rtzr.ai page at home::[data-omd-capture=\"5\"], 98 x 42" }
+    primary-cta: { type: button, bg: "#222222", fg: "#ffffff", radius: "4px", padding: "24px 40px", height: "69px", font: "18px / 600 Pretendard", states: "probe on home, /stt and /pricing: hover, pressed and focus show no change; transition all 0s", use: "Large filled actions: 리턴제로 STT 알아보기 in the home hero at home::[data-omd-capture=\"17\"] (247 x 69), 서비스 도입문의 on /stt and 맞춤 요금제 문의 on /pricing" }
+    card-button: { type: button, bg: "#222222", fg: "#ffffff", radius: "4px", padding: "10px", height: "42px", font: "14px / 600 / 21px Pretendard", states: "probe on home: the button itself does not change on hover, pressed or focus; hover and pressed darken its card's border from #eeeeee to #cccccc", use: "더 알아보기 (product cards) and 읽어보기 (customer-story cards linking to blog.rtzr.ai) inside white cards on home, 98 x 42" }
+    feature-card: { type: card, bg: "#ffffff", border: "1px solid #eeeeee", use: "White product and customer-story cards in the home carousels that hold 더 알아보기 and 읽어보기; the border turns #cccccc while the pointer is over the card's button" }
+    secondary-cta: { type: button, bg: "#ffffff", fg: "#222222", radius: "4px", padding: "24px 40px", height: "69px", font: "18px / 600 Pretendard", states: "probe: hover, pressed and focus show no change on 바로 체험 and 상담신청; on the pricing plan buttons hover and pressed are unmeasured and focus shows no change", use: "White actions on dark grounds: 바로 체험 in the /stt hero at surface-2::[data-omd-capture=\"17\"] (146.5 x 69), 상담신청 on a #222222 band and 바로 무료 체험 / 클라우드 도입 문의 at the foot of the /pricing plan cards" }
+    outline-cta: { type: button, fg: "#ffffff", border: "1px solid #ffffff", radius: "4px", padding: "24px 40px", height: "71px", font: "18px / 600 Pretendard", states: "probe on /stt: hover, pressed and focus show no change; transition opacity 0.5s ease", use: "요금제 보기 and 정확도 비교 beside 바로 체험 in the /stt hero, transparent over the hero image, 164 x 71" }
+    record-button: { type: button, bg: "#3a89ff", fg: "#ffffff", radius: "60px", padding: "20px 40px", height: "58px", font: "18px / 400 Pretendard; label 16px / 700", hover: "bg #3174d9", pressed: "bg #3174d9", states: "probe: hover and pressed settle on #3174d9 (transition all 0s; the bundle's state frames agree); focus (Tab #10) shows no change", use: "녹음시작 in the developers.rtzr.ai STT demo at surface-4::[data-omd-capture=\"9\"], 167 x 58; developer portal only" }
+    demo-tab: { type: tab, fg: "#999999", font: "16px / 500 Pretendard", selected: "fg #3a89ff, weight 700, 2px bottom border #3a89ff (실시간 녹음 at surface-4::#realtime)", states: "probe on 파일 업로드: hover, pressed and focus (Tab #8) show no change", use: "실시간 녹음 / 파일 업로드 / 샘플파일 demo mode tabs on developers.rtzr.ai at surface-4::[data-omd-capture=\"7\"]; developer portal only" }
+    account-pill: { type: button, fg: "#ffffff", border: "1px solid #eeeeee", radius: "30px", padding: "9px 24px", height: "34px", font: "12px / 500 / 14px Pretendard", hover: "bg rgba(0, 0, 0, 0.05), fg #222222, border 1px solid #222222 (read with the header in its scrolled state, where the pill rests at #555555)", pressed: "bg rgba(0, 0, 0, 0.05), fg #222222, border 1px solid #222222", states: "probe: hover and pressed as above; focus (Tab #3) shows no change", use: "회원가입 and 로그인 in the developers.rtzr.ai header, white over the dark hero at rest, 91.5 x 34; developer portal only" }
+    dev-outline-cta: { type: button, fg: "#ffffff", border: "1px solid rgba(255, 255, 255, 0.5)", radius: "4px", padding: "22px 40px", height: "67px", font: "18px / 600 Pretendard", states: "probe: hover, pressed and focus show no change on 사용문의 and on its white partner 무료로 체험하기 (#ffffff fill, #222222 label, 193 x 67)", use: "사용문의 in the developers.rtzr.ai hero at surface-4::[data-omd-capture=\"4\"], 144 x 67; developer portal only" }
   components_harvested: true
 ---
 
@@ -63,405 +238,288 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-Return Zero (리턴제로) is a Korean speech-AI company, and its design system reads like the product it sells: precise, engineered, and stripped of decoration. The homepage opens on a pure white canvas (`#ffffff`) with a deliberately near-monochrome palette — text and interactive chrome live almost entirely in a charcoal ink (`#222222`) over white, with pure black (`#000000`) carrying default body copy. There is no "brand purple," no gradient hero, no soft-shadow card stack. The restraint is the brand: a voice-AI lab that wants to look like research-grade infrastructure rather than a consumer app, where the only thing that draws the eye is the one charcoal button that says "do this."
+Return Zero (리턴제로) describes itself as a practical-AI startup: "We bring practical AI to the world — 리턴제로는 실용주의 AI 스타트업입니다. 최신 AI 기술을 실험실에서 세상으로 가져옵니다." Its company page gives 2018 as the founding year and counts more than 15 million hours of speech converted to text (about 1,712 years) and more than a million service users. It was started by former Kakao people — co-CEO 이참솔, who earlier co-founded 로티플 (acquired by Kakao), and co-CEO and CTO 정주영, previously on the KakaoTalk PC and messaging teams — and it sells speech recognition three ways: the RTZR STT API for businesses (with a public developer portal and demo), and two products, CALLABO and VITO, which the company page presents under the lines "No.1 AI 회의록" and "눈으로 보는 통화". Its blog is titled "기업을 위한 음성 AI", and the home page's customer stories link there, such as an AICC project with Shinhan Bank.
 
-The single typeface across every surface is **Pretendard**, the de-facto Korean product font, used at weight 400 for body (16px / line-height 24px) and weight 600 for section headings (40px) and button labels. The most distinctive typographic move is the **giant lightweight metric**: stat figures render at a colossal 124px in weight 300, white on charcoal dark bands ("35", "48", "2.5배", "3배"), pairing the heft of the number with an airy, almost whispered weight — the same anti-bold confidence the data itself is meant to project. Headings stay at a controlled 40px / 600 with normal tracking; the developer site (`developers.rtzr.ai`) drops its hero H1 to 36px / 600 white-on-dark.
+The marketing site (rtzr.ai) looks like infrastructure, not a consumer app. Within everything captured it is monochrome: white grounds, charcoal `#222222` for navigation, headlines and every filled action, pure `#000000` as the document's default text. The home hero sets its headline in Pretendard Light — 42px at weight 300 — above one charcoal action, 리턴제로 STT 알아보기. Every action is a 4px-cornered rectangle: charcoal with white labels on light grounds, white with charcoal labels on dark grounds, and a white outline over photography. None of the buttons animates — they compute `transition: all 0s` and show no hover change of their own. The only hover feedback on the home page is the white card around a button darkening its `#eeeeee` border to `#cccccc`.
 
-Where color appears, it is surgical and **per-product**, never spread. A bright mint (`#98ffac`) lights up 60px highlight figures on dark sections; a corporate brand blue (`#2e67fe`) tints the product feature titles on the main site (Callabo, Vito); a brighter STT blue (`#3a89ff`) is the accent of the developer console — its active demo tab and the pill-shaped "녹음시작" record button; and a highlight yellow (`#ffde30`) flags the recommended plan on the pricing page. The neutral ladder runs charcoal `#222222` → slate `#444444` → muted `#999999` → faint `#bbbbbb`, separated by a single hairline (`#eeeeee`) and the faint surface tint (`#fafafa`). Depth is communicated by zero shadows — `box-shadow: none` holds across hero, nav, headings, cards, and chips on every surface inspected. Geometry is tight and sharp: 4px radius on buttons, inputs, and cards; pills (30px / 60px) reserved for the developer console's account and record controls.
+Colour arrives only in the developer portal (developers.rtzr.ai), where the STT demo uses a clear blue `#3a89ff`: the pill-shaped 녹음시작 record button (hover `#3174d9`) and the underline and label of the selected demo tab. Secondary demo copy sits in `#555555`, unselected tabs in `#999999`.
 
 **Key Characteristics:**
-- Near-monochrome by intent — charcoal ink (`#222222`) is the single "action" color on white (`#ffffff`)
-- Pure black (`#000000`) for default body text; charcoal `#222222` for CTAs, nav, and headings
-- Pretendard as the sole typeface, weights 300 / 400 / 500 / 600
-- Signature giant metric: 124px weight-300 figures, white on dark bands
-- Surgical per-product accents — mint `#98ffac`, brand blue `#2e67fe`, STT blue `#3a89ff`, highlight yellow `#ffde30`
-- Shadowless system — separation by hairline `#eeeeee` and surface tint `#fafafa`, never elevation
-- Sharp 4px radius for marketing chrome; 30px / 60px pills only on the developer console
-- Cool neutral ladder: `#444444` → `#999999` → `#bbbbbb`
+- Monochrome marketing: `#222222` fills every primary action and colours navigation and headlines; `#000000` is the default text
+- Pretendard throughout, from a 300-weight 42px hero to 700-weight plan names
+- 4px corners on every marketing action; pills (20px, 30px, 60px) appear only on the developer portal
+- White `#ffffff` actions with charcoal labels on dark bands; white outlines over hero photography
+- No button animation (`all 0s`); hover feedback is a card border shifting `#eeeeee` → `#cccccc`
+- Developer-portal accent `#3a89ff` for the record action and the selected demo tab
+- No captured element carries a shadow
 
 ## Primary tasks
 
-- Try speech recognition in the browser before writing any code
-- Switch the demo between live recording, an uploaded file, and a sample
-- Record live speech and watch the transcript come back
-- Compare the plans side by side and see which one is recommended
+- Learn what RTZR STT does and contact sales (문의하기, 서비스 도입문의)
+- Try speech recognition in the browser demo before writing code
+- Switch the demo between live recording, an uploaded file and a sample
+- Compare cloud and on-premise plans and ask for a custom plan
 
 ## 2. Color Palette & Roles
 
-### Primary / Action
-- **Charcoal Ink** (`#222222`): The system's single action color — primary button background, heading text, nav labels. Used on every surface (home, pricing, developers) as the "do this" signal.
-- **Pure Black** (`#000000`): Default body-text color, maximum-contrast reading copy.
-- **Pure White** (`#ffffff`): Page canvas, text on charcoal/dark, secondary-button background.
+### Primary
+- **Charcoal** (`#222222`): The primary. rtzr.ai is monochrome within the captured scope, so the primary is the measured primary action fill: 문의하기 in the header of all three marketing pages, 리턴제로 STT 알아보기 in the home hero, 더 알아보기 and 읽어보기 in the home cards, 서비스 도입문의 on /stt and 맞춤 요금제 문의 on /pricing all fill `#222222` with a white label. The same charcoal colours the navigation and the hero headline (`ink`).
+- **On Primary / White** (`#ffffff`): Labels on charcoal; the fill of white actions (바로 체험, 상담신청, the plan-card buttons) and of the home cards.
 
-### Accents (per-product, surgical)
-- **Mint** (`#98ffac`): Bright neon-mint for 60px highlight figures on dark sections — the headline metric accent.
-- **Brand Blue** (`#2e67fe`): Corporate product feature titles on the main site (Callabo, Vito section heads).
-- **STT Blue** (`#3a89ff`): Developer-console accent — active demo tab text and the pill-shaped "녹음시작" record button.
-- **Highlight Yellow** (`#ffde30`): Recommended-plan / emphasis flag on the pricing page.
+### Neutrals
+- **Text** (`#000000`): The document's default text colour.
+- **Hairline** (`#eeeeee`): The 1px border of the home cards and of the developer-portal account pills; **Hairline Hover** (`#cccccc`) is the card border while the pointer is over its button.
+- **Slate** (`#555555`): Heading and copy inside the developer-portal demo; the resting colour of the account pills once the portal header turns solid.
+- **Muted** (`#999999`): Unselected demo tabs and footer copy on the developer portal.
 
-### Neutral Ladder & Surface
-- **Slate** (`#444444`): Secondary text and darker borders.
-- **Muted Grey** (`#999999`): Tertiary text, inactive tab labels, captions.
-- **Faint Grey** (`#bbbbbb`): Default input borders, lowest-emphasis lines.
-- **Hairline** (`#eeeeee`): Card outlines, dividers — the primary separation device in a shadowless system.
-- **Surface** (`#fafafa`): Faint off-white tint for alternating section bands.
+### Developer portal accent (developers.rtzr.ai only)
+- **Accent** (`#3a89ff`): Fill of the 녹음시작 record button; label and 2px underline of the selected demo tab. **Accent Hover** (`#3174d9`) is the record button on hover and press.
+
+### Not observed
+- The mint, brand blue and highlight yellow in the earlier record did not appear on any captured page and are not tokens.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Sans (sole)**: `Pretendard` — used for every headline, body, nav, and button label. Weight range 300 (giant metrics) through 600 (headings / button labels).
+- **Sans**: `Pretendard` — every captured element on rtzr.ai and developers.rtzr.ai.
+- **Live surface use:** loaded, 114 observed uses (body, buttons, headings, list items, the demo notice), served from jsDelivr (`cdn.jsdelivr.net/gh/orioncactus/pretendard/…/web/static/…`).
+- **Official distributed asset:** Pretendard's own repository (orioncactus/pretendard); its LICENSE file was opened and names Kil Hyung-jin (2021) and Adobe (2014–2021) as copyright holders. The licence clause itself is not quoted here.
+- **Official product use:** no Return Zero page opened this session names its typeface; not claimed beyond the live use.
+- **Declared only:** `swiper-icons` (carousel icon font, 0 uses).
 
 ### Hierarchy
 
 | Role | Font | Size | Weight | Line Height | Notes |
 |------|------|------|--------|-------------|-------|
-| Display Stat | Pretendard | 124px | 300 | normal | Hero metric numbers (35, 48, 2.5배), white on dark |
-| Display Mint | Pretendard | 60px | 600 | normal | Mint `#98ffac` highlight figures on dark sections |
-| Section Heading | Pretendard | 40px | 600 | 1.3 | Section titles (한 눈에 보는…, 무엇이 다른가요?) |
-| Hero (Dev) | Pretendard | 36px | 600 | normal | developers.rtzr.ai hero H1, white-on-dark |
-| Body Large / Button | Pretendard | 18px | 600 | normal | Large CTA labels, lead text |
-| Body | Pretendard | 16px | 400 | 1.5 (24px) | Standard reading text, nav links |
-| Button Small | Pretendard | 14px | 600 | normal | Compact header button label |
-| Caption / Pill | Pretendard | 12px | 500 | normal | Account pill, fine labels |
+| Display | Pretendard | 42px | 300 | 1.29 (54px) | Home hero, `#222222` |
+| Dev Hero | Pretendard | 36px | 600 | 1.33 (48px) | developers.rtzr.ai hero, white, -1.5px |
+| Plan Title | Pretendard | 32px | 700 | normal | /pricing plan-card row headings, white |
+| Plan Lead | Pretendard | 20px | 600 | 1.6 (32px) | /pricing hero subline, white |
+| Button Large | Pretendard | 18px | 600 | normal | Large action labels |
+| Nav | Pretendard | 16px | 500 | normal | COMPANY, RTZR STT, CALLABO, VITO |
+| Menu | Pretendard | 16px | 600 | normal | News, Career, Blog, CI, 공고, Pricing, Developers |
+| Body | Pretendard | 16px | 400 | 1.5 (24px) | Document default, `#000000` |
+| Demo Title | Pretendard | 18px | 700 | 1.17 (21px) | Demo heading, `#555555` |
+| Button | Pretendard | 14px | 600 | 1.4 (19.6px) | 문의하기, 더 알아보기 |
+| Demo Body | Pretendard | 14px | 400 | 1.57 (21.98px) | Demo copy, `#555555`, -0.5px |
+| Pill | Pretendard | 12px | 500 | 1.17 (14px) | 회원가입 / 로그인 |
 
 ### Principles
-- **One font, many weights**: Pretendard does every job; hierarchy comes from size and weight (300 ↔ 600), never from swapping families.
-- **Lightweight giant metrics**: The defining choice — 124px stat figures at weight 300. The number is huge but the stroke is thin, signalling confident data without shouting.
-- **600 is the heading ceiling**: Headings and primary button labels top out at weight 600; the system never goes to 700/800 except on a single developer-console active tab (700).
-- **Normal tracking**: Unlike pill-heavy fintech peers, Return Zero keeps letter-spacing at normal across display and body — the precision reads as restraint, not compression.
+- **One family, weight for hierarchy.** Pretendard from 300 to 700; the lightest weight is reserved for the largest headline.
+- **Light hero, firm actions.** The 42px hero is weight 300 while every action label is 600.
+- **Normal tracking on marketing.** Only the developer-portal hero (-1.5px) and demo copy (-0.5px) tighten.
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Primary (Filled Charcoal)**
-- Background: `#222222`
-- Text: `#ffffff`
-- Radius: 4px
-- Padding: 24px 40px
-- Height: 69px
-- Font: 18px Pretendard weight 600
-- Use: Primary CTA — "리턴제로 STT 알아보기", "맞춤 요금제 문의", "서비스 도입문의"
+**Header Action (Primary)**
+- `#222222` fill, `#ffffff` label, 4px radius, 10px padding, 98 × 42, 14px / 600
+- Hover, pressed, focus: no change (probe); `transition: all 0s`
+- Use: 문의하기 on every rtzr.ai page
 
-**Primary Compact**
-- Background: `#222222`
-- Text: `#ffffff`
-- Radius: 4px
-- Padding: 10px
-- Height: 42px
-- Font: 14px Pretendard weight 600
-- Use: Header / inline CTA — "문의하기", "더 알아보기", "읽어보기"
+**Primary Action (Large)**
+- `#222222` fill, `#ffffff` label, 4px radius, 24px 40px padding, 69px tall, 18px / 600
+- Hover, pressed, focus: no change (probe)
+- Use: 리턴제로 STT 알아보기, 서비스 도입문의, 맞춤 요금제 문의
 
-**Secondary (White)**
-- Background: `#ffffff`
-- Text: `#222222`
-- Radius: 4px
-- Padding: 24px 40px
-- Font: 18px Pretendard weight 600
-- Use: Paired secondary CTA — "바로 체험하기", "상담신청", "무료로 체험하기"
+**Card Button**
+- `#222222` fill, 4px radius, 10px padding, 98 × 42, 14px / 600
+- The button does not change; its white card's border goes `#eeeeee` → `#cccccc` on hover and press (probe)
+- Use: 더 알아보기, 읽어보기
 
-**Ghost (Outline on Dark)**
-- Background: transparent
-- Text: `#ffffff`
-- Border: 1px solid `#ffffff`
-- Radius: 4px
-- Padding: 24px 40px
-- Font: 18px Pretendard weight 600
-- Use: Outline CTA on dark hero — "정확도 비교", "사용문의" (developer hero uses `rgba(255,255,255,0.5)` border)
+**Secondary Action (White)**
+- `#ffffff` fill, `#222222` label, 4px radius, 24px 40px padding, 69px tall, 18px / 600
+- Hover, pressed, focus: no change on 바로 체험 and 상담신청; the plan-card buttons' hover and pressed were unmeasured
+- Use: on dark grounds — the /stt hero, the `#222222` band and plan cards on /pricing
 
-**Account Pill (Developer Console)**
-- Background: transparent
-- Text: `#ffffff`
-- Border: 1px solid `#eeeeee`
-- Radius: 30px
-- Padding: 9px 24px
-- Height: 34px
-- Font: 12px Pretendard weight 500
-- Use: developers.rtzr.ai account actions — "회원가입", "로그인"
+**Outline Action**
+- Transparent, `#ffffff` label, 1px solid `#ffffff`, 4px radius, 24px 40px padding, 164 × 71
+- Hover, pressed, focus: no change; `transition: opacity 0.5s ease`
+- Use: 요금제 보기, 정확도 비교 over the /stt hero
 
-**Record (STT Accent Pill)**
-- Background: `#3a89ff`
-- Text: `#ffffff`
-- Radius: 60px
-- Padding: 20px 40px
-- Height: 58px
-- Font: 18px Pretendard weight 400
-- Use: STT live-demo record action — "녹음시작"
+**Record Button (developers.rtzr.ai)**
+- `#3a89ff` fill, white label, 60px radius, 20px 40px padding, 167 × 58
+- Hover and pressed: `#3174d9` (probe); focus: no change
+- Use: 녹음시작 in the STT demo
 
-### Inputs
+**Account Pill (developers.rtzr.ai)**
+- Transparent, white label, 1px solid `#eeeeee`, 30px radius, 9px 24px padding, 34px tall, 12px / 500
+- Hover and pressed: faint dark tint, label and border `#222222` (read with the header solid, where the pill rests at `#555555`)
+- Use: 회원가입, 로그인
 
-**Large Field / Select**
-- Background: `#ffffff`
-- Text: `#222222`
-- Border: 1px solid `#bbbbbb`
-- Radius: 4px
-- Height: 74px
-- Focus: border darkens to `#666666`
-- Use: Large demo input / dropdown on the homepage STT demo
-
-### Cards & Containers
-
-**White Feature Card**
-- Background: `#ffffff`
-- Border: 1px solid `#eeeeee`
-- Radius: 4px
-- Shadow: none
-- Use: Service / feature card with hairline outline (shadowless)
-
-**Dark Stat Band**
-- Background: `#222222`
-- Text: `#ffffff`
-- Radius: 4px
-- Use: Metric band — 124px weight-300 figure in white, with mint `#98ffac` highlight accent
-
-### Badges
-
-**Plan Highlight**
-- Background: `#ffde30`
-- Text: `#222222`
-- Radius: 4px
-- Font: 13px Pretendard weight 600
-- Use: Recommended-plan / emphasis flag on the pricing page
+**Portal Hero Actions (developers.rtzr.ai)**
+- 사용문의: transparent, white label, 1px half-white border, 4px radius, 22px 40px padding, 144 × 67
+- 무료로 체험하기: `#ffffff` fill, `#222222` label, same geometry
+- Hover, pressed, focus: no change (probe)
 
 ### Tabs
 
-**Demo Mode Tabs**
-- Active: text `#3a89ff` weight 700
-- Inactive: text `#999999` weight 500
-- Use: STT live-demo mode switch — "실시간 녹음" / "파일 업로드" / "샘플파일"
+**Demo Mode Tabs (developers.rtzr.ai)**
+- Unselected `#999999`, 16px / 500; selected `#3a89ff`, 700, with a 2px `#3a89ff` underline
+- Hover, pressed, focus: no change on 파일 업로드 (probe)
+- Use: 실시간 녹음 / 파일 업로드 / 샘플파일
 
-### Navigation
-- Background: `#ffffff`
-- Text: `#222222`
-- Font: 16px Pretendard weight 500
-- Active: `#222222` weight 600
-- Use: Top nav — "COMPANY", "RTZR STT", "CALLABO", "VITO", "Pricing", "Developers"
+### Cards
+
+**Feature Card**
+- `#ffffff` with 1px solid `#eeeeee`; border `#cccccc` while its button is hovered
+- Use: product and customer-story cards in the home carousels
 
 ---
 
-**Verified:** 2026-06-26 (omd:add-reference CREATE — Tier 1 live inspect, 2 surfaces)
-**Tier 1 sources:** https://www.rtzr.ai, https://developers.rtzr.ai/, https://blog.rtzr.ai
-**Tier 2 sources:** getdesign.md/returnzero — not listed (404); styles.refero.design — no confirmed Return Zero match (generic search fallback only)
+**Verified:** 2026-09-30 (deterministic collector capture of rtzr.ai home, /stt and /pricing and developers.rtzr.ai, logged out, plus fixed keyboard-probe state reads on all four pages and first-party context)
+**Tier 1 sources:** https://www.rtzr.ai/ ; https://www.rtzr.ai/stt ; https://www.rtzr.ai/pricing ; https://www.rtzr.ai/company ; https://developers.rtzr.ai/ ; https://blog.rtzr.ai/
+**Tier 2 sources:** getdesign.md/returnzero (HTTP 200, "0 design.md files") and styles.refero.design/?q=returnzero (HTTP 200, the name appears only as the echoed query), requested 2026-09-30; no Tier 2 value used
 **Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
 ### Spacing System
-- Base unit: ~8px, with a tight 4px / 10px rhythm for compact chrome
-- Scale: 4px, 8px, 10px, 16px, 24px, 40px, 64px
-- Notable: large CTAs use a generous 24px 40px padding (69px height), while header buttons compress to a flat 10px
+- Compact actions: 10px padding all round
+- Large actions: 24px 40px on rtzr.ai; 22px 40px on the portal hero; 20px 40px on the record button
+- Account pills: 9px 24px; portal navigation pills: 7px 10px
 
 ### Grid & Container
-- Centered single-column hero with the charcoal CTA as the anchor
-- Service overview as a row of white feature cards with hairline `#eeeeee` outlines
-- Dark stat bands (`#222222`) break the white flow with 124px white metrics
-- Pricing as side-by-side plan columns with one yellow-highlighted recommended plan
+- A fixed white header across rtzr.ai with navigation groups and menu columns (News, Career, Blog, CI, 공고 / Pricing, Developers)
+- Hero bands with a single headline and an action group, followed by horizontal card carousels on home
+- /pricing: a dark hero, a row of plan cards, a charcoal consultation band
 
 ### Whitespace Philosophy
-- **Restraint over density**: airy vertical rhythm; the page never crowds, letting the single charcoal action breathe.
-- **Flat segmentation**: sections separate by surface tint (`#fafafa`) and hairlines (`#eeeeee`), or by full charcoal/dark bands — never by shadow.
-- **Color as punctuation**: accent color appears only at decision points (record button, recommended plan, headline metric), so the eye always knows where to go.
+- **Restraint.** A light headline and one charcoal action carry the hero; colour is withheld from marketing entirely.
+- **Carousels for breadth.** Products and customer stories scroll horizontally in white bordered cards.
 
 ### Border Radius Scale
-- Sharp (4px): buttons, inputs, cards — the workhorse on marketing surfaces
-- Pill Small (30px): developer-console account pills
-- Pill (60px): developer-console record button
-- Full (9999px): occasional round controls
+- 4px — every rtzr.ai action and the portal hero actions
+- 20px — portal navigation pills
+- 30px — portal account pills
+- 60px — record button
 
 ## 6. Depth & Elevation
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
-| Hairline (Level 1) | `1px solid #eeeeee` border | White card outlines, dividers |
-| Tint (Level 2) | `#fafafa` surface shift | Alternating section bands |
-| Inversion (Level 3) | `#222222` / `#000000` dark band | Stat bands and immersive product sections |
+| Flat | `box-shadow: none` | Every captured element |
+| Hairline | 1px `#eeeeee` → `#cccccc` | Home cards (hover), account pills |
+| Ground change | `#222222` bands and dark heroes | Consultation band, /pricing and portal heroes |
 
-**Shadow Philosophy**: Return Zero is a fully shadowless system. Live inspection found `box-shadow: none` across the hero, nav, headings, feature cards, and demo controls on the homepage, the developer console, and the pricing page. Separation is achieved through flat devices: a single hairline (`#eeeeee`), a faint surface tint (`#fafafa`), and full-contrast inversion to charcoal (`#222222`) or black (`#000000`) dark bands. When the system needs to elevate attention it reaches for color (mint `#98ffac`, STT blue `#3a89ff`) or contrast inversion, never a drop shadow — keeping the UI feeling fast, engineered, and screen-native.
+**Shadow Philosophy**: none of the recorded elements computes a shadow. Separation comes from hairlines and from switching the ground between white and charcoal.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Keep charcoal ink (`#222222`) as the single action color — every primary CTA, nav, and heading
-- Use pure black (`#000000`) for body text, charcoal `#222222` for interactive chrome
-- Use Pretendard for everything; build hierarchy with weight (300 ↔ 600), not family swaps
-- Render headline metrics huge and light — 124px weight 300, white on a dark band
-- Separate sections with the `#eeeeee` hairline and `#fafafa` tint, or full charcoal inversion — never shadows
-- Reserve accent color for the single decision point (record button `#3a89ff`, recommended plan `#ffde30`, metric highlight `#98ffac`)
-- Keep 4px radius on marketing buttons, inputs, and cards
-- Pair a charcoal primary with a white secondary CTA side by side
+- Fill primary actions with `#222222` and white labels at 4px corners
+- Flip to `#ffffff` actions with `#222222` labels on dark grounds
+- Use Pretendard only; weight 300 for the large hero, 600 for actions
+- Keep `#3a89ff` to the developer-portal demo (record action, selected tab)
+- Give cards a `#eeeeee` hairline that darkens to `#cccccc`
 
 ### Don't
-- Add drop shadows for elevation — the system is flat and shadowless
-- Introduce a second always-on brand color — accents are surgical and per-product
-- Use pill geometry on marketing chrome — pills belong to the developer console only
-- Set headings heavier than weight 600 (700 only on a single active demo tab)
-- Compress letter-spacing — Return Zero tracks at normal across display and body
-- Spread the mint, blues, or yellow across many elements — color marks decisions, not decoration
-- Use a font other than Pretendard
-- Replace the dark stat band with a light card — the contrast inversion is the emphasis
+- Introduce accent colours into marketing pages; none was observed
+- Round marketing actions into pills
+- Add shadows or button hover animations the site does not have
+- Carry the portal blue into rtzr.ai marketing
 
 ## 8. Responsive Behavior
 
 ### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, stat figures scale down, CTAs stack full-width |
-| Tablet | 640-1024px | 2-up feature cards, moderate padding |
-| Desktop | 1024-1440px | Full layout, multi-column feature rows, side-by-side plans |
+Only the 1440px desktop layout was captured; breakpoints were not measured and are not specified here.
 
 ### Touch Targets
-- Primary CTAs at 69px height with 24px 40px padding — large, unmistakable targets
-- Compact header CTA at 42px height
-- Developer record pill at 58px height, 60px radius
-- Account pills at 34px height
+- Large actions 67–71px tall; compact actions 42px; record button 58px; account pills 34px
 
 ### Collapsing Strategy
-- Hero: large CTA pair stacks vertically on mobile
-- Feature cards: multi-column → stacked single column
-- Stat bands: 124px figures reduce but keep weight 300 and white-on-dark treatment
-- Pricing: side-by-side plan columns stack, highlighted plan stays flagged with `#ffde30`
+Not captured.
 
 ### Image Behavior
-- Product screenshots and illustrations carry no shadow at any size, consistent with the flat system
-- Cards maintain 4px radius across breakpoints
+Hero photography sits behind white text and outline actions on /stt and the developer portal; nothing else about image behaviour was measured.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary action / CTA: Charcoal Ink (`#222222`)
-- Body text: Pure Black (`#000000`)
-- Background: Pure White (`#ffffff`)
-- Metric highlight: Mint (`#98ffac`)
-- Corporate product title: Brand Blue (`#2e67fe`)
-- Developer accent / record: STT Blue (`#3a89ff`)
-- Plan highlight: Highlight Yellow (`#ffde30`)
-- Secondary text: Slate (`#444444`)
-- Muted / inactive: Muted Grey (`#999999`)
-- Input border: Faint Grey (`#bbbbbb`)
-- Hairline: `#eeeeee`
-- Surface tint: `#fafafa`
+- Primary action / nav / headline: `#222222`, label `#ffffff`
+- Default text: `#000000`
+- Card hairline: `#eeeeee` (hover `#cccccc`)
+- Portal demo: `#3a89ff` (hover `#3174d9`), copy `#555555`, unselected `#999999`
 
 ### Example Component Prompts
-- "Create a hero on white background. Pretendard. A charcoal primary CTA (`#222222` bg, white text, 4px radius, 24px 40px padding, 18px weight 600 — 'STT 알아보기') beside a white secondary CTA (`#ffffff` bg, `#222222` text, 4px radius — '바로 체험하기'). No shadows."
-- "Design a dark stat band: `#222222` background, a 124px weight-300 white figure ('35'), with a 60px mint `#98ffac` highlight figure beside it. Shadowless."
-- "Build a white feature card: `#ffffff` background, 1px solid `#eeeeee` border, 4px radius, no shadow. Title 40px Pretendard weight 600 `#222222`. Body 16px weight 400 line-height 1.5 `#000000`."
-- "Create a developer demo: tab row with active '실시간 녹음' in `#3a89ff` weight 700, inactive '파일 업로드' in `#999999` weight 500, and a `#3a89ff` pill record button (60px radius, 20px 40px padding, white text — '녹음시작')."
+- "Hero on white: a 42px Pretendard Light (300) headline in #222222 on a 54px line, then one #222222 button with a white 18px/600 label, 4px radius, 24px 40px padding, 69px tall. No shadow, no hover animation."
+- "Dark band with a white action: #ffffff fill, #222222 18px/600 label, 4px radius, 24px 40px padding."
+- "STT demo record button: #3a89ff fill, white label, 60px radius, 20px 40px padding, hover #3174d9; tabs in #999999 16px/500 with the selected one #3a89ff, 700, 2px underline."
 
 ### Iteration Guide
-1. Charcoal `#222222` is the only action color — don't add a second always-on hue
-2. Pretendard everywhere; hierarchy via weight 300 ↔ 600
-3. No shadows — separate with `#eeeeee` hairline, `#fafafa` tint, or charcoal inversion
-4. Headline metrics: 124px weight 300, white on dark
-5. 4px radius on marketing chrome; pills only on the developer console
-6. Accent (`#98ffac` / `#3a89ff` / `#ffde30`) marks one decision point at a time
-7. Body text is `#000000`; secondary text `#444444`; muted `#999999`
+1. Charcoal `#222222` is the action colour; marketing stays monochrome
+2. Pretendard only; light hero, semibold actions
+3. 4px corners on marketing, pills only in the portal
+4. No shadows, no button transitions
+5. Blue belongs to the developer demo
 
 ---
 
 ## 10. Voice & Tone
 
-Return Zero's voice is **plain, technical, and quietly confident** — the register of an engineering team that lets accuracy numbers do the persuading. Korean copy is direct and functional ("AI 음성인식의 새로운 기준" / "A new standard for AI speech recognition"; "무엇이 다른가요?" / "What's different?"), framing the product as infrastructure rather than novelty. CTAs are low-pressure imperatives ("문의하기", "바로 체험하기", "더 알아보기") and the developer surface speaks peer-to-peer to builders ("RTZR STT로 애플리케이션을 제작해 보세요" / "Build applications with RTZR STT").
+Return Zero writes like an engineering company talking to businesses: short, factual, and number-led.
 
 | Context | Tone |
 |---|---|
-| Hero headlines | Declarative, standard-setting. "AI 음성인식의 새로운 기준." Confident, not hype. |
-| Stat / metric labels | Numbers-first. Giant figures (정확도, 시간) carry the claim; copy stays minimal. |
-| Product titles | Plain product naming — RTZR STT, CALLABO, VITO — each with a one-line "what it does." |
-| CTAs | Direct, low-pressure. "문의하기", "바로 체험하기", "무료로 체험하기". |
-| Developer docs | Peer-to-peer, builder-facing. "애플리케이션을 제작해 보세요." Practical, example-led. |
+| Company | Mission in one line — "We bring practical AI to the world" — then proof in numbers (창업연도 2018, 1,500만 시간+, 100만명+) |
+| Actions | Direct verbs: 문의하기, 바로 체험, 요금제 보기, 정확도 비교, 서비스 도입문의 |
+| Pricing | Deployment-first choices: 클라우드 도입 문의, 설치형 도입 문의, 맞춤 요금제 문의 |
+| Developer portal | Try-first: 무료로 체험하기, 녹음시작 |
 
-**Voice samples (verbatim from live surfaces):**
-- "AI 음성인식의 새로운 기준" — homepage section heading (standard-setting). *(verified live 2026-06-26)*
-- "한 눈에 보는 리턴제로의 AI 서비스" — homepage service-overview heading. *(verified live 2026-06-26)*
-- "RTZR STT로 애플리케이션을 제작해 보세요." — developers.rtzr.ai hero H1. *(verified live 2026-06-26)*
-- Page title: "리턴제로 - 차세대 음성 AI의 미래" *(verified live 2026-06-26)*
+**Voice samples (verbatim, opened 2026-09-30):**
+- "리턴제로는 실용주의 AI 스타트업 입니다" — rtzr.ai/company
+- "최신 AI 기술을 실험실에서 세상으로 가져옵니다" — rtzr.ai/company
+- "기업을 위한 음성 AI - 리턴제로 blog" — blog.rtzr.ai title
+- "음성인식 API (STT API) - RTZR STT" — developers.rtzr.ai title
 
-**Forbidden register**: hype superlatives, exclamation-heavy marketing, undefined buzzwords, fear-based urgency. The brand persuades with measured numbers and plain capability statements.
+**Forbidden register**: hype without numbers, playful consumer tone on business pages, colour-driven urgency.
 
 ## 11. Brand Narrative
 
-Return Zero (리턴제로) was founded in **2018** by three KAIST classmates and former early Kakao members — **이참솔 (Lee Chamsol, CEO)**, **정주영 (Jung Jooyoung, CTO)**, and development lead **이현종 (Lee Hyunjong)** — with a thesis that voice is the last great untapped data modality. The founding premise: every phone call, every meeting, every spoken interaction is information that simply evaporates because it is never turned into structured, searchable text. "Return Zero" frames the mission as returning that lost value from zero.
+Return Zero's company page frames its purpose as bringing research-grade AI out of the lab: "최신 AI 기술을 실험실에서 세상으로 가져옵니다. AI가 바꾸는 미래를 앞당깁니다." Founded in 2018, it reports 15 million-plus hours of speech transcribed and a million-plus users across its services. Its leadership comes from Kakao and 로티플: co-CEO 이참솔 (Kakao AD, co-founder of 로티플, acquired by Kakao), co-CEO and CTO 정주영 (KakaoTalk PC and messaging teams, 로티플 CTO) and CPO 이현종 (KakaoTalk and Kakao taxi teams). The business spans the RTZR STT API, sold through rtzr.ai with cloud and on-premise plans and opened to developers through a free browser demo, and two products, CALLABO and VITO. Customer stories on the home page — finance among them — link to the company blog.
 
-The company's flagship consumer product, **VITO (비토)**, turns phone calls into text so users can read and search conversations like messages — it grew past **1 million users**, generating a voice corpus the company describes as roughly **150,000 hours / 15 million hours of speech data**, among the largest Korean-language datasets in the country. That data feeds proprietary engines (the "Sommers" far-field whisper-capture engine and the "Moses" speaker-separation engine). The technology productized into **RTZR STT**, a speech-to-text API offered in both cloud and on-premise (설치형) form via `developers.rtzr.ai`, launched as VITO Speech with a developer beta in June 2022, and **CALLABO (콜라보)**, an enterprise AI meeting assistant that records and summarizes Google Meet / Zoom calls.
-
-What the design refuses, and what it embraces, mirror the company's engineering posture: no decorative gradients, no shadow-stacked consumer-app chrome, no second vanity brand color — instead a near-monochrome charcoal-on-white system where the only flourish is a giant, lightweight accuracy number and a single surgical accent at each decision point. It is the visual language of a research lab that wants its data and its precision, not its packaging, to be the argument.
+*(The reading that ties the monochrome site to this engineering-first positioning is editorial interpretation, not a Return Zero statement.)*
 
 ## 12. Principles
 
-1. **Precision over decoration.** A speech-AI company is judged on accuracy; the UI mirrors that with a stripped, exact, shadowless system. *UI implication:* keep chrome minimal — charcoal on white, 4px radius, no ornament.
-2. **One action, one color.** Charcoal `#222222` means "do this." *UI implication:* reserve the charcoal fill for the primary CTA; let secondary actions go white.
-3. **Let the number speak.** Metrics are the persuasion. *UI implication:* render the key figure huge (124px) and light (weight 300) on a dark band so it dominates the section.
-4. **Color marks decisions, not surfaces.** Accents (`#98ffac`, `#3a89ff`, `#ffde30`) are surgical. *UI implication:* introduce an accent only at a single decision point — the record button, the recommended plan, the headline stat.
-5. **Flat and fast.** Screen-native clarity beats decorative depth. *UI implication:* no shadows; separate with hairline `#eeeeee`, `#fafafa` tint, or charcoal inversion.
-6. **One voice, one font.** Pretendard at every size. *UI implication:* build hierarchy with weight and scale, never with a second family.
+1. **Practical over flashy.** The company calls itself a practical-AI startup. *UI implication:* monochrome actions, no decorative colour or motion.
+2. **Numbers carry the claim.** The company page leads with hours transcribed and users served. *UI implication:* let figures and plain headlines do the persuading.
+3. **Try before you talk.** The developer portal puts a working demo on its front page. *UI implication:* keep the record action obvious — the one coloured control.
+4. **One family.** Pretendard everywhere. *UI implication:* hierarchy by size and weight only.
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable Return Zero user segments (developers integrating STT, enterprise teams adopting meeting AI, consumer VITO users), not individual people.*
+*Fictional archetypes informed by Return Zero's public audiences (enterprise buyers, developers, product users), not real people.*
 
-**김도현, 30, 서울.** A backend engineer integrating speech-to-text into a call-center product. Lives in `developers.rtzr.ai`, cares about streaming-vs-file accuracy and on-premise options. Chose RTZR STT because the developer console let him test "실시간 녹음" in the browser before writing a line of code.
+**김도윤, 41, 서울.** Contact-centre lead at a financial company evaluating speech recognition for an AICC rollout; reads customer stories, compares cloud and on-premise plans, then asks for a consultation.
 
-**박지은, 38, 판교.** An operations lead at a mid-size SaaS company evaluating CALLABO to auto-summarize remote meetings. Values that the product looks like infrastructure, not a toy — the restrained, shadowless interface signals reliability to her stakeholders.
+**박서연, 29, 판교.** Backend developer who opens the developer portal, records a sentence in the demo and switches to file upload before signing up.
 
-**이서윤, 27, 부산.** A heavy VITO user who reads and searches her calls like text messages. Trusts the brand's plain, number-driven tone; appreciates that nothing on the page is trying to upsell her.
+**이준호, 35, 서울.** Team manager looking for an AI meeting-notes product; arrives through the product navigation and wants a plain answer about price and accuracy.
 
 ## 14. States
 
-| State | Treatment |
+Only these states were observed; nothing else is specified here.
+
+| State | Observation |
 |---|---|
-| **Empty (no transcripts / results)** | White canvas. Single charcoal (`#222222`) line explaining no results, with one charcoal CTA to start. No illustration clutter. |
-| **Loading (STT transcribe)** | Inline progress within the demo panel; record pill (`#3a89ff`) shows an active recording state. Flat pulse — no shadow shimmer. |
-| **Recording (live demo)** | Active state on the record pill; a red recording indicator (`rgb(240,43,0)` observed on the developer demo) marks live capture. |
-| **Loading (page sections)** | Skeleton blocks on `#fafafa` at final dimensions, 4px radius, flat pulse consistent with the shadowless system. |
-| **Error (transcription failed)** | Inline message in charcoal `#222222` with a plain-language explanation and a retry. No bare "오류가 발생했습니다". |
-| **Error (form validation)** | Field-level message below the input; border darkens to `#666666`; describes what's valid, not just "필수". |
-| **Success (request submitted)** | Brief inline confirmation in a calm tone; next-step detail linked below. No celebratory emoji. |
-| **Disabled** | Muted Grey (`#999999`) text on reduced-opacity surface; charcoal actions fade rather than switch hue. |
+| **No change** | 문의하기, 리턴제로 STT 알아보기, 서비스 도입문의, 맞춤 요금제 문의, 바로 체험, 상담신청, 요금제 보기, 정확도 비교, 사용문의, 무료로 체험하기 and the 파일 업로드 tab show no hover, pressed or focus change (probe). |
+| **Card hover** | The white card around 더 알아보기 / 읽어보기: border `#eeeeee` → `#cccccc`. |
+| **Record hover / pressed** | `#3a89ff` → `#3174d9`. |
+| **Account pill hover / pressed** | Faint dark tint; label and border to `#222222`. |
+| **Selected** | Demo tab 실시간 녹음: `#3a89ff`, weight 700, 2px underline. |
+| **Unmeasured** | Hover and pressed on the /pricing plan-card buttons (바로 무료 체험, 클라우드 도입 문의). |
+
+No authored focus style was observed on any probed control. Error, empty, loading and success states were not captured.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, focus |
-| `motion-standard` | 200ms | Card/section reveal, tab switch, sheet |
-| `motion-slow` | 320ms | Page-level transitions, hero/stat reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sections, cards, panels |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and quiet, consistent with the flat, engineered aesthetic. Demo tabs and buttons respond to press with a subtle opacity/scale shift; stat bands and feature cards fade-in from below at `motion-standard / ease-enter`. No bounce or spring — a speech-AI infrastructure product signals steadiness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product (including the live STT demo) remains fully functional.
+Every probed filled button computes `transition: all 0s` — state changes, where they exist, are instant. The /stt outline pair (요금제 보기, 정확도 비교) computes `transition: opacity 0.5s ease`. Carousel and scroll motion were not measured; treat them as unspecified and honour `prefers-reduced-motion` in any build.
 
 <!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-26) via playwright getComputedStyle on:
-- https://www.rtzr.ai (homepage) — title "리턴제로 - 차세대 음성 AI의 미래"; charcoal CTA rgb(34,34,34)=#222222, white text, 4px radius; section headings 40px/600; 124px weight-300 stat figures (white); mint rgb(152,255,172)=#98ffac 60px highlights; brand blue rgb(46,103,254)=#2e67fe product titles; Pretendard sole font; box-shadow none.
-- https://developers.rtzr.ai/ (RTZR STT developer console) — hero H1 36px/600 white; STT blue rgb(58,137,255)=#3a89ff active tab (weight 700) + record pill (radius 60px, 20px 40px, white); account pills radius 30px, 1px solid #eeeeee, 12px/500; "무료로 체험하기" white bg #222222 text; red rgb(240,43,0) recording indicator.
-- https://www.rtzr.ai/pricing — charcoal primary CTAs; white secondary CTAs; highlight yellow rgb(255,222,48)=#ffde30 on recommended plan; "자주 묻는 질문" 40px/600.
-
-Token-level claims (§1-9) are sourced from these live inspections (see .verification.md raw samples).
-
-Voice samples (§10) are verbatim from live surfaces (homepage headings, developer hero H1, page title meta).
-
-Brand narrative (§11): Return Zero (리턴제로) founded 2018 by 이참솔 (CEO), 정주영 (CTO), 이현종;
-products VITO / CALLABO / RTZR STT; 1M+ VITO users; ~15M hours voice data; VITO Speech /
-developer beta June 2022. Sourced from public reporting (ETOday, ZDNet Korea, THE VC,
-econovill) and the brand's own blog (blog.rtzr.ai) — widely documented public facts, not
-quoted verbatim from a single Return Zero statement in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable Return Zero user
-segments (STT developers, enterprise meeting-AI adopters, consumer VITO users). Names are
-illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "near-monochrome by intent", "color marks decisions, not
-surfaces", "the visual language of a research lab") are editorial readings connecting Return
-Zero's observed design to its positioning, not directly sourced Return Zero statements.
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/returnzero.json (capturedAt 2026-09-30T09:57:39Z), deterministic collector, 1440x900, logged out: rtzr.ai, /stt, /pricing, developers.rtzr.ai. States: fixed keyboard probe raws docs/research/2026-09-29-growth/raw/returnzero-states-{home,stt,pricing,developers}.json (configs returnzero-cfg-*.json).
+- §1, §10, §11 context: rtzr.ai/company, blog.rtzr.ai, developers.rtzr.ai, opened 2026-09-30.
+- Personas are fictional archetypes. Interpretive readings are editorial.
 -->

@@ -4,8 +4,8 @@
   "generator": "scripts/build-reference-quality-data.mjs",
   "count": 521,
   "counts": {
-    "verified_v2": 265,
-    "partial": 143,
+    "verified_v2": 276,
+    "partial": 132,
     "legacy_snapshot": 113,
     "total": 521
   },
@@ -95,16 +95,14 @@
     },
     {
       "id": "8percent",
-      "status": "partial",
-      "verified_at": "2026-07-02",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "91app",
@@ -795,16 +793,14 @@
     },
     {
       "id": "cjonstyle",
-      "status": "partial",
-      "verified_at": "2026-07-02",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "class101",
@@ -1820,16 +1816,14 @@
     },
     {
       "id": "genie",
-      "status": "partial",
-      "verified_at": "2026-06-09",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "getyourguide",
@@ -2859,16 +2853,14 @@
     },
     {
       "id": "laundrygo",
-      "status": "partial",
-      "verified_at": "2026-06-11",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "layerx",
@@ -3101,16 +3093,14 @@
     },
     {
       "id": "maum-ai",
-      "status": "partial",
-      "verified_at": "2026-07-02",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 10,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "medibloc",
@@ -4253,16 +4243,14 @@
     },
     {
       "id": "pozalabs",
-      "status": "partial",
-      "verified_at": "2026-07-02",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 9,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "protopie",
@@ -4554,16 +4542,14 @@
     },
     {
       "id": "returnzero",
-      "status": "partial",
-      "verified_at": "2026-06-26",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 4,
+      "source_count": 11,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "revolut",
@@ -4624,16 +4610,14 @@
     },
     {
       "id": "ringle",
-      "status": "partial",
-      "verified_at": "2026-06-11",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 9,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "robinhood",
@@ -4711,16 +4695,14 @@
     },
     {
       "id": "sandoll",
-      "status": "partial",
-      "verified_at": "2026-07-02",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "sanity",
@@ -4749,16 +4731,14 @@
     },
     {
       "id": "saramin",
-      "status": "partial",
-      "verified_at": "2026-06-26",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 10,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "satispay",
@@ -5948,16 +5928,14 @@
     },
     {
       "id": "vuno",
-      "status": "partial",
-      "verified_at": "2026-06-26",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 9,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "wadiz",

@@ -450,6 +450,95 @@
         "https://www.tabling.co.kr/top100",
         "https://www.tabling.co.kr/restaurant/fz22jjovyhauux30a95qh8"
       ]
+    },
+    "8percent": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.8percent.kr/",
+        "https://www.8percent.kr/disclosures/management/",
+        "https://www.8percent.kr/deals/real-estate-special/"
+      ]
+    },
+    "cjonstyle": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://display.cjonstyle.com/p/homeTab/main?hmtabMenuId=H00005&rPIC=homeonstyle",
+        "https://display.cjonstyle.com/p/item/2090936982",
+        "https://display.cjonstyle.com/p/brand/00034773"
+      ]
+    },
+    "genie": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.genie.co.kr/",
+        "https://www.genie.co.kr/chart/top200",
+        "https://www.genie.co.kr/newest/song"
+      ]
+    },
+    "laundrygo": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.laundrygo.com/",
+        "https://www.laundrygo.com/business/",
+        "https://www.laundrygo.com/culture/"
+      ]
+    },
+    "maum-ai": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://maum.ai/",
+        "https://maum.ai/physical-ai-service",
+        "https://maum.ai/maum-gpt"
+      ]
+    },
+    "pozalabs": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.pozalabs.com/ko/",
+        "https://www.pozalabs.com/ko/about/",
+        "https://www.pozalabs.com/ko/service/"
+      ]
+    },
+    "returnzero": {
+      "maxRoutes": 4,
+      "routes": [
+        "https://www.rtzr.ai/",
+        "https://www.rtzr.ai/stt",
+        "https://www.rtzr.ai/pricing",
+        "https://developers.rtzr.ai/"
+      ]
+    },
+    "ringle": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.ringleplus.com/ko/1on1",
+        "https://www.ringleplus.com/ko/student/landing/home",
+        "https://www.ringleplus.com/ko/company"
+      ]
+    },
+    "sandoll": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.sandoll.co.kr/",
+        "https://www.sandoll.co.kr/story",
+        "https://www.sandollcloud.com/"
+      ]
+    },
+    "saramin": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.saramin.co.kr/zf_user/",
+        "https://www.saramin.co.kr/zf_user/jobs/list/domestic",
+        "https://www.saramin.co.kr/zf_user/jobs/list/job-category"
+      ]
+    },
+    "vuno": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.vuno.co/",
+        "https://www.vuno.co/about",
+        "https://www.vuno.co/deepcars"
+      ]
     }
   }
 }

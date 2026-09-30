@@ -9,51 +9,220 @@ primary_color: "#0ac290"
 logo:
   type: favicon
   slug: "https://www.laundrygo.com/wp-content/uploads/2022/12/favicon_web.png"
-verified: "2026-06-11"
+verified: "2026-09-30"
 added: "2026-06-11"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://www.laundrygo.com/", inspected: "2026-09-30" }
+    - { id: surface-2, kind: marketing, url: "https://www.laundrygo.com/business/", inspected: "2026-09-30" }
+    - { id: surface-3, kind: corporate, url: "https://www.laundrygo.com/culture/", inspected: "2026-09-30" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://www.laundrygo.com/", captured: "2026-09-30" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://www.laundrygo.com/business/", captured: "2026-09-30" }
+    - { id: surface-surface-3, kind: product-surface, url: "https://www.laundrygo.com/culture/", captured: "2026-09-30" }
+    - { id: laundrygo-probe-home, kind: product-surface, url: "https://www.laundrygo.com/", captured: "2026-09-30" }
+    - { id: laundrygo-probe-business, kind: product-surface, url: "https://www.laundrygo.com/business/", captured: "2026-09-30" }
+    - { id: laundrygo-font, kind: brand-asset, url: "https://www.laundrygo.com/font/", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &cta { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"20\"]", captured: "2026-09-30" }
+    "tokens.colors.primary-hover": &ctastate { surface_id: home, source_id: laundrygo-probe-home, method: live-state-probe, selector: "a 채용공고 보러가기 (198.5 x 52, rest bg rgb(10, 194, 144), fg rgb(255, 255, 255), transition all 0.2s linear): hover and pressed bg -> rgb(19, 171, 130), read 900ms after; focus (Tab #16) fg -> rgb(58, 58, 58) and outline rgb(58, 58, 58) dotted 1px offset 1px", captured: "2026-09-30" }
+    "tokens.colors.on-primary": *cta
+    "tokens.colors.ink": &body { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
+    "tokens.colors.canvas": *body
+    "tokens.colors.ink-soft": &news { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
+    "tokens.colors.title": &recruittitle { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
+    "tokens.colors.heading-alt": &culturetitle { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h4", captured: "2026-09-30" }
+    "tokens.colors.muted": &web { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"7\"]", captured: "2026-09-30" }
+    "tokens.colors.neutral-fill": *web
+    "tokens.colors.footer": &footlink { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-09-30" }
+    "tokens.colors.faint": &legal { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"28\"]", captured: "2026-09-30" }
+    "tokens.colors.pagination-off": { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"15\"]", captured: "2026-09-30" }
+    "tokens.colors.mint-tint": &quote { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::div", captured: "2026-09-30" }
+    "tokens.typography.family.body": *body
+    "tokens.typography.display-hero.size": &hero { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
+    "tokens.typography.display-hero.weight": *hero
+    "tokens.typography.display-hero.lineHeight": *hero
+    "tokens.typography.display-hero.use": *hero
+    "tokens.typography.business-hero.size": &bizhero { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h2", captured: "2026-09-30" }
+    "tokens.typography.business-hero.weight": *bizhero
+    "tokens.typography.business-hero.lineHeight": *bizhero
+    "tokens.typography.business-hero.use": *bizhero
+    "tokens.typography.section.size": &section { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
+    "tokens.typography.section.weight": *section
+    "tokens.typography.section.lineHeight": *section
+    "tokens.typography.section.use": *section
+    "tokens.typography.card-title.size": &bcardtitle { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h4", captured: "2026-09-30" }
+    "tokens.typography.card-title.weight": *bcardtitle
+    "tokens.typography.card-title.lineHeight": *bcardtitle
+    "tokens.typography.card-title.use": *bcardtitle
+    "tokens.typography.statement.size": &vision { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h4", captured: "2026-09-30" }
+    "tokens.typography.statement.weight": *vision
+    "tokens.typography.statement.lineHeight": *vision
+    "tokens.typography.statement.use": *vision
+    "tokens.typography.recruit-title.size": *recruittitle
+    "tokens.typography.recruit-title.weight": *recruittitle
+    "tokens.typography.recruit-title.lineHeight": *recruittitle
+    "tokens.typography.recruit-title.use": *recruittitle
+    "tokens.typography.card-description.size": &bcarddesc { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.typography.card-description.weight": *bcarddesc
+    "tokens.typography.card-description.lineHeight": *bcarddesc
+    "tokens.typography.card-description.use": *bcarddesc
+    "tokens.typography.feature.size": &feature { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
+    "tokens.typography.feature.weight": *feature
+    "tokens.typography.feature.lineHeight": *feature
+    "tokens.typography.feature.use": *feature
+    "tokens.typography.stat-label.size": &growth { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h4", captured: "2026-09-30" }
+    "tokens.typography.stat-label.weight": *growth
+    "tokens.typography.stat-label.lineHeight": *growth
+    "tokens.typography.stat-label.use": *growth
+    "tokens.typography.eyebrow.size": &eyebrow { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
+    "tokens.typography.eyebrow.weight": *eyebrow
+    "tokens.typography.eyebrow.lineHeight": *eyebrow
+    "tokens.typography.eyebrow.use": *eyebrow
+    "tokens.typography.nav.size": &nav { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-09-30" }
+    "tokens.typography.nav.weight": *nav
+    "tokens.typography.nav.lineHeight": *nav
+    "tokens.typography.nav.use": *nav
+    "tokens.typography.body.size": *body
+    "tokens.typography.body.weight": *body
+    "tokens.typography.body.lineHeight": *body
+    "tokens.typography.body.use": *body
+    "tokens.typography.footer.size": *footlink
+    "tokens.typography.footer.weight": *footlink
+    "tokens.typography.footer.lineHeight": *footlink
+    "tokens.typography.footer.use": *footlink
+    "tokens.typography.legal.size": *legal
+    "tokens.typography.legal.weight": *legal
+    "tokens.typography.legal.lineHeight": *legal
+    "tokens.typography.legal.use": *legal
+    "tokens.spacing.nav-gap": *nav
+    "tokens.spacing.cta-x": *cta
+    "tokens.spacing.neutral-y": *web
+    "tokens.spacing.neutral-x": *web
+    "tokens.spacing.card-y": &bcard { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::div", captured: "2026-09-30" }
+    "tokens.spacing.card-x": *bcard
+    "tokens.spacing.quote": *quote
+    "tokens.rounded.toggle": &plus { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"7\"]", captured: "2026-09-30" }
+    "tokens.rounded.button": *cta
+    "tokens.rounded.quote-card": *quote
+    "tokens.rounded.floating": &float { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-09-30" }
+    "tokens.rounded.card": *bcard
+    "tokens.components.recruit-button.type": *cta
+    "tokens.components.recruit-button.bg": *cta
+    "tokens.components.recruit-button.fg": *cta
+    "tokens.components.recruit-button.radius": *cta
+    "tokens.components.recruit-button.padding": *cta
+    "tokens.components.recruit-button.height": *cta
+    "tokens.components.recruit-button.font": *cta
+    "tokens.components.recruit-button.hover": *ctastate
+    "tokens.components.recruit-button.pressed": *ctastate
+    "tokens.components.recruit-button.states": *ctastate
+    "tokens.components.recruit-button.use": *cta
+    "tokens.components.floating-cta.type": *float
+    "tokens.components.floating-cta.bg": *float
+    "tokens.components.floating-cta.fg": *float
+    "tokens.components.floating-cta.radius": *float
+    "tokens.components.floating-cta.height": *float
+    "tokens.components.floating-cta.font": *float
+    "tokens.components.floating-cta.shadow": *float
+    "tokens.components.floating-cta.hover": &floatstate { surface_id: surface-2, source_id: laundrygo-probe-business, method: live-state-probe, selector: "a 상담 문의하기 (256 x 76, rest bg rgb(10, 194, 144), transition all 0.2s linear), read with --hide-overlays: hover and pressed bg -> rgb(19, 171, 130); focus UNMEASURED (not reached in 31 Tab presses); on home the fixed header covered B2B·대량세탁 문의 and hover, pressed and focus were UNMEASURED", captured: "2026-09-30" }
+    "tokens.components.floating-cta.pressed": *floatstate
+    "tokens.components.floating-cta.states": *floatstate
+    "tokens.components.floating-cta.use": *float
+    "tokens.components.inquiry-button.type": &inq { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"11\"]", captured: "2026-09-30" }
+    "tokens.components.inquiry-button.bg": *inq
+    "tokens.components.inquiry-button.fg": *inq
+    "tokens.components.inquiry-button.radius": *inq
+    "tokens.components.inquiry-button.height": *inq
+    "tokens.components.inquiry-button.font": *inq
+    "tokens.components.inquiry-button.hover": &inqstate { surface_id: surface-2, source_id: laundrygo-probe-business, method: live-state-probe, selector: "a 문의하기 (325 x 85, rest bg rgb(10, 194, 144), fg rgb(255, 255, 255), transition all 0.2s linear): hover and pressed bg -> rgb(19, 171, 130); focus (Tab #13) outline rgb(255, 255, 255) dotted 1px offset 1px", captured: "2026-09-30" }
+    "tokens.components.inquiry-button.pressed": *inqstate
+    "tokens.components.inquiry-button.states": *inqstate
+    "tokens.components.inquiry-button.use": *inq
+    "tokens.components.neutral-button.type": *web
+    "tokens.components.neutral-button.bg": *web
+    "tokens.components.neutral-button.fg": *web
+    "tokens.components.neutral-button.radius": *web
+    "tokens.components.neutral-button.padding": *web
+    "tokens.components.neutral-button.height": *web
+    "tokens.components.neutral-button.font": *web
+    "tokens.components.neutral-button.hover": &webstate { surface_id: home, source_id: laundrygo-probe-home, method: live-state-probe, selector: "a 웹사이트 (140 x 52, rest bg rgb(223, 223, 223), fg rgb(96, 100, 106), transition all 0.3s ease): hover and pressed bg -> rgb(10, 194, 144), fg and label -> rgb(255, 255, 255); focus (Tab #9) outline rgb(96, 100, 106) dotted 1px offset 1px", captured: "2026-09-30" }
+    "tokens.components.neutral-button.pressed": *webstate
+    "tokens.components.neutral-button.states": *webstate
+    "tokens.components.neutral-button.use": *web
+    "tokens.components.nav-link.type": *nav
+    "tokens.components.nav-link.fg": *nav
+    "tokens.components.nav-link.padding": *nav
+    "tokens.components.nav-link.font": *nav
+    "tokens.components.nav-link.states": { surface_id: home, source_id: laundrygo-probe-home, method: live-state-probe, selector: "a 회사소개 (130.8 x 24, fg rgb(0, 0, 0), transition all 0.2s linear): hover and pressed no change across self, 4 descendants and 3 ancestor levels; focus (Tab #3) outline rgb(0, 0, 0) dotted 1px offset 1px", captured: "2026-09-30" }
+    "tokens.components.nav-link.use": *nav
+    "tokens.components.card-toggle.type": *plus
+    "tokens.components.card-toggle.fg": *plus
+    "tokens.components.card-toggle.radius": *plus
+    "tokens.components.card-toggle.size": *plus
+    "tokens.components.card-toggle.states": { surface_id: surface-2, source_id: laundrygo-probe-business, method: live-state-probe, selector: "button + (55 x 55, transition all 0s): hover, pressed and focus (Tab #9) no change across self, 1 descendant and 3 ancestor levels", captured: "2026-09-30" }
+    "tokens.components.card-toggle.use": *plus
+    "tokens.components.quality-card.type": *bcard
+    "tokens.components.quality-card.bg": *bcard
+    "tokens.components.quality-card.radius": *bcard
+    "tokens.components.quality-card.padding": *bcard
+    "tokens.components.quality-card.size": *bcard
+    "tokens.components.quality-card.use": *bcard
+    "tokens.components.testimonial-card.type": *quote
+    "tokens.components.testimonial-card.bg": *quote
+    "tokens.components.testimonial-card.radius": *quote
+    "tokens.components.testimonial-card.padding": *quote
+    "tokens.components.testimonial-card.size": *quote
+    "tokens.components.testimonial-card.use": *quote
 tokens:
-  source: live-extract
-  extracted: "2026-06-11"
-  note: "primary = live CTA + eyebrow-label green (#0ac290), a down-toned mint introduced in the 2022 rebrand for trustworthiness; blue accent (#0170b9) appears in stat/data text; warm-grey ladder (#dfdfdf muted button, #ecebdc beige surface) is the documented sub-color. Pretendard for web body/UI; '런드리고딕체' is the brand's proprietary display typeface."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
     primary: "#0ac290"
-    blue-accent: "#0170b9"
-    ink: "#000000"
-    ink-soft: "#3a3a3a"
-    body: "#4b4b4b"
-    muted: "#60646a"
-    muted-alt: "#888c8e"
-    faint: "#b5bcc0"
-    canvas: "#ffffff"
-    surface: "#f8f9fa"
-    beige: "#ecebdc"
-    hairline: "#dfdfdf"
-    near-black: "#181b1e"
+    primary-hover: "#13ab82"
     on-primary: "#ffffff"
+    ink: "#000000"
+    canvas: "#ffffff"
+    ink-soft: "#3a3a3a"
+    title: "#212121"
+    heading-alt: "#212529"
+    muted: "#60646a"
+    neutral-fill: "#dfdfdf"
+    footer: "#888c8e"
+    faint: "#b5bcc0"
+    pagination-off: "#c9c9c9"
+    mint-tint: "#dbf5ee"
   typography:
-    family: { display: "런드리고딕체", body: "Pretendard" }
-    display-hero:  { size: 62, weight: 600, lineHeight: 1.00, use: "Dark-hero headline, Pretendard SemiBold" }
-    section:       { size: 45, weight: 600, lineHeight: 1.44, use: "Section titles, Pretendard SemiBold" }
-    subsection:    { size: 35, weight: 700, lineHeight: 1.00, use: "Sub-headline / statement, Pretendard Bold" }
-    eyebrow:       { size: 18, weight: 700, lineHeight: 1.00, use: "Green section eyebrow label (Vision, Growth, Quality)" }
-    card-title:    { size: 24, weight: 600, lineHeight: 1.67, use: "Service/card titles" }
-    nav:           { size: 17, weight: 500, lineHeight: 1.40, use: "Top-level nav item" }
-    nav-sub:       { size: 14, weight: 400, lineHeight: 1.50, use: "Sub-nav / footer link" }
-    body:          { size: 16, weight: 400, lineHeight: 1.40, use: "Standard reading text, Pretendard" }
-    button:        { size: 17, weight: 700, lineHeight: 1.40, use: "Primary CTA label" }
-  spacing: { xs: 4, sm: 8, md: 15, base: 16, lg: 30, xl: 40, xxl: 72, section: 96 }
-  rounded: { sm: 10, md: 14, lg: 20, full: 9999 }
-  shadow:
-    cta: "rgba(0,0,0,0.15) 0px 14px 29px 0px"
+    family: { body: "Pretendard" }
+    display-hero: { size: 62, weight: 600, lineHeight: 1.3, use: "Hero headlines on home (의식주 생활의 혁신을 만들어 갑니다.) and the culture page, 80.6px line, white over the hero image" }
+    business-hero: { size: 49, weight: 600, lineHeight: 1.45, use: "Business page hero (국내 최대 호텔 전문 세탁 서비스, 런드리고 호텔&비즈니스), 71px line, white" }
+    section: { size: 45, weight: 600, lineHeight: 1.44, use: "Section statements under each eyebrow, 65px line, #000000 on white or #ffffff on image bands" }
+    card-title: { size: 38, weight: 700, lineHeight: 1.2, use: "Quality card titles on /business/, 45.6px line" }
+    statement: { size: 35, weight: 700, lineHeight: 1.2, use: "Vision statements on home and infrastructure headings on /business/, 42px line" }
+    recruit-title: { size: 30, weight: 600, lineHeight: 1.57, use: "Recruiting banner headline on home and the culture page, 47px line, in #212121" }
+    card-description: { size: 26, weight: 500, lineHeight: 1.5, use: "Quality card descriptions on /business/, 39px line, in #60646a" }
+    feature: { size: 24, weight: 600, lineHeight: 1.67, use: "Service names in Our Business on home (런드리고, 런드리24), 40px line" }
+    stat-label: { size: 23, weight: 700, lineHeight: 1.2, use: "Growth metric labels on home (회원 수, 누적 세탁량), 27.6px line, white" }
+    eyebrow: { size: 18, weight: 700, lineHeight: 1.3, use: "English section eyebrows (Vision, Our Business, Infra, Quality) in #0ac290, 23.4px line" }
+    nav: { size: 17, weight: 500, lineHeight: 1.41, use: "Top navigation links, 24px line, in #000000" }
+    body: { size: 16, weight: 400, lineHeight: 1.4, use: "Document default on all three pages, 22.4px line, in #000000" }
+    footer: { size: 15, weight: 600, lineHeight: 2, use: "Footer service and contact links, 30px line, in #888c8e" }
+    legal: { size: 14, weight: 400, lineHeight: 1.86, use: "Footer company and legal lines, 26px line, in #b5bcc0" }
+  spacing: { nav-gap: 72, cta-x: 40, neutral-y: 15, neutral-x: 30, card-y: 80, card-x: 50, quote: 30 }
+  rounded: { toggle: 2, button: 10, quote-card: 10, floating: 14, card: 33 }
   components:
-    button-primary: { type: button, bg: "#0ac290", fg: "#ffffff", radius: "10px", padding: "0 40px", font: "17px / 700 Pretendard", height: "52px", use: "Primary CTA (채용공고 보러가기, 문의하기)" }
-    button-emphasis: { type: button, bg: "#0ac290", fg: "#ffffff", radius: "14px", font: "24px / 700 Pretendard", height: "76px", shadow: "rgba(0,0,0,0.15) 0px 14px 29px 0px", use: "Large emphasis CTA (B2B·대량세탁 문의, 상담 문의하기)" }
-    button-muted: { type: button, bg: "#dfdfdf", fg: "#60646a", radius: "10px", padding: "15px 30px", font: "17px / 500 Pretendard", height: "52px", use: "Secondary / neutral action (웹사이트)" }
-    nav-link: { type: tab, fg: "#000000", font: "17px / 500 Pretendard", use: "Top nav item", active: "green #0ac290 text on active" }
-    eyebrow-badge: { type: badge, fg: "#0ac290", font: "18px / 700 Pretendard", use: "Green section eyebrow label above section heads" }
-    service-card: { type: card, bg: "#ffffff", fg: "#000000", radius: "20px", use: "Service summary card (런드리고 / 런드리24 / 호텔&비즈니스)" }
-    stat-block: { type: listItem, fg: "#ffffff", font: "23px / 700 Pretendard", use: "Growth metric block on dark band (회원 수, 누적 세탁량)" }
+    recruit-button: { type: button, bg: "#0ac290", fg: "#ffffff", radius: "10px", padding: "0px 40px 0px 37px", height: "52px", font: "17px / 700 / 52px Pretendard", hover: "bg #13ab82", pressed: "bg #13ab82", states: "probe on home: hover and pressed settle on #13ab82, read 900ms after a 0.2s linear transition; focus turns the label #3a3a3a and draws a 1px dotted outline in the same colour, the WordPress theme's generic link focus rule rather than a brand focus style", use: "채용공고 보러가기 on the recruiting banner of home and the culture page, 198.5 x 52" }
+    floating-cta: { type: button, bg: "#0ac290", fg: "#ffffff", radius: "14px", height: "76px", font: "24px / 700 / 76px Pretendard", shadow: "rgba(0, 0, 0, 0.15) 0px 14px 29px 0px", hover: "bg #13ab82", pressed: "bg #13ab82", states: "probe on /business/ with fixed overlays hidden: hover and pressed settle on #13ab82; on home the fixed header covered it, and Tab never reached it on either page, so focus is unmeasured", use: "Fixed call-to-action at the same spot on all three pages, 256 x 76: B2B·대량세탁 문의 on home, 상담 문의하기 on /business/; the third instance on /culture/ was not probed" }
+    inquiry-button: { type: button, bg: "#0ac290", fg: "#ffffff", radius: "10px", height: "85px", font: "30px / 700 / 85px Pretendard", hover: "bg #13ab82", pressed: "bg #13ab82", states: "probe on /business/: hover and pressed settle on #13ab82; focus draws a 1px dotted white outline (theme default)", use: "문의하기 under 호텔&비즈니스 상담 at the foot of the business page, 325 x 85" }
+    neutral-button: { type: button, bg: "#dfdfdf", fg: "#60646a", radius: "10px", padding: "15px 30px", height: "52px", font: "17px / 500 / 22px Pretendard", hover: "bg #0ac290, fg #ffffff", pressed: "bg #0ac290, fg #ffffff", states: "probe on home: hover and pressed switch to the brand green with a white label after a 0.3s ease transition; focus draws a 1px dotted #60646a outline (theme default)", use: "웹사이트 links under 런드리24 and 런드리고 호텔&비즈니스 in Our Business on home, 140 x 52" }
+    nav-link: { type: tab, fg: "#000000", padding: "0px 72px 0px 0px", font: "17px / 500 / 24px Pretendard", states: "probe on 회사소개: hover and pressed show no change across the link, its four descendants and three ancestor levels; focus draws a 1px dotted #000000 outline (theme default); no active or selected colour was observed", use: "Top navigation (회사소개, 비즈니스, 컬쳐, 채용 and the rest) on all three pages" }
+    card-toggle: { type: button, fg: "#ffffff", radius: "2px", size: "55px x 55px", states: "probe on /business/: hover, pressed and focus show no change across the button, its label and three ancestor levels", use: "+ toggle that opens the detail of each Quality card on /business/" }
+    quality-card: { type: card, bg: "#ffffff", radius: "33px", padding: "80px 50px", size: "524px x 498px", use: "Four Quality cards on /business/ (지속적인 품질 관리, 고객별 관리 시스템, 고객이 원하는 시간 배송, 배송 시까지 깨끗하게), each with a 38px / 700 title and a 26px / 500 description in #60646a" }
+    testimonial-card: { type: card, bg: "#dbf5ee", radius: "10px", padding: "30px 27px 0px 30px", size: "317px x 235px", use: "Mint employee-quote cards in the Values carousel of the culture page (7 instances); the quote text sits in children the collector did not record, so no text colour is declared" }
   components_harvested: true
 ---
 
@@ -61,381 +230,344 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-LaundryGo (런드리고), the flagship contactless mobile-laundry service of 의식주컴퍼니 (Uisikju Company), presents a clean, confident, infrastructure-grade brand surface. The canvas is pure white (`#ffffff`) broken by full-bleed dark photographic hero bands where large Pretendard headlines sit in white (`#ffffff`) over imagery of folded laundry and logistics. Text on light sections is near-black (`#000000`) softening to slate greys, giving the page a calm, trustworthy weight rather than a hard-sell consumer-app shout. The single saturated brand color is a down-toned mint green (`#0ac290`) — introduced in the 2022 rebrand specifically to trade neon attention-grabbing for trust — and it is reserved almost exclusively for two jobs: the green eyebrow labels that announce each section (Vision, Our Business, Growth, Quality) and the primary call-to-action buttons.
+LaundryGo (런드리고) is the mobile laundry service of 의식주컴퍼니 (Lifegoeson Corp., 대표 조성우, based in Gunpo, Gyeonggi). On the company's own site the service works like this: put laundry out at your door, tap the pickup button in the app, and it comes back clean overnight, with everyday washing, dry cleaning, bedding, sneakers and repairs in one service. The company timeline starts with the launch in March 2019 (100,000 members within a month). A B2B hotel laundry business followed in 2022, when LaundryGo acquired Ourhome's 크린누리; it now runs as 런드리고 호텔&비즈니스, which calls itself Korea's largest hotel laundry service. The same year brought 런드리24 unmanned smart laundromats, a Series C of 49 billion won and the Gunpo smart factory, which the timeline calls the world's largest. Growth figures on the home page, cumulative from March 2019 to February 2024, read 64만 가구 members, 1,884만 laundry items, 305만 orders and 1,225억 원 invested. The company name encodes the ambition: 의(clothing)·식(food)·주(housing), and in English "Life goes on".
 
-The typographic personality is large, declarative, and Korean-premium. Hero statements run in Pretendard SemiBold (weight 600) at 62px ("의식주 생활의 혁신을 만들어 갑니다."), with section heads at 45px / 600 and bold statement lines at 35px / 700. Body and UI text drop to Pretendard at 16px / weight 400, the de-facto Korean product font optimized for dense hangul legibility. The brand also ships a proprietary display typeface, "런드리고딕체," developed during the rebrand so the logotype and headline voice feel custom — its strokes are designed to evoke the soft texture of laundry. The split is consistent: heavy, large display where it persuades; quiet, dense Pretendard where it informs.
+The brand in its current form dates from March 2022, when LaundryGo rebranded for its third anniversary. The Korean design magazine Design+ reported that the old neon green was toned down to a slightly muted green for trust, that the new logo joins the letter G to an arrow pictogram (it spins like a washing drum in the app) and that a dedicated typeface was drawn with strokes that suggest the softness of laundry. The company's font page distributes its dedicated typeface, 런드리고딕 (LaundryGothic), free. On the website the green `#0ac290` is the one saturated colour: it fills every call to action — 채용공고 보러가기, the fixed floating action present on all three captured pages, 문의하기 on the business page — and it colours the small English eyebrows (Vision, Our Business, Infra, Quality) that open each section. Headlines are large and declarative in Pretendard 600 and 700 (62px on the heroes, 45px for section statements), white over full-width image bands and `#000000` on white.
 
-What distinguishes LaundryGo from typical app-marketing sites is its restraint and its infrastructure framing. There is almost no decorative elevation — separation comes from alternating white and dark photographic bands plus thin `#dfdfdf` hairlines and a warm-grey/beige surface (`#ecebdc`); shadow appears only as a single soft drop (`rgba(0,0,0,0.15) 0px 14px 29px`) under the largest emphasis CTAs. Geometry is gently rounded: 10px on standard buttons, 14px on emphasis CTAs, ~20px on service cards. A secondary blue (`#0170b9`) surfaces in data/stat text. The result reads as a calm, engineered consumer-tech brand that positions laundry as a logistics platform, not a chore.
+The site keeps depth out of the way. The only drop shadow on any captured element sits under the floating action (`rgba(0, 0, 0, 0.15) 0px 14px 29px`). Business cards are white with a generous 33px radius, the culture page's employee quotes sit on mint `#dbf5ee` cards, and a neutral `#dfdfdf` button turns green on hover.
 
 **Key Characteristics:**
-- Down-toned mint green (`#0ac290`) reserved for green section eyebrow labels and primary CTAs — the system's single "action/brand" color
-- Pretendard for all web body and headline text; "런드리고딕체" proprietary display typeface for logotype/brand voice
-- Large declarative headlines — 62px/600 hero, 45px/600 section, 35px/700 statement
-- Near-black (`#000000`) text on white sections; white (`#ffffff`) headlines on dark photographic hero bands
-- Near-flat depth: alternating white/dark bands + `#dfdfdf` hairlines + `#ecebdc` beige surface; one soft drop shadow only on big CTAs
-- Gently rounded geometry — 10px buttons, 14px emphasis CTAs, ~20px cards
-- Cool-grey text ladder (`#4b4b4b` → `#60646a` → `#888c8e` → `#b5bcc0`) for hierarchy
-- Blue accent (`#0170b9`) for data/stat text
+- One green `#0ac290` for every call to action and the section eyebrows; hover darkens it to `#13ab82`
+- Pretendard 600 / 700 display at 35–62px over image bands, with 16px / 400 body text
+- White `#ffffff` canvas, `#000000` ink, `#3a3a3a`, `#212121` and `#212529` for secondary headings, `#60646a` for descriptions
+- A neutral `#dfdfdf` button with a `#60646a` label that turns into the green action on hover
+- Corners at 10px for buttons, 14px for the floating action and 33px for business cards; a mint `#dbf5ee` quote card at 10px
+- Flat, except the floating action's soft shadow
+- A free dedicated typeface, 런드리고딕, distributed by the company but not used on the captured pages
 
 ## Primary tasks
 
-- Drop laundry in a collection bin and get it back by noon
-- Switch between the pickup service and a 런드리24 smart laundromat
-- Weigh a bulk laundry partner before requesting a consultation
+- Put laundry out at the door, request pickup in the app and get it back overnight
+- Switch between the pickup service and a 런드리24 unmanned laundromat
+- Weigh a hotel laundry partner before requesting a consultation (상담 문의하기)
 - Read the growth numbers to judge how established the service is
+- Find open roles and the company's values before applying
 
 ## 2. Color Palette & Roles
 
-### Primary
-- **LaundryGo Green** (`#0ac290`): Primary brand color — CTA button backgrounds and the green section eyebrow labels (Vision, Our Business, Growth, Quality). A down-toned mint introduced in the 2022 rebrand to signal trust and the fresh, clean mood of finished laundry. The system's single "action" color.
-- **Pure Black** (`#000000`): Primary text and heading color on white sections. Used directly (not a softened navy) for maximum-contrast headlines and body.
-- **Pure White** (`#ffffff`): Page background, card surfaces, and headline/CTA text on dark hero bands.
+Every token below was read on 2026-09-30 from www.laundrygo.com, /business/ and /culture/ by the deterministic collector, and hover values by the fixed keyboard probe. The tokens describe 의식주컴퍼니's public website; the LaundryGo app was not captured.
 
-### Accent
-- **Accent Blue** (`#0170b9`): Secondary accent used in data/stat and select link text — a calm corporate blue that supports the green without competing as a CTA color.
+### Primary
+- **LaundryGo Green** (`#0ac290`): The fill of every call to action on the captured pages — 채용공고 보러가기 (home and culture), the 256 × 76 floating action fixed on all three pages (B2B·대량세탁 문의 on home, 상담 문의하기 on /business/), and 문의하기 (325 × 85) on /business/ — and the colour of the section eyebrows. It is the primary because it is the product's measured primary action fill wherever an action appears; it is also the hover fill of the neutral button. Design+ describes it as the down-toned green chosen in the 2022 rebrand in place of the old neon.
+- **Green Hover** (`#13ab82`): The hover and pressed fill of the green actions, read by the probe after the 0.2s transition settled.
+- **On Primary** (`#ffffff`): Labels on the green actions.
 
 ### Neutral & Surface
-- **Surface Grey** (`#f8f9fa`): Faint cool-grey tinted surface for alternating content blocks.
-- **Beige** (`#ecebdc`): Warm-grey/beige surface — the documented rebrand "웜그레이" sub-color for warmer section backgrounds.
-- **Hairline** (`#dfdfdf`): Thin borders, dividers, and the muted/neutral button background — the primary separation device in this near-flat system.
-- **Near-Black** (`#181b1e`): Deep near-black background for occasional dark chrome and footer-adjacent blocks.
+- **Canvas** (`#ffffff`): The body background, the Quality cards on /business/ and headings over image bands.
+- **Mint Tint** (`#dbf5ee`): The employee-quote cards on the culture page.
+- **Neutral Fill** (`#dfdfdf`): The 웹사이트 buttons on home.
 
-### Text Hierarchy
-- **Ink** (`#000000`): Primary text, headings, nav.
-- **Ink Soft** (`#3a3a3a`): Softer heading/label tone for secondary headings.
-- **Body Slate** (`#4b4b4b`): Secondary body copy and descriptions.
-- **Muted Slate** (`#60646a`): Tertiary text and muted button label.
-- **Muted Alt** (`#888c8e`): Captions, fine print, company-info lines.
-- **Faint Blue-Grey** (`#b5bcc0`): Lowest-emphasis labels, disabled/placeholder text.
+### Text
+- **Ink** (`#000000`): The document default text colour, navigation and section statements on white.
+- **Ink Soft** (`#3a3a3a`): Eyebrows that are not green (News on home, Values and Culture on the culture page) and the closing heading on /business/.
+- **Title** (`#212121`): The recruiting banner headline and the active page number of the news list.
+- **Heading Alt** (`#212529`): Culture-programme headings on the culture page.
+- **Muted** (`#60646a`): The 웹사이트 button label and the Quality card descriptions.
+- **Footer** (`#888c8e`): Footer links and the company line.
+- **Faint** (`#b5bcc0`): Footer legal links.
+- **Pagination Off** (`#c9c9c9`): Inactive page numbers under the news list.
+
+### Brand assets and embed defaults, not tokens
+- The logo was not measured; no logo colour is claimed.
+- The news-list links and footer icon links compute `#0170b9`, the default link colour of the site's WordPress theme (Astra). The visible text sits in child elements the collector did not record, so it is not a brand token. The carousel arrows compute `#007aff`, the Swiper library default.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Display/Brand**: `런드리고딕체` — the brand's proprietary typeface developed in the 2022 rebrand; strokes designed to evoke the soft texture of laundry, connected to the logotype.
-- **Web body/UI**: `Pretendard` (with `sans-serif` fallback) — the document default for all headlines, nav, and body on the web surface; SemiBold (600) and Bold (700) at display sizes, 400 for reading text.
+- **Live surface use**: `Pretendard` (377 observed uses across body, headings, buttons, cards and lists), `loaded / high`, self-hosted from the site theme at `/wp-content/themes/Lifegoeson/assets/fonts/pretendard/` (WOFF2 and WOFF, Thin to Black). The body computes Pretendard on all three pages.
+- **Official distributed font assets**: 런드리고딕 (LaundryGothic), presented on the company's font page (opened 2026-09-30) as LaundryGo's new dedicated typeface. It is a rounded Gothic whose soft curves recall neatly folded laundry, with strokes that follow laundry turning in a machine. The page gives two weights (Regular and Bold), 2,350 Hangul, 94 Latin and 986 symbol glyphs, and TTF, OTF and WOFF formats. It was made with 디자인210 and 햇빛스튜디오. Licence, as stated on that page: a free open-licence font that individuals and companies may use for commercial and non-commercial purposes; all intellectual property belongs to (주)의식주컴퍼니, and the font files may not be sold.
+- **Official product use**: Design+ reports that the typeface was developed with the 2022 identity and connects to the logotype, and that the identity is applied to uniforms, delivery vehicles and packaging.
+- **Declared only (no visible use)**: `LaundryGothic` is declared in the site's stylesheets but was used by 0 captured elements, so it has no live specimen here and is not a UI token. `Roboto` and `Roboto Slab` are page-builder defaults with 0 uses.
+- **Unresolved**: none.
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Display Hero | Pretendard | 62px (3.88rem) | 600 | 1.00 (62px) | White headline on dark hero band |
-| Section Heading | Pretendard | 45px (2.81rem) | 600 | 1.44 (65px) | Section statements |
-| Statement | Pretendard | 35px (2.19rem) | 700 | 1.00 (35px) | Bold value statements on dark bands |
-| Card Title | Pretendard | 24px (1.50rem) | 600 | 1.67 (40px) | Service/card titles |
-| Stat Block | Pretendard | 23px (1.44rem) | 700 | 1.00 (23px) | Growth metric labels |
-| Eyebrow Label | Pretendard | 18px (1.13rem) | 700 | 1.00 (18px) | Green section eyebrow (`#0ac290`) |
-| Nav (top) | Pretendard | 17px (1.06rem) | 500 | 1.40 | Top-level nav item |
-| Button | Pretendard | 17px (1.06rem) | 700 | 1.40 | Primary CTA label |
-| Body | Pretendard | 16px (1.00rem) | 400 | 1.40 (22.4px) | Standard reading text |
-| Nav (sub) / Footer | Pretendard | 14px (0.88rem) | 400 | 1.50 | Sub-nav and footer links |
+| Role | Font | Size | Weight | Line Height | Observed on |
+|------|------|------|--------|-------------|-------------|
+| Display Hero | Pretendard | 62px | 600 | 80.6px (1.3) | Home and culture heroes, white |
+| Business Hero | Pretendard | 49px | 600 | 71px (1.45) | /business/ hero, white |
+| Section | Pretendard | 45px | 600 | 65px (1.44) | Section statements |
+| Card Title | Pretendard | 38px | 700 | 45.6px (1.2) | Quality cards |
+| Statement | Pretendard | 35px | 700 | 42px (1.2) | Vision statements, infrastructure headings |
+| Recruit Title | Pretendard | 30px | 600 | 47px (1.57) | Recruiting banner, `#212121` |
+| Card Description | Pretendard | 26px | 500 | 39px (1.5) | Quality cards, `#60646a` |
+| Feature | Pretendard | 24px | 600 | 40px (1.67) | Service names on home |
+| Stat Label | Pretendard | 23px | 700 | 27.6px (1.2) | Growth labels, white |
+| Eyebrow | Pretendard | 18px | 700 | 23.4px (1.3) | Section eyebrows, `#0ac290` |
+| Nav | Pretendard | 17px | 500 | 24px (1.41) | Top navigation |
+| Body | Pretendard | 16px | 400 | 22.4px (1.4) | Document default |
+| Footer | Pretendard | 15px | 600 | 30px (2.0) | Footer links, `#888c8e` |
+| Legal | Pretendard | 14px | 400 | 26px (1.86) | Footer legal lines, `#b5bcc0` |
+
+Buttons set their line height to their own height: 17px / 700 at 52px, 24px / 700 at 76px, 30px / 700 at 85px.
 
 ### Principles
-- **Large, declarative display**: Pretendard 600–700 at 35–62px carries every headline; the scale is bold and confident, framing laundry as serious infrastructure.
-- **One quiet body weight**: Pretendard 400 at 16px carries paragraphs and dense UI — the weight contrast between display and body is the primary hierarchy signal.
-- **Green eyebrow rhythm**: small green (`#0ac290`) 18px/700 eyebrow labels announce sections in English (Vision, Growth, Quality) above large Korean heads — a consistent editorial cadence.
-- **Proprietary display, ubiquitous body**: "런드리고딕체" owns the brand/logotype voice; Pretendard owns everything functional. They never swap roles.
+- **Large and declarative**: every section opens with a small English eyebrow over a 45px Korean statement.
+- **Weight carries hierarchy**: 600–700 for display, 500 for navigation and descriptions, 400 for body.
+- **Tracking stays normal**: no captured role uses letter-spacing.
+- **The brand face stays with the brand**: 런드리고딕 belongs to the logotype and printed identity; the website runs on Pretendard.
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Primary CTA**
+**Recruiting action (primary)**
 - Background: `#0ac290`
 - Text: `#ffffff`
 - Radius: 10px
-- Padding: 0px 40px
-- Font: 17px / 700 / Pretendard
+- Padding: 0px 40px 0px 37px
 - Height: 52px
-- Use: Primary action ("채용공고 보러가기", "문의하기")
+- Font: 17px / 700 Pretendard
+- Hover: background `#13ab82`
+- Pressed: background `#13ab82`
+- States: focus uses the theme's dotted outline and turns the label `#3a3a3a`; no brand focus style
+- Use: 채용공고 보러가기 on home and the culture page
 
-**Emphasis CTA**
+**Floating action**
 - Background: `#0ac290`
 - Text: `#ffffff`
 - Radius: 14px
-- Font: 24px / 700 / Pretendard
-- Height: 76px
-- Shadow: `rgba(0,0,0,0.15) 0px 14px 29px 0px`
-- Use: Large emphasis call-to-action ("B2B·대량세탁 문의", "상담 문의하기")
+- Height: 76px (256px wide)
+- Font: 24px / 700 Pretendard
+- Shadow: `rgba(0, 0, 0, 0.15) 0px 14px 29px 0px`
+- Hover: background `#13ab82`
+- Pressed: background `#13ab82`
+- States: focus unmeasured
+- Use: fixed on all three pages — B2B·대량세탁 문의 on home, 상담 문의하기 on /business/
 
-**Muted / Neutral**
+**Inquiry action**
+- Background: `#0ac290`
+- Text: `#ffffff`
+- Radius: 10px
+- Height: 85px (325px wide)
+- Font: 30px / 700 Pretendard
+- Hover: background `#13ab82`
+- Pressed: background `#13ab82`
+- Use: 문의하기 at the foot of /business/
+
+**Neutral button**
 - Background: `#dfdfdf`
 - Text: `#60646a`
 - Radius: 10px
 - Padding: 15px 30px
-- Font: 17px / 500 / Pretendard
 - Height: 52px
-- Use: Secondary neutral action ("웹사이트")
+- Font: 17px / 500 / 22px Pretendard
+- Hover: background `#0ac290`, text `#ffffff`
+- Pressed: background `#0ac290`, text `#ffffff`
+- Use: 웹사이트 under 런드리24 and 런드리고 호텔&비즈니스 on home
 
-### Inputs & Forms
-- Background: `#ffffff`
-- Border: 1px solid `#dfdfdf`
-- Radius: 10px
-- Text: `#000000`
-- Placeholder: `#b5bcc0`
-- Use: Contact/inquiry form fields (B2B 문의 surfaces)
-
-### Cards & Containers
-
-**Service Card**
-- Background: `#ffffff`
-- Text: `#000000`
-- Radius: 20px
-- Use: Service summary card (런드리고 / 런드리24 / 호텔&비즈니스 / EPC)
-
-**Beige Surface**
-- Background: `#ecebdc`
-- Text: `#000000`
-- Radius: 20px
-- Use: Warm-grey content block for softer sections
-
-### Badges
-
-**Green Eyebrow**
-- Text: `#0ac290`
-- Font: 18px / 700 / Pretendard
-- Use: Section eyebrow label above heads (Vision, Our Business, Growth, Quality)
+**Card toggle**
+- Text: `#ffffff` (+)
+- Radius: 2px
+- Size: 55 × 55
+- States: no hover, pressed or focus change
+- Use: opens the detail of each Quality card on /business/
 
 ### Navigation
-- Background: `#ffffff`
 - Text: `#000000`
-- Font: 17px / 500 / Pretendard (top-level); 14px / 400 (sub-nav)
-- Active: green `#0ac290` text on active item
-- Use: Top horizontal nav (회사소개 / 비즈니스 / 컬쳐 / 채용) with sub-items (비전, 성장, 언론, 런드리고)
+- Font: 17px / 500 / 24px Pretendard
+- Spacing: 72px right padding between items
+- States: no hover or pressed change; focus uses the theme's dotted outline; no active colour observed
+- Use: 회사소개, 비즈니스, 컬쳐, 채용 and the rest, on all three pages
 
-### Stat Blocks
-- Text: `#ffffff`
-- Font: 23px / 700 / Pretendard
-- Use: Growth metric labels on dark band (회원 수, 누적 세탁량, 누적 주문수, 누적 투자액)
+### Cards
+
+**Quality card**
+- Background: `#ffffff`
+- Radius: 33px
+- Padding: 80px 50px
+- Size: 524 × 498
+- Title 38px / 700 `#000000`; description 26px / 500 `#60646a`
+- Use: four cards under Quality on /business/
+
+**Testimonial card**
+- Background: `#dbf5ee`
+- Radius: 10px
+- Padding: 30px 27px 0px 30px
+- Size: 317 × 235
+- Use: employee quotes in the Values carousel of the culture page
 
 ---
 
-**Verified:** 2026-06-11
-**Tier 1 sources:** https://www.laundrygo.com, https://www.laundrygo.com/business/
-**Tier 2 sources:** none available (getdesign.md/laundrygo not found; styles.refero.design has no LaundryGo style page — KR brand, no Western-catalog coverage)
+**Verified:** 2026-09-30 (deterministic collector capture of three public pages of www.laundrygo.com plus fixed keyboard-probe state reads and first-party context)
+**Tier 1 sources:** https://www.laundrygo.com/ ; https://www.laundrygo.com/business/ ; https://www.laundrygo.com/culture/ ; https://www.laundrygo.com/font/
+**Tier 2 sources:** not attempted on 2026-09-30; no Tier 2 value used (getdesign.md and styles.refero.design do not count toward the KR requirement)
 **Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
 ### Spacing System
-- Base unit: ~8px, with frequent 4/8/15/16/30/40/72px steps
-- Notable: generous large gaps (72px+) between full-width bands give the page an airy, editorial rhythm; CTA padding lands at 30–40px horizontal for comfortable hit areas
+- Navigation: 72px between items
+- Recruiting action: 40px left and 37px right padding at 52px height
+- Neutral button: 15px 30px padding at 52px height
+- Quality cards: 80px 50px padding
+- Testimonial cards: 30px padding on three sides, open at the foot
+- Frequent spacing values in the capture: 20, 9, 86, 30 and 72px
 
 ### Grid & Container
-- Full-width alternating bands: white (`#ffffff`) content sections alternate with dark photographic hero bands carrying white headlines
-- Centered single-column hero with the large Pretendard statement as the anchor
-- Service offerings (런드리고 / 런드리24 / 호텔&비즈니스 / EPC) arranged as a row of `~20px`-radius cards
-- Growth metrics shown as a horizontal row of stat blocks on a dark band
+- Full-width hero and statement bands with white headings over imagery alternate with white sections in a 1080px content column.
+- Home runs Vision, Our Business (four services, each with a 24px name and a button), Growth (four metrics and a year-by-year timeline with a 1px `#000000` rule under each year), News and a recruiting banner.
+- /business/ stacks its hero, a partner-hotel list, Infra headings in a carousel, a 2 × 2 grid of Quality cards and a large inquiry action.
+- The culture page runs a hero, a carousel of mint quote cards, eight core values, culture programmes and the recruiting banner.
 
 ### Whitespace Philosophy
-- **Breathing room over density**: despite being a logistics-heavy product, the marketing surface is airy with generous vertical rhythm between bands.
-- **Band-based segmentation**: sections separate by alternating white vs dark photographic backgrounds (and the `#ecebdc` beige surface), not by heavy borders.
-- **Restrained accent**: green (`#0ac290`) appears only as eyebrow labels and CTAs, training the eye to read it as "the brand / the action."
+- **Airy and editorial**: large statements with generous vertical space between bands.
+- **Band segmentation**: sections separate by image bands and white space, not by borders or elevation.
 
 ### Border Radius Scale
-- Small (10px): standard buttons, inputs
-- Medium (14px): emphasis CTAs
-- Large (~20px): service cards, content containers
-- Full (9999px): pills where used
+- 0px: the default (338 of the recorded radii)
+- 2px: Quality card toggles
+- 10px: buttons and quote cards
+- 14px: floating action
+- 33px: Quality cards
 
 ## 6. Depth & Elevation
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
-| Tint (Level 1) | `#f8f9fa` / `#ecebdc` background shift | Section separation without elevation |
-| Hairline (Level 2) | `1px solid #dfdfdf` border | Card outlines, dividers, muted button fill |
-| Drop (Level 3) | `rgba(0,0,0,0.15) 0px 14px 29px 0px` | Largest emphasis CTAs only |
+| Flat | No shadow | Every captured element but one |
+| Tint | `#dbf5ee` fill | Culture quote cards |
+| Neutral | `#dfdfdf` fill | 웹사이트 buttons |
+| Drop | `rgba(0, 0, 0, 0.15) 0px 14px 29px 0px` | The fixed floating action only |
 
-**Shadow Philosophy**: LaundryGo is a near-flat system. Live inspection found `box-shadow: none` across the hero, nav, headings, cards, and standard buttons — depth and grouping are communicated through alternating white/dark photographic bands, the warm-grey `#ecebdc` surface, and thin `#dfdfdf` hairlines. The one exception is a single soft drop shadow (`rgba(0,0,0,0.15) 0px 14px 29px`) reserved for the largest green emphasis CTAs, lifting the primary action just enough to feel tappable. When emphasis is needed elsewhere, the system reaches for the green (`#0ac290`) or a dark band, never decorative elevation.
+**Shadow Philosophy**: the floating action is the only captured element with a box-shadow; it floats over the page, so it is lifted. Everything else is flat, and emphasis comes from the green and from large type.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use the down-toned green (`#0ac290`) for primary CTAs and section eyebrow labels — it is the single brand/action color
-- Use Pretendard for all web headlines and body; reserve "런드리고딕체" for logotype/brand voice
-- Set headlines large and bold — 62px/600 hero, 45px/600 section, 35px/700 statements
-- Put white headlines on dark photographic hero bands; near-black (`#000000`) text on white sections
-- Separate sections with alternating white/dark bands, the `#ecebdc` beige surface, and `#dfdfdf` hairlines — not heavy shadows
-- Use the green 18px/700 eyebrow label above section heads (Vision, Growth, Quality)
-- Keep geometry gently rounded — 10px buttons, 14px emphasis CTAs, ~20px cards
-- Reserve the single soft drop shadow for the largest emphasis CTAs only
+- Use `#0ac290` for every call to action and the section eyebrows; darken to `#13ab82` on hover and press
+- Let neutral `#dfdfdf` buttons turn green with a white label on hover
+- Open sections with an 18px / 700 English eyebrow above a 45px / 600 Korean statement
+- Set everything on the web in Pretendard; keep 런드리고딕 for identity uses
+- Keep surfaces flat and reserve the drop shadow for a floating action
 
 ### Don't
-- Spread the green across many elements — it dilutes the single-action/brand signal
-- Use neon green — the rebrand deliberately down-toned it for trustworthiness
-- Set body copy in the proprietary display typeface — Pretendard owns functional text
-- Use heavy drop shadows on cards or standard buttons — the system is near-flat
-- Use the accent blue (`#0170b9`) as a CTA color — green is the only action color
-- Use small, timid headlines — display is large and declarative
-- Add a second saturated accent hue — green is the only brand color, blue is a quiet data accent
+- Don't use a neon green; the 2022 rebrand deliberately toned it down
+- Don't add shadows to cards or standard buttons
+- Don't treat the theme's `#0170b9` link colour or the `#007aff` carousel arrows as brand colours
+- Don't invent focus styles; the captured controls show only the theme's dotted outline
+- Don't render 런드리고딕 with another face in its place
 
 ## 8. Responsive Behavior
 
 ### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses, cards stack, nav collapses |
-| Tablet | 640-1024px | Moderate padding, 2-up service cards |
-| Desktop | 1024-1440px | Full layout, centered hero, multi-column service/stat rows |
+Only the 1440 × 900 desktop viewport was captured. The site theme (Astra with Elementor) switches layouts at its own breakpoints; no breakpoint value was measured.
 
 ### Touch Targets
-- Primary CTAs at 52px height with 30–40px horizontal padding — comfortably tappable
-- Emphasis CTAs at 76–85px height for unmistakable targets
-- Nav links spaced for touch within the top header
+- Inquiry action: 85px
+- Floating action: 76px
+- Card toggles: 55 × 55
+- Recruiting and neutral buttons: 52px
+- Navigation links: 24px tall with 72px spacing
 
 ### Collapsing Strategy
-- Hero: 62px Pretendard headline scales down on mobile, weight 600 maintained
-- Service cards: multi-column → stacked single column
-- Growth stat blocks: horizontal row → wrapped/stacked grid
-- Alternating white/dark bands maintain full-width treatment
+Not captured.
 
 ### Image Behavior
-- Dark photographic hero bands retain white headline treatment at all sizes
-- Service-card imagery maintains `~20px` radius across breakpoints
+- Hero and statement bands are full-width images with white headings on top.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary CTA / brand: LaundryGo Green (`#0ac290`)
-- Accent (data/links): Blue (`#0170b9`)
-- Background: Pure White (`#ffffff`)
-- Tinted surface: Surface Grey (`#f8f9fa`)
-- Warm surface: Beige (`#ecebdc`)
-- Heading / body text: Ink (`#000000`)
-- Secondary text: Body Slate (`#4b4b4b`)
-- Muted text: Muted Slate (`#60646a`) / Muted Alt (`#888c8e`)
-- Faint / disabled: Faint Blue-Grey (`#b5bcc0`)
-- Hairline / muted button: `#dfdfdf`
+- Actions and eyebrows: `#0ac290` with `#ffffff`; hover `#13ab82`
+- Neutral button: `#dfdfdf` with `#60646a`
+- Text: `#000000` default, `#3a3a3a` / `#212121` / `#212529` secondary headings, `#60646a` descriptions
+- Footer: `#888c8e` links, `#b5bcc0` legal; `#c9c9c9` inactive page numbers
+- Canvas `#ffffff`, quote cards `#dbf5ee`
 
 ### Example Component Prompts
-- "Create a hero on a dark photographic band. Headline at 62px Pretendard weight 600, line-height 1.0, white. Above the section title a green eyebrow label: 18px Pretendard weight 700, #0ac290 ('Vision'). One green CTA: #0ac290 background, white text, 10px radius, 0 40px padding, 17px Pretendard weight 700, 52px height."
-- "Design a service card: white background, ~20px radius, no shadow. Title 24px Pretendard weight 600, #000000. Body 16px Pretendard weight 400, #4b4b4b."
-- "Build a large emphasis CTA: #0ac290 background, white text, 14px radius, 24px Pretendard weight 700, 76px height, shadow rgba(0,0,0,0.15) 0px 14px 29px."
-- "Create top nav: white header. Pretendard 17px weight 500 links, #000000 text, green #0ac290 on active. Sub-nav links 14px weight 400."
-- "Build a Growth stat band: dark background, white 23px Pretendard weight 700 metric labels (회원 수, 누적 세탁량) with large numbers above."
+- "Create a call-to-action button: `#0ac290` background, `#ffffff` 17px Pretendard label at weight 700, 10px radius, 52px tall, 40px side padding; hover and pressed `#13ab82` over a 0.2s linear transition."
+- "Build a section opener: an 18px / 700 English eyebrow in `#0ac290` ('Vision'), then a 45px / 600 Korean statement with a 65px line in `#000000`."
+- "Create a floating inquiry button fixed at the side of the page: `#0ac290`, 14px radius, 256 × 76, 24px / 700 white label, shadow `rgba(0, 0, 0, 0.15) 0px 14px 29px 0px`."
+- "Design a quote card: `#dbf5ee` background, 10px radius, 30px padding on top and sides, 317 × 235."
 
 ### Iteration Guide
-1. Green (`#0ac290`) is the single brand/action color — eyebrow labels + CTAs only
-2. Pretendard for all web text; large bold display (600–700), quiet 400 body
-3. Near-flat — alternating white/dark bands + `#ecebdc` beige + `#dfdfdf` hairlines; one soft shadow on big CTAs only
-4. Gently rounded — 10px buttons, 14px emphasis CTAs, ~20px cards
-5. Text is `#000000` on white, white on dark hero bands
-6. Blue (`#0170b9`) is a quiet data accent, never a CTA
-7. Down-toned green, never neon — the rebrand chose trust over attention
+1. One green (`#0ac290`) for action and eyebrows, `#13ab82` on hover
+2. Pretendard everywhere on the web, large 600–700 statements
+3. Flat surfaces; only a floating action gets a shadow
+4. 10px buttons, 33px feature cards
+5. White canvas, black ink, grey footer
 
 ---
 
 ## 10. Voice & Tone
 
-LaundryGo's voice is **confident, mission-framed, and reassuring** — it positions a mundane chore (laundry) as serious infrastructure and a lever for changing everyday life. The corporate hero "의식주 생활의 혁신을 만들어 갑니다." ("We are building the innovation of clothing-food-housing life") sets the register: declarative, ambitious in scope, calm rather than hype-driven. Service copy is plain and benefit-first — the contactless promise ("저녁 10시 전 런드렛에 넣으면 다음 날 정오 전 수령") is stated as a concrete mechanism, not a slogan.
+LaundryGo's voice is **confident, mission-framed and concrete**. It treats laundry as infrastructure and a first step toward changing everyday life: declarative headlines, then specifics — factory size, daily tonnage, delivery windows.
 
 | Context | Tone |
 |---|---|
-| Corporate hero | Declarative, mission-framed. "의식주 생활의 혁신을 만들어 갑니다." Ambitious, calm. |
-| Section eyebrow labels | Terse English signposts. "Vision", "Our Business", "Growth", "Quality", "Infra". |
-| Value statements | Bold, purpose-driven. "세탁 산업의 혁신을 시작으로 의식주 산업 전반의 문제를 찾고 해결합니다." |
-| CTAs | Direct, low-pressure. "채용공고 보러가기", "B2B·대량세탁 문의", "상담 문의하기". |
-| B2B / hotel copy | Credibility-first, concrete. "국내 유수의 프리미엄 호텔에서 이미 경험하고 있습니다." |
+| Company hero | Declarative, mission-framed. "의식주 생활의 혁신을 만들어 갑니다." |
+| Eyebrows | Terse English signposts. "Vision", "Our Business", "Growth", "Infra", "Quality". |
+| Service copy | Plain and mechanical. "문 앞에 내놓고 모바일로 수거 신청 버튼 클릭 한 번이면 한밤만에 깨끗해진 세탁물을 문 앞으로 배송해드립니다." |
+| B2B | Credibility-first, quantified. "하루 최대 25톤까지 세탁물을 처리합니다." |
+| Actions | Direct, low-pressure. "채용공고 보러가기", "B2B·대량세탁 문의", "상담 문의하기". |
 
-**Voice samples (verbatim from live site):**
-- "의식주 생활의 혁신을 만들어 갑니다." — corporate hero headline (mission-framed). *(verified live 2026-06-11)*
-- "세탁 산업의 혁신을 시작으로 의식주 산업 전반의 문제를 찾고 해결합니다." — Vision section statement. *(verified live 2026-06-11)*
-- "국내 최대 호텔 전문 세탁 서비스, 런드리고 호텔&비즈니스" — B2B hero (scale + category claim). *(verified live 2026-06-11)*
+**Voice samples (verbatim, opened 2026-09-30):**
+- "의식주 생활의 혁신을 만들어 갑니다." — home hero.
+- "세탁 산업의 혁신을 시작으로 의식주 산업 전반의 문제를 찾고 해결합니다." — Vision on home.
+- "국내 최대 호텔 전문 세탁 서비스, 런드리고 호텔&비즈니스" — /business/ hero.
+- "기술과 도전이 만드는 가치있는 변화를 주도합니다." — culture hero.
+- "런드리고딕은 ‘세탁 없는 일상의 여유로움’이라는 가치를 담은 런드리고의 새로운 전용 서체입니다." — font page.
 
-**Forbidden register**: hype-driven superlatives without proof, fear/urgency selling, undefined jargon, exclamation-heavy consumer-app shouting.
+**Forbidden register**: superlatives without proof, fear or urgency selling, undefined jargon, exclamation-heavy app-marketing.
 
 ## 11. Brand Narrative
 
-LaundryGo (런드리고) is the flagship service of **의식주컴퍼니 (Uisikju Company)**, founded in **2018** by **조성우 (Cho Sung-woo)**, a former corporate-comms professional who had previously led 배민프레시 (Baemin Fresh, the early-morning grocery-delivery service of 우아한형제들). In 2019 the company launched LaundryGo, a contactless mobile-laundry service: a user places garments in a "런드렛" (Laundrette) collection bin before 10pm, and the cleaned laundry is returned by noon the next day — turning a recurring household chore into an on-demand logistics product.
+의식주컴퍼니 takes its English name, Lifegoeson ("Life goes on"), as a promise: to make busy, complicated modern lives richer, and to innovate across clothing, food and housing worldwide, starting with laundry. Its vision names three commitments — adding room and value to everyday life by solving problems people had accepted as normal, building irreplaceable businesses by bringing IT to industries that had not changed for decades, and creating a circular system that uses fewer resources through better logistics.
 
-The brand's stated mission is to "make the lives of busy modern people simpler and more abundant" across the full 의(clothing)·식(food)·주(housing) domain — the company name literally encodes that ambition. Its strong conviction, in the founder's framing, is that **innovating laundry will in turn innovate living space** ("세탁이 혁신되면 주거 공간이 혁신될 것"), and that the change to clothing-food-housing life begins with laundry. The vision extends globally — laundry being a universal problem, LaundryGo aims to grow into a global service.
+LaundryGo launched in March 2019 and reached 100,000 members in its first month. The company then built the physical side of the service: its own factories in Seongsu (2021), Gunpo (2022) and Busan (2023); the acquisition of the New York smart-factory EPC company A+ Machinery (2021), which now designs and builds laundry factories as 런드리고 EPC; Ourhome's hotel laundry business 크린누리 (2022), relaunched as 런드리고 호텔&비즈니스 in 2023; and 런드리24 unmanned laundromats (2022). The timeline also lists an AI style scanner that analyses incoming garments (2023), Forbes Asia's 100 to Watch (2023) and a one-touch RFID laundry tag that replaced barcodes (2024).
 
-The 2022 rebrand (LaundryGo's third anniversary) made the brand's posture explicit in design: the previously **neon green** identity was deliberately down-toned to a **softer, more trustworthy green**, paired with a **warm-grey** sub-color evoking clean, refined laundry. A proprietary lettermark combines the alphabet **G with an arrow pictogram** (animating like a rotating washing drum in-app), and a custom typeface — "런드리고딕체" — was developed so headline strokes evoke the soft texture of fabric. The values the system encodes: convenient, considerate service; reliability proven through laundry quality; and practicality.
+In March 2022, for its third anniversary, LaundryGo rebranded. Design+ described the brand's values in the new system as convenient, considerate service, reliability proven by laundry quality, and practicality. The neon green gave way to a quieter, more trustworthy green, the G became an arrow that turns like a drum, and a dedicated typeface followed, now given away as 런드리고딕 so that anyone can use it. The culture page lists eight values, from "대체 불가능한 사명과 실행력" to "권한 위임과 자율성, 팀 플레이", and a flat, titleless culture in which even the CEO is called "OO님".
 
 ## 12. Principles
 
-1. **Laundry is infrastructure.** LaundryGo frames a chore as a logistics platform — collection bins, smart factories, route delivery. *UI implication:* present the service with infrastructure-grade confidence (large declarative headlines, scale metrics), not consumer-app cuteness.
-2. **Trust over attention.** The 2022 rebrand traded neon green for a down-toned green to read as reliable. *UI implication:* keep the green calm and reserved; never let color shout louder than the proof.
-3. **One action, one color.** Green (`#0ac290`) means "brand / do this." *UI implication:* reserve the green for eyebrow labels and primary CTAs so the next step and the brand are always legible.
-4. **Considerate simplicity.** The promise is a chore removed from the user's day. *UI implication:* copy states concrete mechanisms (drop by 10pm, back by noon) plainly; the interface stays airy and uncluttered.
-5. **Bold where it persuades, quiet where it informs.** *UI implication:* large Pretendard 600–700 display for mission/value statements; calm Pretendard 400 body for explanation.
+1. **Laundry is infrastructure.** *UI implication:* present the service with factory figures, tonnage and delivery windows, not cuteness.
+2. **Trust over attention.** The 2022 rebrand toned the green down (Design+). *UI implication:* keep `#0ac290` for actions and eyebrows only.
+3. **One action, one colour.** *UI implication:* every call to action is green, and neutral buttons become green when they are about to act.
+4. **Considerate simplicity.** *UI implication:* state the mechanism plainly (put it out, tap once, back overnight) and keep layouts open.
+5. **Bold where it persuades, quiet where it informs.** *UI implication:* 45–62px statements for mission, 16px body for explanation. (An editorial reading of the captured pages.)
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable LaundryGo user segments (busy metro-area professionals, dual-income households, B2B hotel partners), not individual people.*
+*Personas below are fictional archetypes informed by publicly observable LaundryGo user segments (busy metro-area households, small-home renters, B2B hotel partners), not individual people.*
 
-**김도현, 32, 서울.** A dual-income office worker in a Seoul apartment who never has time to visit a dry cleaner. Drops garments in the 런드렛 bin before bed and has them back by lunch. Chose LaundryGo because the contactless mechanism is reliable and removes a recurring chore without a conversation.
+**김도현, 32, 서울.** A dual-income office worker who never makes it to the dry cleaner before closing. Puts garments out at the door, taps pickup in the app and has them back the next day.
 
-**이서연, 29, 경기.** A renter in a small officetel with no in-home laundry space. Uses LaundryGo and 런드리24 smart laundromats interchangeably. Values that the brand feels trustworthy and modern rather than like a traditional cleaner.
+**이서연, 29, 경기.** A renter in a small officetel with no room for a washer. Uses LaundryGo and 런드리24 interchangeably and values that the brand feels modern and reliable.
 
-**박준호, 47, 부산.** Operations manager at a premium hotel evaluating B2B linen partners. Reads the 호텔&비즈니스 page for proof points — scale, quality infrastructure, existing premium-hotel clients — before requesting a consultation. Trusts the calm, credibility-first tone.
+**박준호, 47, 부산.** Operations manager at a hotel evaluating linen partners. Reads the 호텔&비즈니스 page for proof — factory size, daily capacity, delivery times, partner hotels — before requesting a consultation.
 
 ## 14. States
 
-| State | Treatment |
+Only these states were observed on the captured pages; nothing else is specified here.
+
+| State | Observation |
 |---|---|
-| **Empty (no order history)** | White canvas. Single Ink (`#000000`) line at body size explaining no orders yet, with one green (`#0ac290`) CTA to start an order. No illustration clutter. |
-| **Empty (saved/none yet)** | Muted Slate (`#60646a`) single line: nothing saved yet, plus a path to the service. Calm, honest. |
-| **Loading (order/results fetch)** | Skeleton blocks on `#f8f9fa` tinted surface at final card dimensions, ~20px radius. Flat pulse consistent with the near-shadowless system — no shadow shimmer. |
-| **Loading (form submit)** | Inline progress within the green CTA; previous content stays visible. |
-| **Error (request failed)** | Inline message in Ink with a plain-language explanation and a retry. Never a bare "오류가 발생했습니다" — states the next step. |
-| **Error (form validation)** | Field-level message below the input describing what's valid, not just "필수". Ruby-free, calm tone. |
-| **Success (order placed / inquiry sent)** | Brief inline confirmation in calm tone; next-step detail linked immediately below. No celebratory emoji. |
-| **Skeleton** | `#f8f9fa` blocks at final dimensions, ~20px radius, flat pulse. |
-| **Disabled** | Faint Blue-Grey (`#b5bcc0`) text on reduced-opacity surface; green actions fade rather than turn grey to preserve brand read. |
+| **Hover / pressed (green actions)** | `#0ac290` → `#13ab82`, settled after a 0.2s linear transition (recruiting action on home, inquiry and floating actions on /business/). |
+| **Hover / pressed (neutral button)** | `#dfdfdf` / `#60646a` → `#0ac290` / `#ffffff`, after a 0.3s ease transition. |
+| **No change** | Navigation links and the Quality card toggles show no hover or pressed change. |
+| **Focus** | Links draw the theme's 1px dotted outline in their text colour; the recruiting action's label also turns `#3a3a3a`. No brand focus style was observed. |
+| **Disabled** | The first arrow of the culture carousel is marked disabled at capture. |
+
+Error, empty, loading and success states were not captured and are not described. Focus on the floating action is unmeasured.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, focus |
-| `motion-standard` | 200ms | Card/section reveal, sheet, dropdown |
-| `motion-slow` | 320ms | Page-level band transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sections, cards, CTAs |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and steady — consistent with the calm, infrastructure-grade aesthetic. Section content fades in from below at `motion-standard / ease-enter` as photographic bands enter the viewport; CTAs respond to press with a subtle scale/opacity shift. The brand's one signature playful motion is the logo's G-arrow rotating like a washing drum in-app, but on marketing surfaces motion stays restrained — no bounce or spring, signaling reliability over delight. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
+The probe read the transitions the controls compute. The green actions and the navigation links compute `transition: all 0.2s linear`, the neutral button `all 0.3s ease`, and the Quality card toggle `all 0s`. The Design+ write-up describes the G-arrow symbol turning like a washing drum in the app; that animation belongs to the app and was not measured. Nothing else about motion (carousels, band reveals) was measured; treat it as unspecified and honour `prefers-reduced-motion` in any build.
 
 <!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-11) via playwright getComputedStyle on https://www.laundrygo.com
-and https://www.laundrygo.com/business/:
-- Corporate hero H2 "의식주 생활의 혁신을 만들어 갑니다." — Pretendard 62px / weight 600 / white
-- Vision statement H3 "세탁 산업의 혁신을 시작으로 의식주 산업 전반의 문제를 찾고 해결합니다." — 45px / 600
-- Green eyebrow labels "Vision"/"Our Business"/"Growth"/"Quality"/"Infra" — 18px / 700 / rgb(10,194,144) #0ac290
-- Primary CTAs "채용공고 보러가기"/"문의하기" — bg rgb(10,194,144) #0ac290 / white / radius 10px / 17px-30px / 700
-- Emphasis CTAs "B2B·대량세탁 문의"/"상담 문의하기" — bg #0ac290 / radius 14px / box-shadow rgba(0,0,0,0.15) 0px 14px 29px
-- Muted button "웹사이트" — bg rgb(223,223,223) #dfdfdf / color rgb(96,100,106) #60646a / radius 10px
-- box-shadow: none across hero/nav/headings/cards/standard buttons (near-flat system)
-- document.title: "런드리고 - 모바일 세탁 서비스"
-
-Token-level claims (§1-9) are sourced from this live inspection.
-
-Voice samples (§10) are verbatim from the live site (corporate hero, Vision statement, B2B hero).
-
-Brand narrative (§11): 의식주컴퍼니 founded 2018 by 조성우 (Cho Sung-woo, ex-배민프레시 대표);
-LaundryGo launched 2019 as a contactless mobile-laundry service (런드렛 bin, 10pm→next-noon).
-2022 rebrand down-toned neon green to a trustworthy green + warm-grey sub-color, G+arrow lettermark,
-"런드리고딕체" proprietary typeface. These are publicly documented facts corroborated via WebSearch
-(kyeongin.com, techm.kr, forbeskorea, sisajournal) and the Design+ rebrand write-up
-(design.co.kr/article/17584, designcompass.org). Mission/vision quotes ("세탁이 혁신되면 주거 공간이
-혁신될 것", "삶을 단순하고 윤택하게") are widely reported public statements of the company/founder,
-not directly quoted from a verified first-party page in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable LaundryGo user segments
-(busy metro professionals, small-home renters, B2B hotel partners). Names are illustrative; they do
-not refer to real people.
-
-Interpretive claims (e.g., "laundry is infrastructure", "trust over attention") are editorial
-readings connecting LaundryGo's observed design and stated rebrand intent to its positioning, not
-directly sourced company statements.
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/laundrygo.json (capturedAt 2026-09-30T09:58:31Z), deterministic collector, 1440x900: www.laundrygo.com, /business/, /culture/. States: fixed keyboard probe raws docs/research/2026-09-29-growth/raw/laundrygo-states-home.json and laundrygo-states-business.json (the business run used --hide-overlays).
+- §1, §3, §10, §11 context: the home page (vision, business, growth, timeline, footer), /business/, /culture/ and /font/ on www.laundrygo.com, and Design+ "런드리고의 새로운 BI 시스템" (design.co.kr/article/17584, 19 May 2022), opened 2026-09-30.
+- Personas are fictional archetypes. Interpretive readings are editorial.
 -->

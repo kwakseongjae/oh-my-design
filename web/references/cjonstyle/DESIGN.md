@@ -9,55 +9,268 @@ primary_color: "#640faf"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=cjonstyle.com&sz=128"
-verified: "2026-07-02"
+verified: "2026-09-30"
 added: "2026-07-02"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://display.cjonstyle.com/p/homeTab/main?hmtabMenuId=H00005&rPIC=homeonstyle", inspected: "2026-09-30" }
+    - { id: surface-2, kind: product, url: "https://display.cjonstyle.com/p/item/2090936982", inspected: "2026-09-30" }
+    - { id: surface-3, kind: product, url: "https://display.cjonstyle.com/p/brand/00034773", inspected: "2026-09-30" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://display.cjonstyle.com/p/homeTab/main?hmtabMenuId=H00005&rPIC=homeonstyle", captured: "2026-09-30" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://display.cjonstyle.com/p/item/2090936982", captured: "2026-09-30" }
+    - { id: surface-surface-3, kind: product-surface, url: "https://display.cjonstyle.com/p/brand/00034773", captured: "2026-09-30" }
+    - { id: cj-corp, kind: official-doc, url: "https://corp.cjonstyle.com/ko", captured: "2026-09-30" }
+    - { id: cj-history, kind: official-doc, url: "https://corp.cjonstyle.com/ko/about/history", captured: "2026-09-30" }
+    - { id: cj-who, kind: official-doc, url: "https://corp.cjonstyle.com/ko/about/who-we-are", captured: "2026-09-30" }
+    - { id: pretendard-license, kind: license, url: "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &buy { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"40\"]", captured: "2026-09-30" }
+    "tokens.colors.on-primary": *buy
+    "tokens.colors.ink": &h1 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h1", captured: "2026-09-30" }
+    "tokens.colors.ink-strong": &h3 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
+    "tokens.colors.tab-ink": &tabon { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-09-30" }
+    "tokens.colors.muted": &taboff { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"50\"]", captured: "2026-09-30" }
+    "tokens.colors.faint": &fine { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::li", captured: "2026-09-30" }
+    "tokens.colors.chrome": &skip { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"0\"]", captured: "2026-09-30" }
+    "tokens.colors.border-strong": &wish { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"37\"]", captured: "2026-09-30" }
+    "tokens.colors.line": &more { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"51\"]", captured: "2026-09-30" }
+    "tokens.colors.line-soft": &chipoff { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"56\"]", captured: "2026-09-30" }
+    "tokens.colors.control-line": &refresh { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"132\"]", captured: "2026-09-30" }
+    "tokens.colors.select-line": &select { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"36\"]", captured: "2026-09-30" }
+    "tokens.colors.surface": &ask { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"56\"]", captured: "2026-09-30" }
+    "tokens.colors.white": &cart { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"39\"]", captured: "2026-09-30" }
+    "tokens.typography.family.ui": *h3
+    "tokens.typography.module-title.size": *h3
+    "tokens.typography.module-title.weight": *h3
+    "tokens.typography.module-title.lineHeight": *h3
+    "tokens.typography.module-title.tracking": *h3
+    "tokens.typography.module-title.use": *h3
+    "tokens.typography.logo-heading.size": *h1
+    "tokens.typography.logo-heading.weight": *h1
+    "tokens.typography.logo-heading.lineHeight": *h1
+    "tokens.typography.logo-heading.tracking": *h1
+    "tokens.typography.logo-heading.use": *h1
+    "tokens.typography.buy-label.size": *buy
+    "tokens.typography.buy-label.weight": *buy
+    "tokens.typography.buy-label.use": *buy
+    "tokens.typography.tab.size": *tabon
+    "tokens.typography.tab.weight": *tabon
+    "tokens.typography.tab.use": *tabon
+    "tokens.typography.search.size": &search { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-09-30" }
+    "tokens.typography.search.weight": *search
+    "tokens.typography.search.use": *search
+    "tokens.typography.body.size": &homeli { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::li", captured: "2026-09-30" }
+    "tokens.typography.body.weight": *homeli
+    "tokens.typography.body.lineHeight": *homeli
+    "tokens.typography.body.tracking": *homeli
+    "tokens.typography.body.use": *homeli
+    "tokens.typography.chip.size": &chipon { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"55\"]", captured: "2026-09-30" }
+    "tokens.typography.chip.weight": *chipon
+    "tokens.typography.chip.lineHeight": *chipon
+    "tokens.typography.chip.use": *chipon
+    "tokens.typography.more.size": *more
+    "tokens.typography.more.weight": *more
+    "tokens.typography.more.lineHeight": *more
+    "tokens.typography.more.tracking": *more
+    "tokens.typography.more.use": *more
+    "tokens.typography.meta.size": &brandli { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::li", captured: "2026-09-30" }
+    "tokens.typography.meta.weight": *brandli
+    "tokens.typography.meta.lineHeight": *brandli
+    "tokens.typography.meta.use": *brandli
+    "tokens.typography.fine.size": *fine
+    "tokens.typography.fine.weight": *fine
+    "tokens.typography.fine.lineHeight": *fine
+    "tokens.typography.fine.tracking": *fine
+    "tokens.typography.fine.use": *fine
+    "tokens.spacing.ask-y": *ask
+    "tokens.spacing.ask-left": *ask
+    "tokens.spacing.select-left": *select
+    "tokens.spacing.skip-left": *skip
+    "tokens.spacing.skip-right": *skip
+    "tokens.spacing.more-left": *more
+    "tokens.spacing.more-right": *more
+    "tokens.rounded.square": *tabon
+    "tokens.rounded.tag": *ask
+    "tokens.rounded.button": *buy
+    "tokens.rounded.more": *more
+    "tokens.rounded.chip": *chipon
+    "tokens.components.buy-button.type": *buy
+    "tokens.components.buy-button.bg": *buy
+    "tokens.components.buy-button.fg": *buy
+    "tokens.components.buy-button.border": *buy
+    "tokens.components.buy-button.radius": *buy
+    "tokens.components.buy-button.height": *buy
+    "tokens.components.buy-button.font": *buy
+    "tokens.components.buy-button.states": *buy
+    "tokens.components.buy-button.use": *buy
+    "tokens.components.cart-button.type": *cart
+    "tokens.components.cart-button.bg": *cart
+    "tokens.components.cart-button.fg": *cart
+    "tokens.components.cart-button.border": *cart
+    "tokens.components.cart-button.radius": *cart
+    "tokens.components.cart-button.height": *cart
+    "tokens.components.cart-button.font": *cart
+    "tokens.components.cart-button.states": *cart
+    "tokens.components.cart-button.use": *cart
+    "tokens.components.wish-button.type": *wish
+    "tokens.components.wish-button.bg": *wish
+    "tokens.components.wish-button.fg": *wish
+    "tokens.components.wish-button.border": *wish
+    "tokens.components.wish-button.radius": *wish
+    "tokens.components.wish-button.size": *wish
+    "tokens.components.wish-button.states": *wish
+    "tokens.components.wish-button.use": *wish
+    "tokens.components.category-toggle.type": &gnb { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"9\"]", captured: "2026-09-30" }
+    "tokens.components.category-toggle.fg": *gnb
+    "tokens.components.category-toggle.height": *gnb
+    "tokens.components.category-toggle.font": *gnb
+    "tokens.components.category-toggle.hover": &gnbhover { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"9\"]::state-hover", captured: "2026-09-30" }
+    "tokens.components.category-toggle.pressed": { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"9\"]::state-pressed", captured: "2026-09-30" }
+    "tokens.components.category-toggle.states": *gnbhover
+    "tokens.components.category-toggle.use": *gnb
+    "tokens.components.detail-tab.type": *taboff
+    "tokens.components.detail-tab.bg": *taboff
+    "tokens.components.detail-tab.fg": *taboff
+    "tokens.components.detail-tab.border": *taboff
+    "tokens.components.detail-tab.height": *taboff
+    "tokens.components.detail-tab.font": *taboff
+    "tokens.components.detail-tab.selected": *tabon
+    "tokens.components.detail-tab.states": *tabon
+    "tokens.components.detail-tab.use": *taboff
+    "tokens.components.module-chip.type": *chipoff
+    "tokens.components.module-chip.bg": *chipoff
+    "tokens.components.module-chip.fg": *chipoff
+    "tokens.components.module-chip.border": *chipoff
+    "tokens.components.module-chip.radius": *chipoff
+    "tokens.components.module-chip.height": *chipoff
+    "tokens.components.module-chip.font": *chipoff
+    "tokens.components.module-chip.selected": *chipon
+    "tokens.components.module-chip.states": *chipon
+    "tokens.components.module-chip.use": *chipoff
+    "tokens.components.more-chip.type": *more
+    "tokens.components.more-chip.fg": *more
+    "tokens.components.more-chip.border": *more
+    "tokens.components.more-chip.radius": *more
+    "tokens.components.more-chip.padding": *more
+    "tokens.components.more-chip.height": *more
+    "tokens.components.more-chip.font": *more
+    "tokens.components.more-chip.states": *more
+    "tokens.components.more-chip.use": *more
+    "tokens.components.carousel-control.type": &prev { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-09-30" }
+    "tokens.components.carousel-control.bg": *prev
+    "tokens.components.carousel-control.border": *prev
+    "tokens.components.carousel-control.radius": *prev
+    "tokens.components.carousel-control.height": *prev
+    "tokens.components.carousel-control.states": *prev
+    "tokens.components.carousel-control.use": *prev
+    "tokens.components.option-select.type": *select
+    "tokens.components.option-select.fg": *select
+    "tokens.components.option-select.border": *select
+    "tokens.components.option-select.padding": *select
+    "tokens.components.option-select.height": *select
+    "tokens.components.option-select.font": *select
+    "tokens.components.option-select.states": *select
+    "tokens.components.option-select.use": *select
+    "tokens.components.search-input.type": *search
+    "tokens.components.search-input.fg": *search
+    "tokens.components.search-input.padding": *search
+    "tokens.components.search-input.height": *search
+    "tokens.components.search-input.font": *search
+    "tokens.components.search-input.states": *search
+    "tokens.components.search-input.use": *search
+    "tokens.components.ask-banner.type": *ask
+    "tokens.components.ask-banner.bg": *ask
+    "tokens.components.ask-banner.fg": *ask
+    "tokens.components.ask-banner.radius": *ask
+    "tokens.components.ask-banner.padding": *ask
+    "tokens.components.ask-banner.size": *ask
+    "tokens.components.ask-banner.font": *ask
+    "tokens.components.ask-banner.states": *ask
+    "tokens.components.ask-banner.use": *ask
+    "tokens.components.view-toggle.type": &viewoff { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"136\"]", captured: "2026-09-30" }
+    "tokens.components.view-toggle.border": *viewoff
+    "tokens.components.view-toggle.size": *viewoff
+    "tokens.components.view-toggle.checked": &viewon { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"135\"]", captured: "2026-09-30" }
+    "tokens.components.view-toggle.states": *viewon
+    "tokens.components.view-toggle.use": *viewoff
+    "tokens.components.page-dot.type": &dot { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"201\"]", captured: "2026-09-30" }
+    "tokens.components.page-dot.bg": *dot
+    "tokens.components.page-dot.fg": *dot
+    "tokens.components.page-dot.radius": *dot
+    "tokens.components.page-dot.size": *dot
+    "tokens.components.page-dot.states": *dot
+    "tokens.components.page-dot.use": *dot
+    "tokens.components.refresh-button.type": *refresh
+    "tokens.components.refresh-button.bg": *refresh
+    "tokens.components.refresh-button.fg": *refresh
+    "tokens.components.refresh-button.border": *refresh
+    "tokens.components.refresh-button.radius": *refresh
+    "tokens.components.refresh-button.height": *refresh
+    "tokens.components.refresh-button.font": *refresh
+    "tokens.components.refresh-button.states": *refresh
+    "tokens.components.refresh-button.use": *refresh
+    "tokens.components.skip-link.type": *skip
+    "tokens.components.skip-link.bg": *skip
+    "tokens.components.skip-link.fg": *skip
+    "tokens.components.skip-link.padding": *skip
+    "tokens.components.skip-link.height": *skip
+    "tokens.components.skip-link.font": *skip
+    "tokens.components.skip-link.states": *skip
+    "tokens.components.skip-link.use": *skip
 tokens:
-  source: live-extract
-  extracted: "2026-07-02"
-  note: "primary = live buy-CTA purple (#640faf, rgb 100,15,175) — CJ ONSTYLE signature violet, 52 bg + 143 fg occurrences; sale/price accent magenta (#ec0040); near-flat (box-shadow none). Body font legacy Nanum Barun Gothic; newer promo/PDP modules use Pretendard."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
     primary: "#640faf"
-    sale: "#ec0040"
-    accent-red: "#d53225"
-    accent-orange: "#f26d00"
-    ink: "#000000"
-    ink-nav: "#111111"
-    body: "#2a2a2a"
-    muted: "#666666"
-    muted-alt: "#767676"
-    faint: "#929292"
-    header-dark: "#26292a"
-    canvas: "#ffffff"
-    surface: "#f5f5f5"
-    surface-alt: "#f0f0f0"
-    hairline: "#e5e5e5"
-    border-strong: "#b2b2b2"
     on-primary: "#ffffff"
+    ink: "#000000"
+    ink-strong: "#111111"
+    tab-ink: "#333333"
+    muted: "#767676"
+    faint: "#929292"
+    chrome: "#26292a"
+    border-strong: "#b2b2b2"
+    line: "#d1d1d1"
+    line-soft: "#e6e6e6"
+    control-line: "#c5c5c5"
+    select-line: "#d9d9d9"
+    surface: "#f0f0f0"
+    white: "#ffffff"
   typography:
-    family: { base: "Nanum Barun Gothic", alt: "Pretendard" }
-    wordmark:      { size: 24, weight: 700, use: "CJ ONSTYLE logotype / page H1, Nanum Barun Gothic" }
-    promo-headline: { size: 26, weight: 700, use: "Banner promo headline, Pretendard, white on imagery" }
-    cta:           { size: 20, weight: 400, use: "PDP 바로구매 buy CTA label" }
-    search:        { size: 18, weight: 400, use: "Header search input, Pretendard" }
-    nav:           { size: 15, weight: 400, lineHeight: 1.4, use: "Global nav menu items, Nanum Barun Gothic" }
-    submenu:       { size: 14, weight: 400, use: "Sub-menu / PDP secondary links" }
-    badge:         { size: 12, weight: 700, use: "Sale / benefit overlay pills, Pretendard" }
-    body:          { size: 12, weight: 400, lineHeight: 1.5, use: "Default body / product meta, Nanum Barun Gothic" }
-    util:          { size: 12, weight: 400, use: "Utility links (로그인/마이존), muted grey" }
-  spacing: { xs: 2, sm: 4, base: 8, md: 12, lg: 20, xl: 26, xxl: 48 }
-  rounded: { xs: 2, sm: 4, md: 11, lg: 18, full: 9999 }
-  shadow:
-    none: "none"
+    family: { ui: "Pretendard" }
+    module-title: { size: 26, weight: 700, lineHeight: 1.19, tracking: -0.5, use: "Module titles on the home tab (tit_module), Pretendard, 31px line, in #111111" }
+    logo-heading: { size: 24, weight: 700, lineHeight: 1.5, tracking: -0.5, use: "The h1 around the logo on every captured page, 36px line, in #000000; set in the declared 나눔바른고딕 stack, whose rendered face is unresolved" }
+    buy-label: { size: 20, weight: 400, use: "바로구매, 장바구니 and 선물하기 labels on the product page, set in the 나눔바른고딕 stack on a 60px line box" }
+    tab: { size: 18, weight: 700, use: "Selected product-page section tab; unselected tabs are 18px / 400" }
+    search: { size: 18, weight: 400, use: "Header search field; Pretendard on the home tab, the 나눔바른고딕 stack on the product and brand pages" }
+    body: { size: 16, weight: 400, lineHeight: 1.5, tracking: -0.25, use: "Module lists and product text on the home tab, Pretendard, 24px line, in #000000" }
+    chip: { size: 15, weight: 700, lineHeight: 1.2, use: "Selected module filter chip on the home tab, Pretendard, 18px line; unselected chips are 15px / 400" }
+    more: { size: 13, weight: 400, lineHeight: 1.23, tracking: -0.25, use: "Module 'more' links on the home tab, Pretendard, 16px line" }
+    meta: { size: 12, weight: 400, lineHeight: 1.5, use: "Product meta on the brand and product pages, 18px line, in #000000, in the 나눔바른고딕 stack" }
+    fine: { size: 11, weight: 700, lineHeight: 1.5, tracking: -0.5, use: "Fine labels on the product page, 16.5px line, in #929292, in a 돋움 stack whose rendered face is unresolved" }
+  spacing: { ask-y: 22, ask-left: 72, select-left: 15, skip-left: 26, skip-right: 20, more-left: 12, more-right: 8 }
+  rounded: { square: 0, tag: 2, button: 4, more: 14, chip: 18 }
   components:
-    buy-primary: { type: button, bg: "#640faf", fg: "#ffffff", border: "1px solid #640faf", radius: "4px", height: "60px", font: "20px / 400 Nanum Barun Gothic", use: "PDP 바로구매 primary buy CTA — the single saturated action color" }
-    inquiry-button: { type: button, bg: "#640faf", fg: "#ffffff", radius: "4px", height: "40px", font: "14px / 400", use: "PDP 상품문의 secondary purple action" }
-    wishlist-button: { type: button, bg: "#ffffff", fg: "#111111", border: "1px solid #b2b2b2", radius: "4px", height: "60px", font: "20px / 400", use: "PDP 찜 wishlist toggle, outlined neutral" }
-    sale-badge: { type: badge, fg: "#ffffff", radius: "2px", padding: "0px 8px", font: "12px / 700 Pretendard", use: "Discount/benefit overlay pill on product imagery, rgba(0,0,0,0.2) scrim bg" }
-    search-input: { type: input, bg: "#ffffff", fg: "#111111", border: "1px solid #111111", radius: "0px", height: "46px", font: "18px / 400 Pretendard", use: "Header search field, underline style" }
-    gnb-tab: { type: tab, fg: "#111111", font: "15px / 400 Nanum Barun Gothic", active: "text #640faf", use: "Global nav items (홈/혜택/TV쇼핑)" }
-    detail-tab: { type: tab, fg: "#767676", active: "text #111111 + 1px bottom border #e5e5e5", use: "PDP section tabs (상세설명/리뷰/Q&A)" }
-    product-card: { type: card, bg: "#ffffff", border: "1px solid #e5e5e5", radius: "2px", use: "Product grid card on home / listing, near-flat" }
+    buy-button: { type: button, bg: "#640faf", fg: "#ffffff", border: "1px solid #640faf", radius: "4px", height: "60px", font: "20px / 400, 나눔바른고딕 stack", states: "rest only; no state frame was captured for this control and it was not probed", use: "바로구매 (u_btn btn_buy_now) on the product page, 162 x 60 at the right of the buy row; a 205 x 42 copy closes the lower buy panel" }
+    cart-button: { type: button, bg: "#ffffff", fg: "#640faf", border: "1px solid #640faf", radius: "4px", height: "60px", font: "20px / 400, 나눔바른고딕 stack", states: "rest only; no state frame", use: "장바구니 (btn_cart_go), the outlined partner left of 바로구매; 선물하기 (btn_gift, 64 x 60) uses the same outline" }
+    wish-button: { type: button, bg: "#ffffff", fg: "#111111", border: "1px solid #b2b2b2", radius: "4px", size: "64px x 60px", states: "rest only; no state frame", use: "찜 wishlist toggle (btn_dip) at the start of the buy row" }
+    category-toggle: { type: button, fg: "#111111", height: "54px", font: "15px / 400, 나눔바른고딕 stack", hover: "bg #640faf, fg #ffffff", pressed: "bg #640faf, fg #ffffff", states: "the bundle's hover and pressed frames agree on the violet fill with white text", use: "카테고리 toggle (btn_gnb_toggle), 181 x 54, at the left of the global navigation" }
+    detail-tab: { type: tab, bg: "#ffffff", fg: "#767676", border: "0 0 1px #767676 (bottom)", height: "62px", font: "18px / 400, 나눔바른고딕 stack", selected: "fg #333333, 18px / 700, bottom border 1px #333333", states: "selected variant read from rest values", use: "Product-page section tabs, 253 x 62" }
+    module-chip: { type: tab, bg: "#ffffff", fg: "#111111", border: "1px solid #e6e6e6", radius: "18px", height: "36px", font: "15px / 400 Pretendard", selected: "bg #111111, fg #ffffff, border 1px #111111, 15px / 700", states: "selected variant read from rest values", use: "Filter chips (btn_tab) under home module titles" }
+    more-chip: { type: button, fg: "#111111", border: "1px solid #d1d1d1", radius: "14px", padding: "0px 8px 0px 12px", height: "28px", font: "13px / 400 Pretendard", states: "rest only; the home tab's pseudo-state pass stalled and was logged unmeasured", use: "'More' links beside home module titles, 99 x 28" }
+    carousel-control: { type: button, bg: "#ffffff", border: "1px solid #d1d1d1", radius: "18px 0 0 18px (previous), 0 18px 18px 0 (next), 50% (pause)", height: "36px", states: "rest only; hover unmeasured", use: "Previous, next and pause controls of the home hero carousel" }
+    option-select: { type: input, fg: "#111111", border: "1px solid #d9d9d9", padding: "0px 33px 0px 15px", height: "45px", font: "15px / 400, 나눔바른고딕 stack", states: "rest only; the collector did not open it", use: "Product option selector (select_txt), 470 x 45" }
+    search-input: { type: input, fg: "#111111", padding: "0px 50px 0px 0px", height: "46px", font: "18px / 400 Pretendard (home)", states: "rest only; the input itself draws no border", use: "Header search field, 314 x 46, on every captured page" }
+    ask-banner: { type: button, bg: "#f0f0f0", fg: "#000000", radius: "2px", padding: "22px 50px 22px 72px", size: "760px x 80px", font: "12px / 400 / 18px", states: "rest only; no state frame", use: "Product-page entry banner (btn_ask) with a 34-character label" }
+    view-toggle: { type: toggle, border: "1px solid #d9d9d9", size: "30px x 30px", checked: "border 1px solid #640faf on the active view (ico_gallery on)", states: "checked variant read from rest values", use: "Gallery and list view switch on the brand page" }
+    page-dot: { type: button, bg: "#640faf", fg: "#ffffff", radius: "50%", size: "30px x 30px", states: "the current page (lk_pn on) fills violet; read from rest values", use: "Current page of the brand page's pagination" }
+    refresh-button: { type: button, bg: "#ffffff", fg: "#111111", border: "1px solid #c5c5c5", radius: "4px", height: "40px", font: "14px / 400, 나눔바른고딕 stack", states: "rest only; no state frame", use: "Filter reset (btn_refresh) on the brand page, 180 x 40" }
+    skip-link: { type: button, bg: "#26292a", fg: "#ffffff", padding: "0px 20px 0px 26px", height: "34px", font: "11px / 400 / 14px, letter-spacing -1px", states: "positioned 34px above the viewport at rest (shown when focused); focus was not measured", use: "Skip links (shortcut_g) at the top of every captured page" }
   components_harvested: true
 ---
 
@@ -65,20 +278,17 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-CJ ONSTYLE (CJ온스타일) is Korea's flagship TV-home-shopping-and-commerce brand, and its storefront reads exactly as that heritage suggests: a dense, information-rich, conversion-first retail grid rather than an airy editorial site. The canvas is pure white (`#ffffff`) segmented by cool-grey bands (`#f5f5f5`, `#f0f0f0`), and the type sits in unadorned black (`#000000`) and near-black navy-grey (`#111111`, `#2a2a2a`) for maximum scan-ability across hundreds of product tiles. The single saturated brand color is an unmistakable deep violet (`#640faf`, rgb 100,15,175) — the CJ ONSTYLE signature purple — which the system reserves almost exclusively for the primary buy action (the PDP `바로구매` button) and active-state accents, so a shopper's eye is trained to read that one hue as "commit to purchase."
+CJ ONSTYLE (CJ온스타일) is the commerce division of CJ ENM, legally (주)씨제이이엔엠 커머스부문 and headquartered in Seoul. By its own history page it opened Korea's first TV home-shopping channel in 1995 and joined CJ Group in 2000. It opened the CJmall internet store in 2001, shipped the industry's first smartphone app in 2010, and in 2012 became the first in the industry to pass 1 trillion won in sales. It launched the industry's first mobile live commerce in 2017, became part of CJ ENM in the 2018 merger, and unified its channels under the single brand CJ온스타일 in 2021. A very large mobile live show followed in 2024, and a global own-brand mall in 2026. The company calls itself "트렌드 PICK 라이브 편집샵" and describes shopping that you "discover through content and complete with taste" (콘텐츠로 발견하고, 취향으로 완성하는 쇼핑). It reports 1조 5,180억 won in 2025 sales and 20,000 brands in the app.
 
-The typographic personality is functional and legacy-Korean rather than boutique: body and navigation run in **Nanum Barun Gothic** (나눔바른고딕) — the workhorse hangul UI face — at a dense 12–15px, weight 400, while the wordmark and section heads step up to weight 700. Newer promotional and product-detail modules layer in **Pretendard**, which carries the loud sale copy: banner headlines at 26px/700 and discount badges at 12px/700. This split — quiet Nanum Barun Gothic for the shell, punchy Pretendard for the pitch — is the core tension of the system: calm where it lists, loud where it sells.
-
-What distinguishes CJ ONSTYLE from design-forward fintech peers is its near-total absence of elevation. Live inspection returned `box-shadow: none` across the nav, GNB, buy CTA, and product cards; separation comes from flat tinted surfaces and thin `#e5e5e5` hairlines, not shadow. Geometry is overwhelmingly sharp — 0px corners on nav, inputs, and the main buttons — softened only by a dominant 2px micro-radius on the omnipresent sale/benefit overlay pills and a 4px radius on the purchase buttons. The pricing layer adds the second signal color, a hot magenta (`#ec0040`), with promotional module reds (`#d53225`) and oranges (`#f26d00`) reinforcing urgency. The result is a fast, flat, high-density commerce surface engineered for throughput.
+The storefront on display.cjonstyle.com reads like its heritage: a dense, white, black-on-white retail grid built for scanning. One deep violet, `#640faf`, carries commitment. It fills 바로구매, outlines 장바구니 and 선물하기, fills the 카테고리 toggle when a pointer rests on it, and marks the current page and the active view on brand pages. Everything else is neutral: `#000000` and `#111111` text, `#333333` for the selected tab, greys `#767676` and `#929292` for secondary copy, and a ladder of light greys for borders. The shell is square (0px corners on navigation, tabs and inputs), purchase buttons take 4px corners, and the newer home modules add pill chips at 18px. Two type systems coexist. The home tab's modules are set in Pretendard, served by CJ ONSTYLE itself. The product and brand pages ask for 나눔바른고딕 first, a family the browser never loads from the site, so the rendered face there is unresolved.
 
 **Key Characteristics:**
-- Signature deep violet (`#640faf`) reserved for the primary buy CTA and active accents — the single "action" color
-- Magenta (`#ec0040`) as the price/sale accent, with promo reds (`#d53225`) and oranges (`#f26d00`) for urgency
-- Nanum Barun Gothic for the dense shell (nav/body 12–15px), Pretendard for loud promo/PDP copy
-- Black (`#000000`) and near-black (`#111111`, `#2a2a2a`) text on white for maximum tile scan-ability
-- Near-flat depth: `box-shadow: none`; separation via `#f5f5f5`/`#f0f0f0` tints and `#e5e5e5` hairlines
-- Sharp geometry — 0px nav/inputs, 2px sale badges, 4px buy buttons; pills (11px/18px) only on carousel controls
-- Dark utility chrome bar (`#26292a`) and grey utility links (`#767676`, `#929292`, `#666666`)
+- One violet `#640faf` for buy, cart and gift actions, the category-toggle hover, the current page and the active view
+- Black-on-white density: `#000000` and `#111111` text, grey `#767676` and `#929292` secondary copy
+- Square shell (0px) with 4px purchase buttons, 14px and 18px pill chips on the home tab, 2px on banners
+- Pretendard on the home tab; the product and brand pages declare 나눔바른고딕 first
+- Borders in steps of grey: `#b2b2b2`, `#c5c5c5`, `#d1d1d1`, `#d9d9d9`, `#e6e6e6`
+- A dark `#26292a` skip-link bar hidden above the page
 
 ## Primary tasks
 
@@ -90,361 +300,356 @@ What distinguishes CJ ONSTYLE from design-forward fintech peers is its near-tota
 
 ## 2. Color Palette & Roles
 
+Every token below was read on 2026-09-30 by the deterministic collector from three public, logged-out storefront pages: the home tab, a product page (item 2090936982) and a brand page (에르헴, 00034773). The corporate site corp.cjonstyle.com is a separate evidence domain and supplies narrative only.
+
 ### Primary
-- **CJ ONSTYLE Violet** (`#640faf`): The signature deep purple (rgb 100,15,175). Primary buy-CTA background (`바로구매`, `상품문의`), active-state text, and brand accents. The system's single saturated action color — 52 background and 143 text occurrences in the live scan.
-- **On Primary** (`#ffffff`): White text on the violet buy buttons and dark chrome.
+- **CJ ONSTYLE Violet** (`#640faf`): The fill of 바로구매 (`u_btn btn_buy_now`, 162 × 60, white label), the product page's primary action. It is also the outline and label of 장바구니 and 선물하기 beside it, and the fill of the 카테고리 toggle in its hover and pressed frames. On the brand page it fills the current pagination dot and outlines the active view toggle. It is the primary because it is the colour of the purchase action and of every selected state the capture recorded.
+- **On Primary** (`#ffffff`): Labels on the violet fill.
 
-### Sale & Promo Accents
-- **Sale Magenta** (`#ec0040`): The hot pink-red used for discount rates and price emphasis (118 text occurrences). The dominant "deal" signal color.
-- **Promo Red** (`#d53225`): Secondary promotional red for campaign badges and urgency modules.
-- **Promo Orange** (`#f26d00`): Tertiary promotional orange for time-limited / benefit highlights.
-
-### Text Hierarchy
-- **Ink Black** (`#000000`): Default body text and product titles — the dominant foreground (2424 occurrences).
-- **Nav Ink** (`#111111`): Global-nav and menu text, input text — a near-black one notch softer than pure black.
-- **Body Grey** (`#2a2a2a`): Dark secondary body copy and descriptions.
-- **Muted Grey** (`#666666`): Tertiary text, product meta, captions.
-- **Utility Grey** (`#767676`): Utility links (로그인/마이존/장바구니), inactive tab labels.
-- **Faint Grey** (`#929292`): Lowest-emphasis labels, fine print, placeholders.
+### Text
+- **Ink** (`#000000`): The logo heading, product meta and most running text.
+- **Ink Strong** (`#111111`): Home module titles, navigation, inputs, chips and outlined buttons.
+- **Tab Ink** (`#333333`): The selected product-page tab label and its underline.
+- **Muted** (`#767676`): Unselected product-page tabs and small links.
+- **Faint** (`#929292`): Fine 11px labels on the product page.
 
 ### Neutral & Surface
-- **Pure White** (`#ffffff`): Page background, card surfaces, text on violet/dark.
-- **Surface Grey** (`#f5f5f5`): Cool-grey tinted surface for content bands and section separation.
-- **Surface Alt** (`#f0f0f0`): A secondary grey surface for alternating blocks.
-- **Hairline** (`#e5e5e5`): Thin borders, tab underlines, and dividers — the primary separation device in the shadow-free system.
-- **Border Strong** (`#b2b2b2`): Heavier outline for neutral/outlined buttons (e.g. the 찜 wishlist toggle).
-- **Chrome Dark** (`#26292a`): Near-black background for the top utility/skip-link chrome bar.
+- **White** (`#ffffff`): The page, outlined buttons and controls.
+- **Surface** (`#f0f0f0`): The 760 × 80 entry banner on the product page.
+- **Chrome** (`#26292a`): The skip-link bar.
+- **Border Strong** (`#b2b2b2`): The 찜 wishlist toggle.
+- **Control Line** (`#c5c5c5`): The brand page's filter reset and small "more" links.
+- **Line** (`#d1d1d1`): Home carousel controls and "more" chips.
+- **Select Line** (`#d9d9d9`): The product option selector and the inactive view toggle.
+- **Line Soft** (`#e6e6e6`): Unselected home filter chips and brand-page arrow buttons.
+
+### Not tokens
+- A red label (`#d73535`) inside a grey-outlined 방송알림-style button (`#a6a6a6`) and dark translucent overlays appear on the product page; they are single observations and are not promoted. No logo colour was measured.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Base**: `Nanum Barun Gothic` (나눔바른고딕, with `Malgun Gothic` / Arial fallbacks) — the document default, used for nav, body, product meta, and the wordmark.
-- **Alt**: `Pretendard` (with `Malgun Gothic` fallback) — used in newer promotional banners, sale/benefit badges, and the header search input.
+- **Live surface use**: `Pretendard`, `loaded / high`, 473 observed uses, mostly on the home tab: module titles, lists, chips, "more" links and the search field. It is self-hosted by CJ ONSTYLE at `image.cjonstyle.net/public/confirm/contents/ec-static-contents/design/font/font/Pretendard-Regular.woff2`, and the shared `font.css` declares weights 400, 600 and 700.
+- **Official distributed font assets**: Pretendard is Kil Hyung-jin's open-source family. Its LICENSE (orioncactus/pretendard, opened 2026-09-30) reserves the name 'Pretendard' and states the SIL Open Font License 1.1. The identification rests on the declared family name.
+- **Official product use**: no CJ ONSTYLE page opened this session names its typefaces.
+- **Declared only (no visible use)**: `Nanum Barun Gothic`. The same `font.css` declares it with `NanumBarunGothic.eot` and related files, but the face never reported as loaded on any captured page. `FontAwesome` is also declared.
+- **Unresolved**: `나눔바른고딕` is the first family of the product and brand pages' stack and of the home navigation (723 uses). No loaded font carries that name and the declared web font never loaded, so the face the browser actually drew there cannot be named. `돋움` (82 uses) is in the same position. Their sizes, weights and line heights are kept below; the family is not.
+- **Corporate site**: corp.cjonstyle.com preloads the group's CJ ONLYONE faces (`CJ_ONLYONE_400` to `700` WOFF2). That is a different evidence domain, and it is not a storefront token.
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Wordmark / H1 | Nanum Barun Gothic | 24px | 700 | — | CJ ONSTYLE logotype / page heading |
-| Promo Headline | Pretendard | 26px | 700 | — | Banner promo copy, white on imagery |
-| Buy CTA | Nanum Barun Gothic | 20px | 400 | — | PDP 바로구매 button label |
-| Search | Pretendard | 18px | 400 | — | Header search input |
-| Nav | Nanum Barun Gothic | 15px | 400 | 1.4 | Global nav menu items |
-| Sub-menu | Nanum Barun Gothic | 14px | 400 | — | Sub-menu / PDP secondary links |
-| Badge | Pretendard | 12px | 700 | — | Sale / benefit overlay pills |
-| Body | Nanum Barun Gothic | 12px | 400 | 1.5 (18px) | Default body / product meta |
-| Utility | Nanum Barun Gothic | 12px | 400 | — | Utility links (로그인/마이존) |
+| Role | Font | Size | Weight | Line Height | Tracking | Observed on |
+|------|------|------|--------|-------------|----------|-------------|
+| Module Title | Pretendard | 26px | 700 | 31px (1.19) | -0.5px | Home module titles, `#111111` |
+| Logo Heading | 나눔바른고딕 stack (unresolved) | 24px | 700 | 36px (1.5) | -0.5px | Every page, `#000000` |
+| Buy Label | 나눔바른고딕 stack (unresolved) | 20px | 400 | 60px box | normal | 바로구매, 장바구니 |
+| Tab | 나눔바른고딕 stack (unresolved) | 18px | 700 / 400 | 62px box | normal | Product-page tabs |
+| Search | Pretendard (home) | 18px | 400 | 46px box | normal | Header search |
+| Body | Pretendard | 16px | 400 | 24px (1.5) | -0.25px | Home lists, `#000000` |
+| Chip | Pretendard | 15px | 700 / 400 | 18px (1.2) | normal | Home filter chips |
+| More | Pretendard | 13px | 400 | 16px (1.23) | -0.25px | Home "more" links |
+| Meta | 나눔바른고딕 stack (unresolved) | 12px | 400 | 18px (1.5) | normal | Product and brand meta |
+| Fine | 돋움 stack (unresolved) | 11px | 700 | 16.5px (1.5) | -0.5px | Product-page labels, `#929292` |
 
 ### Principles
-- **Two fonts, two jobs**: Nanum Barun Gothic runs the quiet, dense retail shell; Pretendard carries the loud persuasive promo layer. They do not swap roles.
-- **Weight as the only headline signal**: The system leans on weight 700 (vs 400 body) far more than size — there is little display-scale typography beyond the 24–26px heads.
-- **Dense sizing for throughput**: Body sits at a compact 12px with 18px line-height, optimized for packing many product tiles and price rows above the fold.
-- **Sale copy shouts, product copy whispers**: Discount rates and benefit badges use bold Pretendard and the magenta/violet palette; product titles stay plain black.
+- **Weight, not size, for emphasis**: selected tabs and chips switch from 400 to 700 at the same size.
+- **Dense by default**: meta text sits at 12px on an 18px line; titles rarely exceed 26px.
+- **Two generations**: Pretendard modules on the home tab sit beside an older shell that asks for 나눔바른고딕.
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Buy Primary (바로구매)**
+**Buy button (primary)**
 - Background: `#640faf`
 - Text: `#ffffff`
 - Border: 1px solid `#640faf`
 - Radius: 4px
 - Height: 60px
-- Font: 20px / 400 / Nanum Barun Gothic
-- Use: Product-detail primary buy CTA — the system's single saturated action color
+- Font: 20px 400
+- Use: 바로구매 on the product page, 162 × 60; a 205 × 42 copy closes the lower buy panel
 
-**Inquiry (상품문의)**
-- Background: `#640faf`
-- Text: `#ffffff`
+**Cart button**
+- Background: `#ffffff`
+- Text: `#640faf`
+- Border: 1px solid `#640faf`
 - Radius: 4px
-- Height: 40px
-- Font: 14px / 400
-- Use: PDP secondary purple action (product inquiry)
+- Height: 60px
+- Use: 장바구니, the outlined partner of 바로구매; 선물하기 (64 × 60) shares the outline
 
-**Wishlist (찜)**
+**Wishlist button**
 - Background: `#ffffff`
 - Text: `#111111`
 - Border: 1px solid `#b2b2b2`
 - Radius: 4px
-- Height: 60px
-- Font: 20px / 400
-- Use: PDP wishlist toggle — outlined neutral counterpart to the buy CTA
+- Size: 64 × 60
+- Use: 찜 toggle at the start of the buy row
 
-### Inputs
+**Category toggle**
+- Text: `#111111`
+- Height: 54px
+- Hover: fill `#640faf` with `#ffffff` text (bundle hover and pressed frames agree)
+- Use: 카테고리, 181 × 54, at the left of the global navigation
 
-**Header Search**
+**More chip**
+- Text: `#111111`
+- Border: 1px solid `#d1d1d1`
+- Radius: 14px
+- Padding: 0px 8px 0px 12px
+- Height: 28px
+- Use: Beside home module titles
+
+**Carousel control**
+- Background: `#ffffff`
+- Border: 1px solid `#d1d1d1`
+- Radius: 18px on the outer side (previous and next), 50% (pause)
+- Height: 36px
+- Use: Home hero carousel
+
+**Entry banner**
+- Background: `#f0f0f0`
+- Text: `#000000`
+- Radius: 2px
+- Padding: 22px 50px 22px 72px
+- Size: 760 × 80
+- Use: Product-page entry banner
+
+**Filter reset**
 - Background: `#ffffff`
 - Text: `#111111`
-- Border: 1px solid `#111111`
-- Radius: 0px
-- Height: 46px
-- Font: 18px / 400 / Pretendard
-- Use: Header search field, underline style (bottom rule)
+- Border: 1px solid `#c5c5c5`
+- Radius: 4px
+- Height: 40px
+- Use: Brand-page filter panel, 180 × 40
 
-### Cards & Containers
-
-**Product Card**
-- Background: `#ffffff`
-- Border: 1px solid `#e5e5e5`
-- Radius: 2px
-- Use: Product grid tile on home / listing — near-flat, no shadow
-
-### Badges
-
-**Sale / Benefit Pill**
+**Page dot**
+- Background: `#640faf`
 - Text: `#ffffff`
-- Radius: 2px
-- Padding: 0px 8px
-- Font: 12px / 700 / Pretendard
-- Use: Discount/benefit overlay on product imagery, sitting on a `rgba(0,0,0,0.2)` scrim with a `rgba(255,255,255,0.3)` hairline
+- Radius: 50%
+- Size: 30 × 30
+- Use: Current page of the brand page's pagination
 
-### Tabs
-
-**Global Nav (GNB)**
-- Text: `#111111`
-- Font: 15px / 400 / Nanum Barun Gothic
-- Active: violet `#640faf` text on active item
-- Use: Top navigation (홈, 혜택, TV쇼핑, 카테고리)
-
-**PDP Section Tab**
-- Text: `#767676`
-- Active: `#111111` text + 1px bottom border `#e5e5e5`
-- Use: Product-detail section tabs (상세설명, 리뷰, Q&A)
-
-### Chrome & Carousel
-
-**Utility / Skip-link Bar**
+**Skip link**
 - Background: `#26292a`
 - Text: `#ffffff`
 - Padding: 0px 20px 0px 26px
 - Height: 34px
-- Use: Top accessibility skip-link / utility chrome bar
+- Use: Skip links above the header, shown on focus
 
-**Carousel Control**
+### Tabs & Toggles
+
+**Product-page tab**
 - Background: `#ffffff`
-- Border: 1px solid `#b2b2b2`
-- Radius: 18px (prev/next), 50% (pause)
+- Text: `#767676`
+- Border: 1px `#767676` underline
+- Height: 62px
+- Selected: `#333333` text at 700 with a 1px `#333333` underline
+- Use: Product-page section tabs, 253 × 62
+
+**Home filter chip**
+- Background: `#ffffff`
+- Text: `#111111`
+- Border: 1px solid `#e6e6e6`
+- Radius: 18px
 - Height: 36px
-- Use: Hero banner carousel prev/next/pause controls
+- Selected: `#111111` fill, `#ffffff` text, weight 700
+- Use: Under home module titles
+
+**View toggle**
+- Border: 1px solid `#d9d9d9`
+- Size: 30 × 30
+- Checked: 1px solid `#640faf`
+- Use: Gallery and list switch on the brand page
+
+### Inputs
+
+**Option select**
+- Text: `#111111`
+- Border: 1px solid `#d9d9d9`
+- Padding: 0px 33px 0px 15px
+- Height: 45px
+- Use: Product option selector, 470 × 45
+
+**Search field**
+- Text: `#111111`
+- Padding: 0px 50px 0px 0px
+- Height: 46px
+- Font: 18px 400 Pretendard (home)
+- Use: Header search, 314 × 46; the input itself draws no border
 
 ---
 
-**Verified:** 2026-07-02 (omd:add-reference CREATE — Tier 1 live inspect, 2 surfaces)
-**Tier 1 sources:** https://www.cjonstyle.com, https://display.cjonstyle.com/p/item/2086524438, https://medium.com/cj-onstyle
-**Tier 2 sources:** getdesign.md/cjonstyle (app-shell only, no CJ ONSTYLE entry); styles.refero.design/?q=cjonstyle (not listed — generic browse grid)
-**Conflicts unresolved:** none (Tier 2 supplied no CJ ONSTYLE data to conflict)
+**Verified:** 2026-09-30 (deterministic collector capture of three public, logged-out display.cjonstyle.com pages and first-party context from corp.cjonstyle.com)
+**Tier 1 sources:** https://display.cjonstyle.com/p/homeTab/main?hmtabMenuId=H00005 ; https://display.cjonstyle.com/p/item/2090936982 ; https://display.cjonstyle.com/p/brand/00034773 ; https://corp.cjonstyle.com/ko/about/history
+**Tier 2 sources:** getdesign.md/cjonstyle (HTTP 200, the name does not appear in the response) and styles.refero.design/?q=cjonstyle (HTTP 200, the name appears only as the echoed query), requested 2026-09-30; no Tier 2 value used
+**Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
 ### Spacing System
-- Base unit: ~8px, dense at the small end (2px, 4px, 8px)
-- Scale: 2px, 4px, 8px, 12px, 20px, 26px, 48px
-- Notable: sale-badge padding lands at `0px 8px`; the utility bar uses asymmetric `0px 20px 0px 26px` — spacing is tuned per-module rather than from a strict global token set (legacy retail grid)
+- Observed paddings: 22px 50px 22px 72px on the entry banner, 0 33px 0 15px on the option select, 0 20px 0 26px on skip links, 0 8px 0 12px on "more" chips, 0 12px 0 5px on filter chips.
+- Spacing is tuned per module rather than taken from one scale.
 
 ### Grid & Container
-- Fixed-width centered content column with a persistent header: utility chrome bar (`#26292a`), logo + search + GNB, then a dense product grid
-- Home is a stack of full-width promotional banners over multi-column product tile grids
-- PDP is a two-column layout (media left, buy panel right) with a sticky/prominent violet buy CTA
-- Sections alternate white (`#ffffff`) and tinted grey (`#f5f5f5`, `#f0f0f0`) bands
+- A fixed-width centred column under a persistent header: logo heading, search, then the global navigation with the 카테고리 toggle at its left.
+- The home tab stacks modules, each with a 26px title, filter chips and a "more" link. The product page pairs media with a buy panel (option select, then 찜, 선물하기, 장바구니 and 바로구매 in one 60px row) and section tabs below.
 
 ### Whitespace Philosophy
-- **Density over air**: as a high-catalog commerce surface, tiles are packed tightly; whitespace is minimal and purposeful, prioritizing products-per-viewport.
-- **Flat segmentation**: bands separate by background tint and `#e5e5e5` hairlines, never by shadow.
-- **Signal by color, not space**: emphasis is created with the violet CTA and magenta price, not with generous margins.
+- Density over air: many products per viewport, separated by thin grey lines rather than space.
 
 ### Border Radius Scale
-- Micro (2px): sale/benefit badges, product cards — the dominant rounding (×225 in scan)
-- Small (4px): buy / inquiry / wishlist buttons
-- Chip (11px): pill chips and small controls
-- Control (18px): carousel prev/next controls
-- Full (9999px / 50%): circular carousel pause / round controls
+- 0px: navigation, tabs, inputs, page arrows
+- 2px: entry banner
+- 4px: purchase buttons, filter reset
+- 14px: "more" chips
+- 18px: filter chips and carousel controls
+- 50%: pagination dot and pause control
 
 ## 6. Depth & Elevation
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, product tiles, nav, buttons |
-| Tint (Level 1) | `#f5f5f5` / `#f0f0f0` background shift | Card/section separation without elevation |
-| Hairline (Level 2) | `1px solid #e5e5e5` border | Card outlines, tab underlines, dividers |
-| Scrim (Level 3) | `rgba(0,0,0,0.2)` overlay on imagery | Sale badges + text legibility over product photos |
+| Flat | No shadow | Buttons, tabs, chips, cards |
+| Line | 1px greys `#b2b2b2` to `#e6e6e6` | Controls and separators |
+| Fill | `#f0f0f0` | Entry banner |
 
-**Shadow Philosophy**: CJ ONSTYLE is a near-shadowless commerce system. Live inspection found `box-shadow: none` across the header, GNB, buy CTA, and product cards. Depth and grouping are communicated through flat tinted surfaces (`#f5f5f5`, `#f0f0f0`) and thin `#e5e5e5` hairlines, with a translucent black scrim (`rgba(0,0,0,0.2)`) used only to keep white badge text legible over product imagery. This flatness is characteristic of high-density Korean retail: it keeps the grid fast, printable-flat, and free of the heavy card-stack look that would slow scanning across hundreds of tiles.
+No captured control draws a shadow; separation is by line and fill.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Reserve violet (`#640faf`) for the primary buy action and active states — keep it the single "commit" color
-- Use magenta (`#ec0040`) for discount rates and price emphasis
-- Set body and nav in Nanum Barun Gothic at a dense 12–15px, weight 400
-- Use Pretendard weight 700 for loud promo headlines and sale/benefit badges
-- Separate sections with flat tint (`#f5f5f5`/`#f0f0f0`) and `#e5e5e5` hairlines, not shadows
-- Keep geometry sharp — 0px on nav/inputs, 2px on badges, 4px on buy buttons
-- Use black (`#000000`) / near-black (`#111111`) for product titles for maximum tile scan-ability
-- Overlay sale badges on a `rgba(0,0,0,0.2)` scrim so white text stays legible on imagery
+- Use `#640faf` for the purchase action, its outlined partners and selected states
+- Keep text black or near-black (`#000000`, `#111111`) on white
+- Mark selection by weight (400 to 700) and, on tabs, a 1px underline
+- Use 4px corners on purchase buttons and square corners in the shell
+- Separate with 1px grey lines
 
 ### Don't
-- Spread violet across many elements — it dilutes the single buy-action signal
-- Use drop shadows for elevation — CJ ONSTYLE is a near-flat system
-- Set the shell in Pretendard — Nanum Barun Gothic owns the dense body/nav
-- Use large pill radii on buttons or cards — buttons are 4px, cards 2px; pills only appear on carousel controls
-- Add generous whitespace at the expense of product density — this is a throughput-first catalog
-- Introduce a second saturated action color — violet is the only "commit" hue
-- Use magenta (`#ec0040`) for navigation or non-price UI — it reads exclusively as "deal/price"
+- Spread violet into decoration or running text
+- Add shadows to cards or buttons
+- Round the shell; pills belong to chips and carousel controls
+- Name 나눔바른고딕 as the rendered face; it never loaded from the site
 
 ## 8. Responsive Behavior
 
 ### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single/two-up product grid, hamburger nav, sticky bottom buy bar on PDP |
-| Tablet | 768-1024px | Moderate multi-column tile grid, condensed GNB |
-| Desktop | 1024-1440px | Full fixed-width grid, full GNB, two-column PDP |
+Only the 1440 × 900 desktop viewport of the PC storefront was captured; its assets are the `-pc` builds. No breakpoint was measured.
 
 ### Touch Targets
-- Buy CTA at 60px height, full-width on PDP — an unmistakable primary target
-- Wishlist (찜) at 60px square-ish outlined button
-- Nav items spaced within the header for touch; utility links compact at 12px
+- Product-page tabs: 62px
+- Buy row: 60px
+- Category toggle: 54px
+- Search field: 46px
+- Option select: 45px
+- Filter reset and page arrows: 40px
+- Filter chips and carousel controls: 36px
+- Skip links: 34px
+- "More" chips: 28px
 
 ### Collapsing Strategy
-- Product grid: multi-column → two-up → single column on narrow viewports
-- GNB: horizontal menu → hamburger / drawer
-- PDP: two-column media+buy panel → stacked, with the violet buy CTA pinned to a sticky bottom bar
-- Promotional banners: maintain full-width, crop imagery, scale the 26px headline down
+- Not captured; only the PC layout was measured.
 
 ### Image Behavior
-- Product imagery and banners carry no shadow at any size, consistent with the flat system
-- Sale badges overlay imagery on a translucent scrim to preserve legibility
-- Cards keep 2px radius across breakpoints
+- Product images sit in square frames without shadows.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary buy CTA: CJ ONSTYLE Violet (`#640faf`)
-- Sale / price accent: Magenta (`#ec0040`)
-- Promo red / orange: `#d53225` / `#f26d00`
-- Product title text: Ink Black (`#000000`)
-- Nav / input text: Nav Ink (`#111111`)
-- Secondary / muted text: `#2a2a2a`, `#666666`, `#767676`
-- Background: Pure White (`#ffffff`)
-- Tinted surface: `#f5f5f5` / `#f0f0f0`
-- Hairline / tab underline: `#e5e5e5`
-- Outlined-button border: `#b2b2b2`
-- Dark chrome bar: `#26292a`
+- Purchase action and selection: CJ ONSTYLE Violet (`#640faf`), label `#ffffff`
+- Text: `#000000`, `#111111`; selected tab `#333333`; secondary `#767676`, `#929292`
+- Lines: `#b2b2b2`, `#c5c5c5`, `#d1d1d1`, `#d9d9d9`, `#e6e6e6`
+- Surfaces: `#ffffff`; banner `#f0f0f0`; skip bar `#26292a`
 
 ### Example Component Prompts
-- "Create a product-detail buy bar: a full-width `바로구매` button, background #640faf, white text, 1px solid #640faf border, 4px radius, 60px height, 20px Nanum Barun Gothic; beside it a square 찜 wishlist button, white background, #111111 text, 1px solid #b2b2b2 border, 4px radius."
-- "Build a product card: white #ffffff background, 1px solid #e5e5e5 border, 2px radius, no shadow. Title in black #000000 12px Nanum Barun Gothic; price in black; a sale badge overlaying the image — white text, 12px/700 Pretendard, 2px radius, 0px 8px padding, on a rgba(0,0,0,0.2) scrim."
-- "Create a global nav: white header with a dark #26292a utility bar above. Nav items 15px Nanum Barun Gothic #111111, violet #640faf on the active item. Header search input, Pretendard 18px, #111111 text, underline style."
-- "Design a promo banner headline: Pretendard 26px weight 700, white text over imagery, with a magenta #ec0040 discount rate emphasized."
+- "Build a product buy row: 64 × 60 찜 toggle (white, 1px solid #b2b2b2, radius 4px), 선물하기 and 장바구니 outlined in 1px solid #640faf with #640faf labels, and 바로구매 filled #640faf with a white 20px label, all 60px tall with 4px corners."
+- "Create home module filter chips: 36px tall, radius 18px, white with 1px solid #e6e6e6 and #111111 15px Pretendard; the selected chip fills #111111 with white bold text."
+- "Add product-page tabs: 253 × 62, white, 18px text in #767676 with a 1px #767676 underline; the selected tab is #333333 bold with a 1px #333333 underline."
 
 ### Iteration Guide
-1. Violet (`#640faf`) is the single buy-action color — don't spread it
-2. Magenta (`#ec0040`) means price/deal only
-3. Nanum Barun Gothic for the dense shell; Pretendard for loud promo copy
-4. No shadows — separate with `#f5f5f5`/`#f0f0f0` tint and `#e5e5e5` hairlines
-5. Sharp geometry — 0px nav/inputs, 2px badges/cards, 4px buttons
-6. Text is black/near-black on white for tile scan-ability
-7. Sale badges sit on a `rgba(0,0,0,0.2)` scrim for legibility over imagery
+1. Violet `#640faf` means buy or selected
+2. Black-on-white, dense, square
+3. 4px on purchase buttons, 18px pills only on chips
+4. Lines, not shadows
 
 ---
 
 ## 10. Voice & Tone
 
-CJ ONSTYLE's voice is **brisk, benefit-forward, and deal-driven** — the register of a trusted home-shopping host translating a live pitch into a scannable screen. Copy leads with the offer ("~50%할인", "5%카드", "적립5%") and the concrete product benefit, in plain, high-energy Korean. It treats the shopper as a value-seeker who wants the discount, the terms, and the "buy" path with minimal friction. Where a fintech might reassure, CJ ONSTYLE motivates.
+CJ ONSTYLE sells like a home-shopping host: offer first, then benefit, then the buy path. Its corporate voice adds curation and taste ("트렌드 PICK 라이브 편집샵"). On the storefront, copy is short and concrete: discount rates, benefits and broadcast times.
 
 | Context | Tone |
 |---|---|
-| Promo headlines | High-energy, offer-first. "빕스바우처 ~56%". Numbers and rates lead. |
-| Benefit badges | Terse, factual perks. "적립5%", "카드 5%", "네이버포인트". |
-| Buy CTAs | Direct imperatives. "바로구매", "장바구니", "상품문의". |
-| Product titles | Descriptive, spec-forward, plain black text. |
-| Utility / nav | Neutral and functional. "로그인", "마이존", "카테고리". |
+| Module titles and banners | Offer-first: brand, season, discount ("에르헴 26FW 신상 · 미리주문 쿠폰 10% · ~10%할인") |
+| Live and TV | Time-stamped and immediate ("라이브쇼 · 방송일정 · 오늘 21:00") |
+| Social proof | Live counts ("지금 1,149명이 이 상품을 보고 있어요") |
+| Buy row | Direct imperatives: 바로구매, 장바구니, 선물하기 |
+| Corporate | Aspirational: "콘텐츠로 발견하고, 취향으로 완성하는 쇼핑" |
 
-**Voice samples (verbatim from live surfaces):**
-- "바로구매" — PDP primary buy CTA (direct commit imperative). *(verified live 2026-07-02)*
-- "빕스바우처 ~56%" — promo banner headline (offer-first, rate leads). *(verified live 2026-07-02)*
-- "적립5% / 카드 5% / 네이버포인트" — benefit overlay badges (terse perks). *(verified live 2026-07-02)*
+**Voice samples (verbatim from pages opened on 2026-09-30):**
+- "에르헴 26FW 신상 / 미리주문 쿠폰 10% / ~10%할인" (home tab banner link)
+- "지금 1,149명이 이 상품을 보고 있어요" (home tab product link)
+- "트렌드 PICK 라이브 편집샵 — 콘텐츠로 발견하고, 취향으로 완성하는 쇼핑" (corp.cjonstyle.com)
 
-**Forbidden register**: vague lifestyle poetry with no offer, undefined jargon, hesitant hedging on price, and low-contrast "quiet luxury" copy that hides the deal. The deal is the message.
+**Forbidden register**: vague lifestyle copy with no offer, hedging on price.
 
 ## 11. Brand Narrative
 
-CJ ONSTYLE (CJ온스타일) is the commerce arm of Korea's CJ Group, born from the country's pioneering TV home-shopping business (CJ오쇼핑 / CJ홈쇼핑) and relaunched under the **CJ ONSTYLE** brand in **2021** as a converged "live commerce + mobile shopping" platform. The rebrand unified CJ's TV broadcast, mobile app, and web storefront into a single style-and-living destination — the name itself fuses "ON" (always-on, on-air, online) with "STYLE," signaling the shift from a channel you watch to a shopping surface you live in.
+CJ온스타일's history page calls its story "쇼핑의 방식을 바꿔온 30여년의 여정": a multichannel business spanning TV and mobile that moved to a one-platform, one-brand strategy. The milestones it lists are:
+- 1995: Korea's first TV home-shopping channel
+- 2000: acquired by CJ Group
+- 2001: the CJmall internet store
+- 2010: the industry's first smartphone shopping app, mobile CJmall
+- 2012: the first in the industry to pass 1 trillion won in sales
+- 2017: the industry's first mobile live commerce
+- 2018: the CJ E&M merger and the birth of CJ ENM
+- 2021: the unified brand CJ온스타일
+- 2024: a very large mobile live show
+- 2026: a global own-brand mall
 
-The product DNA is unmistakably retail-television: a host's job is to make the value legible in seconds and move the viewer to purchase before the segment ends. That urgency is baked into the digital surface — the offer leads, the benefit badges stack, and the violet buy button is never more than a glance away. CJ ONSTYLE positions itself as a curated style-and-home destination rather than a bargain-bin marketplace, which is why the chrome stays clean and black-on-white while the promotional layer carries the color and noise.
+By the numbers it publishes, CJ ONSTYLE had 1조 5,180억 won in sales in 2025, 66% growth in mobile live that year, 80 million annual mobile-live visitors, 20,000 brands in the app and 54 live IPs, which it calls the most in the industry. It describes itself as Korea's first video-commerce operator, a live pioneer from TV in 1995 to mobile in 2017.
 
-What the design refuses: the heavy, decorative card-stacking of legacy portals (it stays flat and fast) and the cold minimalism of design-boutique commerce (it keeps the deal loud). What it embraces: density that respects a catalog of thousands of SKUs, a single trustworthy violet for the commit action, and a magenta price accent that reads instantly as "here is the deal."
+Its mission page says CJ온스타일 expresses CJ Group's ONLYONE philosophy in the language of commerce. It aims to understand customers' lifestyles deeply, suggest tastes and needs they have not yet discovered, and connect products and content naturally. It calls "authentic recommendations and sensory products for the best lifestyle shopping experience" the direction of ONLYONE commerce. The business pages frame content commerce from TV to mobile, SNS and OTT, celebrity and influencer IP, trend-led curation and global expansion of K-lifestyle.
+
+The storefront shows that lineage: dense, offer-led modules, broadcast times on product tiles, and one violet that means "buy".
 
 ## 12. Principles
 
-1. **The offer leads.** Home shopping sells the value first. *UI implication:* surface discount rate, benefit badges, and price before secondary detail; let the magenta (`#ec0040`) price accent do the pulling.
-2. **One color means "buy."** Violet (`#640faf`) is the commit signal. *UI implication:* reserve the saturated violet for the primary buy CTA and active states — never dilute it across decorative chrome.
-3. **Density is a feature, not a flaw.** A catalog of thousands must be scannable. *UI implication:* pack tiles tightly, keep type dense (12px body), and prefer tint/hairline separation over space-hungry cards.
-4. **Flat and fast.** Elevation slows a high-traffic grid. *UI implication:* no shadows; separate with `#f5f5f5`/`#f0f0f0` tint and `#e5e5e5` hairlines; keep the page quick to paint and scan.
-5. **Quiet shell, loud pitch.** *UI implication:* Nanum Barun Gothic black-on-white for the navigation and product chrome; Pretendard bold plus the violet/magenta palette for the promotional layer.
+1. **The offer leads.** *UI implication:* discount, benefit and broadcast time sit on the tile before secondary detail.
+2. **One colour means buy.** *UI implication:* `#640faf` is kept for purchase actions and selection.
+3. **Density is a feature.** *UI implication:* small type, square cells, thin grey lines.
+4. **Content drives commerce.** *UI implication:* live and TV labels (라이브쇼, 방송일정) ride on product tiles.
+5. **Flat and fast.** *UI implication:* no shadows; lines and fills separate.
 
 ## 13. Personas
 
 *Personas below are fictional archetypes informed by publicly observable CJ ONSTYLE user segments (TV-home-shopping loyalists, mobile deal-seekers, style-and-home shoppers), not individual people.*
 
-**이영숙, 54, 대전.** A long-time TV home-shopping viewer who now buys through the app during and after broadcasts. Trusts the CJ ONSTYLE brand and the host's pitch; wants the offer, the card benefit, and the buy button obvious without hunting.
+**이영숙, 54, 대전.** A long-time TV home-shopping viewer who now buys through the app during broadcasts; wants the offer, the card benefit and the buy button obvious.
 
-**박지훈, 33, 서울.** A mobile-first deal-seeker who scans the home grid for the day's best discounts. Values density — he wants to compare many tiles and rates fast — and taps the violet 바로구매 the moment the price and points add up.
+**박지훈, 33, 서울.** A mobile-first deal-seeker who scans the home modules for the day's discounts and taps 바로구매 once the price adds up.
 
-**최은정, 41, 경기.** A style-and-home shopper browsing curated fashion and living categories. Appreciates the clean black-on-white product chrome that lets the merchandise photography carry the page, with the deal badges layered only where they add value.
+**최은정, 41, 경기.** A style-and-home shopper browsing brand pages, who likes the clean black-on-white chrome that lets product photography carry the page.
 
 ## 14. States
 
-| State | Treatment |
+Only these states were observed on the three captured pages; nothing else is specified here.
+
+| State | Observation |
 |---|---|
-| **Empty (no search results)** | White canvas. Single black (`#000000`) line explaining no matching products, with a path back to categories. No decorative illustration. |
-| **Empty (empty cart)** | Muted grey (`#666666`) line: nothing in the cart yet, plus a violet CTA back to shopping. Calm, functional. |
-| **Loading (grid fetch)** | Skeleton tiles on `#f5f5f5` at final card dimensions, 2px radius. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
-| **Loading (buy action)** | Inline spinner within the violet buy button; button stays `#640faf` and disables to prevent double-submit. |
-| **Error (payment/checkout failed)** | Inline message in near-black (`#111111`) with a plain-language cause and a retry path. States what to do next, not just a generic failure. |
-| **Error (form validation)** | Field-level message below the input; describes what is valid (e.g. address, card), not just "필수". |
-| **Success (order placed)** | Confirmation screen with order summary; next-step detail (delivery, tracking) linked immediately. Restrained tone, no confetti. |
-| **Skeleton** | `#f5f5f5` blocks at final tile dimensions, 2px radius, flat pulse. |
-| **Sold out / unavailable** | Buy CTA switches to a disabled grey state; the violet is removed so "buy" is never implied when unavailable. |
-| **Disabled** | Faint grey (`#929292`) text on reduced-opacity surface; violet actions fade rather than switch hue, preserving the brand read. |
+| **Hover / pressed (category toggle)** | The 카테고리 toggle fills `#640faf` with `#ffffff` text; the bundle's hover and pressed frames agree. |
+| **Selected** | Product-page tab: `#333333`, 700, 1px `#333333` underline. Home filter chip: `#111111` fill, white bold text. Brand-page pagination: `#640faf` dot. Brand-page view toggle: `#640faf` outline. |
+| **Hidden until focus** | Skip links sit 34px above the viewport; their focused appearance was not measured. |
+| **Unmeasured** | The home tab's pseudo-state and interaction passes stalled after 90 seconds and were logged as unmeasured. The buy row was not probed. Focus was not measured anywhere. |
+
+Error, empty, loading, sold-out and success states were not captured and are not described.
 
 ## 15. Motion & Easing
 
-**No motion duration or easing token is promoted.** The capture bundle for this
-reference records no transition or animation property, and no official source consulted
-publishes a motion scale. The behaviour described below was observed; treat any exact
-duration or curve as a local extension until a component-level official source verifies it.
-
-**Motion rules**: Motion is functional and quiet — consistent with the flat, high-throughput grid. The hero banner carousel auto-advances on a slow cadence with a horizontal slide; tap feedback on buttons and tiles is a subtle opacity/scale shift. Nothing bounces or springs — a commerce grid signals reliability and speed, not playfulness. Under `prefers-reduced-motion: reduce`, the carousel stops auto-advancing and all transitions collapse to instant; the storefront remains fully functional.
+No transition or animation value was measured for any storefront control, and no official source consulted publishes a motion scale. The home hero carousel has previous, next and pause controls, but its timing was not measured. Treat motion as unspecified.
 
 <!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on
-https://www.cjonstyle.com (→ display.cjonstyle.com/p/homeTab/main) and
-https://display.cjonstyle.com/p/item/2086524438:
-- Buy CTA "바로구매" — bg rgb(100,15,175) #640faf / white text / 4px radius / 60px height / 20px
-- Sale/benefit badges "적립5%","카드 5%","~50%할인" — white 12px/700 Pretendard on rgba(0,0,0,0.2) scrim / 2px radius
-- Promo banner headline "빕스바우처 ~56%" — Pretendard 26px/700 white
-- GNB nav — Nanum Barun Gothic 15px #111111; body default #000000 12px/18px
-- box-shadow none across nav/GNB/buy CTA/cards (near-flat system)
-- document.title "홈 | CJ온스타일"
-
-Token-level claims (§1-9) are sourced from this live inspection (see .verification.md Proof block).
-
-Voice samples (§10) are verbatim from live surfaces (PDP buy CTA, promo banner headline, benefit badges).
-
-Brand narrative (§11): CJ ONSTYLE is the CJ Group commerce brand relaunched in 2021 from
-CJ오쇼핑/CJ홈쇼핑 (TV home shopping) as a converged live-commerce + mobile platform. These are
-widely documented public facts about the company; specific details beyond the homepage are
-general public knowledge, not directly quoted from a verified CJ ONSTYLE statement in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable CJ ONSTYLE user
-segments (TV home-shopping loyalists, mobile deal-seekers, style-and-home shoppers). Names
-are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "the offer leads", "one color means buy", "quiet shell, loud pitch")
-are editorial readings connecting CJ ONSTYLE's observed design to its home-shopping heritage,
-not directly sourced CJ ONSTYLE statements.
+Sources — 2026-09-30
+Capture: artifacts/reference-evidence/cjonstyle.json (capturedAt 2026-09-30T10:03:52.723Z; surfaces home tab, product item 2090936982, brand 00034773; coverage 100).
+Narrative: corp.cjonstyle.com/ko, /ko/about/history, /ko/about/who-we-are, opened 2026-09-30.
+Personas are fictional archetypes; names do not refer to real people.
 -->

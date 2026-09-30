@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 265,
-  "sources": 1577,
+  "references_with_verification_v2": 276,
+  "sources": 1668,
   "sources_by_kind": {
-    "brand-asset": 78,
-    "license": 102,
-    "official-doc": 642,
-    "product-surface": 755
+    "brand-asset": 79,
+    "license": 112,
+    "official-doc": 666,
+    "product-surface": 811
   },
   "references": {
     "104": {
@@ -242,6 +242,60 @@
           "kind": "product-surface",
           "captured": "2026-09-30",
           "host": "42dot.ai"
+        }
+      ]
+    },
+    "8percent": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "8percent-blog-eds",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "8percent.github.io"
+        },
+        {
+          "id": "8percent-careers",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "8percent.careers.team"
+        },
+        {
+          "id": "8percent-probe-disclosures",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.8percent.kr"
+        },
+        {
+          "id": "8percent-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.8percent.kr"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.8percent.kr"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.8percent.kr"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.8percent.kr"
         }
       ]
     },
@@ -1490,6 +1544,54 @@
           "kind": "official-doc",
           "captured": "2026-09-23",
           "host": "citymapper.com"
+        }
+      ]
+    },
+    "cjonstyle": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "cj-corp",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "corp.cjonstyle.com"
+        },
+        {
+          "id": "cj-history",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "corp.cjonstyle.com"
+        },
+        {
+          "id": "cj-who",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "corp.cjonstyle.com"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "display.cjonstyle.com"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "display.cjonstyle.com"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "display.cjonstyle.com"
         }
       ]
     },
@@ -3260,6 +3362,48 @@
           "kind": "license",
           "captured": "2026-07-13",
           "host": "github.com"
+        }
+      ]
+    },
+    "genie": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "genie-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.genie.co.kr"
+        },
+        {
+          "id": "geniemusic-overview",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.geniemusic.co.kr"
+        },
+        {
+          "id": "geniemusic-service",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.geniemusic.co.kr"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.genie.co.kr"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.genie.co.kr"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.genie.co.kr"
         }
       ]
     },
@@ -5123,6 +5267,48 @@
         }
       ]
     },
+    "laundrygo": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "laundrygo-font",
+          "kind": "brand-asset",
+          "captured": "2026-09-30",
+          "host": "www.laundrygo.com"
+        },
+        {
+          "id": "laundrygo-probe-business",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.laundrygo.com"
+        },
+        {
+          "id": "laundrygo-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.laundrygo.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.laundrygo.com"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.laundrygo.com"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.laundrygo.com"
+        }
+      ]
+    },
     "lego": {
       "checked": "2026-09-26",
       "claims": 0,
@@ -5630,6 +5816,72 @@
           "kind": "official-doc",
           "captured": "2026-09-26",
           "host": "joy.malt.com"
+        }
+      ]
+    },
+    "maum-ai": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "maum-ai-probe-gpt",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "maum.ai"
+        },
+        {
+          "id": "maum-ai-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "maum.ai"
+        },
+        {
+          "id": "maum-ai-probe-physical",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "maum.ai"
+        },
+        {
+          "id": "maum-brain-blog",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "maum-ai.github.io"
+        },
+        {
+          "id": "maum-company",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "maum.ai"
+        },
+        {
+          "id": "maum-github",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "github.com"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "maum.ai"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "maum.ai"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "maum.ai"
         }
       ]
     },
@@ -7661,6 +7913,66 @@
         }
       ]
     },
+    "pozalabs": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "hack-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "pozalabs-blog",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "blog.pozalabs.com"
+        },
+        {
+          "id": "pozalabs-probe-about",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.pozalabs.com"
+        },
+        {
+          "id": "pozalabs-probe-service",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.pozalabs.com"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "sanchez-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.pozalabs.com"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.pozalabs.com"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.pozalabs.com"
+        }
+      ]
+    },
     "qiita": {
       "checked": "2026-09-22",
       "claims": 0,
@@ -7889,6 +8201,138 @@
         }
       ]
     },
+    "returnzero": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "returnzero-probe-developers",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "developers.rtzr.ai"
+        },
+        {
+          "id": "returnzero-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.rtzr.ai"
+        },
+        {
+          "id": "returnzero-probe-pricing",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.rtzr.ai"
+        },
+        {
+          "id": "returnzero-probe-stt",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.rtzr.ai"
+        },
+        {
+          "id": "rtzr-blog",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "blog.rtzr.ai"
+        },
+        {
+          "id": "rtzr-company",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.rtzr.ai"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.rtzr.ai"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.rtzr.ai"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.rtzr.ai"
+        },
+        {
+          "id": "surface-surface-4",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "developers.rtzr.ai"
+        }
+      ]
+    },
+    "ringle": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "ringle-b2b",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.ringleplus.com"
+        },
+        {
+          "id": "ringle-cofounder",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.ringleplus.com"
+        },
+        {
+          "id": "ringle-global-bd",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.ringleplus.com"
+        },
+        {
+          "id": "ringle-probe-1on1",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.ringleplus.com"
+        },
+        {
+          "id": "ringle-probe-company",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.ringleplus.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.ringleplus.com"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.ringleplus.com"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.ringleplus.com"
+        }
+      ]
+    },
     "sainsburys": {
       "checked": "2026-09-26",
       "claims": 0,
@@ -8015,6 +8459,48 @@
         }
       ]
     },
+    "sandoll": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "sandoll-about",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.sandoll.co.kr"
+        },
+        {
+          "id": "sandoll-probe-cloud",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.sandollcloud.com"
+        },
+        {
+          "id": "sandoll-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.sandoll.co.kr"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.sandoll.co.kr"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.sandoll.co.kr"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.sandollcloud.com"
+        }
+      ]
+    },
     "sanity": {
       "checked": "2026-09-19",
       "claims": 0,
@@ -8042,6 +8528,72 @@
           "kind": "official-doc",
           "captured": "2026-09-19",
           "host": "www.sanity.io"
+        }
+      ]
+    },
+    "saramin": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "saramin-probe-domestic",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.saramin.co.kr"
+        },
+        {
+          "id": "saramin-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.saramin.co.kr"
+        },
+        {
+          "id": "saramin-tech-blog",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "saramin.github.io"
+        },
+        {
+          "id": "saraminhr-company",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.saraminhr.co.kr"
+        },
+        {
+          "id": "saraminhr-culture",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.saraminhr.co.kr"
+        },
+        {
+          "id": "saraminhr-home",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.saraminhr.co.kr"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.saramin.co.kr"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.saramin.co.kr"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.saramin.co.kr"
         }
       ]
     },
@@ -10268,6 +10820,66 @@
           "kind": "product-surface",
           "captured": "2026-09-26",
           "host": "www.vipps.no"
+        }
+      ]
+    },
+    "vuno": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "poppins-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.vuno.co"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.vuno.co"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.vuno.co"
+        },
+        {
+          "id": "vuno-history",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.vuno.co"
+        },
+        {
+          "id": "vuno-news",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.vuno.co"
+        },
+        {
+          "id": "vuno-probe-deepcars",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.vuno.co"
+        },
+        {
+          "id": "vuno-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.vuno.co"
+        },
+        {
+          "id": "vuno-story",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.vuno.co"
         }
       ]
     },

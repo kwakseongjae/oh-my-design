@@ -5,53 +5,157 @@ display_name_kr: 포자랩스
 country: KR
 category: ai
 homepage: "https://www.pozalabs.com/"
-primary_color: "#aba1fa"
+primary_color: "#000000"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=pozalabs.com&sz=128"
-verified: "2026-07-02"
+verified: "2026-09-30"
 added: "2026-07-02"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://www.pozalabs.com/ko/", inspected: "2026-09-30" }
+    - { id: surface-2, kind: corporate, url: "https://www.pozalabs.com/ko/about/", inspected: "2026-09-30" }
+    - { id: surface-3, kind: marketing, url: "https://www.pozalabs.com/ko/service/", inspected: "2026-09-30" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://www.pozalabs.com/ko/", captured: "2026-09-30" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://www.pozalabs.com/ko/about/", captured: "2026-09-30" }
+    - { id: surface-surface-3, kind: product-surface, url: "https://www.pozalabs.com/ko/service/", captured: "2026-09-30" }
+    - { id: pozalabs-probe-about, kind: product-surface, url: "https://www.pozalabs.com/ko/about/", captured: "2026-09-30" }
+    - { id: pozalabs-probe-service, kind: product-surface, url: "https://www.pozalabs.com/ko/service/", captured: "2026-09-30" }
+    - { id: pozalabs-blog, kind: official-doc, url: "https://blog.pozalabs.com/", captured: "2026-09-30" }
+    - { id: pretendard-license, kind: license, url: "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE", captured: "2026-09-30" }
+    - { id: hack-license, kind: license, url: "https://raw.githubusercontent.com/source-foundry/Hack/master/LICENSE.md", captured: "2026-09-30" }
+    - { id: sanchez-license, kind: license, url: "https://raw.githubusercontent.com/google/fonts/main/ofl/sanchez/OFL.txt", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &navcur { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-09-30" }
+    "tokens.colors.ink": &hero { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h1", captured: "2026-09-30" }
+    "tokens.colors.secondary": &navoff { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"2\"]", captured: "2026-09-30" }
+    "tokens.colors.charcoal": &pill { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-09-30" }
+    "tokens.colors.border-hover": &pillprobe { surface_id: surface-2, source_id: pozalabs-probe-about, method: live-state-probe, selector: "a English (101.8 x 36): rest fg rgb(51, 51, 51), border 1px solid rgba(0, 0, 0, 0.2); hover and pressed border -> 1px solid rgb(148, 148, 148), label unchanged; transition color, background-color, border-color, text-decoration-color, fill, stroke 0.15s cubic-bezier(0.4, 0, 0.2, 1)", captured: "2026-09-30" }
+    "tokens.colors.inverse": &inverse { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::p", captured: "2026-09-30" }
+    "tokens.colors.inverse-muted": &inverse2 { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::p", captured: "2026-09-30" }
+    "tokens.colors.white": &cta { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::span", captured: "2026-09-30" }
+    "tokens.typography.family.display": &body { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
+    "tokens.typography.family.korean": *body
+    "tokens.typography.display-hero.size": *hero
+    "tokens.typography.display-hero.weight": *hero
+    "tokens.typography.display-hero.lineHeight": *hero
+    "tokens.typography.display-hero.use": *hero
+    "tokens.typography.display.size": &display { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h1", captured: "2026-09-30" }
+    "tokens.typography.display.weight": *display
+    "tokens.typography.display.lineHeight": *display
+    "tokens.typography.display.use": *display
+    "tokens.typography.headline.size": &headline { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::p", captured: "2026-09-30" }
+    "tokens.typography.headline.weight": *headline
+    "tokens.typography.headline.lineHeight": *headline
+    "tokens.typography.headline.use": *headline
+    "tokens.typography.tagline.size": &tagline { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::article", captured: "2026-09-30" }
+    "tokens.typography.tagline.weight": *tagline
+    "tokens.typography.tagline.lineHeight": *tagline
+    "tokens.typography.tagline.use": *tagline
+    "tokens.typography.body-lg.size": &albumtitle { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h2", captured: "2026-09-30" }
+    "tokens.typography.body-lg.weight": *albumtitle
+    "tokens.typography.body-lg.lineHeight": *albumtitle
+    "tokens.typography.body-lg.use": *albumtitle
+    "tokens.typography.section-label.size": &seclabel { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h2", captured: "2026-09-30" }
+    "tokens.typography.section-label.weight": *seclabel
+    "tokens.typography.section-label.lineHeight": *seclabel
+    "tokens.typography.section-label.use": *seclabel
+    "tokens.typography.button.size": *cta
+    "tokens.typography.button.weight": *cta
+    "tokens.typography.button.lineHeight": *cta
+    "tokens.typography.button.use": *cta
+    "tokens.typography.nav.size": *navcur
+    "tokens.typography.nav.weight": *navcur
+    "tokens.typography.nav.lineHeight": *navcur
+    "tokens.typography.nav.use": *navcur
+    "tokens.typography.body.size": *body
+    "tokens.typography.body.weight": *body
+    "tokens.typography.body.lineHeight": *body
+    "tokens.typography.body.use": *body
+    "tokens.typography.label.size": &label { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.typography.label.weight": *label
+    "tokens.typography.label.lineHeight": *label
+    "tokens.typography.label.use": *label
+    "tokens.spacing.pill-x": *pill
+    "tokens.spacing.pill-y": *pill
+    "tokens.spacing.list-y": &list { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::li", captured: "2026-09-30" }
+    "tokens.spacing.footer-x": *label
+    "tokens.rounded.none": *navcur
+    "tokens.rounded.card": &album { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::div", captured: "2026-09-30" }
+    "tokens.rounded.pill": *pill
+    "tokens.components.language-pill.type": *pill
+    "tokens.components.language-pill.fg": *pill
+    "tokens.components.language-pill.border": *pill
+    "tokens.components.language-pill.radius": *pill
+    "tokens.components.language-pill.padding": *pill
+    "tokens.components.language-pill.height": *pill
+    "tokens.components.language-pill.font": *pill
+    "tokens.components.language-pill.hover": *pillprobe
+    "tokens.components.language-pill.pressed": *pillprobe
+    "tokens.components.language-pill.states": *pillprobe
+    "tokens.components.language-pill.use": *pill
+    "tokens.components.nav-item.type": *navoff
+    "tokens.components.nav-item.fg": *navoff
+    "tokens.components.nav-item.height": *navoff
+    "tokens.components.nav-item.font": *navoff
+    "tokens.components.nav-item.selected": *navcur
+    "tokens.components.nav-item.hover": &navprobe { surface_id: surface-3, source_id: pozalabs-probe-service, method: live-state-probe, selector: "a 소개 in the header on /ko/service/ (27.7 x 28): rest fg rgb(102, 102, 102), 16px/350; hover and pressed fg -> rgb(51, 51, 51) with underline solid rgb(51, 51, 51); transition all 0s; ancestors nav and header bg rgb(255, 255, 255). On /ko/about/ (pozalabs-probe-about) 소개 rests at rgb(0, 0, 0) and shows no change", captured: "2026-09-30" }
+    "tokens.components.nav-item.pressed": *navprobe
+    "tokens.components.nav-item.states": *navprobe
+    "tokens.components.nav-item.use": *navoff
+    "tokens.components.album-card.type": *album
+    "tokens.components.album-card.radius": *album
+    "tokens.components.album-card.shadow": *album
+    "tokens.components.album-card.size": *album
+    "tokens.components.album-card.use": *album
+    "tokens.components.service-cta.type": *cta
+    "tokens.components.service-cta.fg": *cta
+    "tokens.components.service-cta.font": *cta
+    "tokens.components.service-cta.size": *cta
+    "tokens.components.service-cta.states": &ctaprobe { surface_id: surface-3, source_id: pozalabs-probe-service, method: live-state-probe, selector: "span.text-button 보러 가기 (67.1 x 30): fg rgb(255, 255, 255), 18px/350; self, a.relative.overflow-hidden, div.block and div.flex all bg rgba(0, 0, 0, 0), behind none(canvas); hover and pressed no change within that scope", captured: "2026-09-30" }
+    "tokens.components.service-cta.use": *cta
+    "tokens.components.feature-list-item.type": *list
+    "tokens.components.feature-list-item.fg": *list
+    "tokens.components.feature-list-item.padding": *list
+    "tokens.components.feature-list-item.font": *list
+    "tokens.components.feature-list-item.use": *list
 tokens:
-  source: live-extract
-  extracted: "2026-07-02"
-  note: "Two-surface system. Corporate pozalabs.com is monochrome (black #000000 on white #ffffff, oversized Garet display). Product musia.ai carries the purple identity: signature periwinkle #aba1fa accent + saturated violet #6242e1, deep purple-ink surfaces (#030112 / #150e2d / #201d30 / #090719), grey inactive chips #cecdd5, big pill geometry."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
-    primary: "#aba1fa"
-    violet: "#6242e1"
-    ink: "#030112"
-    ink-deep: "#150e2d"
-    surface-dark: "#201d30"
-    surface-darkest: "#090719"
-    black: "#000000"
-    canvas: "#ffffff"
-    chip-muted: "#cecdd5"
-    surface-light: "#eeedf2"
-    muted: "#9f9daa"
-    hairline: "#eeeeee"
+    primary: "#000000"
+    ink: "#000000"
+    secondary: "#666666"
+    charcoal: "#333333"
+    border-hover: "#949494"
+    inverse: "#e7e7e7"
+    inverse-muted: "#a0a0a0"
+    white: "#ffffff"
   typography:
-    family: { display: "Garet", ui: "Inter", kr: "Pretendard", body: "Source Sans Pro", serif: "Sanchez", mono: "Hack" }
-    display-hero: { size: 130, weight: 400, lineHeight: 1.22, use: "Corporate hero headline, Garet — 'Ignite your creativity'" }
-    heading-lg:   { size: 24, weight: 700, use: "Product feature + CTA labels, Inter bold" }
-    nav-ui:       { size: 18, weight: 400, tracking: 0.99, use: "MUSIA product nav links, Inter (uppercase, wide tracking)" }
-    nav-corp:     { size: 16, weight: 400, use: "Corporate nav items, Garet" }
-    body:         { size: 16, weight: 400, lineHeight: 1.5, use: "Body / paragraph text, Source Sans Pro + Noto Sans KR" }
-    caption:      { size: 12, weight: 700, tracking: 0.06, use: "Language selector / small uppercase labels, Inter" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, chip: 28, cta: 40, section: 64 }
-  rounded: { sm: 8, md: 20, lg: 28, xl: 40, full: 9999 }
-  shadow:
-    none: "none"
+    family: { display: "Garet", korean: "Pretendard Variable" }
+    display-hero: { size: 129.6, weight: 400, lineHeight: 1.22, use: "Home hero headline (Ignite your creativity), right-aligned, #000000, 158px line" }
+    display: { size: 60, weight: 300, lineHeight: 1.45, use: "Page headline on /ko/service/ (음악을 만드는 새로운 방법, #000000) and the closing statement on its dark band (#e7e7e7), 87px line" }
+    headline: { size: 40, weight: 300, lineHeight: 1.45, use: "Service names and kicker lines on /ko/service/ (AI 생성 음악 in #666666, 음악을 위한 캔버스 in #000000), 58px line" }
+    tagline: { size: 32, weight: 400, lineHeight: 1.375, use: "The code-style statement under the home hero (with pozalabs as technology: expand(your_creativity)), 44px line" }
+    body-lg: { size: 20, weight: 350, lineHeight: 1.6, use: "Mood album titles and lead copy on /ko/about/ (lead in #333333) and service feature lists, 32px line" }
+    section-label: { size: 20, weight: 400, lineHeight: 1.6, use: "Grey section labels on /ko/about/, #666666, 32px line" }
+    button: { size: 18, weight: 350, lineHeight: 1.67, use: "보러 가기 labels on /ko/service/, #ffffff, 30px line" }
+    nav: { size: 16, weight: 350, lineHeight: 1.75, use: "Header navigation (홈, 소개, 서비스, 연구, 문의, 채용), 28px line" }
+    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Document default on all three pages, Garet then Pretendard Variable, 24px line" }
+    label: { size: 14, weight: 350, lineHeight: 1.43, use: "The English pill and the footer copyright line (#666666), 20px line" }
+  spacing: { pill-x: 14, pill-y: 7, list-y: 20, footer-x: 20 }
+  rounded: { none: 0, card: 8, pill: 9999 }
   components:
-    button-primary: { type: button, bg: "#000000", fg: "#ffffff", radius: "20px", height: "72px", font: "24px / 700 Inter", use: "Primary CTA — 'TRY FOR FREE' on light hero" }
-    button-invert: { type: button, bg: "#ffffff", fg: "#150e2d", radius: "20px", padding: "16px 40px", height: "68px", font: "24px / 700 Inter", use: "Inverted CTA on dark purple section" }
-    chip-selected: { type: badge, bg: "#030112", fg: "#ffffff", radius: "28px", padding: "12px 28px", font: "24px / 700 Inter", use: "Selected segmented feature chip (Songwriting / Instrument / Download)" }
-    chip-unselected: { type: badge, bg: "#cecdd5", fg: "#030112", radius: "28px", padding: "12px 28px", font: "24px / 700 Inter", use: "Unselected segmented feature chip" }
-    lang-button: { type: button, fg: "#aba1fa", border: "3px solid #aba1fa", radius: "8px", padding: "11px 16px", height: "40px", font: "12px / 700 Inter", use: "Language selector outline button (ENGLISH)" }
-    nav-link: { type: tab, fg: "#ffffff", font: "18px / 400 Inter", active: "text #ffffff (inactive links at 50% white)", use: "MUSIA product top nav (PRODUCTS / PRICING / CONTENTS / SUPPORT)" }
-    input-search: { type: input, fg: "#333333", font: "14px Source Sans Pro", use: "Minimal inline text/search field — transparent, no visible chrome until focus" }
-    card-canvas: { type: card, bg: "#ffffff", radius: "8px", use: "White content panel / product card" }
-    card-dark: { type: card, bg: "#201d30", fg: "#ffffff", radius: "20px", use: "Dark purple feature card / immersive section block" }
-    corp-nav-link: { type: listItem, fg: "#000000", font: "16px / 400 Garet", use: "Corporate site nav (About / Service / Research / Contact / Recruit)" }
+    language-pill: { type: button, fg: "#333333", border: "1px solid rgba(0, 0, 0, 0.2)", radius: "9999px", padding: "7px 14px", height: "36px", font: "14px / 350 / 20px Garet", hover: "border 1px solid #949494", pressed: "border 1px solid #949494", states: "the border darkens after a 0.15s cubic-bezier(0.4, 0, 0.2, 1) colour transition; label and fill unchanged; focus not measured", use: "English link at the right end of the header on all three pages at home::[data-omd-capture=\"5\"], 102 x 36, with a globe icon" }
+    nav-item: { type: tab, fg: "#666666", height: "28px", font: "16px / 350 / 28px Garet", selected: "fg #000000 on the current page (소개 on /ko/about/, 서비스 on /ko/service/); on home every item is #000000", hover: "fg #333333 with a solid #333333 underline", pressed: "same as hover", states: "non-current items change without transition (all 0s); the current item shows no change on hover or press; focus not measured", use: "Header navigation at surface-2::[data-omd-capture=\"2\"] on a white header" }
+    album-card: { type: card, radius: "8px", shadow: "rgba(0, 0, 0, 0.05) 2px 4px 10px 0px", size: "190px x 190px", use: "Mood album artwork tiles on /ko/about/ (Uplifting, Relaxing, Hopeful ... 16 instances), each with its title below in 20px / 350; the only shadowed element on the site" }
+    service-cta: { type: button, fg: "#ffffff", font: "18px / 350 / 30px Garet", size: "67px x 30px (label)", states: "the label shows no change on hover or press; the button's fill is painted by a layer outside the probe's scope (the label, its link and two wrappers are transparent), so no background is declared", use: "보러 가기 under eapy, LAIVE and viodio on /ko/service/" }
+    feature-list-item: { type: listItem, fg: "#000000", padding: "20px 0px", font: "20px / 350 / 32px Garet", use: "Feature bullets under each service on /ko/service/ (실시간 MIDI 샘플 생성, 로열티 프리 ...), 800 x 72 rows" }
   components_harvested: true
 ---
 
@@ -59,387 +163,202 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-POZAlabs (포자랩스) is Korea's leading generative-music AI company, and its design language lives in two deliberately different registers. The corporate site (`pozalabs.com`) is austere and gallery-like: a pure white canvas (`#ffffff`) carrying a single oversized Garet display headline in pure black (`#000000`) — "Ignite your creativity" set at roughly 129.6px, weight 400, with a 158px line-height that lets the words breathe like a museum wall label. Beneath it, a code-syntax tagline — `with pozalabs as technology: expand(your_creativity)` — is typeset in the Hack monospace face, signalling that this is an engineering house that treats creativity as something you can call like a function. The result reads as confident, artful, and unhurried: no gradients, no chrome, no shadow — just type, black, and white.
+POZAlabs (포자랩스, Pozalabs inc.) is a Seoul AI-music company. Its company page gives its vision as "Ignite your creativity" and its mission as "Spread the joy of music with AI". It lists its DNA as Tenacious, Prominent, Inspiring, Playful and Spread. What sets it apart, by its own account, is where its data comes from. POZAlabs says it does not train on existing recordings, only on material its in-house composers write for AI training, so its soundtracks can be used without copyright worries. It manages the production, sale and distribution of that music itself. Its dataset paper, ComMU: Dataset for Combinatorial Music Generation, was accepted at NeurIPS, and an automated pipeline from sampling to mixing and mastering can produce a soundtrack in five minutes. The service page lists three products: eapy, "a canvas for music"; LAIVE, an AI music generator; and viodio, an AI background-music subscription for creators. It also takes custom commissions from film, drama, game and advertising clients, with credits including the TV dramas 빈센조 (2021) and 닥터 로이어 (2022), 네이버 MYBOX, and the 2022 World Knowledge Forum theme. Its blog continues the commercial work with sound projects for 롯데건설, 핑크퐁's 아기상어, 포스코이앤씨 and 투니버스.
 
-The product surface (`musia.ai`, the MUSIA AI-composition app) is where the brand's chromatic identity appears. Here the palette turns purple: a signature periwinkle (`#aba1fa`) is the pervasive accent — it colors links, the language selector, and every product wordmark (MUSIA ONE, MUSIA PLUGIN) — while a saturated violet (`#6242e1`) anchors accent blocks and gradients. The UI is built on deep purple-inks: near-black `#030112` for selected controls, a dark purple-ink `#150e2d` for text on inverted CTAs, and immersive dark sections in `#201d30` and `#090719`. Interactive chrome is unmistakably pill-shaped — segmented feature chips at 28px radius, primary CTAs at 20px — rendered in Inter/Pretendard at a bold 24px/700. The font stack shifts from the editorial Garet + Sanchez + Hack trio on the corporate site to a functional Inter + Pretendard + Source Sans Pro system in the app.
-
-What unifies the two surfaces is restraint with depth. Both are essentially shadow-free — live inspection returned `box-shadow: none` across heroes, nav, and cards on both domains. Separation is achieved through flat contrast (black type on white, white chips on dark purple) and generous whitespace rather than elevation. The overall impression is of a company that is technically serious but creatively warm: the monochrome corporate face says "research lab," the periwinkle product face says "for creators," and the pill geometry keeps a professional AI tool from feeling intimidating.
+The website is black on white. The home page carries one sentence, "Ignite your creativity", set in Garet at 129.6px, weight 400, on a 158px line and aligned right. Under it sits a code-style line: "with pozalabs as technology: expand(your_creativity)". The inner pages keep the same palette and the same restraint. Headlines drop to weight 300 at 40–60px. Navigation, lists and body copy use Garet at weight 350, in black or `#666666`. The only rounded forms are a 9999px language pill and 8px album tiles. Colour comes from the album artwork and one dark band on the service page. That band's text is set in `#e7e7e7` and `#a0a0a0`, but its background colour was not read.
 
 **Key Characteristics:**
-- Two-register system: monochrome black-on-white corporate site, periwinkle-purple MUSIA product
-- Oversized Garet display headline (~130px, weight 400) as the corporate hero anchor
-- Code-syntax tagline in Hack monospace — `expand(your_creativity)` — an engineering-house signature
-- Signature periwinkle accent (`#aba1fa`) reserved for links, wordmarks, and the language selector
-- Saturated violet (`#6242e1`) for accent blocks; deep purple-inks (`#030112`, `#150e2d`, `#201d30`, `#090719`) for surfaces
-- Pill-everything product geometry — 28px feature chips, 20px CTAs, 8px small controls
-- Bold Inter/Pretendard at 24px/700 for product feature labels; quiet Source Sans Pro body
-- Flat, shadow-free depth on both surfaces — contrast and whitespace do the separating
+- Monochrome: `#000000` headlines and current navigation, `#666666` for secondary text, `#333333` for the pill and hover
+- Garet everywhere, at 129.6px / 400 for the hero and weight 300 for display text; Korean falls through to Pretendard Variable
+- Few rounded forms: a 9999px outlined pill, 8px album tiles; everything else square
+- One shadow on the site: `rgba(0, 0, 0, 0.05) 2px 4px 10px 0px` under the album tiles
+- Plain text links: the current page is black, the others grey, and hover adds a `#333333` underline
 
 ## Primary tasks
 
-- Generate a mood-matched royalty-free track by picking options instead of learning a DAW
-- Start song ideas and pull stems inside your own DAW
-- Download sheet music for a song the tool composed
-- Commission custom sound for a brand campaign through Poza Studio
+- Understand what POZAlabs builds and how its training data differs
+- Browse its products (eapy, LAIVE, viodio) and open one with 보러 가기
+- Listen through the mood albums on the company page
+- Request custom music for a film, drama, game or advertisement
 
 ## 2. Color Palette & Roles
 
-### Primary & Brand
-- **Periwinkle** (`#aba1fa`): The signature brand accent. The most pervasive color on the MUSIA product surface — links, product wordmarks, the language-selector outline, and active nav text. This is POZAlabs' "brand purple."
-- **Saturated Violet** (`#6242e1`): Deeper, more saturated companion violet used for accent blocks, highlight fills, and gradient anchors.
+Every token below was read on 2026-09-30 from www.pozalabs.com/ko/, /ko/about/ and /ko/service/ by the deterministic collector, and hover values by the fixed keyboard probe. The tokens describe POZAlabs' corporate site. Its products (eapy, LAIVE, viodio) were not captured, and none of their values is claimed.
 
-### Ink & Dark Surfaces
-- **Ink** (`#030112`): Near-black purple-tinted ink. Background of selected segmented chips and the darkest control fills; also primary body ink on the product.
-- **Deep Purple-Ink** (`#150e2d`): A dark purple-black used for text on inverted (white) CTAs sitting inside dark sections.
-- **Dark Surface** (`#201d30`): The workhorse dark section / feature-card background — a muted purple-charcoal.
-- **Darkest** (`#090719`): The deepest immersive section background, near-black with a violet undertone.
-- **Pure Black** (`#000000`): The corporate site's headline and body ink, and the fill of the light-hero primary CTA.
+### Primary
+- **Black** (`#000000`): The current item in the header navigation. On /ko/about/ 소개 renders `#000000` while 서비스 renders `#666666`; on /ko/service/ it is the other way round. On home every navigation item is `#000000`. It is also the colour of every headline and of the document text. It is the primary because the site is monochrome. The owner rule then calls for the measured primary action fill, and the one filled action on the site, 보러 가기 on /ko/service/, has a fill no tool read. Its label is `#ffffff`, but the label, its link and two wrappers are all transparent (probe), so the fill lives on a layer outside the probe's scope. The primary therefore rests on the selected navigation state instead. If that fill is later measured and proves chromatic, it takes precedence.
 
-### Neutral & Surface
-- **White** (`#ffffff`): Page background on both surfaces, text on dark/purple, and inverted-CTA fill.
-- **Muted Chip Grey** (`#cecdd5`): Fill for unselected segmented chips — a cool light grey that recedes behind the ink-filled selected chip.
-- **Light Surface** (`#eeedf2`): A soft off-white surface for alternating light panels and card grounds.
-- **Hairline** (`#eeeeee`): Thin borders and dividers on light surfaces.
-- **Muted Grey Text** (`#9f9daa`): Tertiary text, captions, and metadata on light backgrounds.
+### Text & Neutral
+- **Ink** (`#000000`): The home hero, service headlines, album titles and feature lists.
+- **Secondary** (`#666666`): Non-current navigation items, the service kickers (AI 생성 음악), section labels on /ko/about/ and the footer.
+- **Charcoal** (`#333333`): The English pill label, the lead copy on /ko/about/, and the hover colour and underline of navigation items.
+- **Border Hover** (`#949494`): The English pill's border on hover and press. At rest the border is `rgba(0, 0, 0, 0.2)`.
+- **White** (`#ffffff`): The 보러 가기 labels, and the header and navigation background (probe ancestor read).
+
+### Dark band
+- **Inverse** (`#e7e7e7`) and **Inverse Muted** (`#a0a0a0`): Text on the dark closing band of /ko/service/. The band's background was not captured, so no colour is claimed for it.
+
+### Not tokens
+- The earlier record's periwinkle `#aba1fa`, violet `#6242e1`, purple inks `#030112`, `#150e2d`, `#201d30`, `#090719` and greys `#cecdd5`, `#eeedf2`, `#9f9daa` came from musia.ai. Its footer names a different company, (주)크리에이티브마인드. All of them were removed.
+- The POZAlabs logo is an image and was not measured.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Display (corporate)**: `Garet` — a geometric sans used for the oversized corporate hero headline and nav. Weight 400 even at display sizes, giving the black type an even, poster-like presence.
-- **Editorial companions (corporate)**: `Sanchez` (a slab serif) and `Hack` (monospace, used for the `expand(your_creativity)` code-syntax tagline).
-- **UI (product)**: `Inter` (with `Pretendard` as the Korean companion) — carries all MUSIA nav, buttons, and feature chips.
-- **Body (product)**: `Source Sans Pro` with `Noto Sans KR` fallback — the document default for paragraph and reading text.
+- **Live surface use**: all 241 captured elements compute `Garet, "Pretendard Variable", -apple-system, "system-ui", system-ui, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif`. Garet is `loaded / high` (241 observed uses) and self-hosted at `www.pozalabs.com/static/GaretBook-….woff2`, declared at weight 400. The site computes weight 350 for navigation and body copy; the only Garet face loaded is that 400 Book file, so 350 renders with it. Garet has no Hangul, so Korean text falls through to Pretendard Variable, loaded from jsDelivr (`cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/…/PretendardVariable.subset.*.woff2`). A same-day headless read found Garet 400, Pretendard Variable (45–920), Hack 400 and 700, and Sanchez 400 loaded on home.
+- **Official distributed font assets**: Pretendard's LICENSE (Kil Hyung-jin) and Sanchez's OFL.txt (LatinoType) both state the SIL Open Font License 1.1. Hack's LICENSE.md states the MIT License, with the Bitstream Vera License for the Bitstream Vera Sans Mono material it builds on. All three were opened on 2026-09-30. No licence text for Garet was opened, so no licence is stated for it.
+- **Official product use**: no POZAlabs page opened this session names its typefaces, so no statement of official product use is made.
+- **Declared or loaded without an observed role**: Hack (subset files `/static/hack-regular-subset-….woff2`, `hack-bold-subset-….woff2`) and Sanchez (`/static/sanchez-v17-latin-regular-….woff2`) are loaded on home, but no captured element computes them first, so they have no role here. The code-style tagline's own element computes Garet; a child in Hack was not recorded. `GaretHeavy` (700) is declared but was not loaded.
+- **Unresolved**: none.
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Tracking | Notes |
-|------|------|------|--------|-------------|----------|-------|
-| Display Hero | Garet | ~130px (129.6px) | 400 | 158px (1.22) | normal | Corporate hero "Ignite your creativity" |
-| Feature / CTA Label | Inter | 24px | 700 | normal | normal | Product chips + primary CTAs |
-| Product Nav | Inter | 18px | 400 | 24px | 0.99px | MUSIA top nav, uppercase, wide tracking |
-| Corporate Nav | Garet | 16px | 400 | 28px | normal | About / Service / Research / Contact |
-| Body | Source Sans Pro | 16px | 400 | 24px (1.5) | normal | Paragraph / reading text |
-| Caption / Language | Inter | 12px | 700 | normal | 0.06px | Language selector, small uppercase labels |
+| Role | Size | Weight | Line Height | Observed on |
+|------|------|--------|-------------|-------------|
+| Display Hero | 129.6px | 400 | 158px (1.22) | Home hero, `#000000` |
+| Display | 60px | 300 | 87px (1.45) | /ko/service/ headline; dark band statement |
+| Headline | 40px | 300 | 58px (1.45) | Service names and kickers |
+| Tagline | 32px | 400 | 44px | Home code-style line |
+| Body Large | 20px | 350 | 32px (1.6) | Album titles, lead, feature lists |
+| Section Label | 20px | 400 | 32px | Section labels on /ko/about/, `#666666` |
+| Button | 18px | 350 | 30px | 보러 가기, `#ffffff` |
+| Nav | 16px | 350 | 28px | Header navigation |
+| Body | 16px | 400 | 24px | Document default |
+| Label | 14px | 350 | 20px | English pill, footer copyright |
+
+All captured type has `letter-spacing: normal`.
 
 ### Principles
-- **Two type systems, two jobs**: Garet (plus Sanchez/Hack) is the editorial, brand-poster voice of the corporate site; Inter/Pretendard is the functional product voice. They never swap surfaces.
-- **Display lives at weight 400**: The corporate hero does not shout with heavy weight — it uses sheer scale (~130px) and generous line-height instead. Boldness (700) is reserved for the product's 24px feature labels.
-- **Uppercase + wide tracking for product nav**: MUSIA nav items are uppercase Inter at 18px with a deliberate 0.99px tracking, giving the app a crisp, technical header.
-- **Monospace as a brand signal**: The Hack code-syntax tagline is a typographic statement of identity — music generation framed as a callable function.
+- **Scale, not weight**: the hero is 129.6px at weight 400, and headlines at 40–60px drop to 300. Nothing on the captured pages is set bold.
+- **One family**: Garet sets every Latin glyph; Pretendard Variable fills in for Hangul at the same size.
 
 ## 4. Component Stylings
 
-### Buttons
+### Buttons & links
 
-**Primary CTA (Light Hero)**
-- Background: `#000000`
-- Text: `#ffffff`
-- Radius: 20px
-- Height: 72px
-- Font: 24px / 700 / Inter
-- Use: Primary call-to-action on the light hero — "TRY FOR FREE"
+**Language pill**
+- Text: `#333333`, 14px / 350 / 20px Garet, with a globe icon
+- Border: 1px `rgba(0, 0, 0, 0.2)`; radius 9999px; padding 7px 14px; 102 × 36
+- Hover / pressed: border `#949494` after a 0.15s `cubic-bezier(0.4, 0, 0.2, 1)` transition; label unchanged
+- Use: English, at the right of the header on every page
 
-**Inverted CTA (Dark Section)**
-- Background: `#ffffff`
-- Text: `#150e2d`
-- Radius: 20px
-- Padding: 16px 40px
-- Height: 68px
-- Font: 24px / 700 / Inter
-- Use: "TRY FOR FREE" on a dark purple section — inverts to white fill
+**Navigation item**
+- Text: `#666666` (non-current), `#000000` (current page, and all items on home); 16px / 350 / 28px Garet
+- Hover / pressed: `#333333` with a solid `#333333` underline, no transition; the current item does not change
+- Use: 홈, 소개, 서비스, 연구, 문의, 채용 on a white header
 
-**Language Selector (Outline)**
-- Text: `#aba1fa`
-- Border: 3px solid `#aba1fa`
-- Radius: 8px
-- Padding: 11px 16px
-- Height: 40px
-- Font: 12px / 700 / Inter
-- Use: Language toggle ("ENGLISH") — periwinkle outline button
+**Service call-to-action**
+- Label: 보러 가기 in `#ffffff`, 18px / 350 / 30px Garet
+- Its dark fill sits on a layer the probe does not compare, so no background colour is declared
+- Use: under eapy, LAIVE and viodio on /ko/service/
 
-### Inputs
-
-**Inline Text / Search**
-- Text: `#333333`
-- Font: 14px Source Sans Pro
-- Use: Minimal inline text/search field — transparent background, no visible chrome until focus (the marketing surface keeps form fields deliberately bare)
-
-### Cards & Containers
-
-**White Panel**
-- Background: `#ffffff`
-- Radius: 8px
-- Use: White content panel / product card on light sections (shadow-free)
-
-**Dark Feature Card**
-- Background: `#201d30`
-- Text: `#ffffff`
-- Radius: 20px
-- Use: Immersive dark purple feature card / section block
-
-### Badges
-
-**Selected Feature Chip**
-- Background: `#030112`
-- Text: `#ffffff`
-- Radius: 28px
-- Padding: 12px 28px
-- Font: 24px / 700 / Inter
-- Use: Selected segmented chip ("Songwriting", "AI Recommended Music", "Simple UI/UX")
-
-**Unselected Feature Chip**
-- Background: `#cecdd5`
-- Text: `#030112`
-- Radius: 28px
-- Padding: 12px 28px
-- Font: 24px / 700 / Inter
-- Use: Unselected segmented chip in the same feature row
-
-### Navigation
-
-**Product Nav (MUSIA)**
-- Background: transparent (over dark hero)
-- Text: `#ffffff`
-- Font: 18px / 400 / Inter
-- Active: `#ffffff` text; inactive links at 50% white opacity
-- Use: MUSIA top nav — "PRODUCTS", "PRICING", "CONTENTS", "SUPPORT"
-
-**Corporate Nav**
-- Text: `#000000`
-- Font: 16px / 400 / Garet
-- Use: Corporate site nav — "About", "Service", "Research", "Contact", "Recruit"
+### Cards & lists
+- **Album tile**: 190 × 190 artwork, radius 8px, shadow `rgba(0, 0, 0, 0.05) 2px 4px 10px 0px`, title below in 20px / 350; 16 mood albums on /ko/about/.
+- **Feature list item**: 20px / 350 / 32px `#000000`, 20px vertical padding, 800px wide, under each service.
 
 ---
 
-**Verified:** 2026-07-02 (omd:add-reference CREATE — Tier 1 live inspect, 2 surfaces)
-**Tier 1 sources:** https://www.pozalabs.com/ (corporate, live computed style); https://musia.ai/ (MUSIA product, live computed style); https://blog.pozalabs.com/ (official brand blog)
-**Tier 2 sources:** getdesign.md/pozalabs — SPA shell only, no brand tokens; styles.refero.design/?q=pozalabs — no genuine POZAlabs/MUSIA entry (search returns unrelated brands)
+**Verified:** 2026-09-30 (deterministic collector capture of three public, logged-out pages of www.pozalabs.com plus fixed keyboard-probe reads and first-party context)
+**Tier 1 sources:** https://www.pozalabs.com/ko/ ; https://www.pozalabs.com/ko/about/ ; https://www.pozalabs.com/ko/service/ ; https://blog.pozalabs.com/
+**Tier 2 sources:** not attempted on 2026-09-30; no Tier 2 value used
 **Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 4px
-- Scale: 4px, 8px, 12px, 16px, 20px, 28px, 40px, 64px
-- Notable: Feature chips use 12px 28px padding; primary CTAs use 16px 40px — generous, tappable hit areas that keep the pill controls comfortable at 24px type
-
-### Grid & Container
-- Corporate: centered single-column, the ~130px Garet headline as the sole anchor with vast surrounding whitespace
-- Product: alternating light and dark full-width bands; feature options presented as a horizontal row of segmented pill chips
-- Dark immersive sections (`#201d30`, `#090719`) break up light content bands for rhythm
-- Rounded section masks: the product hero uses a large bottom radius (up to 120px) to soften the transition between bands
-
-### Whitespace Philosophy
-- **Gallery over density**: the corporate site treats emptiness as content — the headline floats in negative space like a poster
-- **Flat segmentation**: sections separate by background swap (white ↔ dark purple) and light-surface tint (`#eeedf2`), not by shadow
-- **Pill rhythm**: the repeated 28px-radius chip creates a consistent horizontal cadence across feature/tool rows
-
-### Border Radius Scale
-- Small (8px): language selector, small white panels
-- Medium (20px): primary and inverted CTAs
-- Large (28px): segmented feature chips — the product workhorse
-- XL (40px): larger media/cards
-- Full (9999px): fully-round pills where used
+- The home page is a single 1440 × 900 screen: a right-aligned hero, the code-style line and the header. The other pages are long single columns (4,707px for /ko/about/, 6,536px for /ko/service/).
+- Observed spacing: 7px 14px in the pill, 20px vertical rhythm in feature lists, 20px side padding on the footer line.
+- Radius: 0 by default, 8px on album tiles, 9999px on the language pill.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Almost everything — page bg, hero, nav, chips |
-| Contrast (Level 1) | Background swap (white ↔ `#201d30` / `#090719`) | Section separation without elevation |
-| Tint (Level 2) | `#eeedf2` light surface / `#eeeeee` hairline | Panel/card separation on light bands |
-
-**Shadow Philosophy**: POZAlabs is a shadow-free system on both surfaces. Live inspection returned `box-shadow: none` across the corporate hero and nav and across the MUSIA product hero, chips, and cards. Depth is communicated entirely through flat contrast — pure black type on white, white chips on deep purple-ink (`#030112`), and immersive dark bands (`#201d30`, `#090719`) — plus generous whitespace. When emphasis is needed the system reaches for color (periwinkle `#aba1fa`, saturated violet `#6242e1`) or scale, never elevation. This keeps the AI tool feeling clean, fast, and modern rather than skeuomorphic.
+Of the 241 captured elements, 16 carry a shadow: the album tiles on /ko/about/, at `rgba(0, 0, 0, 0.05) 2px 4px 10px 0px`. Everything else computes `box-shadow: none`. The earlier record's "shadow-free on every surface" claim is corrected.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Keep the corporate face monochrome — black (`#000000`) type on white (`#ffffff`), no color
-- Use oversized Garet at weight 400 for corporate display headlines — scale is the emphasis, not weight
-- Reserve periwinkle (`#aba1fa`) as the product's signature accent — links, wordmarks, outlines
-- Use pill geometry throughout the product — 28px chips, 20px CTAs, 8px small controls
-- Build dark sections from the purple-ink family (`#030112`, `#201d30`, `#090719`), not neutral black
-- Use bold Inter/Pretendard at 24px/700 for product feature labels
-- Separate sections with flat contrast and `#eeedf2` tint, not shadows
-- Keep the Hack monospace code-syntax voice for taglines — it signals the engineering identity
+- Keep the site black on white; use `#666666` for secondary and non-current text
+- Let size carry display type (129.6px at 400; 40–60px at 300)
+- Mark the current page in `#000000` and hover with a `#333333` underline
+- Keep rounding to the pill and the 8px tile
 
 ### Don't
-- Introduce drop shadows for elevation — POZAlabs is flat on every surface
-- Mix the corporate monochrome and product purple on the same surface — the registers stay separate
-- Spread periwinkle across many product elements — it dilutes the single-accent signal
-- Use heavy weights for the corporate display headline — Garet stays at weight 400
-- Use neutral grey/black for dark sections — reach for the purple-ink family
-- Use sharp square corners on product controls — chips and CTAs are pills
-- Swap the font systems (Garet into the product, Inter into the corporate hero)
-- Add a second saturated accent hue — violet is the only brand color
+- Introduce a brand hue from the product sites into this surface; none renders on the captured pages
+- Bold the headlines
+- Add shadows beyond the faint album-tile shadow
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column; corporate headline scales down from ~130px; feature chips wrap/scroll |
-| Tablet | 640-1024px | Moderate padding; 2-up feature layout |
-| Desktop | 1024-1440px | Full layout, centered corporate hero, multi-band product page |
-
-### Touch Targets
-- Primary CTAs at 68-72px height, full pill — unmistakable targets
-- Feature chips at 56px height with 12px 28px padding — comfortably tappable
-- Language selector at 40px height with a 3px periwinkle outline
-
-### Collapsing Strategy
-- Corporate hero: Garet headline scales down on mobile, weight 400 maintained
-- Product feature chip row: horizontal wrap/scroll on narrow viewports
-- Light/dark alternating bands maintain full-width treatment
-- Rounded section masks reduce their radius on smaller viewports
-
-### Image Behavior
-- Product screenshots and media sit in shadow-free cards at 8-20px radius across breakpoints
-- Corporate imagery/animation carries no shadow, consistent with the flat system
+The capture ran at 1440 × 900 only. The class names carry `sm:` variants, but no small-screen layout was measured and none is claimed. The earlier record's breakpoint table was unsourced and was removed.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Brand accent: Periwinkle (`#aba1fa`)
-- Saturated accent: Violet (`#6242e1`)
-- Corporate ink / primary CTA: Pure Black (`#000000`)
-- Product ink / selected chip: Ink (`#030112`)
-- Dark section text-on-CTA: Deep Purple-Ink (`#150e2d`)
-- Dark surfaces: `#201d30`, `#090719`
-- Background: White (`#ffffff`)
-- Light surface: `#eeedf2`
-- Unselected chip: Muted Chip Grey (`#cecdd5`)
-- Muted text: `#9f9daa`; Hairline: `#eeeeee`
+- Ink, primary and current navigation: `#000000`
+- Secondary: `#666666`; hover and pill label: `#333333`; pill hover border: `#949494`
+- Text on a dark band: `#e7e7e7`, `#a0a0a0`
+- Background: white `#ffffff`
 
 ### Example Component Prompts
-- "Create a corporate hero on pure white. Single Garet headline at 130px weight 400, line-height 158px, pure black #000000: 'Ignite your creativity'. Below it a monospace (Hack) code-syntax tagline in black. Vast surrounding whitespace, no shadow."
-- "Design a MUSIA feature selector: a horizontal row of pill chips at 28px radius, 12px 28px padding, 24px/700 Inter. Selected chip is #030112 background with white text; unselected chips are #cecdd5 background with #030112 text."
-- "Build a primary CTA: black #000000 fill, white text, 20px radius, 24px/700 Inter, ~72px tall — 'TRY FOR FREE'. On a dark purple section, invert it: white #ffffff fill with #150e2d text, 16px 40px padding."
-- "Create a dark feature section: #201d30 background, white text, 20px radius cards. Accent links and the language-selector outline in periwinkle #aba1fa (3px border, 8px radius)."
-
-### Iteration Guide
-1. Corporate = monochrome black/white + Garet; product = periwinkle purple + Inter/Pretendard. Keep them separate.
-2. Periwinkle (`#aba1fa`) is the single product accent — don't spread it
-3. No shadows — separate with contrast, `#eeedf2` tint, and whitespace
-4. Pill geometry — 28px chips, 20px CTAs, 8px small controls
-5. Dark sections come from the purple-ink family (`#030112`, `#201d30`, `#090719`), never neutral
-6. Display headlines use scale (weight 400); product labels use weight 700
-7. Keep the Hack monospace code-syntax voice for brand taglines
+- "A white hero with one right-aligned line in Garet, 129.6px, weight 400, 158px line-height, `#000000`: 'Ignite your creativity'. Under it a 32px code-style line: 'with pozalabs as technology: expand(your_creativity)'."
+- "A header of plain text links in Garet 16px / 350: the current page `#000000`, the others `#666666`, hover `#333333` with an underline; at the right an outlined pill (1px `rgba(0, 0, 0, 0.2)`, radius 9999px, 7px 14px, 14px label `#333333`) whose border turns `#949494` on hover."
+- "A grid of 190 × 190 album tiles with 8px radius and a faint `rgba(0, 0, 0, 0.05) 2px 4px 10px 0px` shadow, titles 20px / 350 below."
 
 ---
 
 ## 10. Voice & Tone
 
-POZAlabs' voice is **creative, technologist, and quietly ambitious** — an engineering house that talks about music the way a developer talks about tools. The corporate headline "Ignite your creativity" and the code-syntax tagline `expand(your_creativity)` set the register: aspirational about human creativity, playful about the technology underneath, never hype-driven. On the product (MUSIA) the copy turns plain and functional — feature chips are labeled with concrete verbs and nouns ("Songwriting", "AI Recommended Music", "Simple UI/UX", "Web Based") — treating the creator as a maker who wants to get to work, not a lead to be closed.
+POZAlabs writes in two modes. Short English slogans set the brand's ambition, and plain Korean sentences explain the technology and the terms of use.
 
 | Context | Tone |
 |---|---|
-| Corporate hero | Aspirational, spare. "Ignite your creativity." Poster-like, never salesy. |
-| Corporate tagline | Playful-technical code syntax: `with pozalabs as technology: expand(your_creativity)`. |
-| Product feature labels | Plain and concrete. "Songwriting", "Instrument", "Download Sheet Music". |
-| CTAs | Direct, low-pressure. "TRY FOR FREE", "See the Price Guide". |
-| Newsroom / blog | Confident but factual — collaborations and research stated plainly, not spun. |
+| Hero and vision | "Ignite your creativity" |
+| Code-style statement | "with pozalabs as technology: expand(your_creativity)" |
+| Company page | "Hey, Play your mood — 감성을 담은 AI 음악"; DNA statements in the first person plural ("우리는 인공지능 기술의 무한한 가능성을 믿고 집요하게 연구합니다.") |
+| Terms and data | Direct and reassuring: "자체 데이터로 AI가 음악을 생성하므로 저작권 침해 우려 없이 사용할 수 있습니다." |
+| Actions | 보러 가기 |
+| Blog | Bracketed client names, then a line about the sound ([핑크퐁] 세상에 단 하나뿐인, 나만의 '아기상어') |
 
-**Voice samples (verbatim from live surfaces):**
-- "Ignite your creativity" — corporate hero headline (aspirational). *(verified live 2026-07-02, pozalabs.com)*
-- "with pozalabs as technology: expand(your_creativity)" — corporate tagline in Hack monospace (technologist-playful). *(verified live 2026-07-02, pozalabs.com)*
-- "TRY FOR FREE" — MUSIA primary CTA (direct, low-pressure). *(verified live 2026-07-02, musia.ai)*
-
-**Forbidden register**: hype superlatives about "revolutionary AI", fear-of-missing-out urgency, undefined ML jargon left unexplained, exclamation-heavy marketing. The brand's confidence comes from spare type and real collaborations, not adjectives.
+**Voice samples (verbatim, 2026-09-30):**
+- "Ignite your creativity" — home hero and vision (pozalabs.com/ko/, /ko/about/)
+- "포자랩스는 기존 음원을 학습하여 음악을 생성하지 않습니다." — /ko/about/
+- "누구나 쉽게 음악을 만들고, 소유하고, 함께 나눌 수 있는 새로운 창작 문화를 만듭니다." — /ko/about/
 
 ## 11. Brand Narrative
 
-POZAlabs (포자랩스) was founded in **2018** in Seoul as an AI music-generation company, with **허원길 (Heo Won-gil)** as CEO. Its founding premise is captured in the homepage headline — to "ignite" and "expand" human creativity — by using generative models to make original, commercially usable music accessible to anyone, not just trained composers. The name and the code-syntax tagline (`expand(your_creativity)`) frame the mission as an engineering problem: creativity as a capability you can amplify with technology.
+POZAlabs presents itself as a group of specialists from different fields: "각 분야 최고의 전문가들이 모인 집단". Developers share with non-developers and composers with non-composers, and the aim is "a music-creation culture without precedent". The company page explains the technical position behind that. The training data is written by in-house composers rather than taken from existing recordings. The resulting soundtracks are produced, sold and distributed by POZAlabs itself, so they carry no copyright-infringement risk. The dataset work was recognised when ComMU was accepted at NeurIPS. Automation covers the whole chain from sampling to mastering.
 
-The company's flagship is **MUSIA** (`musia.ai`) — an AI composition platform spanning MUSIA ONE (a web app for generating royalty-free music) and MUSIA PLUGIN (a DAW plugin for producers). Around it POZAlabs runs **Poza Studio** for commercial music and sound production and **Viodio**, a background-music subscription aimed at creators and small businesses. The design system's two registers mirror this dual audience: the monochrome corporate site speaks to partners and press as a research lab, while the periwinkle MUSIA product speaks to creators as an approachable tool.
-
-POZAlabs positions itself at the frontier of generative audio through visible, verifiable collaboration rather than marketing claims. Its official newsroom documents work with **Samsung, Google, and SM Entertainment** on aespa spatial-audio content powered by Eclipsa/IAMF audio technology at **CES 2025** (announced as a world-first application of IAMF technology to AI music generation), alongside commercial projects with partners such as Pinkfong ("Baby Shark") and major Korean construction and media brands. What the brand refuses, visible in its design: the busy, gradient-heavy chrome of typical AI startups (it stays flat and monochrome on the corporate face) and hype-driven copy (it lets scale, restraint, and real partnerships carry the message).
+The products turn that position into tools for different users: eapy for sketching musical ideas on a shared canvas (real-time MIDI samples, YouTube upload, .mp3 / .wav / .MIDI, link sharing), LAIVE for anyone who wants to be "a singer-songwriter or producer", and viodio for creators who need licence-free background music that can be monetised on every social platform. Commissioned work for broadcasters, brands and venues continues on the blog. Its newsroom includes "포자랩스 2024 연말 결산 & 2025 로드맵". The company's registered address is in Seocho-gu, Seoul; the representative is 허원길.
 
 ## 12. Principles
 
-1. **Creativity is a capability to amplify.** The mission is to expand what people can make, not to replace them. *UI implication:* frame AI features as creator tools ("Songwriting", "Instrument"), keep the interface approachable with friendly pill controls.
-2. **Two audiences, two registers.** A research lab for partners; an approachable tool for creators. *UI implication:* keep the corporate monochrome face and the periwinkle product face visually distinct — never blend them.
-3. **Confidence through restraint.** Spare type and real collaborations, not superlatives. *UI implication:* oversized Garet headlines in negative space; no decorative shadow or gradient clutter.
-4. **Flat and fast.** Modern, shadow-free surfaces signal a contemporary AI product. *UI implication:* separate with contrast and whitespace; reserve depth cues for color, not elevation.
-5. **One accent, one signal.** Periwinkle (`#aba1fa`) means brand and action on the product. *UI implication:* reserve the accent for links, wordmarks, and key outlines so the identity reads instantly.
+1. **Own the data.** POZAlabs builds on music written for training. *UI implication:* state rights and terms plainly, next to the product.
+2. **Monochrome frame, colourful content.** The site stays black and white while album artwork carries colour. *UI implication:* let media supply colour and keep the chrome neutral.
+3. **Scale over weight.** Display type is large and light. *UI implication:* size headlines up rather than bolding them.
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable POZAlabs / MUSIA user segments (indie video creators, music producers, small-business marketers, enterprise media partners), not individual people.*
+*These are fictional archetypes drawn from the audiences POZAlabs' pages address — creators (viodio), would-be songwriters (LAIVE, eapy) and B2B clients commissioning music. They are not real people.*
 
-**정하늘, 27, 서울.** A YouTube creator who needs royalty-free background music for weekly uploads. Uses MUSIA ONE to generate mood-matched tracks in minutes. Chose it because the pill-chip feature selector made composing feel like picking options, not learning a DAW.
+**정하늘, 27, 서울.** A video creator who needs background music she can monetise without claims, and subscribes to viodio.
 
-**Marcus Lee, 34, Los Angeles.** An indie music producer who runs the MUSIA PLUGIN inside his DAW for quick idea starters and stems. Values that the tool feels professional and unfussy — bold labels, no gimmicks — and that outputs are commercially clearable.
+**김서연, 41, 경기.** A brand marketer who sends a reference track and commissions a custom soundtrack for a campaign.
 
-**김서연, 41, 경기.** A marketing lead at a mid-size brand sourcing custom sound for campaigns through Poza Studio. Trusts POZAlabs because its newsroom shows real, named collaborations (CES, major partners) rather than vague AI promises.
+**이도윤, 23, 부산.** A student who sketches song ideas on eapy's canvas and shares the board with a friend by link.
 
 ## 14. States
 
-| State | Treatment |
+Only observed states are listed.
+
+| State | Observed treatment |
 |---|---|
-| **Empty (no generated tracks yet)** | White canvas with a single Ink (`#030112`) line explaining nothing has been generated, and one dark primary CTA to start. No illustration clutter. |
-| **Empty (saved list, none yet)** | Muted Grey (`#9f9daa`) single line: nothing saved yet, plus a path back to generation. Calm and honest. |
-| **Loading (music generation)** | Inline progress within the active feature chip; the periwinkle accent (`#aba1fa`) carries the progress indicator. Previous selections stay visible. Flat pulse — no shadow shimmer. |
-| **Loading (page/section)** | Skeleton blocks at final dimensions on `#eeedf2` light surface, 8-20px radius, flat pulse consistent with the shadowless system. |
-| **Error (generation failed)** | Inline message in Ink (`#030112`) with a plain-language explanation and a retry. No generic "오류가 발생했습니다" alone — states the next step. |
-| **Error (form validation)** | Field-level message below the input; describes what is valid, not just "required". |
-| **Success (track generated / exported)** | Brief inline confirmation in calm tone; the result (play/download) appears immediately below. No celebratory emoji. |
-| **Skeleton** | `#eeedf2` blocks at final dimensions, 8-20px radius, flat pulse. |
-| **Disabled** | Muted Grey (`#9f9daa`) text on reduced-opacity surface; periwinkle actions fade rather than turn grey to preserve brand read. |
+| Hover / pressed, navigation item | `#666666` → `#333333` with a solid underline; current item unchanged |
+| Hover / pressed, language pill | Border `rgba(0, 0, 0, 0.2)` → `#949494` |
+| Hover / pressed, 보러 가기 | Label unchanged; the fill layer was not in scope |
+| Selected | Current page item `#000000` |
+| Focus | Not measured (probe run with `--no-focus`); none declared |
+
+The earlier record's empty, loading, error, success, skeleton and disabled treatments described musia.ai flows or had no source, and were removed.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Chip select, hover, focus |
-| `motion-standard` | 220ms | Section/card reveal, band transition |
-| `motion-slow` | 340ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, chips, sections |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is quiet and functional, consistent with the flat aesthetic. Segmented chips respond to selection with a subtle scale/opacity shift as the fill swaps from `#cecdd5` to `#030112`; content bands and cards fade-in from below at `motion-standard / ease-enter`. The rounded section masks (large bottom radii) reveal as bands scroll into view. No bounce or spring — a professional AI tool signals steadiness, not gimmickry. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle:
-- https://www.pozalabs.com/ — corporate hero "Ignite your creativity" (Garet ~129.6px / weight 400 /
-  line-height 158px / black rgb(0,0,0)); code-syntax tagline "with pozalabs as technology:
-  expand(your_creativity)" (Hack monospace); nav items About/Service/Research/Contact/Recruit (Garet 16px);
-  box-shadow none.
-- https://musia.ai/ — MUSIA product. Nav PRODUCTS/PRICING/CONTENTS/SUPPORT (Inter 18px, active white,
-  inactive rgba(255,255,255,0.5)); primary CTA "TRY FOR FREE" bg rgb(0,0,0) radius 20px 24px/700;
-  inverted CTA bg rgb(255,255,255) text rgb(21,14,45) #150e2d 16px 40px; segmented chips selected
-  bg rgb(3,1,18) #030112 / unselected bg rgb(206,205,213) #cecdd5, radius 28px, 12px 28px padding;
-  language selector text+border rgb(171,161,250) #aba1fa 3px radius 8px; accent periwinkle #aba1fa 43×
-  as foreground; saturated violet rgb(98,66,225) #6242e1 as bg block; dark surfaces rgb(32,29,48) #201d30,
-  rgb(9,7,25) #090719; light surface rgb(238,237,242) #eeedf2; muted text rgb(159,157,170) #9f9daa;
-  box-shadow none across hero/chips/cards.
-
-Token-level claims (§1-9) are sourced from this live inspection (see .verification.md Proof block).
-
-Voice samples (§10) are verbatim from the live surfaces (corporate hero + tagline; MUSIA CTA).
-
-Brand narrative (§11): POZAlabs (포자랩스), founded 2018 in Seoul, AI music-generation company; CEO
-허원길 (Heo Won-gil); products MUSIA ONE / MUSIA PLUGIN / Poza Studio / Viodio. The CES 2025
-collaboration with Samsung, Google, and SM Entertainment on aespa spatial audio (Eclipsa/IAMF, announced
-as a world-first IAMF application to AI music generation), Poza Studio launch, and Viodio are confirmed
-via the official blog (blog.pozalabs.com) verified this turn. Founding year and CEO are widely documented
-public facts, not directly quoted from a verified POZAlabs statement in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable POZAlabs/MUSIA user segments
-(indie creators, producers, marketers, enterprise partners). Names are illustrative; they do not refer
-to real people.
-
-Interpretive claims (e.g., "two audiences, two registers", "confidence through restraint", "creativity as
-a callable function") are editorial readings connecting POZAlabs' observed design to its positioning, not
-directly sourced POZAlabs statements.
--->
+The language pill computes `transition: color, background-color, border-color, text-decoration-color, fill, stroke 0.15s cubic-bezier(0.4, 0, 0.2, 1)`. Navigation items and the 보러 가기 label compute `transition: all 0s`. The album tiles carry an `active:scale-95` class for small screens, which was not measured. The earlier record's duration and cubic-bezier tables were not grounded in any capture and were removed.
