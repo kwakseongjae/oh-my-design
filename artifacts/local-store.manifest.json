@@ -8,7 +8,7 @@
       "why": "140개 verified 레퍼런스의 캡쳐 근거. 만료 대응 R트랙 55건의 유일한 입력.",
       "critical": true,
       "fileCount": 247,
-      "bytes": 209302580,
+      "bytes": 209525854,
       "files": {
         "104.json": {
           "sha256": "006a9edc3a9ee4c87f1189cc315b1b22c0ab769c4a014b50d435a04670c715ae",
@@ -235,7 +235,7 @@
           "bytes": 1023
         },
         "fixture.json": {
-          "sha256": "60e286c51bde4e74c6b9891e6ca086ffab05375049b93617adf888f811732c4c",
+          "sha256": "f0e453c81d2f3327e3cf7928a28bc4a69a28edfbff72b94cda32d109d47b7918",
           "bytes": 69760
         },
         "flex.json": {
@@ -371,8 +371,8 @@
           "bytes": 609993
         },
         "kakaopay.json": {
-          "sha256": "b5e8c4b66b48300c57c224182a5a455809b373d30228981155c6eb6f7ddb5f51",
-          "bytes": 280774
+          "sha256": "78ef94ea7555527f3574217b98d61958e0dc7166fddc3d6573eba352d2ba5464",
+          "bytes": 504048
         },
         "kakaot.json": {
           "sha256": "58cc0c676f295033f22aed566ee2712d68e4cd8854e12f9d40b912a5631cac38",

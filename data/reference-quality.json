@@ -2532,11 +2532,11 @@
     {
       "id": "kakaopay",
       "status": "verified_v2",
-      "verified_at": "2026-07-13",
-      "next_reverify_at": "2027-01-09",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
       "evidence_coverage": 1,
-      "surface_count": 6,
-      "source_count": 6,
+      "surface_count": 4,
+      "source_count": 5,
       "conflict_count": 0,
       "reason_codes": []
     },

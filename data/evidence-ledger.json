@@ -3,12 +3,12 @@
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
   "references_with_verification_v2": 295,
-  "sources": 1819,
+  "sources": 1818,
   "sources_by_kind": {
-    "brand-asset": 79,
+    "brand-asset": 78,
     "license": 132,
-    "official-doc": 702,
-    "product-surface": 906
+    "official-doc": 701,
+    "product-surface": 907
   },
   "references": {
     "104": {
@@ -4986,44 +4986,38 @@
       ]
     },
     "kakaopay": {
-      "checked": "2026-07-13",
+      "checked": "2026-09-30",
       "claims": 0,
       "sources": [
         {
-          "id": "corporate-service-live",
+          "id": "kakaopay-probe-brand",
           "kind": "product-surface",
-          "captured": "2026-07-13",
-          "host": "www.kakaocorp.com"
-        },
-        {
-          "id": "design-story-doc",
-          "kind": "official-doc",
-          "captured": "2026-07-13",
-          "host": "story.kakaopay.com"
-        },
-        {
-          "id": "developer-docs-live",
-          "kind": "official-doc",
-          "captured": "2026-07-13",
-          "host": "developers.kakaopay.com"
-        },
-        {
-          "id": "font-resource-doc",
-          "kind": "brand-asset",
-          "captured": "2026-07-13",
-          "host": "www.kakaocorp.com"
-        },
-        {
-          "id": "marketing-main-live",
-          "kind": "product-surface",
-          "captured": "2026-07-13",
+          "captured": "2026-09-30",
           "host": "www.kakaopay.com"
         },
         {
-          "id": "story-live",
+          "id": "surface-home",
           "kind": "product-surface",
-          "captured": "2026-07-13",
-          "host": "story.kakaopay.com"
+          "captured": "2026-09-30",
+          "host": "www.kakaopay.com"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.kakaopay.com"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.kakaopay.com"
+        },
+        {
+          "id": "surface-surface-4",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.kakaopay.com"
         }
       ]
     },
