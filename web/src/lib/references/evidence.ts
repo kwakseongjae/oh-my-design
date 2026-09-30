@@ -44,6 +44,17 @@ export interface RawElementEvidence {
     readonly fontWeight: string;
     readonly lineHeight: string;
     readonly letterSpacing: string;
+    /**
+     * The fill a control paints when its own background-color is transparent and its
+     * background-image is none (collector 2026-09-30): the background-color of the first
+     * descendant covering >= 85% of its box, else of the first of 3 ancestors within 15% of
+     * its box on every side. Absent when nothing qualifies. Never replaces backgroundColor.
+     */
+    readonly paintedBackgroundColor?: string;
+    /** That element's background-image, recorded only when it is a gradient. */
+    readonly paintedBackgroundImage?: string;
+    /** Where the painted fill sits: "descendant:<tag>.<first class>" or "ancestor:<level>". */
+    readonly paintedBy?: string;
   };
 }
 
@@ -73,6 +84,8 @@ export interface ComponentEvidence {
   readonly surfaces: readonly string[];
   readonly states: readonly string[];
   readonly confidence: EvidenceConfidence;
+  /** Members whose fill in the fingerprint is a painted fill, not their own background. Absent when 0. */
+  readonly paintedOccurrences?: number;
   readonly representative: RawElementEvidence;
 }
 
@@ -108,6 +121,8 @@ export interface ReferenceEvidenceBundle {
     readonly occurrences: number;
     readonly surfaces: readonly string[];
     readonly confidence: EvidenceConfidence;
+    /** Occurrences counted from a painted fill (see RawElementEvidence.style). Absent when 0. */
+    readonly paintedOccurrences?: number;
   }[];
   readonly typography: readonly {
     readonly role: string;
@@ -200,10 +215,33 @@ function roleForElement(element: RawElementEvidence): string {
   return tag === "p" ? "body" : "text";
 }
 
+/** A gradient fill as its colour stops, so two gradient controls split only when their colours differ. */
+function gradientToken(value: string): string {
+  const stops = [...value.matchAll(/rgba?\([^)]*\)|#[0-9a-f]{3}(?:[0-9a-f]{3})?\b/gi)]
+    .map((match) => normalizeCapturedColor(match[0]))
+    .filter((stop): stop is string => stop !== null);
+  return stops.length ? `gradient(${stops.join(">")})` : "gradient";
+}
+
+/**
+ * The fill a control paints: its own background-color when that is solid; otherwise the fill
+ * the collector resolved on a covering descendant or a tight ancestor (paintedBackgroundColor,
+ * then a paintedBackgroundImage gradient as a stop token). `painted` marks the second case so
+ * provenance stays visible downstream. Null when the control paints no fill at all.
+ */
+export function resolveElementFill(style: RawElementEvidence["style"]): { value: string; painted: boolean; gradient: boolean } | null {
+  const own = normalizeCapturedColor(style.backgroundColor);
+  if (own) return { value: own, painted: false, gradient: false };
+  const painted = style.paintedBackgroundColor ? normalizeCapturedColor(style.paintedBackgroundColor) : null;
+  if (painted) return { value: painted, painted: true, gradient: false };
+  if (style.paintedBackgroundImage) return { value: gradientToken(style.paintedBackgroundImage), painted: true, gradient: true };
+  return null;
+}
+
 function stableStyleFingerprint(element: RawElementEvidence): string {
   const style = element.style;
   return [
-    normalizeCapturedColor(style.backgroundColor) ?? "transparent",
+    resolveElementFill(style)?.value ?? "transparent",
     normalizeCapturedColor(style.color) ?? "unknown",
     normalizeCapturedColor(style.borderColor) ?? "none",
     style.borderRadius,
@@ -299,19 +337,21 @@ export function aggregateReferenceEvidence(input: {
   discovery?: ReferenceEvidenceBundle["discovery"];
 }): ReferenceEvidenceBundle {
   const elements = input.surfaces.flatMap((surface) => surface.elements);
-  const colorMap = new Map<string, { value: string; property: "background" | "text" | "border"; count: number; surfaces: Set<string> }>();
+  const colorMap = new Map<string, { value: string; property: "background" | "text" | "border"; count: number; painted: number; surfaces: Set<string> }>();
   for (const element of elements) {
-    const values = [
-      ["background", element.style.backgroundColor],
-      ["text", element.style.color],
-      ["border", element.style.borderColor],
-    ] as const;
-    for (const [property, raw] of values) {
-      const value = normalizeCapturedColor(raw);
+    // A transparent control counts the solid fill it paints (a gradient is not a census colour).
+    const fill = resolveElementFill(element.style);
+    const values: readonly (readonly ["background" | "text" | "border", string | null, boolean])[] = [
+      ["background", fill && !fill.gradient ? fill.value : null, fill?.painted ?? false],
+      ["text", normalizeCapturedColor(element.style.color), false],
+      ["border", normalizeCapturedColor(element.style.borderColor), false],
+    ];
+    for (const [property, value, painted] of values) {
       if (!value) continue;
       const key = `${property}:${value}`;
-      const item = colorMap.get(key) ?? { value, property, count: 0, surfaces: new Set<string>() };
+      const item = colorMap.get(key) ?? { value, property, count: 0, painted: 0, surfaces: new Set<string>() };
       item.count += 1;
+      if (painted) item.painted += 1;
       item.surfaces.add(element.surfaceId);
       colorMap.set(key, item);
     }
@@ -322,6 +362,7 @@ export function aggregateReferenceEvidence(input: {
     occurrences: item.count,
     surfaces: [...item.surfaces].sort(),
     confidence: confidence(item.count, item.surfaces.size),
+    ...(item.painted ? { paintedOccurrences: item.painted } : {}),
   })).sort((a, b) => b.occurrences - a.occurrences);
 
   const typeMap = new Map<string, { role: string; family: string; size: string; weight: string; lineHeight: string; letterSpacing: string; count: number }>();
@@ -336,14 +377,15 @@ export function aggregateReferenceEvidence(input: {
   const typography = [...typeMap.values()].map(({ count, ...item }) => ({ ...item, occurrences: count }))
     .sort((a, b) => b.occurrences - a.occurrences);
 
-  const componentMap = new Map<string, { type: CapturedComponentType; fingerprint: string; elements: RawElementEvidence[]; surfaces: Set<string>; states: Set<string> }>();
+  const componentMap = new Map<string, { type: CapturedComponentType; fingerprint: string; elements: RawElementEvidence[]; painted: number; surfaces: Set<string>; states: Set<string> }>();
   for (const element of elements) {
     const type = classifyCapturedElement(element);
     if (type === "unknown") continue;
     const fingerprint = stableStyleFingerprint(element);
     const key = `${type}:${fingerprint}`;
-    const item = componentMap.get(key) ?? { type, fingerprint, elements: [], surfaces: new Set<string>(), states: new Set<string>() };
+    const item = componentMap.get(key) ?? { type, fingerprint, elements: [], painted: 0, surfaces: new Set<string>(), states: new Set<string>() };
     item.elements.push(element);
+    if (resolveElementFill(element.style)?.painted) item.painted += 1;
     item.surfaces.add(element.surfaceId);
     if (element.disabled) item.states.add("disabled");
     if (element.ariaSelected === "true") item.states.add("selected");
@@ -358,6 +400,7 @@ export function aggregateReferenceEvidence(input: {
     surfaces: [...item.surfaces].sort(),
     states: [...item.states].sort(),
     confidence: confidence(item.elements.length, item.surfaces.size, item.states.size > 0),
+    ...(item.painted ? { paintedOccurrences: item.painted } : {}),
     representative: item.elements[0],
   })).sort((a, b) => b.occurrences - a.occurrences);
   const spacing = clusterPixelValues(elements.flatMap((element) => [element.style.padding, element.style.margin, element.style.gap]));

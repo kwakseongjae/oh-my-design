@@ -38,6 +38,8 @@ const STATES = ["hover", "pressed", "focus"];
 const MEANINGFUL = [
   "color", "backgroundColor", "borderColor", "borderWidth", "borderRadius",
   "boxShadow", "padding", "fontWeight", "letterSpacing",
+  // 투명 컨트롤이 자식·조상에 칠한 채움(2026-09-30 수집기). Framer 버튼의 hover는 여기서만 보인다.
+  "paintedBackgroundColor", "paintedBackgroundImage",
 ];
 
 /** rgb()/rgba() → hex. 알파가 1 미만이면 원문을 남긴다 — 알파를 버리면 값이 거짓이 된다. */
@@ -99,7 +101,7 @@ export function extractStateValues(id) {
       /** 토큰 블록에 넣을 단일 값 후보. 배경이 바뀌면 그것, 아니면 전경색. */
       suggestion: Object.fromEntries(Object.entries(states).map(([state, delta]) => [
         state,
-        (delta.backgroundColor?.to ?? delta.color?.to ?? delta.borderColor?.to ?? null),
+        (delta.backgroundColor?.to ?? delta.paintedBackgroundColor?.to ?? delta.color?.to ?? delta.borderColor?.to ?? null),
       ]).filter(([, value]) => value !== null)),
     });
   }

@@ -147,7 +147,135 @@ async function discoverRoutes(page: Page, baseUrl: string): Promise<{ routes: st
   return { routes, fontOrLicenseUrls, publicDesignSystemUrls };
 }
 
+// Painted fill (2026-09-30). Framer and Webflow draw each button as a transparent <a> whose
+// fill sits on a child div, and kakaopage's 첫 화 보기 is a transparent <button> whose yellow
+// sits on its grandparent. The control's own backgroundColor reads transparent, so its
+// component and state evidence came out empty. For an interactive element whose own
+// background-color is transparent and whose background-image is none, the collector also
+// records the fill it paints, next to backgroundColor and never over it:
+//   1. the first descendant (breadth-first, open shadow roots pierced, <svg> skipped, nothing
+//      under display:none or opacity:0) whose box covers >= 85% of the control's box and which
+//      has a non-transparent background-color or a gradient background-image; else
+//   2. the first of 3 ancestors whose box is within 15% of the control's on every side and
+//      which has such a fill.
+// A covering <img>/<video>/<canvas>/<iframe> or url() image means the control's face is media,
+// not a fill, so nothing is recorded (an image-card link would otherwise report its
+// placeholder colour). Fields: paintedBackgroundColor, paintedBackgroundImage (gradients only)
+// and paintedBy ("descendant:div.framer-xyz" / "ancestor:2"). The pseudo-state pass reads the
+// same painted element again under hover, pressed and focus. Same scope idea as
+// probe-keyboard-states.mjs, which compares descendants and 3 ancestor levels.
+type PaintedFill = { color?: string; image?: string; by: string };
+type PaintApi = {
+  resolve(element: Element, key?: string): PaintedFill | null;
+  read(element: Element, key: string | null): PaintedFill | null;
+};
+
+/** Installs the painted-fill resolver on the page once per document (idempotent). */
+async function installPaintResolver(page: Page): Promise<void> {
+  await page.evaluate(() => {
+    const host = window as unknown as { __omdPaint?: PaintApi };
+    if (host.__omdPaint) return;
+    const COVER = 0.85; // share of the control's box a descendant must cover
+    const SLACK = 0.15; // per-side tolerance for an ancestor, as a share of the control's width / height
+    const UP = 3; // ancestor levels
+    const MAX_NODES = 200; // descendants inspected per control, breadth-first
+    const GRADIENT = /(?:repeating-)?(?:linear|radial|conic)-gradient\(/i;
+    const MEDIA = /^(?:img|picture|video|canvas|iframe|object|embed)$/;
+    const SKIP = /^(?:svg|script|style|template|noscript)$/;
+    const alpha = (value: string): number => {
+      const raw = value.trim().toLowerCase();
+      if (!raw || raw === "transparent") return 0;
+      const rgba = raw.match(/^rgba?\(([^)]*)\)$/);
+      const last = rgba ? rgba[1].split(/[\s,/]+/).filter(Boolean)[3] : raw.match(/\/\s*([\d.]+%?)\s*\)$/)?.[1];
+      if (last === undefined) return 1;
+      return last.endsWith("%") ? Number(last.slice(0, -1)) / 100 : Number(last);
+    };
+    const gradientOf = (style: CSSStyleDeclaration): string | undefined =>
+      GRADIENT.test(style.backgroundImage) && !/url\(/i.test(style.backgroundImage) ? style.backgroundImage : undefined;
+    const fillOf = (style: CSSStyleDeclaration): Omit<PaintedFill, "by"> | null => {
+      const color = alpha(style.backgroundColor) > 0 ? style.backgroundColor : undefined;
+      const image = gradientOf(style);
+      return color || image ? { ...(color ? { color } : {}), ...(image ? { image } : {}) } : null;
+    };
+    const parentOf = (node: Element): Element | null => node.parentElement ?? ((node.getRootNode() as ShadowRoot).host ?? null);
+    const childrenOf = (node: Element): Element[] => [...node.children, ...(node.shadowRoot ? [...node.shadowRoot.children] : [])];
+    const label = (node: Element): string => {
+      const className = (node as HTMLElement).className;
+      const first = typeof className === "string" ? className.trim().split(/\s+/)[0] ?? "" : "";
+      return `${node.tagName.toLowerCase()}${first ? `.${first.slice(0, 48)}` : ""}`;
+    };
+    const targets = new Map<string, { node: Element; by: string }>();
+    const resolve = (element: Element, key?: string): PaintedFill | null => {
+      const own = getComputedStyle(element);
+      if (alpha(own.backgroundColor) > 0 || own.backgroundImage !== "none") return null;
+      const box = element.getBoundingClientRect();
+      const area = box.width * box.height;
+      if (area <= 0) return null;
+      let found: { node: Element; fill: Omit<PaintedFill, "by">; by: string } | null = null;
+      const queue = childrenOf(element);
+      for (let index = 0; index < queue.length && index < MAX_NODES; index++) {
+        const node = queue[index];
+        const tag = node.tagName.toLowerCase();
+        if (SKIP.test(tag)) continue;
+        const rect = node.getBoundingClientRect();
+        const width = Math.min(rect.right, box.right) - Math.max(rect.left, box.left);
+        const height = Math.min(rect.bottom, box.bottom) - Math.max(rect.top, box.top);
+        if (width <= 0 || height <= 0 || (width * height) / area < COVER) {
+          if (queue.length < MAX_NODES * 2) queue.push(...childrenOf(node));
+          continue;
+        }
+        const style = getComputedStyle(node);
+        if (style.display === "none" || Number(style.opacity) === 0) continue; // nothing under it paints
+        if (queue.length < MAX_NODES * 2) queue.push(...childrenOf(node));
+        if (style.visibility !== "visible") continue;
+        if (MEDIA.test(tag) || /url\(/i.test(style.backgroundImage)) return null; // the face is media, not a fill
+        const fill: Omit<PaintedFill, "by"> | null = found ? null : fillOf(style);
+        if (fill) found = { node, fill, by: `descendant:${label(node)}` };
+      }
+      if (!found) {
+        let node = parentOf(element);
+        for (let level = 1; level <= UP && node && node !== document.body && node !== document.documentElement; level++, node = parentOf(node)) {
+          const rect = node.getBoundingClientRect();
+          const dx = box.width * SLACK;
+          const dy = box.height * SLACK;
+          if (Math.abs(rect.left - box.left) > dx || Math.abs(rect.right - box.right) > dx
+            || Math.abs(rect.top - box.top) > dy || Math.abs(rect.bottom - box.bottom) > dy) continue;
+          const style = getComputedStyle(node);
+          if (/url\(/i.test(style.backgroundImage)) return null;
+          const fill = fillOf(style);
+          if (fill) { found = { node, fill, by: `ancestor:${level}` }; break; }
+        }
+      }
+      if (!found) return null;
+      if (key !== undefined) targets.set(key, { node: found.node, by: found.by });
+      return { ...found.fill, by: found.by };
+    };
+    // Under hover / pressed / focus: the element found at rest, read as it is now (its fill may
+    // turn transparent). A control with none at rest, or whose painted node was replaced since,
+    // is resolved again, so a ghost button whose child fills only on hover is seen too.
+    const read = (element: Element, key: string | null): PaintedFill | null => {
+      const target = key === null ? undefined : targets.get(key);
+      if (!target?.node.isConnected) return resolve(element);
+      const style = getComputedStyle(target.node);
+      const image = gradientOf(style);
+      return { color: style.backgroundColor, ...(image ? { image } : {}), by: target.by };
+    };
+    host.__omdPaint = { resolve, read };
+  });
+}
+
+/** Style fields for a painted fill; empty when the control paints its own background. */
+function paintedStyle(painted: PaintedFill | null | undefined): Partial<RawElementEvidence["style"]> {
+  if (!painted) return {};
+  return {
+    ...(painted.color ? { paintedBackgroundColor: painted.color } : {}),
+    ...(painted.image ? { paintedBackgroundImage: painted.image } : {}),
+    paintedBy: painted.by,
+  };
+}
+
 async function captureElements(page: Page, surfaceId: string): Promise<RawElementEvidence[]> {
+  await installPaintResolver(page);
   const raw = await page.evaluate(() => {
     const selectors = [
       "body", "h1", "h2", "h3", "h4", "p", "button", "a", "input", "select", "textarea", "article", "li",
@@ -174,7 +302,10 @@ async function captureElements(page: Page, surfaceId: string): Promise<RawElemen
         return id || (testId ? `[data-testid="${CSS.escape(testId)}"]` : element.tagName.toLowerCase());
       })();
       if (interactive) html.setAttribute("data-omd-capture", String(interactiveIndex - 1));
+      const paint = (window as unknown as { __omdPaint?: PaintApi }).__omdPaint;
+      const painted = interactive ? paint?.resolve(element, String(interactiveIndex - 1)) ?? null : null;
       return {
+        painted,
         selector,
         tagName: element.tagName.toLowerCase(),
         role: element.getAttribute("role"),
@@ -205,8 +336,18 @@ async function captureElements(page: Page, surfaceId: string): Promise<RawElemen
       };
     });
   });
-  return raw.map((element: Omit<RawElementEvidence, "surfaceId">) => ({ ...element, surfaceId, selector: `${surfaceId}::${element.selector}` }));
+  return raw.map(({ painted, ...element }: Omit<RawElementEvidence, "surfaceId"> & { painted: PaintedFill | null }) => ({
+    ...element,
+    style: { ...element.style, ...paintedStyle(painted) },
+    surfaceId,
+    selector: `${surfaceId}::${element.selector}`,
+  }));
 }
+
+// Each state read gives up after 2s (2026-09-30). The read had no timeout, so a locator whose
+// stamped node had been replaced waited Playwright's 30s default on every read: four reads per
+// control, 24 controls, far past the 90s step budget. A control whose rest read fails is skipped.
+const STATE_READ_TIMEOUT_MS = 2_000;
 
 async function captureStates(page: Page, surfaceId: string, elements: readonly RawElementEvidence[]): Promise<{
   states: Record<string, string[]>;
@@ -215,12 +356,15 @@ async function captureStates(page: Page, surfaceId: string, elements: readonly R
   const result: Record<string, string[]> = {};
   const captured: RawElementEvidence[] = [];
   const interactive = elements.filter((element) => element.selector.includes("[data-omd-capture=")).slice(0, 24);
+  await installPaintResolver(page).catch(() => {});
   for (const element of interactive) {
     const domSelector = element.selector.split("::")[1];
     const locator = page.locator(domSelector).first();
     const read = () => locator.evaluate((node: Element) => {
       const style = getComputedStyle(node);
+      const paint = (window as unknown as { __omdPaint?: PaintApi }).__omdPaint;
       return {
+        painted: paint?.read(node, node.getAttribute("data-omd-capture")) ?? null,
         color: style.color,
         backgroundColor: style.backgroundColor,
         borderColor: style.borderColor,
@@ -237,16 +381,17 @@ async function captureStates(page: Page, surfaceId: string, elements: readonly R
         letterSpacing: style.letterSpacing,
         transform: style.transform,
       };
-    }).catch(() => null);
+    }, undefined, { timeout: STATE_READ_TIMEOUT_MS }).catch(() => null);
     const base = await read();
+    if (!base) continue; // the stamped node is gone; there is nothing to compare a state against
     const states: string[] = [];
     const capture = (state: string, value: Awaited<ReturnType<typeof read>>) => {
-      if (!base || !value || JSON.stringify(value) === JSON.stringify(base)) return;
+      if (!value || JSON.stringify(value) === JSON.stringify(base)) return;
       states.push(state);
-      const { transform, ...style } = value;
+      const { transform, painted, ...style } = value;
       void transform; // state detection uses transform; raw token evidence deliberately excludes it
       const selector = `${element.selector}::state-${state}`;
-      captured.push({ ...element, selector, style });
+      captured.push({ ...element, selector, style: { ...style, ...paintedStyle(painted) } });
       result[selector] = [state];
     };
     await locator.hover({ timeout: 500 }).catch(() => {});
@@ -269,6 +414,7 @@ async function captureInteractionTargets(
   phase: string,
   targetSelector: string,
 ): Promise<RawElementEvidence[]> {
+  await installPaintResolver(page).catch(() => {});
   const raw = await page.evaluate(({ phase, targetSelector }) => {
     const visible = (element: Element) => {
       const rect = element.getBoundingClientRect();
@@ -289,6 +435,8 @@ async function captureInteractionTargets(
         candidates.push(element);
       }
     }
+    const paint = (window as unknown as { __omdPaint?: PaintApi }).__omdPaint;
+    const interactive = 'button,a,input,select,textarea,[role="button"],[role="tab"],[role="switch"],[tabindex]';
     return candidates.slice(0, 120).map((element, index) => {
       const html = element as HTMLElement;
       const value = `${phase}-${index}`;
@@ -296,6 +444,7 @@ async function captureInteractionTargets(
       const rect = element.getBoundingClientRect();
       const style = getComputedStyle(element);
       return {
+        painted: element.matches(interactive) ? paint?.resolve(element) ?? null : null,
         selector: `[data-omd-interaction-capture="${value}"]`,
         tagName: element.tagName.toLowerCase(),
         role: element.getAttribute("role"),
@@ -326,8 +475,9 @@ async function captureInteractionTargets(
       };
     });
   }, { phase, targetSelector });
-  return raw.map((element: Omit<RawElementEvidence, "surfaceId">) => ({
+  return raw.map(({ painted, ...element }: Omit<RawElementEvidence, "surfaceId"> & { painted: PaintedFill | null }) => ({
     ...element,
+    style: { ...element.style, ...paintedStyle(painted) },
     surfaceId,
     selector: `${surfaceId}::${element.selector}`,
   }));

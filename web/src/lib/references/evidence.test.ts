@@ -107,4 +107,37 @@ describe("reference evidence normalization", () => {
     expect(bundle.radii[0].value).toBe(8);
     expect(bundle.coverage.surfaceCount).toBe(2);
   });
+
+  it("uses the fill a transparent control paints on a child or ancestor, with provenance", () => {
+    const transparent = { ...element().style, backgroundColor: "rgba(0, 0, 0, 0)" };
+    const framer = element({
+      selector: "home::a.framer", tagName: "a", className: "framer-abc button",
+      style: { ...transparent, paintedBackgroundColor: "rgb(129, 105, 255)", paintedBy: "descendant:div.framer-xyz" },
+    });
+    const gradient = element({
+      selector: "home::a.gradient", tagName: "a", className: "framer-def button",
+      style: { ...transparent, paintedBackgroundImage: "linear-gradient(90deg, rgb(255, 0, 0), rgb(0, 0, 255))", paintedBy: "descendant:div.framer-uvw" },
+    });
+    const ghost = element({ selector: "home::a.ghost", tagName: "a", className: "ghost button", style: transparent });
+    const bundle = aggregateReferenceEvidence({
+      referenceId: "brand",
+      capturedAt: "2026-09-30T00:00:00.000Z",
+      tool: "playwright_cli",
+      sources: [{ id: "surface-home", url: "https://brand.test", kind: "product-surface" }],
+      surfaces: [{ id: "home", url: "https://brand.test", viewport: "1440x900", elements: [framer, gradient, ghost, element()] }],
+      faces: [],
+    });
+    const bySelector = (selector: string) => bundle.components.find((component) => component.representative.selector === selector);
+    expect(bySelector("home::a.framer")?.fingerprint).toMatch(/^#8169ff\|/);
+    expect(bySelector("home::a.framer")?.paintedOccurrences).toBe(1);
+    expect(bySelector("home::a.gradient")?.fingerprint).toMatch(/^gradient\(#ff0000>#0000ff\)\|/);
+    expect(bySelector("home::a.ghost")?.fingerprint).toMatch(/^transparent\|/);
+    expect(bySelector("home::a.ghost")).not.toHaveProperty("paintedOccurrences");
+    expect(bySelector("button.primary")).not.toHaveProperty("paintedOccurrences");
+    expect(bundle.colors.find((color) => color.property === "background" && color.value === "#8169ff"))
+      .toMatchObject({ occurrences: 1, paintedOccurrences: 1 });
+    expect(bundle.colors.find((color) => color.value === "#3182f6")).not.toHaveProperty("paintedOccurrences");
+    expect(bundle.colors.some((color) => color.value === "#ff0000" || color.value === "#0000ff")).toBe(false);
+    expect(framer.style.backgroundColor).toBe("rgba(0, 0, 0, 0)");
+  });
 });
