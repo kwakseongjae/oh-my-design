@@ -479,7 +479,14 @@
 - **오늘 KR partial 누계: 59곳 승격(227→286).** 보류 5곳(ssg·cafe24 봇 차단, tellingme·medibloc, +humanscape는 P7에서 처리).
 - **중단·재개:** P7 에이전트 6개가 20:55에 사용량 한도로 전부 멈췄다(22:10 초기화). 남은 것은 greencar·postype 번들 2개뿐이고, 재캡처 때 덮어쓴다. 22:12에 같은 목록으로 재개했다.
 - **진행 중 (20:52~): 웨이브 P7** — kakaopay·ikala 감사 수정 / humanscape·danawa / idus·nota / queenit·hackle / rebellions·portone / greencar·postype.
-- **사이트 반영 대기:** P4 10 + P5 11 + P6 10 = 31곳, 수집기 개선(사이트 영향 없음).
+- **완료 — 웨이브 P7 (22:37, `3dc74eed`).**
+  - 9곳 → Verified v2: danawa·humanscape(lifex.io 운영 사실만 기재)·idus·nota·hackle·rebellions·portone·greencar·postype. 합계 286→295.
+  - 보류: queenit(coverage 60 미만).
+  - 감사 수정 2건은 막혔다:
+    - kakaopay: 수집기가 kakaopay.com SPA에서 요소 0개를 반환한다. 수동으로 8초 기다리면 렌더된다. 67개 클레임이 전부 kakaocorp 근거라, 걷어내면 강등이다 → **오너 결정 대기.** 수집기 SPA 대기 개선도 후속으로 남긴다.
+    - ikala: ikala.ai가 봇 차단이라 다시 출처를 달 수 없다.
+- **오늘 KR partial 누계: 68곳 승격(227→295).**
+- **사이트 반영 대기:** P4 10 + P5 11 + P6 10 + P7 9 = 40곳, 수집기 개선(사이트 영향 없음).
 
 - **다음.**
   1. ~~저작 E1~~ (완료).
