@@ -434,7 +434,16 @@
 - **완료 — 수집기 시간 제한 (`2d823a78`).** 단계(90초)·경로(300초)·전체(900초) 제한을 둔다. 멈춘 상태 수집 단계만 미측정으로 기록하고 기본 스타일은 살린다. greeting은 100초 만에 표면 3곳을 캡처했지만 coverage 28이라 보류를 유지한다(사유가 정확해졌다). goorm 회귀 테스트는 동일하다.
 - **실수 재발·차단 (18:10).** P4를 띄우며 P3 스크립트(쌍 목록이 코드에 고정)에 args를 넘겨 재실행했다. 즉시 중지했고 피해는 0이다. 재발 방지로, args가 없으면 실행을 거부하는 인자 전용 스크립트 `kr-partial-wave`로 교체했다.
 - **완료 — 그리드 대표색 수정 사이트 반영 (18:20, main `18ae2f62`).** 오너 GO. 프로덕션 배포 6755494055 성공. 라이브 `/api/references`에서 kakao #fee500, naver #03c75a, stripe #635bff, 11st #ff0038, hwahae #3d3d3d 확인.
-- **진행 중 — 웨이브 P4 (18:12~):** 42dot·stibee / kbpay·mildang / kyobobook·tabling / airbridge·protopie / shiftup·dealicious / drdiary·codeit.
+- **완료 — KR partial 웨이브 P4 (18:30, `525d022c`).**
+  - 10곳 → Verified v2: 42dot·stibee·kbpay·mildang·kyobobook·tabling·airbridge·shiftup·dealicious·codeit. 합계 255→265.
+  - 보류: protopie(Framer, 버튼 채움이 자식 요소에 있어 수집기가 못 읽음), drdiary(coverage 50). 두 캡처는 보관해 재시도에 쓴다.
+  - 대표색 검증:
+    - airbridge `#155dfc`는 번들에 `lab(44.0605 29.0279 -86.0352)`로 저장돼 있고, 변환하면 정확히 일치한다.
+    - tabling `#fc3d0e`는 프로브의 그라데이션 시작색이다.
+    - kbpay `#ffcc00`는 같은 card.kbcard.com 사이트의 공용 btn--primary다(KB Pay 페이지에는 채움 액션이 없다).
+  - 수집기 폼 단계 점검: 실제 사이트에서는 제출하지 않는다(`reportValidity()`만 호출한다).
+  - 모션 고정값 234→224.
+- **오늘 KR partial 누계: 38곳 승격(227→265), 보류 4곳(ssg 403, greeting·protopie Framer, drdiary coverage).** 남은 후보 약 58곳.
 - **다음.**
   1. ~~저작 E1~~ (완료).
   2. 오너 GO 대기: 사이트 반영(웨이브 5 + 19곳 + 라이브 정정 4곳 + E2 3곳, 이어서 E1 3곳), /hangul 공개 판단(v2 뒤).
