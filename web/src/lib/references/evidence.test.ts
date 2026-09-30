@@ -4,6 +4,7 @@ import {
   classifyCapturedElement,
   classifyEvidenceElement,
   isFilledButtonLike,
+  isLinkDefaultOnlyChange,
   normalizeCapturedColor,
   resolveFontEvidence,
   type RawElementEvidence,
@@ -197,5 +198,62 @@ describe("filled, button-sized anchors (owner decision 2026-09-30)", () => {
     expect(bundle.components.map((component) => component.type)).toEqual(["button"]);
     expect(bundle.components[0].states).toEqual(["hover"]);
     expect(bundle.typography.map((row) => row.role).sort()).toEqual(["button", "text"]);
+  });
+});
+
+describe("Chromium default link colours are neither states nor variants (2026-09-30)", () => {
+  const linkStyle = { ...element().style, color: "rgb(0, 0, 238)", borderColor: "rgb(0, 0, 238)", labelColor: "rgb(24, 24, 24)" };
+  const rest = element({
+    selector: "home::[data-omd-capture=\"5\"]", tagName: "a", className: "framer-abc", coveredByMedia: false,
+    textLength: 11, rect: { width: 160, height: 44, top: 0 }, style: linkStyle,
+  });
+  const pressed = (style: Partial<RawElementEvidence["style"]> = {}): RawElementEvidence => ({
+    ...rest, selector: `${rest.selector}::state-pressed`,
+    style: { ...linkStyle, color: "rgb(255, 0, 0)", borderColor: "rgb(255, 0, 0)", ...style },
+  });
+  const run = (elements: RawElementEvidence[]) => aggregateReferenceEvidence({
+    referenceId: "brand",
+    capturedAt: "2026-09-30T00:00:00.000Z",
+    tool: "playwright_cli",
+    sources: [{ id: "surface-home", url: "https://brand.test", kind: "product-surface" }],
+    surfaces: [{ id: "home", url: "https://brand.test", viewport: "1440x900", elements }],
+    faces: [],
+    stateEvidence: { [rest.selector]: ["pressed"], [`${rest.selector}::state-pressed`]: ["pressed"] },
+  });
+
+  it("a pressed frame that differs only by the default red is not a state", () => {
+    expect(isLinkDefaultOnlyChange("a", rest.style, pressed().style)).toBe(true);
+    const bundle = run([rest, pressed()]);
+    expect(bundle.coverage.observedStates).toBe(0);
+    expect(bundle.components).toHaveLength(1);
+    expect(bundle.components[0].states).toEqual([]);
+  });
+
+  it("keeps the state when the label or the painted fill changes", () => {
+    const label = pressed({ labelColor: "rgb(129, 105, 255)" });
+    const fill = pressed({ paintedBackgroundColor: "rgb(0, 0, 0)", paintedBy: "descendant:div.framer-xyz" });
+    expect(isLinkDefaultOnlyChange("a", rest.style, label.style)).toBe(false);
+    expect(isLinkDefaultOnlyChange("a", rest.style, fill.style)).toBe(false);
+    expect(run([rest, label]).coverage.observedStates).toBe(1);
+    expect(run([rest, fill]).coverage.observedStates).toBe(1);
+    expect(isLinkDefaultOnlyChange("button", rest.style, pressed().style)).toBe(false);
+    expect(isLinkDefaultOnlyChange("a", { ...rest.style, transform: "none" }, { ...pressed().style, transform: "matrix(0.98, 0, 0, 0.98, 0, 0)" })).toBe(false);
+  });
+
+  it("two anchors that differ only by the default colour are one variant", () => {
+    const visited = { ...rest, selector: "home::[data-omd-capture=\"6\"]", style: { ...linkStyle, color: "rgb(85, 26, 139)", borderColor: "rgb(85, 26, 139)" } };
+    const labelled = run([rest, visited]);
+    expect(labelled.components).toHaveLength(1);
+    expect(labelled.components[0].fingerprint.split("|").slice(1, 3)).toEqual(["#181818", "link-default"]);
+    const { labelColor, ...unlabelledStyle } = linkStyle;
+    void labelColor;
+    const unlabelled = run([{ ...rest, style: unlabelledStyle }, { ...visited, style: { ...unlabelledStyle, color: "rgb(255, 0, 0)" } }]);
+    expect(unlabelled.components).toHaveLength(1);
+    expect(unlabelled.components[0].fingerprint.split("|")[1]).toBe("link-default");
+  });
+
+  it("trusts a frame the collector already filtered (it carries stateChanges)", () => {
+    const frame = { ...pressed(), stateChanges: ["color", "borderColor", "transform"] };
+    expect(run([rest, frame]).coverage.observedStates).toBe(1);
   });
 });

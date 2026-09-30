@@ -6,6 +6,7 @@ import { readReferenceSource } from "./lib/reference-source.mjs";
 import { chromium, type Page, type Response as PlaywrightResponse } from "playwright-core";
 import {
   aggregateReferenceEvidence,
+  isLinkDefaultOnlyChange,
   type FontFaceEvidence,
   type InteractionEvidence,
   type InteractionEvidenceKind,
@@ -165,9 +166,10 @@ async function discoverRoutes(page: Page, baseUrl: string): Promise<{ routes: st
 // same painted element again under hover, pressed and focus. Same scope idea as
 // probe-keyboard-states.mjs, which compares descendants and 3 ancestor levels.
 type PaintedFill = { color?: string; image?: string; by: string };
-type Inspection = { painted: PaintedFill | null; coveredByMedia: boolean };
+type Inspection = { painted: PaintedFill | null; coveredByMedia: boolean; labelColor?: string };
 type PaintApi = {
   inspect(element: Element, key?: string): Inspection;
+  label(element: Element): string | undefined;
   resolve(element: Element, key?: string): PaintedFill | null;
   read(element: Element, key: string | null): PaintedFill | null;
 };
@@ -213,7 +215,7 @@ async function installPaintResolver(page: Page): Promise<void> {
     // One walk per interactive control: whether media covers its face (recorded for every
     // interactive element, for the filled-anchor button rule) and, only when its own background
     // is transparent with no image, the fill it paints.
-    const inspect = (element: Element, key?: string): Inspection => {
+    const inspectFill = (element: Element, key?: string): Inspection => {
       const own = getComputedStyle(element);
       if (/url\(/i.test(own.backgroundImage)) return { painted: null, coveredByMedia: true }; // an image link
       const transparent = alpha(own.backgroundColor) === 0 && own.backgroundImage === "none";
@@ -262,7 +264,31 @@ async function installPaintResolver(page: Page): Promise<void> {
       if (key !== undefined) targets.set(key, { node: found.node, by: found.by });
       return { painted: { ...found.fill, by: found.by }, coveredByMedia: false };
     };
-    const resolve = (element: Element, key?: string): PaintedFill | null => inspect(element, key).painted;
+    const resolve = (element: Element, key?: string): PaintedFill | null => inspectFill(element, key).painted;
+    // The label colour of a container anchor (2026-09-30). Framer leaves the <a> at Chromium's
+    // default link colour and paints the label on a child <p>/<span>, so an anchor at a default
+    // colour records the colour of the first descendant, breadth-first, that holds text itself.
+    const LINK_DEFAULT = /^rgb\((?:0, 0, 238|255, 0, 0|85, 26, 139)\)$/;
+    const holdsText = (node: Element): boolean =>
+      [...node.childNodes].some((child) => child.nodeType === 3 && (child.textContent ?? "").trim().length > 0);
+    const linkLabelColor = (element: Element): string | undefined => {
+      if (element.tagName !== "A" || !LINK_DEFAULT.test(getComputedStyle(element).color) || holdsText(element)) return undefined;
+      const queue = childrenOf(element);
+      for (let index = 0; index < queue.length && index < MAX_NODES; index++) {
+        const node = queue[index];
+        if (SKIP.test(node.tagName.toLowerCase())) continue;
+        if (holdsText(node)) {
+          const style = getComputedStyle(node);
+          if (style.display !== "none" && style.visibility === "visible") return style.color;
+        }
+        if (queue.length < MAX_NODES * 2) queue.push(...childrenOf(node));
+      }
+      return undefined;
+    };
+    const inspect = (element: Element, key?: string): Inspection => {
+      const labelColor = linkLabelColor(element);
+      return { ...inspectFill(element, key), ...(labelColor ? { labelColor } : {}) };
+    };
     // Under hover / pressed / focus: the element found at rest, read as it is now (its fill may
     // turn transparent). A control with none at rest, or whose painted node was replaced since,
     // is resolved again, so a ghost button whose child fills only on hover is seen too.
@@ -273,7 +299,7 @@ async function installPaintResolver(page: Page): Promise<void> {
       const image = gradientOf(style);
       return { color: style.backgroundColor, ...(image ? { image } : {}), by: target.by };
     };
-    host.__omdPaint = { inspect, resolve, read };
+    host.__omdPaint = { inspect, resolve, read, label: linkLabelColor };
   });
 }
 
@@ -319,6 +345,7 @@ async function captureElements(page: Page, surfaceId: string): Promise<RawElemen
       const inspected = interactive ? paint?.inspect(element, String(interactiveIndex - 1)) : undefined;
       return {
         painted: inspected?.painted ?? null,
+        labelColor: inspected?.labelColor,
         selector,
         tagName: element.tagName.toLowerCase(),
         role: element.getAttribute("role"),
@@ -350,9 +377,9 @@ async function captureElements(page: Page, surfaceId: string): Promise<RawElemen
       };
     });
   });
-  return raw.map(({ painted, ...element }: Omit<RawElementEvidence, "surfaceId"> & { painted: PaintedFill | null }) => ({
+  return raw.map(({ painted, labelColor, ...element }: Omit<RawElementEvidence, "surfaceId"> & { painted: PaintedFill | null; labelColor?: string }) => ({
     ...element,
-    style: { ...element.style, ...paintedStyle(painted) },
+    style: { ...element.style, ...paintedStyle(painted), ...(labelColor ? { labelColor } : {}) },
     surfaceId,
     selector: `${surfaceId}::${element.selector}`,
   }));
@@ -379,6 +406,7 @@ async function captureStates(page: Page, surfaceId: string, elements: readonly R
       const paint = (window as unknown as { __omdPaint?: PaintApi }).__omdPaint;
       return {
         painted: paint?.read(node, node.getAttribute("data-omd-capture")) ?? null,
+        labelColor: paint?.label(node),
         color: style.color,
         backgroundColor: style.backgroundColor,
         borderColor: style.borderColor,
@@ -394,6 +422,7 @@ async function captureStates(page: Page, surfaceId: string, elements: readonly R
         lineHeight: style.lineHeight,
         letterSpacing: style.letterSpacing,
         transform: style.transform,
+        opacity: style.opacity,
       };
     }, undefined, { timeout: STATE_READ_TIMEOUT_MS }).catch(() => null);
     const base = await read();
@@ -401,11 +430,16 @@ async function captureStates(page: Page, surfaceId: string, elements: readonly R
     const states: string[] = [];
     const capture = (state: string, value: Awaited<ReturnType<typeof read>>) => {
       if (!value || JSON.stringify(value) === JSON.stringify(base)) return;
+      // Chromium's default link colours on a container anchor are not a state (2026-09-30): a frame
+      // whose only change is the anchor's own #0000ee -> #ff0000 (pressed) is dropped.
+      if (isLinkDefaultOnlyChange(element.tagName, base, value)) return;
       states.push(state);
-      const { transform, painted, ...style } = value;
-      void transform; // state detection uses transform; raw token evidence deliberately excludes it
+      const stateChanges = (Object.keys(value) as (keyof typeof value)[])
+        .filter((key) => JSON.stringify(value[key]) !== JSON.stringify(base[key]));
+      const { transform, opacity, painted, labelColor, ...style } = value;
+      void transform; void opacity; // state detection uses them; raw token evidence deliberately excludes them
       const selector = `${element.selector}::state-${state}`;
-      captured.push({ ...element, selector, style: { ...style, ...paintedStyle(painted) } });
+      captured.push({ ...element, selector, stateChanges, style: { ...style, ...paintedStyle(painted), ...(labelColor ? { labelColor } : {}) } });
       result[selector] = [state];
     };
     await locator.hover({ timeout: 500 }).catch(() => {});
@@ -460,6 +494,7 @@ async function captureInteractionTargets(
       const inspected = element.matches(interactive) ? paint?.inspect(element) : undefined;
       return {
         painted: inspected?.painted ?? null,
+        labelColor: inspected?.labelColor,
         selector: `[data-omd-interaction-capture="${value}"]`,
         tagName: element.tagName.toLowerCase(),
         role: element.getAttribute("role"),
@@ -491,9 +526,9 @@ async function captureInteractionTargets(
       };
     });
   }, { phase, targetSelector });
-  return raw.map(({ painted, ...element }: Omit<RawElementEvidence, "surfaceId"> & { painted: PaintedFill | null }) => ({
+  return raw.map(({ painted, labelColor, ...element }: Omit<RawElementEvidence, "surfaceId"> & { painted: PaintedFill | null; labelColor?: string }) => ({
     ...element,
-    style: { ...element.style, ...paintedStyle(painted) },
+    style: { ...element.style, ...paintedStyle(painted), ...(labelColor ? { labelColor } : {}) },
     surfaceId,
     selector: `${surfaceId}::${element.selector}`,
   }));

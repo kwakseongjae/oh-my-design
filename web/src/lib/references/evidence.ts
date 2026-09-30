@@ -35,6 +35,12 @@ export interface RawElementEvidence {
    * i.e. its face is media. Absent on non-interactive elements and on bundles captured before.
    */
   readonly coveredByMedia?: boolean;
+  /**
+   * State frames only (collector 2026-09-30): the read properties that differ from rest. That
+   * collector never records a frame whose only change is an anchor's Chromium default link
+   * colour; a frame without this field comes from an older collector and is checked on aggregation.
+   */
+  readonly stateChanges?: readonly string[];
   readonly rect: { readonly width: number; readonly height: number; readonly top: number };
   readonly style: {
     readonly color: string;
@@ -62,6 +68,13 @@ export interface RawElementEvidence {
     readonly paintedBackgroundImage?: string;
     /** Where the painted fill sits: "descendant:<tag>.<first class>" or "ancestor:<level>". */
     readonly paintedBy?: string;
+    /**
+     * An <a> whose own colour is a Chromium default link colour (#0000ee; #ff0000 while pressed;
+     * #551a8b visited): the colour of the first descendant, breadth-first, that holds text itself.
+     * Framer puts the label on a child <p>/<span>. Absent otherwise, or when the anchor holds its
+     * text directly.
+     */
+    readonly labelColor?: string;
   };
 }
 
@@ -281,12 +294,42 @@ export function resolveElementFill(style: RawElementEvidence["style"]): { value:
   return null;
 }
 
+// Chromium's default link colours (AGENTS.md): #0000ee at rest, #ff0000 while pressed (:active),
+// #551a8b visited. On a container anchor they are neither brand evidence nor a state.
+const LINK_DEFAULT_COLORS = new Set(["#0000ee", "#ff0000", "#551a8b"]);
+function isLinkDefaultColor(value: unknown): boolean {
+  return typeof value === "string" && LINK_DEFAULT_COLORS.has(normalizeCapturedColor(value) ?? "");
+}
+
+/**
+ * True when an <a> moved only between Chromium default link colours: its own colour (and a border
+ * or label colour that follows it) went from one default to another and nothing else changed —
+ * label colour, fill, painted fill, border, shadow, transform and opacity included. The collector
+ * applies it before recording a state frame; the aggregator applies it to older frames.
+ */
+export function isLinkDefaultOnlyChange(tagName: string, before: object, after: object): boolean {
+  const rest = before as Readonly<Record<string, unknown>>;
+  const next = after as Readonly<Record<string, unknown>>;
+  if (tagName.toLowerCase() !== "a" || !isLinkDefaultColor(rest.color) || !isLinkDefaultColor(next.color)) return false;
+  let changed = false;
+  for (const key of new Set([...Object.keys(rest), ...Object.keys(next)])) {
+    if (JSON.stringify(rest[key]) === JSON.stringify(next[key])) continue;
+    if (!["color", "borderColor", "labelColor"].includes(key) || !isLinkDefaultColor(rest[key]) || !isLinkDefaultColor(next[key])) return false;
+    changed = true;
+  }
+  return changed;
+}
+
 function stableStyleFingerprint(element: RawElementEvidence): string {
   const style = element.style;
+  // An anchor at a default link colour shows its label's colour, else a neutral token, so a copy
+  // that differs only by the default red (pressed) or purple (visited) is not a new variant.
+  const linkDefault = element.tagName.toLowerCase() === "a" && isLinkDefaultColor(style.color);
+  const label = linkDefault && style.labelColor && !isLinkDefaultColor(style.labelColor) ? normalizeCapturedColor(style.labelColor) : null;
   return [
     resolveElementFill(style)?.value ?? "transparent",
-    normalizeCapturedColor(style.color) ?? "unknown",
-    normalizeCapturedColor(style.borderColor) ?? "none",
+    linkDefault ? label ?? "link-default" : normalizeCapturedColor(style.color) ?? "unknown",
+    linkDefault && isLinkDefaultColor(style.borderColor) ? "link-default" : normalizeCapturedColor(style.borderColor) ?? "none",
     style.borderRadius,
     style.padding,
     Math.round(element.rect.height),
@@ -420,6 +463,17 @@ export function aggregateReferenceEvidence(input: {
   const typography = [...typeMap.values()].map(({ count, ...item }) => ({ ...item, occurrences: count }))
     .sort((a, b) => b.occurrences - a.occurrences);
 
+  // A state whose frame differs from rest only by Chromium's default link colours is not counted.
+  // Frames from the 2026-09-30 collector carry stateChanges and were filtered before recording
+  // (with transform and opacity in view, which frames do not store); older frames are checked here.
+  const bySelector = new Map(elements.map((element) => [element.selector, element]));
+  const linkDefaultState = (element: RawElementEvidence, state: string): boolean => {
+    const restSelector = element.selector.split("::state-")[0];
+    const rest = bySelector.get(restSelector);
+    const frame = bySelector.get(`${restSelector}::state-${state}`);
+    if (!rest || !frame || frame.stateChanges) return false;
+    return isLinkDefaultOnlyChange(frame.tagName, rest.style, frame.style);
+  };
   const componentMap = new Map<string, { type: CapturedComponentType; fingerprint: string; elements: RawElementEvidence[]; painted: number; surfaces: Set<string>; states: Set<string> }>();
   for (const element of elements) {
     const type = classifyEvidenceElement(element);
@@ -433,7 +487,9 @@ export function aggregateReferenceEvidence(input: {
     if (element.disabled) item.states.add("disabled");
     if (element.ariaSelected === "true") item.states.add("selected");
     if (element.ariaChecked !== null) item.states.add(element.ariaChecked === "true" ? "checked" : "unchecked");
-    for (const state of input.stateEvidence?.[element.selector] ?? []) item.states.add(state);
+    for (const state of input.stateEvidence?.[element.selector] ?? []) {
+      if (!linkDefaultState(element, state)) item.states.add(state);
+    }
     componentMap.set(key, item);
   }
   const components = [...componentMap.values()].map((item) => ({
