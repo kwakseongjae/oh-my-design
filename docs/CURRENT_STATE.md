@@ -463,9 +463,22 @@
   - 채움 기록(자식·조상), 버튼 규칙(오너 결정), 경로 정규화·도착 URL 중복 건너뛰기, 기본 링크색 제외(`labelColor` 기록)를 넣었다.
   - 재캡처 결과: protopie 54→78, greeting 28→73(상태를 빼도 66·61), lemonbase 87→91, goorm 100, kakaopage 68→72.
   - 확인: tsc 통과, 웹 테스트 1077건(+12), 파이프라인·고정 페이지 검사 통과. 고정 페이지 출력 `fixture.json`은 매니페스트에 갱신했다.
-- **진행 중 (20:08~):**
-  - 웨이브 P6: greeting·protopie 재시도, drdiary 재시도·kcd, petfriends·buzzvil, soomgo·medibloc, teamsparta·tellingme, shiftee·quotabook. 실행 로그에서 쌍을 확인했다.
-  - 타사 오염 감사(읽기 전용): 홈페이지 외 도메인을 제품·실측 표면으로 쓴 54곳의 소유 주체를 확인한다(`contamination-candidates.md` → `contamination-audit.md`).
+- **완료 — KR partial 웨이브 P6 (20:45, `3f134595`).**
+  - 10곳 → Verified v2. Framer 재시도 greeting 28→73·protopie 54→74, drdiary 50→67, 신규 kcd·petfriends·buzzvil·soomgo·teamsparta·shiftee·quotabook. 합계 276→286.
+  - 보류: tellingme(coverage 57, 자사 공개 페이지가 부족), medibloc(챌린지 페이지; 도메인이 MediBloc Limited의 Panacea 체인 소유로 바뀌어 대상 주체 판단 필요).
+  - protopie 국가는 KR 유지(Studio XID, Inc.와 Studio XID Korea Inc. 병기, 본사 운영지 미기재 → 규칙상 불명확).
+  - 모션 고정값 214→205.
+- **완료 — 타사 오염 감사 (20:50, `contamination-audit.md`).**
+  - 후보 53곳 중 두 번째 pozalabs는 없다: SAME 42 · GROUP 8 · RENAMED 3 · UNRELATED 0.
+  - 후속 4건:
+    - ikala: ikala.tw가 GoDaddy 주차 페이지인데 실측 출처로 기록돼 있다.
+    - kakaopay: 잉크·메뉴 상태가 kakaocorp.com의 서비스 소개 페이지에서 왔다(도메인 분리 위반).
+    - humanscape: 라이프엑스로 바뀐 것으로 보인다.
+    - getyourguide: .de 운영 주체를 확인하지 못했다(낮은 위험).
+  - 앞의 세 건은 P7에 넣었다.
+- **오늘 KR partial 누계: 59곳 승격(227→286).** 보류 5곳(ssg·cafe24 봇 차단, tellingme·medibloc, +humanscape는 P7에서 처리).
+- **진행 중 (20:52~): 웨이브 P7** — kakaopay·ikala 감사 수정 / humanscape·danawa / idus·nota / queenit·hackle / rebellions·portone / greencar·postype.
+- **사이트 반영 대기:** P4 10 + P5 11 + P6 10 = 31곳, 수집기 개선(사이트 영향 없음).
 
 - **다음.**
   1. ~~저작 E1~~ (완료).
