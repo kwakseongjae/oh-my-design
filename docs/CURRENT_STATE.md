@@ -449,9 +449,17 @@
   - **Framer 보류의 진짜 원인은 분류기다.** 해시 클래스 `<a>`를 unknown으로 분류해서 컴포넌트로 세지 않는다. 채움은 자식이 아니라 `<a>` 자신에 있다.
   - 발견한 버그: 경로 중복 제거가 `https://x.com`과 `https://x.com/`을 다르게 본다.
   - **결정 (19:20, 오너): 채움이 있는 버튼 크기 `<a>`는 버튼으로 센다**(GROWTH_DECISIONS). 워크트리에서 구현과 재캡처를 진행하고, P5가 끝나면 병합한다.
-- **진행 중 (18:40~).**
-  - 웨이브 P5: vuno·pozalabs / sandoll·returnzero / ringle·cjonstyle / 8percent·laundrygo / maum-ai·saramin / genie·cafe24. 인자 전용 스크립트를 쓰고, 실행 로그에서 P5 쌍을 확인했다.
-  - 수집기 개선(격리 워크트리): Framer·Webflow처럼 투명한 버튼의 채움이 자식이나 조상 요소에 있을 때 그 채움과 상태를 기록한다. 게이트 가중치는 그대로다. 회귀 대상: goorm·lemonbase·protopie·greeting·kakaopage. P5 캡처가 끝난 뒤 검토해서 합친다.
+- **완료 — KR partial 웨이브 P5 (19:55, `1c3a170a`).**
+  - 11곳 → Verified v2: vuno·pozalabs·sandoll·returnzero·ringle·cjonstyle·8percent·laundrygo·maum-ai·saramin·genie. 합계 265→276.
+  - 보류: cafe24(F5 CAPTCHA).
+  - 대표색 11개를 모든 색 표기(rgb·lab·oklab·oklch)에서 대조했다(`primary-grounding.mjs`).
+  - **⚠ pozalabs 7월 기록은 타사(musia.ai = 크리에이티브마인드, 사업자 424-87-00624)의 사이트로 작성돼 있었다.** 대표색·팔레트·컴포넌트·보이스·페르소나를 제거하고 1차 출처만으로 다시 썼다. → **7월 생성분 타사 오염 감사가 필요하다(후속).**
+  - 모션 고정값 224→214.
+- **수집기 2차 (워크트리 `f477121a`, 미병합).**
+  - 버튼 규칙과 경로 정규화 중복 제거, 도착 URL 중복 건너뛰기, 중첩 컨트롤 채움 중복 방지를 넣었다. 결과: greeting 28→73, protopie 54→74, goorm 100(+27 변형은 경로 수정 덕), kakaopage 68→72.
+  - **남은 문제:** Framer 앵커의 Chromium 기본 링크색(#0000ee·누름 #ff0000)이 변형과 pressed 상태에 섞인다 → 기본색 무시와 자식 라벨색 기록을 수정 중이다. 끝나면 병합하고 protopie·greeting을 재시도한다.
+- **오늘 KR partial 누계: 49곳 승격(227→276), 보류 5곳(ssg·cafe24 봇 차단, greeting·protopie Framer, drdiary coverage).**
+
 - **다음.**
   1. ~~저작 E1~~ (완료).
   2. 오너 GO 대기: 사이트 반영(웨이브 5 + 19곳 + 라이브 정정 4곳 + E2 3곳, 이어서 E1 3곳), /hangul 공개 판단(v2 뒤).
