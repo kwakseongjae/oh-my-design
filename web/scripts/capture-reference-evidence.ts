@@ -61,6 +61,8 @@ const maxRoutes = Number(option("--max-routes") ?? (!Array.isArray(routeEntry) ?
 if (!Number.isInteger(maxRoutes) || maxRoutes < 1 || maxRoutes > 8) throw new Error(`invalid --max-routes: ${maxRoutes}`);
 const captureExpandedInteractions = !process.argv.includes("--no-interactions");
 const capturePseudoStates = !process.argv.includes("--baseline-only");
+const RENDER_WAIT_MS = Number(option("--render-wait-ms") ?? "10000");
+if (!Number.isFinite(RENDER_WAIT_MS) || RENDER_WAIT_MS < 0) throw new Error(`invalid --render-wait-ms: ${RENDER_WAIT_MS}`);
 if (!Array.isArray(configuredRoutes) || configuredRoutes.some((value) => typeof value !== "string" || !/^https?:\/\//.test(value))) {
   throw new Error(`invalid capture routes for ${referenceId}`);
 }
@@ -125,6 +127,43 @@ async function dismissObstructions(page: Page): Promise<void> {
   if (await rejectByText.isVisible({ timeout: 150 }).catch(() => false)) {
     await rejectByText.click({ timeout: 500 }).catch(() => {});
   }
+}
+
+// SPA render wait (2026-09-30). kakaopay.com's client-rendered pages were read at
+// domcontentloaded + 900ms and yielded 0 elements, while the same page rendered 1017 nodes
+// after an 8s wait. After navigation, poll the count of visible text-bearing or interactive
+// elements every ~500ms and continue once it is non-trivial and unchanged across two
+// consecutive samples. Give up after --render-wait-ms (default 10000) and say so on stderr.
+const RENDER_MIN_NODES = 20;
+async function visibleRenderCount(page: Page): Promise<number> {
+  return page.evaluate(() => {
+    const interactive = "a[href], button, input, select, textarea, [role='button'], [role='link'], [tabindex]";
+    let count = 0;
+    for (const element of Array.from(document.body?.querySelectorAll("*") ?? [])) {
+      const htmlElement = element as HTMLElement;
+      const hasOwnText = Array.from(htmlElement.childNodes).some((node) => node.nodeType === 3 && (node.textContent ?? "").trim().length > 0);
+      if (!hasOwnText && !htmlElement.matches(interactive)) continue;
+      const rect = htmlElement.getBoundingClientRect();
+      if (rect.width <= 0 || rect.height <= 0) continue;
+      const style = getComputedStyle(htmlElement);
+      if (style.visibility === "hidden" || style.display === "none" || Number(style.opacity) === 0) continue;
+      count += 1;
+    }
+    return count;
+  }).catch(() => 0);
+}
+
+async function waitForRender(page: Page): Promise<void> {
+  const startedAt = Date.now();
+  let previous = -1;
+  let last = 0;
+  while (Date.now() - startedAt < RENDER_WAIT_MS) {
+    last = await visibleRenderCount(page);
+    if (last >= RENDER_MIN_NODES && last === previous) return;
+    previous = last;
+    await page.waitForTimeout(500);
+  }
+  console.error(`[reference-evidence] ${page.url()}: render wait hit the ${RENDER_WAIT_MS}ms cap (last visible count ${last}); capturing as is`);
 }
 
 async function discoverRoutes(page: Page, baseUrl: string): Promise<{ routes: string[]; fontOrLicenseUrls: string[]; publicDesignSystemUrls: string[] }> {
@@ -713,6 +752,7 @@ let discovery = { routes: [] as string[], fontOrLicenseUrls: [] as string[], pub
 await page.goto(homepage, { waitUntil: "domcontentloaded", timeout: 45_000 });
 await page.waitForTimeout(1_200);
 await dismissObstructions(page);
+await waitForRender(page);
 discovery = await discoverRoutes(page, homepage);
 // Routes are compared as `new URL(u).href` (2026-09-30). The homepage "https://lemonbase.com" and
 // the route "https://lemonbase.com/" were two strings, so the homepage was captured twice and
@@ -729,6 +769,8 @@ async function captureRoute(index: number, url: string) {
     await page.goto(url, { waitUntil: "domcontentloaded", timeout: 45_000 }).catch(() => null);
     await page.waitForTimeout(900);
     await dismissObstructions(page);
+    currentStep = "render-wait";
+    await waitForRender(page);
   }
   const currentUrl = new URL(page.url());
   if (isUnsafeCaptureSurface(currentUrl.href)) return null;
@@ -738,6 +780,13 @@ async function captureRoute(index: number, url: string) {
   const surfaceId = surfaces.length === 0 ? "home" : `surface-${surfaces.length + 1}`;
   currentStep = "elements";
   const baselineElements = await withTimeout(captureElements(page, surfaceId), STEP_BUDGET_MS, "elements");
+  // An empty surface is not a surface (2026-09-30): a wave passed preflight with two
+  // 0-element surfaces that still counted toward surface count and coverage.
+  if (baselineElements.length === 0) {
+    skippedRoutes.push({ url: currentUrl.href, reason: "0 elements captured (empty surface not counted)" });
+    console.error(`[reference-evidence] ${currentUrl.href}: 0 elements captured; skipped as an empty surface`);
+    return null;
+  }
   const unmeasured: string[] = [];
   let pseudoStates: Awaited<ReturnType<typeof captureStates>> = { elements: [], states: {} };
   if (capturePseudoStates) {
@@ -781,6 +830,7 @@ async function replacePage(url: string): Promise<void> {
   await page.goto(url, { waitUntil: "domcontentloaded", timeout: 45_000 }).catch(() => null);
   await page.waitForTimeout(900);
   await dismissObstructions(page);
+  await waitForRender(page);
 }
 
 for (const [index, url] of routeUrls.entries()) {
@@ -811,6 +861,10 @@ for (const [index, url] of routeUrls.entries()) {
   }
   interactionEvidence.push(...expanded.interactions);
   const elements = [...baselineElements, ...pseudoStates.elements, ...expanded.elements];
+  if (elements.length === 0) {
+    skippedRoutes.push({ url: capturedSurfaceUrl, reason: "0 elements captured (empty surface not counted)" });
+    continue;
+  }
   surfaces.push({ id: surfaceId, url: capturedSurfaceUrl, viewport: "1440x900", elements });
   allFaces.push(...faces);
 }
