@@ -444,6 +444,9 @@
   - 수집기 폼 단계 점검: 실제 사이트에서는 제출하지 않는다(`reportValidity()`만 호출한다).
   - 모션 고정값 234→224.
 - **오늘 KR partial 누계: 38곳 승격(227→265), 보류 4곳(ssg 403, greeting·protopie Framer, drdiary coverage).** 남은 후보 약 58곳.
+- **진행 중 (18:40~).**
+  - 웨이브 P5: vuno·pozalabs / sandoll·returnzero / ringle·cjonstyle / 8percent·laundrygo / maum-ai·saramin / genie·cafe24. 인자 전용 스크립트를 쓰고, 실행 로그에서 P5 쌍을 확인했다.
+  - 수집기 개선(격리 워크트리): Framer·Webflow처럼 투명한 버튼의 채움이 자식이나 조상 요소에 있을 때 그 채움과 상태를 기록한다. 게이트 가중치는 그대로다. 회귀 대상: goorm·lemonbase·protopie·greeting·kakaopage. P5 캡처가 끝난 뒤 검토해서 합친다.
 - **다음.**
   1. ~~저작 E1~~ (완료).
   2. 오너 GO 대기: 사이트 반영(웨이브 5 + 19곳 + 라이브 정정 4곳 + E2 3곳, 이어서 E1 3곳), /hangul 공개 판단(v2 뒤).
