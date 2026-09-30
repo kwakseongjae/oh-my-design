@@ -620,6 +620,78 @@
         "https://spartaclub.kr/catalog/scc",
         "https://spartaclub.kr/product/9"
       ]
+    },
+    "danawa": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.danawa.com/",
+        "https://prod.danawa.com/list/?cate=112758",
+        "https://prod.danawa.com/info/?pcode=122659760"
+      ]
+    },
+    "greencar": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.greencar.co.kr/",
+        "https://www.greencar-gcar.co.kr/",
+        "https://www.greencar-gcar.co.kr/sharing/gcar"
+      ]
+    },
+    "hackle": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://hackle.io/ko/",
+        "https://hackle.io/ko/service/ab-test/",
+        "https://hackle.io/ko/pricing/"
+      ]
+    },
+    "humanscape": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://lifex.io/",
+        "https://lifex.io/about-us",
+        "https://lifex.io/our-business"
+      ]
+    },
+    "idus": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.idus.com/v2/",
+        "https://www.idus.com/v2/main/popular",
+        "https://www.idus.com/v2/gift-shop"
+      ]
+    },
+    "nota": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.nota.ai/",
+        "https://www.nota.ai/aboutus",
+        "https://www.nota.ai/netspresso"
+      ]
+    },
+    "portone": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.portone.io/",
+        "https://www.portone.io/team",
+        "https://www.portone.io/pricing"
+      ]
+    },
+    "postype": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.postype.com/",
+        "https://about.postype.com/",
+        "https://www.postype.com/@team"
+      ]
+    },
+    "rebellions": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://kr.rebellions.ai/",
+        "https://kr.rebellions.ai/company/about/",
+        "https://kr.rebellions.ai/rebellions-product/rebel100/"
+      ]
     }
   }
 }

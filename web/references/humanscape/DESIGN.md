@@ -9,54 +9,223 @@ primary_color: "#00adf7"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=humanscape.io&sz=128"
-verified: "2026-07-02"
+verified: "2026-09-30"
 added: "2026-07-02"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: home, kind: corporate, url: "https://lifex.io/", inspected: "2026-09-30" }
+    - { id: surface-2, kind: corporate, url: "https://lifex.io/about-us", inspected: "2026-09-30" }
+    - { id: surface-3, kind: corporate, url: "https://lifex.io/our-business", inspected: "2026-09-30" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://lifex.io/", captured: "2026-09-30" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://lifex.io/about-us", captured: "2026-09-30" }
+    - { id: surface-surface-3, kind: product-surface, url: "https://lifex.io/our-business", captured: "2026-09-30" }
+    - { id: humanscape-probe-about, kind: product-surface, url: "https://lifex.io/about-us", captured: "2026-09-30" }
+    - { id: humanscape-redirect, kind: official-doc, url: "https://humanscape.io/", captured: "2026-09-30" }
+    - { id: pretendard-license, kind: license, url: "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &active { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h4", captured: "2026-09-30" }
+    "tokens.colors.accent-hover": &siteprobe { surface_id: surface-2, source_id: humanscape-probe-about, method: live-state-probe, selector: "button 사이트 바로가기 (282 x 44, rest bg #f4f6f9, fg #3c3d42, transition colours 0.15s cubic-bezier(0.4, 0, 0.2, 1)): hover and pressed self and label fg rgb(60, 61, 66) -> rgb(0, 168, 246); focus (Tab #24) outline none -> oklab(0.708 0 0 / 0.5) auto 1px", captured: "2026-09-30" }
+    "tokens.colors.violet": &index { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.ink": &h1 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h1", captured: "2026-09-30" }
+    "tokens.colors.ink-body": &article { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::article", captured: "2026-09-30" }
+    "tokens.colors.charcoal": &textlink { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"8\"]", captured: "2026-09-30" }
+    "tokens.colors.slate": &footlink { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"25\"]", captured: "2026-09-30" }
+    "tokens.colors.muted": &h4 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h4", captured: "2026-09-30" }
+    "tokens.colors.faint": &copy { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.inactive": *active
+    "tokens.colors.white": &hero { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h1", captured: "2026-09-30" }
+    "tokens.colors.surface": &site { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"39\"]", captured: "2026-09-30" }
+    "tokens.colors.hairline": &acc { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"20\"]", captured: "2026-09-30" }
+    "tokens.typography.family.body": &body { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
+    "tokens.typography.display-page.size": &pageh1 { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h1", captured: "2026-09-30" }
+    "tokens.typography.display-page.weight": *pageh1
+    "tokens.typography.display-page.lineHeight": *pageh1
+    "tokens.typography.display-page.tracking": *pageh1
+    "tokens.typography.display-page.use": *pageh1
+    "tokens.typography.display-statement.size": &h2xl { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
+    "tokens.typography.display-statement.weight": *h2xl
+    "tokens.typography.display-statement.lineHeight": *h2xl
+    "tokens.typography.display-statement.use": *h2xl
+    "tokens.typography.display-list.size": *active
+    "tokens.typography.display-list.weight": *active
+    "tokens.typography.display-list.lineHeight": *active
+    "tokens.typography.display-list.use": *active
+    "tokens.typography.display-hero.size": *hero
+    "tokens.typography.display-hero.weight": *hero
+    "tokens.typography.display-hero.lineHeight": *hero
+    "tokens.typography.display-hero.use": *hero
+    "tokens.typography.section.size": *h1
+    "tokens.typography.section.weight": *h1
+    "tokens.typography.section.lineHeight": *h1
+    "tokens.typography.section.use": *h1
+    "tokens.typography.heading.size": &h2 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
+    "tokens.typography.heading.weight": *h2
+    "tokens.typography.heading.lineHeight": *h2
+    "tokens.typography.heading.use": *h2
+    "tokens.typography.subheading.size": &h3 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
+    "tokens.typography.subheading.weight": *h3
+    "tokens.typography.subheading.lineHeight": *h3
+    "tokens.typography.subheading.use": *h3
+    "tokens.typography.card-title.size": &cardh3 { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h3", captured: "2026-09-30" }
+    "tokens.typography.card-title.weight": *cardh3
+    "tokens.typography.card-title.lineHeight": *cardh3
+    "tokens.typography.card-title.use": *cardh3
+    "tokens.typography.link-lg.size": *textlink
+    "tokens.typography.link-lg.weight": *textlink
+    "tokens.typography.link-lg.lineHeight": *textlink
+    "tokens.typography.link-lg.use": *textlink
+    "tokens.typography.body.size": *body
+    "tokens.typography.body.weight": *body
+    "tokens.typography.body.lineHeight": *body
+    "tokens.typography.body.use": *body
+    "tokens.typography.index-label.size": *index
+    "tokens.typography.index-label.weight": *index
+    "tokens.typography.index-label.lineHeight": *index
+    "tokens.typography.index-label.use": *index
+    "tokens.typography.button-sm.size": *site
+    "tokens.typography.button-sm.weight": *site
+    "tokens.typography.button-sm.lineHeight": *site
+    "tokens.typography.button-sm.use": *site
+    "tokens.typography.caption.size": *h4
+    "tokens.typography.caption.weight": *h4
+    "tokens.typography.caption.lineHeight": *h4
+    "tokens.typography.caption.use": *h4
+    "tokens.typography.fine.size": *copy
+    "tokens.typography.fine.weight": *copy
+    "tokens.typography.fine.lineHeight": *copy
+    "tokens.typography.fine.use": *copy
+    "tokens.spacing.nav-y": &nav { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-09-30" }
+    "tokens.spacing.nav-x": *nav
+    "tokens.spacing.menu": &menu { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-09-30" }
+    "tokens.spacing.row-y": &acc2 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-09-30" }
+    "tokens.spacing.button-x": *site
+    "tokens.rounded.chip": *nav
+    "tokens.rounded.card": &bizcard { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"13\"]", captured: "2026-09-30" }
+    "tokens.rounded.panel": &panel { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"17\"]", captured: "2026-09-30" }
+    "tokens.components.site-link-button.type": *site
+    "tokens.components.site-link-button.bg": *site
+    "tokens.components.site-link-button.fg": *site
+    "tokens.components.site-link-button.radius": *site
+    "tokens.components.site-link-button.padding": *site
+    "tokens.components.site-link-button.height": *site
+    "tokens.components.site-link-button.font": *site
+    "tokens.components.site-link-button.hover": *siteprobe
+    "tokens.components.site-link-button.pressed": *siteprobe
+    "tokens.components.site-link-button.focus": *siteprobe
+    "tokens.components.site-link-button.states": *siteprobe
+    "tokens.components.site-link-button.use": *site
+    "tokens.components.site-menu.type": *menu
+    "tokens.components.site-menu.bg": *menu
+    "tokens.components.site-menu.fg": *menu
+    "tokens.components.site-menu.radius": *menu
+    "tokens.components.site-menu.padding": *menu
+    "tokens.components.site-menu.size": *menu
+    "tokens.components.site-menu.font": *menu
+    "tokens.components.site-menu.states": *menu
+    "tokens.components.site-menu.use": *menu
+    "tokens.components.nav-link.type": *nav
+    "tokens.components.nav-link.fg": *nav
+    "tokens.components.nav-link.radius": *nav
+    "tokens.components.nav-link.padding": *nav
+    "tokens.components.nav-link.height": *nav
+    "tokens.components.nav-link.font": *nav
+    "tokens.components.nav-link.states": *nav
+    "tokens.components.nav-link.use": *nav
+    "tokens.components.lang-toggle.type": &lang { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"6\"]", captured: "2026-09-30" }
+    "tokens.components.lang-toggle.bg": *lang
+    "tokens.components.lang-toggle.fg": *lang
+    "tokens.components.lang-toggle.radius": *lang
+    "tokens.components.lang-toggle.padding": *lang
+    "tokens.components.lang-toggle.size": *lang
+    "tokens.components.lang-toggle.font": *lang
+    "tokens.components.lang-toggle.selected": *lang
+    "tokens.components.lang-toggle.states": &langoff { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"7\"]", captured: "2026-09-30" }
+    "tokens.components.lang-toggle.use": *lang
+    "tokens.components.text-link.type": *textlink
+    "tokens.components.text-link.fg": *textlink
+    "tokens.components.text-link.border": *textlink
+    "tokens.components.text-link.height": *textlink
+    "tokens.components.text-link.font": *textlink
+    "tokens.components.text-link.states": *textlink
+    "tokens.components.text-link.use": *textlink
+    "tokens.components.accordion-item.type": *acc
+    "tokens.components.accordion-item.fg": *acc
+    "tokens.components.accordion-item.border": *acc
+    "tokens.components.accordion-item.padding": *acc2
+    "tokens.components.accordion-item.disabled": *acc
+    "tokens.components.accordion-item.states": *acc
+    "tokens.components.accordion-item.use": *acc
+    "tokens.components.business-card.type": *bizcard
+    "tokens.components.business-card.radius": *bizcard
+    "tokens.components.business-card.size": *bizcard
+    "tokens.components.business-card.use": *bizcard
+    "tokens.components.feature-panel.type": *panel
+    "tokens.components.feature-panel.radius": *panel
+    "tokens.components.feature-panel.size": *panel
+    "tokens.components.feature-panel.use": *panel
+    "tokens.components.highlight-list.type": *active
+    "tokens.components.highlight-list.fg": *active
+    "tokens.components.highlight-list.font": *active
+    "tokens.components.highlight-list.selected": *active
+    "tokens.components.highlight-list.use": *active
 tokens:
-  source: live-extract
-  extracted: "2026-07-02"
-  note: "Humanscape rebranded to LifeX (humanscape.io -> lifex.io). primary = azure hero-highlight #00adf7 (coded as Tailwind text-[#00ADF7]); secondary accent violet #7b61ff on section index labels. Near-black ink #191a1f, shadowless flat system, oversized Pretendard display type."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
     primary: "#00adf7"
-    accent-violet: "#7b61ff"
-    ink: "#191a1f"
-    heading: "#1a1b1e"
-    body: "#0a0a0a"
-    dark: "#28292d"
-    meta: "#3c3d42"
+    accent-hover: "#00a8f6"
+    violet: "#7b61ff"
+    ink: "#1a1b1e"
+    ink-body: "#191a1f"
+    charcoal: "#28292d"
+    slate: "#3c3d42"
     muted: "#5d5d60"
-    faint: "#b0b3ba"
-    canvas: "#ffffff"
+    faint: "#8c8f96"
+    inactive: "#d2d4d9"
+    white: "#ffffff"
     surface: "#f4f6f9"
-    hero-mint: "#dfe7e4"
-    blue-tint: "#c7e1ff"
     hairline: "#d8dde4"
   typography:
-    family: { sans: "Pretendard" }
-    display:    { size: 112, weight: 600, use: "Page hero title (Our Business)" }
-    display-lg: { size: 90, weight: 500, use: "Closing statement headline" }
-    hero:       { size: 64, weight: 500, lineHeight: 1.2, use: "Section headline" }
-    h1:         { size: 58, weight: 500, use: "Homepage hero H1" }
-    h2:         { size: 32, weight: 500, use: "Card section title" }
-    h3:         { size: 24, weight: 500, use: "Card title" }
-    label:      { size: 16, weight: 500, use: "Section index label (violet)" }
-    body:       { size: 16, weight: 400, lineHeight: 1.5, use: "Body, nav, buttons" }
-    toggle:     { size: 14, weight: 600, use: "Language toggle pill" }
-    micro:      { size: 12, weight: 600, use: "Hiring badge / small tag" }
-  spacing: { xs: 4, sm: 8, nav: 14, md: 24, lg: 40, xl: 64, section: 120, band: 144 }
-  rounded: { sm: 8, lg: 24, xl: 32, full: 9999 }
-  shadow:
-    none: "none"
+    family: { body: "Pretendard" }
+    display-page: { size: 112, weight: 600, lineHeight: 1.3, tracking: -3.36, use: "Page titles on /about-us and /our-business, 146px line, filled with a #7b61ff to #00adf7 gradient clipped to the text" }
+    display-statement: { size: 90, weight: 500, lineHeight: 1.3, use: "Closing statement heading on home, 117px line, in #1a1b1e" }
+    display-list: { size: 72, weight: 500, lineHeight: 1.19, use: "Scroll-highlight list on /about-us, 86px line; the active item #00adf7, the others #d2d4d9" }
+    display-hero: { size: 58, weight: 500, lineHeight: 1.21, use: "Home hero headline, 70px line, in #ffffff over the hero film" }
+    section: { size: 52, weight: 500, lineHeight: 1.23, use: "Section headlines on home and /about-us, 64px line, in #1a1b1e" }
+    heading: { size: 32, weight: 500, lineHeight: 1.3, use: "Home carousel heading, 41.6px line, in #1a1b1e" }
+    subheading: { size: 24, weight: 500, lineHeight: 1.5, use: "Partner and investor names on home, 36px line, in #1a1b1e" }
+    card-title: { size: 24, weight: 600, lineHeight: 1.5, use: "Leadership names on /about-us, 36px line, in #28292d" }
+    link-lg: { size: 18, weight: 400, lineHeight: 1.56, use: "Underlined text links on home, 28px line, in #28292d" }
+    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Body default, header links and footer links, 24px line" }
+    index-label: { size: 16, weight: 500, lineHeight: 1.5, use: "Numbered index labels above the accordion items, 24px line, in #7b61ff" }
+    button-sm: { size: 14, weight: 500, lineHeight: 1.57, use: "사이트 바로가기 button and its menu, 22px line" }
+    caption: { size: 14, weight: 600, lineHeight: 1.57, use: "Footer office headings, 22px line, in #5d5d60" }
+    fine: { size: 12, weight: 400, lineHeight: 1.5, use: "Footer copyright line, 18px line, in #8c8f96" }
+  spacing:
+    nav-y: 8
+    nav-x: 14
+    menu: 16
+    row-y: 40
+    button-x: 16
+  rounded:
+    chip: 8
+    card: 24
+    panel: 32
   components:
-    nav-link:     { type: tab, fg: "#1a1b1e", radius: "8px", padding: "8px 14px", font: "16px / 400", active: "text #00adf7", use: "Top navigation item" }
-    lang-toggle:  { type: toggle, bg: "#f4f6f9", fg: "#28292d", radius: "9999px", padding: "8px 14px", font: "14px / 600", use: "KR/EN language pill toggle" }
-    inline-cta:   { type: button, fg: "#28292d", border: "0 0 1px solid #28292d", font: "18px / 400", use: "Inline underlined text CTA (eXplore Our Business)" }
-    feature-card: { type: card, bg: "#f4f6f9", fg: "#191a1f", radius: "24px", use: "Feature/content card on cool-grey surface" }
-    data-card:    { type: card, bg: "#c7e1ff", fg: "#191a1f", radius: "32px", use: "Data-viz tinted metric card" }
-    index-label:  { type: badge, fg: "#7b61ff", font: "16px / 500", use: "Section index label 1/2/3 (violet)" }
-    hiring-badge: { type: badge, fg: "#7b61ff", font: "12px / 600", use: "'we're hiring' micro tag" }
-    growth-row:   { type: listItem, fg: "#191a1f", border: "0 0 1px solid #d8dde4", padding: "40px 0", font: "16px / 400", use: "Growth Layers list row with hairline divider" }
-    data-dot:     { type: badge, bg: "#00adf7", fg: "#191a1f", radius: "9999px", use: "Azure data-point indicator dot" }
+    site-link-button: { type: button, bg: "#f4f6f9", fg: "#3c3d42", radius: "8px", padding: "0px 16px", height: "44px", font: "14px / 500 / 22px Pretendard", hover: "fg #00a8f6", pressed: "fg #00a8f6", focus: "browser default outline only (50% grey, auto 1px); no authored focus style", states: "probe on /about-us: transition colours 0.15s cubic-bezier(0.4, 0, 0.2, 1); hover and pressed turn the label azure", use: "사이트 바로가기 in the footer of every page; opens the site menu" }
+    site-menu: { type: card, bg: "#f4f6f9", fg: "#3c3d42", radius: "8px", padding: "16px", size: "282px x 218px", font: "14px / 500 / 21px Pretendard", states: "opened by the collector's menu interaction on all three pages (expanded, menu-open)", use: "Menu of related sites opened from 사이트 바로가기; items are 8px-radius rows" }
+    nav-link: { type: button, fg: "#1a1b1e", radius: "8px", padding: "8px 14px", height: "40px", font: "16px / 400 / 24px Pretendard", states: "rest only; the bundle's hover, pressed and focus frames on home are mid-transition reads, so no settled state is declared", use: "Header links (About Us, Our Business, Newsroom, Investor Relations, Career) on /about-us and /our-business; on the home hero the same links are white at 90% opacity" }
+    lang-toggle: { type: toggle, bg: "#f4f6f9", fg: "#28292d", radius: "3.35544e+07px (fully rounded)", padding: "8px 14px", size: "46px x 38px", font: "14px / 600 / 22px Pretendard", selected: "the active language (KR) takes the #f4f6f9 pill and 600 weight", states: "inactive EN is transparent, #b0b3ba, 14px / 400; on the home hero the active pill is rgba(244, 246, 249, 0.3) with #f4f6f9 text", use: "KR / EN switch at the right of the header" }
+    text-link: { type: button, fg: "#28292d", border: "bottom 1px #28292d", height: "29px", font: "18px / 400 / 28px Pretendard", states: "rest only; the bundle's pressed and focus frames are mid-transition reads, so none is declared", use: "Underlined text links under home section headlines; the site has no filled call-to-action" }
+    accordion-item: { type: button, fg: "#191a1f", border: "bottom 1px #d8dde4", padding: "40px 0px", disabled: "the collapsed items carry the disabled attribute at capture", states: "rest and disabled only; no hover frame", use: "Three-step accordion beside the stacked panels on home, each headed by a violet index label" }
+    business-card: { type: card, radius: "24px", size: "758px x 495px", use: "Business carousel cards on home; the fills are photography, not tokens" }
+    feature-panel: { type: card, radius: "32px", size: "614px x 286px", use: "Stacked image panels beside the accordion on home" }
+    highlight-list: { type: listItem, fg: "#d2d4d9", font: "72px / 500 / 86px Pretendard", selected: "fg #00adf7 on the item in view", use: "Scroll-highlight word list on /about-us" }
   components_harvested: true
 ---
 
@@ -64,377 +233,246 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-Humanscape (휴먼스케이프) is the Korean healthcare-data company behind RareNote (레어노트), and its current corporate site — now presented under the LifeX brand at `humanscape.io` (which resolves to `lifex.io`) — reads like a scientific white paper turned into a product page. The canvas is pure white (`#ffffff`), the hero rests on a soft mint-grey wash (`#dfe7e4`), and text sits in a near-black ink (`#191a1f`) rather than pure black — the register is calm, editorial, and data-literate rather than clinical or salesy. The single saturated brand accent is a bright azure (`#00adf7`), reserved for the one word that matters in the hero headline ("the Life Journey") and for small data-point indicator dots, training the eye to read that cyan-blue as "the signal in the data."
+Humanscape (휴먼스케이프) is a Korean healthcare-data company. Its domain now serves another name: `humanscape.io` answers with a permanent redirect (HTTP 301) to `lifex.io`, and the pages there speak as **LifeX**. LifeX calls itself "데이터 기반 헬스케어 인텔리전스" and describes a life-journey data company across pregnancy, birth and childcare, illness and treatment, and everyday health. The footer names the operator as 라이프엑스(주), business registration 636-81-00389, CEO 장민후, with its headquarters in 강남구, Seoul. The Hanoi office still uses a `humanscape.vn` address. No page opened this session says that Humanscape was renamed, so this record states only these links and does not claim a rename. The pages below are what the Humanscape domain delivers today.
 
-The typographic personality is defined by scale rather than weight. Every headline runs in **Pretendard** — Korea's de-facto product sans — at genuinely oversized display sizes: 58px on the homepage hero, 64px on section headlines, and a full 112px on the "Our Business" page title, all at a restrained medium weight (500-600). This is the opposite of the heavy-800 Korean-fintech convention; the confidence comes from size and air, not boldness. Body, navigation, and interface text drop to a quiet 16px / weight 400, and a secondary violet accent (`#7b61ff`) marks the small numbered section labels ("1. Built on Healthcare Network", "2. Powered by Global User Base", "3. Scaled by Data Intelligence") and the "we're hiring" micro tag.
+The site is quiet and editorial. White body, near-black ink (`#1a1b1e` for headings, `#191a1f` for running text) and a cool grey fill (`#f4f6f9`) carry almost everything. Page titles are enormous: a 112px, 600-weight headline filled with a violet-to-azure gradient (`#7b61ff` → `#00adf7`). Section headlines stay at a calm 500 weight, from 52px to 90px. Every recorded element computes `box-shadow: none`. Rows are separated by `#d8dde4` hairlines, and corners run from 8px chips to 24px and 32px image cards.
 
-What distinguishes Humanscape from its healthcare peers is its total restraint with depth. Live inspection found `box-shadow: none` across the hero, nav, headings, cards, and list rows — this is a flat, shadow-free system. Separation comes from tinted surfaces (cool-grey `#f4f6f9`, mint `#dfe7e4`, and pale data-blue tints such as `#c7e1ff`) and thin `#d8dde4` hairlines, never elevation. Geometry leans generously rounded: 8px nav chips, 24px feature cards, 32px data cards, and full-pill (`9999px`) language toggles and indicator dots. The result is a spacious, science-forward aesthetic — a data company that wants to feel trustworthy and human, not intimidating.
+Colour appears only where something is active or answers the pointer. Azure `#00adf7` colours the word in view in the /about-us scroll list while the others stay `#d2d4d9`. The footer's 사이트 바로가기 turns `#00a8f6` on hover. Violet `#7b61ff` numbers the accordion steps. There is no filled call-to-action: section links are 18px text with a 1px `#28292d` underline.
 
 **Key Characteristics:**
-- Pretendard as the single family, scaled from a 16px body up to a 112px display — hierarchy by size, not weight
-- Medium display weight (500-600) — confident and airy, never the heavy-800 Korean convention
-- One saturated azure accent (`#00adf7`) reserved for the hero highlight word and data-point dots
-- Secondary violet (`#7b61ff`) only on numbered section labels and the hiring tag
-- Near-black ink (`#191a1f`) and heading navy (`#1a1b1e`) instead of pure black for warmth and trust
-- Flat, shadow-free depth: mint (`#dfe7e4`), cool-grey (`#f4f6f9`), and data-blue tint (`#c7e1ff`) surfaces + `#d8dde4` hairlines do the separating
-- Generous rounding — 24px / 32px cards, full-pill toggles and dots
-- Text CTAs are minimalist underlined links (`#28292d` with a 1px bottom border), not filled buttons
+- Pretendard only, from a 12px footer line to a 112px page title
+- Medium display weights (500–600); size, not boldness, makes the hierarchy
+- Azure `#00adf7` for the active item, `#00a8f6` for hover; violet `#7b61ff` for index labels
+- Near-black ink `#1a1b1e` / `#191a1f`, greys `#28292d` → `#3c3d42` → `#5d5d60` → `#8c8f96`
+- Flat: no shadows; `#f4f6f9` fills and `#d8dde4` hairlines
+- Underlined text links instead of filled buttons
 
 ## Primary tasks
 
-- Find out which healthcare areas the company works in
-- Weigh the published scale metrics as evidence of real infrastructure
-- Review the investor relations page before backing the company
-- Check whether the company is currently hiring
+- Understand what the company does across the life journey
+- Read the vision, roadmap, core values and leadership
+- Find investor relations, news and careers
+- Jump to the company's related sites from the footer
 
 ## 2. Color Palette & Roles
 
-### Primary & Accent
-- **LifeX Azure** (`#00adf7`): The primary brand accent. Coded verbatim as the Tailwind class `text-[#00ADF7]` on the hero highlight ("the Life Journey") and used as the fill for small full-round data-point indicator dots. The system's single "signal" color.
-- **Accent Violet** (`#7b61ff`): Secondary accent for the numbered section index labels ("1. / 2. / 3.") and the small "we're hiring" tag. Never a background — always a small typographic marker.
+### Primary
+- **Azure** (`#00adf7`): the primary colour. It is the active item in the /about-us scroll-highlight list: the element computes exactly `rgb(0, 173, 247)` while its siblings compute `#d2d4d9`. It is also the end stop of the page-title gradient. On a surface with no filled button, it is the colour that marks what is selected, so it is the primary.
+- **Azure Hover** (`#00a8f6`): the hover and pressed label colour of 사이트 바로가기, read by the probe after the 0.15s transition. The page source uses the same value for the footer links' hover.
 
-### Text / Ink Hierarchy
-- **Ink** (`#191a1f`): Primary text and card copy color (the most frequent foreground on the page).
-- **Heading Navy** (`#1a1b1e`): Display headlines and section titles — a hair softer than ink, still near-black.
-- **Body Black** (`#0a0a0a`): The document default body color.
-- **Dark Slate** (`#28292d`): Inline underlined CTA links, footer section heads, and the active-nav ink on white surfaces.
-- **Meta Grey** (`#3c3d42`): Footer sub-navigation links and secondary metadata.
-- **Muted Grey** (`#5d5d60`): Tertiary text, captions, and muted labels.
-- **Faint Grey** (`#b0b3ba`): Disabled state, inactive language toggle, lowest-emphasis text.
+### Accent
+- **Violet** (`#7b61ff`): numbered index labels above the home accordion and the /our-business steps; the start stop of the title gradient.
 
 ### Neutral & Surface
-- **Pure White** (`#ffffff`): Page background, card surfaces, and text on the mint hero / azure accents.
-- **Cool-Grey Surface** (`#f4f6f9`): Tinted surface for feature cards and the language-toggle pill background.
-- **Hero Mint** (`#dfe7e4`): The soft mint-grey wash behind the full-height homepage hero.
-- **Data Blue Tint** (`#c7e1ff`): Pale blue tinted surface for data-visualization and metric cards.
-- **Hairline** (`#d8dde4`): Thin borders, dividers, and list-row rules — the primary separation device in a shadowless system.
+- **White** (`#ffffff`): page background and the hero headline over the film.
+- **Surface** (`#f4f6f9`): 사이트 바로가기, its menu, and the active language pill.
+- **Hairline** (`#d8dde4`): accordion row dividers.
+- **Inactive** (`#d2d4d9`): the words not in view in the scroll list.
+
+### Text
+- **Ink** (`#1a1b1e`): headlines and header links.
+- **Ink Body** (`#191a1f`): running text in cards and accordion rows.
+- **Charcoal** (`#28292d`): underlined text links, leadership names, footer column heads.
+- **Slate** (`#3c3d42`): footer links and the site menu.
+- **Muted** (`#5d5d60`): footer office headings and addresses.
+- **Faint** (`#8c8f96`): footer copyright and small captions.
+
+### Brand assets, not tokens
+The gradient `linear-gradient(90deg, #7B61FF 0%, #00ADF7 50%)` is clipped to the page-title text on /about-us and /our-business. The page source also has `bg-[#00ADF7]` fills (12 class uses) that the collector did not record as a component, so no token is built from them.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Sans (single family)**: `Pretendard` (with `Pretendard Fallback`, `system-ui`) — used for every text element, from the 112px page hero down to the 12px hiring tag. There is no separate display face; Pretendard carries both display and body roles.
+- **Pretendard**: live surface use. `PretendardVariable` WOFF2 loads from `lifex.io/_next/static/media/`, and the family computes on all 469 recorded elements. Pretendard is distributed under the SIL Open Font License 1.1 (Kil Hyung-jin).
+- **pretendard Fallback**: declared only, 0 uses.
+- No page opened this session names the typeface, so official product use is not claimed.
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Page Hero Title | Pretendard | 112px (7.00rem) | 600 | tight | "Our Business" oversized page title |
-| Closing Statement | Pretendard | 90px (5.63rem) | 500 | tight | "eXplore Life, Decide Better." |
-| Section Headline | Pretendard | 64px (4.00rem) | 500 | ~1.2 | "The Foundation for Scalable Innovation." |
-| Homepage Hero H1 | Pretendard | 58px (3.63rem) | 500 | ~1.2 | "eXploring human Life through data-driven..." |
-| Sub-hero H1 | Pretendard | 52px (3.25rem) | 500 | ~1.2 | "Intelligence Across the Life Journey" |
-| Card Section Title | Pretendard | 32px (2.00rem) | 500 | normal | H2 card / feature title |
-| Card Title | Pretendard | 24px (1.50rem) | 500 | normal | H3 business-area title |
-| Section Index Label | Pretendard | 16px (1.00rem) | 500 | normal | Violet numbered label |
-| Body / Nav / Button | Pretendard | 16px (1.00rem) | 400 | 1.50 (24px) | Standard reading + interface text |
-| Language Toggle | Pretendard | 14px (0.88rem) | 600 | normal | KR/EN pill label |
-| Micro Tag | Pretendard | 12px (0.75rem) | 600 | normal | "we're hiring" and small tags |
+| Role | Size | Weight | Line height | Where |
+|---|---|---|---|---|
+| Display page | 112px | 600 | 146px, -3.36px | /about-us and /our-business titles, gradient text |
+| Display statement | 90px | 500 | 117px | Home closing heading |
+| Display list | 72px | 500 | 86px | /about-us scroll list |
+| Display hero | 58px | 500 | 70px | Home hero, white |
+| Section | 52px | 500 | 64px | Home and /about-us section heads |
+| Heading | 32px | 500 | 41.6px | Home carousel heading |
+| Subheading | 24px | 500 | 36px | Partner names on home |
+| Card title | 24px | 600 | 36px | Leadership names |
+| Link large | 18px | 400 | 28px | Underlined text links |
+| Body | 16px | 400 | 24px | Default, header and footer links |
+| Index label | 16px | 500 | 24px | Violet step numbers |
+| Button small | 14px | 500 | 22px | 사이트 바로가기 |
+| Caption | 14px | 600 | 22px | Footer office heads |
+| Fine | 12px | 400 | 18px | Copyright |
 
 ### Principles
-- **Scale, not weight, is the hierarchy**: display sizes climb to 112px while staying at weight 500-600. The system never reaches for 700-800 to command attention.
-- **One family, two jobs**: Pretendard is both the display and the reading voice; the difference between a headline and a paragraph is size, not typeface.
-- **Airy display, dense body**: headlines get vast surrounding whitespace; body text stays at a compact 16px / 1.5 for information-dense corporate content.
-- **Accent by color, not weight**: the violet section labels and azure highlight word carry emphasis through hue, letting the surrounding type stay calm.
+- One family; scale does the work, and weight never goes above 600.
+- Only the page title has negative tracking (-3.36px at 112px).
+- Sizes are the desktop values at 1440px; the class names carry smaller mobile sizes that were not captured.
 
 ## 4. Component Stylings
 
-### Navigation & Toggle
-
-**Nav Link**
-- Text: `#1a1b1e`
-- Radius: 8px
-- Padding: 8px 14px
-- Font: 16px Pretendard weight 400
-- Active: `#00adf7` text
-- Use: Top navigation items (About Us, Our Business, Newsroom, Investor Relations, Career)
-
-**Language Toggle Pill**
-- Background: `#f4f6f9`
-- Text: `#28292d`
-- Radius: 9999px (full pill)
-- Padding: 8px 14px
-- Font: 14px Pretendard weight 600
-- Use: KR/EN language switch (active language filled, inactive `#b0b3ba` text)
-
 ### Buttons
 
-**Inline Underlined CTA**
-- Text: `#28292d`
-- Border: 0 0 1px solid `#28292d` (bottom rule only)
-- Font: 18px Pretendard weight 400
-- Use: Primary text CTA ("eXplore Our Business", "eXplore About Us") — the site favors underlined links over filled buttons
+**사이트 바로가기 (footer)**
+- Background `#f4f6f9`, label `#3c3d42`, radius 8px, padding 0 16px, height 44px, 14px / 500 / 22px
+- Hover and pressed: label `#00a8f6`. Focus: only the browser's default ring. The transition is 0.15s `cubic-bezier(0.4, 0, 0.2, 1)`.
 
-### Cards & Containers
+**Text link**
+- Label `#28292d` with a 1px `#28292d` bottom border, 18px / 400 / 28px, 29px tall
 
-**Feature Card**
-- Background: `#f4f6f9`
-- Text: `#191a1f`
-- Radius: 24px
-- Use: Feature / content card on the cool-grey surface (no shadow)
+### Navigation
 
-**Data Card**
-- Background: `#c7e1ff`
-- Text: `#191a1f`
-- Radius: 32px
-- Use: Data-visualization / metric card with a pale-blue tint
+**Header links**
+- `#1a1b1e`, 16px / 400 / 24px, padding 8px 14px, radius 8px, 40px tall. On the home hero the links are white at 90% opacity.
 
-### Badges & Indicators
+**Language toggle**
+- Active KR: `#f4f6f9` pill, `#28292d`, 14px / 600, 46 × 38, fully rounded. Inactive EN: transparent, `#b0b3ba`, 14px / 400.
 
-**Section Index Label**
-- Text: `#7b61ff`
-- Font: 16px Pretendard weight 500
-- Use: Violet numbered section labels ("1. Built on Healthcare Network")
+**Site menu**
+- `#f4f6f9`, `#3c3d42` 14px / 500 items, radius 8px, padding 16px, 282 × 218
 
-**Hiring Tag**
-- Text: `#7b61ff`
-- Font: 12px Pretendard weight 600
-- Use: "we're hiring" micro tag
+### Lists & Cards
 
-**Data Dot**
-- Background: `#00adf7`
-- Radius: 9999px (full)
-- Use: Small azure data-point indicator (14px) beside metrics and timeline markers
+**Accordion item**
+- `#191a1f` text, 1px `#d8dde4` bottom border, 40px vertical padding; collapsed items carry `disabled`
 
-### List Rows
+**Scroll-highlight list**
+- 72px / 500; the item in view is `#00adf7`, the rest `#d2d4d9`
 
-**Growth Layers Row**
-- Text: `#191a1f`
-- Border: 0 0 1px solid `#d8dde4` (bottom hairline)
-- Padding: 40px 0
-- Font: 16px Pretendard weight 400
-- Use: Stacked "Growth Layers" list rows separated by hairline dividers
+**Business card**
+- 24px radius, 758 × 495, photographic fill
+
+**Feature panel**
+- 32px radius, 614 × 286, stacked image panels
+
+**Verified:** 2026-09-30 (deterministic collector capture of three public, logged-out pages served for humanscape.io at lifex.io, plus a fixed keyboard-probe state read and first-party company context)
+**Tier 1 sources:** https://humanscape.io/ ; https://lifex.io/ ; https://lifex.io/about-us ; https://lifex.io/our-business
+**Tier 2 sources:** not attempted this session
+**Conflicts unresolved:** none
 
 ---
-
-**Verified:** 2026-07-02 (omd:add-reference CREATE — Tier 1 live inspect, 2 surfaces)
-**Tier 1 sources:** https://humanscape.io/ (redirects to https://lifex.io/ — live homepage inspect); https://lifex.io/our-business (second surface live inspect)
-**Tier 2 sources:** getdesign.md/humanscape — SPA shell, no brand data; styles.refero.design/?q=humanscape — no brand-specific match (generic browse grid)
-**Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
 ### Spacing System
-- Base unit: 8px
-- Scale: 4px, 8px, 14px, 24px, 40px, 64px, 120px, 144px
-- Notable: section vertical padding is large (120px top on band sections; 40px per list row), giving the corporate content a spacious, unhurried rhythm
+Measured values only: header link padding 8px / 14px, menu padding 16px, accordion rows 40px vertical, footer button 16px sides. There is no evidence of a named scale.
 
 ### Grid & Container
-- Full-height (`100dvh`) hero anchored on the mint (`#dfe7e4`) wash with the 58px Pretendard headline centered
-- Business-area cards laid out as a horizontal set of large rounded cards (24-32px radius)
-- "Growth Layers" rendered as a stacked vertical list where each row is a 40px-padded band separated by a `#d8dde4` hairline
-- Partner/investor logos arranged in grouped grids under 24px H3 category heads
-- Footer expands into a multi-column sitemap (About Us / Our Business / Newsroom / Investor Relations)
+Headings and footers run to a 1200px content width inside the 1440px viewport. Footer columns are 282px wide.
 
 ### Whitespace Philosophy
-- **Air as authority**: oversized headlines with generous surrounding space signal confidence without heavy weight.
-- **Flat segmentation**: sections separate by background wash (mint `#dfe7e4` vs white `#ffffff` vs cool-grey `#f4f6f9`) and hairlines, never by shadow.
-- **Data breathing room**: metric cards on `#c7e1ff` tint get their own space so the numbers read as evidence, not decoration.
+Generous: very large headlines with open space around them, and rows divided by hairlines rather than boxes.
 
 ### Border Radius Scale
-- Small (8px): nav chips, inner elements
-- Large (24px): feature cards — the workhorse
-- Extra-large (32px): data / metric cards
-- Full (9999px): language toggle pills, azure data dots
+0 (rows, headings) · 8px (header links, 사이트 바로가기, menu) · 24px (business cards) · 32px (feature panels) · fully rounded (language pill).
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
-| Wash (Level 1) | Background shift (`#dfe7e4` / `#f4f6f9` / `#c7e1ff`) | Section and card separation without elevation |
-| Hairline (Level 2) | `1px solid #d8dde4` | List-row dividers, card outlines |
-
-**Shadow Philosophy**: Humanscape/LifeX is a fully shadowless system. Live inspection returned `box-shadow: none` on the hero, navigation, headings, cards, and list rows. Depth and grouping are communicated entirely through flat tinted washes (mint `#dfe7e4`, cool-grey `#f4f6f9`, data-blue `#c7e1ff`) and thin `#d8dde4` hairlines. This is a deliberate modern-flat choice that keeps a data-heavy healthcare narrative feeling clean, editorial, and trustworthy rather than skeuomorphic. When emphasis is needed the system reaches for color (azure `#00adf7`) or scale (a 112px headline), never elevation.
+All 469 recorded elements compute `box-shadow: none`. Separation comes from `#f4f6f9` fills, `#d8dde4` hairlines and photography.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use Pretendard for everything and build hierarchy through size (16px body up to 112px display)
-- Keep display weight at 500-600 — confident and airy, never heavy 700-800
-- Reserve azure (`#00adf7`) for the single hero-highlight word and data-point dots
-- Use violet (`#7b61ff`) only for numbered section labels and the hiring tag
-- Use near-black ink (`#191a1f`) and heading navy (`#1a1b1e`) instead of pure black
-- Separate sections with flat washes (`#dfe7e4`, `#f4f6f9`, `#c7e1ff`) and `#d8dde4` hairlines — no shadows
-- Prefer underlined text CTAs (`#28292d` with a 1px bottom rule) over filled buttons
-- Use generous rounding — 24px feature cards, 32px data cards, full-pill toggles
+- Keep azure for the active item and the hover answer; keep violet for index numbers.
+- Use Pretendard at 500–600 and let size carry emphasis.
+- Link with underlined text instead of filled buttons.
+- Separate with `#d8dde4` hairlines and `#f4f6f9` fills.
 
 ### Don't
-- Set headlines in heavy weight — this system uses size, not boldness, for authority
-- Spread azure across many elements — it dilutes the single-signal read
-- Use violet as a fill or background — it is a small typographic accent only
-- Add drop shadows for elevation — the system is flat and shadow-free
-- Use pure black (`#000000`) for body or headings — reserve near-black ink `#191a1f`
-- Introduce a third saturated hue — azure and violet are the only accents
-- Use sharp/square corners on cards or toggles — geometry is generously rounded
-- Cram headlines into tight columns — display type needs surrounding air
+- Don't add shadows.
+- Don't use heavy 700–800 weights for display type.
+- Don't spread azure over body copy or large fills.
+- Don't present Humanscape and LifeX as a documented rename; the site does not say so.
 
 ## 8. Responsive Behavior
 
 ### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses (112px -> ~40px), cards stack |
-| Tablet | 640-1024px | 2-up card layout, moderate padding |
-| Desktop | 1024-1440px | Full layout, full-height hero, horizontal card sets |
+Only the 1440 × 900 desktop layout was captured. The Tailwind `lg:` classes show smaller mobile sizes (for example 32px / 44px for the hero), but no other viewport was measured.
 
 ### Touch Targets
-- Nav links at 40px height with 8px 14px padding — comfortably tappable
-- Language toggle as a full pill for an unmistakable target
-- Growth-layer rows at 40px vertical padding give generous tap zones
+Measured heights: 사이트 바로가기 44px, header links 40px, language pills 38px.
 
 ### Collapsing Strategy
-- Hero: oversized Pretendard headline scales down on mobile, weight 500-600 maintained
-- Business-area cards: horizontal set -> stacked single column
-- Growth Layers list: hairline-separated rows maintain full-width, padding tightens
-- Partner logo grids: multi-column -> 2-column -> single column
-- Mint / white / cool-grey wash sections keep full-width treatment
+Not captured.
 
 ### Image Behavior
-- Product screenshots and data visuals carry no shadow at any size, consistent with the flat system
-- Cards maintain their 24px / 32px radius across breakpoints
-- Azure data dots and tint surfaces persist as the visual signal on smaller screens
+Business cards and feature panels are photographic fills inside 24px and 32px corners; scaling was not measured.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary accent (highlight word, data dots): LifeX Azure (`#00adf7`)
-- Secondary accent (section labels, hiring tag): Violet (`#7b61ff`)
-- Primary text / card copy: Ink (`#191a1f`)
-- Display headings: Heading Navy (`#1a1b1e`)
-- Body default: Body Black (`#0a0a0a`)
-- Inline CTA / footer heads: Dark Slate (`#28292d`)
-- Footer sub-links: Meta Grey (`#3c3d42`)
-- Muted text: Muted Grey (`#5d5d60`)
-- Disabled / faint: Faint Grey (`#b0b3ba`)
-- Background: Pure White (`#ffffff`)
-- Cool-grey surface / toggle: (`#f4f6f9`)
-- Hero wash: Hero Mint (`#dfe7e4`)
-- Data-viz tint: Data Blue Tint (`#c7e1ff`)
-- Hairline: (`#d8dde4`)
+- Primary / active: `#00adf7`; hover `#00a8f6`
+- Index accent: `#7b61ff`
+- Ink: `#1a1b1e`, `#191a1f`; greys `#28292d`, `#3c3d42`, `#5d5d60`, `#8c8f96`
+- Surface `#f4f6f9`; hairline `#d8dde4`; inactive `#d2d4d9`
 
 ### Example Component Prompts
-- "Create a full-height hero on a mint (`#dfe7e4`) wash. Headline at 58px Pretendard weight 500, near-black `#191a1f`, with a single highlighted word in azure `#00adf7`. Below it an underlined text CTA: `#28292d` text, 18px, 1px bottom border, no fill."
-- "Design a feature card: cool-grey `#f4f6f9` background, 24px radius, no shadow. Title 24px Pretendard weight 500 `#1a1b1e`, body 16px weight 400 `#191a1f`."
-- "Build a data/metric card: pale-blue `#c7e1ff` background, 32px radius, flat. Big number in Pretendard, an azure `#00adf7` full-round dot as the data indicator."
-- "Create the top nav: white header, 16px Pretendard links `#1a1b1e` with 8px radius and 8px 14px padding, azure `#00adf7` on the active item. A full-pill KR/EN toggle on `#f4f6f9`, 14px weight 600."
-- "Lay out a Growth Layers list: stacked rows, each 40px vertical padding, separated by a 1px `#d8dde4` hairline. A violet `#7b61ff` numbered label ('1.', '2.', '3.') leads each row."
+- "A 112px Pretendard 600 page title with -3.36px tracking, filled with a 90° gradient from `#7b61ff` to `#00adf7` clipped to the text, on white."
+- "A vertical list of 72px / 500 words; the one in view is `#00adf7`, the rest `#d2d4d9`."
+- "A 44px footer button, `#f4f6f9` fill, 8px radius, `#3c3d42` 14px / 500 label that turns `#00a8f6` on hover over 0.15s."
 
 ### Iteration Guide
-1. Pretendard for everything; build hierarchy by size, keep weight at 500-600 for display
-2. Azure (`#00adf7`) is the single signal color — one highlight word and data dots only
-3. Violet (`#7b61ff`) marks numbered labels and the hiring tag, never a fill
-4. No shadows — separate with mint / cool-grey / blue-tint washes and `#d8dde4` hairlines
-5. Text color is `#191a1f` ink, headings `#1a1b1e`, never pure black
-6. Rounding is generous: 24px feature cards, 32px data cards, full-pill toggles/dots
-7. CTAs are underlined text links (`#28292d`), not filled buttons
-
----
+1. Start with white, `#1a1b1e` headlines at 500 and a lot of space.
+2. Add azure only to what is active.
+3. Use underlined text links, not buttons.
+4. Divide with hairlines; never add shadows.
 
 ## 10. Voice & Tone
 
-Humanscape/LifeX's voice is **clear, humane, and evidence-led** — a healthcare-data company that speaks about serious subjects (rare disease, patient data, clinical outcomes) with calm confidence rather than either cold clinical jargon or startup hype. The brand's own hero framing — "eXploring human Life through data-driven Intelligence" and the closing "eXplore Life, Decide Better." — sets the register: it puts *human life* first and *data* second, treating data as a means to better decisions, not an end in itself. Copy addresses partners, patients, and investors as intelligent readers who deserve transparency about how the data works.
+The copy is calm, bilingual and mission-led. English headlines lead ("eXploring human Life through data-driven intelligence", "Intelligence Across the Life Journey"), followed by plain Korean explanations ("데이터 기반 지능으로 인간의 삶을 탐구합니다"). Claims come with numbers: 1,800+ healthcare partners, 2.5M+ global users, 230M+ data points. Core values reuse the capital X: eXplores, eXecutes, eXceeds.
 
 | Context | Tone |
 |---|---|
-| Hero headlines | Mission-framed, humane. "eXploring human Life through data-driven Intelligence." Confident, never superlative. |
-| Business-area labels | Plain and descriptive. "AI Growth Monitoring", "Developmental Care & Treatment", "Care Navigation for Serious Illness". |
-| Scale claims | Concrete and specific. "1,800+ Healthcare Network", "2.5M+ Global User Base", "230M+ Data Intelligence". |
-| CTAs | Low-key invitations. "eXplore Our Business", "eXplore About Us". |
-| Careers | Warm and inviting. A small violet "we're hiring" tag rather than an aggressive banner. |
-
-**Voice samples (verbatim from live homepage, verified 2026-07-02):**
-- "eXploring human Life through data-driven Intelligence Across the Life Journey" — hero headline (human-first, data-second framing).
-- "The Foundation for Scalable Innovation." — section headline (infrastructure register).
-- "eXplore Life, Decide Better." — closing statement (data-for-decisions mission).
-
-**Forbidden register**: fear-based medical urgency, undefined clinical jargon, hype superlatives ("revolutionary", "world-class"), and anything that treats patient data as a commodity rather than a trust.
+| Hero | Aspirational but plain, one idea per line |
+| Business | Descriptive: what the data does for the user ("AI가 태아의 성장과 발달을 분석합니다") |
+| Metrics | Specific figures, no superlatives |
+| Values | Short imperatives in English |
 
 ## 11. Brand Narrative
 
-Humanscape (휴먼스케이프) was founded in **March 2016** by CEO **Jang Min-hoo (장민후)** as a digital-healthcare company built around a hard, human problem: patients with rare and intractable diseases had almost no accessible, trustworthy source of information about their own condition, drug-development status, or clinical trials. Its flagship service, **RareNote (레어노트)**, turned that gap into a patient-first data platform — organizing information on over a thousand rare diseases for tens of thousands of patients and guardians — and the company also operated **MamiTalk (마미톡)**, a pregnancy and childcare platform. In its early years Humanscape was known for exploring **blockchain-based health-data sharing**, framing patient data as something patients themselves should own and benefit from ([시사저널e interview with CEO 장민후](https://www.sisajournal-e.com/news/articleView.html?idxno=181666)).
-
-The company is now continuing its journey under the new brand **LifeX**, presented at `humanscape.io` (which resolves to `lifex.io`) as "data-driven healthcare intelligence across the life journey." The rebrand reframes the mission from a single rare-disease community into a broader **life-journey intelligence** platform spanning growth monitoring, developmental care, personalized financial and shopping services, and care navigation for serious illness. Per the live site, LifeX now describes itself as *Built on Healthcare Network (1,800+), Powered by Global User Base (2.5M+), and Scaled by Data Intelligence (230M+)* — with overseas expansion into the United States, Indonesia, and Vietnam through local subsidiaries ([VentureSquare coverage](https://www.venturesquare.net/1093607)).
-
-What the design refuses, and what it embraces, tracks this narrative. It refuses the heavy, alarming chrome of legacy medical software (no dense shadowed panels, no institutional blue-and-white sterility) and the dark-pattern urgency of consumer health marketing. It embraces a flat, editorial, science-forward surface: oversized Pretendard headlines that speak plainly, a single azure signal color for the data that matters, and a humane near-black ink that keeps a data company feeling like it is, first, about human life.
+LifeX says its vision is "a future where data-driven intelligence shapes every stage of life". Its mission is "eXploring human Life through data-driven intelligence": connecting fragmented health and life data and turning the patterns into better care, diagnosis, treatment, finance and commerce. The roadmap says LifeX has spent ten years answering questions that recur across the life cycle, first where information demand is highest (pregnancy, birth, childcare), connecting users with healthcare providers. It now counts more than 2.5 million users, more than 1,800 healthcare institutions and service hubs in four countries (Korea, the United States, Vietnam, Indonesia). /our-business lists AI growth monitoring from ultrasound, early detection, developmental care, and personalised financial services, shopping and education. The leadership page lists 장민후 as founder and CEO, and the footer lists 라이프엑스(주). The pages link this company to the Humanscape domain through the redirect and the `humanscape.vn` address, but they do not tell the story of a rename.
 
 ## 12. Principles
 
-1. **Human life first, data second.** The hero literally reads "eXploring human Life through data-driven Intelligence" — life is the subject, data the instrument. *UI implication:* lead with the person and the outcome; let numbers support the story rather than dominate it.
-2. **Data as a trust, not a commodity.** The company's origin in patient-owned, rare-disease data means information is handled as something borrowed from people who are vulnerable. *UI implication:* present metrics transparently and specifically ("1,800+", "2.5M+"), never as vague marketing puffery.
-3. **Clarity over intimidation.** Serious healthcare topics are surfaced in plain language and airy layouts. *UI implication:* generous whitespace, oversized-but-calm headlines, and descriptive labels ("Care Navigation for Serious Illness") instead of jargon.
-4. **One signal, one color.** Azure (`#00adf7`) means "this is the data point that matters." *UI implication:* reserve the azure accent for the single highlight and for data-point dots so the signal is never ambiguous.
-5. **Flat and evidence-like.** A shadowless, hairline-separated surface reads like a well-set scientific document. *UI implication:* separate with tint and rules, not elevation; keep the page feeling like credible evidence rather than a sales deck.
+1. **Life first, data as the instrument.** Lead with the person and the outcome. The numbers support the story.
+2. **Specific numbers over adjectives.** Write "1,800+", "2.5M+" and "230M+", not vague scale words.
+3. **One signal colour.** Azure means active; everything else is ink and grey.
+4. **Flat and editorial.** Hairlines and space, not elevation.
+
+*Principles are editorial readings of the captured site and its stated mission.*
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable Humanscape/LifeX user and stakeholder segments (rare-disease patients and guardians, healthcare partners, and investors), not individual people.*
+*Fictional archetypes, not real people.*
 
-**김서연, 38, 서울.** A parent of a child with a rare disease who first found Humanscape through RareNote. Distrusts fragmented, alarmist medical forums and values a single calm source that explains her child's condition, drug pipelines, and trials in plain Korean. Chose the platform because it treated her as a partner in the data, not a patient to be marketed to.
+**김서연, 34, 서울.** An expectant parent who wants her ultrasound results and her child's development explained plainly. She values a calm source over alarmist forums.
 
-**Dr. Arun Patel, 45, singapore-based partner.** A clinical-network lead evaluating LifeX for a cross-border data collaboration. Reads the "Growth Layers" and scale metrics ("1,800+ Healthcare Network") as evidence of real infrastructure. Appreciates that the site reads like a scientific brief rather than a hype pitch, which signals the seriousness he needs from a data partner.
+**박준호, 41, 판교.** A healthcare investor reading the investor-relations and roadmap pages. He trusts the concrete figures and the restrained presentation.
 
-**박준호, 41, 판교.** A healthcare-focused VC reviewing LifeX's investor-relations page. Values the concrete, specific numbers and the calm, editorial presentation — it tells him the team respects evidence. Notices immediately that there is no shadow-stacked, over-designed chrome, and reads that restraint as maturity.
+**Dr. Arun Patel, 45, Jakarta.** A clinic-network partner evaluating a data collaboration, who reads the healthcare-network numbers as evidence of real infrastructure.
 
 ## 14. States
 
 | State | Treatment |
 |---|---|
-| **Empty (no data / results)** | White canvas. A single Ink (`#191a1f`) line explaining that no data is available yet, with one underlined `#28292d` text CTA to adjust the query. No illustration clutter, no alarm. |
-| **Empty (saved / watchlist, none yet)** | Muted Grey (`#5d5d60`) single line stating nothing is saved, plus a calm path back. Honest and quiet. |
-| **Loading (data fetch)** | Skeleton blocks on `#f4f6f9` tinted surface at final card dimensions, 24px radius. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
-| **Loading (metric compute)** | Inline progress near the azure data dot; previous values stay visible until the new value resolves. |
-| **Error (fetch failed)** | Inline message in Ink (`#191a1f`) with a plain-language explanation and a retry link. No bare "오류가 발생했습니다" — always states the next step. |
-| **Error (form validation)** | Field-level message below the input in a calm tone; describes what is valid, not just "필수". |
-| **Success (submitted / saved)** | Brief inline confirmation in a calm tone; the relevant detail links immediately below. No celebratory emoji. |
-| **Skeleton** | `#f4f6f9` blocks at final dimensions, 24px radius, flat pulse. |
-| **Disabled** | Faint Grey (`#b0b3ba`) text on a reduced-opacity surface; the azure `#00adf7` accent fades rather than switching to grey, to preserve the brand read. |
+| **Hover / pressed** | 사이트 바로가기: label `#3c3d42` → `#00a8f6`; fill unchanged. |
+| **Focus** | 사이트 바로가기 shows only the browser's default ring. |
+| **Selected** | Scroll list: item in view `#00adf7`, others `#d2d4d9`. Language: active KR on a `#f4f6f9` pill at 600. |
+| **Expanded** | 사이트 바로가기 opens a `#f4f6f9`, 8px-radius menu of related sites. |
+| **Disabled** | Collapsed accordion items carry `disabled`. |
+
+Header links and text links have bundle frames only mid-transition, so their settled states are unmeasured, not absent. Error, loading, empty and success states were not captured and are not described.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, nav/link, focus |
-| `motion-standard` | 240ms | Card / section reveal, toggle, dropdown |
-| `motion-slow` | 400ms | Full-height hero reveal, page-level transitions |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sections, cards, data reveals |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is quiet, editorial, and evidence-paced — consistent with the flat, science-forward aesthetic. Oversized hero headlines and data metrics fade/rise in from below at `motion-standard / ease-enter`; azure data dots may animate in as the underlying number resolves, reinforcing "the signal arriving in the data." No bounce, spring, or overshoot — a healthcare-data company signals steadiness and credibility, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the page remains fully functional.
+The probe read one transition: 사이트 바로가기 transitions colour, background, border, outline, text decoration, fill, stroke and gradient stops over 0.15s with `cubic-bezier(0.4, 0, 0.2, 1)`. The page source puts `duration-500 ease-out` on the scroll-list words and `duration-200` on the partner-name hover, but those were not measured as computed values. Nothing else about motion (hero film, carousels, counters) was measured; treat it as unspecified and honour `prefers-reduced-motion`.
 
 <!--
-OmD v0.1 Sources — Philosophy Layer (sections 10-15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on https://humanscape.io/
-(resolves to https://lifex.io/) and https://lifex.io/our-business:
-- Hero H1 "eXploring human Life through data-driven..." — Pretendard 58px / weight 500 / white; sub-hero H1 "Intelligence Across the Life Journey" 52px / 500 / rgb(26,27,30) #1a1b1e with azure highlight span rgb(0,173,247) #00adf7
-- Section headline "The Foundation for Scalable Innovation." 64px / 500; "Our Business" page hero 112px / 600; "eXplore Life, Decide Better." 90px / 500
-- Section index labels ("1. Built on Healthcare Network", "2. Powered by Global User Base", "3. Scaled by Data Intelligence") 16px / 500 violet rgb(123,97,255) #7b61ff; "we're hiring" 12px / 600 violet
-- box-shadow: none across hero, nav, headings, cards, list rows (shadowless system)
-- Scale metrics on live homepage: "1,800+ Healthcare Network", "2.5M+ Global User Base", "230M+ Data Intelligence"
-
-Token-level claims (sections 1-9) are sourced from this live inspection.
-Voice samples (section 10) are verbatim from the live homepage.
-
-Brand narrative (section 11): Humanscape (휴먼스케이프) founded March 2016; CEO 장민후 (Jang Min-hoo);
-flagship RareNote (레어노트) rare-disease data platform + MamiTalk (마미톡); early blockchain
-health-data era; rebranding to LifeX with overseas expansion (US, Indonesia, Vietnam).
-Sourced from WebSearch (2026-07-02): sisajournal-e.com CEO interview, venturesquare.net LifeX
-coverage, rocketpunch/thevc company profiles. Founding month and scale figures are publicly
-documented; specific figures reflect the live site and cited coverage.
-
-Personas (section 13) are fictional archetypes informed by publicly observable user/stakeholder
-segments (rare-disease patients and guardians, healthcare partners, investors). Names are
-illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "human life first, data second", "flat and evidence-like as a rejection
-of legacy medical-software chrome") are editorial readings connecting the observed design to the
-company's stated positioning, not directly sourced Humanscape/LifeX statements.
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/humanscape.json (capturedAt 2026-09-30T13:12:43Z), deterministic collector, 1440x900, logged out: lifex.io, /about-us, /our-business (humanscape.io 301 -> lifex.io). State: fixed keyboard probe raw docs/research/2026-09-29-growth/raw/humanscape-states-about.json.
+- §1, §10, §11: lifex.io home, /about-us, /our-business, /newsroom, /ir and their footer, opened 2026-09-30.
+- §3 licence: the Pretendard LICENSE on GitHub.
+- Personas are fictional archetypes. Interpretive readings are editorial.
 -->

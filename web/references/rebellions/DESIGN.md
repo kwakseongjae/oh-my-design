@@ -9,50 +9,172 @@ primary_color: "#52f756"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=rebellions.ai&sz=128"
-verified: "2026-06-26"
+verified: "2026-09-30"
 added: "2026-06-26"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://kr.rebellions.ai/", inspected: "2026-09-30" }
+    - { id: surface-2, kind: corporate, url: "https://kr.rebellions.ai/company/about/", inspected: "2026-09-30" }
+    - { id: surface-3, kind: marketing, url: "https://kr.rebellions.ai/rebellions-product/rebel100/", inspected: "2026-09-30" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://kr.rebellions.ai/", captured: "2026-09-30" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://kr.rebellions.ai/company/about/", captured: "2026-09-30" }
+    - { id: surface-surface-3, kind: product-surface, url: "https://kr.rebellions.ai/rebellions-product/rebel100/", captured: "2026-09-30" }
+    - { id: rebellions-probe-home, kind: product-surface, url: "https://kr.rebellions.ai/", captured: "2026-09-30" }
+    - { id: rebellions-probe-about, kind: product-surface, url: "https://kr.rebellions.ai/company/about/", captured: "2026-09-30" }
+    - { id: rebellions-probe-footer, kind: product-surface, url: "https://kr.rebellions.ai/", captured: "2026-09-30" }
+    - { id: rebellions-newsroom, kind: official-doc, url: "https://kr.rebellions.ai/company/newsroom/", captured: "2026-09-30" }
+    - { id: pretendard-license, kind: license, url: "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &cta { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"34\"]", captured: "2026-09-30" }
+    "tokens.colors.on-primary": *cta
+    "tokens.colors.ink": &body { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
+    "tokens.colors.canvas": *body
+    "tokens.colors.on-dark": &footlink { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"53\"]", captured: "2026-09-30" }
+    "tokens.colors.white": &arrow { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"40\"]", captured: "2026-09-30" }
+    "tokens.colors.black": &contact { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"80\"]", captured: "2026-09-30" }
+    "tokens.typography.family.display": &hero { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h1", captured: "2026-09-30" }
+    "tokens.typography.family.body": *body
+    "tokens.typography.display-hero.size": *hero
+    "tokens.typography.display-hero.weight": *hero
+    "tokens.typography.display-hero.lineHeight": *hero
+    "tokens.typography.display-hero.use": *hero
+    "tokens.typography.hero-lead.size": &herolead { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.hero-lead.weight": *herolead
+    "tokens.typography.hero-lead.lineHeight": *herolead
+    "tokens.typography.hero-lead.use": *herolead
+    "tokens.typography.section.size": &h2 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
+    "tokens.typography.section.weight": *h2
+    "tokens.typography.section.lineHeight": *h2
+    "tokens.typography.section.use": *h2
+    "tokens.typography.block-title.size": &h2sm { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h2", captured: "2026-09-30" }
+    "tokens.typography.block-title.weight": *h2sm
+    "tokens.typography.block-title.lineHeight": *h2sm
+    "tokens.typography.block-title.use": *h2sm
+    "tokens.typography.milestone.size": &h3 { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h3", captured: "2026-09-30" }
+    "tokens.typography.milestone.weight": *h3
+    "tokens.typography.milestone.lineHeight": *h3
+    "tokens.typography.milestone.use": *h3
+    "tokens.typography.lead.size": &lead { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.lead.weight": *lead
+    "tokens.typography.lead.lineHeight": *lead
+    "tokens.typography.lead.use": *lead
+    "tokens.typography.card-title.size": &cardh3 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
+    "tokens.typography.card-title.weight": *cardh3
+    "tokens.typography.card-title.lineHeight": *cardh3
+    "tokens.typography.card-title.use": *cardh3
+    "tokens.typography.button.size": *cta
+    "tokens.typography.button.weight": *cta
+    "tokens.typography.button.lineHeight": *cta
+    "tokens.typography.button.use": *cta
+    "tokens.typography.nav.size": &nav { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-09-30" }
+    "tokens.typography.nav.weight": *nav
+    "tokens.typography.nav.use": *nav
+    "tokens.typography.body.size": *body
+    "tokens.typography.body.weight": *body
+    "tokens.typography.body.lineHeight": *body
+    "tokens.typography.body.use": *body
+    "tokens.typography.footer-link.size": &footsub { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"55\"]", captured: "2026-09-30" }
+    "tokens.typography.footer-link.weight": *footsub
+    "tokens.typography.footer-link.lineHeight": *footsub
+    "tokens.typography.footer-link.use": *footsub
+    "tokens.typography.caption.size": *contact
+    "tokens.typography.caption.weight": *contact
+    "tokens.typography.caption.lineHeight": *contact
+    "tokens.typography.caption.use": *contact
+    "tokens.spacing.cta-y": *cta
+    "tokens.spacing.cta-x": *cta
+    "tokens.spacing.secondary-x": &dir { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"35\"]", captured: "2026-09-30" }
+    "tokens.spacing.pill-y": *contact
+    "tokens.spacing.pill-x": *contact
+    "tokens.rounded.none": *cta
+    "tokens.components.cta-primary.type": *cta
+    "tokens.components.cta-primary.bg": *cta
+    "tokens.components.cta-primary.fg": *cta
+    "tokens.components.cta-primary.radius": *cta
+    "tokens.components.cta-primary.height": *cta
+    "tokens.components.cta-primary.padding": *cta
+    "tokens.components.cta-primary.font": *cta
+    "tokens.components.cta-primary.hover": &ctastate { surface_id: home, source_id: rebellions-probe-home, method: live-state-probe, selector: "a.btn.btn-explore 자세히 보기 (200 x 50): hover and pressed bg rgb(82, 247, 86) -> rgb(0, 0, 0), label rgb(36, 41, 46) -> rgb(246, 248, 250), ::after arrow icon swaps; transition all 0.3s ease; focus not measured", captured: "2026-09-30" }
+    "tokens.components.cta-primary.pressed": *ctastate
+    "tokens.components.cta-primary.use": *cta
+    "tokens.components.button-secondary.type": *dir
+    "tokens.components.button-secondary.bg": *dir
+    "tokens.components.button-secondary.fg": *dir
+    "tokens.components.button-secondary.radius": *dir
+    "tokens.components.button-secondary.height": *dir
+    "tokens.components.button-secondary.padding": *dir
+    "tokens.components.button-secondary.font": *dir
+    "tokens.components.button-secondary.hover": &dirstate { surface_id: surface-2, source_id: rebellions-probe-about, method: live-state-probe, selector: "a.btn.map-link Get directions (305 x 60): hover and pressed bg rgb(217, 228, 237) -> rgb(82, 247, 86); transition all 0.3s ease; focus not measured", captured: "2026-09-30" }
+    "tokens.components.button-secondary.pressed": *dirstate
+    "tokens.components.button-secondary.use": *dir
+    "tokens.components.contact-pill.type": *contact
+    "tokens.components.contact-pill.bg": *contact
+    "tokens.components.contact-pill.fg": *contact
+    "tokens.components.contact-pill.radius": *contact
+    "tokens.components.contact-pill.height": *contact
+    "tokens.components.contact-pill.padding": *contact
+    "tokens.components.contact-pill.font": *contact
+    "tokens.components.contact-pill.hover": &pillstate { surface_id: home, source_id: rebellions-probe-footer, method: live-state-probe, selector: "a.footer-cta 도입 문의하기 (116 x 35.6): hover and pressed bg rgb(0, 0, 0) -> rgb(82, 247, 86), label rgb(82, 247, 86) -> rgb(36, 41, 46); transition all 0s; focus not measured", captured: "2026-09-30" }
+    "tokens.components.contact-pill.pressed": *pillstate
+    "tokens.components.contact-pill.use": *contact
+    "tokens.components.nav-contact.type": &navc { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"6\"]", captured: "2026-09-30" }
+    "tokens.components.nav-contact.fg": *navc
+    "tokens.components.nav-contact.height": *navc
+    "tokens.components.nav-contact.font": *navc
+    "tokens.components.nav-contact.states": &navstate { surface_id: home, source_id: rebellions-probe-home, method: live-state-probe, selector: "a 도입 문의하기 in the header (134.3 x 80, fg rgb(82, 247, 86), 20px/700): hover and pressed no change across self and 3 ancestor levels; transition all 0s; focus not measured", captured: "2026-09-30" }
+    "tokens.components.nav-contact.use": *navc
+    "tokens.components.carousel-arrow.type": *arrow
+    "tokens.components.carousel-arrow.bg": *arrow
+    "tokens.components.carousel-arrow.fg": *arrow
+    "tokens.components.carousel-arrow.border": *arrow
+    "tokens.components.carousel-arrow.radius": *arrow
+    "tokens.components.carousel-arrow.width": *arrow
+    "tokens.components.carousel-arrow.disabled": *arrow
+    "tokens.components.carousel-arrow.use": *arrow
+    "tokens.components.update-card.type": &card { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::article", captured: "2026-09-30" }
+    "tokens.components.update-card.radius": *card
+    "tokens.components.update-card.width": *card
+    "tokens.components.update-card.font": *cardh3
+    "tokens.components.update-card.use": *card
 tokens:
-  source: live-extract
-  extracted: "2026-06-26"
-  note: "primary = signature neon green (#52f756) used on CTAs / links / event badges; ink near-black (#24292e) carries body + dark CTAs + dark panels (#1b1f23). Sharp-corner system: buttons/cards measure 0px radius. Sohne display over Pretendard Korean fallback. Neutral ladder echoes a GitHub-Primer-like engineering palette."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
     primary: "#52f756"
+    on-primary: "#24292e"
     ink: "#24292e"
-    panel: "#1b1f23"
-    black: "#000000"
     canvas: "#f6f8fa"
-    white: "#ffffff"
     on-dark: "#d9e4ed"
-    muted: "#8d959c"
-    steel: "#3b434a"
-    docs-dark: "#14151a"
+    white: "#ffffff"
+    black: "#000000"
   typography:
-    family: { display: "Sohne", body: "Pretendard", mono: "Space Mono" }
-    display-hero: { size: 75, weight: 400, lineHeight: 1.25, use: "Hero headline (Power AI Inference)" }
-    section:      { size: 58, weight: 400, lineHeight: 1.25, use: "Section titles (System-Level Scalability)" }
-    title:        { size: 53, weight: 400, lineHeight: 1.25, use: "Large titles (Let's Talk.)" }
-    subtitle:     { size: 40, weight: 400, lineHeight: 1.25, use: "Sub-section titles (Rebellions SDK)" }
-    feature:      { size: 32, weight: 400, lineHeight: 1.25, use: "Feature headings (Built for Inference)" }
-    card-label:   { size: 24, weight: 600, lineHeight: 1.25, use: "Card labels (Compute, Generality)" }
-    body-lg:      { size: 21, weight: 400, lineHeight: 1.25, use: "Lead paragraph" }
-    nav:          { size: 20, weight: 500, lineHeight: 1.40, use: "Top nav items" }
-    body:         { size: 16, weight: 400, lineHeight: 1.40, use: "Standard reading text" }
-    caption:      { size: 14, weight: 500, lineHeight: 1.25, use: "Footer text, badges, fine print" }
-  spacing: { xs: 4, sm: 8, md: 10, base: 16, lg: 24, xl: 40, xxl: 64 }
-  rounded: { none: 0, xs: 2, full: 9999 }
-  shadow:
-    none: "none"
+    family: { display: "Pretendard", body: "Pretendard" }
+    display-hero: { size: 64.7, weight: 400, lineHeight: 1.25, use: "Page H1 and hero headline at 1440px (About 'AI that Scales, without the Energy Burn.'); fluid, measured at a 1440 viewport" }
+    hero-lead: { size: 27.8, weight: 600, lineHeight: 1.25, use: "Hero sub-line under the headline" }
+    section: { size: 52.9, weight: 500, lineHeight: 1.25, use: "Home section headlines (대규모 AI 서비스 추론 성능)" }
+    block-title: { size: 39.7, weight: 400, lineHeight: 1.25, use: "Block titles (Our Story, Latest Updates)" }
+    milestone: { size: 31.8, weight: 600, lineHeight: 1.25, use: "About timeline milestone titles" }
+    lead: { size: 21.2, weight: 400, lineHeight: 1.5, use: "Section intro paragraphs" }
+    card-title: { size: 24, weight: 400, lineHeight: 1.25, use: "Latest Updates card titles" }
+    button: { size: 20, weight: 600, lineHeight: 1.25, use: "Primary and secondary button labels" }
+    nav: { size: 20, weight: 500, use: "Header navigation items (80px tall row)" }
+    body: { size: 16, weight: 400, lineHeight: 1.4, use: "Document default" }
+    footer-link: { size: 16, weight: 300, lineHeight: 1.4, use: "Footer sub-links" }
+    caption: { size: 14, weight: 500, lineHeight: 1.4, use: "Footer contact pill label" }
+  spacing: { cta-y: 10, cta-x: 24, secondary-x: 40, pill-y: 8, pill-x: 20 }
+  rounded: { none: 0 }
   components:
-    button-primary-dark: { type: button, bg: "#24292e", fg: "#f6f8fa", radius: "0px", height: "50px", padding: "10px 24px", font: "20px / 600 Sohne", use: "Hero primary CTA (Explore RebelServer™)" }
-    button-primary-green: { type: button, bg: "#52f756", fg: "#24292e", radius: "0px", height: "50px", padding: "10px 24px", font: "20px / 600 Sohne", use: "Signature green CTA (Explore Rebellions SDK / 자세히 보기)" }
-    button-contact: { type: button, bg: "#000000", fg: "#52f756", radius: "0px", height: "36px", padding: "8px 20px", font: "14px / 500 Sohne", use: "Sticky-header contact CTA (Let's Talk / 도입 문의하기)" }
-    button-outline: { type: button, bg: "#ffffff", fg: "#24292e", border: "1px solid #24292e", radius: "0px", padding: "0 16px", font: "16px / 400 Sohne", use: "Outlined secondary action" }
-    segmented-tab: { type: tab, bg: "#f6f8fa", active: "text #24292e", use: "Chiplet strategy segmented control (Compute / Generality / Scalability / Capacity)" }
-    nav-link: { type: tab, fg: "#d9e4ed", active: "text #52f756", use: "Top nav item on dark hero; green denotes the primary nav action" }
-    badge-event: { type: badge, bg: "#24292e", fg: "#52f756", border: "1px solid #52f756", radius: "0px", font: "14px / 400 Sohne", use: "Event announcement pill in top bar (RAISE Summit 2026)" }
-    card-feature: { type: card, bg: "#ffffff", fg: "#24292e", radius: "0px", use: "Feature / spec card, sharp corners, flat (no shadow)" }
-    panel-dark: { type: card, bg: "#1b1f23", fg: "#f6f8fa", radius: "0px", use: "Dark feature / spec panel section" }
+    cta-primary: { type: button, bg: "#52f756", fg: "#24292e", radius: "0px", height: "50px", padding: "10px 24px", font: "20px / 600 Pretendard", hover: "bg #000000, label #f6f8fa, arrow icon swaps (0.3s ease)", pressed: "same as hover", use: "Primary call to action (자세히 보기, Model Zoo, 도입 사례 알아보기) on home and product pages" }
+    button-secondary: { type: button, bg: "#d9e4ed", fg: "#24292e", radius: "0px", height: "60px", padding: "0 40px", font: "20px / 600 Pretendard", hover: "bg #52f756 (0.3s ease)", pressed: "same as hover", use: "Full-width office links on the About page (Get directions)" }
+    contact-pill: { type: button, bg: "#000000", fg: "#52f756", radius: "0px", height: "36px", padding: "8px 20px", font: "14px / 500 Pretendard", hover: "bg #52f756, label #24292e (instant)", pressed: "same as hover", use: "Footer contact call to action (도입 문의하기) on every page" }
+    nav-contact: { type: tab, fg: "#52f756", height: "80px", font: "20px / 700 Pretendard", states: "hover and pressed: no change (probe); focus not measured", use: "The one green item in the header navigation (도입 문의하기); other items are 20px / 500 in #d9e4ed over the home hero and #24292e on light pages" }
+    carousel-arrow: { type: button, bg: "#ffffff", fg: "#24292e", border: "1px solid #24292e", radius: "0px", width: "40px", disabled: "observed disabled at the first slide; visual change not measured", use: "Square previous/next arrows of the partner and updates carousels" }
+    update-card: { type: card, radius: "0px", width: "448px", font: "24px / 400 Pretendard title", use: "Latest Updates news card: square 408px image over a 24px title, no fill, border or shadow" }
   components_harvested: true
 ---
 
@@ -60,397 +182,261 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-Rebellions (리벨리온) is Korea's leading AI-inference semiconductor company, and its website looks exactly like its product promises: engineered, energy-conscious, and built for scale. The canvas is a cool near-white (`#f6f8fa`) that reads like a clean datasheet, while the type and chrome sit in a deep engineering near-black (`#24292e`) instead of pure black — a warm graphite that gives the page the feel of a precision instrument panel rather than a consumer app. Against that restrained neutral field, a single electric, almost radioactive green (`#52f756`) does all the signalling: it marks the primary CTA, the live event banners, and the one nav action that matters. The result is a hardware-company aesthetic — sober, technical, and quietly aggressive, like a server rack with one glowing power LED.
+Rebellions (리벨리온) is a Korean AI-inference semiconductor company. It was founded in September 2020 "to push beyond the limits of general-purpose hardware" and "design inference-first silicon from the ground up," in the words of its own About timeline. Its products run from the silicon (ATOM™, and the REBEL chiplet line, now sold as Rebel100™) to RebelServer™, RebelRack™ and RebelPOD™ systems and an SDK. The company's line for itself is "AI that Scales, without the Energy Burn." It sells performance per watt for large-scale inference, and the site is built the way a spec sheet is: flat, square and exact.
 
-The defining geometric choice is sharpness. Buttons, cards, panels, and the contact pill all measure `0px` border-radius — there is essentially no rounding anywhere in the interactive system. In an industry where every SaaS site reaches for the friendly 8–12px corner, Rebellions' square edges read as silicon-precise and uncompromising, the visual equivalent of a tape-out. Typography reinforces this: the brand sets **Sohne** at very large display sizes (75px hero, 58px section heads) at a confident regular weight (400), with **Pretendard** carrying Korean body text on the localized `kr.rebellions.ai` surface. Headlines are big but not bold — the scale does the shouting, not the weight.
+The Korean site (kr.rebellions.ai, where rebellions.ai redirects visitors from Korea) sits on a cool near-white canvas (`#f6f8fa`) with graphite ink (`#24292e`) for text. Against that neutral field one electric green, `#52f756`, does the signalling. It fills every primary button (자세히 보기), colours the single contact item in the header, labels the black footer contact pill, and becomes the hover fill of the grey secondary buttons. There is no second saturated hue anywhere on the three captured pages.
 
-Depth is deliberately flat. Live inspection found `box-shadow: none` across the hero, nav, feature cards, and CTAs; separation comes from alternating light (`#f6f8fa`, `#ffffff`) and dark (`#1b1f23`, `#24292e`) full-bleed bands rather than elevation. On the dark sections, body and nav text lift to a soft blue-grey (`#d9e4ed`), with a muted steel-grey (`#8d959c`) for tertiary labels and a darker steel (`#3b434a`) for secondary dark surfaces. The strict-black (`#000000`) appears only on the sticky-header contact pill, where the neon green text sits inside it for maximum contrast. The developer documentation surface (`docs.rbln.ai`) shifts to its own darker code-grade neutral (`#14151a`) but keeps the same green accent — proof that the green is the brand's one non-negotiable color.
+The defining geometric choice is sharpness. The collector read 651 radius values across home, About and the Rebel100 product page, and every one was `0px`. Buttons, carousel arrows, cards and the footer pill are all square-cornered. Depth is flat as well: no captured control carries a shadow. The page separates itself with full-bleed photographic and dark bands. Text on those bands turns `#f6f8fa` for headlines and a soft blue-grey `#d9e4ed` for links and footer copy. The band fills themselves sit behind media and were not measured.
+
+Type is Pretendard throughout on the Korean site, and hierarchy comes from size more than weight. The About H1 renders at about 65px in weight 400. Home section headlines are about 53px at 500, block titles about 40px at 400, and only the timeline milestones and the button labels step up to 600. Sizes are fluid: the fractional values in this document are what a 1440px viewport computes.
+
+The brand's evolution is written into the timeline: ATOM™ taped out in June 2022 and was delivered to KT Cloud in May 2023. REBEL taped out in November 2024 as what Rebellions calls "the world's first UCIe-Advanced AI chiplet". In December 2024 the company merged with SK Sapeon, followed by Rebellions Japan in February 2025 and a Saudi subsidiary, backed by Aramco's strategic investment, in August 2025.
 
 **Key Characteristics:**
-- Single neon-green accent (`#52f756`) reserved for CTAs, event banners, and the one primary nav action — the system's only saturated hue
-- Engineering near-black (`#24292e`) for text and dark CTAs instead of pure black — a warm graphite, GitHub-Primer-adjacent
-- Sharp `0px` corners on every button, card, and panel — silicon-precise, anti-friendly
-- Sohne display at regular weight 400 at very large sizes (75px hero) — scale-driven, not weight-driven
-- Pretendard for Korean body text on the `kr.rebellions.ai` surface
-- Flat depth — no shadows; light/dark full-bleed bands (`#f6f8fa` / `#1b1f23`) do the separating
-- Cool-neutral ladder: `#d9e4ed` text on dark, `#8d959c` muted, `#3b434a` secondary dark
-- Strict black (`#000000`) only on the contact pill; docs-grade dark (`#14151a`) only on developer docs
+- One neon green (`#52f756`) as the only saturated colour: primary fill, header contact item, footer pill label, secondary hover
+- Graphite ink (`#24292e`) on a cool `#f6f8fa` canvas instead of black on white
+- Every measured corner is `0px`
+- Flat depth: no shadows on any captured control
+- Pretendard only on the Korean site; large sizes at regular or medium weight
+- Hover inverts: green buttons go black with light text, grey buttons go green
 
 ## Primary tasks
 
 - Compare inference accelerators on performance per watt.
 - Check whether PyTorch and vLLM run out of the box.
 - Contact the company about deploying its accelerators.
-- Switch between compute, generality, scalability, and capacity views.
+- Read product pages for Rebel100™ and the server, rack and pod systems.
 
 ## 2. Color Palette & Roles
 
 ### Primary
-- **Rebel Green** (`#52f756`): The signature neon green. Primary CTA background ("Explore Rebellions SDK", KR "자세히 보기"), event-banner text, link/nav accent, and contact-pill label. The single saturated "action" color in the whole system.
-- **Engineering Ink** (`#24292e`): Primary text, heading, and dark CTA background ("Explore RebelServer™"). A warm graphite near-black — never pure black for body — that anchors the technical, instrument-panel feel.
+- **Rebel Green** (`#52f756`): The fill of every primary button (자세히 보기 on home and Rebel100, 200 × 50). It is also the label colour of the header 도입 문의하기 item and of the black footer contact pill, and the hover fill of the grey About buttons. It is the primary because it is what the product pages render in the primary-action role on all three captured pages, and no other hue competes with it. It is also the only saturated colour in the capture: 45 text/border uses and 7 fills.
+- **On Primary** (`#24292e`): The label on the green fill.
 
 ### Neutral & Surface
-- **Canvas** (`#f6f8fa`): Cool near-white page background; also the light text color on dark sections.
-- **White** (`#ffffff`): Card surfaces and the outlined-button background.
-- **Panel Dark** (`#1b1f23`): Near-black background for dark feature/spec panels and bands.
-- **Steel** (`#3b434a`): Secondary dark surface and divider tone within dark sections.
-- **Strict Black** (`#000000`): Reserved for the sticky-header contact pill background, where neon-green text sits inside.
+- **Canvas** (`#f6f8fa`): The `body` background on all three pages; also the headline colour on the dark hero and band sections, and the hover label colour of the primary button.
+- **White** (`#ffffff`): Carousel arrow fill.
+- **Black** (`#000000`): The footer contact pill fill and the hover and pressed fill of the green primary button.
 
-### Text Hierarchy
-- **Engineering Ink** (`#24292e`): Primary text, headings, nav (on light), strong labels.
-- **On-Dark Text** (`#d9e4ed`): Soft blue-grey for body, nav links, and footer text on dark sections.
-- **Muted Grey** (`#8d959c`): Tertiary text, captions, inactive labels.
+### Text
+- **Ink** (`#24292e`): Body text, headings on the light canvas, and the labels of the light buttons.
+- **On Dark** (`#d9e4ed`): Header links over the home hero, footer links and footer copy; also the rest fill of the About page's Get directions buttons.
 
-### Developer Surface
-- **Docs Dark** (`#14151a`): The darker code-grade neutral used on the `docs.rbln.ai` SDK documentation chrome — same green accent, different (darker) ground.
+### Removed from the June body
+The June record also listed a panel dark, a muted grey, a steel and a docs-site dark. None renders in a role on the captured Korean pages, and the docs site (docs.rbln.ai) was not captured, so they are gone from this reference rather than guessed.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Display / UI**: `Sohne` — used for all headlines, nav, and button labels across the global `.ai` site.
-- **Body (Korean)**: `Pretendard` — the document default on the localized `kr.rebellions.ai` surface and the Korean fallback in the global stack.
-- **Monospace**: `Space Mono` (global site) / `Fira Code` (docs) — for technical specs, code, and numeric callouts.
+- **Pretendard** carries every role on the Korean site: body, headings, buttons, navigation, cards and list items (651 uses). It is served from the jsDelivr CDN build of orioncactus/pretendard (static woff2/woff files), and the `body` stack is `pretendard, -apple-system, "system-ui", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif`. Pretendard is distributed under the SIL Open Font License 1.1.
+- **Unresolved claims.** The June record named Sohne for display, plus Space Mono and Fira Code. None of them is loaded or declared on the three captured Korean pages. The global English site and the SDK documentation may still use them, but they were not captured. They are not a token here, and nothing should render them from this reference.
+- Font Awesome 5/6 faces are declared by the theme but no captured element uses them.
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Display Hero | Sohne | 75px (4.69rem) | 400 | 1.25 | "Power AI Inference. Efficiently. At Scale." |
-| Section Heading | Sohne | 58px (3.63rem) | 400 | 1.25 | "System-Level Scalability", "MoE in Action" |
-| Large Title | Sohne | 53px (3.31rem) | 400 | 1.25 | "Let's Talk." |
-| Sub-section | Sohne | 40px (2.50rem) | 400 | 1.25 | "Rebellions SDK", "Our Strategic Investors" |
-| Feature Heading | Sohne | 32px (2.00rem) | 400 | 1.25 | "Built for Inference", "Efficient by Design" |
-| Card Label | Sohne | 24px (1.50rem) | 600 | 1.25 | "Compute", "Generality", "Scalability" |
-| Lead Paragraph | Sohne | 21px (1.31rem) | 400 | 1.25 | Section intro paragraphs |
-| Nav Item | Sohne | 20px (1.25rem) | 500 | 1.40 | Top navigation links |
-| Body | Sohne / Pretendard | 16px (1.00rem) | 400 | 1.40 | Standard reading text |
-| Caption | Sohne | 14px (0.88rem) | 500 | 1.25 | Footer text, event badges, fine print |
+| Role | Size | Weight | Line height | Where |
+|---|---|---|---|---|
+| Display / page H1 | 64.7px | 400 | 80.9px (1.25) | About H1, Rebel100 H1, home hero |
+| Hero lead | 27.8px | 600 | 34.8px | Line under the hero headline |
+| Section | 52.9px | 500 | 66.1px | Home section headlines |
+| Block title | 39.7px | 400 | 49.6px | Our Story, Latest Updates |
+| Milestone | 31.8px | 600 | 39.8px | About timeline entries |
+| Card title | 24px | 400 | 30px | Latest Updates cards |
+| Lead | 21.2px | 400 | 31.8px | Section intros |
+| Button | 20px | 600 | 25px | 자세히 보기, Get directions |
+| Nav | 20px | 500 (contact item 700) | 80px row | Header |
+| Body | 16px | 400 | 22.4px | Document default |
+| Footer link | 16px | 300 | 22.4px | Footer sub-links |
+| Caption | 14px | 500 | 19.6px | Footer contact pill |
+
+Letter-spacing is `normal` on every captured text element.
 
 ### Principles
-- **Scale, not weight**: Headlines run at 400 (regular) even at 75px. The brand commands attention through size and whitespace, not bold weight — the few weight-600 elements are the small card labels, where size alone is insufficient.
-- **Sohne global, Pretendard Korean**: Sohne is the brand/display voice; Pretendard carries dense Korean body text on `kr.rebellions.ai`. They never swap roles.
-- **Mono for the machine**: Space Mono / Fira Code surface technical specs and code, keeping engineering numerics visually distinct from prose.
-- **Big, plain, declarative**: No decorative letter-spacing tricks — tracking stays normal. The type is matter-of-fact, like spec-sheet copy.
+- **Size, not weight.** Big type stays at 400–500; 600 is reserved for milestones and button labels.
+- **One family.** Pretendard handles Korean and Latin alike; product names keep their ™ marks in the same face.
+- **No tracking tricks.** Letter-spacing stays normal at every size.
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Primary Dark**
-- Background: `#24292e`
-- Text: `#f6f8fa`
-- Radius: 0px
-- Padding: 10px 24px
-- Height: 50px
-- Font: 20px Sohne weight 600
-- Use: Hero primary CTA ("Explore RebelServer™")
-
-**Primary Green**
+**Primary (자세히 보기)**
 - Background: `#52f756`
-- Text: `#24292e`
+- Text: `#24292e`, 20px / 600
 - Radius: 0px
-- Padding: 10px 24px
-- Height: 50px
-- Font: 20px Sohne weight 600
-- Use: Signature green CTA ("Explore Rebellions SDK", KR "자세히 보기")
+- Size: 200 × 50 (padding 10px 24px), width follows the label (218–228px on Rebel100)
+- Hover and pressed: background `#000000`, label `#f6f8fa`, the trailing arrow icon swaps to a light version; `transition: all 0.3s ease`
+- Use: the main action in each home and product section
 
-**Contact Pill**
+**Secondary (Get directions)**
+- Background: `#d9e4ed`
+- Text: `#24292e`, 20px / 600
+- Radius: 0px
+- Size: 305 × 60 (padding 0 40px)
+- Hover and pressed: background `#52f756`; `transition: all 0.3s ease`
+- Use: the four office cards on the About page
+
+**Footer contact pill (도입 문의하기)**
 - Background: `#000000`
-- Text: `#52f756`
+- Text: `#52f756`, 14px / 500
 - Radius: 0px
-- Padding: 8px 20px
-- Height: 36px
-- Font: 14px Sohne weight 500
-- Use: Sticky-header contact CTA ("Let's Talk", KR "도입 문의하기")
+- Size: 116 × 36 (padding 8px 20px)
+- Hover and pressed: the colours invert, background `#52f756` and label `#24292e`; `transition: all 0s`, so the swap is instant
+- Use: the footer of every captured page
 
-**Outline**
+**Carousel arrow**
 - Background: `#ffffff`
-- Text: `#24292e`
+- Icon: `#24292e`
 - Border: 1px solid `#24292e`
-- Radius: 0px
-- Padding: 0 16px
-- Font: 16px Sohne weight 400
-- Use: Outlined secondary action
-
-### Inputs
-
-**Default**
-- Background: `#ffffff`
-- Border: 1px solid `#24292e`
-- Radius: 0px
-- Text: `#24292e`
-- Use: Form field / search input on light surfaces (sharp-cornered, hairline outline)
-
-### Cards & Containers
-
-**Feature Card**
-- Background: `#ffffff`
-- Text: `#24292e`
-- Radius: 0px
-- Use: Feature / spec card on light bands — sharp corners, flat (no shadow)
-
-**Dark Panel**
-- Background: `#1b1f23`
-- Text: `#f6f8fa`
-- Radius: 0px
-- Use: Dark feature / spec panel sections and full-bleed bands
-
-### Badges
-
-**Event Pill**
-- Background: `#24292e`
-- Text: `#52f756`
-- Border: 1px solid `#52f756`
-- Radius: 0px
-- Font: 14px Sohne weight 400
-- Use: Event announcement in the top banner ("RAISE Summit 2026", "LEAP EAST 2026")
-
-### Tabs / Segmented Control
-
-**Chiplet Strategy Segments**
-- Background: `#f6f8fa`
-- Active: text `#24292e`
-- Padding: 5px 40px
-- Use: Segmented control on the Chiplet Design Strategy section ("Compute", "Generality", "Scalability", "Capacity")
+- Radius: 0px; 40 × 40
+- The collector saw these arrows in a disabled state at the start of the carousel; how disabled looks was not measured.
 
 ### Navigation
-- Background (dark hero): transparent over `#24292e`
-- Text: `#d9e4ed`
-- Active: green `#52f756` text (the "Let's Talk" primary nav action)
-- Font: 20px Sohne weight 500
-- Use: Top horizontal nav ("Products", "Developers", "Resources", "Company")
+- Header row is 80px tall; items are 20px / 500 in `#d9e4ed` over the home hero and `#24292e` on the light About page.
+- One item, 도입 문의하기, is `#52f756` at 700. The probe found no hover or pressed change on it (`transition: all 0s`).
+- The mega-menu under the header is not described here: its entries are in the DOM but are hidden until opened, and they were not opened.
+
+### Cards
+- **Latest Updates card:** 448px column, square 408 × 408 image link, 24px / 400 title below. No fill, border, radius or shadow.
+- Rebel100's feature cards follow the same square, unfilled pattern (436px wide).
 
 ---
 
-**Verified:** 2026-06-26 (omd:add-reference CREATE — Tier 1 live inspect, 3 brand-owned surfaces)
-**Tier 1 sources:** https://rebellions.ai/ (homepage, live computed style); https://kr.rebellions.ai/ (Korean site — same tokens, KR copy "자세히 보기" / "도입 문의하기" / "대규모 AI 서비스 추론 성능"); https://docs.rbln.ai/ (RBLN SDK developer docs — green accent confirmed); https://github.com/rebellions-sw (official GitHub org)
-**Tier 2 sources:** getdesign.md/rebellions — 0 DESIGN.md files (not covered); styles.refero.design/?q=rebellions — not listed (96 fuzzy non-Rebellions matches)
-**Conflicts unresolved:** none
+**Verified:** 2026-09-30 (deterministic collector capture of three public, logged-out kr.rebellions.ai pages plus fixed keyboard-probe state reads and first-party context)
+**Tier 1 sources:** https://kr.rebellions.ai/ ; https://kr.rebellions.ai/company/about/ ; https://kr.rebellions.ai/rebellions-product/rebel100/ ; https://kr.rebellions.ai/company/newsroom/
+**Tier 2 sources:** not attempted; no Tier 2 value used
 
 ## 5. Layout Principles
 
 ### Spacing System
-- Base unit: ~8px
-- Scale: 4px, 8px, 10px, 16px, 24px, 40px, 64px
-- Notable: CTA padding lands at 10px 24px; segmented-control chips use a generous 5px 40px horizontal pad for wide, scannable tap targets
+- Button padding: 10px 24px (primary), 0 40px (secondary), 8px 20px (footer pill).
+- The most frequent measured spacing values are 20, 80, 24, 10 and 16px. The 80px value is the header row height repeated through the menu.
 
 ### Grid & Container
-- Centered single-column hero with the 75px Sohne headline as the anchor
-- Alternating full-bleed bands: light (`#f6f8fa` / `#ffffff`) and dark (`#1b1f23` / `#24292e`) sections create the page rhythm
-- Feature rows group spec cards in 2–4 column arrangements (Built for Inference / Efficient by Design / Seamless Deployment / Scalable Infrastructure)
-- Chiplet Design Strategy uses a segmented control to swap Compute / Generality / Scalability / Capacity views
+- Content blocks run 1280px wide inside a 1440 viewport; the header and mega-menu run 1325px.
+- Updates and product cards sit three across at about 448px.
 
 ### Whitespace Philosophy
-- **Spec-sheet calm**: generous vertical rhythm between sections; the page reads like a well-set technical document, not a busy marketing site.
-- **Band segmentation**: sections separate by light/dark background swaps, not by borders or shadows.
-- **One bright point**: the neon green is rationed so the eye always knows where the next action is.
+Large, regular-weight headlines get generous air, and sections alternate light canvas with full-bleed image or dark bands. There are no card boxes to hold content; alignment and spacing do the grouping.
 
 ### Border Radius Scale
-- None (0px): buttons, cards, panels, inputs, badges — the entire interactive system is square
-- Docs (2px): a minimal 2px appears only on the developer-docs "skip to content" control
-- Full (9999px): reserved conceptually for any avatar/dot indicators
+- `0px` everywhere. The collector found no other radius value.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
-| Band (Level 1) | Light/dark background swap (`#f6f8fa` ↔ `#1b1f23`) | Section separation without elevation |
-| Edge (Level 2) | `1px solid #24292e` hairline | Outlined buttons, input fields, sharp card edges |
-
-**Shadow Philosophy**: Rebellions is a shadow-free system. Live inspection found `box-shadow: none` across the hero, nav, headings, feature cards, and CTAs. Depth is communicated entirely by alternating light and dark full-bleed bands and by hard `0px` edges — never by elevation. This is a deliberate engineering-grade choice: the flat, square treatment reads as precise and manufactured, in keeping with a silicon company. When emphasis is needed the system reaches for the neon green (`#52f756`) or the dark panel (`#1b1f23`), not a drop shadow.
+No captured control or card has a shadow. Separation comes from background bands and full-bleed media, never from elevation. Keep new surfaces flat.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Reserve neon green (`#52f756`) for the primary CTA, event banners, and the one primary nav action — keep it the single "action" color
-- Use engineering ink (`#24292e`) for text and dark CTAs instead of pure black
-- Keep every button, card, panel, and input at `0px` radius — sharp corners are the brand
-- Set headlines in Sohne at regular weight 400, letting size carry the hierarchy
-- Separate sections with light/dark full-bleed bands (`#f6f8fa` ↔ `#1b1f23`), not shadows
-- Use Pretendard for Korean body text on localized surfaces
-- Lift text to `#d9e4ed` on dark sections and `#8d959c` for muted/tertiary labels
-- Keep the layout flat, square, and spec-sheet calm
+- Keep `#52f756` for the primary action and the contact path only.
+- Put `#24292e` labels on green, and switch to black with `#f6f8fa` text on hover.
+- Keep every corner square.
+- Use Pretendard for Korean and Latin text alike, with size carrying the hierarchy.
+- Use `#d9e4ed` for links and copy on dark bands.
 
 ### Don't
-- Spread the green across many elements — it dilutes the single-action signal
-- Use rounded corners on interactive elements — the system is uniformly square
-- Use pure black (`#000000`) anywhere except the contact pill background
-- Set headlines in heavy bold weights — scale, not weight, drives emphasis
-- Add drop shadows for elevation — Rebellions is flat
-- Introduce a second saturated accent color — green is the only hue
-- Use decorative letter-spacing on headlines — tracking stays normal
-- Let card edges go soft — hard `1px` hairlines and `0px` corners only
+- Don't round buttons, cards or arrows.
+- Don't add shadows.
+- Don't introduce a second accent hue.
+- Don't set Sohne or a monospace face from this reference; they were not observed on the Korean site.
+- Don't use pure black for body text; ink is `#24292e`.
 
 ## 8. Responsive Behavior
 
 ### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses, segmented control wraps/scrolls |
-| Tablet | 640-1024px | 2-up feature cards, moderate padding |
-| Desktop | 1024-1440px | Full layout, centered hero, multi-column feature bands |
+Only the 1440px desktop viewport was captured. Headline sizes are fluid (fractional pixel values), so they will shrink with the viewport; the exact rules were not read.
 
 ### Touch Targets
-- Primary CTAs at 50px height with 10px 24px padding — comfortably tappable
-- Contact pill at 36px height for the persistent header action
-- Segmented-control chips use wide 5px 40px padding for large hit areas
+- Primary buttons are 50px tall, secondary 60px, the footer pill 36px and carousel arrows 40px.
 
 ### Collapsing Strategy
-- Hero: 75px Sohne headline scales down on mobile, weight 400 maintained
-- Feature bands: multi-column → stacked single column
-- Light/dark alternating sections keep full-width treatment
-- Chiplet segmented control: horizontal scroll/wrap on narrow viewports
+Not measured.
 
 ### Image Behavior
-- Product renders and diagrams carry no shadow at any size, consistent with the flat system
-- Cards and media keep `0px` corners across breakpoints
+Hero and band sections are full-bleed media with text laid over them; update cards use a square image.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary CTA (green): Rebel Green (`#52f756`)
-- Primary CTA (dark): Engineering Ink (`#24292e`)
-- Background: Canvas (`#f6f8fa`)
-- Card surface: White (`#ffffff`)
-- Dark panel: Panel Dark (`#1b1f23`)
-- Text on light: Engineering Ink (`#24292e`)
-- Text on dark: On-Dark (`#d9e4ed`)
-- Muted text: Muted Grey (`#8d959c`)
-- Contact pill: Strict Black (`#000000`) bg + green text
-- Docs dark: Docs Dark (`#14151a`)
+- Primary action: `#52f756` with `#24292e` label
+- Hover of primary: `#000000` with `#f6f8fa` label
+- Canvas: `#f6f8fa`
+- Ink: `#24292e`
+- Text on dark: `#d9e4ed`
+- Footer pill: `#000000` with `#52f756` label
 
 ### Example Component Prompts
-- "Create a hero on engineering-ink (`#24292e`) background. Headline at 75px Sohne weight 400, line-height 1.25, color `#f6f8fa`: 'Power AI Inference. Efficiently. At Scale.' Below it a green CTA: `#52f756` background, `#24292e` text, 0px radius, 10px 24px padding, 20px Sohne weight 600 — 'Explore Rebellions SDK'."
-- "Design a feature card: white `#ffffff` background, 0px radius, no shadow. Heading 32px Sohne weight 400, `#24292e`. Label 24px Sohne weight 600. Body 16px, `#24292e`."
-- "Build a dark spec band: `#1b1f23` background, full-width. Section title 58px Sohne weight 400, `#f6f8fa`. Card labels 24px weight 600 in `#f6f8fa`; muted captions in `#8d959c`."
-- "Create the sticky header: nav links 20px Sohne weight 500 in `#d9e4ed`, with the primary action in green `#52f756`. Contact pill: black `#000000` background, `#52f756` text, 0px radius, 8px 20px padding — 'Let's Talk'."
-- "Event banner badge: `#24292e` background, `#52f756` text, 1px solid `#52f756` border, 0px radius, 14px Sohne — 'RAISE Summit 2026 →'."
+- "A 200 × 50 square button, background `#52f756`, label `#24292e` 20px / 600 Pretendard, padding 10px 24px, radius 0. On hover the background becomes `#000000` and the label `#f6f8fa` over 0.3s ease."
+- "A 305 × 60 square button, background `#d9e4ed`, label `#24292e` 20px / 600; hover fills `#52f756`."
+- "A news card: square image, then a 24px / 400 Pretendard title in `#24292e`; no border, radius or shadow."
 
 ### Iteration Guide
-1. Green (`#52f756`) is the single action color — never spread it
-2. Every corner is `0px` — buttons, cards, inputs, panels, badges
-3. Headlines are Sohne weight 400; size carries hierarchy, not weight
-4. No shadows — separate with light/dark bands (`#f6f8fa` ↔ `#1b1f23`)
-5. Text is `#24292e` on light, `#d9e4ed` on dark, `#8d959c` muted
-6. Pure black (`#000000`) only on the contact pill
-7. Pretendard for Korean body; Sohne for display everywhere
-
----
+1. Check that green appears only on the primary action or the contact path.
+2. Check every corner is 0px and there are no shadows.
+3. Check headlines are large but no heavier than 500 (600 only for milestones and buttons).
+4. Check dark bands use `#f6f8fa` headlines and `#d9e4ed` links.
 
 ## 10. Voice & Tone
 
-Rebellions' voice is **technical, declarative, and efficiency-obsessed** — a chip company that talks like an engineer briefing a deployment, not a startup selling a dream. The hero line "Power AI Inference. Efficiently. At Scale." sets the register: three short clauses, each a claim that can be benchmarked. Copy leads with the workload ("Built for Inference", "Optimized for Real-World AI Deployment") and the physics ("Maximize Performance per Watt"), never with hype. The mission framing — "AI that Scales, without the Energy Burn." — reads as a problem statement, not a slogan.
+Rebellions' voice is technical, declarative and efficiency-minded. It reads like an engineer briefing a deployment. The About page states its case plainly: "Purpose-built for Efficient, High-Performance Inference." The Korean home talks in capability headlines: "대규모 AI 서비스 추론 성능", "300+ 모델 지원으로 바로 구현하는 AI 서비스", "간편한 도입과 운영". Calls to action are plain imperatives: 자세히 보기, 도입 사례 알아보기, 도입 문의하기.
 
 | Context | Tone |
 |---|---|
-| Hero headlines | Declarative, benchmarkable. "Power AI Inference. Efficiently. At Scale." |
-| Feature headings | Capability + physics. "Built for Inference", "Efficient by Design", "Seamless Deployment". |
-| CTAs | Direct imperatives. "Explore RebelServer™", "Explore Rebellions SDK", "Let's Talk." |
-| Product names | Trademarked, system-like. REBEL™, ATOM™, RebelServer™, RebelRack™, RebelPOD™. |
-| Mission / about | Engineering-grade plain English. "AI that Scales, without the Energy Burn." |
-| Developer docs | Terse, reference-style, code-first (RBLN SDK User Guide). |
+| Headlines | Capability plus a claim you can benchmark ("Efficient. Scalable. Deployment-Ready.") |
+| Calls to action | Short imperatives (자세히 보기, 도입 문의하기) |
+| Product names | Trademarked, system-like: Rebel100™, RebelServer™, RebelRack™, RebelPOD™ |
+| Company story | Dated milestones in plain English |
+| Closing line | "The most profitable inference runs on Rebellions. Let's Talk." (About page) |
 
-**Voice samples (verbatim from live surfaces):**
-- "Power AI Inference. Efficiently. At Scale." — hero headline. *(verified live 2026-06-26)*
-- "AI that Scales, without the Energy Burn." — about-page mission. *(verified live 2026-06-26)*
-- "The fastest way to scale AI is to start talking." — closing CTA section. *(verified live 2026-06-26)*
-
-**Forbidden register**: empty superlatives ("revolutionary", "game-changing"), consumer-app exclamation hype, vague benefit-speak untethered from a measurable claim, and any marketing that buries the performance-per-watt and deployment story.
+**Forbidden register:** empty superlatives, consumer-app exclamation, and benefit talk without a measurable claim behind it.
 
 ## 11. Brand Narrative
 
-Rebellions (리벨리온) was **founded in September 2020 in Korea** with, in its own words, "a mission to design inference-first silicon from the ground up" — to "push beyond the limits of general-purpose hardware" (verified live on the company's About timeline, 2026-06-26). The company's bet is that the AI era will be defined not by training but by *inference at scale*, and that the deciding constraint is energy: its positioning line is "AI that Scales, without the Energy Burn." — purpose-built accelerators optimized for performance-per-watt.
+Rebellions was established in Korea in September 2020. Its bet is that the AI era will be decided by inference at scale, and that energy is the constraint that matters. Its About timeline tells the story in tape-outs and deliveries: the GDDR6-based ATOM™ in June 2022, first delivered to KT Cloud in May 2023. REBEL followed in November 2024 ("fusing 144GB of HBM3E with scalable silicon"). The December 2024 merger with SK Sapeon "unified Korea's AI semiconductor capabilities and deepened our supply chain through SK hynix's HBM leadership". Rebellions Japan followed in February 2025 and a Saudi subsidiary in August 2025. The About page lists offices in Seongnam (Korea), Santa Clara (Rebellions America Inc.), Tokyo and Riyadh (MENA Region HQ). The Korean newsroom carries Korean-language announcements such as the SKT 에이닷 call-summary work on its NPU.
 
-The timeline is a hardware story told in tape-outs. ATOM™, a GDDR6-based inference accelerator, taped out in **June 2022** and shipped to KT Cloud just three months later (**May 2023**) — an early live data-center deployment. **November 2024** brought the tape-out of the REBEL SoC, which the company describes as "the world's first UCIe-Advanced AI chiplet," fusing 144GB of HBM3E with scalable silicon. In **December 2024** Rebellions merged with **SK Sapeon**, unifying Korea's AI-semiconductor capabilities and deepening its supply chain through SK hynix's HBM leadership. Global expansion followed: **Rebellions Japan** (Feb 2025) and a **Saudi subsidiary** backed by Aramco's strategic investment (Aug 2025) aimed at sovereign-scale AI.
-
-What Rebellions refuses, visible in its design: the friendly, rounded, shadow-stacked look of generic SaaS, and hype-driven marketing untethered from measurable claims. What it embraces: a flat, square, spec-sheet aesthetic; an engineering-graphite neutral palette; one disciplined neon-green accent; and copy that reads like a deployment brief. As investor Fleur Pellerin (CEO & Founder, Korelya Capital) frames it on the site: "Tech sovereignty starts with control over compute" — a statement the brand's restrained, instrument-panel design quietly echoes.
+The investor voices on the About page frame the position. Fleur Pellerin (Korelya Capital): "Tech sovereignty starts with control over compute." SK Telecom's Jaeshin Lee talks about pairing inference-optimised infrastructure with SKT's own foundation model. The design matches that engineering stance: square, flat, graphite and one green signal. It avoids the rounded, shadowed look of generic SaaS.
 
 ## 12. Principles
 
-1. **Inference-first, efficiency-always.** The company exists to make AI inference cheaper per watt. *UI implication:* lead copy and spec cards with the workload and the power story, not abstract benefits.
-2. **One action, one color.** Neon green (`#52f756`) means "do this." *UI implication:* reserve the green exclusively for the primary CTA, event banners, and the single primary nav action so the next step is unambiguous.
-3. **Square is precise.** `0px` corners everywhere. *UI implication:* never round interactive elements; sharp edges signal silicon-grade precision.
-4. **Scale over weight.** Headlines are large but regular-weight. *UI implication:* drive hierarchy with size and whitespace, not bold type.
-5. **Flat, not decorated.** No shadows; light/dark bands carry depth. *UI implication:* separate sections by background swap and hard hairlines, keeping the surface clean and manufactured.
+1. **Inference-first, efficiency-always.** *UI implication:* lead with the workload and the power story, not abstract benefit.
+2. **One action, one colour.** *UI implication:* `#52f756` marks the next step and nothing else.
+3. **Square is precise.** *UI implication:* 0px corners on every control and card.
+4. **Scale over weight.** *UI implication:* hierarchy through size and whitespace, weights 400–600.
+5. **Flat, not decorated.** *UI implication:* bands and media separate sections; no shadows.
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable Rebellions audiences (data-center / cloud infra teams, ML platform engineers, sovereign-AI buyers), not individual people.*
+*Personas below are fictional archetypes informed by the audiences the site addresses (data-center and cloud infrastructure teams, ML platform engineers, sovereign-AI buyers), not individual people.*
 
-**서지훈, 38, 경기 성남.** ML infrastructure lead at a Korean cloud provider evaluating inference accelerators. Cares about performance-per-watt and total cost of ownership over peak FLOPS. Reads the RebelServer and SDK pages for deployment realism, not marketing.
+**서지훈, 38, 경기 성남.** ML infrastructure lead at a Korean cloud provider evaluating inference accelerators. Cares about performance per watt and total cost of ownership. Reads the RebelServer and SDK pages for deployment realism.
 
-**Aiko Tanaka, 41, Tokyo.** Enterprise AI platform architect at a Japanese systems integrator. Needs PyTorch and vLLM support out of the box and stable SDK docs. Values the terse, reference-style documentation and the trademarked, system-like product naming.
+**Aiko Tanaka, 41, Tokyo.** Enterprise AI platform architect at a Japanese systems integrator. Needs PyTorch and vLLM support out of the box and stable SDK docs.
 
-**Khalid Al-Otaibi, 45, Riyadh.** Program director on a sovereign-AI infrastructure initiative. Thinks in rack- and data-center-scale deployments and supply-chain reliability. Reads "tech sovereignty starts with control over compute" literally — it's why Rebellions is on the shortlist.
+**Khalid Al-Otaibi, 45, Riyadh.** Program director on a sovereign-AI infrastructure initiative. Thinks in rack- and data-center-scale deployments and supply-chain reliability.
 
 ## 14. States
 
-| State | Treatment |
+| State | What was measured |
 |---|---|
-| **Empty (no results / no data)** | Canvas (`#f6f8fa`) surface. Single Engineering-Ink (`#24292e`) line explaining the empty state, with one green (`#52f756`) action. No illustration clutter. |
-| **Empty (saved/compare list none yet)** | Muted Grey (`#8d959c`) single line: nothing added yet, plus a path back. Honest, terse. |
-| **Loading (page/section fetch)** | Flat skeleton blocks at final dimensions on the canvas, `0px` radius. No shadow shimmer — flat pulse consistent with the shadowless, square system. |
-| **Loading (docs/spec compute)** | Inline progress; previous content stays visible. Reference-style, no spinner theatrics. |
-| **Error (request failed)** | Inline message in Engineering-Ink with a plain-English explanation and a retry. No generic "Something went wrong" alone. |
-| **Error (form validation)** | Field-level message below the input; describes what's valid, not just "Required". Sharp `1px solid #24292e` field edge. |
-| **Success (form / contact submitted)** | Brief inline confirmation in a calm, technical tone; next-step detail linked immediately below. No celebratory emoji. |
-| **Skeleton** | `#f6f8fa` blocks at final dimensions, `0px` radius, flat pulse. |
-| **Disabled** | Muted Grey (`#8d959c`) text on reduced-opacity surface; green actions fade rather than turn grey to preserve the brand read. |
+| **Hover / pressed, primary** | `#52f756` → `#000000` fill, label `#24292e` → `#f6f8fa`, arrow icon swaps; 0.3s ease |
+| **Hover / pressed, secondary** | `#d9e4ed` → `#52f756` fill; 0.3s ease |
+| **Hover / pressed, header contact item** | No change |
+| **Hover / pressed, footer contact pill** | `#000000` → `#52f756` fill, label `#52f756` → `#24292e`; instant |
+| **Disabled** | Carousel arrows are disabled at the first slide; their disabled look was not measured |
+| **Focus** | Not measured; do not infer a focus style from this reference |
+
+Empty, loading, error and success states were not observed on the public pages and are not specified here.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, focus |
-| `motion-standard` | 220ms | Segmented-control swap, card/section reveal, dropdown |
-| `motion-slow` | 360ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — panels, cards, dropdowns |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions, segmented swaps |
-
-**Motion rules**: Motion is functional and restrained — consistent with the flat, square, engineering aesthetic. The Chiplet Design Strategy segmented control swaps views at `motion-standard / ease-standard`; sections reveal with a short fade-up at `ease-enter`. No bounce, spring, or overshoot — a silicon-infrastructure brand signals steadiness, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the site remains fully functional.
+The probe read `transition: all 0.3s ease` on the primary 자세히 보기 button and on the About page's Get directions buttons; their colour changes ease over 300ms. The header contact item and the footer contact pill compute `transition: all 0s`, so their changes are instant. Nothing else about motion (carousels, band reveals) was measured. Treat it as unspecified and honour `prefers-reduced-motion` in any build.
 
 <!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-26) via playwright getComputedStyle on:
-- https://rebellions.ai/ — homepage, hero/nav/CTA/headings/footer + full-DOM color frequency scan
-- https://kr.rebellions.ai/ — Korean site; same token system, KR copy ("자세히 보기" green CTA,
-  "도입 문의하기" black contact pill, "대규모 AI 서비스 추론 성능" headline)
-- https://docs.rbln.ai/ — RBLN SDK developer docs (Inter/Fira Code docs theme; green #52f756 accent confirmed)
-- https://github.com/rebellions-sw — official GitHub org (avatar fetch 200)
-
-Token-level claims (§1-9) are sourced from this live inspection:
-- Rebel Green #52f756 (rgb 82,247,86); Engineering Ink #24292e (rgb 36,41,46); Canvas #f6f8fa
-  (rgb 246,248,250); Panel Dark #1b1f23 (rgb 27,31,35); On-Dark #d9e4ed (rgb 217,228,237);
-  Muted #8d959c (rgb 141,149,156); Steel #3b434a (rgb 59,67,74); Docs Dark #14151a (rgb 20,21,26).
-- box-shadow: none across hero/nav/headings/cards/CTAs (shadowless system).
-- 0px border-radius across buttons/cards/panels/inputs (sharp-corner system).
-- Sohne display @ 75px/400 hero, 58px/400 section; Pretendard Korean body.
-
-Voice samples (§10) and brand narrative (§11) are verbatim/derived from the live homepage and
-About-page timeline (founding 2020.09; ATOM tape-out 2022.06; KT Cloud shipment 2023.05; REBEL SoC
-tape-out 2024.11; SK Sapeon merger 2024.12; Japan 2025.02; Saudi/Aramco 2025.08). Investor quote
-(Fleur Pellerin, Korelya Capital) and partner quote (Johannes Stahl, Synopsys) are verbatim from the
-live About page.
-
-The company's HQ is Bundang, Seongnam, Gyeonggi-do, Korea (footer address) → country: KR (parent HQ).
-The founder/CEO name is not asserted here because the live About page did not name an individual in
-this turn; only company-stated founding facts are used.
-
-Personas (§13) are fictional archetypes informed by publicly observable Rebellions audiences
-(cloud/data-center infra teams, ML platform engineers, sovereign-AI buyers). Names are illustrative;
-they do not refer to real people.
-
-Interpretive claims (e.g., "square is precise", "one action, one color", "spec-sheet calm") are
-editorial readings connecting Rebellions' observed design to its positioning, not directly sourced
-Rebellions statements.
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/rebellions.json (capturedAt 2026-09-30T13:12:12Z), deterministic collector, 1440x900, logged out: kr.rebellions.ai, /company/about/, /rebellions-product/rebel100/. States: fixed keyboard probe raws docs/research/2026-09-29-growth/raw/rebellions-states-home.json, rebellions-states-about.json and rebellions-states-footer.json.
+- §1, §10, §11 context: kr.rebellions.ai/company/about/ (Our Story timeline, offices, investors), the home copy, /company/newsroom/ and a Korean newsroom article, opened 2026-09-30.
+- §3 licence: the Pretendard LICENSE file on GitHub.
+- The June motion table (120/220/360ms and three cubic-bezier curves) had no evidence and was removed.
+- Personas are fictional archetypes. Interpretive readings are editorial.
 -->

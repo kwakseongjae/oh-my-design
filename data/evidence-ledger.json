@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 286,
-  "sources": 1752,
+  "references_with_verification_v2": 295,
+  "sources": 1819,
   "sources_by_kind": {
     "brand-asset": 79,
-    "license": 124,
-    "official-doc": 684,
-    "product-surface": 865
+    "license": 132,
+    "official-doc": 702,
+    "product-surface": 906
   },
   "references": {
     "104": {
@@ -2291,6 +2291,66 @@
         }
       ]
     },
+    "danawa": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "connectwave-history",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.connectwave.co.kr"
+        },
+        {
+          "id": "danawa-bi",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.danawa.com"
+        },
+        {
+          "id": "danawa-corp",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.danawa.com"
+        },
+        {
+          "id": "danawa-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.danawa.com"
+        },
+        {
+          "id": "danawa-probe-product",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "prod.danawa.com"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.danawa.com"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "prod.danawa.com"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "prod.danawa.com"
+        }
+      ]
+    },
     "datarize": {
       "checked": "2026-07-13",
       "claims": 0,
@@ -3689,6 +3749,66 @@
         }
       ]
     },
+    "greencar": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "greencar-about",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.greencar.co.kr"
+        },
+        {
+          "id": "greencar-ci",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.greencar.co.kr"
+        },
+        {
+          "id": "greencar-history",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.greencar.co.kr"
+        },
+        {
+          "id": "greencar-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.greencar.co.kr"
+        },
+        {
+          "id": "outfit-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.greencar.co.kr"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.greencar-gcar.co.kr"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.greencar-gcar.co.kr"
+        }
+      ]
+    },
     "greeting": {
       "checked": "2026-09-30",
       "claims": 0,
@@ -3746,6 +3866,72 @@
           "kind": "product-surface",
           "captured": "2026-09-30",
           "host": "www.greetinghr.com"
+        }
+      ]
+    },
+    "hackle": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "hackle-blog",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "hackle.io"
+        },
+        {
+          "id": "hackle-careers",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "careers.hackle.io"
+        },
+        {
+          "id": "hackle-docs",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "docs.hackle.io"
+        },
+        {
+          "id": "hackle-probe-abtest",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "hackle.io"
+        },
+        {
+          "id": "hackle-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "hackle.io"
+        },
+        {
+          "id": "hackle-probe-pricing",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "hackle.io"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "hackle.io"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "hackle.io"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "hackle.io"
         }
       ]
     },
@@ -3983,6 +4169,48 @@
         }
       ]
     },
+    "humanscape": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "humanscape-probe-about",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "lifex.io"
+        },
+        {
+          "id": "humanscape-redirect",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "humanscape.io"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "lifex.io"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "lifex.io"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "lifex.io"
+        }
+      ]
+    },
     "hwahae": {
       "checked": "2026-09-30",
       "claims": 0,
@@ -4208,6 +4436,48 @@
           "kind": "license",
           "captured": "2026-07-13",
           "host": "www.ibm.com"
+        }
+      ]
+    },
+    "idus": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "backpackr-site",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "backpac.kr"
+        },
+        {
+          "id": "idus-probe-product",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.idus.com"
+        },
+        {
+          "id": "idus-team",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "team.idus.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.idus.com"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.idus.com"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.idus.com"
         }
       ]
     },
@@ -7253,6 +7523,48 @@
         }
       ]
     },
+    "nota": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "netspresso-site",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "netspresso.ai"
+        },
+        {
+          "id": "nota-blog",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "blog.nota.ai"
+        },
+        {
+          "id": "nota-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.nota.ai"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.nota.ai"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.nota.ai"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.nota.ai"
+        }
+      ]
+    },
     "notion": {
       "checked": "2026-07-13",
       "claims": 0,
@@ -8135,6 +8447,96 @@
         }
       ]
     },
+    "portone": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "portone-blog",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "blog.portone.io"
+        },
+        {
+          "id": "portone-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.portone.io"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.portone.io"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.portone.io"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.portone.io"
+        }
+      ]
+    },
+    "postype": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "postype-about",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "about.postype.com"
+        },
+        {
+          "id": "postype-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.postype.com"
+        },
+        {
+          "id": "postype-team",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.postype.com"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.postype.com"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "about.postype.com"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.postype.com"
+        }
+      ]
+    },
     "poya": {
       "checked": "2026-07-13",
       "claims": 0,
@@ -8396,6 +8798,60 @@
           "kind": "product-surface",
           "captured": "2026-09-30",
           "host": "quotabook.com"
+        }
+      ]
+    },
+    "rebellions": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "rebellions-newsroom",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "kr.rebellions.ai"
+        },
+        {
+          "id": "rebellions-probe-about",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "kr.rebellions.ai"
+        },
+        {
+          "id": "rebellions-probe-footer",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "kr.rebellions.ai"
+        },
+        {
+          "id": "rebellions-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "kr.rebellions.ai"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "kr.rebellions.ai"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "kr.rebellions.ai"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "kr.rebellions.ai"
         }
       ]
     },

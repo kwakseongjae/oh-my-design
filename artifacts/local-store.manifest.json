@@ -7,8 +7,8 @@
       "dir": "artifacts/reference-evidence",
       "why": "140개 verified 레퍼런스의 캡쳐 근거. 만료 대응 R트랙 55건의 유일한 입력.",
       "critical": true,
-      "fileCount": 237,
-      "bytes": 199852601,
+      "fileCount": 247,
+      "bytes": 209302580,
       "files": {
         "104.json": {
           "sha256": "006a9edc3a9ee4c87f1189cc315b1b22c0ab769c4a014b50d435a04670c715ae",
@@ -166,6 +166,10 @@
           "sha256": "9f8bac65f22ab8232ac9acdc1cfef55c29c21b5889b15c44af6f27bb30aed2e6",
           "bytes": 501657
         },
+        "danawa.json": {
+          "sha256": "eb5b3aa7ed89cc99d36afcbcd9f26bff438df8d27ac99f40bced755b69114df8",
+          "bytes": 1922258
+        },
         "datarize.json": {
           "sha256": "cb50c6b0cd86beb44598236f1e83053fe2951f9cbb7c15e59d3e91c90f2afaf2",
           "bytes": 639592
@@ -266,9 +270,17 @@
           "sha256": "baf97585744761fbbe64c0a9ef3a315623114e50693bfbbc88d64bb347ee0ad5",
           "bytes": 1778070
         },
+        "greencar.json": {
+          "sha256": "90c86c8b721700319bb1b25e8e400adbf53ac7cc8ee3dfad7fa0f45287969bdd",
+          "bytes": 406642
+        },
         "greeting.json": {
           "sha256": "add142a032825281d4d7335ddc1f5fca0d6947caa32c45a41fab37ea5028ba8b",
           "bytes": 1079514
+        },
+        "hackle.json": {
+          "sha256": "2c683bcae16412d5c1b5bf56066fe5d13fba7c47e374cb750a20f480946c4b4f",
+          "bytes": 817688
         },
         "hana.json": {
           "sha256": "54c33552a056824b9f07a0a38a1f779033901970d80f73dd40a4774526d206f1",
@@ -281,6 +293,10 @@
         "heydealer.json": {
           "sha256": "f5fcf3e979239e074080b6f11eacb2045a0874faa5015d5ab37971da2c53e52a",
           "bytes": 956391
+        },
+        "humanscape.json": {
+          "sha256": "08280ebbc2f0467878a324c243a89ff7439f68a2869f06965516178f33ccdb3b",
+          "bytes": 624510
         },
         "hwahae.json": {
           "sha256": "5c62b180e0f87ee6aa2d2e5de160c47ec647926abfdb719c4587149521901195",
@@ -301,6 +317,10 @@
         "ibm.json": {
           "sha256": "3656f60693e72120aa8800faa8bc6ec0c0760c27ac5b2856de6886560fcf61d4",
           "bytes": 711230
+        },
+        "idus.json": {
+          "sha256": "579c27dd7f7ac8fbd4885f5f74a20a3ca6270a234832ae05dfcac954c4f60835",
+          "bytes": 1911130
         },
         "iicombined.json": {
           "sha256": "1efb48e4e22b4c1481b562569916a4d732e095ec628da65aae83f85e84aedc95",
@@ -558,6 +578,10 @@
           "sha256": "25a6597c3337628252dc57e969f06a0978aec852892a77380745ef212f739302",
           "bytes": 963530
         },
+        "nota.json": {
+          "sha256": "25a59541adb6d4289881cbcd3ca506b51a1c33af7697c240d997628d06311537",
+          "bytes": 324866
+        },
         "note.json": {
           "sha256": "ef20df437ef3b3b6728bd4da929277e7f13f43b26cda62a632f430f0904db179",
           "bytes": 1232269
@@ -618,6 +642,14 @@
           "sha256": "ffbbf4e6b9921f83e78a2d58c9513f132eb3c19a260b701d599d7ac683cdb75f",
           "bytes": 440487
         },
+        "portone.json": {
+          "sha256": "215593ea66ec009dbc8304942fb5369ff263838e16cf728a8c0d55d58972f89c",
+          "bytes": 698006
+        },
+        "postype.json": {
+          "sha256": "c326ded3662d85a6745a4bee531c82cd57b18187cfce9daba3090adfe997f2d4",
+          "bytes": 1516310
+        },
         "poya.json": {
           "sha256": "55886f5e5e39aedd68aa8abd3055802e941fbd3cb6055ec7cfb9ba2bb572fdfe",
           "bytes": 935999
@@ -638,9 +670,17 @@
           "sha256": "b8dee9d3fb23f73d0bbbff0611cdc111f08a4eb07e57dfea3dc35c2ff434507e",
           "bytes": 246496
         },
+        "queenit.json": {
+          "sha256": "aa5d868f36aa484cdcbf5214225f89c5cb77843ccd69c214993b5841eca17736",
+          "bytes": 384116
+        },
         "quotabook.json": {
           "sha256": "74158bf54ce0c83f1a2a874413a5a6272d90f68916a4c999f03dc14ad8fe45d6",
           "bytes": 625486
+        },
+        "rebellions.json": {
+          "sha256": "e2ca7cb062cc2621de7a6f14ef7090056e66e186c71d9785ab3371ea3e19a2d7",
+          "bytes": 844453
         },
         "recruit.json": {
           "sha256": "7dc408aebf801e0db0d8208501d191a917bc959d862a07fc681d964af09f5261",

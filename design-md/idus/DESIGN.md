@@ -9,49 +9,248 @@ primary_color: "#ef7014"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=idus.com&sz=128"
-verified: "2026-07-02"
+verified: "2026-09-30"
 added: "2026-07-02"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: home, kind: product, url: "https://www.idus.com/v2/", inspected: "2026-09-30" }
+    - { id: surface-2, kind: product, url: "https://www.idus.com/v2/main/popular", inspected: "2026-09-30" }
+    - { id: surface-3, kind: product, url: "https://www.idus.com/v2/gift-shop", inspected: "2026-09-30" }
+    - { id: product, kind: product, url: "https://www.idus.com/v2/product/d418cb12-ecba-4534-860a-23836c3e0c44", inspected: "2026-09-30" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://www.idus.com/v2/", captured: "2026-09-30" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://www.idus.com/v2/main/popular", captured: "2026-09-30" }
+    - { id: surface-surface-3, kind: product-surface, url: "https://www.idus.com/v2/gift-shop", captured: "2026-09-30" }
+    - { id: idus-probe-product, kind: product-surface, url: "https://www.idus.com/v2/product/d418cb12-ecba-4534-860a-23836c3e0c44", captured: "2026-09-30" }
+    - { id: backpackr-site, kind: official-doc, url: "https://backpac.kr/", captured: "2026-09-30" }
+    - { id: idus-team, kind: official-doc, url: "https://team.idus.com/", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &cta { surface_id: product, source_id: idus-probe-product, method: live-state-probe, selector: "button 구매하기 (580 x 48): rest bg rgb(239, 112, 20), fg rgb(255, 255, 255), radius 2px, padding 0px 16px, 18px/700; hover ::before opacity 0 -> 0.1, pressed 0 -> 0.2; focus not measured (--no-focus)", captured: "2026-09-30" }
+    "tokens.colors.on-primary": *cta
+    "tokens.colors.ink": &rankdark { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::div.ProductCardVertical__imageTopBadge (bg rgb(17, 17, 17), 18 instances)", captured: "2026-09-30" }
+    "tokens.colors.text": &pname { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p.ProductCardMainList__contentsProductName", captured: "2026-09-30" }
+    "tokens.colors.text-muted": &tab { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::li.BaseTab", captured: "2026-09-30" }
+    "tokens.colors.text-faint": &artist { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p.ProductCardMainList__contentsArtistName", captured: "2026-09-30" }
+    "tokens.colors.sale": &discount { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::div.BaseProductCardVerticalContents__priceContainerDiscount", captured: "2026-09-30" }
+    "tokens.colors.border-strong": &blockbtn { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"90\"]", captured: "2026-09-30" }
+    "tokens.colors.chip-border": &chipout { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::span.BaseChip__outline", captured: "2026-09-30" }
+    "tokens.colors.highlight-border": &chiphl { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::span.BaseChip__outline (165 x 42, border rgb(255, 198, 160))", captured: "2026-09-30" }
+    "tokens.colors.divider": &subtab { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"19\"]", captured: "2026-09-30" }
+    "tokens.colors.surface": &chipfill { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::span.BaseChip__fill", captured: "2026-09-30" }
+    "tokens.colors.canvas": &card { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::article.BaseProductCardVertical", captured: "2026-09-30" }
+    "tokens.typography.family.body": *tab
+    "tokens.typography.cta.size": *cta
+    "tokens.typography.cta.weight": *cta
+    "tokens.typography.cta.use": *cta
+    "tokens.typography.section-title.size": &h2 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
+    "tokens.typography.section-title.weight": *h2
+    "tokens.typography.section-title.lineHeight": *h2
+    "tokens.typography.section-title.use": *h2
+    "tokens.typography.tab.size": *tab
+    "tokens.typography.tab.weight": *tab
+    "tokens.typography.tab.lineHeight": *tab
+    "tokens.typography.tab.use": *tab
+    "tokens.typography.price.size": &price { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::div.BaseProductCardVerticalContents__priceContainerPrice", captured: "2026-09-30" }
+    "tokens.typography.price.weight": *price
+    "tokens.typography.price.lineHeight": *price
+    "tokens.typography.price.use": *price
+    "tokens.typography.body.size": *pname
+    "tokens.typography.body.weight": *pname
+    "tokens.typography.body.lineHeight": *pname
+    "tokens.typography.body.use": *pname
+    "tokens.typography.chip.size": *chipout
+    "tokens.typography.chip.weight": *chipout
+    "tokens.typography.chip.lineHeight": *chipout
+    "tokens.typography.chip.use": *chipout
+    "tokens.typography.caption.size": *artist
+    "tokens.typography.caption.weight": *artist
+    "tokens.typography.caption.lineHeight": *artist
+    "tokens.typography.caption.use": *artist
+    "tokens.typography.icon-label.size": &iconbtn { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"7\"]", captured: "2026-09-30" }
+    "tokens.typography.icon-label.weight": *iconbtn
+    "tokens.typography.icon-label.lineHeight": *iconbtn
+    "tokens.typography.icon-label.use": *iconbtn
+    "tokens.typography.micro.size": &bizbadge { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::div.BaseBadgeBusiness", captured: "2026-09-30" }
+    "tokens.typography.micro.weight": *bizbadge
+    "tokens.typography.micro.lineHeight": *bizbadge
+    "tokens.typography.micro.use": *bizbadge
+    "tokens.spacing.tag-x": *bizbadge
+    "tokens.spacing.utility-x": &utility { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"0\"]", captured: "2026-09-30" }
+    "tokens.spacing.card": &cardcontents { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::div.ProductCardMainList__contents", captured: "2026-09-30" }
+    "tokens.spacing.chip-x": &chipsel { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::span.BaseChip__fill.BaseChip--medium (selected, 89 x 36)", captured: "2026-09-30" }
+    "tokens.spacing.button-x": *cta
+    "tokens.rounded.cta": *cta
+    "tokens.rounded.card": *card
+    "tokens.rounded.chip": *chipout
+    "tokens.rounded.highlight": &hlwrap { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::div.BaseChipHighlightAnimation", captured: "2026-09-30" }
+    "tokens.rounded.pill": *bizbadge
+    "tokens.components.button-primary.type": *cta
+    "tokens.components.button-primary.bg": *cta
+    "tokens.components.button-primary.fg": *cta
+    "tokens.components.button-primary.radius": *cta
+    "tokens.components.button-primary.height": *cta
+    "tokens.components.button-primary.padding": *cta
+    "tokens.components.button-primary.font": *cta
+    "tokens.components.button-primary.hover": *cta
+    "tokens.components.button-primary.pressed": *cta
+    "tokens.components.button-primary.states": *cta
+    "tokens.components.button-primary.use": *cta
+    "tokens.components.button-secondary.type": &gift { surface_id: product, source_id: idus-probe-product, method: live-state-probe, selector: "button 선물하기 (189.3 x 48): rest bg rgb(255, 255, 255), fg rgb(51, 51, 51), border 1px solid rgb(172, 172, 172), radius 2px, padding 0px 16px, 18px/700; hover ::before (rgb(51, 51, 51)) opacity 0 -> 0.1, pressed 0 -> 0.2", captured: "2026-09-30" }
+    "tokens.components.button-secondary.bg": *gift
+    "tokens.components.button-secondary.fg": *gift
+    "tokens.components.button-secondary.border": *gift
+    "tokens.components.button-secondary.radius": *gift
+    "tokens.components.button-secondary.height": *gift
+    "tokens.components.button-secondary.padding": *gift
+    "tokens.components.button-secondary.font": *gift
+    "tokens.components.button-secondary.hover": *gift
+    "tokens.components.button-secondary.pressed": *gift
+    "tokens.components.button-secondary.states": *gift
+    "tokens.components.button-secondary.use": *gift
+    "tokens.components.button-outline.type": &inquiry { surface_id: product, source_id: idus-probe-product, method: live-state-probe, selector: "button 작품문의 (189 x 40): rest bg rgb(255, 255, 255), fg rgb(239, 112, 20), border 1px solid rgb(239, 112, 20), radius 2px, padding 0px 16px, 14px/700; hover ::before (rgb(239, 112, 20)) opacity 0 -> 0.1, pressed 0 -> 0.2", captured: "2026-09-30" }
+    "tokens.components.button-outline.bg": *inquiry
+    "tokens.components.button-outline.fg": *inquiry
+    "tokens.components.button-outline.border": *inquiry
+    "tokens.components.button-outline.radius": *inquiry
+    "tokens.components.button-outline.height": *inquiry
+    "tokens.components.button-outline.padding": *inquiry
+    "tokens.components.button-outline.font": *inquiry
+    "tokens.components.button-outline.hover": *inquiry
+    "tokens.components.button-outline.pressed": *inquiry
+    "tokens.components.button-outline.states": *inquiry
+    "tokens.components.button-outline.use": *inquiry
+    "tokens.components.button-block.type": *blockbtn
+    "tokens.components.button-block.bg": *blockbtn
+    "tokens.components.button-block.fg": *blockbtn
+    "tokens.components.button-block.border": *blockbtn
+    "tokens.components.button-block.radius": *blockbtn
+    "tokens.components.button-block.height": *blockbtn
+    "tokens.components.button-block.padding": *blockbtn
+    "tokens.components.button-block.font": *blockbtn
+    "tokens.components.button-block.states": *blockbtn
+    "tokens.components.button-block.use": *blockbtn
+    "tokens.components.utility-button.type": *utility
+    "tokens.components.utility-button.fg": *utility
+    "tokens.components.utility-button.height": *utility
+    "tokens.components.utility-button.padding": *utility
+    "tokens.components.utility-button.font": *utility
+    "tokens.components.utility-button.states": *utility
+    "tokens.components.utility-button.use": *utility
+    "tokens.components.rank-badge.type": &rank { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::div.ProductCardVertical__imageTopBadge (bg rgb(239, 112, 20), 6 instances)", captured: "2026-09-30" }
+    "tokens.components.rank-badge.bg": *rank
+    "tokens.components.rank-badge.fg": *rank
+    "tokens.components.rank-badge.radius": *rank
+    "tokens.components.rank-badge.size": *rank
+    "tokens.components.rank-badge.font": *rank
+    "tokens.components.rank-badge.use": *rank
+    "tokens.components.chip-outline.type": *chipout
+    "tokens.components.chip-outline.bg": *chipout
+    "tokens.components.chip-outline.fg": *chipout
+    "tokens.components.chip-outline.border": *chipout
+    "tokens.components.chip-outline.radius": *chipout
+    "tokens.components.chip-outline.padding": *chipout
+    "tokens.components.chip-outline.height": *chipout
+    "tokens.components.chip-outline.font": *chipout
+    "tokens.components.chip-outline.use": *chipout
+    "tokens.components.chip-highlight.type": *chiphl
+    "tokens.components.chip-highlight.bg": *chiphl
+    "tokens.components.chip-highlight.fg": *chiphl
+    "tokens.components.chip-highlight.border": *chiphl
+    "tokens.components.chip-highlight.radius": *chiphl
+    "tokens.components.chip-highlight.height": *chiphl
+    "tokens.components.chip-highlight.use": *chiphl
+    "tokens.components.chip-fill.type": *chipfill
+    "tokens.components.chip-fill.bg": *chipfill
+    "tokens.components.chip-fill.fg": *chipfill
+    "tokens.components.chip-fill.radius": *chipfill
+    "tokens.components.chip-fill.padding": *chipfill
+    "tokens.components.chip-fill.height": *chipfill
+    "tokens.components.chip-fill.font": *chipfill
+    "tokens.components.chip-fill.selected": *chipsel
+    "tokens.components.chip-fill.states": *chipsel
+    "tokens.components.chip-fill.use": *chipfill
+    "tokens.components.business-badge.type": *bizbadge
+    "tokens.components.business-badge.bg": *bizbadge
+    "tokens.components.business-badge.fg": *bizbadge
+    "tokens.components.business-badge.radius": *bizbadge
+    "tokens.components.business-badge.padding": *bizbadge
+    "tokens.components.business-badge.height": *bizbadge
+    "tokens.components.business-badge.font": *bizbadge
+    "tokens.components.business-badge.use": *bizbadge
+    "tokens.components.nav-tab.type": *tab
+    "tokens.components.nav-tab.fg": *tab
+    "tokens.components.nav-tab.height": *tab
+    "tokens.components.nav-tab.font": *tab
+    "tokens.components.nav-tab.states": *tab
+    "tokens.components.nav-tab.use": *tab
+    "tokens.components.sub-tab.type": *subtab
+    "tokens.components.sub-tab.fg": *subtab
+    "tokens.components.sub-tab.border": *subtab
+    "tokens.components.sub-tab.height": *subtab
+    "tokens.components.sub-tab.font": *subtab
+    "tokens.components.sub-tab.selected": &subtabsel { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-09-30" }
+    "tokens.components.sub-tab.states": *subtabsel
+    "tokens.components.sub-tab.use": *subtab
+    "tokens.components.product-card.type": *card
+    "tokens.components.product-card.bg": *card
+    "tokens.components.product-card.radius": *card
+    "tokens.components.product-card.size": *card
+    "tokens.components.product-card.use": *card
+    "tokens.components.search-input.type": &search { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"5\"]", captured: "2026-09-30" }
+    "tokens.components.search-input.bg": *search
+    "tokens.components.search-input.fg": *search
+    "tokens.components.search-input.font": *search
+    "tokens.components.search-input.states": *search
+    "tokens.components.search-input.use": *search
 tokens:
-  source: live-extract
-  extracted: "2026-07-02"
-  note: "primary = live purchase-CTA carrot orange (#ef7014), the single action color across CTA, outlined buttons, rank flags and social-proof pills. Sale/price accent is coral (#ff4b50); rating gold (#ffaf00). Near-black ink (#111111) for dark caption chips; text ladder #333333 → #666666 → #999999. Flat, near-shadowless commerce UI on a white canvas."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
     primary: "#ef7014"
-    primary-tint: "#fff7f2"
-    sale: "#ff4b50"
-    sale-tint: "#fff2f4"
-    rating: "#ffaf00"
-    highlight: "#ffea2c"
+    on-primary: "#ffffff"
     ink: "#111111"
     text: "#333333"
     text-muted: "#666666"
     text-faint: "#999999"
-    border: "#d9d9d9"
+    sale: "#ff4b50"
     border-strong: "#acacac"
+    chip-border: "#e1e1e1"
+    highlight-border: "#ffc6a0"
+    divider: "#e5e7eb"
+    surface: "#f5f5f5"
     canvas: "#ffffff"
-    on-primary: "#ffffff"
   typography:
-    family: { sans: "system-ui", kr: "Apple SD Gothic Neo / Malgun Gothic (system stack)" }
-    cta:          { size: 18, weight: 700, lineHeight: 1.4, use: "Primary purchase button label (구매하기)" }
-    section-tab:  { size: 16, weight: 400, lineHeight: 1.5, use: "Category navigation tabs (선물추천, 할인, 베스트)" }
-    button-strong: { size: 14, weight: 700, lineHeight: 1.5, use: "Outlined brand-action button labels (작품문의, 팔로우)" }
-    body:         { size: 14, weight: 400, lineHeight: 1.5, use: "Standard reading text, search field" }
-    caption:      { size: 12, weight: 400, lineHeight: 1.5, use: "Top utility nav links, social-proof pills" }
-    micro:        { size: 11, weight: 400, lineHeight: 1.4, use: "Icon labels (관심, 내 정보, 장바구니)" }
-  spacing: { xs: 4, sm: 8, base: 14, md: 16, lg: 20, xl: 24 }
-  rounded: { sm: 2, md: 4, lg: 12, full: 100 }
-  shadow:
-    none: "none"
+    family: { body: '-apple-system, "system-ui", "Malgun Gothic", "맑은 고딕", helvetica, "Apple SD Gothic Neo", sans-serif' }
+    cta: { size: 18, weight: 700, use: "구매하기 and 선물하기 labels on the product page" }
+    section-title: { size: 20, weight: 700, lineHeight: 1.2, use: "Section headings over the product rows, 24px line" }
+    tab: { size: 16, weight: 400, lineHeight: 1.2, use: "Main category tabs in the header row, 19.2px line, in #666666" }
+    price: { size: 16, weight: 700, lineHeight: 1.2, use: "Card price and the coral discount rate beside it, 19.2px line" }
+    body: { size: 14, weight: 400, lineHeight: 1.5, use: "Product names on cards, 21px line, in #333333" }
+    chip: { size: 14, weight: 400, lineHeight: 1.2, use: "Shortcut and filter chip labels, 16.8px line; 700 when selected" }
+    caption: { size: 12, weight: 400, lineHeight: 1.2, use: "Maker names on cards and header utility links, 14.4px line" }
+    icon-label: { size: 11, weight: 400, lineHeight: 1.2, use: "Labels under the header icons (장바구니 and neighbours), 13.2px line" }
+    micro: { size: 10, weight: 400, lineHeight: 1.2, use: "Grey business badge on ranking cards, 12px line" }
+  spacing: { tag-x: 6, utility-x: 8, card: 10, chip-x: 12, button-x: 16 }
+  rounded: { cta: 2, card: 6, chip: 36, highlight: 100, pill: 1000 }
   components:
-    button-primary:   { type: button, bg: "#ef7014", fg: "#ffffff", radius: "2px", height: "48px", padding: "0 16px", font: "18px / 700", use: "Primary purchase CTA (구매하기)" }
-    button-secondary: { type: button, bg: "#ffffff", fg: "#333333", border: "1px solid #acacac", radius: "2px", height: "48px", padding: "0 16px", font: "18px / 700", use: "Secondary actions (장바구니, 선물하기)" }
-    button-outline:   { type: button, bg: "#ffffff", fg: "#ef7014", border: "1px solid #ef7014", radius: "2px", height: "40px", padding: "0 16px", font: "14px / 700", use: "Tertiary brand-outline actions (작품문의, 팔로우)" }
-    badge-purchased:  { type: badge, bg: "#ef7014", fg: "#ffffff", radius: "100px", height: "33px", padding: "0 14px", font: "14px / 700", use: "Social-proof pill (최근 N건 더 많이 구매되었어요)" }
-    badge-rank:       { type: badge, bg: "#ef7014", fg: "#ffffff", radius: "0 0 6px 6px", font: "16px / 700", use: "Ranking number flag on best-seller cards" }
-    search-input:     { type: input, bg: "#ffffff", fg: "#333333", border: "none", radius: "2px", font: "14px / 400", use: "Global search field (찾으시는 작가, 작품이 있나요?)" }
-    nav-tab:          { type: tab, fg: "#666666", active: "text #333333", font: "16px / 400", use: "Category navigation tabs" }
-    product-card:     { type: card, bg: "#ffffff", radius: "12px", use: "Product thumbnail card in curation grids" }
+    button-primary: { type: button, bg: "#ef7014", fg: "#ffffff", radius: "2px", height: "48px", padding: "0px 16px", font: "18px / 700", hover: "::before overlay (black) at opacity 0.1", pressed: "::before overlay at opacity 0.2", states: "probe on the product page: hover and pressed darken the fill through a black ::before overlay (0 -> 0.1 -> 0.2); the button itself computes transition all 0s; focus was not measured", use: "구매하기, the product page's purchase action, 580 x 48 at the end of the action row" }
+    button-secondary: { type: button, bg: "#ffffff", fg: "#333333", border: "1px solid #acacac", radius: "2px", height: "48px", padding: "0px 16px", font: "18px / 700", hover: "::before overlay (#333333) at opacity 0.1", pressed: "::before overlay at opacity 0.2", states: "probe: the same overlay pattern in the label colour; focus not measured", use: "선물하기 beside 구매하기 on the product page, 189.3 x 48" }
+    button-outline: { type: button, bg: "#ffffff", fg: "#ef7014", border: "1px solid #ef7014", radius: "2px", height: "40px", padding: "0px 16px", font: "14px / 700", hover: "::before overlay (#ef7014) at opacity 0.1", pressed: "::before overlay at opacity 0.2", states: "probe: an orange ::before wash; focus not measured", use: "작품문의 (ask the maker) on the product page, 189 x 40" }
+    button-block: { type: button, bg: "#ffffff", fg: "#333333", border: "1px solid #acacac", radius: "2px", height: "44px", padding: "0px 16px", font: "16px / 700", states: "rest on the captured instance; no pointer frame and not probed, so no hover, pressed or focus value is declared", use: "Full-width 360 x 44 outlined button near the foot of the ranking page; the same outline at 40px and 14px / 700 on the gift shop" }
+    utility-button: { type: button, fg: "#666666", height: "30px", padding: "0px 8px", font: "12px / 400", states: "rest on 12 instances; no pointer frame, so no state value is declared", use: "Text links in the header utility row, present on all three browse pages" }
+    rank-badge: { type: badge, bg: "#ef7014", fg: "#ffffff", radius: "0px 0px 6px", size: "30px x 30px", font: "16px / 700", use: "Number badge in the top-left corner of ranked product images on 실시간 인기 and the gift shop: 6 instances in orange, the other 18 in #111111" }
+    chip-outline: { type: badge, bg: "#ffffff", fg: "#111111", border: "1px solid #e1e1e1", radius: "36px", padding: "0px 12px 0px 5px", height: "42px", font: "14px / 400", use: "Icon-led shortcut chips under the home hero (13 instances)" }
+    chip-highlight: { type: badge, bg: "#ffffff", fg: "#111111", border: "1px solid #ffc6a0", radius: "36px", height: "42px", use: "The one shortcut chip with a peach outline, inside a 100px-radius highlight wrapper, 165 x 42" }
+    chip-fill: { type: badge, bg: "#f5f5f5", fg: "#333333", radius: "36px", padding: "0px 16px", height: "40px", font: "14px / 400", selected: "bg #333333, fg #ffffff, 14px / 700", states: "selected read from rest values; no pointer frame", use: "Filter chips on the gift shop; the medium size is 36px tall with 12px side padding" }
+    business-badge: { type: badge, bg: "#f5f5f5", fg: "#666666", radius: "1000px", padding: "0px 6px", height: "16px", font: "10px / 400", use: "Small grey badge in the review line of ranking cards" }
+    nav-tab: { type: tab, fg: "#666666", height: "48px", font: "16px / 400", states: "rest on 24 instances; the current tab carries no distinct rest value in the capture and no pointer frame was recorded", use: "Main category tabs across the header (24 instances on three pages)" }
+    sub-tab: { type: tab, fg: "#666666", border: "0px 0px 1px #e5e7eb", height: "44px", font: "14px / 400", selected: "fg #333333, 14px / 700", states: "selected read from rest values; no pointer frame", use: "Period and category sub-tabs on 실시간 인기" }
+    product-card: { type: card, bg: "#ffffff", radius: "6px", size: "243px x 305px", use: "Vertical product card; the image corners take the 6px radius and nothing computes a shadow" }
+    search-input: { type: input, bg: "#ffffff", fg: "#333333", font: "14px / 400", states: "rest only; the field was not focused or typed into, so no focus or error value is declared", use: "Borderless header search field, 396 x 17 inside the search bar" }
   components_harvested: true
 ---
 
@@ -59,92 +258,95 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-idus (아이디어스), operated by Backpackr, is Korea's largest handmade-goods marketplace — a place where independent 작가 (makers) sell handcrafted rings, ceramics, candles, baked goods and classes. Its web surface reads like a warm, high-density Korean commerce app rather than a minimalist boutique: a pure white canvas (`#ffffff`) packed with product thumbnails, ranking flags and social-proof, all organised by a quiet grey text ladder and punctuated by one confident brand color — a carrot orange (`#ef7014`). That orange is disciplined: it appears almost exclusively on the things that mean "act" — the `구매하기` (purchase) CTA, brand-outline buttons, ranking number flags, and the "recently purchased" pills — so the eye is trained to read orange as commitment.
+idus (아이디어스) is the handmade marketplace run by Backpackr (백패커), a Seoul company founded in 2012 that describes its mission as "창작과 정성의 가치가 인정받는 세상을 만듭니다" and today operates three platforms as one creator ecosystem: 아이디어스 ("핸드메이드로 일상을 특별하게"), the crowdfunding service 텀블벅 and the design-goods shop 텐바이텐. On idus, independent 작가 (makers) sell handcrafted jewellery, ceramics, candles, food and gifts, and the site's vocabulary keeps the maker in front: 작가, 작품, 작가홈, 팔로우. Backpackr's culture page sums up how the company works in three lines — Action for Winning, One Team for Mission, Hyper for Growth — and its site lists awards from Apple's best-of-2014 selection to Red Dot 2021.
 
-The typographic personality is deliberately system-native. idus does not ship a bespoke brand webfont; body and UI text render in the platform system stack (`system-ui` → Apple SD Gothic Neo / Malgun Gothic on Korean devices), tuned for dense hangul legibility. Hierarchy is carried by weight and size rather than typeface: the primary purchase CTA runs at 18px / weight 700, category tabs at 16px / 400, body and button labels settle at a workmanlike 14px, and utility chrome (top nav, icon labels) drops to 12px and 11px. The result feels engineered for scanning hundreds of handmade listings quickly, not for editorial pause.
+The web surface reads like a dense Korean commerce app. A white canvas carries rows of 243px product cards with 6px image corners, grey maker names, coral discount rates and black prices, all set in the operating system's own hangul font. There is no webfont and no drop shadow: every recorded component computes `box-shadow: none`. Separation comes from white space, a 1px `#e5e7eb` rule under sub-tabs and `#acacac` outlines on secondary buttons.
 
-What distinguishes idus from a glossy DTC store is its restraint with depth. Live inspection found `box-shadow: none` and `0px` borders across most of the chrome — separation comes from flat hairlines (`#d9d9d9`), a light border on secondary buttons (`#acacac`), and tinted wash surfaces (`#fff7f2` orange, `#fff2f4` pink) rather than elevation. Geometry is mostly tight and square: 2px-radius action buttons, 4px dark caption chips, 12px product-image cards, and a single dramatic exception — the fully-rounded 100px social-proof pill. A small warm accent set rounds out the palette: coral (`#ff4b50`) marks sale and discount prices, gold (`#ffaf00`) draws rating stars, and event yellow (`#ffea2c`) flags promotions. Dark near-black (`#111111`) anchors the curation caption chips.
+Colour is held back until it means something. On the browse pages, selection is neutral: a selected filter chip turns `#333333` with white bold text, and a selected sub-tab turns `#333333` and bold. Carrot orange `#ef7014` appears in two places. It fills the purchase button 구매하기 on the product page and outlines 작품문의, and it marks the top-ranked product badges on the ranking and gift pages, where the rest of the badges are near-black `#111111`. Coral `#ff4b50` is reserved for the discount rate.
 
 **Key Characteristics:**
-- Single brand action color — carrot orange (`#ef7014`) — reserved for CTAs, brand-outline buttons, rank flags and social-proof pills
-- System font stack (`system-ui` / Apple SD Gothic Neo / Malgun Gothic) — hierarchy carried by weight (700 CTA vs 400 body) and size, not a bespoke typeface
-- Flat, near-shadowless commerce UI: `box-shadow: none`, separation via `#d9d9d9` hairlines and `#acacac` button outlines
-- Tight square geometry — 2px buttons, 4px chips, 12px product cards — with one 100px full-pill exception for social-proof
-- Warm accent trio: coral sale price (`#ff4b50`), gold rating stars (`#ffaf00`), event yellow (`#ffea2c`)
-- Near-black (`#111111`) dark caption chips over curation imagery
-- Cool-neutral text ladder: `#333333` primary → `#666666` secondary → `#999999` tertiary/faint
-- Tinted wash surfaces (`#fff7f2`, `#fff2f4`) instead of shadows for gentle section emphasis
-- White (`#ffffff`) canvas and white text (`#ffffff`) on the orange primary
+- One action colour: carrot orange `#ef7014` on the purchase button, the maker-inquiry outline and the leading rank badges
+- Neutral selection: selected chips and tabs go `#333333`, not orange
+- Operating-system type (`-apple-system`, Malgun Gothic, Apple SD Gothic Neo) with hierarchy carried by size and weight
+- Flat surfaces: every recorded element computes `box-shadow: none`
+- Tight 2px action buttons, 6px product cards and 36px chips
+- Coral `#ff4b50` for discount rates only
+- Text ladder `#333333` → `#666666` → `#999999`
 
 ## Primary tasks
 
 - Buy a handmade piece from an independent maker
 - Search for a maker or a piece from the header
-- Add a piece to the cart or send it as a gift
-- Find a gift that does not look mass-produced
+- Browse the live ranking (실시간 인기) and the gift shop
+- Ask a maker about a piece or send it as a gift
 - Follow a maker and buy again when new work appears
 
 ## 2. Color Palette & Roles
 
 ### Primary
-- **idus Carrot** (`#ef7014`): The single brand action color. Live-measured as the `구매하기` purchase CTA background, the brand-outline button text/border, the ranking number flag, and the "recently purchased" social-proof pill. If it is orange, it means "act."
-- **Carrot Tint** (`#fff7f2`): A barely-there orange wash surface for gentle emphasis blocks and orange-themed sections.
-- **On-Primary White** (`#ffffff`): Text and icons on the carrot CTA and on dark chips.
+- **idus Carrot** (`#ef7014`): The primary colour because it is what the product renders in its primary roles. The product page's purchase button 구매하기 is filled with it (580 × 48, white 18px / 700 label), 작품문의 uses it for border and label, and on 실시간 인기 and the gift shop it fills the leading rank badges (6 of 24; the others are `#111111`). No other chromatic colour fills an action anywhere on the four pages.
+- **On-Primary** (`#ffffff`): Label colour on the carrot button and on rank badges.
 
-### Accents
-- **Sale Coral** (`#ff4b50`): Discount / sale price emphasis and favorite (heart) marks — the second most frequent foreground color on the page after the neutral text ladder.
-- **Sale Tint** (`#fff2f4`): Light pink wash surface for discount and event blocks.
-- **Rating Gold** (`#ffaf00`): Rating stars and review scores.
-- **Highlight Yellow** (`#ffea2c`): Event / promotion highlight flags.
+### Accent
+- **Sale Coral** (`#ff4b50`): The discount rate beside each card price (27 cards on the ranking and gift pages).
+- **Highlight Peach** (`#ffc6a0`): The 1px outline of the one highlighted shortcut chip on home.
 
 ### Neutral & Ink
-- **Ink** (`#111111`): Near-black background for the dark caption chips overlaid on curation banners; also strong emphasis text.
-- **Text** (`#333333`): Primary text and heading color — the dominant foreground across the whole surface. A soft near-black, never pure `#000000`.
-- **Text Muted** (`#666666`): Secondary text — top-nav utility links, descriptions, metadata.
-- **Text Faint** (`#999999`): Tertiary / lowest-emphasis text, timestamps, disabled labels.
+- **Ink** (`#111111`): Near-black fill of the non-leading rank badges and the text of shortcut chips.
+- **Text** (`#333333`): Product names, prices and the selected state of chips and tabs; the most frequent text colour (1,074 uses).
+- **Text Muted** (`#666666`): Category tabs, header utility links and business badges.
+- **Text Faint** (`#999999`): Maker names on cards.
 
 ### Surface & Borders
-- **Canvas** (`#ffffff`): Page background and all card surfaces.
-- **Border** (`#d9d9d9`): Hairline dividers and light borders — the primary separation device in the shadow-free system.
-- **Border Strong** (`#acacac`): The 1px outline on secondary white buttons (`장바구니`, `선물하기`), a touch heavier than the divider hairline.
+- **Canvas** (`#ffffff`): Page, cards, buttons.
+- **Surface** (`#f5f5f5`): Filter chips and small grey badges.
+- **Border Strong** (`#acacac`): 1px outline of secondary and full-width buttons.
+- **Chip Border** (`#e1e1e1`): 1px outline of the home shortcut chips.
+- **Divider** (`#e5e7eb`): The 1px rule under the sub-tabs.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **UI / Body**: system stack — `system-ui`, `-apple-system`, with `Apple SD Gothic Neo` / `Malgun Gothic` as the Korean fallbacks. idus does not load a bespoke brand webfont on web; the OS hangul font does the work.
-- **Weights in use**: 400 (regular) for body, nav and utility; 700 (bold) for action buttons, ranking flags and social-proof pills. There is no light-weight display tier — hierarchy is size × weight, not a special headline face.
+- **Live surface use:** two computed operating-system stacks. Most UI uses `-apple-system, "system-ui", "Malgun Gothic", "맑은 고딕", helvetica, "Apple SD Gothic Neo", sans-serif` (773 uses); some card wrappers inherit Tailwind's default `ui-sans-serif, system-ui, -apple-system, …` (686 uses). Both resolve to the visitor's system font.
+- **Official distributed font assets:** none found; the pages load no webfont.
+- **Official product use:** no idus page opened names a typeface.
+- **Declared only:** none recorded. (Backpackr's recruiting site on team.idus.com declares Pretendard, but it is a different surface and supplies no idus token.)
 
 ### Hierarchy
 
-| Role | Size | Weight | Line Height | Use |
+| Role | Size | Weight | Line height | Use |
 |------|------|--------|-------------|-----|
-| Purchase CTA | 18px | 700 | 1.4 | Primary `구매하기` / `장바구니` / `선물하기` button labels |
-| Category Tab | 16px | 400 | 1.5 | Home category navigation (선물추천, 할인, 베스트…) |
-| Button Strong | 14px | 700 | 1.5 | Brand-outline button labels (작품문의, 팔로우) |
-| Body | 14px | 400 | 1.5 | Standard reading text, search field, product meta |
-| Caption | 12px | 400 | 1.5 | Top utility nav (로그인, 회원가입, 고객센터), social-proof pills |
-| Micro | 11px | 400 | 1.4 | Icon labels (관심, 내 정보, 장바구니) |
+| CTA | 18px | 700 | — | 구매하기, 선물하기 |
+| Section title | 20px | 700 | 24px | Row headings |
+| Tab | 16px | 400 | 19.2px | Main category tabs |
+| Price | 16px | 700 | 19.2px | Card price, discount rate |
+| Body | 14px | 400 | 21px | Product names |
+| Chip | 14px | 400 (700 selected) | 16.8px | Shortcut and filter chips |
+| Caption | 12px | 400 | 14.4px | Maker names, utility links |
+| Icon label | 11px | 400 | 13.2px | Header icon labels |
+| Micro | 10px | 400 | 12px | Business badge |
 
 ### Principles
-- **Weight over typeface**: with a system font, idus signals importance by jumping to weight 700 (CTAs, flags) against a 400 body — never by swapping fonts.
-- **Dense, scannable sizing**: body and buttons sit at 14px, utility chrome at 11–12px, so a grid of hundreds of handmade listings stays legible without scrolling fatigue.
-- **Bold is for action and proof**: 700 is reserved for things the shopper acts on (purchase, follow) or trusts (ranking, "recently purchased"), reinforcing the orange = act signal.
-- **No pure black**: text is `#333333`, not `#000000` — a softer near-black that keeps the busy commerce surface from feeling harsh.
+- **Weight over typeface**: with a system font, importance is a jump to 700 on actions, prices and selected states.
+- **Dense sizing**: product names sit at 14px and maker names at 12px, so a 243px card holds image, maker, name, price and reviews.
+- **Bold is for action, price and selection**: 700 marks what the shopper acts on or compares.
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Primary Purchase CTA (`구매하기`)**
+**Primary Purchase (`구매하기`)**
 - Background: `#ef7014`
 - Text: `#ffffff`
 - Radius: 2px
 - Padding: 0px 16px
 - Height: 48px
 - Font: 18px / 700
-- Use: The primary purchase action on product detail pages
+- Hover: a black `::before` overlay rises to opacity 0.1
+- Pressed: the overlay rises to 0.2
+- Use: The purchase action on the product page
 
-**Secondary (`장바구니` / `선물하기`)**
+**Secondary (`선물하기`)**
 - Background: `#ffffff`
 - Text: `#333333`
 - Border: 1px solid `#acacac`
@@ -152,9 +354,10 @@ What distinguishes idus from a glossy DTC store is its restraint with depth. Liv
 - Padding: 0px 16px
 - Height: 48px
 - Font: 18px / 700
-- Use: Add-to-cart and gift actions sitting beside the primary CTA
+- Hover: a `#333333` overlay at opacity 0.1 (0.2 pressed)
+- Use: Gift action beside 구매하기
 
-**Brand Outline (`작품문의` / `팔로우`)**
+**Brand Outline (`작품문의`)**
 - Background: `#ffffff`
 - Text: `#ef7014`
 - Border: 1px solid `#ef7014`
@@ -162,297 +365,226 @@ What distinguishes idus from a glossy DTC store is its restraint with depth. Liv
 - Padding: 0px 16px
 - Height: 40px
 - Font: 14px / 700
-- Use: Tertiary brand-tinted actions (inquiry, follow-maker)
+- Hover: an orange overlay at opacity 0.1 (0.2 pressed)
+- Use: Ask the maker about a piece
 
-**Top Utility (`로그인` / `회원가입` / `고객센터`)**
-- Background: transparent
+**Full-width Outline**
+- Background: `#ffffff`
+- Text: `#333333`
+- Border: 1px solid `#acacac`
+- Radius: 2px
+- Height: 44px
+- Font: 16px / 700
+- Use: 360px-wide button near the foot of the ranking page
+
+**Header Utility**
 - Text: `#666666`
 - Padding: 0px 8px
 - Height: 30px
 - Font: 12px / 400
-- Use: Header utility links
+- Use: Utility links in the header
 
 ### Inputs
 
-**Global Search**
+**Header Search**
 - Background: `#ffffff`
 - Text: `#333333`
-- Radius: 2px
 - Font: 14px / 400
-- Use: Header search field, placeholder "찾으시는 작가, 작품이 있나요?" — borderless, sits on a hairline row rather than a boxed field
+- Use: Borderless field inside the header search bar
 
 ### Cards & Containers
 
 **Product Card**
 - Background: `#ffffff`
-- Radius: 12px
-- Use: Product thumbnail card in curation grids — image corners rounded, flat (no shadow)
+- Radius: 6px
+- Size: 243 × 305
+- Use: Vertical product card; no shadow
 
-**Dark Caption Chip**
-- Background: `#111111`
+### Badges & Chips
+
+**Rank Badge**
+- Background: `#ef7014` (leading ranks) or `#111111`
 - Text: `#ffffff`
-- Radius: 4px
-- Padding: 6px 8px
-- Use: Overlay caption label on curation banner imagery
-
-### Badges
-
-**Social-Proof Pill**
-- Background: `#ef7014`
-- Text: `#ffffff`
-- Radius: 100px
-- Padding: 0px 14px
-- Height: 33px
-- Font: 14px / 700
-- Use: "최근 N건 더 많이 구매되었어요" purchase-momentum pill on product cards
-
-**Ranking Flag**
-- Background: `#ef7014`
-- Text: `#ffffff`
-- Radius: 0px 0px 6px 6px
+- Radius: 0px 0px 6px
+- Size: 30 × 30
 - Font: 16px / 700
-- Use: Rank number (1, 2, 3) flag on best-seller ranking cards
+- Use: Number badge on ranked product images
+
+**Shortcut Chip**
+- Background: `#ffffff`
+- Text: `#111111`
+- Border: 1px solid `#e1e1e1` (one highlighted chip uses `#ffc6a0`)
+- Radius: 36px
+- Height: 42px
+- Font: 14px / 400
+- Use: Icon-led shortcuts under the home hero
+
+**Filter Chip**
+- Background: `#f5f5f5`
+- Text: `#333333`
+- Radius: 36px
+- Height: 40px
+- Selected: `#333333` fill, white 14px / 700 label
+- Use: Gift-shop filters
+
+**Business Badge**
+- Background: `#f5f5f5`
+- Text: `#666666`
+- Radius: 1000px
+- Height: 16px
+- Font: 10px / 400
+- Use: Small grey badge in card review lines
 
 ### Navigation
 
 **Category Tab**
 - Text: `#666666`
+- Height: 48px
 - Font: 16px / 400
-- Active: `#333333` text
-- Use: Home category navigation (선물추천, 할인, 베스트, 취향발견, 실시간, 최신작품, 커뮤니티)
+- Use: Main category row in the header
+
+**Sub-tab**
+- Text: `#666666`
+- Border: 1px `#e5e7eb` rule underneath
+- Height: 44px
+- Selected: `#333333`, 14px / 700
+- Use: Sub-tabs on 실시간 인기
 
 ---
 
-**Verified:** 2026-07-02 (omd:add-reference CREATE — Tier 1 live inspect)
-**Tier 1 sources:** https://www.idus.com (homepage, live computed style), https://www.idus.com/v2/product/ (product detail page, live computed style — purchase CTA, secondary/outline buttons), https://github.com/backpackr (Backpackr official GitHub org)
-**Tier 2 sources:** getdesign.md/idus — no entry ("0 DESIGN.md files, No designs found"); styles.refero.design/?q=idus — no idus-specific style listed (search returns unrelated generic results)
+**Verified:** 2026-09-30 (deterministic collector capture of three public, logged-out idus browse pages, fixed keyboard probe on a public product page, and first-party Backpackr context)
+**Tier 1 sources:** https://www.idus.com/v2/ ; https://www.idus.com/v2/main/popular ; https://www.idus.com/v2/gift-shop ; https://backpac.kr/ ; https://team.idus.com/
+**Tier 2 sources:** not attempted in this pass
 **Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
 ### Spacing System
-- Base rhythm: 4px steps — measured paddings land at 0×8px (utility), 6×8px (chips), 0×14px (pills), 0×16px (primary buttons)
-- Scale: 4px, 8px, 14px, 16px, 20px, 24px
-- Notable: action buttons use generous 48px height with 16px horizontal padding for confident tap targets; social-proof pills use 14px horizontal padding
+- Measured paddings: 6px (badge sides), 8px (utility links), 10px (card text block), 12px and 16px (chip sides), 16px (button sides)
+- Product cards sit in rows at 243px width; the gift shop also uses a 169px card
 
 ### Grid & Container
-- Dense multi-column product-thumbnail grids are the dominant layout unit
-- A horizontal category tab row (선물추천 / 할인 / 베스트 …) anchors the top of the home feed
-- Product detail pages stack a media column with a sticky action rail (장바구니 / 선물하기 / 구매하기)
-- Curation banners layer dark caption chips (`#111111`) over full-bleed imagery
+- Rows of 243px product cards are the main layout unit on all three browse pages
+- A horizontal category tab row anchors the header; 실시간 인기 adds a sub-tab row
+- The product page places 선물하기 and 구매하기 side by side, with 작품문의 in the maker block
 
 ### Whitespace Philosophy
-- **Density with breathing hairlines**: idus is intentionally information-rich; separation comes from `#d9d9d9` hairlines and white gutters rather than large empty margins.
-- **Flat segmentation**: sections separate by hairline and tint wash (`#fff7f2`, `#fff2f4`), not by shadow stacks.
-- **Action clarity in a busy field**: within a crowded grid, the orange CTA and pills are the only saturated elements, so the next action always stands out.
+- **Density first**: the catalogue is large, so cards are compact and text is small.
+- **Flat segmentation**: sections separate by space and single rules, not by shadow.
+- **Orange as signal**: in a crowded grid the carrot fill is the one saturated action.
 
 ### Border Radius Scale
-- Sharp (2px): action buttons, search field — the workhorse
-- Small (4px): dark caption chips
-- Medium (12px): product-image cards
-- Full (100px): social-proof pills
+- 2px: action buttons
+- 6px: product cards and rank-badge corner
+- 36px: chips
+- 100px: highlight wrapper
+- 1000px: small badges
 
 ## 6. Depth & Elevation
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, most surfaces, product cards |
-| Hairline (Level 1) | `1px solid #d9d9d9` | Dividers, light card outlines |
-| Outline (Level 2) | `1px solid #acacac` | Secondary white button borders |
-| Tint (Level 3) | `#fff7f2` / `#fff2f4` wash | Gentle section emphasis without elevation |
+| Flat | No shadow | Every recorded element |
+| Rule | 1px `#e5e7eb` | Under sub-tabs |
+| Outline | 1px `#acacac` / `#e1e1e1` | Secondary buttons / shortcut chips |
 
-**Shadow Philosophy**: idus is a near-shadowless system. Live inspection returned `box-shadow: none` and `0px solid` borders across the header, category tabs, product cards and action buttons. Depth is communicated by flat hairlines (`#d9d9d9`), a slightly heavier outline (`#acacac`) on secondary buttons, and low-saturation tint washes (`#fff7f2` orange, `#fff2f4` pink). When something needs to pop, the system reaches for the carrot orange (`#ef7014`) or the near-black ink (`#111111`) chip — never a drop shadow. This keeps a very dense commerce grid feeling fast and flat rather than heavy.
+**Shadow Philosophy**: none. Depth is expressed by outlines and by the contrast between white cards and the `#f5f5f5` chip surface.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Reserve carrot orange (`#ef7014`) for actions and proof — CTA, brand-outline buttons, rank flags, social-proof pills
-- Use weight 700 on action labels and 400 on body/nav — let weight carry hierarchy under a system font
-- Separate sections with `#d9d9d9` hairlines and `#acacac` outlines, not shadows
-- Keep action geometry tight (2px radius) and reserve the 100px full-pill only for social-proof momentum
-- Use `#333333` for primary text, never pure black
-- Use coral (`#ff4b50`) for sale/discount prices and gold (`#ffaf00`) for rating stars
-- Overlay dark near-black (`#111111`) caption chips on curation imagery
-- Keep body and buttons at a dense 14px for fast scanning of large product grids
+- Keep carrot orange (`#ef7014`) for the purchase action, the maker-inquiry outline and leading rank badges
+- Show selection in `#333333` with a bold label
+- Let size and weight carry hierarchy in the system font
+- Keep action buttons at 2px radius and cards at 6px
+- Use coral (`#ff4b50`) only for discount rates
 
 ### Don't
-- Spread orange across decorative elements — it dilutes the single-action signal
-- Use drop shadows for elevation — idus is a flat, hairline-separated system
-- Use pure black (`#000000`) for body text — the ladder is `#333333` → `#666666` → `#999999`
-- Introduce a bespoke display webfont — the system stack is intentional for hangul density
-- Round action buttons heavily — they stay at a tight 2px (the 100px pill is only for social-proof)
-- Reuse the sale coral (`#ff4b50`) or rating gold (`#ffaf00`) as a primary action color — carrot is the only CTA color
-- Add large empty margins that break the dense, scannable grid rhythm
-- Set a light font weight on CTAs — action labels are always 700
+- Spread orange onto decoration or selected states
+- Add drop shadows
+- Load a display webfont
+- Round action buttons into pills
+- Use coral for actions
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single/2-up product grid, sticky bottom action bar, category tabs scroll horizontally |
-| Tablet | 640-1024px | 3-4 column product grids, moderate gutters |
-| Desktop | 1024-1440px | 4-6 column dense grids, full category tab row, product detail media + sticky action rail |
+This pass captured the desktop layout at 1440 × 900 only. No breakpoint was measured, so none is declared.
 
 ### Touch Targets
-- Primary action buttons at 48px height with 16px horizontal padding — comfortably tappable
-- Social-proof pills at 33px height, full 100px radius for an unmistakable target
-- Icon utility buttons (관심 / 내 정보 / 장바구니) at ~67px stacked icon+label hit areas
-
-### Collapsing Strategy
-- Product grids reflow from 4-6 columns down to 2-up / single column
-- Category tab row switches to horizontal scroll on narrow viewports
-- Product detail action rail (장바구니 / 선물하기 / 구매하기) becomes a sticky bottom bar on mobile
-- Curation banners maintain full-bleed treatment with the dark caption chip repositioned
-
-### Image Behavior
-- Product thumbnails keep 12px rounded corners across breakpoints
-- Curation imagery stays full-bleed; dark `#111111` caption chips overlay at all sizes
-- No shadows on imagery at any size, consistent with the flat system
+- Purchase and gift buttons are 48px tall; 작품문의 is 40px; header icon buttons are 60 × 67
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary CTA: idus Carrot (`#ef7014`)
-- CTA text: White (`#ffffff`)
-- Sale / discount price: Coral (`#ff4b50`)
-- Rating stars: Gold (`#ffaf00`)
-- Event highlight: Yellow (`#ffea2c`)
-- Primary text: `#333333`
-- Secondary text: `#666666`
-- Faint text: `#999999`
-- Dark chip: Ink (`#111111`)
-- Hairline: `#d9d9d9`
-- Button outline (secondary): `#acacac`
-- Tint surfaces: `#fff7f2` (orange), `#fff2f4` (pink)
-- Canvas: White (`#ffffff`)
+- Primary action: `#ef7014` with `#ffffff` label
+- Discount rate: `#ff4b50`
+- Text: `#333333` / `#666666` / `#999999`
+- Rank badge (others) and chip text: `#111111`
+- Chip surface: `#f5f5f5`
+- Outlines: `#acacac`, `#e1e1e1`; rule `#e5e7eb`
+- Canvas: `#ffffff`
 
 ### Example Component Prompts
-- "Create a product detail action rail: three 48px-tall buttons at 2px radius. Secondary 'add to cart' and 'gift' are white with 1px solid #acacac border and #333333 text; primary '구매하기' is #ef7014 background with #ffffff text, all 18px weight 700."
-- "Design a product card: white #ffffff background, 12px rounded image, no shadow. Overlay a full-pill social-proof badge — #ef7014 background, #ffffff text, 100px radius, 14px weight 700 — reading 'recently purchased'. Rank flag: #ef7014 with 0 0 6px 6px radius top-left."
-- "Build a category nav row: system-font tabs at 16px weight 400, inactive #666666 and active #333333, on a white header. No underline, no shadow."
-- "Create a brand-outline button: white background, #ef7014 text, 1px solid #ef7014 border, 2px radius, 40px height, 14px weight 700 — for '작품문의' / '팔로우'."
+- "Product action row: a white 선물하기 button (1px solid #acacac, #333333 label) beside a #ef7014 구매하기 button with a white label; both 48px tall, 2px radius, 18px / 700. On hover lay a black overlay at 10% opacity over the fill, 20% on press."
+- "Ranked product card: 243px wide, white, 6px image radius, no shadow. A 30 × 30 number badge in the top-left corner, #ef7014 for the leading ranks and #111111 for the rest, radius 0 0 6px, 16px / 700 white."
+- "Gift filters: chips 40px tall at 36px radius, #f5f5f5 with #333333 14px text; the selected chip is #333333 with a white bold label."
 
 ### Iteration Guide
-1. Orange (`#ef7014`) is the only action color — CTA, outline buttons, flags, pills; don't spread it decoratively
-2. Weight 700 for actions/proof, 400 for everything else — hierarchy is weight, not typeface
-3. No shadows — separate with `#d9d9d9` hairlines, `#acacac` outlines, and tint washes
-4. Action buttons stay at 2px radius; only social-proof pills go full 100px
-5. Text is `#333333` → `#666666` → `#999999`, never pure black
-6. Coral (`#ff4b50`) = price/sale, gold (`#ffaf00`) = rating — never CTAs
-7. Keep body/buttons dense at 14px for large scannable grids
-8. Dark `#111111` chips for caption overlays on curation imagery
+1. Orange means act; selection is dark grey
+2. 700 for actions, prices and selection; 400 elsewhere
+3. No shadows
+4. 2px buttons, 6px cards, 36px chips
+5. Coral for discounts only
 
 ---
 
 ## 10. Voice & Tone
 
-idus's voice is **warm, encouraging, and maker-centric** — it speaks about handmade 작품 (works) and the 작가 (makers) behind them, not "products" and "sellers." The register is friendly Korean commerce: it invites discovery ("취향발견" / discover-your-taste), reassures with social proof ("최근 573건 더 많이 구매되었어요" / "573 more purchased recently"), and asks rather than commands ("찾으시는 작가, 작품이 있나요?" / "Is there a maker or work you're looking for?"). Actions are plain and functional (`구매하기`, `장바구니`, `선물하기`, `작품문의`), never hype-driven.
+idus speaks about 작품 (works) and the 작가 (makers) behind them rather than products and sellers. The company line on its own pages is warm and mission-led — "핸드메이드로 일상을 특별하게!" and "창작과 정성의 가치가 인정받는 세상을 만듭니다." Actions are plain verbs (`구매하기`, `선물하기`, `작품문의`), and navigation names are discovery-framed.
 
 | Context | Tone |
 |---|---|
-| Search prompt | Inviting, question-framed. "찾으시는 작가, 작품이 있나요?" |
-| Category nav | Playful discovery labels. "취향발견", "선물추천", "베스트". |
-| CTAs | Plain, functional imperatives. "구매하기", "선물하기", "작품문의". |
-| Social proof | Warm, momentum-framed. "최근 N건 더 많이 구매되었어요". |
-| Maker relationship | Respectful of the artisan. "작가홈", "팔로우" — you follow a person, not a shop. |
+| Tagline | Warm, everyday. "핸드메이드로 일상을 특별하게!" |
+| Mission | Values-led. "창작과 정성의 가치가 인정받는 세상을 만듭니다." |
+| CTAs | Plain verbs. "구매하기", "선물하기", "작품문의". |
+| Maker relationship | Person-first. 작가, 작가홈, 팔로우. |
 
-**Voice samples (verbatim from live surfaces):**
-- "찾으시는 작가, 작품이 있나요?" — search placeholder (invites discovery, maker-first). *(verified live 2026-07-02)*
-- "최근 573건 더 많이 구매되었어요" — social-proof pill (warm momentum, no pressure). *(verified live 2026-07-02)*
-- "취향발견" — category tab (discovery-framed, taste-centric). *(verified live 2026-07-02)*
-
-**Forbidden register**: aggressive scarcity/urgency ("지금 아니면 끝!"), treating makers as anonymous "sellers", undefined marketing jargon, exclamation-heavy hype. The tone stays warm and human because the goods are handmade and personal.
+**Forbidden register**: hard-sell urgency, calling makers anonymous sellers, hype-heavy exclamation.
 
 ## 11. Brand Narrative
 
-idus (아이디어스) was founded in **2014** by **Backpackr (백패커)**, led by CEO **김동환 (Kim Dong-hwan)**, to solve a specific gap in Korean commerce: talented independent makers of handmade goods — ceramics, jewelry, candles, baked goods, leather craft — had no dedicated, trusted marketplace to reach buyers who valued craft over mass production. The name reads as "idea + us / ideas," and the founding premise reframed a handmade purchase as a relationship with a 작가 (maker) rather than a transaction with a store.
+Backpackr was founded in 2012 (its site counts "2012년 설립") and runs idus, 텀블벅 and 텐바이텐 under one line, "세 개의 플랫폼, 하나의 생태계", with the ambition "Global No.1 Creator Ecosystem". idus's own meta description carries the promise to buyers and makers alike: handmade things make daily life special, and craft and care deserve recognition. The recruiting site lists roles for each of the three services under the Backpackr name, and the idus footer names (주)백패커, CEO 김동환, as the operator in Seocho-gu, Seoul.
 
-The platform matured into Korea's largest handmade marketplace, expanding from physical goods into handmade classes (클래스) and gifting, and Backpackr later broadened its creator-economy footprint (including the crowdfunding platform 텀블벅 / Tumblbug). The homepage's own vocabulary — 작가 (maker), 작품 (work), 작가홈 (maker's home), 팔로우 (follow) — encodes the thesis: idus is a place to follow and support people who make things by hand.
-
-What idus refuses, visible in its design: the glossy, shadow-stacked chrome of a mass DTC store and the hard-sell scarcity tactics of discount commerce. What it embraces: a warm single accent (carrot orange), a flat and dense but scannable grid, social proof framed as encouragement rather than pressure, and a maker-first vocabulary throughout the interface. *(Founding attribution and platform history are widely documented public facts about Backpackr / idus; specific interpretive readings of the design are editorial.)*
+The design follows from that thesis. The interface centres people who make things, keeps chrome flat and quiet so product photography carries the page, and saves its single warm colour for the moment of commitment.
 
 ## 12. Principles
 
-1. **Makers, not sellers.** The interface names people (작가, 작가홈, 팔로우), not shops. *UI implication:* surface the maker identity on cards and detail pages; make "follow the maker" a first-class action.
-2. **One color means act.** Carrot orange (`#ef7014`) is the only saturated action color. *UI implication:* reserve orange for CTA, outline buttons, rank flags and social-proof; keep everything else neutral so the next step is unambiguous.
-3. **Encourage, don't pressure.** Social proof is framed as warm momentum ("recently purchased"), never fear-based scarcity. *UI implication:* use positive, count-based reassurance pills; avoid countdown timers and "last chance" urgency.
-4. **Dense but scannable.** The catalog is huge, so density is a feature. *UI implication:* separate with hairlines and tint washes, keep body at 14px, and let the single orange accent guide the eye through a crowded grid.
-5. **Flat and warm.** Handmade goods deserve a light, human surface, not heavy banking chrome. *UI implication:* no drop shadows; lean on `#d9d9d9` hairlines, warm tint surfaces, and rounded product imagery.
+1. **Makers, not sellers.** The interface names people (작가, 작가홈, 팔로우). *UI implication:* keep the maker's name on every card.
+2. **One colour means act.** *UI implication:* orange on purchase, inquiry and leading ranks; neutral selection.
+3. **Dense but scannable.** *UI implication:* small type, compact cards, space instead of boxes.
+4. **Flat and warm.** *UI implication:* no shadows; outlines and the photography do the work.
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable idus user segments (gift-shoppers seeking something personal, supporters of independent makers, hobbyists browsing handmade classes), not individual people.*
+*Personas below are fictional archetypes informed by the audiences the site addresses (gift shoppers, supporters of independent makers), not individual people.*
 
-**정유진, 28, 서울.** Shopping for a friend's birthday and wants something that doesn't look mass-produced. Uses "선물추천" and the social-proof pills to feel confident a small maker is trustworthy. Chose idus because it feels like discovering a person, not scrolling a warehouse.
+**정유진, 28, 서울.** Shopping for a friend's birthday and wants something that does not look mass-produced. Uses the gift shop filters to narrow the options.
 
-**김도현, 34, 경기.** A repeat buyer who follows several ceramic and leather 작가. Values the "작가홈" and 팔로우 flow — he buys again when a maker he follows releases new 작품. Trusts the flat, no-pressure interface over hard-sell discount apps.
+**김도현, 34, 경기.** Follows several ceramic and leather 작가 and buys again when a maker he follows releases new 작품.
 
-**이서연, 41, 부산.** Browses handmade classes and gifts for family occasions. Appreciates that the copy is warm and the grid is dense enough to compare many options quickly without feeling rushed by urgency banners.
+**이서연, 41, 부산.** Browses the live ranking for family gifts and compares prices and discount rates across many cards quickly.
 
 ## 14. States
 
-| State | Treatment |
+| State | Treatment (measured) |
 |---|---|
-| **Empty (no search results)** | White canvas. Single `#333333` line explaining no matching 작가/작품 were found, with a muted `#666666` suggestion to adjust the query. One carrot (`#ef7014`) CTA to browse categories. No clutter. |
-| **Empty (empty cart / wishlist)** | `#666666` single line ("아직 담은 작품이 없어요"), with a carrot CTA back into discovery ("작품 둘러보기"). Warm, not scolding. |
-| **Loading (grid fetch)** | Flat skeleton cards at final product-card dimensions, 12px radius, `#d9d9d9`-tinted blocks. No shadow shimmer — a flat pulse consistent with the shadowless system. |
-| **Loading (purchase submit)** | Inline spinner within the `#ef7014` CTA; button label swaps to a progress state, previous page content stays visible. |
-| **Error (network / fetch failed)** | Inline `#333333` message with a plain-language explanation and a retry, never a bare "오류가 발생했습니다". |
-| **Error (form validation)** | Field-level message below the input in a coral (`#ff4b50`) tone; describes what's valid, not just "필수". |
-| **Success (added to cart / purchased)** | Brief inline confirmation in a calm tone; next-step (장바구니 / 주문내역) linked immediately below. No celebratory emoji spam. |
-| **Skeleton** | `#d9d9d9` blocks at final dimensions, 12px radius, flat pulse. |
-| **Disabled** | `#999999` faint text on reduced-opacity surface; carrot actions fade rather than turn grey to preserve brand read. |
+| **Hover (buttons)** | A `::before` overlay fades in at opacity 0.1 — black on 구매하기, `#333333` on 선물하기, orange on 작품문의 |
+| **Pressed (buttons)** | The same overlay at opacity 0.2 |
+| **Selected chip** | `#333333` fill, white 14px / 700 |
+| **Selected sub-tab** | `#333333`, 14px / 700 |
+
+Focus, empty, loading, error and success states were not measured in this pass and are not declared.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, follow toggle |
-| `motion-standard` | 200ms | Card/grid reveal, sheet, dropdown |
-| `motion-slow` | 320ms | Page-level transitions, banner carousel |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, pills |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and quiet — consistent with the flat, dense commerce aesthetic. Product cards fade-in from below as grids load at `motion-standard / ease-enter`; the carrot CTA and follow toggle respond to press with a subtle opacity/scale shift; curation banners cross-fade on a slow carousel. No bounce or spring — a marketplace signals steadiness and trust, not gimmickry. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the banner carousel freezes; the catalog remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle:
-- https://www.idus.com (homepage) — primary brand color #ef7014 (rgb 239,112,20) on rank
-  flags, social-proof pills (100px radius, 14px/700, "최근 N건 더 많이 구매되었어요"); text
-  ladder rgb(51,51,51)/#333333 ×7587, rgb(102,102,102)/#666666 ×819, rgb(153,153,153)/#999999
-  ×270; accents rgb(255,75,80)/#ff4b50 ×455, rgb(255,175,0)/#ffaf00 ×300,
-  rgb(255,234,44)/#ffea2c ×210; dark chips rgb(17,17,17)/#111111; hairline
-  rgb(217,217,217)/#d9d9d9; tint surfaces rgb(255,247,242)/#fff7f2, rgb(255,242,244)/#fff2f4;
-  box-shadow none across chrome; system font stack; search placeholder
-  "찾으시는 작가, 작품이 있나요?"; category tabs 선물추천/할인/베스트/취향발견/실시간/최신작품/커뮤니티.
-- https://www.idus.com/v2/product/... (product detail) — primary CTA "구매하기" bg #ef7014 /
-  #ffffff / 2px / 48px / 18px-700; secondary "장바구니"/"선물하기" white / #333333 / 1px solid
-  #acacac (rgb 172,172,172); outline "작품문의"/"팔로우" white / #ef7014 text+border / 14px-700.
-
-Token-level claims (§1-9) are sourced from this live inspection; full raw samples in
-web/references/idus/.verification.md.
-
-Voice samples (§10) are verbatim from the live idus surfaces (search placeholder,
-social-proof pill, category tab).
-
-Brand narrative (§11): idus (아이디어스) operated by Backpackr (백패커), founded 2014,
-CEO 김동환 — Korea's largest handmade-goods marketplace. These are widely documented
-public facts; specific design readings are editorial, not directly quoted brand statements.
-
-Personas (§13) are fictional archetypes informed by publicly observable idus user segments.
-Names are illustrative; they do not refer to real people.
-
-Tier 2: getdesign.md/idus returned "0 DESIGN.md files / No designs found"; styles.refero.design
-?q=idus returned no idus-specific style. KR Tier-2 under-coverage — Tier 1 carries the proof.
--->
+The four probed buttons compute `transition: all 0s` on themselves; the probe found transitions of up to 200ms (구매하기) and 500ms (작품문의, 선물하기) elsewhere in the compared scope and waited them out before reading. No easing curve was read, so none is declared.

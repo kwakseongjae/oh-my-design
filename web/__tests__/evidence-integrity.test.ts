@@ -138,7 +138,8 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // 234 -> 224 (2026-09-30): wave P4, ten more.
     // 224 -> 214 (2026-09-30): wave P5, ten more.
     // 214 -> 205 (2026-09-30): wave P6, nine more.
-    expect(flagged.length).toBe(205);
+    // 205 -> 197 (2026-09-30): wave P7, eight more.
+    expect(flagged.length).toBe(197);
 
     // The two references that handle this correctly must stay off the worklist,
     // otherwise the advisory punishes the behaviour it is meant to produce.

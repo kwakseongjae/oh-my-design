@@ -4,8 +4,8 @@
   "generator": "scripts/build-reference-quality-data.mjs",
   "count": 521,
   "counts": {
-    "verified_v2": 286,
-    "partial": 122,
+    "verified_v2": 295,
+    "partial": 113,
     "legacy_snapshot": 113,
     "total": 521
   },
@@ -1100,16 +1100,14 @@
     },
     {
       "id": "danawa",
-      "status": "partial",
-      "verified_at": "2026-06-11",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 9,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "databricks",
@@ -1965,16 +1963,14 @@
     },
     {
       "id": "greencar",
-      "status": "partial",
-      "verified_at": "2026-06-26",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 9,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "greenvines",
@@ -2016,16 +2012,14 @@
     },
     {
       "id": "hackle",
-      "status": "partial",
-      "verified_at": "2026-06-26",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 10,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "hahow",
@@ -2177,16 +2171,14 @@
     },
     {
       "id": "humanscape",
-      "status": "partial",
-      "verified_at": "2026-07-02",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "hwahae",
@@ -2273,16 +2265,14 @@
     },
     {
       "id": "idus",
-      "status": "partial",
-      "verified_at": "2026-07-02",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 4,
+      "source_count": 6,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "igaworks",
@@ -3643,16 +3633,14 @@
     },
     {
       "id": "nota",
-      "status": "partial",
-      "verified_at": "2026-06-26",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "note",
@@ -4182,16 +4170,14 @@
     },
     {
       "id": "portone",
-      "status": "partial",
-      "verified_at": "2026-06-26",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 6,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "posthog",
@@ -4209,16 +4195,14 @@
     },
     {
       "id": "postype",
-      "status": "partial",
-      "verified_at": "2026-06-11",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "poya",
@@ -4427,16 +4411,14 @@
     },
     {
       "id": "rebellions",
-      "status": "partial",
-      "verified_at": "2026-06-26",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 8,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "recruit",

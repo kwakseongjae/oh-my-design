@@ -9,55 +9,152 @@ primary_color: "#fc6b2d"
 logo:
   type: github
   slug: portone-io
-verified: "2026-06-26"
+verified: "2026-09-30"
 added: "2026-06-26"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://www.portone.io/", inspected: "2026-09-30" }
+    - { id: surface-2, kind: corporate, url: "https://www.portone.io/team", inspected: "2026-09-30" }
+    - { id: surface-3, kind: marketing, url: "https://www.portone.io/pricing", inspected: "2026-09-30" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://www.portone.io/", captured: "2026-09-30" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://www.portone.io/team", captured: "2026-09-30" }
+    - { id: surface-surface-3, kind: product-surface, url: "https://www.portone.io/pricing", captured: "2026-09-30" }
+    - { id: portone-probe-home, kind: product-surface, url: "https://www.portone.io/", captured: "2026-09-30" }
+    - { id: portone-blog, kind: official-doc, url: "https://blog.portone.io/", captured: "2026-09-30" }
+    - { id: pretendard-license, kind: license, url: "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &seltab { surface_id: home, source_id: portone-probe-home, method: live-state-probe, selector: "div 국내 결제, selected product tab (566 x 55): rest bg rgb(255, 248, 245), label h2 rgb(252, 107, 45) 17px, ::after border 1px solid rgb(252, 107, 45), radius 16px, padding 16px; hover and pressed no change; focus not measured", captured: "2026-09-30" }
+    "tokens.colors.secondary": &cta { surface_id: home, source_id: portone-probe-home, method: live-state-probe, selector: "a 도입문의 in the header (83.9 x 40): rest background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), label p rgb(255, 255, 255) 15px, radius 64px, padding 16px; hover and pressed gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); the anchor's own fg rgb(0, 0, 238) -> rgb(255, 0, 0) is the Chromium default link colour; focus not measured", captured: "2026-09-30" }
+    "tokens.colors.on-primary": *cta
+    "tokens.colors.selected-surface": *seltab
+    "tokens.colors.ink": &h1 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h1", captured: "2026-09-30" }
+    "tokens.colors.body": &teamp { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.colors.muted": &h3muted { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
+    "tokens.colors.subtle": &foot { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.colors.label-dark": &login { surface_id: home, source_id: portone-probe-home, method: live-state-probe, selector: "a 로그인 in the header (70.9 x 40): rest bg rgb(255, 255, 255), label p rgb(51, 51, 51) 15px, radius 64px, padding 16px; hover and pressed bg -> rgb(238, 238, 238); focus not measured", captured: "2026-09-30" }
+    "tokens.colors.canvas": &body { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
+    "tokens.colors.accent-blue": &eyeblue { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
+    "tokens.colors.accent-purple": &eyepurple { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
+    "tokens.typography.family.display": *h1
+    "tokens.typography.family.body": *teamp
+    "tokens.typography.family.serif-accent": &serif { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h2", captured: "2026-09-30" }
+    "tokens.typography.display-hero.size": *h1
+    "tokens.typography.display-hero.weight": *h1
+    "tokens.typography.display-hero.lineHeight": *h1
+    "tokens.typography.display-hero.use": *h1
+    "tokens.typography.page-title.size": &pageh1 { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h1", captured: "2026-09-30" }
+    "tokens.typography.page-title.lineHeight": *pageh1
+    "tokens.typography.page-title.use": *pageh1
+    "tokens.typography.section.size": &h2 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
+    "tokens.typography.section.lineHeight": *h2
+    "tokens.typography.section.use": *h2
+    "tokens.typography.sub-section.size": &h3 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
+    "tokens.typography.sub-section.weight": *h3
+    "tokens.typography.sub-section.lineHeight": *h3
+    "tokens.typography.sub-section.use": *h3
+    "tokens.typography.serif-accent.size": *serif
+    "tokens.typography.serif-accent.weight": *serif
+    "tokens.typography.serif-accent.lineHeight": *serif
+    "tokens.typography.serif-accent.use": *serif
+    "tokens.typography.eyebrow.size": &eyebrow { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
+    "tokens.typography.eyebrow.lineHeight": *eyebrow
+    "tokens.typography.eyebrow.use": *eyebrow
+    "tokens.typography.card-title.size": &cardh3 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
+    "tokens.typography.card-title.lineHeight": *cardh3
+    "tokens.typography.card-title.use": *cardh3
+    "tokens.typography.body.size": *teamp
+    "tokens.typography.body.lineHeight": *teamp
+    "tokens.typography.body.use": *teamp
+    "tokens.typography.nav.size": &nav { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.nav.lineHeight": *nav
+    "tokens.typography.nav.use": *nav
+    "tokens.typography.caption.size": *foot
+    "tokens.typography.caption.lineHeight": *foot
+    "tokens.typography.caption.use": *foot
+    "tokens.spacing.pill-pad": *cta
+    "tokens.spacing.tab-pad": *seltab
+    "tokens.rounded.tab": *seltab
+    "tokens.rounded.pill": *cta
+    "tokens.components.header-cta.type": *cta
+    "tokens.components.header-cta.bg": *cta
+    "tokens.components.header-cta.fg": *cta
+    "tokens.components.header-cta.radius": *cta
+    "tokens.components.header-cta.height": *cta
+    "tokens.components.header-cta.padding": *cta
+    "tokens.components.header-cta.font": *cta
+    "tokens.components.header-cta.hover": *cta
+    "tokens.components.header-cta.pressed": *cta
+    "tokens.components.header-cta.use": *cta
+    "tokens.components.hero-cta.type": &start { surface_id: home, source_id: portone-probe-home, method: live-state-probe, selector: "a 시작하기 (98.1 x 49.5): fill on descendant div.framer-1ce5yuz, background-image linear-gradient(rgb(54, 58, 68) 0%, rgb(3, 7, 18) 100%), box-shadow rgba(255, 255, 255, 0.1) 0px 2px 0px 0px inset, label rgb(255, 255, 255) 17px; hover and pressed descendant gradient -> linear-gradient(rgb(63, 67, 77) 0%, rgb(107, 114, 128) 100%); focus not measured", captured: "2026-09-30" }
+    "tokens.components.hero-cta.bg": *start
+    "tokens.components.hero-cta.fg": *start
+    "tokens.components.hero-cta.height": *start
+    "tokens.components.hero-cta.font": *start
+    "tokens.components.hero-cta.shadow": *start
+    "tokens.components.hero-cta.hover": *start
+    "tokens.components.hero-cta.pressed": *start
+    "tokens.components.hero-cta.use": *start
+    "tokens.components.login-button.type": *login
+    "tokens.components.login-button.bg": *login
+    "tokens.components.login-button.fg": *login
+    "tokens.components.login-button.radius": *login
+    "tokens.components.login-button.height": *login
+    "tokens.components.login-button.padding": *login
+    "tokens.components.login-button.font": *login
+    "tokens.components.login-button.hover": *login
+    "tokens.components.login-button.pressed": *login
+    "tokens.components.login-button.use": *login
+    "tokens.components.product-tab.type": *seltab
+    "tokens.components.product-tab.bg": &offtab { surface_id: home, source_id: portone-probe-home, method: live-state-probe, selector: "div 해외 결제, unselected product tab (566 x 55): rest bg rgb(255, 255, 255), label h2 rgb(55, 65, 81) 17px, ::after border 1px solid rgb(229, 229, 229), radius 16px; hover and pressed no change; focus not measured", captured: "2026-09-30" }
+    "tokens.components.product-tab.fg": *offtab
+    "tokens.components.product-tab.border": *offtab
+    "tokens.components.product-tab.radius": *seltab
+    "tokens.components.product-tab.height": *seltab
+    "tokens.components.product-tab.padding": *seltab
+    "tokens.components.product-tab.font": *seltab
+    "tokens.components.product-tab.selected": *seltab
+    "tokens.components.product-tab.states": *seltab
+    "tokens.components.product-tab.use": *seltab
 tokens:
-  source: live-extract
-  extracted: "2026-06-26"
-  note: "primary = live CTA orange gradient (#fc6b2d); secondary CTA = charcoal gradient (#363a44). Marketing surface uses Tailwind gray ink (#111827); the developer docs surface (developers.portone.io) shifts to slate ink (#0f172a / #334155). Mostly shadowless — flat tinted surfaces + hairlines."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
     primary: "#fc6b2d"
     secondary: "#363a44"
-    ink: "#111827"
-    ink-slate: "#0f172a"
-    body: "#6b7280"
-    body-slate: "#334155"
-    gray-strong: "#374151"
-    muted: "#94a3b8"
-    border: "#d1d5db"
-    surface: "#f9fafb"
-    surface-alt: "#f3f4f6"
-    canvas: "#ffffff"
-    accent-blue: "#e6f1ff"
-    error: "#df4c4c"
-    error-bg: "#fef2f2"
-    success-bg: "#dcfce7"
     on-primary: "#ffffff"
+    selected-surface: "#fff8f5"
+    ink: "#111827"
+    body: "#374151"
+    muted: "#6b7280"
+    subtle: "#9ca3af"
+    label-dark: "#333333"
+    canvas: "#ffffff"
+    accent-blue: "#2873ff"
+    accent-purple: "#8438e8"
   typography:
-    family: { sans: "Pretendard Variable" }
-    hero:        { size: 56, weight: 400, lineHeight: 1.2, use: "Hero H1, light Pretendard" }
-    display:     { size: 48, weight: 1000, lineHeight: 1.25, use: "Section H2, ExtraBlack" }
-    section:     { size: 36, weight: 400, lineHeight: 1.35, use: "Sub-section H3" }
-    eyebrow:     { size: 24, weight: 1000, use: "Orange eyebrow label above sections" }
-    body:        { size: 16, weight: 400, lineHeight: 1.5, use: "Standard reading text" }
-    nav:         { size: 14, weight: 500, use: "Nav links / docs sidebar" }
-    button:      { size: 15, weight: 700, use: "CTA button label" }
-    caption:     { size: 12, weight: 400, use: "Small labels, metadata" }
-  spacing: { xs: 4, sm: 8, base: 16, md: 20, lg: 24, xl: 48, section: 64 }
-  rounded: { xs: 6, sm: 8, md: 16, lg: 30, full: 999 }
-  shadow:
-    none: "none"
-    glow: "rgba(180,156,197,0.1) 0px 0px 16px 4px"
+    family: { display: "Pretendard Variable", body: "Pretendard Variable", serif-accent: "PT Serif Caption" }
+    display-hero: { size: 56, weight: 400, lineHeight: 1.2, use: "Home hero H1 (AI로 결제와 재무 운영을 자유롭게), tracking -2.24px" }
+    page-title: { size: 56, lineHeight: 1.2, use: "Page H1 on pricing and team; weight set on the variable axis, see §3" }
+    section: { size: 48, lineHeight: 1.25, use: "Home section headlines, tracking -1.44px" }
+    sub-section: { size: 36, weight: 400, lineHeight: 1.35, use: "Product block headlines (사업의 시작부터 확장까지, 단 하나의 결제 인프라)" }
+    serif-accent: { size: 36, weight: 400, lineHeight: 1.2, use: "Serif accent heading on the team (RECIPE culture) page, #6b7280" }
+    eyebrow: { size: 24, lineHeight: 1.5, use: "Coloured product-line eyebrow above each home block" }
+    card-title: { size: 28, lineHeight: 1.35, use: "Feature headings inside product blocks" }
+    body: { size: 17, lineHeight: 1.5, use: "Body copy and value descriptions" }
+    nav: { size: 15, lineHeight: 1.47, use: "Header navigation and header button labels" }
+    caption: { size: 13, lineHeight: 1.7, use: "Footer company details" }
+  spacing: { pill-pad: 16, tab-pad: 16 }
+  rounded: { tab: 16, pill: 64 }
   components:
-    button-primary: { type: button, bg: "#fc6b2d", fg: "#ffffff", radius: "999px", padding: "12px 20px", font: "15px / 700", use: "Primary CTA 도입문의 — orange gradient pill" }
-    button-secondary: { type: button, bg: "#363a44", fg: "#ffffff", radius: "999px", padding: "12px 20px", font: "12px / 400", use: "Secondary CTA 시작하기 — charcoal gradient pill" }
-    nav-link: { type: tab, fg: "#111827", radius: "64px", padding: "16px", font: "14px / 500", active: "orange #fc6b2d text on active", use: "Top navigation item pill" }
-    card-surface: { type: card, bg: "#f9fafb", fg: "#111827", radius: "30px", padding: "20px", use: "Tinted feature card on gray surface" }
-    card-white: { type: card, bg: "#ffffff", fg: "#111827", radius: "20px", padding: "24px", use: "White feature card, hairline-separated" }
-    input-search: { type: input, bg: "#ffffff", fg: "#334155", border: "1px solid #d1d5db", radius: "6px", padding: "6px 12px", use: "Docs search field" }
-    badge-success: { type: badge, bg: "#dcfce7", fg: "#374151", radius: "8px", font: "12px / 500", use: "Success status pill" }
-    badge-error: { type: badge, bg: "#fef2f2", fg: "#df4c4c", radius: "8px", font: "12px / 500", use: "Error / alert pill" }
+    header-cta: { type: button, bg: "linear-gradient(180deg, #363a44 0%, #030712 100%)", fg: "#ffffff", radius: "64px", height: "40px", padding: "16px", font: "15px Pretendard Variable", hover: "gradient lightens to #3f434d -> #6b7280 (instant)", pressed: "same as hover", use: "Header 도입문의 (contact sales), the site's primary action" }
+    hero-cta: { type: button, bg: "linear-gradient(180deg, #363a44 0%, #030712 100%)", fg: "#ffffff", height: "49.5px", font: "17px Pretendard Variable", shadow: "inset 0 2px 0 rgba(255, 255, 255, 0.1)", hover: "gradient lightens to #3f434d -> #6b7280 (instant)", pressed: "same as hover", use: "Hero 시작하기 and the 살펴보기 block buttons; the fill sits on an inner wrapper, not on the link" }
+    login-button: { type: button, bg: "#ffffff", fg: "#333333", radius: "64px", height: "40px", padding: "16px", font: "15px Pretendard Variable", hover: "bg #eeeeee", pressed: "same as hover", use: "Header 로그인 (leads to the admin console, which was not opened)" }
+    product-tab: { type: tab, bg: "#ffffff", fg: "#374151", border: "1px solid #e5e5e5", radius: "16px", height: "55px", padding: "16px", font: "17px Pretendard Variable", selected: "bg #fff8f5, label #fc6b2d, 1px border #fc6b2d", states: "hover and pressed: no change (probe); focus not measured", use: "Two-up switcher inside a product block (국내 결제 / 해외 결제)" }
   components_harvested: true
 ---
 
@@ -65,389 +162,262 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-PortOne (포트원) is Korea's integrated payments-and-settlement fintech — the rebrand of the developer-beloved 아임포트 (Iamport) — and its homepage reads like calm, confident financial infrastructure rather than a hard-sell SaaS pitch. The canvas is pure white (`#ffffff`), layered with a cool near-white surface (`#f9fafb`) and a second flatter gray (`#f3f4f6`) that segment content into airy, breathable zones. Text sits in a deep Tailwind ink (`#111827`) — never pure black for headings — giving the page a premium, trustworthy weight. The one saturated brand accent is a warm signal orange (`#fc6b2d`), reserved almost exclusively for the primary call-to-action and the small eyebrow labels above each section, so the eye is trained to treat that single color as "the action."
+PortOne (포트원), operated by 주식회사 코리아포트원 (PortOne Korea Corp.) from Seongsu-dong, Seoul, sells payment and finance infrastructure to online businesses. The home page puts the reach up front: about 2,500 businesses worldwide use its payment infrastructure, it handles 48조원 in transaction volume, and it connects about 25 domestic payment gateways through a single integration. The company is now reframing itself from a payments integrator into an "AI 재무 인프라". The page title reads "통합 결제·정산 AI 재무 인프라 | 포트원", the header has a new "Finance AX" item, and the hero promises "AI로 결제와 재무 운영을 자유롭게". The product line now runs from 원 페이먼트 인프라 (one payment infrastructure) through partner-settlement automation to a global commerce finance solution.
 
-The typographic personality is unmistakably Korean-modern: everything runs in **Pretendard Variable**, the de-facto Korean product font, but PortOne stretches the weight axis to its extremes. The hero H1 ("AI로 결제와 재무 운영을 자유롭게") sits at a light 56px / weight 400, while the section H2 ("결제 연동부터 글로벌 재무 운영까지 하나의 AI 재무 인프라로") jumps to a dramatic 48px / weight 1000 (ExtraBlack). This light-versus-ultra-heavy contrast is the core tension of the system: whisper-light where it sets the scene, ultra-bold where it persuades. Body and UI text drop to a quiet 16px / weight 400, with nav and docs labels at 14px / weight 500.
+The site (built in Framer) is a white canvas (`#ffffff`) with deep Tailwind-style ink (`#111827`) for headlines and a grey ladder for text: `#374151` body, `#6b7280` muted, `#9ca3af` footer detail. The brand orange `#fc6b2d` is used for marking, not for filling. It is the site-wide eyebrow colour ("Culture" on the team page, "서비스 이용요금" on pricing), the eyebrow of the 원 페이먼트 인프라 block on home, and the selected state of the product switcher, where a 1px orange border and orange label sit on a faint `#fff8f5` fill. Two sibling product lines take their own eyebrow colours on home: blue `#2873ff` for partner settlement and purple `#8438e8` for global commerce.
 
-What distinguishes PortOne from its fintech peers is restraint with depth and a deliberate two-surface split. The marketing site is near-shadowless — separation comes from flat tinted surfaces (`#f9fafb`), thin `#d1d5db` hairlines, and generous pill geometry (64px nav pills, 999px CTA pills, 30px cards) rather than elevation; the rare card uses only a soft purple-tinted glow. Cross the boundary to the developer docs (`developers.portone.io`) and the palette shifts from gray to slate: headings move to slate ink (`#0f172a`), body to slate (`#334155`), and muted labels to slate-400 (`#94a3b8`), with tighter 6px radii — but the orange (`#fc6b2d`) accent stays constant, anchoring both surfaces to one brand. Status colors round out the system: a blue tint (`#e6f1ff`) for informational chips, an error red (`#df4c4c`) on a red tint (`#fef2f2`), and a green tint (`#dcfce7`) for success — with the gray ladder `#374151` → `#6b7280` providing text hierarchy and white (`#ffffff`) doing duty as on-primary text. The charcoal (`#363a44`) gradient on the secondary CTA is the only non-orange "action" color.
+The actions themselves are charcoal. 도입문의 in the header and 시작하기 in the hero both fill with a vertical gradient from `#363a44` to `#030712`, which lightens to `#3f434d` → `#6b7280` on hover. 로그인 is a white pill with a `#333333` label that greys to `#eeeeee`. Header buttons are 40px pills (64px radius). Product switcher tabs are 16px-radius panels. Changes are instant: every probed control computes `transition: all 0s`.
+
+Type is Pretendard Variable throughout, with a serif accent (PT Serif Caption) on the team page. The home hero sits at 56px in weight 400 with tight tracking (-2.24px). Most other headings set their weight on the variable font's `wght` axis, which the browser reports as a computed `font-weight: 1000`; see §3.
 
 **Key Characteristics:**
-- Pretendard Variable across both surfaces — weight 400 hero vs weight 1000 (ExtraBlack) section heads
-- Single saturated orange (`#fc6b2d`) reserved for the primary CTA and eyebrow labels
-- Tailwind ink (`#111827`) for marketing text; slate ink (`#0f172a` / `#334155`) on developer docs
-- Flat depth: mostly shadowless; tinted `#f9fafb` surfaces + `#d1d5db` hairlines do the separating
-- Pill-everything geometry — 64px nav pills, 999px CTA pills, 30px feature cards
-- Charcoal gradient (`#363a44`) as the secondary "action" color
-- Cool gray neutral ladder (`#374151` → `#6b7280` → `#94a3b8`) for text hierarchy
-- Status tints: blue `#e6f1ff`, success `#dcfce7`, error `#df4c4c` on `#fef2f2`
+- Orange `#fc6b2d` marks the selected state and the page eyebrow on every captured page
+- Primary actions are a charcoal gradient (`#363a44` → `#030712`), not orange
+- White canvas, `#111827` ink, and a cool grey text ladder
+- 40px header pills (64px radius); 16px-radius switcher tabs
+- Pretendard Variable, with a 56px / 400 hero and tight negative tracking
+- Instant state changes (no transitions measured)
 
 ## Primary tasks
 
-- Connect many payment gateways through a single API instead of integrating each one
-- Follow an integration guide in the developer docs to wire up checkout
-- Close the books across several payment gateways from one settlement dashboard
-- Offer shoppers local payment options when selling into another country
+- Compare integrating many payment gateways through one PortOne connection against doing it one by one.
+- Check pricing and what the free tier covers.
+- Read how partner settlement and tax invoices are automated.
+- Contact sales (도입문의) or start an account (시작하기).
 
 ## 2. Color Palette & Roles
 
 ### Primary
-- **Signal Orange** (`#fc6b2d`): Primary brand color and CTA fill (rendered as a top-down gradient). The single "action" color — also used on the small eyebrow labels above each section ("원 페이먼트 인프라", "국내 결제").
-- **Charcoal** (`#363a44`): The secondary CTA gradient fill ("시작하기"). A deep neutral that pairs with the orange without competing for the "primary action" read.
-- **Ink** (`#111827`): Primary heading and text color on marketing surfaces. A very dark blue-gray (Tailwind gray-900) used instead of pure black for warmth and financial-grade trust.
+- **PortOne Orange** (`#fc6b2d`): The selected state of the product switcher (label and 1px border), the page eyebrow on the team and pricing pages, and the eyebrow of the 원 페이먼트 인프라 block on home. The site's own colour variable resolves to it for these labels. It is the primary because it is the colour the pages render for "selected" and for the site-wide accent on all three captured pages. The fill of the primary action is charcoal (below), and orange never fills a button on the captured pages.
+- **Selected Surface** (`#fff8f5`): The fill behind the selected switcher tab.
 
-### Neutral & Surface
-- **Pure White** (`#ffffff`): Page background, white card surfaces, and text on orange/charcoal CTAs (on-primary).
-- **Surface Gray** (`#f9fafb`): Cool near-white tinted surface for feature cards and segmented sections.
-- **Surface Alt** (`#f3f4f6`): A flatter secondary gray for alternating blocks and chips.
-- **Hairline** (`#d1d5db`): Thin borders, dividers, and input outlines — the primary separation device in a largely shadowless system.
+### Action
+- **Charcoal** (`#363a44`): The top stop of the action gradient `#363a44` → `#030712` on 도입문의 and 시작하기. Hover lightens it to `#3f434d` → `#6b7280`.
+- **On Action** (`#ffffff`): The label on the charcoal gradient.
 
-### Text Hierarchy (marketing)
-- **Ink** (`#111827`): Primary text, headings, strong labels.
-- **Gray Strong** (`#374151`): Secondary body copy and emphasis text (Tailwind gray-700).
-- **Body Gray** (`#6b7280`): Tertiary text, descriptions, captions (Tailwind gray-500).
+### Product-line accents
+- **Blue** (`#2873ff`): Eyebrow of the partner-settlement block on home.
+- **Purple** (`#8438e8`): Eyebrow of the global-commerce block on home.
 
-### Developer Docs Surface
-- **Slate Ink** (`#0f172a`): Heading color on `developers.portone.io` (Tailwind slate-900).
-- **Slate Body** (`#334155`): Body and sidebar text on the docs (Tailwind slate-700).
-- **Muted Slate** (`#94a3b8`): Placeholder, search hint, and lowest-emphasis labels (Tailwind slate-400).
+### Neutral & Text
+- **Canvas** (`#ffffff`): Page background.
+- **Ink** (`#111827`): Headlines.
+- **Body** (`#374151`): Body copy, unselected tab labels.
+- **Muted** (`#6b7280`): Secondary headings and the serif accent.
+- **Subtle** (`#9ca3af`): Footer company details.
+- **Label Dark** (`#333333`): The 로그인 label.
+- The unselected tab border is `#e5e5e5`; the 로그인 hover fill is `#eeeeee`.
 
-### Status & Accent
-- **Accent Blue** (`#e6f1ff`): Informational tinted surface / highlight chip background.
-- **Error Red** (`#df4c4c`): Error and alert text/icon color.
-- **Error Tint** (`#fef2f2`): Soft red surface behind error states and alert pills.
-- **Success Tint** (`#dcfce7`): Soft green surface for success states and confirmation pills.
+### Brand assets, not tokens
+The small data widgets inside the product illustrations (settlement tables, fee formulas) use their own orange, green and red text. They are illustrations, not UI roles, and are not tokens.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Sans**: `Pretendard Variable` (with `Pretendard` and system fallbacks) — used for every text element on both the marketing site and the developer docs.
+- **Pretendard Variable** is loaded and carries headings, body, list items and labels (324 uses). Framer registers it as "Pretendard Variable Variable", and the doubled name is a Framer quirk. Pretendard is distributed under the SIL Open Font License 1.1.
+- **PT Serif Caption** is loaded and used for one serif accent heading on the team page (36px / 400, `#6b7280`). It is a Google Fonts family (SIL OFL).
+- **Archivo** and **Geist** are declared by the Framer build but no captured element uses them.
+- **Weights.** Framer sets most heading and label weights on the variable `wght` axis (the markup declares `wght` 500 on the button labels), and the browser then reports `font-weight: 1000`. The number 1000 is not a weight to reproduce: in a non-variable stack it would render as the heaviest face. Weight is therefore left out of the tokens wherever the computed value is 1000, and given only where it is a plain value (the 56px / 400 hero and the 36px / 400 sub-section).
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Hero H1 | Pretendard Variable | 56px (3.50rem) | 400 | ~1.2 | Light hero headline |
-| Display H2 | Pretendard Variable | 48px (3.00rem) | 1000 | ~1.25 | ExtraBlack section heads |
-| Section H3 | Pretendard Variable | 36px (2.25rem) | 400 | ~1.35 | Sub-section headlines |
-| Eyebrow | Pretendard Variable | 24px (1.50rem) | 1000 | normal | Orange label above sections |
-| Body | Pretendard Variable | 16px (1.00rem) | 400 | 1.5 | Standard reading text |
-| Nav / Docs | Pretendard Variable | 14px (0.88rem) | 500 | normal | Nav links, docs sidebar |
-| Button | Pretendard Variable | 15px (0.94rem) | 700 | normal | CTA button label |
-| Caption | Pretendard Variable | 12px (0.75rem) | 400 | normal | Small labels, metadata |
+| Role | Size | Weight | Line height | Tracking | Where |
+|---|---|---|---|---|---|
+| Hero | 56px | 400 | 67.2px | -2.24px | Home H1 |
+| Page title | 56px | variable axis | 67.2px | -2.24px / -1.6px | Pricing and team H1 |
+| Section | 48px | variable axis | 60px | -1.44px | Home section headlines |
+| Sub-section | 36px | 400 | 48.6px | -1.08px | Product block headlines |
+| Serif accent | 36px | 400 | 43.2px | -1px | Team page, PT Serif Caption |
+| Card title | 28px | variable axis | 37.8px | -0.84px | Feature headings |
+| Eyebrow | 24px | variable axis | 36px | -0.24px | Coloured product-line labels |
+| Tab label | 17px | variable axis | 22.95px | -0.51px | Product switcher |
+| Body | 17px | variable axis | 25.5px | -0.17px | Body copy |
+| Nav / button | 15px | variable axis | 22px | normal | Header |
+| Caption | 13px | variable axis | 22.1px | normal | Footer |
 
 ### Principles
-- **One font, two weight extremes**: Pretendard Variable carries everything; the hierarchy signal is the weight jump from light (400) hero copy to ExtraBlack (1000) section heads.
-- **Orange owns the eyebrow**: the small section-eyebrow labels are set in heavy weight and signal orange (`#fc6b2d`) — a recurring rhythmic accent.
-- **Hangul-first sizing**: body sits at a comfortable 16px; docs and nav drop to 14px / weight 500 for dense scanning.
-- **Heading warmth**: headings use ink (`#111827`) on marketing and slate (`#0f172a`) on docs — never pure black.
+- **Tight tracking on big type.** Negative letter-spacing scales with size, from -2.24px at 56px down to -0.17px at 17px.
+- **One family, one serif accent.** Pretendard Variable everywhere; PT Serif Caption only as the team page's accent.
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Primary CTA (도입문의)**
-- Background: `#fc6b2d`
-- Text: `#ffffff`
-- Radius: 999px
-- Padding: 12px 20px
-- Font: 15px Pretendard Variable weight 700
-- Use: Primary call-to-action — orange gradient pill ("도입문의" / "Contact sales")
-
-**Secondary CTA (시작하기)**
-- Background: `#363a44`
-- Text: `#ffffff`
-- Radius: 999px
-- Padding: 12px 20px
-- Font: 12px Pretendard Variable weight 400
-- Use: Secondary call-to-action — charcoal gradient pill ("시작하기" / "Get started")
-
-**Header Nav CTA**
-- Background: `#363a44`
-- Text: `#ffffff`
+**Header contact (도입문의)**
+- Background: `linear-gradient(180deg, #363a44 0%, #030712 100%)`
+- Text: `#ffffff`, 15px
 - Radius: 64px
-- Padding: 16px
-- Use: Compact contact CTA in the sticky header
+- Size: 83.9 × 40, computed padding 16px
+- Hover and pressed: the gradient lightens to `#3f434d` → `#6b7280`; instant
+- Use: the primary action in the header
 
-### Navigation
+**Hero start (시작하기)**
+- Background: the same charcoal gradient, painted on an inner wrapper
+- Text: `#ffffff`, 17px
+- Inner highlight: `inset 0 2px 0 rgba(255, 255, 255, 0.1)`
+- Size: 98.1 × 49.5
+- Hover and pressed: the wrapper gradient lightens to `#3f434d` → `#6b7280`
+- Use: the hero call to action and the 살펴보기 buttons of each product block
+
+**Login (로그인)**
 - Background: `#ffffff`
-- Text: `#111827`
-- Radius: 64px (nav-item pill)
-- Padding: 16px
-- Font: 14px Pretendard Variable weight 500
-- Active: orange `#fc6b2d` text on active item
-- Use: Top horizontal nav ("서비스", "가격안내", "헬프센터", "개발가이드", "블로그")
+- Text: `#333333`, 15px
+- Radius: 64px
+- Size: 70.9 × 40, computed padding 16px
+- Hover and pressed: background `#eeeeee`
+- Use: header link to the admin console (not opened)
 
-### Cards & Containers
+The links' own colour reads as the browser default blue and turns red when pressed. That is Chromium's default link style on an element whose visible label is a child, not a PortOne state.
 
-**Tinted Surface Card**
-- Background: `#f9fafb`
-- Text: `#111827`
-- Radius: 30px
-- Padding: 20px
-- Use: Feature card sitting on the cool gray surface
+### Tabs
 
-**White Feature Card**
-- Background: `#ffffff`
-- Text: `#111827`
-- Radius: 20px
-- Padding: 24px
-- Use: White feature card, hairline-separated (no shadow)
-
-### Inputs & Forms
-
-**Docs Search Field**
-- Background: `#ffffff`
-- Text: `#334155`
-- Border: 1px solid `#d1d5db`
-- Radius: 6px
-- Padding: 6px 12px
-- Use: Search input on the developer docs (`developers.portone.io`), placeholder in muted slate `#94a3b8`
-
-### Badges
-
-**Success Pill**
-- Background: `#dcfce7`
-- Text: `#374151`
-- Radius: 8px
-- Font: 12px Pretendard Variable weight 500
-- Use: Success / confirmation status pill
-
-**Error Pill**
-- Background: `#fef2f2`
-- Text: `#df4c4c`
-- Radius: 8px
-- Font: 12px Pretendard Variable weight 500
-- Use: Error / alert status pill
+**Product switcher (국내 결제 / 해외 결제)**
+- Unselected background: `#ffffff`
+- Unselected label: `#374151`, 17px
+- Unselected border: 1px `#e5e5e5` (drawn by `::after`)
+- Selected: background `#fff8f5`, label `#fc6b2d`, border 1px `#fc6b2d`
+- Radius: 16px; 566 × 55, padding 16px
+- Hover and pressed: no change on either tab
 
 ---
 
-**Verified:** 2026-06-26 (omd:add-reference CREATE — Tier 1 live inspect, 2 brand-owned surfaces)
-**Tier 1 sources:** https://www.portone.io (homepage, live computed style); https://developers.portone.io (developer docs, live computed style); https://blog.portone.io; https://github.com/portone-io
-**Tier 2 sources:** getdesign.md/portone — NOT FOUND (no entry); styles.refero.design/?q=portone — not listed (search returns only generic gallery categories)
-**Conflicts unresolved:** none (marketing gray-ink vs docs slate-ink is an intentional two-surface split, documented in §2; orange `#fc6b2d` accent is constant across both)
+**Verified:** 2026-09-30 (deterministic collector capture of three public, logged-out www.portone.io pages plus fixed keyboard-probe state reads and first-party context)
+**Tier 1 sources:** https://www.portone.io/ ; https://www.portone.io/team ; https://www.portone.io/pricing ; https://blog.portone.io/ ; https://blog.naver.com/portone_kr
+**Tier 2 sources:** not attempted; no Tier 2 value used
 
 ## 5. Layout Principles
 
 ### Spacing System
-- Base unit: ~4px
-- Scale: 4px, 8px, 16px, 20px, 24px, 48px, 64px
-- Notable: CTA pills use 12px 20px padding; nav pills a square 16px; cards 20–24px interior padding
+- Header pills and switcher tabs both compute 16px padding.
+- The collector's most frequent spacing value is 6px (140 uses), then 16, 10 and 20px.
 
 ### Grid & Container
-- Centered single-column hero with the 56px Pretendard H1 as the anchor
-- Section eyebrow (orange, weight 1000) → ExtraBlack H2 → supporting body is the repeating vertical rhythm
-- Feature sections alternate between white (`#ffffff`) and tinted gray (`#f9fafb`) full-width bands
-- Cards group related products at 20–30px radius
+- Content runs 1200px wide inside a 1440 viewport (hero H1 and section headlines are 1200px).
+- The product switcher splits its block into two 566px tabs.
 
 ### Whitespace Philosophy
-- **Breathing room over density**: despite being a data-heavy fintech, the marketing surface is airy with generous vertical rhythm.
-- **Flat segmentation**: sections separate by background tint (`#f9fafb` vs `#ffffff`) and `#d1d5db` hairlines, not by shadow.
-- **Pill rhythm**: the repeated pill (64px nav, 999px CTA) creates a consistent rounded cadence.
+Large headline blocks on white, each followed by one product block with an eyebrow, a headline, a switcher and an illustration. The page moves through the product lines one block at a time.
 
 ### Border Radius Scale
-- Extra small (6px): docs inputs, code chips, dense UI
-- Small (8px): badges, inner elements
-- Medium (16px): standard cards
-- Large (30px): hero feature cards
-- Full (999px): CTA pills, nav pills
+- 16px: switcher tabs
+- 64px: header pills
+- The collector's radius census holds only 0 and 64px. The 16px tab radius comes from the probe.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
-| Tint (Level 1) | `#f9fafb` background shift | Card / section separation without elevation |
-| Hairline (Level 2) | `1px solid #d1d5db` border | Card outlines, input borders, dividers |
-| Glow (Level 3, rare) | `rgba(180,156,197,0.1) 0px 0px 16px 4px` | Subtle ambient lift on a featured card |
-
-**Shadow Philosophy**: PortOne is a near-shadowless system. Live inspection found `box-shadow: none` across the hero, nav, headings, and most cards; the only elevation observed was a single soft purple-tinted glow on a featured card. Depth and grouping come from flat tinted surfaces (`#f9fafb`) and thin `#d1d5db` hairlines. This keeps the financial UI feeling clean, fast, and mobile-native. When emphasis is needed, the system reaches for color (orange `#fc6b2d` or the charcoal `#363a44` CTA), never heavy elevation.
+The only shadow measured is the 1px inner highlight on the hero button (`inset 0 2px 0 rgba(255, 255, 255, 0.1)`). Surfaces are otherwise flat; tabs separate with 1px borders.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use Pretendard Variable for all text — both marketing and docs surfaces
-- Reserve signal orange (`#fc6b2d`) for the primary CTA and section eyebrows — keep it the single "action" color
-- Contrast light (400) hero copy against ExtraBlack (1000) section heads — the weight jump is the hierarchy
-- Use ink (`#111827`) for marketing headings and slate (`#0f172a` / `#334155`) for docs — never pure black
-- Separate sections with flat tinted surfaces (`#f9fafb`) and `#d1d5db` hairlines, not shadows
-- Use pill geometry — 64px nav pills, 999px CTA pills, 20–30px cards
-- Use the charcoal gradient (`#363a44`) for the secondary CTA
-- Keep status colors tinted and quiet: blue `#e6f1ff`, success `#dcfce7`, error `#df4c4c` on `#fef2f2`
+- Use `#fc6b2d` for the selected state and for the eyebrow label, with a `#fff8f5` fill behind a selected panel.
+- Fill primary actions with the charcoal gradient `#363a44` → `#030712` and a white label.
+- Keep header buttons as 40px pills with a 64px radius.
+- Set big headlines in Pretendard Variable with negative tracking.
 
 ### Don't
-- Spread orange across many elements — it dilutes the single-action signal
-- Use pure black (`#000000`) for headings — use ink `#111827` or slate `#0f172a`
-- Lean on heavy drop shadows for elevation — PortOne is a flat, hairline-separated system
-- Use sharp/square corners on CTAs or nav — interactive chrome is pill-shaped
-- Mix in a second saturated accent hue — orange is the only one; charcoal is neutral
-- Set every headline at one weight — the light/ExtraBlack contrast is the voice
-- Use a different font on the docs vs marketing — Pretendard Variable spans both
+- Don't fill buttons with orange; the captured pages never do.
+- Don't copy the computed weight 1000 as a static font weight.
+- Don't add transitions the pages don't have; state changes are instant.
+- Don't treat the browser's default link colours as brand colours.
 
 ## 8. Responsive Behavior
 
 ### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses, nav collapses |
-| Tablet | 640-1024px | Moderate padding, 2-up feature cards |
-| Desktop | 1024-1440px | Full layout, centered hero, multi-column feature bands |
+Only the 1440px desktop viewport was captured.
 
 ### Touch Targets
-- CTA pills at ~50px height, full pill for an unmistakable target
-- Nav pills at 40px height with 16px padding
-- Docs search field at comfortable 6px 12px padding
+- Header pills are 40px tall, the hero button about 50px, switcher tabs 55px.
 
 ### Collapsing Strategy
-- Hero: 56px Pretendard headline scales down on mobile, weight maintained
-- Nav: horizontal pills → hamburger toggle
-- Feature bands: multi-column → stacked single column
-- Tinted / white alternating sections maintain full-width treatment
+Not measured.
 
 ### Image Behavior
-- Product screenshots and illustrations carry little to no shadow at any size, consistent with the flat system
-- Cards maintain 16–30px radius across breakpoints
+Product blocks pair copy with illustrated UI mock-ups; the customer-story cards use photography.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary CTA: Signal Orange (`#fc6b2d`)
-- Secondary CTA: Charcoal (`#363a44`)
-- Background: Pure White (`#ffffff`)
-- Tinted surface: Surface Gray (`#f9fafb`) / Surface Alt (`#f3f4f6`)
-- Heading text (marketing): Ink (`#111827`)
-- Heading / body text (docs): Slate (`#0f172a` / `#334155`)
-- Body text: Gray Strong (`#374151`), Body Gray (`#6b7280`)
-- Muted / placeholder: Muted Slate (`#94a3b8`)
-- Hairline: `#d1d5db`
-- Status: Accent Blue (`#e6f1ff`), Success (`#dcfce7`), Error (`#df4c4c`) on Error Tint (`#fef2f2`)
+- Selected / accent: `#fc6b2d` on `#fff8f5`
+- Action: gradient `#363a44` → `#030712`, label `#ffffff`
+- Ink: `#111827`
+- Body: `#374151`
+- Muted: `#6b7280`
+- Canvas: `#ffffff`
 
 ### Example Component Prompts
-- "Create a hero on white background. Eyebrow label 24px Pretendard Variable weight 1000 in orange #fc6b2d. H1 at 56px weight 400, color #111827. Below it an orange CTA pill: #fc6b2d background, white text, 999px radius, 12px 20px padding, 15px weight 700 — '도입문의'. And a charcoal secondary pill: #363a44 background, white text, 999px radius."
-- "Design a feature card: white #ffffff background, 1px solid #d1d5db hairline, 20px radius, no shadow. Title 36px Pretendard Variable weight 400, #111827. Body 16px weight 400, #6b7280."
-- "Build a tinted section: #f9fafb background, full-width. Section eyebrow 24px weight 1000 orange #fc6b2d. H2 48px weight 1000 #111827. Cards inside use white #ffffff with #d1d5db hairline and 30px radius."
-- "Create a docs layout: slate ink #0f172a headings, #334155 body, #94a3b8 muted placeholders. Search field: white bg, 1px solid #d1d5db, 6px radius, 6px 12px padding. Sidebar links 14px weight 500."
+- "A 40px pill button, radius 64px, 16px horizontal padding, background linear-gradient(180deg, #363a44, #030712), label #ffffff 15px Pretendard Variable; hover lightens the gradient to #3f434d → #6b7280 instantly."
+- "A two-up tab switcher: each tab 55px tall, radius 16px, padding 16px, 17px label. Unselected: white fill, #374151 label, 1px #e5e5e5 border. Selected: #fff8f5 fill, #fc6b2d label and 1px border."
+- "A section eyebrow in #fc6b2d, 24px Pretendard Variable, above a 36px / 400 headline in #111827."
 
 ### Iteration Guide
-1. Pretendard Variable everywhere; weight 400 hero vs 1000 section heads is the hierarchy
-2. Orange (`#fc6b2d`) is the single action color — don't spread it
-3. No heavy shadows — separate with `#f9fafb` tint and `#d1d5db` hairlines
-4. Pill geometry — 999px CTAs, 64px nav, 20–30px cards
-5. Heading color is `#111827` (marketing) or `#0f172a` (docs), never pure black
-6. Charcoal `#363a44` for the secondary CTA
-7. Status tints stay quiet: blue `#e6f1ff`, success `#dcfce7`, error `#df4c4c` on `#fef2f2`
-
----
+1. Check orange appears only as selection or eyebrow, never as a button fill.
+2. Check primary buttons use the charcoal gradient.
+3. Check headline tracking is negative and grows with size.
+4. Check no transitions were added.
 
 ## 10. Voice & Tone
 
-PortOne's voice is **clear, infrastructural, and quietly ambitious** — a payments partner that turns a notoriously complex domain (multi-PG integration, cross-border settlement, reconciliation) into plain, confident Korean. The hero line "AI로 결제와 재무 운영을 자유롭게" ("Free your payments and financial operations with AI") and the positioning "원 페이먼트 인프라" ("One Payment Infrastructure") set the register: declarative, capability-first, never gimmicky. Copy treats the reader — often a developer or finance operator — as a peer who wants the integration done, not a lead to be pressured.
+PortOne's voice is clear, infrastructural and quietly ambitious. It turns a complicated domain (many payment gateways, settlement, tax invoices, reconciliation) into plain Korean. The hero "AI로 결제와 재무 운영을 자유롭게" and the block line "사업의 시작부터 확장까지, 단 하나의 결제 인프라" set the register: declarative and capability-first. The closing banner makes a point without pressure: "재무 관리는 '버티는 것'이 아니라 '앞서가는 것'이어야 합니다".
 
 | Context | Tone |
 |---|---|
-| Hero headlines | Declarative, capability-framed. "AI로 결제와 재무 운영을 자유롭게." Confident, not hype. |
-| Section eyebrows | Terse product labels in orange. "원 페이먼트 인프라", "국내 결제". |
-| CTAs | Direct, low-pressure. "도입문의", "시작하기". |
-| Feature descriptions | Benefit-first, concrete. "사업의 시작부터 확장까지, 단 하나의 결제 인프라." |
-| Developer docs | Precise, peer-to-peer. Quick guides and API references lead with the integration path. |
+| Hero | Capability promise ("AI로 결제와 재무 운영을 자유롭게") |
+| Eyebrows | Product names (원 페이먼트 인프라, 파트너 정산 자동화, 글로벌 커머스 솔루션) |
+| Calls to action | Short and low-pressure (도입문의, 시작하기, 살펴보기) |
+| Proof | Numbers and customer quotes (48조, 85% 결제대행사 연동 비용 절감, 위버스, 아더에러) |
+| Culture | Values stated as behaviours (the RECIPE page) |
 
-**Voice samples (verbatim, verified live 2026-06-26):**
-- "AI로 결제와 재무 운영을 자유롭게" — hero H1 (capability-framed mission). *(verified live homepage)*
-- "결제 연동부터 글로벌 재무 운영까지 하나의 AI 재무 인프라로" — section H2 (end-to-end promise). *(verified live homepage)*
-- "통합 결제·정산 AI 재무 인프라 | 포트원" — page title meta (integrated positioning). *(verified live homepage)*
-
-**Forbidden register**: aggressive sales urgency, undefined jargon left unexplained, exclamation-heavy hype, fear-based FOMO. PortOne sells reliability, not anxiety.
+**Forbidden register:** sales urgency, unexplained jargon, exclamation-heavy hype, fear-based framing.
 
 ## 11. Brand Narrative
 
-PortOne (포트원) began in **2015** as **아임포트 (Iamport)**, a developer-first payment-integration service operated by **코리아포트원 (Korea PortOne Co., Ltd.)** under CEO **정영주 (Jung Young-joo)**. Iamport solved a uniquely painful Korean problem: integrating even one domestic PG (payment gateway) was a multi-week ordeal of bespoke SDKs, and supporting many of them was effectively a full-time job. Iamport's premise — a single API in front of every PG — let developers ship payments in minutes instead of months.
+PortOne began as a developer-first way to put many Korean payment gateways behind one integration. The home page still leads with that ("모든 PG 결제, 정산을 단 한번의 연동으로 완성합니다", about 25 domestic PGs), and its developer guide keeps 결제모듈 V1 and V2 side by side. The current site shows the next step. The company presents itself as AI finance infrastructure that runs from payment through tax and settlement, with products for partner settlement, payouts, tax invoices, month-end close and a global site for cross-border settlement.
 
-On **February 6, 2023** the company rebranded from Iamport to **PortOne**, signaling a move beyond a developer utility toward a full **"원 페이먼트 인프라" (One Payment Infrastructure)** platform. The rebrand carried three stated brand narratives — *"One to Beyond, First Chapter, Asia No.1"* — and a service philosophy of *"세상 모든 방식의 결제를 가능하게 하는 통합 솔루션"* ("an integrated solution that makes every method of payment in the world possible"). By 2022 the company was processing roughly **10조원 (~10 trillion KRW)** in annual transaction volume across ~2,300 merchants; today PortOne reaches **8 countries and ~3,000 customers**, fronting **100+ payment options** and ~25 domestic and international PGs through one integrated API, and extending into partner-settlement automation and AI-assisted financial operations.
+The team page sets out the culture as six values under the name RECIPE: Respect (존중), Execution (실행), Customer (고객), Integrity (솔직함), PortOne (One Team) and Excellence (탁월한 태도와 방식). Several of them name AI directly: automating customers' manual work with AI, and looking for better methods "AI를 포함한 새로운 접근으로". The company publishes a corporate blog (blog.portone.io) with news, customer stories and tips, and a Naver blog for Korean readers.
 
-What PortOne refuses, visible in its design: the heavy, intimidating chrome of legacy enterprise finance software, and the dark-pattern urgency of conversion-obsessed marketing. What it embraces: a flat, fast, developer-respecting interface; a single trustworthy orange; Pretendard Variable headlines that range from whisper-light to ExtraBlack; and copy that names the capability plainly. The two-surface design — gray-ink marketing, slate-ink docs, one orange accent — mirrors the company's dual audience of business buyers and the developers who actually wire up the API.
+The design follows that stance: calm white pages, charcoal actions, and one orange used to show where you are rather than to shout.
+
+*The June record also described an earlier brand name, a 2023 rebrand date and 2022 volume figures. They were not re-opened on a first-party page in this wave and are left out until they are.*
 
 ## 12. Principles
 
-1. **One API, one infrastructure.** PortOne's entire reason for existing is consolidation — many PGs behind a single integration. *UI implication:* one primary action color (orange `#fc6b2d`), one font, one consistent pill geometry; never fragment the system.
-2. **Respect the developer.** The product was born as a developer tool (Iamport). *UI implication:* the docs surface is first-class — precise slate typography, fast search, integration-path-first navigation, not an afterthought.
-3. **Capability over hype.** State what it does, not how revolutionary it is. *UI implication:* declarative headlines, terse CTAs ("도입문의"), no exclamation-driven urgency.
-4. **Flat and fast.** Mobile-native clarity beats decorative depth. *UI implication:* near-shadowless; separate with `#f9fafb` tint and `#d1d5db` hairlines; keep the page light.
-5. **Quiet where it informs, bold where it persuades.** *UI implication:* light (400) hero and body for reading; ExtraBlack (1000) heads and orange eyebrows for the moments that need to land.
+1. **One integration, one infrastructure.** *UI implication:* one action style (the charcoal gradient) and one accent (orange) across the site.
+2. **Show where the user is.** *UI implication:* orange marks the selected option and the current section, not the button.
+3. **Capability over hype.** *UI implication:* declarative headlines, short calls to action, numbers as proof.
+4. **Flat and instant.** *UI implication:* no shadows beyond a hairline highlight; state changes without animation.
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable PortOne user segments (Korean e-commerce developers, finance/operations teams, cross-border merchants), not individual people.*
+*Personas below are fictional archetypes informed by the audiences the site addresses (Korean commerce developers, finance and operations teams, cross-border merchants), not individual people.*
 
-**이준호, 30, 서울.** Backend developer at a fast-growing D2C commerce startup. Chose PortOne because wiring up multiple Korean PGs by hand was eating his sprint; one API got checkout live in an afternoon. Judges a payments vendor by how fast its docs let him integrate without a sales call.
+**이준호, 30, 서울.** Backend developer at a fast-growing D2C commerce startup. Wants several Korean PGs live without wiring each one by hand. Judges a payments vendor by how fast its docs get checkout working.
 
-**박지은, 38, 경기.** Finance operations lead at a mid-market retailer selling in several countries. Lives in settlement and reconciliation; values PortOne's partner-settlement automation and the single dashboard that closes the books across PGs. Distrusts tools that look flashy but hide the numbers.
+**박지은, 38, 경기.** Finance operations lead at a mid-market retailer selling in several countries. Lives in settlement and reconciliation. Values partner-settlement automation and a single month-end close.
 
-**Sanjay Mehta, 34, Singapore.** Product manager at a cross-border marketplace expanding into Korea. Picked PortOne for its 100+ payment options behind one integration and its 8-country reach. Reads the English docs and trusts the calm, capability-first tone over hype.
+**Sanjay Mehta, 34, Singapore.** Product manager at a cross-border marketplace expanding into Korea. Needs local payment methods behind one integration and English documentation.
 
 ## 14. States
 
-| State | Treatment |
+| State | What was measured |
 |---|---|
-| **Empty (no transactions / data)** | White canvas. Single Ink (`#111827`) line at body size explaining no activity yet, with one orange CTA to take the next step. No illustration clutter. |
-| **Empty (saved / list, none yet)** | Body Gray (`#6b7280`) single line: nothing here yet, plus a path back. Honest, calm. |
-| **Loading (data fetch)** | Skeleton rows on `#f9fafb` tinted surface at final card dimensions, flat pulse. No shadow shimmer — consistent with the shadowless system. |
-| **Loading (docs search)** | Inline spinner within the search field; previous results stay visible until replaced. |
-| **Error (request failed)** | Inline message: Error Red (`#df4c4c`) text on Error Tint (`#fef2f2`) surface, 8px radius, with a plain-language cause and a retry. No generic "오류가 발생했습니다" alone. |
-| **Error (form validation)** | Field-level message below the input in the error tone; describes what is valid, not just "필수". |
-| **Success (action complete)** | Brief inline confirmation in Success Tint (`#dcfce7`), 8px radius; next-step detail linked immediately below. No celebratory emoji. |
-| **Skeleton** | `#f9fafb` blocks at final dimensions, flat pulse, no elevation. |
-| **Disabled** | Muted Slate (`#94a3b8`) text on reduced-opacity surface; the orange CTA fades rather than turning gray, to preserve the brand read. |
+| **Hover / pressed, charcoal buttons** | Gradient `#363a44` → `#030712` becomes `#3f434d` → `#6b7280`; instant |
+| **Hover / pressed, 로그인** | `#ffffff` → `#eeeeee`; instant |
+| **Selected, product tab** | `#fff8f5` fill, `#fc6b2d` label and 1px border |
+| **Hover / pressed, product tabs** | No change |
+| **Focus** | Not measured; do not infer a focus style from this reference |
+
+Empty, loading, error and success states were not observed on the public pages and are not specified here.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, pill press, focus |
-| `motion-standard` | 200ms | Card / section reveal, sheet, dropdown |
-| `motion-slow` | 320ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sheets, cards, pills |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and quiet — consistent with the flat, fast aesthetic. Pill CTAs respond to press with a subtle scale/opacity shift; section content fades in from below at `motion-standard / ease-enter`. No bounce or spring — payments infrastructure signals steadiness, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
+Every probed control (도입문의, 로그인, 시작하기 and both product tabs) computes `transition: all 0s`, so its state changes are instant. Nothing else about motion (Framer scroll effects, the logo marquee, counters) was measured. Treat it as unspecified and honour `prefers-reduced-motion` in any build.
 
 <!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-26) via playwright getComputedStyle:
-- https://www.portone.io (homepage) — Pretendard Variable; hero H1 56px/400 rgb(17,24,39) #111827;
-  section H2 48px/1000; eyebrow 24px/1000 orange rgb(252,107,45) #fc6b2d; primary CTA "도입문의"
-  orange gradient (rgb(252,107,45)) radius 999px padding 12px 20px white label weight ~700/1000;
-  secondary CTA "시작하기" charcoal gradient rgb(54,58,68) #363a44 radius 999px; nav pills white
-  radius 64px padding 16px text rgb(17,24,39); cards #f9fafb radius 30px / white radius 16-20px,
-  box-shadow none (one card had rgba(180,156,197,0.1) glow). document.title
-  "통합 결제·정산 AI 재무 인프라 | 포트원".
-- https://developers.portone.io (developer docs) — Pretendard Variable; heading rgb(15,23,42) #0f172a,
-  body rgb(51,65,85) #334155, muted rgb(148,163,184) #94a3b8; search button radius 6px padding 6px 12px;
-  nav links 14px/500; orange rgb(252,107,45) #fc6b2d accent present (consistent with marketing).
-
-Token-level claims (§1-9) are sourced from these two live inspections (see .verification.md Raw samples).
-
-Voice samples (§10) are verbatim from the live homepage (hero H1, section H2, page title meta).
-
-Brand narrative (§11): founded 2015 as 아임포트 (Iamport) by 코리아포트원 (Korea PortOne Co., Ltd.),
-CEO 정영주; rebranded to PortOne on 2023-02-06 with brand narratives "One to Beyond, First Chapter,
-Asia No.1" and philosophy "세상 모든 방식의 결제를 가능하게 하는 통합 솔루션"; ~10조원 annual TPV (2022),
-~2,300 merchants; now 8 countries / ~3,000 customers / 100+ payment options. Sourced from KDPRESS
-(rebrand article, idxno=117887) and PortOne homepage/company surfaces. Specific figures beyond the
-homepage are widely reported public facts, not directly quoted PortOne statements in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable PortOne user segments
-(Korean commerce developers, finance/ops teams, cross-border merchants). Names are illustrative;
-they do not refer to real people.
-
-Interpretive claims (e.g., "one API one infrastructure", "two-surface split mirrors dual audience")
-are editorial readings connecting PortOne's observed design to its positioning, not directly sourced
-PortOne statements.
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/portone.json (capturedAt 2026-09-30T13:12:59Z), deterministic collector, 1440x900, logged out: www.portone.io, /team, /pricing. States, the gradient fills and the tab colours: fixed keyboard probe raw docs/research/2026-09-29-growth/raw/portone-states-home.json.
+- §1, §10, §11 context: the home copy and footer, /team (RECIPE values), /pricing, blog.portone.io and blog.naver.com/portone_kr, opened 2026-09-30.
+- §3 licence: the Pretendard LICENSE file on GitHub.
+- The June body's orange-filled button, docs-site slate palette, status badges, cards, search input and motion table were not observed on the captured pages and were removed.
+- Personas are fictional archetypes. Interpretive readings are editorial.
 -->

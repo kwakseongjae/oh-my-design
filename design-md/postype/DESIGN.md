@@ -1,57 +1,331 @@
 ---
-id: postype
-name: POSTYPE
-display_name_kr: 포스타입
-country: KR
-category: consumer-tech
+id: "postype"
+name: "POSTYPE"
+display_name_kr: "포스타입"
+country: "KR"
+category: "consumer-tech"
 homepage: "https://www.postype.com"
-primary_color: "#f33d4d"
+primary_color: "#2c2c2f"
 logo:
-  type: favicon
+  type: "favicon"
   slug: "https://www.google.com/s2/favicons?domain=postype.com&sz=128"
-verified: "2026-06-11"
+verified: "2026-09-30"
 added: "2026-06-11"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: "home", kind: "product", url: "https://www.postype.com/", inspected: "2026-09-30" }
+    - { id: "surface-2", kind: "corporate", url: "https://about.postype.com/", inspected: "2026-09-30" }
+    - { id: "surface-3", kind: "product", url: "https://www.postype.com/@team", inspected: "2026-09-30" }
+  sources:
+    - { id: "surface-home", kind: "product-surface", url: "https://www.postype.com/", captured: "2026-09-30" }
+    - { id: "surface-surface-2", kind: "product-surface", url: "https://about.postype.com/", captured: "2026-09-30" }
+    - { id: "surface-surface-3", kind: "product-surface", url: "https://www.postype.com/@team", captured: "2026-09-30" }
+    - { id: "postype-probe-home", kind: "product-surface", url: "https://www.postype.com/", captured: "2026-09-30" }
+    - { id: "postype-about", kind: "official-doc", url: "https://about.postype.com/", captured: "2026-09-30" }
+    - { id: "postype-team", kind: "official-doc", url: "https://www.postype.com/@team", captured: "2026-09-30" }
+    - { id: "pretendard-license", kind: "license", url: "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &signup { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-capture=\"5\"]", captured: "2026-09-30" }
+    "tokens.colors.primary-hover": &signuphover { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-capture=\"5\"]::state-hover", captured: "2026-09-30" }
+    "tokens.colors.primary-pressed": &signuppressed { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-capture=\"5\"]::state-pressed", captured: "2026-09-30" }
+    "tokens.colors.on-primary": *signup
+    "tokens.colors.ink": &body { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::body", captured: "2026-09-30" }
+    "tokens.colors.body": &ptext { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.muted": &meta { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::p", captured: "2026-09-30" }
+    "tokens.colors.disabled": &icondis { surface_id: "surface-3", source_id: "surface-surface-3", method: "computed-style", selector: "surface-3::[data-omd-capture=\"188\"]", captured: "2026-09-30" }
+    "tokens.colors.link": &link { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-capture=\"32\"]", captured: "2026-09-30" }
+    "tokens.colors.info": &alert { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::div", captured: "2026-09-30" }
+    "tokens.colors.info-surface": &filtersel { surface_id: "surface-3", source_id: "surface-surface-3", method: "computed-style", selector: "surface-3::[data-omd-capture=\"35\"]", captured: "2026-09-30" }
+    "tokens.colors.info-border": *filtersel
+    "tokens.colors.alert-red": &menualert { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-interaction-capture=\"menu-0-4\"]", captured: "2026-09-30" }
+    "tokens.colors.surface": &iconhover { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-capture=\"2\"]::state-hover", captured: "2026-09-30" }
+    "tokens.colors.surface-pressed": &iconpressed { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-capture=\"2\"]::state-pressed", captured: "2026-09-30" }
+    "tokens.colors.hairline": &login { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-capture=\"4\"]", captured: "2026-09-30" }
+    "tokens.colors.white": &card { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::section", captured: "2026-09-30" }
+    "tokens.colors.focus-ring": &signupprobe { surface_id: "home", source_id: "postype-probe-home", method: "live-state-probe", selector: "a 회원 가입 (87.4 x 40, rest bg #2c2c2f, fg #ffffff, transition all 0s): hover bg rgb(44, 44, 47) -> rgb(0, 0, 0); pressed bg -> rgb(62, 62, 67); focus outline none -> rgb(52, 120, 255) solid 2px off 2px", captured: "2026-09-30" }
+    "tokens.typography.family.sans": *body
+    "tokens.typography.heading.size": &h1 { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::h1", captured: "2026-09-30" }
+    "tokens.typography.heading.weight": *h1
+    "tokens.typography.heading.lineHeight": *h1
+    "tokens.typography.heading.use": *h1
+    "tokens.typography.section.size": &h2 { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::h2", captured: "2026-09-30" }
+    "tokens.typography.section.weight": *h2
+    "tokens.typography.section.lineHeight": *h2
+    "tokens.typography.section.tracking": *h2
+    "tokens.typography.section.use": *h2
+    "tokens.typography.item-title.size": &h3 { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::h3", captured: "2026-09-30" }
+    "tokens.typography.item-title.weight": *h3
+    "tokens.typography.item-title.lineHeight": *h3
+    "tokens.typography.item-title.use": *h3
+    "tokens.typography.card-title.size": &ctitle { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.card-title.weight": *ctitle
+    "tokens.typography.card-title.lineHeight": *ctitle
+    "tokens.typography.card-title.use": *ctitle
+    "tokens.typography.body.size": *body
+    "tokens.typography.body.weight": *body
+    "tokens.typography.body.lineHeight": *body
+    "tokens.typography.body.use": *body
+    "tokens.typography.body-secondary.size": *ptext
+    "tokens.typography.body-secondary.weight": *ptext
+    "tokens.typography.body-secondary.lineHeight": *ptext
+    "tokens.typography.body-secondary.use": *ptext
+    "tokens.typography.button.size": *signup
+    "tokens.typography.button.weight": *signup
+    "tokens.typography.button.lineHeight": *signup
+    "tokens.typography.button.use": *signup
+    "tokens.typography.button-sm.size": &tonal { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-capture=\"33\"]", captured: "2026-09-30" }
+    "tokens.typography.button-sm.weight": *tonal
+    "tokens.typography.button-sm.lineHeight": *tonal
+    "tokens.typography.button-sm.use": *tonal
+    "tokens.typography.menu.size": &menuitem { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-interaction-capture=\"menu-0-1\"]", captured: "2026-09-30" }
+    "tokens.typography.menu.weight": *menuitem
+    "tokens.typography.menu.lineHeight": *menuitem
+    "tokens.typography.menu.use": *menuitem
+    "tokens.typography.caption.size": &cap { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::li", captured: "2026-09-30" }
+    "tokens.typography.caption.weight": *cap
+    "tokens.typography.caption.lineHeight": *cap
+    "tokens.typography.caption.use": *cap
+    "tokens.typography.meta.size": *meta
+    "tokens.typography.meta.weight": *meta
+    "tokens.typography.meta.lineHeight": *meta
+    "tokens.typography.meta.use": *meta
+    "tokens.typography.chip.size": &chiplabel { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::#_r_1e_", captured: "2026-09-30" }
+    "tokens.typography.chip.weight": *chiplabel
+    "tokens.typography.chip.lineHeight": *chiplabel
+    "tokens.typography.chip.use": *chiplabel
+    "tokens.spacing.button-y": *signup
+    "tokens.spacing.button-x": *signup
+    "tokens.spacing.button-sm-y": *tonal
+    "tokens.spacing.button-sm-x": *tonal
+    "tokens.spacing.list-y": &listbtn { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-capture=\"7\"]", captured: "2026-09-30" }
+    "tokens.spacing.list-x": *listbtn
+    "tokens.spacing.menu": &menu { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-interaction-capture=\"menu-0-0\"]", captured: "2026-09-30" }
+    "tokens.spacing.card": *card
+    "tokens.spacing.feed-y": &feed { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::article", captured: "2026-09-30" }
+    "tokens.spacing.chip-x": *chiplabel
+    "tokens.rounded.small": &alertbtn { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-capture=\"242\"]", captured: "2026-09-30" }
+    "tokens.rounded.button": *signup
+    "tokens.rounded.card": *card
+    "tokens.rounded.chip": &chip { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-capture=\"36\"]", captured: "2026-09-30" }
+    "tokens.components.signup-button.type": *signup
+    "tokens.components.signup-button.bg": *signup
+    "tokens.components.signup-button.fg": *signup
+    "tokens.components.signup-button.radius": *signup
+    "tokens.components.signup-button.padding": *signup
+    "tokens.components.signup-button.height": *signup
+    "tokens.components.signup-button.font": *signup
+    "tokens.components.signup-button.hover": *signupprobe
+    "tokens.components.signup-button.pressed": *signupprobe
+    "tokens.components.signup-button.focus": *signupprobe
+    "tokens.components.signup-button.states": *signupprobe
+    "tokens.components.signup-button.use": *signup
+    "tokens.components.login-button.type": *login
+    "tokens.components.login-button.bg": *login
+    "tokens.components.login-button.fg": *login
+    "tokens.components.login-button.border": *login
+    "tokens.components.login-button.radius": *login
+    "tokens.components.login-button.padding": *login
+    "tokens.components.login-button.height": *login
+    "tokens.components.login-button.font": *login
+    "tokens.components.login-button.hover": &loginprobe { surface_id: "home", source_id: "postype-probe-home", method: "live-state-probe", selector: "a 로그인 (72.9 x 40, rest transparent, fg #2c2c2f, transition all 0s): hover bg -> rgb(242, 242, 243); pressed bg -> rgb(234, 234, 235); focus outline none -> rgb(52, 120, 255) solid 2px off 2px", captured: "2026-09-30" }
+    "tokens.components.login-button.pressed": *loginprobe
+    "tokens.components.login-button.focus": *loginprobe
+    "tokens.components.login-button.states": *loginprobe
+    "tokens.components.login-button.use": *login
+    "tokens.components.subscribe-button.type": &subscribe { surface_id: "surface-3", source_id: "surface-surface-3", method: "computed-style", selector: "surface-3::[data-omd-capture=\"26\"]", captured: "2026-09-30" }
+    "tokens.components.subscribe-button.bg": *subscribe
+    "tokens.components.subscribe-button.fg": *subscribe
+    "tokens.components.subscribe-button.radius": *subscribe
+    "tokens.components.subscribe-button.padding": *subscribe
+    "tokens.components.subscribe-button.height": *subscribe
+    "tokens.components.subscribe-button.font": *subscribe
+    "tokens.components.subscribe-button.states": *subscribe
+    "tokens.components.subscribe-button.use": *subscribe
+    "tokens.components.tonal-button.type": *tonal
+    "tokens.components.tonal-button.bg": *tonal
+    "tokens.components.tonal-button.fg": *tonal
+    "tokens.components.tonal-button.radius": *tonal
+    "tokens.components.tonal-button.padding": *tonal
+    "tokens.components.tonal-button.height": *tonal
+    "tokens.components.tonal-button.font": *tonal
+    "tokens.components.tonal-button.states": *tonal
+    "tokens.components.tonal-button.use": *tonal
+    "tokens.components.outline-button-sm.type": &outlinesm { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-capture=\"85\"]", captured: "2026-09-30" }
+    "tokens.components.outline-button-sm.bg": *outlinesm
+    "tokens.components.outline-button-sm.fg": *outlinesm
+    "tokens.components.outline-button-sm.border": *outlinesm
+    "tokens.components.outline-button-sm.radius": *outlinesm
+    "tokens.components.outline-button-sm.padding": *outlinesm
+    "tokens.components.outline-button-sm.height": *outlinesm
+    "tokens.components.outline-button-sm.font": *outlinesm
+    "tokens.components.outline-button-sm.states": *outlinesm
+    "tokens.components.outline-button-sm.use": *outlinesm
+    "tokens.components.sidebar-item.type": *listbtn
+    "tokens.components.sidebar-item.bg": *listbtn
+    "tokens.components.sidebar-item.fg": *listbtn
+    "tokens.components.sidebar-item.radius": *listbtn
+    "tokens.components.sidebar-item.padding": *listbtn
+    "tokens.components.sidebar-item.height": *listbtn
+    "tokens.components.sidebar-item.font": *listbtn
+    "tokens.components.sidebar-item.selected": &listcur { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-capture=\"6\"]", captured: "2026-09-30" }
+    "tokens.components.sidebar-item.hover": &listhover { surface_id: "surface-3", source_id: "surface-surface-3", method: "computed-style", selector: "surface-3::[data-omd-capture=\"18\"]::state-hover", captured: "2026-09-30" }
+    "tokens.components.sidebar-item.pressed": &listpressed { surface_id: "surface-3", source_id: "surface-surface-3", method: "computed-style", selector: "surface-3::[data-omd-capture=\"6\"]::state-pressed", captured: "2026-09-30" }
+    "tokens.components.sidebar-item.states": *listbtn
+    "tokens.components.sidebar-item.use": *listbtn
+    "tokens.components.icon-button.type": &icon { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-capture=\"2\"]", captured: "2026-09-30" }
+    "tokens.components.icon-button.bg": *icon
+    "tokens.components.icon-button.fg": *icon
+    "tokens.components.icon-button.radius": *icon
+    "tokens.components.icon-button.padding": *icon
+    "tokens.components.icon-button.size": *icon
+    "tokens.components.icon-button.hover": *iconhover
+    "tokens.components.icon-button.pressed": *iconpressed
+    "tokens.components.icon-button.disabled": *icondis
+    "tokens.components.icon-button.states": *icon
+    "tokens.components.icon-button.use": *icon
+    "tokens.components.tag-chip.type": *chip
+    "tokens.components.tag-chip.bg": *chip
+    "tokens.components.tag-chip.fg": *chiplabel
+    "tokens.components.tag-chip.radius": *chip
+    "tokens.components.tag-chip.padding": *chip
+    "tokens.components.tag-chip.height": *chip
+    "tokens.components.tag-chip.font": *chip
+    "tokens.components.tag-chip.use": *chip
+    "tokens.components.filter-chip.type": &filter { surface_id: "surface-3", source_id: "surface-surface-3", method: "computed-style", selector: "surface-3::[data-omd-capture=\"36\"]", captured: "2026-09-30" }
+    "tokens.components.filter-chip.bg": *filter
+    "tokens.components.filter-chip.fg": *filter
+    "tokens.components.filter-chip.border": *filter
+    "tokens.components.filter-chip.radius": *filter
+    "tokens.components.filter-chip.padding": *filter
+    "tokens.components.filter-chip.height": *filter
+    "tokens.components.filter-chip.font": *filter
+    "tokens.components.filter-chip.selected": *filtersel
+    "tokens.components.filter-chip.states": *filter
+    "tokens.components.filter-chip.use": *filter
+    "tokens.components.menu-popup.type": *menu
+    "tokens.components.menu-popup.bg": *menu
+    "tokens.components.menu-popup.radius": *menu
+    "tokens.components.menu-popup.padding": *menu
+    "tokens.components.menu-popup.shadow": *menu
+    "tokens.components.menu-popup.use": *menu
+    "tokens.components.menu-item.type": *menuitem
+    "tokens.components.menu-item.fg": *menuitem
+    "tokens.components.menu-item.radius": *menuitem
+    "tokens.components.menu-item.padding": *menuitem
+    "tokens.components.menu-item.height": *menuitem
+    "tokens.components.menu-item.font": *menuitem
+    "tokens.components.menu-item.alert": *menualert
+    "tokens.components.menu-item.use": *menuitem
+    "tokens.components.recommend-card.type": *card
+    "tokens.components.recommend-card.bg": *card
+    "tokens.components.recommend-card.border": *card
+    "tokens.components.recommend-card.radius": *card
+    "tokens.components.recommend-card.padding": *card
+    "tokens.components.recommend-card.size": *card
+    "tokens.components.recommend-card.use": *card
+    "tokens.components.notice-alert.type": *alert
+    "tokens.components.notice-alert.bg": *alert
+    "tokens.components.notice-alert.fg": *alert
+    "tokens.components.notice-alert.border": *alert
+    "tokens.components.notice-alert.radius": *alert
+    "tokens.components.notice-alert.padding": *alert
+    "tokens.components.notice-alert.shadow": *alert
+    "tokens.components.notice-alert.size": *alert
+    "tokens.components.notice-alert.use": *alert
+    "tokens.components.alert-button.type": *alertbtn
+    "tokens.components.alert-button.bg": *alertbtn
+    "tokens.components.alert-button.fg": *alertbtn
+    "tokens.components.alert-button.radius": *alertbtn
+    "tokens.components.alert-button.padding": *alertbtn
+    "tokens.components.alert-button.height": *alertbtn
+    "tokens.components.alert-button.font": *alertbtn
+    "tokens.components.alert-button.states": *alertbtn
+    "tokens.components.alert-button.use": *alertbtn
+    "tokens.components.search-input.type": &input { surface_id: "surface-3", source_id: "surface-surface-3", method: "computed-style", selector: "surface-3::div", captured: "2026-09-30" }
+    "tokens.components.search-input.bg": *input
+    "tokens.components.search-input.fg": *input
+    "tokens.components.search-input.border": *input
+    "tokens.components.search-input.radius": *input
+    "tokens.components.search-input.padding": *input
+    "tokens.components.search-input.height": *input
+    "tokens.components.search-input.font": *input
+    "tokens.components.search-input.states": *input
+    "tokens.components.search-input.use": *input
+    "tokens.components.feed-post.type": *feed
+    "tokens.components.feed-post.border": *feed
+    "tokens.components.feed-post.padding": *feed
+    "tokens.components.feed-post.size": *feed
+    "tokens.components.feed-post.use": *feed
+    "tokens.components.avatar.type": &avatar { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::span", captured: "2026-09-30" }
+    "tokens.components.avatar.radius": *avatar
+    "tokens.components.avatar.size": *avatar
+    "tokens.components.avatar.use": *avatar
+    "tokens.components.promo-tile.type": &promo { surface_id: "home", source_id: "surface-home", method: "computed-style", selector: "home::[data-omd-capture=\"10\"]", captured: "2026-09-30" }
+    "tokens.components.promo-tile.bg": *promo
+    "tokens.components.promo-tile.radius": *promo
+    "tokens.components.promo-tile.size": *promo
+    "tokens.components.promo-tile.use": *promo
 tokens:
-  source: live-extract
-  extracted: "2026-06-11"
-  note: "Action color is ink charcoal (#2c2c2f) on the filled sign-up CTA; brand accent is POSTYPE red (#f33d4d, ×21 bg occurrences); interactive links use blue (#3478ff); purple (#8956f8) is a minor decorative accent. Near-black body ink #141415. Flat, shadowless chrome on a white/light-grey canvas."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
-    primary: "#f33d4d"
-    action: "#2c2c2f"
+    primary: "#2c2c2f"
+    primary-hover: "#000000"
+    primary-pressed: "#3e3e43"
+    on-primary: "#ffffff"
     ink: "#141415"
-    link: "#3478ff"
-    accent-purple: "#8956f8"
-    immersive: "#1e1b3a"
     body: "#62626a"
     muted: "#76767f"
-    canvas: "#ffffff"
+    disabled: "#a4a4a8"
+    link: "#3478ff"
+    info: "#1a66ff"
+    info-surface: "#ebf2ff"
+    info-border: "#dbe7fe"
+    alert-red: "#f33d4d"
     surface: "#f2f2f3"
-    surface-alt: "#f9f9fa"
+    surface-pressed: "#eaeaeb"
     hairline: "#eaeaeb"
-    on-dark: "#ffffff"
+    white: "#ffffff"
+    focus-ring: "#3478ff"
   typography:
-    family: { sans: "Postype Sans-serif KR", fallback: "Apple SD Gothic Neo" }
-    heading:    { size: 32, weight: 700, lineHeight: 1.25, use: "Page / brand headline, Postype Sans-serif KR Bold" }
-    nav:        { size: 16, weight: 400, lineHeight: 1.5, use: "Top nav pill labels" }
-    body:       { size: 16, weight: 400, lineHeight: 1.5, use: "Standard reading text" }
-    button:     { size: 15, weight: 600, lineHeight: 1.5, use: "Login / sign-up CTA label" }
-    button-sm:  { size: 13, weight: 600, lineHeight: 1.5, use: "Subscribe / inline action label" }
-    caption:    { size: 14, weight: 400, lineHeight: 1.5, use: "Legal footer links, metadata" }
-    chip:       { size: 11, weight: 400, lineHeight: 1.5, use: "Tag chips" }
-  spacing: { xs: 4, sm: 6, md: 8, base: 12, lg: 16, xl: 24, xxl: 40 }
-  rounded: { sm: 6, md: 8, chip: 24, full: 9999 }
-  shadow:
-    none: "none"
+    family: { sans: "Postype Sans-serif KR" }
+    heading: { size: 32, weight: 700, lineHeight: 1.5, use: "Page h1 on home, 48px line, #141415" }
+    section: { size: 20, weight: 600, lineHeight: 1.33, tracking: -0.5, use: "Feed and shelf headings on home (h2), 26.67px line, -0.5px tracking, #141415" }
+    item-title: { size: 16, weight: 500, lineHeight: 1.5, use: "Post titles in the home feed (h3), 24px line, #141415" }
+    card-title: { size: 15, weight: 600, lineHeight: 1.5, use: "Titles inside home cards, 22.5px line, #141415" }
+    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Document default on home and @team, 24px line, #141415" }
+    body-secondary: { size: 16, weight: 400, lineHeight: 1.5, use: "Post excerpts in the home feed, 24px line, #62626a" }
+    button: { size: 15, weight: 600, lineHeight: 1.33, use: "Header 회원 가입 and 로그인 labels, 20px line" }
+    button-sm: { size: 13, weight: 600, lineHeight: 1.33, use: "Compact button labels on home, 17.33px line" }
+    menu: { size: 15, weight: 400, lineHeight: 1.5, use: "Overflow-menu items, 22.5px line" }
+    caption: { size: 14, weight: 400, lineHeight: 1.5, use: "Secondary sidebar list items, 21px line, #2c2c2f" }
+    meta: { size: 12, weight: 400, lineHeight: 1.5, use: "Dates and counts under posts, 18px line, #76767f" }
+    chip: { size: 11, weight: 400, lineHeight: 1.5, use: "Tag chips under posts, 16.5px line" }
+  spacing: { button-y: 6, button-x: 16, button-sm-y: 4, button-sm-x: 12, list-y: 4, list-x: 12, menu: 8, card: 16, feed-y: 20, chip-x: 6 }
+  rounded: { small: 6, button: 8, card: 12, chip: 24 }
   components:
-    button-signup: { type: button, bg: "#2c2c2f", fg: "#ffffff", radius: "8px", padding: "6px 16px", height: "40px", font: "15px / 600 Postype Sans-serif KR", use: "Primary filled CTA — 회원 가입 / sign up" }
-    button-login: { type: button, bg: "#ffffff", fg: "#2c2c2f", border: "1px solid #eaeaeb", radius: "8px", padding: "6px 16px", height: "40px", font: "15px / 600 Postype Sans-serif KR", use: "Secondary outlined action — 로그인 / log in" }
-    button-subscribe: { type: button, bg: "#f2f2f3", fg: "#2c2c2f", radius: "8px", padding: "4px 12px", height: "32px", font: "13px / 600 Postype Sans-serif KR", use: "Tinted-grey compact action — 구독 / subscribe" }
-    nav-pill: { type: tab, fg: "#2c2c2f", radius: "8px", padding: "4px 12px", font: "16px / 400 Postype Sans-serif KR", active: "bg #f2f2f3", use: "Top nav item, active = tinted-grey fill" }
-    tag-chip: { type: badge, bg: "#f2f2f3", fg: "#2c2c2f", radius: "24px", font: "11px / 400 Postype Sans-serif KR", use: "Content tag / category chip" }
-    card-surface: { type: card, bg: "#f9f9fa", fg: "#141415", radius: "8px", use: "Tinted content card on light-grey surface, flat (no shadow)" }
-    avatar: { type: avatar, bg: "#ffffff", radius: "9999px", height: "48px", use: "Circular channel/creator avatar" }
-    footer-link: { type: listItem, fg: "#2c2c2f", font: "14px / 400 Postype Sans-serif KR", use: "Footer / legal navigation link" }
+    signup-button: { type: "button", bg: "#2c2c2f", fg: "#ffffff", radius: "8px", padding: "6px 16px", height: "40px", font: "15px / 600 / 20px", hover: "bg #000000", pressed: "bg #3e3e43", focus: "outline 2px solid #3478ff, offset 2px", states: "bundle frames and the probe agree on hover #000000 and pressed #3e3e43; transition all 0s; keyboard focus draws a 2px #3478ff ring offset 2px", use: "회원 가입 in the header of home and @team at home::[data-omd-capture=\"5\"], 87 x 40, linking to /signup" }
+    login-button: { type: "button", bg: "transparent", fg: "#2c2c2f", border: "1px solid #eaeaeb", radius: "8px", padding: "6px 16px", height: "40px", font: "15px / 600 / 20px", hover: "bg #f2f2f3", pressed: "bg #eaeaeb", focus: "outline 2px solid #3478ff, offset 2px", states: "bundle frames and the probe agree; transition all 0s", use: "로그인 beside 회원 가입 in the header, 73 x 40" }
+    subscribe-button: { type: "button", bg: "#2c2c2f", fg: "#ffffff", radius: "8px", padding: "6px 16px", height: "40px", font: "15px / 600 / 20px", states: "rest only on this instance", use: "구독 on the @team channel header at surface-3::[data-omd-capture=\"26\"], 96 x 40; logged out it links to /login" }
+    tonal-button: { type: "button", bg: "#f2f2f3", fg: "#2c2c2f", radius: "8px", padding: "4px 12px", height: "32px", font: "13px / 600 / 17.33px", states: "rest only", use: "Compact grey buttons in the home right column (eight instances), e.g. home::[data-omd-capture=\"33\"], 46 x 32" }
+    outline-button-sm: { type: "button", bg: "transparent", fg: "#2c2c2f", border: "1px solid #eaeaeb", radius: "8px", padding: "4px 12px", height: "32px", font: "13px / 600 / 17.33px", states: "rest only", use: "Compact outlined buttons in the home feed (24 instances), e.g. home::[data-omd-capture=\"85\"], 188 x 32" }
+    sidebar-item: { type: "button", bg: "transparent", fg: "#2c2c2f", radius: "8px", padding: "4px 12px", height: "40px", font: "16px / 400 / 24px", selected: "bg #f2f2f3 on the current page item", hover: "bg #f2f2f3", pressed: "bg #eaeaeb", states: "hover and pressed from settled bundle frames", use: "Left navigation items (홈, 캐릭터톡, 리퀘스트, 보관함) on home and @team, 240 x 40" }
+    icon-button: { type: "button", bg: "transparent", fg: "#2c2c2f", radius: "8px", padding: "0px 4px", size: "40px x 40px", hover: "bg #f2f2f3", pressed: "bg #eaeaeb", disabled: "fg #a4a4a8", states: "hover and pressed from settled bundle frames; disabled from the attribute on a 32 x 32 pager arrow on @team", use: "Header icon buttons at home::[data-omd-capture=\"2\"]" }
+    tag-chip: { type: "badge", bg: "#f2f2f3", fg: "#62626a", radius: "24px", padding: "0px 6px", height: "20px", font: "11px / 400 / 16.5px", use: "Tag chips under posts on home and @team (81 instances); the fill sits on the absolutely positioned a.pt-Chip-action" }
+    filter-chip: { type: "tab", bg: "#ffffff", fg: "#2c2c2f", border: "1px solid #eaeaeb", radius: "24px", padding: "0px 14px", height: "32px", font: "13px / 400 / 19.5px", selected: "bg #ebf2ff, fg #3478ff, border #dbe7fe", states: "selected read from rest values; no pointer frame", use: "Filter chips beside the search field on @team" }
+    menu-popup: { type: "card", bg: "#ffffff", radius: "12px", padding: "8px", shadow: "rgba(21, 21, 21, 0.08) 0px 2px 8px -2px, rgba(21, 21, 21, 0.08) 0px 6px 12px -2px", use: "Overflow menus opened by the collector on post cards (four on home, four on @team)" }
+    menu-item: { type: "listItem", fg: "#2c2c2f", radius: "6px", padding: "6px 12px", height: "40px", font: "15px / 400 / 22.5px", alert: "fg #f33d4d on one item of each post menu (item 5 on home, item 4 on @team)", use: "Items in the overflow menus" }
+    recommend-card: { type: "card", bg: "#ffffff", border: "1px solid #eaeaeb", radius: "12px", padding: "16px", size: "352px x 172px", use: "Bordered card in the home right column (pt-Card-root)" }
+    notice-alert: { type: "toast", bg: "#ebf2ff", fg: "#1a66ff", border: "1px solid #dbe7fe", radius: "12px", padding: "12px 12px 12px 18px", shadow: "rgba(21, 21, 21, 0.08) 0px 2px 8px -2px, rgba(21, 21, 21, 0.08) 0px 6px 12px -2px", size: "320px x 130px", use: "Blue notice (pt-Alert-root) in the home right column" }
+    alert-button: { type: "button", bg: "#3478ff", fg: "#ffffff", radius: "6px", padding: "4px 12px", height: "32px", font: "13px / 600 / 17.33px", states: "rest only", use: "The action inside the blue notice at home::[data-omd-capture=\"242\"], 262 x 32; the only solid blue fill captured" }
+    search-input: { type: "input", bg: "#ffffff", fg: "#2c2c2f", border: "1px solid #eaeaeb", radius: "8px", padding: "0px 8px", height: "32px", font: "14px / 400 / 21px", states: "rest only", use: "Search field above the @team post list, 308 x 32" }
+    feed-post: { type: "card", border: "0 0 1px rgba(118, 118, 127, 0.15)", padding: "20px 0px", size: "640px wide", use: "Posts in the home feed, divided by a translucent bottom rule, no fill" }
+    avatar: { type: "avatar", radius: "50%", size: "40px x 40px", use: "Creator avatars in the feed; 24px and 20px sizes also occur" }
+    promo-tile: { type: "card", bg: "#1e1b3a", radius: "8px", size: "240px x 57px", use: "Dark promotional image tile in the home sidebar; the colour is the tile fill behind its artwork" }
   components_harvested: true
 ---
 
@@ -59,380 +333,226 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-POSTYPE (포스타입) is Korea's creator-publishing and paid-serialization community, and its interface reads like a calm reading room built for taste rather than a noisy content feed. The canvas is pure white (`#ffffff`) layered with a soft cool-grey surface (`#f2f2f3`) and a second near-white tint (`#f9f9fa`) that quietly segment the page into airy reading zones. Text sits in a deep near-black charcoal (`#141415` for prose, `#2c2c2f` for UI labels) — never harsh pure black for the chrome — which gives the platform an editorial, content-first weight. The brand mark introduces a single saturated POSTYPE red (`#f33d4d`) used sparingly as the identity accent, while interactive links lean on a clear blue (`#3478ff`), so the eye learns to treat red as "the brand" and blue as "the link."
+POSTYPE (포스타입) is a Korean creator-publishing community operated by 주식회사 포스타입 in Seoul. Its product title is "취향의 가치를 만드는 창작 커뮤니티", a creative community that makes value out of taste. The company's own timeline starts with the official launch of the service in July 2015. Cumulative transactions passed ₩10 billion in March 2020, and the Android/iOS app launched in May 2020. A Series A followed in July 2020 and a ₩10 billion Series B in December 2022. By June 2023 the platform had 5 million members and 100 million transactions, and by May 2025 7 million members and ₩160 billion in transactions. The product has grown in layers. It started with paid posts and fan-community features, then added 리퀘스트 (commissions). In January 2026 it added 캐릭터톡, an AI character-chat service built on its creator network. In June 2026 came 오픈채널, and cumulative transactions passed ₩200 billion. The company frames the whole as "Everything you create has value": a service where creators and fans grow together, working towards "모든 취향이 고유의 가치를 인정받을 수 있는 세상".
 
-The typographic personality is unmistakably Korean-product: the system runs on the custom `Postype Sans-serif KR` face (falling back to `Apple SD Gothic Neo`), with headlines at weight 700 and a quiet 16px / weight 400 for nav and reading text. There is no flashy display weight or oversized hero type fighting for attention — POSTYPE puts the creator's content first and keeps its own chrome deliberately reserved. The result is a system that feels like infrastructure for reading and earning, not a marketing landing page.
-
-What distinguishes POSTYPE from feed-driven peers is its restraint with depth and its commitment to soft, rounded chrome. Live inspection found `box-shadow: none` across the nav, buttons, and cards — separation comes from flat tinted surfaces (`#f2f2f3` / `#f9f9fa`) and thin `#eaeaeb` hairlines rather than elevation. Interactive chrome is consistently rounded: 8px on buttons and nav pills, a softer 24px on tag chips, full circles on avatars. The filled action button is charcoal (`#2c2c2f`), not the brand red — a quiet, premium choice that keeps red for identity and reserves a neutral, decisive ink for the primary tap target. An occasional deep indigo (`#1e1b3a`) and a minor purple (`#8956f8`) appear on immersive banners and decorative accents.
+The logged-out product is a quiet reading room. There is a white canvas, a 240px left navigation with rounded 8px list items, and a 640px feed of posts divided only by a translucent hairline. A right column holds bordered cards and a blue notice. Everything is set in one face, served under the alias `Postype Sans-serif KR`, which is Pretendard by file. Text is near-black `#141415` for content, `#2c2c2f` for interface labels, `#62626a` for excerpts and `#76767f` for meta. Blue `#3478ff` marks links, the selected filter chip and the keyboard focus ring. The action colour is charcoal: 회원 가입 in the header and 구독 on a channel are `#2c2c2f` with white labels. Hover deepens it to `#000000` and press lifts it to `#3e3e43`. Controls respond with grey fills, `#f2f2f3` on hover and `#eaeaeb` on press. Only popovers and the notice carry a shadow.
 
 **Key Characteristics:**
-- Custom `Postype Sans-serif KR` typeface for the entire UI — headlines at weight 700, body/nav at 400
-- Near-black charcoal text (`#141415` prose, `#2c2c2f` UI) instead of pure black — editorial, content-first
-- Single saturated brand red (`#f33d4d`) reserved for identity accents, not buttons
-- Charcoal (`#2c2c2f`) as the primary filled-action color — quiet, decisive, premium
-- Interactive blue (`#3478ff`) for links and counts — clearly separated from the brand red
-- Flat depth: no shadows; tinted `#f2f2f3` / `#f9f9fa` surfaces + `#eaeaeb` hairlines do the separating
-- Soft rounded geometry — 8px buttons/nav, 24px tag chips, full-round avatars
-- Cool-grey text ladder (`#62626a` → `#76767f`) for secondary and muted hierarchy
+- The action colour is charcoal `#2c2c2f`: hover `#000000`, pressed `#3e3e43`, white labels, 8px radius, 40px tall.
+- Blue `#3478ff` does three jobs: link text, the selected chip and a 2px focus ring offset 2px. A notice uses a deeper blue, `#1a66ff` on `#ebf2ff`.
+- The whole UI uses one family, the alias `Postype Sans-serif KR`, which loads Pretendard files. Weights run 400 to 700 and only the h2 is tracked, at -0.5px.
+- Grey interaction states: `#f2f2f3` on hover or when current, `#eaeaeb` on press. The same `#eaeaeb` is the hairline.
+- Radii are 6px (menu items, small buttons), 8px (buttons, list items, inputs), 12px (cards, menus, notice) and 24px (chips).
+- Everything is flat except the menu popups and the notice, which carry a two-layer `rgba(21, 21, 21, 0.08)` shadow.
 
 ## Primary tasks
 
-- Publish long-form serialized work and earn directly from the readers who value it
-- Subscribe to a creator as ongoing support rather than a one-off purchase
-- Sell digital asset packs and take commission requests from fans
-- Browse creator work by tag instead of by popularity ranking
+- Browse posts, series and creators on the public feed.
+- Open a creator's channel and read its posts.
+- Subscribe to a channel (logged out, 구독 leads to the login page).
+- Sign up or log in from the header.
+- Filter or search a channel's posts.
 
 ## 2. Color Palette & Roles
 
-### Brand & Accent
-- **POSTYPE Red** (`#f33d4d`): The brand identity accent — logo, brand highlights, occasional emphasis. The single saturated hue, used sparingly so it stays distinctive (×21 background occurrences in the live scan, mostly small marks).
-- **Accent Purple** (`#8956f8`): A minor decorative accent for badges and select promotional surfaces.
-- **Immersive Indigo** (`#1e1b3a`): Deep indigo background for immersive banner blocks and dark promotional cards.
+### Primary action
+- **Charcoal** (`#2c2c2f`): the primary colour. It fills 회원 가입 in the header of both product pages and 구독 on the @team channel. No other colour fills a rest-state action on the product pages, so it is the primary. The only solid blue fill is one button inside a notice.
+- **Charcoal Hover** (`#000000`) and **Charcoal Pressed** (`#3e3e43`): settled hover and pressed fills of 회원 가입. The bundle frames and the probe agree.
+- **On Primary** (`#ffffff`).
 
-### Action & Interactive
-- **Action Charcoal** (`#2c2c2f`): Primary filled-button background (sign-up CTA) and the default UI label color. The decisive, neutral "do this" color.
-- **Link Blue** (`#3478ff`): Interactive links, counts, and inline actions. Reserved for navigation-style interactivity, distinct from the brand red.
+### Link, selection and focus
+- **Link Blue** (`#3478ff`): link text (about 100 instances), the selected filter chip's label and the keyboard focus ring on the header buttons.
+- **Info Blue** (`#1a66ff`), **Info Surface** (`#ebf2ff`), **Info Border** (`#dbe7fe`): the notice alert and the selected filter chip's fill and border.
 
-### Text Hierarchy
-- **Ink** (`#141415`): Primary reading text and headlines. A near-black with the faintest warmth.
-- **UI Ink** (`#2c2c2f`): Nav labels, button text, footer links — the chrome's default text.
-- **Body Slate** (`#62626a`): Secondary body copy, supporting labels.
-- **Muted Slate** (`#76767f`): Tertiary text, captions, metadata, disabled-leaning labels.
+### Text
+- **Ink** (`#141415`): document default, headings and post titles.
+- **Label** (`#2c2c2f`): interface labels (buttons, list items, menus). This is the same value as the action fill.
+- **Body** (`#62626a`): post excerpts and chip labels.
+- **Muted** (`#76767f`): dates, counts and icon glyphs.
+- **Disabled** (`#a4a4a8`): the disabled pager arrow.
 
-### Neutral & Surface
-- **Pure White** (`#ffffff`): Page background, white cards, text on dark/charcoal.
-- **Surface Grey** (`#f2f2f3`): Cool-grey tinted surface for active nav pills, tag chips, and segmented blocks.
-- **Surface Alt** (`#f9f9fa`): A softer near-white tint for alternating content cards and sections.
-- **Hairline** (`#eaeaeb`): Thin borders, dividers, and outlined-button borders — the primary separation device in this shadow-free system.
+### Surface and signal
+- **White** (`#ffffff`): canvas, cards, menus, inputs.
+- **Surface** (`#f2f2f3`): hover and current fills, tag chips and compact grey buttons.
+- **Surface Pressed / Hairline** (`#eaeaeb`): pressed fills and 1px borders on outlined buttons, cards and inputs. Feed dividers are the translucent `rgba(118, 118, 127, 0.15)`.
+- **Alert Red** (`#f33d4d`): one red item in each post overflow menu. It is a signal colour in a menu, not an action.
+
+The June record made `#f33d4d` the primary as the brand red. On the captured product it appears only as that menu-item text. It fills no action and marks no selection, so it left `primary`. It is not claimed as a logo colour because no logo was measured.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Primary**: `Postype Sans-serif KR` (with fallbacks `Apple SD Gothic Neo`, `Malgun Gothic`, `sans-serif`) — the custom POSTYPE face used across the entire UI, headlines through captions.
+- **Live surface name:** every product element computes `"Postype Sans-serif KR"` (1,051 observed uses).
+- **What it is:** the @font-face sources for that name are Pretendard files (`cdn.jsdelivr.net/gh/orioncactus/pretendard/.../Pretendard-*.woff2`). A Japanese alias, `Postype Sans-serif JP`, points at Pretendard JP. `Postype Serif KR` is declared against Nanum Myeongjo but was not observed in use. Postype names its UI face after itself but ships Pretendard, which is distributed under the SIL Open Font License 1.1.
+- **Declared only:** the many other faces the bundle lists (BMHANNAPro, Gmarket Sans, Kakao Big/Small Sans, NanumSquare and others) are served from `cdn.ninehire.com`. They belong to the recruiting-site host behind about.postype.com, not to the Postype product.
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Heading | Postype Sans-serif KR | 32px (2.00rem) | 700 | 1.25 | Page / brand headline |
-| Nav Link | Postype Sans-serif KR | 16px (1.00rem) | 400 | 1.5 (24px) | Top nav pill labels |
-| Body | Postype Sans-serif KR | 16px (1.00rem) | 400 | 1.5 (24px) | Standard reading text |
-| Button | Postype Sans-serif KR | 15px (0.94rem) | 600 | 1.5 | Login / sign-up CTA label |
-| Button Small | Postype Sans-serif KR | 13px (0.81rem) | 600 | 1.5 | Subscribe / inline action |
-| Caption | Postype Sans-serif KR | 14px (0.88rem) | 400 | 1.5 | Legal footer links, metadata |
-| Chip | Postype Sans-serif KR | 11px (0.69rem) | 400 | 1.5 | Tag chips |
+| Role | Size / weight / line | Colour | Where |
+|---|---|---|---|
+| Heading | 32px / 700 / 48px | `#141415` | Page h1 on home |
+| Section | 20px / 600 / 26.67px, -0.5px | `#141415` | Feed and shelf headings |
+| Item title | 16px / 500 / 24px | `#141415` | Post titles |
+| Card title | 15px / 600 / 22.5px | `#141415` | Titles in home cards |
+| Body | 16px / 400 / 24px | `#141415` | Document default |
+| Body secondary | 16px / 400 / 24px | `#62626a` | Post excerpts |
+| Button | 15px / 600 / 20px | white / `#2c2c2f` | Header buttons |
+| Button small | 13px / 600 / 17.33px | `#2c2c2f` | Compact buttons |
+| Menu | 15px / 400 / 22.5px | `#2c2c2f` | Overflow menu items |
+| Caption | 14px / 400 / 21px | `#2c2c2f` | Secondary list items |
+| Meta | 12px / 400 / 18px | `#76767f` | Dates and counts |
+| Chip | 11px / 400 / 16.5px | `#62626a` | Tag chips |
 
 ### Principles
-- **One typeface, full hierarchy**: The custom `Postype Sans-serif KR` carries everything — there is no display/body font split. Hierarchy comes from weight (700 → 600 → 400) and size, not from swapping families.
-- **Weight as emphasis**: Headlines at 700, interactive labels at 600, reading and nav text at 400. The CTA gains presence from weight 600, not from color or size.
-- **Hangul-first sizing**: Body and nav sit at a comfortable 16px / 1.5 line-height — generous for hangul legibility in long-form creator content.
-- **Reserved chrome**: The UI never out-sizes the creator's content; 32px is the largest chrome size, keeping POSTYPE's own type quiet.
+- **Small, steady scale:** the largest product text is 32px. The feed runs at 15–16px.
+- **Weight over size:** 600 marks buttons and card titles, 500 post titles, 400 reading and meta.
+- **Tracking only on section heads:** h2 at -0.5px. Everything else is `normal`.
 
 ## 4. Component Stylings
 
 ### Buttons
+- **Sign-up** (`signup-button`): `#2c2c2f`, white 15px/600 label, 8px radius, `6px 16px`, 40px tall. Hover `#000000`, pressed `#3e3e43`, focus a 2px `#3478ff` ring offset 2px. `transition: all 0s`.
+- **Log-in** (`login-button`): transparent, `#2c2c2f` label, 1px `#eaeaeb` border, same geometry. Hover `#f2f2f3`, pressed `#eaeaeb`, same focus ring.
+- **Subscribe** (`subscribe-button`): the charcoal button on the @team channel header, 96 × 40.
+- **Tonal** (`tonal-button`): `#f2f2f3`, `#2c2c2f` 13px/600, 8px, `4px 12px`, 32px tall.
+- **Outline small** (`outline-button-sm`): transparent with a 1px `#eaeaeb` border, 13px/600, 32px tall.
+- **Icon button** (`icon-button`): 40 × 40, 8px radius. Hover `#f2f2f3`, pressed `#eaeaeb`, disabled glyph `#a4a4a8`.
+- **Notice action** (`alert-button`): `#3478ff`, white 13px/600, 6px radius, `4px 12px`, 32px tall, inside the notice only.
 
-**Sign-up CTA (Primary)**
-- Background: `#2c2c2f`
-- Text: `#ffffff`
-- Radius: 8px
-- Padding: 6px 16px
-- Height: 40px
-- Font: 15px / 600 / Postype Sans-serif KR
-- Use: Primary filled call-to-action — "회원 가입" (sign up)
+### Navigation and chips
+- **Sidebar item** (`sidebar-item`): 240 × 40, 8px radius, `4px 12px`, 16px/400 `#2c2c2f`. The current page rests on `#f2f2f3`. Hover `#f2f2f3`, pressed `#eaeaeb`.
+- **Tag chip** (`tag-chip`): `#f2f2f3` fill, `#62626a` 11px label, 24px radius, 20px tall.
+- **Filter chip** (`filter-chip`): white, 1px `#eaeaeb`, 24px radius, 32px tall, 13px. Selected: `#ebf2ff` fill, `#3478ff` label, `#dbe7fe` border.
 
-**Login (Outlined)**
-- Background: `#ffffff`
-- Text: `#2c2c2f`
-- Border: 1px solid `#eaeaeb`
-- Radius: 8px
-- Padding: 6px 16px
-- Height: 40px
-- Font: 15px / 600 / Postype Sans-serif KR
-- Use: Secondary outlined action — "로그인" (log in)
+### Menus, cards and inputs
+- **Menu popup** (`menu-popup`): white, 12px radius, 8px padding, shadow `rgba(21, 21, 21, 0.08) 0px 2px 8px -2px, rgba(21, 21, 21, 0.08) 0px 6px 12px -2px`.
+- **Menu item** (`menu-item`): 40px tall, 6px radius, `6px 12px`, 15px/400. One red `#f33d4d` item per post menu.
+- **Card** (`recommend-card`): white, 1px `#eaeaeb`, 12px radius, 16px padding.
+- **Notice** (`notice-alert`): `#ebf2ff` fill, `#1a66ff` text, 1px `#dbe7fe`, 12px radius, `12px 12px 12px 18px`, with the popup shadow.
+- **Search input** (`search-input`): white, 1px `#eaeaeb`, 8px radius, `0 8px`, 32px tall, 14px.
+- **Feed post** (`feed-post`): no fill, `20px 0` padding, a bottom rule in `rgba(118, 118, 127, 0.15)`.
+- **Avatar**: round (50%) at 40, 24 and 20px.
+- **Promo tile** (`promo-tile`): dark `#1e1b3a` 240 × 57 tile with 8px corners behind promotional artwork.
 
-**Subscribe (Tinted Compact)**
-- Background: `#f2f2f3`
-- Text: `#2c2c2f`
-- Radius: 8px
-- Padding: 4px 12px
-- Height: 32px
-- Font: 13px / 600 / Postype Sans-serif KR
-- Use: Tinted-grey compact action — "구독" (subscribe)
-
-### Tabs (Nav Pills)
-
-**Top Nav Item**
-- Text: `#2c2c2f`
-- Radius: 8px
-- Padding: 4px 12px
-- Font: 16px / 400 / Postype Sans-serif KR
-- Active: `#f2f2f3` tinted-grey fill
-- Use: Top navigation items ("홈", "오픈 채널", "리퀘스트", "캐릭터톡", "보관함")
-
-### Badges (Tag Chips)
-
-**Tag Chip**
-- Background: `#f2f2f3`
-- Text: `#2c2c2f`
-- Radius: 24px
-- Font: 11px / 400 / Postype Sans-serif KR
-- Height: 20px
-- Use: Content tag / category chip
-
-### Cards & Containers
-
-**Tinted Surface Card**
-- Background: `#f9f9fa`
-- Text: `#141415`
-- Radius: 8px
-- Use: Tinted content card on light-grey surface, flat (no shadow)
-
-### Avatars
-
-**Channel Avatar**
-- Background: `#ffffff`
-- Radius: 9999px (full circle)
-- Height: 48px
-- Use: Circular creator / channel avatar
-
-### List Items (Footer Links)
-
-**Footer Link**
-- Text: `#2c2c2f`
-- Font: 14px / 400 / Postype Sans-serif KR
-- Padding: 3px 8px
-- Use: Footer and legal navigation ("이용 약관", "개인정보 처리방침", "청소년 보호 정책")
-
----
-**Verified:** 2026-06-11
-**Tier 1 sources:** https://www.postype.com, https://www.postype.com/@team, https://about.postype.com
-**Tier 2 sources:** getdesign.md/postype (no designs found) | styles.refero.design/?q=postype (not listed) — none available
-**Conflicts unresolved:** none
+**Verified:** 2026-09-30 (deterministic collector capture of two public, logged-out Postype product pages and the company page, a fixed keyboard-probe state read on the home header, and first-party company pages)
+**Tier 1 sources:** https://www.postype.com/ ; https://www.postype.com/@team ; https://about.postype.com/
+**Tier 2 sources:** getdesign.md and styles.refero.design were not re-queried in this pass; no Tier 2 value used
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 4px
-- Scale: 4px, 6px, 8px, 12px, 16px, 24px, 40px
-- Notable: Nav pills and tinted actions land on a tight 4px 12px padding; primary buttons relax to 6px 16px — a compact, reading-room rhythm rather than oversized marketing chrome
+### Spacing observed
+- Buttons `6px 16px`, compact buttons `4px 12px`, sidebar items `4px 12px` (secondary `3px 8px`).
+- Menus 8px, cards 16px, feed posts `20px 0`, chips `0 6px` (filter chips `0 14px`).
 
-### Grid & Container
-- Persistent left sidebar / top nav with pill-style navigation items, content-feed body to the right
-- Creator channels present a single-column reading column with metadata, subscribe, and tag chips
-- Feature/intro sections alternate white (`#ffffff`) and tinted (`#f9f9fa` / `#f2f2f3`) full-width bands
-- Cards group posts/series at 8px radius without elevation
+### Grid and container
+- Captured at 1440 × 900: a 240px left navigation, a 640px feed column and a 352px right column on home. The @team channel keeps the navigation and sets a 700px post list.
 
-### Whitespace Philosophy
-- **Reading-room calm**: generous vertical rhythm around content blocks; the chrome recedes so creator work is the focus.
-- **Flat segmentation**: sections separate by background tint (`#f2f2f3` / `#f9f9fa` vs `#ffffff`) and `#eaeaeb` hairlines, not by shadow.
-- **Pill cadence**: repeated 8px nav pills and 24px tag chips create a soft, consistent horizontal rhythm.
-
-### Border Radius Scale
-- Small (6px): inner inline elements, count links
-- Medium (8px): buttons, nav pills, cards — the workhorse
-- Chip (24px): tag chips
-- Full (9999px / 50%): avatars, round action buttons
+### Border radius scale
+- 6px menu items and the notice action; 8px buttons, list items, icon buttons, inputs and the promo tile; 11px card covers; 12px cards, menus and the notice; 24px chips; 50% avatars.
 
 ## 6. Depth & Elevation
 
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
-| Tint (Level 1) | `#f2f2f3` / `#f9f9fa` background shift | Card/nav/section separation without elevation |
-| Hairline (Level 2) | `1px solid #eaeaeb` border | Outlined buttons, card outlines, dividers |
-| Immersive (Level 3) | `#1e1b3a` dark indigo block | Promotional / banner blocks |
-
-**Shadow Philosophy**: POSTYPE is a near-shadowless system. Live inspection found `box-shadow: none` across the nav, buttons, tag chips, and cards. Depth and grouping are communicated entirely through flat tinted surfaces (`#f2f2f3` / `#f9f9fa`) and thin `#eaeaeb` hairlines. This is a deliberate content-first, editorial choice — it keeps the platform feeling like a calm reading and publishing surface rather than a card-stacked app. When emphasis is needed the system reaches for color (charcoal `#2c2c2f` fill, brand red `#f33d4d`, or the immersive indigo `#1e1b3a`), never elevation.
+Most of the page is flat. Buttons, list items, cards, chips and inputs compute `box-shadow: none`. Popovers are raised: every overflow menu and the notice carry the same two-layer shadow, `rgba(21, 21, 21, 0.08) 0px 2px 8px -2px` plus `rgba(21, 21, 21, 0.08) 0px 6px 12px -2px`. Separation elsewhere comes from `#f2f2f3` fills, `#eaeaeb` borders and translucent feed dividers.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use the custom `Postype Sans-serif KR` typeface for the entire UI — one face, weight-driven hierarchy
-- Use charcoal (`#2c2c2f`) for the primary filled action button — quiet and decisive
-- Reserve the brand red (`#f33d4d`) for identity accents, keeping it rare and distinctive
-- Use link blue (`#3478ff`) for links and counts, separate from the brand red
-- Use near-black charcoal (`#141415` / `#2c2c2f`) for text instead of pure black
-- Separate sections with flat tinted surfaces (`#f2f2f3` / `#f9f9fa`) and `#eaeaeb` hairlines, not shadows
-- Use soft rounded geometry — 8px buttons and nav pills, 24px tag chips, full-round avatars
-- Keep chrome reserved so the creator's content stays the focus
+- Fill the primary action in `#2c2c2f` with a white 15px/600 label. Deepen it to `#000000` on hover and lift it to `#3e3e43` on press.
+- Use `#f2f2f3` for hover and current states and `#eaeaeb` for pressed and hairlines.
+- Use `#3478ff` for links, selected chips and a 2px focus ring offset 2px.
+- Keep the page in one sans family (Pretendard, named `Postype Sans-serif KR`).
+- Raise only popovers and notices.
 
 ### Don't
-- Use drop shadows for elevation — POSTYPE is a flat, shadow-free system
-- Make the primary button red — red is the identity accent, charcoal is the action color
-- Spread the brand red across many elements — it dilutes the identity signal
-- Use pure black (`#000000`) for body text — reserve near-black charcoal `#141415`
-- Use sharp/square corners on interactive chrome — buttons and pills are rounded
-- Mix a second display font — `Postype Sans-serif KR` owns the whole hierarchy
-- Oversize the chrome — the UI should never compete with the creator's content
-- Use link blue for non-interactive emphasis — blue means "this is a link"
+- Don't fill actions in red. `#f33d4d` appears only as a menu item's text.
+- Don't use blue for primary actions. The one blue button lives inside a notice.
+- Don't add shadows to cards or feed posts.
+- Don't track body text. Only the 20px section heads use -0.5px.
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, top nav collapses, sidebar becomes a drawer |
-| Tablet | 640-1024px | Moderate padding, 2-up content cards |
-| Desktop | 1024-1440px | Full layout with persistent nav and content feed |
-
-### Touch Targets
-- Nav pills and primary buttons at 40px height — comfortably tappable
-- Subscribe action at 32px height for compact inline placement
-- Tag chips small (20px) but spaced; round avatars at 48px
-
-### Collapsing Strategy
-- Persistent nav: pill row collapses into a drawer/hamburger on narrow viewports
-- Content feed: multi-column → stacked single column
-- Tinted/white alternating sections maintain full-width treatment
-- Tag chip rows wrap on narrow widths
-
-### Image Behavior
-- Post thumbnails and channel banners carry no shadow at any size, consistent with the flat system
-- Cards maintain 8px radius across breakpoints; avatars stay fully circular
+Only the 1440 × 900 desktop viewport was captured. Breakpoints and collapse behaviour were not measured and are not declared. On desktop, header buttons are 40px tall and sidebar items 40px.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Primary action (filled button): Action Charcoal (`#2c2c2f`)
-- Brand accent: POSTYPE Red (`#f33d4d`)
-- Link / count: Link Blue (`#3478ff`)
-- Decorative accent: Purple (`#8956f8`)
-- Immersive banner: Indigo (`#1e1b3a`)
-- Background: Pure White (`#ffffff`)
-- Tinted surface: Surface Grey (`#f2f2f3`), Surface Alt (`#f9f9fa`)
-- Heading / body text: Ink (`#141415`), UI Ink (`#2c2c2f`)
-- Secondary text: Body Slate (`#62626a`)
-- Muted text: Muted Slate (`#76767f`)
-- Hairline: `#eaeaeb`
+### Quick colour reference
+- Primary action: `#2c2c2f` (hover `#000000`, pressed `#3e3e43`, white label)
+- Link / selected / focus: `#3478ff`; notice `#1a66ff` on `#ebf2ff`, border `#dbe7fe`
+- Text: `#141415`, `#2c2c2f`, `#62626a`, `#76767f`
+- Surface: `#ffffff`, `#f2f2f3`; pressed and hairline `#eaeaeb`
 
-### Example Component Prompts
-- "Create a top nav: white background, pill-style nav items (8px radius, 4px 12px padding, 16px Postype Sans-serif KR weight 400, #2c2c2f text). Active item gets a #f2f2f3 tinted fill. Right side: outlined login (#ffffff, 1px solid #eaeaeb, #2c2c2f, 8px radius) and a filled charcoal sign-up CTA (#2c2c2f bg, white text, 8px radius, 6px 16px, weight 600). No shadow."
-- "Design a creator post card: #f9f9fa background, 8px radius, no shadow. Title 16px Postype Sans-serif KR, #141415. A subscribe button: #f2f2f3 bg, #2c2c2f text, 8px radius, 13px weight 600, 32px height. Tag chips: #f2f2f3 bg, #2c2c2f text, 24px radius, 11px."
-- "Build a tinted section: #f2f2f3 background, full-width. Separate cards with #eaeaeb hairlines, not shadows. Round creator avatars (48px, full circle, white bg). Use the brand red #f33d4d only on the logo mark."
-- "Create an immersive promo banner: #1e1b3a indigo background, white text, 8px radius. Keep it rare — most surfaces stay white/grey."
+### Example component prompts
+- "A header with a transparent 로그인 button (1px `#eaeaeb` border) and a `#2c2c2f` 회원 가입 button, both 40px tall with 8px corners and 15px/600 labels."
+- "A 240px left navigation of 40px list items with 8px corners. The current item rests on `#f2f2f3` and pressed items turn `#eaeaeb`."
+- "A 640px feed of posts: 16px/500 `#141415` titles, 16px `#62626a` excerpts, 12px `#76767f` meta and `#f2f2f3` 11px tag chips with 24px corners, divided by a translucent hairline."
+- "An overflow menu: white, 12px corners, 8px padding, a soft two-layer shadow, 40px items and one red `#f33d4d` item."
 
-### Iteration Guide
-1. One typeface — `Postype Sans-serif KR` — with weight-driven hierarchy (700/600/400)
-2. Charcoal (`#2c2c2f`) is the filled-action color; red (`#f33d4d`) is identity-only
-3. Blue (`#3478ff`) means "link/count"; never use it for non-interactive emphasis
-4. No shadows — separate with `#f2f2f3` / `#f9f9fa` tint and `#eaeaeb` hairlines
-5. Soft rounded geometry — 8px buttons/pills, 24px chips, full-round avatars
-6. Text is near-black charcoal (`#141415` / `#2c2c2f`), never pure black
-7. Keep the chrome reserved; the creator's content leads
-
----
+### Iteration guide
+- If an action looks blue or red, return it to charcoal.
+- If a card has a shadow, remove it unless it is a popover.
+- If focus is invisible, add the 2px `#3478ff` ring with a 2px offset.
 
 ## 10. Voice & Tone
 
-POSTYPE's voice is **warm, encouraging, and taste-affirming** — a platform that treats every personal taste (취향) as legitimate and worth monetizing, speaking to creators as makers who deserve a sustainable living from their work. The mission line "취향의 가치를 만드는 창작 커뮤니티" ("a creative community that creates value from taste") sets the register: inclusive, dignifying, never gatekeeping. Copy is plain and low-friction, foregrounding ease ("30초면 끝" / "done in 30 seconds") and creator agency over hype.
+POSTYPE speaks in a taste-affirming, plain register. It treats every personal taste (취향) as worth making and paying for, and it keeps interface labels short.
 
-| Context | Tone |
+| Context | Sample (verbatim, 2026-09-30) |
 |---|---|
-| Brand / mission lines | Affirming, taste-first. "취향의 가치를 만드는 창작 커뮤니티." Inclusive, dignifying. |
-| Nav / feature labels | Plain and functional. "오픈 채널", "리퀘스트", "캐릭터톡", "보관함". |
-| CTAs | Direct, low-pressure. "회원 가입", "구독", "로그인". |
-| Creator-facing copy | Empowering, sustainability-framed. Earnings → more creation as a virtuous cycle. |
-| Trust / policy copy | Calm, concrete. "청소년 보호 정책", "권리 침해 신고 센터" stated plainly. |
+| Product title | "포스타입 - 취향의 가치를 만드는 창작 커뮤니티" |
+| Company copy | "Everything you create has value" |
+| Mission | "포스타입은 크리에이터와 팬, 사람들과 관심사를 연결해 더 큰 가치를 만들어내며 바람직한 창작 문화가 발전할 수 있도록 노력합니다." |
+| Vision | "'모든 취향이 고유의 가치를 인정받을 수 있는 세상'을 만들어 나갑니다." |
+| Navigation | "홈", "캐릭터톡", "리퀘스트", "보관함" |
+| CTAs | "회원 가입", "로그인", "구독" |
+| Team channel | "더 나은 창작 생태계를 만들어나가는 포스타입 팀의 이야기" |
+| Not-found page | "앗, 존재하지 않는 길이에요. 죄송하지만 주소가 바뀌거나 사라진 것 같아요." |
 
-**Voice samples:**
-- "취향의 가치를 만드는 창작 커뮤니티" — homepage title / mission line (taste-first framing). *(verified live 2026-06-11, document.title)*
-- "포스트, 창작의 가치를 수익으로" — service slogan (creation → income). *(verified via about.postype.com 2026-06-11)*
-- "모든 취향이 가치 있는 세상" — stated vision (every taste has value). *(verified via about.postype.com 2026-06-11)*
-
-**Forbidden register**: gatekeeping or taste-shaming language, aggressive sales urgency, undefined jargon, exclamation-heavy hype, anything that frames niche creators as less legitimate.
+The June record's slogans "포스트, 창작의 가치를 수익으로" and "30초면 끝" were not found on the pages opened this session and are no longer quoted.
 
 ## 11. Brand Narrative
 
-POSTYPE (포스타입) launched its public service in **2015** (beta 2015-06-22, official launch 2015-07-17) under **주식회사 포스타입 (Postype, Inc.)**, a Seoul-based startup, with the founding vision of a "content-distribution blog platform." It addressed a gap unique to Korea's creator economy: writers, illustrators, webtoon artists, and niche-hobby creators had no flexible, taste-respecting place to publish long-form work *and* earn directly from the fans who valued it. POSTYPE's founding premise — "모든 취향이 가치 있는 세상" ("a world where every taste has value") — reframed publishing from ad-driven scale-chasing into a marketplace where personal taste itself is the product.
-
-The platform matured into a self-described "creator super-app" (크리에이터를 위한 슈퍼 앱), letting creators monetize through individual paid posts, membership subscriptions, commission requests (리퀘스트), character chatbots (캐릭터톡), and community features. POSTYPE frames this as a virtuous cycle: revenue from creation funds more creation, so creators can sustain their practice. As publicly reported, the platform has grown to hundreds of thousands of creators and cumulative transactions in the hundreds of billions of won.
-
-What POSTYPE refuses, visible in its design: the loud, ad-saturated, algorithm-feed aesthetic of mass content platforms, and any chrome that out-shouts the creator's work. What it embraces: a flat, calm, reading-room interface; one reserved brand red; a single custom typeface that keeps hierarchy quiet; and copy that affirms taste rather than ranking it.
+The company page tells the story as eleven years of widening the same idea. It began with content sales in 2015. Fan-community activity, commissions (리퀘스트) and, in 2026, character chat (캐릭터톡) and open channels followed. All of it is offered in one app, so that people who share a taste can keep creating and talking. The milestones it publishes are commercial: ₩10 billion in cumulative transactions by 2020, ₩100 billion by October 2023, ₩200 billion by June 2026, and 7 million members by May 2025. The @team channel, published on the product itself, carries the company's own posts: core values, a joining bonus policy, press coverage and team interviews. One interview introduces 캐릭터톡 as built on "포스타입이 쌓아온 강력한 크리에이터 네트워크, 창작 생태계". The interface stays out of the way of that content: one face, grey states, a charcoal action and blue only where the reader is pointed somewhere.
 
 ## 12. Principles
 
-1. **Every taste has value.** POSTYPE exists so niche creators can earn, not just the mainstream. *UI implication:* never visually rank or gate content by popularity in the core reading flow; present creator work neutrally and let tags surface taste.
-2. **Content leads, chrome recedes.** The platform is a stage, not the show. *UI implication:* keep the UI quiet — one typeface, reserved sizes, charcoal actions, no decorative shadow — so the creator's work is the focus.
-3. **Red is identity, charcoal is action.** *UI implication:* reserve the brand red (`#f33d4d`) for the mark and rare emphasis; use charcoal (`#2c2c2f`) for the decisive filled action so the next step reads as neutral, not salesy.
-4. **Flat and calm.** Editorial clarity beats decorative depth. *UI implication:* no shadows; separate with tint and hairlines; keep the page light and easy to read for long stretches.
-5. **Earnings sustain creation.** The product is a virtuous cycle, not a one-time transaction. *UI implication:* make subscribe and support paths low-friction and always visible on creator surfaces, framed as ongoing support rather than a hard sell.
+1. **Every taste has value.** *UI implication:* give creators' posts the room, and keep the chrome neutral.
+2. **One quiet action colour.** *UI implication:* charcoal `#2c2c2f` for the step you want taken; grey for everything that merely responds.
+3. **Blue means "go there" or "you are here".** *UI implication:* links, the selected chip and the focus ring share `#3478ff`.
+4. **Flat until it floats.** *UI implication:* only menus and notices get a shadow.
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable POSTYPE user segments (Korean creators publishing paid serialized content, and fans subscribing to niche channels), not individual people.*
+*Personas are fictional archetypes informed by the audiences Postype describes (creators and fans across webtoon, web-novel, illustration and character fandoms). They are not real people.*
 
-**서연, 27, 서울.** A web-novel author serializing original fiction. Uses paid posts and memberships to earn directly from readers rather than relying on ad revenue. Chose POSTYPE because it respects niche genres and lets her set her own pricing without feeling judged.
+**한서윤, 27, 서울.** An illustrator who sells commissions through 리퀘스트 and posts paid series. She wants her work, not the platform, to be what readers notice.
 
-**민준, 33, 경기.** An illustrator selling digital asset packs and taking commission requests (리퀘스트). Values that the platform turns fan demand into a structured, low-friction earning channel and that the reading-room UI keeps his portfolio front-and-center.
+**정민재, 22, 대전.** A web-novel reader who subscribes to a handful of channels and scans the feed daily. He relies on tag chips and filters to find new work in his niche.
 
-**하은, 24, 부산.** A fan and subscriber who follows several niche creators. Likes that the flat, calm interface makes long reading sessions comfortable and that subscribing to support a creator feels like patronage, not a transaction.
+**오지현, 31, 부산.** A fan who has started using 캐릭터톡 with characters from the series she follows, and expects it to feel like part of the same reading space.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (channel, no posts yet)** | White canvas. Single Ink (`#141415`) line explaining no posts yet, with one charcoal (`#2c2c2f`) CTA to start. No illustration clutter. |
-| **Empty (library, nothing saved)** | Muted Slate (`#76767f`) single line: nothing saved yet, plus a path back to browse. Calm, honest. |
-| **Loading (feed fetch)** | Skeleton cards on `#f9f9fa` tinted surface at final 8px-radius dimensions. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
-| **Loading (subscribe action)** | Inline progress within the subscribe button; previous label stays visible until resolved. |
-| **Error (load failed)** | Inline message in Ink (`#141415`) with a plain-language explanation and a retry. No generic "오류가 발생했습니다" alone — states the next step. |
-| **Error (form validation)** | Field-level message below the input; describes what's valid, not just "필수". |
-| **Success (post published / subscribed)** | Brief inline confirmation in calm tone; next-step link immediately below. No celebratory emoji. |
-| **Skeleton** | `#f2f2f3` / `#f9f9fa` blocks at final dimensions, 8px radius, flat pulse. |
-| **Disabled** | Muted Slate (`#76767f`) text on reduced-opacity surface; charcoal actions fade rather than switch hue, preserving the system read. |
+Only states read from the capture and the probe are listed.
+
+| Component | State | Treatment | Evidence |
+|---|---|---|---|
+| Sign-up button | hover / pressed / focus | `#000000` / `#3e3e43` / 2px `#3478ff` ring, offset 2px | bundle frames + probe |
+| Log-in button | hover / pressed / focus | `#f2f2f3` / `#eaeaeb` / same ring | bundle frames + probe |
+| Sidebar item | current / hover / pressed | `#f2f2f3` / `#f2f2f3` / `#eaeaeb` | bundle |
+| Icon button | hover / pressed / disabled | `#f2f2f3` / `#eaeaeb` / glyph `#a4a4a8` | bundle |
+| Filter chip | selected | `#ebf2ff`, `#3478ff`, border `#dbe7fe` | bundle |
+| Overflow menu | open | white popup, 12px, two-layer shadow | collector menu interaction |
+
+Empty, loading, error and success states were not observed and are not declared.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, pill press, focus |
-| `motion-standard` | 200ms | Card/section reveal, sheet, dropdown, drawer |
-| `motion-slow` | 320ms | Page-level transitions, drawer open |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — sheets, cards, nav drawer |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and quiet — consistent with the flat, reading-room aesthetic. Nav pills and buttons respond to press with a subtle opacity/scale shift; feed cards fade-in from below at `motion-standard / ease-enter`. The nav drawer slides at `motion-slow / ease-enter` on mobile. No bounce or spring — a publishing platform signals steadiness and focus, not playful delight. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the product remains fully functional.
+The probe read `transition: all 0s ease 0s` on both header buttons, so their colour changes are instant. No other duration or easing was measured, and none is declared.
 
 <!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-11) via playwright getComputedStyle on https://www.postype.com
-and https://www.postype.com/@team:
-- body Postype Sans-serif KR / 16px / color rgb(20,20,21) #141415 / bg #ffffff
-- Sign-up CTA bg rgb(44,44,47) #2c2c2f / white / 8px / 6px 16px / weight 600
-- Login outlined 1px solid rgb(234,234,235) #eaeaeb / #2c2c2f
-- Nav pills active bg rgb(242,242,243) #f2f2f3 / 8px
-- Tag chips bg #f2f2f3 / radius 24px / 11px
-- Link/count color rgb(52,120,255) #3478ff
-- Brand red rgb(243,61,77) #f33d4d (×21 bg occurrences), purple rgb(137,86,248) #8956f8, immersive rgb(30,27,58) #1e1b3a
-- box-shadow: none across nav/buttons/chips/cards (shadowless system confirmed)
-- document.title: "포스타입 - 취향의 가치를 만드는 창작 커뮤니티"
-
-Token-level claims (§1-9) are sourced from this live inspection.
-
-Voice samples (§10) and brand narrative (§11): mission line "취향의 가치를 만드는 창작 커뮤니티"
-is verbatim from the live homepage document.title. Slogan "포스트, 창작의 가치를 수익으로" and
-vision "모든 취향이 가치 있는 세상" are from POSTYPE's official about/intro surface
-(about.postype.com), fetched 2026-06-11. Founding facts (2015 launch under Postype, Inc.,
-Seoul; "creator super-app" positioning; paid posts / memberships / 리퀘스트 / 캐릭터톡
-monetization model) are POSTYPE's own publicly stated descriptions. Growth figures
-(hundreds of thousands of creators, hundreds of billions of won cumulative transactions)
-are publicly reported and stated approximately, not pinned to a single verified figure.
-
-Personas (§13) are fictional archetypes informed by publicly observable POSTYPE user
-segments (Korean paid-serialization creators, illustrators taking commissions, niche-channel
-fans). Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "red is identity, charcoal is action", "content leads, chrome
-recedes as a rejection of ad-feed aesthetics") are editorial readings connecting POSTYPE's
-observed design to its stated mission, not directly sourced POSTYPE statements.
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/postype.json (capturedAt 2026-09-30T11:47:59Z), deterministic collector, 1440x900, logged out: www.postype.com, about.postype.com, www.postype.com/@team. Header states: fixed keyboard probe raw docs/research/2026-09-29-growth/raw/postype-states-home.json (2026-09-30T13:17Z).
+- §1, §10, §11 context: about.postype.com (history, mission, vision), the @team channel and the home footer, opened 2026-09-30. about.postype.com is hosted on a recruiting-site builder (ninehire); it supplies narrative only, no token.
+- §3 licence: the Pretendard LICENSE file on GitHub, opened 2026-09-30.
+- Personas are fictional archetypes. Interpretive readings are editorial.
 -->
