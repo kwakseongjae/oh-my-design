@@ -28,6 +28,13 @@ export interface RawElementEvidence {
   readonly ariaChecked: string | null;
   readonly disabled: boolean;
   readonly textLength: number;
+  /**
+   * Recorded for interactive elements only (collector 2026-09-30): true when the element's own
+   * background-image is a url() image, or when an <img>/<picture>/<video>/<canvas>/<iframe>/
+   * <object>/<embed> descendant or a descendant's url() background covers >= 85% of its box,
+   * i.e. its face is media. Absent on non-interactive elements and on bundles captured before.
+   */
+  readonly coveredByMedia?: boolean;
   readonly rect: { readonly width: number; readonly height: number; readonly top: number };
   readonly style: {
     readonly color: string;
@@ -207,10 +214,46 @@ export function classifyCapturedElement(element: Pick<RawElementEvidence,
   return "unknown";
 }
 
+// Filled, button-sized anchors are buttons (owner decision 2026-09-30). Framer and Webflow draw
+// every button as an <a> with hashed class names that the class vocabulary above never matches,
+// so protopie, greetinghr and lemonbase CTAs stayed "unknown" and their states never counted.
+const FILLED_BUTTON_MIN_HEIGHT = 28;
+const FILLED_BUTTON_MAX_HEIGHT = 72;
+const FILLED_BUTTON_MAX_WIDTH = 480;
+
+/**
+ * All must hold: the element paints a fill (its own or a painted one; a gradient counts), its box
+ * is 28–72px high and at most 480px wide, it holds text, and the collector checked that no image,
+ * video or canvas covers it. `coveredByMedia` must be an explicit false: bundles captured before
+ * the collector recorded it never qualify, since an unchecked cover is unknown, not absent.
+ * A transparent text link, a full-width banner, a card or image link and a textless icon anchor
+ * therefore stay what they were.
+ */
+export function isFilledButtonLike(element: RawElementEvidence): boolean {
+  return element.coveredByMedia === false
+    && element.textLength > 0
+    && element.rect.height >= FILLED_BUTTON_MIN_HEIGHT
+    && element.rect.height <= FILLED_BUTTON_MAX_HEIGHT
+    && element.rect.width <= FILLED_BUTTON_MAX_WIDTH
+    && resolveElementFill(element.style) !== null;
+}
+
+/**
+ * classifyCapturedElement plus the filled-anchor rule: an <a>, or another interactive element
+ * (the collector records `coveredByMedia` only on those), that classifies as "unknown" is a
+ * button when isFilledButtonLike holds. Every other classification is unchanged.
+ */
+export function classifyEvidenceElement(element: RawElementEvidence): CapturedComponentType {
+  const type = classifyCapturedElement(element);
+  if (type !== "unknown") return type;
+  const interactive = element.tagName.toLowerCase() === "a" || element.coveredByMedia !== undefined;
+  return interactive && isFilledButtonLike(element) ? "button" : type;
+}
+
 function roleForElement(element: RawElementEvidence): string {
   const tag = element.tagName.toLowerCase();
   if (/^h[1-6]$/.test(tag)) return tag;
-  const component = classifyCapturedElement(element);
+  const component = classifyEvidenceElement(element);
   if (component !== "unknown") return component;
   return tag === "p" ? "body" : "text";
 }
@@ -379,7 +422,7 @@ export function aggregateReferenceEvidence(input: {
 
   const componentMap = new Map<string, { type: CapturedComponentType; fingerprint: string; elements: RawElementEvidence[]; painted: number; surfaces: Set<string>; states: Set<string> }>();
   for (const element of elements) {
-    const type = classifyCapturedElement(element);
+    const type = classifyEvidenceElement(element);
     if (type === "unknown") continue;
     const fingerprint = stableStyleFingerprint(element);
     const key = `${type}:${fingerprint}`;

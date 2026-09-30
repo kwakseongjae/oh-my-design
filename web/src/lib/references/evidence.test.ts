@@ -2,6 +2,8 @@ import { describe, expect, it } from "vitest";
 import {
   aggregateReferenceEvidence,
   classifyCapturedElement,
+  classifyEvidenceElement,
+  isFilledButtonLike,
   normalizeCapturedColor,
   resolveFontEvidence,
   type RawElementEvidence,
@@ -139,5 +141,61 @@ describe("reference evidence normalization", () => {
     expect(bundle.colors.find((color) => color.value === "#3182f6")).not.toHaveProperty("paintedOccurrences");
     expect(bundle.colors.some((color) => color.value === "#ff0000" || color.value === "#0000ff")).toBe(false);
     expect(framer.style.backgroundColor).toBe("rgba(0, 0, 0, 0)");
+  });
+});
+
+describe("filled, button-sized anchors (owner decision 2026-09-30)", () => {
+  const transparent = { ...element().style, backgroundColor: "rgba(0, 0, 0, 0)" };
+  const anchor = (overrides: Partial<RawElementEvidence> = {}) => element({
+    selector: "home::[data-omd-capture=\"3\"]", tagName: "a", className: "framer-aHxTq framer-nq4w2r",
+    coveredByMedia: false, textLength: 11, rect: { width: 160, height: 44, top: 100 },
+    ...overrides,
+  });
+
+  it("counts a filled, button-sized anchor with text as a button", () => {
+    expect(classifyCapturedElement(anchor())).toBe("unknown");
+    expect(classifyEvidenceElement(anchor())).toBe("button");
+    expect(classifyEvidenceElement(anchor({ style: { ...transparent, paintedBackgroundColor: "rgb(129, 105, 255)", paintedBy: "descendant:div.framer-xyz" } }))).toBe("button");
+    expect(classifyEvidenceElement(anchor({ style: { ...transparent, paintedBackgroundImage: "linear-gradient(90deg, rgb(255, 0, 0), rgb(0, 0, 255))", paintedBy: "descendant:div.framer-uvw" } }))).toBe("button");
+    expect(classifyEvidenceElement(anchor({ tagName: "div", rect: { width: 120, height: 28, top: 0 } }))).toBe("button");
+  });
+
+  it("leaves a transparent text link, a full-width banner, an image-card link and a textless icon anchor alone", () => {
+    expect(classifyEvidenceElement(anchor({ style: transparent }))).toBe("unknown");
+    expect(classifyEvidenceElement(anchor({ rect: { width: 1200, height: 56, top: 0 } }))).toBe("unknown");
+    expect(classifyEvidenceElement(anchor({ coveredByMedia: true, rect: { width: 320, height: 64, top: 0 } }))).toBe("unknown");
+    expect(classifyEvidenceElement(anchor({ textLength: 0, rect: { width: 44, height: 44, top: 0 } }))).toBe("unknown");
+    expect(classifyEvidenceElement(anchor({ rect: { width: 160, height: 96, top: 0 } }))).toBe("unknown");
+    expect(classifyEvidenceElement(anchor({ rect: { width: 160, height: 24, top: 0 } }))).toBe("unknown");
+  });
+
+  it("needs the collector's media check: a bundle captured before it never promotes", () => {
+    const { coveredByMedia, ...unchecked } = anchor();
+    void coveredByMedia;
+    expect(isFilledButtonLike(unchecked)).toBe(false);
+    expect(classifyEvidenceElement(unchecked)).toBe("unknown");
+    expect(classifyEvidenceElement({ ...unchecked, tagName: "div" })).toBe("unknown");
+  });
+
+  it("keeps every other classification", () => {
+    expect(classifyEvidenceElement(anchor({ className: "btn-tab" }))).toBe("tab");
+    expect(classifyEvidenceElement(anchor({ tagName: "li", className: "" }))).toBe("listItem");
+    expect(classifyEvidenceElement(anchor({ tagName: "article", className: "" }))).toBe("card");
+    expect(classifyEvidenceElement(element())).toBe("button");
+  });
+
+  it("counts promoted anchors as button components and button typography", () => {
+    const bundle = aggregateReferenceEvidence({
+      referenceId: "brand",
+      capturedAt: "2026-09-30T00:00:00.000Z",
+      tool: "playwright_cli",
+      sources: [{ id: "surface-home", url: "https://brand.test", kind: "product-surface" }],
+      surfaces: [{ id: "home", url: "https://brand.test", viewport: "1440x900", elements: [anchor(), anchor({ style: transparent })] }],
+      faces: [],
+      stateEvidence: { "home::[data-omd-capture=\"3\"]": ["hover"] },
+    });
+    expect(bundle.components.map((component) => component.type)).toEqual(["button"]);
+    expect(bundle.components[0].states).toEqual(["hover"]);
+    expect(bundle.typography.map((row) => row.role).sort()).toEqual(["button", "text"]);
   });
 });

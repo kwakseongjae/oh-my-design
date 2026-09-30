@@ -12,7 +12,7 @@ import {
   type RawElementEvidence,
   type ReferenceEvidenceBundle,
 } from "../src/lib/references/evidence.ts";
-import { isUnsafeCaptureSurface } from "../src/lib/references/capture-policy.ts";
+import { dedupeRouteUrls, isUnsafeCaptureSurface } from "../src/lib/references/capture-policy.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const WEB_ROOT = resolve(__dirname, "..");
@@ -165,7 +165,9 @@ async function discoverRoutes(page: Page, baseUrl: string): Promise<{ routes: st
 // same painted element again under hover, pressed and focus. Same scope idea as
 // probe-keyboard-states.mjs, which compares descendants and 3 ancestor levels.
 type PaintedFill = { color?: string; image?: string; by: string };
+type Inspection = { painted: PaintedFill | null; coveredByMedia: boolean };
 type PaintApi = {
+  inspect(element: Element, key?: string): Inspection;
   resolve(element: Element, key?: string): PaintedFill | null;
   read(element: Element, key: string | null): PaintedFill | null;
 };
@@ -182,6 +184,9 @@ async function installPaintResolver(page: Page): Promise<void> {
     const GRADIENT = /(?:repeating-)?(?:linear|radial|conic)-gradient\(/i;
     const MEDIA = /^(?:img|picture|video|canvas|iframe|object|embed)$/;
     const SKIP = /^(?:svg|script|style|template|noscript)$/;
+    // Nested controls are captured with their own fill. A link wrapping a filled <button> (goorm)
+    // would otherwise count that fill twice and turn the wrapper into a second copy of the button.
+    const CONTROL = 'button,a,input,select,textarea,[role="button"],[role="tab"],[role="switch"],[tabindex]';
     const alpha = (value: string): number => {
       const raw = value.trim().toLowerCase();
       if (!raw || raw === "transparent") return 0;
@@ -205,12 +210,16 @@ async function installPaintResolver(page: Page): Promise<void> {
       return `${node.tagName.toLowerCase()}${first ? `.${first.slice(0, 48)}` : ""}`;
     };
     const targets = new Map<string, { node: Element; by: string }>();
-    const resolve = (element: Element, key?: string): PaintedFill | null => {
+    // One walk per interactive control: whether media covers its face (recorded for every
+    // interactive element, for the filled-anchor button rule) and, only when its own background
+    // is transparent with no image, the fill it paints.
+    const inspect = (element: Element, key?: string): Inspection => {
       const own = getComputedStyle(element);
-      if (alpha(own.backgroundColor) > 0 || own.backgroundImage !== "none") return null;
+      if (/url\(/i.test(own.backgroundImage)) return { painted: null, coveredByMedia: true }; // an image link
+      const transparent = alpha(own.backgroundColor) === 0 && own.backgroundImage === "none";
       const box = element.getBoundingClientRect();
       const area = box.width * box.height;
-      if (area <= 0) return null;
+      if (area <= 0) return { painted: null, coveredByMedia: false };
       let found: { node: Element; fill: Omit<PaintedFill, "by">; by: string } | null = null;
       const queue = childrenOf(element);
       for (let index = 0; index < queue.length && index < MAX_NODES; index++) {
@@ -226,30 +235,34 @@ async function installPaintResolver(page: Page): Promise<void> {
         }
         const style = getComputedStyle(node);
         if (style.display === "none" || Number(style.opacity) === 0) continue; // nothing under it paints
+        if (node.matches(CONTROL)) continue; // a nested control: its fill and face are its own evidence
         if (queue.length < MAX_NODES * 2) queue.push(...childrenOf(node));
         if (style.visibility !== "visible") continue;
-        if (MEDIA.test(tag) || /url\(/i.test(style.backgroundImage)) return null; // the face is media, not a fill
-        const fill: Omit<PaintedFill, "by"> | null = found ? null : fillOf(style);
+        if (MEDIA.test(tag) || /url\(/i.test(style.backgroundImage)) return { painted: null, coveredByMedia: true }; // the face is media, not a fill
+        const fill: Omit<PaintedFill, "by"> | null = found || !transparent ? null : fillOf(style);
         if (fill) found = { node, fill, by: `descendant:${label(node)}` };
       }
+      if (!transparent) return { painted: null, coveredByMedia: false };
       if (!found) {
         let node = parentOf(element);
         for (let level = 1; level <= UP && node && node !== document.body && node !== document.documentElement; level++, node = parentOf(node)) {
+          if (node.matches(CONTROL)) break; // the enclosing control is captured with its own fill
           const rect = node.getBoundingClientRect();
           const dx = box.width * SLACK;
           const dy = box.height * SLACK;
           if (Math.abs(rect.left - box.left) > dx || Math.abs(rect.right - box.right) > dx
             || Math.abs(rect.top - box.top) > dy || Math.abs(rect.bottom - box.bottom) > dy) continue;
           const style = getComputedStyle(node);
-          if (/url\(/i.test(style.backgroundImage)) return null;
+          if (/url\(/i.test(style.backgroundImage)) return { painted: null, coveredByMedia: false }; // an image behind it, not a fill
           const fill = fillOf(style);
           if (fill) { found = { node, fill, by: `ancestor:${level}` }; break; }
         }
       }
-      if (!found) return null;
+      if (!found) return { painted: null, coveredByMedia: false };
       if (key !== undefined) targets.set(key, { node: found.node, by: found.by });
-      return { ...found.fill, by: found.by };
+      return { painted: { ...found.fill, by: found.by }, coveredByMedia: false };
     };
+    const resolve = (element: Element, key?: string): PaintedFill | null => inspect(element, key).painted;
     // Under hover / pressed / focus: the element found at rest, read as it is now (its fill may
     // turn transparent). A control with none at rest, or whose painted node was replaced since,
     // is resolved again, so a ghost button whose child fills only on hover is seen too.
@@ -260,7 +273,7 @@ async function installPaintResolver(page: Page): Promise<void> {
       const image = gradientOf(style);
       return { color: style.backgroundColor, ...(image ? { image } : {}), by: target.by };
     };
-    host.__omdPaint = { resolve, read };
+    host.__omdPaint = { inspect, resolve, read };
   });
 }
 
@@ -303,9 +316,9 @@ async function captureElements(page: Page, surfaceId: string): Promise<RawElemen
       })();
       if (interactive) html.setAttribute("data-omd-capture", String(interactiveIndex - 1));
       const paint = (window as unknown as { __omdPaint?: PaintApi }).__omdPaint;
-      const painted = interactive ? paint?.resolve(element, String(interactiveIndex - 1)) ?? null : null;
+      const inspected = interactive ? paint?.inspect(element, String(interactiveIndex - 1)) : undefined;
       return {
-        painted,
+        painted: inspected?.painted ?? null,
         selector,
         tagName: element.tagName.toLowerCase(),
         role: element.getAttribute("role"),
@@ -316,6 +329,7 @@ async function captureElements(page: Page, surfaceId: string): Promise<RawElemen
         ariaChecked: element.getAttribute("aria-checked"),
         disabled: (element as HTMLButtonElement).disabled === true || element.getAttribute("aria-disabled") === "true",
         textLength: (element.textContent ?? "").trim().length,
+        coveredByMedia: inspected?.coveredByMedia,
         rect: { width: Math.round(rect.width), height: Math.round(rect.height), top: Math.round(rect.top + window.scrollY) },
         style: {
           color: style.color,
@@ -443,8 +457,9 @@ async function captureInteractionTargets(
       html.setAttribute("data-omd-interaction-capture", value);
       const rect = element.getBoundingClientRect();
       const style = getComputedStyle(element);
+      const inspected = element.matches(interactive) ? paint?.inspect(element) : undefined;
       return {
-        painted: element.matches(interactive) ? paint?.resolve(element) ?? null : null,
+        painted: inspected?.painted ?? null,
         selector: `[data-omd-interaction-capture="${value}"]`,
         tagName: element.tagName.toLowerCase(),
         role: element.getAttribute("role"),
@@ -455,6 +470,7 @@ async function captureInteractionTargets(
         ariaChecked: element.getAttribute("aria-checked"),
         disabled: (element as HTMLButtonElement).disabled === true || element.getAttribute("aria-disabled") === "true",
         textLength: (element.textContent ?? "").trim().length,
+        coveredByMedia: inspected?.coveredByMedia,
         rect: { width: Math.round(rect.width), height: Math.round(rect.height), top: Math.round(rect.top + window.scrollY) },
         style: {
           color: style.color,
@@ -663,8 +679,11 @@ await page.goto(homepage, { waitUntil: "domcontentloaded", timeout: 45_000 });
 await page.waitForTimeout(1_200);
 await dismissObstructions(page);
 discovery = await discoverRoutes(page, homepage);
-const routeUrls = [homepage, ...explicitRoutes, ...configuredRoutes, ...discovery.routes]
-  .filter((url, index, list) => list.indexOf(url) === index)
+// Routes are compared as `new URL(u).href` (2026-09-30). The homepage "https://lemonbase.com" and
+// the route "https://lemonbase.com/" were two strings, so the homepage was captured twice and
+// crowded out the last configured route (lemonbase, goorm and kakaopage all lost one). The one
+// pass covers the homepage, --routes, configured and discovered routes alike.
+const routeUrls = dedupeRouteUrls([homepage, ...explicitRoutes, ...configuredRoutes, ...discovery.routes])
   .slice(0, maxRoutes * 3);
 
 const runStartedAt = Date.now();
@@ -678,6 +697,9 @@ async function captureRoute(index: number, url: string) {
   }
   const currentUrl = new URL(page.url());
   if (isUnsafeCaptureSurface(currentUrl.href)) return null;
+  // A route that lands on a page already captured counts once as well: goorm's homepage
+  // redirects to https://www.goorm.io/, which string dedupe cannot see before the load.
+  if (surfaces.some((surface) => surface.url === currentUrl.href)) return null;
   const surfaceId = surfaces.length === 0 ? "home" : `surface-${surfaces.length + 1}`;
   currentStep = "elements";
   const baselineElements = await withTimeout(captureElements(page, surfaceId), STEP_BUDGET_MS, "elements");
