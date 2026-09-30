@@ -4,8 +4,8 @@
   "generator": "scripts/build-reference-quality-data.mjs",
   "count": 521,
   "counts": {
-    "verified_v2": 255,
-    "partial": 153,
+    "verified_v2": 265,
+    "partial": 143,
     "legacy_snapshot": 113,
     "total": 521
   },
@@ -71,16 +71,14 @@
     },
     {
       "id": "42dot",
-      "status": "partial",
-      "verified_at": "2026-07-02",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "591",
@@ -207,16 +205,14 @@
     },
     {
       "id": "airbridge",
-      "status": "partial",
-      "verified_at": "2026-06-26",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 9,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "airtable",
@@ -906,16 +902,14 @@
     },
     {
       "id": "codeit",
-      "status": "partial",
-      "verified_at": "2026-06-26",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 10,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "cohere",
@@ -1176,16 +1170,14 @@
     },
     {
       "id": "dealicious",
-      "status": "partial",
-      "verified_at": "2026-07-02",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 10,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "deepl",
@@ -2621,16 +2613,14 @@
     },
     {
       "id": "kbpay",
-      "status": "partial",
-      "verified_at": "2026-06-22",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 4,
+      "source_count": 5,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "kcd",
@@ -2820,16 +2810,14 @@
     },
     {
       "id": "kyobobook",
-      "status": "partial",
-      "verified_at": "2026-06-26",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 13,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "lablup",
@@ -3243,16 +3231,14 @@
     },
     {
       "id": "mildang",
-      "status": "partial",
-      "verified_at": "2026-07-02",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 4,
+      "source_count": 8,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "millie",
@@ -4872,16 +4858,14 @@
     },
     {
       "id": "shiftup",
-      "status": "partial",
-      "verified_at": "2026-06-17",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 12,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "shinhanbank",
@@ -5270,16 +5254,14 @@
     },
     {
       "id": "stibee",
-      "status": "partial",
-      "verified_at": "2026-06-17",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 7,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "stores",
@@ -5405,16 +5387,14 @@
     },
     {
       "id": "tabling",
-      "status": "partial",
-      "verified_at": "2026-07-02",
-      "next_reverify_at": null,
-      "evidence_coverage": 0,
-      "surface_count": 0,
-      "source_count": 0,
+      "status": "verified_v2",
+      "verified_at": "2026-09-30",
+      "next_reverify_at": "2027-03-29",
+      "evidence_coverage": 1,
+      "surface_count": 3,
+      "source_count": 9,
       "conflict_count": 0,
-      "reason_codes": [
-        "verification_v2_missing"
-      ]
+      "reason_codes": []
     },
     {
       "id": "tada",

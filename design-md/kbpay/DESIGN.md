@@ -5,54 +5,284 @@ display_name_kr: KB페이
 country: KR
 category: fintech
 homepage: "https://card.kbcard.com/CXPRISVC0127.cms"
-primary_color: "#FFCC00"
+primary_color: "#ffcc00"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=kbcard.com&sz=128"
-verified: "2026-06-22"
+verified: "2026-09-30"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://card.kbcard.com/SVC/DVIEW/HSCMCXPRISVC0127", inspected: "2026-09-30" }
+    - { id: surface-2, kind: marketing, url: "https://card.kbcard.com/CMN/DVIEW/HOAMCXPRIZZC0002", inspected: "2026-09-30" }
+    - { id: surface-3, kind: marketing, url: "https://card.kbcard.com/SVC/DVIEW/HSCMCXPRISVC0128", inspected: "2026-09-30" }
+    - { id: surface-4, kind: marketing, url: "https://card.kbcard.com/SVC/DVIEW/HSCMCXPRISVC0130", inspected: "2026-09-30" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://card.kbcard.com/SVC/DVIEW/HSCMCXPRISVC0127", captured: "2026-09-30" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://card.kbcard.com/CMN/DVIEW/HOAMCXPRIZZC0002", captured: "2026-09-30" }
+    - { id: surface-surface-3, kind: product-surface, url: "https://card.kbcard.com/SVC/DVIEW/HSCMCXPRISVC0128", captured: "2026-09-30" }
+    - { id: surface-surface-4, kind: product-surface, url: "https://card.kbcard.com/SVC/DVIEW/HSCMCXPRISVC0130", captured: "2026-09-30" }
+    - { id: kbpay-probe-home, kind: product-surface, url: "https://card.kbcard.com/CMN/DVIEW/HOAMCXPRIZZC0002", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &primary { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"30\"]", captured: "2026-09-30" }
+    "tokens.colors.on-primary": *primary
+    "tokens.colors.heading": &h3 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-09-30" }
+    "tokens.colors.text": &login { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"15\"]", captured: "2026-09-30" }
+    "tokens.colors.footer-text": &footer { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-09-30" }
+    "tokens.colors.muted": &util { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"4\"]", captured: "2026-09-30" }
+    "tokens.colors.border": *login
+    "tokens.colors.hover-fill": &loginhover { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"15\"]::state-hover", captured: "2026-09-30" }
+    "tokens.colors.select-border": &family { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"45\"]", captured: "2026-09-30" }
+    "tokens.colors.surface": &guide { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"68\"]", captured: "2026-09-30" }
+    "tokens.colors.white": *login
+    "tokens.colors.grid-line": &cell { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::li", captured: "2026-09-30" }
+    "tokens.typography.family.display": &h1 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h1", captured: "2026-09-30" }
+    "tokens.typography.family.body": &body { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
+    "tokens.typography.display.size": *h1
+    "tokens.typography.display.weight": *h1
+    "tokens.typography.display.lineHeight": *h1
+    "tokens.typography.display.tracking": *h1
+    "tokens.typography.display.use": *h1
+    "tokens.typography.display-home.size": &hometit { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.typography.display-home.weight": *hometit
+    "tokens.typography.display-home.lineHeight": *hometit
+    "tokens.typography.display-home.use": *hometit
+    "tokens.typography.section.size": *h3
+    "tokens.typography.section.weight": *h3
+    "tokens.typography.section.lineHeight": *h3
+    "tokens.typography.section.tracking": *h3
+    "tokens.typography.section.use": *h3
+    "tokens.typography.lead.size": &tit { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.lead.weight": *tit
+    "tokens.typography.lead.use": *tit
+    "tokens.typography.subsection.size": &h4 { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h4", captured: "2026-09-30" }
+    "tokens.typography.subsection.weight": *h4
+    "tokens.typography.subsection.lineHeight": *h4
+    "tokens.typography.subsection.tracking": *h4
+    "tokens.typography.subsection.use": *h4
+    "tokens.typography.card-title.size": &homeh3 { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h3", captured: "2026-09-30" }
+    "tokens.typography.card-title.weight": *homeh3
+    "tokens.typography.card-title.lineHeight": *homeh3
+    "tokens.typography.card-title.use": *homeh3
+    "tokens.typography.tab-lg.size": &hometab { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"27\"]", captured: "2026-09-30" }
+    "tokens.typography.tab-lg.weight": *hometab
+    "tokens.typography.tab-lg.lineHeight": *hometab
+    "tokens.typography.tab-lg.use": *hometab
+    "tokens.typography.button-lg.size": *primary
+    "tokens.typography.button-lg.weight": *primary
+    "tokens.typography.button-lg.use": *primary
+    "tokens.typography.category.size": &cat { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::[data-omd-capture=\"23\"]", captured: "2026-09-30" }
+    "tokens.typography.category.weight": *cat
+    "tokens.typography.category.lineHeight": *cat
+    "tokens.typography.category.use": *cat
+    "tokens.typography.nav.size": &gnb { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"9\"]", captured: "2026-09-30" }
+    "tokens.typography.nav.weight": *gnb
+    "tokens.typography.nav.lineHeight": *gnb
+    "tokens.typography.nav.use": *gnb
+    "tokens.typography.body.size": &txt { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.body.weight": *txt
+    "tokens.typography.body.lineHeight": *txt
+    "tokens.typography.body.use": *txt
+    "tokens.typography.body-home.size": &homebody { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.typography.body-home.weight": *homebody
+    "tokens.typography.body-home.lineHeight": *homebody
+    "tokens.typography.body-home.use": *homebody
+    "tokens.typography.button-sm.size": *login
+    "tokens.typography.button-sm.weight": *login
+    "tokens.typography.button-sm.use": *login
+    "tokens.typography.footer.size": *footer
+    "tokens.typography.footer.weight": *footer
+    "tokens.typography.footer.lineHeight": *footer
+    "tokens.typography.footer.use": *footer
+    "tokens.typography.util.size": *util
+    "tokens.typography.util.weight": *util
+    "tokens.typography.util.lineHeight": *util
+    "tokens.typography.util.use": *util
+    "tokens.typography.caption.size": &copyright { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.caption.weight": *copyright
+    "tokens.typography.caption.lineHeight": *copyright
+    "tokens.typography.caption.use": *copyright
+    "tokens.spacing.gnb-y": *gnb
+    "tokens.spacing.tab-x": &tab { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"19\"]", captured: "2026-09-30" }
+    "tokens.spacing.segment-x": &seg { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"23\"]", captured: "2026-09-30" }
+    "tokens.spacing.card-x": *guide
+    "tokens.spacing.card-y": *guide
+    "tokens.rounded.button-sm": *login
+    "tokens.rounded.button": *primary
+    "tokens.rounded.segment": *seg
+    "tokens.rounded.card": &recom { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::div", captured: "2026-09-30" }
+    "tokens.components.primary-button.type": *primary
+    "tokens.components.primary-button.bg": *primary
+    "tokens.components.primary-button.fg": *primary
+    "tokens.components.primary-button.radius": *primary
+    "tokens.components.primary-button.padding": *primary
+    "tokens.components.primary-button.height": *primary
+    "tokens.components.primary-button.font": *primary
+    "tokens.components.primary-button.states": { surface_id: surface-2, source_id: kbpay-probe-home, method: live-state-probe, selector: "button.btn.btn--primary 로그인 (344 x 48, rest bg rgb(255, 204, 0), fg rgb(0, 0, 0), transition all 0s): hover and pressed NO CHANGE across self, 0 descendants and 3 ancestor levels; focus skipped (--no-focus)", captured: "2026-09-30" }
+    "tokens.components.primary-button.use": *primary
+    "tokens.components.header-login.type": *login
+    "tokens.components.header-login.bg": *login
+    "tokens.components.header-login.fg": *login
+    "tokens.components.header-login.border": *login
+    "tokens.components.header-login.radius": *login
+    "tokens.components.header-login.height": *login
+    "tokens.components.header-login.font": *login
+    "tokens.components.header-login.hover": *loginhover
+    "tokens.components.header-login.pressed": { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"15\"]::state-pressed", captured: "2026-09-30" }
+    "tokens.components.header-login.states": *loginhover
+    "tokens.components.header-login.use": *login
+    "tokens.components.page-tab.type": *tab
+    "tokens.components.page-tab.fg": *tab
+    "tokens.components.page-tab.padding": *tab
+    "tokens.components.page-tab.height": *tab
+    "tokens.components.page-tab.font": *tab
+    "tokens.components.page-tab.selected": { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-09-30" }
+    "tokens.components.page-tab.hover": &tabhover { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"19\"]::state-hover", captured: "2026-09-30" }
+    "tokens.components.page-tab.pressed": { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"19\"]::state-pressed", captured: "2026-09-30" }
+    "tokens.components.page-tab.states": *tabhover
+    "tokens.components.page-tab.use": *tab
+    "tokens.components.segment-tab.type": *seg
+    "tokens.components.segment-tab.bg": *seg
+    "tokens.components.segment-tab.fg": *seg
+    "tokens.components.segment-tab.border": *seg
+    "tokens.components.segment-tab.radius": *seg
+    "tokens.components.segment-tab.padding": *seg
+    "tokens.components.segment-tab.height": *seg
+    "tokens.components.segment-tab.font": *seg
+    "tokens.components.segment-tab.selected": { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"22\"]", captured: "2026-09-30" }
+    "tokens.components.segment-tab.hover": &seghover { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"23\"]::state-hover", captured: "2026-09-30" }
+    "tokens.components.segment-tab.pressed": { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"23\"]::state-pressed", captured: "2026-09-30" }
+    "tokens.components.segment-tab.states": *seghover
+    "tokens.components.segment-tab.use": *seg
+    "tokens.components.outline-button-xs.type": &xs { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"24\"]", captured: "2026-09-30" }
+    "tokens.components.outline-button-xs.bg": *xs
+    "tokens.components.outline-button-xs.fg": *xs
+    "tokens.components.outline-button-xs.border": *xs
+    "tokens.components.outline-button-xs.radius": *xs
+    "tokens.components.outline-button-xs.padding": *xs
+    "tokens.components.outline-button-xs.height": *xs
+    "tokens.components.outline-button-xs.font": *xs
+    "tokens.components.outline-button-xs.states": *xs
+    "tokens.components.outline-button-xs.use": *xs
+    "tokens.components.gnb-item.type": *gnb
+    "tokens.components.gnb-item.fg": *gnb
+    "tokens.components.gnb-item.padding": *gnb
+    "tokens.components.gnb-item.height": *gnb
+    "tokens.components.gnb-item.font": *gnb
+    "tokens.components.gnb-item.states": *gnb
+    "tokens.components.gnb-item.use": *gnb
+    "tokens.components.audience-switch.type": &aud { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"2\"]", captured: "2026-09-30" }
+    "tokens.components.audience-switch.bg": *aud
+    "tokens.components.audience-switch.fg": *aud
+    "tokens.components.audience-switch.padding": *aud
+    "tokens.components.audience-switch.height": *aud
+    "tokens.components.audience-switch.font": *aud
+    "tokens.components.audience-switch.selected": { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-09-30" }
+    "tokens.components.audience-switch.hover": &audhover { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"2\"]::state-hover", captured: "2026-09-30" }
+    "tokens.components.audience-switch.pressed": { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"2\"]::state-pressed", captured: "2026-09-30" }
+    "tokens.components.audience-switch.states": *audhover
+    "tokens.components.audience-switch.use": *aud
+    "tokens.components.merchant-category.type": *cat
+    "tokens.components.merchant-category.fg": *cat
+    "tokens.components.merchant-category.height": *cat
+    "tokens.components.merchant-category.font": *cat
+    "tokens.components.merchant-category.selected": { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::[data-omd-capture=\"22\"]", captured: "2026-09-30" }
+    "tokens.components.merchant-category.hover": &cathover { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::[data-omd-capture=\"23\"]::state-hover", captured: "2026-09-30" }
+    "tokens.components.merchant-category.pressed": { surface_id: surface-4, source_id: surface-surface-4, method: computed-style, selector: "surface-4::[data-omd-capture=\"23\"]::state-pressed", captured: "2026-09-30" }
+    "tokens.components.merchant-category.states": *cathover
+    "tokens.components.merchant-category.use": *cat
+    "tokens.components.family-site.type": *family
+    "tokens.components.family-site.fg": *family
+    "tokens.components.family-site.border": *family
+    "tokens.components.family-site.radius": *family
+    "tokens.components.family-site.padding": *family
+    "tokens.components.family-site.height": *family
+    "tokens.components.family-site.font": *family
+    "tokens.components.family-site.states": *family
+    "tokens.components.family-site.use": *family
+    "tokens.components.recommendation-card.type": *recom
+    "tokens.components.recommendation-card.bg": *recom
+    "tokens.components.recommendation-card.radius": *recom
+    "tokens.components.recommendation-card.shadow": *recom
+    "tokens.components.recommendation-card.size": *recom
+    "tokens.components.recommendation-card.use": *recom
+    "tokens.components.finance-menu-card.type": &finance { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::li", captured: "2026-09-30" }
+    "tokens.components.finance-menu-card.bg": *finance
+    "tokens.components.finance-menu-card.radius": *finance
+    "tokens.components.finance-menu-card.shadow": *finance
+    "tokens.components.finance-menu-card.padding": *finance
+    "tokens.components.finance-menu-card.size": *finance
+    "tokens.components.finance-menu-card.use": *finance
+    "tokens.components.guide-card.type": *guide
+    "tokens.components.guide-card.bg": *guide
+    "tokens.components.guide-card.radius": *guide
+    "tokens.components.guide-card.padding": *guide
+    "tokens.components.guide-card.size": *guide
+    "tokens.components.guide-card.use": *guide
+    "tokens.components.info-box.type": &braille { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::div", captured: "2026-09-30" }
+    "tokens.components.info-box.bg": *braille
+    "tokens.components.info-box.radius": *braille
+    "tokens.components.info-box.padding": *braille
+    "tokens.components.info-box.size": *braille
+    "tokens.components.info-box.use": *braille
+    "tokens.components.merchant-cell.type": *cell
+    "tokens.components.merchant-cell.border": *cell
+    "tokens.components.merchant-cell.size": *cell
+    "tokens.components.merchant-cell.use": *cell
 tokens:
-  source: live-extract
-  extracted: "2026-06-22"
-  note: "primary = live primary CTA yellow (#FFCC00 = rgb(255,204,0)); brand accent purple (#614CC2) appears on label/menu tints; heading text near-black (#151515 effective from rgba(0,0,0,0.87)); font family = KB Financial Group proprietary KBFGText / KBFGDisplayM."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
-    primary: "#FFCC00"
-    primary-light: "#FFE066"
-    primary-tint: "#FAEAAD"
-    canvas: "#FFFFFF"
-    surface: "#F9F9F9"
-    surface-alt: "#F9FAFE"
-    ink: "#151515"
-    body: "#333333"
-    muted: "#444444"
-    faint: "#666666"
-    divider: "#AAAAAA"
+    primary: "#ffcc00"
     on-primary: "#000000"
-    accent-purple: "#614CC2"
+    heading: "#151515"
+    text: "#333333"
+    footer-text: "#444444"
+    muted: "#666666"
+    border: "#aaaaaa"
+    hover-fill: "#ebebeb"
+    select-border: "#c2c2c2"
+    surface: "#f9fafc"
+    white: "#ffffff"
+    grid-line: "#e1e1e1"
   typography:
     family: { display: "KBFGDisplayM", body: "KBFGText" }
-    display-hero: { size: 32, weight: 400, lineHeight: 1.3, use: "Page hero title (KB Pay), KBFGDisplayM" }
-    section: { size: 24, weight: 400, lineHeight: 1.4, use: "Section headings (서비스 특징), KBFGDisplayM" }
-    nav-main: { size: 15, weight: 400, lineHeight: 1.5, use: "Main navigation items, KBFGText" }
-    body: { size: 15, weight: 400, lineHeight: 1.6, use: "Standard body copy, KBFGText" }
-    nav-util: { size: 13, weight: 400, lineHeight: 1.5, use: "Utility nav links (회원가입, 고객센터), KBFGText" }
-    button-lg: { size: 18, weight: 600, lineHeight: 1.0, use: "Primary CTA label (로그인, 신청하기)" }
-    label: { size: 18, weight: 600, lineHeight: 1.0, use: "Section label (인기 메뉴), accent-purple" }
-  spacing: { xs: 4, sm: 8, md: 16, base: 20, lg: 24, xl: 32, xxl: 48, section: 64 }
-  rounded: { sm: 3, md: 4, lg: 16, full: 9999 }
-  shadow:
-    card: "rgba(0, 0, 0, 0.16) 0px 1px 3px 0px"
-    none: "none"
+    display: { size: 32, weight: 400, lineHeight: 1.0, tracking: -1, use: "Page title (KB Pay) on the KB Pay pages, KBFGDisplayM, 32px line, in rgba(0, 0, 0, 0.87)" }
+    display-home: { size: 32, weight: 600, lineHeight: 1.25, use: "Hero slide titles on the KB국민카드 home, KBFGDisplayM, 40px line" }
+    section: { size: 24, weight: 400, lineHeight: 1.0, tracking: -1, use: "Section headings on the KB Pay pages (서비스 특징, 이용전 유의사항), KBFGDisplayM, 24px line, in #151515" }
+    lead: { size: 24, weight: 400, use: "Tagline 한번에, 한손에, 한눈에 KB Pay on the KB Pay 소개 page, KBFGText, in #333333" }
+    subsection: { size: 18, weight: 400, lineHeight: 1.0, tracking: -1, use: "Sub-headings on KB Pay 이용, KBFGDisplayM, 18px line, in #333333" }
+    card-title: { size: 18, weight: 600, lineHeight: 1.6, use: "Card headings on the KB국민카드 home, KBFGText, 28.8px line" }
+    tab-lg: { size: 18, weight: 600, lineHeight: 1.45, use: "Section tabs on the KB국민카드 home, KBFGText, 26.1px line, with a 3px underline when current" }
+    button-lg: { size: 18, weight: 600, use: "로그인 label of the yellow primary button on the KB국민카드 home" }
+    category: { size: 17, weight: 400, lineHeight: 1.41, use: "Merchant category links on KB Pay 가맹점, 24px line, weight 600 when current" }
+    nav: { size: 15, weight: 400, lineHeight: 1.73, use: "Main navigation (My KB, 혜택, 금융, 카드, 서비스, 라이프), KBFGText, 26px line" }
+    body: { size: 15, weight: 400, lineHeight: 1.47, use: "Introductory copy on the KB Pay 소개 page, KBFGText, 22px line" }
+    body-home: { size: 15, weight: 400, lineHeight: 1.6, use: "Card and banner copy on the KB국민카드 home, 24px line" }
+    button-sm: { size: 14, weight: 400, use: "Header 로그인 label, KBFGText" }
+    footer: { size: 14, weight: 400, lineHeight: 1.43, use: "Footer links, KBFGText and KBFGTextM, 20px line, in #444444" }
+    util: { size: 13, weight: 400, lineHeight: 1.54, use: "Utility links in the top bar, 20px line, in #666666" }
+    caption: { size: 12, weight: 400, lineHeight: 1.5, use: "Footer copyright, 18px line, in #666666" }
+  spacing: { gnb-y: 27, tab-x: 8, segment-x: 24, card-x: 32, card-y: 20 }
+  rounded: { button-sm: 3, button: 4, segment: 6, card: 16 }
   components:
-    button-primary: { type: button, bg: "#FFCC00", fg: "#000000", radius: "4px", height: "48px", padding: "0 16px", font: "18px / 600 KBFGText", use: "Primary CTA (로그인, 신청하기) — KB signature yellow" }
-    button-outlined: { type: button, bg: "#FFFFFF", fg: "#333333", border: "1px solid #AAAAAA", radius: "3px", height: "44px", font: "14px / 400 KBFGText", use: "Secondary action (로그인 버튼 in nav header)" }
-    input-text: { type: input, bg: "#FFFFFF", border: "1px solid #AAAAAA", radius: "4px", fg: "#333333", font: "15px KBFGText", use: "Form input fields" }
-    card-standard: { type: card, bg: "#FFFFFF", radius: "16px", shadow: "rgba(0,0,0,0.16) 0px 1px 3px 0px", use: "Recommended card / finance menu item (recom-card, finance-menu__item)" }
-    card-surface: { type: card, bg: "#F9FAFE", radius: "4px", use: "Secondary surface card (braille-card, info containers)" }
-    badge-yellow: { type: badge, bg: "#FFCC00", fg: "#000000", radius: "3px", font: "12px / 600 KBFGText", use: "Notification count badge (active nav indicator)" }
-    badge-accent: { type: badge, bg: "#FAEAAD", fg: "#333333", radius: "4px", font: "14px / 400 KBFGText", use: "Breadcrumb highlight / active section label (KB Pay breadcrumb)" }
-    nav-tab: { type: tab, fg: "#333333", active: "text #614CC2 + yellow #FFE066 underline bar", font: "15px / 400 KBFGText", use: "Main horizontal nav (My KB, 혜택, 금융, 카드, 서비스, 라이프)" }
-    toggle-switch: { type: toggle, bg: "#FFCC00", fg: "#FFFFFF", radius: "9999px", use: "On/off toggle for settings and alerts" }
+    primary-button: { type: button, bg: "#ffcc00", fg: "#000000", radius: "4px", padding: "0px 16px", height: "48px", font: "18px / 600 / 48px KBFGText", states: "probe on the KB국민카드 home: hover and pressed show no change across the button and three ancestor levels (transition all 0s); focus was not read, so none is declared", use: "로그인 in the login panel of the KB국민카드 home at surface-2::[data-omd-capture=\"30\"], 344 x 48; the only filled action on the four captured pages" }
+    header-login: { type: button, bg: "#ffffff", fg: "#333333", border: "1px solid #aaaaaa", radius: "3px", height: "42px", font: "14px / 400 / 40px KBFGText", hover: "bg #ebebeb", pressed: "bg #ebebeb", states: "bundle hover and pressed frames on all four pages; focus not declared", use: "로그인 in the header of every captured page at home::[data-omd-capture=\"15\"], 82 x 42" }
+    page-tab: { type: tab, fg: "rgba(0, 0, 0, 0.87)", padding: "8px", height: "64px", font: "15px / 400 KBFGText", selected: "3px bottom border rgba(0, 0, 0, 0.87), padding 8px 8px 5px", hover: "the same 3px bottom border appears", pressed: "the same 3px bottom border appears", states: "selected from rest values; hover and pressed from bundle frames; focus not declared", use: "KB Pay 소개, KB Pay 이용, KB Pay 가입, KB Pay 가맹점 tabs under the page title, 110 to 125 x 64" }
+    segment-tab: { type: tab, bg: "#ffffff", fg: "rgba(0, 0, 0, 0.87)", border: "1px solid rgba(0, 0, 0, 0.16)", radius: "6px", padding: "12px 24px 10px", height: "48px", font: "15px / 400 / 21.75px KBFGText", selected: "2px solid rgba(0, 0, 0, 0.87) border, weight 600, padding 11px 23px 9px", hover: "2px solid rgba(0, 0, 0, 0.87) border, weight 600", pressed: "2px solid rgba(0, 0, 0, 0.87) border, weight 600", states: "selected from rest values; hover and pressed from bundle frames; focus not declared", use: "Second-level tabs on KB Pay 이용 at surface-3::[data-omd-capture=\"23\"], 103 to 120 x 48" }
+    outline-button-xs: { type: button, bg: "#ffffff", fg: "rgba(0, 0, 0, 0.87)", border: "1px solid rgba(0, 0, 0, 0.6)", radius: "4px", padding: "0px 10px", height: "32px", font: "13px / 400 / 34px KBFGText", states: "rest only; no state frame and not probed", use: "Small outlined link buttons in the KB Pay 이용 guide at surface-3::[data-omd-capture=\"24\"], 159 x 32" }
+    gnb-item: { type: tab, fg: "rgba(0, 0, 0, 0.87)", padding: "27px 0px", height: "80px", font: "15px / 400 / 26px KBFGText", states: "rest only; no state frame", use: "Main navigation items in the 80px header row of the KB Pay pages" }
+    audience-switch: { type: tab, bg: "#ffffff", fg: "#333333", padding: "18px 0px 22px", height: "60px", font: "14px / 400 / 20px KBFGText", selected: "weight 600 (class menuON)", hover: "weight 600", pressed: "weight 600", states: "selected from rest values; hover and pressed from bundle frames; focus not declared", use: "The three audience switches at the left of the 60px top bar" }
+    merchant-category: { type: tab, fg: "rgba(0, 0, 0, 0.87)", height: "24px", font: "17px / 400 / 24px KBFGText", selected: "weight 600 with a 1px bottom border rgba(0, 0, 0, 0.87)", hover: "weight 600 with a 1px bottom border", pressed: "weight 600 with a 1px bottom border", states: "selected from rest values; hover and pressed from bundle frames; focus not declared", use: "Merchant category links above the logo grid on KB Pay 가맹점" }
+    family-site: { type: button, fg: "#666666", border: "1px solid #c2c2c2", radius: "0px", padding: "0px 25px 0px 15px", height: "34px", font: "14px / 400 / 32px KBFGText", states: "rest only; no state frame", use: "Family-site box in the footer of every captured page, 196 x 34" }
+    recommendation-card: { type: card, bg: "#ffffff", radius: "16px", shadow: "rgba(0, 0, 0, 0.16) 0px 1px 3px 0px", size: "1080px x 541px", use: "Recommendation panel on the KB국민카드 home" }
+    finance-menu-card: { type: card, bg: "#ffffff", radius: "16px", shadow: "rgba(0, 0, 0, 0.16) 0px 1px 3px 0px", padding: "24px 0px 0px 32px", size: "344px x 176px", use: "Finance menu tiles on the KB국민카드 home (smaller tiles 160 x 80)" }
+    guide-card: { type: card, bg: "#f9fafc", radius: "16px", padding: "20px 32px", size: "528px x 106px", use: "Customer guide link on the KB국민카드 home at surface-2::[data-omd-capture=\"68\"]" }
+    info-box: { type: card, bg: "#f9fafc", radius: "4px", padding: "16px 32px", size: "1016px x 105px", use: "Notice box (braille-card) on the KB국민카드 home" }
+    merchant-cell: { type: card, border: "1px solid #e1e1e1 (top and sides)", size: "192px x 149px", use: "Merchant logo grid on KB Pay 가맹점" }
   components_harvested: true
 ---
 
@@ -60,391 +290,340 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-KB Pay (KB페이) is KB Kookmin Card's flagship mobile payment platform — the unified gateway to Korea's largest credit card network wrapped in KB Financial Group's signature warm yellow identity. The visual system opens on a clean white canvas (`#FFFFFF`) with the brand's defining primary color, KB Yellow (`#FFCC00`), commanding every primary call-to-action on the page. This isn't an accent color or a decorative flourish — it is the action color, anchoring the system's visual hierarchy as unmistakably as a neon sign. The result is a financial product that reads as approachable and warm rather than austere and institutional.
+KB Pay (KB페이) is KB국민카드's mobile payment service. Its own introduction page describes it as a service for paying quickly and easily anywhere in Korea or abroad with cards, points and other payment methods, and says the whole range of KB국민카드 services is available inside the KB Pay app. Payment methods registered in KB Pay, family and corporate cards included, can be used at online and offline merchants at home and abroad, and partnerships add financial and membership services. The page organises the app into six areas, each with a one-line promise: 홈 (recommended content), 카드(듀얼홈) (card usage at a glance), 혜택 (new benefits and events every day), 결제 (paying anywhere with KB Pay), 금융 (financial products that fit) and 쇼핑/여행 (shopping through to travel). Its tagline is "한번에, 한손에, 한눈에 KB Pay", and the app has its own customer centre (☎1644-9311).
 
-The typography is built entirely on KB Financial Group's proprietary typefaces: `KBFGDisplayM` for headings and display text, and `KBFGText` for body copy and UI labels. This proprietary system gives KB Pay an identifiably Korean-premium quality — the display face at 32px/weight 400 on the hero reads as confident and calm, while the body type at 15px handles dense financial menu text with clean legibility. Section labels such as "인기 메뉴" appear in a warm accent purple (`#614CC2`) that creates a subtle counterpoint to the dominant yellow-and-black palette, signaling editorial curation without breaking the brand anchor.
-
-Depth on the main surface is handled through soft single-layer card shadows — `rgba(0,0,0,0.16) 0px 1px 3px 0px` — applied consistently to finance-menu cards and recommendation panels, giving the page a gentle layered feel without heavy elevation. Surface tints (`#F9F9F9`, `#F9FAFE`) segment content zones on an otherwise white canvas. The geometry throughout favors moderate rounding: `4px` on buttons (sharp and purposeful), `16px` on cards (modern and spacious), maintaining a balance between efficiency and contemporary Korean fintech aesthetics.
+On the web KB Pay lives inside the KB국민카드 site, and it looks it. The four KB Pay pages share one header, one set of self-hosted KB typefaces and one footer with the card-company home. The KB Pay pages themselves are almost monochrome: white, 87%-black type, KBFGDisplayM titles with -1px tracking, black 3px underline tabs, outlined buttons with 3px to 6px corners, and a grey `#ebebeb` hover fill. The one saturated colour of the site is its action yellow: `#ffcc00` fills the 로그인 button in the login panel of the KB국민카드 home, with `#000000` text on a 4px radius. The card-company home also carries the site's soft depth — white 16px cards with a single `rgba(0, 0, 0, 0.16) 0px 1px 3px` shadow — and pale `#f9fafc` guide boxes.
 
 **Key Characteristics:**
-- KB Yellow (`#FFCC00`) as the exclusive primary CTA color — one brand anchor, one action signal
-- KBFGDisplayM for display headings, KBFGText for body — both proprietary KB fonts
-- White canvas with light surface tints (`#F9F9F9`, `#F9FAFE`) segmenting content zones
-- Single-layer card shadow (`rgba(0,0,0,0.16) 0px 1px 3px 0px`) for gentle elevation
-- 4px radius on buttons (decisive, financial-grade), 16px on cards (spacious, modern)
-- Accent purple (`#614CC2`) for editorial labels (인기 메뉴, 인기 신용카드) — warmth without disruption
-- `18px/600 KBFGText` for CTA labels — weight carried in font weight, not size alone
-- Near-black heading text (`rgba(0,0,0,0.87)` ≈ `#151515`) instead of pure black
+- One action yellow, `#ffcc00`, on the site's filled primary button; the KB Pay pages themselves carry no filled action
+- KBFGDisplayM for titles (32px, 24px and 18px at weight 400 with -1px tracking) and KBFGText for everything else
+- Body text in `rgba(0, 0, 0, 0.87)`; headings in solid `#151515`; greys `#333333`, `#444444` and `#666666`
+- Tabs marked by black underlines (3px on page tabs) and outlined segments (2px when current)
+- Small radii on controls (3px, 4px, 6px) and 16px on cards; a single light shadow on home cards
 
 ## Primary tasks
 
-- Tap to pay at a convenience store or a subway gate
-- Add a card to the app before paying with it
-- Follow family cards, loan status, and point accumulation in one place
-- Find out why a payment was declined and what to do next
-- Check loan eligibility and read the rate in plain Korean
+- Learn what KB Pay does before installing the app.
+- Check how to use KB Pay and which payment methods it accepts.
+- Find out where KB Pay is accepted.
+- Sign in to the KB국민카드 site from the header.
+- Reach KB Pay customer support.
 
 ## 2. Color Palette & Roles
 
-### Primary Brand
-- **KB Yellow** (`#FFCC00`): The signature brand color of KB Financial Group and KB Pay. Used exclusively for primary CTAs (`.btn.btn--primary`), notification badges, and active UI indicators. Maps to Pantone 1235 C / `rgb(255, 204, 0)`. The single "action" color in the system.
-- **Yellow Light** (`#FFE066`): Nav underline accent and depth-1 bar (`em.depth1-bar`) for the active main navigation item. A lighter sibling to KB Yellow.
-- **Yellow Tint** (`#FAEAAD`): Warm tinted surface for breadcrumb highlights and breadcrumb-KB Pay path background — confirms the user's current section.
+Every token below was read on 2026-09-30 from four public, logged-out pages of card.kbcard.com: KB Pay 소개, KB Pay 이용, KB Pay 가맹점 and the KB국민카드 home. All four are one evidence domain, the KB국민카드 website: the header's audience switches, utility links and 로그인 outline compute the same colours, sizes and paddings on every page, and the same KBFG font files load on each. The KB Pay app was not captured and no app value is claimed.
 
-### Background & Surface
-- **Canvas White** (`#FFFFFF`): Page background, card surfaces, and CTA text on yellow.
-- **Surface Light** (`#F9F9F9`): The primary content zone separator — used throughout for section backgrounds and list-item surfaces.
-- **Surface Alt** (`#F9FAFE`): Secondary tinted surface (`.braille-card`, utility containers) with a very faint blue cast for differentiation.
+### Primary
+- **KB Yellow** (`#ffcc00`): The fill of 로그인 in the login panel of the KB국민카드 home (344 × 48, `#000000` label, 4px radius, `18px / 600` KBFGText). It is the primary because it is the only filled action on the four captured pages: the KB Pay pages render no filled control of their own and use the site's shared header and action system, whose filled primary action is this yellow. The probe found no hover or pressed change on it.
+- **On Primary** (`#000000`): The solid black label on the yellow button.
 
-### Text Hierarchy
-- **Ink** (`#151515`): Effective heading and primary body color (`rgba(0,0,0,0.87)`) — not pure black but a near-black with visual warmth.
-- **Body Dark** (`#333333`): Standard body copy, nav links, button labels.
-- **Body Mid** (`#444444`): Secondary UI text and descriptive copy.
-- **Muted** (`#666666`): Utility navigation, captions, meta information.
-- **Divider** (`#AAAAAA`): Border color for outlined buttons and form field borders.
+### Text
+- **Heading** (`#151515`): Section headings on the KB Pay pages (서비스 특징, 이용전 유의사항).
+- **Body** (`rgba(0, 0, 0, 0.87)`): The document text colour, page titles, tabs and navigation. It is an alpha colour, so it stays in prose and component fields rather than the colour tokens.
+- **Text** (`#333333`): The header 로그인 label, the audience switches, the KB Pay tagline and sub-headings.
+- **Footer Text** (`#444444`): Footer links.
+- **Muted** (`#666666`): Utility links in the top bar, the copyright line and the family-site box.
 
-### Accent & State
-- **Accent Purple** (`#614CC2`): Used for editorial section headings ("인기 메뉴", "인기 신용카드", "인기 체크카드") — a complementary warm purple that balances the yellow dominance.
-- **Black on Yellow** (`#000000`): CTA label text on `#FFCC00` backgrounds — maximum contrast, brand-prescribed.
-- **KB Brown** (`#776C61`): Skip navigation and accessibility-first link background — a warm brown from KB's brand neutral palette.
+### Neutral & Surface
+- **White** (`#ffffff`): The canvas, the header 로그인 button, segment tabs and home cards.
+- **Hover Fill** (`#ebebeb`): The header 로그인 button's hover and pressed fill.
+- **Surface** (`#f9fafc`): Guide and notice boxes on the KB국민카드 home.
+- **Border** (`#aaaaaa`): The header 로그인 outline.
+- **Select Border** (`#c2c2c2`): The footer family-site box.
+- **Grid Line** (`#e1e1e1`): The merchant logo grid on KB Pay 가맹점.
+
+### Brand assets, not tokens
+- The KB국민카드 logo and the phone illustrations on the KB Pay pages were not measured; no logo colour is claimed. The Partial record's `#ffe066` nav bar, `#faeaad` breadcrumb, `#614cc2` menu labels and `#776c61` skip link were not rendered on any captured page (the labels live in the closed mega-menu).
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Display**: `KBFGDisplayM` — KB Financial Group's proprietary display medium typeface. Used for page titles ("KB Pay"), section headings ("서비스 특징", "이용전 유의사항").
-- **Body**: `KBFGText` — KB Financial Group's proprietary text typeface. Used for navigation, body copy, button labels, utility text. Weight 400 as default.
+- **Live surface use**: `KBFGText` (584 observed uses) and `KBFGDisplayM` (17), both `loaded / high`, self-hosted by KB국민카드 from `https://card.kbcard.com/CMN/common/fonts/` (`KBFGTextL_subset.woff2`, `KBFGTextM_subset.woff2`, `KBFGDisplayM_subset.woff2`, with WOFF fallbacks). KBFGDisplayM sets page titles, section headings and sub-headings, and the hero titles of the card home; KBFGText sets body, navigation, buttons and tabs. Footer links name `KBFGText, KBFGTextM`.
+- **Official distributed font assets**: the files are subset copies served by the card site; no distribution page or licence was opened this session, so none is claimed. The "KBFG" prefix points to KB Financial Group, but no page opened confirms who owns or licenses the faces.
+- **Official product use**: no KB page opened names these typefaces, so no statement of official use is made.
+- **Declared only (no visible use)**: none observed. The fixed "top" button computes Arial, a system face, in 3 uses.
+- **Unresolved**: none.
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Use |
-|------|------|------|--------|-----|
-| Display Hero | KBFGDisplayM | 32px | 400 | Page hero title (KB Pay) |
-| Section Heading | KBFGDisplayM | 24px | 400 | Section sub-titles (서비스 특징) |
-| Main Nav | KBFGText | 15px | 400 | Primary navigation items |
-| Body | KBFGText | 15px | 400 | Standard body copy |
-| Editorial Label | KBFGText | 18px | 600 | Section labels (인기 메뉴) in accent purple |
-| CTA Label | KBFGText | 18px | 600 | Primary button labels (로그인, 신청하기) |
-| Utility Nav | KBFGText | 13px | 400 | Utility links (회원가입, 고객센터) |
-| Tag/Badge | KBFGText | 14px | 400 | Breadcrumb and content labels |
+| Role | Font | Size | Weight | Line Height | Tracking | Observed on |
+|------|------|------|--------|-------------|----------|-------------|
+| Display | KBFGDisplayM | 32px | 400 | 32px (1.0) | -1px | KB Pay page title |
+| Display Home | KBFGDisplayM | 32px | 600 | 40px (1.25) | normal | Card home hero slides |
+| Section | KBFGDisplayM | 24px | 400 | 24px (1.0) | -1px | KB Pay section headings, `#151515` |
+| Lead | KBFGText | 24px | 400 | normal | normal | 한번에, 한손에, 한눈에 KB Pay, `#333333` |
+| Subsection | KBFGDisplayM | 18px | 400 | 18px (1.0) | -1px | KB Pay 이용 sub-headings, `#333333` |
+| Card Title | KBFGText | 18px | 600 | 28.8px (1.6) | normal | Card home cards |
+| Tab Large | KBFGText | 18px | 600 | 26.1px (1.45) | normal | Card home section tabs |
+| Button Large | KBFGText | 18px | 600 | 48px | normal | Yellow 로그인 |
+| Category | KBFGText | 17px | 400 | 24px (1.41) | normal | KB Pay 가맹점 categories |
+| Nav | KBFGText | 15px | 400 | 26px (1.73) | normal | Main navigation |
+| Body | KBFGText | 15px | 400 | 22px (1.47) | normal | KB Pay introduction |
+| Body Home | KBFGText | 15px | 400 | 24px (1.6) | normal | Card home copy |
+| Button Small | KBFGText | 14px | 400 | 40px | normal | Header 로그인 |
+| Footer | KBFGText | 14px | 400 | 20px (1.43) | normal | Footer links, `#444444` |
+| Util | KBFGText | 13px | 400 | 20px (1.54) | normal | Top-bar utility links, `#666666` |
+| Caption | KBFGText | 12px | 400 | 18px (1.5) | normal | Copyright, `#666666` |
 
 ### Principles
-- **Proprietary fonts as identity**: KBFGDisplayM and KBFGText are exclusive to KB Financial Group, making every text element brand-identifiable without a logo.
-- **Weight contrast is hierarchy**: KBFGDisplayM at weight 400 for headings achieves a calm authority; KBFGText at weight 600 for CTAs and labels provides emphasis without visual aggression.
-- **15px as the information density anchor**: Body and nav at 15px is generous for Korean hangul legibility while remaining dense enough for financial service browsing.
-- **Black on yellow at 18px/600**: CTA legibility maximized through weight rather than size — the yellow does the attention-grabbing, the weight does the reading-clarity.
+- **Display face for titles only**: KBFGDisplayM at weight 400 with -1px tracking and a line height equal to the size; weight 600 appears only on the card home's hero slides.
+- **Weight marks the current item**: audience switches, segment tabs and merchant categories go from 400 to 600 when current or hovered.
+- **Dense 15px body**: navigation, body and card copy all sit at 15px.
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Primary CTA (KB Yellow)**
-- Background: `#FFCC00`
+**Primary button (KB Yellow)**
+- Background: `#ffcc00`
 - Text: `#000000`
 - Radius: 4px
+- Padding: 0px 16px
 - Height: 48px
-- Padding: 0 16px
-- Font: 18px KBFGText weight 600
-- Use: All primary actions (로그인, 신청하기, 확인) — the single action color
+- Font: 18px / 600 KBFGText
+- State: the probe found no hover or pressed change (transition all 0s)
+- Use: 로그인 in the login panel of the KB국민카드 home
 
-**Secondary Outlined**
-- Background: `#FFFFFF`
+**Header 로그인**
+- Background: `#ffffff`
 - Text: `#333333`
-- Border: 1px solid `#AAAAAA`
+- Border: 1px solid `#aaaaaa`
 - Radius: 3px
-- Height: 44px
-- Font: 14px KBFGText weight 400
-- Use: Login button in nav header — a lower-emphasis companion to yellow CTA
+- Height: 42px
+- Font: 14px / 400 KBFGText
+- Hover: background `#ebebeb`
+- Pressed: background `#ebebeb`
+- Use: header of every captured page
 
-### Inputs & Forms
-
-**Text Input**
-- Background: `#FFFFFF`
-- Border: 1px solid `#AAAAAA`
+**Small outlined button**
+- Background: `#ffffff`
+- Text: `rgba(0, 0, 0, 0.87)`
+- Border: 1px solid `rgba(0, 0, 0, 0.6)`
 - Radius: 4px
+- Padding: 0px 10px
+- Height: 32px
+- Font: 13px / 400 KBFGText
+- Use: links inside the KB Pay 이용 guide
+
+**Family-site box**
+- Text: `#666666`
+- Border: 1px solid `#c2c2c2`
+- Radius: 0px
+- Padding: 0px 25px 0px 15px
+- Height: 34px
+- Font: 14px / 400 KBFGText
+- Use: footer of every captured page
+
+### Tabs & Navigation
+
+**Page tabs**
+- Text: `rgba(0, 0, 0, 0.87)`
+- Padding: 8px
+- Height: 64px
+- Font: 15px / 400 KBFGText
+- Selected: 3px bottom border `rgba(0, 0, 0, 0.87)`
+- Hover: the same 3px bottom border appears
+- Use: KB Pay 소개, 이용, 가입, 가맹점
+
+**Segment tabs**
+- Background: `#ffffff`
+- Text: `rgba(0, 0, 0, 0.87)`
+- Border: 1px solid `rgba(0, 0, 0, 0.16)`
+- Radius: 6px
+- Padding: 12px 24px 10px
+- Height: 48px
+- Font: 15px / 400 KBFGText
+- Selected: 2px solid `rgba(0, 0, 0, 0.87)` border, weight 600
+- Hover: 2px solid `rgba(0, 0, 0, 0.87)` border, weight 600
+- Use: second-level tabs on KB Pay 이용
+
+**Main navigation**
+- Text: `rgba(0, 0, 0, 0.87)`
+- Padding: 27px 0px
+- Height: 80px
+- Font: 15px / 400 KBFGText
+- Use: My KB, 혜택, 금융, 카드, 서비스, 라이프
+
+**Audience switches**
+- Background: `#ffffff`
 - Text: `#333333`
-- Font: 15px KBFGText weight 400
-- Use: Standard form input fields
+- Padding: 18px 0px 22px
+- Height: 60px
+- Font: 14px / 400 KBFGText
+- Selected: weight 600
+- Hover: weight 600
+- Use: the three switches at the left of the top bar
 
-### Cards & Containers
+**Merchant categories**
+- Text: `rgba(0, 0, 0, 0.87)`
+- Height: 24px
+- Font: 17px / 400 KBFGText
+- Selected: weight 600 with a 1px bottom border
+- Hover: weight 600 with a 1px bottom border
+- Use: category links on KB Pay 가맹점
 
-**Standard Card (Finance Menu)**
-- Background: `#FFFFFF`
+### Cards
+
+**Recommendation card**
+- Background: `#ffffff`
 - Radius: 16px
 - Shadow: `rgba(0, 0, 0, 0.16) 0px 1px 3px 0px`
-- Use: Finance menu items (대출, 카드, 신용점수 등) and recommendation panels (recom-card)
+- Use: recommendation panel on the KB국민카드 home
 
-**Surface Card**
-- Background: `#F9FAFE`
-- Radius: 4px
-- Use: Braille-accessible info blocks and utility containers; no shadow, surface tint only
-
-**Feature Banner**
-- Background: transparent / image
+**Finance menu card**
+- Background: `#ffffff`
 - Radius: 16px
-- Use: KB Pay feature banner items (setting-banner__item) — large image cards
+- Shadow: `rgba(0, 0, 0, 0.16) 0px 1px 3px 0px`
+- Padding: 24px 0px 0px 32px
+- Use: finance menu tiles on the KB국민카드 home
 
-### Badges & Labels
+**Guide card**
+- Background: `#f9fafc`
+- Radius: 16px
+- Padding: 20px 32px
+- Use: customer guide link on the KB국민카드 home
 
-**Notification Badge**
-- Background: `#FFCC00`
-- Text: `#000000`
-- Radius: 3px
-- Font: 12px KBFGText weight 600
-- Use: Active nav indicator dot and notification count
+**Notice box**
+- Background: `#f9fafc`
+- Radius: 4px
+- Padding: 16px 32px
+- Use: notice box on the KB국민카드 home
 
-**Breadcrumb Highlight**
-- Background: `#FAEAAD`
-- Text: `#333333`
-- Radius: 0px
-- Font: 14px KBFGText weight 400
-- Use: Active breadcrumb path segment (KB Pay current section)
-
-### Navigation
-
-**Main Nav Item**
-- Background: `#FFFFFF` (nav bar)
-- Text: `rgba(0,0,0,0.87)`
-- Active underline: `#FFE066` bar (em.depth1-bar), 2px equivalent
-- Height: 80px nav height
-- Font: 15px KBFGText weight 400
-- Use: Primary horizontal navigation (My KB, 혜택, 금융, 카드, 서비스, 라이프)
-
-**Utility Nav Links**
-- Background: `#FFFFFF`
-- Text: `#666666`
-- Height: 60px utility nav bar
-- Font: 13px KBFGText weight 400
-- Use: Utility links (회원가입, 고객센터, 상품공시실 등)
+**Merchant cell**
+- Border: 1px solid `#e1e1e1`
+- Use: merchant logo grid on KB Pay 가맹점, 192 × 149
 
 ---
 
-**Verified:** 2026-06-22 (omd:add-reference CREATE — Tier 1 live inspect)
-**Tier 1 sources:** https://card.kbcard.com/CXPRISVC0127.cms, https://card.kbcard.com/
-**Tier 2 sources:** getdesign.md/kbpay — not found (404); styles.refero.design/?q=KB+Pay — no KB Pay entries found
+**Verified:** 2026-09-30 (deterministic collector capture of four public, logged-out pages of card.kbcard.com plus a fixed keyboard-probe state read and first-party context)
+**Tier 1 sources:** https://card.kbcard.com/SVC/DVIEW/HSCMCXPRISVC0127 ; https://card.kbcard.com/SVC/DVIEW/HSCMCXPRISVC0128 ; https://card.kbcard.com/SVC/DVIEW/HSCMCXPRISVC0130 ; https://card.kbcard.com/CMN/DVIEW/HOAMCXPRIZZC0002
+**Tier 2 sources:** getdesign.md/kbpay (HTTP 200, 30,781 bytes; the name does not appear in the response) and styles.refero.design/?q=kb%20pay (HTTP 200; "kb pay" occurs 2 times, not inspected further), requested 2026-09-30; no Tier 2 value used
 **Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
 ### Spacing System
-- Base unit: 8px
-- Scale: 4px, 8px, 16px, 20px, 24px, 32px, 48px, 64px
-- Button padding: `0 16px` horizontal
-- Nav padding: `27px 0px` on main nav links (80px total height with 26px top/bottom)
-- Utility nav: `20px 0px` (60px total height)
+- Observed paddings rather than a declared scale: navigation 27px vertical in an 80px row, top bar 18px to 22px in a 60px row, page tabs 8px, segment tabs 12px 24px 10px, guide cards 20px 32px, notice boxes 16px 32px, finance tiles 24px top and 32px left.
 
 ### Grid & Container
-- Single-column hero with KB Pay title at 32px KBFGDisplayM
-- Feature tabs (홈, 카드(듀얼홈), 혜택, 결제, 금융, 쇼핑/여행) as horizontal scroll or 6-tab layout
-- Finance menu: 2-column or 4-column grid of 16px-radius white cards with subtle shadow
-- Full-width white nav bar with dual-row: utility links (60px) + main nav (80px)
-- Content grouped into white (`#FFFFFF`) and light-surface (`#F9F9F9`) alternating bands
+- The KB Pay pages use a 960px content column (title, tabs and lists all measure 960px); the card home uses 1080px panels.
+- KB Pay 가맹점 lays merchant logos in 192 × 149 cells, five to a row.
 
 ### Whitespace Philosophy
-- **Measured and purposeful**: KB Pay is a financial product serving millions — layout choices favor clarity and scanability over decorative whitespace.
-- **Card rhythm**: Finance menu cards repeat at consistent 16px radius with the same single shadow, creating a uniform grid of trustworthy service tiles.
-- **Yellow as the only visual interrupt**: On a largely monochromatic (white + gray) surface, `#FFCC00` is the sole saturated element — its scarcity amplifies its authority.
+- The KB Pay pages are information pages: stacked sections under 24px headings, bulleted notes and image-led feature rows.
 
 ### Border Radius Scale
-- Micro (3px): Notification badge, legacy `.kbBtn` utility buttons
-- Standard (4px): Primary CTA buttons, form inputs — the workhorse interactive radius
-- Card (16px): Finance cards, banner items, guide containers
-- Full (9999px): Toggle switches, pill badges
+- 0px: navigation, page tabs, family-site box and grid cells
+- 3px: header 로그인
+- 4px: primary button, small outlined buttons, notice box
+- 6px: segment tabs
+- 16px: home cards and guide links
 
 ## 6. Depth & Elevation
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| Flat (Level 0) | No shadow, transparent bg | Navigation, headings, inline text, most links |
-| Surface (Level 1) | `#F9F9F9` or `#F9FAFE` background shift | Section separators, utility containers |
-| Card (Level 2) | `rgba(0,0,0,0.16) 0px 1px 3px 0px` | Finance menu items, recommendation cards |
-
-**Shadow Philosophy**: KB Pay's elevation system is deliberately minimal — a single thin shadow (`rgba(0,0,0,0.16) 0px 1px 3px`) applied only to cards makes them feel clickable without creating visual noise. The shadow's low opacity and small spread keeps the surface clean and fast-reading — appropriate for a mobile payment app where cognitive load should be low. Heavy elevation or multi-layer shadows would conflict with the brand's approachable, warm aesthetic anchored by the bright yellow primary.
+| Flat | No shadow | Every element on the KB Pay pages |
+| Card | `rgba(0, 0, 0, 0.16) 0px 1px 3px 0px` | Recommendation panel and finance tiles on the KB국민카드 home |
+| Tint | `#f9fafc` fill | Guide and notice boxes on the card home |
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use KB Yellow (`#FFCC00`) exclusively for primary CTAs — one action color, one meaning
-- Apply `KBFGDisplayM` for all section headings and display text — it carries KB's brand DNA
-- Use `#F9F9F9` surface tints to separate content zones without resorting to borders
-- Keep card radius at 16px for containers and 4px for interactive controls — each has a purpose
-- Apply the single card shadow (`rgba(0,0,0,0.16) 0px 1px 3px 0px`) only to clickable card units
-- Set CTA labels in `18px/600 KBFGText` — weight signals emphasis, size signals hierarchy
-- Use `#614CC2` (accent purple) sparingly for editorial/curatorial labels — it balances yellow without competing
+- Use `#ffcc00` with a `#000000` label for the one filled primary action
+- Set titles in KBFGDisplayM at weight 400 with -1px tracking and everything else in KBFGText
+- Mark the current tab with a black underline or a 2px black outline and weight 600
+- Keep control corners small (3px to 6px) and card corners at 16px
+- Use the single light card shadow only on the card-home tiles
 
 ### Don't
-- Use KB Yellow for decorative backgrounds or illustrations — dilutes its CTA signal
-- Replace KBFGText/KBFGDisplayM with system fonts or third-party typefaces — loses brand identity
-- Add multiple shadow layers or heavy elevation — KB Pay is a clean, performance-first mobile product
-- Use pure black (`#000000`) for body text — near-black `rgba(0,0,0,0.87)` ≈ `#151515` reads warmer
-- Apply the accent purple (`#614CC2`) to CTAs or interactive elements — it is a label/editorial color only
-- Use the outlined secondary button for primary flows — yellow CTA must always be the first visible action
-- Round buttons beyond 4px on desktop surfaces — sharp buttons signal decisiveness for financial transactions
+- Don't spread the yellow to tabs, labels or backgrounds; none of the captured pages does
+- Don't use the Partial record's purple `#614cc2` or yellow tints; they do not render on the captured pages
+- Don't substitute another typeface for KBFGText or KBFGDisplayM and present it as KB's
+- Don't add a brand focus ring; focus was not measured
 
 ## 8. Responsive Behavior
 
 ### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, stacked nav, compact finance menu |
-| Tablet | 640-1024px | 2-column finance menu, moderate padding |
-| Desktop | 1024-1440px | Full dual-row nav, 4-column finance grid, centered hero |
+All four pages were captured at 1440px wide only; no breakpoint was measured.
 
 ### Touch Targets
-- Primary CTA buttons: 48px height — comfortable thumb target on iOS/Android
-- Nav links: 80px nav height provides a generous interaction zone
-- Finance menu cards: large tiles at 176px+ height, easily tappable
-- Utility nav links: 60px height minimum
+- Primary button 48px tall, header 로그인 42px, page tabs 64px, segment tabs 48px, navigation row 80px.
 
 ### Collapsing Strategy
-- Dual-row nav (utility + main) → single hamburger menu on mobile
-- 4-column finance menu → 2-column → scrollable horizontal chips on narrow viewport
-- Feature tabs (6 items) → horizontally scrollable tab row
-- Hero title scales proportionally; KBFGDisplayM weight 400 maintained throughout
-- KB Yellow CTA button stretches to full-width on mobile
+Not measured.
+
+### Image Behavior
+Not measured.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary CTA / brand anchor: KB Yellow (`#FFCC00`)
-- CTA label: Black (`#000000`)
-- Yellow nav accent: `#FFE066`
-- Yellow breadcrumb tint: `#FAEAAD`
-- Background: White (`#FFFFFF`)
-- Surface segment: `#F9F9F9`
-- Heading / body text: Near-black (`#151515` / `rgba(0,0,0,0.87)`)
-- Secondary text: `#333333`
-- Muted text: `#666666`
-- Divider / outlined border: `#AAAAAA`
-- Editorial accent: Warm purple (`#614CC2`)
-- Card shadow: `rgba(0,0,0,0.16) 0px 1px 3px 0px`
+- Primary action: `#ffcc00` with `#000000` text
+- Text: `rgba(0, 0, 0, 0.87)`; headings `#151515`; greys `#333333`, `#444444`, `#666666`
+- Hover fill: `#ebebeb`; borders `#aaaaaa`, `#c2c2c2`, `#e1e1e1`
+- Surface: `#ffffff`, tint `#f9fafc`
 
 ### Example Component Prompts
-- "Create a primary CTA button: #FFCC00 background, #000000 text, 4px radius, 48px height, 0 16px padding, 18px KBFGText weight 600. Label: '신청하기'. This is the only yellow element on the surface — use it to anchor the primary action."
-- "Design a finance menu card: #ffffff background, 16px radius, rgba(0,0,0,0.16) 0px 1px 3px shadow. Inside: 18px KBFGText weight 600 #151515 label, 15px weight 400 #333333 descriptor. The card is fully clickable — no separate button."
-- "Build a section with editorial label: label text '인기 메뉴' at 18px KBFGText weight 600 color #614CC2. Below it, 16px-radius white cards in a 2-4 column grid, each with the standard card shadow."
-- "Create KB Pay main nav: white bar, 80px height. KBFGText 15px weight 400, color rgba(0,0,0,0.87). Active item shows a #FFE066 underline bar (em.depth1-bar). Right side: outlined login button (#ffffff, 1px solid #AAAAAA, 3px radius, 44px height)."
+- "Primary button: #ffcc00 background, #000000 label '로그인' in KBFGText 18px weight 600, 48px tall, 0 16px padding, 4px radius, no hover change."
+- "Page tabs: KBFGText 15px in rgba(0, 0, 0, 0.87), 64px tall; the current tab carries a 3px black bottom border."
+- "Card-home tile: white, 16px radius, shadow rgba(0, 0, 0, 0.16) 0 1px 3px, 24px top and 32px left padding."
 
 ### Iteration Guide
-1. KB Yellow (`#FFCC00`) is the single action anchor — use it for one element per view (the primary button)
-2. KBFGDisplayM for all headings; KBFGText for everything interactive — never swap
-3. Card shadow is always `rgba(0,0,0,0.16) 0px 1px 3px 0px` — don't add layers or increase opacity
-4. 4px radius on buttons; 16px on cards — these two scales cover all interactive surfaces
-5. `#614CC2` accent purple only for editorial labels — never for buttons or navigation
-6. Surface segments use `#F9F9F9` or `#F9FAFE` backgrounds — no borders between sections
-7. Button text is always weight 600 at 18px — KB Pay's CTAs are large and decisive
-
----
+1. Yellow `#ffcc00` is for the single filled primary action
+2. KBFGDisplayM titles, KBFGText for the rest
+3. Current state = black underline or outline plus weight 600
+4. Corners 3px to 6px on controls, 16px on cards
 
 ## 10. Voice & Tone
 
-KB Pay's voice is **warm, confident, and enabling** — a financial partner that speaks plain Korean to the widest possible audience, from teenagers making first purchases to seniors managing retirement funds. The headline "한번에, 한손에, 한눈에 KB Pay" (at once, in one hand, at a glance) sets the register: punchy, parallel, optimistic. The service does not lecture about finance; it simplifies it. Copy is short, action-oriented, and jargon-light — consistent with KB Financial Group's stated mission of being "국민의 행복생활 파트너" (the Korean people's happy-life partner).
+The KB Pay pages speak in short, parallel promises and plain explanatory sentences.
 
 | Context | Tone |
 |---|---|
-| Hero / primary CTA | Short, punchy, parallel structure. "한번에, 한손에, 한눈에". Action verbs without punctuation excess. |
-| Feature descriptions | Benefit-first, feature-second. "나에게 꼭 맞는 콘텐츠 추천" — the outcome, then the mechanism. |
-| Service feature tabs | Ultra-compact 2-4 Korean syllable labels (홈, 혜택, 결제, 금융). Density over description. |
-| Eligibility / restrictions | Clear, matter-of-fact. "만 7세 이상 개인 고객" — no softening language around limits. |
-| Error / notice copy | Formal and direct, consistent with Korean financial regulation communication standards. |
-| CTAs | Verb + subject. "신청하기" (apply), "다운받기" (download), "확인" (confirm). |
+| Tagline | Three parallel beats. "한번에, 한손에, 한눈에 KB Pay" |
+| Feature areas | One noun label and one benefit line each. "혜택 — 매일 새로운 혜택과 이벤트" |
+| Service description | Plain and complete. "카드, 포인트 등 다양한 결제 수단으로 국내외 어디서나 쉽고 빠르게 결제할 수 있는 모바일 서비스입니다." |
+| Conditions | Exact and formal, stating requirements and exceptions |
 
-**Voice samples (verbatim from live KB Pay page):**
-- "한번에, 한손에, 한눈에 KB Pay" — hero tagline (parallel three-part promise). *(verified live 2026-06-22)*
-- "나에게 꼭 맞는 콘텐츠 추천" — 홈 tab feature description (benefit-first). *(verified live 2026-06-22)*
-- "매일 새로운 혜택과 이벤트" — 혜택 tab feature description (ongoing value promise). *(verified live 2026-06-22)*
-- "국민의 행복생활 파트너 KB국민카드" — site title / brand positioning. *(verified live 2026-06-22)*
-
-**Forbidden register**: financial jargon left unexplained, urgency tactics ("마감 임박"), aggressive upsell framing, English acronyms without Korean equivalents in consumer-facing copy.
+**Voice samples (verbatim from the KB Pay 소개 page, opened 2026-09-30):**
+- "한번에, 한손에, 한눈에 KB Pay"
+- "나에게 꼭 맞는 콘텐츠 추천" (홈)
+- "한눈에 확인하는 카드이용정보" (카드(듀얼홈))
+- "어디서든 간편하게 KB Pay로 결제" (결제)
 
 ## 11. Brand Narrative
 
-KB Pay was launched in **2020** as KB Kookmin Card's mobile payment solution, and in **2022** consolidated the existing "KB국민카드 모바일홈" app into a single unified platform — delivering on the promise of "한번에, 한손에, 한눈에" (at once, in one hand, at a glance). KB Kookmin Card is a subsidiary of **KB Financial Group (KB금융그룹)**, Korea's largest financial holding company by total assets, with headquarters in Yeongdeungpo, Seoul. The parent group's brand identity — the yellow star-b symbol and `#FFCC00` primary — carries directly into KB Pay's visual system, making the payment app an extension of one of Korea's most trusted institutional identities.
-
-The founding logic was straightforward: Korean consumers were managing payment, card issuance, loan inquiry, point redemption, and lifestyle benefits across fragmented apps. KB Pay's consolidation — card, points, financial products, shopping, travel, all accessible in one home screen — was a product response to that fragmentation. The "듀얼홈" (dual home) structure introduced a split-view between personal use and card management, reflecting the reality that KB's users range from young adults making first digital payments to professionals managing corporate accounts.
-
-KB Financial Group's branding philosophy is built around the concept of "국민" (the Korean people) — the name literally means "National People's Card." Design decisions reflect a responsibility to the widest possible demographic: generous touch targets (48px CTAs), accessible color contrast on yellow (black text for maximum WCAG compliance), proprietary fonts that render cleanly at all sizes, and copy guidelines that mandate plain language accessible to users regardless of age or education level. KB Pay is not a startup designing for a demographic niche — it is a national financial infrastructure product.
+KB Pay is presented by KB국민카드, whose site calls itself "국민의 행복생활 파트너 KB국민카드", as the app that gathers the card company's services in one place: payment with cards and points at home and abroad, card usage at a glance through the 듀얼홈 view, daily benefits and events, financial products, and shopping and travel. Family and corporate cards can be registered alongside personal ones, and partnerships extend it into financial and membership services. The web pages that explain it sit in the 결제서비스 section of card.kbcard.com, with separate pages for introduction, usage, sign-up and merchants.
 
 ## 12. Principles
 
-1. **One action, one color.** KB Yellow (`#FFCC00`) carries all primary CTAs. *UI implication:* every screen has exactly one yellow element — the next step is always unambiguous regardless of the user's financial literacy.
-2. **"국민" means everyone.** The service must be legible and operable by a 7-year-old and a 75-year-old on the same day. *UI implication:* 48px touch targets, 15px minimum body size, KBFGText at accessible weight, WCAG AA-compliant yellow-on-black contrast.
-3. **Finance without intimidation.** KB Pay rejects the cold institutional blue of legacy Korean banking. *UI implication:* warm yellow, rounded cards, white surfaces — the palette of a consumer product, not a government counter.
-4. **한손에 (in one hand) is a design constraint, not a tagline.** The app must function entirely within thumb reach. *UI implication:* primary actions at the bottom of the viewport, nav condensed to a 6-item tab row, no deep hierarchy.
-5. **Trust through consistency.** A national-scale financial product must behave the same way on every surface. *UI implication:* KBFGDisplayM/Text proprietary fonts across all KB subsidiaries; `#FFCC00` is the same hex in KB Bank, KB Card, KB Insurance — the brand is the group, not the product.
+1. **One saturated action colour.** *UI implication:* the only filled control on the captured pages is the yellow primary button.
+2. **Titles in the house display face.** *UI implication:* KBFGDisplayM for page titles and headings; KBFGText for everything else.
+3. **State by line and weight.** *UI implication:* underlines, outlines and weight 600 mark the current item instead of colour.
+4. **Plain explanation.** *UI implication:* information pages lead with a one-line promise and follow with exact conditions.
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable KB Pay user segments (Korean cardholders, students, families, financial product shoppers), not individual people.*
+*Personas below are fictional archetypes informed by the audiences the KB Pay pages address (KB국민카드 cardholders, family-card and corporate-card users, shoppers and travellers), not individual people.*
 
-**이지원, 22, 부산.** A university student who received her first KB Kookmin Card as a family member gift. Uses KB Pay primarily for NFC payment on the subway and convenience store purchases. Chose KB because her parents use it; trusts the brand because "국민카드" sounds official. Expects the app to work instantly at checkout — never reads the notice text.
+**이지원, 22, 부산.** A student with her first KB국민카드 who pays at convenience stores and on the subway with the app.
 
-**박민준, 38, 서울 강남.** A dual-income household head managing family credit cards, loan status, and point accumulation through KB Pay's 듀얼홈. Uses the "카드이용정보" tab daily to track family spending. Values the consolidated view — previously had three separate bank and card apps. Would leave the platform if the app required multiple steps to reach his balance.
+**박민준, 38, 서울.** Manages family cards and checks card usage in the 듀얼홈 view.
 
-**김순희, 63, 전주.** A retiree who transitioned from bank teller visits to the KB Pay app at her children's suggestion. Relies on the large 48px yellow CTA buttons and 15px body text for navigation. Calls the help center (1644-9311) when confused — expects the app to speak plain Korean, not fintech English. Would describe KB Pay as "믿을 수 있는 앱" (a trustworthy app) because it bears the KB group identity.
-
-**최준호, 31, 판교.** A developer at a mid-size tech company who uses KB Pay for seamless checkout integration at online merchants. Appreciates the app's speed and the breadth of acceptance — more merchants accept KB Pay than smaller fintech competitors. Occasionally checks the "금융" tab for loan eligibility, finds the plain-language rate summaries more useful than the jargon-heavy alternatives at competing banks.
+**김순희, 63, 전주.** Moved to the app at her children's suggestion and calls the app customer centre when something is unclear.
 
 ## 14. States
 
 | State | Treatment |
 |---|---|
-| **Empty (no card registered)** | White canvas. Single near-black line in KBFGText 15px explaining how to add a card, one `#FFCC00` CTA "카드 등록하기". No illustration clutter. |
-| **Empty (no transaction history)** | Muted text `#666666` in KBFGText 15px stating the period has no transactions; date filter visible above for adjustment. |
-| **Loading (initial app launch)** | Skeleton blocks at card dimensions with `#F9F9F9` fill and gentle pulse animation. Nav and tab bar remain visible. No spinner overlay. |
-| **Loading (balance refresh)** | Previous balance remains visible; a subtle progress indicator below the card header. Avoids a blank screen during refresh. |
-| **Error (network failure)** | Inline message in body text area — KBFGText 15px, near-black, plain Korean explanation. A yellow `#FFCC00` retry CTA. No red-heavy alarmist UI. |
-| **Error (payment declined)** | Dedicated state with the decline reason in plain Korean and a single action path (카드 확인하기 or 고객센터 연결). |
-| **Success (payment complete)** | Brief confirmation screen: large KB Yellow checkmark or animated symbol, "결제 완료" in KBFGDisplayM 24px, transaction details in KBFGText 15px. Auto-advance to home after 2s. |
-| **Success (card application submitted)** | Inline confirmation with expected processing time. Plain Korean timeline, no marketing upsell on the confirmation screen. |
-| **Skeleton** | `#F9F9F9` blocks at final card and list-item dimensions, 16px radius, gentle 1.5s pulse. |
-| **Disabled** | Reduced-opacity surface (`opacity: 0.4`) on button; yellow fades to `#FAEAAD` tint rather than turning grey — preserves brand warmth. |
+| **Hover (header 로그인)** | Fill `#ebebeb` |
+| **Hover (page tabs)** | A 3px black bottom border appears |
+| **Hover (segment tabs, categories, audience switches)** | Weight 600 with a 2px or 1px black line where the component has one |
+| **Hover and pressed (primary button)** | No change (probe) |
+| **Current item** | Underline or outline plus weight 600 |
+| **Focus** | Not measured; no focus style is declared |
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | CTA press feedback, tab active state |
-| `motion-standard` | 200ms | Card expand, modal open, dropdown |
-| `motion-slow` | 320ms | Screen-level transition, bottom-sheet slide |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Cards/sheets arriving |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Modals/overlays dismissing |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way state transitions |
-
-**Motion rules**: Motion in KB Pay is transactional and purposeful — this is a payment infrastructure product used by millions of Korean users including elderly and accessibility-sensitive users. The primary CTA (`#FFCC00`) responds to press with an immediate opacity shift at `motion-fast`; no spring or bounce. Bottom sheets slide in at `motion-slow/ease-enter` giving users a moment to register what is appearing. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the yellow CTA remains visible and tappable without any animation dependency.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-22) via playwright getComputedStyle on:
-- https://card.kbcard.com/CXPRISVC0127.cms (KB Pay introduction page)
-- https://card.kbcard.com/ (KB Kookmin Card homepage)
-
-Key observations:
-- Page title: "KB Pay 소개>KB Pay>결제서비스>서비스 | 국민의 행복생활 파트너 KB국민카드"
-- H1 "KB Pay": KBFGDisplayM 32px / weight 400 / rgba(0,0,0,0.87)
-- H3 "서비스 특징": KBFGDisplayM 24px / weight 400 / rgb(21,21,21)
-- Primary CTA ".btn.btn--primary" (로그인, 신청하기): bg rgb(255,204,0) #FFCC00 / text rgb(0,0,0) / radius 4px / height 48px / font 18px/600 KBFGText
-- Nav main ".linkDep1": bg rgba(0,0,0,0) / color rgba(0,0,0,0.87) / 15px/400 KBFGText / height 80px padding 27px 0px
-- Utility nav: 13px/400/rgb(102,102,102) / height 60px
-- body: KBFGText / rgba(0,0,0,0.87) / 15px
-- bg freq: white ×74, #F9F9F9 ×29, #F2F2F2 ×11, #FFCC00 ×11, ...
-- Yellow elements: active breadcrumb bg rgb(250,234,173) #FAEAAD, nav depth1-bar rgb(255,224,102) #FFE066, notification badge rgb(255,223,1) ≈ #FFDF01
-- Editorial labels "인기 메뉴/신용카드/체크카드": rgb(97,76,194) #614CC2 at 18px
-- Outlined login button: bg #FFFFFF / border 1px solid rgb(170,170,170) #AAAAAA / radius 3px / height 42-44px
-- Finance cards (.recom-card, .finance-menu__item): bg #FFFFFF / radius 16px / shadow rgba(0,0,0,0.16) 0px 1px 3px 0px
-
-Voice samples (§10) are verbatim from live KB Pay page content (page title, feature tab descriptions, hero tagline from https://m.kbcard.com/BON/DVIEW/MBEM0007).
-
-Brand narrative (§11): KB Pay (2020 launch), app consolidation (2022), KB Kookmin Card subsidiary of KB Financial Group — widely documented public facts about the company. kbpay.kbcard.com returned 404; primary domain is card.kbcard.com.
-
-Personas (§13) are fictional archetypes informed by publicly observable KB Pay user segments (Korean cardholders, students, retirees, tech workers). Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "one action, one color" principle, "national infrastructure product" framing) are editorial readings connecting KB's observed design system to its institutional positioning, not directly sourced KB statements.
--->
+The probe read `transition: all 0s` on the yellow primary button; its hover and pressed states show no change. No other transition was read, and no durations or easing curves are declared.

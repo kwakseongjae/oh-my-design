@@ -7,8 +7,8 @@
       "dir": "artifacts/reference-evidence",
       "why": "140개 verified 레퍼런스의 캡쳐 근거. 만료 대응 R트랙 55건의 유일한 입력.",
       "critical": true,
-      "fileCount": 205,
-      "bytes": 175311102,
+      "fileCount": 217,
+      "bytes": 184178291,
       "files": {
         "104.json": {
           "sha256": "006a9edc3a9ee4c87f1189cc315b1b22c0ab769c4a014b50d435a04670c715ae",
@@ -26,6 +26,10 @@
           "sha256": "cbfc8dc74c888a1c8eba89e482bc9f5f7397f6010862c9d90cdc9c9e79f392dc",
           "bytes": 427589
         },
+        "42dot.json": {
+          "sha256": "6ed37bb4ef3ce3a7a8c3ea2e1a972ddcf927f80e9035a93df3b4739fbdf693ff",
+          "bytes": 700363
+        },
         "ably.json": {
           "sha256": "752a569bafa0a5d5e7cd95d7e07b2819ca63ac455ba4aa1cf5e5d926d5d5e797",
           "bytes": 462142
@@ -37,6 +41,10 @@
         "airbnb.json": {
           "sha256": "fa3b9aeb270320fe432fb381d89f5bb073d2b22b686eb013b227a6715b82aa2e",
           "bytes": 1355009
+        },
+        "airbridge.json": {
+          "sha256": "5f635c5f74361a039dd14c5cdbf98487d2b2449ec52b158c086eb6d0d9f91a5f",
+          "bytes": 1091371
         },
         "alipay.json": {
           "sha256": "ec309ed0b4f6e7ab75de49d88305374828c3bc932e86cbd664378324bda5a50a",
@@ -114,6 +122,10 @@
           "sha256": "a64f1a4c46b91b20a741c46ddb12cbe197d6ca0f2b860aa2f81caa7df1f3f86e",
           "bytes": 1744565
         },
+        "codeit.json": {
+          "sha256": "1b94d465e1788e2363220e391c4cdb03b12fc90dc336d80226bf437319dbd9cb",
+          "bytes": 1523583
+        },
         "cohere.json": {
           "sha256": "abb5061d4e718a61eb70c39de87d5b35dc473167332a3fb4b9036cedc24f13b0",
           "bytes": 1639690
@@ -146,6 +158,10 @@
           "sha256": "cb50c6b0cd86beb44598236f1e83053fe2951f9cbb7c15e59d3e91c90f2afaf2",
           "bytes": 639592
         },
+        "dealicious.json": {
+          "sha256": "cb4c4a7825939ce97b8f14e61ed982f5d7accbfdd655c28225337e45816ae2a2",
+          "bytes": 298918
+        },
         "dena.json": {
           "sha256": "aafb38c4122407ab622b5dbd7adafdf7156803b7336bdf454e9b04032286678d",
           "bytes": 295390
@@ -153,6 +169,10 @@
         "dji.json": {
           "sha256": "1660dd6b25d51a8df5b21e5a0c9b157f81a657aa7e2ce2f3f4ee5cafb578cf8e",
           "bytes": 766741
+        },
+        "drdiary.json": {
+          "sha256": "c127378646fb5a593e65b752ec364555f88732e502230b5d411a7a02bbb716b1",
+          "bytes": 333275
         },
         "elastic.json": {
           "sha256": "02ee6db1a0e2e73d2ddf7ab6d057bd1e579a7fc423ab5cf978d8bd11b9950b95",
@@ -330,6 +350,10 @@
           "sha256": "a9c2efe6f5d569788a8ece78b8bd89befec183694cf531c64f12a0d5d86b6a99",
           "bytes": 297686
         },
+        "kbpay.json": {
+          "sha256": "add785a9cc12462490a7da260b9134095923025ceeaf48ccaef4d81d73304608",
+          "bytes": 699117
+        },
         "kia.json": {
           "sha256": "c97c7240902176a9deb5a962b1d4cd64e4ab589ca550c276a270071ef02754ab",
           "bytes": 981684
@@ -353,6 +377,10 @@
         "kurly.json": {
           "sha256": "aab1ff06ca8d8cbf1bda04499948c4f84cdc21978f39140aba2503b43d29e062",
           "bytes": 1051307
+        },
+        "kyobobook.json": {
+          "sha256": "8dcb6a3d38a10f75ead786c8c6bd866cb6d1b3f085459ebf2625d5fea8fd5c60",
+          "bytes": 1279262
         },
         "lamborghini.json": {
           "sha256": "ed0fd0fdafc0e2adc726666b4418916e9cccac9134c31319d66cef9d3a571f4e",
@@ -409,6 +437,10 @@
         "microsoft.json": {
           "sha256": "f619194605dc2a0631499d57fb44525e2dfc7e2d73dc2049c390ab4e570ccd6a",
           "bytes": 1727756
+        },
+        "mildang.json": {
+          "sha256": "6507863263f2e53f5a239bb2c307ec005ada73e34afbbda8214dc01271f5b265",
+          "bytes": 488197
         },
         "millie.json": {
           "sha256": "12eb710594be6575a6048e4b5c0e68f3ba3ea81596c329b413e277161a129103",
@@ -554,6 +586,10 @@
           "sha256": "55886f5e5e39aedd68aa8abd3055802e941fbd3cb6055ec7cfb9ba2bb572fdfe",
           "bytes": 935999
         },
+        "protopie.json": {
+          "sha256": "ccb6f659d9b5161717ba14cc2c367652d4c93381007f762e301ee71c58bbb114",
+          "bytes": 1088848
+        },
         "publy.json": {
           "sha256": "2e38e099a5de82931b7dff5308e6b87402bdf8f708854ae31e425e14ebbede9c",
           "bytes": 366755
@@ -610,6 +646,10 @@
           "sha256": "001e42130c15dde4f14bcdde418cb927a66ff3410f3aa00216492f366e7b9e6c",
           "bytes": 913349
         },
+        "shiftup.json": {
+          "sha256": "8954581e331edcb8aa162ee2c7ed3095ac712341a47f95959966d049313ef25e",
+          "bytes": 584216
+        },
         "shinhanbank.json": {
           "sha256": "50e1966a13918cc9ea7169ab5b09732974f14f9b5c7c852e5da6d760fa91a802",
           "bytes": 539930
@@ -662,6 +702,10 @@
           "sha256": "0a7839f8386b5fbe5b5df8d890267f445db875cc1f2769066ecec6176fb32090",
           "bytes": 1159285
         },
+        "stibee.json": {
+          "sha256": "e85c0b0b6b00804e5139d26ce6b40548bf5c39bc9df76af2806c78fd91a07548",
+          "bytes": 157646
+        },
         "stripe.json": {
           "sha256": "f683e866e583bba35144e947015fcae4528331effaf4d50c6562992eaa3aad96",
           "bytes": 557633
@@ -669,6 +713,10 @@
         "supabase.json": {
           "sha256": "82423e7be829983e5c0a93e98087b518609f480792908198876300cedb697aab",
           "bytes": 1766892
+        },
+        "tabling.json": {
+          "sha256": "acc7efe735cbbadd057b28ac777f366a5fa3b331aee121610a41ad4c955800cc",
+          "bytes": 622393
         },
         "tada.json": {
           "sha256": "e70602ca92823cc94df3eae232f0e5d8a32942fc71c9c96746fd5362e64b0f2d",

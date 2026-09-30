@@ -5,52 +5,217 @@ display_name_kr: 신상마켓 (딜리셔스)
 country: KR
 category: ecommerce
 homepage: "https://dealicious.kr"
-primary_color: "#001339"
+primary_color: "#222222"
 logo:
   type: favicon
   slug: "https://dealicious.kr/assets/images/deali_logo_square.png"
-verified: "2026-07-02"
+verified: "2026-09-30"
 added: "2026-07-02"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: home, kind: corporate, url: "https://dealicious.kr/", inspected: "2026-09-30" }
+    - { id: surface-2, kind: corporate, url: "https://dealicious.kr/ir-center", inspected: "2026-09-30" }
+    - { id: surface-3, kind: corporate, url: "https://dealicious.kr/career", inspected: "2026-09-30" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://dealicious.kr/", captured: "2026-09-30" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://dealicious.kr/ir-center", captured: "2026-09-30" }
+    - { id: surface-surface-3, kind: product-surface, url: "https://dealicious.kr/career", captured: "2026-09-30" }
+    - { id: dealicious-probe-home, kind: product-surface, url: "https://dealicious.kr/", captured: "2026-09-30" }
+    - { id: dealicious-probe-ir, kind: product-surface, url: "https://dealicious.kr/ir-center", captured: "2026-09-30" }
+    - { id: dealicious-probe-career, kind: product-surface, url: "https://dealicious.kr/career", captured: "2026-09-30" }
+    - { id: dealicious-introduction, kind: official-doc, url: "https://dealicious.kr/introduction", captured: "2026-09-30" }
+    - { id: dealicious-services, kind: official-doc, url: "https://dealicious.kr/services", captured: "2026-09-30" }
+    - { id: dealicious-people-culture, kind: official-doc, url: "https://dealicious.kr/people-culture", captured: "2026-09-30" }
+    - { id: roboto-license, kind: license, url: "https://raw.githubusercontent.com/google/fonts/main/ofl/roboto/OFL.txt", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &pill { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"17\"]", captured: "2026-09-30" }
+    "tokens.colors.on-primary": *pill
+    "tokens.colors.accent": &filtersel { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"6\"]", captured: "2026-09-30" }
+    "tokens.colors.ink": &body { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
+    "tokens.colors.slate": &section { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h1", captured: "2026-09-30" }
+    "tokens.colors.grey": &irtext { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.colors.muted": &irtab { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"7\"]", captured: "2026-09-30" }
+    "tokens.colors.faint": &lang { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"36\"]", captured: "2026-09-30" }
+    "tokens.colors.faint-alt": &filter { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"7\"]", captured: "2026-09-30" }
+    "tokens.colors.white": &blog { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"19\"]", captured: "2026-09-30" }
+    "tokens.colors.hairline": *filter
+    "tokens.colors.divider": &row { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"10\"]", captured: "2026-09-30" }
+    "tokens.typography.family.sans": *body
+    "tokens.typography.display-hero.size": &hero { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h1", captured: "2026-09-30" }
+    "tokens.typography.display-hero.weight": *hero
+    "tokens.typography.display-hero.lineHeight": *hero
+    "tokens.typography.display-hero.use": *hero
+    "tokens.typography.page-title.size": &irtitle { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h1", captured: "2026-09-30" }
+    "tokens.typography.page-title.weight": *irtitle
+    "tokens.typography.page-title.lineHeight": *irtitle
+    "tokens.typography.page-title.use": *irtitle
+    "tokens.typography.section.size": *section
+    "tokens.typography.section.weight": *section
+    "tokens.typography.section.lineHeight": *section
+    "tokens.typography.section.use": *section
+    "tokens.typography.banner-title.size": &bannerp { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.banner-title.weight": *bannerp
+    "tokens.typography.banner-title.lineHeight": *bannerp
+    "tokens.typography.banner-title.use": *bannerp
+    "tokens.typography.story-title.size": &storyp { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.story-title.weight": *storyp
+    "tokens.typography.story-title.lineHeight": *storyp
+    "tokens.typography.story-title.use": *storyp
+    "tokens.typography.caption-lg.size": &captionp { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.caption-lg.weight": *captionp
+    "tokens.typography.caption-lg.lineHeight": *captionp
+    "tokens.typography.caption-lg.use": *captionp
+    "tokens.typography.button.size": *pill
+    "tokens.typography.button.weight": *pill
+    "tokens.typography.button.lineHeight": *pill
+    "tokens.typography.button.use": *pill
+    "tokens.typography.filter.size": *filtersel
+    "tokens.typography.filter.weight": *filtersel
+    "tokens.typography.filter.lineHeight": *filtersel
+    "tokens.typography.filter.use": *filtersel
+    "tokens.typography.eyebrow.size": &eyebrow { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.typography.eyebrow.weight": *eyebrow
+    "tokens.typography.eyebrow.lineHeight": *eyebrow
+    "tokens.typography.eyebrow.tracking": *eyebrow
+    "tokens.typography.eyebrow.use": *eyebrow
+    "tokens.typography.list-title.size": &irh3 { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h3", captured: "2026-09-30" }
+    "tokens.typography.list-title.weight": *irh3
+    "tokens.typography.list-title.lineHeight": *irh3
+    "tokens.typography.list-title.use": *irh3
+    "tokens.typography.body.size": *body
+    "tokens.typography.body.weight": *body
+    "tokens.typography.body.lineHeight": *body
+    "tokens.typography.body.use": *body
+    "tokens.typography.footer.size": &footp { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.footer.weight": *footp
+    "tokens.typography.footer.lineHeight": *footp
+    "tokens.typography.footer.use": *footp
+    "tokens.typography.fine.size": &finep { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.fine.weight": *finep
+    "tokens.typography.fine.lineHeight": *finep
+    "tokens.typography.fine.use": *finep
+    "tokens.spacing.pill-y": *pill
+    "tokens.spacing.pill-x": *pill
+    "tokens.spacing.filter-y": *filtersel
+    "tokens.spacing.filter-x": *filtersel
+    "tokens.spacing.chip-y": &chip { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"17\"]", captured: "2026-09-30" }
+    "tokens.spacing.chip-x": *chip
+    "tokens.rounded.filter": *filtersel
+    "tokens.rounded.pill": *pill
+    "tokens.components.recruit-pill.type": *pill
+    "tokens.components.recruit-pill.bg": *pill
+    "tokens.components.recruit-pill.fg": *pill
+    "tokens.components.recruit-pill.radius": *pill
+    "tokens.components.recruit-pill.padding": *pill
+    "tokens.components.recruit-pill.height": *pill
+    "tokens.components.recruit-pill.font": *pill
+    "tokens.components.recruit-pill.states": &pillstate { surface_id: home, source_id: dealicious-probe-home, method: live-state-probe, selector: "button 인재영입 바로가기 (219 x 55, rest bg rgb(34, 34, 34), fg rgb(255, 255, 255)) and 블로그 바로가기 (202.4 x 55, rest bg rgb(255, 255, 255), fg rgb(62, 65, 73)): hover and pressed no change on the button itself; its card ancestor div.rounded-[20px] changes box-shadow rgba(34, 34, 34, 0.08) 4px 10px 20px 0px -> rgba(34, 34, 34, 0.18) 4px 12px 20px 6px and transform none -> matrix(1, 0, 0, 1, 0, -5); focus (Tabs #18 and #20) only the browser ring; transition all 0s on the buttons", captured: "2026-09-30" }
+    "tokens.components.recruit-pill.use": *pill
+    "tokens.components.blog-pill.type": *blog
+    "tokens.components.blog-pill.bg": *blog
+    "tokens.components.blog-pill.fg": *blog
+    "tokens.components.blog-pill.radius": *blog
+    "tokens.components.blog-pill.padding": *blog
+    "tokens.components.blog-pill.height": *blog
+    "tokens.components.blog-pill.font": *blog
+    "tokens.components.blog-pill.states": *pillstate
+    "tokens.components.blog-pill.use": *blog
+    "tokens.components.banner-card.type": *pillstate
+    "tokens.components.banner-card.shadow": *pillstate
+    "tokens.components.banner-card.hover": *pillstate
+    "tokens.components.banner-card.pressed": *pillstate
+    "tokens.components.banner-card.states": *pillstate
+    "tokens.components.banner-card.use": *pillstate
+    "tokens.components.career-filter.type": *filter
+    "tokens.components.career-filter.bg": *filter
+    "tokens.components.career-filter.fg": *filter
+    "tokens.components.career-filter.border": *filter
+    "tokens.components.career-filter.radius": *filter
+    "tokens.components.career-filter.padding": *filter
+    "tokens.components.career-filter.height": *filter
+    "tokens.components.career-filter.font": *filter
+    "tokens.components.career-filter.selected": *filtersel
+    "tokens.components.career-filter.hover": &filterstate { surface_id: surface-3, source_id: dealicious-probe-career, method: live-state-probe, selector: "button 제품/서비스 (127.2 x 50, rest bg rgb(255, 255, 255), fg rgb(166, 173, 189)): hover and pressed bg -> rgb(245, 246, 251); selected 전체 (73.3 x 50, rest bg rgb(26, 34, 65), fg rgb(255, 255, 255)) no change on hover or pressed; focus (Tabs #7 and #8) only the browser ring; transition all 0.2s cubic-bezier(0, 0, 0.2, 1)", captured: "2026-09-30" }
+    "tokens.components.career-filter.pressed": *filterstate
+    "tokens.components.career-filter.states": *filterstate
+    "tokens.components.career-filter.use": *filter
+    "tokens.components.ir-tab.type": *irtab
+    "tokens.components.ir-tab.fg": *irtab
+    "tokens.components.ir-tab.font": *irtab
+    "tokens.components.ir-tab.selected": &irtabsel { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"6\"]", captured: "2026-09-30" }
+    "tokens.components.ir-tab.hover": &irstate { surface_id: surface-2, source_id: dealicious-probe-ir, method: live-state-probe, selector: "button 전자공시(DART) (109.5 x 24, rest fg rgb(143, 151, 167)): hover and pressed fg -> rgb(62, 65, 73); selected 일반공고 (rest fg rgb(34, 34, 34)) no change; 국문 (85.8 x 43, rest bg transparent, fg rgb(62, 65, 73)): hover and pressed bg -> rgb(245, 246, 251); focus (Tabs #7, #8 and #54) only the browser ring; transition colour properties 0.15s cubic-bezier(0.4, 0, 0.2, 1)", captured: "2026-09-30" }
+    "tokens.components.ir-tab.pressed": *irstate
+    "tokens.components.ir-tab.states": *irstate
+    "tokens.components.ir-tab.use": *irtab
+    "tokens.components.language-pill.type": *chip
+    "tokens.components.language-pill.fg": *chip
+    "tokens.components.language-pill.border": *chip
+    "tokens.components.language-pill.radius": *chip
+    "tokens.components.language-pill.padding": *chip
+    "tokens.components.language-pill.height": *chip
+    "tokens.components.language-pill.font": *chip
+    "tokens.components.language-pill.hover": *irstate
+    "tokens.components.language-pill.pressed": *irstate
+    "tokens.components.language-pill.states": *irstate
+    "tokens.components.language-pill.use": *chip
+    "tokens.components.disclosure-row.type": *row
+    "tokens.components.disclosure-row.fg": *row
+    "tokens.components.disclosure-row.border": *row
+    "tokens.components.disclosure-row.height": *row
+    "tokens.components.disclosure-row.font": *row
+    "tokens.components.disclosure-row.use": *row
+    "tokens.components.language-switch.type": *lang
+    "tokens.components.language-switch.fg": *lang
+    "tokens.components.language-switch.font": *lang
+    "tokens.components.language-switch.selected": { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"35\"]", captured: "2026-09-30" }
+    "tokens.components.language-switch.states": *lang
+    "tokens.components.language-switch.use": *lang
 tokens:
-  source: live-extract
-  extracted: "2026-07-02"
-  note: "Monochrome-navy corporate system. primary = deep brand navy (#001339, the square-logo fill + hero identity); #222222 near-black ink is the single interactive pill-CTA color; #3e4149 slate carries headings/links on light. Near-shadowless — cool-grey tints (#f5f6fb/#ebeef6) + hairlines separate."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
-    primary: "#001339"
-    primary-deep: "#102245"
-    navy-scrim: "#151f32"
-    ink: "#222222"
-    black: "#000000"
+    primary: "#222222"
+    on-primary: "#ffffff"
+    accent: "#1a2241"
+    ink: "#000000"
     slate: "#3e4149"
-    canvas: "#ffffff"
-    surface: "#f5f6fb"
-    surface-alt: "#ebeef6"
-    surface-blue: "#f1f8ff"
-    hairline: "#d0d6e1"
+    grey: "#686e7b"
     muted: "#8f97a7"
     faint: "#bec5d2"
     faint-alt: "#a6adbd"
-    on-primary: "#ffffff"
+    white: "#ffffff"
+    hairline: "#dfe3ed"
+    divider: "#ebeef6"
   typography:
-    family: { sans: "Roboto", kr: "Noto Sans KR" }
-    display-hero: { size: 60, weight: 700, lineHeight: 1.5, use: "Hero headline, white on dark-navy hero" }
-    section:      { size: 30, weight: 700, use: "Section titles (딜리셔스의 이야기)" }
-    button:       { size: 18, weight: 700, use: "Pill CTA label" }
-    nav:          { size: 16, weight: 400, use: "Top navigation link" }
-    body:         { size: 16, weight: 400, lineHeight: 1.5, use: "Standard reading text" }
-    caption:      { size: 15, weight: 400, use: "Footer links, contact meta" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 31, xxl: 48, section: 64 }
-  rounded: { sm: 8, md: 20, lg: 50, full: 9999 }
-  shadow:
-    none: "none"
+    family: { sans: "Roboto" }
+    display-hero: { size: 60, weight: 700, lineHeight: 1.5, use: "Home hero headline (고객의 사업을 쉽고 즐겁게), 90px line, white over the hero image" }
+    page-title: { size: 36, weight: 700, lineHeight: 1.5, use: "IR page title, 54px line, #222222" }
+    section: { size: 30, weight: 700, lineHeight: 1.5, use: "Section headings on home, IR and career, 45px line, #3e4149" }
+    banner-title: { size: 28, weight: 700, lineHeight: 1.5, use: "Recruiting and blog banner headings (딜리셔스와 함께할 멋진 동료를 찾습니다, 딜리셔스의 개발 이야기), 42px line, white or #3e4149" }
+    story-title: { size: 26, weight: 700, lineHeight: 1.5, use: "Story headings on home, 39px line, #3e4149" }
+    caption-lg: { size: 20, weight: 400, lineHeight: 1.5, use: "Story descriptions on home, 30px line, #8f97a7" }
+    button: { size: 18, weight: 700, lineHeight: 1.5, use: "Pill labels (인재영입 바로가기, 블로그 바로가기), 27px line" }
+    filter: { size: 17, weight: 700, lineHeight: 1.18, use: "Selected career filter label, 20px line; unselected filters are weight 400" }
+    eyebrow: { size: 16, weight: 700, lineHeight: 1.5, tracking: 1.6, use: "Small label above the IR title, 24px line, #8f97a7" }
+    list-title: { size: 16, weight: 500, lineHeight: 1.5, use: "Disclosure titles on the IR page, 24px line, #3e4149" }
+    body: { size: 16, weight: 400, lineHeight: 1.5, use: "Document default, 24px line, #000000" }
+    footer: { size: 15, weight: 400, lineHeight: 1.5, use: "Footer contact lines, 22.5px line, #3e4149" }
+    fine: { size: 14, weight: 400, lineHeight: 1.71, use: "Footer company disclosure, 24px line, #3e4149" }
+  spacing: { pill-y: 14, pill-x: 31, filter-y: 14, filter-x: 20, chip-y: 10, chip-x: 18 }
+  rounded: { filter: 40, pill: 50 }
   components:
-    button-primary: { type: button, bg: "#222222", fg: "#ffffff", radius: "50px", padding: "14px 31px", height: "55px", font: "18px / 700", use: "Primary pill CTA (인재영입 바로가기) — the single dark action pill" }
-    button-secondary: { type: button, bg: "#ffffff", fg: "#3e4149", radius: "50px", padding: "14px 31px", height: "55px", font: "18px / 700", use: "Secondary white pill CTA (블로그 바로가기)" }
-    nav-link: { type: tab, fg: "#ffffff", font: "16px / 400", active: "text #ffffff on dark hero header", use: "Top nav item over the dark-navy hero" }
-    card-surface: { type: card, bg: "#f5f6fb", radius: "20px", use: "Tinted section container / story-card frame, shadowless" }
-    card-story: { type: card, bg: "#ffffff", radius: "20px", use: "Editorial story/interview card, image-led, no shadow" }
-    footer-link: { type: listItem, fg: "#3e4149", font: "15px / 400", use: "Footer navigation / contact link" }
+    recruit-pill: { type: button, bg: "#222222", fg: "#ffffff", radius: "50px", padding: "14px 31px", height: "55px", font: "18px / 700 / 27px Roboto", states: "probe: hover and pressed change nothing on the button; the banner card around it lifts (see banner-card); focus draws only the browser ring", use: "인재영입 바로가기, the one filled call to action, in the recruiting banner card at home::[data-omd-capture=\"17\"], 219 x 55" }
+    blog-pill: { type: button, bg: "#ffffff", fg: "#3e4149", radius: "50px", padding: "14px 31px", height: "55px", font: "18px / 700 / 27px Roboto", states: "probe: hover and pressed change nothing on the button; its banner card lifts; focus draws only the browser ring", use: "블로그 바로가기 in the tech-blog banner card on home (home::[data-omd-capture=\"19\"]) and the career page, 202 x 55" }
+    banner-card: { type: card, shadow: "rgba(34, 34, 34, 0.08) 4px 10px 20px 0px", hover: "shadow rgba(34, 34, 34, 0.18) 4px 12px 20px 6px and a 5px lift (translateY -5px)", pressed: "same as hover", states: "hover and pressed read by the probe on the card that holds each pill; the card's class names a 20px radius, which was not read as a computed value", use: "The two banner cards (recruiting and tech blog) near the foot of home and the other pages; read by the fixed probe as the pills' ancestor" }
+    career-filter: { type: tab, bg: "#ffffff", fg: "#a6adbd", border: "1px solid #dfe3ed", radius: "40px", padding: "14px 20px", height: "50px", font: "17px / 400 / 20px Roboto", selected: "bg #1a2241, fg #ffffff, border #1a2241, weight 700", hover: "bg #f5f6fb", pressed: "bg #f5f6fb", states: "unselected filters take a #f5f6fb fill on hover and pressed after a 0.2s transition; the selected filter shows no change; focus draws only the browser ring", use: "Job category filters on the career page (전체, 제품/서비스, 경영지원) at surface-3::[data-omd-capture=\"7\"]" }
+    ir-tab: { type: tab, fg: "#8f97a7", font: "16px / 400 / 24px Roboto", selected: "fg #222222, weight 700", hover: "fg #3e4149", pressed: "fg #3e4149", states: "unselected tabs darken to #3e4149 on hover and pressed after a 0.15s transition; the selected tab shows no change; focus draws only the browser ring", use: "IR section tabs (일반공고, 전자공시(DART), IR 자료실, IR CONTACT) at surface-2::[data-omd-capture=\"7\"]" }
+    language-pill: { type: button, fg: "#3e4149", border: "1px solid #dfe3ed", radius: "40px", padding: "10px 18px", height: "43px", font: "14px / 500 / 21px Roboto", hover: "bg #f5f6fb", pressed: "bg #f5f6fb", states: "hover and pressed fill #f5f6fb after a 0.15s transition; focus draws only the browser ring", use: "국문 language selector on the IR page at surface-2::[data-omd-capture=\"17\"], 86 x 43" }
+    disclosure-row: { type: listItem, fg: "#000000", border: "0px 0px 1px solid #ebeef6", height: "73px", font: "16px / 400 / 24px Roboto", use: "Rows of the IR disclosure list at surface-2::[data-omd-capture=\"10\"], 1198 x 73, divided by #ebeef6" }
+    language-switch: { type: tab, fg: "#bec5d2", font: "15px / 700 / 22.5px Roboto", selected: "fg #222222", states: "selected read from rest values; no pointer frame", use: "한국어, ENG, 中文 and 日文 in the footer of every page at home::[data-omd-capture=\"36\"]" }
   components_harvested: true
 ---
 
@@ -58,21 +223,17 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-Dealicious (딜리셔스) is the company behind 신상마켓 (Sinsang Market), Korea's No.1 K-fashion wholesale (도소매) trading platform, and its corporate surface reads like a confident, editorial tech company rather than a busy commerce site. The canvas is pure white (`#ffffff`), and the hero flips to a deep brand navy — the same `#001339` that fills the square logo — with the headline "고객의 사업을 쉽고 즐겁게" ("Making our customers' business easy and enjoyable") set large in white. The system is deliberately monochrome: near-black ink (`#222222`), a warm slate (`#3e4149`) for headings and links on light, and a cool-grey neutral ladder that keeps everything calm and trustworthy. There is exactly one interactive "action" treatment — a dark pill button — so the eye always knows where to go next.
+Dealicious (딜리셔스) runs 신상마켓 (Sinsang Market), the wholesale platform of Seoul's Dongdaemun fashion trade. In its own words, Dealicious "moved the B2B trade of the Dongdaemun fashion industry, which had only ever happened offline, online" — removing physical limits so that more products change hands more easily. Sinsang Market launched in July 2013 and connects Dongdaemun wholesalers with retailers in Korea and abroad; the company says more than 80% of Dongdaemun wholesalers have joined and 93% of retailers come back, and it counts 11,000 active wholesale shops, 130,000 active retail shops and 24,000 transactions a day. Around the marketplace sit 신상스튜디오, a one-stop product-photography service, and 신상애드, an advertising product for wholesalers. The company page cites 82.5 billion won of cumulative investment, 76 billion won of monthly transactions and 3 trillion won in total, and a member of its ad-platform team quoted there says users call Sinsang Market "the KakaoTalk of Dongdaemun". The mission line on every page is "고객의 사업을 쉽고 즐겁게" — making customers' business easy and enjoyable.
 
-The typographic personality is clean and corporate-Korean. Headlines run heavy: the hero at 60px / weight 700, section titles at 30px / 700 in slate `#3e4149`. The type stack is `Roboto` with `Noto Sans KR` carrying hangul, and body/UI text drops to a quiet 16px / weight 400 at a comfortable 24px (1.5) line-height. The contrast between bold display weight and light functional body is the core hierarchy signal — assertive where it introduces a story, calm where it explains.
-
-What distinguishes Dealicious from typical commerce chrome is its flat restraint. Live inspection found `box-shadow: none` across the hero, navigation, headings, and cards — depth comes from color and flat tinted surfaces (`#f5f6fb`, `#ebeef6`, `#f1f8ff`) and thin `#d0d6e1` hairlines, never elevation. Geometry leans into two shapes: fully-rounded 50px pills for buttons and generous 20px-radius rounded rectangles for editorial cards. The result is a modern, engineered, mobile-native feel — a B2B marketplace company that presents itself with the composure of a product studio.
+The corporate site at dealicious.kr is white and typographic. Headings are heavy (weight 700 at 60px on the hero, 30px for sections) in slate `#3e4149` or near-black `#222222`; body text defaults to `#000000`, and a ladder of cool greys (`#686e7b`, `#8f97a7`, `#a6adbd`, `#bec5d2`) carries secondary copy, unselected tabs and fine print. The site's one filled action is a near-black `#222222` pill, 인재영입 바로가기, set in a banner card beside a white 블로그 바로가기 pill. Selection is marked in two ways: `#222222` bold text for the current IR tab and footer language, and a deep navy `#1a2241` fill for the selected career filter. Pills are fully rounded (50px) and filters 40px; borders are 1px `#dfe3ed`, and the IR list is divided by `#ebeef6` rules.
 
 **Key Characteristics:**
-- Deep brand navy (`#001339`) as the identity anchor — the square-logo fill and hero background tone
-- Monochrome ink system: near-black `#222222` for the single action pill, warm slate `#3e4149` for headings/links on light
-- One action color, one action shape — a dark 50px pill CTA is the only interactive emphasis
-- `Roboto` + `Noto Sans KR` type; heavy 700 headlines (60px hero, 30px sections) over quiet 400 body
-- Near-shadowless, flat depth — cool-grey tints (`#f5f6fb`, `#ebeef6`, `#f1f8ff`) + `#d0d6e1` hairlines separate content
-- Pill + rounded-card geometry — 50px button pills, 20px editorial cards
-- Cool-grey neutral ladder (`#bec5d2` → `#a6adbd` → `#8f97a7`) for muted/low-emphasis text
-- White hero flips to `#151f32` navy scrim over imagery for the dark, premium opening
+- White, typographic corporate pages with heavy 700 headings in `#3e4149` and `#222222`
+- One filled action colour: `#222222` pills with white labels; a white pill with `#3e4149` label beside it
+- Selected states in `#222222` bold text, or a `#1a2241` navy fill for the career filter
+- Cool grey text ladder: `#686e7b`, `#8f97a7`, `#a6adbd`, `#bec5d2`
+- Round geometry: 50px pills, 40px filters and language selector
+- Banner cards that rest on a soft shadow and lift 5px on hover; every other captured element is flat
 
 ## Primary tasks
 
@@ -83,327 +244,285 @@ What distinguishes Dealicious from typical commerce chrome is its flat restraint
 
 ## 2. Color Palette & Roles
 
-### Primary & Brand
-- **Deali Navy** (`#001339`): Primary brand color — the deep navy that fills the square brand logo (~91% of its pixels) and defines the dark hero identity. The single ownable brand hue in an otherwise monochrome system.
-- **Navy Deep** (`#102245`): A slightly lighter secondary navy from the logo mark; used for layered dark tones and deep accents.
-- **Navy Scrim** (`#151f32`): The translucent navy overlay laid over hero imagery so the white headline reads cleanly.
+Every token below was read on 2026-09-30 from dealicious.kr, /ir-center and /career by the deterministic collector, and hover values by the fixed keyboard probe. The tokens describe the Dealicious corporate website. The Sinsang Market product (sinsangmarket.kr and the app) is a separate domain that was not captured — it answered a plain HTTP request with a Cloudflare challenge — and none of its values is claimed.
 
-### Ink & Text
-- **Ink** (`#222222`): Near-black — the interactive pill-CTA background and the strongest UI/label ink. Used instead of pure black for chrome so it reads warm, not harsh.
-- **Pure Black** (`#000000`): Maximum-contrast body/paragraph text on white.
-- **Slate** (`#3e4149`): Headings on light, footer and contact links, secondary strong text — a warm blue-grey that carries most of the editorial copy.
+### Primary
+- **Ink Black** (`#222222`): The fill of 인재영입 바로가기, the site's one filled call to action (219 × 55 pill with `#ffffff` label, capture `home` #17); the label of the selected IR tab 일반공고 (`surface-2` #6, weight 700); and the selected footer language 한국어 (`home` #35). It is the primary because it is the colour the site uses for its primary action and, on two of the three captured pages, for selection. The navy `#1a2241` also renders in a primary role, but only once — the selected filter on the career page — so it is the `accent`.
+- **On Primary** (`#ffffff`): Labels on the `#222222` pill and the `#1a2241` selected filter.
+
+### Accent
+- **Deali Navy** (`#1a2241`): Fill and 1px border of the selected career filter (전체), with a `#ffffff` label at weight 700.
 
 ### Neutral & Surface
-- **Pure White** (`#ffffff`): Page background, card surfaces, and text on the navy hero / dark pill.
-- **Surface Grey** (`#f5f6fb`): Cool-grey tinted surface for section bands and card frames.
-- **Surface Alt** (`#ebeef6`): A secondary cool grey for alternating blocks and subtle fills.
-- **Surface Blue** (`#f1f8ff`): The faintest blue-tinted surface for highlight panels.
-- **Hairline** (`#d0d6e1`): Thin borders, dividers, and card outlines — the primary separation device in the shadow-free system.
+- **White** (`#ffffff`): The white pill and the unselected career filters. The body element computes a transparent background, so the page white is the browser canvas.
+- **Hairline** (`#dfe3ed`): The 1px border of the career filters and the IR language selector.
+- **Divider** (`#ebeef6`): The 1px rule under each IR disclosure row.
+- Hover fills are `#f5f6fb` (career filters, language selector); they come from the probe only and live in the components.
 
-### Muted Text Ladder
-- **Faint** (`#bec5d2`): Low-emphasis labels, disabled-adjacent text.
-- **Faint Alt** (`#a6adbd`): Alternate faint blue-grey for fine print.
-- **Muted** (`#8f97a7`): Tertiary text, captions, metadata.
+### Text
+- **Ink** (`#000000`): The document default text colour and the disclosure rows.
+- **Slate** (`#3e4149`): Section headings, story and banner headings, footer lines and the white pill's label; also the hover colour of unselected IR tabs.
+- **Grey** (`#686e7b`): Reading text on the IR page.
+- **Muted** (`#8f97a7`): Unselected IR tabs, story descriptions and the IR eyebrow label.
+- **Faint** (`#bec5d2`): Unselected footer languages.
+- **Faint Alt** (`#a6adbd`): Unselected career filter labels.
 
-### On-color
-- **On Primary** (`#ffffff`): White text/icons on the navy hero and the dark `#222222` pill.
+### Brand assets, not tokens
+- **Logo navy** (`#001339`): the June record read the square logo's fill as `#001339`. It was not re-measured this session, and no captured interface element renders it.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Sans (primary)**: `Roboto`, with the document stack `Roboto, "Noto Sans KR", "Noto Sans SC", "Noto Sans JP", sans-serif`.
-- **Korean**: `Noto Sans KR` carries all hangul, optimized for dense Korean legibility.
+- **Live surface use**: the body and every captured element compute `Roboto, "Noto Sans KR", "Noto Sans SC", "Noto Sans JP", sans-serif` (227 observed uses of `Roboto`). The site ships Roboto WOFF2/WOFF files under `dealicious.kr/_next/static/media/` (e.g. `roboto-cyrillic-ext-400-normal.c8c031de.woff2`), but the collector classified the rendered face as `system / high`: on the capture machine it did not register as a loaded web font. No loaded-web-font claim is made.
+- **Official distributed font assets**: Roboto's OFL.txt in the Google Fonts repository reads "Copyright 2011 The Roboto Project Authors … licensed under the SIL Open Font License, Version 1.1" (opened 2026-09-30). The identification rests on the declared family name.
+- **Official product use**: no Dealicious page opened this session names its typefaces, so no statement of official product use is made.
+- **Declared only (no visible use)**: `Noto Sans KR`, `Noto Sans SC` and `Noto Sans JP` (self-hosted files under the same path) and `swiper-icons`, each with 0 observed uses; none was loaded at capture.
+- **Unresolved**: Roboto has no Hangul, and the Korean face declared after it did not load, so the face that renders Korean text depends on the visitor's system. It is not named here.
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Hero Headline | Roboto / Noto Sans KR | 60px (3.75rem) | 700 | ~1.5 | White on dark-navy hero |
-| Section Title | Roboto / Noto Sans KR | 30px (1.88rem) | 700 | normal | "딜리셔스의 이야기", slate `#3e4149` |
-| Pill CTA | Roboto / Noto Sans KR | 18px (1.13rem) | 700 | normal | Dark/white pill button label |
-| Nav Link | Roboto / Noto Sans KR | 16px (1.00rem) | 400 | normal | Top navigation, white on hero |
-| Body | Roboto / Noto Sans KR | 16px (1.00rem) | 400 | 1.5 (24px) | Standard reading text |
-| Caption / Footer | Roboto / Noto Sans KR | 15px (0.94rem) | 400 | normal | Footer links, contact meta |
+| Role | Size | Weight | Line Height | Tracking | Observed on |
+|------|------|--------|-------------|----------|-------------|
+| Display Hero | 60px | 700 | 90px (1.5) | normal | Home hero headline, white |
+| Page Title | 36px | 700 | 54px (1.5) | normal | IR page title, `#222222` |
+| Section | 30px | 700 | 45px (1.5) | normal | Section headings, `#3e4149` |
+| Banner Title | 28px | 700 | 42px (1.5) | normal | Recruiting and blog banners |
+| Story Title | 26px | 700 | 39px (1.5) | normal | Home stories, `#3e4149` |
+| Caption Large | 20px | 400 | 30px (1.5) | normal | Home story descriptions, `#8f97a7` |
+| Button | 18px | 700 | 27px (1.5) | normal | Pill labels |
+| Filter | 17px | 700 / 400 | 20px | normal | Career filters |
+| Eyebrow | 16px | 700 | 24px (1.5) | 1.6px | IR label, `#8f97a7` |
+| List Title | 16px | 500 | 24px (1.5) | normal | IR disclosure titles, `#3e4149` |
+| Body | 16px | 400 | 24px (1.5) | normal | Document default, `#000000` |
+| Footer | 15px | 400 | 22.5px (1.5) | normal | Footer contact lines, `#3e4149` |
+| Fine | 14px | 400 | 24px (1.71) | normal | Footer company disclosure |
 
 ### Principles
-- **Heavy display, light body**: Weight 700 owns every headline (60px hero, 30px sections); weight 400 carries all body and navigation. The weight jump is the primary hierarchy signal.
-- **One stack, two scripts**: `Roboto` sets Latin, `Noto Sans KR` sets hangul, from a single font-family declaration — consistent rhythm across mixed Korean/English copy.
-- **Comfortable body**: Body sits at 16px with a 1.5 (24px) line-height — generous for hangul, easy to scan.
-- **Bold titles, calm paragraphs**: Titles persuade; body informs. The two never swap register.
+- **Heavy headings, plain body**: every heading from 26px up is weight 700; body and captions are 400.
+- **A 1.5 rhythm**: almost every captured role sets its line height at 1.5 × the size.
+- **Grey for secondary**: descriptions and unselected controls step down the cool grey ladder rather than using opacity.
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Primary Pill (인재영입 바로가기)**
-- Background: `#222222`
-- Text: `#ffffff`
-- Radius: 50px
-- Padding: 14px 31px
-- Height: 55px
-- Font: 18px / 700 / Roboto
-- Use: The single dark action pill — primary CTA ("인재영입 바로가기" / recruit)
+**Recruit Pill (primary)**
+- Background: `#222222`; label `#ffffff`
+- Radius: 50px; padding 14px 31px; height 55px
+- Font: 18px weight 700, 27px line
+- States: no change on the button itself; its banner card lifts on hover and pressed; focus draws only the browser ring
+- Use: 인재영입 바로가기 in the recruiting banner card
 
-**Secondary Pill (블로그 바로가기)**
-- Background: `#ffffff`
-- Text: `#3e4149`
-- Radius: 50px
-- Padding: 14px 31px
-- Height: 55px
-- Font: 18px / 700 / Roboto
-- Use: Secondary white pill CTA ("블로그 바로가기" / blog)
+**Blog Pill**
+- Background: `#ffffff`; label `#3e4149`
+- Same geometry and font as the recruit pill
+- Use: 블로그 바로가기 in the tech-blog banner card
 
-### Cards & Containers
+**Language Selector**
+- Border: 1px solid `#dfe3ed`; label `#3e4149`
+- Radius: 40px; padding 10px 18px; height 43px
+- Font: 14px weight 500
+- Hover / pressed: fill `#f5f6fb` (0.15s)
+- Use: 국문 on the IR page
 
-**Story / Interview Card**
-- Background: `#ffffff`
-- Radius: 20px
-- Shadow: none
-- Use: Editorial story/interview card, image-led (사내인터뷰, 개발팀 연대기)
+### Cards
 
-**Tinted Surface Card**
-- Background: `#f5f6fb`
-- Radius: 20px
-- Shadow: none
-- Use: Tinted section container / card frame on cool-grey bands
+**Banner Card**
+- Shadow at rest: `rgba(34, 34, 34, 0.08) 4px 10px 20px 0px`
+- Hover / pressed: `rgba(34, 34, 34, 0.18) 4px 12px 20px 6px` and a 5px lift
+- Use: the recruiting and tech-blog banners that hold the two pills
 
-### Navigation
-- Background: transparent over the dark-navy hero
-- Text: `#ffffff`
-- Font: 16px / 400 / Roboto
-- Height: 64px header
-- Use: Top horizontal nav ("회사소개", "서비스", "사람과 문화", "뉴스룸")
+### Tabs & Filters
 
-### Footer
-- Background: `#ffffff`
-- Links: `#3e4149`
-- Font: 15px / 400 / Roboto
-- Use: Footer navigation and contact rows ("회사소개", "개인정보 처리방침", contact@deali.net, 1661-1916)
+**Career Filter**
+- Unselected: `#ffffff` fill, `#a6adbd` label, 1px `#dfe3ed` border, 17px weight 400
+- Selected: `#1a2241` fill and border, `#ffffff` label, weight 700
+- Radius: 40px; padding 14px 20px; height 50px
+- Hover / pressed (unselected): fill `#f5f6fb` (0.2s)
+
+**IR Tab**
+- Unselected: `#8f97a7`, 16px weight 400
+- Selected: `#222222`, weight 700
+- Hover / pressed (unselected): `#3e4149` (0.15s)
+
+**Footer Language Switch**
+- Unselected: `#bec5d2`, 15px weight 700; selected `#222222`
+
+### Lists
+
+**Disclosure Row**
+- Text: `#000000`, 16px weight 400
+- Border: 1px `#ebeef6` at the bottom
+- Height: 73px
+- Use: IR disclosure list
 
 ---
 
-**Verified:** 2026-07-02 (omd:add-reference CREATE — Tier 1 live inspect)
-**Tier 1 sources:** https://dealicious.kr, https://dealicious-inc.github.io/, https://github.com/dealicious-inc
-**Tier 2 sources:** getdesign.md/dealicious (0 files — not listed); styles.refero.design/?q=dealicious (no brand match)
+**Verified:** 2026-09-30 (deterministic collector capture of three public, logged-out pages of dealicious.kr plus fixed keyboard-probe state reads and first-party context)
+**Tier 1 sources:** https://dealicious.kr/ ; https://dealicious.kr/ir-center ; https://dealicious.kr/career ; https://dealicious.kr/introduction ; https://dealicious.kr/services ; https://dealicious.kr/people-culture
+**Tier 2 sources:** getdesign.md/dealicious (HTTP 200, the name does not appear in the response) and styles.refero.design/?q=dealicious (HTTP 200, the name appears only as the echoed query), requested 2026-09-30; no Tier 2 value used
 **Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
 ### Spacing System
-- Base unit: 8px
-- Scale: 4px, 8px, 12px, 16px, 24px, 31px, 48px, 64px
-- Notable: Pill CTAs use a measured 14px 31px padding, giving the buttons a generous, tappable footprint
+- Pills: 14px vertical, 31px horizontal
+- Career filters: 14px vertical, 20px horizontal
+- Language selector: 10px vertical, 18px horizontal
 
 ### Grid & Container
-- Centered single-column hero with the 60px headline as the anchor, set over a dark-navy image band
-- "딜리셔스의 이야기" story section arranges editorial cards (interviews, culture, news) in a rounded 20px-radius grid
-- Feature/story bands alternate white (`#ffffff`) with cool-grey tints (`#f5f6fb`, `#ebeef6`) for full-width rhythm
-- Footer is a white band with contact info, quick links, and legal rows
+- Content sits in a 1200px column (section headings and footer text are 1200px wide at the 1440px viewport)
+- The IR disclosure list uses a three-column grid per row (80px, flexible, 160px), 1198px wide
+- Home opens with the white 60px hero headline (its background is imagery the collector did not record) and closes with two banner cards above the footer
 
 ### Whitespace Philosophy
-- **Airy and editorial**: Despite a data-heavy B2B business, the corporate surface is spacious — generous vertical rhythm between story bands.
-- **Flat segmentation**: Sections separate by background tint and `#d0d6e1` hairlines, not by shadow or heavy borders.
-- **Single-action clarity**: Only the dark `#222222` pill draws interactive attention, so the next step is never ambiguous.
+- Generous vertical rhythm between sections; grouping by headings and hairlines rather than filled panels
 
 ### Border Radius Scale
-- Small (8px): inner elements, small containers
-- Medium (20px): editorial cards, content containers — the workhorse
-- Large (50px): pill buttons / CTAs
-- Full (9999px): fully-rounded pill extremes
+- 0px: most elements
+- 40px: career filters and the language selector
+- 50px: pills
 
 ## 6. Depth & Elevation
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
-| Tint (Level 1) | `#f5f6fb` / `#ebeef6` background shift | Card / section separation without elevation |
-| Hairline (Level 2) | `1px solid #d0d6e1` border | Card outlines, dividers |
-| Scrim (Level 3) | `#151f32` navy overlay | Dark hero imagery so white headline reads |
+| Flat | No shadow | All 227 elements the collector recorded |
+| Hairline | 1px `#dfe3ed` / `#ebeef6` | Filters, language selector, disclosure rows |
+| Card | `rgba(34, 34, 34, 0.08) 4px 10px 20px 0px` | Banner cards at rest (probe) |
+| Lifted | `rgba(34, 34, 34, 0.18) 4px 12px 20px 6px`, 5px up | Banner cards on hover (probe) |
 
-**Shadow Philosophy**: Dealicious is a near-shadowless system. Live inspection returned `box-shadow: none` across the hero, navigation, headings, and story cards. Depth and grouping are communicated through flat cool-grey tints (`#f5f6fb`, `#ebeef6`, `#f1f8ff`) and thin `#d0d6e1` hairlines, with the deep navy (`#001339` / `#151f32`) doing the dramatic work on the hero. This is a deliberate modern-flat choice that keeps the corporate surface clean, fast, and confident — when emphasis is needed the system reaches for the dark `#222222` pill, never elevation.
+**Shadow Philosophy**: all 227 elements the collector recorded compute `box-shadow: none`. The one exception it did not record is the banner card: the probe read a soft resting shadow on it and a deeper shadow with a 5px lift on hover.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use deep navy (`#001339`) as the brand anchor — the logo fill and the dark hero identity
-- Reserve the dark `#222222` pill as the single interactive action treatment
-- Use warm slate (`#3e4149`) for headings and links on light instead of pure black chrome
-- Set headlines heavy (weight 700) — 60px hero, 30px sections — over quiet 400 body
-- Separate sections with flat cool-grey tints (`#f5f6fb`, `#ebeef6`) and `#d0d6e1` hairlines, not shadows
-- Use pill (50px) buttons and 20px-radius editorial cards
-- Keep `Roboto` + `Noto Sans KR` as one stack across mixed Korean/English copy
-- Overlay hero imagery with the `#151f32` navy scrim so white text stays legible
+- Use `#222222` for the one filled action and for selected text
+- Use the `#1a2241` navy fill only for a selected filter
+- Set headings at weight 700 on a 1.5 line height; body at 16px / 400
+- Step secondary text down the cool greys `#686e7b`, `#8f97a7`, `#a6adbd`, `#bec5d2`
+- Use 50px pills and 40px filters with 1px `#dfe3ed` borders
+- Give only banner cards depth: a soft shadow and a 5px hover lift
 
 ### Don't
-- Introduce a second saturated accent color — the system is monochrome navy + ink
-- Add drop shadows for elevation — Dealicious is a flat, shadow-free system
-- Spread the dark pill treatment across many elements — it dilutes the single-action signal
-- Use pure black (`#000000`) for chrome/labels — reserve it for body copy; use `#222222` / `#3e4149` for UI ink
-- Use sharp/square corners on buttons — CTAs are always fully-rounded pills
-- Set headlines in a light weight — display is always 700
-- Let hero text sit on raw imagery without the navy scrim
+- Don't use the logo navy `#001339` as an interface colour; no captured element renders it
+- Don't add shadows to buttons, filters or rows
+- Don't use square corners on pills or filters
+- Don't invent focus styles; the captured controls show only the browser's default ring
+- Don't name a Korean font the site does not load
 
 ## 8. Responsive Behavior
 
 ### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses, story cards stack |
-| Tablet | 640-1024px | Moderate padding, 2-up story cards |
-| Desktop | 1024-1440px | Full layout, centered hero, multi-column story grid |
+Only the 1440 × 900 desktop viewport was captured. Class names such as `lg:text-[16px]`, `lg:px-[31px]` and `md:mb-[280px]` show that the pages restyle at md, lg and xl breakpoints (the pills drop to 16px labels and 18px side padding below lg); no breakpoint width was measured.
 
 ### Touch Targets
-- Pill CTAs at 55px height with 14px 31px padding — comfortably tappable
-- Nav links spaced within the 64px header
-- Story cards are large tap targets across their full 20px-radius frame
+- Pills: 55px
+- Career filters: 50px
+- Language selector: 43px
+- Disclosure rows: 73px
 
 ### Collapsing Strategy
-- Hero: 60px headline scales down on mobile, weight 700 maintained
-- Story grid: multi-column → stacked single column
-- White / cool-grey tinted bands maintain full-width treatment
-- Footer contact and link rows stack vertically on narrow viewports
+- Not captured.
 
 ### Image Behavior
-- Story-card imagery keeps the 20px radius and stays shadowless at all sizes
-- Hero imagery keeps the `#151f32` navy scrim so the white headline stays legible
+- The banner cards clip their imagery (`overflow-hidden`); no other image behaviour was measured.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Brand anchor / hero: Deali Navy (`#001339`)
-- Interactive pill CTA: Ink (`#222222`)
-- Body text: Pure Black (`#000000`)
-- Headings / links on light: Slate (`#3e4149`)
-- Background: Pure White (`#ffffff`)
-- Tinted surfaces: Surface Grey (`#f5f6fb`), Surface Alt (`#ebeef6`), Surface Blue (`#f1f8ff`)
-- Hairline: `#d0d6e1`
-- Muted text: `#8f97a7`, `#a6adbd`, `#bec5d2`
-- Hero scrim: `#151f32`
+- Primary action and selected text: `#222222`, label `#ffffff`
+- Selected filter: `#1a2241`
+- Headings and footer: `#3e4149`; body `#000000`; IR text `#686e7b`
+- Secondary greys: `#8f97a7`, `#a6adbd`, `#bec5d2`
+- Borders: `#dfe3ed`; rules `#ebeef6`; hover fill `#f5f6fb`
 
 ### Example Component Prompts
-- "Create a hero: dark-navy `#001339` band with a `#151f32` scrim over imagery. Headline at 60px Roboto/Noto Sans KR weight 700, white `#ffffff`. Top nav links white 16px weight 400 in a 64px header. One dark pill CTA: `#222222` background, white text, 50px radius, 14px 31px padding, 18px weight 700."
-- "Design a story card: white `#ffffff` background, 20px radius, no shadow, image-led. Title 30px weight 700, slate `#3e4149`. Body 16px weight 400, line-height 1.5."
-- "Build a tinted section: `#f5f6fb` background, full-width. Section title 30px weight 700 `#3e4149`. Cards inside use white `#ffffff` with a `#d0d6e1` hairline and 20px radius."
-- "Create a footer: white band, links `#3e4149` at 15px weight 400, contact rows (email, tel) in the same slate. No shadow; separate rows with `#d0d6e1` hairlines."
+- "Create a primary pill: `#222222` background, `#ffffff` 18px label at weight 700, 50px radius, 14px 31px padding, 55px tall. Pair it with a white pill with a `#3e4149` label."
+- "Create a banner card: white, rounded, shadow `rgba(34, 34, 34, 0.08) 4px 10px 20px 0px`; on hover shadow `rgba(34, 34, 34, 0.18) 4px 12px 20px 6px` and lift 5px."
+- "Build filter chips: `#ffffff`, 1px `#dfe3ed` border, `#a6adbd` 17px label, 40px radius, 14px 20px padding, 50px tall; hover `#f5f6fb`; selected `#1a2241` fill with white bold label."
+- "Build text tabs: 16px `#8f97a7`, hover `#3e4149`; selected `#222222` weight 700."
 
 ### Iteration Guide
-1. Deep navy `#001339` is the brand anchor; the dark `#222222` pill is the only action treatment
-2. Headlines weight 700 (60px hero, 30px sections); body weight 400 at 16px / 1.5
-3. No shadows — separate with `#f5f6fb` / `#ebeef6` tints and `#d0d6e1` hairlines
-4. Pill (50px) buttons and 20px-radius editorial cards throughout
-5. Text ink is `#222222` / `#3e4149`; reserve pure black `#000000` for paragraph body
-6. Overlay hero imagery with the `#151f32` navy scrim
-7. Keep the palette monochrome — navy + ink + cool grey, no second accent
+1. `#222222` for the primary action and selection; `#1a2241` only for the selected filter
+2. Headings 700, line height 1.5
+3. Cool grey ladder for secondary text
+4. 50px pills, 40px filters, 1px `#dfe3ed` borders
+5. Flat except the banner cards
 
 ---
 
 ## 10. Voice & Tone
 
-Dealicious's voice is **warm, plain-spoken, and people-first** — a B2B infrastructure company that talks about small fashion-wholesale businesses in human terms rather than jargon. The mission line "고객의 사업을 쉽고 즐겁게" ("Making our customers' business easy and enjoyable") sets the register: benefit-framed, kind, and unpretentious. The corporate surface leans heavily on culture and people ("사람과 문화", "딜리셔스의 이야기", 사내인터뷰), so the tone is that of a company proud of how it works, not one shouting about metrics.
+Dealicious's voice is **warm, plain and customer-first**. The mission line frames everything as help for the customer's business, and the culture pages speak in first-person plural about how the team works.
 
 | Context | Tone |
 |---|---|
-| Hero headline | Mission-framed, warm. "고객의 사업을 쉽고 즐겁게." Confident, not hype. |
-| Navigation / section labels | Plain and human. "회사소개", "서비스", "사람과 문화", "뉴스룸". |
-| CTAs | Direct, low-pressure. "인재영입 바로가기", "블로그 바로가기". |
-| Story / culture cards | People-first, narrative. "신상마켓의 얼굴을 만드는…", "딜리셔스개발팀 연대기". |
-| Recruiting / culture copy | Values-led — "자유와 체계가 공존하는", "심리적 안정감을 주는". |
+| Mission | Benefit-framed, warm. "고객의 사업을 쉽고 즐겁게!" |
+| Company story | Plain statement of change. "오프라인으로만 이루어지던 동대문 패션업계의 B2B 거래를 온라인으로 옮겼습니다." |
+| Service facts | Concrete figures. "동대문 도매 사업자의 80% 이상이 가입한 플랫폼" |
+| Principles | Short, friendly rules with hashtags. "#빠른 실행 #실패해도 도전하자" |
+| Actions | Direct, low-pressure. "인재영입 바로가기", "블로그 바로가기", "서비스 보러가기" |
+| Empty state | Plain. "채용중인 공고가 없습니다." |
 
-**Voice samples (verbatim from live corporate homepage):**
-- "고객의 사업을 쉽고 즐겁게" — hero headline (mission-framed). *(verified live 2026-07-02)*
-- "딜리셔스의 이야기" — story-section title (narrative, people-first). *(verified live 2026-07-02)*
-- "K패션 도소매 거래 No.1 신상마켓" — positioning line (category leadership claim). *(verified live 2026-07-02)*
+**Voice samples (verbatim, opened 2026-09-30):**
+- "딜리셔스 Dealicious | 고객의 사업을 쉽고 즐겁게" — dealicious.kr page title.
+- "딜리셔스는 오프라인으로만 이루어지던 동대문 패션업계의 B2B 거래를 온라인으로 옮겼습니다." — /introduction.
+- "2013년 7월 론칭한 신상마켓은 동대문 패션 도매 사업자와 국내외 소매 사업자를 연결하는 플랫폼입니다." — /services.
+- "K패션 도소매 거래 NO.1" — /services, the company's own positioning line.
 
-**Forbidden register**: aggressive sales urgency, buzzword-stacked B2B jargon, cold corporate-speak that hides the small-business customer, exclamation-heavy hype.
+**Forbidden register**: aggressive sales urgency, stacked B2B jargon, corporate language that hides the small-business customer, exclamation-heavy hype.
 
 ## 11. Brand Narrative
 
-Dealicious (딜리셔스) was founded in **2015** and operates **신상마켓 (Sinsang Market)**, a mobile-first wholesale trading platform connecting the retailers and wholesalers of Korea's Dongdaemun-centered fashion ecosystem. The founding problem was uniquely Korean: K-fashion wholesale (도소매) ran on phone calls, paper ledgers, and in-person 사입 (sourcing runs) at dawn markets — an opaque, relationship-locked system that was hard for new sellers to enter. Sinsang Market's premise was to digitize that trade so ordering, sourcing, and settlement could happen in an app, and to "make our customers' business easy and enjoyable."
+Dealicious presents its founding problem directly: Dongdaemun's fashion wholesale trade happened only offline, and the company moved it online so that more products could move more easily and the fashion industry could grow. Sinsang Market, launched in July 2013, is the result — a platform linking Dongdaemun wholesalers with retailers in Korea and abroad, which the company describes as "K패션 도소매 거래 NO.1". Around it Dealicious built 신상스튜디오, which picks up, photographs and lists a wholesaler's products within a week, and 신상애드, which lets wholesalers promote their uploaded products to retailers across the country; the company says one in five Dongdaemun wholesalers already uses it.
 
-The product matured into the category's No.1 K-fashion 도소매 marketplace, and Dealicious now presents itself as a genuine tech company — its engineering organization publishes an open tech blog (dealicious-inc.github.io) covering Android clean architecture, Elasticsearch search, Kafka pipelines, and i18n for the marketplace. The corporate site foregrounds people and culture ("자유와 체계가 공존하는 딜리셔스", "심리적 안정감을 주는 딜리셔스"), signaling a company that treats how it builds as part of the brand.
+The company page states five principles: 사장님 마음 (always think like the business owner), 80% 실행 (move fast at 80% and learn from failure), 스스로 성장, 피드백 핑퐁 (honest feedback built on respect) and 원팀 딜리언즈. The people-and-culture page foregrounds staff interviews, an R&D centre and development culture, and the engineering team runs a public tech blog (dealicious-inc.github.io), linked from every page as 딜리셔스의 개발 이야기. The footer lists co-CEOs 김준호 and 정창한 and an address in 종로구, Seoul.
 
-What Dealicious refuses, visible in its design: the loud, discount-driven chrome of typical commerce, and cold enterprise-B2B sterility. What it embraces: a calm monochrome-navy palette, a single confident action pill, heavy human headlines, and an editorial, people-first surface — infrastructure for small businesses, presented with the composure of a product studio.
+The corporate site reads the same way: plain white pages, heavy headings, one near-black action and a warm, customer-first voice.
 
 ## 12. Principles
 
-1. **Easy and enjoyable for the customer.** The mission is to make small fashion-wholesale businesses easier to run. *UI implication:* reduce friction and decoration; one clear action, plain language, no dark patterns.
-2. **One action, one shape.** The dark `#222222` pill is the only interactive emphasis. *UI implication:* reserve the pill CTA for the primary next step so intent is never ambiguous.
-3. **Flat and fast.** Depth is unnecessary weight. *UI implication:* no shadows; separate with cool-grey tints and `#d0d6e1` hairlines; keep the surface light and quick to scan.
-4. **People are the product story.** Culture and the humans behind Sinsang Market lead the narrative. *UI implication:* editorial story cards and interviews get generous, image-led 20px-radius space.
-5. **Composed, not loud.** A monochrome navy + ink palette signals trust over hype. *UI implication:* one brand hue, heavy headlines, calm body — never a second saturated accent.
+1. **Easy and enjoyable for the customer.** The mission is "고객의 사업을 쉽고 즐겁게". *UI implication:* one clear action per area, plain language, no pressure.
+2. **Think like the owner.** "항상 사장님 마음으로 생각합니다." *UI implication:* show figures the business owner cares about — shops, transactions, return rates — plainly.
+3. **Move at 80%.** "80% 수준으로 빠르게 실행합니다." *UI implication:* simple, reusable components (pills, filters, rows) over bespoke treatments. (An editorial reading.)
+4. **One team.** *UI implication:* the same header, banners and footer on every page.
+5. **Quiet structure.** *UI implication:* hairlines and greys for structure; depth only on the banner cards. (An editorial reading of the captured pages.)
 
 ## 13. Personas
 
 *Personas below are fictional archetypes informed by publicly observable Sinsang Market / Dealicious user segments (Dongdaemun fashion retailers and wholesalers, and the company's own engineers), not individual people.*
 
-**정하늘, 28, 서울.** Runs a small online fashion boutique and sources stock through Sinsang Market instead of dawn 사입 runs. Values seeing wholesale inventory and ordering from her phone, and trusts the platform because the flow is simple and calm rather than pushy.
+**정하늘, 28, 서울.** Runs a small online fashion boutique and sources stock through Sinsang Market instead of dawn market runs. Values ordering from her phone and a calm, simple flow.
 
-**김도현, 41, 서울 동대문.** A wholesale vendor listing new arrivals ("신상") daily. Cares that his catalog reaches retailers fast and that settlement is clear. Chose the platform because it digitized a trade he used to run entirely by phone.
+**김도현, 41, 서울 동대문.** A wholesaler listing new arrivals daily. Cares that his catalogue reaches retailers fast and has tried 신상애드 to reach more of them.
 
-**이서연, 33, 딜리셔스 엔지니어.** A mobile engineer who reads and writes on the company tech blog. Appreciates that Dealicious presents itself as an engineering-led company ("자유와 체계가 공존하는") and that the culture is foregrounded, not hidden behind sales copy.
+**이서연, 33, 딜리셔스 엔지니어.** A mobile engineer who reads and writes on the company tech blog and values the culture the company foregrounds.
 
 ## 14. States
 
-| State | Treatment |
+Only these states were observed on the three captured pages; nothing else is specified here.
+
+| State | Observation |
 |---|---|
-| **Empty (no listings / results)** | White canvas. A single slate (`#3e4149`) line explaining nothing matches yet, with one dark `#222222` pill CTA to adjust or add. No illustration clutter. |
-| **Empty (saved / none yet)** | Muted (`#8f97a7`) single line: nothing saved yet, plus a calm path back. Honest, low-pressure. |
-| **Loading (list fetch)** | Skeleton blocks on `#f5f6fb` tinted surface at final card dimensions, 20px radius. Flat pulse — no shadow shimmer, consistent with the shadowless system. |
-| **Loading (in-place refresh)** | Subtle progress on the affected band; previous content stays visible with previous values. |
-| **Error (fetch / action failed)** | Inline message in slate (`#3e4149`) with a plain-language explanation and a retry. No bare "오류가 발생했습니다" — say what to do next. |
-| **Error (form validation)** | Field-level message below the input; describes what is valid, not just "필수". |
-| **Success (action completed)** | Brief inline confirmation in a calm tone; next-step detail linked immediately below. No celebratory emoji. |
-| **Skeleton** | `#f5f6fb` blocks at final dimensions, 20px radius, flat pulse. |
-| **Disabled** | Faint (`#bec5d2`) text on reduced-opacity surface; the `#222222` pill fades rather than switching to a new grey, preserving the action read. |
+| **Hover / pressed (career filter)** | Unselected `#ffffff` → `#f5f6fb`; the selected `#1a2241` filter does not change. |
+| **Hover / pressed (IR tab)** | Unselected `#8f97a7` → `#3e4149`; the selected tab does not change. |
+| **Hover / pressed (language selector)** | Transparent → `#f5f6fb`. |
+| **Hover / pressed (banner card)** | Shadow deepens and the card lifts 5px; the pill inside does not change. |
+| **Selected** | Career filter `#1a2241` fill with white bold label; IR tab and footer language `#222222` bold. |
+| **Empty** | The career list read "채용중인 공고가 없습니다." on 2026-09-30 (a disabled button in the page markup). |
+| **Focus** | No captured control draws an authored focus style; all show only the browser's default ring. |
+
+Error, loading and success states were not captured and are not described.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, pill press, focus |
-| `motion-standard` | 200ms | Card / section reveal, sheet, dropdown |
-| `motion-slow` | 320ms | Page-level transitions, hero reveal |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and quiet — consistent with the flat, composed aesthetic. Pill CTAs respond to press with a subtle scale/opacity shift; story cards and sections fade in from below at `motion-standard / ease-enter`. No bounce or spring — an infrastructure company for small businesses signals steadiness, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant; the surface remains fully functional.
+The probe read the transitions the controls compute. Career filters transition `all 0.2s cubic-bezier(0, 0, 0.2, 1)`; IR tabs and the language selector transition colour, background, border, text-decoration colour, fill and stroke over `0.15s cubic-bezier(0.4, 0, 0.2, 1)`; the pills compute `transition: all 0s`, while the banner card's lift settles within the probe's 900ms wait (the longest transition in its compared scope is 500ms). Nothing else about motion (hero, carousels) was measured; treat it as unspecified and honour `prefers-reduced-motion` in any build.
 
 <!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-07-02) via playwright getComputedStyle on https://dealicious.kr:
-- Hero H1 "고객의 사업을 쉽고 즐겁게" — Roboto/Noto Sans KR 60px / weight 700 / white on dark-navy hero
-- Section H1 "딜리셔스의 이야기" — 30px / 700 / color rgb(62,65,73) #3e4149
-- Primary pill CTA "인재영입 바로가기" — bg rgb(34,34,34) #222222 / radius 50px / 14px 31px / 18px 700 / white text
-- Secondary pill CTA "블로그 바로가기" — bg #ffffff / color #3e4149 / radius 50px
-- Nav (회사소개/서비스/사람과 문화/뉴스룸) — white 16px/400, 64px header
-- Story cards — 20px radius, box-shadow none
-- Logo deali_logo_square.png dominant fill rgb(0,19,57) #001339
-- document.title: "딜리셔스 Dealicious | 고객의 사업을 쉽고 즐겁게"
-
-Token-level claims (§1-9) are sourced from this live inspection (see web/references/dealicious/.verification.md).
-
-Voice samples (§10) are verbatim from the live corporate homepage (hero headline, story-section title, positioning line).
-
-Brand narrative (§11): Dealicious (딜리셔스) operates 신상마켓 (Sinsang Market), a Korean K-fashion
-wholesale (도소매) marketplace; founded ~2015. The engineering tech blog (dealicious-inc.github.io)
-confirms the engineering-led positioning and topics (Android clean architecture, Elasticsearch, Kafka,
-i18n). Specific founding details beyond the homepage/blog are general public knowledge, not directly
-quoted from a verified Dealicious statement in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable Sinsang Market user segments
-(Dongdaemun fashion retailers/wholesalers) and the company's own engineers. Names are illustrative;
-they do not refer to real people.
-
-Interpretive claims (e.g., "one action, one shape", "flat and fast as a rejection of discount-driven
-commerce chrome") are editorial readings connecting Dealicious's observed design to its positioning,
-not directly sourced Dealicious statements.
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/dealicious.json (capturedAt 2026-09-30T08:58:01Z), deterministic collector, 1440x900, logged out: dealicious.kr, /ir-center, /career. States and the banner card: fixed keyboard probe raws docs/research/2026-09-29-growth/raw/dealicious-states-{home,ir,career}.json.
+- §1, §10, §11 context: /introduction, /services and /people-culture on dealicious.kr, and the home page and footer, opened 2026-09-30.
+- §3 licence: the Roboto OFL.txt in the Google Fonts repository, opened 2026-09-30.
+- Personas are fictional archetypes. Interpretive readings are editorial.
 -->

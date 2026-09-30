@@ -135,7 +135,8 @@ describe("evidence integrity — the cheap paths back to green stay closed", () 
     // (naverpay, nexon, lemonbase, hana, hwahae, goorm) dropped their invented motion tables.
     // 255 -> 245 (2026-09-30): wave P2 did the same for ten more KR references.
     // 245 -> 234 (2026-09-30): wave P3 and elice, eleven more.
-    expect(flagged.length).toBe(234);
+    // 234 -> 224 (2026-09-30): wave P4, ten more.
+    expect(flagged.length).toBe(224);
 
     // The two references that handle this correctly must stay off the worklist,
     // otherwise the advisory punishes the behaviour it is meant to produce.

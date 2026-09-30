@@ -9,56 +9,297 @@ primary_color: "#5055b1"
 logo:
   type: favicon
   slug: "https://contents.kyobobook.co.kr/resources/fo/images/common/ink/favicon/favicon_256x256.png"
-verified: "2026-06-26"
+verified: "2026-09-30"
 added: "2026-06-26"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-09-30"
+  surfaces:
+    - { id: home, kind: product, url: "https://www.kyobobook.co.kr/", inspected: "2026-09-30" }
+    - { id: surface-2, kind: product, url: "https://store.kyobobook.co.kr/bestseller/online/weekly", inspected: "2026-09-30" }
+    - { id: surface-3, kind: product, url: "https://product.kyobobook.co.kr/detail/S000221463512", inspected: "2026-09-30" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://www.kyobobook.co.kr/", captured: "2026-09-30" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://store.kyobobook.co.kr/bestseller/online/weekly", captured: "2026-09-30" }
+    - { id: surface-surface-3, kind: product-surface, url: "https://product.kyobobook.co.kr/detail/S000221463512", captured: "2026-09-30" }
+    - { id: kyobobook-probe-bestseller, kind: product-surface, url: "https://store.kyobobook.co.kr/bestseller/online/weekly", captured: "2026-09-30" }
+    - { id: kds-color, kind: official-doc, url: "https://design.kyobobook.co.kr/foundation/color", captured: "2026-09-30" }
+    - { id: kds-typography, kind: official-doc, url: "https://design.kyobobook.co.kr/foundation/typography", captured: "2026-09-30" }
+    - { id: kds-button, kind: official-doc, url: "https://design.kyobobook.co.kr/component/button", captured: "2026-09-30" }
+    - { id: kds-voice, kind: official-doc, url: "https://design.kyobobook.co.kr/voice", captured: "2026-09-30" }
+    - { id: kds-principle, kind: official-doc, url: "https://design.kyobobook.co.kr/brand/principle", captured: "2026-09-30" }
+    - { id: kyobo-company, kind: official-doc, url: "https://company.kyobobook.co.kr/", captured: "2026-09-30" }
+    - { id: pretendard-license, kind: license, url: "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE", captured: "2026-09-30" }
+    - { id: roboto-license, kind: license, url: "https://raw.githubusercontent.com/google/fonts/main/ofl/roboto/OFL.txt", captured: "2026-09-30" }
+    - { id: notosanskr-license, kind: license, url: "https://raw.githubusercontent.com/google/fonts/main/ofl/notosanskr/OFL.txt", captured: "2026-09-30" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": &buy { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"69\"]", captured: "2026-09-30" }
+    "tokens.colors.primary-hover": &buystate { surface_id: surface-2, source_id: kyobobook-probe-bestseller, method: live-state-probe, selector: "button 바로구매 (100 x 38, rest bg rgb(80, 85, 177), fg rgb(255, 255, 255)): hover and pressed bg -> rgb(44, 48, 124) after a 0.2s cubic-bezier(0.4, 0, 0.2, 1) colour transition; focus not measured (--no-focus)", captured: "2026-09-30" }
+    "tokens.colors.on-primary": *buy
+    "tokens.colors.secondary": &cart { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"68\"]", captured: "2026-09-30" }
+    "tokens.colors.secondary-hover": &cartstate { surface_id: surface-2, source_id: kyobobook-probe-bestseller, method: live-state-probe, selector: "button 장바구니 (100 x 38, rest bg rgb(118, 118, 118), fg rgb(255, 255, 255)): hover bg -> rgb(89, 89, 89); pressed bg -> rgb(41, 41, 41); focus not measured (--no-focus)", captured: "2026-09-30" }
+    "tokens.colors.secondary-pressed": *cartstate
+    "tokens.colors.ink": &body { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::body", captured: "2026-09-30" }
+    "tokens.colors.body": &intro { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.colors.muted": &tab { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"52\"]", captured: "2026-09-30" }
+    "tokens.colors.accent": &railsel { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"69\"]", captured: "2026-09-30" }
+    "tokens.colors.promo-green": &gnb { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"22\"]", captured: "2026-09-30" }
+    "tokens.colors.promo-green-dark": &gnbstore { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"19\"]", captured: "2026-09-30" }
+    "tokens.colors.hairline": &cover { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"95\"]", captured: "2026-09-30" }
+    "tokens.colors.border": &menu { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"21\"]", captured: "2026-09-30" }
+    "tokens.colors.border-strong": &toggle { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"58\"]", captured: "2026-09-30" }
+    "tokens.colors.surface": &recent { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"223\"]", captured: "2026-09-30" }
+    "tokens.colors.white": *toggle
+    "tokens.typography.family.commerce": &storebody { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::body", captured: "2026-09-30" }
+    "tokens.typography.family.portal": *body
+    "tokens.typography.page-title.size": &pagetitle { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h4", captured: "2026-09-30" }
+    "tokens.typography.page-title.weight": *pagetitle
+    "tokens.typography.page-title.lineHeight": *pagetitle
+    "tokens.typography.page-title.tracking": *pagetitle
+    "tokens.typography.page-title.use": *pagetitle
+    "tokens.typography.title.size": &h2 { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-09-30" }
+    "tokens.typography.title.weight": *h2
+    "tokens.typography.title.lineHeight": *h2
+    "tokens.typography.title.tracking": *h2
+    "tokens.typography.title.use": *h2
+    "tokens.typography.error-title.size": &errh { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::h1", captured: "2026-09-30" }
+    "tokens.typography.error-title.weight": *errh
+    "tokens.typography.error-title.lineHeight": *errh
+    "tokens.typography.error-title.tracking": *errh
+    "tokens.typography.error-title.use": *errh
+    "tokens.typography.nav-promo.size": *gnb
+    "tokens.typography.nav-promo.weight": *gnb
+    "tokens.typography.nav-promo.lineHeight": *gnb
+    "tokens.typography.nav-promo.tracking": *gnb
+    "tokens.typography.nav-promo.use": *gnb
+    "tokens.typography.button-lg.size": &errp { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"32\"]", captured: "2026-09-30" }
+    "tokens.typography.button-lg.weight": *errp
+    "tokens.typography.button-lg.lineHeight": *errp
+    "tokens.typography.button-lg.tracking": *errp
+    "tokens.typography.button-lg.use": *errp
+    "tokens.typography.body.size": *body
+    "tokens.typography.body.weight": *body
+    "tokens.typography.body.lineHeight": *body
+    "tokens.typography.body.tracking": *body
+    "tokens.typography.body.use": *body
+    "tokens.typography.tab.size": *tab
+    "tokens.typography.tab.weight": *tab
+    "tokens.typography.tab.lineHeight": *tab
+    "tokens.typography.tab.tracking": *tab
+    "tokens.typography.tab.use": *tab
+    "tokens.typography.body-sm.size": *intro
+    "tokens.typography.body-sm.weight": *intro
+    "tokens.typography.body-sm.lineHeight": *intro
+    "tokens.typography.body-sm.tracking": *intro
+    "tokens.typography.body-sm.use": *intro
+    "tokens.typography.button.size": *buy
+    "tokens.typography.button.weight": *buy
+    "tokens.typography.button.lineHeight": *buy
+    "tokens.typography.button.tracking": *buy
+    "tokens.typography.button.use": *buy
+    "tokens.typography.label.size": &label { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-09-30" }
+    "tokens.typography.label.weight": *label
+    "tokens.typography.label.lineHeight": *label
+    "tokens.typography.label.tracking": *label
+    "tokens.typography.label.use": *label
+    "tokens.typography.caption.size": &caption { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.typography.caption.weight": *caption
+    "tokens.typography.caption.lineHeight": *caption
+    "tokens.typography.caption.tracking": *caption
+    "tokens.typography.caption.use": *caption
+    "tokens.typography.fine.size": &fine { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-09-30" }
+    "tokens.typography.fine.weight": *fine
+    "tokens.typography.fine.lineHeight": *fine
+    "tokens.typography.fine.tracking": *fine
+    "tokens.typography.fine.use": *fine
+    "tokens.spacing.button-y": *buy
+    "tokens.spacing.button-x": *buy
+    "tokens.spacing.field-y": &input { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"17\"]", captured: "2026-09-30" }
+    "tokens.spacing.field-x": *input
+    "tokens.spacing.toggle-pad": *toggle
+    "tokens.spacing.row-top": &row { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::li", captured: "2026-09-30" }
+    "tokens.rounded.tag": &svc { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"221\"]", captured: "2026-09-30" }
+    "tokens.rounded.button": *buy
+    "tokens.rounded.cover": *cover
+    "tokens.rounded.search": &search { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"16\"]", captured: "2026-09-30" }
+    "tokens.rounded.pill": *menu
+    "tokens.components.buy-now-button.type": *buy
+    "tokens.components.buy-now-button.bg": *buy
+    "tokens.components.buy-now-button.fg": *buy
+    "tokens.components.buy-now-button.radius": *buy
+    "tokens.components.buy-now-button.padding": *buy
+    "tokens.components.buy-now-button.height": *buy
+    "tokens.components.buy-now-button.font": *buy
+    "tokens.components.buy-now-button.hover": *buystate
+    "tokens.components.buy-now-button.pressed": *buystate
+    "tokens.components.buy-now-button.states": *buystate
+    "tokens.components.buy-now-button.use": *buy
+    "tokens.components.cart-button.type": *cart
+    "tokens.components.cart-button.bg": *cart
+    "tokens.components.cart-button.fg": *cart
+    "tokens.components.cart-button.radius": *cart
+    "tokens.components.cart-button.padding": *cart
+    "tokens.components.cart-button.height": *cart
+    "tokens.components.cart-button.font": *cart
+    "tokens.components.cart-button.hover": *cartstate
+    "tokens.components.cart-button.pressed": *cartstate
+    "tokens.components.cart-button.states": *cartstate
+    "tokens.components.cart-button.use": *cart
+    "tokens.components.outline-button.type": &outline { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"61\"]", captured: "2026-09-30" }
+    "tokens.components.outline-button.bg": *outline
+    "tokens.components.outline-button.fg": *outline
+    "tokens.components.outline-button.border": *outline
+    "tokens.components.outline-button.radius": *outline
+    "tokens.components.outline-button.padding": *outline
+    "tokens.components.outline-button.height": *outline
+    "tokens.components.outline-button.font": *outline
+    "tokens.components.outline-button.hover": &outlinestate { surface_id: surface-2, source_id: kyobobook-probe-bestseller, method: live-state-probe, selector: "a 상세보기 (100 x 38) and button 찜하기 (38 x 38), both rest bg transparent, fg rgb(0, 0, 0): hover and pressed bg -> rgb(242, 242, 242); focus not measured (--no-focus)", captured: "2026-09-30" }
+    "tokens.components.outline-button.pressed": *outlinestate
+    "tokens.components.outline-button.states": *outlinestate
+    "tokens.components.outline-button.use": *outline
+    "tokens.components.view-toggle.type": *toggle
+    "tokens.components.view-toggle.bg": *toggle
+    "tokens.components.view-toggle.fg": *toggle
+    "tokens.components.view-toggle.border": *toggle
+    "tokens.components.view-toggle.radius": *toggle
+    "tokens.components.view-toggle.padding": *toggle
+    "tokens.components.view-toggle.height": *toggle
+    "tokens.components.view-toggle.hover": &togglestate { surface_id: surface-2, source_id: kyobobook-probe-bestseller, method: live-state-probe, selector: "button 리스트형 보기 아이콘 (39 x 38, rest bg rgb(255, 255, 255), fg rgb(0, 0, 0)): hover and pressed bg -> rgb(242, 242, 242); focus not measured (--no-focus)", captured: "2026-09-30" }
+    "tokens.components.view-toggle.pressed": *togglestate
+    "tokens.components.view-toggle.states": *togglestate
+    "tokens.components.view-toggle.use": *toggle
+    "tokens.components.error-primary-button.type": *errp
+    "tokens.components.error-primary-button.bg": *errp
+    "tokens.components.error-primary-button.fg": *errp
+    "tokens.components.error-primary-button.radius": *errp
+    "tokens.components.error-primary-button.height": *errp
+    "tokens.components.error-primary-button.font": *errp
+    "tokens.components.error-primary-button.states": *errp
+    "tokens.components.error-primary-button.use": *errp
+    "tokens.components.error-outline-button.type": &erro { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"31\"]", captured: "2026-09-30" }
+    "tokens.components.error-outline-button.bg": *erro
+    "tokens.components.error-outline-button.fg": *erro
+    "tokens.components.error-outline-button.border": *erro
+    "tokens.components.error-outline-button.radius": *erro
+    "tokens.components.error-outline-button.height": *erro
+    "tokens.components.error-outline-button.font": *erro
+    "tokens.components.error-outline-button.states": *erro
+    "tokens.components.error-outline-button.use": *erro
+    "tokens.components.category-tab.type": *tab
+    "tokens.components.category-tab.fg": *tab
+    "tokens.components.category-tab.padding": *tab
+    "tokens.components.category-tab.height": *tab
+    "tokens.components.category-tab.font": *tab
+    "tokens.components.category-tab.selected": { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"51\"]", captured: "2026-09-30" }
+    "tokens.components.category-tab.states": *tab
+    "tokens.components.category-tab.use": *tab
+    "tokens.components.rail-tab.type": &rail { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"64\"]", captured: "2026-09-30" }
+    "tokens.components.rail-tab.fg": *rail
+    "tokens.components.rail-tab.font": *rail
+    "tokens.components.rail-tab.selected": *railsel
+    "tokens.components.rail-tab.states": *rail
+    "tokens.components.rail-tab.use": *rail
+    "tokens.components.search-field.type": *search
+    "tokens.components.search-field.fg": *input
+    "tokens.components.search-field.radius": *search
+    "tokens.components.search-field.padding": *input
+    "tokens.components.search-field.height": *search
+    "tokens.components.search-field.font": *input
+    "tokens.components.search-field.states": *search
+    "tokens.components.search-field.use": *search
+    "tokens.components.menu-button.type": *menu
+    "tokens.components.menu-button.bg": *menu
+    "tokens.components.menu-button.border": *menu
+    "tokens.components.menu-button.radius": *menu
+    "tokens.components.menu-button.size": *menu
+    "tokens.components.menu-button.states": *menu
+    "tokens.components.menu-button.use": *menu
+    "tokens.components.recent-button.type": *recent
+    "tokens.components.recent-button.bg": *recent
+    "tokens.components.recent-button.radius": *recent
+    "tokens.components.recent-button.size": *recent
+    "tokens.components.recent-button.states": *recent
+    "tokens.components.recent-button.use": *recent
+    "tokens.components.footer-select.type": &famsite { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"219\"]", captured: "2026-09-30" }
+    "tokens.components.footer-select.bg": *famsite
+    "tokens.components.footer-select.fg": *famsite
+    "tokens.components.footer-select.border": *famsite
+    "tokens.components.footer-select.radius": *famsite
+    "tokens.components.footer-select.padding": *famsite
+    "tokens.components.footer-select.height": *famsite
+    "tokens.components.footer-select.font": *famsite
+    "tokens.components.footer-select.states": *famsite
+    "tokens.components.footer-select.use": *famsite
+    "tokens.components.footer-tag.type": *svc
+    "tokens.components.footer-tag.fg": *svc
+    "tokens.components.footer-tag.border": *svc
+    "tokens.components.footer-tag.radius": *svc
+    "tokens.components.footer-tag.height": *svc
+    "tokens.components.footer-tag.font": *svc
+    "tokens.components.footer-tag.use": *svc
+    "tokens.components.cover-link.type": *cover
+    "tokens.components.cover-link.border": *cover
+    "tokens.components.cover-link.radius": *cover
+    "tokens.components.cover-link.use": *cover
+    "tokens.components.list-row.type": *row
+    "tokens.components.list-row.border": *row
+    "tokens.components.list-row.padding": *row
+    "tokens.components.list-row.use": *row
 tokens:
-  source: live-extract
-  extracted: "2026-06-26"
-  note: "primary = KDS blue 700 #5055b1 (documented UI base color + live 바로구매 buy-now CTA); green 700 #4dac27 is the heritage Kyobo bird-logo green, used as the positive/success accent. Storefront runs Pretendard; the main portal + design-system site run NotoSansKR."
+  source: reconciled
+  extracted: "2026-09-30"
   colors:
     primary: "#5055b1"
-    accent-indigo: "#474c98"
-    indigo-tint: "#ededf7"
-    link: "#314fb9"
-    green: "#4dac27"
-    green-dark: "#195800"
-    green-text: "#278203"
-    hottracks: "#da2128"
-    negative: "#ec1f2d"
-    sale: "#c71e24"
+    primary-hover: "#2c307c"
+    on-primary: "#ffffff"
+    secondary: "#767676"
+    secondary-hover: "#595959"
+    secondary-pressed: "#292929"
     ink: "#000000"
-    ink-soft: "#292929"
     body: "#595959"
     muted: "#767676"
-    canvas: "#ffffff"
-    surface: "#f2f2f2"
-    surface-alt: "#f7f7f7"
+    accent: "#474c98"
+    promo-green: "#2a760c"
+    promo-green-dark: "#195800"
     hairline: "#eaeaea"
     border: "#d5d5d5"
     border-strong: "#cccccc"
+    surface: "#f2f2f2"
+    white: "#ffffff"
   typography:
-    family: { primary: "NotoSansKR", commerce: "Pretendard" }
-    display:    { size: 40, weight: 900, lineHeight: 1.2, use: "Design-system / marketing display headline (Kyobobook Design System)" }
-    heading:    { size: 24, weight: 700, lineHeight: 1.4, use: "Section headings (오늘의 선택, 온라인 주간 베스트)" }
-    subheading: { size: 20, weight: 700, lineHeight: 1.3, use: "Sub-section heads, DS nav labels" }
-    body:       { size: 16, weight: 400, lineHeight: 1.5, use: "Standard reading text" }
-    body-sm:    { size: 14, weight: 400, lineHeight: 1.5, use: "Dense UI text, nav, button labels" }
-    caption:    { size: 12, weight: 400, lineHeight: 1.5, use: "Metadata, utility links (로그인, 회원가입)" }
-    nav-promo:  { size: 16, weight: 700, lineHeight: 1.5, use: "Promo nav links in dark green (상반기결산, 주말특가)" }
-  spacing: { xs: 4, sm: 8, md: 14, base: 16, lg: 24, xl: 32, xxl: 48 }
-  rounded: { sm: 4, md: 8, lg: 24, full: 9999 }
-  shadow:
-    none: "none"
+    family: { commerce: "Pretendard", portal: "Roboto, NotoSansKR" }
+    page-title: { size: 32, weight: 700, lineHeight: 1.375, tracking: -0.32, use: "Store page heading (h4) on the weekly bestseller, Pretendard, 44px line; the same 32px / 44px pair as KDS h1 $font-title-xl" }
+    title: { size: 24, weight: 700, lineHeight: 1.42, tracking: -0.24, use: "Home section headings (h2, Roboto with NotoSansKR) and the store h1, 34px line, in #000000" }
+    error-title: { size: 18, weight: 700, lineHeight: 1.56, tracking: -0.18, use: "Heading of the product route's error view, Pretendard (served as PretendardNoPreload), 28px line" }
+    nav-promo: { size: 16, weight: 700, lineHeight: 1.5, tracking: -0.16, use: "Green promotional links in the header navigation, 24px line" }
+    button-lg: { size: 16, weight: 700, lineHeight: 1.5, tracking: -0.16, use: "Large 50px actions (홈으로 가기, 이전페이지) on the product route's error view, 24px line" }
+    body: { size: 16, weight: 400, lineHeight: 1.5, tracking: -0.16, use: "Document default on all three routes, 24px line, in #000000" }
+    tab: { size: 16, weight: 400, lineHeight: 1.5, tracking: -0.16, use: "Store category tabs, 24px line, in #767676; the selected tab is #000000 at weight 500" }
+    body-sm: { size: 14, weight: 400, lineHeight: 1.57, tracking: -0.14, use: "Book introductions in bestseller rows, 22px line, in #595959" }
+    button: { size: 14, weight: 500, lineHeight: 1.57, tracking: -0.14, use: "바로구매, 장바구니 and toolbar button labels, Pretendard, 22px line" }
+    label: { size: 12, weight: 500, lineHeight: 1.5, tracking: -0.12, use: "Blue-800 labels on home, 18px line, in #474c98" }
+    caption: { size: 12, weight: 400, lineHeight: 1.5, tracking: -0.12, use: "Footer company details and top-bar utility links, 18px line, in #767676 or #595959" }
+    fine: { size: 10, weight: 400, lineHeight: 1.4, tracking: -0.1, use: "Footer notes, 14px line, in #767676" }
+  spacing: { button-y: 9, button-x: 14, field-y: 13, field-x: 16, toggle-pad: 11, row-top: 36 }
+  rounded: { tag: 4, button: 8, cover: 16, search: 24, pill: 9999 }
   components:
-    button-primary: { type: button, bg: "#5055b1", fg: "#ffffff", radius: "8px", height: "38px", padding: "9px 14px", font: "14px / 500 Pretendard", use: "Primary purchase CTA (바로구매/구매하기); KDS Primary button, blue 700 UI base" }
-    button-secondary: { type: button, bg: "#767676", fg: "#ffffff", radius: "8px", height: "38px", padding: "9px 14px", font: "14px / 500 Pretendard", use: "Secondary action (장바구니/add-to-cart); KDS Secondary, neutral grey" }
-    category-tab: { type: tab, fg: "#767676", active: "text #000000 + 2px bottom border #5055b1", font: "16px / 400", use: "Catalog category tabs (국내도서/외국도서/eBook)" }
-    view-toggle: { type: tab, bg: "#ffffff", border: "1px solid #cccccc", radius: "4px", active: "border #5055b1", use: "List / thumbnail view segmented toggle" }
-    input-search: { type: input, bg: "#ffffff", fg: "#000000", border: "1px solid #eaeaea", radius: "24px", height: "48px", padding: "13px 16px", use: "Header integrated search, pill-ended; focus blue #5055b1" }
-    card-product: { type: card, bg: "#ffffff", border: "1px solid #eaeaea", radius: "8px", use: "Book / product card; flat, hairline-separated" }
-    badge-sale: { type: badge, fg: "#c71e24", radius: "4px", font: "12px / 700", use: "Sale / discount-rate price label" }
-    badge-positive: { type: badge, fg: "#278203", radius: "4px", font: "12px / 500", use: "Positive / in-stock status; green 700 family" }
+    buy-now-button: { type: button, bg: "#5055b1", fg: "#ffffff", radius: "8px", padding: "9px 14px", height: "38px", font: "14px / 500 / 22px Pretendard, letter-spacing -0.14px", hover: "bg #2c307c", pressed: "bg #2c307c", states: "probe on the weekly bestseller: hover and pressed settle on #2c307c after a 0.2s colour transition; focus was not measured (the probe ran with --no-focus) and the collector's pseudo-state pass stalled, so no focus style is declared", use: "바로구매 in every row of the weekly bestseller at surface-2::[data-omd-capture=\"69\"], 100 x 38; the one filled indigo action per row, under 장바구니" }
+    cart-button: { type: button, bg: "#767676", fg: "#ffffff", radius: "8px", padding: "9px 14px", height: "38px", font: "14px / 500 / 22px Pretendard, letter-spacing -0.14px", hover: "bg #595959", pressed: "bg #292929", states: "probe: hover #595959, pressed #292929 (0.2s colour transition); focus not measured", use: "장바구니 above 바로구매 in each bestseller row at surface-2::[data-omd-capture=\"68\"], 100 x 38" }
+    outline-button: { type: button, bg: "transparent", fg: "#000000", border: "1px solid #cccccc", radius: "8px", padding: "9px 14px", height: "38px", font: "14px / 500 / 22px Pretendard, letter-spacing -0.14px", hover: "bg #f2f2f2", pressed: "bg #f2f2f2", states: "probe on 상세보기 and the 찜하기 icon button: hover and pressed fill #f2f2f2; focus not measured", use: "Toolbar actions over the bestseller list (장바구니 at surface-2::[data-omd-capture=\"61\"], 엑셀로 받기) and 상세보기 in rows, 38px tall; the 38 x 38 찜하기 icon button uses the same border with 9px padding" }
+    view-toggle: { type: toggle, bg: "#ffffff", fg: "#000000", border: "1px solid #cccccc", radius: "4px 0px 0px 4px and 0px 4px 4px 0px (segmented pair)", padding: "11px", height: "38px", hover: "bg #f2f2f2", pressed: "bg #f2f2f2", states: "probe on 리스트형 보기: hover and pressed #f2f2f2; the rest values of the two halves do not show which view is selected, so no selected style is declared", use: "List and thumbnail view pair at surface-2::[data-omd-capture=\"58\"] and [59], 39 x 38 and 40 x 38" }
+    error-primary-button: { type: button, bg: "#5055b1", fg: "#ffffff", radius: "8px", height: "50px", font: "16px / 700 / 24px Pretendard (PretendardNoPreload), letter-spacing -0.16px", states: "rest only; not probed", use: "이전페이지 on the error view the product route rendered, at surface-3::[data-omd-capture=\"32\"], 125 x 50" }
+    error-outline-button: { type: button, bg: "transparent", fg: "#5055b1", border: "1px solid #5055b1", radius: "8px", height: "50px", font: "16px / 700 / 24px Pretendard (PretendardNoPreload), letter-spacing -0.16px", states: "rest only; not probed", use: "홈으로 가기 beside 이전페이지 at surface-3::[data-omd-capture=\"31\"], 125 x 50" }
+    category-tab: { type: tab, fg: "#767676", padding: "0px 14px", height: "42px", font: "16px / 400 / 24px Pretendard, letter-spacing -0.16px", selected: "fg #000000 at weight 500, 43px tall", states: "selected variant read from rest values; no pointer frame", use: "Category tabs of the weekly bestseller, 140px wide, at surface-2::[data-omd-capture=\"52\"]; the selected tab is capture 51" }
+    rail-tab: { type: tab, fg: "#595959", font: "14px / 400 / 22px Roboto with NotoSansKR", selected: "fg #474c98 at weight 700", states: "selected variant read from rest values; no pointer frame", use: "Filter buttons over a home rail at home::[data-omd-capture=\"64\"]; the selected one is capture 69" }
+    search-field: { type: input, fg: "#000000", radius: "24px 0px 0px 24px (scope button)", padding: "13px 16px (input)", height: "48px (scope button); 42px input", font: "14px / 400 / 22px, letter-spacing -0.14px", states: "rest only; the collector pseudo-state pass stalled and the field was not probed, so no focus or hover value is declared", use: "Header integrated search: a 116 x 48 scope button with a 24px 0 0 24px radius (home::[data-omd-capture=\"16\"]) leading a 395 x 42 search input (capture 17), on all three routes" }
+    menu-button: { type: button, bg: "transparent", border: "1px solid #d5d5d5", radius: "9999px", size: "44px x 44px", states: "rest only; not probed", use: "Round 전체메뉴열기 button in the header at home::[data-omd-capture=\"21\"], on all three routes" }
+    recent-button: { type: button, bg: "#f2f2f2", radius: "9999px", size: "50px x 50px", states: "rest only; not probed", use: "Round counter button (class recent-ctt-modal) in the floating side bar at surface-2::[data-omd-capture=\"223\"]" }
+    footer-select: { type: button, bg: "#ffffff", fg: "#000000", border: "1px solid #d5d5d5", radius: "8px", padding: "8px 14px", height: "40px", font: "14px / 400 / 22px, letter-spacing -0.14px", states: "rest only; not probed", use: "Family Site and SNS 바로가기 selectors in the footer at surface-2::[data-omd-capture=\"219\"], 200 x 40, on all three routes" }
+    footer-tag: { type: badge, fg: "#000000", border: "1px solid #cccccc", radius: "4px", height: "24px", font: "12px / 400 / 18px, letter-spacing -0.12px", use: "서비스가입확인 link in the footer at surface-2::[data-omd-capture=\"221\"]; 사업자정보확인 beside it takes a #d5d5d5 border and #595959 label" }
+    cover-link: { type: card, border: "1px solid #eaeaea", radius: "16px 16px 16px 0px, or square", use: "Book-cover links in home rails at home::[data-omd-capture=\"95\"]; 46 captured covers take the asymmetric 16px 16px 16px 0px shape, the rest are square" }
+    list-row: { type: listItem, border: "1px solid #eaeaea (top)", padding: "36px 0px 0px", use: "Weekly bestseller rows at surface-2::li, 984px wide, separated by a top hairline" }
   components_harvested: true
 ---
 
@@ -66,21 +307,20 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-Kyobo Book Centre (교보문고) is Korea's largest and oldest book retailer, and its digital storefront reads exactly like its physical flagship: a calm, content-first reading room where the merchandise — books — does the talking. The interface is built on a near-invisible neutral chassis (white `#ffffff` canvas over a soft grey `#f2f2f2` surface) so that book covers, prices, and titles carry all the color. Body text sits in pure black `#000000` and a ladder of warm greys (`#292929`, `#595959`, `#767676`), never a tinted ink, which keeps the dense bibliographic data legible at small sizes. This is a commerce system designed for scanning long lists, not for hero-driven persuasion.
+Kyobo Book Centre (교보문고) is a Korean bookseller whose own timeline begins with the founding of 교보문고 주식회사 on 24 December 1980 and the opening of the Gwanghwamun store in June 1981. It has sold remotely for almost as long as it has had stores: in 1989 it started what it calls the industry's first mail order over an online information service (천리안2), in 1993 the 교보북클럽 membership mail order, and in 1999 it reopened as the internet bookshop 인터넷교보문고. Later milestones on the company page include the 북마스터 reading-consultant role (2000), Korea's first eBook membership service, sam (2013), a head office in Paju Book City (2012), its 40th anniversary (December 2020) and a Vision2025 declaration (2021). In 2022 it opened a combined Kyobo–Hottracks mall, and in July 2023 the two companies merged into one legal entity. The company states three core values: 도전과 창의 (challenge and creativity), 고객중심 (customer focus) and 정직과 성실 (honesty and diligence).
 
-The brand's chromatic identity is a deliberate two-color story documented in the official Kyobobook Design System (KDS). The primary UI color — labelled "UI 기본컬러" in the KDS color foundation — is a confident indigo-blue, **blue 700 `#5055b1`**, which drives the single most important commerce action on the site: the 바로구매 (Buy Now) button. Alongside it lives the heritage **green 700 `#4dac27`**, the color of the famous Kyobo bird-and-tree mark, demoted in the digital system to the "Positive/Accent" role (success states, stock, and the dark-green `#195800` promotional nav links and `#278203` confirmation text). The KDS rounds out its semantic palette with `#da2128` reserved for the Hottracks (핫트랙스) sub-brand and `#ec1f2d` for negative/error — explicitly warning designers not to confuse the two reds — while the storefront itself uses a slightly warmer `#c71e24` for sale-discount pricing.
+Kyobo documents its online product in its own design system, KDS (design.kyobobook.co.kr), whose mission line is "사용자 경험을 가치있게, 고객의 삶을 흥미롭게" — make the user experience valuable and customers' lives interesting. The KDS principle page gives the direction of the online bookstore as "꿈을 키우는 세상에서 꿈이 하나되는 공간으로" and asks for a natural reading-like flow, a customer journey that cycles through arriving, browsing, ordering and returning, and familiar usability.
 
-Supporting accents stay quiet and purposeful: an indigo text accent `#474c98`, a pale indigo tint `#ededf7` for selected surfaces, and a blue link color `#314fb9`. Separation is almost entirely flat — there are essentially no drop shadows; the system leans on hairlines (`#eaeaea`), mid borders (`#d5d5d5`, `#cccccc`), and the alternating `#f7f7f7` surface tint to segment a famously information-dense catalog. Typography splits by surface: the main portal and the KDS site run **NotoSansKR**, while the commerce storefront runs **Pretendard**, both at a workhorse 16px/400 body with 700 headings. The total impression is utilitarian and trustworthy — a 40-year institution that treats clarity and reading as the product, not visual spectacle.
+The captured routes read exactly as KDS describes. A white page carries black `#000000` text and a grey ladder (`#595959`, `#767676`), with hairlines `#eaeaea`, `#d5d5d5` and `#cccccc` doing the separating and no shadow anywhere (all 981 recorded elements compute `box-shadow: none`). Colour is saved for action. Indigo `#5055b1` — the colour KDS labels "UI 기본컬러" — fills 바로구매 in every bestseller row. Grey `#767676` fills its partner 장바구니, and the header's promotional links are set in green. Letter-spacing is a steady -1% of the size at every step, from -0.1px at 10px to -0.32px at 32px.
 
 **Key Characteristics:**
-- Two-color brand system per KDS: indigo-blue `#5055b1` as the primary UI/action color, heritage green `#4dac27` as the positive accent
-- Content-first neutrality — white `#ffffff` / grey `#f2f2f2` chassis so book covers carry the color
-- Pure-black `#000000` ink over a warm grey ladder (`#292929` / `#595959` / `#767676`) for dense, legible catalog text
-- Flat, near-shadowless depth — hairlines (`#eaeaea`), borders (`#d5d5d5`, `#cccccc`) and surface tint (`#f7f7f7`) do the separating
-- Disciplined semantic reds — `#da2128` for Hottracks, `#ec1f2d` for error, `#c71e24` for sale price (never interchanged)
-- Dual typeface system — NotoSansKR on the portal/DS, Pretendard on the storefront
-- Conservative geometry — 8px buttons, 4px segmented toggles, a 24px pill-ended search bar
-- One-action-per-area discipline — the indigo Buy Now is the single emphasized CTA, cart sits in neutral grey
+- One indigo action per row: `#5055b1` 바로구매, darkening to `#2c307c` on hover and press; grey `#767676` 장바구니 beside it
+- Black `#000000` text on white with a grey ladder `#595959` / `#767676`; no tinted ink
+- Hairline structure instead of depth: `#eaeaea` row rules and cover borders, `#cccccc` control borders, `#d5d5d5` footer and header controls; zero shadows
+- Two type setups: the portal home in Roboto with NotoSansKR for Hangul (the pair KDS specifies), the store and product routes in Pretendard
+- Tight, proportional tracking: -0.01em on every captured text size
+- 8px radius on every action, 4px on tags and segmented toggles, 24px on the search pill end, and asymmetric 16px 16px 16px 0px book covers in home rails
+- Green promotional navigation links (`#2a760c` on home, `#195800` on the store) as the only other hue in the chrome
 
 ## Primary tasks
 
@@ -92,362 +332,341 @@ Supporting accents stay quiet and purposeful: an indigo text accent `#474c98`, a
 
 ## 2. Color Palette & Roles
 
+Every token below was read on 2026-09-30 by the deterministic collector from www.kyobobook.co.kr (portal home), the weekly bestseller on store.kyobobook.co.kr and a product-detail route, which rendered only its error view to the logged-out headless browser. Hover and pressed values come from the fixed keyboard probe on the bestseller page.
+
 ### Primary
-- **Kyobo Blue 700** (`#5055b1`): The KDS-documented "UI 기본컬러" (UI base color) and Informative/Accent token. Primary action color — the background of the 바로구매 (Buy Now) CTA, focus rings, and active tab indicators.
-- **Indigo Accent** (`#474c98`): A deeper indigo used for emphasized text, active labels, and accent typography across the commerce surface.
-- **Indigo Tint** (`#ededf7`): A pale indigo surface for selected/active chip and filter backgrounds.
+- **Kyobo Blue** (`#5055b1`): The fill of 바로구매, the buy-now action in each row of the weekly bestseller (100 × 38, `#ffffff` label). It is the primary because it is the product's primary action fill: in each row it is the one filled indigo control, and the same fill appears on the error view's 이전페이지 and on a filled action recorded on home. KDS's colour page names this exact value, blue 700 `#5055B1`, as "UI 기본컬러" (the UI base colour) with the Informative / Accent meaning.
+- **Kyobo Blue Pressed** (`#2c307c`): Hover and pressed fill of 바로구매, settled after a 0.2s colour transition.
+- **On Primary** (`#ffffff`): Labels on indigo and grey fills.
 
-### Brand Green (Positive)
-- **Kyobo Green 700** (`#4dac27`): The heritage bird-logo green, documented in KDS as the Positive/Accent semantic — success, emphasis, and brand recall.
-- **Green Dark** (`#195800`): A deep forest green used for bold promotional nav links (상반기결산, 주말특가).
-- **Green Text** (`#278203`): Mid-green for positive/in-stock status text and confirmations.
+### Secondary action
+- **Grey 700** (`#767676`): The fill of 장바구니 in each row; hover `#595959`, pressed `#292929`. The same grey is the muted text colour (unselected category tabs, footer notes).
 
-### Semantic Reds
-- **Hottracks Red** (`#da2128`): KDS "red 700" reserved exclusively for the Hottracks (핫트랙스) sub-brand — never for error.
-- **Negative Red** (`#ec1f2d`): KDS error/negative semantic — serious errors and warnings, used sparingly.
-- **Sale Red** (`#c71e24`): The storefront's discount/sale-price color on product listings.
+### Accent
+- **Blue 800** (`#474c98`): The selected filter of a home rail (bold) and small blue labels on home.
+- **Promo Green** (`#2a760c`) and **Promo Green Dark** (`#195800`): Bold promotional links in the header navigation — `#2a760c` on the portal home, `#195800` on the store and product routes.
 
-### Links & Neutrals
-- **Link Blue** (`#314fb9`): Inline text links on commerce pages.
-- **Ink** (`#000000`): Primary text, headings, and titles — pure black for maximum legibility.
-- **Ink Soft** (`#292929`): Secondary headings and strong body emphasis.
-- **Body Grey** (`#595959`): Standard body and utility-link text (로그인, 회원가입).
-- **Muted Grey** (`#767676`): Tertiary text, inactive tabs, and the neutral cart button background.
+### Neutral & Surface
+- **Ink** (`#000000`): Default text on all three routes, headings and selected category tabs.
+- **Body** (`#595959`): Book introductions in the bestseller rows, top-bar utility links, unselected rail filters.
+- **Surface** (`#f2f2f2`): The round counter button in the floating side bar, and the hover fill of outline buttons and view toggles.
+- **White** (`#ffffff`): Page, view toggles and footer selectors. The body element computes a transparent background, so the page white is the browser canvas.
+- **Hairline** (`#eaeaea`): Book-cover borders and the rules between bestseller rows.
+- **Border** (`#d5d5d5`): The round menu button, footer selectors and the 사업자정보확인 tag.
+- **Border Strong** (`#cccccc`): Outline buttons, the view toggles and the 서비스가입확인 tag.
 
-### Surface & Borders
-- **Canvas White** (`#ffffff`): Page background, card surfaces, and text on indigo/green.
-- **Surface Grey** (`#f2f2f2`): The dominant tinted surface segmenting content zones.
-- **Surface Alt** (`#f7f7f7`): A lighter alternating surface for KDS panels and section bands.
-- **Hairline** (`#eaeaea`): The primary divider/border color given the flat, shadowless system.
-- **Border** (`#d5d5d5`): Standard mid-weight borders on inputs and containers.
-- **Border Strong** (`#cccccc`): Heavier borders on segmented controls and toggles.
+### Documented in KDS, not observed on the captured routes
+KDS's colour page lists the semantic set as blue 700 `#5055B1` (Informative, Accent — "UI 기본컬러, 안내, 강조"), green 700 `#4DAC27` (Positive, Accent), red 700 `#DA2128` (Hottracks primary) and red `#EC1F2D` (Negative), and warns: "핫트랙스 red-700과 부정의 의미 red를 혼동하지 않도록 주의합니다." Only the blue renders on the three captured routes; the green, the two reds and a sale-price red are not machine tokens here.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Primary / Portal & DS**: `NotoSansKR` — the main www.kyobobook.co.kr portal and the design-system site default.
-- **Commerce / Storefront**: `Pretendard` — the store.kyobobook.co.kr catalog and product surfaces.
-- Both are hangul-optimized sans-serifs; the system never mixes a serif into UI chrome.
+- **Official product use**: KDS's typography page states "국문 Noto Sans KR 영문, 숫자는 Roboto를 사용합니다" — Noto Sans KR for Korean, Roboto for Latin letters and numerals. It lists h1 `$font-title-xl` at 32px with a 44px line.
+- **Live surface use**:
+  - The portal home computes `Roboto, "Roboto Fallback", NotoSansKR, "NotoSansKR Fallback", "PingFang SC", "Apple SD Gothic Neo", …` on body and headings. The collector records `Roboto` as the first family on 500 elements (status `system/high`), with its @font-face self-hosted from `contents.kyobobook.co.kr/display/next/ui-welcome/…/_next/static/media/`. A same-day headless read listed Roboto 400/500/700 and NotoSansKR 400/500/700 as loaded. Roboto has no Hangul, so Korean text on home falls through to NotoSansKR; the collector counts only first families and records 0 uses for it.
+  - The store computes `Pretendard, "Pretendard Fallback", sans-serif` (390 uses, `loaded / high`), served from jsDelivr (`orioncactus/pretendard@v1.3.9`).
+  - The product route computes `PretendardNoPreload` (91 uses, `loaded / high`), a self-hosted copy under another family name from `contents.kyobobook.co.kr/display/next/ui-product/…`.
+- **Official distributed font assets**: Pretendard's LICENSE (Kil Hyung-jin) states the SIL Open Font License 1.1. The Google Fonts copies of Roboto ("Copyright 2011 The Roboto Project Authors") and Noto Sans KR (Adobe copyright) also carry the SIL Open Font License 1.1. All three files were opened on 2026-09-30. The identification of Kyobo's served files rests on the declared family names; their name tables were not inspected.
+- **Declared only (no visible use)**: GmarketSans (self-hosted), Do Hyeon, Hi Melody, Jua, Nanum Gothic, Nanum Myeongjo and Nanum Pen Script (Google Fonts) and the metric fallbacks — all 0 observed uses.
+- **Unresolved**: none. The store and product routes render Pretendard although KDS specifies Noto Sans KR and Roboto; both facts are recorded as they are.
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Notes |
-|------|------|------|--------|-------------|-------|
-| Display | NotoSansKR | 40px (2.50rem) | 900 | 1.2 | DS / marketing display ("Kyobobook Design System") |
-| Section Heading | NotoSansKR / Pretendard | 24px (1.50rem) | 700 | 1.4 | Section titles (오늘의 선택, 온라인 주간 베스트) |
-| Sub-section | NotoSansKR | 20px (1.25rem) | 700 | 1.3 | DS nav labels, sub-heads |
-| Promo Nav | NotoSansKR | 16px (1.00rem) | 700 | 1.5 | Highlighted promo nav in dark green |
-| Body | NotoSansKR / Pretendard | 16px (1.00rem) | 400 | 1.5 | Standard reading text |
-| Body Small | Pretendard | 14px (0.88rem) | 400-500 | 1.5 | Dense UI text, nav, button labels |
-| Caption | NotoSansKR | 12px (0.75rem) | 400 | 1.5 | Utility links, metadata |
+| Role | Font | Size | Weight | Line Height | Tracking | Observed on |
+|------|------|------|--------|-------------|----------|-------------|
+| Page Title | Pretendard | 32px | 700 | 44px (1.375) | -0.32px | Store page heading (h4) |
+| Title | Roboto + NotoSansKR / Pretendard | 24px | 700 | 34px (1.42) | -0.24px | Home section headings, store h1 |
+| Error Title | Pretendard | 18px | 700 | 28px (1.56) | -0.18px | Product route error view |
+| Nav Promo | Roboto + NotoSansKR / Pretendard | 16px | 700 | 24px (1.5) | -0.16px | Green header links |
+| Button Large | Pretendard | 16px | 700 | 24px (1.5) | -0.16px | 홈으로 가기, 이전페이지 |
+| Body | all three | 16px | 400 | 24px (1.5) | -0.16px | Document default |
+| Tab | Pretendard | 16px | 400 (500 selected) | 24px (1.5) | -0.16px | Store category tabs |
+| Body Small | Pretendard | 14px | 400 | 22px (1.57) | -0.14px | Book introductions, `#595959` |
+| Button | Pretendard | 14px | 500 | 22px (1.57) | -0.14px | 바로구매, 장바구니 |
+| Label | Roboto + NotoSansKR | 12px | 500 | 18px (1.5) | -0.12px | Blue-800 labels on home |
+| Caption | all three | 12px | 400 | 18px (1.5) | -0.12px | Footer details, utility links |
+| Fine | all three | 10px | 400 | 14px (1.4) | -0.1px | Footer notes |
 
 ### Principles
-- **Two fonts, two surfaces**: NotoSansKR owns the portal and design system; Pretendard owns the storefront. Within a surface the typeface is consistent.
-- **Weight, not color, signals hierarchy**: 700/900 for headings against 400 body; the neutral ink ladder handles the rest.
-- **Dense by design**: a 16px body with 14px UI text supports long, scannable catalog lists — the core reading-room use case.
-- **Color reserved for meaning**: green for promos/positive, red for sale/error, indigo for action — body text stays neutral.
+- **Proportional tracking**: every captured size carries letter-spacing of -1% of the size.
+- **Weight carries hierarchy**: headings and emphasised labels at 700, action labels at 500, reading text at 400; colour stays on the black-grey ladder except for action, selection and promotion.
+- **One family per route**: the portal home is Roboto with NotoSansKR; the store and product routes are Pretendard throughout.
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Buy Now (Primary)**
+**Buy Now (primary)**
 - Background: `#5055b1`
 - Text: `#ffffff`
 - Radius: 8px
 - Padding: 9px 14px
-- Height: 38px
-- Font: 14px Pretendard weight 500
-- Use: Primary purchase CTA (바로구매 / 구매하기) — KDS Primary button, one per content area
+- Height: 38px (100px wide)
+- Font: 14px / 500 / 22px Pretendard, letter-spacing -0.14px
+- Hover: background `#2c307c`
+- Pressed: background `#2c307c`
+- States: focus not measured
+- Use: 바로구매 in every bestseller row
 
-**Add to Cart (Secondary)**
+**Cart (secondary)**
 - Background: `#767676`
 - Text: `#ffffff`
 - Radius: 8px
 - Padding: 9px 14px
 - Height: 38px
-- Font: 14px Pretendard weight 500
-- Use: Secondary action (장바구니) — KDS Secondary button, neutral grey to defer to the primary
+- Font: 14px / 500 / 22px Pretendard
+- Hover: background `#595959`
+- Pressed: background `#292929`
+- Use: 장바구니 above 바로구매 in each row
 
-### Inputs & Forms
+**Outline button**
+- Background: transparent
+- Text: `#000000`
+- Border: 1px solid `#cccccc`
+- Radius: 8px
+- Padding: 9px 14px
+- Height: 38px
+- Font: 14px / 500 / 22px Pretendard
+- Hover: background `#f2f2f2`
+- Pressed: background `#f2f2f2`
+- Use: toolbar 장바구니 and 엑셀로 받기 over the list, 상세보기 in rows; the 38 × 38 찜하기 icon button shares the border
 
-**Integrated Search**
+**View toggle (segmented)**
 - Background: `#ffffff`
 - Text: `#000000`
-- Border: 1px solid `#eaeaea`
-- Radius: 24px
-- Padding: 13px 16px
-- Height: 48px
-- Focus: blue `#5055b1` ring
-- Use: Header integrated search bar — pill-ended, the portal's most prominent input
-
-### Cards & Containers
-
-**Product Card**
-- Background: `#ffffff`
-- Border: 1px solid `#eaeaea`
-- Radius: 8px
-- Use: Book / product card on grid and list views — flat, hairline-separated, no shadow
-
-### Tabs
-
-**Category Tab**
-- Text (inactive): `#767676`
-- Active: `#000000` text + 2px bottom border `#5055b1`
-- Font: 16px weight 400
-- Padding: 0px 14px
-- Height: 42px
-- Use: Catalog category tabs (국내도서 / 외국도서 / eBook / sam / 핫트랙스)
-
-**View Toggle (Segmented)**
-- Background: `#ffffff`
 - Border: 1px solid `#cccccc`
-- Radius: 4px
-- Active: border `#5055b1`
+- Radius: 4px on the outer corners of the pair
+- Padding: 11px
 - Height: 38px
-- Use: List / thumbnail view switch on listing pages
+- Hover / pressed: background `#f2f2f2`
+- Use: list / thumbnail view pair over the bestseller list
 
-### Badges
+**Error-view actions**
+- 이전페이지: `#5055b1` fill, `#ffffff` label, 8px radius, 125 × 50, 16px / 700 / 24px
+- 홈으로 가기: transparent fill, 1px solid `#5055b1` border, `#5055b1` label, same geometry
+- Use: the pair the product route rendered as its error view
 
-**Sale Price**
-- Text: `#c71e24`
-- Radius: 4px
-- Font: 12px weight 700
-- Use: Discount-rate / sale-price label on product listings
+**Round controls**
+- 전체메뉴열기: 44 × 44, transparent, 1px solid `#d5d5d5`, fully round, in the header
+- Side-bar counter: 50 × 50, `#f2f2f2`, fully round
 
-**Positive Status**
-- Text: `#278203`
-- Radius: 4px
-- Font: 12px weight 500
-- Use: Positive / in-stock status pill — green 700 family
+### Tabs & Navigation
+
+**Category tab (store)**
+- Text: `#767676`
+- Padding: 0px 14px
+- Height: 42px (140px wide)
+- Font: 16px / 400 / 24px Pretendard
+- Selected: `#000000` at weight 500
+- Use: category tabs of the weekly bestseller
+
+**Rail filter (home)**
+- Text: `#595959`, 14px / 400 / 22px
+- Selected: `#474c98` at weight 700
+- Use: filters over a home rail
+
+**Promotional links**
+- Text: `#2a760c` (home) or `#195800` (store, product), 16px / 700 / 24px
+- Use: highlighted items in the header navigation
+
+### Inputs
+
+**Integrated search**
+- Scope button: 116 × 48, radius 24px 0 0 24px (the left end of a pill)
+- Input: 395 × 42, padding 13px 16px, 14px / 400 / 22px, `#000000`
+- Use: header search on all three routes
+
+### Cards & Lists
+
+**Book-cover link**
+- Border: 1px solid `#eaeaea`
+- Radius: 16px 16px 16px 0px on 46 captured covers; square on the rest
+- Use: covers in home rails
+
+**Bestseller row**
+- Border: 1px solid `#eaeaea` on top
+- Padding: 36px 0px 0px
+- Use: rows of the weekly bestseller, 984px wide
+
+**Footer controls**
+- Family Site / SNS 바로가기: `#ffffff`, 1px solid `#d5d5d5`, 8px radius, 8px 14px padding, 200 × 40
+- 서비스가입확인: 1px solid `#cccccc`, 4px radius, 24px tall, 12px text; 사업자정보확인: 1px solid `#d5d5d5`, `#595959` text
 
 ---
 
-**Verified:** 2026-06-26 (omd:add-reference CREATE — Tier 1 live inspect, 4 brand-owned surfaces)
-**Tier 1 sources:** https://www.kyobobook.co.kr, https://store.kyobobook.co.kr/bestseller/online/weekly, https://design.kyobobook.co.kr, https://company.kyobobook.co.kr
-**Tier 2 sources:** getdesign.md/kyobobook — not listed (404); styles.refero.design — no Kyobo match on name search
+**Verified:** 2026-09-30 (deterministic collector capture of three public, logged-out Kyobo routes plus a fixed keyboard-probe state read and first-party context)
+**Tier 1 sources:** https://www.kyobobook.co.kr/ ; https://store.kyobobook.co.kr/bestseller/online/weekly ; https://design.kyobobook.co.kr/ (foundation/color, foundation/typography, component/button, voice, brand/principle) ; https://company.kyobobook.co.kr/
+**Tier 2 sources:** getdesign.md/kyobobook (HTTP 200, the name does not appear in the response) and styles.refero.design/?q=kyobobook (HTTP 200, the name appears only as the echoed query), requested 2026-09-30; no Tier 2 value used
 **Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
 ### Spacing System
-- Base unit: ~8px, with a dense small end (4 / 8 / 14 / 16)
-- Scale: 4px, 8px, 14px, 16px, 24px, 32px, 48px
-- Notable: button padding lands at 9px 14px and tab padding at 0 14px — compact hit areas tuned for information-dense pages
+- Actions: 9px vertical, 14px horizontal padding at 38px height
+- Search input: 13px 16px
+- View toggles: 11px on all sides
+- Bestseller rows: 36px top padding above a hairline
+- Frequent spacing values in the capture: 8, 2, 16, 9, 14, 24 and 36px
 
 ### Grid & Container
-- Wide centered content area with a fixed top header (logo + integrated search + utility links)
-- Catalog pages use multi-column product grids with a list/thumbnail toggle
-- Sections separate by a `#f2f2f2` / `#f7f7f7` surface shift and `#eaeaea` hairlines rather than elevation
-- Promotional and best-seller rails sit as horizontally scannable bands
+- The portal home runs a full-width header (logo, integrated search, menu) over banner carousels and horizontally scrolling rails of book covers.
+- The weekly bestseller sets a left column of filters beside a 984px list of rows; each row holds a cover, the title and introduction, and a stacked 장바구니 / 바로구매 pair on the right.
+- The product route's error view centres an 18px heading, a grey explanation and the 홈으로 가기 / 이전페이지 pair.
 
 ### Whitespace Philosophy
-- **Content over chrome**: whitespace exists to let dense book metadata breathe, not for dramatic emptiness
-- **Flat segmentation**: tinted surfaces and hairlines do the structural work; the system is near-shadowless
-- **Scan-first rhythm**: consistent card and row dimensions keep long lists predictable
+- **Dense catalogue, calm chrome**: rows are long and information-heavy; separation comes from hairlines and generous row padding rather than panels.
+- **Flat segmentation**: no captured element carries a shadow.
 
 ### Border Radius Scale
-- Small (4px): segmented toggles, badges
-- Medium (8px): buttons, product cards — the workhorse
-- Large (24px): pill-ended search bar
-- Full (9999px): occasional fully-rounded chips
+- 0px: the default (918 of the recorded radii)
+- 4px: tags and the outer corners of segmented toggles
+- 8px: every action and the footer selectors
+- 16px: book covers (16px 16px 16px 0px)
+- 24px: the left end of the search pill
+- 9999px: round menu and side-bar buttons (Chrome computes `3.35544e+07px`)
 
 ## 6. Depth & Elevation
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text, most surfaces |
-| Tint (Level 1) | `#f2f2f2` / `#f7f7f7` background shift | Section / card separation without elevation |
-| Hairline (Level 2) | `1px solid #eaeaea` (or `#d5d5d5` / `#cccccc`) | Card outlines, dividers, segmented controls |
+| Flat | No shadow | All 981 captured elements |
+| Hairline | 1px solid `#eaeaea` | Covers, row rules |
+| Border | 1px solid `#cccccc` / `#d5d5d5` | Controls and footer tags |
+| Tint | `#f2f2f2` | Side-bar counter, hover fills |
 
-**Shadow Philosophy**: Kyobo's storefront is a near-flat system. Live inspection across the portal, the storefront, and the KDS site returned `box-shadow: none` on virtually every interactive element — buttons, cards, tabs, and search. Depth is communicated through surface tint (`#f2f2f2`, `#f7f7f7`) and a hairline ladder (`#eaeaea` → `#d5d5d5` → `#cccccc`). This is appropriate for a high-density catalog: shadows would add visual noise to pages that already carry dozens of products per screen. When emphasis is needed, the system reaches for the indigo `#5055b1` action color or the green `#4dac27` accent — never elevation.
+**Shadow Philosophy**: every recorded element computes `box-shadow: none`. Emphasis comes from the indigo action fill and weight, not elevation.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use indigo `#5055b1` for the single primary action (Buy Now) — it is the KDS UI base color
-- Keep the cart and secondary actions in neutral grey `#767676` so the primary stays unambiguous
-- Reserve green `#4dac27` / `#278203` for positive and promotional moments only
-- Use clear action-verb CTA labels (-하기, -보기) and separate two choices with a slash "/", per the KDS Voice guide
-- Keep pure black `#000000` and the grey ladder for dense catalog text
-- Separate sections with `#f2f2f2` / `#f7f7f7` surface tint and `#eaeaea` hairlines, not shadows
-- Pair color semantics with text or icons so meaning survives for color-blind users (KDS accessibility rule)
+- Use `#5055b1` for the one primary action in an area (KDS: "한 영역에서는 하나의 행동만 유도해야 합니다"), darkening to `#2c307c` on hover and press
+- Put the secondary action in grey `#767676` beside it
+- Keep text on `#000000`, `#595959` and `#767676`
+- Separate with `#eaeaea` hairlines and `#cccccc` / `#d5d5d5` borders
+- Track every text size at -1% of its size
+- Give actions an 8px radius and tags a 4px radius
+- Write CTAs as action verbs (-하기, -보기), at most 12 characters, with "/" between two choices (KDS Voice)
 
 ### Don't
-- Don't confuse the reds — `#da2128` is Hottracks only, `#ec1f2d` is error, `#c71e24` is sale price
-- Don't spread the indigo action color across many elements — one emphasized action per area
-- Don't add drop shadows for elevation — the system is flat
-- Don't use CTA labels longer than 12 characters (incl. spaces) or abstract wording, per KDS Voice
-- Don't rely on color alone to convey state — always add a label or icon
-- Don't introduce a serif or a third typeface into UI chrome
-- Don't tint body text — keep it on the neutral black/grey ladder
+- Don't add shadows; none of the captured elements has one
+- Don't use more than one filled indigo action per area
+- Don't promote the KDS green or reds into interface colours without the product showing them
+- Don't render Pretendard, Roboto or Noto Sans KR with another face in their place
+- Don't invent a focus style; none was measured
 
 ## 8. Responsive Behavior
 
 ### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <768px | Single column, hamburger nav, search collapses, tab rows limit to 3-4 (KDS MO rule) |
-| Tablet | 768-1024px | 2-3 column product grids, condensed header |
-| Desktop | 1024-1440px | Full multi-column catalog, persistent search, tab rows 3-6 (KDS PC rule) |
+Only the 1440 × 900 desktop viewport was captured. Class names such as `sm:fz-14` show that the pages restyle at a small breakpoint; no breakpoint value was measured.
 
 ### Touch Targets
-- Buy Now / cart buttons at 38px height with 9px 14px padding
-- Search bar at 48px height — the largest, most tappable input
-- Category tabs at 42px height with comfortable horizontal padding
+- Error-view actions: 50px
+- Search scope button: 48px
+- Round menu button: 44 × 44
+- Category tabs: 42px
+- Footer selectors: 40px
+- Row actions, outline buttons and view toggles: 38px
+- Footer tags: 24px
 
 ### Collapsing Strategy
-- Header: full nav + search → hamburger + icon search on mobile
-- Tabs: 3-6 per row on PC compress to 3-4 per row on mobile (KDS-documented)
-- Product grids: multi-column → 2-up → single column
-- Surface tint and hairline separation persist across breakpoints
+- Not captured; nothing is claimed about how the layout collapses.
 
 ### Image Behavior
-- Book covers are the primary imagery and carry no shadow at any size, consistent with the flat system
-- Product cards maintain an 8px radius across breakpoints
+- Book covers sit in 1px `#eaeaea` frames without shadow; 46 home-rail covers take the 16px 16px 16px 0px shape.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary action (Buy Now): Kyobo Blue (`#5055b1`)
-- Secondary action (Cart): Muted Grey (`#767676`)
-- Positive / promo: Green (`#4dac27`), Green Dark (`#195800`), Green Text (`#278203`)
-- Sale price: Sale Red (`#c71e24`)
-- Error: Negative Red (`#ec1f2d`); Hottracks: `#da2128`
-- Link: Link Blue (`#314fb9`); Indigo accent: `#474c98`
-- Background: White (`#ffffff`); Surface: `#f2f2f2` / `#f7f7f7`
-- Text: Ink `#000000` / `#292929` / `#595959` / `#767676`
-- Hairline / borders: `#eaeaea` / `#d5d5d5` / `#cccccc`
+- Primary action: `#5055b1`, hover/pressed `#2c307c`, label `#ffffff`
+- Secondary action: `#767676`, hover `#595959`, pressed `#292929`
+- Text: `#000000`, `#595959`, `#767676`; selected rail filter `#474c98`
+- Promotional links: `#2a760c` (home) / `#195800` (store)
+- Lines: `#eaeaea` hairline, `#d5d5d5` and `#cccccc` borders; tint `#f2f2f2`
 
 ### Example Component Prompts
-- "Create a product card: white `#ffffff` background, 1px solid `#eaeaea` border, 8px radius, no shadow. Title 16px Pretendard weight 400 in `#000000`, price in `#c71e24` 12px weight 700. Below it a Buy Now button (`#5055b1` bg, white text, 8px radius, 9px 14px padding, 14px/500) and a grey Cart button (`#767676` bg)."
-- "Build a category tab row: inactive labels `#767676` 16px/400, active label `#000000` with a 2px `#5055b1` bottom border. 42px height."
-- "Design an integrated search bar: white background, 1px `#eaeaea` border, 24px pill radius, 48px height, 13px 16px padding, focus ring `#5055b1`."
-- "Lay out a section: `#f2f2f2` surface band, 24px heading weight 700 in `#000000`, cards in white with `#eaeaea` hairlines. No shadows."
+- "Create a bestseller row: 1px `#eaeaea` top rule, 36px top padding, cover on the left, 14px Pretendard introduction in `#595959` with -0.14px tracking, and on the right a stacked pair of 100 × 38 buttons with 8px radius and 9px 14px padding: 장바구니 in `#767676` (hover `#595959`, pressed `#292929`) above 바로구매 in `#5055b1` (hover and pressed `#2c307c`), white 14px / 500 labels, 0.2s colour transition."
+- "Build category tabs: 140 × 42 cells, 16px Pretendard at weight 400 in `#767676`; the selected tab `#000000` at weight 500."
+- "Build an outline toolbar button: transparent, 1px solid `#cccccc`, 8px radius, 9px 14px padding, 38px tall, 14px / 500 black label; hover and pressed fill `#f2f2f2`."
 
 ### Iteration Guide
-1. Indigo `#5055b1` is the single primary-action color; grey `#767676` carries the secondary
-2. Green (`#4dac27` / `#278203`) and reds (`#da2128` / `#ec1f2d` / `#c71e24`) are strictly semantic — never decorative
-3. No shadows — separate with `#f2f2f2` / `#f7f7f7` tint and `#eaeaea` hairlines
-4. Geometry: 8px buttons/cards, 4px toggles, 24px search pill
-5. Body text stays on the black/grey ladder; weight, not color, drives hierarchy
-6. NotoSansKR on the portal/DS, Pretendard on the storefront
+1. One indigo `#5055b1` action per area; grey `#767676` for the partner
+2. Black and grey text; colour only for action, selection and promotion
+3. Hairlines and borders instead of shadows
+4. 8px actions, 4px tags, 16px 16px 16px 0px covers
+5. -1% tracking at every size
+6. Pretendard on commerce routes; Roboto with NotoSansKR on the portal, as KDS specifies
 
 ---
 
 ## 10. Voice & Tone
 
-Kyobo's voice is documented first-hand in the KDS Voice guide: a consistent, single-person voice that speaks in Korean **구어체 (해요체)** — a soft, friendly, uniformly respectful colloquial register — switching to a more formal 문어체 only for policy and disclaimers to convey stability and trust. The KDS states five basic principles for the voice: **간결하고 명확한** (concise and clear), **책임감 있는** (responsible), **공감하는** (empathetic), **존중하는** (respectful), and **동기부여하는** (motivating). The guiding rule "한 문장에 한 가지 정보만" (one piece of information per sentence) keeps a dense catalog readable.
+Kyobo's voice is written down in the KDS Voice guide. It uses 구어체 (해요체), addressing customers respectfully and warmly — "교보문고는 구어체(해요체)로 고객을 두루 높이면서 부드럽고 친근하게 상호작용합니다" — and switches to 문어체 for negative statements and policy, to give stability and trust. Its five principles are 간결하고 명확한 (one piece of information per sentence), 책임감 있는, 공감하는, 존중하는 and 동기부여하는. The tone attributes are 위트있는, 고객을 잘 아는, 정돈된, 다양한, 지혜로운, 포용적인, 영감이 가득한 and 고급스러운.
 
 | Context | Tone |
 |---|---|
-| CTA buttons | Action verbs (-하기, -보기); two options separated by a slash "/"; max 12 characters incl. spaces (KDS rule) |
-| Product / catalog copy | Concise and clear — one fact per line; official product and service names only |
-| Empty states | State the situation plainly and offer a meaningful next path with a clear CTA (KDS Empty Page rule) |
-| Policy / disclaimers | Formal 문어체 for stability and trust |
-| Promotional rails | Warmer, motivating register — sparks curiosity and repeat visits |
+| CTA buttons | Action verbs (-하기, -보기); two choices separated by "/"; no more than 12 characters including spaces (KDS) |
+| Product and service names | Only the official names Kyobo has set (KDS 표기규칙) |
+| Empty pages | State the situation briefly and give a clear CTA to a meaningful next path (KDS) |
+| Policy and negative statements | 문어체 |
+| Everyday copy | 해요체, friendly and concise |
 
-**Tone attributes** (KDS): 위트있는 (witty), 고객을 잘 아는 (knows the customer), 정돈된 (organized), 다양한 (diverse), 지혜로운 (wise), 포용적인 (inclusive), 영감이 가득한 (inspiring), 고급스러운 (premium).
+**Voice samples (verbatim, opened 2026-09-30):**
+- "교보문고 | 대한민국 최고의 도서쇼핑몰" — portal page title.
+- "온라인 주간 베스트 | 전체 - 교보문고" — store page title.
+- "바로구매", "장바구니", "상세보기", "엑셀로 받기" — row and toolbar actions on the weekly bestseller.
+- "홈으로 가기", "이전페이지" — the product route's error view.
+- "사용자 경험을 가치있게, 고객의 삶을 흥미롭게" — KDS mission line.
 
-**Forbidden register**: abstract CTAs with no clear action, unofficial/ad-hoc product names, CTA labels over 12 characters, messages that don't reveal the next path, and color-only state cues without text.
+**Forbidden register** (KDS): CTA labels over 12 characters, abstract wording without a clear action, unofficial product names, and messages that do not show the next path.
 
 ## 11. Brand Narrative
 
-Kyobo Book Centre (교보문고) opened its flagship store beneath the Kyobo Building in Gwanghwamun, Seoul, on **June 1, 1980**, founded by **신용호 (Shin Yong-ho)** — the founder of Kyobo Life Insurance (교보생명), of which the bookstore is an affiliate. From the start it was conceived not as a profit center but as a cultural institution: the founder's instruction was that the store welcome everyone, including those who came only to read and not to buy. That ethos is literally inscribed in the company's most famous motto — **"사람은 책을 만들고 책은 사람을 만든다"** (People make books, and books make people) — and lives on publicly in the **광화문글판**, the giant seasonal poetry banner on the Gwanghwamun building that has become a Seoul landmark since 1991.
+Kyobo Book Centre's history is one of bringing books to people by whatever channel the time allowed. After the company was founded in December 1980 and the Gwanghwamun store opened in 1981, it added mail order over an online information service in 1989 and a membership book club in 1993, and relaunched as 인터넷교보문고 in 1999. It later introduced the 북마스터 reading consultant (2000) and Korea's first eBook membership service, sam (2013). More recent entries on the company page are a combined Kyobo–Hottracks mall (2022), the merger of Kyobo Book Centre and Kyobo Hottracks into one company (July 2023), a POD service renamed 바로출판, and 우리동네 바로배송, a same-area delivery service run with local bookstores (both November 2023). Its stated values — challenge and creativity, customer focus, honesty and diligence — sit beside services such as 바로드림 and 오늘배송.
 
-Over four decades Kyobo grew into Korea's largest bookstore chain — a nationwide network of cavernous reading-room stores plus the dominant online bookshop, the eBook platform, the **sam** subscription service, and the **핫트랙스 (Hot Tracks)** music/stationery sub-brand. The digital product mirrors the stores: vast inventory, a culture of browsing, and an institutional calm.
-
-What Kyobo's design refuses, visible in its system: the loud, urgency-driven chrome of discount-first commerce. What it embraces, per the official KDS mission — **"사용자 경험을 가치있게, 고객의 삶을 흥미롭게"** (make the user experience valuable, make customers' lives interesting) — is a content-first interface where books carry the color, the indigo action is singular and clear, and the heritage green signals trust earned over forty years.
+KDS describes what the online store should feel like. The principle page sets a new direction for online Kyobo, "꿈을 키우는 세상에서 꿈이 하나되는 공간으로". It makes shapes drawn from books, records and eBooks the visual motif of the UX, and asks that information flow naturally, "책을 읽는 것처럼". The captured product follows the documented core colour — `#5055b1` on the buy-now action — and keeps the rest of the chrome black, grey and flat so the covers carry the colour.
 
 ## 12. Principles
 
-1. **Content is the hero, chrome is neutral.** *UI implication:* keep the chassis white/grey and the ink neutral so book covers and titles carry all the color.
-2. **One action per area.** The KDS Button guide states a single area should drive one action. *UI implication:* the indigo `#5055b1` Buy Now is the only emphasized CTA; cart and the rest stay neutral grey.
-3. **Color is semantic, never decorative.** KDS defines blue (informative/action), green (positive), and reds (Hottracks vs error). *UI implication:* never reuse a semantic color for ornament, and never confuse the three reds.
-4. **Flat and dense by design.** *UI implication:* no shadows; separate with surface tint and hairlines so high-density catalog pages stay calm.
-5. **Speak clearly, one fact at a time.** From the KDS Voice guide. *UI implication:* concise action-verb CTAs, one piece of information per sentence, meaningful empty states.
-6. **Accessible by default.** KDS requires color cues to be paired with text/icons and contrast to meet AA. *UI implication:* state is never color-only.
-7. **Trust earned over decades.** *UI implication:* the heritage green and institutional restraint signal a 40-year cultural institution, not a flash-sale shop.
+1. **One action per area.** KDS: "한 영역에서는 하나의 행동만 유도해야 합니다." *UI implication:* one filled `#5055b1` action per row; the partner action is grey and the rest are outlines.
+2. **Colour is semantic.** KDS gives blue, green and two reds distinct meanings and warns against confusing the Hottracks red with the negative red. *UI implication:* keep the chrome neutral and use colour for action and state.
+3. **Read like a book.** KDS asks for a natural flow of text and information "책을 읽는 것처럼". *UI implication:* long, calm lists with consistent rows and proportional tracking.
+4. **Say one thing at a time.** From the KDS Voice guide. *UI implication:* short action-verb CTAs and one fact per sentence.
+5. **Flat and legible.** *UI implication:* hairlines and borders instead of elevation. (An editorial reading of the captured routes, not a Kyobo statement.)
 
 ## 13. Personas
 
 *Personas below are fictional archetypes informed by publicly observable Kyobo user segments (Korean book buyers, students, gift shoppers, eBook readers), not individual people.*
 
-**김도윤, 34, 서울.** A knowledge worker who buys both print and eBooks. Browses the best-seller and PICKS rails the way he used to wander the Gwanghwamun store. Values that the Buy Now action is always the same indigo button — he never has to hunt for the next step.
+**김도윤, 34, 서울.** A knowledge worker who buys both print and eBooks. Browses the weekly bestseller and home rails the way he used to wander a Kyobo store. Values that 바로구매 is always the same indigo button.
 
-**이서연, 22, 대전.** A university student comparing textbook prices and discounts. Relies on the clear sale-red pricing and the list/thumbnail toggle to scan dozens of editions quickly. Trusts Kyobo because the interface is calm and never pressures her.
+**이서연, 22, 대전.** A university student comparing editions before buying textbooks. Switches between the list and thumbnail views to scan dozens of titles quickly, and adds several to the cart at once from the toolbar.
 
-**박민재, 45, 부산.** A parent buying children's books and stationery from Hot Tracks. Appreciates that the catalog is dense but legible and that promos are clearly marked in green rather than shouting. Reads the 광화문글판 line every season and feels the brand stands for something.
+**박민재, 45, 부산.** A parent buying children's books and stationery from the combined Kyobo–Hottracks mall. Appreciates that the catalogue is dense but legible and that promotions are marked in green rather than shouting.
 
 ## 14. States
 
-| State | Treatment |
+Only these states were observed on the three captured routes; nothing else is specified here.
+
+| State | Observation |
 |---|---|
-| **Empty (no search results)** | White canvas, a concise plain-language line stating the situation, and a clear CTA to a meaningful next path (KDS Empty Page rule). No clutter. |
-| **Empty (cart / wishlist)** | Neutral grey `#767676` line explaining the empty state plus a path back to browsing. Calm, honest. |
-| **Loading (catalog fetch)** | Skeleton rows/cards at final dimensions on `#f2f2f2` surface, 8px radius, flat pulse — no shadow shimmer, consistent with the shadowless system. |
-| **Input — Focused** | Border shifts to indigo `#5055b1` (KDS Input Focused state). |
-| **Input — Error** | Field-level message in negative red `#ec1f2d` describing what is invalid (KDS Error state); never color alone. |
-| **Input — Success** | Positive cue in green `#278203` confirming valid format (KDS Success state). |
-| **Sale / discount** | Price shown in sale red `#c71e24` with the discount rate; the original price struck through in muted grey. |
-| **Disabled** | Reduced-opacity surface with muted `#767676` label; the indigo action fades rather than switching hue. |
-| **Positive / in-stock** | Green `#278203` status text or pill, paired with a label so the meaning is not color-only. |
+| **Hover / pressed (바로구매)** | `#5055b1` → `#2c307c`, settled after a 0.2s transition (probe). |
+| **Hover / pressed (장바구니)** | `#767676` → `#595959` on hover, `#292929` on press (probe). |
+| **Hover / pressed (outline buttons, view toggle)** | Transparent or `#ffffff` → `#f2f2f2` (probe). |
+| **Selected** | Store category tab `#000000` at weight 500; home rail filter `#474c98` at weight 700 (rest values). |
+| **Error view** | The product route rendered an 18px heading, a grey `#767676` explanation and the 홈으로 가기 / 이전페이지 pair. |
+| **Focus** | Not measured: the probe ran with `--no-focus` and the collector's pseudo-state pass stalled on all three routes. |
+
+KDS documents Default, Hover and Disabled for its button types; the disabled look was not observed and is not specified. Empty, loading and success states were not captured.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, focus ring |
-| `motion-standard` | 200ms | Tab switch, dropdown, card/section reveal |
-| `motion-slow` | 320ms | Page-level transitions, rail scroll |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — dropdowns, panels, cards |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions, tab indicator |
-
-**Motion rules**: Motion is functional and quiet, matching the flat, content-first aesthetic. The active tab's `#5055b1` underline slides between tabs at `motion-standard / ease-standard`; buttons respond to press with a subtle opacity/scale shift; catalog results fade in from below at `motion-standard / ease-enter`. No bounce or spring — a 40-year reading-room institution signals steadiness, not playfulness. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant while the storefront stays fully functional.
+The probe read the transition on the bestseller controls: `color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to 0.2s cubic-bezier(0.4, 0, 0.2, 1)` on 바로구매, 장바구니, the outline buttons and the view toggle, so their fills change over 200ms. Nothing else about motion (carousels, banners, rails) was measured; treat it as unspecified and honour `prefers-reduced-motion` in any build.
 
 <!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-26) via playwright getComputedStyle on four brand-owned surfaces:
-- https://www.kyobobook.co.kr — portal, NotoSansKR, neutral chassis, integrated search bar
-- https://store.kyobobook.co.kr/bestseller/online/weekly — storefront, Pretendard, 바로구매 #5055b1 / 장바구니 #767676 / sale #c71e24 / green #278203
-- https://design.kyobobook.co.kr — official Kyobobook Design System (KDS): Foundation/Color, Component (Button/Input/Chip/Tab), Voice
-- https://company.kyobobook.co.kr — corporate site: mission and core values
-
-KDS Foundation/Color tokens (verbatim from the live DS page):
-- blue 700 #5055B1 — "UI 기본컬러", Informative/Accent (primary UI color)
-- green 700 #4DAC27 — Positive/Accent (success)
-- red 700 #DA2128 — Hottracks primary
-- red #EC1F2D — Negative/error ("핫트랙스 red-700과 부정의 의미 red를 혼동하지 않도록 주의")
-
-KDS Voice (verbatim from https://design.kyobobook.co.kr/voice):
-- 구어체(해요체) single consistent voice; formal 문어체 for policy
-- Five principles: 간결하고 명확한 / 책임감 있는 / 공감하는 / 존중하는 / 동기부여하는
-- Tone attributes: 위트있는 / 고객을 잘 아는 / 정돈된 / 다양한 / 지혜로운 / 포용적인 / 영감이 가득한 / 고급스러운
-- CTA rule: 동작 동사(-하기/-보기), slash "/" for two choices, max 12 chars incl. spaces
-- Empty Page rule: state the situation concisely + clear CTA to a meaningful path
-
-KDS mission (https://design.kyobobook.co.kr): "사용자 경험을 가치있게, 고객의 삶을 흥미롭게".
-Company core values (https://company.kyobobook.co.kr): 도전과 창의 / 고객중심 / 정직과 성실.
-
-Brand narrative (§11): Kyobo Book Centre opened in Gwanghwamun, Seoul on 1980-06-01, founded by
-Shin Yong-ho (founder of Kyobo Life Insurance); motto "사람은 책을 만들고 책은 사람을 만든다";
-광화문글판 since 1991; sub-brands sam (eBook subscription) and 핫트랙스 (Hot Tracks). These are
-widely documented public facts; specific founding details beyond the live sites are general public
-knowledge, not directly quoted from a verified Kyobo statement in this turn.
-
-Personas (§13) are fictional archetypes informed by publicly observable Kyobo user segments.
-Names are illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "content is the hero, chrome is neutral", "books carry the color")
-are editorial readings connecting Kyobo's observed design and stated KDS principles to its
-positioning, not directly sourced Kyobo statements.
+Sources — 2026-09-30 promotion to Verified v2
+- Tokens and §4: artifacts/reference-evidence/kyobobook.json (capturedAt 2026-09-30T08:54:52Z), deterministic collector, 1440x900, logged out: www.kyobobook.co.kr, store.kyobobook.co.kr/bestseller/online/weekly, product.kyobobook.co.kr/detail/S000221463512 (error view). States: fixed keyboard probe raw docs/research/2026-09-29-growth/raw/kyobobook-states-bestseller.json (config kyobobook-cfg-bestseller.json).
+- §1, §2 (KDS set), §3, §10, §11, §12: design.kyobobook.co.kr (home, foundation/color, foundation/typography, component/button, voice, brand/principle) and company.kyobobook.co.kr, opened 2026-09-30.
+- §3 licences: the Pretendard LICENSE and the Google Fonts OFL files for Roboto and Noto Sans KR, opened 2026-09-30.
+- Labels of the error-view pair and the menu button come from a same-day headless read; the bundle's text lengths (6, 5) match.
+- Personas are fictional archetypes. Interpretive readings are editorial.
 -->

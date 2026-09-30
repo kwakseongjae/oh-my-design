@@ -368,6 +368,88 @@
         "https://studio.zepeto.me/ko",
         "https://studio.zepeto.me/ko/products/world"
       ]
+    },
+    "42dot": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://42dot.ai/ko",
+        "https://42dot.ai/ko/company/about",
+        "https://42dot.ai/ko/stories/blog-news"
+      ]
+    },
+    "airbridge": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.airbridge.io/ko",
+        "https://www.airbridge.io/ko/pricing",
+        "https://www.airbridge.io/ko/product/deep-linking"
+      ]
+    },
+    "codeit": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.codeit.kr/",
+        "https://www.codeit.kr/explore",
+        "https://www.codeit.kr/subscription"
+      ]
+    },
+    "dealicious": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://dealicious.kr/",
+        "https://dealicious.kr/ir-center",
+        "https://dealicious.kr/career"
+      ]
+    },
+    "kbpay": {
+      "maxRoutes": 4,
+      "routes": [
+        "https://card.kbcard.com/SVC/DVIEW/HSCMCXPRISVC0127",
+        "https://card.kbcard.com/CMN/DVIEW/HOAMCXPRIZZC0002",
+        "https://card.kbcard.com/SVC/DVIEW/HSCMCXPRISVC0128",
+        "https://card.kbcard.com/SVC/DVIEW/HSCMCXPRISVC0130"
+      ]
+    },
+    "kyobobook": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.kyobobook.co.kr/",
+        "https://store.kyobobook.co.kr/bestseller/online/weekly",
+        "https://product.kyobobook.co.kr/detail/S000221463512"
+      ]
+    },
+    "mildang": {
+      "maxRoutes": 4,
+      "routes": [
+        "https://www.ihateflyingbugs.com/",
+        "https://www.mildang.kr/",
+        "https://www.mildang.kr/service/",
+        "https://www.ihateflyingbugs.com/mildang-pt/"
+      ]
+    },
+    "shiftup": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://shiftup.co.kr/",
+        "https://shiftup.co.kr/games/games.php",
+        "https://shiftup.co.kr/recruit/recruit.php?searchkey=&category=0"
+      ]
+    },
+    "stibee": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://stibee.com/",
+        "https://stibee.com/pricing",
+        "https://stibee.com/feature/email"
+      ]
+    },
+    "tabling": {
+      "maxRoutes": 3,
+      "routes": [
+        "https://www.tabling.co.kr/",
+        "https://www.tabling.co.kr/top100",
+        "https://www.tabling.co.kr/restaurant/fz22jjovyhauux30a95qh8"
+      ]
     }
   }
 }

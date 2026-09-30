@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 255,
-  "sources": 1487,
+  "references_with_verification_v2": 265,
+  "sources": 1577,
   "sources_by_kind": {
     "brand-asset": 78,
-    "license": 89,
-    "official-doc": 616,
-    "product-surface": 704
+    "license": 102,
+    "official-doc": 642,
+    "product-surface": 755
   },
   "references": {
     "104": {
@@ -197,6 +197,54 @@
         }
       ]
     },
+    "42dot": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "42dot-probe-about",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "42dot.ai"
+        },
+        {
+          "id": "42dot-probe-blog",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "42dot.ai"
+        },
+        {
+          "id": "asta-sans-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "asta-sans-repo",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "github.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "42dot.ai"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "42dot.ai"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "42dot.ai"
+        }
+      ]
+    },
     "ably": {
       "checked": "2026-09-29",
       "claims": 0,
@@ -338,6 +386,66 @@
           "kind": "official-doc",
           "captured": "2026-07-12",
           "host": "news.airbnb.com"
+        }
+      ]
+    },
+    "airbridge": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "ab180-about",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.ab180.co"
+        },
+        {
+          "id": "ab180-engineering",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "engineering.ab180.co"
+        },
+        {
+          "id": "ab180-recruit",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "recruit.ab180.co"
+        },
+        {
+          "id": "airbridge-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.airbridge.io"
+        },
+        {
+          "id": "airbridge-probe-pricing",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.airbridge.io"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.airbridge.io"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.airbridge.io"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.airbridge.io"
         }
       ]
     },
@@ -1619,6 +1727,72 @@
         }
       ]
     },
+    "codeit": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "codeit-careers",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "careers.codeit.com"
+        },
+        {
+          "id": "codeit-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.codeit.kr"
+        },
+        {
+          "id": "codeit-probe-sub",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.codeit.kr"
+        },
+        {
+          "id": "codeit-sprint",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "sprint.codeit.kr"
+        },
+        {
+          "id": "codeit-teams",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.codeit.kr"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "spoqa-han-sans-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.codeit.kr"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.codeit.kr"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.codeit.kr"
+        }
+      ]
+    },
     "cohere": {
       "checked": "2026-07-13",
       "claims": 0,
@@ -2018,6 +2192,72 @@
           "kind": "official-doc",
           "captured": "2026-07-13",
           "host": "policy.datarize.ai"
+        }
+      ]
+    },
+    "dealicious": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "dealicious-introduction",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "dealicious.kr"
+        },
+        {
+          "id": "dealicious-people-culture",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "dealicious.kr"
+        },
+        {
+          "id": "dealicious-probe-career",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "dealicious.kr"
+        },
+        {
+          "id": "dealicious-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "dealicious.kr"
+        },
+        {
+          "id": "dealicious-probe-ir",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "dealicious.kr"
+        },
+        {
+          "id": "dealicious-services",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "dealicious.kr"
+        },
+        {
+          "id": "roboto-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "dealicious.kr"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "dealicious.kr"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "dealicious.kr"
         }
       ]
     },
@@ -4379,6 +4619,42 @@
         }
       ]
     },
+    "kbpay": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "kbpay-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "card.kbcard.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "card.kbcard.com"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "card.kbcard.com"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "card.kbcard.com"
+        },
+        {
+          "id": "surface-surface-4",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "card.kbcard.com"
+        }
+      ]
+    },
     "kia": {
       "checked": "2026-09-30",
       "claims": 0,
@@ -4712,6 +4988,90 @@
           "kind": "license",
           "captured": "2026-07-13",
           "host": "github.com"
+        }
+      ]
+    },
+    "kyobobook": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "kds-button",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "design.kyobobook.co.kr"
+        },
+        {
+          "id": "kds-color",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "design.kyobobook.co.kr"
+        },
+        {
+          "id": "kds-principle",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "design.kyobobook.co.kr"
+        },
+        {
+          "id": "kds-typography",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "design.kyobobook.co.kr"
+        },
+        {
+          "id": "kds-voice",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "design.kyobobook.co.kr"
+        },
+        {
+          "id": "kyobo-company",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "company.kyobobook.co.kr"
+        },
+        {
+          "id": "kyobobook-probe-bestseller",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "store.kyobobook.co.kr"
+        },
+        {
+          "id": "notosanskr-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "roboto-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.kyobobook.co.kr"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "store.kyobobook.co.kr"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "product.kyobobook.co.kr"
         }
       ]
     },
@@ -5420,6 +5780,60 @@
           "kind": "license",
           "captured": "2026-07-13",
           "host": "learn.microsoft.com"
+        }
+      ]
+    },
+    "mildang": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "mildang-blog",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "blog.naver.com"
+        },
+        {
+          "id": "mildang-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.mildang.kr"
+        },
+        {
+          "id": "mildang-probe-service",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.mildang.kr"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.ihateflyingbugs.com"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.mildang.kr"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.mildang.kr"
+        },
+        {
+          "id": "surface-surface-4",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.ihateflyingbugs.com"
         }
       ]
     },
@@ -7865,6 +8279,84 @@
         }
       ]
     },
+    "shiftup": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "roboto-condensed-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "shiftup-about",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "shiftup.co.kr"
+        },
+        {
+          "id": "shiftup-culture",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "shiftup.co.kr"
+        },
+        {
+          "id": "shiftup-governance",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "shiftup.co.kr"
+        },
+        {
+          "id": "shiftup-news",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "shiftup.co.kr"
+        },
+        {
+          "id": "shiftup-probe-games",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "shiftup.co.kr"
+        },
+        {
+          "id": "shiftup-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "shiftup.co.kr"
+        },
+        {
+          "id": "shiftup-probe-recruit",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "shiftup.co.kr"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "shiftup.co.kr"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "shiftup.co.kr"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "shiftup.co.kr"
+        }
+      ]
+    },
     "shinhanbank": {
       "checked": "2026-07-13",
       "claims": 0,
@@ -8381,6 +8873,54 @@
         }
       ]
     },
+    "stibee": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "stibee-probe-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "stibee.com"
+        },
+        {
+          "id": "stibee-probe-pricing",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "stibee.com"
+        },
+        {
+          "id": "stibee-team",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "team.stibee.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "stibee.com"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "stibee.com"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "stibee.com"
+        }
+      ]
+    },
     "storytel": {
       "checked": "2026-09-26",
       "claims": 0,
@@ -8570,6 +9110,66 @@
           "kind": "license",
           "captured": "2026-07-13",
           "host": "github.com"
+        }
+      ]
+    },
+    "tabling": {
+      "checked": "2026-09-30",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-09-30",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.tabling.co.kr"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.tabling.co.kr"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.tabling.co.kr"
+        },
+        {
+          "id": "tabling-ad",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "ad.tabling.co.kr"
+        },
+        {
+          "id": "tabling-biz",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "b2b.tabling.co.kr"
+        },
+        {
+          "id": "tabling-notice",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "www.tabling.co.kr"
+        },
+        {
+          "id": "tabling-probe-restaurant",
+          "kind": "product-surface",
+          "captured": "2026-09-30",
+          "host": "www.tabling.co.kr"
+        },
+        {
+          "id": "tabling-terms",
+          "kind": "official-doc",
+          "captured": "2026-09-30",
+          "host": "info.tabling.co.kr"
         }
       ]
     },
