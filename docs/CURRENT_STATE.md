@@ -433,6 +433,7 @@
   - 수정: 상세의 selectPrimaryColor 순서(primary → brand → primary_color)를 그대로 따른다. 로컬에서 대표색이 있는 432곳 전부 목록=상세를 확인했고(불일치 0), 카드 스크린샷과 웹 테스트 1065건도 통과했다. **사이트 반영은 오너 GO가 필요하다.**
 - **완료 — 수집기 시간 제한 (`2d823a78`).** 단계(90초)·경로(300초)·전체(900초) 제한을 둔다. 멈춘 상태 수집 단계만 미측정으로 기록하고 기본 스타일은 살린다. greeting은 100초 만에 표면 3곳을 캡처했지만 coverage 28이라 보류를 유지한다(사유가 정확해졌다). goorm 회귀 테스트는 동일하다.
 - **실수 재발·차단 (18:10).** P4를 띄우며 P3 스크립트(쌍 목록이 코드에 고정)에 args를 넘겨 재실행했다. 즉시 중지했고 피해는 0이다. 재발 방지로, args가 없으면 실행을 거부하는 인자 전용 스크립트 `kr-partial-wave`로 교체했다.
+- **완료 — 그리드 대표색 수정 사이트 반영 (18:20, main `18ae2f62`).** 오너 GO. 프로덕션 배포 6755494055 성공. 라이브 `/api/references`에서 kakao #fee500, naver #03c75a, stripe #635bff, 11st #ff0038, hwahae #3d3d3d 확인.
 - **진행 중 — 웨이브 P4 (18:12~):** 42dot·stibee / kbpay·mildang / kyobobook·tabling / airbridge·protopie / shiftup·dealicious / drdiary·codeit.
 - **다음.**
   1. ~~저작 E1~~ (완료).
