@@ -487,7 +487,7 @@
     - ikala: ikala.ai가 봇 차단이라 다시 출처를 달 수 없다.
 - **오늘 KR partial 누계: 68곳 승격(227→295).**
 - **완료 — 사이트 반영 (22:50, main `d46179d2`).** 오너 GO. P4~P7 40곳 + 수집기 개선. 프로덕션 배포 성공. 라이브 확인: greeting·danawa·pozalabs·/builder 200, danawa #2070eb, protopie #8169ff, pozalabs #000000.
-- **완료 — kakaopay 도메인 분리 수정 (23:10, `c8b92c1a` 수집기 SPA 대기·빈 표면 제외, `888ee7f3`).** kakaopay.com 비어 있지 않은 표면 4곳, coverage 87. kakaocorp 근거 67개 클레임을 제거하고 자사 근거 128개로 교체했다. 대표색 `#ffeb00`은 /brand 타임라인 마커 16개·로고와 홈 버튼 1개에서 확인했다(실측 원자료 17회, `raw/kakaopay-states-brand-yellow.json`). verify 27/27. **사이트 반영 GO 대기.**
+- **완료 — kakaopay 도메인 분리 수정 (23:10, `c8b92c1a` 수집기 SPA 대기·빈 표면 제외, `888ee7f3`).** kakaopay.com 비어 있지 않은 표면 4곳, coverage 87. kakaocorp 근거 67개 클레임을 제거하고 자사 근거 128개로 교체했다. 대표색 `#ffeb00`은 /brand 타임라인 마커 16개·로고와 홈 버튼 1개에서 확인했다(실측 원자료 17회, `raw/kakaopay-states-brand-yellow.json`). verify 27/27. **사이트 반영 완료(23:20, main `e81fbc9a`)** — 라이브 확인: 새 잉크 `#060b11` ×80, kakaocorp는 그룹 소개 문맥으로만 4회.
 
 - **다음.**
   1. ~~저작 E1~~ (완료).
