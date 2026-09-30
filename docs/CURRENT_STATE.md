@@ -477,6 +477,7 @@
     - getyourguide: .de 운영 주체를 확인하지 못했다(낮은 위험).
   - 앞의 세 건은 P7에 넣었다.
 - **오늘 KR partial 누계: 59곳 승격(227→286).** 보류 5곳(ssg·cafe24 봇 차단, tellingme·medibloc, +humanscape는 P7에서 처리).
+- **중단·재개:** P7 에이전트 6개가 20:55에 사용량 한도로 전부 멈췄다(22:10 초기화). 남은 것은 greencar·postype 번들 2개뿐이고, 재캡처 때 덮어쓴다. 22:12에 같은 목록으로 재개했다.
 - **진행 중 (20:52~): 웨이브 P7** — kakaopay·ikala 감사 수정 / humanscape·danawa / idus·nota / queenit·hackle / rebellions·portone / greencar·postype.
 - **사이트 반영 대기:** P4 10 + P5 11 + P6 10 = 31곳, 수집기 개선(사이트 영향 없음).
 
