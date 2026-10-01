@@ -70,6 +70,24 @@ act_handoff         {kind, surface, reference?}    export/prompt/install handoff
 ```
 `channel` on `ds_detail_view` = bucketed referrer enum (`direct|search|social|ai|referral|internal`), NOT the raw referrer.
 
+**Item-page placement (2026-10-01, IA decision D2).** Landing rows and search
+now open `/design-systems/[id]` instead of `/builder`. No event was renamed and
+no dimension added:
+- landing → detail: `ds_detail_open {reference, source}` with `source` =
+  `home_top` (most-selected row), `home_preview` (preview card) or
+  `home_search` (search box); `/` and `/ko` share these values. `source` is
+  sent as `event_source` by `lib/gtag.ts`. The directory grid keeps `directory`.
+- every hand-off on the detail page lives in one `#use` block, one control per
+  action: Copy/Download → `ds_export` + `act_handoff(surface=ref_detail)`;
+  install command / first prompt → `act_install_copy` / `act_prompt_copy`
+  (`surface=ref_detail`, formerly the sticky bottom bar); Raw .md →
+  `ds_raw_md_open`; Customize → `ds_open_in_builder`, then
+  `bld_open {entry_step: customize}` on arrival. The header Copy/Download/Raw
+  buttons and the sticky bar were removed, so `surface=ref_detail` still names
+  a single placement — compare across the 2026-10-01 boundary, not within it.
+- expect `/builder` opens to fall by design; the item-page KPI is
+  `act_handoff(surface=ref_detail)` per `ds_detail_view`.
+
 ---
 
 ## Events table (current → target)

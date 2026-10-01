@@ -12,6 +12,13 @@
  * Ownership split vs the RSC parent (page.tsx): parent does disk read +
  * token extraction; this component only orchestrates layout, theme, and
  * interaction analytics.
+ *
+ * Since 2026-10-01 (IA decision D2) this is the catalog's item page: landing
+ * rows and search open it, and its `#use` block holds every hand-off —
+ * Copy / Download / raw DESIGN.md, the install command, the first prompt and
+ * "Customize" into /builder. Each action has exactly one placement on the
+ * page, so `ds_export`, `act_*` (surface=ref_detail) and `ds_open_in_builder`
+ * keep meaning one control each.
  */
 
 import { useEffect, useState, useSyncExternalStore } from "react";
@@ -31,6 +38,7 @@ import {
 } from "lucide-react";
 import { ReferencePreview } from "@/components/reference-preview";
 import { InstallCta } from "@/components/install-cta";
+import { copyText } from "@/lib/clipboard";
 import { GithubStarButton } from "@/components/github-star-button";
 import { Markdown } from "@/components/markdown";
 import {
@@ -115,6 +123,7 @@ function advisoryText(code: string): string {
 const CATALOGUE_WIDE_ADVISORY = "motion_value_unsourced";
 
 export function DetailView({
+  name,
   detail,
   tokens,
   summary,
@@ -122,6 +131,8 @@ export function DetailView({
   ds,
   logo,
 }: {
+  /** Brand name from the server page — the same string as the title and JSON-LD. */
+  name: string;
   detail: Detail;
   tokens: ParsedTokens;
   /** Official DS / brand-guide link, resolved by the server page. Passed in
@@ -172,9 +183,12 @@ export function DetailView({
   const statedCount = quality.statedComponentCount;
   const evidencePercent = Math.round(quality.evidenceCoverage * 100);
 
-  function copyMd() {
-    navigator.clipboard.writeText(detail.designMd);
-    trackDsExport({ reference: detail.id, channel: "copy" });
+  async function copyMd(event: React.MouseEvent<HTMLButtonElement>) {
+    const ok = await copyText(detail.designMd, {
+      restoreTarget: event.currentTarget,
+      onSuccess: () => trackDsExport({ reference: detail.id, channel: "copy" }),
+    });
+    if (!ok) return;
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   }
@@ -218,18 +232,16 @@ export function DetailView({
 
           <div className="flex items-center gap-1 sm:gap-2">
             <ReferenceShareButton reference={detail.id} location="ref_detail" compact />
-            {/* Primary funnel CTA — this page is where Claude/Brave citations
-                land; convert that visitor into the builder with the reference
-                preselected (step=customize). Kept at least as prominent as the
-                official-site link. */}
-            <Link
-              href={`/builder?step=customize&ref=${detail.id}`}
-              onClick={() => trackOpenInBuilder(detail.id)}
+            {/* Jump to the hand-off block. A plain anchor, no event: the
+                actions inside #use carry the analytics. */}
+            <a
+              href="#use"
+              aria-label="Use DESIGN.md"
               className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground shadow-sm ring-1 ring-primary/20 transition-all hover:brightness-110 hover:shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
             >
-              <SlidersHorizontal className="h-3.5 w-3.5" />
-              <span className="hidden sm:inline">Customize in builder</span>
-            </Link>
+              <Download className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">Use DESIGN.md</span>
+            </a>
             {ds && (
               <a
                 href={ds.url}
@@ -241,38 +253,6 @@ export function DetailView({
                 Official site <ExternalLink className="h-3 w-3" />
               </a>
             )}
-            <button
-              onClick={copyMd}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-card/50 px-2.5 py-1.5 text-xs font-medium transition-colors hover:bg-accent dark:border-border"
-              aria-label="Copy DESIGN.md"
-            >
-              {copied ? (
-                <Check className="h-3.5 w-3.5 text-green-500" />
-              ) : (
-                <Copy className="h-3.5 w-3.5" />
-              )}
-              <span className="hidden sm:inline">{copied ? "Copied" : "Copy"}</span>
-            </button>
-            <button
-              onClick={downloadMd}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-card/50 px-2.5 py-1.5 text-xs font-medium transition-colors hover:bg-accent dark:border-border"
-              aria-label="Download DESIGN.md"
-            >
-              <Download className="h-3.5 w-3.5" />
-              <span className="hidden sm:inline">Download</span>
-            </button>
-            {/* Raw twin — clean markdown URL agents can fetch directly. */}
-            <a
-              href={`/${detail.id}/design.md`}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackRawMdOpen(detail.id)}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-card/50 px-2.5 py-1.5 text-xs font-medium transition-colors hover:bg-accent dark:border-border"
-              aria-label="Open raw DESIGN.md"
-            >
-              <FileText className="h-3.5 w-3.5" />
-              <span className="hidden sm:inline">Raw .md</span>
-            </a>
             <GithubStarButton className="hidden md:inline-flex" />
             {mounted && (
               <button
@@ -319,147 +299,160 @@ export function DetailView({
         </div>
       </header>
 
-      {/* Sticky install funnel — install_copy / prompt_copy (#4). The
-          pb-20 below keeps the last content row clear of the fixed bar. */}
-      <InstallCta
-        variant="bar"
-        source="ref_detail"
-        reference={detail.id}
-        brandName={displayName}
-      />
+      <section className="mx-auto max-w-7xl px-4 pt-6 sm:px-6">
+        {/* The page's one <h1>. ReferencePreview's brand name and the embedded
+            DESIGN.md title are not headings at this level. */}
+        <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+          {name} design system
+        </h1>
 
-      {/* Answer-first summary (#5) — the extractable lead Claude/Brave cite,
-          before the full DESIGN.md dump. The labeled facts below are the visible
-          backing for the page's FAQ structured data. */}
-      {summary && (
-        <section className="mx-auto max-w-7xl px-4 pt-6 sm:px-6">
-          <p className="max-w-3xl text-sm leading-relaxed text-foreground">{summary}</p>
-          {evidenceBoundary ? (
-            <p className="mt-2 max-w-3xl text-xs leading-relaxed text-muted-foreground">
-              <span className="font-medium text-foreground">Evidence boundary:</span>{" "}
-              {evidenceBoundary}
-            </p>
-          ) : null}
-          <dl className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-xs text-muted-foreground">
-            <div className="flex items-center gap-1.5">
-              <dt>Primary</dt>
-              <dd className="flex items-center gap-1 font-medium text-foreground">
-                <span
-                  className="inline-block h-3 w-3 rounded-full ring-1 ring-border/60"
-                  style={{ background: detail.primary }}
-                />
-                {detail.primary}
-              </dd>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <dt>Typography</dt>
-              <dd className="font-medium text-foreground">
-                {detail.fontFamily}
-                {detail.mono ? ` · ${detail.mono}` : ""}
-              </dd>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <dt>Radius</dt>
-              <dd className="font-medium text-foreground">{detail.radius}</dd>
-            </div>
-          </dl>
-          {/* id + scroll margin only: the landing's "verified" tier links here
-              (/design-systems/toss#evidence) as its one real evidence example. */}
-          <div id="evidence" className="mt-4 scroll-mt-20 rounded-xl border border-border/60 bg-muted/30 p-3 dark:bg-muted/20">
-            <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-              <h2 className="text-xs font-semibold text-foreground">Evidence snapshot</h2>
-              <span className="font-mono text-[10px] uppercase tracking-wide text-muted-foreground">
-                {quality.status.replaceAll("_", " ")}
-              </span>
-            </div>
-            <dl className="grid gap-2 text-xs sm:grid-cols-2 lg:grid-cols-4">
-              <div>
-                <dt className="text-muted-foreground">Claims grounded</dt>
-                <dd className="mt-0.5 font-medium text-foreground">
-                  {quality.evidenceClaimCount}/{quality.claimCount} · {evidencePercent}%
+        {/* Answer-first summary (#5) — the extractable lead Claude/Brave cite,
+            before the full DESIGN.md dump. The labeled facts below are the visible
+            backing for the page's FAQ structured data. */}
+        {summary && (
+          <>
+            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-foreground">{summary}</p>
+            {evidenceBoundary ? (
+              <p className="mt-2 max-w-3xl text-xs leading-relaxed text-muted-foreground">
+                <span className="font-medium text-foreground">Evidence boundary:</span>{" "}
+                {evidenceBoundary}
+              </p>
+            ) : null}
+            <dl className="mt-3 flex flex-wrap gap-x-6 gap-y-1 text-xs text-muted-foreground">
+              <div className="flex items-center gap-1.5">
+                <dt>Primary</dt>
+                <dd className="flex items-center gap-1 font-medium text-foreground">
+                  <span
+                    className="inline-block h-3 w-3 rounded-full ring-1 ring-border/60"
+                    style={{ background: detail.primary }}
+                  />
+                  {detail.primary}
                 </dd>
               </div>
-              <div>
-                <dt className="text-muted-foreground">Sources</dt>
-                <dd className="mt-0.5 font-medium text-foreground">
-                  {quality.surfaceCount} surfaces · {quality.sourceCount} sources
+              <div className="flex items-center gap-1.5">
+                <dt>Typography</dt>
+                <dd className="font-medium text-foreground">
+                  {detail.fontFamily}
+                  {detail.mono ? ` · ${detail.mono}` : ""}
                 </dd>
               </div>
-              <div>
-                <dt className="text-muted-foreground">UI font basis</dt>
-                <dd className="mt-0.5 font-medium text-foreground">
-                  {fontBasis ?? "unresolved"}
-                </dd>
-              </div>
-              {/*
-                * Interactive count, not just the total.
-                *
-                * 31 of 440 references carry one component or none and nothing
-                * interactive — all of them `verified_v2`, because that tier means
-                * the evidence graph is complete, not that there is a button to
-                * look at. A reader had no way to tell those from a reference with
-                * twelve components and five carrying real per-state values. The
-                * numbers were already computed and published; they were just not
-                * read.
-                */}
-              <div>
-                <dt className="text-muted-foreground">Components</dt>
-                <dd className="mt-0.5 font-medium text-foreground">
-                  {componentCount === 0 ? (
-                    "none documented"
-                  ) : (
-                    <>
-                      {componentCount} documented
-                      {" · "}
-                      {interactiveCount === 0
-                        ? "none interactive"
-                        : `${interactiveCount} interactive${statedCount > 0 ? `, ${statedCount} with states` : ""}`}
-                    </>
-                  )}
-                </dd>
+              <div className="flex items-center gap-1.5">
+                <dt>Radius</dt>
+                <dd className="font-medium text-foreground">{detail.radius}</dd>
               </div>
             </dl>
-            {quality.reasonCodes.length > 0 && (
-              <p className="mt-2 border-t border-border/50 pt-2 font-mono text-[10px] leading-relaxed text-muted-foreground">
-                Needs work: {quality.reasonCodes.join(" · ").replaceAll("_", " ")}
-              </p>
-            )}
-            {quality.advisoryCodes.filter((code) => code !== CATALOGUE_WIDE_ADVISORY).length > 0 && (
-              <div className="mt-2 border-t border-border/50 pt-2">
-                <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
-                  Not backed by evidence
-                </p>
-                <ul className="mt-1 space-y-0.5">
-                  {quality.advisoryCodes.filter((code) => code !== CATALOGUE_WIDE_ADVISORY).map((code) => (
-                    <li key={code} className="text-[11px] leading-relaxed text-muted-foreground">
-                      {advisoryText(code)}
-                      {/* The measured share, where we have it — a bare "most were not
-                          found" invites the reader to guess, and the number is the
-                          whole point. */}
-                      {code.startsWith("palette_") && quality.paletteGrounding !== null && (
-                        <span className="ml-1 font-mono text-[10px]">
-                          ({Math.round(quality.paletteGrounding * 100)}% found)
-                        </span>
-                      )}
-                    </li>
-                  ))}
-                </ul>
+          </>
+        )}
+
+        <UseSection
+          refId={detail.id}
+          name={name}
+          promptBrand={displayName}
+          copied={copied}
+          onCopy={copyMd}
+          onDownload={downloadMd}
+        />
+
+        {summary && (
+          <>
+            {/* id + scroll margin only: the landing's "verified" tier links here
+                (/design-systems/toss#evidence) as its one real evidence example. */}
+            <div id="evidence" className="mt-4 scroll-mt-20 rounded-xl border border-border/60 bg-muted/30 p-3 dark:bg-muted/20">
+              <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+                <h2 className="text-xs font-semibold text-foreground">Evidence snapshot</h2>
+                <span className="font-mono text-[10px] uppercase tracking-wide text-muted-foreground">
+                  {quality.status.replaceAll("_", " ")}
+                </span>
               </div>
-            )}
-            {quality.advisoryCodes.includes(CATALOGUE_WIDE_ADVISORY) && (
-              <p className="mt-2 border-t border-border/50 pt-2 text-[11px] leading-relaxed text-muted-foreground">
-                The motion values in this reference were not observed in a capture — and neither
-                were anyone&rsquo;s. No design system we checked publishes a duration or easing
-                scale; Toss states outright that its component motion lives in the Figma UI Kit
-                rather than in its documentation. Treat any exact curve here as a local default.
-              </p>
-            )}
-          </div>
-        </section>
-      )}
+              <dl className="grid gap-2 text-xs sm:grid-cols-2 lg:grid-cols-4">
+                <div>
+                  <dt className="text-muted-foreground">Claims grounded</dt>
+                  <dd className="mt-0.5 font-medium text-foreground">
+                    {quality.evidenceClaimCount}/{quality.claimCount} · {evidencePercent}%
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-muted-foreground">Sources</dt>
+                  <dd className="mt-0.5 font-medium text-foreground">
+                    {quality.surfaceCount} surfaces · {quality.sourceCount} sources
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-muted-foreground">UI font basis</dt>
+                  <dd className="mt-0.5 font-medium text-foreground">
+                    {fontBasis ?? "unresolved"}
+                  </dd>
+                </div>
+                {/*
+                  * Interactive count, not just the total.
+                  *
+                  * 31 of 440 references carry one component or none and nothing
+                  * interactive — all of them `verified_v2`, because that tier means
+                  * the evidence graph is complete, not that there is a button to
+                  * look at. A reader had no way to tell those from a reference with
+                  * twelve components and five carrying real per-state values. The
+                  * numbers were already computed and published; they were just not
+                  * read.
+                  */}
+                <div>
+                  <dt className="text-muted-foreground">Components</dt>
+                  <dd className="mt-0.5 font-medium text-foreground">
+                    {componentCount === 0 ? (
+                      "none documented"
+                    ) : (
+                      <>
+                        {componentCount} documented
+                        {" · "}
+                        {interactiveCount === 0
+                          ? "none interactive"
+                          : `${interactiveCount} interactive${statedCount > 0 ? `, ${statedCount} with states` : ""}`}
+                      </>
+                    )}
+                  </dd>
+                </div>
+              </dl>
+              {quality.reasonCodes.length > 0 && (
+                <p className="mt-2 border-t border-border/50 pt-2 font-mono text-[10px] leading-relaxed text-muted-foreground">
+                  Needs work: {quality.reasonCodes.join(" · ").replaceAll("_", " ")}
+                </p>
+              )}
+              {quality.advisoryCodes.filter((code) => code !== CATALOGUE_WIDE_ADVISORY).length > 0 && (
+                <div className="mt-2 border-t border-border/50 pt-2">
+                  <p className="text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
+                    Not backed by evidence
+                  </p>
+                  <ul className="mt-1 space-y-0.5">
+                    {quality.advisoryCodes.filter((code) => code !== CATALOGUE_WIDE_ADVISORY).map((code) => (
+                      <li key={code} className="text-[11px] leading-relaxed text-muted-foreground">
+                        {advisoryText(code)}
+                        {/* The measured share, where we have it — a bare "most were not
+                            found" invites the reader to guess, and the number is the
+                            whole point. */}
+                        {code.startsWith("palette_") && quality.paletteGrounding !== null && (
+                          <span className="ml-1 font-mono text-[10px]">
+                            ({Math.round(quality.paletteGrounding * 100)}% found)
+                          </span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {quality.advisoryCodes.includes(CATALOGUE_WIDE_ADVISORY) && (
+                <p className="mt-2 border-t border-border/50 pt-2 text-[11px] leading-relaxed text-muted-foreground">
+                  The motion values in this reference were not observed in a capture — and neither
+                  were anyone&rsquo;s. No design system we checked publishes a duration or easing
+                  scale; Toss states outright that its component motion lives in the Figma UI Kit
+                  rather than in its documentation. Treat any exact curve here as a local default.
+                </p>
+              )}
+            </div>
+          </>
+        )}
+      </section>
 
       {/* Desktop: 2-col grid; Mobile: single-pane toggle */}
-      <div className="mx-auto max-w-7xl px-0 pb-20 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-0 md:px-6">
+      <div className="mx-auto max-w-7xl px-0 pb-10 md:grid md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-0 md:px-6">
         {/* Markdown pane — desktop visible always; mobile only when selected */}
         <section
           className={`border-border/40 md:border-r md:px-6 md:py-8 ${
@@ -467,7 +460,7 @@ export function DetailView({
           } md:block`}
         >
           <div className="px-4 py-6 md:px-0 md:py-0">
-            <Markdown content={detail.designMd} />
+            <Markdown content={detail.designMd} demoteH1 />
           </div>
         </section>
 
@@ -486,6 +479,94 @@ export function DetailView({
         </section>
       </div>
     </div>
+  );
+}
+
+/**
+ * `#use` — the hand-off block. Composes the page's existing actions rather than
+ * re-implementing them: copy/download come from DetailView (ds_export +
+ * act_handoff), the install command and first prompt are <InstallCta>
+ * (act_install_copy / act_prompt_copy, surface=ref_detail), and Customize is
+ * the same /builder deep link the header used to carry (ds_open_in_builder,
+ * then bld_open {entry_step: customize} on arrival).
+ */
+function UseSection({
+  refId,
+  name,
+  promptBrand,
+  copied,
+  onCopy,
+  onDownload,
+}: {
+  refId: string;
+  name: string;
+  /** Brand label for the first prompt — unchanged from the former sticky bar. */
+  promptBrand: string;
+  copied: boolean;
+  onCopy: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onDownload: () => void;
+}) {
+  const secondary =
+    "inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-card/50 px-3 py-2 text-xs font-medium transition-colors hover:bg-accent dark:border-border";
+  return (
+    <section
+      id="use"
+      aria-labelledby="use-heading"
+      className="mt-4 scroll-mt-28 rounded-xl border border-border/60 bg-card/40 p-4 dark:border-border dark:bg-card/60"
+    >
+      <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
+        <div className="min-w-0">
+          <h2 id="use-heading" className="text-sm font-semibold text-foreground">
+            Use the {name} DESIGN.md
+          </h2>
+          <p className="mt-1 max-w-2xl text-xs leading-relaxed text-muted-foreground">
+            Put the file at your project root and give your coding agent the first prompt. To
+            change colour, type or components first, customize it.
+          </p>
+        </div>
+        <Link
+          href={`/builder?step=customize&ref=${refId}`}
+          onClick={() => trackOpenInBuilder(refId)}
+          className={secondary}
+        >
+          <SlidersHorizontal className="h-3.5 w-3.5" />
+          Customize <span aria-hidden="true">→</span>
+        </Link>
+      </div>
+
+      <div className="mt-3 flex flex-wrap items-center gap-2">
+        <button
+          type="button"
+          onClick={onCopy}
+          className="inline-flex items-center gap-1.5 rounded-lg bg-primary px-3 py-2 text-xs font-semibold text-primary-foreground shadow-sm transition-all hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+        >
+          {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+          {copied ? "Copied" : "Copy DESIGN.md"}
+        </button>
+        <button type="button" onClick={onDownload} className={secondary}>
+          <Download className="h-3.5 w-3.5" />
+          Download
+        </button>
+        {/* Raw twin — clean markdown URL agents can fetch directly. */}
+        <a
+          href={`/${refId}/design.md`}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => trackRawMdOpen(refId)}
+          className={secondary}
+        >
+          <FileText className="h-3.5 w-3.5" />
+          Raw .md
+        </a>
+        <span className="sr-only" role="status" aria-live="polite">
+          {copied ? "DESIGN.md copied" : ""}
+        </span>
+      </div>
+
+      <div className="mt-3 border-t border-border/50 pt-3">
+        <InstallCta variant="inline" source="ref_detail" reference={refId} brandName={promptBrand} />
+      </div>
+    </section>
   );
 }
 

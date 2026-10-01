@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useId, useMemo, useRef, useState } from "react";
+import { trackDetailOpen } from "@/lib/design-systems/analytics";
 import { EN, KO, type Locale } from "./copy";
 
 interface IndexEntry {
@@ -32,7 +33,7 @@ function loadIndex(): Promise<IndexEntry[]> {
  * Catalog search on the landing. The index (521 entries + native-language
  * aliases) is fetched on first focus from a build-time static route, so it
  * never weighs on the page itself. Enter or the button opens the highlighted
- * match in the builder.
+ * match's reference page (/design-systems/<id>).
  */
 export function SearchBox({ locale, totalRefs }: { locale: Locale; totalRefs: number }) {
   const copy = locale === "ko" ? KO : EN;
@@ -69,7 +70,9 @@ export function SearchBox({ locale, totalRefs }: { locale: Locale; totalRefs: nu
 
   const go = (entry?: IndexEntry) => {
     const target = entry ?? results[cursor] ?? results[0];
-    if (target) router.push(`/builder?step=customize&ref=${encodeURIComponent(target.id)}`);
+    if (!target) return;
+    trackDetailOpen({ reference: target.id, source: "home_search" });
+    router.push(`/design-systems/${encodeURIComponent(target.id)}`);
   };
 
   const showList = open && query.trim().length > 0;

@@ -3,27 +3,32 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
+import { trackDetailOpen } from "@/lib/design-systems/analytics";
 import { EN, KO, type Locale } from "./copy";
 import type { LandingBrand } from "./data";
 
 /**
  * "Most selected" list + the one brand preview card.
  *
- * Rows are links straight into the funnel (/builder?step=customize&ref=<id>).
- * Pointing at or focusing a row recolors the preview; the chips under the card
- * do the same on touch screens, where there is no hover.
+ * Rows open the reference's item page (/design-systems/<id>, IA decision D2,
+ * 2026-10-01); /ko rows do the same until Korean detail pages exist. The card's
+ * secondary "Customize" link goes straight to /builder. Pointing at or focusing
+ * a row recolors the preview; the chips under the card do the same on touch
+ * screens, where there is no hover.
  *
  * Brand colour appears only on swatches and the sample button — never behind
  * running text. The button label colour and its ratio were measured on the
  * server (data.ts → pickLabelColor) at the label's rendered size.
  */
 
+export const detailHref = (id: string) => `/design-systems/${encodeURIComponent(id)}`;
 export const builderHref = (id: string) => `/builder?step=customize&ref=${encodeURIComponent(id)}`;
 
 /**
- * Builder links prefetch on intent (pointer over, focus, touch start) rather
- * than on entering the viewport. Viewport prefetch pulled the builder's ~1 MB
- * of route JS into every home visit, about four times the page's own JS.
+ * Row and card links prefetch on intent (pointer over, focus, touch start)
+ * rather than on entering the viewport. Viewport prefetch of the builder pulled
+ * ~1 MB of route JS into every home visit; the same rule keeps ten detail pages
+ * from loading at once.
  */
 function useIntentPrefetch() {
   const router = useRouter();
@@ -67,17 +72,18 @@ export function TopAndPreview({
           {brands.map((b, i) => (
             <li key={b.id} className="border-b border-rule">
               <Link
-                href={builderHref(b.id)}
+                href={detailHref(b.id)}
                 prefetch={false}
+                onClick={() => trackDetailOpen({ reference: b.id, source: "home_top" })}
                 onMouseEnter={() => {
                   setActiveId(b.id);
-                  prefetch(builderHref(b.id));
+                  prefetch(detailHref(b.id));
                 }}
                 onFocus={() => {
                   setActiveId(b.id);
-                  prefetch(builderHref(b.id));
+                  prefetch(detailHref(b.id));
                 }}
-                onTouchStart={() => prefetch(builderHref(b.id))}
+                onTouchStart={() => prefetch(detailHref(b.id))}
                 aria-describedby="top-open-hint"
                 className={`group flex h-11 items-center gap-3 px-1 outline-offset-2 hover:bg-paper-2 ${b.id === active?.id ? "bg-paper-2" : ""}`}
               >
@@ -194,17 +200,30 @@ function PreviewCard({
         </dl>
         {brand.uiFont && <p className="mt-2 text-xs leading-relaxed text-ink-2">{copy.preview.fontNote(brand.uiFont)}</p>}
 
-        <Link
-          href={builderHref(brand.id)}
-          prefetch={false}
-          onMouseEnter={() => prefetch(builderHref(brand.id))}
-          onFocus={() => prefetch(builderHref(brand.id))}
-          onTouchStart={() => prefetch(builderHref(brand.id))}
-          className="mt-3 flex items-center justify-between gap-2 rounded-tag bg-ink px-3 py-2.5 text-sm font-semibold text-paper hover:opacity-90"
-        >
-          {copy.preview.open(nameOf(brand))}
-          <span aria-hidden="true">→</span>
-        </Link>
+        <div className="mt-3 flex items-stretch gap-2">
+          <Link
+            href={detailHref(brand.id)}
+            prefetch={false}
+            onClick={() => trackDetailOpen({ reference: brand.id, source: "home_preview" })}
+            onMouseEnter={() => prefetch(detailHref(brand.id))}
+            onFocus={() => prefetch(detailHref(brand.id))}
+            onTouchStart={() => prefetch(detailHref(brand.id))}
+            className="flex min-w-0 flex-1 items-center justify-between gap-2 rounded-tag bg-ink px-3 py-2.5 text-sm font-semibold text-paper hover:opacity-90"
+          >
+            <span className="truncate">{copy.preview.open(nameOf(brand))}</span>
+            <span aria-hidden="true">→</span>
+          </Link>
+          <Link
+            href={builderHref(brand.id)}
+            prefetch={false}
+            onMouseEnter={() => prefetch(builderHref(brand.id))}
+            onFocus={() => prefetch(builderHref(brand.id))}
+            onTouchStart={() => prefetch(builderHref(brand.id))}
+            className="flex shrink-0 items-center rounded-tag border border-ink px-3 py-2.5 text-sm font-semibold text-ink hover:bg-paper-2"
+          >
+            {copy.preview.customize}
+          </Link>
+        </div>
       </div>
 
       <fieldset className="border-t border-rule px-3.5 py-3 lg:hidden">

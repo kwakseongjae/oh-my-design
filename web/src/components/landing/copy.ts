@@ -40,6 +40,8 @@ export interface LandingCopy {
     fontNote: (font: string) => string;
     noCanvas: string;
     open: (name: string) => string;
+    /** Secondary link under the preview card, into /builder. */
+    customize: string;
     chooser: string;
   };
   how: { heading: string; steps: { title: string; body: string }[] };
@@ -64,7 +66,7 @@ export const EN: LandingCopy = {
   nav: {
     catalog: "Catalog",
     docs: "Docs",
-    builder: "Builder",
+    builder: "Customize",
     github: "GitHub",
     switchLabel: "한국어로 보기",
     switchHref: "/ko",
@@ -73,8 +75,8 @@ export const EN: LandingCopy = {
   eyebrow: ({ refs, countries }) => `DESIGN.md catalog · ${refs} companies · ${countries} countries`,
   h1: { before: "", after: " company design systems, every value traced to a capture." },
   lede: ({ refs, verified }) =>
-    `Each one is a DESIGN.md your coding agent can follow: colors, type, radii and components from a real product. The ${verified} verified references keep the capture behind every value, and the rest of the ${refs} say how far they got. Pick one and open it in the builder.`,
-  ledeShort: "Each one is a DESIGN.md your coding agent can follow. Pick one and open it in the builder.",
+    `Each one is a DESIGN.md your coding agent can follow: colors, type, radii and components from a real product. The ${verified} verified references keep the capture behind every value, and the rest of the ${refs} say how far they got. Pick one to see its values and take the file.`,
+  ledeShort: "Each one is a DESIGN.md your coding agent can follow. Pick one to see its values and take the file.",
   tiers: {
     heading: "How each reference is graded",
     verified: { label: "verified", def: "Every value traces to a capture of the live product or its official docs." },
@@ -87,15 +89,15 @@ export const EN: LandingCopy = {
     placeholder: (refs) => `Search ${refs} — toss, 카카오, stripe…`,
     noMatch: "No reference matches that name.",
     loading: "Loading the catalog…",
-    open: "Open in builder",
+    open: "Open",
     resultsLabel: "Matching references",
   },
   top: {
-    heading: "Most selected in the builder",
+    heading: "Most selected",
     live: "live count",
     snapshot: (date) => `count as of ${date}`,
     all: (refs) => `All ${refs}`,
-    openHint: "Opens in the builder",
+    openHint: "Opens the reference page",
   },
   status: { verified_v2: "verified", partial: "partial", legacy_snapshot: "legacy" },
   preview: {
@@ -106,15 +108,16 @@ export const EN: LandingCopy = {
     sampleAction: "Continue",
     fontNote: (font) => `Set in this page's typeface. ${font} is not loaded here.`,
     noCanvas: "No canvas color in this reference; shown on the page ground.",
-    open: (name) => `Open ${name} in the builder`,
+    open: (name) => `Open ${name}`,
+    customize: "Customize",
     chooser: "Preview a brand",
   },
   how: {
     heading: "How it works",
     steps: [
       { title: "Pick a reference", body: "Search the catalog or start from the most selected. Verified references show the evidence behind each value." },
-      { title: "Adjust it in the builder", body: "Change color, type and components. The preview follows every change." },
-      { title: "Hand DESIGN.md to your agent", body: "Download the file and give it to Claude Code, Codex, Cursor or OpenCode with the first prompt the builder writes for you." },
+      { title: "Open its page", body: "See the colors, type, components and evidence. To change color, type or components first, customize it." },
+      { title: "Hand DESIGN.md to your agent", body: "Copy or download the file and give it to Claude Code, Codex, Cursor or OpenCode with the first prompt from the same page." },
     ],
   },
   cli: {
@@ -142,7 +145,7 @@ export const EN: LandingCopy = {
     project: "Project",
     links: {
       catalog: "Catalog",
-      builder: "Builder",
+      builder: "Customize",
       docs: "Docs",
       what: "What is DESIGN.md",
       faq: "FAQ",
@@ -167,7 +170,7 @@ export const KO: LandingCopy = {
   nav: {
     catalog: "카탈로그",
     docs: "문서",
-    builder: "빌더",
+    builder: "커스터마이즈",
     github: "GitHub",
     switchLabel: "View in English",
     switchHref: "/",
@@ -176,8 +179,8 @@ export const KO: LandingCopy = {
   eyebrow: ({ refs, countries }) => `DESIGN.md 카탈로그 · 기업 ${refs}곳 · ${countries}개국`,
   h1: { before: "값마다 근거 캡처를 확인한 디자인 시스템 ", after: "개" },
   lede: ({ refs, verified }) =>
-    `실제 제품의 색, 글꼴, 모서리 둥글기, 컴포넌트를 코딩 에이전트가 읽는 DESIGN.md로 정리했습니다. 전체 ${refs}개 중 검증을 마친 ${verified}개는 값마다 근거 캡처가 남아 있고, 나머지는 어디까지 확인했는지 등급으로 표시합니다. 하나 골라 빌더에서 열어 보세요.`,
-  ledeShort: "코딩 에이전트가 그대로 따르는 DESIGN.md입니다. 하나 골라 빌더에서 열어 보세요.",
+    `실제 제품의 색, 글꼴, 모서리 둥글기, 컴포넌트를 코딩 에이전트가 읽는 DESIGN.md로 정리했습니다. 전체 ${refs}개 중 검증을 마친 ${verified}개는 값마다 근거 캡처가 남아 있고, 나머지는 어디까지 확인했는지 등급으로 표시합니다. 하나 골라 값을 확인하고 파일을 가져가세요.`,
+  ledeShort: "코딩 에이전트가 그대로 따르는 DESIGN.md입니다. 하나 골라 값을 확인하고 파일을 가져가세요.",
   tiers: {
     heading: "레퍼런스 등급",
     verified: { label: "검증", def: "모든 값을 실제 제품이나 공식 문서 캡처로 확인했습니다." },
@@ -190,15 +193,15 @@ export const KO: LandingCopy = {
     placeholder: (refs) => `${refs}개 중 검색 — 토스, kakao, 배민…`,
     noMatch: "이름이 맞는 레퍼런스가 없습니다.",
     loading: "카탈로그를 불러오는 중…",
-    open: "빌더에서 열기",
+    open: "열기",
     resultsLabel: "검색 결과",
   },
   top: {
-    heading: "빌더에서 많이 고른 순",
+    heading: "많이 고른 순",
     live: "실시간 집계",
     snapshot: (date) => `${date} 기준 집계`,
     all: (refs) => `전체 ${refs}개`,
-    openHint: "빌더에서 열립니다",
+    openHint: "레퍼런스 페이지가 열립니다",
   },
   status: { verified_v2: "검증", partial: "부분", legacy_snapshot: "레거시" },
   preview: {
@@ -209,15 +212,16 @@ export const KO: LandingCopy = {
     sampleAction: "계속하기",
     fontNote: (font) => `${font} 글꼴은 불러오지 않아 이 페이지 글꼴로 표시합니다.`,
     noCanvas: "이 레퍼런스에는 배경색 값이 없어 페이지 바탕 위에 보여 줍니다.",
-    open: (name) => `${name} 빌더에서 열기`,
+    open: (name) => `${name} 열기`,
+    customize: "커스터마이즈",
     chooser: "미리 볼 브랜드",
   },
   how: {
     heading: "이렇게 씁니다",
     steps: [
       { title: "레퍼런스 고르기", body: "검색하거나 많이 고른 순에서 시작하세요. 검증 레퍼런스는 값마다 근거를 보여 줍니다." },
-      { title: "빌더에서 다듬기", body: "색, 글꼴, 컴포넌트를 바꾸면 미리보기가 바로 따라옵니다." },
-      { title: "에이전트에게 DESIGN.md 넘기기", body: "파일을 내려받아 Claude Code, Codex, Cursor, OpenCode에 넣으세요. 빌더가 써 준 첫 프롬프트도 함께 쓰면 됩니다." },
+      { title: "레퍼런스 페이지 열기", body: "색, 글꼴, 컴포넌트와 근거를 확인하세요. 색이나 글꼴, 컴포넌트를 먼저 바꾸고 싶다면 커스터마이즈하면 됩니다." },
+      { title: "에이전트에게 DESIGN.md 넘기기", body: "파일을 복사하거나 내려받아 Claude Code, Codex, Cursor, OpenCode에 넣으세요. 같은 페이지의 첫 프롬프트도 함께 쓰면 됩니다." },
     ],
   },
   cli: {
@@ -245,7 +249,7 @@ export const KO: LandingCopy = {
     project: "프로젝트",
     links: {
       catalog: "카탈로그",
-      builder: "빌더",
+      builder: "커스터마이즈",
       docs: "문서",
       what: "DESIGN.md란",
       faq: "FAQ",

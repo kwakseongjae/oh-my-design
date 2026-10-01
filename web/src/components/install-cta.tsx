@@ -9,6 +9,8 @@
  *             detail pages). Pair with bottom padding on the page so the
  *             last content row stays reachable.
  * - "block" — inline card (collection pages, long-form surfaces).
+ * - "inline" — the two buttons alone, for a host section that already
+ *             carries its own heading (the detail page's #use block).
  *
  * Events (via lib/activation/analytics):
  * - act_install_copy { surface, reference? } — KEY EVENT. Also bumps the Redis
@@ -51,7 +53,7 @@ export function InstallCta({
    * generic firstPromptFor(brandName). GA4 prompt_copy is unchanged.
    */
   prompt?: string;
-  variant?: "bar" | "block";
+  variant?: "bar" | "block" | "inline";
 }) {
   const [copyState, setCopyState] = useState<{
     kind: "install" | "prompt";
@@ -125,6 +127,22 @@ export function InstallCta({
       )}
     </button>
   ) : null;
+
+  const status = (
+    <span className="sr-only" role="status" aria-live="polite">
+      {copyState?.status === "copied" ? "Copied" : copyState?.status === "failed" ? "Copy failed" : ""}
+    </span>
+  );
+
+  if (variant === "inline") {
+    return (
+      <div className="flex min-w-0 flex-wrap items-center gap-2">
+        {installBtn}
+        {promptBtn}
+        {status}
+      </div>
+    );
+  }
 
   if (variant === "bar") {
     return (
