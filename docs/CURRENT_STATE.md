@@ -493,7 +493,15 @@
   - 사전 조건 통과: ssg 75, cafe24 71, medibloc 80, ikala 80. 저작 웨이브 A1 진행 중.
   - tellingme·queenit은 coverage 미달 사유라 Aside로는 해결되지 않는다(같은 렌더).
 - **10/1 — 위임 판단:** protopie KR 유지, medibloc은 medibloc.com의 브랜드를 기술(GROWTH_DECISIONS).
-- **10/1 — /hangul 바이럴 페이지·모션 (진행 중):** `feat/hangul-launch-page` 브랜치. 인터랙티브 전후 비교·폭 스크러버, 10~15초 MP4, OG 이미지.
+- **10/1 — /hangul 런칭 페이지·모션 완료 (`feat/hangul-launch-page` `0c3d39ff`, 미반영).**
+  - 페이지 구성:
+    - 실제 DOM 히어로: 전후 토글과 320~430px 폭 슬라이더. 지금 보는 기기의 글꼴로 끊긴 단어를 빨간 상자로 표시한다.
+    - 111개 폭 줄바꿈 지도: macOS 기준 규칙 없이 34곳 끊기고, 규칙을 넣으면 0곳.
+    - Codex 예시 4장면, 평가 숫자(등급 명시), 67곳 실측, 설치 명령, 출처 각주.
+  - 함께 만든 것: 14초 MP4·GIF, OG 이미지, 게시 문안 2개(`v3-NOTES.md`).
+  - 검사: tsc 통과, 웹 테스트 1075건 통과, next build 통과.
+  - **반영 조건:** /hangul 스킬(`feat/hangul-skill`)을 먼저 npm에 배포해야 한다. 그 전에는 설치 명령과 GitHub 링크가 동작하지 않는다 → 오너 결정.
+  - 스킬 후속: clamp() 글자 크기 해석 실패, 전역 `text-wrap: balance`가 끊김 위치만 옮긴다는 점을 rules.md에 기록해야 한다.
 - **완료 — kakaopay 도메인 분리 수정 (23:10, `c8b92c1a` 수집기 SPA 대기·빈 표면 제외, `888ee7f3`).** kakaopay.com 비어 있지 않은 표면 4곳, coverage 87. kakaocorp 근거 67개 클레임을 제거하고 자사 근거 128개로 교체했다. 대표색 `#ffeb00`은 /brand 타임라인 마커 16개·로고와 홈 버튼 1개에서 확인했다(실측 원자료 17회, `raw/kakaopay-states-brand-yellow.json`). verify 27/27. **사이트 반영 완료(23:20, main `e81fbc9a`)** — 라이브 확인: 새 잉크 `#060b11` ×80, kakaocorp는 그룹 소개 문맥으로만 4회.
 
 - **다음.**
