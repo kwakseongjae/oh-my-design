@@ -8,6 +8,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, FileCode, ExternalLink } from "lucide-react";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
+import { DEFAULT_OG_IMAGE } from "@/lib/site";
 
 const SITE_URL = "https://oh-my-design.kr";
 
@@ -33,6 +34,7 @@ export const metadata: Metadata = {
       "Definition, origin, and the vendor-neutral DESIGN.md Core v2 contract, with migration and comparison guidance.",
     url: `${SITE_URL}/what-is-design-md`,
     type: "article",
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 

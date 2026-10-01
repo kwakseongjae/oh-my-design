@@ -6,6 +6,8 @@ import { AnalyticsInit } from "@/components/analytics-init";
 import { AnalyticsConsent } from "@/components/analytics-consent";
 import { GA_ID } from "@/lib/gtag";
 import { EEA_REGION_CODES } from "@/lib/eea";
+import { REFERENCE_COUNT } from "@/lib/catalog-count";
+import { DEFAULT_OG_IMAGE } from "@/lib/site";
 import pkg from "../../../package.json" with { type: "json" };
 import "./globals.css";
 
@@ -26,6 +28,12 @@ const geistMono = Geist_Mono({
 
 const siteUrl = "https://oh-my-design.kr";
 
+// Plain language on purpose: this is what a search result shows to someone who
+// has never heard of the project. Tier names (verified_v2 …) and role counts
+// belong on the pages that explain them, not in the snippet.
+const SITE_DESCRIPTION =
+  `Real design systems from ${REFERENCE_COUNT} companies, written as DESIGN.md files your AI coding agent can follow. Pick a brand, adjust it, and download. Free and open source.`;
+
 export const viewport = {
   width: "device-width",
   initialScale: 1,
@@ -35,8 +43,7 @@ export const viewport = {
 
 export const metadata: Metadata = {
   title: "oh-my-design — DESIGN.md for AI coding agents",
-  description:
-    "One DESIGN.md spec. 521 quality-graded brand references: 299 verified_v2, 109 partial, and 113 legacy snapshots. The bundle ships 28 skills and 20 specialist definitions; Cursor 2.4+ receives 27 native Agent Skills. MIT open source.",
+  description: SITE_DESCRIPTION,
   keywords: [
     "design system",
     "DESIGN.md",
@@ -78,25 +85,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     title: "oh-my-design — DESIGN.md for AI coding agents",
-    description:
-      "521 quality-graded references: 299 verified_v2, 109 partial, 113 legacy snapshots. Channel-compatible skills and roles for Claude Code, Codex, and OpenCode; a project rule and catalog for Cursor.",
+    description: SITE_DESCRIPTION,
     // og:url intentionally omitted — same inheritance reason as canonical.
     siteName: "oh-my-design",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "oh-my-design — Design System Generator",
-      },
-    ],
+    images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: "oh-my-design — DESIGN.md for AI coding agents",
-    description:
-      "521 quality-graded references: 299 verified_v2, 109 partial, 113 legacy. 23 shipped skills · 19 specialist definitions · channel-aware install.",
-    images: ["/twitter-image.png"],
+    description: SITE_DESCRIPTION,
+    images: [DEFAULT_OG_IMAGE.url],
   },
 };
 

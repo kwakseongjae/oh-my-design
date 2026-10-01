@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
+import { DEFAULT_OG_IMAGE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Design Systems — oh-my-design",
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
       `${REFERENCE_COUNT} real-company DESIGN.md references with computed quality tiers, live previews, and source links.`,
     url: "/design-systems",
     type: "website",
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 

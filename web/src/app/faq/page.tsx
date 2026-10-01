@@ -12,6 +12,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { REFERENCE_COUNT, SKILL_COUNT, SUBAGENT_COUNT } from "@/lib/catalog-count";
+import { DEFAULT_OG_IMAGE } from "@/lib/site";
 
 const SITE_URL = "https://oh-my-design.kr";
 
@@ -37,6 +38,7 @@ export const metadata: Metadata = {
       "DESIGN.md / OmD / vibe coding · 20 questions answered for AI coding agents.",
     url: `${SITE_URL}/faq`,
     type: "article",
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 

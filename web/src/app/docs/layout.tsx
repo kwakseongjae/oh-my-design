@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { DEFAULT_OG_IMAGE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: {
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
     description:
       "Skill-driven design harness for Claude Code, Codex, OpenCode, Cursor.",
     type: "article",
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 
