@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import s from "./hangul.module.css";
 
 /** A before/after switch for one live specimen. Both states are real DOM text;
  *  only the CSS the rule changes differs between them. */
@@ -20,33 +21,39 @@ export function SpecimenToggle({
   const [fixed, setFixed] = useState(false);
   return (
     <div>
-      <div role="group" aria-label="전·후 전환" className="grid grid-cols-2 gap-1 rounded-xl border border-border bg-muted p-1">
-        {[
-          { v: false, label: "Before · 스킬 없이" },
-          { v: true, label: "After · 규칙 적용" },
-        ].map((o) => (
-          <button
-            key={String(o.v)}
-            type="button"
-            aria-pressed={fixed === o.v}
-            aria-controls={`${id}-stage`}
-            onClick={() => setFixed(o.v)}
-            className={`min-h-11 rounded-lg px-2 text-sm font-semibold outline-none focus-visible:ring-2 focus-visible:ring-ring motion-safe:transition-colors ${
-              fixed === o.v ? "bg-background text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
-            }`}
+      <div className={s.proofTable}>
+        <div id={`${id}-stage`} className={s.screen} data-hangul-specimen={id}>
+          {fixed ? after : before}
+        </div>
+      </div>
+      <div className="mt-4 grid gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] sm:items-start">
+        <div role="group" aria-label="전·후 전환" className={s.seg}>
+          {[
+            { v: false, label: "스킬 없이" },
+            { v: true, label: "규칙 적용" },
+          ].map((o) => (
+            <button
+              key={String(o.v)}
+              type="button"
+              aria-pressed={fixed === o.v}
+              aria-controls={`${id}-stage`}
+              onClick={() => setFixed(o.v)}
+              className={s.segBtn}
+            >
+              {o.label}
+            </button>
+          ))}
+        </div>
+        <p className={s.body} aria-live="polite">
+          <span
+            className="font-semibold"
+            style={{ color: fixed ? "var(--fg)" : "var(--accent)" }}
           >
-            {o.label}
-          </button>
-        ))}
+            {fixed ? "After · " : "Before · "}
+          </span>
+          {fixed ? afterNote : beforeNote}
+        </p>
       </div>
-      <div
-        id={`${id}-stage`}
-        className="mt-3 overflow-hidden rounded-xl border border-border bg-white text-[#191f28]"
-        data-hangul-specimen={id}
-      >
-        {fixed ? after : before}
-      </div>
-      <p className="mt-2 text-sm text-muted-foreground">{fixed ? afterNote : beforeNote}</p>
     </div>
   );
 }

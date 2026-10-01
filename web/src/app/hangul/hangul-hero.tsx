@@ -1,6 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import s from "./hangul.module.css";
 import { findWordBreaks, renderedLines, type WordBreak } from "./word-breaks";
 
@@ -10,7 +16,11 @@ const DEFAULT_WIDTH = 360;
 
 /** The eval page's metrics card (codex p1-A-r3, no skill), markup as generated.
  *  "사람들이모아와" has no space in the original: the page hides the <br> at ≤680px. */
-export function MetricsCard({ h2Ref }: { h2Ref?: React.Ref<HTMLHeadingElement> }) {
+export function MetricsCard({
+  h2Ref,
+}: {
+  h2Ref?: React.Ref<HTMLHeadingElement>;
+}) {
   return (
     <section className={s.metrics} aria-label="모아 주요 지표 (eval 원본 재현)">
       <div className={s.metricsIntro}>
@@ -55,10 +65,11 @@ const particle = (w: string) => {
 
 type MapState = { off: boolean[]; on: boolean[] } | null;
 
-export function HangulHero() {
+export function HangulHero({ children }: { children?: React.ReactNode }) {
   const [width, setWidth] = useState(DEFAULT_WIDTH);
   const [ruleOn, setRuleOn] = useState(false);
   const [scale, setScale] = useState(1);
+  const [hostW, setHostW] = useState(0);
   const [frameH, setFrameH] = useState<number | null>(null);
   const [breaks, setBreaks] = useState<WordBreak[]>([]);
   const [lines, setLines] = useState<string[]>([]);
@@ -75,7 +86,11 @@ export function HangulHero() {
   useLayoutEffect(() => {
     const host = hostRef.current;
     if (!host) return;
-    const fit = () => setScale(Math.min(1, host.clientWidth / width));
+    // Up to 1.6× on wide columns so the specimen reads at desktop distance.
+    const fit = () => {
+      setHostW(host.clientWidth);
+      setScale(Math.min(1.6, host.clientWidth / width));
+    };
     fit();
     const ro = new ResizeObserver(fit);
     ro.observe(host);
@@ -127,19 +142,23 @@ export function HangulHero() {
   const onCount = map ? map.on.filter(Boolean).length : null;
 
   return (
-    <div className="grid grid-cols-[minmax(0,1fr)] gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
-      {/* Specimen */}
-      <div>
+    <div className={s.grid}>
+      {/* Specimen: sticky on desktop while the controls and notes scroll */}
+      <div className={s.demoSpecimen}>
         <div
           ref={hostRef}
-          className="relative w-full overflow-hidden rounded-[20px] border border-border bg-muted"
+          className={s.demoStage}
           style={{ height: frameH ?? undefined }}
           data-hangul-specimen="hg10-hero"
         >
           <div
             ref={frameRef}
             className={`${s.phone} ${ruleOn ? s.ruleOn : ""}`}
-            style={{ width, transform: `scale(${scale})`, transformOrigin: "top left", marginInline: scale === 1 ? "auto" : 0 }}
+            style={{
+              width,
+              transform: `translateX(${Math.max(0, (hostW - width * scale) / 2)}px) scale(${scale})`,
+              transformOrigin: "top left",
+            }}
           >
             <MetricsCard h2Ref={h2Ref} />
             {broken?.rect ? (
@@ -156,14 +175,17 @@ export function HangulHero() {
             ) : null}
           </div>
         </div>
-        <p className="mt-2 text-xs text-muted-foreground">
-          실제 DOM 텍스트입니다. {scale < 1 ? `${width}px 화면을 ${Math.round(scale * 100)}%로 줄여 보여 줍니다. 줄바꿈은 ${width}px 그대로입니다.` : `${width}px 화면을 그대로 그립니다.`}
+        <p className={`${s.note} mt-3`}>
+          실제 DOM 텍스트입니다.{" "}
+          {Math.abs(scale - 1) < 0.005
+            ? `${width}px 화면을 그대로 그립니다.`
+            : `${width}px 화면을 ${Math.round(scale * 100)}%로 ${scale < 1 ? "줄여" : "키워"} 보여 줍니다. 줄바꿈은 ${width}px 그대로입니다.`}
         </p>
       </div>
 
       {/* Controls + live readout */}
-      <div className="flex flex-col gap-6">
-        <div role="group" aria-label="/hangul 규칙" className="grid grid-cols-2 gap-1 rounded-xl border border-border bg-muted p-1">
+      <div className={s.demoControls}>
+        <div role="group" aria-label="/hangul 규칙" className={s.seg}>
           {[
             { on: false, label: "생성된 그대로" },
             { on: true, label: "규칙 한 줄 추가" },
@@ -173,9 +195,7 @@ export function HangulHero() {
               type="button"
               aria-pressed={ruleOn === o.on}
               onClick={() => setRuleOn(o.on)}
-              className={`min-h-11 rounded-lg px-3 text-sm font-semibold outline-none focus-visible:ring-2 focus-visible:ring-ring motion-safe:transition-colors ${
-                ruleOn === o.on ? "bg-background text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"
-              }`}
+              className={s.segBtn}
             >
               {o.label}
             </button>
@@ -183,9 +203,12 @@ export function HangulHero() {
         </div>
 
         <div>
-          <label htmlFor="hangul-width" className="flex items-baseline justify-between text-sm font-semibold">
+          <label
+            htmlFor="hangul-width"
+            className="flex items-baseline justify-between font-semibold"
+          >
             <span>폰 화면 폭</span>
-            <span className={`${s.num} text-base`}>{width}px</span>
+            <span className={`${s.mono} text-xl font-bold`}>{width}px</span>
           </label>
           <input
             id="hangul-width"
@@ -195,57 +218,83 @@ export function HangulHero() {
             step={1}
             value={width}
             onChange={(e) => setWidth(Number(e.target.value))}
-            className="mt-2 h-11 w-full cursor-pointer accent-[var(--primary)]"
+            className={`${s.range} mt-2`}
             aria-describedby="hangul-map-caption"
           />
           {/* Break map */}
-          <div className="relative mt-1 flex h-6 w-full items-stretch gap-px" aria-hidden>
-            {(map ? (ruleOn ? map.on : map.off) : Array.from({ length: MAX - MIN + 1 }, () => false)).map((b, i) => (
+          <div className={`${s.map} mt-1`} aria-hidden>
+            {(map
+              ? ruleOn
+                ? map.on
+                : map.off
+              : Array.from({ length: MAX - MIN + 1 }, () => false)
+            ).map((b, i) => (
               <span
                 key={i}
-                className={`flex-1 rounded-[1px] ${b ? "bg-destructive" : "bg-border"} ${MIN + i === width ? "outline outline-2 outline-foreground" : ""}`}
+                className={`${s.mapCell} ${b ? s.mapCellBroken : ""} ${MIN + i === width ? s.mapCellNow : ""}`}
               />
             ))}
           </div>
-          <div className={`${s.num} mt-1 flex justify-between text-xs text-muted-foreground`} aria-hidden>
+          <div
+            className={`${s.mono} ${s.note} mt-1 flex justify-between`}
+            aria-hidden
+          >
             <span>{MIN}px</span>
             <span>{MAX}px</span>
           </div>
-          <p id="hangul-map-caption" className="mt-2 text-sm text-muted-foreground">
+          <p id="hangul-map-caption" className={`${s.body} mt-3`}>
             {map
               ? `이 기기의 글꼴로 ${MIN}–${MAX}px를 1px씩 그려 보니, 생성된 그대로는 ${offCount}개 폭에서 단어가 끊겼고, 규칙을 더하면 ${onCount}개입니다.`
               : "이 기기의 글꼴로 폭마다 그려 보는 중입니다."}
           </p>
         </div>
 
-        <div aria-live="polite" className="rounded-xl border border-border bg-background p-4">
-          <p className="text-xs font-semibold text-muted-foreground">지금 이 화면에서</p>
+        <div aria-live="polite" className={s.readout}>
+          <p className={`${s.note} font-semibold`}>지금 이 화면에서</p>
           {broken ? (
-            <p className="mt-1 text-lg font-bold text-destructive">
-              ‘{wordOf(broken)}’{particle(wordOf(broken))} ‘{broken.head} / {broken.tail}’로 끊겼습니다
+            <p className={s.readoutBig} style={{ color: "var(--accent)" }}>
+              ‘{wordOf(broken)}’{particle(wordOf(broken))} ‘{broken.head} /{" "}
+              {broken.tail}’로 끊겼습니다
             </p>
           ) : (
-            <p className="mt-1 text-lg font-bold">끊긴 단어가 없습니다</p>
+            <p className={s.readoutBig}>끊긴 단어가 없습니다</p>
           )}
-          <ol className="mt-2 space-y-0.5 text-sm text-muted-foreground">
+          <ol className={`${s.body} mt-3 space-y-1`}>
             {lines.map((l, i) => (
               <li key={i}>
-                <span className={s.num}>{i + 1}줄</span> · {l}
+                <span
+                  className={`${s.num} font-semibold`}
+                  style={{ color: "var(--fg)" }}
+                >
+                  {i + 1}줄
+                </span>{" "}
+                · {l}
               </li>
             ))}
           </ol>
         </div>
 
-        <pre className="overflow-x-auto rounded-xl bg-foreground px-4 py-3 text-[13px] leading-[1.5] text-background">
+        <pre className={`${s.code} ${s.mono}`}>
           <code>
-            {ruleOn ? "h1, h2, h3 {\n  word-break: keep-all;\n  overflow-wrap: anywhere;\n}" : "/* 생성된 그대로: word-break: normal */"}
+            {ruleOn
+              ? "h1, h2, h3 {\n  word-break: keep-all;\n  overflow-wrap: anywhere;\n}"
+              : "/* 생성된 그대로: word-break: normal */"}
           </code>
         </pre>
+
+        {children}
       </div>
 
       {/* Offscreen probe for the break map */}
-      <div aria-hidden className="pointer-events-none invisible fixed left-0 top-0 h-0 w-0 overflow-hidden">
-        <div ref={probeRef} className={s.phone} style={{ width: DEFAULT_WIDTH }}>
+      <div
+        aria-hidden
+        className="pointer-events-none invisible fixed left-0 top-0 h-0 w-0 overflow-hidden"
+      >
+        <div
+          ref={probeRef}
+          className={s.phone}
+          style={{ width: DEFAULT_WIDTH }}
+        >
           <MetricsCard h2Ref={probeH2Ref} />
         </div>
       </div>
