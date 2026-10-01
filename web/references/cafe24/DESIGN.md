@@ -9,59 +9,284 @@ primary_color: "#084fff"
 logo:
   type: favicon
   slug: "https://www.google.com/s2/favicons?domain=cafe24.com&sz=128"
-verified: "2026-06-26"
+verified: "2026-10-01"
 added: "2026-06-26"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-10-01"
+  surfaces:
+    - { id: home, kind: marketing, url: "https://www.cafe24.com/", inspected: "2026-10-01", viewport: "Aside browser" }
+    - { id: surface-2, kind: marketing-product, url: "https://www.cafe24.com/commerce/design/", inspected: "2026-10-01", viewport: "Aside browser" }
+    - { id: surface-3, kind: enterprise-marketing, url: "https://www.cafe24.com/enterprise/main.html", inspected: "2026-10-01", viewport: "Aside browser" }
+  sources:
+    - { id: surface-home, kind: product-surface, url: "https://www.cafe24.com/", captured: "2026-10-01" }
+    - { id: aside-census, kind: product-surface, url: "https://www.cafe24.com/", captured: "2026-10-01" }
+    - { id: surface-surface-2, kind: product-surface, url: "https://www.cafe24.com/commerce/design/", captured: "2026-10-01" }
+    - { id: surface-surface-3, kind: product-surface, url: "https://www.cafe24.com/enterprise/main.html", captured: "2026-10-01" }
+    - { id: corp-history, kind: official-doc, url: "https://www.cafe24corp.com/company/history", captured: "2026-10-01" }
+    - { id: corp-about, kind: official-doc, url: "https://www.cafe24corp.com/company/about", captured: "2026-10-01" }
+    - { id: corp-culture, kind: official-doc, url: "https://www.cafe24corp.com/company/culture", captured: "2026-10-01" }
+    - { id: cafe24-fonts, kind: official-doc, url: "https://fonts.cafe24.com/", captured: "2026-10-01" }
+    - { id: pretendard-license, kind: license, url: "https://raw.githubusercontent.com/orioncactus/pretendard/main/LICENSE", captured: "2026-10-01" }
+  conflicts: []
+  claims:
+    "tokens.colors.primary": { surface_id: home, source_id: aside-census, method: live-inspect, selector: "a 214x56 \"지금 무료로 시작하기\" x1 background-color rgb(8, 79, 255)", captured: "2026-10-01" }
+    "tokens.colors.black": &hdr { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"1\"]", captured: "2026-10-01" }
+    "tokens.colors.accent": &blue { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"17\"]", captured: "2026-10-01" }
+    "tokens.colors.ink": &feat { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-10-01" }
+    "tokens.colors.ink-cool": &body2 { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::body", captured: "2026-10-01" }
+    "tokens.colors.slate": &lead { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::p", captured: "2026-10-01" }
+    "tokens.colors.muted": &desc { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-10-01" }
+    "tokens.colors.faint": &bannerdesc { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-10-01" }
+    "tokens.colors.soft": &storysub { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-10-01" }
+    "tokens.colors.charcoal": &dark { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::div", captured: "2026-10-01" }
+    "tokens.colors.canvas": &wcard { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"35\"]", captured: "2026-10-01" }
+    "tokens.colors.surface": &gcard { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"14\"]", captured: "2026-10-01" }
+    "tokens.colors.surface-alt": &linkpill { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"62\"]", captured: "2026-10-01" }
+    "tokens.colors.hairline": *wcard
+    "tokens.colors.highlight": &hl { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::span", captured: "2026-10-01" }
+    "tokens.typography.family.display": &h2home { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h2", captured: "2026-10-01" }
+    "tokens.typography.family.body": *body2
+    "tokens.typography.display-xl.size": &h2design { surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::h2", captured: "2026-10-01" }
+    "tokens.typography.display-xl.weight": *h2design
+    "tokens.typography.display-xl.lineHeight": *h2design
+    "tokens.typography.display-xl.use": *h2design
+    "tokens.typography.display.size": *h2home
+    "tokens.typography.display.weight": *h2home
+    "tokens.typography.display.lineHeight": *h2home
+    "tokens.typography.display.use": *h2home
+    "tokens.typography.banner-title.size": &banner { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-10-01" }
+    "tokens.typography.banner-title.weight": *banner
+    "tokens.typography.banner-title.lineHeight": *banner
+    "tokens.typography.banner-title.tracking": *banner
+    "tokens.typography.banner-title.use": *banner
+    "tokens.typography.feature-title.size": *feat
+    "tokens.typography.feature-title.weight": *feat
+    "tokens.typography.feature-title.lineHeight": *feat
+    "tokens.typography.feature-title.use": *feat
+    "tokens.typography.card-title.size": &ctitle { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-10-01" }
+    "tokens.typography.card-title.weight": *ctitle
+    "tokens.typography.card-title.lineHeight": *ctitle
+    "tokens.typography.card-title.use": *ctitle
+    "tokens.typography.card-title-sm.size": &ctitlesm { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::h3", captured: "2026-10-01" }
+    "tokens.typography.card-title-sm.weight": *ctitlesm
+    "tokens.typography.card-title-sm.lineHeight": *ctitlesm
+    "tokens.typography.card-title-sm.use": *ctitlesm
+    "tokens.typography.lead.size": *lead
+    "tokens.typography.lead.weight": *lead
+    "tokens.typography.lead.lineHeight": *lead
+    "tokens.typography.lead.use": *lead
+    "tokens.typography.section-desc.size": *desc
+    "tokens.typography.section-desc.weight": *desc
+    "tokens.typography.section-desc.lineHeight": *desc
+    "tokens.typography.section-desc.use": *desc
+    "tokens.typography.body.size": *wcard
+    "tokens.typography.body.weight": *wcard
+    "tokens.typography.body.lineHeight": *wcard
+    "tokens.typography.body.use": *wcard
+    "tokens.typography.quote.size": &quote { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-10-01" }
+    "tokens.typography.quote.weight": *quote
+    "tokens.typography.quote.lineHeight": *quote
+    "tokens.typography.quote.use": *quote
+    "tokens.typography.button-lg.size": &ctadark { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-10-01" }
+    "tokens.typography.button-lg.weight": *ctadark
+    "tokens.typography.button-lg.lineHeight": *ctadark
+    "tokens.typography.button-lg.use": *ctadark
+    "tokens.typography.button.size": &cta { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"34\"]", captured: "2026-10-01" }
+    "tokens.typography.button.weight": *cta
+    "tokens.typography.button.lineHeight": *cta
+    "tokens.typography.button.use": *cta
+    "tokens.typography.label.size": &pill { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::li", captured: "2026-10-01" }
+    "tokens.typography.label.weight": *pill
+    "tokens.typography.label.lineHeight": *pill
+    "tokens.typography.label.use": *pill
+    "tokens.typography.description.size": &cdesc { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-10-01" }
+    "tokens.typography.description.weight": *cdesc
+    "tokens.typography.description.lineHeight": *cdesc
+    "tokens.typography.description.use": *cdesc
+    "tokens.typography.caption.size": &bname { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-10-01" }
+    "tokens.typography.caption.weight": *bname
+    "tokens.typography.caption.lineHeight": *bname
+    "tokens.typography.caption.use": *bname
+    "tokens.typography.small.size": &result { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::p", captured: "2026-10-01" }
+    "tokens.typography.small.weight": *result
+    "tokens.typography.small.lineHeight": *result
+    "tokens.typography.small.use": *result
+    "tokens.spacing.card-y": *gcard
+    "tokens.spacing.card-x": *gcard
+    "tokens.spacing.pill-y": *pill
+    "tokens.spacing.pill-x": *pill
+    "tokens.spacing.cta-x": *cta
+    "tokens.spacing.cta-x-lg": *ctadark
+    "tokens.rounded.cta-sharp": *blue
+    "tokens.rounded.icon": &icon { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::div", captured: "2026-10-01" }
+    "tokens.rounded.card": *dark
+    "tokens.rounded.card-lg": *wcard
+    "tokens.rounded.card-xl": *gcard
+    "tokens.rounded.tab": &tabsel { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"3\"]", captured: "2026-10-01" }
+    "tokens.rounded.header-pill": *hdr
+    "tokens.rounded.pill": *cta
+    "tokens.components.header-cta.type": *hdr
+    "tokens.components.header-cta.bg": *hdr
+    "tokens.components.header-cta.fg": *hdr
+    "tokens.components.header-cta.border": *hdr
+    "tokens.components.header-cta.radius": *hdr
+    "tokens.components.header-cta.padding": *hdr
+    "tokens.components.header-cta.height": *hdr
+    "tokens.components.header-cta.font": *hdr
+    "tokens.components.header-cta.states": *hdr
+    "tokens.components.header-cta.use": *hdr
+    "tokens.components.design-cta.type": *blue
+    "tokens.components.design-cta.bg": *blue
+    "tokens.components.design-cta.fg": *blue
+    "tokens.components.design-cta.border": *blue
+    "tokens.components.design-cta.radius": *blue
+    "tokens.components.design-cta.padding": *blue
+    "tokens.components.design-cta.height": *blue
+    "tokens.components.design-cta.font": *blue
+    "tokens.components.design-cta.states": *blue
+    "tokens.components.design-cta.use": *blue
+    "tokens.components.round-cta-lg.type": *ctadark
+    "tokens.components.round-cta-lg.bg": *ctadark
+    "tokens.components.round-cta-lg.fg": *ctadark
+    "tokens.components.round-cta-lg.radius": *ctadark
+    "tokens.components.round-cta-lg.padding": *ctadark
+    "tokens.components.round-cta-lg.height": *ctadark
+    "tokens.components.round-cta-lg.font": *ctadark
+    "tokens.components.round-cta-lg.states": *ctadark
+    "tokens.components.round-cta-lg.use": *ctadark
+    "tokens.components.round-cta.type": *cta
+    "tokens.components.round-cta.bg": *cta
+    "tokens.components.round-cta.fg": *cta
+    "tokens.components.round-cta.radius": *cta
+    "tokens.components.round-cta.padding": *cta
+    "tokens.components.round-cta.height": *cta
+    "tokens.components.round-cta.font": *cta
+    "tokens.components.round-cta.states": *cta
+    "tokens.components.round-cta.use": *cta
+    "tokens.components.floating-banner-button.type": &float { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"10\"]", captured: "2026-10-01" }
+    "tokens.components.floating-banner-button.bg": *float
+    "tokens.components.floating-banner-button.fg": *float
+    "tokens.components.floating-banner-button.radius": *float
+    "tokens.components.floating-banner-button.padding": *float
+    "tokens.components.floating-banner-button.height": *float
+    "tokens.components.floating-banner-button.font": *float
+    "tokens.components.floating-banner-button.states": *float
+    "tokens.components.floating-banner-button.use": *float
+    "tokens.components.enterprise-tab.type": &taboff { surface_id: surface-3, source_id: surface-surface-3, method: computed-style, selector: "surface-3::[data-omd-capture=\"4\"]", captured: "2026-10-01" }
+    "tokens.components.enterprise-tab.bg": *taboff
+    "tokens.components.enterprise-tab.fg": *taboff
+    "tokens.components.enterprise-tab.border": *taboff
+    "tokens.components.enterprise-tab.radius": *taboff
+    "tokens.components.enterprise-tab.padding": *taboff
+    "tokens.components.enterprise-tab.height": *taboff
+    "tokens.components.enterprise-tab.font": *taboff
+    "tokens.components.enterprise-tab.selected": *tabsel
+    "tokens.components.enterprise-tab.states": *tabsel
+    "tokens.components.enterprise-tab.use": *taboff
+    "tokens.components.link-pill.type": *linkpill
+    "tokens.components.link-pill.bg": *linkpill
+    "tokens.components.link-pill.fg": *linkpill
+    "tokens.components.link-pill.border": *linkpill
+    "tokens.components.link-pill.radius": *linkpill
+    "tokens.components.link-pill.padding": *linkpill
+    "tokens.components.link-pill.height": *linkpill
+    "tokens.components.link-pill.font": *linkpill
+    "tokens.components.link-pill.states": *linkpill
+    "tokens.components.link-pill.use": *linkpill
+    "tokens.components.slider-control.type": &ctrl { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"20\"]", captured: "2026-10-01" }
+    "tokens.components.slider-control.bg": *ctrl
+    "tokens.components.slider-control.fg": *ctrl
+    "tokens.components.slider-control.radius": *ctrl
+    "tokens.components.slider-control.size": *ctrl
+    "tokens.components.slider-control.states": *ctrl
+    "tokens.components.slider-control.use": *ctrl
+    "tokens.components.promo-pill.type": *pill
+    "tokens.components.promo-pill.bg": *pill
+    "tokens.components.promo-pill.fg": *pill
+    "tokens.components.promo-pill.radius": *pill
+    "tokens.components.promo-pill.padding": *pill
+    "tokens.components.promo-pill.height": *pill
+    "tokens.components.promo-pill.font": *pill
+    "tokens.components.promo-pill.shadow": *pill
+    "tokens.components.promo-pill.use": *pill
+    "tokens.components.content-card-gray.type": *gcard
+    "tokens.components.content-card-gray.bg": *gcard
+    "tokens.components.content-card-gray.radius": *gcard
+    "tokens.components.content-card-gray.padding": *gcard
+    "tokens.components.content-card-gray.size": *gcard
+    "tokens.components.content-card-gray.use": *gcard
+    "tokens.components.content-card-white.type": *wcard
+    "tokens.components.content-card-white.bg": *wcard
+    "tokens.components.content-card-white.border": *wcard
+    "tokens.components.content-card-white.radius": *wcard
+    "tokens.components.content-card-white.padding": *wcard
+    "tokens.components.content-card-white.size": *wcard
+    "tokens.components.content-card-white.use": *wcard
+    "tokens.components.intro-dark-card.type": *dark
+    "tokens.components.intro-dark-card.bg": *dark
+    "tokens.components.intro-dark-card.radius": *dark
+    "tokens.components.intro-dark-card.shadow": *dark
+    "tokens.components.intro-dark-card.use": *dark
+    "tokens.components.story-card.type": &story { surface_id: home, source_id: surface-home, method: computed-style, selector: "home::div", captured: "2026-10-01" }
+    "tokens.components.story-card.bg": *story
+    "tokens.components.story-card.radius": *story
+    "tokens.components.story-card.size": *story
+    "tokens.components.story-card.use": *story
 tokens:
-  source: live-extract
-  extracted: "2026-06-26"
-  note: "primary = live marketing CTA blue (#084fff, full pill); the product/login app surface uses a slightly lighter blue (#3971ff) on sharp 4px buttons. Ink near-black (#1c1c1c). Lime (#bbf94f) is the single saturated accent reserved for dark hero sections."
+  source: reconciled
+  extracted: "2026-10-01"
   colors:
     primary: "#084fff"
-    primary-app: "#3971ff"
+    black: "#000000"
+    accent: "#235bf5"
     ink: "#1c1c1c"
-    ink-input: "#1b1e26"
-    canvas: "#ffffff"
-    charcoal: "#323232"
-    slate-deep: "#1a1d22"
-    navy: "#012255"
-    pure-black: "#000000"
-    nav-grey: "#616161"
-    body-grey: "#5f5f5f"
+    ink-cool: "#1b1e26"
+    slate: "#444b59"
     muted: "#757575"
-    faint: "#bfbfbf"
-    lime: "#bbf94f"
+    faint: "#a6a6a6"
+    soft: "#bfbfbf"
+    charcoal: "#323232"
+    canvas: "#ffffff"
     surface: "#f9fafb"
     surface-alt: "#f0f2f3"
-    chip-surface: "#f7f8fa"
-    tint-blue: "#e6edff"
     hairline: "#e0e0e0"
-    border-soft: "#e6e8eb"
-    input-border: "#d6dae1"
+    highlight: "#10b981"
   typography:
-    family: { sans: "Pretendard", legacy: "Noto Sans KR" }
-    display:    { size: 48, weight: 700, lineHeight: 1.21, use: "Section hero headline (H2)" }
-    heading-xl: { size: 40, weight: 700, lineHeight: 1.35, tracking: -0.4, use: "Store / feature section title" }
-    heading-lg: { size: 30, weight: 700, lineHeight: 1.53, use: "Sub-section headline" }
-    heading-md: { size: 24, weight: 700, lineHeight: 1.42, use: "Card headline" }
-    heading-sm: { size: 20, weight: 700, lineHeight: 1.40, use: "Small card / persona title" }
-    body:       { size: 18, weight: 400, lineHeight: 1.50, use: "Body copy, Pretendard" }
-    nav:        { size: 16, weight: 500, lineHeight: 1.50, use: "Top navigation links" }
-    button:     { size: 18, weight: 700, lineHeight: 1.00, use: "Primary CTA label" }
-    caption:    { size: 14, weight: 400, lineHeight: 1.50, use: "Tag chips, captions, fine print" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 20, xl: 32, xxl: 40, section: 64 }
-  rounded: { sm: 4, md: 6, lg: 8, xl: 20, pill: 24, full: 9999 }
-  shadow:
-    none: "none"
+    family: { display: "Cafe24Ohsquare", body: "Pretendard" }
+    display-xl: { size: 56, weight: 700, lineHeight: 1.25, use: "Hero headline of the design service page (쇼핑몰 디자인), Cafe24Ohsquare, computed 55.98px on a 70.02px line, in #1b1e26" }
+    display: { size: 48, weight: 700, lineHeight: 1.21, use: "Section titles on home and the enterprise page, Cafe24Ohsquare, 58px line, #1c1c1c on light bands and #ffffff on dark ones" }
+    banner-title: { size: 40, weight: 700, lineHeight: 1.35, tracking: -0.4, use: "Banner headline on home (banner__title), Cafe24Ohsquare, 54px line, in #ffffff" }
+    feature-title: { size: 30, weight: 700, lineHeight: 1.53, use: "Feature grid titles on home (feature-grid__card-title), Cafe24Ohsquare, 46px line, in #1c1c1c" }
+    card-title: { size: 24, weight: 700, lineHeight: 1.42, use: "White content card titles on home, Cafe24Ohsquare, 34px line" }
+    card-title-sm: { size: 20, weight: 700, lineHeight: 1.4, use: "Grey content card titles on home, Cafe24Ohsquare, 28px line" }
+    lead: { size: 22, weight: 400, lineHeight: 1.5, use: "Lead paragraphs on the design service page, Pretendard, computed 21.996px on a 32.94px line, in #444b59" }
+    section-desc: { size: 20, weight: 400, lineHeight: 1.4, use: "Section descriptions under home titles, Pretendard, 28px line, in #757575 (white on dark bands)" }
+    body: { size: 18, weight: 400, lineHeight: 1.5, use: "Card and page body on home, Pretendard, 27px line, in #1c1c1c" }
+    quote: { size: 18, weight: 600, lineHeight: 1.56, use: "Customer testimonial quotes on home, Pretendard, 28px line, in #ffffff" }
+    button-lg: { size: 22, weight: 700, lineHeight: 1.45, use: "Label of the 64px round call to action on home, 32px line" }
+    button: { size: 18, weight: 700, lineHeight: 1.44, use: "Label of the 56px round call to action on home, 26px line" }
+    label: { size: 16, weight: 700, lineHeight: 1.5, use: "Promo pill labels on home, 24px line, in #000000" }
+    description: { size: 16, weight: 400, lineHeight: 1.5, use: "Content card descriptions on home, 24px line, in #757575" }
+    caption: { size: 14, weight: 600, lineHeight: 1.43, use: "Brand names under the brand cards on home, 20px line" }
+    small: { size: 13, weight: 500, lineHeight: 1.38, use: "Result lines on the story cards on home, 18px line" }
+  spacing: { card-y: 40, card-x: 32, pill-y: 12, pill-x: 24, cta-x: 32, cta-x-lg: 40 }
+  rounded: { cta-sharp: 3.96, icon: 8, card: 12, card-lg: 16, card-xl: 20, tab: 30, header-pill: 100, pill: 9999 }
   components:
-    button-primary: { type: button, bg: "#084fff", fg: "#ffffff", radius: "9999px", height: "56px", padding: "0 32px", font: "18px / 700", use: "Marketing primary CTA — 지금 무료로 시작하기, full pill" }
-    button-app: { type: button, bg: "#3971ff", fg: "#ffffff", radius: "4px", height: "56px", padding: "0 20px", font: "16px / 700", use: "Product / login app submit — 로그인, sharp corner" }
-    chip-selector: { type: button, bg: "#f9fafb", fg: "#1c1c1c", border: "1px solid #e0e0e0", radius: "24px", padding: "10px 16px", height: "46px", font: "15px / 700", use: "Family-site / country selector pill" }
-    nav-link: { type: tab, fg: "#616161", radius: "6px", padding: "8px 12px", font: "16px / 500", active: "text #1c1c1c on active", use: "Top nav item" }
-    card-persona: { type: card, bg: "#f9fafb", fg: "#1c1c1c", radius: "20px", padding: "40px 32px", use: "Persona / segment entry card, shadowless" }
-    input-text: { type: input, bg: "#ffffff", fg: "#1b1e26", border: "1px solid #d6dae1", radius: "4px", padding: "14px 12px", height: "48px", font: "14px / 400", use: "Login / form text field" }
-    tag-chip: { type: badge, bg: "#f7f8fa", fg: "#5f5f5f", radius: "6px", padding: "4px 9px", font: "14px / 400", use: "Category / filter tag chip" }
-    badge-step: { type: badge, bg: "#e6edff", fg: "#084fff", radius: "8px", font: "14px / 800", use: "Numbered step indicator" }
+    header-cta: { type: button, bg: "#000000", fg: "#ffffff", border: "1px solid #000000", radius: "100px", padding: "12px 16px", height: "40px", font: "16px / 700 / 40px Pretendard", states: "rest only on two pages; the Aside bundle has no hover, pressed or focus frame", use: "쇼핑몰 만들기 in the header of the design service and enterprise pages, 121 x 40, at surface-2::[data-omd-capture=\"1\"] and surface-3::[data-omd-capture=\"1\"]" }
+    design-cta: { type: button, bg: "#235bf5", fg: "#ffffff", border: "1px solid #235bf5", radius: "3.96px", padding: "0px 39.96px", height: "56px", font: "18px / 700 / 54px Pretendard", states: "rest only; no state frame", use: "The in-page 쇼핑몰 만들기 at the foot of the design service page, 179 x 56, at surface-2::[data-omd-capture=\"17\"]; the page's text links use the same #235bf5" }
+    round-cta-lg: { type: button, bg: "#ffffff", fg: "#1c1c1c", radius: "9999px", padding: "0px 40px", height: "64px", font: "22px / 700 / 32px Pretendard", states: "rest only; no state frame", use: "White round call to action (btn--fill btn--round btn--on-dark) under a white section title on a dark band of home, 201 x 64, at home::[data-omd-capture=\"33\"]; its label was not recorded" }
+    round-cta: { type: button, bg: "#ffffff", fg: "#1c1c1c", radius: "9999px", padding: "0px 32px", height: "56px", font: "18px / 700 / 26px Pretendard", states: "rest only; no state frame", use: "White round call to action (btn--primary) under the white banner headline on home, 179 x 56, at home::[data-omd-capture=\"34\"]; its label was not recorded" }
+    floating-banner-button: { type: button, bg: "#ffffff", fg: "#000000", radius: "999px", padding: "0px 24px", height: "44px", font: "15px / 600 / 22.5px Pretendard", states: "rest only; no state frame", use: "Button on the floating banner of the home hero (cafe24pro-hero__floating-banner-btn), 172 x 44, at home::[data-omd-capture=\"10\"]" }
+    enterprise-tab: { type: tab, bg: "#ffffff", fg: "#1c1c1c", border: "1px solid #ffffff", radius: "30px", padding: "0px 20px", height: "50px", font: "20px / 700 / 28px Arial (system stack)", selected: "bg #1c1c1c, fg #ffffff (class active)", states: "rest values only; selected read from the active class at rest; no hover, pressed or focus frame", use: "Tab buttons (btnTab) in the enterprise page's tab menu at surface-3::[data-omd-capture=\"4\"]; the menu strip itself carries a 0 0 4px shadow" }
+    link-pill: { type: button, bg: "#f0f2f3", fg: "#1c1c1c", border: "1px solid #ffffff", radius: "100px", padding: "0px 24px", height: "56px", font: "18px / 700 / 54px Pretendard", states: "rest only; no state frame", use: "Grey pill link on the enterprise page, 147 x 56, at surface-3::[data-omd-capture=\"62\"]" }
+    slider-control: { type: button, bg: "rgba(255, 255, 255, 0.2)", fg: "#ffffff", radius: "9999px", size: "60px x 60px", states: "rest only on three instances; no state frame", use: "Previous, play and next controls of the brand story carousel on home (pro-brands__ctrl) at home::[data-omd-capture=\"20\"]" }
+    promo-pill: { type: badge, bg: "#ffffff", fg: "#000000", radius: "9999px", padding: "12px 24px", height: "48px", font: "16px / 700 / 24px Pretendard", shadow: "rgba(0, 0, 0, 0.04) 0px 2px 8px 0px", use: "White benefit pills stacked in the home promo cards (promo-card__pill); a two-line variant is 72px tall and carries a #10b981 highlight span" }
+    content-card-gray: { type: card, bg: "#f9fafb", radius: "20px", padding: "40px 32px", size: "200px x 202px", use: "Grey linked cards on home (content-card--gray, six instances), each with a 38px #000000 icon box at 8px radius and a 20px Cafe24Ohsquare title" }
+    content-card-white: { type: card, bg: "#ffffff", border: "1px solid #e0e0e0", radius: "16px", padding: "40px 32px", size: "416px x 228px", use: "White linked cards on home (content-card--white, three instances) with a 24px title and #757575 description" }
+    intro-dark-card: { type: card, bg: "#323232", radius: "12px", shadow: "rgba(0, 0, 0, 0.43) 0px 20.57px 51.43px 0px on the active card; rgba(0, 0, 0, 0.07) 0px 3.43px 8.57px 0px on its neighbours; none on the far cards", use: "Fanned carousel cards in the dark intro section of home (intro-section-dark__card), 406–578px wide" }
+    story-card: { type: card, bg: "#323232", radius: "16px", size: "560px x 560px", use: "Square image cards of the customer story section on home (story-section__card-img); #323232 is the placeholder fill under the photograph" }
   components_harvested: true
 ---
 
@@ -69,413 +294,359 @@ tokens:
 
 ## 1. Visual Theme & Atmosphere
 
-Cafe24 (카페24) is Korea's foundational e-commerce platform — the infrastructure that builds, operates, and markets a huge share of the country's online stores — and its 2026 marketing site reads like a confident, approachable SaaS product rather than the dense merchant-admin tooling it powers underneath. The canvas is pure white (`#ffffff`) broken up by soft cool-grey surfaces (`#f9fafb`, `#f0f2f3`) that segment the page into calm, breathable bands. Text sits in a warm near-black (`#1c1c1c`) — never pure black for body copy — which keeps the long, information-rich marketing page feeling light and legible. The single saturated action color is an electric royal blue (`#084fff`), reserved almost entirely for the primary "지금 무료로 시작하기" (Start free now) call-to-action, so the eye is trained to read that one blue as "do this."
+Cafe24 (카페24) builds the platform on which Korean online shops are made, run and marketed. Its company timeline begins in 1999 with 심플렉스인터넷(주) and its research lab. The 카페24 brand launched in 2000, followed by a hosting centre (2002), a shopping-mall centre (2003), a design centre (2004) and a marketing centre (2006). Mobile shops came in 2010 and a brand identity revision (BI 개편) in 2011. A global e-commerce platform followed in 2013 with an Amazon partnership, and the company took the name 카페24 주식회사 in 2017. It listed on KOSDAQ in 2018, signed a mutual-investment partnership with Naver in 2021 and took investment from Google in 2023. In 2024 it launched what it calls the world's first feature for opening a store dedicated to YouTube Shopping. Today it describes itself as a global success partner for K-style goods: a one-stop platform from store building to global marketing and logistics, chosen by 2 million shops and 6.2 million members. Its culture page describes a flat organisation: no titles besides leaders, everyone called "님", minimal rules and decisions made close to the work.
 
-The typographic personality is unmistakably Korean-modern: everything is set in **Pretendard**, the de-facto Korean product sans, with a heavy bold/regular split doing all the hierarchy work. Headlines run at weight 700 across a wide scale — 48px section heroes, 40px store-feature titles, down through 30px / 24px / 20px card heads — while body copy drops to a quiet 18px regular at a generous 1.5 line-height. There is almost no decorative letter-spacing; the system leans on size and weight, not tracking, to build rhythm. The result feels engineered and friendly at once: bold where it persuades ("처음이어도 할 수 있어요!" / "You can do it even your first time"), calm where it informs.
-
-What gives Cafe24 its distinctive edge is the interplay of two registers. The bright, white, blue-accented marketing surface alternates with deep dark sections — charcoal (`#323232`), near-black slate (`#1a1d22`), and an occasional deep navy (`#012255`) — where a single high-voltage lime-chartreuse (`#bbf94f`) is deployed as the accent. That lime is the brand's one moment of swagger, used sparingly on dark backgrounds to signal energy and momentum. Geometry is friendly and rounded: the primary CTA is a full pill (`9999px`), persona cards round at a soft 20px, selector chips at 24px, and the smaller chrome (nav, tags) at a tidy 6px. Depth is handled with restraint — separation comes from flat tinted surfaces and thin hairlines (`#e0e0e0`, `#e6e8eb`) rather than drop shadows. Notably, the product/login app surface (eclogin) runs a tighter, more utilitarian variant of the same identity: a slightly lighter blue (`#3971ff`) on sharp 4px buttons and inputs, signalling "tool" where the marketing site signals "invitation."
+Its public website is a black-and-white marketing system with one blue call to action and one display face. On home the main call to action, 지금 무료로 시작하기 (start for free), is a blue `#084fff` button, 214 × 56; a full-page census of every visible element on home (1,375, 2026-10-01) found it as the only interactive element with that fill. Section titles are set in Cafe24Ohsquare, the company's own bold geometric Hangul face, at 48px. They sit over Pretendard body copy at 18–22px. The persistent call to action on the design service and enterprise pages, 쇼핑몰 만들기 (build a shop), is a black `#000000` pill with white text in the header. On home, the calls to action invert: white `#ffffff` round pills with `#1c1c1c` labels sit on dark bands. Those bands are carried by `#323232` cards and photography, and the light bands use `#f9fafb` cards at 20px radius and white cards with a `#e0e0e0` hairline at 16px. Around that blue the chrome is black and white. The design service page, an older template with a cooler `#1b1e26` ink and `#444b59` lead text, uses blue `#235bf5` for its own 쇼핑몰 만들기 and for its text links. Depth is light but real: the white promo pills carry a faint shadow, and the active card of the dark intro carousel lifts on a deep 51px blur.
 
 **Key Characteristics:**
-- Pretendard everywhere — bold (700) headlines over regular (400) body is the entire hierarchy engine
-- Single saturated royal blue (`#084fff`) reserved for the primary marketing CTA
-- Warm near-black (`#1c1c1c`) for text instead of pure black — light, legible on long pages
-- High-voltage lime (`#bbf94f`) as the one swagger accent, only on dark sections
-- Dual register: bright white/blue marketing chrome vs. charcoal/slate dark hero bands (`#323232`, `#1a1d22`)
-- Friendly rounded geometry — 9999px pill CTA, 20px cards, 24px selector chips, 6px nav/tags
-- Flat depth: separation via tinted surfaces (`#f9fafb`) + thin hairlines (`#e0e0e0`), minimal shadow
-- A tighter app/product variant (`#3971ff`, 4px) that diverges intentionally from the marketing pill chrome
+- Blue main call to action on home: `#084fff` fills 지금 무료로 시작하기 (full-page census of home)
+- Black and white secondary actions: the `#000000` header pill 쇼핑몰 만들기 on light pages, white `#ffffff` round pills on dark bands of home
+- Cafe24Ohsquare for display (48px section titles, up to 56px on the design page), Pretendard for everything read
+- Rounded geometry by role: 9999px calls to action and pills, 100px header pill, 30px tabs, 20px / 16px / 12px cards, 8px icon boxes
+- Light bands of `#f9fafb` and white cards, dark bands of `#323232` cards
+- One page-specific blue, `#235bf5`, on the design service page's in-page call to action and links
+- Soft shadows only where something floats: promo pills, the active intro card, the enterprise tab strip
 
 ## Primary tasks
 
-- Build, run, and market an online store in one place
-- Start a store without ever having run one
-- Turn a YouTube audience into an online shop
-- Migrate a shop off another commerce solution
-- Sell across borders to Korean and international buyers
-- Log in to the merchant admin to run the store
+- Start building an online shop (쇼핑몰 만들기)
+- Choose a free design theme or a designer-made design for the shop
+- Learn what Cafe24 offers enterprise brands and see customer brands that run on it
+- Read customer stories and the services that support selling at home and abroad
 
 ## 2. Color Palette & Roles
 
+Every token below was read from the bundle the main session captured on 2026-10-01 through a logged-out browser window (the "Aside browser", not a fixed 1440 × 900 headless viewport) on www.cafe24.com, /commerce/design/ and /enterprise/main.html. The bundle records rest values only.
+
 ### Primary
-- **Cafe24 Blue** (`#084fff`): The primary brand action color. The electric royal blue on the marketing "지금 무료로 시작하기" CTA and on numbered step indicators — the system's single "action" signal.
-- **App Blue** (`#3971ff`): A slightly lighter blue used on the product/login app surface (eclogin) for submit buttons. The utilitarian sibling of the marketing blue.
-- **Ink** (`#1c1c1c`): Primary text and heading color across the marketing site — a warm near-black that carries weight without the harshness of pure black.
-- **Input Ink** (`#1b1e26`): The text color inside form fields on the app surface; a marginally cooler near-black tuned for dense input legibility.
+- **Cafe24 Blue** (`#084fff`): The fill of 지금 무료로 시작하기, the main call to action on home (an `a`, 214 × 56). It is the primary because it fills the home page's primary action. The 250-element capture of home stopped before it; the value comes from a full-page computed-style census of all 1,375 visible elements on home, taken the same day in the same logged-out browser (`docs/research/2026-09-29-growth/raw/aside/primary-census-2026-10-01.json`), which found exactly one element with that fill, and it is interactive. The census covers home only and recorded the fill and size, not the label colour, radius or font, so no on-primary colour and no component is declared for it.
 
-### Neutral & Surface
-- **Pure White** (`#ffffff`): Page background, white cards, and text on blue/dark surfaces.
-- **Surface Grey** (`#f9fafb`): The workhorse cool-grey for persona cards and segmented sections.
-- **Surface Alt** (`#f0f2f3`): A secondary grey band for alternating content sections.
-- **Chip Surface** (`#f7f8fa`): The fill for small category/filter tag chips.
-- **Tint Blue** (`#e6edff`): A pale blue wash behind numbered step badges, paired with the blue ink.
-- **Hairline** (`#e0e0e0`): Thin borders and dividers — the primary separation device given the near-flat system.
-- **Border Soft** (`#e6e8eb`): A slightly cooler border / circular icon-button fill.
-- **Input Border** (`#d6dae1`): The 1px border on app/login text fields.
-
-### Dark Sections
-- **Charcoal** (`#323232`): The most common dark-section background — used for immersive feature bands.
-- **Slate Deep** (`#1a1d22`): A near-black slate for high-contrast dark hero sections.
-- **Navy** (`#012255`): A deep brand navy used occasionally for accent dark blocks.
-- **Pure Black** (`#000000`): Maximum-contrast dark sections and overlays.
+### Header black
+- **Black** (`#000000`): The fill of 쇼핑몰 만들기, the call to action fixed in the header of the design service and enterprise pages (121 × 40 pill, 1px `#000000` border, `#ffffff` label; captures `surface-2` and `surface-3` #1). On home the dark bands invert it: white round pills with `#1c1c1c` labels. The census counts 12 `#000000` fills on home, 6 of them interactive.
 
 ### Accent
-- **Lime** (`#bbf94f`): The single saturated accent — a high-voltage chartreuse reserved for highlights and emphasis text on dark sections. Never used on light backgrounds.
+- **Design Blue** (`#235bf5`): The fill and border of the in-page 쇼핑몰 만들기 at the foot of the design service page (179 × 56, 3.96px radius) and the colour of that page's text links. It appears only on that page, so it is an accent, not the primary.
+- **Highlight Green** (`#10b981`): A highlight span inside one of the home promo pills.
 
-### Text Hierarchy
-- **Ink** (`#1c1c1c`): Primary text, headings, strong labels.
-- **Nav Grey** (`#616161`): Top-navigation link text.
-- **Body Grey** (`#5f5f5f`): Tag-chip labels and secondary copy.
-- **Muted** (`#757575`): Tertiary text, metadata.
-- **Faint** (`#bfbfbf`): Lowest-emphasis labels, placeholder-level text.
+### Neutral & Surface
+- **Canvas** (`#ffffff`): White content cards and promo pills.
+- **Surface** (`#f9fafb`): Grey linked content cards on home.
+- **Surface Alt** (`#f0f2f3`): The grey pill link on the enterprise page.
+- **Charcoal** (`#323232`): The dark intro carousel cards and the placeholder fill of the story cards on home.
+- **Hairline** (`#e0e0e0`): The 1px border of the white content cards (and the dominant border colour of home and the enterprise page).
+
+### Text
+- **Ink** (`#1c1c1c`): Headings and body on home and the enterprise page; the label of the white round pills.
+- **Ink Cool** (`#1b1e26`): Document text and headings on the design service page.
+- **Slate** (`#444b59`): Lead paragraphs on the design service page.
+- **Muted** (`#757575`): Section descriptions and card descriptions on home.
+- **Faint** (`#a6a6a6`): The banner description on home and footer links.
+- **Soft** (`#bfbfbf`): The story section subtitle on its dark band.
+
+### Brand assets, not tokens
+- The enterprise page's customer card stack paints each card in its client's colours (for example `#111d76` with `#76cab2`, `#eacdde` with `#c23b6c`, `#bc7b4d` with `#652e07`). These are customer brand artwork, not Cafe24 tokens.
+- The Cafe24 logo is an image-replaced `h1` (0px text); no logo colour was measured or claimed.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Primary**: `Pretendard` (with `-apple-system`, `system-ui` fallbacks) — used for all marketing headlines, body, nav, and UI. Bold (700) for display, regular (400) for body.
-- **Legacy**: `Noto Sans KR` (with Dotum fallback) — used on the older developer-docs surface (`developers.cafe24.com`), a separate brand-owned chrome from the modern Pretendard marketing site.
+- **Cafe24Ohsquare** — `loaded / high`, 49 observed uses (h1, h2, h3, display text). Section and card titles on all three pages. It is a Cafe24 typeface; the company's font site fonts.cafe24.com says its fonts are "모든 사용자에게 무료로 제공되며 상업적인 사용이 가능합니다" (free for all users and commercially usable). The catalogue on that site is rendered by script and Ohsquare was not seen in its static HTML, so the face's own catalogue entry and licence text were not confirmed for this record.
+- **Pretendard** — `loaded / high`, 573 observed uses (body, cards, list items, buttons, badges). Distributed by its author under the SIL Open Font License 1.1.
+- **Arial** — 11 uses, the system stack on the enterprise tab buttons and a footer button; not a brand face.
+- **Declared only:** `AdobeClean-Bold`, `AdobeClean-Regular` — `@font-face` without observed use.
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Section Hero | Pretendard | 48px (3.00rem) | 700 | 1.21 (58px) | normal | H2 section heroes |
-| Store / Feature Title | Pretendard | 40px (2.50rem) | 700 | 1.35 (54px) | -0.4px | Store hub & feature section titles |
-| Sub-section | Pretendard | 30px (1.88rem) | 700 | 1.53 (46px) | normal | Recommendation headlines |
-| Card Headline | Pretendard | 24px (1.50rem) | 700 | 1.42 (34px) | normal | Feature card heads |
-| Small Card / Persona | Pretendard | 20px (1.25rem) | 700 | 1.40 (28px) | normal | Persona/segment card titles |
-| Body | Pretendard | 18px (1.13rem) | 400 | 1.50 (27px) | normal | Standard reading text |
-| Nav Link | Pretendard | 16px (1.00rem) | 500 | 1.50 | normal | Top navigation |
-| Button | Pretendard | 18px (1.13rem) | 700 | 1.00 | normal | Primary CTA label |
-| Caption / Tag | Pretendard | 14px (0.88rem) | 400 | 1.50 | normal | Tag chips, captions |
+| Role | Font | Size | Weight | Line height | Tracking | Where |
+|---|---|---|---|---|---|---|
+| Display XL | Cafe24Ohsquare | 56px (55.98) | 700 | 70px | normal | Design service hero |
+| Display | Cafe24Ohsquare | 48px | 700 | 58px | normal | Section titles, home and enterprise |
+| Banner title | Cafe24Ohsquare | 40px | 700 | 54px | -0.4px | Home banner |
+| Feature title | Cafe24Ohsquare | 30px | 700 | 46px | normal | Home feature grid |
+| Card title | Cafe24Ohsquare | 24px | 700 | 34px | normal | White cards |
+| Card title small | Cafe24Ohsquare | 20px | 700 | 28px | normal | Grey cards |
+| Lead | Pretendard | 22px (21.996) | 400 | 32.94px | normal | Design service paragraphs |
+| Section description | Pretendard | 20px | 400 | 28px | normal | Under section titles |
+| Body | Pretendard | 18px | 400 | 27px | normal | Cards and page body |
+| Quote | Pretendard | 18px | 600 | 28px | normal | Testimonials |
+| Button large | Pretendard | 22px | 700 | 32px | normal | 64px round CTA |
+| Button | Pretendard | 18px | 700 | 26px | normal | 56px round CTA |
+| Label | Pretendard | 16px | 700 | 24px | normal | Promo pills |
+| Description | Pretendard | 16px | 400 | 24px | normal | Card descriptions |
+| Caption | Pretendard | 14px | 600 | 20px | normal | Brand names |
+| Small | Pretendard | 13px | 500 | 18px | normal | Story card results |
+
+The home hero's intro message is set larger still in Cafe24Ohsquare (34.56px / 700 / 48.384px, white); it is a one-off and not a token.
 
 ### Principles
-- **Bold display, regular body**: Weight 700 carries every headline; weight 400 carries every paragraph. The weight contrast is the system's primary hierarchy signal.
-- **Size-driven, not tracking-driven**: Letter-spacing is almost always normal; only the 40px store title pulls a slight -0.4px. Hierarchy is built from the size ladder, not tracking.
-- **One family, many jobs**: Pretendard does display, body, nav, and UI. There is no display/body font split — weight and size do the work.
-- **Generous body line-height**: Body sits at 18px / 1.5 for comfortable scanning across a long, content-dense marketing page.
+- **Two faces, two jobs.** Cafe24Ohsquare titles; Pretendard reads. Buttons and labels stay in Pretendard.
+- **Bold titles, regular reading.** Every title is 700; reading copy is 400, with 600 for quotes and captions.
+- **Tracking stays normal.** Only the home banner title (-0.4px) and the top belt links (-0.28px) tighten.
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Primary CTA (Marketing)**
-- Background: `#084fff`
+**Header call to action**
+- Background: `#000000`
 - Text: `#ffffff`
+- Border: 1px solid `#000000`
+- Radius: 100px
+- Padding: 12px 16px
+- Height: 40px (121px wide)
+- Font: 16px / 700 / 40px Pretendard
+- States: rest only; the Aside bundle has no hover, pressed or focus frame
+- Use: 쇼핑몰 만들기 in the header of the design service and enterprise pages
+
+**Design page call to action**
+- Background: `#235bf5`
+- Text: `#ffffff`
+- Border: 1px solid `#235bf5`
+- Radius: 3.96px
+- Padding: 0px 39.96px
+- Height: 56px (179px wide)
+- Font: 18px / 700 / 54px Pretendard
+- States: rest only
+- Use: The in-page 쇼핑몰 만들기 on /commerce/design/
+
+**Round call to action, large**
+- Background: `#ffffff`
+- Text: `#1c1c1c`
+- Radius: 9999px
+- Padding: 0px 40px
+- Height: 64px
+- Font: 22px / 700 / 32px Pretendard
+- States: rest only
+- Use: White pill on a dark band of home (label not recorded)
+
+**Round call to action**
+- Background: `#ffffff`
+- Text: `#1c1c1c`
 - Radius: 9999px
 - Padding: 0px 32px
 - Height: 56px
-- Font: 18px / 700 / Pretendard
-- Use: The single primary marketing call-to-action — "지금 무료로 시작하기"
+- Font: 18px / 700 / 26px Pretendard
+- States: rest only
+- Use: White pill under the home banner headline (label not recorded)
 
-**App Submit (Product / Login)**
-- Background: `#3971ff`
-- Text: `#ffffff`
-- Radius: 4px
-- Padding: 0px 20px
-- Height: 56px
-- Font: 16px / 700 / Pretendard
-- Use: Submit action on the eclogin product surface — "로그인"
-
-**Selector Chip**
-- Background: `#f9fafb`
-- Text: `#1c1c1c`
-- Border: 1px solid `#e0e0e0`
-- Radius: 24px
-- Padding: 10px 16px
-- Height: 46px
-- Font: 15px / 700 / Pretendard
-- Use: Family-site / country selector pills ("패밀리 사이트", "대한민국")
-
-### Inputs
-
-**Text Field (App / Login)**
+**Floating banner button**
 - Background: `#ffffff`
-- Text: `#1b1e26`
-- Border: 1px solid `#d6dae1`
-- Radius: 4px
-- Padding: 14px 12px
-- Height: 48px
-- Font: 14px / 400 / Pretendard
-- Use: Login and form text input (placeholder e.g. "아이디를 입력해 주세요.")
+- Text: `#000000`
+- Radius: 999px
+- Padding: 0px 24px
+- Height: 44px
+- Font: 15px / 600 / 22.5px Pretendard
+- States: rest only
+- Use: The button on the home hero's floating banner
 
-### Cards & Containers
-
-**Persona / Segment Card**
-- Background: `#f9fafb`
+**Link pill**
+- Background: `#f0f2f3`
 - Text: `#1c1c1c`
-- Radius: 20px
-- Padding: 40px 32px
-- Use: Audience-segment entry cards on the hero ("신규 창업자", "크리에이터", "기업형", "글로벌"), shadowless
+- Border: 1px solid `#ffffff`
+- Radius: 100px
+- Padding: 0px 24px
+- Height: 56px
+- Font: 18px / 700 / 54px Pretendard
+- States: rest only
+- Use: Grey pill link on the enterprise page
 
-**Circular Icon Button**
-- Background: `#e6e8eb`
-- Radius: 100%
-- Height: 48px
-- Use: Round icon/utility buttons in the hero carousel chrome
+**Carousel control**
+- Background: rgba(255, 255, 255, 0.2)
+- Icon: `#ffffff`
+- Radius: 9999px
+- Size: 60 × 60px
+- States: rest only
+- Use: Previous, play and next on the home brand story carousel
+
+### Tabs
+
+**Enterprise tab**
+- Background: `#ffffff`
+- Text: `#1c1c1c`
+- Border: 1px solid `#ffffff`
+- Radius: 30px
+- Padding: 0px 20px
+- Height: 50px
+- Font: 20px / 700 / 28px Arial (system stack)
+- Selected: background `#1c1c1c`, text `#ffffff`
+- States: rest values only; selected read from the `active` class at rest
+- Use: The enterprise page's tab menu, whose strip carries a rgba(0, 0, 0, 0.24) 0 0 4px shadow
 
 ### Badges
 
-**Tag Chip**
-- Background: `#f7f8fa`
-- Text: `#5f5f5f`
-- Radius: 6px
-- Padding: 4px 9px
-- Font: 14px / 400 / Pretendard
-- Use: Category / filter tags ("창업 구축", "쇼핑몰 설정", "상품/주문/배송")
-
-**Numbered Step Badge**
-- Background: `#e6edff`
-- Text: `#084fff`
-- Radius: 8px
-- Font: 14px / 800 / Pretendard
-- Use: Numbered step indicators in "3가지만 결정하면 시작할 수 있어요" flows
-
-### Navigation
+**Promo pill**
 - Background: `#ffffff`
-- Text: `#616161`
-- Radius: 6px
-- Padding: 8px 12px
-- Height: 40px per item
-- Font: 16px / 500 / Pretendard
-- Active: text shifts to ink `#1c1c1c` on the active item
-- Use: Top horizontal nav ("서비스 소개", "시작 가이드", "쇼핑몰 솔루션 이전")
+- Text: `#000000`
+- Radius: 9999px
+- Padding: 12px 24px
+- Height: 48px
+- Font: 16px / 700 / 24px Pretendard
+- Shadow: rgba(0, 0, 0, 0.04) 0px 2px 8px 0px
+- Use: Benefit pills stacked in the home promo cards; a two-line variant is 72px tall with a `#10b981` highlight
 
----
+### Cards
 
-**Verified:** 2026-06-26 (omd:add-reference CREATE — Tier 1 live inspect, 3 brand-owned surfaces)
-**Tier 1 sources:** https://www.cafe24.com, https://developers.cafe24.com/design/front/smart, https://eclogin.cafe24.com/Shop/, https://news.cafe24.com
-**Tier 2 sources:** getdesign.md/cafe24 — NOT LISTED; styles.refero.design — searched "cafe24", no brand-specific Cafe24 style surfaced
-**Conflicts unresolved:** none (marketing `#084fff`/pill vs. app `#3971ff`/4px documented as an intentional two-surface split, not a conflict)
+**Grey content card**
+- Background: `#f9fafb`
+- Radius: 20px
+- Padding: 40px 32px
+- Size: 200 × 202px
+- Use: Linked cards on home with a 38px `#000000` icon box (8px radius)
+
+**White content card**
+- Background: `#ffffff`
+- Border: 1px solid `#e0e0e0`
+- Radius: 16px
+- Padding: 40px 32px
+- Size: 416 × 228px
+- Use: Linked cards on home with a 24px title and `#757575` description
+
+**Dark intro card**
+- Background: `#323232`
+- Radius: 12px
+- Shadow: rgba(0, 0, 0, 0.43) 0px 20.57px 51.43px 0px on the active card
+- Use: Fanned carousel in the dark intro section of home
+
+**Story card**
+- Background: `#323232` (under the photograph)
+- Radius: 16px
+- Size: 560 × 560px
+- Use: Customer story images on home
+
+**Verified:** 2026-10-01 (bundle captured by the main session through a logged-out Aside browser window on three public cafe24.com pages, plus first-party company pages read the same day)
+**Tier 1 sources:** https://www.cafe24.com/ ; https://www.cafe24.com/commerce/design/ ; https://www.cafe24.com/enterprise/main.html ; https://www.cafe24corp.com/company/history ; https://www.cafe24corp.com/company/about ; https://www.cafe24corp.com/company/culture ; https://fonts.cafe24.com/
+**Tier 2 sources:** not attempted
+**Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
 ### Spacing System
-- Base unit: 8px
-- Scale: 4px, 8px, 9px, 12px, 16px, 20px, 32px, 40px, 64px
-- Notable: persona cards use a generous 40px 32px internal padding; tag chips a tight 4px 9px — the same scale stretches from dense chrome to spacious hero cards
+- Most frequent recorded spacing values: 16px (41), 32px (33), 20px (17), 24px (16), 12px (13), 28px (11), 40px (11).
+- Tokens: card padding 40px × 32px, promo pill padding 12px × 24px, round CTA side padding 32px and 40px.
 
 ### Grid & Container
-- Centered, wide marketing column with full-width alternating bands
-- Hero audience-segment cards arranged in a horizontal row of rounded 20px tiles ("신규 창업자", "크리에이터" …)
-- Feature sections alternate white (`#ffffff`), tinted grey (`#f9fafb` / `#f0f2f3`), and dark (`#323232` / `#1a1d22`) full-width bands
-- Numbered "3-step" flows lay out blue step badges in sequence
+- Home and enterprise content sits in a 1280px column (section titles are 1280px wide).
+- The design service page uses 592px text columns beside imagery.
+- Home cards: 200px grey cards in a row of six, 416px white cards in a row of three, 560px square story cards.
 
 ### Whitespace Philosophy
-- **Breathing room on a dense product**: despite Cafe24 being deep operational tooling, the marketing surface is airy, with generous vertical rhythm between bands.
-- **Flat segmentation**: sections separate by background tint and dark/light alternation, not by shadow stacks.
-- **Rounded rhythm**: the repeated soft-corner geometry (20px cards, 24px chips, pill CTA) creates a consistent friendly cadence.
+- Generous: 48px titles over 20px descriptions, 40px card padding and full-width alternating light and dark bands.
 
 ### Border Radius Scale
-- Small (4px): app/login buttons and inputs (sharp, utilitarian)
-- Medium (6px): nav items, tag chips
-- Large (8px): numbered step badges
-- XL (20px): persona / segment cards
-- Pill (24px): selector chips
-- Full (9999px): primary CTA, carousel arrows, circular icon buttons
+- 3.96px — the design page call to action
+- 8px — icon boxes
+- 12px — dark intro cards and brand card images
+- 16px — white content cards and story cards
+- 20px — grey content cards and enterprise customer cards
+- 30px — enterprise tabs
+- 100px — the header pill and link pill
+- 9999px — round calls to action, promo pills, carousel controls
 
 ## 6. Depth & Elevation
 
 | Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, most cards and CTAs |
-| Tint (Level 1) | `#f9fafb` / `#f0f2f3` background shift | Card/section separation without elevation |
-| Hairline (Level 2) | `1px solid #e0e0e0` (or `#e6e8eb`) border | Selector chips, dividers, white card outlines |
-| Dark Band (Level 3) | `#323232` / `#1a1d22` / `#012255` background | Immersive feature/hero sections with lime accent |
+|---|---|---|
+| Flat | No shadow | Most recorded elements |
+| Hairline | 1px `#e0e0e0` | White content cards |
+| Whisper | rgba(0, 0, 0, 0.04) 0 2px 8px | Promo pills |
+| Strip | rgba(0, 0, 0, 0.24) 0 0 4px | Enterprise tab menu |
+| Lift | rgba(0, 0, 0, 0.07) 0 3.43px 8.57px → rgba(0, 0, 0, 0.43) 0 20.57px 51.43px | Intro carousel cards, neighbour → active |
 
-**Shadow Philosophy**: Cafe24's marketing surface is near-shadowless. Live inspection found `box-shadow: none` across the hero CTAs, persona cards, nav, and selector chips. Depth and grouping are communicated through flat tinted surfaces (`#f9fafb`), thin hairlines (`#e0e0e0`), and — most distinctively — bold light/dark band alternation. When a section needs to feel premium or energetic, the system swaps the entire band to charcoal (`#323232`) or slate (`#1a1d22`) and reaches for the lime accent (`#bbf94f`), rather than stacking elevation. The app/product surface keeps the same flat philosophy with sharper 4px geometry.
+Shadows mark only what floats or is in focus in a carousel; cards on the page are flat.
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Use Pretendard weight 700 for every headline and weight 400 for body — the weight split is the hierarchy
-- Reserve royal blue (`#084fff`) for the primary marketing CTA — keep it the single "action" color
-- Use warm near-black (`#1c1c1c`) for text instead of pure black
-- Separate sections with flat tint (`#f9fafb`) and `#e0e0e0` hairlines, plus light/dark band alternation
-- Deploy the lime accent (`#bbf94f`) sparingly and only on dark sections (`#323232`, `#1a1d22`)
-- Use full pill geometry (9999px) for the primary CTA and 20px for cards
-- Switch to the tighter app variant (`#3971ff`, 4px corners) on product/login/tool surfaces
-- Keep body copy at a generous 18px / 1.5 line-height for long marketing pages
+- Use blue `#084fff` for the one main call to action, as home does for 지금 무료로 시작하기
+- Use the black `#000000` pill for the persistent header call on light pages and a white round pill on dark bands
+- Set titles in Cafe24Ohsquare 700 and reading copy in Pretendard
+- Round by role: 9999px for calls and pills, 16–20px for cards
+- Alternate light (`#ffffff`, `#f9fafb`) and dark (`#323232`) bands
+- Keep `#235bf5` to contexts like the design service page, where it was observed
 
 ### Don't
-- Spread the blue across many elements — it dilutes the single-action signal
-- Use the lime (`#bbf94f`) on white/light backgrounds — it only reads on dark bands
-- Use pure black (`#000000`) for body text — reserve near-black `#1c1c1c`
-- Lean on drop shadows for elevation — separate with tint, hairlines, and dark bands
-- Mix the marketing pill chrome and the app 4px chrome on the same surface — keep the two registers distinct
-- Add a second saturated accent — blue is the action color, lime is the lone dark-section accent
-- Set headlines in a light weight — display is always bold (700)
-- Add heavy decorative letter-spacing — the system is size- and weight-driven
+- Don't use `#3971ff` or lime `#bbf94f` from the earlier record as tokens; neither occurs among the recorded elements of this capture or in the home census
+- Don't set buttons or body copy in Cafe24Ohsquare
+- Don't put shadows on static cards
+- Don't invent hover, pressed or focus values; this bundle records none
 
 ## 8. Responsive Behavior
 
 ### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero headline compresses, segment cards stack/scroll |
-| Tablet | 640-1024px | Moderate padding, 2-up feature cards |
-| Desktop | 1024-1440px | Full layout, wide centered column, multi-column feature bands |
+Not measured. The bundle comes from one browser window, so no breakpoint or mobile layout is claimed.
 
 ### Touch Targets
-- Primary CTA at 56px height, full pill — an unmistakable tap target
-- Selector chips at 46px height; circular icon buttons at 48px
-- App/login inputs at 48px height with comfortable 14px 12px padding
-- Nav items at 40px height with 8px 12px padding
+- Header pill 40px, round calls 56px and 64px, enterprise tabs 50px, promo pills 48px, carousel controls 60px.
 
 ### Collapsing Strategy
-- Hero: 48px section headlines scale down on mobile, weight 700 maintained
-- Segment-card row: horizontal scroll / wrap on narrow viewports
-- Feature bands: multi-column → stacked single column
-- Light/dark alternating sections maintain full-width treatment, reduce internal padding
+Not observed.
 
 ### Image Behavior
-- Product screenshots and illustrations carry no shadow at any size, consistent with the flat system
-- Cards maintain their 20px radius across breakpoints
-- Dark hero bands keep full-bleed treatment with the lime accent intact
+- Story photographs sit in 16px-radius squares over a `#323232` fill; brand card images use 12px.
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary CTA: Cafe24 Blue (`#084fff`)
-- App/product action: App Blue (`#3971ff`)
-- Background: Pure White (`#ffffff`)
-- Tinted surface: Surface Grey (`#f9fafb`), Surface Alt (`#f0f2f3`)
-- Heading / body text: Ink (`#1c1c1c`)
-- Nav text: Nav Grey (`#616161`)
-- Secondary text: Body Grey (`#5f5f5f`), Muted (`#757575`)
-- Faint / placeholder: Faint (`#bfbfbf`)
-- Dark sections: Charcoal (`#323232`), Slate Deep (`#1a1d22`), Navy (`#012255`)
-- Dark-section accent: Lime (`#bbf94f`)
-- Hairline: `#e0e0e0` / `#e6e8eb`
+- Primary call (home main CTA): `#084fff`
+- Header call: `#000000` with `#ffffff` label (inverse on dark: `#ffffff` with `#1c1c1c`)
+- Accent (design page): `#235bf5`
+- Ink: `#1c1c1c`, `#1b1e26`; secondary `#444b59`, `#757575`, `#a6a6a6`
+- Surfaces: `#ffffff`, `#f9fafb`, `#f0f2f3`, dark `#323232`; hairline `#e0e0e0`
 
 ### Example Component Prompts
-- "Create a hero on white background. Section headline at 48px Pretendard weight 700, line-height 1.21, color #1c1c1c. Below it a row of rounded persona cards: #f9fafb background, 20px radius, 40px 32px padding, no shadow, 20px/700 titles. One primary CTA: #084fff background, white text, 9999px pill radius, 0 32px padding, 56px height, 18px/700 — '지금 무료로 시작하기'."
-- "Design a dark feature band: #1a1d22 background, full-width. Headline 40px Pretendard weight 700, letter-spacing -0.4px, white text. Use lime #bbf94f sparingly for one emphasis word. No shadow."
-- "Build a login form: white card. Text input — #ffffff background, 1px solid #d6dae1 border, 4px radius, 14px 12px padding, 48px height, #1b1e26 text. Submit button — #3971ff background, white text, 4px radius, 56px height, 16px/700 — '로그인'."
-- "Create a step section: numbered badges with #e6edff background, #084fff text, 8px radius, 14px/800. Category tags with #f7f8fa background, #5f5f5f text, 6px radius, 4px 9px padding."
+- "Header call to action: black `#000000` pill, 100px radius, 40px tall, 12px 16px padding, `#ffffff` 16px / 700 Pretendard label reading 쇼핑몰 만들기."
+- "Dark band call to action: white `#ffffff` 9999px pill, 64px tall, 0 40px padding, `#1c1c1c` 22px / 700 Pretendard label."
+- "Grey content card: `#f9fafb`, 20px radius, 40px 32px padding, a 38px black icon box at 8px radius, 20px Cafe24Ohsquare 700 title in `#1c1c1c`."
 
 ### Iteration Guide
-1. Pretendard 700 for every headline; 400 for every paragraph
-2. Royal blue (`#084fff`) is the single marketing action color — don't spread it
-3. No shadows — separate with `#f9fafb` tint, `#e0e0e0` hairlines, and light/dark band alternation
-4. Lime (`#bbf94f`) only on dark bands, only as a sparing accent
-5. Text is `#1c1c1c` near-black, never pure black for body
-6. Pill CTA (9999px), 20px cards, 24px chips on marketing; 4px buttons/inputs on the app surface
-7. Body copy at 18px / 1.5 line-height
-
----
+1. Blue `#084fff` for the main call; black on light and white on dark for the other actions
+2. Cafe24Ohsquare titles, Pretendard everything else
+3. Pills for actions, 16–20px cards
+4. Light and dark bands; shadows only for floating pills and carousel focus
+5. Declare only rest and selected states unless a probe measures more
 
 ## 10. Voice & Tone
 
-Cafe24's voice is **encouraging, plain-spoken, and enabling** — it talks to would-be merchants the way a capable colleague would, removing intimidation from the act of starting and running an online store. The register is reassuring and can-do ("처음이어도 할 수 있어요!" / "You can do it even your first time"), promising ease without hype. Copy frames Cafe24 as the partner that handles the hard, administrative parts so the merchant can focus on their product and brand.
+Cafe24 speaks to would-be sellers plainly and encouragingly, with the next step always spelled out. The design service page (read on 2026-10-01) is typical:
 
-| Context | Tone |
+| Context | Example (first-party) |
 |---|---|
-| Hero headlines | Encouraging, capability-framed. "모든 단계를 PRO처럼 쉽게 시작하세요." Confident, never fear-based. |
-| Segment labels | Plain and inclusive. "신규 창업자", "크리에이터", "기업형", "글로벌" — names the user, not a feature. |
-| CTAs | Direct, low-pressure, free-first. "지금 무료로 시작하기", "체험하기". |
-| Feature descriptions | Benefit-first, ease-led. Explains what Cafe24 does *for* the merchant. |
-| Step / onboarding copy | Reductive in a good way. "3가지만 결정하면 시작할 수 있어요" — shrinks the perceived effort. |
+| Positioning | "Cafe24 - No.1 E-Commerce Platform" (page heading) |
+| Ease | "HTML 지식 없어도 쇼핑몰 디자인 쉽고 빠르게" (no HTML needed — shop design, quick and easy) |
+| Choice | "당신이 찾는 모든 디자인, 카페24 디자인센터" |
+| Reassurance | "이 폰트를 써도 될까? 라이선스 걱정 없는 카페24 …" (fonts without licence worries) |
+| Encouragement | "성공으로 가는 첫 걸음, 카페24와 함께" (the first step to success, with Cafe24) |
+| Action | 쇼핑몰 만들기 |
 
-**Voice samples (verbatim from live surfaces, 2026-06-26):**
-- "Cafe24 - No.1 E-Commerce Platform" — homepage H1 (positioning). *(verified live)*
-- "모든 단계를 PRO처럼 쉽게 시작하세요" — section hero (ease promise). *(verified live)*
-- "처음이어도 할 수 있어요!" — section hero (encouragement). *(verified live)*
-- "3가지만 결정하면 시작할 수 있어요" — step section (effort reduction). *(verified live)*
-- "쇼핑몰 운영에 필요한 모든 솔루션, 카페24 스토어 하나로 연결" — store hub headline (one-stop promise). *(verified live)*
-
-**Forbidden register**: fear-based urgency, jargon-heavy enterprise speak that intimidates first-time sellers, over-promising "get rich" hype, and any tone that makes commerce feel gated behind expertise.
+The corporate site frames the company as "전 세계 K스타일 상품 확산을 위한 글로벌 성공 파트너" (a global success partner for spreading K-style goods).
 
 ## 11. Brand Narrative
 
-Cafe24 (카페24) was founded in **1999** by **이재석 (Lee Jae-suk, Founder & CEO)** and is operated by Cafe24 Corp., headquartered in Seoul. It grew into Korea's foundational global e-commerce platform — providing the infrastructure to **build, operate, and market** online stores on a one-stop basis. In 2018 it became the first company to enter the KOSDAQ market via Korea's "Tesla listing" route (ticker 042000), and in 2021 **Naver** acquired roughly a 20% stake to deepen the two companies' commerce partnership ([KED Global](https://www.kedglobal.com/m-as/newsView/ked202108090008), [Cafe24 Wikipedia](https://en.wikipedia.org/wiki/Cafe24)).
+The company's history page divides its story into three eras. From 1999 to 2007 it opened services one by one and became the leading brand: 심플렉스인터넷(주) was founded in 1999, the 카페24 brand launched in 2000, then the hosting (2002), shopping-mall (2003), design (2004) and marketing (2006) centres opened. From 2008 to 2012 it built a global network and grew its technology and brand: a China (Yanji) subsidiary in 2008, mobile shops in 2010, the BI revision and the 카페24 창업센터 in 2011, a Tokyo subsidiary and 스마트디자인 in 2012. From 2013 it opened export routes: the global e-commerce platform and an Amazon partnership (2013), the rename to 카페24 주식회사 (2017), a KOSDAQ listing and a Japan launch (2018), the Naver mutual-investment partnership (2021), YouTube Shopping integration (2022), Google investment (2023) and the YouTube Shopping store feature (2024).
 
-The company's founding premise is merchant empowerment. As founder Jaesuk Lee put it, *"With a merchant-centric approach, Cafe24 aims to help merchants concentrate on their creativity"* and *"Merchants need to focus on their brand content to differentiate their products. Thus, they must be free as much as possible from administrative work"* ([Cafe24 Newsroom Q&A](https://news.cafe24.com/global/qna-with-jaesuk-lee-founder-and-ceo-of-cafe24/)). That philosophy — take the operational burden off the seller so they can focus on creativity and brand — is visible in everything from the "원스톱 운영대행" (one-stop operations agency) framing to the "처음이어도 할 수 있어요" encouragement.
-
-What Cafe24's design refuses: the intimidating density of legacy commerce-admin software and fear-based sales urgency. What it embraces: an airy, encouraging marketing surface; a single trustworthy blue for action; bold Pretendard headlines that speak plainly; and a dual register that keeps the merchant-facing app tight and utilitarian while the public site stays warm and inviting. The lime-on-dark accent is the brand's one note of momentum — a signal that commerce here is energetic, not bureaucratic.
+The about page states the mission: give merchants a one-stop platform — store building, global marketing, global logistics — so that they can concentrate on creative work, and help K-fashion and K-beauty sell online worldwide. The company claims 2 million shops and 6.2 million members. Its management philosophy names trust, people and customers (신뢰경영, 인본주의 경영, 고객중심 경영). The culture page describes a flat structure with no titles besides leaders and the "님" form of address for everyone, information shared openly, minimal rules, and autonomy for each organisation to decide close to the work.
 
 ## 12. Principles
 
-1. **Merchant-centric — free them to create.** Cafe24's stated mission is to let merchants "concentrate on their creativity" by absorbing administrative work. *UI implication:* reduce perceived effort everywhere — "3가지만 결정하면" step compression, one-stop framing, free-first CTAs.
-2. **Encouragement over intimidation.** Commerce should feel achievable for a first-timer. *UI implication:* can-do headlines ("처음이어도 할 수 있어요"), inclusive segment labels, low-pressure language.
-3. **One action, one blue.** Royal blue (`#084fff`) means "do this." *UI implication:* reserve the saturated blue for the primary CTA so the next step is never ambiguous.
-4. **Flat and friendly.** Clarity beats decorative depth. *UI implication:* no shadow stacks; separate with tint, hairlines, and bold light/dark band alternation; round the corners.
-5. **Two registers, kept distinct.** A warm, inviting marketing site and a tight, utilitarian merchant app. *UI implication:* pill/`#084fff` chrome for marketing; sharp 4px/`#3971ff` chrome for the product/login surfaces — never blur the two.
-6. **Restrained swagger.** *UI implication:* the lime accent (`#bbf94f`) appears rarely and only on dark bands — energy that lands because it is scarce.
+1. **Let merchants focus on what they make.** The about page's one-stop promise. *UI implication:* one clear action — 쇼핑몰 만들기 — repeated in the header and at the foot of the page.
+2. **Make the start feel easy.** "HTML 지식 없어도 … 쉽고 빠르게". *UI implication:* large, bold titles, short descriptions, generous spacing.
+3. **One blue call, black and white for the rest.** *UI implication:* the main call to action takes blue `#084fff`; the header and secondary calls are black on light and white on dark, and other colour is reserved for content and the odd service page.
+4. **Flat, with lift only where things move.** *UI implication:* cards stay flat; carousels and floating pills get the shadows.
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable Cafe24 user segments (first-time founders, creators, migrating merchants, enterprise and global sellers), not individual people.*
-
-**김도윤, 28, 서울.** A first-time founder launching a small apparel brand. Has never run a store and is intimidated by the operational side. Chose Cafe24 because the homepage promised "처음이어도 할 수 있어요" and a free start — it made commerce feel approachable rather than expert-gated.
-
-**이서아, 31, 경기.** A YouTube creator turning an audience into a shop. Uses Cafe24's creator-segment entry and YouTube Shopping tie-in. Values that the platform handles fulfillment and operations so she can stay focused on content and brand.
-
-**박준호, 45, 부산.** Operations lead at a mid-size brand migrating off another solution. Came in through the "쇼핑몰 솔루션 이전" (migration) path. Cares about a tight, fast merchant admin — appreciates the utilitarian app surface that gets out of his way.
-
-**Mei Chen, 38, Singapore.** A cross-border seller using Cafe24's global tooling to reach Korean and international buyers. Trusts the platform's one-stop "build, operate, market" promise and its scale as Korea's foundational commerce infrastructure.
+No persona research is published on the pages consulted, so no named persona is given. The audiences the company addresses on its own pages are first-time sellers starting a shop, brands moving online or abroad (K-fashion, K-beauty), creators selling through YouTube Shopping, and enterprise brands, whose own brand cards fill the enterprise page.
 
 ## 14. States
 
-| State | Treatment |
+| State | Observed treatment |
 |---|---|
-| **Empty (no stores / no products yet)** | White canvas. Single Ink (`#1c1c1c`) line at body size with an encouraging next step, plus one blue CTA (`#084fff`) to start. No intimidation, no clutter. |
-| **Empty (dashboard, no data)** | Muted (`#757575`) single line explaining nothing's here yet, with a path to the first action. Calm and reductive. |
-| **Loading (page/section)** | Skeleton blocks on `#f9fafb` tint at final card dimensions, 20px radius. Flat pulse, consistent with the shadowless system. |
-| **Loading (app submit)** | Inline progress on the `#3971ff` button; the field stays visible. |
-| **Error (form validation)** | Field-level message below the input describing what's valid, not just "필수". Border tone shifts on the affected field. |
-| **Error (operation failed)** | Inline message in Ink with a plain-language explanation and a retry — never a bare "오류가 발생했습니다". |
-| **Success (action saved)** | Brief inline confirmation in a calm tone; next-step detail linked below. No celebratory emoji. |
-| **Skeleton** | `#f9fafb` blocks at final dimensions, 20px radius, flat pulse. |
-| **Disabled** | Faint (`#bfbfbf`) text on a reduced-opacity surface; blue actions fade rather than turn grey to preserve brand read. |
+| Selected (enterprise tab) | `#1c1c1c` fill, `#ffffff` label (`active` class at rest) |
+| Unselected (enterprise tab) | `#ffffff` fill, `#1c1c1c` label |
+| Carousel focus (intro cards) | The active card is larger (578 × 345 against 406 × 233) and lifts on rgba(0, 0, 0, 0.43) 0 20.57px 51.43px |
+
+Hover, pressed, focus, disabled, empty, loading, error and success states were not captured; the bundle has no state frames and no interaction events, so none is described.
 
 ## 15. Motion & Easing
 
-**Durations**:
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-fast` | 120ms | Hover, button press, focus |
-| `motion-standard` | 220ms | Card/section reveal, carousel slide, dropdown |
-| `motion-slow` | 360ms | Page-level transitions, light/dark band crossfade |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving — cards, sheets, carousel |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Two-way transitions |
-
-**Motion rules**: Motion is functional and friendly — consistent with the flat, approachable aesthetic. The hero carousel advances on `motion-standard / ease-enter`; persona cards and feature bands fade-in from below as they enter the viewport. Transitions into dark bands use a `motion-slow` background crossfade so the shift in register feels intentional rather than jarring. No bounce or spring on core chrome — a commerce platform signals dependability, not gimmickry. Under `prefers-reduced-motion: reduce`, all transitions collapse to instant and the carousel pauses; the page remains fully functional.
-
-<!--
-OmD v0.1 Sources — Philosophy Layer (sections 10–15)
-
-Tier 1 live inspect (2026-06-26) via playwright getComputedStyle on three brand-owned surfaces:
-- https://www.cafe24.com — modern marketing site (Pretendard). Primary CTA "지금 무료로 시작하기"
-  bg rgb(8,79,255) #084fff / radius 9999px / 56px / 18px·700. Ink rgb(28,28,28) #1c1c1c.
-  Section H2 48px·700 / store H3 40px·700·-0.4px. Persona cards #f9fafb / 20px / 40px·32px.
-  Tag chips #f7f8fa / #5f5f5f / 6px. Step badge bg #e6edff / fg #084fff / 8px·800.
-  Lime rgb(187,249,79) #bbf94f as fg accent on dark bands (#323232, #1a1d22, #012255).
-- https://developers.cafe24.com/design/front/smart — developer design docs (legacy Noto Sans KR chrome).
-- https://eclogin.cafe24.com/Shop/ — product/login app. Input bg #ffffff / border 1px #d6dae1 /
-  4px / 14px·12px / 48px / text rgb(27,30,38) #1b1e26. Submit button bg rgb(57,113,255) #3971ff / 4px / 56px.
-
-Token-level claims (§1-9) are sourced from this live inspection. Voice samples (§10) are verbatim
-from the live homepage (H1, section heroes, store hub headline).
-
-Brand narrative (§11): Cafe24 Corp., founded 1999 by 이재석 (Lee Jae-suk, Founder & CEO); Korea's
-foundational global e-commerce platform; 2018 KOSDAQ "Tesla listing" (ticker 042000); Naver ~20%
-stake 2021. Founder quotes ("merchant-centric approach… concentrate on their creativity";
-"must be free as much as possible from administrative work") are verbatim from the Cafe24 Newsroom
-Q&A (news.cafe24.com, brand-owned). Listing/ownership facts cross-referenced via KED Global and
-Wikipedia.
-
-Personas (§13) are fictional archetypes informed by publicly observable Cafe24 user segments
-(first-time founders, creators, migrating merchants, enterprise/global sellers). Names are
-illustrative; they do not refer to real people.
-
-Interpretive claims (e.g., "one action, one blue", "two registers kept distinct", "restrained
-swagger via lime-on-dark") are editorial readings connecting Cafe24's observed design to its stated
-merchant-centric philosophy, not directly sourced Cafe24 statements.
--->
+No motion value is declared. The bundle records no transition or animation property, and no Cafe24 source consulted publishes a motion scale. The Partial body's motion values had no source and were removed.

@@ -1,14 +1,14 @@
 {
   "why": "git에 올리지 않는 로컬 전용 산출물의 보관 증명. 파일은 저장소 밖, 목록과 해시는 저장소 안.",
-  "recordedAt": "2026-09-30",
+  "recordedAt": "2026-10-01",
   "note": "복구는 자동화하지 않는다. 검사가 누락을 알려주면 사람이 백업에서 되돌리거나 재캡쳐한다.",
   "trees": {
     "reference-evidence": {
       "dir": "artifacts/reference-evidence",
       "why": "140개 verified 레퍼런스의 캡쳐 근거. 만료 대응 R트랙 55건의 유일한 입력.",
       "critical": true,
-      "fileCount": 247,
-      "bytes": 209525854,
+      "fileCount": 251,
+      "bytes": 212108083,
       "files": {
         "104.json": {
           "sha256": "006a9edc3a9ee4c87f1189cc315b1b22c0ab769c4a014b50d435a04670c715ae",
@@ -93,6 +93,10 @@
         "buzzvil.json": {
           "sha256": "58869382017d61adfc049c4aeb178bbd3b8af2ae950d538413bb49348c2e8878",
           "bytes": 591544
+        },
+        "cafe24.json": {
+          "sha256": "888238e091d5bb3cf200e7d4689d62987b6b911f476c1a9c954d49fa505111a4",
+          "bytes": 808211
         },
         "catchtable.json": {
           "sha256": "b08dec18ecc882b5dda8e395f1b7669dc741f5d2b886e12a15d41ed90dc97fd7",
@@ -326,6 +330,10 @@
           "sha256": "1efb48e4e22b4c1481b562569916a4d732e095ec628da65aae83f85e84aedc95",
           "bytes": 1409686
         },
+        "ikala.json": {
+          "sha256": "356ebc4a24ddffe8ebd4b3ecbf6159b028f72f03ef05810916760d89af22c0ae",
+          "bytes": 611258
+        },
         "imweb.json": {
           "sha256": "7ecb4d96491740b13c31c062fa3a2e484ee73a4c310192fe20ad4e446884f035",
           "bytes": 1101081
@@ -473,6 +481,10 @@
         "maum-ai.json": {
           "sha256": "6e29ff3a0c1420fa726536eb67319f6b20693ef32f9d82854fee187ed342633d",
           "bytes": 202589
+        },
+        "medibloc.json": {
+          "sha256": "b33f86de060b19acd12cd64322bc4563a7ad6fdecf01f1448fb7658077074575",
+          "bytes": 317263
         },
         "megabox.json": {
           "sha256": "6957be91c9f9cd99a0ef09326fe30e86fe274795c3ccfdefdbb1721d49623c9a",
@@ -805,6 +817,10 @@
         "spotify.json": {
           "sha256": "95b594738753f1b76d244d0d6ad6419067ace200dac9efbe26b4180d544857b0",
           "bytes": 1147610
+        },
+        "ssg.json": {
+          "sha256": "5d56f3e94f3396085c635a6d1df3bd7d8aa093c71f056d432dcb66cee110b572",
+          "bytes": 845497
         },
         "stayfolio.json": {
           "sha256": "0a7839f8386b5fbe5b5df8d890267f445db875cc1f2769066ecec6176fb32090",

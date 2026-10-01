@@ -3,405 +3,642 @@ id: ikala
 name: iKala
 country: TW
 category: developer-tools
-homepage: "https://ikala.ai"
+homepage: https://ikala.ai
 primary_color: "#061232"
 logo:
   type: favicon
-  slug: "https://www.google.com/s2/favicons?domain=ikala.ai&sz=128"
-verified: "2026-06-08"
+  slug: https://www.google.com/s2/favicons?domain=ikala.ai&sz=128
+verified: "2026-10-01"
 added: "2026-06-08"
 omd: "0.1"
+verification_v2:
+  schema: 2
+  checked: "2026-10-01"
+  surfaces:
+    - {id: home, kind: marketing, url: https://ikala.ai/, inspected: "2026-10-01"}
+    - {id: surface-2, kind: marketing, url: https://ikala.ai/ikala-nexus/, inspected: "2026-10-01"}
+    - {id: surface-3, kind: marketing, url: https://ikala.ai/zh-tw/, inspected: "2026-10-01"}
+  sources:
+    - {id: surface-home, kind: product-surface, url: https://ikala.ai/, captured: "2026-10-01"}
+    - {id: surface-surface-2, kind: product-surface, url: https://ikala.ai/ikala-nexus/, captured: "2026-10-01"}
+    - {id: surface-surface-3, kind: product-surface, url: https://ikala.ai/zh-tw/, captured: "2026-10-01"}
+    - {id: ikala-about, kind: official-doc, url: https://ikala.ai/about/, captured: "2026-10-01"}
+    - {id: noto-cjk-license, kind: license, url: https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/LICENSE, captured: "2026-10-01"}
+    - {id: noto-sans-license, kind: license, url: https://raw.githubusercontent.com/notofonts/latin-greek-cyrillic/main/OFL.txt, captured: "2026-10-01"}
+  conflicts: []
+  claims:
+    tokens.colors.action-blue: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
+    tokens.colors.arrow-blue: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
+    tokens.colors.black: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::#menu-item-28739, captured: "2026-10-01"}
+    tokens.colors.body: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::body, captured: "2026-10-01"}
+    tokens.colors.field-border: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
+    tokens.colors.footer-blue: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"39\"]", captured: "2026-10-01"}
+    tokens.colors.hairline: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"54\"]", captured: "2026-10-01"}
+    tokens.colors.heading: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
+    tokens.colors.link: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"0\"]", captured: "2026-10-01"}
+    tokens.colors.nexus-blue: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.colors.primary: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.colors.tab-idle: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
+    tokens.colors.tab-selected: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"19\"]", captured: "2026-10-01"}
+    tokens.colors.timeline-blue: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"26\"]", captured: "2026-10-01"}
+    tokens.colors.white: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.components.blue-button.bg: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
+    tokens.components.blue-button.fg: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
+    tokens.components.blue-button.font: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
+    tokens.components.blue-button.height: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
+    tokens.components.blue-button.padding: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
+    tokens.components.blue-button.radius: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
+    tokens.components.blue-button.states: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
+    tokens.components.blue-button.type: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
+    tokens.components.blue-button.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
+    tokens.components.carousel-arrow.bg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
+    tokens.components.carousel-arrow.disabled: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"43\"]", captured: "2026-10-01"}
+    tokens.components.carousel-arrow.fg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
+    tokens.components.carousel-arrow.radius: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
+    tokens.components.carousel-arrow.shadow: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
+    tokens.components.carousel-arrow.size: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
+    tokens.components.carousel-arrow.states: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
+    tokens.components.carousel-arrow.type: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
+    tokens.components.carousel-arrow.use: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
+    tokens.components.faq-accordion-row.border: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-10-01"}
+    tokens.components.faq-accordion-row.height: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-10-01"}
+    tokens.components.faq-accordion-row.padding: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-10-01"}
+    tokens.components.faq-accordion-row.states: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-10-01"}
+    tokens.components.faq-accordion-row.type: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-10-01"}
+    tokens.components.faq-accordion-row.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-10-01"}
+    tokens.components.form-submit.bg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"56\"]", captured: "2026-10-01"}
+    tokens.components.form-submit.fg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"56\"]", captured: "2026-10-01"}
+    tokens.components.form-submit.font: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"56\"]", captured: "2026-10-01"}
+    tokens.components.form-submit.height: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"56\"]", captured: "2026-10-01"}
+    tokens.components.form-submit.padding: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"56\"]", captured: "2026-10-01"}
+    tokens.components.form-submit.radius: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"56\"]", captured: "2026-10-01"}
+    tokens.components.form-submit.states: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"56\"]", captured: "2026-10-01"}
+    tokens.components.form-submit.type: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"56\"]", captured: "2026-10-01"}
+    tokens.components.form-submit.use: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"56\"]", captured: "2026-10-01"}
+    tokens.components.hero-cta.bg: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.components.hero-cta.fg: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.components.hero-cta.font: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.components.hero-cta.height: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.components.hero-cta.padding: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.components.hero-cta.radius: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.components.hero-cta.states: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.components.hero-cta.type: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.components.hero-cta.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.components.nav-link.fg: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
+    tokens.components.nav-link.font: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
+    tokens.components.nav-link.padding: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
+    tokens.components.nav-link.selected: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::#menu-item-28739, captured: "2026-10-01"}
+    tokens.components.nav-link.states: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
+    tokens.components.nav-link.type: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
+    tokens.components.nav-link.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
+    tokens.components.news-label.bg: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
+    tokens.components.news-label.fg: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
+    tokens.components.news-label.font: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
+    tokens.components.news-label.height: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
+    tokens.components.news-label.padding: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
+    tokens.components.news-label.radius: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
+    tokens.components.news-label.type: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
+    tokens.components.news-label.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
+    tokens.components.nexus-hero-button.bg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.components.nexus-hero-button.fg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.components.nexus-hero-button.font: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.components.nexus-hero-button.height: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.components.nexus-hero-button.padding: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.components.nexus-hero-button.radius: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.components.nexus-hero-button.states: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.components.nexus-hero-button.type: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.components.nexus-hero-button.use: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.components.solution-tab.bg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
+    tokens.components.solution-tab.fg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
+    tokens.components.solution-tab.font: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
+    tokens.components.solution-tab.height: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
+    tokens.components.solution-tab.padding: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
+    tokens.components.solution-tab.radius: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
+    tokens.components.solution-tab.selected: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"19\"]", captured: "2026-10-01"}
+    tokens.components.solution-tab.states: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
+    tokens.components.solution-tab.type: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
+    tokens.components.solution-tab.use: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
+    tokens.components.text-field.bg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
+    tokens.components.text-field.border: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
+    tokens.components.text-field.fg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
+    tokens.components.text-field.font: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
+    tokens.components.text-field.height: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
+    tokens.components.text-field.padding: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
+    tokens.components.text-field.radius: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
+    tokens.components.text-field.states: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
+    tokens.components.text-field.type: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
+    tokens.components.text-field.use: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
+    tokens.components.timeline-pill.bg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"26\"]", captured: "2026-10-01"}
+    tokens.components.timeline-pill.fg: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"26\"]", captured: "2026-10-01"}
+    tokens.components.timeline-pill.font: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"26\"]", captured: "2026-10-01"}
+    tokens.components.timeline-pill.height: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"26\"]", captured: "2026-10-01"}
+    tokens.components.timeline-pill.padding: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"26\"]", captured: "2026-10-01"}
+    tokens.components.timeline-pill.radius: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"26\"]", captured: "2026-10-01"}
+    tokens.components.timeline-pill.states: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"26\"]", captured: "2026-10-01"}
+    tokens.components.timeline-pill.type: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"26\"]", captured: "2026-10-01"}
+    tokens.components.timeline-pill.use: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"26\"]", captured: "2026-10-01"}
+    tokens.components.white-button.bg: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
+    tokens.components.white-button.fg: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
+    tokens.components.white-button.font: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
+    tokens.components.white-button.height: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
+    tokens.components.white-button.padding: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
+    tokens.components.white-button.radius: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
+    tokens.components.white-button.shadow: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
+    tokens.components.white-button.states: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
+    tokens.components.white-button.type: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
+    tokens.components.white-button.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
+    tokens.rounded.arrow: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
+    tokens.rounded.button: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.rounded.field: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"49\"]", captured: "2026-10-01"}
+    tokens.rounded.label: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
+    tokens.shadow.floating: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"42\"]", captured: "2026-10-01"}
+    tokens.shadow.glow: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"32\"]", captured: "2026-10-01"}
+    tokens.spacing.accordion: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"33\"]", captured: "2026-10-01"}
+    tokens.spacing.button-x: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
+    tokens.spacing.button-y: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"31\"]", captured: "2026-10-01"}
+    tokens.spacing.cta-x: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.spacing.cta-y: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.spacing.label-x: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
+    tokens.spacing.label-y: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
+    tokens.spacing.tab-x: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
+    tokens.spacing.tab-y: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
+    tokens.typography.body.size: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::body, captured: "2026-10-01"}
+    tokens.typography.body.tracking: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::body, captured: "2026-10-01"}
+    tokens.typography.body.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::body, captured: "2026-10-01"}
+    tokens.typography.body.weight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::body, captured: "2026-10-01"}
+    tokens.typography.button.lineHeight: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.typography.button.size: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.typography.button.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.typography.button.weight: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.typography.card-title.lineHeight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
+    tokens.typography.card-title.size: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
+    tokens.typography.card-title.tracking: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
+    tokens.typography.card-title.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
+    tokens.typography.card-title.weight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
+    tokens.typography.case-name.lineHeight: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
+    tokens.typography.case-name.size: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
+    tokens.typography.case-name.tracking: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
+    tokens.typography.case-name.use: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
+    tokens.typography.case-name.weight: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
+    tokens.typography.display-hero.lineHeight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
+    tokens.typography.display-hero.size: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
+    tokens.typography.display-hero.tracking: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
+    tokens.typography.display-hero.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
+    tokens.typography.display-hero.weight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
+    tokens.typography.family.body: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::body, captured: "2026-10-01"}
+    tokens.typography.family.button: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"18\"]", captured: "2026-10-01"}
+    tokens.typography.footer-heading.lineHeight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
+    tokens.typography.footer-heading.size: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
+    tokens.typography.footer-heading.tracking: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
+    tokens.typography.footer-heading.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
+    tokens.typography.footer-heading.weight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
+    tokens.typography.industry-title.lineHeight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
+    tokens.typography.industry-title.size: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
+    tokens.typography.industry-title.tracking: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
+    tokens.typography.industry-title.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
+    tokens.typography.industry-title.weight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
+    tokens.typography.label.lineHeight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
+    tokens.typography.label.size: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
+    tokens.typography.label.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
+    tokens.typography.label.weight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::span, captured: "2026-10-01"}
+    tokens.typography.nav.lineHeight: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
+    tokens.typography.nav.size: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
+    tokens.typography.nav.tracking: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
+    tokens.typography.nav.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
+    tokens.typography.nav.weight: {surface_id: home, source_id: surface-home, method: computed-style, selector: "home::[data-omd-capture=\"1\"]", captured: "2026-10-01"}
+    tokens.typography.news-title.lineHeight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
+    tokens.typography.news-title.size: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
+    tokens.typography.news-title.tracking: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
+    tokens.typography.news-title.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
+    tokens.typography.news-title.weight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h3, captured: "2026-10-01"}
+    tokens.typography.nexus-title.lineHeight: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
+    tokens.typography.nexus-title.size: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
+    tokens.typography.nexus-title.tracking: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
+    tokens.typography.nexus-title.use: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
+    tokens.typography.nexus-title.weight: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
+    tokens.typography.section-nexus.lineHeight: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
+    tokens.typography.section-nexus.size: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
+    tokens.typography.section-nexus.tracking: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
+    tokens.typography.section-nexus.use: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
+    tokens.typography.section-nexus.weight: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: surface-2::h2, captured: "2026-10-01"}
+    tokens.typography.section.lineHeight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
+    tokens.typography.section.size: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
+    tokens.typography.section.tracking: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
+    tokens.typography.section.use: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
+    tokens.typography.section.weight: {surface_id: home, source_id: surface-home, method: computed-style, selector: home::h2, captured: "2026-10-01"}
+    tokens.typography.tab.lineHeight: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
+    tokens.typography.tab.size: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
+    tokens.typography.tab.tracking: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
+    tokens.typography.tab.use: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
+    tokens.typography.tab.weight: {surface_id: surface-2, source_id: surface-surface-2, method: computed-style, selector: "surface-2::[data-omd-capture=\"20\"]", captured: "2026-10-01"}
 tokens:
-  source: live-extract
-  extracted: "2026-06-08"
-  components_harvested: true
-  note: "primary = deep navy CTA fill #061232 (live getComputedStyle on 'Get in Touch'); brand-blue accent #3a82dd for links/nav; family Noto Sans TC (Taiwan-localized)"
+  source: reconciled
+  extracted: "2026-10-01"
   colors:
     primary: "#061232"
-    primary-deep: "#031234"
-    accent-blue: "#3a82dd"
-    accent-blue-strong: "#4770df"
-    accent-blue-deep: "#2168c2"
-    link: "#2563eb"
-    canvas: "#ffffff"
+    white: "#ffffff"
+    action-blue: "#2563eb"
+    nexus-blue: "#3b81db"
+    timeline-blue: "#1677ff"
+    arrow-blue: "#005cec"
+    link: "#3a82dd"
+    footer-blue: "#4770df"
+    tab-selected: "#2a415e"
+    tab-idle: "#95a2b2"
     heading: "#333333"
     body: "#525151"
-    muted: "#6b7280"
-    faint: "#999999"
-    on-primary: "#ffffff"
-    hairline: "#edf1f7"
-    ink: "#000000"
+    black: "#000000"
+    field-border: "#cccccc"
+    hairline: "#dbdbdb"
   typography:
-    family: { sans: "Noto Sans TC", fallback: "Noto Sans, sans-serif" }
-    display-hero: { size: 84, weight: 800, lineHeight: 1.14, tracking: -3.49, use: "Hero headline, full-bleed over imagery, white on dark" }
-    section:      { size: 36, weight: 600, lineHeight: 1.40, tracking: -1.50, use: "Section titles, e.g. solution headlines" }
-    subheading:   { size: 24, weight: 600, lineHeight: 1.00, tracking: -1.00, use: "Card / sub-section heads, industry labels" }
-    body-lg:      { size: 20, weight: 500, lineHeight: 1.40, use: "Intro paragraphs, lead copy" }
-    body:         { size: 18, weight: 400, lineHeight: 1.55, use: "Standard reading text, nav links" }
-    button:       { size: 18, weight: 500, lineHeight: 1.00, use: "Primary button label" }
-    caption:      { size: 15, weight: 400, use: "Small labels, footer, metadata" }
-  spacing: { xs: 4, sm: 8, md: 12, base: 16, lg: 24, xl: 30, xxl: 48, section: 80 }
-  rounded: { sm: 4, md: 8, lg: 30, full: 9999 }
+    family: {body: Noto Sans TC, button: Noto Sans}
+    display-hero: {size: 72, weight: 600, lineHeight: 1.4, tracking: -2.99, use: "Hero headline on home (Data → Intelligence → Impact) and /zh-tw/ (數據 → 智慧 → 決策), 100.8px line, white over the hero image"}
+    nexus-title: {size: 60, weight: 700, lineHeight: 1.3, tracking: 0.5, use: "iKala Nexus hero title, 78px line, #333333"}
+    section: {size: 36, weight: 600, lineHeight: 1.4, tracking: -1.5, use: "Section headings on home and /zh-tw/, 50.4px line, #333333 (white on dark bands)"}
+    section-nexus: {size: 36, weight: 700, lineHeight: 1, tracking: -1.5, use: "Section headings on iKala Nexus, 36px line"}
+    card-title: {size: 24, weight: 600, lineHeight: 1.4, tracking: -1, use: "Data-science cards on home (DataOps, MLOps, Predictive Analytics), 33.6px line"}
+    industry-title: {size: 24, weight: 600, lineHeight: 1, tracking: -1, use: "Industry card titles on home (Manufacturing, Retail & Marketing, Medical, Finance), 24px line"}
+    case-name: {size: 24, weight: 700, lineHeight: 1.4, tracking: 0.3, use: "Customer names in the iKala Nexus case carousel, 33.6px line"}
+    footer-heading: {size: 20, weight: 500, lineHeight: 1.25, tracking: -0.83, use: "Footer column headings (About, Solutions), 25px line, white"}
+    body: {size: 18, weight: 400, tracking: -0.27, use: "Page default on all three pages, line-height normal, #525151"}
+    nav: {size: 18, weight: 400, lineHeight: 1.5, tracking: -0.5, use: "Header navigation links, 27px line, #333333"}
+    news-title: {size: 18, weight: 600, lineHeight: 1.4, tracking: -0.75, use: "News and insight card titles, 25.2px line"}
+    button: {size: 18, weight: 500, lineHeight: 1, use: "Hero and news button labels in Noto Sans, 18px line"}
+    tab: {size: 16, weight: 600, lineHeight: 1.25, tracking: 0.53, use: "iKala Nexus solution tabs, 20px line, white"}
+    label: {size: 12, weight: 400, lineHeight: 1.48, use: "News / Insight pills, 17.7px line, white"}
+  spacing:
+    cta-y: 20
+    cta-x: 30
+    button-y: 16
+    button-x: 24
+    tab-y: 8
+    tab-x: 16
+    accordion: 20
+    label-y: 3
+    label-x: 10
+  rounded:
+    field: 2
+    button: 8
+    label: 30
+    arrow: 50
   shadow:
-    ambient: "rgba(0,0,0,0.04) 0px 0px 10px 0px"
-    standard: "rgba(0,0,0,0.10) 0px 0px 20px 0px"
-    elevated: "rgba(0,0,0,0.19) 0px 0px 10px 0px"
+    glow: rgba(0, 0, 0, 0.19) 0px 0px 10px 0px
+    floating: rgba(135, 158, 180, 0.7) 0px 6px 25px 0px
   components:
-    button-primary: { type: button, bg: "#061232", fg: "#ffffff", radius: "8px", padding: "20px 30px", height: "58px", font: "18px / 500", use: "Primary CTA (Get in Touch, Contact)" }
-    button-ghost: { type: button, bg: "#ffffff", fg: "#061232", radius: "8px", font: "20px / 500", use: "Secondary CTA over dark/imagery (Try it Now)" }
-    nav-link: { type: tab, fg: "#333333", font: "18px / 700", active: "#3a82dd brand-blue", use: "Horizontal nav links on white sticky header" }
-    card: { type: card, bg: "#ffffff", border: "1px solid #edf1f7", radius: "8px", shadow: "rgba(0,0,0,0.04) 0px 0px 10px 0px", hover: "rgba(0,0,0,0.19) 0px 0px 10px 0px", use: "Feature/industry surface cards" }
-    section-title: { type: badge, fg: "#333333", font: "36px / 600", use: "Section/feature titles, tight -1.5px tracking" }
-    link-inline: { type: badge, fg: "#2563eb", font: "18px / 400", use: "Inline body-copy hyperlinks, weight 400-700" }
+    hero-cta: {type: button, bg: "#061232", fg: "#ffffff", radius: 8px, padding: 20px 30px, height: 58px, font: 18px / 500 / 18px Noto Sans, states: "rest only; no state frame was captured and no probe was run, so no hover, pressed or focus value is declared", use: "Get in Touch on the home hero at home::[data-omd-capture=\"18\"] (167 x 58) and 聯絡我們 on /zh-tw/ (132 x 58)"}
+    blue-button: {type: button, bg: "#2563eb", fg: "#ffffff", radius: 8px, padding: 16px 24px, height: 50px, font: 18px / 500 / 18px Noto Sans, states: rest only; no state frame, use: Read More Articles / 閱讀更多文章 under the news list on home and /zh-tw/}
+    white-button: {type: button, bg: "#ffffff", fg: "#2563eb", radius: 8px, padding: 16px 24px, height: 50px, font: 18px / 500 / 18px Noto Sans, shadow: "rgba(0, 0, 0, 0.19) 0px 0px 10px 0px", states: rest only; no state frame, use: View More News / 查看更多新聞 beside the blue button}
+    nexus-hero-button: {type: button, bg: "#3b81db", fg: "#ffffff", radius: 0px, padding: 20px 40px, height: 60px, font: 20px / 700 / 20px Noto Sans, states: rest only; no state frame, use: "Contact Us on the iKala Nexus hero, 188 x 60"}
+    timeline-pill: {type: button, bg: "#ffffff", fg: "#1677ff", radius: 8px, padding: 12px 24px, height: 38px, font: 14px / 700 / 14px Noto Sans, states: rest only; no state frame, use: "1st Month, 2nd Month, 3rd Month, Go Live in the iKala Nexus four-step section, 216 x 38"}
+    carousel-arrow: {type: button, bg: "#ffffff", fg: "#005cec", radius: 50px, size: 44px x 44px, shadow: "rgba(135, 158, 180, 0.7) 0px 6px 25px 0px", disabled: the previous arrow (capture 43) is disabled at rest and computes the same values, states: rest and disabled only; no pointer frame, use: Next and previous arrows of the iKala Nexus case carousel}
+    form-submit: {type: button, bg: "#3b81db", fg: "#ffffff", radius: 2px, padding: 10px, height: 40px, font: 14px / 500 / 20.3px Noto Sans TC, states: rest only; no state frame, use: "Submit on the iKala Nexus contact form, 100 x 40"}
+    solution-tab: {type: tab, bg: "#95a2b2", fg: "#ffffff", radius: 8px, padding: 8px 16px, height: 50px, font: "16px / 600 / 20px Noto Sans TC, letter-spacing 0.53px", selected: "bg #2a415e (Answer FAQs, capture 19)", states: selected variant read from rest values; no pointer frame, use: "Seven use-case tabs on iKala Nexus, 362 x 50"}
+    faq-accordion-row: {type: tab, border: "1px solid rgba(0, 0, 0, 0.02)", padding: 20px, height: 60px, states: rest only; no state frame, use: "Getting-started questions on home and /zh-tw/ and the iKala Nexus FAQ, 940 x 60; the question text sits in a child element the capture did not record, so no label colour or font is declared"}
+    nav-link: {type: tab, fg: "#333333", padding: 0px 20px 0px 0px, font: "18px / 400 / 27px Noto Sans TC, letter-spacing -0.5px", selected: "2px solid #000000 bottom border on the current section menu item (Solutions on iKala Nexus)", states: selected variant read from rest values; no pointer frame, use: "Header navigation (Solutions, AI Technology, Blog, About) in the white fixed header"}
+    text-field: {type: input, bg: "#ffffff", fg: "#525151", border: "1px solid #cccccc", radius: 2px, padding: 9px, height: 41px, font: "16px / 400 / 20.8px Noto Sans TC, letter-spacing -0.24px", states: rest only, use: "Contact form fields on iKala Nexus, 255 x 41 and 540 x 41"}
+    news-label: {type: badge, bg: "rgba(0, 0, 0, 0.7)", fg: "#ffffff", radius: 30px, padding: 3px 10px, height: 24px, font: 12px / 400 / 17.7px Noto Sans TC, use: News / Insight (新聞 / 洞察) labels over news card images on home and /zh-tw/}
+  components_harvested: true
 ---
 
 # Design System Inspiration of iKala
 
 ## 1. Visual Theme & Atmosphere
 
-iKala's website presents itself as a clean, corporate-confident B2B AI and martech platform built for the Asia-Pacific enterprise buyer. The page opens on a pure white canvas (`#ffffff`) with a restrained, professional palette: deep navy (`#061232`) anchors the primary calls-to-action, a clear corporate blue (`#3a82dd`) carries links and active navigation states, and a soft warm gray (`#525151`) handles body copy. The result feels measured and trustworthy rather than flashy -- the aesthetic of a regional AI leader that sells to manufacturing, retail, and finance buyers who value credibility over spectacle. There is no neon, no gradient-overload, no dark-mode drama on the marketing surface; the design earns trust through clarity.
+iKala is a Taiwanese AI company that describes itself as "a data science native company" and sells AI transformation to enterprises. Its About page says it was "Co-founded by Sega Cheng in 2012" and "originated with its core software technology in data analysis". Today it runs two pillars, "AI Adoption and Marketing Super-Intelligence". The site's solution menu lists **iKala Nexus** (enterprise knowledge and AI agents), **Kolr** (an "influence search engine" that tracks "over 300 million influencers"), **iKala Cloud** and **iKala Foundry**. The footer of every page states the scale: "Headquartered in Taiwan with a global footprint, iKala serves over 1,000 enterprises and 50,000 brands across more than 190 countries". The home's news list shows where the company stands in 2026. iKala is extending TMMLU+, a Traditional Chinese benchmark, "to Strengthen Taiwan's Sovereign AI Evaluation Capabilities", and co-founder and chairman Sega Cheng was named the 2026 Jeffrey Koo Fellow.
 
-The defining typographic choice is `Noto Sans TC` -- Google's Traditional-Chinese-optimized humanist sans -- set as the primary family ahead of the Latin `Noto Sans` fallback. This is a deliberate, market-honest decision: iKala is a Taiwanese company serving a bilingual (Traditional Chinese + English) audience, and a font that renders Han characters and Latin glyphs with equal authority signals that the brand is genuinely local, not a Western template translated after the fact. The hero runs enormous -- 84px at weight 800 with aggressively tight `-3.49px` letter-spacing -- giving the headline a dense, billboard-grade presence that reads as ambition and scale. Below the hero, section titles step down to 36px weight 600, and the contrast between the heavy hero and the calmer mid-weight sections creates a clear top-down hierarchy.
+The site is a white, bilingual corporate page in English, Traditional Chinese and Japanese. Its tagline is "Data → Intelligence → Impact", or "數據 → 智慧 → 決策" on /zh-tw/. The hero sets that line in white at 72px / 600 with tight -2.99px tracking over a full-bleed image. Beneath it sits one dark navy call-to-action, **Get in Touch** (聯絡我們 on the Chinese page), filled `#061232` with an 8px radius. Below the hero the page turns light. Section headings are `#333333` at 36px / 600, body copy is a warm grey `#525151` at 18px, and links take the theme's blue `#3a82dd`. Blue appears in several shades rather than one: `#2563eb` fills Read More Articles, `#3b81db` fills the iKala Nexus hero button and the form's Submit, `#1677ff` labels the Nexus timeline pills, and `#4770df` underlines the footer logo.
 
-The atmosphere is reinforced by soft, diffuse elevation. Rather than hard drop shadows, iKala uses low-alpha, zero-offset, blurred shadows (`rgba(0,0,0,0.04)` to `rgba(0,0,0,0.19)` at `0px 0px 10-20px`) that lift cards gently off the white field like a soft glow. Combined with an 8px workhorse radius, the surface feels modern and approachable -- enterprise-grade without being cold.
+Type is Google's **Noto Sans TC**, set first in the stack (`"Noto Sans TC", "Noto Sans", sans-serif`) so Han and Latin text share one family. The marketing buttons are set in the Latin **Noto Sans**. Depth is used sparingly: one soft glow under the white View More News button, a cool blue-grey shadow under the Nexus carousel arrows, and translucent black pills for the News and Insight labels.
 
 **Key Characteristics:**
-- `Noto Sans TC` as the primary family -- a Taiwan-localized humanist sans that renders Han + Latin with equal weight
-- Deep navy (`#061232`) as the primary CTA anchor instead of a bright accent -- gravitas over hype
-- Corporate blue (`#3a82dd`) for links and active nav -- the brand's interactive signal
-- Enormous weight-800 hero (84px, `-3.49px` tracking) stepping down to calm weight-600 sections
-- Pure white canvas (`#ffffff`) with warm-gray body text (`#525151`) -- clean, readable, B2B-credible
-- Soft diffuse glow shadows (zero-offset, low alpha) rather than directional drop shadows
-- 8px workhorse radius with an occasional 30px pill for chips/badges
-- Restrained palette: navy + blue + grays, no decorative gradients on the marketing chrome
+- Deep navy `#061232` as the hero call-to-action fill on the English and Chinese home pages
+- Several working blues, each tied to a surface: `#2563eb`, `#3b81db`, `#1677ff`, `#3a82dd`
+- Noto Sans TC first in every text stack; Noto Sans on the marketing buttons
+- A 72px / 600 white hero with -2.99px tracking, then calm 36px / 600 section headings in `#333333`
+- Warm grey `#525151` body copy at 18px
+- 8px radius on buttons and tabs, 30px on label pills, 50px on round arrows, 2px on form fields
+- Translucent black `rgba(0, 0, 0, 0.7)` pills for News and Insight labels
 
 ## Primary tasks
 
 - Contact iKala about an AI transformation project
-- Find the AI solution written for your own industry
-- Read the same material in Traditional Chinese or English
+- Find the solution for a goal: iKala Nexus for enterprise knowledge, Kolr for creator and social intelligence
+- Read the same material in English, Traditional Chinese or Japanese
+- Read iKala's news and AI insights
 - Check the credibility signals before shortlisting iKala as a vendor
 
 ## 2. Color Palette & Roles
 
 ### Primary
-- **Deep Navy** (`#061232`): Primary brand color and primary CTA background ("Get in Touch", "Contact"). A near-black blue that signals enterprise gravitas and anchors the entire system. Measured live as the fill of the hero CTA button.
-- **Primary Deep** (`#031234`): The darkest navy variant, used for the densest dark fields and footer-grade backgrounds -- a hair deeper than the primary.
-- **Pure White** (`#ffffff`): Page background, card surfaces, button text on navy, hero text over imagery.
+- **Deep Navy** (`#061232`): The hero call-to-action fill, on Get in Touch (home, 167 × 58) and 聯絡我們 (/zh-tw/, 132 × 58). It is the primary because it fills the first and only hero action on both home pages. No single blue plays that role across all three captured pages; each blue belongs to one page or one component.
+- **White** (`#ffffff`): The page canvas, the label on every filled button, and the white hero and footer headings.
 
-### Brand Blue (Interactive)
-- **Accent Blue** (`#3a82dd`): The brand's interactive signal -- active navigation links, inline link hovers, highlighted UI. Measured live as the active nav-link color.
-- **Accent Blue Strong** (`#4770df`): A stronger, more saturated blue for emphasized links and section accents.
-- **Accent Blue Deep** (`#2168c2`): A deeper blue for hover/pressed states and high-contrast accents on light backgrounds.
-- **Link Blue** (`#2563eb`): Standard inline link color for body-copy hyperlinks.
+### Action blues
+- **Action Blue** (`#2563eb`): The fill of Read More Articles (閱讀更多文章) and the label of View More News (查看更多新聞) under the home news list.
+- **Nexus Blue** (`#3b81db`): The fill of the iKala Nexus hero button (Contact Us) and of the contact form's Submit.
+- **Timeline Blue** (`#1677ff`): The label of the four timeline pills on iKala Nexus (1st Month, 2nd Month, 3rd Month, Go Live).
+- **Arrow Blue** (`#005cec`): The icon colour of the round carousel arrows on iKala Nexus.
+- **Link Blue** (`#3a82dd`): The theme's link colour (`a{color:#3a82dd}` in the page CSS), measured on the header logo link.
+- **Footer Blue** (`#4770df`): The 1px underline and text colour of the footer logo block.
 
-### Neutral Scale
-- **Heading** (`#333333`): Section and card heading color -- a soft near-black, warmer and less harsh than pure black.
-- **Body** (`#525151`): Primary body text color (set on `body`). A warm mid-gray tuned for comfortable long-form reading.
-- **Muted** (`#6b7280`): Secondary text, captions, supporting metadata.
-- **Faint** (`#999999`): Tertiary labels, disabled-adjacent text, fine print.
-- **Ink** (`#000000`): Used sparingly for maximum-contrast UI chrome and certain icon fills.
+### Tabs
+- **Tab Selected** (`#2a415e`): The fill of the selected solution tab on iKala Nexus (Answer FAQs).
+- **Tab Idle** (`#95a2b2`): The fill of the six unselected solution tabs.
 
-### Surface & Borders
-- **Hairline** (`#edf1f7`): Soft blue-tinted divider and border color for cards, sections, and table rows.
+### Neutrals
+- **Heading** (`#333333`): Section and card headings, and the header navigation links.
+- **Body** (`#525151`): The body's text colour on all three pages, and form text.
+- **Black** (`#000000`): The header menu item, and the 2px underline of the current section on iKala Nexus.
+- **Field Border** (`#cccccc`): The 1px border of the contact form inputs.
+- **Hairline** (`#dbdbdb`): The 1px border of the Nexus case table and the form textarea.
 
-### Shadow Colors
-- **Shadow Soft** (`rgba(0,0,0,0.04)`): Minimal ambient glow for light card lift.
-- **Shadow Standard** (`rgba(0,0,0,0.10)`): Standard diffuse elevation for content panels.
-- **Shadow Strong** (`rgba(0,0,0,0.19)`): Deeper diffuse glow for hovered/featured cards.
+### Brand assets and declared values
+- `#2168c2` is declared in the header CSS for the menu toggle but did not compute on any captured element.
+- Translucent values stay in component fields: the news label fill `rgba(0, 0, 0, 0.7)`, the accordion border `rgba(0, 0, 0, 0.02)` and both shadows.
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Primary**: `Noto Sans TC`, with fallback chain `Noto Sans, sans-serif`
-- **Rationale**: Traditional-Chinese-first family ensures Han and Latin glyphs share a consistent humanist skeleton -- essential for a bilingual Taiwanese B2B audience.
+- **Noto Sans TC** — live surface use on 479 elements: body, headings, tabs, form fields and labels. It is the first family in the theme's rule for `body`, `button`, `.entry-content`, `.entry-content h2` and `.entry-content p` (`font-family:"Noto Sans TC","Noto Sans",sans-serif!important`). Served by the site's own `@font-face` rules. Official distributed asset: Noto Sans CJK / Noto Sans TC from the Noto project, SIL Open Font License 1.1.
+- **Noto Sans** — live surface use on 33 elements, mainly the Elementor buttons (Get in Touch, Read More Articles, View More News, Contact Us, the timeline pills). SIL Open Font License 1.1.
+- **Declared only** — `Montserrat`, `AdobeClean-Bold`, `AdobeClean-Regular`, `forminator-icons-font` and `swiper-icons` have `@font-face` rules but no observed use.
+- **Official product use** — no ikala.ai page opened names its typefaces.
 
 ### Hierarchy
 
-| Role | Font | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|------|--------|-------------|----------------|-------|
-| Display Hero | Noto Sans TC | 84px (5.25rem) | 800 | 1.14 | -3.49px | Full-bleed hero, white over imagery |
-| Section Heading | Noto Sans TC | 36px (2.25rem) | 600 | 1.40 | -1.50px | Solution/feature section titles, `#333333` |
-| Sub-heading | Noto Sans TC | 24px (1.50rem) | 600 | 1.00 | -1.00px | Card heads, industry labels |
-| Body Large | Noto Sans TC | 20px (1.25rem) | 500 | 1.40 | normal | Lead paragraphs, intro copy |
-| Body | Noto Sans TC | 18px (1.13rem) | 400 | 1.55 | normal | Standard reading text, nav links |
-| Button | Noto Sans TC | 18px (1.13rem) | 500 | 1.00 | normal | Primary button label |
-| Nav Active | Noto Sans TC | 18px (1.13rem) | 700 | normal | normal | Active nav link, `#3a82dd` |
-| Caption | Noto Sans TC | 15px (0.94rem) | 400 | normal | normal | Footer, metadata, fine labels |
+| Role | Font | Size | Weight | Line height | Tracking | Notes |
+|---|---|---|---|---|---|---|
+| Display hero | Noto Sans TC | 72px | 600 | 100.8px | -2.99px | Home and /zh-tw/ hero, white |
+| Nexus title | Noto Sans TC | 60px | 700 | 78px | 0.5px | iKala Nexus hero, `#333333` |
+| Section | Noto Sans TC | 36px | 600 | 50.4px | -1.50px | Home section headings |
+| Section (Nexus) | Noto Sans TC | 36px | 700 | 36px | -1.50px | iKala Nexus section headings |
+| Card title | Noto Sans TC | 24px | 600 | 33.6px | -1.00px | Data-science cards |
+| Industry title | Noto Sans TC | 24px | 600 | 24px | -1.00px | Manufacturing, Retail & Marketing, Medical, Finance |
+| Case name | Noto Sans TC | 24px | 700 | 33.6px | 0.3px | Nexus case carousel |
+| Footer heading | Noto Sans TC | 20px | 500 | 25px | -0.83px | Footer columns, white |
+| Body | Noto Sans TC | 18px | 400 | normal | -0.27px | Page default |
+| Navigation | Noto Sans TC | 18px | 400 | 27px | -0.50px | Header links |
+| News title | Noto Sans TC | 18px | 600 | 25.2px | -0.75px | News and insight cards |
+| Button | Noto Sans | 18px | 500 | 18px | normal | Hero and news buttons |
+| Tab | Noto Sans TC | 16px | 600 | 20px | 0.53px | Nexus solution tabs |
+| Label | Noto Sans TC | 12px | 400 | 17.7px | normal | News / Insight pills |
 
 ### Principles
-- **Heavy hero, calm body**: The weight-800 / 84px hero is the single loud moment. Everything below settles to weight 400-600, so the page reads as confident, not shouty.
-- **Progressive negative tracking**: Letter-spacing tightens dramatically at display sizes (`-3.49px` at 84px, `-1.5px` at 36px, `-1.0px` at 24px) and relaxes to normal at body sizes. Tight tracking gives large headlines a dense, engineered presence.
-- **Warm grays, not black**: Headings are `#333333` and body is `#525151` -- both warm near-blacks rather than pure `#000000`, which keeps long passages comfortable.
-- **Bilingual-first metrics**: Line-heights run generous at body sizes (1.55) to accommodate the taller rhythm of mixed Han + Latin text.
-- **Weight as hierarchy**: 800 for hero, 600-700 for headings and active nav, 500 for buttons and lead copy, 400 for body. Weight, not size alone, carries the structure.
+- Han first: Noto Sans TC leads every text stack, with Noto Sans as the Latin fallback.
+- Tracking tightens with size: -2.99px at 72px, -1.5px at 36px, -1px at 24px, -0.27px at 18px. The Nexus page breaks the pattern with +0.5px on its 60px title.
+- Weight 600 carries most headings; 700 appears on the Nexus page.
 
 ## 4. Component Stylings
 
 ### Buttons
 
-**Primary (Navy)**
+**Hero call-to-action (navy)**
 - Background: `#061232`
 - Text: `#ffffff`
+- Radius: 8px
 - Padding: 20px 30px
+- Height: 58px
+- Font: 18px / 500 / 18px Noto Sans
+- Use: Get in Touch on home, 聯絡我們 on /zh-tw/
+
+**Filled blue button**
+- Background: `#2563eb`
+- Text: `#ffffff`
 - Radius: 8px
-- Height: ~58px
-- Font: 18px Noto Sans TC weight 500
-- Use: Primary CTA ("Get in Touch", "Contact")
+- Padding: 16px 24px
+- Height: 50px
+- Font: 18px / 500 / 18px Noto Sans
+- Use: Read More Articles / 閱讀更多文章 under the news list
 
-**Ghost / Light**
+**White button**
 - Background: `#ffffff`
-- Text: `#061232`
+- Text: `#2563eb`
 - Radius: 8px
-- Font: 20px Noto Sans TC weight 500
-- Use: Secondary CTA over dark/imagery ("Try it Now")
+- Padding: 16px 24px
+- Height: 50px
+- Font: 18px / 500 / 18px Noto Sans
+- Shadow: `rgba(0, 0, 0, 0.19) 0px 0px 10px 0px`
+- Use: View More News / 查看更多新聞 beside the blue button
 
-**Text / Inline Link**
-- Background: transparent
-- Text: `#4770df` or `#2563eb`
-- Font: 18-24px weight 400-700
-- Use: Inline navigation, "learn more" affordances
+**Nexus hero button**
+- Background: `#3b81db`
+- Text: `#ffffff`
+- Radius: 0px
+- Padding: 20px 40px
+- Height: 60px
+- Font: 20px / 700 / 20px Noto Sans
+- Use: Contact Us on the iKala Nexus hero
 
-### Cards & Containers
+**Timeline pill**
 - Background: `#ffffff`
-- Border: `1px solid #edf1f7` (hairline) where present
-- Radius: 8px (standard), 4px (tight chips)
-- Shadow (ambient): `rgba(0,0,0,0.04) 0px 0px 10px 0px`
-- Shadow (standard): `rgba(0,0,0,0.10) 0px 0px 20px 0px`
-- Hover: shadow deepens toward `rgba(0,0,0,0.19) 0px 0px 10px 0px`
+- Text: `#1677ff`
+- Radius: 8px
+- Padding: 12px 24px
+- Height: 38px
+- Font: 14px / 700 / 14px Noto Sans
+- Use: 1st Month, 2nd Month, 3rd Month, Go Live in the iKala Nexus four-step section
 
-### Badges / Chips / Pills
-- Radius: 30px (pill) for category chips and tags
-- Background: `#ffffff` or light tint
-- Text: `#333333` heading-gray or `#3a82dd` for active
-- Font: 15px weight 400-500
+**Carousel arrow**
+- Background: `#ffffff`
+- Icon: `#005cec`
+- Radius: 50px
+- Size: 44px x 44px
+- Shadow: `rgba(135, 158, 180, 0.7) 0px 6px 25px 0px`
+- Disabled: the previous arrow is disabled at rest with the same values
+- Use: Next and previous arrows of the Nexus case carousel
 
-### Navigation
-- Clean horizontal nav on white background
-- Brand logotype left-aligned
-- Links: Noto Sans TC 18px weight 700
-- Active / hover link color: `#3a82dd` (brand blue)
-- CTA: navy "Contact" / "Get in Touch" button right-aligned
-- Sticky header on white with soft separation from content
+**Form submit**
+- Background: `#3b81db`
+- Text: `#ffffff`
+- Radius: 2px
+- Padding: 10px
+- Height: 40px
+- Font: 14px / 500 / 20.3px Noto Sans TC
+- Use: Submit on the iKala Nexus contact form
 
-### Section Titles
-- Font: 36px Noto Sans TC weight 600
-- Color: `#333333`
-- Tracking: `-1.50px` (tight)
-- Often centered above feature/industry grids
+### Tabs and navigation
 
-### Inline Links
-- Color: `#2563eb` (link blue) or `#4770df` (strong)
-- Weight: 400-700 depending on emphasis
+**Solution tab**
+- Background: `#95a2b2`
+- Text: `#ffffff`
+- Radius: 8px
+- Padding: 8px 16px
+- Height: 50px
+- Font: 16px / 600 / 20px Noto Sans TC, letter-spacing 0.53px
+- Selected: background `#2a415e` (Answer FAQs)
+- Use: Seven use-case tabs on iKala Nexus (Answer FAQs, Doc Review, Smart Customer Service, Sales Data Insights, Marketing Automation, CEO Trend Reports, Industry Trends)
+
+**FAQ accordion row**
+- Border: 1px solid `rgba(0, 0, 0, 0.02)`
+- Padding: 20px
+- Height: 60px
+- Use: Getting-started questions on home and /zh-tw/ and the iKala Nexus FAQ; the question text sits in a child element the capture did not record
+
+**Header navigation link**
+- Text: `#333333`
+- Padding: 0px 20px 0px 0px
+- Font: 18px / 400 / 27px Noto Sans TC, letter-spacing -0.5px
+- Selected: 2px solid `#000000` bottom border on the current section's menu item (Solutions on iKala Nexus)
+- Use: Solutions, AI Technology, Blog, About in the white fixed header
+
+### Inputs
+
+**Text field**
+- Background: `#ffffff`
+- Text: `#525151`
+- Border: 1px solid `#cccccc`
+- Radius: 2px
+- Padding: 9px
+- Height: 41px
+- Font: 16px / 400 / 20.8px Noto Sans TC, letter-spacing -0.24px
+- Use: Contact form fields on iKala Nexus
+
+### Badges
+
+**News label**
+- Background: `rgba(0, 0, 0, 0.7)`
+- Text: `#ffffff`
+- Radius: 30px
+- Padding: 3px 10px
+- Height: 24px
+- Font: 12px / 400 / 17.7px Noto Sans TC
+- Use: News / Insight (新聞 / 洞察) labels over news card images
 
 ---
 
-**Verified:** 2026-06-08 (omd:add-reference — Tier 1 live inspect)
-**Tier 1 sources:** https://ikala.ai, https://ikala.tw (live getComputedStyle on body, hero h1, section h2/h3, primary CTA "Get in Touch", nav links — 8+ real samples, 2026-06-08)
-**Method:** playwright headless (`--disable-http2`), getComputedStyle on live DOM, rgb()→hex conversion.
-**`.verification.md`:** `web/references/ikala/.verification.md`
+**Verified:** 2026-10-01 (logged-out capture of three public ikala.ai pages through the owner's browser; deterministic bundle; no state frames)
+**Tier 1 sources:** https://ikala.ai/ , https://ikala.ai/ikala-nexus/ , https://ikala.ai/zh-tw/ , https://ikala.ai/about/
+**Tier 2 sources:** not attempted
+**Conflicts unresolved:** none
 
 ## 5. Layout Principles
 
-### Spacing System
-- Base unit: 8px
-- Scale: 4px, 8px, 12px, 16px, 24px, 30px, 48px, 80px
-- Notable: 30px appears as a recurring rhythm unit (button horizontal padding, pill radius), and section gaps run generous at ~80px to give the white canvas room to breathe.
+### Spacing
+- The bundle's spacing histogram is led by 20px (71 uses) and 10px (51).
+- Measured paddings: 20px 30px on the hero button, 16px 24px on the news buttons, 8px 16px on tabs, 12px 24px on timeline pills, 20px on accordion rows, 3px 10px on labels, 9px in fields.
 
-### Grid & Container
-- Centered max-width content column with generous side gutters
-- Hero: full-bleed image or dark field with the 84px headline overlaid, white text
-- Feature/industry sections: multi-column card grids (Manufacturing, Retail, Finance, etc.)
-- Alternating white sections with occasional dark navy bands for emphasis
+### Grid and container
+- Hero and section headings run 1180px wide on home and /zh-tw/; the Nexus page uses 1200px.
+- Industry cards sit four across in 215px columns; data-science cards three across at about 300px; news cards in 318px and 259px columns.
+- The FAQ accordion is a 940px column of 60px rows.
+- iKala Nexus shows its customer cases in a bordered table (1px `#dbdbdb`, 18px Noto Sans TC body) and a carousel of case names.
 
-### Whitespace Philosophy
-- **Generous and calm**: The white canvas dominates. Sections are separated by large vertical gaps (~80px) so each block reads as a distinct, scannable unit -- appropriate for an enterprise buyer skimming for relevance.
-- **Hero as the anchor**: The oversized hero claims the top of the page; everything below is deliberately quieter, creating a clear visual descent from headline to detail.
-- **Card rhythm**: Industry and solution cards sit on the white field with soft glow shadows, evenly spaced, so the eye moves predictably across the grid.
-
-### Border Radius Scale
-- Tight (4px): chips, small inline elements
-- Standard (8px): buttons, cards, panels -- the workhorse
-- Pill (30px): category chips, tags, rounded badges
-- Full (9999px): circular avatars/icons where used
+### Border radius
+- 0px for most elements (474 of 512 recorded radii).
+- 2px on form fields and Submit; 8px on buttons, tabs and pills; 30px on labels; 50px on round arrows.
 
 ## 6. Depth & Elevation
 
 | Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (Level 0) | No shadow | Page background, inline text |
-| Ambient (Level 1) | `rgba(0,0,0,0.04) 0px 0px 10px 0px` | Subtle card lift, resting cards |
-| Standard (Level 2) | `rgba(0,0,0,0.10) 0px 0px 20px 0px` | Content panels, feature cards |
-| Strong (Level 3) | `rgba(0,0,0,0.19) 0px 0px 10px 0px` | Hovered / featured cards, popovers |
+|---|---|---|
+| Flat | No shadow | Headings, text, navy and blue buttons, tabs, fields |
+| Glow | `rgba(0, 0, 0, 0.19) 0px 0px 10px 0px` | White View More News button |
+| Floating | `rgba(135, 158, 180, 0.7) 0px 6px 25px 0px` | Nexus carousel arrows |
 
-**Shadow Philosophy**: iKala's elevation is built on diffuse glow rather than directional drop. Every measured shadow uses a `0px 0px` offset -- no x/y displacement -- so the shadow radiates evenly around the element like a soft halo. The alpha steps (0.04 → 0.10 → 0.19) are the entire elevation language: low and subtle at rest, deepening on interaction. There is no colored or brand-tinted shadow; the system keeps shadows neutral black-on-white so the navy-and-blue palette stays unambiguous. The effect is clean and contemporary -- elements feel lifted but never heavy.
+The filled buttons are flat; shadow marks only the white button on a white field and the arrows that float over the case carousel.
 
-### Decorative Depth
-- Dark navy (`#061232` / `#031234`) hero and accent bands create depth through color contrast against the white field
-- Soft hairline (`#edf1f7`) dividers separate dense sections without hard lines
+## 7. Do's and Don'ts
 
-## 7. Do's and Don'ts (overview)
+### Do
+- Put Noto Sans TC first in the font stack, with Noto Sans as the Latin fallback
+- Fill the hero call-to-action with deep navy `#061232` and an 8px radius
+- Use `#333333` for headings and `#525151` for body copy
+- Track large headings tight (-2.99px at 72px, -1.5px at 36px)
+- Use the 0.19-alpha glow only on a white button that sits on white
+- Mark the selected tab with the darker `#2a415e` and keep idle tabs `#95a2b2`
 
-A condensed version lives here; the full Do's and Don'ts are enumerated in §16.
-- **Do** use navy (`#061232`) for primary CTAs and `#3a82dd` blue for interactive links.
-- **Do** keep the white canvas dominant and let sections breathe.
-- **Don't** introduce decorative gradients or neon on marketing chrome.
-- **Don't** swap `Noto Sans TC` for a Latin-only family -- the bilingual rendering is the point.
+### Don't
+- Treat any one blue as universal; each blue belongs to a specific page or component
+- Replace Noto Sans TC with a Latin-only font
+- Add shadows to the filled navy or blue buttons; they are flat
+- Use pure black for body copy; `#000000` marks only the header menu item and the current-section underline
+- Use positive tracking on hero headings; the +0.5px Nexus title is the one exception
+- Promote `#2168c2` to a token; it never computed on the captured pages
 
 ## 8. Responsive Behavior
 
-### Breakpoints
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| Mobile | <640px | Single column, hero compresses from 84px toward ~40-48px, stacked cards |
-| Tablet | 640-1024px | 2-column grids, moderate gutters |
-| Desktop | 1024-1440px | Full multi-column feature/industry grids |
-| Large Desktop | >1440px | Centered content with wide margins, hero at full scale |
-
-### Touch Targets
-- Primary buttons run ~58px tall with 20px vertical padding -- comfortable tap targets
-- Nav links at 18px with generous spacing
-- Pill chips maintain adequate horizontal padding for tapping
-
-### Collapsing Strategy
-- Hero: 84px display compresses sharply on mobile; weight 800 retained, tracking relaxes as size drops
-- Navigation: horizontal links + navy CTA → hamburger toggle on mobile
-- Industry/feature cards: multi-column → 2-column → single stacked column
-- Section gaps: ~80px → reduced on mobile to keep scroll length reasonable
-
-### Image Behavior
-- Hero imagery is full-bleed with white headline overlaid; maintains aspect and crop across sizes
-- Card thumbnails maintain 8px radius and soft glow shadow at all sizes
+Only a 1440px-wide desktop view was captured. No breakpoint, collapse or touch-target behaviour was measured, and none is declared. At that width the hero button is 58px tall, the news buttons 50px and the form fields 41px.
 
 ## 9. Agent Prompt Guide
 
-### Quick Color Reference
-- Primary CTA: Deep Navy (`#061232`)
-- CTA text: White (`#ffffff`)
-- Background: Pure White (`#ffffff`)
-- Heading text: Soft Black (`#333333`)
-- Body text: Warm Gray (`#525151`)
-- Interactive / active nav: Brand Blue (`#3a82dd`)
-- Inline link: Link Blue (`#2563eb`) / Strong (`#4770df`)
-- Divider: Hairline (`#edf1f7`)
-- Dark band: Primary Deep (`#031234`)
+### Quick colour reference
+- Hero action fill: `#061232`
+- White: `#ffffff`
+- Action blue: `#2563eb`
+- Nexus blue: `#3b81db`
+- Timeline blue: `#1677ff`
+- Arrow blue: `#005cec`
+- Link blue: `#3a82dd`
+- Footer blue: `#4770df`
+- Tab selected / idle: `#2a415e` / `#95a2b2`
+- Heading: `#333333`
+- Body: `#525151`
+- Black: `#000000`
+- Field border: `#cccccc`
+- Hairline: `#dbdbdb`
 
-### Example Component Prompts
-- "Create a hero on a dark navy (`#061232`) field with full-bleed imagery. Headline in Noto Sans TC at 84px weight 800, line-height 1.14, letter-spacing -3.49px, color #ffffff. Below it, a navy CTA button is unnecessary on dark — use a white ghost button (#ffffff bg, #061232 text, 8px radius, 18px weight 500) reading 'Try it Now'."
-- "Design a feature card: white background, 8px radius, shadow rgba(0,0,0,0.04) 0px 0px 10px 0px. Title at 24px Noto Sans TC weight 600, color #333333, letter-spacing -1.0px. Body at 18px weight 400, color #525151, line-height 1.55."
-- "Build a primary CTA button: #061232 navy background, #ffffff text, 8px radius, 20px 30px padding, ~58px tall, 18px Noto Sans TC weight 500, label 'Get in Touch'."
-- "Create navigation: white sticky header, Noto Sans TC 18px weight 700 links in #333333, active link color #3a82dd. Navy 'Contact' button right-aligned (#061232 bg, white text, 8px radius)."
-- "Design a section title: 36px Noto Sans TC weight 600, color #333333, letter-spacing -1.5px, centered above a 3-column industry card grid."
+### Example component prompts
+- "Hero: full-bleed image, white Noto Sans TC 72px / 600 headline with -2.99px tracking and 100.8px line; one `#061232` button, white Noto Sans 18px / 500 label, 20px 30px padding, 8px radius, 58px tall."
+- "News footer: a `#2563eb` filled button and a white button with `#2563eb` label and `rgba(0, 0, 0, 0.19) 0px 0px 10px 0px` glow, both 16px 24px padding, 8px radius, 50px tall."
+- "Use-case tabs: 50px tall, 8px radius, white Noto Sans TC 16px / 600 labels; idle `#95a2b2`, selected `#2a415e`."
 
-### Iteration Guide
-1. Set `font-family: "Noto Sans TC", "Noto Sans", sans-serif` on all text -- the TC-first family is the brand's bilingual signature
-2. Navy `#061232` is the primary CTA color; `#3a82dd` blue is the interactive/link signal
-3. Headings use `#333333`, body uses `#525151` -- warm near-blacks, never pure `#000000` for long copy
-4. Shadows are always `0px 0px` diffuse glow: 0.04 alpha at rest, 0.10 standard, 0.19 on hover
-5. Border-radius is 8px for buttons/cards, 30px for pill chips, 4px for tight elements
-6. Tracking tightens hard at display sizes (-3.49px at 84px) and relaxes to normal by 18px body
-7. Keep the white canvas dominant; reserve navy bands for emphasis, never overwhelm
-
----
+### Iteration guide
+1. Noto Sans TC first, always.
+2. Navy for the hero action, blues for page-level actions.
+3. Headings `#333333`, body `#525151`.
+4. Radii come in four sizes: 2, 8, 30 and 50px.
+5. Shadows only where a white control sits on white or floats over content.
 
 ## 10. Voice & Tone
 
-iKala's voice is that of a regional AI partner that speaks the language of business outcomes, not algorithms. The site's own framing -- *"Data → Intelligence → Impact"* (the page title) and *"Total AI Transformation Solutions and Services"* (a live h2) -- captures the register: outcome-oriented, enterprise-credible, and pragmatic. Copy leads with the customer's transformation, not the model architecture. CTAs are direct and unfussy ("Get in Touch", "Contact", "Try it Now"). The tone respects a buyer who is evaluating ROI and credibility, so it avoids consumer-app exuberance and stays measured.
+iKala speaks as an enterprise AI partner that talks about business outcomes, not algorithms. The tagline "Data → Intelligence → Impact" and the section heading "Total AI Transformation Solutions and Services for Key Verticals" set the register. Copy leads with results ("turning data into measurable financial and performance results") and reassures newcomers ("Even if you don't have a data science team or prior AI experience…"). Calls-to-action are short imperatives: "Get in Touch", "Contact Us", "Try it Now", "Read More Articles". The Traditional Chinese page carries the same voice ("數據 → 智慧 → 決策", "全方位 AI 轉型解決方案，專注核心垂直產業").
 
 | Context | Tone |
 |---|---|
-| Hero headlines | Ambitious but concrete. Frames AI as transformation for industries (manufacturing, retail, finance). |
-| Product / solution descriptions | Outcome-first. "AI transformation solutions and services" — capability tied to business value. |
-| CTAs | Direct, low-friction imperatives. "Get in Touch", "Contact", "Try it Now". |
-| Case studies / industries | Sector-specific, credibility-led. Named verticals, concrete deployments. |
-| Bilingual surfaces | Traditional Chinese and English share one voice; the Han text is primary, not an afterthought. |
+| Hero | Outcome-first: "We provide intelligent infrastructure for AI transformation" |
+| Industries | Sector by sector, tied to measurable results |
+| FAQ | Plain, reassuring answers about timelines, readiness, security and ROI |
+| Calls-to-action | Short imperatives |
+| Bilingual pages | One voice across English, 繁體中文 and 日本語 |
 
-**Forbidden register.** Hype superlatives ("revolutionary", "game-changing"), emoji on enterprise marketing chrome, and vague "AI magic" claims that don't tie to a business outcome. iKala sells to procurement-minded APAC enterprises; the voice stays professional and evidence-led.
+**Forbidden register.** Hype superlatives, emoji on enterprise pages, and AI claims that are not tied to a business outcome.
 
 ## 11. Brand Narrative
 
-iKala is a Taiwan-headquartered AI company founded in **2015**, widely associated with co-founder and CEO **Sega Cheng**. The company grew out of a thesis that AI's value is realized only when it drives measurable business impact -- a positioning crystallized in its own *"Data → Intelligence → Impact"* framing. iKala built two principal lines of business: an **AI cloud / AI transformation** practice that helps enterprises across manufacturing, retail, and finance operationalize AI, and **iKala Commerce / KOL Radar**, an influencer-marketing (martech) intelligence platform that became one of the most recognized creator-marketing tools in the Greater China and Southeast Asia markets.
+iKala's About page tells the story in its own words: "Co-founded by Sega Cheng in 2012, iKala originated with its core software technology in data analysis." The company now offers AI solutions to enterprises and brand owners through two pillars, AI Adoption and Marketing Super-Intelligence. It reports over 1,000 enterprises using its AI implementation solutions and more than 50,000 brand owners and advertisers using its marketing technology. **Kolr**, the "influence search engine" iKala built, "collects and continuously tracks data on over 300 million influencers and billions of social data points worldwide everyday". **iKala Nexus** turns enterprise data into structured knowledge and deploys AI agents. The home says the platforms, models and solutions are built in-house by "iKala's AI Lab, a team of 50+ AI and data science experts".
 
-What iKala rejects is AI sold as a black-box novelty. Its public posture -- as a Google Cloud partner and an APAC-focused AI services firm -- frames technology as a means to enterprise outcomes, which is why the marketing surface leads with industries and impact rather than model specifications. The design system mirrors this: a credible navy-and-white palette, a Traditional-Chinese-first typeface that signals genuine regional roots, and a calm, scannable layout built for an enterprise buyer rather than a hype-driven consumer.
+The About page lists the recognition the company leads with: Google Cloud Partner of the Year (2025), Best AI Transformation Solution Provider in APAC by APAC Insider (2024 and 2023), Taiwan's Top 10 Innovative Enterprises by Startup City Taiwan (2023), Top 10 Emerging Giants in Taiwan by KPMG and HSBC (2022), the Taiwan government's NEXT BIG national startups project (2021) and Gartner Cool Vendor (2020). The 2026 news adds work on Taiwan's sovereign AI evaluation through TMMLU+.
 
-The bilingual, Taiwan-rooted identity is not incidental. iKala competes regionally against both global cloud vendors and local martech players, and its brand expresses a specific bet: that the most trusted AI partner for an APAC enterprise is one that is unmistakably local in language and unmistakably credible in presentation.
+The design follows the positioning. A Traditional-Chinese-first typeface signals a company rooted in Taiwan. A navy hero action and a white canvas present it as a credible vendor to procurement-minded enterprise buyers. Industry sections and an FAQ about ROI keep the page about outcomes.
 
 ## 12. Principles
 
-1. **Impact over algorithms.** The brand frames itself as *Data → Intelligence → Impact*. Design artifacts should foreground outcomes and clarity, not technical spectacle.
-2. **Regional authenticity.** `Noto Sans TC` as the primary family is a commitment, not a default. The brand reads as genuinely Taiwanese/APAC, and the design should never erase that.
-3. **Enterprise credibility.** Navy gravitas, white space, neutral shadows -- the visual language is built to earn a procurement buyer's trust, not to delight a consumer.
-4. **Calm confidence.** One loud moment (the weight-800 hero), then measured restraint. The system signals authority that does not need to shout.
-5. **Bilingual parity.** Han and Latin text share one humanist skeleton and balanced metrics; neither language is a second-class citizen.
-6. **Neutral elevation.** Diffuse glow shadows keep the palette unambiguous -- the navy and blue carry all the brand color, shadows stay out of the way.
+1. **Impact over algorithms.** The brand frames itself as Data → Intelligence → Impact; pages lead with outcomes and industries.
+2. **Regional authenticity.** Noto Sans TC leads every stack; the brand reads as Taiwanese and serves three languages.
+3. **Enterprise credibility.** A navy hero action, a white canvas and plain answers about security and ROI.
+4. **One loud moment.** The 72px hero is the only display-size type on the home; everything below is 36px or smaller.
+5. **Bilingual parity.** The English and Chinese home pages share the same layout and components.
 
 ## 13. Personas
 
-*Personas below are fictional archetypes informed by publicly observable iKala customer segments (APAC enterprise AI buyers, retail/manufacturing digital-transformation leads, brand marketers using influencer intelligence), not individual people.*
+*Fictional archetypes informed by the audiences iKala's pages address (enterprise AI buyers, marketers using creator intelligence, IT leads). They are not real people.*
 
-**Wei-Chen Lin, 42, Taipei.** Head of digital transformation at a Taiwanese precision-manufacturing firm. Evaluates AI vendors on whether they understand his factory's actual processes, not on benchmark scores. Trusts iKala in part because the brand presents in Traditional Chinese as a peer, and because the marketing leads with manufacturing outcomes rather than model jargon.
+**Wei-Chen Lin, 42, Taipei.** Head of digital transformation at a precision manufacturer. Evaluates vendors on whether they understand his processes. Reads the Manufacturing section and the FAQ on timelines.
 
-**Priya Raman, 35, Singapore.** Regional marketing director at a consumer brand running campaigns across Southeast Asia. Uses iKala's influencer-intelligence platform to vet creators and measure campaign impact. Values dashboards that are dense but scannable, and a vendor that speaks credibly to both Chinese- and English-language markets.
+**Priya Raman, 35, Singapore.** Regional marketing director at a consumer brand. Uses Kolr to vet creators and measure campaigns across Southeast Asia.
 
-**Hiroshi Tanaka, 48, Tokyo.** Enterprise IT director assessing AI-transformation partners for an APAC rollout. Cares about credibility signals -- cloud partnerships, sector case studies, professional presentation. The calm navy-and-white site reassures him that this is a serious infrastructure partner, not a hype startup.
+**Hiroshi Tanaka, 48, Tokyo.** Enterprise IT director assessing AI partners for an APAC rollout. Reads the Japanese page and checks the information security page before shortlisting.
 
-**Mei-Ling Wu, 29, Kaohsiung.** Data analyst at a retail group. Works daily with AI-driven commerce insights. Appreciates the warm-gray body text and generous line-height that make long reports readable, and a layout that lets her scan for the section she needs.
+**Mei-Ling Wu, 29, Kaohsiung.** Data analyst at a retail group. Follows iKala's insight articles on new models.
 
 ## 14. States
 
-| State | Treatment |
-|---|---|
-| **Empty (dashboard, no data)** | White canvas. Single sentence in heading gray (`#333333`) at 20px Noto Sans TC weight 500. One navy CTA (`#061232`) to add/connect a source. No illustration clutter. |
-| **Loading (first paint)** | Soft skeleton blocks in hairline (`#edf1f7`) at final dimensions with a gentle shimmer. No spinner-only states on content-heavy panels. |
-| **Error (request failed)** | Inline message in muted gray (`#6b7280`) with a clear plain-language explanation and a retry affordance. Professional, no apology theatrics. |
-| **Error (form validation)** | Field-level message below the input, concise and specific about what is required. |
-| **Success (action completed)** | Brief inline confirmation; brand-blue (`#3a82dd`) accent on the confirmed element. No emoji, no exclamation. |
-| **Disabled** | Reduced opacity on surface and text together; navy actions fade rather than switch to gray, preserving brand read. |
+No state frames were captured: the capture recorded rest values only, with `interactionCount: 0`, which does not mean the site has no states. Read from rest values are the selected solution tab (`#2a415e`), the current-section underline in the header (2px `#000000`) and the disabled carousel arrow. Hover, pressed, focus, loading, error and success treatments are not declared.
 
 ## 15. Motion & Easing
 
-**Durations**:
+No motion was measured. The header's submenu toggle declares `data-toggle-duration="250"` in its markup, which is a declared attribute and not an observed transition, so no duration or easing token is set.
 
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | State commits, selection, focus rings |
-| `motion-fast` | 150ms | Hover, link color shifts, button press |
-| `motion-standard` | 250ms | Card hover-lift, dropdown, sheet |
-| `motion-slow` | 400ms | Section reveals, hero transitions |
-
-**Easings**:
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-standard` | `cubic-bezier(0.25, 0.1, 0.25, 1)` | Default two-way transitions |
-| `ease-enter` | `cubic-bezier(0.2, 0.6, 0.25, 1)` | Arriving elements — cards, dropdowns |
-| `ease-exit` | `cubic-bezier(0.4, 0.0, 1, 1)` | Dismissals |
-
-**Signature motions.**
-
-1. **Card hover-lift.** On hover, feature/industry cards deepen their diffuse glow from `rgba(0,0,0,0.04)` toward `rgba(0,0,0,0.19)` over `motion-standard / ease-standard`. The card does not translate sharply; the elevation change carries the feedback.
-2. **Link color shift.** Navigation and inline links transition toward brand blue (`#3a82dd`) on hover over `motion-fast`. The color is the affordance.
-3. **Section reveal.** On scroll, sections fade in with a small upward translate using `motion-slow / ease-enter`, reinforcing the calm top-down reading order.
-4. **Reduce motion.** Under `prefers-reduced-motion: reduce`, all `motion-*` tokens collapse to `motion-instant`; reveals become immediate. The site remains fully functional without motion.
-
-## 16. Do's and Don'ts
-
-### Do
-- Set `Noto Sans TC` first in the font stack on every text element -- the bilingual rendering is the brand
-- Use deep navy (`#061232`) for primary CTAs and dark emphasis bands
-- Use brand blue (`#3a82dd`) for active nav and interactive links; `#2563eb`/`#4770df` for inline links
-- Keep headings at `#333333` and body at `#525151` -- warm near-blacks, not pure black
-- Use diffuse `0px 0px` glow shadows (0.04 / 0.10 / 0.19 alpha) for elevation
-- Keep border-radius at 8px for buttons and cards, 30px for pill chips
-- Let the white canvas dominate and give sections generous (~80px) breathing room
-- Track headlines tight (`-3.49px` at 84px, `-1.5px` at 36px) and relax to normal at body sizes
-
-### Don't
-- Don't replace `Noto Sans TC` with a Latin-only font -- it erases the brand's regional authenticity
-- Don't use decorative gradients or neon on the marketing chrome -- the palette is navy + blue + grays
-- Don't use directional drop shadows -- iKala's elevation is always even, zero-offset glow
-- Don't use pure black (`#000000`) for headings or long body copy -- use `#333333` / `#525151`
-- Don't make the hero quiet and the body loud -- the weight-800 hero is the single loud moment
-- Don't introduce hype superlatives or emoji into enterprise-facing copy
-- Don't use a single navy shade everywhere as a flat fill -- reserve it for CTAs and emphasis bands
-- Don't apply positive letter-spacing at display sizes -- iKala tracks tight
+<!--
+Sources: three logged-out ikala.ai pages captured through the owner's browser on 2026-10-01 (bundle artifacts/reference-evidence/ikala.json, raw docs/research/2026-09-29-growth/raw/aside/ikala-capture.json); page text and the About page read by plain HTTP the same day. ikala.tw serves a GoDaddy parking page and contributes nothing. Full proof block in .verification.md.
+-->

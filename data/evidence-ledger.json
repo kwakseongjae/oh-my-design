@@ -2,13 +2,13 @@
   "schema_version": 1,
   "purpose": "Freeze what each reference claims to have observed, and when, so that relabelling a source kind, deleting an expired source, or rewriting a capture date appears as a reviewable diff.",
   "generator": "web/scripts/build-evidence-ledger.mjs",
-  "references_with_verification_v2": 295,
-  "sources": 1818,
+  "references_with_verification_v2": 299,
+  "sources": 1845,
   "sources_by_kind": {
     "brand-asset": 78,
-    "license": 132,
-    "official-doc": 701,
-    "product-surface": 907
+    "license": 137,
+    "official-doc": 709,
+    "product-surface": 921
   },
   "references": {
     "104": {
@@ -1322,6 +1322,66 @@
           "kind": "product-surface",
           "captured": "2026-09-22",
           "host": "caddi.com"
+        }
+      ]
+    },
+    "cafe24": {
+      "checked": "2026-10-01",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "aside-census",
+          "kind": "product-surface",
+          "captured": "2026-10-01",
+          "host": "www.cafe24.com"
+        },
+        {
+          "id": "cafe24-fonts",
+          "kind": "official-doc",
+          "captured": "2026-10-01",
+          "host": "fonts.cafe24.com"
+        },
+        {
+          "id": "corp-about",
+          "kind": "official-doc",
+          "captured": "2026-10-01",
+          "host": "www.cafe24corp.com"
+        },
+        {
+          "id": "corp-culture",
+          "kind": "official-doc",
+          "captured": "2026-10-01",
+          "host": "www.cafe24corp.com"
+        },
+        {
+          "id": "corp-history",
+          "kind": "official-doc",
+          "captured": "2026-10-01",
+          "host": "www.cafe24corp.com"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-10-01",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-10-01",
+          "host": "www.cafe24.com"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-10-01",
+          "host": "www.cafe24.com"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-10-01",
+          "host": "www.cafe24.com"
         }
       ]
     },
@@ -4529,6 +4589,48 @@
         }
       ]
     },
+    "ikala": {
+      "checked": "2026-10-01",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "ikala-about",
+          "kind": "official-doc",
+          "captured": "2026-10-01",
+          "host": "ikala.ai"
+        },
+        {
+          "id": "noto-cjk-license",
+          "kind": "license",
+          "captured": "2026-10-01",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "noto-sans-license",
+          "kind": "license",
+          "captured": "2026-10-01",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-10-01",
+          "host": "ikala.ai"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-10-01",
+          "host": "ikala.ai"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-10-01",
+          "host": "ikala.ai"
+        }
+      ]
+    },
     "ikea": {
       "checked": "2026-09-26",
       "claims": 0,
@@ -6374,6 +6476,36 @@
           "kind": "product-surface",
           "captured": "2026-09-30",
           "host": "maum.ai"
+        }
+      ]
+    },
+    "medibloc": {
+      "checked": "2026-10-01",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-10-01",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-10-01",
+          "host": "medibloc.com"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-10-01",
+          "host": "medibloc.com"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-10-01",
+          "host": "medibloc.com"
         }
       ]
     },
@@ -10346,6 +10478,60 @@
           "kind": "official-doc",
           "captured": "2026-07-13",
           "host": "developer.spotify.com"
+        }
+      ]
+    },
+    "ssg": {
+      "checked": "2026-10-01",
+      "claims": 0,
+      "sources": [
+        {
+          "id": "aside-census",
+          "kind": "product-surface",
+          "captured": "2026-10-01",
+          "host": "www.ssg.com"
+        },
+        {
+          "id": "pretendard-license",
+          "kind": "license",
+          "captured": "2026-10-01",
+          "host": "raw.githubusercontent.com"
+        },
+        {
+          "id": "ssg-brand-story",
+          "kind": "official-doc",
+          "captured": "2026-10-01",
+          "host": "company.ssg.com"
+        },
+        {
+          "id": "ssg-company-intro",
+          "kind": "official-doc",
+          "captured": "2026-10-01",
+          "host": "company.ssg.com"
+        },
+        {
+          "id": "ssg-growth-story",
+          "kind": "official-doc",
+          "captured": "2026-10-01",
+          "host": "company.ssg.com"
+        },
+        {
+          "id": "surface-home",
+          "kind": "product-surface",
+          "captured": "2026-10-01",
+          "host": "www.ssg.com"
+        },
+        {
+          "id": "surface-surface-2",
+          "kind": "product-surface",
+          "captured": "2026-10-01",
+          "host": "www.ssg.com"
+        },
+        {
+          "id": "surface-surface-3",
+          "kind": "product-surface",
+          "captured": "2026-10-01",
+          "host": "www.ssg.com"
         }
       ]
     },

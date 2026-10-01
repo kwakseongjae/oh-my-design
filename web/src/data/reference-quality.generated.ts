@@ -1315,27 +1315,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "cafe24",
-    "status": "partial",
-    "verifiedAt": "2026-06-26",
-    "tokensExtractedAt": "2026-06-26",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-10-01",
+    "tokensExtractedAt": "2026-10-01",
+    "nextReverifyAt": "2027-03-30",
     "renewedSourceCount": 0,
-    "tokenSource": "live-extract",
-    "claimCount": 135,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "reconciled",
+    "claimCount": 203,
+    "evidenceClaimCount": 203,
+    "evidenceCoverage": 1,
+    "surfaceCount": 3,
+    "sourceCount": 9,
     "conflictCount": 0,
-    "tier1SourceCount": 4,
-    "componentCount": 8,
-    "interactiveComponentCount": 5,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
+    "tier1SourceCount": 7,
+    "componentCount": 13,
+    "interactiveComponentCount": 8,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
     "advisoryCodes": [
-      "motion_value_unsourced"
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -4669,27 +4667,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "ikala",
-    "status": "partial",
-    "verifiedAt": "2026-06-08",
-    "tokensExtractedAt": "2026-06-08",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-10-01",
+    "tokensExtractedAt": "2026-10-01",
+    "nextReverifyAt": "2027-03-30",
     "renewedSourceCount": 0,
-    "tokenSource": "live-extract",
-    "claimCount": 95,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "reconciled",
+    "claimCount": 204,
+    "evidenceClaimCount": 204,
+    "evidenceCoverage": 1,
+    "surfaceCount": 3,
+    "sourceCount": 6,
     "conflictCount": 0,
-    "tier1SourceCount": 2,
-    "componentCount": 6,
-    "interactiveComponentCount": 3,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
+    "tier1SourceCount": 4,
+    "componentCount": 12,
+    "interactiveComponentCount": 11,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
     "advisoryCodes": [
-      "motion_value_unsourced"
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -6248,27 +6244,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "medibloc",
-    "status": "partial",
-    "verifiedAt": "2026-07-02",
-    "tokensExtractedAt": "2026-07-02",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-10-01",
+    "tokensExtractedAt": "2026-10-01",
+    "nextReverifyAt": "2027-03-30",
     "renewedSourceCount": 0,
-    "tokenSource": "live-extract",
-    "claimCount": 105,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "reconciled",
+    "claimCount": 154,
+    "evidenceClaimCount": 154,
+    "evidenceCoverage": 1,
+    "surfaceCount": 3,
+    "sourceCount": 4,
     "conflictCount": 0,
-    "tier1SourceCount": 2,
-    "componentCount": 6,
-    "interactiveComponentCount": 4,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
+    "tier1SourceCount": 3,
+    "componentCount": 10,
+    "interactiveComponentCount": 9,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
     "advisoryCodes": [
-      "motion_value_unsourced"
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -10422,27 +10416,25 @@ export const REFERENCE_QUALITY = [
   },
   {
     "id": "ssg",
-    "status": "partial",
-    "verifiedAt": "2026-06-22",
-    "tokensExtractedAt": "2026-06-22",
-    "nextReverifyAt": null,
+    "status": "verified_v2",
+    "verifiedAt": "2026-10-01",
+    "tokensExtractedAt": "2026-10-01",
+    "nextReverifyAt": "2027-03-30",
     "renewedSourceCount": 0,
-    "tokenSource": "live-extract",
-    "claimCount": 125,
-    "evidenceClaimCount": 0,
-    "evidenceCoverage": 0,
-    "surfaceCount": 0,
-    "sourceCount": 0,
+    "tokenSource": "reconciled",
+    "claimCount": 109,
+    "evidenceClaimCount": 109,
+    "evidenceCoverage": 1,
+    "surfaceCount": 3,
+    "sourceCount": 8,
     "conflictCount": 0,
-    "tier1SourceCount": 2,
-    "componentCount": 10,
-    "interactiveComponentCount": 7,
-    "statedComponentCount": 1,
-    "reasonCodes": [
-      "verification_v2_missing"
-    ],
+    "tier1SourceCount": 6,
+    "componentCount": 6,
+    "interactiveComponentCount": 5,
+    "statedComponentCount": 0,
+    "reasonCodes": [],
     "advisoryCodes": [
-      "motion_value_unsourced"
+      "component_state_prose_only"
     ],
     "paletteGrounding": null
   },
@@ -12868,8 +12860,8 @@ export const REFERENCE_QUALITY = [
 ] as const satisfies readonly ReferenceQualityEntry[];
 
 export const REFERENCE_QUALITY_COUNTS = {
-  "verified_v2": 295,
-  "partial": 113,
+  "verified_v2": 299,
+  "partial": 109,
   "legacy_snapshot": 113,
   "total": 521
 } as const;
