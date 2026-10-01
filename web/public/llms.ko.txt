@@ -1,6 +1,6 @@
 # oh-my-design
 
-> AI 코딩 에이전트에 품질 등급이 표시된 디자인 근거를 연결하는 오픈소스 하네스. Claude Code, Codex, OpenCode에는 제품 스킬 20개와 전문 에이전트 18개 전체 번들을 설치할 수 있고, Cursor에는 OmD 스킬·서브에이전트가 아닌 프로젝트 rule과 로컬 카탈로그를 설치합니다. DESIGN.md 440개 중 verified_v2 141개, partial 159개, legacy 140개이며 공개 데모에는 verified_v2를 사용합니다.
+> AI 코딩 에이전트에 품질 등급이 표시된 디자인 근거를 연결하는 오픈소스 하네스. Claude Code, Codex, OpenCode에는 제품 스킬 28개와 에이전트 정의 20개 전체 번들을, Cursor 2.4+에는 호환 Agent Skills 27개와 작은 프로젝트 rule, 로컬 카탈로그를 설치합니다. 품질 등급이 표시된 DESIGN.md 레퍼런스 521개 중 verified_v2 299개, partial 109개, legacy 113개이며 공개 데모에는 verified_v2를 사용합니다.
 
 ## 제품 모델
 
@@ -8,7 +8,7 @@ oh-my-design의 고유한 흐름은 다음과 같습니다.
 
 `검증된 레퍼런스 → 프로젝트 DESIGN.md → 실제 구현 → 정합성 재검증`
 
-CLI는 두 번째 디자인 앱이 아니라 부트스트래퍼입니다. Claude Code, Codex, OpenCode에는 채널별 스킬·전문 역할·로컬 카탈로그를, Cursor에는 `.cursor/rules/omd-design.mdc`와 공용 `.claude/data` 카탈로그를 설치하고 상태를 진단합니다. 실제 디자인 작업은 각 채널에 설치된 기능 범위 안에서 자연어로 요청합니다. 코어 설치와 로컬 흐름에는 별도 AI 호출, API 키, 데몬, MCP 서버가 필요하지 않습니다.
+CLI는 두 번째 디자인 앱이 아니라 부트스트래퍼입니다. Claude Code, Codex, OpenCode에는 채널별 스킬·전문 역할·로컬 카탈로그를, Cursor에는 호환 Agent Skills와 `.cursor/rules/omd-design.mdc`, 공용 `.claude/data` 카탈로그를 설치하고 상태를 진단합니다. 실제 디자인 작업은 각 채널에 설치된 기능 범위 안에서 자연어로 요청합니다. 코어 설치와 로컬 흐름에는 별도 AI 호출, API 키, 데몬, MCP 서버가 필요하지 않습니다.
 
 ## 설치와 진단
 
@@ -45,22 +45,25 @@ DESIGN.md를 적용해 홈 화면을 개선해줘.
 기존 라우트와 동작은 보존하고 결과를 검증해줘.
 ```
 
-## Cursor 경로 — rule + catalog 전용
+## Cursor 경로
 
-Cursor는 `omd:init`, `omd:feel`, `omd:harness`, OmD 서브에이전트를 실행하지 않습니다.
+Cursor 2.4+는 `.cursor/skills/`에서 호환 OmD Agent Skills 27개를 읽고, 작은 프로젝트 rule과 공용 `.claude/data` 카탈로그를 함께 받습니다. 설치 후 Cursor를 재시작하고 자연스럽게 요청하거나 `/omd-init`을 직접 호출하세요. OmD 서브에이전트 정의와 활성화 hooks는 Cursor에 설치하지 않습니다.
+
+구형 Cursor에서 `--cursor-rule-only`(rule + 카탈로그 호환 모드)를 쓴다면 다음 중 하나로 프로젝트 DESIGN.md를 만듭니다.
 
 1. https://oh-my-design.kr/builder 에서 레퍼런스를 선택·조정하고 `DESIGN.md`를 프로젝트 루트에 내려받거나,
 2. Cursor에게 `Read .claude/data/references/toss/DESIGN.md and create a root DESIGN.md for this product using confirmed values only. Keep unknown facts absent.`라고 요청합니다.
 
 이후 `@DESIGN.md를 읽고 동작은 유지한 채 홈 화면을 다시 디자인해줘`라고 요청합니다. rule의 우선순위는 `DESIGN.md` → `.omd/preferences.md`의 대기 중 교정 → 프레임워크 기본값입니다.
 
-## 20개 제품 스킬 — Claude Code, Codex, OpenCode
+## 제품 스킬 28개 — Claude Code, Codex, OpenCode
 
-- 시스템: `omd:init`, `omd:apply`, `omd:sync`, `omd:remember`, `omd:learn`, `omd:taste`
-- 화면 구축: `omd:harness`, `omd:orchestrator`, `omd:asset-fetch`, `omd:codex-image`, `claude-design`
-- 품질 검증: `omd:feel`, `omd:slop-audit`, `omd:designer-review`, `omd:final-qa`, `omd:experiment-gallery`
-- 콘텐츠: `omd:kr-writer`, `omd:locale-adapter`, `omd:humanize`
-- 레퍼런스 증거: `omd:reference-capture`
+- 핵심 흐름: `omd:autopilot`, `omd:init`, `omd:apply`, `omd:harness`, `omd:update`, `omd:issue`, `omd:sync`, `omd:remember`, `omd:learn`, `omd:taste`
+- 라이브 캡처·에셋: `omd:reference-capture`, `omd:asset-fetch`, `omd:experiment-gallery`
+- 랜딩·미디어: `omd:setup`, `omd:landing`, `omd:aphrodite`, `omd:media`, `omd:showcase`
+- 글쓰기·리뷰: `omd:orchestrator`, `omd:kr-writer`, `omd:locale-adapter`, `omd:humanize`, `omd:designer-review`, `omd:final-qa`, `omd:codex-image`
+- 인터페이스 품질: `omd:feel`, `omd:slop-audit`
+- 단독: `claude-design`
 
 ## 핵심 계약
 

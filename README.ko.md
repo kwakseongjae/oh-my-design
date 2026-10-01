@@ -178,7 +178,7 @@ Toss가 아니어도 됩니다 — `Stripe-style`, `Linear-clone B2B SaaS`, `Kar
 
 ### Cursor의 정확한 사용 경로
 
-Cursor 2.4+는 `.cursor/skills/`에서 호환 OmD Agent Skills 26개를 읽습니다. 설치 후 Cursor를 재시작하고 `토스 스타일로 가족 식단 공유 앱 디자인 시스템을 잡아줘`라고 자연스럽게 요청하거나 `/omd-init`을 직접 호출하세요. 작은 상시 rule은 pending 사용자 교정, 채택된 Bound System/standalone DESIGN.md, 프레임워크 기본값 순서와 unknown은 absent라는 계약을 유지합니다.
+Cursor 2.4+는 `.cursor/skills/`에서 호환 OmD Agent Skills 27개를 읽습니다. 설치 후 Cursor를 재시작하고 `토스 스타일로 가족 식단 공유 앱 디자인 시스템을 잡아줘`라고 자연스럽게 요청하거나 `/omd-init`을 직접 호출하세요. 작은 상시 rule은 pending 사용자 교정, 채택된 Bound System/standalone DESIGN.md, 프레임워크 기본값 순서와 unknown은 absent라는 계약을 유지합니다.
 
 구형 Cursor에서는 `--cursor-rule-only`로 기존 rule + 카탈로그 호환 모드를 설치할 수 있습니다. OmD의 별도 전문 서브에이전트 정의와 hooks는 Cursor에 설치하지 않습니다.
 

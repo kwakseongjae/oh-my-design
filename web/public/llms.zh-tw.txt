@@ -1,12 +1,12 @@
 # oh-my-design
 
-> 把有品質分級的設計依據交給 AI 程式代理的開源工作流程。Claude Code、Codex、OpenCode 可安裝包含 20 個產品 skills 與 18 個專業代理的完整套件；Cursor 只安裝專案 rule 與本地目錄，不安裝 OmD skills 或子代理。440 份 DESIGN.md 中 verified_v2 141 份、partial 159 份、legacy 140 份；公開示範請使用 verified_v2。
+> 把有品質分級的設計依據交給 AI 程式代理的開源工作流程。Claude Code、Codex、OpenCode 可安裝包含 28 個產品 skills 與 20 個代理定義的完整套件；Cursor 2.4+ 會取得 27 個相容 Agent Skills、精簡的專案 rule 與本地目錄，但不安裝 OmD 子代理或 hooks。521 份有品質分級的 DESIGN.md 中 verified_v2 299 份、partial 109 份、legacy 113 份；公開示範請使用 verified_v2。
 
 ## 產品模型
 
 `經過驗證的參考 → 專案 DESIGN.md → 真實實作 → 一致性複驗`
 
-CLI 是啟動器，不是第二套設計應用。Claude Code、Codex、OpenCode 會取得依渠道區分的 skills、專業角色與本地目錄；Cursor 會取得 `.cursor/rules/omd-design.mdc` 與共用 `.claude/data` 目錄。`doctor` 檢查真實檔案。實際設計工作只能使用目前渠道已安裝的能力。核心安裝與本地流程無需額外 API Key、daemon 或 MCP 伺服器。
+CLI 是啟動器，不是第二套設計應用。Claude Code、Codex、OpenCode 會取得依渠道區分的 skills、專業角色與本地目錄；Cursor 會取得相容 Agent Skills、`.cursor/rules/omd-design.mdc` 與共用 `.claude/data` 目錄。`doctor` 檢查真實檔案。實際設計工作只能使用目前渠道已安裝的能力。核心安裝與本地流程無需額外 API Key、daemon 或 MCP 伺服器。
 
 ```bash
 npx oh-my-design-cli@latest
@@ -20,7 +20,9 @@ npx oh-my-design-cli@latest doctor
 並在寫入 DESIGN.md 前讓我確認。
 ```
 
-Cursor 不會執行 `omd:init`、`omd:feel`、`omd:harness` 或 OmD 子代理。請從 https://oh-my-design.kr/builder 下載 `DESIGN.md` 到專案根目錄，或明確要求 Cursor：
+Cursor 2.4+ 會從 `.cursor/skills/` 載入 27 個相容 OmD Agent Skills。安裝後重新啟動 Cursor，以自然語言提出需求，或直接呼叫 `/omd-init`。OmD 的獨立子代理定義與啟動 hooks 不會安裝到 Cursor。
+
+舊版 Cursor 使用 `--cursor-rule-only`（rule + 目錄相容模式）時，請從 https://oh-my-design.kr/builder 下載 `DESIGN.md` 到專案根目錄，或明確要求 Cursor：
 
 ```text
 Read .claude/data/references/toss/DESIGN.md and create a root DESIGN.md

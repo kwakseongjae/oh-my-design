@@ -287,7 +287,7 @@ The default install targets every detected agent. For one non-interactive channe
 
 ### Cursor's supported path
 
-Cursor 2.4+ discovers the 26 compatible OmD Agent Skills from `.cursor/skills/`. Restart Cursor after installation, then ask naturally: `Set up our design system — Toss-style, for a family meal-tracking app.` Cursor can route through `omd-init`, or you can invoke `/omd-init` explicitly. The small always-on rule keeps the non-negotiable contract in scope: `DESIGN.md` first, pending `.omd/preferences.md` corrections second, framework defaults last, and unknown facts absent.
+Cursor 2.4+ discovers the 27 compatible OmD Agent Skills from `.cursor/skills/`. Restart Cursor after installation, then ask naturally: `Set up our design system — Toss-style, for a family meal-tracking app.` Cursor can route through `omd-init`, or you can invoke `/omd-init` explicitly. The small always-on rule keeps the non-negotiable contract in scope: `DESIGN.md` first, pending `.omd/preferences.md` corrections second, framework defaults last, and unknown facts absent.
 
 For older Cursor clients, `--cursor-rule-only` installs the historical rule + catalog compatibility mode without Agent Skills. OmD's separately generated specialist sub-agent definitions and hooks remain unavailable in Cursor.
 

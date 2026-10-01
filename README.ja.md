@@ -141,7 +141,7 @@ CLI の役割はバンドルの導入と診断までです。その後のデザ�
 
 ### Cursor の正しい利用経路
 
-Cursor 2.4+ は `.cursor/skills/` から互換 OmD Agent Skills 26 個を読み込みます。導入後に Cursor を再起動し、自然言語でデザインシステムの作成を依頼するか `/omd-init` を明示的に呼び出してください。常時 rule は、保留中のユーザー修正、採用済み Bound System／standalone DESIGN.md、フレームワーク既定値の順序と unknown-as-absence を維持します。
+Cursor 2.4+ は `.cursor/skills/` から互換 OmD Agent Skills 27 個を読み込みます。導入後に Cursor を再起動し、自然言語でデザインシステムの作成を依頼するか `/omd-init` を明示的に呼び出してください。常時 rule は、保留中のユーザー修正、採用済み Bound System／standalone DESIGN.md、フレームワーク既定値の順序と unknown-as-absence を維持します。
 
 旧 Cursor では `--cursor-rule-only` で従来の rule + カタログ互換モードを導入できます。OmD の別個の専門サブエージェント定義と hooks は Cursor には導入しません。
 

@@ -90,9 +90,23 @@ const rules = [
   { label: 'skills', re: /\b(\d+)(?=\s+skills\b)/g, val: skills },
   {
     label: 'Cursor Agent Skills',
-    re: /\b(\d+)(?=\s+(?:compatible|native) Agent Skills\b)/g,
+    re: /\b(\d+)(?=\s+(?:compatible|native) (?:OmD )?Agent Skills\b)/g,
     val: cursorSkills,
   },
+  // The Korean/Japanese copy writes the Cursor count after the noun
+  // ("호환 Agent Skills 27개", "互換 Agent Skills 27 個"). README carried 26 here
+  // and 27 two lines above it until 2026-10-01; neither form was checked.
+  {
+    label: 'Cursor Agent Skills',
+    re: /Agent Skills (\d+)(?=\s?[개個个])/g,
+    val: cursorSkills,
+    after: true,
+  },
+  // "the full 27-skill bundle" and "21 shipped product skills" (llms.txt) sat
+  // stale beside a correct "28 skills" heading because the hyphenated and the
+  // qualified forms never reached the rule above.
+  { label: 'skills', re: /\b(\d+)(?=-skill\b)/g, val: skills },
+  { label: 'skills', re: /\b(\d+)(?=\s+shipped (?:product )?skills\b)/g, val: skills },
   { label: 'sub-agents', re: /\b(\d+)(?=\s+sub-agents\b)/g, val: subagents },
   {
     label: 'references',
@@ -110,6 +124,8 @@ const rules = [
 // near DESIGN.md" pattern would start matching version strings.
 for (const [label, re] of [
   ['quality-graded references', /\b(\d+)(?=\s+quality-graded\b)/g],
+  // llms.txt line 3 said "448 DESIGN.md references" next to a correct 521 split.
+  ['quality-graded references', /\b(\d+)(?=\s+DESIGN\.md references\b)/g],
   ['quality-graded references', /DESIGN\.md 레퍼런스 (\d+)개/g],
   ['quality-graded references', /DESIGN\.md (\d+)件/g],
   ['quality-graded references', /(\d+)(?= 份带质量等级)/g],
@@ -140,6 +156,10 @@ if (tiers) {
 const SURFACES = [
   'README.md', 'README.ko.md', 'README.ja.md', 'README.zh-TW.md',
   'web/public/llms.txt',
+  // Localized agent indexes. Unchecked until 2026-10-01, by which point they
+  // still said 440 references / 20 skills / 18 agents from 2026-07-21.
+  'web/public/llms.ko.txt', 'web/public/llms.ja.txt',
+  'web/public/llms.zh-cn.txt', 'web/public/llms.zh-tw.txt',
   'web/src/data/faq.ts', 'web/src/data/cli-docs.ts',
   'web/src/app/layout.tsx', 'web/src/app/docs/layout.tsx',
   'web/src/app/builder/layout.tsx', 'web/src/app/design-systems/layout.tsx',
