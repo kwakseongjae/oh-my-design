@@ -68,8 +68,6 @@ const ALLOWED = new Map([
     "serves the canonical file as text/markdown — for an adopted reference the Core body IS the canonical, so raw is correct"],
   ["web/src/app/api/references/route.ts",
     "registry-first: tokens come from registry.generated.ts (built through readReferenceSource) and the prose regex is a fallback that no adopted reference reaches. Verified 2026-09-20; if an adopted reference ever lacks registry tokens this becomes a real bug"],
-  ["web/src/app/qa-references/page.tsx",
-    "dev-only diagnostic page, prose regexes over the body by design; degrades for adopted references and is not a product surface"],
   ["web/scripts/retire-template-motion.mjs",
     "writer: rewrites DESIGN.md in place, so it must see the bytes it will overwrite. Reading the reconstructed legacy body and writing it back would silently un-adopt the reference — it refuses on isCoreV2Markdown instead"],
   ["scripts/gen-llms-full.cjs",

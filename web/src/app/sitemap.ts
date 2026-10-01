@@ -34,12 +34,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
-      url: `${siteUrl}/font-playground`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.85,
-    },
-    {
       url: `${siteUrl}/faq`,
       lastModified: now,
       changeFrequency: "monthly",
@@ -52,12 +46,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
-      url: `${siteUrl}/benchmarks`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
       url: `${siteUrl}/changelog`,
       lastModified: now,
       changeFrequency: "weekly",
@@ -68,12 +56,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/presets`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
     },
     {
       url: `${siteUrl}/alternatives/shadcn`,

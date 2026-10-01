@@ -82,7 +82,7 @@ export function V2Nav() {
         {/* CENTER — the CLI is the product; this is the way in */}
         <div className="justify-self-center">
           <Link
-            href="/cli"
+            href="/docs/en"
             onClick={() => event("nav_click", { location: "v2_cli" })}
             className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.03] px-3 sm:px-4 h-9 sm:h-10 text-xs sm:text-sm font-medium text-white/85 transition-colors hover:bg-white/[0.07] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#a89cff]"
           >

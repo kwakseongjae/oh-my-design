@@ -77,7 +77,7 @@ export function BlogPostView({
             npx oh-my-design-cli@latest
           </pre>
           <Link
-            href={siteHref("/cli")}
+            href={siteHref("/docs/en")}
             className="mt-3 inline-block text-sm font-medium text-primary hover:underline"
           >
             {chrome.ctaLink}

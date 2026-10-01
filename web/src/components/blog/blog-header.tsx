@@ -42,7 +42,7 @@ export function BlogHeader({
             oh-my-design <ArrowUpRight className="h-3.5 w-3.5" />
           </Link>
           <Link
-            href={siteHref("/cli")}
+            href={siteHref("/docs/en")}
             className="rounded-lg px-2 py-1.5 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
           >
             CLI

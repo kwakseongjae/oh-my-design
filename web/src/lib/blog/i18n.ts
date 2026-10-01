@@ -35,7 +35,6 @@ export interface BlogChrome {
   footerResources: string;
   footerBuilder: string;
   footerReferences: string;
-  footerBenchmarks: string;
   footerDocs: string;
 }
 
@@ -61,7 +60,6 @@ export const BLOG_CHROME: Record<PostLocale, BlogChrome> = {
     footerResources: "리소스",
     footerBuilder: "빌더",
     footerReferences: "레퍼런스",
-    footerBenchmarks: "벤치마크",
     footerDocs: "문서",
   },
   en: {
@@ -85,7 +83,6 @@ export const BLOG_CHROME: Record<PostLocale, BlogChrome> = {
     footerResources: "Resources",
     footerBuilder: "Builder",
     footerReferences: "References",
-    footerBenchmarks: "Benchmarks",
     footerDocs: "Docs",
   },
 };
