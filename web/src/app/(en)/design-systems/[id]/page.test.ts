@@ -12,4 +12,15 @@ describe("English canonical reference metadata", () => {
     });
     expect(metadata.openGraph && "images" in metadata.openGraph ? metadata.openGraph.images : []).toBeTruthy();
   });
+
+  it("titles the page for '<brand> design system' and '<brand> DESIGN.md' queries", async () => {
+    const metadata = await generateMetadata({ params: Promise.resolve({ id: "toss" }) });
+    expect(metadata.title).toBe("Toss Design System — DESIGN.md, Colors & Typography");
+  });
+
+  it("names the brand by its registry name, not a native-script display name", async () => {
+    // tossbank: name "Toss Bank", displayName "토스뱅크".
+    const metadata = await generateMetadata({ params: Promise.resolve({ id: "tossbank" }) });
+    expect(metadata.title).toBe("Toss Bank Design System — DESIGN.md, Colors & Typography");
+  });
 });

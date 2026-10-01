@@ -436,7 +436,7 @@ export function PreviewExportView({
               rendered view hides them as ordinary HTML comments. */}
           <div className="flex-1 overflow-auto min-h-0">
             {sourceFormat === "designmd" && mdView === "rendered"
-              ? <div className="p-5"><Markdown content={activeArtifact.content} /></div>
+              ? <div className="p-5"><Markdown content={activeArtifact.content} demoteH1 /></div>
               : <pre className="p-5 text-[11px] leading-[1.7] font-mono text-foreground/70 whitespace-pre-wrap">{activeArtifact.content}</pre>
             }
           </div>

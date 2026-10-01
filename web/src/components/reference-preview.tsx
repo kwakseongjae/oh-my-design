@@ -7,11 +7,15 @@
  * Sections: Hero, Color Palette (grouped by role), Typography (Type Scale +
  * Fonts), Spacing & Shape (Spacing / Radius / Elevation), Guidelines (Do/Don't).
  *
- * Two modes:
- *   1. Showcase (default) — passed `tokens` directly, used by /reference/[id]
+ * Two consumers, both `embedded`:
+ *   1. The reference detail page (/design-systems/[id]) — passed `tokens`.
  *   2. Builder mode — passed `tokens` + `overrides`, used by builder step 3.
  *      `overrides` are merged into the tokens before rendering so the live
  *      preview reflects user customization (font, primary color, radius…).
+ *
+ * The brand name in the hero is not a heading. Both host pages render their
+ * own <h1>, and a page should have one; the standalone /reference/[id] route
+ * that relied on this one now redirects to the detail page.
  */
 
 import { useState, useCallback } from "react";
@@ -165,12 +169,12 @@ function HeroSection({ tokens, homepageUrl, logo }: { tokens: ParsedTokens; home
               />
             </div>
           )}
-          <h1
+          <p
             className="text-5xl font-bold tracking-tight text-foreground"
             style={{ fontFamily: previewFamily }}
           >
             {identity.name}
-          </h1>
+          </p>
         </div>
         {mood && (
           <p
