@@ -491,9 +491,12 @@
   - 봇 차단 4곳(ssg·cafe24·medibloc·ikala)은 Aside 실제 브라우저에서 CAPTCHA 없이 열린다(로그아웃 상태 확인).
   - Aside는 파일을 쓸 수 없어서 새 경로를 만들었다(`df00acdf`): REPL에서 `extract.js`를 실행하고, 큰 출력이 하네스 tool-results 파일로 저장되면 `assemble.mts`로 수집기와 같은 집계를 거쳐 번들을 만든다. 상태 프레임은 없다.
   - 사전 조건 통과: ssg 75, cafe24 71, medibloc 80, ikala 80.
-  - **완료 (`3ad85637`)**: 4곳 → Verified v2(합계 295→299). 처음엔 250개 요소 상한 때문에 ssg·cafe24 대표색을 잘린 표본으로 골랐다. 페이지 전수 측정으로 바로잡았다: ssg `#ff5452`(라벨 124개, CSS primary), cafe24 `#084fff`(홈 주 CTA). 추출기 상한을 500으로 올리고 상한 도달 시 경고를 낸다(`84d9e27d`). **사이트 반영 GO 대기.**
+  - **완료 (`3ad85637`)**: 4곳 → Verified v2(합계 295→299). 처음엔 250개 요소 상한 때문에 ssg·cafe24 대표색을 잘린 표본으로 골랐다. 페이지 전수 측정으로 바로잡았다: ssg `#ff5452`(라벨 124개, CSS primary), cafe24 `#084fff`(홈 주 CTA). 추출기 상한을 500으로 올리고 상한 도달 시 경고를 낸다(`84d9e27d`).
+  - **사이트 반영 (15:20, main `ca5ad8f5`).** 첫 배포(`cd43eb74`)는 실패했다. ssg·cafe24가 `verification_v2.surfaces`에 타입에 없는 `viewport` 키를 넣었고, next build 타입 검사에서 걸렸다(파이프라인 tsc는 incremental 캐시 때문에 놓친 것으로 보인다). 키를 빼고 재배포해 성공했다. 라이브 확인: ssg `#ff5452`(SSG Coral), cafe24 `#084fff`, medibloc `#0066ff`, ikala `#061232`.
+  - **절차 추가:** 사이트 반영 전에 로컬 `next build`를 돌린다.
   - tellingme·queenit은 coverage 미달 사유라 Aside로는 해결되지 않는다(같은 렌더).
 - **10/1 — 위임 판단:** protopie KR 유지, medibloc은 medibloc.com의 브랜드를 기술(GROWTH_DECISIONS).
+- **10/1 결정: /hangul은 오너 검토 후 출시**(프리뷰 확인 → 스킬 병합 → npm 패치 → 페이지 반영).
 - **10/1 — /hangul 런칭 페이지·모션 완료 (`feat/hangul-launch-page` `0c3d39ff`, 미반영).**
   - 페이지 구성:
     - 실제 DOM 히어로: 전후 토글과 320~430px 폭 슬라이더. 지금 보는 기기의 글꼴로 끊긴 단어를 빨간 상자로 표시한다.
