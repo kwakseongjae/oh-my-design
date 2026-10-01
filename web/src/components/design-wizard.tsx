@@ -8,7 +8,7 @@ import { useTheme } from "next-themes";
 import { useMounted } from "@/lib/use-mounted";
 import { generateColorScale, isLight, contrastForeground } from "@/lib/core/color";
 import type { Overrides } from "@/lib/core/types";
-import type { RefDetail } from "@/app/builder/page";
+import type { RefDetail } from "@/app/(en)/builder/page";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 

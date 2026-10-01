@@ -14,14 +14,15 @@
  * To ship a new batch: just set `added: "YYYY-MM-DD"` in each new DESIGN.md.
  */
 
-import { REGISTRY_BY_ID } from '@/data/registry.generated';
+// Takes the `added` date rather than an id: an id lookup would need the 2 MB
+// registry, and both callers (builder selector, catalog card) are client
+// components that already receive `added` with their data.
 
 /** Days a reference stays "NEW" after its `added` date. */
 export const NEW_WINDOW_DAYS = 7;
 
 /** True when the reference's `added` date is within the NEW window. */
-export function isNewRef(id: string, now: Date = new Date()): boolean {
-  const added = REGISTRY_BY_ID[id]?.added;
+export function isNewAdded(added: string | null | undefined, now: Date = new Date()): boolean {
   if (!added) return false;
   const addedMs = Date.parse(`${added}T00:00:00Z`);
   if (Number.isNaN(addedMs)) return false;

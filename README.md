@@ -35,7 +35,7 @@ Three artifacts, all of them files in your repository:
 
 In v2.0.0 every layer above is a file you can edit — the philosophy, the presets, the gates, the references — and the next build has to justify itself against whatever you put there. Taste you cannot inspect cannot be improved.
 
-Full walkthrough: **[oh-my-design.kr/cli](https://oh-my-design.kr/cli)**.
+Full walkthrough: **[oh-my-design.kr/docs/en](https://oh-my-design.kr/docs/en)**.
 
 ## How the system gets derived
 
@@ -287,7 +287,7 @@ The default install targets every detected agent. For one non-interactive channe
 
 ### Cursor's supported path
 
-Cursor 2.4+ discovers the 26 compatible OmD Agent Skills from `.cursor/skills/`. Restart Cursor after installation, then ask naturally: `Set up our design system — Toss-style, for a family meal-tracking app.` Cursor can route through `omd-init`, or you can invoke `/omd-init` explicitly. The small always-on rule keeps the non-negotiable contract in scope: `DESIGN.md` first, pending `.omd/preferences.md` corrections second, framework defaults last, and unknown facts absent.
+Cursor 2.4+ discovers the 27 compatible OmD Agent Skills from `.cursor/skills/`. Restart Cursor after installation, then ask naturally: `Set up our design system — Toss-style, for a family meal-tracking app.` Cursor can route through `omd-init`, or you can invoke `/omd-init` explicitly. The small always-on rule keeps the non-negotiable contract in scope: `DESIGN.md` first, pending `.omd/preferences.md` corrections second, framework defaults last, and unknown facts absent.
 
 For older Cursor clients, `--cursor-rule-only` installs the historical rule + catalog compatibility mode without Agent Skills. OmD's separately generated specialist sub-agent definitions and hooks remain unavailable in Cursor.
 
@@ -295,7 +295,7 @@ For older Cursor clients, `--cursor-rule-only` installs the historical rule + ca
 
 **28 skills · 20 sub-agents · 500+ quality-graded references · activation hooks** make up the full bundle. Cursor receives the 27 portable skills; `claude-design`, OmD sub-agent definitions, and activation hooks remain channel-specific.
 
-- **Skills** — core flow (`omd:autopilot` / `omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:update` / `omd:issue` — file feedback straight to GitHub / `omd:remember` / `omd:learn` / `omd:taste` — say "what are my preferences" to see everything the loop has learned, pending, or snoozed), live capture + assets (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), the landing and media track (`omd:setup` — record which image/video channels this machine actually has / `omd:landing` — scroll-native one-page landing / `omd:media` — brand-consistent asset sets / `omd:showcase` — scroll demo video), the writing and review layer (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:humanize` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), interface quality (`omd:feel` / `omd:slop-audit`), plus the standalone `claude-design` skill that drives claude.ai/design from your terminal.
+- **Skills** — core flow (`omd:autopilot` / `omd:init` / `omd:apply` / `omd:harness` / `omd:sync` / `omd:update` / `omd:issue` — file feedback straight to GitHub / `omd:remember` / `omd:learn` / `omd:taste` — say "what are my preferences" to see everything the loop has learned, pending, or snoozed), live capture + assets (`omd:reference-capture` / `omd:asset-fetch` / `omd:experiment-gallery`), the landing and media track (`omd:setup` — record which image/video channels this machine actually has / `omd:landing` — scroll-native one-page landing / `omd:aphrodite` — maximum-craft landing held to every landing check / `omd:media` — brand-consistent asset sets / `omd:showcase` — scroll demo video), the writing and review layer (`omd:orchestrator` / `omd:kr-writer` / `omd:locale-adapter` / `omd:humanize` / `omd:designer-review` / `omd:final-qa` / `omd:codex-image`), interface quality (`omd:feel` / `omd:slop-audit`), plus the standalone `claude-design` skill that drives claude.ai/design from your terminal.
 - **Sub-agents** — `omd-master` + 19 specialists (UX research, UI generation, asset curation, copy humanization, slop auditing, a11y audit, persona testing, critique, …).
 - **References** — 500+ company `DESIGN.md` files with explicit evidence and quality status. Every reference is also served as raw markdown at `oh-my-design.kr/<id>/design.md`, so agents can fetch it directly.
 - **Hooks** — UserPromptSubmit / SessionStart / PostToolUse activation so the skills trigger on natural language, not just slash commands.
@@ -326,7 +326,6 @@ What changed each release — including anything that needs more than a re-insta
 ## Links
 
 - **Catalog** — [oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems) (every reference, with raw `.md` twins for agents)
-- **Collections** — [oh-my-design.kr/collections](https://oh-my-design.kr/collections) (curated sets by use case)
 - **Docs** — [oh-my-design.kr/docs/en](https://oh-my-design.kr/docs/en) (install options, skills, agents, FAQ)
 - **Live demo playbook** — [oh-my-design.kr/docs/en/demo](https://oh-my-design.kr/docs/en/demo) (5-, 15-, and 30-minute formats with an evidence checklist)
 - **Changelog** — [CHANGELOG.md](CHANGELOG.md) · migrating from 0.1.x: [MIGRATION.md](MIGRATION.md)

@@ -6,7 +6,7 @@ import { event } from "@/lib/gtag";
 import { Check, ChevronDown, ChevronRight, Plus, X, Sun, Moon, Sparkles } from "lucide-react";
 import { generateColorScale, isLight, contrastForeground, generateChartColors } from "@/lib/core/color";
 import type { Overrides } from "@/lib/core/types";
-import type { RefDetail } from "@/app/builder/page";
+import type { RefDetail } from "@/app/(en)/builder/page";
 import { Button } from "@/components/ui/button";
 import { extractTokens } from "@/lib/extract-tokens";
 import { parseFontStack, lookupFont } from "@/lib/font-registry";

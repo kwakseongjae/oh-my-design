@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ChevronRight, Paintbrush, Type, Square, Layers, Table2, ChevronDown, MousePointerClick, PanelTop, MessageSquare, ToggleLeft } from "lucide-react";
 import { generateColorScale, isLight, contrastForeground } from "@/lib/core/color";
 import type { Overrides } from "@/lib/core/types";
-import type { RefDetail } from "@/app/builder/page";
+import type { RefDetail } from "@/app/(en)/builder/page";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";

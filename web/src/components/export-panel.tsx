@@ -6,7 +6,7 @@ import { Copy, Check, Download, Eye, FileText } from "lucide-react";
 import { generateShadcnCss, applyOverridesToMd } from "@/lib/core/generate-css";
 import { generateNpxCommand } from "@/lib/core/config-hash";
 import type { Overrides, StylePreferences } from "@/lib/core/types";
-import type { RefDetail } from "@/app/builder/page";
+import type { RefDetail } from "@/app/(en)/builder/page";
 import { Markdown } from "@/components/markdown";
 
 type MdView = "rendered" | "raw";

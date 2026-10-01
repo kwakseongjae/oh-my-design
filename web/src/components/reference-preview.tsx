@@ -17,7 +17,7 @@
 import { useState, useCallback } from "react";
 import Link from "next/link";
 import { Check, Copy, ExternalLink } from "lucide-react";
-import { getLogoUrl, getLogoFallbackUrl } from "@/lib/logos";
+import { logoFallbackUrl, logoUrl, type LogoRef } from "@/lib/logo-urls";
 import { isLight } from "@/lib/core/color";
 import {
   applyOverrides,
@@ -123,16 +123,16 @@ function SubLabel({ children }: { children: React.ReactNode }) {
 }
 
 /* ─────────── Hero ─────────── */
-function HeroSection({ tokens, homepageUrl }: { tokens: ParsedTokens; homepageUrl?: string }) {
+function HeroSection({ tokens, homepageUrl, logo }: { tokens: ParsedTokens; homepageUrl?: string; logo?: LogoRef | null }) {
   const { identity, typography } = tokens;
   const displayUrl = homepageUrl
     ? homepageUrl.replace(/^https?:\/\//, "").replace(/\/$/, "")
     : null;
   const mood = identity.mood ? stripMd(identity.mood) : "";
   const logoColor = identity.background && isLight(identity.background) ? "000000" : "ffffff";
-  const logoUrl = identity.id ? getLogoUrl(identity.id, logoColor) : null;
-  const fallbackLogoUrl = identity.id ? getLogoFallbackUrl(identity.id) : null;
-  const [logoSrc, setLogoSrc] = useState<string | null>(logoUrl ?? fallbackLogoUrl);
+  const primaryLogoUrl = identity.id ? logoUrl(logo, logoColor) : null;
+  const fallbackLogoUrl = identity.id ? logoFallbackUrl(logo) : null;
+  const [logoSrc, setLogoSrc] = useState<string | null>(primaryLogoUrl ?? fallbackLogoUrl);
   const previewFamily = typography.family
     && typography.runtimeStatus !== "unverified"
     ? resolveRuntimeFont(typography.family).cssFamily
@@ -1207,19 +1207,22 @@ export function ReferencePreview({
   embedded = false,
   homepageUrl,
   referenceAst,
+  logo,
 }: {
   tokens: ParsedTokens;
   overrides?: PreviewOverrides;
   embedded?: boolean;
   homepageUrl?: string;
   referenceAst?: ReferenceDetailAstContract;
+  /** Resolved by the server (getLogoRef) — the registry is never client-side. */
+  logo?: LogoRef | null;
 }) {
   const tokens = applyOverrides(rawTokens, overrides);
   const wrapperClass = embedded ? "" : "min-h-screen";
 
   return (
     <div className={wrapperClass}>
-      <HeroSection tokens={tokens} homepageUrl={homepageUrl} />
+      <HeroSection tokens={tokens} homepageUrl={homepageUrl} logo={logo} />
       <ColorPaletteSection tokens={tokens} provenance={getSectionProvenance(referenceAst, ["tokens.colors.", "tokens.color."])} />
       <TypographySection tokens={tokens} provenance={getSectionProvenance(referenceAst, ["tokens.typography.", "tokens.font.", "tokens.text."])} />
       <SpacingShapeSection tokens={tokens} provenance={getSectionProvenance(referenceAst, ["tokens.spacing.", "tokens.rounded.", "tokens.radius.", "tokens.shadow."])} />

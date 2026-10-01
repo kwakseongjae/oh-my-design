@@ -8,6 +8,12 @@ const BLOG_ON_SUBDOMAIN = process.env.NEXT_PUBLIC_BLOG_SUBDOMAIN === "1";
 
 const nextConfig: NextConfig = {
   trailingSlash: false,
+  // Two root layouts — app/(en) renders <html lang="en">, app/(ko) renders
+  // <html lang="ko"> — so an unmatched URL has no single layout to build a 404
+  // from. global-not-found.tsx is the documented answer for that case.
+  experimental: {
+    globalNotFound: true,
+  },
   // Hide the dev-only on-screen route indicator (the floating "N" badge in
   // bottom-left). Errors still surface normally; this only removes the
   // routing-status pill so it doesn't sit on top of our bottom-right
@@ -40,6 +46,25 @@ const nextConfig: NextConfig = {
       // builder / directory so no link equity is lost.
       { source: "/curation", destination: "/builder", permanent: true },
       { source: "/result/:typeCode", destination: "/design-systems", permanent: true },
+      // Site pruning (2026-10-01, docs/REDESIGN_DECISIONS_2026-10-01.md R4).
+      // Deleted pages that still drew human traffic over the prior 30 days
+      // go to the closest surviving surface. /playground (404 in prod) and
+      // /qa-references (noindex) had none and are left to 404.
+      { source: "/font-playground", destination: "/builder", permanent: true },
+      { source: "/presets", destination: "/docs/en/skills", permanent: true },
+      { source: "/benchmarks", destination: "/docs/en/showcase", permanent: true },
+      // Merged pages (same decision). Each old URL lands on the content it
+      // used to hold: collection slugs become the directory filter, version
+      // and comparison pages become anchors on their single page.
+      { source: "/collections", destination: "/design-systems", permanent: true },
+      { source: "/collections/:slug", destination: "/design-systems?collection=:slug", permanent: true },
+      { source: "/changelog/:version", destination: "/changelog#v:version", permanent: true },
+      { source: "/alternatives/:slug", destination: "/alternatives#:slug", permanent: true },
+      { source: "/cli", destination: "/docs/en", permanent: true },
+      { source: "/docs/connector", destination: "/docs/en/ai", permanent: true },
+      // The static twitter-image.png was retired with the stale share card;
+      // already-posted cards keep resolving to the live one.
+      { source: "/twitter-image.png", destination: "/og-image.png", permanent: true },
       // The blog moved to its own host. Gated on the same flag as the canonical
       // URLs, so this stays off until the domain resolves — turning it on
       // before then would 301 every reader into a host that does not answer.

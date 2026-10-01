@@ -3,6 +3,7 @@ import { extractLegacyReferenceDetail } from "@/lib/references/detail-projection
 import { loadReference } from "@/lib/references/repository.server";
 import { projectActiveReference } from "@/lib/references/consumer-adapter";
 import { referenceResponseBody } from "./response";
+import { referenceCatalogFields } from "./catalog";
 
 function referenceAstV2Enabled(value = process.env.REFERENCE_AST_V2): boolean {
   if (value === undefined || value.trim() === "") return true;
@@ -21,14 +22,14 @@ export async function GET(
 
   if (!referenceAstV2Enabled() && loaded.format === "legacy") {
     const legacy = extractLegacyReferenceDetail(id, loaded.markdown);
-    return NextResponse.json(legacy, {
+    return NextResponse.json({ ...legacy, catalog: referenceCatalogFields(id) }, {
       headers: { "x-omd-reference-model": "legacy" },
     });
   }
 
   const projection = projectActiveReference(loaded);
   return NextResponse.json(
-    referenceResponseBody(projection),
+    { ...referenceResponseBody(projection), catalog: referenceCatalogFields(id) },
     {
       headers: {
         "x-omd-reference-model": projection.model,

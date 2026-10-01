@@ -1,10 +1,10 @@
 # oh-my-design
 
-> Skill-driven design harness for AI coding agents. Claude Code, Codex, and OpenCode receive the full 27-skill + 20-sub-agent bundle; Cursor receives 27 compatible Agent Skills, a project rule, and the local catalog. The quality-graded catalog contains 448 DESIGN.md references: 299 verified_v2, 109 partial, and 113 legacy. Use verified_v2 references for public demos.
+> Skill-driven design harness for AI coding agents. Claude Code, Codex, and OpenCode receive the full 28-skill + 20-sub-agent bundle; Cursor receives 27 compatible Agent Skills, a project rule, and the local catalog. The quality-graded catalog contains 521 DESIGN.md references: 299 verified_v2, 109 partial, and 113 legacy. Use verified_v2 references for public demos.
 
 ## What
 
-`oh-my-design-cli` is an npm package (MIT licensed) that installs a deterministic design harness into AI coding agents. Claude Code, Codex, and OpenCode receive channel-correct skills, sub-agent roles, and catalog data; supported project hooks are Claude-only. Cursor receives `.cursor/rules/omd-design.mdc` plus the shared `.claude/data` catalog. OpenCode is a full native channel: project installs use `.opencode/skills/`, `.opencode/agents/`, and `.opencode/data/`; global installs use `~/.config/opencode/skills/`, `~/.config/opencode/agents/`, and `~/.config/opencode/data/`. The bundled catalog contains 500+ reference DESIGN.md files. After restart, each agent uses only the capabilities installed for its channel.
+`oh-my-design-cli` is an npm package (MIT licensed) that installs a deterministic design harness into AI coding agents. Claude Code, Codex, and OpenCode receive channel-correct skills, sub-agent roles, and catalog data; supported project hooks are Claude-only. Cursor 2.4+ receives 27 compatible Agent Skills under `.cursor/skills/`, `.cursor/rules/omd-design.mdc`, and the shared `.claude/data` catalog. OpenCode is a full native channel: project installs use `.opencode/skills/`, `.opencode/agents/`, and `.opencode/data/`; global installs use `~/.config/opencode/skills/`, `~/.config/opencode/agents/`, and `~/.config/opencode/data/`. The bundled catalog contains 500+ reference DESIGN.md files. After restart, each agent uses only the capabilities installed for its channel.
 
 The core installer runs no AI calls, ships no telemetry, and requires no API key, daemon, or MCP server. Your coding-agent session provides inference. The optional `claude-design` skill opens the user's logged-in claude.ai/design session in Chrome rather than calling an OmD API.
 
@@ -32,9 +32,11 @@ The CLI only installs and diagnoses. Product design work happens through natural
 - `"그럴싸한 랜딩페이지 만들어줘"` / `"프로토타입이라도 구색 갖춰서"` → Since **v1.6.0**, `omd:harness` triggers automatically on natural-language landing/prototype phrasings (no slash command, no design jargon needed).
 - `"We never use uppercase CTAs."` → triggers `omd:remember`, writes the correction to `.omd/preferences.md`.
 
-## Cursor path (rule + catalog only)
+## Cursor path
 
-Cursor does not run `omd:init`, `omd:feel`, `omd:harness`, or OmD sub-agents. Create the project spec through one of these paths:
+Cursor 2.4+ discovers the 27 compatible OmD Agent Skills from `.cursor/skills/`, alongside a small `.cursor/rules/omd-design.mdc` bootstrap and the shared `.claude/data` catalog. Restart Cursor after installation, then ask naturally or invoke `/omd-init` explicitly. OmD sub-agent definitions and activation hooks are not installed in Cursor.
+
+For older Cursor clients, `--cursor-rule-only` installs the rule + catalog compatibility mode without Agent Skills. There, create the project spec through one of these paths:
 
 1. Choose/customize a reference in https://oh-my-design.kr/builder, download `DESIGN.md`, and save it at the project root; or
 2. ask Cursor: `Read .claude/data/references/toss/DESIGN.md and create a root DESIGN.md for this product using confirmed values only. Keep unknown facts absent.`
@@ -70,9 +72,10 @@ Live capture + assets (3):
 - **omd:asset-fetch** — Free-license asset catalog (DiceBear CC0 / Lucide ISC / Picsum CC0 / SIL OFL display fonts). Handcrafted character SVG forbidden.
 - **omd:experiment-gallery** — N-brand experiments → single comparison index.html with iframe previews, ratings, per-brand IP audit.
 
-Landing + media (4):
+Landing + media (5):
 - **omd:setup** — Detects the image/video generation channels, browser, and encoders this machine already has, explains cost and trade-offs, and records the choice in `.omd/config.json`.
 - **omd:landing** — Scroll-native one-page landing built from DESIGN.md plus the measured landing-craft codex (LC-n rules): concept, storyboard, assets, self-review loop.
+- **omd:aphrodite** — Maximum-craft one-page landing: the omd:landing structure plus finishing (typeface sourcing, grain, depth, color grading, scroll timeline) and top-grade assets, gated on passing every landing check.
 - **omd:media** — Brand-consistent asset sets (hero, section illustrations, icon sets, OG image) through whichever channel `omd:setup` recorded, with a provenance and cost ledger.
 - **omd:showcase** — Deterministic scroll demo video from a rendered page (single or side-by-side comparison), H.264 / GIF via ffmpeg.
 
@@ -671,7 +674,7 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 - [Design Systems catalog](https://oh-my-design.kr/design-systems): browse all references
 - [npm package](https://www.npmjs.com/package/oh-my-design-cli)
 - [Blog](https://oh-my-design.kr/blog): release notes and what held up in the harness — Korean canonical with English versions at /blog/en, RSS at /blog/feed.xml
-- [Retired connector notice](https://oh-my-design.kr/docs/connector): the old MCP transport is archived; skills use local catalogs and raw DESIGN.md endpoints
+- [AI and machine-readable docs](https://oh-my-design.kr/docs/en/ai): the old MCP connector is retired; skills use local catalogs and raw DESIGN.md endpoints
 - [GitHub](https://github.com/kwakseongjae/oh-my-design)
 - [License: MIT](https://github.com/kwakseongjae/oh-my-design/blob/main/LICENSE)
 
@@ -679,7 +682,7 @@ Every reference DESIGN.md is fetchable as clean markdown — no JS rendering nee
 
 ```
 oh-my-design/
-├── skills/              # 21 shipped product skills (source of truth)
+├── skills/              # 28 shipped product skills (source of truth)
 ├── agents/              # 18 sub-agent definitions
 ├── web/references/      # 521 reference DESIGN.md files (canonical)
 ├── data/                # reference fingerprints, vocabulary, opt-out corpus

@@ -45,8 +45,10 @@ const FP_PATHS = [
 const COUNT_SURFACES = [
   'README.md', 'README.ko.md', 'README.ja.md', 'README.zh-TW.md',
   'web/public/llms.txt',
-  'web/src/app/layout.tsx', 'web/src/app/docs/layout.tsx',
-  'web/src/app/builder/layout.tsx', 'web/src/app/design-systems/layout.tsx',
+  'web/public/llms.ko.txt', 'web/public/llms.ja.txt',
+  'web/public/llms.zh-cn.txt', 'web/public/llms.zh-tw.txt',
+  'web/src/components/root-document.tsx', 'web/src/app/(en)/docs/layout.tsx',
+  'web/src/app/(en)/builder/layout.tsx', 'web/src/app/(en)/design-systems/layout.tsx',
   'web/src/data/cli-docs.ts',
 ].map(p => join(ROOT, p));
 
@@ -72,6 +74,9 @@ function bundledCounts() {
 function countRules({ refs, skills, subagents, tiers }) {
   const rules = [
     { re: /\b\d+(?=\s+skills\b)/g, val: skills },
+    // Mirrors check-counts.mjs (2026-10-01): "27-skill bundle", "21 shipped product skills".
+    { re: /\b\d+(?=-skill\b)/g, val: skills },
+    { re: /\b\d+(?=\s+shipped (?:product )?skills\b)/g, val: skills },
     { re: /\b\d+(?=\s+sub-agents\b)/g, val: subagents },
     {
       re: /\b\d+(?=\s+(?:references?\b|reference DESIGN\.md\b|real company design systems\b|design systems\b|verified\b))/g,
@@ -87,6 +92,7 @@ function countRules({ refs, skills, subagents, tiers }) {
   // near DESIGN.md" pattern would start matching version strings.
   for (const re of [
     /\b\d+(?=\s+quality-graded\b)/g,
+    /\b\d+(?=\s+DESIGN\.md references\b)/g,
     /(?<=DESIGN\.md 레퍼런스 )\d+(?=개)/g,
     /(?<=DESIGN\.md )\d+(?=件)/g,
     /\d+(?= 份带质量等级)/g,
