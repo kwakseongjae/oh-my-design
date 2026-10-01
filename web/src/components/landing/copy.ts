@@ -71,7 +71,7 @@ export const EN: LandingCopy = {
     switchText: "한국어",
   },
   eyebrow: ({ refs, countries }) => `DESIGN.md catalog · ${refs} companies · ${countries} countries`,
-  h1: { before: "", after: " company design systems, every value traced to the live product." },
+  h1: { before: "", after: " company design systems, every value traced to a capture." },
   lede: ({ refs, verified }) =>
     `Each one is a DESIGN.md your coding agent can follow: colors, type, radii and components from a real product. The ${verified} verified references keep the capture behind every value, and the rest of the ${refs} say how far they got. Pick one and open it in the builder.`,
   ledeShort: "Each one is a DESIGN.md your coding agent can follow. Pick one and open it in the builder.",
@@ -174,7 +174,7 @@ export const KO: LandingCopy = {
     switchText: "English",
   },
   eyebrow: ({ refs, countries }) => `DESIGN.md 카탈로그 · 기업 ${refs}곳 · ${countries}개국`,
-  h1: { before: "실제 제품에서 값을 하나하나 확인한 디자인 시스템 ", after: "개" },
+  h1: { before: "값마다 근거 캡처를 확인한 디자인 시스템 ", after: "개" },
   lede: ({ refs, verified }) =>
     `실제 제품의 색, 글꼴, 모서리 둥글기, 컴포넌트를 코딩 에이전트가 읽는 DESIGN.md로 정리했습니다. 전체 ${refs}개 중 검증을 마친 ${verified}개는 값마다 근거 캡처가 남아 있고, 나머지는 어디까지 확인했는지 등급으로 표시합니다. 하나 골라 빌더에서 열어 보세요.`,
   ledeShort: "코딩 에이전트가 그대로 따르는 DESIGN.md입니다. 하나 골라 빌더에서 열어 보세요.",
