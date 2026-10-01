@@ -487,6 +487,13 @@
     - ikala: ikala.ai가 봇 차단이라 다시 출처를 달 수 없다.
 - **오늘 KR partial 누계: 68곳 승격(227→295).**
 - **완료 — 사이트 반영 (22:50, main `d46179d2`).** 오너 GO. P4~P7 40곳 + 수집기 개선. 프로덕션 배포 성공. 라이브 확인: greeting·danawa·pozalabs·/builder 200, danawa #2070eb, protopie #8169ff, pozalabs #000000.
+- **10/1 — 보류 건 Aside 처리.**
+  - 봇 차단 4곳(ssg·cafe24·medibloc·ikala)은 Aside 실제 브라우저에서 CAPTCHA 없이 열린다(로그아웃 상태 확인).
+  - Aside는 파일을 쓸 수 없어서 새 경로를 만들었다(`df00acdf`): REPL에서 `extract.js`를 실행하고, 큰 출력이 하네스 tool-results 파일로 저장되면 `assemble.mts`로 수집기와 같은 집계를 거쳐 번들을 만든다. 상태 프레임은 없다.
+  - 사전 조건 통과: ssg 75, cafe24 71, medibloc 80, ikala 80. 저작 웨이브 A1 진행 중.
+  - tellingme·queenit은 coverage 미달 사유라 Aside로는 해결되지 않는다(같은 렌더).
+- **10/1 — 위임 판단:** protopie KR 유지, medibloc은 medibloc.com의 브랜드를 기술(GROWTH_DECISIONS).
+- **10/1 — /hangul 바이럴 페이지·모션 (진행 중):** `feat/hangul-launch-page` 브랜치. 인터랙티브 전후 비교·폭 스크러버, 10~15초 MP4, OG 이미지.
 - **완료 — kakaopay 도메인 분리 수정 (23:10, `c8b92c1a` 수집기 SPA 대기·빈 표면 제외, `888ee7f3`).** kakaopay.com 비어 있지 않은 표면 4곳, coverage 87. kakaocorp 근거 67개 클레임을 제거하고 자사 근거 128개로 교체했다. 대표색 `#ffeb00`은 /brand 타임라인 마커 16개·로고와 홈 버튼 1개에서 확인했다(실측 원자료 17회, `raw/kakaopay-states-brand-yellow.json`). verify 27/27. **사이트 반영 완료(23:20, main `e81fbc9a`)** — 라이브 확인: 새 잉크 `#060b11` ×80, kakaocorp는 그룹 소개 문맥으로만 4회.
 
 - **다음.**
