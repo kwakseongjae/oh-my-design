@@ -109,12 +109,13 @@ This mirrors the `omd:apply` Claude Code skill behavior.
 
 ## Product surface ownership (mandatory)
 
-- The user-facing creation funnel is Home `시작하기` → **`/builder`**.
-- In product discussions, “preview”, “미리보기”, “사용자가 보는 화면”, and “시작하기 이후” mean the builder preview unless the user explicitly names another route.
-- **`/design-systems/[id]` is the catalog detail page** — the English SEO/AEO landing where Claude/Brave citations arrive (JSON-LD, answer-first extract, `generateStaticParams` over all 440). It carries the funnel's entry CTA, `/builder?step=customize&ref=<id>`, and the sitemap advertises one per reference. Changes to how a reference *reads* belong here. **The owner decided on 2026-09-18 to keep it.** The structural case is in `docs/ROUTE_IDENTITY_2026-09-17.md`: it carries the only indexed HTML surface and the only JSON-LD, and `/builder` is `"use client"` so it cannot take that on. The half of the case that is still missing — landing sessions and their reach to `/builder` — is unmeasurable until analytics is restored, so this decision rests on structure alone and may be revisited once it is.
-- `/reference/[id]` is a 61-line `noindex` diagnostic surface that renders a bare `<ReferencePreview>` and already declares `canonical: /design-systems/<id>`. It is not the catalog detail, is absent from the sitemap, and must never be treated as the primary user preview or used to validate a builder task.
-- `ReferencePreview` is currently a shared renderer used by both consumers. Shared-renderer changes are allowed, but every builder request must be entered and acceptance-tested through `/builder`; route ownership is determined by the consumer journey, not the component filename.
-- Before finishing builder UI work, verify Home → `/builder` → brand selection → preview, including user overrides when relevant.
+- The user-facing funnel is Home → **`/design-systems/[id]`** (the item page) → optional **`/builder`** (Customize). Landing rows and search on `/` and `/ko` open the item page; its `#use` block holds Copy / Download / raw DESIGN.md, the install command, the first prompt, and "Customize →" `/builder?step=customize&ref=<id>`. Decided 2026-10-01 (IA D1–D4, `docs/REDESIGN_DECISIONS_2026-10-01.md`): the item page is where 8.9K bot/AI fetches and 7.7K human requests a month already land, so the catalog's hand-off belongs there. URLs were kept; `/ko` rows point at the English item page until Korean detail pages ship (D5).
+- In product discussions, “preview”, “미리보기”, and “사용자가 보는 화면” mean the item page's preview unless the user names the customize tool (“builder”, “빌더”, “Customize”, “커스터마이즈”).
+- **`/design-systems/[id]`** carries the only indexed per-reference HTML and the JSON-LD (Article, FAQPage, BreadcrumbList), its one `<h1>` is “{Name} design system”, and `generateStaticParams` covers every reference. Changes to how a reference *reads* or is handed off belong here and are acceptance-tested through Home → brand row → `/design-systems/<id>` → `#use`.
+- **`/builder`** stays indexed with the visible name “Customize” (D3); the URL does not change. `/builder?step=…&ref=…&cfg=…` deep links must keep resolving — they sit inside prompts users have already pasted.
+- `/reference/[id]` no longer exists; it 308s to `/design-systems/[id]` (D4).
+- `ReferencePreview` is a shared renderer used by the item page and the builder preview; neither renders its brand name as a heading. Shared-renderer changes are allowed, but every builder request must be entered and acceptance-tested through `/builder`; route ownership is determined by the consumer journey, not the component filename.
+- Before finishing builder UI work, verify Home → `/design-systems/<id>` → Customize → `/builder` preview, including user overrides when relevant.
 
 ## Hard rules (apply across channels)
 
