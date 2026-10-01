@@ -57,17 +57,19 @@ export function GET() {
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>
+          {/* Two explicit lines: satori's own wrap left a double-width gap. */}
           <div
             style={{
               display: "flex",
+              flexDirection: "column",
               fontSize: 68,
               fontWeight: 700,
-              letterSpacing: "-0.04em",
+              letterSpacing: "-0.03em",
               lineHeight: 1.05,
-              maxWidth: 1000,
             }}
           >
-            {`Real design systems from ${REFERENCE_COUNT} companies, as DESIGN.md`}
+            <div style={{ display: "flex" }}>Real design systems from</div>
+            <div style={{ display: "flex" }}>{`${REFERENCE_COUNT} companies, as DESIGN.md`}</div>
           </div>
           <div style={{ display: "flex", fontSize: 30, color: MUTED }}>
             For Claude Code, Codex, Cursor, and OpenCode. Free and open source.
