@@ -2,7 +2,7 @@
  * Canonical EN FAQ — single source of truth for BOTH consumers (issue #28):
  *
  *   1. /docs page FAQ section (src/app/(en)/docs/page.tsx) — renders ALL entries;
- *   2. root layout JSON-LD FAQPage schema (src/app/(en)/layout.tsx) — renders only
+ *   2. root JSON-LD FAQPage schema (src/components/root-document.tsx) — renders only
  *      the `jsonLd: true` subset (keep it small and SEO-focused — search
  *      engines read this set as the site-wide FAQ rich result).
  *

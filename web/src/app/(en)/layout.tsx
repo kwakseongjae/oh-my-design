@@ -1,102 +1,15 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
-import { ThemeProvider } from "@/components/theme-provider";
-import { AnalyticsInit } from "@/components/analytics-init";
-import { AnalyticsConsent } from "@/components/analytics-consent";
-import { GA_ID } from "@/lib/gtag";
-import { EEA_REGION_CODES } from "@/lib/eea";
-import { REFERENCE_COUNT } from "@/lib/catalog-count";
-import { DEFAULT_OG_IMAGE } from "@/lib/site";
-import pkg from "../../../../package.json" with { type: "json" };
+import { RootDocument } from "@/components/root-document";
+import { siteMetadata, siteViewport } from "@/lib/site-metadata";
+import { geistMono, geistSans } from "../fonts";
 import "../globals.css";
 
-// Single source of truth for displayed CLI version. Pulled from the root
-// package.json so schema.org / featureList never drift from the published
-// npm artifact. Bump pkg.version → schema follows automatically.
-const CLI_VERSION: string = pkg.version;
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const siteUrl = "https://oh-my-design.kr";
-
-// Plain language on purpose: this is what a search result shows to someone who
-// has never heard of the project. Tier names (verified_v2 …) and role counts
-// belong on the pages that explain them, not in the snippet.
-const SITE_DESCRIPTION =
-  `Real design systems from ${REFERENCE_COUNT} companies, written as DESIGN.md files your AI coding agent can follow. Pick a brand, adjust it, and download. Free and open source.`;
-
-export const viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 5,
-  viewportFit: "cover" as const,
-};
-
-export const metadata: Metadata = {
-  title: "oh-my-design — DESIGN.md for AI coding agents",
-  description: SITE_DESCRIPTION,
-  keywords: [
-    "design system",
-    "DESIGN.md",
-    "design system generator",
-    "brand philosophy",
-    "Claude Code",
-    "tailwind",
-    "design tokens",
-    "AI coding agent",
-    "Google Stitch",
-    "design personality",
-    "디자인 시스템",
-    "디자인 시스템 생성기",
-    "브랜드 철학",
-  ],
-  authors: [{ name: "oh-my-design" }],
-  metadataBase: new URL(siteUrl),
-  // Canonical is intentionally NOT set at the root layout — Next.js App Router
-  // shallow-merges metadata, so a string canonical here would be inherited
-  // verbatim by every child page (declaring every URL as the homepage). Each
-  // child layout/page sets its own canonical (or none — Google falls back to
-  // the request URL).
-  verification: {
-    google: "5mZuqjPvdwYTXpJrByQX2i7xM73aQj3Vn1UcpyJhCr4",
-    other: {
-      // Three tokens, one per Search Advisor property: the legacy
-      // www.oh-my-design.kr, the apex oh-my-design.kr (the canonical 200 host
-      // crawlers see; www 308-redirects to it), and blog.oh-my-design.kr —
-      // Naver registers each subdomain as its own site. One deployment serves
-      // every host, and Next renders one <meta> per array entry, so all three
-      // properties verify off the same page head.
-      "naver-site-verification": [
-        "ecee2aa716d5ed7e257dcce5f72222e03f3512d4",
-        "a2e4997db92c96180459be3eca9d4daeb4d14152",
-        "5ef2baec69d5697ae04ffcc6a9750578316a4197",
-      ],
-    },
-  },
-  openGraph: {
-    type: "website",
-    title: "oh-my-design — DESIGN.md for AI coding agents",
-    description: SITE_DESCRIPTION,
-    // og:url intentionally omitted — same inheritance reason as canonical.
-    siteName: "oh-my-design",
-    images: [DEFAULT_OG_IMAGE],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "oh-my-design — DESIGN.md for AI coding agents",
-    description: SITE_DESCRIPTION,
-    images: [DEFAULT_OG_IMAGE.url],
-  },
-};
+/**
+ * Root layout for every English page. The Korean landing has its own root
+ * layout in app/(ko) so it can render <html lang="ko">; both render the same
+ * RootDocument and metadata.
+ */
+export const viewport = siteViewport;
+export const metadata = siteMetadata;
 
 export default function RootLayout({
   children,
@@ -104,99 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      data-scroll-behavior="smooth"
-      suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@graph": [
-                {
-                  "@type": "Organization",
-                  name: "oh-my-design",
-                  url: siteUrl,
-                  logo: `${siteUrl}/logo.png`,
-                  sameAs: [
-                    "https://github.com/kwakseongjae/oh-my-design",
-                    "https://www.npmjs.com/package/oh-my-design-cli",
-                  ],
-                },
-                {
-                  "@type": "WebSite",
-                  name: "oh-my-design",
-                  url: siteUrl,
-                  description:
-                    "DESIGN.md as ground truth for AI coding agents. 521 quality-graded references: 299 verified_v2, 109 partial, and 113 legacy snapshots.",
-                  potentialAction: {
-                    "@type": "SearchAction",
-                    target: `${siteUrl}/design-systems?q={search_term_string}`,
-                    "query-input": "required name=search_term_string",
-                  },
-                },
-                {
-                  "@type": "SoftwareApplication",
-                  name: "oh-my-design-cli",
-                  applicationCategory: "DeveloperApplication",
-                  operatingSystem: "macOS, Linux, Windows",
-                  url: siteUrl,
-                  downloadUrl:
-                    "https://www.npmjs.com/package/oh-my-design-cli",
-                  softwareVersion: CLI_VERSION,
-                  license: "https://opensource.org/licenses/MIT",
-                  description:
-                    "Skill-driven design workflows for Claude Code, Codex, OpenCode, and Cursor. One npx command installs compatible skills, specialist roles, and an offline catalog of 521 quality-graded DESIGN.md references.",
-                  offers: {
-                    "@type": "Offer",
-                    price: "0",
-                    priceCurrency: "USD",
-                  },
-                  featureList: [
-                    "23 product skills and 19 specialist agent definitions",
-                    "Native project skills for Claude Code, Codex, OpenCode, and Cursor 2.4+",
-                    "521 quality-graded references: 299 verified_v2, 109 partial, and 113 legacy snapshots",
-                    "verified_v2 references recommended for public demos",
-                    "Channel-aware doctor diagnostics and deterministic installation checks",
-                    "Zero AI calls during install",
-                    "DESIGN.md-driven implementation, review, preference capture, and final QA workflows",
-                  ],
-                },
-              ],
-            }),
-          }}
-        />
-      </head>
-      <body className="min-h-full flex flex-col">
-        <ThemeProvider>{children}</ThemeProvider>
-        <AnalyticsInit />
-        <AnalyticsConsent />
-        {GA_ID && (
-          <>
-            {/* Consent Mode v2 defaults run BEFORE config (same inline script =
-                guaranteed order): EEA/UK/CH denied until the banner grants;
-                everywhere else granted. AnalyticsConsent flips EEA visitors to
-                granted on Accept via gtag('consent','update'). */}
-            {/* beforeInteractive defines the queue before client mount effects.
-                Without it, first-load events such as bld_open can fire before
-                window.gtag exists and are silently lost. */}
-            <Script id="gtag-init" strategy="beforeInteractive">
-              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}` +
-                `gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',region:${JSON.stringify(EEA_REGION_CODES)},wait_for_update:500});` +
-                `gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});` +
-                // url_passthrough carries utm_*/gclid across navigations cookielessly
-                // when consent is denied — recovers attribution for the EU slice.
-                `gtag('set','url_passthrough',true);` +
-                `gtag('js',new Date());gtag('config','${GA_ID}');`}
-            </Script>
-            <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
-          </>
-        )}
-      </body>
-    </html>
+    <RootDocument lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      {children}
+    </RootDocument>
   );
 }

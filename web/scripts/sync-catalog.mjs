@@ -47,7 +47,7 @@ const COUNT_SURFACES = [
   'web/public/llms.txt',
   'web/public/llms.ko.txt', 'web/public/llms.ja.txt',
   'web/public/llms.zh-cn.txt', 'web/public/llms.zh-tw.txt',
-  'web/src/app/(en)/layout.tsx', 'web/src/app/(en)/docs/layout.tsx',
+  'web/src/components/root-document.tsx', 'web/src/app/(en)/docs/layout.tsx',
   'web/src/app/(en)/builder/layout.tsx', 'web/src/app/(en)/design-systems/layout.tsx',
   'web/src/data/cli-docs.ts',
 ].map(p => join(ROOT, p));
