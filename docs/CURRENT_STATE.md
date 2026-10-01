@@ -504,6 +504,7 @@
 - **10/1 16:40 오너 결정 R1~R4** (`docs/REDESIGN_DECISIONS_2026-10-01.md`): 카탈로그 우선 / 톤은 시안 2~3개 비교 후 / 영어 기본+한국어 랜딩 / 감사 표대로 페이지 정리. 실행: ① 첫 화면 시안 3개 목업 ② 페이지 정리+SEO 즉시 수정 브랜치(`feat/site-prune-seo`, 출시 GO는 오너).
 - **10/1 17:10 /hangul v5 `a158e35e`** (오너 지적 6건 반영: 자동 재생 히어로·첫 화면 안, 카피 전면 교정, eval 1줄, 스펙표 겹침 해소, 설치 2단계+복사, 출처 삭제; tsc·vitest·next build 통과). 프리뷰 https://oh-my-design-be497ueqs-kwakseongjaes-projects.vercel.app/hangul — 오너 검토 대기. 남은 것: 사이트 쿠키 배너가 첫 로드 히어로 하단을 가림(사이트 공통).
 - **10/1 17:30 랜딩 시안 3개** (`docs/research/2026-10-01-redesign/mockups/`): A 교정지(타이포·/hangul과 연결), B 스와치 인덱스(검증 299 primary 색 벽 — 첫 화면 브랜드명 안 보임), C 브랜드 입기(선택 브랜드 색으로 첫 화면 변신 — 흰 글자 대비 미달·브랜드 사이트처럼 보일 위험). 데이터는 전부 레지스트리·라이브 실측. 오너 선택 대기(R2).
+- **10/1 17:45 오너 위임: "다른 프론트 스킬 사이트를 고려해 최선의 UI와 리팩토링을 해 봐" (R2 → Claude 판단).** 계획: ① 경쟁 사이트 조사(skills.sh·shadcn·21st.dev·Magic UI·v0·awesome-design-md·Mobbin/Refero — 첫 화면에 출처·근거를 보이는지가 핵심 질문) ② 방향 확정(기본안 A 교정지 틀 + C 브랜드 카드는 틴트 면+어두운 글자, B 색 벽은 /design-systems 인덱스) ③ prune 브랜치 완료 후 그 위에 `feat/redesign-landing` — 범위: 랜딩+전역 토큰 통일·next/font 단일화(Pretendard 셀프호스트)·로고 월 제거·KR 랜딩 lang. builder·카탈로그 상세·docs는 범위 밖. 임시 워드마크(되돌릴 수 있음). /hangul은 운영 404라 링크 금지.
 - **10/1 — /hangul 런칭 페이지·모션 완료 (`feat/hangul-launch-page` `0c3d39ff`, 미반영).**
   - 페이지 구성:
     - 실제 DOM 히어로: 전후 토글과 320~430px 폭 슬라이더. 지금 보는 기기의 글꼴로 끊긴 단어를 빨간 상자로 표시한다.
