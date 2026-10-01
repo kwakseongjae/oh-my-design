@@ -497,6 +497,7 @@
   - tellingme·queenit은 coverage 미달 사유라 Aside로는 해결되지 않는다(같은 렌더).
 - **10/1 — 위임 판단:** protopie KR 유지, medibloc은 medibloc.com의 브랜드를 기술(GROWTH_DECISIONS).
 - **10/1 결정: /hangul은 오너 검토 후 출시**(프리뷰 확인 → 스킬 병합 → npm 패치 → 페이지 반영).
+- **10/1 오너 검토 결과 → 재작업 중.** 페이지: "내용은 좋은데 디자인·레이아웃이 아쉽다" → 에디토리얼 타이포 콘셉트로 재디자인(`feat/hangul-launch-page`, next build 필수). 영상: "별로" → 오너가 쓰던 HyperFrames로 다시 만든다(`.promo/2026-10-01-hangul/`, 1080×1350·1080×1920).
 - **10/1 — /hangul 런칭 페이지·모션 완료 (`feat/hangul-launch-page` `0c3d39ff`, 미반영).**
   - 페이지 구성:
     - 실제 DOM 히어로: 전후 토글과 320~430px 폭 슬라이더. 지금 보는 기기의 글꼴로 끊긴 단어를 빨간 상자로 표시한다.
