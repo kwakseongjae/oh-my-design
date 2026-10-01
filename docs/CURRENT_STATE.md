@@ -499,6 +499,7 @@
 - **10/1 결정: /hangul은 오너 검토 후 출시**(프리뷰 확인 → 스킬 병합 → npm 패치 → 페이지 반영).
 - **10/1 오너 검토 결과 → 재작업 중.** 페이지: "내용은 좋은데 디자인·레이아웃이 아쉽다" → 에디토리얼 타이포 콘셉트로 재디자인(`feat/hangul-launch-page`, next build 필수). 영상: "별로" → 오너가 쓰던 HyperFrames로 다시 만든다(`.promo/2026-10-01-hangul/`, 1080×1350·1080×1920).
 - **10/1 오후 진행.** 페이지 v4(교정지 콘셉트) `eac8a999` 푸시 — 프리뷰 https://oh-my-design-hwciyn3cm-kwakseongjaes-projects.vercel.app/hangul , 오너 검토 대기. 영상: 오너가 "HyperFrames 아님, 너무 구림" → HyperFrames 판 폐기, 오너가 설치했던 **Tesseract 0.2.0**(mirage-hq, `~/Library/Application Support/Tesseract/bin/tsrct`, 스킬은 `occ-promo/.claude/skills/tesseract-*`)으로 재제작 중 → `.promo/2026-10-01-hangul-tsrct/`.
+- **10/1 15:45 오너 2차 검토 (v4).** ① 히어로 '있어요' 완성이 스크롤해야 보여 사실상 안 보임 ② 카피 비문('직접 폭 움직여 보기', '갈렸습니다') ③ eval 구간 간소화/삭제 ④ 스펙표 텍스트 겹침 ⑤ 설치 1단계 명령 잘림, 3단계(체커) 삭제 ⑥ 하단 출처 삭제 → v5 수정 에이전트 실행 중. **새 트랙: OmD 전반 리디자인+SEO**(저트래픽 축소, 랜딩 시각 개편, 로고·컨셉·docs·README 리뉴얼) → 감사(읽기 전용) 실행 중 `docs/research/2026-10-01-redesign/AUDIT.md`. 오너: 다음 버전에서 /hangul 페이지도 새 컨셉으로 재제작.
 - **10/1 — /hangul 런칭 페이지·모션 완료 (`feat/hangul-launch-page` `0c3d39ff`, 미반영).**
   - 페이지 구성:
     - 실제 DOM 히어로: 전후 토글과 320~430px 폭 슬라이더. 지금 보는 기기의 글꼴로 끊긴 단어를 빨간 상자로 표시한다.
