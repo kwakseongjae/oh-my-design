@@ -490,7 +490,8 @@
 - **10/1 — 보류 건 Aside 처리.**
   - 봇 차단 4곳(ssg·cafe24·medibloc·ikala)은 Aside 실제 브라우저에서 CAPTCHA 없이 열린다(로그아웃 상태 확인).
   - Aside는 파일을 쓸 수 없어서 새 경로를 만들었다(`df00acdf`): REPL에서 `extract.js`를 실행하고, 큰 출력이 하네스 tool-results 파일로 저장되면 `assemble.mts`로 수집기와 같은 집계를 거쳐 번들을 만든다. 상태 프레임은 없다.
-  - 사전 조건 통과: ssg 75, cafe24 71, medibloc 80, ikala 80. 저작 웨이브 A1 진행 중.
+  - 사전 조건 통과: ssg 75, cafe24 71, medibloc 80, ikala 80.
+  - **완료 (`3ad85637`)**: 4곳 → Verified v2(합계 295→299). 처음엔 250개 요소 상한 때문에 ssg·cafe24 대표색을 잘린 표본으로 골랐다. 페이지 전수 측정으로 바로잡았다: ssg `#ff5452`(라벨 124개, CSS primary), cafe24 `#084fff`(홈 주 CTA). 추출기 상한을 500으로 올리고 상한 도달 시 경고를 낸다(`84d9e27d`). **사이트 반영 GO 대기.**
   - tellingme·queenit은 coverage 미달 사유라 Aside로는 해결되지 않는다(같은 렌더).
 - **10/1 — 위임 판단:** protopie KR 유지, medibloc은 medibloc.com의 브랜드를 기술(GROWTH_DECISIONS).
 - **10/1 — /hangul 런칭 페이지·모션 완료 (`feat/hangul-launch-page` `0c3d39ff`, 미반영).**
