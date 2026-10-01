@@ -5,6 +5,8 @@ import { AnalyticsConsent } from "@/components/analytics-consent";
 import { GA_ID } from "@/lib/gtag";
 import { EEA_REGION_CODES } from "@/lib/eea";
 import { SITE_ORIGIN } from "@/lib/site";
+import { REFERENCE_COUNT, SKILL_COUNT, SUBAGENT_COUNT } from "@/lib/catalog-count";
+import { REFERENCE_QUALITY_COUNTS } from "@/data/reference-quality.generated";
 import pkg from "../../../package.json" with { type: "json" };
 
 /**
@@ -20,6 +22,13 @@ import pkg from "../../../package.json" with { type: "json" };
 const CLI_VERSION: string = pkg.version;
 
 const siteUrl = SITE_ORIGIN;
+
+// Every count below is a generated constant. The hand-typed skill and agent
+// counts this replaced had fallen five and one behind what the package ships.
+// Server-only module, so the quality table never reaches a client bundle.
+const TIERS =
+  `${REFERENCE_COUNT} quality-graded references: ${REFERENCE_QUALITY_COUNTS.verified_v2} verified_v2, `
+  + `${REFERENCE_QUALITY_COUNTS.partial} partial, and ${REFERENCE_QUALITY_COUNTS.legacy_snapshot} legacy snapshots`;
 
 const SITE_JSON_LD = {
   "@context": "https://schema.org",
@@ -38,13 +47,9 @@ const SITE_JSON_LD = {
       "@type": "WebSite",
       name: "oh-my-design",
       url: siteUrl,
-      description:
-        "DESIGN.md as ground truth for AI coding agents. 521 quality-graded references: 299 verified_v2, 109 partial, and 113 legacy snapshots.",
-      potentialAction: {
-        "@type": "SearchAction",
-        target: `${siteUrl}/design-systems?q={search_term_string}`,
-        "query-input": "required name=search_term_string",
-      },
+      description: `DESIGN.md as ground truth for AI coding agents. ${TIERS}.`,
+      // No SearchAction: /design-systems has no ?q= search to point it at, and
+      // Google retired the sitelinks search box it fed in November 2024.
     },
     {
       "@type": "SoftwareApplication",
@@ -56,16 +61,16 @@ const SITE_JSON_LD = {
       softwareVersion: CLI_VERSION,
       license: "https://opensource.org/licenses/MIT",
       description:
-        "Skill-driven design workflows for Claude Code, Codex, OpenCode, and Cursor. One npx command installs compatible skills, specialist roles, and an offline catalog of 521 quality-graded DESIGN.md references.",
+        `Skill-driven design workflows for Claude Code, Codex, OpenCode, and Cursor. One npx command installs compatible skills, specialist roles, and an offline catalog of ${REFERENCE_COUNT} quality-graded DESIGN.md references.`,
       offers: {
         "@type": "Offer",
         price: "0",
         priceCurrency: "USD",
       },
       featureList: [
-        "23 product skills and 19 specialist agent definitions",
+        `${SKILL_COUNT} product skills and ${SUBAGENT_COUNT} specialist agent definitions`,
         "Native project skills for Claude Code, Codex, OpenCode, and Cursor 2.4+",
-        "521 quality-graded references: 299 verified_v2, 109 partial, and 113 legacy snapshots",
+        TIERS,
         "verified_v2 references recommended for public demos",
         "Channel-aware doctor diagnostics and deterministic installation checks",
         "Zero AI calls during install",

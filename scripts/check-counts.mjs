@@ -109,6 +109,11 @@ const rules = [
   { label: 'skills', re: /\b(\d+)(?=-skill\b)/g, val: skills },
   { label: 'skills', re: /\b(\d+)(?=\s+shipped (?:product )?skills\b)/g, val: skills },
   { label: 'sub-agents', re: /\b(\d+)(?=\s+sub-agents\b)/g, val: subagents },
+  // The site JSON-LD's "N product skills and N specialist agent definitions"
+  // ran five skills and one agent stale until 2026-10-01; neither phrasing
+  // reached a rule.
+  { label: 'product skills', re: /\b(\d+)(?=\s+product skills\b)/g, val: skills },
+  { label: 'specialist agents', re: /\b(\d+)(?=\s+specialist agents?\b)/g, val: subagents },
   {
     label: 'references',
     re: /\b(\d+)(?=\s+(?:references?\b|reference DESIGN\.md\b|real company design systems\b|design systems\b|verified\b))/g,
