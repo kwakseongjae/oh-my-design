@@ -12,7 +12,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
   const staticRoutes: MetadataRoute.Sitemap = [
-    { url: siteUrl, lastModified: now, changeFrequency: "weekly", priority: 1 },
+    // Home and its Korean twin name each other as hreflang alternates, here
+    // and in each page's <head>.
+    {
+      url: siteUrl,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 1,
+      alternates: { languages: { en: siteUrl, ko: `${siteUrl}/ko` } },
+    },
+    {
+      url: `${siteUrl}/ko`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.95,
+      alternates: { languages: { en: siteUrl, ko: `${siteUrl}/ko` } },
+    },
     {
       url: `${siteUrl}/builder`,
       lastModified: now,
