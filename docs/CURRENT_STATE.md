@@ -503,6 +503,7 @@
 - **10/1 16:30 리디자인 감사 완료** (`docs/research/2026-10-01-redesign/AUDIT.md`, Vercel 30일 사람 요청 기준): 트래픽은 /builder 9,464·/design-systems/[id] 7,680·/ 5,786에 집중, 나머지 전부 <600. 저수요 실측: presets 8·font-playground 20·benchmarks 23·collections 21·evolution 21·faq 40·alternatives 71·cli 95, playground 0(404). 발견: robots AI봇 그룹이 /api·/reference 차단 누락, 기본 OG 이미지 '58 design systems' 구버전, 홈 canonical 없음, 랜딩 HTML 800KB·이미지 532, lang=en 고정(KR 수요 우세), llms.{ko,ja,zh}.txt 440 등 카운트 낡음. 오너 결정 8건 대기(컨셉·로고·룩·언어·컷 목록·legacy 113 색인·/api/mcp·/hangul 위치). Tesseract 영상 r2(14s) 오너에게 전달.
 - **10/1 16:40 오너 결정 R1~R4** (`docs/REDESIGN_DECISIONS_2026-10-01.md`): 카탈로그 우선 / 톤은 시안 2~3개 비교 후 / 영어 기본+한국어 랜딩 / 감사 표대로 페이지 정리. 실행: ① 첫 화면 시안 3개 목업 ② 페이지 정리+SEO 즉시 수정 브랜치(`feat/site-prune-seo`, 출시 GO는 오너).
 - **10/1 17:10 /hangul v5 `a158e35e`** (오너 지적 6건 반영: 자동 재생 히어로·첫 화면 안, 카피 전면 교정, eval 1줄, 스펙표 겹침 해소, 설치 2단계+복사, 출처 삭제; tsc·vitest·next build 통과). 프리뷰 https://oh-my-design-be497ueqs-kwakseongjaes-projects.vercel.app/hangul — 오너 검토 대기. 남은 것: 사이트 쿠키 배너가 첫 로드 히어로 하단을 가림(사이트 공통).
+- **10/1 17:30 랜딩 시안 3개** (`docs/research/2026-10-01-redesign/mockups/`): A 교정지(타이포·/hangul과 연결), B 스와치 인덱스(검증 299 primary 색 벽 — 첫 화면 브랜드명 안 보임), C 브랜드 입기(선택 브랜드 색으로 첫 화면 변신 — 흰 글자 대비 미달·브랜드 사이트처럼 보일 위험). 데이터는 전부 레지스트리·라이브 실측. 오너 선택 대기(R2).
 - **10/1 — /hangul 런칭 페이지·모션 완료 (`feat/hangul-launch-page` `0c3d39ff`, 미반영).**
   - 페이지 구성:
     - 실제 DOM 히어로: 전후 토글과 320~430px 폭 슬라이더. 지금 보는 기기의 글꼴로 끊긴 단어를 빨간 상자로 표시한다.
