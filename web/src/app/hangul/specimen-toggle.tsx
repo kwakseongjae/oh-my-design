@@ -27,7 +27,7 @@ export function SpecimenToggle({
         </div>
       </div>
       <div className="mt-4 grid gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] sm:items-start">
-        <div role="group" aria-label="전·후 전환" className={s.seg}>
+        <div role="group" aria-label="적용 전후 바꾸기" className={s.seg}>
           {[
             { v: false, label: "스킬 없이" },
             { v: true, label: "규칙 적용" },
@@ -49,7 +49,7 @@ export function SpecimenToggle({
             className="font-semibold"
             style={{ color: fixed ? "var(--fg)" : "var(--accent)" }}
           >
-            {fixed ? "After · " : "Before · "}
+            {fixed ? "적용 후 · " : "적용 전 · "}
           </span>
           {fixed ? afterNote : beforeNote}
         </p>

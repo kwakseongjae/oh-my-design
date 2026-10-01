@@ -5,22 +5,23 @@ import s from "./hangul.module.css";
 import { HangulHero, MetricsCard } from "./hangul-hero";
 import { SpecimenToggle } from "./specimen-toggle";
 import { TornHeadline } from "./torn-headline";
+import { CopyCommand } from "./copy-command";
 
 const SITE_URL = "https://oh-my-design.kr";
 const REPO = "https://github.com/kwakseongjae/oh-my-design";
 const INSTALL =
   "npx oh-my-design-cli@latest install-skills --skills hangul --skills-only";
 
-const TITLE = "/hangul — AI가 만든 한국어 화면의 조판을 고치는 스킬";
+const TITLE = "/hangul — AI가 만든 한국어 화면의 줄바꿈·글꼴·자간을 바로잡는 스킬";
 const DESCRIPTION =
-  "‘있어요’가 ‘있어 / 요.’로 갈라지는 화면, 직접 폭을 움직여 확인해 보세요. W3C·KRDS 같은 공개 명세와 한국 서비스 67곳 실측을 AI 코딩 에이전트가 읽는 규칙으로 정리했습니다.";
+  "AI가 만든 화면에서 ‘있어요’가 ‘있어 / 요.’로 잘려 줄이 바뀝니다. /hangul은 W3C·KRDS 같은 공개 문서와 한국 서비스 67곳을 직접 잰 값을 바탕으로, AI 코딩 에이전트가 따를 한글 조판 규칙을 담은 스킬입니다.";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: `${SITE_URL}/hangul` },
   openGraph: {
-    title: "‘있어요’가 두 줄로 갈렸습니다 — /hangul",
+    title: "‘요.’만 다음 줄로 넘어갔습니다 — /hangul",
     description: DESCRIPTION,
     url: `${SITE_URL}/hangul`,
     type: "website",
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "‘있어요’가 두 줄로 갈렸습니다 — /hangul",
+    title: "‘요.’만 다음 줄로 넘어갔습니다 — /hangul",
     description: DESCRIPTION,
     images: ["/hangul/og.png"],
   },
@@ -79,36 +80,6 @@ function SectionHead({
     </div>
   );
 }
-
-function Dots({
-  label,
-  cells,
-}: {
-  label: string;
-  cells: ("block" | "warn" | "clean")[];
-}) {
-  const cls = {
-    block: s.dotBlock,
-    warn: s.dotWarn,
-    clean: s.dotClean,
-  } as const;
-  return (
-    <div className={s.dotRow}>
-      <span className="font-semibold">{label}</span>
-      <span
-        className="flex flex-wrap gap-2"
-        role="img"
-        aria-label={`${label}: BLOCK ${cells.filter((c) => c === "block").length}, WARN ${cells.filter((c) => c === "warn").length}, 통과 ${cells.filter((c) => c === "clean").length}`}
-      >
-        {cells.map((c, i) => (
-          <span key={i} className={`${s.dot} ${cls[c]}`} />
-        ))}
-      </span>
-    </div>
-  );
-}
-
-const rep = <T,>(v: T, n: number): T[] => Array.from({ length: n }, () => v);
 
 function Scene({
   id,
@@ -176,20 +147,19 @@ export default function HangulPage() {
             <TornHeadline
               cta={
                 <a href="#demo" className={`${s.btn} ${s.btnSolid}`}>
-                  직접 폭 움직여 보기 ↓
+                  화면 폭 바꿔 보기 ↓
                 </a>
               }
             >
               <div>
                 <h1 id="hero-title" className={s.heroH1}>
-                  ‘있어요’가
-                  <br />두 줄로 갈렸습니다
+                  ‘요.’만
+                  <br />다음 줄로 넘어갔습니다
                 </h1>
                 <p className={`${s.lede} mt-5`}>
-                  Codex CLI가 /hangul 없이 만든 실제 eval 페이지의 제목입니다.
-                  아래에서 폭을 움직여 보세요. 어디서 끊기는지는 지금 보고 있는 기기의
-                  글꼴이 정합니다. 제목에 CSS 한 줄을 더하면 어절째 다음 줄로
-                  넘어갑니다.
+                  Codex CLI가 /hangul 없이 만든 평가용 페이지에 실제로 나온
+                  제목입니다. 어디서 잘리는지는 기기의 글꼴에 따라 달라집니다.
+                  제목에 CSS 한 줄을 더하면 단어가 통째로 다음 줄로 넘어갑니다.
                 </p>
               </div>
             </TornHeadline>
@@ -205,17 +175,17 @@ export default function HangulPage() {
           <div className={s.wrap}>
             <SectionHead
               id="demo"
-              eyebrow="직접 끊어 보기 · 실제 eval 화면 재현"
-              title={<>같은 제목,<br />다른 글꼴, 다른 자리</>}
+              eyebrow="직접 해 보기 · 평가 페이지 재현"
+              title={<>같은 제목도<br />기기마다 다른 곳에서 잘립니다</>}
             >
-              왼쪽 카드는 eval 원본 마크업 그대로입니다. 폭을 움직이면 끊기는
-              자리가 따라 움직이고, 규칙을 켜면 어느 폭에서도 단어가 붙어
-              있습니다.
+              카드는 평가 페이지의 마크업을 그대로 옮긴 것입니다. 폭을 바꾸면
+              잘리는 자리도 바뀝니다. 규칙을 켜면 어느 폭에서도 단어가 잘리지
+              않습니다.
             </SectionHead>
             <div className="mt-12 lg:mt-16">
               <HangulHero>
                 <div>
-                  <p className="font-semibold">다른 기기에서 잰 같은 제목</p>
+                  <p className="font-semibold">기기별로 확인한 결과</p>
                   <dl className="mt-3">
                     <div className={s.platformRow}>
                       <dt className={s.note}>
@@ -230,7 +200,8 @@ export default function HangulPage() {
                     </div>
                     <div className={s.platformRow}>
                       <dt className={s.note}>
-                        안드로이드 대용 · Noto Sans CJK KR · 360px
+                        안드로이드 대신 Linux에서 확인 · Noto Sans CJK KR ·
+                        360px
                       </dt>
                       <dd
                         className={s.platformWord}
@@ -242,8 +213,8 @@ export default function HangulPage() {
                     <div className={s.platformRow}>
                       <dt className={s.note}>Windows · 맑은 고딕</dt>
                       <dd className={s.body}>
-                        360px는 띄어쓰기에서 넘어가지만, 390px에서 ‘있 / 어요.’,
-                        412px에서 ‘있어 / 요.’
+                        360px에서는 띄어쓰기 자리에서 줄이 바뀌지만, 390px에서는
+                        ‘있 / 어요.’, 412px에서는 ‘있어 / 요.’로 잘립니다.
                       </dd>
                     </div>
                     <div
@@ -252,15 +223,15 @@ export default function HangulPage() {
                     >
                       <dt className={s.note}>규칙 적용 후</dt>
                       <dd className={s.platformWord}>
-                        규칙 한 줄을 더하면 9개 조합 모두 끊긴 단어가
+                        규칙 한 줄을 더하자 9개 조합 모두에서 잘린 단어가
                         없었습니다.
                       </dd>
                     </div>
                   </dl>
                   <p className={`${s.note} mt-4`}>
-                    ‘사람들이모아와’의 띄어쓰기 누락은 원본 마크업 그대로입니다.
-                    680px 이하에서 숨긴 &lt;br&gt; 자리에 공백이 없습니다.
-                    카피는 고치지 않았습니다.
+                    ‘사람들이모아와’처럼 띄어쓰기가 빠진 것도 원본 그대로입니다.
+                    680px 이하에서 숨기는 &lt;br&gt; 자리에 공백이 없어서 생긴
+                    일로, 문구는 고치지 않았습니다.
                   </p>
                 </div>
               </HangulHero>
@@ -276,25 +247,24 @@ export default function HangulPage() {
         >
           <SectionHead
             id="scenes"
-            eyebrow="스킬 없이 만든 화면의 네 장면 · Codex 예시"
-            title={<>눈에 보이는 실패는<br />이렇게 생겼습니다</>}
+            eyebrow="스킬 없이 만든 화면 · Codex 사례 네 가지"
+            title={<>스킬 없이 만들면<br />이런 화면이 나옵니다</>}
           >
-            모두 Codex CLI가 스킬 없이 만든 eval 페이지에서 가져왔습니다. 같은
-            조건의 Claude(Sonnet) 결과물에서는 이만큼 눈에 보이는 장면을 찾지
-            못했습니다.
+            모두 Codex CLI가 스킬 없이 만든 평가 페이지에서 가져왔습니다. 같은
+            조건으로 만든 Claude(Sonnet) 결과물에서는 이렇게 눈에 띄는 사례를
+            찾지 못했습니다.
           </SectionHead>
 
           <div className="mt-12 lg:mt-20">
             <Scene
               id="hg10"
-              rule="제목은 keep-all"
-              title="제목이 단어 중간에서 끊긴다"
+              rule="제목은 단어 단위로 줄바꿈"
+              title="제목이 단어 중간에서 잘린다"
               text={
                 <>
                   <p>
-                    한국어 제목·버튼·라벨은 어절 단위로 줄을 바꿉니다(CSS Text 3
-                    · klreq). 맨 위 데모가 이 규칙입니다. 폭을 움직이면 끊기는
-                    자리가 따라 움직입니다.
+                    한국어 제목·버튼·라벨은 띄어쓰기 단위로 줄을 바꿉니다(CSS
+                    Text 3 · klreq). 위 데모가 바로 이 규칙입니다.
                   </p>
                   <a
                     href="#demo"
@@ -308,8 +278,8 @@ export default function HangulPage() {
 
             <Scene
               id="hg1"
-              rule="한글 글꼴을 스택 맨 앞에"
-              title="숫자와 한글이 다른 글꼴로 찍힌다"
+              rule="글꼴 목록 맨 앞에 한글 글꼴"
+              title="숫자와 한글이 서로 다른 글꼴로 나온다"
             >
               <SpecimenToggle
                 id="hg1"
@@ -353,17 +323,17 @@ export default function HangulPage() {
                 }
                 beforeNote={
                   <>
-                    스택이 Arial로 시작합니다. macOS에서 ‘320’과 ‘+’는 Arial,
-                    ‘만 명’은 Apple SD Gothic Neo로 그려졌습니다(Chrome DevTools
-                    Protocol로 측정).
+                    글꼴 목록이 Arial로 시작합니다. macOS에서 ‘320’과 ‘+’는
+                    Arial로, ‘만 명’은 Apple SD Gothic Neo로 그려졌습니다(Chrome
+                    DevTools Protocol로 측정).
                   </>
                 }
                 afterNote={
                   <>
-                    한글 글꼴을 맨 앞에 두면 숫자와 한글이 한 글꼴로 찍힙니다.
-                    eval의 After는 Pretendard였고, 이 페이지도 Pretendard를
-                    불러와 같은 글꼴로 보여 줍니다. 불러오지 못하면 기기의 한글
-                    글꼴로 그립니다.
+                    한글 글꼴을 맨 앞에 두면 숫자와 한글이 같은 글꼴로 나옵니다.
+                    평가에서 스킬을 쓴 쪽은 Pretendard였고, 이 페이지도
+                    Pretendard를 불러와 보여 줍니다. 불러오지 못하면 기기에 있는
+                    한글 글꼴로 그립니다.
                   </>
                 }
               />
@@ -371,8 +341,8 @@ export default function HangulPage() {
 
             <Scene
               id="hg7"
-              rule="제목 자간 하한 −0.03em"
-              title="헤드라인 자간을 영문처럼 조인다"
+              rule="제목 자간은 −0.03em까지"
+              title="제목 자간을 영문처럼 좁힌다"
             >
               <SpecimenToggle
                 id="hg7"
@@ -408,16 +378,17 @@ export default function HangulPage() {
                 }
                 beforeNote={
                   <>
-                    eval 원본은 390px 화면의 44px 제목에 자간 −2.8px(약
-                    −0.064em)였습니다. 여기서는 같은 em 값을 32px 제목에
-                    적용했고, 글꼴은 그대로 두고 자간만 바꿉니다.
+                    평가 페이지 원본은 390px 화면의 44px 제목에 자간 −2.8px(약
+                    −0.064em)를 썼습니다. 여기서는 같은 비율을 32px 제목에
+                    적용했습니다. 글꼴은 그대로 두고 자간만 바꿉니다.
                   </>
                 }
                 afterNote={
                   <>
-                    −0.03em. 제목을 잰 한국 서비스 65곳 중 음수 자간이 23곳,
-                    그중 22곳이 −0.03em 이상이었습니다(예외 1곳 −0.05em). 이
-                    하한은 공개 표준이 아니라 OmD의 실측 해석입니다.
+                    −0.03em으로 바꿨습니다. 제목을 잰 한국 서비스 65곳 중 23곳이
+                    음수 자간을 썼고, 그중 22곳은 −0.03em보다 좁지
+                    않았습니다(나머지 1곳은 −0.05em). 이 기준은 공개 표준이
+                    아니라 OmD가 실측을 바탕으로 정한 값입니다.
                   </>
                 }
               />
@@ -425,7 +396,7 @@ export default function HangulPage() {
 
             <Scene
               id="hg3"
-              rule="11px 미만 금지"
+              rule="11px보다 작은 글자 금지"
               title="모바일에서 캡션을 8px까지 줄인다"
             >
               <SpecimenToggle
@@ -442,15 +413,15 @@ export default function HangulPage() {
                 }
                 beforeNote={
                   <>
-                    같은 eval 페이지의 680px 이하 규칙 그대로입니다. 지표 설명
-                    8px, 지표 이름 10px.
+                    같은 평가 페이지에서 680px 이하에 쓰던 스타일 그대로입니다.
+                    지표 설명은 8px, 지표 이름은 10px입니다.
                   </>
                 }
                 afterNote={
                   <>
-                    모두 11px, 그리고 keep-all. 줄이 늘어도 어절 단위로
-                    넘어갑니다. SEED의 가장 작은 글자 토큰은 11px, TDS는 13px
-                    단계를 ‘안 읽어도 됨’으로 둡니다.
+                    모두 11px로 키우고 keep-all을 더했습니다. 줄이 늘어나도
+                    단어 단위로 넘어갑니다. SEED는 가장 작은 글자 토큰이 11px이고,
+                    TDS는 13px 단계를 ‘안 읽어도 됨’으로 둡니다.
                   </>
                 }
               />
@@ -458,7 +429,7 @@ export default function HangulPage() {
           </div>
         </section>
 
-        {/* 4 · Eval (tinted) */}
+        {/* 4 · Eval (tinted): one statement */}
         <section
           id="eval"
           aria-labelledby="eval-title"
@@ -467,116 +438,35 @@ export default function HangulPage() {
           <div className={s.wrap}>
             <SectionHead
               id="eval"
-              eyebrow="/hangul 평가 · 2026-09-29 채점, 2026-09-30 재채점"
-              title={<>같은 과제,<br />스킬 없이 18번 · 스킬로 18번</>}
+              eyebrow="평가 결과"
+              title={<>스킬 없이 만든 18개 중<br />17개가 규칙을 어겼습니다</>}
             >
-              Codex CLI와 Claude(Sonnet)에 한국어 UI 과제 3개를 3번씩 맡기고,
-              결과 코드를 /hangul 체커로 채점했습니다.
+              한국어 UI 과제 3개를 Codex CLI와 Claude에 3번씩 맡겨, 스킬 없이
+              18개, 스킬을 써서 18개를 만들었습니다.
             </SectionHead>
 
-            <div className={`${s.grid} mt-14 gap-y-12 lg:mt-20`}>
-              <div
-                className="lg:col-span-6"
-                style={{ borderTop: "2px solid var(--fg)", paddingTop: 20 }}
-              >
-                <p className="font-semibold">경고 이상 (BLOCK 또는 WARN)</p>
+            <div className={`${s.evalPair} mt-12 lg:mt-16`}>
+              <div className={s.evalCell}>
+                <p className="font-semibold">스킬 없이 · 규칙 위반</p>
                 <p className={`${s.bigFigure} ${s.num} mt-2`}>
-                  <span className={s.figureBefore}>17/18</span>{" "}
-                  <span className={s.figureArrow}>→</span> 0/18
+                  <span style={{ color: "var(--accent)" }}>17</span>
+                  <span className={s.figureOf}>/18</span>
                 </p>
-                <p className={s.note}>스킬 없이 → 스킬과 함께</p>
               </div>
-              <div
-                className="lg:col-span-6"
-                style={{ borderTop: "2px solid var(--fg)", paddingTop: 20 }}
-              >
-                <p className="font-semibold">가장 심각한 등급(BLOCK)만</p>
+              <span className={s.figureArrow} aria-hidden>
+                →
+              </span>
+              <div className={s.evalCell}>
+                <p className="font-semibold">스킬 적용 · 규칙 위반</p>
                 <p className={`${s.bigFigure} ${s.num} mt-2`}>
-                  <span className={s.figureBefore}>10/18</span>{" "}
-                  <span className={s.figureArrow}>→</span> 0/18
-                </p>
-                <p className={s.note}>스킬 없이 → 스킬과 함께</p>
-              </div>
-            </div>
-
-            <div className={`${s.grid} mt-16 gap-y-12`}>
-              <div className="lg:col-span-7">
-                <Dots
-                  label="Codex · 스킬 없이"
-                  cells={rep("block" as const, 9)}
-                />
-                <Dots
-                  label="Claude · 스킬 없이"
-                  cells={[
-                    ...rep("block" as const, 1),
-                    ...rep("warn" as const, 7),
-                    "clean",
-                  ]}
-                />
-                <Dots label="Codex · 스킬" cells={rep("clean" as const, 9)} />
-                <Dots label="Claude · 스킬" cells={rep("clean" as const, 9)} />
-                <p
-                  className={`${s.note} border-t pt-3`}
-                  style={{ borderColor: "var(--line)" }}
-                >
-                  점 하나가 실행 하나입니다.{" "}
-                  <span style={{ color: "var(--accent)" }}>●</span> BLOCK ·{" "}
-                  <span style={{ color: "#d98a00" }}>●</span> WARN만 ·{" "}
-                  <span style={{ color: "var(--fg-3)" }}>○</span> 통과
+                  0<span className={s.figureOf}>/18</span>
                 </p>
               </div>
-              <div className="space-y-8 lg:col-span-4 lg:col-start-9">
-                <div>
-                  <p className="font-semibold">Codex</p>
-                  <p className={`${s.num} ${s.h3} mt-1`}>BLOCK 9/9 → 0/9</p>
-                  <p className={`${s.body} mt-2`}>
-                    모든 실행에서 제목 자간이 −0.03em보다 좁았습니다(HG-7). 눈에
-                    보이는 장면은 모두 여기서 나왔습니다.
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold">Claude (Sonnet)</p>
-                  <p className={`${s.num} ${s.h3} mt-1`}>
-                    BLOCK 1/9 · 경고 이상 8/9 → 0/9
-                  </p>
-                  <p className={`${s.body} mt-2`}>
-                    대부분 본문 자간 −0.01em 또는 −0.02em(HG-6)이고, 8개 중
-                    3개는 −0.01em 경고 하나뿐입니다. 9개 모두 360·390·1440px
-                    렌더에서 끊긴 단어가 없었습니다. 실측 67곳 중 15곳도 본문에
-                    음수 자간을 씁니다.
-                  </p>
-                </div>
-              </div>
             </div>
-
-            <div className={`${s.grid} mt-16`}>
-              <div className="lg:col-span-3">
-                <p className={s.h3}>숫자를 읽을 때 알아 둘 한계</p>
-              </div>
-              <ol
-                className={`${s.caveats} ${s.body} mt-4 lg:col-span-8 lg:col-start-5 lg:mt-0`}
-              >
-                <li>
-                  채점기는 스킬 자신의 규칙을 씁니다. 스킬 쪽은 ‘hangul 스킬을
-                  읽고 따르라’는 한 줄을 더 받았으니 0개는 어느 정도 예상된
-                  결과입니다.
-                </li>
-                <li>
-                  표본이 작습니다. 과제 3개 × 3회 × 채널 2개(Codex CLI, Claude
-                  Sonnet)입니다.
-                </li>
-                <li>
-                  채점은 소스 정적 검사이고, 렌더는 사례 확인에 썼습니다.
-                  렌더에서 찾은 오탐을 계기로 체커를 두 번 고쳐 다시 채점했고,
-                  17/18은 그대로였습니다.
-                </li>
-                <li>
-                  eval 글꼴은 macOS 헤드리스 Chrome에서 확인했습니다. 맨 위
-                  제목의 끊김만 Windows·안드로이드 대용 글꼴로 따로
-                  확인했습니다.
-                </li>
-              </ol>
-            </div>
+            <p className={`${s.note} mt-8`}>
+              채점은 스킬에 들어 있는 체커 기준이라, 스킬 쪽에 유리할 수
+              있습니다.
+            </p>
           </div>
         </section>
 
@@ -589,47 +479,47 @@ export default function HangulPage() {
           <SectionHead
             id="measured"
             eyebrow="규칙의 근거"
-            title="한국 서비스 67곳 실측"
+            title="한국 서비스 67곳을 직접 쟀습니다"
           >
             OmD가 한국 서비스 67곳의 공개 웹 화면에서 잰 값입니다(2026-07-11~13
-            캡처, 앱·로그인 화면 제외). 여기에 W3C klreq·CSS Text 명세와
-            KRDS·SEED·TDS 공개 문서를 더해 규칙을 정했습니다.
+            캡처, 앱과 로그인 화면은 제외). 여기에 W3C klreq·CSS Text 명세와
+            KRDS·SEED·TDS 공개 문서를 더해 규칙을 만들었습니다.
           </SectionHead>
-          <dl
-            className="mt-12 lg:mt-20"
-            style={{ borderBottom: "1px solid var(--line)" }}
-          >
+          <dl className={`${s.specList} mt-12 lg:mt-20`}>
             {[
               {
                 k: "본문 크기",
                 v: "16px",
-                d: "중앙값. 67곳 중 53곳이 14–17px",
+                d: "중앙값입니다. 67곳 중 53곳이 14–17px를 씁니다.",
               },
               {
                 k: "본문 행간",
                 v: "1.5",
-                d: "중앙값. 수치로 잡힌 53곳 중 31곳이 1.4–1.6",
+                d: "중앙값입니다. 값을 확인할 수 있었던 53곳 중 31곳이 1.4–1.6입니다.",
               },
               {
                 k: "본문 자간",
                 v: "0",
-                d: "67곳 중 52곳이 정확히 0. 양수 자간은 0곳",
+                d: "67곳 중 52곳이 정확히 0이고, 양수 자간을 쓴 곳은 없습니다.",
               },
               {
-                k: "주 글꼴 Pretendard",
+                k: "주 글꼴이 Pretendard",
                 v: "40/67",
-                d: "한글 글꼴을 스택 맨 앞에 둔 곳은 49/67",
+                d: "한글 글꼴을 글꼴 목록 맨 앞에 둔 곳은 67곳 중 49곳입니다.",
               },
               {
                 k: "제목 자간",
                 v: "−0.03em",
-                d: "음수 자간 제목 23곳 중 22곳이 이 값 이상. 예외 1곳 −0.05em",
+                d: "제목에 음수 자간을 쓴 23곳 중 22곳이 이 값보다 좁지 않습니다. 나머지 1곳은 −0.05em입니다.",
               },
             ].map((x) => (
               <div key={x.k} className={s.specRow}>
-                <dt className="font-semibold">{x.k}</dt>
+                <dt className={`${s.specKey} font-semibold`}>{x.k}</dt>
                 <dd className={`${s.specValue} ${s.num}`}>{x.v}</dd>
-                <dd className={s.body}>{x.d}</dd>
+                {/* Word joiners keep a range like 14–17px on one line. */}
+                <dd className={`${s.specDesc} ${s.body}`}>
+                  {x.d.replace(/(\d)–(\d)/g, "$1\u2060–\u2060$2")}
+                </dd>
               </div>
             ))}
           </dl>
@@ -645,86 +535,32 @@ export default function HangulPage() {
             <SectionHead
               id="install"
               eyebrow="설치"
-              title="에이전트에게 규칙을 읽히세요"
+              title="설치하고, 평소처럼 요청하세요"
             />
-            <ol className="mt-12 grid gap-12 lg:mt-16 lg:grid-cols-3 lg:gap-8">
+            <ol className="mt-12 grid gap-12 lg:mt-16 lg:grid-cols-2 lg:gap-12">
               <li className={s.step}>
                 <p className={`${s.stepNum} ${s.num}`}>1</p>
-                <p className={`${s.h3} mt-1`}>스킬만 설치</p>
-                <pre className={`${s.code} ${s.mono} mt-4`}>
-                  <code>{INSTALL}</code>
-                </pre>
+                <p className={`${s.h3} mt-1`}>스킬 설치</p>
+                <div className="mt-4">
+                  <CopyCommand command={INSTALL} />
+                </div>
               </li>
               <li className={s.step}>
                 <p className={`${s.stepNum} ${s.num}`}>2</p>
-                <p className={`${s.h3} mt-1`}>에이전트에게 말하기</p>
+                <p className={`${s.h3} mt-1`}>에이전트에게 요청하기</p>
                 <p className={`${s.body} mt-4`}>
                   “이 화면 한글 줄바꿈이 이상해”, “한국어 랜딩 만들어 줘”처럼
-                  말하면 됩니다. 한국어 UI를 만들 때 규칙을 적용하고(APPLY),
-                  기존 코드는 점검합니다(AUDIT). DESIGN.md에 타이포 토큰이
-                  있으면 그 값이 이깁니다.
-                </p>
-              </li>
-              <li className={s.step}>
-                <p className={`${s.stepNum} ${s.num}`}>3</p>
-                <p className={`${s.h3} mt-1`}>체커로 확인</p>
-                <pre className={`${s.code} ${s.mono} mt-4`}>
-                  <code>
-                    {
-                      "node <스킬 폴더>/scripts/check.mjs <파일이나 폴더>\nnode <스킬 폴더>/scripts/render-check.mjs <URL>"
-                    }
-                  </code>
-                </pre>
-                <p className={`${s.note} mt-3`}>
-                  render-check는 360·390·1440px에서 끊긴 단어를
-                  찾습니다(playwright-core와 Chrome 필요).
+                  평소대로 말하면 됩니다. 새 화면을 만들 때는 규칙을
+                  적용하고(APPLY), 기존 코드는 점검합니다(AUDIT). DESIGN.md에
+                  타이포그래피 토큰이 있으면 그 값을 먼저 따릅니다.
                 </p>
               </li>
             </ol>
           </div>
         </section>
 
-        {/* Sources */}
-        <footer className={`${s.wrap} py-16 lg:py-20`}>
-          <div className={s.grid}>
-            <p className={`${s.h3} lg:col-span-3`}>출처</p>
-            <ul
-              className={`${s.sources} mt-4 lg:col-span-8 lg:col-start-5 lg:mt-0`}
-            >
-              <li>
-                평가 수치·한계: skills/hangul/references/eval-2026-09.md (Codex
-                CLI 0.158.0 gpt-6-astra, Claude sonnet, create-next-app 16.3.7
-                템플릿)
-              </li>
-              <li>
-                실측 수치: skills/hangul/references/measured-67.md (67곳,
-                2026-07-11~13 캡처, 2026-09-29 집계)
-              </li>
-              <li>
-                맨 위 제목: eval 실행 codex p1-A-r3의 .metrics-intro h2를 그대로
-                옮긴 재현. 플랫폼별 끊김은 2026-09-30 GitHub Actions
-                렌더(Windows Server 2025 + 맑은 고딕, Ubuntu 24.04 + Noto Sans
-                CJK KR)와 macOS Chrome 154
-              </li>
-              <li>
-                Claude 렌더 결과·자간 분포: OmD 런치 노트 v2(2026-09-30),
-                skills/hangul/scripts/render-check.mjs 출력
-              </li>
-              <li>
-                HG-1·HG-7·HG-3 장면 값(Arial/Apple SD Gothic Neo 측정, 44px
-                −2.8px, 8px·10px): 같은 eval 페이지의 렌더 측정(런치 노트 v1).
-                SEED 11px·TDS 13px: skills/hangul/references/rules.md
-              </li>
-              <li>
-                본문 글꼴: Pretendard Variable(SIL OFL 1.1, jsDelivr의
-                orioncactus/pretendard v1.3.9)
-              </li>
-            </ul>
-          </div>
-          <p
-            className={`${s.note} mt-12 border-t pt-6`}
-            style={{ borderColor: "var(--line)" }}
-          >
+        <footer className={`${s.wrap} py-10`}>
+          <p className={s.note}>
             <a
               href={`${REPO}/tree/main/skills/hangul`}
               className={s.inlineLink}

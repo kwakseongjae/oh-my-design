@@ -22,7 +22,7 @@ export function MetricsCard({
   h2Ref?: React.Ref<HTMLHeadingElement>;
 }) {
   return (
-    <section className={s.metrics} aria-label="모아 주요 지표 (eval 원본 재현)">
+    <section className={s.metrics} aria-label="모아 주요 지표 (평가 페이지 재현)">
       <div className={s.metricsIntro}>
         <span className={s.miniLabel}>BETTER FINANCE, TOGETHER</span>
         <h2 ref={h2Ref}>
@@ -176,10 +176,10 @@ export function HangulHero({ children }: { children?: React.ReactNode }) {
           </div>
         </div>
         <p className={`${s.note} mt-3`}>
-          실제 DOM 텍스트입니다.{" "}
+          이미지가 아니라 실제 텍스트입니다.{" "}
           {Math.abs(scale - 1) < 0.005
-            ? `${width}px 화면을 그대로 그립니다.`
-            : `${width}px 화면을 ${Math.round(scale * 100)}%로 ${scale < 1 ? "줄여" : "키워"} 보여 줍니다. 줄바꿈은 ${width}px 그대로입니다.`}
+            ? `${width}px 화면을 실제 크기로 보여 줍니다.`
+            : `${width}px 화면을 ${Math.round(scale * 100)}%로 ${scale < 1 ? "줄여" : "키워"} 보여 줍니다. 줄바꿈은 ${width}px 기준 그대로입니다.`}
         </p>
       </div>
 
@@ -187,8 +187,8 @@ export function HangulHero({ children }: { children?: React.ReactNode }) {
       <div className={s.demoControls}>
         <div role="group" aria-label="/hangul 규칙" className={s.seg}>
           {[
-            { on: false, label: "생성된 그대로" },
-            { on: true, label: "규칙 한 줄 추가" },
+            { on: false, label: "AI가 만든 그대로" },
+            { on: true, label: "규칙 한 줄 더하기" },
           ].map((o) => (
             <button
               key={String(o.on)}
@@ -207,7 +207,7 @@ export function HangulHero({ children }: { children?: React.ReactNode }) {
             htmlFor="hangul-width"
             className="flex items-baseline justify-between font-semibold"
           >
-            <span>폰 화면 폭</span>
+            <span>화면 폭</span>
             <span className={`${s.mono} text-xl font-bold`}>{width}px</span>
           </label>
           <input
@@ -244,8 +244,8 @@ export function HangulHero({ children }: { children?: React.ReactNode }) {
           </div>
           <p id="hangul-map-caption" className={`${s.body} mt-3`}>
             {map
-              ? `이 기기의 글꼴로 ${MIN}–${MAX}px를 1px씩 그려 보니, 생성된 그대로는 ${offCount}개 폭에서 단어가 끊겼고, 규칙을 더하면 ${onCount}개입니다.`
-              : "이 기기의 글꼴로 폭마다 그려 보는 중입니다."}
+              ? `지금 기기의 글꼴로 ${MIN}–${MAX}px를 1px씩 그려 봤습니다. AI가 만든 그대로는 ${offCount}개 폭에서 단어가 잘렸고, 규칙을 더하면 ${onCount}개입니다.`
+              : "지금 기기의 글꼴로 폭마다 그려 보고 있습니다."}
           </p>
         </div>
 
@@ -254,10 +254,10 @@ export function HangulHero({ children }: { children?: React.ReactNode }) {
           {broken ? (
             <p className={s.readoutBig} style={{ color: "var(--accent)" }}>
               ‘{wordOf(broken)}’{particle(wordOf(broken))} ‘{broken.head} /{" "}
-              {broken.tail}’로 끊겼습니다
+              {broken.tail}’로 잘렸습니다
             </p>
           ) : (
-            <p className={s.readoutBig}>끊긴 단어가 없습니다</p>
+            <p className={s.readoutBig}>잘린 단어가 없습니다</p>
           )}
           <ol className={`${s.body} mt-3 space-y-1`}>
             {lines.map((l, i) => (
@@ -278,7 +278,7 @@ export function HangulHero({ children }: { children?: React.ReactNode }) {
           <code>
             {ruleOn
               ? "h1, h2, h3 {\n  word-break: keep-all;\n  overflow-wrap: anywhere;\n}"
-              : "/* 생성된 그대로: word-break: normal */"}
+              : "/* AI가 만든 그대로: word-break: normal */"}
           </code>
         </pre>
 

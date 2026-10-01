@@ -274,9 +274,10 @@
   padding-bottom: 72px;
 }
 
+/* Sized to its content, not the viewport: the mend and its CSS must land
+   inside the first screen at 1280×720 and 390×844. */
 @media (min-width: 1024px) {
   .hero {
-    min-height: calc(100svh - 57px);
     padding-top: 32px;
     padding-bottom: 72px;
   }
@@ -343,6 +344,36 @@
   }
 }
 
+/* Short desktop screens: keep both lines and the CSS above the fold. */
+@media (min-width: 1024px) and (max-height: 960px) {
+  .torn {
+    font-size: 176px;
+  }
+}
+
+@media (min-width: 1024px) and (max-height: 800px) {
+  .torn {
+    font-size: 148px;
+  }
+}
+
+/* One of the two layers shows: the animated one, or the still end state. */
+.tornStill {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tornMotion {
+    display: none;
+  }
+  .tornStill {
+    display: block;
+  }
+  .tornStill .tornCode {
+    opacity: 1;
+  }
+}
+
 .tornHead,
 .tornTail {
   display: inline-block;
@@ -359,18 +390,20 @@
   inset: 0;
   overflow: visible;
   pointer-events: none;
-  opacity: calc(1 - var(--p, 0) * 1.6);
+  opacity: calc(1 - var(--p, 0));
 }
 
+/* Sits on the second line (centre at 75% of the two-line box), where 요. was. */
 .tornCode {
   position: absolute;
   left: 0;
+  top: 75%;
   letter-spacing: 0;
   font-size: 1rem;
   line-height: 1.5;
   font-weight: 500;
   color: var(--fg);
-  opacity: calc((var(--p, 0) - 0.55) * 2.4);
+  opacity: var(--p, 0);
   white-space: pre;
   transform: translateY(-50%);
 }
@@ -393,20 +426,18 @@
   }
 }
 
+/* The mend: the mark lifts, 요. slides up, then the CSS settles into the gap. */
 @media (prefers-reduced-motion: no-preference) {
-  .tornTail {
-    transition: transform 140ms linear, color 140ms linear;
-  }
-  .tornMark,
-  .tornCode {
-    transition: opacity 140ms linear;
+  .animate .tornMark {
+    transition: opacity 240ms ease-out;
   }
   .animate .tornTail {
-    transition: transform 520ms cubic-bezier(0.2, 0.8, 0.2, 1), color 520ms ease-out;
+    transition:
+      transform 640ms cubic-bezier(0.2, 0.8, 0.2, 1) 120ms,
+      color 640ms ease-out 120ms;
   }
-  .animate .tornMark,
   .animate .tornCode {
-    transition: opacity 360ms ease-out;
+    transition: opacity 420ms ease-out 560ms;
   }
 }
 
@@ -426,10 +457,16 @@
   }
 }
 
+.marginRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+  margin-top: 8px;
+}
+
 .margin {
-  display: inline-block;
-  margin-top: 12px;
-  padding-top: 10px;
+  padding-top: 8px;
   border-top: 2px solid var(--accent);
 }
 
@@ -438,6 +475,57 @@
   line-height: 1.5;
   font-weight: 700;
   color: var(--accent);
+}
+
+.margin[data-mended="true"] .labelBefore,
+.margin:not([data-mended="true"]) .labelAfter {
+  display: none;
+}
+
+.margin[data-mended="true"] .marginLabel {
+  color: var(--fg);
+}
+
+.replay {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 6px;
+  padding-inline: 4px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--fg-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  border-radius: 4px;
+}
+
+.replay:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) {
+  .replay:hover {
+    color: var(--fg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .margin[data-mended] .labelBefore {
+    display: none;
+  }
+  .margin[data-mended] .labelAfter {
+    display: inline;
+    color: var(--fg);
+  }
+  .replay {
+    display: none;
+  }
 }
 
 .heroH1 {
@@ -618,8 +706,11 @@
   font-weight: 750;
 }
 
+/* Code wraps at spaces (and anywhere, as a last resort) instead of scrolling. */
 .code {
-  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: normal;
+  overflow-wrap: anywhere;
   border-radius: 12px;
   background: var(--raise);
   border: 1px solid var(--line);
@@ -710,8 +801,22 @@
 
 /* ---- Eval ---- */
 
+.evalPair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: 16px;
+  max-width: 880px;
+  border-top: 2px solid var(--fg);
+  padding-top: 20px;
+}
+
+.evalCell {
+  min-width: 0;
+}
+
 .bigFigure {
-  font-size: 3rem;
+  font-size: 3.5rem;
   line-height: 1.3;
   font-weight: 780;
   white-space: nowrap;
@@ -719,89 +824,44 @@
 
 @media (min-width: 640px) {
   .bigFigure {
-    font-size: 4.5rem;
+    font-size: 5rem;
   }
 }
 
 @media (min-width: 1280px) {
   .bigFigure {
-    font-size: 6rem;
+    font-size: 7rem;
   }
 }
 
-.figureBefore {
-  color: var(--accent);
-  text-decoration: line-through;
-  text-decoration-thickness: 0.06em;
+.figureOf {
+  font-size: 0.4em;
+  font-weight: 600;
+  color: var(--fg-3);
+  margin-left: 0.08em;
 }
 
 .figureArrow {
+  font-size: 2rem;
+  line-height: 1.3;
   color: var(--fg-3);
-  font-weight: 400;
-}
-
-.dotRow {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 8px;
-  padding-block: 14px;
-  border-top: 1px solid var(--line);
 }
 
 @media (min-width: 640px) {
-  .dotRow {
-    grid-template-columns: 11rem minmax(0, 1fr);
-    align-items: center;
-    gap: 24px;
+  .figureArrow {
+    font-size: 3rem;
   }
 }
 
-.dot {
-  width: 22px;
-  height: 22px;
-  border-radius: 999px;
-}
+/* ---- Measured ----
+   One grid for all rows (subgrid), so the value column is as wide as its widest
+   value and no value can run into its description. Stacked below 768px. */
 
-@media (min-width: 1024px) {
-  .dot {
-    width: 28px;
-    height: 28px;
-  }
-}
-
-.dotBlock {
-  background: var(--accent);
-}
-
-.dotWarn {
-  background: #d98a00;
-}
-
-.dotClean {
-  background: transparent;
-  box-shadow: inset 0 0 0 2px var(--line);
-}
-
-.caveats {
-  counter-reset: cv;
-}
-
-.caveats > li {
-  counter-increment: cv;
+.specList {
   display: grid;
-  grid-template-columns: 2.25rem minmax(0, 1fr);
-  padding-block: 14px;
-  border-top: 1px solid var(--line);
+  grid-template-columns: minmax(0, 1fr);
+  border-bottom: 1px solid var(--line);
 }
-
-.caveats > li::before {
-  content: counter(cv);
-  font-weight: 700;
-  color: var(--accent);
-  font-variant-numeric: tabular-nums;
-}
-
-/* ---- Measured ---- */
 
 .specRow {
   display: grid;
@@ -811,12 +871,22 @@
   border-top: 1px solid var(--line);
 }
 
-@media (min-width: 640px) {
-  .specRow {
-    grid-template-columns: 10rem 12rem minmax(0, 1fr);
-    align-items: baseline;
-    gap: 24px;
+@media (min-width: 768px) {
+  .specList {
+    grid-template-columns: minmax(8rem, 12rem) max-content minmax(0, 1fr);
+    column-gap: 32px;
   }
+  .specRow {
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    align-items: baseline;
+    gap: 0 32px;
+  }
+}
+
+.specKey,
+.specDesc {
+  min-width: 0;
 }
 
 .specValue {
@@ -826,7 +896,7 @@
   white-space: nowrap;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .specValue {
     font-size: 3.5rem;
   }
@@ -847,16 +917,48 @@
   color: var(--accent);
 }
 
-/* ---- Footer ---- */
-
-.sources {
-  font-size: 0.875rem;
-  line-height: 1.6;
-  color: var(--fg-2);
+.command {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
 }
 
-.sources li + li {
-  margin-top: 8px;
+.commandCode {
+  width: 100%;
+  font-size: 0.9375rem;
+}
+
+.token {
+  white-space: nowrap;
+}
+
+.copyBtn {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 8px;
+  padding-inline: 16px;
+  border-radius: 999px;
+  border: 1.5px solid var(--fg);
+  font-size: 0.9375rem;
+  font-weight: 650;
+  color: var(--fg);
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.copyBtn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .copyBtn:hover {
+    background: var(--fg);
+    color: var(--bg);
+  }
 }
 
 .inlineLink {

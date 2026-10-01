@@ -7,6 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { RotateCcw } from "lucide-react";
 import s from "./hangul.module.css";
 
 type Geo = {
@@ -17,12 +18,16 @@ type Geo = {
   tail: { l: number; t: number; w: number; h: number };
 };
 
-const clamp01 = (n: number) => Math.min(1, Math.max(0, n));
+/** Torn state is held this long after load (and after a replay) before it mends. */
+const HOLD_MS = 1200;
+const CODE = "h1 {\n  word-break: keep-all;\n  overflow-wrap: anywhere;\n}";
 
 /** The hero's signature: 있어 / 요. at display size, with a proofreader's mark.
- *  Scrolling (or the button) slides 요. back up beside 있어, and the CSS rule
- *  that fixes it takes the line 요. leaves behind. A real <br> stays in the DOM,
- *  so the break is deliberate markup; only a transform moves the fragment. */
+ *  A beat after load, 요. slides back up beside 있어 and the CSS that fixes it
+ *  takes the line 요. leaves behind, all inside the first screen. A real <br>
+ *  stays in the DOM, so the break is deliberate markup; only a transform moves
+ *  the fragment. With reduced motion the animated layer is hidden by CSS and a
+ *  static end state (있어요. + the CSS) shows instead, with no JS involved. */
 export function TornHeadline({
   children,
   cta,
@@ -33,11 +38,10 @@ export function TornHeadline({
   const boxRef = useRef<HTMLDivElement>(null);
   const headRef = useRef<HTMLSpanElement>(null);
   const tailRef = useRef<HTMLSpanElement>(null);
+  const timer = useRef<number | undefined>(undefined);
   const [geo, setGeo] = useState<Geo | null>(null);
-  const [scrollP, setScrollP] = useState(0);
-  const [forced, setForced] = useState<number | null>(null);
+  const [mended, setMended] = useState(false);
   const [animate, setAnimate] = useState(false);
-  const [announce, setAnnounce] = useState("");
 
   const measure = useCallback(() => {
     const box = boxRef.current?.getBoundingClientRect();
@@ -66,37 +70,34 @@ export function TornHeadline({
     return () => ro.disconnect();
   }, [measure]);
 
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mq.matches) return;
-    let raf = 0;
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() =>
-        setScrollP(
-          clamp01(
-            (window.scrollY - (window.innerWidth < 1024 ? window.innerHeight * 0.12 : 24)) /
-              (window.innerHeight * 0.3),
-          ),
-        ),
-      );
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", onScroll);
-    };
+  const play = useCallback(() => {
+    window.clearTimeout(timer.current);
+    timer.current = window.setTimeout(() => {
+      setAnimate(true);
+      setMended(true);
+    }, HOLD_MS);
   }, []);
 
-  const p = forced ?? scrollP;
-  const mended = p >= 0.5;
+  // Play once on load, after the fonts settle so the mend lands on the real glyphs.
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let cancelled = false;
+    const start = () => {
+      if (!cancelled) play();
+    };
+    if (document.fonts?.ready) document.fonts.ready.then(start);
+    else start();
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timer.current);
+    };
+  }, [play]);
 
-  const toggle = () => {
-    setAnimate(true);
-    setForced(mended ? 0 : 1);
-    setAnnounce(mended ? "다시 끊었습니다. 끊긴 단어 1" : "규칙을 적용했습니다. 끊긴 단어 0");
-    window.setTimeout(() => setAnimate(false), 600);
+  const replay = () => {
+    // Snap back to the torn state, hold it, then mend again.
+    setAnimate(false);
+    setMended(false);
+    play();
   };
 
   const g = geo;
@@ -116,7 +117,6 @@ export function TornHeadline({
             w: g.tail.w + k * 0.1,
             h: g.tail.h - k * 0.22,
           },
-          code: g.tail.t + g.tail.h * 0.5,
         };
       })()
     : null;
@@ -124,13 +124,14 @@ export function TornHeadline({
   return (
     <>
       <div className={s.tornArea}>
+        {/* Animated layer (motion allowed) */}
         <div
           ref={boxRef}
           aria-hidden
-          className={`${s.torn} ${animate ? s.animate : ""}`}
+          className={`${s.torn} ${s.tornMotion} ${animate ? s.animate : ""}`}
           style={
             {
-              "--p": p,
+              "--p": mended ? 1 : 0,
               "--dx": g?.dx ?? 0,
               "--dy": g?.dy ?? 0,
             } as React.CSSProperties
@@ -175,33 +176,40 @@ export function TornHeadline({
               />
             </svg>
           ) : null}
-          {mark ? (
-            <code
-              className={`${s.tornCode} ${s.mono}`}
-              style={{ top: mark.code }}
-            >
-              {"h1 {\n  word-break: keep-all;\n  overflow-wrap: anywhere;\n}"}
-            </code>
-          ) : null}
+          <code className={`${s.tornCode} ${s.mono}`}>{CODE}</code>
         </div>
-        <p className={s.margin}>
-          <span className={s.marginLabel}>
-            {mended ? "교정 끝 · 끊긴 단어 0" : "교정 1 · 단어 중간에서 줄이 바뀜"}
-          </span>
-        </p>
+
+        {/* Static end state (reduced motion) */}
+        <div aria-hidden className={`${s.torn} ${s.tornStill}`}>
+          <span className={s.tornHead}>있어요.</span>
+          <br />
+          <span className={s.tornHead}>&nbsp;</span>
+          <code className={`${s.tornCode} ${s.mono}`}>{CODE}</code>
+        </div>
+
+        <div className={s.marginRow}>
+          <p className={s.margin} data-mended={mended} aria-hidden>
+            <span className={`${s.marginLabel} ${s.labelBefore}`}>
+              단어 중간에서 줄이 바뀌었습니다
+            </span>
+            <span className={`${s.marginLabel} ${s.labelAfter}`}>
+              CSS 한 줄로 고쳤습니다 · 잘린 단어 0
+            </span>
+          </p>
+          <button
+            type="button"
+            onClick={replay}
+            className={s.replay}
+            aria-label="줄바꿈을 고치는 장면 다시 보기"
+          >
+            <RotateCcw className="size-4" aria-hidden /> 다시 보기
+          </button>
+        </div>
       </div>
 
       <div className={s.heroRight}>
         {children}
-        <div className="mt-6 flex flex-wrap gap-3">
-          {cta}
-          <button type="button" onClick={toggle} className={s.btn}>
-            {mended ? "다시 끊어 보기" : "규칙 한 줄로 붙이기"}
-          </button>
-        </div>
-        <p className="sr-only" aria-live="polite">
-          {announce}
-        </p>
+        {cta ? <div className="mt-6 flex flex-wrap gap-3">{cta}</div> : null}
       </div>
     </>
   );
