@@ -17,12 +17,13 @@ const output = outIndex > 0 ? resolve(process.argv[outIndex + 1]) : join(ROOT, "
 const text = readFileSync(file, "utf8");
 const capture = JSON.parse(text.slice(text.indexOf("{"), text.lastIndexOf("}") + 1)) as {
   capturedAt: string;
-  surfaces: { url: string; fonts: string[]; rows: unknown[][]; loaded: string[]; loggedIn: boolean }[];
+  surfaces: { url: string; fonts: string[]; rows: unknown[][]; loaded: string[]; loggedIn: boolean; capped?: boolean }[];
 };
 
 const loggedIn = capture.surfaces.filter((s) => s.loggedIn).map((s) => s.url);
 if (loggedIn.length) { console.error(`refusing: logged-in surfaces ${loggedIn.join(", ")}`); process.exit(1); }
 
+for (const s of capture.surfaces.filter((x) => x.capped)) console.error(`[aside-capture] ${s.url}: element cap reached; run a full-page colour census before choosing a primary`);
 const surfaces = capture.surfaces.filter((s) => s.rows.length > 0).map((s, index) => {
   const id = index === 0 ? "home" : `surface-${index + 1}`;
   const elements: RawElementEvidence[] = s.rows.map((r) => ({
