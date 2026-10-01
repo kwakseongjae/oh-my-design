@@ -358,7 +358,9 @@ export function DetailView({
               <dd className="font-medium text-foreground">{detail.radius}</dd>
             </div>
           </dl>
-          <div className="mt-4 rounded-xl border border-border/60 bg-muted/30 p-3 dark:bg-muted/20">
+          {/* id + scroll margin only: the landing's "verified" tier links here
+              (/design-systems/toss#evidence) as its one real evidence example. */}
+          <div id="evidence" className="mt-4 scroll-mt-20 rounded-xl border border-border/60 bg-muted/30 p-3 dark:bg-muted/20">
             <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
               <h2 className="text-xs font-semibold text-foreground">Evidence snapshot</h2>
               <span className="font-mono text-[10px] uppercase tracking-wide text-muted-foreground">

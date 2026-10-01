@@ -1,17 +1,21 @@
 import type { Metadata } from "next";
-import { LandingV2 } from "@/components/landing-v2/landing-page";
+import { LandingPage } from "@/components/landing/landing-page";
 
 /**
- * Home. The landing itself is a client component, which cannot export
- * metadata, so this server wrapper carries the one field the root layout
- * cannot: the canonical (a canonical in the layout would be inherited by
- * every page). `openGraph` is deliberately not set here — setting it would
- * replace the root layout's object, share image included.
+ * Home (English). The Korean twin is /ko; each names the other as an
+ * hreflang alternate. `openGraph` is deliberately not set here — setting it
+ * would replace the root layout's object, share image included.
  */
 export const metadata: Metadata = {
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    languages: { en: "/", ko: "/ko", "x-default": "/" },
+  },
 };
 
+// The "most selected" list reads the live select counter; re-render hourly.
+export const revalidate = 3600;
+
 export default function HomePage() {
-  return <LandingV2 />;
+  return <LandingPage locale="en" />;
 }
