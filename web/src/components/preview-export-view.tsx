@@ -12,7 +12,7 @@ import { AlertCircle, FileText, Copy, Check, ChevronRight, ArrowLeft, Download, 
 import { ReferencePreview } from "@/components/reference-preview";
 import { extractTokens } from "@/lib/extract-tokens";
 import type { Overrides, StylePreferences } from "@/lib/core/types";
-import type { RefDetail } from "@/app/builder/page";
+import type { RefDetail } from "@/app/(en)/builder/page";
 import { getDesignSystem } from "@/lib/design-systems";
 import { getHomepageUrl } from "@/data/registry.generated";
 import { BrandNameplateLogo } from "@/components/brand-logo";

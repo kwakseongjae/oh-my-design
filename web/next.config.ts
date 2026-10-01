@@ -8,6 +8,12 @@ const BLOG_ON_SUBDOMAIN = process.env.NEXT_PUBLIC_BLOG_SUBDOMAIN === "1";
 
 const nextConfig: NextConfig = {
   trailingSlash: false,
+  // Two root layouts — app/(en) renders <html lang="en">, app/(ko) renders
+  // <html lang="ko"> — so an unmatched URL has no single layout to build a 404
+  // from. global-not-found.tsx is the documented answer for that case.
+  experimental: {
+    globalNotFound: true,
+  },
   // Hide the dev-only on-screen route indicator (the floating "N" badge in
   // bottom-left). Errors still surface normally; this only removes the
   // routing-status pill so it doesn't sit on top of our bottom-right

@@ -50,7 +50,7 @@ import { BrandNameplateLogo } from "@/components/brand-logo";
 import { isNewRef } from "@/lib/new-refs";
 import { StatusBadge } from "@/components/status-badge";
 import { refMatchesQuery } from "@/lib/search-aliases";
-import type { RefListItem } from "@/app/builder/page";
+import type { RefListItem } from "@/app/(en)/builder/page";
 
 const VISIBLE_BATCH_SIZE = 60;
 

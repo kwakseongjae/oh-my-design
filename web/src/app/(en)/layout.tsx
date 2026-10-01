@@ -8,8 +8,8 @@ import { GA_ID } from "@/lib/gtag";
 import { EEA_REGION_CODES } from "@/lib/eea";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import { DEFAULT_OG_IMAGE } from "@/lib/site";
-import pkg from "../../../package.json" with { type: "json" };
-import "./globals.css";
+import pkg from "../../../../package.json" with { type: "json" };
+import "../globals.css";
 
 // Single source of truth for displayed CLI version. Pulled from the root
 // package.json so schema.org / featureList never drift from the published
