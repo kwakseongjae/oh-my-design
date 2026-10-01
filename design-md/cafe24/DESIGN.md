@@ -16,9 +16,9 @@ verification_v2:
   schema: 2
   checked: "2026-10-01"
   surfaces:
-    - { id: home, kind: marketing, url: "https://www.cafe24.com/", inspected: "2026-10-01", viewport: "Aside browser" }
-    - { id: surface-2, kind: marketing-product, url: "https://www.cafe24.com/commerce/design/", inspected: "2026-10-01", viewport: "Aside browser" }
-    - { id: surface-3, kind: enterprise-marketing, url: "https://www.cafe24.com/enterprise/main.html", inspected: "2026-10-01", viewport: "Aside browser" }
+    - { id: home, kind: marketing, url: "https://www.cafe24.com/", inspected: "2026-10-01" }
+    - { id: surface-2, kind: marketing-product, url: "https://www.cafe24.com/commerce/design/", inspected: "2026-10-01" }
+    - { id: surface-3, kind: enterprise-marketing, url: "https://www.cafe24.com/enterprise/main.html", inspected: "2026-10-01" }
   sources:
     - { id: surface-home, kind: product-surface, url: "https://www.cafe24.com/", captured: "2026-10-01" }
     - { id: aside-census, kind: product-surface, url: "https://www.cafe24.com/", captured: "2026-10-01" }

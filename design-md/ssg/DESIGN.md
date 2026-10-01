@@ -15,9 +15,9 @@ verification_v2:
   schema: 2
   checked: "2026-10-01"
   surfaces:
-    - { id: home, kind: product, url: "https://www.ssg.com/", inspected: "2026-10-01", viewport: "Aside browser" }
-    - { id: surface-2, kind: product, url: "https://www.ssg.com/page/pc/ranking.ssg", inspected: "2026-10-01", viewport: "Aside browser" }
-    - { id: surface-3, kind: product, url: "https://www.ssg.com/event/eventMain.ssg", inspected: "2026-10-01", viewport: "Aside browser" }
+    - { id: home, kind: product, url: "https://www.ssg.com/", inspected: "2026-10-01" }
+    - { id: surface-2, kind: product, url: "https://www.ssg.com/page/pc/ranking.ssg", inspected: "2026-10-01" }
+    - { id: surface-3, kind: product, url: "https://www.ssg.com/event/eventMain.ssg", inspected: "2026-10-01" }
   sources:
     - { id: surface-home, kind: product-surface, url: "https://www.ssg.com/", captured: "2026-10-01" }
     - { id: aside-census, kind: product-surface, url: "https://www.ssg.com/", captured: "2026-10-01" }
