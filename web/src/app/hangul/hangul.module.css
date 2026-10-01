@@ -1,0 +1,214 @@
+/* /hangul launch page. The page's own text follows the /hangul rules it advertises:
+   a Korean face first (HG-1), body 16px / 1.5 / tracking 0 (HG-3, HG-4, HG-6),
+   headings 1.3–1.45 and no tighter than -0.03em (HG-5, HG-7), keep-all with
+   overflow-wrap:anywhere on short copy (HG-10, HG-9). The site ships no Hangul
+   webfont, so the Korean face is the reader's system face.
+   Everything under [data-hangul-specimen] reproduces a real eval defect on purpose. */
+
+.root {
+  font-family: "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", var(--font-geist-sans), system-ui,
+    sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  font-synthesis: none;
+}
+
+.root :where(em, i) {
+  font-style: normal;
+}
+
+.display {
+  font-size: 2rem;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .display {
+    font-size: 3rem;
+  }
+}
+
+.h2 {
+  font-size: 1.5rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .h2 {
+    font-size: 2rem;
+  }
+}
+
+.h3 {
+  font-size: 1.125rem;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Specimen: codex p1-A-r3 .metrics card at max-width:680px, copied from
+   docs/research/2026-09-29-growth/hangul-content/ci-render/repro/hg10-before.html
+   (matches the live eval page with 0 differences on macOS Chrome 154). ---- */
+
+.phone {
+  background: #fff;
+  color: #191f28;
+  font-family: Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  word-break: normal;
+  overflow-wrap: normal;
+  letter-spacing: normal;
+  padding: 15px 0 18px;
+  position: relative;
+}
+
+.phone *,
+.phone *::before,
+.phone *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+}
+
+.phone h2 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* The site sets text-wrap:balance on headings and pretty on p; the eval page had neither. */
+.phone h2,
+.phone p {
+  text-wrap: wrap;
+}
+
+.metrics {
+  display: grid;
+  background: #f7f9fc;
+  border: 1px solid #f1f4f8;
+  align-items: center;
+  margin: 0 20px;
+  padding: 26px 17px;
+  grid-template-columns: repeat(3, 1fr);
+  border-radius: 16px;
+  gap: 25px 0;
+}
+
+.metricsIntro {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+.miniLabel {
+  font-size: 8px;
+  color: #8d9bb0;
+  letter-spacing: 1.3px;
+  font-weight: 600;
+}
+
+.metricsIntro h2 {
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: -0.5px;
+  margin: 8px 0 0;
+  font-weight: 600;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.metricsIntro h2 br {
+  display: none;
+}
+
+.metric {
+  border-left: 1px solid #e5eaf1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 0 6px;
+  justify-content: center;
+  min-height: 95px;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.metric:nth-child(2) {
+  border-left: 0;
+}
+
+.metric p {
+  font-size: 10px;
+  color: #757e8e;
+  margin: 0 0 10px;
+}
+
+.metric > strong {
+  font-size: 28px;
+  font-weight: 750;
+  letter-spacing: -1px;
+  line-height: 1.25;
+}
+
+.metric strong > span {
+  font-size: 13px;
+  margin-left: 2px;
+  letter-spacing: -1px;
+}
+
+.metric .stars {
+  font-size: 8px;
+  color: #4384fa;
+  letter-spacing: 1px;
+  vertical-align: middle;
+  display: block;
+  margin: 4px 0 0;
+}
+
+.metricNote {
+  font-size: 8px;
+  color: #a0a8b5;
+  margin-top: 9px;
+}
+
+/* The one line /hangul adds (HG-10 + HG-9). */
+.ruleOn .metricsIntro h2 {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* HG-3 After: nothing below 11px, with keep-all so the larger captions break between words. */
+.captionsFixed .metric p,
+.captionsFixed .metricNote {
+  font-size: 11px;
+}
+
+.captionsFixed .metric {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.breakBox {
+  position: absolute;
+  pointer-events: none;
+  border: 2px solid #e5484d;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .breakBox {
+    transition:
+      opacity 160ms ease-out,
+      transform 160ms ease-out;
+  }
+}
