@@ -157,7 +157,11 @@ describe.sequential("GET /api/references/[id] AST contract", () => {
 
     expect(response.headers.get("x-omd-reference-model")).toBe("legacy");
     expect(response.headers.get("x-omd-reference-parity")).toBeNull();
-    expect(body).toEqual(expected);
+    // `catalog` (DS link / homepage / logo for the builder header) rides
+    // alongside the payload; everything else must be the exact legacy body.
+    const { catalog, ...payload } = body as ReferenceDetailResponse & { catalog?: unknown };
+    expect(catalog).toMatchObject({ logo: { id: LEGACY_PAYLOAD_FIXTURE } });
+    expect(payload).toEqual(expected);
     expect(body.referenceAst).toBeUndefined();
   });
 

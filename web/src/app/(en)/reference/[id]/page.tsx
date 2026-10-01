@@ -13,6 +13,7 @@ import type { Metadata } from "next";
 import { ReferencePreview } from "@/components/reference-preview";
 import { extractTokens } from "@/lib/extract-tokens";
 import { REGISTRY } from "@/data/registry.generated";
+import { getLogoRef } from "@/lib/logos";
 import { loadReference } from "@/lib/references/repository.server";
 import { projectActiveReference } from "@/lib/references/consumer-adapter";
 
@@ -57,5 +58,5 @@ export default async function ReferencePage({ params }: { params: Promise<{ id: 
   const detail = loadDetail(id);
   if (!detail) notFound();
   const tokens = extractTokens(detail);
-  return <ReferencePreview tokens={tokens} />;
+  return <ReferencePreview tokens={tokens} logo={getLogoRef(id)} />;
 }

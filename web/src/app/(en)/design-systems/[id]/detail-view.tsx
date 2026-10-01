@@ -41,8 +41,8 @@ import {
   trackOpenInBuilder,
   trackRawMdOpen,
 } from "@/lib/design-systems/analytics";
-import { getDesignSystem } from "@/lib/design-systems";
-import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
+import type { DesignSystemInfo } from "@/lib/design-systems";
+import { isRasterLogo, logoFallbackUrl, logoUrl, type LogoRef } from "@/lib/logo-urls";
 import type { ParsedTokens } from "@/lib/extract-tokens";
 import type { ReferenceDetailAstContract } from "@/lib/references/detail-projection";
 import type { ReferenceQualityEntry } from "@/data/reference-quality.generated";
@@ -119,9 +119,15 @@ export function DetailView({
   tokens,
   summary,
   evidenceBoundary,
+  ds,
+  logo,
 }: {
   detail: Detail;
   tokens: ParsedTokens;
+  /** Official DS / brand-guide link, resolved by the server page. Passed in
+   *  rather than looked up here so this client view never imports the registry. */
+  ds: DesignSystemInfo | null;
+  logo: LogoRef | null;
   /** Answer-first extract from the server page (#5) — also the JSON-LD description. */
   summary?: string;
   /** English evidence-domain boundary; present only for editorially reviewed references. */
@@ -140,7 +146,6 @@ export function DetailView({
     });
   }, [detail.id]);
 
-  const ds = getDesignSystem(detail.id);
   const displayName =
     ds?.name ?? detail.id.replace(/\.(app|ai)$/, "").replace(/^./, (c) => c.toUpperCase());
   const quality = detail.referenceAst?.quality ?? detail.referenceQuality;
@@ -208,7 +213,7 @@ export function DetailView({
               <span className="hidden sm:inline">Design Systems</span>
             </Link>
             <span className="hidden h-4 w-px bg-border sm:block" />
-            <BrandChip refId={detail.id} name={displayName} primary={detail.primary} />
+            <BrandChip refId={detail.id} logo={logo} name={displayName} primary={detail.primary} />
           </div>
 
           <div className="flex items-center gap-1 sm:gap-2">
@@ -475,7 +480,7 @@ export function DetailView({
           <div className="md:sticky md:top-[calc(3.5rem+1px)]">
             {/* max-h = viewport minus header so the preview can scroll independently on desktop */}
             <div className="md:max-h-[calc(100vh-3.5rem-1px)] md:overflow-auto">
-              <ReferencePreview tokens={tokens} embedded />
+              <ReferencePreview tokens={tokens} logo={logo} embedded />
             </div>
           </div>
         </section>
@@ -491,18 +496,20 @@ export function DetailView({
  */
 function BrandChip({
   refId,
+  logo,
   name,
   primary,
 }: {
   refId: string;
+  logo: LogoRef | null;
   name: string;
   primary: string;
 }) {
-  const primaryUrl = getLogoUrl(refId, "111111");
-  const fallbackUrl = getLogoFallbackUrl(refId);
+  const primaryUrl = logoUrl(logo, "111111");
+  const fallbackUrl = logoFallbackUrl(logo);
   const [stage, setStage] = useState<0 | 1 | 2>(0);
   const src = stage === 0 ? primaryUrl : stage === 1 ? fallbackUrl : null;
-  const raster = isGitHubLogo(refId);
+  const raster = isRasterLogo(logo);
 
   return (
     <div className="flex min-w-0 items-center gap-2.5">

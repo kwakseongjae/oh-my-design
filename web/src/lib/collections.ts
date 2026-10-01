@@ -17,6 +17,7 @@
 import { REGISTRY, REGISTRY_BY_ID, type RefEntry } from "@/data/registry.generated";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import type { DesignSystemInfo } from "@/lib/design-systems";
+import { getLogoRef } from "@/lib/logos";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import {
   COLOR_FAMILIES,
@@ -292,6 +293,8 @@ export function toCardInfo(e: RefEntry): DesignSystemInfo {
       ogImage: e.ds.ogImage,
       qualityStatus: quality.status,
       verifiedAt: quality.verifiedAt,
+      logo: getLogoRef(e.id),
+      added: e.added ?? null,
     };
   }
   const name = e.displayName || e.name;
@@ -303,5 +306,7 @@ export function toCardInfo(e: RefEntry): DesignSystemInfo {
     description: `${name} — quality-graded DESIGN.md reference (${e.category.replace(/-/g, " ")}, ${e.country}).`,
     qualityStatus: quality.status,
     verifiedAt: quality.verifiedAt,
+    logo: getLogoRef(e.id),
+    added: e.added ?? null,
   };
 }

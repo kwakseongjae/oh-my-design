@@ -15,6 +15,8 @@ import { buildBuilderPrompt, DEFAULT_BUILDER_COMPONENTS } from "@/lib/core/build
 import type { Overrides, StylePreferences } from "@/lib/core/types";
 import type { ReferenceDetailAstContract } from "@/lib/references/detail-projection";
 import type { CoreConsumerContract } from "@/lib/references/core-consumer-contract";
+import type { LogoRef } from "@/lib/logo-urls";
+import type { ReferenceCatalogFields } from "@/app/api/references/[id]/catalog";
 import { isColorFilter, type ColorFilter } from "@/lib/builder/color-family";
 import { useMounted } from "@/lib/use-mounted";
 
@@ -47,6 +49,8 @@ export interface RefListItem {
   statedComponents: number;
   /** verified_v2 | partial | legacy_snapshot — the evidence tier. */
   qualityTier: string | null;
+  /** Logo descriptor, resolved server-side so the selector never bundles the registry. */
+  logo: LogoRef | null;
 }
 
 export interface RefDetail {
@@ -69,6 +73,8 @@ export interface RefDetail {
   coreContract?: CoreConsumerContract;
   referenceFormat?: "core-v2";
   coreStatus?: "verified" | "unavailable" | "rejected";
+  /** DS link / homepage / logo from the registry, served by /api/references/[id]. */
+  catalog?: ReferenceCatalogFields;
 }
 
 const DEFAULT_COMPONENTS = DEFAULT_BUILDER_COMPONENTS;

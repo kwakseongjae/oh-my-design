@@ -3,6 +3,7 @@ import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { REGISTRY } from '@/data/registry.generated';
 import { REFERENCE_QUALITY_BY_ID } from '@/data/reference-quality.generated';
+import { getLogoRef } from '@/lib/logos';
 import { counterKey, getRedis } from '@/lib/kv';
 import { resolvePrimaryColor } from '@/lib/references/brand-tokens';
 
@@ -185,6 +186,9 @@ export async function GET() {
         // verified_v2 is the tier where every state key carries a claim with a
         // real observation method (live-inspect / computed-style), never prose.
         qualityTier: REFERENCE_QUALITY_BY_ID[e.id]?.status ?? null,
+        // Logo descriptor for the selector tiles — the client renders it with
+        // lib/logo-urls instead of importing the registry to look it up.
+        logo: getLogoRef(e.id),
       };
     });
 

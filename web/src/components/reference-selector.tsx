@@ -47,7 +47,7 @@ function XIcon({ className }: { className?: string }) {
 }
 
 import { BrandNameplateLogo } from "@/components/brand-logo";
-import { isNewRef } from "@/lib/new-refs";
+import { isNewAdded } from "@/lib/new-refs";
 import { StatusBadge } from "@/components/status-badge";
 import { refMatchesQuery } from "@/lib/search-aliases";
 import type { RefListItem } from "@/app/(en)/builder/page";
@@ -763,7 +763,7 @@ export function ReferenceSelector({
                       logo stays legible even when it matches ref.primaryColor —
                       e.g. Toss's blue favicon on its blue tile (issue #19). */}
                   <BrandNameplateLogo
-                    refId={ref.id}
+                    logo={ref.logo}
                     name={ref.name}
                     surface="brand"
                     size="lg"
@@ -786,10 +786,10 @@ export function ReferenceSelector({
                   </span>
                   {/* NEW (7-day window) + HOT (top-5 by select) — glass badges,
                       top-right of the brand color header. */}
-                  {(ref.hot || isNewRef(ref.id) || hasMeasuredStates(ref)) && (
+                  {(ref.hot || isNewAdded(ref.added) || hasMeasuredStates(ref)) && (
                     <span className="absolute right-2 top-2 flex items-center gap-1">
                       {ref.hot && <StatusBadge kind="hot" />}
-                      {isNewRef(ref.id) && <StatusBadge kind="new" />}
+                      {isNewAdded(ref.added) && <StatusBadge kind="new" />}
                       {/* Observed per-state component values — 20 of 441 qualify,
                           so it stays as scarce as HOT rather than decorating the
                           grid. Gated on verified_v2, never on the raw count: a

@@ -10,11 +10,11 @@
 import Link from "next/link";
 import { useState } from "react";
 import { ExternalLink } from "lucide-react";
-import { isNewRef } from "@/lib/new-refs";
+import { isNewAdded } from "@/lib/new-refs";
 import { StatusBadge } from "@/components/status-badge";
 import { BrandNameplateLogo } from "@/components/brand-logo";
 import type { DesignSystemInfo } from "@/lib/design-systems";
-import { getLogoUrl, isGitHubLogo, getLogoFallbackUrl } from "@/lib/logos";
+import { isRasterLogo, logoFallbackUrl, logoUrl, type LogoRef } from "@/lib/logo-urls";
 import { trackDetailOpen, trackExternalClick } from "@/lib/design-systems/analytics";
 
 export function DSCard({
@@ -60,7 +60,7 @@ export function DSCard({
           </span>
           <div className="flex items-center gap-1.5">
             {hot && <StatusBadge kind="hot" />}
-            {isNewRef(ds.refId) && <StatusBadge kind="new" />}
+            {isNewAdded(ds.added) && <StatusBadge kind="new" />}
             <span
               className={`rounded-4xl px-2 py-0.5 text-[10px] font-medium ${qualityClass}`}
               title={ds.verifiedAt ? `Last checked ${ds.verifiedAt}` : "No checked date"}
@@ -72,7 +72,7 @@ export function DSCard({
         <div className="flex items-center gap-3">
           {/* Neutral nameplate logo — shared with the builder (issue #19);
               see BrandNameplateLogo for the fallback chain. */}
-          <BrandNameplateLogo refId={ds.refId} name={ds.name} />
+          <BrandNameplateLogo logo={ds.logo} name={ds.name} />
           <div className="min-w-0 flex-1">
             <div className="text-base font-semibold leading-tight truncate">{ds.name}</div>
             <div className="text-[11px] text-muted-foreground/80 mt-0.5 capitalize truncate">
@@ -120,7 +120,7 @@ function CardThumbnail({ ds }: { ds: DesignSystemInfo }) {
   const initialStage: 0 | 1 | 2 = ds.ogImage ? 0 : 1;
   const [stage, setStage] = useState<0 | 1 | 2>(initialStage);
 
-  if (stage === 2) return <LogoFallbackThumbnail refId={ds.refId} isSystem={isSystem} name={ds.name} />;
+  if (stage === 2) return <LogoFallbackThumbnail logo={ds.logo} isSystem={isSystem} name={ds.name} />;
 
   const src =
     stage === 0
@@ -142,17 +142,17 @@ function CardThumbnail({ ds }: { ds: DesignSystemInfo }) {
 }
 
 function LogoFallbackThumbnail({
-  refId,
+  logo,
   isSystem,
   name,
 }: {
-  refId: string;
+  logo: LogoRef | null;
   isSystem: boolean;
   name: string;
 }) {
   const logoColor = isSystem ? "ffffff" : "475569";
-  const logoUrl = getLogoUrl(refId, logoColor) ?? getLogoFallbackUrl(refId);
-  const raster = isGitHubLogo(refId);
+  const src = logoUrl(logo, logoColor) ?? logoFallbackUrl(logo);
+  const raster = isRasterLogo(logo);
   const bg = isSystem
     ? { backgroundImage: "linear-gradient(135deg, #1e293b 0%, #312e81 50%, #1e1b4b 100%)" }
     : undefined;
@@ -163,10 +163,10 @@ function LogoFallbackThumbnail({
       }`}
       style={bg}
     >
-      {logoUrl && (
+      {src && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={logoUrl}
+          src={src}
           alt={name}
           className={raster ? "h-12 w-12 rounded object-contain" : "h-11 w-11 object-contain"}
           loading="lazy"

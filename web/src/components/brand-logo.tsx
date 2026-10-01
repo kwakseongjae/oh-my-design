@@ -12,7 +12,7 @@
  */
 
 import { useState } from "react";
-import { getLogoUrl, getLogoFallbackUrl, isGitHubLogo } from "@/lib/logos";
+import { isRasterLogo, logoFallbackUrl, logoUrl, type LogoRef } from "@/lib/logo-urls";
 
 type Surface = "card" | "brand";
 type Size = "xs" | "md" | "lg";
@@ -39,13 +39,14 @@ const INITIAL: Record<Size, string> = {
 };
 
 export function BrandNameplateLogo({
-  refId,
+  logo,
   name,
   surface = "card",
   size = "md",
   className = "",
 }: {
-  refId: string;
+  /** Resolved server-side (getLogoRef) — null renders the initial letter. */
+  logo: LogoRef | null | undefined;
   name: string;
   /** "card"  — theme-aware muted chip on app surfaces (directory cards).
    *  "brand" — fixed light chip for brand-colored backgrounds (builder
@@ -58,10 +59,10 @@ export function BrandNameplateLogo({
 }) {
   const [stage, setStage] = useState<0 | 1 | 2>(0);
   // Dark logo on the light neutral chip; "card" surfaces invert it in dark mode.
-  const primaryUrl = getLogoUrl(refId, "111111");
-  const fallbackUrl = getLogoFallbackUrl(refId);
+  const primaryUrl = logoUrl(logo, "111111");
+  const fallbackUrl = logoFallbackUrl(logo);
   const src = stage === 0 ? primaryUrl : stage === 1 ? fallbackUrl : null;
-  const raster = isGitHubLogo(refId);
+  const raster = isRasterLogo(logo);
 
   const chip =
     surface === "card"

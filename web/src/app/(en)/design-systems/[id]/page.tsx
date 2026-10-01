@@ -15,7 +15,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { DetailView } from "./detail-view";
 import { extractTokens } from "@/lib/extract-tokens";
-import { getRelatedReferences } from "@/lib/design-systems";
+import { getDesignSystem, getRelatedReferences } from "@/lib/design-systems";
+import { getLogoRef } from "@/lib/logos";
 import { REGISTRY, REGISTRY_BY_ID } from "@/data/registry.generated";
 import { loadReference } from "@/lib/references/repository.server";
 import { projectActiveReference } from "@/lib/references/consumer-adapter";
@@ -239,6 +240,8 @@ export default async function DesignSystemDetailPage({
         tokens={tokens}
         summary={summary}
         evidenceBoundary={editorial?.evidenceBoundary}
+        ds={getDesignSystem(detail.id)}
+        logo={getLogoRef(detail.id)}
       />
       <RelatedReferences related={related} />
     </>

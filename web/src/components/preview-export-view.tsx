@@ -13,8 +13,6 @@ import { ReferencePreview } from "@/components/reference-preview";
 import { extractTokens } from "@/lib/extract-tokens";
 import type { Overrides, StylePreferences } from "@/lib/core/types";
 import type { RefDetail } from "@/app/(en)/builder/page";
-import { getDesignSystem } from "@/lib/design-systems";
-import { getHomepageUrl } from "@/data/registry.generated";
 import { BrandNameplateLogo } from "@/components/brand-logo";
 import { Markdown } from "@/components/markdown";
 import { ReferenceEvidenceDrawer } from "@/components/reference-evidence-drawer";
@@ -144,8 +142,10 @@ export function PreviewExportView({
   const availableFormats = detail.referenceAst || detail.coreContract ? REFERENCE_FORMATS : (["designmd"] as const);
 
   const refName = detail.id.charAt(0).toUpperCase() + detail.id.slice(1);
-  const ds = getDesignSystem(detail.id);
-  const homepageUrl = getHomepageUrl(detail.id);
+  // Registry-derived fields arrive with the detail payload (/api/references/[id]
+  // `catalog`); importing the registry here would bundle all 521 references.
+  const ds = detail.catalog?.designSystem ?? null;
+  const homepageUrl = detail.catalog?.homepageUrl ?? null;
   const provenanceStart = handoffPrompt.indexOf(" (builder config:");
   const rawHandoffPromptBase = provenanceStart >= 0 ? handoffPrompt.slice(0, provenanceStart) : handoffPrompt;
   const handoffPromptBase = rawHandoffPromptBase.replace(
@@ -254,7 +254,7 @@ export function PreviewExportView({
           >
             {/* Neutral nameplate (shared treatment, issue #19) — the old
                 primary-colored tile hid logos matching detail.primary. */}
-            <BrandNameplateLogo refId={ds.refId} name={refName} size="xs" />
+            <BrandNameplateLogo logo={ds.logo} name={refName} size="xs" />
             <span className="truncate max-w-[180px]">
               {ds.type === "system" ? `${refName} Design System` : `${refName} Brand`}
             </span>
@@ -295,6 +295,7 @@ export function PreviewExportView({
             embedded
             homepageUrl={homepageUrl ?? undefined}
             referenceAst={detail.referenceAst}
+            logo={detail.catalog?.logo}
           />
         </div>
 

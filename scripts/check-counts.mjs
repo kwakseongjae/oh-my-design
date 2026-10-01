@@ -10,7 +10,8 @@
 //   sub-agents = agents/omd-*.md (mirrors install-skills.ts's agent filter)
 //
 // Rendered web pages (docs/page.tsx, landing sections, faq data) read
-// @/lib/catalog-count and are guaranteed by TypeScript — NOT checked here.
+// @/lib/catalog-count (literals emitted by build-registry.mjs; REFERENCE_COUNT is
+// pinned to REGISTRY.length by web/src/lib/catalog-count.test.ts) — NOT checked here.
 // llms-full.txt is excluded: it embeds CHANGELOG history with intentionally old
 // counts and is regenerated from these sources by gen-llms-full.cjs.
 //
