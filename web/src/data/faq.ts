@@ -2,9 +2,9 @@
  * Canonical EN FAQ — single source of truth for BOTH consumers (issue #28):
  *
  *   1. /docs page FAQ section (src/app/(en)/docs/page.tsx) — renders ALL entries;
- *   2. root JSON-LD FAQPage schema (src/components/root-document.tsx) — renders only
- *      the `jsonLd: true` subset (keep it small and SEO-focused — search
- *      engines read this set as the site-wide FAQ rich result).
+ *   2. a FAQPage JSON-LD built from the `jsonLd: true` subset (keep it small and
+ *      SEO-focused). Note (2026-10-01): no root layout renders one today — the
+ *      site JSON-LD in src/components/root-document.tsx has no FAQPage node.
  *
  * The KR /faq page (src/app/(en)/faq/page.tsx) is distinct Korean AEO content with
  * its own 20 questions and is intentionally NOT generated from this list.
