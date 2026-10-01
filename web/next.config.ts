@@ -47,6 +47,15 @@ const nextConfig: NextConfig = {
       { source: "/font-playground", destination: "/builder", permanent: true },
       { source: "/presets", destination: "/docs/en/skills", permanent: true },
       { source: "/benchmarks", destination: "/docs/en/showcase", permanent: true },
+      // Merged pages (same decision). Each old URL lands on the content it
+      // used to hold: collection slugs become the directory filter, version
+      // and comparison pages become anchors on their single page.
+      { source: "/collections", destination: "/design-systems", permanent: true },
+      { source: "/collections/:slug", destination: "/design-systems?collection=:slug", permanent: true },
+      { source: "/changelog/:version", destination: "/changelog#v:version", permanent: true },
+      { source: "/alternatives/:slug", destination: "/alternatives#:slug", permanent: true },
+      { source: "/cli", destination: "/docs/en", permanent: true },
+      { source: "/docs/connector", destination: "/docs/en/ai", permanent: true },
       // The blog moved to its own host. Gated on the same flag as the canonical
       // URLs, so this stays off until the domain resolves — turning it on
       // before then would 301 every reader into a host that does not answer.

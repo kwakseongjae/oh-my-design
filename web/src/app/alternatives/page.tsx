@@ -1,13 +1,16 @@
 /**
- * /alternatives/[slug] — head-to-head comparison page for AEO citation.
- * Server component, dynamic params (Promise — Next 16 convention).
- * generateStaticParams enumerates: shadcn / v0 / anima / locofy.
+ * /alternatives — oh-my-design compared with neighbouring tools, on one page,
+ * for AEO citation. Server component.
+ *
+ * The five /alternatives/<slug> pages were merged here on 2026-10-01 (R4):
+ * each comparison keeps its content verbatim under id="<slug>", and the old
+ * URLs 308 to /alternatives#<slug> (next.config.ts).
  */
 
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import { ArrowLeft, ExternalLink, Check, X } from "lucide-react";
+import { ExternalLink, Check, ArrowLeft } from "lucide-react";
+import { DEFAULT_OG_IMAGE } from "@/lib/site";
 
 const SITE_URL = "https://oh-my-design.kr";
 
@@ -161,50 +164,31 @@ const ALTS: Record<string, Alt> = {
   },
 };
 
-export function generateStaticParams() {
-  return Object.keys(ALTS).map((slug) => ({ slug }));
-}
+const ALT_LIST = Object.values(ALTS);
+const NAMES = ALT_LIST.map((alt) => alt.name).join(", ");
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const alt = ALTS[slug];
-  if (!alt) return {};
-  const title = `oh-my-design vs ${alt.name} — comparison`;
-  const description = `${alt.name} (${alt.oneLiner}) vs oh-my-design (DESIGN.md spec for AI coding agents). 7-row comparison + when to use each.`;
-  return {
-    title,
-    description,
-    keywords: [
-      `oh-my-design vs ${alt.name}`,
-      `${alt.name} alternative`,
-      `${alt.name} DESIGN.md`,
-      `${alt.name} vs OmD`,
-      "AI 디자인 도구 비교",
-    ],
-    alternates: { canonical: `${SITE_URL}/alternatives/${slug}` },
-    openGraph: {
-      title,
-      description,
-      url: `${SITE_URL}/alternatives/${slug}`,
-      type: "article",
-    },
-  };
-}
+const TITLE = "oh-my-design vs shadcn/ui, v0, Anima, Locofy, getdesign.md — comparison";
+const DESCRIPTION = `How oh-my-design (DESIGN.md spec for AI coding agents) compares with ${NAMES}: a 7-row comparison and when to use each.`;
 
-export default async function AlternativePage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
-  const alt = ALTS[slug];
-  if (!alt) notFound();
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  keywords: [
+    ...ALT_LIST.flatMap((alt) => [`oh-my-design vs ${alt.name}`, `${alt.name} alternative`]),
+    "AI 디자인 도구 비교",
+  ],
+  alternates: { canonical: `${SITE_URL}/alternatives` },
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: `${SITE_URL}/alternatives`,
+    type: "article",
+    images: [DEFAULT_OG_IMAGE],
+  },
+};
 
-  const rows: { k: string; omd: string; them: string }[] = [
+function rowsFor(alt: Alt): { k: string; omd: string; them: string }[] {
+  return [
     { k: "목적", omd: "AI agent가 매 요청마다 읽는 brand spec", them: alt.purpose },
     { k: "Output", omd: "DESIGN.md (markdown spec)", them: alt.output },
     { k: "AI agent integration", omd: "Claude Code · Codex · Cursor · OpenCode 직결", them: alt.agent },
@@ -213,33 +197,27 @@ export default async function AlternativePage({
     { k: "Price", omd: "Free · MIT", them: alt.price },
     { k: "Open source", omd: "Yes (MIT)", them: alt.oss },
   ];
+}
 
+export default function AlternativesPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Article",
-        headline: `oh-my-design vs ${alt.name}`,
-        description: `Comparison between oh-my-design and ${alt.name} (${alt.oneLiner}).`,
+        headline: "oh-my-design compared with alternatives",
+        description: DESCRIPTION,
         author: { "@type": "Organization", name: "oh-my-design" },
         publisher: { "@type": "Organization", name: "oh-my-design" },
         datePublished: "2026-05-28",
-        mainEntityOfPage: `${SITE_URL}/alternatives/${alt.slug}`,
-      },
-      {
-        "@type": "SoftwareApplication",
-        name: "oh-my-design",
-        applicationCategory: "DeveloperApplication",
-        operatingSystem: "Cross-platform",
-        offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-        url: SITE_URL,
-      },
-      {
-        "@type": "SoftwareApplication",
-        name: alt.name,
-        applicationCategory: "DeveloperApplication",
-        operatingSystem: "Cross-platform",
-        url: alt.url,
+        dateModified: "2026-10-01",
+        mainEntityOfPage: `${SITE_URL}/alternatives`,
+        about: ALT_LIST.map((alt) => ({
+          "@type": "SoftwareApplication",
+          name: alt.name,
+          applicationCategory: "DeveloperApplication",
+          url: alt.url,
+        })),
       },
     ],
   };
@@ -276,84 +254,108 @@ export default async function AlternativePage({
         </Link>
 
         <div className="text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground mb-3">
-          Alternatives · {alt.name}
+          Alternatives
         </div>
         <h1
           className="text-4xl sm:text-5xl font-bold tracking-tight leading-[1.05]"
           style={{ fontFamily: "var(--font-geist-sans), system-ui, sans-serif" }}
         >
-          oh-my-design <span className="text-muted-foreground">vs</span>{" "}
-          <span className="text-primary">{alt.name}</span>
+          oh-my-design <span className="text-muted-foreground">compared</span>
         </h1>
         <p className="mt-5 text-base sm:text-lg leading-relaxed text-muted-foreground">
-          {alt.summary}
+          {NAMES}과 oh-my-design은 같은 layer가 아닙니다. 각 도구가 하는 일과, oh-my-design을 함께
+          쓰는 경우를 나란히 정리했습니다.
         </p>
 
-        {/* Comparison table */}
-        <div className="mt-10 overflow-x-auto rounded-xl border border-border/60">
-          <table className="w-full text-sm">
-            <thead className="bg-foreground/[0.04] text-[11px] uppercase tracking-wider text-muted-foreground">
-              <tr>
-                <th className="px-4 py-3 text-left font-semibold">기준</th>
-                <th className="px-4 py-3 text-left font-semibold text-foreground">
-                  oh-my-design
-                </th>
-                <th className="px-4 py-3 text-left font-semibold">{alt.name}</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-border/40">
-              {rows.map((r) => (
-                <tr key={r.k} className="hover:bg-foreground/[0.02]">
-                  <td className="px-4 py-3 font-medium align-top">{r.k}</td>
-                  <td className="px-4 py-3 text-foreground align-top">{r.omd}</td>
-                  <td className="px-4 py-3 text-muted-foreground align-top">{r.them}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <nav aria-label="Comparisons" className="mt-8 flex flex-wrap gap-2">
+          {ALT_LIST.map((alt) => (
+            <a
+              key={alt.slug}
+              href={`#${alt.slug}`}
+              className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium hover:bg-accent"
+            >
+              vs {alt.name}
+            </a>
+          ))}
+        </nav>
 
-        {/* When-to-use two columns */}
-        <div className="mt-12 grid gap-5 sm:grid-cols-2">
-          <div className="rounded-2xl border border-border/60 bg-card/30 p-6">
-            <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-3">
-              When to use {alt.name}
+        {ALT_LIST.map((alt) => (
+          <section key={alt.slug} id={alt.slug} className="mt-16 scroll-mt-20 border-t border-border/40 pt-10">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+              oh-my-design <span className="text-muted-foreground">vs</span>{" "}
+              <span className="text-primary">{alt.name}</span>
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">{alt.summary}</p>
+
+            <div className="mt-8 overflow-x-auto rounded-xl border border-border/60">
+              <table className="w-full text-sm">
+                <thead className="bg-foreground/[0.04] text-[11px] uppercase tracking-wider text-muted-foreground">
+                  <tr>
+                    <th className="px-4 py-3 text-left font-semibold">기준</th>
+                    <th className="px-4 py-3 text-left font-semibold text-foreground">oh-my-design</th>
+                    <th className="px-4 py-3 text-left font-semibold">{alt.name}</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border/40">
+                  {rowsFor(alt).map((r) => (
+                    <tr key={r.k} className="hover:bg-foreground/[0.02]">
+                      <td className="px-4 py-3 font-medium align-top">{r.k}</td>
+                      <td className="px-4 py-3 text-foreground align-top">{r.omd}</td>
+                      <td className="px-4 py-3 text-muted-foreground align-top">{r.them}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
-            <ul className="space-y-2.5 text-sm leading-relaxed">
-              {alt.whenToUse.map((r) => (
-                <li key={r} className="flex gap-2">
-                  <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-muted-foreground" />
-                  <span>{r}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="rounded-2xl border border-primary/30 bg-primary/[0.04] p-6">
-            <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary mb-3">
-              When to use oh-my-design
+
+            <div className="mt-8 grid gap-5 sm:grid-cols-2">
+              <div className="rounded-2xl border border-border/60 bg-card/30 p-6">
+                <h3 className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-3">
+                  When to use {alt.name}
+                </h3>
+                <ul className="space-y-2.5 text-sm leading-relaxed">
+                  {alt.whenToUse.map((r) => (
+                    <li key={r} className="flex gap-2">
+                      <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-muted-foreground" />
+                      <span>{r}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-2xl border border-primary/30 bg-primary/[0.04] p-6">
+                <h3 className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary mb-3">
+                  When to use oh-my-design
+                </h3>
+                <ul className="space-y-2.5 text-sm leading-relaxed">
+                  {alt.whenOmd.map((r) => (
+                    <li key={r} className="flex gap-2">
+                      <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
+                      <span>{r}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <ul className="space-y-2.5 text-sm leading-relaxed">
-              {alt.whenOmd.map((r) => (
-                <li key={r} className="flex gap-2">
-                  <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary" />
-                  <span>{r}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
 
-        {/* Verdict — they're often complementary */}
-        <div className="mt-10 rounded-xl border border-border/60 bg-card/20 p-5 text-sm leading-relaxed text-muted-foreground">
-          <strong className="text-foreground">정리.</strong> {alt.name}과
-          oh-my-design은 같은 layer가 아닙니다. {alt.name}이 {alt.purpose.toLowerCase()}{" "}
-          쪽이라면, oh-my-design은 <em>그 도구가 매번 같은 brand context로 동작하도록
-          만드는 spec</em>입니다. 많은 팀이 둘을 같이 씁니다 —{" "}
-          <X className="inline h-3.5 w-3.5 align-text-bottom" /> either/or가 아닙니다.
-        </div>
+            <div className="mt-8 rounded-xl border border-border/60 bg-card/20 p-5 text-sm leading-relaxed text-muted-foreground">
+              <strong className="text-foreground">정리.</strong> {alt.name}과 oh-my-design은 같은 layer가
+              아닙니다. {alt.name}이 {alt.purpose.toLowerCase()} 쪽이라면, oh-my-design은{" "}
+              <em>그 도구가 매번 같은 brand context로 동작하도록 만드는 spec</em>입니다. 둘은 either/or가 아니라
+              함께 쓸 수 있습니다.
+            </div>
 
-        {/* CTAs */}
-        <div className="mt-12 flex flex-wrap gap-2">
+            <a
+              href={alt.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium hover:bg-accent"
+            >
+              <ExternalLink className="h-3.5 w-3.5" /> {alt.name} 공식
+            </a>
+          </section>
+        ))}
+
+        <div className="mt-16 flex flex-wrap gap-2 border-t border-border/40 pt-8">
           <div className="inline-flex items-center gap-2 rounded-lg border border-border bg-foreground/[0.03] px-3 py-2 font-mono text-[13px]">
             <span className="text-primary">$</span>
             <code>npx oh-my-design-cli@latest</code>
@@ -364,34 +366,6 @@ export default async function AlternativePage({
           <Link href="/faq" className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium hover:bg-accent">
             FAQ
           </Link>
-          <a
-            href={alt.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium hover:bg-accent"
-          >
-            <ExternalLink className="h-3.5 w-3.5" /> {alt.name} 공식
-          </a>
-        </div>
-
-        {/* Other alternatives */}
-        <div className="mt-14 border-t border-border/40 pt-8">
-          <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-4">
-            Other comparisons
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {Object.values(ALTS)
-              .filter((a) => a.slug !== alt.slug)
-              .map((a) => (
-                <Link
-                  key={a.slug}
-                  href={`/alternatives/${a.slug}`}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium hover:bg-accent"
-                >
-                  vs {a.name}
-                </Link>
-              ))}
-          </div>
         </div>
       </article>
     </div>

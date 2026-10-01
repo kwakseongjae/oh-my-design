@@ -28,6 +28,19 @@ import { CANONICAL_LOCALE, localeSegment, type PostLocale } from "@/lib/blog/loc
 
 export const SITE_ORIGIN = "https://oh-my-design.kr";
 
+/**
+ * Site-wide share image, rendered by app/og-image.png/route.tsx from the live
+ * catalog counts. A page that sets its own `openGraph` object replaces the
+ * root one wholesale (images included), so such pages spread this in
+ * explicitly instead of silently losing their og:image.
+ */
+export const DEFAULT_OG_IMAGE = {
+  url: `${SITE_ORIGIN}/og-image.png`,
+  width: 1200,
+  height: 630,
+  alt: "oh-my-design — real company design systems as DESIGN.md for AI coding agents",
+} as const;
+
 export const BLOG_HOST = "blog.oh-my-design.kr";
 export const BLOG_ORIGIN = `https://${BLOG_HOST}`;
 

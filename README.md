@@ -35,7 +35,7 @@ Three artifacts, all of them files in your repository:
 
 In v2.0.0 every layer above is a file you can edit — the philosophy, the presets, the gates, the references — and the next build has to justify itself against whatever you put there. Taste you cannot inspect cannot be improved.
 
-Full walkthrough: **[oh-my-design.kr/cli](https://oh-my-design.kr/cli)**.
+Full walkthrough: **[oh-my-design.kr/docs/en](https://oh-my-design.kr/docs/en)**.
 
 ## How the system gets derived
 
@@ -326,7 +326,6 @@ What changed each release — including anything that needs more than a re-insta
 ## Links
 
 - **Catalog** — [oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems) (every reference, with raw `.md` twins for agents)
-- **Collections** — [oh-my-design.kr/collections](https://oh-my-design.kr/collections) (curated sets by use case)
 - **Docs** — [oh-my-design.kr/docs/en](https://oh-my-design.kr/docs/en) (install options, skills, agents, FAQ)
 - **Live demo playbook** — [oh-my-design.kr/docs/en/demo](https://oh-my-design.kr/docs/en/demo) (5-, 15-, and 30-minute formats with an evidence checklist)
 - **Changelog** — [CHANGELOG.md](CHANGELOG.md) · migrating from 0.1.x: [MIGRATION.md](MIGRATION.md)

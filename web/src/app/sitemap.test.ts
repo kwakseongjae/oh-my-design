@@ -23,10 +23,22 @@ describe("reference sitemap", () => {
     expect(toss?.lastModified).toEqual(expectedDate ? new Date(expectedDate) : expect.any(Date));
   });
 
-  it("indexes the collection directory and all collection landings", () => {
-    const routes = sitemap().filter((route) => route.url.includes("/collections"));
-    expect(routes.some((route) => route.url.endsWith("/collections"))).toBe(true);
-    expect(routes.some((route) => route.url.endsWith("/collections/color-blue"))).toBe(true);
+  it("lists merged pages once, at their single surviving URL", () => {
+    const urls = sitemap().map((route) => route.url);
+    // Collections became a /design-systems filter; changelog versions and
+    // comparison slugs became anchors. Their old URLs 308, so none are listed.
+    expect(urls.some((url) => url.includes("/collections"))).toBe(false);
+    expect(urls.some((url) => /\/changelog\/./.test(url))).toBe(false);
+    expect(urls.some((url) => /\/alternatives\/./.test(url))).toBe(false);
+    expect(urls).toContain("https://oh-my-design.kr/changelog");
+    expect(urls).toContain("https://oh-my-design.kr/alternatives");
+  });
+
+  it("does not list deleted pages", () => {
+    const urls = new Set(sitemap().map((route) => route.url));
+    for (const path of ["/cli", "/presets", "/benchmarks", "/font-playground", "/playground", "/qa-references"]) {
+      expect(urls.has(`https://oh-my-design.kr${path}`)).toBe(false);
+    }
   });
 
   it("indexes the curated verified-evolution artifacts", () => {

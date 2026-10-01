@@ -1,20 +1,27 @@
 /**
- * /changelog — index of every release. Server component, parses
+ * /changelog — every release on one page. Server component, parses
  * ../CHANGELOG.md at build time. JSON-LD = single Article describing
  * the changelog itself.
+ *
+ * The per-version pages (/changelog/<version>) were merged here on
+ * 2026-10-01 (R4). Each entry carries id="v<version>" and the old URLs
+ * 308 to /changelog#v<version> (next.config.ts).
  */
 
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { getChangelog } from "@/lib/changelog";
+import { DEFAULT_OG_IMAGE } from "@/lib/site";
 
 const SITE_URL = "https://oh-my-design.kr";
 
 export const metadata: Metadata = {
   title: "Changelog — oh-my-design",
   description:
-    "Every user-facing release of oh-my-design-cli and the bundled skill/agent files. Dates, headlines, and per-version detail pages.",
+    "Every user-facing release of oh-my-design-cli and the bundled skill/agent files, with dates and full release notes on one page.",
   keywords: [
     "oh-my-design changelog",
     "OmD release notes",
@@ -27,6 +34,7 @@ export const metadata: Metadata = {
     description: "User-facing release history.",
     url: `${SITE_URL}/changelog`,
     type: "article",
+    images: [DEFAULT_OG_IMAGE],
   },
 };
 
@@ -94,32 +102,47 @@ export default function ChangelogIndexPage() {
       </section>
 
       <section className="mx-auto max-w-3xl px-4 sm:px-6 pb-24">
-        <ol className="space-y-3">
+        <nav aria-label="Releases" className="mb-12 flex flex-wrap gap-2">
           {entries.map((e) => (
-            <li key={e.version}>
-              <Link
-                href={`/changelog/${e.version}`}
-                className="block rounded-xl border border-border/60 bg-card/30 p-5 transition-colors hover:bg-card/60 hover:border-foreground/20"
-              >
-                <div className="flex items-baseline justify-between gap-3">
-                  <div className="flex items-baseline gap-3">
-                    <code className="font-mono text-[15px] font-bold text-primary">
-                      {e.version}
-                    </code>
-                    {e.date && (
-                      <span className="text-[11px] font-mono uppercase tracking-wider text-muted-foreground">
-                        {e.date}
-                      </span>
-                    )}
-                  </div>
-                  <span className="text-xs text-muted-foreground">→</span>
-                </div>
-                {e.headline && (
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-2">
-                    {e.headline}
-                  </p>
+            <a
+              key={e.version}
+              href={`#v${e.version}`}
+              className="rounded-full border border-border/60 px-2.5 py-1 font-mono text-[12px] text-muted-foreground transition-colors hover:bg-card/60 hover:text-foreground"
+            >
+              {e.version}
+            </a>
+          ))}
+        </nav>
+
+        <ol className="space-y-14">
+          {entries.map((e) => (
+            <li key={e.version} id={`v${e.version}`} className="scroll-mt-20">
+              <div className="flex flex-wrap items-baseline gap-3">
+                <h2 className="font-mono text-xl font-bold text-primary">
+                  <a href={`#v${e.version}`} className="hover:underline hover:underline-offset-4">
+                    v{e.version}
+                  </a>
+                </h2>
+                {e.date && (
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-muted-foreground">
+                    {e.date}
+                  </span>
                 )}
-              </Link>
+              </div>
+              {e.headline && (
+                <p className="mt-2 text-lg font-semibold tracking-tight leading-snug">{e.headline}</p>
+              )}
+              <div className="prose prose-sm dark:prose-invert mt-5 max-w-none
+                prose-headings:font-semibold prose-headings:tracking-tight
+                prose-h3:text-base prose-h3:mt-6 prose-h3:mb-3
+                prose-p:leading-relaxed prose-p:text-muted-foreground
+                prose-li:text-muted-foreground prose-li:leading-relaxed
+                prose-strong:text-foreground
+                prose-code:text-[0.9em] prose-code:font-mono prose-code:text-primary prose-code:before:content-none prose-code:after:content-none prose-code:bg-foreground/[0.05] prose-code:rounded prose-code:px-1 prose-code:py-0.5
+                prose-pre:rounded-xl prose-pre:border prose-pre:border-border/60
+                prose-a:text-foreground prose-a:underline prose-a:underline-offset-4">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{e.body}</ReactMarkdown>
+              </div>
             </li>
           ))}
         </ol>

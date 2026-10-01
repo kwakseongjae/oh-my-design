@@ -37,7 +37,7 @@ v2.0.0에서는 위의 모든 레이어가 **당신이 고칠 수 있는 파일*
 프리셋도, 게이트도, 레퍼런스도. 그리고 다음 빌드는 당신이 거기 써 넣은 것에
 스스로를 정당화해야 합니다. 검사할 수 없는 취향은 개선할 수 없으니까요.
 
-전체 안내: **[oh-my-design.kr/cli](https://oh-my-design.kr/cli)**
+전체 안내: **[oh-my-design.kr/docs/en](https://oh-my-design.kr/docs/en)**
 
 ## 시스템은 어떻게 유도되는가
 
@@ -217,7 +217,6 @@ npm view oh-my-design-cli version    # npm registry 최신
 ## 링크
 
 - **카탈로그** — [oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems) (모든 레퍼런스 + 에이전트용 raw `.md` twin)
-- **컬렉션** — [oh-my-design.kr/collections](https://oh-my-design.kr/collections) (유스케이스별 큐레이션)
 - **문서** — [oh-my-design.kr/docs/ko](https://oh-my-design.kr/docs/ko) (설치 옵션, 스킬, 에이전트, FAQ)
 - **체인지로그** — [CHANGELOG.md](CHANGELOG.md) · 0.1.x에서 마이그레이션: [MIGRATION.md](MIGRATION.md)
 

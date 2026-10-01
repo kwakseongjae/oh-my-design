@@ -161,7 +161,6 @@ npx oh-my-design-cli@latest doctor
 ## 連結
 
 - **目錄** — [oh-my-design.kr/design-systems](https://oh-my-design.kr/design-systems)
-- **精選集** — [oh-my-design.kr/collections](https://oh-my-design.kr/collections)
 - **文件** — [oh-my-design.kr/docs/zh-tw](https://oh-my-design.kr/docs/zh-tw)
 - **更新紀錄** — [CHANGELOG.md](CHANGELOG.md) · 從 0.1.x 遷移：[MIGRATION.md](MIGRATION.md)
 

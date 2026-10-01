@@ -1,5 +1,6 @@
 /**
- * Curated reference collections — /collections/[slug] (#5).
+ * Curated reference collections (#5). Since 2026-10-01 they render as the
+ * /design-systems?collection=<slug> filter; old /collections/<slug> URLs 308 there.
  *
  * Intent-keyword pSEO surfaces (the Refero collection pattern): each slug
  * targets a search/launch-post phrase and selects references from the

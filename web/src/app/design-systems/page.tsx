@@ -8,8 +8,10 @@
  * an OG image.
  */
 
+import { Suspense } from "react";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Moon, Sun } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { ArrowLeft, Moon, Sun, X } from "lucide-react";
 import { useHotRefs } from "@/lib/hot-refs";
 import { useTheme } from "next-themes";
 import { getAllDesignSystems } from "@/lib/design-systems";
@@ -17,9 +19,10 @@ import { useMounted } from "@/lib/use-mounted";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import { DSCard } from "@/components/ds-card";
 import { GithubStarButton } from "@/components/github-star-button";
-import { COLLECTIONS } from "@/lib/collections";
+import { COLLECTIONS, COLLECTIONS_BY_SLUG, getCollectionEntries } from "@/lib/collections";
+import { trackCollectionOpen } from "@/lib/collections/analytics";
 import { REFERENCE_QUALITY, REFERENCE_QUALITY_COUNTS } from "@/data/reference-quality.generated";
-import { CollectionInlineLink } from "@/app/collections/collection-inline-link";
+import type { DesignSystemInfo } from "@/lib/design-systems";
 
 /**
  * Depth *within the verified tier*, which is where the claim needs qualifying.
@@ -103,25 +106,24 @@ export default function DesignSystemsPage() {
 
         {/* Curated collections — intent-keyword entry points (#5) */}
         <div className="mt-6">
-          <div className="mb-2.5 flex items-center justify-between gap-4">
-            <div className="text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">
-              Collections
-            </div>
-            <Link href="/collections" className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline hover:underline-offset-2">
-              View all <ArrowRight className="h-3 w-3" />
-            </Link>
+          <div className="mb-2.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+            Collections
           </div>
+          {/*
+            * The former /collections/<slug> pages are now this filter; their
+            * URLs 308 to /design-systems?collection=<slug> (next.config.ts).
+            */}
           <div className="flex flex-wrap gap-2">
             {COLLECTIONS.map((c) => (
-              <CollectionInlineLink
+              <Link
                 key={c.slug}
-                slug={c.slug}
-                origin="directory"
-                colorFamily={c.colorFamily}
+                href={`/design-systems?collection=${c.slug}`}
+                scroll={false}
+                onClick={() => trackCollectionOpen({ slug: c.slug, origin: "directory", colorFamily: c.colorFamily })}
                 className="rounded-full border border-border/60 bg-card/50 px-3 py-1.5 text-xs font-medium transition-colors hover:bg-accent dark:border-border"
               >
                 {c.titleEn}
-              </CollectionInlineLink>
+              </Link>
             ))}
           </div>
         </div>
@@ -129,12 +131,49 @@ export default function DesignSystemsPage() {
 
       {/* Grid */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 pb-20">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {systems.map((ds) => (
-            <DSCard key={ds.refId} ds={ds} hot={hotRefs.has(ds.refId)} />
-          ))}
-        </div>
+        {/* useSearchParams needs a Suspense boundary on a prerendered page;
+            the fallback is the unfiltered grid, which is also the SSR output. */}
+        <Suspense fallback={<SystemGrid systems={systems} hotRefs={hotRefs} />}>
+          <CollectionFilteredGrid systems={systems} hotRefs={hotRefs} />
+        </Suspense>
       </section>
     </div>
+  );
+}
+
+function SystemGrid({ systems, hotRefs }: { systems: DesignSystemInfo[]; hotRefs: Set<string> }) {
+  return (
+    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {systems.map((ds) => (
+        <DSCard key={ds.refId} ds={ds} hot={hotRefs.has(ds.refId)} />
+      ))}
+    </div>
+  );
+}
+
+function CollectionFilteredGrid({ systems, hotRefs }: { systems: DesignSystemInfo[]; hotRefs: Set<string> }) {
+  const slug = useSearchParams().get("collection");
+  const collection = slug ? COLLECTIONS_BY_SLUG[slug] : undefined;
+  if (!collection) return <SystemGrid systems={systems} hotRefs={hotRefs} />;
+
+  const ids = new Set(getCollectionEntries(collection.slug).map((entry) => entry.id));
+  const filtered = systems.filter((ds) => ids.has(ds.refId));
+
+  return (
+    <>
+      <div className="mb-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm">
+        <span className="font-medium">{collection.titleEn}</span>
+        <span className="font-mono text-xs text-muted-foreground">{filtered.length} references</span>
+        <Link
+          href="/design-systems"
+          scroll={false}
+          className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline hover:underline-offset-2"
+        >
+          <X className="h-3 w-3" /> Show all
+        </Link>
+      </div>
+      <p className="mb-6 max-w-2xl text-sm leading-relaxed text-muted-foreground">{collection.introEn[0]}</p>
+      <SystemGrid systems={filtered} hotRefs={hotRefs} />
+    </>
   );
 }

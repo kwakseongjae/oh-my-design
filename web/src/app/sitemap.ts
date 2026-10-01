@@ -1,6 +1,4 @@
 import type { MetadataRoute } from "next";
-import { getChangelog } from "@/lib/changelog";
-import { COLLECTIONS } from "@/lib/collections";
 import { REFERENCE_QUALITY_BY_ID } from "@/data/reference-quality.generated";
 import { REGISTRY } from "@/data/registry.generated";
 import { ENGLISH_REFERENCE_IDS } from "@/lib/references/editorial";
@@ -28,12 +26,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${siteUrl}/collections`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.85,
-    },
-    {
       url: `${siteUrl}/faq`,
       lastModified: now,
       changeFrequency: "monthly",
@@ -52,37 +44,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${siteUrl}/cli`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${siteUrl}/alternatives/shadcn`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${siteUrl}/alternatives/v0`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${siteUrl}/alternatives/anima`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${siteUrl}/alternatives/locofy`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${siteUrl}/alternatives/getdesign-md`,
+      url: `${siteUrl}/alternatives`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.7,
@@ -97,15 +59,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: page === "overview" ? 0.94 : 0.82,
     })),
   );
-
-  // Curated collections (#5). Raw .md twins (/<id>/design.md) are
-  // intentionally NOT listed — the HTML detail pages stay canonical.
-  const collectionRoutes: MetadataRoute.Sitemap = COLLECTIONS.map((c) => ({
-    url: `${siteUrl}/collections/${c.slug}`,
-    lastModified: now,
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
-  }));
 
   const evolutionRoutes: MetadataRoute.Sitemap = ENGLISH_REFERENCE_IDS.map((id) => ({
     url: `${siteUrl}/design-systems/${id}/evolution`,
@@ -139,13 +92,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         })),
       ];
 
-  const changelogRoutes: MetadataRoute.Sitemap = getChangelog().map((e) => ({
-    url: `${siteUrl}/changelog/${e.version}`,
-    lastModified: e.date ? new Date(e.date) : now,
-    changeFrequency: "monthly" as const,
-    priority: 0.55,
-  }));
-
   // Honest per-reference lastModified and priority from computed quality. A raw
   // frontmatter date cannot promote trust or crawl priority by itself.
   const referenceRoutes: MetadataRoute.Sitemap = REGISTRY.map(
@@ -165,10 +111,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticRoutes,
     ...cliDocsRoutes,
-    ...collectionRoutes,
     ...referenceRoutes,
     ...evolutionRoutes,
-    ...changelogRoutes,
     ...blogRoutes,
   ];
 }
