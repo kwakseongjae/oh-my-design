@@ -17,6 +17,7 @@ const EXPECTED: Record<string, string> = {
   "/cli": "/docs/en",
   "/docs/connector": "/docs/en/ai",
   "/twitter-image.png": "/og-image.png",
+  "/reference/:id": "/design-systems/:id",
 };
 
 describe("pruned-page redirects", () => {

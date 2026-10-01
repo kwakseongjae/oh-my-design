@@ -62,6 +62,10 @@ const nextConfig: NextConfig = {
       { source: "/alternatives/:slug", destination: "/alternatives#:slug", permanent: true },
       { source: "/cli", destination: "/docs/en", permanent: true },
       { source: "/docs/connector", destination: "/docs/en/ai", permanent: true },
+      // The bare-preview diagnostic route (decision D4, same document). It was
+      // noindex with its canonical already on the detail page, and drew one
+      // human request in 30 days.
+      { source: "/reference/:id", destination: "/design-systems/:id", permanent: true },
       // The static twitter-image.png was retired with the stale share card;
       // already-posted cards keep resolving to the live one.
       { source: "/twitter-image.png", destination: "/og-image.png", permanent: true },
