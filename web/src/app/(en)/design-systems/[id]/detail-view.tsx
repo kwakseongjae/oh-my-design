@@ -521,7 +521,7 @@ function UseSection({
           </h2>
           <p className="mt-1 max-w-2xl text-xs leading-relaxed text-muted-foreground">
             Put the file at your project root and give your coding agent the first prompt. To
-            change colour, type or components first, customize it.
+            change color, type or components first, customize it.
           </p>
         </div>
         <Link
