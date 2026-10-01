@@ -4,6 +4,7 @@ import { join } from 'path';
 import { REGISTRY } from '@/data/registry.generated';
 import { REFERENCE_QUALITY_BY_ID } from '@/data/reference-quality.generated';
 import { counterKey, getRedis } from '@/lib/kv';
+import { resolvePrimaryColor } from '@/lib/references/brand-tokens';
 
 // Re-resolve the HOT set at most every 30s (matches /api/leaderboard) so the
 // builder grid arrives already hot-first + badged, without hammering KV on
@@ -156,7 +157,7 @@ export async function GET() {
         category: CATEGORY_LABELS[e.category] || e.category,
         country: COUNTRY_LABELS[e.country] || e.country,
         countryCode: e.country, // raw 2-letter for client locale matching
-        primaryColor: e.tokens?.colors?.primary || e.tokens?.colors?.brand || e.tokens?.color?.primary || e.primaryColor || extractPrimaryColor(md, e.primaryColor),
+        primaryColor: resolvePrimaryColor(e) || extractPrimaryColor(md, e.primaryColor),
         background: e.tokens?.colors?.canvas || e.tokens?.colors?.background || e.tokens?.color?.background || extractBackground(md),
         hot: hotIds.has(e.id),
         pop: popMap.get(e.id) ?? 0,        // select-counter score, for Popular sort + blend
