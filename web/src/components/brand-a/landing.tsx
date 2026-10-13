@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getLandingData } from "@/lib/landing-a/data.server";
 import { PUBLISHED_SKILLS, REGION_ORDER } from "@/lib/landing-a/picks";
 import { SITE_LOCALE_META, type SiteLocale } from "@/lib/i18n/site-locales";
@@ -128,7 +129,7 @@ export function LandingA({ locale }: { locale: SiteLocale }) {
                 <code lang="en">oh-my-design.kr/toss/design.md</code>
                 <CopyButton text={`${SITE}/toss/design.md`} labels={c.use} />
               </div>
-              <a className="sq-txt-link" href="/design-systems/toss#use">{c.use.s1a}</a>
+              <Link className="sq-txt-link" href="/design-systems/toss#use" prefetch={false}>{c.use.s1a}</Link>
             </li>
             <li>
               <span className="sq-step-n" aria-hidden="true">2</span>

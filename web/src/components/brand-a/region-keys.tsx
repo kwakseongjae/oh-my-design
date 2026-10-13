@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRef, useState } from "react";
 import type { CapData, RegionCC } from "@/lib/landing-a/types";
 import { CssKeycap } from "./keycap";
@@ -106,7 +107,7 @@ export function RegionKeys({ order, regions, counts, verified, t }: { order: Reg
             </li>
           ))}
         </ul>
-        <a className="sq-txt-link" href="/design-systems">{fill(t.all, { n: counts[sel] ?? 0 })} →</a>
+        <Link className="sq-txt-link" href="/design-systems" prefetch={false}>{fill(t.all, { n: counts[sel] ?? 0 })} →</Link>
       </div>
     </>
   );

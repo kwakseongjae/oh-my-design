@@ -15,13 +15,10 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { ArrowLeft, Moon, Sun, X } from "lucide-react";
+import { ArrowLeft, X } from "lucide-react";
 import { useHotRefs } from "@/lib/hot-refs";
-import { useTheme } from "next-themes";
-import { useMounted } from "@/lib/use-mounted";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import { DSCard } from "@/components/ds-card";
-import { GithubStarButton } from "@/components/github-star-button";
 import { trackCollectionOpen } from "@/lib/collections/analytics";
 import type { ColorFamily } from "@/lib/color-family";
 import type { DesignSystemInfo } from "@/lib/design-systems";
@@ -53,34 +50,11 @@ export function CatalogView({
   collections: CatalogCollection[];
   stats: CatalogStats;
 }) {
-  const { theme, setTheme } = useTheme();
-  const mounted = useMounted();
 
   const hotRefs = useHotRefs(5);
 
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-border/40 bg-background/60 backdrop-blur-xl dark:border-border">
-        <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6">
-          <Link href="/" className="flex items-center">
-            <img src="/logo.png" alt="oh-my-design" className="h-6 sm:h-8 block dark:hidden" />
-            <img src="/logo-white.png" alt="oh-my-design" className="h-6 sm:h-8 hidden dark:block" />
-          </Link>
-          <div className="flex items-center gap-2">
-            <GithubStarButton className="hidden sm:inline-flex" />
-            {mounted && (
-              <button
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                aria-label="Toggle theme"
-                className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border border-border/60 bg-card/50 transition-colors hover:bg-accent dark:border-border dark:bg-card/60"
-              >
-                {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-              </button>
-            )}
-          </div>
-        </div>
-      </header>
 
       {/* Hero */}
       <section className="mx-auto max-w-6xl px-4 sm:px-6 pt-10 pb-8">

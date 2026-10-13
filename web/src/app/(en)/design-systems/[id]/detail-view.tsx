@@ -214,8 +214,8 @@ export function DetailView({
 
   return (
     <div className="min-h-screen">
-      {/* Sticky header */}
-      <header className="sticky top-0 z-50 border-b border-border/40 bg-background/70 backdrop-blur-xl dark:border-border">
+      {/* Reference toolbar (the site header comes from design-systems/layout.tsx) */}
+      <div className="border-b border-border/40 bg-background/70 dark:border-border">
         <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6">
           <div className="flex min-w-0 items-center gap-3">
             <Link
@@ -296,7 +296,7 @@ export function DetailView({
             </button>
           </div>
         </div>
-      </header>
+      </div>
 
       <section className="mx-auto max-w-7xl px-4 pt-6 sm:px-6">
         {/* The page's one <h1>. ReferencePreview's brand name and the embedded

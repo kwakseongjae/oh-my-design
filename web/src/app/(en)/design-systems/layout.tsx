@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { SiteFooterA } from "@/components/brand-a/site-footer";
+import { SiteHeaderA } from "@/components/brand-a/site-header";
 import { REFERENCE_COUNT } from "@/lib/catalog-count";
 import { DEFAULT_OG_IMAGE } from "@/lib/site";
 
@@ -27,5 +29,12 @@ export default function DesignSystemsLayout({
 }: {
   children: ReactNode;
 }) {
-  return children;
+  // Site chrome (concept A). The page bodies keep their own styling in this pass.
+  return (
+    <>
+      <SiteHeaderA />
+      <div id="main">{children}</div>
+      <SiteFooterA />
+    </>
+  );
 }

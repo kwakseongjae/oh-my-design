@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, BookOpen, Menu } from "lucide-react";
 import type { ReactNode } from "react";
+import { Mark } from "@/components/brand-a/mark";
 import type { CliDocsDictionary } from "@/data/cli-docs";
 import {
   DOC_HTML_LANG,
@@ -69,10 +70,9 @@ export function DocsShell({
             className="inline-flex shrink-0 items-center gap-2 rounded-md focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
             aria-label={dictionary.ui.homeAria}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt="oh-my-design" className="h-6 dark:hidden" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo-white.png" alt="oh-my-design" className="hidden h-6 dark:block" />
+            {/* Concept-A mark + wordmark (rebrand 2026-10-13); the docs keep their own nav and 5-locale switcher. */}
+            <Mark className="h-7 w-7 text-foreground" />
+            <span className="font-bold tracking-[-0.01em] text-foreground" style={{ fontFamily: "var(--sq-f-en)" }}>oh-my-design</span>
           </Link>
           <span className="h-5 w-px bg-border" aria-hidden />
           <Link href={docsHref(locale)} className="hidden items-center gap-1.5 text-sm font-medium text-foreground/75 sm:inline-flex">

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import type { CapData } from "@/lib/landing-a/types";
 import type { BrandCopy } from "./copy";
@@ -263,9 +264,9 @@ export function HeroKeys({ caps, total, labels }: { caps: readonly CapData[]; to
           <span className="sq-go">{labels.open}</span>
         </a>
       ) : null}
-      <a className="sq-k3-more" href="/design-systems">
+      <Link className="sq-k3-more" href="/design-systems" prefetch={false}>
         {fill(labels.more, { n: total - shown.length })} →
-      </a>
+      </Link>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore, type CSSProperties, type KeyboardEvent } from "react";
 import type { SiteLocale } from "@/lib/i18n/site-locales";
 import type { GenSpec } from "@/lib/landing-a/types";
 import type { BrandCopy } from "./copy";
@@ -20,16 +20,17 @@ const FIRST: Record<string, string> = { KR: "toss", JP: "line", TW: "104" };
 const SYS = /^(system|-apple-system|system-ui)$/i;
 const fill = (s: string, v: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (m, k) => (k in v ? String(v[k]) : m));
 
+const RM = "(prefers-reduced-motion: reduce)";
 function useReducedMotion() {
-  const [r, setR] = useState(false);
-  useEffect(() => {
-    const mq = matchMedia("(prefers-reduced-motion: reduce)");
-    setR(mq.matches);
-    const on = () => setR(mq.matches);
-    mq.addEventListener("change", on);
-    return () => mq.removeEventListener("change", on);
-  }, []);
-  return r;
+  return useSyncExternalStore(
+    (cb) => {
+      const mq = matchMedia(RM);
+      mq.addEventListener("change", cb);
+      return () => mq.removeEventListener("change", cb);
+    },
+    () => matchMedia(RM).matches,
+    () => false,
+  );
 }
 
 export function GenUI({ specs, locale, t, first }: { specs: readonly GenSpec[]; locale: SiteLocale; t: T; first: string }) {

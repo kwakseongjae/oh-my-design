@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SiteHeaderA } from "@/components/brand-a/site-header";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { ManageConsentButton } from "@/components/manage-consent-button";
@@ -31,21 +32,7 @@ function Section({ n, title, children }: { n: number; title: string; children: R
 export default function PrivacyKoPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="sticky top-0 z-50 border-b border-border/40 bg-background/60 backdrop-blur-xl">
-        <div className="mx-auto flex h-14 max-w-4xl items-center justify-between px-4 sm:px-6">
-          <Link href="/" className="flex items-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt="oh-my-design" className="h-6 sm:h-7 block dark:hidden" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo-white.png" alt="oh-my-design" className="h-6 sm:h-7 hidden dark:block" />
-          </Link>
-          <nav className="flex items-center gap-4 text-xs sm:text-sm">
-            <Link href="/docs/ko" className="text-muted-foreground hover:text-foreground">Docs</Link>
-            <Link href="/privacy" className="text-muted-foreground hover:text-foreground">EN</Link>
-            <a href="https://github.com/kwakseongjae/oh-my-design" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">GitHub</a>
-          </nav>
-        </div>
-      </header>
+      <SiteHeaderA locale="ko" />
 
       <article className="mx-auto max-w-3xl px-4 sm:px-6 pt-12 pb-24">
         <Link

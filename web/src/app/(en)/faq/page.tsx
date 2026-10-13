@@ -8,6 +8,7 @@
  * src/data/faq.ts; don't duplicate EN entries here (issue #28).
  */
 
+import { SiteHeaderA } from "@/components/brand-a/site-header";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
@@ -185,46 +186,7 @@ export default function FaqPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <header className="sticky top-0 z-50 border-b border-border/40 bg-background/60 backdrop-blur-xl">
-        <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4 sm:px-6">
-          <Link href="/" className="flex items-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/logo.png"
-              alt="oh-my-design"
-              className="h-6 sm:h-7 block dark:hidden"
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/logo-white.png"
-              alt="oh-my-design"
-              className="h-6 sm:h-7 hidden dark:block"
-            />
-          </Link>
-          <nav className="flex items-center gap-4 text-xs sm:text-sm">
-            <Link
-              href="/docs/en"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              Docs
-            </Link>
-            <Link
-              href="/design-systems"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              Design systems
-            </Link>
-            <a
-              href="https://github.com/kwakseongjae/oh-my-design"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground"
-            >
-              GitHub
-            </a>
-          </nav>
-        </div>
-      </header>
+      <SiteHeaderA />
 
       <section className="mx-auto max-w-3xl px-4 sm:px-6 pt-12 pb-8">
         <Link
