@@ -74,7 +74,12 @@ function listReferences() {
     // "<!-- design-md:section experience --> ## 1. Experience" as their catalog
     // line the next time this ran. Dropping leading comment lines changes those
     // two and nothing else in the other 438.
-    const md = fs.readFileSync(path.join(dir, id, 'DESIGN.md'), 'utf8');
+    // The frontmatter is skipped as a block, not paragraph by paragraph: a blank line inside it
+    // used to let a YAML chunk through as the one-liner, and a DESIGN.md v3 file carries its
+    // tokens there.
+    const raw = fs.readFileSync(path.join(dir, id, 'DESIGN.md'), 'utf8');
+    const fmEnd = raw.startsWith('---\n') ? raw.indexOf('\n---\n', 4) : -1;
+    const md = fmEnd >= 0 ? raw.slice(fmEnd + 5) : raw;
     const firstPara = md
       .split(/\n\s*\n/)
       .map((p) => p.replace(/^(?:\s*<!--[\s\S]*?-->\s*\n?)+/, '').trim())
