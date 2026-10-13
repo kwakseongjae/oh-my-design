@@ -21,6 +21,7 @@ import { REGISTRY, REGISTRY_BY_ID } from "@/data/registry.generated";
 import { loadReference } from "@/lib/references/repository.server";
 import { projectActiveReference } from "@/lib/references/consumer-adapter";
 import { getReferenceEnglishEditorial } from "@/lib/references/editorial";
+import { capData } from "@/lib/landing-a/data.server";
 
 const SITE_URL = "https://oh-my-design.kr";
 
@@ -267,6 +268,7 @@ export default async function DesignSystemDetailPage({
         evidenceBoundary={editorial?.evidenceBoundary}
         ds={getDesignSystem(detail.id)}
         logo={getLogoRef(detail.id)}
+        cap={keycapFace(detail.id)}
       />
       <RelatedReferences related={related} />
     </>
@@ -284,37 +286,33 @@ function RelatedReferences({
   related: ReturnType<typeof getRelatedReferences>;
 }) {
   if (related.length === 0) return null;
+  // Concept A (rebrand round 2): manuscript cells; the swatch is the
+  // reference's documented primary, nothing else is coloured.
   return (
-    <section className="border-t border-border/40 bg-muted/20 dark:bg-white/[0.02]">
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
-        <h2 className="mb-5 text-sm font-semibold uppercase tracking-[0.1em] text-muted-foreground">
-          Related design systems
-        </h2>
-        <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-6">
+    <section className="sq-root sq-rel" aria-labelledby="related-heading">
+      <div className="sq-wrap">
+        <h2 id="related-heading">Related design systems</h2>
+        <ul>
           {related.map((r) => (
-            <Link
-              key={r.id}
-              href={`/design-systems/${r.id}`}
-              className="group flex items-center gap-2.5 rounded-xl border border-border/60 bg-card/50 p-3 transition-all hover:-translate-y-0.5 hover:border-foreground/30 hover:shadow-sm dark:border-white/10 dark:bg-white/[0.04]"
-            >
-              <span
-                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-xs font-bold ring-1 ring-border/50"
-                style={{ background: r.primaryColor + "1a", color: r.primaryColor }}
-              >
-                {r.name.charAt(0).toUpperCase()}
-              </span>
-              <span className="min-w-0">
-                <span className="block truncate text-sm font-semibold leading-tight">
-                  {r.name}
+            <li key={r.id}>
+              <Link href={`/design-systems/${r.id}`}>
+                <span className="sq-rel-sw" style={{ background: r.primaryColor }} aria-hidden="true" />
+                <span className="sq-rel-t">
+                  <b>{r.name}</b>
+                  <span>{r.category.replace(/-/g, " ")}</span>
                 </span>
-                <span className="block truncate text-[11px] text-muted-foreground">
-                  {r.category.replace(/-/g, " ")}
-                </span>
-              </span>
-            </Link>
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
+}
+
+/** The item page's keycap: same resolver as the landing, so only a verified
+ *  reference's claimed colour/radius/weight paints it (else a blank cap). */
+function keycapFace(id: string) {
+  const c = capData(id);
+  return c ? { g: c.g, gLang: c.gLang, c: c.c, hex: c.hex, rv: c.rv, w: c.w } : null;
 }

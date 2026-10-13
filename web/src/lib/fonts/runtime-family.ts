@@ -82,6 +82,9 @@ export function resolveRuntimeFont(family: string): RuntimeFontResolution {
     cssFamily: "inherit",
     mode: "unavailable",
     stylesheetHref: null,
-    label: `Live preview unavailable (${reason})`,
+    // G3 (owner, 2026-10-13): whatever renders in its place is labelled. The
+    // specimen inherits the page font, which is neither the brand face nor a
+    // measured substitute.
+    label: `Live preview unavailable (${reason}). Shown in the page font, which is not the brand face; no measured substitute is chosen.`,
   };
 }

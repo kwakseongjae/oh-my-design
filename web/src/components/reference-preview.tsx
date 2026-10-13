@@ -1223,9 +1223,23 @@ export function ReferencePreview({
 }) {
   const tokens = applyOverrides(rawTokens, overrides);
   const wrapperClass = embedded ? "" : "min-h-screen";
+  // G3 (owner, 2026-10-13): when the brand face cannot load, the hero and the
+  // component samples inherit the page font. Say so once, above them, so that
+  // face is never read as the brand's.
+  const unloaded = tokens.typography.family
+    && tokens.typography.runtimeStatus !== "unverified"
+    && resolveRuntimeFont(tokens.typography.family).mode === "unavailable"
+    ? resolveRuntimeFont(tokens.typography.family).requestedFamily
+    : null;
 
   return (
     <div className={wrapperClass}>
+      {unloaded ? (
+        <p className="mx-auto max-w-5xl px-6 pt-6 text-[11.5px] leading-relaxed text-muted-foreground" data-font-note>
+          <span className="font-semibold text-foreground">{unloaded}</span>: not loaded here, so this preview uses the page
+          font. That is not the brand face, and no measured substitute is chosen.
+        </p>
+      ) : null}
       <HeroSection tokens={tokens} homepageUrl={homepageUrl} logo={logo} />
       <ColorPaletteSection tokens={tokens} provenance={getSectionProvenance(referenceAst, ["tokens.colors.", "tokens.color."])} />
       <TypographySection tokens={tokens} provenance={getSectionProvenance(referenceAst, ["tokens.typography.", "tokens.font.", "tokens.text."])} />

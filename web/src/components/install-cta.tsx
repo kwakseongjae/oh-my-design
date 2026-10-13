@@ -45,7 +45,7 @@ export function InstallCta({
   reference?: string;
   /** Display name for the per-brand first prompt. Omit to hide that button. */
   brandName?: string;
-  variant?: "bar" | "block" | "inline";
+  variant?: "bar" | "block" | "inline" | "panel";
 }) {
   const [copyState, setCopyState] = useState<{
     kind: "install" | "prompt";
@@ -122,6 +122,53 @@ export function InstallCta({
       {copyState?.status === "copied" ? "Copied" : copyState?.status === "failed" ? "Copy failed" : ""}
     </span>
   );
+
+  if (variant === "panel") {
+    // Concept A item page (#use): numbered steps, the command and the whole
+    // first prompt readable rather than truncated. Same buttons' handlers, so
+    // act_install_copy / act_prompt_copy keep meaning one control each.
+    const mark = (kind: "install" | "prompt") =>
+      copyState?.kind === kind ? (copyState.status === "copied" ? "Copied" : "Copy failed") : "Copy";
+    return (
+      <>
+      <ol className="sq-steps" start={2}>
+        <li>
+          <span className="sq-step-k" aria-hidden="true">2</span>
+          <span className="sq-step-b">
+            <span className="sq-step-t">Install the skills</span>
+            <button
+              type="button"
+              className="sq-cmd"
+              onClick={(event) => copy("install", INSTALL_CMD, event.currentTarget)}
+              aria-label="Copy install command"
+            >
+              <code>{INSTALL_CMD}</code>
+              <span className="sq-cmd-c">{mark("install")}</span>
+            </button>
+          </span>
+        </li>
+        {promptText ? (
+          <li>
+            <span className="sq-step-k" aria-hidden="true">3</span>
+            <span className="sq-step-b">
+              <span className="sq-step-t">Give your agent the first prompt</span>
+              <button
+                type="button"
+                className="sq-cmd sq-cmd-p"
+                onClick={(event) => copy("prompt", promptText, event.currentTarget)}
+                aria-label={brandName ? `Copy first prompt for ${brandName}` : "Copy first prompt"}
+              >
+                <span>&ldquo;{promptText}&rdquo;</span>
+                <span className="sq-cmd-c">{mark("prompt")}</span>
+              </button>
+            </span>
+          </li>
+        ) : null}
+      </ol>
+      {status}
+      </>
+    );
+  }
 
   if (variant === "inline") {
     return (

@@ -115,8 +115,8 @@ export function CatalogView({
   };
 
   return (
-    <div className="sq-root sq-arch">
-      <section className="sq-arch-hero">
+    <div className="sq-arch">
+      <section className="sq-root sq-arch-hero">
         <div className="sq-wrap">
           <p className="sq-kick">Archive</p>
           <h1>Design Systems</h1>
@@ -151,7 +151,7 @@ export function CatalogView({
         </div>
       </section>
 
-      <section className="sq-wrap sq-arch-tools" aria-label="Filter the archive">
+      <section className="sq-root sq-wrap sq-arch-tools" aria-label="Filter the archive">
         <label className="sq-arch-search">
           <span className="sq-sr">Search design systems</span>
           <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
