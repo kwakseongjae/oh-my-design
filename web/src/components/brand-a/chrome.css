@@ -83,3 +83,5 @@ body:has(.sq-root-page){background:var(--sq-paper)}
 .sq-xlink:hover{color:var(--sq-ink);border-color:var(--sq-ink)}
 .sq-xlink-on{background:var(--sq-ink);border-color:var(--sq-ink);color:var(--sq-paper)}
 .sq-xlink-on:hover{color:var(--sq-paper)}
+/* 320-379px: the wordmark yields to the tools (language, blog/docs links, theme), which were clipped; the mark and the link label stay */
+@media (max-width:379px){.sq-brand span{display:none}.sq-tools{gap:6px}}
