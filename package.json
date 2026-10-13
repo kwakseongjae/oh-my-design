@@ -37,6 +37,8 @@
     "skills/omd-media",
     "skills/omd-setup",
     "skills/omd-showcase",
+    "skills/omd-cjk-type-shader",
+    "skills/omd-shader-hero",
     "agents",
     "data/opt-out-corpus.json",
     "data/synonyms.json",
