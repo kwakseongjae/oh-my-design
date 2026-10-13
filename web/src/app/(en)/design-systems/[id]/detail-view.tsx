@@ -229,6 +229,11 @@ export function DetailView({
           <BrandChip refId={detail.id} logo={logo} name={displayName} primary={detail.primary} />
           <span className="sq-item-bar-act">
             <ReferenceShareButton reference={detail.id} location="ref_detail" compact />
+            {/* Jump to the hand-off block. A plain anchor, no event: the
+                actions inside #use carry the analytics. */}
+            <a href="#use" className="sq-btn-primary">
+              Use DESIGN.md
+            </a>
             {ds && (
               <a href={ds.url} target="_blank" rel="noopener noreferrer" onClick={externalClick} className="sq-btn-ghost">
                 Official site <span aria-hidden="true">↗</span>

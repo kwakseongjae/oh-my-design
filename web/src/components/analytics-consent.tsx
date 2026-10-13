@@ -156,20 +156,21 @@ export function AnalyticsConsent() {
 
   if (!showBanner) return null;
 
-  // Concept A (rebrand round 2): a square card in the bottom-left corner from
-  // 640px up, a slim bar on phones. Either way the hero's first screen —
-  // headline, search, keyboard — stays visible. Presentation only: the
-  // geo / stored-choice / accept / decline logic above is unchanged.
+  // Concept A (rebrand round 2): a slim bar on the bottom edge — one line on
+  // desktop, two on phones — so the hero's first screen (headline, search,
+  // tier counts, keyboard readout) stays visible. A corner card was tried and
+  // covered the tier counts at 1440. Presentation only: the geo / stored-
+  // choice / accept / decline logic above is unchanged.
   const loc = consentLocale(pathname);
   return (
     <div
       role="region"
       aria-label={copy.details}
       lang={loc === "zh-tw" ? "zh-Hant-TW" : loc === "zh-cn" ? "zh-Hans" : loc}
-      className="fixed inset-x-0 bottom-0 z-[60] sm:inset-x-auto sm:bottom-4 sm:left-4 sm:w-[340px]"
+      className="fixed inset-x-0 bottom-0 z-[60] border-t-2 border-[var(--sq-ink)] bg-[var(--sq-paper)] text-[var(--sq-ink)]"
     >
-      <div className="flex items-center gap-3 border-t-2 border-[var(--sq-ink)] bg-[var(--sq-paper)] px-4 py-2.5 text-[var(--sq-ink)] sm:flex-col sm:items-stretch sm:gap-3 sm:border-2 sm:p-4 sm:shadow-[6px_6px_0_0_var(--sq-guide)]">
-        <p className="min-w-0 flex-1 text-[11.5px] leading-snug text-[var(--sq-ink-2)] sm:text-xs sm:leading-relaxed">
+      <div className="mx-auto flex max-w-[1360px] items-center gap-3 px-4 py-2.5 sm:gap-6 sm:px-10">
+        <p className="min-w-0 flex-1 text-[11.5px] leading-snug text-[var(--sq-ink-2)] sm:text-xs">
           <span className="line-clamp-2 sm:line-clamp-none">{copy.body}</span>{" "}
           <Link
             href={privacyHref}
@@ -178,7 +179,7 @@ export function AnalyticsConsent() {
             {copy.details}
           </Link>
         </p>
-        <div className="flex shrink-0 gap-2 sm:justify-end">
+        <div className="flex shrink-0 gap-2">
           <button
             type="button"
             onClick={decline}
