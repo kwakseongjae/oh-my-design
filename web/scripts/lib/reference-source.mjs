@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import yaml from "js-yaml";
+import { parseV3, projectLegacyMarkdown } from "./design-md-v3.mjs";
 
 /**
  * The legacy source for a reference, wherever it currently lives.
@@ -57,9 +58,24 @@ export function isCoreV2Markdown(markdown) {
   return markdown.includes(CORE_MARKER);
 }
 
+/** True when a DESIGN.md is a v3 file (spec/design-md-v3.md §12.2): Google frontmatter, no legacy keys. */
+export function isV3Markdown(markdown) {
+  return parseV3(markdown) !== null;
+}
+
+/**
+ * The sidecar beside a v3 DESIGN.md. A catalog reference must have one: the catalog identity,
+ * token metadata and `verification_v2` live there, not in the portable file.
+ */
+export function readReferenceSidecar(referenceDir) {
+  const sidecarPath = join(referenceDir, "reference.json");
+  if (!existsSync(sidecarPath)) return null;
+  return JSON.parse(readFileSync(sidecarPath, "utf8"));
+}
+
 /**
  * @param {string} referenceDir directory holding DESIGN.md (and `.omd/system/` once adopted)
- * @returns {{ markdown: string, format: "legacy" | "core-v2", reconstructed: boolean, projected: boolean }}
+ * @returns {{ markdown: string, format: "legacy" | "core-v2" | "v3", reconstructed: boolean, projected: boolean }}
  *   `reconstructed` — rebuilt from preserved original bytes and hash-checked.
  *   `projected` — rendered from catalog metadata the package declares. Exactly
  *   one of the two is true for a Core package; both are false for a legacy file.
@@ -67,6 +83,18 @@ export function isCoreV2Markdown(markdown) {
 export function readReferenceSource(referenceDir) {
   const designPath = join(referenceDir, "DESIGN.md");
   const onDisk = readFileSync(designPath, "utf8");
+  // v3 first (spec §12.2 detection order). The pipeline still reads the legacy frontmatter shape, so
+  // project it from the v3 frontmatter and reference.json through the exact inverse of the
+  // conversion mapping (web/scripts/lib/design-md-v3.mjs). The body is the v3 body: readers that
+  // look at sections find them by name.
+  if (isV3Markdown(onDisk)) {
+    const sidecar = readReferenceSidecar(referenceDir);
+    if (!sidecar) {
+      throw new Error(`${designPath}: DESIGN.md v3 without ${join(referenceDir, "reference.json")}. `
+        + "A catalog reference keeps its identity and evidence in the sidecar.");
+    }
+    return { markdown: projectLegacyMarkdown(onDisk, sidecar), format: "v3", reconstructed: false, projected: true };
+  }
   if (!isCoreV2Markdown(onDisk)) {
     return { markdown: onDisk, format: "legacy", reconstructed: false, projected: false };
   }

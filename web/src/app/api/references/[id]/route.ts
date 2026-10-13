@@ -20,7 +20,7 @@ export async function GET(
   }
 
   if (!referenceAstV2Enabled() && loaded.format === "legacy") {
-    const legacy = extractLegacyReferenceDetail(id, loaded.markdown);
+    const legacy = { ...extractLegacyReferenceDetail(id, loaded.legacyMarkdown), designMd: loaded.markdown };
     return NextResponse.json(legacy, {
       headers: { "x-omd-reference-model": "legacy" },
     });

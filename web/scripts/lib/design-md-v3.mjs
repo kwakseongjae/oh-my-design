@@ -173,8 +173,10 @@ const SECTION_RULES = [
   [/(Verification|Source|Reference Scope|Reference Assets|Reference URLs|References & Boundaries|Evidence Limits|Implementation|Usage Guidelines|UI Guidelines|Token Reference|Notes on Adaptation)/i, "Governance"],
   [/^(Accessibility)/i, "Governance"],
   [/(Voice|Microcopy|Content)/i, "Voice & Tone"],
-  [/^(Motion|Interaction & Motion|States & Motion)/i, "Motion & Easing"],
-  [/^(States|Observed Interaction States|Components|Component Inventory|Patterns$|Layout Patterns)/i, "Components"],
+  [/^(Motion)/i, "Motion & Easing"],
+  // Interaction notes sit with component states, not in the motion section: the motion-provenance
+  // advisory reads that whole section, and legacy files kept these apart from it.
+  [/^(Interaction & Motion|States & Motion|States|Observed Interaction States|Components|Component Inventory|Patterns$|Layout Patterns)/i, "Components"],
   [/^(Color)/i, "Colors"],
   [/^(Typography)/i, "Typography"],
   [/^(Spacing & Shape|Radius|Elevation & Shape|Shape)/i, "Shapes"],
@@ -333,6 +335,11 @@ export function convertFrontmatter(fm, overlay = {}, sourceText = "") {
       ...(emptyMaps.length ? { emptyMaps } : {}),
     },
   };
+  // Claims the legacy file made about a token it never carried (or an empty map) resolve to nothing in
+  // either format. They are kept, re-keyed, and listed so a conformance check can tell them apart.
+  const proseSet = new Set(prose.map((p) => p.path));
+  const dangling = Object.keys(verification?.claims ?? {}).filter((k) => (k.startsWith("prose:") ? !proseSet.has(k.slice(6)) : getPath(ordered, k) === undefined) && !(overlay.verification?.claims ?? {})[k]);
+  if (dangling.length) sidecar.migration.danglingClaims = dangling;
   // Key order: recorded only where the default inverse would not reproduce it.
   const order = orderRecord(fm, ordered, sidecar);
   if (Object.keys(order).length) sidecar.migration.order = order;

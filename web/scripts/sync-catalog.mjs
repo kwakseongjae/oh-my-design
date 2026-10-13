@@ -137,8 +137,10 @@ function frontmatter(id) {
   return { fm: yaml.load(md.slice(4, close)), md };
 }
 
+// Legacy files number their sections; DESIGN.md v3 nests Visual Theme under `## Overview` and
+// names `## Components` (spec/design-md-v3.md §4.2). Both are read.
 function sec1Prose(md) {
-  const sec1 = md.split('## 1. Visual Theme & Atmosphere', 2)[1] || '';
+  const sec1 = md.split('## 1. Visual Theme & Atmosphere', 2)[1] ?? md.split('### Visual Theme & Atmosphere', 2)[1] ?? '';
   return (sec1.split('\n').map(l => l.trim()).find(l => l.length > 0) || '').slice(0, 260);
 }
 
@@ -158,7 +160,7 @@ const missing = ids.filter(i => !have.has(i));
 for (const rid of missing) {
   const { fm, md } = frontmatter(rid);
   const prose = sec1Prose(md);
-  const lower = (md.split('## 4.')[0] || '').toLowerCase();
+  const lower = ((md.includes('\n## 4.') ? md.split('## 4.')[0] : md.split('\n## Components')[0]) || '').toLowerCase();
   const tones = TONE_LEXICON.filter(t => lower.includes(t)).slice(0, 4);
   fp.items.push({
     id: rid,

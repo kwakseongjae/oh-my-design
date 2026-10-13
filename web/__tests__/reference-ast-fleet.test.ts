@@ -8,6 +8,7 @@ import {
   REFERENCE_QUALITY_COUNTS,
 } from "@/data/reference-quality.generated";
 import { normalizeReference } from "@/lib/references";
+import { readReferenceSource } from "../scripts/lib/reference-source.mjs";
 
 const REFS_DIR = join(process.cwd(), "references");
 
@@ -46,7 +47,10 @@ describe("Reference AST fleet contract", () => {
         continue;
       }
 
-      const ast = normalizeReference({ entry, quality, markdown });
+      // A DESIGN.md v3 file is normalised from the legacy shape the shared adapter projects from
+      // its frontmatter and reference.json — the same source build-reference-ast reads.
+      const source = readReferenceSource(join(REFS_DIR, entry.id)).markdown;
+      const ast = normalizeReference({ entry, quality, markdown: source });
 
       expect(ast.identity.id, `${entry.id}: identity mismatch`).toBe(entry.id);
       expect(ast.tokens.claimPaths.length, `${entry.id}: canonical claim loss`).toBe(quality.claimCount);
@@ -56,7 +60,7 @@ describe("Reference AST fleet contract", () => {
       ).toEqual(Object.keys(entry.tokens?.components ?? {}).sort());
       expect(ast.document.sections.length, `${entry.id}: no document sections parsed`).toBeGreaterThan(0);
 
-      const second = normalizeReference({ entry, quality, markdown });
+      const second = normalizeReference({ entry, quality, markdown: source });
       expect(JSON.stringify(second), `${entry.id}: AST serialization is not deterministic`).toBe(JSON.stringify(ast));
     }
   });

@@ -214,7 +214,7 @@ export function projectActiveReference(loaded: LoadedReference): ActiveReference
   if (!loaded.ast) throw new Error(`legacy reference ${loaded.entry.id} is missing its AST`);
   const projection = projectAstReferenceDetail(
     loaded.ast,
-    extractLegacyReferenceDetail(loaded.entry.id, loaded.markdown),
+    { ...extractLegacyReferenceDetail(loaded.entry.id, loaded.legacyMarkdown), designMd: loaded.markdown },
   );
   return {
     detail: projection.detail,

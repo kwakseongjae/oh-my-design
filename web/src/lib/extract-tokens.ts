@@ -6,6 +6,7 @@
  * doesn't expose explicit values.
  */
 
+import { legacyOrNamedSection } from "./references/sections";
 import { canonicalFontName } from "./font-registry";
 import type { ReferenceDetailAstContract } from "./references/detail-projection";
 import type { CoreConsumerContract } from "./references/core-consumer-contract";
@@ -617,7 +618,7 @@ function extractPalette(md: string): string[] {
  *  ranges, or letter-spacing values that also live in §5. Prefer the explicit
  *  "Scale: ..." line; fall back to base unit + 4-power scale. */
 function extractSpacing(md: string): number[] {
-  const sec5 = md.match(/## 5\. Layout[\s\S]*?(?=## 6\.)/i)?.[0] ?? "";
+  const sec5 = legacyOrNamedSection(md, /## 5\. Layout[\s\S]*?(?=## 6\.)/i, "Layout");
   // Subsection: `### Spacing System` block until next ###/##
   const spacingBlock = sec5.match(/###\s*Spacing[\s\S]*?(?=\n###|\n##|$)/i)?.[0] ?? "";
   const values = new Set<number>();
@@ -647,7 +648,7 @@ function extractSpacing(md: string): number[] {
  *  "<purpose>: Xpx" or "Base unit: 8px". Best-effort; missing labels just
  *  surface as bare values in the preview. */
 function extractSpacingScale(md: string, values: number[]): SpacingItem[] {
-  const sec5 = md.match(/## 5\. Layout[\s\S]*?(?=## 6\.)/i)?.[0] ?? "";
+  const sec5 = legacyOrNamedSection(md, /## 5\. Layout[\s\S]*?(?=## 6\.)/i, "Layout");
   const block = sec5.match(/###\s*Spacing[\s\S]*?(?=\n###|\n##|$)/i)?.[0] ?? "";
   const purposes = new Map<number, string>();
   // "- Base unit: 8px" or "- Section gap: 80px" or "**Base unit**: 8px"
@@ -701,7 +702,7 @@ function extractRadiusFromProse(md: string): RadiusScaleItem[] {
  *    - "Card (20px): Feature cards, large buttons"
  *  Returns one item per (label/element) pair. */
 function extractRadiusScale(md: string): RadiusScaleItem[] {
-  const sec5 = md.match(/## 5\. Layout[\s\S]*?(?=## 6\.)/i)?.[0] ?? "";
+  const sec5 = legacyOrNamedSection(md, /## 5\. Layout[\s\S]*?(?=## 6\.)/i, "Layout");
   const block = sec5.match(/###\s*Border\s*Radius[\s\S]*?(?=\n###|\n##|$)/i)?.[0] ?? "";
   const out: RadiusScaleItem[] = [];
   // Pattern 1: "- Standard (8px): Buttons, inputs"
