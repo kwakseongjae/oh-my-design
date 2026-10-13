@@ -9,7 +9,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = join(__dirname, "..", "..", "..", "..");
 
 function readRef(id: string): string {
-  return readFileSync(join(REPO_ROOT, "web", "references", id, "DESIGN.md"), "utf-8");
+  // Frozen legacy OmD 0.1 bytes (the catalog file is DESIGN.md v3 since 2026-10-14); the
+  // transforms under test target the numbered legacy sections.
+  return readFileSync(join(REPO_ROOT, "web", "src", "lib", "references", "fixtures", "legacy-omd-0.1", `${id}.md`), "utf-8");
 }
 
 const vercelMd = readRef("vercel");

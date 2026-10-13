@@ -25,7 +25,8 @@ const compiler = require("../../../../scripts/compile-design-md-core.cjs") as {
 
 const originalFlag = process.env.OMD_REFS_SOURCE;
 const temporaryRoots: string[] = [];
-const legacyPath = resolve(process.cwd(), "references/baemin/DESIGN.md");
+// The catalog baemin is DESIGN.md v3 since 2026-10-14; rollback is asserted against its frozen legacy bytes.
+const legacyPath = resolve(process.cwd(), "src/lib/references/fixtures/legacy-omd-0.1/baemin.md");
 const stagedPath = resolve(process.cwd(), "../docs/design-md-weight/migrated/baemin/DESIGN.md");
 const parityFixture = JSON.parse(readFileSync(resolve(process.cwd(), "src/lib/references/fixtures/baemin-core-parity-v0.1.json"), "utf8")) as {
   original: { sha256: string };
