@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "../styles/tw-animate.css";
 @import "../styles/shadcn.css";
+/* Rebrand concept A tokens (--sq-*), light + dark, and the Latin slices of Wanted Sans. */
+@import "../styles/brand-a.css";
 
 /* Tailwind v4 source scanning.
    On Vercel with Root Directory = web/, there's no .git folder so

@@ -1,0 +1,101 @@
+/*
+ * oh-my-design brand system, concept A "Square / 네모 / 方塊" (rebrand 2026-10-13).
+ * Proposed for the root DESIGN.md in docs/research/2026-10-13-rebrand/DESIGN.md.patch
+ * (not applied; the owner approves design-system changes).
+ *
+ * Every Hangul, kana and hanzi glyph sits in the same square em-box; the site is set
+ * like manuscript paper (원고지 / 原稿用紙 / 稿紙). White paper, ink, one gamboge (藤黃)
+ * accent used as fill only. Square corners for the site's own chrome — brand radii
+ * appear only where a reference's claimed token draws them (keycaps, gen-UI screen).
+ *
+ * Contrast (WCAG, measured on the hex values):
+ *   light  ink/paper 18.1  ink-2/paper 8.4  ink/gamboge 9.0
+ *   dark   ink/paper 16.8  ink-2/paper 8.4
+ * Gamboge is never text on paper (2.0:1); it is a fill behind ink, or a mark.
+ *
+ * Theme: next-themes puts `.dark` on <html> (system default, toggle in the header).
+ */
+@import "./wanted-sans-latin.css";
+
+:root {
+  /* palette */
+  --sq-paper: #ffffff;
+  --sq-ink: #15161a;
+  --sq-ink-2: #4a4d57;
+  --sq-cell: #f4f5f8;
+  --sq-guide: #d6d9e1;
+  --sq-guide-2: #eceef3;
+  --sq-gamboge: #f2a900;
+  --sq-on-gamboge: #15161a;
+  --sq-focus: #1d2bd8;
+  /* keycap neutrals (region keys, blank caps) */
+  --sq-cap-n: #f7f8fa;
+  --sq-cap-n-side: #d5d9e1;
+  --sq-drop: rgba(21, 22, 26, 0.28);
+  /* gen-UI skeleton */
+  --sq-sk: #e3e6eb;
+  --sq-sk-2: #eef0f3;
+
+  /* type: Wanted Sans Variable (OFL 1.1, self-hosted split build in /fonts/wanted-sans)
+     covers Latin + Hangul. JA/TC pages add Noto Sans JP/TC via next/font (their layouts
+     set --font-noto-jp / --font-noto-tc); elsewhere kana/hanzi fall to the platform face. */
+  --sq-f-latin: "Wanted Sans Variable", "Wanted Sans";
+  --sq-f-en: var(--sq-f-latin), -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --sq-f-ko: "Wanted Sans Variable", "Wanted Sans", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+  --sq-f-ja: var(--font-noto-jp, "Noto Sans JP"), "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Wanted Sans Variable", "Apple SD Gothic Neo", sans-serif;
+  --sq-f-tc: var(--font-noto-tc, "Noto Sans TC"), "PingFang TC", "Microsoft JhengHei", "Wanted Sans Variable", "Apple SD Gothic Neo", sans-serif;
+  --sq-f-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* type scale (desktop; mobile clamps live with the components) */
+  --sq-fs-h1: clamp(44px, 5.4vw, 82px);
+  --sq-fs-h2: clamp(28px, 3.2vw, 44px);
+  --sq-fs-h3: 19px;
+  --sq-fs-lede: 19px;
+  --sq-fs-body: 16px;
+  --sq-fs-small: 13.5px;
+  --sq-fs-micro: 12px;
+  --sq-fw-display: 780;
+  --sq-fw-heading: 760;
+  --sq-fw-strong: 650;
+
+  /* radii: the site's own chrome is square */
+  --sq-radius: 0px;
+
+  /* layout */
+  --sq-max: 1360px;
+  --sq-gut: 40px;
+  --sq-header-h: 68px;
+
+  /* grid-paper motif: 40px cells with heavier 80px 田 lines */
+  --sq-grid-paper:
+    linear-gradient(var(--sq-guide-2) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(90deg, var(--sq-guide-2) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(var(--sq-guide) 1px, transparent 1px) 0 0 / 80px 80px,
+    linear-gradient(90deg, var(--sq-guide) 1px, transparent 1px) 0 0 / 80px 80px;
+  /* a single manuscript cell's faint 田 cross guide */
+  --sq-cell-guide:
+    linear-gradient(var(--sq-guide-2), var(--sq-guide-2)) center / 1px 100% no-repeat,
+    linear-gradient(var(--sq-guide-2), var(--sq-guide-2)) center / 100% 1px no-repeat;
+}
+
+.dark {
+  --sq-paper: #0f1013;
+  --sq-ink: #f1f1ec;
+  --sq-ink-2: #a9acb6;
+  --sq-cell: #17191e;
+  --sq-guide: #2b2f38;
+  --sq-guide-2: #1d2026;
+  --sq-focus: #8f9bff;
+  --sq-cap-n: #30343c;
+  --sq-cap-n-side: #1b1e23;
+  --sq-drop: rgba(0, 0, 0, 0.6);
+  --sq-sk: #2a2e36;
+  --sq-sk-2: #20232a;
+}
+
+@media (max-width: 900px) {
+  :root {
+    --sq-gut: 16px;
+    --sq-header-h: 58px;
+  }
+}
