@@ -38,10 +38,13 @@ function node(args) {
 
 let authoredBody;
 beforeAll(async () => {
-  const { readReferenceSource } = await import('../../../web/scripts/lib/reference-source.mjs');
   // krds predates the `added` field — 244 of the first 440 do — so the authoring
-  // tool requires it and the fixture has to supply one.
-  authoredBody = readReferenceSource(join(ROOT, 'web', 'references', 'krds')).markdown
+  // tool requires it and the fixture has to supply one. The tool authors from a legacy
+  // OmD 0.1 file; the catalog krds is DESIGN.md v3 since 2026-10-14, so the input is its
+  // legacy bytes, rebuilt from the archived package's hash-checked migration segments.
+  const graph = JSON.parse(readFileSync(join(ROOT, 'web', 'references', 'krds', '.omd', 'system', 'graph.json'), 'utf8'));
+  const segments = graph.extensions['dev.oh-my-design.migration'].original_segments;
+  authoredBody = [...segments].sort((a, b) => a.order - b.order).map((segment) => segment.content).join('')
     .replace('verified: "2026-07-11"', 'verified: "2026-07-11"\nadded: "2026-09-21"');
 });
 

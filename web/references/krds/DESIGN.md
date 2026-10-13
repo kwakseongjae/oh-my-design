@@ -1,10 +1,237 @@
-# KRDS Design System
+---
+name: KRDS
+colors:
+  primary: '#256ef4'
+  primary-hover: '#0b50d0'
+  primary-deep: '#083891'
+  brand: '#256ef4'
+  canvas: '#ffffff'
+  foreground: '#1e2124'
+  muted: '#6d7882'
+  on-primary: '#ffffff'
+  surface: '#f4f5f6'
+  surface-primary: '#ecf2fe'
+  hairline: '#b1b8be'
+  border-strong: '#58616a'
+  body: '#464c53'
+  secondary: '#346fb2'
+  point: '#d63d4a'
+  danger: '#de3412'
+  warning: '#ffb114'
+  success: '#228738'
+  information: '#0b78cb'
+typography:
+  display-large:
+    fontSize: 60px
+    fontWeight: 700
+    lineHeight: 1.5
+    letterSpacing: 1px
+    use: Marketing/banner display (no body use)
+  display-small:
+    fontSize: 36px
+    fontWeight: 700
+    lineHeight: 1.5
+    letterSpacing: 1px
+    use: Small display banner
+  heading-xlarge:
+    fontSize: 40px
+    fontWeight: 700
+    lineHeight: 1.5
+    letterSpacing: 1px
+    use: H1 page/section top title (28px mobile)
+  heading-large:
+    fontSize: 32px
+    fontWeight: 700
+    lineHeight: 1.5
+    letterSpacing: 1px
+    use: H1 narrow / H2
+  heading-medium:
+    fontSize: 24px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: H2 / H3
+  heading-small:
+    fontSize: 19px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: H3 / H4
+  heading-xsmall:
+    fontSize: 17px
+    fontWeight: 700
+    lineHeight: 1.5
+    use: H4 / H5
+  body-large:
+    fontSize: 19px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Emphasized body / key copy
+  body-medium:
+    fontSize: 17px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Standard body (default)
+  body-small:
+    fontSize: 15px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Caption / small label
+  body-xsmall:
+    fontSize: 13px
+    fontWeight: 400
+    lineHeight: 1.5
+    use: Annotation / meta / footer
+rounded:
+  sm: 4px
+  md: 6px
+  lg: 8px
+  full: 1000px
+spacing:
+  xs: 2
+  sm: 4
+  md: 8
+  base: 16
+  lg: 24
+  xl: 32
+  xxl: 40
+components:
+  button-primary:
+    type: button
+    backgroundColor: '#256ef4'
+    textColor: '#ffffff'
+    border: '1px solid #256ef4'
+    rounded: 6px
+    padding: 0 16px
+    height: 48px
+    typography: 17px / 400
+    hover: '#0b50d0'
+    active: '#083891'
+    focus: '#083891'
+    disabled: 'bg #cdd1d5 fg #6d7882'
+    use: Core action 신청하기/확인 (1 per screen)
+  button-secondary:
+    type: button
+    backgroundColor: '#ecf2fe'
+    textColor: '#0b50d0'
+    border: '1px solid #256ef4'
+    rounded: 6px
+    padding: 0 16px
+    height: 48px
+    typography: 17px / 400
+    hover: '#d8e5fd'
+    pressed: '#b1cefb'
+    focus: '#b1cefb'
+    states: default; shared 4px focus halo and aria-disabled behavior
+    use: Secondary action 자세히 보기/이전 단계
+  button-tertiary:
+    type: button
+    backgroundColor: transparent
+    textColor: '#1e2124'
+    border: '1px solid #58616a'
+    rounded: 6px
+    padding: 0 16px
+    height: 48px
+    typography: 17px / 400
+    hover: '#f4f5f6'
+    pressed: '#e6e8ea'
+    focus: '#e6e8ea'
+    use: Cancel/reset 취소/초기화/닫기
+  input-text:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#464c53'
+    border: '1px solid #58616a'
+    rounded: 8px
+    padding: 0 16px
+    height: 56px
+    typography: 19px / 400
+    focus: '0 0 0 4px #256ef4 halo'
+    disabled: 'bg #cdd1d5 fg #6d7882 border #b1b8be'
+    states: 'error border 2px solid #de3412'
+    use: Standard text input (large default)
+  select:
+    type: input
+    backgroundColor: '#ffffff'
+    textColor: '#1e2124'
+    border: '1px solid #58616a'
+    rounded: 6px
+    padding: 0 48px 0 16px
+    height: 56px
+    typography: 19px / 400
+    disabled: 'bg #cdd1d5 border #b1b8be'
+    states: 'error border 2px solid #ab2b36'
+    use: Native select with chevron
+  dialog:
+    type: dialog
+    backgroundColor: '#ffffff'
+    textColor: '#1e2124'
+    rounded: 12px
+    padding: 40px
+    shadow: 0 0.2rem 0 0 rgba(0,0,0,0.1), 0 0.4rem 0.8rem 0 rgba(0,0,0,0.1)
+    use: Modal dialog, backdrop fade 0->0.5 black, min-height 264px
+  badge-primary:
+    type: badge
+    backgroundColor: '#256ef4'
+    textColor: '#ffffff'
+    border: '1px solid #256ef4'
+    rounded: 4px
+    padding: 0 8px
+    height: 24px
+    typography: 15px / 400
+    use: Content classification, action emphasis
+  badge-point:
+    type: badge
+    backgroundColor: '#d63d4a'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 0 8px
+    height: 24px
+    typography: 15px / 400
+    use: Emphasis/new/important (red point)
+  badge-success:
+    type: badge
+    backgroundColor: '#228738'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 0 8px
+    height: 24px
+    typography: 15px / 400
+    use: Completed / success
+  badge-danger:
+    type: badge
+    backgroundColor: '#de3412'
+    textColor: '#ffffff'
+    rounded: 4px
+    padding: 0 8px
+    height: 24px
+    typography: 15px / 400
+    use: Error / rejected
+  badge-warning:
+    type: badge
+    backgroundColor: '#ffb114'
+    textColor: '#1e2124'
+    rounded: 4px
+    padding: 0 8px
+    height: 24px
+    typography: 15px / 400
+    use: Caution (black text on warning bg)
+  badge-tag:
+    type: badge
+    backgroundColor: '#ffffff'
+    textColor: '#1e2124'
+    border: '1px solid #cdd1d5'
+    rounded: 1000px
+    padding: 8px 10px
+    typography: 15px / 400
+    active: 'bg #ecf2fe fg #0b50d0 border #256ef4'
+    use: Selectable filter chip with delete button
+fonts:
+  roles:
+    sans: Pretendard GOV
+---
 
-<!-- design-md:section experience -->
-## 1. Experience
+# Design System Inspiration of KRDS (대한민국 정부 디자인 시스템)
 
-<!-- design-md:claim scope kind=product-surface lang=en -->
-### Scope
+## Overview
 
 ### Visual Theme & Atmosphere
 
@@ -25,6 +252,14 @@ KRDS는 대한민국 행정·공공기관 웹·앱이 공유하는 정부 표준
 - **선명한 화면 모드(High-contrast mode) 내장** — 일반 모드와 동일 컴포넌트가 `--krds-color-high-contrast-*` 레이어 한 줄 교체만으로 전환
 
 **디지털 포용·접근성 강령 (Accessibility Mandate).** KRDS는 시각적 선호가 아니라 **법적·정책적 의무**에서 출발합니다. 대한민국 「장애인차별금지 및 권리구제 등에 관한 법률」(장차법)과 「웹 접근성 국가표준 KWCAG 2.1 (KS X OT 0003)」이 공공기관 웹·앱에 WCAG 2.1 AA 동등 이상의 접근성을 요구하며, KRDS는 이를 토큰·컴포넌트 단계부터 강제하는 기술 표준 역할을 합니다. 행정안전부는 KRDS를 "**누구나 쉽게 사용할 수 있는 공공 웹·앱**"의 구현 수단으로 정의했고 ([행정안전부 보도자료](https://www.mois.go.kr/frt/bbs/type010/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000008&nttId=115144)), 라이브 사이트 푸터에는 **웹 접근성 인증 마크**가 상시 표시됩니다 ([기본 패턴 summary](https://www.krds.go.kr/html/site/global/global_summary.html) 페이지 푸터 확인). 따라서 색대비 4.5:1 (매직넘버 50), 4px focus halo, 사용자 줌 90~150%, 선명한 화면 모드는 "권고"가 아니라 KRDS의 **기본 동작**입니다.
+
+### Primary tasks
+
+- Find and understand a government service, then move to where it is delivered
+- Search for a service or notice and work through the results to the right one
+- Sign in with the method the service requires, and sign out or time out safely
+- Apply through a multi-step form with attachments, then track how it was handled
+- Read a policy in detail and follow it to the reports, manuals or law behind it
 
 ### Brand Narrative
 
@@ -57,52 +292,8 @@ KRDS가 거부하는 것: 정부 사이트마다 다른 표기와 배치(이전�
 **이주임 (Lee Joo-im), 41세, 광역시 공무원.** 부처 웹사이트의 콘텐츠를 편집·게시하는 운영자. CMS에서 컴포넌트를 조립할 때 "어떤 버튼이 Primary인지", "어떤 배지가 status용인지"를 빠르게 결정할 수 있어야 합니다. KRDS는 그를 위해 11개 컴포넌트 카테고리(아이덴티티 / 탐색 / 레이아웃 및 표현 / 액션 / 선택 / 피드백 / 도움 / 입력 / 설정 / 콘텐츠 / 모바일)와 각 변형의 사용 가이드를 명시합니다.
 
 **최민호 (Choi Min-ho), 22세, 모바일-only 사용자.** 데스크톱을 거의 사용하지 않는 청년 사용자. 정부 서비스도 스마트폰에서 끝내야 합니다. KRDS의 모바일 전용 컴포넌트 카테고리(`component_12_*` 8종 — 바텀시트 / 스낵바 / 탭바 / 뒤로가기 등)가 그를 위한 별도 시스템.
-<!-- design-md:claim-end -->
 
-<!-- design-md:claim primary-tasks kind=user-outcomes count=5 lang=en -->
-### Primary tasks
-
-- Find and understand a government service, then move to where it is delivered
-
-- Search for a service or notice and work through the results to the right one
-
-- Sign in with the method the service requires, and sign out or time out safely
-
-- Apply through a multi-step form with attachments, then track how it was handled
-
-- Read a policy in detail and follow it to the reports, manuals or law behind it
-<!-- design-md:claim-end -->
-
-<!-- design-md:section foundations -->
-## 2. Foundations
-
-<!-- design-md:claim foundations kind=rules-or-constraints lang=en -->
-### Semantic tokens
-
-- **color.body**: `#464c53`
-- **color.border-strong**: `#58616a`
-- **color.brand**: `#256ef4`
-- **color.canvas**: `#ffffff`
-- **color.danger**: `#de3412`
-- **color.foreground**: `#1e2124`
-- **color.hairline**: `#b1b8be`
-- **color.information**: `#0b78cb`
-- **color.muted**: `#6d7882`
-- **color.on-primary**: `#ffffff`
-- **color.point**: `#d63d4a`
-- **color.primary**: `#256ef4`
-- **color.primary-deep**: `#083891`
-- **color.primary-hover**: `#0b50d0`
-- **color.secondary**: `#346fb2`
-- **color.success**: `#228738`
-- **color.surface**: `#f4f5f6`
-- **color.surface-primary**: `#ecf2fe`
-- **color.warning**: `#ffb114`
-- **radius.default**: `6px`
-- **radius.full**: `1000px`
-- **radius.lg**: `8px`
-- **radius.md**: `6px`
-- **radius.sm**: `4px`
+## Colors
 
 ### Brand
 
@@ -211,76 +402,7 @@ KRDS 컬러 팔레트는 명도 단계 간 차이를 **WCAG 대비율과 직접 
 
 이 매핑 덕분에 디자이너는 "primary-50 위 gray-0" 같은 조합을 선택하면 즉시 대비율을 보장받습니다.
 
-### Depth & Elevation
-
-KRDS는 별도 elevation 페이지(`style_08.html`)를 두지만 실제 사용은 4단계로 제한됩니다.
-
-| Level | Treatment | Use |
-|-------|-----------|-----|
-| Flat (0) | 그림자 없음 | 페이지 콘텐츠, 카드, 패널, 입력, 버튼 — 거의 모든 표면 |
-| Border-only (1) | `1px solid #B1B8BE` 또는 `#CDD1D5` | 카드 / 표 / 입력 — 영역 분리는 보더로 |
-| Drop (2) | `0 0.2rem 0 0 rgba(0,0,0,a1), 0 0.4rem 0.8rem 0 rgba(0,0,0,a2)` | 드롭다운, 툴팁 |
-| Modal (3) | 동일 + 12px radius + 백드롭 black/0.5 fade | 모달 다이얼로그만 |
-| Focus halo | `0 0 0 4px #256EF4` (focus ring — depth는 아니지만 z-stack 최상위) | 모든 인터랙티브 |
-
-**그림자 철학**: 정부 사이트는 "층위가 많아 보이는" 화면을 피합니다. 시각적 평탄성(visual flatness)이 신뢰감과 예측 가능성을 만든다는 가정 — Material식 elevation 6단계가 아니라 사실상 0/1/2/3 4단계로 충분합니다.
-
-### Motion & Easing
-
-**Durations** (라이브 페이지에서 측정된 `--krds-transition-*` 토큰 기준):
-
-| Token | Value | Use |
-|---|---|---|
-| `motion-instant` | 0ms | 토글 / 체크박스 상태 변경 |
-| `motion-base` | **0.4s ease-in-out** (`--krds-transition-base`) | KRDS 표준 전환 — 드롭다운, 메뉴, 패널 열고 닫기, 백드롭 |
-| `motion-fade` | **opacity 0.4s linear** (`--krds-transition-fade`) | 단순 opacity fade (모달 진입, 토스트) |
-| `motion-collapse` | **max-height 0.4s ease** (`--krds-transition-collapse`) | 아코디언·디스클로저 max-height 전환 |
-| `motion-collapse-width` | **width 0.4s ease** (`--krds-transition-collapse-width`) | 사이드 메뉴 폭 전환 |
-
-**Easings:**
-
-| Token | Curve | Use |
-|---|---|---|
-| `ease-in-out` | KRDS 기본 | 모든 양방향 전환 (열기·닫기) |
-| `ease` | 접힘 / 펼침 height/width 변화 | 아코디언 / 디스클로저 / 사이드 메뉴 |
-| `linear` | opacity fade | 페이드 전용 |
-
-**모션 자세 (Motion stance).** **스프링·바운스·오버슈트는 KRDS에서 금지됩니다.** 정부 서비스는 "재미있는" 인터랙션을 통해 신뢰를 얻지 않습니다 — 사용자가 자신이 무엇을 했는지 즉시 / 예측 가능하게 / 차분하게 알 수 있어야 합니다. 모든 전환은 400ms 안에 끝나고, easing은 ease-in-out / ease / linear 셋으로 충분합니다. **`prefers-reduced-motion: reduce`** 사용자에게는 모든 `motion-*` 토큰이 0ms로 축소되며, 페이드 / 슬라이드 / 접힘 모두 즉시 전환됩니다. 이 규칙은 a11y 권고가 아니라 KRDS의 기본 동작입니다 (정부 서비스 사용자 중 전정기관 민감성·인지장애 보유자 비율이 일반 사이트보다 높습니다).
-
-**Signature motions.**
-
-1. **메뉴 / 드롭다운 열기·닫기.** `400ms / ease-in-out`로 opacity + transform translateY(-4px → 0). 백드롭 없음 (full-page 모달이 아니므로). 닫힐 때 동일 시간 / 역방향.
-2. **아코디언·디스클로저.** max-height `400ms / ease` 전환. 콘텐츠 fade 없음 — height 변화만으로 충분하고, fade를 더하면 글자가 흐려져 가독성이 손해.
-3. **모달 진입.** opacity fade 400ms linear + 백드롭 동시 fade (black/0.5). transform 사용하지 않음 (성능 우선 / 미감 절제). 모달 자체는 12px radius `--krds-radius-xlarge1`.
-4. **사이드 메뉴 폭 변경.** width `400ms / ease` (`--krds-transition-collapse-width`).
-5. **Reduce motion.** 모든 위 전환이 0ms 즉시. 백드롭은 그대로 표시되되 fade 없이 즉시 가시화.
-
----
-
-**Tier 3 (Philosophy):** 행정안전부 보도자료, 대한민국 정책브리핑, Design Compass(KR/EN), TPGi(KWCAG·장차법), AAAtraq(2025 a11y 동향), GOV.UK / USWDS / Singapore GDS 비교 좌표.
-**Style ref:** `yeogiotte` (한국 공공·민간 정중한 한국어 톤 참조), `karrot` (한국 voice 형식 참조).
-미재수집 컴포넌트는 conflict로 덮지 않고 machine token에서 제외했다.
-**Conflicts unresolved:** none
-<!-- design-md:claim-end -->
-
-<!-- design-md:section typography-assets -->
-## 3. Typography & Assets
-
-### Type roles
-
-| Role | Usage | Family | Size | Weight | Line height | Tracking |
-|---|---|---|---|---|---|---|
-| display-large | declared type role: display-large |  | 60px | 700 | 1.5 | 1px |
-| display-small | declared type role: display-small |  | 36px | 700 | 1.5 | 1px |
-| heading-xlarge | declared type role: heading-xlarge |  | 40px | 700 | 1.5 | 1px |
-| heading-large | declared type role: heading-large |  | 32px | 700 | 1.5 | 1px |
-| heading-medium | declared type role: heading-medium |  | 24px | 700 | 1.5 |  |
-| heading-small | declared type role: heading-small |  | 19px | 700 | 1.5 |  |
-| heading-xsmall | declared type role: heading-xsmall |  | 17px | 700 | 1.5 |  |
-| body-large | declared type role: body-large | Pretendard GOV | 19px | 400 | 1.5 |  |
-| body-medium | declared type role: body-medium |  | 17px | 400 | 1.5 |  |
-| body-small | declared type role: body-small |  | 15px | 400 | 1.5 |  |
-| body-xsmall | declared type role: body-xsmall |  | 13px | 400 | 1.5 |  |
+## Typography
 
 ### Font evidence boundary
 
@@ -349,14 +471,248 @@ KRDS는 **Display / Heading / Body** 3계층 + Navigation / Label 시멘틱 토�
 - **letter-spacing 0 (Display만 1px)**: 자간을 인위적으로 좁히지 않음 (`--krds-letter-spacing-none: 0rem`). 한글 가독성 우선.
 - **rem 단위 기본**: 모든 토큰이 `rem` 단위. `font-size-base: 62.5%`로 1rem = 10px로 설정해 px↔rem 환산이 자명.
 
-<!-- design-md:section components-states -->
-## 4. Components & States
+## Layout
 
-### Component Stylings
+### Spacing System — 8-Point Grid
+
+`--krds-padding-*` 스케일 (라이브 토큰):
+
+| Token | Value | Use |
+|-------|-------|-----|
+| padding-1 | 2px | hairline 간격 |
+| padding-2 | 4px | 아이콘 inner padding |
+| padding-3 | 8px | 배지·태그 padding |
+| padding-4 | 10px | xsmall button padding |
+| padding-5 | 12px | small button padding |
+| padding-6 | 16px | input padding / info panel vertical |
+| padding-7 | 20px | large button padding |
+| padding-8 | 24px | **표준 콘텐츠 padding / gutter** |
+| padding-9 | 32px | 섹션 간 여백 |
+| padding-10 | 40px | **모달 padding** |
+
+모든 값이 8-pt grid의 배수(2/4/8/16/24/32/40) 또는 KRDS 보조 단위(10/12/20). 컴포넌트 내부 패딩은 padding-6 (16px), padding-8 (24px), padding-10 (40px)이 표준.
+
+### Grid & Container — Breakpoints
+
+| Name | Viewport | Columns | Gutter | Screen Margin |
+|------|----------|---------|--------|----------------|
+| small | 360px~ | 4 | 16px | 16px |
+| medium | 768px~ | 8 | 16px | 24px |
+| **large** | **1024px~** | **12** | **24px** | **24px** |
+| xlarge | 1280px~ | 12 | 24px | 24px |
+
+- 데스크톱: **콘텐츠 영역 최대 1200px** (`--krds-contents-size`), 가운데 정렬, 좌우 24px gutter — 1248px 디바이스 이상에서 폭 고정, 미만에서는 비례 축소
+- 표준형 스타일은 xsmall(<360px)를 최적화 대상에서 제외
+- 확장형 스타일 (자유 폭): 3~6단계 브레이크포인트로 가변, 단 컬럼/가터/마진 규칙은 동일
+
+### Sub-page Layout
+
+브레이크포인트 large 이상에서 다음 5 영역으로 구성:
+1. **Header** — GNB + 유틸리티 (글자·화면 설정 / 검색 / 전체메뉴)
+2. **Left menu (선택)** — 사이드 메뉴 (깊은 IA)
+3. **Main contents** — 본문 (콘텐츠 내 탐색 anchor 포함)
+4. **Right menu (선택)** — 콘텐츠 내 탐색 (플로팅) / 도움 패널 (slide-in)
+5. **Footer** — 운영기관 식별자 + 정책 링크 + 면책 + 공식 배너
+
+### Whitespace Philosophy
+- **밀도 < 여백**: 정부 사이트는 한 화면에 많은 정보를 보여줘야 하지만, KRDS는 그 안에서도 **충분한 vertical rhythm**을 유지합니다. 섹션 간 64~80px (padding-9 + padding-10 조합)의 여백이 시각적 피로를 줄입니다.
+- **그림자보다 보더**: 영역 분리는 거의 항상 1px 보더(`#58616A` 강 / `#B1B8BE` 약 / `#CDD1D5` 부드러움)와 라운드로 처리. 그림자는 모달 / 드롭다운 / 툴팁에만 한정.
+- **GNB 56px / x-large CTA 64px**: 헤더 높이와 핵심 액션 높이가 비례 — 누르기 쉬운 크기를 우선.
+
+### Border Radius Scale (라이브 토큰)
+- 2px (`--krds-radius-xsmall1/2/3`): xsmall input / 미세 요소
+- 4px (`--krds-radius-small1/2/3`): 배지 / xsmall 버튼
+- 6px (`--krds-radius-medium1/2`): small·medium 버튼 / small select
+- 8px (`--krds-radius-medium3/4`): **표준 라운드** — 패널 / 카드 / large·xlarge 버튼 / 표준 input
+- 10px (`--krds-radius-large1/2`): xlarge input (검색)
+- 12px (`--krds-radius-xlarge1/2`): **모달**
+- 1000px (`--krds-radius-max`): 원형 컨트롤 / pill 태그
+
+### Basic Patterns (KRDS 기본 패턴)
+
+KRDS는 컴포넌트보다 상위 단위로 **12개 기본 패턴(Basic Patterns)**을 공식 운영합니다 — 컴포넌트 조합으로 반복되는 핵심 과업을 수행하는 인터페이스 세트입니다 ([기본 패턴 summary](https://www.krds.go.kr/html/site/global/global_summary.html)). 모든 패턴은 페이지 레이아웃 구성 규칙으로 작동하며, "사용성·접근성·인터랙션 가이드·플랫폼 고려사항"을 함께 명시합니다.
+
+| # | 패턴 | URL | 1-line purpose |
+|---|------|-----|----------------|
+| 1 | 개인 식별 정보 입력 | `global/global_01.html` | 성명·생년월일·연락처 등 PII 수집 — 수집 필요성·목적 명시 + 접근 가능한 입력 방식 |
+| 2 | 도움 (Help) | `global/global_02.html` | 사용자 숙련도에 맞춰 인터페이스 작동·과업 플로 안내를 제공 |
+| 3 | 동의 (Consent) | `global/global_03.html` | 약관 열람·동의 표시 + 안내 정보 확인 인터페이스 |
+| 4 | 목록 탐색 | `global/global_04.html` | 관련 데이터를 리스트로 구성 — 일관된 포맷 + 특정 항목에 대한 액션 |
+| 5 | 사용자 피드백 | `global/global_05.html` | 화면·기능에 대한 평가·민원·제안을 주 과업을 방해하지 않고 수집 |
+| 6 | 상세 정보 확인 | `global/global_06.html` | 상세 페이지의 콘텐츠 구조·시각 위계·복수 콘텐츠 포맷 표시 표준 |
+| 7 | 오류 (Error) | `global/global_07.html` | 시스템 과업 실패 시 표시 방식·사용성·접근성 요건 |
+| 8 | 입력폼 (Input Form) | `global/global_08.html` | 1개 이상의 입력 컨트롤로 구성된 데이터 입력·전송 섹션 |
+| 9 | 첨부파일 | `global/global_09.html` | 다운로드 가능한 첨부 파일 표시 — 링크 유형·접근성·인터랙션 |
+| 10 | 필터링·정렬 | `global/global_10.html` | 사용자 속성·기준에 따라 데이터 항목을 선택적으로 표시·정렬 |
+| 11 | 확인 (Confirmation) | `global/global_11.html` | 되돌릴 수 없는 결과를 가진 행위 직전에 의도 재확인 다이얼로그 |
+| 12 | 모바일 알림 | `global/global_12.html` | 푸시 알림 / 인앱 알림 / 알림 센터 — 서비스 변경·진행 안내 |
+
+§4 컴포넌트(버튼·입력·셀렉트·모달 등)는 위 12개 패턴의 빌딩 블록이며, 페이지 레이아웃은 패턴 단위로 구성됩니다 — 예: 신청 페이지 = `입력폼 + 첨부파일 + 확인 + 오류` 패턴 결합.
+
+### Service Patterns (KRDS 서비스 패턴)
+
+기본 패턴이 페이지 단위 컴포지션이라면 **서비스 패턴 5종**은 **사용자 여정(user-journey blueprint)**입니다 — 시민이 정부 디지털 서비스를 이용하는 전형적 시나리오를 단계별로 정의합니다 ([서비스 패턴 summary](https://www.krds.go.kr/html/site/service/service_summary.html)).
+
+| # | 패턴 | URL | Journey nodes |
+|---|------|-----|----------------|
+| 1 | **방문 (Visit)** | `service/service_01_01.html` | 정보 탐색 → 정보 이해 → 이동(외부 서비스 / 내부 IA). 첫인상이 형성되는 메인 화면에서 시작. |
+| 2 | **검색 (Search)** | `service/service_02_01.html` | 검색어 입력 → 결과 개수 확인 → 목록 탐색 → 결과 활용 → 재검색 / 상세검색 → 종료. 7단계. |
+| 3 | **로그인 (Login)** | `service/service_03_01.html` | 로그인 방식 선택 (지식·소유·생체·다요소) → 정보 입력 → 완료 → 로그아웃(사용자 / 자동 만료). |
+| 4 | **신청 (Application)** | `service/service_04_01.html` | 대상 탐색 → 다단계 양식 작성 (자동입력·임시저장·첨부) → 확인 → 처리 결과 추적. 복지 / 세액 / 발급 / 예약 포함. |
+| 5 | **정책정보 확인** | `service/service_05_01.html` | 정책 상세 검토 → 관련 자료 참조(보고서·매뉴얼·법령). 신규 / 갱신 자료 구분. |
+
+서비스 패턴은 **3단계 준수 수준 (필수 / 권장 / 우수)** 체크리스트로 평가됩니다 — 모든 정부 사이트는 최소 "필수" 항목을 충족해야 합니다.
+
+### Responsive Behavior
+
+#### Breakpoints (재확인)
+| Name | Width | Key Changes |
+|------|-------|-------------|
+| small | 360px+ | 단일 컬럼 4-grid, 16px gutter, GNB → 햄버거 메뉴 |
+| medium | 768px+ | 2~3열 그리드 8-grid, 16~24px gutter |
+| large | 1024px+ | 풀 GNB, 최대 1200px 컨텐츠 폭, 12-grid |
+| xlarge | 1280px+ | 동일 1200px 컨텐츠 유지 (좌우 여백 증가) |
+
+#### Touch Targets (라이브 측정)
+- Primary CTA xlarge: **64px** 높이 (양식 제출 등 핵심 액션)
+- Primary CTA large: 56px / medium: 48px / small: 40px / xsmall: 32px
+- 입력 필드 large: 56px / xlarge: 80px (검색)
+- 셀렉트 large: 56px / medium: 48px / small: 40px
+- 모바일 탭바 / 바텀시트 높이: 별도 모바일 카테고리에서 정의
+
+#### Mobile-specific Components
+KRDS는 `component_12_*` 카테고리에 모바일 전용 컴포넌트 8종을 운영합니다: 뒤로가기 / 바텀시트 / 수량토글 / 토스트 / 스낵바 / 탭바 / 스플래시 스크린 / 범위 슬라이더. 모바일 컨텍스트의 인터랙션을 별도 시스템으로 인정.
+
+#### Image Behavior
+- 콘텐츠 일러스트 / 사진은 1200px 컨테이너 안에서 풀-블리드 또는 16:9 / 4:3 비율
+- 아이콘은 16 / 20 / 24px 그리드 (`--krds-icon--size-{xsmall..xlarge} = 1.6/1.6/2/2.4/2.4rem`)
+- 접근 가능한 미디어 (`component_11_01.html`)는 캡션 / 자막 / 음성 해설 슬롯 명시
+
+## Elevation & Depth
+
+KRDS는 별도 elevation 페이지(`style_08.html`)를 두지만 실제 사용은 4단계로 제한됩니다.
+
+| Level | Treatment | Use |
+|-------|-----------|-----|
+| Flat (0) | 그림자 없음 | 페이지 콘텐츠, 카드, 패널, 입력, 버튼 — 거의 모든 표면 |
+| Border-only (1) | `1px solid #B1B8BE` 또는 `#CDD1D5` | 카드 / 표 / 입력 — 영역 분리는 보더로 |
+| Drop (2) | `0 0.2rem 0 0 rgba(0,0,0,a1), 0 0.4rem 0.8rem 0 rgba(0,0,0,a2)` | 드롭다운, 툴팁 |
+| Modal (3) | 동일 + 12px radius + 백드롭 black/0.5 fade | 모달 다이얼로그만 |
+| Focus halo | `0 0 0 4px #256EF4` (focus ring — depth는 아니지만 z-stack 최상위) | 모든 인터랙티브 |
+
+**그림자 철학**: 정부 사이트는 "층위가 많아 보이는" 화면을 피합니다. 시각적 평탄성(visual flatness)이 신뢰감과 예측 가능성을 만든다는 가정 — Material식 elevation 6단계가 아니라 사실상 0/1/2/3 4단계로 충분합니다.
+
+### Values kept in prose
+
+Measured values the DESIGN.md token grammar cannot carry, kept verbatim:
+
+- `shadow.focus`: `0 0 0 0.4rem #256ef4`
+- `shadow.modal`: `0 0.2rem 0 0 rgba(0,0,0,0.1), 0 0.4rem 0.8rem 0 rgba(0,0,0,0.1)`
+
+## Motion & Easing
+
+**Durations** (라이브 페이지에서 측정된 `--krds-transition-*` 토큰 기준):
+
+| Token | Value | Use |
+|---|---|---|
+| `motion-instant` | 0ms | 토글 / 체크박스 상태 변경 |
+| `motion-base` | **0.4s ease-in-out** (`--krds-transition-base`) | KRDS 표준 전환 — 드롭다운, 메뉴, 패널 열고 닫기, 백드롭 |
+| `motion-fade` | **opacity 0.4s linear** (`--krds-transition-fade`) | 단순 opacity fade (모달 진입, 토스트) |
+| `motion-collapse` | **max-height 0.4s ease** (`--krds-transition-collapse`) | 아코디언·디스클로저 max-height 전환 |
+| `motion-collapse-width` | **width 0.4s ease** (`--krds-transition-collapse-width`) | 사이드 메뉴 폭 전환 |
+
+**Easings:**
+
+| Token | Curve | Use |
+|---|---|---|
+| `ease-in-out` | KRDS 기본 | 모든 양방향 전환 (열기·닫기) |
+| `ease` | 접힘 / 펼침 height/width 변화 | 아코디언 / 디스클로저 / 사이드 메뉴 |
+| `linear` | opacity fade | 페이드 전용 |
+
+**모션 자세 (Motion stance).** **스프링·바운스·오버슈트는 KRDS에서 금지됩니다.** 정부 서비스는 "재미있는" 인터랙션을 통해 신뢰를 얻지 않습니다 — 사용자가 자신이 무엇을 했는지 즉시 / 예측 가능하게 / 차분하게 알 수 있어야 합니다. 모든 전환은 400ms 안에 끝나고, easing은 ease-in-out / ease / linear 셋으로 충분합니다. **`prefers-reduced-motion: reduce`** 사용자에게는 모든 `motion-*` 토큰이 0ms로 축소되며, 페이드 / 슬라이드 / 접힘 모두 즉시 전환됩니다. 이 규칙은 a11y 권고가 아니라 KRDS의 기본 동작입니다 (정부 서비스 사용자 중 전정기관 민감성·인지장애 보유자 비율이 일반 사이트보다 높습니다).
+
+**Signature motions.**
+
+1. **메뉴 / 드롭다운 열기·닫기.** `400ms / ease-in-out`로 opacity + transform translateY(-4px → 0). 백드롭 없음 (full-page 모달이 아니므로). 닫힐 때 동일 시간 / 역방향.
+2. **아코디언·디스클로저.** max-height `400ms / ease` 전환. 콘텐츠 fade 없음 — height 변화만으로 충분하고, fade를 더하면 글자가 흐려져 가독성이 손해.
+3. **모달 진입.** opacity fade 400ms linear + 백드롭 동시 fade (black/0.5). transform 사용하지 않음 (성능 우선 / 미감 절제). 모달 자체는 12px radius `--krds-radius-xlarge1`.
+4. **사이드 메뉴 폭 변경.** width `400ms / ease` (`--krds-transition-collapse-width`).
+5. **Reduce motion.** 모든 위 전환이 0ms 즉시. 백드롭은 그대로 표시되되 fade 없이 즉시 가시화.
+
+<!--
+OmD v0.1 Sources — KRDS DESIGN.md (rebuilt 2026-05-08, deep-pass)
+
+Tier 1 — Live DOM (playwright getComputedStyle, 2026-05):
+- https://www.krds.go.kr/html/site/index.html (홈)
+- https://www.krds.go.kr/html/site/style/style_02.html (색상 — 11단계 × 8 컬러군 full palette, 매직넘버)
+- https://www.krds.go.kr/html/site/style/style_03.html (타이포그래피 — Display/Heading/Body 스케일 + Navigation/Label 토큰)
+- https://www.krds.go.kr/html/site/style/style_05.html (레이아웃 — 4 브레이크포인트, 1200px 컨테이너, 8-pt grid)
+- https://www.krds.go.kr/html/site/component/component_05_02.html (버튼 — Primary/Secondary/Tertiary/Text/Icon × xsmall~xlarge)
+- https://www.krds.go.kr/html/site/component/component_09_03.html (텍스트 입력 — 5 사이즈 × 4 상태)
+- https://www.krds.go.kr/html/site/component/component_06_03.html (셀렉트 — error border #AB2B36)
+- https://www.krds.go.kr/html/site/component/component_06_04.html (태그 필터 칩 — pill 40/32/24)
+- https://www.krds.go.kr/html/site/component/component_04_05.html (모달 — radius 12px, padding 40px)
+- https://www.krds.go.kr/html/site/component/component_04_06.html (배지 — outline/bg × 9 의미 × 18 변형)
+
+Token extraction (live --krds-*):
+- Color palette: --krds-color-light-{primary,secondary,gray,point,danger,warning,success,information}-{5,10,20,30,40,50,60,70,80,90,95}
+- Radius: small(4) / medium1-2(6) / medium3-4(8) / large(10) / xlarge(12) / max(1000)
+- Padding: 1=2, 2=4, 3=8, 4=10, 5=12, 6=16, 7=20, 8=24, 9=32, 10=40
+- Size-height: 2=16, 3=20, 4=24, 5=32, 6=40, 7=48, 8=56, 9=64, 10=72, 11=80
+- Icon: xsmall=16, small=16, medium=20, large=24, xlarge=24
+- Modal sizes: small=400, medium=560, large=760
+- Transitions: base=0.4s ease-in-out / fade=opacity 0.4s linear / collapse=max-height 0.4s ease
+- Focus halo: --krds-box-shadow-outline: 0 0 0 0.4rem #256EF4
+- Font: --krds-font-family-base: Pretendard GOV / weight 400/700 / line-height 1.5 / letter-spacing 0
+
+Tier 2 — Cross-check:
+- getdesign.md/krds: no record / styles.refero.design: no record (정부 시스템 미수록)
+- KRDS 자체가 정부 발행 canonical token catalog (Tier 1 = canonical)
+
+Tier 3 — Philosophy / WebSearch:
+- 행정안전부 보도자료, 대한민국 정책브리핑, MOIS 영문 공지
+- Design Compass (KR/EN), HEROPY.DEV, 나무위키
+- TPGi (장차법·KWCAG), AAAtraq (2025 a11y 동향)
+- 비교 좌표: GOV.UK / USWDS / Singapore GDS
+
+Phase 3 surfaces (basic + service patterns, 2026-05-08 deep-walk):
+- https://www.krds.go.kr/html/site/global/global_summary.html (기본 패턴 인덱스 — 12 패턴 enumeration)
+- https://www.krds.go.kr/html/site/global/global_01..12.html (12 기본 패턴 상세 — 모두 200, 각각 title + purpose 추출)
+- https://www.krds.go.kr/html/site/service/service_summary.html (서비스 패턴 인덱스 — 5 패턴)
+- https://www.krds.go.kr/html/site/service/service_01_01.html … service_05_01.html (5 서비스 패턴 상세 — 모두 200, journey node 추출)
+- pattern_summary.html / intro_*.html / intro_summary.html / main_index.html → 404 (별도 principles/inclusion 페이지 미공개 — 디지털 포용 콘텐츠는 global_summary 푸터의 웹 접근성 인증 마크 + KRDS 미션 문구로 입증)
+
+Rebuild diff vs prior pass:
+- §2: Primary 50/60 분리 명시(이전 "정부 블루 + 정부 블루 딥" 표기 → 11단계 명도 팔레트 + 매직넘버)
+- §2: System color 추가 (Danger #DE3412 / Success #228738 / Information #0B78CB / Warning #FFB114·#9E6A00 / Point #D63D4A)
+- §3: Display/Heading/Body 3-layer scale 전체 표 추가 (이전 7행 → 30+행)
+- §3: H1 = 40px (이전 34px → 40px 정정)
+- §4 Buttons: 5단계 크기 라이브 측정값 (xsmall 4px/15px·400/32px ... xlarge 8px/19px·400/64px)
+- §4 Inputs: 정확한 5 사이즈 측정값, error 2px solid #DE3412 (이전 "1.5px" → 2px 정정), disabled bg #CDD1D5 (이전 "#F4F6F8" → #CDD1D5 정정)
+- §4 신규: Select, Tag(필터 칩), Toggle Switch, Checkbox, Radio, Tabs, Toast/Snackbar, Tooltip, Step Indicator, Pagination 추가
+- §4 Modal: radius 12px (이전 "--krds-radius-xlarge1 대형 라운드" 모호 → 12px 명시), sizes 400/560/760
+- §4 Badge: 9개 의미 × outline/filled = 18 변형 표 완성 (이전 4개 → 18개)
+- §5: 4 breakpoints + columns/gutter/margin 정확 측정 (small 4/16/16 → medium 8/16/24 → large 12/24/24 → xlarge 12/24/24)
+- §5: 8-pt grid 명시, padding 1~10 토큰 매핑 추가
+- §5: Border radius 7단계 (이전 5단계 → 2/4/6/8/10/12/1000)
+- §15: motion-collapse-width 추가, signature motion 5개 (이전 4개)
+-->
+
+---
+
+**Verified:** 2026-07-11 (8-surface live recapture + still-fresh layout/tag official evidence)
+**Tier 1 sources:** https://www.krds.go.kr/html/site/index.html · https://www.krds.go.kr/html/site/style/style_02.html · https://www.krds.go.kr/html/site/style/style_03.html · https://www.krds.go.kr/html/site/style/style_05.html · https://www.krds.go.kr/html/site/component/component_05_02.html · https://www.krds.go.kr/html/site/component/component_09_03.html · https://www.krds.go.kr/html/site/component/component_06_03.html · https://www.krds.go.kr/html/site/component/component_06_04.html · https://www.krds.go.kr/html/site/component/component_04_05.html · https://www.krds.go.kr/html/site/component/component_04_06.html
+**Tier 2 sources:** https://getdesign.md/krds (rendered `No designs found`) · https://styles.refero.design/?q=KRDS (no rendered `/style/` result in available path)
+**Tier 3 (Philosophy):** 행정안전부 보도자료, 대한민국 정책브리핑, Design Compass(KR/EN), TPGi(KWCAG·장차법), AAAtraq(2025 a11y 동향), GOV.UK / USWDS / Singapore GDS 비교 좌표.
+**Style ref:** `yeogiotte` (한국 공공·민간 정중한 한국어 톤 참조), `karrot` (한국 voice 형식 참조).
+미재수집 컴포넌트는 conflict로 덮지 않고 machine token에서 제외했다.
+**Conflicts unresolved:** none
+
+## Components
 
 KRDS 컴포넌트는 5단계 크기 토큰(xsmall/small/medium/large/xlarge)을 공유하며 모든 변형이 `aria-disabled` / 키보드 포커스 / 4px focus-ring halo를 기본 제공합니다. 각 variant 블록은 default 크기(Button=medium, Input=large, Select=large)의 측정값을 기준으로 하고, 크기 스케일은 표/프로즈로 보조합니다.
 
-#### Buttons
+### Buttons
 
 소스: `component_05_02.html`. 5단계 크기 × 6개 변형 = 30개 컴포넌트 슬롯.
 
@@ -428,7 +784,7 @@ KRDS 컴포넌트는 5단계 크기 토큰(xsmall/small/medium/large/xlarge)을 
 - Shadow: 약한 box-shadow
 - Use: 페이지 우하단 부유 액션 — "맨 위로 / 챗봇 / 음성지원" (스크롤 시 표시, `component_05_03.html`)
 
-#### Inputs
+### Inputs
 
 소스: `component_09_*.html`. 5단계 크기 + 4단계 상태. Default = large.
 
@@ -480,7 +836,7 @@ KRDS 컴포넌트는 5단계 크기 토큰(xsmall/small/medium/large/xlarge)을 
 - Padding: 0 16px
 - Use: 파일 첨부 (`component_09_04.html`) — Tertiary 버튼 + 파일명 표시 영역 + 진행 표시기 + 삭제 칩
 
-#### Select
+### Select
 
 소스: `component_06_03.html`. 네이티브 `<select class="krds-form-select">` 기반. Default = large.
 
@@ -501,7 +857,7 @@ KRDS 컴포넌트는 5단계 크기 토큰(xsmall/small/medium/large/xlarge)을 
 | medium | 48px | 6px | 44px | 17px·400 |
 | **large (default)** | **56px** | **6px** | **48px** | **19px·400** |
 
-#### Toggles
+### Toggles
 
 체크박스 · 라디오 · 토글 스위치 (`component_06_01.html` / `06_02` / `06_07`).
 
@@ -528,7 +884,7 @@ KRDS 컴포넌트는 5단계 크기 토큰(xsmall/small/medium/large/xlarge)을 
 - Disabled: bg `#CDD1D5`
 - Use: 켜기/끄기 토글 — On 시 흰색 thumb 우측 이동
 
-#### Cards
+### Cards
 
 소스: `component_04_*.html`. 표면(surface) 컴포넌트 모음.
 
@@ -562,7 +918,7 @@ KRDS 컴포넌트는 5단계 크기 토큰(xsmall/small/medium/large/xlarge)을 
 - Radius: 8px
 - Use: 보더 분리 disclosure 패널 (`component_04_07.html` / `04_04`) — max-height 400ms ease 전환
 
-#### Modals
+### Modals
 
 **Modal**
 - Background: `#FFFFFF`
@@ -574,7 +930,7 @@ KRDS 컴포넌트는 5단계 크기 토큰(xsmall/small/medium/large/xlarge)을 
 
 사이즈 (`--krds-modal--size-*`): small 400px / medium 560px / large 760px.
 
-#### Badges
+### Badges
 
 소스: `component_04_06.html`. outline / bg(filled) × 9개 의미 = 18개 변형. 모두 동일 형태: radius 4px / padding 0 8px / 15px·400 / height 24px.
 
@@ -677,7 +1033,7 @@ KRDS 컴포넌트는 5단계 크기 토큰(xsmall/small/medium/large/xlarge)을 
 
 추가로 **bg-light-\*** (`#ECF2FE` 등 5단계 배경 + 60단계 텍스트) 변형이 있어 부드러운 분류 라벨에 사용 (홈 배지 "아이덴티티" / "서비스 패턴" 등).
 
-#### Tabs
+### Tabs
 
 소스: `component_04_10.html`. 수평 탭 라인 + 키보드 좌우 탐색 (`role="tablist"` / `aria-selected`).
 
@@ -687,7 +1043,7 @@ KRDS 컴포넌트는 5단계 크기 토큰(xsmall/small/medium/large/xlarge)을 
 - Border: 활성 하단 2px solid `#256EF4`
 - Use: 페이지 내 섹션 전환 — 활성 탭만 하단 보더 강조
 
-#### Toasts
+### Toasts
 
 모바일 알림 — `component_12_05.html` / `component_12_06.html`.
 
@@ -705,7 +1061,7 @@ KRDS 컴포넌트는 5단계 크기 토큰(xsmall/small/medium/large/xlarge)을 
 - Padding: 16px
 - Use: 하단 풀-블리드 띠 — 액션 버튼 포함 가능 (예: "되돌리기"), 4초 자동 닫힘
 
-#### Tooltips
+### Tooltips
 
 소스: `component_08_*`.
 
@@ -728,7 +1084,7 @@ KRDS 컴포넌트는 5단계 크기 토큰(xsmall/small/medium/large/xlarge)을 
 - Radius: 8px
 - Use: 페이지 첫 방문 시 단계별 가이드 오버레이 + 점진적 disclosure
 
-#### Pagination / Breadcrumb / Side Menu
+### Pagination / Breadcrumb / Side Menu
 
 보조 내비게이션 (`component_03_*`). 캐노니컬 스키마에 1:1로 대응하지 않아 프로즈로 보존합니다.
 
@@ -736,20 +1092,20 @@ KRDS 컴포넌트는 5단계 크기 토큰(xsmall/small/medium/large/xlarge)을 
 - **Breadcrumb**: 13px·400 / `#464C53` / `>` 구분자 / 마지막 항목 `#1E2124` (현재 위치)
 - **Side Menu**: 좌측 고정 / 활성 항목 좌측 4px bar `#256EF4` + 배경 `#ECF2FE` + 텍스트 `#0B50D0`/700
 
-#### Step Indicator / Spinner
+### Step Indicator / Spinner
 
 진행 표시 (`component_07_*`). 캐노니컬 variant에 매핑되지 않으므로 프로즈로만 기록합니다 (참고용).
 
 - **단계 표시기**: 1→2→3 진행 표시. 활성 단계 `#256EF4` 배경 + 흰색 번호. 완료 단계 `#228738`(Success) 체크. 비활성 `#CDD1D5` 배경 + `#6D7882` 번호.
 - **스피너**: 24/32/48px 원형 + `#256EF4` arc / `prefers-reduced-motion`에서 정적 상태 점선으로 대체.
 
-#### Mobile-only
+### Mobile-only
 
 소스: `component_12_*`. 뒤로가기 / 바텀시트 / 수량토글 / 토스트 / 스낵바 / 탭바 / 스플래시 스크린 / 범위 슬라이더 — 위 Toasts 등 해당 variant에서 다룹니다.
 
 §4 노트 — 모든 컴포넌트는 `--krds-light-*` (일반 모드)와 `--krds-high-contrast-*` (선명한 화면 모드) 두 토큰 레이어를 동시에 가지며, 다크 모드 전환은 같은 컴포넌트가 토큰만 바꿔 끼우는 방식으로 동작합니다.
 
-#### Published component roster (34 not yet measured)
+### Published component roster (34 not yet measured)
 
 KRDS publishes **55 components**, enumerated on its own roster page
 (`component_summary.html`). This reference cites **21** of them by their real page id and
@@ -810,184 +1166,7 @@ KRDS 서비스 패턴 5종이 정의하는 사용자 여정 각 단계의 표준
 | **신청 — 처리 추적** | 진행 상태 배지(Information 진행 중 / Success 완료 / Warning 보완 요청 / Danger 반려) + 갱신 시각. |
 | **정책정보 — 신규/갱신 구분** | 자료 카드에 "신규"(Point 적색 배지 outline) 또는 "갱신"(Information 배지 outline) 라벨 — 같은 위계 안에서 색으로만 의미를 전달하지 않도록 텍스트 라벨 필수. |
 
-<!-- design-md:section layout-platforms -->
-## 5. Layout & Platforms
-
-### Spacing System — 8-Point Grid
-
-`--krds-padding-*` 스케일 (라이브 토큰):
-
-| Token | Value | Use |
-|-------|-------|-----|
-| padding-1 | 2px | hairline 간격 |
-| padding-2 | 4px | 아이콘 inner padding |
-| padding-3 | 8px | 배지·태그 padding |
-| padding-4 | 10px | xsmall button padding |
-| padding-5 | 12px | small button padding |
-| padding-6 | 16px | input padding / info panel vertical |
-| padding-7 | 20px | large button padding |
-| padding-8 | 24px | **표준 콘텐츠 padding / gutter** |
-| padding-9 | 32px | 섹션 간 여백 |
-| padding-10 | 40px | **모달 padding** |
-
-모든 값이 8-pt grid의 배수(2/4/8/16/24/32/40) 또는 KRDS 보조 단위(10/12/20). 컴포넌트 내부 패딩은 padding-6 (16px), padding-8 (24px), padding-10 (40px)이 표준.
-
-### Grid & Container — Breakpoints
-
-| Name | Viewport | Columns | Gutter | Screen Margin |
-|------|----------|---------|--------|----------------|
-| small | 360px~ | 4 | 16px | 16px |
-| medium | 768px~ | 8 | 16px | 24px |
-| **large** | **1024px~** | **12** | **24px** | **24px** |
-| xlarge | 1280px~ | 12 | 24px | 24px |
-
-- 데스크톱: **콘텐츠 영역 최대 1200px** (`--krds-contents-size`), 가운데 정렬, 좌우 24px gutter — 1248px 디바이스 이상에서 폭 고정, 미만에서는 비례 축소
-- 표준형 스타일은 xsmall(<360px)를 최적화 대상에서 제외
-- 확장형 스타일 (자유 폭): 3~6단계 브레이크포인트로 가변, 단 컬럼/가터/마진 규칙은 동일
-
-### Sub-page Layout
-
-브레이크포인트 large 이상에서 다음 5 영역으로 구성:
-1. **Header** — GNB + 유틸리티 (글자·화면 설정 / 검색 / 전체메뉴)
-2. **Left menu (선택)** — 사이드 메뉴 (깊은 IA)
-3. **Main contents** — 본문 (콘텐츠 내 탐색 anchor 포함)
-4. **Right menu (선택)** — 콘텐츠 내 탐색 (플로팅) / 도움 패널 (slide-in)
-5. **Footer** — 운영기관 식별자 + 정책 링크 + 면책 + 공식 배너
-
-### Whitespace Philosophy
-- **밀도 < 여백**: 정부 사이트는 한 화면에 많은 정보를 보여줘야 하지만, KRDS는 그 안에서도 **충분한 vertical rhythm**을 유지합니다. 섹션 간 64~80px (padding-9 + padding-10 조합)의 여백이 시각적 피로를 줄입니다.
-- **그림자보다 보더**: 영역 분리는 거의 항상 1px 보더(`#58616A` 강 / `#B1B8BE` 약 / `#CDD1D5` 부드러움)와 라운드로 처리. 그림자는 모달 / 드롭다운 / 툴팁에만 한정.
-- **GNB 56px / x-large CTA 64px**: 헤더 높이와 핵심 액션 높이가 비례 — 누르기 쉬운 크기를 우선.
-
-### Border Radius Scale (라이브 토큰)
-- 2px (`--krds-radius-xsmall1/2/3`): xsmall input / 미세 요소
-- 4px (`--krds-radius-small1/2/3`): 배지 / xsmall 버튼
-- 6px (`--krds-radius-medium1/2`): small·medium 버튼 / small select
-- 8px (`--krds-radius-medium3/4`): **표준 라운드** — 패널 / 카드 / large·xlarge 버튼 / 표준 input
-- 10px (`--krds-radius-large1/2`): xlarge input (검색)
-- 12px (`--krds-radius-xlarge1/2`): **모달**
-- 1000px (`--krds-radius-max`): 원형 컨트롤 / pill 태그
-
-### Basic Patterns (KRDS 기본 패턴)
-
-KRDS는 컴포넌트보다 상위 단위로 **12개 기본 패턴(Basic Patterns)**을 공식 운영합니다 — 컴포넌트 조합으로 반복되는 핵심 과업을 수행하는 인터페이스 세트입니다 ([기본 패턴 summary](https://www.krds.go.kr/html/site/global/global_summary.html)). 모든 패턴은 페이지 레이아웃 구성 규칙으로 작동하며, "사용성·접근성·인터랙션 가이드·플랫폼 고려사항"을 함께 명시합니다.
-
-| # | 패턴 | URL | 1-line purpose |
-|---|------|-----|----------------|
-| 1 | 개인 식별 정보 입력 | `global/global_01.html` | 성명·생년월일·연락처 등 PII 수집 — 수집 필요성·목적 명시 + 접근 가능한 입력 방식 |
-| 2 | 도움 (Help) | `global/global_02.html` | 사용자 숙련도에 맞춰 인터페이스 작동·과업 플로 안내를 제공 |
-| 3 | 동의 (Consent) | `global/global_03.html` | 약관 열람·동의 표시 + 안내 정보 확인 인터페이스 |
-| 4 | 목록 탐색 | `global/global_04.html` | 관련 데이터를 리스트로 구성 — 일관된 포맷 + 특정 항목에 대한 액션 |
-| 5 | 사용자 피드백 | `global/global_05.html` | 화면·기능에 대한 평가·민원·제안을 주 과업을 방해하지 않고 수집 |
-| 6 | 상세 정보 확인 | `global/global_06.html` | 상세 페이지의 콘텐츠 구조·시각 위계·복수 콘텐츠 포맷 표시 표준 |
-| 7 | 오류 (Error) | `global/global_07.html` | 시스템 과업 실패 시 표시 방식·사용성·접근성 요건 |
-| 8 | 입력폼 (Input Form) | `global/global_08.html` | 1개 이상의 입력 컨트롤로 구성된 데이터 입력·전송 섹션 |
-| 9 | 첨부파일 | `global/global_09.html` | 다운로드 가능한 첨부 파일 표시 — 링크 유형·접근성·인터랙션 |
-| 10 | 필터링·정렬 | `global/global_10.html` | 사용자 속성·기준에 따라 데이터 항목을 선택적으로 표시·정렬 |
-| 11 | 확인 (Confirmation) | `global/global_11.html` | 되돌릴 수 없는 결과를 가진 행위 직전에 의도 재확인 다이얼로그 |
-| 12 | 모바일 알림 | `global/global_12.html` | 푸시 알림 / 인앱 알림 / 알림 센터 — 서비스 변경·진행 안내 |
-
-§4 컴포넌트(버튼·입력·셀렉트·모달 등)는 위 12개 패턴의 빌딩 블록이며, 페이지 레이아웃은 패턴 단위로 구성됩니다 — 예: 신청 페이지 = `입력폼 + 첨부파일 + 확인 + 오류` 패턴 결합.
-
-### Service Patterns (KRDS 서비스 패턴)
-
-기본 패턴이 페이지 단위 컴포지션이라면 **서비스 패턴 5종**은 **사용자 여정(user-journey blueprint)**입니다 — 시민이 정부 디지털 서비스를 이용하는 전형적 시나리오를 단계별로 정의합니다 ([서비스 패턴 summary](https://www.krds.go.kr/html/site/service/service_summary.html)).
-
-| # | 패턴 | URL | Journey nodes |
-|---|------|-----|----------------|
-| 1 | **방문 (Visit)** | `service/service_01_01.html` | 정보 탐색 → 정보 이해 → 이동(외부 서비스 / 내부 IA). 첫인상이 형성되는 메인 화면에서 시작. |
-| 2 | **검색 (Search)** | `service/service_02_01.html` | 검색어 입력 → 결과 개수 확인 → 목록 탐색 → 결과 활용 → 재검색 / 상세검색 → 종료. 7단계. |
-| 3 | **로그인 (Login)** | `service/service_03_01.html` | 로그인 방식 선택 (지식·소유·생체·다요소) → 정보 입력 → 완료 → 로그아웃(사용자 / 자동 만료). |
-| 4 | **신청 (Application)** | `service/service_04_01.html` | 대상 탐색 → 다단계 양식 작성 (자동입력·임시저장·첨부) → 확인 → 처리 결과 추적. 복지 / 세액 / 발급 / 예약 포함. |
-| 5 | **정책정보 확인** | `service/service_05_01.html` | 정책 상세 검토 → 관련 자료 참조(보고서·매뉴얼·법령). 신규 / 갱신 자료 구분. |
-
-서비스 패턴은 **3단계 준수 수준 (필수 / 권장 / 우수)** 체크리스트로 평가됩니다 — 모든 정부 사이트는 최소 "필수" 항목을 충족해야 합니다.
-
-### Breakpoints (재확인)
-| Name | Width | Key Changes |
-|------|-------|-------------|
-| small | 360px+ | 단일 컬럼 4-grid, 16px gutter, GNB → 햄버거 메뉴 |
-| medium | 768px+ | 2~3열 그리드 8-grid, 16~24px gutter |
-| large | 1024px+ | 풀 GNB, 최대 1200px 컨텐츠 폭, 12-grid |
-| xlarge | 1280px+ | 동일 1200px 컨텐츠 유지 (좌우 여백 증가) |
-
-### Touch Targets (라이브 측정)
-- Primary CTA xlarge: **64px** 높이 (양식 제출 등 핵심 액션)
-- Primary CTA large: 56px / medium: 48px / small: 40px / xsmall: 32px
-- 입력 필드 large: 56px / xlarge: 80px (검색)
-- 셀렉트 large: 56px / medium: 48px / small: 40px
-- 모바일 탭바 / 바텀시트 높이: 별도 모바일 카테고리에서 정의
-
-### Mobile-specific Components
-KRDS는 `component_12_*` 카테고리에 모바일 전용 컴포넌트 8종을 운영합니다: 뒤로가기 / 바텀시트 / 수량토글 / 토스트 / 스낵바 / 탭바 / 스플래시 스크린 / 범위 슬라이더. 모바일 컨텍스트의 인터랙션을 별도 시스템으로 인정.
-
-### Image Behavior
-- 콘텐츠 일러스트 / 사진은 1200px 컨테이너 안에서 풀-블리드 또는 16:9 / 4:3 비율
-- 아이콘은 16 / 20 / 24px 그리드 (`--krds-icon--size-{xsmall..xlarge} = 1.6/1.6/2/2.4/2.4rem`)
-- 접근 가능한 미디어 (`component_11_01.html`)는 캡션 / 자막 / 음성 해설 슬롯 명시
-
-<!-- design-md:section content-locales -->
-## 6. Content & Locales
-
-### Voice & Tone
-
-KRDS의 보이스는 **공공 서비스 안내 데스크의 화법**입니다 — 정중하고(`-합니다`/`-해 주세요`), 절제되며, 사용자를 평가하거나 설득하려 들지 않습니다. 마케팅 감탄("놀라운", "혁신적인", "최고의")은 금지이고, 동시에 권위적 명령("입력하라", "확인할 것")도 피합니다. 기본 어미는 **하십시오체(`-합니다`)와 해요체의 정중한 변형(`-해 주세요`, `-해 주십시오`)**의 혼용이며, 페이지 헤드라인은 명사형으로 짧게 — "**모두를 위한 디지털 서비스 경험**" — 행위 문장은 동사형으로 — "시작하기", "신청하기", "자세히 보기". 영문 카피가 필요한 경우 plain English UK Gov 스타일로 — *"Apply now"* 가 *"Get started today!"* 보다 우선합니다.
-
-| Context | Tone |
-|---|---|
-| 페이지 헤드라인 | 명사형 한 줄 ("모두를 위한 디지털 서비스 경험"). 마침표·느낌표 없음. |
-| Primary CTA | 동사 + "기" 형태 ("시작하기", "신청하기", "확인하기"). 짧고 행위 중심. |
-| Secondary CTA | "자세히 보기", "이전 단계", "취소" — 부가 / 되돌리기 액션. |
-| 양식 라벨 | 명사형 ("성명", "연락처", "주소"). 라벨이 곧 항목 이름. |
-| 필수 표시 | 라벨 옆 빨간 별표 + 스크린리더용 "필수 입력 항목입니다" 보조 텍스트. |
-| 검증 오류 | 무엇이 / 왜 / 어떻게 — "올바른 이메일 형식이 아닙니다. example@domain.kr 형식으로 입력해 주세요." |
-| 빈 상태 | "표시할 내용이 없습니다" + 다음 행동 안내. "데이터가 없습니다" 단독 사용 금지. |
-| 성공 메시지 | "신청이 완료되었습니다." 과거 종결형, 한 문장. 감탄사 없음. |
-| 도움말 | "이 항목은 ~을(를) 위해 수집됩니다." 수집 목적·근거를 평문으로 명시. |
-| 긴급 공지 | "현재 ~ 서비스가 일시 중단되었습니다. 자세한 내용은 공지사항을 확인해 주세요." 사실 + 다음 행동. |
-
-**금지 표현.** "혁신적인", "차세대", "최고의", "고객님께서는 ~해 주시기 바랍니다" (지나친 격식), "데이터가 없습니다", "오류가 발생했습니다" 단독 사용, "잘 모르시겠다면" (사용자 능력 평가), 영문 보일러플레이트 "Oops, something went wrong". 어려운 한자어·일본식 행정 용어는 **「쉬운 우리말 쓰기」(국립국어원·행정안전부 권장)** 원칙에 따라 평이한 한국어로 치환 (예: "기재하다" → "쓰다 / 적다", "취하한다" → "취소한다", "당해 연도" → "올해").
-
-**Voice samples.**
-
-- `모두를 위한 디지털 서비스 경험` — 홈 헤드라인 (페이지 제목). 
-- `시작하기` — Primary CTA (xlarge, `#256EF4` / 흰색 / 64px). 
-- `자세히 보기` — 카드 내부의 x-large text 버튼 (보조 액션). 
-- `글자·화면 설정` — 헤더 유틸리티 버튼 (a11y 1차 컨트롤). 
-- `통합검색` / `전체메뉴` — GNB 액션 버튼. 
-- `디자인 스타일 / 컴포넌트 / 기본 패턴 / 서비스 패턴 / 소식·소통 / KRDS 소개` — GNB 카테고리 6개. 
-- `누구나 쉽게 사용할 수 있는 공공 웹·앱` — 행정안전부 KRDS 소개 문구. 
-- `KRDS는 공공 웹·앱이 일관된 사용자 경험을 제공할 수 있도록 디자인 토큰과 컴포넌트를 표준화합니다.` — 일러스트레이션 (브랜드 문장 패턴, 실제 페이지 카피의 톤을 재구성).
-
-<!-- design-md:section governance -->
-## 7. Governance
-
-<!-- design-md:claim authority kind=evidence-backed-reconstruction lang=en -->
-### Authority
-
-This document is an evidence-backed reconstruction, not authority for an unrelated target project.
-<!-- design-md:claim-end -->
-
-<!-- design-md:claim application-priority order=prompt-fact,repository-fact,system-contract,reference-inspiration lang=en -->
-### Application priority
-
-1. Direct user instructions for the requested scope.
-2. Repository facts.
-3. This system contract.
-4. Reference inspiration.
-<!-- design-md:claim-end -->
-
-<!-- design-md:claim unknowns policy=absent-at-smallest-unresolved-boundary lang=en -->
-### Unknowns
-
-Omit only the smallest unresolved value or group. Do not replace it with a plausible default.
-<!-- design-md:claim-end -->
-
-<!-- design-md:claim changes policy=review-record-validate-before-adoption lang=en -->
-### Changes
-
-Record, review, and validate changes before adoption.
-<!-- design-md:claim-end -->
+## Do's and Don'ts
 
 ### Do
 - 정부 블루(`#256EF4`)는 **액션 자리에만** — Primary 버튼, 활성 링크, 활성 탭, focus ring, side-menu 활성 표시
@@ -1010,6 +1189,38 @@ Record, review, and validate changes before adoption.
 - KWCAG 2.1 AA 미달 컬러 / 컴포넌트 사용 금지 (4.5:1 contrast 최소)
 - Body 사이즈와 H4/H5 사이즈(17/15px)가 충돌하는 위계는 weight 차이(700/400)로만 구분 — 컬러 강조 금지
 - 자체 폰트가 고딕 계열이 아니면 본문·제목에 사용 금지 (Display / 배너만 한정)
+
+## Voice & Tone
+
+KRDS의 보이스는 **공공 서비스 안내 데스크의 화법**입니다 — 정중하고(`-합니다`/`-해 주세요`), 절제되며, 사용자를 평가하거나 설득하려 들지 않습니다. 마케팅 감탄("놀라운", "혁신적인", "최고의")은 금지이고, 동시에 권위적 명령("입력하라", "확인할 것")도 피합니다. 기본 어미는 **하십시오체(`-합니다`)와 해요체의 정중한 변형(`-해 주세요`, `-해 주십시오`)**의 혼용이며, 페이지 헤드라인은 명사형으로 짧게 — "**모두를 위한 디지털 서비스 경험**" — 행위 문장은 동사형으로 — "시작하기", "신청하기", "자세히 보기". 영문 카피가 필요한 경우 plain English UK Gov 스타일로 — *"Apply now"* 가 *"Get started today!"* 보다 우선합니다.
+
+| Context | Tone |
+|---|---|
+| 페이지 헤드라인 | 명사형 한 줄 ("모두를 위한 디지털 서비스 경험"). 마침표·느낌표 없음. |
+| Primary CTA | 동사 + "기" 형태 ("시작하기", "신청하기", "확인하기"). 짧고 행위 중심. |
+| Secondary CTA | "자세히 보기", "이전 단계", "취소" — 부가 / 되돌리기 액션. |
+| 양식 라벨 | 명사형 ("성명", "연락처", "주소"). 라벨이 곧 항목 이름. |
+| 필수 표시 | 라벨 옆 빨간 별표 + 스크린리더용 "필수 입력 항목입니다" 보조 텍스트. |
+| 검증 오류 | 무엇이 / 왜 / 어떻게 — "올바른 이메일 형식이 아닙니다. example@domain.kr 형식으로 입력해 주세요." |
+| 빈 상태 | "표시할 내용이 없습니다" + 다음 행동 안내. "데이터가 없습니다" 단독 사용 금지. |
+| 성공 메시지 | "신청이 완료되었습니다." 과거 종결형, 한 문장. 감탄사 없음. |
+| 도움말 | "이 항목은 ~을(를) 위해 수집됩니다." 수집 목적·근거를 평문으로 명시. |
+| 긴급 공지 | "현재 ~ 서비스가 일시 중단되었습니다. 자세한 내용은 공지사항을 확인해 주세요." 사실 + 다음 행동. |
+
+**금지 표현.** "혁신적인", "차세대", "최고의", "고객님께서는 ~해 주시기 바랍니다" (지나친 격식), "데이터가 없습니다", "오류가 발생했습니다" 단독 사용, "잘 모르시겠다면" (사용자 능력 평가), 영문 보일러플레이트 "Oops, something went wrong". 어려운 한자어·일본식 행정 용어는 **「쉬운 우리말 쓰기」(국립국어원·행정안전부 권장)** 원칙에 따라 평이한 한국어로 치환 (예: "기재하다" → "쓰다 / 적다", "취하한다" → "취소한다", "당해 연도" → "올해").
+
+**Voice samples.**
+
+- `모두를 위한 디지털 서비스 경험` — 홈 헤드라인 (페이지 제목). <!-- verified: https://www.krds.go.kr/html/site/index.html, 2026-05 -->
+- `시작하기` — Primary CTA (xlarge, `#256EF4` / 흰색 / 64px). <!-- verified: krds.go.kr 홈, 2026-05 -->
+- `자세히 보기` — 카드 내부의 x-large text 버튼 (보조 액션). <!-- verified: krds.go.kr 홈, 2026-05 -->
+- `글자·화면 설정` — 헤더 유틸리티 버튼 (a11y 1차 컨트롤). <!-- verified: krds.go.kr 전 페이지, 2026-05 -->
+- `통합검색` / `전체메뉴` — GNB 액션 버튼. <!-- verified: krds.go.kr, 2026-05 -->
+- `디자인 스타일 / 컴포넌트 / 기본 패턴 / 서비스 패턴 / 소식·소통 / KRDS 소개` — GNB 카테고리 6개. <!-- verified: krds.go.kr, 2026-05 -->
+- `누구나 쉽게 사용할 수 있는 공공 웹·앱` — 행정안전부 KRDS 소개 문구. <!-- cited: 행정안전부 보도자료, 2024 -->
+- `KRDS는 공공 웹·앱이 일관된 사용자 경험을 제공할 수 있도록 디자인 토큰과 컴포넌트를 표준화합니다.` — 일러스트레이션 (브랜드 문장 패턴, 실제 페이지 카피의 톤을 재구성). <!-- illustrative -->
+
+## Agent Prompt Guide
 
 ### Quick Color Reference
 - Primary action: `#256EF4` (primary-50)
@@ -1047,3 +1258,9 @@ Record, review, and validate changes before adoption.
 9. 모션은 400ms / ease-in-out 표준, `prefers-reduced-motion: reduce`에서 즉시 전환
 
 ---
+
+## Governance
+
+### Known Gaps
+
+- **Contrast, `button-tertiary`.** Text `#1e2124` on `#00000000` measures 1.30:1, below the WCAG AA 4.5:1 minimum for normal-size text. Recorded as measured, not adjusted.
