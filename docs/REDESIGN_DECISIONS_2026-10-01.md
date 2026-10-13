@@ -26,3 +26,13 @@
 | D7 | legacy 113 색인 비중 현행 유지 | 별도 판단 |
 
 AGENTS.md "Product surface ownership"는 구현 시 퍼널 Home → `/design-systems/[id]` → (선택) `/builder`로 개정.
+
+## 2026-10-13 오너 결정
+
+| # | 결정 |
+|---|---|
+| Q1 | **builder 완전 제거** — `/builder?ref=X` → `/design-systems/X#use` 308. 커스터마이즈 기능 폐기. 붙여넣은 옛 링크는 리디렉트로 계속 열림 |
+| Q2 | 10/1 랜딩은 되돌리지 않고 **전면 리브랜딩**("너무 베끼는 느낌, 구림"). codex CLI로 로고·이미지 새로 생성 허용. "신박하게" |
+| Q4 | 계측: Vercel Speed Insights 켜져 있는지 확인 → 아니면 GA4 복구 |
+| Q5 | 로캘 순서 ko → ja → zh-tw 승인 |
+| 추가 | 트렌드 조사: shadcn DESIGN.md 스킬 포스트(X 10/10), Kailash ui-skills 목록(X 9/22) + 셰이더 오픈소스 실험(`~/Desktop/projects/tf-shaders`, shader-landing 스킬) 반영 |
